@@ -57,7 +57,7 @@ function gtk_parse_menu_structure(widget: Gtk.Widget): Dbusmenu.Menuitem
  * @param property The name of the property to look for.
  * @returns A pixbuf or #NULL to signal error.
  */
-function menuitem_property_get_image(menuitem: Dbusmenu.Menuitem, property: string | null): GdkPixbuf.Pixbuf
+function menuitem_property_get_image(menuitem: Dbusmenu.Menuitem, property: string): GdkPixbuf.Pixbuf
 /**
  * This function gets a GTK shortcut as a key and a mask
  * for use to set the accelerators.
@@ -73,7 +73,7 @@ function menuitem_property_get_shortcut(menuitem: Dbusmenu.Menuitem): [ /* key *
  * @param data The image to place on the property.
  * @returns Whether the function was able to set the property 	or not.
  */
-function menuitem_property_set_image(menuitem: Dbusmenu.Menuitem, property: string | null, data: GdkPixbuf.Pixbuf): boolean
+function menuitem_property_set_image(menuitem: Dbusmenu.Menuitem, property: string, data: GdkPixbuf.Pixbuf): boolean
 /**
  * Takes the modifer described by `key` and `modifier` and places that into
  * the format sending across Dbus for shortcuts.
@@ -100,7 +100,7 @@ function menuitem_property_set_shortcut_menuitem(menuitem: Dbusmenu.Menuitem, gm
  * @param shortcut String describing the shortcut
  * @returns Whether it was successful at setting the property.
  */
-function menuitem_property_set_shortcut_string(menuitem: Dbusmenu.Menuitem, shortcut: string | null): boolean
+function menuitem_property_set_shortcut_string(menuitem: Dbusmenu.Menuitem, shortcut: string): boolean
 module Client {
 
     // Constructor properties interface
@@ -217,7 +217,7 @@ class Client extends Dbusmenu.Client {
      * @param object The object on the server to monitor
      * @returns A brand new #DbusmenuClient
      */
-    static new(name: string | null, object: string | null): Dbusmenu.Client
+    static new(name: string, object: string): Dbusmenu.Client
     _init(config?: Client.ConstructorProperties): void
 }
 
@@ -353,7 +353,7 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -367,7 +367,7 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -378,7 +378,7 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of DbusmenuGtk3-0.4.DbusmenuGtk3.Menu
 

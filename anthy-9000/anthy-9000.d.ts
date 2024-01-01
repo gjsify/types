@@ -29,26 +29,26 @@ const RECONVERT_DISABLE: number
 const UTF8_ENCODING: number
 function commit_prediction(arg0: anthy_context_t, arg1: number): number
 function commit_segment(arg0: anthy_context_t, arg1: number, arg2: number): number
-function conf_override(arg0: string | null, arg1: string | null): void
+function conf_override(arg0: string, arg1: string): void
 function context_set_encoding(ac: anthy_context_t, encoding: number): number
 function get_prediction(arg0: anthy_context_t, arg1: number, arg2: string | null, arg3: number): number
 function get_prediction_stat(arg0: anthy_context_t, arg1: any): number
 function get_segment(arg0: anthy_context_t, arg1: number, arg2: number, arg3: string | null, arg4: number): number
 function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: any): number
 function get_stat(arg0: anthy_context_t, arg1: any): number
-function get_version_string(): string | null
+function get_version_string(): string
 function init(): number
 function print_context(arg0: anthy_context_t): void
 function quit(): void
 function release_context(arg0: anthy_context_t): void
 function reset_context(arg0: anthy_context_t): void
 function resize_segment(arg0: anthy_context_t, arg1: number, arg2: number): void
-function set_personality(arg0: string | null): number
-function set_prediction_string(arg0: anthy_context_t, arg1: string | null): number
+function set_personality(arg0: string): number
+function set_prediction_string(arg0: anthy_context_t, arg1: string): number
 function set_reconversion_mode(ac: anthy_context_t, mode: number): number
-function set_string(arg0: anthy_context_t, arg1: string | null): number
+function set_string(arg0: anthy_context_t, arg1: string): number
 interface logger {
-    (level: number, arg1: string | null): void
+    (level: number, arg1: string): void
 }
 module GContext {
 
@@ -83,7 +83,7 @@ interface GContext {
      * Set a personal dictionary.
      * @param dict_name a Dictionary name
      */
-    do_set_personality(dict_name: string | null): number
+    do_set_personality(dict_name: string): number
     /**
      * The number of the candidates
      * @param nth_seg 
@@ -132,12 +132,12 @@ interface GContext {
      * Set a prediction string.
      * @param string A prediction string
      */
-    set_prediction_string(string: string | null): number
+    set_prediction_string(string: string): number
     /**
      * Set a conversion string.
      * @param string A conversion string
      */
-    set_string(string: string | null): number
+    set_string(string: string): number
 
     // Class property signals of Anthy-9000.Anthy.GContext
 

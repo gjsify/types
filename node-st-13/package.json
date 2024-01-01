@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-st-13",
-    "version": "13.0.0-3.2.6",
+    "version": "13.0.0-3.2.7",
     "description": "Node.js TypeScript type definitions for St-13, generated from library version 13.0.0",
     "type": "module",
     "module": "node-st-13.js",

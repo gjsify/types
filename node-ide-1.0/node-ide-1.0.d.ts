@@ -515,13 +515,13 @@ const BUFFER_LINE_FLAGS_DIAGNOSTICS_MASK: number
 const BUILD_PHASE_MASK: number
 const BUILD_PHASE_WHENCE_MASK: number
 const ENABLE_TRACE: number
-const FILE_SETTINGS_EXTENSION_POINT: string | null
+const FILE_SETTINGS_EXTENSION_POINT: string
 const LANGSERV_COMPLETION_PROVIDER_PRIORITY: number
 const PREFERENCES_PERSPECTIVE_PRIORITY: number
-const RECENT_PROJECTS_BOOKMARK_FILENAME: string | null
-const RECENT_PROJECTS_BUILD_SYSTEM_GROUP_PREFIX: string | null
-const RECENT_PROJECTS_GROUP: string | null
-const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string | null
+const RECENT_PROJECTS_BOOKMARK_FILENAME: string
+const RECENT_PROJECTS_BUILD_SYSTEM_GROUP_PREFIX: string
+const RECENT_PROJECTS_GROUP: string
+const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string
 /**
  * Asynchronously creates a new #IdeBuildSystem instance using the registered
  * #GIOExtensionPoint system. Each extension point will be tried asynchronously
@@ -535,21 +535,21 @@ const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string | null
  * @param cancellable A #GCancellable
  * @param callback A callback to execute upon completion
  */
-function buildSystemNewAsync(context: Context, projectFile: Gio.File, buildSystemHint: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+function buildSystemNewAsync(context: Context, projectFile: Gio.File, buildSystemHint: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Complete an asynchronous call to ide_build_system_new_async().
  * @param result 
  * @returns An #IdeBuildSystem if successful; otherwise   %NULL and @error is set.
  */
 function buildSystemNewFinish(result: Gio.AsyncResult): BuildSystem
-function buildUtilsColorCodesFiltering(txt: string | null): string | null
+function buildUtilsColorCodesFiltering(txt: string): string | null
 function completionProviderContextCurrentWord(context: GtkSource.CompletionContext): string | null
 function completionProviderContextInComment(context: GtkSource.CompletionContext): boolean
 function completionProviderContextInCommentOrString(context: GtkSource.CompletionContext): boolean
 function deviceErrorQuark(): GLib.Quark
-function diagnosticSeverityToString(severity: DiagnosticSeverity): string | null
+function diagnosticSeverityToString(severity: DiagnosticSeverity): string
 function doapErrorQuark(): GLib.Quark
-function flatpakGetAppPath(path: string | null): string | null
+function flatpakGetAppPath(path: string): string | null
 /**
  * This is just like g_task_return_boolean() except that it enforces
  * that the current stack return to the main context before dispatching
@@ -567,12 +567,12 @@ function gTaskReturnBooleanFromMain(task: Gio.Task, value: boolean): void
 function gTaskReturnErrorFromMain(task: Gio.Task, error: GLib.Error): void
 function gTaskReturnIntFromMain(task: Gio.Task, value: number): void
 function gTaskReturnPointerFromMain(task: Gio.Task, value: any | null, notify: GLib.DestroyNotify): void
-function getProgramName(): string | null
+function getProgramName(): string
 function getResource(): Gio.Resource
 function getSystemArch(): string | null
 function getSystemPageSize(): number
-function getSystemType(): string | null
-function gettext(message: string | null): string | null
+function getSystemType(): string
+function gettext(message: string): string
 function iconsGetResource(): Gio.Resource
 /**
  * This function checks to see if the application is running within
@@ -582,7 +582,7 @@ function iconsGetResource(): Gio.Resource
 function isFlatpak(): boolean
 function langservDecodeCompletionKind(kind: number): SymbolKind
 function langservDecodeSymbolKind(kind: number): SymbolKind
-function languageFormatHeader(language: GtkSource.Language, header: string | null): string | null
+function languageFormatHeader(language: GtkSource.Language, header: string): string | null
 function logGetVerbosity(): number
 /**
  * Increases the amount of logging that will occur. By default, only
@@ -607,7 +607,7 @@ function logIncreaseVerbosity(): void
  * @param stdout Indicates logging should be written to stdout.
  * @param filename An optional file in which to store logs.
  */
-function logInit(stdout: boolean, filename: string | null): void
+function logInit(stdout: boolean, filename: string): void
 function logSetVerbosity(level: number): void
 /**
  * Cleans up after the logging subsystem.
@@ -622,7 +622,7 @@ function logShutdown(): void
  * @param path 
  * @returns A new path, possibly collapsed.
  */
-function pathCollapse(path: string | null): string | null
+function pathCollapse(path: string): string | null
 /**
  * This function will expand various "shell-like" features of the provided
  * path using the POSIX wordexp(3) function. Command substitution will
@@ -630,11 +630,11 @@ function pathCollapse(path: string | null): string | null
  * @param path 
  * @returns A newly allocated string containing the   expansion. A copy of the input string upon failure to expand.
  */
-function pathExpand(path: string | null): string | null
+function pathExpand(path: string): string | null
 function runtimeErrorQuark(): GLib.Quark
-function setProgramName(programName: string | null): void
-function sourceStyleSchemeApplyStyle(styleScheme: GtkSource.StyleScheme, style: string | null, tag: Gtk.TextTag): boolean
-function symbolKindGetIconName(kind: SymbolKind): string | null
+function setProgramName(programName: string): void
+function sourceStyleSchemeApplyStyle(styleScheme: GtkSource.StyleScheme, style: string, tag: Gtk.TextTag): boolean
+function symbolKindGetIconName(kind: SymbolKind): string
 /**
  * Runs the callback on the thread pool thread.
  * @param kind the threadpool kind to use.
@@ -649,7 +649,7 @@ function threadPoolPush(kind: ThreadPoolKind, func: ThreadFunc): void
  * @param func The thread worker to execute for `task`.
  */
 function threadPoolPushTask(kind: ThreadPoolKind, task: Gio.Task, func: Gio.TaskThreadFunc): void
-function uriBuild(scheme: string | null, userinfo: string | null, host: string | null, port: string | null, path: string | null, query: string | null, fragment: string | null): string | null
+function uriBuild(scheme: string, userinfo: string, host: string, port: string, path: string, query: string, fragment: string): string | null
 function uriErrorQuark(): GLib.Quark
 /**
  * Utility function for parsing "network" URIs. This extracts just the
@@ -659,7 +659,7 @@ function uriErrorQuark(): GLib.Quark
  * @param flags flags for parsing `uri_string`
  * @returns %TRUE on success, %FALSE on failure.
  */
-function uriParseHost(uriString: string | null, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
+function uriParseHost(uriString: string, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
 /**
  * Many URI schemes include one or more attribute/value pairs
  * as part of the URI value. This method can be used to parse them
@@ -679,7 +679,7 @@ function uriParseHost(uriString: string | null, flags: UriParseFlags): [ /* retu
  * @param caseInsensitive whether to match parameter names case-insensitively
  * @returns a hash table of attribute/value pairs. Both names and values will be fully-decoded. If @params cannot be parsed (eg, it contains two @separator characters in a row), then %NULL is returned.
  */
-function uriParseParams(params: string | null, length: number, separator: number, caseInsensitive: boolean): GLib.HashTable
+function uriParseParams(params: string, length: number, separator: number, caseInsensitive: boolean): GLib.HashTable
 /**
  * Parses `uri_string` more-or-less according to the generic grammar of
  * RFC 3986 ("more" if `strict` is %TRUE, "less" if %FALSE), and
@@ -693,7 +693,7 @@ function uriParseParams(params: string | null, length: number, separator: number
  * @param uriString a string containing a relative or absolute URI
  * @param strict whether to parse `uri_string` strictly
  */
-function uriSplit(uriString: string | null, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
+function uriSplit(uriString: string, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
 function vcsNewAsync(context: Context, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Completes a call to ide_vcs_new_async().
@@ -701,8 +701,8 @@ function vcsNewAsync(context: Context, ioPriority: number, cancellable: Gio.Canc
  * @returns An #IdeVcs.
  */
 function vcsNewFinish(result: Gio.AsyncResult): Vcs
-function vcsRegisterIgnored(pattern: string | null): void
-function vcsUriIsValid(uriString: string | null): boolean
+function vcsRegisterIgnored(pattern: string): void
+function vcsUriIsValid(uriString: string): boolean
 /**
  * Gets the workbench `widget` is associated with, if any.
  * 
@@ -718,13 +718,13 @@ function widgetGetWorkbench(widget: Gtk.Widget): Workbench | null
  */
 function widgetSetContextHandler(widget: Gtk.Widget, handler: WidgetContextHandler): void
 interface BuildLogObserver {
-    (logStream: BuildLogStream, message: string | null, messageLen: number): void
+    (logStream: BuildLogStream, message: string, messageLen: number): void
 }
 interface ExtensionSetAdapterForeachFunc {
     (set: ExtensionSetAdapter, pluginInfo: Peas.PluginInfo, extension: Peas.Extension): void
 }
 interface HighlightCallback {
-    (begin: Gtk.TextIter, end: Gtk.TextIter, styleName: string | null): HighlightResult
+    (begin: Gtk.TextIter, end: Gtk.TextIter, styleName: string): HighlightResult
 }
 interface RunHandler {
     (self: RunManager, runner: Runner): void
@@ -1026,7 +1026,7 @@ class BuildSystem extends GObject.Object {
      * @param cancellable A #GCancellable
      * @param callback A callback to execute upon completion
      */
-    static newAsync(context: Context, projectFile: Gio.File, buildSystemHint: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newAsync(context: Context, projectFile: Gio.File, buildSystemHint: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: static newFinish(result: Gio.AsyncResult): BuildSystem
 
     // Overloads of newFinish
@@ -1468,7 +1468,7 @@ interface EditorViewAddin {
 
     // Own virtual methods of Ide-1.0.Ide.EditorViewAddin
 
-    languageChanged(languageId: string | null): void
+    languageChanged(languageId: string): void
     load(view: EditorView): void
     loadSourceView(sourceView: SourceView): void
     unload(view: EditorView): void
@@ -2269,7 +2269,7 @@ interface RenameProvider extends Object {
     // Owm methods of Ide-1.0.Ide.RenameProvider
 
     // Has conflict: load(): void
-    // Has conflict: renameAsync(location: SourceLocation, newName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: renameAsync(location: SourceLocation, newName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: renameFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* edits */ ProjectEdit[] | null ]
 
     // Own virtual methods of Ide-1.0.Ide.RenameProvider
@@ -2286,7 +2286,7 @@ interface RenameProvider extends Object {
      * @param cancellable A #GCancellable or %NULL
      * @param callback a callback to complete the request
      */
-    renameAsync(location: SourceLocation, newName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    renameAsync(location: SourceLocation, newName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a request to ide_rename_provider_rename_async().
      * 
@@ -2412,16 +2412,16 @@ interface RuntimeProvider {
 
     // Owm methods of Ide-1.0.Ide.RuntimeProvider
 
-    // Has conflict: canInstall(runtimeId: string | null): boolean
-    // Has conflict: installAsync(runtimeId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: canInstall(runtimeId: string): boolean
+    // Has conflict: installAsync(runtimeId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: installFinish(result: Gio.AsyncResult): boolean
     // Has conflict: load(manager: RuntimeManager): void
     // Has conflict: unload(manager: RuntimeManager): void
 
     // Own virtual methods of Ide-1.0.Ide.RuntimeProvider
 
-    canInstall(runtimeId: string | null): boolean
-    installAsync(runtimeId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    canInstall(runtimeId: string): boolean
+    installAsync(runtimeId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     installFinish(result: Gio.AsyncResult): boolean
     load(manager: RuntimeManager): void
     unload(manager: RuntimeManager): void
@@ -2474,8 +2474,8 @@ interface SearchProvider extends Object {
     // Has conflict: createRow(result: SearchResult): Gtk.Widget
     // Has conflict: getPrefix(): string
     // Has conflict: getPriority(): number
-    // Has conflict: getVerb(): string | null
-    // Has conflict: populate(context: SearchContext, searchTerms: string | null, maxResults: number, cancellable: Gio.Cancellable | null): void
+    // Has conflict: getVerb(): string
+    // Has conflict: populate(context: SearchContext, searchTerms: string, maxResults: number, cancellable: Gio.Cancellable | null): void
 
     // Own virtual methods of Ide-1.0.Ide.SearchProvider
 
@@ -2489,8 +2489,8 @@ interface SearchProvider extends Object {
     createRow(result: SearchResult): Gtk.Widget
     getPrefix(): string
     getPriority(): number
-    getVerb(): string | null
-    populate(context: SearchContext, searchTerms: string | null, maxResults: number, cancellable: Gio.Cancellable | null): void
+    getVerb(): string
+    populate(context: SearchContext, searchTerms: string, maxResults: number, cancellable: Gio.Cancellable | null): void
 
     // Class property signals of Ide-1.0.Ide.SearchProvider
 
@@ -2551,14 +2551,14 @@ interface Service extends Object {
 
     // Owm methods of Ide-1.0.Ide.Service
 
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: start(): void
     // Has conflict: stop(): void
 
     // Own virtual methods of Ide-1.0.Ide.Service
 
     contextLoaded(): void
-    getName(): string | null
+    getName(): string
     start(): void
     stop(): void
 
@@ -2625,10 +2625,10 @@ interface Subprocess {
     // Has conflict: communicateFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdoutBuf */ any, /* stderrBuf */ any ]
     // Has conflict: communicateUtf8(stdinBuf: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* stdoutBuf */ string | null, /* stderrBuf */ string | null ]
     // Has conflict: communicateUtf8Async(stdinBuf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    // Has conflict: communicateUtf8Finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdoutBuf */ string | null, /* stderrBuf */ string | null ]
+    // Has conflict: communicateUtf8Finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdoutBuf */ string, /* stderrBuf */ string ]
     // Has conflict: forceExit(): void
     // Has conflict: getExitStatus(): number
-    // Has conflict: getIdentifier(): string | null
+    // Has conflict: getIdentifier(): string
     // Has conflict: getIfExited(): boolean
     // Has conflict: getIfSignaled(): boolean
     // Has conflict: getStatus(): number
@@ -2679,10 +2679,10 @@ interface Subprocess {
      */
     communicateUtf8(stdinBuf: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* stdoutBuf */ string | null, /* stderrBuf */ string | null ]
     communicateUtf8Async(stdinBuf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    communicateUtf8Finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdoutBuf */ string | null, /* stderrBuf */ string | null ]
+    communicateUtf8Finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdoutBuf */ string, /* stderrBuf */ string ]
     forceExit(): void
     getExitStatus(): number
-    getIdentifier(): string | null
+    getIdentifier(): string
     getIfExited(): boolean
     getIfSignaled(): boolean
     getStatus(): number
@@ -3132,7 +3132,7 @@ class Vcs extends GObject.Object {
     // Overloads of newFinish
 
     static newFinish(result: Gio.AsyncResult): Object
-    static registerIgnored(pattern: string | null): void
+    static registerIgnored(pattern: string): void
 }
 
 module VcsConfig {
@@ -3261,7 +3261,7 @@ interface WorkbenchAddin {
     // Has conflict: canOpen(uri: Uri, contentType: string | null): [ /* returnType */ boolean, /* priority */ number ]
     // Has conflict: getId(): string | null
     // Has conflict: load(workbench: Workbench): void
-    // Has conflict: openAsync(uri: Uri, contentType: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: openAsync(uri: Uri, contentType: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: openFinish(result: Gio.AsyncResult): boolean
     // Has conflict: perspectiveSet(perspective: Perspective): void
     // Has conflict: unload(workbench: Workbench): void
@@ -3300,7 +3300,7 @@ interface WorkbenchAddin {
      * @param workbench An #IdeWorkbench
      */
     load(workbench: Workbench): void
-    openAsync(uri: Uri, contentType: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openAsync(uri: Uri, contentType: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     openFinish(result: Gio.AsyncResult): boolean
     /**
      * This function is called when the workbench changes the perspective.
@@ -3426,7 +3426,7 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
     // Owm methods of Ide-1.0.Ide.Application
 
     addReaper(reaper: Dazzle.DirectoryReaper): void
-    getKeybindingsMode(): string | null
+    getKeybindingsMode(): string
     getMode(): ApplicationMode
     /**
      * This method will retreive an #IdeRecentProjects for the application that
@@ -3458,7 +3458,7 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback or %NULL.
      */
-    getWorkerAsync(pluginName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getWorkerAsync(pluginName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous request to get a proxy to a worker process.
      * @param result A #GAsyncResult
@@ -3577,7 +3577,7 @@ class Application extends Dazzle.Application {
 
     // Overloads of new
 
-    static new(applicationId: string | null, flags: Gio.ApplicationFlags): Dazzle.Application
+    static new(applicationId: string, flags: Gio.ApplicationFlags): Dazzle.Application
     /**
      * Creates a new #GtkApplication instance.
      * 
@@ -4040,7 +4040,7 @@ interface Buffer {
      * This property contains the current style scheme used by the buffer.
      * @returns A string containing the name of the currently used style scheme.
      */
-    getStyleSchemeName(): string | null
+    getStyleSchemeName(): string
     /**
      * Asynchronously get a possible symbol at `location`.
      * @param location a #GtkTextIter indicating a position to search for a symbol.
@@ -4064,7 +4064,7 @@ interface Buffer {
      * for display.
      * @returns A string containing the buffer title.
      */
-    getTitle(): string | null
+    getTitle(): string
     getUri(): string | null
     /**
      * Gets the word found under the position denoted by `iter`.
@@ -4095,7 +4095,7 @@ interface Buffer {
      * Sets the style scheme to be used by this buffer.
      * @param styleSchemeName A string containing the name of the style scheme to use.
      */
-    setStyleSchemeName(styleSchemeName: string | null): void
+    setStyleSchemeName(styleSchemeName: string): void
     syncToUnsavedFiles(): void
     /**
      * Trim trailing whitespaces from the buffer.
@@ -5005,7 +5005,7 @@ interface BuildPipeline extends Gio.Initable {
      * @param flags 
      * @returns an error format id that may be passed to   ide_build_pipeline_remove_error_format().
      */
-    addErrorFormat(regex: string | null, flags: GLib.RegexCompileFlags): number
+    addErrorFormat(regex: string, flags: GLib.RegexCompileFlags): number
     addLogObserver(observer: BuildLogObserver): number
     cleanAsync(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     cleanFinish(result: Gio.AsyncResult): boolean
@@ -5074,7 +5074,7 @@ interface BuildPipeline extends Gio.Initable {
      * the location that build systems will use for out-of-tree builds.
      * @returns the path of the build directory
      */
-    getBuilddir(): string | null
+    getBuilddir(): string
     getBusy(): boolean
     /**
      * Gets the #IdeConfiguration to use for the pipeline.
@@ -5093,7 +5093,7 @@ interface BuildPipeline extends Gio.Initable {
      * IdeVcs:working-directory property as a string.
      * @returns the path of the source directory
      */
-    getSrcdir(): string | null
+    getSrcdir(): string
     /**
      * Gets the stage matching the identifier `stage_id` as returned from
      * ide_build_pipeline_connect().
@@ -5392,10 +5392,10 @@ interface BuildStage {
     getCheckStdout(): boolean
     getCompleted(): boolean
     getDisabled(): boolean
-    getName(): string | null
-    getStdoutPath(): string | null
+    getName(): string
+    getStdoutPath(): string
     getTransient(): boolean
-    log(stream: BuildLogStream, message: string | null, messageLen: number): void
+    log(stream: BuildLogStream, message: string, messageLen: number): void
     /**
      * This function will begin logging `subprocess` by reading from the
      * stdout and stderr streams of the subprocess. You must have created
@@ -5419,8 +5419,8 @@ interface BuildStage {
      * @param observer The observer for the log entries
      */
     setLogObserver(observer: BuildLogObserver): void
-    setName(name: string | null): void
-    setStdoutPath(path: string | null): void
+    setName(name: string): void
+    setStdoutPath(path: string): void
     setTransient(transient: boolean): void
     unpause(): void
 
@@ -5681,7 +5681,7 @@ interface BuildStageMkdirs {
 
     // Owm methods of Ide-1.0.Ide.BuildStageMkdirs
 
-    addPath(path: string | null, withParents: boolean, mode: number): void
+    addPath(path: string, withParents: boolean, mode: number): void
 
     // Class property signals of Ide-1.0.Ide.BuildStageMkdirs
 
@@ -5877,8 +5877,8 @@ interface BuildconfigConfiguration {
 
     getPostbuild(): string[]
     getPrebuild(): string[]
-    setPostbuild(postbuild: string | null): void
-    setPrebuild(prebuild: string | null): void
+    setPostbuild(postbuild: string): void
+    setPrebuild(prebuild: string): void
 
     // Class property signals of Ide-1.0.Ide.BuildconfigConfiguration
 
@@ -6069,12 +6069,12 @@ interface CompletionItem {
 
     // Owm methods of Ide-1.0.Ide.CompletionItem
 
-    // Has conflict: match(query: string | null, casefold: string | null): boolean
+    // Has conflict: match(query: string, casefold: string): boolean
     setPriority(priority: number): void
 
     // Own virtual methods of Ide-1.0.Ide.CompletionItem
 
-    match(query: string | null, casefold: string | null): boolean
+    match(query: string, casefold: string): boolean
 
     // Class property signals of Ide-1.0.Ide.CompletionItem
 
@@ -6103,7 +6103,7 @@ class CompletionItem extends GObject.Object {
     constructor() 
     static new(): CompletionItem
     _init(config?: CompletionItem.ConstructorProperties): void
-    static fuzzyHighlight(haystack: string | null, casefoldQuery: string | null): string | null
+    static fuzzyHighlight(haystack: string, casefoldQuery: string): string | null
     /**
      * This helper function can do a fuzzy match for you giving a haystack and
      * casefolded needle. Casefold your needle using g_utf8_casefold() before
@@ -6115,7 +6115,7 @@ class CompletionItem extends GObject.Object {
      * @param casefoldNeedle A g_utf8_casefold() version of the needle.
      * @returns %TRUE if @haystack matched @casefold_needle, otherwise %FALSE.
      */
-    static fuzzyMatch(haystack: string | null, casefoldNeedle: string | null): [ /* returnType */ boolean, /* priority */ number ]
+    static fuzzyMatch(haystack: string, casefoldNeedle: string): [ /* returnType */ boolean, /* priority */ number ]
 }
 
 module CompletionResults {
@@ -6144,11 +6144,11 @@ interface CompletionResults {
 
     // Owm methods of Ide-1.0.Ide.CompletionResults
 
-    getQuery(): string | null
+    getQuery(): string
     getSize(): number
     invalidateSort(): void
     present(provider: GtkSource.CompletionProvider, context: GtkSource.CompletionContext): void
-    replay(query: string | null): boolean
+    replay(query: string): boolean
     takeProposal(proposal: CompletionItem): void
 
     // Own virtual methods of Ide-1.0.Ide.CompletionResults
@@ -6184,8 +6184,8 @@ class CompletionResults extends GObject.Object {
     // Constructors of Ide-1.0.Ide.CompletionResults
 
     constructor(config?: CompletionResults.ConstructorProperties) 
-    constructor(query: string | null) 
-    static new(query: string | null): CompletionResults
+    constructor(query: string) 
+    static new(query: string): CompletionResults
     _init(config?: CompletionResults.ConstructorProperties): void
 }
 
@@ -6346,33 +6346,33 @@ interface Configuration {
      */
     getAppId(): string | null
     getBuildCommands(): string[]
-    getConfigOpts(): string | null
+    getConfigOpts(): string
     getDebug(): boolean
     // Has conflict: getDevice(): Device | null
-    getDeviceId(): string | null
+    getDeviceId(): string
     getDirty(): boolean
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Gets the environment to use when spawning processes.
      * @returns An array of key=value environment variables.
      */
     getEnviron(): string[]
     getEnvironment(): Environment
-    getId(): string | null
-    getInternalBoolean(key: string | null): boolean
-    getInternalInt(key: string | null): number
-    getInternalInt64(key: string | null): number
+    getId(): string
+    getInternalBoolean(key: string): boolean
+    getInternalInt(key: string): number
+    getInternalInt64(key: string): number
     /**
      * Gets the value associated with `key` if it is a #GObject.
      * @param key The key to get
      * @returns A #GObject or %NULL.
      */
-    getInternalObject(key: string | null): GObject.Object | null
-    getInternalString(key: string | null): string | null
-    getInternalStrv(key: string | null): string[]
+    getInternalObject(key: string): GObject.Object | null
+    getInternalString(key: string): string
+    getInternalStrv(key: string): string[]
     getParallelism(): number
     getPostInstallCommands(): string[]
-    getPrefix(): string | null
+    getPrefix(): string
     /**
      * Determines if the configuration is ready for use. That means that the
      * build device can be accessed and the runtime is loaded. This may change
@@ -6381,7 +6381,7 @@ interface Configuration {
      */
     getReady(): boolean
     // Has conflict: getRuntime(): Runtime | null
-    getRuntimeId(): string | null
+    getRuntimeId(): string
     /**
      * This returns a sequence number for the configuration. This is useful
      * for build systems that want to clear the "dirty" bit on the configuration
@@ -6393,33 +6393,33 @@ interface Configuration {
      * @returns A monotonic sequence number.
      */
     getSequence(): number
-    getenv(key: string | null): string | null
-    setAppId(appId: string | null): void
-    setBuildCommands(buildCommands: string | null): void
-    setConfigOpts(configOpts: string | null): void
+    getenv(key: string): string
+    setAppId(appId: string): void
+    setBuildCommands(buildCommands: string): void
+    setConfigOpts(configOpts: string): void
     setDebug(debug: boolean): void
     // Has conflict: setDevice(device: Device): void
-    setDeviceId(deviceId: string | null): void
+    setDeviceId(deviceId: string): void
     setDirty(dirty: boolean): void
-    setDisplayName(displayName: string | null): void
+    setDisplayName(displayName: string): void
     setEnvironment(environment: Environment): void
-    setInternalBoolean(key: string | null, value: boolean): void
-    setInternalInt(key: string | null, value: number): void
-    setInternalInt64(key: string | null, value: number): void
+    setInternalBoolean(key: string, value: boolean): void
+    setInternalInt(key: string, value: number): void
+    setInternalInt64(key: string, value: number): void
     /**
      * Sets the value for `key` to `instance`.
      * @param key the key to set
      * @param instance A #GObject or %NULL
      */
-    setInternalObject(key: string | null, instance: GObject.Object | null): void
-    setInternalString(key: string | null, value: string | null): void
-    setInternalStrv(key: string | null, value: string | null): void
+    setInternalObject(key: string, instance: GObject.Object | null): void
+    setInternalString(key: string, value: string): void
+    setInternalStrv(key: string, value: string): void
     setParallelism(parallelism: number): void
-    setPostInstallCommands(postInstallCommands: string | null): void
-    setPrefix(prefix: string | null): void
+    setPostInstallCommands(postInstallCommands: string): void
+    setPrefix(prefix: string): void
     // Has conflict: setRuntime(runtime: Runtime): void
-    setRuntimeId(runtimeId: string | null): void
-    setenv(key: string | null, value: string | null): void
+    setRuntimeId(runtimeId: string): void
+    setenv(key: string, value: string): void
     /**
      * Makes a snapshot of the configuration that can be used by build processes
      * to build the project without synchronizing with other threads.
@@ -6565,8 +6565,8 @@ class Configuration extends Object {
     // Constructors of Ide-1.0.Ide.Configuration
 
     constructor(config?: Configuration.ConstructorProperties) 
-    constructor(context: Context, id: string | null, deviceId: string | null, runtimeId: string | null) 
-    static new(context: Context, id: string | null, deviceId: string | null, runtimeId: string | null): Configuration
+    constructor(context: Context, id: string, deviceId: string, runtimeId: string) 
+    static new(context: Context, id: string, deviceId: string, runtimeId: string): Configuration
     _init(config?: Configuration.ConstructorProperties): void
 }
 
@@ -6609,7 +6609,7 @@ interface ConfigurationManager extends Gio.AsyncInitable, Gio.ListModel {
      * @param id The string identifier of the configuration
      * @returns An #IdeConfiguration or %NULL if   the configuration could not be found.
      */
-    getConfiguration(id: string | null): Configuration | null
+    getConfiguration(id: string): Configuration | null
     /**
      * Gets the current configuration to use for building.
      * 
@@ -6789,7 +6789,7 @@ interface Context extends Gio.AsyncInitable {
      * that will contain builds made for various devices.
      * @returns A string containing the "root-build-dir" property.
      */
-    getRootBuildDir(): string | null
+    getRootBuildDir(): string
     /**
      * Gets the #IdeRunManager for the context. This manager object simplifies
      * the process of running an #IdeBuildTarget from the build system. Primarily,
@@ -6830,7 +6830,7 @@ interface Context extends Gio.AsyncInitable {
      * @param relativePath 
      * @returns An #IdeSettings.
      */
-    getSettings(schemaId: string | null, relativePath: string | null): Settings
+    getSettings(schemaId: string, relativePath: string): Settings
     /**
      * Gets the #IdeContext:snippets-manager property.
      * @returns An #IdeSourceSnippetsManager.
@@ -6882,7 +6882,7 @@ interface Context extends Gio.AsyncInitable {
      * tree.
      * @param rootBuildDir the path to the root build directory.
      */
-    setRootBuildDir(rootBuildDir: string | null): void
+    setRootBuildDir(rootBuildDir: string): void
     /**
      * This function attempts to unload various components in the #IdeContext. This
      * should be called before you dispose the context. Unsaved buffers will be
@@ -7102,11 +7102,11 @@ interface Device {
      * user friendly name as it is often a guid.
      * @returns A unique identifier for the device.
      */
-    getId(): string | null
-    // Has conflict: getSystemType(): string | null
+    getId(): string
+    // Has conflict: getSystemType(): string
     // Has conflict: prepareConfiguration(configuration: Configuration): void
-    setDisplayName(displayName: string | null): void
-    setId(id: string | null): void
+    setDisplayName(displayName: string): void
+    setId(id: string): void
 
     // Own virtual methods of Ide-1.0.Ide.Device
 
@@ -7119,7 +7119,7 @@ interface Device {
      * @virtual 
      * @returns A string containing the system type.
      */
-    getSystemType(): string | null
+    getSystemType(): string
     prepareConfiguration(configuration: Configuration): void
 
     // Class property signals of Ide-1.0.Ide.Device
@@ -7210,7 +7210,7 @@ interface DeviceManager extends Gio.ListModel {
      * @param deviceId The device identifier string.
      * @returns An #IdeDevice or %NULL.
      */
-    getDevice(deviceId: string | null): Device
+    getDevice(deviceId: string): Device
     /**
      * Retrieves all of the devices that are registered with the #IdeDeviceManager.
      * @returns An array of devices   registered with the #IdeManager.
@@ -7511,16 +7511,16 @@ interface Doap {
 
     // Owm methods of Ide-1.0.Ide.Doap
 
-    getBugDatabase(): string | null
-    getCategory(): string | null
-    getDescription(): string | null
-    getDownloadPage(): string | null
-    getHomepage(): string | null
+    getBugDatabase(): string
+    getCategory(): string
+    getDescription(): string
+    getDownloadPage(): string
+    getHomepage(): string
     getLanguages(): string[]
     getMaintainers(): DoapPerson[]
-    getName(): string | null
-    getShortdesc(): string | null
-    loadFromData(data: string | null, length: number): boolean
+    getName(): string
+    getShortdesc(): string
+    loadFromData(data: string, length: number): boolean
     loadFromFile(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of Ide-1.0.Ide.Doap
@@ -7616,10 +7616,10 @@ interface DoapPerson {
 
     // Owm methods of Ide-1.0.Ide.DoapPerson
 
-    getEmail(): string | null
-    getName(): string | null
-    setEmail(email: string | null): void
-    setName(name: string | null): void
+    getEmail(): string
+    getName(): string
+    setEmail(email: string): void
+    setName(name: string): void
 
     // Class property signals of Ide-1.0.Ide.DoapPerson
 
@@ -7738,7 +7738,7 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -7771,7 +7771,7 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -7784,7 +7784,7 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -7794,7 +7794,7 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -7807,7 +7807,7 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -7816,13 +7816,13 @@ interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.Do
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: Dazzle.DockItem): boolean
 
     // Overloads of getChildVisible
@@ -8268,13 +8268,13 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -8287,13 +8287,13 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -8306,7 +8306,7 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -8315,7 +8315,7 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -8327,7 +8327,7 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -8685,9 +8685,9 @@ interface Environment extends Gio.ListModel {
      * @returns A newly allocated string array.
      */
     getEnviron(): string[]
-    getenv(key: string | null): string | null
+    getenv(key: string): string
     remove(variable: EnvironmentVariable): void
-    setenv(key: string | null, value: string | null): void
+    setenv(key: string, value: string): void
 
     // Own signals of Ide-1.0.Ide.Environment
 
@@ -8750,10 +8750,10 @@ interface EnvironmentVariable {
 
     // Owm methods of Ide-1.0.Ide.EnvironmentVariable
 
-    getKey(): string | null
-    getValue(): string | null
-    setKey(key: string | null): void
-    setValue(value: string | null): void
+    getKey(): string
+    getValue(): string
+    setKey(key: string): void
+    setValue(value: string): void
 
     // Class property signals of Ide-1.0.Ide.EnvironmentVariable
 
@@ -8789,8 +8789,8 @@ class EnvironmentVariable extends GObject.Object {
     // Constructors of Ide-1.0.Ide.EnvironmentVariable
 
     constructor(config?: EnvironmentVariable.ConstructorProperties) 
-    constructor(key: string | null, value: string | null) 
-    static new(key: string | null, value: string | null): EnvironmentVariable
+    constructor(key: string, value: string) 
+    static new(key: string, value: string): EnvironmentVariable
     _init(config?: EnvironmentVariable.ConstructorProperties): void
 }
 
@@ -8834,10 +8834,10 @@ interface ExtensionAdapter {
      */
     getExtension(): GObject.Object
     getInterfaceType(): GObject.GType
-    getKey(): string | null
-    getValue(): string | null
-    setKey(key: string | null): void
-    setValue(value: string | null): void
+    getKey(): string
+    getValue(): string
+    setKey(key: string): void
+    setValue(value: string): void
 
     // Class property signals of Ide-1.0.Ide.ExtensionAdapter
 
@@ -8914,7 +8914,7 @@ class ExtensionAdapter extends Object {
      * @param value The value to use when matching keys.
      * @returns A newly created #IdeExtensionAdapter.
      */
-    constructor(context: Context, engine: Peas.Engine | null, interfaceType: GObject.GType, key: string | null, value: string | null) 
+    constructor(context: Context, engine: Peas.Engine | null, interfaceType: GObject.GType, key: string, value: string | null) 
     /**
      * Creates a new #IdeExtensionAdapter.
      * 
@@ -8936,7 +8936,7 @@ class ExtensionAdapter extends Object {
      * @param value The value to use when matching keys.
      * @returns A newly created #IdeExtensionAdapter.
      */
-    static new(context: Context, engine: Peas.Engine | null, interfaceType: GObject.GType, key: string | null, value: string | null): ExtensionAdapter
+    static new(context: Context, engine: Peas.Engine | null, interfaceType: GObject.GType, key: string, value: string | null): ExtensionAdapter
     _init(config?: ExtensionAdapter.ConstructorProperties): void
 }
 
@@ -8996,11 +8996,11 @@ interface ExtensionSetAdapter {
      */
     getEngine(): Peas.Engine
     getInterfaceType(): GObject.GType
-    getKey(): string | null
+    getKey(): string
     getNExtensions(): number
-    getValue(): string | null
-    setKey(key: string | null): void
-    setValue(value: string | null): void
+    getValue(): string
+    setKey(key: string): void
+    setValue(value: string): void
 
     // Own signals of Ide-1.0.Ide.ExtensionSetAdapter
 
@@ -9064,8 +9064,8 @@ class ExtensionSetAdapter extends Object {
     // Constructors of Ide-1.0.Ide.ExtensionSetAdapter
 
     constructor(config?: ExtensionSetAdapter.ConstructorProperties) 
-    constructor(context: Context, engine: Peas.Engine, interfaceType: GObject.GType, key: string | null, value: string | null) 
-    static new(context: Context, engine: Peas.Engine, interfaceType: GObject.GType, key: string | null, value: string | null): ExtensionSetAdapter
+    constructor(context: Context, engine: Peas.Engine, interfaceType: GObject.GType, key: string, value: string) 
+    static new(context: Context, engine: Peas.Engine, interfaceType: GObject.GType, key: string, value: string): ExtensionSetAdapter
     _init(config?: ExtensionSetAdapter.ConstructorProperties): void
 }
 
@@ -9122,8 +9122,8 @@ interface File {
      * @returns A #GtkSourceLanguage or %NULL.
      */
     getLanguage(): GtkSource.Language | null
-    getLanguageId(): string | null
-    getPath(): string | null
+    getLanguageId(): string
+    getPath(): string
     /**
      * Gets the #IdeFile:temporary-id property for the file.
      * 
@@ -9209,7 +9209,7 @@ class File extends Object {
      * @returns An #IdeFile.
      */
     static new(context: Context | null, file: Gio.File): File
-    static newForPath(context: Context, path: string | null): File
+    static newForPath(context: Context, path: string): File
     _init(config?: File.ConstructorProperties): void
 }
 
@@ -9559,7 +9559,7 @@ interface HighlightEngine {
      * @param styleName the name of the style to retrieve
      * @returns A #GtkTextTag.
      */
-    getStyle(styleName: string | null): Gtk.TextTag
+    getStyle(styleName: string): Gtk.TextTag
     /**
      * This function will extend the invalidated range of the buffer to include
      * the range of `begin` to `end`.
@@ -9670,7 +9670,7 @@ interface LangservClient {
 
     // Owm methods of Ide-1.0.Ide.LangservClient
 
-    addLanguage(languageId: string | null): void
+    addLanguage(languageId: string): void
     /**
      * Asynchronously queries the Language Server using the JSON-RPC protocol.
      * @param method the method to call
@@ -9678,7 +9678,7 @@ interface LangservClient {
      * @param cancellable A cancellable or %NULL
      * @param callback the callback to receive the result, or %NULL
      */
-    callAsync(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAsync(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callFinish(result: Gio.AsyncResult, returnValue: GLib.Variant): boolean
     getDiagnosticsAsync(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
@@ -9694,16 +9694,16 @@ interface LangservClient {
      * @param cancellable A cancellable or %NULL
      * @param notificationback the notificationback to receive the result, or %NULL
      */
-    sendNotificationAsync(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback: Gio.AsyncReadyCallback | null): void
+    sendNotificationAsync(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback: Gio.AsyncReadyCallback | null): void
     sendNotificationFinish(result: Gio.AsyncResult): boolean
     start(): void
     stop(): void
 
     // Own virtual methods of Ide-1.0.Ide.LangservClient
 
-    notification(method: string | null, params: GLib.Variant): void
+    notification(method: string, params: GLib.Variant): void
     publishedDiagnostics(file: Gio.File, diagnostics: Diagnostics): void
-    supportsLanguage(languageId: string | null): boolean
+    supportsLanguage(languageId: string): boolean
 
     // Own signals of Ide-1.0.Ide.LangservClient
 
@@ -10137,7 +10137,7 @@ interface LangservSymbolNode {
 
     // Owm methods of Ide-1.0.Ide.LangservSymbolNode
 
-    getParentName(): string | null
+    getParentName(): string
     isParentOf(other: LangservSymbolNode): boolean
 
     // Class property signals of Ide-1.0.Ide.LangservSymbolNode
@@ -10189,8 +10189,8 @@ class LangservSymbolNode extends SymbolNode {
     // Constructors of Ide-1.0.Ide.LangservSymbolNode
 
     constructor(config?: LangservSymbolNode.ConstructorProperties) 
-    constructor(file: Gio.File, name: string | null, parentName: string | null, kind: number, beginLine: number, beginColumn: number, endLine: number, endColumn: number) 
-    static new(file: Gio.File, name: string | null, parentName: string | null, kind: number, beginLine: number, beginColumn: number, endLine: number, endColumn: number): LangservSymbolNode
+    constructor(file: Gio.File, name: string, parentName: string, kind: number, beginLine: number, beginColumn: number, endLine: number, endColumn: number) 
+    static new(file: Gio.File, name: string, parentName: string, kind: number, beginLine: number, beginColumn: number, endLine: number, endColumn: number): LangservSymbolNode
     _init(config?: LangservSymbolNode.ConstructorProperties): void
 }
 
@@ -10357,7 +10357,7 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -10390,7 +10390,7 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -10403,7 +10403,7 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -10413,7 +10413,7 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -10426,7 +10426,7 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -10435,13 +10435,13 @@ interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockItem, Gtk
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: Dazzle.DockItem): boolean
 
     // Overloads of getChildVisible
@@ -10857,13 +10857,13 @@ interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -10876,13 +10876,13 @@ interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -10895,7 +10895,7 @@ interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -10904,7 +10904,7 @@ interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10916,7 +10916,7 @@ interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -11324,7 +11324,7 @@ interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildabl
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -11345,7 +11345,7 @@ interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildabl
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11358,7 +11358,7 @@ interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -11368,7 +11368,7 @@ interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11381,7 +11381,7 @@ interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildabl
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11390,13 +11390,13 @@ interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.Buildabl
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Ide-1.0.Ide.LayoutPane
 
@@ -11743,13 +11743,13 @@ interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11762,13 +11762,13 @@ interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11781,7 +11781,7 @@ interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11790,7 +11790,7 @@ interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -11802,7 +11802,7 @@ interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -12136,13 +12136,13 @@ interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -12155,13 +12155,13 @@ interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -12174,7 +12174,7 @@ interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -12183,7 +12183,7 @@ interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -12195,7 +12195,7 @@ interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -12743,13 +12743,13 @@ interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -12762,13 +12762,13 @@ interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -12781,7 +12781,7 @@ interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -12790,7 +12790,7 @@ interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -12802,7 +12802,7 @@ interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -13157,13 +13157,13 @@ interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -13176,13 +13176,13 @@ interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -13195,7 +13195,7 @@ interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -13204,7 +13204,7 @@ interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -13216,7 +13216,7 @@ interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -13579,13 +13579,13 @@ interface OmniSearchEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -13598,13 +13598,13 @@ interface OmniSearchEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -13617,7 +13617,7 @@ interface OmniSearchEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -13626,7 +13626,7 @@ interface OmniSearchEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -14256,13 +14256,13 @@ interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -14275,13 +14275,13 @@ interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -14294,7 +14294,7 @@ interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -14303,7 +14303,7 @@ interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -14315,7 +14315,7 @@ interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -14661,13 +14661,13 @@ interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -14680,13 +14680,13 @@ interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -14699,7 +14699,7 @@ interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -14708,7 +14708,7 @@ interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -14740,7 +14740,7 @@ interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -15105,8 +15105,8 @@ class PkconTransfer extends Transfer {
     // Constructors of Ide-1.0.Ide.PkconTransfer
 
     constructor(config?: PkconTransfer.ConstructorProperties) 
-    constructor(packages: string | null) 
-    static new(packages: string | null): PkconTransfer
+    constructor(packages: string) 
+    static new(packages: string): PkconTransfer
     _init(config?: PkconTransfer.ConstructorProperties): void
 }
 
@@ -15140,13 +15140,13 @@ interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Preference
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -15159,13 +15159,13 @@ interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Preference
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -15178,7 +15178,7 @@ interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Preference
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -15187,7 +15187,7 @@ interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Preference
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -15199,7 +15199,7 @@ interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Preference
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -15503,7 +15503,7 @@ interface Progress {
     getFraction(): number
     getMessage(): string | null
     setFraction(fraction: number): void
-    setMessage(message: string | null): void
+    setMessage(message: string): void
 
     // Class property signals of Ide-1.0.Ide.Progress
 
@@ -15558,7 +15558,7 @@ class Progress extends GObject.Object {
      * @param userData 
      */
     static fileProgressCallback(currentNumBytes: number, totalNumBytes: number, userData: any | null): void
-    static flatpakProgressCallback(status: string | null, progress: number, estimating: boolean, userData: any | null): void
+    static flatpakProgressCallback(status: string, progress: number, estimating: boolean, userData: any | null): void
 }
 
 module Project {
@@ -15613,15 +15613,15 @@ interface Project {
      * @param path A relative path from the project root.
      * @returns An #IdeFile or %NULL if no matching   file could be found.
      */
-    getFileForPath(path: string | null): File | null
+    getFileForPath(path: string): File | null
     /**
      * Gets the #IdeProjectFiles instance within the project tree.
      * If it has not yet been loaded, %NULL is returned.
      * @returns An #IdeProjectFiles or %NULL.
      */
     getFiles(): ProjectFiles | null
-    getId(): string | null
-    getName(): string | null
+    getId(): string
+    getName(): string
     /**
      * Gets a new #IdeFile representing `gfile`.
      * @param gfile A #GFile.
@@ -15744,9 +15744,9 @@ interface ProjectEdit {
      * @returns An #IdeSourceRange
      */
     getRange(): SourceRange | null
-    getReplacement(): string | null
+    getReplacement(): string
     setRange(range: SourceRange): void
-    setReplacement(replacement: string | null): void
+    setReplacement(replacement: string): void
 
     // Class property signals of Ide-1.0.Ide.ProjectEdit
 
@@ -15831,8 +15831,8 @@ interface ProjectFile {
      */
     getFileInfo(): Gio.FileInfo
     getIsDirectory(): boolean
-    getName(): string | null
-    getPath(): string | null
+    getName(): string
+    getPath(): string
 
     // Class property signals of Ide-1.0.Ide.ProjectFile
 
@@ -15931,7 +15931,7 @@ interface ProjectFiles {
      * @param path 
      * @returns An #IdeFile or %NULL.
      */
-    getFileForPath(path: string | null): File | null
+    getFileForPath(path: string): File | null
 
     // Class property signals of Ide-1.0.Ide.ProjectFiles
 
@@ -16011,8 +16011,8 @@ interface ProjectInfo {
     // Owm methods of Ide-1.0.Ide.ProjectInfo
 
     compare(info2: ProjectInfo): number
-    getBuildSystemName(): string | null
-    getDescription(): string | null
+    getBuildSystemName(): string
+    getDescription(): string
     /**
      * Gets the #IdeProjectInfo:directory property.
      * This is the directory containing the project (if known).
@@ -16029,15 +16029,15 @@ interface ProjectInfo {
     getIsRecent(): boolean
     getLanguages(): string[]
     getLastModifiedAt(): GLib.DateTime | null
-    getName(): string | null
+    getName(): string
     getPriority(): number
-    setBuildSystemName(buildSystemName: string | null): void
-    setDescription(description: string | null): void
+    setBuildSystemName(buildSystemName: string): void
+    setDescription(description: string): void
     setDirectory(directory: Gio.File): void
     setFile(file: Gio.File): void
     setIsRecent(isRecent: boolean): void
     setLanguages(languages: string | null): void
-    setName(name: string | null): void
+    setName(name: string): void
     setPriority(priority: number): void
 
     // Class property signals of Ide-1.0.Ide.ProjectInfo
@@ -16285,13 +16285,13 @@ interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -16304,13 +16304,13 @@ interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -16323,7 +16323,7 @@ interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -16332,7 +16332,7 @@ interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -16344,7 +16344,7 @@ interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -16684,7 +16684,7 @@ interface RunManager extends Gio.ActionGroup, Gio.Initable {
 
     // Owm methods of Ide-1.0.Ide.RunManager
 
-    addHandler(id: string | null, title: string | null, iconName: string | null, accel: string | null, runHandler: RunHandler): void
+    addHandler(id: string, title: string, iconName: string, accel: string, runHandler: RunHandler): void
     cancel(): void
     discoverDefaultTargetAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     discoverDefaultTargetFinish(result: Gio.AsyncResult): BuildTarget
@@ -16696,12 +16696,12 @@ interface RunManager extends Gio.ActionGroup, Gio.Initable {
      */
     getBuildTarget(): BuildTarget
     getBusy(): boolean
-    getHandler(): string | null
-    removeHandler(id: string | null): void
+    getHandler(): string
+    removeHandler(id: string): void
     runAsync(buildTarget: BuildTarget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     runFinish(result: Gio.AsyncResult): boolean
     setBuildTarget(buildTarget: BuildTarget): void
-    setHandler(id: string | null): void
+    setHandler(id: string): void
 
     // Own signals of Ide-1.0.Ide.RunManager
 
@@ -16833,7 +16833,7 @@ interface Runner {
 
     // Owm methods of Ide-1.0.Ide.Runner
 
-    appendArgv(param: string | null): void
+    appendArgv(param: string): void
     // Has conflict: forceQuit(): void
     /**
      * Gets the argument list as a newly allocated string array.
@@ -16849,10 +16849,10 @@ interface Runner {
     // Has conflict: getStderr(): Gio.InputStream | null
     // Has conflict: getStdin(): Gio.OutputStream | null
     // Has conflict: getStdout(): Gio.InputStream | null
-    prependArgv(param: string | null): void
+    prependArgv(param: string): void
     // Has conflict: runAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: runFinish(result: Gio.AsyncResult): boolean
-    setArgv(argv: string | null): void
+    setArgv(argv: string): void
     setClearEnv(clearEnv: boolean): void
     setFailed(failed: boolean): void
     setFlags(flags: Gio.SubprocessFlags): void
@@ -16988,19 +16988,19 @@ interface Runtime {
 
     // Owm methods of Ide-1.0.Ide.Runtime
 
-    // Has conflict: containsProgramInPath(program: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: containsProgramInPath(program: string, cancellable: Gio.Cancellable | null): boolean
     // Has conflict: createLauncher(): SubprocessLauncher
     // Has conflict: createRunner(buildTarget: BuildTarget): Runner | null
-    getDisplayName(): string | null
-    getId(): string | null
+    getDisplayName(): string
+    getId(): string
     // Has conflict: prepareConfiguration(configuration: Configuration): void
-    setDisplayName(displayName: string | null): void
-    setId(id: string | null): void
+    setDisplayName(displayName: string): void
+    setId(id: string): void
     // Has conflict: translateFile(file: Gio.File): Gio.File
 
     // Own virtual methods of Ide-1.0.Ide.Runtime
 
-    containsProgramInPath(program: string | null, cancellable: Gio.Cancellable | null): boolean
+    containsProgramInPath(program: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Creates a launcher for the runtime.
      * 
@@ -17070,8 +17070,8 @@ class Runtime extends Object {
     // Constructors of Ide-1.0.Ide.Runtime
 
     constructor(config?: Runtime.ConstructorProperties) 
-    constructor(context: Context, id: string | null, title: string | null) 
-    static new(context: Context, id: string | null, title: string | null): Runtime
+    constructor(context: Context, id: string, title: string) 
+    static new(context: Context, id: string, title: string): Runtime
     _init(config?: Runtime.ConstructorProperties): void
 }
 
@@ -17106,14 +17106,14 @@ interface RuntimeManager extends Gio.Initable, Gio.ListModel {
      * @param cancellable A #GCancellable or %NULL
      * @param callback a callback to call after execution
      */
-    ensureAsync(runtimeId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    ensureAsync(runtimeId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     ensureFinish(result: Gio.AsyncResult): Runtime
     /**
      * Gets the runtime by its internal identifier.
      * @param id the identifier of the runtime
      * @returns An #IdeRuntime.
      */
-    getRuntime(id: string | null): Runtime
+    getRuntime(id: string): Runtime
     remove(runtime: Runtime): void
 
     // Class property signals of Ide-1.0.Ide.RuntimeManager
@@ -17198,7 +17198,7 @@ interface SearchContext {
 
     addResult(provider: SearchProvider, result: SearchResult): void
     cancel(): void
-    execute(searchTerms: string | null, maxResults: number): void
+    execute(searchTerms: string, maxResults: number): void
     getMaxResults(): number
     /**
      * Retrieve the list of providers for the search context.
@@ -17288,7 +17288,7 @@ interface SearchEngine {
      * @param searchTerms The search terms.
      * @returns An #IdeSearchContext or %NULL if no   providers could be loaded.
      */
-    search(searchTerms: string | null): SearchContext | null
+    search(searchTerms: string): SearchContext | null
 
     // Class property signals of Ide-1.0.Ide.SearchEngine
 
@@ -17362,8 +17362,8 @@ interface SearchResult {
      */
     getProvider(): SearchProvider
     getScore(): number
-    getSubtitle(): string | null
-    getTitle(): string | null
+    getSubtitle(): string
+    getTitle(): string
 
     // Own virtual methods of Ide-1.0.Ide.SearchResult
 
@@ -17418,8 +17418,8 @@ class SearchResult extends Object {
     // Constructors of Ide-1.0.Ide.SearchResult
 
     constructor(config?: SearchResult.ConstructorProperties) 
-    constructor(provider: SearchProvider, title: string | null, subtitle: string | null, score: number) 
-    static new(provider: SearchProvider, title: string | null, subtitle: string | null, score: number): SearchResult
+    constructor(provider: SearchProvider, title: string, subtitle: string, score: number) 
+    static new(provider: SearchProvider, title: string, subtitle: string, score: number): SearchResult
     _init(config?: SearchResult.ConstructorProperties): void
 }
 
@@ -17459,7 +17459,7 @@ interface Settings {
 
     // Owm methods of Ide-1.0.Ide.Settings
 
-    bind(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags): void
+    bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void
     /**
      * Like ide_settings_bind() but allows transforming to and from settings storage using
      * `get_mapping` and `set_mapping` transformation functions.
@@ -17472,25 +17472,25 @@ interface Settings {
      * @param getMapping variant to value mapping
      * @param setMapping value to variant mapping
      */
-    bindWithMapping(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags, getMapping: Gio.SettingsBindGetMapping | null, setMapping: Gio.SettingsBindSetMapping | null): void
-    getBoolean(key: string | null): boolean
-    getDefaultValue(key: string | null): GLib.Variant
-    getDouble(key: string | null): number
+    bindWithMapping(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags, getMapping: Gio.SettingsBindGetMapping | null, setMapping: Gio.SettingsBindSetMapping | null): void
+    getBoolean(key: string): boolean
+    getDefaultValue(key: string): GLib.Variant
+    getDouble(key: string): number
     getIgnoreProjectSettings(): boolean
-    getInt(key: string | null): number
-    getRelativePath(): string | null
-    getSchemaId(): string | null
-    getString(key: string | null): string | null
-    getUint(key: string | null): number
-    getUserValue(key: string | null): GLib.Variant
-    getValue(key: string | null): GLib.Variant
-    setBoolean(key: string | null, val: boolean): void
-    setDouble(key: string | null, val: number): void
-    setInt(key: string | null, val: number): void
-    setString(key: string | null, val: string | null): void
-    setUint(key: string | null, val: number): void
-    setValue(key: string | null, value: GLib.Variant): void
-    unbind(property: string | null): void
+    getInt(key: string): number
+    getRelativePath(): string
+    getSchemaId(): string
+    getString(key: string): string | null
+    getUint(key: string): number
+    getUserValue(key: string): GLib.Variant
+    getValue(key: string): GLib.Variant
+    setBoolean(key: string, val: boolean): void
+    setDouble(key: string, val: number): void
+    setInt(key: string, val: number): void
+    setString(key: string, val: string): void
+    setUint(key: string, val: number): void
+    setValue(key: string, value: GLib.Variant): void
+    unbind(property: string): void
 
     // Own signals of Ide-1.0.Ide.Settings
 
@@ -17605,13 +17605,13 @@ interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -17624,13 +17624,13 @@ interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -17643,7 +17643,7 @@ interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -17652,7 +17652,7 @@ interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the #GdkWindow corresponding to an area of the text view;
      * possible windows include the overall widget window, child windows
@@ -17688,7 +17688,7 @@ interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -18222,19 +18222,19 @@ interface SourceSnippet {
     copy(): SourceSnippet
     getChunkRange(chunk: SourceSnippetChunk, begin: Gtk.TextIter, end: Gtk.TextIter): void
     getContext(): SourceSnippetContext
-    getDescription(): string | null
-    getLanguage(): string | null
+    getDescription(): string
+    getLanguage(): string
     getMarkBegin(): Gtk.TextMark
     getMarkEnd(): Gtk.TextMark
     getNChunks(): number
     getNthChunk(n: number): SourceSnippetChunk
-    getSnippetText(): string | null
+    getSnippetText(): string
     getTabStop(): number
-    getTrigger(): string | null
-    setDescription(description: string | null): void
-    setLanguage(language: string | null): void
-    setSnippetText(snippetText: string | null): void
-    setTrigger(trigger: string | null): void
+    getTrigger(): string
+    setDescription(description: string): void
+    setLanguage(language: string): void
+    setSnippetText(snippetText: string): void
+    setTrigger(trigger: string): void
 
     // Class property signals of Ide-1.0.Ide.SourceSnippet
 
@@ -18300,8 +18300,8 @@ class SourceSnippet extends GObject.Object {
     // Constructors of Ide-1.0.Ide.SourceSnippet
 
     constructor(config?: SourceSnippet.ConstructorProperties) 
-    constructor(trigger: string | null, language: string | null) 
-    static new(trigger: string | null, language: string | null): SourceSnippet
+    constructor(trigger: string, language: string) 
+    static new(trigger: string, language: string): SourceSnippet
     _init(config?: SourceSnippet.ConstructorProperties): void
 }
 
@@ -18345,14 +18345,14 @@ interface SourceSnippetChunk {
      * @returns An #IdeSourceSnippetContext.
      */
     getContext(): SourceSnippetContext
-    getSpec(): string | null
+    getSpec(): string
     getTabStop(): number
-    getText(): string | null
+    getText(): string
     getTextSet(): boolean
     setContext(context: SourceSnippetContext): void
-    setSpec(spec: string | null): void
+    setSpec(spec: string): void
     setTabStop(tabStop: number): void
-    setText(text: string | null): void
+    setText(text: string): void
     setTextSet(textSet: boolean): void
 
     // Class property signals of Ide-1.0.Ide.SourceSnippetChunk
@@ -18436,14 +18436,14 @@ interface SourceSnippetContext {
 
     // Owm methods of Ide-1.0.Ide.SourceSnippetContext
 
-    addSharedVariable(key: string | null, value: string | null): void
-    addVariable(key: string | null, value: string | null): void
+    addSharedVariable(key: string, value: string): void
+    addVariable(key: string, value: string): void
     clearVariables(): void
     dump(): void
     emitChanged(): void
-    expand(input: string | null): string | null
-    getVariable(key: string | null): string | null
-    setLinePrefix(linePrefix: string | null): void
+    expand(input: string): string | null
+    getVariable(key: string): string
+    setLinePrefix(linePrefix: string): void
     setTabWidth(tabSize: number): void
     setUseSpaces(useSpaces: boolean): void
 
@@ -18514,7 +18514,7 @@ interface SourceSnippets {
     add(snippet: SourceSnippet): void
     clear(): void
     count(): number
-    foreach(prefix: string | null, foreachFunc: GLib.Func): void
+    foreach(prefix: string, foreachFunc: GLib.Func): void
     merge(other: SourceSnippets): void
 
     // Class property signals of Ide-1.0.Ide.SourceSnippets
@@ -18574,7 +18574,7 @@ interface SourceSnippetsManager {
      * @param languageId 
      * @returns An #IdeSourceSnippets or %NULL.
      */
-    getForLanguageId(languageId: string | null): SourceSnippets | null
+    getForLanguageId(languageId: string): SourceSnippets | null
     loadAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     loadFinish(result: Gio.AsyncResult): boolean
 
@@ -19087,8 +19087,8 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
     getHighlightCurrentLine(): boolean
     getInsertMatchingBrace(): boolean
     getIterAtVisualColumn(column: number, location: Gtk.TextIter): void
-    getModeDisplayName(): string | null
-    getModeName(): string | null
+    getModeDisplayName(): string
+    getModeName(): string
     getOverwrite(): boolean
     getOverwriteBraces(): boolean
     getRubberbandSearch(): boolean
@@ -19217,7 +19217,7 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
     setCount(count: number): void
     setEnableWordCompletion(enableWordCopletion: boolean): void
     setFontDesc(fontDesc: Pango.FontDescription): void
-    setFontName(fontName: string | null): void
+    setFontName(fontName: string): void
     setHighlightCurrentLine(highlightCurrentLine: boolean): void
     setInsertMatchingBrace(insertMatchingBrace: boolean): void
     setMisspelledWord(start: Gtk.TextIter, end: Gtk.TextIter): void
@@ -19264,13 +19264,13 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -19283,13 +19283,13 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -19302,7 +19302,7 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -19311,7 +19311,7 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the #GdkWindow corresponding to an area of the text view;
      * possible windows include the overall widget window, child windows
@@ -19347,7 +19347,7 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -19398,7 +19398,7 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
     hideCompletion(): void
     increaseFontSize(): void
     indentSelection(level: number): void
-    insertAtCursorAndIndent(str: string | null): void
+    insertAtCursorAndIndent(str: string): void
     insertModifier(useCount: boolean): void
     jump(location: Gtk.TextIter): void
     moveError(dir: Gtk.DirectionType): void
@@ -19416,10 +19416,10 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
     saveCommand(): void
     saveInsertMark(): void
     saveSearchChar(): void
-    selectInner(innerLeft: string | null, innerRight: string | null, exclusive: boolean, stringMode: boolean): void
+    selectInner(innerLeft: string, innerRight: string, exclusive: boolean, stringMode: boolean): void
     selectTag(exclusive: boolean): void
     selectionTheatric(theatric: SourceViewTheatric): void
-    setMode(mode: string | null, type: SourceViewModeType): void
+    setMode(mode: string, type: SourceViewModeType): void
     setOverwrite(overwrite: boolean): void
 
     // Overloads of setOverwrite
@@ -19429,7 +19429,7 @@ interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @param overwrite %TRUE to turn on overwrite mode, %FALSE to turn it off
      */
     setOverwrite(overwrite: boolean): void
-    setSearchText(searchText: string | null, fromSelection: boolean): void
+    setSearchText(searchText: string, fromSelection: boolean): void
     sort(ignoreCase: boolean, reverse: boolean): void
     swapSelectionBounds(): void
 
@@ -20781,11 +20781,11 @@ interface SourceViewMode extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Ide-1.0.Ide.SourceViewMode
 
     getBlockCursor(): boolean
-    getDefaultMode(): string | null
-    getDisplayName(): string | null
+    getDefaultMode(): string
+    getDisplayName(): string
     getKeepMarkOnChar(): boolean
     getModeType(): SourceViewModeType
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -20794,7 +20794,7 @@ interface SourceViewMode extends Atk.ImplementorIface, Gtk.Buildable {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -20804,7 +20804,7 @@ interface SourceViewMode extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     getRepeatInsertWithCount(): boolean
     getSuppressUnbound(): boolean
     setHasIndenter(hasIndenter: boolean): void
@@ -20823,7 +20823,7 @@ interface SourceViewMode extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -20832,13 +20832,13 @@ interface SourceViewMode extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own signals of Ide-1.0.Ide.SourceViewMode
 
@@ -21456,7 +21456,7 @@ interface SubprocessLauncher {
 
     getArgv(): string[]
     getClearEnv(): boolean
-    getCwd(): string | null
+    getCwd(): string
     getEnviron(): string[]
     getFlags(): Gio.SubprocessFlags
     /**
@@ -21469,8 +21469,8 @@ interface SubprocessLauncher {
      * @returns %TRUE if the process should be executed outside the containment zone.
      */
     getRunOnHost(): boolean
-    getenv(key: string | null): string | null
-    insertArgv(index: number, arg: string | null): void
+    getenv(key: string): string
+    insertArgv(index: number, arg: string): void
     overlayEnvironment(environment: Environment): void
     popArgv(): string | null
     /**
@@ -21481,11 +21481,11 @@ interface SubprocessLauncher {
      * @param args the arguments
      */
     pushArgs(args: string[] | null): void
-    pushArgv(argv: string | null): void
-    replaceArgv(index: number, arg: string | null): void
+    pushArgv(argv: string): void
+    replaceArgv(index: number, arg: string): void
     setClearEnv(clearEnv: boolean): void
-    setCwd(cwd: string | null): void
-    setEnviron(environ: string | null): void
+    setCwd(cwd: string): void
+    setEnviron(environ: string): void
     setFlags(flags: Gio.SubprocessFlags): void
     /**
      * Sets the #IdeSubprocessLauncher:run-on-host property. See
@@ -21493,8 +21493,8 @@ interface SubprocessLauncher {
      * @param runOnHost 
      */
     setRunOnHost(runOnHost: boolean): void
-    setStdoutFilePath(stdoutFilePath: string | null): void
-    setenv(key: string | null, value: string | null, replace: boolean): void
+    setStdoutFilePath(stdoutFilePath: string): void
+    setenv(key: string, value: string, replace: boolean): void
     // Has conflict: spawn(cancellable: Gio.Cancellable | null): Subprocess
     takeFd(sourceFd: number, destFd: number): void
     takeStderrFd(stderrFd: number): void
@@ -21710,7 +21710,7 @@ interface SymbolNode {
     getKind(): SymbolKind
     // Has conflict: getLocationAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: getLocationFinish(result: Gio.AsyncResult): SourceLocation | null
-    getName(): string | null
+    getName(): string
     getUseMarkup(): boolean
 
     // Own virtual methods of Ide-1.0.Ide.SymbolNode
@@ -21814,8 +21814,8 @@ interface TemplateBase {
 
     // Owm methods of Ide-1.0.Ide.TemplateBase
 
-    addPath(path: string | null, destination: Gio.File, scope: Template.Scope, mode: number): void
-    addResource(resourcePath: string | null, destination: Gio.File, scope: Template.Scope, mode: number): void
+    addPath(path: string, destination: Gio.File, scope: Template.Scope, mode: number): void
+    addResource(resourcePath: string, destination: Gio.File, scope: Template.Scope, mode: number): void
     expandAllAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     expandAllFinish(result: Gio.AsyncResult): boolean
     /**
@@ -21897,14 +21897,14 @@ interface Transfer {
     // Has conflict: executeFinish(result: Gio.AsyncResult): boolean
     getActive(): boolean
     getCompleted(): boolean
-    getIconName(): string | null
+    getIconName(): string
     getProgress(): number
-    getStatus(): string | null
-    getTitle(): string | null
-    setIconName(iconName: string | null): void
+    getStatus(): string
+    getTitle(): string
+    setIconName(iconName: string): void
     setProgress(progress: number): void
-    setStatus(status: string | null): void
-    setTitle(title: string | null): void
+    setStatus(status: string): void
+    setTitle(title: string): void
 
     // Own virtual methods of Ide-1.0.Ide.Transfer
 
@@ -22038,7 +22038,7 @@ interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -22059,7 +22059,7 @@ interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -22072,7 +22072,7 @@ interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -22082,7 +22082,7 @@ interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -22095,7 +22095,7 @@ interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -22104,13 +22104,13 @@ interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Ide-1.0.Ide.TransferButton
 
@@ -22618,13 +22618,13 @@ interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -22637,13 +22637,13 @@ interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -22656,7 +22656,7 @@ interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -22665,7 +22665,7 @@ interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -22697,7 +22697,7 @@ interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -23050,7 +23050,7 @@ interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Acti
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -23091,7 +23091,7 @@ interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Acti
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -23104,7 +23104,7 @@ interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Acti
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -23114,7 +23114,7 @@ interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Acti
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the direction in which the popup will be popped up, as
      * well as changing the arrow’s direction. The child will not
@@ -23175,7 +23175,7 @@ interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Acti
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -23184,13 +23184,13 @@ interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Acti
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Ide-1.0.Ide.TransfersButton
 
@@ -23577,13 +23577,13 @@ interface TransfersProgressIcon extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -23596,13 +23596,13 @@ interface TransfersProgressIcon extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -23615,7 +23615,7 @@ interface TransfersProgressIcon extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -23624,7 +23624,7 @@ interface TransfersProgressIcon extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Ide-1.0.Ide.TransfersProgressIcon
 
@@ -24062,13 +24062,13 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @param name 
      * @returns An #IdePerspective or %NULL.
      */
-    getPerspectiveByName(name: string | null): Perspective | null
+    getPerspectiveByName(name: string): Perspective | null
     /**
      * Gets the current perspective.
      * @returns An #IdePerspective.
      */
     getVisiblePerspective(): Perspective
-    getVisiblePerspectiveName(): string | null
+    getVisiblePerspectiveName(): string
     /**
      * Starts the process of loading the buffers for the given `files,` possibly
      * creating an #IdeEditorView for each depending on `flags`.
@@ -24079,20 +24079,20 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @param cancellable A #GCancellable.
      * @param callback A #GASyncReadyCallback.
      */
-    openFilesAsync(files: Gio.File, nFiles: number, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openFilesAsync(files: Gio.File, nFiles: number, hint: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     openFilesFinish(result: Gio.AsyncResult): boolean
     openProjectAsync(fileOrDirectory: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     openProjectFinish(result: Gio.AsyncResult): boolean
-    openUriAsync(uri: Uri, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openUriAsync(uri: Uri, hint: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     openUriFinish(result: Gio.AsyncResult): boolean
-    popMessage(messageId: string | null): boolean
+    popMessage(messageId: string): boolean
     pushMessage(message: WorkbenchMessage): void
     removePerspective(perspective: Perspective): void
     saveAllAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     saveAllFinish(result: Gio.AsyncResult): boolean
     setFullscreen(fullscreen: boolean): void
     setVisiblePerspective(perspective: Perspective): void
-    setVisiblePerspectiveName(name: string | null): void
+    setVisiblePerspectiveName(name: string): void
     /**
      * Executes `callback` for every #IdeLayoutView across all perspectives.
      * @param callback The callback to execute
@@ -24110,13 +24110,13 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -24129,13 +24129,13 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -24148,7 +24148,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -24157,7 +24157,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -24193,7 +24193,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -24708,13 +24708,13 @@ interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -24727,13 +24727,13 @@ interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -24746,7 +24746,7 @@ interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -24755,7 +24755,7 @@ interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -24767,7 +24767,7 @@ interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -25105,13 +25105,13 @@ interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
 
     // Owm methods of Ide-1.0.Ide.WorkbenchMessage
 
-    addAction(label: string | null, actionName: string | null): void
-    getId(): string | null
-    getSubtitle(): string | null
-    getTitle(): string | null
-    setId(id: string | null): void
-    setSubtitle(subtitle: string | null): void
-    setTitle(title: string | null): void
+    addAction(label: string, actionName: string): void
+    getId(): string
+    getSubtitle(): string
+    getTitle(): string
+    setId(id: string): void
+    setSubtitle(subtitle: string): void
+    setTitle(title: string): void
 
     // Conflicting methods
 
@@ -25124,13 +25124,13 @@ interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -25143,13 +25143,13 @@ interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -25162,7 +25162,7 @@ interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -25171,7 +25171,7 @@ interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -25183,7 +25183,7 @@ interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -25915,7 +25915,7 @@ interface CompletionItemClass {
     // Own fields of Ide-1.0.Ide.CompletionItemClass
 
     parentClass: GObject.ObjectClass
-    match: (self: CompletionItem, query: string | null, casefold: string | null) => boolean
+    match: (self: CompletionItem, query: string, casefold: string) => boolean
 }
 
 abstract class CompletionItemClass {
@@ -26075,7 +26075,7 @@ interface DeviceClass {
     // Own fields of Ide-1.0.Ide.DeviceClass
 
     parent: ObjectClass
-    getSystemType: (self: Device) => string | null
+    getSystemType: (self: Device) => string
     prepareConfiguration: (self: Device, configuration: Configuration) => void
 }
 
@@ -26156,7 +26156,7 @@ interface Diagnostic {
      */
     getRange(index: number): SourceRange | null
     getSeverity(): DiagnosticSeverity
-    getText(): string | null
+    getText(): string
     /**
      * This creates a new string that is formatted using the diagnostics line number, column, severity,
      * and message text in the format "line:column: severity: message".
@@ -26203,7 +26203,7 @@ class Diagnostic {
      * @param location the location of the diagnostic
      * @returns An #IdeDiagnostic.
      */
-    constructor(severity: DiagnosticSeverity, text: string | null, location: SourceLocation) 
+    constructor(severity: DiagnosticSeverity, text: string, location: SourceLocation) 
     /**
      * Creates a new diagnostic.
      * 
@@ -26215,7 +26215,7 @@ class Diagnostic {
      * @param location the location of the diagnostic
      * @returns An #IdeDiagnostic.
      */
-    static new(severity: DiagnosticSeverity, text: string | null, location: SourceLocation): Diagnostic
+    static new(severity: DiagnosticSeverity, text: string, location: SourceLocation): Diagnostic
 }
 
 interface DiagnosticProviderInterface {
@@ -26391,7 +26391,7 @@ interface EditorViewAddinInterface {
     parent: GObject.TypeInterface
     load: (self: EditorViewAddin, view: EditorView) => void
     unload: (self: EditorViewAddin, view: EditorView) => void
-    languageChanged: (self: EditorViewAddin, languageId: string | null) => void
+    languageChanged: (self: EditorViewAddin, languageId: string) => void
     loadSourceView: (self: EditorViewAddin, sourceView: SourceView) => void
     unloadSourceView: (self: EditorViewAddin, sourceView: SourceView) => void
 }
@@ -26516,7 +26516,7 @@ interface Fixit {
      * Gets the text to replace the source range with.
      * @returns A string with the replacement text.
      */
-    getText(): string | null
+    getText(): string
     ref(): Fixit
     unref(): void
 }
@@ -26602,7 +26602,7 @@ interface HighlightIndex {
     // Owm methods of Ide-1.0.Ide.HighlightIndex
 
     dump(): void
-    insert(word: string | null, tag: any | null): void
+    insert(word: string, tag: any | null): void
     /**
      * Gets the pointer tag that was registered for `word,` or %NULL.  This can be
      * any arbitrary value. Some highlight engines might use it to point at
@@ -26610,7 +26610,7 @@ interface HighlightIndex {
      * @param word 
      * @returns Highlighter specific tag.
      */
-    lookup(word: string | null): any | null
+    lookup(word: string): any | null
     ref(): HighlightIndex
     unref(): void
 }
@@ -26665,8 +26665,8 @@ interface LangservClientClass {
     // Own fields of Ide-1.0.Ide.LangservClientClass
 
     parentClass: ObjectClass
-    notification: (self: LangservClient, method: string | null, params: GLib.Variant) => void
-    supportsLanguage: (self: LangservClient, languageId: string | null) => boolean
+    notification: (self: LangservClient, method: string, params: GLib.Variant) => void
+    supportsLanguage: (self: LangservClient, languageId: string) => boolean
     publishedDiagnostics: (self: LangservClient, file: Gio.File, diagnostics: Diagnostics) => void
     reserved1: any
     reserved2: any
@@ -27069,8 +27069,8 @@ interface PatternSpec {
 
     // Owm methods of Ide-1.0.Ide.PatternSpec
 
-    getText(): string | null
-    match(haystack: string | null): boolean
+    getText(): string
+    match(haystack: string): boolean
     ref(): PatternSpec
     unref(): void
 }
@@ -27091,8 +27091,8 @@ class PatternSpec {
 
     // Constructors of Ide-1.0.Ide.PatternSpec
 
-    constructor(keywords: string | null) 
-    static new(keywords: string | null): PatternSpec
+    constructor(keywords: string) 
+    static new(keywords: string): PatternSpec
 }
 
 interface PerspectiveInterface {
@@ -27325,7 +27325,7 @@ interface RenameProviderInterface {
     // Own fields of Ide-1.0.Ide.RenameProviderInterface
 
     parentIface: GObject.TypeInterface
-    renameAsync: (self: RenameProvider, location: SourceLocation, newName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    renameAsync: (self: RenameProvider, location: SourceLocation, newName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     renameFinish: (self: RenameProvider, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* edits */ ProjectEdit[] | null ]
     load: (self: RenameProvider) => void
 }
@@ -27420,7 +27420,7 @@ interface RuntimeClass {
     // Own fields of Ide-1.0.Ide.RuntimeClass
 
     parent: ObjectClass
-    containsProgramInPath: (self: Runtime, program: string | null, cancellable: Gio.Cancellable | null) => boolean
+    containsProgramInPath: (self: Runtime, program: string, cancellable: Gio.Cancellable | null) => boolean
     createLauncher: (self: Runtime) => SubprocessLauncher
     prepareConfiguration: (self: Runtime, configuration: Configuration) => void
     createRunner: (self: Runtime, buildTarget: BuildTarget) => Runner | null
@@ -27468,8 +27468,8 @@ interface RuntimeProviderInterface {
     parent: GObject.TypeInterface
     load: (self: RuntimeProvider, manager: RuntimeManager) => void
     unload: (self: RuntimeProvider, manager: RuntimeManager) => void
-    canInstall: (self: RuntimeProvider, runtimeId: string | null) => boolean
-    installAsync: (self: RuntimeProvider, runtimeId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    canInstall: (self: RuntimeProvider, runtimeId: string) => boolean
+    installAsync: (self: RuntimeProvider, runtimeId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     installFinish: (self: RuntimeProvider, result: Gio.AsyncResult) => boolean
 }
 
@@ -27535,8 +27535,8 @@ interface SearchProviderInterface {
     parentIface: GObject.TypeInterface
     getPrefix: (provider: SearchProvider) => string
     getPriority: (provider: SearchProvider) => number
-    getVerb: (provider: SearchProvider) => string | null
-    populate: (provider: SearchProvider, context: SearchContext, searchTerms: string | null, maxResults: number, cancellable: Gio.Cancellable | null) => void
+    getVerb: (provider: SearchProvider) => string
+    populate: (provider: SearchProvider, context: SearchContext, searchTerms: string, maxResults: number, cancellable: Gio.Cancellable | null) => void
     createRow: (provider: SearchProvider, result: SearchResult) => Gtk.Widget
     activate: (provider: SearchProvider, row: Gtk.Widget, result: SearchResult) => void
 }
@@ -27594,7 +27594,7 @@ interface ServiceInterface {
 
     parentInterface: GObject.TypeInterface
     contextLoaded: (service: Service) => void
-    getName: (service: Service) => string | null
+    getName: (service: Service) => string
     start: (service: Service) => void
     stop: (service: Service) => void
 }
@@ -27834,7 +27834,7 @@ interface SourceViewClass {
     gotoDefinition: (self: SourceView) => void
     hideCompletion: (self: SourceView) => void
     indentSelection: (self: SourceView, level: number) => void
-    insertAtCursorAndIndent: (self: SourceView, str: string | null) => void
+    insertAtCursorAndIndent: (self: SourceView, str: string) => void
     insertModifier: (self: SourceView, useCount: boolean) => void
     jump: (self: SourceView, location: Gtk.TextIter) => void
     movement: (self: SourceView, movement: SourceViewMovement, extendSelection: boolean, exclusive: boolean, applyCount: boolean) => void
@@ -27850,12 +27850,12 @@ interface SourceViewClass {
     saveCommand: (self: SourceView) => void
     saveSearchChar: (self: SourceView) => void
     saveInsertMark: (self: SourceView) => void
-    selectInner: (self: SourceView, innerLeft: string | null, innerRight: string | null, exclusive: boolean, stringMode: boolean) => void
+    selectInner: (self: SourceView, innerLeft: string, innerRight: string, exclusive: boolean, stringMode: boolean) => void
     selectTag: (self: SourceView, exclusive: boolean) => void
     selectionTheatric: (self: SourceView, theatric: SourceViewTheatric) => void
-    setMode: (self: SourceView, mode: string | null, type: SourceViewModeType) => void
+    setMode: (self: SourceView, mode: string, type: SourceViewModeType) => void
     setOverwrite: (self: SourceView, overwrite: boolean) => void
-    setSearchText: (self: SourceView, searchText: string | null, fromSelection: boolean) => void
+    setSearchText: (self: SourceView, searchText: string, fromSelection: boolean) => void
     sort: (self: SourceView, ignoreCase: boolean, reverse: boolean) => void
     swapSelectionBounds: (self: SourceView) => void
     increaseFontSize: (self: SourceView) => void
@@ -27916,7 +27916,7 @@ interface SubprocessInterface {
     // Own fields of Ide-1.0.Ide.SubprocessInterface
 
     parentInterface: GObject.TypeInterface
-    getIdentifier: (self: Subprocess) => string | null
+    getIdentifier: (self: Subprocess) => string
     getStdoutPipe: (self: Subprocess) => Gio.InputStream
     getStderrPipe: (self: Subprocess) => Gio.InputStream
     getStdinPipe: (self: Subprocess) => Gio.OutputStream
@@ -27936,7 +27936,7 @@ interface SubprocessInterface {
     communicateAsync: (self: Subprocess, stdinBuf: any | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     communicateFinish: (self: Subprocess, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* stdoutBuf */ any, /* stderrBuf */ any ]
     communicateUtf8Async: (self: Subprocess, stdinBuf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
-    communicateUtf8Finish: (self: Subprocess, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* stdoutBuf */ string | null, /* stderrBuf */ string | null ]
+    communicateUtf8Finish: (self: Subprocess, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* stdoutBuf */ string, /* stderrBuf */ string ]
 }
 
 abstract class SubprocessInterface {
@@ -28018,7 +28018,7 @@ interface Symbol {
     getDefinitionLocation(): SourceLocation | null
     getFlags(): SymbolFlags
     getKind(): SymbolKind
-    getName(): string | null
+    getName(): string
     ref(): Symbol
     unref(): void
 }
@@ -28031,8 +28031,8 @@ class Symbol {
 
     // Constructors of Ide-1.0.Ide.Symbol
 
-    constructor(name: string | null, kind: SymbolKind, flags: SymbolFlags, declarationLocation: SourceLocation | null, definitionLocation: SourceLocation | null, canonicalLocation: SourceLocation | null) 
-    static new(name: string | null, kind: SymbolKind, flags: SymbolFlags, declarationLocation: SourceLocation | null, definitionLocation: SourceLocation | null, canonicalLocation: SourceLocation | null): Symbol
+    constructor(name: string, kind: SymbolKind, flags: SymbolFlags, declarationLocation: SourceLocation | null, definitionLocation: SourceLocation | null, canonicalLocation: SourceLocation | null) 
+    static new(name: string, kind: SymbolKind, flags: SymbolFlags, declarationLocation: SourceLocation | null, definitionLocation: SourceLocation | null, canonicalLocation: SourceLocation | null): Symbol
 }
 
 interface SymbolNodeClass {
@@ -28281,7 +28281,7 @@ interface UnsavedFile {
      */
     getFile(): Gio.File
     getSequence(): number
-    getTempPath(): string | null
+    getTempPath(): string
     persist(cancellable: Gio.Cancellable | null): boolean
     ref(): UnsavedFile
     unref(): void
@@ -28323,32 +28323,32 @@ interface Uri {
      * information.
      * @returns @uri's authentication parameters.
      */
-    getAuthParams(): string | null
+    getAuthParams(): string
     /**
      * Gets `uri'`s fragment, which may contain %<!-- -->-encoding,
      * depending on the flags with which `uri` was parsed.
      * @returns @uri's fragment.
      */
-    getFragment(): string | null
+    getFragment(): string
     /**
      * Gets `uri'`s host. If `uri` contained an IPv6 address literal, this
      * value will not include the brackets that are required by the URI
      * syntax.
      * @returns @uri's host.
      */
-    getHost(): string | null
+    getHost(): string
     /**
      * Gets `uri'`s password. If `uri` was not parsed with
      * %IDE_URI_PARSE_PASSWORD, this will always be %NULL.
      * @returns @uri's password.
      */
-    getPassword(): string | null
+    getPassword(): string
     /**
      * Gets `uri'`s path, which may contain %<!-- -->-encoding, depending
      * on the flags with which `uri` was parsed.
      * @returns @uri's path.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets `uri'`s port.
      * @returns @uri's port, or %0 if it was unset
@@ -28362,12 +28362,12 @@ interface Uri {
      * ide_uri_parse_params() may be useful.
      * @returns @uri's query.
      */
-    getQuery(): string | null
+    getQuery(): string
     /**
      * Gets `uri'`s scheme.
      * @returns @uri's scheme.
      */
-    getScheme(): string | null
+    getScheme(): string
     /**
      * Gets `uri'`s user. If `uri` was parsed with %IDE_URI_PARSE_PASSWORD or
      * %IDE_URI_PARSE_AUTH_PARAMS, this is the string that appears before the
@@ -28375,7 +28375,7 @@ interface Uri {
      * userinfo is considered the user.
      * @returns @uri's user.
      */
-    getUser(): string | null
+    getUser(): string
     isFile(file: Gio.File): boolean
     /**
      * Parses `uri_string` according to `flags` and, if it is a relative
@@ -28385,7 +28385,7 @@ interface Uri {
      * @param flags flags describing how to parse `uri_string`
      * @returns a new #IdeUri.
      */
-    newRelative(uriString: string | null, flags: UriParseFlags): Uri
+    newRelative(uriString: string, flags: UriParseFlags): Uri
     /**
      * Increments the reference count of `uri` by one.
      * @returns uri
@@ -28395,14 +28395,14 @@ interface Uri {
      * Sets `uri'`s authentication parameters to `auth_params`.
      * @param authParams the authentication parameters, or %NULL
      */
-    setAuthParams(authParams: string | null): void
+    setAuthParams(authParams: string): void
     /**
      * Sets `uri'`s fragment to `fragment,` which is assumed to have been
      * %<!-- -->-encoded by the caller. See ide_uri_set_path() for more
      * details.
      * @param fragment the (%<!-- -->-encoded) fragment
      */
-    setFragment(fragment: string | null): void
+    setFragment(fragment: string): void
     /**
      * Sets `uri'`s host to `host`.
      * 
@@ -28411,12 +28411,12 @@ interface Uri {
      * converting `uri` to a string.
      * @param host the hostname or IP address, or %NULL
      */
-    setHost(host: string | null): void
+    setHost(host: string): void
     /**
      * Sets `uri'`s password to `password`.
      * @param password the password, or %NULL
      */
-    setPassword(password: string | null): void
+    setPassword(password: string): void
     /**
      * Sets `uri'`s path to `path,` which is assumed to have been
      * appropriately %<!-- -->-encoded. In particular, this means that if
@@ -28427,7 +28427,7 @@ interface Uri {
      * again would give a different result.
      * @param path the (%<!-- -->-encoded) path
      */
-    setPath(path: string | null): void
+    setPath(path: string): void
     /**
      * Sets `uri'`s port to `port`. If `port` is 0, it will not be output
      * when calling ide_uri_to_string().
@@ -28440,18 +28440,18 @@ interface Uri {
      * details.
      * @param query the (%<!-- -->-encoded) query
      */
-    setQuery(query: string | null): void
+    setQuery(query: string): void
     /**
      * Sets `uri'`s scheme to `scheme`.
      * @param scheme the URI scheme
      */
-    setScheme(scheme: string | null): void
+    setScheme(scheme: string): void
     /**
      * Sets `uri'`s user to `user`. See ide_uri_get_user() for a description
      * of how this interacts with various parsing flags.
      * @param user the username, or %NULL
      */
-    setUser(user: string | null): void
+    setUser(user: string): void
     /**
      * Creates a #GFile that represents the resource `uri`.
      * @returns A #GFile or %NULL upon failure.
@@ -28490,7 +28490,7 @@ class Uri {
      * @param flags flags describing how to parse `uri_string`
      * @returns a new #IdeUri.
      */
-    constructor(uriString: string | null, flags: UriParseFlags) 
+    constructor(uriString: string, flags: UriParseFlags) 
     /**
      * Parses `uri_string` according to `flags`. If the result is not a
      * valid absolute URI, it will be discarded, and an error returned.
@@ -28499,7 +28499,7 @@ class Uri {
      * @param flags flags describing how to parse `uri_string`
      * @returns a new #IdeUri.
      */
-    static new(uriString: string | null, flags: UriParseFlags): Uri
+    static new(uriString: string, flags: UriParseFlags): Uri
     /**
      * Creates a new #IdeUri from the uri provided by `file`.
      * @constructor 
@@ -28507,7 +28507,7 @@ class Uri {
      * @returns A newly allcoated #IdeUri.
      */
     static newFromFile(file: Gio.File): Uri
-    static build(scheme: string | null, userinfo: string | null, host: string | null, port: string | null, path: string | null, query: string | null, fragment: string | null): string | null
+    static build(scheme: string, userinfo: string, host: string, port: string, path: string, query: string, fragment: string): string | null
     static errorQuark(): GLib.Quark
     /**
      * Utility function for parsing "network" URIs. This extracts just the
@@ -28517,7 +28517,7 @@ class Uri {
      * @param flags flags for parsing `uri_string`
      * @returns %TRUE on success, %FALSE on failure.
      */
-    static parseHost(uriString: string | null, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
+    static parseHost(uriString: string, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
     /**
      * Many URI schemes include one or more attribute/value pairs
      * as part of the URI value. This method can be used to parse them
@@ -28537,7 +28537,7 @@ class Uri {
      * @param caseInsensitive whether to match parameter names case-insensitively
      * @returns a hash table of attribute/value pairs. Both names and values will be fully-decoded. If @params cannot be parsed (eg, it contains two @separator characters in a row), then %NULL is returned.
      */
-    static parseParams(params: string | null, length: number, separator: number, caseInsensitive: boolean): GLib.HashTable
+    static parseParams(params: string, length: number, separator: number, caseInsensitive: boolean): GLib.HashTable
     /**
      * Parses `uri_string` more-or-less according to the generic grammar of
      * RFC 3986 ("more" if `strict` is %TRUE, "less" if %FALSE), and
@@ -28551,7 +28551,7 @@ class Uri {
      * @param uriString a string containing a relative or absolute URI
      * @param strict whether to parse `uri_string` strictly
      */
-    static split(uriString: string | null, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
+    static split(uriString: string, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
 }
 
 interface VcsConfigInterface {
@@ -28612,17 +28612,17 @@ interface VcsUri {
 
     // Owm methods of Ide-1.0.Ide.VcsUri
 
-    getHost(): string | null
-    getPath(): string | null
+    getHost(): string
+    getPath(): string
     getPort(): number
-    getScheme(): string | null
-    getUser(): string | null
+    getScheme(): string
+    getUser(): string
     ref(): VcsUri
-    setHost(host: string | null): void
-    setPath(path: string | null): void
+    setHost(host: string): void
+    setPath(path: string): void
     setPort(port: number): void
-    setScheme(scheme: string | null): void
-    setUser(user: string | null): void
+    setScheme(scheme: string): void
+    setUser(user: string): void
     toString(): string | null
     unref(): void
 }
@@ -28635,9 +28635,9 @@ class VcsUri {
 
     // Constructors of Ide-1.0.Ide.VcsUri
 
-    constructor(uri: string | null) 
-    static new(uri: string | null): VcsUri
-    static isValid(uriString: string | null): boolean
+    constructor(uri: string) 
+    static new(uri: string): VcsUri
+    static isValid(uriString: string): boolean
 }
 
 interface WorkbenchAddinInterface {
@@ -28649,7 +28649,7 @@ interface WorkbenchAddinInterface {
     load: (self: WorkbenchAddin, workbench: Workbench) => void
     unload: (self: WorkbenchAddin, workbench: Workbench) => void
     canOpen: (self: WorkbenchAddin, uri: Uri, contentType: string | null) => [ /* returnType */ boolean, /* priority */ number ]
-    openAsync: (self: WorkbenchAddin, uri: Uri, contentType: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    openAsync: (self: WorkbenchAddin, uri: Uri, contentType: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     openFinish: (self: WorkbenchAddin, result: Gio.AsyncResult) => boolean
     perspectiveSet: (self: WorkbenchAddin, perspective: Perspective) => void
 }

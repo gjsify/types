@@ -2849,7 +2849,7 @@ function colorChange(colormap: Colormap, color: Color): number
  * @param spec the string specifying the color.
  * @returns %TRUE if the parsing succeeded.
  */
-function colorParse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+function colorParse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
 /**
  * Returns the white color for a given colormap. The resulting
  * value has already allocated been allocated.
@@ -3282,7 +3282,7 @@ function drawSegments(drawable: Drawable, gc: GC, segs: Segment, nSegs: number):
  * @param y the y coordinate of the baseline of the text.
  * @param string the string of characters to draw.
  */
-function drawString(drawable: Drawable, font: Font, gc: GC, x: number, y: number, string: string | null): void
+function drawString(drawable: Drawable, font: Font, gc: GC, x: number, y: number, string: string): void
 /**
  * Draws a number of characters in the given font or fontset.
  * @param drawable a #GdkDrawable (a #GdkWindow or a #GdkPixmap).
@@ -3293,7 +3293,7 @@ function drawString(drawable: Drawable, font: Font, gc: GC, x: number, y: number
  * @param text the characters to draw.
  * @param textLength the number of characters of `text` to draw.
  */
-function drawText(drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string | null, textLength: number): void
+function drawText(drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string, textLength: number): void
 /**
  * Draws a number of wide characters using the given font of fontset.
  * If the font is a 1-byte font, the string is converted into 1-byte
@@ -3409,10 +3409,10 @@ function fontFromDescriptionForDisplay(display: Display, fontDesc: Pango.FontDes
  * @param fontName a XLFD describing the font to load.
  * @returns a #GdkFont, or %NULL if the font could not be loaded.
  */
-function fontLoad(fontName: string | null): Font
-function fontLoadForDisplay(display: Display, fontName: string | null): Font
-function fontsetLoad(fontsetName: string | null): Font
-function fontsetLoadForDisplay(display: Display, fontsetName: string | null): Font
+function fontLoad(fontName: string): Font
+function fontLoadForDisplay(display: Display, fontName: string): Font
+function fontsetLoad(fontsetName: string): Font
+function fontsetLoadForDisplay(display: Display, fontsetName: string): Font
 function freeCompoundText(ctext: number): void
 function freeTextList(list: string | null): void
 function getDisplay(): string | null
@@ -3421,8 +3421,8 @@ function getDisplay(): string | null
  * to gdk_init() or gdk_parse_args(), if any.
  * @returns the display name, if specified explicitely, otherwise %NULL   this string is owned by GTK+ and must not be modified or freed.
  */
-function getDisplayArgName(): string | null
-function getProgramClass(): string | null
+function getDisplayArgName(): string
+function getProgramClass(): string
 /**
  * Gets whether event debugging output is enabled.
  * @returns %TRUE if event debugging output is enabled.
@@ -3492,7 +3492,7 @@ function keyvalConvertCase(symbol: number): [ /* lower */ number, /* upper */ nu
  * @param keyvalName a key name
  * @returns the corresponding key value, or %GDK_KEY_VoidSymbol     if the key name is not a valid key
  */
-function keyvalFromName(keyvalName: string | null): number
+function keyvalFromName(keyvalName: string): number
 function keyvalIsLower(keyval: number): boolean
 function keyvalIsUpper(keyval: number): boolean
 /**
@@ -3534,7 +3534,7 @@ function listVisuals(): Visual[]
  * @param destMax the maximum number of wide characters to place in `dest`.
  * @returns the number of wide characters written into @dest, or -1 if   the conversion failed.
  */
-function mbstowcs(dest: WChar, src: string | null, destMax: number): number
+function mbstowcs(dest: WChar, src: string, destMax: number): number
 /**
  * Indicates to the GUI environment that the application has finished
  * loading. If the applications opens windows, this function is
@@ -3556,7 +3556,7 @@ function notifyStartupComplete(): void
  * that feature.
  * @param startupId a startup-notification identifier, for which notification              process should be completed
  */
-function notifyStartupCompleteWithId(startupId: string | null): void
+function notifyStartupCompleteWithId(startupId: string): void
 /**
  * Sets `window` to be embedded in `embedder`.
  * 
@@ -3854,7 +3854,7 @@ function selectionSendNotifyForDisplay(display: Display, requestor: NativeWindow
  */
 function setDoubleClickTime(msec: number): void
 function setLocale(): string | null
-function setProgramClass(programClass: string | null): void
+function setProgramClass(programClass: string): void
 /**
  * Sets whether a trace of received events is output.
  * Note that GTK+ must be compiled with debugging (that is,
@@ -3874,7 +3874,7 @@ function setShowEvents(showEvents: boolean): void
  * (Both documents are part of the X Window System distribution.)
  * @param smClientId the client id assigned by the session manager when the    connection was opened, or %NULL to remove the property.
  */
-function setSmClientId(smClientId: string | null): void
+function setSmClientId(smClientId: string): void
 function setUseXshm(useXshm: boolean): void
 /**
  * Obtains a desktop-wide setting, such as the double-click time,
@@ -3883,7 +3883,7 @@ function setUseXshm(useXshm: boolean): void
  * @param value location to store the value of the setting.
  * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
  */
-function settingGet(name: string | null, value: any): boolean
+function settingGet(name: string, value: any): boolean
 /**
  * Like g_spawn_command_line_async(), except the child process is
  * spawned in such an environment that on calling gdk_display_open()
@@ -3896,7 +3896,7 @@ function settingGet(name: string | null, value: any): boolean
  * @param commandLine a command line
  * @returns %TRUE on success, %FALSE if error is set.
  */
-function spawnCommandLineOnScreen(screen: Screen, commandLine: string | null): boolean
+function spawnCommandLineOnScreen(screen: Screen, commandLine: string): boolean
 /**
  * Gets the metrics of a nul-terminated string.
  * @param font a #GdkFont.
@@ -3907,7 +3907,7 @@ function spawnCommandLineOnScreen(screen: Screen, commandLine: string | null): b
  * @param ascent the ascent of the string.
  * @param descent the descent of the string.
  */
-function stringExtents(font: Font, string: string | null, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
+function stringExtents(font: Font, string: string, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
 /**
  * Determines the total height of a given nul-terminated
  * string. This value is not generally useful, because you
@@ -3917,7 +3917,7 @@ function stringExtents(font: Font, string: string | null, lbearing: number, rbea
  * @param string the nul-terminated string to measure.
  * @returns the height of the string in pixels.
  */
-function stringHeight(font: Font, string: string | null): number
+function stringHeight(font: Font, string: string): number
 /**
  * Determines the distance from the origin to the rightmost
  * portion of a nul-terminated string when drawn. This is not the
@@ -3928,8 +3928,8 @@ function stringHeight(font: Font, string: string | null): number
  * @param string the nul-terminated string to measure.
  * @returns the right bearing of the string in pixels.
  */
-function stringMeasure(font: Font, string: string | null): number
-function stringToCompoundText(str: string | null, encoding: Atom, format: number, ctext: number, length: number): number
+function stringMeasure(font: Font, string: string): number
+function stringToCompoundText(str: string, encoding: Atom, format: number, ctext: number, length: number): number
 /**
  * Convert a string from the encoding of the current
  * locale into a form suitable for storing in a window property.
@@ -3941,7 +3941,7 @@ function stringToCompoundText(str: string | null, encoding: Atom, format: number
  * @param length the length of `text,` in bytes
  * @returns 0 upon success, non-zero upon failure.
  */
-function stringToCompoundTextForDisplay(display: Display, str: string | null, encoding: Atom, format: number, ctext: number, length: number): number
+function stringToCompoundTextForDisplay(display: Display, str: string, encoding: Atom, format: number, ctext: number, length: number): number
 /**
  * Determines the width of a nul-terminated string.
  * (The distance from the origin of the string to the
@@ -3951,7 +3951,7 @@ function stringToCompoundTextForDisplay(display: Display, str: string | null, en
  * @param string the nul-terminated string to measure
  * @returns the width of the string in pixels.
  */
-function stringWidth(font: Font, string: string | null): number
+function stringWidth(font: Font, string: string): number
 function synthesizeWindowState(window: Window, unsetFlags: WindowState, setFlags: WindowState): void
 /**
  * This function retrieves a pixel from `window` to force the windowing
@@ -4009,7 +4009,7 @@ function testSimulateButton(window: Window, x: number, y: number, button: number
  * @returns whether all actions neccessary for a key event simulation     were carried out successfully.
  */
 function testSimulateKey(window: Window, x: number, y: number, keyval: number, modifiers: ModifierType, keyPressrelease: EventType): boolean
-function textExtents(font: Font, text: string | null, textLength: number, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
+function textExtents(font: Font, text: string, textLength: number, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
 function textExtentsWc(font: Font, text: WChar, textLength: number, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
 /**
  * Determines the total height of a given string.
@@ -4021,7 +4021,7 @@ function textExtentsWc(font: Font, text: WChar, textLength: number, lbearing: nu
  * @param textLength the length of the text in bytes.
  * @returns the height of the string in pixels.
  */
-function textHeight(font: Font, text: string | null, textLength: number): number
+function textHeight(font: Font, text: string, textLength: number): number
 /**
  * Determines the distance from the origin to the rightmost
  * portion of a string when drawn. This is not the
@@ -4033,7 +4033,7 @@ function textHeight(font: Font, text: string | null, textLength: number): number
  * @param textLength the length of the text in bytes.
  * @returns the right bearing of the string in pixels.
  */
-function textMeasure(font: Font, text: string | null, textLength: number): number
+function textMeasure(font: Font, text: string, textLength: number): number
 function textPropertyToTextList(encoding: Atom, format: number, text: number, length: number, list: string | null): number
 /**
  * Convert a text string from the encoding as it is stored
@@ -4072,7 +4072,7 @@ function textPropertyToUtf8List(encoding: Atom, format: number, text: number, le
  * @returns the number of strings in the resulting               list.
  */
 function textPropertyToUtf8ListForDisplay(display: Display, encoding: Atom, format: number, text: number, length: number, list: string | null): number
-function textWidth(font: Font, text: string | null, textLength: number): number
+function textWidth(font: Font, text: string, textLength: number): number
 function textWidthWc(font: Font, text: WChar, textLength: number): number
 /**
  * Adds a function to be called whenever there are no higher priority
@@ -4212,7 +4212,7 @@ function unicodeToKeyval(wc: number): number
  * @param length location to store the length of the data            stored in `ctext`
  * @returns %TRUE if the conversion succeeded, otherwise               false.
  */
-function utf8ToCompoundText(str: string | null, encoding: Atom, format: number, ctext: number, length: number): boolean
+function utf8ToCompoundText(str: string, encoding: Atom, format: number, ctext: number, length: number): boolean
 /**
  * Converts from UTF-8 to compound text.
  * @param display a #GdkDisplay
@@ -4223,7 +4223,7 @@ function utf8ToCompoundText(str: string | null, encoding: Atom, format: number, 
  * @param length location to store the length of the data            stored in `ctext`
  * @returns %TRUE if the conversion succeeded, otherwise               %FALSE.
  */
-function utf8ToCompoundTextForDisplay(display: Display, str: string | null, encoding: Atom, format: number, ctext: number, length: number): boolean
+function utf8ToCompoundTextForDisplay(display: Display, str: string, encoding: Atom, format: number, ctext: number, length: number): boolean
 /**
  * Converts an UTF-8 string into the best possible representation
  * as a STRING. The representation of characters not in STRING
@@ -4232,7 +4232,7 @@ function utf8ToCompoundTextForDisplay(display: Display, str: string | null, enco
  * @param str a UTF-8 string
  * @returns the newly-allocated string, or %NULL if the               conversion failed. (It should not fail for               any properly formed UTF-8 string unless system               limits like memory or file descriptors are exceeded.)
  */
-function utf8ToStringTarget(str: string | null): string | null
+function utf8ToStringTarget(str: string): string | null
 /**
  * Converts a wide character string to a multi-byte string.
  * (The function name comes from an acronym of 'Wide Character String TO
@@ -4653,7 +4653,7 @@ interface Device {
      * Determines the name of the device.
      * @returns a name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Determines the type of the device.
      * @returns a #GdkInputSource
@@ -4770,7 +4770,7 @@ interface Display {
      * Gets the name of the display.
      * @returns a string representing the display name. This string is owned by GDK and should not be modified or freed.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the current location of the pointer and the current modifier
      * mask for a given display.
@@ -4936,7 +4936,7 @@ interface Display {
     // Own virtual methods of Gdk-2.0.Gdk.Display
 
     closed(isError: boolean): void
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Gets the number of screen managed by the `display`.
      * @virtual 
@@ -5237,7 +5237,7 @@ interface Drawable {
      * @param key name the data was stored under
      * @returns the data stored at @key
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     // Has conflict: getDepth(): number
     // Has conflict: getSize(): [ /* width */ number, /* height */ number ]
     // Has conflict: setColormap(colormap: Colormap): void
@@ -5248,7 +5248,7 @@ interface Drawable {
      * @param data arbitrary data
      * @param destroyFunc function to free `data,` or %NULL
      */
-    setData(key: string | null, data: any | null, destroyFunc: GLib.DestroyNotify | null): void
+    setData(key: string, data: any | null, destroyFunc: GLib.DestroyNotify | null): void
 
     // Overloads of setData
 
@@ -5266,7 +5266,7 @@ interface Drawable {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Deprecated equivalent of calling g_object_unref() on `drawable`.
      */
@@ -5287,7 +5287,7 @@ interface Drawable {
     drawPolygon(gc: GC, filled: boolean, points: Point, npoints: number): void
     drawRectangle(gc: GC, filled: boolean, x: number, y: number, width: number, height: number): void
     drawSegments(gc: GC, segs: Segment, nsegs: number): void
-    drawText(font: Font, gc: GC, x: number, y: number, text: string | null, textLength: number): void
+    drawText(font: Font, gc: GC, x: number, y: number, text: string, textLength: number): void
     drawTextWc(font: Font, gc: GC, x: number, y: number, text: WChar, textLength: number): void
     drawTrapezoids(gc: GC, trapezoids: Trapezoid, nTrapezoids: number): void
     /**
@@ -6185,7 +6185,7 @@ interface Pixmap {
      * @param data arbitrary data
      * @param destroyFunc function to free `data,` or %NULL
      */
-    setData(key: string | null, data: any | null, destroyFunc: GLib.DestroyNotify | null): void
+    setData(key: string, data: any | null, destroyFunc: GLib.DestroyNotify | null): void
 
     // Overloads of setData
 
@@ -6203,7 +6203,7 @@ interface Pixmap {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -6218,7 +6218,7 @@ interface Pixmap {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of Gdk-2.0.Gdk.Pixmap
 
@@ -6298,7 +6298,7 @@ class Pixmap extends Drawable {
      * @param filename the filename of a file containing XPM data.
      * @returns the #GdkPixmap.
      */
-    static colormapCreateFromXpm(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparentColor: Color, filename: string | null): Pixmap
+    static colormapCreateFromXpm(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparentColor: Color, filename: string): Pixmap
     /**
      * Create a pixmap from data in XPM format using a particular
      * colormap.
@@ -6317,7 +6317,7 @@ class Pixmap extends Drawable {
      * @param filename the filename of a file containing XPM data.
      * @returns the #GdkPixmap
      */
-    static createFromXpm(drawable: Drawable, transparentColor: Color, filename: string | null): [ /* returnType */ Pixmap, /* mask */ Bitmap ]
+    static createFromXpm(drawable: Drawable, transparentColor: Color, filename: string): [ /* returnType */ Pixmap, /* mask */ Bitmap ]
     /**
      * Create a pixmap from data in XPM format.
      * @param drawable a #GdkDrawable, used to determine default values     for the new pixmap.
@@ -6527,7 +6527,7 @@ interface Screen {
      * @returns the root window
      */
     getRootWindow(): Window
-    getSetting(name: string | null, value: any): boolean
+    getSetting(name: string, value: any): boolean
     /**
      * Gets the system's default colormap for `screen`
      * @returns the default colormap for @screen.
@@ -8020,7 +8020,7 @@ interface Window {
      * gdk_window_set_title() will again update the icon title as well.
      * @param name name of window while iconified (minimized)
      */
-    setIconName(name: string | null): void
+    setIconName(name: string): void
     /**
      * Set if `window` must be kept above other windows. If the
      * window was already above, then this function does nothing.
@@ -8099,7 +8099,7 @@ interface Window {
      * non-interchangeable kind of window.
      * @param role a string indicating its role
      */
-    setRole(role: string | null): void
+    setRole(role: string): void
     /**
      * Toggles whether a window should appear in a pager (workspace
      * switcher, or other desktop utility program that displays a small
@@ -8127,7 +8127,7 @@ interface Window {
      * instead of this low-level function.
      * @param startupId a string with startup-notification identifier
      */
-    setStartupId(startupId: string | null): void
+    setStartupId(startupId: string): void
     /**
      * Set the bit gravity of the given window to static, and flag it so
      * all children get static subwindow gravity. This is used if you are
@@ -8145,7 +8145,7 @@ interface Window {
      * user-readable strings in GDK/GTK+). `title` may not be %NULL.
      * @param title title of `window`
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Indicates to the window manager that `window` is a transient dialog
      * associated with the application window `parent`. This allows the
@@ -8320,7 +8320,7 @@ interface Window {
      * @param data arbitrary data
      * @param destroyFunc function to free `data,` or %NULL
      */
-    setData(key: string | null, data: any | null, destroyFunc: GLib.DestroyNotify | null): void
+    setData(key: string, data: any | null, destroyFunc: GLib.DestroyNotify | null): void
 
     // Overloads of setData
 
@@ -8338,7 +8338,7 @@ interface Window {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -8353,7 +8353,7 @@ interface Window {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Own signals of Gdk-2.0.Gdk.Window
 
@@ -8551,7 +8551,7 @@ class Color {
      * @param spec the string specifying the color.
      * @returns %TRUE if the parsing succeeded.
      */
-    static parse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+    static parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
     /**
      * Returns the white color for a given colormap. The resulting
      * value has already allocated been allocated.
@@ -8702,7 +8702,7 @@ class Cursor {
      * @param name the name of the cursor
      * @returns a new #GdkCursor, or %NULL if there is no cursor with   the given name
      */
-    static newFromName(display: Display, name: string | null): Cursor
+    static newFromName(display: Display, name: string): Cursor
     /**
      * Creates a new cursor from a pixbuf.
      * 
@@ -8829,7 +8829,7 @@ interface DisplayClass {
     // Own fields of Gdk-2.0.Gdk.DisplayClass
 
     parentClass: GObject.ObjectClass
-    getDisplayName: (display: Display) => string | null
+    getDisplayName: (display: Display) => string
     getNScreens: (display: Display) => number
     closed: (display: Display, isError: boolean) => void
 }
@@ -8892,7 +8892,7 @@ interface DrawableClass {
     drawRectangle: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number) => void
     drawArc: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number, angle1: number, angle2: number) => void
     drawPolygon: (drawable: Drawable, gc: GC, filled: boolean, points: Point, npoints: number) => void
-    drawText: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string | null, textLength: number) => void
+    drawText: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string, textLength: number) => void
     drawTextWc: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: WChar, textLength: number) => void
     drawDrawable: (drawable: Drawable, gc: GC, src: Drawable, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number) => void
     drawPoints: (drawable: Drawable, gc: GC, points: Point, npoints: number) => void
@@ -9371,8 +9371,8 @@ class Font {
      * @param fontName a XLFD describing the font to load.
      * @returns a #GdkFont, or %NULL if the font could not be loaded.
      */
-    static load(fontName: string | null): Font
-    static loadForDisplay(display: Display, fontName: string | null): Font
+    static load(fontName: string): Font
+    static loadForDisplay(display: Display, fontName: string): Font
 }
 
 interface GCClass {

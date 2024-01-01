@@ -109,7 +109,7 @@ export interface Wc {
      * @param cancellable a #GCancellable instance or %NULL to ignore
      * @param callback The callback when the result is ready
      */
-    requestAsync(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    requestAsync(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous load of the file's contents.
      * The contents are placed in contents, and length is set to the size of the
@@ -120,7 +120,7 @@ export interface Wc {
      * @param result The result of the request
      * @returns %TRUE if the request was successfull. If %FALSE an error occurred.
      */
-    requestFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* content */ string | null, /* length */ number ]
+    requestFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* content */ string, /* length */ number ]
     /**
      * Request the fetching of a web resource given the `uri`. This request is
      * asynchronous, thus the result will be returned within the `callback`.
@@ -129,7 +129,7 @@ export interface Wc {
      * @param cancellable a #GCancellable instance or %NULL to ignore
      * @param callback The callback when the result is ready
      */
-    requestWithHeadersAsync(uri: string | null, headers: GLib.HashTable | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    requestWithHeadersAsync(uri: string, headers: GLib.HashTable | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Sets if cache must be used. Note that this will only work if caching is
      * supporting.  If sets %TRUE, a new cache will be created. If sets to %FALSE,

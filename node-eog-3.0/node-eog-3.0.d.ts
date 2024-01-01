@@ -190,14 +190,14 @@ enum StartupFlags {
     DISABLE_GALLERY,
     SINGLE_WINDOW,
 }
-const FILE_FORMAT_JPEG: string | null
+const FILE_FORMAT_JPEG: string
 const IMAGE_DATA_ALL: number
 const LIST_STORE_THUMB_SIZE: number
 const SCROLL_VIEW_MAX_ZOOM_FACTOR: number
 const SCROLL_VIEW_MIN_ZOOM_FACTOR: number
-const THUMBNAIL_ORIGINAL_HEIGHT: string | null
-const THUMBNAIL_ORIGINAL_WIDTH: string | null
-function debug(section: Debug, file: string | null, line: number, function_: string | null): void
+const THUMBNAIL_ORIGINAL_HEIGHT: string
+const THUMBNAIL_ORIGINAL_WIDTH: string
+function debug(section: Debug, file: string, line: number, function_: string): void
 function debugInit(): void
 /**
  * Takes a date string formatted after Exif specifications and generates a
@@ -205,7 +205,7 @@ function debugInit(): void
  * @param date a date string following Exif specifications
  * @returns a newly allocated date string formatted according to the current locale.
  */
-function exifUtilFormatDate(date: string | null): string | null
+function exifUtilFormatDate(date: string): string | null
 function imageErrorQuark(): GLib.Quark
 function marshalVOIDINTINT(closure: GObject.TClosure, returnValue: any, nParamValues: number, paramValues: any, invocationHint: any | null, marshalData: any | null): void
 /**
@@ -640,13 +640,13 @@ interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -659,13 +659,13 @@ interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -678,7 +678,7 @@ interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -687,7 +687,7 @@ interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -723,7 +723,7 @@ interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1239,13 +1239,13 @@ interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChoos
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1258,13 +1258,13 @@ interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChoos
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1277,7 +1277,7 @@ interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChoos
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1286,7 +1286,7 @@ interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChoos
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -1342,7 +1342,7 @@ interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.FileChoos
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1951,8 +1951,8 @@ interface Image {
      */
     getAutorotateTransform(): Transform
     getBytes(): number
-    getCaption(): string | null
-    getCollateKey(): string | null
+    getCaption(): string
+    getCollateKey(): string
     /**
      * Gets the #GFile associated with `img`
      * @returns a #GFile
@@ -2088,14 +2088,14 @@ class Image extends GObject.Object {
     // Constructors of Eog-3.0.Eog.Image
 
     constructor(config?: Image.ConstructorProperties) 
-    static newFile(file: Gio.File, caption: string | null): Image
+    static newFile(file: Gio.File, caption: string): Image
     _init(config?: Image.ConstructorProperties): void
     /**
      * Gets the list of supported mimetypes
      * @returns a #GList of supported mimetypes
      */
     static getSupportedMimeTypes(): string[]
-    static isSupportedMimeType(mimeType: string | null): boolean
+    static isSupportedMimeType(mimeType: string): boolean
 }
 
 module ImageSaveInfo {
@@ -2151,7 +2151,7 @@ class ImageSaveInfo extends GObject.Object {
     constructor(config?: ImageSaveInfo.ConstructorProperties) 
     static newFromFile(file: Gio.File, format: GdkPixbuf.PixbufFormat): ImageSaveInfo
     static newFromImage(image: Image): ImageSaveInfo
-    static newFromUri(uri: string | null, format: GdkPixbuf.PixbufFormat): ImageSaveInfo
+    static newFromUri(uri: string, format: GdkPixbuf.PixbufFormat): ImageSaveInfo
     _init(config?: ImageSaveInfo.ConstructorProperties): void
 }
 
@@ -2321,7 +2321,7 @@ class JobCopy extends Job {
      * @param destination destination path for the copy
      * @returns A #EogJob.
      */
-    constructor(images: Image[], destination: string | null) 
+    constructor(images: Image[], destination: string) 
     /**
      * Creates a new #EogJob.
      * @constructor 
@@ -2329,7 +2329,7 @@ class JobCopy extends Job {
      * @param destination destination path for the copy
      * @returns A #EogJob.
      */
-    static new(images: Image[], destination: string | null): JobCopy
+    static new(images: Image[], destination: string): JobCopy
     _init(config?: JobCopy.ConstructorProperties): void
 }
 
@@ -2913,13 +2913,13 @@ interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2932,13 +2932,13 @@ interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2951,7 +2951,7 @@ interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2960,7 +2960,7 @@ interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -2996,7 +2996,7 @@ interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3449,7 +3449,7 @@ class RemotePresenter extends Gtk.Window {
      * @param previousImageAction 
      * @returns a new #EogRemotePresenter
      */
-    constructor(parent: Gtk.Window, thumbview: ThumbView, nextImageAction: string | null, previousImageAction: string | null) 
+    constructor(parent: Gtk.Window, thumbview: ThumbView, nextImageAction: string, previousImageAction: string) 
     /**
      * If %parent implements #GActionMap its actions will be automatically
      * inserted in the "win" namespace.
@@ -3460,7 +3460,7 @@ class RemotePresenter extends Gtk.Window {
      * @param previousImageAction 
      * @returns a new #EogRemotePresenter
      */
-    static new(parent: Gtk.Window, thumbview: ThumbView, nextImageAction: string | null, previousImageAction: string | null): RemotePresenter
+    static new(parent: Gtk.Window, thumbview: ThumbView, nextImageAction: string, previousImageAction: string): RemotePresenter
 
     // Overloads of new
 
@@ -3685,13 +3685,13 @@ interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3704,13 +3704,13 @@ interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3723,7 +3723,7 @@ interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3732,7 +3732,7 @@ interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3744,7 +3744,7 @@ interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4156,7 +4156,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
 
     // Owm methods of Eog-3.0.Eog.Sidebar
 
-    addPage(title: string | null, mainWidget: Gtk.Widget): void
+    addPage(title: string, mainWidget: Gtk.Widget): void
     getNPages(): number
     getPageNr(): number
     isEmpty(): boolean
@@ -4175,13 +4175,13 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4194,13 +4194,13 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4213,7 +4213,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4222,7 +4222,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4234,7 +4234,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4592,13 +4592,13 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4611,13 +4611,13 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4630,7 +4630,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4639,7 +4639,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Forces the removal of a message from a statusbar’s stack.
      * The exact `context_id` and `message_id` must be specified.
@@ -4689,7 +4689,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5058,13 +5058,13 @@ interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5077,13 +5077,13 @@ interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5096,7 +5096,7 @@ interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5105,7 +5105,7 @@ interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5117,7 +5117,7 @@ interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5545,13 +5545,13 @@ interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout,
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5564,13 +5564,13 @@ interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout,
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5583,7 +5583,7 @@ interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout,
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5592,7 +5592,7 @@ interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout,
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5604,7 +5604,7 @@ interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellLayout,
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -6147,10 +6147,10 @@ class URIConverter extends GObject.Object {
     // Constructors of Eog-3.0.Eog.URIConverter
 
     constructor(config?: URIConverter.ConstructorProperties) 
-    constructor(baseFile: Gio.File, imgFormat: GdkPixbuf.PixbufFormat, formatString: string | null) 
-    static new(baseFile: Gio.File, imgFormat: GdkPixbuf.PixbufFormat, formatString: string | null): URIConverter
+    constructor(baseFile: Gio.File, imgFormat: GdkPixbuf.PixbufFormat, formatString: string) 
+    static new(baseFile: Gio.File, imgFormat: GdkPixbuf.PixbufFormat, formatString: string): URIConverter
     _init(config?: URIConverter.ConstructorProperties): void
-    static preview(formatStr: string | null, img: Image, format: GdkPixbuf.PixbufFormat, counter: number, nImages: number, convertSpaces: boolean, spaceChar: string): string | null
+    static preview(formatStr: string, img: Image, format: GdkPixbuf.PixbufFormat, counter: number, nImages: number, convertSpaces: boolean, spaceChar: string): string | null
 }
 
 module Window {
@@ -6222,7 +6222,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
     // Owm methods of Eog-3.0.Eog.Window
 
     close(): void
-    getGearMenuSection(id: string | null): Gio.Menu
+    getGearMenuSection(id: string): Gio.Menu
     /**
      * Gets the image currently displayed in `window` or %NULL if
      * no image is being displayed.
@@ -6304,13 +6304,13 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6323,13 +6323,13 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6342,7 +6342,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6351,7 +6351,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -6387,7 +6387,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 

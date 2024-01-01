@@ -79,7 +79,7 @@ export interface BG {
     create_surface(window: Gdk.Surface, width: number, height: number): cairo.Surface
     create_thumbnail(factory: GnomeDesktop.DesktopThumbnailFactory, screen_area: cairo.RectangleInt, dest_width: number, dest_height: number): GdkPixbuf.Pixbuf
     draw(dest: GdkPixbuf.Pixbuf): void
-    get_filename(): string | null
+    get_filename(): string
     get_image_size(factory: GnomeDesktop.DesktopThumbnailFactory, best_width: number, best_height: number, width: number, height: number): boolean
     get_placement(): GDesktopEnums.BackgroundStyle
     get_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void
@@ -87,7 +87,7 @@ export interface BG {
     is_dark(dest_width: number, dest_height: number): boolean
     load_from_preferences(settings: Gio.Settings): void
     save_to_preferences(settings: Gio.Settings): void
-    set_filename(filename: string | null): void
+    set_filename(filename: string): void
     set_placement(placement: GDesktopEnums.BackgroundStyle): void
     set_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void
 
@@ -160,7 +160,7 @@ export interface BGSlideShow {
      * @param width monitor width
      * @param height monitor height
      */
-    get_current_slide(width: number, height: number): [ /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string | null, /* file2 */ string | null ]
+    get_current_slide(width: number, height: number): [ /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string, /* file2 */ string ]
     /**
      * gets whether or not the slide show has multiple sizes for different monitors
      * @returns %TRUE if multiple sizes
@@ -177,7 +177,7 @@ export interface BGSlideShow {
      * @param height monitor height
      * @returns %TRUE if successful
      */
-    get_slide(frame_number: number, width: number, height: number): [ /* returnType */ boolean, /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string | null, /* file2 */ string | null ]
+    get_slide(frame_number: number, width: number, height: number): [ /* returnType */ boolean, /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string, /* file2 */ string ]
     /**
      * gets the start time of the slide show
      * @returns a timestamp
@@ -237,7 +237,7 @@ export class BGSlideShow extends GObject.Object {
      * @param filename The filename of the slide show
      * @returns the new #GnomeBGSlideShow
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new object to manage a slide show.
      * window background between two #cairo_surface_ts.
@@ -245,7 +245,7 @@ export class BGSlideShow extends GObject.Object {
      * @param filename The filename of the slide show
      * @returns the new #GnomeBGSlideShow
      */
-    static new(filename: string | null): BGSlideShow
+    static new(filename: string): BGSlideShow
     _init(config?: BGSlideShow.ConstructorProperties): void
 }
 

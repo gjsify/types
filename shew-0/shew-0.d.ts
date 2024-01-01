@@ -82,7 +82,7 @@ class ExternalWindow extends GObject.Object {
     // Constructors of Shew-0.Shew.ExternalWindow
 
     constructor(config?: ExternalWindow.ConstructorProperties) 
-    static new_from_handle(handle_str: string | null): ExternalWindow
+    static new_from_handle(handle_str: string): ExternalWindow
     _init(config?: ExternalWindow.ConstructorProperties): void
 }
 
@@ -109,7 +109,7 @@ interface WindowExporter {
 
     export(callback: Gio.AsyncReadyCallback<this> | null): void
     export_finish(result: Gio.AsyncResult): string | null
-    unexport(handle: string | null): void
+    unexport(handle: string): void
 
     // Class property signals of Shew-0.Shew.WindowExporter
 

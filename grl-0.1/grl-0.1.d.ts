@@ -123,27 +123,27 @@ enum SupportedOps {
     MEDIA_FROM_URI,
     NOTIFY_CHANGE,
 }
-const CONFIG_KEY_APIKEY: string | null
-const CONFIG_KEY_APIKEY_BLOB: string | null
-const CONFIG_KEY_APISECRET: string | null
-const CONFIG_KEY_APITOKEN: string | null
-const CONFIG_KEY_PASSWORD: string | null
-const CONFIG_KEY_PLUGIN: string | null
-const CONFIG_KEY_SOURCE: string | null
-const CONFIG_KEY_USERNAME: string | null
-const KEYID_FORMAT: string | null
-const MEDIA_PLUGIN_AUTHOR: string | null
-const MEDIA_PLUGIN_DESCRIPTION: string | null
-const MEDIA_PLUGIN_LICENSE: string | null
-const MEDIA_PLUGIN_NAME: string | null
-const MEDIA_PLUGIN_SITE: string | null
-const MEDIA_PLUGIN_VERSION: string | null
+const CONFIG_KEY_APIKEY: string
+const CONFIG_KEY_APIKEY_BLOB: string
+const CONFIG_KEY_APISECRET: string
+const CONFIG_KEY_APITOKEN: string
+const CONFIG_KEY_PASSWORD: string
+const CONFIG_KEY_PLUGIN: string
+const CONFIG_KEY_SOURCE: string
+const CONFIG_KEY_USERNAME: string
+const KEYID_FORMAT: string
+const MEDIA_PLUGIN_AUTHOR: string
+const MEDIA_PLUGIN_DESCRIPTION: string
+const MEDIA_PLUGIN_LICENSE: string
+const MEDIA_PLUGIN_NAME: string
+const MEDIA_PLUGIN_SITE: string
+const MEDIA_PLUGIN_VERSION: string
 const METADATA_KEY_CHILDCOUNT_UNKNOWN: number
 const PADDING: number
 const PADDING_SMALL: number
-const PLUGIN_LIST_VAR: string | null
-const PLUGIN_PATH_VAR: string | null
-const PLUGIN_RANKS_VAR: string | null
+const PLUGIN_LIST_VAR: string
+const PLUGIN_PATH_VAR: string
+const PLUGIN_RANKS_VAR: string
 const SOURCE_REMAINING_UNKNOWN: number
 /**
  * Initializes the Grilo library

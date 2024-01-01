@@ -44,29 +44,29 @@ enum WindowType {
     SPLASHSCREEN,
     UNKNOWN,
 }
-const APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED: string | null
-const APPLICATION_SIGNAL_WINDOW_ADDED: string | null
-const APPLICATION_SIGNAL_WINDOW_REMOVED: string | null
-const MATCHER_SIGNAL_ACTIVE_APPLICATION_CHANGED: string | null
-const MATCHER_SIGNAL_ACTIVE_WINDOW_CHANGED: string | null
-const MATCHER_SIGNAL_STACKING_ORDER_CHANGED: string | null
-const MATCHER_SIGNAL_VIEW_CLOSED: string | null
-const MATCHER_SIGNAL_VIEW_OPENED: string | null
-const VIEW_SIGNAL_ACTIVE_CHANGED: string | null
-const VIEW_SIGNAL_CHILD_ADDED: string | null
-const VIEW_SIGNAL_CHILD_MOVED: string | null
-const VIEW_SIGNAL_CHILD_REMOVED: string | null
-const VIEW_SIGNAL_CLOSED: string | null
-const VIEW_SIGNAL_ICON_CHANGED: string | null
-const VIEW_SIGNAL_NAME_CHANGED: string | null
-const VIEW_SIGNAL_RUNNING_CHANGED: string | null
-const VIEW_SIGNAL_STARTING_CHANGED: string | null
-const VIEW_SIGNAL_URGENT_CHANGED: string | null
-const VIEW_SIGNAL_USER_VISIBLE_CHANGED: string | null
-const WINDOW_SIGNAL_MAXIMIZED_CHANGED: string | null
-const WINDOW_SIGNAL_MONITOR_CHANGED: string | null
+const APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED: string
+const APPLICATION_SIGNAL_WINDOW_ADDED: string
+const APPLICATION_SIGNAL_WINDOW_REMOVED: string
+const MATCHER_SIGNAL_ACTIVE_APPLICATION_CHANGED: string
+const MATCHER_SIGNAL_ACTIVE_WINDOW_CHANGED: string
+const MATCHER_SIGNAL_STACKING_ORDER_CHANGED: string
+const MATCHER_SIGNAL_VIEW_CLOSED: string
+const MATCHER_SIGNAL_VIEW_OPENED: string
+const VIEW_SIGNAL_ACTIVE_CHANGED: string
+const VIEW_SIGNAL_CHILD_ADDED: string
+const VIEW_SIGNAL_CHILD_MOVED: string
+const VIEW_SIGNAL_CHILD_REMOVED: string
+const VIEW_SIGNAL_CLOSED: string
+const VIEW_SIGNAL_ICON_CHANGED: string
+const VIEW_SIGNAL_NAME_CHANGED: string
+const VIEW_SIGNAL_RUNNING_CHANGED: string
+const VIEW_SIGNAL_STARTING_CHANGED: string
+const VIEW_SIGNAL_URGENT_CHANGED: string
+const VIEW_SIGNAL_USER_VISIBLE_CHANGED: string
+const WINDOW_SIGNAL_MAXIMIZED_CHANGED: string
+const WINDOW_SIGNAL_MONITOR_CHANGED: string
 interface TabPreviewReadyCallback {
-    (self: Tab, preview_data: string | null): void
+    (self: Tab, preview_data: string): void
 }
 module Application {
 
@@ -115,13 +115,13 @@ interface Application {
      * @returns %TRUE if found, %FALSE otherwise.
      */
     get_application_menu(): [ /* returnType */ boolean, /* name */ string | null, /* object_path */ string | null ]
-    get_application_type(): string | null
+    get_application_type(): string
     /**
      * Used to fetch the path to the .desktop file associated with the passed application. If
      * none exists, the result is NULL.
      * @returns A string representing the path to the desktop file.
      */
-    get_desktop_file(): string | null
+    get_desktop_file(): string
     get_focusable_child(): View
     /**
      * Used to discover whether the application wants menu stubs shown.
@@ -216,8 +216,8 @@ interface Control {
     // Owm methods of Bamf-3.Bamf.Control
 
     create_local_desktop_file(application: Application): void
-    insert_desktop_file(desktop_file: string | null): void
-    register_application_for_pid(desktop_file: string | null, pid: number): void
+    insert_desktop_file(desktop_file: string): void
+    register_application_for_pid(desktop_file: string, pid: number): void
     set_approver_behavior(behavior: number): void
 
     // Class property signals of Bamf-3.Bamf.Control
@@ -298,7 +298,7 @@ interface Matcher {
 
     // Owm methods of Bamf-3.Bamf.Matcher
 
-    application_is_running(desktop_file: string | null): boolean
+    application_is_running(desktop_file: string): boolean
     /**
      * Used to fetch the active #BamfApplication.
      * @returns The active #BamfApplication.
@@ -309,7 +309,7 @@ interface Matcher {
      * @returns The active #BamfWindow.
      */
     get_active_window(): Window
-    get_application_for_desktop_file(desktop_file_path: string | null, create_if_not_found: boolean): Application
+    get_application_for_desktop_file(desktop_file_path: string, create_if_not_found: boolean): Application
     /**
      * Used to fetch the #BamfApplication containing the passed window.
      * @param window The window to look for
@@ -364,7 +364,7 @@ interface Matcher {
      * @param desktop_file 
      * @returns A list of xids.
      */
-    get_xids_for_application(desktop_file: string | null): number[]
+    get_xids_for_application(desktop_file: string): number[]
     /**
      * Used to effect how bamf performs matching. Desktop files passed to this method will
      * be prefered by bamf to system desktop files.
@@ -452,9 +452,9 @@ interface Tab {
      * Returns the desktop file for the tab.
      * @returns The tab desktop id or %NULL if not set or available. Do not free the returned value, it belongs to @self.
      */
-    get_desktop_name(): string | null
+    get_desktop_name(): string
     get_is_foreground_tab(): boolean
-    get_location(): string | null
+    get_location(): string
     /**
      * The desktop file for the tab.
      * @returns The tab parent window XID id or 0 if not set or available.
@@ -474,9 +474,9 @@ interface Tab {
      * @virtual 
      * @returns The tab desktop id or %NULL if not set or available. Do not free the returned value, it belongs to @self.
      */
-    vfunc_get_desktop_name(): string | null
+    vfunc_get_desktop_name(): string
     vfunc_get_is_foreground_tab(): boolean
-    vfunc_get_location(): string | null
+    vfunc_get_location(): string
     /**
      * The desktop file for the tab.
      * @virtual 
@@ -661,7 +661,7 @@ interface View {
      * The view type of a window is a short string used to represent all views of the same class. These
      * descriptions should not be used to do casting as they are not considered stable.
      */
-    get_view_type(): string | null
+    get_view_type(): string
     has_child(child: View): boolean
     /**
      * Determines if the view is currently active and focused by the user. Useful for an active window indicator.
@@ -741,7 +741,7 @@ interface View {
     vfunc_is_user_visible(): boolean
     vfunc_name_changed(old_name: string | null, new_name: string | null): void
     vfunc_running_changed(running: boolean): void
-    vfunc_set_path(path: string | null): void
+    vfunc_set_path(path: string): void
     vfunc_set_sticky(value: boolean): void
     vfunc_starting_changed(starting: boolean): void
     vfunc_urgent_changed(urgent: boolean): void
@@ -751,7 +751,7 @@ interface View {
      * descriptions should not be used to do casting as they are not considered stable.
      * @virtual 
      */
-    vfunc_view_type(): string | null
+    vfunc_view_type(): string
 
     // Own signals of Bamf-3.Bamf.View
 
@@ -866,7 +866,7 @@ interface Window {
     get_monitor(): number
     get_pid(): number
     get_transient(): Window
-    get_utf8_prop(prop: string | null): string | null
+    get_utf8_prop(prop: string): string | null
     get_window_type(): WindowType
     get_xid(): number
     last_active(): number
@@ -877,7 +877,7 @@ interface Window {
     vfunc_get_monitor(): number
     vfunc_get_pid(): number
     vfunc_get_transient(): Window
-    vfunc_get_utf8_prop(prop: string | null): string | null
+    vfunc_get_utf8_prop(prop: string): string | null
     vfunc_get_window_type(): WindowType
     vfunc_get_xid(): number
     vfunc_last_active(): number
@@ -1010,8 +1010,8 @@ interface TabClass {
     // Own fields of Bamf-3.Bamf.TabClass
 
     parent_class: ViewClass
-    get_desktop_name: (self: Tab) => string | null
-    get_location: (self: Tab) => string | null
+    get_desktop_name: (self: Tab) => string
+    get_location: (self: Tab) => string
     get_xid: (self: Tab) => number
     get_is_foreground_tab: (self: Tab) => boolean
 }
@@ -1045,8 +1045,8 @@ interface ViewClass {
     is_user_visible: (view: View) => boolean
     get_name: (view: View) => string | null
     get_icon: (view: View) => string | null
-    view_type: (view: View) => string | null
-    set_path: (view: View, path: string | null) => void
+    view_type: (view: View) => string
+    set_path: (view: View, path: string) => void
     set_sticky: (view: View, value: boolean) => void
     click_behavior: (view: View) => ClickBehavior
     active_changed: (view: View, active: boolean) => void
@@ -1090,7 +1090,7 @@ interface WindowClass {
     get_xid: (self: Window) => number
     get_pid: (self: Window) => number
     get_monitor: (self: Window) => number
-    get_utf8_prop: (self: Window, prop: string | null) => string | null
+    get_utf8_prop: (self: Window, prop: string) => string | null
     maximized: (self: Window) => WindowMaximizationType
     last_active: (self: Window) => number
     monitor_changed: (window: Window, old_value: number, new_value: number) => void

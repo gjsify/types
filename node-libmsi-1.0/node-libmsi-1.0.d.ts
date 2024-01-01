@@ -146,7 +146,7 @@ interface Database {
      * @param file an MST transform file path
      * @returns %TRUE on success
      */
-    applyTransform(file: string | null): boolean
+    applyTransform(file: string): boolean
     commit(): boolean
     /**
      * Writes a file containing the table data as tab separated ASCII.
@@ -163,16 +163,16 @@ interface Database {
      * @param fd a file descriptor
      * @returns %TRUE on success
      */
-    export(table: string | null, fd: number): boolean
-    getPrimaryKeys(table: string | null): Record
+    export(table: string, fd: number): boolean
+    getPrimaryKeys(table: string): Record
     /**
      * Import a table to the database from file `path`.
      * @param path path to a table file
      * @returns %TRUE on success
      */
-    import(path: string | null): boolean
+    import(path: string): boolean
     isReadonly(): boolean
-    isTablePersistent(table: string | null): boolean
+    isTablePersistent(table: string): boolean
     merge(merge: Database, table: string | null): boolean
 
     // Class property signals of Libmsi-1.0.Libmsi.Database
@@ -222,7 +222,7 @@ class Database extends GObject.Object {
      * @param persist path to output MSI file
      * @returns a new #LibmsiDatabase on success, %NULL if fail.
      */
-    constructor(path: string | null, flags: number, persist: string | null) 
+    constructor(path: string, flags: number, persist: string | null) 
     /**
      * Create a MSI database or open from `path`.
      * @constructor 
@@ -231,7 +231,7 @@ class Database extends GObject.Object {
      * @param persist path to output MSI file
      * @returns a new #LibmsiDatabase on success, %NULL if fail.
      */
-    static new(path: string | null, flags: number, persist: string | null): Database
+    static new(path: string, flags: number, persist: string | null): Database
     _init(config?: Database.ConstructorProperties): void
 }
 
@@ -285,7 +285,7 @@ interface Query {
     /**
      * Call this to get more information on the last query error.
      */
-    getError(): /* column */ string | null
+    getError(): /* column */ string
 
     // Class property signals of Libmsi-1.0.Libmsi.Query
 
@@ -328,7 +328,7 @@ class Query extends GObject.Object {
      * @param query a SQL query
      * @returns a new %LibmsiQuery on success, %NULL on failure
      */
-    constructor(database: Database, query: string | null) 
+    constructor(database: Database, query: string) 
     /**
      * Create a SQL query for `database`.
      * @constructor 
@@ -336,7 +336,7 @@ class Query extends GObject.Object {
      * @param query a SQL query
      * @returns a new %LibmsiQuery on success, %NULL on failure
      */
-    static new(database: Database, query: string | null): Query
+    static new(database: Database, query: string): Query
     _init(config?: Query.ConstructorProperties): void
 }
 
@@ -395,7 +395,7 @@ interface Record {
      * @param filename a filename or %NULL
      * @returns %TRUE on success.
      */
-    loadStream(field: number, filename: string | null): boolean
+    loadStream(field: number, filename: string): boolean
     /**
      * Set the %field to the integer value %val.
      * @param field a field identifier
@@ -418,7 +418,7 @@ interface Record {
      * @param val a string or %NULL
      * @returns %TRUE on success.
      */
-    setString(field: number, val: string | null): boolean
+    setString(field: number, val: string): boolean
 
     // Class property signals of Libmsi-1.0.Libmsi.Record
 
@@ -482,7 +482,7 @@ interface SummaryInfo {
     getInt(prop: Property): number
     getProperties(): Property[]
     getPropertyType(prop: Property): PropertyType
-    getString(prop: Property): string | null
+    getString(prop: Property): string
     /**
      * Save summary informations to the associated database.
      * @returns %TRUE on success
@@ -514,7 +514,7 @@ interface SummaryInfo {
      * @param value a string value
      * @returns %TRUE on success
      */
-    setString(prop: Property, value: string | null): boolean
+    setString(prop: Property, value: string): boolean
 
     // Class property signals of Libmsi-1.0.Libmsi.SummaryInfo
 

@@ -117,7 +117,7 @@ export class PersonaStore extends Folks.PersonaStore {
     static new(s: EDataServer.Source): PersonaStore
     static with_source_registry(r: EDataServer.SourceRegistry, s: EDataServer.Source): PersonaStore
     _init(config?: PersonaStore.ConstructorProperties): void
-    static create_address_book(id: string | null, _callback_: Gio.AsyncReadyCallback<PersonaStore> | null): void
+    static create_address_book(id: string, _callback_: Gio.AsyncReadyCallback<PersonaStore> | null): void
     static create_address_book_finish(_res_: Gio.AsyncResult): void
     static remove_address_book(store: PersonaStore, _callback_: Gio.AsyncReadyCallback<PersonaStore> | null): void
     static remove_address_book_finish(_res_: Gio.AsyncResult): void
@@ -161,7 +161,7 @@ export interface Persona extends Folks.AntiLinkable, Folks.AvatarDetails, Folks.
     change_in_google_personal_group(in_personal: boolean, _callback_: Gio.AsyncReadyCallback<this> | null): void
     change_in_google_personal_group_finish(_res_: Gio.AsyncResult): void
     get_contact(): EBookContacts.Contact
-    get_contact_id(): string | null
+    get_contact_id(): string
     get_system_groups(): Gee.Set | null
     set_system_groups(value: Gee.Set | null): void
     get_in_google_personal_group(): boolean

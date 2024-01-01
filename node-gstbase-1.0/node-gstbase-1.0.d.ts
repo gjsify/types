@@ -124,11 +124,11 @@ const BASE_PARSE_FLAG_LOST_SYNC: number
 /**
  * The name of the templates for the sink pad.
  */
-const BASE_TRANSFORM_SINK_NAME: string | null
+const BASE_TRANSFORM_SINK_NAME: string
 /**
  * The name of the templates for the source pad.
  */
-const BASE_TRANSFORM_SRC_NAME: string | null
+const BASE_TRANSFORM_SRC_NAME: string
 /**
  * Tries to find what type of data is flowing from the given source #GstPad.
  * 
@@ -268,7 +268,7 @@ function typeFindHelperForDataWithExtension(obj: Gst.Object | null, data: number
  * @param extension an extension
  * @returns the #GstCaps corresponding to     @extension, or %NULL if no type could be found. The caller should free     the caps returned with gst_caps_unref().
  */
-function typeFindHelperForExtension(obj: Gst.Object | null, extension: string | null): Gst.Caps | null
+function typeFindHelperForExtension(obj: Gst.Object | null, extension: string): Gst.Caps | null
 /**
  * Utility function to do pull-based typefinding. Unlike gst_type_find_helper()
  * however, this function will use the specified function `func` to obtain the
@@ -5645,7 +5645,7 @@ interface ByteWriter {
      * @param data UTF8 string to write
      * @returns %TRUE if the value could be written
      */
-    putStringUtf8(data: string | null): boolean
+    putStringUtf8(data: string): boolean
     /**
      * Writes a unsigned big endian 16 bit integer to `writer`.
      * @param val Value to write

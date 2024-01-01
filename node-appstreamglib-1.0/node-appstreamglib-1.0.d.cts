@@ -2063,13 +2063,13 @@ export const IMAGE_THUMBNAIL_WIDTH: number
  * @param idKind the string.
  * @returns a #AsIdKind or %AS_ID_KIND_UNKNOWN for unknown
  */
-export function idKindFromString(idKind: string | null): IdKind
+export function idKindFromString(idKind: string): IdKind
 /**
  * Converts the enumerated value to an text representation.
  * @param idKind the #AsIdKind.
  * @returns string version of @id_kind
  */
-export function idKindToString(idKind: IdKind): string | null
+export function idKindToString(idKind: IdKind): string
 export function infErrorQuark(): GLib.Quark
 /**
  * Parses the DriverVer string into a recognisable version and timestamp;
@@ -2089,7 +2089,7 @@ export function infGetDriverVersion(keyfile: GLib.KeyFile, timestamp: number): s
  * @param flags #AsInfLoadFlags, e.g. %AS_INF_LOAD_FLAG_NONE
  * @returns %TRUE for success
  */
-export function infLoadData(keyfile: GLib.KeyFile, data: string | null, flags: InfLoadFlags): boolean
+export function infLoadData(keyfile: GLib.KeyFile, data: string, flags: InfLoadFlags): boolean
 /**
  * Repairs an .inf file and opens it as a keyfile.
  * @param keyfile a #GKeyFile
@@ -2097,26 +2097,26 @@ export function infLoadData(keyfile: GLib.KeyFile, data: string | null, flags: I
  * @param flags #AsInfLoadFlags, e.g. %AS_INF_LOAD_FLAG_NONE
  * @returns %TRUE for success
  */
-export function infLoadFile(keyfile: GLib.KeyFile, filename: string | null, flags: InfLoadFlags): boolean
+export function infLoadFile(keyfile: GLib.KeyFile, filename: string, flags: InfLoadFlags): boolean
 /**
  * Converts the text representation to an enumerated value.
  * @param kudoKind the string.
  * @returns a #AsKudoKind or %AS_KUDO_KIND_UNKNOWN for unknown
  */
-export function kudoKindFromString(kudoKind: string | null): KudoKind
+export function kudoKindFromString(kudoKind: string): KudoKind
 /**
  * Converts the enumerated value to an text representation.
  * @param kudoKind the `AsKudoKind`.
  * @returns string version of @kudo_kind
  */
-export function kudoKindToString(kudoKind: KudoKind): string | null
+export function kudoKindToString(kudoKind: KudoKind): string
 /**
  * Converts an XML description into a printable form.
  * @param markup the text to copy.
  * @param format the #AsMarkupConvertFormat, e.g. %AS_MARKUP_CONVERT_FORMAT_MARKDOWN
  * @returns a newly allocated %NULL terminated string
  */
-export function markupConvert(markup: string | null, format: MarkupConvertFormat): string | null
+export function markupConvert(markup: string, format: MarkupConvertFormat): string | null
 /**
  * Converts an XML description into a printable form.
  * @param markup the text to copy.
@@ -2124,20 +2124,20 @@ export function markupConvert(markup: string | null, format: MarkupConvertFormat
  * @param flags the #AsMarkupConvertFlag, e.g. %AS_MARKUP_CONVERT_FLAG_IGNORE_ERRORS
  * @returns a newly allocated %NULL terminated string
  */
-export function markupConvertFull(markup: string | null, format: MarkupConvertFormat, flags: MarkupConvertFlag): string | null
+export function markupConvertFull(markup: string, format: MarkupConvertFormat, flags: MarkupConvertFlag): string | null
 /**
  * Converts an XML description into a printable form.
  * @param markup the text to copy.
  * @returns a newly allocated %NULL terminated string
  */
-export function markupConvertSimple(markup: string | null): string | null
+export function markupConvertSimple(markup: string): string | null
 /**
  * Imports text and converts to AppStream markup.
  * @param text the text to import.
  * @param format the #AsMarkupConvertFormat, e.g. %AS_MARKUP_CONVERT_FORMAT_SIMPLE
  * @returns appstream markup, or %NULL in event of an error
  */
-export function markupImport(text: string | null, format: MarkupConvertFormat): string | null
+export function markupImport(text: string, format: MarkupConvertFormat): string | null
 /**
  * Splits up a long line into an array of smaller strings, each being no longer
  * than `line_len`. Words are not split.
@@ -2145,13 +2145,13 @@ export function markupImport(text: string | null, format: MarkupConvertFormat): 
  * @param lineLen the maximum length of the output line
  * @returns lines, or %NULL in event of an error
  */
-export function markupStrsplitWords(text: string | null, lineLen: number): string[]
+export function markupStrsplitWords(text: string, lineLen: number): string[]
 /**
  * Validates some markup.
  * @param markup the text to validate
  * @returns %TRUE if the appstream description was valid
  */
-export function markupValidate(markup: string | null): boolean
+export function markupValidate(markup: string): boolean
 export function nodeErrorQuark(): GLib.Quark
 /**
  * Gets a node attribute, e.g. "false"
@@ -2159,47 +2159,47 @@ export function nodeErrorQuark(): GLib.Quark
  * @param key the attribute key
  * @returns string value
  */
-export function nodeGetAttribute(node: GLib.Node, key: string | null): string | null
+export function nodeGetAttribute(node: GLib.Node, key: string): string
 /**
  * Gets a node attribute, e.g. 34
  * @param node a #AsNode
  * @param key the attribute key
  * @returns integer value, or %G_MAXINT for error
  */
-export function nodeGetAttributeAsInt(node: GLib.Node, key: string | null): number
+export function nodeGetAttributeAsInt(node: GLib.Node, key: string): number
 /**
  * Gets a node attribute, e.g. 34
  * @param node a #AsNode
  * @param key the attribute key
  * @returns integer value, or %G_MAXINT for error
  */
-export function nodeGetAttributeAsUint(node: GLib.Node, key: string | null): number
+export function nodeGetAttributeAsUint(node: GLib.Node, key: string): number
 /**
  * Gets the node data, e.g. "Copyright 2014 Richard Hughes"
  * @param node a #AsNode
  * @returns string value, or %NULL
  */
-export function nodeGetComment(node: GLib.Node): string | null
+export function nodeGetComment(node: GLib.Node): string
 /**
  * Gets the node data, e.g. "paragraph text"
  * @param node a #AsNode
  * @returns string value
  */
-export function nodeGetData(node: GLib.Node): string | null
+export function nodeGetData(node: GLib.Node): string
 /**
  * Extracts localized values from the DOM tree
  * @param node a #AsNode
  * @param key the key to use, e.g. "copyright"
  * @returns A hash table with the locale (e.g. en_GB) as the key
  */
-export function nodeGetLocalized(node: GLib.Node, key: string | null): GLib.HashTable
+export function nodeGetLocalized(node: GLib.Node, key: string): GLib.HashTable
 /**
  * Gets the 'best' locale version of a specific data value.
  * @param node a #AsNode.
  * @param key the tag name.
  * @returns the string value, or %NULL if there was no data
  */
-export function nodeGetLocalizedBest(node: GLib.Node, key: string | null): string | null
+export function nodeGetLocalizedBest(node: GLib.Node, key: string): string
 /**
  * Denormalize AppData data like this:
  * 
@@ -2233,7 +2233,7 @@ export function nodeGetLocalizedUnwrap(node: GLib.Node): GLib.HashTable
  * @param node a #AsNode
  * @returns string value
  */
-export function nodeGetName(node: GLib.Node): string | null
+export function nodeGetName(node: GLib.Node): string
 /**
  * Gets the node tag enum.
  * @param node a #AsNode
@@ -2248,7 +2248,7 @@ export function nodeGetTag(node: GLib.Node): Tag
  * @param hash the hash table with the key as the key to use in the XML.
  * @param insertFlags any %AsNodeInsertFlags.
  */
-export function nodeInsertHash(parent: GLib.Node, name: string | null, attrKey: string | null, hash: GLib.HashTable, insertFlags: NodeInsertFlags): void
+export function nodeInsertHash(parent: GLib.Node, name: string, attrKey: string, hash: GLib.HashTable, insertFlags: NodeInsertFlags): void
 /**
  * Inserts a localized key into the DOM.
  * @param parent a parent #AsNode.
@@ -2256,7 +2256,7 @@ export function nodeInsertHash(parent: GLib.Node, name: string | null, attrKey: 
  * @param localized the hash table of data, with the locale as the key.
  * @param insertFlags any %AsNodeInsertFlags.
  */
-export function nodeInsertLocalized(parent: GLib.Node, name: string | null, localized: GLib.HashTable, insertFlags: NodeInsertFlags): void
+export function nodeInsertLocalized(parent: GLib.Node, name: string, localized: GLib.HashTable, insertFlags: NodeInsertFlags): void
 /**
  * Converts a node and it's children to XML.
  * @param node a #AsNode.
@@ -2274,19 +2274,19 @@ export function nodeUnref(node: GLib.Node): void
  * @param sizeKind the string.
  * @returns a #AsSizeKind or %AS_SIZE_KIND_UNKNOWN for unknown
  */
-export function sizeKindFromString(sizeKind: string | null): SizeKind
+export function sizeKindFromString(sizeKind: string): SizeKind
 /**
  * Converts the enumerated value to an text representation.
  * @param sizeKind the #AsSizeKind.
  * @returns string version of @size_kind
  */
-export function sizeKindToString(sizeKind: SizeKind): string | null
+export function sizeKindToString(sizeKind: SizeKind): string
 /**
  * Converts the text representation to an enumerated value.
  * @param tag the string.
  * @returns a %AsTag, or %AS_TAG_UNKNOWN if not known.
  */
-export function tagFromString(tag: string | null): Tag
+export function tagFromString(tag: string): Tag
 /**
  * Converts the text representation to an enumerated value also converting
  * legacy key names.
@@ -2294,37 +2294,37 @@ export function tagFromString(tag: string | null): Tag
  * @param flags the #AsTagFlags e.g. %AS_TAG_FLAG_USE_FALLBACKS
  * @returns a %AsTag, or %AS_TAG_UNKNOWN if not known.
  */
-export function tagFromStringFull(tag: string | null, flags: TagFlags): Tag
+export function tagFromStringFull(tag: string, flags: TagFlags): Tag
 /**
  * Converts the enumerated value to an text representation.
  * @param tag the %AsTag value.
  * @returns string version of @tag
  */
-export function tagToString(tag: Tag): string | null
+export function tagToString(tag: Tag): string
 /**
  * Converts the text representation to an enumerated value.
  * @param urgencyKind the string.
  * @returns a #AsUrgencyKind or %AS_URGENCY_KIND_UNKNOWN for unknown
  */
-export function urgencyKindFromString(urgencyKind: string | null): UrgencyKind
+export function urgencyKindFromString(urgencyKind: string): UrgencyKind
 /**
  * Converts the enumerated value to an text representation.
  * @param urgencyKind the #AsUrgencyKind.
  * @returns string version of @urgency_kind
  */
-export function urgencyKindToString(urgencyKind: UrgencyKind): string | null
+export function urgencyKindToString(urgencyKind: UrgencyKind): string
 /**
  * Converts the text representation to an enumerated value.
  * @param urlKind the string.
  * @returns a #AsUrlKind or %AS_URL_KIND_UNKNOWN for unknown
  */
-export function urlKindFromString(urlKind: string | null): UrlKind
+export function urlKindFromString(urlKind: string): UrlKind
 /**
  * Converts the enumerated value to an text representation.
  * @param urlKind the `AsUrlKind`.
  * @returns string version of @url_kind
  */
-export function urlKindToString(urlKind: UrlKind): string | null
+export function urlKindToString(urlKind: UrlKind): string
 /**
  * Fixes a string to be a valid AppStream ID.
  * 
@@ -2332,14 +2332,14 @@ export function urlKindToString(urlKind: UrlKind): string | null
  * @param str a string to build the AppStream ID from
  * @returns a valid AppStream ID, or %NULL if @str is invalid
  */
-export function utilsAppstreamIdBuild(str: string | null): string | null
+export function utilsAppstreamIdBuild(str: string): string | null
 /**
  * Checks to see if a string is a valid AppStream ID. A valid AppStream ID only
  * contains alphanumeric chars, dots and dashes.
  * @param str a string
  * @returns %TRUE if the string is a valid AppStream ID
  */
-export function utilsAppstreamIdValid(str: string | null): boolean
+export function utilsAppstreamIdValid(str: string): boolean
 export function utilsErrorQuark(): GLib.Quark
 /**
  * Finds an icon filename from a filesystem root.
@@ -2347,7 +2347,7 @@ export function utilsErrorQuark(): GLib.Quark
  * @param search the icon search name, e.g. "microphone.svg"
  * @returns a newly allocated %NULL terminated string
  */
-export function utilsFindIconFilename(destdir: string | null, search: string | null): string | null
+export function utilsFindIconFilename(destdir: string, search: string): string | null
 /**
  * Finds an icon filename from a filesystem root.
  * @param destdir the destdir.
@@ -2355,7 +2355,7 @@ export function utilsFindIconFilename(destdir: string | null, search: string | n
  * @param flags A #AsUtilsFindIconFlag bitfield
  * @returns a newly allocated %NULL terminated string
  */
-export function utilsFindIconFilenameFull(destdir: string | null, search: string | null, flags: UtilsFindIconFlag): string | null
+export function utilsFindIconFilenameFull(destdir: string, search: string, flags: UtilsFindIconFlag): string | null
 /**
  * Returns a GUID for some data. This uses a hash and so even small
  * differences in the `data` will produce radically different return values.
@@ -2367,7 +2367,7 @@ export function utilsFindIconFilenameFull(destdir: string | null, search: string
  * @param dataLen length of `data`
  * @returns A new GUID, or %NULL if the namespace_id was invalid
  */
-export function utilsGuidFromData(namespaceId: string | null, data: number, dataLen: number): string | null
+export function utilsGuidFromData(namespaceId: string, data: number, dataLen: number): string | null
 /**
  * Returns a GUID for a given string. This uses a hash and so even small
  * differences in the `str` will produce radically different return values.
@@ -2382,13 +2382,13 @@ export function utilsGuidFromData(namespaceId: string | null, data: number, data
  * @param str A source string to use as a key
  * @returns A new GUID, or %NULL if the string was invalid
  */
-export function utilsGuidFromString(str: string | null): string | null
+export function utilsGuidFromString(str: string): string | null
 /**
  * Checks the source string is a valid string GUID descriptor.
  * @param guid string to check
  * @returns %TRUE if @guid was a valid GUID, %FALSE otherwise
  */
-export function utilsGuidIsValid(guid: string | null): boolean
+export function utilsGuidIsValid(guid: string): boolean
 /**
  * Installs an AppData, MetaInfo, AppStream XML or AppStream Icon metadata file.
  * @param location the #AsUtilsLocation, e.g. %AS_UTILS_LOCATION_CACHE
@@ -2397,57 +2397,57 @@ export function utilsGuidIsValid(guid: string | null): boolean
  * @param destdir the destdir to use, or %NULL
  * @returns %TRUE for success, %FALSE if error is set
  */
-export function utilsInstallFilename(location: UtilsLocation, filename: string | null, origin: string | null, destdir: string | null): boolean
+export function utilsInstallFilename(location: UtilsLocation, filename: string, origin: string, destdir: string): boolean
 /**
  * Searches the known list of blacklisted desktop IDs.
  * @param desktopId a desktop ID, e.g. "gimp.desktop"
  * @returns %TRUE if the desktop ID is blacklisted
  */
-export function utilsIsBlacklistedId(desktopId: string | null): boolean
+export function utilsIsBlacklistedId(desktopId: string): boolean
 /**
  * Searches the known list of registered category IDs.
  * @param categoryId a desktop ID, e.g. "AudioVideoEditing"
  * @returns %TRUE if the category ID is valid
  */
-export function utilsIsCategoryId(categoryId: string | null): boolean
+export function utilsIsCategoryId(categoryId: string): boolean
 /**
  * Searches the known list of registered environment IDs.
  * @param environmentId a desktop ID, e.g. "GNOME"
  * @returns %TRUE if the environment ID is valid
  */
-export function utilsIsEnvironmentId(environmentId: string | null): boolean
+export function utilsIsEnvironmentId(environmentId: string): boolean
 /**
  * Checks the licence string to check it being a valid licence.
  * NOTE: SPDX licences can't typically contain brackets.
  * @param license a SPDX license string, e.g. "CC-BY-3.0 and GFDL-1.3"
  * @returns %TRUE if the license is a valid "SPDX license"
  */
-export function utilsIsSpdxLicense(license: string | null): boolean
+export function utilsIsSpdxLicense(license: string): boolean
 /**
  * Searches the known list of SPDX license IDs.
  * @param licenseId a single SPDX license ID, e.g. "CC-BY-3.0"
  * @returns %TRUE if the license ID is a valid "SPDX license ID"
  */
-export function utilsIsSpdxLicenseId(licenseId: string | null): boolean
+export function utilsIsSpdxLicenseId(licenseId: string): boolean
 /**
  * Searches the known list of stock icons.
  * @param name an icon name
  * @returns %TRUE if the icon is a "stock icon name" and does not need to be          included in the AppStream icon tarball
  */
-export function utilsIsStockIconName(name: string | null): boolean
+export function utilsIsStockIconName(name: string): boolean
 /**
  * Converts a non-SPDX license into an SPDX format string where possible.
  * @param license a not-quite SPDX license string, e.g. "GPLv3+"
  * @returns the best-effort SPDX license string
  */
-export function utilsLicenseToSpdx(license: string | null): string | null
+export function utilsLicenseToSpdx(license: string): string | null
 /**
  * Checks the search token if it is valid. Valid tokens are at least 3 chars in
  * length, not common words like "and", and do not contain markup.
  * @param token the search token
  * @returns %TRUE is the search token was valid
  */
-export function utilsSearchTokenValid(token: string | null): boolean
+export function utilsSearchTokenValid(token: string): boolean
 /**
  * Splits up a string into tokens and returns tokens that are suitable for
  * searching. This includes taking out common words and casefolding the
@@ -2455,7 +2455,7 @@ export function utilsSearchTokenValid(token: string | null): boolean
  * @param search the search string
  * @returns Valid tokens to search for, or %NULL for error
  */
-export function utilsSearchTokenize(search: string | null): string[]
+export function utilsSearchTokenize(search: string): string[]
 /**
  * De-tokenizes the SPDX licenses into a string.
  * @param licenseTokens license tokens, typically from as_utils_spdx_license_tokenize()
@@ -2471,7 +2471,7 @@ export function utilsSpdxLicenseDetokenize(licenseTokens: string | null): string
  * @param license a license string, e.g. "LGPLv2+ and (QPL or GPLv2) and MIT"
  * @returns array of strings, or %NULL for invalid
  */
-export function utilsSpdxLicenseTokenize(license: string | null): string[]
+export function utilsSpdxLicenseTokenize(license: string): string[]
 /**
  * Performs multiple search and replace operations on the given string.
  * @param string The #GString to operate on
@@ -2479,7 +2479,7 @@ export function utilsSpdxLicenseTokenize(license: string | null): string[]
  * @param replace The text to use for substitutions
  * @returns the number of replacements done, or 0 if @search is not found.
  */
-export function utilsStringReplace(string: GLib.String, search: string | null, replace: string | null): number
+export function utilsStringReplace(string: GLib.String, search: string, replace: string): number
 /**
  * Builds a valid unique ID using available data.
  * @param scope a #AsAppScope e.g. %AS_APP_SCOPE_SYSTEM
@@ -2490,14 +2490,14 @@ export function utilsStringReplace(string: GLib.String, search: string | null, r
  * @param branch Branch, e.g. '3-20' or 'master'
  * @returns a unique name, or %NULL for error;
  */
-export function utilsUniqueIdBuild(scope: AppScope, bundleKind: BundleKind, origin: string | null, kind: AppKind, id: string | null, branch: string | null): string | null
+export function utilsUniqueIdBuild(scope: AppScope, bundleKind: BundleKind, origin: string, kind: AppKind, id: string, branch: string): string | null
 /**
  * Checks two unique IDs for equality allowing globs to match.
  * @param uniqueId1 a unique ID
  * @param uniqueId2 another unique ID
  * @returns %TRUE if the ID's should be considered equal.
  */
-export function utilsUniqueIdEqual(uniqueId1: string | null, uniqueId2: string | null): boolean
+export function utilsUniqueIdEqual(uniqueId1: string, uniqueId2: string): boolean
 /**
  * Converts a unique-id to a hash value.
  * 
@@ -2509,7 +2509,7 @@ export function utilsUniqueIdEqual(uniqueId1: string | null, uniqueId2: string |
  * @param uniqueId a unique ID
  * @returns a hash value corresponding to the key
  */
-export function utilsUniqueIdHash(uniqueId: string | null): number
+export function utilsUniqueIdHash(uniqueId: string): number
 /**
  * Checks two unique IDs for equality allowing globs to match, whilst also
  * allowing clients to whitelist sections that have to match.
@@ -2518,21 +2518,21 @@ export function utilsUniqueIdHash(uniqueId: string | null): number
  * @param matchFlags a #AsUniqueIdMatchFlags bitfield, e.g. %AS_UNIQUE_ID_MATCH_FLAG_ID
  * @returns %TRUE if the ID's should be considered equal.
  */
-export function utilsUniqueIdMatch(uniqueId1: string | null, uniqueId2: string | null, matchFlags: UniqueIdMatchFlags): boolean
+export function utilsUniqueIdMatch(uniqueId1: string, uniqueId2: string, matchFlags: UniqueIdMatchFlags): boolean
 /**
  * Checks if a unique ID is valid i.e. has the correct number of
  * sections.
  * @param uniqueId a unique ID
  * @returns %TRUE if the ID is valid
  */
-export function utilsUniqueIdValid(uniqueId: string | null): boolean
+export function utilsUniqueIdValid(uniqueId: string): boolean
 /**
  * Compares version numbers for sorting.
  * @param versionA the release version, e.g. 1.2.3
  * @param versionB the release version, e.g. 1.2.3.1
  * @returns -1 if a < b, +1 if a > b, 0 if they are equal, and %G_MAXINT on error
  */
-export function utilsVercmp(versionA: string | null, versionB: string | null): number
+export function utilsVercmp(versionA: string, versionB: string): number
 /**
  * Compares version numbers for sorting.
  * @param versionA the release version, e.g. 1.2.3
@@ -2540,7 +2540,7 @@ export function utilsVercmp(versionA: string | null, versionB: string | null): n
  * @param flags some #AsVersionCompareFlag
  * @returns -1 if a < b, +1 if a > b, 0 if they are equal, and %G_MAXINT on error
  */
-export function utilsVercmpFull(versionA: string | null, versionB: string | null, flags: VersionCompareFlag): number
+export function utilsVercmpFull(versionA: string, versionB: string, flags: VersionCompareFlag): number
 /**
  * Returns a dotted decimal version string from a 16 bit number.
  * @param val A uint16le version number
@@ -2569,7 +2569,7 @@ export function utilsVersionFromUint32(val: number, flags: VersionParseFlag): st
  * @param version A version number
  * @returns A version number, e.g. "1.0.3"
  */
-export function utilsVersionParse(version: string | null): string | null
+export function utilsVersionParse(version: string): string | null
 export module Agreement {
 
     // Constructor properties interface
@@ -2611,7 +2611,7 @@ export interface Agreement {
      * Gets the agreement version_id.
      * @returns a string, e.g. "1.4a", or NULL
      */
-    getVersionId(): string | null
+    getVersionId(): string
     /**
      * Sets the agreement kind.
      * @param kind the agreement kind, e.g. %AS_AGREEMENT_KIND_EULA
@@ -2621,7 +2621,7 @@ export interface Agreement {
      * Sets the agreement version identifier.
      * @param versionId the agreement version ID, e.g. "1.4a"
      */
-    setVersionId(versionId: string | null): void
+    setVersionId(versionId: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Agreement
 
@@ -2665,13 +2665,13 @@ export class Agreement extends GObject.Object {
      * @param value the string.
      * @returns a #AsAgreementKind or %AS_AGREEMENT_KIND_UNKNOWN for unknown
      */
-    static kindFromString(value: string | null): AgreementKind
+    static kindFromString(value: string): AgreementKind
     /**
      * Converts the enumerated value to an text representation.
      * @param value the #AsAgreementKind.
      * @returns string version of @value
      */
-    static kindToString(value: AgreementKind): string | null
+    static kindToString(value: AgreementKind): string
 }
 
 export module AgreementSection {
@@ -2700,35 +2700,35 @@ export interface AgreementSection {
      * @param locale the locale. e.g. "en_GB"
      * @returns a string, e.g. "GDPR", or NULL
      */
-    getDescription(locale: string | null): string | null
+    getDescription(locale: string | null): string
     /**
      * Gets the agreement section kind.
      * @returns a string, e.g. "GDPR", or NULL
      */
-    getKind(): string | null
+    getKind(): string
     /**
      * Gets the agreement section name.
      * @param locale the locale. e.g. "en_GB"
      * @returns a string, e.g. "GDPR", or NULL
      */
-    getName(locale: string | null): string | null
+    getName(locale: string | null): string
     /**
      * Sets the agreement section description.
      * @param locale the locale. e.g. "en_GB"
      * @param desc the rating desc, e.g. "GDPR"
      */
-    setDescription(locale: string | null, desc: string | null): void
+    setDescription(locale: string | null, desc: string): void
     /**
      * Sets the agreement section kind.
      * @param kind the rating kind, e.g. "GDPR"
      */
-    setKind(kind: string | null): void
+    setKind(kind: string): void
     /**
      * Sets the agreement section name.
      * @param locale the locale. e.g. "en_GB"
      * @param name the rating name, e.g. "GDPR"
      */
-    setName(locale: string | null, name: string | null): void
+    setName(locale: string | null, name: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.AgreementSection
 
@@ -2804,7 +2804,7 @@ export interface App {
      * Adds a package name to an application.
      * @param arch the package name.
      */
-    addArch(arch: string | null): void
+    addArch(arch: string): void
     /**
      * Adds a bundle to an application.
      * @param bundle a #AsBundle instance.
@@ -2814,12 +2814,12 @@ export interface App {
      * Adds a menu category to the application.
      * @param category the category.
      */
-    addCategory(category: string | null): void
+    addCategory(category: string): void
     /**
      * Adds a desktop that requires this application to be installed.
      * @param compulsoryForDesktop the desktop string, e.g. "GNOME".
      */
-    addCompulsoryForDesktop(compulsoryForDesktop: string | null): void
+    addCompulsoryForDesktop(compulsoryForDesktop: string): void
     /**
      * Adds a content_rating to an application.
      * @param contentRating a #AsContentRating instance.
@@ -2829,7 +2829,7 @@ export interface App {
      * Adds a parent ID to the application.
      * @param extends_ the full ID, e.g. "eclipse.desktop".
      */
-    addExtends(extends_: string | null): void
+    addExtends(extends_: string): void
     /**
      * Add a format the application has been built from.
      * @param format the #AsFormat.
@@ -2845,12 +2845,12 @@ export interface App {
      * @param locale the locale. e.g. "en_GB"
      * @param keyword the keyword.
      */
-    addKeyword(locale: string | null, keyword: string | null): void
+    addKeyword(locale: string | null, keyword: string): void
     /**
      * Add a kudo the application has obtained.
      * @param kudo the kudo.
      */
-    addKudo(kudo: string | null): void
+    addKudo(kudo: string): void
     /**
      * Add a kudo the application has obtained.
      * @param kudoKind the #AsKudoKind.
@@ -2872,22 +2872,22 @@ export interface App {
      * @param key the metadata key.
      * @param value the value to store.
      */
-    addMetadata(key: string | null, value: string | null): void
+    addMetadata(key: string, value: string | null): void
     /**
      * Adds a mimetype the application can process.
      * @param mimetype the mimetype.
      */
-    addMimetype(mimetype: string | null): void
+    addMimetype(mimetype: string): void
     /**
      * Add a permission the application has obtained.
      * @param permission the permission.
      */
-    addPermission(permission: string | null): void
+    addPermission(permission: string): void
     /**
      * Adds a package name to an application.
      * @param pkgname the package name.
      */
-    addPkgname(pkgname: string | null): void
+    addPkgname(pkgname: string): void
     /**
      * Adds a provide to an application.
      * @param provide a #AsProvide instance.
@@ -2933,7 +2933,7 @@ export interface App {
      * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE
      * @param url the full URL.
      */
-    addUrl(urlKind: UrlKind, url: string | null): void
+    addUrl(urlKind: UrlKind, url: string): void
     /**
      * Converts all the icons in the application to a specific kind.
      * @param kind the AsIconKind, e.g. %AS_ICON_KIND_EMBEDDED.
@@ -2980,7 +2980,7 @@ export interface App {
      * Gets the branch for the application.
      * @returns string, or %NULL if unset
      */
-    getBranch(): string | null
+    getBranch(): string
     /**
      * Finds the default bundle.
      * @returns a #AsBundle, or %NULL
@@ -3001,7 +3001,7 @@ export interface App {
      * @param locale the locale. e.g. "en_GB"
      * @returns string, or %NULL if unset
      */
-    getComment(locale: string | null): string | null
+    getComment(locale: string | null): string
     /**
      * Gets the comments set for the application.
      * @returns hash table of comments
@@ -3017,7 +3017,7 @@ export interface App {
      * @param kind a ratings kind, e.g. "oars-1.0"
      * @returns a #AsContentRating or NULL for not found
      */
-    getContentRating(kind: string | null): ContentRating
+    getContentRating(kind: string): ContentRating
     /**
      * Gets any content_ratings the application has defined.
      * @returns an array
@@ -3028,7 +3028,7 @@ export interface App {
      * @param locale the locale. e.g. "en_GB"
      * @returns string, or %NULL if unset
      */
-    getDescription(locale: string | null): string | null
+    getDescription(locale: string | null): string
     /**
      * Gets the descriptions set for the application.
      * @returns hash table of descriptions
@@ -3039,7 +3039,7 @@ export interface App {
      * @param locale the locale. e.g. "en_GB"
      * @returns string, or %NULL if unset
      */
-    getDeveloperName(locale: string | null): string | null
+    getDeveloperName(locale: string | null): string
     /**
      * Gets the developer_names set for the application.
      * @returns hash table of developer_names
@@ -3055,7 +3055,7 @@ export interface App {
      * @param filename a filename, e.g. "/home/hughsie/dave.desktop"
      * @returns A #AsFormat, or %NULL if not found
      */
-    getFormatByFilename(filename: string | null): Format
+    getFormatByFilename(filename: string): Format
     /**
      * Searches the list of formats for a specific format kind.
      * @param kind a #AsFormatKind, e.g. %AS_FORMAT_KIND_APPDATA
@@ -3088,7 +3088,7 @@ export interface App {
      * Gets the application icon path.
      * @returns string, or %NULL if unset
      */
-    getIconPath(): string | null
+    getIconPath(): string
     /**
      * Gets any icons the application has defined.
      * @returns an array
@@ -3098,13 +3098,13 @@ export interface App {
      * Gets the full ID value.
      * @returns the ID, e.g. "org.gnome.Software.desktop"
      */
-    getId(): string | null
+    getId(): string
     /**
      * Returns a filename which represents the applications ID, e.g. "gimp.desktop"
      * becomes "gimp" and is used for cache directories.
      * @returns A utf8 filename
      */
-    getIdFilename(): string | null
+    getIdFilename(): string
     /**
      * Gets the ID kind.
      * @returns enumerated value
@@ -3114,7 +3114,7 @@ export interface App {
      * Gets the full ID value, stripping any prefix.
      * @returns the ID, e.g. "org.gnome.Software.desktop"
      */
-    getIdNoPrefix(): string | null
+    getIdNoPrefix(): string
     /**
      * Gets any keywords the application should match against.
      * @param locale the locale. e.g. "en_GB"
@@ -3173,12 +3173,12 @@ export interface App {
      * @param key the metadata key.
      * @returns string, or %NULL if unset
      */
-    getMetadataItem(key: string | null): string | null
+    getMetadataItem(key: string): string
     /**
      * Gets the application project license.
      * @returns string, or %NULL if unset
      */
-    getMetadataLicense(): string | null
+    getMetadataLicense(): string
     /**
      * Gets any mimetypes the application will register.
      * @returns an array
@@ -3189,7 +3189,7 @@ export interface App {
      * @param locale the locale. e.g. "en_GB"
      * @returns string, or %NULL if unset
      */
-    getName(locale: string | null): string | null
+    getName(locale: string | null): string
     /**
      * Gets the names set for the application.
      * @returns hash table of names
@@ -3199,7 +3199,7 @@ export interface App {
      * Gets the application origin.
      * @returns the origin string, or %NULL if unset
      */
-    getOrigin(): string | null
+    getOrigin(): string
     /**
      * Gets any permissions the application has obtained.
      * @returns an array
@@ -3209,7 +3209,7 @@ export interface App {
      * Gets the default package name.
      * @returns string, or %NULL if unset
      */
-    getPkgnameDefault(): string | null
+    getPkgnameDefault(): string
     /**
      * Gets the package names (if any) for the application.
      * @returns an array
@@ -3224,12 +3224,12 @@ export interface App {
      * Gets an application project group.
      * @returns string, or %NULL if unset
      */
-    getProjectGroup(): string | null
+    getProjectGroup(): string
     /**
      * Gets the application project license.
      * @returns string, or %NULL if unset
      */
-    getProjectLicense(): string | null
+    getProjectLicense(): string
     /**
      * Gets all the provides the application has.
      * @returns an array
@@ -3240,13 +3240,13 @@ export interface App {
      * @param version a version string
      * @returns a release, or %NULL
      */
-    getRelease(version: string | null): Release
+    getRelease(version: string): Release
     /**
      * Gets a specific release from the application.
      * @param version a release version number, e.g. "1.2.3"
      * @returns a release, or %NULL
      */
-    getReleaseByVersion(version: string | null): Release
+    getReleaseByVersion(version: string): Release
     /**
      * Gets the default (newest) release from the application.
      * @returns a release, or %NULL
@@ -3263,7 +3263,7 @@ export interface App {
      * @param value a string, or NULL, e.g. `bootloader`
      * @returns A #AsRequire, or %NULL for not found
      */
-    getRequireByValue(kind: RequireKind, value: string | null): Require
+    getRequireByValue(kind: RequireKind, value: string): Require
     /**
      * Gets any requires the application has defined. A requirement could be that
      * a firmware version has to be below a defined version or that another
@@ -3301,7 +3301,7 @@ export interface App {
      * Gets the default source filename the instance was populated from.
      * @returns string, or %NULL if unset
      */
-    getSourceFile(): string | null
+    getSourceFile(): string
     /**
      * Gets the source kind, i.e. where the AsApp came from.
      * @returns enumerated value
@@ -3313,7 +3313,7 @@ export interface App {
      * entry set.
      * @returns string, or %NULL if unset
      */
-    getSourcePkgname(): string | null
+    getSourcePkgname(): string
     /**
      * Gets the application state.
      * @returns enumerated value
@@ -3338,18 +3338,18 @@ export interface App {
      * Gets the unique ID value to represent the component.
      * @returns the unique ID, e.g. `system/package/fedora/desktop/gimp.desktop/master`
      */
-    getUniqueId(): string | null
+    getUniqueId(): string
     /**
      * Gets the application upstream update contact email.
      * @returns string, or %NULL if unset
      */
-    getUpdateContact(): string | null
+    getUpdateContact(): string
     /**
      * Gets a URL.
      * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE.
      * @returns string, or %NULL if unset
      */
-    getUrlItem(urlKind: UrlKind): string | null
+    getUrlItem(urlKind: UrlKind): string
     /**
      * Gets the URLs set for the application.
      * @returns hash table of URLs
@@ -3365,19 +3365,19 @@ export interface App {
      * @param category a category string, e.g. "DesktopSettings"
      * @returns %TRUE if the application has got the specified category
      */
-    hasCategory(category: string | null): boolean
+    hasCategory(category: string): boolean
     /**
      * Searches the compulsory for desktop list for a specific item.
      * @param desktop a desktop string, e.g. "GNOME"
      * @returns %TRUE if the application is compulsory for a specific desktop
      */
-    hasCompulsoryForDesktop(desktop: string | null): boolean
+    hasCompulsoryForDesktop(desktop: string): boolean
     /**
      * Searches the kudo list for a specific item.
      * @param kudo a kudo string, e.g. "SearchProvider"
      * @returns %TRUE if the application has got the specified kudo
      */
-    hasKudo(kudo: string | null): boolean
+    hasKudo(kudo: string): boolean
     /**
      * Searches the kudo list for a specific item.
      * @param kudo a #AsKudoKind, e.g. %AS_KUDO_KIND_SEARCH_PROVIDER
@@ -3389,7 +3389,7 @@ export interface App {
      * @param permission a permission string, e.g. "Network"
      * @returns %TRUE if the application has got the specified permission
      */
-    hasPermission(permission: string | null): boolean
+    hasPermission(permission: string): boolean
     /**
      * Queries to see if an application has a specific attribute.
      * @param quirk the #AsAppQuirk, e.g. %AS_APP_QUIRK_PROVENANCE
@@ -3411,12 +3411,12 @@ export interface App {
      * @param flags #AsAppParseFlags, e.g. %AS_APP_PARSE_FLAG_USE_HEURISTICS
      * @returns %TRUE for success
      */
-    parseFile(filename: string | null, flags: number): boolean
+    parseFile(filename: string, flags: number): boolean
     /**
      * Removed a menu category from the application.
      * @param category the category.
      */
-    removeCategory(category: string | null): void
+    removeCategory(category: string): void
     /**
      * Removes a format the application has been built from.
      * @param format the #AsFormat.
@@ -3426,23 +3426,23 @@ export interface App {
      * Remove a kudo the application has obtained.
      * @param kudo the kudo.
      */
-    removeKudo(kudo: string | null): void
+    removeKudo(kudo: string): void
     /**
      * Removes a metadata item from the application.
      * @param key the metadata key.
      */
-    removeMetadata(key: string | null): void
+    removeMetadata(key: string): void
     /**
      * Removes a reason to not include the application in the metadata.
      * @param description veto string
      */
-    removeVeto(description: string | null): void
+    removeVeto(description: string): void
     /**
      * Searches application data for a specific keyword.
      * @param search the search term.
      * @returns a match scrore, where 0 is no match and 100 is the best match.
      */
-    searchMatches(search: string | null): number
+    searchMatches(search: string): number
     /**
      * Searches application data for all the specific keywords.
      * @param search the search terms.
@@ -3453,35 +3453,35 @@ export interface App {
      * Set the branch that the instance was sourced from.
      * @param branch the branch, e.g. "master" or "3-16".
      */
-    setBranch(branch: string | null): void
+    setBranch(branch: string): void
     /**
      * Sets the application summary for a specific locale.
      * @param locale the locale. e.g. "en_GB"
      * @param comment the application summary.
      */
-    setComment(locale: string | null, comment: string | null): void
+    setComment(locale: string | null, comment: string): void
     /**
      * Sets the application description markup for a specific locale.
      * @param locale the locale. e.g. "en_GB"
      * @param description the application description.
      */
-    setDescription(locale: string | null, description: string | null): void
+    setDescription(locale: string | null, description: string): void
     /**
      * Sets the application developer name for a specific locale.
      * @param locale the locale. e.g. "en_GB"
      * @param developerName the application developer name.
      */
-    setDeveloperName(locale: string | null, developerName: string | null): void
+    setDeveloperName(locale: string | null, developerName: string): void
     /**
      * Sets the icon path, where local icons would be found.
      * @param iconPath the local path.
      */
-    setIconPath(iconPath: string | null): void
+    setIconPath(iconPath: string): void
     /**
      * Sets a new application ID. Any invalid characters will be automatically replaced.
      * @param id the new _full_ application ID, e.g. "org.gnome.Software.desktop".
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Sets the application kind.
      * @param idKind the #AsAppKind.
@@ -3501,18 +3501,18 @@ export interface App {
      * Set the project license.
      * @param metadataLicense the project license string.
      */
-    setMetadataLicense(metadataLicense: string | null): void
+    setMetadataLicense(metadataLicense: string): void
     /**
      * Sets the application name for a specific locale.
      * @param locale the locale. e.g. "en_GB"
      * @param name the application name.
      */
-    setName(locale: string | null, name: string | null): void
+    setName(locale: string | null, name: string): void
     /**
      * Sets the application origin.
      * @param origin the origin, e.g. "fedora-21"
      */
-    setOrigin(origin: string | null): void
+    setOrigin(origin: string): void
     /**
      * Sets the application priority, where 0 is default and positive numbers
      * are better than negative numbers.
@@ -3523,12 +3523,12 @@ export interface App {
      * Set any project affiliation.
      * @param projectGroup the project group, e.g. "GNOME".
      */
-    setProjectGroup(projectGroup: string | null): void
+    setProjectGroup(projectGroup: string): void
     /**
      * Set the project license.
      * @param projectLicense the project license string.
      */
-    setProjectLicense(projectLicense: string | null): void
+    setProjectLicense(projectLicense: string): void
     /**
      * Sets the scope of the application.
      * @param scope the #AsAppScope.
@@ -3544,7 +3544,7 @@ export interface App {
      * Set the file that the instance was sourced from.
      * @param sourceFile the filename.
      */
-    setSourceFile(sourceFile: string | null): void
+    setSourceFile(sourceFile: string): void
     /**
      * Sets the source kind.
      * @param sourceKind the #AsFormatKind.
@@ -3554,7 +3554,7 @@ export interface App {
      * Set the project license.
      * @param sourcePkgname the project license string.
      */
-    setSourcePkgname(sourcePkgname: string | null): void
+    setSourcePkgname(sourcePkgname: string): void
     /**
      * Sets the application state.
      * @param state the #AsAppState.
@@ -3570,7 +3570,7 @@ export interface App {
      * Set the project license.
      * @param updateContact the project license string.
      */
-    setUpdateContact(updateContact: string | null): void
+    setUpdateContact(updateContact: string): void
     /**
      * Copies information from the donor to the application object.
      * @param donor the donor.
@@ -3644,61 +3644,61 @@ export class App extends GObject.Object {
      * @param filename a file name
      * @returns A #AsFormatKind, e.g. %AS_FORMAT_KIND_APPSTREAM.
      */
-    static guessSourceKind(filename: string | null): FormatKind
+    static guessSourceKind(filename: string): FormatKind
     /**
      * Converts the text representation to an enumerated value.
      * @param kind the string.
      * @returns a #AsAppKind or %AS_APP_KIND_UNKNOWN for unknown
      */
-    static kindFromString(kind: string | null): AppKind
+    static kindFromString(kind: string): AppKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsAppKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: AppKind): string | null
+    static kindToString(kind: AppKind): string
     /**
      * Converts the text representation to an enumerated value.
      * @param mergeKind a source kind string
      * @returns A #AsAppMergeKind, e.g. %AS_APP_MERGE_KIND_REPLACE.
      */
-    static mergeKindFromString(mergeKind: string | null): AppMergeKind
+    static mergeKindFromString(mergeKind: string): AppMergeKind
     /**
      * Converts the enumerated value to an text representation.
      * @param mergeKind the #AsAppMergeKind, e.g. %AS_APP_MERGE_KIND_REPLACE
      * @returns string version of @merge_kind, or %NULL for unknown
      */
-    static mergeKindToString(mergeKind: AppMergeKind): string | null
+    static mergeKindToString(mergeKind: AppMergeKind): string
     /**
      * Converts the text representation to an enumerated value.
      * @param scope a source kind string
      * @returns A #AsAppScope, e.g. %AS_APP_SCOPE_SYSTEM.
      */
-    static scopeFromString(scope: string | null): AppScope
+    static scopeFromString(scope: string): AppScope
     /**
      * Converts the enumerated value to an text representation.
      * @param scope the #AsAppScope, e.g. %AS_APP_SCOPE_SYSTEM
      * @returns string version of @scope, or %NULL for unknown
      */
-    static scopeToString(scope: AppScope): string | null
+    static scopeToString(scope: AppScope): string
     /**
      * Converts the text representation to an enumerated value.
      * @param sourceKind a source kind string
      * @returns A #AsFormatKind, e.g. %AS_FORMAT_KIND_APPSTREAM.
      */
-    static sourceKindFromString(sourceKind: string | null): FormatKind
+    static sourceKindFromString(sourceKind: string): FormatKind
     /**
      * Converts the enumerated value to an text representation.
      * @param sourceKind the #AsFormatKind.
      * @returns string version of @source_kind, or %NULL for unknown
      */
-    static sourceKindToString(sourceKind: FormatKind): string | null
+    static sourceKindToString(sourceKind: FormatKind): string
     /**
      * Converts the enumerated value to an text representation.
      * @param state the #AsAppState.
      * @returns string version of @state, or %NULL for unknown
      */
-    static stateToString(state: AppState): string | null
+    static stateToString(state: AppState): string
 }
 
 export module Bundle {
@@ -3726,7 +3726,7 @@ export interface Bundle {
      * Gets the ID for this bundle.
      * @returns ID, e.g. "foobar-1.0.2"
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the bundle kind.
      * @returns the #AsBundleKind
@@ -3736,17 +3736,17 @@ export interface Bundle {
      * Gets the runtime required for this bundle.
      * @returns Runtime identifier, e.g. "org.gnome.Platform/i386/master"
      */
-    getRuntime(): string | null
+    getRuntime(): string
     /**
      * Gets the SDK for this bundle.
      * @returns SDK identifier, e.g. "org.gnome.Sdk/i386/master"
      */
-    getSdk(): string | null
+    getSdk(): string
     /**
      * Sets the ID for this bundle.
      * @param id the URL.
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Sets the bundle kind.
      * @param kind the #AsBundleKind, e.g. %AS_BUNDLE_KIND_FLATPAK.
@@ -3756,12 +3756,12 @@ export interface Bundle {
      * Sets the runtime required for this bundle.
      * @param runtime the URL.
      */
-    setRuntime(runtime: string | null): void
+    setRuntime(runtime: string): void
     /**
      * Sets the SDK for this bundle.
      * @param sdk the URL.
      */
-    setSdk(sdk: string | null): void
+    setSdk(sdk: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Bundle
 
@@ -3805,13 +3805,13 @@ export class Bundle extends GObject.Object {
      * @param kind the string.
      * @returns a #AsBundleKind, or %AS_BUNDLE_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): BundleKind
+    static kindFromString(kind: string): BundleKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsBundleKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: BundleKind): string | null
+    static kindToString(kind: BundleKind): string
 }
 
 export module Checksum {
@@ -3839,7 +3839,7 @@ export interface Checksum {
      * Gets the full qualified URL for the checksum, usually pointing at some mirror.
      * @returns URL
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the checksum kind.
      * @returns the #GChecksumType
@@ -3854,12 +3854,12 @@ export interface Checksum {
      * Gets the suggested value the checksum, including file extension.
      * @returns filename
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Sets the filename used to generate the checksum.
      * @param filename the URL.
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sets the checksum kind.
      * @param kind the #GChecksumType, e.g. %G_CHECKSUM_SHA1.
@@ -3874,7 +3874,7 @@ export interface Checksum {
      * Sets the checksum value filename.
      * @param value the new filename value.
      */
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Checksum
 
@@ -3918,13 +3918,13 @@ export class Checksum extends GObject.Object {
      * @param target a source kind string
      * @returns A #AsChecksumTarget, e.g. %AS_CHECKSUM_TARGET_CONTAINER.
      */
-    static targetFromString(target: string | null): ChecksumTarget
+    static targetFromString(target: string): ChecksumTarget
     /**
      * Converts the enumerated value to an text representation.
      * @param target the #AsChecksumTarget.
      * @returns string version of @target, or %NULL for unknown
      */
-    static targetToString(target: ChecksumTarget): string | null
+    static targetToString(target: ChecksumTarget): string
 }
 
 export module ContentRating {
@@ -3953,12 +3953,12 @@ export interface ContentRating {
      * @param id a content rating ID, e.g. `money-gambling`.
      * @param value a #AsContentRatingValue, e.g. %AS_CONTENT_RATING_VALUE_MODERATE.
      */
-    addAttribute(id: string | null, value: ContentRatingValue): void
+    addAttribute(id: string, value: ContentRatingValue): void
     /**
      * Gets the content_rating kind.
      * @returns a string, e.g. "oars-1.0", or NULL
      */
-    getKind(): string | null
+    getKind(): string
     /**
      * Gets the lowest Common Sense Media approved age for the content_rating block.
      * NOTE: these numbers are based on the data and descriptions available from
@@ -3985,12 +3985,12 @@ export interface ContentRating {
      * @param id A ratings ID, e.g. `violence-bloodshed`.
      * @returns the #AsContentRatingValue, or %AS_CONTENT_RATING_VALUE_UNKNOWN
      */
-    getValue(id: string | null): ContentRatingValue
+    getValue(id: string): ContentRatingValue
     /**
      * Sets the content rating kind.
      * @param kind the rating kind, e.g. "oars-1.0"
      */
-    setKind(kind: string | null): void
+    setKind(kind: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.ContentRating
 
@@ -4045,7 +4045,7 @@ export class ContentRating extends GObject.Object {
      * @param age the CSM age
      * @returns the #AsContentRatingValue, or %AS_CONTENT_RATING_VALUE_UNKNOWN if    unknown
      */
-    static attributeFromCsmAge(id: string | null, age: number): ContentRatingValue
+    static attributeFromCsmAge(id: string, age: number): ContentRatingValue
     /**
      * Get a human-readable description of what content would be expected to
      * require the content rating attribute given by `id` and `value`.
@@ -4053,14 +4053,14 @@ export class ContentRating extends GObject.Object {
      * @param value the #AsContentRatingValue, e.g. %AS_CONTENT_RATING_VALUE_INTENSE
      * @returns a human-readable description of @id and @value
      */
-    static attributeGetDescription(id: string | null, value: ContentRatingValue): string | null
+    static attributeGetDescription(id: string, value: ContentRatingValue): string
     /**
      * Gets the Common Sense Media approved age for a specific rating level.
      * @param id the subsection ID e.g. `violence-cartoon`
      * @param value the #AsContentRatingValue, e.g. %AS_CONTENT_RATING_VALUE_INTENSE
      * @returns The age in years, or 0 for no details.
      */
-    static attributeToCsmAge(id: string | null, value: ContentRatingValue): number
+    static attributeToCsmAge(id: string, value: ContentRatingValue): number
     /**
      * Returns a list of all the valid OARS content rating attribute IDs as could
      * be passed to as_content_rating_add_attribute() or
@@ -4083,7 +4083,7 @@ export class ContentRating extends GObject.Object {
      * @param locale a locale, in the format described in `man 3 setlocale`
      * @returns the most relevant #AsContentRatingSystem
      */
-    static systemFromLocale(locale: string | null): ContentRatingSystem
+    static systemFromLocale(locale: string): ContentRatingSystem
     /**
      * Get the CSM ages corresponding to the entries returned by
      * as_content_rating_system_get_formatted_ages() for this `system`.
@@ -4111,13 +4111,13 @@ export class ContentRating extends GObject.Object {
      * @param value the string.
      * @returns a #AsContentRatingValue or %AS_CONTENT_RATING_VALUE_UNKNOWN for unknown
      */
-    static valueFromString(value: string | null): ContentRatingValue
+    static valueFromString(value: string): ContentRatingValue
     /**
      * Converts the enumerated value to an text representation.
      * @param value the #AsContentRatingValue.
      * @returns string version of @value
      */
-    static valueToString(value: ContentRatingValue): string | null
+    static valueToString(value: ContentRatingValue): string
 }
 
 export module Format {
@@ -4151,7 +4151,7 @@ export interface Format {
      * Gets the filename required for this format.
      * @returns Runtime identifier, e.g. "org.gnome.Platform/i386/master"
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the format kind.
      * @returns the #AsFormatKind
@@ -4161,7 +4161,7 @@ export interface Format {
      * Sets the filename required for this format.
      * @param filename the URL.
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sets the format kind.
      * @param kind the #AsFormatKind, e.g. %AS_FORMAT_KIND_APPDATA.
@@ -4210,14 +4210,14 @@ export class Format extends GObject.Object {
      * @param filename a file name
      * @returns A #AsFormatKind, e.g. %AS_FORMAT_KIND_APPSTREAM.
      */
-    static guessKind(filename: string | null): FormatKind
+    static guessKind(filename: string): FormatKind
     /**
      * Converts the text representation to an enumerated value.
      * @param kind the string.
      * @returns a #AsFormatKind, or %AS_FORMAT_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): FormatKind
-    static kindToString(kind: FormatKind): string | null
+    static kindFromString(kind: string): FormatKind
+    static kindToString(kind: FormatKind): string
 }
 
 export module Icon {
@@ -4252,7 +4252,7 @@ export interface Icon {
      * NOTE: This is only set for icons of type %AS_ICON_KIND_LOCAL
      * @returns the absolute filename on disk
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the icon height.
      * @returns height in pixels
@@ -4267,7 +4267,7 @@ export interface Icon {
      * Gets the name of the icon, e.g. "epiphany.png"
      * @returns the basename of the icon
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the icon pixbuf if set.
      * @returns the #GdkPixbuf, or %NULL
@@ -4277,7 +4277,7 @@ export interface Icon {
      * Gets the suggested prefix of the icon.
      * @returns filename
      */
-    getPrefix(): string | null
+    getPrefix(): string
     /**
      * Gets the icon scale.
      * @returns scale factor
@@ -4288,7 +4288,7 @@ export interface Icon {
      * NOTE: This is only set for icons of type %AS_ICON_KIND_REMOTE
      * @returns the fully qualified URL
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * Gets the icon width.
      * @returns width in pixels
@@ -4304,7 +4304,7 @@ export interface Icon {
      * Sets the icon absolute filename.
      * @param filename the new icon URL.
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sets the icon height.
      * @param height the height in pixels.
@@ -4319,7 +4319,7 @@ export interface Icon {
      * Sets the basename to use for the icon.
      * @param name the icon name, e.g. "gimp.png"
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the icon pixbuf.
      * @param pixbuf the #GdkPixbuf, or %NULL
@@ -4329,7 +4329,7 @@ export interface Icon {
      * Sets the icon prefix filename.
      * @param prefix the new filename prefix.
      */
-    setPrefix(prefix: string | null): void
+    setPrefix(prefix: string): void
     /**
      * Sets the icon scale.
      * @param scale the scale as a factor.
@@ -4339,7 +4339,7 @@ export interface Icon {
      * Sets the icon URL.
      * @param url the new icon URL.
      */
-    setUrl(url: string | null): void
+    setUrl(url: string): void
     /**
      * Sets the icon width.
      * @param width the width in pixels.
@@ -4389,13 +4389,13 @@ export class Icon extends GObject.Object {
      * @param iconKind the string.
      * @returns a #AsIconKind or %AS_ICON_KIND_UNKNOWN for unknown
      */
-    static kindFromString(iconKind: string | null): IconKind
+    static kindFromString(iconKind: string): IconKind
     /**
      * Converts the enumerated value to an text representation.
      * @param iconKind the `AsIconKind`.
      * @returns string version of @icon_kind
      */
-    static kindToString(iconKind: IconKind): string | null
+    static kindToString(iconKind: IconKind): string
 }
 
 export module Image {
@@ -4429,7 +4429,7 @@ export interface Image {
      * Gets the suggested basename the image, including file extension.
      * @returns filename
      */
-    getBasename(): string | null
+    getBasename(): string
     /**
      * Gets the image height.
      * @returns height in pixels
@@ -4444,12 +4444,12 @@ export interface Image {
      * Gets the locale of the image.
      * @returns locale, or %NULL
      */
-    getLocale(): string | null
+    getLocale(): string
     /**
      * Gets the string representation of the pixbuf hash value.
      * @returns string representing the MD5 sum, or %NULL if unset
      */
-    getMd5(): string | null
+    getMd5(): string
     /**
      * Gets the image pixbuf if set.
      * @returns the #GdkPixbuf, or %NULL
@@ -4459,7 +4459,7 @@ export interface Image {
      * Gets the full qualified URL for the image, usually pointing at some mirror.
      * @returns URL
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * Gets the image width.
      * @returns width in pixels
@@ -4473,7 +4473,7 @@ export interface Image {
      * @param filename filename to read from
      * @returns %TRUE for success
      */
-    loadFilename(filename: string | null): boolean
+    loadFilename(filename: string): boolean
     /**
      * Reads an image from a file.
      * @param filename filename to read from
@@ -4482,7 +4482,7 @@ export interface Image {
      * @param flags a #AsImageLoadFlags, e.g. %AS_IMAGE_LOAD_FLAG_NONE
      * @returns %TRUE for success
      */
-    loadFilenameFull(filename: string | null, destSize: number, srcSizeMin: number, flags: ImageLoadFlags): boolean
+    loadFilenameFull(filename: string, destSize: number, srcSizeMin: number, flags: ImageLoadFlags): boolean
     /**
      * Saves a pixbuf to a file.
      * @param filename filename to write to
@@ -4491,7 +4491,7 @@ export interface Image {
      * @param flags some #AsImageSaveFlags values, e.g. %AS_IMAGE_SAVE_FLAG_PAD_16_9
      * @returns %TRUE for success
      */
-    saveFilename(filename: string | null, width: number, height: number, flags: ImageSaveFlags): boolean
+    saveFilename(filename: string, width: number, height: number, flags: ImageSaveFlags): boolean
     /**
      * Resamples a pixbuf to a specific size.
      * @param width target width, or 0 for default
@@ -4504,7 +4504,7 @@ export interface Image {
      * Sets the image basename filename.
      * @param basename the new filename basename.
      */
-    setBasename(basename: string | null): void
+    setBasename(basename: string): void
     /**
      * Sets the image height.
      * @param height the height in pixels.
@@ -4519,7 +4519,7 @@ export interface Image {
      * Sets the image locale.
      * @param locale the new image locale, e.g. "en_GB" or %NULL.
      */
-    setLocale(locale: string | null): void
+    setLocale(locale: string): void
     /**
      * Sets the image pixbuf.
      * @param pixbuf the #GdkPixbuf, or %NULL
@@ -4529,7 +4529,7 @@ export interface Image {
      * Sets the fully-qualified mirror URL to use for the image.
      * @param url the URL.
      */
-    setUrl(url: string | null): void
+    setUrl(url: string): void
     /**
      * Sets the image width.
      * @param width the width in pixels.
@@ -4578,13 +4578,13 @@ export class Image extends GObject.Object {
      * @param kind the string.
      * @returns a #AsImageKind, or %AS_IMAGE_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): ImageKind
+    static kindFromString(kind: string): ImageKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsImageKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: ImageKind): string | null
+    static kindToString(kind: ImageKind): string
 }
 
 export module Launchable {
@@ -4617,7 +4617,7 @@ export interface Launchable {
      * Gets the value to use for the launchable.
      * @returns usually a desktop ID, e.g. "gimp.desktop"
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Sets the launchable kind.
      * @param kind the #AsLaunchableKind, e.g. %AS_LAUNCHABLE_KIND_DESKTOP_ID.
@@ -4627,7 +4627,7 @@ export interface Launchable {
      * Sets the fully-qualified mirror URL to use for the launchable.
      * @param value the URL.
      */
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Launchable
 
@@ -4671,13 +4671,13 @@ export class Launchable extends GObject.Object {
      * @param kind the string.
      * @returns a #AsLaunchableKind, or %AS_LAUNCHABLE_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): LaunchableKind
+    static kindFromString(kind: string): LaunchableKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsLaunchableKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: LaunchableKind): string | null
+    static kindToString(kind: LaunchableKind): string
 }
 
 export module Problem {
@@ -4715,7 +4715,7 @@ export interface Problem {
      * Gets the specific message for the problem.
      * @returns the message
      */
-    getMessage(): string | null
+    getMessage(): string
     /**
      * Sets the problem kind.
      * @param kind the #AsProblemKind.
@@ -4730,7 +4730,7 @@ export interface Problem {
      * Sets a message on the problem.
      * @param message the message text.
      */
-    setMessage(message: string | null): void
+    setMessage(message: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Problem
 
@@ -4774,7 +4774,7 @@ export class Problem extends GObject.Object {
      * @param kind the #AsProblemKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: ProblemKind): string | null
+    static kindToString(kind: ProblemKind): string
 }
 
 export module Provide {
@@ -4807,7 +4807,7 @@ export interface Provide {
      * Gets the full qualified URL for the provide, usually pointing at some mirror.
      * @returns URL
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Sets the provide kind.
      * @param kind the #AsProvideKind, e.g. %AS_PROVIDE_KIND_LIBRARY.
@@ -4817,7 +4817,7 @@ export interface Provide {
      * Sets the fully-qualified mirror URL to use for the provide.
      * @param value the URL.
      */
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Provide
 
@@ -4861,13 +4861,13 @@ export class Provide extends GObject.Object {
      * @param kind the string.
      * @returns a #AsProvideKind, or %AS_PROVIDE_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): ProvideKind
+    static kindFromString(kind: string): ProvideKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsProvideKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: ProvideKind): string | null
+    static kindToString(kind: ProvideKind): string
 }
 
 export module Release {
@@ -4900,19 +4900,19 @@ export interface Release {
      * Adds a release location.
      * @param location the location string.
      */
-    addLocation(location: string | null): void
+    addLocation(location: string): void
     /**
      * Gets the release blob, which is typically firmware file data.
      * @param filename a filename
      * @returns a #GBytes, or %NULL for not set
      */
-    getBlob(filename: string | null): any
+    getBlob(filename: string): any
     /**
      * Gets the checksum for a release.
      * @param fn a file basename
      * @returns an #AsChecksum, or %NULL for not found
      */
-    getChecksumByFn(fn: string | null): Checksum
+    getChecksumByFn(fn: string): Checksum
     /**
      * Gets the checksum for a release.
      * @param target a #AsChecksumTarget, e.g. %AS_CHECKSUM_TARGET_CONTAINER
@@ -4929,7 +4929,7 @@ export interface Release {
      * @param locale the locale. e.g. "en_GB"
      * @returns markup, or %NULL for not set or invalid
      */
-    getDescription(locale: string | null): string | null
+    getDescription(locale: string | null): string
     /**
      * Gets the typical install duration.
      * @returns install duration in seconds, or 0 for unset
@@ -4944,7 +4944,7 @@ export interface Release {
      * Gets the default release location, typically a URL.
      * @returns string, or %NULL for not set or invalid
      */
-    getLocationDefault(): string | null
+    getLocationDefault(): string
     /**
      * Gets the release locations, typically URLs.
      * @returns list of locations
@@ -4976,12 +4976,12 @@ export interface Release {
      * @param urlKind the URL kind, e.g. %AS_URL_KIND_HOMEPAGE.
      * @returns string, or %NULL if unset
      */
-    getUrl(urlKind: UrlKind): string | null
+    getUrl(urlKind: UrlKind): string
     /**
      * Gets the release version.
      * @returns string, or %NULL for not set or invalid
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Sets a release blob, which is typically firmware data or a detached signature.
      * 
@@ -4989,13 +4989,13 @@ export interface Release {
      * @param filename a filename
      * @param blob the #GBytes data blob
      */
-    setBlob(filename: string | null, blob: any): void
+    setBlob(filename: string, blob: any): void
     /**
      * Sets the description release markup.
      * @param locale the locale. e.g. "en_GB"
      * @param description the description markup.
      */
-    setDescription(locale: string | null, description: string | null): void
+    setDescription(locale: string | null, description: string): void
     /**
      * Sets the typical duration of the install.
      * @param installDuration the install duration in seconds
@@ -5032,12 +5032,12 @@ export interface Release {
      * @param urlKind the URL kind, e.g. %AS_URL_KIND_DETAILS
      * @param url the full URL.
      */
-    setUrl(urlKind: UrlKind, url: string | null): void
+    setUrl(urlKind: UrlKind, url: string): void
     /**
      * Sets the release version.
      * @param version the version string.
      */
-    setVersion(version: string | null): void
+    setVersion(version: string): void
     /**
      * Compares two release.
      * @param rel2 a #AsRelease instance.
@@ -5087,25 +5087,25 @@ export class Release extends GObject.Object {
      * @param kindStr the string.
      * @returns an #AsReleaseKind or %AS_RELEASE_KIND_UNKNOWN for unknown
      */
-    static kindFromString(kindStr: string | null): ReleaseKind
+    static kindFromString(kindStr: string): ReleaseKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsReleaseKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: ReleaseKind): string | null
+    static kindToString(kind: ReleaseKind): string
     /**
      * Converts the text representation to an enumerated value.
      * @param state a string
      * @returns A #AsReleaseState, e.g. %AS_RELEASE_STATE_INSTALLED.
      */
-    static stateFromString(state: string | null): ReleaseState
+    static stateFromString(state: string): ReleaseState
     /**
      * Converts the enumerated value to an text representation.
      * @param state the #AsReleaseState, e.g. %AS_RELEASE_STATE_INSTALLED
      * @returns string version of @state, or %NULL for unknown
      */
-    static stateToString(state: ReleaseState): string | null
+    static stateToString(state: ReleaseState): string
 }
 
 export module Require {
@@ -5149,12 +5149,12 @@ export interface Require {
      * Gets the require value if set.
      * @returns the value, e.g. "bootloader"
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Gets the require version if set.
      * @returns the version, e.g. "0.1.2"
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Sets the require version comparison type.
      * @param compare the #AsRequireKind, e.g. %AS_REQUIRE_KIND_ID.
@@ -5169,18 +5169,18 @@ export interface Require {
      * Sets the require value.
      * @param value an require version, e.g. `firmware`
      */
-    setValue(value: string | null): void
+    setValue(value: string): void
     /**
      * Sets the require version.
      * @param version an version number, e.g. `0.1.2`
      */
-    setVersion(version: string | null): void
+    setVersion(version: string): void
     /**
      * Compares the version number of the requirement with a predicate.
      * @param version a version number, e.g. `0.1.3`
      * @returns %TRUE if the predicate was true
      */
-    versionCompare(version: string | null): boolean
+    versionCompare(version: string): boolean
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Require
 
@@ -5224,25 +5224,25 @@ export class Require extends GObject.Object {
      * @param compare the string.
      * @returns a #AsRequireCompare, or 		     %AS_REQUIRE_COMPARE_UNKNOWN for unknown.
      */
-    static compareFromString(compare: string | null): RequireCompare
+    static compareFromString(compare: string): RequireCompare
     /**
      * Converts the enumerated value to an text representation.
      * @param compare the #AsRequireCompare.
      * @returns string version of @compare
      */
-    static compareToString(compare: RequireCompare): string | null
+    static compareToString(compare: RequireCompare): string
     /**
      * Converts the text representation to an enumerated value.
      * @param kind the string.
      * @returns a #AsRequireKind, or %AS_REQUIRE_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): RequireKind
+    static kindFromString(kind: string): RequireKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsRequireKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: RequireKind): string | null
+    static kindToString(kind: RequireKind): string
 }
 
 export module Review {
@@ -5301,7 +5301,7 @@ export interface Review {
      * @param key a string
      * @param value a string
      */
-    addMetadata(key: string | null, value: string | null): void
+    addMetadata(key: string, value: string): void
     /**
      * Checks if two reviews are the same.
      * @param review2 a #AsReview instance.
@@ -5317,7 +5317,7 @@ export interface Review {
      * Gets the multi-line review text that forms the body of the review.
      * @returns the string, or %NULL
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets any flags set on the review, for example if the user has already
      * voted on the review or if the user wrote the review themselves.
@@ -5328,12 +5328,12 @@ export interface Review {
      * Gets the review id.
      * @returns the review identifier, e.g. "deadbeef"
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the locale for the review.
      * @returns the string, or %NULL
      */
-    getLocale(): string | null
+    getLocale(): string
     /**
      * Gets some metadata from a review object.
      * It is left for the the plugin to use this method as required, but a
@@ -5341,7 +5341,7 @@ export interface Review {
      * @param key a string
      * @returns A string value, or %NULL for not found
      */
-    getMetadataItem(key: string | null): string | null
+    getMetadataItem(key: string): string
     /**
      * This allows the UI to sort reviews into the correct order.
      * Higher numbers indicate a more important or relevant review.
@@ -5357,22 +5357,22 @@ export interface Review {
      * Gets the name of the reviewer.
      * @returns the reviewer ID, e.g. "deadbeef", or %NULL
      */
-    getReviewerId(): string | null
+    getReviewerId(): string
     /**
      * Gets the name of the reviewer.
      * @returns the reviewer name, e.g. "David Smith", or %NULL
      */
-    getReviewerName(): string | null
+    getReviewerName(): string
     /**
      * Gets the review summary.
      * @returns the one-line summary, e.g. "Awesome application"
      */
-    getSummary(): string | null
+    getSummary(): string
     /**
      * Gets the version string for the application being reviewed..
      * @returns the version string, e.g. "0.1.2", or %NULL for unset
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Sets the date the review was originally submitted.
      * @param date a #GDateTime, or %NULL
@@ -5382,7 +5382,7 @@ export interface Review {
      * Sets the multi-line review text that forms the body of the review.
      * @param description multi-line description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets any flags set on the review, for example if the user has already
      * voted on the review or if the user wrote the review themselves.
@@ -5393,12 +5393,12 @@ export interface Review {
      * Sets the review identifier that is unique to each review.
      * @param id review identifier, e.g. "deadbeef"
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Sets the locale for the review.
      * @param locale locale, e.g. "en_GB"
      */
-    setLocale(locale: string | null): void
+    setLocale(locale: string): void
     /**
      * Sets the priority for the review, where positive numbers indicate
      * a better review for the specific user.
@@ -5414,22 +5414,22 @@ export interface Review {
      * Sets the name of the reviewer, which can be left unset.
      * @param reviewerId the reviewer ID, e.g. "deadbeef"
      */
-    setReviewerId(reviewerId: string | null): void
+    setReviewerId(reviewerId: string): void
     /**
      * Sets the name of the reviewer, which can be left unset.
      * @param reviewerName the reviewer name, e.g. "David Smith"
      */
-    setReviewerName(reviewerName: string | null): void
+    setReviewerName(reviewerName: string): void
     /**
      * Sets the one-line summary that may be displayed in bold.
      * @param summary a one-line summary, e.g. "Awesome application"
      */
-    setSummary(summary: string | null): void
+    setSummary(summary: string): void
     /**
      * Sets the version string for the application being reviewed.
      * @param version a version string, e.g. "0.1.2"
      */
-    setVersion(version: string | null): void
+    setVersion(version: string): void
 
     // Class property signals of AppStreamGlib-1.0.AppStreamGlib.Review
 
@@ -5557,7 +5557,7 @@ export interface Screenshot {
      * @param locale the locale, or %NULL. e.g. "en_GB"
      * @returns the caption
      */
-    getCaption(locale: string | null): string | null
+    getCaption(locale: string | null): string
     /**
      * Gets the AsImage closest to the target size. The #AsImage may not actually
      * be the requested size, and the application may have to pad / rescale the
@@ -5590,7 +5590,7 @@ export interface Screenshot {
      * @param locale a locale, e.g. `en_GB`
      * @returns an array
      */
-    getImagesForLocale(locale: string | null): Image[]
+    getImagesForLocale(locale: string): Image[]
     /**
      * Gets the screenshot kind.
      * @returns a #AsScreenshotKind
@@ -5611,7 +5611,7 @@ export interface Screenshot {
      * @param locale the locale, or %NULL. e.g. "en_GB"
      * @param caption the caption text.
      */
-    setCaption(locale: string | null, caption: string | null): void
+    setCaption(locale: string | null, caption: string): void
     /**
      * Sets the screenshot kind.
      * @param kind the #AsScreenshotKind.
@@ -5665,13 +5665,13 @@ export class Screenshot extends GObject.Object {
      * @param kind the string.
      * @returns a %AsScreenshotKind, or                           %AS_SCREENSHOT_KIND_UNKNOWN if not known.
      */
-    static kindFromString(kind: string | null): ScreenshotKind
+    static kindFromString(kind: string): ScreenshotKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsScreenshotKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: ScreenshotKind): string | null
+    static kindToString(kind: ScreenshotKind): string
 }
 
 export module Store {
@@ -5758,7 +5758,7 @@ export interface Store {
      * will have to be re-added.
      * @param key the metadata key.
      */
-    addMetadataIndex(key: string | null): void
+    addMetadataIndex(key: string): void
     /**
      * Converts all the icons in the store to a specific kind.
      * @param kind the AsIconKind, e.g. %AS_ICON_KIND_EMBEDDED.
@@ -5775,7 +5775,7 @@ export interface Store {
      * @param id the application full ID.
      * @returns an array
      */
-    dupAppsByIdMerge(id: string | null): App[]
+    dupAppsByIdMerge(id: string): App[]
     /**
      * Parses an appstream store presented as an archive. This is typically
      * a .cab file containing firmware files.
@@ -5810,7 +5810,7 @@ export interface Store {
      * @param iconRoot the icon path, or %NULL for the default.
      * @returns %TRUE for success
      */
-    fromXml(data: string | null, iconRoot: string | null): boolean
+    fromXml(data: string, iconRoot: string | null): boolean
     /**
      * Gets the flags used for adding applications to the store.
      * @returns the #AsStoreAddFlags, or 0 if unset
@@ -5829,13 +5829,13 @@ export interface Store {
      * @param id the application full ID.
      * @returns a #AsApp or %NULL
      */
-    getAppById(id: string | null): App
+    getAppById(id: string): App
     /**
      * Finds an application in the store ignoring the prefix type.
      * @param id the application full ID.
      * @returns a #AsApp or %NULL
      */
-    getAppByIdIgnorePrefix(id: string | null): App
+    getAppByIdIgnorePrefix(id: string): App
     /**
      * Finds an application in the store by either by the current desktop ID
      * or a desktop ID that it has used previously. This allows upstream software
@@ -5844,20 +5844,20 @@ export interface Store {
      * @param id the application full ID.
      * @returns a #AsApp or %NULL
      */
-    getAppByIdWithFallbacks(id: string | null): App
+    getAppByIdWithFallbacks(id: string): App
     /**
      * Finds an application in the store that provides a specific launchable.
      * @param kind the #AsLaunchableKind
      * @param value the provide value, e.g. "gimp.desktop"
      * @returns a #AsApp or %NULL
      */
-    getAppByLaunchable(kind: LaunchableKind, value: string | null): App
+    getAppByLaunchable(kind: LaunchableKind, value: string): App
     /**
      * Finds an application in the store by package name.
      * @param pkgname the package name.
      * @returns a #AsApp or %NULL
      */
-    getAppByPkgname(pkgname: string | null): App
+    getAppByPkgname(pkgname: string): App
     /**
      * Finds an application in the store by any of the possible package names.
      * @param pkgnames the package names to find.
@@ -5870,14 +5870,14 @@ export interface Store {
      * @param value the provide value, e.g. "com.hughski.ColorHug2.firmware"
      * @returns a #AsApp or %NULL
      */
-    getAppByProvide(kind: ProvideKind, value: string | null): App
+    getAppByProvide(kind: ProvideKind, value: string): App
     /**
      * Finds an application in the store by matching the unique ID.
      * @param uniqueId the application unique ID, e.g.      `user/flatpak/gnome-apps-nightly/app/gimp.desktop/master`
      * @param searchFlags the search flags, e.g. %AS_STORE_SEARCH_FLAG_USE_WILDCARDS
      * @returns a #AsApp or %NULL
      */
-    getAppByUniqueId(uniqueId: string | null, searchFlags: number): App
+    getAppByUniqueId(uniqueId: string, searchFlags: number): App
     /**
      * Gets an array of all the valid applications in the store.
      * @returns an array
@@ -5889,43 +5889,43 @@ export interface Store {
      * @param id the application full ID.
      * @returns an array
      */
-    getAppsById(id: string | null): App[]
+    getAppsById(id: string): App[]
     /**
      * Gets an array of all the merge applications that match a specific ID.
      * @param id the application full ID.
      * @returns an array
      */
-    getAppsByIdMerge(id: string | null): App[]
+    getAppsByIdMerge(id: string): App[]
     /**
      * Gets an array of all the applications that match a specific metadata element.
      * @param key metadata key
      * @param value metadata value
      * @returns an array
      */
-    getAppsByMetadata(key: string | null, value: string | null): App[]
+    getAppsByMetadata(key: string, value: string): App[]
     /**
      * Finds any applications in the store by something that they provides.
      * @param kind the #AsProvideKind
      * @param value the provide value, e.g. "com.hughski.ColorHug2.firmware"
      * @returns an array of applications
      */
-    getAppsByProvide(kind: ProvideKind, value: string | null): App[]
+    getAppsByProvide(kind: ProvideKind, value: string): App[]
     /**
      * Gets the metadata builder identifier, which is used to work out if old
      * metadata is compatible with this builder.
      * @returns the builder_id string, or %NULL if unset
      */
-    getBuilderId(): string | null
+    getBuilderId(): string
     /**
      * Gets the destdir, which is used to prefix usr.
      * @returns the destdir path, or %NULL if unset
      */
-    getDestdir(): string | null
+    getDestdir(): string
     /**
      * Gets the metadata origin, which is used to locate icons.
      * @returns the origin string, or %NULL if unset
      */
-    getOrigin(): string | null
+    getOrigin(): string
     /**
      * Gets the token match fields. The bitfield given here is used to choose what
      * is included in the token cache.
@@ -5942,7 +5942,7 @@ export interface Store {
      * Gets the AppStream API version.
      * @returns the API version
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Gets the flags used for adding files to the store.
      * @returns the #AsStoreWatchFlags, or 0 if unset
@@ -5974,14 +5974,14 @@ export interface Store {
      * @param cancellable a #GCancellable.
      * @returns %TRUE for success
      */
-    loadPath(path: string | null, cancellable: Gio.Cancellable | null): boolean
+    loadPath(path: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously loads the store from a specific path.
      * @param path A path to load
      * @param cancellable a #GCancellable.
      * @param callback A #GAsyncReadyCallback
      */
-    loadPathAsync(path: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    loadPathAsync(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Retrieve the result of as_store_load_path_async().
      * @param result A #GAsyncResult
@@ -6010,7 +6010,7 @@ export interface Store {
      * Removes an application from the store if it exists.
      * @param id an application id
      */
-    removeAppById(id: string | null): void
+    removeAppById(id: string): void
     /**
      * Removes any applications from the store if they have any vetos.
      */
@@ -6042,17 +6042,17 @@ export interface Store {
      * metadata can be used.
      * @param builderId the builder_id, e.g. "appstream-glib:1"
      */
-    setBuilderId(builderId: string | null): void
+    setBuilderId(builderId: string): void
     /**
      * Sets the destdir, which is used to prefix usr.
      * @param destdir the destdir, e.g. "/tmp"
      */
-    setDestdir(destdir: string | null): void
+    setDestdir(destdir: string): void
     /**
      * Sets the metadata origin, which is used to locate icons.
      * @param origin the origin, e.g. "fedora-21"
      */
-    setOrigin(origin: string | null): void
+    setOrigin(origin: string): void
     /**
      * Sets the token match fields. The bitfield given here is used to choose what
      * is included in the token cache.
@@ -6063,7 +6063,7 @@ export interface Store {
      * Sets the AppStream API version.
      * @param apiVersion the API version
      */
-    setVersion(apiVersion: string | null): void
+    setVersion(apiVersion: string): void
     /**
      * Sets the flags used when adding files to the store.
      * @param watchFlags the #AsStoreWatchFlags, e.g. %AS_STORE_WATCH_FLAG_NONE
@@ -6186,7 +6186,7 @@ export interface Suggest {
      * Add a the suggest application ID.
      * @param id an application ID, e.g. `gimp.desktop`
      */
-    addId(id: string | null): void
+    addId(id: string): void
     /**
      * Gets the suggest ids if set.
      * @returns the #GPtrArray, or %NULL
@@ -6245,13 +6245,13 @@ export class Suggest extends GObject.Object {
      * @param kind the string.
      * @returns a #AsSuggestKind, or %AS_SUGGEST_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): SuggestKind
+    static kindFromString(kind: string): SuggestKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsSuggestKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: SuggestKind): string | null
+    static kindToString(kind: SuggestKind): string
 }
 
 export module Translation {
@@ -6279,7 +6279,7 @@ export interface Translation {
      * Gets the ID for this translation.
      * @returns ID, e.g. "foobar-1.0.2"
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the translation kind.
      * @returns the #AsTranslationKind
@@ -6289,7 +6289,7 @@ export interface Translation {
      * Sets the ID for this translation.
      * @param id the URL.
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Sets the translation kind.
      * @param kind the #AsTranslationKind, e.g. %AS_TRANSLATION_KIND_THUMBNAIL.
@@ -6338,13 +6338,13 @@ export class Translation extends GObject.Object {
      * @param kind the string.
      * @returns a #AsTranslationKind, or %AS_TRANSLATION_KIND_UNKNOWN for unknown.
      */
-    static kindFromString(kind: string | null): TranslationKind
+    static kindFromString(kind: string): TranslationKind
     /**
      * Converts the enumerated value to an text representation.
      * @param kind the #AsTranslationKind.
      * @returns string version of @kind
      */
-    static kindToString(kind: TranslationKind): string | null
+    static kindToString(kind: TranslationKind): string
 }
 
 export interface AgreementClass {

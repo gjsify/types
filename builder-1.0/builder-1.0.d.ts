@@ -148,7 +148,7 @@ interface Document {
     get_modified(): boolean
     get_mtime(mtime: GLib.TimeVal): boolean
     get_read_only(): boolean
-    get_title(): string | null
+    get_title(): string
     is_untitled(): boolean
     save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -185,7 +185,7 @@ interface Document {
     vfunc_get_modified(): boolean
     vfunc_get_mtime(mtime: GLib.TimeVal): boolean
     vfunc_get_read_only(): boolean
-    vfunc_get_title(): string | null
+    vfunc_get_title(): string
     vfunc_is_untitled(): boolean
     vfunc_save_as_async(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_save_as_finish(result: Gio.AsyncResult): boolean
@@ -241,7 +241,7 @@ interface EditorViewAddin {
 
     // Own virtual methods of Builder-1.0.Builder.EditorViewAddin
 
-    vfunc_language_changed(language_id: string | null): void
+    vfunc_language_changed(language_id: string): void
     vfunc_load(view: EditorView): void
     vfunc_unload(view: EditorView): void
 
@@ -279,8 +279,8 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
 
     // Owm methods of Builder-1.0.Builder.Application
 
-    get_argv0(): string | null
-    get_keybindings_mode(): string | null
+    get_argv0(): string
+    get_keybindings_mode(): string
     get_started_at(): GLib.DateTime
     /**
      * Asynchronously requests a #GDBusProxy to a service provided in a worker
@@ -296,7 +296,7 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback or %NULL.
      */
-    get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_worker_async
 
@@ -316,7 +316,7 @@ interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A Promise of: A #GDBusProxy or %NULL.
      */
-    get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>
+    get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>
     /**
      * Completes an asynchronous request to get a proxy to a worker process.
      * @param result A #GAsyncResult
@@ -442,7 +442,7 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -456,7 +456,7 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -467,7 +467,7 @@ interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Builder-1.0.Builder.EditorView
 
@@ -697,7 +697,7 @@ class MenuExtension extends GObject.Object {
     constructor(config?: MenuExtension.ConstructorProperties) 
     constructor(menu: Gio.Menu) 
     static new(menu: Gio.Menu): MenuExtension
-    static new_for_section(menu: Gio.Menu, section: string | null): MenuExtension
+    static new_for_section(menu: Gio.Menu, section: string): MenuExtension
     _init(config?: MenuExtension.ConstructorProperties): void
 }
 
@@ -826,7 +826,7 @@ interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -840,7 +840,7 @@ interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -851,11 +851,11 @@ interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Builder-1.0.Builder.Tree
 
-    vfunc_action(action_group: string | null, action_name: string | null, param: string | null): void
+    vfunc_action(action_group: string, action_name: string, param: string): void
     vfunc_populate_popup(widget: Gtk.Widget): void
 
     // Own signals of Builder-1.0.Builder.Tree
@@ -1370,7 +1370,7 @@ interface TreeNode {
     /**
      * Fetches the icon-name of the icon to display, or NULL for no icon.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets a #GObject for the node, if one was set.
      * @returns A #GObject or %NULL.
@@ -1387,7 +1387,7 @@ interface TreeNode {
      * @returns A #GtkTreePath if successful; otherwise %NULL.
      */
     get_path(): Gtk.TreePath | null
-    get_text(): string | null
+    get_text(): string
     /**
      * Fetches the #GbTree instance that owns the node.
      * @returns A #GbTree.
@@ -1425,7 +1425,7 @@ interface TreeNode {
      * cell of the GbTree.
      * @param icon_name The icon name.
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * An optional object to associate with the node. This is handy to save needing
      * to subclass the #GbTreeNode class.
@@ -1437,7 +1437,7 @@ interface TreeNode {
      * cell of the GbTree.
      * @param text The node text.
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
     set_use_dim_label(use_dim_label: boolean): void
     set_use_markup(use_markup: boolean): void
     show_popover(popover: Gtk.Popover): void
@@ -1556,8 +1556,8 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     get_document(): Document
     get_menu(): Gio.Menu
     get_modified(): boolean
-    get_special_title(): string | null
-    get_title(): string | null
+    get_special_title(): string
+    get_title(): string
     navigate_to(location: Ide.SourceLocation): void
     set_back_forward_list(back_forward_list: Ide.BackForwardList): void
     /**
@@ -1579,7 +1579,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1593,7 +1593,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1604,7 +1604,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Builder-1.0.Builder.View
 
@@ -1634,8 +1634,8 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      */
     vfunc_get_document(): Document
     vfunc_get_modified(): boolean
-    vfunc_get_special_title(): string | null
-    vfunc_get_title(): string | null
+    vfunc_get_special_title(): string
+    vfunc_get_title(): string
     vfunc_navigate_to(location: Ide.SourceLocation): void
     vfunc_set_back_forward_list(back_forward_list: Ide.BackForwardList): void
     /**
@@ -1864,7 +1864,7 @@ interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1878,7 +1878,7 @@ interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1889,7 +1889,7 @@ interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Builder-1.0.Builder.ViewGrid
 
@@ -2123,7 +2123,7 @@ interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2137,7 +2137,7 @@ interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2148,7 +2148,7 @@ interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Builder-1.0.Builder.ViewStack
 
@@ -2392,7 +2392,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
     get_view_grid(): Gtk.Widget
     get_workspace(): Gtk.Widget
     open(file: Gio.File): void
-    open_uri_list(uri_list: string | null): void
+    open_uri_list(uri_list: string): void
     open_with_editor(file: Gio.File): void
     reveal_file(file: Gio.File): void
     /**
@@ -2436,7 +2436,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2450,7 +2450,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2461,7 +2461,7 @@ interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Builder-1.0.Builder.Workbench
 
@@ -2770,7 +2770,7 @@ interface DocumentInterface {
     get_modified: (document: Document) => boolean
     get_mtime: (document: Document, mtime: GLib.TimeVal) => boolean
     get_read_only: (document: Document) => boolean
-    get_title: (document: Document) => string | null
+    get_title: (document: Document) => string
     is_untitled: (document: Document) => boolean
     save_async: (document: Document, toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     save_finish: (document: Document, result: Gio.AsyncResult) => boolean
@@ -2792,7 +2792,7 @@ interface EditorViewAddinInterface {
     parent: GObject.TypeInterface
     load: (self: EditorViewAddin, view: EditorView) => void
     unload: (self: EditorViewAddin, view: EditorView) => void
-    language_changed: (self: EditorViewAddin, language_id: string | null) => void
+    language_changed: (self: EditorViewAddin, language_id: string) => void
 }
 
 abstract class EditorViewAddinInterface {
@@ -2856,7 +2856,7 @@ interface TreeClass {
     // Own fields of Builder-1.0.Builder.TreeClass
 
     parent_class: Gtk.TreeViewClass
-    action: (self: Tree, action_group: string | null, action_name: string | null, param: string | null) => void
+    action: (self: Tree, action_group: string, action_name: string, param: string) => void
     populate_popup: (self: Tree, widget: Gtk.Widget) => void
 }
 
@@ -2890,8 +2890,8 @@ interface ViewClass {
     get_can_split: (self: View) => boolean
     get_document: (self: View) => Document
     get_modified: (self: View) => boolean
-    get_title: (self: View) => string | null
-    get_special_title: (self: View) => string | null
+    get_title: (self: View) => string
+    get_special_title: (self: View) => string
     create_split: (self: View) => View
     set_split_view: (self: View, split_view: boolean) => void
     set_back_forward_list: (self: View, back_forward_list: Ide.BackForwardList) => void

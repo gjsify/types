@@ -596,19 +596,19 @@ function rtspConnectionCreate(url: RTSPUrl): [ /* returnType */ RTSPResult, /* c
  * @param initialBuffer data already read from `fd`
  * @returns #GST_RTSP_OK when @conn contains a valid connection.
  */
-function rtspConnectionCreateFromSocket(socket: Gio.Socket, ip: string | null, port: number, initialBuffer: string | null): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection | null ]
+function rtspConnectionCreateFromSocket(socket: Gio.Socket, ip: string, port: number, initialBuffer: string): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection | null ]
 /**
  * Convert `header` to a #GstRTSPHeaderField.
  * @param header a header string
  * @returns a #GstRTSPHeaderField for @header or #GST_RTSP_HDR_INVALID if the header field is unknown.
  */
-function rtspFindHeaderField(header: string | null): RTSPHeaderField
+function rtspFindHeaderField(header: string): RTSPHeaderField
 /**
  * Convert `method` to a #GstRTSPMethod.
  * @param method a method
  * @returns a #GstRTSPMethod for @method or #GST_RTSP_INVALID if the method is unknown.
  */
-function rtspFindMethod(method: string | null): RTSPMethod
+function rtspFindMethod(method: string): RTSPMethod
 /**
  * Calculates the digest auth response from the values given by the server and
  * the username and password. See RFC2069 for details.
@@ -623,7 +623,7 @@ function rtspFindMethod(method: string | null): RTSPMethod
  * @param nonce Nonce
  * @returns Authentication response or %NULL if unsupported
  */
-function rtspGenerateDigestAuthResponse(algorithm: string | null, method: string | null, realm: string | null, username: string | null, password: string | null, uri: string | null, nonce: string | null): string | null
+function rtspGenerateDigestAuthResponse(algorithm: string | null, method: string, realm: string, username: string, password: string, uri: string, nonce: string): string | null
 /**
  * Calculates the digest auth response from the values given by the server and
  * the md5sum. See RFC2069 for details.
@@ -639,7 +639,7 @@ function rtspGenerateDigestAuthResponse(algorithm: string | null, method: string
  * @param nonce Nonce
  * @returns Authentication response or %NULL if unsupported
  */
-function rtspGenerateDigestAuthResponseFromMd5(algorithm: string | null, method: string | null, md5: string | null, uri: string | null, nonce: string | null): string | null
+function rtspGenerateDigestAuthResponseFromMd5(algorithm: string | null, method: string, md5: string, uri: string, nonce: string): string | null
 /**
  * Check whether `field` may appear multiple times in a message.
  * @param field a #GstRTSPHeaderField
@@ -671,7 +671,7 @@ function rtspMessageNewData(channel: number): [ /* returnType */ RTSPResult, /* 
  * @param uri the uri of the request
  * @returns a #GstRTSPResult.
  */
-function rtspMessageNewRequest(method: RTSPMethod, uri: string | null): [ /* returnType */ RTSPResult, /* msg */ RTSPMessage ]
+function rtspMessageNewRequest(method: RTSPMethod, uri: string): [ /* returnType */ RTSPResult, /* msg */ RTSPMessage ]
 /**
  * Create a new response #GstRTSPMessage with `code` and `reason` and store the
  * result message in `msg`. Free with gst_rtsp_message_free().
@@ -704,7 +704,7 @@ function rtspOptionsAsText(options: RTSPMethod): string | null
  * @param options a comma separated list of options
  * @returns a #GstRTSPMethod
  */
-function rtspOptionsFromText(options: string | null): RTSPMethod
+function rtspOptionsFromText(options: string): RTSPMethod
 /**
  * Converts the range in-place between different types of units.
  * Ranges containing the special value #GST_RTSP_TIME_NOW can not be
@@ -736,7 +736,7 @@ function rtspRangeGetTimes(range: RTSPTimeRange): [ /* returnType */ boolean, /*
  * @param rangestr a range string to parse
  * @returns #GST_RTSP_OK on success.
  */
-function rtspRangeParse(rangestr: string | null): [ /* returnType */ RTSPResult, /* range */ RTSPTimeRange ]
+function rtspRangeParse(rangestr: string): [ /* returnType */ RTSPResult, /* range */ RTSPTimeRange ]
 /**
  * Convert `range` into a string representation.
  * @param range a #GstRTSPTimeRange
@@ -748,7 +748,7 @@ function rtspRangeToString(range: RTSPTimeRange): string | null
  * @param code a #GstRTSPStatusCode
  * @returns a string representation of @code.
  */
-function rtspStatusAsText(code: RTSPStatusCode): string | null
+function rtspStatusAsText(code: RTSPStatusCode): string
 /**
  * Convert `result` in a human readable string.
  * @param result a #GstRTSPResult
@@ -774,7 +774,7 @@ function rtspTransportGetManager(trans: RTSPTransMode, option: number): [ /* ret
  * @param trans a #GstRTSPTransMode
  * @returns #GST_RTSP_OK.
  */
-function rtspTransportGetMime(trans: RTSPTransMode): [ /* returnType */ RTSPResult, /* mime */ string | null ]
+function rtspTransportGetMime(trans: RTSPTransMode): [ /* returnType */ RTSPResult, /* mime */ string ]
 /**
  * Initialize `transport` so that it can be used.
  * @returns #GST_RTSP_OK.
@@ -791,20 +791,20 @@ function rtspTransportNew(): [ /* returnType */ RTSPResult, /* transport */ RTSP
  * @param str a transport string
  * @returns a #GstRTSPResult.
  */
-function rtspTransportParse(str: string | null): [ /* returnType */ RTSPResult, /* transport */ RTSPTransport ]
+function rtspTransportParse(str: string): [ /* returnType */ RTSPResult, /* transport */ RTSPTransport ]
 /**
  * Parse the RTSP `urlstr` into a newly allocated #GstRTSPUrl. Free after usage
  * with gst_rtsp_url_free().
  * @param urlstr the url string to parse
  * @returns a #GstRTSPResult.
  */
-function rtspUrlParse(urlstr: string | null): [ /* returnType */ RTSPResult, /* url */ RTSPUrl | null ]
+function rtspUrlParse(urlstr: string): [ /* returnType */ RTSPResult, /* url */ RTSPUrl | null ]
 /**
  * Convert `version` to a string.
  * @param version a #GstRTSPVersion
  * @returns a string representation of @version.
  */
-function rtspVersionAsText(version: RTSPVersion): string | null
+function rtspVersionAsText(version: RTSPVersion): string
 interface RTSPConnectionAcceptCertificateFunc {
     (conn: Gio.TlsConnection, peerCert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean
 }
@@ -1061,7 +1061,7 @@ interface RTSPConnection {
      * Retrieve the IP address of the other end of `conn`.
      * @returns The IP address as a string. this value remains valid until the connection is closed.
      */
-    getIp(): string | null
+    getIp(): string
     /**
      * Get the file descriptor for reading.
      * @returns the file descriptor used for reading or %NULL on error. The file descriptor remains valid until the connection is closed.
@@ -1279,7 +1279,7 @@ interface RTSPConnection {
      * @param pass the password
      * @returns #GST_RTSP_OK.
      */
-    setAuth(method: RTSPAuthMethod, user: string | null, pass: string | null): RTSPResult
+    setAuth(method: RTSPAuthMethod, user: string, pass: string): RTSPResult
     /**
      * Setup `conn` with authentication directives. This is not necessary for
      * methods #GST_RTSP_AUTH_NONE and #GST_RTSP_AUTH_BASIC. For
@@ -1289,7 +1289,7 @@ interface RTSPConnection {
      * @param param authentication directive
      * @param value value
      */
-    setAuthParam(param: string | null, value: string | null): void
+    setAuthParam(param: string, value: string): void
     /**
      * Configure `conn` to use the specified Content-Length limit.
      * Both requests and responses are validated. If content-length is
@@ -1314,14 +1314,14 @@ interface RTSPConnection {
      * Set the IP address of the server.
      * @param ip an ip address
      */
-    setIp(ip: string | null): void
+    setIp(ip: string): void
     /**
      * Set the proxy host and port.
      * @param host the proxy host
      * @param port the proxy port
      * @returns #GST_RTSP_OK.
      */
-    setProxy(host: string | null, port: number): RTSPResult
+    setProxy(host: string, port: number): RTSPResult
     /**
      * Configure `conn` to use the specified DSCP value.
      * @param qosDscp DSCP value
@@ -1437,7 +1437,7 @@ class RTSPConnection {
      * @param initialBuffer data already read from `fd`
      * @returns #GST_RTSP_OK when @conn contains a valid connection.
      */
-    static createFromSocket(socket: Gio.Socket, ip: string | null, port: number, initialBuffer: string | null): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection | null ]
+    static createFromSocket(socket: Gio.Socket, ip: string, port: number, initialBuffer: string): [ /* returnType */ RTSPResult, /* conn */ RTSPConnection | null ]
 }
 
 interface RTSPExtensionInterface {
@@ -1487,7 +1487,7 @@ interface RTSPMessage {
      * @param value the value of the header
      * @returns a #GstRTSPResult.
      */
-    addHeader(field: RTSPHeaderField, value: string | null): RTSPResult
+    addHeader(field: RTSPHeaderField, value: string): RTSPResult
     /**
      * Add a header with key `header` and `value` to `msg`. This function takes a copy
      * of `value`.
@@ -1495,7 +1495,7 @@ interface RTSPMessage {
      * @param value the value of the header
      * @returns a #GstRTSPResult.
      */
-    addHeaderByName(header: string | null, value: string | null): RTSPResult
+    addHeaderByName(header: string, value: string): RTSPResult
     /**
      * Append the currently configured headers in `msg` to the #GString `str` suitable
      * for transmission.
@@ -1554,7 +1554,7 @@ interface RTSPMessage {
      * @param index the index of the header
      * @returns #GST_RTSP_OK when @field was found, #GST_RTSP_ENOTIMPL if the key was not found.
      */
-    getHeaderByName(header: string | null, index: number): [ /* returnType */ RTSPResult, /* value */ string | null ]
+    getHeaderByName(header: string, index: number): [ /* returnType */ RTSPResult, /* value */ string | null ]
     /**
      * Get the message type of `msg`.
      * @returns the message type.
@@ -1584,7 +1584,7 @@ interface RTSPMessage {
      * @param uri the uri of the request
      * @returns a #GstRTSPResult.
      */
-    initRequest(method: RTSPMethod, uri: string | null): RTSPResult
+    initRequest(method: RTSPMethod, uri: string): RTSPResult
     /**
      * Initialize `msg` with `code` and `reason`.
      * 
@@ -1617,7 +1617,7 @@ interface RTSPMessage {
      * `uri` remains valid for as long as `msg` is valid and unchanged.
      * @returns a #GstRTSPResult.
      */
-    parseRequest(): [ /* returnType */ RTSPResult, /* method */ RTSPMethod, /* uri */ string | null, /* version */ RTSPVersion ]
+    parseRequest(): [ /* returnType */ RTSPResult, /* method */ RTSPMethod, /* uri */ string, /* version */ RTSPVersion ]
     /**
      * Parse the response message `msg` and store the values `code,` `reason` and
      * `version`. The result locations can be %NULL if one is not interested in its
@@ -1626,7 +1626,7 @@ interface RTSPMessage {
      * `reason` remains valid for as long as `msg` is valid and unchanged.
      * @returns a #GstRTSPResult.
      */
-    parseResponse(): [ /* returnType */ RTSPResult, /* code */ RTSPStatusCode, /* reason */ string | null, /* version */ RTSPVersion ]
+    parseResponse(): [ /* returnType */ RTSPResult, /* code */ RTSPStatusCode, /* reason */ string, /* version */ RTSPVersion ]
     /**
      * Remove the `indx` header with key `field` from `msg`. If `indx` equals -1, all
      * headers will be removed.
@@ -1642,7 +1642,7 @@ interface RTSPMessage {
      * @param index the index of the header
      * @returns a #GstRTSPResult
      */
-    removeHeaderByName(header: string | null, index: number): RTSPResult
+    removeHeaderByName(header: string, index: number): RTSPResult
     /**
      * Set the body of `msg` to a copy of `data`. Any existing body or body buffer
      * will be replaced by the new body.
@@ -1702,7 +1702,7 @@ interface RTSPMessage {
      * @param value the value of the header
      * @returns a #GstRTSPResult.
      */
-    takeHeaderByName(header: string | null, value: string | null): RTSPResult
+    takeHeaderByName(header: string, value: string | null): RTSPResult
     /**
      * Unset the contents of `msg` so that it becomes an uninitialized
      * #GstRTSPMessage again. This function is mostly used in combination with
@@ -1783,7 +1783,7 @@ class RTSPRange {
      * @param rangestr a range string to parse
      * @returns #GST_RTSP_OK on success.
      */
-    static parse(rangestr: string | null): [ /* returnType */ RTSPResult, /* range */ RTSPTimeRange ]
+    static parse(rangestr: string): [ /* returnType */ RTSPResult, /* range */ RTSPTimeRange ]
     /**
      * Convert `range` into a string representation.
      * @param range a #GstRTSPTimeRange
@@ -2002,7 +2002,7 @@ interface RTSPTransport {
      * used to generate #GstCaps events.
      * @returns #GST_RTSP_OK.
      */
-    getMediaType(): [ /* returnType */ RTSPResult, /* mediaType */ string | null ]
+    getMediaType(): [ /* returnType */ RTSPResult, /* mediaType */ string ]
 }
 
 /**
@@ -2042,7 +2042,7 @@ class RTSPTransport {
      * @param trans a #GstRTSPTransMode
      * @returns #GST_RTSP_OK.
      */
-    static getMime(trans: RTSPTransMode): [ /* returnType */ RTSPResult, /* mime */ string | null ]
+    static getMime(trans: RTSPTransMode): [ /* returnType */ RTSPResult, /* mime */ string ]
     /**
      * Initialize `transport` so that it can be used.
      * @returns #GST_RTSP_OK.
@@ -2053,7 +2053,7 @@ class RTSPTransport {
      * @param str a transport string
      * @returns a #GstRTSPResult.
      */
-    static parse(str: string | null): [ /* returnType */ RTSPResult, /* transport */ RTSPTransport ]
+    static parse(str: string): [ /* returnType */ RTSPResult, /* transport */ RTSPTransport ]
 }
 
 interface RTSPUrl {
@@ -2143,7 +2143,7 @@ interface RTSPUrl {
      * @param controlPath an RTSP aggregate control path
      * @returns a string with the request URI combined with the control path. g_free() after usage.
      */
-    getRequestUriWithControl(controlPath: string | null): string | null
+    getRequestUriWithControl(controlPath: string): string | null
     /**
      * Set the port number in `url` to `port`.
      * @param port the port
@@ -2170,7 +2170,7 @@ class RTSPUrl {
      * @param urlstr the url string to parse
      * @returns a #GstRTSPResult.
      */
-    static parse(urlstr: string | null): [ /* returnType */ RTSPResult, /* url */ RTSPUrl | null ]
+    static parse(urlstr: string): [ /* returnType */ RTSPResult, /* url */ RTSPUrl | null ]
 }
 
 interface RTSPWatch {

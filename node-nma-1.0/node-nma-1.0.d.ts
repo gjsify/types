@@ -70,9 +70,9 @@ enum MobileFamily {
      */
     CDMA,
 }
-const BAR_CODE_SIZE: string | null
-const BAR_CODE_TEXT: string | null
-const BAR_CODE_WIDGET_CONNECTION: string | null
+const BAR_CODE_SIZE: string
+const BAR_CODE_TEXT: string
+const BAR_CODE_WIDGET_CONNECTION: string
 /**
  * Evaluates to the major version number of NetworkManager which this source
  * is compiled against.
@@ -93,7 +93,7 @@ const MINOR_VERSION: number
  * @param mccmnc input MCCMNC string.
  * @returns %TRUE if correctly split and @mcc and @mnc are set; %FALSE otherwise.
  */
-function mobileProvidersSplit3gppMccMnc(mccmnc: string | null): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
+function mobileProvidersSplit3gppMccMnc(mccmnc: string): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
 /**
  * Returns secret flags corresponding to the selected password storage menu
  * in the attached icon
@@ -114,7 +114,7 @@ function utilsMenuToSecretFlags(passwdEntry: Gtk.Widget): NM.SettingSecretFlags
  * @param withNotRequired whether to include "Not required" menu item
  * @param askMode %TRUE if the entry is shown in ASK mode. That means,   while prompting for a password, contrary to being inside the   editor mode.   If %TRUE, the entry should be sensivive on selected "always-ask"   icon (this is e.f. for nm-applet asking for password), otherwise   not.   If %FALSE, it shall not be possible to select a different storage,   because we only prompt for a password, we cannot change the password   location.
  */
-function utilsSetupPasswordStorage(passwdEntry: Gtk.Widget, initialFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string | null, withNotRequired: boolean, askMode: boolean): void
+function utilsSetupPasswordStorage(passwdEntry: Gtk.Widget, initialFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string, withNotRequired: boolean, askMode: boolean): void
 /**
  * Updates secret flags in the password storage popup menu and also
  * in the `setting` (if `setting` and `password_flags_name` are not NULL).
@@ -123,7 +123,7 @@ function utilsSetupPasswordStorage(passwdEntry: Gtk.Widget, initialFlags: NM.Set
  * @param setting #NMSetting containing the password, or NULL
  * @param passwordFlagsName name of the secret flags (like psk-flags), or NULL
  */
-function utilsUpdatePasswordStorage(passwdEntry: Gtk.Widget, secretFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string | null): void
+function utilsUpdatePasswordStorage(passwdEntry: Gtk.Widget, secretFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string): void
 interface MobileWizardCallback {
     (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void
 }
@@ -160,7 +160,7 @@ interface BarCode {
      * Regenerates the QR code for a different text.
      * @param text new bar code text
      */
-    setText(text: string | null): void
+    setText(text: string): void
 
     // Class property signals of NMA-1.0.NMA.BarCode
 
@@ -196,8 +196,8 @@ class BarCode extends GObject.Object {
     // Constructors of NMA-1.0.NMA.BarCode
 
     constructor(config?: BarCode.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): BarCode
+    constructor(text: string) 
+    static new(text: string): BarCode
     _init(config?: BarCode.ConstructorProperties): void
 }
 
@@ -232,13 +232,13 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -251,13 +251,13 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -270,7 +270,7 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -279,7 +279,7 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -291,7 +291,7 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -662,7 +662,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Obtains the password or a PIN that was be required to access the certificate.
      * @returns the certificate PIN or password
      */
-    getCertPassword(): string | null
+    getCertPassword(): string
     /**
      * Returns secret flags corresponding to the certificate password
      * if one is present. The chooser would typically call into
@@ -685,7 +685,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Obtains the password or a PIN that was be required to access the key.
      * @returns the key PIN or password
      */
-    getKeyPassword(): string | null
+    getKeyPassword(): string
     /**
      * Returns secret flags corresponding to the key password
      * if one is present. The chooser would typically call into
@@ -704,33 +704,33 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param value the path or URI of a certificate
      * @param scheme the scheme of the certificate path
      */
-    setCert(value: string | null, scheme: NM.Setting8021xCKScheme): void
+    setCert(value: string, scheme: NM.Setting8021xCKScheme): void
     /**
      * Sets the password or a PIN that might be required to access the certificate.
      * @param password the certificate PIN or password
      */
-    setCertPassword(password: string | null): void
+    setCertPassword(password: string): void
     /**
      * Sets the certificate URI for the chooser button.
      * @param uri the path or URI of a certificate
      */
-    setCertUri(uri: string | null): void
+    setCertUri(uri: string): void
     /**
      * Sets the key location for the chooser button.
      * @param value the path or URI of a key
      * @param scheme the scheme of the key path
      */
-    setKey(value: string | null, scheme: NM.Setting8021xCKScheme): void
+    setKey(value: string, scheme: NM.Setting8021xCKScheme): void
     /**
      * Sets the password or a PIN that might be required to access the key.
      * @param password the key PIN or password
      */
-    setKeyPassword(password: string | null): void
+    setKeyPassword(password: string): void
     /**
      * Sets the key URI for the chooser button.
      * @param uri the URI of a key
      */
-    setKeyUri(uri: string | null): void
+    setKeyUri(uri: string): void
     /**
      * This method basically calls nma_utils_setup_password_storage()
      * on the certificate password entry, in case one is present.
@@ -740,7 +740,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param withNotRequired whether to include "Not required" menu item
      * @param askMode %TRUE if the entry is shown in ASK mode
      */
-    setupCertPasswordStorage(initialFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string | null, withNotRequired: boolean, askMode: boolean): void
+    setupCertPasswordStorage(initialFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string, withNotRequired: boolean, askMode: boolean): void
     /**
      * This method basically calls nma_utils_setup_password_storage()
      * on the key password entry, in case one is present.
@@ -750,7 +750,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param withNotRequired whether to include "Not required" menu item
      * @param askMode %TRUE if the entry is shown in ASK mode
      */
-    setupKeyPasswordStorage(initialFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string | null, withNotRequired: boolean, askMode: boolean): void
+    setupKeyPasswordStorage(initialFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string, withNotRequired: boolean, askMode: boolean): void
     /**
      * This method basically calls nma_utils_update_password_storage()
      * on the certificate password entry, in case one is present.
@@ -758,7 +758,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param setting #NMSetting containing the password, or NULL
      * @param passwordFlagsName name of the secret flags (like psk-flags), or NULL
      */
-    updateCertPasswordStorage(secretFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string | null): void
+    updateCertPasswordStorage(secretFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string): void
     /**
      * This method basically calls nma_utils_update_password_storage()
      * on the key password entry, in case one is present.
@@ -766,7 +766,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param setting #NMSetting containing the password, or NULL
      * @param passwordFlagsName name of the secret flags (like psk-flags), or NULL
      */
-    updateKeyPasswordStorage(secretFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string | null): void
+    updateKeyPasswordStorage(secretFlags: NM.SettingSecretFlags, setting: NM.Setting, passwordFlagsName: string): void
     /**
      * Validates whether the chosen values make sense. The users can do further
      * validation by subscribing to the "*-changed" signals and returning an
@@ -786,13 +786,13 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -805,13 +805,13 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -824,7 +824,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -833,7 +833,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -845,7 +845,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1184,7 +1184,7 @@ class CertChooser extends Gtk.Grid {
      * @param flags the flags that configure the capabilities of the button
      * @returns the certificate chooser button instance
      */
-    constructor(title: string | null, flags: CertChooserFlags) 
+    constructor(title: string, flags: CertChooserFlags) 
     /**
      * Constructs the button that is capable of selecting a certificate
      * and a key.
@@ -1193,7 +1193,7 @@ class CertChooser extends Gtk.Grid {
      * @param flags the flags that configure the capabilities of the button
      * @returns the certificate chooser button instance
      */
-    static new(title: string | null, flags: CertChooserFlags): CertChooser
+    static new(title: string, flags: CertChooserFlags): CertChooser
 
     // Overloads of new
 
@@ -1237,9 +1237,9 @@ interface MobileProvidersDatabase extends Gio.AsyncInitable, Gio.Initable {
 
     dump(): void
     getCountries(): GLib.HashTable
-    lookup3gppMccMnc(mccmnc: string | null): MobileProvider
+    lookup3gppMccMnc(mccmnc: string): MobileProvider
     lookupCdmaSid(sid: number): MobileProvider
-    lookupCountry(countryCode: string | null): CountryInfo
+    lookupCountry(countryCode: string): CountryInfo
 
     // Class property signals of NMA-1.0.NMA.MobileProvidersDatabase
 
@@ -1356,16 +1356,16 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
     focusPassword(): void
     focusPasswordSecondary(): void
     focusPasswordTernary(): void
-    getPassword(): string | null
-    getPasswordSecondary(): string | null
-    getPasswordTernary(): string | null
+    getPassword(): string
+    getPasswordSecondary(): string
+    getPasswordTernary(): string
     runAndBlock(): boolean
-    setPassword(password: string | null): void
-    setPasswordLabel(label: string | null): void
-    setPasswordSecondary(passwordSecondary: string | null): void
-    setPasswordSecondaryLabel(label: string | null): void
-    setPasswordTernary(passwordTernary: string | null): void
-    setPasswordTernaryLabel(label: string | null): void
+    setPassword(password: string): void
+    setPasswordLabel(label: string): void
+    setPasswordSecondary(passwordSecondary: string): void
+    setPasswordSecondaryLabel(label: string): void
+    setPasswordTernary(passwordTernary: string): void
+    setPasswordTernaryLabel(label: string): void
     setShowPassword(show: boolean): void
     setShowPasswordSecondary(show: boolean): void
     setShowPasswordTernary(show: boolean): void
@@ -1381,13 +1381,13 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1400,13 +1400,13 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1419,7 +1419,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1428,7 +1428,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -1484,7 +1484,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1917,8 +1917,8 @@ class VpnPasswordDialog extends Gtk.Dialog {
     // Constructors of NMA-1.0.NMA.VpnPasswordDialog
 
     constructor(config?: VpnPasswordDialog.ConstructorProperties) 
-    constructor(title: string | null, message: string | null, password: string | null) 
-    static new(title: string | null, message: string | null, password: string | null): VpnPasswordDialog
+    constructor(title: string, message: string, password: string) 
+    static new(title: string, message: string, password: string): VpnPasswordDialog
 
     // Overloads of new
 
@@ -2001,13 +2001,13 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2020,13 +2020,13 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2039,7 +2039,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2048,7 +2048,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -2104,7 +2104,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2630,7 +2630,7 @@ class WifiDialog extends Gtk.Dialog {
      * @param secretsHints array of setting key names within the setting given in   `secrets_setting_name` which are requested or %NULL
      * @returns the dialog widget or %NULL in case of error
      */
-    static newForSecrets(client: NM.Client, connection: NM.Connection, secretsSettingName: string | null, secretsHints: string | null): WifiDialog
+    static newForSecrets(client: NM.Client, connection: NM.Connection, secretsSettingName: string, secretsHints: string): WifiDialog
     _init(config?: WifiDialog.ConstructorProperties): void
 }
 
@@ -2668,8 +2668,8 @@ interface CountryInfo {
 
     // Owm methods of NMA-1.0.NMA.CountryInfo
 
-    getCountryCode(): string | null
-    getCountryName(): string | null
+    getCountryCode(): string
+    getCountryName(): string
     getProviders(): MobileProvider[]
     ref(): CountryInfo
     unref(): void
@@ -2686,13 +2686,13 @@ interface MobileAccessMethod {
 
     // Owm methods of NMA-1.0.NMA.MobileAccessMethod
 
-    get3gppApn(): string | null
+    get3gppApn(): string
     getDns(): string[]
     getFamily(): MobileFamily
-    getGateway(): string | null
-    getName(): string | null
-    getPassword(): string | null
-    getUsername(): string | null
+    getGateway(): string
+    getName(): string
+    getPassword(): string
+    getUsername(): string
     ref(): MobileAccessMethod
     unref(): void
 }
@@ -2711,7 +2711,7 @@ interface MobileProvider {
     get3gppMccMnc(): string[]
     getCdmaSid(): number[]
     getMethods(): MobileAccessMethod[]
-    getName(): string | null
+    getName(): string
     ref(): MobileProvider
     unref(): void
 }

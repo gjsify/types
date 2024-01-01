@@ -98,7 +98,7 @@ interface Client {
      * @param device_file A device file.
      * @returns A #GUdevDevice object or %NULL if the device was not found. Free with g_object_unref().
      */
-    query_by_device_file(device_file: string | null): Device | null
+    query_by_device_file(device_file: string): Device | null
     /**
      * Looks up a device for a type and device number.
      * @param type A value from the #GUdevDeviceType enumeration.
@@ -118,17 +118,17 @@ interface Client {
      * @param name The name of the device.
      * @returns A #GUdevDevice object or %NULL if the device was not found. Free with g_object_unref().
      */
-    query_by_subsystem_and_name(subsystem: string | null, name: string | null): Device | null
+    query_by_subsystem_and_name(subsystem: string, name: string): Device | null
     /**
      * Looks up a device for a sysfs path.
      * @param sysfs_path A sysfs path.
      * @returns A #GUdevDevice object or %NULL if the device was not found. Free with g_object_unref().
      */
-    query_by_sysfs_path(sysfs_path: string | null): Device | null
+    query_by_sysfs_path(sysfs_path: string): Device | null
 
     // Own virtual methods of GUdev-1.0.GUdev.Client
 
-    vfunc_uevent(action: string | null, device: Device): void
+    vfunc_uevent(action: string, device: Device): void
 
     // Own signals of GUdev-1.0.GUdev.Client
 
@@ -227,7 +227,7 @@ interface Device {
      * Gets the most recent action (e.g. "add", "remove", "change", etc.) for `device`.
      * @returns An action string.
      */
-    get_action(): string | null
+    get_action(): string
     /**
      * Gets all current tags for `device`.
      * 
@@ -260,7 +260,7 @@ interface Device {
      * Gets the device type for `device`.
      * @returns The devtype for @device.
      */
-    get_devtype(): string | null
+    get_devtype(): string
     /**
      * Gets the name of the driver used for `device`.
      * @returns The name of the driver for @device or %NULL if unknown.
@@ -275,12 +275,12 @@ interface Device {
      * Gets the name of `device,` e.g. "sda3".
      * @returns The name of @device.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the number of `device,` e.g. "3" if g_udev_device_get_name() returns "sda3".
      * @returns The number of @device.
      */
-    get_number(): string | null
+    get_number(): string
     /**
      * Gets the immediate parent of `device,` if any.
      * @returns A #GUdevDevice or %NULL if @device has no parent. Free with g_object_unref().
@@ -293,13 +293,13 @@ interface Device {
      * @param devtype The devtype of the parent to get or %NULL.
      * @returns A #GUdevDevice or %NULL if @device has no parent with @subsystem and @devtype. Free with g_object_unref().
      */
-    get_parent_with_subsystem(subsystem: string | null, devtype: string | null): Device | null
+    get_parent_with_subsystem(subsystem: string, devtype: string | null): Device | null
     /**
      * Look up the value for `key` on `device`.
      * @param key Name of property.
      * @returns The value for @key or %NULL if @key doesn't exist on @device. Do not free this string, it is owned by @device.
      */
-    get_property(key: string | null): string | null
+    get_property(key: string): string | null
 
     // Overloads of get_property
 
@@ -323,7 +323,7 @@ interface Device {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Look up the value for `key` on `device` and convert it to an
      * boolean. This is done by doing a case-insensitive string comparison
@@ -331,21 +331,21 @@ interface Device {
      * @param key Name of property.
      * @returns The value for @key or %FALSE if @key doesn't exist or isn't a #gboolean.
      */
-    get_property_as_boolean(key: string | null): boolean
+    get_property_as_boolean(key: string): boolean
     /**
      * Look up the value for `key` on `device` and convert it to a double
      * precision floating point number using g_ascii_strtod().
      * @param key Name of property.
      * @returns The value for @key or 0.0 if @key doesn't exist or isn't a #gdouble.
      */
-    get_property_as_double(key: string | null): number
+    get_property_as_double(key: string): number
     /**
      * Look up the value for `key` on `device` and convert it to an integer
      * using strtol().
      * @param key Name of property.
      * @returns The value for @key or 0 if @key doesn't exist or isn't an integer.
      */
-    get_property_as_int(key: string | null): number
+    get_property_as_int(key: string): number
     /**
      * Look up the value for `key` on `device` and return the result of
      * splitting it into non-empty tokens split at white space (only space
@@ -355,14 +355,14 @@ interface Device {
      * @param key Name of property.
      * @returns  The value of @key on @device split into tokens or %NULL if @key doesn't exist. This array is owned by @device and should not be freed by the caller.
      */
-    get_property_as_strv(key: string | null): string[] | null
+    get_property_as_strv(key: string): string[] | null
     /**
      * Look up the value for `key` on `device` and convert it to an unsigned
      * 64-bit integer using g_ascii_strtoull().
      * @param key Name of property.
      * @returns The value  for @key or 0 if @key doesn't  exist or isn't a #guint64.
      */
-    get_property_as_uint64(key: string | null): number
+    get_property_as_uint64(key: string): number
     /**
      * Gets all keys for properties on `device`.
      * @returns A %NULL terminated string array of property keys. This array is owned by @device and should not be freed by the caller.
@@ -377,7 +377,7 @@ interface Device {
      * Gets the subsystem for `device`.
      * @returns The subsystem for @device.
      */
-    get_subsystem(): string | null
+    get_subsystem(): string
     /**
      * Look up the sysfs attribute with `name` on `device`. The retrieved value
      * is cached in the device. Repeated calls will return the same value and
@@ -386,7 +386,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or %NULL if there is no such attribute. Do not free this string, it is owned by @device.
      */
-    get_sysfs_attr(name: string | null): string | null
+    get_sysfs_attr(name: string): string | null
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an
      * boolean. This is done by doing a case-insensitive string comparison
@@ -397,7 +397,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or %FALSE if there is no such attribute.
      */
-    get_sysfs_attr_as_boolean(name: string | null): boolean
+    get_sysfs_attr_as_boolean(name: string): boolean
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an
      * boolean. This is done by doing a case-insensitive string comparison
@@ -408,7 +408,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or %FALSE if there is no such attribute.
      */
-    get_sysfs_attr_as_boolean_uncached(name: string | null): boolean
+    get_sysfs_attr_as_boolean_uncached(name: string): boolean
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to a double
      * precision floating point number using g_ascii_strtod(). The retrieved value is cached
@@ -417,7 +417,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or 0.0 if there is no such attribute.
      */
-    get_sysfs_attr_as_double(name: string | null): number
+    get_sysfs_attr_as_double(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to a double
      * precision floating point number using g_ascii_strtod(). This function does blocking
@@ -427,7 +427,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or 0.0 if there is no such attribute.
      */
-    get_sysfs_attr_as_double_uncached(name: string | null): number
+    get_sysfs_attr_as_double_uncached(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an integer
      * using strtol(). The retrieved value is cached in the device. Repeated calls
@@ -436,7 +436,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or 0 if there is no such attribute.
      */
-    get_sysfs_attr_as_int(name: string | null): number
+    get_sysfs_attr_as_int(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an integer
      * using strtol(). This function does blocking I/O, and updates the sysfs
@@ -446,7 +446,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or 0 if there is no such attribute.
      */
-    get_sysfs_attr_as_int_uncached(name: string | null): number
+    get_sysfs_attr_as_int_uncached(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and return the result of
      * splitting it into non-empty tokens split at white space (only space (' '),
@@ -460,7 +460,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns  The value of the sysfs attribute split into tokens or %NULL if there is no such attribute. This array is owned by @device and should not be freed by the caller.
      */
-    get_sysfs_attr_as_strv(name: string | null): string[] | null
+    get_sysfs_attr_as_strv(name: string): string[] | null
     /**
      * Look up the sysfs attribute with `name` on `device` and return the result of
      * splitting it into non-empty tokens split at white space (only space (' '),
@@ -472,7 +472,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns  The value of the sysfs attribute split into tokens or %NULL if there is no such attribute. This array is owned by @device and should not be freed by the caller. Before version 238 the uncached getters would not strip trailing newlines.
      */
-    get_sysfs_attr_as_strv_uncached(name: string | null): string[] | null
+    get_sysfs_attr_as_strv_uncached(name: string): string[] | null
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an unsigned
      * 64-bit integer using g_ascii_strtoull(). The retrieved value is cached in the
@@ -481,7 +481,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or 0 if there is no such attribute.
      */
-    get_sysfs_attr_as_uint64(name: string | null): number
+    get_sysfs_attr_as_uint64(name: string): number
     /**
      * Look up the sysfs attribute with `name` on `device` and convert it to an unsigned
      * 64-bit integer using g_ascii_strtoull(). This function does blocking I/O, and
@@ -491,7 +491,7 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or 0 if there is no such attribute.
      */
-    get_sysfs_attr_as_uint64_uncached(name: string | null): number
+    get_sysfs_attr_as_uint64_uncached(name: string): number
     /**
      * Gets all keys for sysfs attributes on `device`.
      * @returns A %NULL terminated string array of sysfs attribute keys. This array is owned by @device and should not be freed by the caller.
@@ -505,12 +505,12 @@ interface Device {
      * @param name Name of the sysfs attribute.
      * @returns The value of the sysfs attribute or %NULL if there is no such attribute. Do not free this string, it is owned by @device.
      */
-    get_sysfs_attr_uncached(name: string | null): string | null
+    get_sysfs_attr_uncached(name: string): string | null
     /**
      * Gets the sysfs path for `device`.
      * @returns The sysfs path for @device.
      */
-    get_sysfs_path(): string | null
+    get_sysfs_path(): string
     /**
      * Gets all tags for `device`.
      * @returns A %NULL terminated string array of tags. This array is owned by @device and should not be freed by the caller.
@@ -529,7 +529,7 @@ interface Device {
      * @param key Name of property.
      * @returns %TRUE only if the value for @key exist.
      */
-    has_property(key: string | null): boolean
+    has_property(key: string): boolean
     /**
      * Check if a the sysfs attribute with the given key exists. The
      * retrieved value is cached in the device. Repeated calls will
@@ -539,7 +539,7 @@ interface Device {
      * @param key Name of sysfs attribute.
      * @returns %TRUE only if the value for @key exist.
      */
-    has_sysfs_attr(key: string | null): boolean
+    has_sysfs_attr(key: string): boolean
     /**
      * Check if a the sysfs attribute with the given key exists. The
      * retrieved value is cached in the device. Repeated calls will
@@ -549,7 +549,7 @@ interface Device {
      * @param key Name of sysfs attribute.
      * @returns %TRUE only if the value for @key exist.
      */
-    has_sysfs_attr_uncached(key: string | null): boolean
+    has_sysfs_attr_uncached(key: string): boolean
 
     // Class property signals of GUdev-1.0.GUdev.Device
 
@@ -662,52 +662,52 @@ interface Enumerator {
      * @param name Wildcard filter for kernel name e.g. "sda*".
      * @returns The passed in @enumerator.
      */
-    add_match_name(name: string | null): Enumerator
+    add_match_name(name: string): Enumerator
     /**
      * All returned devices will have a property matching the given `name` and `value`.
      * @param name Wildcard filter for property name.
      * @param value Wildcard filter for property value.
      * @returns The passed in @enumerator.
      */
-    add_match_property(name: string | null, value: string | null): Enumerator
+    add_match_property(name: string, value: string): Enumerator
     /**
      * All returned devices will match the given `subsystem`.
      * @param subsystem Wildcard for subsystem name e.g. 'scsi' or 'a*'.
      * @returns The passed in @enumerator.
      */
-    add_match_subsystem(subsystem: string | null): Enumerator
+    add_match_subsystem(subsystem: string): Enumerator
     /**
      * All returned devices will have a sysfs attribute matching the given `name` and `value`.
      * @param name Wildcard filter for sysfs attribute key.
      * @param value Wildcard filter for sysfs attribute value.
      * @returns The passed in @enumerator.
      */
-    add_match_sysfs_attr(name: string | null, value: string | null): Enumerator
+    add_match_sysfs_attr(name: string, value: string): Enumerator
     /**
      * All returned devices will match the given `tag`.
      * @param tag A udev tag e.g. "udev-acl".
      * @returns The passed in @enumerator.
      */
-    add_match_tag(tag: string | null): Enumerator
+    add_match_tag(tag: string): Enumerator
     /**
      * All returned devices will not match the given `subsystem`.
      * @param subsystem Wildcard for subsystem name e.g. 'scsi' or 'a*'.
      * @returns The passed in @enumerator.
      */
-    add_nomatch_subsystem(subsystem: string | null): Enumerator
+    add_nomatch_subsystem(subsystem: string): Enumerator
     /**
      * All returned devices will not have a sysfs attribute matching the given `name` and `value`.
      * @param name Wildcard filter for sysfs attribute key.
      * @param value Wildcard filter for sysfs attribute value.
      * @returns The passed in @enumerator.
      */
-    add_nomatch_sysfs_attr(name: string | null, value: string | null): Enumerator
+    add_nomatch_sysfs_attr(name: string, value: string): Enumerator
     /**
      * Add a device to the list of devices, to retrieve it back sorted in dependency order.
      * @param sysfs_path A sysfs path, e.g. "/sys/devices/pci0000:00/0000:00:1f.2/host0/target0:0:0/0:0:0:0/block/sda"
      * @returns The passed in @enumerator.
      */
-    add_sysfs_path(sysfs_path: string | null): Enumerator
+    add_sysfs_path(sysfs_path: string): Enumerator
     /**
      * Executes the query in `enumerator`.
      * @returns A list of #GUdevDevice objects. The caller should free the result by using g_object_unref() on each element in the list and then g_list_free() on the list.
@@ -771,7 +771,7 @@ interface ClientClass {
      * @field 
      */
     parent_class: GObject.ObjectClass
-    uevent: (client: Client, action: string | null, device: Device) => void
+    uevent: (client: Client, action: string, device: Device) => void
     reserved1: () => void
     reserved2: () => void
     reserved3: () => void

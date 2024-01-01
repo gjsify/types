@@ -60,7 +60,7 @@ const MINOR_VERSION: number
  * pnl version, encoded as a string, useful for printing and
  * concatenation.
  */
-const VERSION_S: string | null
+const VERSION_S: string
 /**
  * Creates a new frame source that will execute when the timeout interval
  * for the source has elapsed. The timing will try to synchronize based
@@ -72,7 +72,7 @@ const VERSION_S: string | null
 function frame_source_add(frames_per_sec: number, callback: GLib.SourceFunc): number
 function gtk_bin_draw(widget: Gtk.Widget, cr: cairo.Context): boolean
 function gtk_bin_size_allocate(widget: Gtk.Widget, allocation: Gtk.Allocation): void
-function overlay_add_child(self: DockOverlay, child: Gtk.Widget, type: string | null): void
+function overlay_add_child(self: DockOverlay, child: Gtk.Widget, type: string): void
 module Dock {
 
     // Constructor properties interface
@@ -105,7 +105,7 @@ interface Dock extends Gtk.Container {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -119,7 +119,7 @@ interface Dock extends Gtk.Container {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -130,7 +130,7 @@ interface Dock extends Gtk.Container {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.Dock
 
@@ -593,7 +593,7 @@ interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -607,7 +607,7 @@ interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -618,7 +618,7 @@ interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: DockItem): boolean
 
     // Overloads of get_child_visible
@@ -998,7 +998,7 @@ interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1010,7 +1010,7 @@ interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1024,7 +1024,7 @@ interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Pnl-1.0.Pnl.DockBinEdge
 
@@ -1321,7 +1321,7 @@ interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockIte
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1335,7 +1335,7 @@ interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockIte
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1346,7 +1346,7 @@ interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockIte
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: DockItem): boolean
 
     // Overloads of get_child_visible
@@ -1732,7 +1732,7 @@ interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, DockItem 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1744,7 +1744,7 @@ interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, DockItem 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1758,7 +1758,7 @@ interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, DockItem 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.DockOverlayEdge
 
@@ -2032,7 +2032,7 @@ interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2044,7 +2044,7 @@ interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2058,7 +2058,7 @@ interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.DockPaned
 
@@ -2281,7 +2281,7 @@ interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2295,7 +2295,7 @@ interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2306,7 +2306,7 @@ interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.DockRevealer
 
@@ -2613,7 +2613,7 @@ interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2625,7 +2625,7 @@ interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2639,7 +2639,7 @@ interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable,
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.DockStack
 
@@ -2844,7 +2844,7 @@ interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2858,7 +2858,7 @@ interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2869,7 +2869,7 @@ interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.DockTabStrip
 
@@ -3134,8 +3134,8 @@ interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
 
     // Owm methods of Pnl-1.0.Pnl.DockWidget
 
-    get_title(): string | null
-    set_title(title: string | null): void
+    get_title(): string
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -3237,7 +3237,7 @@ interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3249,7 +3249,7 @@ interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3263,7 +3263,7 @@ interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockItem {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.DockWidget
 
@@ -3448,7 +3448,7 @@ interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3462,7 +3462,7 @@ interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3473,7 +3473,7 @@ interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, DockItem
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: DockItem): boolean
 
     // Overloads of get_child_visible
@@ -3922,7 +3922,7 @@ interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3936,7 +3936,7 @@ interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3947,7 +3947,7 @@ interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Pnl-1.0.Pnl.MultiPaned
 
@@ -4147,10 +4147,10 @@ interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk
     // Owm methods of Pnl-1.0.Pnl.Tab
 
     get_edge(): Gtk.PositionType
-    get_title(): string | null
+    get_title(): string
     get_widget(): Gtk.Widget | null
     set_edge(edge: Gtk.PositionType): void
-    set_title(title: string | null): void
+    set_title(title: string): void
     set_widget(widget: Gtk.Widget): void
 
     // Conflicting methods
@@ -4165,7 +4165,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4177,7 +4177,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4191,7 +4191,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.Tab
 
@@ -4444,7 +4444,7 @@ interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4458,7 +4458,7 @@ interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4469,7 +4469,7 @@ interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Pnl-1.0.Pnl.TabStrip
 

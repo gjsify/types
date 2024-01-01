@@ -1115,15 +1115,15 @@ export enum ViewerPreferences {
      */
     DIRECTION_RTL,
 }
-export const ANNOT_TEXT_ICON_CIRCLE: string | null
-export const ANNOT_TEXT_ICON_COMMENT: string | null
-export const ANNOT_TEXT_ICON_CROSS: string | null
-export const ANNOT_TEXT_ICON_HELP: string | null
-export const ANNOT_TEXT_ICON_INSERT: string | null
-export const ANNOT_TEXT_ICON_KEY: string | null
-export const ANNOT_TEXT_ICON_NEW_PARAGRAPH: string | null
-export const ANNOT_TEXT_ICON_NOTE: string | null
-export const ANNOT_TEXT_ICON_PARAGRAPH: string | null
+export const ANNOT_TEXT_ICON_CIRCLE: string
+export const ANNOT_TEXT_ICON_COMMENT: string
+export const ANNOT_TEXT_ICON_CROSS: string
+export const ANNOT_TEXT_ICON_HELP: string
+export const ANNOT_TEXT_ICON_INSERT: string
+export const ANNOT_TEXT_ICON_KEY: string
+export const ANNOT_TEXT_ICON_NEW_PARAGRAPH: string
+export const ANNOT_TEXT_ICON_NOTE: string
+export const ANNOT_TEXT_ICON_PARAGRAPH: string
 /**
  * Defined if poppler was compiled with cairo support.
  */
@@ -1150,7 +1150,7 @@ export const MINOR_VERSION: number
  * @param timet an uninitialized #time_t
  * @returns #TRUE, if @timet was set
  */
-export function dateParse(date: string | null, timet: number): boolean
+export function dateParse(date: string, timet: number): boolean
 export function errorQuark(): GLib.Quark
 /**
  * Returns the backend compiled into the poppler library.
@@ -1161,7 +1161,7 @@ export function getBackend(): Backend
  * Returns the version of poppler in use.  This result is not to be freed.
  * @returns the version of poppler.
  */
-export function getVersion(): string | null
+export function getVersion(): string
 /**
  * Converts a bytestring into a zero-terminated string suitable to
  * pass to poppler_document_find_dest().
@@ -1188,7 +1188,7 @@ export function namedDestFromBytestring(data: number[]): string | null
  * @param name the named dest string
  * @returns a new bytestring,   or %NULL
  */
-export function namedDestToBytestring(name: string | null): number[] | null
+export function namedDestToBytestring(name: string): number[] | null
 /**
  * Specifies the type of the function passed to
  * poppler_attachment_save_to_callback().  It is called once for each block of
@@ -1287,7 +1287,7 @@ export interface Annot {
      * replacing the current contents.
      * @param contents a text string containing the new contents
      */
-    setContents(contents: string | null): void
+    setContents(contents: string): void
     /**
      * Sets the flag field specifying various characteristics of the
      * `poppler_annot`.
@@ -2034,7 +2034,7 @@ export interface AnnotText {
      * </variablelist>
      * @param icon the name of an icon
      */
-    setIcon(icon: string | null): void
+    setIcon(icon: string): void
     /**
      * Sets whether `poppler_annot` should initially be displayed open
      * @param isOpen whether annotation should initially be displayed open
@@ -2244,9 +2244,9 @@ export interface Attachment {
 
     getChecksum(): GLib.String
     getCtime(): GLib.DateTime | null
-    getDescription(): string | null
+    getDescription(): string
     getMtime(): GLib.DateTime | null
-    getName(): string | null
+    getName(): string
     getSize(): number
     /**
      * Saves `attachment` to a file indicated by `filename`.  If `error` is set, %FALSE
@@ -2255,7 +2255,7 @@ export interface Attachment {
      * @param filename name of file to save
      * @returns %TRUE, if the file successfully saved
      */
-    save(filename: string | null): boolean
+    save(filename: string): boolean
     /**
      * Saves `attachment` by feeding the produced data to `save_func`. Can be used
      * when you want to store the attachment to something other than a file, such as
@@ -2482,7 +2482,7 @@ export interface Document {
      * @param linkName a named destination
      * @returns a new #PopplerDest destination, or %NULL if   @link_name is not a destination.
      */
-    findDest(linkName: string | null): Dest
+    findDest(linkName: string): Dest
     /**
      * Returns a #GList containing #PopplerAttachment<!-- -->s.  These attachments
      * are unowned, and must be unreffed, and the list must be freed with
@@ -2530,7 +2530,7 @@ export interface Document {
      * size of 32 bytes.
      * @returns %TRUE if the @document contains an id, %FALSE otherwise
      */
-    getId(): [ /* returnType */ boolean, /* permanentId */ string | null, /* updateId */ string | null ]
+    getId(): [ /* returnType */ boolean, /* permanentId */ string, /* updateId */ string ]
     /**
      * Returns the keywords associated to the document
      * @returns a new allocated string containing keywords associated               to @document, or %NULL
@@ -2585,7 +2585,7 @@ export interface Document {
      * @param label a page label
      * @returns The #PopplerPage referenced by @label
      */
-    getPageByLabel(label: string | null): Page
+    getPageByLabel(label: string): Page
     /**
      * Returns the page layout that should be used when the document is opened
      * @returns a #PopplerPageLayout that should be used when the document is opened
@@ -2716,7 +2716,7 @@ export interface Document {
      * @param uri uri of file to save
      * @returns %TRUE, if the document was successfully saved
      */
-    save(uri: string | null): boolean
+    save(uri: string): boolean
     /**
      * Saves a copy of the original `document`.
      * Any change made in the document such as
@@ -2726,7 +2726,7 @@ export interface Document {
      * @param uri uri of file to save
      * @returns %TRUE, if the document was successfully saved
      */
-    saveACopy(uri: string | null): boolean
+    saveACopy(uri: string): boolean
     /**
      * Saves `document`. Any change made in the document such as
      * form fields filled, annotations added or modified
@@ -2748,7 +2748,7 @@ export interface Document {
      * entry is removed from the document's Info dictionary.
      * @param author A new author
      */
-    setAuthor(author: string | null): void
+    setAuthor(author: string): void
     /**
      * Sets the document's creation date. If `creation_date` is -1, CreationDate
      * entry is removed from the document's Info dictionary.
@@ -2766,13 +2766,13 @@ export interface Document {
      * entry is removed from the document's Info dictionary.
      * @param creator A new creator
      */
-    setCreator(creator: string | null): void
+    setCreator(creator: string): void
     /**
      * Sets the document's keywords. If `keywords` is %NULL,
      * Keywords entry is removed from the document's Info dictionary.
      * @param keywords New keywords
      */
-    setKeywords(keywords: string | null): void
+    setKeywords(keywords: string): void
     /**
      * Sets the document's modification date. If `modification_date` is -1, ModDate
      * entry is removed from the document's Info dictionary.
@@ -2790,19 +2790,19 @@ export interface Document {
      * Producer entry is removed from the document's Info dictionary.
      * @param producer A new producer
      */
-    setProducer(producer: string | null): void
+    setProducer(producer: string): void
     /**
      * Sets the document's subject. If `subject` is %NULL, Subject
      * entry is removed from the document's Info dictionary.
      * @param subject A new subject
      */
-    setSubject(subject: string | null): void
+    setSubject(subject: string): void
     /**
      * Sets the document's title. If `title` is %NULL, Title entry
      * is removed from the document's Info dictionary.
      * @param title A new title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Class property signals of Poppler-0.18.Poppler.Document
 
@@ -3007,7 +3007,7 @@ export class Document extends GObject.Object {
      * @param password password to unlock the file with, or %NULL
      * @returns A newly created #PopplerDocument, or %NULL
      */
-    static newFromFile(uri: string | null, password: string | null): Document
+    static newFromFile(uri: string, password: string | null): Document
     /**
      * Creates a new #PopplerDocument reading the PDF contents from `file`.
      * Possible errors include those in the #POPPLER_ERROR and #G_FILE_ERROR
@@ -3205,7 +3205,7 @@ export interface FormField {
      * Sets the text in `field` to the given value, replacing the current contents
      * @param text the new text
      */
-    choiceSetText(text: string | null): void
+    choiceSetText(text: string): void
     /**
      * Changes the state of the item at the given index
      * @param index the index of the item
@@ -3331,7 +3331,7 @@ export interface FormField {
      * Sets the text in `field` to the given value, replacing the current contents.
      * @param text the new text
      */
-    textSetText(text: string | null): void
+    textSetText(text: string): void
 
     // Class property signals of Poppler-0.18.Poppler.FormField
 
@@ -3387,7 +3387,7 @@ export interface Layer {
      * presentation as a title in a viewer's GUI
      * @returns a string containing the title of the layer
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Hides `layer`. If `layer` is the parent of other nested layers,
      * such layers will be also hidden and will be blocked until `layer`
@@ -3463,12 +3463,12 @@ export interface Media {
      * a local relative or absolute path or a URI
      * @returns a filename, return value is owned by #PopplerMedia and should not be freed
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Returns the media clip mime-type
      * @returns the mime-type, return value is owned by #PopplerMedia and should not be freed
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Returns the repeat count parameter.
      * @returns Repeat count parameter (float)
@@ -3495,7 +3495,7 @@ export interface Media {
      * @param filename name of file to save
      * @returns %TRUE, if the file successfully saved
      */
-    save(filename: string | null): boolean
+    save(filename: string): boolean
     /**
      * Saves embedded stream of `poppler_media` by feeding the produced data to `save_func`. Can be used
      * when you want to store the media clip stream to something other than a file, such as
@@ -3579,7 +3579,7 @@ export interface Movie {
      * Returns the local filename identifying a self-describing movie file
      * @returns a local filename, return value is owned by #PopplerMovie and               should not be freed
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Returns the play mode of `poppler_movie`.
      * @returns a #PopplerMoviePlayMode.
@@ -3719,7 +3719,7 @@ export class PSFile extends GObject.Object {
      * @param nPages the number of pages to print
      * @returns a PopplerPSFile
      */
-    constructor(document: Document, filename: string | null, firstPage: number, nPages: number) 
+    constructor(document: Document, filename: string, firstPage: number, nPages: number) 
     /**
      * Create a new postscript file to render to
      * @constructor 
@@ -3729,7 +3729,7 @@ export class PSFile extends GObject.Object {
      * @param nPages the number of pages to print
      * @returns a PopplerPSFile
      */
-    static new(document: Document, filename: string | null, firstPage: number, nPages: number): PSFile
+    static new(document: Document, filename: string, firstPage: number, nPages: number): PSFile
     /**
      * Create a new postscript file to render to.
      * Note that this function takes ownership of `fd;` you must not operate on it
@@ -3778,7 +3778,7 @@ export interface Page {
      * @param text the text to search for (UTF-8 encoded)
      * @returns a #GList of #PopplerRectangle,
      */
-    findText(text: string | null): Rectangle[]
+    findText(text: string): Rectangle[]
     /**
      * Finds `text` in `page` with the given #PopplerFindFlags options and
      * returns a #GList of rectangles for each occurrence of the text on the page.
@@ -3802,7 +3802,7 @@ export interface Page {
      * @param options find options
      * @returns a newly allocated list of newly allocated #PopplerRectangle. Free with g_list_free_full() using poppler_rectangle_free().
      */
-    findTextWithOptions(text: string | null, options: FindFlags): Rectangle[]
+    findTextWithOptions(text: string, options: FindFlags): Rectangle[]
     /**
      * Returns a list of #PopplerAnnotMapping items that map from a location on
      * `page` to a #PopplerAnnot.  This list must be freed with
@@ -5228,13 +5228,13 @@ export interface FontsIter {
      * Returns the encoding of the font associated with `iter`
      * @returns the font encoding
      */
-    getEncoding(): string | null
+    getEncoding(): string
     /**
      * The filename of the font associated with `iter` or %NULL if
      * the font is embedded
      * @returns the filename of the font or %NULL if font is embedded
      */
-    getFileName(): string | null
+    getFileName(): string
     /**
      * Returns the type of the font associated with `iter`
      * @returns the font type
@@ -5244,18 +5244,18 @@ export interface FontsIter {
      * Returns the full name of the font associated with `iter`
      * @returns the font full name
      */
-    getFullName(): string | null
+    getFullName(): string
     /**
      * Returns the name of the font associated with `iter`
      * @returns the font name
      */
-    getName(): string | null
+    getName(): string
     /**
      * The name of the substitute font of the font associated with `iter` or %NULL if
      * the font is embedded
      * @returns the name of the substitute font or %NULL if font is embedded
      */
-    getSubstituteName(): string | null
+    getSubstituteName(): string
     /**
      * Returns whether the font associated with `iter` is embedded in the document
      * @returns %TRUE if font is embedded, %FALSE otherwise
@@ -5998,7 +5998,7 @@ export interface SignatureInfo {
      * Returns name of signer for given PopplerSignatureInfo.
      * @returns A string.
      */
-    getSignerName(): string | null
+    getSignerName(): string
 }
 
 /**
@@ -6223,12 +6223,12 @@ export interface TextSpan {
      * Obtains the name of the font in which the span is to be rendered.
      * @returns A string containing the font name, or   %NULL if a font is not defined.
      */
-    getFontName(): string | null
+    getFontName(): string
     /**
      * Obtains the text contained in the span.
      * @returns A string.
      */
-    getText(): string | null
+    getText(): string
     /**
      * Check whether a text span is meant to be rendered using a bold font.
      * @returns Whether the span uses bold font.

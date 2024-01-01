@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/glib-2.0)
 
 
-GJS TypeScript type definitions for GLib-2.0, generated from library version 2.78.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+GJS TypeScript type definitions for GLib-2.0, generated from library version 2.78.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 GLib provides the core application building blocks for libraries and applications written in C. It provides the core object system used in GNOME, the main loop implementation, and a large set of utility functions for strings and common data structures.
 

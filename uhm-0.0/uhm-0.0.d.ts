@@ -62,7 +62,7 @@ interface Resolver {
      * @param addr the IP address to resolve to
      * @returns %TRUE on success; %FALSE otherwise
      */
-    add_A(hostname: string | null, addr: string | null): boolean
+    add_A(hostname: string, addr: string): boolean
     /**
      * Adds a resolution mapping the given `service` (on `protocol` and `domain)` to the IP address `addr` and given `port`.
      * @param service the service name to match
@@ -72,7 +72,7 @@ interface Resolver {
      * @param port the port to resolve to
      * @returns %TRUE on success; %FALSE otherwise
      */
-    add_SRV(service: string | null, protocol: string | null, domain: string | null, addr: string | null, port: number): boolean
+    add_SRV(service: string, protocol: string, domain: string, addr: string, port: number): boolean
     /**
      * Resets the state of the #UhmResolver, deleting all records added with uhm_resolver_add_A() and uhm_resolver_add_SRV().
      */
@@ -422,7 +422,7 @@ interface Server {
      * @param message_chunk single line of a message which was received
      * @param message_chunk_length length of `message_chunk` in bytes
      */
-    received_message_chunk(message_chunk: string | null, message_chunk_length: number): void
+    received_message_chunk(message_chunk: string, message_chunk_length: number): void
     /**
      * Convenience version of uhm_server_received_message_chunk() which takes the
      * message `direction` and `data` separately, as provided by libsoup in a
@@ -455,7 +455,7 @@ interface Server {
      * @param data single line of a message which was received
      * @param data_length length of `data` in bytes
      */
-    received_message_chunk_with_direction(direction: number, data: string | null, data_length: number): void
+    received_message_chunk_with_direction(direction: number, data: string, data_length: number): void
     /**
      * Runs the mock server, binding to a loopback TCP/IP interface and preparing a HTTPS server which is ready to accept requests.
      * The TCP/IP address and port number are chosen randomly out of the loopback addresses, and are exposed as #UhmServer:address and #UhmServer:port
@@ -518,7 +518,7 @@ interface Server {
      * details of the error domains used.
      * @param trace_name name of the trace
      */
-    start_trace(trace_name: string | null): void
+    start_trace(trace_name: string): void
     /**
      * Convenience function to start logging to or reading from the given `trace_file,` depending on the values of #UhmServer:enable-logging and
      * #UhmServer:enable-online.
@@ -646,7 +646,7 @@ class Server extends GObject.Object {
      * @param data message data
      * @param user_data user data passed to the #SoupLogger, or %NULL
      */
-    static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string | null, user_data: any | null): void
+    static received_message_chunk_from_soup(logger: Soup.Logger, level: Soup.LoggerLogLevel, direction: number, data: string, user_data: any | null): void
 }
 
 interface ResolverClass {

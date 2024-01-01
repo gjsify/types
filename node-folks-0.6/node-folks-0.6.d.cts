@@ -147,17 +147,17 @@ export interface AliasDetails extends GObject.Object {
 
     // Owm methods of Folks-0.6.Folks.AliasDetails
 
-    // Has conflict: changeAlias(alias: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: changeAlias(alias: string, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeAliasFinish(res: Gio.AsyncResult): void
-    // Has conflict: getAlias(): string | null
-    // Has conflict: setAlias(value: string | null): void
+    // Has conflict: getAlias(): string
+    // Has conflict: setAlias(value: string): void
 
     // Own virtual methods of Folks-0.6.Folks.AliasDetails
 
-    changeAlias(alias: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    changeAlias(alias: string, callback?: Gio.AsyncReadyCallback | null): void
     changeAliasFinish(res: Gio.AsyncResult): void
-    getAlias(): string | null
-    setAlias(value: string | null): void
+    getAlias(): string
+    setAlias(value: string): void
 
     // Class property signals of Folks-0.6.Folks.AliasDetails
 
@@ -537,18 +537,18 @@ export interface ExtendedInfo extends GObject.Object {
 
     // Owm methods of Folks-0.6.Folks.ExtendedInfo
 
-    // Has conflict: getExtendedField(name: string | null): ExtendedFieldDetails | null
-    // Has conflict: changeExtendedField(name: string | null, value: ExtendedFieldDetails, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: getExtendedField(name: string): ExtendedFieldDetails | null
+    // Has conflict: changeExtendedField(name: string, value: ExtendedFieldDetails, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeExtendedFieldFinish(res: Gio.AsyncResult): void
-    // Has conflict: removeExtendedField(name: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: removeExtendedField(name: string, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: removeExtendedFieldFinish(res: Gio.AsyncResult): void
 
     // Own virtual methods of Folks-0.6.Folks.ExtendedInfo
 
-    getExtendedField(name: string | null): ExtendedFieldDetails | null
-    changeExtendedField(name: string | null, value: ExtendedFieldDetails, callback?: Gio.AsyncReadyCallback | null): void
+    getExtendedField(name: string): ExtendedFieldDetails | null
+    changeExtendedField(name: string, value: ExtendedFieldDetails, callback?: Gio.AsyncReadyCallback | null): void
     changeExtendedFieldFinish(res: Gio.AsyncResult): void
-    removeExtendedField(name: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    removeExtendedField(name: string, callback?: Gio.AsyncReadyCallback | null): void
     removeExtendedFieldFinish(res: Gio.AsyncResult): void
 
     // Class property signals of Folks-0.6.Folks.ExtendedInfo
@@ -718,7 +718,7 @@ export module GroupDetails {
      * Signal callback interface for `group-changed`
      */
     export interface GroupChangedSignalCallback {
-        (group: string | null, isMember: boolean): void
+        (group: string, isMember: boolean): void
     }
 
 
@@ -742,7 +742,7 @@ export interface GroupDetails extends GObject.Object {
 
     // Owm methods of Folks-0.6.Folks.GroupDetails
 
-    // Has conflict: changeGroup(group: string | null, isMember: boolean, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: changeGroup(group: string, isMember: boolean, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeGroupFinish(res: Gio.AsyncResult): void
     // Has conflict: changeGroups(groups: Gee.Set, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeGroupsFinish(res: Gio.AsyncResult): void
@@ -751,7 +751,7 @@ export interface GroupDetails extends GObject.Object {
 
     // Own virtual methods of Folks-0.6.Folks.GroupDetails
 
-    changeGroup(group: string | null, isMember: boolean, callback?: Gio.AsyncReadyCallback | null): void
+    changeGroup(group: string, isMember: boolean, callback?: Gio.AsyncReadyCallback | null): void
     changeGroupFinish(res: Gio.AsyncResult): void
     changeGroups(groups: Gee.Set, callback?: Gio.AsyncReadyCallback | null): void
     changeGroupsFinish(res: Gio.AsyncResult): void
@@ -862,7 +862,7 @@ export class ImDetails {
 
     constructor(config?: ImDetails.ConstructorProperties) 
     _init(config?: ImDetails.ConstructorProperties): void
-    static normaliseImAddress(imAddress: string | null, protocol: string | null): string | null
+    static normaliseImAddress(imAddress: string, protocol: string): string | null
 }
 
 export module InteractionDetails {
@@ -1105,31 +1105,31 @@ export interface NameDetails extends GObject.Object {
 
     // Has conflict: changeStructuredName(name?: StructuredName | null, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeStructuredNameFinish(res: Gio.AsyncResult): void
-    // Has conflict: changeFullName(fullName: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: changeFullName(fullName: string, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeFullNameFinish(res: Gio.AsyncResult): void
-    // Has conflict: changeNickname(nickname: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: changeNickname(nickname: string, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: changeNicknameFinish(res: Gio.AsyncResult): void
     // Has conflict: getStructuredName(): StructuredName | null
     // Has conflict: setStructuredName(value?: StructuredName | null): void
-    // Has conflict: getFullName(): string | null
-    // Has conflict: setFullName(value: string | null): void
-    // Has conflict: getNickname(): string | null
-    // Has conflict: setNickname(value: string | null): void
+    // Has conflict: getFullName(): string
+    // Has conflict: setFullName(value: string): void
+    // Has conflict: getNickname(): string
+    // Has conflict: setNickname(value: string): void
 
     // Own virtual methods of Folks-0.6.Folks.NameDetails
 
     changeStructuredName(name?: StructuredName | null, callback?: Gio.AsyncReadyCallback | null): void
     changeStructuredNameFinish(res: Gio.AsyncResult): void
-    changeFullName(fullName: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    changeFullName(fullName: string, callback?: Gio.AsyncReadyCallback | null): void
     changeFullNameFinish(res: Gio.AsyncResult): void
-    changeNickname(nickname: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    changeNickname(nickname: string, callback?: Gio.AsyncReadyCallback | null): void
     changeNicknameFinish(res: Gio.AsyncResult): void
     getStructuredName(): StructuredName | null
     setStructuredName(value?: StructuredName | null): void
-    getFullName(): string | null
-    setFullName(value: string | null): void
-    getNickname(): string | null
-    setNickname(value: string | null): void
+    getFullName(): string
+    setFullName(value: string): void
+    getNickname(): string
+    setNickname(value: string): void
 
     // Class property signals of Folks-0.6.Folks.NameDetails
 
@@ -1402,23 +1402,23 @@ export interface PresenceDetails extends GObject.Object {
     isOnline(): boolean
     // Has conflict: getPresenceType(): PresenceType
     // Has conflict: setPresenceType(value: PresenceType): void
-    // Has conflict: getPresenceMessage(): string | null
-    // Has conflict: setPresenceMessage(value: string | null): void
+    // Has conflict: getPresenceMessage(): string
+    // Has conflict: setPresenceMessage(value: string): void
     // Has conflict: getClientTypes(): string[]
     // Has conflict: setClientTypes(value: string[]): void
-    // Has conflict: getPresenceStatus(): string | null
-    // Has conflict: setPresenceStatus(value: string | null): void
+    // Has conflict: getPresenceStatus(): string
+    // Has conflict: setPresenceStatus(value: string): void
 
     // Own virtual methods of Folks-0.6.Folks.PresenceDetails
 
     getPresenceType(): PresenceType
     setPresenceType(value: PresenceType): void
-    getPresenceMessage(): string | null
-    setPresenceMessage(value: string | null): void
+    getPresenceMessage(): string
+    setPresenceMessage(value: string): void
     getClientTypes(): string[]
     setClientTypes(value: string[]): void
-    getPresenceStatus(): string | null
-    setPresenceStatus(value: string | null): void
+    getPresenceStatus(): string
+    setPresenceStatus(value: string): void
 
     // Class property signals of Folks-0.6.Folks.PresenceDetails
 
@@ -1465,7 +1465,7 @@ export class PresenceDetails {
 
     constructor(config?: PresenceDetails.ConstructorProperties) 
     _init(config?: PresenceDetails.ConstructorProperties): void
-    static getDefaultMessageFromType(type: PresenceType): string | null
+    static getDefaultMessageFromType(type: PresenceType): string
     static typecmp(typeA: PresenceType, typeB: PresenceType): number
 }
 
@@ -1700,11 +1700,11 @@ export interface AbstractFieldDetails {
 
     // Owm methods of Folks-0.6.Folks.AbstractFieldDetails
 
-    getParameterValues(parameterName: string | null): Gee.Collection | null
-    addParameter(parameterName: string | null, parameterValue: string | null): void
-    setParameter(parameterName: string | null, parameterValue: string | null): void
+    getParameterValues(parameterName: string): Gee.Collection | null
+    addParameter(parameterName: string, parameterValue: string): void
+    setParameter(parameterName: string, parameterValue: string): void
     extendParameters(additional: Gee.MultiMap): void
-    removeParameterAll(parameterName: string | null): void
+    removeParameterAll(parameterName: string): void
     // Has conflict: equal(that: AbstractFieldDetails): boolean
     // Has conflict: parametersEqual(that: AbstractFieldDetails): boolean
     // Has conflict: valuesEqual(that: AbstractFieldDetails): boolean
@@ -1712,8 +1712,8 @@ export interface AbstractFieldDetails {
     // Has conflict: getValue(): any | null
     // Has conflict: setValue(value?: any | null): void
     getValueType(): GObject.GType
-    // Has conflict: getId(): string | null
-    // Has conflict: setId(value: string | null): void
+    // Has conflict: getId(): string
+    // Has conflict: setId(value: string): void
     // Has conflict: getParameters(): Gee.MultiMap
     // Has conflict: setParameters(value: Gee.MultiMap): void
 
@@ -1725,8 +1725,8 @@ export interface AbstractFieldDetails {
     hash(): number
     getValue(): any | null
     setValue(value?: any | null): void
-    getId(): string | null
-    setId(value: string | null): void
+    getId(): string
+    setId(value: string): void
     getParameters(): Gee.MultiMap
     setParameters(value: Gee.MultiMap): void
 
@@ -1811,13 +1811,13 @@ export interface AvatarCache {
 
     // Owm methods of Folks-0.6.Folks.AvatarCache
 
-    loadAvatar(id: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    loadAvatar(id: string, callback?: Gio.AsyncReadyCallback | null): void
     loadAvatarFinish(res: Gio.AsyncResult): Gio.LoadableIcon | null
-    storeAvatar(id: string | null, avatar: Gio.LoadableIcon, callback?: Gio.AsyncReadyCallback | null): void
+    storeAvatar(id: string, avatar: Gio.LoadableIcon, callback?: Gio.AsyncReadyCallback | null): void
     storeAvatarFinish(res: Gio.AsyncResult): string | null
-    removeAvatar(id: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    removeAvatar(id: string, callback?: Gio.AsyncReadyCallback | null): void
     removeAvatarFinish(res: Gio.AsyncResult): void
-    buildUriForAvatar(id: string | null): string | null
+    buildUriForAvatar(id: string): string | null
 
     // Class property signals of Folks-0.6.Folks.AvatarCache
 
@@ -1890,11 +1890,11 @@ export interface BackendStore {
     loadBackends(callback?: Gio.AsyncReadyCallback | null): void
     loadBackendsFinish(res: Gio.AsyncResult): void
     addBackend(backend: Backend): void
-    dupBackendByName(name: string | null): Backend | null
+    dupBackendByName(name: string): Backend | null
     listBackends(): Gee.Collection
-    enableBackend(name: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    enableBackend(name: string, callback?: Gio.AsyncReadyCallback | null): void
     enableBackendFinish(res: Gio.AsyncResult): void
-    disableBackend(name: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    disableBackend(name: string, callback?: Gio.AsyncReadyCallback | null): void
     disableBackendFinish(res: Gio.AsyncResult): void
     getEnabledBackends(): Gee.Map
     getIsPrepared(): boolean
@@ -1992,7 +1992,7 @@ export interface Backend {
     // Has conflict: unprepareFinish(res: Gio.AsyncResult): void
     // Has conflict: getIsPrepared(): boolean
     // Has conflict: getIsQuiescent(): boolean
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: getPersonaStores(): Gee.Map
 
     // Own virtual methods of Folks-0.6.Folks.Backend
@@ -2006,7 +2006,7 @@ export interface Backend {
     unprepareFinish(res: Gio.AsyncResult): void
     getIsPrepared(): boolean
     getIsQuiescent(): boolean
-    getName(): string | null
+    getName(): string
     getPersonaStores(): Gee.Map
 
     // Own signals of Folks-0.6.Folks.Backend
@@ -2232,8 +2232,8 @@ export class EmailFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.EmailFieldDetails
 
     constructor(config?: EmailFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): EmailFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): EmailFieldDetails
     _init(config?: EmailFieldDetails.ConstructorProperties): void
 }
 
@@ -2311,8 +2311,8 @@ export class ExtendedFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.ExtendedFieldDetails
 
     constructor(config?: ExtendedFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): ExtendedFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): ExtendedFieldDetails
     _init(config?: ExtendedFieldDetails.ConstructorProperties): void
 }
 
@@ -2390,8 +2390,8 @@ export class ImFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.ImFieldDetails
 
     constructor(config?: ImFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): ImFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): ImFieldDetails
     _init(config?: ImFieldDetails.ConstructorProperties): void
 }
 
@@ -2457,9 +2457,9 @@ export interface IndividualAggregator {
     linkPersonasFinish(res: Gio.AsyncResult): void
     unlinkIndividual(individual: Individual, callback?: Gio.AsyncReadyCallback | null): void
     unlinkIndividualFinish(res: Gio.AsyncResult): void
-    ensureIndividualPropertyWriteable(individual: Individual, propertyName: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    ensureIndividualPropertyWriteable(individual: Individual, propertyName: string, callback?: Gio.AsyncReadyCallback | null): void
     ensureIndividualPropertyWriteableFinish(res: Gio.AsyncResult): Persona
-    lookUpIndividual(id: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    lookUpIndividual(id: string, callback?: Gio.AsyncReadyCallback | null): void
     lookUpIndividualFinish(res: Gio.AsyncResult): Individual | null
     getIsPrepared(): boolean
     getIsQuiescent(): boolean
@@ -2593,8 +2593,8 @@ export interface Individual extends AliasDetails, AvatarDetails, BirthdayDetails
     hasAntiLinkWithIndividual(i: Individual): boolean
     getTrustLevel(): TrustLevel
     getIsUser(): boolean
-    getId(): string | null
-    getDisplayName(): string | null
+    getId(): string
+    getDisplayName(): string
     getPersonas(): Gee.Set
     setPersonas(value: Gee.Set): void
 
@@ -2892,17 +2892,17 @@ export interface StructuredName {
     isEmpty(): boolean
     equal(other: StructuredName): boolean
     toString(): string | null
-    toStringWithFormat(nameFmt: string | null): string | null
-    getFamilyName(): string | null
-    setFamilyName(value: string | null): void
-    getGivenName(): string | null
-    setGivenName(value: string | null): void
-    getAdditionalNames(): string | null
-    setAdditionalNames(value: string | null): void
-    getPrefixes(): string | null
-    setPrefixes(value: string | null): void
-    getSuffixes(): string | null
-    setSuffixes(value: string | null): void
+    toStringWithFormat(nameFmt: string): string | null
+    getFamilyName(): string
+    setFamilyName(value: string): void
+    getGivenName(): string
+    setGivenName(value: string): void
+    getAdditionalNames(): string
+    setAdditionalNames(value: string): void
+    getPrefixes(): string
+    setPrefixes(value: string): void
+    getSuffixes(): string
+    setSuffixes(value: string): void
 
     // Class property signals of Folks-0.6.Folks.StructuredName
 
@@ -2981,8 +2981,8 @@ export interface NoteFieldDetails {
 
     // Owm methods of Folks-0.6.Folks.NoteFieldDetails
 
-    getUid(): string | null
-    setUid(value: string | null): void
+    getUid(): string
+    setUid(value: string): void
 
     // Class property signals of Folks-0.6.Folks.NoteFieldDetails
 
@@ -3048,8 +3048,8 @@ export class NoteFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.NoteFieldDetails
 
     constructor(config?: NoteFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null, uid?: string | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null, uid?: string | null): NoteFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null, uid?: string | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null, uid?: string | null): NoteFieldDetails
     _init(config?: NoteFieldDetails.ConstructorProperties): void
 }
 
@@ -3093,8 +3093,8 @@ export interface ObjectCache {
     storeObjectsFinish(res: Gio.AsyncResult): void
     clearCache(callback?: Gio.AsyncReadyCallback | null): void
     clearCacheFinish(res: Gio.AsyncResult): void
-    getTypeId(): string | null
-    getId(): string | null
+    getTypeId(): string
+    getId(): string
 
     // Own virtual methods of Folks-0.6.Folks.ObjectCache
 
@@ -3222,9 +3222,9 @@ export interface PersonaStore {
     // Has conflict: addPersonaFromDetailsFinish(res: Gio.AsyncResult): Persona | null
     // Has conflict: removePersona(persona: Persona, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: removePersonaFinish(res: Gio.AsyncResult): void
-    // Has conflict: getTypeId(): string | null
-    getDisplayName(): string | null
-    getId(): string | null
+    // Has conflict: getTypeId(): string
+    getDisplayName(): string
+    getId(): string
     // Has conflict: getPersonas(): Gee.Map
     // Has conflict: getCanAddPersonas(): MaybeBool
     // Has conflict: getCanAliasPersonas(): MaybeBool
@@ -3250,7 +3250,7 @@ export interface PersonaStore {
     addPersonaFromDetailsFinish(res: Gio.AsyncResult): Persona | null
     removePersona(persona: Persona, callback?: Gio.AsyncReadyCallback | null): void
     removePersonaFinish(res: Gio.AsyncResult): void
-    getTypeId(): string | null
+    getTypeId(): string
     getPersonas(): Gee.Map
     getCanAddPersonas(): MaybeBool
     getCanAliasPersonas(): MaybeBool
@@ -3410,10 +3410,10 @@ export interface Persona {
 
     // Owm methods of Folks-0.6.Folks.Persona
 
-    // Has conflict: linkablePropertyToLinks(propName: string | null, callback: any): void
-    getIid(): string | null
-    getUid(): string | null
-    getDisplayId(): string | null
+    // Has conflict: linkablePropertyToLinks(propName: string, callback: any): void
+    getIid(): string
+    getUid(): string
+    getDisplayId(): string
     getIsUser(): boolean
     getStore(): PersonaStore
     getIndividual(): Individual | null
@@ -3422,7 +3422,7 @@ export interface Persona {
 
     // Own virtual methods of Folks-0.6.Folks.Persona
 
-    linkablePropertyToLinks(propName: string | null, callback: any): void
+    linkablePropertyToLinks(propName: string, callback: any): void
     getLinkableProperties(): string[]
     getWriteableProperties(): string[]
 
@@ -3491,8 +3491,8 @@ export class Persona extends GObject.Object {
 
     constructor(config?: Persona.ConstructorProperties) 
     _init(config?: Persona.ConstructorProperties): void
-    static buildUid(backendName: string | null, personaStoreId: string | null, personaId: string | null): string | null
-    static splitUid(uid: string | null): [ /* backendName */ string | null, /* personaStoreId */ string | null, /* personaId */ string | null ]
+    static buildUid(backendName: string, personaStoreId: string, personaId: string): string | null
+    static splitUid(uid: string): [ /* backendName */ string | null, /* personaStoreId */ string | null, /* personaId */ string | null ]
 }
 
 export module PhoneFieldDetails {
@@ -3573,8 +3573,8 @@ export class PhoneFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.PhoneFieldDetails
 
     constructor(config?: PhoneFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): PhoneFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): PhoneFieldDetails
     _init(config?: PhoneFieldDetails.ConstructorProperties): void
 }
 
@@ -3619,24 +3619,24 @@ export interface PostalAddress {
     isEmpty(): boolean
     equal(with_: PostalAddress): boolean
     toString(): string | null
-    getPoBox(): string | null
-    setPoBox(value: string | null): void
-    getExtension(): string | null
-    setExtension(value: string | null): void
-    getStreet(): string | null
-    setStreet(value: string | null): void
-    getLocality(): string | null
-    setLocality(value: string | null): void
-    getRegion(): string | null
-    setRegion(value: string | null): void
-    getPostalCode(): string | null
-    setPostalCode(value: string | null): void
-    getCountry(): string | null
-    setCountry(value: string | null): void
-    getAddressFormat(): string | null
-    setAddressFormat(value: string | null): void
-    getUid(): string | null
-    setUid(value: string | null): void
+    getPoBox(): string
+    setPoBox(value: string): void
+    getExtension(): string
+    setExtension(value: string): void
+    getStreet(): string
+    setStreet(value: string): void
+    getLocality(): string
+    setLocality(value: string): void
+    getRegion(): string
+    setRegion(value: string): void
+    getPostalCode(): string
+    setPostalCode(value: string): void
+    getCountry(): string
+    setCountry(value: string): void
+    getAddressFormat(): string
+    setAddressFormat(value: string): void
+    getUid(): string
+    setUid(value: string): void
 
     // Class property signals of Folks-0.6.Folks.PostalAddress
 
@@ -3935,14 +3935,14 @@ export interface Role {
 
     isEmpty(): boolean
     toString(): string | null
-    getOrganisationName(): string | null
-    setOrganisationName(value: string | null): void
-    getTitle(): string | null
-    setTitle(value: string | null): void
-    getRole(): string | null
-    setRole(value: string | null): void
-    getUid(): string | null
-    setUid(value: string | null): void
+    getOrganisationName(): string
+    setOrganisationName(value: string): void
+    getTitle(): string
+    setTitle(value: string): void
+    getRole(): string
+    setRole(value: string): void
+    getUid(): string
+    setUid(value: string): void
 
     // Class property signals of Folks-0.6.Folks.Role
 
@@ -4209,8 +4209,8 @@ export interface SimpleQuery {
 
     // Owm methods of Folks-0.6.Folks.SimpleQuery
 
-    getQueryString(): string | null
-    setQueryString(value: string | null): void
+    getQueryString(): string
+    setQueryString(value: string): void
     getQueryLocale(): string | null
     setQueryLocale(value?: string | null): void
 
@@ -4253,8 +4253,8 @@ export class SimpleQuery extends Query {
     // Constructors of Folks-0.6.Folks.SimpleQuery
 
     constructor(config?: SimpleQuery.ConstructorProperties) 
-    constructor(queryString: string | null, matchFields: string[]) 
-    static new(queryString: string | null, matchFields: string[]): SimpleQuery
+    constructor(queryString: string, matchFields: string[]) 
+    static new(queryString: string, matchFields: string[]): SimpleQuery
     _init(config?: SimpleQuery.ConstructorProperties): void
 }
 
@@ -4332,8 +4332,8 @@ export class UrlFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.UrlFieldDetails
 
     constructor(config?: UrlFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): UrlFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): UrlFieldDetails
     _init(config?: UrlFieldDetails.ConstructorProperties): void
 }
 
@@ -4459,8 +4459,8 @@ export class WebServiceFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.WebServiceFieldDetails
 
     constructor(config?: WebServiceFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): WebServiceFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): WebServiceFieldDetails
     _init(config?: WebServiceFieldDetails.ConstructorProperties): void
 }
 
@@ -4803,7 +4803,7 @@ export interface PersonaClass {
 
     // Own fields of Folks-0.6.Folks.PersonaClass
 
-    linkablePropertyToLinks: (propName: string | null, callback: any) => void
+    linkablePropertyToLinks: (propName: string, callback: any) => void
 }
 
 export abstract class PersonaClass {
@@ -5071,10 +5071,10 @@ export interface AliasDetailsIface {
 
     // Own fields of Folks-0.6.Folks.AliasDetailsIface
 
-    changeAlias: (alias: string | null, callback?: Gio.AsyncReadyCallback | null) => void
+    changeAlias: (alias: string, callback?: Gio.AsyncReadyCallback | null) => void
     changeAliasFinish: (res: Gio.AsyncResult) => void
-    getAlias: () => string | null
-    setAlias: (value: string | null) => void
+    getAlias: () => string
+    setAlias: (value: string) => void
 }
 
 export abstract class AliasDetailsIface {
@@ -5160,10 +5160,10 @@ export interface ExtendedInfoIface {
 
     // Own fields of Folks-0.6.Folks.ExtendedInfoIface
 
-    getExtendedField: (name: string | null) => ExtendedFieldDetails | null
-    changeExtendedField: (name: string | null, value: ExtendedFieldDetails, callback?: Gio.AsyncReadyCallback | null) => void
+    getExtendedField: (name: string) => ExtendedFieldDetails | null
+    changeExtendedField: (name: string, value: ExtendedFieldDetails, callback?: Gio.AsyncReadyCallback | null) => void
     changeExtendedFieldFinish: (res: Gio.AsyncResult) => void
-    removeExtendedField: (name: string | null, callback?: Gio.AsyncReadyCallback | null) => void
+    removeExtendedField: (name: string, callback?: Gio.AsyncReadyCallback | null) => void
     removeExtendedFieldFinish: (res: Gio.AsyncResult) => void
 }
 
@@ -5212,7 +5212,7 @@ export interface GroupDetailsIface {
 
     // Own fields of Folks-0.6.Folks.GroupDetailsIface
 
-    changeGroup: (group: string | null, isMember: boolean, callback?: Gio.AsyncReadyCallback | null) => void
+    changeGroup: (group: string, isMember: boolean, callback?: Gio.AsyncReadyCallback | null) => void
     changeGroupFinish: (res: Gio.AsyncResult) => void
     changeGroups: (groups: Gee.Set, callback?: Gio.AsyncReadyCallback | null) => void
     changeGroupsFinish: (res: Gio.AsyncResult) => void
@@ -5301,16 +5301,16 @@ export interface NameDetailsIface {
 
     changeStructuredName: (name?: StructuredName | null, callback?: Gio.AsyncReadyCallback | null) => void
     changeStructuredNameFinish: (res: Gio.AsyncResult) => void
-    changeFullName: (fullName: string | null, callback?: Gio.AsyncReadyCallback | null) => void
+    changeFullName: (fullName: string, callback?: Gio.AsyncReadyCallback | null) => void
     changeFullNameFinish: (res: Gio.AsyncResult) => void
-    changeNickname: (nickname: string | null, callback?: Gio.AsyncReadyCallback | null) => void
+    changeNickname: (nickname: string, callback?: Gio.AsyncReadyCallback | null) => void
     changeNicknameFinish: (res: Gio.AsyncResult) => void
     getStructuredName: () => StructuredName | null
     setStructuredName: (value?: StructuredName | null) => void
-    getFullName: () => string | null
-    setFullName: (value: string | null) => void
-    getNickname: () => string | null
-    setNickname: (value: string | null) => void
+    getFullName: () => string
+    setFullName: (value: string) => void
+    getNickname: () => string
+    setNickname: (value: string) => void
 }
 
 export abstract class NameDetailsIface {
@@ -5377,12 +5377,12 @@ export interface PresenceDetailsIface {
 
     getPresenceType: () => PresenceType
     setPresenceType: (value: PresenceType) => void
-    getPresenceMessage: () => string | null
-    setPresenceMessage: (value: string | null) => void
+    getPresenceMessage: () => string
+    setPresenceMessage: (value: string) => void
     getClientTypes: () => string[]
     setClientTypes: (value: string[]) => void
-    getPresenceStatus: () => string | null
-    setPresenceStatus: (value: string | null) => void
+    getPresenceStatus: () => string
+    setPresenceStatus: (value: string) => void
 }
 
 export abstract class PresenceDetailsIface {

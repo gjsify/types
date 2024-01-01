@@ -50,17 +50,17 @@ enum SparqlBuilderState {
     EMBEDDED_INSERT,
     GRAPH,
 }
-const DBUS_SERVICE: string | null
-const DBUS_INTERFACE_RESOURCES: string | null
-const DBUS_OBJECT_RESOURCES: string | null
-const DBUS_INTERFACE_STATISTICS: string | null
-const DBUS_OBJECT_STATISTICS: string | null
-const DBUS_INTERFACE_STATUS: string | null
-const DBUS_OBJECT_STATUS: string | null
-const DBUS_INTERFACE_STEROIDS: string | null
-const DBUS_OBJECT_STEROIDS: string | null
-function sparqlEscapeUri(uri: string | null): string | null
-function sparqlEscapeString(literal: string | null): string | null
+const DBUS_SERVICE: string
+const DBUS_INTERFACE_RESOURCES: string
+const DBUS_OBJECT_RESOURCES: string
+const DBUS_INTERFACE_STATISTICS: string
+const DBUS_OBJECT_STATISTICS: string
+const DBUS_INTERFACE_STATUS: string
+const DBUS_OBJECT_STATUS: string
+const DBUS_INTERFACE_STEROIDS: string
+const DBUS_OBJECT_STEROIDS: string
+function sparqlEscapeUri(uri: string): string | null
+function sparqlEscapeString(literal: string): string | null
 function sparqlGetUuidUrn(): string | null
 module SparqlBuilder {
 
@@ -96,29 +96,29 @@ interface SparqlBuilder {
     insertClose(): void
     deleteOpen(graph?: string | null): void
     deleteClose(): void
-    graphOpen(graph: string | null): void
+    graphOpen(graph: string): void
     graphClose(): void
     whereOpen(): void
     whereClose(): void
-    subjectVariable(varName: string | null): void
-    objectVariable(varName: string | null): void
-    subjectIri(iri: string | null): void
-    subject(s: string | null): void
-    predicateIri(iri: string | null): void
-    predicate(s: string | null): void
-    objectIri(iri: string | null): void
-    object(s: string | null): void
-    objectString(literal: string | null): void
-    objectUnvalidated(value: string | null): void
+    subjectVariable(varName: string): void
+    objectVariable(varName: string): void
+    subjectIri(iri: string): void
+    subject(s: string): void
+    predicateIri(iri: string): void
+    predicate(s: string): void
+    objectIri(iri: string): void
+    object(s: string): void
+    objectString(literal: string): void
+    objectUnvalidated(value: string): void
     objectBoolean(literal: boolean): void
     objectInt64(literal: number): void
     objectDate(literal: number): /* literal */ number
     objectDouble(literal: number): void
     objectBlankOpen(): void
     objectBlankClose(): void
-    prepend(raw: string | null): void
-    append(raw: string | null): void
-    getResult(): string | null
+    prepend(raw: string): void
+    append(raw: string): void
+    getResult(): string
     getLength(): number
     getState(): SparqlBuilderState
 
@@ -190,16 +190,16 @@ interface SparqlConnection {
 
     // Owm methods of Tracker-1.0.Tracker.SparqlConnection
 
-    // Has conflict: query(sparql: string | null, cancellable?: Gio.Cancellable | null): SparqlCursor
-    // Has conflict: queryAsync(sparql: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: query(sparql: string, cancellable?: Gio.Cancellable | null): SparqlCursor
+    // Has conflict: queryAsync(sparql: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: queryFinish(res: Gio.AsyncResult): SparqlCursor
-    // Has conflict: update(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): void
-    // Has conflict: updateAsync(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: update(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): void
+    // Has conflict: updateAsync(sparql: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: updateFinish(res: Gio.AsyncResult): void
     // Has conflict: updateArrayAsync(sparql: string[], priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: updateArrayFinish(res: Gio.AsyncResult): any[] | null
-    // Has conflict: updateBlank(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): GLib.Variant | null
-    // Has conflict: updateBlankAsync(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    // Has conflict: updateBlank(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): GLib.Variant | null
+    // Has conflict: updateBlankAsync(sparql: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     // Has conflict: updateBlankFinish(res: Gio.AsyncResult): GLib.Variant | null
     // Has conflict: load(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     // Has conflict: loadAsync(file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
@@ -210,16 +210,16 @@ interface SparqlConnection {
 
     // Own virtual methods of Tracker-1.0.Tracker.SparqlConnection
 
-    query(sparql: string | null, cancellable?: Gio.Cancellable | null): SparqlCursor
-    queryAsync(sparql: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    query(sparql: string, cancellable?: Gio.Cancellable | null): SparqlCursor
+    queryAsync(sparql: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     queryFinish(res: Gio.AsyncResult): SparqlCursor
-    update(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): void
-    updateAsync(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    update(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): void
+    updateAsync(sparql: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     updateFinish(res: Gio.AsyncResult): void
     updateArrayAsync(sparql: string[], priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     updateArrayFinish(res: Gio.AsyncResult): any[] | null
-    updateBlank(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null): GLib.Variant | null
-    updateBlankAsync(sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
+    updateBlank(sparql: string, priority: number, cancellable?: Gio.Cancellable | null): GLib.Variant | null
+    updateBlankAsync(sparql: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     updateBlankFinish(res: Gio.AsyncResult): GLib.Variant | null
     load(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     loadAsync(file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
@@ -259,7 +259,7 @@ class SparqlConnection extends GObject.Object {
     static getDirectAsync(cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null): void
     static getDirectFinish(res: Gio.AsyncResult): SparqlConnection
     static getDirect(cancellable?: Gio.Cancellable | null): SparqlConnection
-    static remoteNew(uriBase: string | null): SparqlConnection
+    static remoteNew(uriBase: string): SparqlConnection
 }
 
 module SparqlCursor {
@@ -388,16 +388,16 @@ interface SparqlConnectionClass {
     // Own fields of Tracker-1.0.Tracker.SparqlConnectionClass
 
     parentClass: GObject.ObjectClass
-    query: (self: SparqlConnection, sparql: string | null, cancellable?: Gio.Cancellable | null) => SparqlCursor
-    queryAsync: (self: SparqlConnection, sparql: string | null, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    query: (self: SparqlConnection, sparql: string, cancellable?: Gio.Cancellable | null) => SparqlCursor
+    queryAsync: (self: SparqlConnection, sparql: string, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
     queryFinish: (self: SparqlConnection, res: Gio.AsyncResult) => SparqlCursor
-    update: (self: SparqlConnection, sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null) => void
-    updateAsync: (self: SparqlConnection, sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    update: (self: SparqlConnection, sparql: string, priority: number, cancellable?: Gio.Cancellable | null) => void
+    updateAsync: (self: SparqlConnection, sparql: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
     updateFinish: (self: SparqlConnection, res: Gio.AsyncResult) => void
     updateArrayAsync: (self: SparqlConnection, sparql: string[], priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
     updateArrayFinish: (self: SparqlConnection, res: Gio.AsyncResult) => any[] | null
-    updateBlank: (self: SparqlConnection, sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null) => GLib.Variant | null
-    updateBlankAsync: (self: SparqlConnection, sparql: string | null, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
+    updateBlank: (self: SparqlConnection, sparql: string, priority: number, cancellable?: Gio.Cancellable | null) => GLib.Variant | null
+    updateBlankAsync: (self: SparqlConnection, sparql: string, priority: number, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void
     updateBlankFinish: (self: SparqlConnection, res: Gio.AsyncResult) => GLib.Variant | null
     load: (self: SparqlConnection, file: Gio.File, cancellable?: Gio.Cancellable | null) => void
     loadAsync: (self: SparqlConnection, file: Gio.File, cancellable?: Gio.Cancellable | null, callback?: Gio.AsyncReadyCallback | null) => void

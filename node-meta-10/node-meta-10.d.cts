@@ -1458,7 +1458,7 @@ export enum VirtualModifier {
     MOD5_MASK,
 }
 export const CURRENT_TIME: number
-export const DEFAULT_ICON_NAME: string | null
+export const DEFAULT_ICON_NAME: string
 export const ICON_HEIGHT: number
 export const ICON_WIDTH: number
 export const MINI_ICON_HEIGHT: number
@@ -1483,7 +1483,7 @@ export function clutterInit(): void
  * @param name Human readable name of display server or window manager
  * @returns A new context instance.
  */
-export function createContext(name: string | null): Context
+export function createContext(name: string): Context
 /**
  * Disables unredirection, can be useful in situations where having
  * unredirected windows is undesirable like when recording a video.
@@ -1504,8 +1504,8 @@ export function focusStageWindow(display: Display, timestamp: number): void
  * @param type a #MetaFrameType
  * @returns the string value
  */
-export function frameTypeToString(type: FrameType): string | null
-export function gUtf8Strndup(src: string | null, n: number): string | null
+export function frameTypeToString(type: FrameType): string
+export function gUtf8Strndup(src: string, n: number): string | null
 /**
  * Accessor for the singleton MetaBackend.
  * @returns The only #MetaBackend there is.
@@ -1519,7 +1519,7 @@ export function getStageForDisplay(display: Display): Clutter.Actor
 export function getTopWindowGroupForDisplay(display: Display): Clutter.Actor
 export function getWindowActors(display: Display): Clutter.Actor[]
 export function getWindowGroupForDisplay(display: Display): Clutter.Actor
-export function gravityToString(gravity: Gravity): string | null
+export function gravityToString(gravity: Gravity): string
 /**
  * Returns %TRUE if this instance of Mutter comes from Mutter
  * restarting itself (for example to enable/disable stereo.)
@@ -1547,7 +1547,7 @@ export function isWaylandCompositor(): boolean
  * @param handler The new handler function
  * @returns %TRUE if the binding known as @name was found, %FALSE otherwise.
  */
-export function keybindingsSetCustomHandler(name: string | null, handler: KeyHandlerFunc | null): boolean
+export function keybindingsSetCustomHandler(name: string, handler: KeyHandlerFunc | null): boolean
 /**
  * Sets up a callback  to be called at some later time. `when` determines the
  * particular later occasion at which it is called. This is much like g_idle_add(),
@@ -1566,9 +1566,9 @@ export function laterAdd(when: LaterType, func: GLib.SourceFunc): number
  */
 export function laterRemove(laterId: number): void
 export function popNoMsgPrefix(): void
-export function preferenceToString(pref: Preference): string | null
+export function preferenceToString(pref: Preference): string
 export function prefsBellIsAudible(): boolean
-export function prefsChangeWorkspaceName(i: number, name: string | null): void
+export function prefsChangeWorkspaceName(i: number, name: string): void
 export function prefsGetActionDoubleClickTitlebar(): GDesktopEnums.TitlebarAction
 export function prefsGetActionMiddleClickTitlebar(): GDesktopEnums.TitlebarAction
 export function prefsGetActionRightClickTitlebar(): GDesktopEnums.TitlebarAction
@@ -1581,7 +1581,7 @@ export function prefsGetCenterNewWindows(): boolean
 export function prefsGetCheckAliveTimeout(): number
 export function prefsGetCompositingManager(): boolean
 export function prefsGetCursorSize(): number
-export function prefsGetCursorTheme(): string | null
+export function prefsGetCursorTheme(): string
 export function prefsGetDisableWorkarounds(): boolean
 export function prefsGetDragThreshold(): number
 export function prefsGetDraggableBorderWidth(): number
@@ -1593,7 +1593,7 @@ export function prefsGetFocusNewWindows(): GDesktopEnums.FocusNewWindows
 export function prefsGetForceFullscreen(): boolean
 export function prefsGetGnomeAccessibility(): boolean
 export function prefsGetGnomeAnimations(): boolean
-export function prefsGetKeybindingAction(name: string | null): KeyBindingAction
+export function prefsGetKeybindingAction(name: string): KeyBindingAction
 export function prefsGetMouseButtonMenu(): number
 export function prefsGetMouseButtonMods(): VirtualModifier
 export function prefsGetMouseButtonResize(): number
@@ -1603,7 +1603,7 @@ export function prefsGetShowFallbackAppMenu(): boolean
 export function prefsGetTitlebarFont(): Pango.FontDescription
 export function prefsGetVisualBell(): boolean
 export function prefsGetVisualBellType(): GDesktopEnums.VisualBellType
-export function prefsGetWorkspaceName(i: number): string | null
+export function prefsGetWorkspaceName(i: number): string
 export function prefsGetWorkspacesOnlyOnPrimary(): boolean
 export function prefsSetForceFullscreen(whether: boolean): void
 export function prefsSetNumWorkspaces(nWorkspaces: number): void
@@ -1632,7 +1632,7 @@ export function removeVerboseTopic(topic: DebugTopic): void
  * @param message message to display to the user, or %NULL
  */
 export function restart(message: string | null): void
-export function topicToString(topic: DebugTopic): string | null
+export function topicToString(topic: DebugTopic): string
 export function unsignedLongEqual(v1: any | null, v2: any | null): number
 export function unsignedLongHash(v: any | null): number
 export function x11ErrorTrapPop(x11Display: X11Display): void
@@ -1933,7 +1933,7 @@ export interface Backend extends Gio.Initable {
     isHeadless(): boolean
     isRenderingHardwareAccelerated(): boolean
     lockLayoutGroup(idx: number): void
-    setKeymap(layouts: string | null, variants: string | null, options: string | null): void
+    setKeymap(layouts: string, variants: string, options: string): void
 
     // Own signals of Meta-10.Meta.Backend
 
@@ -3504,9 +3504,9 @@ export interface Context {
      */
     restoreRlimitNofile(): boolean
     runMainLoop(): boolean
-    setGnomeWmKeybindings(wmKeybindings: string | null): void
+    setGnomeWmKeybindings(wmKeybindings: string): void
     setPluginGtype(pluginGtype: GObject.GType): void
-    setPluginName(pluginName: string | null): void
+    setPluginName(pluginName: string): void
     setup(): boolean
     start(): boolean
     terminate(): void
@@ -3907,7 +3907,7 @@ export interface Display {
      * @param handler function to run when the keybinding is invoked
      * @returns the corresponding keybinding action if the keybinding was          added successfully, otherwise %META_KEYBINDING_ACTION_NONE
      */
-    addKeybinding(name: string | null, settings: Gio.Settings, flags: KeyBindingFlags, handler: KeyHandlerFunc): number
+    addKeybinding(name: string, settings: Gio.Settings, flags: KeyBindingFlags, handler: KeyHandlerFunc): number
     beginGrabOp(window: Window, op: GrabOp, pointerAlreadyGrabbed: boolean, frameAction: boolean, button: number, modmask: number, timestamp: number, rootX: number, rootY: number): boolean
     /**
      * Sets the mouse-mode flag to %FALSE, which means that motion events are
@@ -4022,7 +4022,7 @@ export interface Display {
      */
     getTabNext(type: TabList, workspace: Workspace, window: Window | null, backward: boolean): Window
     getWorkspaceManager(): WorkspaceManager
-    grabAccelerator(accelerator: string | null, flags: KeyBindingFlags): number
+    grabAccelerator(accelerator: string, flags: KeyBindingFlags): number
     /**
      * Tells whether the event sequence is the used for pointer emulation
      * and single-touch interaction.
@@ -4042,7 +4042,7 @@ export interface Display {
      * @param name name of the keybinding to remove
      * @returns %TRUE if the binding has been removed successfully,          otherwise %FALSE
      */
-    removeKeybinding(name: string | null): boolean
+    removeKeybinding(name: string): boolean
     requestPadOsd(pad: Clutter.InputDevice, editionMode: boolean): void
     setCursor(cursor: Cursor): void
     setInputFocus(window: Window, focusFrame: boolean, timestamp: number): void
@@ -4548,7 +4548,7 @@ export interface MonitorManager {
      * Returns whether the built-in display (i.e. a laptop panel) is turned on.
      */
     getIsBuiltinDisplayOn(): boolean
-    getMonitorForConnector(connector: string | null): number
+    getMonitorForConnector(connector: string): number
     getPanelOrientationManaged(): boolean
     getSwitchConfig(): MonitorSwitchConfigType
     switchConfig(configType: MonitorSwitchConfigType): void
@@ -4992,7 +4992,7 @@ export interface Selection {
      * @param cancellable Cancellable
      * @param callback User callback
      */
-    transferAsync(selectionType: SelectionType, mimetype: string | null, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    transferAsync(selectionType: SelectionType, mimetype: string, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the transfer of a queried mimetype.
      * @param result The async result
@@ -5088,7 +5088,7 @@ export interface SelectionSource {
      * @returns #TRUE if the source owns a selection.
      */
     isActive(): boolean
-    // Has conflict: readAsync(mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: readAsync(mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: readFinish(result: Gio.AsyncResult): Gio.InputStream
 
     // Own virtual methods of Meta-10.Meta.SelectionSource
@@ -5101,7 +5101,7 @@ export interface SelectionSource {
      * @returns The supported mimetypes
      */
     getMimetypes(): string[]
-    readAsync(mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    readAsync(mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes a read from the selection source.
      * @virtual 
@@ -5189,8 +5189,8 @@ export class SelectionSourceMemory extends SelectionSource {
     // Constructors of Meta-10.Meta.SelectionSourceMemory
 
     constructor(config?: SelectionSourceMemory.ConstructorProperties) 
-    constructor(mimetype: string | null, content: any) 
-    static new(mimetype: string | null, content: any): SelectionSourceMemory
+    constructor(mimetype: string, content: any) 
+    static new(mimetype: string, content: any): SelectionSourceMemory
     _init(config?: SelectionSourceMemory.ConstructorProperties): void
 }
 
@@ -5229,7 +5229,7 @@ export interface ShadowFactory {
      * @param className name of the class of shadow to get the params for
      * @param focused whether the shadow is for a focused window
      */
-    getParams(className: string | null, focused: boolean): /* params */ ShadowParams
+    getParams(className: string, focused: boolean): /* params */ ShadowParams
     /**
      * Gets the appropriate shadow object for drawing shadows for the
      * specified window shape. The region that we are shadowing is specified
@@ -5243,7 +5243,7 @@ export interface ShadowFactory {
      * @param focused whether the shadow is for a focused window
      * @returns a newly referenced #MetaShadow; unref with  meta_shadow_unref()
      */
-    getShadow(shape: WindowShape, width: number, height: number, className: string | null, focused: boolean): Shadow
+    getShadow(shape: WindowShape, width: number, height: number, className: string, focused: boolean): Shadow
     /**
      * Updates the shadow parameters for a particular class of shadows
      * for either the focused or unfocused state. If the class name
@@ -5254,7 +5254,7 @@ export interface ShadowFactory {
      * @param focused whether the shadow is for a focused window
      * @param params new parameter values
      */
-    setParams(className: string | null, focused: boolean, params: ShadowParams): void
+    setParams(className: string, focused: boolean, params: ShadowParams): void
 
     // Own signals of Meta-10.Meta.ShadowFactory
 
@@ -5397,14 +5397,14 @@ export interface SoundPlayer {
      * @param description description of the played sound
      * @param cancellable cancellable for the request
      */
-    playFromFile(file: Gio.File, description: string | null, cancellable: Gio.Cancellable | null): void
+    playFromFile(file: Gio.File, description: string, cancellable: Gio.Cancellable | null): void
     /**
      * Plays a sound from the sound theme.
      * @param name sound theme name of the event
      * @param description description of the event
      * @param cancellable cancellable for the request
      */
-    playFromTheme(name: string | null, description: string | null, cancellable: Gio.Cancellable | null): void
+    playFromTheme(name: string, description: string, cancellable: Gio.Cancellable | null): void
 
     // Class property signals of Meta-10.Meta.SoundPlayer
 
@@ -6009,8 +6009,8 @@ export interface StartupSequence {
      * @returns the icon name or %NULL.
      */
     getIconName(): string | null
-    getId(): string | null
-    getName(): string | null
+    getId(): string
+    getName(): string
     getTimestamp(): number
     /**
      * Get the wmclass of the startup sequence.
@@ -6355,7 +6355,7 @@ export interface Window {
      * @returns the wrapper object.
      */
     getCompositorPrivate(): GObject.Object
-    getDescription(): string | null
+    getDescription(): string
     getDisplay(): Display
     /**
      * Gets a region representing the outer bounds of the window's frame.
@@ -6428,7 +6428,7 @@ export interface Window {
      * @returns the pid, or 0 if not known.
      */
     getPid(): number
-    getRole(): string | null
+    getRole(): string
     /**
      * Gets an unique id for a sandboxed app (currently flatpaks and snaps are
      * supported).
@@ -6461,7 +6461,7 @@ export interface Window {
      * @returns the matching tiled window or %NULL if it doesn't exist.
      */
     getTileMatch(): Window | null
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Returns the #MetaWindow for the window that is pointed to by the
      * WM_TRANSIENT_FOR hint on this window (see XGetTransientForHint()
@@ -8445,7 +8445,7 @@ export interface Group {
     // Owm methods of Meta-10.Meta.Group
 
     getSize(): number
-    getStartupId(): string | null
+    getStartupId(): string
     listWindows(): Window[]
     updateLayers(): void
 }
@@ -8493,7 +8493,7 @@ export interface KeyBinding {
 
     getMask(): number
     getModifiers(): VirtualModifier
-    getName(): string | null
+    getName(): string
     isBuiltin(): boolean
     isReversed(): boolean
 }
@@ -8599,27 +8599,27 @@ export interface PluginInfo {
      * name of the plugin
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * version of the plugin
      * @field 
      */
-    version: string | null
+    version: string
     /**
      * author of the plugin
      * @field 
      */
-    author: string | null
+    author: string
     /**
      * license of the plugin
      * @field 
      */
-    license: string | null
+    license: string
     /**
      * description of the plugin
      * @field 
      */
-    description: string | null
+    description: string
 }
 
 export class PluginInfo {
@@ -8727,7 +8727,7 @@ export interface SelectionSourceClass {
     activated: (source: SelectionSource) => void
     deactivated: (source: SelectionSource) => void
     getMimetypes: (source: SelectionSource) => string[]
-    readAsync: (source: SelectionSource, mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    readAsync: (source: SelectionSource, mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     readFinish: (source: SelectionSource, result: Gio.AsyncResult) => Gio.InputStream
 }
 

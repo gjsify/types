@@ -272,13 +272,13 @@ enum ServiceFlags {
 /**
  * Extension point for the secret backend.
  */
-const BACKEND_EXTENSION_POINT_NAME: string | null
+const BACKEND_EXTENSION_POINT_NAME: string
 /**
  * An alias to the default collection.
  * 
  * This can be passed to [func`password_store]` [func`Collection`.for_alias].
  */
-const COLLECTION_DEFAULT: string | null
+const COLLECTION_DEFAULT: string
 /**
  * An alias to the session collection, which will be cleared when the user ends
  * the session.
@@ -286,7 +286,7 @@ const COLLECTION_DEFAULT: string | null
  * This can be passed to [func`password_store]`, [func`Collection`.for_alias] or
  * similar functions.
  */
-const COLLECTION_SESSION: string | null
+const COLLECTION_SESSION: string
 /**
  * The major version of libsecret.
  */
@@ -466,7 +466,7 @@ function password_store_finish(result: Gio.AsyncResult): boolean
  * @param cancellable optional cancellation object
  * @param callback called when the operation completes
  */
-function password_store<Z = unknown>(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, password: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function password_store<Z = unknown>(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, password: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 /**
  * Store a password in the secret service.
  * 
@@ -482,7 +482,7 @@ function password_store<Z = unknown>(schema: Schema | null, attributes: GLib.Has
  * @param cancellable optional cancellation object
  * @param callback called when the operation completes
  */
-function password_store_binary<Z = unknown>(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function password_store_binary<Z = unknown>(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 /**
  * Store a password in the secret service.
  * 
@@ -499,7 +499,7 @@ function password_store_binary<Z = unknown>(schema: Schema | null, attributes: G
  * @param cancellable optional cancellation object
  * @returns whether the storage was successful or not
  */
-function password_store_binary_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null): boolean
+function password_store_binary_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null): boolean
 /**
  * Store a password in the secret service.
  * 
@@ -522,7 +522,7 @@ function password_store_binary_sync(schema: Schema | null, attributes: GLib.Hash
  * @param cancellable optional cancellation object
  * @returns whether the storage was successful or not
  */
-function password_store_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, password: string | null, cancellable: Gio.Cancellable | null): boolean
+function password_store_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, password: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Clear the memory used by a password.
  * @param password password to clear
@@ -564,7 +564,7 @@ interface Backend extends Gio.AsyncInitable {
     vfunc_lookup(schema: Schema, attributes: GLib.HashTable, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_lookup_finish(result: Gio.AsyncResult): Value
     vfunc_search(schema: Schema, attributes: GLib.HashTable, flags: SearchFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
-    vfunc_store(schema: Schema, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_store(schema: Schema, attributes: GLib.HashTable, collection: string, label: string, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_store_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of Secret-1.Secret.Backend
@@ -1077,7 +1077,7 @@ interface Collection extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable 
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    set_label(label: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    set_label(label: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Complete asynchronous operation to set the label of this collection.
      * @param result asynchronous result passed to callback
@@ -1093,7 +1093,7 @@ interface Collection extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable 
      * @param cancellable optional cancellation object
      * @returns whether the change was successful or not
      */
-    set_label_sync(label: string | null, cancellable: Gio.Cancellable | null): boolean
+    set_label_sync(label: string, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of Secret-1.Secret.Collection
 
@@ -1196,7 +1196,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static create(service: Service | null, label: string | null, alias: string | null, flags: CollectionCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Collection> | null): void
+    static create(service: Service | null, label: string, alias: string | null, flags: CollectionCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Collection> | null): void
     /**
      * Finish operation to create a new collection in the secret service.
      * @param result the asynchronous result passed to the callback
@@ -1225,7 +1225,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the new collection, which should be unreferenced   with [method@GObject.Object.unref]
      */
-    static create_sync(service: Service | null, label: string | null, alias: string | null, flags: CollectionCreateFlags, cancellable: Gio.Cancellable | null): Collection
+    static create_sync(service: Service | null, label: string, alias: string | null, flags: CollectionCreateFlags, cancellable: Gio.Cancellable | null): Collection
     /**
      * Lookup which collection is assigned to this alias. Aliases help determine
      * well known collections, such as 'default'.
@@ -1240,7 +1240,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static for_alias(service: Service | null, alias: string | null, flags: CollectionFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Collection> | null): void
+    static for_alias(service: Service | null, alias: string, flags: CollectionFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Collection> | null): void
     /**
      * Finish an asynchronous operation to lookup which collection is assigned
      * to an alias.
@@ -1262,7 +1262,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the collection, or %NULL if none assigned to the alias
      */
-    static for_alias_sync(service: Service | null, alias: string | null, flags: CollectionFlags, cancellable: Gio.Cancellable | null): Collection | null
+    static for_alias_sync(service: Service | null, alias: string, flags: CollectionFlags, cancellable: Gio.Cancellable | null): Collection | null
 }
 
 module Item {
@@ -1510,7 +1510,7 @@ interface Item extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Retri
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    set_label(label: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    set_label(label: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Complete asynchronous operation to set the label of this collection.
      * @param result asynchronous result passed to callback
@@ -1526,7 +1526,7 @@ interface Item extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Retri
      * @param cancellable optional cancellation object
      * @returns whether the change was successful or not
      */
-    set_label_sync(label: string | null, cancellable: Gio.Cancellable | null): boolean
+    set_label_sync(label: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Set the secret value of this item.
      * 
@@ -1668,7 +1668,7 @@ class Item extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static create(collection: Collection, schema: Schema | null, attributes: GLib.HashTable, label: string | null, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Item> | null): void
+    static create(collection: Collection, schema: Schema | null, attributes: GLib.HashTable, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Item> | null): void
     /**
      * Finish operation to create a new item in the secret service.
      * @param result the asynchronous result passed to the callback
@@ -1694,7 +1694,7 @@ class Item extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the new item, which should be unreferenced   with [method@GObject.Object.unref]
      */
-    static create_sync(collection: Collection, schema: Schema | null, attributes: GLib.HashTable, label: string | null, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null): Item
+    static create_sync(collection: Collection, schema: Schema | null, attributes: GLib.HashTable, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null): Item
     /**
      * Load the secret values for a secret item stored in the service.
      * 
@@ -1968,7 +1968,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
      * @param cancellable optional cancellation object
      * @returns a new string containing the D-Bus object path   of the item
      */
-    create_item_dbus_path_sync(collection_path: string | null, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null): string | null
+    create_item_dbus_path_sync(collection_path: string, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null): string | null
     /**
      * Decode a [struct`Value]` into [struct`GLib`.Variant] received with the Secret Service
      * DBus API.
@@ -2336,7 +2336,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    set_alias(alias: string | null, collection: Collection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    set_alias(alias: string, collection: Collection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finish an asynchronous operation to assign a collection to an alias.
      * @param result asynchronous result passed to callback
@@ -2356,7 +2356,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
      * @param cancellable optional cancellation object
      * @returns %TRUE if successful
      */
-    set_alias_sync(alias: string | null, collection: Collection | null, cancellable: Gio.Cancellable | null): boolean
+    set_alias_sync(alias: string, collection: Collection | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Store a secret value in the secret service.
      * 
@@ -2381,7 +2381,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    store(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    store(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finish asynchronous operation to store a secret value in the secret service.
      * @param result the asynchronous result passed to the callback
@@ -2413,7 +2413,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Ba
      * @param cancellable optional cancellation object
      * @returns whether the storage was successful or not
      */
-    store_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null): boolean
+    store_sync(schema: Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null): boolean
     /**
      * Unlock items or collections in the secret service.
      * 
@@ -2736,7 +2736,7 @@ interface BackendInterface {
     parent_iface: GObject.TypeInterface
     ensure_for_flags: (self: Backend, flags: BackendFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     ensure_for_flags_finish: (self: Backend, result: Gio.AsyncResult) => boolean
-    store: (self: Backend, schema: Schema, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    store: (self: Backend, schema: Schema, attributes: GLib.HashTable, collection: string, label: string, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     store_finish: (self: Backend, result: Gio.AsyncResult) => boolean
     lookup: (self: Backend, schema: Schema, attributes: GLib.HashTable, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     lookup_finish: (self: Backend, result: Gio.AsyncResult) => Value
@@ -2884,7 +2884,7 @@ interface Schema {
      * the dotted name of the schema
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * flags for the schema
      * @field 
@@ -3011,7 +3011,7 @@ class Schema {
      * @param attribute_names_and_types the attribute names and types of those attributes
      * @returns the new schema, which should be unreferenced with   [method@Schema.unref] when done
      */
-    constructor(name: string | null, flags: SchemaFlags, attribute_names_and_types: GLib.HashTable) 
+    constructor(name: string, flags: SchemaFlags, attribute_names_and_types: GLib.HashTable) 
     /**
      * Using this function is not normally necessary from C code. This is useful
      * for constructing #SecretSchema structures in bindings.
@@ -3040,7 +3040,7 @@ class Schema {
      * @param attribute_names_and_types the attribute names and types of those attributes
      * @returns the new schema, which should be unreferenced with   [method@Schema.unref] when done
      */
-    static new(name: string | null, flags: SchemaFlags, attribute_names_and_types: GLib.HashTable): Schema
+    static new(name: string, flags: SchemaFlags, attribute_names_and_types: GLib.HashTable): Schema
 }
 
 interface SchemaAttribute {
@@ -3051,7 +3051,7 @@ interface SchemaAttribute {
      * name of the attribute
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * the type of the attribute
      * @field 
@@ -3137,7 +3137,7 @@ interface Value {
      * `text/plain`.
      * @returns the content type
      */
-    get_content_type(): string | null
+    get_content_type(): string
     /**
      * Get the secret data in the #SecretValue if it contains a textual
      * value.
@@ -3206,7 +3206,7 @@ class Value {
      * @param content_type the content type of the data
      * @returns the new #SecretValue
      */
-    constructor(secret: string | null, length: number, content_type: string | null) 
+    constructor(secret: string, length: number, content_type: string) 
     /**
      * Create a #SecretValue for the secret data passed in.
      * 
@@ -3220,7 +3220,7 @@ class Value {
      * @param content_type the content type of the data
      * @returns the new #SecretValue
      */
-    static new(secret: string | null, length: number, content_type: string | null): Value
+    static new(secret: string, length: number, content_type: string): Value
     /**
      * Create a #SecretValue for the secret data passed in.
      * 
@@ -3236,7 +3236,7 @@ class Value {
      * @param destroy function to call to free the secret data
      * @returns the new #SecretValue
      */
-    static new_full(secret: string | null, length: number, content_type: string | null, destroy: GLib.DestroyNotify): Value
+    static new_full(secret: string | null, length: number, content_type: string, destroy: GLib.DestroyNotify): Value
 }
 
 /**

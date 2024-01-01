@@ -513,14 +513,14 @@ function locationGetWorld(): Location | null
  * @param level a #GWeatherLocationLevel
  * @returns a string
  */
-function locationLevelToString(level: LocationLevel): string | null
-function skyToString(sky: Sky): string | null
-function skyToStringFull(sky: Sky, options: FormatOptions): string | null
+function locationLevelToString(level: LocationLevel): string
+function skyToString(sky: Sky): string
+function skyToStringFull(sky: Sky, options: FormatOptions): string
 /**
  * Creates a human-readable, localized representation of `unit`
  * @param unit a speed unit, or %GWEATHER_SPEED_UNIT_DEFAULT
  */
-function speedUnitToString(unit: SpeedUnit): string | null
+function speedUnitToString(unit: SpeedUnit): string
 /**
  * Resolve `unit` into a real temperature unit, potentially considering
  * locale defaults.
@@ -534,14 +534,14 @@ function temperatureUnitToReal(unit: TemperatureUnit): TemperatureUnit
  * @param tzid A timezone identifier, like "America/New_York" or "Europe/London"
  * @returns A #GWeatherTimezone.
  */
-function timezoneGetByTzid(tzid: string | null): Timezone
+function timezoneGetByTzid(tzid: string): Timezone
 /**
  * Gets the UTC timezone.
  * @returns a #GWeatherTimezone for UTC, or %NULL on error.
  */
 function timezoneGetUtc(): Timezone
-function windDirectionToString(wind: WindDirection): string | null
-function windDirectionToStringFull(wind: WindDirection, options: FormatOptions): string | null
+function windDirectionToString(wind: WindDirection): string
+function windDirectionToStringFull(wind: WindDirection, options: FormatOptions): string
 interface FilterFunc {
     (location: Location): boolean
 }
@@ -590,7 +590,7 @@ interface Info {
      * of the application fetching the weather.
      * @returns the application ID
      */
-    getApplicationId(): string | null
+    getApplicationId(): string
     /**
      * Some weather services require the application showing the
      * data to include an attribution text, possibly including links
@@ -598,13 +598,13 @@ interface Info {
      * This must be shown prominently toghether with the data.
      * @returns the required attribution text, in Pango          markup form, or %NULL if not required
      */
-    getAttribution(): string | null
+    getAttribution(): string
     getConditions(): string | null
     /**
      * Get the contact information of the application fetching the weather.
      * @returns the contact information
      */
-    getContactInfo(): string | null
+    getContactInfo(): string
     getDew(): string | null
     /**
      * Gets the bitmask of enabled #GWeatherProvider weather
@@ -613,7 +613,7 @@ interface Info {
     getEnabledProviders(): Provider
     getForecastList(): Info[]
     getHumidity(): string | null
-    getIconName(): string | null
+    getIconName(): string
     getLocation(): Location
     getLocationName(): string | null
     getPressure(): string | null
@@ -621,7 +621,7 @@ interface Info {
     getSky(): string | null
     getSunrise(): string | null
     getSunset(): string | null
-    getSymbolicIconName(): string | null
+    getSymbolicIconName(): string
     getTemp(): string | null
     getTempMax(): string | null
     getTempMin(): string | null
@@ -670,7 +670,7 @@ interface Info {
      * will be automatically filled in.
      * @param applicationId the application ID to set
      */
-    setApplicationId(applicationId: string | null): void
+    setApplicationId(applicationId: string): void
     /**
      * Sets the contact information for the application fetching the
      * weather. It is a requirement for using any of the online
@@ -683,7 +683,7 @@ interface Info {
      * URLs which require creating accounts.
      * @param contactInfo the contact information for the application
      */
-    setContactInfo(contactInfo: string | null): void
+    setContactInfo(contactInfo: string): void
     /**
      * Sets the enabled providers for fetching the weather. Note
      * that it is up to the application developer to make sure that
@@ -859,7 +859,7 @@ interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @param code the METAR station code
      * @returns %TRUE if @entry's location could be set to a matching city, %FALSE otherwise.
      */
-    setCity(cityName: string | null, code: string | null): boolean
+    setCity(cityName: string | null, code: string): boolean
     /**
      * Sets `entry'`s location to `loc,` and updates the text of the
      * entry accordingly.
@@ -880,13 +880,13 @@ interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -899,13 +899,13 @@ interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -918,7 +918,7 @@ interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -927,7 +927,7 @@ interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * For widgets that can be “activated” (buttons, menu items, etc.)
      * this function activates them. Activation is what happens when you
@@ -1580,13 +1580,13 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1599,13 +1599,13 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1618,7 +1618,7 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1627,7 +1627,7 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1651,7 +1651,7 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2057,8 +2057,8 @@ interface Conditions {
 
     // Owm methods of GWeather-3.0.GWeather.Conditions
 
-    toString(): string | null
-    toStringFull(options: FormatOptions): string | null
+    toString(): string
+    toStringFull(options: FormatOptions): string
 }
 
 /**
@@ -2142,7 +2142,7 @@ interface Location {
      * @param countryCode a country code
      * @returns a country level #GWeatherLocation, or %NULL.
      */
-    findByCountryCode(countryCode: string | null): Location
+    findByCountryCode(countryCode: string): Location
     /**
      * Retrieves the weather station identifier by `station_code`.
      * Note that multiple instances of the same weather station can exist
@@ -2155,7 +2155,7 @@ interface Location {
      * @param stationCode a 4 letter METAR code
      * @returns a weather station level #GWeatherLocation for @station_code,          or %NULL if none exists in the database.
      */
-    findByStationCode(stationCode: string | null): Location
+    findByStationCode(stationCode: string): Location
     /**
      * Finds the nearest city to the passed latitude and
      * longitude, among the descendants of `loc`.
@@ -2244,7 +2244,7 @@ interface Location {
      * Gets `loc'`s English name.
      * @returns @loc's English name
      */
-    getEnglishName(): string | null
+    getEnglishName(): string
     /**
      * Gets `loc'`s english "sort name", which is the english name after having
      * g_utf8_normalize() (with %G_NORMALIZE_ALL) and g_utf8_casefold()
@@ -2252,7 +2252,7 @@ interface Location {
      * user input against a location name.
      * @returns @loc's English name for sorting
      */
-    getEnglishSortName(): string | null
+    getEnglishSortName(): string
     /**
      * Gets `loc'`s level, from %GWEATHER_LOCATION_WORLD, to
      * %GWEATHER_LOCATION_WEATHER_STATION.
@@ -2263,7 +2263,7 @@ interface Location {
      * Gets `loc'`s name, localized into the current language.
      * @returns @loc's name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets `loc'`s parent location.
      * 
@@ -2278,7 +2278,7 @@ interface Location {
      * user input against a location name.
      * @returns @loc's sort name
      */
-    getSortName(): string | null
+    getSortName(): string
     /**
      * Gets the timezone associated with `loc,` if known.
      * 
@@ -2374,7 +2374,7 @@ class Location {
      * @param latitude the latitude of the location
      * @param longitude the longitude of the location
      */
-    static newDetached(name: string | null, icao: string | null, latitude: number, longitude: number): Location
+    static newDetached(name: string, icao: string | null, latitude: number, longitude: number): Location
     static detectNearestCityFinish(result: Gio.AsyncResult): Location
     /**
      * Obtains the shared #GWeatherLocation of type %GWEATHER_LOCATION_WORLD,
@@ -2431,7 +2431,7 @@ interface Timezone {
      * country is obvious).
      * @returns @zone's name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets `zone'`s standard offset from UTC, in minutes. Eg, a value of
      * 120 would indicate "GMT+2".
@@ -2442,7 +2442,7 @@ interface Timezone {
      * Gets `zone'`s tzdata identifier, eg "America/New_York".
      * @returns @zone's tzid
      */
-    getTzid(): string | null
+    getTzid(): string
     /**
      * Checks if `zone` observes daylight/summer time for part of the year.
      * @returns %TRUE if @zone observes daylight/summer time.
@@ -2483,7 +2483,7 @@ class Timezone {
      * @param tzid A timezone identifier, like "America/New_York" or "Europe/London"
      * @returns A #GWeatherTimezone.
      */
-    static getByTzid(tzid: string | null): Timezone
+    static getByTzid(tzid: string): Timezone
     /**
      * Gets the UTC timezone.
      * @returns a #GWeatherTimezone for UTC, or %NULL on error.

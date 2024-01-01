@@ -41,9 +41,9 @@ const MINOR_VERSION: number
  * jsonrpc-glib version, encoded as a string, useful for printing and
  * concatenation.
  */
-const VERSION_S: string | null
+const VERSION_S: string
 interface ServerHandler {
-    (self: Server, client: Client, method: string | null, id: GLib.Variant, params: GLib.Variant): void
+    (self: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant): void
 }
 module Client {
 
@@ -138,7 +138,7 @@ interface Client {
      * @param cancellable A #GCancellable or %NULL
      * @returns %TRUE on success; otherwise %FALSE and @error is set.
      */
-    call(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* returnValue */ GLib.Variant | null ]
+    call(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* returnValue */ GLib.Variant | null ]
     /**
      * Asynchronously calls `method` with `params` on the remote peer.
      * 
@@ -152,7 +152,7 @@ interface Client {
      * @param cancellable A #GCancellable or %NULL
      * @param callback a callback to executed upon completion
      */
-    callAsync(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAsync(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call to [method`Client`.call_async].
      * @param result A #GAsyncResult provided to the callback in [method`Client`.call_async]
@@ -177,7 +177,7 @@ interface Client {
      * @param cancellable A #GCancellable or %NULL
      * @param callback Callback to executed upon completion
      */
-    callWithIdAsync(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): /* id */ GLib.Variant
+    callWithIdAsync(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): /* id */ GLib.Variant
     /**
      * Closes the underlying streams and cancels any inflight operations of the
      * #JsonrpcClient.
@@ -254,7 +254,7 @@ interface Client {
      * @param cancellable A #GCancellable or %NULL
      * @returns %TRUE on success; otherwise %FALSE and @error is set.
      */
-    sendNotification(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
+    sendNotification(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously calls `method` with `params` on the remote peer.
      * 
@@ -270,7 +270,7 @@ interface Client {
      * @param cancellable A #GCancellable or %NULL
      * @param callback 
      */
-    sendNotificationAsync(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sendNotificationAsync(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call to [method`Client`.send_notification_async].
      * 
@@ -300,8 +300,8 @@ interface Client {
     // Own virtual methods of Jsonrpc-1.0.Jsonrpc.Client
 
     failed(): void
-    handleCall(method: string | null, id: GLib.Variant, params: GLib.Variant): boolean
-    notification(methodName: string | null, params: GLib.Variant): void
+    handleCall(method: string, id: GLib.Variant, params: GLib.Variant): boolean
+    notification(methodName: string, params: GLib.Variant): void
 
     // Own signals of Jsonrpc-1.0.Jsonrpc.Client
 
@@ -670,7 +670,7 @@ interface Server {
      * @param handler A handler to   execute when an incoming method matches `methods`
      * @returns A handler id that can be used to remove the handler with   [method@Server.remove_handler].
      */
-    addHandler(method: string | null, handler: ServerHandler): number
+    addHandler(method: string, handler: ServerHandler): number
     /**
      * Calls `foreach_func` for every client connected.
      * @param foreachFunc A callback for each client
@@ -686,8 +686,8 @@ interface Server {
 
     clientAccepted(client: Client): void
     clientClosed(client: Client): void
-    handleCall(client: Client, method: string | null, id: GLib.Variant, params: GLib.Variant): boolean
-    notification(client: Client, method: string | null, params: GLib.Variant): void
+    handleCall(client: Client, method: string, id: GLib.Variant, params: GLib.Variant): boolean
+    notification(client: Client, method: string, params: GLib.Variant): void
 
     // Own signals of Jsonrpc-1.0.Jsonrpc.Server
 
@@ -764,8 +764,8 @@ interface ClientClass {
     // Own fields of Jsonrpc-1.0.Jsonrpc.ClientClass
 
     parentClass: GObject.ObjectClass
-    notification: (self: Client, methodName: string | null, params: GLib.Variant) => void
-    handleCall: (self: Client, method: string | null, id: GLib.Variant, params: GLib.Variant) => boolean
+    notification: (self: Client, methodName: string, params: GLib.Variant) => void
+    handleCall: (self: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean
     failed: (self: Client) => void
     reserved2: any
     reserved3: any
@@ -913,7 +913,7 @@ interface MessageGetString {
     // Own fields of Jsonrpc-1.0.Jsonrpc.MessageGetString
 
     magic: MessageMagic
-    valptr: string | null
+    valptr: string
 }
 
 class MessageGetString {
@@ -1032,7 +1032,7 @@ interface MessagePutString {
     // Own fields of Jsonrpc-1.0.Jsonrpc.MessagePutString
 
     magic: MessageMagic
-    val: string | null
+    val: string
 }
 
 class MessagePutString {
@@ -1047,7 +1047,7 @@ interface MessagePutStrv {
     // Own fields of Jsonrpc-1.0.Jsonrpc.MessagePutStrv
 
     magic: MessageMagic
-    val: string | null
+    val: string
 }
 
 class MessagePutStrv {
@@ -1103,8 +1103,8 @@ interface ServerClass {
     // Own fields of Jsonrpc-1.0.Jsonrpc.ServerClass
 
     parentClass: GObject.ObjectClass
-    handleCall: (self: Server, client: Client, method: string | null, id: GLib.Variant, params: GLib.Variant) => boolean
-    notification: (self: Server, client: Client, method: string | null, params: GLib.Variant) => void
+    handleCall: (self: Server, client: Client, method: string, id: GLib.Variant, params: GLib.Variant) => boolean
+    notification: (self: Server, client: Client, method: string, params: GLib.Variant) => void
     clientAccepted: (self: Server, client: Client) => void
     clientClosed: (self: Server, client: Client) => void
 }

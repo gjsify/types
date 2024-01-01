@@ -132,7 +132,7 @@ function chatOverrideProperties(klass: GObject.ObjectClass, propertyIdBegin: num
  * @param requiredMicro the required micro version.
  * @returns %NULL if the GOA library is compatible with the   given version, or a string describing the version mismatch.   The returned string is owned by GOA and must not be modified   or freed.
  */
-function checkVersion(requiredMajor: number, requiredMinor: number, requiredMicro: number): string | null
+function checkVersion(requiredMajor: number, requiredMinor: number, requiredMicro: number): string
 /**
  * Gets a machine-readable description of the <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link> D-Bus interface.
  * @returns A #GDBusInterfaceInfo. Do not free.
@@ -1810,13 +1810,13 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callAddAccount(argProvider: string | null, argIdentity: string | null, argPresentationIdentity: string | null, argCredentials: GLib.Variant, argDetails: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAddAccount(argProvider: string, argIdentity: string, argPresentationIdentity: string, argCredentials: GLib.Variant, argDetails: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with goa_manager_call_add_account().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_add_account().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callAddAccountFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccountObjectPath */ string | null ]
+    callAddAccountFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccountObjectPath */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -1829,7 +1829,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callAddAccountSync(argProvider: string | null, argIdentity: string | null, argPresentationIdentity: string | null, argCredentials: GLib.Variant, argDetails: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccountObjectPath */ string | null ]
+    callAddAccountSync(argProvider: string, argIdentity: string, argPresentationIdentity: string, argCredentials: GLib.Variant, argDetails: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccountObjectPath */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -1840,7 +1840,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callIsSupportedProvider(argProviderType: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callIsSupportedProvider(argProviderType: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with goa_manager_call_is_supported_provider().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_manager_call_is_supported_provider().
@@ -1855,7 +1855,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callIsSupportedProviderSync(argProviderType: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outIsSupported */ boolean ]
+    callIsSupportedProviderSync(argProviderType: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outIsSupported */ boolean ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.AddAccount">AddAccount()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -1863,7 +1863,7 @@ interface Manager {
      * @param invocation A #GDBusMethodInvocation.
      * @param accountObjectPath Parameter to return.
      */
-    completeAddAccount(invocation: Gio.DBusMethodInvocation, accountObjectPath: string | null): void
+    completeAddAccount(invocation: Gio.DBusMethodInvocation, accountObjectPath: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-Manager.IsSupportedProvider">IsSupportedProvider()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -1875,8 +1875,8 @@ interface Manager {
 
     // Own virtual methods of Goa-1.0.Goa.Manager
 
-    handleAddAccount(invocation: Gio.DBusMethodInvocation, argProvider: string | null, argIdentity: string | null, argPresentationIdentity: string | null, argCredentials: GLib.Variant, argDetails: GLib.Variant): boolean
-    handleIsSupportedProvider(invocation: Gio.DBusMethodInvocation, argProviderType: string | null): boolean
+    handleAddAccount(invocation: Gio.DBusMethodInvocation, argProvider: string, argIdentity: string, argPresentationIdentity: string, argCredentials: GLib.Variant, argDetails: GLib.Variant): boolean
+    handleIsSupportedProvider(invocation: Gio.DBusMethodInvocation, argProviderType: string): boolean
 
     // Own signals of Goa-1.0.Goa.Manager
 
@@ -2218,7 +2218,7 @@ interface OAuth2Based {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth2_based_call_get_access_token().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetAccessTokenFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
+    callGetAccessTokenFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -2226,7 +2226,7 @@ interface OAuth2Based {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetAccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
+    callGetAccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuth2Based.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -2235,7 +2235,7 @@ interface OAuth2Based {
      * @param accessToken Parameter to return.
      * @param expiresIn Parameter to return.
      */
-    completeGetAccessToken(invocation: Gio.DBusMethodInvocation, accessToken: string | null, expiresIn: number): void
+    completeGetAccessToken(invocation: Gio.DBusMethodInvocation, accessToken: string, expiresIn: number): void
 
     // Own virtual methods of Goa-1.0.Goa.OAuth2Based
 
@@ -2372,7 +2372,7 @@ interface OAuthBased {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_oauth_based_call_get_access_token().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetAccessTokenFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outAccessTokenSecret */ string | null, /* outExpiresIn */ number ]
+    callGetAccessTokenFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string, /* outAccessTokenSecret */ string, /* outExpiresIn */ number ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -2380,7 +2380,7 @@ interface OAuthBased {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetAccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outAccessTokenSecret */ string | null, /* outExpiresIn */ number ]
+    callGetAccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string, /* outAccessTokenSecret */ string, /* outExpiresIn */ number ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-OAuthBased.GetAccessToken">GetAccessToken()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -2390,7 +2390,7 @@ interface OAuthBased {
      * @param accessTokenSecret Parameter to return.
      * @param expiresIn Parameter to return.
      */
-    completeGetAccessToken(invocation: Gio.DBusMethodInvocation, accessToken: string | null, accessTokenSecret: string | null, expiresIn: number): void
+    completeGetAccessToken(invocation: Gio.DBusMethodInvocation, accessToken: string, accessTokenSecret: string, expiresIn: number): void
 
     // Own virtual methods of Goa-1.0.Goa.OAuthBased
 
@@ -2987,13 +2987,13 @@ interface PasswordBased {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callGetPassword(argId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callGetPassword(argId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with goa_password_based_call_get_password().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to goa_password_based_call_get_password().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetPasswordFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPassword */ string | null ]
+    callGetPasswordFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPassword */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -3002,7 +3002,7 @@ interface PasswordBased {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetPasswordSync(argId: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPassword */ string | null ]
+    callGetPasswordSync(argId: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPassword */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-gnome-OnlineAccounts-PasswordBased.GetPassword">GetPassword()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -3010,11 +3010,11 @@ interface PasswordBased {
      * @param invocation A #GDBusMethodInvocation.
      * @param password Parameter to return.
      */
-    completeGetPassword(invocation: Gio.DBusMethodInvocation, password: string | null): void
+    completeGetPassword(invocation: Gio.DBusMethodInvocation, password: string): void
 
     // Own virtual methods of Goa-1.0.Goa.PasswordBased
 
-    handleGetPassword(invocation: Gio.DBusMethodInvocation, argId: string | null): boolean
+    handleGetPassword(invocation: Gio.DBusMethodInvocation, argId: string): boolean
 
     // Own signals of Goa-1.0.Goa.PasswordBased
 
@@ -3685,7 +3685,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): AccountProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): AccountProxy
 
     // Overloads of newForBusSync
 
@@ -3703,7 +3703,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -3718,7 +3718,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): AccountProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): AccountProxy
 
     // Overloads of newSync
 
@@ -3755,7 +3755,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: AccountProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Account.top_of_page">org.gnome.OnlineAccounts.Account</link>. See g_dbus_proxy_new() for more details.
@@ -3771,7 +3771,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -3812,7 +3812,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_account_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -3827,7 +3827,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -3844,7 +3844,7 @@ class AccountProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module AccountSkeleton {
@@ -4193,7 +4193,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): CalendarProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): CalendarProxy
 
     // Overloads of newForBusSync
 
@@ -4211,7 +4211,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -4226,7 +4226,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): CalendarProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): CalendarProxy
 
     // Overloads of newSync
 
@@ -4263,7 +4263,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: CalendarProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Calendar.top_of_page">org.gnome.OnlineAccounts.Calendar</link>. See g_dbus_proxy_new() for more details.
@@ -4279,7 +4279,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -4320,7 +4320,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_calendar_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -4335,7 +4335,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -4352,7 +4352,7 @@ class CalendarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module CalendarSkeleton {
@@ -4591,7 +4591,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ChatProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ChatProxy
 
     // Overloads of newForBusSync
 
@@ -4609,7 +4609,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -4624,7 +4624,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ChatProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ChatProxy
 
     // Overloads of newSync
 
@@ -4661,7 +4661,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ChatProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Chat.top_of_page">org.gnome.OnlineAccounts.Chat</link>. See g_dbus_proxy_new() for more details.
@@ -4677,7 +4677,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -4718,7 +4718,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_chat_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -4733,7 +4733,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -4750,7 +4750,7 @@ class ChatProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ChatSkeleton {
@@ -4915,7 +4915,7 @@ interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param id The ID to look for.
      * @returns A #GoaObject. Free the returned object with g_object_unref().
      */
-    lookupById(id: string | null): Object
+    lookupById(id: string): Object
 
     // Own signals of Goa-1.0.Goa.Client
 
@@ -5141,7 +5141,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ContactsProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ContactsProxy
 
     // Overloads of newForBusSync
 
@@ -5159,7 +5159,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -5174,7 +5174,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ContactsProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ContactsProxy
 
     // Overloads of newSync
 
@@ -5211,7 +5211,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ContactsProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Contacts.top_of_page">org.gnome.OnlineAccounts.Contacts</link>. See g_dbus_proxy_new() for more details.
@@ -5227,7 +5227,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -5268,7 +5268,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_contacts_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -5283,7 +5283,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -5300,7 +5300,7 @@ class ContactsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ContactsSkeleton {
@@ -5539,7 +5539,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DocumentsProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): DocumentsProxy
 
     // Overloads of newForBusSync
 
@@ -5557,7 +5557,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -5572,7 +5572,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DocumentsProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): DocumentsProxy
 
     // Overloads of newSync
 
@@ -5609,7 +5609,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: DocumentsProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Documents.top_of_page">org.gnome.OnlineAccounts.Documents</link>. See g_dbus_proxy_new() for more details.
@@ -5625,7 +5625,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -5666,7 +5666,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_documents_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -5681,7 +5681,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -5698,7 +5698,7 @@ class DocumentsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module DocumentsSkeleton {
@@ -5937,7 +5937,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ExchangeProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ExchangeProxy
 
     // Overloads of newForBusSync
 
@@ -5955,7 +5955,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -5970,7 +5970,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ExchangeProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ExchangeProxy
 
     // Overloads of newSync
 
@@ -6007,7 +6007,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ExchangeProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Exchange.top_of_page">org.gnome.OnlineAccounts.Exchange</link>. See g_dbus_proxy_new() for more details.
@@ -6023,7 +6023,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -6064,7 +6064,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_exchange_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -6079,7 +6079,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -6096,7 +6096,7 @@ class ExchangeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ExchangeSkeleton {
@@ -6345,7 +6345,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): FilesProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): FilesProxy
 
     // Overloads of newForBusSync
 
@@ -6363,7 +6363,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -6378,7 +6378,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): FilesProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): FilesProxy
 
     // Overloads of newSync
 
@@ -6415,7 +6415,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: FilesProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Files.top_of_page">org.gnome.OnlineAccounts.Files</link>. See g_dbus_proxy_new() for more details.
@@ -6431,7 +6431,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -6472,7 +6472,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_files_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -6487,7 +6487,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -6504,7 +6504,7 @@ class FilesProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module FilesSkeleton {
@@ -6833,7 +6833,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MailProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): MailProxy
 
     // Overloads of newForBusSync
 
@@ -6851,7 +6851,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -6866,7 +6866,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MailProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): MailProxy
 
     // Overloads of newSync
 
@@ -6903,7 +6903,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: MailProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Mail.top_of_page">org.gnome.OnlineAccounts.Mail</link>. See g_dbus_proxy_new() for more details.
@@ -6919,7 +6919,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -6960,7 +6960,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_mail_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -6975,7 +6975,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -6992,7 +6992,7 @@ class MailProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module MailSkeleton {
@@ -7311,7 +7311,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ManagerProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ManagerProxy
 
     // Overloads of newForBusSync
 
@@ -7329,7 +7329,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -7344,7 +7344,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ManagerProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ManagerProxy
 
     // Overloads of newSync
 
@@ -7381,7 +7381,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ManagerProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Manager.top_of_page">org.gnome.OnlineAccounts.Manager</link>. See g_dbus_proxy_new() for more details.
@@ -7397,7 +7397,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -7438,7 +7438,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_manager_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -7453,7 +7453,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -7470,7 +7470,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ManagerSkeleton {
@@ -7699,7 +7699,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MapsProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): MapsProxy
 
     // Overloads of newForBusSync
 
@@ -7717,7 +7717,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -7732,7 +7732,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MapsProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): MapsProxy
 
     // Overloads of newSync
 
@@ -7769,7 +7769,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: MapsProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Maps.top_of_page">org.gnome.OnlineAccounts.Maps</link>. See g_dbus_proxy_new() for more details.
@@ -7785,7 +7785,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -7826,7 +7826,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_maps_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -7841,7 +7841,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -7858,7 +7858,7 @@ class MapsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module MapsSkeleton {
@@ -8097,7 +8097,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MediaServerProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): MediaServerProxy
 
     // Overloads of newForBusSync
 
@@ -8115,7 +8115,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -8130,7 +8130,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MediaServerProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): MediaServerProxy
 
     // Overloads of newSync
 
@@ -8167,7 +8167,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: MediaServerProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-MediaServer.top_of_page">org.gnome.OnlineAccounts.MediaServer</link>. See g_dbus_proxy_new() for more details.
@@ -8183,7 +8183,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -8224,7 +8224,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_media_server_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -8239,7 +8239,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -8256,7 +8256,7 @@ class MediaServerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module MediaServerSkeleton {
@@ -8495,7 +8495,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MusicProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): MusicProxy
 
     // Overloads of newForBusSync
 
@@ -8513,7 +8513,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -8528,7 +8528,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MusicProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): MusicProxy
 
     // Overloads of newSync
 
@@ -8565,7 +8565,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: MusicProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Music.top_of_page">org.gnome.OnlineAccounts.Music</link>. See g_dbus_proxy_new() for more details.
@@ -8581,7 +8581,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -8622,7 +8622,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_music_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -8637,7 +8637,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -8654,7 +8654,7 @@ class MusicProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module MusicSkeleton {
@@ -8893,7 +8893,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): OAuth2BasedProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): OAuth2BasedProxy
 
     // Overloads of newForBusSync
 
@@ -8911,7 +8911,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -8926,7 +8926,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): OAuth2BasedProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): OAuth2BasedProxy
 
     // Overloads of newSync
 
@@ -8963,7 +8963,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: OAuth2BasedProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuth2Based.top_of_page">org.gnome.OnlineAccounts.OAuth2Based</link>. See g_dbus_proxy_new() for more details.
@@ -8979,7 +8979,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -9020,7 +9020,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_oauth2_based_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -9035,7 +9035,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -9052,7 +9052,7 @@ class OAuth2BasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module OAuth2BasedSkeleton {
@@ -9301,7 +9301,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): OAuthBasedProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): OAuthBasedProxy
 
     // Overloads of newForBusSync
 
@@ -9319,7 +9319,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -9334,7 +9334,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): OAuthBasedProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): OAuthBasedProxy
 
     // Overloads of newSync
 
@@ -9371,7 +9371,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: OAuthBasedProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-OAuthBased.top_of_page">org.gnome.OnlineAccounts.OAuthBased</link>. See g_dbus_proxy_new() for more details.
@@ -9387,7 +9387,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -9428,7 +9428,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_oauth_based_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -9443,7 +9443,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -9460,7 +9460,7 @@ class OAuthBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module OAuthBasedSkeleton {
@@ -9699,7 +9699,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ObjectManagerClient
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ObjectManagerClient
 
     // Overloads of newForBusSync
 
@@ -9719,7 +9719,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     /**
      * Synchronously creates #GDBusObjectManagerClient using goa_object_manager_client_get_proxy_type() as the #GDBusProxyTypeFunc. See g_dbus_object_manager_client_new_sync() for more details.
      * 
@@ -9734,7 +9734,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ObjectManagerClient
 
     // Overloads of newSync
 
@@ -9753,7 +9753,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     _init(config?: ObjectManagerClient.ConstructorProperties): void
     /**
      * Asynchronously creates #GDBusObjectManagerClient using goa_object_manager_client_get_proxy_type() as the #GDBusProxyTypeFunc. See g_dbus_object_manager_client_new() for more details.
@@ -9769,7 +9769,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -9790,7 +9790,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_object_manager_client_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -9805,7 +9805,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -9827,7 +9827,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
      * @param manager A #GDBusObjectManagerClient.
@@ -9836,7 +9836,7 @@ class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param userData User data (unused).
      * @returns A #GDBusProxy derived #GType if @interface_name is not %NULL, otherwise the #GType for #GoaObjectProxy.
      */
-    static getProxyType(manager: Gio.DBusObjectManagerClient, objectPath: string | null, interfaceName: string | null, userData: any | null): GObject.GType
+    static getProxyType(manager: Gio.DBusObjectManagerClient, objectPath: string, interfaceName: string | null, userData: any | null): GObject.GType
 }
 
 module ObjectProxy {
@@ -9999,7 +9999,7 @@ class ObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath An object path.
      * @returns The proxy object.
      */
-    constructor(connection: Gio.DBusConnection, objectPath: string | null) 
+    constructor(connection: Gio.DBusConnection, objectPath: string) 
     /**
      * Creates a new proxy object.
      * @constructor 
@@ -10007,7 +10007,7 @@ class ObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath An object path.
      * @returns The proxy object.
      */
-    static new(connection: Gio.DBusConnection, objectPath: string | null): ObjectProxy
+    static new(connection: Gio.DBusConnection, objectPath: string): ObjectProxy
 
     // Overloads of new
 
@@ -10019,7 +10019,7 @@ class ObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath the object path
      * @returns a new #GDBusObjectProxy
      */
-    static new(connection: Gio.DBusConnection, objectPath: string | null): Gio.DBusObjectProxy
+    static new(connection: Gio.DBusConnection, objectPath: string): Gio.DBusObjectProxy
     _init(config?: ObjectProxy.ConstructorProperties): void
 }
 
@@ -10280,14 +10280,14 @@ class ObjectSkeleton extends Gio.DBusObjectSkeleton {
      * @param objectPath An object path.
      * @returns The skeleton object.
      */
-    constructor(objectPath: string | null) 
+    constructor(objectPath: string) 
     /**
      * Creates a new skeleton object.
      * @constructor 
      * @param objectPath An object path.
      * @returns The skeleton object.
      */
-    static new(objectPath: string | null): ObjectSkeleton
+    static new(objectPath: string): ObjectSkeleton
 
     // Overloads of new
 
@@ -10297,7 +10297,7 @@ class ObjectSkeleton extends Gio.DBusObjectSkeleton {
      * @param objectPath An object path.
      * @returns A #GDBusObjectSkeleton. Free with g_object_unref().
      */
-    static new(objectPath: string | null): Gio.DBusObjectSkeleton
+    static new(objectPath: string): Gio.DBusObjectSkeleton
     _init(config?: ObjectSkeleton.ConstructorProperties): void
 }
 
@@ -10437,7 +10437,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PasswordBasedProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): PasswordBasedProxy
 
     // Overloads of newForBusSync
 
@@ -10455,7 +10455,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -10470,7 +10470,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PasswordBasedProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): PasswordBasedProxy
 
     // Overloads of newSync
 
@@ -10507,7 +10507,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: PasswordBasedProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-PasswordBased.top_of_page">org.gnome.OnlineAccounts.PasswordBased</link>. See g_dbus_proxy_new() for more details.
@@ -10523,7 +10523,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -10564,7 +10564,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_password_based_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -10579,7 +10579,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -10596,7 +10596,7 @@ class PasswordBasedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module PasswordBasedSkeleton {
@@ -10825,7 +10825,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PhotosProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): PhotosProxy
 
     // Overloads of newForBusSync
 
@@ -10843,7 +10843,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -10858,7 +10858,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PhotosProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): PhotosProxy
 
     // Overloads of newSync
 
@@ -10895,7 +10895,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: PhotosProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Photos.top_of_page">org.gnome.OnlineAccounts.Photos</link>. See g_dbus_proxy_new() for more details.
@@ -10911,7 +10911,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -10952,7 +10952,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_photos_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -10967,7 +10967,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -10984,7 +10984,7 @@ class PhotosProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module PhotosSkeleton {
@@ -11213,7 +11213,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PrintersProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): PrintersProxy
 
     // Overloads of newForBusSync
 
@@ -11231,7 +11231,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -11246,7 +11246,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PrintersProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): PrintersProxy
 
     // Overloads of newSync
 
@@ -11283,7 +11283,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: PrintersProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Printers.top_of_page">org.gnome.OnlineAccounts.Printers</link>. See g_dbus_proxy_new() for more details.
@@ -11299,7 +11299,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -11340,7 +11340,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_printers_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -11355,7 +11355,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -11372,7 +11372,7 @@ class PrintersProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module PrintersSkeleton {
@@ -11601,7 +11601,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ReadLaterProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ReadLaterProxy
 
     // Overloads of newForBusSync
 
@@ -11619,7 +11619,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -11634,7 +11634,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ReadLaterProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ReadLaterProxy
 
     // Overloads of newSync
 
@@ -11671,7 +11671,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ReadLaterProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-ReadLater.top_of_page">org.gnome.OnlineAccounts.ReadLater</link>. See g_dbus_proxy_new() for more details.
@@ -11687,7 +11687,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -11728,7 +11728,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_read_later_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -11743,7 +11743,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -11760,7 +11760,7 @@ class ReadLaterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ReadLaterSkeleton {
@@ -11994,7 +11994,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): TicketingProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): TicketingProxy
 
     // Overloads of newForBusSync
 
@@ -12012,7 +12012,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -12027,7 +12027,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): TicketingProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): TicketingProxy
 
     // Overloads of newSync
 
@@ -12064,7 +12064,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: TicketingProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Ticketing.top_of_page">org.gnome.OnlineAccounts.Ticketing</link>. See g_dbus_proxy_new() for more details.
@@ -12080,7 +12080,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -12121,7 +12121,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_ticketing_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -12136,7 +12136,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -12153,7 +12153,7 @@ class TicketingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module TicketingSkeleton {
@@ -12387,7 +12387,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): TodoProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): TodoProxy
 
     // Overloads of newForBusSync
 
@@ -12405,7 +12405,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -12420,7 +12420,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): TodoProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): TodoProxy
 
     // Overloads of newSync
 
@@ -12457,7 +12457,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: TodoProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-gnome-OnlineAccounts-Todo.top_of_page">org.gnome.OnlineAccounts.Todo</link>. See g_dbus_proxy_new() for more details.
@@ -12473,7 +12473,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -12514,7 +12514,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like goa_todo_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -12529,7 +12529,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -12546,7 +12546,7 @@ class TodoProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module TodoSkeleton {
@@ -13400,8 +13400,8 @@ interface ManagerIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleAddAccount: (object: Manager, invocation: Gio.DBusMethodInvocation, argProvider: string | null, argIdentity: string | null, argPresentationIdentity: string | null, argCredentials: GLib.Variant, argDetails: GLib.Variant) => boolean
-    handleIsSupportedProvider: (object: Manager, invocation: Gio.DBusMethodInvocation, argProviderType: string | null) => boolean
+    handleAddAccount: (object: Manager, invocation: Gio.DBusMethodInvocation, argProvider: string, argIdentity: string, argPresentationIdentity: string, argCredentials: GLib.Variant, argDetails: GLib.Variant) => boolean
+    handleIsSupportedProvider: (object: Manager, invocation: Gio.DBusMethodInvocation, argProviderType: string) => boolean
 }
 
 /**
@@ -14044,7 +14044,7 @@ interface PasswordBasedIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleGetPassword: (object: PasswordBased, invocation: Gio.DBusMethodInvocation, argId: string | null) => boolean
+    handleGetPassword: (object: PasswordBased, invocation: Gio.DBusMethodInvocation, argId: string) => boolean
 }
 
 /**

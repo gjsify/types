@@ -1,6 +1,6 @@
 {
     "name": "@girs/soupgnome-2.4",
-    "version": "2.4.0-3.2.6",
+    "version": "2.4.0-3.2.7",
     "description": "GJS TypeScript type definitions for SoupGNOME-2.4, generated from library version 2.4.0",
     "type": "module",
     "module": "soupgnome-2.4.js",

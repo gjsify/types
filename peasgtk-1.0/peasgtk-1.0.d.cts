@@ -159,7 +159,7 @@ export interface PluginManager extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -173,7 +173,7 @@ export interface PluginManager extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -184,7 +184,7 @@ export interface PluginManager extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of PeasGtk-1.0.PeasGtk.PluginManager
 
@@ -470,7 +470,7 @@ export interface PluginManagerView extends Atk.ImplementorIface, Gtk.Buildable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -484,7 +484,7 @@ export interface PluginManagerView extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -495,7 +495,7 @@ export interface PluginManagerView extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of PeasGtk-1.0.PeasGtk.PluginManagerView
 

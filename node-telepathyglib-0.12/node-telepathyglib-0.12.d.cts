@@ -2519,162 +2519,162 @@ export enum StorageRestrictionFlags {
 /**
  * The account manager's well-known bus name
  */
-export const ACCOUNT_MANAGER_BUS_NAME: string | null
+export const ACCOUNT_MANAGER_BUS_NAME: string
 /**
  * The account manager's standard object path
  */
-export const ACCOUNT_MANAGER_OBJECT_PATH: string | null
+export const ACCOUNT_MANAGER_OBJECT_PATH: string
 /**
  * The common prefix of the object path for all Account objects.
  */
-export const ACCOUNT_OBJECT_PATH_BASE: string | null
+export const ACCOUNT_OBJECT_PATH_BASE: string
 /**
  * The channel dispatcher's well-known bus name
  */
-export const CHANNEL_DISPATCHER_BUS_NAME: string | null
+export const CHANNEL_DISPATCHER_BUS_NAME: string
 /**
  * The channel dispatcher's standard object path
  */
-export const CHANNEL_DISPATCHER_OBJECT_PATH: string | null
+export const CHANNEL_DISPATCHER_OBJECT_PATH: string
 /**
  * The common prefix of the well-known bus name for any Telepathy Client.
  */
-export const CLIENT_BUS_NAME_BASE: string | null
+export const CLIENT_BUS_NAME_BASE: string
 /**
  * The common prefix of the well-known object path for any Telepathy Client.
  */
-export const CLIENT_OBJECT_PATH_BASE: string | null
+export const CLIENT_OBJECT_PATH_BASE: string
 /**
  * The prefix for a connection manager's bus name, to which the CM's name
  * (e.g. "gabble") should be appended.
  */
-export const CM_BUS_NAME_BASE: string | null
+export const CM_BUS_NAME_BASE: string
 /**
  * The prefix for a connection manager's object path, to which the CM's name
  * (e.g. "gabble") should be appended.
  */
-export const CM_OBJECT_PATH_BASE: string | null
+export const CM_OBJECT_PATH_BASE: string
 /**
  * The prefix for a connection's bus name, to which the CM's name
  * (e.g. "gabble"), the protocol (e.g. "jabber") and an element or sequence
  * of elements representing the account should be appended.
  */
-export const CONN_BUS_NAME_BASE: string | null
+export const CONN_BUS_NAME_BASE: string
 /**
  * The prefix for a connection's object path, to which the CM's name
  * (e.g. "gabble"), the protocol (e.g. "jabber") and an element or sequence
  * of elements representing the account should be appended.
  */
-export const CONN_OBJECT_PATH_BASE: string | null
+export const CONN_OBJECT_PATH_BASE: string
 /**
  * The standard path for objects implementing the Telepathy Debug interface
  * (#TpSvcDebug).
  */
-export const DEBUG_OBJECT_PATH: string | null
+export const DEBUG_OBJECT_PATH: string
 /**
  * The common prefix of Telepathy errors, as a string constant, without
  * the trailing '.' character.
  */
-export const ERROR_PREFIX: string | null
-export const IFACE_ACCOUNT: string | null
-export const IFACE_ACCOUNT_INTERFACE_ADDRESSING: string | null
-export const IFACE_ACCOUNT_INTERFACE_AVATAR: string | null
-export const IFACE_ACCOUNT_INTERFACE_STORAGE: string | null
-export const IFACE_ACCOUNT_MANAGER: string | null
-export const IFACE_AUTHENTICATION_TLS_CERTIFICATE: string | null
-export const IFACE_CALL_CONTENT: string | null
-export const IFACE_CALL_CONTENT_INTERFACE_AUDIO_CONTROL: string | null
-export const IFACE_CALL_CONTENT_INTERFACE_DTMF: string | null
-export const IFACE_CALL_CONTENT_INTERFACE_MEDIA: string | null
-export const IFACE_CALL_CONTENT_INTERFACE_VIDEO_CONTROL: string | null
-export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION: string | null
-export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS: string | null
-export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK: string | null
-export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTP_HEADER_EXTENSIONS: string | null
-export const IFACE_CALL_STREAM: string | null
-export const IFACE_CALL_STREAM_ENDPOINT: string | null
-export const IFACE_CALL_STREAM_INTERFACE_MEDIA: string | null
-export const IFACE_CHANNEL: string | null
-export const IFACE_CHANNEL_DISPATCHER: string | null
-export const IFACE_CHANNEL_DISPATCHER_INTERFACE_MESSAGES1: string | null
-export const IFACE_CHANNEL_DISPATCHER_INTERFACE_OPERATION_LIST: string | null
-export const IFACE_CHANNEL_DISPATCH_OPERATION: string | null
-export const IFACE_CHANNEL_INTERFACE_ANONYMITY: string | null
-export const IFACE_CHANNEL_INTERFACE_CALL_STATE: string | null
-export const IFACE_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION: string | null
-export const IFACE_CHANNEL_INTERFACE_CHAT_STATE: string | null
-export const IFACE_CHANNEL_INTERFACE_CONFERENCE: string | null
-export const IFACE_CHANNEL_INTERFACE_DESTROYABLE: string | null
-export const IFACE_CHANNEL_INTERFACE_DTMF: string | null
-export const IFACE_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA: string | null
-export const IFACE_CHANNEL_INTERFACE_GROUP: string | null
-export const IFACE_CHANNEL_INTERFACE_HOLD: string | null
-export const IFACE_CHANNEL_INTERFACE_MEDIA_SIGNALLING: string | null
-export const IFACE_CHANNEL_INTERFACE_MESSAGES: string | null
-export const IFACE_CHANNEL_INTERFACE_PASSWORD: string | null
-export const IFACE_CHANNEL_INTERFACE_ROOM: string | null
-export const IFACE_CHANNEL_INTERFACE_ROOM_CONFIG: string | null
-export const IFACE_CHANNEL_INTERFACE_SASL_AUTHENTICATION: string | null
-export const IFACE_CHANNEL_INTERFACE_SECURABLE: string | null
-export const IFACE_CHANNEL_INTERFACE_SERVICE_POINT: string | null
-export const IFACE_CHANNEL_INTERFACE_SMS: string | null
-export const IFACE_CHANNEL_INTERFACE_SUBJECT: string | null
-export const IFACE_CHANNEL_INTERFACE_TUBE: string | null
-export const IFACE_CHANNEL_REQUEST: string | null
-export const IFACE_CHANNEL_TYPE_CALL: string | null
-export const IFACE_CHANNEL_TYPE_CONTACT_LIST: string | null
-export const IFACE_CHANNEL_TYPE_CONTACT_SEARCH: string | null
-export const IFACE_CHANNEL_TYPE_DBUS_TUBE: string | null
-export const IFACE_CHANNEL_TYPE_FILE_TRANSFER: string | null
-export const IFACE_CHANNEL_TYPE_ROOM_LIST: string | null
-export const IFACE_CHANNEL_TYPE_SERVER_AUTHENTICATION: string | null
-export const IFACE_CHANNEL_TYPE_SERVER_TLS_CONNECTION: string | null
-export const IFACE_CHANNEL_TYPE_STREAMED_MEDIA: string | null
-export const IFACE_CHANNEL_TYPE_STREAM_TUBE: string | null
-export const IFACE_CHANNEL_TYPE_TEXT: string | null
-export const IFACE_CHANNEL_TYPE_TUBES: string | null
-export const IFACE_CLIENT: string | null
-export const IFACE_CLIENT_APPROVER: string | null
-export const IFACE_CLIENT_HANDLER: string | null
-export const IFACE_CLIENT_INTERFACE_REQUESTS: string | null
-export const IFACE_CLIENT_OBSERVER: string | null
-export const IFACE_CONNECTION: string | null
-export const IFACE_CONNECTION_INTERFACE_ADDRESSING: string | null
-export const IFACE_CONNECTION_INTERFACE_ALIASING: string | null
-export const IFACE_CONNECTION_INTERFACE_ANONYMITY: string | null
-export const IFACE_CONNECTION_INTERFACE_AVATARS: string | null
-export const IFACE_CONNECTION_INTERFACE_BALANCE: string | null
-export const IFACE_CONNECTION_INTERFACE_CAPABILITIES: string | null
-export const IFACE_CONNECTION_INTERFACE_CELLULAR: string | null
-export const IFACE_CONNECTION_INTERFACE_CLIENT_TYPES: string | null
-export const IFACE_CONNECTION_INTERFACE_CONTACTS: string | null
-export const IFACE_CONNECTION_INTERFACE_CONTACT_BLOCKING: string | null
-export const IFACE_CONNECTION_INTERFACE_CONTACT_CAPABILITIES: string | null
-export const IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS: string | null
-export const IFACE_CONNECTION_INTERFACE_CONTACT_INFO: string | null
-export const IFACE_CONNECTION_INTERFACE_CONTACT_LIST: string | null
-export const IFACE_CONNECTION_INTERFACE_LOCATION: string | null
-export const IFACE_CONNECTION_INTERFACE_MAIL_NOTIFICATION: string | null
-export const IFACE_CONNECTION_INTERFACE_POWER_SAVING: string | null
-export const IFACE_CONNECTION_INTERFACE_PRESENCE: string | null
-export const IFACE_CONNECTION_INTERFACE_RENAMING: string | null
-export const IFACE_CONNECTION_INTERFACE_REQUESTS: string | null
-export const IFACE_CONNECTION_INTERFACE_SERVICE_POINT: string | null
-export const IFACE_CONNECTION_INTERFACE_SIDECARS1: string | null
-export const IFACE_CONNECTION_INTERFACE_SIMPLE_PRESENCE: string | null
-export const IFACE_CONNECTION_MANAGER: string | null
-export const IFACE_DBUS_DAEMON: string | null
-export const IFACE_DBUS_INTROSPECTABLE: string | null
-export const IFACE_DBUS_PEER: string | null
-export const IFACE_DBUS_PROPERTIES: string | null
-export const IFACE_DEBUG: string | null
-export const IFACE_MEDIA_SESSION_HANDLER: string | null
-export const IFACE_MEDIA_STREAM_HANDLER: string | null
-export const IFACE_PROPERTIES_INTERFACE: string | null
-export const IFACE_PROTOCOL: string | null
-export const IFACE_PROTOCOL_INTERFACE_ADDRESSING: string | null
-export const IFACE_PROTOCOL_INTERFACE_AVATARS: string | null
-export const IFACE_PROTOCOL_INTERFACE_PRESENCE: string | null
+export const ERROR_PREFIX: string
+export const IFACE_ACCOUNT: string
+export const IFACE_ACCOUNT_INTERFACE_ADDRESSING: string
+export const IFACE_ACCOUNT_INTERFACE_AVATAR: string
+export const IFACE_ACCOUNT_INTERFACE_STORAGE: string
+export const IFACE_ACCOUNT_MANAGER: string
+export const IFACE_AUTHENTICATION_TLS_CERTIFICATE: string
+export const IFACE_CALL_CONTENT: string
+export const IFACE_CALL_CONTENT_INTERFACE_AUDIO_CONTROL: string
+export const IFACE_CALL_CONTENT_INTERFACE_DTMF: string
+export const IFACE_CALL_CONTENT_INTERFACE_MEDIA: string
+export const IFACE_CALL_CONTENT_INTERFACE_VIDEO_CONTROL: string
+export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION: string
+export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS: string
+export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK: string
+export const IFACE_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTP_HEADER_EXTENSIONS: string
+export const IFACE_CALL_STREAM: string
+export const IFACE_CALL_STREAM_ENDPOINT: string
+export const IFACE_CALL_STREAM_INTERFACE_MEDIA: string
+export const IFACE_CHANNEL: string
+export const IFACE_CHANNEL_DISPATCHER: string
+export const IFACE_CHANNEL_DISPATCHER_INTERFACE_MESSAGES1: string
+export const IFACE_CHANNEL_DISPATCHER_INTERFACE_OPERATION_LIST: string
+export const IFACE_CHANNEL_DISPATCH_OPERATION: string
+export const IFACE_CHANNEL_INTERFACE_ANONYMITY: string
+export const IFACE_CHANNEL_INTERFACE_CALL_STATE: string
+export const IFACE_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION: string
+export const IFACE_CHANNEL_INTERFACE_CHAT_STATE: string
+export const IFACE_CHANNEL_INTERFACE_CONFERENCE: string
+export const IFACE_CHANNEL_INTERFACE_DESTROYABLE: string
+export const IFACE_CHANNEL_INTERFACE_DTMF: string
+export const IFACE_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA: string
+export const IFACE_CHANNEL_INTERFACE_GROUP: string
+export const IFACE_CHANNEL_INTERFACE_HOLD: string
+export const IFACE_CHANNEL_INTERFACE_MEDIA_SIGNALLING: string
+export const IFACE_CHANNEL_INTERFACE_MESSAGES: string
+export const IFACE_CHANNEL_INTERFACE_PASSWORD: string
+export const IFACE_CHANNEL_INTERFACE_ROOM: string
+export const IFACE_CHANNEL_INTERFACE_ROOM_CONFIG: string
+export const IFACE_CHANNEL_INTERFACE_SASL_AUTHENTICATION: string
+export const IFACE_CHANNEL_INTERFACE_SECURABLE: string
+export const IFACE_CHANNEL_INTERFACE_SERVICE_POINT: string
+export const IFACE_CHANNEL_INTERFACE_SMS: string
+export const IFACE_CHANNEL_INTERFACE_SUBJECT: string
+export const IFACE_CHANNEL_INTERFACE_TUBE: string
+export const IFACE_CHANNEL_REQUEST: string
+export const IFACE_CHANNEL_TYPE_CALL: string
+export const IFACE_CHANNEL_TYPE_CONTACT_LIST: string
+export const IFACE_CHANNEL_TYPE_CONTACT_SEARCH: string
+export const IFACE_CHANNEL_TYPE_DBUS_TUBE: string
+export const IFACE_CHANNEL_TYPE_FILE_TRANSFER: string
+export const IFACE_CHANNEL_TYPE_ROOM_LIST: string
+export const IFACE_CHANNEL_TYPE_SERVER_AUTHENTICATION: string
+export const IFACE_CHANNEL_TYPE_SERVER_TLS_CONNECTION: string
+export const IFACE_CHANNEL_TYPE_STREAMED_MEDIA: string
+export const IFACE_CHANNEL_TYPE_STREAM_TUBE: string
+export const IFACE_CHANNEL_TYPE_TEXT: string
+export const IFACE_CHANNEL_TYPE_TUBES: string
+export const IFACE_CLIENT: string
+export const IFACE_CLIENT_APPROVER: string
+export const IFACE_CLIENT_HANDLER: string
+export const IFACE_CLIENT_INTERFACE_REQUESTS: string
+export const IFACE_CLIENT_OBSERVER: string
+export const IFACE_CONNECTION: string
+export const IFACE_CONNECTION_INTERFACE_ADDRESSING: string
+export const IFACE_CONNECTION_INTERFACE_ALIASING: string
+export const IFACE_CONNECTION_INTERFACE_ANONYMITY: string
+export const IFACE_CONNECTION_INTERFACE_AVATARS: string
+export const IFACE_CONNECTION_INTERFACE_BALANCE: string
+export const IFACE_CONNECTION_INTERFACE_CAPABILITIES: string
+export const IFACE_CONNECTION_INTERFACE_CELLULAR: string
+export const IFACE_CONNECTION_INTERFACE_CLIENT_TYPES: string
+export const IFACE_CONNECTION_INTERFACE_CONTACTS: string
+export const IFACE_CONNECTION_INTERFACE_CONTACT_BLOCKING: string
+export const IFACE_CONNECTION_INTERFACE_CONTACT_CAPABILITIES: string
+export const IFACE_CONNECTION_INTERFACE_CONTACT_GROUPS: string
+export const IFACE_CONNECTION_INTERFACE_CONTACT_INFO: string
+export const IFACE_CONNECTION_INTERFACE_CONTACT_LIST: string
+export const IFACE_CONNECTION_INTERFACE_LOCATION: string
+export const IFACE_CONNECTION_INTERFACE_MAIL_NOTIFICATION: string
+export const IFACE_CONNECTION_INTERFACE_POWER_SAVING: string
+export const IFACE_CONNECTION_INTERFACE_PRESENCE: string
+export const IFACE_CONNECTION_INTERFACE_RENAMING: string
+export const IFACE_CONNECTION_INTERFACE_REQUESTS: string
+export const IFACE_CONNECTION_INTERFACE_SERVICE_POINT: string
+export const IFACE_CONNECTION_INTERFACE_SIDECARS1: string
+export const IFACE_CONNECTION_INTERFACE_SIMPLE_PRESENCE: string
+export const IFACE_CONNECTION_MANAGER: string
+export const IFACE_DBUS_DAEMON: string
+export const IFACE_DBUS_INTROSPECTABLE: string
+export const IFACE_DBUS_PEER: string
+export const IFACE_DBUS_PROPERTIES: string
+export const IFACE_DEBUG: string
+export const IFACE_MEDIA_SESSION_HANDLER: string
+export const IFACE_MEDIA_STREAM_HANDLER: string
+export const IFACE_PROPERTIES_INTERFACE: string
+export const IFACE_PROTOCOL: string
+export const IFACE_PROTOCOL_INTERFACE_ADDRESSING: string
+export const IFACE_PROTOCOL_INTERFACE_AVATARS: string
+export const IFACE_PROTOCOL_INTERFACE_PRESENCE: string
 /**
  * 1 higher than the highest valid value of #TpAccessControlType.
  */
@@ -2892,348 +2892,348 @@ export const NUM_TUBE_STATES: number
  * 1 higher than the highest valid value of #TpTubeType.
  */
 export const NUM_TUBE_TYPES: number
-export const PROP_ACCOUNT_AUTOMATIC_PRESENCE: string | null
-export const PROP_ACCOUNT_CHANGING_PRESENCE: string | null
-export const PROP_ACCOUNT_CONNECTION: string | null
-export const PROP_ACCOUNT_CONNECTION_ERROR: string | null
-export const PROP_ACCOUNT_CONNECTION_ERROR_DETAILS: string | null
-export const PROP_ACCOUNT_CONNECTION_STATUS: string | null
-export const PROP_ACCOUNT_CONNECTION_STATUS_REASON: string | null
-export const PROP_ACCOUNT_CONNECT_AUTOMATICALLY: string | null
-export const PROP_ACCOUNT_CURRENT_PRESENCE: string | null
-export const PROP_ACCOUNT_DISPLAY_NAME: string | null
-export const PROP_ACCOUNT_ENABLED: string | null
-export const PROP_ACCOUNT_HAS_BEEN_ONLINE: string | null
-export const PROP_ACCOUNT_ICON: string | null
-export const PROP_ACCOUNT_INTERFACES: string | null
-export const PROP_ACCOUNT_INTERFACE_ADDRESSING_URI_SCHEMES: string | null
-export const PROP_ACCOUNT_INTERFACE_AVATAR_AVATAR: string | null
-export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_IDENTIFIER: string | null
-export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_PROVIDER: string | null
-export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_RESTRICTIONS: string | null
-export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_SPECIFIC_INFORMATION: string | null
-export const PROP_ACCOUNT_MANAGER_INTERFACES: string | null
-export const PROP_ACCOUNT_MANAGER_INVALID_ACCOUNTS: string | null
-export const PROP_ACCOUNT_MANAGER_SUPPORTED_ACCOUNT_PROPERTIES: string | null
-export const PROP_ACCOUNT_MANAGER_VALID_ACCOUNTS: string | null
-export const PROP_ACCOUNT_NICKNAME: string | null
-export const PROP_ACCOUNT_NORMALIZED_NAME: string | null
-export const PROP_ACCOUNT_PARAMETERS: string | null
-export const PROP_ACCOUNT_REQUESTED_PRESENCE: string | null
-export const PROP_ACCOUNT_SERVICE: string | null
-export const PROP_ACCOUNT_SUPERSEDES: string | null
-export const PROP_ACCOUNT_VALID: string | null
-export const PROP_AUTHENTICATION_TLS_CERTIFICATE_CERTIFICATE_CHAIN_DATA: string | null
-export const PROP_AUTHENTICATION_TLS_CERTIFICATE_CERTIFICATE_TYPE: string | null
-export const PROP_AUTHENTICATION_TLS_CERTIFICATE_REJECTIONS: string | null
-export const PROP_AUTHENTICATION_TLS_CERTIFICATE_STATE: string | null
-export const PROP_CALL_CONTENT_DISPOSITION: string | null
-export const PROP_CALL_CONTENT_INTERFACES: string | null
-export const PROP_CALL_CONTENT_INTERFACE_AUDIO_CONTROL_REQUESTED_INPUT_VOLUME: string | null
-export const PROP_CALL_CONTENT_INTERFACE_AUDIO_CONTROL_REQUESTED_OUTPUT_VOLUME: string | null
-export const PROP_CALL_CONTENT_INTERFACE_DTMF_CURRENTLY_SENDING_TONES: string | null
-export const PROP_CALL_CONTENT_INTERFACE_DTMF_DEFERRED_TONES: string | null
-export const PROP_CALL_CONTENT_INTERFACE_MEDIA_CURRENT_DTMF_EVENT: string | null
-export const PROP_CALL_CONTENT_INTERFACE_MEDIA_CURRENT_DTMF_STATE: string | null
-export const PROP_CALL_CONTENT_INTERFACE_MEDIA_LOCAL_MEDIA_DESCRIPTIONS: string | null
-export const PROP_CALL_CONTENT_INTERFACE_MEDIA_MEDIA_DESCRIPTION_OFFER: string | null
-export const PROP_CALL_CONTENT_INTERFACE_MEDIA_PACKETIZATION: string | null
-export const PROP_CALL_CONTENT_INTERFACE_MEDIA_REMOTE_MEDIA_DESCRIPTIONS: string | null
-export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_BITRATE: string | null
-export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_FRAMERATE: string | null
-export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_MANUAL_KEY_FRAMES: string | null
-export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_MTU: string | null
-export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_VIDEO_RESOLUTION: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_CODECS: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_FURTHER_NEGOTIATION_REQUIRED: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_HAS_REMOTE_INFORMATION: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACES: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_DLRR_MAX_SIZE: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_DUPLICATE_RLE_MAX_SIZE: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_ENABLE_METRICS: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_LOSS_RLE_MAX_SIZE: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_PACKET_RECEIPT_TIMES_MAX_SIZE: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_RTT_MODE: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_STATISTICS_FLAGS: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK_DOES_AVPF: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK_FEEDBACK_MESSAGES: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTP_HEADER_EXTENSIONS_HEADER_EXTENSIONS: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_REMOTE_CONTACT: string | null
-export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_SSRCS: string | null
-export const PROP_CALL_CONTENT_NAME: string | null
-export const PROP_CALL_CONTENT_STREAMS: string | null
-export const PROP_CALL_CONTENT_TYPE: string | null
-export const PROP_CALL_STREAM_CAN_REQUEST_RECEIVING: string | null
-export const PROP_CALL_STREAM_ENDPOINT_CONTROLLING: string | null
-export const PROP_CALL_STREAM_ENDPOINT_ENDPOINT_STATE: string | null
-export const PROP_CALL_STREAM_ENDPOINT_IS_ICE_LITE: string | null
-export const PROP_CALL_STREAM_ENDPOINT_REMOTE_CANDIDATES: string | null
-export const PROP_CALL_STREAM_ENDPOINT_REMOTE_CREDENTIALS: string | null
-export const PROP_CALL_STREAM_ENDPOINT_SELECTED_CANDIDATE_PAIRS: string | null
-export const PROP_CALL_STREAM_ENDPOINT_TRANSPORT: string | null
-export const PROP_CALL_STREAM_INTERFACES: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_ENDPOINTS: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_HAS_SERVER_INFO: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_ICE_RESTART_PENDING: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_LOCAL_CANDIDATES: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_LOCAL_CREDENTIALS: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_RECEIVING_STATE: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_RELAY_INFO: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_SENDING_STATE: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_STUN_SERVERS: string | null
-export const PROP_CALL_STREAM_INTERFACE_MEDIA_TRANSPORT: string | null
-export const PROP_CALL_STREAM_LOCAL_SENDING_STATE: string | null
-export const PROP_CALL_STREAM_REMOTE_MEMBERS: string | null
-export const PROP_CALL_STREAM_REMOTE_MEMBER_IDENTIFIERS: string | null
-export const PROP_CHANNEL_CHANNEL_TYPE: string | null
-export const PROP_CHANNEL_DISPATCHER_INTERFACES: string | null
-export const PROP_CHANNEL_DISPATCHER_INTERFACE_OPERATION_LIST_DISPATCH_OPERATIONS: string | null
-export const PROP_CHANNEL_DISPATCHER_SUPPORTS_REQUEST_HINTS: string | null
-export const PROP_CHANNEL_DISPATCH_OPERATION_ACCOUNT: string | null
-export const PROP_CHANNEL_DISPATCH_OPERATION_CHANNELS: string | null
-export const PROP_CHANNEL_DISPATCH_OPERATION_CONNECTION: string | null
-export const PROP_CHANNEL_DISPATCH_OPERATION_INTERFACES: string | null
-export const PROP_CHANNEL_DISPATCH_OPERATION_POSSIBLE_HANDLERS: string | null
-export const PROP_CHANNEL_INITIATOR_HANDLE: string | null
-export const PROP_CHANNEL_INITIATOR_ID: string | null
-export const PROP_CHANNEL_INTERFACES: string | null
-export const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMITY_MANDATORY: string | null
-export const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMITY_MODES: string | null
-export const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMOUS_ID: string | null
-export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAN_RETRY_CAPTCHA: string | null
-export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_ERROR: string | null
-export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_ERROR_DETAILS: string | null
-export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_STATUS: string | null
-export const PROP_CHANNEL_INTERFACE_CHAT_STATE_CHAT_STATES: string | null
-export const PROP_CHANNEL_INTERFACE_CONFERENCE_CHANNELS: string | null
-export const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_CHANNELS: string | null
-export const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_INVITEE_HANDLES: string | null
-export const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_INVITEE_IDS: string | null
-export const PROP_CHANNEL_INTERFACE_CONFERENCE_INVITATION_MESSAGE: string | null
-export const PROP_CHANNEL_INTERFACE_CONFERENCE_ORIGINAL_CHANNELS: string | null
-export const PROP_CHANNEL_INTERFACE_DTMF_CURRENTLY_SENDING_TONES: string | null
-export const PROP_CHANNEL_INTERFACE_DTMF_DEFERRED_TONES: string | null
-export const PROP_CHANNEL_INTERFACE_DTMF_INITIAL_TONES: string | null
-export const PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_METADATA: string | null
-export const PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_SERVICE_NAME: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_GROUP_FLAGS: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_HANDLE_OWNERS: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_LOCAL_PENDING_MEMBERS: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_MEMBERS: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_MEMBER_IDENTIFIERS: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_REMOTE_PENDING_MEMBERS: string | null
-export const PROP_CHANNEL_INTERFACE_GROUP_SELF_HANDLE: string | null
-export const PROP_CHANNEL_INTERFACE_MESSAGES_DELIVERY_REPORTING_SUPPORT: string | null
-export const PROP_CHANNEL_INTERFACE_MESSAGES_MESSAGE_PART_SUPPORT_FLAGS: string | null
-export const PROP_CHANNEL_INTERFACE_MESSAGES_MESSAGE_TYPES: string | null
-export const PROP_CHANNEL_INTERFACE_MESSAGES_PENDING_MESSAGES: string | null
-export const PROP_CHANNEL_INTERFACE_MESSAGES_SUPPORTED_CONTENT_TYPES: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_ANONYMOUS: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_CAN_UPDATE_CONFIGURATION: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_CONFIGURATION_RETRIEVED: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_DESCRIPTION: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_INVITEONLY: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_LIMIT: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_MODERATED: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_MUTABLE_PROPERTIES: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD_HINT: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD_PROTECTED: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PERSISTENT: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PRIVATE: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_TITLE: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CREATION_TIMESTAMP: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CREATOR: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_CREATOR_HANDLE: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_ROOM_NAME: string | null
-export const PROP_CHANNEL_INTERFACE_ROOM_SERVER: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_AUTHORIZATION_IDENTITY: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_AVAILABLE_MECHANISMS: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_CAN_TRY_AGAIN: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_DEFAULT_REALM: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_DEFAULT_USERNAME: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_HAS_INITIAL_DATA: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_MAY_SAVE_RESPONSE: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_ERROR: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_ERROR_DETAILS: string | null
-export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_STATUS: string | null
-export const PROP_CHANNEL_INTERFACE_SECURABLE_ENCRYPTED: string | null
-export const PROP_CHANNEL_INTERFACE_SECURABLE_VERIFIED: string | null
-export const PROP_CHANNEL_INTERFACE_SERVICE_POINT_CURRENT_SERVICE_POINT: string | null
-export const PROP_CHANNEL_INTERFACE_SERVICE_POINT_INITIAL_SERVICE_POINT: string | null
-export const PROP_CHANNEL_INTERFACE_SMS_FLASH: string | null
-export const PROP_CHANNEL_INTERFACE_SMS_SMS_CHANNEL: string | null
-export const PROP_CHANNEL_INTERFACE_SUBJECT_ACTOR: string | null
-export const PROP_CHANNEL_INTERFACE_SUBJECT_ACTOR_HANDLE: string | null
-export const PROP_CHANNEL_INTERFACE_SUBJECT_CAN_SET: string | null
-export const PROP_CHANNEL_INTERFACE_SUBJECT_SUBJECT: string | null
-export const PROP_CHANNEL_INTERFACE_SUBJECT_TIMESTAMP: string | null
-export const PROP_CHANNEL_INTERFACE_TUBE_PARAMETERS: string | null
-export const PROP_CHANNEL_INTERFACE_TUBE_STATE: string | null
-export const PROP_CHANNEL_REQUESTED: string | null
-export const PROP_CHANNEL_REQUEST_ACCOUNT: string | null
-export const PROP_CHANNEL_REQUEST_HINTS: string | null
-export const PROP_CHANNEL_REQUEST_INTERFACES: string | null
-export const PROP_CHANNEL_REQUEST_PREFERRED_HANDLER: string | null
-export const PROP_CHANNEL_REQUEST_REQUESTS: string | null
-export const PROP_CHANNEL_REQUEST_USER_ACTION_TIME: string | null
-export const PROP_CHANNEL_TARGET_HANDLE: string | null
-export const PROP_CHANNEL_TARGET_HANDLE_TYPE: string | null
-export const PROP_CHANNEL_TARGET_ID: string | null
-export const PROP_CHANNEL_TYPE_CALL_CALL_FLAGS: string | null
-export const PROP_CHANNEL_TYPE_CALL_CALL_MEMBERS: string | null
-export const PROP_CHANNEL_TYPE_CALL_CALL_STATE: string | null
-export const PROP_CHANNEL_TYPE_CALL_CALL_STATE_DETAILS: string | null
-export const PROP_CHANNEL_TYPE_CALL_CALL_STATE_REASON: string | null
-export const PROP_CHANNEL_TYPE_CALL_CONTENTS: string | null
-export const PROP_CHANNEL_TYPE_CALL_HARDWARE_STREAMING: string | null
-export const PROP_CHANNEL_TYPE_CALL_INITIAL_AUDIO: string | null
-export const PROP_CHANNEL_TYPE_CALL_INITIAL_AUDIO_NAME: string | null
-export const PROP_CHANNEL_TYPE_CALL_INITIAL_TRANSPORT: string | null
-export const PROP_CHANNEL_TYPE_CALL_INITIAL_VIDEO: string | null
-export const PROP_CHANNEL_TYPE_CALL_INITIAL_VIDEO_NAME: string | null
-export const PROP_CHANNEL_TYPE_CALL_MEMBER_IDENTIFIERS: string | null
-export const PROP_CHANNEL_TYPE_CALL_MUTABLE_CONTENTS: string | null
-export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_AVAILABLE_SEARCH_KEYS: string | null
-export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_LIMIT: string | null
-export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_SEARCH_STATE: string | null
-export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_SERVER: string | null
-export const PROP_CHANNEL_TYPE_DBUS_TUBE_DBUS_NAMES: string | null
-export const PROP_CHANNEL_TYPE_DBUS_TUBE_SERVICE_NAME: string | null
-export const PROP_CHANNEL_TYPE_DBUS_TUBE_SUPPORTED_ACCESS_CONTROLS: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_AVAILABLE_SOCKET_TYPES: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_HASH: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_HASH_TYPE: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_TYPE: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_DATE: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_DESCRIPTION: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_FILENAME: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_FILE_COLLECTION: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_INITIAL_OFFSET: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_SIZE: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_STATE: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_TRANSFERRED_BYTES: string | null
-export const PROP_CHANNEL_TYPE_FILE_TRANSFER_URI: string | null
-export const PROP_CHANNEL_TYPE_ROOM_LIST_SERVER: string | null
-export const PROP_CHANNEL_TYPE_SERVER_AUTHENTICATION_AUTHENTICATION_METHOD: string | null
-export const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_HOSTNAME: string | null
-export const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_REFERENCE_IDENTITIES: string | null
-export const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_SERVER_CERTIFICATE: string | null
-export const PROP_CHANNEL_TYPE_STREAMED_MEDIA_IMMUTABLE_STREAMS: string | null
-export const PROP_CHANNEL_TYPE_STREAMED_MEDIA_INITIAL_AUDIO: string | null
-export const PROP_CHANNEL_TYPE_STREAMED_MEDIA_INITIAL_VIDEO: string | null
-export const PROP_CHANNEL_TYPE_STREAM_TUBE_SERVICE: string | null
-export const PROP_CHANNEL_TYPE_STREAM_TUBE_SUPPORTED_SOCKET_TYPES: string | null
-export const PROP_CLIENT_APPROVER_APPROVER_CHANNEL_FILTER: string | null
-export const PROP_CLIENT_HANDLER_BYPASS_APPROVAL: string | null
-export const PROP_CLIENT_HANDLER_CAPABILITIES: string | null
-export const PROP_CLIENT_HANDLER_HANDLED_CHANNELS: string | null
-export const PROP_CLIENT_HANDLER_HANDLER_CHANNEL_FILTER: string | null
-export const PROP_CLIENT_INTERFACES: string | null
-export const PROP_CLIENT_OBSERVER_DELAY_APPROVERS: string | null
-export const PROP_CLIENT_OBSERVER_OBSERVER_CHANNEL_FILTER: string | null
-export const PROP_CLIENT_OBSERVER_RECOVER: string | null
-export const PROP_CONNECTION_HAS_IMMORTAL_HANDLES: string | null
-export const PROP_CONNECTION_INTERFACES: string | null
-export const PROP_CONNECTION_INTERFACE_ANONYMITY_ANONYMITY_MANDATORY: string | null
-export const PROP_CONNECTION_INTERFACE_ANONYMITY_ANONYMITY_MODES: string | null
-export const PROP_CONNECTION_INTERFACE_ANONYMITY_SUPPORTED_ANONYMITY_MODES: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_BYTES: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_HEIGHT: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_WIDTH: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_MINIMUM_AVATAR_HEIGHT: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_MINIMUM_AVATAR_WIDTH: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_RECOMMENDED_AVATAR_HEIGHT: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_RECOMMENDED_AVATAR_WIDTH: string | null
-export const PROP_CONNECTION_INTERFACE_AVATARS_SUPPORTED_AVATAR_MIME_TYPES: string | null
-export const PROP_CONNECTION_INTERFACE_BALANCE_ACCOUNT_BALANCE: string | null
-export const PROP_CONNECTION_INTERFACE_BALANCE_MANAGE_CREDIT_URI: string | null
-export const PROP_CONNECTION_INTERFACE_CELLULAR_IMSI: string | null
-export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_NATIONAL_CHARACTER_SET: string | null
-export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_REDUCED_CHARACTER_SET: string | null
-export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_SERVICE_CENTRE: string | null
-export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_VALIDITY_PERIOD: string | null
-export const PROP_CONNECTION_INTERFACE_CELLULAR_OVERRIDE_MESSAGE_SERVICE_CENTRE: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACTS_CONTACT_ATTRIBUTE_INTERFACES: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_BLOCKING_CONTACT_BLOCKING_CAPABILITIES: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_DISJOINT_GROUPS: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUPS: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUP_STORAGE: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_INFO_CONTACT_INFO_FLAGS: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_INFO_SUPPORTED_FIELDS: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CAN_CHANGE_CONTACT_LIST: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CONTACT_LIST_PERSISTS: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CONTACT_LIST_STATE: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_DOWNLOAD_AT_CONNECTION: string | null
-export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_REQUEST_USES_MESSAGE: string | null
-export const PROP_CONNECTION_INTERFACE_LOCATION_LOCATION_ACCESS_CONTROL: string | null
-export const PROP_CONNECTION_INTERFACE_LOCATION_LOCATION_ACCESS_CONTROL_TYPES: string | null
-export const PROP_CONNECTION_INTERFACE_LOCATION_SUPPORTED_LOCATION_FEATURES: string | null
-export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_MAIL_ADDRESS: string | null
-export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_MAIL_NOTIFICATION_FLAGS: string | null
-export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_UNREAD_MAILS: string | null
-export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_UNREAD_MAIL_COUNT: string | null
-export const PROP_CONNECTION_INTERFACE_POWER_SAVING_POWER_SAVING_ACTIVE: string | null
-export const PROP_CONNECTION_INTERFACE_REQUESTS_CHANNELS: string | null
-export const PROP_CONNECTION_INTERFACE_REQUESTS_REQUESTABLE_CHANNEL_CLASSES: string | null
-export const PROP_CONNECTION_INTERFACE_SERVICE_POINT_KNOWN_SERVICE_POINTS: string | null
-export const PROP_CONNECTION_INTERFACE_SIMPLE_PRESENCE_MAXIMUM_STATUS_MESSAGE_LENGTH: string | null
-export const PROP_CONNECTION_INTERFACE_SIMPLE_PRESENCE_STATUSES: string | null
-export const PROP_CONNECTION_MANAGER_INTERFACES: string | null
-export const PROP_CONNECTION_MANAGER_PROTOCOLS: string | null
-export const PROP_CONNECTION_SELF_HANDLE: string | null
-export const PROP_CONNECTION_SELF_ID: string | null
-export const PROP_CONNECTION_STATUS: string | null
-export const PROP_DEBUG_ENABLED: string | null
-export const PROP_MEDIA_STREAM_HANDLER_CREATED_LOCALLY: string | null
-export const PROP_MEDIA_STREAM_HANDLER_NAT_TRAVERSAL: string | null
-export const PROP_MEDIA_STREAM_HANDLER_RELAY_INFO: string | null
-export const PROP_MEDIA_STREAM_HANDLER_STUN_SERVERS: string | null
-export const PROP_PROTOCOL_AUTHENTICATION_TYPES: string | null
-export const PROP_PROTOCOL_CONNECTION_INTERFACES: string | null
-export const PROP_PROTOCOL_ENGLISH_NAME: string | null
-export const PROP_PROTOCOL_ICON: string | null
-export const PROP_PROTOCOL_INTERFACES: string | null
-export const PROP_PROTOCOL_INTERFACE_ADDRESSING_ADDRESSABLE_URI_SCHEMES: string | null
-export const PROP_PROTOCOL_INTERFACE_ADDRESSING_ADDRESSABLE_VCARD_FIELDS: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_BYTES: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_HEIGHT: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_WIDTH: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_MINIMUM_AVATAR_HEIGHT: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_MINIMUM_AVATAR_WIDTH: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_RECOMMENDED_AVATAR_HEIGHT: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_RECOMMENDED_AVATAR_WIDTH: string | null
-export const PROP_PROTOCOL_INTERFACE_AVATARS_SUPPORTED_AVATAR_MIME_TYPES: string | null
-export const PROP_PROTOCOL_INTERFACE_PRESENCE_STATUSES: string | null
-export const PROP_PROTOCOL_PARAMETERS: string | null
-export const PROP_PROTOCOL_REQUESTABLE_CHANNEL_CLASSES: string | null
-export const PROP_PROTOCOL_VCARD_FIELD: string | null
-export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_GTALK_P2P: string | null
-export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_ICE_UDP: string | null
-export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_WLM_2009: string | null
-export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_WLM_8_5: string | null
-export const TOKEN_CHANNEL_TYPE_CALL_AUDIO: string | null
-export const TOKEN_CHANNEL_TYPE_CALL_GTALK_P2P: string | null
-export const TOKEN_CHANNEL_TYPE_CALL_ICE: string | null
-export const TOKEN_CHANNEL_TYPE_CALL_SHM: string | null
-export const TOKEN_CHANNEL_TYPE_CALL_VIDEO: string | null
-export const TOKEN_CHANNEL_TYPE_CALL_WLM_2009: string | null
-export const TOKEN_CONNECTION_CONTACT_ID: string | null
-export const TOKEN_CONNECTION_INTERFACE_ADDRESSING_ADDRESSES: string | null
-export const TOKEN_CONNECTION_INTERFACE_ADDRESSING_URIS: string | null
-export const TOKEN_CONNECTION_INTERFACE_ALIASING_ALIAS: string | null
-export const TOKEN_CONNECTION_INTERFACE_AVATARS_TOKEN: string | null
-export const TOKEN_CONNECTION_INTERFACE_CAPABILITIES_CAPS: string | null
-export const TOKEN_CONNECTION_INTERFACE_CLIENT_TYPES_CLIENT_TYPES: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_BLOCKING_BLOCKED: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_CAPABILITIES_CAPABILITIES: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUPS: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_INFO_INFO: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_PUBLISH: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_PUBLISH_REQUEST: string | null
-export const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_SUBSCRIBE: string | null
-export const TOKEN_CONNECTION_INTERFACE_LOCATION_LOCATION: string | null
-export const TOKEN_CONNECTION_INTERFACE_SIMPLE_PRESENCE_PRESENCE: string | null
+export const PROP_ACCOUNT_AUTOMATIC_PRESENCE: string
+export const PROP_ACCOUNT_CHANGING_PRESENCE: string
+export const PROP_ACCOUNT_CONNECTION: string
+export const PROP_ACCOUNT_CONNECTION_ERROR: string
+export const PROP_ACCOUNT_CONNECTION_ERROR_DETAILS: string
+export const PROP_ACCOUNT_CONNECTION_STATUS: string
+export const PROP_ACCOUNT_CONNECTION_STATUS_REASON: string
+export const PROP_ACCOUNT_CONNECT_AUTOMATICALLY: string
+export const PROP_ACCOUNT_CURRENT_PRESENCE: string
+export const PROP_ACCOUNT_DISPLAY_NAME: string
+export const PROP_ACCOUNT_ENABLED: string
+export const PROP_ACCOUNT_HAS_BEEN_ONLINE: string
+export const PROP_ACCOUNT_ICON: string
+export const PROP_ACCOUNT_INTERFACES: string
+export const PROP_ACCOUNT_INTERFACE_ADDRESSING_URI_SCHEMES: string
+export const PROP_ACCOUNT_INTERFACE_AVATAR_AVATAR: string
+export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_IDENTIFIER: string
+export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_PROVIDER: string
+export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_RESTRICTIONS: string
+export const PROP_ACCOUNT_INTERFACE_STORAGE_STORAGE_SPECIFIC_INFORMATION: string
+export const PROP_ACCOUNT_MANAGER_INTERFACES: string
+export const PROP_ACCOUNT_MANAGER_INVALID_ACCOUNTS: string
+export const PROP_ACCOUNT_MANAGER_SUPPORTED_ACCOUNT_PROPERTIES: string
+export const PROP_ACCOUNT_MANAGER_VALID_ACCOUNTS: string
+export const PROP_ACCOUNT_NICKNAME: string
+export const PROP_ACCOUNT_NORMALIZED_NAME: string
+export const PROP_ACCOUNT_PARAMETERS: string
+export const PROP_ACCOUNT_REQUESTED_PRESENCE: string
+export const PROP_ACCOUNT_SERVICE: string
+export const PROP_ACCOUNT_SUPERSEDES: string
+export const PROP_ACCOUNT_VALID: string
+export const PROP_AUTHENTICATION_TLS_CERTIFICATE_CERTIFICATE_CHAIN_DATA: string
+export const PROP_AUTHENTICATION_TLS_CERTIFICATE_CERTIFICATE_TYPE: string
+export const PROP_AUTHENTICATION_TLS_CERTIFICATE_REJECTIONS: string
+export const PROP_AUTHENTICATION_TLS_CERTIFICATE_STATE: string
+export const PROP_CALL_CONTENT_DISPOSITION: string
+export const PROP_CALL_CONTENT_INTERFACES: string
+export const PROP_CALL_CONTENT_INTERFACE_AUDIO_CONTROL_REQUESTED_INPUT_VOLUME: string
+export const PROP_CALL_CONTENT_INTERFACE_AUDIO_CONTROL_REQUESTED_OUTPUT_VOLUME: string
+export const PROP_CALL_CONTENT_INTERFACE_DTMF_CURRENTLY_SENDING_TONES: string
+export const PROP_CALL_CONTENT_INTERFACE_DTMF_DEFERRED_TONES: string
+export const PROP_CALL_CONTENT_INTERFACE_MEDIA_CURRENT_DTMF_EVENT: string
+export const PROP_CALL_CONTENT_INTERFACE_MEDIA_CURRENT_DTMF_STATE: string
+export const PROP_CALL_CONTENT_INTERFACE_MEDIA_LOCAL_MEDIA_DESCRIPTIONS: string
+export const PROP_CALL_CONTENT_INTERFACE_MEDIA_MEDIA_DESCRIPTION_OFFER: string
+export const PROP_CALL_CONTENT_INTERFACE_MEDIA_PACKETIZATION: string
+export const PROP_CALL_CONTENT_INTERFACE_MEDIA_REMOTE_MEDIA_DESCRIPTIONS: string
+export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_BITRATE: string
+export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_FRAMERATE: string
+export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_MANUAL_KEY_FRAMES: string
+export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_MTU: string
+export const PROP_CALL_CONTENT_INTERFACE_VIDEO_CONTROL_VIDEO_RESOLUTION: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_CODECS: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_FURTHER_NEGOTIATION_REQUIRED: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_HAS_REMOTE_INFORMATION: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACES: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_DLRR_MAX_SIZE: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_DUPLICATE_RLE_MAX_SIZE: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_ENABLE_METRICS: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_LOSS_RLE_MAX_SIZE: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_PACKET_RECEIPT_TIMES_MAX_SIZE: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_RTT_MODE: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_EXTENDED_REPORTS_STATISTICS_FLAGS: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK_DOES_AVPF: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTCP_FEEDBACK_FEEDBACK_MESSAGES: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_INTERFACE_RTP_HEADER_EXTENSIONS_HEADER_EXTENSIONS: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_REMOTE_CONTACT: string
+export const PROP_CALL_CONTENT_MEDIA_DESCRIPTION_SSRCS: string
+export const PROP_CALL_CONTENT_NAME: string
+export const PROP_CALL_CONTENT_STREAMS: string
+export const PROP_CALL_CONTENT_TYPE: string
+export const PROP_CALL_STREAM_CAN_REQUEST_RECEIVING: string
+export const PROP_CALL_STREAM_ENDPOINT_CONTROLLING: string
+export const PROP_CALL_STREAM_ENDPOINT_ENDPOINT_STATE: string
+export const PROP_CALL_STREAM_ENDPOINT_IS_ICE_LITE: string
+export const PROP_CALL_STREAM_ENDPOINT_REMOTE_CANDIDATES: string
+export const PROP_CALL_STREAM_ENDPOINT_REMOTE_CREDENTIALS: string
+export const PROP_CALL_STREAM_ENDPOINT_SELECTED_CANDIDATE_PAIRS: string
+export const PROP_CALL_STREAM_ENDPOINT_TRANSPORT: string
+export const PROP_CALL_STREAM_INTERFACES: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_ENDPOINTS: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_HAS_SERVER_INFO: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_ICE_RESTART_PENDING: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_LOCAL_CANDIDATES: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_LOCAL_CREDENTIALS: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_RECEIVING_STATE: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_RELAY_INFO: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_SENDING_STATE: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_STUN_SERVERS: string
+export const PROP_CALL_STREAM_INTERFACE_MEDIA_TRANSPORT: string
+export const PROP_CALL_STREAM_LOCAL_SENDING_STATE: string
+export const PROP_CALL_STREAM_REMOTE_MEMBERS: string
+export const PROP_CALL_STREAM_REMOTE_MEMBER_IDENTIFIERS: string
+export const PROP_CHANNEL_CHANNEL_TYPE: string
+export const PROP_CHANNEL_DISPATCHER_INTERFACES: string
+export const PROP_CHANNEL_DISPATCHER_INTERFACE_OPERATION_LIST_DISPATCH_OPERATIONS: string
+export const PROP_CHANNEL_DISPATCHER_SUPPORTS_REQUEST_HINTS: string
+export const PROP_CHANNEL_DISPATCH_OPERATION_ACCOUNT: string
+export const PROP_CHANNEL_DISPATCH_OPERATION_CHANNELS: string
+export const PROP_CHANNEL_DISPATCH_OPERATION_CONNECTION: string
+export const PROP_CHANNEL_DISPATCH_OPERATION_INTERFACES: string
+export const PROP_CHANNEL_DISPATCH_OPERATION_POSSIBLE_HANDLERS: string
+export const PROP_CHANNEL_INITIATOR_HANDLE: string
+export const PROP_CHANNEL_INITIATOR_ID: string
+export const PROP_CHANNEL_INTERFACES: string
+export const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMITY_MANDATORY: string
+export const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMITY_MODES: string
+export const PROP_CHANNEL_INTERFACE_ANONYMITY_ANONYMOUS_ID: string
+export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAN_RETRY_CAPTCHA: string
+export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_ERROR: string
+export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_ERROR_DETAILS: string
+export const PROP_CHANNEL_INTERFACE_CAPTCHA_AUTHENTICATION_CAPTCHA_STATUS: string
+export const PROP_CHANNEL_INTERFACE_CHAT_STATE_CHAT_STATES: string
+export const PROP_CHANNEL_INTERFACE_CONFERENCE_CHANNELS: string
+export const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_CHANNELS: string
+export const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_INVITEE_HANDLES: string
+export const PROP_CHANNEL_INTERFACE_CONFERENCE_INITIAL_INVITEE_IDS: string
+export const PROP_CHANNEL_INTERFACE_CONFERENCE_INVITATION_MESSAGE: string
+export const PROP_CHANNEL_INTERFACE_CONFERENCE_ORIGINAL_CHANNELS: string
+export const PROP_CHANNEL_INTERFACE_DTMF_CURRENTLY_SENDING_TONES: string
+export const PROP_CHANNEL_INTERFACE_DTMF_DEFERRED_TONES: string
+export const PROP_CHANNEL_INTERFACE_DTMF_INITIAL_TONES: string
+export const PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_METADATA: string
+export const PROP_CHANNEL_INTERFACE_FILE_TRANSFER_METADATA_SERVICE_NAME: string
+export const PROP_CHANNEL_INTERFACE_GROUP_GROUP_FLAGS: string
+export const PROP_CHANNEL_INTERFACE_GROUP_HANDLE_OWNERS: string
+export const PROP_CHANNEL_INTERFACE_GROUP_LOCAL_PENDING_MEMBERS: string
+export const PROP_CHANNEL_INTERFACE_GROUP_MEMBERS: string
+export const PROP_CHANNEL_INTERFACE_GROUP_MEMBER_IDENTIFIERS: string
+export const PROP_CHANNEL_INTERFACE_GROUP_REMOTE_PENDING_MEMBERS: string
+export const PROP_CHANNEL_INTERFACE_GROUP_SELF_HANDLE: string
+export const PROP_CHANNEL_INTERFACE_MESSAGES_DELIVERY_REPORTING_SUPPORT: string
+export const PROP_CHANNEL_INTERFACE_MESSAGES_MESSAGE_PART_SUPPORT_FLAGS: string
+export const PROP_CHANNEL_INTERFACE_MESSAGES_MESSAGE_TYPES: string
+export const PROP_CHANNEL_INTERFACE_MESSAGES_PENDING_MESSAGES: string
+export const PROP_CHANNEL_INTERFACE_MESSAGES_SUPPORTED_CONTENT_TYPES: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_ANONYMOUS: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_CAN_UPDATE_CONFIGURATION: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_CONFIGURATION_RETRIEVED: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_DESCRIPTION: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_INVITEONLY: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_LIMIT: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_MODERATED: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_MUTABLE_PROPERTIES: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD_HINT: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PASSWORD_PROTECTED: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PERSISTENT: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_PRIVATE: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CONFIG_TITLE: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CREATION_TIMESTAMP: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CREATOR: string
+export const PROP_CHANNEL_INTERFACE_ROOM_CREATOR_HANDLE: string
+export const PROP_CHANNEL_INTERFACE_ROOM_ROOM_NAME: string
+export const PROP_CHANNEL_INTERFACE_ROOM_SERVER: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_AUTHORIZATION_IDENTITY: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_AVAILABLE_MECHANISMS: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_CAN_TRY_AGAIN: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_DEFAULT_REALM: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_DEFAULT_USERNAME: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_HAS_INITIAL_DATA: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_MAY_SAVE_RESPONSE: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_ERROR: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_ERROR_DETAILS: string
+export const PROP_CHANNEL_INTERFACE_SASL_AUTHENTICATION_SASL_STATUS: string
+export const PROP_CHANNEL_INTERFACE_SECURABLE_ENCRYPTED: string
+export const PROP_CHANNEL_INTERFACE_SECURABLE_VERIFIED: string
+export const PROP_CHANNEL_INTERFACE_SERVICE_POINT_CURRENT_SERVICE_POINT: string
+export const PROP_CHANNEL_INTERFACE_SERVICE_POINT_INITIAL_SERVICE_POINT: string
+export const PROP_CHANNEL_INTERFACE_SMS_FLASH: string
+export const PROP_CHANNEL_INTERFACE_SMS_SMS_CHANNEL: string
+export const PROP_CHANNEL_INTERFACE_SUBJECT_ACTOR: string
+export const PROP_CHANNEL_INTERFACE_SUBJECT_ACTOR_HANDLE: string
+export const PROP_CHANNEL_INTERFACE_SUBJECT_CAN_SET: string
+export const PROP_CHANNEL_INTERFACE_SUBJECT_SUBJECT: string
+export const PROP_CHANNEL_INTERFACE_SUBJECT_TIMESTAMP: string
+export const PROP_CHANNEL_INTERFACE_TUBE_PARAMETERS: string
+export const PROP_CHANNEL_INTERFACE_TUBE_STATE: string
+export const PROP_CHANNEL_REQUESTED: string
+export const PROP_CHANNEL_REQUEST_ACCOUNT: string
+export const PROP_CHANNEL_REQUEST_HINTS: string
+export const PROP_CHANNEL_REQUEST_INTERFACES: string
+export const PROP_CHANNEL_REQUEST_PREFERRED_HANDLER: string
+export const PROP_CHANNEL_REQUEST_REQUESTS: string
+export const PROP_CHANNEL_REQUEST_USER_ACTION_TIME: string
+export const PROP_CHANNEL_TARGET_HANDLE: string
+export const PROP_CHANNEL_TARGET_HANDLE_TYPE: string
+export const PROP_CHANNEL_TARGET_ID: string
+export const PROP_CHANNEL_TYPE_CALL_CALL_FLAGS: string
+export const PROP_CHANNEL_TYPE_CALL_CALL_MEMBERS: string
+export const PROP_CHANNEL_TYPE_CALL_CALL_STATE: string
+export const PROP_CHANNEL_TYPE_CALL_CALL_STATE_DETAILS: string
+export const PROP_CHANNEL_TYPE_CALL_CALL_STATE_REASON: string
+export const PROP_CHANNEL_TYPE_CALL_CONTENTS: string
+export const PROP_CHANNEL_TYPE_CALL_HARDWARE_STREAMING: string
+export const PROP_CHANNEL_TYPE_CALL_INITIAL_AUDIO: string
+export const PROP_CHANNEL_TYPE_CALL_INITIAL_AUDIO_NAME: string
+export const PROP_CHANNEL_TYPE_CALL_INITIAL_TRANSPORT: string
+export const PROP_CHANNEL_TYPE_CALL_INITIAL_VIDEO: string
+export const PROP_CHANNEL_TYPE_CALL_INITIAL_VIDEO_NAME: string
+export const PROP_CHANNEL_TYPE_CALL_MEMBER_IDENTIFIERS: string
+export const PROP_CHANNEL_TYPE_CALL_MUTABLE_CONTENTS: string
+export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_AVAILABLE_SEARCH_KEYS: string
+export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_LIMIT: string
+export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_SEARCH_STATE: string
+export const PROP_CHANNEL_TYPE_CONTACT_SEARCH_SERVER: string
+export const PROP_CHANNEL_TYPE_DBUS_TUBE_DBUS_NAMES: string
+export const PROP_CHANNEL_TYPE_DBUS_TUBE_SERVICE_NAME: string
+export const PROP_CHANNEL_TYPE_DBUS_TUBE_SUPPORTED_ACCESS_CONTROLS: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_AVAILABLE_SOCKET_TYPES: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_HASH: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_HASH_TYPE: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_CONTENT_TYPE: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_DATE: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_DESCRIPTION: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_FILENAME: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_FILE_COLLECTION: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_INITIAL_OFFSET: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_SIZE: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_STATE: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_TRANSFERRED_BYTES: string
+export const PROP_CHANNEL_TYPE_FILE_TRANSFER_URI: string
+export const PROP_CHANNEL_TYPE_ROOM_LIST_SERVER: string
+export const PROP_CHANNEL_TYPE_SERVER_AUTHENTICATION_AUTHENTICATION_METHOD: string
+export const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_HOSTNAME: string
+export const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_REFERENCE_IDENTITIES: string
+export const PROP_CHANNEL_TYPE_SERVER_TLS_CONNECTION_SERVER_CERTIFICATE: string
+export const PROP_CHANNEL_TYPE_STREAMED_MEDIA_IMMUTABLE_STREAMS: string
+export const PROP_CHANNEL_TYPE_STREAMED_MEDIA_INITIAL_AUDIO: string
+export const PROP_CHANNEL_TYPE_STREAMED_MEDIA_INITIAL_VIDEO: string
+export const PROP_CHANNEL_TYPE_STREAM_TUBE_SERVICE: string
+export const PROP_CHANNEL_TYPE_STREAM_TUBE_SUPPORTED_SOCKET_TYPES: string
+export const PROP_CLIENT_APPROVER_APPROVER_CHANNEL_FILTER: string
+export const PROP_CLIENT_HANDLER_BYPASS_APPROVAL: string
+export const PROP_CLIENT_HANDLER_CAPABILITIES: string
+export const PROP_CLIENT_HANDLER_HANDLED_CHANNELS: string
+export const PROP_CLIENT_HANDLER_HANDLER_CHANNEL_FILTER: string
+export const PROP_CLIENT_INTERFACES: string
+export const PROP_CLIENT_OBSERVER_DELAY_APPROVERS: string
+export const PROP_CLIENT_OBSERVER_OBSERVER_CHANNEL_FILTER: string
+export const PROP_CLIENT_OBSERVER_RECOVER: string
+export const PROP_CONNECTION_HAS_IMMORTAL_HANDLES: string
+export const PROP_CONNECTION_INTERFACES: string
+export const PROP_CONNECTION_INTERFACE_ANONYMITY_ANONYMITY_MANDATORY: string
+export const PROP_CONNECTION_INTERFACE_ANONYMITY_ANONYMITY_MODES: string
+export const PROP_CONNECTION_INTERFACE_ANONYMITY_SUPPORTED_ANONYMITY_MODES: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_BYTES: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_HEIGHT: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_MAXIMUM_AVATAR_WIDTH: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_MINIMUM_AVATAR_HEIGHT: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_MINIMUM_AVATAR_WIDTH: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_RECOMMENDED_AVATAR_HEIGHT: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_RECOMMENDED_AVATAR_WIDTH: string
+export const PROP_CONNECTION_INTERFACE_AVATARS_SUPPORTED_AVATAR_MIME_TYPES: string
+export const PROP_CONNECTION_INTERFACE_BALANCE_ACCOUNT_BALANCE: string
+export const PROP_CONNECTION_INTERFACE_BALANCE_MANAGE_CREDIT_URI: string
+export const PROP_CONNECTION_INTERFACE_CELLULAR_IMSI: string
+export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_NATIONAL_CHARACTER_SET: string
+export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_REDUCED_CHARACTER_SET: string
+export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_SERVICE_CENTRE: string
+export const PROP_CONNECTION_INTERFACE_CELLULAR_MESSAGE_VALIDITY_PERIOD: string
+export const PROP_CONNECTION_INTERFACE_CELLULAR_OVERRIDE_MESSAGE_SERVICE_CENTRE: string
+export const PROP_CONNECTION_INTERFACE_CONTACTS_CONTACT_ATTRIBUTE_INTERFACES: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_BLOCKING_CONTACT_BLOCKING_CAPABILITIES: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_DISJOINT_GROUPS: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUPS: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUP_STORAGE: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_INFO_CONTACT_INFO_FLAGS: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_INFO_SUPPORTED_FIELDS: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CAN_CHANGE_CONTACT_LIST: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CONTACT_LIST_PERSISTS: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_CONTACT_LIST_STATE: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_DOWNLOAD_AT_CONNECTION: string
+export const PROP_CONNECTION_INTERFACE_CONTACT_LIST_REQUEST_USES_MESSAGE: string
+export const PROP_CONNECTION_INTERFACE_LOCATION_LOCATION_ACCESS_CONTROL: string
+export const PROP_CONNECTION_INTERFACE_LOCATION_LOCATION_ACCESS_CONTROL_TYPES: string
+export const PROP_CONNECTION_INTERFACE_LOCATION_SUPPORTED_LOCATION_FEATURES: string
+export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_MAIL_ADDRESS: string
+export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_MAIL_NOTIFICATION_FLAGS: string
+export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_UNREAD_MAILS: string
+export const PROP_CONNECTION_INTERFACE_MAIL_NOTIFICATION_UNREAD_MAIL_COUNT: string
+export const PROP_CONNECTION_INTERFACE_POWER_SAVING_POWER_SAVING_ACTIVE: string
+export const PROP_CONNECTION_INTERFACE_REQUESTS_CHANNELS: string
+export const PROP_CONNECTION_INTERFACE_REQUESTS_REQUESTABLE_CHANNEL_CLASSES: string
+export const PROP_CONNECTION_INTERFACE_SERVICE_POINT_KNOWN_SERVICE_POINTS: string
+export const PROP_CONNECTION_INTERFACE_SIMPLE_PRESENCE_MAXIMUM_STATUS_MESSAGE_LENGTH: string
+export const PROP_CONNECTION_INTERFACE_SIMPLE_PRESENCE_STATUSES: string
+export const PROP_CONNECTION_MANAGER_INTERFACES: string
+export const PROP_CONNECTION_MANAGER_PROTOCOLS: string
+export const PROP_CONNECTION_SELF_HANDLE: string
+export const PROP_CONNECTION_SELF_ID: string
+export const PROP_CONNECTION_STATUS: string
+export const PROP_DEBUG_ENABLED: string
+export const PROP_MEDIA_STREAM_HANDLER_CREATED_LOCALLY: string
+export const PROP_MEDIA_STREAM_HANDLER_NAT_TRAVERSAL: string
+export const PROP_MEDIA_STREAM_HANDLER_RELAY_INFO: string
+export const PROP_MEDIA_STREAM_HANDLER_STUN_SERVERS: string
+export const PROP_PROTOCOL_AUTHENTICATION_TYPES: string
+export const PROP_PROTOCOL_CONNECTION_INTERFACES: string
+export const PROP_PROTOCOL_ENGLISH_NAME: string
+export const PROP_PROTOCOL_ICON: string
+export const PROP_PROTOCOL_INTERFACES: string
+export const PROP_PROTOCOL_INTERFACE_ADDRESSING_ADDRESSABLE_URI_SCHEMES: string
+export const PROP_PROTOCOL_INTERFACE_ADDRESSING_ADDRESSABLE_VCARD_FIELDS: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_BYTES: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_HEIGHT: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_MAXIMUM_AVATAR_WIDTH: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_MINIMUM_AVATAR_HEIGHT: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_MINIMUM_AVATAR_WIDTH: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_RECOMMENDED_AVATAR_HEIGHT: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_RECOMMENDED_AVATAR_WIDTH: string
+export const PROP_PROTOCOL_INTERFACE_AVATARS_SUPPORTED_AVATAR_MIME_TYPES: string
+export const PROP_PROTOCOL_INTERFACE_PRESENCE_STATUSES: string
+export const PROP_PROTOCOL_PARAMETERS: string
+export const PROP_PROTOCOL_REQUESTABLE_CHANNEL_CLASSES: string
+export const PROP_PROTOCOL_VCARD_FIELD: string
+export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_GTALK_P2P: string
+export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_ICE_UDP: string
+export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_WLM_2009: string
+export const TOKEN_CHANNEL_INTERFACE_MEDIA_SIGNALLING_WLM_8_5: string
+export const TOKEN_CHANNEL_TYPE_CALL_AUDIO: string
+export const TOKEN_CHANNEL_TYPE_CALL_GTALK_P2P: string
+export const TOKEN_CHANNEL_TYPE_CALL_ICE: string
+export const TOKEN_CHANNEL_TYPE_CALL_SHM: string
+export const TOKEN_CHANNEL_TYPE_CALL_VIDEO: string
+export const TOKEN_CHANNEL_TYPE_CALL_WLM_2009: string
+export const TOKEN_CONNECTION_CONTACT_ID: string
+export const TOKEN_CONNECTION_INTERFACE_ADDRESSING_ADDRESSES: string
+export const TOKEN_CONNECTION_INTERFACE_ADDRESSING_URIS: string
+export const TOKEN_CONNECTION_INTERFACE_ALIASING_ALIAS: string
+export const TOKEN_CONNECTION_INTERFACE_AVATARS_TOKEN: string
+export const TOKEN_CONNECTION_INTERFACE_CAPABILITIES_CAPS: string
+export const TOKEN_CONNECTION_INTERFACE_CLIENT_TYPES_CLIENT_TYPES: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_BLOCKING_BLOCKED: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_CAPABILITIES_CAPABILITIES: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_GROUPS_GROUPS: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_INFO_INFO: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_PUBLISH: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_PUBLISH_REQUEST: string
+export const TOKEN_CONNECTION_INTERFACE_CONTACT_LIST_SUBSCRIBE: string
+export const TOKEN_CONNECTION_INTERFACE_LOCATION_LOCATION: string
+export const TOKEN_CONNECTION_INTERFACE_SIMPLE_PRESENCE_PRESENCE: string
 /**
  * An invalid connection status used in #TpConnection to indicate that the
  * status has not yet been discovered.
@@ -3263,7 +3263,7 @@ export const USER_ACTION_TIME_NOT_USER_ACTION: number
  * @param key The key to look up
  * @returns a boolean value for @key
  */
-export function asvGetBoolean(asv: GLib.HashTable, key: string | null): [ /* returnType */ boolean, /* valid */ boolean ]
+export function asvGetBoolean(asv: GLib.HashTable, key: string): [ /* returnType */ boolean, /* valid */ boolean ]
 /**
  * If a value for `key` in `asv` is present and is of the desired type,
  * return it.
@@ -3278,7 +3278,7 @@ export function asvGetBoolean(asv: GLib.HashTable, key: string | null): [ /* ret
  * @param type The type that the key's value should have, which must be derived  from %G_TYPE_BOXED
  * @returns the value of @key, or %NULL
  */
-export function asvGetBoxed(asv: GLib.HashTable, key: string | null, type: GObject.GType): any | null
+export function asvGetBoxed(asv: GLib.HashTable, key: string, type: GObject.GType): any | null
 /**
  * If a value for `key` in `asv` is present and is an array of bytes
  * (its GType is %DBUS_TYPE_G_UCHAR_ARRAY), return it.
@@ -3293,7 +3293,7 @@ export function asvGetBoxed(asv: GLib.HashTable, key: string | null, type: GObje
  * @param key The key to look up
  * @returns the string value of @key, or %NULL
  */
-export function asvGetBytes(asv: GLib.HashTable, key: string | null): number[] | null
+export function asvGetBytes(asv: GLib.HashTable, key: string): number[] | null
 /**
  * If a value for `key` in `asv` is present and has any numeric type used by
  * dbus-glib (guchar, gint, guint, gint64, guint64 or gdouble),
@@ -3304,7 +3304,7 @@ export function asvGetBytes(asv: GLib.HashTable, key: string | null): number[] |
  * @param key The key to look up
  * @returns the double precision floating-point value of @key, or 0.0
  */
-export function asvGetDouble(asv: GLib.HashTable, key: string | null): [ /* returnType */ number, /* valid */ boolean ]
+export function asvGetDouble(asv: GLib.HashTable, key: string): [ /* returnType */ number, /* valid */ boolean ]
 /**
  * If a value for `key` in `asv` is present, has an integer type used by
  * dbus-glib (guchar, gint, guint, gint64 or guint64) and fits in the
@@ -3316,7 +3316,7 @@ export function asvGetDouble(asv: GLib.HashTable, key: string | null): [ /* retu
  * @param key The key to look up
  * @returns the 32-bit signed integer value of @key, or 0
  */
-export function asvGetInt32(asv: GLib.HashTable, key: string | null): [ /* returnType */ number, /* valid */ boolean ]
+export function asvGetInt32(asv: GLib.HashTable, key: string): [ /* returnType */ number, /* valid */ boolean ]
 /**
  * If a value for `key` in `asv` is present, has an integer type used by
  * dbus-glib (guchar, gint, guint, gint64 or guint64) and fits in the
@@ -3328,7 +3328,7 @@ export function asvGetInt32(asv: GLib.HashTable, key: string | null): [ /* retur
  * @param key The key to look up
  * @returns the 64-bit signed integer value of @key, or 0
  */
-export function asvGetInt64(asv: GLib.HashTable, key: string | null): [ /* returnType */ number, /* valid */ boolean ]
+export function asvGetInt64(asv: GLib.HashTable, key: string): [ /* returnType */ number, /* valid */ boolean ]
 /**
  * If a value for `key` in `asv` is present and is an object path, return it.
  * 
@@ -3341,7 +3341,7 @@ export function asvGetInt64(asv: GLib.HashTable, key: string | null): [ /* retur
  * @param key The key to look up
  * @returns the object-path value of @key, or %NULL
  */
-export function asvGetObjectPath(asv: GLib.HashTable, key: string | null): string | null
+export function asvGetObjectPath(asv: GLib.HashTable, key: string): string | null
 /**
  * If a value for `key` in `asv` is present and is a string, return it.
  * 
@@ -3354,7 +3354,7 @@ export function asvGetObjectPath(asv: GLib.HashTable, key: string | null): strin
  * @param key The key to look up
  * @returns the string value of @key, or %NULL
  */
-export function asvGetString(asv: GLib.HashTable, key: string | null): string | null
+export function asvGetString(asv: GLib.HashTable, key: string): string | null
 /**
  * If a value for `key` in `asv` is present and is an array of strings (strv),
  * return it.
@@ -3368,7 +3368,7 @@ export function asvGetString(asv: GLib.HashTable, key: string | null): string | 
  * @param key The key to look up
  * @returns the %NULL-terminated string-array value of @key, or %NULL
  */
-export function asvGetStrv(asv: GLib.HashTable, key: string | null): string[] | null
+export function asvGetStrv(asv: GLib.HashTable, key: string): string[] | null
 /**
  * If a value for `key` in `asv` is present, has an integer type used by
  * dbus-glib (guchar, gint, guint, gint64 or guint64) and fits in the
@@ -3380,7 +3380,7 @@ export function asvGetStrv(asv: GLib.HashTable, key: string | null): string[] | 
  * @param key The key to look up
  * @returns the 32-bit unsigned integer value of @key, or 0
  */
-export function asvGetUint32(asv: GLib.HashTable, key: string | null): [ /* returnType */ number, /* valid */ boolean ]
+export function asvGetUint32(asv: GLib.HashTable, key: string): [ /* returnType */ number, /* valid */ boolean ]
 /**
  * If a value for `key` in `asv` is present, has an integer type used by
  * dbus-glib (guchar, gint, guint, gint64 or guint64) and is non-negative,
@@ -3391,7 +3391,7 @@ export function asvGetUint32(asv: GLib.HashTable, key: string | null): [ /* retu
  * @param key The key to look up
  * @returns the 64-bit unsigned integer value of @key, or 0
  */
-export function asvGetUint64(asv: GLib.HashTable, key: string | null): [ /* returnType */ number, /* valid */ boolean ]
+export function asvGetUint64(asv: GLib.HashTable, key: string): [ /* returnType */ number, /* valid */ boolean ]
 /**
  * Check that the given string is a valid D-Bus bus name of an appropriate
  * type.
@@ -3399,7 +3399,7 @@ export function asvGetUint64(asv: GLib.HashTable, key: string | null): [ /* retu
  * @param allowTypes some combination of %TP_DBUS_NAME_TYPE_UNIQUE,  %TP_DBUS_NAME_TYPE_WELL_KNOWN or %TP_DBUS_NAME_TYPE_BUS_DAEMON  (often this will be %TP_DBUS_NAME_TYPE_NOT_BUS_DAEMON or  %TP_DBUS_NAME_TYPE_ANY)
  * @returns %TRUE if @name is valid
  */
-export function dbusCheckValidBusName(name: string | null, allowTypes: DBusNameType): boolean
+export function dbusCheckValidBusName(name: string, allowTypes: DBusNameType): boolean
 /**
  * Check that the given string is a valid D-Bus interface name. This is
  * also appropriate to use to check for valid error names.
@@ -3410,7 +3410,7 @@ export function dbusCheckValidBusName(name: string | null, allowTypes: DBusNameT
  * @param name a possible interface name
  * @returns %TRUE if @name is valid
  */
-export function dbusCheckValidInterfaceName(name: string | null): boolean
+export function dbusCheckValidInterfaceName(name: string): boolean
 /**
  * Check that the given string is a valid D-Bus member (method or signal) name.
  * 
@@ -3420,7 +3420,7 @@ export function dbusCheckValidInterfaceName(name: string | null): boolean
  * @param name a possible member name
  * @returns %TRUE if @name is valid
  */
-export function dbusCheckValidMemberName(name: string | null): boolean
+export function dbusCheckValidMemberName(name: string): boolean
 /**
  * Check that the given string is a valid D-Bus object path. Since GLib 2.24,
  * g_variant_is_object_path() should always return the same thing as this
@@ -3429,7 +3429,7 @@ export function dbusCheckValidMemberName(name: string | null): boolean
  * @param path a possible object path
  * @returns %TRUE if @path is valid
  */
-export function dbusCheckValidObjectPath(path: string | null): boolean
+export function dbusCheckValidObjectPath(path: string): boolean
 export function dbusErrorsQuark(): GLib.Quark
 /**
  * Initialize the class `cls` to use the D-Bus Properties mixin.
@@ -3469,7 +3469,7 @@ export function dbusPropertiesMixinClassInit(cls: GObject.ObjectClass, offset: n
  * @param interfaceName a D-Bus interface name
  * @returns a map  from property name (without the interface name) to value
  */
-export function dbusPropertiesMixinDupAll(self: GObject.Object, interfaceName: string | null): GLib.HashTable
+export function dbusPropertiesMixinDupAll(self: GObject.Object, interfaceName: string): GLib.HashTable
 /**
  * Emits the PropertiesChanged signal for the provided properties. Depending on
  * the EmitsChangedSignal annotations in the introspection XML, either the new
@@ -3497,7 +3497,7 @@ export function dbusPropertiesMixinDupAll(self: GObject.Object, interfaceName: s
  * @param interfaceName the interface on which properties have changed
  * @param properties a %NULL-terminated array of (unqualified)  property names whose values have changed.
  */
-export function dbusPropertiesMixinEmitPropertiesChanged(object: GObject.Object, interfaceName: string | null, properties: string | null): void
+export function dbusPropertiesMixinEmitPropertiesChanged(object: GObject.Object, interfaceName: string, properties: string | null): void
 /**
  * Initialize `value` with the type of the property `property_name` on
  * `interface_name,` and write the value of that property into it as if
@@ -3511,7 +3511,7 @@ export function dbusPropertiesMixinEmitPropertiesChanged(object: GObject.Object,
  * @param value an unset GValue (initialized to all zeroes)
  * @returns %TRUE (filling @value) on success, %FALSE (setting @error)  on failure
  */
-export function dbusPropertiesMixinGet(self: GObject.Object, interfaceName: string | null, propertyName: string | null, value: any): boolean
+export function dbusPropertiesMixinGet(self: GObject.Object, interfaceName: string, propertyName: string, value: any): boolean
 /**
  * An implementation of #TpDBusPropertiesMixinGetter which assumes that
  * the `getter_data` is the name of a readable #GObject property of an
@@ -3541,7 +3541,7 @@ export function dbusPropertiesMixinIfaceInit(gIface: any | null, ifaceData: any 
  * @param value a GValue containing the new value for this property.
  * @returns %TRUE on success; %FALSE (setting @error) on failure
  */
-export function dbusPropertiesMixinSet(self: GObject.Object, interfaceName: string | null, propertyName: string | null, value: any): boolean
+export function dbusPropertiesMixinSet(self: GObject.Object, interfaceName: string, propertyName: string, value: any): boolean
 /**
  * An implementation of #TpDBusPropertiesMixinSetter which assumes that the
  * `setter_data` is the name of a writable #GObject property of an appropriate
@@ -3574,7 +3574,7 @@ export function dbusPropertiesMixinSetterGobjectProperties(object: GObject.Objec
  * support.
  * @param filename A file to which to divert stdout and stderr, or %NULL to  do nothing
  */
-export function debugDivertMessages(filename: string | null): void
+export function debugDivertMessages(filename: string): void
 /**
  * Set the debug flags indicated by `flags_string,` in addition to any already
  * set.
@@ -3586,7 +3586,7 @@ export function debugDivertMessages(filename: string | null): void
  * enable were removed at compile time.
  * @param flagsString The flags to set, comma-separated. If %NULL or empty,  no additional flags are set.
  */
-export function debugSetFlags(flagsString: string | null): void
+export function debugSetFlags(flagsString: string): void
 /**
  * Used to enable persistent operation of the connection manager process for
  * debugging purposes.
@@ -3615,13 +3615,13 @@ export function debugSetPersistent(persistent: boolean): void
  * @param message the message to process
  * @param ignored not used
  */
-export function debugTimestampedLogHandler(logDomain: string | null, logLevel: GLib.LogLevelFlags, message: string | null, ignored: any | null): void
+export function debugTimestampedLogHandler(logDomain: string, logLevel: GLib.LogLevelFlags, message: string, ignored: any | null): void
 /**
  * <!-- -->
  * @param error a member of the #TpError enum.
  * @returns the D-Bus error name corresponding to @error.
  */
-export function errorGetDbusName(error: Error): string | null
+export function errorGetDbusName(error: Error): string
 /**
  * Return the error domain quark for #TpError.
  */
@@ -3648,7 +3648,7 @@ export function errorsRemovedFromGroupQuark(): GLib.Quark
  * @param name The string to be escaped
  * @returns the escaped string, which must be freed by  the caller with #g_free
  */
-export function escapeAsIdentifier(name: string | null): string | null
+export function escapeAsIdentifier(name: string): string | null
 /**
  * Return a handle for the given string, creating one if necessary. The string
  * is normalized, if possible.
@@ -3657,7 +3657,7 @@ export function escapeAsIdentifier(name: string | null): string | null
  * @param context User data to be passed to the normalization callback
  * @returns the handle corresponding to the given string, or 0 if it is invalid.
  */
-export function handleEnsure(self: HandleRepoIface, id: string | null, context: any | null): Handle
+export function handleEnsure(self: HandleRepoIface, id: string, context: any | null): Handle
 /**
  * If the given handle type is valid, return %TRUE. If not, set `error`
  * and return %FALSE.
@@ -3670,7 +3670,7 @@ export function handleTypeIsValid(type: HandleType): boolean
  * @param type A handle type, which need not be valid
  * @returns a human-readable string describing the handle type, e.g. "contact".  For invalid handle types, returns "(no handle)" for 0 or  "(invalid handle type)" for others.
  */
-export function handleTypeToString(type: HandleType): string | null
+export function handleTypeToString(type: HandleType): string
 export function ifaceQuarkAccount(): GLib.Quark
 export function ifaceQuarkAccountInterfaceAddressing(): GLib.Quark
 export function ifaceQuarkAccountInterfaceAvatar(): GLib.Quark
@@ -3876,7 +3876,7 @@ export function userActionTimeShouldPresent(userActionTime: number): [ /* return
  * @param name string to coerce into UTF8
  * @returns a new valid UTF8 string
  */
-export function utf8MakeValid(name: string | null): string | null
+export function utf8MakeValid(name: string): string | null
 /**
  * Free `va`. This is exactly the same as g_value_array_free(), but does not
  * provoke deprecation warnings from GLib when used in conjunction with
@@ -4209,7 +4209,7 @@ export interface ConnectionWhenReadyCb {
  * @param weakObject the same object that was passed to  tp_dbus_daemon_list_names or tp_dbus_daemon_list_activatable_names
  */
 export interface DBusDaemonListNamesCb {
-    (busDaemon: DBusDaemon, names: string | null, error: GLib.Error, weakObject: GObject.Object): void
+    (busDaemon: DBusDaemon, names: string, error: GLib.Error, weakObject: GObject.Object): void
 }
 /**
  * The signature of the callback called by tp_dbus_daemon_watch_name_owner().
@@ -4219,7 +4219,7 @@ export interface DBusDaemonListNamesCb {
  * @param newOwner The unique name that now owns `name`
  */
 export interface DBusDaemonNameOwnerChangedCb {
-    (busDaemon: DBusDaemon, name: string | null, newOwner: string | null): void
+    (busDaemon: DBusDaemon, name: string, newOwner: string): void
 }
 /**
  * Signature of a callback used to get the value of a property.
@@ -4260,7 +4260,7 @@ export interface DBusPropertiesMixinSetter {
  * @returns %TRUE on success, %FALSE with @error set on error
  */
 export interface GroupMixinAddMemberFunc {
-    (obj: GObject.Object, handle: Handle, message: string | null): boolean
+    (obj: GObject.Object, handle: Handle, message: string): boolean
 }
 /**
  * Signature of the callback used to remove a member from the group.
@@ -4273,7 +4273,7 @@ export interface GroupMixinAddMemberFunc {
  * @returns %TRUE on success, %FALSE with @error set on error
  */
 export interface GroupMixinRemMemberFunc {
-    (obj: GObject.Object, handle: Handle, message: string | null): boolean
+    (obj: GObject.Object, handle: Handle, message: string): boolean
 }
 /**
  * Signature of the callback used to remove a member from the group.
@@ -4289,7 +4289,7 @@ export interface GroupMixinRemMemberFunc {
  * @returns %TRUE on success, %FALSE with @error set on error
  */
 export interface GroupMixinRemMemberWithReasonFunc {
-    (obj: GObject.Object, handle: Handle, message: string | null, reason: number): boolean
+    (obj: GObject.Object, handle: Handle, message: string, reason: number): boolean
 }
 /**
  * A callback function acting on unsigned integers.
@@ -4449,7 +4449,7 @@ export interface ClientChannelFactory {
      * @param properties  the immutable properties of the channel
      * @returns a new channel proxy, or %NULL on invalid arguments
      */
-    createChannel(conn: Connection, path: string | null, properties: GLib.HashTable): Channel
+    createChannel(conn: Connection, path: string, properties: GLib.HashTable): Channel
     /**
      * Return a zero terminated #GArray containing the #TpChannel features that
      * should be prepared on `channel`.
@@ -5047,7 +5047,7 @@ export interface Account {
      * @param scheme a URI scheme such as "tel", "sip" or "xmpp"
      * @returns %TRUE if the result of tp_account_get_uri_schemes() would include  @scheme
      */
-    associatedWithUriScheme(scheme: string | null): boolean
+    associatedWithUriScheme(scheme: string): boolean
     /**
      * Binds the :connection-status of `self` to the boolean property of another
      * object using a #GBinding such that the `target_property` will be set to
@@ -5065,7 +5065,7 @@ export interface Account {
      * @param invert %TRUE if you wish to invert the value of `target_property`   (i.e. %FALSE if connected)
      * @returns the #GBinding instance representing the binding   between the @self and the @target. The binding is released whenever the   #GBinding reference count reaches zero.
      */
-    bindConnectionStatusToProperty(target: any | null, targetProperty: string | null, invert: boolean): GObject.Binding
+    bindConnectionStatusToProperty(target: any | null, targetProperty: string, invert: boolean): GObject.Binding
     /**
      * If the account's connection is not connected, return the D-Bus error name
      * with which it last disconnected or failed to connect (in particular, this
@@ -5135,7 +5135,7 @@ export interface Account {
      * @param path the path to connection object for #TpAccount
      * @returns the connection of the account, or %NULL if either  the object path @path is invalid or it is the null-value "/"
      */
-    ensureConnection(path: string | null): Connection
+    ensureConnection(path: string): Connection
     /**
      * Gets the automatic presence, status and status message of `account`. These
      * values are the same as the #TpAccount:automatic-presence-type,
@@ -5170,7 +5170,7 @@ export interface Account {
      * <!-- -->
      * @returns the same as the #TpAccount:cm-name property
      */
-    getCmName(): string | null
+    getCmName(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:connect-automatically property
@@ -5185,7 +5185,7 @@ export interface Account {
      * <!-- -->
      * @returns the same as the #TpAccount:connection-manager property
      */
-    getConnectionManager(): string | null
+    getConnectionManager(): string
     /**
      * Gets the connection status and reason from `account`. The two values
      * are the same as the #TpAccount:connection-status and
@@ -5204,7 +5204,7 @@ export interface Account {
      * <!-- -->
      * @returns the same as the #TpAccount:display-name property
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:has-been-online property
@@ -5214,17 +5214,17 @@ export interface Account {
      * <!-- -->
      * @returns the same as the #TpAccount:icon-name property
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:nickname property
      */
-    getNickname(): string | null
+    getNickname(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:normalized-name  property
      */
-    getNormalizedName(): string | null
+    getNormalizedName(): string
     /**
      * Returns the parameters of the account, in a hash table where each string
      * is the parameter name (account, password, require-encryption etc.), and
@@ -5254,17 +5254,17 @@ export interface Account {
      * persistent identification of the account, use tp_proxy_get_object_path().
      * @returns a suffix of @account's object path, for debugging purposes.
      */
-    getPathSuffix(): string | null
+    getPathSuffix(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:protocol property
      */
-    getProtocol(): string | null
+    getProtocol(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:protocol-name property
      */
-    getProtocolName(): string | null
+    getProtocolName(): string
     /**
      * Gets the requested presence, status and status message of `account`. These
      * values are the same as the #TpAccount:requested-presence-type,
@@ -5277,7 +5277,7 @@ export interface Account {
      * <!-- -->
      * @returns the same as the #TpAccount:service property
      */
-    getService(): string | null
+    getService(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:storage-identifier property
@@ -5287,7 +5287,7 @@ export interface Account {
      * <!-- -->
      * @returns the same as the #TpAccount:storage-provider property
      */
-    getStorageProvider(): string | null
+    getStorageProvider(): string
     /**
      * <!-- -->
      * @returns the same as the #TpAccount:storage-restrictions property
@@ -5372,7 +5372,7 @@ export interface Account {
      * @param message a message for the change, or %NULL
      * @param callback a callback to call when the request is satisfied
      */
-    requestPresenceAsync(type: ConnectionPresenceType, status: string | null, message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    requestPresenceAsync(type: ConnectionPresenceType, status: string, message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async presence change request on `account`.
      * @param result a #GAsyncResult
@@ -5389,7 +5389,7 @@ export interface Account {
      * @param message a message for the change, or %NULL
      * @param callback a callback to call when the request is satisfied
      */
-    setAutomaticPresenceAsync(type: ConnectionPresenceType, status: string | null, message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    setAutomaticPresenceAsync(type: ConnectionPresenceType, status: string, message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous request to change the automatic presence of
      * `account`.
@@ -5436,7 +5436,7 @@ export interface Account {
      * @param displayName a new display name, or %NULL to unset the display name
      * @param callback a callback to call when the request is satisfied
      */
-    setDisplayNameAsync(displayName: string | null, callback: Gio.AsyncReadyCallback | null): void
+    setDisplayNameAsync(displayName: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the DisplayName property.
      * @param result a #GAsyncResult
@@ -5464,7 +5464,7 @@ export interface Account {
      * @param iconName a new icon name, or %NULL to unset the icon name
      * @param callback a callback to call when the request is satisfied
      */
-    setIconNameAsync(iconName: string | null, callback: Gio.AsyncReadyCallback | null): void
+    setIconNameAsync(iconName: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the Icon parameter.
      * @param result a #GAsyncResult
@@ -5478,7 +5478,7 @@ export interface Account {
      * @param nickname a new nickname to set
      * @param callback a callback to call when the request is satisfied
      */
-    setNicknameAsync(nickname: string | null, callback: Gio.AsyncReadyCallback | null): void
+    setNicknameAsync(nickname: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async nickname change request on `account`.
      * @param result a #GAsyncResult
@@ -5492,7 +5492,7 @@ export interface Account {
      * @param service a new service name, or %NULL or the empty string to unset the  service name (which will result in the #TpAccount:service property  becoming the same as #TpAccount:protocol)
      * @param callback a callback to call when the request is satisfied
      */
-    setServiceAsync(service: string | null, callback: Gio.AsyncReadyCallback | null): void
+    setServiceAsync(service: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async set of the Service parameter.
      * @param result a #GAsyncResult
@@ -5516,7 +5516,7 @@ export interface Account {
      * @param associate %TRUE to use this account for `scheme,` or %FALSE to not use it
      * @param callback a callback to call when the request is satisfied
      */
-    setUriSchemeAssociationAsync(scheme: string | null, associate: boolean, callback: Gio.AsyncReadyCallback | null): void
+    setUriSchemeAssociationAsync(scheme: string, associate: boolean, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_account_set_uri_scheme_association_async().
      * @param result a #GAsyncResult
@@ -5531,7 +5531,7 @@ export interface Account {
      * @param unsetParameters list of parameters to unset on `account`
      * @param callback a callback to call when the request is satisfied
      */
-    updateParametersAsync(parameters: GLib.HashTable, unsetParameters: string | null, callback: Gio.AsyncReadyCallback | null): void
+    updateParametersAsync(parameters: GLib.HashTable, unsetParameters: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async update of the parameters on `account`.
      * @param result a #GAsyncResult
@@ -5826,7 +5826,7 @@ export class Account extends Proxy {
      * @param objectPath The non-NULL object path of this account
      * @returns a new reference to an account proxy, or %NULL if @object_path is    not valid
      */
-    constructor(busDaemon: DBusDaemon, objectPath: string | null) 
+    constructor(busDaemon: DBusDaemon, objectPath: string) 
     /**
      * Convenience function to create a new account proxy. The returned #TpAccount
      * is not guaranteed to be ready at the point of return.
@@ -5835,7 +5835,7 @@ export class Account extends Proxy {
      * @param objectPath The non-NULL object path of this account
      * @returns a new reference to an account proxy, or %NULL if @object_path is    not valid
      */
-    static new(busDaemon: DBusDaemon, objectPath: string | null): Account
+    static new(busDaemon: DBusDaemon, objectPath: string): Account
     _init(config?: Account.ConstructorProperties): void
     static getFeatureQuarkAddressing(): GLib.Quark
     /**
@@ -5874,7 +5874,7 @@ export class Account extends Proxy {
      * @param objectPath a Telepathy Account's object path
      * @returns %TRUE if @object_path was successfully parsed; %FALSE and sets          @error otherwise.
      */
-    static parseObjectPath(objectPath: string | null): [ /* returnType */ boolean, /* cm */ string | null, /* protocol */ string | null, /* accountId */ string | null ]
+    static parseObjectPath(objectPath: string): [ /* returnType */ boolean, /* cm */ string | null, /* protocol */ string | null, /* accountId */ string | null ]
 }
 
 export module AccountChannelRequest {
@@ -6055,7 +6055,7 @@ export interface AccountChannelRequest {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a callback to call when the request is satisfied
      */
-    createAndObserveChannelAsync(preferredHandler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createAndObserveChannelAsync(preferredHandler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_observe_channel_async().
@@ -6075,7 +6075,7 @@ export interface AccountChannelRequest {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a callback to call when the request is satisfied
      */
-    createChannelAsync(preferredHandler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createChannelAsync(preferredHandler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_channel_async().
@@ -6153,7 +6153,7 @@ export interface AccountChannelRequest {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a callback to call when the request is satisfied
      */
-    ensureAndObserveChannelAsync(preferredHandler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    ensureAndObserveChannelAsync(preferredHandler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_create_and_observe_channel_async().
@@ -6182,7 +6182,7 @@ export interface AccountChannelRequest {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a callback to call when the request is satisfied
      */
-    ensureChannelAsync(preferredHandler: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    ensureChannelAsync(preferredHandler: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channel creation started using
      * tp_account_channel_request_ensure_channel_async().
@@ -6228,7 +6228,7 @@ export interface AccountChannelRequest {
      * channel.
      * @param channels a #NULL-terminated array of channel paths
      */
-    setConferenceInitialChannels(channels: string | null): void
+    setConferenceInitialChannels(channels: string): void
     /**
      * If `delegate` is %TRUE, asks to the client currently handling the channels to
      * delegate them to the preferred handler (passed when calling
@@ -6273,7 +6273,7 @@ export interface AccountChannelRequest {
      * channel.
      * @param description a description of the file
      */
-    setFileTransferDescription(description: string | null): void
+    setFileTransferDescription(description: string): void
     /**
      * Configure this channel request to accompany the file transfer with
      * the hash of the file.
@@ -6283,7 +6283,7 @@ export interface AccountChannelRequest {
      * @param hashType a type of `hash`
      * @param hash hash of the contents of the file transfer
      */
-    setFileTransferHash(hashType: FileHashType, hash: string | null): void
+    setFileTransferHash(hashType: FileHashType, hash: string): void
     /**
      * Configure this channel request to inform the recipient of the file
      * that this channel will not send the first `offset` bytes of the file.
@@ -6347,7 +6347,7 @@ export interface AccountChannelRequest {
      * channel.
      * @param uri the source URI for the file
      */
-    setFileTransferUri(uri: string | null): void
+    setFileTransferUri(uri: string): void
     /**
      * Set additional information about the channel request, which will be used
      * in the resulting request's #TpChannelRequest:hints property.
@@ -6357,7 +6357,7 @@ export interface AccountChannelRequest {
      * @param key the key used for the hint
      * @param value a variant containting the hint value
      */
-    setHint(key: string | null, value: GLib.Variant): void
+    setHint(key: string, value: GLib.Variant): void
     /**
      * Set additional information about the channel request, which will be used
      * as the value for the resulting request's #TpChannelRequest:hints property.
@@ -6379,7 +6379,7 @@ export interface AccountChannelRequest {
      * channel.
      * @param ids a #NULL-terminated array of contact ids
      */
-    setInitialInviteeIds(ids: string | null): void
+    setInitialInviteeIds(ids: string): void
     /**
      * Indicate that the contacts listed in `contacts` have to be invited to the
      * conference represented by the channel which is going to be requested
@@ -6423,7 +6423,7 @@ export interface AccountChannelRequest {
      * @param name a D-Bus property name
      * @param value an arbitrary value for the property
      */
-    setRequestProperty(name: string | null, value: GLib.Variant): void
+    setRequestProperty(name: string, value: GLib.Variant): void
     /**
      * If `is_sms_channel` is set to #TRUE, messages sent and received on the
      * requested channel will be transmitted via SMS.
@@ -6451,7 +6451,7 @@ export interface AccountChannelRequest {
      * @param handleType the type of `identifier,` typically %TP_HANDLE_TYPE_CONTACT  or %TP_HANDLE_TYPE_ROOM
      * @param identifier the unique identifier of the contact, room etc. to be  contacted
      */
-    setTargetId(handleType: HandleType, identifier: string | null): void
+    setTargetId(handleType: HandleType, identifier: string): void
 
     // Own signals of TelepathyGLib-0.12.TelepathyGLib.AccountChannelRequest
 
@@ -6597,7 +6597,7 @@ export class AccountChannelRequest extends GObject.Object {
      * @param userActionTime the time of the user action that caused this request,  or one of the special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME (see  #TpAccountChannelRequest:user-action-time)
      * @returns a new #TpAccountChannelRequest object
      */
-    static newDbusTube(account: Account, serviceName: string | null, userActionTime: number): AccountChannelRequest
+    static newDbusTube(account: Account, serviceName: string, userActionTime: number): AccountChannelRequest
     /**
      * Convenience function to create a new #TpAccountChannelRequest object,
      * which will yield a FileTransfer channel to send a file to a contact.
@@ -6615,7 +6615,7 @@ export class AccountChannelRequest extends GObject.Object {
      * @param userActionTime the time of the user action that caused this request,  or one of the special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME (see  #TpAccountChannelRequest:user-action-time)
      * @returns a new #TpAccountChannelRequest object
      */
-    static newFileTransfer(account: Account, filename: string | null, mimeType: string | null, size: number, userActionTime: number): AccountChannelRequest
+    static newFileTransfer(account: Account, filename: string, mimeType: string | null, size: number, userActionTime: number): AccountChannelRequest
     /**
      * Convenience function to create a new #TpAccountChannelRequest object,
      * which will yield a StreamTube channel.
@@ -6631,7 +6631,7 @@ export class AccountChannelRequest extends GObject.Object {
      * @param userActionTime the time of the user action that caused this request,  or one of the special values %TP_USER_ACTION_TIME_NOT_USER_ACTION or  %TP_USER_ACTION_TIME_CURRENT_TIME (see  #TpAccountChannelRequest:user-action-time)
      * @returns a new #TpAccountChannelRequest object
      */
-    static newStreamTube(account: Account, service: string | null, userActionTime: number): AccountChannelRequest
+    static newStreamTube(account: Account, service: string, userActionTime: number): AccountChannelRequest
     /**
      * Convenience function to create a new #TpAccountChannelRequest object
      * which will yield a Text channel.
@@ -6739,7 +6739,7 @@ export interface AccountManager {
      * @param properties properties  for the new account
      * @param callback a callback to call when the request is satisfied
      */
-    createAccountAsync(connectionManager: string | null, protocol: string | null, displayName: string | null, parameters: GLib.HashTable, properties: GLib.HashTable, callback: Gio.AsyncReadyCallback | null): void
+    createAccountAsync(connectionManager: string, protocol: string, displayName: string, parameters: GLib.HashTable, properties: GLib.HashTable, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async create account operation, and returns a new #TpAccount
      * object. It has %TP_ACCOUNT_FEATURE_CORE prepared, along with all
@@ -6796,7 +6796,7 @@ export interface AccountManager {
      * @param path the object path for an account
      * @returns a new #TpAccount at @path, or %NULL if @path is  not a valid account path.
      */
-    ensureAccount(path: string | null): Account
+    ensureAccount(path: string): Account
     /**
      * Gets the most available presence over all accounts in `manager`. This
      * function does not average presences across all accounts, but it merely
@@ -6860,7 +6860,7 @@ export interface AccountManager {
      * @param status a status to request
      * @param message a status message to request
      */
-    setAllRequestedPresences(type: ConnectionPresenceType, status: string | null, message: string | null): void
+    setAllRequestedPresences(type: ConnectionPresenceType, status: string, message: string): void
     /**
      * Define the #TpAccountManager singleton that will be returned by
      * tp_account_manager_dup().
@@ -7219,7 +7219,7 @@ export interface AccountRequest {
      * superseded accounts.
      * @param supersededPath an account object path to add to the supersedes   list
      */
-    addSupersedes(supersededPath: string | null): void
+    addSupersedes(supersededPath: string): void
     /**
      * Start an asynchronous operation to create the account `self` on the
      * account manager.
@@ -7252,7 +7252,7 @@ export interface AccountRequest {
      * @param status the automatic presence status
      * @param message the automatic presence message
      */
-    setAutomaticPresence(presence: ConnectionPresenceType, status: string | null, message: string | null): void
+    setAutomaticPresence(presence: ConnectionPresenceType, status: string, message: string): void
     /**
      * Set the avatar of the account `self` to `avatar`. Use the
      * #TpAccountRequest:avatar and #TpAccountRequest:avatar-mime-type
@@ -7276,7 +7276,7 @@ export interface AccountRequest {
      * name.
      * @param name a display name for the account
      */
-    setDisplayName(name: string | null): void
+    setDisplayName(name: string): void
     /**
      * Set the enabled property of the account on creation to
      * `enabled`. Use the #TpAccountRequest:enabled property to read the
@@ -7289,13 +7289,13 @@ export interface AccountRequest {
      * #TpAccountRequest:icon-name property to read the current icon name.
      * @param icon an icon name for the account
      */
-    setIconName(icon: string | null): void
+    setIconName(icon: string): void
     /**
      * Set the nickname for the new account, `self,` to `nickname`. Use the
      * #TpAccountRequest:nickname property to read the current nickname.
      * @param nickname a nickname for the account
      */
-    setNickname(nickname: string | null): void
+    setNickname(nickname: string): void
     /**
      * Set an account parameter, `key,` to `value`. Use the
      * #TpAccountRequest:parameters property to read the current list of
@@ -7305,7 +7305,7 @@ export interface AccountRequest {
      * @param key the parameter key
      * @param value a variant containing the parameter value
      */
-    setParameter(key: string | null, value: GLib.Variant): void
+    setParameter(key: string, value: GLib.Variant): void
     /**
      * Set the requested presence for the new account, `self,` to the type
      * (`presence,` `status)`, with message `message`. Use the
@@ -7317,26 +7317,26 @@ export interface AccountRequest {
      * @param status the requested presence status
      * @param message the requested presence message
      */
-    setRequestedPresence(presence: ConnectionPresenceType, status: string | null, message: string | null): void
+    setRequestedPresence(presence: ConnectionPresenceType, status: string, message: string): void
     /**
      * Set the service property of the account to `service`. Use the
      * #TpAccountRequest:service property to read the current value.
      * @param service the service name for
      */
-    setService(service: string | null): void
+    setService(service: string): void
     /**
      * Set the account storage to use when creating the account. Use the
      * #TpAccountRequest:storage-provider property to read the current value.
      * @param provider the name of an account storage implementation
      */
-    setStorageProvider(provider: string | null): void
+    setStorageProvider(provider: string): void
     /**
      * Unset the account parameter `key` which has previously been set
      * using tp_account_request_set_parameter() or another convenience
      * function.
      * @param key the parameter key
      */
-    unsetParameter(key: string | null): void
+    unsetParameter(key: string): void
 
     // Class property signals of TelepathyGLib-0.12.TelepathyGLib.AccountRequest
 
@@ -7483,7 +7483,7 @@ export class AccountRequest extends GObject.Object {
      * @param displayName the user-visible name of this account
      * @returns a new reference to an account request   object, or %NULL if any argument is incorrect
      */
-    constructor(accountManager: AccountManager, manager: string | null, protocol: string | null, displayName: string | null) 
+    constructor(accountManager: AccountManager, manager: string, protocol: string, displayName: string) 
     /**
      * Convenience function to create a new account request object which
      * will assist in the creation of a new account on `account_manager,`
@@ -7495,7 +7495,7 @@ export class AccountRequest extends GObject.Object {
      * @param displayName the user-visible name of this account
      * @returns a new reference to an account request   object, or %NULL if any argument is incorrect
      */
-    static new(accountManager: AccountManager, manager: string | null, protocol: string | null, displayName: string | null): AccountRequest
+    static new(accountManager: AccountManager, manager: string, protocol: string, displayName: string): AccountRequest
     /**
      * Convenience function to create a new #TpAccountRequest object using
      * a #TpProtocol instance, instead of specifying connection manager
@@ -7507,7 +7507,7 @@ export class AccountRequest extends GObject.Object {
      * @param displayName the user-visible name of this account
      * @returns a new reference to an account request   object, or %NULL if any argument is incorrect
      */
-    static newFromProtocol(accountManager: AccountManager, protocol: Protocol, displayName: string | null): AccountRequest
+    static newFromProtocol(accountManager: AccountManager, protocol: Protocol, displayName: string): AccountRequest
     _init(config?: AccountRequest.ConstructorProperties): void
 }
 
@@ -8052,7 +8052,7 @@ export interface BaseClient {
      * #TpBaseClientClass.handle_channels.
      * @param token a capability token as defined by the Telepathy D-Bus API  Specification
      */
-    addHandlerCapability(token: string | null): void
+    addHandlerCapability(token: string): void
     /**
      * Register a new channel class as Handler.HandlerChannelFilter.
      * The #TpBaseClientClass.handle_channels virtual method will be called
@@ -8134,7 +8134,7 @@ export interface BaseClient {
      * @param preferredHandler Either the well-known bus name (starting with %TP_CLIENT_BUS_NAME_BASE) of the preferred handler for the channels, or %NULL to indicate that any handler but `self` would be acceptable.
      * @param callback a callback to call when the request is satisfied
      */
-    delegateChannelsAsync(channels: Channel[], userActionTime: number, preferredHandler: string | null, callback: Gio.AsyncReadyCallback | null): void
+    delegateChannelsAsync(channels: Channel[], userActionTime: number, preferredHandler: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async channels delegation request started using
      * tp_base_client_delegate_channels_async().
@@ -8161,7 +8161,7 @@ export interface BaseClient {
      * has not been called yet or failed.
      * @returns the bus name of the client
      */
-    getBusName(): string | null
+    getBusName(): string
     /**
      * Return the #TpBaseClient:dbus-daemon construct-only property, which
      * represents the D-Bus connection used to export this client object.
@@ -8182,14 +8182,14 @@ export interface BaseClient {
      * part of the bus name and object path.
      * @returns the value of #TpBaseClient:name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Return the object path of `self`. Note that doesn't mean the client is
      * actually registered on this path; for example if tp_base_client_register()
      * has not been called yet or failed.
      * @returns the object path of the client
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Only works if tp_base_client_set_handler_request_notification() has been
      * called.
@@ -8466,7 +8466,7 @@ export interface BaseConnection {
      * @param token a D-Bus interface or a token representing part of an interface,  added with tp_base_connection_add_possible_client_interest()
      * @param onlyIfUninterested only add to the interest count if the client is not  already interested (appropriate for APIs that implicitly subscribe on first  use if this has not been done already, like Location)
      */
-    addClientInterest(uniqueName: string | null, token: string | null, onlyIfUninterested: boolean): void
+    addClientInterest(uniqueName: string, token: string, onlyIfUninterested: boolean): void
     /**
      * Add `token` to the set of tokens for which this connection will emit
      * #TpBaseConnection::clients-interested and
@@ -8543,7 +8543,7 @@ export interface BaseConnection {
      * <!-- -->
      * @returns the same value has the #TpBaseConnection:account-path-suffix  property.
      */
-    getAccountPathSuffix(): string | null
+    getAccountPathSuffix(): string
     /**
      * Return the bus name starting with %TP_CONN_BUS_NAME_BASE that represents
      * this connection on D-Bus.
@@ -8614,7 +8614,7 @@ export interface BaseConnection {
      * @param cmName The name of the connection manager in the Telepathy protocol
      * @returns %TRUE on success, %FALSE on error.
      */
-    register(cmName: string | null): [ /* returnType */ boolean, /* busName */ string | null, /* objectPath */ string | null ]
+    register(cmName: string): [ /* returnType */ boolean, /* busName */ string | null, /* objectPath */ string | null ]
     /**
      * Sets the #TpBaseConnection:self-handle property.  self_handle may not be 0
      * once the connection has moved to the CONNECTED state.
@@ -8893,7 +8893,7 @@ export interface CallChannel {
      * @param initialDirection The initial direction of the content
      * @param callback a callback to call when the operation finishes
      */
-    addContentAsync(name: string | null, type: MediaStreamType, initialDirection: MediaStreamDirection, callback: Gio.AsyncReadyCallback | null): void
+    addContentAsync(name: string, type: MediaStreamType, initialDirection: MediaStreamDirection, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_add_content_async().
      * 
@@ -8930,7 +8930,7 @@ export interface CallChannel {
      * @param message a human-readable message to be sent to the remote contact(s)
      * @param callback a callback to call when the operation finishes
      */
-    hangupAsync(reason: CallStateChangeReason, detailedReason: string | null, message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    hangupAsync(reason: CallStateChangeReason, detailedReason: string, message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_hangup_async().
      * @param result a #GAsyncResult
@@ -8959,12 +8959,12 @@ export interface CallChannel {
      * <!-- -->
      * @returns the value of #TpCallChannel:initial-audio
      */
-    hasInitialAudio(): [ /* returnType */ boolean, /* initialAudioName */ string | null ]
+    hasInitialAudio(): [ /* returnType */ boolean, /* initialAudioName */ string ]
     /**
      * <!-- -->
      * @returns the value of #TpCallChannel:initial-video
      */
-    hasInitialVideo(): [ /* returnType */ boolean, /* initialVideoName */ string | null ]
+    hasInitialVideo(): [ /* returnType */ boolean, /* initialVideoName */ string ]
     /**
      * <!-- -->
      * @returns the value of #TpCallChannel:mutable-contents
@@ -8993,7 +8993,7 @@ export interface CallChannel {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a callback to call when the operation finishes
      */
-    sendTonesAsync(tones: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sendTonesAsync(tones: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_channel_send_tones_async().
      * @param result a #GAsyncResult
@@ -9321,7 +9321,7 @@ export interface CallContent {
      * <!-- -->
      * @returns the value of #TpCallContent:name
      */
-    getName(): string | null
+    getName(): string
     /**
      * <!-- -->
      * @returns   the value of #TpCallContent:streams
@@ -9347,7 +9347,7 @@ export interface CallContent {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a callback to call when the operation finishes
      */
-    sendTonesAsync(tones: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sendTonesAsync(tones: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_call_content_send_tones_async().
      * @param result a #GAsyncResult
@@ -9787,7 +9787,7 @@ export interface Capabilities {
      * @param serviceName the service name of the tube, or %NULL
      * @returns %TRUE if the contact or connection supports this type of D-Bus tubes.
      */
-    supportsDbusTubes(handleType: HandleType, serviceName: string | null): boolean
+    supportsDbusTubes(handleType: HandleType, serviceName: string): boolean
     /**
      * Return whether private file transfer can be established by providing
      * a contact identifier.
@@ -9884,7 +9884,7 @@ export interface Capabilities {
      * @param service the service of the tube, or %NULL
      * @returns %TRUE if the contact or connection supports this type of stream tubes.
      */
-    supportsStreamTubes(handleType: HandleType, service: string | null): boolean
+    supportsStreamTubes(handleType: HandleType, service: string): boolean
     /**
      * If the #TpCapabilities:contact-specific property is %FALSE, this function
      * checks if named text chatrooms can be joined by providing a chatroom
@@ -10256,7 +10256,7 @@ export interface Channel {
      * been prepared.
      * @returns the channel type, if the channel is ready; either the channel  type or %NULL, if the channel is not yet ready.
      */
-    getChannelType(): string | null
+    getChannelType(): string
     /**
      * Get the D-Bus interface name representing this channel's type, as a GQuark,
      * if it has been discovered.
@@ -10310,7 +10310,7 @@ export interface Channel {
      * value. It is now non-%NULL in all cases.
      * @returns the identifier
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * <!-- -->
      * @returns the value of #TpChannel:initiator-contact
@@ -10468,7 +10468,7 @@ export interface Channel {
      * @param localPending the #TpContact of a local-pending contact about whom more  information is needed
      * @returns %TRUE if the contact is in fact local-pending
      */
-    groupGetLocalPendingContactInfo(localPending: Contact): [ /* returnType */ boolean, /* actor */ Contact, /* reason */ ChannelGroupChangeReason, /* message */ string | null ]
+    groupGetLocalPendingContactInfo(localPending: Contact): [ /* returnType */ boolean, /* actor */ Contact, /* reason */ ChannelGroupChangeReason, /* message */ string ]
     /**
      * If `local_pending` is actually the handle of a local-pending contact,
      * write additional information into `actor,` `reason` and `message` and return
@@ -10481,7 +10481,7 @@ export interface Channel {
      * @param localPending the handle of a local-pending contact about whom more  information is needed
      * @returns %TRUE if the contact is in fact local-pending
      */
-    groupGetLocalPendingInfo(localPending: Handle): [ /* returnType */ boolean, /* actor */ Handle, /* reason */ ChannelGroupChangeReason, /* message */ string | null ]
+    groupGetLocalPendingInfo(localPending: Handle): [ /* returnType */ boolean, /* actor */ Handle, /* reason */ ChannelGroupChangeReason, /* message */ string ]
     /**
      * If `self` is a group and the %TP_CHANNEL_FEATURE_GROUP feature has been
      * prepared, return a #TpIntset containing its members.
@@ -10527,7 +10527,7 @@ export interface Channel {
      * @param message the join message
      * @param callback a callback to call when we joined the channel
      */
-    joinAsync(message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    joinAsync(message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_join_async().
      * @param result a #GAsyncResult passed to the callback for tp_channel_join_async().
@@ -10550,7 +10550,7 @@ export interface Channel {
      * @param message the leave message
      * @param callback a callback to call when we left the channel
      */
-    leaveAsync(reason: ChannelGroupChangeReason, message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    leaveAsync(reason: ChannelGroupChangeReason, message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_leave_async().
      * @param result a #GAsyncResult passed to the callback for tp_channel_leave_async().
@@ -10569,7 +10569,7 @@ export interface Channel {
      * @param password the password
      * @param callback a callback to call when `password` has been provided
      */
-    providePasswordAsync(password: string | null, callback: Gio.AsyncReadyCallback | null): void
+    providePasswordAsync(password: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes a call to tp_channel_provide_password_async().
      * If the password was rejected, the operation
@@ -10735,7 +10735,7 @@ export class Channel extends Proxy {
      * @param optionalHandle the handle if already known, or 0 if not  (if `optional_handle_type` is %TP_UNKNOWN_HANDLE_TYPE or  %TP_HANDLE_TYPE_NONE, this must be 0)
      * @returns a new channel proxy, or %NULL on invalid arguments.
      */
-    constructor(conn: Connection, objectPath: string | null, optionalChannelType: string | null, optionalHandleType: HandleType, optionalHandle: Handle) 
+    constructor(conn: Connection, objectPath: string, optionalChannelType: string, optionalHandleType: HandleType, optionalHandle: Handle) 
     /**
      * <!-- -->
      * @constructor 
@@ -10746,7 +10746,7 @@ export class Channel extends Proxy {
      * @param optionalHandle the handle if already known, or 0 if not  (if `optional_handle_type` is %TP_UNKNOWN_HANDLE_TYPE or  %TP_HANDLE_TYPE_NONE, this must be 0)
      * @returns a new channel proxy, or %NULL on invalid arguments.
      */
-    static new(conn: Connection, objectPath: string | null, optionalChannelType: string | null, optionalHandleType: HandleType, optionalHandle: Handle): Channel
+    static new(conn: Connection, objectPath: string, optionalChannelType: string, optionalHandleType: HandleType, optionalHandle: Handle): Channel
     /**
      * <!-- -->
      * @constructor 
@@ -10755,7 +10755,7 @@ export class Channel extends Proxy {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a new channel proxy, or %NULL on invalid arguments
      */
-    static newFromProperties(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable): Channel
+    static newFromProperties(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable): Channel
     _init(config?: Channel.ConstructorProperties): void
     static getFeatureQuarkChatStates(): GLib.Quark
     static getFeatureQuarkContacts(): GLib.Quark
@@ -11051,7 +11051,7 @@ export interface ChannelDispatchOperation {
      * @param message the leave message
      * @param callback a callback to call when the request has been satisfied
      */
-    leaveChannelsAsync(reason: ChannelGroupChangeReason, message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    leaveChannelsAsync(reason: ChannelGroupChangeReason, message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an async operation initiated using
      * tp_channel_dispatch_operation_leave_channels_async().
@@ -11198,7 +11198,7 @@ export class ChannelDispatchOperation extends Proxy {
      * @param immutableProperties As many as are known of the immutable D-Bus  properties of this channel dispatch operation, or %NULL if none are known
      * @returns a new reference to an channel dispatch operation proxy, or %NULL if    @object_path is not syntactically valid or the channel dispatcher is not    running
      */
-    constructor(busDaemon: DBusDaemon, objectPath: string | null, immutableProperties: GLib.HashTable) 
+    constructor(busDaemon: DBusDaemon, objectPath: string, immutableProperties: GLib.HashTable) 
     /**
      * Convenience function to create a new channel dispatch operation proxy.
      * 
@@ -11209,7 +11209,7 @@ export class ChannelDispatchOperation extends Proxy {
      * @param immutableProperties As many as are known of the immutable D-Bus  properties of this channel dispatch operation, or %NULL if none are known
      * @returns a new reference to an channel dispatch operation proxy, or %NULL if    @object_path is not syntactically valid or the channel dispatcher is not    running
      */
-    static new(busDaemon: DBusDaemon, objectPath: string | null, immutableProperties: GLib.HashTable): ChannelDispatchOperation
+    static new(busDaemon: DBusDaemon, objectPath: string, immutableProperties: GLib.HashTable): ChannelDispatchOperation
     _init(config?: ChannelDispatchOperation.ConstructorProperties): void
     static getFeatureQuarkCore(): GLib.Quark
     /**
@@ -11479,7 +11479,7 @@ export interface ChannelRequest {
      * return the #TpChannelRequest:preferred-handler construct-only property
      * @returns the value of #TpChannelRequest:preferred-handler
      */
-    getPreferredHandler(): string | null
+    getPreferredHandler(): string
     /**
      * return the #TpChannelRequest:user-action-time construct-only property
      * @returns the value of #TpChannelRequest:user-action-time
@@ -11625,7 +11625,7 @@ export class ChannelRequest extends Proxy {
      * @param immutableProperties As many as are known of the immutable D-Bus  properties of this channel request, or %NULL if none are known
      * @returns a new reference to an channel request proxy, or %NULL if    @object_path is not syntactically valid or the channel dispatcher is    not running
      */
-    constructor(busDaemon: DBusDaemon, objectPath: string | null, immutableProperties: GLib.HashTable) 
+    constructor(busDaemon: DBusDaemon, objectPath: string, immutableProperties: GLib.HashTable) 
     /**
      * Convenience function to create a new channel request proxy.
      * 
@@ -11638,7 +11638,7 @@ export class ChannelRequest extends Proxy {
      * @param immutableProperties As many as are known of the immutable D-Bus  properties of this channel request, or %NULL if none are known
      * @returns a new reference to an channel request proxy, or %NULL if    @object_path is not syntactically valid or the channel dispatcher is    not running
      */
-    static new(busDaemon: DBusDaemon, objectPath: string | null, immutableProperties: GLib.HashTable): ChannelRequest
+    static new(busDaemon: DBusDaemon, objectPath: string, immutableProperties: GLib.HashTable): ChannelRequest
     _init(config?: ChannelRequest.ConstructorProperties): void
     /**
      * Ensure that the known interfaces for TpChannelRequest have been set up.
@@ -11716,7 +11716,7 @@ export class ClientMessage extends Message {
      * @param text content of the messsage
      * @returns a newly allocated #TpClientMessage
      */
-    static newText(type: ChannelTextMessageType, text: string | null): ClientMessage
+    static newText(type: ChannelTextMessageType, text: string): ClientMessage
     _init(config?: ClientMessage.ConstructorProperties): void
 }
 
@@ -12017,7 +12017,7 @@ export interface Connection {
      * automatically.
      * @param interestedIn a string identifying an interface or part of an interface  to which this connection will subscribe
      */
-    addClientInterest(interestedIn: string | null): void
+    addClientInterest(interestedIn: string): void
     /**
      * Add the given `contacts` to the given `group,` creating it if necessary.
      * 
@@ -12027,7 +12027,7 @@ export interface Connection {
      * @param contacts An array of #TpContact objects to  include in the group.
      * @param callback a callback to call when the operation finishes
      */
-    addToGroupAsync(group: string | null, contacts: Contact[], callback: Gio.AsyncReadyCallback | null): void
+    addToGroupAsync(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_add_to_group_async()
      * @param result a #GAsyncResult
@@ -12068,7 +12068,7 @@ export interface Connection {
      * @param invert %TRUE if you wish to invert the value of `target_property`   (i.e. %FALSE if connected)
      * @returns the #GBinding instance representing the binding   between the @self and the @target. The binding is released whenever the   #GBinding reference count reaches zero.
      */
-    bindConnectionStatusToProperty(target: any | null, targetProperty: string | null, invert: boolean): GObject.Binding
+    bindConnectionStatusToProperty(target: any | null, targetProperty: string, invert: boolean): GObject.Binding
     /**
      * Direct the server to block `contacts`.
      * @param contacts An array of #TpContact objects to  block
@@ -12113,7 +12113,7 @@ export interface Connection {
      * @param features An array of features  that must be ready for use (if supported)  before the callback is called (may be %NULL if `n_features` is 0)
      * @param callback A user callback to call when the contact is ready
      */
-    dupContactByIdAsync(id: string | null, features: ContactFeature[] | null, callback: Gio.AsyncReadyCallback | null): void
+    dupContactByIdAsync(id: string, features: ContactFeature[] | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_dup_contact_by_id_async().
      * @param result a #GAsyncResult
@@ -12142,7 +12142,7 @@ export interface Connection {
      * @param identifier the normalized identifier (XMPP JID, etc.)  corresponding to `handle,` or %NULL if not known
      * @returns a contact or %NULL
      */
-    dupContactIfPossible(handle: Handle, identifier: string | null): Contact
+    dupContactIfPossible(handle: Handle, identifier: string): Contact
     /**
      * Returns a newly allocated #GList of supported contact info fields for this
      * connection. The list must be freed with tp_contact_info_spec_list_free().
@@ -12204,14 +12204,14 @@ export interface Connection {
      * Requires %TP_CONNECTION_FEATURE_BALANCE to be prepared.
      * @returns %TRUE if the balance is valid (and the values set), %FALSE if the   balance is invalid.
      */
-    getBalance(): [ /* returnType */ boolean, /* balance */ number, /* scale */ number, /* currency */ string | null ]
+    getBalance(): [ /* returnType */ boolean, /* balance */ number, /* scale */ number, /* currency */ string ]
     /**
      * The value of Balance.ManageCreditURI.
      * 
      * Requires %TP_CONNECTION_FEATURE_BALANCE to be prepared.
      * @returns the #TpConnection:balance-uri property.
      */
-    getBalanceUri(): string | null
+    getBalanceUri(): string
     /**
      * <!-- -->
      * @returns the value of #TpConnection:blocked-contacts
@@ -12231,12 +12231,12 @@ export interface Connection {
      * <!-- -->
      * @returns the same as the #TpConnection:cm-name property
      */
-    getCmName(): string | null
+    getCmName(): string
     /**
      * <!-- -->
      * @returns the same as the #TpConnection:connection-manager-name property
      */
-    getConnectionManagerName(): string | null
+    getConnectionManagerName(): string
     /**
      * Return (via a callback) any number of attributes of the given handles.
      * 
@@ -12269,7 +12269,7 @@ export interface Connection {
      * @param callback called on success or  failure (unless `weak_object` has become unreferenced)
      * @param weakObject if not %NULL, an object to be weakly referenced: if it is  destroyed, `callback` will not be called
      */
-    getContactAttributes(timeoutMs: number, handles: Handle[], interfaces: string | null, hold: boolean, callback: GObject.Callback, weakObject: GObject.Object): void
+    getContactAttributes(timeoutMs: number, handles: Handle[], interfaces: string, hold: boolean, callback: GObject.Callback, weakObject: GObject.Object): void
     /**
      * <!-- -->
      * @returns the value of  #TpConnection:contact-groups
@@ -12326,7 +12326,7 @@ export interface Connection {
      * @param callback called on success or  failure (unless `weak_object` has become unreferenced)
      * @param weakObject if not %NULL, an object to be weakly referenced: if it is  destroyed, `callback` will not be called
      */
-    getContactListAttributes(timeoutMs: number, interfaces: string | null, hold: boolean, callback: GObject.Callback, weakObject: GObject.Object): void
+    getContactListAttributes(timeoutMs: number, interfaces: string, hold: boolean, callback: GObject.Callback, weakObject: GObject.Object): void
     /**
      * <!-- -->
      * @returns the value of #TpConnection:contact-list-persists property
@@ -12390,7 +12390,7 @@ export interface Connection {
      * <!-- -->
      * @returns the same as the #TpConnection:protocol-name property
      */
-    getProtocolName(): string | null
+    getProtocolName(): string
     /**
      * <!-- -->
      * @returns the value of #TpConnection:request-uses-message property
@@ -12496,7 +12496,7 @@ export interface Connection {
      * @param contacts An array of #TpContact objects to  remove from the group.
      * @param callback a callback to call when the operation finishes
      */
-    removeFromGroupAsync(group: string | null, contacts: Contact[], callback: Gio.AsyncReadyCallback | null): void
+    removeFromGroupAsync(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_remove_from_group_async()
      * @param result a #GAsyncResult
@@ -12511,7 +12511,7 @@ export interface Connection {
      * @param group the group to remove.
      * @param callback a callback to call when the operation finishes
      */
-    removeGroupAsync(group: string | null, callback: Gio.AsyncReadyCallback | null): void
+    removeGroupAsync(group: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_remove_group_async()
      * @param result a #GAsyncResult
@@ -12531,7 +12531,7 @@ export interface Connection {
      * @param newName the new name for the group
      * @param callback a callback to call when the operation finishes
      */
-    renameGroupAsync(oldName: string | null, newName: string | null, callback: Gio.AsyncReadyCallback | null): void
+    renameGroupAsync(oldName: string, newName: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_rename_group_async()
      * @param result a #GAsyncResult
@@ -12563,7 +12563,7 @@ export interface Connection {
      * @param message an optional plain-text message from the user, to send to those  `contacts` with the subscription request.
      * @param callback a callback to call when the operation finishes
      */
-    requestSubscriptionAsync(contacts: Contact[], message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    requestSubscriptionAsync(contacts: Contact[], message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_request_subscription_async()
      * @param result a #GAsyncResult
@@ -12598,7 +12598,7 @@ export interface Connection {
      * @param contacts An array of #TpContact objects members  for the group. If this set is empty, this method MAY remove the group.
      * @param callback a callback to call when the operation finishes
      */
-    setGroupMembersAsync(group: string | null, contacts: Contact[], callback: Gio.AsyncReadyCallback | null): void
+    setGroupMembersAsync(group: string, contacts: Contact[], callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_connection_set_group_members_async()
      * @param result a #GAsyncResult
@@ -13082,7 +13082,7 @@ export interface ConnectionManager {
      * if a longer lifetime is required.
      * @returns the #TpConnectionManager:cm-name property
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns a structure representing a protocol, or %NULL if this connection
      * manager does not support the specified protocol.
@@ -13100,7 +13100,7 @@ export interface ConnectionManager {
      * @param protocol the name of a protocol as defined in the Telepathy D-Bus API,            e.g. "jabber" or "msn"
      * @returns a structure representing the protocol
      */
-    getProtocol(protocol: string | null): ConnectionManagerProtocol
+    getProtocol(protocol: string): ConnectionManagerProtocol
     /**
      * Returns an object representing a protocol, or %NULL if this connection
      * manager does not support the specified protocol.
@@ -13113,7 +13113,7 @@ export interface ConnectionManager {
      * @param protocol the name of a protocol as defined in the Telepathy D-Bus API,            e.g. "jabber" or "msn"
      * @returns an object representing the protocol, or %NULL
      */
-    getProtocolObject(protocol: string | null): Protocol
+    getProtocolObject(protocol: string): Protocol
     /**
      * Return whether `protocol` is supported by this connection manager.
      * 
@@ -13123,7 +13123,7 @@ export interface ConnectionManager {
      * @param protocol the name of a protocol as defined in the Telepathy D-Bus API,            e.g. "jabber" or "msn"
      * @returns %TRUE if this connection manager supports @protocol
      */
-    hasProtocol(protocol: string | null): boolean
+    hasProtocol(protocol: string): boolean
     /**
      * Return %TRUE if this connection manager currently appears to be running.
      * This may change at any time that the main loop is running; the
@@ -13257,7 +13257,7 @@ export class ConnectionManager extends Proxy {
      * @param managerFilename The #TpConnectionManager:manager-file  property, which may (and generally should) be %NULL.
      * @returns a new reference to a connection manager proxy, or %NULL if @error          is set.
      */
-    constructor(dbus: DBusDaemon, name: string | null, managerFilename: string | null) 
+    constructor(dbus: DBusDaemon, name: string, managerFilename: string | null) 
     /**
      * Convenience function to create a new connection manager proxy. If
      * its protocol and parameter information are required, you should call
@@ -13268,7 +13268,7 @@ export class ConnectionManager extends Proxy {
      * @param managerFilename The #TpConnectionManager:manager-file  property, which may (and generally should) be %NULL.
      * @returns a new reference to a connection manager proxy, or %NULL if @error          is set.
      */
-    static new(dbus: DBusDaemon, name: string | null, managerFilename: string | null): ConnectionManager
+    static new(dbus: DBusDaemon, name: string, managerFilename: string | null): ConnectionManager
     _init(config?: ConnectionManager.ConstructorProperties): void
     /**
      * Check that the given string is a valid connection manager name, i.e. that
@@ -13277,7 +13277,7 @@ export class ConnectionManager extends Proxy {
      * @param name a possible connection manager name
      * @returns %TRUE if @name is valid
      */
-    static checkValidName(name: string | null): boolean
+    static checkValidName(name: string): boolean
     /**
      * Check that the given string is a valid protocol name, i.e. that
      * it consists entirely of ASCII letters, digits and hyphen/minus, and starts
@@ -13285,7 +13285,7 @@ export class ConnectionManager extends Proxy {
      * @param name a possible protocol name
      * @returns %TRUE if @name is valid
      */
-    static checkValidProtocolName(name: string | null): boolean
+    static checkValidProtocolName(name: string): boolean
     static getFeatureQuarkCore(): GLib.Quark
     /**
      * Ensure that the known interfaces for TpConnectionManager have been set up.
@@ -13530,7 +13530,7 @@ export interface Contact {
      * @param group the group to alter.
      * @param callback a callback to call when the operation finishes
      */
-    addToGroupAsync(group: string | null, callback: Gio.AsyncReadyCallback | null): void
+    addToGroupAsync(group: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_add_to_group_async()
      * @param result a #GAsyncResult
@@ -13592,7 +13592,7 @@ export interface Contact {
      * longer than that, it must be copied with g_strdup().
      * @returns the same non-%NULL alias as the #TpContact:alias
      */
-    getAlias(): string | null
+    getAlias(): string
     /**
      * Return the contact's avatar file. This remains valid until the main loop
      * is re-entered; if the caller requires a #GFile that will persist for
@@ -13606,14 +13606,14 @@ export interface Contact {
      * longer than that, it must be copied with g_strdup().
      * @returns the same MIME type as the #TpContact:avatar-mime-type property  (possibly %NULL)
      */
-    getAvatarMimeType(): string | null
+    getAvatarMimeType(): string
     /**
      * Return the contact's avatar token. This remains valid until the main loop
      * is re-entered; if the caller requires a string that will persist for
      * longer than that, it must be copied with g_strdup().
      * @returns the same token as the #TpContact:avatar-token property  (possibly %NULL)
      */
-    getAvatarToken(): string | null
+    getAvatarToken(): string
     /**
      * <!-- -->
      * @returns the same #TpCapabilities (or %NULL) as the #TpContact:capabilities property
@@ -13670,7 +13670,7 @@ export interface Contact {
      * that, it must be copied with g_strdup().
      * @returns the same non-%NULL identifier as the #TpContact:identifier property
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * Return the contact's user-defined location or %NULL if the location is
      * unspecified.
@@ -13687,7 +13687,7 @@ export interface Contact {
      * copied with g_strdup().
      * @returns the same non-%NULL message as the #TpContact:presence-message  property
      */
-    getPresenceMessage(): string | null
+    getPresenceMessage(): string
     /**
      * Return the name of the contact's presence status, or an empty string.
      * This remains valid until the main loop is re-entered; if the caller
@@ -13695,7 +13695,7 @@ export interface Contact {
      * copied with g_strdup().
      * @returns the same non-%NULL status name as the #TpContact:presence-status  property
      */
-    getPresenceStatus(): string | null
+    getPresenceStatus(): string
     /**
      * If this object has been set up to track %TP_CONTACT_FEATURE_PRESENCE
      * and the underlying connection supports either the Presence or
@@ -13716,7 +13716,7 @@ export interface Contact {
      * prepared, and it is guaranteed to be non-%NULL afterward.
      * @returns the value of #TpContact:publish-request.
      */
-    getPublishRequest(): string | null
+    getPublishRequest(): string
     /**
      * Return the state of this remote contact's subscription to the local user's
      * presence.
@@ -13759,7 +13759,7 @@ export interface Contact {
      * @param group the group to alter.
      * @param callback a callback to call when the operation finishes
      */
-    removeFromGroupAsync(group: string | null, callback: Gio.AsyncReadyCallback | null): void
+    removeFromGroupAsync(group: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_remove_from_group_async()
      * @param result a #GAsyncResult
@@ -13800,7 +13800,7 @@ export interface Contact {
      * @param message an optional message
      * @param callback a callback to call when the operation finishes
      */
-    requestSubscriptionAsync(message: string | null, callback: Gio.AsyncReadyCallback | null): void
+    requestSubscriptionAsync(message: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_contact_request_subscription_async()
      * @param result a #GAsyncResult
@@ -14136,7 +14136,7 @@ export interface ContactSearch extends Gio.AsyncInitable {
      * <!-- -->
      * @returns The TpContactSearch:server property
      */
-    getServer(): string | null
+    getServer(): string
     /**
      * Resets the contact search object so a new search can be performed.
      * If another tp_contact_search_reset_async() call is in progress,
@@ -14146,7 +14146,7 @@ export interface ContactSearch extends Gio.AsyncInitable {
      * @param limit The maximum number of results the server should return, or 0 for the server default.
      * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
-    resetAsync(server: string | null, limit: number, callback: Gio.AsyncReadyCallback | null): void
+    resetAsync(server: string, limit: number, callback: Gio.AsyncReadyCallback | null): void
     /**
      * <!-- -->
      * @param result the #GAsyncResult from the callback
@@ -14236,7 +14236,7 @@ export class ContactSearch extends GObject.Object {
      * @param limit The maximum number of results the server should return, or 0 for the server default.
      * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
-    static newAsync(account: Account, server: string | null, limit: number, callback: Gio.AsyncReadyCallback | null): void
+    static newAsync(account: Account, server: string, limit: number, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module ContactSearchResult {
@@ -14271,7 +14271,7 @@ export interface ContactSearchResult {
      * @param field the name of the field
      * @returns the specified field, or %NULL if the result doesn't have it.
      */
-    getField(field: string | null): ContactInfoField
+    getField(field: string): ContactInfoField
     /**
      * <!-- -->
      * @returns   a #GList of #TpContactInfoField for the specified contact. You should free  it when you're done with g_list_free().
@@ -14281,7 +14281,7 @@ export interface ContactSearchResult {
      * <!-- -->
      * @returns the contact identifier.
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
 
     // Class property signals of TelepathyGLib-0.12.TelepathyGLib.ContactSearchResult
 
@@ -14342,7 +14342,7 @@ export interface DBusDaemon {
      * <!-- Returns: is enough -->
      * @returns the unique name of this connection to the bus, which is valid for  as long as this #TpDBusDaemon is
      */
-    getUniqueName(): string | null
+    getUniqueName(): string
     /**
      * Call the ListActivatableNames method on the bus daemon, asynchronously.
      * The `callback` will be called from the main loop with a list of all the
@@ -14375,14 +14375,14 @@ export interface DBusDaemon {
      * @param objectPath an object path
      * @param object an object to export
      */
-    registerObject(objectPath: string | null, object: GObject.Object): void
+    registerObject(objectPath: string, object: GObject.Object): void
     /**
      * Release the given well-known name. This makes a synchronous call to the bus
      * daemon.
      * @param wellKnownName a well-known name owned by this process to release
      * @returns %TRUE if @well_known_name was released, or %FALSE and sets @error          if an error occurred.
      */
-    releaseName(wellKnownName: string | null): boolean
+    releaseName(wellKnownName: string): boolean
     /**
      * Claim the given well-known name without queueing, allowing replacement
      * or replacing an existing name-owner. This makes a synchronous call to the
@@ -14391,7 +14391,7 @@ export interface DBusDaemon {
      * @param idempotent whether to consider it to be a success if this process              already owns the name
      * @returns %TRUE if @well_known_name was claimed, or %FALSE and sets @error if          an error occurred.
      */
-    requestName(wellKnownName: string | null, idempotent: boolean): boolean
+    requestName(wellKnownName: string, idempotent: boolean): boolean
     /**
      * Stop exporting `object` on D-Bus. This is a convenience wrapper around
      * dbus_g_connection_unregister_g_object(), and behaves similarly.
@@ -14408,7 +14408,7 @@ export interface DBusDaemon {
      * @param name The name whose ownership is to be watched
      * @param callback Callback to call when the ownership is discovered or changes
      */
-    watchNameOwner(name: string | null, callback: DBusDaemonNameOwnerChangedCb): void
+    watchNameOwner(name: string, callback: DBusDaemonNameOwnerChangedCb): void
 
     // Class property signals of TelepathyGLib-0.12.TelepathyGLib.DBusDaemon
 
@@ -14550,7 +14550,7 @@ export interface DBusTubeChannel {
      * Return the #TpDBusTubeChannel:service-name property
      * @returns the value of #TpDBusTubeChannel:service-name
      */
-    getServiceName(): string | null
+    getServiceName(): string
     /**
      * Offer an outgoing D-Bus tube. When the tube has been offered and accepted
      * `callback` will be called. You can then call
@@ -14834,7 +14834,7 @@ export class DebugClient extends Proxy {
      * @param uniqueName the unique name of the process to be debugged; may not be  %NULL or a well-known name
      * @returns a new debug client proxy, or %NULL on invalid arguments
      */
-    constructor(dbus: DBusDaemon, uniqueName: string | null) 
+    constructor(dbus: DBusDaemon, uniqueName: string) 
     /**
      * <!-- -->
      * @constructor 
@@ -14842,7 +14842,7 @@ export class DebugClient extends Proxy {
      * @param uniqueName the unique name of the process to be debugged; may not be  %NULL or a well-known name
      * @returns a new debug client proxy, or %NULL on invalid arguments
      */
-    static new(dbus: DBusDaemon, uniqueName: string | null): DebugClient
+    static new(dbus: DBusDaemon, uniqueName: string): DebugClient
     _init(config?: DebugClient.ConstructorProperties): void
     static getFeatureQuarkCore(): GLib.Quark
     /**
@@ -14897,12 +14897,12 @@ export interface DebugMessage {
      * Return the #TpDebugMessage:category property
      * @returns the value of #TpDebugMessage:category property
      */
-    getCategory(): string | null
+    getCategory(): string
     /**
      * Return the #TpDebugMessage:domain property
      * @returns the value of #TpDebugMessage:domain property
      */
-    getDomain(): string | null
+    getDomain(): string
     /**
      * Return the #TpDebugMessage:level property
      * @returns the value of #TpDebugMessage:level property
@@ -14912,7 +14912,7 @@ export interface DebugMessage {
      * Return the #TpDebugMessage:message property
      * @returns the value of #TpDebugMessage:message property
      */
-    getMessage(): string | null
+    getMessage(): string
     /**
      * Return the #TpDebugMessage:time property
      * @returns the value of #TpDebugMessage:time property
@@ -15119,12 +15119,12 @@ export interface FileTransferChannel {
      * Return the #TpFileTransferChannel:description property
      * @returns the value of the   #TpFileTransferChannel:description property
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Return the #TpFileTransferChannel:filename property
      * @returns the value of the   #TpFileTransferChannel:filename property
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Return the #TpFileTransferChannel:metadata property
      * @returns the   value of the #TpFileTransferChannel:metadata property
@@ -15134,12 +15134,12 @@ export interface FileTransferChannel {
      * Return the #TpFileTransferChannel:mime-type property
      * @returns the value of the   #TpFileTransferChannel:mime-type property
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Return the #TpFileTransferChannel:service-name property
      * @returns the value of the #TpFileTransferChannel:service-name property
      */
-    getServiceName(): string | null
+    getServiceName(): string
     /**
      * Return the #TpFileTransferChannel:size property
      * @returns the value of the #TpFileTransferChannel:size property
@@ -15357,7 +15357,7 @@ export class FileTransferChannel extends Channel {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpFileTransferChannel
      */
-    constructor(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable) 
+    constructor(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable) 
     /**
      * Convenient function to create a new #TpFileTransferChannel
      * @constructor 
@@ -15366,7 +15366,7 @@ export class FileTransferChannel extends Channel {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpFileTransferChannel
      */
-    static new(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable): FileTransferChannel
+    static new(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable): FileTransferChannel
 
     // Overloads of new
 
@@ -15380,7 +15380,7 @@ export class FileTransferChannel extends Channel {
      * @param optionalHandle the handle if already known, or 0 if not  (if `optional_handle_type` is %TP_UNKNOWN_HANDLE_TYPE or  %TP_HANDLE_TYPE_NONE, this must be 0)
      * @returns a new channel proxy, or %NULL on invalid arguments.
      */
-    static new(conn: Connection, objectPath: string | null, optionalChannelType: string | null, optionalHandleType: HandleType, optionalHandle: Handle): Channel
+    static new(conn: Connection, objectPath: string, optionalChannelType: string, optionalHandleType: HandleType, optionalHandle: Handle): Channel
     _init(config?: FileTransferChannel.ConstructorProperties): void
     static getFeatureQuarkCore(): GLib.Quark
 }
@@ -15634,7 +15634,7 @@ export interface Message {
      * @param key a key in the mapping representing the part
      * @returns %TRUE if the key previously existed
      */
-    deleteKey(part: number, key: string | null): boolean
+    deleteKey(part: number, key: string): boolean
     /**
      * Delete the given body part from the message.
      * @param part a part number, which must be strictly greater than 0, and strictly  less than the number returned by tp_message_count_parts()
@@ -15688,7 +15688,7 @@ export interface Message {
      * If this message is an ordinary message or delivery report, return %NULL.
      * @returns a D-Bus interface name, or %NULL for ordinary  messages and delivery reports
      */
-    getSpecificToInterface(): string | null
+    getSpecificToInterface(): string
     /**
      * If this message replaces a previous message, return the value of
      * tp_message_get_token() for that previous message. Otherwise, return %NULL.
@@ -15697,7 +15697,7 @@ export interface Message {
      * message with this message, or grey out the superseded message.
      * @returns a non-empty opaque identifier, or %NULL if none
      */
-    getSupersedes(): string | null
+    getSupersedes(): string
     /**
      * Return this message's identifier in the underlying protocol. This is
      * <emphasis>not</emphasis> guaranteed to be unique, even within the scope
@@ -15707,7 +15707,7 @@ export interface Message {
      * If there is no suitable token, return %NULL.
      * @returns a non-empty opaque identifier, or %NULL if none
      */
-    getToken(): string | null
+    getToken(): string
     /**
      * If this message is a delivery report indicating success or failure of
      * delivering a message, return %TRUE.
@@ -15758,14 +15758,14 @@ export interface Message {
      * @param key a key in the mapping representing the part
      * @param source a value, encoded as dbus-glib would
      */
-    set(part: number, key: string | null, source: any): void
+    set(part: number, key: string, source: any): void
     /**
      * Set `key` in part `part` of `self` to have `b` as a boolean value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
      * @param key a key in the mapping representing the part
      * @param b a boolean value
      */
-    setBoolean(part: number, key: string | null, b: boolean): void
+    setBoolean(part: number, key: string, b: boolean): void
     /**
      * Set `key` in part `part` of `self` to have `bytes` as a byte-array value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
@@ -15773,7 +15773,7 @@ export interface Message {
      * @param len a number of bytes
      * @param bytes an array of `len` bytes
      */
-    setBytes(part: number, key: string | null, len: number, bytes: any | null): void
+    setBytes(part: number, key: string, len: number, bytes: any | null): void
     /**
      * If `handle_or_0` is not zero, reference it with tp_message_ref_handle().
      * 
@@ -15788,42 +15788,42 @@ export interface Message {
      * @param handleType a handle type
      * @param handleOr0 a handle of that type, or 0
      */
-    setHandle(part: number, key: string | null, handleType: HandleType, handleOr0: Handle): void
+    setHandle(part: number, key: string, handleType: HandleType, handleOr0: Handle): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
      * @param key a key in the mapping representing the part
      * @param i an integer value
      */
-    setInt32(part: number, key: string | null, i: number): void
+    setInt32(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `i` as a signed integer value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
      * @param key a key in the mapping representing the part
      * @param i an integer value
      */
-    setInt64(part: number, key: string | null, i: number): void
+    setInt64(part: number, key: string, i: number): void
     /**
      * Set `key` in part `part` of `self` to have `s` as a string value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
      * @param key a key in the mapping representing the part
      * @param s a string value
      */
-    setString(part: number, key: string | null, s: string | null): void
+    setString(part: number, key: string, s: string): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
      * @param key a key in the mapping representing the part
      * @param u an unsigned integer value
      */
-    setUint32(part: number, key: string | null, u: number): void
+    setUint32(part: number, key: string, u: number): void
     /**
      * Set `key` in part `part` of `self` to have `u` as an unsigned integer value.
      * @param part a part number, which must be strictly less than the number  returned by tp_message_count_parts()
      * @param key a key in the mapping representing the part
      * @param u an unsigned integer value
      */
-    setUint64(part: number, key: string | null, u: number): void
+    setUint64(part: number, key: string, u: number): void
     /**
      * Set `key` in part `part` of `self` to have `value` as its value.
      * 
@@ -15833,7 +15833,7 @@ export interface Message {
      * @param key a key in the mapping representing the part
      * @param value a value
      */
-    setVariant(part: number, key: string | null, value: GLib.Variant): void
+    setVariant(part: number, key: string, value: GLib.Variant): void
     /**
      * Set `key` in part `part` of `self` to have `message` as an aa{sv} value (that
      * is, an array of Message_Part), and take ownership of `message`.  The caller
@@ -15844,7 +15844,7 @@ export interface Message {
      * @param key a key in the mapping representing the part
      * @param message another (distinct) message created for the same #TpBaseConnection
      */
-    takeMessage(part: number, key: string | null, message: Message): void
+    takeMessage(part: number, key: string, message: Message): void
     /**
      * Concatene all the text parts contained in `message`.
      * @returns a newly allocated string containing the text content of #message
@@ -16222,7 +16222,7 @@ export interface Protocol {
      * @param param a parameter name
      * @returns a structure representing the parameter @param,  or %NULL if not supported. Free with tp_connection_manager_param_free()
      */
-    dupParam(param: string | null): ConnectionManagerParam
+    dupParam(param: string): ConnectionManagerParam
     /**
      * Returns a list of parameter names supported by this connection manager
      * for this protocol.
@@ -16280,40 +16280,40 @@ export interface Protocol {
      * Return the #TpProtocol:cm-name property.
      * @returns the value of #TpProtocol:cm-name
      */
-    getCmName(): string | null
+    getCmName(): string
     /**
      * <!-- -->
      * @returns the non-%NULL, non-empty value of #TpProtocol:english-name
      */
-    getEnglishName(): string | null
+    getEnglishName(): string
     /**
      * <!-- -->
      * @returns the non-%NULL, non-empty value of #TpProtocol:icon-name
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Return the same thing as the protocol-name property, for convenient use
      * in C code. The returned string is valid for as long as `self` exists.
      * @returns the value of the #TpProtocol:protocol-name property
      */
-    getName(): string | null
+    getName(): string
     /**
      * <!-- no more to say -->
      * @param param a parameter name
      * @returns a structure representing the parameter @param, or %NULL if not          supported
      */
-    getParam(param: string | null): ConnectionManagerParam
+    getParam(param: string): ConnectionManagerParam
     /**
      * <!-- -->
      * @returns the value of #TpProtocol:vcard-field
      */
-    getVcardField(): string | null
+    getVcardField(): string
     /**
      * <!-- no more to say -->
      * @param param a parameter name
      * @returns %TRUE if @self supports the parameter @param.
      */
-    hasParam(param: string | null): boolean
+    hasParam(param: string): boolean
     /**
      * Return a string that could identify the account with the given
      * parameters. In most protocols that string is a normalized 'account'
@@ -16339,7 +16339,7 @@ export interface Protocol {
      * @param cancellable may be used to cancel the async request
      * @param callback a callback to call when  the request is satisfied
      */
-    normalizeContactAsync(contact: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    normalizeContactAsync(contact: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_normalize_contact_async().
      * @param result a #GAsyncResult
@@ -16354,7 +16354,7 @@ export interface Protocol {
      * @param cancellable may be used to cancel the async request
      * @param callback a callback to call when the request is satisfied
      */
-    normalizeContactUriAsync(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    normalizeContactUriAsync(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_normalize_contact_uri_async().
      * @param result a #GAsyncResult
@@ -16370,7 +16370,7 @@ export interface Protocol {
      * @param cancellable may be used to cancel the async request
      * @param callback a callback to call when the request is satisfied
      */
-    normalizeVcardAddressAsync(field: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    normalizeVcardAddressAsync(field: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Interpret the result of tp_protocol_normalize_vcard_address_async().
      * @param result a #GAsyncResult
@@ -16500,7 +16500,7 @@ export class Protocol extends Proxy {
      * @param immutableProperties the immutable D-Bus properties for this protocol
      * @returns a new protocol proxy, or %NULL on invalid arguments
      */
-    constructor(dbus: DBusDaemon, cmName: string | null, protocolName: string | null, immutableProperties: GLib.HashTable) 
+    constructor(dbus: DBusDaemon, cmName: string, protocolName: string, immutableProperties: GLib.HashTable) 
     /**
      * <!-- -->
      * @constructor 
@@ -16510,7 +16510,7 @@ export class Protocol extends Proxy {
      * @param immutableProperties the immutable D-Bus properties for this protocol
      * @returns a new protocol proxy, or %NULL on invalid arguments
      */
-    static new(dbus: DBusDaemon, cmName: string | null, protocolName: string | null, immutableProperties: GLib.HashTable): Protocol
+    static new(dbus: DBusDaemon, cmName: string, protocolName: string, immutableProperties: GLib.HashTable): Protocol
     /**
      * Create a new protocol proxy.
      * 
@@ -16524,7 +16524,7 @@ export class Protocol extends Proxy {
      * @param immutableProperties the immutable D-Bus properties for this protocol
      * @returns a new protocol proxy, or %NULL on invalid arguments
      */
-    static newVardict(dbus: DBusDaemon, cmName: string | null, protocolName: string | null, immutableProperties: GLib.Variant): Protocol
+    static newVardict(dbus: DBusDaemon, cmName: string, protocolName: string, immutableProperties: GLib.Variant): Protocol
     _init(config?: Protocol.ConstructorProperties): void
     static getFeatureQuarkCore(): GLib.Quark
     static getFeatureQuarkParameters(): GLib.Quark
@@ -16620,12 +16620,12 @@ export interface Proxy {
      * @param dbusError a D-Bus error name, for instance from the callback for              tp_cli_connection_connect_to_connection_error()
      * @param debugMessage a debug message that accompanied the error name, or %NULL
      */
-    dbusErrorToGerror(dbusError: string | null, debugMessage: string | null): void
+    dbusErrorToGerror(dbusError: string, debugMessage: string): void
     /**
      * <!-- -->
      * @returns the bus name of the application exporting the object. The caller  must copy the string with g_strdup() if it will be kept.
      */
-    getBusName(): string | null
+    getBusName(): string
     /**
      * <!-- -->
      * @returns a borrowed reference to the #TpDBusDaemon for  this object, if any; always %NULL if this object is itself a  #TpDBusDaemon. The caller must reference the returned object with  g_object_ref() if it will be kept.
@@ -16645,7 +16645,7 @@ export interface Proxy {
      * <!-- -->
      * @returns the object path of the remote object. The caller must copy the  string with g_strdup() if it will be kept.
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Return whether this proxy is known to have a particular interface. In
      * versions older than 0.11.11, this was a macro wrapper around
@@ -16660,7 +16660,7 @@ export interface Proxy {
      * @param iface the D-Bus interface required, as a string
      * @returns %TRUE if this proxy implements the given interface.
      */
-    hasInterface(iface: string | null): boolean
+    hasInterface(iface: string): boolean
     /**
      * Return whether this proxy is known to have a particular interface, by its
      * quark ID. This is equivalent to using g_quark_to_string() followed by
@@ -16836,12 +16836,12 @@ export interface RoomInfo {
      * <!-- -->
      * @returns a string representing the D-Bus interface name of the channel type of the room
      */
-    getChannelType(): string | null
+    getChannelType(): string
     /**
      * <!-- -->
      * @returns a description of the room's overall purpose
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * <!-- -->
      * @returns the #TpHandle of the room
@@ -16851,7 +16851,7 @@ export interface RoomInfo {
      * <!-- -->
      * @returns the identifier of the room (as would be returned by inspecting the #TpHandle returned by tp_room_info_get_handle())
      */
-    getHandleName(): string | null
+    getHandleName(): string
     /**
      * <!-- -->
      * @param known either %NULL, or a location in which to store %TRUE if the returned value is meaningful
@@ -16868,7 +16868,7 @@ export interface RoomInfo {
      * <!-- -->
      * @returns the human-readable name of the room if different from the handle
      */
-    getName(): string | null
+    getName(): string
     /**
      * <!-- -->
      * @param known either %NULL, or a location in which to store %TRUE if the returned value is meaningful
@@ -16879,17 +16879,17 @@ export interface RoomInfo {
      * <!-- -->
      * @returns the human-readable identifier of the room
      */
-    getRoomId(): string | null
+    getRoomId(): string
     /**
      * <!-- -->
      * @returns the DNS name of the server hosting the room
      */
-    getServer(): string | null
+    getServer(): string
     /**
      * <!-- -->
      * @returns the current subject of conversation in the room
      */
-    getSubject(): string | null
+    getSubject(): string
 
     // Class property signals of TelepathyGLib-0.12.TelepathyGLib.RoomInfo
 
@@ -16993,7 +16993,7 @@ export interface RoomList extends Gio.AsyncInitable {
      * Return the #TpRoomList:server property
      * @returns the value of #TpRoomList:server property
      */
-    getServer(): string | null
+    getServer(): string
     /**
      * Return the #TpRoomList:listing property
      * @returns the value of #TpRoomList:listing property
@@ -17076,7 +17076,7 @@ export class RoomList extends GObject.Object {
      * @param server the DNS name of the server whose rooms should listed
      * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
-    static newAsync(account: Account, server: string | null, callback: Gio.AsyncReadyCallback | null): void
+    static newAsync(account: Account, server: string, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module SignalledMessage {
@@ -17287,7 +17287,7 @@ export class SimpleApprover extends BaseClient {
      * @param callback the function called when AddDispatchOperation is called
      * @returns a new #TpSimpleApprover
      */
-    constructor(dbus: DBusDaemon, name: string | null, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl) 
+    constructor(dbus: DBusDaemon, name: string, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl) 
     /**
      * Convenient function to create a new #TpSimpleApprover instance.
      * 
@@ -17301,7 +17301,7 @@ export class SimpleApprover extends BaseClient {
      * @param callback the function called when AddDispatchOperation is called
      * @returns a new #TpSimpleApprover
      */
-    static new(dbus: DBusDaemon, name: string | null, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl): SimpleApprover
+    static new(dbus: DBusDaemon, name: string, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl): SimpleApprover
     /**
      * Convenient function to create a new #TpSimpleApprover instance with a
      * specified #TpAccountManager.
@@ -17315,7 +17315,7 @@ export class SimpleApprover extends BaseClient {
      * @param callback the function called when AddDispatchOperation is called
      * @returns a new #TpSimpleApprover
      */
-    static newWithAm(accountManager: AccountManager, name: string | null, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl): SimpleApprover
+    static newWithAm(accountManager: AccountManager, name: string, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl): SimpleApprover
     /**
      * Convenient function to create a new #TpSimpleApprover instance with a
      * specified #TpSimpleClientFactory.
@@ -17326,7 +17326,7 @@ export class SimpleApprover extends BaseClient {
      * @param callback the function called when AddDispatchOperation is called
      * @returns a new #TpSimpleApprover
      */
-    static newWithFactory(factory: SimpleClientFactory, name: string | null, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl): SimpleApprover
+    static newWithFactory(factory: SimpleClientFactory, name: string, uniquify: boolean, callback: SimpleApproverAddDispatchOperationImpl): SimpleApprover
     _init(config?: SimpleApprover.ConstructorProperties): void
 }
 
@@ -17427,7 +17427,7 @@ export interface SimpleClientFactory {
      * @param immutableProperties   the immutable properties of the account, or %NULL.
      * @returns a reference to a #TpAccount;  see tp_account_new().
      */
-    ensureAccount(objectPath: string | null, immutableProperties: GLib.HashTable): Account
+    ensureAccount(objectPath: string, immutableProperties: GLib.HashTable): Account
     /**
      * Returns a #TpChannel proxy for the channel at `object_path` on `connection`.
      * The returned #TpChannel is cached; the same #TpChannel object
@@ -17446,7 +17446,7 @@ export interface SimpleClientFactory {
      * @param immutableProperties   the immutable properties of the channel
      * @returns a reference to a #TpChannel;  see tp_channel_new_from_properties().
      */
-    ensureChannel(connection: Connection, objectPath: string | null, immutableProperties: GLib.HashTable): Channel
+    ensureChannel(connection: Connection, objectPath: string, immutableProperties: GLib.HashTable): Channel
     /**
      * Returns a #TpConnection proxy for the connection at `object_path`.
      * The returned #TpConnection is cached; the same #TpConnection object
@@ -17463,7 +17463,7 @@ export interface SimpleClientFactory {
      * @param immutableProperties   the immutable properties of the connection.
      * @returns a reference to a #TpConnection;  see tp_connection_new().
      */
-    ensureConnection(objectPath: string | null, immutableProperties: GLib.HashTable): Connection
+    ensureConnection(objectPath: string, immutableProperties: GLib.HashTable): Connection
     /**
      * Returns a #TpContact representing `identifier` (and `handle)` on `connection`.
      * The returned #TpContact is cached; the same #TpContact object
@@ -17481,7 +17481,7 @@ export interface SimpleClientFactory {
      * @param identifier a string representing the contact's identifier
      * @returns a reference to a #TpContact.
      */
-    ensureContact(connection: Connection, handle: Handle, identifier: string | null): Contact
+    ensureContact(connection: Connection, handle: Handle, identifier: string): Contact
     /**
      * Same as tp_connection_dup_contact_by_id_async(), but prepare the
      * contact with all features previously passed to
@@ -17490,7 +17490,7 @@ export interface SimpleClientFactory {
      * @param identifier a string representing the contact's identifier
      * @param callback a callback to call when the operation finishes
      */
-    ensureContactByIdAsync(connection: Connection, identifier: string | null, callback: Gio.AsyncReadyCallback | null): void
+    ensureContactByIdAsync(connection: Connection, identifier: string, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes tp_simple_client_factory_ensure_contact_by_id_async()
      * @param result a #GAsyncResult
@@ -17769,7 +17769,7 @@ export class SimpleHandler extends BaseClient {
      * @param callback the function called when HandleChannels is called
      * @returns a new #TpSimpleHandler
      */
-    constructor(dbus: DBusDaemon, bypassApproval: boolean, requests: boolean, name: string | null, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl) 
+    constructor(dbus: DBusDaemon, bypassApproval: boolean, requests: boolean, name: string, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl) 
     /**
      * Convenient function to create a new #TpSimpleHandler instance.
      * 
@@ -17785,7 +17785,7 @@ export class SimpleHandler extends BaseClient {
      * @param callback the function called when HandleChannels is called
      * @returns a new #TpSimpleHandler
      */
-    static new(dbus: DBusDaemon, bypassApproval: boolean, requests: boolean, name: string | null, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl): SimpleHandler
+    static new(dbus: DBusDaemon, bypassApproval: boolean, requests: boolean, name: string, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl): SimpleHandler
     /**
      * Convenient function to create a new #TpSimpleHandler instance with a
      * specified #TpAccountManager.
@@ -17801,7 +17801,7 @@ export class SimpleHandler extends BaseClient {
      * @param callback the function called when HandleChannels is called
      * @returns a new #TpSimpleHandler
      */
-    static newWithAm(accountManager: AccountManager, bypassApproval: boolean, requests: boolean, name: string | null, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl): SimpleHandler
+    static newWithAm(accountManager: AccountManager, bypassApproval: boolean, requests: boolean, name: string, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl): SimpleHandler
     /**
      * Convenient function to create a new #TpSimpleHandler instance with a
      * specified #TpSimpleClientFactory.
@@ -17814,7 +17814,7 @@ export class SimpleHandler extends BaseClient {
      * @param callback the function called when HandleChannels is called
      * @returns a new #TpSimpleHandler
      */
-    static newWithFactory(factory: SimpleClientFactory, bypassApproval: boolean, requests: boolean, name: string | null, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl): SimpleHandler
+    static newWithFactory(factory: SimpleClientFactory, bypassApproval: boolean, requests: boolean, name: string, uniquify: boolean, callback: SimpleHandlerHandleChannelsImpl): SimpleHandler
     _init(config?: SimpleHandler.ConstructorProperties): void
 }
 
@@ -17970,7 +17970,7 @@ export class SimpleObserver extends BaseClient {
      * @param callback the function called when ObserveChannels is called
      * @returns a new #TpSimpleObserver
      */
-    constructor(dbus: DBusDaemon, recover: boolean, name: string | null, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl) 
+    constructor(dbus: DBusDaemon, recover: boolean, name: string, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl) 
     /**
      * Convenient function to create a new #TpSimpleObserver instance.
      * 
@@ -17985,7 +17985,7 @@ export class SimpleObserver extends BaseClient {
      * @param callback the function called when ObserveChannels is called
      * @returns a new #TpSimpleObserver
      */
-    static new(dbus: DBusDaemon, recover: boolean, name: string | null, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl): SimpleObserver
+    static new(dbus: DBusDaemon, recover: boolean, name: string, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl): SimpleObserver
     /**
      * Convenient function to create a new #TpSimpleObserver instance with a
      * specified #TpAccountManager.
@@ -18000,7 +18000,7 @@ export class SimpleObserver extends BaseClient {
      * @param callback the function called when ObserveChannels is called
      * @returns a new #TpSimpleObserver
      */
-    static newWithAm(accountManager: AccountManager, recover: boolean, name: string | null, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl): SimpleObserver
+    static newWithAm(accountManager: AccountManager, recover: boolean, name: string, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl): SimpleObserver
     /**
      * Convenient function to create a new #TpSimpleObserver instance with a
      * specified #TpSimpleClientFactory.
@@ -18012,7 +18012,7 @@ export class SimpleObserver extends BaseClient {
      * @param callback the function called when ObserveChannels is called
      * @returns a new #TpSimpleObserver
      */
-    static newWithFactory(factory: SimpleClientFactory, recover: boolean, name: string | null, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl): SimpleObserver
+    static newWithFactory(factory: SimpleClientFactory, recover: boolean, name: string, uniquify: boolean, callback: SimpleObserverObserveChannelsImpl): SimpleObserver
     _init(config?: SimpleObserver.ConstructorProperties): void
 }
 
@@ -18085,7 +18085,7 @@ export interface StreamTubeChannel {
      * Return the #TpStreamTubeChannel:service property
      * @returns the value of #TpStreamTubeChannel:service
      */
-    getService(): string | null
+    getService(): string
     /**
      * Offer an outgoing stream tube. When the tube has been offered, `callback`
      * will be called. You can then call tp_stream_tube_channel_offer_finish()
@@ -18247,7 +18247,7 @@ export class StreamTubeChannel extends Channel {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly-created #TpStreamTubeChannel proxy
      */
-    constructor(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable) 
+    constructor(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable) 
     /**
      * Creates a new #TpStreamTubeChannel proxy object from the provided path and
      * properties. Most developers will not need to use this function; use
@@ -18259,7 +18259,7 @@ export class StreamTubeChannel extends Channel {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly-created #TpStreamTubeChannel proxy
      */
-    static new(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable): StreamTubeChannel
+    static new(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable): StreamTubeChannel
 
     // Overloads of new
 
@@ -18273,7 +18273,7 @@ export class StreamTubeChannel extends Channel {
      * @param optionalHandle the handle if already known, or 0 if not  (if `optional_handle_type` is %TP_UNKNOWN_HANDLE_TYPE or  %TP_HANDLE_TYPE_NONE, this must be 0)
      * @returns a new channel proxy, or %NULL on invalid arguments.
      */
-    static new(conn: Connection, objectPath: string | null, optionalChannelType: string | null, optionalHandleType: HandleType, optionalHandle: Handle): Channel
+    static new(conn: Connection, objectPath: string, optionalChannelType: string, optionalHandleType: HandleType, optionalHandle: Handle): Channel
     _init(config?: StreamTubeChannel.ConstructorProperties): void
 }
 
@@ -18507,7 +18507,7 @@ export interface TLSCertificate {
      * @param dbusError a D-Bus error name such as %TP_ERROR_STR_CERT_REVOKED, or  %NULL to derive one from `reason`
      * @param details a variant of type %G_VARIANT_TYPE_VARDICT containing the details of the rejection, or %NULL
      */
-    addRejection(reason: TLSCertificateRejectReason, dbusError: string | null, details: GLib.Variant | null): void
+    addRejection(reason: TLSCertificateRejectReason, dbusError: string, details: GLib.Variant | null): void
     /**
      * Return the #TpTLSCertificate:cert-data property
      * @returns the value of #TpTLSCertificate:cert-data property
@@ -18517,7 +18517,7 @@ export interface TLSCertificate {
      * Return the #TpTLSCertificate:cert-type property
      * @returns the value of #TpTLSCertificate:cert-type property
      */
-    getCertType(): string | null
+    getCertType(): string
     /**
      * If this certificate has been rejected and `n` is less than the number of
      * rejection reasons, return a #TpTLSCertificateRejection representing the
@@ -18649,7 +18649,7 @@ export class TLSCertificate extends Proxy {
      * @param objectPath the object path of this TLS certificate
      * @returns a new TLS certificate proxy. Prepare the  feature %TP_TLS_CERTIFICATE_FEATURE_CORE to make it useful.
      */
-    constructor(connOrChan: Proxy, objectPath: string | null) 
+    constructor(connOrChan: Proxy, objectPath: string) 
     /**
      * <!-- -->
      * @constructor 
@@ -18657,7 +18657,7 @@ export class TLSCertificate extends Proxy {
      * @param objectPath the object path of this TLS certificate
      * @returns a new TLS certificate proxy. Prepare the  feature %TP_TLS_CERTIFICATE_FEATURE_CORE to make it useful.
      */
-    static new(connOrChan: Proxy, objectPath: string | null): TLSCertificate
+    static new(connOrChan: Proxy, objectPath: string): TLSCertificate
     _init(config?: TLSCertificate.ConstructorProperties): void
     static getFeatureQuarkCore(): GLib.Quark
     /**
@@ -18729,7 +18729,7 @@ export interface TLSCertificateRejection {
      * Return the #TpTLSCertificateRejection:dbus-error property
      * @returns the value of #TpTLSCertificateRejection:dbus-error property
      */
-    getDbusError(): string | null
+    getDbusError(): string
     /**
      * Return the #TpTLSCertificateRejection:details property
      * @returns the value of #TpTLSCertificateRejection:details property
@@ -19240,7 +19240,7 @@ export class TextChannel extends Channel {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpTextChannel
      */
-    constructor(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable) 
+    constructor(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable) 
     /**
      * Convenient function to create a new #TpTextChannel
      * @constructor 
@@ -19249,7 +19249,7 @@ export class TextChannel extends Channel {
      * @param immutableProperties   the immutable properties of the channel,  as signalled by the NewChannel D-Bus signal or returned by the  CreateChannel and EnsureChannel D-Bus methods: a mapping from  strings (D-Bus interface name + "." + property name) to #GValue instances
      * @returns a newly created #TpTextChannel
      */
-    static new(conn: Connection, objectPath: string | null, immutableProperties: GLib.HashTable): TextChannel
+    static new(conn: Connection, objectPath: string, immutableProperties: GLib.HashTable): TextChannel
 
     // Overloads of new
 
@@ -19263,7 +19263,7 @@ export class TextChannel extends Channel {
      * @param optionalHandle the handle if already known, or 0 if not  (if `optional_handle_type` is %TP_UNKNOWN_HANDLE_TYPE or  %TP_HANDLE_TYPE_NONE, this must be 0)
      * @returns a new channel proxy, or %NULL on invalid arguments.
      */
-    static new(conn: Connection, objectPath: string | null, optionalChannelType: string | null, optionalHandleType: HandleType, optionalHandle: Handle): Channel
+    static new(conn: Connection, objectPath: string, optionalChannelType: string, optionalHandleType: HandleType, optionalHandle: Handle): Channel
     _init(config?: TextChannel.ConstructorProperties): void
     static getFeatureQuarkChatStates(): GLib.Quark
     static getFeatureQuarkIncomingMessages(): GLib.Quark
@@ -20109,7 +20109,7 @@ export interface ConnectionManagerParam {
      * <!-- -->
      * @returns the D-Bus signature of the parameter
      */
-    getDbusSignature(): string | null
+    getDbusSignature(): string
     /**
      * Get the default value for this parameter, if there is one. If %FALSE is
      * returned, `value` is left uninitialized.
@@ -20121,7 +20121,7 @@ export interface ConnectionManagerParam {
      * <!-- -->
      * @returns the name of the parameter
      */
-    getName(): string | null
+    getName(): string
     /**
      * <!-- -->
      * @returns %TRUE if the parameter represents a D-Bus property of the same name
@@ -20222,13 +20222,13 @@ export interface ConnectionManagerProtocol {
      * @param param a parameter name
      * @returns a structure representing the parameter @param, or %NULL if not          supported
      */
-    getParam(param: string | null): ConnectionManagerParam
+    getParam(param: string): ConnectionManagerParam
     /**
      * <!-- no more to say -->
      * @param param a parameter name
      * @returns %TRUE if @protocol supports the parameter @param.
      */
-    hasParam(param: string | null): boolean
+    hasParam(param: string): boolean
 }
 
 /**
@@ -20315,7 +20315,7 @@ export class ContactInfoField {
      * @param fieldValue For unstructured vCard fields (such as 'fn', a formatted name  field), a single-element array containing the field's value. For structured  fields (such as 'adr', an address field), an array corresponding to the  semicolon-separated elements of the field (with empty strings for empty  elements).
      * @returns a newly allocated #TpContactInfoField, free it with tp_contact_info_field_free()
      */
-    constructor(fieldName: string | null, parameters: string[], fieldValue: string[]) 
+    constructor(fieldName: string, parameters: string[], fieldValue: string[]) 
     /**
      * <!--Returns: says it all-->
      * @constructor 
@@ -20324,7 +20324,7 @@ export class ContactInfoField {
      * @param fieldValue For unstructured vCard fields (such as 'fn', a formatted name  field), a single-element array containing the field's value. For structured  fields (such as 'adr', an address field), an array corresponding to the  semicolon-separated elements of the field (with empty strings for empty  elements).
      * @returns a newly allocated #TpContactInfoField, free it with tp_contact_info_field_free()
      */
-    static new(fieldName: string | null, parameters: string[], fieldValue: string[]): ContactInfoField
+    static new(fieldName: string, parameters: string[], fieldValue: string[]): ContactInfoField
 }
 
 export interface ContactInfoFieldSpec {
@@ -20576,7 +20576,7 @@ export interface DBusPropertiesMixinIfaceImpl {
      * The name of the interface
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * A callback to get the current value of the property, to which
      *  the `getter_data` from each property implementation will be passed
@@ -20660,7 +20660,7 @@ export interface DBusPropertiesMixinPropImpl {
      * The name of the property as it appears on D-Bus
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * Arbitrary user-supplied data for the getter function
      * @field 
@@ -21466,12 +21466,12 @@ export interface PresenceStatusOptionalArgumentSpec {
      * Name of the argument as passed over D-Bus
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * D-Bus type signature of the argument
      * @field 
      */
-    dtype: string | null
+    dtype: string
 }
 
 /**
@@ -21497,7 +21497,7 @@ export interface PresenceStatusSpec {
      * String identifier of the presence status
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * A type value, as specified by #TpConnectionPresenceType
      * @field 
@@ -21545,7 +21545,7 @@ export interface PresenceStatusSpec {
      * <!-- -->
      * @returns the name of this presence status,  such as "available" or "out-to-lunch".
      */
-    getName(): string | null
+    getName(): string
     /**
      * Return the category into which this presence type falls. For instance,
      * for XMPP's "" (do not disturb) status, this would return
@@ -21585,7 +21585,7 @@ export class PresenceStatusSpec {
      * @param hasMessage %TRUE if this presence status is accompanied by an  optional human-readable message
      * @returns a new #TpPresenceStatusSpec
      */
-    constructor(name: string | null, type: ConnectionPresenceType, canSetOnSelf: boolean, hasMessage: boolean) 
+    constructor(name: string, type: ConnectionPresenceType, canSetOnSelf: boolean, hasMessage: boolean) 
     /**
      * <!-- -->
      * @constructor 
@@ -21595,7 +21595,7 @@ export class PresenceStatusSpec {
      * @param hasMessage %TRUE if this presence status is accompanied by an  optional human-readable message
      * @returns a new #TpPresenceStatusSpec
      */
-    static new(name: string | null, type: ConnectionPresenceType, canSetOnSelf: boolean, hasMessage: boolean): PresenceStatusSpec
+    static new(name: string, type: ConnectionPresenceType, canSetOnSelf: boolean, hasMessage: boolean): PresenceStatusSpec
 }
 
 export interface PresenceStatusSpecPrivate {

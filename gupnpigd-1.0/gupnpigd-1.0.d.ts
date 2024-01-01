@@ -90,7 +90,7 @@ interface SimpleIgd {
      * @param lease_duration The duration of the lease (it will be auto-renewed before it expires). This is in seconds.
      * @param description The description that will appear in the router's table
      */
-    add_port(protocol: string | null, external_port: number, local_ip: string | null, local_port: number, lease_duration: number, description: string | null): void
+    add_port(protocol: string, external_port: number, local_ip: string, local_port: number, lease_duration: number, description: string): void
     /**
      * Removes all mappings and prevents other from being formed
      * Should only be called by the dispose function of subclasses
@@ -105,7 +105,7 @@ interface SimpleIgd {
      * @param protocol the protocol "UDP" or "TCP" as given to  gupnp_simple_igd_add_port()
      * @param external_port The port to try to open on the external device as given to  gupnp_simple_igd_add_port()
      */
-    remove_port(protocol: string | null, external_port: number): void
+    remove_port(protocol: string, external_port: number): void
     /**
      * This tries to remove a port entry from the routers that was previously added
      * with gupnp_simple_igd_add_port(). There is no indicated of success or failure
@@ -115,7 +115,7 @@ interface SimpleIgd {
      * @param local_ip The local ip on the internal device as was to  gupnp_simple_igd_add_port()
      * @param local_port The port to try to open on the internal device as given to  gupnp_simple_igd_add_port()
      */
-    remove_port_local(protocol: string | null, local_ip: string | null, local_port: number): void
+    remove_port_local(protocol: string, local_ip: string, local_port: number): void
 
     // Own signals of GUPnPIgd-1.0.GUPnPIgd.SimpleIgd
 

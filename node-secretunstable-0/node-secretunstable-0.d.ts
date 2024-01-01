@@ -414,7 +414,7 @@ interface Collection extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable 
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    setLabel(label: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setLabel(label: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to set the label of this collection.
      * @param result asynchronous result passed to callback
@@ -430,7 +430,7 @@ interface Collection extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable 
      * @param cancellable optional cancellation object
      * @returns whether the change was successful or not
      */
-    setLabelSync(label: string | null, cancellable?: Gio.Cancellable | null): boolean
+    setLabelSync(label: string, cancellable?: Gio.Cancellable | null): boolean
 
     // Class property signals of SecretUnstable-0.SecretUnstable.Collection
 
@@ -553,7 +553,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the new collection, which should be unreferenced with g_object_unref()
      */
-    static newForDbusPathSync(service: Service | null, collectionPath: string | null, flags: CollectionFlags, cancellable?: Gio.Cancellable | null): Collection
+    static newForDbusPathSync(service: Service | null, collectionPath: string, flags: CollectionFlags, cancellable?: Gio.Cancellable | null): Collection
     _init(config?: Collection.ConstructorProperties): void
     /**
      * Get a new collection proxy for a collection in the secret service.
@@ -568,7 +568,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static newForDbusPath(service: Service | null, collectionPath: string | null, flags: CollectionFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForDbusPath(service: Service | null, collectionPath: string, flags: CollectionFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Create a new collection in the secret service.
      * 
@@ -591,7 +591,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static create(service: Service | null, label: string | null, alias: string | null, flags: CollectionCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static create(service: Service | null, label: string, alias: string | null, flags: CollectionCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish operation to create a new collection in the secret service.
      * @param result the asynchronous result passed to the callback
@@ -620,7 +620,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the new collection, which should be unreferenced with g_object_unref()
      */
-    static createSync(service: Service | null, label: string | null, alias: string | null, flags: CollectionCreateFlags, cancellable?: Gio.Cancellable | null): Collection
+    static createSync(service: Service | null, label: string, alias: string | null, flags: CollectionCreateFlags, cancellable?: Gio.Cancellable | null): Collection
     /**
      * Lookup which collection is assigned to this alias. Aliases help determine
      * well known collections, such as 'default'.
@@ -635,7 +635,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static forAlias(service: Service | null, alias: string | null, flags: CollectionFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static forAlias(service: Service | null, alias: string, flags: CollectionFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to lookup which collection is assigned
      * to an alias.
@@ -657,7 +657,7 @@ class Collection extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the collection, or %NULL if none assigned to the alias
      */
-    static forAliasSync(service: Service | null, alias: string | null, flags: CollectionFlags, cancellable?: Gio.Cancellable | null): Collection
+    static forAliasSync(service: Service | null, alias: string, flags: CollectionFlags, cancellable?: Gio.Cancellable | null): Collection
 }
 
 module Item {
@@ -932,7 +932,7 @@ interface Item extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    setLabel(label: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setLabel(label: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to set the label of this collection.
      * @param result asynchronous result passed to callback
@@ -948,7 +948,7 @@ interface Item extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns whether the change was successful or not
      */
-    setLabelSync(label: string | null, cancellable?: Gio.Cancellable | null): boolean
+    setLabelSync(label: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Set the secret value of this item.
      * 
@@ -1092,7 +1092,7 @@ class Item extends Gio.DBusProxy {
      * @returns the new item, which should be unreferenced with g_object_unref()
      */
     static newForDbusPathFinish(result: Gio.AsyncResult): Item
-    static newForDbusPathSync(service: Service, itemPath: string | null, flags: ItemFlags, cancellable?: Gio.Cancellable | null): Item
+    static newForDbusPathSync(service: Service, itemPath: string, flags: ItemFlags, cancellable?: Gio.Cancellable | null): Item
     _init(config?: Item.ConstructorProperties): void
     /**
      * Get a new item proxy for a secret item in the secret service.
@@ -1107,7 +1107,7 @@ class Item extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static newForDbusPath(service: Service | null, itemPath: string | null, flags: ItemFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForDbusPath(service: Service | null, itemPath: string, flags: ItemFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Create a new item in the secret service.
      * 
@@ -1127,7 +1127,7 @@ class Item extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    static create(collection: Collection, schema: Secret.Schema | null, attributes: GLib.HashTable, label: string | null, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static create(collection: Collection, schema: Secret.Schema | null, attributes: GLib.HashTable, label: string, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish operation to create a new item in the secret service.
      * @param result the asynchronous result passed to the callback
@@ -1153,7 +1153,7 @@ class Item extends Gio.DBusProxy {
      * @param cancellable optional cancellation object
      * @returns the new item, which should be unreferenced with g_object_unref()
      */
-    static createSync(collection: Collection, schema: Secret.Schema | null, attributes: GLib.HashTable, label: string | null, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null): Item
+    static createSync(collection: Collection, schema: Secret.Schema | null, attributes: GLib.HashTable, label: string, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null): Item
     /**
      * Load the secret values for an secret items stored in the service.
      * 
@@ -1508,7 +1508,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    createItemDbusPath(collectionPath: string | null, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createItemDbusPath(collectionPath: string, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish asynchronous operation to create a new item in the secret
      * service.
@@ -1543,7 +1543,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns a new string containing the D-Bus object path of the item
      */
-    createItemDbusPathSync(collectionPath: string | null, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null): string | null
+    createItemDbusPathSync(collectionPath: string, properties: GLib.HashTable, value: Value, flags: ItemCreateFlags, cancellable?: Gio.Cancellable | null): string | null
     /**
      * Delete a secret item from the secret service.
      * 
@@ -1555,7 +1555,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    deleteItemDbusPath(itemPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteItemDbusPath(itemPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete an asynchronous operation to delete a secret item from the secret
      * service.
@@ -1575,7 +1575,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns whether the deletion was successful or not
      */
-    deleteItemDbusPathSync(itemPath: string | null, cancellable?: Gio.Cancellable | null): boolean
+    deleteItemDbusPathSync(itemPath: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Ensure that the #SecretService proxy has established a session with the
      * Secret Service. This session is used to transfer secrets.
@@ -1653,7 +1653,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    getSecretForDbusPath(itemPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getSecretForDbusPath(itemPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to get the secret value for an
      * secret item stored in the service.
@@ -1678,7 +1678,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns the newly allocated secret value for the item, which should be released with secret_value_unref()
      */
-    getSecretForDbusPathSync(itemPath: string | null, cancellable?: Gio.Cancellable | null): Value
+    getSecretForDbusPathSync(itemPath: string, cancellable?: Gio.Cancellable | null): Value
     /**
      * Get the secret values for an secret items stored in the service.
      * 
@@ -1691,7 +1691,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    getSecretsForDbusPaths(itemPaths: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getSecretsForDbusPaths(itemPaths: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to get the secret values for an
      * secret items stored in the service.
@@ -1716,7 +1716,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns a newly allocated hash table of item_path keys to #SecretValue values.
      */
-    getSecretsForDbusPathsSync(itemPaths: string | null, cancellable?: Gio.Cancellable | null): GLib.HashTable
+    getSecretsForDbusPathsSync(itemPaths: string, cancellable?: Gio.Cancellable | null): GLib.HashTable
     /**
      * Get the set of algorithms being used to transfer secrets between this
      * secret service proxy and the Secret Service itself.
@@ -1725,7 +1725,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * secret_service_ensure_session() to establish a session.
      * @returns a string representing the algorithms for transferring secrets
      */
-    getSessionAlgorithms(): string | null
+    getSessionAlgorithms(): string
     /**
      * Get the D-Bus object path of the session object being used to transfer
      * secrets between this secret service proxy and the Secret Service itself.
@@ -1734,7 +1734,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * secret_service_ensure_session() to establish a session.
      * @returns a string representing the D-Bus object path of the session
      */
-    getSessionDbusPath(): string | null
+    getSessionDbusPath(): string
     /**
      * Ensure that the #SecretService proxy has loaded all the collections present
      * in the Secret Service. This affects the result of
@@ -1805,7 +1805,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    lockDbusPaths(paths: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    lockDbusPaths(paths: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to lock items or collections in the secret
      * service.
@@ -1833,7 +1833,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns the number of items or collections that were locked
      */
-    lockDbusPathsSync(paths: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* locked */ string[] | null ]
+    lockDbusPathsSync(paths: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* locked */ string[] | null ]
     /**
      * Complete asynchronous operation to lock items or collections in the secret
      * service.
@@ -1929,7 +1929,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    promptAtDbusPath(promptPath: string | null, returnType: GLib.VariantType | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    promptAtDbusPath(promptPath: string, returnType: GLib.VariantType | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to perform prompting for a #SecretPrompt.
      * 
@@ -1940,7 +1940,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @returns %NULL if the prompt was dismissed or an error occurred, a variant result if the prompt was successful
      */
     promptAtDbusPathFinish(result: Gio.AsyncResult): GLib.Variant
-    promptAtDbusPathSync(promptPath: string | null, cancellable: Gio.Cancellable | null, returnType: GLib.VariantType): GLib.Variant
+    promptAtDbusPathSync(promptPath: string, cancellable: Gio.Cancellable | null, returnType: GLib.VariantType): GLib.Variant
     // Has conflict: promptFinish(result: Gio.AsyncResult): GLib.Variant
     // Has conflict: promptSync(prompt: Prompt, cancellable: Gio.Cancellable | null, returnType: GLib.VariantType): GLib.Variant
     /**
@@ -1953,7 +1953,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    readAliasDbusPath(alias: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    readAliasDbusPath(alias: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to lookup which collection is assigned
      * to an alias. This method returns the DBus object path of the collection
@@ -1971,7 +1971,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns the collection dbus object path, or %NULL if none assigned to the alias
      */
-    readAliasDbusPathSync(alias: string | null, cancellable?: Gio.Cancellable | null): string | null
+    readAliasDbusPathSync(alias: string, cancellable?: Gio.Cancellable | null): string | null
     /**
      * Search for items matching the `attributes`. All collections are searched.
      * The `attributes` should be a table of string keys and string values.
@@ -2098,7 +2098,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    setAlias(alias: string | null, collection: Collection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setAlias(alias: string, collection: Collection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to assign a collection to an alias.
      * @param result asynchronous result passed to callback
@@ -2118,7 +2118,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns %TRUE if successful
      */
-    setAliasSync(alias: string | null, collection?: Collection | null, cancellable?: Gio.Cancellable | null): boolean
+    setAliasSync(alias: string, collection?: Collection | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Assign a collection to this alias. Aliases help determine
      * well known collections, such as 'default'. This method takes the dbus object
@@ -2130,7 +2130,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    setAliasToDbusPath(alias: string | null, collectionPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setAliasToDbusPath(alias: string, collectionPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation to assign a collection to an alias.
      * @param result asynchronous result passed to callback
@@ -2148,7 +2148,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns %TRUE if successful
      */
-    setAliasToDbusPathSync(alias: string | null, collectionPath?: string | null, cancellable?: Gio.Cancellable | null): boolean
+    setAliasToDbusPathSync(alias: string, collectionPath?: string | null, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Store a secret value in the secret service.
      * 
@@ -2173,7 +2173,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    store(schema: Secret.Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    store(schema: Secret.Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish asynchronous operation to store a secret value in the secret service.
      * @param result the asynchronous result passed to the callback
@@ -2205,7 +2205,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns whether the storage was successful or not
      */
-    storeSync(schema: Secret.Schema | null, attributes: GLib.HashTable, collection: string | null, label: string | null, value: Value, cancellable?: Gio.Cancellable | null): boolean
+    storeSync(schema: Secret.Schema | null, attributes: GLib.HashTable, collection: string | null, label: string, value: Value, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Unlock items or collections in the secret service.
      * 
@@ -2240,7 +2240,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @param callback called when the operation completes
      */
-    unlockDbusPaths(paths: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    unlockDbusPaths(paths: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Complete asynchronous operation to unlock items or collections in the secret
      * service.
@@ -2268,7 +2268,7 @@ interface Service extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable optional cancellation object
      * @returns the number of items or collections that were unlocked
      */
-    unlockDbusPathsSync(paths: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* unlocked */ string[] | null ]
+    unlockDbusPathsSync(paths: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ number, /* unlocked */ string[] | null ]
     /**
      * Complete asynchronous operation to unlock items or collections in the secret
      * service.
@@ -2654,13 +2654,13 @@ interface Value {
      * <literal>text/plain</literal>.
      * @returns the content type
      */
-    getContentType(): string | null
+    getContentType(): string
     /**
      * Get the secret data in the #SecretValue if it contains a textual
      * value. The content type must be <literal>text/plain</literal>.
      * @returns the content type
      */
-    getText(): string | null
+    getText(): string
     /**
      * Add another reference to the #SecretValue. For each reference
      * secret_value_unref() should be called to unreference the value.
@@ -2698,7 +2698,7 @@ class Value {
      * @param contentType the content type of the data
      * @returns the new #SecretValue
      */
-    constructor(secret: string | null, length: number, contentType: string | null) 
+    constructor(secret: string, length: number, contentType: string) 
     /**
      * Create a #SecretValue for the secret data passed in. The secret data is
      * copied into non-pageable 'secure' memory.
@@ -2711,7 +2711,7 @@ class Value {
      * @param contentType the content type of the data
      * @returns the new #SecretValue
      */
-    static new(secret: string | null, length: number, contentType: string | null): Value
+    static new(secret: string, length: number, contentType: string): Value
     /**
      * Create a #SecretValue for the secret data passed in. The secret data is
      * not copied, and will later be freed with the `destroy` function.
@@ -2725,7 +2725,7 @@ class Value {
      * @param destroy function to call to free the secret data
      * @returns the new #SecretValue
      */
-    static newFull(secret: string | null, length: number, contentType: string | null, destroy: GLib.DestroyNotify): Value
+    static newFull(secret: string | null, length: number, contentType: string, destroy: GLib.DestroyNotify): Value
 }
 
 }

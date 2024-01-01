@@ -938,7 +938,7 @@ export enum SubmoduleStatus {
 /**
  * The build type of the installed build.
  */
-export const BUILD_TYPE: string | null
+export const BUILD_TYPE: string
 /**
  * libgit2-glib major version component (e.g. 1 if %GGIT_VERSION is 1.2.3)
  */
@@ -951,7 +951,7 @@ export const MINOR_VERSION: number
  * libgit2-glib version, encoded as a string, useful for printing and
  * concatenation.
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 /**
  * Error domain for Ggit functions.
  * Errors in this domain will be from the GgitError enumeration.
@@ -976,7 +976,7 @@ export function init(): void
  * @param comment_char comment character.
  * @returns the prettified message.
  */
-export function message_prettify(message: string | null, strip_comments: boolean, comment_char: number): string | null
+export function message_prettify(message: string, strip_comments: boolean, comment_char: number): string | null
 /**
  * The type of the callback functions for retrieving values from a #GgitConfig.
  * See ggit_config_foreach().
@@ -996,7 +996,7 @@ export interface ConfigCallback {
  * @returns 0 to go for the next config value or a #GgitError in case there was          an error.
  */
 export interface ConfigMatchCallback {
-    (match_info: GLib.MatchInfo, value: string | null): number
+    (match_info: GLib.MatchInfo, value: string): number
 }
 /**
  * Signature of a function which acquires a credential object.
@@ -1007,7 +1007,7 @@ export interface ConfigMatchCallback {
  * @param cred newly created credential object.
  */
 export interface CredAcquireCallback {
-    (url: string | null, username_from_url: string | null, allowed_types: number, cred: Cred): number
+    (url: string, username_from_url: string | null, allowed_types: number, cred: Cred): number
 }
 /**
  * Called for each file.
@@ -1051,10 +1051,10 @@ export interface DiffLineCallback {
     (delta: DiffDelta, hunk: DiffHunk | null, line: DiffLine): number
 }
 export interface DiffSimilarityMetricBufferSignatureCallback {
-    (file: DiffFile, buf: string | null, buflen: number, out: any | null): number
+    (file: DiffFile, buf: string, buflen: number, out: any | null): number
 }
 export interface DiffSimilarityMetricFileSignatureCallback {
-    (file: DiffFile, fullpath: string | null, out: any | null): number
+    (file: DiffFile, fullpath: string, out: any | null): number
 }
 export interface DiffSimilarityMetricFreeSignatureCallback {
     (signature: any | null): void
@@ -1091,7 +1091,7 @@ export interface ReferencesCallback {
  * @returns 0 to go for the next references or a #GgitError in case there was an error.
  */
 export interface ReferencesNameCallback {
-    (name: string | null): number
+    (name: string): number
 }
 /**
  * The type of the callback functions for listing the references of a
@@ -1104,7 +1104,7 @@ export interface ReferencesNameCallback {
  * @returns 0 to go continue or a #GgitError in case there was an error.
  */
 export interface RemoteListCallback {
-    (name: string | null, oid: OId, loid: OId, local: boolean): number
+    (name: string, oid: OId, loid: OId, local: boolean): number
 }
 /**
  * When iterating over all the stashed states, callback that will be
@@ -1116,7 +1116,7 @@ export interface RemoteListCallback {
  * @returns 0 to go continue or a #GgitError in case there was an error.
  */
 export interface StashCallback {
-    (index: number, message: string | null, stash_oid: OId): number
+    (index: number, message: string, stash_oid: OId): number
 }
 /**
  * The type of the callback functions for retrieving the status of the files
@@ -1127,7 +1127,7 @@ export interface StashCallback {
  * @returns 0 to go for the next file or a #GgitError in case there was an error.
  */
 export interface StatusCallback {
-    (path: string | null, status_flags: StatusFlags): number
+    (path: string, status_flags: StatusFlags): number
 }
 /**
  * The type of the callback functions for retrieving the submodules
@@ -1138,7 +1138,7 @@ export interface StatusCallback {
  * @returns 0 to go for the next submodule or a #GgitError in case there was an error.
  */
 export interface SubmoduleCallback {
-    (submodule: Submodule, name: string | null): number
+    (submodule: Submodule, name: string): number
 }
 /**
  * When iterating over all the tags, callback that will be
@@ -1149,7 +1149,7 @@ export interface SubmoduleCallback {
  * @returns 0 to go continue or a #GgitError in case there was an error.
  */
 export interface TagCallback {
-    (name: string | null, tag_oid: OId): number
+    (name: string, tag_oid: OId): number
 }
 /**
  * Progress callbacks during indexing.
@@ -1169,7 +1169,7 @@ export interface TransferProgressCallback {
  * @returns 0 to go for the next entry or a #GgitError in case there was an error.
  */
 export interface TreeWalkCallback {
-    (root: string | null, entry: TreeEntry): number
+    (root: string, entry: TreeEntry): number
 }
 export module Blame {
 
@@ -1412,12 +1412,12 @@ export interface Branch {
      * @param flags a #GgitCreateFlags.
      * @returns the new branch or %NULL.
      */
-    move(new_branch_name: string | null, flags: CreateFlags): Branch | null
+    move(new_branch_name: string, flags: CreateFlags): Branch | null
     /**
      * Sets the upstream branch, for a given local branch reference
      * @param upstream_branch_name name of the upstream branch; if %NULL unsets it.
      */
-    set_upstream(upstream_branch_name: string | null): void
+    set_upstream(upstream_branch_name: string): void
 
     // Class property signals of Ggit-1.0.Ggit.Branch
 
@@ -1649,7 +1649,7 @@ export interface CheckoutOptions {
 
     // Own virtual methods of Ggit-1.0.Ggit.CheckoutOptions
 
-    vfunc_notify(why: CheckoutNotifyFlags, path: string | null, baseline: DiffFile, target: DiffFile, workdir: DiffFile): number
+    vfunc_notify(why: CheckoutNotifyFlags, path: string, baseline: DiffFile, target: DiffFile, workdir: DiffFile): number
 
     // Overloads of vfunc_notify
 
@@ -1668,7 +1668,7 @@ export interface CheckoutOptions {
      * @param pspec 
      */
     vfunc_notify(pspec: GObject.ParamSpec): void
-    vfunc_progress(path: string | null, completed_steps: number, total_steps: number): void
+    vfunc_progress(path: string, completed_steps: number, total_steps: number): void
 
     // Class property signals of Ggit-1.0.Ggit.CheckoutOptions
 
@@ -1871,7 +1871,7 @@ export interface CloneOptions {
      * Gets the name of the branch to checkout or %NULL.
      * @returns the name of the branch to checkout or %NULL.
      */
-    get_checkout_branch(): string | null
+    get_checkout_branch(): string
     /**
      * Get the fetch options object or %NULL if not set.
      * @returns the fetch options or %NULL.
@@ -1915,8 +1915,8 @@ export interface CloneOptions {
 
     // Own virtual methods of Ggit-1.0.Ggit.CloneOptions
 
-    vfunc_create_remote(repository: Repository, name: string | null, url: string | null): Remote | null
-    vfunc_create_repository(path: string | null, is_bare: boolean): Repository | null
+    vfunc_create_remote(repository: Repository, name: string, url: string): Remote | null
+    vfunc_create_repository(path: string, is_bare: boolean): Repository | null
 
     // Class property signals of Ggit-1.0.Ggit.CloneOptions
 
@@ -1988,7 +1988,7 @@ export interface Commit {
      * @param tree the tree of objects to commit.
      * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
      */
-    amend(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string | null, tree: Tree): OId | null
+    amend(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: Tree): OId | null
     /**
      * Gets the author of `commit`. The returned value must be free'd with
      * g_object_unref().
@@ -2187,7 +2187,7 @@ export interface Config {
      * @param name the configuration value.
      * @returns %TRUE if the configuration value was deleted, %FALSE otherwise.
      */
-    delete_entry(name: string | null): boolean
+    delete_entry(name: string): boolean
     /**
      * Call `callback` for each configuration value.
      * @param callback a #GgitConfigCallback.
@@ -2199,31 +2199,31 @@ export interface Config {
      * @param name the name of the configuration value.
      * @returns the value.
      */
-    get_bool(name: string | null): boolean
+    get_bool(name: string): boolean
     /**
      * Get #GgitConfigEntry of a config variable.
      * @param name the configuration name.
      * @returns the entry of @name, or %NULL if such a value                           does not exist.
      */
-    get_entry(name: string | null): ConfigEntry
+    get_entry(name: string): ConfigEntry
     /**
      * Get a int32 configuration value.
      * @param name the name of the configuration value.
      * @returns the value.
      */
-    get_int32(name: string | null): number
+    get_int32(name: string): number
     /**
      * Get a int64 configuration value.
      * @param name the name of the configuration value.
      * @returns the value.
      */
-    get_int64(name: string | null): number
+    get_int64(name: string): number
     /**
      * Get the configuration value of `name` as string.
      * @param name the name of the configuration value.
      * @returns the string value of @name, or %NULL if such a value                        does not exist
      */
-    get_string(name: string | null): string | null
+    get_string(name: string): string | null
     /**
      * Matches a configuration against a regular expression. `match_info` will
      * contain the match information if the return value is not %NULL, otherwise
@@ -2251,28 +2251,28 @@ export interface Config {
      * @param value the new value.
      * @returns %TRUE if the value was successfully set, %FALSE otherwise.
      */
-    set_bool(name: string | null, value: boolean): boolean
+    set_bool(name: string, value: boolean): boolean
     /**
      * Set a int32 value.
      * @param name the name of the configuration value.
      * @param value the new value.
      * @returns %TRUE if the value was successfully set, %FALSE otherwise.
      */
-    set_int32(name: string | null, value: number): boolean
+    set_int32(name: string, value: number): boolean
     /**
      * Set a int64 value.
      * @param name the name of the configuration value.
      * @param value the new value.
      * @returns %TRUE if the value was successfully set, %FALSE otherwise.
      */
-    set_int64(name: string | null, value: number): boolean
+    set_int64(name: string, value: number): boolean
     /**
      * Set a new string value of a configuration.
      * @param name the name of the configuration value.
      * @param value the new value.
      * @returns %TRUE if the value was successfully set, %FALSE otherwise.
      */
-    set_string(name: string | null, value: string | null): boolean
+    set_string(name: string, value: string): boolean
     /**
      * Create a snapshot of the current state of the configuration,
      * which allows you to look into a consistent view of the configuration
@@ -2436,8 +2436,8 @@ export interface CredPlaintext extends Gio.Initable {
 
     // Owm methods of Ggit-1.0.Ggit.CredPlaintext
 
-    get_password(): string | null
-    get_username(): string | null
+    get_password(): string
+    get_username(): string
 
     // Class property signals of Ggit-1.0.Ggit.CredPlaintext
 
@@ -2470,8 +2470,8 @@ export class CredPlaintext extends Cred {
     // Constructors of Ggit-1.0.Ggit.CredPlaintext
 
     constructor(config?: CredPlaintext.ConstructorProperties) 
-    constructor(username: string | null, password: string | null) 
-    static new(username: string | null, password: string | null): CredPlaintext
+    constructor(username: string, password: string) 
+    static new(username: string, password: string): CredPlaintext
     _init(config?: CredPlaintext.ConstructorProperties): void
 }
 
@@ -2500,7 +2500,7 @@ export interface CredSshInteractive extends Gio.Initable {
 
     // Owm methods of Ggit-1.0.Ggit.CredSshInteractive
 
-    get_username(): string | null
+    get_username(): string
 
     // Own virtual methods of Ggit-1.0.Ggit.CredSshInteractive
 
@@ -2534,8 +2534,8 @@ export class CredSshInteractive extends Cred {
     // Constructors of Ggit-1.0.Ggit.CredSshInteractive
 
     constructor(config?: CredSshInteractive.ConstructorProperties) 
-    constructor(username: string | null) 
-    static new(username: string | null): CredSshInteractive
+    constructor(username: string) 
+    static new(username: string): CredSshInteractive
     _init(config?: CredSshInteractive.ConstructorProperties): void
 }
 
@@ -2604,14 +2604,14 @@ export class CredSshKeyFromAgent extends Cred {
      * @param username the username.
      * @returns a new #GgitCredSshKeyFromAgent or %NULL if there was an error.
      */
-    constructor(username: string | null) 
+    constructor(username: string) 
     /**
      * Creates a new #GgitCredSshKeyFromAgent.
      * @constructor 
      * @param username the username.
      * @returns a new #GgitCredSshKeyFromAgent or %NULL if there was an error.
      */
-    static new(username: string | null): CredSshKeyFromAgent
+    static new(username: string): CredSshKeyFromAgent
     _init(config?: CredSshKeyFromAgent.ConstructorProperties): void
 }
 
@@ -3243,12 +3243,12 @@ export interface DiffOptions {
      * Set the diff new-prefix string.
      * @param prefix the prefix.
      */
-    set_new_prefix(prefix: string | null): void
+    set_new_prefix(prefix: string): void
     /**
      * Get the diff old-prefix string.
      * @param prefix the prefix.
      */
-    set_old_prefix(prefix: string | null): void
+    set_old_prefix(prefix: string): void
     /**
      * Set the pathspec.
      * @param pathspec the pathspec.
@@ -3356,7 +3356,7 @@ export interface Index extends Gio.Initable {
      * @param path path to the file to add.
      * @returns %TRUE if the file was added to the index or %FALSE if there was an error.
      */
-    add_path(path: string | null): boolean
+    add_path(path: string): boolean
     /**
      * Get the index entries enumerator.
      * @returns a #GgitIndexEntries or %NULL.
@@ -3488,14 +3488,14 @@ export interface Mailmap {
      * @param replace_name the name to replace.
      * @param replace_email the email to replace.
      */
-    add_entry(real_name: string | null, real_email: string | null, replace_name: string | null, replace_email: string | null): void
+    add_entry(real_name: string | null, real_email: string | null, replace_name: string | null, replace_email: string): void
     /**
      * Resolves `replace_name` and `replace_email` to `real_name` and `real_email`.
      * If `mailmap` is #NULL, no substitution is performed.
      * @param replace_name the name to replace.
      * @param replace_email the email to replace.
      */
-    resolve(replace_name: string | null, replace_email: string | null): [ /* real_name */ string | null, /* real_email */ string | null ]
+    resolve(replace_name: string, replace_email: string): [ /* real_name */ string, /* real_email */ string ]
     /**
      * Resolves `signature` to use the real name and email according to `mailmap`.
      * If `mailmap` is #NULL, no substitution is performed, but a new signature is
@@ -4133,7 +4133,7 @@ export interface Ref {
      * @param log_message The one line long message to be appended to the reflog.
      * @returns a newly created #GgitRef or %NULL.
      */
-    rename(new_name: string | null, force: boolean, log_message: string | null): Ref | null
+    rename(new_name: string, force: boolean, log_message: string): Ref | null
     /**
      * Resolves a symbolic reference.
      * 
@@ -4158,7 +4158,7 @@ export interface Ref {
      * @param log_message The one line long message to be appended to the reflog.
      * @returns the newly created #GgitRef or %NULL.
      */
-    set_symbolic_target(target: string | null, log_message: string | null): Ref | null
+    set_symbolic_target(target: string, log_message: string | null): Ref | null
     /**
      * Create a new reference with the same name as the given reference but a
      * different OID target. The reference must be a direct reference, otherwise
@@ -4214,7 +4214,7 @@ export class Ref extends Native {
      * @param name the name to validate.
      * @returns %TRUE if @name is valid, %FALSE otherwise.
      */
-    static is_valid_name(name: string | null): boolean
+    static is_valid_name(name: string): boolean
 }
 
 export module Remote {
@@ -4359,7 +4359,7 @@ export class Remote extends Native {
      * @param url the remote repository's URL.
      * @returns a newly allocated #GgitRemote or %NULL.
      */
-    constructor(repository: Repository, name: string | null, url: string | null) 
+    constructor(repository: Repository, name: string, url: string) 
     /**
      * Creates a remote with the default refspecs in memory. You can use
      * this when you have a URL instead of a remote's name.
@@ -4369,7 +4369,7 @@ export class Remote extends Native {
      * @param url the remote repository's URL.
      * @returns a newly allocated #GgitRemote or %NULL.
      */
-    static new(repository: Repository, name: string | null, url: string | null): Remote
+    static new(repository: Repository, name: string, url: string): Remote
     /**
      * Creates a remote with the specified refspec in memory. You can use
      * this when you have a URL instead of a remote's name.
@@ -4378,7 +4378,7 @@ export class Remote extends Native {
      * @param url the remote repository's URL.
      * @returns a newly allocated #GgitRemote or %NULL.
      */
-    static new_anonymous(repository: Repository, url: string | null): Remote
+    static new_anonymous(repository: Repository, url: string): Remote
     _init(config?: Remote.ConstructorProperties): void
 }
 
@@ -4431,10 +4431,10 @@ export interface RemoteCallbacks {
     // Own virtual methods of Ggit-1.0.Ggit.RemoteCallbacks
 
     vfunc_completion(type: RemoteCompletionType): void
-    vfunc_credentials(url: string | null, username_from_url: string | null, allowed_types: Credtype): Cred | null
-    vfunc_progress(message: string | null): void
+    vfunc_credentials(url: string, username_from_url: string | null, allowed_types: Credtype): Cred | null
+    vfunc_progress(message: string): void
     vfunc_transfer_progress(stats: TransferProgress): void
-    vfunc_update_tips(refname: string | null, a: OId, b: OId): void
+    vfunc_update_tips(refname: string, a: OId, b: OId): void
 
     // Own signals of Ggit-1.0.Ggit.RemoteCallbacks
 
@@ -4523,7 +4523,7 @@ export interface Repository extends Gio.Initable {
      * @param remote a #GgitRemote.
      * @param refspec the fetch refspec.
      */
-    add_remote_fetch(remote: Remote, refspec: string | null): void
+    add_remote_fetch(remote: Remote, refspec: string): void
     /**
      * Adds a push refspec to `remote'`s configuration.
      * Adds the given refspec to the push list in the configuration. No
@@ -4531,7 +4531,7 @@ export interface Repository extends Gio.Initable {
      * @param remote a #GgitRemote.
      * @param refspec the push refspec.
      */
-    add_remote_push(remote: Remote, refspec: string | null): void
+    add_remote_push(remote: Remote, refspec: string): void
     /**
      * Get a blame for a single file.
      * @param file the file to blame.
@@ -4617,7 +4617,7 @@ export interface Repository extends Gio.Initable {
      * @param path the file path.
      * @returns the new #GgitOid of the written blob, or %NULL if writing the blob failed.
      */
-    create_blob_from_path(path: string | null): OId | null
+    create_blob_from_path(path: string): OId | null
     /**
      * Creates a new branch pointing at a target commit.
      * @param branch_name the name of the branch.
@@ -4625,7 +4625,7 @@ export interface Repository extends Gio.Initable {
      * @param flags a #GgitCreateFlags.
      * @returns the reference to which the branch                                        points, or %NULL in case of an error.
      */
-    create_branch(branch_name: string | null, target: Object, flags: CreateFlags): Branch | null
+    create_branch(branch_name: string, target: Object, flags: CreateFlags): Branch | null
     /**
      * Create a new commit. If `update_ref` is not %NULL, the given reference will
      * be updated to point to the newly created commit. Use "HEAD" to update the
@@ -4643,7 +4643,7 @@ export interface Repository extends Gio.Initable {
      * @param parents parent commits.
      * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
      */
-    create_commit(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string | null, tree: Tree, parents: Commit[]): OId | null
+    create_commit(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: Tree, parents: Commit[]): OId | null
     /**
      * Create a commit as with git_commit_create() but instead of writing it to the objectdb,
      * write the contents of the object into a buffer.
@@ -4655,7 +4655,7 @@ export interface Repository extends Gio.Initable {
      * @param parents parent commits.
      * @returns the commit object content or %NULL in case of an error.
      */
-    create_commit_buffer(author: Signature, committer: Signature, message_encoding: string | null, message: string | null, tree: Tree, parents: Commit[]): string | null
+    create_commit_buffer(author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: Tree, parents: Commit[]): string | null
     /**
      * Create a new commit. If `update_ref` is not %NULL, the given reference will
      * be updated to point to the newly created commit. Use "HEAD" to update the
@@ -4673,7 +4673,7 @@ export interface Repository extends Gio.Initable {
      * @param parents parent commits.
      * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
      */
-    create_commit_from_ids(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string | null, tree: OId, parents: OId[]): OId | null
+    create_commit_from_ids(update_ref: string | null, author: Signature, committer: Signature, message_encoding: string | null, message: string, tree: OId, parents: OId[]): OId | null
     /**
      * Given the unsigned commit object's contents, its signature and the header field
      * in which to store the signature, attach the signature to the commit and write it
@@ -4684,7 +4684,7 @@ export interface Repository extends Gio.Initable {
      * @param signature_field which header field should contain this signature. Leave `NULL` for the default of "gpgsig".
      * @returns the #GgitOId of the created commit object, or %NULL in case of an error.
      */
-    create_commit_with_signature(commit_content: string | null, signature: string | null, signature_field: string | null): OId | null
+    create_commit_with_signature(commit_content: string, signature: string | null, signature_field: string | null): OId | null
     /**
      * Create a new index entry. When `file` is not %NULL, the path of the returned
      * entry (#ggit_index_entry_get_path) is set to the path of `file` relative to
@@ -4726,7 +4726,7 @@ export interface Repository extends Gio.Initable {
      * @param force whether to overwrite existing note.
      * @returns the OID for the note or %NULL in case of error.
      */
-    create_note(notes_ref: string | null, author: Signature, committer: Signature, id: OId, note: string | null, force: boolean): OId | null
+    create_note(notes_ref: string | null, author: Signature, committer: Signature, id: OId, note: string, force: boolean): OId | null
     /**
      * Creates a new object id reference.
      * 
@@ -4737,14 +4737,14 @@ export interface Repository extends Gio.Initable {
      * @param log_message The one line long message to be appended to the reflog.
      * @returns the newly created reference.
      */
-    create_reference(name: string | null, oid: OId, log_message: string | null): Ref | null
+    create_reference(name: string, oid: OId, log_message: string): Ref | null
     /**
      * Adds a remote with the default fetch refspec to the repository's configuration.
      * @param name the name of the new remote.
      * @param url the url of the remote.
      * @returns a new #GgitRemote or %NULL if there is an error.
      */
-    create_remote(name: string | null, url: string | null): Remote | null
+    create_remote(name: string, url: string): Remote | null
     /**
      * Creates a new symbolic reference.
      * 
@@ -4755,7 +4755,7 @@ export interface Repository extends Gio.Initable {
      * @param log_message The one line long message to be appended to the reflog.
      * @returns the newly created reference.
      */
-    create_symbolic_reference(name: string | null, target: string | null, log_message: string | null): Ref | null
+    create_symbolic_reference(name: string, target: string, log_message: string): Ref | null
     /**
      * Create a new tag object.
      * @param tag_name the tag name.
@@ -4765,7 +4765,7 @@ export interface Repository extends Gio.Initable {
      * @param flags a #GgitCreateFlags.
      * @returns the id to which the tag points, or                                        %NULL in case of an error.
      */
-    create_tag(tag_name: string | null, target: Object, tagger: Signature, message: string | null, flags: CreateFlags): OId | null
+    create_tag(tag_name: string, target: Object, tagger: Signature, message: string, flags: CreateFlags): OId | null
     /**
      * Creates a new annotated tag.
      * @param tag_name the name of the tag.
@@ -4774,7 +4774,7 @@ export interface Repository extends Gio.Initable {
      * @param message the tag message.
      * @returns the id to which the tag points, or                                        %NULL in case of an error.
      */
-    create_tag_annotation(tag_name: string | null, target: Object, signature: Signature, message: string | null): OId | null
+    create_tag_annotation(tag_name: string, target: Object, signature: Signature, message: string): OId | null
     /**
      * Create a new tag from a buffer describing the tag object. The buffer must
      * be correctly formatted.
@@ -4782,7 +4782,7 @@ export interface Repository extends Gio.Initable {
      * @param flags a #GgitCreateFlags.
      * @returns the id to which the tag points, or                                        %NULL in case of an error.
      */
-    create_tag_from_buffer(tag: string | null, flags: CreateFlags): OId | null
+    create_tag_from_buffer(tag: string, flags: CreateFlags): OId | null
     /**
      * Creates a new lightweight tag.
      * @param tag_name the name of the tag.
@@ -4790,7 +4790,7 @@ export interface Repository extends Gio.Initable {
      * @param flags a #GgitCreateFlags.
      * @returns the id to which the tag points, or                                        %NULL in case of an error.
      */
-    create_tag_lightweight(tag_name: string | null, target: Object, flags: CreateFlags): OId | null
+    create_tag_lightweight(tag_name: string, target: Object, flags: CreateFlags): OId | null
     /**
      * Create a new tree builder.
      * @returns a new #GgitTreeBuilder, or %NULL if there was an error.
@@ -4808,7 +4808,7 @@ export interface Repository extends Gio.Initable {
      * @param name the name of the tag.
      * @returns %TRUE if the tag was deleted successfully, %FALSE otherwise.
      */
-    delete_tag(name: string | null): boolean
+    delete_tag(name: string): boolean
     /**
      * Removes a single stashed state from the stash list.
      * @param index the position within the stash list. 0 points to the. most recent stashed state.
@@ -4858,7 +4858,7 @@ export interface Repository extends Gio.Initable {
      * @param flags a #GgitAttributeCheckFlags.
      * @returns the attribute value, or %NULL.
      */
-    get_attribute(path: string | null, name: string | null, flags: AttributeCheckFlags): string | null
+    get_attribute(path: string, name: string, flags: AttributeCheckFlags): string | null
     /**
      * Get the config for a specific repository.
      * @returns a #GgitConfig.
@@ -4907,7 +4907,7 @@ export interface Repository extends Gio.Initable {
      * @param ignore the ignore rules to follow.
      * @returns the #GgitSubmoduleStatus for @submodule.
      */
-    get_submodule_status(name: string | null, ignore: SubmoduleIgnore): SubmoduleStatus
+    get_submodule_status(name: string, ignore: SubmoduleIgnore): SubmoduleStatus
     /**
      * Gets the working directory of the repository.
      * @returns the location of the working directory of the repository.
@@ -4980,7 +4980,7 @@ export interface Repository extends Gio.Initable {
      * @param branch_type a #GgitBranchType.
      * @returns a branch by its name in a repository.
      */
-    lookup_branch(branch_name: string | null, branch_type: BranchType): Branch | null
+    lookup_branch(branch_name: string, branch_type: BranchType): Branch | null
     /**
      * Lookups a branch by its name in a repository.
      * @param oid a #GgitOId.
@@ -4993,7 +4993,7 @@ export interface Repository extends Gio.Initable {
      * @param name the long name for the reference (e.g. HEAD, ref/heads/master, refs/tags/v0.1.0, ...).
      * @returns the searched reference.
      */
-    lookup_reference(name: string | null): Ref | null
+    lookup_reference(name: string): Ref | null
     /**
      * Lookups a reference by its short name in `repository` applying the git precendence
      * rules to the given shorthand to determine which reference the user is referring to.
@@ -5001,20 +5001,20 @@ export interface Repository extends Gio.Initable {
      * @param short_name the short name for the reference (e.g. master, v0.1.0, ...).
      * @returns the searched reference.
      */
-    lookup_reference_dwim(short_name: string | null): Ref | null
+    lookup_reference_dwim(short_name: string): Ref | null
     /**
      * Gets the remote called `name`.
      * @param name the remote's name.
      * @returns a new #GgitRemote or %NULL if there is an error.
      */
-    lookup_remote(name: string | null): Remote | null
+    lookup_remote(name: string): Remote | null
     /**
      * Lookups a submodule information by name or path. If the submodule
      * does not exist, %NULL is returned and a GGIT_ERROR_NOTFOUND error set.
      * @param name the name of the submodule.
      * @returns a newly-allocated #GgitSubmodule.
      */
-    lookup_submodule(name: string | null): Submodule | null
+    lookup_submodule(name: string): Submodule | null
     /**
      * Lookups a branch by its name in a repository.
      * @param oid a #GgitOId.
@@ -5078,7 +5078,7 @@ export interface Repository extends Gio.Initable {
      * @param path A path within the repository.
      * @returns %TRUE if @path should be ignored.
      */
-    path_is_ignored(path: string | null): boolean
+    path_is_ignored(path: string): boolean
     /**
      * Reads the note for an object.
      * @param notes_ref canonical name of the reference to use, or %NULL to use the default ref.
@@ -5139,14 +5139,14 @@ export interface Repository extends Gio.Initable {
      * @param name the remote's name.
      * @returns %TRUE if there was no error, %FALSE otherwise
      */
-    remove_remote(name: string | null): boolean
+    remove_remote(name: string): boolean
     /**
      * Rename the remote of `repository` from `name` to `new_name`.
      * @param name the remote name to be renamed.
      * @param new_name new name of the remote.
      * @returns non-default refspecs that cannot be renamed.
      */
-    rename_remote(name: string | null, new_name: string | null): string[] | null
+    rename_remote(name: string, new_name: string): string[] | null
     /**
      * Performs a reset of type `reset_type` on `repository` to `target,`
      * or `error` will be set.
@@ -5178,7 +5178,7 @@ export interface Repository extends Gio.Initable {
      * @param spec the revision specification.
      * @returns a #GgitObject or %NULL if the revision could not be found.
      */
-    revparse(spec: string | null): Object | null
+    revparse(spec: string): Object | null
     /**
      * Saves the local modifications to a new stash.
      * It returns the commit containing the stashed state.
@@ -5188,8 +5188,8 @@ export interface Repository extends Gio.Initable {
      * @param flags a #GgitStashFlags to control the stashing process.
      * @returns a new object id of the commit containing the stashed state.
      */
-    save_stash(stasher: Signature, message: string | null, flags: StashFlags): OId | null
-    set_head(ref_name: string | null): boolean
+    save_stash(stasher: Signature, message: string, flags: StashFlags): OId | null
+    set_head(ref_name: string): boolean
     set_head_detached(oid: OId): boolean
     /**
      * Sets url for the `remote` from the `repository`.
@@ -5197,28 +5197,28 @@ export interface Repository extends Gio.Initable {
      * @param url url of the remote.
      * @returns %TRUE if there was no error, %FALSE otherwise
      */
-    set_remote_url(remote: string | null, url: string | null): boolean
+    set_remote_url(remote: string, url: string): boolean
     /**
      * Sets the submodule.'name'.fetchRecurseSubmodules value for
      * the submodule. This setting won't affect any existing instances..
      * @param name the name of the submodule.
      * @param fetch_recurse_submodules a #GgitSubmoduleRecurse.
      */
-    set_submodule_fetch_recurse(name: string | null, fetch_recurse_submodules: SubmoduleRecurse): void
+    set_submodule_fetch_recurse(name: string, fetch_recurse_submodules: SubmoduleRecurse): void
     /**
      * Sets the ignore rule for the submodule in the configuration.
      * This does not affect any currently-loaded instances..
      * @param name the name of the submodule.
      * @param ignore a #GgitSubmoduleIgnore.
      */
-    set_submodule_ignore(name: string | null, ignore: SubmoduleIgnore): void
+    set_submodule_ignore(name: string, ignore: SubmoduleIgnore): void
     /**
      * Sets the update rule for the submodule in the configuration.
      * This setting won't affect any existing instances.
      * @param name the name of the submodule.
      * @param update a #GgitSubmoduleUpdate.
      */
-    set_submodule_update(name: string | null, update: SubmoduleUpdate): void
+    set_submodule_update(name: string, update: SubmoduleUpdate): void
     /**
      * Sets the URL for the submodule in the configuration.
      * 
@@ -5227,7 +5227,7 @@ export interface Repository extends Gio.Initable {
      * @param name the name of the submodule to configure.
      * @param url URL that should be used for the submodule.
      */
-    set_submodule_url(name: string | null, url: string | null): void
+    set_submodule_url(name: string, url: string): void
     /**
      * Sets the working directory of the repository. If `update_gitlink` is set to
      * %TRUE "core.worktree" will be set in the config if workdir is not the parent
@@ -5321,7 +5321,7 @@ export class Repository extends Native {
      * @param options a #GgitCloneOptions.
      * @returns a newly created #GgitRepository.
      */
-    static clone(url: string | null, location: Gio.File, options: CloneOptions | null): Repository | null
+    static clone(url: string, location: Gio.File, options: CloneOptions | null): Repository | null
     /**
      * Looks for a git repository.
      * 
@@ -5419,7 +5419,7 @@ export interface RevisionWalker extends Gio.Initable {
      * as a trailing '/ \ *' if the glob lacks '?', '\ *' or '['.
      * @param item the glob to hide.
      */
-    hide_glob(item: string | null): void
+    hide_glob(item: string): void
     /**
      * Hide the OID of the current HEAD to the revision walker.
      */
@@ -5428,7 +5428,7 @@ export interface RevisionWalker extends Gio.Initable {
      * Hide the OID pointed to by the named reference to the revision walker.
      * @param item the reference to hide.
      */
-    hide_ref(item: string | null): void
+    hide_ref(item: string): void
     /**
      * Gets the next commit from the revision walk.
      * 
@@ -5463,7 +5463,7 @@ export interface RevisionWalker extends Gio.Initable {
      * as a trailing '/ \ *' if the glob lacks '?', '\ *' or '['.
      * @param item the glob to push.
      */
-    push_glob(item: string | null): void
+    push_glob(item: string): void
     /**
      * Push the OID of the current HEAD to the revision walker.
      */
@@ -5475,12 +5475,12 @@ export interface RevisionWalker extends Gio.Initable {
      * right-hand commit pushed.
      * @param range the range to push.
      */
-    push_range(range: string | null): void
+    push_range(range: string): void
     /**
      * Push the OID pointed to by the named reference to the revision walker.
      * @param item the reference to push.
      */
-    push_ref(item: string | null): void
+    push_ref(item: string): void
     /**
      * Resets the revision walker for reuse.
      * 
@@ -5657,7 +5657,7 @@ export class Signature extends Native {
      * @param signature_time the time when the action happened.
      * @returns a newly allocated #GgitSignature or %NULL.
      */
-    constructor(name: string | null, email: string | null, signature_time: GLib.DateTime) 
+    constructor(name: string, email: string, signature_time: GLib.DateTime) 
     /**
      * Creates a new #GgitSignature. Name and e-mail are assumed to be in UTF-8.
      * @constructor 
@@ -5666,7 +5666,7 @@ export class Signature extends Native {
      * @param signature_time the time when the action happened.
      * @returns a newly allocated #GgitSignature or %NULL.
      */
-    static new(name: string | null, email: string | null, signature_time: GLib.DateTime): Signature
+    static new(name: string, email: string, signature_time: GLib.DateTime): Signature
     /**
      * Creates a new #GgitSignature with a timestamp of 'now'. Name and e-mail are
      * assumed to be in UTF-8.
@@ -5675,7 +5675,7 @@ export class Signature extends Native {
      * @param email the email of the person.
      * @returns a newly allocated #GgitSignature or %NULL.
      */
-    static new_now(name: string | null, email: string | null): Signature
+    static new_now(name: string, email: string): Signature
     _init(config?: Signature.ConstructorProperties): void
 }
 
@@ -5883,14 +5883,14 @@ export interface Tree {
      * @param name a filename.
      * @returns a #GgitTreeEntry or %NULL.
      */
-    get_by_name(name: string | null): TreeEntry | null
+    get_by_name(name: string): TreeEntry | null
     /**
      * Retrieves a tree entry contained in a tree or in any of its subtrees,
      * given its relative path.
      * @param path a path.
      * @returns a #GgitTreeEntry or %NULL.
      */
-    get_by_path(path: string | null): TreeEntry | null
+    get_by_path(path: string): TreeEntry | null
     /**
      * Get the #GgitOId of the tree.
      * @returns a #GgitOId or %NULL.
@@ -5964,7 +5964,7 @@ export interface TreeBuilder {
      * @param path the path to remove.
      * @returns the #GGitTreeEntry or %NULL if no such entry exists.
      */
-    get_entry(path: string | null): TreeEntry | null
+    get_entry(path: string): TreeEntry | null
     /**
      * Insert a file with a given blob in the tree builder. If the tree builder
      * already contains an entry for the given file, then this entry will be
@@ -5977,12 +5977,12 @@ export interface TreeBuilder {
      * @param file_mode a #GgitFileMode.
      * @returns a #GgitTreeEntry or %NULL.
      */
-    insert(filename: string | null, oid: OId, file_mode: FileMode): TreeEntry | null
+    insert(filename: string, oid: OId, file_mode: FileMode): TreeEntry | null
     /**
      * Remove an entry from the builder by path.
      * @param path the path to remove.
      */
-    remove(path: string | null): void
+    remove(path: string): void
     /**
      * Write the contents of the tree builder as a tree object.
      * @returns the #GgitOId of the created tree object or %NULL.
@@ -6335,8 +6335,8 @@ export interface CheckoutOptionsClass {
     // Own fields of Ggit-1.0.Ggit.CheckoutOptionsClass
 
     parent_class: GObject.ObjectClass
-    notify: (options: CheckoutOptions, why: CheckoutNotifyFlags, path: string | null, baseline: DiffFile, target: DiffFile, workdir: DiffFile) => number
-    progress: (options: CheckoutOptions, path: string | null, completed_steps: number, total_steps: number) => void
+    notify: (options: CheckoutOptions, why: CheckoutNotifyFlags, path: string, baseline: DiffFile, target: DiffFile, workdir: DiffFile) => number
+    progress: (options: CheckoutOptions, path: string, completed_steps: number, total_steps: number) => void
 }
 
 export abstract class CheckoutOptionsClass {
@@ -6365,8 +6365,8 @@ export interface CloneOptionsClass {
     // Own fields of Ggit-1.0.Ggit.CloneOptionsClass
 
     parent_class: GObject.ObjectClass
-    create_repository: (options: CloneOptions, path: string | null, is_bare: boolean) => Repository | null
-    create_remote: (options: CloneOptions, repository: Repository, name: string | null, url: string | null) => Remote | null
+    create_repository: (options: CloneOptions, path: string, is_bare: boolean) => Repository | null
+    create_remote: (options: CloneOptions, repository: Repository, name: string, url: string) => Remote | null
 }
 
 export abstract class CloneOptionsClass {
@@ -6499,13 +6499,13 @@ export interface CredSshInteractivePrompt {
 
     // Owm methods of Ggit-1.0.Ggit.CredSshInteractivePrompt
 
-    get_instruction(): string | null
-    get_name(): string | null
-    get_response(): string | null
-    get_text(): string | null
+    get_instruction(): string
+    get_name(): string
+    get_response(): string
+    get_text(): string
     is_masked(): boolean
     ref(): CredSshInteractivePrompt
-    set_response(response: string | null): void
+    set_response(response: string): void
     unref(): void
 }
 
@@ -6521,8 +6521,8 @@ export class CredSshInteractivePrompt {
 
     // Constructors of Ggit-1.0.Ggit.CredSshInteractivePrompt
 
-    constructor(name: string | null, instruction: string | null, text: string | null, is_masked: boolean) 
-    static new(name: string | null, instruction: string | null, text: string | null, is_masked: boolean): CredSshInteractivePrompt
+    constructor(name: string, instruction: string, text: string, is_masked: boolean) 
+    static new(name: string, instruction: string, text: string, is_masked: boolean): CredSshInteractivePrompt
 }
 
 export interface CredSshKeyFromAgentClass {
@@ -6773,7 +6773,7 @@ export interface DiffHunk {
 
     // Owm methods of Ggit-1.0.Ggit.DiffHunk
 
-    get_header(): string | null
+    get_header(): string
     /**
      * Gets the number of lines in the new file.
      * @returns the number of lines in the new file.
@@ -7179,7 +7179,7 @@ export interface IndexEntry {
      * @returns the mode.
      */
     get_mode(): number
-    get_path(): string | null
+    get_path(): string
     /**
      * Get the uid of the index entry.
      * @returns the uid.
@@ -7528,7 +7528,7 @@ export interface OId {
      * @param prefix a prefix.
      * @returns %TRUE if the id has the given prefix, %FALSE otherwise.
      */
-    has_prefix(prefix: string | null): boolean
+    has_prefix(prefix: string): boolean
     /**
      * Computes a hash value for a git object identifier.
      * @returns the hash value
@@ -7571,7 +7571,7 @@ export class OId {
      * @param str input hex string; must be pointing at the start of       the hex sequence and have at least the number of bytes       needed for an oid encoded in hex (40 bytes).
      * @returns a newly allocated #GgitOId or %NULL on error.
      */
-    static new_from_string(str: string | null): OId
+    static new_from_string(str: string): OId
 }
 
 export interface ObjectClass {
@@ -7847,7 +7847,7 @@ export interface RebaseOptions {
      * not be rewritten.
      * @param rewrite_notes_ref the name of the notes reference.
      */
-    set_rewrite_notes_ref(rewrite_notes_ref: string | null): void
+    set_rewrite_notes_ref(rewrite_notes_ref: string): void
 }
 
 /**
@@ -7944,7 +7944,7 @@ export interface Reflog {
      * @param message the message.
      * @returns %TRUE if the reflog was successfully created, or %FALSE if error is set.
      */
-    append(oid: OId, committer: Signature, message: string | null): boolean
+    append(oid: OId, committer: Signature, message: string): boolean
     /**
      * Gets the number of log entries in `reflog`.
      * @returns the number of log entries.
@@ -7966,7 +7966,7 @@ export interface Reflog {
      * Renames the reflog for to `new_name,` on error `error` is set.
      * @param new_name the new name of the reference.
      */
-    rename(new_name: string | null): boolean
+    rename(new_name: string): boolean
     /**
      * Atomically decrements the reference count of `reflog` by one.
      * If the reference count drops to 0, `reflog` is freed.
@@ -8043,11 +8043,11 @@ export interface RemoteCallbacksClass {
     // Own fields of Ggit-1.0.Ggit.RemoteCallbacksClass
 
     parent_class: GObject.ObjectClass
-    progress: (callbacks: RemoteCallbacks, message: string | null) => void
+    progress: (callbacks: RemoteCallbacks, message: string) => void
     transfer_progress: (callbacks: RemoteCallbacks, stats: TransferProgress) => void
-    update_tips: (callbacks: RemoteCallbacks, refname: string | null, a: OId, b: OId) => void
+    update_tips: (callbacks: RemoteCallbacks, refname: string, a: OId, b: OId) => void
     completion: (callbacks: RemoteCallbacks, type: RemoteCompletionType) => void
-    credentials: (callbacks: RemoteCallbacks, url: string | null, username_from_url: string | null, allowed_types: Credtype) => Cred | null
+    credentials: (callbacks: RemoteCallbacks, url: string, username_from_url: string | null, allowed_types: Credtype) => Cred | null
 }
 
 export abstract class RemoteCallbacksClass {

@@ -3185,7 +3185,7 @@ enum TracerValueFlags {
 /**
  * The allocator name for the default system memory allocator
  */
-const ALLOCATOR_SYSMEM: string | null
+const ALLOCATOR_SYSMEM: string
 /**
  * Combination of all possible fields that can be copied with
  * gst_buffer_copy_into().
@@ -3201,7 +3201,7 @@ const BUFFER_COPY_METADATA: BufferCopyFlags
  */
 const BUFFER_OFFSET_NONE: number
 const CAN_INLINE: number
-const CAPS_FEATURE_MEMORY_SYSTEM_MEMORY: string | null
+const CAPS_FEATURE_MEMORY_SYSTEM_MEMORY: string
 /**
  * Constant to define an undefined clock time.
  */
@@ -3209,29 +3209,29 @@ const CLOCK_TIME_NONE: ClockTime
 const DEBUG_BG_MASK: number
 const DEBUG_FG_MASK: number
 const DEBUG_FORMAT_MASK: number
-const ELEMENT_FACTORY_KLASS_DECODER: string | null
-const ELEMENT_FACTORY_KLASS_DECRYPTOR: string | null
-const ELEMENT_FACTORY_KLASS_DEMUXER: string | null
-const ELEMENT_FACTORY_KLASS_DEPAYLOADER: string | null
-const ELEMENT_FACTORY_KLASS_ENCODER: string | null
-const ELEMENT_FACTORY_KLASS_ENCRYPTOR: string | null
-const ELEMENT_FACTORY_KLASS_FORMATTER: string | null
+const ELEMENT_FACTORY_KLASS_DECODER: string
+const ELEMENT_FACTORY_KLASS_DECRYPTOR: string
+const ELEMENT_FACTORY_KLASS_DEMUXER: string
+const ELEMENT_FACTORY_KLASS_DEPAYLOADER: string
+const ELEMENT_FACTORY_KLASS_ENCODER: string
+const ELEMENT_FACTORY_KLASS_ENCRYPTOR: string
+const ELEMENT_FACTORY_KLASS_FORMATTER: string
 /**
  * Elements interacting with hardware devices should specify this classifier in
  * their metadata. You may need to put the element in "READY" state to test if
  * the hardware is present in the system.
  */
-const ELEMENT_FACTORY_KLASS_HARDWARE: string | null
-const ELEMENT_FACTORY_KLASS_MEDIA_AUDIO: string | null
-const ELEMENT_FACTORY_KLASS_MEDIA_IMAGE: string | null
-const ELEMENT_FACTORY_KLASS_MEDIA_METADATA: string | null
-const ELEMENT_FACTORY_KLASS_MEDIA_SUBTITLE: string | null
-const ELEMENT_FACTORY_KLASS_MEDIA_VIDEO: string | null
-const ELEMENT_FACTORY_KLASS_MUXER: string | null
-const ELEMENT_FACTORY_KLASS_PARSER: string | null
-const ELEMENT_FACTORY_KLASS_PAYLOADER: string | null
-const ELEMENT_FACTORY_KLASS_SINK: string | null
-const ELEMENT_FACTORY_KLASS_SRC: string | null
+const ELEMENT_FACTORY_KLASS_HARDWARE: string
+const ELEMENT_FACTORY_KLASS_MEDIA_AUDIO: string
+const ELEMENT_FACTORY_KLASS_MEDIA_IMAGE: string
+const ELEMENT_FACTORY_KLASS_MEDIA_METADATA: string
+const ELEMENT_FACTORY_KLASS_MEDIA_SUBTITLE: string
+const ELEMENT_FACTORY_KLASS_MEDIA_VIDEO: string
+const ELEMENT_FACTORY_KLASS_MUXER: string
+const ELEMENT_FACTORY_KLASS_PARSER: string
+const ELEMENT_FACTORY_KLASS_PAYLOADER: string
+const ELEMENT_FACTORY_KLASS_SINK: string
+const ELEMENT_FACTORY_KLASS_SRC: string
 /**
  * Elements of any of the defined GST_ELEMENT_FACTORY_LIST types
  */
@@ -3288,33 +3288,33 @@ const ELEMENT_FACTORY_TYPE_VIDEO_ENCODER: ElementFactoryListType
  * multiple author details.
  * E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
  */
-const ELEMENT_METADATA_AUTHOR: string | null
+const ELEMENT_METADATA_AUTHOR: string
 /**
  * Sentence describing the purpose of the element.
  * E.g: "Write stream to a file"
  */
-const ELEMENT_METADATA_DESCRIPTION: string | null
+const ELEMENT_METADATA_DESCRIPTION: string
 /**
  * Set uri pointing to user documentation. Applications can use this to show
  * help for e.g. effects to users.
  */
-const ELEMENT_METADATA_DOC_URI: string | null
+const ELEMENT_METADATA_DOC_URI: string
 /**
  * Elements that bridge to certain other products can include an icon of that
  * used product. Application can show the icon in menus/selectors to help
  * identifying specific elements.
  */
-const ELEMENT_METADATA_ICON_NAME: string | null
+const ELEMENT_METADATA_ICON_NAME: string
 /**
  * String describing the type of element, as an unordered list
  * separated with slashes ('/'). See draft-klass.txt of the design docs
  * for more details and common types. E.g: "Sink/File"
  */
-const ELEMENT_METADATA_KLASS: string | null
+const ELEMENT_METADATA_KLASS: string
 /**
  * The long English name of the element. E.g. "File Sink"
  */
-const ELEMENT_METADATA_LONGNAME: string | null
+const ELEMENT_METADATA_LONGNAME: string
 const EVENT_NUM_SHIFT: number
 /**
  * The same thing as #GST_EVENT_TYPE_UPSTREAM | #GST_EVENT_TYPE_DOWNSTREAM.
@@ -3345,7 +3345,7 @@ const GROUP_ID_INVALID: number
 /**
  * To be used in GST_PLUGIN_DEFINE if unsure about the licence.
  */
-const LICENSE_UNKNOWN: string | null
+const LICENSE_UNKNOWN: string
 /**
  * GstLockFlags value alias for GST_LOCK_FLAG_READ | GST_LOCK_FLAG_WRITE
  */
@@ -3357,12 +3357,12 @@ const MAP_READWRITE: MapFlags
 /**
  * This metadata stays relevant until a deep copy is made.
  */
-const META_TAG_MEMORY_REFERENCE_STR: string | null
+const META_TAG_MEMORY_REFERENCE_STR: string
 /**
  * This metadata stays relevant as long as memory layout is unchanged.
  * In hindsight, this tag should have been called "memory-layout".
  */
-const META_TAG_MEMORY_STR: string | null
+const META_TAG_MEMORY_STR: string
 /**
  * Constant that defines one GStreamer millisecond.
  */
@@ -3414,7 +3414,7 @@ const PARAM_USER_SHIFT: number
  * The field name in a GstCaps that is used to signal the UUID of the protection
  * system.
  */
-const PROTECTION_SYSTEM_ID_CAPS_FIELD: string | null
+const PROTECTION_SYSTEM_ID_CAPS_FIELD: string
 /**
  * The protection system value of the unspecified UUID.
  * In some cases the system protection ID is not present in the contents or in their
@@ -3427,7 +3427,7 @@ const PROTECTION_SYSTEM_ID_CAPS_FIELD: string | null
  * the application will choose the appropriate protection system based on the information
  * received through EME API.
  */
-const PROTECTION_UNSPECIFIED_SYSTEM_ID: string | null
+const PROTECTION_UNSPECIFIED_SYSTEM_ID: string
 const QUERY_NUM_SHIFT: number
 /**
  * The same thing as #GST_QUERY_TYPE_UPSTREAM | #GST_QUERY_TYPE_DOWNSTREAM.
@@ -3450,140 +3450,140 @@ const SEQNUM_INVALID: number
  * 
  * The album name as it should be displayed, e.g. 'The Jazz Guitar'
  */
-const TAG_ALBUM: string | null
+const TAG_ALBUM: string
 /**
  * The artist of the entire album, as it should be displayed.
  */
-const TAG_ALBUM_ARTIST: string | null
+const TAG_ALBUM_ARTIST: string
 /**
  * The artist of the entire album, as it should be sorted.
  */
-const TAG_ALBUM_ARTIST_SORTNAME: string | null
+const TAG_ALBUM_ARTIST_SORTNAME: string
 /**
  * album gain in db (double)
  */
-const TAG_ALBUM_GAIN: string | null
+const TAG_ALBUM_GAIN: string
 /**
  * peak of the album (double)
  */
-const TAG_ALBUM_PEAK: string | null
+const TAG_ALBUM_PEAK: string
 /**
  * album containing this data, as used for sorting (string)
  * 
  * The album name as it should be sorted, e.g. 'Jazz Guitar, The'
  */
-const TAG_ALBUM_SORTNAME: string | null
+const TAG_ALBUM_SORTNAME: string
 /**
  * count of discs inside collection this disc belongs to (unsigned integer)
  */
-const TAG_ALBUM_VOLUME_COUNT: string | null
+const TAG_ALBUM_VOLUME_COUNT: string
 /**
  * disc number inside a collection (unsigned integer)
  */
-const TAG_ALBUM_VOLUME_NUMBER: string | null
+const TAG_ALBUM_VOLUME_NUMBER: string
 /**
  * Arbitrary application data (sample)
  * 
  * Some formats allow applications to add their own arbitrary data
  * into files. This data is application dependent.
  */
-const TAG_APPLICATION_DATA: string | null
+const TAG_APPLICATION_DATA: string
 /**
  * Name of the application used to create the media (string)
  */
-const TAG_APPLICATION_NAME: string | null
+const TAG_APPLICATION_NAME: string
 /**
  * person(s) responsible for the recording (string)
  * 
  * The artist name as it should be displayed, e.g. 'Jimi Hendrix' or
  * 'The Guitar Heroes'
  */
-const TAG_ARTIST: string | null
+const TAG_ARTIST: string
 /**
  * person(s) responsible for the recording, as used for sorting (string)
  * 
  * The artist name as it should be sorted, e.g. 'Hendrix, Jimi' or
  * 'Guitar Heroes, The'
  */
-const TAG_ARTIST_SORTNAME: string | null
+const TAG_ARTIST_SORTNAME: string
 /**
  * generic file attachment (sample) (sample taglist should specify the content
  * type and if possible set "filename" to the file name of the
  * attachment)
  */
-const TAG_ATTACHMENT: string | null
+const TAG_ATTACHMENT: string
 /**
  * codec the audio data is stored in (string)
  */
-const TAG_AUDIO_CODEC: string | null
+const TAG_AUDIO_CODEC: string
 /**
  * number of beats per minute in audio (double)
  */
-const TAG_BEATS_PER_MINUTE: string | null
+const TAG_BEATS_PER_MINUTE: string
 /**
  * exact or average bitrate in bits/s (unsigned integer)
  */
-const TAG_BITRATE: string | null
+const TAG_BITRATE: string
 /**
  * codec the data is stored in (string)
  */
-const TAG_CODEC: string | null
+const TAG_CODEC: string
 /**
  * free text commenting the data (string)
  */
-const TAG_COMMENT: string | null
+const TAG_COMMENT: string
 /**
  * person(s) who composed the recording (string)
  */
-const TAG_COMPOSER: string | null
+const TAG_COMPOSER: string
 /**
  * The composer's name, used for sorting (string)
  */
-const TAG_COMPOSER_SORTNAME: string | null
+const TAG_COMPOSER_SORTNAME: string
 /**
  * conductor/performer refinement (string)
  */
-const TAG_CONDUCTOR: string | null
+const TAG_CONDUCTOR: string
 /**
  * contact information (string)
  */
-const TAG_CONTACT: string | null
+const TAG_CONTACT: string
 /**
  * container format the data is stored in (string)
  */
-const TAG_CONTAINER_FORMAT: string | null
+const TAG_CONTAINER_FORMAT: string
 /**
  * copyright notice of the data (string)
  */
-const TAG_COPYRIGHT: string | null
+const TAG_COPYRIGHT: string
 /**
  * URI to location where copyright details can be found (string)
  */
-const TAG_COPYRIGHT_URI: string | null
+const TAG_COPYRIGHT_URI: string
 /**
  * date the data was created (#GDate structure)
  */
-const TAG_DATE: string | null
+const TAG_DATE: string
 /**
  * date and time the data was created (#GstDateTime structure)
  */
-const TAG_DATE_TIME: string | null
+const TAG_DATE_TIME: string
 /**
  * short text describing the content of the data (string)
  */
-const TAG_DESCRIPTION: string | null
+const TAG_DESCRIPTION: string
 /**
  * Manufacturer of the device used to create the media (string)
  */
-const TAG_DEVICE_MANUFACTURER: string | null
+const TAG_DEVICE_MANUFACTURER: string
 /**
  * Model of the device used to create the media (string)
  */
-const TAG_DEVICE_MODEL: string | null
+const TAG_DEVICE_MODEL: string
 /**
  * length in GStreamer time units (nanoseconds) (unsigned 64-bit integer)
  */
-const TAG_DURATION: string | null
+const TAG_DURATION: string
 /**
  * name of the person or organisation that encoded the file. May contain a
  * copyright message if the person or organisation also holds the copyright
@@ -3592,15 +3592,15 @@ const TAG_DURATION: string | null
  * Note: do not use this field to describe the encoding application. Use
  * #GST_TAG_APPLICATION_NAME or #GST_TAG_COMMENT for that.
  */
-const TAG_ENCODED_BY: string | null
+const TAG_ENCODED_BY: string
 /**
  * encoder used to encode this stream (string)
  */
-const TAG_ENCODER: string | null
+const TAG_ENCODER: string
 /**
  * version of the encoder used to encode this stream (unsigned integer)
  */
-const TAG_ENCODER_VERSION: string | null
+const TAG_ENCODER_VERSION: string
 /**
  * key/value text commenting the data (string)
  * 
@@ -3611,11 +3611,11 @@ const TAG_ENCODER_VERSION: string | null
  * This tag is used for unknown Vorbis comment tags,
  * unknown APE tags and certain ID3v2 comment fields.
  */
-const TAG_EXTENDED_COMMENT: string | null
+const TAG_EXTENDED_COMMENT: string
 /**
  * genre this data belongs to (string)
  */
-const TAG_GENRE: string | null
+const TAG_GENRE: string
 /**
  * Indicates the direction the device is pointing to when capturing
  * a media. It is represented as degrees in floating point representation,
@@ -3623,37 +3623,37 @@ const TAG_GENRE: string | null
  * 
  * See also #GST_TAG_GEO_LOCATION_MOVEMENT_DIRECTION
  */
-const TAG_GEO_LOCATION_CAPTURE_DIRECTION: string | null
+const TAG_GEO_LOCATION_CAPTURE_DIRECTION: string
 /**
  * The city (english name) where the media has been produced (string).
  */
-const TAG_GEO_LOCATION_CITY: string | null
+const TAG_GEO_LOCATION_CITY: string
 /**
  * The country (english name) where the media has been produced (string).
  */
-const TAG_GEO_LOCATION_COUNTRY: string | null
+const TAG_GEO_LOCATION_COUNTRY: string
 /**
  * geo elevation of where the media has been recorded or produced in meters
  * according to WGS84 (zero is average sea level) (double).
  */
-const TAG_GEO_LOCATION_ELEVATION: string | null
+const TAG_GEO_LOCATION_ELEVATION: string
 /**
  * Represents the expected error on the horizontal positioning in
  * meters (double).
  */
-const TAG_GEO_LOCATION_HORIZONTAL_ERROR: string | null
+const TAG_GEO_LOCATION_HORIZONTAL_ERROR: string
 /**
  * geo latitude location of where the media has been recorded or produced in
  * degrees according to WGS84 (zero at the equator, negative values for southern
  * latitudes) (double).
  */
-const TAG_GEO_LOCATION_LATITUDE: string | null
+const TAG_GEO_LOCATION_LATITUDE: string
 /**
  * geo longitude location of where the media has been recorded or produced in
  * degrees according to WGS84 (zero at the prime meridian in Greenwich/UK,
  * negative values for western longitudes). (double).
  */
-const TAG_GEO_LOCATION_LONGITUDE: string | null
+const TAG_GEO_LOCATION_LONGITUDE: string
 /**
  * Indicates the movement direction of the device performing the capture
  * of a media. It is represented as degrees in floating point representation,
@@ -3661,19 +3661,19 @@ const TAG_GEO_LOCATION_LONGITUDE: string | null
  * 
  * See also #GST_TAG_GEO_LOCATION_CAPTURE_DIRECTION
  */
-const TAG_GEO_LOCATION_MOVEMENT_DIRECTION: string | null
+const TAG_GEO_LOCATION_MOVEMENT_DIRECTION: string
 /**
  * Speed of the capturing device when performing the capture.
  * Represented in m/s. (double)
  * 
  * See also #GST_TAG_GEO_LOCATION_MOVEMENT_DIRECTION
  */
-const TAG_GEO_LOCATION_MOVEMENT_SPEED: string | null
+const TAG_GEO_LOCATION_MOVEMENT_SPEED: string
 /**
  * human readable descriptive location of where the media has been recorded or
  * produced. (string).
  */
-const TAG_GEO_LOCATION_NAME: string | null
+const TAG_GEO_LOCATION_NAME: string
 /**
  * A location 'smaller' than GST_TAG_GEO_LOCATION_CITY that specifies better
  * where the media has been produced. (e.g. the neighborhood) (string).
@@ -3681,21 +3681,21 @@ const TAG_GEO_LOCATION_NAME: string | null
  * This tag has been added as this is how it is handled/named in XMP's
  * Iptc4xmpcore schema.
  */
-const TAG_GEO_LOCATION_SUBLOCATION: string | null
+const TAG_GEO_LOCATION_SUBLOCATION: string
 /**
  * Groups together media that are related and spans multiple tracks. An
  * example are multiple pieces of a concerto. (string)
  */
-const TAG_GROUPING: string | null
+const TAG_GROUPING: string
 /**
  * Homepage for this media (i.e. artist or movie homepage) (string)
  */
-const TAG_HOMEPAGE: string | null
+const TAG_HOMEPAGE: string
 /**
  * image (sample) (sample taglist should specify the content type and preferably
  * also set "image-type" field as `GstTagImageType`)
  */
-const TAG_IMAGE: string | null
+const TAG_IMAGE: string
 /**
  * Represents the 'Orientation' tag from EXIF. Defines how the image
  * should be rotated and mirrored for display. (string)
@@ -3717,27 +3717,27 @@ const TAG_IMAGE: string | null
  * Rotations indicated by the values are in clockwise direction and
  * 'flip' means an horizontal mirroring.
  */
-const TAG_IMAGE_ORIENTATION: string | null
+const TAG_IMAGE_ORIENTATION: string
 /**
  * Information about the people behind a remix and similar
  * interpretations of another existing piece (string)
  */
-const TAG_INTERPRETED_BY: string | null
+const TAG_INTERPRETED_BY: string
 /**
  * International Standard Recording Code - see http://www.ifpi.org/isrc/ (string)
  */
-const TAG_ISRC: string | null
+const TAG_ISRC: string
 /**
  * comma separated keywords describing the content (string).
  */
-const TAG_KEYWORDS: string | null
+const TAG_KEYWORDS: string
 /**
  * ISO-639-2 or ISO-639-1 code for the language the content is in (string)
  * 
  * There is utility API in libgsttag in gst-plugins-base to obtain a translated
  * language name from the language code: `gst_tag_get_language_name()`
  */
-const TAG_LANGUAGE_CODE: string | null
+const TAG_LANGUAGE_CODE: string
 /**
  * Name of the language the content is in (string)
  * 
@@ -3745,56 +3745,56 @@ const TAG_LANGUAGE_CODE: string | null
  * is not available. This tag should not be set in addition to a language
  * code. It is undefined what language or locale the language name is in.
  */
-const TAG_LANGUAGE_NAME: string | null
+const TAG_LANGUAGE_NAME: string
 /**
  * license of data (string)
  */
-const TAG_LICENSE: string | null
+const TAG_LICENSE: string
 /**
  * URI to location where license details can be found (string)
  */
-const TAG_LICENSE_URI: string | null
+const TAG_LICENSE_URI: string
 /**
  * Origin of media as a URI (location, where the original of the file or stream
  * is hosted) (string)
  */
-const TAG_LOCATION: string | null
+const TAG_LOCATION: string
 /**
  * The lyrics of the media (string)
  */
-const TAG_LYRICS: string | null
+const TAG_LYRICS: string
 /**
  * maximum bitrate in bits/s (unsigned integer)
  */
-const TAG_MAXIMUM_BITRATE: string | null
+const TAG_MAXIMUM_BITRATE: string
 /**
  * [Midi note number](http://en.wikipedia.org/wiki/Note#Note_designation_in_accordance_with_octave_name)
  * of the audio track. This is useful for sample instruments and in particular
  * for multi-samples.
  */
-const TAG_MIDI_BASE_NOTE: string | null
+const TAG_MIDI_BASE_NOTE: string
 /**
  * minimum bitrate in bits/s (unsigned integer)
  */
-const TAG_MINIMUM_BITRATE: string | null
+const TAG_MINIMUM_BITRATE: string
 /**
  * nominal bitrate in bits/s (unsigned integer). The actual bitrate might be
  * different from this target bitrate.
  */
-const TAG_NOMINAL_BITRATE: string | null
+const TAG_NOMINAL_BITRATE: string
 /**
  * organization (string)
  */
-const TAG_ORGANIZATION: string | null
+const TAG_ORGANIZATION: string
 /**
  * person(s) performing (string)
  */
-const TAG_PERFORMER: string | null
+const TAG_PERFORMER: string
 /**
  * image that is meant for preview purposes, e.g. small icon-sized version
  * (sample) (sample taglist should specify the content type)
  */
-const TAG_PREVIEW_IMAGE: string | null
+const TAG_PREVIEW_IMAGE: string
 /**
  * Any private data that may be contained in tags (sample).
  * 
@@ -3807,81 +3807,81 @@ const TAG_PREVIEW_IMAGE: string | null
  * "ID3PrivateFrame" and contain a field named "owner" of type string
  * which contains the owner-identification string from the tag.
  */
-const TAG_PRIVATE_DATA: string | null
+const TAG_PRIVATE_DATA: string
 /**
  * Name of the label or publisher (string)
  */
-const TAG_PUBLISHER: string | null
+const TAG_PUBLISHER: string
 /**
  * reference level of track and album gain values (double)
  */
-const TAG_REFERENCE_LEVEL: string | null
+const TAG_REFERENCE_LEVEL: string
 /**
  * serial number of track (unsigned integer)
  */
-const TAG_SERIAL: string | null
+const TAG_SERIAL: string
 /**
  * Number of the episode within a season/show (unsigned integer)
  */
-const TAG_SHOW_EPISODE_NUMBER: string | null
+const TAG_SHOW_EPISODE_NUMBER: string
 /**
  * Name of the show, used for displaying (string)
  */
-const TAG_SHOW_NAME: string | null
+const TAG_SHOW_NAME: string
 /**
  * Number of the season of a show/series (unsigned integer)
  */
-const TAG_SHOW_SEASON_NUMBER: string | null
+const TAG_SHOW_SEASON_NUMBER: string
 /**
  * Name of the show, used for sorting (string)
  */
-const TAG_SHOW_SORTNAME: string | null
+const TAG_SHOW_SORTNAME: string
 /**
  * codec/format the subtitle data is stored in (string)
  */
-const TAG_SUBTITLE_CODEC: string | null
+const TAG_SUBTITLE_CODEC: string
 /**
  * commonly used title (string)
  * 
  * The title as it should be displayed, e.g. 'The Doll House'
  */
-const TAG_TITLE: string | null
+const TAG_TITLE: string
 /**
  * commonly used title, as used for sorting (string)
  * 
  * The title as it should be sorted, e.g. 'Doll House, The'
  */
-const TAG_TITLE_SORTNAME: string | null
+const TAG_TITLE_SORTNAME: string
 /**
  * count of tracks inside collection this track belongs to (unsigned integer)
  */
-const TAG_TRACK_COUNT: string | null
+const TAG_TRACK_COUNT: string
 /**
  * track gain in db (double)
  */
-const TAG_TRACK_GAIN: string | null
+const TAG_TRACK_GAIN: string
 /**
  * track number inside a collection (unsigned integer)
  */
-const TAG_TRACK_NUMBER: string | null
+const TAG_TRACK_NUMBER: string
 /**
  * peak of the track (double)
  */
-const TAG_TRACK_PEAK: string | null
+const TAG_TRACK_PEAK: string
 /**
  * Rating attributed by a person (likely the application user).
  * The higher the value, the more the user likes this media
  * (unsigned int from 0 to 100)
  */
-const TAG_USER_RATING: string | null
+const TAG_USER_RATING: string
 /**
  * version of this data (string)
  */
-const TAG_VERSION: string | null
+const TAG_VERSION: string
 /**
  * codec the video data is stored in (string)
  */
-const TAG_VIDEO_CODEC: string | null
+const TAG_VIDEO_CODEC: string
 /**
  * Special value for the repeat_count set in gst_toc_entry_set_loop() or
  * returned by gst_toc_entry_set_loop() to indicate infinite looping.
@@ -3967,7 +3967,7 @@ function bufferListTake(oldList: BufferList, newList: BufferList | null): [ /* r
  * @param features a string representation of a #GstCapsFeatures.
  * @returns a new #GstCapsFeatures or     %NULL when the string could not be parsed.
  */
-function capsFeaturesFromString(features: string | null): CapsFeatures | null
+function capsFeaturesFromString(features: string): CapsFeatures | null
 /**
  * Converts `caps` from a string representation.
  * 
@@ -3976,7 +3976,7 @@ function capsFeaturesFromString(features: string | null): CapsFeatures | null
  * @param string a string to convert to #GstCaps
  * @returns a newly allocated #GstCaps
  */
-function capsFromString(string: string | null): Caps | null
+function capsFromString(string: string): Caps | null
 /**
  * Modifies a pointer to a #GstContext to point to a different #GstContext. The
  * modification is done atomically (so this is useful for ensuring thread safety
@@ -4089,7 +4089,7 @@ function debugIsColored(): boolean
  * @param level the level to get the name for
  * @returns the name
  */
-function debugLevelGetName(level: DebugLevel): string | null
+function debugLevelGetName(level: DebugLevel): string
 /**
  * The default logging handler used by GStreamer. Logging functions get called
  * whenever a macro like GST_DEBUG or similar is used. By default this function
@@ -4109,7 +4109,7 @@ function debugLevelGetName(level: DebugLevel): string | null
  * @param message the actual message
  * @param userData the FILE* to log to
  */
-function debugLogDefault(category: DebugCategory, level: DebugLevel, file: string | null, function_: string | null, line: number, object: GObject.Object | null, message: DebugMessage, userData: any | null): void
+function debugLogDefault(category: DebugCategory, level: DebugLevel, file: string, function_: string, line: number, object: GObject.Object | null, message: DebugMessage, userData: any | null): void
 /**
  * Returns the string representation for the specified debug log message
  * formatted in the same way as gst_debug_log_default() (the default handler),
@@ -4124,7 +4124,7 @@ function debugLogDefault(category: DebugCategory, level: DebugLevel, file: strin
  * @param object the object this message relates to,     or %NULL if none
  * @param message the actual message
  */
-function debugLogGetLine(category: DebugCategory, level: DebugLevel, file: string | null, function_: string | null, line: number, object: GObject.Object | null, message: DebugMessage): string | null
+function debugLogGetLine(category: DebugCategory, level: DebugLevel, file: string, function_: string, line: number, object: GObject.Object | null, message: DebugMessage): string | null
 /**
  * Logs the given message using the currently registered debugging handlers.
  * @param category category to log
@@ -4135,7 +4135,7 @@ function debugLogGetLine(category: DebugCategory, level: DebugLevel, file: strin
  * @param id the identifier of the object this message relates to    or %NULL if none
  * @param messageString a message string
  */
-function debugLogIdLiteral(category: DebugCategory, level: DebugLevel, file: string | null, function_: string | null, line: number, id: string | null, messageString: string | null): void
+function debugLogIdLiteral(category: DebugCategory, level: DebugLevel, file: string, function_: string, line: number, id: string | null, messageString: string): void
 /**
  * Logs the given message using the currently registered debugging handlers.
  * @param category category to log
@@ -4146,7 +4146,7 @@ function debugLogIdLiteral(category: DebugCategory, level: DebugLevel, file: str
  * @param object the object this message relates to,     or %NULL if none
  * @param messageString a message string
  */
-function debugLogLiteral(category: DebugCategory, level: DebugLevel, file: string | null, function_: string | null, line: number, object: GObject.Object | null, messageString: string | null): void
+function debugLogLiteral(category: DebugCategory, level: DebugLevel, file: string, function_: string, line: number, object: GObject.Object | null, messageString: string): void
 /**
  * If libunwind, glibc backtrace or DbgHelp are present
  * a stack trace is printed.
@@ -4197,7 +4197,7 @@ function debugSetColorMode(mode: DebugColorMode): void
  * This function may be called before gst_init().
  * @param mode The coloring mode for debug output. One of the following: "on", "auto", "off", "disable", "unix".
  */
-function debugSetColorModeFromString(mode: string | null): void
+function debugSetColorModeFromString(mode: string): void
 /**
  * Sets or unsets the use of coloured debugging output.
  * Same as gst_debug_set_color_mode () with the argument being
@@ -4221,7 +4221,7 @@ function debugSetDefaultThreshold(level: DebugLevel): void
  * @param name name of the categories to set
  * @param level level to set them to
  */
-function debugSetThresholdForName(name: string | null, level: DebugLevel): void
+function debugSetThresholdForName(name: string, level: DebugLevel): void
 /**
  * Sets the debug logging wanted in the same form as with the GST_DEBUG
  * environment variable. You can use wildcards such as `*`, but note that
@@ -4230,12 +4230,12 @@ function debugSetThresholdForName(name: string | null, level: DebugLevel): void
  * @param list comma-separated list of "category:level" pairs to be used     as debug logging levels
  * @param reset %TRUE to clear all previously-set debug levels before setting     new thresholds %FALSE if adding the threshold described by `list` to the one already set.
  */
-function debugSetThresholdFromString(list: string | null, reset: boolean): void
+function debugSetThresholdFromString(list: string, reset: boolean): void
 /**
  * Resets all categories with the given name back to the default level.
  * @param name name of the categories to set
  */
-function debugUnsetThresholdForName(name: string | null): void
+function debugUnsetThresholdForName(name: string): void
 /**
  * Clean up any resources created by GStreamer in gst_init().
  * 
@@ -4271,7 +4271,7 @@ function eventTypeGetFlags(type: EventType): EventTypeFlags
  * @param type the event type
  * @returns a reference to the static name of the event.
  */
-function eventTypeGetName(type: EventType): string | null
+function eventTypeGetName(type: EventType): string
 /**
  * Get the unique quark for the given event type.
  * @param type the event type
@@ -4302,7 +4302,7 @@ function filenameToUri(filename: string): string | null
  * @param ret a #GstFlowReturn to get the name of.
  * @returns a static string with the name of the flow return.
  */
-function flowGetName(ret: FlowReturn): string | null
+function flowGetName(ret: FlowReturn): string
 /**
  * Get the unique quark for the given GstFlowReturn.
  * @param ret a #GstFlowReturn to get the quark of.
@@ -4314,7 +4314,7 @@ function flowToQuark(ret: FlowReturn): GLib.Quark
  * @param nick The nick of the format
  * @returns The format with @nick or GST_FORMAT_UNDEFINED if the format was not registered.
  */
-function formatGetByNick(nick: string | null): Format
+function formatGetByNick(nick: string): Format
 /**
  * Get details about the given format.
  * @param format The format to get details of
@@ -4340,7 +4340,7 @@ function formatIterateDefinitions(): Iterator
  * @param description The description of the new format
  * @returns A new GstFormat or an already registered format with the same nick. MT safe.
  */
-function formatRegister(nick: string | null, description: string | null): Format
+function formatRegister(nick: string, description: string): Format
 /**
  * Get the unique quark for the given format.
  * @param format a #GstFormat
@@ -4420,7 +4420,7 @@ function messageTake(oldMessage: Message, newMessage: Message | null): [ /* retu
  * @param type the message type
  * @returns a reference to the static name of the message.
  */
-function messageTypeGetName(type: MessageType): string | null
+function messageTypeGetName(type: MessageType): string
 /**
  * Get the unique quark for the given message type.
  * @param type the message type
@@ -4442,14 +4442,14 @@ function metaApiTypeHasTag(api: GObject.GType, tag: GLib.Quark): boolean
  * @param tags tags for `api`
  * @returns a unique GType for @api.
  */
-function metaApiTypeRegister(api: string | null, tags: string[]): GObject.GType
+function metaApiTypeRegister(api: string, tags: string[]): GObject.GType
 /**
  * Lookup a previously registered meta info structure by its implementation name
  * `impl`.
  * @param impl the name
  * @returns a #GstMetaInfo with @impl, or %NULL when no such metainfo exists.
  */
-function metaGetInfo(impl: string | null): MetaInfo | null
+function metaGetInfo(impl: string): MetaInfo | null
 /**
  * Register a new #GstMeta implementation.
  * 
@@ -4463,7 +4463,7 @@ function metaGetInfo(impl: string | null): MetaInfo | null
  * @param transformFunc a #GstMetaTransformFunction
  * @returns a #GstMetaInfo that can be used to access metadata.
  */
-function metaRegister(api: GObject.GType, impl: string | null, size: number, initFunc: MetaInitFunction, freeFunc: MetaFreeFunction, transformFunc: MetaTransformFunction): MetaInfo
+function metaRegister(api: GObject.GType, impl: string, size: number, initFunc: MetaInitFunction, freeFunc: MetaFreeFunction, transformFunc: MetaTransformFunction): MetaInfo
 /**
  * Register a new custom #GstMeta implementation, backed by an opaque
  * structure holding a #GstStructure.
@@ -4483,7 +4483,7 @@ function metaRegister(api: GObject.GType, impl: string | null, size: number, ini
  * @param transformFunc a #GstMetaTransformFunction
  * @returns a #GstMetaInfo that can be used to access metadata.
  */
-function metaRegisterCustom(name: string | null, tags: string[], transformFunc: CustomMetaTransformFunction | null): MetaInfo
+function metaRegisterCustom(name: string, tags: string[], transformFunc: CustomMetaTransformFunction | null): MetaInfo
 /**
  * Atomically modifies a pointer to point to a new mini-object.
  * The reference count of `olddata` is decreased and the reference count of
@@ -4512,7 +4512,7 @@ function miniObjectTake(olddata: MiniObject, newdata: MiniObject): [ /* returnTy
  * @param mode the pad mode
  * @returns short mnemonic for pad mode @mode
  */
-function padModeGetName(mode: PadMode): string | null
+function padModeGetName(mode: PadMode): string
 /**
  * This function creates a GstArray GParamSpec for use by objects/elements
  * that want to expose properties of GstArray type. This function is
@@ -4525,7 +4525,7 @@ function padModeGetName(mode: PadMode): string | null
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecArray(name: string | null, nick: string | null, blurb: string | null, elementSpec: GObject.ParamSpec, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecArray(name: string, nick: string, blurb: string, elementSpec: GObject.ParamSpec, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * This function creates a fraction GParamSpec for use by objects/elements
  * that want to expose properties of fraction type. This function is typically
@@ -4543,7 +4543,7 @@ function paramSpecArray(name: string | null, nick: string | null, blurb: string 
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecFraction(name: string | null, nick: string | null, blurb: string | null, minNum: number, minDenom: number, maxNum: number, maxDenom: number, defaultNum: number, defaultDenom: number, flags: GObject.ParamFlags): GObject.ParamSpec | null
+function paramSpecFraction(name: string, nick: string, blurb: string, minNum: number, minDenom: number, maxNum: number, maxDenom: number, defaultNum: number, defaultDenom: number, flags: GObject.ParamFlags): GObject.ParamSpec | null
 function parentBufferMetaApiGetType(): GObject.GType
 /**
  * Gets the global #GstMetaInfo describing  the #GstParentBufferMeta meta.
@@ -4564,7 +4564,7 @@ function parentBufferMetaGetInfo(): MetaInfo
  * @param ghostUnlinkedPads whether to automatically create ghost pads     for unlinked source or sink pads within the bin
  * @returns a   newly-created bin, or %NULL if an error occurred.
  */
-function parseBinFromDescription(binDescription: string | null, ghostUnlinkedPads: boolean): Bin
+function parseBinFromDescription(binDescription: string, ghostUnlinkedPads: boolean): Bin
 /**
  * This is a convenience wrapper around gst_parse_launch() to create a
  * #GstBin from a gst-launch-style pipeline description. See
@@ -4581,7 +4581,7 @@ function parseBinFromDescription(binDescription: string | null, ghostUnlinkedPad
  * @param flags parsing options, or #GST_PARSE_FLAG_NONE
  * @returns a newly-created   element, which is guaranteed to be a bin unless   #GST_PARSE_FLAG_NO_SINGLE_ELEMENT_BINS was passed, or %NULL if an error   occurred.
  */
-function parseBinFromDescriptionFull(binDescription: string | null, ghostUnlinkedPads: boolean, context: ParseContext | null, flags: ParseFlags): Element
+function parseBinFromDescriptionFull(binDescription: string, ghostUnlinkedPads: boolean, context: ParseContext | null, flags: ParseFlags): Element
 /**
  * Get the error quark used by the parsing subsystem.
  * @returns the quark of the parse errors.
@@ -4598,7 +4598,7 @@ function parseErrorQuark(): GLib.Quark
  * @param pipelineDescription the command line describing the pipeline
  * @returns a new element on success, %NULL on   failure. If more than one toplevel element is specified by the   @pipeline_description, all elements are put into a #GstPipeline, which   than is returned.
  */
-function parseLaunch(pipelineDescription: string | null): Element
+function parseLaunch(pipelineDescription: string): Element
 /**
  * Create a new pipeline based on command line syntax.
  * Please note that you might get a return value that is not %NULL even though
@@ -4612,7 +4612,7 @@ function parseLaunch(pipelineDescription: string | null): Element
  * @param flags parsing options, or #GST_PARSE_FLAG_NONE
  * @returns a new element on success, %NULL on    failure. If more than one toplevel element is specified by the    @pipeline_description, all elements are put into a #GstPipeline, which    then is returned (unless the GST_PARSE_FLAG_PLACE_IN_BIN flag is set, in    which case they are put in a #GstBin instead).
  */
-function parseLaunchFull(pipelineDescription: string | null, context: ParseContext | null, flags: ParseFlags): Element
+function parseLaunchFull(pipelineDescription: string, context: ParseContext | null, flags: ParseFlags): Element
 /**
  * Create a new element based on command line syntax.
  * `error` will contain an error message if an erroneous pipeline is specified.
@@ -4689,7 +4689,7 @@ function queryTypeGetFlags(type: QueryType): QueryTypeFlags
  * @param type the query type
  * @returns a reference to the static name of the query.
  */
-function queryTypeGetName(type: QueryType): string | null
+function queryTypeGetName(type: QueryType): string
 /**
  * Get the unique quark for the given query type.
  * @param type the query type
@@ -4725,7 +4725,7 @@ function segtrapSetEnabled(enabled: boolean): void
  * @param transition a #GstStateChange to get the name of.
  * @returns a string with the name of the state    result.
  */
-function stateChangeGetName(transition: StateChange): string | null
+function stateChangeGetName(transition: StateChange): string
 function staticCapsGetType(): GObject.GType
 function staticPadTemplateGetType(): GObject.GType
 function streamErrorQuark(): GLib.Quark
@@ -4734,7 +4734,7 @@ function streamErrorQuark(): GLib.Quark
  * @param stype a #GstStreamType
  * @returns A string describing the stream type
  */
-function streamTypeGetName(stype: StreamType): string | null
+function streamTypeGetName(stype: StreamType): string
 /**
  * Atomically modifies a pointer to point to a new structure.
  * The #GstStructure `oldstr_ptr` is pointing to is freed and
@@ -4754,40 +4754,40 @@ function structureTake(oldstrPtr: Structure | null, newstr: Structure | null): [
  * @param tag name of the tag
  * @returns %TRUE if the type is already registered
  */
-function tagExists(tag: string | null): boolean
+function tagExists(tag: string): boolean
 /**
  * Returns the human-readable description of this tag, You must not change or
  * free this string.
  * @param tag the tag
  * @returns the human-readable description of this tag
  */
-function tagGetDescription(tag: string | null): string | null
+function tagGetDescription(tag: string): string
 /**
  * Gets the flag of `tag`.
  * @param tag the tag
  * @returns the flag of this tag.
  */
-function tagGetFlag(tag: string | null): TagFlag
+function tagGetFlag(tag: string): TagFlag
 /**
  * Returns the human-readable name of this tag, You must not change or free
  * this string.
  * @param tag the tag
  * @returns the human-readable name of this tag
  */
-function tagGetNick(tag: string | null): string | null
+function tagGetNick(tag: string): string
 /**
  * Gets the #GType used for this tag.
  * @param tag the tag
  * @returns the #GType of this tag
  */
-function tagGetType(tag: string | null): GObject.GType
+function tagGetType(tag: string): GObject.GType
 /**
  * Checks if the given tag is fixed. A fixed tag can only contain one value.
  * Unfixed tags can contain lists of values.
  * @param tag tag to check
  * @returns %TRUE, if the given tag is fixed.
  */
-function tagIsFixed(tag: string | null): boolean
+function tagIsFixed(tag: string): boolean
 /**
  * Copies the contents for the given tag into the value,
  * merging multiple values into one if multiple values are associated
@@ -4797,7 +4797,7 @@ function tagIsFixed(tag: string | null): boolean
  * @param tag tag to read out
  * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the          given list.
  */
-function tagListCopyValue(list: TagList, tag: string | null): [ /* returnType */ boolean, /* dest */ any ]
+function tagListCopyValue(list: TagList, tag: string): [ /* returnType */ boolean, /* dest */ any ]
 /**
  * Modifies a pointer to a #GstTagList to point to a different #GstTagList. The
  * modification is done atomically (so this is useful for ensuring thread
@@ -4838,7 +4838,7 @@ function tagMergeUseFirst(src: any): /* dest */ any
  * @param type a #GstTocEntryType.
  * @returns Returns a human-readable string for @type. This string is    only for debugging purpose and should not be displayed in a user    interface.
  */
-function tocEntryTypeGetNick(type: TocEntryType): string | null
+function tocEntryTypeGetNick(type: TocEntryType): string
 /**
  * Get a list of all active tracer objects owned by the tracing framework for
  * the entirety of the run-time of the process or till gst_deinit() is called.
@@ -4852,7 +4852,7 @@ function tracingGetActiveTracers(): Tracer[]
  * @param detail the detailed hook
  * @param func the callback
  */
-function tracingRegisterHook(tracer: Tracer, detail: string | null, func: GObject.Callback): void
+function tracingRegisterHook(tracer: Tracer, detail: string, func: GObject.Callback): void
 function typeFindGetType(): GObject.GType
 /**
  * Registers a new typefind function to be used for typefinding. After
@@ -4866,7 +4866,7 @@ function typeFindGetType(): GObject.GType
  * @param possibleCaps Optionally the caps that could be returned when typefinding                 succeeds
  * @returns %TRUE on success, %FALSE otherwise
  */
-function typeFindRegister(plugin: Plugin | null, name: string | null, rank: number, func: TypeFindFunction, extensions: string | null, possibleCaps: Caps | null): boolean
+function typeFindRegister(plugin: Plugin | null, name: string, rank: number, func: TypeFindFunction, extensions: string | null, possibleCaps: Caps | null): boolean
 /**
  * Checks if `type` is plugin API. See gst_type_mark_as_plugin_api() for
  * details.
@@ -4917,7 +4917,7 @@ function updateRegistry(): boolean
  * @param location Location for URI
  * @returns a new string for this URI.
  */
-function uriConstruct(protocol: string | null, location: string | null): string | null
+function uriConstruct(protocol: string, location: string): string | null
 function uriErrorQuark(): GLib.Quark
 /**
  * Parses a URI string into a new #GstUri object. Will return NULL if the URI
@@ -4925,7 +4925,7 @@ function uriErrorQuark(): GLib.Quark
  * @param uri The URI string to parse.
  * @returns A new #GstUri object, or NULL.
  */
-function uriFromString(uri: string | null): Uri | null
+function uriFromString(uri: string): Uri | null
 /**
  * Parses a URI string into a new #GstUri object. Will return NULL if the URI
  * cannot be parsed. This is identical to gst_uri_from_string() except that
@@ -4943,7 +4943,7 @@ function uriFromString(uri: string | null): Uri | null
  * @param uri The URI string to parse.
  * @returns A new #GstUri object, or NULL.
  */
-function uriFromStringEscaped(uri: string | null): Uri | null
+function uriFromStringEscaped(uri: string): Uri | null
 /**
  * Extracts the location out of a given valid URI, ie. the protocol and "://"
  * are stripped from the URI, which means that the location returned includes
@@ -4954,28 +4954,28 @@ function uriFromStringEscaped(uri: string | null): Uri | null
  * @param uri A URI string
  * @returns the location for this URI. Returns     %NULL if the URI isn't valid. If the URI does not contain a location, an     empty string is returned.
  */
-function uriGetLocation(uri: string | null): string | null
+function uriGetLocation(uri: string): string | null
 /**
  * Extracts the protocol out of a given valid URI. The returned string must be
  * freed using g_free().
  * @param uri A URI string
  * @returns The protocol for this URI.
  */
-function uriGetProtocol(uri: string | null): string | null
+function uriGetProtocol(uri: string): string | null
 /**
  * Checks if the protocol of a given valid URI matches `protocol`.
  * @param uri a URI string
  * @param protocol a protocol string (e.g. "http")
  * @returns %TRUE if the protocol matches.
  */
-function uriHasProtocol(uri: string | null, protocol: string | null): boolean
+function uriHasProtocol(uri: string, protocol: string): boolean
 /**
  * Tests if the given string is a valid URI identifier. URIs start with a valid
  * scheme followed by ":" and maybe a string identifying the location.
  * @param uri A URI string
  * @returns %TRUE if the string is a valid URI
  */
-function uriIsValid(uri: string | null): boolean
+function uriIsValid(uri: string): boolean
 /**
  * This is a convenience function to join two URI strings and return the result.
  * The returned string should be g_free()'d after use.
@@ -4983,7 +4983,7 @@ function uriIsValid(uri: string | null): boolean
  * @param refUri The percent-encoded reference URI to join to the `base_uri`.
  * @returns A string representing the percent-encoded join of          the two URIs.
  */
-function uriJoinStrings(baseUri: string | null, refUri: string | null): string | null
+function uriJoinStrings(baseUri: string, refUri: string): string | null
 /**
  * Checks if an element exists that supports the given URI protocol. Note
  * that a positive return value does not imply that a subsequent call to
@@ -4992,7 +4992,7 @@ function uriJoinStrings(baseUri: string | null, refUri: string | null): string |
  * @param protocol Protocol that should be checked for (e.g. "http" or "smb")
  * @returns %TRUE
  */
-function uriProtocolIsSupported(type: URIType, protocol: string | null): boolean
+function uriProtocolIsSupported(type: URIType, protocol: string): boolean
 /**
  * Tests if the given string is a valid protocol identifier. Protocols
  * must consist of alphanumeric characters, '+', '-' and '.' and must
@@ -5000,7 +5000,7 @@ function uriProtocolIsSupported(type: URIType, protocol: string | null): boolean
  * @param protocol A string
  * @returns %TRUE if the string is a valid protocol identifier, %FALSE otherwise.
  */
-function uriProtocolIsValid(protocol: string | null): boolean
+function uriProtocolIsValid(protocol: string): boolean
 /**
  * Searches inside `array` for `search_data` by using the comparison function
  * `search_func`. `array` must be sorted ascending.
@@ -5078,7 +5078,7 @@ function utilGdoubleToGuint64(value: number): number
  * @param object the object to set the array to
  * @param name the name of the property to set
  */
-function utilGetObjectArray(object: GObject.Object, name: string | null): [ /* returnType */ boolean, /* array */ GObject.ValueArray ]
+function utilGetObjectArray(object: GObject.Object, name: string): [ /* returnType */ boolean, /* array */ GObject.ValueArray ]
 /**
  * Get a timestamp as GstClockTime to be used for interval measurements.
  * The timestamp should not be interpreted in any other way.
@@ -5143,7 +5143,7 @@ function utilSeqnumNext(): number
  * @param name the name of the argument to set
  * @param value the string value to set
  */
-function utilSetObjectArg(object: GObject.Object, name: string | null, value: string | null): void
+function utilSetObjectArg(object: GObject.Object, name: string, value: string): void
 /**
  * Transfer a #GValueArray to %GST_TYPE_ARRAY and set this value on the
  * specified property name. This allow language bindings to set GST_TYPE_ARRAY
@@ -5152,7 +5152,7 @@ function utilSetObjectArg(object: GObject.Object, name: string | null, value: st
  * @param name the name of the property to set
  * @param array a #GValueArray containing the values
  */
-function utilSetObjectArray(object: GObject.Object, name: string | null, array: GObject.ValueArray): boolean
+function utilSetObjectArray(object: GObject.Object, name: string, array: GObject.ValueArray): boolean
 /**
  * Converts the string to the type of the value and
  * sets the value with it.
@@ -5161,7 +5161,7 @@ function utilSetObjectArray(object: GObject.Object, name: string | null, array: 
  * if the conversion worked or not.
  * @param valueStr the string to get the value from
  */
-function utilSetValueFromString(valueStr: string | null): /* value */ any
+function utilSetValueFromString(valueStr: string): /* value */ any
 /**
  * Calculates the simpler representation of `numerator` and `denominator` and
  * update both values with the resulting simplified fraction.
@@ -5297,7 +5297,7 @@ function valueCompare(value1: any, value2: any): number
  * @param src string to deserialize
  * @returns %TRUE on success
  */
-function valueDeserialize(src: string | null): [ /* returnType */ boolean, /* dest */ any ]
+function valueDeserialize(src: string): [ /* returnType */ boolean, /* dest */ any ]
 /**
  * Tries to deserialize a string into the type specified by the given GValue.
  * `pspec` may be used to guide the deserializing of nested members.
@@ -5306,7 +5306,7 @@ function valueDeserialize(src: string | null): [ /* returnType */ boolean, /* de
  * @param pspec the #GParamSpec describing the expected value
  * @returns %TRUE on success
  */
-function valueDeserializeWithPspec(src: string | null, pspec: GObject.ParamSpec | null): [ /* returnType */ boolean, /* dest */ any ]
+function valueDeserializeWithPspec(src: string, pspec: GObject.ParamSpec | null): [ /* returnType */ boolean, /* dest */ any ]
 /**
  * Fixate `src` into a new value `dest`.
  * For ranges, the first element is taken. For lists and arrays, the
@@ -5906,7 +5906,7 @@ interface IteratorResyncFunction {
  * @param message the message
  */
 interface LogFunction {
-    (category: DebugCategory, level: DebugLevel, file: string | null, function_: string | null, line: number, object: GObject.Object, message: DebugMessage): void
+    (category: DebugCategory, level: DebugLevel, file: string, function_: string, line: number, object: GObject.Object, message: DebugMessage): void
 }
 /**
  * Copy `size` bytes from `mem` starting at `offset` and return them wrapped in a
@@ -6377,7 +6377,7 @@ interface StructureMapFunc {
  * @param tag a name of a tag in `list`
  */
 interface TagForeachFunc {
-    (list: TagList, tag: string | null): void
+    (list: TagList, tag: string): void
 }
 /**
  * A function for merging multiple values of a tag used when registering
@@ -6439,7 +6439,7 @@ interface ValueCompareFunc {
  * @returns %TRUE for success
  */
 interface ValueDeserializeFunc {
-    (dest: any, s: string | null): boolean
+    (dest: any, s: string): boolean
 }
 /**
  * Used by gst_value_deserialize_with_pspec() to parse a non-binary form into the #GValue.
@@ -6450,7 +6450,7 @@ interface ValueDeserializeFunc {
  * @returns %TRUE for success
  */
 interface ValueDeserializeWithPSpecFunc {
-    (dest: any, s: string | null, pspec: GObject.ParamSpec): boolean
+    (dest: any, s: string, pspec: GObject.ParamSpec): boolean
 }
 /**
  * Used by gst_value_serialize() to obtain a non-binary form of the #GValue.
@@ -6497,10 +6497,10 @@ interface ChildProxy {
 
     // Owm methods of Gst-1.0.Gst.ChildProxy
 
-    // Has conflict: childAdded(child: GObject.Object, name: string | null): void
-    // Has conflict: childRemoved(child: GObject.Object, name: string | null): void
+    // Has conflict: childAdded(child: GObject.Object, name: string): void
+    // Has conflict: childRemoved(child: GObject.Object, name: string): void
     // Has conflict: getChildByIndex(index: number): GObject.Object | null
-    // Has conflict: getChildByName(name: string | null): GObject.Object | null
+    // Has conflict: getChildByName(name: string): GObject.Object | null
     /**
      * Looks up a child element by the given full-path name.
      * 
@@ -6513,14 +6513,14 @@ interface ChildProxy {
      * @param name the full-path child's name
      * @returns the child object or %NULL if     not found.
      */
-    getChildByNameRecurse(name: string | null): GObject.Object | null
+    getChildByNameRecurse(name: string): GObject.Object | null
     // Has conflict: getChildrenCount(): number
     /**
      * Gets a single property using the GstChildProxy mechanism.
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    getProperty(name: string | null): /* value */ any
+    getProperty(name: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -6550,13 +6550,13 @@ interface ChildProxy {
      * @param name name of the property to look up
      * @returns %TRUE if @target and @pspec could be found. %FALSE otherwise. In that case the values for @pspec and @target are not modified. Unref @target after usage. For plain #GObject @target is the same as @object.
      */
-    lookup(name: string | null): [ /* returnType */ boolean, /* target */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup(name: string): [ /* returnType */ boolean, /* target */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Sets a single property using the GstChildProxy mechanism.
      * @param name name of the property to set
      * @param value new #GValue for the property
      */
-    setProperty(name: string | null, value: any): void
+    setProperty(name: string, value: any): void
 
     // Overloads of setProperty
 
@@ -6575,14 +6575,14 @@ interface ChildProxy {
      * @param child the newly added child
      * @param name the name of the new child
      */
-    childAdded(child: GObject.Object, name: string | null): void
+    childAdded(child: GObject.Object, name: string): void
     /**
      * Emits the #GstChildProxy::child-removed signal.
      * @virtual 
      * @param child the removed child
      * @param name the name of the old child
      */
-    childRemoved(child: GObject.Object, name: string | null): void
+    childRemoved(child: GObject.Object, name: string): void
     /**
      * Fetches a child by its number.
      * @virtual 
@@ -6600,7 +6600,7 @@ interface ChildProxy {
      * @param name the child's name
      * @returns the child object or %NULL if     not found.
      */
-    getChildByName(name: string | null): GObject.Object | null
+    getChildByName(name: string): GObject.Object | null
     /**
      * Gets the number of child objects this parent contains.
      * @virtual 
@@ -6681,8 +6681,8 @@ interface Preset {
 
     // Owm methods of Gst-1.0.Gst.Preset
 
-    // Has conflict: deletePreset(name: string | null): boolean
-    // Has conflict: getMeta(name: string | null, tag: string | null): [ /* returnType */ boolean, /* value */ string | null ]
+    // Has conflict: deletePreset(name: string): boolean
+    // Has conflict: getMeta(name: string, tag: string): [ /* returnType */ boolean, /* value */ string | null ]
     // Has conflict: getPresetNames(): string[]
     // Has conflict: getPropertyNames(): string[]
     /**
@@ -6690,10 +6690,10 @@ interface Preset {
      * @returns %TRUE if presets are editable or %FALSE if they are static
      */
     isEditable(): boolean
-    // Has conflict: loadPreset(name: string | null): boolean
-    // Has conflict: renamePreset(oldName: string | null, newName: string | null): boolean
-    // Has conflict: savePreset(name: string | null): boolean
-    // Has conflict: setMeta(name: string | null, tag: string | null, value: string | null): boolean
+    // Has conflict: loadPreset(name: string): boolean
+    // Has conflict: renamePreset(oldName: string, newName: string): boolean
+    // Has conflict: savePreset(name: string): boolean
+    // Has conflict: setMeta(name: string, tag: string, value: string | null): boolean
 
     // Own virtual methods of Gst-1.0.Gst.Preset
 
@@ -6703,7 +6703,7 @@ interface Preset {
      * @param name preset name to remove
      * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
      */
-    deletePreset(name: string | null): boolean
+    deletePreset(name: string): boolean
     /**
      * Gets the `value` for an existing meta data `tag`. Meta data `tag` names can be
      * something like e.g. "comment". Returned values need to be released when done.
@@ -6712,7 +6712,7 @@ interface Preset {
      * @param tag meta data item name
      * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name or no value for the given @tag
      */
-    getMeta(name: string | null, tag: string | null): [ /* returnType */ boolean, /* value */ string | null ]
+    getMeta(name: string, tag: string): [ /* returnType */ boolean, /* value */ string | null ]
     /**
      * Get a copy of preset names as a %NULL terminated string array.
      * @virtual 
@@ -6731,7 +6731,7 @@ interface Preset {
      * @param name preset name to load
      * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
      */
-    loadPreset(name: string | null): boolean
+    loadPreset(name: string): boolean
     /**
      * Renames a preset. If there is already a preset by the `new_name` it will be
      * overwritten.
@@ -6740,7 +6740,7 @@ interface Preset {
      * @param newName new preset name
      * @returns %TRUE for success, %FALSE if e.g. there is no preset with @old_name
      */
-    renamePreset(oldName: string | null, newName: string | null): boolean
+    renamePreset(oldName: string, newName: string): boolean
     /**
      * Save the current object settings as a preset under the given name. If there
      * is already a preset by this `name` it will be overwritten.
@@ -6748,7 +6748,7 @@ interface Preset {
      * @param name preset name to save
      * @returns %TRUE for success, %FALSE
      */
-    savePreset(name: string | null): boolean
+    savePreset(name: string): boolean
     /**
      * Sets a new `value` for an existing meta data item or adds a new item. Meta
      * data `tag` names can be something like e.g. "comment". Supplying %NULL for the
@@ -6759,7 +6759,7 @@ interface Preset {
      * @param value new value
      * @returns %TRUE for success, %FALSE if e.g. there is no preset with that @name
      */
-    setMeta(name: string | null, tag: string | null, value: string | null): boolean
+    setMeta(name: string, tag: string, value: string | null): boolean
 
     // Class property signals of Gst-1.0.Gst.Preset
 
@@ -6855,7 +6855,7 @@ interface TagSetter extends Element {
      * @param tag tag to set
      * @param value GValue to set for the tag
      */
-    addTagValue(mode: TagMergeMode, tag: string | null, value: any): void
+    addTagValue(mode: TagMergeMode, tag: string, value: any): void
     /**
      * Returns the current list of tags the setter uses.  The list should not be
      * modified or freed.
@@ -7147,7 +7147,7 @@ interface URIHandler {
      * @returns the #GstURIType of the URI handler. Returns #GST_URI_UNKNOWN if the @handler isn't implemented correctly.
      */
     getUriType(): URIType
-    // Has conflict: setUri(uri: string | null): boolean
+    // Has conflict: setUri(uri: string): boolean
 
     // Own virtual methods of Gst-1.0.Gst.URIHandler
 
@@ -7163,7 +7163,7 @@ interface URIHandler {
      * @param uri URI to set
      * @returns %TRUE if the URI was set successfully, else %FALSE.
      */
-    setUri(uri: string | null): boolean
+    setUri(uri: string): boolean
 
     // Class property signals of Gst-1.0.Gst.URIHandler
 
@@ -7221,7 +7221,7 @@ interface Allocator {
     // Own fields of Gst-1.0.Gst.Allocator
 
     object: any
-    memType: string | null
+    memType: string
     /**
      * the implementation of the GstMemoryMapFunction
      * @field 
@@ -7388,7 +7388,7 @@ class Allocator extends Object {
      * @param name the name of the allocator
      * @param allocator #GstAllocator
      */
-    static register(name: string | null, allocator: Allocator): void
+    static register(name: string, allocator: Allocator): void
 }
 
 module Bin {
@@ -7581,14 +7581,14 @@ interface Bin extends ChildProxy {
      * @param name the element name to search for
      * @returns the #GstElement with the given name
      */
-    getByName(name: string | null): Element | null
+    getByName(name: string): Element | null
     /**
      * Gets the element with the given name from this bin. If the
      * element is not found, a recursion is performed on the parent bin.
      * @param name the element name to search for
      * @returns the #GstElement with the given name
      */
-    getByNameRecurseUp(name: string | null): Element | null
+    getByNameRecurseUp(name: string): Element | null
     getSuppressedFlags(): ElementFlags
     /**
      * Looks for all elements inside the bin with the given element factory name.
@@ -7597,7 +7597,7 @@ interface Bin extends ChildProxy {
      * @param factoryName the name of the #GstElementFactory
      * @returns a #GstIterator of #GstElement     for all elements in the bin with the given element factory name
      */
-    iterateAllByElementFactoryName(factoryName: string | null): Iterator | null
+    iterateAllByElementFactoryName(factoryName: string): Iterator | null
     /**
      * Looks for all elements inside the bin that implements the given
      * interface. You can safely cast all returned elements to the given interface.
@@ -7688,7 +7688,7 @@ interface Bin extends ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    getProperty(name: string | null): /* value */ any
+    getProperty(name: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -7739,7 +7739,7 @@ interface Bin extends ChildProxy {
      * @param name name of the property to set
      * @param value new #GValue for the property
      */
-    setProperty(name: string | null, value: any): void
+    setProperty(name: string, value: any): void
 
     // Overloads of setProperty
 
@@ -8083,7 +8083,7 @@ interface BufferPool {
      * @param option an option
      * @returns %TRUE if the buffer pool contains @option.
      */
-    hasOption(option: string | null): boolean
+    hasOption(option: string): boolean
     /**
      * Checks if `pool` is active. A pool can be activated with the
      * gst_buffer_pool_set_active() call.
@@ -8341,7 +8341,7 @@ class BufferPool extends Object {
      * @param config a #GstBufferPool configuration
      * @param option an option to add
      */
-    static configAddOption(config: Structure, option: string | null): void
+    static configAddOption(config: Structure, option: string): void
     /**
      * Gets the `allocator` and `params` from `config`.
      * @param config a #GstBufferPool configuration
@@ -8368,7 +8368,7 @@ class BufferPool extends Object {
      * @param option an option
      * @returns %TRUE if the options array contains @option.
      */
-    static configHasOption(config: Structure, option: string | null): boolean
+    static configHasOption(config: Structure, option: string): boolean
     /**
      * Retrieves the number of values currently stored in the options array of the
      * `config` structure.
@@ -9580,7 +9580,7 @@ interface ControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    getGValueArray(propertyName: string | null, timestamp: ClockTime, interval: ClockTime, values: any[]): boolean
+    getGValueArray(propertyName: string, timestamp: ClockTime, interval: ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
      * @virtual 
@@ -9597,7 +9597,7 @@ interface ControlBinding {
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    getValue(propertyName: string | null, timestamp: ClockTime): any | null
+    getValue(propertyName: string, timestamp: ClockTime): any | null
     /**
      * Sets the property of the `object,` according to the #GstControlSources that
      * handles it and for the given timestamp.
@@ -9865,7 +9865,7 @@ interface Device {
      * @param classes a "/"-separated list of device classes to match, only match if  all classes are matched
      * @returns %TRUE if @device matches.
      */
-    hasClasses(classes: string | null): boolean
+    hasClasses(classes: string): boolean
     /**
      * Check if `factory` matches all of the given classes
      * @param classes a %NULL terminated array of classes   to match, only match if all classes are matched
@@ -10348,7 +10348,7 @@ interface DeviceProvider {
      * @param key the key to get
      * @returns the metadata for @key.
      */
-    getMetadata(key: string | null): string | null
+    getMetadata(key: string): string
     /**
      * Make `provider` hide the devices from the factory with `name`.
      * 
@@ -10357,7 +10357,7 @@ interface DeviceProvider {
      * device provider with `name` to avoid duplicate devices.
      * @param name a provider factory name
      */
-    hideProvider(name: string | null): void
+    hideProvider(name: string): void
     /**
      * This function can be used to know if the `provider` was successfully started.
      */
@@ -10373,7 +10373,7 @@ interface DeviceProvider {
      * all devices again.
      * @param name a provider factory name
      */
-    unhideProvider(name: string | null): void
+    unhideProvider(name: string): void
 
     // Conflicting methods
 
@@ -10498,13 +10498,13 @@ class DeviceProvider extends Object {
      * @param type GType of device provider to register
      * @returns %TRUE, if the registering succeeded, %FALSE on error
      */
-    static register(plugin: Plugin | null, name: string | null, rank: number, type: GObject.GType): boolean
+    static register(plugin: Plugin | null, name: string, rank: number, type: GObject.GType): boolean
     /**
      * Set `key` with `value` as metadata in `klass`.
      * @param key the key to set
      * @param value the value to set
      */
-    static addMetadata(klass: DeviceProvider | Function | GObject.GType, key: string | null, value: string | null): void
+    static addMetadata(klass: DeviceProvider | Function | GObject.GType, key: string, value: string): void
     /**
      * Set `key` with `value` as metadata in `klass`.
      * 
@@ -10515,13 +10515,13 @@ class DeviceProvider extends Object {
      * @param key the key to set
      * @param value the value to set
      */
-    static addStaticMetadata(klass: DeviceProvider | Function | GObject.GType, key: string | null, value: string | null): void
+    static addStaticMetadata(klass: DeviceProvider | Function | GObject.GType, key: string, value: string): void
     /**
      * Get metadata with `key` in `klass`.
      * @param key the key to get
      * @returns the metadata for @key.
      */
-    static getMetadata(klass: DeviceProvider | Function | GObject.GType, key: string | null): string | null
+    static getMetadata(klass: DeviceProvider | Function | GObject.GType, key: string): string | null
     /**
      * Sets the detailed information for a #GstDeviceProviderClass.
      * 
@@ -10531,7 +10531,7 @@ class DeviceProvider extends Object {
      * @param description Sentence describing the purpose of the device provider. E.g: "Write stream to a file"
      * @param author Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
      */
-    static setMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string | null, classification: string | null, description: string | null, author: string | null): void
+    static setMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string, classification: string, description: string, author: string): void
     /**
      * Sets the detailed information for a #GstDeviceProviderClass.
      * 
@@ -10546,7 +10546,7 @@ class DeviceProvider extends Object {
      * @param description Sentence describing the purpose of the element.  E.g: "Write stream to a file"
      * @param author Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
      */
-    static setStaticMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string | null, classification: string | null, description: string | null, author: string | null): void
+    static setStaticMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string, classification: string, description: string, author: string): void
 }
 
 module DeviceProviderFactory {
@@ -10584,7 +10584,7 @@ interface DeviceProviderFactory {
      * @param key a key
      * @returns the metadata with @key on @factory or %NULL when there was no metadata with the given @key.
      */
-    getMetadata(key: string | null): string | null
+    getMetadata(key: string): string | null
     /**
      * Get the available keys for the metadata on `factory`.
      * @returns  a %NULL-terminated array of key strings, or %NULL when there is no metadata. Free with g_strfreev() when no longer needed.
@@ -10682,14 +10682,14 @@ class DeviceProviderFactory extends PluginFeature {
      * @param name name of factory to find
      * @returns #GstDeviceProviderFactory if found, %NULL otherwise
      */
-    static find(name: string | null): DeviceProviderFactory | null
+    static find(name: string): DeviceProviderFactory | null
     /**
      * Returns the device provider of the type defined by the given device
      * provider factory.
      * @param factoryname a named factory to instantiate
      * @returns a #GstDeviceProvider or %NULL if unable to create device provider
      */
-    static getByName(factoryname: string | null): DeviceProvider | null
+    static getByName(factoryname: string): DeviceProvider | null
     /**
      * Get a list of factories with a rank greater or equal to `minrank`.
      * The list of factories is returned by decreasing rank.
@@ -10814,7 +10814,7 @@ class DynamicTypeFactory extends PluginFeature {
 
     constructor(config?: DynamicTypeFactory.ConstructorProperties) 
     _init(config?: DynamicTypeFactory.ConstructorProperties): void
-    static load(factoryname: string | null): GObject.GType
+    static load(factoryname: string): GObject.GType
 }
 
 module Element {
@@ -11051,7 +11051,7 @@ interface Element {
      * @param streamId The stream-id
      * @returns A stream-id for @element.
      */
-    decorateStreamId(streamId: string | null): string | null
+    decorateStreamId(streamId: string): string | null
     /**
      * Call `func` with `user_data` for each of `element'`s pads. `func` will be called
      * exactly once for each pad that exists at the time of this call, unless
@@ -11135,13 +11135,13 @@ interface Element {
      * @param contextType a name of a context to retrieve
      * @returns A #GstContext or NULL
      */
-    getContext(contextType: string | null): Context | null
+    getContext(contextType: string): Context | null
     /**
      * Gets the context with `context_type` set on the element or NULL.
      * @param contextType a name of a context to retrieve
      * @returns A #GstContext or NULL
      */
-    getContextUnlocked(contextType: string | null): Context | null
+    getContextUnlocked(contextType: string): Context | null
     /**
      * Gets the contexts set on the element.
      * 
@@ -11172,13 +11172,13 @@ interface Element {
      * @param key the key to get
      * @returns the metadata for @key.
      */
-    getMetadata(key: string | null): string | null
+    getMetadata(key: string): string
     /**
      * Retrieves a padtemplate from `element` with the given name.
      * @param name the name of the #GstPadTemplate to get.
      * @returns the #GstPadTemplate with the     given name, or %NULL if none was found. No unreferencing is     necessary.
      */
-    getPadTemplate(name: string | null): PadTemplate | null
+    getPadTemplate(name: string): PadTemplate | null
     /**
      * Retrieves a list of the pad templates associated with `element`. The
      * list must not be modified by the calling code.
@@ -11192,7 +11192,7 @@ interface Element {
      * @param name the name of the request #GstPad to retrieve.
      * @returns requested #GstPad if found,     otherwise %NULL.  Release after usage.
      */
-    getRequestPad(name: string | null): Pad | null
+    getRequestPad(name: string): Pad | null
     /**
      * Returns the start time of the element. The start time is the
      * running time of the clock when this element was last put to PAUSED.
@@ -11211,7 +11211,7 @@ interface Element {
      * @param name the name of the static #GstPad to retrieve.
      * @returns the requested #GstPad if     found, otherwise %NULL.  unref after usage. MT safe.
      */
-    getStaticPad(name: string | null): Pad | null
+    getStaticPad(name: string): Pad | null
     /**
      * Checks if the state of an element is locked.
      * If the state of an element is locked, state changes of the parent don't
@@ -11352,7 +11352,7 @@ interface Element {
      * @param function_ the source code function where the error was generated
      * @param line the source code line where the error was generated
      */
-    messageFull(type: MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string | null, function_: string | null, line: number): void
+    messageFull(type: MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number): void
     /**
      * Post an error, warning or info message on the bus from inside an element.
      * 
@@ -11368,7 +11368,7 @@ interface Element {
      * @param line the source code line where the error was generated
      * @param structure optional details structure
      */
-    messageFullWithDetails(type: MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string | null, function_: string | null, line: number, structure: Structure): void
+    messageFullWithDetails(type: MessageType, domain: GLib.Quark, code: number, text: string | null, debug: string | null, file: string, function_: string, line: number, structure: Structure): void
     // Has conflict: noMorePads(): void
     // Has conflict: postMessage(message: Message): boolean
     // Has conflict: provideClock(): Clock | null
@@ -11470,7 +11470,7 @@ interface Element {
      * @param name the name of the request #GstPad to retrieve.
      * @returns requested #GstPad if found,     otherwise %NULL.  Release after usage.
      */
-    requestPadSimple(name: string | null): Pad | null
+    requestPadSimple(name: string): Pad | null
     /**
      * Sends a seek event to an element. See gst_event_new_seek() for the details of
      * the parameters. The seek event is sent to the element using
@@ -11572,7 +11572,7 @@ interface Element {
      * @param dest a #GstElement containing the destination pad.
      * @param destpadname the name of the #GstPad in destination element.
      */
-    unlinkPads(srcpadname: string | null, dest: Element, destpadname: string | null): void
+    unlinkPads(srcpadname: string, dest: Element, destpadname: string): void
 
     // Conflicting methods
 
@@ -11871,7 +11871,7 @@ class Element extends Object {
      * @param elementname Name of created element, can be %NULL.
      * @returns a new element or %NULL if none could be created
      */
-    static makeFromUri(type: URIType, uri: string | null, elementname: string | null): Element
+    static makeFromUri(type: URIType, uri: string, elementname: string | null): Element
     /**
      * Create a new elementfactory capable of instantiating objects of the
      * `type` and add the factory to `plugin`.
@@ -11881,19 +11881,19 @@ class Element extends Object {
      * @param type GType of element to register
      * @returns %TRUE, if the registering succeeded, %FALSE on error
      */
-    static register(plugin: Plugin | null, name: string | null, rank: number, type: GObject.GType): boolean
+    static register(plugin: Plugin | null, name: string, rank: number, type: GObject.GType): boolean
     /**
      * Gets a string representing the given state change result.
      * @param stateRet a #GstStateChangeReturn to get the name of.
      * @returns a string with the name of the state    result.
      */
-    static stateChangeReturnGetName(stateRet: StateChangeReturn): string | null
+    static stateChangeReturnGetName(stateRet: StateChangeReturn): string
     /**
      * Gets a string representing the given state.
      * @param state a #GstState to get the name of.
      * @returns a string with the name of the state.
      */
-    static stateGetName(state: State): string | null
+    static stateGetName(state: State): string
     /**
      * Marks `type` as "documentation should be skipped".
      * Can be useful for dynamically registered element to be excluded from
@@ -11986,7 +11986,7 @@ interface ElementFactory {
      * @param key a key
      * @returns the metadata with @key on @factory or %NULL when there was no metadata with the given @key.
      */
-    getMetadata(key: string | null): string | null
+    getMetadata(key: string): string | null
     /**
      * Get the available keys for the metadata on `factory`.
      * @returns  a %NULL-terminated array of key strings, or %NULL when there is no metadata. Free with g_strfreev() when no longer needed.
@@ -12026,7 +12026,7 @@ interface ElementFactory {
      * @param interfacename an interface name
      * @returns %TRUE when @factory implement the interface.
      */
-    hasInterface(interfacename: string | null): boolean
+    hasInterface(interfacename: string): boolean
     /**
      * Check if `factory` is of the given types.
      * @param type a #GstElementFactoryListType
@@ -12132,7 +12132,7 @@ class ElementFactory extends PluginFeature {
      * @param name name of factory to find
      * @returns #GstElementFactory if found, %NULL otherwise
      */
-    static find(name: string | null): ElementFactory | null
+    static find(name: string): ElementFactory | null
     /**
      * Filter out all the elementfactories in `list` that can handle `caps` in
      * the given direction.
@@ -12165,7 +12165,7 @@ class ElementFactory extends PluginFeature {
      * @param name name of new element, or %NULL to automatically create    a unique name
      * @returns new #GstElement or %NULL if unable to create element
      */
-    static make(factoryname: string | null, name: string | null): Element | null
+    static make(factoryname: string, name: string | null): Element | null
     /**
      * Create a new element of the type defined by the given elementfactory.
      * The supplied list of properties, will be passed at object construction.
@@ -12174,7 +12174,7 @@ class ElementFactory extends PluginFeature {
      * @param values array of associated properties values
      * @returns new #GstElement or %NULL     if the element couldn't be created
      */
-    static makeWithProperties(factoryname: string | null, names: string[] | null, values: any[] | null): Element | null
+    static makeWithProperties(factoryname: string, names: string[] | null, values: any[] | null): Element | null
 }
 
 interface FlagSet {
@@ -12589,7 +12589,7 @@ interface Object {
      * @param propertyName name of the property
      * @returns the #GstControlBinding for @property_name or %NULL if the property is not controlled.
      */
-    getControlBinding(propertyName: string | null): ControlBinding | null
+    getControlBinding(propertyName: string): ControlBinding | null
     /**
      * Obtain the control-rate for this `object`. Audio processing #GstElement
      * objects will use this rate to sub-divide their processing loop and call
@@ -12617,7 +12617,7 @@ interface Object {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    getGValueArray(propertyName: string | null, timestamp: ClockTime, interval: ClockTime, values: any[]): boolean
+    getGValueArray(propertyName: string, timestamp: ClockTime, interval: ClockTime, values: any[]): boolean
     /**
      * Returns a copy of the name of `object`.
      * Caller should g_free() the return value after usage.
@@ -12648,7 +12648,7 @@ interface Object {
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    getValue(propertyName: string | null, timestamp: ClockTime): any | null
+    getValue(propertyName: string, timestamp: ClockTime): any | null
     /**
      * Check if the `object` has active controlled properties.
      * @returns %TRUE if the object has active controlled properties
@@ -12713,7 +12713,7 @@ interface Object {
      * @param propertyName property to disable
      * @param disabled boolean that specifies whether to disable the controller or not.
      */
-    setControlBindingDisabled(propertyName: string | null, disabled: boolean): void
+    setControlBindingDisabled(propertyName: string, disabled: boolean): void
     /**
      * This function is used to disable all controlled properties of the `object` for
      * some time, i.e. gst_object_sync_values() will do nothing.
@@ -12879,7 +12879,7 @@ class Object extends GObject.InitiallyUnowned {
      * @param name the name to search for
      * @returns %TRUE if a #GstObject named @name does not appear in @list, %FALSE if it does. MT safe. Grabs and releases the LOCK of each object in the list.
      */
-    static checkUniqueness(list: Object[], name: string | null): boolean
+    static checkUniqueness(list: Object[], name: string): boolean
     /**
      * A default deep_notify signal callback for an object. The user data
      * should contain a pointer to an array of strings that should be excluded
@@ -13951,7 +13951,7 @@ class Pad extends Object {
      * @param name the name of the pad
      * @returns a new #GstPad.
      */
-    static newFromStaticTemplate(templ: StaticPadTemplate, name: string | null): Pad
+    static newFromStaticTemplate(templ: StaticPadTemplate, name: string): Pad
     /**
      * Creates a new pad with the given name from the given template.
      * If name is %NULL, a guaranteed unique name (across all pads)
@@ -13969,7 +13969,7 @@ class Pad extends Object {
      * @param ret a #GstPadLinkReturn to get the name of.
      * @returns a static string with the name of the pad-link return.
      */
-    static linkGetName(ret: PadLinkReturn): string | null
+    static linkGetName(ret: PadLinkReturn): string
 }
 
 module PadTemplate {
@@ -14214,7 +14214,7 @@ class PadTemplate extends Object {
      * @param caps a #GstCaps set for the template.
      * @returns a new #GstPadTemplate.
      */
-    constructor(nameTemplate: string | null, direction: PadDirection, presence: PadPresence, caps: Caps) 
+    constructor(nameTemplate: string, direction: PadDirection, presence: PadPresence, caps: Caps) 
     /**
      * Creates a new pad template with a name according to the given template
      * and with the given arguments.
@@ -14225,7 +14225,7 @@ class PadTemplate extends Object {
      * @param caps a #GstCaps set for the template.
      * @returns a new #GstPadTemplate.
      */
-    static new(nameTemplate: string | null, direction: PadDirection, presence: PadPresence, caps: Caps): PadTemplate
+    static new(nameTemplate: string, direction: PadDirection, presence: PadPresence, caps: Caps): PadTemplate
     /**
      * Converts a #GstStaticPadTemplate into a #GstPadTemplate with a type.
      * @constructor 
@@ -14245,7 +14245,7 @@ class PadTemplate extends Object {
      * @param padType The #GType of the pad to create
      * @returns a new #GstPadTemplate.
      */
-    static newWithGtype(nameTemplate: string | null, direction: PadDirection, presence: PadPresence, caps: Caps, padType: GObject.GType): PadTemplate
+    static newWithGtype(nameTemplate: string, direction: PadDirection, presence: PadPresence, caps: Caps, padType: GObject.GType): PadTemplate
     _init(config?: PadTemplate.ConstructorProperties): void
 }
 
@@ -14467,7 +14467,7 @@ interface Pipeline extends ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    getProperty(name: string | null): /* value */ any
+    getProperty(name: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -14518,7 +14518,7 @@ interface Pipeline extends ChildProxy {
      * @param name name of the property to set
      * @param value new #GValue for the property
      */
-    setProperty(name: string | null, value: any): void
+    setProperty(name: string, value: any): void
 
     // Overloads of setProperty
 
@@ -14745,7 +14745,7 @@ interface Plugin {
      * Get the long descriptive name of the plugin
      * @returns the long name of the plugin
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * get the filename of the plugin
      * @returns the filename of the plugin
@@ -14755,22 +14755,35 @@ interface Plugin {
      * get the license of the plugin
      * @returns the license of the plugin
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Get the short name of the plugin
      * @returns the name of the plugin
+     */
+    getName(): string
+
+    // Overloads of getName
+
+    /**
+     * Returns a copy of the name of `object`.
+     * Caller should g_free() the return value after usage.
+     * For a nameless object, this returns %NULL, which you can safely g_free()
+     * as well.
+     * 
+     * Free-function: g_free
+     * @returns the name of @object. g_free() after usage. MT safe. This function grabs and releases @object's LOCK.
      */
     getName(): string | null
     /**
      * get the URL where the plugin comes from
      * @returns the origin of the plugin
      */
-    getOrigin(): string | null
+    getOrigin(): string
     /**
      * get the package the plugin belongs to.
      * @returns the package of the plugin
      */
-    getPackage(): string | null
+    getPackage(): string
     /**
      * Get the release date (and possibly time) in form of a string, if available.
      * 
@@ -14787,12 +14800,12 @@ interface Plugin {
      * get the source module the plugin belongs to.
      * @returns the source of the plugin
      */
-    getSource(): string | null
+    getSource(): string
     /**
      * get the version of the plugin
      * @returns the version of the plugin
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * queries if the plugin is loaded into memory
      * @returns %TRUE is loaded, %FALSE otherwise
@@ -14917,7 +14930,7 @@ class Plugin extends Object {
      * @param name name of plugin to load
      * @returns a reference to a loaded plugin, or %NULL on error.
      */
-    static loadByName(name: string | null): Plugin | null
+    static loadByName(name: string): Plugin | null
     /**
      * Loads the given plugin and refs it.  Caller needs to unref after use.
      * @param filename the plugin filename to load
@@ -14943,7 +14956,7 @@ class Plugin extends Object {
      * @param origin URL to provider of plugin
      * @returns %TRUE if the plugin was registered correctly, otherwise %FALSE.
      */
-    static registerStatic(majorVersion: number, minorVersion: number, name: string | null, description: string | null, initFunc: PluginInitFunc, version: string | null, license: string | null, source: string | null, package: string | null, origin: string | null): boolean
+    static registerStatic(majorVersion: number, minorVersion: number, name: string, description: string, initFunc: PluginInitFunc, version: string, license: string, source: string, package: string, origin: string): boolean
     /**
      * Registers a static plugin, ie. a plugin which is private to an application
      * or library and contained within the application or library (as opposed to
@@ -14965,7 +14978,7 @@ class Plugin extends Object {
      * @param origin URL to provider of plugin
      * @returns %TRUE if the plugin was registered correctly, otherwise %FALSE.
      */
-    static registerStaticFull(majorVersion: number, minorVersion: number, name: string | null, description: string | null, initFullFunc: PluginInitFullFunc, version: string | null, license: string | null, source: string | null, package: string | null, origin: string | null): boolean
+    static registerStaticFull(majorVersion: number, minorVersion: number, name: string, description: string, initFullFunc: PluginInitFullFunc, version: string, license: string, source: string, package: string, origin: string): boolean
 }
 
 module PluginFeature {
@@ -15343,7 +15356,7 @@ interface Registry {
      * @param minMicro the minimum micro version number
      * @returns %TRUE if the feature could be found and the version is the same as the required version or newer, and %FALSE otherwise.
      */
-    checkFeatureVersion(featureName: string | null, minMajor: number, minMinor: number, minMicro: number): boolean
+    checkFeatureVersion(featureName: string, minMajor: number, minMinor: number, minMicro: number): boolean
     /**
      * Runs a filter against all features of the plugins in the registry
      * and returns a GList with the results.
@@ -15360,14 +15373,14 @@ interface Registry {
      * @param type the pluginfeature type to find
      * @returns the pluginfeature with the     given name and type or %NULL if the plugin was not     found. gst_object_unref() after usage. MT safe.
      */
-    findFeature(name: string | null, type: GObject.GType): PluginFeature | null
+    findFeature(name: string, type: GObject.GType): PluginFeature | null
     /**
      * Find the plugin with the given name in the registry.
      * The plugin will be reffed; caller is responsible for unreffing.
      * @param name the plugin name to find
      * @returns the plugin with the given name     or %NULL if the plugin was not found. gst_object_unref() after     usage. MT safe.
      */
-    findPlugin(name: string | null): Plugin | null
+    findPlugin(name: string): Plugin | null
     /**
      * Retrieves a #GList of #GstPluginFeature of `type`.
      * @param type a #GType.
@@ -15379,7 +15392,7 @@ interface Registry {
      * @param name a plugin name.
      * @returns a #GList of     #GstPluginFeature. Use gst_plugin_feature_list_free() after usage.
      */
-    getFeatureListByPlugin(name: string | null): PluginFeature[]
+    getFeatureListByPlugin(name: string): PluginFeature[]
     /**
      * Returns the registry's feature list cookie. This changes
      * every time a feature is added or removed from the registry.
@@ -15398,13 +15411,13 @@ interface Registry {
      * @param filename the name of the file to look up
      * @returns the #GstPlugin if found, or     %NULL if not.  gst_object_unref() after usage.
      */
-    lookup(filename: string | null): Plugin | null
+    lookup(filename: string): Plugin | null
     /**
      * Find a #GstPluginFeature with `name` in `registry`.
      * @param name a #GstPluginFeature name
      * @returns a #GstPluginFeature with its refcount incremented,     use gst_object_unref() after usage. MT safe.
      */
-    lookupFeature(name: string | null): PluginFeature | null
+    lookupFeature(name: string): PluginFeature | null
     /**
      * Runs a filter against all plugins in the registry and returns a #GList with
      * the results. If the first flag is set, only the first match is
@@ -15781,7 +15794,7 @@ interface Stream {
      * The Stream Identifier for this #GstStream
      * @field 
      */
-    streamId: string | null
+    streamId: string
 
     // Owm methods of Gst-1.0.Gst.Stream
 
@@ -16835,7 +16848,7 @@ class Tracer extends Object {
      * @param type GType of tracer to register
      * @returns %TRUE, if the registering succeeded, %FALSE on error
      */
-    static register(plugin: Plugin | null, name: string | null, type: GObject.GType): boolean
+    static register(plugin: Plugin | null, name: string, type: GObject.GType): boolean
 }
 
 module TracerFactory {
@@ -17616,7 +17629,7 @@ interface Buffer {
      * @param name the registered name of the desired custom meta
      * @returns The #GstCustomMeta that was added to the buffer
      */
-    addCustomMeta(name: string | null): CustomMeta | null
+    addCustomMeta(name: string): CustomMeta | null
     /**
      * Adds metadata for `info` to `buffer` using the parameters in `params`.
      * @param info a #GstMetaInfo
@@ -17765,7 +17778,7 @@ interface Buffer {
      * @param name the registered name of the custom meta to retrieve.
      * @returns the #GstCustomMeta
      */
-    getCustomMeta(name: string | null): CustomMeta | null
+    getCustomMeta(name: string): CustomMeta | null
     /**
      * Gets the #GstBufferFlags flags set on this buffer.
      * @returns the flags set on this buffer.
@@ -18749,7 +18762,7 @@ interface Caps {
      * @param field name of the field to set
      * @param value value to set the field to
      */
-    setValue(field: string | null, value: any): void
+    setValue(field: string, value: any): void
     /**
      * Converts the given `caps` into a representation that represents the
      * same set of formats, but in a simpler form.  Component structures that are
@@ -18880,7 +18893,7 @@ class Caps {
      * @param mediaType the media type of the structure
      * @returns the new #GstCaps
      */
-    static newEmptySimple(mediaType: string | null): Caps
+    static newEmptySimple(mediaType: string): Caps
     /**
      * Converts `caps` from a string representation.
      * 
@@ -18889,7 +18902,7 @@ class Caps {
      * @param string a string to convert to #GstCaps
      * @returns a newly allocated #GstCaps
      */
-    static fromString(string: string | null): Caps | null
+    static fromString(string: string): Caps | null
 }
 
 interface CapsFeatures {
@@ -18900,7 +18913,7 @@ interface CapsFeatures {
      * Adds `feature` to `features`.
      * @param feature a feature.
      */
-    add(feature: string | null): void
+    add(feature: string): void
     /**
      * Adds `feature` to `features`.
      * @param feature a feature.
@@ -18911,7 +18924,7 @@ interface CapsFeatures {
      * @param feature a feature
      * @returns %TRUE if @features contains @feature.
      */
-    contains(feature: string | null): boolean
+    contains(feature: string): boolean
     /**
      * Checks if `features` contains `feature`.
      * @param feature a feature
@@ -18960,7 +18973,7 @@ interface CapsFeatures {
      * Removes `feature` from `features`.
      * @param feature a feature.
      */
-    remove(feature: string | null): void
+    remove(feature: string): void
     /**
      * Removes `feature` from `features`.
      * @param feature a feature.
@@ -19039,13 +19052,13 @@ class CapsFeatures {
      * @param feature The feature
      * @returns a new #GstCapsFeatures
      */
-    static newSingle(feature: string | null): CapsFeatures
+    static newSingle(feature: string): CapsFeatures
     /**
      * Creates a #GstCapsFeatures from a string representation.
      * @param features a string representation of a #GstCapsFeatures.
      * @returns a new #GstCapsFeatures or     %NULL when the string could not be parsed.
      */
-    static fromString(features: string | null): CapsFeatures | null
+    static fromString(features: string): CapsFeatures | null
 }
 
 interface ChildProxyInterface {
@@ -19057,11 +19070,11 @@ interface ChildProxyInterface {
      * @field 
      */
     parent: GObject.TypeInterface
-    getChildByName: (parent: ChildProxy, name: string | null) => GObject.Object | null
+    getChildByName: (parent: ChildProxy, name: string) => GObject.Object | null
     getChildByIndex: (parent: ChildProxy, index: number) => GObject.Object | null
     getChildrenCount: (parent: ChildProxy) => number
-    childAdded: (parent: ChildProxy, child: GObject.Object, name: string | null) => void
-    childRemoved: (parent: ChildProxy, child: GObject.Object, name: string | null) => void
+    childAdded: (parent: ChildProxy, child: GObject.Object, name: string) => void
+    childRemoved: (parent: ChildProxy, child: GObject.Object, name: string) => void
 }
 
 /**
@@ -19152,7 +19165,7 @@ interface Context {
      * Gets the type of `context`.
      * @returns The type of the context.
      */
-    getContextType(): string | null
+    getContextType(): string
     /**
      * Accesses the structure of the context.
      * @returns The structure of the context. The structure is still owned by the context, which means that you should not modify it, free it and that the pointer becomes invalid when you free the context.
@@ -19163,7 +19176,7 @@ interface Context {
      * @param contextType Context type to check.
      * @returns %TRUE if @context has @context_type.
      */
-    hasContextType(contextType: string | null): boolean
+    hasContextType(contextType: string): boolean
     /**
      * Checks if `context` is persistent.
      * @returns %TRUE if the context is persistent.
@@ -19233,7 +19246,7 @@ class Context {
      * @param persistent Persistent context
      * @returns The new context.
      */
-    constructor(contextType: string | null, persistent: boolean) 
+    constructor(contextType: string, persistent: boolean) 
     /**
      * Creates a new context.
      * @constructor 
@@ -19241,7 +19254,7 @@ class Context {
      * @param persistent Persistent context
      * @returns The new context.
      */
-    static new(contextType: string | null, persistent: boolean): Context
+    static new(contextType: string, persistent: boolean): Context
     /**
      * Modifies a pointer to a #GstContext to point to a different #GstContext. The
      * modification is done atomically (so this is useful for ensuring thread safety
@@ -19332,7 +19345,7 @@ interface CustomMeta {
      * @param name 
      * @returns Whether @name is the name of the custom meta
      */
-    hasName(name: string | null): boolean
+    hasName(name: string): boolean
 }
 
 /**
@@ -19518,7 +19531,7 @@ class DateTime {
      * @param string ISO 8601-formatted datetime string.
      * @returns a newly created #GstDateTime, or %NULL on error
      */
-    static newFromIso8601String(string: string | null): DateTime
+    static newFromIso8601String(string: string): DateTime
     /**
      * Creates a new #GstDateTime using the time since Jan 1, 1970 specified by
      * `secs`. The #GstDateTime is in the local timezone.
@@ -19652,12 +19665,12 @@ interface DebugCategory {
      * Returns the description of a debug category.
      * @returns the description of the category.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns the name of a debug category.
      * @returns the name of the category.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns the threshold of a #GstDebugCategory.
      * @returns the #GstDebugLevel that is used as threshold.
@@ -19822,7 +19835,7 @@ abstract class DeviceProviderClass {
      * @param key the key to set
      * @param value the value to set
      */
-    static addMetadata(klass: DeviceProvider | Function | GObject.GType, key: string | null, value: string | null): void
+    static addMetadata(klass: DeviceProvider | Function | GObject.GType, key: string, value: string): void
     /**
      * Set `key` with `value` as metadata in `klass`.
      * 
@@ -19833,13 +19846,13 @@ abstract class DeviceProviderClass {
      * @param key the key to set
      * @param value the value to set
      */
-    static addStaticMetadata(klass: DeviceProvider | Function | GObject.GType, key: string | null, value: string | null): void
+    static addStaticMetadata(klass: DeviceProvider | Function | GObject.GType, key: string, value: string): void
     /**
      * Get metadata with `key` in `klass`.
      * @param key the key to get
      * @returns the metadata for @key.
      */
-    static getMetadata(klass: DeviceProvider | Function | GObject.GType, key: string | null): string | null
+    static getMetadata(klass: DeviceProvider | Function | GObject.GType, key: string): string | null
     /**
      * Sets the detailed information for a #GstDeviceProviderClass.
      * 
@@ -19849,7 +19862,7 @@ abstract class DeviceProviderClass {
      * @param description Sentence describing the purpose of the device provider. E.g: "Write stream to a file"
      * @param author Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
      */
-    static setMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string | null, classification: string | null, description: string | null, author: string | null): void
+    static setMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string, classification: string, description: string, author: string): void
     /**
      * Sets the detailed information for a #GstDeviceProviderClass.
      * 
@@ -19864,7 +19877,7 @@ abstract class DeviceProviderClass {
      * @param description Sentence describing the purpose of the element.  E.g: "Write stream to a file"
      * @param author Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
      */
-    static setStaticMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string | null, classification: string | null, description: string | null, author: string | null): void
+    static setStaticMetadata(klass: DeviceProvider | Function | GObject.GType, longname: string, classification: string, description: string, author: string): void
 }
 
 interface DeviceProviderFactoryClass {
@@ -19959,7 +19972,7 @@ interface ElementClass {
      * @param key the key to set
      * @param value the value to set
      */
-    addMetadata(klass: Element | Function | GObject.GType, key: string | null, value: string | null): void
+    addMetadata(klass: Element | Function | GObject.GType, key: string, value: string): void
     /**
      * Adds a padtemplate to an element class. This is mainly used in the _class_init
      * functions of classes. If a pad template with the same name as an already
@@ -19980,7 +19993,7 @@ interface ElementClass {
      * @param key the key to set
      * @param value the value to set
      */
-    addStaticMetadata(klass: Element | Function | GObject.GType, key: string | null, value: string | null): void
+    addStaticMetadata(klass: Element | Function | GObject.GType, key: string, value: string): void
     /**
      * Adds a pad template to an element class based on the static pad template
      * `templ`. This is mainly used in the _class_init functions of element
@@ -20003,7 +20016,7 @@ interface ElementClass {
      * @param key the key to get
      * @returns the metadata for @key.
      */
-    getMetadata(klass: Element | Function | GObject.GType, key: string | null): string | null
+    getMetadata(klass: Element | Function | GObject.GType, key: string): string
     /**
      * Retrieves a padtemplate from `element_class` with the given name.
      * > If you use this function in the GInstanceInitFunc of an object class
@@ -20012,7 +20025,7 @@ interface ElementClass {
      * @param name the name of the #GstPadTemplate to get.
      * @returns the #GstPadTemplate with the     given name, or %NULL if none was found. No unreferencing is     necessary.
      */
-    getPadTemplate(element_class: Element | Function | GObject.GType, name: string | null): PadTemplate | null
+    getPadTemplate(element_class: Element | Function | GObject.GType, name: string): PadTemplate | null
     /**
      * Retrieves a list of the pad templates associated with `element_class`. The
      * list must not be modified by the calling code.
@@ -20030,7 +20043,7 @@ interface ElementClass {
      * @param description Sentence describing the purpose of the element. E.g: "Write stream to a file"
      * @param author Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
      */
-    setMetadata(klass: Element | Function | GObject.GType, longname: string | null, classification: string | null, description: string | null, author: string | null): void
+    setMetadata(klass: Element | Function | GObject.GType, longname: string, classification: string, description: string, author: string): void
     /**
      * Sets the detailed information for a #GstElementClass.
      * 
@@ -20045,7 +20058,7 @@ interface ElementClass {
      * @param description Sentence describing the purpose of the element. E.g: "Write stream to a file"
      * @param author Name and contact details of the author(s). Use \n to separate multiple author metadata. E.g: "Joe Bloggs &lt;joe.blogs at foo.com&gt;"
      */
-    setStaticMetadata(klass: Element | Function | GObject.GType, longname: string | null, classification: string | null, description: string | null, author: string | null): void
+    setStaticMetadata(klass: Element | Function | GObject.GType, longname: string, classification: string, description: string, author: string): void
 }
 
 /**
@@ -20143,7 +20156,7 @@ interface Event {
      * @param name name to check
      * @returns %TRUE if @name matches the name of the event structure.
      */
-    hasName(name: string | null): boolean
+    hasName(name: string): boolean
     /**
      * Checks if `event` has the given `name`. This function is usually used to
      * check the name of a custom event.
@@ -20191,7 +20204,7 @@ interface Event {
      * the results in `system_id,` `data` and `origin`. The data stored in `system_id,`
      * `origin` and `data` are valid until `event` is released.
      */
-    parseProtection(): [ /* systemId */ string | null, /* data */ Buffer, /* origin */ string | null ]
+    parseProtection(): [ /* systemId */ string, /* data */ Buffer, /* origin */ string ]
     /**
      * Get the type, proportion, diff and timestamp in the qos event. See
      * gst_event_new_qos() for more information about the different QoS values.
@@ -20250,7 +20263,7 @@ interface Event {
      * remain valid only until `event` gets freed. Make a copy if you want to
      * modify it or store it for later use.
      */
-    parseStreamStart(): /* streamId */ string | null
+    parseStreamStart(): /* streamId */ string
     /**
      * Parses a tag `event` and stores the results in the given `taglist` location.
      * No reference to the taglist will be returned, it remains valid only until
@@ -20265,7 +20278,7 @@ interface Event {
     /**
      * Parse a TOC select `event` and store the results in the given `uid` location.
      */
-    parseTocSelect(): /* uid */ string | null
+    parseTocSelect(): /* uid */ string
     /**
      * Sets `flags` on `event` to give additional information about the reason for
      * the #GST_EVENT_GAP.
@@ -20571,7 +20584,7 @@ class Event {
      * @param origin a string indicating where the protection information carried in the event was extracted from. The allowed values of this string will depend upon the protection scheme.
      * @returns a #GST_EVENT_PROTECTION event.
      */
-    static newProtection(systemId: string | null, data: Buffer, origin: string | null): Event
+    static newProtection(systemId: string, data: Buffer, origin: string): Event
     /**
      * Allocate a new qos event with the given values.
      * The QOS event is generated in an element that wants an upstream
@@ -20748,7 +20761,7 @@ class Event {
      * @param msg the #GstMessage to be posted
      * @returns a new #GstEvent
      */
-    static newSinkMessage(name: string | null, msg: Message): Event
+    static newSinkMessage(name: string, msg: Message): Event
     /**
      * Create a new step event. The purpose of the step event is to instruct a sink
      * to skip `amount` (expressed in `format)` of media. It can be used to implement
@@ -20827,7 +20840,7 @@ class Event {
      * @param streamId Identifier for this stream
      * @returns the new STREAM_START event.
      */
-    static newStreamStart(streamId: string | null): Event
+    static newStreamStart(streamId: string): Event
     /**
      * Generates a metadata tag event from the given `taglist`.
      * 
@@ -20858,7 +20871,7 @@ class Event {
      * @param uid UID in the TOC to start playback from.
      * @returns a new #GstEvent.
      */
-    static newTocSelect(uid: string | null): Event
+    static newTocSelect(uid: string): Event
 }
 
 interface FormatDefinition {
@@ -20874,12 +20887,12 @@ interface FormatDefinition {
      * A short nick of the format
      * @field 
      */
-    nick: string | null
+    nick: string
     /**
      * A longer description of the format
      * @field 
      */
-    description: string | null
+    description: string
     /**
      * A quark for the nick
      * @field 
@@ -21247,7 +21260,7 @@ interface Memory {
      * @param memType a memory type
      * @returns %TRUE if @mem was allocated from an allocator for @mem_type.
      */
-    isType(memType: string | null): boolean
+    isType(memType: string): boolean
     /**
      * Create a #GstMemory object that is mapped with `flags`. If `mem` is mappable
      * with `flags,` this function returns the mapped `mem` directly. Otherwise a
@@ -21407,7 +21420,7 @@ interface Message {
      * @param tagList tag list for the new entry
      * @param entryStruct structure for the new entry
      */
-    addRedirectEntry(location: string | null, tagList: TagList | null, entryStruct: Structure | null): void
+    addRedirectEntry(location: string, tagList: TagList | null, entryStruct: Structure | null): void
     getNumRedirectEntries(): number
     /**
      * Retrieve the sequence number of a message.
@@ -21441,7 +21454,7 @@ interface Message {
      * @param name name to check
      * @returns %TRUE if @name matches the name of the message structure.
      */
-    hasName(name: string | null): boolean
+    hasName(name: string): boolean
     /**
      * Extract the running_time from the async_done message.
      * 
@@ -21477,7 +21490,7 @@ interface Message {
      * Parse a context type from an existing GST_MESSAGE_NEED_CONTEXT message.
      * @returns a #gboolean indicating if the parsing succeeded.
      */
-    parseContextType(): [ /* returnType */ boolean, /* contextType */ string | null ]
+    parseContextType(): [ /* returnType */ boolean, /* contextType */ string ]
     /**
      * Parses a device-added message. The device-added message is produced by
      * #GstDeviceProvider or a #GstDeviceMonitor. It announces the appearance
@@ -21569,13 +21582,13 @@ interface Message {
     /**
      * Parses the progress `type,` `code` and `text`.
      */
-    parseProgress(): [ /* type */ ProgressType, /* code */ string | null, /* text */ string | null ]
+    parseProgress(): [ /* type */ ProgressType, /* code */ string, /* text */ string ]
     /**
      * Parses a property-notify message. These will be posted on the bus only
      * when set up with gst_element_add_property_notify_watch() or
      * gst_element_add_property_deep_notify_watch().
      */
-    parsePropertyNotify(): [ /* object */ Object, /* propertyName */ string | null, /* propertyValue */ any | null ]
+    parsePropertyNotify(): [ /* object */ Object, /* propertyName */ string, /* propertyValue */ any | null ]
     /**
      * Extract the timestamps and live status from the QoS message.
      * 
@@ -21608,7 +21621,7 @@ interface Message {
      * Returned pointers are valid for as long as this message exists.
      * @param entryIndex index of the entry to parse
      */
-    parseRedirectEntry(entryIndex: number): [ /* location */ string | null, /* tagList */ TagList | null, /* entryStruct */ Structure | null ]
+    parseRedirectEntry(entryIndex: number): [ /* location */ string, /* tagList */ TagList | null, /* entryStruct */ Structure | null ]
     /**
      * Extract the requested state from the request_state message.
      * 
@@ -22009,7 +22022,7 @@ class Message {
      * @param debug A debugging string.
      * @returns the new error message. MT safe.
      */
-    static newError(src: Object | null, error: GLib.Error, debug: string | null): Message
+    static newError(src: Object | null, error: GLib.Error, debug: string): Message
     /**
      * Create a new error message. The message will copy `error` and
      * `debug`. This message is posted by element when a fatal event
@@ -22022,7 +22035,7 @@ class Message {
      * @param details A GstStructure with details
      * @returns the new error message.
      */
-    static newErrorWithDetails(src: Object | null, error: GLib.Error, debug: string | null, details: Structure | null): Message
+    static newErrorWithDetails(src: Object | null, error: GLib.Error, debug: string, details: Structure | null): Message
     /**
      * This message is posted when an element has a new local #GstContext.
      * @constructor 
@@ -22040,7 +22053,7 @@ class Message {
      * @param debug A debugging string.
      * @returns the new info message. MT safe.
      */
-    static newInfo(src: Object | null, error: GLib.Error, debug: string | null): Message
+    static newInfo(src: Object | null, error: GLib.Error, debug: string): Message
     /**
      * Create a new info message. The message will make copies of `error` and
      * `debug`.
@@ -22051,7 +22064,7 @@ class Message {
      * @param details A GstStructure with details
      * @returns the new warning message.
      */
-    static newInfoWithDetails(src: Object | null, error: GLib.Error, debug: string | null, details: Structure | null): Message
+    static newInfoWithDetails(src: Object | null, error: GLib.Error, debug: string, details: Structure | null): Message
     /**
      * Creates a new instant-rate-request message. Elements handling the
      * instant-rate-change event must post this message. The message is
@@ -22080,7 +22093,7 @@ class Message {
      * @param contextType The context type that is needed
      * @returns The new need-context message. MT safe.
      */
-    static newNeedContext(src: Object | null, contextType: string | null): Message
+    static newNeedContext(src: Object | null, contextType: string): Message
     /**
      * Create a new clock message. This message is posted whenever the
      * pipeline selects a new clock for the pipeline.
@@ -22103,8 +22116,8 @@ class Message {
      * @param text free, user visible text describing the progress
      * @returns The new qos message.
      */
-    static newProgress(src: Object | null, type: ProgressType, code: string | null, text: string | null): Message
-    static newPropertyNotify(src: Object, propertyName: string | null, val: any | null): Message
+    static newProgress(src: Object | null, type: ProgressType, code: string, text: string): Message
+    static newPropertyNotify(src: Object, propertyName: string, val: any | null): Message
     /**
      * A QOS message is posted on the bus whenever an element decides to drop a
      * buffer because of QoS reasons or whenever it changes its processing strategy
@@ -22162,7 +22175,7 @@ class Message {
      * @param entryStruct structure for the new entry
      * @returns a newly allocated #GstMessage
      */
-    static newRedirect(src: Object | null, location: string | null, tagList: TagList | null, entryStruct: Structure | null): Message
+    static newRedirect(src: Object | null, location: string, tagList: TagList | null, entryStruct: Structure | null): Message
     /**
      * This message can be posted by elements when they want to have their state
      * changed. A typical use case would be an audio server that wants to pause the
@@ -22353,7 +22366,7 @@ class Message {
      * @param debug A debugging string.
      * @returns the new warning message. MT safe.
      */
-    static newWarning(src: Object | null, error: GLib.Error, debug: string | null): Message
+    static newWarning(src: Object | null, error: GLib.Error, debug: string): Message
     /**
      * Create a new warning message. The message will make copies of `error` and
      * `debug`.
@@ -22364,7 +22377,7 @@ class Message {
      * @param details A GstStructure with details
      * @returns the new warning message.
      */
-    static newWarningWithDetails(src: Object | null, error: GLib.Error, debug: string | null, details: Structure | null): Message
+    static newWarningWithDetails(src: Object | null, error: GLib.Error, debug: string, details: Structure | null): Message
     /**
      * Modifies a pointer to a #GstMessage to point to a different #GstMessage. This
      * function is similar to gst_message_replace() except that it takes ownership
@@ -22451,14 +22464,14 @@ class Meta {
      * @param tags tags for `api`
      * @returns a unique GType for @api.
      */
-    static apiTypeRegister(api: string | null, tags: string[]): GObject.GType
+    static apiTypeRegister(api: string, tags: string[]): GObject.GType
     /**
      * Lookup a previously registered meta info structure by its implementation name
      * `impl`.
      * @param impl the name
      * @returns a #GstMetaInfo with @impl, or %NULL when no such metainfo exists.
      */
-    static getInfo(impl: string | null): MetaInfo | null
+    static getInfo(impl: string): MetaInfo | null
     /**
      * Register a new #GstMeta implementation.
      * 
@@ -22472,7 +22485,7 @@ class Meta {
      * @param transformFunc a #GstMetaTransformFunction
      * @returns a #GstMetaInfo that can be used to access metadata.
      */
-    static register(api: GObject.GType, impl: string | null, size: number, initFunc: MetaInitFunction, freeFunc: MetaFreeFunction, transformFunc: MetaTransformFunction): MetaInfo
+    static register(api: GObject.GType, impl: string, size: number, initFunc: MetaInitFunction, freeFunc: MetaFreeFunction, transformFunc: MetaTransformFunction): MetaInfo
     /**
      * Register a new custom #GstMeta implementation, backed by an opaque
      * structure holding a #GstStructure.
@@ -22492,7 +22505,7 @@ class Meta {
      * @param transformFunc a #GstMetaTransformFunction
      * @returns a #GstMetaInfo that can be used to access metadata.
      */
-    static registerCustom(name: string | null, tags: string[], transformFunc: CustomMetaTransformFunction | null): MetaInfo
+    static registerCustom(name: string, tags: string[], transformFunc: CustomMetaTransformFunction | null): MetaInfo
 }
 
 interface MetaInfo {
@@ -22774,7 +22787,7 @@ interface ObjectClass {
      * separator used by gst_object_get_path_string()
      * @field 
      */
-    pathStringSeparator: string | null
+    pathStringSeparator: string
     deepNotify: (object: Object, orig: Object, pspec: GObject.ParamSpec) => void
 }
 
@@ -23110,12 +23123,12 @@ interface PluginDesc {
      * a unique name of the plugin
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * description of plugin
      * @field 
      */
-    description: string | null
+    description: string
     /**
      * pointer to the init function of this plugin.
      * @field 
@@ -23125,27 +23138,27 @@ interface PluginDesc {
      * version of the plugin
      * @field 
      */
-    version: string | null
+    version: string
     /**
      * effective license of plugin
      * @field 
      */
-    license: string | null
+    license: string
     /**
      * source module plugin belongs to
      * @field 
      */
-    source: string | null
+    source: string
     /**
      * shipped package plugin belongs to
      * @field 
      */
-    package: string | null
+    package: string
     /**
      * URL to provider of plugin
      * @field 
      */
-    origin: string | null
+    origin: string
     /**
      * date time string in ISO 8601
      *     format (or rather, a subset thereof), or %NULL. Allowed are the
@@ -23155,7 +23168,7 @@ interface PluginDesc {
      *     preprocessor macro.
      * @field 
      */
-    releaseDatetime: string | null
+    releaseDatetime: string
 }
 
 /**
@@ -23425,12 +23438,12 @@ interface PresetInterface {
     parent: GObject.TypeInterface
     getPresetNames: (preset: Preset) => string[]
     getPropertyNames: (preset: Preset) => string[]
-    loadPreset: (preset: Preset, name: string | null) => boolean
-    savePreset: (preset: Preset, name: string | null) => boolean
-    renamePreset: (preset: Preset, oldName: string | null, newName: string | null) => boolean
-    deletePreset: (preset: Preset, name: string | null) => boolean
-    setMeta: (preset: Preset, name: string | null, tag: string | null, value: string | null) => boolean
-    getMeta: (preset: Preset, name: string | null, tag: string | null) => [ /* returnType */ boolean, /* value */ string | null ]
+    loadPreset: (preset: Preset, name: string) => boolean
+    savePreset: (preset: Preset, name: string) => boolean
+    renamePreset: (preset: Preset, oldName: string, newName: string) => boolean
+    deletePreset: (preset: Preset, name: string) => boolean
+    setMeta: (preset: Preset, name: string, tag: string, value: string | null) => boolean
+    getMeta: (preset: Preset, name: string, tag: string) => [ /* returnType */ boolean, /* value */ string | null ]
 }
 
 /**
@@ -23812,7 +23825,7 @@ interface Query {
      * Parse a context type from an existing GST_QUERY_CONTEXT query.
      * @returns a #gboolean indicating if the parsing succeeded.
      */
-    parseContextType(): [ /* returnType */ boolean, /* contextType */ string | null ]
+    parseContextType(): [ /* returnType */ boolean, /* contextType */ string ]
     /**
      * Parse a convert query answer. Any of `src_format,` `src_value,` `dest_format,`
      * and `dest_value` may be %NULL, in which case that value is omitted.
@@ -24203,7 +24216,7 @@ class Query {
      * @param contextType Context type to query
      * @returns a new #GstQuery
      */
-    static newContext(contextType: string | null): Query
+    static newContext(contextType: string): Query
     /**
      * Constructs a new convert query object. Use gst_query_unref()
      * when done with it. A convert query is used to ask for a conversion between
@@ -24995,7 +25008,7 @@ interface StaticCaps {
      * a string describing a caps
      * @field 
      */
-    string: string | null
+    string: string
 
     // Owm methods of Gst-1.0.Gst.StaticCaps
 
@@ -25031,7 +25044,7 @@ interface StaticPadTemplate {
      * the name of the template
      * @field 
      */
-    nameTemplate: string | null
+    nameTemplate: string
     /**
      * the direction of the template
      * @field 
@@ -25183,7 +25196,7 @@ interface Structure {
      * @param fieldName a field in `structure`
      * @returns %TRUE if the structure field could be fixated
      */
-    fixateField(fieldName: string | null): boolean
+    fixateField(fieldName: string): boolean
     /**
      * Fixates a #GstStructure by changing the given `field_name` field to the given
      * `target` boolean if that field is not fixed yet.
@@ -25191,7 +25204,7 @@ interface Structure {
      * @param target the target value of the fixation
      * @returns %TRUE if the structure could be fixated
      */
-    fixateFieldBoolean(fieldName: string | null, target: boolean): boolean
+    fixateFieldBoolean(fieldName: string, target: boolean): boolean
     /**
      * Fixates a #GstStructure by changing the given field to the nearest
      * double to `target` that is a subset of the existing field.
@@ -25199,7 +25212,7 @@ interface Structure {
      * @param target the target value of the fixation
      * @returns %TRUE if the structure could be fixated
      */
-    fixateFieldNearestDouble(fieldName: string | null, target: number): boolean
+    fixateFieldNearestDouble(fieldName: string, target: number): boolean
     /**
      * Fixates a #GstStructure by changing the given field to the nearest
      * fraction to `target_numerator/``target_denominator` that is a subset
@@ -25209,7 +25222,7 @@ interface Structure {
      * @param targetDenominator The denominator of the target value of the fixation
      * @returns %TRUE if the structure could be fixated
      */
-    fixateFieldNearestFraction(fieldName: string | null, targetNumerator: number, targetDenominator: number): boolean
+    fixateFieldNearestFraction(fieldName: string, targetNumerator: number, targetDenominator: number): boolean
     /**
      * Fixates a #GstStructure by changing the given field to the nearest
      * integer to `target` that is a subset of the existing field.
@@ -25217,7 +25230,7 @@ interface Structure {
      * @param target the target value of the fixation
      * @returns %TRUE if the structure could be fixated
      */
-    fixateFieldNearestInt(fieldName: string | null, target: number): boolean
+    fixateFieldNearestInt(fieldName: string, target: number): boolean
     /**
      * Fixates a #GstStructure by changing the given `field_name` field to the given
      * `target` string if that field is not fixed yet.
@@ -25225,7 +25238,7 @@ interface Structure {
      * @param target the target value of the fixation
      * @returns %TRUE if the structure could be fixated
      */
-    fixateFieldString(fieldName: string | null, target: string | null): boolean
+    fixateFieldString(fieldName: string, target: string): boolean
     /**
      * Calls the provided function once for each field in the #GstStructure. The
      * function must not modify the fields. Also see gst_structure_map_in_place()
@@ -25247,7 +25260,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a %GST_TYPE_ARRAY, this function returns %FALSE.
      */
-    getArray(fieldname: string | null): [ /* returnType */ boolean, /* array */ GObject.ValueArray ]
+    getArray(fieldname: string): [ /* returnType */ boolean, /* array */ GObject.ValueArray ]
     /**
      * Sets the boolean pointed to by `value` corresponding to the value of the
      * given field.  Caller is responsible for making sure the field exists
@@ -25255,7 +25268,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a boolean, this function returns %FALSE.
      */
-    getBoolean(fieldname: string | null): [ /* returnType */ boolean, /* value */ boolean ]
+    getBoolean(fieldname: string): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Sets the clock time pointed to by `value` corresponding to the clock time
      * of the given field.  Caller is responsible for making sure the field exists
@@ -25263,7 +25276,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a #GstClockTime, this function returns %FALSE.
      */
-    getClockTime(fieldname: string | null): [ /* returnType */ boolean, /* value */ ClockTime ]
+    getClockTime(fieldname: string): [ /* returnType */ boolean, /* value */ ClockTime ]
     /**
      * Sets the date pointed to by `value` corresponding to the date of the
      * given field.  Caller is responsible for making sure the field exists
@@ -25276,7 +25289,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a data, this function returns %FALSE.
      */
-    getDate(fieldname: string | null): [ /* returnType */ boolean, /* value */ GLib.Date ]
+    getDate(fieldname: string): [ /* returnType */ boolean, /* value */ GLib.Date ]
     /**
      * Sets the datetime pointed to by `value` corresponding to the datetime of the
      * given field. Caller is responsible for making sure the field exists
@@ -25289,7 +25302,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a data, this function returns %FALSE.
      */
-    getDateTime(fieldname: string | null): [ /* returnType */ boolean, /* value */ DateTime ]
+    getDateTime(fieldname: string): [ /* returnType */ boolean, /* value */ DateTime ]
     /**
      * Sets the double pointed to by `value` corresponding to the value of the
      * given field.  Caller is responsible for making sure the field exists
@@ -25297,7 +25310,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a double, this function returns %FALSE.
      */
-    getDouble(fieldname: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getDouble(fieldname: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Sets the int pointed to by `value` corresponding to the value of the
      * given field.  Caller is responsible for making sure the field exists,
@@ -25306,7 +25319,7 @@ interface Structure {
      * @param enumtype the enum type of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain an enum of the given type, this function returns %FALSE.
      */
-    getEnum(fieldname: string | null, enumtype: GObject.GType): [ /* returnType */ boolean, /* value */ number ]
+    getEnum(fieldname: string, enumtype: GObject.GType): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Finds the field with the given name, and returns the type of the
      * value it contains.  If the field is not found, G_TYPE_INVALID is
@@ -25314,7 +25327,7 @@ interface Structure {
      * @param fieldname the name of the field
      * @returns the #GValue of the field
      */
-    getFieldType(fieldname: string | null): GObject.GType
+    getFieldType(fieldname: string): GObject.GType
     /**
      * Sets the unsigned int pointed to by `value` corresponding to the value of the
      * given field. Caller is responsible for making sure the field exists,
@@ -25323,14 +25336,14 @@ interface Structure {
      * @param flagsType the flags type of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain flags or did not contain flags of the given type, this function returns %FALSE.
      */
-    getFlags(fieldname: string | null, flagsType: GObject.GType): [ /* returnType */ boolean, /* value */ number ]
+    getFlags(fieldname: string, flagsType: GObject.GType): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Read the GstFlagSet flags and mask out of the structure into the
      * provided pointers.
      * @param fieldname the name of a field
      * @returns %TRUE if the values could be set correctly. If there was no field with @fieldname or the existing field did not contain a GstFlagSet, this function returns %FALSE.
      */
-    getFlagset(fieldname: string | null): [ /* returnType */ boolean, /* valueFlags */ number, /* valueMask */ number ]
+    getFlagset(fieldname: string): [ /* returnType */ boolean, /* valueFlags */ number, /* valueMask */ number ]
     /**
      * Sets the integers pointed to by `value_numerator` and `value_denominator`
      * corresponding to the value of the given field.  Caller is responsible
@@ -25338,7 +25351,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the values could be set correctly. If there was no field with @fieldname or the existing field did not contain a GstFraction, this function returns %FALSE.
      */
-    getFraction(fieldname: string | null): [ /* returnType */ boolean, /* valueNumerator */ number, /* valueDenominator */ number ]
+    getFraction(fieldname: string): [ /* returnType */ boolean, /* valueNumerator */ number, /* valueDenominator */ number ]
     /**
      * Sets the int pointed to by `value` corresponding to the value of the
      * given field.  Caller is responsible for making sure the field exists
@@ -25346,7 +25359,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain an int, this function returns %FALSE.
      */
-    getInt(fieldname: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getInt(fieldname: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Sets the #gint64 pointed to by `value` corresponding to the value of the
      * given field. Caller is responsible for making sure the field exists
@@ -25354,7 +25367,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a #gint64, this function returns %FALSE.
      */
-    getInt64(fieldname: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getInt64(fieldname: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * This is useful in language bindings where unknown #GValue types are not
      * supported. This function will convert the %GST_TYPE_LIST into a newly
@@ -25363,12 +25376,12 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a %GST_TYPE_LIST, this function returns %FALSE.
      */
-    getList(fieldname: string | null): [ /* returnType */ boolean, /* array */ GObject.ValueArray ]
+    getList(fieldname: string): [ /* returnType */ boolean, /* array */ GObject.ValueArray ]
     /**
      * Get the name of `structure` as a string.
      * @returns the name of the structure.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the name of `structure` as a GQuark.
      * @returns the quark representing the name of the structure.
@@ -25384,7 +25397,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns a pointer to the string or %NULL when the field did not exist or did not contain a string.
      */
-    getString(fieldname: string | null): string | null
+    getString(fieldname: string): string | null
     /**
      * Sets the uint pointed to by `value` corresponding to the value of the
      * given field.  Caller is responsible for making sure the field exists
@@ -25392,7 +25405,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a uint, this function returns %FALSE.
      */
-    getUint(fieldname: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getUint(fieldname: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Sets the #guint64 pointed to by `value` corresponding to the value of the
      * given field. Caller is responsible for making sure the field exists
@@ -25400,32 +25413,32 @@ interface Structure {
      * @param fieldname the name of a field
      * @returns %TRUE if the value could be set correctly. If there was no field with @fieldname or the existing field did not contain a #guint64, this function returns %FALSE.
      */
-    getUint64(fieldname: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getUint64(fieldname: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Get the value of the field with name `fieldname`.
      * @param fieldname the name of the field to get
      * @returns the #GValue corresponding to the field with the given name.
      */
-    getValue(fieldname: string | null): any | null
+    getValue(fieldname: string): any | null
     /**
      * Check if `structure` contains a field named `fieldname`.
      * @param fieldname the name of a field
      * @returns %TRUE if the structure contains a field with the given name
      */
-    hasField(fieldname: string | null): boolean
+    hasField(fieldname: string): boolean
     /**
      * Check if `structure` contains a field named `fieldname` and with GType `type`.
      * @param fieldname the name of a field
      * @param type the type of a value
      * @returns %TRUE if the structure contains a field with the given name and type
      */
-    hasFieldTyped(fieldname: string | null, type: GObject.GType): boolean
+    hasFieldTyped(fieldname: string, type: GObject.GType): boolean
     /**
      * Checks if the structure has the given name
      * @param name structure name to check for
      * @returns %TRUE if @name matches the name of the structure.
      */
-    hasName(name: string | null): boolean
+    hasName(name: string): boolean
     /**
      * Get the value of the field with GQuark `field`.
      * @param field the #GQuark of the field to get
@@ -25499,7 +25512,7 @@ interface Structure {
      * @param index the index to get the name of
      * @returns the name of the given field number
      */
-    nthFieldName(index: number): string | null
+    nthFieldName(index: number): string
     /**
      * Removes all fields in a GstStructure.
      */
@@ -25509,7 +25522,7 @@ interface Structure {
      * name does not exist, the structure is unchanged.
      * @param fieldname the name of the field to remove
      */
-    removeField(fieldname: string | null): void
+    removeField(fieldname: string): void
     /**
      * Converts `structure` to a human-readable string representation.
      * 
@@ -25531,7 +25544,7 @@ interface Structure {
      * @param fieldname the name of a field
      * @param array a pointer to a #GValueArray
      */
-    setArray(fieldname: string | null, array: GObject.ValueArray): void
+    setArray(fieldname: string, array: GObject.ValueArray): void
     /**
      * This is useful in language bindings where unknown GValue types are not
      * supported. This function will convert a `array` to %GST_TYPE_LIST and set
@@ -25540,14 +25553,14 @@ interface Structure {
      * @param fieldname the name of a field
      * @param array a pointer to a #GValueArray
      */
-    setList(fieldname: string | null, array: GObject.ValueArray): void
+    setList(fieldname: string, array: GObject.ValueArray): void
     /**
      * Sets the name of the structure to the given `name`.  The string
      * provided is copied before being used. It must not be empty, start with a
      * letter and can be followed by letters, numbers and any of "/-_.:".
      * @param name the new name of the structure
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the parent_refcount field of #GstStructure. This field is used to
      * determine whether a structure is mutable or not. This function should only be
@@ -25564,7 +25577,7 @@ interface Structure {
      * @param fieldname the name of the field to set
      * @param value the new value of the field
      */
-    setValue(fieldname: string | null, value: any): void
+    setValue(fieldname: string, value: any): void
     /**
      * Sets the field with the given name `field` to `value`.  If the field
      * does not exist, it is created.  If the field exists, the previous
@@ -25572,7 +25585,7 @@ interface Structure {
      * @param fieldname the name of the field to set
      * @param value the new value of the field
      */
-    takeValue(fieldname: string | null, value: any): void
+    takeValue(fieldname: string, value: any): void
     /**
      * Converts `structure` to a human-readable string representation.
      * 
@@ -25718,7 +25731,7 @@ class Structure {
      * @param string a string representation of a #GstStructure.
      * @returns a new #GstStructure or %NULL     when the string could not be parsed. Free with     gst_structure_free() after use.
      */
-    static fromString(string: string | null): Structure
+    static fromString(string: string): Structure
     /**
      * Creates a new, empty #GstStructure with the given `name`.
      * 
@@ -25729,7 +25742,7 @@ class Structure {
      * @param name name of new structure
      * @returns a new, empty #GstStructure
      */
-    static newEmpty(name: string | null): Structure
+    static newEmpty(name: string): Structure
     /**
      * Creates a #GstStructure from a string representation.
      * If end is not %NULL, a pointer to the place inside the given string
@@ -25745,7 +25758,7 @@ class Structure {
      * @param string a string representation of a #GstStructure
      * @returns a new #GstStructure or %NULL     when the string could not be parsed. Free with     gst_structure_free() after use.
      */
-    static newFromString(string: string | null): Structure
+    static newFromString(string: string): Structure
     /**
      * Creates a new, empty #GstStructure with the given name as a GQuark.
      * 
@@ -25813,7 +25826,7 @@ interface TagList {
      * @param tag tag
      * @param value GValue for this tag
      */
-    addValue(mode: TagMergeMode, tag: string | null, value: any): void
+    addValue(mode: TagMergeMode, tag: string, value: any): void
     /**
      * Creates a new #GstTagList as a copy of the old `taglist`. The new taglist
      * will have a refcount of 1, owned by the caller, and will be writable as
@@ -25839,7 +25852,7 @@ interface TagList {
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getBoolean(tag: string | null): [ /* returnType */ boolean, /* value */ boolean ]
+    getBoolean(tag: string): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -25847,7 +25860,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getBooleanIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ boolean ]
+    getBooleanIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Copies the first date for the given tag in the taglist into the variable
      * pointed to by `value`. Free the date with g_date_free() when it is no longer
@@ -25857,7 +25870,7 @@ interface TagList {
      * @param tag tag to read out
      * @returns %TRUE, if a date was copied, %FALSE if the tag didn't exist in the              given list or if it was %NULL.
      */
-    getDate(tag: string | null): [ /* returnType */ boolean, /* value */ GLib.Date ]
+    getDate(tag: string): [ /* returnType */ boolean, /* value */ GLib.Date ]
     /**
      * Gets the date that is at the given index for the given tag in the given
      * list and copies it into the variable pointed to by `value`. Free the date
@@ -25868,7 +25881,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list or if it was %NULL.
      */
-    getDateIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ GLib.Date ]
+    getDateIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ GLib.Date ]
     /**
      * Copies the first datetime for the given tag in the taglist into the variable
      * pointed to by `value`. Unref the date with gst_date_time_unref() when
@@ -25878,7 +25891,7 @@ interface TagList {
      * @param tag tag to read out
      * @returns %TRUE, if a datetime was copied, %FALSE if the tag didn't exist in              the given list or if it was %NULL.
      */
-    getDateTime(tag: string | null): [ /* returnType */ boolean, /* value */ DateTime ]
+    getDateTime(tag: string): [ /* returnType */ boolean, /* value */ DateTime ]
     /**
      * Gets the datetime that is at the given index for the given tag in the given
      * list and copies it into the variable pointed to by `value`. Unref the datetime
@@ -25889,14 +25902,14 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list or if it was %NULL.
      */
-    getDateTimeIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ DateTime ]
+    getDateTimeIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ DateTime ]
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getDouble(tag: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getDouble(tag: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -25904,14 +25917,14 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getDoubleIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ number ]
+    getDoubleIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getFloat(tag: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getFloat(tag: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -25919,21 +25932,21 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getFloatIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ number ]
+    getFloatIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getInt(tag: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getInt(tag: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getInt64(tag: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getInt64(tag: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -25941,7 +25954,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getInt64Index(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ number ]
+    getInt64Index(tag: string, index: number): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -25949,14 +25962,14 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getIntIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ number ]
+    getIntIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getPointer(tag: string | null): [ /* returnType */ boolean, /* value */ any | null ]
+    getPointer(tag: string): [ /* returnType */ boolean, /* value */ any | null ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -25964,7 +25977,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getPointerIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ any | null ]
+    getPointerIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ any | null ]
     /**
      * Copies the first sample for the given tag in the taglist into the variable
      * pointed to by `sample`. Free the sample with gst_sample_unref() when it is
@@ -25976,7 +25989,7 @@ interface TagList {
      * @param tag tag to read out
      * @returns %TRUE, if a sample was returned, %FALSE if the tag didn't exist in              the given list or if it was %NULL.
      */
-    getSample(tag: string | null): [ /* returnType */ boolean, /* sample */ Sample ]
+    getSample(tag: string): [ /* returnType */ boolean, /* sample */ Sample ]
     /**
      * Gets the sample that is at the given index for the given tag in the given
      * list and copies it into the variable pointed to by `sample`. Free the sample
@@ -25989,7 +26002,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a sample was copied, %FALSE if the tag didn't exist in the              given list or if it was %NULL.
      */
-    getSampleIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* sample */ Sample ]
+    getSampleIndex(tag: string, index: number): [ /* returnType */ boolean, /* sample */ Sample ]
     /**
      * Gets the scope of `list`.
      * @returns The scope of @list
@@ -26010,7 +26023,7 @@ interface TagList {
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getString(tag: string | null): [ /* returnType */ boolean, /* value */ string | null ]
+    getString(tag: string): [ /* returnType */ boolean, /* value */ string | null ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -26024,27 +26037,27 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getStringIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ string | null ]
+    getStringIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ string | null ]
     /**
      * Checks how many value are stored in this tag list for the given tag.
      * @param tag the tag to query
      * @returns The number of tags stored
      */
-    getTagSize(tag: string | null): number
+    getTagSize(tag: string): number
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getUint(tag: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getUint(tag: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Copies the contents for the given tag into the value, merging multiple values
      * into one if multiple values are associated with the tag.
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getUint64(tag: string | null): [ /* returnType */ boolean, /* value */ number ]
+    getUint64(tag: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -26052,7 +26065,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getUint64Index(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ number ]
+    getUint64Index(tag: string, index: number): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -26060,7 +26073,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the              given list.
      */
-    getUintIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ number ]
+    getUintIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Gets the value that is at the given index for the given tag in the given
      * list.
@@ -26068,7 +26081,7 @@ interface TagList {
      * @param index number of entry to read out
      * @returns The GValue for the specified          entry or %NULL if the tag wasn't available or the tag          doesn't have as many entries
      */
-    getValueIndex(tag: string | null, index: number): any | null
+    getValueIndex(tag: string, index: number): any | null
     /**
      * Inserts the tags of the `from` list into the first list using the given mode.
      * @param from list to merge from
@@ -26106,7 +26119,7 @@ interface TagList {
      * @param index the index
      * @returns The name of the tag at @index.
      */
-    nthTagName(index: number): string | null
+    nthTagName(index: number): string
     /**
      * Peeks at the value that is at the given index for the given tag in the given
      * list.
@@ -26118,12 +26131,12 @@ interface TagList {
      * @param index number of entry to read out
      * @returns %TRUE, if a value was set, %FALSE if the tag didn't exist in the              given list.
      */
-    peekStringIndex(tag: string | null, index: number): [ /* returnType */ boolean, /* value */ string | null ]
+    peekStringIndex(tag: string, index: number): [ /* returnType */ boolean, /* value */ string ]
     /**
      * Removes the given tag from the taglist.
      * @param tag tag to remove
      */
-    removeTag(tag: string | null): void
+    removeTag(tag: string): void
     /**
      * Sets the scope of `list` to `scope`. By default the scope
      * of a taglist is stream scope.
@@ -26166,7 +26179,7 @@ class TagList {
      * @param str a string created with gst_tag_list_to_string()
      * @returns a new #GstTagList, or %NULL in case of an error.
      */
-    static newFromString(str: string | null): TagList
+    static newFromString(str: string): TagList
     /**
      * Copies the contents for the given tag into the value,
      * merging multiple values into one if multiple values are associated
@@ -26176,7 +26189,7 @@ class TagList {
      * @param tag tag to read out
      * @returns %TRUE, if a value was copied, %FALSE if the tag didn't exist in the          given list.
      */
-    static copyValue(list: TagList, tag: string | null): [ /* returnType */ boolean, /* dest */ any ]
+    static copyValue(list: TagList, tag: string): [ /* returnType */ boolean, /* dest */ any ]
     /**
      * Modifies a pointer to a #GstTagList to point to a different #GstTagList. The
      * modification is done atomically (so this is useful for ensuring thread
@@ -26316,7 +26329,7 @@ interface Toc {
      * @param uid UID to find #GstTocEntry with.
      * @returns #GstTocEntry with specified @uid from the @toc, or %NULL if not found.
      */
-    findEntry(uid: string | null): TocEntry | null
+    findEntry(uid: string): TocEntry | null
     /**
      * Gets the list of #GstTocEntry of `toc`.
      * @returns A #GList of #GstTocEntry for @entry
@@ -26461,7 +26474,7 @@ interface TocEntry {
      * Gets the UID of `entry`.
      * @returns The UID of @entry
      */
-    getUid(): string | null
+    getUid(): string
     isAlternative(): boolean
     isSequence(): boolean
     /**
@@ -26504,7 +26517,7 @@ class TocEntry {
      * @param uid unique ID (UID) in the whole TOC.
      * @returns newly allocated #GstTocEntry structure, free it with gst_toc_entry_unref().
      */
-    constructor(type: TocEntryType, uid: string | null) 
+    constructor(type: TocEntryType, uid: string) 
     /**
      * Create new #GstTocEntry structure.
      * @constructor 
@@ -26512,7 +26525,7 @@ class TocEntry {
      * @param uid unique ID (UID) in the whole TOC.
      * @returns newly allocated #GstTocEntry structure, free it with gst_toc_entry_unref().
      */
-    static new(type: TocEntryType, uid: string | null): TocEntry
+    static new(type: TocEntryType, uid: string): TocEntry
 }
 
 interface TocSetterInterface {
@@ -26605,7 +26618,7 @@ interface TypeFind {
      * @param probability The probability in percent that the suggestion is right
      * @param mediaType the media type of the suggested caps
      */
-    suggestEmptySimple(probability: number, mediaType: string | null): void
+    suggestEmptySimple(probability: number, mediaType: string): void
 }
 
 /**
@@ -26633,7 +26646,7 @@ class TypeFind {
      * @param possibleCaps Optionally the caps that could be returned when typefinding                 succeeds
      * @returns %TRUE on success, %FALSE otherwise
      */
-    static register(plugin: Plugin | null, name: string | null, rank: number, func: TypeFindFunction, extensions: string | null, possibleCaps: Caps | null): boolean
+    static register(plugin: Plugin | null, name: string, rank: number, func: TypeFindFunction, extensions: string | null, possibleCaps: Caps | null): boolean
 }
 
 interface TypeFindFactoryClass {
@@ -26658,7 +26671,7 @@ interface URIHandlerInterface {
     getType: (type: GObject.GType) => URIType
     getProtocols: (type: GObject.GType) => string[]
     getUri: (handler: URIHandler) => string | null
-    setUri: (handler: URIHandler, uri: string | null) => boolean
+    setUri: (handler: URIHandler, uri: string) => boolean
 }
 
 /**
@@ -26707,7 +26720,7 @@ interface Uri {
      * @param uri The URI string to parse.
      * @returns A new #GstUri object.
      */
-    fromStringWithBase(uri: string | null): Uri | null
+    fromStringWithBase(uri: string): Uri | null
     /**
      * Get the fragment name from the URI or %NULL if it doesn't exist.
      * If `uri` is %NULL then returns %NULL.
@@ -26795,7 +26808,7 @@ interface Uri {
      * @param queryKey The key to lookup.
      * @returns The value for the given key, or %NULL if not found.
      */
-    getQueryValue(queryKey: string | null): string | null
+    getQueryValue(queryKey: string): string | null
     /**
      * Get the scheme name from the URI or %NULL if it doesn't exist.
      * If `uri` is %NULL then returns %NULL.
@@ -26870,7 +26883,7 @@ interface Uri {
      * @param queryKey The key to lookup.
      * @returns %TRUE if @query_key exists in the URI query table.
      */
-    queryHasKey(queryKey: string | null): boolean
+    queryHasKey(queryKey: string): boolean
     /**
      * Add a reference to this #GstUri object. See gst_mini_object_ref() for further
      * info.
@@ -26882,7 +26895,7 @@ interface Uri {
      * @param queryKey The key to remove.
      * @returns %TRUE if the key existed in the table and was removed.
      */
-    removeQueryKey(queryKey: string | null): boolean
+    removeQueryKey(queryKey: string): boolean
     /**
      * Sets the fragment string in the URI. Use a value of %NULL in `fragment` to
      * unset the fragment string.
@@ -26895,7 +26908,7 @@ interface Uri {
      * @param host The new host string to set or %NULL to unset.
      * @returns %TRUE if the host was set/unset successfully.
      */
-    setHost(host: string | null): boolean
+    setHost(host: string): boolean
     /**
      * Sets or unsets the path in the URI.
      * @param path The new path to set with path segments separated by '/', or use %NULL        to unset the path.
@@ -26913,7 +26926,7 @@ interface Uri {
      * @param path The new percent encoded path to set with path segments separated by '/', or use %NULL to unset the path.
      * @returns %TRUE if the path was set successfully.
      */
-    setPathString(path: string | null): boolean
+    setPathString(path: string): boolean
     /**
      * Set or unset the port number for the URI.
      * @param port The new port number to set or %GST_URI_NO_PORT to unset.
@@ -26942,19 +26955,19 @@ interface Uri {
      * @param queryValue The value for the key.
      * @returns %TRUE if the query table was successfully updated.
      */
-    setQueryValue(queryKey: string | null, queryValue: string | null): boolean
+    setQueryValue(queryKey: string, queryValue: string | null): boolean
     /**
      * Set or unset the scheme for the URI.
      * @param scheme The new scheme to set or %NULL to unset the scheme.
      * @returns %TRUE if the scheme was set/unset successfully.
      */
-    setScheme(scheme: string | null): boolean
+    setScheme(scheme: string): boolean
     /**
      * Set or unset the user information for the URI.
      * @param userinfo The new user-information string to set or %NULL to unset.
      * @returns %TRUE if the user information was set/unset successfully.
      */
-    setUserinfo(userinfo: string | null): boolean
+    setUserinfo(userinfo: string): boolean
     /**
      * Convert the URI to a string.
      * 
@@ -27037,14 +27050,14 @@ class Uri {
      * @param location Location for URI
      * @returns a new string for this URI.
      */
-    static construct(protocol: string | null, location: string | null): string | null
+    static construct(protocol: string, location: string): string | null
     /**
      * Parses a URI string into a new #GstUri object. Will return NULL if the URI
      * cannot be parsed.
      * @param uri The URI string to parse.
      * @returns A new #GstUri object, or NULL.
      */
-    static fromString(uri: string | null): Uri | null
+    static fromString(uri: string): Uri | null
     /**
      * Parses a URI string into a new #GstUri object. Will return NULL if the URI
      * cannot be parsed. This is identical to gst_uri_from_string() except that
@@ -27062,7 +27075,7 @@ class Uri {
      * @param uri The URI string to parse.
      * @returns A new #GstUri object, or NULL.
      */
-    static fromStringEscaped(uri: string | null): Uri | null
+    static fromStringEscaped(uri: string): Uri | null
     /**
      * Extracts the location out of a given valid URI, ie. the protocol and "://"
      * are stripped from the URI, which means that the location returned includes
@@ -27073,28 +27086,28 @@ class Uri {
      * @param uri A URI string
      * @returns the location for this URI. Returns     %NULL if the URI isn't valid. If the URI does not contain a location, an     empty string is returned.
      */
-    static getLocation(uri: string | null): string | null
+    static getLocation(uri: string): string | null
     /**
      * Extracts the protocol out of a given valid URI. The returned string must be
      * freed using g_free().
      * @param uri A URI string
      * @returns The protocol for this URI.
      */
-    static getProtocol(uri: string | null): string | null
+    static getProtocol(uri: string): string | null
     /**
      * Checks if the protocol of a given valid URI matches `protocol`.
      * @param uri a URI string
      * @param protocol a protocol string (e.g. "http")
      * @returns %TRUE if the protocol matches.
      */
-    static hasProtocol(uri: string | null, protocol: string | null): boolean
+    static hasProtocol(uri: string, protocol: string): boolean
     /**
      * Tests if the given string is a valid URI identifier. URIs start with a valid
      * scheme followed by ":" and maybe a string identifying the location.
      * @param uri A URI string
      * @returns %TRUE if the string is a valid URI
      */
-    static isValid(uri: string | null): boolean
+    static isValid(uri: string): boolean
     /**
      * This is a convenience function to join two URI strings and return the result.
      * The returned string should be g_free()'d after use.
@@ -27102,7 +27115,7 @@ class Uri {
      * @param refUri The percent-encoded reference URI to join to the `base_uri`.
      * @returns A string representing the percent-encoded join of          the two URIs.
      */
-    static joinStrings(baseUri: string | null, refUri: string | null): string | null
+    static joinStrings(baseUri: string, refUri: string): string | null
     /**
      * Checks if an element exists that supports the given URI protocol. Note
      * that a positive return value does not imply that a subsequent call to
@@ -27111,7 +27124,7 @@ class Uri {
      * @param protocol Protocol that should be checked for (e.g. "http" or "smb")
      * @returns %TRUE
      */
-    static protocolIsSupported(type: URIType, protocol: string | null): boolean
+    static protocolIsSupported(type: URIType, protocol: string): boolean
     /**
      * Tests if the given string is a valid protocol identifier. Protocols
      * must consist of alphanumeric characters, '+', '-' and '.' and must
@@ -27119,7 +27132,7 @@ class Uri {
      * @param protocol A string
      * @returns %TRUE if the string is a valid protocol identifier, %FALSE otherwise.
      */
-    static protocolIsValid(protocol: string | null): boolean
+    static protocolIsValid(protocol: string): boolean
 }
 
 interface ValueTable {

@@ -721,14 +721,14 @@ export function enum_get_value(enum_class: EnumClass, value: number): EnumValue 
  * @param name the name to look up
  * @returns the #GEnumValue with name @name,          or %NULL if the enumeration doesn't have a member          with that name
  */
-export function enum_get_value_by_name(enum_class: EnumClass, name: string | null): EnumValue | null
+export function enum_get_value_by_name(enum_class: EnumClass, name: string): EnumValue | null
 /**
  * Looks up a #GEnumValue by nickname.
  * @param enum_class a #GEnumClass
  * @param nick the nickname to look up
  * @returns the #GEnumValue with nickname @nick,          or %NULL if the enumeration doesn't have a member          with that nickname
  */
-export function enum_get_value_by_nick(enum_class: EnumClass, nick: string | null): EnumValue | null
+export function enum_get_value_by_nick(enum_class: EnumClass, nick: string): EnumValue | null
 /**
  * Registers a new static enumeration type with the name `name`.
  * 
@@ -739,7 +739,7 @@ export function enum_get_value_by_nick(enum_class: EnumClass, nick: string | nul
  * @param const_static_values An array of #GEnumValue structs for the possible  enumeration values. The array is terminated by a struct with all  members being 0. GObject keeps a reference to the data, so it cannot  be stack-allocated.
  * @returns The new type identifier.
  */
-export function enum_register_static(name: string | null, const_static_values: EnumValue): GType
+export function enum_register_static(name: string, const_static_values: EnumValue): GType
 /**
  * Pretty-prints `value` in the form of the enum’s name.
  * 
@@ -771,14 +771,14 @@ export function flags_get_first_value(flags_class: FlagsClass, value: number): F
  * @param name the name to look up
  * @returns the #GFlagsValue with name @name,          or %NULL if there is no flag with that name
  */
-export function flags_get_value_by_name(flags_class: FlagsClass, name: string | null): FlagsValue | null
+export function flags_get_value_by_name(flags_class: FlagsClass, name: string): FlagsValue | null
 /**
  * Looks up a #GFlagsValue by nickname.
  * @param flags_class a #GFlagsClass
  * @param nick the nickname to look up
  * @returns the #GFlagsValue with nickname @nick,          or %NULL if there is no flag with that nickname
  */
-export function flags_get_value_by_nick(flags_class: FlagsClass, nick: string | null): FlagsValue | null
+export function flags_get_value_by_nick(flags_class: FlagsClass, nick: string): FlagsValue | null
 /**
  * Registers a new static flags type with the name `name`.
  * 
@@ -789,7 +789,7 @@ export function flags_get_value_by_nick(flags_class: FlagsClass, nick: string | 
  * @param const_static_values An array of #GFlagsValue structs for the possible  flags values. The array is terminated by a struct with all members being 0.  GObject keeps a reference to the data, so it cannot be stack-allocated.
  * @returns The new type identifier.
  */
-export function flags_register_static(name: string | null, const_static_values: FlagsValue): GType
+export function flags_register_static(name: string, const_static_values: FlagsValue): GType
 /**
  * Pretty-prints `value` in the form of the flag names separated by ` | ` and
  * sorted. Any extra bits will be shown at the end as a hexadecimal number.
@@ -817,7 +817,7 @@ export function gtype_get_type(): GType
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_boolean(name: string | null, nick: string | null, blurb: string | null, default_value: boolean, flags: ParamFlags): ParamSpec
+export function param_spec_boolean(name: string, nick: string | null, blurb: string | null, default_value: boolean, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecBoxed instance specifying a %G_TYPE_BOXED
  * derived property.
@@ -830,7 +830,7 @@ export function param_spec_boolean(name: string | null, nick: string | null, blu
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_boxed(name: string | null, nick: string | null, blurb: string | null, boxed_type: GType, flags: ParamFlags): ParamSpec
+export function param_spec_boxed(name: string, nick: string | null, blurb: string | null, boxed_type: GType, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecChar instance specifying a %G_TYPE_CHAR property.
  * @param name canonical name of the property specified
@@ -842,7 +842,7 @@ export function param_spec_boxed(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_char(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_char(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecDouble instance specifying a %G_TYPE_DOUBLE
  * property.
@@ -857,7 +857,7 @@ export function param_spec_char(name: string | null, nick: string | null, blurb:
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_double(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_double(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecEnum instance specifying a %G_TYPE_ENUM
  * property.
@@ -871,7 +871,7 @@ export function param_spec_double(name: string | null, nick: string | null, blur
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_enum(name: string | null, nick: string | null, blurb: string | null, enum_type: GType, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_enum(name: string, nick: string | null, blurb: string | null, enum_type: GType, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecFlags instance specifying a %G_TYPE_FLAGS
  * property.
@@ -885,7 +885,7 @@ export function param_spec_enum(name: string | null, nick: string | null, blurb:
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_flags(name: string | null, nick: string | null, blurb: string | null, flags_type: GType, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_flags(name: string, nick: string | null, blurb: string | null, flags_type: GType, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecFloat instance specifying a %G_TYPE_FLOAT property.
  * 
@@ -899,7 +899,7 @@ export function param_spec_flags(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_float(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_float(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecGType instance specifying a
  * %G_TYPE_GTYPE property.
@@ -912,7 +912,7 @@ export function param_spec_float(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_gtype(name: string | null, nick: string | null, blurb: string | null, is_a_type: GType, flags: ParamFlags): ParamSpec
+export function param_spec_gtype(name: string, nick: string | null, blurb: string | null, is_a_type: GType, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecInt instance specifying a %G_TYPE_INT property.
  * 
@@ -926,7 +926,7 @@ export function param_spec_gtype(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_int(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_int(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecInt64 instance specifying a %G_TYPE_INT64 property.
  * 
@@ -940,7 +940,7 @@ export function param_spec_int(name: string | null, nick: string | null, blurb: 
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_int64(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_int64(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecLong instance specifying a %G_TYPE_LONG property.
  * 
@@ -954,7 +954,7 @@ export function param_spec_int64(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_long(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_long(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecBoxed instance specifying a %G_TYPE_OBJECT
  * derived property.
@@ -967,7 +967,7 @@ export function param_spec_long(name: string | null, nick: string | null, blurb:
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_object(name: string | null, nick: string | null, blurb: string | null, object_type: GType, flags: ParamFlags): ParamSpec
+export function param_spec_object(name: string, nick: string | null, blurb: string | null, object_type: GType, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecParam instance specifying a %G_TYPE_PARAM
  * property.
@@ -980,7 +980,7 @@ export function param_spec_object(name: string | null, nick: string | null, blur
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_param(name: string | null, nick: string | null, blurb: string | null, param_type: GType, flags: ParamFlags): ParamSpec
+export function param_spec_param(name: string, nick: string | null, blurb: string | null, param_type: GType, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecPointer instance specifying a pointer property.
  * Where possible, it is better to use g_param_spec_object() or
@@ -993,7 +993,7 @@ export function param_spec_param(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_pointer(name: string | null, nick: string | null, blurb: string | null, flags: ParamFlags): ParamSpec
+export function param_spec_pointer(name: string, nick: string | null, blurb: string | null, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecString instance.
  * 
@@ -1005,7 +1005,7 @@ export function param_spec_pointer(name: string | null, nick: string | null, blu
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_string(name: string | null, nick: string | null, blurb: string | null, default_value: string | null, flags: ParamFlags): ParamSpec
+export function param_spec_string(name: string, nick: string | null, blurb: string | null, default_value: string | null, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecUChar instance specifying a %G_TYPE_UCHAR property.
  * @param name canonical name of the property specified
@@ -1017,7 +1017,7 @@ export function param_spec_string(name: string | null, nick: string | null, blur
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_uchar(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_uchar(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecUInt instance specifying a %G_TYPE_UINT property.
  * 
@@ -1031,7 +1031,7 @@ export function param_spec_uchar(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_uint(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_uint(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecUInt64 instance specifying a %G_TYPE_UINT64
  * property.
@@ -1046,7 +1046,7 @@ export function param_spec_uint(name: string | null, nick: string | null, blurb:
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_uint64(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_uint64(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecULong instance specifying a %G_TYPE_ULONG
  * property.
@@ -1061,7 +1061,7 @@ export function param_spec_uint64(name: string | null, nick: string | null, blur
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_ulong(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
+export function param_spec_ulong(name: string, nick: string | null, blurb: string | null, minimum: number, maximum: number, default_value: number, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecUnichar instance specifying a %G_TYPE_UINT
  * property. #GValue structures for this property can be accessed with
@@ -1075,7 +1075,7 @@ export function param_spec_ulong(name: string | null, nick: string | null, blurb
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-export function param_spec_unichar(name: string | null, nick: string | null, blurb: string | null, default_value: string, flags: ParamFlags): ParamSpec
+export function param_spec_unichar(name: string, nick: string | null, blurb: string | null, default_value: string, flags: ParamFlags): ParamSpec
 /**
  * Creates a new #GParamSpecVariant instance specifying a #GVariant
  * property.
@@ -1091,7 +1091,7 @@ export function param_spec_unichar(name: string | null, nick: string | null, blu
  * @param flags flags for the property specified
  * @returns the newly created #GParamSpec
  */
-export function param_spec_variant(name: string | null, nick: string | null, blurb: string | null, type: GLib.VariantType, default_value: GLib.Variant | null, flags: ParamFlags): ParamSpec
+export function param_spec_variant(name: string, nick: string | null, blurb: string | null, type: GLib.VariantType, default_value: GLib.Variant | null, flags: ParamFlags): ParamSpec
 /**
  * Registers `name` as the name of a new static type derived
  * from %G_TYPE_PARAM.
@@ -1103,7 +1103,7 @@ export function param_spec_variant(name: string | null, nick: string | null, blu
  * @param pspec_info The #GParamSpecTypeInfo for this #GParamSpec type.
  * @returns The new type identifier.
  */
-export function param_type_register_static(name: string | null, pspec_info: ParamSpecTypeInfo): GType
+export function param_type_register_static(name: string, pspec_info: ParamSpecTypeInfo): GType
 /**
  * Transforms `src_value` into `dest_value` if possible, and then
  * validates `dest_value,` in order for it to conform to `pspec`.  If
@@ -1168,7 +1168,7 @@ export function param_values_cmp(pspec: ParamSpec, value1: any, value2: any): nu
  * @param name the name of the new pointer type.
  * @returns a new %G_TYPE_POINTER derived type id for @name.
  */
-export function pointer_type_register_static(name: string | null): GType
+export function pointer_type_register_static(name: string): GType
 /**
  * A predefined #GSignalAccumulator for signals intended to be used as a
  * hook for application code to provide a particular value.  Usually
@@ -1231,7 +1231,7 @@ export function signal_chain_from_overridden(instance_and_params: any[], return_
  * @param after whether the handler should be called before or after the  default handler of the signal.
  * @returns the handler ID (always greater than 0 for successful connections)
  */
-export function signal_connect_closure(instance: Object, detailed_signal: string | null, closure: TClosure, after: boolean): number
+export function signal_connect_closure(instance: Object, detailed_signal: string, closure: TClosure, after: boolean): number
 /**
  * Connects a closure to a signal for a particular object.
  * 
@@ -1440,7 +1440,7 @@ export function signal_has_handler_pending(instance: Object, signal_id: number, 
  * @param name the canonical name of the signal
  * @returns %TRUE if @name is a valid signal name, %FALSE otherwise.
  */
-export function signal_is_valid_name(name: string | null): boolean
+export function signal_is_valid_name(name: string): boolean
 /**
  * Lists the signals by id that a certain instance or interface type
  * created. Further information about the signals can be acquired through
@@ -1465,7 +1465,7 @@ export function signal_list_ids(itype: GType): number[]
  * @param itype the type that the signal operates on.
  * @returns the signal's identifying number, or 0 if no signal was found.
  */
-export function signal_lookup(name: string | null, itype: GType): number
+export function signal_lookup(name: string, itype: GType): number
 /**
  * Given the signal's identifier, finds its name.
  * 
@@ -1495,7 +1495,7 @@ export function signal_override_class_closure(signal_id: number, instance_type: 
  * @param force_detail_quark %TRUE forces creation of a #GQuark for the detail.
  * @returns Whether the signal name could successfully be parsed and @signal_id_p and @detail_p contain valid return values.
  */
-export function signal_parse_name(detailed_signal: string | null, itype: GType, force_detail_quark: boolean): [ /* returnType */ boolean, /* signal_id_p */ number, /* detail_p */ GLib.Quark ]
+export function signal_parse_name(detailed_signal: string, itype: GType, force_detail_quark: boolean): [ /* returnType */ boolean, /* signal_id_p */ number, /* detail_p */ GLib.Quark ]
 /**
  * Queries the signal system for in-depth information about a
  * specific signal. This function will fill in a user-provided
@@ -1543,7 +1543,7 @@ export function signal_stop_emission(instance: Object, signal_id: number, detail
  * @param instance the object whose signal handlers you wish to stop.
  * @param detailed_signal a string of the form "signal-name::detail".
  */
-export function signal_stop_emission_by_name(instance: Object, detailed_signal: string | null): void
+export function signal_stop_emission_by_name(instance: Object, detailed_signal: string): void
 /**
  * Creates a new closure which invokes the function found at the offset
  * `struct_offset` in the class structure of the interface or classed type
@@ -1737,7 +1737,7 @@ export function type_free_instance(instance: TypeInstance): void
  * @param name type name to look up
  * @returns corresponding type ID or 0
  */
-export function type_from_name(name: string | null): GType
+export function type_from_name(name: string): GType
 /**
  * Internal function, used to extract the fundamental type ID portion.
  * Use G_TYPE_FUNDAMENTAL() instead.
@@ -1876,8 +1876,8 @@ export function type_is_a(type: GType, is_a_type: GType): boolean
  * @returns static type name or %NULL
  */
 export function type_name(type: GType): string | null
-export function type_name_from_class(g_class: TypeClass): string | null
-export function type_name_from_instance(instance: TypeInstance): string | null
+export function type_name_from_class(g_class: TypeClass): string
+export function type_name_from_instance(instance: TypeInstance): string
 /**
  * Given a `leaf_type` and a `root_type` which is contained in its
  * ancestry, return the type that `root_type` is the immediate parent
@@ -1930,7 +1930,7 @@ export function type_query(type: GType): /* query */ TypeQuery
  * @param flags bitwise combination of #GTypeFlags values
  * @returns the new type identifier or %G_TYPE_INVALID if registration failed
  */
-export function type_register_dynamic(parent_type: GType, type_name: string | null, plugin: TypePlugin, flags: TypeFlags): GType
+export function type_register_dynamic(parent_type: GType, type_name: string, plugin: TypePlugin, flags: TypeFlags): GType
 /**
  * Registers `type_id` as the predefined identifier and `type_name` as the
  * name of a fundamental type. If `type_id` is already registered, or a
@@ -1946,7 +1946,7 @@ export function type_register_dynamic(parent_type: GType, type_name: string | nu
  * @param flags bitwise combination of #GTypeFlags values
  * @returns the predefined type identifier
  */
-export function type_register_fundamental(type_id: GType, type_name: string | null, info: TypeInfo, finfo: TypeFundamentalInfo, flags: TypeFlags): GType
+export function type_register_fundamental(type_id: GType, type_name: string, info: TypeInfo, finfo: TypeFundamentalInfo, flags: TypeFlags): GType
 /**
  * Registers `type_name` as the name of a new static type derived from
  * `parent_type`. The type system uses the information contained in the
@@ -1959,7 +1959,7 @@ export function type_register_fundamental(type_id: GType, type_name: string | nu
  * @param flags bitwise combination of #GTypeFlags values
  * @returns the new type identifier
  */
-export function type_register_static(parent_type: GType, type_name: string | null, info: TypeInfo, flags: TypeFlags): GType
+export function type_register_static(parent_type: GType, type_name: string, info: TypeInfo, flags: TypeFlags): GType
 /**
  * Attaches arbitrary data to a type.
  * @param type a #GType
@@ -3167,7 +3167,7 @@ export interface Binding {
      * of the binding.
      * @returns the name of the source property
      */
-    get_source_property(): string | null
+    get_source_property(): string
     /**
      * Retrieves the #GObject instance used as the target of the binding.
      * 
@@ -3186,7 +3186,7 @@ export interface Binding {
      * of the binding.
      * @returns the name of the target property
      */
-    get_target_property(): string | null
+    get_target_property(): string
     /**
      * Explicitly releases the binding between the source and the target
      * property expressed by `binding`.
@@ -3366,7 +3366,7 @@ export interface BindingGroup {
      * @param target_property the property on `target` to bind
      * @param flags the flags used to create the #GBinding
      */
-    bind(source_property: string | null, target: Object, target_property: string | null, flags: BindingFlags): void
+    bind(source_property: string, target: Object, target_property: string, flags: BindingFlags): void
     /**
      * Creates a binding between `source_property` on the source object and
      * `target_property` on `target,` allowing you to set the transformation
@@ -3385,7 +3385,7 @@ export interface BindingGroup {
      * @param transform_to a #GClosure wrapping the     transformation function from the source object to the `target,`     or %NULL to use the default
      * @param transform_from a #GClosure wrapping the     transformation function from the `target` to the source object,     or %NULL to use the default
      */
-    bind_full(source_property: string | null, target: Object, target_property: string | null, flags: BindingFlags, transform_to: TClosure | null, transform_from: TClosure | null): void
+    bind_full(source_property: string, target: Object, target_property: string, flags: BindingFlags, transform_to: TClosure | null, transform_from: TClosure | null): void
     /**
      * Gets the source object used for binding properties.
      * @returns a #GObject or %NULL.
@@ -3557,7 +3557,7 @@ export interface Object {
      * @param flags flags to pass to #GBinding
      * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
      */
-    bind_property(source_property: string | null, target: Object, target_property: string | null, flags: BindingFlags): Binding
+    bind_property(source_property: string, target: Object, target_property: string, flags: BindingFlags): Binding
     /**
      * Creates a binding between `source_property` on `source` and `target_property`
      * on `target,` allowing you to set the transformation functions to be used by
@@ -3574,7 +3574,7 @@ export interface Object {
      * @param transform_from a #GClosure wrapping the transformation function     from the `target` to the `source,` or %NULL to use the default
      * @returns the #GBinding instance representing the     binding between the two #GObject instances. The binding is released     whenever the #GBinding reference count reaches zero.
      */
-    bind_property_full(source_property: string | null, target: Object, target_property: string | null, flags: BindingFlags, transform_to: TClosure, transform_from: TClosure): Binding
+    bind_property_full(source_property: string, target: Object, target_property: string, flags: BindingFlags, transform_to: TClosure, transform_from: TClosure): Binding
     /**
      * This function is intended for #GObject implementations to re-enforce
      * a [floating][floating-ref] object reference. Doing this is seldom
@@ -3599,7 +3599,7 @@ export interface Object {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a property of an object.
      * 
@@ -3620,7 +3620,7 @@ export interface Object {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata().
@@ -3655,7 +3655,7 @@ export interface Object {
      * called.
      * @param property_name the name of a property installed on the class of `object`.
      */
-    notify(property_name: string | null): void
+    notify(property_name: string): void
     /**
      * Emits a "notify" signal for the property specified by `pspec` on `object`.
      * 
@@ -3747,20 +3747,20 @@ export interface Object {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Sets a property on an object.
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
     /**
      * Remove a specified datum from the object's data associations,
      * without invoking the association's destroy handler.
      * @param key name of the key
      * @returns the data if found, or %NULL          if no such data exists.
      */
-    steal_data(key: string | null): any | null
+    steal_data(key: string): any | null
     /**
      * This function gets back user data pointers stored via
      * g_object_set_qdata() and removes the `data` from object
@@ -3925,7 +3925,7 @@ export class Object {
      * @param property_name name of a property to look up.
      * @returns the #GParamSpec for the property of the          interface with the name @property_name, or %NULL if no          such property exists.
      */
-    static interface_find_property(g_iface: TypeInterface, property_name: string | null): ParamSpec
+    static interface_find_property(g_iface: TypeInterface, property_name: string): ParamSpec
     /**
      * Add a property to an interface; this is only useful for interfaces
      * that are added to GObject-derived types. Adding a property to an
@@ -3971,7 +3971,7 @@ export interface ParamSpec {
      * name of this parameter: always an interned string
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * #GParamFlags flags for this parameter
      * @field 
@@ -4009,7 +4009,7 @@ export interface ParamSpec {
      * This allows for pointer-value comparisons.
      * @returns the name of @pspec.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the GQuark for the name.
      * @returns the GQuark for @pspec->name.
@@ -4019,7 +4019,7 @@ export interface ParamSpec {
      * Get the nickname of a #GParamSpec.
      * @returns the nickname of @pspec.
      */
-    get_nick(): string | null
+    get_nick(): string
     /**
      * Gets back user data pointers stored via g_param_spec_set_qdata().
      * @param quark a #GQuark, naming the user data pointer
@@ -4111,7 +4111,7 @@ export class ParamSpec {
      * @param name the canonical name of the property
      * @returns %TRUE if @name is a valid property name, %FALSE otherwise.
      */
-    static is_valid_name(name: string | null): boolean
+    static is_valid_name(name: string): boolean
     static char(name: string, nick: string, blurb: string, flags: ParamFlags, minimum: number, maximum: number, defaultValue: number): ParamSpecChar
     static uchar(name: string, nick: string, blurb: string, flags: ParamFlags, minimum: number, maximum: number, defaultValue: number): ParamSpecUChar
     static int(name: string, nick: string, blurb: string, flags: ParamFlags, minimum: number, maximum: number, defaultValue: number): ParamSpecInt
@@ -4974,7 +4974,7 @@ export interface SignalGroup {
      * @param closure the closure to connect.
      * @param after whether the handler should be called before or after the  default handler of the signal.
      */
-    connect_closure(detailed_signal: string | null, closure: TClosure, after: boolean): void
+    connect_closure(detailed_signal: string, closure: TClosure, after: boolean): void
     /**
      * Connects `c_handler` to the signal `detailed_signal`
      * on the target instance of `self`.
@@ -4984,7 +4984,7 @@ export interface SignalGroup {
      * @param c_handler the #GCallback to connect
      * @param flags the flags used to create the signal connection
      */
-    connect_data(detailed_signal: string | null, c_handler: Callback, flags: ConnectFlags): void
+    connect_data(detailed_signal: string, c_handler: Callback, flags: ConnectFlags): void
     /**
      * Connects `c_handler` to the signal `detailed_signal`
      * on the target instance of `self`.
@@ -4996,7 +4996,7 @@ export interface SignalGroup {
      * @param detailed_signal a string of the form "signal-name::detail"
      * @param c_handler the #GCallback to connect
      */
-    connect_swapped(detailed_signal: string | null, c_handler: Callback): void
+    connect_swapped(detailed_signal: string, c_handler: Callback): void
     /**
      * Gets the target instance used when connecting signals.
      * @returns The target instance
@@ -5146,7 +5146,7 @@ export interface TypeModule extends TypePlugin {
      * @param const_static_values an array of #GEnumValue structs for the                       possible enumeration values. The array is                       terminated by a struct with all members being                       0.
      * @returns the new or existing type ID
      */
-    register_enum(name: string | null, const_static_values: EnumValue): GType
+    register_enum(name: string, const_static_values: EnumValue): GType
     /**
      * Looks up or registers a flags type that is implemented with a particular
      * type plugin. If a type with name `type_name` was previously registered,
@@ -5162,7 +5162,7 @@ export interface TypeModule extends TypePlugin {
      * @param const_static_values an array of #GFlagsValue structs for the                       possible flags values. The array is                       terminated by a struct with all members being                       0.
      * @returns the new or existing type ID
      */
-    register_flags(name: string | null, const_static_values: FlagsValue): GType
+    register_flags(name: string, const_static_values: FlagsValue): GType
     /**
      * Looks up or registers a type that is implemented with a particular
      * type plugin. If a type with name `type_name` was previously registered,
@@ -5184,12 +5184,12 @@ export interface TypeModule extends TypePlugin {
      * @param flags flags field providing details about the type
      * @returns the new or existing type ID
      */
-    register_type(parent_type: GType, type_name: string | null, type_info: TypeInfo, flags: TypeFlags): GType
+    register_type(parent_type: GType, type_name: string, type_info: TypeInfo, flags: TypeFlags): GType
     /**
      * Sets the name for a #GTypeModule
      * @param name a human-readable name to use in error messages.
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Decreases the use count of a #GTypeModule by one. If the
      * result is zero, the module will be unloaded. (However, the
@@ -5866,12 +5866,12 @@ export interface EnumValue {
      * the name of the value
      * @field 
      */
-    value_name: string | null
+    value_name: string
     /**
      * the nickname of the value
      * @field 
      */
-    value_nick: string | null
+    value_nick: string
 }
 
 /**
@@ -5938,12 +5938,12 @@ export interface FlagsValue {
      * the name of the value
      * @field 
      */
-    value_name: string | null
+    value_name: string
     /**
      * the nickname of the value
      * @field 
      */
-    value_nick: string | null
+    value_nick: string
 }
 
 /**
@@ -6044,7 +6044,7 @@ export interface ObjectClass {
      * @param property_name the name of the property to look up
      * @returns the #GParamSpec for the property, or          %NULL if the class doesn't have a property of that name
      */
-    find_property(oclass: Object | Function | GType, property_name: string | null): ParamSpec
+    find_property(oclass: Object | Function | GType, property_name: string): ParamSpec
     /**
      * Installs new properties from an array of #GParamSpecs.
      * 
@@ -6156,7 +6156,7 @@ export interface ObjectClass {
      * @param property_id the new property ID
      * @param name the name of a property registered in a parent class or  in an interface of this class.
      */
-    override_property(oclass: Object | Function | GType, property_id: number, name: string | null): void
+    override_property(oclass: Object | Function | GType, property_id: number, name: string): void
 }
 
 /**
@@ -6290,7 +6290,7 @@ export interface ParamSpecPool {
      * @param walk_ancestors If %TRUE, also try to find a #GParamSpec with `param_name`  owned by an ancestor of `owner_type`.
      * @returns The found #GParamSpec, or %NULL if no matching #GParamSpec was found.
      */
-    lookup(param_name: string | null, owner_type: GType, walk_ancestors: boolean): ParamSpec | null
+    lookup(param_name: string, owner_type: GType, walk_ancestors: boolean): ParamSpec | null
     /**
      * Removes a #GParamSpec from the pool.
      * @param pspec the #GParamSpec to remove
@@ -6365,7 +6365,7 @@ export interface Parameter {
      * the parameter name
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * the parameter value
      * @field 
@@ -6436,7 +6436,7 @@ export interface SignalQuery {
      * The signal name.
      * @field 
      */
-    signal_name: string | null
+    signal_name: string
     /**
      * The interface/instance type that this signal can be emitted for.
      * @field 
@@ -6900,7 +6900,7 @@ export interface TypeQuery {
      * the name of the type
      * @field 
      */
-    type_name: string | null
+    type_name: string
     /**
      * the size of the class structure
      * @field 
@@ -6966,7 +6966,7 @@ export interface TypeValueTable {
      *   needs to be used, and for collection of floats `'d'`.
      * @field 
      */
-    collect_format: string | null
+    collect_format: string
     /**
      * Function to initialize a GValue from the values
      *   collected from variadic arguments
@@ -6979,7 +6979,7 @@ export interface TypeValueTable {
      *   only of `'p'`s to provide lcopy_value() with pointers to storage locations.
      * @field 
      */
-    lcopy_format: string | null
+    lcopy_format: string
     /**
      * Function to store the contents of a value into the
      *   locations collected from variadic arguments

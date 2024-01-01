@@ -79,26 +79,26 @@ enum JobPageDataFlags {
     MEDIA,
     ALL,
 }
-const STOCK_ANNOT_SQUIGGLY: string | null
-const STOCK_ANNOT_TEXT: string | null
-const STOCK_ATTACHMENT: string | null
-const STOCK_CLOSE: string | null
-const STOCK_FIND_UNSUPPORTED: string | null
-const STOCK_INVERTED_COLORS: string | null
-const STOCK_OUTLINE: string | null
-const STOCK_RESIZE_SE: string | null
-const STOCK_RESIZE_SW: string | null
-const STOCK_ROTATE_LEFT: string | null
-const STOCK_ROTATE_RIGHT: string | null
-const STOCK_RUN_PRESENTATION: string | null
-const STOCK_SEND_TO: string | null
-const STOCK_VIEW_CONTINUOUS: string | null
-const STOCK_VIEW_DUAL: string | null
-const STOCK_VIEW_SIDEBAR: string | null
-const STOCK_VISIBLE: string | null
-const STOCK_ZOOM: string | null
-const STOCK_ZOOM_PAGE: string | null
-const STOCK_ZOOM_WIDTH: string | null
+const STOCK_ANNOT_SQUIGGLY: string
+const STOCK_ANNOT_TEXT: string
+const STOCK_ATTACHMENT: string
+const STOCK_CLOSE: string
+const STOCK_FIND_UNSUPPORTED: string
+const STOCK_INVERTED_COLORS: string
+const STOCK_OUTLINE: string
+const STOCK_RESIZE_SE: string
+const STOCK_RESIZE_SW: string
+const STOCK_ROTATE_LEFT: string
+const STOCK_ROTATE_RIGHT: string
+const STOCK_RUN_PRESENTATION: string
+const STOCK_SEND_TO: string
+const STOCK_VIEW_CONTINUOUS: string
+const STOCK_VIEW_DUAL: string
+const STOCK_VIEW_SIDEBAR: string
+const STOCK_VISIBLE: string
+const STOCK_ZOOM: string
+const STOCK_ZOOM_PAGE: string
+const STOCK_ZOOM_WIDTH: string
 /**
  * Creates a new icon factory, adding the base stock icons to it.
  */
@@ -195,7 +195,7 @@ interface DocumentModel {
     setMaxScale(maxScale: number): void
     setMinScale(minScale: number): void
     setPage(page: number): void
-    setPageByLabel(pageLabel: string | null): void
+    setPageByLabel(pageLabel: string): void
     /**
      * Sets the document model's page layout to `layout`.
      * @param layout a #EvPageLayout
@@ -662,8 +662,8 @@ class JobFind extends Job {
     // Constructors of EvinceView-3.0.EvinceView.JobFind
 
     constructor(config?: JobFind.ConstructorProperties) 
-    constructor(document: EvinceDocument.Document, startPage: number, nPages: number, text: string | null, caseSensitive: boolean) 
-    static new(document: EvinceDocument.Document, startPage: number, nPages: number, text: string | null, caseSensitive: boolean): JobFind
+    constructor(document: EvinceDocument.Document, startPage: number, nPages: number, text: string, caseSensitive: boolean) 
+    static new(document: EvinceDocument.Document, startPage: number, nPages: number, text: string, caseSensitive: boolean): JobFind
     _init(config?: JobFind.ConstructorProperties): void
 }
 
@@ -867,8 +867,8 @@ interface JobLoad {
 
     // Owm methods of EvinceView-3.0.EvinceView.JobLoad
 
-    setPassword(password: string | null): void
-    setUri(uri: string | null): void
+    setPassword(password: string): void
+    setUri(uri: string): void
 
     // Class property signals of EvinceView-3.0.EvinceView.JobLoad
 
@@ -894,8 +894,8 @@ class JobLoad extends Job {
     // Constructors of EvinceView-3.0.EvinceView.JobLoad
 
     constructor(config?: JobLoad.ConstructorProperties) 
-    constructor(uri: string | null) 
-    static new(uri: string | null): JobLoad
+    constructor(uri: string) 
+    static new(uri: string): JobLoad
     _init(config?: JobLoad.ConstructorProperties): void
 }
 
@@ -932,8 +932,8 @@ interface JobLoadFd {
      */
     setFd(fd: number): boolean
     setLoadFlags(flags: EvinceDocument.DocumentLoadFlags): void
-    setMimeType(mimeType: string | null): void
-    setPassword(password: string | null): void
+    setMimeType(mimeType: string): void
+    setPassword(password: string): void
     /**
      * Sets `fd` as the file descriptor in `job`.
      * Note that `job` takes ownership of `fd;` you must not do anything
@@ -980,7 +980,7 @@ class JobLoadFd extends Job {
      * @param flags flags from #EvDocumentLoadFlags
      * @returns the new #EvJobLoadFd, or %NULL
      */
-    constructor(fd: number, mimeType: string | null, flags: EvinceDocument.DocumentLoadFlags) 
+    constructor(fd: number, mimeType: string, flags: EvinceDocument.DocumentLoadFlags) 
     /**
      * Creates a new #EvJobLoadFd for `fd`. If duplicating `fd` fails,
      * returns %NULL with `error` filled in.
@@ -990,8 +990,8 @@ class JobLoadFd extends Job {
      * @param flags flags from #EvDocumentLoadFlags
      * @returns the new #EvJobLoadFd, or %NULL
      */
-    static new(fd: number, mimeType: string | null, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
-    static newTake(fd: number, mimeType: string | null, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
+    static new(fd: number, mimeType: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
+    static newTake(fd: number, mimeType: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
     _init(config?: JobLoadFd.ConstructorProperties): void
 }
 
@@ -1021,7 +1021,7 @@ interface JobLoadGFile {
 
     setGfile(gfile: Gio.File): void
     setLoadFlags(flags: EvinceDocument.DocumentLoadFlags): void
-    setPassword(password: string | null): void
+    setPassword(password: string): void
 
     // Class property signals of EvinceView-3.0.EvinceView.JobLoadGFile
 
@@ -1081,8 +1081,8 @@ interface JobLoadStream {
     // Owm methods of EvinceView-3.0.EvinceView.JobLoadStream
 
     setLoadFlags(flags: EvinceDocument.DocumentLoadFlags): void
-    setMimeType(mimeType: string | null): void
-    setPassword(password: string | null): void
+    setMimeType(mimeType: string): void
+    setPassword(password: string): void
     setStream(stream: Gio.InputStream): void
 
     // Class property signals of EvinceView-3.0.EvinceView.JobLoadStream
@@ -1346,8 +1346,8 @@ class JobSave extends Job {
     // Constructors of EvinceView-3.0.EvinceView.JobSave
 
     constructor(config?: JobSave.ConstructorProperties) 
-    constructor(document: EvinceDocument.Document, uri: string | null, documentUri: string | null) 
-    static new(document: EvinceDocument.Document, uri: string | null, documentUri: string | null): JobSave
+    constructor(document: EvinceDocument.Document, uri: string, documentUri: string) 
+    static new(document: EvinceDocument.Document, uri: string, documentUri: string): JobSave
     _init(config?: JobSave.ConstructorProperties): void
 }
 
@@ -1468,15 +1468,15 @@ interface PrintOperation {
     getDefaultPageSetup(): Gtk.PageSetup
     getEmbedPageSetup(): boolean
     getError(): void
-    getJobName(): string | null
+    getJobName(): string
     getPrintSettings(): Gtk.PrintSettings
     getProgress(): number
-    getStatus(): string | null
+    getStatus(): string
     run(parent: Gtk.Window): void
     setCurrentPage(currentPage: number): void
     setDefaultPageSetup(pageSetup: Gtk.PageSetup): void
     setEmbedPageSetup(embed: boolean): void
-    setJobName(jobName: string | null): void
+    setJobName(jobName: string): void
     setPrintSettings(printSettings: Gtk.PrintSettings): void
 
     // Own signals of EvinceView-3.0.EvinceView.PrintOperation
@@ -1749,13 +1749,13 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1768,13 +1768,13 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1787,7 +1787,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1796,7 +1796,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1808,7 +1808,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2249,7 +2249,7 @@ interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2262,7 +2262,7 @@ interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -2272,7 +2272,7 @@ interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2285,7 +2285,7 @@ interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2294,13 +2294,13 @@ interface ViewPresentation extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own signals of EvinceView-3.0.EvinceView.ViewPresentation
 

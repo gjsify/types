@@ -49,8 +49,8 @@ enum AuthFlags {
     DEFAULT,
     PASSWORD_TEXT_NEEDED,
 }
-const SERVICE_TYPE_HTTP: string | null
-const SERVICE_TYPE_HTTPS: string | null
+const SERVICE_TYPE_HTTP: string
+const SERVICE_TYPE_HTTPS: string
 const TLS_SECONDS_PER_DAY: number
 const TLS_SECONDS_PER_HOUR: number
 const TLS_SECONDS_PER_MINUTE: number

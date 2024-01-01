@@ -252,13 +252,13 @@ interface Client {
      * @param argOld Argument to pass with the signal.
      * @param argNew Argument to pass with the signal.
      */
-    emitLocationUpdated(argOld: string | null, argNew: string | null): void
+    emitLocationUpdated(argOld: string, argNew: string): void
 
     // Own virtual methods of Geoclue-2.0.Geoclue.Client
 
     handleStart(invocation: Gio.DBusMethodInvocation): boolean
     handleStop(invocation: Gio.DBusMethodInvocation): boolean
-    locationUpdated(argOld: string | null, argNew: string | null): void
+    locationUpdated(argOld: string, argNew: string): void
 
     // Own signals of Geoclue-2.0.Geoclue.Client
 
@@ -635,7 +635,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callAddAgent(argId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAddAgent(argId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with gclue_manager_call_add_agent().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to gclue_manager_call_add_agent().
@@ -650,7 +650,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callAddAgentSync(argId: string | null, cancellable: Gio.Cancellable | null): boolean
+    callAddAgentSync(argId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -666,7 +666,7 @@ interface Manager {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to gclue_manager_call_create_client().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateClientFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outClient */ string | null ]
+    callCreateClientFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outClient */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.CreateClient">CreateClient()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -674,7 +674,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateClientSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outClient */ string | null ]
+    callCreateClientSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outClient */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -685,7 +685,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callDeleteClient(argClient: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callDeleteClient(argClient: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with gclue_manager_call_delete_client().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to gclue_manager_call_delete_client().
@@ -700,7 +700,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callDeleteClientSync(argClient: string | null, cancellable: Gio.Cancellable | null): boolean
+    callDeleteClientSync(argClient: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -716,7 +716,7 @@ interface Manager {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to gclue_manager_call_get_client().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetClientFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outClient */ string | null ]
+    callGetClientFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outClient */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.GetClient">GetClient()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -724,7 +724,7 @@ interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetClientSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outClient */ string | null ]
+    callGetClientSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outClient */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.AddAgent">AddAgent()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -739,7 +739,7 @@ interface Manager {
      * @param invocation A #GDBusMethodInvocation.
      * @param client Parameter to return.
      */
-    completeCreateClient(invocation: Gio.DBusMethodInvocation, client: string | null): void
+    completeCreateClient(invocation: Gio.DBusMethodInvocation, client: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-GeoClue2-Manager.DeleteClient">DeleteClient()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -754,13 +754,13 @@ interface Manager {
      * @param invocation A #GDBusMethodInvocation.
      * @param client Parameter to return.
      */
-    completeGetClient(invocation: Gio.DBusMethodInvocation, client: string | null): void
+    completeGetClient(invocation: Gio.DBusMethodInvocation, client: string): void
 
     // Own virtual methods of Geoclue-2.0.Geoclue.Manager
 
-    handleAddAgent(invocation: Gio.DBusMethodInvocation, argId: string | null): boolean
+    handleAddAgent(invocation: Gio.DBusMethodInvocation, argId: string): boolean
     handleCreateClient(invocation: Gio.DBusMethodInvocation): boolean
-    handleDeleteClient(invocation: Gio.DBusMethodInvocation, argClient: string | null): boolean
+    handleDeleteClient(invocation: Gio.DBusMethodInvocation, argClient: string): boolean
     handleGetClient(invocation: Gio.DBusMethodInvocation): boolean
 
     // Own signals of Geoclue-2.0.Geoclue.Manager
@@ -1006,7 +1006,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ClientProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ClientProxy
 
     // Overloads of newForBusSync
 
@@ -1024,7 +1024,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Client.top_of_page">org.freedesktop.GeoClue2.Client</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -1039,7 +1039,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ClientProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ClientProxy
 
     // Overloads of newSync
 
@@ -1076,7 +1076,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ClientProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Client.top_of_page">org.freedesktop.GeoClue2.Client</link>. See g_dbus_proxy_new() for more details.
@@ -1092,7 +1092,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -1133,7 +1133,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like gclue_client_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -1148,7 +1148,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -1165,7 +1165,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * A utility function to create a #GClueClientProxy without having to deal with
      * a #GClueManager. See also gclue_client_proxy_create_full() which improves
@@ -1181,7 +1181,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the results are ready.
      */
-    static create(desktopId: string | null, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static create(desktopId: string, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with gclue_client_proxy_create().
      * @param result The #GAsyncResult obtained from the #GAsyncReadyCallback passed to          gclue_client_proxy_create().
@@ -1205,7 +1205,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the results are ready.
      */
-    static createFull(desktopId: string | null, accuracyLevel: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static createFull(desktopId: string, accuracyLevel: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with gclue_client_proxy_create_full().
      * @param result The #GAsyncResult obtained from the #GAsyncReadyCallback passed to          gclue_client_proxy_create().
@@ -1225,7 +1225,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static createFullSync(desktopId: string | null, accuracyLevel: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: Gio.Cancellable | null): ClientProxy
+    static createFullSync(desktopId: string, accuracyLevel: AccuracyLevel, flags: ClientProxyCreateFlags, cancellable: Gio.Cancellable | null): ClientProxy
     /**
      * The synchronous and blocking version of #gclue_client_proxy_create().
      * See also gclue_client_proxy_create_full_sync() which improves resource
@@ -1238,7 +1238,7 @@ class ClientProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static createSync(desktopId: string | null, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null): ClientProxy
+    static createSync(desktopId: string, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null): ClientProxy
 }
 
 module ClientSkeleton {
@@ -1537,7 +1537,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): LocationProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): LocationProxy
 
     // Overloads of newForBusSync
 
@@ -1555,7 +1555,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Location.top_of_page">org.freedesktop.GeoClue2.Location</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -1570,7 +1570,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): LocationProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): LocationProxy
 
     // Overloads of newSync
 
@@ -1607,7 +1607,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: LocationProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Location.top_of_page">org.freedesktop.GeoClue2.Location</link>. See g_dbus_proxy_new() for more details.
@@ -1623,7 +1623,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -1664,7 +1664,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like gclue_location_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -1679,7 +1679,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -1696,7 +1696,7 @@ class LocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module LocationSkeleton {
@@ -1975,7 +1975,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ManagerProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ManagerProxy
 
     // Overloads of newForBusSync
 
@@ -1993,7 +1993,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Manager.top_of_page">org.freedesktop.GeoClue2.Manager</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -2008,7 +2008,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ManagerProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ManagerProxy
 
     // Overloads of newSync
 
@@ -2045,7 +2045,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ManagerProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-GeoClue2-Manager.top_of_page">org.freedesktop.GeoClue2.Manager</link>. See g_dbus_proxy_new() for more details.
@@ -2061,7 +2061,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -2102,7 +2102,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like gclue_manager_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -2117,7 +2117,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -2134,7 +2134,7 @@ class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ManagerSkeleton {
@@ -2399,7 +2399,7 @@ class Simple extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The new #GClueSimple object or %NULL if @error is set.
      */
-    static newSync(desktopId: string | null, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null): Simple
+    static newSync(desktopId: string, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null): Simple
     /**
      * Finishes an operation started with #gclue_simple_new_with_thresholds().
      * @constructor 
@@ -2417,7 +2417,7 @@ class Simple extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The new #GClueSimple object or %NULL if @error is set.
      */
-    static newWithThresholdsSync(desktopId: string | null, accuracyLevel: AccuracyLevel, timeThreshold: number, distanceThreshold: number, cancellable: Gio.Cancellable | null): Simple
+    static newWithThresholdsSync(desktopId: string, accuracyLevel: AccuracyLevel, timeThreshold: number, distanceThreshold: number, cancellable: Gio.Cancellable | null): Simple
     _init(config?: Simple.ConstructorProperties): void
     /**
      * Asynchronously creates a #GClueSimple instance. Use
@@ -2430,7 +2430,7 @@ class Simple extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the results are ready.
      */
-    static new(desktopId: string | null, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(desktopId: string, accuracyLevel: AccuracyLevel, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Asynchronously creates a #GClueSimple instance. Use
      * #gclue_simple_new_with_thresholds_finish() to get the created #GClueSimple instance.
@@ -2444,7 +2444,7 @@ class Simple extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the results are ready.
      */
-    static newWithThresholds(desktopId: string | null, accuracyLevel: AccuracyLevel, timeThreshold: number, distanceThreshold: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newWithThresholds(desktopId: string, accuracyLevel: AccuracyLevel, timeThreshold: number, distanceThreshold: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 interface ClientIface {
@@ -2464,7 +2464,7 @@ interface ClientIface {
     getLocation: (object: Client) => string | null
     getRequestedAccuracyLevel: (object: Client) => number
     getTimeThreshold: (object: Client) => number
-    locationUpdated: (object: Client, argOld: string | null, argNew: string | null) => void
+    locationUpdated: (object: Client, argOld: string, argNew: string) => void
 }
 
 /**
@@ -2645,9 +2645,9 @@ interface ManagerIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleAddAgent: (object: Manager, invocation: Gio.DBusMethodInvocation, argId: string | null) => boolean
+    handleAddAgent: (object: Manager, invocation: Gio.DBusMethodInvocation, argId: string) => boolean
     handleCreateClient: (object: Manager, invocation: Gio.DBusMethodInvocation) => boolean
-    handleDeleteClient: (object: Manager, invocation: Gio.DBusMethodInvocation, argClient: string | null) => boolean
+    handleDeleteClient: (object: Manager, invocation: Gio.DBusMethodInvocation, argClient: string) => boolean
     handleGetClient: (object: Manager, invocation: Gio.DBusMethodInvocation) => boolean
     getAvailableAccuracyLevel: (object: Manager) => number
     getInUse: (object: Manager) => boolean

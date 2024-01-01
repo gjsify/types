@@ -262,10 +262,10 @@ export const VERSION_HEX: number
  * The full version of the Mx library, in string form (suited for
  * string concatenation)
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 export function actor_box_clamp_to_pixels(box: Clutter.ActorBox): void
 export function allocate_align_fill(child: Clutter.Actor, childbox: Clutter.ActorBox, x_alignment: Align, y_alignment: Align, x_fill: boolean, y_fill: boolean): void
-export function border_image_set_from_string(value: any, str: string | null, filename: string | null): void
+export function border_image_set_from_string(value: any, str: string, filename: string): void
 /**
  * Transforms a focus direction to a focus hint. This is a convenience
  * function for actors that implement the #MxFocusable interface, to
@@ -283,7 +283,7 @@ export function border_image_set_from_string(value: any, str: string | null, fil
  * @returns A #MxFocusHint
  */
 export function focus_hint_from_direction(direction: FocusDirection): FocusHint
-export function font_weight_set_from_string(value: any, str: string | null): void
+export function font_weight_set_from_string(value: any, str: string): void
 export function image_error_quark(): GLib.Quark
 /**
  * Initializes internationalization support for Mx. If MxApplication is
@@ -314,7 +314,7 @@ export interface ActionCallbackFunc {
  * @param text text from the clipboard
  */
 export interface ClipboardCallbackFunc {
-    (clipboard: Clipboard, text: string | null): void
+    (clipboard: Clipboard, text: string): void
 }
 export module Draggable {
 
@@ -1282,20 +1282,20 @@ export interface Stylable {
      * @param property_name the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    find_property(property_name: string | null): GObject.ParamSpec
+    find_property(property_name: string): GObject.ParamSpec
     /**
      * Query `stylable` for the default value of property `property_name` and
      * fill `value_out` with the result.
      * @param property_name name of the property to query
      * @returns %TRUE if property @property_name exists and the default value has been returned.
      */
-    get_default_value(property_name: string | null): [ /* returnType */ boolean, /* value_out */ any ]
+    get_default_value(property_name: string): [ /* returnType */ boolean, /* value_out */ any ]
     /**
      * Retrieves the value of `property_name` for `stylable,` and puts it
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -1319,7 +1319,7 @@ export interface Stylable {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Retrieves the #MxStyle used by `stylable`. This function does not
      * alter the reference count of the returned object.
@@ -1330,13 +1330,13 @@ export interface Stylable {
      * Get the current style class name
      * @returns the class name string. The string is owned by the #MxWidget and should not be modified or freed.
      */
-    get_style_class(): string | null
+    get_style_class(): string
     /**
      * Get the current style pseudo class. This can contain multiple pseudo class
      * names, separated by ':'.
      * @returns the pseudo class string. The string is owned by the #MxWidget and should not be modified or freed.
      */
-    get_style_pseudo_class(): string | null
+    get_style_pseudo_class(): string
     /**
      * Retrieves all the #GParamSpec<!-- -->s installed by `stylable`.
      * @returns an array of #GParamSpec<!-- -->s. Free it with  g_free() when done.
@@ -1356,13 +1356,13 @@ export interface Stylable {
      * Set the style class name
      * @param style_class a new style class string
      */
-    set_style_class(style_class: string | null): void
+    set_style_class(style_class: string): void
     /**
      * Set the style pseudo class. The string can contain multiple pseudo class
      * names, separated by ':'.
      * @param pseudo_class a new pseudo class string
      */
-    set_style_pseudo_class(pseudo_class: string | null): void
+    set_style_pseudo_class(pseudo_class: string): void
     /**
      * Emit the "style-changed" signal on `stylable` to notify it that one or more
      * of the style properties has changed.
@@ -1378,20 +1378,20 @@ export interface Stylable {
      * #MxStylable:style-pseudo-class property.
      * @param new_class A pseudo-class name to add
      */
-    style_pseudo_class_add(new_class: string | null): void
+    style_pseudo_class_add(new_class: string): void
     /**
      * Check if the given pseudo-class name is contained in the list of
      * set pseudo classes on this #MxStylable object.
      * @param pseudo_class A pseudo-class name
      * @returns %TRUE if the given pseudo-class is set, %FALSE otherwise
      */
-    style_pseudo_class_contains(pseudo_class: string | null): boolean
+    style_pseudo_class_contains(pseudo_class: string): boolean
     /**
      * Remove the specified pseudo class name from the list of pseudo classes
      * contained in the #MxStylable:style-pseudo-class property.
      * @param remove_class A pseudo class name to remove
      */
-    style_pseudo_class_remove(remove_class: string | null): void
+    style_pseudo_class_remove(remove_class: string): void
 
     // Own virtual methods of Mx-1.0.Mx.Stylable
 
@@ -1407,14 +1407,14 @@ export interface Stylable {
      * @virtual 
      * @returns the class name string. The string is owned by the #MxWidget and should not be modified or freed.
      */
-    vfunc_get_style_class(): string | null
+    vfunc_get_style_class(): string
     /**
      * Get the current style pseudo class. This can contain multiple pseudo class
      * names, separated by ':'.
      * @virtual 
      * @returns the pseudo class string. The string is owned by the #MxWidget and should not be modified or freed.
      */
-    vfunc_get_style_pseudo_class(): string | null
+    vfunc_get_style_pseudo_class(): string
     /**
      * Sets `style` as the new #MxStyle to be used by `stylable`.
      * 
@@ -1431,14 +1431,14 @@ export interface Stylable {
      * @virtual 
      * @param style_class a new style class string
      */
-    vfunc_set_style_class(style_class: string | null): void
+    vfunc_set_style_class(style_class: string): void
     /**
      * Set the style pseudo class. The string can contain multiple pseudo class
      * names, separated by ':'.
      * @virtual 
      * @param pseudo_class a new pseudo class string
      */
-    vfunc_set_style_pseudo_class(pseudo_class: string | null): void
+    vfunc_set_style_pseudo_class(pseudo_class: string): void
     /**
      * Emit the "style-changed" signal on `stylable` to notify it that one or more
      * of the style properties has changed.
@@ -1580,17 +1580,17 @@ export interface Action extends Gio.Action {
      * Get the display name of the action
      * @returns display-name of the action, owned by MxAction
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Get the icon of the action
      * @returns icon of the action, owned by MxAction
      */
-    get_icon(): string | null
+    get_icon(): string
     /**
      * Get the name of the action
      * @returns name of the action, owned by MxAction
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Set the value of the active property
      * @param active the value to set
@@ -1600,17 +1600,17 @@ export interface Action extends Gio.Action {
      * Set the name of the action to display to the user
      * @param name new display name to set
      */
-    set_display_name(name: string | null): void
+    set_display_name(name: string): void
     /**
      * The icon to be used in a visual representation of an action.
      * @param name new icon to set
      */
-    set_icon(name: string | null): void
+    set_icon(name: string): void
     /**
      * Set the name of the action
      * @param name new name to set
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Own virtual methods of Mx-1.0.Mx.Action
 
@@ -1692,7 +1692,7 @@ export class Action extends GObject.InitiallyUnowned {
      * @param activated_cb callback to connect to the activated signal
      * @returns a newly allocated #MxAction
      */
-    static new_full(name: string | null, display_name: string | null, activated_cb: ActionCallbackFunc | null): Action
+    static new_full(name: string, display_name: string, activated_cb: ActionCallbackFunc | null): Action
     /**
      * Creates a new stateful action.
      * 
@@ -1704,7 +1704,7 @@ export class Action extends GObject.InitiallyUnowned {
      * @param state the initial state of the action
      * @returns a new #MxAction
      */
-    static new_stateful(name: string | null, parameter_type: GLib.VariantType | null, state: GLib.Variant): Action
+    static new_stateful(name: string, parameter_type: GLib.VariantType | null, state: GLib.Variant): Action
     /**
      * Creates a new action with a parameter.
      * 
@@ -1714,7 +1714,7 @@ export class Action extends GObject.InitiallyUnowned {
      * @param parameter_type the type of parameter to the activate function
      * @returns a new #MxAction
      */
-    static new_with_parameter(name: string | null, parameter_type?: GLib.VariantType | null): Action
+    static new_with_parameter(name: string, parameter_type?: GLib.VariantType | null): Action
     _init(config?: Action.ConstructorProperties): void
 }
 
@@ -2322,14 +2322,14 @@ export interface Application {
      * Run the named action for the application.
      * @param name name of the action to invoke
      */
-    invoke_action(name: string | null): void
+    invoke_action(name: string): void
     /**
      * Run the named action for the application, passing `variant` as the parameter
      * for the action.
      * @param name name of the action to invoke
      * @param variant parameter for the action
      */
-    invoke_action_with_parameter(name: string | null, variant: GLib.Variant): void
+    invoke_action_with_parameter(name: string, variant: GLib.Variant): void
     /**
      * Query whether #MxApplication is running. This will also return #TRUE if the
      * given #MxApplication is single instance and there is an instance already
@@ -2346,7 +2346,7 @@ export interface Application {
      * Remove the action with the specified name from the application.
      * @param name name of the action to remove
      */
-    remove_action(name: string | null): void
+    remove_action(name: string): void
     /**
      * Remove the specified window from the application. This will cause the window
      * to be unreferenced and destroyed unless another reference is held on it.
@@ -2417,7 +2417,7 @@ export class Application extends GObject.Object {
      * @param flags Application flags.
      * @returns the #MxApplication singleton.
      */
-    constructor(argv: string[] | null, name: string | null, flags: ApplicationFlags) 
+    constructor(argv: string[] | null, name: string, flags: ApplicationFlags) 
     /**
      * Intialises everything needed to operate Clutter and use #MxApplication.
      * See clutter_init().
@@ -2427,7 +2427,7 @@ export class Application extends GObject.Object {
      * @param flags Application flags.
      * @returns the #MxApplication singleton.
      */
-    static new(argv: string[] | null, name: string | null, flags: ApplicationFlags): Application
+    static new(argv: string[] | null, name: string, flags: ApplicationFlags): Application
     _init(config?: Application.ConstructorProperties): void
 }
 
@@ -2578,7 +2578,7 @@ export interface Bin extends Atk.ImplementorIface, Clutter.Animatable, Clutter.C
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -2602,7 +2602,7 @@ export interface Bin extends Atk.ImplementorIface, Clutter.Animatable, Clutter.C
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -2623,7 +2623,7 @@ export interface Bin extends Atk.ImplementorIface, Clutter.Animatable, Clutter.C
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Bin
 
@@ -3086,7 +3086,7 @@ export interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -3110,7 +3110,7 @@ export interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -3131,7 +3131,7 @@ export interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.BoxLayout
 
@@ -3612,12 +3612,12 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param name the name of the action to retrieve
      * @returns a #ClutterAction for the given   name, or %NULL. The returned #ClutterAction is owned by the   actor and it should not be unreferenced directly
      */
-    get_action(name: string | null): Clutter.Action
+    get_action(name: string): Clutter.Action
     /**
      * Get the icon-name being used on the button.
      * @returns the icon-name. This must not be freed by the application. %NULL if no icon has been set
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Retrieves the icon's relative position to the text.
      * @returns A #MxPosition
@@ -3642,7 +3642,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * Get the text displayed on the button
      * @returns the text for the button. This must not be freed by the application
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Retrieves the visibility of the text associated with the button's action.
      * @returns %TRUE if the text is visible, %FALSE otherwise
@@ -3693,7 +3693,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * Sets the text displayed on the button
      * @param text text to set the label to
      */
-    set_label(text: string | null): void
+    set_label(text: string): void
     /**
      * Sets the visibility of the text associated with the button's action.
      * @param visible %TRUE if the text should be visible
@@ -3713,7 +3713,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -3737,7 +3737,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -3758,7 +3758,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Button
 
@@ -4114,7 +4114,7 @@ export class Button extends Bin {
      * @param text text to set the label to
      * @returns a new #MxButton
      */
-    static new_with_label(text: string | null): Button
+    static new_with_label(text: string): Button
     _init(config?: Button.ConstructorProperties): void
 }
 
@@ -4259,7 +4259,7 @@ export interface Clipboard {
      * Sets text as the current contents of the clipboard.
      * @param text text to copy to the clipboard
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
 
     // Class property signals of Mx-1.0.Mx.Clipboard
 
@@ -4325,17 +4325,17 @@ export interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * Append an item to the combo box list
      * @param text name of the item
      */
-    append_text(text: string | null): void
+    append_text(text: string): void
     /**
      * Get the name of the icon displayed in the combo box
      * @returns the text string of the name of the displayed icon, owned by the combo box, or %NULL if there is no active icon.
      */
-    get_active_icon_name(): string | null
+    get_active_icon_name(): string
     /**
      * Get the text displayed in the combo box
      * @returns the text string, owned by the combo box
      */
-    get_active_text(): string | null
+    get_active_text(): string
     /**
      * Get the index of the last item selected
      * @returns gint
@@ -4346,19 +4346,19 @@ export interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param position zero indexed position to insert the item at
      * @param text name of the item
      */
-    insert_text(position: number, text: string | null): void
+    insert_text(position: number, text: string): void
     /**
      * Insert an item with text and an icon into the combo box list.
      * @param position zero indexed position to insert the item at
      * @param text name of the item
      * @param icon name of an icon from the icon theme
      */
-    insert_text_with_icon(position: number, text: string | null, icon: string | null): void
+    insert_text_with_icon(position: number, text: string, icon: string): void
     /**
      * Prepend an item to the combo box list
      * @param text name of the item
      */
-    prepend_text(text: string | null): void
+    prepend_text(text: string): void
     /**
      * Remove all the items of `box`
      */
@@ -4377,7 +4377,7 @@ export interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * Set the text displayed in the combo box
      * @param text text to display
      */
-    set_active_text(text: string | null): void
+    set_active_text(text: string): void
     /**
      * Set the current combo box text from the item at `index` in the list.
      * @param index the index of the list item to set
@@ -4391,7 +4391,7 @@ export interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -4415,7 +4415,7 @@ export interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -4436,7 +4436,7 @@ export interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.ComboBox
 
@@ -4794,7 +4794,7 @@ export interface DeformBowTie extends Atk.ImplementorIface, Clutter.Animatable, 
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -4818,7 +4818,7 @@ export interface DeformBowTie extends Atk.ImplementorIface, Clutter.Animatable, 
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -4839,7 +4839,7 @@ export interface DeformBowTie extends Atk.ImplementorIface, Clutter.Animatable, 
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.DeformBowTie
 
@@ -5198,7 +5198,7 @@ export interface DeformPageTurn extends Atk.ImplementorIface, Clutter.Animatable
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -5222,7 +5222,7 @@ export interface DeformPageTurn extends Atk.ImplementorIface, Clutter.Animatable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -5243,7 +5243,7 @@ export interface DeformPageTurn extends Atk.ImplementorIface, Clutter.Animatable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.DeformPageTurn
 
@@ -5632,7 +5632,7 @@ export interface DeformTexture extends Atk.ImplementorIface, Clutter.Animatable,
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -5656,7 +5656,7 @@ export interface DeformTexture extends Atk.ImplementorIface, Clutter.Animatable,
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -5677,7 +5677,7 @@ export interface DeformTexture extends Atk.ImplementorIface, Clutter.Animatable,
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.DeformTexture
 
@@ -6036,7 +6036,7 @@ export interface DeformWaves extends Atk.ImplementorIface, Clutter.Animatable, C
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -6060,7 +6060,7 @@ export interface DeformWaves extends Atk.ImplementorIface, Clutter.Animatable, C
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -6081,7 +6081,7 @@ export interface DeformWaves extends Atk.ImplementorIface, Clutter.Animatable, C
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.DeformWaves
 
@@ -6483,7 +6483,7 @@ export interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -6507,7 +6507,7 @@ export interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -6528,7 +6528,7 @@ export interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Dialog
 
@@ -6913,13 +6913,13 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Gets the text that is displayed when the entry is empty and unfocused
      * @returns the current value of the hint property. This string is owned by the #MxEntry and should not be freed or modified.
      */
-    get_hint_text(): string | null
+    get_hint_text(): string
     /**
      * Get the suffix appended to the filename to use for the highlighted version
      * of the icon.
      * @returns the highlight filename suffix. This string is owned by the #MxEntry and should not be freed or modified.
      */
-    get_icon_highlight_suffix(): string | null
+    get_icon_highlight_suffix(): string
     /**
      * Gets the character to display instead of the text.
      * @returns a character, or 0 if input should not be hidden.
@@ -6929,14 +6929,14 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Get the text displayed on the entry
      * @returns the text for the entry. This must not be freed by the application
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Sets the text to display when the entry is empty and unfocused. When the
      * entry is displaying the hint, it has a pseudo class of "indeterminate".
      * A value of NULL unsets the hint.
      * @param text text to set as the entry hint
      */
-    set_hint_text(text: string | null): void
+    set_hint_text(text: string): void
     /**
      * Sets the suffix appended to the filename to use for the highlighted version
      * of the icon. e.g. if you have set your primay icon to "primary-icon.png" 
@@ -6944,7 +6944,7 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * "primary-icon-highlight.png"
      * @param suffix the suffix to append to the filename for the highlight version
      */
-    set_icon_highlight_suffix(suffix: string | null): void
+    set_icon_highlight_suffix(suffix: string): void
     /**
      * Sets the character to display instead of the text. Use 0 to display
      * the actual text.
@@ -6955,19 +6955,19 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Set the primary icon of the entry to the given filename
      * @param filename filename of an icon
      */
-    set_primary_icon_from_file(filename: string | null): void
-    set_primary_icon_tooltip_text(text: string | null): void
+    set_primary_icon_from_file(filename: string): void
+    set_primary_icon_tooltip_text(text: string): void
     /**
      * Set the primary icon of the entry to the given filename
      * @param filename filename of an icon
      */
-    set_secondary_icon_from_file(filename: string | null): void
-    set_secondary_icon_tooltip_text(text: string | null): void
+    set_secondary_icon_from_file(filename: string): void
+    set_secondary_icon_tooltip_text(text: string): void
     /**
      * Sets the text displayed on the entry
      * @param text text to set the entry to
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
 
     // Conflicting methods
 
@@ -6976,7 +6976,7 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -7000,7 +7000,7 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -7021,7 +7021,7 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Entry
 
@@ -7366,7 +7366,7 @@ export class Entry extends Widget {
      * @param text text to set the entry to
      * @returns a new #MxEntry
      */
-    static new_with_text(text: string | null): Entry
+    static new_with_text(text: string): Entry
     _init(config?: Entry.ConstructorProperties): void
 }
 
@@ -7425,7 +7425,7 @@ export interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * Sets the text displayed as the title of the expander
      * @param label string to set as the expander label
      */
-    set_label(label: string | null): void
+    set_label(label: string): void
 
     // Conflicting methods
 
@@ -7434,7 +7434,7 @@ export interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -7458,7 +7458,7 @@ export interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -7479,7 +7479,7 @@ export interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Expander
 
@@ -8012,7 +8012,7 @@ export interface FloatingWidget extends Atk.ImplementorIface, Clutter.Animatable
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -8036,7 +8036,7 @@ export interface FloatingWidget extends Atk.ImplementorIface, Clutter.Animatable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -8057,7 +8057,7 @@ export interface FloatingWidget extends Atk.ImplementorIface, Clutter.Animatable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.FloatingWidget
 
@@ -8478,7 +8478,7 @@ export interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -8502,7 +8502,7 @@ export interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -8523,7 +8523,7 @@ export interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Frame
 
@@ -8918,7 +8918,7 @@ export interface Grid extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -8942,7 +8942,7 @@ export interface Grid extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -8963,7 +8963,7 @@ export interface Grid extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Grid
 
@@ -9320,9 +9320,9 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
 
     // Owm methods of Mx-1.0.Mx.Icon
 
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_icon_size(): number
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     set_icon_size(size: number): void
 
     // Conflicting methods
@@ -9332,7 +9332,7 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -9356,7 +9356,7 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -9377,7 +9377,7 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Icon
 
@@ -9727,22 +9727,22 @@ export interface IconTheme {
      * Get the value of the #MxIconTheme:theme-name property.
      * @returns the current value of the "theme-name" property.
      */
-    get_theme_name(): string | null
-    has_icon(icon_name: string | null): boolean
+    get_theme_name(): string
+    has_icon(icon_name: string): boolean
     /**
      * If the icon is available, returns a #CoglHandle of the icon.
      * @param icon_name The name of the icon
      * @param size The desired size of the icon
      * @returns a #CoglHandle of the icon, or %NULL.
      */
-    lookup(icon_name: string | null, size: number): Cogl.Handle
+    lookup(icon_name: string, size: number): Cogl.Handle
     /**
      * If the icon is available, returns a #ClutterTexture of the icon.
      * @param icon_name The name of the icon
      * @param size The desired size of the icon
      * @returns a #ClutterTexture of the icon, or %NULL.
      */
-    lookup_texture(icon_name: string | null, size: number): Clutter.Texture
+    lookup_texture(icon_name: string, size: number): Clutter.Texture
     /**
      * Sets the directories the #MxIconTheme will search in to find icons.
      * By default, it will look in the default system and local icon
@@ -9760,7 +9760,7 @@ export interface IconTheme {
      * icon theme, this function can be called with a %NULL `theme_name` argument.
      * @param theme_name the name of an icon theme to load, or %NULL
      */
-    set_theme_name(theme_name: string | null): void
+    set_theme_name(theme_name: string): void
 
     // Class property signals of Mx-1.0.Mx.IconTheme
 
@@ -9978,7 +9978,7 @@ export interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param filename Filename to read the file from
      * @returns #TRUE if the image was successfully updated
      */
-    set_from_file(filename: string | null): boolean
+    set_from_file(filename: string): boolean
     /**
      * Set the image data from an image file, and scale the image during loading.
      * In case of failure, #FALSE is returned and `error` is set. The aspect ratio
@@ -9988,7 +9988,7 @@ export interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param height Height to scale the image to, or -1
      * @returns #TRUE if the image was successfully updated
      */
-    set_from_file_at_size(filename: string | null, width: number, height: number): boolean
+    set_from_file_at_size(filename: string, width: number, height: number): boolean
     /**
      * Set the MxImage:image-rotation property.
      * @param rotation Rotation angle in degrees
@@ -10043,7 +10043,7 @@ export interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -10067,7 +10067,7 @@ export interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -10088,7 +10088,7 @@ export interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Image
 
@@ -10463,7 +10463,7 @@ export interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param attribute Name of the attribute
      * @param column Column number
      */
-    add_attribute(attribute: string | null, column: number): void
+    add_attribute(attribute: string, column: number): void
     /**
      * Freeze the view. This means that the view will not act on changes to the
      * model until it is thawed. Call #mx_item_view_thaw to thaw the view
@@ -10513,7 +10513,7 @@ export interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -10537,7 +10537,7 @@ export interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -10558,7 +10558,7 @@ export interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.ItemView
 
@@ -11079,7 +11079,7 @@ export interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animata
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -11103,7 +11103,7 @@ export interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animata
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -11124,7 +11124,7 @@ export interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animata
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.KineticScrollView
 
@@ -11579,7 +11579,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Get the text displayed on the label
      * @returns the text for the label. This must not be freed by the application
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Determines whether the text of the label is being treated as Pango markup.
      * @returns %TRUE if the text of the label is treated as Pango markup, %FALSE otherwise.
@@ -11626,7 +11626,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Sets the text displayed on the label
      * @param text text to set the label to
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
     /**
      * Sets whether the text of the label should be treated as Pango markup.
      * @param use_markup %TRUE to use Pango markup, %FALSE otherwise
@@ -11664,7 +11664,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -11688,7 +11688,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -11709,7 +11709,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Label
 
@@ -12037,7 +12037,7 @@ export class Label extends Widget {
      * @param text text to set the label to
      * @returns a new #MxLabel
      */
-    static new_with_text(text: string | null): Label
+    static new_with_text(text: string): Label
     _init(config?: Label.ConstructorProperties): void
 }
 
@@ -12074,7 +12074,7 @@ export interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param attribute Name of the attribute
      * @param column Column number
      */
-    add_attribute(attribute: string | null, column: number): void
+    add_attribute(attribute: string, column: number): void
     /**
      * Freeze the view. This means that the view will not act on changes to the
      * model until it is thawed. Call #mx_list_view_thaw to thaw the view.
@@ -12124,7 +12124,7 @@ export interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -12148,7 +12148,7 @@ export interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -12169,7 +12169,7 @@ export interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Adds a #ClutterActor to `container`. This function will emit the
      * "actor-added" signal. The actor should be parented to
@@ -12611,7 +12611,7 @@ export interface Menu extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -12635,7 +12635,7 @@ export interface Menu extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -12656,7 +12656,7 @@ export interface Menu extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Menu
 
@@ -13021,7 +13021,7 @@ export interface Notebook extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -13045,7 +13045,7 @@ export interface Notebook extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -13066,7 +13066,7 @@ export interface Notebook extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Notebook
 
@@ -13890,11 +13890,11 @@ export interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @returns MxEntry *
      */
     get_entry(): Entry
-    get_label(level: number): string | null
+    get_label(level: number): string
     get_level(): number
-    get_text(): string | null
+    get_text(): string
     pop(): number
-    push(name: string | null): number
+    push(name: string): number
     /**
      * Set theh value of the #MxPathBar:clear-on-change property
      * @param clear_on_change the new value of the property
@@ -13910,12 +13910,12 @@ export interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param level A #gint
      * @param label A #gchar
      */
-    set_label(level: number, label: string | null): void
+    set_label(level: number, label: string): void
     /**
      * Set the text in the editable area of the #MxPathBar
      * @param text string to set the editable text to.
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
 
     // Conflicting methods
 
@@ -13924,7 +13924,7 @@ export interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -13948,7 +13948,7 @@ export interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -13969,7 +13969,7 @@ export interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.PathBar
 
@@ -14317,7 +14317,7 @@ export interface ProgressBar extends Atk.ImplementorIface, Clutter.Animatable, C
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -14341,7 +14341,7 @@ export interface ProgressBar extends Atk.ImplementorIface, Clutter.Animatable, C
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -14362,7 +14362,7 @@ export interface ProgressBar extends Atk.ImplementorIface, Clutter.Animatable, C
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.ProgressBar
 
@@ -14736,7 +14736,7 @@ export interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -14760,7 +14760,7 @@ export interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -14781,7 +14781,7 @@ export interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clu
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.ScrollBar
 
@@ -15182,7 +15182,7 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -15206,7 +15206,7 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -15227,7 +15227,7 @@ export interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.ScrollView
 
@@ -15678,7 +15678,7 @@ export interface Slider extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -15702,7 +15702,7 @@ export interface Slider extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -15723,7 +15723,7 @@ export interface Slider extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Slider
 
@@ -16086,7 +16086,7 @@ export interface Spinner extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -16110,7 +16110,7 @@ export interface Spinner extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -16131,7 +16131,7 @@ export interface Spinner extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Spinner
 
@@ -16544,7 +16544,7 @@ export interface Stack extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -16568,7 +16568,7 @@ export interface Stack extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -16589,7 +16589,7 @@ export interface Stack extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Stack
 
@@ -17029,13 +17029,13 @@ export interface Style {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Load style information from the specified file.
      * @param filename filename of the style sheet to load
      * @returns TRUE if the style information was loaded successfully. Returns FALSE on error.
      */
-    load_from_file(filename: string | null): boolean
+    load_from_file(filename: string): boolean
 
     // Own virtual methods of Mx-1.0.Mx.Style
 
@@ -17314,7 +17314,7 @@ export interface Table extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -17338,7 +17338,7 @@ export interface Table extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -17359,7 +17359,7 @@ export interface Table extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Table
 
@@ -17806,7 +17806,7 @@ export interface TextureCache {
      * @param uri A URI or path to an image file
      * @returns %TRUE if the image exists, %FALSE otherwise
      */
-    contains(uri: string | null): boolean
+    contains(uri: string): boolean
     /**
      * Checks whether there are any textures associated with the given URI by
      * the given identifier.
@@ -17814,14 +17814,14 @@ export interface TextureCache {
      * @param ident A unique identifier
      * @returns %TRUE if the data exists, %FALSE otherwise
      */
-    contains_meta(uri: string | null, ident: any): boolean
+    contains_meta(uri: string, ident: any): boolean
     /**
      * This is a wrapper around mx_texture_cache_get_texture() which returns
      * a ClutterActor.
      * @param uri A URI or path to a image file
      * @returns a newly created ClutterTexture
      */
-    get_actor(uri: string | null): Clutter.Actor
+    get_actor(uri: string): Clutter.Actor
     /**
      * Create a #CoglHandle representing a texture of the specified image. Adds
      * the image to the cache if the image had not been previously loaded.
@@ -17830,7 +17830,7 @@ export interface TextureCache {
      * @param uri A URI or path to an image file
      * @returns a #CoglHandle to the cached texture
      */
-    get_cogl_texture(uri: string | null): Cogl.Handle
+    get_cogl_texture(uri: string): Cogl.Handle
     /**
      * Retrieves the #CoglHandle of the previously added image associated
      * with the given unique identifier.
@@ -17840,7 +17840,7 @@ export interface TextureCache {
      * @param ident A unique identifier
      * @returns A #CoglHandle to a texture, with an added reference. %NULL if no image was found.
      */
-    get_meta_cogl_texture(uri: string | null, ident: any): Cogl.Handle
+    get_meta_cogl_texture(uri: string, ident: any): Cogl.Handle
     /**
      * Create a new ClutterTexture using the previously added image associated
      * with the given unique identifier.
@@ -17850,7 +17850,7 @@ export interface TextureCache {
      * @param ident A unique identifier
      * @returns A newly allocated #ClutterTexture, or %NULL if no image was found
      */
-    get_meta_texture(uri: string | null, ident: any): Clutter.Texture
+    get_meta_texture(uri: string, ident: any): Clutter.Texture
     /**
      * Returns the number of items in the texture cache
      * @returns the current size of the cache
@@ -17864,7 +17864,7 @@ export interface TextureCache {
      * @param uri A URI or path to a image file
      * @returns a newly created ClutterTexture
      */
-    get_texture(uri: string | null): Clutter.Texture
+    get_texture(uri: string): Clutter.Texture
     /**
      * Inserts a texture into the texture cache. This can be useful if you
      * want to cache a texture from a custom or unhandled URI type, or you
@@ -17875,7 +17875,7 @@ export interface TextureCache {
      * @param uri A URI or local file path
      * @param texture A #CoglHandle to a texture
      */
-    insert(uri: string | null, texture: Cogl.Handle): void
+    insert(uri: string, texture: Cogl.Handle): void
     /**
      * Inserts a texture that's associated with a URI into the cache.
      * If the metadata already exists for this URI, it will be replaced.
@@ -17887,13 +17887,13 @@ export interface TextureCache {
      * @param texture A #CoglHandle to a texture
      * @param destroy_func An optional destruction function for `ident`
      */
-    insert_meta(uri: string | null, ident: any, texture: Cogl.Handle, destroy_func: GLib.DestroyNotify): void
-    load_cache(filename: string | null): void
+    insert_meta(uri: string, ident: any, texture: Cogl.Handle, destroy_func: GLib.DestroyNotify): void
+    load_cache(filename: string): void
 
     // Own virtual methods of Mx-1.0.Mx.TextureCache
 
     vfunc_error_loading(error: GLib.Error): void
-    vfunc_loaded(uri: string | null, texture: Clutter.Texture): void
+    vfunc_loaded(uri: string, texture: Clutter.Texture): void
 
     // Class property signals of Mx-1.0.Mx.TextureCache
 
@@ -18353,7 +18353,7 @@ export interface Toggle extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -18377,7 +18377,7 @@ export interface Toggle extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -18398,7 +18398,7 @@ export interface Toggle extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Toggle
 
@@ -18761,7 +18761,7 @@ export interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -18785,7 +18785,7 @@ export interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -18806,7 +18806,7 @@ export interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Toolbar
 
@@ -19166,7 +19166,7 @@ export interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * Get the text displayed on the tooltip
      * @returns the text for the tooltip. This must not be freed by the application
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Retrieve the area on the stage that the tooltip currently applies to
      * @returns the #ClutterGeometry, owned by the tooltip which must not be freed by the application.
@@ -19180,7 +19180,7 @@ export interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * Sets the text displayed on the tooltip
      * @param text text to set the label to
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
     /**
      * Set the area on the stage that the tooltip applies to.
      * @param area A #ClutterGeometry
@@ -19205,7 +19205,7 @@ export interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -19229,7 +19229,7 @@ export interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -19250,7 +19250,7 @@ export interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Tooltip
 
@@ -19613,7 +19613,7 @@ export interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -19637,7 +19637,7 @@ export interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -19658,7 +19658,7 @@ export interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clut
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Class property signals of Mx-1.0.Mx.Viewport
 
@@ -20092,7 +20092,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * Get the current tooltip string
      * @returns The current tooltip string, owned by the #MxWidget
      */
-    get_tooltip_text(): string | null
+    get_tooltip_text(): string
     /**
      * Hide the tooltip for `widget`
      */
@@ -20139,7 +20139,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * %FALSE.
      * @param text text to set as the tooltip
      */
-    set_tooltip_text(text: string | null): void
+    set_tooltip_text(text: string): void
     /**
      * Show the tooltip for `widget`
      */
@@ -20152,7 +20152,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * into `value`.
      * @param property_name the name of the property
      */
-    get_property(property_name: string | null): /* value */ any
+    get_property(property_name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -20176,7 +20176,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -20197,7 +20197,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
 
     // Own virtual methods of Mx-1.0.Mx.Widget
 
@@ -20607,7 +20607,7 @@ export interface Window {
      * set, or the icon was set with mx_window_set_icon_from_cogl_texture().
      * @returns The window icon name, or %NULL
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Determines if the window is in small-screen mode.
      * See mx_window_set_small_screen().
@@ -20618,7 +20618,7 @@ export interface Window {
      * Retrieves the title used for the window.
      * @returns The title used for the window
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Retrieves the toolbar associated with the window.
      * @returns A #MxToolbar
@@ -20696,7 +20696,7 @@ export interface Window {
      * window-system specific.
      * @param title A string to use for the window title name
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets the toolbar associated with the window.
      * @param toolbar 
@@ -20985,7 +20985,7 @@ export class BorderImage {
 
     // Constructors of Mx-1.0.Mx.BorderImage
 
-    static set_from_string(value: any, str: string | null, filename: string | null): void
+    static set_from_string(value: any, str: string, filename: string): void
 }
 
 export interface BoxLayoutChildClass {
@@ -22026,10 +22026,10 @@ export interface StylableIface {
 
     get_style: (stylable: Stylable) => Style
     set_style: (stylable: Stylable, style: Style) => void
-    get_style_class: (stylable: Stylable) => string | null
-    set_style_class: (stylable: Stylable, style_class: string | null) => void
-    get_style_pseudo_class: (stylable: Stylable) => string | null
-    set_style_pseudo_class: (stylable: Stylable, pseudo_class: string | null) => void
+    get_style_class: (stylable: Stylable) => string
+    set_style_class: (stylable: Stylable, style_class: string) => void
+    get_style_pseudo_class: (stylable: Stylable) => string
+    set_style_pseudo_class: (stylable: Stylable, pseudo_class: string) => void
     style_changed: (stylable: Stylable, flags: StyleChangedFlags) => void
 }
 
@@ -22147,7 +22147,7 @@ export interface TextureCacheClass {
     // Own fields of Mx-1.0.Mx.TextureCacheClass
 
     parent_class: GObject.ObjectClass
-    loaded: (self: TextureCache, uri: string | null, texture: Clutter.Texture) => void
+    loaded: (self: TextureCache, uri: string, texture: Clutter.Texture) => void
     error_loading: (self: TextureCache, error: GLib.Error) => void
 }
 

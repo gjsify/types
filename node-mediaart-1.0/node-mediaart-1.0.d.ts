@@ -84,7 +84,7 @@ enum ProcessFlags {
  * @param target Output file name (not URI) to save converted content to
  * @returns %TRUE if conversion was successful, otherwise %FALSE is returned if @error is set.
  */
-function bufferToJpeg(buffer: number, len: number, bufferMime: string | null, target: string | null): boolean
+function bufferToJpeg(buffer: number, len: number, bufferMime: string, target: string): boolean
 function errorQuark(): GLib.Quark
 /**
  * Save `filename` to `target` as JPEG format. The `filename` may not be
@@ -93,7 +93,7 @@ function errorQuark(): GLib.Quark
  * @param target Output file name (not URI) to save converted content to
  * @returns %TRUE if conversion was successful, otherwise %FALSE is returned if @error is set.
  */
-function fileToJpeg(filename: string | null, target: string | null): boolean
+function fileToJpeg(filename: string, target: string): boolean
 /**
  * Gets the files pointing to cache files suitable for storing the media
  * art provided by the `artist,` `title` and `file` arguments. `cache_file`
@@ -138,7 +138,7 @@ function getFile(artist: string | null, title: string | null, prefix: string | n
  * @param uri the uri of the file or %NULL
  * @returns %TRUE if @cache_path or @local_uri were returned, otherwise %FALSE.
  */
-function getPath(artist: string | null, title: string | null, prefix: string | null, uri: string | null): [ /* returnType */ boolean, /* cachePath */ string | null, /* localUri */ string | null ]
+function getPath(artist: string | null, title: string | null, prefix: string | null, uri: string | null): [ /* returnType */ boolean, /* cachePath */ string, /* localUri */ string ]
 /**
  * This function facilitates a plugin&apos;s need to create any
  * internal caches before anything else is done. This function must
@@ -161,7 +161,7 @@ function pluginShutdown(): void
  * @param album album the media art belongs or %NULL
  * @returns #TRUE on success, otherwise #FALSE.
  */
-function remove(artist: string | null, album: string | null): boolean
+function remove(artist: string, album: string | null): boolean
 /**
  * Strip a albumname or artistname string to prepare it for calculating the
  * media art path with it. Certain characters and charactersets will be stripped
@@ -177,7 +177,7 @@ function remove(artist: string | null, album: string | null): boolean
  * @param original original string
  * @returns @original stripped of invalid characters which must be freed. On error or if @original is empty, %NULL is returned.
  */
-function stripInvalidEntities(original: string | null): string | null
+function stripInvalidEntities(original: string): string | null
 module Process {
 
     // Constructor properties interface
@@ -222,7 +222,7 @@ interface Process extends Gio.Initable {
      * @param title The title for `file` or %NULL
      * @returns %TRUE if @file could be processed or %FALSE if @error is set.
      */
-    buffer(type: Type, flags: ProcessFlags, relatedFile: Gio.File, buffer: number[] | null, mime: string | null, artist: string | null, title: string | null): boolean
+    buffer(type: Type, flags: ProcessFlags, relatedFile: Gio.File, buffer: number[] | null, mime: string, artist: string | null, title: string | null): boolean
     /**
      * Process `file` and check if media art exists and if it is up to date
      * with `artist` and `title` provided. Either `artist` OR `title` can be
@@ -270,7 +270,7 @@ interface Process extends Gio.Initable {
      * @param title The title for `uri` or %NULL
      * @returns %TRUE if @uri could be processed or %FALSE if @error is set.
      */
-    uri(type: Type, flags: ProcessFlags, uri: string | null, artist: string | null, title: string | null): boolean
+    uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null): boolean
 
     // Class property signals of MediaArt-1.0.MediaArt.Process
 

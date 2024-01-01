@@ -32,7 +32,7 @@ export function getSessionIds(): string[]
  * @param id an id from gdm_get_session_ids()
  * @returns The session name if found, or %NULL otherwise
  */
-export function getSessionNameAndDescription(id: string | null): [ /* returnType */ string | null, /* description */ string | null ]
+export function getSessionNameAndDescription(id: string): [ /* returnType */ string | null, /* description */ string | null ]
 export function gotoLoginSessionSync(cancellable: Gio.Cancellable | null): boolean
 export function greeterInterfaceInfo(): Gio.DBusInterfaceInfo
 export function greeterOverrideProperties(klass: GObject.ObjectClass, propertyIdBegin: number): number
@@ -83,16 +83,16 @@ export interface Chooser {
     callDisconnect(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callDisconnectFinish(res: Gio.AsyncResult): boolean
     callDisconnectSync(cancellable: Gio.Cancellable | null): boolean
-    callSelectHostname(argHostname: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSelectHostname(argHostname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callSelectHostnameFinish(res: Gio.AsyncResult): boolean
-    callSelectHostnameSync(argHostname: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSelectHostnameSync(argHostname: string, cancellable: Gio.Cancellable | null): boolean
     completeDisconnect(invocation: Gio.DBusMethodInvocation): void
     completeSelectHostname(invocation: Gio.DBusMethodInvocation): void
 
     // Own virtual methods of Gdm-1.0.Gdm.Chooser
 
     handleDisconnect(invocation: Gio.DBusMethodInvocation): boolean
-    handleSelectHostname(invocation: Gio.DBusMethodInvocation, argHostname: string | null): boolean
+    handleSelectHostname(invocation: Gio.DBusMethodInvocation, argHostname: string): boolean
 
     // Own signals of Gdm-1.0.Gdm.Chooser
 
@@ -233,46 +233,46 @@ export interface Greeter {
 
     // Owm methods of Gdm-1.0.Gdm.Greeter
 
-    callBeginAutoLogin(argUsername: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callBeginAutoLogin(argUsername: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callBeginAutoLoginFinish(res: Gio.AsyncResult): boolean
-    callBeginAutoLoginSync(argUsername: string | null, cancellable: Gio.Cancellable | null): boolean
+    callBeginAutoLoginSync(argUsername: string, cancellable: Gio.Cancellable | null): boolean
     callGetTimedLoginDetails(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callGetTimedLoginDetailsFinish(outEnabled: boolean, outUsername: string | null, outDelay: number, res: Gio.AsyncResult): boolean
     callGetTimedLoginDetailsSync(outEnabled: boolean, outUsername: string | null, outDelay: number, cancellable: Gio.Cancellable | null): boolean
-    callSelectSession(argSession: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSelectSession(argSession: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callSelectSessionFinish(res: Gio.AsyncResult): boolean
-    callSelectSessionSync(argSession: string | null, cancellable: Gio.Cancellable | null): boolean
-    callSelectUser(argUsername: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSelectSessionSync(argSession: string, cancellable: Gio.Cancellable | null): boolean
+    callSelectUser(argUsername: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callSelectUserFinish(res: Gio.AsyncResult): boolean
-    callSelectUserSync(argUsername: string | null, cancellable: Gio.Cancellable | null): boolean
-    callStartSessionWhenReady(argServiceName: string | null, argShouldStartSession: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSelectUserSync(argUsername: string, cancellable: Gio.Cancellable | null): boolean
+    callStartSessionWhenReady(argServiceName: string, argShouldStartSession: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callStartSessionWhenReadyFinish(res: Gio.AsyncResult): boolean
-    callStartSessionWhenReadySync(argServiceName: string | null, argShouldStartSession: boolean, cancellable: Gio.Cancellable | null): boolean
+    callStartSessionWhenReadySync(argServiceName: string, argShouldStartSession: boolean, cancellable: Gio.Cancellable | null): boolean
     completeBeginAutoLogin(invocation: Gio.DBusMethodInvocation): void
-    completeGetTimedLoginDetails(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string | null, delay: number): void
+    completeGetTimedLoginDetails(invocation: Gio.DBusMethodInvocation, enabled: boolean, username: string, delay: number): void
     completeSelectSession(invocation: Gio.DBusMethodInvocation): void
     completeSelectUser(invocation: Gio.DBusMethodInvocation): void
     completeStartSessionWhenReady(invocation: Gio.DBusMethodInvocation): void
-    emitDefaultLanguageNameChanged(argLanguageName: string | null): void
-    emitDefaultSessionNameChanged(argSessionName: string | null): void
-    emitReauthenticated(argServiceName: string | null): void
-    emitSelectedUserChanged(argUsername: string | null): void
-    emitSessionOpened(argServiceName: string | null): void
-    emitTimedLoginRequested(argUsername: string | null, argDelay: number): void
+    emitDefaultLanguageNameChanged(argLanguageName: string): void
+    emitDefaultSessionNameChanged(argSessionName: string): void
+    emitReauthenticated(argServiceName: string): void
+    emitSelectedUserChanged(argUsername: string): void
+    emitSessionOpened(argServiceName: string): void
+    emitTimedLoginRequested(argUsername: string, argDelay: number): void
 
     // Own virtual methods of Gdm-1.0.Gdm.Greeter
 
-    defaultLanguageNameChanged(argLanguageName: string | null): void
-    defaultSessionNameChanged(argSessionName: string | null): void
-    handleBeginAutoLogin(invocation: Gio.DBusMethodInvocation, argUsername: string | null): boolean
+    defaultLanguageNameChanged(argLanguageName: string): void
+    defaultSessionNameChanged(argSessionName: string): void
+    handleBeginAutoLogin(invocation: Gio.DBusMethodInvocation, argUsername: string): boolean
     handleGetTimedLoginDetails(invocation: Gio.DBusMethodInvocation): boolean
-    handleSelectSession(invocation: Gio.DBusMethodInvocation, argSession: string | null): boolean
-    handleSelectUser(invocation: Gio.DBusMethodInvocation, argUsername: string | null): boolean
-    handleStartSessionWhenReady(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argShouldStartSession: boolean): boolean
-    reauthenticated(argServiceName: string | null): void
-    selectedUserChanged(argUsername: string | null): void
-    sessionOpened(argServiceName: string | null): void
-    timedLoginRequested(argUsername: string | null, argDelay: number): void
+    handleSelectSession(invocation: Gio.DBusMethodInvocation, argSession: string): boolean
+    handleSelectUser(invocation: Gio.DBusMethodInvocation, argUsername: string): boolean
+    handleStartSessionWhenReady(invocation: Gio.DBusMethodInvocation, argServiceName: string, argShouldStartSession: boolean): boolean
+    reauthenticated(argServiceName: string): void
+    selectedUserChanged(argUsername: string): void
+    sessionOpened(argServiceName: string): void
+    timedLoginRequested(argUsername: string, argDelay: number): void
 
     // Own signals of Gdm-1.0.Gdm.Greeter
 
@@ -414,9 +414,9 @@ export interface Manager {
 
     // Owm methods of Gdm-1.0.Gdm.Manager
 
-    callOpenReauthenticationChannel(argUsername: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callOpenReauthenticationChannel(argUsername: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callOpenReauthenticationChannelFinish(outAddress: string | null, res: Gio.AsyncResult): boolean
-    callOpenReauthenticationChannelSync(argUsername: string | null, outAddress: string | null, cancellable: Gio.Cancellable | null): boolean
+    callOpenReauthenticationChannelSync(argUsername: string, outAddress: string | null, cancellable: Gio.Cancellable | null): boolean
     callOpenSession(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callOpenSessionFinish(outAddress: string | null, res: Gio.AsyncResult): boolean
     callOpenSessionSync(outAddress: string | null, cancellable: Gio.Cancellable | null): boolean
@@ -426,18 +426,18 @@ export interface Manager {
     callRegisterSession(argDetails: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callRegisterSessionFinish(res: Gio.AsyncResult): boolean
     callRegisterSessionSync(argDetails: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
-    completeOpenReauthenticationChannel(invocation: Gio.DBusMethodInvocation, address: string | null): void
-    completeOpenSession(invocation: Gio.DBusMethodInvocation, address: string | null): void
+    completeOpenReauthenticationChannel(invocation: Gio.DBusMethodInvocation, address: string): void
+    completeOpenSession(invocation: Gio.DBusMethodInvocation, address: string): void
     completeRegisterDisplay(invocation: Gio.DBusMethodInvocation): void
     completeRegisterSession(invocation: Gio.DBusMethodInvocation): void
     dupVersion(): string | null
-    // Has conflict: getVersion(): string | null
-    setVersion(value: string | null): void
+    // Has conflict: getVersion(): string
+    setVersion(value: string): void
 
     // Own virtual methods of Gdm-1.0.Gdm.Manager
 
-    getVersion(): string | null
-    handleOpenReauthenticationChannel(invocation: Gio.DBusMethodInvocation, argUsername: string | null): boolean
+    getVersion(): string
+    handleOpenReauthenticationChannel(invocation: Gio.DBusMethodInvocation, argUsername: string): boolean
     handleOpenSession(invocation: Gio.DBusMethodInvocation): boolean
     handleRegisterDisplay(invocation: Gio.DBusMethodInvocation, argDetails: GLib.Variant): boolean
     handleRegisterSession(invocation: Gio.DBusMethodInvocation, argDetails: GLib.Variant): boolean
@@ -704,56 +704,56 @@ export interface UserVerifier {
 
     // Owm methods of Gdm-1.0.Gdm.UserVerifier
 
-    callAnswerQuery(argServiceName: string | null, argAnswer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAnswerQuery(argServiceName: string, argAnswer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callAnswerQueryFinish(res: Gio.AsyncResult): boolean
-    callAnswerQuerySync(argServiceName: string | null, argAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
-    callBeginVerification(argServiceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAnswerQuerySync(argServiceName: string, argAnswer: string, cancellable: Gio.Cancellable | null): boolean
+    callBeginVerification(argServiceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callBeginVerificationFinish(res: Gio.AsyncResult): boolean
-    callBeginVerificationForUser(argServiceName: string | null, argUsername: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callBeginVerificationForUser(argServiceName: string, argUsername: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callBeginVerificationForUserFinish(res: Gio.AsyncResult): boolean
-    callBeginVerificationForUserSync(argServiceName: string | null, argUsername: string | null, cancellable: Gio.Cancellable | null): boolean
-    callBeginVerificationSync(argServiceName: string | null, cancellable: Gio.Cancellable | null): boolean
+    callBeginVerificationForUserSync(argServiceName: string, argUsername: string, cancellable: Gio.Cancellable | null): boolean
+    callBeginVerificationSync(argServiceName: string, cancellable: Gio.Cancellable | null): boolean
     callCancel(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callCancelFinish(res: Gio.AsyncResult): boolean
     callCancelSync(cancellable: Gio.Cancellable | null): boolean
-    callEnableExtensions(argExtensions: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callEnableExtensions(argExtensions: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callEnableExtensionsFinish(res: Gio.AsyncResult): boolean
-    callEnableExtensionsSync(argExtensions: string | null, cancellable: Gio.Cancellable | null): boolean
+    callEnableExtensionsSync(argExtensions: string, cancellable: Gio.Cancellable | null): boolean
     completeAnswerQuery(invocation: Gio.DBusMethodInvocation): void
     completeBeginVerification(invocation: Gio.DBusMethodInvocation): void
     completeBeginVerificationForUser(invocation: Gio.DBusMethodInvocation): void
     completeCancel(invocation: Gio.DBusMethodInvocation): void
     completeEnableExtensions(invocation: Gio.DBusMethodInvocation): void
-    emitConversationStarted(argServiceName: string | null): void
-    emitConversationStopped(argServiceName: string | null): void
-    emitInfo(argServiceName: string | null, argInfo: string | null): void
-    emitInfoQuery(argServiceName: string | null, argQuery: string | null): void
-    emitProblem(argServiceName: string | null, argProblem: string | null): void
+    emitConversationStarted(argServiceName: string): void
+    emitConversationStopped(argServiceName: string): void
+    emitInfo(argServiceName: string, argInfo: string): void
+    emitInfoQuery(argServiceName: string, argQuery: string): void
+    emitProblem(argServiceName: string, argProblem: string): void
     emitReauthenticationStarted(argPidOfCaller: number): void
     emitReset(): void
-    emitSecretInfoQuery(argServiceName: string | null, argQuery: string | null): void
-    emitServiceUnavailable(argServiceName: string | null, argMessage: string | null): void
-    emitVerificationComplete(argServiceName: string | null): void
-    emitVerificationFailed(argServiceName: string | null): void
+    emitSecretInfoQuery(argServiceName: string, argQuery: string): void
+    emitServiceUnavailable(argServiceName: string, argMessage: string): void
+    emitVerificationComplete(argServiceName: string): void
+    emitVerificationFailed(argServiceName: string): void
 
     // Own virtual methods of Gdm-1.0.Gdm.UserVerifier
 
-    conversationStarted(argServiceName: string | null): void
-    conversationStopped(argServiceName: string | null): void
-    handleAnswerQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argAnswer: string | null): boolean
-    handleBeginVerification(invocation: Gio.DBusMethodInvocation, argServiceName: string | null): boolean
-    handleBeginVerificationForUser(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argUsername: string | null): boolean
+    conversationStarted(argServiceName: string): void
+    conversationStopped(argServiceName: string): void
+    handleAnswerQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string, argAnswer: string): boolean
+    handleBeginVerification(invocation: Gio.DBusMethodInvocation, argServiceName: string): boolean
+    handleBeginVerificationForUser(invocation: Gio.DBusMethodInvocation, argServiceName: string, argUsername: string): boolean
     handleCancel(invocation: Gio.DBusMethodInvocation): boolean
-    handleEnableExtensions(invocation: Gio.DBusMethodInvocation, argExtensions: string | null): boolean
-    info(argServiceName: string | null, argInfo: string | null): void
-    infoQuery(argServiceName: string | null, argQuery: string | null): void
-    problem(argServiceName: string | null, argProblem: string | null): void
+    handleEnableExtensions(invocation: Gio.DBusMethodInvocation, argExtensions: string): boolean
+    info(argServiceName: string, argInfo: string): void
+    infoQuery(argServiceName: string, argQuery: string): void
+    problem(argServiceName: string, argProblem: string): void
     reauthenticationStarted(argPidOfCaller: number): void
     reset(): void
-    secretInfoQuery(argServiceName: string | null, argQuery: string | null): void
-    serviceUnavailable(argServiceName: string | null, argMessage: string | null): void
-    verificationComplete(argServiceName: string | null): void
-    verificationFailed(argServiceName: string | null): void
+    secretInfoQuery(argServiceName: string, argQuery: string): void
+    serviceUnavailable(argServiceName: string, argMessage: string): void
+    verificationComplete(argServiceName: string): void
+    verificationFailed(argServiceName: string): void
 
     // Own signals of Gdm-1.0.Gdm.UserVerifier
 
@@ -901,16 +901,16 @@ export interface UserVerifierChoiceList {
 
     // Owm methods of Gdm-1.0.Gdm.UserVerifierChoiceList
 
-    callSelectChoice(argServiceName: string | null, argChoice: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSelectChoice(argServiceName: string, argChoice: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callSelectChoiceFinish(res: Gio.AsyncResult): boolean
-    callSelectChoiceSync(argServiceName: string | null, argChoice: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSelectChoiceSync(argServiceName: string, argChoice: string, cancellable: Gio.Cancellable | null): boolean
     completeSelectChoice(invocation: Gio.DBusMethodInvocation): void
-    emitChoiceQuery(argServiceName: string | null, argPromptMessage: string | null, argList: GLib.Variant): void
+    emitChoiceQuery(argServiceName: string, argPromptMessage: string, argList: GLib.Variant): void
 
     // Own virtual methods of Gdm-1.0.Gdm.UserVerifierChoiceList
 
-    choiceQuery(argServiceName: string | null, argPromptMessage: string | null, argList: GLib.Variant): void
-    handleSelectChoice(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argChoice: string | null): boolean
+    choiceQuery(argServiceName: string, argPromptMessage: string, argList: GLib.Variant): void
+    handleSelectChoice(invocation: Gio.DBusMethodInvocation, argServiceName: string, argChoice: string): boolean
 
     // Own signals of Gdm-1.0.Gdm.UserVerifierChoiceList
 
@@ -1016,39 +1016,39 @@ export interface WorkerManager {
 
     // Owm methods of Gdm-1.0.Gdm.WorkerManager
 
-    callChoiceListQuery(argServiceName: string | null, argPromptMessage: string | null, argQuery: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callChoiceListQuery(argServiceName: string, argPromptMessage: string, argQuery: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callChoiceListQueryFinish(outAnswer: string | null, res: Gio.AsyncResult): boolean
-    callChoiceListQuerySync(argServiceName: string | null, argPromptMessage: string | null, argQuery: GLib.Variant, outAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
+    callChoiceListQuerySync(argServiceName: string, argPromptMessage: string, argQuery: GLib.Variant, outAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
     callHello(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callHelloFinish(res: Gio.AsyncResult): boolean
     callHelloSync(cancellable: Gio.Cancellable | null): boolean
-    callInfo(argServiceName: string | null, argInfo: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callInfo(argServiceName: string, argInfo: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callInfoFinish(res: Gio.AsyncResult): boolean
-    callInfoQuery(argServiceName: string | null, argQuery: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callInfoQuery(argServiceName: string, argQuery: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callInfoQueryFinish(outAnswer: string | null, res: Gio.AsyncResult): boolean
-    callInfoQuerySync(argServiceName: string | null, argQuery: string | null, outAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
-    callInfoSync(argServiceName: string | null, argInfo: string | null, cancellable: Gio.Cancellable | null): boolean
-    callProblem(argServiceName: string | null, argProblem: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callInfoQuerySync(argServiceName: string, argQuery: string, outAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
+    callInfoSync(argServiceName: string, argInfo: string, cancellable: Gio.Cancellable | null): boolean
+    callProblem(argServiceName: string, argProblem: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callProblemFinish(res: Gio.AsyncResult): boolean
-    callProblemSync(argServiceName: string | null, argProblem: string | null, cancellable: Gio.Cancellable | null): boolean
-    callSecretInfoQuery(argServiceName: string | null, argQuery: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callProblemSync(argServiceName: string, argProblem: string, cancellable: Gio.Cancellable | null): boolean
+    callSecretInfoQuery(argServiceName: string, argQuery: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     callSecretInfoQueryFinish(outAnswer: string | null, res: Gio.AsyncResult): boolean
-    callSecretInfoQuerySync(argServiceName: string | null, argQuery: string | null, outAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
-    completeChoiceListQuery(invocation: Gio.DBusMethodInvocation, answer: string | null): void
+    callSecretInfoQuerySync(argServiceName: string, argQuery: string, outAnswer: string | null, cancellable: Gio.Cancellable | null): boolean
+    completeChoiceListQuery(invocation: Gio.DBusMethodInvocation, answer: string): void
     completeHello(invocation: Gio.DBusMethodInvocation): void
     completeInfo(invocation: Gio.DBusMethodInvocation): void
-    completeInfoQuery(invocation: Gio.DBusMethodInvocation, answer: string | null): void
+    completeInfoQuery(invocation: Gio.DBusMethodInvocation, answer: string): void
     completeProblem(invocation: Gio.DBusMethodInvocation): void
-    completeSecretInfoQuery(invocation: Gio.DBusMethodInvocation, answer: string | null): void
+    completeSecretInfoQuery(invocation: Gio.DBusMethodInvocation, answer: string): void
 
     // Own virtual methods of Gdm-1.0.Gdm.WorkerManager
 
-    handleChoiceListQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argPromptMessage: string | null, argQuery: GLib.Variant): boolean
+    handleChoiceListQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string, argPromptMessage: string, argQuery: GLib.Variant): boolean
     handleHello(invocation: Gio.DBusMethodInvocation): boolean
-    handleInfo(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argInfo: string | null): boolean
-    handleInfoQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argQuery: string | null): boolean
-    handleProblem(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argProblem: string | null): boolean
-    handleSecretInfoQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argQuery: string | null): boolean
+    handleInfo(invocation: Gio.DBusMethodInvocation, argServiceName: string, argInfo: string): boolean
+    handleInfoQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string, argQuery: string): boolean
+    handleProblem(invocation: Gio.DBusMethodInvocation, argServiceName: string, argProblem: string): boolean
+    handleSecretInfoQuery(invocation: Gio.DBusMethodInvocation, argServiceName: string, argQuery: string): boolean
 
     // Own signals of Gdm-1.0.Gdm.WorkerManager
 
@@ -1197,7 +1197,7 @@ export class ChooserProxy extends Gio.DBusProxy {
 
     constructor(config?: ChooserProxy.ConstructorProperties) 
     _init(config?: ChooserProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -1238,8 +1238,8 @@ export class ChooserProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -1256,7 +1256,7 @@ export class ChooserProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module ChooserSkeleton {
@@ -1451,7 +1451,7 @@ export interface Client {
      * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    openReauthenticationChannel(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openReauthenticationChannel(username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with
      * gdm_client_open_reauthentication_channel().
@@ -1467,7 +1467,7 @@ export interface Client {
      * @param cancellable a #GCancellable
      * @returns #GdmUserVerifier or %NULL if @username is not already logged in.
      */
-    openReauthenticationChannelSync(username: string | null, cancellable: Gio.Cancellable | null): UserVerifier
+    openReauthenticationChannelSync(username: string, cancellable: Gio.Cancellable | null): UserVerifier
     /**
      * Enables GDM's pam extensions.  Currently, only
      * org.gnome.DisplayManager.UserVerifier.ChoiceList is supported.
@@ -1590,7 +1590,7 @@ export class GreeterProxy extends Gio.DBusProxy {
 
     constructor(config?: GreeterProxy.ConstructorProperties) 
     _init(config?: GreeterProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -1631,8 +1631,8 @@ export class GreeterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -1649,7 +1649,7 @@ export class GreeterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module GreeterSkeleton {
@@ -1816,7 +1816,7 @@ export class ManagerProxy extends Gio.DBusProxy {
 
     constructor(config?: ManagerProxy.ConstructorProperties) 
     _init(config?: ManagerProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -1857,8 +1857,8 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -1875,7 +1875,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module ManagerSkeleton {
@@ -2042,7 +2042,7 @@ export class RemoteGreeterProxy extends Gio.DBusProxy {
 
     constructor(config?: RemoteGreeterProxy.ConstructorProperties) 
     _init(config?: RemoteGreeterProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -2083,8 +2083,8 @@ export class RemoteGreeterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -2101,7 +2101,7 @@ export class RemoteGreeterProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module RemoteGreeterSkeleton {
@@ -2263,7 +2263,7 @@ export class UserVerifierChoiceListProxy extends Gio.DBusProxy {
 
     constructor(config?: UserVerifierChoiceListProxy.ConstructorProperties) 
     _init(config?: UserVerifierChoiceListProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -2304,8 +2304,8 @@ export class UserVerifierChoiceListProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -2322,7 +2322,7 @@ export class UserVerifierChoiceListProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module UserVerifierChoiceListSkeleton {
@@ -2484,7 +2484,7 @@ export class UserVerifierProxy extends Gio.DBusProxy {
 
     constructor(config?: UserVerifierProxy.ConstructorProperties) 
     _init(config?: UserVerifierProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -2525,8 +2525,8 @@ export class UserVerifierProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -2543,7 +2543,7 @@ export class UserVerifierProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module UserVerifierSkeleton {
@@ -2705,7 +2705,7 @@ export class WorkerManagerProxy extends Gio.DBusProxy {
 
     constructor(config?: WorkerManagerProxy.ConstructorProperties) 
     _init(config?: WorkerManagerProxy.ConstructorProperties): void
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -2746,8 +2746,8 @@ export class WorkerManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -2764,7 +2764,7 @@ export class WorkerManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module WorkerManagerSkeleton {
@@ -2847,7 +2847,7 @@ export interface ChooserIface {
 
     parentIface: GObject.TypeInterface
     handleDisconnect: (object: Chooser, invocation: Gio.DBusMethodInvocation) => boolean
-    handleSelectHostname: (object: Chooser, invocation: Gio.DBusMethodInvocation, argHostname: string | null) => boolean
+    handleSelectHostname: (object: Chooser, invocation: Gio.DBusMethodInvocation, argHostname: string) => boolean
 }
 
 export abstract class ChooserIface {
@@ -2924,17 +2924,17 @@ export interface GreeterIface {
     // Own fields of Gdm-1.0.Gdm.GreeterIface
 
     parentIface: GObject.TypeInterface
-    handleBeginAutoLogin: (object: Greeter, invocation: Gio.DBusMethodInvocation, argUsername: string | null) => boolean
+    handleBeginAutoLogin: (object: Greeter, invocation: Gio.DBusMethodInvocation, argUsername: string) => boolean
     handleGetTimedLoginDetails: (object: Greeter, invocation: Gio.DBusMethodInvocation) => boolean
-    handleSelectSession: (object: Greeter, invocation: Gio.DBusMethodInvocation, argSession: string | null) => boolean
-    handleSelectUser: (object: Greeter, invocation: Gio.DBusMethodInvocation, argUsername: string | null) => boolean
-    handleStartSessionWhenReady: (object: Greeter, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argShouldStartSession: boolean) => boolean
-    defaultLanguageNameChanged: (object: Greeter, argLanguageName: string | null) => void
-    defaultSessionNameChanged: (object: Greeter, argSessionName: string | null) => void
-    reauthenticated: (object: Greeter, argServiceName: string | null) => void
-    selectedUserChanged: (object: Greeter, argUsername: string | null) => void
-    sessionOpened: (object: Greeter, argServiceName: string | null) => void
-    timedLoginRequested: (object: Greeter, argUsername: string | null, argDelay: number) => void
+    handleSelectSession: (object: Greeter, invocation: Gio.DBusMethodInvocation, argSession: string) => boolean
+    handleSelectUser: (object: Greeter, invocation: Gio.DBusMethodInvocation, argUsername: string) => boolean
+    handleStartSessionWhenReady: (object: Greeter, invocation: Gio.DBusMethodInvocation, argServiceName: string, argShouldStartSession: boolean) => boolean
+    defaultLanguageNameChanged: (object: Greeter, argLanguageName: string) => void
+    defaultSessionNameChanged: (object: Greeter, argSessionName: string) => void
+    reauthenticated: (object: Greeter, argServiceName: string) => void
+    selectedUserChanged: (object: Greeter, argUsername: string) => void
+    sessionOpened: (object: Greeter, argServiceName: string) => void
+    timedLoginRequested: (object: Greeter, argUsername: string, argDelay: number) => void
 }
 
 export abstract class GreeterIface {
@@ -2997,11 +2997,11 @@ export interface ManagerIface {
     // Own fields of Gdm-1.0.Gdm.ManagerIface
 
     parentIface: GObject.TypeInterface
-    handleOpenReauthenticationChannel: (object: Manager, invocation: Gio.DBusMethodInvocation, argUsername: string | null) => boolean
+    handleOpenReauthenticationChannel: (object: Manager, invocation: Gio.DBusMethodInvocation, argUsername: string) => boolean
     handleOpenSession: (object: Manager, invocation: Gio.DBusMethodInvocation) => boolean
     handleRegisterDisplay: (object: Manager, invocation: Gio.DBusMethodInvocation, argDetails: GLib.Variant) => boolean
     handleRegisterSession: (object: Manager, invocation: Gio.DBusMethodInvocation, argDetails: GLib.Variant) => boolean
-    getVersion: (object: Manager) => string | null
+    getVersion: (object: Manager) => string
 }
 
 export abstract class ManagerIface {
@@ -3127,8 +3127,8 @@ export interface UserVerifierChoiceListIface {
     // Own fields of Gdm-1.0.Gdm.UserVerifierChoiceListIface
 
     parentIface: GObject.TypeInterface
-    handleSelectChoice: (object: UserVerifierChoiceList, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argChoice: string | null) => boolean
-    choiceQuery: (object: UserVerifierChoiceList, argServiceName: string | null, argPromptMessage: string | null, argList: GLib.Variant) => void
+    handleSelectChoice: (object: UserVerifierChoiceList, invocation: Gio.DBusMethodInvocation, argServiceName: string, argChoice: string) => boolean
+    choiceQuery: (object: UserVerifierChoiceList, argServiceName: string, argPromptMessage: string, argList: GLib.Variant) => void
 }
 
 export abstract class UserVerifierChoiceListIface {
@@ -3191,22 +3191,22 @@ export interface UserVerifierIface {
     // Own fields of Gdm-1.0.Gdm.UserVerifierIface
 
     parentIface: GObject.TypeInterface
-    handleAnswerQuery: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argAnswer: string | null) => boolean
-    handleBeginVerification: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argServiceName: string | null) => boolean
-    handleBeginVerificationForUser: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argUsername: string | null) => boolean
+    handleAnswerQuery: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argServiceName: string, argAnswer: string) => boolean
+    handleBeginVerification: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argServiceName: string) => boolean
+    handleBeginVerificationForUser: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argServiceName: string, argUsername: string) => boolean
     handleCancel: (object: UserVerifier, invocation: Gio.DBusMethodInvocation) => boolean
-    handleEnableExtensions: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argExtensions: string | null) => boolean
-    conversationStarted: (object: UserVerifier, argServiceName: string | null) => void
-    conversationStopped: (object: UserVerifier, argServiceName: string | null) => void
-    info: (object: UserVerifier, argServiceName: string | null, argInfo: string | null) => void
-    infoQuery: (object: UserVerifier, argServiceName: string | null, argQuery: string | null) => void
-    problem: (object: UserVerifier, argServiceName: string | null, argProblem: string | null) => void
+    handleEnableExtensions: (object: UserVerifier, invocation: Gio.DBusMethodInvocation, argExtensions: string) => boolean
+    conversationStarted: (object: UserVerifier, argServiceName: string) => void
+    conversationStopped: (object: UserVerifier, argServiceName: string) => void
+    info: (object: UserVerifier, argServiceName: string, argInfo: string) => void
+    infoQuery: (object: UserVerifier, argServiceName: string, argQuery: string) => void
+    problem: (object: UserVerifier, argServiceName: string, argProblem: string) => void
     reauthenticationStarted: (object: UserVerifier, argPidOfCaller: number) => void
     reset: (object: UserVerifier) => void
-    secretInfoQuery: (object: UserVerifier, argServiceName: string | null, argQuery: string | null) => void
-    serviceUnavailable: (object: UserVerifier, argServiceName: string | null, argMessage: string | null) => void
-    verificationComplete: (object: UserVerifier, argServiceName: string | null) => void
-    verificationFailed: (object: UserVerifier, argServiceName: string | null) => void
+    secretInfoQuery: (object: UserVerifier, argServiceName: string, argQuery: string) => void
+    serviceUnavailable: (object: UserVerifier, argServiceName: string, argMessage: string) => void
+    verificationComplete: (object: UserVerifier, argServiceName: string) => void
+    verificationFailed: (object: UserVerifier, argServiceName: string) => void
 }
 
 export abstract class UserVerifierIface {
@@ -3269,12 +3269,12 @@ export interface WorkerManagerIface {
     // Own fields of Gdm-1.0.Gdm.WorkerManagerIface
 
     parentIface: GObject.TypeInterface
-    handleChoiceListQuery: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argPromptMessage: string | null, argQuery: GLib.Variant) => boolean
+    handleChoiceListQuery: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string, argPromptMessage: string, argQuery: GLib.Variant) => boolean
     handleHello: (object: WorkerManager, invocation: Gio.DBusMethodInvocation) => boolean
-    handleInfo: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argInfo: string | null) => boolean
-    handleInfoQuery: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argQuery: string | null) => boolean
-    handleProblem: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argProblem: string | null) => boolean
-    handleSecretInfoQuery: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string | null, argQuery: string | null) => boolean
+    handleInfo: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string, argInfo: string) => boolean
+    handleInfoQuery: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string, argQuery: string) => boolean
+    handleProblem: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string, argProblem: string) => boolean
+    handleSecretInfoQuery: (object: WorkerManager, invocation: Gio.DBusMethodInvocation, argServiceName: string, argQuery: string) => boolean
 }
 
 export abstract class WorkerManagerIface {

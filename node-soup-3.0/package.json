@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-soup-3.0",
-    "version": "3.4.4-3.2.6",
+    "version": "3.4.4-3.2.7",
     "description": "Node.js TypeScript type definitions for Soup-3.0, generated from library version 3.4.4",
     "type": "module",
     "module": "node-soup-3.0.js",

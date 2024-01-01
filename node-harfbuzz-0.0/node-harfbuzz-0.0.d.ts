@@ -3559,7 +3559,7 @@ const VERSION_MINOR: number
 /**
  * A string literal containing the library version available at compile-time.
  */
-const VERSION_STRING: string | null
+const VERSION_STRING: string
 /**
  * Fetches the name identifier of the specified feature type in the face's `name` table.
  * @param face #hb_face_t to work upon
@@ -3623,14 +3623,14 @@ function blobCopyWritableOrFail(blob: blob_t): blob_t
  * @param fileName A font filename
  * @returns An #hb_blob_t pointer with the content of the file, or hb_blob_get_empty() if failed.
  */
-function blobCreateFromFile(fileName: string | null): blob_t
+function blobCreateFromFile(fileName: string): blob_t
 /**
  * Creates a new blob containing the data from the
  * specified binary font file.
  * @param fileName A font filename
  * @returns An #hb_blob_t pointer with the content of the file, or `NULL` if failed.
  */
-function blobCreateFromFileOrFail(fileName: string | null): blob_t
+function blobCreateFromFileOrFail(fileName: string): blob_t
 /**
  * Returns a blob that represents a range of bytes in `parent`.  The new
  * blob is always created with #HB_MEMORY_MODE_READONLY, meaning that it
@@ -3805,7 +3805,7 @@ function bufferCreateSimilar(src: buffer_t): buffer_t
  * @param format the #hb_buffer_serialize_format_t of the input `buf`
  * @returns `true` if parse was successful, `false` if an error occurred.
  */
-function bufferDeserializeGlyphs(buffer: buffer_t, buf: string[], font: font_t | null, format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* endPtr */ string | null ]
+function bufferDeserializeGlyphs(buffer: buffer_t, buf: string[], font: font_t | null, format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* endPtr */ string ]
 /**
  * Deserializes Unicode `buffer` from textual representation in the format
  * produced by hb_buffer_serialize_unicode().
@@ -3814,7 +3814,7 @@ function bufferDeserializeGlyphs(buffer: buffer_t, buf: string[], font: font_t |
  * @param format the #hb_buffer_serialize_format_t of the input `buf`
  * @returns `true` if parse was successful, `false` if an error occurred.
  */
-function bufferDeserializeUnicode(buffer: buffer_t, buf: string[], format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* endPtr */ string | null ]
+function bufferDeserializeUnicode(buffer: buffer_t, buf: string[], format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* endPtr */ string ]
 /**
  * If dottedcircle_glyph is (hb_codepoint_t) -1 then #HB_BUFFER_DIFF_FLAG_DOTTED_CIRCLE_PRESENT
  * and #HB_BUFFER_DIFF_FLAG_NOTDEF_PRESENT are never returned.  This should be used by most
@@ -4026,7 +4026,7 @@ function bufferSerializeFormatFromString(str: number[]): buffer_serialize_format
  * @param format an #hb_buffer_serialize_format_t to convert.
  * @returns  A `NULL` terminated string corresponding to @format. Should not be freed.
  */
-function bufferSerializeFormatToString(format: buffer_serialize_format_t): string | null
+function bufferSerializeFormatToString(format: buffer_serialize_format_t): string
 /**
  * Serializes `buffer` into a textual representation of its glyph content,
  * useful for showing the contents of the buffer, for example during debugging.
@@ -4326,7 +4326,7 @@ function directionFromString(str: number[]): direction_t
  * @param direction The #hb_direction_t to convert
  * @returns The string corresponding to @direction
  */
-function directionToString(direction: direction_t): string | null
+function directionToString(direction: direction_t): string
 /**
  * Perform a "close-path" draw operation.
  * @param dfuncs draw functions
@@ -5662,7 +5662,7 @@ function languageMatches(language: language_t, specific: language_t): bool_t
  * @param language The #hb_language_t to convert
  * @returns  A `NULL`-terminated string representing the @language. Must not be freed by the caller.
  */
-function languageToString(language: language_t): string | null
+function languageToString(language: language_t): string
 /**
  * Tests whether memory allocation for a set was successful.
  * @param map A map
@@ -7358,7 +7358,7 @@ function shapePlanGetEmpty(): shape_plan_t
  * @param shapePlan A shaping plan
  * @returns The shaper
  */
-function shapePlanGetShaper(shapePlan: shape_plan_t): string | null
+function shapePlanGetShaper(shapePlan: shape_plan_t): string
 /**
  * Searches variation axes of a #hb_font_t object for a specific axis first,
  * if not set, then tries to get default style values from different
@@ -7573,7 +7573,7 @@ function versionAtleast(major: number, minor: number, micro: number): bool_t
  * Returns library version as a string with three components.
  * @returns Library version string
  */
-function versionString(): string | null
+function versionString(): string
 /**
  * A callback method for #hb_buffer_t. The method gets called with the
  * #hb_buffer_t it was set on, the #hb_font_t the buffer is shaped with and a
@@ -7587,7 +7587,7 @@ function versionString(): string | null
  * @returns `true` to perform the shaping step, `false` to skip it.
  */
 interface buffer_message_func_t {
-    (buffer: buffer_t, font: font_t, message: string | null): bool_t
+    (buffer: buffer_t, font: font_t, message: string): bool_t
 }
 /**
  * A virtual method for the #hb_color_line_t to fetch color stops.
@@ -8752,7 +8752,7 @@ interface language_t {
      * Converts an #hb_language_t to a string.
      * @returns  A `NULL`-terminated string representing the @language. Must not be freed by the caller.
      */
-    string(): string | null
+    string(): string
 }
 
 /**

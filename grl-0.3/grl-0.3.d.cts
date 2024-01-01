@@ -356,18 +356,18 @@ export enum WriteFlags {
      */
     FULL,
 }
-export const CONFIG_KEY_APIKEY: string | null
-export const CONFIG_KEY_APIKEY_BLOB: string | null
-export const CONFIG_KEY_APISECRET: string | null
-export const CONFIG_KEY_APITOKEN: string | null
-export const CONFIG_KEY_APITOKEN_SECRET: string | null
-export const CONFIG_KEY_PASSWORD: string | null
-export const CONFIG_KEY_PLUGIN: string | null
-export const CONFIG_KEY_SOURCE: string | null
-export const CONFIG_KEY_USERNAME: string | null
-export const CONFIG_PATH_VAR: string | null
+export const CONFIG_KEY_APIKEY: string
+export const CONFIG_KEY_APIKEY_BLOB: string
+export const CONFIG_KEY_APISECRET: string
+export const CONFIG_KEY_APITOKEN: string
+export const CONFIG_KEY_APITOKEN_SECRET: string
+export const CONFIG_KEY_PASSWORD: string
+export const CONFIG_KEY_PLUGIN: string
+export const CONFIG_KEY_SOURCE: string
+export const CONFIG_KEY_USERNAME: string
+export const CONFIG_PATH_VAR: string
 export const COUNT_INFINITY: number
-export const KEYID_FORMAT: string | null
+export const KEYID_FORMAT: string
 export const METADATA_KEY_ALBUM: number
 export const METADATA_KEY_ALBUM_ARTIST: number
 export const METADATA_KEY_ALBUM_DISC_NUMBER: number
@@ -434,17 +434,17 @@ export const METADATA_KEY_URL: number
 export const METADATA_KEY_WIDTH: number
 export const PADDING: number
 export const PADDING_SMALL: number
-export const PLUGIN_AUTHOR: string | null
-export const PLUGIN_DESCRIPTION: string | null
-export const PLUGIN_LICENSE: string | null
-export const PLUGIN_LIST_VAR: string | null
-export const PLUGIN_NAME: string | null
-export const PLUGIN_PATH_VAR: string | null
-export const PLUGIN_RANKS_VAR: string | null
-export const PLUGIN_SITE: string | null
-export const PLUGIN_VERSION: string | null
+export const PLUGIN_AUTHOR: string
+export const PLUGIN_DESCRIPTION: string
+export const PLUGIN_LICENSE: string
+export const PLUGIN_LIST_VAR: string
+export const PLUGIN_NAME: string
+export const PLUGIN_PATH_VAR: string
+export const PLUGIN_RANKS_VAR: string
+export const PLUGIN_SITE: string
+export const PLUGIN_VERSION: string
 export const SOURCE_REMAINING_UNKNOWN: number
-export function date_time_from_iso8601(date: string | null): GLib.DateTime
+export function date_time_from_iso8601(date: string): GLib.DateTime
 /**
  * Deinitializes the Grilo library.
  * 
@@ -503,19 +503,19 @@ export function init_get_option_group(): GLib.OptionGroup
  * as described above</note>
  * @param config A string describing the wanted log configuration
  */
-export function log_configure(config: string | null): void
+export function log_configure(config: string): void
 /**
  * Retrieves the description associated with the key
  * @param key key to look up
  * @returns the description of the key
  */
-export function metadata_key_get_desc(key: KeyID): string | null
+export function metadata_key_get_desc(key: KeyID): string
 /**
  * Retrieves the name associated with the key
  * @param key key to look up
  * @returns The name of the key
  */
-export function metadata_key_get_name(key: KeyID): string | null
+export function metadata_key_get_name(key: KeyID): string
 /**
  * Retrieves the expected type for values associated with this key
  * @param key key to look up
@@ -533,7 +533,7 @@ export function metadata_key_get_type(key: KeyID): GObject.GType
  * @param options options wanted for that operation
  * @param callback the user defined callback
  */
-export function multiple_get_media_from_uri(uri: string | null, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): void
+export function multiple_get_media_from_uri(uri: string, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): void
 /**
  * Search for `text` in all the sources specified in `sources`.
  * 
@@ -548,7 +548,7 @@ export function multiple_get_media_from_uri(uri: string | null, keys: KeyID[], o
  * @param callback the user defined callback
  * @returns the operation identifier
  */
-export function multiple_search(sources: Source[] | null, text: string | null, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
+export function multiple_search(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
 /**
  * Search for `text` in all the sources specified in `sources`.
  * 
@@ -559,7 +559,7 @@ export function multiple_search(sources: Source[] | null, text: string | null, k
  * @param options options wanted for that operation
  * @returns a list with #GrlMedia elements
  */
-export function multiple_search_sync(sources: Source[] | null, text: string | null, keys: KeyID[], options: OperationOptions): Media[]
+export function multiple_search_sync(sources: Source[] | null, text: string, keys: KeyID[], options: OperationOptions): Media[]
 /**
  * Cancel an operation.
  * @param operation_id the identifier of a running operation
@@ -714,7 +714,7 @@ export interface Caps {
      * @param value the value corresponding to `key` to test against `caps`
      * @returns %TRUE if (@key, @value) obey to @caps, %FALSE otherwise.
      */
-    test_option(key: string | null, value: any): boolean
+    test_option(key: string, value: any): boolean
 
     // Class property signals of Grl-0.3.Grl.Caps
 
@@ -780,27 +780,27 @@ export interface Config {
      * @param size place for size of value
      * @returns @param value
      */
-    get_binary(param: string | null, size: number | null): number
-    get_boolean(param: string | null): boolean
-    get_float(param: string | null): number
-    get_int(param: string | null): number
+    get_binary(param: string, size: number | null): number
+    get_boolean(param: string): boolean
+    get_float(param: string): number
+    get_int(param: string): number
     get_password(): string | null
     get_plugin(): string | null
     get_source(): string | null
-    get_string(param: string | null): string | null
+    get_string(param: string): string | null
     get_username(): string | null
-    has_param(param: string | null): boolean
+    has_param(param: string): boolean
     /**
      * Set `param` `value`.
      * @param param a parameter
      * @param value value
      */
-    set(param: string | null, value: any): void
+    set(param: string, value: any): void
     /**
      * Set the webservice API key in the configuration
      * @param key the API key
      */
-    set_api_key(key: string | null): void
+    set_api_key(key: string): void
     /**
      * Set the binary API key in the configuration
      * @param blob the binary API key blob
@@ -811,69 +811,69 @@ export interface Config {
      * Set the webservice passphrase in the configuration
      * @param secret the webservice passphrase
      */
-    set_api_secret(secret: string | null): void
+    set_api_secret(secret: string): void
     /**
      * Set the webservice API token in the configuration
      * @param token the API token
      */
-    set_api_token(token: string | null): void
+    set_api_token(token: string): void
     /**
      * Set the webservice API token secret in the configuration
      * (Needed by OAuth)
      * @param secret the API token
      */
-    set_api_token_secret(secret: string | null): void
+    set_api_token_secret(secret: string): void
     /**
      * Set `param` value.
      * @param param a binary type parameter
      * @param blob a base64 encoded binary value
      * @param size size of `value`
      */
-    set_binary(param: string | null, blob: number, size: number): void
+    set_binary(param: string, blob: number, size: number): void
     /**
      * Set `param` `value`.
      * @param param a boolean type parameter
      * @param value a value
      */
-    set_boolean(param: string | null, value: boolean): void
+    set_boolean(param: string, value: boolean): void
     /**
      * Set `param` `value`.
      * @param param a float type parameter
      * @param value a value
      */
-    set_float(param: string | null, value: number): void
+    set_float(param: string, value: number): void
     /**
      * Set `param` `value`.
      * @param param an integer type parameter
      * @param value a value
      */
-    set_int(param: string | null, value: number): void
+    set_int(param: string, value: number): void
     /**
      * Set the password in the configuration
      * @param password the password
      */
-    set_password(password: string | null): void
+    set_password(password: string): void
     /**
      * Set the plugin key in the configuration
      * @param plugin the plugin id
      */
-    set_plugin(plugin: string | null): void
+    set_plugin(plugin: string): void
     /**
      * Set the source key in the configuration
      * @param source the source id
      */
-    set_source(source: string | null): void
+    set_source(source: string): void
     /**
      * Set `param` `value`.
      * @param param a string type parameter
      * @param value a value
      */
-    set_string(param: string | null, value: string | null): void
+    set_string(param: string, value: string): void
     /**
      * Set the username in the configuration
      * @param username the username
      */
-    set_username(username: string | null): void
+    set_username(username: string): void
 
     // Class property signals of Grl-0.3.Grl.Config
 
@@ -903,7 +903,7 @@ export class Config extends GObject.Object {
      * @param source source id for this configuration
      * @returns a newly-allocated data config. The data config associated with the plugin should not be freed until the plugin has been unloaded.
      */
-    constructor(plugin: string | null, source: string | null) 
+    constructor(plugin: string, source: string | null) 
     /**
      * Creates a new data config object that will be associated with a plugin
      * (if `source` is NULL), or a specific source spawned from a plugin (if
@@ -914,7 +914,7 @@ export class Config extends GObject.Object {
      * @param source source id for this configuration
      * @returns a newly-allocated data config. The data config associated with the plugin should not be freed until the plugin has been unloaded.
      */
-    static new(plugin: string | null, source: string | null): Config
+    static new(plugin: string, source: string | null): Config
     _init(config?: Config.ConstructorProperties): void
 }
 
@@ -969,7 +969,7 @@ export interface Data {
      * @param value the new value
      * @returns TRUE if @value was added to @key_name, FALSE otherwise.
      */
-    add_for_id(key_name: string | null, value: any): boolean
+    add_for_id(key_name: string, value: any): boolean
     /**
      * Appends a new int value for `key` in `data`.
      * @param key key to append
@@ -996,7 +996,7 @@ export interface Data {
      * @param key key to append
      * @param strvalue the new value
      */
-    add_string(key: KeyID, strvalue: string | null): void
+    add_string(key: KeyID, strvalue: string): void
     /**
      * Makes a deep copy of `data` and all its contents.
      * @returns a new #GrlData. Free it with #g_object_unref.
@@ -1085,7 +1085,7 @@ export interface Data {
      * @param key key to use
      * @returns string associated with @key, or %NULL in other case. Caller should not change nor free the value.
      */
-    get_string(key: KeyID): string | null
+    get_string(key: KeyID): string
     /**
      * Checks if `key` is in `data`.
      * @param key key to search
@@ -1175,7 +1175,7 @@ export interface Data {
      * @param value the new value
      * @returns TRUE if @value was set to @key_name, FALSE otherwise.
      */
-    set_for_id(key_name: string | null, value: any): boolean
+    set_for_id(key_name: string, value: any): boolean
     /**
      * Sets the first int value associated with `key` in `data`. If `key` already has a
      * first value old value is replaced by the new one.
@@ -1205,7 +1205,7 @@ export interface Data {
      * @param key key to change or add
      * @param strvalue the new value
      */
-    set_string(key: KeyID, strvalue: string | null): void
+    set_string(key: KeyID, strvalue: string): void
 
     // Class property signals of Grl-0.3.Grl.Data
 
@@ -1271,69 +1271,69 @@ export interface Media {
      * Adds a new artist to `media`.
      * @param artist an audio's artist
      */
-    add_artist(artist: string | null): void
+    add_artist(artist: string): void
     /**
      * Adds a new author to `media`.
      * @param author an author for `media`
      */
-    add_author(author: string | null): void
+    add_author(author: string): void
     /**
      * Adds the director of the media
      * @param director director of the movie
      */
-    add_director(director: string | null): void
+    add_director(director: string): void
     /**
      * Adds a new external player to `media`.
      * @param player an external player for `media`
      */
-    add_external_player(player: string | null): void
+    add_external_player(player: string): void
     /**
      * Adds a new external url to `media`.
      * @param url an external url for `media`
      */
-    add_external_url(url: string | null): void
+    add_external_url(url: string): void
     /**
      * Adds a new genre to `media`.
      * @param genre an audio's genre
      */
-    add_genre(genre: string | null): void
+    add_genre(genre: string): void
     /**
      * Adds the keyword describing the `media`.
      * @param keyword a keyword describing the media
      */
-    add_keyword(keyword: string | null): void
+    add_keyword(keyword: string): void
     /**
      * Adds a new lyrics to `media`.
      * @param lyrics an audio's lyrics
      */
-    add_lyrics(lyrics: string | null): void
+    add_lyrics(lyrics: string): void
     /**
      * Adds a new MusicBrainz artist id to `media`.
      * @param mb_artist_id a MusicBrainz artist identifier
      */
-    add_mb_artist_id(mb_artist_id: string | null): void
+    add_mb_artist_id(mb_artist_id: string): void
     /**
      * Adds the actor performing in the movie.
      * @param performer an actor performing in the movie
      */
-    add_performer(performer: string | null): void
+    add_performer(performer: string): void
     /**
      * Adds the producer of the media.
      * @param producer producer of the movie
      */
-    add_producer(producer: string | null): void
+    add_producer(producer: string): void
     /**
      * Adds regional publication and certification information for `region`.
      * @param region the region's ISO-3166-1 code
      * @param publication_date the publication date
      * @param certificate the age certification
      */
-    add_region_data(region: string | null, publication_date: GLib.DateTime, certificate: string | null): void
+    add_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
     /**
      * Adds a new thumbnail to `media`.
      * @param thumbnail a thumbnail for `media`
      */
-    add_thumbnail(thumbnail: string | null): void
+    add_thumbnail(thumbnail: string): void
     /**
      * Adds a new thumbnail to `media`.
      * @param thumbnail a buffer containing the thumbnail for `media`
@@ -1350,16 +1350,16 @@ export interface Media {
      * @param width media width, or -1 to ignore
      * @param height media height, or -1 to ignore
      */
-    add_url_data(url: string | null, mime: string | null, bitrate: number, framerate: number, width: number, height: number): void
-    get_album(): string | null
-    get_album_artist(): string | null
+    add_url_data(url: string, mime: string, bitrate: number, framerate: number, width: number, height: number): void
+    get_album(): string
+    get_album_artist(): string
     get_album_disc_number(): number
-    get_artist(): string | null
-    get_artist_nth(index: number): string | null
-    get_author(): string | null
-    get_author_nth(index: number): string | null
+    get_artist(): string
+    get_artist_nth(index: number): string
+    get_author(): string
+    get_author_nth(index: number): string
     get_bitrate(): number
-    get_camera_model(): string | null
+    get_camera_model(): string
     /**
      * Returns the media's first age certificate.
      * This should usually be the media's most relevant
@@ -1367,65 +1367,65 @@ export interface Media {
      * get other age certificates.
      * @returns the media's age certification
      */
-    get_certificate(): string | null
+    get_certificate(): string
     /**
      * Number of children of this container.
      * @returns number of children, or #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if unknown.
      */
     get_childcount(): number
-    get_composer(): string | null
-    get_composer_nth(index: number): string | null
+    get_composer(): string
+    get_composer_nth(index: number): string
     get_creation_date(): GLib.DateTime
-    get_description(): string | null
-    get_director(): string | null
-    get_director_nth(index: number): string | null
+    get_description(): string
+    get_director(): string
+    get_director_nth(index: number): string
     get_duration(): number
     get_episode(): number
-    get_episode_title(): string | null
+    get_episode_title(): string
     get_exposure_time(): number
-    get_external_url(): string | null
-    get_external_url_nth(index: number): string | null
+    get_external_url(): string
+    get_external_url_nth(index: number): string
     get_favourite(): boolean
-    get_flash_used(): string | null
+    get_flash_used(): string
     get_framerate(): number
-    get_genre(): string | null
-    get_genre_nth(index: number): string | null
+    get_genre(): string
+    get_genre_nth(index: number): string
     get_height(): number
-    get_id(): string | null
+    get_id(): string
     get_iso_speed(): number
-    get_keyword(): string | null
-    get_keyword_nth(index: number): string | null
+    get_keyword(): string
+    get_keyword_nth(index: number): string
     get_last_played(): GLib.DateTime
     get_last_position(): number
-    get_license(): string | null
-    get_lyrics(): string | null
-    get_lyrics_nth(index: number): string | null
-    get_mb_album_id(): string | null
-    get_mb_artist_id(): string | null
-    get_mb_artist_id_nth(index: number): string | null
-    get_mb_recording_id(): string | null
-    get_mb_release_group_id(): string | null
-    get_mb_release_id(): string | null
-    get_mb_track_id(): string | null
+    get_license(): string
+    get_lyrics(): string
+    get_lyrics_nth(index: number): string
+    get_mb_album_id(): string
+    get_mb_artist_id(): string
+    get_mb_artist_id_nth(index: number): string
+    get_mb_recording_id(): string
+    get_mb_release_group_id(): string
+    get_mb_release_id(): string
+    get_mb_track_id(): string
     /**
      * Gets the "media-type" property.
      * @returns media type
      */
     get_media_type(): MediaType
-    get_mime(): string | null
+    get_mime(): string
     get_modification_date(): GLib.DateTime
     get_orientation(): number
-    get_original_title(): string | null
-    get_performer(): string | null
-    get_performer_nth(index: number): string | null
+    get_original_title(): string
+    get_performer(): string
+    get_performer_nth(index: number): string
     get_play_count(): number
-    get_player(): string | null
-    get_player_nth(index: number): string | null
-    get_producer(): string | null
-    get_producer_nth(index: number): string | null
+    get_player(): string
+    get_player_nth(index: number): string
+    get_producer(): string
+    get_producer_nth(index: number): string
     get_publication_date(): GLib.DateTime
     get_rating(): number
-    get_region(): string | null
+    get_region(): string
     /**
      * Returns the media's age certificate and publication date for the first region.
      * This should usually be the media's most relevant region.
@@ -1433,7 +1433,7 @@ export interface Media {
      * publication date for other regions.
      * @returns the ISO-3166-1 of the region where the media was published (owned by @media).
      */
-    get_region_data(): [ /* returnType */ string | null, /* publication_date */ GLib.DateTime, /* certificate */ string | null ]
+    get_region_data(): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
     /**
      * Returns the media's age certificate and publication date for one region.
      * Use grl_data_length() with GRL_METADATA_KEY_REGION to discover
@@ -1455,23 +1455,23 @@ export interface Media {
      * @param index element to retrieve
      * @returns the ISO-3166-1 of the region where the media was published (owned by @media).
      */
-    get_region_data_nth(index: number): [ /* returnType */ string | null, /* publication_date */ GLib.DateTime, /* certificate */ string | null ]
+    get_region_data_nth(index: number): [ /* returnType */ string, /* publication_date */ GLib.DateTime, /* certificate */ string ]
     get_season(): number
-    get_show(): string | null
-    get_site(): string | null
+    get_show(): string
+    get_site(): string
     get_size(): number
-    get_source(): string | null
+    get_source(): string
     get_start_time(): number
-    get_studio(): string | null
-    get_thumbnail(): string | null
+    get_studio(): string
+    get_thumbnail(): string
     get_thumbnail_binary(size: number): number
     get_thumbnail_binary_nth(size: number, index: number): number
-    get_thumbnail_nth(index: number): string | null
-    get_title(): string | null
+    get_thumbnail_nth(index: number): string
+    get_title(): string
     get_track_number(): number
-    get_url(): string | null
-    get_url_data(framerate: number, width: number, height: number): [ /* returnType */ string | null, /* mime */ string | null, /* bitrate */ number ]
-    get_url_data_nth(index: number, framerate: number, width: number, height: number): [ /* returnType */ string | null, /* mime */ string | null, /* bitrate */ number ]
+    get_url(): string
+    get_url_data(framerate: number, width: number, height: number): [ /* returnType */ string, /* mime */ string | null, /* bitrate */ number ]
+    get_url_data_nth(index: number, framerate: number, width: number, height: number): [ /* returnType */ string, /* mime */ string | null, /* bitrate */ number ]
     get_width(): number
     /**
      * Check if `media` is an audio
@@ -1504,12 +1504,12 @@ export interface Media {
      * Set the album of the media
      * @param album the audio's album
      */
-    set_album(album: string | null): void
+    set_album(album: string): void
     /**
      * Set the main artist of the album of the media
      * @param album_artist the audio's album main artist
      */
-    set_album_artist(album_artist: string | null): void
+    set_album_artist(album_artist: string): void
     /**
      * Set the disc number of the media for multi-disc album sets.
      * @param disc_number the disc number within an album
@@ -1519,12 +1519,12 @@ export interface Media {
      * Set the artist of the media
      * @param artist the audio's artist
      */
-    set_artist(artist: string | null): void
+    set_artist(artist: string): void
     /**
      * Set the media's author
      * @param author the media's author
      */
-    set_author(author: string | null): void
+    set_author(author: string): void
     /**
      * Set the bitrate of the media
      * @param bitrate the audio's bitrate
@@ -1534,7 +1534,7 @@ export interface Media {
      * Set the camera_model of the media
      * @param camera_model model of camera used to take picture
      */
-    set_camera_model(camera_model: string | null): void
+    set_camera_model(camera_model: string): void
     /**
      * Set the media's first age certification.
      * This should usually be the media's most relevant
@@ -1542,7 +1542,7 @@ export interface Media {
      * set other age certificates.
      * @param certificate The age certificate of the media
      */
-    set_certificate(certificate: string | null): void
+    set_certificate(certificate: string): void
     /**
      * Sets the number of children of this container. Use
      * #GRL_METADATA_KEY_CHILDCOUNT_UNKNOWN if it is unknown.
@@ -1553,7 +1553,7 @@ export interface Media {
      * Set the composer of the media
      * @param composer the audio's composer
      */
-    set_composer(composer: string | null): void
+    set_composer(composer: string): void
     /**
      * Set the creation_date of the media
      * @param creation_date date when media was created
@@ -1563,12 +1563,12 @@ export interface Media {
      * Set the media's description
      * @param description the description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the director of the media.
      * @param director director of the movie
      */
-    set_director(director: string | null): void
+    set_director(director: string): void
     /**
      * Set the media's duration
      * @param duration the duration in seconds
@@ -1583,7 +1583,7 @@ export interface Media {
      * Sets the title of an media
      * @param episode_title the title of the episode
      */
-    set_episode_title(episode_title: string | null): void
+    set_episode_title(episode_title: string): void
     /**
      * Set the exposure_time of the media
      * @param exposure_time picture's exposure time
@@ -1593,12 +1593,12 @@ export interface Media {
      * Set the location of a player for the media (usually a flash player)
      * @param player location of an external player for this media
      */
-    set_external_player(player: string | null): void
+    set_external_player(player: string): void
     /**
      * Set an external location where users can play the media
      * @param url external location where this media can be played.
      */
-    set_external_url(url: string | null): void
+    set_external_url(url: string): void
     /**
      * Set if the media is favourite or not
      * @param favourite whether the item is favourite or not
@@ -1610,7 +1610,7 @@ export interface Media {
      * http://library.gnome.org/devel/ontology/unstable/nmm-classes.html#nmm-Flash
      * @param flash_used whether the flash was used
      */
-    set_flash_used(flash_used: string | null): void
+    set_flash_used(flash_used: string): void
     /**
      * Set the framerate of the media
      * @param framerate the video's framerate
@@ -1620,7 +1620,7 @@ export interface Media {
      * Set the genre of the media
      * @param genre the audio's genre
      */
-    set_genre(genre: string | null): void
+    set_genre(genre: string): void
     /**
      * Set the height of the media
      * @param height the video's height
@@ -1630,7 +1630,7 @@ export interface Media {
      * Set the media identifier
      * @param id the identifier of the media
      */
-    set_id(id: string | null): void
+    set_id(id: string): void
     /**
      * Set the iso_speed of the media
      * @param iso_speed picture's iso speed
@@ -1640,7 +1640,7 @@ export interface Media {
      * Sets the keyword describing the `media`.
      * @param keyword a keyword describing the media
      */
-    set_keyword(keyword: string | null): void
+    set_keyword(keyword: string): void
     /**
      * Set the media last played date
      * @param last_played date when the media was last played
@@ -1655,47 +1655,47 @@ export interface Media {
      * Set the media license
      * @param license The license of the media
      */
-    set_license(license: string | null): void
+    set_license(license: string): void
     /**
      * Set the lyrics of the media
      * @param lyrics the audio's lyrics
      */
-    set_lyrics(lyrics: string | null): void
+    set_lyrics(lyrics: string): void
     /**
      * Set the MusicBrainz album identifier of the media
      * @param mb_album_id the MusicBrainz album identifier
      */
-    set_mb_album_id(mb_album_id: string | null): void
+    set_mb_album_id(mb_album_id: string): void
     /**
      * Set the MusicBrainz artist identifier of the media
      * @param mb_artist_id the MusicBrainz artist identifier
      */
-    set_mb_artist_id(mb_artist_id: string | null): void
+    set_mb_artist_id(mb_artist_id: string): void
     /**
      * Set the MusicBrainz recording identifier of the media
      * @param mb_recording_id the MusicBrainz recording identifier
      */
-    set_mb_recording_id(mb_recording_id: string | null): void
+    set_mb_recording_id(mb_recording_id: string): void
     /**
      * Set the MusicBrainz Release Group identifier of the media
      * @param mb_release_group_id Album group release identifier in MusicBrainz
      */
-    set_mb_release_group_id(mb_release_group_id: string | null): void
+    set_mb_release_group_id(mb_release_group_id: string): void
     /**
      * Set the MusicBrainz release identifier of the media
      * @param mb_release_id Album release identifier in MusicBrainz
      */
-    set_mb_release_id(mb_release_id: string | null): void
+    set_mb_release_id(mb_release_id: string): void
     /**
      * Set the MusicBrainz track identifier of the media
      * @param mb_track_id the MusicBrainz track identifier
      */
-    set_mb_track_id(mb_track_id: string | null): void
+    set_mb_track_id(mb_track_id: string): void
     /**
      * Set the media's mime-type
      * @param mime the mime type
      */
-    set_mime(mime: string | null): void
+    set_mime(mime: string): void
     /**
      * Set the modification date of the media
      * @param modification_date date when the media was last modified
@@ -1710,12 +1710,12 @@ export interface Media {
      * Sets the original, untranslated title of the media.
      * @param original_title original, untranslated title of the movie
      */
-    set_original_title(original_title: string | null): void
+    set_original_title(original_title: string): void
     /**
      * Sets the actor performing in the movie.
      * @param performer an actor performing in the movie
      */
-    set_performer(performer: string | null): void
+    set_performer(performer: string): void
     /**
      * Set the media play count
      * @param play_count the play count
@@ -1725,7 +1725,7 @@ export interface Media {
      * Sets the producer of the media.
      * @param producer producer of the movie
      */
-    set_producer(producer: string | null): void
+    set_producer(producer: string): void
     /**
      * Set the publication date of `media`.
      * @param date the date
@@ -1742,14 +1742,14 @@ export interface Media {
      * Sets the `region` where `media` was published.
      * @param region the region's ISO-3166-1 code
      */
-    set_region(region: string | null): void
+    set_region(region: string): void
     /**
      * Sets regional publication and certification information for `region`.
      * @param region the region's ISO-3166-1 code
      * @param publication_date the publication date
      * @param certificate the age certification
      */
-    set_region_data(region: string | null, publication_date: GLib.DateTime, certificate: string | null): void
+    set_region_data(region: string, publication_date: GLib.DateTime, certificate: string): void
     /**
      * Sets the season number of the media
      * @param season the video's season
@@ -1759,13 +1759,13 @@ export interface Media {
      * Sets the show title of the media
      * @param show the video's show name
      */
-    set_show(show: string | null): void
+    set_show(show: string): void
     /**
      * Set the media's site. A site is a website about the media such as a
      * studio's promotional website for a movie.
      * @param site the site
      */
-    set_site(site: string | null): void
+    set_site(site: string): void
     /**
      * Set the size of the media
      * @param size the size in bytes
@@ -1775,17 +1775,17 @@ export interface Media {
      * Set the media's source
      * @param source the source
      */
-    set_source(source: string | null): void
+    set_source(source: string): void
     /**
      * Set the media studio
      * @param studio The studio the media is from
      */
-    set_studio(studio: string | null): void
+    set_studio(studio: string): void
     /**
      * Set the media's thumbnail URL
      * @param thumbnail the thumbnail URL
      */
-    set_thumbnail(thumbnail: string | null): void
+    set_thumbnail(thumbnail: string): void
     /**
      * Set the media's binary thumbnail
      * @param thumbnail thumbnail buffer
@@ -1796,7 +1796,7 @@ export interface Media {
      * Set the media's title
      * @param title the title
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Set the track number of the media
      * @param track_number the audio's track number
@@ -1806,7 +1806,7 @@ export interface Media {
      * Set the media's URL
      * @param url the media's URL
      */
-    set_url(url: string | null): void
+    set_url(url: string): void
     /**
      * Sets all the keys related with the URL of a media resource in one go.
      * @param url the media's URL
@@ -1816,7 +1816,7 @@ export interface Media {
      * @param width media width, or -1 to ignore
      * @param height media height, or -1 to ignore
      */
-    set_url_data(url: string | null, mime: string | null, bitrate: number, framerate: number, width: number, height: number): void
+    set_url_data(url: string, mime: string, bitrate: number, framerate: number, width: number, height: number): void
     /**
      * Set the width of the media
      * @param width the video's width
@@ -1895,7 +1895,7 @@ export class Media extends Data {
      * @param serial a serialized media
      * @returns the GrlMedia from the serial
      */
-    static unserialize(serial: string | null): Media
+    static unserialize(serial: string): Media
 }
 
 export module OperationOptions {
@@ -2066,42 +2066,42 @@ export interface Plugin {
      * Get the author of the plugin
      * @returns the author of the @plugin
      */
-    get_author(): string | null
+    get_author(): string
     /**
      * Get the description of the plugin
      * @returns the description of the @plugin
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Get the filename containing the plugin
      * @returns the filename containing @plugin
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Get the id of the plugin
      * @returns the id of the @plugin
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Get the license of the plugin
      * @returns the license of the @plugin
      */
-    get_license(): string | null
+    get_license(): string
     /**
      * Get the plugin module name
      * @returns the module name containing @plugin
      */
-    get_module_name(): string | null
+    get_module_name(): string
     /**
      * Get the name of the plugin
      * @returns the name of the @plugin
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the site of the plugin
      * @returns the site of the @plugin
      */
-    get_site(): string | null
+    get_site(): string
     /**
      * Gets the sources belonging to `plugin`.
      * @returns a #GList of #GrlSource<!-- -->s. The content of the list should not be modified or freed. Use g_list_free() when done using the list.
@@ -2111,7 +2111,7 @@ export interface Plugin {
      * Get the version of the plugin
      * @returns the version of the @plugin
      */
-    get_version(): string | null
+    get_version(): string
 
     // Class property signals of Grl-0.3.Grl.Plugin
 
@@ -2188,7 +2188,7 @@ export interface Registry {
      * @param plugin_id plugin identifier
      * @returns %TRUE if the plugin is loaded correctly
      */
-    activate_plugin_by_id(plugin_id: string | null): boolean
+    activate_plugin_by_id(plugin_id: string): boolean
     /**
      * Add a configuration for a plugin/source.
      * @param config a configuration set
@@ -2200,18 +2200,18 @@ export interface Registry {
      * @param config_file a key-value file containing the configuration
      * @returns %TRUE on success
      */
-    add_config_from_file(config_file: string | null): boolean
+    add_config_from_file(config_file: string): boolean
     /**
      * Load plugin configurations from a .ini-like resource file.
      * @param resource_path a key-value file containing the configuration
      * @returns %TRUE on success
      */
-    add_config_from_resource(resource_path: string | null): boolean
+    add_config_from_resource(resource_path: string): boolean
     /**
      * Set this path as part of default paths to load plugins.
      * @param path a path with plugins
      */
-    add_directory(path: string | null): void
+    add_directory(path: string): void
     /**
      * Returns a list with all registered keys in system.
      * @returns a #GList with all the available #GrlKeyID<!-- -->s. The content of the list should not be modified or freed. Use g_list_free() when done using the list.
@@ -2259,32 +2259,32 @@ export interface Registry {
      * @param library_filename the path to the so file
      * @returns %TRUE if the module is loaded correctly
      */
-    load_plugin(library_filename: string | null): boolean
+    load_plugin(library_filename: string): boolean
     /**
      * Loads a set of modules from directory in `path` which contains
      * a group shared object files.
      * @param path the path to the directory
      * @returns %TRUE if the directory is valid.
      */
-    load_plugin_directory(path: string | null): boolean
+    load_plugin_directory(path: string): boolean
     /**
      * Look up for the metadata key with name `key_name`.
      * @param key_name the key name
      * @returns The metadata key, or GRL_METADATA_KEY_INVALID if not found
      */
-    lookup_metadata_key(key_name: string | null): KeyID
+    lookup_metadata_key(key_name: string): KeyID
     /**
      * Returns `key` description.
      * @param key a metadata key
      * @returns metadata key description, or @NULL if not found
      */
-    lookup_metadata_key_desc(key: KeyID): string | null
+    lookup_metadata_key_desc(key: KeyID): string
     /**
      * Returns `key` name.
      * @param key a metadata key
      * @returns metadata key name, or @NULL if not found
      */
-    lookup_metadata_key_name(key: KeyID): string | null
+    lookup_metadata_key_name(key: KeyID): string
     /**
      * Look up the list of keys that have a relation with `key`.
      * 
@@ -2304,13 +2304,13 @@ export interface Registry {
      * @param plugin_id the id of a plugin
      * @returns The plugin found
      */
-    lookup_plugin(plugin_id: string | null): Plugin
+    lookup_plugin(plugin_id: string): Plugin
     /**
      * This function will search and retrieve a source given its identifier.
      * @param source_id the id of a source
      * @returns The source found.
      */
-    lookup_source(source_id: string | null): Source
+    lookup_source(source_id: string): Source
     /**
      * Validates `value` content complies with the key specification. That is, it has
      * the expected type, and value are within the range specified in key (for
@@ -2350,7 +2350,7 @@ export interface Registry {
      * @param plugin_id the identifier of the plugin
      * @returns %TRUE% on success.
      */
-    unload_plugin(plugin_id: string | null): boolean
+    unload_plugin(plugin_id: string): boolean
     /**
      * Removes the `source` from the `registry` hash table
      * @param source the source to unregister
@@ -2482,7 +2482,7 @@ export interface RelatedKeys {
      * @param key key to use
      * @returns string associated with @key, or %NULL in other case. Caller should not change nor free the value.
      */
-    get_string(key: KeyID): string | null
+    get_string(key: KeyID): string
     /**
      * Checks if `key` is in `relkeys`.
      * @param key key to search
@@ -2548,7 +2548,7 @@ export interface RelatedKeys {
      * @param value the new value
      * @returns TRUE if @value was set to @key_name, FALSE otherwise.
      */
-    set_for_id(key_name: string | null, value: any): boolean
+    set_for_id(key_name: string, value: any): boolean
     /**
      * Sets the value associated with `key` into `relkeys`. `key` must have been
      * registered as an int-type key. Old value is replaced by the new one.
@@ -2569,7 +2569,7 @@ export interface RelatedKeys {
      * @param key key to change or add
      * @param strvalue the new value
      */
-    set_string(key: KeyID, strvalue: string | null): void
+    set_string(key: KeyID, strvalue: string): void
 
     // Class property signals of Grl-0.3.Grl.RelatedKeys
 
@@ -3022,9 +3022,9 @@ export interface Source {
      * @returns The capabilities
      */
     get_caps(operation: SupportedOps): Caps
-    get_description(): string | null
+    get_description(): string
     get_icon(): Gio.Icon
-    get_id(): string | null
+    get_id(): string
     /**
      * Creates an instance of #GrlMedia representing the media resource
      * exposed at `uri`.
@@ -3039,7 +3039,7 @@ export interface Source {
      * @param callback the user defined callback
      * @returns the operation identifier
      */
-    get_media_from_uri(uri: string | null, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): number
+    get_media_from_uri(uri: string, keys: KeyID[], options: OperationOptions, callback: SourceResolveCb): number
     /**
      * Creates an instance of #GrlMedia representing the media resource
      * exposed at `uri`.
@@ -3054,8 +3054,8 @@ export interface Source {
      * @param options options wanted for that operation
      * @returns a filled #GrlMedia
      */
-    get_media_from_uri_sync(uri: string | null, keys: KeyID[], options: OperationOptions): Media
-    get_name(): string | null
+    get_media_from_uri_sync(uri: string, keys: KeyID[], options: OperationOptions): Media
+    get_name(): string
     get_plugin(): Plugin
     /**
      * Gets the source rank
@@ -3148,7 +3148,7 @@ export interface Source {
      * @param callback the user defined callback
      * @returns the operation identifier
      */
-    query(query: string | null, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
+    query(query: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
     /**
      * Execute a specialized query (specific for each provider) on a media
      * repository.
@@ -3159,7 +3159,7 @@ export interface Source {
      * @param options options wanted for that operation
      * @returns a #GList with #GrlMedia elements. After use g_object_unref() every element and g_list_free() the list.
      */
-    query_sync(query: string | null, keys: KeyID[], options: OperationOptions): Media[]
+    query_sync(query: string, keys: KeyID[], options: OperationOptions): Media[]
     /**
      * Remove a `media` from the `source` repository.
      * 
@@ -3213,7 +3213,7 @@ export interface Source {
      * @param callback the user defined callback
      * @returns the operation identifier
      */
-    search(text: string | null, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
+    search(text: string, keys: KeyID[], options: OperationOptions, callback: SourceResultCb): number
     /**
      * Search for the `text` string in a source for data identified with that string.
      * 
@@ -3228,7 +3228,7 @@ export interface Source {
      * @param options options wanted for that operation
      * @returns a #GList with #GrlMedia elements. After use g_object_unref() every element and g_list_free() the list.
      */
-    search_sync(text: string | null, keys: KeyID[], options: OperationOptions): Media[]
+    search_sync(text: string, keys: KeyID[], options: OperationOptions): Media[]
     /**
      * Sets how much elements the source is able to handle in a single request.
      * 
@@ -3314,7 +3314,7 @@ export interface Source {
      * @param uri A URI that can be used to identify a media resource
      * @returns %TRUE if it can, %FALSE otherwise. This method is synchronous.
      */
-    test_media_from_uri(uri: string | null): boolean
+    test_media_from_uri(uri: string): boolean
     /**
      * Similar to grl_source_supported_keys(), but these keys
      * are marked as writable, meaning the source allows the client
@@ -3397,7 +3397,7 @@ export interface Source {
      * @param uri A URI that can be used to identify a media resource
      * @returns %TRUE if it can, %FALSE otherwise. This method is synchronous.
      */
-    vfunc_test_media_from_uri(uri: string | null): boolean
+    vfunc_test_media_from_uri(uri: string): boolean
     /**
      * Similar to grl_source_supported_keys(), but these keys
      * are marked as writable, meaning the source allows the client
@@ -3900,7 +3900,7 @@ export interface SourceClass {
     get_caps: (source: Source, operation: SupportedOps) => Caps
     resolve: (source: Source, ms: SourceResolveSpec) => void
     may_resolve: (source: Source, media: Media, key_id: KeyID, missing_keys: KeyID[]) => boolean
-    test_media_from_uri: (source: Source, uri: string | null) => boolean
+    test_media_from_uri: (source: Source, uri: string) => boolean
     media_from_uri: (source: Source, mfus: SourceMediaFromUriSpec) => void
     browse: (source: Source, bs: SourceBrowseSpec) => void
     search: (source: Source, ss: SourceSearchSpec) => void

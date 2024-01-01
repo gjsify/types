@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-gstvideo-0.10",
-    "version": "0.10.0-3.2.6",
+    "version": "0.10.0-3.2.7",
     "description": "Node.js TypeScript type definitions for GstVideo-0.10, generated from library version 0.10.0",
     "type": "module",
     "module": "node-gstvideo-0.10.js",

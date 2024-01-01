@@ -240,7 +240,7 @@ enum Type {
 /**
  * A convenience value used to select the first device regardless of its address.
  */
-const CHOOSER_COMBO_FIRST_DEVICE: string | null
+const CHOOSER_COMBO_FIRST_DEVICE: string
 /**
  * Use this value to select any Bluetooth audio device where a #BluetoothType enum is required.
  */
@@ -285,26 +285,26 @@ function class_to_type(class_: number): Type
  * @param address Remote device to use
  * @param alias Remote device's name
  */
-function send_to_address(address: string | null, alias: string | null): void
+function send_to_address(address: string, alias: string): void
 /**
  * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
  * The returned string is already translated with gettext().
  * @param type a #BluetoothType
  * @returns a string.
  */
-function type_to_string(type: number): string | null
+function type_to_string(type: number): string
 /**
  * Returns a string representing a human-readable (but not usable for display to users) version of the `uuid`. Do not free the return value.
  * @param uuid a string representing a Bluetooth UUID
  * @returns a string.
  */
-function uuid_to_string(uuid: string | null): string | null
+function uuid_to_string(uuid: string): string
 /**
  * Returns whether the string is a valid Bluetooth address. This does not contact the device in any way.
  * @param bdaddr a string representing a Bluetooth address
  * @returns %TRUE if the address is valid, %FALSE if not.
  */
-function verify_address(bdaddr: string | null): boolean
+function verify_address(bdaddr: string): boolean
 module Chooser {
 
     // Signal callback interfaces
@@ -414,7 +414,7 @@ interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param value An empty #GValue to set.
      * @returns %TRUE if the @value has been set.
      */
-    get_selected_device_info(field: string | null, value: any): boolean
+    get_selected_device_info(field: string, value: any): boolean
     /**
      * Returns whether the selected device is connected to this computer.
      * @returns whether the selected device is connected to this computer, will always be %FALSE if no devices are selected.
@@ -456,7 +456,7 @@ interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -470,7 +470,7 @@ interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -481,12 +481,12 @@ interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
-    vfunc_selected_device_activated(address: string | null): void
-    vfunc_selected_device_changed(address: string | null): void
+    vfunc_selected_device_activated(address: string): void
+    vfunc_selected_device_changed(address: string): void
 
     // Own signals of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
@@ -781,7 +781,7 @@ interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -793,7 +793,7 @@ interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -807,7 +807,7 @@ interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GnomeBluetooth-1.0.GnomeBluetooth.ChooserButton
 
@@ -1085,7 +1085,7 @@ interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1099,7 +1099,7 @@ interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1110,7 +1110,7 @@ interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GnomeBluetooth-1.0.GnomeBluetooth.ChooserCombo
 
@@ -1413,7 +1413,7 @@ interface Client {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the connection is complete
      */
-    connect_service(path: string | null, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes the connection operation. See bluetooth_client_connect_service().
      * @param res a #GAsyncResult
@@ -1570,7 +1570,7 @@ interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1584,7 +1584,7 @@ interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1595,7 +1595,7 @@ interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GnomeBluetooth-1.0.GnomeBluetooth.FilterWidget
 
@@ -1846,7 +1846,7 @@ interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1860,7 +1860,7 @@ interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1871,7 +1871,7 @@ interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of GnomeBluetooth-1.0.GnomeBluetooth.SettingsWidget
 
@@ -2089,8 +2089,8 @@ interface ChooserClass {
     // Own fields of GnomeBluetooth-1.0.GnomeBluetooth.ChooserClass
 
     parent_class: Gtk.BoxClass
-    selected_device_changed: (chooser: Chooser, address: string | null) => void
-    selected_device_activated: (chooser: Chooser, address: string | null) => void
+    selected_device_changed: (chooser: Chooser, address: string) => void
+    selected_device_activated: (chooser: Chooser, address: string) => void
 }
 
 abstract class ChooserClass {

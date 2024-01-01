@@ -80,7 +80,7 @@ const VERSION_HEX: number
 /**
  * ClutterGst full version, encoded as a string.
  */
-const VERSION_S: string | null
+const VERSION_S: string
 /**
  * Utility function to initialize both Clutter and GStreamer.
  * 
@@ -105,7 +105,7 @@ function init(argv: string[] | null): [ /* returnType */ Clutter.InitError, /* a
  * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    with gettext(), or %NULL
  * @returns %CLUTTER_INIT_SUCCESS on success, a negative integer   on failure.
  */
-function init_with_args(argv: string[] | null, parameter_string: string | null, entries: GLib.OptionEntry, translation_domain: string | null): [ /* returnType */ Clutter.InitError, /* argv */ string[] | null ]
+function init_with_args(argv: string[] | null, parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [ /* returnType */ Clutter.InitError, /* argv */ string[] | null ]
 /**
  * Adds the #ClutterGstPlayer properties to a class and surchages the
  * set/get_property of #GObjectClass. You should call this
@@ -314,7 +314,7 @@ interface Player extends Clutter.Media {
      * requires a special user agent you want to impersonate.
      * @param user_agent the user agent
      */
-    set_user_agent(user_agent: string | null): void
+    set_user_agent(user_agent: string): void
 
     // Own virtual methods of ClutterGst-2.0.ClutterGst.Player
 
@@ -412,7 +412,7 @@ interface Player extends Clutter.Media {
      * @virtual 
      * @param user_agent the user agent
      */
-    vfunc_set_user_agent(user_agent: string | null): void
+    vfunc_set_user_agent(user_agent: string): void
 
     // Own signals of ClutterGst-2.0.ClutterGst.Player
 
@@ -866,7 +866,7 @@ interface VideoTexture extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * requires a special user agent you want to impersonate.
      * @param user_agent the user agent
      */
-    set_user_agent(user_agent: string | null): void
+    set_user_agent(user_agent: string): void
 
     // Class property signals of ClutterGst-2.0.ClutterGst.VideoTexture
 
@@ -1260,7 +1260,7 @@ interface PlayerIface {
 
     get_pipeline: (player: Player) => Gst.Element
     get_user_agent: (player: Player) => string | null
-    set_user_agent: (player: Player, user_agent: string | null) => void
+    set_user_agent: (player: Player, user_agent: string) => void
     get_seek_flags: (player: Player) => SeekFlags
     set_seek_flags: (player: Player, flags: SeekFlags) => void
     get_buffering_mode: (player: Player) => BufferingMode

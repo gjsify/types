@@ -90,7 +90,7 @@ enum ProcessFlags {
  * @param target Output file name (not URI) to save converted content to
  * @returns %TRUE if conversion was successful, otherwise %FALSE is returned if @error is set.
  */
-function bufferToJpeg(buffer: number[], bufferMime: string | null, target: string | null): boolean
+function bufferToJpeg(buffer: number[], bufferMime: string, target: string): boolean
 /**
  * The error domain for #MediaArtError.
  * @returns the #GQuark used to identify media art errors in GError structures.
@@ -103,7 +103,7 @@ function errorQuark(): GLib.Quark
  * @param target Output file name (not URI) to save converted content to
  * @returns %TRUE if conversion was successful, otherwise %FALSE is returned if @error is set.
  */
-function fileToJpeg(filename: string | null, target: string | null): boolean
+function fileToJpeg(filename: string, target: string): boolean
 /**
  * Gets the files pointing to cache files suitable for storing the media
  * art provided by the `artist,` `title` and `file` arguments. `cache_file`
@@ -144,7 +144,7 @@ function getFile(artist: string | null, title: string | null, prefix: string | n
  * @param prefix the prefix, for example "album"
  * @returns %TRUE if @cache_path was returned, otherwise %FALSE.
  */
-function getPath(artist: string | null, title: string | null, prefix: string | null): [ /* returnType */ boolean, /* cachePath */ string | null ]
+function getPath(artist: string | null, title: string | null, prefix: string | null): [ /* returnType */ boolean, /* cachePath */ string ]
 /**
  * This function facilitates a plugin&apos;s need to create any
  * internal caches before anything else is done. This function must
@@ -173,7 +173,7 @@ function pluginShutdown(): void
  * @param cancellable optional #GCancellable object, %NULL to ignore.
  * @returns #TRUE on success, otherwise #FALSE where @error will be set.
  */
-function remove(artist: string | null, album: string | null, cancellable: Gio.Cancellable | null): boolean
+function remove(artist: string, album: string | null, cancellable: Gio.Cancellable | null): boolean
 /**
  * Removes media art for given album/artist provided. Precisely the
  * same operation as media_art_remove() is performing, but
@@ -203,7 +203,7 @@ function remove(artist: string | null, album: string | null, cancellable: Gio.Ca
  * @param cancellable optional #GCancellable object, %NULL to ignore
  * @param callback a #GAsyncReadyCallback to call when the request is satisfied
  */
-function removeAsync(artist: string | null, album: string | null, ioPriority: number, sourceObject: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+function removeAsync(artist: string, album: string | null, ioPriority: number, sourceObject: GObject.Object | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Finishes the asynchronous operation started with
  * media_art_remove_async().
@@ -298,7 +298,7 @@ interface Process extends Gio.Initable {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    bufferAsync(type: Type, flags: ProcessFlags, relatedFile: Gio.File, buffer: number[] | null, mime: string | null, artist: string | null, title: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    bufferAsync(type: Type, flags: ProcessFlags, relatedFile: Gio.File, buffer: number[] | null, mime: string, artist: string | null, title: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous operation started with
      * media_art_process_file_async().
@@ -390,7 +390,7 @@ interface Process extends Gio.Initable {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @returns %TRUE if @uri could be processed or %FALSE if @error is set.
      */
-    uri(type: Type, flags: ProcessFlags, uri: string | null, artist: string | null, title: string | null, cancellable: Gio.Cancellable | null): boolean
+    uri(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Processes media art. Precisely the same operation as
      * media_art_process_uri() is performing, but asynchronously.
@@ -418,7 +418,7 @@ interface Process extends Gio.Initable {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    uriAsync(type: Type, flags: ProcessFlags, uri: string | null, artist: string | null, title: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    uriAsync(type: Type, flags: ProcessFlags, uri: string, artist: string | null, title: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous operation started with
      * media_art_process_file_async().

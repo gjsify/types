@@ -309,7 +309,7 @@ interface Cal {
      * @param auid Unique identifier of the alarm to be discarded.
      * @returns TRUE if the operation was successful, FALSE otherwise.
      */
-    discardAlarm(comp: CalComponent, auid: string | null): boolean
+    discardAlarm(comp: CalComponent, auid: string): boolean
     /**
      * Queries the address to be used for alarms in a calendar client.
      * @param alarmAddress Return value for alarm address.
@@ -351,7 +351,7 @@ interface Cal {
      * operations.
      * @returns The URL where the attachments are serialized in the local filesystem.
      */
-    getLocalAttachmentStore(): string | null
+    getLocalAttachmentStore(): string
     /**
      * Gets a list of objects from the calendar that match the query specified
      * by the `query` argument. The objects will be returned in the `objects`
@@ -360,7 +360,7 @@ interface Cal {
      * @param query Query string.
      * @returns TRUE if the operation was successful, FALSE otherwise.
      */
-    getObjectList(query: string | null): [ /* returnType */ boolean, /* objects */ number[] ]
+    getObjectList(query: string): [ /* returnType */ boolean, /* objects */ number[] ]
     /**
      * Checks if a calendar supports only one alarm per component.
      * @returns TRUE if the calendar allows only one alarm, FALSE otherwise.
@@ -382,7 +382,7 @@ interface Cal {
      * @param sexp S-expression representing the query.
      * @returns A query object that will emit notification signals as calendar components are added and removed from the query in the server.
      */
-    getQuery(sexp: string | null): [ /* returnType */ boolean, /* query */ CalView ]
+    getQuery(sexp: string): [ /* returnType */ boolean, /* query */ CalView ]
     /**
      * Checks if the calendar has a master object for recurrences.
      * @returns TRUE if the calendar has a master object for recurrences, FALSE otherwise.
@@ -408,7 +408,7 @@ interface Cal {
      * @param cap Name of the static capability to check.
      * @returns TRUE if the capability is supported, FALSE otherwise.
      */
-    getStaticCapability(cap: string | null): boolean
+    getStaticCapability(cap: string): boolean
     /**
      * Queries whether the calendar client can perform modifications
      * on the calendar or not. Whether the backend is read only or not
@@ -454,12 +454,12 @@ interface Cal {
      * @param uid Unique identifier of the calendar component to remove.
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    removeObject(uid: string | null): boolean
+    removeObject(uid: string): boolean
 
     // Own virtual methods of ECalendar-1.2.ECalendar.Cal
 
     backendDied(): void
-    backendError(message: string | null): void
+    backendError(message: string): void
     calOpened(status: CalendarStatus): void
     calOpenedEx(error: GLib.Error): void
 
@@ -539,7 +539,7 @@ class Cal extends GObject.Object {
      * @param status A status code.
      * @returns the error message.
      */
-    static getErrorMessage(status: CalendarStatus): string | null
+    static getErrorMessage(status: CalendarStatus): string
     static marshalVOIDENUMENUM(closure: GObject.TClosure, returnValue: any, nParamValues: number, paramValues: any, invocationHint: any, marshalData: any): void
     static marshalVOIDSTRINGUINT(closure: GObject.TClosure, returnValue: any, nParamValues: number, paramValues: any, invocationHint: any, marshalData: any): void
     static marshalVOIDUINTSTRING(closure: GObject.TClosure, returnValue: any, nParamValues: number, paramValues: any, invocationHint: any, marshalData: any): void
@@ -548,7 +548,7 @@ class Cal extends GObject.Object {
      * and returns the matching TZID, or %NULL if none found
      * @param tzid a timezone ID
      */
-    static matchTzid(tzid: string | null): string | null
+    static matchTzid(tzid: string): string
     /**
      * Returns system timezone location string, NULL on an error.
      * Returned pointer should be freed with g_free().
@@ -567,14 +567,14 @@ class Cal extends GObject.Object {
      * @param string A string representing the PRIORITY value.
      * @returns the priority (0-9) or -1 if the priority string is not valid.
      */
-    static utilPriorityFromString(string: string | null): number
+    static utilPriorityFromString(string: string): number
     /**
      * Converts an iCalendar PRIORITY value to a translated string. Any unknown
      * priority value (i.e. not 0-9) will be returned as "" (undefined).
      * @param priority Priority value.
      * @returns a string representing the PRIORITY value. This value is a constant, so it should never be freed.
      */
-    static utilPriorityToString(priority: number): string | null
+    static utilPriorityToString(priority: number): string
 }
 
 module CalClient {
@@ -666,7 +666,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    discardAlarm(uid: string | null, rid: string | null, auid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    discardAlarm(uid: string, rid: string, auid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_discard_alarm().
      * @param result a #GAsyncResult
@@ -681,7 +681,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    discardAlarmSync(uid: string | null, rid: string | null, auid: string | null, cancellable?: Gio.Cancellable | null): boolean
+    discardAlarmSync(uid: string, rid: string, auid: string, cancellable?: Gio.Cancellable | null): boolean
     /**
      * Does a combination of #e_cal_client_get_object_list () and
      * #e_cal_client_recur_generate_instances(). Unlike #e_cal_client_generate_instances_sync (),
@@ -717,7 +717,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getAttachmentUris(uid: string | null, rid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getAttachmentUris(uid: string, rid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_attachment_uris() and
      * sets `attachment_uris` to uris for component's attachments.
@@ -734,7 +734,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getAttachmentUrisSync(uid: string | null, rid: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* attachmentUris */ string[] ]
+    getAttachmentUrisSync(uid: string, rid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* attachmentUris */ string[] ]
     /**
      * Retrives an #icalcomponent from the backend that contains the default
      * values for properties needed. The call is finished
@@ -781,7 +781,7 @@ interface CalClient {
      * operations.
      * @returns The URL where the attachments are serialized in the local filesystem.
      */
-    getLocalAttachmentStore(): string | null
+    getLocalAttachmentStore(): string
     /**
      * Queries a calendar for a calendar component object based on its unique
      * identifier. The call is finished by e_cal_client_get_object_finish()
@@ -795,7 +795,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObject(uid: string | null, rid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObject(uid: string, rid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets a list of objects from the calendar that match the query specified
      * by the `sexp` argument, returning matching objects as a list of #icalcomponent-s.
@@ -805,7 +805,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObjectList(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObjectList(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets a list of objects from the calendar that match the query specified
      * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
@@ -815,7 +815,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObjectListAsComps(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObjectListAsComps(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_object_list_as_comps() and
      * sets `ecalcomps` to a matching list of #ECalComponent-s.
@@ -833,7 +833,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getObjectListAsCompsSync(sexp: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
+    getObjectListAsCompsSync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
     /**
      * Queries a calendar for all calendar components with the given unique
      * ID. This will return any recurring event and all its detached recurrences.
@@ -844,7 +844,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObjectsForUid(uid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObjectsForUid(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_objects_for_uid() and
      * sets `ecalcomps` to a list of #ECalComponent<!-- -->s corresponding to
@@ -863,7 +863,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getObjectsForUidSync(uid: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
+    getObjectsForUidSync(uid: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* ecalcomps */ CalComponent[] ]
     /**
      * Gets the source type of the calendar client.
      * @returns an #ECalClientSourceType value corresponding to the source type of the calendar client.
@@ -877,7 +877,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getTimezone(tzid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getTimezone(tzid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Query `client` with `sexp,` creating an #ECalClientView.
      * The call is finished by e_cal_client_get_view_finish()
@@ -886,7 +886,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getView(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getView(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_view().
      * If successful, then the `view` is set to newly allocated #ECalClientView,
@@ -903,7 +903,7 @@ interface CalClient {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getViewSync(sexp: string | null, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* view */ CalClientView ]
+    getViewSync(sexp: string, cancellable?: Gio.Cancellable | null): [ /* returnType */ boolean, /* view */ CalClientView ]
     /**
      * Finishes previous call of e_cal_client_modify_object().
      * @param result a #GAsyncResult
@@ -1023,7 +1023,7 @@ class CalClient extends EDataServer.Client {
      */
     static new(source: EDataServer.Source, sourceType: CalClientSourceType): CalClient
     _init(config?: CalClient.ConstructorProperties): void
-    static errorCreate(code: CalClientError, customMsg: string | null): GLib.Error
+    static errorCreate(code: CalClientError, customMsg: string): GLib.Error
 
     // Overloads of errorCreate
 
@@ -1033,7 +1033,7 @@ class CalClient extends EDataServer.Client {
      * FIXME: Document me.
      * @param code 
      */
-    static errorToString(code: CalClientError): string | null
+    static errorToString(code: CalClientError): string
 
     // Overloads of errorToString
 
@@ -1042,7 +1042,7 @@ class CalClient extends EDataServer.Client {
      * @param code an #EClientError error code
      * @returns Localized human readable description of the given error code
      */
-    static errorToString(code: EDataServer.ClientError): string | null
+    static errorToString(code: EDataServer.ClientError): string
     /**
      * Frees each element of the `ecalcomps` list and the list itself.
      * Each element is an object of type #ECalComponent.
@@ -1158,7 +1158,7 @@ interface CalClientView {
     // Own virtual methods of ECalendar-1.2.ECalendar.CalClientView
 
     complete(error: GLib.Error): void
-    progress(percent: number, message: string | null): void
+    progress(percent: number, message: string): void
 
     // Own signals of ECalendar-1.2.ECalendar.CalClientView
 
@@ -1318,7 +1318,7 @@ interface CalComponent {
      * a comma-separated list of all categories set in the component.
      * @param categories Return holder for the categories.
      */
-    getCategories(categories: string | null): void
+    getCategories(categories: string): void
     /**
      * Queries the list of categories of a calendar component object.  Each element
      * in the returned categ_list is a string with the corresponding category.
@@ -1401,7 +1401,7 @@ interface CalComponent {
      * Queries the location property of a calendar component object.
      * @param location Return value for the location.
      */
-    getLocation(location: string | null): void
+    getLocation(location: string): void
     /**
      * Get the number of attachments to this calendar component object.
      * @returns the number of attachments.
@@ -1457,12 +1457,12 @@ interface CalComponent {
      * Queries the unique identifier of a calendar component object.
      * @param uid Return value for the UID string.
      */
-    getUid(uid: string | null): void
+    getUid(uid: string): void
     /**
      * Queries the uniform resource locator property of a calendar component object.
      * @param url Return value for the URL.
      */
-    getUrl(url: string | null): void
+    getUrl(url: string): void
     /**
      * Queries the type of a calendar component object.
      * @returns The type of the component, as defined by RFC 2445.
@@ -1544,7 +1544,7 @@ interface CalComponent {
      * function.
      * @param auid UID of the alarm to remove.
      */
-    removeAlarm(auid: string | null): void
+    removeAlarm(auid: string): void
     /**
      * Remove all alarms from the calendar component
      */
@@ -1571,7 +1571,7 @@ interface CalComponent {
      * Sets the list of categories for a calendar component.
      * @param categories Comma-separated list of categories.
      */
-    setCategories(categories: string | null): void
+    setCategories(categories: string): void
     /**
      * Sets the list of categories of a calendar component object.
      * @param categList List of strings, one for each category.
@@ -1662,7 +1662,7 @@ interface CalComponent {
      * Sets the location property of a calendar component object.
      * @param location Location value.
      */
-    setLocation(location: string | null): void
+    setLocation(location: string): void
     /**
      * Clears any existing component data from a calendar component object and
      * creates a new #icalcomponent of the specified type for it.  The only property
@@ -1717,12 +1717,12 @@ interface CalComponent {
      * Sets the unique identifier string of a calendar component object.
      * @param uid Unique identifier.
      */
-    setUid(uid: string | null): void
+    setUid(uid: string): void
     /**
      * Sets the uniform resource locator property of a calendar component object.
      * @param url URL value.
      */
-    setUrl(url: string | null): void
+    setUrl(url: string): void
     /**
      * Strips all error messages from the calendar component. Those error messages are
      * added to the iCalendar string representation whenever an invalid is used for
@@ -1776,7 +1776,7 @@ class CalComponent extends GObject.Object {
      * @param calobj A string representation of an iCalendar component.
      * @returns A calendar component representing the given iCalendar string on success, NULL if there was an error.
      */
-    static newFromString(calobj: string | null): CalComponent
+    static newFromString(calobj: string): CalComponent
     _init(config?: CalComponent.ConstructorProperties): void
     /**
      * Frees a list of #ECalComponentAttendee structures.
@@ -1941,7 +1941,7 @@ interface CalView {
 
     // Own virtual methods of ECalendar-1.2.ECalendar.CalView
 
-    viewComplete(status: CalendarStatus, errorMsg: string | null): void
+    viewComplete(status: CalendarStatus, errorMsg: string): void
     viewDone(status: CalendarStatus): void
     viewProgress(message: string | null, percent: number): void
 
@@ -2041,7 +2041,7 @@ interface CalClass {
     parentClass: GObject.ObjectClass
     calOpened: (ecal: Cal, status: CalendarStatus) => void
     calOpenedEx: (ecal: Cal, error: GLib.Error) => void
-    backendError: (ecal: Cal, message: string | null) => void
+    backendError: (ecal: Cal, message: string) => void
     backendDied: (ecal: Cal) => void
 }
 
@@ -2081,7 +2081,7 @@ interface CalClientViewClass {
     // Own fields of ECalendar-1.2.ECalendar.CalClientViewClass
 
     parentClass: GObject.ObjectClass
-    progress: (view: CalClientView, percent: number, message: string | null) => void
+    progress: (view: CalClientView, percent: number, message: string) => void
     complete: (view: CalClientView, error: GLib.Error) => void
 }
 
@@ -2138,7 +2138,7 @@ interface CalComponentAlarm {
      * Queries the unique identifier of an alarm subcomponent.
      * @returns UID of the alarm.
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Queries an alarm to see if it has attendees associated with it.
      * @returns TRUE if there are attendees in the alarm, FALSE if not.
@@ -2250,14 +2250,14 @@ interface CalComponentAttendee {
 
     // Own fields of ECalendar-1.2.ECalendar.CalComponentAttendee
 
-    value: string | null
-    member: string | null
+    value: string
+    member: string
     rsvp: boolean
-    delto: string | null
-    delfrom: string | null
-    sentby: string | null
-    cn: string | null
-    language: string | null
+    delto: string
+    delfrom: string
+    sentby: string
+    cn: string
+    language: string
 }
 
 class CalComponentAttendee {
@@ -2286,7 +2286,7 @@ interface CalComponentDateTime {
     // Own fields of ECalendar-1.2.ECalendar.CalComponentDateTime
 
     value: any
-    tzid: string | null
+    tzid: string
 }
 
 class CalComponentDateTime {
@@ -2315,10 +2315,10 @@ interface CalComponentOrganizer {
 
     // Own fields of ECalendar-1.2.ECalendar.CalComponentOrganizer
 
-    value: string | null
-    sentby: string | null
-    cn: string | null
-    language: string | null
+    value: string
+    sentby: string
+    cn: string
+    language: string
 }
 
 class CalComponentOrganizer {
@@ -2372,8 +2372,8 @@ interface CalComponentText {
 
     // Own fields of ECalendar-1.2.ECalendar.CalComponentText
 
-    value: string | null
-    altrep: string | null
+    value: string
+    altrep: string
 }
 
 class CalComponentText {
@@ -2400,7 +2400,7 @@ interface CalViewClass {
     parentClass: GObject.ObjectClass
     viewProgress: (view: CalView, message: string | null, percent: number) => void
     viewDone: (view: CalView, status: CalendarStatus) => void
-    viewComplete: (view: CalView, status: CalendarStatus, errorMsg: string | null) => void
+    viewComplete: (view: CalView, status: CalendarStatus, errorMsg: string) => void
 }
 
 abstract class CalViewClass {

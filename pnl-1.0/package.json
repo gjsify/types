@@ -1,6 +1,6 @@
 {
     "name": "@girs/pnl-1.0",
-    "version": "3.25.1-3.2.6",
+    "version": "3.25.1-3.2.7",
     "description": "GJS TypeScript type definitions for Pnl-1.0, generated from library version 3.25.1",
     "type": "module",
     "module": "pnl-1.0.js",

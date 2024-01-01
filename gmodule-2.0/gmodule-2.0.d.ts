@@ -72,12 +72,12 @@ enum ModuleFlags {
  * @param module_name the name of the module
  * @returns the complete path of the module, including the standard library     prefix and suffix. This should be freed when no longer needed
  */
-function module_build_path(directory: string | null, module_name: string | null): string | null
+function module_build_path(directory: string | null, module_name: string): string | null
 /**
  * Gets a string describing the last module error.
  * @returns a string describing the last module error
  */
-function module_error(): string | null
+function module_error(): string
 function module_error_quark(): GLib.Quark
 /**
  * Checks if modules are supported on the current platform.
@@ -95,7 +95,7 @@ function module_supported(): boolean
  * @returns %NULL on success, or a string describing the initialization error
  */
 interface ModuleCheckInit {
-    (module: Module): string | null
+    (module: Module): string
 }
 /**
  * Specifies the type of the module function called when it is unloaded.
@@ -128,14 +128,14 @@ interface Module {
      * If `module` refers to the application itself, "main" is returned.
      * @returns the filename of the module
      */
-    name(): string | null
+    name(): string
     /**
      * Gets a symbol pointer from a module, such as one exported
      * by %G_MODULE_EXPORT. Note that a valid symbol can be %NULL.
      * @param symbol_name the name of the symbol to find
      * @returns %TRUE on success
      */
-    symbol(symbol_name: string | null): [ /* returnType */ boolean, /* symbol */ any | null ]
+    symbol(symbol_name: string): [ /* returnType */ boolean, /* symbol */ any | null ]
 }
 
 /**
@@ -170,12 +170,12 @@ class Module {
      * @param module_name the name of the module
      * @returns the complete path of the module, including the standard library     prefix and suffix. This should be freed when no longer needed
      */
-    static build_path(directory: string | null, module_name: string | null): string | null
+    static build_path(directory: string | null, module_name: string): string | null
     /**
      * Gets a string describing the last module error.
      * @returns a string describing the last module error
      */
-    static error(): string | null
+    static error(): string
     static error_quark(): GLib.Quark
     /**
      * Checks if modules are supported on the current platform.

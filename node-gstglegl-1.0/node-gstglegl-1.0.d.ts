@@ -22,12 +22,12 @@ import type GstGL from '@girs/node-gstgl-1.0';
 
 export namespace GstGLEGL {
 
-const GL_DISPLAY_EGL_NAME: string | null
+const GL_DISPLAY_EGL_NAME: string
 /**
  * The name of the GL Memory EGL allocator
  */
-const GL_MEMORY_EGL_ALLOCATOR_NAME: string | null
-function eglGetErrorString(err: number): string | null
+const GL_MEMORY_EGL_ALLOCATOR_NAME: string
+function eglGetErrorString(err: number): string
 /**
  * Creates an EGL image that imports the dmabuf FD. The dmabuf data
  * is passed as RGBA data. Shaders later take this "RGBA" data and

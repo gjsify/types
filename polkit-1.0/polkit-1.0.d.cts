@@ -108,16 +108,16 @@ export function error_quark(): GLib.Quark
  * @param str A string obtained from polkit_identity_to_string().
  * @returns A #PolkitIdentity or %NULL if @error is set. Free with g_object_unref().
  */
-export function identity_from_string(str: string | null): Identity | null
-export function implicit_authorization_from_string(string: string | null, out_implicit_authorization: ImplicitAuthorization): boolean
-export function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization): string | null
+export function identity_from_string(str: string): Identity | null
+export function implicit_authorization_from_string(string: string, out_implicit_authorization: ImplicitAuthorization): boolean
+export function implicit_authorization_to_string(implicit_authorization: ImplicitAuthorization): string
 /**
  * Creates an object from `str` that implements the #PolkitSubject
  * interface.
  * @param str A string obtained from polkit_subject_to_string().
  * @returns A #PolkitSubject or %NULL if @error is set. Free with g_object_unref().
  */
-export function subject_from_string(str: string | null): Subject
+export function subject_from_string(str: string): Subject
 export module Identity {
 
     // Constructor properties interface
@@ -206,7 +206,7 @@ export class Identity extends GObject.Object {
      * @param str A string obtained from polkit_identity_to_string().
      * @returns A #PolkitIdentity or %NULL if @error is set. Free with g_object_unref().
      */
-    static from_string(str: string | null): Identity | null
+    static from_string(str: string): Identity | null
 }
 
 export module Subject {
@@ -360,7 +360,7 @@ export class Subject extends GObject.Object {
      * @param str A string obtained from polkit_subject_to_string().
      * @returns A #PolkitSubject or %NULL if @error is set. Free with g_object_unref().
      */
-    static from_string(str: string | null): Subject
+    static from_string(str: string): Subject
 }
 
 export module ActionDescription {
@@ -380,13 +380,13 @@ export interface ActionDescription {
      * Gets the action id for `action_description`.
      * @returns A string owned by @action_description. Do not free.
      */
-    get_action_id(): string | null
+    get_action_id(): string
     /**
      * Get the value of the annotation with `key`.
      * @param key An annotation key.
      * @returns %NULL if there is no annoation with @key, otherwise the annotation value owned by @action_description. Do not free.
      */
-    get_annotation(key: string | null): string | null
+    get_annotation(key: string): string | null
     /**
      * Gets the keys of annotations defined in `action_description`.
      * @returns The annotation keys owned by @action_description. Do not free.
@@ -396,12 +396,12 @@ export interface ActionDescription {
      * Gets the description used for `action_description`.
      * @returns A string owned by @action_description. Do not free.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the icon name for `action_description,` if any.
      * @returns A string owned by @action_description. Do not free.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the implicit authorization for `action_description` used for
      * subjects in active sessions on a local console.
@@ -424,17 +424,17 @@ export interface ActionDescription {
      * Gets the message used for `action_description`.
      * @returns A string owned by @action_description. Do not free.
      */
-    get_message(): string | null
+    get_message(): string
     /**
      * Gets the vendor name for `action_description,` if any.
      * @returns A string owned by @action_description. Do not free.
      */
-    get_vendor_name(): string | null
+    get_vendor_name(): string
     /**
      * Gets the vendor URL for `action_description,` if any.
      * @returns A string owned by @action_description. Do not free.
      */
-    get_vendor_url(): string | null
+    get_vendor_url(): string
 
     // Class property signals of Polkit-1.0.Polkit.ActionDescription
 
@@ -529,7 +529,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    authentication_agent_response(cookie: string | null, identity: Identity, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    authentication_agent_response(cookie: string, identity: Identity, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes providing response from an authentication agent.
      * @param res A #GAsyncResult obtained from the callback.
@@ -549,7 +549,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if @authority acknowledged the call, %FALSE if @error is set.
      */
-    authentication_agent_response_sync(cookie: string | null, identity: Identity, cancellable: Gio.Cancellable | null): boolean
+    authentication_agent_response_sync(cookie: string, identity: Identity, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously checks if `subject` is authorized to perform the action represented
      * by `action_id`.
@@ -582,7 +582,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    check_authorization(subject: Subject, action_id: string | null, details: Details | null, flags: CheckAuthorizationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    check_authorization(subject: Subject, action_id: string, details: Details | null, flags: CheckAuthorizationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes checking if a subject is authorized for an action.
      * @param res A #GAsyncResult obtained from the callback.
@@ -618,7 +618,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #PolkitAuthorizationResult or %NULL if @error is set. Free with g_object_unref().
      */
-    check_authorization_sync(subject: Subject, action_id: string | null, details: Details | null, flags: CheckAuthorizationFlags, cancellable: Gio.Cancellable | null): AuthorizationResult
+    check_authorization_sync(subject: Subject, action_id: string, details: Details | null, flags: CheckAuthorizationFlags, cancellable: Gio.Cancellable | null): AuthorizationResult
     /**
      * Asynchronously retrieves all registered actions.
      * 
@@ -685,12 +685,12 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * Gets the name of the authority backend.
      * @returns The name of the backend.
      */
-    get_backend_name(): string | null
+    get_backend_name(): string
     /**
      * Gets the version of the authority backend.
      * @returns The version string for the backend.
      */
-    get_backend_version(): string | null
+    get_backend_version(): string
     /**
      * The unique name on the system message bus of the owner of the name
      * <literal>org.freedesktop.PolicyKit1</literal> or %NULL if no-one
@@ -718,7 +718,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    register_authentication_agent(subject: Subject, locale: string | null, object_path: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    register_authentication_agent(subject: Subject, locale: string, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes registering an authentication agent.
      * @param res A #GAsyncResult obtained from the callback.
@@ -742,7 +742,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the authentication agent was successfully registered, %FALSE if @error is set.
      */
-    register_authentication_agent_sync(subject: Subject, locale: string | null, object_path: string | null, cancellable: Gio.Cancellable | null): boolean
+    register_authentication_agent_sync(subject: Subject, locale: string, object_path: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously registers an authentication agent.
      * 
@@ -763,7 +763,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    register_authentication_agent_with_options(subject: Subject, locale: string | null, object_path: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    register_authentication_agent_with_options(subject: Subject, locale: string, object_path: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes registering an authentication agent.
      * @param res A #GAsyncResult obtained from the callback.
@@ -788,7 +788,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the authentication agent was successfully registered, %FALSE if @error is set.
      */
-    register_authentication_agent_with_options_sync(subject: Subject, locale: string | null, object_path: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
+    register_authentication_agent_with_options_sync(subject: Subject, locale: string, object_path: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously revoke a temporary authorization.
      * 
@@ -802,7 +802,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    revoke_temporary_authorization_by_id(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    revoke_temporary_authorization_by_id(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes revoking a temporary authorization by id.
      * @param res A #GAsyncResult obtained from the callback.
@@ -819,7 +819,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the temporary authorization was revoked, %FALSE if error is set.
      */
-    revoke_temporary_authorization_by_id_sync(id: string | null, cancellable: Gio.Cancellable | null): boolean
+    revoke_temporary_authorization_by_id_sync(id: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously revokes all temporary authorizations for `subject`.
      * 
@@ -865,7 +865,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    unregister_authentication_agent(subject: Subject, object_path: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    unregister_authentication_agent(subject: Subject, object_path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes unregistering an authentication agent.
      * @param res A #GAsyncResult obtained from the callback.
@@ -882,7 +882,7 @@ export interface Authority extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the authentication agent was successfully unregistered, %FALSE if @error is set.
      */
-    unregister_authentication_agent_sync(subject: Subject, object_path: string | null, cancellable: Gio.Cancellable | null): boolean
+    unregister_authentication_agent_sync(subject: Subject, object_path: string, cancellable: Gio.Cancellable | null): boolean
 
     // Own signals of Polkit-1.0.Polkit.Authority
 
@@ -1110,13 +1110,13 @@ export interface Details {
      * @param key A key.
      * @param value A value.
      */
-    insert(key: string | null, value: string | null): void
+    insert(key: string, value: string | null): void
     /**
      * Gets the value for `key` on `details`.
      * @param key A key.
      * @returns %NULL if there is no value for @key, otherwise a string owned by @details.
      */
-    lookup(key: string | null): string | null
+    lookup(key: string): string | null
 
     // Class property signals of Polkit-1.0.Polkit.Details
 
@@ -1204,7 +1204,7 @@ export interface Permission extends Gio.AsyncInitable, Gio.Initable {
      * Gets the PolicyKit action identifier used for `permission`.
      * @returns A string owned by @permission. Do not free.
      */
-    get_action_id(): string | null
+    get_action_id(): string
     /**
      * Gets the subject used for `permission`.
      * @returns An object owned by @permission. Do not free.
@@ -1269,7 +1269,7 @@ export class Permission extends Gio.Permission {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GPermission or %NULL if @error is set.
      */
-    static new_sync(action_id: string | null, subject: Subject | null, cancellable: Gio.Cancellable | null): Permission
+    static new_sync(action_id: string, subject: Subject | null, cancellable: Gio.Cancellable | null): Permission
     _init(config?: Permission.ConstructorProperties): void
     /**
      * Creates a #GPermission instance for the PolicyKit action
@@ -1286,7 +1286,7 @@ export class Permission extends Gio.Permission {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(action_id: string | null, subject: Subject | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Permission> | null): void
+    static new(action_id: string, subject: Subject | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Permission> | null): void
 }
 
 export module SystemBusName {
@@ -1320,7 +1320,7 @@ export interface SystemBusName extends Subject {
      * Gets the unique system bus name for `system_bus_name`.
      * @returns The unique system bus name for @system_bus_name. Do not free, this string is owned by @system_bus_name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Synchronously gets a #PolkitUnixProcess object for `system_bus_name`
      * - the calling thread is blocked until a reply is received.
@@ -1339,7 +1339,7 @@ export interface SystemBusName extends Subject {
      * Sets the unique system bus name for `system_bus_name`.
      * @param name A unique system bus name.
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of Polkit-1.0.Polkit.SystemBusName
 
@@ -1372,7 +1372,7 @@ export class SystemBusName extends GObject.Object {
      * @param name A unique system bus name.
      * @returns A #PolkitSystemBusName. Free with g_object_unref().
      */
-    static new(name: string | null): Subject
+    static new(name: string): Subject
 }
 
 export module TemporaryAuthorization {
@@ -1392,12 +1392,12 @@ export interface TemporaryAuthorization {
      * Gets the action that `authorization` is for.
      * @returns A string owned by @authorization. Do not free.
      */
-    get_action_id(): string | null
+    get_action_id(): string
     /**
      * Gets the opaque identifier for `authorization`.
      * @returns A string owned by @authorization. Do not free.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the subject that `authorization` is for.
      * @returns A #PolkitSubject, free with g_object_unref().
@@ -1521,7 +1521,7 @@ export class UnixGroup extends GObject.Object {
      * @param name A UNIX group name.
      * @returns (allow-none): A #PolkitUnixGroup object or %NULL if @error is set.
      */
-    static new_for_name(name: string | null): Identity
+    static new_for_name(name: string): Identity
 }
 
 export module UnixNetgroup {
@@ -1555,12 +1555,12 @@ export interface UnixNetgroup extends Identity {
      * Gets the netgroup name for `group`.
      * @returns A netgroup name string.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets `name` for `group`.
      * @param name A netgroup name.
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of Polkit-1.0.Polkit.UnixNetgroup
 
@@ -1593,7 +1593,7 @@ export class UnixNetgroup extends GObject.Object {
      * @param name A netgroup name.
      * @returns A #PolkitUnixNetgroup object. Free with g_object_unref().
      */
-    static new(name: string | null): Identity
+    static new(name: string): Identity
 }
 
 export module UnixProcess {
@@ -1818,12 +1818,12 @@ export interface UnixSession extends Gio.AsyncInitable, Gio.Initable, Subject {
      * Gets the session id for `session`.
      * @returns The session id for @session. Do not free this string, it is owned by @session.
      */
-    get_session_id(): string | null
+    get_session_id(): string
     /**
      * Sets the session id for `session` to `session_id`.
      * @param session_id The session id.
      */
-    set_session_id(session_id: string | null): void
+    set_session_id(session_id: string): void
 
     // Class property signals of Polkit-1.0.Polkit.UnixSession
 
@@ -1861,7 +1861,7 @@ export class UnixSession extends GObject.Object {
      * @param session_id The session id.
      * @returns A #PolkitUnixSession. Free with g_object_unref().
      */
-    static new(session_id: string | null): Subject
+    static new(session_id: string): Subject
     /**
      * Asynchronously creates a new #PolkitUnixSession object for the
      * process with process id `pid`.
@@ -1980,7 +1980,7 @@ export class UnixUser extends GObject.Object {
      * @param name A UNIX user name.
      * @returns A #PolkitUnixUser object or %NULL if @error is set.
      */
-    static new_for_name(name: string | null): Identity | null
+    static new_for_name(name: string): Identity | null
 }
 
 export interface ActionDescriptionClass {

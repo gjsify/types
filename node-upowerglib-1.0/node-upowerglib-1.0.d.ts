@@ -304,7 +304,7 @@ interface ClientGlue {
      * @param invocation A #GDBusMethodInvocation.
      * @param devices Parameter to return.
      */
-    completeEnumerateDevices(invocation: Gio.DBusMethodInvocation, devices: string | null): void
+    completeEnumerateDevices(invocation: Gio.DBusMethodInvocation, devices: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetCriticalAction">GetCriticalAction()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -312,7 +312,7 @@ interface ClientGlue {
      * @param invocation A #GDBusMethodInvocation.
      * @param action Parameter to return.
      */
-    completeGetCriticalAction(invocation: Gio.DBusMethodInvocation, action: string | null): void
+    completeGetCriticalAction(invocation: Gio.DBusMethodInvocation, action: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UPower.GetDisplayDevice">GetDisplayDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -320,22 +320,22 @@ interface ClientGlue {
      * @param invocation A #GDBusMethodInvocation.
      * @param device Parameter to return.
      */
-    completeGetDisplayDevice(invocation: Gio.DBusMethodInvocation, device: string | null): void
+    completeGetDisplayDevice(invocation: Gio.DBusMethodInvocation, device: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceAdded">"DeviceAdded"</link> D-Bus signal.
      * @param argDevice Argument to pass with the signal.
      */
-    emitDeviceAdded(argDevice: string | null): void
+    emitDeviceAdded(argDevice: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-UPower.DeviceRemoved">"DeviceRemoved"</link> D-Bus signal.
      * @param argDevice Argument to pass with the signal.
      */
-    emitDeviceRemoved(argDevice: string | null): void
+    emitDeviceRemoved(argDevice: string): void
 
     // Own virtual methods of UPowerGlib-1.0.UPowerGlib.ClientGlue
 
-    deviceAdded(argDevice: string | null): void
-    deviceRemoved(argDevice: string | null): void
+    deviceAdded(argDevice: string): void
+    deviceRemoved(argDevice: string): void
     handleEnumerateDevices(invocation: Gio.DBusMethodInvocation): boolean
     handleGetCriticalAction(invocation: Gio.DBusMethodInvocation): boolean
     handleGetDisplayDevice(invocation: Gio.DBusMethodInvocation): boolean
@@ -824,7 +824,7 @@ interface DeviceGlue {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callGetHistory(argType: string | null, argTimespan: number, argResolution: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callGetHistory(argType: string, argTimespan: number, argResolution: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_history().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_history().
@@ -841,7 +841,7 @@ interface DeviceGlue {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callGetHistorySync(argType: string | null, argTimespan: number, argResolution: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outData */ GLib.Variant ]
+    callGetHistorySync(argType: string, argTimespan: number, argResolution: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outData */ GLib.Variant ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.GetStatistics">GetStatistics()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -852,7 +852,7 @@ interface DeviceGlue {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callGetStatistics(argType: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callGetStatistics(argType: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with up_device_glue_call_get_statistics().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to up_device_glue_call_get_statistics().
@@ -867,7 +867,7 @@ interface DeviceGlue {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callGetStatisticsSync(argType: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outData */ GLib.Variant ]
+    callGetStatisticsSync(argType: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outData */ GLib.Variant ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UPower-Device.Refresh">Refresh()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -918,8 +918,8 @@ interface DeviceGlue {
 
     // Own virtual methods of UPowerGlib-1.0.UPowerGlib.DeviceGlue
 
-    handleGetHistory(invocation: Gio.DBusMethodInvocation, argType: string | null, argTimespan: number, argResolution: number): boolean
-    handleGetStatistics(invocation: Gio.DBusMethodInvocation, argType: string | null): boolean
+    handleGetHistory(invocation: Gio.DBusMethodInvocation, argType: string, argTimespan: number, argResolution: number): boolean
+    handleGetStatistics(invocation: Gio.DBusMethodInvocation, argType: string): boolean
     handleRefresh(invocation: Gio.DBusMethodInvocation): boolean
 
     // Own signals of UPowerGlib-1.0.UPowerGlib.DeviceGlue
@@ -1405,7 +1405,7 @@ interface Client {
      * Get UPower daemon version.
      * @returns string containing the daemon version, e.g. 008
      */
-    getDaemonVersion(): string | null
+    getDaemonVersion(): string
     /**
      * Get a copy of the device objects.
      * @returns an array of #UpDevice objects, free with g_ptr_array_unref()
@@ -1435,7 +1435,7 @@ interface Client {
     // Own virtual methods of UPowerGlib-1.0.UPowerGlib.Client
 
     deviceAdded(device: Device): void
-    deviceRemoved(objectPath: string | null): void
+    deviceRemoved(objectPath: string): void
 
     // Own signals of UPowerGlib-1.0.UPowerGlib.Client
 
@@ -1665,7 +1665,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ClientGlueProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ClientGlueProxy
 
     // Overloads of newForBusSync
 
@@ -1683,7 +1683,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -1698,7 +1698,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ClientGlueProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ClientGlueProxy
 
     // Overloads of newSync
 
@@ -1735,7 +1735,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ClientGlueProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower.top_of_page">org.freedesktop.UPower</link>. See g_dbus_proxy_new() for more details.
@@ -1751,7 +1751,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -1792,7 +1792,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like up_client_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -1807,7 +1807,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -1824,7 +1824,7 @@ class ClientGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module ClientGlueSkeleton {
@@ -2202,19 +2202,19 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns an array of #UpHistoryItem's, with the most               recent one being first; %NULL if @error is set or @device is               invalid
      */
-    getHistorySync(type: string | null, timespec: number, resolution: number, cancellable: Gio.Cancellable | null): HistoryItem[]
+    getHistorySync(type: string, timespec: number, resolution: number, cancellable: Gio.Cancellable | null): HistoryItem[]
     /**
      * Gets the object path for the device.
      * @returns the object path, or %NULL
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Gets the device current statistics.
      * @param type the type of statistics.
      * @param cancellable a #GCancellable or %NULL
      * @returns an array of #UpStatsItem's, else #NULL and @error is used
      */
-    getStatisticsSync(type: string | null, cancellable: Gio.Cancellable | null): StatsItem[]
+    getStatisticsSync(type: string, cancellable: Gio.Cancellable | null): StatsItem[]
     /**
      * Refreshes properties on the device.
      * This function is normally not required.
@@ -2228,7 +2228,7 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns #TRUE for success, else #FALSE and @error is used
      */
-    setObjectPathSync(objectPath: string | null, cancellable: Gio.Cancellable | null): boolean
+    setObjectPathSync(objectPath: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Converts the device to a string description.
      * @returns text representation of #UpDevice
@@ -2417,49 +2417,49 @@ class Device extends GObject.Object {
      * @param type 
      * @returns enumerated value
      */
-    static kindFromString(type: string | null): DeviceKind
+    static kindFromString(type: string): DeviceKind
     /**
      * Converts a #UpDeviceKind to a string.
      * @param typeEnum 
      * @returns identifier string
      */
-    static kindToString(typeEnum: DeviceKind): string | null
+    static kindToString(typeEnum: DeviceKind): string
     /**
      * Converts a string to a #UpDeviceLevel.
      * @param level 
      * @returns enumerated value
      */
-    static levelFromString(level: string | null): DeviceLevel
+    static levelFromString(level: string): DeviceLevel
     /**
      * Converts a #UpDeviceLevel to a string.
      * @param levelEnum 
      * @returns identifier string
      */
-    static levelToString(levelEnum: DeviceLevel): string | null
+    static levelToString(levelEnum: DeviceLevel): string
     /**
      * Converts a string to a #UpDeviceState.
      * @param state 
      * @returns enumerated value
      */
-    static stateFromString(state: string | null): DeviceState
+    static stateFromString(state: string): DeviceState
     /**
      * Converts a #UpDeviceState to a string.
      * @param stateEnum 
      * @returns identifier string
      */
-    static stateToString(stateEnum: DeviceState): string | null
+    static stateToString(stateEnum: DeviceState): string
     /**
      * Converts a string to a #UpDeviceTechnology.
      * @param technology 
      * @returns enumerated value
      */
-    static technologyFromString(technology: string | null): DeviceTechnology
+    static technologyFromString(technology: string): DeviceTechnology
     /**
      * Converts a #UpDeviceTechnology to a string.
      * @param technologyEnum 
      * @returns identifier string
      */
-    static technologyToString(technologyEnum: DeviceTechnology): string | null
+    static technologyToString(technologyEnum: DeviceTechnology): string
 }
 
 module DeviceGlueProxy {
@@ -2738,7 +2738,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DeviceGlueProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): DeviceGlueProxy
 
     // Overloads of newForBusSync
 
@@ -2756,7 +2756,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -2771,7 +2771,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DeviceGlueProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): DeviceGlueProxy
 
     // Overloads of newSync
 
@@ -2808,7 +2808,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: DeviceGlueProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Device.top_of_page">org.freedesktop.UPower.Device</link>. See g_dbus_proxy_new() for more details.
@@ -2824,7 +2824,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -2865,7 +2865,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like up_device_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -2880,7 +2880,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -2897,7 +2897,7 @@ class DeviceGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module DeviceGlueSkeleton {
@@ -3177,7 +3177,7 @@ interface HistoryItem {
      * Converts the history item to a string representation.
      * @param text 
      */
-    setFromString(text: string | null): boolean
+    setFromString(text: string): boolean
     /**
      * Sets the item state.
      * @param state the new value
@@ -3374,12 +3374,12 @@ interface WakeupItem {
      * Gets the item cmdline.
      * @returns the value
      */
-    getCmdline(): string | null
+    getCmdline(): string
     /**
      * Gets the item details.
      * @returns the value
      */
-    getDetails(): string | null
+    getDetails(): string
     /**
      * Gets the item id.
      * @returns the value
@@ -3404,12 +3404,12 @@ interface WakeupItem {
      * Sets the item cmdline.
      * @param cmdline the new value
      */
-    setCmdline(cmdline: string | null): void
+    setCmdline(cmdline: string): void
     /**
      * Sets the item details.
      * @param details the new value
      */
-    setDetails(details: string | null): void
+    setDetails(details: string): void
     /**
      * Sets the item id.
      * @param id the new value
@@ -3751,7 +3751,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): WakeupsGlueProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): WakeupsGlueProxy
 
     // Overloads of newForBusSync
 
@@ -3769,7 +3769,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -3784,7 +3784,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): WakeupsGlueProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): WakeupsGlueProxy
 
     // Overloads of newSync
 
@@ -3821,7 +3821,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: WakeupsGlueProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UPower-Wakeups.top_of_page">org.freedesktop.UPower.Wakeups</link>. See g_dbus_proxy_new() for more details.
@@ -3837,7 +3837,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -3878,7 +3878,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like up_wakeups_glue_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -3893,7 +3893,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -3910,7 +3910,7 @@ class WakeupsGlueProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module WakeupsGlueSkeleton {
@@ -4014,7 +4014,7 @@ interface ClientClass {
 
     parentClass: GObject.ObjectClass
     deviceAdded: (client: Client, device: Device) => void
-    deviceRemoved: (client: Client, objectPath: string | null) => void
+    deviceRemoved: (client: Client, objectPath: string) => void
 }
 
 abstract class ClientClass {
@@ -4036,12 +4036,12 @@ interface ClientGlueIface {
     handleEnumerateDevices: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
     handleGetCriticalAction: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
     handleGetDisplayDevice: (object: ClientGlue, invocation: Gio.DBusMethodInvocation) => boolean
-    getDaemonVersion: (object: ClientGlue) => string | null
+    getDaemonVersion: (object: ClientGlue) => string
     getLidIsClosed: (object: ClientGlue) => boolean
     getLidIsPresent: (object: ClientGlue) => boolean
     getOnBattery: (object: ClientGlue) => boolean
-    deviceAdded: (object: ClientGlue, argDevice: string | null) => void
-    deviceRemoved: (object: ClientGlue, argDevice: string | null) => void
+    deviceAdded: (object: ClientGlue, argDevice: string) => void
+    deviceRemoved: (object: ClientGlue, argDevice: string) => void
 }
 
 /**
@@ -4156,8 +4156,8 @@ interface DeviceGlueIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleGetHistory: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, argType: string | null, argTimespan: number, argResolution: number) => boolean
-    handleGetStatistics: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, argType: string | null) => boolean
+    handleGetHistory: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, argType: string, argTimespan: number, argResolution: number) => boolean
+    handleGetStatistics: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation, argType: string) => boolean
     handleRefresh: (object: DeviceGlue, invocation: Gio.DBusMethodInvocation) => boolean
     getCapacity: (object: DeviceGlue) => number
     getEnergy: (object: DeviceGlue) => number
@@ -4167,16 +4167,16 @@ interface DeviceGlueIface {
     getEnergyRate: (object: DeviceGlue) => number
     getHasHistory: (object: DeviceGlue) => boolean
     getHasStatistics: (object: DeviceGlue) => boolean
-    getIconName: (object: DeviceGlue) => string | null
+    getIconName: (object: DeviceGlue) => string
     getIsPresent: (object: DeviceGlue) => boolean
     getIsRechargeable: (object: DeviceGlue) => boolean
     getLuminosity: (object: DeviceGlue) => number
-    getModel: (object: DeviceGlue) => string | null
-    getNativePath: (object: DeviceGlue) => string | null
+    getModel: (object: DeviceGlue) => string
+    getNativePath: (object: DeviceGlue) => string
     getOnline: (object: DeviceGlue) => boolean
     getPercentage: (object: DeviceGlue) => number
     getPowerSupply: (object: DeviceGlue) => boolean
-    getSerial: (object: DeviceGlue) => string | null
+    getSerial: (object: DeviceGlue) => string
     getState: (object: DeviceGlue) => number
     getTechnology: (object: DeviceGlue) => number
     getTemperature: (object: DeviceGlue) => number
@@ -4184,7 +4184,7 @@ interface DeviceGlueIface {
     getTimeToFull: (object: DeviceGlue) => number
     getType: (object: DeviceGlue) => number
     getUpdateTime: (object: DeviceGlue) => number
-    getVendor: (object: DeviceGlue) => string | null
+    getVendor: (object: DeviceGlue) => string
     getVoltage: (object: DeviceGlue) => number
     getWarningLevel: (object: DeviceGlue) => number
 }

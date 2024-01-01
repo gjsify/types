@@ -78,7 +78,7 @@ export function busGet(busType: Gio.BusType): Future
  * @param timeoutMsec 
  * @returns a #DexFuture that resolves to a #GVariant   or rejects with error.
  */
-export function dbusConnectionCall(connection: Gio.DBusConnection, busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number): Future
+export function dbusConnectionCall(connection: Gio.DBusConnection, busName: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number): Future
 /**
  * Wrapper for g_dbus_connection_call_with_unix_fd_list().
  * @param connection 
@@ -93,7 +93,7 @@ export function dbusConnectionCall(connection: Gio.DBusConnection, busName: stri
  * @param fdList a #GUnixFDList
  * @returns a #DexFutureSet that resolves to a #GVariant.   The #DexFuture containing the resulting #GUnixFDList can be retrieved   with dex_future_set_get_future_at() with an index of 1.
  */
-export function dbusConnectionCallWithUnixFdList(connection: Gio.DBusConnection, busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number, fdList: Gio.UnixFDList | null): Future
+export function dbusConnectionCallWithUnixFdList(connection: Gio.DBusConnection, busName: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number, fdList: Gio.UnixFDList | null): Future
 /**
  * Wrapper for g_dbus_connection_send_message_with_reply().
  * @param connection a #GDBusConnection
@@ -114,7 +114,7 @@ export function errorQuark(): GLib.Quark
  * @returns a #DexFuture
  */
 export function fileCopy(source: Gio.File, destination: Gio.File, flags: Gio.FileCopyFlags, ioPriority: number): Future
-export function fileEnumerateChildren(file: Gio.File, attributes: string | null, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
+export function fileEnumerateChildren(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
 export function fileEnumeratorNextFiles(fileEnumerator: Gio.FileEnumerator, numFiles: number, ioPriority: number): Future
 export function fileLoadContentsBytes(file: Gio.File): Future
 /**
@@ -125,7 +125,7 @@ export function fileLoadContentsBytes(file: Gio.File): Future
  * @returns a #DexFuture
  */
 export function fileMakeDirectory(file: Gio.File, ioPriority: number): Future
-export function fileQueryInfo(file: Gio.File, attributes: string | null, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
+export function fileQueryInfo(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
 /**
  * Asynchronously opens a file for reading.
  * @param file a #GFile
@@ -133,7 +133,7 @@ export function fileQueryInfo(file: Gio.File, attributes: string | null, flags: 
  * @returns a #DexFuture
  */
 export function fileRead(file: Gio.File, ioPriority: number): Future
-export function fileReplace(file: Gio.File, etag: string | null, makeBackup: boolean, flags: Gio.FileCreateFlags, ioPriority: number): Future
+export function fileReplace(file: Gio.File, etag: string, makeBackup: boolean, flags: Gio.FileCreateFlags, ioPriority: number): Future
 export function getMinStackSize(): number
 export function getPageSize(): number
 export function init(): void
@@ -146,7 +146,7 @@ export function outputStreamClose(self: Gio.OutputStream, ioPriority: number): F
 export function outputStreamSplice(output: Gio.OutputStream, input: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, ioPriority: number): Future
 export function outputStreamWrite(self: Gio.OutputStream, buffer: any | null, count: number, ioPriority: number): Future
 export function outputStreamWriteBytes(self: Gio.OutputStream, bytes: any, ioPriority: number): Future
-export function resolverLookupByName(resolver: Gio.Resolver, address: string | null): Future
+export function resolverLookupByName(resolver: Gio.Resolver, address: string): Future
 export function socketClientConnect(socketClient: Gio.SocketClient, socketConnectable: Gio.SocketConnectable): Future
 export function socketListenerAccept(listener: Gio.SocketListener): Future
 /**
@@ -311,14 +311,14 @@ export interface AsyncResult extends Gio.AsyncResult {
      * @returns a #DexFuture or %NULL
      */
     dupFuture(): Future | null
-    getName(): string | null
+    getName(): string
     propagateBoolean(): boolean
     propagateDouble(): number
     propagateInt(): number
     propagatePointer(): any | null
-    setName(name: string | null): void
+    setName(name: string): void
     setPriority(priority: number): void
-    setStaticName(name: string | null): void
+    setStaticName(name: string): void
 
     // Class property signals of Dex-1.Dex.AsyncResult
 
@@ -633,7 +633,7 @@ export interface Future {
      * be no observer interested in the futures completion or rejection.
      */
     disown(): void
-    getName(): string | null
+    getName(): string
     getStatus(): FutureStatus
     getValue(): any
 }
@@ -796,7 +796,7 @@ export class Future extends Object {
      * @param string the resolved value for the future
      * @returns a resolved #DexFuture
      */
-    static newForString(string: string | null): Future
+    static newForString(string: string): Future
     /**
      * Creates a new #DexFuture and resolves it with `v_uint`.
      * @constructor 

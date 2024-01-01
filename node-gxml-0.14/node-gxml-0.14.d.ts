@@ -213,7 +213,7 @@ interface Attribute extends GObject.Object, Node {
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getPrefix(): string | null
 
     // Class property signals of GXml-0.14.GXml.Attribute
@@ -316,12 +316,12 @@ interface Comment extends GObject.Object, Node {
     // Owm methods of GXml-0.14.GXml.Comment
 
     // Has conflict: getStr(): string | null
-    // Has conflict: setStr(value: string | null): void
+    // Has conflict: setStr(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.Comment
 
     getStr(): string | null
-    setStr(value: string | null): void
+    setStr(value: string): void
 
     // Class property signals of GXml-0.14.GXml.Comment
 
@@ -514,12 +514,12 @@ interface Character extends GObject.Object, Node {
     // Owm methods of GXml-0.14.GXml.Character
 
     // Has conflict: getStr(): string | null
-    // Has conflict: setStr(value: string | null): void
+    // Has conflict: setStr(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.Character
 
     getStr(): string | null
-    setStr(value: string | null): void
+    setStr(value: string): void
 
     // Class property signals of GXml-0.14.GXml.Character
 
@@ -624,11 +624,11 @@ interface Document extends GObject.Object, Node {
 
     // Owm methods of GXml-0.14.GXml.Document
 
-    // Has conflict: createElement(name: string | null): Node
-    // Has conflict: createText(text: string | null): Node
-    // Has conflict: createComment(text: string | null): Node
-    // Has conflict: createCdata(text: string | null): Node
-    // Has conflict: createPi(target: string | null, data: string | null): Node
+    // Has conflict: createElement(name: string): Node
+    // Has conflict: createText(text: string): Node
+    // Has conflict: createComment(text: string): Node
+    // Has conflict: createCdata(text: string): Node
+    // Has conflict: createPi(target: string, data: string): Node
     // Has conflict: save(cancellable?: Gio.Cancellable | null): boolean
     // Has conflict: saveAs(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     // Has conflict: getIndent(): boolean
@@ -645,11 +645,11 @@ interface Document extends GObject.Object, Node {
 
     // Own virtual methods of GXml-0.14.GXml.Document
 
-    createElement(name: string | null): Node
-    createText(text: string | null): Node
-    createComment(text: string | null): Node
-    createCdata(text: string | null): Node
-    createPi(target: string | null, data: string | null): Node
+    createElement(name: string): Node
+    createText(text: string): Node
+    createComment(text: string): Node
+    createCdata(text: string): Node
+    createPi(target: string, data: string): Node
     save(cancellable?: Gio.Cancellable | null): boolean
     saveAs(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     getIndent(): boolean
@@ -760,7 +760,7 @@ class Document {
     constructor(config?: Document.ConstructorProperties) 
     _init(config?: Document.ConstructorProperties): void
     static newDefault(): Document
-    static newDefaultForPath(path: string | null): Document
+    static newDefaultForPath(path: string): Document
     static newDefaultForFile(f: Gio.File): Document
 }
 
@@ -870,28 +870,28 @@ interface Element extends GObject.Object, Node {
     // Owm methods of GXml-0.14.GXml.Element
 
     // Has conflict: normalize(): void
-    // Has conflict: setAttr(name: string | null, value: string | null): void
-    // Has conflict: getAttr(name: string | null): Node | null
-    // Has conflict: removeAttr(name: string | null): void
-    // Has conflict: removeNsAttr(name: string | null, uri: string | null): void
-    // Has conflict: setNsAttr(ns: string | null, name: string | null, value: string | null): void
-    // Has conflict: getNsAttr(name: string | null, uri: string | null): Node | null
+    // Has conflict: setAttr(name: string, value: string): void
+    // Has conflict: getAttr(name: string): Node | null
+    // Has conflict: removeAttr(name: string): void
+    // Has conflict: removeNsAttr(name: string, uri: string): void
+    // Has conflict: setNsAttr(ns: string, name: string, value: string): void
+    // Has conflict: getNsAttr(name: string, uri: string): Node | null
     // Has conflict: getTagName(): string | null
     // Has conflict: getContent(): string | null
-    // Has conflict: setContent(value: string | null): void
+    // Has conflict: setContent(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.Element
 
     normalize(): void
-    setAttr(name: string | null, value: string | null): void
-    getAttr(name: string | null): Node | null
-    removeAttr(name: string | null): void
-    removeNsAttr(name: string | null, uri: string | null): void
-    setNsAttr(ns: string | null, name: string | null, value: string | null): void
-    getNsAttr(name: string | null, uri: string | null): Node | null
+    setAttr(name: string, value: string): void
+    getAttr(name: string): Node | null
+    removeAttr(name: string): void
+    removeNsAttr(name: string, uri: string): void
+    setNsAttr(ns: string, name: string, value: string): void
+    getNsAttr(name: string, uri: string): Node | null
     getTagName(): string | null
     getContent(): string | null
-    setContent(value: string | null): void
+    setContent(value: string): void
 
     // Class property signals of GXml-0.14.GXml.Element
 
@@ -1063,12 +1063,12 @@ interface Node extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.Node
 
-    // Has conflict: get(key: string | null): Node | null
-    // Has conflict: getElementsByPropertyValue(property: string | null, value: string | null): ElementList
-    // Has conflict: getElementsByName(name: string | null): ElementList
-    // Has conflict: getElementsByNameNs(name: string | null, ns?: string | null): ElementList
+    // Has conflict: get(key: string): Node | null
+    // Has conflict: getElementsByPropertyValue(property: string, value: string): ElementList
+    // Has conflict: getElementsByName(name: string): ElementList
+    // Has conflict: getElementsByNameNs(name: string, ns?: string | null): ElementList
     // Has conflict: toString(): string | null
-    // Has conflict: setNamespace(uri: string | null, prefix?: string | null): boolean
+    // Has conflict: setNamespace(uri: string, prefix?: string | null): boolean
     // Has conflict: nsPrefix(): string | null
     // Has conflict: nsUri(): string | null
     // Has conflict: getNamespaces(): Gee.List
@@ -1076,19 +1076,19 @@ interface Node extends GObject.Object {
     // Has conflict: getAttrs(): Gee.Map
     // Has conflict: getName(): string | null
     // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: setValue(value: string): void
     // Has conflict: getTypeNode(): NodeType
     // Has conflict: getDocument(): Document
     // Has conflict: getParent(): Node
 
     // Own virtual methods of GXml-0.14.GXml.Node
 
-    get(key: string | null): Node | null
-    getElementsByPropertyValue(property: string | null, value: string | null): ElementList
-    getElementsByName(name: string | null): ElementList
-    getElementsByNameNs(name: string | null, ns?: string | null): ElementList
+    get(key: string): Node | null
+    getElementsByPropertyValue(property: string, value: string): ElementList
+    getElementsByName(name: string): ElementList
+    getElementsByNameNs(name: string, ns?: string | null): ElementList
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     nsPrefix(): string | null
     nsUri(): string | null
     getNamespaces(): Gee.List
@@ -1096,7 +1096,7 @@ interface Node extends GObject.Object {
     getAttrs(): Gee.Map
     getName(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
     getTypeNode(): NodeType
     getDocument(): Document
     getParent(): Node
@@ -1380,7 +1380,7 @@ interface ProcessingInstruction extends GObject.Object, Node {
 
     // Has conflict: getTarget(): string | null
     // Has conflict: getData(): string | null
-    // Has conflict: setData(value: string | null): void
+    // Has conflict: setData(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.ProcessingInstruction
 
@@ -1394,8 +1394,8 @@ interface ProcessingInstruction extends GObject.Object, Node {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -1413,7 +1413,7 @@ interface ProcessingInstruction extends GObject.Object, Node {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of GXml-0.14.GXml.ProcessingInstruction
 
@@ -1515,12 +1515,12 @@ interface Text extends GObject.Object, Node {
     // Owm methods of GXml-0.14.GXml.Text
 
     // Has conflict: getStr(): string | null
-    // Has conflict: setStr(value: string | null): void
+    // Has conflict: setStr(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.Text
 
     getStr(): string | null
-    setStr(value: string | null): void
+    setStr(value: string): void
 
     // Class property signals of GXml-0.14.GXml.Text
 
@@ -1658,8 +1658,8 @@ interface Serializable extends GObject.Object {
     // Has conflict: serializeProperty(element: Node, prop: GObject.ParamSpec): Node | null
     // Has conflict: deserialize(node: Node): boolean
     // Has conflict: deserializeProperty(propertyNode: Node): boolean
-    // Has conflict: findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
-    // Has conflict: defaultFindPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertySpec(propertyName: string): GObject.ParamSpec | null
+    // Has conflict: defaultFindPropertySpec(propertyName: string): GObject.ParamSpec | null
     // Has conflict: listSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: defaultListSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: getUnknownSerializableProperties(): Gee.Map
@@ -1678,8 +1678,8 @@ interface Serializable extends GObject.Object {
     serializeProperty(element: Node, prop: GObject.ParamSpec): Node | null
     deserialize(node: Node): boolean
     deserializeProperty(propertyNode: Node): boolean
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
-    defaultFindPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
+    defaultFindPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
     defaultListSerializableProperties(): GObject.ParamSpec[]
     getUnknownSerializableProperties(): Gee.Map
@@ -1750,7 +1750,7 @@ class Serializable {
 
     constructor(config?: Serializable.ConstructorProperties) 
     _init(config?: Serializable.ConstructorProperties): void
-    static stringToGvalue(str: string | null, dest: any): [ /* returnType */ boolean, /* dest */ any ]
+    static stringToGvalue(str: string, dest: any): [ /* returnType */ boolean, /* dest */ any ]
     static gvalueToString(val: any): string | null
 }
 
@@ -2019,7 +2019,7 @@ interface DomAttr extends GObject.Object {
     // Has conflict: getLocalName(): string | null
     // Has conflict: getName(): string | null
     // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: setValue(value: string): void
     // Has conflict: getSpecified(): boolean
 
     // Own virtual methods of GXml-0.14.GXml.DomAttr
@@ -2029,7 +2029,7 @@ interface DomAttr extends GObject.Object {
     getLocalName(): string | null
     getName(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
     getSpecified(): boolean
 
     // Class property signals of GXml-0.14.GXml.DomAttr
@@ -2113,21 +2113,21 @@ interface DomCharacterData extends GObject.Object, DomNode, DomNonDocumentTypeCh
     // Owm methods of GXml-0.14.GXml.DomCharacterData
 
     // Has conflict: substringData(offset: number, count: number): string | null
-    // Has conflict: appendData(data: string | null): void
-    // Has conflict: insertData(offset: number, data: string | null): void
+    // Has conflict: appendData(data: string): void
+    // Has conflict: insertData(offset: number, data: string): void
     // Has conflict: deleteData(offset: number, count: number): void
-    // Has conflict: replaceData(offset: number, count: number, data: string | null): void
+    // Has conflict: replaceData(offset: number, count: number, data: string): void
     // Has conflict: getData(): string | null
-    // Has conflict: setData(value: string | null): void
+    // Has conflict: setData(value: string): void
     // Has conflict: getLength(): number
 
     // Own virtual methods of GXml-0.14.GXml.DomCharacterData
 
     substringData(offset: number, count: number): string | null
-    appendData(data: string | null): void
-    insertData(offset: number, data: string | null): void
+    appendData(data: string): void
+    insertData(offset: number, data: string): void
     deleteData(offset: number, count: number): void
-    replaceData(offset: number, count: number, data: string | null): void
+    replaceData(offset: number, count: number, data: string): void
     getData(): string | null
 
     // Overloads of getData
@@ -2137,8 +2137,8 @@ interface DomCharacterData extends GObject.Object, DomNode, DomNonDocumentTypeCh
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -2156,7 +2156,7 @@ interface DomCharacterData extends GObject.Object, DomNode, DomNonDocumentTypeCh
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     getLength(): number
 
     // Class property signals of GXml-0.14.GXml.DomCharacterData
@@ -2303,14 +2303,14 @@ interface DomText extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -2328,7 +2328,7 @@ interface DomText extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -2343,7 +2343,7 @@ interface DomText extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Own virtual methods of GXml-0.14.GXml.DomText
 
@@ -2498,14 +2498,14 @@ interface DomProcessingInstruction extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -2523,7 +2523,7 @@ interface DomProcessingInstruction extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -2538,7 +2538,7 @@ interface DomProcessingInstruction extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Own virtual methods of GXml-0.14.GXml.DomProcessingInstruction
 
@@ -2687,14 +2687,14 @@ interface DomComment extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -2712,7 +2712,7 @@ interface DomComment extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -2727,7 +2727,7 @@ interface DomComment extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of GXml-0.14.GXml.DomComment
 
@@ -2858,11 +2858,11 @@ interface DomNonElementParentNode extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.DomNonElementParentNode
 
-    // Has conflict: getElementById(elementId: string | null): DomElement | null
+    // Has conflict: getElementById(elementId: string): DomElement | null
 
     // Own virtual methods of GXml-0.14.GXml.DomNonElementParentNode
 
-    getElementById(elementId: string | null): DomElement | null
+    getElementById(elementId: string): DomElement | null
 
     // Class property signals of GXml-0.14.GXml.DomNonElementParentNode
 
@@ -2912,9 +2912,9 @@ interface DomParentNode extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.DomParentNode
 
-    // Has conflict: querySelector(selectors: string | null): DomElement | null
-    // Has conflict: querySelectorAll(selectors: string | null): DomNodeList
-    // Has conflict: getElementsByPropertyValue(property: string | null, value: string | null): DomElementList
+    // Has conflict: querySelector(selectors: string): DomElement | null
+    // Has conflict: querySelectorAll(selectors: string): DomNodeList
+    // Has conflict: getElementsByPropertyValue(property: string, value: string): DomElementList
     // Has conflict: getChildren(): DomHTMLCollection
     // Has conflict: getFirstElementChild(): DomElement | null
     // Has conflict: getLastElementChild(): DomElement | null
@@ -2922,9 +2922,9 @@ interface DomParentNode extends GObject.Object {
 
     // Own virtual methods of GXml-0.14.GXml.DomParentNode
 
-    querySelector(selectors: string | null): DomElement | null
-    querySelectorAll(selectors: string | null): DomNodeList
-    getElementsByPropertyValue(property: string | null, value: string | null): DomElementList
+    querySelector(selectors: string): DomElement | null
+    querySelectorAll(selectors: string): DomNodeList
+    getElementsByPropertyValue(property: string, value: string): DomElementList
     getChildren(): DomHTMLCollection
     getFirstElementChild(): DomElement | null
     getLastElementChild(): DomElement | null
@@ -3217,7 +3217,7 @@ interface DomHTMLCollection extends GObject.Object, Gee.BidirList {
     // Has conflict: getElement(index: number): DomElement | null
     // Has conflict: toArray(): DomElement[]
     // Has conflict: item(index: number): DomElement | null
-    // Has conflict: namedItem(name: string | null): DomElement | null
+    // Has conflict: namedItem(name: string): DomElement | null
     // Has conflict: getLength(): number
 
     // Conflicting methods
@@ -3244,7 +3244,7 @@ interface DomHTMLCollection extends GObject.Object, Gee.BidirList {
 
     toArray(): any[]
     item(index: number): DomElement | null
-    namedItem(name: string | null): DomElement | null
+    namedItem(name: string): DomElement | null
     getLength(): number
 
     // Class property signals of GXml-0.14.GXml.DomHTMLCollection
@@ -3510,22 +3510,22 @@ interface DomNamedNodeMap extends GObject.Object, Gee.Map {
     // Owm methods of GXml-0.14.GXml.DomNamedNodeMap
 
     // Has conflict: item(index: number): DomNode | null
-    // Has conflict: getNamedItem(name: string | null): DomNode | null
+    // Has conflict: getNamedItem(name: string): DomNode | null
     // Has conflict: setNamedItem(node: DomNode): DomNode | null
-    // Has conflict: removeNamedItem(name: string | null): DomNode | null
-    // Has conflict: removeNamedItemNs(namespaceUri: string | null, localName: string | null): DomNode | null
-    // Has conflict: getNamedItemNs(namespaceUri: string | null, localName: string | null): DomNode | null
+    // Has conflict: removeNamedItem(name: string): DomNode | null
+    // Has conflict: removeNamedItemNs(namespaceUri: string, localName: string): DomNode | null
+    // Has conflict: getNamedItemNs(namespaceUri: string, localName: string): DomNode | null
     // Has conflict: setNamedItemNs(node: DomNode): DomNode | null
     // Has conflict: getLength(): number
 
     // Own virtual methods of GXml-0.14.GXml.DomNamedNodeMap
 
     item(index: number): DomNode | null
-    getNamedItem(name: string | null): DomNode | null
+    getNamedItem(name: string): DomNode | null
     setNamedItem(node: DomNode): DomNode | null
-    removeNamedItem(name: string | null): DomNode | null
-    removeNamedItemNs(namespaceUri: string | null, localName: string | null): DomNode | null
-    getNamedItemNs(namespaceUri: string | null, localName: string | null): DomNode | null
+    removeNamedItem(name: string): DomNode | null
+    removeNamedItemNs(namespaceUri: string, localName: string): DomNode | null
+    getNamedItemNs(namespaceUri: string, localName: string): DomNode | null
     setNamedItemNs(node: DomNode): DomNode | null
     getLength(): number
 
@@ -3614,10 +3614,10 @@ interface DomTokenList extends GObject.Object, Gee.BidirList {
     // Owm methods of GXml-0.14.GXml.DomTokenList
 
     // Has conflict: item(index: number): string | null
-    // Has conflict: contains(token: string | null): boolean
+    // Has conflict: contains(token: string): boolean
     // Has conflict: add(tokens: string[]): void
     // Has conflict: remove(tokens: string[]): void
-    // Has conflict: toggle(token: string | null, force: boolean, auto: boolean): boolean
+    // Has conflict: toggle(token: string, force: boolean, auto: boolean): boolean
     // Has conflict: toString(): string | null
     // Has conflict: getLength(): number
 
@@ -3639,7 +3639,7 @@ interface DomTokenList extends GObject.Object, Gee.BidirList {
     // Own virtual methods of GXml-0.14.GXml.DomTokenList
 
     item(index: number): string | null
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -3654,7 +3654,7 @@ interface DomTokenList extends GObject.Object, Gee.BidirList {
     // Overloads of remove
 
     remove(item: any): boolean
-    toggle(token: string | null, force: boolean, auto: boolean): boolean
+    toggle(token: string, force: boolean, auto: boolean): boolean
     toString(): string | null
     getLength(): number
 
@@ -3741,11 +3741,11 @@ interface DomSettableTokenList extends DomTokenList {
     // Owm methods of GXml-0.14.GXml.DomSettableTokenList
 
     // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: setValue(value: string): void
 
     // Conflicting methods
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -3779,7 +3779,7 @@ interface DomSettableTokenList extends DomTokenList {
     // Own virtual methods of GXml-0.14.GXml.DomSettableTokenList
 
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.DomSettableTokenList
 
@@ -3868,55 +3868,55 @@ interface DomDocument extends GObject.Object, DomNode, DomParentNode, DomNonElem
 
     // Owm methods of GXml-0.14.GXml.DomDocument
 
-    // Has conflict: getElementsByTagName(localName: string | null): DomHTMLCollection
-    // Has conflict: getElementsByTagNameNs(namespace: string | null, localName: string | null): DomHTMLCollection
-    // Has conflict: getElementsByClassName(classNames: string | null): DomHTMLCollection
-    // Has conflict: createElement(localName: string | null): DomElement
-    // Has conflict: createElementNs(namespace: string | null, qualifiedName: string | null): DomElement
+    // Has conflict: getElementsByTagName(localName: string): DomHTMLCollection
+    // Has conflict: getElementsByTagNameNs(namespace: string | null, localName: string): DomHTMLCollection
+    // Has conflict: getElementsByClassName(classNames: string): DomHTMLCollection
+    // Has conflict: createElement(localName: string): DomElement
+    // Has conflict: createElementNs(namespace: string | null, qualifiedName: string): DomElement
     // Has conflict: createDocumentFragment(): DomDocumentFragment
-    // Has conflict: createTextNode(data: string | null): DomText
-    // Has conflict: createComment(data: string | null): DomComment
-    // Has conflict: createProcessingInstruction(target: string | null, data: string | null): DomProcessingInstruction
+    // Has conflict: createTextNode(data: string): DomText
+    // Has conflict: createComment(data: string): DomComment
+    // Has conflict: createProcessingInstruction(target: string, data: string): DomProcessingInstruction
     // Has conflict: importNode(node: DomNode, deep: boolean): DomNode
     // Has conflict: adoptNode(node: DomNode): DomNode
-    // Has conflict: createEvent(interface: string | null): DomEvent
+    // Has conflict: createEvent(interface: string): DomEvent
     // Has conflict: createRange(): DomRange
     // Has conflict: createNodeIterator(root: DomNode, whatToShow: number, filter?: DomNodeFilter | null): DomNodeIterator
     // Has conflict: createTreeWalker(root: DomNode, whatToShow: number, filter?: DomNodeFilter | null): DomTreeWalker
     // Has conflict: getImplementation(): DomImplementation
-    // Has conflict: getUrl(): string | null
-    // Has conflict: getDocumentUri(): string | null
-    // Has conflict: getOrigin(): string | null
-    // Has conflict: getCompatMode(): string | null
-    // Has conflict: getCharacterSet(): string | null
-    // Has conflict: getContentType(): string | null
+    // Has conflict: getUrl(): string
+    // Has conflict: getDocumentUri(): string
+    // Has conflict: getOrigin(): string
+    // Has conflict: getCompatMode(): string
+    // Has conflict: getCharacterSet(): string
+    // Has conflict: getContentType(): string
     // Has conflict: getDoctype(): DomDocumentType | null
     // Has conflict: getDocumentElement(): DomElement | null
 
     // Own virtual methods of GXml-0.14.GXml.DomDocument
 
-    getElementsByTagName(localName: string | null): DomHTMLCollection
-    getElementsByTagNameNs(namespace: string | null, localName: string | null): DomHTMLCollection
-    getElementsByClassName(classNames: string | null): DomHTMLCollection
-    createElement(localName: string | null): DomElement
-    createElementNs(namespace: string | null, qualifiedName: string | null): DomElement
+    getElementsByTagName(localName: string): DomHTMLCollection
+    getElementsByTagNameNs(namespace: string | null, localName: string): DomHTMLCollection
+    getElementsByClassName(classNames: string): DomHTMLCollection
+    createElement(localName: string): DomElement
+    createElementNs(namespace: string | null, qualifiedName: string): DomElement
     createDocumentFragment(): DomDocumentFragment
-    createTextNode(data: string | null): DomText
-    createComment(data: string | null): DomComment
-    createProcessingInstruction(target: string | null, data: string | null): DomProcessingInstruction
+    createTextNode(data: string): DomText
+    createComment(data: string): DomComment
+    createProcessingInstruction(target: string, data: string): DomProcessingInstruction
     importNode(node: DomNode, deep: boolean): DomNode
     adoptNode(node: DomNode): DomNode
-    createEvent(interface: string | null): DomEvent
+    createEvent(interface: string): DomEvent
     createRange(): DomRange
     createNodeIterator(root: DomNode, whatToShow: number, filter?: DomNodeFilter | null): DomNodeIterator
     createTreeWalker(root: DomNode, whatToShow: number, filter?: DomNodeFilter | null): DomTreeWalker
     getImplementation(): DomImplementation
-    getUrl(): string | null
-    getDocumentUri(): string | null
-    getOrigin(): string | null
-    getCompatMode(): string | null
-    getCharacterSet(): string | null
-    getContentType(): string | null
+    getUrl(): string
+    getDocumentUri(): string
+    getOrigin(): string
+    getCompatMode(): string
+    getCharacterSet(): string
+    getContentType(): string
     getDoctype(): DomDocumentType | null
     getDocumentElement(): DomElement | null
 
@@ -4266,16 +4266,16 @@ interface DomImplementation extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.DomImplementation
 
-    // Has conflict: createDocumentType(qualifiedName: string | null, publicId: string | null, systemId: string | null): DomDocumentType
+    // Has conflict: createDocumentType(qualifiedName: string, publicId: string, systemId: string): DomDocumentType
     // Has conflict: createDocument(nspace?: string | null, qualifiedName?: string | null, doctype?: DomDocumentType | null): DomXMLDocument
-    // Has conflict: createHtmlDocument(title: string | null): Document
+    // Has conflict: createHtmlDocument(title: string): Document
     // Has conflict: hasFeature(): boolean
 
     // Own virtual methods of GXml-0.14.GXml.DomImplementation
 
-    createDocumentType(qualifiedName: string | null, publicId: string | null, systemId: string | null): DomDocumentType
+    createDocumentType(qualifiedName: string, publicId: string, systemId: string): DomDocumentType
     createDocument(nspace?: string | null, qualifiedName?: string | null, doctype?: DomDocumentType | null): DomXMLDocument
-    createHtmlDocument(title: string | null): Document
+    createHtmlDocument(title: string): Document
     hasFeature(): boolean
 
     // Class property signals of GXml-0.14.GXml.DomImplementation
@@ -4452,15 +4452,15 @@ interface DomDocumentType extends GObject.Object, DomNode, DomChildNode {
 
     // Owm methods of GXml-0.14.GXml.DomDocumentType
 
-    // Has conflict: getName(): string | null
-    // Has conflict: getPublicId(): string | null
-    // Has conflict: getSystemId(): string | null
+    // Has conflict: getName(): string
+    // Has conflict: getPublicId(): string
+    // Has conflict: getSystemId(): string
 
     // Own virtual methods of GXml-0.14.GXml.DomDocumentType
 
-    getName(): string | null
-    getPublicId(): string | null
-    getSystemId(): string | null
+    getName(): string
+    getPublicId(): string
+    getSystemId(): string
 
     // Class property signals of GXml-0.14.GXml.DomDocumentType
 
@@ -4599,17 +4599,17 @@ interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNonDocume
 
     // Owm methods of GXml-0.14.GXml.DomElement
 
-    // Has conflict: getAttribute(name: string | null): string | null
-    // Has conflict: getAttributeNs(namespace: string | null, localName: string | null): string | null
-    // Has conflict: setAttribute(name: string | null, value: string | null): void
-    // Has conflict: setAttributeNs(namespace: string | null, name: string | null, value: string | null): void
-    // Has conflict: removeAttribute(name: string | null): void
-    // Has conflict: removeAttributeNs(namespace: string | null, localName: string | null): void
-    // Has conflict: hasAttribute(name: string | null): boolean
-    // Has conflict: hasAttributeNs(namespace: string | null, localName: string | null): boolean
-    // Has conflict: getElementsByTagName(localName: string | null): DomHTMLCollection
-    // Has conflict: getElementsByTagNameNs(namespace: string | null, localName: string | null): DomHTMLCollection
-    // Has conflict: getElementsByClassName(classNames: string | null): DomHTMLCollection
+    // Has conflict: getAttribute(name: string): string | null
+    // Has conflict: getAttributeNs(namespace: string | null, localName: string): string | null
+    // Has conflict: setAttribute(name: string, value: string): void
+    // Has conflict: setAttributeNs(namespace: string | null, name: string, value: string): void
+    // Has conflict: removeAttribute(name: string): void
+    // Has conflict: removeAttributeNs(namespace: string | null, localName: string): void
+    // Has conflict: hasAttribute(name: string): boolean
+    // Has conflict: hasAttributeNs(namespace: string | null, localName: string): boolean
+    // Has conflict: getElementsByTagName(localName: string): DomHTMLCollection
+    // Has conflict: getElementsByTagNameNs(namespace: string | null, localName: string): DomHTMLCollection
+    // Has conflict: getElementsByClassName(classNames: string): DomHTMLCollection
     // Has conflict: getNamespaceUri(): string | null
     // Has conflict: getPrefix(): string | null
     // Has conflict: getLocalName(): string | null
@@ -4623,17 +4623,17 @@ interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNonDocume
 
     // Own virtual methods of GXml-0.14.GXml.DomElement
 
-    getAttribute(name: string | null): string | null
-    getAttributeNs(namespace: string | null, localName: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttributeNs(namespace: string | null, name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttributeNs(namespace: string | null, localName: string | null): void
-    hasAttribute(name: string | null): boolean
-    hasAttributeNs(namespace: string | null, localName: string | null): boolean
-    getElementsByTagName(localName: string | null): DomHTMLCollection
-    getElementsByTagNameNs(namespace: string | null, localName: string | null): DomHTMLCollection
-    getElementsByClassName(classNames: string | null): DomHTMLCollection
+    getAttribute(name: string): string | null
+    getAttributeNs(namespace: string | null, localName: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttributeNs(namespace: string | null, name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttributeNs(namespace: string | null, localName: string): void
+    hasAttribute(name: string): boolean
+    hasAttributeNs(namespace: string | null, localName: string): boolean
+    getElementsByTagName(localName: string): DomHTMLCollection
+    getElementsByTagNameNs(namespace: string | null, localName: string): DomHTMLCollection
+    getElementsByClassName(classNames: string): DomHTMLCollection
     getNamespaceUri(): string | null
     getPrefix(): string | null
     getLocalName(): string | null
@@ -4824,14 +4824,14 @@ interface DomEventTarget extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.DomEventTarget
 
-    // Has conflict: addEventListener(type: string | null, callback: DomEventListener | null, capture: boolean): void
-    // Has conflict: removeEventListener(type: string | null, callback: DomEventListener | null, capture: boolean): void
+    // Has conflict: addEventListener(type: string, callback: DomEventListener | null, capture: boolean): void
+    // Has conflict: removeEventListener(type: string, callback: DomEventListener | null, capture: boolean): void
     // Has conflict: dispatchEvent(event: DomEvent): boolean
 
     // Own virtual methods of GXml-0.14.GXml.DomEventTarget
 
-    addEventListener(type: string | null, callback: DomEventListener | null, capture: boolean): void
-    removeEventListener(type: string | null, callback: DomEventListener | null, capture: boolean): void
+    addEventListener(type: string, callback: DomEventListener | null, capture: boolean): void
+    removeEventListener(type: string, callback: DomEventListener | null, capture: boolean): void
     dispatchEvent(event: DomEvent): boolean
 
     // Class property signals of GXml-0.14.GXml.DomEventTarget
@@ -4940,8 +4940,8 @@ interface DomEvent extends GObject.Object {
     // Has conflict: stopPropagation(): void
     // Has conflict: stopImmediatePropagation(): void
     // Has conflict: preventDefault(): void
-    // Has conflict: initEvent(type: string | null, bubbles: boolean, cancelable: boolean): void
-    // Has conflict: getEtype(): string | null
+    // Has conflict: initEvent(type: string, bubbles: boolean, cancelable: boolean): void
+    // Has conflict: getEtype(): string
     // Has conflict: getEventTarget(): DomEventTarget | null
     // Has conflict: getCurrentTarget(): DomEventTarget | null
     // Has conflict: getBubbles(): boolean
@@ -4956,8 +4956,8 @@ interface DomEvent extends GObject.Object {
     stopPropagation(): void
     stopImmediatePropagation(): void
     preventDefault(): void
-    initEvent(type: string | null, bubbles: boolean, cancelable: boolean): void
-    getEtype(): string | null
+    initEvent(type: string, bubbles: boolean, cancelable: boolean): void
+    getEtype(): string
     getEventTarget(): DomEventTarget | null
     getCurrentTarget(): DomEventTarget | null
     getBubbles(): boolean
@@ -5057,12 +5057,12 @@ interface DomCustomEvent extends GObject.Object, DomEvent {
 
     // Owm methods of GXml-0.14.GXml.DomCustomEvent
 
-    // Has conflict: initCustomEvent(type: string | null, bubbles: boolean, cancelable: boolean, detail?: any | null): void
+    // Has conflict: initCustomEvent(type: string, bubbles: boolean, cancelable: boolean, detail?: any | null): void
     // Has conflict: getDetail(): any | null
 
     // Own virtual methods of GXml-0.14.GXml.DomCustomEvent
 
-    initCustomEvent(type: string | null, bubbles: boolean, cancelable: boolean, detail?: any | null): void
+    initCustomEvent(type: string, bubbles: boolean, cancelable: boolean, detail?: any | null): void
     getDetail(): any | null
 
     // Class property signals of GXml-0.14.GXml.DomCustomEvent
@@ -5227,7 +5227,7 @@ interface DomMutationRecord extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.DomMutationRecord
 
-    // Has conflict: getMtype(): string | null
+    // Has conflict: getMtype(): string
     // Has conflict: getTarget(): DomNode
     // Has conflict: getAddedNodes(): DomNodeList
     // Has conflict: setAddedNodes(value: DomNodeList): void
@@ -5241,7 +5241,7 @@ interface DomMutationRecord extends GObject.Object {
 
     // Own virtual methods of GXml-0.14.GXml.DomMutationRecord
 
-    getMtype(): string | null
+    getMtype(): string
     getTarget(): DomNode
     getAddedNodes(): DomNodeList
     setAddedNodes(value: DomNodeList): void
@@ -5671,11 +5671,11 @@ interface XPathContext extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.XPathContext
 
-    // Has conflict: evaluate(expression: string | null, resolver?: Gee.List | null): XPathObject
+    // Has conflict: evaluate(expression: string, resolver?: Gee.List | null): XPathObject
 
     // Own virtual methods of GXml-0.14.GXml.XPathContext
 
-    evaluate(expression: string | null, resolver?: Gee.List | null): XPathObject
+    evaluate(expression: string, resolver?: Gee.List | null): XPathObject
 
     // Class property signals of GXml-0.14.GXml.XPathContext
 
@@ -5728,7 +5728,7 @@ interface XPathObject extends GObject.Object {
 
     // Has conflict: getObjectType(): XPathObjectType
     // Has conflict: getBooleanValue(): boolean
-    // Has conflict: getStringValue(): string | null
+    // Has conflict: getStringValue(): string
     // Has conflict: getNumberValue(): number
     // Has conflict: getNodeset(): DomHTMLCollection
 
@@ -5736,7 +5736,7 @@ interface XPathObject extends GObject.Object {
 
     getObjectType(): XPathObjectType
     getBooleanValue(): boolean
-    getStringValue(): string | null
+    getStringValue(): string
     getNumberValue(): number
     getNodeset(): DomHTMLCollection
 
@@ -5810,44 +5810,44 @@ interface GomObject extends GObject.Object, DomNode, DomElement {
     // Owm methods of GXml-0.14.GXml.GomObject
 
     // Has conflict: getPropertiesList(): GObject.ParamSpec[]
-    // Has conflict: findPropertyName(pname: string | null): GObject.ParamSpec | null
-    // Has conflict: findObjectPropertyName(pname: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertyName(pname: string): GObject.ParamSpec | null
+    // Has conflict: findObjectPropertyName(pname: string): GObject.ParamSpec | null
     // Has conflict: getPropertyElementList(): GObject.ParamSpec[]
     // Has conflict: getPropertyString(prop: GObject.ParamSpec): string | null
-    // Has conflict: getAttribute(name: string | null): string | null
-    // Has conflict: setAttribute(name: string | null, val: string | null): boolean
-    // Has conflict: getChild(name: string | null): DomElement | null
-    // Has conflict: findElements(name: string | null): DomElementList
-    // Has conflict: removeAttribute(name: string | null): boolean
-    // Has conflict: setInstanceProperty(name: string | null): boolean
-    // Has conflict: cleanPropertyElements(name: string | null): void
+    // Has conflict: getAttribute(name: string): string | null
+    // Has conflict: setAttribute(name: string, val: string): boolean
+    // Has conflict: getChild(name: string): DomElement | null
+    // Has conflict: findElements(name: string): DomElementList
+    // Has conflict: removeAttribute(name: string): boolean
+    // Has conflict: setInstanceProperty(name: string): boolean
+    // Has conflict: cleanPropertyElements(name: string): void
 
     // Own virtual methods of GXml-0.14.GXml.GomObject
 
     getPropertiesList(): GObject.ParamSpec[]
-    findPropertyName(pname: string | null): GObject.ParamSpec | null
-    findObjectPropertyName(pname: string | null): GObject.ParamSpec | null
+    findPropertyName(pname: string): GObject.ParamSpec | null
+    findObjectPropertyName(pname: string): GObject.ParamSpec | null
     getPropertyElementList(): GObject.ParamSpec[]
     getPropertyString(prop: GObject.ParamSpec): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    getChild(name: string | null): DomElement | null
-    findElements(name: string | null): DomElementList
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    getChild(name: string): DomElement | null
+    findElements(name: string): DomElementList
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
-    setInstanceProperty(name: string | null): boolean
-    cleanPropertyElements(name: string | null): void
+    removeAttribute(name: string): void
+    setInstanceProperty(name: string): boolean
+    cleanPropertyElements(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomObject
 
@@ -6047,7 +6047,7 @@ interface GomCollection extends GObject.Object {
     // Has conflict: getNodesIndex(): GLib.Queue
     // Has conflict: getElement(): GomElement
     // Has conflict: setElement(value: GomElement): void
-    // Has conflict: getItemsName(): string | null
+    // Has conflict: getItemsName(): string
     // Has conflict: getItemsType(): GObject.GType
     // Has conflict: setItemsType(value: GObject.GType): void
     // Has conflict: getLength(): number
@@ -6063,7 +6063,7 @@ interface GomCollection extends GObject.Object {
     getNodesIndex(): GLib.Queue
     getElement(): GomElement
     setElement(value: GomElement): void
-    getItemsName(): string | null
+    getItemsName(): string
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
     getLength(): number
@@ -6703,13 +6703,13 @@ interface GomProperty extends GObject.Object {
 
     // Owm methods of GXml-0.14.GXml.GomProperty
 
-    // Has conflict: validateValue(val: string | null): boolean
+    // Has conflict: validateValue(val: string): boolean
     // Has conflict: getValue(): string | null
     // Has conflict: setValue(value?: string | null): void
 
     // Own virtual methods of GXml-0.14.GXml.GomProperty
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
     setValue(value?: string | null): void
 
@@ -6775,7 +6775,7 @@ interface Parser extends GObject.Object {
     // Has conflict: writeStream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void
     // Has conflict: readFile(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     // Has conflict: readStream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void
-    // Has conflict: readString(str: string | null, cancellable?: Gio.Cancellable | null): void
+    // Has conflict: readString(str: string, cancellable?: Gio.Cancellable | null): void
     // Has conflict: getBackup(): boolean
     // Has conflict: setBackup(value: boolean): void
     // Has conflict: getIndent(): boolean
@@ -6789,7 +6789,7 @@ interface Parser extends GObject.Object {
     writeStream(stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null): void
     readFile(file: Gio.File, cancellable?: Gio.Cancellable | null): void
     readStream(stream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void
-    readString(str: string | null, cancellable?: Gio.Cancellable | null): void
+    readString(str: string, cancellable?: Gio.Cancellable | null): void
     getBackup(): boolean
     setBackup(value: boolean): void
     getIndent(): boolean
@@ -7153,12 +7153,12 @@ interface IXsdSimpleType extends GObject.Object, DomElement, IXsdBaseType {
 
     // Owm methods of GXml-0.14.GXml.IXsdSimpleType
 
-    // Has conflict: getFinal(): string | null
-    // Has conflict: setFinal(value: string | null): void
-    // Has conflict: getId(): string | null
-    // Has conflict: setId(value: string | null): void
-    // Has conflict: getName(): string | null
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: getFinal(): string
+    // Has conflict: setFinal(value: string): void
+    // Has conflict: getId(): string
+    // Has conflict: setId(value: string): void
+    // Has conflict: getName(): string
+    // Has conflict: setName(value: string): void
     // Has conflict: getAnnotation(): IXsdAnnotation
     // Has conflict: setAnnotation(value: IXsdAnnotation): void
     // Has conflict: getList(): IXsdTypeList
@@ -7170,20 +7170,20 @@ interface IXsdSimpleType extends GObject.Object, DomElement, IXsdBaseType {
 
     // Own virtual methods of GXml-0.14.GXml.IXsdSimpleType
 
-    getFinal(): string | null
-    setFinal(value: string | null): void
-    getId(): string | null
+    getFinal(): string
+    setFinal(value: string): void
+    getId(): string
 
     // Overloads of getId
 
     getId(): string | null
-    setId(value: string | null): void
+    setId(value: string): void
 
     // Overloads of setId
 
     setId(value?: string | null): void
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getAnnotation(): IXsdAnnotation
     setAnnotation(value: IXsdAnnotation): void
     getList(): IXsdTypeList
@@ -7462,10 +7462,10 @@ interface IXsdTypeRestriction extends GObject.Object, IXsdTypeDef {
 
     // Owm methods of GXml-0.14.GXml.IXsdTypeRestriction
 
-    // Has conflict: getBase(): string | null
-    // Has conflict: setBase(value: string | null): void
-    // Has conflict: getId(): string | null
-    // Has conflict: setId(value: string | null): void
+    // Has conflict: getBase(): string
+    // Has conflict: setBase(value: string): void
+    // Has conflict: getId(): string
+    // Has conflict: setId(value: string): void
     // Has conflict: getSimpleType(): IXsdSimpleType
     // Has conflict: setSimpleType(value: IXsdSimpleType): void
     // Has conflict: getEnumerations(): IXsdListTypeRestrictionEnumerations
@@ -7475,10 +7475,10 @@ interface IXsdTypeRestriction extends GObject.Object, IXsdTypeDef {
 
     // Own virtual methods of GXml-0.14.GXml.IXsdTypeRestriction
 
-    getBase(): string | null
-    setBase(value: string | null): void
-    getId(): string | null
-    setId(value: string | null): void
+    getBase(): string
+    setBase(value: string): void
+    getId(): string
+    setId(value: string): void
     getSimpleType(): IXsdSimpleType
     setSimpleType(value: IXsdSimpleType): void
     getEnumerations(): IXsdListTypeRestrictionEnumerations
@@ -8131,17 +8131,17 @@ interface IXsdTypeRestrictionEnumeration extends GObject.Object, IXsdTypeRestric
 
     // Owm methods of GXml-0.14.GXml.IXsdTypeRestrictionEnumeration
 
-    // Has conflict: getId(): string | null
-    // Has conflict: setId(value: string | null): void
-    // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: getId(): string
+    // Has conflict: setId(value: string): void
+    // Has conflict: getValue(): string
+    // Has conflict: setValue(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.IXsdTypeRestrictionEnumeration
 
-    getId(): string | null
-    setId(value: string | null): void
-    getValue(): string | null
-    setValue(value: string | null): void
+    getId(): string
+    setId(value: string): void
+    getValue(): string
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.IXsdTypeRestrictionEnumeration
 
@@ -8213,19 +8213,19 @@ interface IXsdTypeRestrictionWhiteSpace extends GObject.Object, IXsdTypeRestrict
 
     // Has conflict: getFixed(): boolean
     // Has conflict: setFixed(value: boolean): void
-    // Has conflict: getId(): string | null
-    // Has conflict: setId(value: string | null): void
-    // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: getId(): string
+    // Has conflict: setId(value: string): void
+    // Has conflict: getValue(): string
+    // Has conflict: setValue(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.IXsdTypeRestrictionWhiteSpace
 
     getFixed(): boolean
     setFixed(value: boolean): void
-    getId(): string | null
-    setId(value: string | null): void
-    getValue(): string | null
-    setValue(value: string | null): void
+    getId(): string
+    setId(value: string): void
+    getValue(): string
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.IXsdTypeRestrictionWhiteSpace
 
@@ -8453,14 +8453,14 @@ interface IXsdComplexType extends GObject.Object, DomElement, IXsdBaseType {
 
     // Has conflict: getAbstract(): boolean
     // Has conflict: setAbstract(value: boolean): void
-    // Has conflict: getBlock(): string | null
-    // Has conflict: setBlock(value: string | null): void
-    // Has conflict: getFinal(): string | null
-    // Has conflict: setFinal(value: string | null): void
+    // Has conflict: getBlock(): string
+    // Has conflict: setBlock(value: string): void
+    // Has conflict: getFinal(): string
+    // Has conflict: setFinal(value: string): void
     // Has conflict: getMixed(): boolean
     // Has conflict: setMixed(value: boolean): void
-    // Has conflict: getName(): string | null
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: getName(): string
+    // Has conflict: setName(value: string): void
     // Has conflict: getDefaultAttributesApply(): boolean
     // Has conflict: setDefaultAttributesApply(value: boolean): void
     // Has conflict: getContentType(): IXsdBaseContent
@@ -8472,14 +8472,14 @@ interface IXsdComplexType extends GObject.Object, DomElement, IXsdBaseType {
 
     getAbstract(): boolean
     setAbstract(value: boolean): void
-    getBlock(): string | null
-    setBlock(value: string | null): void
-    getFinal(): string | null
-    setFinal(value: string | null): void
+    getBlock(): string
+    setBlock(value: string): void
+    getFinal(): string
+    setFinal(value: string): void
     getMixed(): boolean
     setMixed(value: boolean): void
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getDefaultAttributesApply(): boolean
     setDefaultAttributesApply(value: boolean): void
     getContentType(): IXsdBaseContent
@@ -8721,13 +8721,13 @@ interface IXsdExtension extends GObject.Object, DomElement {
 
     // Owm methods of GXml-0.14.GXml.IXsdExtension
 
-    // Has conflict: getBase(): string | null
-    // Has conflict: setBase(value: string | null): void
+    // Has conflict: getBase(): string
+    // Has conflict: setBase(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.IXsdExtension
 
-    getBase(): string | null
-    setBase(value: string | null): void
+    getBase(): string
+    setBase(value: string): void
 
     // Class property signals of GXml-0.14.GXml.IXsdExtension
 
@@ -8954,34 +8954,34 @@ interface IXsdElement extends GObject.Object, DomElement {
 
     // Has conflict: getAbstract(): boolean
     // Has conflict: setAbstract(value: boolean): void
-    // Has conflict: getBlock(): string | null
-    // Has conflict: setBlock(value: string | null): void
-    // Has conflict: getDefault(): string | null
-    // Has conflict: setDefault(value: string | null): void
-    // Has conflict: getFinal(): string | null
-    // Has conflict: setFinal(value: string | null): void
-    // Has conflict: getFixed(): string | null
-    // Has conflict: setFixed(value: string | null): void
-    // Has conflict: getForm(): string | null
-    // Has conflict: setForm(value: string | null): void
+    // Has conflict: getBlock(): string
+    // Has conflict: setBlock(value: string): void
+    // Has conflict: getDefault(): string
+    // Has conflict: setDefault(value: string): void
+    // Has conflict: getFinal(): string
+    // Has conflict: setFinal(value: string): void
+    // Has conflict: getFixed(): string
+    // Has conflict: setFixed(value: string): void
+    // Has conflict: getForm(): string
+    // Has conflict: setForm(value: string): void
     // Has conflict: getId(): string | null
     // Has conflict: setId(value?: string | null): void
-    // Has conflict: getMaxOccurs(): string | null
-    // Has conflict: setMaxOccurs(value: string | null): void
-    // Has conflict: getMinOccurs(): string | null
-    // Has conflict: setMinOccurs(value: string | null): void
-    // Has conflict: getName(): string | null
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: getMaxOccurs(): string
+    // Has conflict: setMaxOccurs(value: string): void
+    // Has conflict: getMinOccurs(): string
+    // Has conflict: setMinOccurs(value: string): void
+    // Has conflict: getName(): string
+    // Has conflict: setName(value: string): void
     // Has conflict: getNillable(): boolean
     // Has conflict: setNillable(value: boolean): void
-    // Has conflict: getRef(): string | null
-    // Has conflict: setRef(value: string | null): void
+    // Has conflict: getRef(): string
+    // Has conflict: setRef(value: string): void
     // Has conflict: getSubstitutionGroup(): DomTokenList
     // Has conflict: setSubstitutionGroup(value: DomTokenList): void
-    // Has conflict: getTargetNamespace(): string | null
-    // Has conflict: setTargetNamespace(value: string | null): void
-    // Has conflict: getObjectType(): string | null
-    // Has conflict: setObjectType(value: string | null): void
+    // Has conflict: getTargetNamespace(): string
+    // Has conflict: setTargetNamespace(value: string): void
+    // Has conflict: getObjectType(): string
+    // Has conflict: setObjectType(value: string): void
     // Has conflict: getAnotation(): IXsdAnnotation
     // Has conflict: setAnotation(value: IXsdAnnotation): void
     // Has conflict: getSimpleType(): IXsdSimpleType
@@ -8993,16 +8993,16 @@ interface IXsdElement extends GObject.Object, DomElement {
 
     getAbstract(): boolean
     setAbstract(value: boolean): void
-    getBlock(): string | null
-    setBlock(value: string | null): void
-    getDefault(): string | null
-    setDefault(value: string | null): void
-    getFinal(): string | null
-    setFinal(value: string | null): void
-    getFixed(): string | null
-    setFixed(value: string | null): void
-    getForm(): string | null
-    setForm(value: string | null): void
+    getBlock(): string
+    setBlock(value: string): void
+    getDefault(): string
+    setDefault(value: string): void
+    getFinal(): string
+    setFinal(value: string): void
+    getFixed(): string
+    setFixed(value: string): void
+    getForm(): string
+    setForm(value: string): void
     getId(): string | null
 
     // Overloads of getId
@@ -9013,22 +9013,22 @@ interface IXsdElement extends GObject.Object, DomElement {
     // Overloads of setId
 
     setId(value?: string | null): void
-    getMaxOccurs(): string | null
-    setMaxOccurs(value: string | null): void
-    getMinOccurs(): string | null
-    setMinOccurs(value: string | null): void
-    getName(): string | null
-    setName(value: string | null): void
+    getMaxOccurs(): string
+    setMaxOccurs(value: string): void
+    getMinOccurs(): string
+    setMinOccurs(value: string): void
+    getName(): string
+    setName(value: string): void
     getNillable(): boolean
     setNillable(value: boolean): void
-    getRef(): string | null
-    setRef(value: string | null): void
+    getRef(): string
+    setRef(value: string): void
     getSubstitutionGroup(): DomTokenList
     setSubstitutionGroup(value: DomTokenList): void
-    getTargetNamespace(): string | null
-    setTargetNamespace(value: string | null): void
-    getObjectType(): string | null
-    setObjectType(value: string | null): void
+    getTargetNamespace(): string
+    setTargetNamespace(value: string): void
+    getObjectType(): string
+    setObjectType(value: string): void
     getAnotation(): IXsdAnnotation
     setAnotation(value: IXsdAnnotation): void
     getSimpleType(): IXsdSimpleType
@@ -9751,7 +9751,7 @@ interface IXsdList extends GObject.Object, GomCollection {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
+    getItemsName(): string
     setItemsName(value: GObject.GType): void
     getLength(): number
 
@@ -9873,8 +9873,8 @@ interface IXsdListElements extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -9996,8 +9996,8 @@ interface IXsdListSimpleTypes extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -10119,8 +10119,8 @@ interface IXsdListComplexTypes extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -10242,8 +10242,8 @@ interface IXsdListAttributes extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -10365,8 +10365,8 @@ interface IXsdListAttributesGroup extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -10488,8 +10488,8 @@ interface IXsdListTypeRestrictionEnumerations extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -10611,8 +10611,8 @@ interface IXsdListTypeRestrictionWhiteSpaces extends GObject.Object, IXsdList {
 
     // Overloads of getItemsName
 
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getLength(): number
 
     // Overloads of getLength
@@ -11458,7 +11458,7 @@ interface SerializableDouble extends SerializableProperty {
     getValue(): number
     setValue(val: number): void
     toString(): string | null
-    format(f: string | null): string | null
+    format(f: string): string | null
 
     // Class property signals of GXml-0.14.GXml.SerializableDouble
 
@@ -11573,7 +11573,7 @@ interface SerializableEnum extends SerializableProperty {
 
     setEnumType(type: GObject.GType): void
     getEnumType(): GObject.GType
-    parse(str: string | null): void
+    parse(str: string): void
     parseInteger(v: number): void
     toInteger(): number
     toString(): string | null
@@ -11772,7 +11772,7 @@ interface SerializableObjectModel extends Serializable {
     // Has conflict: setDefaultNamespace(node: Node): boolean
     // Has conflict: nodeName(): string | null
     defaultNodeName(): string | null
-    // Has conflict: findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertySpec(propertyName: string): GObject.ParamSpec | null
     // Has conflict: listSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: serialize(node: Node): Node | null
     defaultSerialize(node: Node): Node | null
@@ -11815,11 +11815,11 @@ interface SerializableObjectModel extends Serializable {
     // Overloads of nodeName
 
     nodeName(): string | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
 
     // Overloads of findPropertySpec
 
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
 
     // Overloads of listSerializableProperties
@@ -11941,7 +11941,7 @@ interface SerializableTreeMap extends Serializable, SerializableCollection {
     // Has conflict: serializeUseXmlNodeValue(): boolean
     // Has conflict: propertyUseNick(): boolean
     // Has conflict: nodeName(): string | null
-    // Has conflict: findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertySpec(propertyName: string): GObject.ParamSpec | null
     // Has conflict: listSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: serialize(node: Node): Node | null
     defaultSerialize(node: Node): Node | null
@@ -12255,11 +12255,11 @@ interface SerializableTreeMap extends Serializable, SerializableCollection {
     // Overloads of nodeName
 
     nodeName(): string | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
 
     // Overloads of findPropertySpec
 
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
 
     // Overloads of listSerializableProperties
@@ -12463,7 +12463,7 @@ interface SerializableHashMap extends Serializable, SerializableCollection {
     // Has conflict: serializeUseXmlNodeValue(): boolean
     // Has conflict: propertyUseNick(): boolean
     // Has conflict: nodeName(): string | null
-    // Has conflict: findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertySpec(propertyName: string): GObject.ParamSpec | null
     // Has conflict: listSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: serialize(node: Node): Node | null
     defaultSerialize(node: Node): Node | null
@@ -12618,11 +12618,11 @@ interface SerializableHashMap extends Serializable, SerializableCollection {
     // Overloads of nodeName
 
     nodeName(): string | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
 
     // Overloads of findPropertySpec
 
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
 
     // Overloads of listSerializableProperties
@@ -12817,7 +12817,7 @@ interface SerializableDualKeyMap extends Gee.Traversable, Serializable, Serializ
     // Has conflict: serializeUseXmlNodeValue(): boolean
     // Has conflict: propertyUseNick(): boolean
     // Has conflict: nodeName(): string | null
-    // Has conflict: findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertySpec(propertyName: string): GObject.ParamSpec | null
     // Has conflict: listSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: serialize(node: Node): Node | null
     defaultSerialize(node: Node): Node | null
@@ -12884,11 +12884,11 @@ interface SerializableDualKeyMap extends Gee.Traversable, Serializable, Serializ
     // Overloads of nodeName
 
     nodeName(): string | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
 
     // Overloads of findPropertySpec
 
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
 
     // Overloads of listSerializableProperties
@@ -13037,7 +13037,7 @@ interface SerializableArrayList extends Serializable, SerializableCollection {
     // Has conflict: serializeUseXmlNodeValue(): boolean
     // Has conflict: propertyUseNick(): boolean
     // Has conflict: nodeName(): string | null
-    // Has conflict: findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    // Has conflict: findPropertySpec(propertyName: string): GObject.ParamSpec | null
     // Has conflict: listSerializableProperties(): GObject.ParamSpec[]
     // Has conflict: serialize(node: Node): Node | null
     defaultSerialize(node: Node): Node | null
@@ -13339,11 +13339,11 @@ interface SerializableArrayList extends Serializable, SerializableCollection {
     // Overloads of nodeName
 
     nodeName(): string | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
 
     // Overloads of findPropertySpec
 
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
 
     // Overloads of listSerializableProperties
@@ -13523,12 +13523,12 @@ interface SerializableContainer {
 
     nodeName(): string | null
     nodeName(): string | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
 
     // Overloads of findPropertySpec
 
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
-    findPropertySpec(propertyName: string | null): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
+    findPropertySpec(propertyName: string): GObject.ParamSpec | null
     listSerializableProperties(): GObject.ParamSpec[]
 
     // Overloads of listSerializableProperties
@@ -13633,13 +13633,13 @@ interface TAttribute extends Attribute {
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -13676,12 +13676,12 @@ interface TAttribute extends Attribute {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -13775,8 +13775,8 @@ class TAttribute extends TNode {
     // Constructors of GXml-0.14.GXml.TAttribute
 
     constructor(config?: TAttribute.ConstructorProperties) 
-    constructor(d: Document, name: string | null, value: string | null) 
-    static new(d: Document, name: string | null, value: string | null): TAttribute
+    constructor(d: Document, name: string, value: string) 
+    static new(d: Document, name: string, value: string): TAttribute
     _init(config?: TAttribute.ConstructorProperties): void
 }
 
@@ -13813,12 +13813,12 @@ interface TComment extends Comment {
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -13849,12 +13849,12 @@ interface TComment extends Comment {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -13943,8 +13943,8 @@ class TComment extends TNode {
     // Constructors of GXml-0.14.GXml.TComment
 
     constructor(config?: TComment.ConstructorProperties) 
-    constructor(doc: Document, text: string | null) 
-    static new(doc: Document, text: string | null): TComment
+    constructor(doc: Document, text: string) 
+    static new(doc: Document, text: string): TComment
     _init(config?: TComment.ConstructorProperties): void
 }
 
@@ -13981,12 +13981,12 @@ interface TCDATA extends CDATA {
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -14017,12 +14017,12 @@ interface TCDATA extends CDATA {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -14111,8 +14111,8 @@ class TCDATA extends TNode {
     // Constructors of GXml-0.14.GXml.TCDATA
 
     constructor(config?: TCDATA.ConstructorProperties) 
-    constructor(d: Document, text: string | null) 
-    static new(d: Document, text: string | null): TCDATA
+    constructor(d: Document, text: string) 
+    static new(d: Document, text: string): TCDATA
     _init(config?: TCDATA.ConstructorProperties): void
 }
 
@@ -14155,12 +14155,12 @@ interface TDocument extends Document {
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -14191,12 +14191,12 @@ interface TDocument extends Document {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -14312,16 +14312,16 @@ class TDocument extends TNode {
     constructor(config?: TDocument.ConstructorProperties) 
     constructor() 
     static new(): TDocument
-    static fromPath(path: string | null): TDocument
-    static fromUri(uri: string | null): TDocument
+    static fromPath(path: string): TDocument
+    static fromUri(uri: string): TDocument
     static fromFile(file: Gio.File): TDocument
     static fromStream(stream: Gio.InputStream): TDocument
-    static fromString(str: string | null): TDocument
-    static fromPathWithReadtypeFunc(path: string | null, func: any): TDocument
-    static fromUriWithReadtypeFunc(uri: string | null, func: any): TDocument
+    static fromString(str: string): TDocument
+    static fromPathWithReadtypeFunc(path: string, func: any): TDocument
+    static fromUriWithReadtypeFunc(uri: string, func: any): TDocument
     static fromFileWithReadtypeFunc(file: Gio.File, func: any): TDocument
     static fromStreamWithReadtypeFunc(stream: Gio.InputStream, func: any): TDocument
-    static fromStringWithReadtypeFunc(str: string | null, func: any): TDocument
+    static fromStringWithReadtypeFunc(str: string, func: any): TDocument
     _init(config?: TDocument.ConstructorProperties): void
     static twSaveAs(doc: Document, f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     static writeDocument(doc: Document, tw: libxml2.TextWriter): void
@@ -14367,12 +14367,12 @@ interface TElement extends Element {
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -14403,12 +14403,12 @@ interface TElement extends Element {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -14502,8 +14502,8 @@ class TElement extends TNode {
     // Constructors of GXml-0.14.GXml.TElement
 
     constructor(config?: TElement.ConstructorProperties) 
-    constructor(d: Document, name: string | null) 
-    static new(d: Document, name: string | null): TElement
+    constructor(d: Document, name: string) 
+    static new(d: Document, name: string): TElement
     _init(config?: TElement.ConstructorProperties): void
 }
 
@@ -14534,12 +14534,12 @@ interface TNamespace extends Namespace {
 
     // Conflicting methods
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -14588,12 +14588,12 @@ interface TNamespace extends Namespace {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getParent(): Node
 
     // Overloads of getParent
@@ -14660,8 +14660,8 @@ class TNamespace extends TNode {
     // Constructors of GXml-0.14.GXml.TNamespace
 
     constructor(config?: TNamespace.ConstructorProperties) 
-    constructor(d: Document, uri: string | null, prefix?: string | null) 
-    static new(d: Document, uri: string | null, prefix?: string | null): TNamespace
+    constructor(d: Document, uri: string, prefix?: string | null) 
+    static new(d: Document, uri: string, prefix?: string | null): TNamespace
     _init(config?: TNamespace.ConstructorProperties): void
 }
 
@@ -14701,7 +14701,7 @@ interface TNode extends Node {
 
     // Owm methods of GXml-0.14.GXml.TNode
 
-    // Has conflict: setNamespace(uri: string | null, prefix?: string | null): boolean
+    // Has conflict: setNamespace(uri: string, prefix?: string | null): boolean
     // Has conflict: toString(): string | null
     // Has conflict: setParent(node: Node): void
     // Has conflict: getAttrs(): Gee.Map
@@ -14711,16 +14711,16 @@ interface TNode extends Node {
     // Has conflict: getNamespaces(): Gee.List
     // Has conflict: getTypeNode(): NodeType
     // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: setValue(value: string): void
     // Has conflict: getParent(): Node
 
     // Own virtual methods of GXml-0.14.GXml.TNode
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -14762,11 +14762,11 @@ interface TNode extends Node {
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
     getParent(): Node
 
     // Overloads of getParent
@@ -15207,14 +15207,14 @@ interface TProcessingInstruction extends ProcessingInstruction {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -15232,7 +15232,7 @@ interface TProcessingInstruction extends ProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -15247,19 +15247,19 @@ interface TProcessingInstruction extends ProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -15290,12 +15290,12 @@ interface TProcessingInstruction extends ProcessingInstruction {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -15389,8 +15389,8 @@ class TProcessingInstruction extends TNode {
     // Constructors of GXml-0.14.GXml.TProcessingInstruction
 
     constructor(config?: TProcessingInstruction.ConstructorProperties) 
-    constructor(doc: Document, target: string | null, data: string | null) 
-    static new(doc: Document, target: string | null, data: string | null): TProcessingInstruction
+    constructor(doc: Document, target: string, data: string) 
+    static new(doc: Document, target: string, data: string): TProcessingInstruction
     _init(config?: TProcessingInstruction.ConstructorProperties): void
 }
 
@@ -15427,12 +15427,12 @@ interface TText extends Text {
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -15463,12 +15463,12 @@ interface TText extends Text {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -15557,8 +15557,8 @@ class TText extends TNode {
     // Constructors of GXml-0.14.GXml.TText
 
     constructor(config?: TText.ConstructorProperties) 
-    constructor(d: Document, text: string | null) 
-    static new(d: Document, text: string | null): TText
+    constructor(d: Document, text: string) 
+    static new(d: Document, text: string): TText
     _init(config?: TText.ConstructorProperties): void
 }
 
@@ -15608,24 +15608,24 @@ interface HtmlDocument {
 
     saveAs(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     saveAs(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
-    createElement(name: string | null): Node
-    createElement(localName: string | null): DomElement
-    createComment(text: string | null): Node
-    createComment(data: string | null): DomComment
-    getElementsByPropertyValue(property: string | null, value: string | null): DomElementList
-    getElementsByPropertyValue(property: string | null, value: string | null): ElementList
+    createElement(name: string): Node
+    createElement(localName: string): DomElement
+    createComment(text: string): Node
+    createComment(data: string): DomComment
+    getElementsByPropertyValue(property: string, value: string): DomElementList
+    getElementsByPropertyValue(property: string, value: string): ElementList
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -15656,12 +15656,12 @@ interface HtmlDocument {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -15750,26 +15750,26 @@ class HtmlDocument extends GDocument {
     // Constructors of GXml-0.14.GXml.HtmlDocument
 
     constructor(config?: HtmlDocument.ConstructorProperties) 
-    static fromPath(path: string | null, options: number): HtmlDocument
+    static fromPath(path: string, options: number): HtmlDocument
 
     // Overloads of fromPath
 
-    static fromPath(path: string | null, options: number): GDocument
-    static fromUri(uri: string | null, options: number): HtmlDocument
+    static fromPath(path: string, options: number): GDocument
+    static fromUri(uri: string, options: number): HtmlDocument
 
     // Overloads of fromUri
 
-    static fromUri(uri: string | null, options: number): GDocument
+    static fromUri(uri: string, options: number): GDocument
     static fromFile(file: Gio.File, options: number, cancel?: Gio.Cancellable | null): HtmlDocument
 
     // Overloads of fromFile
 
     static fromFile(file: Gio.File, options: number, cancel?: Gio.Cancellable | null): GDocument
-    static fromString(html: string | null, options: number): HtmlDocument
+    static fromString(html: string, options: number): HtmlDocument
 
     // Overloads of fromString
 
-    static fromString(str: string | null, options: number): GDocument
+    static fromString(str: string, options: number): GDocument
     constructor() 
     static new(): HtmlDocument
 
@@ -15815,13 +15815,13 @@ interface GAttribute extends Attribute, DomAttr {
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getPrefix(): string | null
     getPrefix(): string | null
     toString(): string | null
@@ -15862,13 +15862,13 @@ interface GAttribute extends Attribute, DomAttr {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -16015,14 +16015,14 @@ interface GComment extends Comment, DomComment {
 
     getStr(): string | null
     getStr(): string | null
-    setStr(value: string | null): void
-    setStr(value: string | null): void
+    setStr(value: string): void
+    setStr(value: string): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getData(): string | null
 
     // Overloads of getData
@@ -16032,7 +16032,7 @@ interface GComment extends Comment, DomComment {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -16047,8 +16047,8 @@ interface GComment extends Comment, DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
-    setData(value: string | null): void
+    setData(key: string, data: any | null): void
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -16066,19 +16066,19 @@ interface GComment extends Comment, DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     toString(): string | null
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
     getNamespaces(): Gee.List
 
@@ -16109,12 +16109,12 @@ interface GComment extends Comment, DomComment {
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
     getTypeNode(): NodeType
     getTypeNode(): NodeType
 
@@ -16339,14 +16339,14 @@ interface GCharacterData extends Character, DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -16364,7 +16364,7 @@ interface GCharacterData extends Character, DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -16379,19 +16379,19 @@ interface GCharacterData extends Character, DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     toString(): string | null
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
     getNamespaces(): Gee.List
 
@@ -16422,12 +16422,12 @@ interface GCharacterData extends Character, DomCharacterData {
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
     getTypeNode(): NodeType
     getTypeNode(): NodeType
 
@@ -16642,12 +16642,12 @@ interface GChildNode extends DomChildNode {
 
     // Conflicting methods
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -16702,12 +16702,12 @@ interface GChildNode extends DomChildNode {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.GChildNode
 
@@ -16809,12 +16809,12 @@ interface GNonDocumentChildNode extends DomNonDocumentTypeChildNode {
 
     // Conflicting methods
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -16869,12 +16869,12 @@ interface GNonDocumentChildNode extends DomNonDocumentTypeChildNode {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.GNonDocumentChildNode
 
@@ -16996,12 +16996,12 @@ interface GCDATA extends CDATA {
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -17032,12 +17032,12 @@ interface GCDATA extends CDATA {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -17177,24 +17177,24 @@ interface GDocument extends Document, DomParentNode, DomNonElementParentNode, Do
 
     // Conflicting methods
 
-    createElement(name: string | null): Node
-    createElement(localName: string | null): DomElement
-    createComment(text: string | null): Node
-    createComment(data: string | null): DomComment
-    getElementsByPropertyValue(property: string | null, value: string | null): DomElementList
-    getElementsByPropertyValue(property: string | null, value: string | null): ElementList
+    createElement(name: string): Node
+    createElement(localName: string): DomElement
+    createComment(text: string): Node
+    createComment(data: string): DomComment
+    getElementsByPropertyValue(property: string, value: string): DomElementList
+    getElementsByPropertyValue(property: string, value: string): ElementList
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -17225,12 +17225,12 @@ interface GDocument extends Document, DomParentNode, DomNonElementParentNode, Do
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -17489,10 +17489,10 @@ class GDocument extends GNode {
     constructor(config?: GDocument.ConstructorProperties) 
     constructor() 
     static new(): GDocument
-    static fromPath(path: string | null, options: number): GDocument
-    static fromUri(uri: string | null, options: number): GDocument
+    static fromPath(path: string, options: number): GDocument
+    static fromUri(uri: string, options: number): GDocument
     static fromFile(file: Gio.File, options: number, cancel?: Gio.Cancellable | null): GDocument
-    static fromString(str: string | null, options: number): GDocument
+    static fromString(str: string, options: number): GDocument
     static fromStream(istream: Gio.InputStream): GDocument
     static fromDoc(doc: libxml2.Doc): GDocument
     _init(config?: GDocument.ConstructorProperties): void
@@ -17581,19 +17581,19 @@ interface GDocumentType extends DomNode, DomChildNode, DomDocumentType {
 
     // Conflicting methods
 
-    getName(): string | null
+    getName(): string
     getName(): string | null
 
     // Overloads of getName
 
     getName(): string | null
     getName(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -17642,12 +17642,12 @@ interface GDocumentType extends DomNode, DomChildNode, DomDocumentType {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.GDocumentType
 
@@ -17788,8 +17788,8 @@ class GDocumentType extends GChildNode {
     // Constructors of GXml-0.14.GXml.GDocumentType
 
     constructor(config?: GDocumentType.ConstructorProperties) 
-    static withName(name: string | null): GDocumentType
-    static withIds(name: string | null, publicId: string | null, systemId: string | null): GDocumentType
+    static withName(name: string): GDocumentType
+    static withIds(name: string, publicId: string, systemId: string): GDocumentType
     constructor() 
     static new(): GDocumentType
 
@@ -17837,8 +17837,8 @@ interface GDocumentFragment extends DomDocumentFragment {
 
     // Conflicting methods
 
-    getElementsByPropertyValue(property: string | null, value: string | null): DomElementList
-    getElementsByPropertyValue(property: string | null, value: string | null): ElementList
+    getElementsByPropertyValue(property: string, value: string): DomElementList
+    getElementsByPropertyValue(property: string, value: string): ElementList
     save(cancellable?: Gio.Cancellable | null): boolean
 
     // Overloads of save
@@ -17851,22 +17851,22 @@ interface GDocumentFragment extends DomDocumentFragment {
 
     saveAs(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
     saveAs(f: Gio.File, cancellable?: Gio.Cancellable | null): boolean
-    createElement(name: string | null): Node
-    createElement(localName: string | null): DomElement
-    createComment(text: string | null): Node
-    createComment(data: string | null): DomComment
+    createElement(name: string): Node
+    createElement(localName: string): DomElement
+    createComment(text: string): Node
+    createComment(data: string): DomComment
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
 
     // Overloads of getNamespaces
@@ -17897,12 +17897,12 @@ interface GDocumentFragment extends DomDocumentFragment {
 
     getValue(): string | null
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
     getTypeNode(): NodeType
 
     // Overloads of getTypeNode
@@ -18270,7 +18270,7 @@ interface GDomTokenList extends DomTokenList {
 
     // Conflicting methods
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -18632,7 +18632,7 @@ interface GDomSettableTokenList extends DomSettableTokenList {
 
     // Conflicting methods
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -19465,7 +19465,7 @@ interface GDomCustomEvent {
 
     // Owm methods of GXml-0.14.GXml.GDomCustomEvent
 
-    initCustomEvent(type: string | null, bubbles: boolean, cancelable: boolean, detail?: any | null): void
+    initCustomEvent(type: string, bubbles: boolean, cancelable: boolean, detail?: any | null): void
     getDetail(): any | null
 
     // Class property signals of GXml-0.14.GXml.GDomCustomEvent
@@ -19613,8 +19613,8 @@ interface GElement extends DomParentNode, DomElement, Element, XPathContext {
 
     // Conflicting methods
 
-    getElementsByPropertyValue(property: string | null, value: string | null): DomElementList
-    getElementsByPropertyValue(property: string | null, value: string | null): ElementList
+    getElementsByPropertyValue(property: string, value: string): DomElementList
+    getElementsByPropertyValue(property: string, value: string): ElementList
     getTagName(): string | null
     getTagName(): string | null
     normalize(): void
@@ -19625,12 +19625,12 @@ interface GElement extends DomParentNode, DomElement, Element, XPathContext {
     // Overloads of toString
 
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
     getNamespaces(): Gee.List
 
@@ -19661,12 +19661,12 @@ interface GElement extends DomParentNode, DomElement, Element, XPathContext {
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
     getTypeNode(): NodeType
     getTypeNode(): NodeType
 
@@ -20005,7 +20005,7 @@ interface GNode extends DomEventTarget, DomNode, Node {
 
     // Owm methods of GXml-0.14.GXml.GNode
 
-    // Has conflict: setNamespace(uri: string | null, prefix?: string | null): boolean
+    // Has conflict: setNamespace(uri: string, prefix?: string | null): boolean
     // Has conflict: toString(): string | null
     getInternalNode(): any | null
     // Has conflict: getAttrs(): Gee.Map
@@ -20016,15 +20016,15 @@ interface GNode extends DomEventTarget, DomNode, Node {
     // Has conflict: getTypeNode(): NodeType
     // Has conflict: getName(): string | null
     // Has conflict: getValue(): string | null
-    // Has conflict: setValue(value: string | null): void
+    // Has conflict: setValue(value: string): void
 
     // Own virtual methods of GXml-0.14.GXml.GNode
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     toString(): string | null
 
     // Overloads of toString
@@ -20070,11 +20070,11 @@ interface GNode extends DomEventTarget, DomNode, Node {
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of GXml-0.14.GXml.GNode
 
@@ -20251,13 +20251,13 @@ interface GProcessingInstruction extends ProcessingInstruction, DomProcessingIns
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getData(): string | null
 
     // Overloads of getData
@@ -20267,8 +20267,8 @@ interface GProcessingInstruction extends ProcessingInstruction, DomProcessingIns
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -20286,7 +20286,7 @@ interface GProcessingInstruction extends ProcessingInstruction, DomProcessingIns
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -20301,8 +20301,8 @@ interface GProcessingInstruction extends ProcessingInstruction, DomProcessingIns
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
-    setData(value: string | null): void
+    setData(key: string, data: any | null): void
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -20320,19 +20320,19 @@ interface GProcessingInstruction extends ProcessingInstruction, DomProcessingIns
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     toString(): string | null
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
     getNamespaces(): Gee.List
 
@@ -20363,12 +20363,12 @@ interface GProcessingInstruction extends ProcessingInstruction, DomProcessingIns
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
     getTypeNode(): NodeType
     getTypeNode(): NodeType
 
@@ -20586,14 +20586,14 @@ interface GText extends Text, DomText {
 
     getStr(): string | null
     getStr(): string | null
-    setStr(value: string | null): void
-    setStr(value: string | null): void
+    setStr(value: string): void
+    setStr(value: string): void
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getData(): string | null
 
     // Overloads of getData
@@ -20603,7 +20603,7 @@ interface GText extends Text, DomText {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -20618,8 +20618,8 @@ interface GText extends Text, DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
-    setData(value: string | null): void
+    setData(key: string, data: any | null): void
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -20637,19 +20637,19 @@ interface GText extends Text, DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     toString(): string | null
     toString(): string | null
 
     // Overloads of toString
 
     toString(): string | null
-    setNamespace(uri: string | null, prefix?: string | null): boolean
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
 
     // Overloads of setNamespace
 
-    setNamespace(uri: string | null, prefix?: string | null): boolean
+    setNamespace(uri: string, prefix?: string | null): boolean
     getNamespaces(): Gee.List
     getNamespaces(): Gee.List
 
@@ -20680,12 +20680,12 @@ interface GText extends Text, DomText {
     // Overloads of getValue
 
     getValue(): string | null
-    setValue(value: string | null): void
-    setValue(value: string | null): void
+    setValue(value: string): void
+    setValue(value: string): void
 
     // Overloads of setValue
 
-    setValue(value: string | null): void
+    setValue(value: string): void
     getTypeNode(): NodeType
     getTypeNode(): NodeType
 
@@ -22730,7 +22730,7 @@ interface DomErrorName {
     // Owm methods of GXml-0.14.GXml.DomErrorName
 
     getName(errorCode: number): string | null
-    getCode(errorName: string | null): number
+    getCode(errorName: string): number
 
     // Class property signals of GXml-0.14.GXml.DomErrorName
 
@@ -22875,7 +22875,7 @@ interface GomDocument extends DomParentNode, DomNonElementParentNode, DomDocumen
     createStream(): Gio.InputStream
     writeString(): string | null
     readFromFile(file: Gio.File): void
-    readFromString(str: string | null): void
+    readFromString(str: string): void
 
     // Class property signals of GXml-0.14.GXml.GomDocument
 
@@ -23037,11 +23037,11 @@ class GomDocument extends GomNode {
     // Overloads of new
 
     static new(): GomNode
-    static fromPath(path: string | null): GomDocument
-    static fromUri(uri: string | null): GomDocument
+    static fromPath(path: string): GomDocument
+    static fromUri(uri: string): GomDocument
     static fromFile(file: Gio.File): GomDocument
     static fromStream(stream: Gio.InputStream): GomDocument
-    static fromString(str: string | null): GomDocument
+    static fromString(str: string): GomDocument
     _init(config?: GomDocument.ConstructorProperties): void
 }
 
@@ -23227,8 +23227,8 @@ class GomDocumentType extends GomNode {
     // Constructors of GXml-0.14.GXml.GomDocumentType
 
     constructor(config?: GomDocumentType.ConstructorProperties) 
-    static withName(doc: DomDocument, name: string | null): GomDocumentType
-    static withIds(doc: DomDocument, name: string | null, publicId: string | null, systemId: string | null): GomDocumentType
+    static withName(doc: DomDocument, name: string): GomDocumentType
+    static withIds(doc: DomDocument, name: string, publicId: string, systemId: string): GomDocumentType
     constructor() 
     static new(): GomDocumentType
 
@@ -23421,10 +23421,10 @@ interface GomElement extends DomChildNode, DomNonDocumentTypeChildNode, DomParen
 
     // Owm methods of GXml-0.14.GXml.GomElement
 
-    readFromUri(uri: string | null): void
+    readFromUri(uri: string): void
     readFromFile(f: Gio.File, cancellable?: Gio.Cancellable | null): void
     readFromStream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void
-    readFromString(str: string | null): void
+    readFromString(str: string): void
     writeString(): string | null
     writeFile(f: Gio.File): void
     writeStream(stream: Gio.OutputStream): void
@@ -23439,36 +23439,36 @@ interface GomElement extends DomChildNode, DomNonDocumentTypeChildNode, DomParen
     // Overloads of lookupNamespaceUri
 
     lookupNamespaceUri(prefix?: string | null): string | null
-    initialize(localName: string | null): void
-    initializeDocument(doc: DomDocument, localName: string | null): void
-    initializeWithNamespace(namespaceUri: string | null, prefix: string | null, localName: string | null): void
-    initializeDocumentWithNamespace(doc: DomDocument, namespaceUri: string | null, prefix: string | null, localName: string | null): void
+    initialize(localName: string): void
+    initializeDocument(doc: DomDocument, localName: string): void
+    initializeWithNamespace(namespaceUri: string | null, prefix: string | null, localName: string): void
+    initializeDocumentWithNamespace(doc: DomDocument, namespaceUri: string | null, prefix: string | null, localName: string): void
     readUnparsed(): void
     getParseChildren(): boolean
     setParseChildren(value: boolean): void
-    getUnparsed(): string | null
-    setUnparsed(value: string | null): void
+    getUnparsed(): string
+    setUnparsed(value: string): void
 
     // Conflicting methods
 
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomElement
 
@@ -23943,13 +23943,13 @@ class GomAttr extends GomNode {
     // Constructors of GXml-0.14.GXml.GomAttr
 
     constructor(config?: GomAttr.ConstructorProperties) 
-    constructor(element: DomElement, name: string | null, value: string | null) 
-    static new(element: DomElement, name: string | null, value: string | null): GomAttr
+    constructor(element: DomElement, name: string, value: string) 
+    static new(element: DomElement, name: string, value: string): GomAttr
 
     // Overloads of new
 
     static new(): GomNode
-    static namespace(element: DomElement, namespaceUri: string | null, prefix: string | null, name: string | null, value: string | null): GomAttr
+    static namespace(element: DomElement, namespaceUri: string, prefix: string | null, name: string, value: string): GomAttr
     _init(config?: GomAttr.ConstructorProperties): void
 }
 
@@ -24459,14 +24459,14 @@ interface GomCharacterData extends DomNonDocumentTypeChildNode, DomChildNode, Do
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -24484,7 +24484,7 @@ interface GomCharacterData extends DomNonDocumentTypeChildNode, DomChildNode, Do
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -24499,7 +24499,7 @@ interface GomCharacterData extends DomNonDocumentTypeChildNode, DomChildNode, Do
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of GXml-0.14.GXml.GomCharacterData
 
@@ -24656,14 +24656,14 @@ interface GomText extends DomText {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -24681,7 +24681,7 @@ interface GomText extends DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -24696,7 +24696,7 @@ interface GomText extends DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of GXml-0.14.GXml.GomText
 
@@ -24812,8 +24812,8 @@ class GomText extends GomCharacterData {
     // Constructors of GXml-0.14.GXml.GomText
 
     constructor(config?: GomText.ConstructorProperties) 
-    constructor(doc: DomDocument, data: string | null) 
-    static new(doc: DomDocument, data: string | null): GomText
+    constructor(doc: DomDocument, data: string) 
+    static new(doc: DomDocument, data: string): GomText
 
     // Overloads of new
 
@@ -24859,14 +24859,14 @@ interface GomProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -24884,7 +24884,7 @@ interface GomProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -24899,7 +24899,7 @@ interface GomProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of GXml-0.14.GXml.GomProcessingInstruction
 
@@ -25015,8 +25015,8 @@ class GomProcessingInstruction extends GomCharacterData {
     // Constructors of GXml-0.14.GXml.GomProcessingInstruction
 
     constructor(config?: GomProcessingInstruction.ConstructorProperties) 
-    constructor(doc: DomDocument, target: string | null, data: string | null) 
-    static new(doc: DomDocument, target: string | null, data: string | null): GomProcessingInstruction
+    constructor(doc: DomDocument, target: string, data: string) 
+    static new(doc: DomDocument, target: string, data: string): GomProcessingInstruction
 
     // Overloads of new
 
@@ -25062,14 +25062,14 @@ interface GomComment extends DomComment {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -25087,7 +25087,7 @@ interface GomComment extends DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -25102,7 +25102,7 @@ interface GomComment extends DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of GXml-0.14.GXml.GomComment
 
@@ -25213,8 +25213,8 @@ class GomComment extends GomCharacterData {
     // Constructors of GXml-0.14.GXml.GomComment
 
     constructor(config?: GomComment.ConstructorProperties) 
-    constructor(doc: DomDocument, data: string | null) 
-    static new(doc: DomDocument, data: string | null): GomComment
+    constructor(doc: DomDocument, data: string) 
+    static new(doc: DomDocument, data: string): GomComment
 
     // Overloads of new
 
@@ -25259,7 +25259,7 @@ interface BaseCollection {
     append(node: DomElement): void
     search(): void
     // Has conflict: validateAppend(index: number, element: DomElement): boolean
-    getItemsName(): string | null
+    getItemsName(): string
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
     getNodesIndex(): GLib.Queue
@@ -25338,8 +25338,8 @@ interface GomArrayList extends GomCollection {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -25432,13 +25432,13 @@ interface GomHashMap extends GomCollection {
 
     // Owm methods of GXml-0.14.GXml.GomHashMap
 
-    initializeElementWithKey(element: GomElement, itemsType: GObject.GType, attributeKey: string | null): void
-    initializeWithKey(itemsType: GObject.GType, attributeKey: string | null): void
-    get(key: string | null): DomElement | null
-    hasKey(key: string | null): boolean
+    initializeElementWithKey(element: GomElement, itemsType: GObject.GType, attributeKey: string): void
+    initializeWithKey(itemsType: GObject.GType, attributeKey: string): void
+    get(key: string): DomElement | null
+    hasKey(key: string): boolean
     getKeys(): string[]
-    getAttributeKey(): string | null
-    setAttributeKey(value: string | null): void
+    getAttributeKey(): string
+    setAttributeKey(value: string): void
 
     // Conflicting methods
 
@@ -25456,8 +25456,8 @@ interface GomHashMap extends GomCollection {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -25552,17 +25552,17 @@ interface GomHashPairedMap extends GomCollection {
 
     // Owm methods of GXml-0.14.GXml.GomHashPairedMap
 
-    initializeElementWithKeys(element: GomElement, itemsType: GObject.GType, attributePrimaryKey: string | null, attributeSecondaryKey: string | null): void
-    initializeWithKeys(itemsType: GObject.GType, attributePrimaryKey: string | null, attributeSecondaryKey: string | null): void
-    get(primaryKey: string | null, secondaryKey: string | null): DomElement | null
-    hasPrimaryKey(key: string | null): boolean
-    hasSecondaryKey(pkey: string | null, key: string | null): boolean
+    initializeElementWithKeys(element: GomElement, itemsType: GObject.GType, attributePrimaryKey: string, attributeSecondaryKey: string): void
+    initializeWithKeys(itemsType: GObject.GType, attributePrimaryKey: string, attributeSecondaryKey: string): void
+    get(primaryKey: string, secondaryKey: string): DomElement | null
+    hasPrimaryKey(key: string): boolean
+    hasSecondaryKey(pkey: string, key: string): boolean
     getPrimaryKeys(): string[]
-    getSecondaryKeys(pkey: string | null): string[]
-    getAttributePrimaryKey(): string | null
-    setAttributePrimaryKey(value: string | null): void
-    getAttributeSecondaryKey(): string | null
-    setAttributeSecondaryKey(value: string | null): void
+    getSecondaryKeys(pkey: string): string[]
+    getAttributePrimaryKey(): string
+    setAttributePrimaryKey(value: string): void
+    getAttributeSecondaryKey(): string
+    setAttributeSecondaryKey(value: string): void
 
     // Conflicting methods
 
@@ -25580,8 +25580,8 @@ interface GomHashPairedMap extends GomCollection {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -25678,21 +25678,21 @@ interface GomHashThreeMap extends GomCollection {
 
     // Owm methods of GXml-0.14.GXml.GomHashThreeMap
 
-    initializeElementWithKeys(element: GomElement, itemsType: GObject.GType, attributePrimaryKey: string | null, attributeSecondaryKey: string | null, attributeThirdKey: string | null): void
-    initializeWithKeys(itemsType: GObject.GType, attributePrimaryKey: string | null, attributeSecondaryKey: string | null, attributeThirdKey: string | null): void
-    get(primaryKey: string | null, secondaryKey: string | null, thirdKey: string | null): DomElement | null
-    hasPrimaryKey(key: string | null): boolean
-    hasSecondaryKey(pkey: string | null, key: string | null): boolean
-    hasThirdKey(pkey: string | null, skey: string | null, key: string | null): boolean
+    initializeElementWithKeys(element: GomElement, itemsType: GObject.GType, attributePrimaryKey: string, attributeSecondaryKey: string, attributeThirdKey: string): void
+    initializeWithKeys(itemsType: GObject.GType, attributePrimaryKey: string, attributeSecondaryKey: string, attributeThirdKey: string): void
+    get(primaryKey: string, secondaryKey: string, thirdKey: string): DomElement | null
+    hasPrimaryKey(key: string): boolean
+    hasSecondaryKey(pkey: string, key: string): boolean
+    hasThirdKey(pkey: string, skey: string, key: string): boolean
     getPrimaryKeys(): string[]
-    getSecondaryKeys(pkey: string | null): string[]
-    getThirdKeys(pkey: string | null, skey: string | null): string[]
-    getAttributePrimaryKey(): string | null
-    setAttributePrimaryKey(value: string | null): void
-    getAttributeSecondaryKey(): string | null
-    setAttributeSecondaryKey(value: string | null): void
-    getAttributeThirdKey(): string | null
-    setAttributeThirdKey(value: string | null): void
+    getSecondaryKeys(pkey: string): string[]
+    getThirdKeys(pkey: string, skey: string): string[]
+    getAttributePrimaryKey(): string
+    setAttributePrimaryKey(value: string): void
+    getAttributeSecondaryKey(): string
+    setAttributeSecondaryKey(value: string): void
+    getAttributeThirdKey(): string
+    setAttributeThirdKey(value: string): void
 
     // Conflicting methods
 
@@ -25710,8 +25710,8 @@ interface GomHashThreeMap extends GomCollection {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -25798,17 +25798,17 @@ interface GomBaseProperty extends GomProperty {
 
     // Owm methods of GXml-0.14.GXml.GomBaseProperty
 
-    // Has conflict: validateValue(val: string | null): boolean
+    // Has conflict: validateValue(val: string): boolean
     // Has conflict: getValue(): string | null
     // Has conflict: setValue(value?: string | null): void
 
     // Own virtual methods of GXml-0.14.GXml.GomBaseProperty
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -25875,12 +25875,12 @@ interface GomString {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -25956,16 +25956,16 @@ interface GomArrayString {
     initializeStrings(strs: string[]): void
     isValidValue(): boolean
     select(index: number): void
-    search(str: string | null): boolean
+    search(str: string): boolean
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26043,19 +26043,19 @@ interface GomXsdArrayString {
     // Owm methods of GXml-0.14.GXml.GomXsdArrayString
 
     load(): void
-    getSimpleType(): string | null
-    setSimpleType(value: string | null): void
+    getSimpleType(): string
+    setSimpleType(value: string): void
     getSource(): Gio.File
     setSource(value: Gio.File): void
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26142,12 +26142,12 @@ interface GomDouble {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26231,12 +26231,12 @@ interface GomFloat {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26321,12 +26321,12 @@ interface GomInt {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26402,12 +26402,12 @@ interface GomBoolean {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26491,12 +26491,12 @@ interface GomEnum {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26572,12 +26572,12 @@ interface GomDate {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26655,17 +26655,17 @@ interface GomDateTime {
 
     getDatetime(): GLib.DateTime
     setDatetime(dt: GLib.DateTime): void
-    getFormat(): string | null
-    setFormat(value: string | null): void
+    getFormat(): string
+    setFormat(value: string): void
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -26742,7 +26742,7 @@ interface XParser extends Parser {
 
     createStream(cancellable?: Gio.Cancellable | null): Gio.InputStream
     readChildNodesStream(istream: Gio.InputStream, cancellable?: Gio.Cancellable | null): void
-    readChildNodesString(str: string | null, cancellable?: Gio.Cancellable | null): void
+    readChildNodesString(str: string, cancellable?: Gio.Cancellable | null): void
     readNode(node: DomNode): void
     readUnparsed(): string | null
     moveNextNode(): boolean
@@ -26864,24 +26864,24 @@ interface GomXsdSchema {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdSchema
 
@@ -26989,10 +26989,10 @@ interface GomXsdSimpleType {
 
     // Owm methods of GXml-0.14.GXml.GomXsdSimpleType
 
-    getFinal(): string | null
-    setFinal(value: string | null): void
-    getName(): string | null
-    setName(value: string | null): void
+    getFinal(): string
+    setFinal(value: string): void
+    getName(): string
+    setName(value: string): void
     getAnnotation(): GomXsdAnnotation
     setAnnotation(value: GomXsdAnnotation): void
     getList(): GomXsdTypeList
@@ -27016,24 +27016,24 @@ interface GomXsdSimpleType {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdSimpleType
 
@@ -27163,24 +27163,24 @@ interface GomXsdTypeDefinition {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeDefinition
 
@@ -27275,24 +27275,24 @@ interface GomXsdTypeList {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeList
 
@@ -27388,24 +27388,24 @@ interface GomXsdTypeUnion {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeUnion
 
@@ -27500,8 +27500,8 @@ interface GomXsdTypeRestriction {
 
     // Owm methods of GXml-0.14.GXml.GomXsdTypeRestriction
 
-    getBase(): string | null
-    setBase(value: string | null): void
+    getBase(): string
+    setBase(value: string): void
     getSimpleType(): GomXsdSimpleType
     setSimpleType(value: GomXsdSimpleType): void
     getEnumerations(): GomXsdListTypeRestrictionEnumerations
@@ -27523,24 +27523,24 @@ interface GomXsdTypeRestriction {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestriction
 
@@ -27666,24 +27666,24 @@ interface GomXsdTypeRestrictionDef {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionDef
 
@@ -27778,24 +27778,24 @@ interface GomXsdTypeRestrictionMinExclusive {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionMinExclusive
 
@@ -27891,24 +27891,24 @@ interface GomXsdTypeRestrictionMinInclusive {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionMinInclusive
 
@@ -28004,24 +28004,24 @@ interface GomXsdTypeRestrictionMaxExclusive {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionMaxExclusive
 
@@ -28117,24 +28117,24 @@ interface GomXsdTypeRestrictionMaxInclusive {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionMaxInclusive
 
@@ -28230,24 +28230,24 @@ interface GomXsdTypeRestrictionTotalDigits {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionTotalDigits
 
@@ -28343,24 +28343,24 @@ interface GomXsdTypeRestrictionFractionDigits {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionFractionDigits
 
@@ -28456,24 +28456,24 @@ interface GomXsdTypeRestrictionLength {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionLength
 
@@ -28569,24 +28569,24 @@ interface GomXsdTypeRestrictionMinLength {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionMinLength
 
@@ -28682,24 +28682,24 @@ interface GomXsdTypeRestrictionMaxLength {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionMaxLength
 
@@ -28788,8 +28788,8 @@ interface GomXsdTypeRestrictionEnumeration {
 
     // Owm methods of GXml-0.14.GXml.GomXsdTypeRestrictionEnumeration
 
-    getValue(): string | null
-    setValue(value: string | null): void
+    getValue(): string
+    setValue(value: string): void
 
     // Conflicting methods
 
@@ -28805,24 +28805,24 @@ interface GomXsdTypeRestrictionEnumeration {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionEnumeration
 
@@ -28920,8 +28920,8 @@ interface GomXsdTypeRestrictionWhiteSpace {
 
     getFixed(): GomXsdTypeRestrictionWhiteSpaceFixed
     setFixed(value: GomXsdTypeRestrictionWhiteSpaceFixed): void
-    getValue(): string | null
-    setValue(value: string | null): void
+    getValue(): string
+    setValue(value: string): void
 
     // Conflicting methods
 
@@ -28937,24 +28937,24 @@ interface GomXsdTypeRestrictionWhiteSpace {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionWhiteSpace
 
@@ -29042,12 +29042,12 @@ interface GomXsdTypeRestrictionWhiteSpaceFixed {
 
     // Conflicting methods
 
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
 
     // Overloads of validateValue
 
-    validateValue(val: string | null): boolean
-    validateValue(val: string | null): boolean
+    validateValue(val: string): boolean
+    validateValue(val: string): boolean
     getValue(): string | null
 
     // Overloads of getValue
@@ -29143,24 +29143,24 @@ interface GomXsdTypeRestrictionPattern {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionPattern
 
@@ -29256,24 +29256,24 @@ interface GomXsdTypeRestrictionAssertion {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionAssertion
 
@@ -29369,24 +29369,24 @@ interface GomXsdTypeRestrictionExplicitTimezone {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdTypeRestrictionExplicitTimezone
 
@@ -29491,14 +29491,14 @@ interface GomXsdComplexType {
 
     getAbstract(): boolean
     setAbstract(value: boolean): void
-    getBlock(): string | null
-    setBlock(value: string | null): void
-    getFinal(): string | null
-    setFinal(value: string | null): void
+    getBlock(): string
+    setBlock(value: string): void
+    getFinal(): string
+    setFinal(value: string): void
     getMixed(): boolean
     setMixed(value: boolean): void
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getDefaultAttributesApply(): boolean
     setDefaultAttributesApply(value: boolean): void
     getContentType(): GomXsdBaseContent
@@ -29520,24 +29520,24 @@ interface GomXsdComplexType {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdComplexType
 
@@ -29661,8 +29661,8 @@ interface GomXsdExtension {
 
     // Owm methods of GXml-0.14.GXml.GomXsdExtension
 
-    getBase(): string | null
-    setBase(value: string | null): void
+    getBase(): string
+    setBase(value: string): void
 
     // Conflicting methods
 
@@ -29678,24 +29678,24 @@ interface GomXsdExtension {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdExtension
 
@@ -29817,32 +29817,32 @@ interface GomXsdElement {
 
     getAbstract(): boolean
     setAbstract(value: boolean): void
-    getBlock(): string | null
-    setBlock(value: string | null): void
-    getDefault(): string | null
-    setDefault(value: string | null): void
-    getFinal(): string | null
-    setFinal(value: string | null): void
-    getFixed(): string | null
-    setFixed(value: string | null): void
-    getForm(): string | null
-    setForm(value: string | null): void
-    getMaxOccurs(): string | null
-    setMaxOccurs(value: string | null): void
-    getMinOccurs(): string | null
-    setMinOccurs(value: string | null): void
-    getName(): string | null
-    setName(value: string | null): void
+    getBlock(): string
+    setBlock(value: string): void
+    getDefault(): string
+    setDefault(value: string): void
+    getFinal(): string
+    setFinal(value: string): void
+    getFixed(): string
+    setFixed(value: string): void
+    getForm(): string
+    setForm(value: string): void
+    getMaxOccurs(): string
+    setMaxOccurs(value: string): void
+    getMinOccurs(): string
+    setMinOccurs(value: string): void
+    getName(): string
+    setName(value: string): void
     getNillable(): boolean
     setNillable(value: boolean): void
-    getRef(): string | null
-    setRef(value: string | null): void
+    getRef(): string
+    setRef(value: string): void
     getSubstitutionGroup(): DomTokenList
     setSubstitutionGroup(value: DomTokenList): void
-    getTargetNamespace(): string | null
-    setTargetNamespace(value: string | null): void
-    getObjectType(): string | null
-    setObjectType(value: string | null): void
+    getTargetNamespace(): string
+    setTargetNamespace(value: string): void
+    getObjectType(): string
+    setObjectType(value: string): void
     getAnotation(): GomXsdAnnotation
     setAnotation(value: GomXsdAnnotation): void
     getSimpleType(): GomXsdSimpleType
@@ -29864,24 +29864,24 @@ interface GomXsdElement {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdElement
 
@@ -30056,24 +30056,24 @@ interface GomXsdAnnotation {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdAnnotation
 
@@ -30173,24 +30173,24 @@ interface GomXsdBaseType {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdBaseType
 
@@ -30295,24 +30295,24 @@ interface GomXsdBaseContent {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdBaseContent
 
@@ -30407,24 +30407,24 @@ interface GomXsdSimpleContent {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdSimpleContent
 
@@ -30520,24 +30520,24 @@ interface GomXsdComplexContent {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdComplexContent
 
@@ -30633,24 +30633,24 @@ interface GomXsdOpenContent {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdOpenContent
 
@@ -30756,24 +30756,24 @@ interface GomXsdBaseAttribute {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdBaseAttribute
 
@@ -30868,24 +30868,24 @@ interface GomXsdAttribute {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdAttribute
 
@@ -30981,24 +30981,24 @@ interface GomXsdAttributeGroup {
 
     lookupNamespaceUri(prefix?: string | null): string | null
     lookupNamespaceUri(prefix?: string | null): string | null
-    getAttribute(name: string | null): string | null
-    getAttribute(name: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttribute(name: string): string | null
 
     // Overloads of getAttribute
 
-    getAttribute(name: string | null): string | null
-    setAttribute(name: string | null, value: string | null): void
-    setAttribute(name: string | null, val: string | null): boolean
+    getAttribute(name: string): string | null
+    setAttribute(name: string, value: string): void
+    setAttribute(name: string, val: string): boolean
 
     // Overloads of setAttribute
 
-    setAttribute(name: string | null, value: string | null): void
-    removeAttribute(name: string | null): void
-    removeAttribute(name: string | null): boolean
+    setAttribute(name: string, value: string): void
+    removeAttribute(name: string): void
+    removeAttribute(name: string): boolean
 
     // Overloads of removeAttribute
 
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
 
     // Class property signals of GXml-0.14.GXml.GomXsdAttributeGroup
 
@@ -31102,8 +31102,8 @@ interface GomXsdList {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -31194,8 +31194,8 @@ interface GomXsdListElements {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -31287,8 +31287,8 @@ interface GomXsdListSimpleTypes {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -31380,8 +31380,8 @@ interface GomXsdListComplexTypes {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -31473,8 +31473,8 @@ interface GomXsdListTypeRestrictionEnumerations {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -31566,8 +31566,8 @@ interface GomXsdListTypeRestrictionWhiteSpaces {
     getElement(): GomElement
     setElement(value: GomElement): void
     setElement(value: GomElement): void
-    getItemsName(): string | null
-    getItemsName(): string | null
+    getItemsName(): string
+    getItemsName(): string
     getItemsType(): GObject.GType
     getItemsType(): GObject.GType
     setItemsType(value: GObject.GType): void
@@ -31826,7 +31826,7 @@ class Enumeration {
     static getNick(enumeration: GObject.GType, val: number): string | null
     static getNickCamelcase(enumeration: GObject.GType, val: number): string | null
     static getString(enumeration: GObject.GType, val: number, useNick: boolean, camelcase: boolean): string | null
-    static parse(enumeration: GObject.GType, val: string | null): GObject.EnumValue | null
+    static parse(enumeration: GObject.GType, val: string): GObject.EnumValue | null
     static toArray(enumeration: GObject.GType): GObject.EnumValue[]
     static parseInteger(enumeration: GObject.GType, val: number): GObject.EnumValue | null
     static toStringArray(enumeration: GObject.GType): string[]
@@ -31842,7 +31842,7 @@ interface SerializableObjectModelClass {
     propertyUseNick: (self: SerializableObjectModel) => boolean
     setDefaultNamespace: (self: SerializableObjectModel, node: Node) => boolean
     nodeName: (self: SerializableObjectModel) => string | null
-    findPropertySpec: (self: SerializableObjectModel, propertyName: string | null) => GObject.ParamSpec | null
+    findPropertySpec: (self: SerializableObjectModel, propertyName: string) => GObject.ParamSpec | null
     listSerializableProperties: (self: SerializableObjectModel) => GObject.ParamSpec[]
     serialize: (self: SerializableObjectModel, node: Node) => Node | null
     serializeProperty: (self: SerializableObjectModel, element: Node, prop: GObject.ParamSpec) => Node | null
@@ -31881,7 +31881,7 @@ interface SerializableTreeMapClass {
     serializeUseXmlNodeValue: (self: SerializableTreeMap) => boolean
     propertyUseNick: (self: SerializableTreeMap) => boolean
     nodeName: (self: SerializableTreeMap) => string | null
-    findPropertySpec: (self: SerializableTreeMap, propertyName: string | null) => GObject.ParamSpec | null
+    findPropertySpec: (self: SerializableTreeMap, propertyName: string) => GObject.ParamSpec | null
     listSerializableProperties: (self: SerializableTreeMap) => GObject.ParamSpec[]
     serialize: (self: SerializableTreeMap, node: Node) => Node | null
     serializeProperty: (self: SerializableTreeMap, element: Node, prop: GObject.ParamSpec) => Node | null
@@ -31920,7 +31920,7 @@ interface SerializableHashMapClass {
     serializeUseXmlNodeValue: (self: SerializableHashMap) => boolean
     propertyUseNick: (self: SerializableHashMap) => boolean
     nodeName: (self: SerializableHashMap) => string | null
-    findPropertySpec: (self: SerializableHashMap, propertyName: string | null) => GObject.ParamSpec | null
+    findPropertySpec: (self: SerializableHashMap, propertyName: string) => GObject.ParamSpec | null
     listSerializableProperties: (self: SerializableHashMap) => GObject.ParamSpec[]
     serialize: (self: SerializableHashMap, node: Node) => Node | null
     serializeProperty: (self: SerializableHashMap, element: Node, prop: GObject.ParamSpec) => Node | null
@@ -31959,7 +31959,7 @@ interface SerializableDualKeyMapClass {
     serializeUseXmlNodeValue: (self: SerializableDualKeyMap) => boolean
     propertyUseNick: (self: SerializableDualKeyMap) => boolean
     nodeName: (self: SerializableDualKeyMap) => string | null
-    findPropertySpec: (self: SerializableDualKeyMap, propertyName: string | null) => GObject.ParamSpec | null
+    findPropertySpec: (self: SerializableDualKeyMap, propertyName: string) => GObject.ParamSpec | null
     listSerializableProperties: (self: SerializableDualKeyMap) => GObject.ParamSpec[]
     serialize: (self: SerializableDualKeyMap, node: Node) => Node | null
     serializeProperty: (self: SerializableDualKeyMap, element: Node, prop: GObject.ParamSpec) => Node | null
@@ -31997,7 +31997,7 @@ interface SerializableArrayListClass {
     serializeUseXmlNodeValue: (self: SerializableArrayList) => boolean
     propertyUseNick: (self: SerializableArrayList) => boolean
     nodeName: (self: SerializableArrayList) => string | null
-    findPropertySpec: (self: SerializableArrayList, propertyName: string | null) => GObject.ParamSpec | null
+    findPropertySpec: (self: SerializableArrayList, propertyName: string) => GObject.ParamSpec | null
     listSerializableProperties: (self: SerializableArrayList) => GObject.ParamSpec[]
     serialize: (self: SerializableArrayList, node: Node) => Node | null
     serializeProperty: (self: SerializableArrayList, element: Node, prop: GObject.ParamSpec) => Node | null
@@ -32196,7 +32196,7 @@ interface TNodeClass {
     // Own fields of GXml-0.14.GXml.TNodeClass
 
     parentClass: GObject.ObjectClass
-    setNamespace: (self: TNode, uri: string | null, prefix?: string | null) => boolean
+    setNamespace: (self: TNode, uri: string, prefix?: string | null) => boolean
     toString: (self: TNode) => string | null
     setParent: (self: TNode, node: Node) => void
 }
@@ -32801,7 +32801,7 @@ interface GNodeClass {
     // Own fields of GXml-0.14.GXml.GNodeClass
 
     parentClass: GObject.ObjectClass
-    setNamespace: (self: GNode, uri: string | null, prefix?: string | null) => boolean
+    setNamespace: (self: GNode, uri: string, prefix?: string | null) => boolean
     toString: (self: GNode) => string | null
 }
 
@@ -33668,7 +33668,7 @@ interface GomBasePropertyClass {
     // Own fields of GXml-0.14.GXml.GomBasePropertyClass
 
     parentClass: GObject.ObjectClass
-    validateValue: (self: GomBaseProperty, val: string | null) => boolean
+    validateValue: (self: GomBaseProperty, val: string) => boolean
 }
 
 abstract class GomBasePropertyClass {
@@ -34935,7 +34935,7 @@ interface CommentIface {
 
     parentIface: GObject.TypeInterface
     getStr: (self: Comment) => string | null
-    setStr: (self: Comment, value: string | null) => void
+    setStr: (self: Comment, value: string) => void
 }
 
 abstract class CommentIface {
@@ -34966,7 +34966,7 @@ interface CharacterIface {
 
     parentIface: GObject.TypeInterface
     getStr: (self: Character) => string | null
-    setStr: (self: Character, value: string | null) => void
+    setStr: (self: Character, value: string) => void
 }
 
 abstract class CharacterIface {
@@ -34981,11 +34981,11 @@ interface DocumentIface {
     // Own fields of GXml-0.14.GXml.DocumentIface
 
     parentIface: GObject.TypeInterface
-    createElement: (self: Document, name: string | null) => Node
-    createText: (self: Document, text: string | null) => Node
-    createComment: (self: Document, text: string | null) => Node
-    createCdata: (self: Document, text: string | null) => Node
-    createPi: (self: Document, target: string | null, data: string | null) => Node
+    createElement: (self: Document, name: string) => Node
+    createText: (self: Document, text: string) => Node
+    createComment: (self: Document, text: string) => Node
+    createCdata: (self: Document, text: string) => Node
+    createPi: (self: Document, target: string, data: string) => Node
     save: (self: Document, cancellable?: Gio.Cancellable | null) => boolean
     saveAs: (self: Document, f: Gio.File, cancellable?: Gio.Cancellable | null) => boolean
     getIndent: (self: Document) => boolean
@@ -35028,15 +35028,15 @@ interface ElementIface {
 
     parentIface: GObject.TypeInterface
     normalize: (self: Element) => void
-    setAttr: (self: Element, name: string | null, value: string | null) => void
-    getAttr: (self: Element, name: string | null) => Node | null
-    removeAttr: (self: Element, name: string | null) => void
-    removeNsAttr: (self: Element, name: string | null, uri: string | null) => void
-    setNsAttr: (self: Element, ns: string | null, name: string | null, value: string | null) => void
-    getNsAttr: (self: Element, name: string | null, uri: string | null) => Node | null
+    setAttr: (self: Element, name: string, value: string) => void
+    getAttr: (self: Element, name: string) => Node | null
+    removeAttr: (self: Element, name: string) => void
+    removeNsAttr: (self: Element, name: string, uri: string) => void
+    setNsAttr: (self: Element, ns: string, name: string, value: string) => void
+    getNsAttr: (self: Element, name: string, uri: string) => Node | null
     getTagName: (self: Element) => string | null
     getContent: (self: Element) => string | null
-    setContent: (self: Element, value: string | null) => void
+    setContent: (self: Element, value: string) => void
 }
 
 abstract class ElementIface {
@@ -35067,12 +35067,12 @@ interface NodeIface {
     // Own fields of GXml-0.14.GXml.NodeIface
 
     parentIface: GObject.TypeInterface
-    get: (self: Node, key: string | null) => Node | null
-    getElementsByPropertyValue: (self: Node, property: string | null, value: string | null) => ElementList
-    getElementsByName: (self: Node, name: string | null) => ElementList
-    getElementsByNameNs: (self: Node, name: string | null, ns?: string | null) => ElementList
+    get: (self: Node, key: string) => Node | null
+    getElementsByPropertyValue: (self: Node, property: string, value: string) => ElementList
+    getElementsByName: (self: Node, name: string) => ElementList
+    getElementsByNameNs: (self: Node, name: string, ns?: string | null) => ElementList
     toString: (self: Node) => string | null
-    setNamespace: (self: Node, uri: string | null, prefix?: string | null) => boolean
+    setNamespace: (self: Node, uri: string, prefix?: string | null) => boolean
     nsPrefix: (self: Node) => string | null
     nsUri: (self: Node) => string | null
     getNamespaces: (self: Node) => Gee.List
@@ -35080,7 +35080,7 @@ interface NodeIface {
     getAttrs: (self: Node) => Gee.Map
     getName: (self: Node) => string | null
     getValue: (self: Node) => string | null
-    setValue: (self: Node, value: string | null) => void
+    setValue: (self: Node, value: string) => void
     getTypeNode: (self: Node) => NodeType
     getDocument: (self: Node) => Document
     getParent: (self: Node) => Node
@@ -35130,7 +35130,7 @@ interface ProcessingInstructionIface {
     parentIface: GObject.TypeInterface
     getTarget: (self: ProcessingInstruction) => string | null
     getData: (self: ProcessingInstruction) => string | null
-    setData: (self: ProcessingInstruction, value: string | null) => void
+    setData: (self: ProcessingInstruction, value: string) => void
 }
 
 abstract class ProcessingInstructionIface {
@@ -35146,7 +35146,7 @@ interface TextIface {
 
     parentIface: GObject.TypeInterface
     getStr: (self: Text) => string | null
-    setStr: (self: Text, value: string | null) => void
+    setStr: (self: Text, value: string) => void
 }
 
 abstract class TextIface {
@@ -35170,8 +35170,8 @@ interface SerializableIface {
     serializeProperty: (self: Serializable, element: Node, prop: GObject.ParamSpec) => Node | null
     deserialize: (self: Serializable, node: Node) => boolean
     deserializeProperty: (self: Serializable, propertyNode: Node) => boolean
-    findPropertySpec: (self: Serializable, propertyName: string | null) => GObject.ParamSpec | null
-    defaultFindPropertySpec: (self: Serializable, propertyName: string | null) => GObject.ParamSpec | null
+    findPropertySpec: (self: Serializable, propertyName: string) => GObject.ParamSpec | null
+    defaultFindPropertySpec: (self: Serializable, propertyName: string) => GObject.ParamSpec | null
     listSerializableProperties: (self: Serializable) => GObject.ParamSpec[]
     defaultListSerializableProperties: (self: Serializable) => GObject.ParamSpec[]
     getUnknownSerializableProperties: (self: Serializable) => Gee.Map
@@ -35265,7 +35265,7 @@ interface DomAttrIface {
     getLocalName: (self: DomAttr) => string | null
     getName: (self: DomAttr) => string | null
     getValue: (self: DomAttr) => string | null
-    setValue: (self: DomAttr, value: string | null) => void
+    setValue: (self: DomAttr, value: string) => void
     getSpecified: (self: DomAttr) => boolean
 }
 
@@ -35282,12 +35282,12 @@ interface DomCharacterDataIface {
 
     parentIface: GObject.TypeInterface
     substringData: (self: DomCharacterData, offset: number, count: number) => string | null
-    appendData: (self: DomCharacterData, data: string | null) => void
-    insertData: (self: DomCharacterData, offset: number, data: string | null) => void
+    appendData: (self: DomCharacterData, data: string) => void
+    insertData: (self: DomCharacterData, offset: number, data: string) => void
     deleteData: (self: DomCharacterData, offset: number, count: number) => void
-    replaceData: (self: DomCharacterData, offset: number, count: number, data: string | null) => void
+    replaceData: (self: DomCharacterData, offset: number, count: number, data: string) => void
     getData: (self: DomCharacterData) => string | null
-    setData: (self: DomCharacterData, value: string | null) => void
+    setData: (self: DomCharacterData, value: string) => void
     getLength: (self: DomCharacterData) => number
 }
 
@@ -35348,7 +35348,7 @@ interface DomNonElementParentNodeIface {
     // Own fields of GXml-0.14.GXml.DomNonElementParentNodeIface
 
     parentIface: GObject.TypeInterface
-    getElementById: (self: DomNonElementParentNode, elementId: string | null) => DomElement | null
+    getElementById: (self: DomNonElementParentNode, elementId: string) => DomElement | null
 }
 
 abstract class DomNonElementParentNodeIface {
@@ -35363,9 +35363,9 @@ interface DomParentNodeIface {
     // Own fields of GXml-0.14.GXml.DomParentNodeIface
 
     parentIface: GObject.TypeInterface
-    querySelector: (self: DomParentNode, selectors: string | null) => DomElement | null
-    querySelectorAll: (self: DomParentNode, selectors: string | null) => DomNodeList
-    getElementsByPropertyValue: (self: DomParentNode, property: string | null, value: string | null) => DomElementList
+    querySelector: (self: DomParentNode, selectors: string) => DomElement | null
+    querySelectorAll: (self: DomParentNode, selectors: string) => DomNodeList
+    getElementsByPropertyValue: (self: DomParentNode, property: string, value: string) => DomElementList
     getChildren: (self: DomParentNode) => DomHTMLCollection
     getFirstElementChild: (self: DomParentNode) => DomElement | null
     getLastElementChild: (self: DomParentNode) => DomElement | null
@@ -35434,7 +35434,7 @@ interface DomHTMLCollectionIface {
     getElement: (self: DomHTMLCollection, index: number) => DomElement | null
     toArray: (self: DomHTMLCollection) => DomElement[]
     item: (self: DomHTMLCollection, index: number) => DomElement | null
-    namedItem: (self: DomHTMLCollection, name: string | null) => DomElement | null
+    namedItem: (self: DomHTMLCollection, name: string) => DomElement | null
     getLength: (self: DomHTMLCollection) => number
 }
 
@@ -35498,11 +35498,11 @@ interface DomNamedNodeMapIface {
 
     parentIface: GObject.TypeInterface
     item: (self: DomNamedNodeMap, index: number) => DomNode | null
-    getNamedItem: (self: DomNamedNodeMap, name: string | null) => DomNode | null
+    getNamedItem: (self: DomNamedNodeMap, name: string) => DomNode | null
     setNamedItem: (self: DomNamedNodeMap, node: DomNode) => DomNode | null
-    removeNamedItem: (self: DomNamedNodeMap, name: string | null) => DomNode | null
-    removeNamedItemNs: (self: DomNamedNodeMap, namespaceUri: string | null, localName: string | null) => DomNode | null
-    getNamedItemNs: (self: DomNamedNodeMap, namespaceUri: string | null, localName: string | null) => DomNode | null
+    removeNamedItem: (self: DomNamedNodeMap, name: string) => DomNode | null
+    removeNamedItemNs: (self: DomNamedNodeMap, namespaceUri: string, localName: string) => DomNode | null
+    getNamedItemNs: (self: DomNamedNodeMap, namespaceUri: string, localName: string) => DomNode | null
     setNamedItemNs: (self: DomNamedNodeMap, node: DomNode) => DomNode | null
     getLength: (self: DomNamedNodeMap) => number
 }
@@ -35520,10 +35520,10 @@ interface DomTokenListIface {
 
     parentIface: GObject.TypeInterface
     item: (self: DomTokenList, index: number) => string | null
-    contains: (self: DomTokenList, token: string | null) => boolean
+    contains: (self: DomTokenList, token: string) => boolean
     add: (self: DomTokenList, tokens: string[]) => void
     remove: (self: DomTokenList, tokens: string[]) => void
-    toggle: (self: DomTokenList, token: string | null, force: boolean, auto: boolean) => boolean
+    toggle: (self: DomTokenList, token: string, force: boolean, auto: boolean) => boolean
     toString: (self: DomTokenList) => string | null
     getLength: (self: DomTokenList) => number
 }
@@ -35541,7 +35541,7 @@ interface DomSettableTokenListIface {
 
     parentIface: GObject.TypeInterface
     getValue: (self: DomSettableTokenList) => string | null
-    setValue: (self: DomSettableTokenList, value: string | null) => void
+    setValue: (self: DomSettableTokenList, value: string) => void
 }
 
 abstract class DomSettableTokenListIface {
@@ -35556,28 +35556,28 @@ interface DomDocumentIface {
     // Own fields of GXml-0.14.GXml.DomDocumentIface
 
     parentIface: GObject.TypeInterface
-    getElementsByTagName: (self: DomDocument, localName: string | null) => DomHTMLCollection
-    getElementsByTagNameNs: (self: DomDocument, namespace: string | null, localName: string | null) => DomHTMLCollection
-    getElementsByClassName: (self: DomDocument, classNames: string | null) => DomHTMLCollection
-    createElement: (self: DomDocument, localName: string | null) => DomElement
-    createElementNs: (self: DomDocument, namespace: string | null, qualifiedName: string | null) => DomElement
+    getElementsByTagName: (self: DomDocument, localName: string) => DomHTMLCollection
+    getElementsByTagNameNs: (self: DomDocument, namespace: string | null, localName: string) => DomHTMLCollection
+    getElementsByClassName: (self: DomDocument, classNames: string) => DomHTMLCollection
+    createElement: (self: DomDocument, localName: string) => DomElement
+    createElementNs: (self: DomDocument, namespace: string | null, qualifiedName: string) => DomElement
     createDocumentFragment: (self: DomDocument) => DomDocumentFragment
-    createTextNode: (self: DomDocument, data: string | null) => DomText
-    createComment: (self: DomDocument, data: string | null) => DomComment
-    createProcessingInstruction: (self: DomDocument, target: string | null, data: string | null) => DomProcessingInstruction
+    createTextNode: (self: DomDocument, data: string) => DomText
+    createComment: (self: DomDocument, data: string) => DomComment
+    createProcessingInstruction: (self: DomDocument, target: string, data: string) => DomProcessingInstruction
     importNode: (self: DomDocument, node: DomNode, deep: boolean) => DomNode
     adoptNode: (self: DomDocument, node: DomNode) => DomNode
-    createEvent: (self: DomDocument, interface: string | null) => DomEvent
+    createEvent: (self: DomDocument, interface: string) => DomEvent
     createRange: (self: DomDocument) => DomRange
     createNodeIterator: (self: DomDocument, root: DomNode, whatToShow: number, filter?: DomNodeFilter | null) => DomNodeIterator
     createTreeWalker: (self: DomDocument, root: DomNode, whatToShow: number, filter?: DomNodeFilter | null) => DomTreeWalker
     getImplementation: (self: DomDocument) => DomImplementation
-    getUrl: (self: DomDocument) => string | null
-    getDocumentUri: (self: DomDocument) => string | null
-    getOrigin: (self: DomDocument) => string | null
-    getCompatMode: (self: DomDocument) => string | null
-    getCharacterSet: (self: DomDocument) => string | null
-    getContentType: (self: DomDocument) => string | null
+    getUrl: (self: DomDocument) => string
+    getDocumentUri: (self: DomDocument) => string
+    getOrigin: (self: DomDocument) => string
+    getCompatMode: (self: DomDocument) => string
+    getCharacterSet: (self: DomDocument) => string
+    getContentType: (self: DomDocument) => string
     getDoctype: (self: DomDocument) => DomDocumentType | null
     getDocumentElement: (self: DomDocument) => DomElement | null
 }
@@ -35608,9 +35608,9 @@ interface DomImplementationIface {
     // Own fields of GXml-0.14.GXml.DomImplementationIface
 
     parentIface: GObject.TypeInterface
-    createDocumentType: (self: DomImplementation, qualifiedName: string | null, publicId: string | null, systemId: string | null) => DomDocumentType
+    createDocumentType: (self: DomImplementation, qualifiedName: string, publicId: string, systemId: string) => DomDocumentType
     createDocument: (self: DomImplementation, nspace?: string | null, qualifiedName?: string | null, doctype?: DomDocumentType | null) => DomXMLDocument
-    createHtmlDocument: (self: DomImplementation, title: string | null) => Document
+    createHtmlDocument: (self: DomImplementation, title: string) => Document
     hasFeature: (self: DomImplementation) => boolean
 }
 
@@ -35640,9 +35640,9 @@ interface DomDocumentTypeIface {
     // Own fields of GXml-0.14.GXml.DomDocumentTypeIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: DomDocumentType) => string | null
-    getPublicId: (self: DomDocumentType) => string | null
-    getSystemId: (self: DomDocumentType) => string | null
+    getName: (self: DomDocumentType) => string
+    getPublicId: (self: DomDocumentType) => string
+    getSystemId: (self: DomDocumentType) => string
 }
 
 abstract class DomDocumentTypeIface {
@@ -35657,17 +35657,17 @@ interface DomElementIface {
     // Own fields of GXml-0.14.GXml.DomElementIface
 
     parentIface: GObject.TypeInterface
-    getAttribute: (self: DomElement, name: string | null) => string | null
-    getAttributeNs: (self: DomElement, namespace: string | null, localName: string | null) => string | null
-    setAttribute: (self: DomElement, name: string | null, value: string | null) => void
-    setAttributeNs: (self: DomElement, namespace: string | null, name: string | null, value: string | null) => void
-    removeAttribute: (self: DomElement, name: string | null) => void
-    removeAttributeNs: (self: DomElement, namespace: string | null, localName: string | null) => void
-    hasAttribute: (self: DomElement, name: string | null) => boolean
-    hasAttributeNs: (self: DomElement, namespace: string | null, localName: string | null) => boolean
-    getElementsByTagName: (self: DomElement, localName: string | null) => DomHTMLCollection
-    getElementsByTagNameNs: (self: DomElement, namespace: string | null, localName: string | null) => DomHTMLCollection
-    getElementsByClassName: (self: DomElement, classNames: string | null) => DomHTMLCollection
+    getAttribute: (self: DomElement, name: string) => string | null
+    getAttributeNs: (self: DomElement, namespace: string | null, localName: string) => string | null
+    setAttribute: (self: DomElement, name: string, value: string) => void
+    setAttributeNs: (self: DomElement, namespace: string | null, name: string, value: string) => void
+    removeAttribute: (self: DomElement, name: string) => void
+    removeAttributeNs: (self: DomElement, namespace: string | null, localName: string) => void
+    hasAttribute: (self: DomElement, name: string) => boolean
+    hasAttributeNs: (self: DomElement, namespace: string | null, localName: string) => boolean
+    getElementsByTagName: (self: DomElement, localName: string) => DomHTMLCollection
+    getElementsByTagNameNs: (self: DomElement, namespace: string | null, localName: string) => DomHTMLCollection
+    getElementsByClassName: (self: DomElement, classNames: string) => DomHTMLCollection
     getNamespaceUri: (self: DomElement) => string | null
     getPrefix: (self: DomElement) => string | null
     getLocalName: (self: DomElement) => string | null
@@ -35692,8 +35692,8 @@ interface DomEventTargetIface {
     // Own fields of GXml-0.14.GXml.DomEventTargetIface
 
     parentIface: GObject.TypeInterface
-    addEventListener: (self: DomEventTarget, type: string | null, callback: DomEventListener | null, capture: boolean) => void
-    removeEventListener: (self: DomEventTarget, type: string | null, callback: DomEventListener | null, capture: boolean) => void
+    addEventListener: (self: DomEventTarget, type: string, callback: DomEventListener | null, capture: boolean) => void
+    removeEventListener: (self: DomEventTarget, type: string, callback: DomEventListener | null, capture: boolean) => void
     dispatchEvent: (self: DomEventTarget, event: DomEvent) => boolean
 }
 
@@ -35727,8 +35727,8 @@ interface DomEventIface {
     stopPropagation: (self: DomEvent) => void
     stopImmediatePropagation: (self: DomEvent) => void
     preventDefault: (self: DomEvent) => void
-    initEvent: (self: DomEvent, type: string | null, bubbles: boolean, cancelable: boolean) => void
-    getEtype: (self: DomEvent) => string | null
+    initEvent: (self: DomEvent, type: string, bubbles: boolean, cancelable: boolean) => void
+    getEtype: (self: DomEvent) => string
     getEventTarget: (self: DomEvent) => DomEventTarget | null
     getCurrentTarget: (self: DomEvent) => DomEventTarget | null
     getBubbles: (self: DomEvent) => boolean
@@ -35751,7 +35751,7 @@ interface DomCustomEventIface {
     // Own fields of GXml-0.14.GXml.DomCustomEventIface
 
     parentIface: GObject.TypeInterface
-    initCustomEvent: (self: DomCustomEvent, type: string | null, bubbles: boolean, cancelable: boolean, detail?: any | null) => void
+    initCustomEvent: (self: DomCustomEvent, type: string, bubbles: boolean, cancelable: boolean, detail?: any | null) => void
     getDetail: (self: DomCustomEvent) => any | null
 }
 
@@ -35784,7 +35784,7 @@ interface DomMutationRecordIface {
     // Own fields of GXml-0.14.GXml.DomMutationRecordIface
 
     parentIface: GObject.TypeInterface
-    getMtype: (self: DomMutationRecord) => string | null
+    getMtype: (self: DomMutationRecord) => string
     getTarget: (self: DomMutationRecord) => DomNode
     getAddedNodes: (self: DomMutationRecord) => DomNodeList
     setAddedNodes: (self: DomMutationRecord, value: DomNodeList) => void
@@ -35893,7 +35893,7 @@ interface XPathContextIface {
     // Own fields of GXml-0.14.GXml.XPathContextIface
 
     parentIface: GObject.TypeInterface
-    evaluate: (self: XPathContext, expression: string | null, resolver?: Gee.List | null) => XPathObject
+    evaluate: (self: XPathContext, expression: string, resolver?: Gee.List | null) => XPathObject
 }
 
 abstract class XPathContextIface {
@@ -35910,7 +35910,7 @@ interface XPathObjectIface {
     parentIface: GObject.TypeInterface
     getObjectType: (self: XPathObject) => XPathObjectType
     getBooleanValue: (self: XPathObject) => boolean
-    getStringValue: (self: XPathObject) => string | null
+    getStringValue: (self: XPathObject) => string
     getNumberValue: (self: XPathObject) => number
     getNodeset: (self: XPathObject) => DomHTMLCollection
 }
@@ -35928,17 +35928,17 @@ interface GomObjectIface {
 
     parentIface: GObject.TypeInterface
     getPropertiesList: (self: GomObject) => GObject.ParamSpec[]
-    findPropertyName: (self: GomObject, pname: string | null) => GObject.ParamSpec | null
-    findObjectPropertyName: (self: GomObject, pname: string | null) => GObject.ParamSpec | null
+    findPropertyName: (self: GomObject, pname: string) => GObject.ParamSpec | null
+    findObjectPropertyName: (self: GomObject, pname: string) => GObject.ParamSpec | null
     getPropertyElementList: (self: GomObject) => GObject.ParamSpec[]
     getPropertyString: (self: GomObject, prop: GObject.ParamSpec) => string | null
-    getAttribute: (self: GomObject, name: string | null) => string | null
-    setAttribute: (self: GomObject, name: string | null, val: string | null) => boolean
-    getChild: (self: GomObject, name: string | null) => DomElement | null
-    findElements: (self: GomObject, name: string | null) => DomElementList
-    removeAttribute: (self: GomObject, name: string | null) => boolean
-    setInstanceProperty: (self: GomObject, name: string | null) => boolean
-    cleanPropertyElements: (self: GomObject, name: string | null) => void
+    getAttribute: (self: GomObject, name: string) => string | null
+    setAttribute: (self: GomObject, name: string, val: string) => boolean
+    getChild: (self: GomObject, name: string) => DomElement | null
+    findElements: (self: GomObject, name: string) => DomElementList
+    removeAttribute: (self: GomObject, name: string) => boolean
+    setInstanceProperty: (self: GomObject, name: string) => boolean
+    cleanPropertyElements: (self: GomObject, name: string) => void
 }
 
 abstract class GomObjectIface {
@@ -35962,7 +35962,7 @@ interface GomCollectionIface {
     getNodesIndex: (self: GomCollection) => GLib.Queue
     getElement: (self: GomCollection) => GomElement
     setElement: (self: GomCollection, value: GomElement) => void
-    getItemsName: (self: GomCollection) => string | null
+    getItemsName: (self: GomCollection) => string
     getItemsType: (self: GomCollection) => GObject.GType
     setItemsType: (self: GomCollection, value: GObject.GType) => void
     getLength: (self: GomCollection) => number
@@ -36028,7 +36028,7 @@ interface GomPropertyIface {
     // Own fields of GXml-0.14.GXml.GomPropertyIface
 
     parentIface: GObject.TypeInterface
-    validateValue: (self: GomProperty, val: string | null) => boolean
+    validateValue: (self: GomProperty, val: string) => boolean
     getValue: (self: GomProperty) => string | null
     setValue: (self: GomProperty, value?: string | null) => void
 }
@@ -36050,7 +36050,7 @@ interface ParserIface {
     writeStream: (self: Parser, stream: Gio.OutputStream, cancellable?: Gio.Cancellable | null) => void
     readFile: (self: Parser, file: Gio.File, cancellable?: Gio.Cancellable | null) => void
     readStream: (self: Parser, stream: Gio.InputStream, cancellable?: Gio.Cancellable | null) => void
-    readString: (self: Parser, str: string | null, cancellable?: Gio.Cancellable | null) => void
+    readString: (self: Parser, str: string, cancellable?: Gio.Cancellable | null) => void
     getBackup: (self: Parser) => boolean
     setBackup: (self: Parser, value: boolean) => void
     getIndent: (self: Parser) => boolean
@@ -36106,12 +36106,12 @@ interface IXsdSimpleTypeIface {
     // Own fields of GXml-0.14.GXml.IXsdSimpleTypeIface
 
     parentIface: GObject.TypeInterface
-    getFinal: (self: IXsdSimpleType) => string | null
-    setFinal: (self: IXsdSimpleType, value: string | null) => void
-    getId: (self: IXsdSimpleType) => string | null
-    setId: (self: IXsdSimpleType, value: string | null) => void
-    getName: (self: IXsdSimpleType) => string | null
-    setName: (self: IXsdSimpleType, value: string | null) => void
+    getFinal: (self: IXsdSimpleType) => string
+    setFinal: (self: IXsdSimpleType, value: string) => void
+    getId: (self: IXsdSimpleType) => string
+    setId: (self: IXsdSimpleType, value: string) => void
+    getName: (self: IXsdSimpleType) => string
+    setName: (self: IXsdSimpleType, value: string) => void
     getAnnotation: (self: IXsdSimpleType) => IXsdAnnotation
     setAnnotation: (self: IXsdSimpleType, value: IXsdAnnotation) => void
     getList: (self: IXsdSimpleType) => IXsdTypeList
@@ -36148,10 +36148,10 @@ interface IXsdTypeRestrictionIface {
     // Own fields of GXml-0.14.GXml.IXsdTypeRestrictionIface
 
     parentIface: GObject.TypeInterface
-    getBase: (self: IXsdTypeRestriction) => string | null
-    setBase: (self: IXsdTypeRestriction, value: string | null) => void
-    getId: (self: IXsdTypeRestriction) => string | null
-    setId: (self: IXsdTypeRestriction, value: string | null) => void
+    getBase: (self: IXsdTypeRestriction) => string
+    setBase: (self: IXsdTypeRestriction, value: string) => void
+    getId: (self: IXsdTypeRestriction) => string
+    setId: (self: IXsdTypeRestriction, value: string) => void
     getSimpleType: (self: IXsdTypeRestriction) => IXsdSimpleType
     setSimpleType: (self: IXsdTypeRestriction, value: IXsdSimpleType) => void
     getEnumerations: (self: IXsdTypeRestriction) => IXsdListTypeRestrictionEnumerations
@@ -36342,10 +36342,10 @@ interface IXsdTypeRestrictionEnumerationIface {
     // Own fields of GXml-0.14.GXml.IXsdTypeRestrictionEnumerationIface
 
     parentIface: GObject.TypeInterface
-    getId: (self: IXsdTypeRestrictionEnumeration) => string | null
-    setId: (self: IXsdTypeRestrictionEnumeration, value: string | null) => void
-    getValue: (self: IXsdTypeRestrictionEnumeration) => string | null
-    setValue: (self: IXsdTypeRestrictionEnumeration, value: string | null) => void
+    getId: (self: IXsdTypeRestrictionEnumeration) => string
+    setId: (self: IXsdTypeRestrictionEnumeration, value: string) => void
+    getValue: (self: IXsdTypeRestrictionEnumeration) => string
+    setValue: (self: IXsdTypeRestrictionEnumeration, value: string) => void
 }
 
 abstract class IXsdTypeRestrictionEnumerationIface {
@@ -36362,10 +36362,10 @@ interface IXsdTypeRestrictionWhiteSpaceIface {
     parentIface: GObject.TypeInterface
     getFixed: (self: IXsdTypeRestrictionWhiteSpace) => boolean
     setFixed: (self: IXsdTypeRestrictionWhiteSpace, value: boolean) => void
-    getId: (self: IXsdTypeRestrictionWhiteSpace) => string | null
-    setId: (self: IXsdTypeRestrictionWhiteSpace, value: string | null) => void
-    getValue: (self: IXsdTypeRestrictionWhiteSpace) => string | null
-    setValue: (self: IXsdTypeRestrictionWhiteSpace, value: string | null) => void
+    getId: (self: IXsdTypeRestrictionWhiteSpace) => string
+    setId: (self: IXsdTypeRestrictionWhiteSpace, value: string) => void
+    getValue: (self: IXsdTypeRestrictionWhiteSpace) => string
+    setValue: (self: IXsdTypeRestrictionWhiteSpace, value: string) => void
 }
 
 abstract class IXsdTypeRestrictionWhiteSpaceIface {
@@ -36424,14 +36424,14 @@ interface IXsdComplexTypeIface {
     parentIface: GObject.TypeInterface
     getAbstract: (self: IXsdComplexType) => boolean
     setAbstract: (self: IXsdComplexType, value: boolean) => void
-    getBlock: (self: IXsdComplexType) => string | null
-    setBlock: (self: IXsdComplexType, value: string | null) => void
-    getFinal: (self: IXsdComplexType) => string | null
-    setFinal: (self: IXsdComplexType, value: string | null) => void
+    getBlock: (self: IXsdComplexType) => string
+    setBlock: (self: IXsdComplexType, value: string) => void
+    getFinal: (self: IXsdComplexType) => string
+    setFinal: (self: IXsdComplexType, value: string) => void
     getMixed: (self: IXsdComplexType) => boolean
     setMixed: (self: IXsdComplexType, value: boolean) => void
-    getName: (self: IXsdComplexType) => string | null
-    setName: (self: IXsdComplexType, value: string | null) => void
+    getName: (self: IXsdComplexType) => string
+    setName: (self: IXsdComplexType, value: string) => void
     getDefaultAttributesApply: (self: IXsdComplexType) => boolean
     setDefaultAttributesApply: (self: IXsdComplexType, value: boolean) => void
     getContentType: (self: IXsdComplexType) => IXsdBaseContent
@@ -36452,8 +36452,8 @@ interface IXsdExtensionIface {
     // Own fields of GXml-0.14.GXml.IXsdExtensionIface
 
     parentIface: GObject.TypeInterface
-    getBase: (self: IXsdExtension) => string | null
-    setBase: (self: IXsdExtension, value: string | null) => void
+    getBase: (self: IXsdExtension) => string
+    setBase: (self: IXsdExtension, value: string) => void
 }
 
 abstract class IXsdExtensionIface {
@@ -36470,34 +36470,34 @@ interface IXsdElementIface {
     parentIface: GObject.TypeInterface
     getAbstract: (self: IXsdElement) => boolean
     setAbstract: (self: IXsdElement, value: boolean) => void
-    getBlock: (self: IXsdElement) => string | null
-    setBlock: (self: IXsdElement, value: string | null) => void
-    getDefault: (self: IXsdElement) => string | null
-    setDefault: (self: IXsdElement, value: string | null) => void
-    getFinal: (self: IXsdElement) => string | null
-    setFinal: (self: IXsdElement, value: string | null) => void
-    getFixed: (self: IXsdElement) => string | null
-    setFixed: (self: IXsdElement, value: string | null) => void
-    getForm: (self: IXsdElement) => string | null
-    setForm: (self: IXsdElement, value: string | null) => void
+    getBlock: (self: IXsdElement) => string
+    setBlock: (self: IXsdElement, value: string) => void
+    getDefault: (self: IXsdElement) => string
+    setDefault: (self: IXsdElement, value: string) => void
+    getFinal: (self: IXsdElement) => string
+    setFinal: (self: IXsdElement, value: string) => void
+    getFixed: (self: IXsdElement) => string
+    setFixed: (self: IXsdElement, value: string) => void
+    getForm: (self: IXsdElement) => string
+    setForm: (self: IXsdElement, value: string) => void
     getId: (self: IXsdElement) => string | null
     setId: (self: IXsdElement, value?: string | null) => void
-    getMaxOccurs: (self: IXsdElement) => string | null
-    setMaxOccurs: (self: IXsdElement, value: string | null) => void
-    getMinOccurs: (self: IXsdElement) => string | null
-    setMinOccurs: (self: IXsdElement, value: string | null) => void
-    getName: (self: IXsdElement) => string | null
-    setName: (self: IXsdElement, value: string | null) => void
+    getMaxOccurs: (self: IXsdElement) => string
+    setMaxOccurs: (self: IXsdElement, value: string) => void
+    getMinOccurs: (self: IXsdElement) => string
+    setMinOccurs: (self: IXsdElement, value: string) => void
+    getName: (self: IXsdElement) => string
+    setName: (self: IXsdElement, value: string) => void
     getNillable: (self: IXsdElement) => boolean
     setNillable: (self: IXsdElement, value: boolean) => void
-    getRef: (self: IXsdElement) => string | null
-    setRef: (self: IXsdElement, value: string | null) => void
+    getRef: (self: IXsdElement) => string
+    setRef: (self: IXsdElement, value: string) => void
     getSubstitutionGroup: (self: IXsdElement) => DomTokenList
     setSubstitutionGroup: (self: IXsdElement, value: DomTokenList) => void
-    getTargetNamespace: (self: IXsdElement) => string | null
-    setTargetNamespace: (self: IXsdElement, value: string | null) => void
-    getObjectType: (self: IXsdElement) => string | null
-    setObjectType: (self: IXsdElement, value: string | null) => void
+    getTargetNamespace: (self: IXsdElement) => string
+    setTargetNamespace: (self: IXsdElement, value: string) => void
+    getObjectType: (self: IXsdElement) => string
+    setObjectType: (self: IXsdElement, value: string) => void
     getAnotation: (self: IXsdElement) => IXsdAnnotation
     setAnotation: (self: IXsdElement, value: IXsdAnnotation) => void
     getSimpleType: (self: IXsdElement) => IXsdSimpleType

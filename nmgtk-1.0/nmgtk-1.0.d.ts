@@ -41,7 +41,7 @@ enum MobileFamily {
  * @param mccmnc input MCCMNC string.
  * @returns %TRUE if correctly split and @mcc and @mnc are set; %FALSE otherwise.
  */
-function mobile_providers_split_3gpp_mcc_mnc(mccmnc: string | null): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
+function mobile_providers_split_3gpp_mcc_mnc(mccmnc: string): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
 /**
  * Generates a list of short-ish unique presentation names for the
  * devices in `devices`.
@@ -64,13 +64,13 @@ function utils_get_connection_device_name(connection: NetworkManager.Connection)
  * @param device an #NMDevice
  * @returns a description of @device. If either the vendor or the   product name is unknown, this returns the interface name.
  */
-function utils_get_device_description(device: NMClient.Device): string | null
+function utils_get_device_description(device: NMClient.Device): string
 /**
  * Gets a "generic" name for the type of `device`.
  * @param device an #NMDevice
  * @returns @device's generic type name
  */
-function utils_get_device_generic_type_name(device: NMClient.Device): string | null
+function utils_get_device_generic_type_name(device: NMClient.Device): string
 /**
  * Gets a cleaned-up version of #NMDevice:product for `device`. This
  * removes strings like "Wireless LAN Adapter" that would just take up
@@ -78,13 +78,13 @@ function utils_get_device_generic_type_name(device: NMClient.Device): string | n
  * @param device an #NMDevice
  * @returns a cleaned-up product string, or %NULL if the product name   is not known
  */
-function utils_get_device_product(device: NMClient.Device): string | null
+function utils_get_device_product(device: NMClient.Device): string
 /**
  * Gets a specific name for the type of `device`.
  * @param device an #NMDevice
  * @returns @device's generic type name
  */
-function utils_get_device_type_name(device: NMClient.Device): string | null
+function utils_get_device_type_name(device: NMClient.Device): string
 /**
  * Gets a cleaned-up version of #NMDevice:vendor for `device`. This
  * removes strings like "Inc." that would just take up unnecessary
@@ -92,7 +92,7 @@ function utils_get_device_type_name(device: NMClient.Device): string | null
  * @param device an #NMDevice
  * @returns a cleaned-up vendor string, or %NULL if the vendor is   not known
  */
-function utils_get_device_vendor(device: NMClient.Device): string | null
+function utils_get_device_vendor(device: NMClient.Device): string
 /**
  * Returns secret flags corresponding to the selected password storage menu
  * in the attached icon
@@ -113,7 +113,7 @@ function utils_menu_to_secret_flags(passwd_entry: Gtk.Widget): NetworkManager.Se
  * @param with_not_required whether to include "Not required" menu item
  * @param sensitive_ask %TRUE if entry should be sensivive on selected "always-ask"   icon (this is e.f. for nm-applet asking for password)
  */
-function utils_setup_password_storage(passwd_entry: Gtk.Widget, initial_flags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, password_flags_name: string | null, with_not_required: boolean, sensitive_ask: boolean): void
+function utils_setup_password_storage(passwd_entry: Gtk.Widget, initial_flags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, password_flags_name: string, with_not_required: boolean, sensitive_ask: boolean): void
 /**
  * Updates secret flags in the password storage popup menu and also
  * in the `setting` (if `setting` and `password_flags_name` are not NULL).
@@ -122,7 +122,7 @@ function utils_setup_password_storage(passwd_entry: Gtk.Widget, initial_flags: N
  * @param setting #NMSetting containing the password, or NULL
  * @param password_flags_name name of the secret flags (like psk-flags), or NULL
  */
-function utils_update_password_storage(passwd_entry: Gtk.Widget, secret_flags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, password_flags_name: string | null): void
+function utils_update_password_storage(passwd_entry: Gtk.Widget, secret_flags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, password_flags_name: string): void
 interface MobileWizardCallback {
     (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void
 }
@@ -160,9 +160,9 @@ interface MobileProvidersDatabase extends Gio.AsyncInitable, Gio.Initable {
 
     dump(): void
     get_countries(): GLib.HashTable
-    lookup_3gpp_mcc_mnc(mccmnc: string | null): MobileProvider
+    lookup_3gpp_mcc_mnc(mccmnc: string): MobileProvider
     lookup_cdma_sid(sid: number): MobileProvider
-    lookup_country(country_code: string | null): CountryInfo
+    lookup_country(country_code: string): CountryInfo
 
     // Class property signals of NMGtk-1.0.NMGtk.MobileProvidersDatabase
 
@@ -218,16 +218,16 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
     focus_password(): void
     focus_password_secondary(): void
     focus_password_ternary(): void
-    get_password(): string | null
-    get_password_secondary(): string | null
-    get_password_ternary(): string | null
+    get_password(): string
+    get_password_secondary(): string
+    get_password_ternary(): string
     run_and_block(): boolean
-    set_password(password: string | null): void
-    set_password_label(label: string | null): void
-    set_password_secondary(password_secondary: string | null): void
-    set_password_secondary_label(label: string | null): void
-    set_password_ternary(password_ternary: string | null): void
-    set_password_ternary_label(label: string | null): void
+    set_password(password: string): void
+    set_password_label(label: string): void
+    set_password_secondary(password_secondary: string): void
+    set_password_secondary_label(label: string): void
+    set_password_ternary(password_ternary: string): void
+    set_password_ternary_label(label: string): void
     set_show_password(show: boolean): void
     set_show_password_secondary(show: boolean): void
     set_show_password_ternary(show: boolean): void
@@ -267,7 +267,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -281,7 +281,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -292,7 +292,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of NMGtk-1.0.NMGtk.VpnPasswordDialog
 
@@ -540,8 +540,8 @@ class VpnPasswordDialog extends Gtk.Dialog {
     // Constructors of NMGtk-1.0.NMGtk.VpnPasswordDialog
 
     constructor(config?: VpnPasswordDialog.ConstructorProperties) 
-    constructor(title: string | null, message: string | null, password: string | null) 
-    static new(title: string | null, message: string | null, password: string | null): VpnPasswordDialog
+    constructor(title: string, message: string, password: string) 
+    static new(title: string, message: string, password: string): VpnPasswordDialog
 
     // Overloads of new
 
@@ -644,7 +644,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -658,7 +658,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -669,7 +669,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of NMGtk-1.0.NMGtk.WifiDialog
 
@@ -967,8 +967,8 @@ interface CountryInfo {
 
     // Owm methods of NMGtk-1.0.NMGtk.CountryInfo
 
-    get_country_code(): string | null
-    get_country_name(): string | null
+    get_country_code(): string
+    get_country_name(): string
     get_providers(): MobileProvider[]
     ref(): CountryInfo
     unref(): void
@@ -985,13 +985,13 @@ interface MobileAccessMethod {
 
     // Owm methods of NMGtk-1.0.NMGtk.MobileAccessMethod
 
-    get_3gpp_apn(): string | null
+    get_3gpp_apn(): string
     get_dns(): string[]
     get_family(): MobileFamily
-    get_gateway(): string | null
-    get_name(): string | null
-    get_password(): string | null
-    get_username(): string | null
+    get_gateway(): string
+    get_name(): string
+    get_password(): string
+    get_username(): string
     ref(): MobileAccessMethod
     unref(): void
 }
@@ -1010,7 +1010,7 @@ interface MobileProvider {
     get_3gpp_mcc_mnc(): string[]
     get_cdma_sid(): number[]
     get_methods(): MobileAccessMethod[]
-    get_name(): string | null
+    get_name(): string
     ref(): MobileProvider
     unref(): void
 }

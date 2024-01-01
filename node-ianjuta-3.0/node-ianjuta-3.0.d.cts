@@ -825,77 +825,77 @@ export enum VcsError {
 /**
  * Name of debugging configutation.
  */
-export const BUILDER_CONFIGURATION_DEBUG: string | null
+export const BUILDER_CONFIGURATION_DEBUG: string
 /**
  * Name of optimized configutation.
  */
-export const BUILDER_CONFIGURATION_OPTIMIZED: string | null
+export const BUILDER_CONFIGURATION_OPTIMIZED: string
 /**
  * Name of profiling configutation.
  */
-export const BUILDER_CONFIGURATION_PROFILING: string | null
+export const BUILDER_CONFIGURATION_PROFILING: string
 /**
  * Build directory uri. It is the same than the project_root_uri for
  * in source build.
  */
-export const BUILDER_ROOT_URI: string | null
+export const BUILDER_ROOT_URI: string
 /**
  * Anjuta shell value set by document manager to the current document
  */
-export const DOCUMENT_MANAGER_CURRENT_DOCUMENT: string | null
+export const DOCUMENT_MANAGER_CURRENT_DOCUMENT: string
 /**
  * Integer key, defines the number a space for one indentation step.
  */
-export const EDITOR_INDENT_WIDTH_KEY: string | null
+export const EDITOR_INDENT_WIDTH_KEY: string
 /**
  * Schema id used to store common editor settings.
  */
-export const EDITOR_PREF_SCHEMA: string | null
+export const EDITOR_PREF_SCHEMA: string
 /**
  * Integer key, defines the size of a tabulation in spaces.
  */
-export const EDITOR_TAB_WIDTH_KEY: string | null
+export const EDITOR_TAB_WIDTH_KEY: string
 /**
  * Boolean key, true is tabs has to be used for indenting.
  */
-export const EDITOR_USE_TABS_KEY: string | null
+export const EDITOR_USE_TABS_KEY: string
 /**
  * Anjuta shell value set by file manager to the selected file.
  */
-export const FILE_MANAGER_SELECTED_FILE: string | null
+export const FILE_MANAGER_SELECTED_FILE: string
 /**
  * Boolean key, true is adding '(' after function call autocompletion
  */
-export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_BRACE_AFTER_FUNC: string | null
+export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_BRACE_AFTER_FUNC: string
 /**
  * Boolean key, true is adding ')' after function call autocompletion
  */
-export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_CLOSEBRACE_AFTER_FUNC: string | null
+export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_CLOSEBRACE_AFTER_FUNC: string
 /**
  * Boolean key, true is code completion is enable.
  */
-export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_ENABLE: string | null
+export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_ENABLE: string
 /**
  * Boolean key, true is adding a space after function call autocompletion
  */
-export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_SPACE_AFTER_FUNC: string | null
+export const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_SPACE_AFTER_FUNC: string
 /**
  * Boolean key, true is calltips has to be shown.
  */
-export const LANGUAGE_PROVIDER_PREF_CALLTIP_ENABLE: string | null
+export const LANGUAGE_PROVIDER_PREF_CALLTIP_ENABLE: string
 /**
  * Anjuta shell value set by project manager to the current project object
  * which implement #IAnjutaProject interface.
  */
-export const PROJECT_MANAGER_CURRENT_PROJECT: string | null
+export const PROJECT_MANAGER_CURRENT_PROJECT: string
 /**
  * Anjuta shell value set by project manager to the current uri.
  */
-export const PROJECT_MANAGER_CURRENT_URI: string | null
+export const PROJECT_MANAGER_CURRENT_URI: string
 /**
  * Anjuta shell value set by project manager to the project root uri.
  */
-export const PROJECT_MANAGER_PROJECT_ROOT_URI: string | null
+export const PROJECT_MANAGER_PROJECT_ROOT_URI: string
 export function buildableErrorQuark(): GLib.Quark
 export function builderErrorQuark(): GLib.Quark
 export function debugManagerErrorQuark(): GLib.Quark
@@ -991,7 +991,7 @@ export interface DebuggerCallback {
  * @param err error
  */
 export interface DebuggerGCharCallback {
-    (value: string | null, err: GLib.Error): void
+    (value: string, err: GLib.Error): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerInstructionDisassembly.
@@ -1019,7 +1019,7 @@ export interface DebuggerMemoryCallback {
  * @param output string
  */
 export interface DebuggerOutputCallback {
-    (type: DebuggerOutputType, output: string | null): void
+    (type: DebuggerOutputType, output: string): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerVariableObject.
@@ -1037,7 +1037,7 @@ export interface DebuggerVariableCallback {
  * @param diff Diff data
  */
 export interface VcsDiffCallback {
-    (file: Gio.File, diff: string | null): void
+    (file: Gio.File, diff: string): void
 }
 /**
  * Callback called for each status record returned by
@@ -1066,15 +1066,15 @@ export interface Buildable {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.Buildable
 
-    // Has conflict: build(uri: string | null): void
-    // Has conflict: clean(uri: string | null): void
-    // Has conflict: configure(uri: string | null): void
-    // Has conflict: execute(uri: string | null): void
-    // Has conflict: generate(uri: string | null): void
-    // Has conflict: getCommand(commandId: BuildableCommand): string | null
-    // Has conflict: install(uri: string | null): void
+    // Has conflict: build(uri: string): void
+    // Has conflict: clean(uri: string): void
+    // Has conflict: configure(uri: string): void
+    // Has conflict: execute(uri: string): void
+    // Has conflict: generate(uri: string): void
+    // Has conflict: getCommand(commandId: BuildableCommand): string
+    // Has conflict: install(uri: string): void
     // Has conflict: resetCommands(): void
-    // Has conflict: setCommand(commandId: BuildableCommand, command: string | null): void
+    // Has conflict: setCommand(commandId: BuildableCommand, command: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Buildable
 
@@ -1083,44 +1083,44 @@ export interface Buildable {
      * @virtual 
      * @param uri fixme
      */
-    build(uri: string | null): void
+    build(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    clean(uri: string | null): void
+    clean(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    configure(uri: string | null): void
+    configure(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    execute(uri: string | null): void
+    execute(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    generate(uri: string | null): void
+    generate(uri: string): void
     /**
      * Retrieves the currently set command override.
      * @virtual 
      * @param commandId Command to get override.
      * @returns The overridden command. NULL if no override set.
      */
-    getCommand(commandId: BuildableCommand): string | null
+    getCommand(commandId: BuildableCommand): string
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    install(uri: string | null): void
+    install(uri: string): void
     /**
      * Resets the command overrides to defaults.
      * @virtual 
@@ -1132,7 +1132,7 @@ export interface Buildable {
      * @param commandId Command to override.
      * @param command Build command to override.
      */
-    setCommand(commandId: BuildableCommand, command: string | null): void
+    setCommand(commandId: BuildableCommand, command: string): void
 
     // Class property signals of IAnjuta-3.0.IAnjuta.Buildable
 
@@ -1180,7 +1180,7 @@ export interface Builder {
     // Owm methods of IAnjuta-3.0.IAnjuta.Builder
 
     // Has conflict: cancel(handle: BuilderHandle): void
-    // Has conflict: getUriConfiguration(uri: string | null): string | null
+    // Has conflict: getUriConfiguration(uri: string): string
     // Has conflict: listConfiguration(): string[]
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Builder
@@ -1198,7 +1198,7 @@ export interface Builder {
      * @param uri target uri
      * @returns The configuration name or NULL if the corresponding configuration cannot be found.
      */
-    getUriConfiguration(uri: string | null): string | null
+    getUriConfiguration(uri: string): string
     /**
      * List all defined configuration. These names returned are
      * the internal non localized names for the following
@@ -1355,8 +1355,8 @@ export interface DebugManager {
     // Owm methods of IAnjuta-3.0.IAnjuta.DebugManager
 
     // Has conflict: quit(): boolean
-    // Has conflict: start(uri: string | null): boolean
-    // Has conflict: startRemote(server: string | null, uri: string | null): boolean
+    // Has conflict: start(uri: string): boolean
+    // Has conflict: startRemote(server: string, uri: string): boolean
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.DebugManager
 
@@ -1364,10 +1364,10 @@ export interface DebugManager {
     debuggerStarted(): void
     debuggerStopped(err: GLib.Error): void
     frameChanged(frame: number, thread: number): void
-    locationChanged(address: number, uri: string | null, line: number): void
+    locationChanged(address: number, uri: string, line: number): void
     programExited(): void
     programLoaded(): void
-    programMoved(pid: number, tid: number, address: number, file: string | null, line: number): void
+    programMoved(pid: number, tid: number, address: number, file: string, line: number): void
     programRunning(): void
     programStarted(): void
     programStopped(): void
@@ -1379,14 +1379,14 @@ export interface DebugManager {
      */
     quit(): boolean
     sharedlibEvent(): void
-    signalReceived(name: string | null, description: string | null): void
+    signalReceived(name: string, description: string): void
     /**
      * Start the debugger of the given uri
      * @virtual 
      * @param uri uri of the target
      * @returns TRUE if sucessful, other FALSE.
      */
-    start(uri: string | null): boolean
+    start(uri: string): boolean
     /**
      * Start the debugger of the given uri
      * @virtual 
@@ -1394,7 +1394,7 @@ export interface DebugManager {
      * @param uri uri of the local target
      * @returns TRUE if sucessful, other FALSE.
      */
-    startRemote(server: string | null, uri: string | null): boolean
+    startRemote(server: string, uri: string): boolean
 
     // Own signals of IAnjuta-3.0.IAnjuta.DebugManager
 
@@ -1596,24 +1596,24 @@ export interface Debugger {
 
     // Has conflict: abort(): boolean
     // Has conflict: attach(pid: number, sourceSearchDirectories: string[]): boolean
-    // Has conflict: connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    // Has conflict: connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     // Has conflict: disableLog(): void
     // Has conflict: enableLog(log: MessageView): void
     // Has conflict: exit(): boolean
     // Has conflict: getState(): DebuggerState
-    // Has conflict: handleSignal(name: string | null, stop: boolean, print: boolean, ignore: boolean): boolean
+    // Has conflict: handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     // Has conflict: interrupt(): boolean
-    // Has conflict: load(file: string | null, mimeType: string | null, sourceSearchDirectories: string[]): boolean
+    // Has conflict: load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     // Has conflict: quit(): boolean
     // Has conflict: run(): boolean
-    // Has conflict: runFrom(file: string | null, line: number): boolean
-    // Has conflict: runTo(file: string | null, line: number): boolean
-    // Has conflict: sendCommand(command: string | null): boolean
+    // Has conflict: runFrom(file: string, line: number): boolean
+    // Has conflict: runTo(file: string, line: number): boolean
+    // Has conflict: sendCommand(command: string): boolean
     // Has conflict: setEnvironment(env: string | null): boolean
     // Has conflict: setFrame(frame: number): boolean
     // Has conflict: setThread(thread: number): boolean
-    // Has conflict: setWorkingDirectory(dir: string | null): boolean
-    // Has conflict: start(args: string | null, terminal: boolean, stop: boolean): boolean
+    // Has conflict: setWorkingDirectory(dir: string): boolean
+    // Has conflict: start(args: string, terminal: boolean, stop: boolean): boolean
     // Has conflict: stepIn(): boolean
     // Has conflict: stepOut(): boolean
     // Has conflict: stepOver(): boolean
@@ -1644,7 +1644,7 @@ export interface Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     debuggerReady(state: DebuggerState): void
     debuggerStarted(): void
     debuggerStopped(err: GLib.Error): void
@@ -1681,7 +1681,7 @@ export interface Debugger {
      * @param ignore TRUE if we ignore the signal
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    handleSignal(name: string | null, stop: boolean, print: boolean, ignore: boolean): boolean
+    handleSignal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
      * Interrupt the program currently running.
      * @virtual 
@@ -1696,10 +1696,10 @@ export interface Debugger {
      * @param sourceSearchDirectories List of directories to search for 		      source files.
      * @returns TRUE if sucessful, other FALSE.
      */
-    load(file: string | null, mimeType: string | null, sourceSearchDirectories: string[]): boolean
+    load(file: string, mimeType: string, sourceSearchDirectories: string[]): boolean
     programExited(): void
     programLoaded(): void
-    programMoved(pid: number, tid: number, address: number, file: string | null, line: number): void
+    programMoved(pid: number, tid: number, address: number, file: string, line: number): void
     programRunning(): void
     programStopped(): void
     /**
@@ -1722,7 +1722,7 @@ export interface Debugger {
      * @param line target line in file
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    runFrom(file: string | null, line: number): boolean
+    runFrom(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
@@ -1731,7 +1731,7 @@ export interface Debugger {
      * @param line target line in file
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    runTo(file: string | null, line: number): boolean
+    runTo(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
@@ -1740,7 +1740,7 @@ export interface Debugger {
      * @param command command
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    sendCommand(command: string | null): boolean
+    sendCommand(command: string): boolean
     /**
      * Set environment variable
      * @virtual 
@@ -1768,9 +1768,9 @@ export interface Debugger {
      * @param dir working program directory
      * @returns TRUE if sucessful, other FALSE.
      */
-    setWorkingDirectory(dir: string | null): boolean
+    setWorkingDirectory(dir: string): boolean
     sharedlibEvent(): void
-    signalReceived(name: string | null, description: string | null): void
+    signalReceived(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
      * @virtual 
@@ -1779,7 +1779,7 @@ export interface Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessful, other FALSE.
      */
-    start(args: string | null, terminal: boolean, stop: boolean): boolean
+    start(args: string, terminal: boolean, stop: boolean): boolean
     /**
      * Execute a single C instruction of the program currently loaded.
      * @virtual 
@@ -1935,7 +1935,7 @@ export interface DebuggerBreakpoint extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -1953,7 +1953,7 @@ export interface DebuggerBreakpoint extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2041,7 +2041,7 @@ export interface DebuggerInstruction extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2059,7 +2059,7 @@ export interface DebuggerInstruction extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2110,7 +2110,7 @@ export interface DebuggerMemory extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2128,7 +2128,7 @@ export interface DebuggerMemory extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2193,7 +2193,7 @@ export interface DebuggerRegister extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2211,7 +2211,7 @@ export interface DebuggerRegister extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2249,8 +2249,8 @@ export interface DebuggerVariable extends Debugger {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.DebuggerVariable
 
-    // Has conflict: assign(name: string | null, value: string | null): boolean
-    // Has conflict: destroy(name: string | null): boolean
+    // Has conflict: assign(name: string, value: string): boolean
+    // Has conflict: destroy(name: string): boolean
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.DebuggerVariable
 
@@ -2261,7 +2261,7 @@ export interface DebuggerVariable extends Debugger {
      * @param value Variable value
      * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
      */
-    assign(name: string | null, value: string | null): boolean
+    assign(name: string, value: string): boolean
     /**
      * Delete a previously created variable or child object
      * including its own children.
@@ -2269,7 +2269,7 @@ export interface DebuggerVariable extends Debugger {
      * @param name Variable name
      * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
      */
-    destroy(name: string | null): boolean
+    destroy(name: string): boolean
 
     // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerVariable
 
@@ -2286,7 +2286,7 @@ export interface DebuggerVariable extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: "notify::__gtype__", callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: "notify::__gtype__", callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2304,7 +2304,7 @@ export interface DebuggerVariable extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     on(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     once(sigName: string, callback: (...args: any[]) => void, after?: boolean): NodeJS.EventEmitter
     off(sigName: string, callback: (...args: any[]) => void): NodeJS.EventEmitter
@@ -2359,7 +2359,7 @@ export interface Document {
     // Has conflict: copy(): void
     // Has conflict: cut(): void
     // Has conflict: endUndoAction(): void
-    // Has conflict: getFilename(): string | null
+    // Has conflict: getFilename(): string
     // Has conflict: grabFocus(): void
     // Has conflict: paste(): void
     // Has conflict: redo(): void
@@ -2410,7 +2410,7 @@ export interface Document {
      * @virtual 
      * @returns The name of the file. Not to be freed by caller.
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Grabs the focus.
      * @virtual 
@@ -2504,12 +2504,12 @@ export interface DocumentManager {
     // Owm methods of IAnjuta-3.0.IAnjuta.DocumentManager
 
     // Has conflict: addBookmark(file: Gio.File, line: number): void
-    // Has conflict: addBuffer(name: string | null, content: string | null): Editor
+    // Has conflict: addBuffer(name: string, content: string): Editor
     // Has conflict: addDocument(document: Document): void
     // Has conflict: findDocumentWithFile(file: Gio.File): Document
     // Has conflict: getCurrentDocument(): Document
     // Has conflict: getDocWidgets(): Gtk.Widget[]
-    // Has conflict: getFile(filename: string | null): Gio.File
+    // Has conflict: getFile(filename: string): Gio.File
     // Has conflict: gotoFileLine(file: Gio.File, lineno: number): Editor
     // Has conflict: gotoFileLineMark(file: Gio.File, lineno: number, mark: boolean): Editor
     // Has conflict: removeDocument(document: Document, saveBefore: boolean): boolean
@@ -2526,7 +2526,7 @@ export interface DocumentManager {
      * @param content Initial content of the buffer.
      * @returns the IAnjutaEditor instance that has been added.
      */
-    addBuffer(name: string | null, content: string | null): Editor
+    addBuffer(name: string, content: string): Editor
     /**
      * Adds a document to the document manager. This will open a new
      * Notebook tab and show the document there
@@ -2565,7 +2565,7 @@ export interface DocumentManager {
      * @param filename short filename
      * @returns the GFile for the given short filename
      */
-    getFile(filename: string | null): Gio.File
+    getFile(filename: string): Gio.File
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor.
@@ -2718,7 +2718,7 @@ export interface Editor {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.Editor
 
-    // Has conflict: append(text: string | null, length: number): void
+    // Has conflict: append(text: string, length: number): void
     // Has conflict: erase(positionStart: Iterable, positionEnd: Iterable): void
     // Has conflict: eraseAll(): void
     // Has conflict: getColumn(): number
@@ -2742,7 +2742,7 @@ export interface Editor {
     // Has conflict: gotoLine(lineno: number): void
     // Has conflict: gotoPosition(position: Iterable): void
     // Has conflict: gotoStart(): void
-    // Has conflict: insert(position: Iterable, text: string | null, length: number): void
+    // Has conflict: insert(position: Iterable, text: string, length: number): void
     // Has conflict: setAutoIndent(autoIndent: boolean): void
     // Has conflict: setIndentsize(indentsize: number): void
     // Has conflict: setPopupMenu(menu: Gtk.Widget): void
@@ -2758,9 +2758,9 @@ export interface Editor {
      * @param text Text to append.
      * @param length Length of `text` to use.
      */
-    append(text: string | null, length: number): void
+    append(text: string, length: number): void
     backspace(): void
-    changed(position: Iterable, added: boolean, length: number, lines: number, text: string | null): void
+    changed(position: Iterable, added: boolean, length: number, lines: number, text: string): void
     charAdded(position: Iterable, ch: number): void
     codeChanged(position: Iterable, code: string | null): void
     cursorMoved(): void
@@ -2910,7 +2910,7 @@ export interface Editor {
      * @param text Text to append.
      * @param length Length of `text` to use.
      */
-    insert(position: Iterable, text: string | null, length: number): void
+    insert(position: Iterable, text: string, length: number): void
     lineMarksGutterClicked(location: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
@@ -3040,7 +3040,7 @@ export interface EditorAssist extends Editor {
 
     // Has conflict: add(provider: Provider): void
     // Has conflict: invoke(provider: Provider): void
-    // Has conflict: proposals(provider: Provider, proposals: EditorAssistProposal[], preWord: string | null, finished: boolean): void
+    // Has conflict: proposals(provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean): void
     // Has conflict: remove(provider: Provider): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorAssist
@@ -3059,7 +3059,7 @@ export interface EditorAssist extends Editor {
      * @param preWord the word before the cursor
      * @param finished whether is was the last call in an async operation
      */
-    proposals(provider: Provider, proposals: EditorAssistProposal[], preWord: string | null, finished: boolean): void
+    proposals(provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean): void
     remove(provider: Provider): void
 
     // Own signals of IAnjuta-3.0.IAnjuta.EditorAssist
@@ -3500,7 +3500,7 @@ export interface EditorGladeSignal extends Editor {
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorGladeSignal
 
-    drop(iterator: Iterable, signalData: string | null): void
+    drop(iterator: Iterable, signalData: string): void
     dropPossible(iterator: Iterable): boolean
 
     // Own signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal
@@ -3645,7 +3645,7 @@ export interface EditorHover extends Editor {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.EditorHover
 
-    // Has conflict: display(position: Iterable, info: string | null): void
+    // Has conflict: display(position: Iterable, info: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorHover
 
@@ -3655,7 +3655,7 @@ export interface EditorHover extends Editor {
      * @param position 
      * @param info String to display
      */
-    display(position: Iterable, info: string | null): void
+    display(position: Iterable, info: string): void
     hoverLeave(position: Iterable): void
     hoverOver(position: Iterable): void
 
@@ -3727,10 +3727,10 @@ export interface EditorLanguage extends Editor {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.EditorLanguage
 
-    // Has conflict: getLanguage(): string | null
-    // Has conflict: getLanguageName(language: string | null): string | null
+    // Has conflict: getLanguage(): string
+    // Has conflict: getLanguageName(language: string): string
     // Has conflict: getSupportedLanguages(): string[]
-    // Has conflict: setLanguage(language: string | null): void
+    // Has conflict: setLanguage(language: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorLanguage
 
@@ -3738,8 +3738,8 @@ export interface EditorLanguage extends Editor {
      * Return the name of the currently used language
      * @virtual 
      */
-    getLanguage(): string | null
-    getLanguageName(language: string | null): string | null
+    getLanguage(): string
+    getLanguageName(language: string): string
     /**
      * Return a list of languages supported by the editor
      * Note: These list contains the names in the form
@@ -3747,13 +3747,13 @@ export interface EditorLanguage extends Editor {
      * @virtual 
      */
     getSupportedLanguages(): string[]
-    languageChanged(language: string | null): void
+    languageChanged(language: string): void
     /**
      * Force the editor to use a given language
      * @virtual 
      * @param language Language
      */
-    setLanguage(language: string | null): void
+    setLanguage(language: string): void
 
     // Own signals of IAnjuta-3.0.IAnjuta.EditorLanguage
 
@@ -3888,8 +3888,8 @@ export interface EditorSearch extends Editor {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.EditorSearch
 
-    // Has conflict: backward(search: string | null, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
-    // Has conflict: forward(search: string | null, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    // Has conflict: backward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    // Has conflict: forward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorSearch
 
@@ -3901,7 +3901,7 @@ export interface EditorSearch extends Editor {
      * @param start Where to search from
      * @param end Where to stop searching
      */
-    backward(search: string | null, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    backward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
     /**
      * Search forward from start to end
      * @virtual 
@@ -3910,7 +3910,7 @@ export interface EditorSearch extends Editor {
      * @param start Where to search from
      * @param end Where to stop searching
      */
-    forward(search: string | null, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    forward(search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
 
     // Class property signals of IAnjuta-3.0.IAnjuta.EditorSearch
 
@@ -3959,7 +3959,7 @@ export interface EditorSelection extends Editor {
 
     // Has conflict: get(): string | null
     // Has conflict: hasSelection(): boolean
-    // Has conflict: replace(text: string | null, length: number): void
+    // Has conflict: replace(text: string, length: number): void
     // Has conflict: selectAll(): void
     // Has conflict: selectBlock(): void
     // Has conflict: selectFunction(): void
@@ -3988,7 +3988,7 @@ export interface EditorSelection extends Editor {
      * @param text Replacement text.
      * @param length Length of the text to used in `text`.
      */
-    replace(text: string | null, length: number): void
+    replace(text: string, length: number): void
     selectAll(): void
     /**
      * Selects current block of code. The definition of block of code
@@ -4475,7 +4475,7 @@ export interface FileManager {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.FileManager
 
-    // Has conflict: setRoot(rootUri: string | null): void
+    // Has conflict: setRoot(rootUri: string): void
     // Has conflict: setSelected(file: Gio.File): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.FileManager
@@ -4486,7 +4486,7 @@ export interface FileManager {
      * @virtual 
      * @param rootUri fixme
      */
-    setRoot(rootUri: string | null): void
+    setRoot(rootUri: string): void
     /**
      * fixme.
      * @virtual 
@@ -4726,7 +4726,7 @@ export interface Help {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.Help
 
-    // Has conflict: search(query: string | null): void
+    // Has conflict: search(query: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Help
 
@@ -4735,7 +4735,7 @@ export interface Help {
      * @virtual 
      * @param query string to search in the help
      */
-    search(query: string | null): void
+    search(query: string): void
 
     // Class property signals of IAnjuta-3.0.IAnjuta.Help
 
@@ -5132,12 +5132,12 @@ export interface Language {
     // Owm methods of IAnjuta-3.0.IAnjuta.Language
 
     // Has conflict: getFromEditor(editor: EditorLanguage): LanguageId
-    // Has conflict: getFromMimeType(mimeType: string | null): LanguageId
-    // Has conflict: getFromString(string: string | null): LanguageId
+    // Has conflict: getFromMimeType(mimeType: string): LanguageId
+    // Has conflict: getFromString(string: string): LanguageId
     // Has conflict: getLanguages(): number[]
-    // Has conflict: getMakeTarget(id: LanguageId): string | null
-    // Has conflict: getName(id: LanguageId): string | null
-    // Has conflict: getNameFromEditor(editor: EditorLanguage): string | null
+    // Has conflict: getMakeTarget(id: LanguageId): string
+    // Has conflict: getName(id: LanguageId): string
+    // Has conflict: getNameFromEditor(editor: EditorLanguage): string
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Language
 
@@ -5148,18 +5148,18 @@ export interface Language {
      * @returns A valid language id or 0
      */
     getFromEditor(editor: EditorLanguage): LanguageId
-    getFromMimeType(mimeType: string | null): LanguageId
-    getFromString(string: string | null): LanguageId
+    getFromMimeType(mimeType: string): LanguageId
+    getFromString(string: string): LanguageId
     getLanguages(): number[]
-    getMakeTarget(id: LanguageId): string | null
-    getName(id: LanguageId): string | null
+    getMakeTarget(id: LanguageId): string
+    getName(id: LanguageId): string
     /**
      * Conviniece method to get the name directly from the editor
      * @virtual 
      * @param editor An object implementing IAnjutaEditorLanguage
      * @returns A language name or NULL
      */
-    getNameFromEditor(editor: EditorLanguage): string | null
+    getNameFromEditor(editor: EditorLanguage): string
 
     // Class property signals of IAnjuta-3.0.IAnjuta.Language
 
@@ -5451,8 +5451,8 @@ export interface MessageManager {
     // Has conflict: removeView(view: MessageView): void
     // Has conflict: setCurrentView(view: MessageView): void
     // Has conflict: setViewIcon(view: MessageView, icon: GdkPixbuf.PixbufAnimation): void
-    // Has conflict: setViewIconFromStock(view: MessageView, icon: string | null): void
-    // Has conflict: setViewTitle(view: MessageView, title: string | null): void
+    // Has conflict: setViewIconFromStock(view: MessageView, icon: string): void
+    // Has conflict: setViewTitle(view: MessageView, title: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.MessageManager
 
@@ -5482,14 +5482,14 @@ export interface MessageManager {
      * @param view A message view
      * @param icon Sets the icon of view.
      */
-    setViewIconFromStock(view: MessageView, icon: string | null): void
+    setViewIconFromStock(view: MessageView, icon: string): void
     /**
      * Sets the title of view.
      * @virtual 
      * @param view A message view
      * @param title Sets the title of view.
      */
-    setViewTitle(view: MessageView, title: string | null): void
+    setViewTitle(view: MessageView, title: string): void
 
     // Class property signals of IAnjuta-3.0.IAnjuta.MessageManager
 
@@ -5552,10 +5552,10 @@ export interface MessageView {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.MessageView
 
-    // Has conflict: append(type: MessageViewType, summary: string | null, details: string | null): void
-    // Has conflict: bufferAppend(text: string | null): void
+    // Has conflict: append(type: MessageViewType, summary: string, details: string): void
+    // Has conflict: bufferAppend(text: string): void
     // Has conflict: clear(): void
-    // Has conflict: getCurrentMessage(): string | null
+    // Has conflict: getCurrentMessage(): string
     // Has conflict: selectNext(): void
     // Has conflict: selectPrevious(): void
 
@@ -5568,15 +5568,15 @@ export interface MessageView {
      * @param summary summary of the message
      * @param details details of the message
      */
-    append(type: MessageViewType, summary: string | null, details: string | null): void
+    append(type: MessageViewType, summary: string, details: string): void
     /**
      * Appends the text in buffer. Flushes the buffer where a newline is found.
      * by emiiting buffer_flushed signal. The string is expected to be utf8.
      * @virtual 
      * @param text text to show as message
      */
-    bufferAppend(text: string | null): void
-    bufferFlushed(line: string | null): void
+    bufferAppend(text: string): void
+    bufferFlushed(line: string): void
     /**
      * Clear all messages in buffer
      * @virtual 
@@ -5586,8 +5586,8 @@ export interface MessageView {
      * Get the currently selected message
      * @virtual 
      */
-    getCurrentMessage(): string | null
-    messageClicked(message: string | null): void
+    getCurrentMessage(): string
+    messageClicked(message: string): void
     /**
      * Select next message (of type INFO, WARNING or ERROR)
      * @virtual 
@@ -5862,9 +5862,9 @@ export interface Project {
     // Has conflict: isLoaded(): boolean
     // Has conflict: loadNode(node: Anjuta.ProjectNode): boolean
     // Has conflict: removeNode(node: Anjuta.ProjectNode): boolean
-    // Has conflict: removeProperty(node: Anjuta.ProjectNode, id: string | null, name: string | null): boolean
+    // Has conflict: removeProperty(node: Anjuta.ProjectNode, id: string, name: string | null): boolean
     // Has conflict: saveNode(node: Anjuta.ProjectNode): boolean
-    // Has conflict: setProperty(node: Anjuta.ProjectNode, id: string | null, name: string | null, value: string | null): Anjuta.ProjectProperty | null
+    // Has conflict: setProperty(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Project
 
@@ -5934,7 +5934,7 @@ export interface Project {
      * @param name Name for map property
      * @returns TRUE if the node is removed
      */
-    removeProperty(node: Anjuta.ProjectNode, id: string | null, name: string | null): boolean
+    removeProperty(node: Anjuta.ProjectNode, id: string, name: string | null): boolean
     /**
      * Save a project node
      * @virtual 
@@ -5951,7 +5951,7 @@ export interface Project {
      * @param value Value
      * @returns The new property of NULL if the property cannot be set
      */
-    setProperty(node: Anjuta.ProjectNode, id: string | null, name: string | null, value: string | null): Anjuta.ProjectProperty | null
+    setProperty(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
 
     // Overloads of setProperty
 
@@ -6224,11 +6224,11 @@ export interface ProjectManager {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.ProjectManager
 
-    // Has conflict: addGroup(name: string | null, defaultGroup: Gio.File | null): Gio.File
-    // Has conflict: addSource(name: string | null, defaultTarget: Gio.File | null): Gio.File
-    // Has conflict: addSourceQuiet(name: string | null, target: Gio.File): Gio.File
+    // Has conflict: addGroup(name: string, defaultGroup: Gio.File | null): Gio.File
+    // Has conflict: addSource(name: string, defaultTarget: Gio.File | null): Gio.File
+    // Has conflict: addSourceQuiet(name: string, target: Gio.File): Gio.File
     // Has conflict: addSources(names: string[], defaultTarget: Gio.File | null): Gio.File[]
-    // Has conflict: addTarget(name: string | null, defaultGroup: Gio.File | null): Gio.File
+    // Has conflict: addTarget(name: string, defaultGroup: Gio.File | null): Gio.File
     // Has conflict: getCapabilities(): number
     // Has conflict: getChildren(parent: Gio.File, childrenType: number): Gio.File[]
     // Has conflict: getCurrentProject(): Project
@@ -6250,7 +6250,7 @@ export interface ProjectManager {
      * @param defaultGroup A #GFile corresponding to the default parent group or 				%NULL if don't care.
      * @returns A #GFile corresponding to the new group added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    addGroup(name: string | null, defaultGroup: Gio.File | null): Gio.File
+    addGroup(name: string, defaultGroup: Gio.File | null): Gio.File
     /**
      * Prompts the user to add a file to the project. If the user selects
      * multiple files only the first source file is returned.
@@ -6264,7 +6264,7 @@ export interface ProjectManager {
      * @param defaultTarget A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    addSource(name: string | null, defaultTarget: Gio.File | null): Gio.File
+    addSource(name: string, defaultTarget: Gio.File | null): Gio.File
     /**
      * Adds a file to the project without prompting the user.
      * 
@@ -6277,7 +6277,7 @@ export interface ProjectManager {
      * @param target A #GFile corresponding to the parent target or group.
      * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    addSourceQuiet(name: string | null, target: Gio.File): Gio.File
+    addSourceQuiet(name: string, target: Gio.File): Gio.File
     /**
      * Prompts the user to add several files to the project. Depending on the
      * project backend, it can be possible that the source files must
@@ -6301,7 +6301,7 @@ export interface ProjectManager {
      * @param defaultGroup A #GFile corresponding to the default parent group or 				%NULL if don't care.
      * @returns A #GFile corresponding to the new target added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    addTarget(name: string | null, defaultGroup: Gio.File | null): Gio.File
+    addTarget(name: string, defaultGroup: Gio.File | null): Gio.File
     elementAdded(element: Gio.File): void
     elementRemoved(element: Gio.File): void
     elementSelected(element: Gio.File): void
@@ -6441,7 +6441,7 @@ export interface Provider {
     // Owm methods of IAnjuta-3.0.IAnjuta.Provider
 
     // Has conflict: activate(iter: Iterable, data: any | null): void
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: getStartIter(): Iterable
     // Has conflict: populate(iter: Iterable): void
 
@@ -6458,7 +6458,7 @@ export interface Provider {
      * Return a (translatable) name for the provider
      * @virtual 
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the iter where the current completion started
      * @virtual 
@@ -6521,7 +6521,7 @@ export interface SnippetsManager {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.SnippetsManager
 
-    // Has conflict: insert(key: string | null, editingSession: boolean): boolean
+    // Has conflict: insert(key: string, editingSession: boolean): boolean
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.SnippetsManager
 
@@ -6531,7 +6531,7 @@ export interface SnippetsManager {
      * @param key Trigger-key of the snippet
      * @param editingSession If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
-    insert(key: string | null, editingSession: boolean): boolean
+    insert(key: string, editingSession: boolean): boolean
 
     // Class property signals of IAnjuta-3.0.IAnjuta.SnippetsManager
 
@@ -6746,7 +6746,7 @@ export interface Symbol {
     // Has conflict: getBoolean(field: SymbolField): boolean
     // Has conflict: getIcon(): GdkPixbuf.Pixbuf
     // Has conflict: getInt(field: SymbolField): number
-    // Has conflict: getString(field: SymbolField): string | null
+    // Has conflict: getString(field: SymbolField): string
     // Has conflict: getSymType(): SymbolType
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Symbol
@@ -6779,7 +6779,7 @@ export interface Symbol {
      * @param field The field to retrieve.
      * @returns The string
      */
-    getString(field: SymbolField): string | null
+    getString(field: SymbolField): string
     /**
      * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
      * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
@@ -6850,9 +6850,9 @@ export interface SymbolManager {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.SymbolManager
 
-    // Has conflict: activatePackage(pkgName: string | null, pkgVersion: string | null): boolean
+    // Has conflict: activatePackage(pkgName: string, pkgVersion: string): boolean
     // Has conflict: deactivateAll(): void
-    // Has conflict: deactivatePackage(pkgName: string | null, pkgVersion: string | null): void
+    // Has conflict: deactivatePackage(pkgName: string, pkgVersion: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.SymbolManager
 
@@ -6863,7 +6863,7 @@ export interface SymbolManager {
      * @param pkgVersion Version of the package. The colon char must be avoided.
      * @returns TRUE if the package was loaded (or will be loaded once scanned). FALSE if the version given was newer than the version in the database or the package was not found. In this case, add_package() should be called.
      */
-    activatePackage(pkgName: string | null, pkgVersion: string | null): boolean
+    activatePackage(pkgName: string, pkgVersion: string): boolean
     /**
      * Deactivates all activate packages
      * @virtual 
@@ -6876,7 +6876,7 @@ export interface SymbolManager {
      * @param pkgName name of the package. The colon char must be avoided.
      * @param pkgVersion Version of the package. The colon char must be avoided.
      */
-    deactivatePackage(pkgName: string | null, pkgVersion: string | null): void
+    deactivatePackage(pkgName: string, pkgVersion: string): void
     prjScanEnd(processId: number): void
     sysScanEnd(processId: number): void
 
@@ -7080,7 +7080,7 @@ export interface Terminal {
 
     // Owm methods of IAnjuta-3.0.IAnjuta.Terminal
 
-    // Has conflict: executeCommand(directory: string | null, command: string | null, environment: string[]): number
+    // Has conflict: executeCommand(directory: string, command: string, environment: string[]): number
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Terminal
 
@@ -7094,7 +7094,7 @@ export interface Terminal {
      * @param environment List of additional environment variables
      * @returns Process ID
      */
-    executeCommand(directory: string | null, command: string | null, environment: string[]): number
+    executeCommand(directory: string, command: string, environment: string[]): number
 
     // Own signals of IAnjuta-3.0.IAnjuta.Terminal
 
@@ -7211,7 +7211,7 @@ export interface Vcs {
     // Owm methods of IAnjuta-3.0.IAnjuta.Vcs
 
     // Has conflict: add(files: Gio.File[], notify: Anjuta.AsyncNotify): void
-    // Has conflict: checkout(repositoryLocation: string | null, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
+    // Has conflict: checkout(repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     // Has conflict: remove(files: Gio.File[], notify: Anjuta.AsyncNotify): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Vcs
@@ -7231,7 +7231,7 @@ export interface Vcs {
      * @param cancel An optional #GCancellable object to cancel the operation, or NULL
      * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
-    checkout(repositoryLocation: string | null, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
+    checkout(repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     /**
      * Remove files from the VCS repository.
      * @virtual 
@@ -7336,15 +7336,15 @@ export interface BuildableIface {
     // Own fields of IAnjuta-3.0.IAnjuta.BuildableIface
 
     gIface: GObject.TypeInterface
-    build: (obj: Buildable, uri: string | null) => void
-    clean: (obj: Buildable, uri: string | null) => void
-    configure: (obj: Buildable, uri: string | null) => void
-    execute: (obj: Buildable, uri: string | null) => void
-    generate: (obj: Buildable, uri: string | null) => void
-    getCommand: (obj: Buildable, commandId: BuildableCommand) => string | null
-    install: (obj: Buildable, uri: string | null) => void
+    build: (obj: Buildable, uri: string) => void
+    clean: (obj: Buildable, uri: string) => void
+    configure: (obj: Buildable, uri: string) => void
+    execute: (obj: Buildable, uri: string) => void
+    generate: (obj: Buildable, uri: string) => void
+    getCommand: (obj: Buildable, commandId: BuildableCommand) => string
+    install: (obj: Buildable, uri: string) => void
     resetCommands: (obj: Buildable) => void
-    setCommand: (obj: Buildable, commandId: BuildableCommand, command: string | null) => void
+    setCommand: (obj: Buildable, commandId: BuildableCommand, command: string) => void
 }
 
 export abstract class BuildableIface {
@@ -7360,7 +7360,7 @@ export interface BuilderIface {
 
     gIface: GObject.TypeInterface
     cancel: (obj: Builder, handle: BuilderHandle) => void
-    getUriConfiguration: (obj: Builder, uri: string | null) => string | null
+    getUriConfiguration: (obj: Builder, uri: string) => string
     listConfiguration: (obj: Builder) => string[]
 }
 
@@ -7380,19 +7380,19 @@ export interface DebugManagerIface {
     debuggerStarted: (obj: DebugManager) => void
     debuggerStopped: (obj: DebugManager, err: GLib.Error) => void
     frameChanged: (obj: DebugManager, frame: number, thread: number) => void
-    locationChanged: (obj: DebugManager, address: number, uri: string | null, line: number) => void
+    locationChanged: (obj: DebugManager, address: number, uri: string, line: number) => void
     programExited: (obj: DebugManager) => void
     programLoaded: (obj: DebugManager) => void
-    programMoved: (obj: DebugManager, pid: number, tid: number, address: number, file: string | null, line: number) => void
+    programMoved: (obj: DebugManager, pid: number, tid: number, address: number, file: string, line: number) => void
     programRunning: (obj: DebugManager) => void
     programStarted: (obj: DebugManager) => void
     programStopped: (obj: DebugManager) => void
     programUnloaded: (obj: DebugManager) => void
     sharedlibEvent: (obj: DebugManager) => void
-    signalReceived: (obj: DebugManager, name: string | null, description: string | null) => void
+    signalReceived: (obj: DebugManager, name: string, description: string) => void
     quit: (obj: DebugManager) => boolean
-    start: (obj: DebugManager, uri: string | null) => boolean
-    startRemote: (obj: DebugManager, server: string | null, uri: string | null) => boolean
+    start: (obj: DebugManager, uri: string) => boolean
+    startRemote: (obj: DebugManager, server: string, uri: string) => boolean
 }
 
 export abstract class DebugManagerIface {
@@ -7562,31 +7562,31 @@ export interface DebuggerIface {
     frameChanged: (obj: Debugger, frame: number, thread: number) => void
     programExited: (obj: Debugger) => void
     programLoaded: (obj: Debugger) => void
-    programMoved: (obj: Debugger, pid: number, tid: number, address: number, file: string | null, line: number) => void
+    programMoved: (obj: Debugger, pid: number, tid: number, address: number, file: string, line: number) => void
     programRunning: (obj: Debugger) => void
     programStopped: (obj: Debugger) => void
     sharedlibEvent: (obj: Debugger) => void
-    signalReceived: (obj: Debugger, name: string | null, description: string | null) => void
+    signalReceived: (obj: Debugger, name: string, description: string) => void
     abort: (obj: Debugger) => boolean
     attach: (obj: Debugger, pid: number, sourceSearchDirectories: string[]) => boolean
-    // Has conflict: connect: (obj: Debugger, server: string | null, args: string | null, terminal: boolean, stop: boolean) => boolean
+    // Has conflict: connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
     disableLog: (obj: Debugger) => void
     enableLog: (obj: Debugger, log: MessageView) => void
     exit: (obj: Debugger) => boolean
     getState: (obj: Debugger) => DebuggerState
-    handleSignal: (obj: Debugger, name: string | null, stop: boolean, print: boolean, ignore: boolean) => boolean
+    handleSignal: (obj: Debugger, name: string, stop: boolean, print: boolean, ignore: boolean) => boolean
     interrupt: (obj: Debugger) => boolean
-    load: (obj: Debugger, file: string | null, mimeType: string | null, sourceSearchDirectories: string[]) => boolean
+    load: (obj: Debugger, file: string, mimeType: string, sourceSearchDirectories: string[]) => boolean
     quit: (obj: Debugger) => boolean
     run: (obj: Debugger) => boolean
-    runFrom: (obj: Debugger, file: string | null, line: number) => boolean
-    runTo: (obj: Debugger, file: string | null, line: number) => boolean
-    sendCommand: (obj: Debugger, command: string | null) => boolean
+    runFrom: (obj: Debugger, file: string, line: number) => boolean
+    runTo: (obj: Debugger, file: string, line: number) => boolean
+    sendCommand: (obj: Debugger, command: string) => boolean
     setEnvironment: (obj: Debugger, env: string | null) => boolean
     setFrame: (obj: Debugger, frame: number) => boolean
     setThread: (obj: Debugger, thread: number) => boolean
-    setWorkingDirectory: (obj: Debugger, dir: string | null) => boolean
-    start: (obj: Debugger, args: string | null, terminal: boolean, stop: boolean) => boolean
+    setWorkingDirectory: (obj: Debugger, dir: string) => boolean
+    start: (obj: Debugger, args: string, terminal: boolean, stop: boolean) => boolean
     stepIn: (obj: Debugger) => boolean
     stepOut: (obj: Debugger) => boolean
     stepOver: (obj: Debugger) => boolean
@@ -7613,12 +7613,12 @@ export interface DebuggerInstructionALine {
      * Optional label
      * @field 
      */
-    label: string | null
+    label: string
     /**
      * Diassembled instruction on the line
      * @field 
      */
-    text: string | null
+    text: string
 }
 
 /**
@@ -7759,8 +7759,8 @@ export interface DebuggerVariableIface {
     // Own fields of IAnjuta-3.0.IAnjuta.DebuggerVariableIface
 
     gIface: DebuggerIface
-    assign: (obj: DebuggerVariable, name: string | null, value: string | null) => boolean
-    destroy: (obj: DebuggerVariable, name: string | null) => boolean
+    assign: (obj: DebuggerVariable, name: string, value: string) => boolean
+    destroy: (obj: DebuggerVariable, name: string) => boolean
 }
 
 export abstract class DebuggerVariableIface {
@@ -7845,7 +7845,7 @@ export interface DocumentIface {
     copy: (obj: Document) => void
     cut: (obj: Document) => void
     endUndoAction: (obj: Document) => void
-    getFilename: (obj: Document) => string | null
+    getFilename: (obj: Document) => string
     grabFocus: (obj: Document) => void
     paste: (obj: Document) => void
     redo: (obj: Document) => void
@@ -7867,12 +7867,12 @@ export interface DocumentManagerIface {
     documentAdded: (obj: DocumentManager, doc: Document) => void
     documentRemoved: (obj: DocumentManager, doc: Document) => void
     addBookmark: (obj: DocumentManager, file: Gio.File, line: number) => void
-    addBuffer: (obj: DocumentManager, name: string | null, content: string | null) => Editor
+    addBuffer: (obj: DocumentManager, name: string, content: string) => Editor
     addDocument: (obj: DocumentManager, document: Document) => void
     findDocumentWithFile: (obj: DocumentManager, file: Gio.File) => Document
     getCurrentDocument: (obj: DocumentManager) => Document
     getDocWidgets: (obj: DocumentManager) => Gtk.Widget[]
-    getFile: (obj: DocumentManager, filename: string | null) => Gio.File
+    getFile: (obj: DocumentManager, filename: string) => Gio.File
     gotoFileLine: (obj: DocumentManager, file: Gio.File, lineno: number) => Editor
     gotoFileLineMark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
     removeDocument: (obj: DocumentManager, document: Document, saveBefore: boolean) => boolean
@@ -7894,7 +7894,7 @@ export interface EditorAssistIface {
     cancelled: (obj: EditorAssist) => void
     add: (obj: EditorAssist, provider: Provider) => void
     invoke: (obj: EditorAssist, provider: Provider) => void
-    proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], preWord: string | null, finished: boolean) => void
+    proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], preWord: string, finished: boolean) => void
     remove: (obj: EditorAssist, provider: Provider) => void
 }
 
@@ -8028,7 +8028,7 @@ export interface EditorGladeSignalIface {
     // Own fields of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface
 
     gIface: EditorIface
-    drop: (obj: EditorGladeSignal, iterator: Iterable, signalData: string | null) => void
+    drop: (obj: EditorGladeSignal, iterator: Iterable, signalData: string) => void
     dropPossible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
 }
 
@@ -8063,7 +8063,7 @@ export interface EditorHoverIface {
     gIface: EditorIface
     hoverLeave: (obj: EditorHover, position: Iterable) => void
     hoverOver: (obj: EditorHover, position: Iterable) => void
-    display: (obj: EditorHover, position: Iterable, info: string | null) => void
+    display: (obj: EditorHover, position: Iterable, info: string) => void
 }
 
 export abstract class EditorHoverIface {
@@ -8079,14 +8079,14 @@ export interface EditorIface {
 
     gIface: GObject.TypeInterface
     backspace: (obj: Editor) => void
-    changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string | null) => void
+    changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
     charAdded: (obj: Editor, position: Iterable, ch: number) => void
     codeChanged: (obj: Editor, position: Iterable, code: string | null) => void
     cursorMoved: (obj: Editor) => void
     gladeCallbackAdd: (obj: Editor, widgetTypename: string | null, signalName: string | null, handlerName: string | null, object: string | null, swap: boolean, after: boolean, filename: string | null) => void
     gladeMemberAdd: (obj: Editor, widgetTypename: string | null, widgetName: string | null, filename: string | null) => void
     lineMarksGutterClicked: (obj: Editor, location: number) => void
-    append: (obj: Editor, text: string | null, length: number) => void
+    append: (obj: Editor, text: string, length: number) => void
     erase: (obj: Editor, positionStart: Iterable, positionEnd: Iterable) => void
     eraseAll: (obj: Editor) => void
     getColumn: (obj: Editor) => number
@@ -8110,7 +8110,7 @@ export interface EditorIface {
     gotoLine: (obj: Editor, lineno: number) => void
     gotoPosition: (obj: Editor, position: Iterable) => void
     gotoStart: (obj: Editor) => void
-    insert: (obj: Editor, position: Iterable, text: string | null, length: number) => void
+    insert: (obj: Editor, position: Iterable, text: string, length: number) => void
     setAutoIndent: (obj: Editor, autoIndent: boolean) => void
     setIndentsize: (obj: Editor, indentsize: number) => void
     setPopupMenu: (obj: Editor, menu: Gtk.Widget) => void
@@ -8130,11 +8130,11 @@ export interface EditorLanguageIface {
     // Own fields of IAnjuta-3.0.IAnjuta.EditorLanguageIface
 
     gIface: EditorIface
-    languageChanged: (obj: EditorLanguage, language: string | null) => void
-    getLanguage: (obj: EditorLanguage) => string | null
-    getLanguageName: (obj: EditorLanguage, language: string | null) => string | null
+    languageChanged: (obj: EditorLanguage, language: string) => void
+    getLanguage: (obj: EditorLanguage) => string
+    getLanguageName: (obj: EditorLanguage, language: string) => string
     getSupportedLanguages: (obj: EditorLanguage) => string[]
-    setLanguage: (obj: EditorLanguage, language: string | null) => void
+    setLanguage: (obj: EditorLanguage, language: string) => void
 }
 
 export abstract class EditorLanguageIface {
@@ -8167,8 +8167,8 @@ export interface EditorSearchIface {
     // Own fields of IAnjuta-3.0.IAnjuta.EditorSearchIface
 
     gIface: EditorIface
-    backward: (obj: EditorSearch, search: string | null, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
-    forward: (obj: EditorSearch, search: string | null, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    backward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
+    forward: (obj: EditorSearch, search: string, caseSensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* resultStart */ EditorCell, /* resultEnd */ EditorCell ]
 }
 
 export abstract class EditorSearchIface {
@@ -8185,7 +8185,7 @@ export interface EditorSelectionIface {
     gIface: EditorIface
     get: (obj: EditorSelection) => string | null
     hasSelection: (obj: EditorSelection) => boolean
-    replace: (obj: EditorSelection, text: string | null, length: number) => void
+    replace: (obj: EditorSelection, text: string, length: number) => void
     selectAll: (obj: EditorSelection) => void
     selectBlock: (obj: EditorSelection) => void
     selectFunction: (obj: EditorSelection) => void
@@ -8303,7 +8303,7 @@ export interface FileManagerIface {
 
     gIface: GObject.TypeInterface
     sectionChanged: (obj: FileManager, file: Gio.File) => void
-    setRoot: (obj: FileManager, rootUri: string | null) => void
+    setRoot: (obj: FileManager, rootUri: string) => void
     setSelected: (obj: FileManager, file: Gio.File) => void
 }
 
@@ -8356,7 +8356,7 @@ export interface HelpIface {
     // Own fields of IAnjuta-3.0.IAnjuta.HelpIface
 
     gIface: GObject.TypeInterface
-    search: (obj: Help, query: string | null) => void
+    search: (obj: Help, query: string) => void
 }
 
 export abstract class HelpIface {
@@ -8445,12 +8445,12 @@ export interface LanguageIface {
 
     gIface: GObject.TypeInterface
     getFromEditor: (obj: Language, editor: EditorLanguage) => LanguageId
-    getFromMimeType: (obj: Language, mimeType: string | null) => LanguageId
-    getFromString: (obj: Language, string: string | null) => LanguageId
+    getFromMimeType: (obj: Language, mimeType: string) => LanguageId
+    getFromString: (obj: Language, string: string) => LanguageId
     getLanguages: (obj: Language) => number[]
-    getMakeTarget: (obj: Language, id: LanguageId) => string | null
-    getName: (obj: Language, id: LanguageId) => string | null
-    getNameFromEditor: (obj: Language, editor: EditorLanguage) => string | null
+    getMakeTarget: (obj: Language, id: LanguageId) => string
+    getName: (obj: Language, id: LanguageId) => string
+    getNameFromEditor: (obj: Language, editor: EditorLanguage) => string
 }
 
 export abstract class LanguageIface {
@@ -8520,8 +8520,8 @@ export interface MessageManagerIface {
     removeView: (obj: MessageManager, view: MessageView) => void
     setCurrentView: (obj: MessageManager, view: MessageView) => void
     setViewIcon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
-    setViewIconFromStock: (obj: MessageManager, view: MessageView, icon: string | null) => void
-    setViewTitle: (obj: MessageManager, view: MessageView, title: string | null) => void
+    setViewIconFromStock: (obj: MessageManager, view: MessageView, icon: string) => void
+    setViewTitle: (obj: MessageManager, view: MessageView, title: string) => void
 }
 
 export abstract class MessageManagerIface {
@@ -8536,12 +8536,12 @@ export interface MessageViewIface {
     // Own fields of IAnjuta-3.0.IAnjuta.MessageViewIface
 
     gIface: GObject.TypeInterface
-    bufferFlushed: (obj: MessageView, line: string | null) => void
-    messageClicked: (obj: MessageView, message: string | null) => void
-    append: (obj: MessageView, type: MessageViewType, summary: string | null, details: string | null) => void
-    bufferAppend: (obj: MessageView, text: string | null) => void
+    bufferFlushed: (obj: MessageView, line: string) => void
+    messageClicked: (obj: MessageView, message: string) => void
+    append: (obj: MessageView, type: MessageViewType, summary: string, details: string) => void
+    bufferAppend: (obj: MessageView, text: string) => void
     clear: (obj: MessageView) => void
-    getCurrentMessage: (obj: MessageView) => string | null
+    getCurrentMessage: (obj: MessageView) => string
     selectNext: (obj: MessageView) => void
     selectPrevious: (obj: MessageView) => void
 }
@@ -8648,9 +8648,9 @@ export interface ProjectIface {
     isLoaded: (obj: Project) => boolean
     loadNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
     removeNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    removeProperty: (obj: Project, node: Anjuta.ProjectNode, id: string | null, name: string | null) => boolean
+    removeProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null) => boolean
     saveNode: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    setProperty: (obj: Project, node: Anjuta.ProjectNode, id: string | null, name: string | null, value: string | null) => Anjuta.ProjectProperty | null
+    setProperty: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
 }
 
 export abstract class ProjectIface {
@@ -8669,11 +8669,11 @@ export interface ProjectManagerIface {
     elementRemoved: (obj: ProjectManager, element: Gio.File) => void
     elementSelected: (obj: ProjectManager, element: Gio.File) => void
     projectLoaded: (obj: ProjectManager, error: GLib.Error) => void
-    addGroup: (obj: ProjectManager, name: string | null, defaultGroup: Gio.File | null) => Gio.File
-    addSource: (obj: ProjectManager, name: string | null, defaultTarget: Gio.File | null) => Gio.File
-    addSourceQuiet: (obj: ProjectManager, name: string | null, target: Gio.File) => Gio.File
+    addGroup: (obj: ProjectManager, name: string, defaultGroup: Gio.File | null) => Gio.File
+    addSource: (obj: ProjectManager, name: string, defaultTarget: Gio.File | null) => Gio.File
+    addSourceQuiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
     addSources: (obj: ProjectManager, names: string[], defaultTarget: Gio.File | null) => Gio.File[]
-    addTarget: (obj: ProjectManager, name: string | null, defaultGroup: Gio.File | null) => Gio.File
+    addTarget: (obj: ProjectManager, name: string, defaultGroup: Gio.File | null) => Gio.File
     getCapabilities: (obj: ProjectManager) => number
     getChildren: (obj: ProjectManager, parent: Gio.File, childrenType: number) => Gio.File[]
     getCurrentProject: (obj: ProjectManager) => Project
@@ -8699,7 +8699,7 @@ export interface ProviderIface {
 
     gIface: GObject.TypeInterface
     activate: (obj: Provider, iter: Iterable, data: any | null) => void
-    getName: (obj: Provider) => string | null
+    getName: (obj: Provider) => string
     getStartIter: (obj: Provider) => Iterable
     populate: (obj: Provider, iter: Iterable) => void
 }
@@ -8716,7 +8716,7 @@ export interface SnippetsManagerIface {
     // Own fields of IAnjuta-3.0.IAnjuta.SnippetsManagerIface
 
     gIface: GObject.TypeInterface
-    insert: (obj: SnippetsManager, key: string | null, editingSession: boolean) => boolean
+    insert: (obj: SnippetsManager, key: string, editingSession: boolean) => boolean
 }
 
 export abstract class SnippetsManagerIface {
@@ -8779,7 +8779,7 @@ export interface SymbolIface {
     getBoolean: (obj: Symbol, field: SymbolField) => boolean
     getIcon: (obj: Symbol) => GdkPixbuf.Pixbuf
     getInt: (obj: Symbol, field: SymbolField) => number
-    getString: (obj: Symbol, field: SymbolField) => string | null
+    getString: (obj: Symbol, field: SymbolField) => string
     getSymType: (obj: Symbol) => SymbolType
 }
 
@@ -8797,9 +8797,9 @@ export interface SymbolManagerIface {
     gIface: GObject.TypeInterface
     prjScanEnd: (obj: SymbolManager, processId: number) => void
     sysScanEnd: (obj: SymbolManager, processId: number) => void
-    activatePackage: (obj: SymbolManager, pkgName: string | null, pkgVersion: string | null) => boolean
+    activatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => boolean
     deactivateAll: (obj: SymbolManager) => void
-    deactivatePackage: (obj: SymbolManager, pkgName: string | null, pkgVersion: string | null) => void
+    deactivatePackage: (obj: SymbolManager, pkgName: string, pkgVersion: string) => void
 }
 
 export abstract class SymbolManagerIface {
@@ -8839,7 +8839,7 @@ export interface TerminalIface {
 
     gIface: GObject.TypeInterface
     childExited: (obj: Terminal, pid: number, status: number) => void
-    executeCommand: (obj: Terminal, directory: string | null, command: string | null, environment: string[]) => number
+    executeCommand: (obj: Terminal, directory: string, command: string, environment: string[]) => number
 }
 
 export abstract class TerminalIface {
@@ -8871,7 +8871,7 @@ export interface VcsIface {
     gIface: GObject.TypeInterface
     statusChanged: (obj: Vcs) => void
     add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
-    checkout: (obj: Vcs, repositoryLocation: string | null, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
+    checkout: (obj: Vcs, repositoryLocation: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
     remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
 }
 

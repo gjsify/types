@@ -66,7 +66,7 @@ export interface Discoverer {
      * @param uri URI to gather metadata for
      * @returns TRUE if @uri was successfully queued, FALSE otherwise.
      */
-    discoverUri(uri: string | null): boolean
+    discoverUri(uri: string): boolean
 
     // Overloads of discoverUri
 
@@ -78,13 +78,13 @@ export interface Discoverer {
      * @param uri The URI to run on.
      * @returns the result of the scanning. Can be %NULL if an error occurred.
      */
-    discoverUri(uri: string | null): GstPbutils.DiscovererInfo
+    discoverUri(uri: string): GstPbutils.DiscovererInfo
     /**
      * Synchronously gathers metadata for `uri`.
      * @param uri URI to gather metadata for
      * @returns a #GUPnPDLNAInformation with the metadata for @uri on success, NULL otherwise
      */
-    discoverUriSync(uri: string | null): Information
+    discoverUriSync(uri: string): Information
     getExtendedMode(): boolean
     /**
      * Given `name,` this finds the corresponding DLNA profile information (stored
@@ -92,7 +92,7 @@ export interface Discoverer {
      * @param name The name of the DLNA profile to be retrieved
      * @returns a #GUPnPDLNAProfile on success, NULL otherwise.
      */
-    getProfile(name: string | null): Profile
+    getProfile(name: string): Profile
     getRelaxedMode(): boolean
     /**
      * Retuns a list of the all the DLNA profiles supported by `self`.
@@ -224,8 +224,8 @@ export interface Information {
     // Owm methods of GUPnPDLNA-1.0.GUPnPDLNA.Information
 
     getInfo(): GstPbutils.DiscovererInfo
-    getMime(): string | null
-    getName(): string | null
+    getMime(): string
+    getName(): string
 
     // Class property signals of GUPnPDLNA-1.0.GUPnPDLNA.Information
 
@@ -320,8 +320,8 @@ export interface Profile {
 
     getEncodingProfile(): GstPbutils.EncodingProfile
     getExtended(): boolean
-    getMime(): string | null
-    getName(): string | null
+    getMime(): string
+    getName(): string
 
     // Class property signals of GUPnPDLNA-1.0.GUPnPDLNA.Profile
 

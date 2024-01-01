@@ -58,17 +58,17 @@ function getNameslistEquals(uc: string): string[]
 function getNameslistExes(uc: string): string
 function getNameslistPounds(uc: string): string[]
 function getNameslistStars(uc: string): string[]
-function getUnicodeCategoryName(uc: string): string | null
-function getUnicodeDataName(uc: string): string | null
+function getUnicodeCategoryName(uc: string): string
+function getUnicodeDataName(uc: string): string
 function getUnicodeDataNameCount(): number
-function getUnicodeKCantonese(uc: string): string | null
-function getUnicodeKDefinition(uc: string): string | null
-function getUnicodeKJapaneseKun(uc: string): string | null
-function getUnicodeKJapaneseOn(uc: string): string | null
-function getUnicodeKKorean(uc: string): string | null
-function getUnicodeKMandarin(uc: string): string | null
-function getUnicodeKTang(uc: string): string | null
-function getUnicodeName(uc: string): string | null
+function getUnicodeKCantonese(uc: string): string
+function getUnicodeKDefinition(uc: string): string
+function getUnicodeKJapaneseKun(uc: string): string
+function getUnicodeKJapaneseOn(uc: string): string
+function getUnicodeKKorean(uc: string): string
+function getUnicodeKMandarin(uc: string): string
+function getUnicodeKTang(uc: string): string
+function getUnicodeName(uc: string): string
 function getUnicodeVersion(uc: string): UnicodeVersion
 function getUnihanCount(): number
 /**
@@ -109,7 +109,7 @@ function unicharValidate(uc: string): boolean
  * @returns a unicode character
  */
 function unicodeGetLocaleCharacter(): string
-function unicodeGetScriptForChar(wc: string): string | null
+function unicodeGetScriptForChar(wc: string): string
 /**
  * Returns an array of untranslated script names.
  * 
@@ -119,7 +119,7 @@ function unicodeGetScriptForChar(wc: string): string | null
  * @returns a newly allocated %NULL-terminated array of strings
  */
 function unicodeListScripts(): string[]
-function unicodeVersionToString(version: UnicodeVersion): string | null
+function unicodeVersionToString(version: UnicodeVersion): string
 module BlockChaptersModel {
 
     // Constructor properties interface
@@ -281,8 +281,8 @@ interface ChaptersModel extends Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSou
     // Has conflict: characterToIter(wc: string): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     // Has conflict: getBookCodepointList(): CodepointList
     // Has conflict: getCodepointList(iter: Gtk.TreeIter): CodepointList
-    getTitle(): string | null
-    idToIter(id: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
+    getTitle(): string
+    idToIter(id: string): [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
 
     // Own virtual methods of Gucharmap-2.90.Gucharmap.ChaptersModel
 
@@ -385,7 +385,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @param model The model.
      */
     setModel(model: Gtk.TreeModel | null): void
-    setSelected(name: string | null): boolean
+    setSelected(name: string): boolean
 
     // Conflicting methods
 
@@ -398,13 +398,13 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -417,13 +417,13 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -436,7 +436,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -445,7 +445,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -457,7 +457,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -940,7 +940,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     getSnapPow2(): boolean
     nextChapter(): void
     previousChapter(): void
-    setActiveChapter(chapter: string | null): void
+    setActiveChapter(chapter: string): void
     setActiveCharacter(uc: string): void
     setActivePage(page: number): void
     setChaptersModel(model: ChaptersModel): void
@@ -970,13 +970,13 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -989,13 +989,13 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1008,7 +1008,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1017,7 +1017,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1029,7 +1029,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1061,7 +1061,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Own virtual methods of Gucharmap-2.90.Gucharmap.Charmap
 
     linkClicked(oldCharacter: string, newCharacter: string): void
-    statusMessage(message: string | null): void
+    statusMessage(message: string): void
 
     // Own signals of Gucharmap-2.90.Gucharmap.Charmap
 
@@ -1525,13 +1525,13 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1544,13 +1544,13 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1563,7 +1563,7 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1572,7 +1572,7 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of Gucharmap-2.90.Gucharmap.Chartable
 
@@ -1593,7 +1593,7 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
     pasteClipboard(): void
     setActiveChar(ch: number): void
     setScrollAdjustments(hadjustment: Gtk.Adjustment, vadjustment: Gtk.Adjustment): void
-    statusMessage(message: string | null): void
+    statusMessage(message: string): void
 
     // Own signals of Gucharmap-2.90.Gucharmap.Chartable
 
@@ -1935,7 +1935,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -1961,7 +1961,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -1969,7 +1969,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -1978,7 +1978,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 
@@ -2221,7 +2221,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -2247,7 +2247,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -2255,7 +2255,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -2264,7 +2264,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 
@@ -2533,20 +2533,20 @@ interface ScriptCodepointList {
      * @param script the script name
      * @returns %TRUE on success, %FALSE if there is no such script, in which case the codepoint list is not changed.
      */
-    appendScript(script: string | null): boolean
+    appendScript(script: string): boolean
     /**
      * Sets the script for the codepoint list.
      * @param script the script name
      * @returns %TRUE on success, %FALSE if there is no such script, in which case the script is not changed.
      */
-    setScript(script: string | null): boolean
+    setScript(script: string): boolean
     /**
      * Sets multiple scripts for the codepoint list. Codepoints are sorted
      * according to their order in `scripts`.
      * @param scripts NULL-terminated array of script names
      * @returns %TRUE on success, %FALSE if any of the scripts don’t exist, in which case the script is not changed.
      */
-    setScripts(scripts: string | null): boolean
+    setScripts(scripts: string): boolean
 
     // Class property signals of Gucharmap-2.90.Gucharmap.ScriptCodepointList
 
@@ -2640,7 +2640,7 @@ interface ChaptersModelClass {
     // Own fields of Gucharmap-2.90.Gucharmap.ChaptersModelClass
 
     parentClass: Gtk.ListStoreClass
-    title: string | null
+    title: string
     characterToIter: (chapters: ChaptersModel, wc: string) => [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     getCodepointList: (chapters: ChaptersModel, iter: Gtk.TreeIter) => CodepointList
     getBookCodepointList: (chapters: ChaptersModel) => CodepointList
@@ -2696,7 +2696,7 @@ interface CharmapClass {
     // Own fields of Gucharmap-2.90.Gucharmap.CharmapClass
 
     parentClass: Gtk.PanedClass
-    statusMessage: (charmap: Charmap, message: string | null) => void
+    statusMessage: (charmap: Charmap, message: string) => void
     linkClicked: (charmap: Charmap, oldCharacter: string, newCharacter: string) => void
 }
 
@@ -2752,7 +2752,7 @@ interface ChartableClass {
     copyClipboard: (chartable: Chartable) => void
     pasteClipboard: (chartable: Chartable) => void
     setActiveChar: (chartable: Chartable, ch: number) => void
-    statusMessage: (chartable: Chartable, message: string | null) => void
+    statusMessage: (chartable: Chartable, message: string) => void
 }
 
 abstract class ChartableClass {

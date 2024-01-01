@@ -157,7 +157,7 @@ function commands_save_document_finish(document: Document, result: Gio.AsyncResu
  * @param line line number.
  * @param function_ name of the function that is calling gedit_debug().
  */
-function debug(section: DebugSection, file: string | null, line: number, function_: string | null): void
+function debug(section: DebugSection, file: string, line: number, function_: string): void
 /**
  * Initializes the debugging subsystem of gedit.
  * 
@@ -199,7 +199,7 @@ function debug_init(): void
  * @param function_ name of the function that is calling gedit_debug_plugin_message().
  * @param message a message.
  */
-function debug_plugin_message(file: string | null, line: number, function_: string | null, message: string | null): void
+function debug_plugin_message(file: string, line: number, function_: string, message: string): void
 function utils_basename_for_display(location: Gio.File): string | null
 /**
  * Create a list of valid uri's from a uri-list drop.
@@ -207,7 +207,7 @@ function utils_basename_for_display(location: Gio.File): string | null
  * @returns a string array which will hold the uris or           %NULL if there were no valid uris. g_strfreev should be used when           the string array is no longer used
  */
 function utils_drop_get_uris(selection_data: Gtk.SelectionData): string[]
-function utils_get_compression_type_from_content_type(content_type: string | null): GtkSource.CompressionType
+function utils_get_compression_type_from_content_type(content_type: string): GtkSource.CompressionType
 function utils_is_valid_location(location: Gio.File): boolean
 /**
  * Returns a string suitable to be displayed in the UI indicating
@@ -219,7 +219,7 @@ function utils_is_valid_location(location: Gio.File): boolean
  */
 function utils_location_get_dirname_for_display(location: Gio.File): string | null
 function utils_menu_position_under_tree_view(tree_view: Gtk.TreeView, rect: Gdk.Rectangle): boolean
-function utils_newline_type_to_string(newline_type: GtkSource.NewlineType): string | null
+function utils_newline_type_to_string(newline_type: GtkSource.NewlineType): string
 /**
  * This function sets up name and description
  * for a specified gtk widget.
@@ -227,10 +227,10 @@ function utils_newline_type_to_string(newline_type: GtkSource.NewlineType): stri
  * @param name Atk name string
  * @param description Atk description string
  */
-function utils_set_atk_name_description(widget: Gtk.Widget, name: string | null, description: string | null): void
+function utils_set_atk_name_description(widget: Gtk.Widget, name: string, description: string): void
 function utils_set_direct_save_filename(context: Gdk.DragContext): string | null
 interface MessageBusForeach {
-    (object_path: string | null, method: string | null): void
+    (object_path: string, method: string): void
 }
 /**
  * Callback signature used for connecting callback functions to be called
@@ -286,7 +286,7 @@ interface AppActivatable {
      * @param extension_point the extension point section of the menu to get.
      * @returns a #GeditMenuExtension for the specific section or %NULL if not found.
      */
-    extend_menu(extension_point: string | null): MenuExtension
+    extend_menu(extension_point: string): MenuExtension
 
     // Own virtual methods of Gedit-3.0.Gedit.AppActivatable
 
@@ -527,15 +527,15 @@ interface App extends Gio.ActionGroup, Gio.ActionMap {
      */
     get_views(): View[]
     process_window_event(window: Window, event: Gdk.Event): boolean
-    set_window_title(window: Window, title: string | null): void
-    show_help(parent: Gtk.Window, name: string | null, link_id: string | null): boolean
+    set_window_title(window: Window, title: string): void
+    show_help(parent: Gtk.Window, name: string, link_id: string): boolean
 
     // Own virtual methods of Gedit-3.0.Gedit.App
 
-    vfunc_help_link_id(name: string | null, link_id: string | null): string | null
+    vfunc_help_link_id(name: string, link_id: string): string | null
     vfunc_process_window_event(window: Window, event: Gdk.Event): boolean
-    vfunc_set_window_title(window: Window, title: string | null): void
-    vfunc_show_help(parent: Gtk.Window, name: string | null, link_id: string | null): boolean
+    vfunc_set_window_title(window: Window, title: string): void
+    vfunc_show_help(parent: Gtk.Window, name: string, link_id: string): boolean
 
     // Class property signals of Gedit-3.0.Gedit.App
 
@@ -723,7 +723,7 @@ interface Document {
      * @param key name of the key
      * @returns the value assigned to @key. Free with g_free().
      */
-    get_metadata(key: string | null): string | null
+    get_metadata(key: string): string | null
     /**
      * Note: this never returns %NULL.
      */
@@ -939,7 +939,7 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -951,7 +951,7 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -965,7 +965,7 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gedit-3.0.Gedit.EncodingsComboBox
 
@@ -1288,18 +1288,18 @@ interface Message {
      * Get the message method.
      * @returns the message method
      */
-    get_method(): string | null
+    get_method(): string
     /**
      * Get the message object path.
      * @returns the message object path
      */
-    get_object_path(): string | null
+    get_object_path(): string
     /**
      * Check if a message has a certain property.
      * @param propname the property name
      * @returns %TRUE if message has @propname, %FALSE otherwise
      */
-    has(propname: string | null): boolean
+    has(propname: string): boolean
 
     // Class property signals of Gedit-3.0.Gedit.Message
 
@@ -1332,8 +1332,8 @@ class Message extends GObject.Object {
      * @returns %TRUE if @object_path is a valid object path
      */
     static is_valid_object_path(object_path: string | null): boolean
-    static type_check(gtype: GObject.GType, propname: string | null, value_type: GObject.GType): boolean
-    static type_has(gtype: GObject.GType, propname: string | null): boolean
+    static type_check(gtype: GObject.GType, propname: string, value_type: GObject.GType): boolean
+    static type_has(gtype: GObject.GType, propname: string): boolean
     /**
      * Get the string identifier for `method` at `object_path`.
      * @param object_path the object path
@@ -1398,7 +1398,7 @@ interface MessageBus {
      * @param method the method
      * @param callback the callback to block
      */
-    block_by_func(object_path: string | null, method: string | null, callback: MessageCallback): void
+    block_by_func(object_path: string, method: string, callback: MessageCallback): void
     /**
      * Connect a callback handler to be evoked when message `method` at `object_path`
      * is sent over the bus.
@@ -1407,7 +1407,7 @@ interface MessageBus {
      * @param callback function to be called when message `method` at `object_path` is sent
      * @returns the callback identifier
      */
-    connect(object_path: string | null, method: string | null, callback: MessageCallback): number
+    connect(object_path: string, method: string, callback: MessageCallback): number
     /**
      * Disconnects a previously connected message callback.
      * @param id the callback id as returned by gedit_message_bus_connect()
@@ -1421,7 +1421,7 @@ interface MessageBus {
      * @param method the method
      * @param callback the connected callback
      */
-    disconnect_by_func(object_path: string | null, method: string | null, callback: MessageCallback): void
+    disconnect_by_func(object_path: string, method: string, callback: MessageCallback): void
     /**
      * Calls `func` for each message type registered on the bus
      * @param func the callback function
@@ -1434,7 +1434,7 @@ interface MessageBus {
      * @param method the method
      * @returns %TRUE if the @method at @object_path is a registered message               type on the bus
      */
-    is_registered(object_path: string | null, method: string | null): boolean
+    is_registered(object_path: string, method: string): boolean
     /**
      * Get the registered #GeditMessageType for `method` at `object_path`. The
      * returned #GeditMessageType is owned by the bus and should not be unreffed.
@@ -1442,7 +1442,7 @@ interface MessageBus {
      * @param method the method
      * @returns the registered #GeditMessageType or %NULL if no message type               is registered for @method at @object_path
      */
-    lookup(object_path: string | null, method: string | null): GObject.GType
+    lookup(object_path: string, method: string): GObject.GType
     /**
      * Register a message on the bus. A message must be registered on the bus before
      * it can be send. This function registers the type for `method` at
@@ -1453,7 +1453,7 @@ interface MessageBus {
      * @param object_path the object path
      * @param method the method to register
      */
-    register(message_type: GObject.GType, object_path: string | null, method: string | null): void
+    register(message_type: GObject.GType, object_path: string, method: string): void
     /**
      * This sends the provided `message` asynchronously over the bus. To send
      * a message synchronously, use gedit_message_bus_send_message_sync(). The
@@ -1481,7 +1481,7 @@ interface MessageBus {
      * @param method the method
      * @param callback the callback to block
      */
-    unblock_by_func(object_path: string | null, method: string | null, callback: MessageCallback): void
+    unblock_by_func(object_path: string, method: string, callback: MessageCallback): void
     /**
      * Unregisters a previously registered message type. This is especially useful
      * for plugins which should unregister message types when they are deactivated.
@@ -1490,7 +1490,7 @@ interface MessageBus {
      * @param object_path the object path
      * @param method the method
      */
-    unregister(object_path: string | null, method: string | null): void
+    unregister(object_path: string, method: string): void
     /**
      * Unregisters all message types for `object_path`. This is especially useful for
      * plugins which should unregister message types when they are deactivated.
@@ -1499,13 +1499,13 @@ interface MessageBus {
      * unregistered message types.
      * @param object_path the object path
      */
-    unregister_all(object_path: string | null): void
+    unregister_all(object_path: string): void
 
     // Own virtual methods of Gedit-3.0.Gedit.MessageBus
 
     vfunc_dispatch(message: Message): void
-    vfunc_registered(object_path: string | null, method: string | null): void
-    vfunc_unregistered(object_path: string | null, method: string | null): void
+    vfunc_registered(object_path: string, method: string): void
+    vfunc_unregistered(object_path: string, method: string): void
 
     // Own signals of Gedit-3.0.Gedit.MessageBus
 
@@ -1631,7 +1631,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1645,7 +1645,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1656,7 +1656,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gedit-3.0.Gedit.Statusbar
 
@@ -1944,7 +1944,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1958,7 +1958,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1969,7 +1969,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Gedit-3.0.Gedit.Tab
 
@@ -2217,7 +2217,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2231,7 +2231,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2242,7 +2242,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gedit-3.0.Gedit.View
 
@@ -2773,7 +2773,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2787,7 +2787,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2798,7 +2798,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gedit-3.0.Gedit.Window
 
@@ -3103,9 +3103,9 @@ interface AppClass {
     // Own fields of Gedit-3.0.Gedit.AppClass
 
     parent_class: Gtk.ApplicationClass
-    show_help: (app: App, parent: Gtk.Window, name: string | null, link_id: string | null) => boolean
-    help_link_id: (app: App, name: string | null, link_id: string | null) => string | null
-    set_window_title: (app: App, window: Window, title: string | null) => void
+    show_help: (app: App, parent: Gtk.Window, name: string, link_id: string) => boolean
+    help_link_id: (app: App, name: string, link_id: string) => string | null
+    set_window_title: (app: App, window: Window, title: string) => void
     process_window_event: (app: App, window: Window, event: Gdk.Event) => boolean
 }
 
@@ -3167,8 +3167,8 @@ interface MessageBusClass {
 
     parent_class: GObject.ObjectClass
     dispatch: (bus: MessageBus, message: Message) => void
-    registered: (bus: MessageBus, object_path: string | null, method: string | null) => void
-    unregistered: (bus: MessageBus, object_path: string | null, method: string | null) => void
+    registered: (bus: MessageBus, object_path: string, method: string) => void
+    unregistered: (bus: MessageBus, object_path: string, method: string) => void
 }
 
 abstract class MessageBusClass {

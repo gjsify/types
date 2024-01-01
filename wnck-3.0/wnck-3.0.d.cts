@@ -604,7 +604,7 @@ export interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -618,7 +618,7 @@ export interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -629,7 +629,7 @@ export interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Wnck-3.0.Wnck.ActionMenu
 
@@ -901,7 +901,7 @@ export interface Application {
      * are used to find it.
      * @returns the icon name of @app, or a fallback icon name if no icon name is available.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the mini-icon to be used for `app`. If no mini-icon is set for `app,`
      * a suboptimal heuristic is used to find an appropriate icon. If no mini-icon
@@ -923,7 +923,7 @@ export interface Application {
      * should say that this is where the application name goes.
      * @returns the name of @app, or a fallback name if no name is available.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the process ID of `app`.
      * @returns the process ID of @app, or 0 if none is available.
@@ -933,7 +933,7 @@ export interface Application {
      * Gets the startup sequence ID used for startup notification of `app`.
      * @returns the startup sequence ID used for startup notification of @app, or %NULL if none is available.
      */
-    get_startup_id(): string | null
+    get_startup_id(): string
     /**
      * Gets the list of #WnckWindow belonging to `app`.
      * @returns the list of #WnckWindow belonging to @app, or %NULL if the application contains no window. The list should not be modified nor freed, as it is owned by @app.
@@ -1041,7 +1041,7 @@ export interface ClassGroup {
      * `class_group`.
      * @returns the identifier name of @class_group, or an empty string if the group has no identifier name.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the mini-icon to be used for `class_group`. Since there is no way to
      * properly find the mini-icon, the same suboptimal heuristic as the one for
@@ -1059,12 +1059,12 @@ export interface ClassGroup {
      * resource class name is used.
      * @returns an human-readable name for @class_group.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the resource class name for `class_group`.
      * @returns the resource class name of @class_group, or an empty string if the group has no resource class name.
      */
-    get_res_class(): string | null
+    get_res_class(): string
     /**
      * Gets the list of #WnckWindow that are grouped in `class_group`.
      * @returns the list of #WnckWindow grouped in @class_group, or %NULL if the group contains no window. The list should not be modified nor freed, as it is owned by @class_group.
@@ -1114,7 +1114,7 @@ export class ClassGroup extends GObject.Object {
      * @param id identifier name of the sought resource class.
      * @returns the #WnckClassGroup corresponding to @id, or %NULL if there is no #WnckClassGroup with the specified @id. The returned #WnckClassGroup is owned by libwnck and must not be referenced or unreferenced.
      */
-    static get(id: string | null): ClassGroup
+    static get(id: string): ClassGroup
 }
 
 export module Handle {
@@ -1152,7 +1152,7 @@ export interface Handle {
      * @param id identifier name of the sought resource class.
      * @returns the #WnckClassGroup corresponding to @id, or %NULL if there is no #WnckClassGroup with the specified @id. The returned #WnckClassGroup is owned by libwnck and must not be referenced or unreferenced.
      */
-    get_class_group(id: string | null): ClassGroup
+    get_class_group(id: string): ClassGroup
     /**
      * Gets the default #WnckScreen on the default display.
      * @returns the default #WnckScreen. The returned #WnckScreen is owned by #WnckHandle and must not be referenced or unreferenced. This can return %NULL if not on X11.
@@ -1286,7 +1286,7 @@ export interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1298,7 +1298,7 @@ export interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1312,7 +1312,7 @@ export interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Set the accelerator path on `menu_item,` through which runtime
      * changes of the menu item’s accelerator caused by the user can be
@@ -1565,7 +1565,7 @@ export class ImageMenuItem extends Gtk.MenuItem {
     constructor(config?: ImageMenuItem.ConstructorProperties) 
     constructor() 
     static new(): ImageMenuItem
-    static new_with_label(label: string | null): ImageMenuItem
+    static new_with_label(label: string): ImageMenuItem
     _init(config?: ImageMenuItem.ConstructorProperties): void
 }
 
@@ -2041,7 +2041,7 @@ export interface Screen {
      * Gets the name of the window manager.
      * @returns the name of the window manager, or %NULL if the window manager does not comply with the <ulink url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink> specification.
      */
-    get_window_manager_name(): string | null
+    get_window_manager_name(): string
     /**
      * Gets the list of #WnckWindow on `screen`. The list is not in a defined
      * order, but should be "stable" (windows should not be reordered in it).
@@ -2096,7 +2096,7 @@ export interface Screen {
      * @param atom a property atom.
      * @returns %TRUE if the window manager for @screen supports the @atom hint, %FALSE otherwise.
      */
-    net_wm_supports(atom: string | null): boolean
+    net_wm_supports(atom: string): boolean
     /**
      * Releases the ownership of the layout of #WnckWorkspace on `screen`.
      * `current_token` is used to verify that the caller is the owner of the layout.
@@ -2288,7 +2288,7 @@ export interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2302,7 +2302,7 @@ export interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2313,7 +2313,7 @@ export interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Wnck-3.0.Wnck.Selector
 
@@ -2646,7 +2646,7 @@ export interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2660,7 +2660,7 @@ export interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2671,7 +2671,7 @@ export interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Wnck-3.0.Wnck.Tasklist
 
@@ -3002,7 +3002,7 @@ export interface Window {
      * which `window` belongs.
      * @returns the class group name for @window, or %NULL if @window belongs to no class group.
      */
-    get_class_group_name(): string | null
+    get_class_group_name(): string
     /**
      * Gets the class instance name from the <ulink
      * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
@@ -3012,7 +3012,7 @@ export interface Window {
      * same class group, so that they can use different resources.
      * @returns the class instance name for @window, or %NULL if @window has no class instance.
      */
-    get_class_instance_name(): string | null
+    get_class_instance_name(): string
     /**
      * Gets the size and position of `window,` as last received
      * in a ConfigureNotify event (i.e. this call does not round-trip
@@ -3064,7 +3064,7 @@ export interface Window {
      * title, not its icon title.
      * @returns the icon name of @window, or a fallback icon name if no icon name is available.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the mini-icon to be used for `window`. If no mini-icon was found, a
      * fallback mini-icon is used. wnck_window_get_icon_is_fallback() can be used
@@ -3081,7 +3081,7 @@ export interface Window {
      * For icons titles, use wnck_window_get_icon_name() instead.
      * @returns the name of @window, or a fallback name if no name is available.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the process ID of `window`.
      * @returns the process ID of @window, or 0 if none is available.
@@ -3093,7 +3093,7 @@ export interface Window {
      * client leader window.
      * @returns role for @window, or %NULL if @window has no role.
      */
-    get_role(): string | null
+    get_role(): string
     /**
      * Gets the #WnckScreen `window` is on.
      * @returns the #WnckScreen @window is on. The returned #WnckScreen is owned by libwnck and must not be referenced or unreferenced.
@@ -3106,7 +3106,7 @@ export interface Window {
      * See wnck_window_get_session_id_utf8().
      * @returns the session ID for @window in Latin-1, or %NULL if @window has no session ID.
      */
-    get_session_id(): string | null
+    get_session_id(): string
     /**
      * Gets the session ID for `window` in UTF-8 encoding.
      * The session ID should be in Latin-1 encoding, so the conversion should work,
@@ -3114,7 +3114,7 @@ export interface Window {
      * UTF-8.
      * @returns the session ID for @window in UTF-8, or %NULL if @window has no session ID.
      */
-    get_session_id_utf8(): string | null
+    get_session_id_utf8(): string
     /**
      * Gets the sort order of `window,` used for ordering of `window` in
      * #WnckSelector and #WnckTasklist. The sort order is an internal state in
@@ -3594,7 +3594,7 @@ export interface Workspace {
      * Changes the name of `space`.
      * @param name new name for `space`.
      */
-    change_name(name: string | null): void
+    change_name(name: string): void
     /**
      * Gets the height of `space`.
      * @returns the height of @space.
@@ -3621,7 +3621,7 @@ export interface Workspace {
      * used.
      * @returns the name of @space.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the neighbor #WnckWorkspace of `space` in the `direction` direction.
      * @param direction direction in which to search the neighbor.

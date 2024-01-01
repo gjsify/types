@@ -143,13 +143,13 @@ export const PASSPHRASE_REQUIRED_ERRNO: number
  * @param mimeType a string representing the mime type
  * @returns %TRUE if the mime type is supported
  */
-export function checkMimeTypeSupported(mimeType: string | null): boolean
+export function checkMimeTypeSupported(mimeType: string): boolean
 /**
  * Gets description of the filter from the internal static data.
  * @param filter an #AutoarFilter
  * @returns description about the filter
  */
-export function filterGetDescription(filter: Filter): string | null
+export function filterGetDescription(filter: Filter): string
 /**
  * Gets description of the filter from libarchive. This function creates
  * and destroys an archive object in order to get the description string.
@@ -162,7 +162,7 @@ export function filterGetDescriptionLibarchive(filter: Filter): string | null
  * @param filter an #AutoarFilter
  * @returns a file name extension
  */
-export function filterGetExtension(filter: Filter): string | null
+export function filterGetExtension(filter: Filter): string
 /**
  * Gets the filter code used by libarchive. You can use the return value
  * as the argument for archive_write_add_filter().
@@ -175,7 +175,7 @@ export function filterGetFilterLibarchive(filter: Filter): number
  * @param filter an #AutoarFilter
  * @returns an MIME type
  */
-export function filterGetMimeType(filter: Filter): string | null
+export function filterGetMimeType(filter: Filter): string
 /**
  * Checks whether an #AutoarFilter is valid.
  * @param filter an #AutoarFilter
@@ -220,7 +220,7 @@ export function formatFilterGetMimeType(format: Format, filter: Filter): string 
  * @param format an #AutoarFormat
  * @returns description about the format
  */
-export function formatGetDescription(format: Format): string | null
+export function formatGetDescription(format: Format): string
 /**
  * Gets description of the format from libarchive. This function creates
  * and destroys an archive object in order to get the description string.
@@ -233,7 +233,7 @@ export function formatGetDescriptionLibarchive(format: Format): string | null
  * @param format an #AutoarFormat
  * @returns a file name extension
  */
-export function formatGetExtension(format: Format): string | null
+export function formatGetExtension(format: Format): string
 /**
  * Gets the format code used by libarchive. You can use the return value
  * as the argument for archive_read_support_format_by_code() and
@@ -251,7 +251,7 @@ export function formatGetFormatLibarchive(format: Format): number
  * @param format an #AutoarFormat
  * @returns an MIME type
  */
-export function formatGetMimeType(format: Format): string | null
+export function formatGetMimeType(format: Format): string
 /**
  * Checks whether an #AutoarFormat is valid.
  * @param format an #AutoarFormat
@@ -440,7 +440,7 @@ export interface Compressor {
      * Sets the archive passphrase. It works only with %ARCHIVE_FORMAT_ZIP.
      * @param passphrase the archive passphrase
      */
-    setPassphrase(passphrase: string | null): void
+    setPassphrase(passphrase: string): void
     /**
      * Runs the archive creating work. All callbacks will be called in the same
      * thread as the caller of this functions.
@@ -762,7 +762,7 @@ export interface Extractor {
      * Sets a passphrase to use if the file to decompress is passphrase-protected.
      * @param passphrase a string with the passphrase to use
      */
-    setPassphrase(passphrase: string | null): void
+    setPassphrase(passphrase: string): void
     /**
      * Runs the archive extracting work. All callbacks will be called in the same
      * thread as the caller of this functions.

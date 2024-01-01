@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/goocanvas-2.0)
 
 
-GJS TypeScript type definitions for GooCanvas-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+GJS TypeScript type definitions for GooCanvas-2.0, generated from library version 2.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 GooCanvas is a canvas widget for GTK+ that uses the cairo 2D library for drawing.
 

@@ -33,23 +33,23 @@ import type Atk from '@girs/atk-1.0';
 /**
  * The book author.
  */
-export const META_AUTHOR: string | null
+export const META_AUTHOR: string
 /**
  * The book description.
  */
-export const META_DESC: string | null
+export const META_DESC: string
 /**
  * The book id.
  */
-export const META_ID: string | null
+export const META_ID: string
 /**
  * The book lang.
  */
-export const META_LANG: string | null
+export const META_LANG: string
 /**
  * The book title.
  */
-export const META_TITLE: string | null
+export const META_TITLE: string
 export module Doc {
 
     // Constructor properties interface
@@ -77,18 +77,18 @@ export interface Doc extends Gio.Initable {
 
     get_cover(): string | null
     get_current(): GLib.Bytes
-    get_current_id(): string | null
+    get_current_id(): string
     get_current_mime(): string | null
     get_current_path(): string | null
     get_current_with_epub_uris(): GLib.Bytes
-    get_metadata(mdata: string | null): string | null
+    get_metadata(mdata: string): string | null
     get_n_pages(): number
     get_page(): number
-    get_resource(path: string | null): GLib.Bytes
-    get_resource_by_id(id: string | null): GLib.Bytes
-    get_resource_mime(path: string | null): string | null
-    get_resource_mime_by_id(id: string | null): string | null
-    get_resource_path(id: string | null): string | null
+    get_resource(path: string): GLib.Bytes
+    get_resource_by_id(id: string): GLib.Bytes
+    get_resource_mime(path: string): string | null
+    get_resource_mime_by_id(id: string): string | null
+    get_resource_path(id: string): string | null
     go_next(): boolean
     go_prev(): boolean
     /**
@@ -124,8 +124,8 @@ export class Doc extends GObject.Object {
     // Constructors of Gepub-0.5.Gepub.Doc
 
     constructor(config?: Doc.ConstructorProperties) 
-    constructor(path: string | null) 
-    static new(path: string | null): Doc
+    constructor(path: string) 
+    static new(path: string): Doc
     _init(config?: Doc.ConstructorProperties): void
 }
 
@@ -214,7 +214,7 @@ export interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -228,7 +228,7 @@ export interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -239,7 +239,7 @@ export interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gepub-0.5.Gepub.Widget
 

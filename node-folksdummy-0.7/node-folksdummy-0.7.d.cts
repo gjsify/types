@@ -112,8 +112,8 @@ export interface FullPersona extends Folks.AntiLinkable, Folks.AvatarDetails, Fo
     updateWebServiceAddresses(webServiceAddresses: Gee.MultiMap): void
     updateEmailAddresses(emailAddresses: Gee.Set): void
     updateNotes(notes: Gee.Set): void
-    updateFullName(fullName: string | null): void
-    updateNickname(nickname: string | null): void
+    updateFullName(fullName: string): void
+    updateNickname(nickname: string): void
     updateStructuredName(structuredName: Folks.StructuredName | null): void
     updateAvatar(avatar: Gio.LoadableIcon | null): void
     updateUrls(urls: Gee.Set): void
@@ -288,12 +288,12 @@ export class FullPersona extends Persona {
     // Constructors of FolksDummy-0.7.FolksDummy.FullPersona
 
     constructor(config?: FullPersona.ConstructorProperties) 
-    constructor(store: PersonaStore, contactId: string | null, isUser: boolean, linkableProperties: string[]) 
-    static new(store: PersonaStore, contactId: string | null, isUser: boolean, linkableProperties: string[]): FullPersona
+    constructor(store: PersonaStore, contactId: string, isUser: boolean, linkableProperties: string[]) 
+    static new(store: PersonaStore, contactId: string, isUser: boolean, linkableProperties: string[]): FullPersona
 
     // Overloads of new
 
-    static new(store: PersonaStore, contactId: string | null, isUser: boolean, linkableProperties: string[]): Persona
+    static new(store: PersonaStore, contactId: string, isUser: boolean, linkableProperties: string[]): Persona
     _init(config?: FullPersona.ConstructorProperties): void
 }
 
@@ -437,8 +437,8 @@ export class PersonaStore extends Folks.PersonaStore {
     // Constructors of FolksDummy-0.7.FolksDummy.PersonaStore
 
     constructor(config?: PersonaStore.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, alwaysWriteableProperties: string[]) 
-    static new(id: string | null, displayName: string | null, alwaysWriteableProperties: string[]): PersonaStore
+    constructor(id: string, displayName: string, alwaysWriteableProperties: string[]) 
+    static new(id: string, displayName: string, alwaysWriteableProperties: string[]): PersonaStore
     _init(config?: PersonaStore.ConstructorProperties): void
 }
 
@@ -466,7 +466,7 @@ export interface Persona {
 
     updateWriteableProperties(writeableProperties: string[]): void
     updateLinkableProperties(linkableProperties: string[]): void
-    changeProperty(propertyName: string | null, callback: any, callback_: Gio.AsyncReadyCallback | null): void
+    changeProperty(propertyName: string, callback: any, callback_: Gio.AsyncReadyCallback | null): void
     changePropertyFinish(res: Gio.AsyncResult): void
     getPropertyChangeDelay(): number
     setPropertyChangeDelay(value: number): void
@@ -540,8 +540,8 @@ export class Persona extends Folks.Persona {
     // Constructors of FolksDummy-0.7.FolksDummy.Persona
 
     constructor(config?: Persona.ConstructorProperties) 
-    constructor(store: PersonaStore, contactId: string | null, isUser: boolean, linkableProperties: string[]) 
-    static new(store: PersonaStore, contactId: string | null, isUser: boolean, linkableProperties: string[]): Persona
+    constructor(store: PersonaStore, contactId: string, isUser: boolean, linkableProperties: string[]) 
+    static new(store: PersonaStore, contactId: string, isUser: boolean, linkableProperties: string[]): Persona
     _init(config?: Persona.ConstructorProperties): void
 }
 

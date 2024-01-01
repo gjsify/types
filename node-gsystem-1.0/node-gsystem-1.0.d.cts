@@ -45,10 +45,10 @@ export enum SubprocessStreamDisposition {
  * @param name File name
  * @param cancellable Cancellable
  */
-export function dfdAndNameGetAllXattrs(dfd: number, name: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outXattrs */ GLib.Variant ]
-export function dfdAndNameSetAllXattrs(dfd: number, name: string | null, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+export function dfdAndNameGetAllXattrs(dfd: number, name: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outXattrs */ GLib.Variant ]
+export function dfdAndNameSetAllXattrs(dfd: number, name: string, xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
 export function dirfdIteratorClear(dfdIter: DirFdIterator): void
-export function dirfdIteratorInitAt(dfd: number, path: string | null, follow: boolean, dfdIter: DirFdIterator): boolean
+export function dirfdIteratorInitAt(dfd: number, path: string, follow: boolean, dfdIter: DirFdIterator): boolean
 export function dirfdIteratorInitTakeFd(dfd: number, dfdIter: DirFdIterator): boolean
 /**
  * Read all extended attributes from `fd` in a canonical sorted order, and
@@ -168,13 +168,13 @@ export function fileGetAllXattrs(f: Gio.File, cancellable: Gio.Cancellable | nul
  * don't need to free the result.
  * @param file 
  */
-export function fileGetBasenameCached(file: Gio.File): string | null
+export function fileGetBasenameCached(file: Gio.File): string
 /**
  * Like g_file_get_path(), but returns a constant copy so callers
  * don't need to free the result.
  * @param file 
  */
-export function fileGetPathCached(file: Gio.File): string | null
+export function fileGetPathCached(file: Gio.File): string
 /**
  * Like gs_file_get_relative_path(), but does not mandate that
  * the two files have any parent in common. This function will
@@ -254,7 +254,7 @@ export function fileOpenDirFd(path: Gio.File, cancellable: Gio.Cancellable | nul
  * @param name Directory name
  * @param cancellable Cancellable
  */
-export function fileOpenDirFdAt(parentDfd: number, name: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outFd */ number ]
+export function fileOpenDirFdAt(parentDfd: number, name: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outFd */ number ]
 /**
  * Like g_file_open_tmp(), except the file will be created in the
  * provided `tmpdir,` and allows specification of the Unix `mode,` which
@@ -281,7 +281,7 @@ export function fileOpenInTmpdirAt(tmpdirFd: number, mode: number, cancellable: 
  * @param name Pathname, relative to `dfd`
  * @param cancellable Cancellable
  */
-export function fileOpenatNoatime(dfd: number, name: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* retFd */ number ]
+export function fileOpenatNoatime(dfd: number, name: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* retFd */ number ]
 /**
  * Like g_file_read(), but try to avoid updating the file's
  * access time.  This should be used by background scanning
@@ -351,14 +351,14 @@ export function fileutilGenTmpName(prefix: string | null, suffix: string | null)
  * @param message Text message to send
  * @param keys Optional structured data
  */
-export function logStructured(message: string | null, keys: string[] | null): void
+export function logStructured(message: string, keys: string[] | null): void
 /**
  * Like gs_log_structured(), but also print to standard output (if it
  * is not already connected to the system log).
  * @param message A message to log
  * @param keys Optional structured data
  */
-export function logStructuredPrint(message: string | null, keys: string[] | null): void
+export function logStructuredPrint(message: string, keys: string[] | null): void
 /**
  * Use openat() to open a directory, using a standard set of flags.
  * @param dfd File descriptor for origin directory
@@ -366,7 +366,7 @@ export function logStructuredPrint(message: string | null, keys: string[] | null
  * @param follow Whether or not to follow symbolic links
  * @param outFd 
  */
-export function opendirat(dfd: number, path: string | null, follow: boolean, outFd: number): boolean
+export function opendirat(dfd: number, path: string, follow: boolean, outFd: number): boolean
 /**
  * Use openat() to open a directory, using a standard set of flags.
  * This function sets errno.
@@ -374,7 +374,7 @@ export function opendirat(dfd: number, path: string | null, follow: boolean, out
  * @param path Pathname, relative to `dfd`
  * @param follow Whether or not to follow symbolic links
  */
-export function opendiratWithErrno(dfd: number, path: string | null, follow: boolean): number
+export function opendiratWithErrno(dfd: number, path: string, follow: boolean): number
 /**
  * Set `error` to an error with domain %G_IO_ERROR, and code based on
  * the value of `saved_errno`.  The error message is set using a
@@ -418,7 +418,7 @@ export function shutilRmRf(path: Gio.File, cancellable: Gio.Cancellable | null):
  * @param path Path
  * @param cancellable Cancellable
  */
-export function shutilRmRfAt(dfd: number, path: string | null, cancellable: Gio.Cancellable | null): boolean
+export function shutilRmRfAt(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Use this function when you want your code to behave differently
  * depeneding on whether your program was started as a systemd unit,
@@ -456,7 +456,7 @@ export interface Console {
      * @param line String to output
      * @param cancellable 
      */
-    beginStatusLine(line: string | null, cancellable: Gio.Cancellable | null): boolean
+    beginStatusLine(line: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Complete a series of invocations of gs_console_begin_status_line(),
      * returning the stream to normal mode.  The last printed status line
@@ -472,7 +472,7 @@ export interface Console {
      * @param cancellable 
      * @returns A string, or %NULL on error
      */
-    readPassword(prompt: string | null, cancellable: Gio.Cancellable | null): string | null
+    readPassword(prompt: string, cancellable: Gio.Cancellable | null): string | null
 
     // Class property signals of GSystem-1.0.GSystem.Console
 
@@ -754,7 +754,7 @@ export interface SubprocessContext {
      * Append an argument to the child's argument vector.
      * @param arg An argument
      */
-    argvAppend(arg: string | null): void
+    argvAppend(arg: string): void
     /**
      * This allows you to open a pipe between the parent and child
      * processes, independent of the standard streams.  For this function,
@@ -776,7 +776,7 @@ export interface SubprocessContext {
      * @returns %TRUE on success, %FALSE on error (and @error will be set)
      */
     openPipeWrite(): [ /* returnType */ boolean, /* outStream */ Gio.OutputStream, /* outFdno */ number ]
-    setCwd(cwd: string | null): void
+    setCwd(cwd: string): void
     /**
      * Replace the environment that will be used for the child process.
      * The default is to inherit the current process.
@@ -787,13 +787,13 @@ export interface SubprocessContext {
     setSearchPath(searchPath: boolean, searchPathFromEnvp: boolean): void
     setStderrDisposition(disposition: SubprocessStreamDisposition): void
     setStderrFd(fd: number): void
-    setStderrFilePath(path: string | null): void
+    setStderrFilePath(path: string): void
     setStdinDisposition(disposition: SubprocessStreamDisposition): void
     setStdinFd(fd: number): void
-    setStdinFilePath(path: string | null): void
+    setStdinFilePath(path: string): void
     setStdoutDisposition(disposition: SubprocessStreamDisposition): void
     setStdoutFd(fd: number): void
-    setStdoutFilePath(path: string | null): void
+    setStdoutFilePath(path: string): void
 
     // Class property signals of GSystem-1.0.GSystem.SubprocessContext
 
@@ -837,7 +837,7 @@ export class SubprocessContext extends GObject.Object {
     constructor(config?: SubprocessContext.ConstructorProperties) 
     constructor(argv: string | null) 
     static new(argv: string | null): SubprocessContext
-    static newArgv0(argv0: string | null, argv: string | null): SubprocessContext
+    static newArgv0(argv0: string, argv: string | null): SubprocessContext
     _init(config?: SubprocessContext.ConstructorProperties): void
 }
 

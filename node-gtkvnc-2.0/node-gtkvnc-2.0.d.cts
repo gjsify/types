@@ -368,7 +368,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of GtkVnc-2.0.GtkVnc.Display
 
-    clientCutText(text: string | null): void
+    clientCutText(text: string): void
     /**
      * Request that the connection to the remote display
      * is closed. The actual close will complete asynchronously
@@ -443,7 +443,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * emitted
      * @returns the remote desktop name
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -456,13 +456,13 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
     /**
      * Take a screenshot of the display.
      * @returns a #GdkPixbuf with the screenshot image buffer
@@ -578,7 +578,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @param port the service name or port number
      * @returns TRUE if a connection was opened, FALSE if already open
      */
-    openHost(host: string | null, port: string | null): boolean
+    openHost(host: string, port: string): boolean
     requestUpdate(): boolean
     /**
      * Send keyval click events to the display. Al the
@@ -630,7 +630,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @param data the value associated with the credential
      * @returns TRUE if an error occurs, FALSE otherwise
      */
-    setCredential(type: number, data: string | null): boolean
+    setCredential(type: number, data: string): boolean
     /**
      * Set the desired colour depth. Higher quality colour
      * depths will require greater network bandwidth. The
@@ -749,7 +749,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -762,7 +762,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -771,7 +771,7 @@ export interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of GtkVnc-2.0.GtkVnc.Display
 
@@ -1330,7 +1330,7 @@ export class GrabSequence {
      * @param str string of keysym names
      * @returns a new grab sequence object
      */
-    static newFromString(str: string | null): GrabSequence
+    static newFromString(str: string): GrabSequence
 }
 
 // END

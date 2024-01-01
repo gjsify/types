@@ -3797,7 +3797,7 @@ export interface Texture extends Object {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Queries the GL handles for a GPU side texture through its #CoglTexture.
      * 
@@ -3927,7 +3927,7 @@ export interface Texture extends Object {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Affects the internal storage format for this texture by specifying
      * whether red, green and blue color components should be stored as
@@ -4127,7 +4127,7 @@ export class AtlasTexture extends Object {
      * @param filename the file to load
      * @returns A new #CoglAtlasTexture object or          %NULL on failure and @error will be updated.
      */
-    static new_from_file(ctx: Context, filename: string | null): AtlasTexture
+    static new_from_file(ctx: Context, filename: string): AtlasTexture
     /**
      * Creates a #CoglAtlasTexture with a given `width` and `height`. A
      * #CoglAtlasTexture represents a sub-region within one of Cogl's
@@ -4291,7 +4291,7 @@ export class Attribute extends Object {
      * @param type FIXME
      * @returns A newly allocated #CoglAttribute          describing the layout for a list of attribute values          stored in @array.
      */
-    constructor(attribute_buffer: AttributeBuffer, name: string | null, stride: number, offset: number, components: number, type: AttributeType) 
+    constructor(attribute_buffer: AttributeBuffer, name: string, stride: number, offset: number, components: number, type: AttributeType) 
     /**
      * Describes the layout for a list of vertex attribute values (For
      * example, a list of texture coordinates or colors).
@@ -4371,7 +4371,7 @@ export class Attribute extends Object {
      * @param type FIXME
      * @returns A newly allocated #CoglAttribute          describing the layout for a list of attribute values          stored in @array.
      */
-    static new(attribute_buffer: AttributeBuffer, name: string | null, stride: number, offset: number, components: number, type: AttributeType): Attribute
+    static new(attribute_buffer: AttributeBuffer, name: string, stride: number, offset: number, components: number, type: AttributeType): Attribute
     /**
      * Creates a new, single component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4389,7 +4389,7 @@ export class Attribute extends Object {
      * @param value The constant value for the attribute
      * @returns A newly allocated #CoglAttribute          representing the given constant @value.
      */
-    static new_const_1f(context: Context, name: string | null, value: number): Attribute
+    static new_const_1f(context: Context, name: string, value: number): Attribute
     /**
      * Creates a new, 2 component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4409,7 +4409,7 @@ export class Attribute extends Object {
      * @param component1 The second component of a 2 component vector
      * @returns A newly allocated #CoglAttribute          representing the given constant vector.
      */
-    static new_const_2f(context: Context, name: string | null, component0: number, component1: number): Attribute
+    static new_const_2f(context: Context, name: string, component0: number, component1: number): Attribute
     /**
      * Creates a new, 2 component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4428,7 +4428,7 @@ export class Attribute extends Object {
      * @param value A pointer to a 2 component float vector
      * @returns A newly allocated #CoglAttribute          representing the given constant vector.
      */
-    static new_const_2fv(context: Context, name: string | null, value: number): Attribute
+    static new_const_2fv(context: Context, name: string, value: number): Attribute
     /**
      * Creates a new matrix attribute whose value remains constant
      * across all the vertices of a primitive without needing to duplicate
@@ -4453,7 +4453,7 @@ export class Attribute extends Object {
      * @param transpose Whether the matrix should be transposed on upload or             not
      * @returns A newly allocated #CoglAttribute          representing the given constant matrix.
      */
-    static new_const_2x2fv(context: Context, name: string | null, matrix2x2: number, transpose: Bool): Attribute
+    static new_const_2x2fv(context: Context, name: string, matrix2x2: number, transpose: Bool): Attribute
     /**
      * Creates a new, 3 component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4477,7 +4477,7 @@ export class Attribute extends Object {
      * @param component2 The third component of a 3 component vector
      * @returns A newly allocated #CoglAttribute          representing the given constant vector.
      */
-    static new_const_3f(context: Context, name: string | null, component0: number, component1: number, component2: number): Attribute
+    static new_const_3f(context: Context, name: string, component0: number, component1: number, component2: number): Attribute
     /**
      * Creates a new, 3 component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4499,7 +4499,7 @@ export class Attribute extends Object {
      * @param value A pointer to a 3 component float vector
      * @returns A newly allocated #CoglAttribute          representing the given constant vector.
      */
-    static new_const_3fv(context: Context, name: string | null, value: number): Attribute
+    static new_const_3fv(context: Context, name: string, value: number): Attribute
     /**
      * Creates a new matrix attribute whose value remains constant
      * across all the vertices of a primitive without needing to duplicate
@@ -4525,7 +4525,7 @@ export class Attribute extends Object {
      * @param transpose Whether the matrix should be transposed on upload or             not
      * @returns A newly allocated #CoglAttribute          representing the given constant matrix.
      */
-    static new_const_3x3fv(context: Context, name: string | null, matrix3x3: number, transpose: Bool): Attribute
+    static new_const_3x3fv(context: Context, name: string, matrix3x3: number, transpose: Bool): Attribute
     /**
      * Creates a new, 4 component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4551,7 +4551,7 @@ export class Attribute extends Object {
      * @param component3 The fourth component of a 4 component vector
      * @returns A newly allocated #CoglAttribute          representing the given constant vector.
      */
-    static new_const_4f(context: Context, name: string | null, component0: number, component1: number, component2: number, component3: number): Attribute
+    static new_const_4f(context: Context, name: string, component0: number, component1: number, component2: number, component3: number): Attribute
     /**
      * Creates a new, 4 component, attribute whose value remains
      * constant across all the vertices of a primitive without needing to
@@ -4574,7 +4574,7 @@ export class Attribute extends Object {
      * @param value A pointer to a 4 component float vector
      * @returns A newly allocated #CoglAttribute          representing the given constant vector.
      */
-    static new_const_4fv(context: Context, name: string | null, value: number): Attribute
+    static new_const_4fv(context: Context, name: string, value: number): Attribute
     /**
      * Creates a new matrix attribute whose value remains constant
      * across all the vertices of a primitive without needing to duplicate
@@ -4600,7 +4600,7 @@ export class Attribute extends Object {
      * @param transpose Whether the matrix should be transposed on upload or             not
      * @returns A newly allocated #CoglAttribute          representing the given constant matrix.
      */
-    static new_const_4x4fv(context: Context, name: string | null, matrix4x4: number, transpose: Bool): Attribute
+    static new_const_4x4fv(context: Context, name: string, matrix4x4: number, transpose: Bool): Attribute
     _init(config?: Attribute.ConstructorProperties): void
 }
 
@@ -4729,7 +4729,7 @@ export class Bitmap extends Object {
      * @param filename the file to load.
      * @returns a #CoglBitmap to the new loaded               image data, or %NULL if loading the image failed.
      */
-    static new_from_file(filename: string | null): Bitmap
+    static new_from_file(filename: string): Bitmap
     /**
      * Creates a new #CoglBitmap with the given width, height and format.
      * The initial contents of the bitmap are undefined.
@@ -4761,7 +4761,7 @@ export class Bitmap extends Object {
      * @param filename the file to check
      * @returns %TRUE if the image was successfully parsed
      */
-    static get_size_from_file(filename: string | null): [ /* returnType */ Bool, /* width */ number, /* height */ number ]
+    static get_size_from_file(filename: string): [ /* returnType */ Bool, /* width */ number, /* height */ number ]
 }
 
 export module Context {
@@ -6302,7 +6302,7 @@ export interface Pipeline {
      * @param uniform_name The name of a uniform
      * @returns A integer representing the location of the given uniform.
      */
-    get_uniform_location(uniform_name: string | null): number
+    get_uniform_location(uniform_name: string): number
     /**
      * Queries what user program has been associated with the given
      * `pipeline` using cogl_pipeline_set_user_program().
@@ -6417,7 +6417,7 @@ export interface Pipeline {
      * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, %FALSE is returned and @error is set accordingly (if   present).
      */
-    set_blend(blend_string: string | null): Bool
+    set_blend(blend_string: string): Bool
     /**
      * When blending is setup to reference a CONSTANT blend factor then
      * blending will depend on the constant set with this function.
@@ -6605,7 +6605,7 @@ export interface Pipeline {
      * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, %FALSE is returned and @error is set
      */
-    set_layer_combine(layer_index: number, blend_string: string | null): Bool
+    set_layer_combine(layer_index: number, blend_string: string): Bool
     /**
      * When you are using the 'CONSTANT' color source in a layer combine
      * description then you can use this function to define its value.
@@ -7688,11 +7688,11 @@ export interface Snippet {
 
     // Owm methods of Cogl-2.0.Cogl.Snippet
 
-    get_declarations(): string | null
+    get_declarations(): string
     get_hook(): SnippetHook
-    get_post(): string | null
-    get_pre(): string | null
-    get_replace(): string | null
+    get_post(): string
+    get_pre(): string
+    get_replace(): string
     /**
      * Sets a source string that will be inserted in the global scope of
      * the generated shader when this snippet is used on a pipeline. This
@@ -7704,7 +7704,7 @@ export interface Snippet {
      * immutable.
      * @param declarations The new source string for the declarations section   of this snippet.
      */
-    set_declarations(declarations: string | null): void
+    set_declarations(declarations: string): void
     /**
      * Sets a source string that will be inserted after the hook point in
      * the generated shader for the pipeline that this snippet is attached
@@ -7716,7 +7716,7 @@ export interface Snippet {
      * immutable.
      * @param post The new source string for the post section of this snippet.
      */
-    set_post(post: string | null): void
+    set_post(post: string): void
     /**
      * Sets a source string that will be inserted before the hook point in
      * the generated shader for the pipeline that this snippet is attached
@@ -7728,7 +7728,7 @@ export interface Snippet {
      * immutable.
      * @param pre The new source string for the pre section of this snippet.
      */
-    set_pre(pre: string | null): void
+    set_pre(pre: string): void
     /**
      * Sets a source string that will be used instead of any generated
      * source code or any previous snippets for this hook point. Please
@@ -7740,7 +7740,7 @@ export interface Snippet {
      * immutable.
      * @param replace The new source string for the replace section of this snippet.
      */
-    set_replace(replace: string | null): void
+    set_replace(replace: string): void
 
     // Class property signals of Cogl-2.0.Cogl.Snippet
 
@@ -7768,7 +7768,7 @@ export class Snippet extends Object {
      * @param post The source code to run after the hook point where this   shader snippet is attached or %NULL. See cogl_snippet_set_post().
      * @returns a pointer to a new #CoglSnippet
      */
-    constructor(hook: SnippetHook, declarations: string | null, post: string | null) 
+    constructor(hook: SnippetHook, declarations: string, post: string) 
     /**
      * Allocates and initializes a new snippet with the given source strings.
      * @constructor 
@@ -7777,7 +7777,7 @@ export class Snippet extends Object {
      * @param post The source code to run after the hook point where this   shader snippet is attached or %NULL. See cogl_snippet_set_post().
      * @returns a pointer to a new #CoglSnippet
      */
-    static new(hook: SnippetHook, declarations: string | null, post: string | null): Snippet
+    static new(hook: SnippetHook, declarations: string, post: string): Snippet
     _init(config?: Snippet.ConstructorProperties): void
 }
 
@@ -7940,13 +7940,13 @@ export interface Texture2D extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -8014,7 +8014,7 @@ export interface Texture2D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -8029,7 +8029,7 @@ export interface Texture2D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Cogl-2.0.Cogl.Texture2D
 
@@ -8146,7 +8146,7 @@ export class Texture2D extends Object {
      * @param filename the file to load
      * @returns A newly created #CoglTexture2D or %NULL on failure               and @error will be updated.
      */
-    static new_from_file(ctx: Context, filename: string | null): Texture2D
+    static new_from_file(ctx: Context, filename: string): Texture2D
     /**
      * Creates a low-level #CoglTexture2D texture with a given `width` and
      * `height` that your GPU can texture from directly.
@@ -8210,13 +8210,13 @@ export interface Texture2DSliced extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -8284,7 +8284,7 @@ export interface Texture2DSliced extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -8299,7 +8299,7 @@ export interface Texture2DSliced extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Cogl-2.0.Cogl.Texture2DSliced
 
@@ -8431,7 +8431,7 @@ export class Texture2DSliced extends Object {
      * @param max_waste The threshold of how wide a strip of wasted texels             are allowed along the right and bottom textures before             they must be sliced to reduce the amount of waste. A             negative can be passed to disable slicing.
      * @returns A newly created #CoglTexture2DSliced               or %NULL on failure and @error will be updated.
      */
-    static new_from_file(ctx: Context, filename: string | null, max_waste: number): Texture2DSliced
+    static new_from_file(ctx: Context, filename: string, max_waste: number): Texture2DSliced
     /**
      * Creates a #CoglTexture2DSliced that may internally be comprised of
      * 1 or more #CoglTexture2D textures depending on GPU limitations.
@@ -8502,13 +8502,13 @@ export interface Texture3D extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -8576,7 +8576,7 @@ export interface Texture3D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -8591,7 +8591,7 @@ export interface Texture3D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Cogl-2.0.Cogl.Texture3D
 
@@ -8850,13 +8850,13 @@ export interface TextureRectangle extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -8924,7 +8924,7 @@ export interface TextureRectangle extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -8939,7 +8939,7 @@ export interface TextureRectangle extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Cogl-2.0.Cogl.TextureRectangle
 
@@ -9316,7 +9316,7 @@ export interface DebugObjectTypeInfo {
      * A human readable name for the type.
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * The number of objects of this type that are
      *   currently in use
@@ -9698,7 +9698,7 @@ export interface GLES2Vtable {
     glGetProgramiv: (program: GL.uint, pname: GL.enum_, params: GL.int) => void
     glDetachShader: (program: GL.uint, shader: GL.uint) => void
     glGetAttachedShaders: (program: GL.uint, maxcount: GL.sizei, count: GL.sizei, shaders: GL.uint) => void
-    glShaderSource: (shader: GL.uint, count: GL.sizei, string: string | null, length: GL.int) => void
+    glShaderSource: (shader: GL.uint, count: GL.sizei, string: string, length: GL.int) => void
     glCompileShader: (shader: GL.uint) => void
     glLinkProgram: (program: GL.uint) => void
     glUniform1f: (location: GL.int, v0: GL.float) => void

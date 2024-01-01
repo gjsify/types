@@ -405,8 +405,8 @@ interface Function extends GObject.Object, Expression {
     evaluate(): Expression
     verify_params(): boolean
     get_param_types(): ExpressionContainer
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_n_params(): number
     set_n_params(value: number): void
     get_closed(): boolean
@@ -417,8 +417,8 @@ interface Function extends GObject.Object, Expression {
     vfunc_evaluate(): Expression
     vfunc_verify_params(): boolean
     vfunc_get_param_types(): ExpressionContainer
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_n_params(): number
     vfunc_set_n_params(value: number): void
     vfunc_get_closed(): boolean
@@ -480,11 +480,11 @@ interface ErrorResult extends GObject.Object, Result {
 
     // Owm methods of GCalc-1.GCalc.ErrorResult
 
-    get_message(): string | null
+    get_message(): string
 
     // Own virtual methods of GCalc-1.GCalc.ErrorResult
 
-    vfunc_get_message(): string | null
+    vfunc_get_message(): string
 
     // Class property signals of GCalc-1.GCalc.ErrorResult
 
@@ -694,13 +694,13 @@ interface MathEquationManager extends GObject.Object {
 
     // Owm methods of GCalc-1.GCalc.MathEquationManager
 
-    find_variable(name: string | null): Variable
+    find_variable(name: string): Variable
     get_equations(): ExpressionContainer
     get_functions(): ExpressionContainer
 
     // Own virtual methods of GCalc-1.GCalc.MathEquationManager
 
-    vfunc_find_variable(name: string | null): Variable
+    vfunc_find_variable(name: string): Variable
     vfunc_get_equations(): ExpressionContainer
     vfunc_get_functions(): ExpressionContainer
 
@@ -1039,13 +1039,13 @@ interface Solver extends GObject.Object {
 
     // Owm methods of GCalc-1.GCalc.Solver
 
-    solve(str: string | null): Result
+    solve(str: string): Result
     get_equation_manager(): MathEquationManager
     set_equation_manager(value: MathEquationManager): void
 
     // Own virtual methods of GCalc-1.GCalc.Solver
 
-    vfunc_solve(str: string | null): Result
+    vfunc_solve(str: string): Result
     vfunc_get_equation_manager(): MathEquationManager
     vfunc_set_equation_manager(value: MathEquationManager): void
 
@@ -1148,8 +1148,8 @@ interface Variable extends GObject.Object, Expression {
     // Owm methods of GCalc-1.GCalc.Variable
 
     evaluate(): Expression
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_value(): Constant
     set_value(value: Constant): void
     get_bind(): Variable
@@ -1159,8 +1159,8 @@ interface Variable extends GObject.Object, Expression {
     // Own virtual methods of GCalc-1.GCalc.Variable
 
     vfunc_evaluate(): Expression
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_value(): Constant
     vfunc_set_value(value: Constant): void
     vfunc_get_bind(): Variable
@@ -1251,7 +1251,7 @@ interface ExpressionContainer extends Gio.ListModel {
     remove(item: any): boolean
     get_object(position: number): GObject.Object | null
     find(exp: Expression): Expression | null
-    find_named(name: string | null): Expression | null
+    find_named(name: string): Expression | null
     get_parent(): Expression
     set_parent(value: Expression): void
 
@@ -1399,7 +1399,7 @@ interface ExpressionHashMap {
     // Overloads of remove
 
     remove(key: any): [ /* returnType */ boolean, /* value */ any ]
-    find_named(name: string | null): Expression
+    find_named(name: string): Expression
     get_parent(): Expression
     set_parent(value: Expression): void
 
@@ -2428,8 +2428,8 @@ class GErrorResult extends GObject.Object {
     // Constructors of GCalc-1.GCalc.GErrorResult
 
     constructor(config?: GErrorResult.ConstructorProperties) 
-    constructor(msg: string | null) 
-    static new(msg: string | null): GErrorResult
+    constructor(msg: string) 
+    static new(msg: string): GErrorResult
     _init(config?: GErrorResult.ConstructorProperties): void
 }
 
@@ -2493,7 +2493,7 @@ class GFunction extends GExpression {
     // Constructors of GCalc-1.GCalc.GFunction
 
     constructor(config?: GFunction.ConstructorProperties) 
-    static with_name(name: string | null, nparams: number): GFunction
+    static with_name(name: string, nparams: number): GFunction
     constructor() 
     static new(): GFunction
 
@@ -2716,7 +2716,7 @@ interface GParser {
 
     // Owm methods of GCalc-1.GCalc.GParser
 
-    parse(str: string | null, eqman: MathEquationManager): void
+    parse(str: string, eqman: MathEquationManager): void
     read_token(): GParserTokenType
     token_to_string(): string | null
 
@@ -3127,8 +3127,8 @@ class GVariable extends GExpression {
     // Constructors of GCalc-1.GCalc.GVariable
 
     constructor(config?: GVariable.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): GVariable
+    constructor(name: string) 
+    static new(name: string): GVariable
 
     // Overloads of new
 
@@ -4132,8 +4132,8 @@ interface FunctionIface {
     evaluate: (self: Function) => Expression
     verify_params: (self: Function) => boolean
     get_param_types: (self: Function) => ExpressionContainer
-    get_name: (self: Function) => string | null
-    set_name: (self: Function, value: string | null) => void
+    get_name: (self: Function) => string
+    set_name: (self: Function, value: string) => void
     get_n_params: (self: Function) => number
     set_n_params: (self: Function, value: number) => void
     get_closed: (self: Function) => boolean
@@ -4152,7 +4152,7 @@ interface ErrorResultIface {
     // Own fields of GCalc-1.GCalc.ErrorResultIface
 
     parent_iface: GObject.TypeInterface
-    get_message: (self: ErrorResult) => string | null
+    get_message: (self: ErrorResult) => string
 }
 
 abstract class ErrorResultIface {
@@ -4216,7 +4216,7 @@ interface MathEquationManagerIface {
     // Own fields of GCalc-1.GCalc.MathEquationManagerIface
 
     parent_iface: GObject.TypeInterface
-    find_variable: (self: MathEquationManager, name: string | null) => Variable
+    find_variable: (self: MathEquationManager, name: string) => Variable
     get_equations: (self: MathEquationManager) => ExpressionContainer
     get_functions: (self: MathEquationManager) => ExpressionContainer
 }
@@ -4334,7 +4334,7 @@ interface SolverIface {
     // Own fields of GCalc-1.GCalc.SolverIface
 
     parent_iface: GObject.TypeInterface
-    solve: (self: Solver, str: string | null) => Result
+    solve: (self: Solver, str: string) => Result
     get_equation_manager: (self: Solver) => MathEquationManager
     set_equation_manager: (self: Solver, value: MathEquationManager) => void
 }
@@ -4368,8 +4368,8 @@ interface VariableIface {
 
     parent_iface: GObject.TypeInterface
     evaluate: (self: Variable) => Expression
-    get_name: (self: Variable) => string | null
-    set_name: (self: Variable, value: string | null) => void
+    get_name: (self: Variable) => string
+    set_name: (self: Variable, value: string) => void
     get_value: (self: Variable) => Constant
     set_value: (self: Variable, value: Constant) => void
     get_bind: (self: Variable) => Variable

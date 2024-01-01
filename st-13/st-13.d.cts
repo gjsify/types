@@ -308,7 +308,7 @@ export function icon_theme_error_quark(): GLib.Quark
  * @param text text from the clipboard
  */
 export interface ClipboardCallbackFunc {
-    (clipboard: Clipboard, text: string | null): void
+    (clipboard: Clipboard, text: string): void
 }
 /**
  * Callback function called when content is retrieved from the clipboard.
@@ -626,7 +626,7 @@ export interface Adjustment extends Clutter.Animatable {
      * @param name a unique name for the transition
      * @param transition a #ClutterTransition
      */
-    add_transition(name: string | null, transition: Clutter.Transition): void
+    add_transition(name: string, transition: Clutter.Transition): void
     /**
      * Adjusts the adjustment using delta values from a scroll event.
      * You should use this instead of using st_adjustment_set_value()
@@ -649,7 +649,7 @@ export interface Adjustment extends Clutter.Animatable {
      * @param name a transition name
      * @returns a #ClutterTransition
      */
-    get_transition(name: string | null): Clutter.Transition | null
+    get_transition(name: string): Clutter.Transition | null
     /**
      * Gets the current value of the adjustment. See st_adjustment_set_value().
      * @returns The current value of the adjustment
@@ -659,7 +659,7 @@ export interface Adjustment extends Clutter.Animatable {
      * Gets all of `adjustment'`s values at once.
      */
     get_values(): [ /* value */ number, /* lower */ number, /* upper */ number, /* step_increment */ number, /* page_increment */ number, /* page_size */ number ]
-    remove_transition(name: string | null): void
+    remove_transition(name: string): void
     /**
      * Sets the #StAdjustment value. The value is clamped to lie between
      * #StAdjustment:lower and #StAdjustment:upper - #StAdjustment:page-size.
@@ -671,8 +671,8 @@ export interface Adjustment extends Clutter.Animatable {
      * 
      * Use this function to avoid multiple emissions of the #GObject::notify and
      * #StAdjustment::changed signals. See st_adjustment_set_lower() for an
-     * alternative way of compressing multiple emissions of #GObject::notify into
-     * one.
+     * alternative way of compressing multiple emissions of #GObject::notify and
+     * #StAdjustmet::changed into one of each.
      * @param value the new value
      * @param lower the new minimum value
      * @param upper the new maximum value
@@ -1677,7 +1677,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * will be returned instead of %NULL.
      * @returns the text for the button
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Get the toggle mode status of the button.
      * @returns %TRUE if toggle mode is set, otherwise %FALSE
@@ -1701,7 +1701,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * be removed and replaced with the icon.
      * @param icon_name an icon name
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * Sets the text displayed on the button.
      * @param text text to set the label to
@@ -2040,7 +2040,7 @@ export class Button extends Bin {
      * @param text text to set the label to
      * @returns a new #StButton
      */
-    static new_with_label(text: string | null): Button
+    static new_with_label(text: string): Button
     _init(config?: Button.ConstructorProperties): void
 }
 
@@ -2064,7 +2064,7 @@ export interface Clipboard {
      * @param mimetype The mimetype to get content for
      * @param callback function to be called when the type is retrieved
      */
-    get_content(type: ClipboardType, mimetype: string | null, callback: ClipboardContentCallbackFunc): void
+    get_content(type: ClipboardType, mimetype: string, callback: ClipboardContentCallbackFunc): void
     /**
      * Gets a list of the mimetypes supported by the default #StClipboard.
      * @param type 
@@ -2086,13 +2086,13 @@ export interface Clipboard {
      * @param mimetype content mimetype
      * @param bytes content data
      */
-    set_content(type: ClipboardType, mimetype: string | null, bytes: GLib.Bytes): void
+    set_content(type: ClipboardType, mimetype: string, bytes: GLib.Bytes): void
     /**
      * Sets text as the current contents of the clipboard.
      * @param type The type of clipboard that you want to set
      * @param text text to copy to the clipboard
      */
-    set_text(type: ClipboardType, text: string | null): void
+    set_text(type: ClipboardType, text: string): void
 
     // Class property signals of St-13.St.Clipboard
 
@@ -2679,7 +2679,7 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * be returned instead of %NULL.
      * @returns the text for the entry
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Set the hint actor of the entry to `hint_actor`.
      * @param hint_actor a #ClutterActor
@@ -3186,7 +3186,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -3210,14 +3210,14 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -3225,7 +3225,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -3238,7 +3238,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -3264,7 +3264,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -3272,7 +3272,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -3281,7 +3281,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Own signals of St-13.St.GenericAccessible
 
@@ -3485,7 +3485,7 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * #GThemedIcon that is currently set.
      * @returns The name of the icon or %NULL if no icon is set
      */
-    get_fallback_icon_name(): string | null
+    get_fallback_icon_name(): string
     /**
      * Gets the current #GIcon in use.
      * @returns The current #GIcon, if set, otherwise %NULL
@@ -4047,7 +4047,7 @@ export interface IconTheme {
      * of a subdirectory are also considered as ultimate fallback.
      * @param path a resource path
      */
-    add_resource_path(path: string | null): void
+    add_resource_path(path: string): void
     /**
      * Appends a directory to the search path.
      * See st_icon_theme_set_search_path().
@@ -4095,7 +4095,7 @@ export interface IconTheme {
      * @param icon_name the name of an icon
      * @returns An newly allocated array describing the sizes at which the icon is available. The array should be freed with g_free() when it is no longer needed.
      */
-    get_icon_sizes(icon_name: string | null): number[]
+    get_icon_sizes(icon_name: string): number[]
     /**
      * Gets the current search path. See st_icon_theme_set_search_path().
      */
@@ -4106,7 +4106,7 @@ export interface IconTheme {
      * @param icon_name the name of an icon
      * @returns %TRUE if @icon_theme includes an  icon for @icon_name.
      */
-    has_icon(icon_name: string | null): boolean
+    has_icon(icon_name: string): boolean
     /**
      * Gets the list of contexts available within the current
      * hierarchy of icon themes.
@@ -4146,7 +4146,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use g_object_unref() to release     your reference to the icon. %NULL if the icon isn’t found.
      */
-    load_icon(icon_name: string | null, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
+    load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
     /**
      * Looks up an icon in an icon theme for a particular window scale,
      * scales it to the given size and renders it into a pixbuf. This is a
@@ -4167,7 +4167,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use g_object_unref() to release     your reference to the icon. %NULL if the icon isn’t found.
      */
-    load_icon_for_scale(icon_name: string | null, size: number, scale: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
+    load_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
     /**
      * Looks up an icon and returns a #StIconInfo containing information
      * such as the filename of the icon. The icon can then be rendered
@@ -4212,7 +4212,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
      */
-    lookup_icon(icon_name: string | null, size: number, flags: IconLookupFlags): IconInfo | null
+    lookup_icon(icon_name: string, size: number, flags: IconLookupFlags): IconInfo | null
     /**
      * Looks up a named icon for a particular window scale and returns a
      * #StIconInfo containing information such as the filename of the
@@ -4225,7 +4225,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
      */
-    lookup_icon_for_scale(icon_name: string | null, size: number, scale: number, flags: IconLookupFlags): IconInfo | null
+    lookup_icon_for_scale(icon_name: string, size: number, scale: number, flags: IconLookupFlags): IconInfo | null
     /**
      * Prepends a directory to the search path.
      * See st_icon_theme_set_search_path().
@@ -4399,7 +4399,7 @@ export interface ImageContent extends Clutter.Content, Gio.Icon, Gio.LoadableIco
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -4414,7 +4414,7 @@ export interface ImageContent extends Clutter.Content, Gio.Icon, Gio.LoadableIco
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of St-13.St.ImageContent
 
@@ -4498,7 +4498,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Get the text displayed on the label.
      * @returns the text for the label. This must not be freed by the application
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Sets the text displayed by the label.
      * @param text text to set the label to
@@ -6409,7 +6409,7 @@ export interface TextureCache {
      * @param property_name Name of a property
      * @returns A new #GIcon
      */
-    bind_cairo_surface_property(object: GObject.Object, property_name: string | null): Gio.Icon
+    bind_cairo_surface_property(object: GObject.Object, property_name: string): Gio.Icon
     /**
      * Create a #GIcon from `surface`.
      * @param surface A #cairo_surface_t
@@ -6927,7 +6927,7 @@ export interface ThemeNode {
      * indicated color.
      * @param property_name The name of the color property
      */
-    get_color(property_name: string | null): /* color */ Clutter.Color
+    get_color(property_name: string): /* color */ Clutter.Color
     /**
      * Gets the box within an actor's allocation that contents the content
      * of an actor (excluding borders and padding). This is a convenience function
@@ -6946,7 +6946,7 @@ export interface ThemeNode {
      * @param property_name The name of the numeric property
      * @returns the value found. If @property_name is not  found, a warning will be logged and 0 will be returned.
      */
-    get_double(property_name: string | null): number
+    get_double(property_name: string): number
     /**
      * Get the list of element classes for `node`.
      * @returns the element's classes
@@ -6956,7 +6956,7 @@ export interface ThemeNode {
      * Get the unique element ID for `node`.
      * @returns the element's ID
      */
-    get_element_id(): string | null
+    get_element_id(): string
     /**
      * Get the element #GType for `node`.
      * @returns the element type
@@ -7013,7 +7013,7 @@ export interface ThemeNode {
      * @param property_name The name of the length property
      * @returns the length, in pixels, or 0 if the property was not found.
      */
-    get_length(property_name: string | null): number
+    get_length(property_name: string): number
     /**
      * Gets the value for the letter-spacing style property, in physical pixels.
      * @returns the value of the letter-spacing property, if   found, or zero if such property has not been found.
@@ -7093,7 +7093,7 @@ export interface ThemeNode {
      * @param property_name The name of the shadow property
      * @returns the shadow, or %NULL if the property was   not found.
      */
-    get_shadow(property_name: string | null): Shadow | null
+    get_shadow(property_name: string): Shadow | null
     /**
      * Get the text alignment of `node`.
      * @returns the alignment of text for @node
@@ -7130,7 +7130,7 @@ export interface ThemeNode {
      * @param property_name The name of the string property
      * @returns the newly allocated value if found.  If @property_name is not found, a warning will be logged and %NULL  will be returned.
      */
-    get_url(property_name: string | null): Gio.File | null
+    get_url(property_name: string): Gio.File | null
     /**
      * Gets the total vertical padding (top + bottom padding), in physical pixels.
      * @returns the total vertical padding in physical pixels
@@ -7159,7 +7159,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookup_color(property_name: string | null, inherit: boolean): [ /* returnType */ boolean, /* color */ Clutter.Color ]
+    lookup_color(property_name: string, inherit: boolean): [ /* returnType */ boolean, /* color */ Clutter.Color ]
     /**
      * Generically looks up a property containing a single numeric value
      *  without units.
@@ -7169,7 +7169,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookup_double(property_name: string | null, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
+    lookup_double(property_name: string, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Generically looks up a property containing a single length value. When
      * specific getters (like st_theme_node_get_border_width()) exist, they
@@ -7181,7 +7181,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookup_length(property_name: string | null, inherit: boolean): [ /* returnType */ boolean, /* length */ number ]
+    lookup_length(property_name: string, inherit: boolean): [ /* returnType */ boolean, /* length */ number ]
     /**
      * If the property is not found, the value in the shadow variable will not
      * be changed.
@@ -7196,7 +7196,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this   theme node (or in the properties of parent nodes when inheriting.), %FALSE   if the property was not found, or was explicitly set to 'none'.
      */
-    lookup_shadow(property_name: string | null, inherit: boolean): [ /* returnType */ boolean, /* shadow */ Shadow ]
+    lookup_shadow(property_name: string, inherit: boolean): [ /* returnType */ boolean, /* shadow */ Shadow ]
     /**
      * Generically looks up a property containing a single time value,
      *  which is converted to milliseconds.
@@ -7204,7 +7204,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookup_time(property_name: string | null, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
+    lookup_time(property_name: string, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Looks up a property containing a single URL value.
      * 
@@ -7213,7 +7213,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookup_url(property_name: string | null, inherit: boolean): [ /* returnType */ boolean, /* file */ Gio.File ]
+    lookup_url(property_name: string, inherit: boolean): [ /* returnType */ boolean, /* file */ Gio.File ]
     /**
      * Check if st_theme_node_paint() will paint identically for `node` as it does
      * for `other`. Note that in some cases this function may return %TRUE even
@@ -7262,7 +7262,7 @@ export class ThemeNode extends GObject.Object {
      * @param inline_style 
      * @returns a new #StThemeNode
      */
-    constructor(context: ThemeContext, parent_node: ThemeNode | null, theme: Theme | null, element_type: GObject.GType, element_id: string | null, element_class: string | null, pseudo_class: string | null, inline_style: string | null) 
+    constructor(context: ThemeContext, parent_node: ThemeNode | null, theme: Theme | null, element_type: GObject.GType, element_id: string | null, element_class: string | null, pseudo_class: string | null, inline_style: string) 
     /**
      * Creates a new #StThemeNode. Once created, a node is immutable. If any
      * of the attributes of the node (like the `element_class)` change the node
@@ -7278,7 +7278,7 @@ export class ThemeNode extends GObject.Object {
      * @param inline_style 
      * @returns a new #StThemeNode
      */
-    static new(context: ThemeContext, parent_node: ThemeNode | null, theme: Theme | null, element_type: GObject.GType, element_id: string | null, element_class: string | null, pseudo_class: string | null, inline_style: string | null): ThemeNode
+    static new(context: ThemeContext, parent_node: ThemeNode | null, theme: Theme | null, element_type: GObject.GType, element_id: string | null, element_class: string | null, pseudo_class: string | null, inline_style: string): ThemeNode
     _init(config?: ThemeNode.ConstructorProperties): void
 }
 
@@ -7792,13 +7792,13 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * already present.
      * @param style_class a style class name string
      */
-    add_style_class_name(style_class: string | null): void
+    add_style_class_name(style_class: string): void
     /**
      * Adds `pseudo_class` to `actor'`s pseudo class list, if it is not
      * already present.
      * @param pseudo_class a pseudo class string
      */
-    add_style_pseudo_class(pseudo_class: string | null): void
+    add_style_pseudo_class(pseudo_class: string): void
     /**
      * Ensures that `widget` has read its style information and propagated any
      * changes to its children.
@@ -7809,7 +7809,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * st_widget_set_accessible_name() for more information.
      * @returns a character string representing the accessible name of the widget.
      */
-    get_accessible_name(): string | null
+    get_accessible_name(): string
     /**
      * Gets the #AtkRole for this widget. See
      * st_widget_set_accessible_role() for more information.
@@ -7849,7 +7849,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * Get the current style class name
      * @returns the class name string. The string is owned by the #StWidget and should not be modified or freed.
      */
-    get_style_class_name(): string | null
+    get_style_class_name(): string
     /**
      * Get the current style pseudo class list.
      * 
@@ -7858,7 +7858,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * st_widget_has_style_pseudo_class().
      * @returns the pseudo class list string. The string is owned by the #StWidget and should not be modified or freed.
      */
-    get_style_pseudo_class(): string | null
+    get_style_pseudo_class(): string
     /**
      * Gets the theme node holding style information for the widget.
      * The theme node is used to access standard and custom CSS
@@ -7880,13 +7880,13 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param style_class a style class string
      * @returns whether or not @actor's style class list includes @style_class.
      */
-    has_style_class_name(style_class: string | null): boolean
+    has_style_class_name(style_class: string): boolean
     /**
      * Tests if `actor'`s pseudo class list includes `pseudo_class`.
      * @param pseudo_class a pseudo class string
      * @returns whether or not @actor's pseudo class list includes @pseudo_class.
      */
-    has_style_pseudo_class(pseudo_class: string | null): boolean
+    has_style_pseudo_class(pseudo_class: string): boolean
     /**
      * Tries to update the keyboard focus within `widget` in response to a
      * keyboard event.
@@ -7950,12 +7950,12 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * present.
      * @param style_class a style class name string
      */
-    remove_style_class_name(style_class: string | null): void
+    remove_style_class_name(style_class: string): void
     /**
      * Removes `pseudo_class` from `actor'`s pseudo class, if it is present.
      * @param pseudo_class a pseudo class string
      */
-    remove_style_pseudo_class(pseudo_class: string | null): void
+    remove_style_pseudo_class(pseudo_class: string): void
     /**
      * This method allows to set a customly created accessible object to
      * this widget. For example if you define a new subclass of
@@ -8389,7 +8389,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -8413,14 +8413,14 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -8428,7 +8428,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -8441,7 +8441,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -8467,7 +8467,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -8475,7 +8475,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -8484,7 +8484,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Class property signals of St-13.St.WidgetAccessible
 

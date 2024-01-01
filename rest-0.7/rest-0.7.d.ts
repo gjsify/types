@@ -216,7 +216,7 @@ enum ProxyError {
      */
     HTTP_HTTP_VERSION_NOT_SUPPORTED,
 }
-function hmac_sha1(key: string | null, message: string | null): string | null
+function hmac_sha1(key: string, message: string): string | null
 function proxy_call_error_quark(): GLib.Quark
 function proxy_error_quark(): GLib.Quark
 /**
@@ -235,7 +235,7 @@ interface ProxyCallAsyncCallback {
     (call: ProxyCall, error: GLib.Error, weak_object: GObject.Object, userdata: any | null): void
 }
 interface ProxyCallContinuousCallback {
-    (call: ProxyCall, buf: string | null, len: number, error: GLib.Error, weak_object: GObject.Object, userdata: any | null): void
+    (call: ProxyCall, buf: string, len: number, error: GLib.Error, weak_object: GObject.Object, userdata: any | null): void
 }
 interface ProxyCallUploadCallback {
     (call: ProxyCall, total: number, uploaded: number, error: GLib.Error, weak_object: GObject.Object, userdata: any | null): void
@@ -283,7 +283,7 @@ interface OAuth2Proxy {
      * @param redirect_uri the uri to redirect to after the user authenticates
      * @returns a newly allocated uri string
      */
-    build_login_url(redirect_uri: string | null): string | null
+    build_login_url(redirect_uri: string): string | null
     /**
      * Builds a url at which the user can log in to the specified OAuth2-based web
      * service.  In general, this url should be displayed in an embedded browser
@@ -301,17 +301,17 @@ interface OAuth2Proxy {
      * @param extra_params any extra parameters to add to the login url (e.g. facebook uses 'scope=foo,bar' to request extended permissions).
      * @returns a newly allocated uri string
      */
-    build_login_url_full(redirect_uri: string | null, extra_params: GLib.HashTable): string | null
+    build_login_url_full(redirect_uri: string, extra_params: GLib.HashTable): string | null
     /**
      * Get the current request or access token.
      * @returns the token, or %NULL if there is no token yet.  This string is owned by #OAuth2Proxy and should not be freed.
      */
-    get_access_token(): string | null
+    get_access_token(): string
     /**
      * Set the access token.
      * @param access_token the access token
      */
-    set_access_token(access_token: string | null): void
+    set_access_token(access_token: string): void
 
     // Class property signals of Rest-0.7.Rest.OAuth2Proxy
 
@@ -391,7 +391,7 @@ class OAuth2Proxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #OAuth2Proxy.
      */
-    constructor(client_id: string | null, auth_endpoint: string | null, url_format: string | null, binding_required: boolean) 
+    constructor(client_id: string, auth_endpoint: string, url_format: string, binding_required: boolean) 
     /**
      * Create a new #OAuth2Proxy for the specified endpoint `url_format,` using the
      * specified API key and secret.
@@ -415,7 +415,7 @@ class OAuth2Proxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #OAuth2Proxy.
      */
-    static new(client_id: string | null, auth_endpoint: string | null, url_format: string | null, binding_required: boolean): OAuth2Proxy
+    static new(client_id: string, auth_endpoint: string, url_format: string, binding_required: boolean): OAuth2Proxy
 
     // Overloads of new
 
@@ -431,7 +431,7 @@ class OAuth2Proxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Proxy
+    static new(url_format: string, binding_required: boolean): Proxy
     /**
      * Create a new #OAuth2Proxy for the specified endpoint `url_format,` using the
      * specified client id
@@ -450,14 +450,14 @@ class OAuth2Proxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #OAuth2Proxy.
      */
-    static new_with_token(client_id: string | null, access_token: string | null, auth_endpoint: string | null, url_format: string | null, binding_required: boolean): OAuth2Proxy
+    static new_with_token(client_id: string, access_token: string, auth_endpoint: string, url_format: string, binding_required: boolean): OAuth2Proxy
     _init(config?: OAuth2Proxy.ConstructorProperties): void
     /**
      * A utility function to extract the access token from the url that results from
      * the redirection after the user authenticates
      * @param url the url which contains an access token in its fragment
      */
-    static extract_access_token(url: string | null): string | null
+    static extract_access_token(url: string): string | null
 }
 
 module OAuth2ProxyCall {
@@ -560,7 +560,7 @@ interface OAuthProxy {
      * @param verifier the verifier
      * @returns %TRUE on success, or %FALSE on failure. On failure @error is set.
      */
-    access_token(function_: string | null, verifier: string | null): boolean
+    access_token(function_: string, verifier: string): boolean
     /**
      * Perform the Access Token phase of OAuth, invoking `function` (defaulting to
      * "access_token" if `function` is NULL).
@@ -578,7 +578,7 @@ interface OAuthProxy {
      * @param weak_object #GObject to weakly reference and tie the lifecycle of the method call too
      * @returns %TRUE if the method was successfully queued, or %FALSE on failure. On failure @error is set.
      */
-    access_token_async(function_: string | null, verifier: string | null, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean
+    access_token_async(function_: string, verifier: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean
     /**
      * Perform an OAuth authorisation step.  This calls `function` and then updates
      * the token and token secret in the proxy.
@@ -587,7 +587,7 @@ interface OAuthProxy {
      * rest_proxy_call_set_function().
      * @param function_ the function to invoke on the proxy
      */
-    auth_step(function_: string | null): boolean
+    auth_step(function_: string): boolean
     /**
      * Perform an OAuth authorisation step.  This calls `function` and then updates
      * the token and token secret in the proxy.
@@ -598,22 +598,22 @@ interface OAuthProxy {
      * @param callback the callback to invoke when authorisation is complete
      * @param weak_object the #GObject to weakly reference and tie the lifecycle too
      */
-    auth_step_async(function_: string | null, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean
+    auth_step_async(function_: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean
     /**
      * Get the signature hostname used when creating a signature base string.
      * @returns the signature hostname, or %NULL if there is none set.  This string is owned by #OAuthProxy and should not be freed.
      */
-    get_signature_host(): string | null
+    get_signature_host(): string
     /**
      * Get the current request or access token.
      * @returns the token, or %NULL if there is no token yet.  This string is owned by #OAuthProxy and should not be freed.
      */
-    get_token(): string | null
+    get_token(): string
     /**
      * Get the current request or access token secret.
      * @returns the token secret, or %NULL if there is no token secret yet.  This string is owned by #OAuthProxy and should not be freed.
      */
-    get_token_secret(): string | null
+    get_token_secret(): string
     /**
      * Determines if the server supports OAuth 1.0a with this proxy. This is only
      * valid after oauth_proxy_request_token() or oauth_proxy_request_token_async()
@@ -630,7 +630,7 @@ interface OAuthProxy {
      * @param binding_required whether a binding is required
      * @returns a new OAuth Echo proxy
      */
-    new_echo_proxy(service_url: string | null, url_format: string | null, binding_required: boolean): Proxy
+    new_echo_proxy(service_url: string, url_format: string, binding_required: boolean): Proxy
     /**
      * Perform the Request Token phase of OAuth, invoking `function` (defaulting to
      * "request_token" if `function` is NULL).
@@ -642,7 +642,7 @@ interface OAuthProxy {
      * @param callback_uri the callback URI
      * @returns %TRUE on success, or %FALSE on failure. On failure @error is set.
      */
-    request_token(function_: string | null, callback_uri: string | null): boolean
+    request_token(function_: string, callback_uri: string): boolean
     /**
      * Perform the Request Token phase of OAuth, invoking `function` (defaulting to
      * "request_token" if `function` is NULL).
@@ -659,22 +659,22 @@ interface OAuthProxy {
      * @param weak_object #GObject to weakly reference and tie the lifecycle of the method call too
      * @returns %TRUE if the method was successfully queued, or %FALSE on failure. On failure @error is set.
      */
-    request_token_async(function_: string | null, callback_uri: string | null, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean
+    request_token_async(function_: string, callback_uri: string, callback: OAuthProxyAuthCallback, weak_object: GObject.Object): boolean
     /**
      * Set the signature hostname used when creating a signature base string.
      * @param signature_host the signature host
      */
-    set_signature_host(signature_host: string | null): void
+    set_signature_host(signature_host: string): void
     /**
      * Set the access token.
      * @param token the access token
      */
-    set_token(token: string | null): void
+    set_token(token: string): void
     /**
      * Set the access token secret.
      * @param token_secret the access token secret
      */
-    set_token_secret(token_secret: string | null): void
+    set_token_secret(token_secret: string): void
 
     // Class property signals of Rest-0.7.Rest.OAuthProxy
 
@@ -760,7 +760,7 @@ class OAuthProxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #OAuthProxy.
      */
-    constructor(consumer_key: string | null, consumer_secret: string | null, url_format: string | null, binding_required: boolean) 
+    constructor(consumer_key: string, consumer_secret: string, url_format: string, binding_required: boolean) 
     /**
      * Create a new #OAuthProxy for the specified endpoint `url_format,` using the
      * specified API key and secret.
@@ -781,7 +781,7 @@ class OAuthProxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #OAuthProxy.
      */
-    static new(consumer_key: string | null, consumer_secret: string | null, url_format: string | null, binding_required: boolean): OAuthProxy
+    static new(consumer_key: string, consumer_secret: string, url_format: string, binding_required: boolean): OAuthProxy
 
     // Overloads of new
 
@@ -797,7 +797,7 @@ class OAuthProxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Proxy
+    static new(url_format: string, binding_required: boolean): Proxy
     /**
      * Create a new #OAuthProxy for the specified endpoint `url_format,` using the
      * specified API key and secret.
@@ -817,7 +817,7 @@ class OAuthProxy extends Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #OAuthProxy.
      */
-    static new_with_token(consumer_key: string | null, consumer_secret: string | null, token: string | null, token_secret: string | null, url_format: string | null, binding_required: boolean): OAuthProxy
+    static new_with_token(consumer_key: string, consumer_secret: string, token: string, token_secret: string, url_format: string, binding_required: boolean): OAuthProxy
     _init(config?: OAuthProxy.ConstructorProperties): void
 }
 
@@ -948,14 +948,14 @@ interface Proxy {
      * @param feature A #SoupSessionFeature
      */
     add_soup_feature(feature: Soup.SessionFeature): void
-    get_user_agent(): string | null
+    get_user_agent(): string
     /**
      * Create a new #RestProxyCall for making a call to the web service.  This call
      * is one-shot and should not be re-used for making multiple calls.
      * @returns a new #RestProxyCall.
      */
     new_call(): ProxyCall
-    set_user_agent(user_agent: string | null): void
+    set_user_agent(user_agent: string): void
 
     // Own virtual methods of Rest-0.7.Rest.Proxy
 
@@ -1032,7 +1032,7 @@ class Proxy extends GObject.Object {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    constructor(url_format: string | null, binding_required: boolean) 
+    constructor(url_format: string, binding_required: boolean) 
     /**
      * Create a new #RestProxy for the specified endpoint `url_format,` using the
      * "GET" method.
@@ -1045,7 +1045,7 @@ class Proxy extends GObject.Object {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Proxy
+    static new(url_format: string, binding_required: boolean): Proxy
     /**
      * Create a new #RestProxy for the specified endpoint `url_format,` using the
      * "GET" method.
@@ -1060,7 +1060,7 @@ class Proxy extends GObject.Object {
      * @param password the password provided by the user or client
      * @returns A new #RestProxy.
      */
-    static new_with_authentication(url_format: string | null, binding_required: boolean, username: string | null, password: string | null): Proxy
+    static new_with_authentication(url_format: string, binding_required: boolean, username: string, password: string): Proxy
     _init(config?: Proxy.ConstructorProperties): void
 }
 
@@ -1158,7 +1158,7 @@ interface ProxyCall {
      * @param header The name of the header to set
      * @param value The value of the header
      */
-    add_header(header: string | null, value: string | null): void
+    add_header(header: string, value: string): void
     /**
      * Add a query parameter called `param` with the string value `value` to the call.
      * If a parameter with this name already exists, the new value will replace the
@@ -1166,17 +1166,17 @@ interface ProxyCall {
      * @param name The name of the parameter to set
      * @param value The value of the parameter
      */
-    add_param(name: string | null, value: string | null): void
+    add_param(name: string, value: string): void
     add_param_full(param: Param): void
     /**
      * Get the REST function that is going to be called on the proxy.
      * @returns The REST "function" for the current call, see also rest_proxy_call_set_function(). This string is owned by the #RestProxyCall and should not be freed.
      */
-    get_function(): string | null
+    get_function(): string
     /**
      * Get the HTTP method to use when making the call, for example GET or POST.
      */
-    get_method(): string | null
+    get_method(): string
     /**
      * Get the parameters as a #RestParams of parameter names to values.  The
      * returned value is owned by the RestProxyCall instance and should not
@@ -1188,7 +1188,7 @@ interface ProxyCall {
      * Get the return payload.
      * @returns A pointer to the payload. This is owned by #RestProxyCall and should not be freed.
      */
-    get_payload(): string | null
+    get_payload(): string
     /**
      * Get the length of the return payload.
      * @returns the length of the payload in bytes.
@@ -1203,7 +1203,7 @@ interface ProxyCall {
      * Get the human-readable HTTP status message for the call.
      * @returns The status message. This string is owned by #RestProxyCall and should not be freed.
      */
-    get_status_message(): string | null
+    get_status_message(): string
     /**
      * A GIO-style version of rest_proxy_call_async().
      * @param cancellable an optional #GCancellable that can be used to   cancel the call, or %NULL
@@ -1227,29 +1227,29 @@ interface ProxyCall {
      * @param header The header name
      * @returns The header value, or %NULL if it does not exist. This string is owned by the #RestProxyCall and should not be freed.
      */
-    lookup_header(header: string | null): string | null
+    lookup_header(header: string): string
     /**
      * Get the value of the parameter called `name`.
      * @param name The paramter name
      * @returns The parameter value, or %NULL if it does not exist. This string is owned by the #RestProxyCall and should not be freed.
      */
-    lookup_param(name: string | null): Param
+    lookup_param(name: string): Param
     /**
      * Get the string value of the header `header` or %NULL if that header is not
      * present or there are no headers.
      * @param header The name of the header to lookup.
      */
-    lookup_response_header(header: string | null): string | null
+    lookup_response_header(header: string): string
     /**
      * Remove the header named `header` from the call.
      * @param header The header name
      */
-    remove_header(header: string | null): void
+    remove_header(header: string): void
     /**
      * Remove the parameter named `name` from the call.
      * @param name The paramter name
      */
-    remove_param(name: string | null): void
+    remove_param(name: string): void
     run(loop: GLib.MainLoop): boolean
     /**
      * Invoker for a virtual method to serialize the parameters for this
@@ -1265,12 +1265,12 @@ interface ProxyCall {
      * <literal>http://www.example.com/test</literal>
      * @param function_ The function to call
      */
-    set_function(function_: string | null): void
+    set_function(function_: string): void
     /**
      * Set the HTTP method to use when making the call, for example GET or POST.
      * @param method The HTTP method to use
      */
-    set_method(method: string | null): void
+    set_method(method: string): void
     sync(): boolean
     /**
      * Asynchronously invoke `call` but expect to have the callback invoked every time a
@@ -1353,7 +1353,7 @@ interface XmlParser {
      * @param len the length of `data,` or -1 if `data` is a nul-terminated string
      * @returns a new #RestXmlNode, or %NULL if the XML was invalid.
      */
-    parse_from_data(data: string | null, len: number): XmlNode
+    parse_from_data(data: string, len: number): XmlNode
 
     // Class property signals of Rest-0.7.Rest.XmlParser
 
@@ -1474,17 +1474,17 @@ interface Param {
      * type "text/plain".
      * @returns the MIME type
      */
-    get_content_type(): string | null
+    get_content_type(): string
     /**
      * Get the original file name of the parameter, if one is available.
      * @returns the filename if          set, or %NULL.
      */
-    get_file_name(): string | null
+    get_file_name(): string
     /**
      * Get the name of the parameter.
      * @returns the parameter name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Determine if the parameter is a string value, i.e. the content type is "text/plain".
      * @returns %TRUE if the parameter is a string, %FALSE otherwise.
@@ -1524,7 +1524,7 @@ class Param {
      * @param filename the original filename, or %NULL
      * @returns a new #RestParam.
      */
-    static new_full(name: string | null, use: MemoryUse, data: Uint8Array, content_type: string | null, filename: string | null): Param
+    static new_full(name: string, use: MemoryUse, data: Uint8Array, content_type: string, filename: string): Param
     /**
      * A convience constructor to create a #RestParam from a given UTF-8 string.
      * The resulting #RestParam will have a content type of "text/plain".
@@ -1534,7 +1534,7 @@ class Param {
      * @param string the parameter value
      * @returns a new #RestParam.
      */
-    static new_string(name: string | null, use: MemoryUse, string: string | null): Param
+    static new_string(name: string, use: MemoryUse, string: string): Param
     /**
      * Create a new #RestParam called `name` with `length` bytes of `data` as the
      * value.  `content_type` is the type of the data as a MIME type, for example
@@ -1566,7 +1566,7 @@ class Param {
      * @param owner_dnotify a function to free/unref `owner` when   the buffer is freed
      * @returns a new #RestParam.
      */
-    static new_with_owner(name: string | null, data: Uint8Array, content_type: string | null, filename: string | null, owner: any | null, owner_dnotify: GLib.DestroyNotify | null): Param
+    static new_with_owner(name: string, data: Uint8Array, content_type: string, filename: string | null, owner: any | null, owner_dnotify: GLib.DestroyNotify | null): Param
 }
 
 interface Params {
@@ -1602,12 +1602,12 @@ interface Params {
      * @param name a parameter name
      * @returns a #RestParam or %NULL if the name doesn't exist
      */
-    get(name: string | null): Param
+    get(name: string): Param
     /**
      * Remove the #RestParam called `name`.
      * @param name a parameter name
      */
-    remove(name: string | null): void
+    remove(name: string): void
 }
 
 class Params {
@@ -1647,7 +1647,7 @@ interface ParamsIter {
      * @param param a location to store the #RestParam, or %NULL
      * @returns %FALSE if the end of the #RestParams has been reached, %TRUE otherwise.
      */
-    next(name: string | null, param: Param): boolean
+    next(name: string, param: Param): boolean
 }
 
 class ParamsIter {
@@ -1773,20 +1773,20 @@ interface XmlNode {
      * @param attribute name of the attribute
      * @param value value to set attribute to
      */
-    add_attr(attribute: string | null, value: string | null): void
+    add_attr(attribute: string, value: string): void
     /**
      * Adds a new node to the given parent node; to create the top-level node,
      * parent should be %NULL.
      * @param tag name of the child node
      * @returns the newly added #RestXmlNode; the node object is owned by, and valid for the life time of, the #RestXmlCreator.
      */
-    add_child(tag: string | null): XmlNode
+    add_child(tag: string): XmlNode
     /**
      * Searches for the first child node of `start` named `tag`.
      * @param tag the name of a node
      * @returns the first child node, or %NULL if it doesn't exist.
      */
-    find(tag: string | null): XmlNode
+    find(tag: string): XmlNode
     free(): void
     /**
      * Get the value of the attribute named `attr_name,` or %NULL if it doesn't
@@ -1794,7 +1794,7 @@ interface XmlNode {
      * @param attr_name the name of an attribute
      * @returns the attribute value. This string is owned by #RestXmlNode and should not be freed.
      */
-    get_attr(attr_name: string | null): string | null
+    get_attr(attr_name: string): string
     /**
      * Recursively outputs given node and it's children.
      * @returns xml string representing the node.
@@ -1804,7 +1804,7 @@ interface XmlNode {
      * Sets content for the given node.
      * @param value the content
      */
-    set_content(value: string | null): void
+    set_content(value: string): void
 }
 
 class XmlNode {

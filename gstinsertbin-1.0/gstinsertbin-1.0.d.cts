@@ -159,7 +159,7 @@ export interface InsertBin extends Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -183,7 +183,7 @@ export interface InsertBin extends Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -204,7 +204,7 @@ export interface InsertBin extends Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 

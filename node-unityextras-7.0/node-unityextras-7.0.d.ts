@@ -19,10 +19,10 @@ import type Unity from '@girs/node-unity-7.0';
 
 export namespace UnityExtras {
 
-function showInFolder(uri: string | null, callback?: Gio.AsyncReadyCallback | null): void
+function showInFolder(uri: string, callback?: Gio.AsyncReadyCallback | null): void
 function showInFolderFinish(res: Gio.AsyncResult): void
-function dbusNameHasOwner(name: string | null): boolean
-function dbusOwnName(name: string | null, scopeCreationCb: CreateScopeCallback): Gio.Application | null
+function dbusNameHasOwner(name: string): boolean
+function dbusOwnName(name: string, scopeCreationCb: CreateScopeCallback): Gio.Application | null
 interface CreateScopeCallback {
     (): void
 }
@@ -34,7 +34,7 @@ module PreviewPlayer {
      * Signal callback interface for `progress`
      */
     interface ProgressSignalCallback {
-        (uri: string | null, state: Unity.MusicPreviewTrackState, progress: number): void
+        (uri: string, state: Unity.MusicPreviewTrackState, progress: number): void
     }
 
 
@@ -53,7 +53,7 @@ interface PreviewPlayer {
 
     // Owm methods of UnityExtras-7.0.UnityExtras.PreviewPlayer
 
-    play(uri: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    play(uri: string, callback?: Gio.AsyncReadyCallback | null): void
     playFinish(res: Gio.AsyncResult): void
     pause(callback?: Gio.AsyncReadyCallback | null): void
     pauseFinish(res: Gio.AsyncResult): void
@@ -65,7 +65,7 @@ interface PreviewPlayer {
     stopFinish(res: Gio.AsyncResult): void
     close(callback?: Gio.AsyncReadyCallback | null): void
     closeFinish(res: Gio.AsyncResult): void
-    videoProperties(uri: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    videoProperties(uri: string, callback?: Gio.AsyncReadyCallback | null): void
     videoPropertiesFinish(res: Gio.AsyncResult): GLib.HashTable
 
     // Own signals of UnityExtras-7.0.UnityExtras.PreviewPlayer

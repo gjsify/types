@@ -79,7 +79,7 @@ const MINOR_VERSION: number
  * `name` such as for example "R", "cyan" or "CIE L".
  * @param name 
  */
-function component(name: string | null): Object
+function component(name: string): Object
 /**
  * Returns the RGB space defined for the destination of conversion.
  * @param conversion 
@@ -109,7 +109,7 @@ function exit(): void
  * @param destinationFormat 
  * @param performance 
  */
-function fastFish(sourceFormat: any | null, destinationFormat: any | null, performance: string | null): Object
+function fastFish(sourceFormat: any | null, destinationFormat: any | null, performance: string): Object
 /**
  * Create a babl fish capable of converting from source_format to
  *  destination_format, source and destination can be either strings
@@ -125,14 +125,14 @@ function fish(sourceFormat: any | null, destinationFormat: any | null): Object
  * and TRCs for a format, see babl_format_with_space.
  * @param encoding 
  */
-function format(encoding: string | null): Object
+function format(encoding: string): Object
 /**
  * Returns 1 if the provided format name is known by babl or 0 if it is
  * not. Can also be used to verify that specific extension formats are
  * available (though this can also be inferred from the version of babl).
  * @param name 
  */
-function formatExists(name: string | null): number
+function formatExists(name: string): number
 /**
  * Returns the bytes per pixel for a babl color format.
  * @param format 
@@ -142,7 +142,7 @@ function formatGetBytesPerPixel(format: Object): number
  * Returns the components and data type, without space suffix.
  * @param babl 
  */
-function formatGetEncoding(babl: Object): string | null
+function formatGetEncoding(babl: Object): string
 /**
  * Return the model used for constructing the format.
  * @param format 
@@ -187,19 +187,19 @@ function formatN(type: Object, components: number): Object
  * @param encoding 
  * @param space 
  */
-function formatWithSpace(encoding: string | null, space: Object): Object
+function formatWithSpace(encoding: string, space: Object): Object
 function getModelFlags(model: Object): ModelFlag
 /**
  * Returns a string describing a Babl object.
  * @param babl 
  */
-function getName(babl: Object): string | null
+function getName(babl: Object): string
 /**
  * Get the version information on the babl library
  */
 function getVersion(): [ /* major */ number, /* minor */ number, /* micro */ number ]
-function iccGetKey(iccData: string | null, iccLength: number, key: string | null, language: string | null, country: string | null): string | null
-function iccMakeSpace(iccData: string | null, iccLength: number, intent: IccIntent, error: string | null): Object
+function iccGetKey(iccData: string, iccLength: number, key: string, language: string, country: string): string | null
+function iccMakeSpace(iccData: string, iccLength: number, intent: IccIntent, error: string): Object
 /**
  * Initializes the babl library.
  */
@@ -214,15 +214,15 @@ function introspect(babl: Object): void
  * such as for example "RGB", "CMYK" or "CIE Lab".
  * @param name 
  */
-function model(name: string | null): Object
-function modelIs(babl: Object, modelName: string | null): number
+function model(name: string): Object
+function modelIs(babl: Object, modelName: string): number
 /**
  * The models for formats also have a space in babl, try to avoid code
  * needing to use this.
  * @param name 
  * @param space 
  */
-function modelWithSpace(name: string | null, space: Object): Object
+function modelWithSpace(name: string, space: Object): Object
 /**
  * create a new palette based format, name is optional pass in NULL to get
  * an anonymous format. If you pass in with_alpha the format also gets
@@ -233,7 +233,7 @@ function modelWithSpace(name: string | null, space: Object): Object
  * @param formatU8 
  * @param formatU8WithAlpha 
  */
-function newPalette(name: string | null, formatU8: Object, formatU8WithAlpha: Object): Object
+function newPalette(name: string, formatU8: Object, formatU8WithAlpha: Object): Object
 /**
  * create a new palette based format, name is optional pass in NULL to get
  * an anonymous format. If you pass in with_alpha the format also gets
@@ -245,7 +245,7 @@ function newPalette(name: string | null, formatU8: Object, formatU8WithAlpha: Ob
  * @param formatU8 
  * @param formatU8WithAlpha 
  */
-function newPaletteWithSpace(name: string | null, space: Object, formatU8: Object, formatU8WithAlpha: Object): Object
+function newPaletteWithSpace(name: string, space: Object, formatU8: Object, formatU8WithAlpha: Object): Object
 /**
  * reset a palette to initial state, frees up some caches that optimize
  * conversions.
@@ -285,7 +285,7 @@ function sampling(horizontal: number, vertical: number): Object
  *    sRGB, Rec2020, Adobish, Apple and ProPhoto
  * @param name 
  */
-function space(name: string | null): Object
+function space(name: string): Object
 /**
  * Creates a new babl-space/ RGB matrix color space definition with the
  * specified CIE xy(Y) values for white point: wx, wy and primary
@@ -325,7 +325,7 @@ function spaceFromChromaticities(name: string | null, wx: number, wy: number, rx
  * @param iccLength length of icc profile in bytes
  * @param intent the intent from the ICC profile to use.
  */
-function spaceFromIcc(iccData: string | null, iccLength: number, intent: IccIntent): [ /* returnType */ Object, /* error */ string | null ]
+function spaceFromIcc(iccData: string, iccLength: number, intent: IccIntent): [ /* returnType */ Object, /* error */ string ]
 /**
  * Creates a new RGB matrix color space definition using a precomputed D50
  * adapted 3x3 matrix and associated CIE XYZ whitepoint, as possibly read from
@@ -363,7 +363,7 @@ function spaceGetGamma(space: Object): number
  * @param babl a #Babl
  * @returns pointer to ICC profile data.
  */
-function spaceGetIcc(babl: Object): [ /* returnType */ string | null, /* length */ number ]
+function spaceGetIcc(babl: Object): [ /* returnType */ string, /* length */ number ]
 /**
  * Retrieve the relevant RGB luminance constants for a babl space.
  * 
@@ -387,7 +387,7 @@ function spaceWithTrc(space: Object, trc: Object): Object
  * strings in a stock babl configuration.
  * @param name 
  */
-function trc(name: string | null): Object
+function trc(name: string): Object
 /**
  * Creates a Babl TRC for a specific gamma value, it will be given
  * a name that is a short string representation of the value.
@@ -399,15 +399,15 @@ function trcGamma(gamma: number): Object
  * such as for example "u8", "u16" or "float".
  * @param name 
  */
-function type(name: string | null): Object
+function type(name: string): Object
 interface FishProcess {
-    (babl: Object, src: string | null, dst: string | null, n: number, data: any | null): void
+    (babl: Object, src: string, dst: string | null, n: number, data: any | null): void
 }
 interface FuncLinear {
-    (conversion: Object, src: string | null, dst: string | null, n: number): void
+    (conversion: Object, src: string, dst: string | null, n: number): void
 }
 interface FuncPlanar {
-    (conversion: Object, srcBands: number, src: string | null, srcPitch: number, dstBands: number, dst: string | null, dstPitch: number, n: number): void
+    (conversion: Object, srcBands: number, src: string, srcPitch: number, dstBands: number, dst: string | null, dstPitch: number, n: number): void
 }
 interface Object {
 }

@@ -1225,7 +1225,7 @@ export enum WebsiteDataTypes {
  * possible to copy to the clipboard when there is an active selection
  * inside the #WebKitWebView.
  */
-export const EDITING_COMMAND_COPY: string | null
+export const EDITING_COMMAND_COPY: string
 /**
  * The create link command. Creates a link element that is inserted at
  * the current cursor position. If there's a selection, the selected text
@@ -1233,7 +1233,7 @@ export const EDITING_COMMAND_COPY: string | null
  * It receives the link URL as argument. This command should be executed
  * with webkit_web_view_execute_editing_command_with_argument()
  */
-export const EDITING_COMMAND_CREATE_LINK: string | null
+export const EDITING_COMMAND_CREATE_LINK: string
 /**
  * The cut clipboard command. Copies the current selection inside
  * a #WebKitWebView to the clipboard and deletes the selected content.
@@ -1242,14 +1242,14 @@ export const EDITING_COMMAND_CREATE_LINK: string | null
  * possible to cut to the clipboard when the #WebKitWebView content is
  * editable and there is an active selection.
  */
-export const EDITING_COMMAND_CUT: string | null
+export const EDITING_COMMAND_CUT: string
 /**
  * The insert image command. Creates an image element that is inserted at
  * the current cursor position. It receives an URI as argument,
  * that is used as the image source. This command should be executed with
  * webkit_web_view_execute_editing_command_with_argument().
  */
-export const EDITING_COMMAND_INSERT_IMAGE: string | null
+export const EDITING_COMMAND_INSERT_IMAGE: string
 /**
  * The paste clipboard command. Pastes the contents of the clipboard to
  * a #WebKitWebView.
@@ -1258,7 +1258,7 @@ export const EDITING_COMMAND_INSERT_IMAGE: string | null
  * to paste from the clipboard when the #WebKitWebView content is editable
  * and clipboard is not empty.
  */
-export const EDITING_COMMAND_PASTE: string | null
+export const EDITING_COMMAND_PASTE: string
 /**
  * The paste as plaintext clipboard command. Pastes the contents of the
  * clipboard to a #WebKitWebView, with formatting removed.
@@ -1267,7 +1267,7 @@ export const EDITING_COMMAND_PASTE: string | null
  * to paste from the clipboard when the #WebKitWebView content is editable
  * and clipboard is not empty.
  */
-export const EDITING_COMMAND_PASTE_AS_PLAIN_TEXT: string | null
+export const EDITING_COMMAND_PASTE_AS_PLAIN_TEXT: string
 /**
  * The redo command. Redoes a previously undone editing command in
  * a #WebKitWebView.
@@ -1275,7 +1275,7 @@ export const EDITING_COMMAND_PASTE_AS_PLAIN_TEXT: string | null
  * webkit_web_view_can_execute_editing_command(). It's only possible
  * to redo a command when it has been previously undone.
  */
-export const EDITING_COMMAND_REDO: string | null
+export const EDITING_COMMAND_REDO: string
 /**
  * The select all command. Selects all the content of the current text field in
  * a #WebKitWebView.
@@ -1283,14 +1283,14 @@ export const EDITING_COMMAND_REDO: string | null
  * #WebKitWebView content is editable or not. You can still check it
  * with webkit_web_view_can_execute_editing_command().
  */
-export const EDITING_COMMAND_SELECT_ALL: string | null
+export const EDITING_COMMAND_SELECT_ALL: string
 /**
  * The undo command. Undoes the last editing command in a #WebKitWebView.
  * You can check whether it's possible to execute the command with
  * webkit_web_view_can_execute_editing_command(). It's only possible
  * to undo a command after a previously executed editing operation.
  */
-export const EDITING_COMMAND_UNDO: string | null
+export const EDITING_COMMAND_UNDO: string
 /**
  * Like webkit_get_major_version(), but from the headers used at
  * application compile time, rather than from the library linked
@@ -1365,7 +1365,7 @@ export function javascriptErrorQuark(): GLib.Quark
  * @param request a #WebKitMediaKeySystemPermissionRequest
  * @returns the key system name for @request
  */
-export function mediaKeySystemPermissionGetName(request: MediaKeySystemPermissionRequest): string | null
+export function mediaKeySystemPermissionGetName(request: MediaKeySystemPermissionRequest): string
 /**
  * Gets the quark for the domain of networking errors.
  * @returns network error domain.
@@ -1402,7 +1402,7 @@ export function snapshotErrorQuark(): GLib.Quark
  * @param uri the URI to be converted
  * @returns @uri suitable for display, or %NULL in    case of error.
  */
-export function uriForDisplay(uri: string | null): string | null
+export function uriForDisplay(uri: string): string | null
 /**
  * Gets the quark for the domain of user content filter errors.
  * @returns user content filter error domain.
@@ -1586,7 +1586,7 @@ export interface AuthenticationRequest {
      * Get the host that this authentication challenge is applicable to.
      * @returns The host of @request.
      */
-    getHost(): string | null
+    getHost(): string
     /**
      * Get the port that this authentication challenge is applicable to.
      * @returns The port of @request.
@@ -1605,7 +1605,7 @@ export interface AuthenticationRequest {
      * Get the realm that this authentication challenge is applicable to.
      * @returns The realm of @request.
      */
-    getRealm(): string | null
+    getRealm(): string
     /**
      * Get the authentication scheme of the authentication challenge.
      * @returns The #WebKitAuthenticationScheme of @request.
@@ -1766,7 +1766,7 @@ export interface AutomationSession {
      * Get the unique identifier of a #WebKitAutomationSession
      * @returns the unique identifier of @session
      */
-    getId(): string | null
+    getId(): string
     /**
      * Set the application information to `session`.
      * 
@@ -1993,12 +1993,12 @@ export interface BackForwardListItem {
      * See also webkit_back_forward_list_item_get_uri().
      * @returns the original URI of @list_item or %NULL    when the original URI is empty.
      */
-    getOriginalUri(): string | null
+    getOriginalUri(): string
     /**
      * Obtain the title of the item.
      * @returns the page title of @list_item or %NULL    when the title is empty.
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Obtain the URI of the item.
      * 
@@ -2007,7 +2007,7 @@ export interface BackForwardListItem {
      * See also webkit_back_forward_list_item_get_original_uri().
      * @returns the URI of @list_item or %NULL    when the URI is empty.
      */
-    getUri(): string | null
+    getUri(): string
 
     // Class property signals of WebKit2-4.1.WebKit2.BackForwardListItem
 
@@ -2565,7 +2565,7 @@ export class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param target a #GVariant to use as the action target
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newFromGaction(action: Gio.Action, label: string | null, target: GLib.Variant | null): ContextMenuItem
+    static newFromGaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem for the given stock action.
      * 
@@ -2592,7 +2592,7 @@ export class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param label a custom label text to use instead of the predefined one
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newFromStockActionWithLabel(action: ContextMenuAction, label: string | null): ContextMenuItem
+    static newFromStockActionWithLabel(action: ContextMenuAction, label: string): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem representing a separator.
      * @constructor 
@@ -2606,7 +2606,7 @@ export class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param submenu a #WebKitContextMenu to set
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newWithSubmenu(label: string | null, submenu: ContextMenu): ContextMenuItem
+    static newWithSubmenu(label: string, submenu: ContextMenu): ContextMenuItem
     _init(config?: ContextMenuItem.ConstructorProperties): void
 }
 
@@ -2682,7 +2682,7 @@ export interface CookieManager {
      * Remove all cookies of `cookie_manager` for the given `domain`.
      * @param domain a domain name
      */
-    deleteCookiesForDomain(domain: string | null): void
+    deleteCookiesForDomain(domain: string): void
     /**
      * Asynchronously get the cookie acceptance policy of `cookie_manager`.
      * 
@@ -2732,7 +2732,7 @@ export interface CookieManager {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    getCookies(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getCookies(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_cookie_manager_get_cookies().
      * 
@@ -2801,7 +2801,7 @@ export interface CookieManager {
      * @param filename the filename to read to/write from
      * @param storage a #WebKitCookiePersistentStorage
      */
-    setPersistentStorage(filename: string | null, storage: CookiePersistentStorage): void
+    setPersistentStorage(filename: string, storage: CookiePersistentStorage): void
 
     // Own signals of WebKit2-4.1.WebKit2.CookieManager
 
@@ -3096,11 +3096,11 @@ export interface Download {
      * %G_USER_DIRECTORY_DOWNLOAD directory.
      * @param destination the destination
      */
-    setDestination(destination: string | null): void
+    setDestination(destination: string): void
 
     // Own virtual methods of WebKit2-4.1.WebKit2.Download
 
-    decideDestination(suggestedFilename: string | null): boolean
+    decideDestination(suggestedFilename: string): boolean
 
     // Own signals of WebKit2-4.1.WebKit2.Download
 
@@ -3340,7 +3340,7 @@ export interface FaviconDatabase {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is            satisfied or %NULL if you don't care about the result.
      */
-    getFavicon(pageUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getFavicon(pageUri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with webkit_favicon_database_get_favicon().
      * @param result A #GAsyncResult obtained from the #GAsyncReadyCallback passed to webkit_favicon_database_get_favicon()
@@ -3352,7 +3352,7 @@ export interface FaviconDatabase {
      * @param pageUri URI of the page containing the icon
      * @returns a newly allocated URI for the favicon, or %NULL if the database doesn't have a favicon for @page_uri.
      */
-    getFaviconUri(pageUri: string | null): string | null
+    getFaviconUri(pageUri: string): string | null
 
     // Own signals of WebKit2-4.1.WebKit2.FaviconDatabase
 
@@ -3665,7 +3665,7 @@ export interface FindController {
      * @param findOptions a bitmask with the #WebKitFindOptions used in the search
      * @param maxMatchCount the maximum number of matches allowed in the search
      */
-    countMatches(searchText: string | null, findOptions: number, maxMatchCount: number): void
+    countMatches(searchText: string, findOptions: number, maxMatchCount: number): void
     /**
      * Gets the maximum number of matches to report.
      * 
@@ -3693,7 +3693,7 @@ export interface FindController {
      * webkit_find_controller_count_matches().
      * @returns the text to look for in the #WebKitWebView.
      */
-    getSearchText(): string | null
+    getSearchText(): string
     /**
      * Gets the #WebKitWebView this find controller is associated to.
      * 
@@ -3729,7 +3729,7 @@ export interface FindController {
      * @param findOptions a bitmask with the #WebKitFindOptions used in the search
      * @param maxMatchCount the maximum number of matches allowed in the search
      */
-    search(searchText: string | null, findOptions: number, maxMatchCount: number): void
+    search(searchText: string, findOptions: number, maxMatchCount: number): void
     /**
      * Finishes a find operation.
      * 
@@ -3971,7 +3971,7 @@ export interface GeolocationManager {
      * Notify `manager` that determining the position failed.
      * @param errorMessage the error message
      */
-    failed(errorMessage: string | null): void
+    failed(errorMessage: string): void
     /**
      * Get whether high accuracy is enabled.
      * @returns Whether the setting is enabled.
@@ -4243,27 +4243,27 @@ export interface HitTestResult {
      * Gets the value of the #WebKitHitTestResult:image-uri property.
      * @returns the URI of the image element in the coordinates of the Hit Test,    or %NULL if there isn't an image element in @hit_test_result context
      */
-    getImageUri(): string | null
+    getImageUri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-label property.
      * @returns the label of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a label
      */
-    getLinkLabel(): string | null
+    getLinkLabel(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-title property.
      * @returns the title of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a title
      */
-    getLinkTitle(): string | null
+    getLinkTitle(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-uri property.
      * @returns the URI of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context
      */
-    getLinkUri(): string | null
+    getLinkUri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:media-uri property.
      * @returns the URI of the media element in the coordinates of the Hit Test,    or %NULL if there isn't a media element in @hit_test_result context
      */
-    getMediaUri(): string | null
+    getMediaUri(): string
 
     // Class property signals of WebKit2-4.1.WebKit2.HitTestResult
 
@@ -4439,7 +4439,7 @@ export interface InputMethodContext {
     // Has conflict: notifyCursorArea(x: number, y: number, width: number, height: number): void
     // Has conflict: notifyFocusIn(): void
     // Has conflict: notifyFocusOut(): void
-    // Has conflict: notifySurrounding(text: string | null, length: number, cursorIndex: number, selectionIndex: number): void
+    // Has conflict: notifySurrounding(text: string, length: number, cursorIndex: number, selectionIndex: number): void
     // Has conflict: reset(): void
     // Has conflict: setEnablePreedit(enabled: boolean): void
     /**
@@ -4455,7 +4455,7 @@ export interface InputMethodContext {
 
     // Own virtual methods of WebKit2-4.1.WebKit2.InputMethodContext
 
-    committed(text: string | null): void
+    committed(text: string): void
     deleteSurrounding(offset: number, nChars: number): void
     /**
      * Allow `key_event` to be handled by the input method.
@@ -4504,7 +4504,7 @@ export interface InputMethodContext {
      * @param cursorIndex the byte index of the insertion cursor within `text`.
      * @param selectionIndex the byte index of the selection cursor within `text`.
      */
-    notifySurrounding(text: string | null, length: number, cursorIndex: number, selectionIndex: number): void
+    notifySurrounding(text: string, length: number, cursorIndex: number, selectionIndex: number): void
     preeditChanged(): void
     preeditFinished(): void
     preeditStarted(): void
@@ -4625,7 +4625,7 @@ export interface InstallMissingMediaPluginsPermissionRequest extends PermissionR
      * This function returns an empty string.
      * @returns an empty string
      */
-    getDescription(): string | null
+    getDescription(): string
 
     // Class property signals of WebKit2-4.1.WebKit2.InstallMissingMediaPluginsPermissionRequest
 
@@ -4786,7 +4786,7 @@ export interface NavigationPolicyDecision {
      * Gets the value of the #WebKitNavigationPolicyDecision:frame-name property.
      * @returns The name of the new frame this navigation action targets or %NULL
      */
-    getFrameName(): string | null
+    getFrameName(): string
     /**
      * Gets the value of the #WebKitNavigationPolicyDecision:modifiers property.
      * @returns The modifiers active if this decision was triggered by a mouse event
@@ -4948,7 +4948,7 @@ export interface Notification {
      * Obtains the body for the notification.
      * @returns the body for the notification
      */
-    getBody(): string | null
+    getBody(): string
     /**
      * Obtains the unique id for the notification.
      * @returns the unique id for the notification
@@ -4963,7 +4963,7 @@ export interface Notification {
      * Obtains the title for the notification.
      * @returns the title for the notification
      */
-    getTitle(): string | null
+    getTitle(): string
 
     // Own signals of WebKit2-4.1.WebKit2.Notification
 
@@ -5508,7 +5508,7 @@ export interface PrintCustomWidget {
      * `print_custom_widget` object.
      * @returns Title of the @print_custom_widget.
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Return the value of #WebKitPrintCustomWidget:widget property.
      * 
@@ -5602,7 +5602,7 @@ export class PrintCustomWidget extends GObject.Object {
      * @param title a `widget'`s title
      * @returns a new #WebKitPrintOperation.
      */
-    constructor(widget: Gtk.Widget, title: string | null) 
+    constructor(widget: Gtk.Widget, title: string) 
     /**
      * Create a new #WebKitPrintCustomWidget with given `widget` and `title`.
      * 
@@ -5615,7 +5615,7 @@ export class PrintCustomWidget extends GObject.Object {
      * @param title a `widget'`s title
      * @returns a new #WebKitPrintOperation.
      */
-    static new(widget: Gtk.Widget, title: string | null): PrintCustomWidget
+    static new(widget: Gtk.Widget, title: string): PrintCustomWidget
     _init(config?: PrintCustomWidget.ConstructorProperties): void
 }
 
@@ -5980,7 +5980,7 @@ export interface SecurityManager {
      * http://www.w3.org/TR/cors/.
      * @param scheme a URI scheme
      */
-    registerUriSchemeAsCorsEnabled(scheme: string | null): void
+    registerUriSchemeAsCorsEnabled(scheme: string): void
     /**
      * Register `scheme` as a display isolated scheme.
      * 
@@ -5988,7 +5988,7 @@ export interface SecurityManager {
      * display these URIs unless they are from the same scheme.
      * @param scheme a URI scheme
      */
-    registerUriSchemeAsDisplayIsolated(scheme: string | null): void
+    registerUriSchemeAsDisplayIsolated(scheme: string): void
     /**
      * Register `scheme` as an empty document scheme.
      * 
@@ -5996,7 +5996,7 @@ export interface SecurityManager {
      * they are allowed to commit synchronously.
      * @param scheme a URI scheme
      */
-    registerUriSchemeAsEmptyDocument(scheme: string | null): void
+    registerUriSchemeAsEmptyDocument(scheme: string): void
     /**
      * Register `scheme` as a local scheme.
      * 
@@ -6004,7 +6004,7 @@ export interface SecurityManager {
      * cannot link to or access URIs of this scheme.
      * @param scheme a URI scheme
      */
-    registerUriSchemeAsLocal(scheme: string | null): void
+    registerUriSchemeAsLocal(scheme: string): void
     /**
      * Register `scheme` as a no-access scheme.
      * 
@@ -6012,7 +6012,7 @@ export interface SecurityManager {
      * with this URI scheme cannot access pages loaded with any other URI scheme.
      * @param scheme a URI scheme
      */
-    registerUriSchemeAsNoAccess(scheme: string | null): void
+    registerUriSchemeAsNoAccess(scheme: string): void
     /**
      * Register `scheme` as a secure scheme.
      * 
@@ -6021,7 +6021,7 @@ export interface SecurityManager {
      * included by an HTTPS page.
      * @param scheme a URI scheme
      */
-    registerUriSchemeAsSecure(scheme: string | null): void
+    registerUriSchemeAsSecure(scheme: string): void
     /**
      * Whether `scheme` is considered as a CORS enabled scheme.
      * 
@@ -6029,7 +6029,7 @@ export interface SecurityManager {
      * @param scheme a URI scheme
      * @returns %TRUE if @scheme is a CORS enabled scheme or %FALSE otherwise.
      */
-    uriSchemeIsCorsEnabled(scheme: string | null): boolean
+    uriSchemeIsCorsEnabled(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a display isolated scheme.
      * 
@@ -6037,7 +6037,7 @@ export interface SecurityManager {
      * @param scheme a URI scheme
      * @returns %TRUE if @scheme is a display isolated scheme or %FALSE otherwise.
      */
-    uriSchemeIsDisplayIsolated(scheme: string | null): boolean
+    uriSchemeIsDisplayIsolated(scheme: string): boolean
     /**
      * Whether `scheme` is considered as an empty document scheme.
      * 
@@ -6045,7 +6045,7 @@ export interface SecurityManager {
      * @param scheme a URI scheme
      * @returns %TRUE if @scheme is an empty document scheme or %FALSE otherwise.
      */
-    uriSchemeIsEmptyDocument(scheme: string | null): boolean
+    uriSchemeIsEmptyDocument(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a local scheme.
      * 
@@ -6053,7 +6053,7 @@ export interface SecurityManager {
      * @param scheme a URI scheme
      * @returns %TRUE if @scheme is a local scheme or %FALSE otherwise.
      */
-    uriSchemeIsLocal(scheme: string | null): boolean
+    uriSchemeIsLocal(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a no-access scheme.
      * 
@@ -6061,7 +6061,7 @@ export interface SecurityManager {
      * @param scheme a URI scheme
      * @returns %TRUE if @scheme is a no-access scheme or %FALSE otherwise.
      */
-    uriSchemeIsNoAccess(scheme: string | null): boolean
+    uriSchemeIsNoAccess(scheme: string): boolean
     /**
      * Whether `scheme` is considered as a secure scheme.
      * 
@@ -6069,7 +6069,7 @@ export interface SecurityManager {
      * @param scheme a URI scheme
      * @returns %TRUE if @scheme is a secure scheme or %FALSE otherwise.
      */
-    uriSchemeIsSecure(scheme: string | null): boolean
+    uriSchemeIsSecure(scheme: string): boolean
 
     // Class property signals of WebKit2-4.1.WebKit2.SecurityManager
 
@@ -6916,17 +6916,17 @@ export interface Settings {
      * Gets the #WebKitSettings:cursive-font-family property.
      * @returns The default font family used to display content marked with cursive font.
      */
-    getCursiveFontFamily(): string | null
+    getCursiveFontFamily(): string
     /**
      * Gets the #WebKitSettings:default-charset property.
      * @returns Default charset.
      */
-    getDefaultCharset(): string | null
+    getDefaultCharset(): string
     /**
      * Gets the #WebKitSettings:default-font-family property.
      * @returns The default font family used to display content that does not specify a font.
      */
-    getDefaultFontFamily(): string | null
+    getDefaultFontFamily(): string
     /**
      * Gets the #WebKitSettings:default-font-size property.
      * @returns The default font size, in pixels.
@@ -7116,7 +7116,7 @@ export interface Settings {
      * Gets the #WebKitSettings:fantasy-font-family property.
      * @returns The default font family used to display content marked with fantasy font.
      */
-    getFantasyFontFamily(): string | null
+    getFantasyFontFamily(): string
     /**
      * Gets whether a feature is enabled.
      * @param feature the feature to toggle.
@@ -7147,7 +7147,7 @@ export interface Settings {
      * Gets the #WebKitSettings:media-content-types-requiring-hardware-support property.
      * @returns Media content types requiring hardware support, or %NULL.
      */
-    getMediaContentTypesRequiringHardwareSupport(): string | null
+    getMediaContentTypesRequiringHardwareSupport(): string
     /**
      * Get the #WebKitSettings:media-playback-allows-inline property.
      * @returns %TRUE If inline playback is allowed for media    or %FALSE if only fullscreen playback is allowed.
@@ -7167,12 +7167,12 @@ export interface Settings {
      * Gets the #WebKitSettings:monospace-font-family property.
      * @returns Default font family used to display content marked with monospace font.
      */
-    getMonospaceFontFamily(): string | null
+    getMonospaceFontFamily(): string
     /**
      * Gets the #WebKitSettings:pictograph-font-family property.
      * @returns The default font family used to display content marked with pictograph font.
      */
-    getPictographFontFamily(): string | null
+    getPictographFontFamily(): string
     /**
      * Get the #WebKitSettings:print-backgrounds property.
      * @returns %TRUE If background images should be printed or %FALSE otherwise.
@@ -7182,17 +7182,17 @@ export interface Settings {
      * Gets the #WebKitSettings:sans-serif-font-family property.
      * @returns The default font family used to display content marked with sans-serif font.
      */
-    getSansSerifFontFamily(): string | null
+    getSansSerifFontFamily(): string
     /**
      * Gets the #WebKitSettings:serif-font-family property.
      * @returns The default font family used to display content marked with serif font.
      */
-    getSerifFontFamily(): string | null
+    getSerifFontFamily(): string
     /**
      * Get the #WebKitSettings:user-agent property.
      * @returns The current value of the user-agent property.
      */
-    getUserAgent(): string | null
+    getUserAgent(): string
     /**
      * Get the #WebKitSettings:zoom-text-only property.
      * @returns %TRUE If zoom level of the view should only affect the text    or %FALSE if all view contents should be scaled.
@@ -7227,17 +7227,17 @@ export interface Settings {
      * Set the #WebKitSettings:cursive-font-family property.
      * @param cursiveFontFamily the new default cursive font family
      */
-    setCursiveFontFamily(cursiveFontFamily: string | null): void
+    setCursiveFontFamily(cursiveFontFamily: string): void
     /**
      * Set the #WebKitSettings:default-charset property.
      * @param defaultCharset default charset to be set
      */
-    setDefaultCharset(defaultCharset: string | null): void
+    setDefaultCharset(defaultCharset: string): void
     /**
      * Set the #WebKitSettings:default-font-family property.
      * @param defaultFontFamily the new default font family
      */
-    setDefaultFontFamily(defaultFontFamily: string | null): void
+    setDefaultFontFamily(defaultFontFamily: string): void
     /**
      * Set the #WebKitSettings:default-font-size property.
      * @param fontSize default font size to be set in pixels
@@ -7431,7 +7431,7 @@ export interface Settings {
      * Set the #WebKitSettings:fantasy-font-family property.
      * @param fantasyFontFamily the new default fantasy font family
      */
-    setFantasyFontFamily(fantasyFontFamily: string | null): void
+    setFantasyFontFamily(fantasyFontFamily: string): void
     /**
      * Enables or disables a feature.
      * 
@@ -7487,12 +7487,12 @@ export interface Settings {
      * Set the #WebKitSettings:monospace-font-family property.
      * @param monospaceFontFamily the new default monospace font family
      */
-    setMonospaceFontFamily(monospaceFontFamily: string | null): void
+    setMonospaceFontFamily(monospaceFontFamily: string): void
     /**
      * Set the #WebKitSettings:pictograph-font-family property.
      * @param pictographFontFamily the new default pictograph font family
      */
-    setPictographFontFamily(pictographFontFamily: string | null): void
+    setPictographFontFamily(pictographFontFamily: string): void
     /**
      * Set the #WebKitSettings:print-backgrounds property.
      * @param printBackgrounds Value to be set
@@ -7502,12 +7502,12 @@ export interface Settings {
      * Set the #WebKitSettings:sans-serif-font-family property.
      * @param sansSerifFontFamily the new default sans-serif font family
      */
-    setSansSerifFontFamily(sansSerifFontFamily: string | null): void
+    setSansSerifFontFamily(sansSerifFontFamily: string): void
     /**
      * Set the #WebKitSettings:serif-font-family property.
      * @param serifFontFamily the new default serif font family
      */
-    setSerifFontFamily(serifFontFamily: string | null): void
+    setSerifFontFamily(serifFontFamily: string): void
     /**
      * Set the #WebKitSettings:user-agent property.
      * @param userAgent The new custom user agent string or %NULL to use the default user agent
@@ -7992,17 +7992,17 @@ export interface URIRequest {
      * Get the HTTP method of the #WebKitURIRequest.
      * @returns the HTTP method of the #WebKitURIRequest or %NULL if @request is not    an HTTP request.
      */
-    getHttpMethod(): string | null
+    getHttpMethod(): string
     /**
      * Obtains the request URI.
      * @returns request URI, as a string.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Set the URI of `request`
      * @param uri an URI
      */
-    setUri(uri: string | null): void
+    setUri(uri: string): void
 
     // Class property signals of WebKit2-4.1.WebKit2.URIRequest
 
@@ -8047,14 +8047,14 @@ export class URIRequest extends GObject.Object {
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    constructor(uri: string | null) 
+    constructor(uri: string) 
     /**
      * Creates a new #WebKitURIRequest for the given URI.
      * @constructor 
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    static new(uri: string | null): URIRequest
+    static new(uri: string): URIRequest
     _init(config?: URIRequest.ConstructorProperties): void
 }
 
@@ -8120,7 +8120,7 @@ export interface URIResponse {
      * Gets the MIME type of the response.
      * @returns MIME type, as a string.
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Get the status code of the #WebKitURIResponse.
      * 
@@ -8139,12 +8139,12 @@ export interface URIResponse {
      * present.
      * @returns the suggested filename or %NULL if    the 'Content-Disposition' HTTP header is not present.
      */
-    getSuggestedFilename(): string | null
+    getSuggestedFilename(): string
     /**
      * Gets the URI which resulted in the response.
      * @returns response URI, as a string.
      */
-    getUri(): string | null
+    getUri(): string
 
     // Class property signals of WebKit2-4.1.WebKit2.URIResponse
 
@@ -8264,22 +8264,22 @@ export interface URISchemeRequest {
      * Get the HTTP method of the `request`.
      * @returns the HTTP method of the @request
      */
-    getHttpMethod(): string | null
+    getHttpMethod(): string
     /**
      * Get the URI path of `request`.
      * @returns the URI path of @request
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Get the URI scheme of `request`.
      * @returns the URI scheme of @request
      */
-    getScheme(): string | null
+    getScheme(): string
     /**
      * Get the URI of `request`.
      * @returns the full URI of @request
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Get the #WebKitWebView that initiated the request.
      * @returns the #WebKitWebView that initiated @request.
@@ -8371,7 +8371,7 @@ export interface URISchemeResponse {
      * Sets the content type for the `response`
      * @param contentType the content type of the stream
      */
-    setContentType(contentType: string | null): void
+    setContentType(contentType: string): void
     /**
      * Assign the provided #SoupMessageHeaders to the response.
      * 
@@ -8515,7 +8515,7 @@ export interface UserContentFilterStore {
      * Gets the storage path for user content filters.
      * @returns path, as a string.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Asynchronously load a content filter given its `identifier`.
      * 
@@ -8528,7 +8528,7 @@ export interface UserContentFilterStore {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the load is completed
      */
-    load(identifier: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    load(identifier: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filter load previously started with
      * webkit_user_content_filter_store_load().
@@ -8546,7 +8546,7 @@ export interface UserContentFilterStore {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the removal is completed
      */
-    remove(identifier: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    remove(identifier: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filter removal previously started with
      * webkit_user_content_filter_store_remove().
@@ -8572,7 +8572,7 @@ export interface UserContentFilterStore {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when saving is completed
      */
-    save(identifier: string | null, source: any, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    save(identifier: string, source: any, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filter save previously started with
      * webkit_user_content_filter_store_save().
@@ -8594,7 +8594,7 @@ export interface UserContentFilterStore {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when saving is completed
      */
-    saveFromFile(identifier: string | null, file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    saveFromFile(identifier: string, file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes and asynchronous filter save previously started with
      * webkit_user_content_filter_store_save_from_file().
@@ -8657,7 +8657,7 @@ export class UserContentFilterStore extends GObject.Object {
      * @param storagePath path where data for filters will be stored on disk
      * @returns a newly created #WebKitUserContentFilterStore
      */
-    constructor(storagePath: string | null) 
+    constructor(storagePath: string) 
     /**
      * Create a new #WebKitUserContentFilterStore to manipulate filters stored at `storage_path`.
      * 
@@ -8666,7 +8666,7 @@ export class UserContentFilterStore extends GObject.Object {
      * @param storagePath path where data for filters will be stored on disk
      * @returns a newly created #WebKitUserContentFilterStore
      */
-    static new(storagePath: string | null): UserContentFilterStore
+    static new(storagePath: string): UserContentFilterStore
     _init(config?: UserContentFilterStore.ConstructorProperties): void
 }
 
@@ -8760,7 +8760,7 @@ export interface UserContentManager {
      * @param name Name of the script message channel
      * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
      */
-    registerScriptMessageHandler(name: string | null): boolean
+    registerScriptMessageHandler(name: string): boolean
     /**
      * Registers a new user script message handler in script world.
      * 
@@ -8773,7 +8773,7 @@ export interface UserContentManager {
      * @param worldName the name of a #WebKitScriptWorld
      * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
      */
-    registerScriptMessageHandlerInWorld(name: string | null, worldName: string | null): boolean
+    registerScriptMessageHandlerInWorld(name: string, worldName: string): boolean
     /**
      * Registers a new user script message handler in script world with name `world_name`.
      * 
@@ -8794,7 +8794,7 @@ export interface UserContentManager {
      * @param worldName 
      * @returns %TRUE if message handler was registered successfully, or %FALSE otherwise.
      */
-    registerScriptMessageHandlerWithReply(name: string | null, worldName: string | null): boolean
+    registerScriptMessageHandlerWithReply(name: string, worldName: string): boolean
     /**
      * Removes all content filters from the given #WebKitUserContentManager.
      */
@@ -8824,7 +8824,7 @@ export interface UserContentManager {
      * webkit_user_content_filter_get_identifier().
      * @param filterId Filter identifier
      */
-    removeFilterById(filterId: string | null): void
+    removeFilterById(filterId: string): void
     /**
      * Removes a #WebKitUserScript from the given #WebKitUserContentManager.
      * 
@@ -8850,7 +8850,7 @@ export interface UserContentManager {
      * See also webkit_user_content_manager_register_script_message_handler().
      * @param name Name of the script message channel
      */
-    unregisterScriptMessageHandler(name: string | null): void
+    unregisterScriptMessageHandler(name: string): void
     /**
      * Unregisters a previously registered message handler in script world with name `world_name`.
      * 
@@ -8863,7 +8863,7 @@ export interface UserContentManager {
      * @param name Name of the script message channel
      * @param worldName the name of a #WebKitScriptWorld
      */
-    unregisterScriptMessageHandlerInWorld(name: string | null, worldName: string | null): void
+    unregisterScriptMessageHandlerInWorld(name: string, worldName: string): void
 
     // Own signals of WebKit2-4.1.WebKit2.UserContentManager
 
@@ -9071,7 +9071,7 @@ export interface UserMessage {
      * Get the `message` name.
      * @returns the message name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the `message` parameters.
      * @returns the message parameters
@@ -9144,7 +9144,7 @@ export class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    constructor(name: string | null, parameters: GLib.Variant | null) 
+    constructor(name: string, parameters: GLib.Variant | null) 
     /**
      * Create a new #WebKitUserMessage with `name`.
      * @constructor 
@@ -9152,7 +9152,7 @@ export class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    static new(name: string | null, parameters: GLib.Variant | null): UserMessage
+    static new(name: string, parameters: GLib.Variant | null): UserMessage
     /**
      * Create a new #WebKitUserMessage including also a list of UNIX file descriptors to be sent.
      * @constructor 
@@ -9161,7 +9161,7 @@ export class UserMessage extends GObject.InitiallyUnowned {
      * @param fdList the message file descriptors
      * @returns the newly created #WebKitUserMessage object.
      */
-    static newWithFdList(name: string | null, parameters: GLib.Variant | null, fdList: Gio.UnixFDList | null): UserMessage
+    static newWithFdList(name: string, parameters: GLib.Variant | null, fdList: Gio.UnixFDList | null): UserMessage
     _init(config?: UserMessage.ConstructorProperties): void
 }
 
@@ -9331,7 +9331,7 @@ export interface WebContext {
      * @param certificate a #GTlsCertificate
      * @param host the host for which a certificate is to be allowed
      */
-    allowTlsCertificateForHost(certificate: Gio.TlsCertificate, host: string | null): void
+    allowTlsCertificateForHost(certificate: Gio.TlsCertificate, host: string): void
     /**
      * Clears all resources currently cached.
      * 
@@ -9347,7 +9347,7 @@ export interface WebContext {
      * @param uri the URI to download
      * @returns a new #WebKitDownload representing    the download operation.
      */
-    downloadUri(uri: string | null): Download
+    downloadUri(uri: string): Download
     /**
      * Returns the current cache model.
      * 
@@ -9383,7 +9383,7 @@ export interface WebContext {
      * time.
      * @returns the path of the directory of the favicons database associated with @context, or %NULL.
      */
-    getFaviconDatabaseDirectory(): string | null
+    getFaviconDatabaseDirectory(): string
     /**
      * Get the #WebKitGeolocationManager of `context`.
      * @returns the #WebKitGeolocationManager of @context.
@@ -9441,7 +9441,7 @@ export interface WebContext {
     /**
      * Get the #WebKitWebContext:time-zone-override property.
      */
-    getTimeZoneOverride(): string | null
+    getTimeZoneOverride(): string
     /**
      * Get the TLS errors policy of `context`.
      * @returns a #WebKitTLSErrorsPolicy
@@ -9484,7 +9484,7 @@ export interface WebContext {
      * of `hostname` is requested the load will be performed more quickly.
      * @param hostname a hostname to be resolved
      */
-    prefetchDns(hostname: string | null): void
+    prefetchDns(hostname: string): void
     /**
      * Register `scheme` in `context`.
      * 
@@ -9526,7 +9526,7 @@ export interface WebContext {
      * @param scheme the network scheme to register
      * @param callback a #WebKitURISchemeRequestCallback
      */
-    registerUriScheme(scheme: string | null, callback: URISchemeRequestCallback): void
+    registerUriScheme(scheme: string, callback: URISchemeRequestCallback): void
     /**
      * Send `message` to all web process extensions associated to `context`.
      * 
@@ -9538,7 +9538,7 @@ export interface WebContext {
      * Set an additional directory where WebKit will look for plugins.
      * @param directory the directory to add
      */
-    setAdditionalPluginsDirectory(directory: string | null): void
+    setAdditionalPluginsDirectory(directory: string): void
     /**
      * Set whether automation is allowed in `context`.
      * 
@@ -9588,7 +9588,7 @@ export interface WebContext {
      * since the #WebKitWebsiteDataManager is immutable.
      * @param directory the directory to set
      */
-    setDiskCacheDirectory(directory: string | null): void
+    setDiskCacheDirectory(directory: string): void
     /**
      * Set the directory path to store the favicons database.
      * 
@@ -9689,7 +9689,7 @@ export interface WebContext {
      * before anything is loaded.
      * @param directory the directory to add
      */
-    setWebExtensionsDirectory(directory: string | null): void
+    setWebExtensionsDirectory(directory: string): void
     /**
      * Set user data to be passed to web process extensions on initialization.
      * 
@@ -9986,7 +9986,7 @@ export interface WebInspector {
      * instead of a URI.
      * @returns the URI that is currently being inspected or %NULL
      */
-    getInspectedUri(): string | null
+    getInspectedUri(): string
     /**
      * Get the #WebKitWebViewBase used to display the inspector.
      * 
@@ -10188,7 +10188,7 @@ export interface WebResource {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Finish an asynchronous operation started with webkit_web_resource_get_data().
      * @param result a #GAsyncResult
@@ -10234,7 +10234,7 @@ export interface WebResource {
      * signal of `resource`.
      * @returns the current active URI of @resource
      */
-    getUri(): string | null
+    getUri(): string
 
     // Own signals of WebKit2-4.1.WebKit2.WebResource
 
@@ -10915,7 +10915,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the script finished
      */
-    callAsyncJavascriptFunction(body: string | null, length: number, arguments_: GLib.Variant | null, worldName: string | null, sourceUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAsyncJavascriptFunction(body: string, length: number, arguments_: GLib.Variant | null, worldName: string | null, sourceUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_call_async_javascript_function().
      * @param result a #GAsyncResult
@@ -10931,7 +10931,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    canExecuteEditingCommand(command: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    canExecuteEditingCommand(command: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_can_execute_editing_command().
      * @param result a #GAsyncResult
@@ -10953,13 +10953,13 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param mimeType a MIME type
      * @returns %TRUE if the MIME type @mime_type can be displayed or %FALSE otherwise
      */
-    canShowMimeType(mimeType: string | null): boolean
+    canShowMimeType(mimeType: string): boolean
     /**
      * Requests downloading of the specified URI string for `web_view`.
      * @param uri the URI to download
      * @returns a new #WebKitDownload representing    the download operation.
      */
-    downloadUri(uri: string | null): Download
+    downloadUri(uri: string): Download
     /**
      * Asynchronously evaluate `script` in the script world with name `world_name` of the main frame current context in `web_view`.
      * If `world_name` is %NULL, the default world is used. Any value that is not %NULL is a distinct world.
@@ -11022,7 +11022,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the script finished
      */
-    evaluateJavascript(script: string | null, length: number, worldName: string | null, sourceUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    evaluateJavascript(script: string, length: number, worldName: string | null, sourceUri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_evaluate_javascript().
      * @param result a #GAsyncResult
@@ -11036,7 +11036,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * it's possible to execute the command.
      * @param command the command to execute
      */
-    executeEditingCommand(command: string | null): void
+    executeEditingCommand(command: string): void
     /**
      * Request to execute the given `command` with `argument` for `web_view`.
      * 
@@ -11046,7 +11046,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param command the command to execute
      * @param argument the command argument
      */
-    executeEditingCommandWithArgument(command: string | null, argument: string | null): void
+    executeEditingCommandWithArgument(command: string, argument: string): void
     /**
      * Get the presentation type of #WebKitWebView when created for automation.
      * @returns a #WebKitAutomationBrowsingContextPresentation.
@@ -11081,7 +11081,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * Returns the current custom character encoding name of `web_view`.
      * @returns the current custom character encoding name or %NULL if no    custom character encoding has been set.
      */
-    getCustomCharset(): string | null
+    getCustomCharset(): string
     /**
      * Gets the configured default Content-Security-Policy.
      * @returns The default policy or %NULL
@@ -11222,7 +11222,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * be notified when the title has been received.
      * @returns The main frame document title of @web_view.
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Retrieves the #GTlsCertificate associated with the main resource of `web_view`.
      * 
@@ -11298,7 +11298,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * signal of `web_view`.
      * @returns the current active URI of @web_view or %NULL    if nothing has been loaded yet.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Gets the user content manager associated to `web_view`.
      * @returns the #WebKitUserContentManager associated with the view
@@ -11387,7 +11387,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param contentUri the URI for the alternate page content
      * @param baseUri the base URI for relative locations or %NULL
      */
-    loadAlternateHtml(content: string | null, contentUri: string | null, baseUri: string | null): void
+    loadAlternateHtml(content: string, contentUri: string, baseUri: string | null): void
     /**
      * Load the specified `bytes` into `web_view` using the given `mime_type` and `encoding`.
      * 
@@ -11415,7 +11415,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param content The HTML string to load
      * @param baseUri The base URI for relative locations or %NULL
      */
-    loadHtml(content: string | null, baseUri: string | null): void
+    loadHtml(content: string, baseUri: string | null): void
     /**
      * Load the specified `plain_text` string into `web_view`.
      * 
@@ -11423,7 +11423,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * operation by connecting to #WebKitWebView::load-changed signal.
      * @param plainText The plain text to load
      */
-    loadPlainText(plainText: string | null): void
+    loadPlainText(plainText: string): void
     /**
      * Requests loading of the specified #WebKitURIRequest.
      * 
@@ -11439,7 +11439,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * #WebKitWebView::load-changed signal.
      * @param uri an URI string
      */
-    loadUri(uri: string | null): void
+    loadUri(uri: string): void
     /**
      * Reloads the current contents of `web_view`.
      * 
@@ -11517,7 +11517,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the script finished
      */
-    runAsyncJavascriptFunctionInWorld(body: string | null, arguments_: GLib.Variant, worldName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    runAsyncJavascriptFunctionInWorld(body: string, arguments_: GLib.Variant, worldName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Asynchronously run `script` in the context of the current page in `web_view`.
      * 
@@ -11529,7 +11529,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the script finished
      */
-    runJavascript(script: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    runJavascript(script: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript().
      * 
@@ -11594,7 +11594,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the script finished
      */
-    runJavascriptFromGresource(resource: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    runJavascriptFromGresource(resource: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_from_gresource().
      * 
@@ -11616,7 +11616,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param cancellable a #GCancellable or %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the script finished
      */
-    runJavascriptInWorld(script: string | null, worldName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    runJavascriptInWorld(script: string, worldName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous operation started with webkit_web_view_run_javascript_in_world().
      * @param result a #GAsyncResult
@@ -11856,13 +11856,13 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11875,13 +11875,13 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11894,7 +11894,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11903,7 +11903,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -11915,7 +11915,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -11955,8 +11955,8 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
     insecureContentDetected(event: InsecureContentEvent): void
     leaveFullscreen(): boolean
     loadChanged(loadEvent: LoadEvent): void
-    loadFailed(loadEvent: LoadEvent, failingUri: string | null, error: GLib.Error): boolean
-    loadFailedWithTlsErrors(failingUri: string | null, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean
+    loadFailed(loadEvent: LoadEvent, failingUri: string, error: GLib.Error): boolean
+    loadFailedWithTlsErrors(failingUri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean
     mouseTargetChanged(hitTestResult: HitTestResult, modifiers: number): void
     permissionRequest(permissionRequest: PermissionRequest): boolean
     print(printOperation: PrintOperation): boolean
@@ -12591,13 +12591,13 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -12610,13 +12610,13 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -12629,7 +12629,7 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -12638,7 +12638,7 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -12650,7 +12650,7 @@ export interface WebViewBase extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -12942,12 +12942,12 @@ export interface WebsiteDataAccessPermissionRequest extends PermissionRequest {
      * Get the current domain being browsed.
      * @returns the current domain name
      */
-    getCurrentDomain(): string | null
+    getCurrentDomain(): string
     /**
      * Get the domain requesting permission to access its cookies while browsing the current domain.
      * @returns the requesting domain name
      */
-    getRequestingDomain(): string | null
+    getRequestingDomain(): string
 
     // Class property signals of WebKit2-4.1.WebKit2.WebsiteDataAccessPermissionRequest
 
@@ -13827,7 +13827,7 @@ export interface ApplicationInfo {
      * called with a valid name, this returns g_get_prgname().
      * @returns the application name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the application version previously set with webkit_application_info_set_version().
      */
@@ -13847,7 +13847,7 @@ export interface ApplicationInfo {
      * g_get_prgname() will be used.
      * @param name the application name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Set the application version.
      * 
@@ -14135,7 +14135,7 @@ export interface Credential {
      * Get the password currently held by this #WebKitCredential.
      * @returns The password stored in the #WebKitCredential.
      */
-    getPassword(): string | null
+    getPassword(): string
     /**
      * Get the persistence mode currently held by this #WebKitCredential.
      * @returns The #WebKitCredentialPersistence stored in the #WebKitCredential.
@@ -14145,7 +14145,7 @@ export interface Credential {
      * Get the username currently held by this #WebKitCredential.
      * @returns The username stored in the #WebKitCredential.
      */
-    getUsername(): string | null
+    getUsername(): string
     /**
      * Determine whether this credential has a password stored.
      * @returns %TRUE if the credential has a password or %FALSE otherwise.
@@ -14173,7 +14173,7 @@ export class Credential {
      * @param persistence The #WebKitCredentialPersistence of the new credential
      * @returns A #WebKitCredential.
      */
-    constructor(username: string | null, password: string | null, persistence: CredentialPersistence) 
+    constructor(username: string, password: string, persistence: CredentialPersistence) 
     /**
      * Create a new credential from the provided username, password and persistence mode.
      * @constructor 
@@ -14182,7 +14182,7 @@ export class Credential {
      * @param persistence The #WebKitCredentialPersistence of the new credential
      * @returns A #WebKitCredential.
      */
-    static new(username: string | null, password: string | null, persistence: CredentialPersistence): Credential
+    static new(username: string, password: string, persistence: CredentialPersistence): Credential
     /**
      * Create a new credential from the `certificate` and persistence mode.
      * 
@@ -14202,7 +14202,7 @@ export class Credential {
      * @param persistence The #WebKitCredentialPersistence of the new credential
      * @returns A #WebKitCredential.
      */
-    static newForCertificatePin(pin: string | null, persistence: CredentialPersistence): Credential
+    static newForCertificatePin(pin: string, persistence: CredentialPersistence): Credential
 }
 
 export interface DeviceInfoPermissionRequestClass {
@@ -14234,7 +14234,7 @@ export interface DownloadClass {
     // Own fields of WebKit2-4.1.WebKit2.DownloadClass
 
     parentClass: GObject.ObjectClass
-    decideDestination: (download: Download, suggestedFilename: string | null) => boolean
+    decideDestination: (download: Download, suggestedFilename: string) => boolean
 }
 
 export abstract class DownloadClass {
@@ -14313,7 +14313,7 @@ export interface Feature {
      * to use the category to group related features together.
      * @returns Feature category.
      */
-    getCategory(): string | null
+    getCategory(): string
     /**
      * Gets whether the feature is enabled by default.
      * 
@@ -14342,7 +14342,7 @@ export interface Feature {
      * Gets a string that uniquely identifies the `feature`.
      * @returns The identifier string for the feature.
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * Gets a short name for the `feature`.
      * 
@@ -14710,7 +14710,7 @@ export interface ITPFirstParty {
      * Get the domain name of `itp_first_party`.
      * @returns the domain name
      */
-    getDomain(): string | null
+    getDomain(): string
     /**
      * Get the last time a #WebKitITPThirdParty has been seen under `itp_first_party`.
      * 
@@ -14763,7 +14763,7 @@ export interface ITPThirdParty {
      * Get the domain name of `itp_third_party`.
      * @returns the domain name
      */
-    getDomain(): string | null
+    getDomain(): string
     /**
      * Get the list of #WebKitITPFirstParty under which `itp_third_party` has been seen.
      * @returns a #GList of #WebKitITPFirstParty
@@ -14805,7 +14805,7 @@ export interface InputMethodContextClass {
     preeditStarted: (context: InputMethodContext) => void
     preeditChanged: (context: InputMethodContext) => void
     preeditFinished: (context: InputMethodContext) => void
-    committed: (context: InputMethodContext, text: string | null) => void
+    committed: (context: InputMethodContext, text: string) => void
     deleteSurrounding: (context: InputMethodContext, offset: number, nChars: number) => void
     setEnablePreedit: (context: InputMethodContext, enabled: boolean) => void
     getPreedit: (context: InputMethodContext) => [ /* text */ string | null, /* underlines */ InputMethodUnderline[] | null, /* cursorOffset */ number | null ]
@@ -14813,7 +14813,7 @@ export interface InputMethodContextClass {
     notifyFocusIn: (context: InputMethodContext) => void
     notifyFocusOut: (context: InputMethodContext) => void
     notifyCursorArea: (context: InputMethodContext, x: number, y: number, width: number, height: number) => void
-    notifySurrounding: (context: InputMethodContext, text: string | null, length: number, cursorIndex: number, selectionIndex: number) => void
+    notifySurrounding: (context: InputMethodContext, text: string, length: number, cursorIndex: number, selectionIndex: number) => void
     reset: (context: InputMethodContext) => void
 }
 
@@ -15125,7 +15125,7 @@ export interface MimeInfo {
      * Gets the MIME type.
      * @returns MIME type, as a string.
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Atomically increments the reference count of `info` by one.
      * 
@@ -15266,7 +15266,7 @@ export interface NetworkProxySettings {
      * @param scheme the URI scheme to add a proxy for
      * @param proxyUri the proxy URI to use for `uri_scheme`
      */
-    addProxyForScheme(scheme: string | null, proxyUri: string | null): void
+    addProxyForScheme(scheme: string, proxyUri: string): void
     /**
      * Make a copy of the #WebKitNetworkProxySettings.
      * @returns A copy of passed in #WebKitNetworkProxySettings
@@ -15451,12 +15451,12 @@ export interface OptionMenuItem {
      * Get the label of a #WebKitOptionMenuItem.
      * @returns The label of @item.
      */
-    getLabel(): string | null
+    getLabel(): string
     /**
      * Get the tooltip of a #WebKitOptionMenuItem.
      * @returns The tooltip of @item, or %NULL.
      */
-    getTooltip(): string | null
+    getTooltip(): string
     /**
      * Whether a #WebKitOptionMenuItem is enabled.
      * @returns %TRUE if the @item is enabled or %FALSE otherwise.
@@ -15535,7 +15535,7 @@ export interface PermissionStateQuery {
      * Get the permission name for which access is being queried.
      * @returns the permission name for @query
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the permission origin for which access is being queried.
      * @returns A #WebKitSecurityOrigin representing the origin from which the @query was emitted.
@@ -15757,7 +15757,7 @@ export interface ScriptDialog {
      * Get the message of a #WebKitScriptDialog.
      * @returns the message of @dialog.
      */
-    getMessage(): string | null
+    getMessage(): string
     /**
      * Get the default text of a #WebKitScriptDialog of type %WEBKIT_SCRIPT_DIALOG_PROMPT.
      * 
@@ -15765,7 +15765,7 @@ export interface ScriptDialog {
      * %WEBKIT_SCRIPT_DIALOG_PROMPT.
      * @returns the default text of @dialog
      */
-    promptGetDefaultText(): string | null
+    promptGetDefaultText(): string
     /**
      * Set the text entered by the user in the dialog.
      * 
@@ -15777,7 +15777,7 @@ export interface ScriptDialog {
      * %WEBKIT_SCRIPT_DIALOG_PROMPT.
      * @param text the text to set
      */
-    promptSetText(text: string | null): void
+    promptSetText(text: string): void
     /**
      * Atomically increments the reference count of `dialog` by one.
      * 
@@ -15821,7 +15821,7 @@ export interface ScriptMessageReply {
      * Reply to a script message with an error message.
      * @param errorMessage An error message to return as specified by the user's script message
      */
-    returnErrorMessage(errorMessage: string | null): void
+    returnErrorMessage(errorMessage: string): void
     /**
      * Reply to a script message with a value.
      * 
@@ -15969,7 +15969,7 @@ export class SecurityOrigin {
      * @param port The port number for the new origin, or 0 to indicate the        default port for `protocol`
      * @returns A #WebKitSecurityOrigin.
      */
-    constructor(protocol: string | null, host: string | null, port: number) 
+    constructor(protocol: string, host: string, port: number) 
     /**
      * Create a new security origin from the provided protocol, host and
      * port.
@@ -15979,7 +15979,7 @@ export class SecurityOrigin {
      * @param port The port number for the new origin, or 0 to indicate the        default port for `protocol`
      * @returns A #WebKitSecurityOrigin.
      */
-    static new(protocol: string | null, host: string | null, port: number): SecurityOrigin
+    static new(protocol: string, host: string, port: number): SecurityOrigin
     /**
      * Create a new security origin from the provided.
      * 
@@ -15990,7 +15990,7 @@ export class SecurityOrigin {
      * @param uri The URI for the new origin
      * @returns A #WebKitSecurityOrigin.
      */
-    static newForUri(uri: string | null): SecurityOrigin
+    static newForUri(uri: string): SecurityOrigin
 }
 
 export interface SettingsClass {
@@ -16124,7 +16124,7 @@ export interface UserContentFilter {
      * #WebKitUserContentFilterStore.
      * @returns the identifier for the filter
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * Atomically increments the reference count of `user_content_filter` by one.
      * 
@@ -16300,7 +16300,7 @@ export class UserScript {
      * @param blockList A block_list of URI patterns or %NULL
      * @returns A new #WebKitUserScript
      */
-    constructor(source: string | null, injectedFrames: UserContentInjectedFrames, injectionTime: UserScriptInjectionTime, allowList: string[] | null, blockList: string[] | null) 
+    constructor(source: string, injectedFrames: UserContentInjectedFrames, injectionTime: UserScriptInjectionTime, allowList: string[] | null, blockList: string[] | null) 
     /**
      * Creates a new user script.
      * 
@@ -16319,7 +16319,7 @@ export class UserScript {
      * @param blockList A block_list of URI patterns or %NULL
      * @returns A new #WebKitUserScript
      */
-    static new(source: string | null, injectedFrames: UserContentInjectedFrames, injectionTime: UserScriptInjectionTime, allowList: string[] | null, blockList: string[] | null): UserScript
+    static new(source: string, injectedFrames: UserContentInjectedFrames, injectionTime: UserScriptInjectionTime, allowList: string[] | null, blockList: string[] | null): UserScript
     /**
      * Creates a new user script for script world with name `world_name`.
      * 
@@ -16333,7 +16333,7 @@ export class UserScript {
      * @param blockList A block_list of URI patterns or %NULL
      * @returns A new #WebKitUserScript
      */
-    static newForWorld(source: string | null, injectedFrames: UserContentInjectedFrames, injectionTime: UserScriptInjectionTime, worldName: string | null, allowList: string[] | null, blockList: string[] | null): UserScript
+    static newForWorld(source: string, injectedFrames: UserContentInjectedFrames, injectionTime: UserScriptInjectionTime, worldName: string, allowList: string[] | null, blockList: string[] | null): UserScript
 }
 
 export interface UserStyleSheet {
@@ -16387,7 +16387,7 @@ export class UserStyleSheet {
      * @param blockList A block_list of URI patterns or %NULL
      * @returns A new #WebKitUserStyleSheet
      */
-    constructor(source: string | null, injectedFrames: UserContentInjectedFrames, level: UserStyleLevel, allowList: string[] | null, blockList: string[] | null) 
+    constructor(source: string, injectedFrames: UserContentInjectedFrames, level: UserStyleLevel, allowList: string[] | null, blockList: string[] | null) 
     /**
      * Creates a new user style sheet.
      * 
@@ -16406,7 +16406,7 @@ export class UserStyleSheet {
      * @param blockList A block_list of URI patterns or %NULL
      * @returns A new #WebKitUserStyleSheet
      */
-    static new(source: string | null, injectedFrames: UserContentInjectedFrames, level: UserStyleLevel, allowList: string[] | null, blockList: string[] | null): UserStyleSheet
+    static new(source: string, injectedFrames: UserContentInjectedFrames, level: UserStyleLevel, allowList: string[] | null, blockList: string[] | null): UserStyleSheet
     /**
      * Creates a new user style sheet for script world.
      * 
@@ -16421,7 +16421,7 @@ export class UserStyleSheet {
      * @param blockList A block_list of URI patterns or %NULL
      * @returns A new #WebKitUserStyleSheet
      */
-    static newForWorld(source: string | null, injectedFrames: UserContentInjectedFrames, level: UserStyleLevel, worldName: string | null, allowList: string[] | null, blockList: string[] | null): UserStyleSheet
+    static newForWorld(source: string, injectedFrames: UserContentInjectedFrames, level: UserStyleLevel, worldName: string, allowList: string[] | null, blockList: string[] | null): UserStyleSheet
 }
 
 export interface WebContextClass {
@@ -16531,7 +16531,7 @@ export interface WebViewClass {
 
     parent: WebViewBaseClass
     loadChanged: (webView: WebView, loadEvent: LoadEvent) => void
-    loadFailed: (webView: WebView, loadEvent: LoadEvent, failingUri: string | null, error: GLib.Error) => boolean
+    loadFailed: (webView: WebView, loadEvent: LoadEvent, failingUri: string, error: GLib.Error) => boolean
     readyToShow: (webView: WebView) => void
     runAsModal: (webView: WebView) => void
     close: (webView: WebView) => void
@@ -16550,7 +16550,7 @@ export interface WebViewClass {
     insecureContentDetected: (webView: WebView, event: InsecureContentEvent) => void
     webProcessCrashed: (webView: WebView) => boolean
     authenticate: (webView: WebView, request: AuthenticationRequest) => boolean
-    loadFailedWithTlsErrors: (webView: WebView, failingUri: string | null, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
+    loadFailedWithTlsErrors: (webView: WebView, failingUri: string, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
     showNotification: (webView: WebView, notification: Notification) => boolean
     runColorChooser: (webView: WebView, request: ColorChooserRequest) => boolean
     showOptionMenu: (webView: WebView, menu: OptionMenu, event: Gdk.Event, rectangle: Gdk.Rectangle) => boolean
@@ -16643,7 +16643,7 @@ export interface WebsiteData {
      * the name "Local files".
      * @returns the website name of @website_data.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the size of the data of types `types` in a #WebKitWebsiteData.
      * 

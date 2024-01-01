@@ -78,12 +78,12 @@ export const TRANSACTION_NO_BACKEND_SIGNALS: number
  * Does not remove the directory itself, only the contents.
  * @param directory 
  */
-export function directoryRemoveContents(directory: string | null): boolean
+export function directoryRemoveContents(directory: string): boolean
 export function getResource(): Gio.Resource
-export function hintEnumFromString(hint: string | null): HintEnum
-export function hintEnumToString(hint: HintEnum): string | null
-export function loadIntrospection(filename: string | null): Gio.DBusNodeInfo
-export function pluginGetDescription(): string | null
+export function hintEnumFromString(hint: string): HintEnum
+export function hintEnumToString(hint: HintEnum): string
+export function loadIntrospection(filename: string): Gio.DBusNodeInfo
+export function pluginGetDescription(): string
 /**
  * This function is a much safer way of doing strlen as it checks for NULL and
  * a stupidly long string.
@@ -91,28 +91,28 @@ export function pluginGetDescription(): string | null
  * @param len The maximum length of the string
  * @returns the length of the string, or len if the string is too long.
  */
-export function strlen(text: string | null, len: number): number
+export function strlen(text: string, len: number): number
 /**
  * Converts a string into a signed integer value in a safe way.
  * @param text The text the convert
  * @param value The return numeric return value
  * @returns %TRUE if the string was converted correctly
  */
-export function strtoint(text: string | null, value: number): boolean
+export function strtoint(text: string, value: number): boolean
 /**
  * Converts a string into a unsigned integer value in a safe way.
  * @param text The text the convert
  * @param value The return numeric return value
  * @returns %TRUE if the string was converted correctly
  */
-export function strtouint(text: string | null, value: number): boolean
+export function strtouint(text: string, value: number): boolean
 /**
  * Converts a string into a unsigned integer value in a safe way.
  * @param text The text the convert
  * @param value The return numeric return value
  * @returns %TRUE if the string was converted correctly
  */
-export function strtouint64(text: string | null, value: number): boolean
+export function strtouint64(text: string, value: number): boolean
 /**
  * This function is a much safer way of doing "if (strlen (text) == 0))"
  * as it does not rely on text being NULL terminated. It's also much
@@ -121,7 +121,7 @@ export function strtouint64(text: string | null, value: number): boolean
  * @param text The text to check
  * @returns %TRUE if the string was converted correctly
  */
-export function strzero(text: string | null): boolean
+export function strzero(text: string): boolean
 export interface BackendFileChanged {
     (backend: Backend, data: any): void
 }
@@ -135,10 +135,10 @@ export interface PluginFunc {
     (plugin: Plugin): void
 }
 export interface PluginGetActionFunc {
-    (plugin: Plugin, transaction: Transaction, actionId: string | null): string | null
+    (plugin: Plugin, transaction: Transaction, actionId: string): string
 }
 export interface PluginGetDescFunc {
-    (): string | null
+    (): string
 }
 export interface PluginTransactionFunc {
     (plugin: Plugin, transaction: Transaction): void
@@ -165,15 +165,15 @@ export interface Backend {
 
     // Owm methods of PackageKitPlugin-1.0.PackageKitPlugin.Backend
 
-    acceptEula(eulaId: string | null): void
+    acceptEula(eulaId: string): void
     cancel(job: BackendJob): void
     dependsOn(job: BackendJob, filters: PackageKitGlib.Bitfield, packageIds: string | null, recursive: boolean): void
     destroy(): void
-    downloadPackages(job: BackendJob, packageIds: string | null, directory: string | null): void
+    downloadPackages(job: BackendJob, packageIds: string | null, directory: string): void
     getAcceptedEulaString(): string | null
-    getAuthor(): string | null
+    getAuthor(): string
     getCategories(job: BackendJob): void
-    getDescription(): string | null
+    getDescription(): string
     getDetails(job: BackendJob, packageIds: string | null): void
     getDetailsLocal(job: BackendJob, files: string | null): void
     getDistroUpgrades(job: BackendJob): void
@@ -182,7 +182,7 @@ export interface Backend {
     getFilters(): PackageKitGlib.Bitfield
     getGroups(): PackageKitGlib.Bitfield
     getMimeTypes(): string[]
-    getName(): string | null
+    getName(): string
     getPackages(job: BackendJob, filters: PackageKitGlib.Bitfield): void
     getRepoList(job: BackendJob, filters: PackageKitGlib.Bitfield): void
     getRoles(): PackageKitGlib.Bitfield
@@ -191,8 +191,8 @@ export interface Backend {
     implement(role: PackageKitGlib.RoleEnum): void
     installFiles(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield, fullPaths: string | null): void
     installPackages(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield, packageIds: string | null): void
-    installSignature(job: BackendJob, type: PackageKitGlib.SigTypeEnum, keyId: string | null, packageId: string | null): void
-    isEulaValid(eulaId: string | null): boolean
+    installSignature(job: BackendJob, type: PackageKitGlib.SigTypeEnum, keyId: string, packageId: string): void
+    isEulaValid(eulaId: string): boolean
     isImplemented(role: PackageKitGlib.RoleEnum): boolean
     isOnline(): boolean
     /**
@@ -207,10 +207,10 @@ export interface Backend {
     refreshCache(job: BackendJob, force: boolean): void
     removePackages(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield, packageIds: string | null, allowDeps: boolean, autoremove: boolean): void
     repairSystem(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield): void
-    repoEnable(job: BackendJob, repoId: string | null, enabled: boolean): void
+    repoEnable(job: BackendJob, repoId: string, enabled: boolean): void
     repoListChanged(): boolean
-    repoRemove(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield, repoId: string | null, autoremove: boolean): void
-    repoSetData(job: BackendJob, repoId: string | null, parameter: string | null, value: string | null): void
+    repoRemove(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield, repoId: string, autoremove: boolean): void
+    repoSetData(job: BackendJob, repoId: string, parameter: string, value: string): void
     requiredBy(job: BackendJob, filters: PackageKitGlib.Bitfield, packageIds: string | null, recursive: boolean): void
     resetJob(job: BackendJob): void
     resolve(job: BackendJob, filters: PackageKitGlib.Bitfield, packages: string | null): void
@@ -272,7 +272,7 @@ export interface Backend {
      */
     unload(): boolean
     updatePackages(job: BackendJob, transactionFlags: PackageKitGlib.Bitfield, packageIds: string | null): void
-    watchFile(filename: string | null, func: BackendFileChanged): boolean
+    watchFile(filename: string, func: BackendFileChanged): boolean
     whatProvides(job: BackendJob, filters: PackageKitGlib.Bitfield, search: string | null): void
 
     // Class property signals of PackageKitPlugin-1.0.PackageKitPlugin.Backend
@@ -302,7 +302,7 @@ export class Backend extends GObject.Object {
     constructor(conf: GLib.KeyFile) 
     static new(conf: GLib.KeyFile): Backend
     _init(config?: Backend.ConstructorProperties): void
-    static boolToString(value: boolean): string | null
+    static boolToString(value: boolean): string
     static initialize(conf: GLib.KeyFile, backend: Backend): void
 }
 
@@ -328,16 +328,16 @@ export interface BackendJob {
 
     // Owm methods of PackageKitPlugin-1.0.PackageKitPlugin.BackendJob
 
-    category(parentId: string | null, catId: string | null, name: string | null, summary: string | null, icon: string | null): void
-    details(packageId: string | null, summary: string | null, license: string | null, group: PackageKitGlib.GroupEnum, description: string | null, url: string | null, size: number): void
-    distroUpgrade(type: PackageKitGlib.DistroUpgradeEnum, name: string | null, summary: string | null): void
-    eulaRequired(eulaId: string | null, packageId: string | null, vendorName: string | null, licenseAgreement: string | null): void
+    category(parentId: string, catId: string, name: string, summary: string, icon: string): void
+    details(packageId: string, summary: string, license: string, group: PackageKitGlib.GroupEnum, description: string, url: string, size: number): void
+    distroUpgrade(type: PackageKitGlib.DistroUpgradeEnum, name: string, summary: string): void
+    eulaRequired(eulaId: string, packageId: string, vendorName: string, licenseAgreement: string): void
     /**
      * package_id is NULL when we are using this as a calback from DownloadPackages
      * @param packageId 
      * @param files 
      */
-    files(packageId: string | null, files: string | null): void
+    files(packageId: string, files: string | null): void
     finished(): void
     getAllowCancel(): boolean
     getBackend(): any
@@ -347,7 +347,7 @@ export interface BackendJob {
      * @returns the cache age in seconds, or 0 for unset or %G_MAXUINT for 'infinity'
      */
     getCacheAge(): number
-    getCmdline(): string | null
+    getCmdline(): string
     getExitCode(): PackageKitGlib.ExitEnum
     getFrontendSocket(): string | null
     getInteractive(): HintEnum
@@ -370,28 +370,28 @@ export interface BackendJob {
     getUserData(): any
     getVfuncEnabled(signalKind: BackendJobSignal): boolean
     hasSetErrorCode(): boolean
-    mediaChangeRequired(mediaType: PackageKitGlib.MediaTypeEnum, mediaId: string | null, mediaText: string | null): void
-    notImplementedYet(method: string | null): void
-    package(info: PackageKitGlib.InfoEnum, packageId: string | null, summary: string | null): void
-    repoDetail(repoId: string | null, description: string | null, enabled: boolean): void
-    repoSignatureRequired(packageId: string | null, repositoryName: string | null, keyUrl: string | null, keyUserid: string | null, keyId: string | null, keyFingerprint: string | null, keyTimestamp: string | null, type: PackageKitGlib.SigTypeEnum): void
-    requireRestart(restart: PackageKitGlib.RestartEnum, packageId: string | null): void
+    mediaChangeRequired(mediaType: PackageKitGlib.MediaTypeEnum, mediaId: string, mediaText: string): void
+    notImplementedYet(method: string): void
+    package(info: PackageKitGlib.InfoEnum, packageId: string, summary: string): void
+    repoDetail(repoId: string, description: string, enabled: boolean): void
+    repoSignatureRequired(packageId: string, repositoryName: string, keyUrl: string, keyUserid: string, keyId: string, keyFingerprint: string, keyTimestamp: string, type: PackageKitGlib.SigTypeEnum): void
+    requireRestart(restart: PackageKitGlib.RestartEnum, packageId: string): void
     reset(): void
     setAllowCancel(allowCancel: boolean): void
     setBackend(backend: any): void
     setBackground(background: HintEnum): void
     setCacheAge(cacheAge: number): void
-    setCmdline(cmdline: string | null): void
+    setCmdline(cmdline: string): void
     setDownloadSizeRemaining(downloadSizeRemaining: number): void
     /**
      * Should only be used internally, or from PkRunner when setting CANCELLED.
      * @param exit 
      */
     setExitCode(exit: PackageKitGlib.ExitEnum): void
-    setFrontendSocket(frontendSocket: string | null): void
+    setFrontendSocket(frontendSocket: string): void
     setInteractive(interactive: HintEnum): void
-    setItemProgress(packageId: string | null, status: PackageKitGlib.StatusEnum, percentage: number): void
-    setLocale(code: string | null): void
+    setItemProgress(packageId: string, status: PackageKitGlib.StatusEnum, percentage: number): void
+    setLocale(code: string): void
     /**
      * Set if your backend job currently locks the cache, so no other tool will
      * have write  access on it. (read-only transactions will still be permitted)
@@ -400,7 +400,7 @@ export interface BackendJob {
     setLocked(locked: boolean): void
     setParameters(params: GLib.Variant): void
     setPercentage(percentage: number): void
-    setProxy(proxyHttp: string | null, proxyHttps: string | null, proxyFtp: string | null, proxySocks: string | null, noProxy: string | null, pac: string | null): void
+    setProxy(proxyHttp: string, proxyHttps: string, proxyFtp: string, proxySocks: string, noProxy: string, pac: string): void
     setRole(role: PackageKitGlib.RoleEnum): void
     setSpeed(speed: number): void
     setStarted(started: boolean): void
@@ -415,7 +415,7 @@ export interface BackendJob {
      */
     setVfunc(signalKind: BackendJobSignal, vfunc: BackendJobVFunc): void
     threadCreate(func: BackendJobThreadFunc): boolean
-    updateDetail(packageId: string | null, updates: string | null, obsoletes: string | null, vendorUrls: string | null, bugzillaUrls: string | null, cveUrls: string | null, restart: PackageKitGlib.RestartEnum, updateText: string | null, changelog: string | null, state: PackageKitGlib.UpdateStateEnum, issued: string | null, updated: string | null): void
+    updateDetail(packageId: string, updates: string | null, obsoletes: string | null, vendorUrls: string | null, bugzillaUrls: string | null, cveUrls: string | null, restart: PackageKitGlib.RestartEnum, updateText: string, changelog: string, state: PackageKitGlib.UpdateStateEnum, issued: string, updated: string): void
     useBackground(): boolean
 
     // Class property signals of PackageKitPlugin-1.0.PackageKitPlugin.BackendJob
@@ -483,7 +483,7 @@ export interface Transaction {
      * Designed to be used by plugins.
      * @param mimeType 
      */
-    addSupportedContentType(mimeType: string | null): void
+    addSupportedContentType(mimeType: string): void
     cancelBg(): void
     getBackendJob(): BackendJob
     getConf(): GLib.KeyFile
@@ -492,7 +492,7 @@ export interface Transaction {
     getResults(): PackageKitGlib.Results
     getRole(): PackageKitGlib.RoleEnum
     getState(): TransactionState
-    getTid(): string | null
+    getTid(): string
     getTransactionFlags(): PackageKitGlib.Bitfield
     getUid(): number
     getValues(): string[]
@@ -569,7 +569,7 @@ export class Transaction extends GObject.Object {
     static new(conf: GLib.KeyFile, introspection: Gio.DBusNodeInfo): Transaction
     _init(config?: Transaction.ConstructorProperties): void
     static errorQuark(): GLib.Quark
-    static stateToString(state: TransactionState): string | null
+    static stateToString(state: TransactionState): string
 }
 
 export interface BackendClass {
@@ -636,7 +636,7 @@ export interface Plugin {
     transactionContentTypes(transaction: Transaction): void
     transactionFinishedEnd(transaction: Transaction): void
     transactionFinishedResults(transaction: Transaction): void
-    transactionGetAction(transaction: Transaction, actionId: string | null): string | null
+    transactionGetAction(transaction: Transaction, actionId: string): string
     transactionRun(transaction: Transaction): void
     transactionStarted(transaction: Transaction): void
 }
@@ -649,7 +649,7 @@ export class Plugin {
 
     // Constructors of PackageKitPlugin-1.0.PackageKitPlugin.Plugin
 
-    static getDescription(): string | null
+    static getDescription(): string
 }
 
 export interface PluginPrivate {

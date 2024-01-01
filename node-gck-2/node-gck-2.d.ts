@@ -159,7 +159,7 @@ function errorQuark(): GLib.Quark
  * @param rv The PKCS#11 return value to get a message for.
  * @returns The user readable message.
  */
-function messageFromRv(rv: number): string | null
+function messageFromRv(rv: number): string
 /**
  * Setup an enumerator for listing matching objects on the modules.
  * 
@@ -180,7 +180,7 @@ function modulesEnumerateObjects(modules: Module[], attrs: Attributes, sessionOp
  * @param sessionOptions Options from GckSessionOptions
  * @returns A new #GckEnumerator, or %NULL if an error occurs.
  */
-function modulesEnumerateUri(modules: Module[], uri: string | null, sessionOptions: SessionOptions): Enumerator
+function modulesEnumerateUri(modules: Module[], uri: string, sessionOptions: SessionOptions): Enumerator
 /**
  * Get a list of slots for across all of the modules.
  * @param modules The modules
@@ -217,7 +217,7 @@ function modulesInitializeRegisteredFinish(result: Gio.AsyncResult): Module[]
  * @param sessionOptions Options from GckSessionOptions
  * @returns A new #GckObject which should be released with g_object_unref(), or %NULL if no matching object was found.
  */
-function modulesObjectForUri(modules: Module[], uri: string | null, sessionOptions: SessionOptions): Object | null
+function modulesObjectForUri(modules: Module[], uri: string, sessionOptions: SessionOptions): Object | null
 /**
  * Find objects that match a URI.
  * 
@@ -228,21 +228,21 @@ function modulesObjectForUri(modules: Module[], uri: string | null, sessionOptio
  * @param sessionOptions Options from GckSessionOptions
  * @returns A (possibly empty) list of `Gck.Object`s.
  */
-function modulesObjectsForUri(modules: Module[], uri: string | null, sessionOptions: SessionOptions): Object[]
+function modulesObjectsForUri(modules: Module[], uri: string, sessionOptions: SessionOptions): Object[]
 /**
  * Lookup a token that matches the URI.
  * @param modules The modules
  * @param uri The URI that the token must match
  * @returns A newly allocated #GckSlot or %NULL if no such token was found.
  */
-function modulesTokenForUri(modules: Module[], uri: string | null): Slot
+function modulesTokenForUri(modules: Module[], uri: string): Slot
 /**
  * Lookup a token that matches the URI.
  * @param modules The modules
  * @param uri The URI that the token must match
  * @returns A list of newly allocated #GckSlot objects.
  */
-function modulesTokensForUri(modules: Module[], uri: string | null): Slot[]
+function modulesTokensForUri(modules: Module[], uri: string): Slot[]
 /**
  * Initialize a list of GckObject from raw PKCS#11 handles. The handles argument must contain
  * contiguous CK_OBJECT_HANDLE handles in an array.
@@ -271,7 +271,7 @@ function slotsEnumerateObjects(slots: Slot[], match: Attributes, options: Sessio
  * @param flags the context in which the URI will be used.
  * @returns a newly allocated #GckUriData; which should be          freed with gck_uri_data_free()
  */
-function uriDataParse(string: string | null, flags: UriFlags): UriData
+function uriDataParse(string: string, flags: UriFlags): UriData
 function uriErrorQuark(): GLib.Quark
 /**
  * Convert `CK_BBOOL` type memory to a boolean.
@@ -382,13 +382,13 @@ interface ObjectCache extends Object {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
 
     // Own virtual methods of Gck-2.Gck.ObjectCache
 
@@ -692,7 +692,7 @@ interface Module {
      * usually reflects the path passed to [func`Module`.initialize].
      * @returns The path, do not modify or free this value.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Get the GckSlot objects for a given module.
      * @param tokenPresent Whether to limit only to slots with a token present.
@@ -769,7 +769,7 @@ class Module extends GObject.Object {
      * @param cancellable optional cancellation object
      * @returns The loaded PKCS#11 module or %NULL if failed.
      */
-    static initialize(path: string | null, cancellable: Gio.Cancellable | null): Module
+    static initialize(path: string, cancellable: Gio.Cancellable | null): Module
     /**
      * Asynchronously load and initialize a PKCS#11 module represented by a
      * [class`Module]` object.
@@ -777,7 +777,7 @@ class Module extends GObject.Object {
      * @param cancellable optional cancellation object
      * @param callback a callback which will be called when the operation completes
      */
-    static initializeAsync(path: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static initializeAsync(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous initialize operation.
      * @param result the asynchronous result
@@ -939,7 +939,7 @@ interface Object {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Get the data for the specified attribute from the object.
      * 
@@ -2418,7 +2418,7 @@ class Attribute {
      * @param value the null-terminated string value of the attribute
      * @returns the new attribute; when done with the attribute u          gck_attribute_free() to free it
      */
-    static newString(attrType: number, value: string | null): Attribute
+    static newString(attrType: number, value: string): Attribute
     /**
      * Initialize a PKCS#11 attribute to a unsigned long. This will result
      * in a `CK_ULONG` attribute from the PKCS#11 specs.
@@ -2824,7 +2824,7 @@ interface Builder {
      * @param attrType the new attribute type
      * @param value the attribute value
      */
-    setString(attrType: number, value: string | null): void
+    setString(attrType: number, value: string): void
     /**
      * Set an attribute on the builder for the unsigned long `value`.
      * If an attribute with `attr_type` already exists in the builder then it is
@@ -3537,7 +3537,7 @@ class UriData {
      * @param flags the context in which the URI will be used.
      * @returns a newly allocated #GckUriData; which should be          freed with gck_uri_data_free()
      */
-    static parse(string: string | null, flags: UriFlags): UriData
+    static parse(string: string, flags: UriFlags): UriData
 }
 
 }

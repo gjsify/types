@@ -613,44 +613,44 @@ export enum WebDAVResourceSupports {
  * The "cache-dir" property indicates the backend's local directory for
  * cached data.
  */
-export const CLIENT_BACKEND_PROPERTY_CACHE_DIR: string | null
+export const CLIENT_BACKEND_PROPERTY_CACHE_DIR: string
 /**
  * The "capabilities" property is a comma-separated list of capabilities
  * supported by the backend.  The preferred method of retrieving and working
  * with capabilities is e_client_get_capabilities() and
  * e_client_check_capability().
  */
-export const CLIENT_BACKEND_PROPERTY_CAPABILITIES: string | null
+export const CLIENT_BACKEND_PROPERTY_CAPABILITIES: string
 /**
  * The "online" property is "TRUE" when the client is fully opened and
  * online, "FALSE" at all other times.  See also e_client_is_online().
  */
-export const CLIENT_BACKEND_PROPERTY_ONLINE: string | null
+export const CLIENT_BACKEND_PROPERTY_ONLINE: string
 /**
  * The "opened" property is "TRUE" when the client is fully opened,
  * "FALSE" at all other times.
  */
-export const CLIENT_BACKEND_PROPERTY_OPENED: string | null
+export const CLIENT_BACKEND_PROPERTY_OPENED: string
 /**
  * The "opening" property is "TRUE" when the client is in the process of
  * opening, "FALSE" at all other times.
  */
-export const CLIENT_BACKEND_PROPERTY_OPENING: string | null
+export const CLIENT_BACKEND_PROPERTY_OPENING: string
 /**
  * The "online" property is "TRUE" if the backend has only read access
  * to its data, "FALSE" if the backend can modify its data.  See also
  * e_client_is_readonly().
  */
-export const CLIENT_BACKEND_PROPERTY_READONLY: string | null
+export const CLIENT_BACKEND_PROPERTY_READONLY: string
 /**
  * The current overall revision string, this can be used as
  * a quick check to see if data has changed at all since the
  * last time the revision was observed.
  */
-export const CLIENT_BACKEND_PROPERTY_REVISION: string | null
-export const DEBUG_LOG_DOMAIN_CAL_QUERIES: string | null
-export const DEBUG_LOG_DOMAIN_GLOG: string | null
-export const DEBUG_LOG_DOMAIN_USER: string | null
+export const CLIENT_BACKEND_PROPERTY_REVISION: string
+export const DEBUG_LOG_DOMAIN_CAL_QUERIES: string
+export const DEBUG_LOG_DOMAIN_GLOG: string
+export const DEBUG_LOG_DOMAIN_USER: string
 /**
  * The major version number of the Evolution-Data-Server library.  Like
  * eds_major_version(), but from the headers used at application compile
@@ -677,17 +677,17 @@ export const EDS_MINOR_VERSION: number
  * to e_network_monitor_set_gio_name(), which is used to report
  * the network as always reachable.
  */
-export const NETWORK_MONITOR_ALWAYS_ONLINE_NAME: string | null
-export const OAUTH2_SECRET_ACCESS_TOKEN: string | null
-export const OAUTH2_SECRET_EXPIRES_AFTER: string | null
-export const OAUTH2_SECRET_REFRESH_TOKEN: string | null
+export const NETWORK_MONITOR_ALWAYS_ONLINE_NAME: string
+export const OAUTH2_SECRET_ACCESS_TOKEN: string
+export const OAUTH2_SECRET_EXPIRES_AFTER: string
+export const OAUTH2_SECRET_REFRESH_TOKEN: string
 /**
  * A name of the named parameter used for passwords in credentials,
  * used to authenticate users with e_source_invoke_authenticate_sync()
  * and e_source_invoke_authenticate(). The named parameter is optional,
  * different authentication methods can use different names.
  */
-export const SOURCE_CREDENTIAL_PASSWORD: string | null
+export const SOURCE_CREDENTIAL_PASSWORD: string
 /**
  * A name of the named parameter used for SSL/TLS trust in credentials,
  * used to authenticate users with e_source_invoke_authenticate_sync()
@@ -701,210 +701,210 @@ export const SOURCE_CREDENTIAL_PASSWORD: string | null
  * corresponding ESource contain a WebDAV extension and the key
  * is not part of the credentials already.
  */
-export const SOURCE_CREDENTIAL_SSL_TRUST: string | null
+export const SOURCE_CREDENTIAL_SSL_TRUST: string
 /**
  * A name of the named parameter used for usernames in credentials,
  * used to authenticate users with e_source_invoke_authenticate_sync()
  * and e_source_invoke_authenticate(). The named parameter is optional,
  * different authentication methods can use different names.
  */
-export const SOURCE_CREDENTIAL_USERNAME: string | null
+export const SOURCE_CREDENTIAL_USERNAME: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceAddressBook.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_ADDRESS_BOOK: string | null
+export const SOURCE_EXTENSION_ADDRESS_BOOK: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceAlarms.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_ALARMS: string | null
+export const SOURCE_EXTENSION_ALARMS: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceAuthentication.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_AUTHENTICATION: string | null
+export const SOURCE_EXTENSION_AUTHENTICATION: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceAutocomplete.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_AUTOCOMPLETE: string | null
+export const SOURCE_EXTENSION_AUTOCOMPLETE: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceAutoconfig.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_AUTOCONFIG: string | null
+export const SOURCE_EXTENSION_AUTOCONFIG: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceCalendar.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_CALENDAR: string | null
+export const SOURCE_EXTENSION_CALENDAR: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceCollection.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_COLLECTION: string | null
+export const SOURCE_EXTENSION_COLLECTION: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceContacts.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_CONTACTS_BACKEND: string | null
+export const SOURCE_EXTENSION_CONTACTS_BACKEND: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceGoa.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_GOA: string | null
+export const SOURCE_EXTENSION_GOA: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceLDAP.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_LDAP_BACKEND: string | null
+export const SOURCE_EXTENSION_LDAP_BACKEND: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceLocal.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_LOCAL_BACKEND: string | null
+export const SOURCE_EXTENSION_LOCAL_BACKEND: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMailAccount.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MAIL_ACCOUNT: string | null
+export const SOURCE_EXTENSION_MAIL_ACCOUNT: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMailComposition.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MAIL_COMPOSITION: string | null
+export const SOURCE_EXTENSION_MAIL_COMPOSITION: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMailIdentity.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MAIL_IDENTITY: string | null
+export const SOURCE_EXTENSION_MAIL_IDENTITY: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMailSignature.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MAIL_SIGNATURE: string | null
+export const SOURCE_EXTENSION_MAIL_SIGNATURE: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMailSubmission.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MAIL_SUBMISSION: string | null
+export const SOURCE_EXTENSION_MAIL_SUBMISSION: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMailTransport.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MAIL_TRANSPORT: string | null
+export const SOURCE_EXTENSION_MAIL_TRANSPORT: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMDN.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MDN: string | null
+export const SOURCE_EXTENSION_MDN: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceMemoList.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_MEMO_LIST: string | null
+export const SOURCE_EXTENSION_MEMO_LIST: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceOffline.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_OFFLINE: string | null
+export const SOURCE_EXTENSION_OFFLINE: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceOpenPGP.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_OPENPGP: string | null
+export const SOURCE_EXTENSION_OPENPGP: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceProxy.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_PROXY: string | null
+export const SOURCE_EXTENSION_PROXY: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceRefresh.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_REFRESH: string | null
+export const SOURCE_EXTENSION_REFRESH: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceResource.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_RESOURCE: string | null
+export const SOURCE_EXTENSION_RESOURCE: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceRevisionGuards.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_REVISION_GUARDS: string | null
+export const SOURCE_EXTENSION_REVISION_GUARDS: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceSecurity.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_SECURITY: string | null
+export const SOURCE_EXTENSION_SECURITY: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceSMIME.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_SMIME: string | null
+export const SOURCE_EXTENSION_SMIME: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceTaskList.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_TASK_LIST: string | null
+export const SOURCE_EXTENSION_TASK_LIST: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceUoa.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_UOA: string | null
+export const SOURCE_EXTENSION_UOA: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceWeather.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_WEATHER_BACKEND: string | null
+export const SOURCE_EXTENSION_WEATHER_BACKEND: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceWebdav.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_WEBDAV_BACKEND: string | null
+export const SOURCE_EXTENSION_WEBDAV_BACKEND: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceWebDAVNotes.  This is also used as a group name in key files.
  */
-export const SOURCE_EXTENSION_WEBDAV_NOTES: string | null
+export const SOURCE_EXTENSION_WEBDAV_NOTES: string
 /**
  * Extends #GParamFlags to indicate the #GObject property is associated
  * with a key file value.  Use this flag when installing #GObject properties
  * in #ESourceExtension subclasses.
  */
 export const SOURCE_PARAM_SETTING: number
-export const WEBDAV_CAPABILITY_ACCESS_CONTROL: string | null
-export const WEBDAV_CAPABILITY_ADDRESSBOOK: string | null
-export const WEBDAV_CAPABILITY_BIND: string | null
-export const WEBDAV_CAPABILITY_CALENDAR_ACCESS: string | null
-export const WEBDAV_CAPABILITY_CALENDAR_AUTO_SCHEDULE: string | null
-export const WEBDAV_CAPABILITY_CALENDAR_PROXY: string | null
-export const WEBDAV_CAPABILITY_CALENDAR_SCHEDULE: string | null
-export const WEBDAV_CAPABILITY_CLASS_1: string | null
-export const WEBDAV_CAPABILITY_CLASS_2: string | null
-export const WEBDAV_CAPABILITY_CLASS_3: string | null
-export const WEBDAV_CAPABILITY_EXTENDED_MKCOL: string | null
-export const WEBDAV_COLLATION_ASCII_CASEMAP: string | null
-export const WEBDAV_COLLATION_ASCII_CASEMAP_SUFFIX: string | null
-export const WEBDAV_COLLATION_ASCII_NUMERIC: string | null
-export const WEBDAV_COLLATION_ASCII_NUMERIC_SUFFIX: string | null
-export const WEBDAV_COLLATION_OCTET: string | null
-export const WEBDAV_COLLATION_OCTET_SUFFIX: string | null
-export const WEBDAV_COLLATION_UNICODE_CASEMAP: string | null
-export const WEBDAV_COLLATION_UNICODE_CASEMAP_SUFFIX: string | null
-export const WEBDAV_CONTENT_TYPE_CALENDAR: string | null
-export const WEBDAV_CONTENT_TYPE_VCARD: string | null
-export const WEBDAV_CONTENT_TYPE_XML: string | null
-export const WEBDAV_DEPTH_INFINITY: string | null
-export const WEBDAV_DEPTH_THIS: string | null
-export const WEBDAV_DEPTH_THIS_AND_CHILDREN: string | null
-export const WEBDAV_NS_CALDAV: string | null
-export const WEBDAV_NS_CALENDARSERVER: string | null
-export const WEBDAV_NS_CARDDAV: string | null
-export const WEBDAV_NS_DAV: string | null
-export const WEBDAV_NS_ICAL: string | null
+export const WEBDAV_CAPABILITY_ACCESS_CONTROL: string
+export const WEBDAV_CAPABILITY_ADDRESSBOOK: string
+export const WEBDAV_CAPABILITY_BIND: string
+export const WEBDAV_CAPABILITY_CALENDAR_ACCESS: string
+export const WEBDAV_CAPABILITY_CALENDAR_AUTO_SCHEDULE: string
+export const WEBDAV_CAPABILITY_CALENDAR_PROXY: string
+export const WEBDAV_CAPABILITY_CALENDAR_SCHEDULE: string
+export const WEBDAV_CAPABILITY_CLASS_1: string
+export const WEBDAV_CAPABILITY_CLASS_2: string
+export const WEBDAV_CAPABILITY_CLASS_3: string
+export const WEBDAV_CAPABILITY_EXTENDED_MKCOL: string
+export const WEBDAV_COLLATION_ASCII_CASEMAP: string
+export const WEBDAV_COLLATION_ASCII_CASEMAP_SUFFIX: string
+export const WEBDAV_COLLATION_ASCII_NUMERIC: string
+export const WEBDAV_COLLATION_ASCII_NUMERIC_SUFFIX: string
+export const WEBDAV_COLLATION_OCTET: string
+export const WEBDAV_COLLATION_OCTET_SUFFIX: string
+export const WEBDAV_COLLATION_UNICODE_CASEMAP: string
+export const WEBDAV_COLLATION_UNICODE_CASEMAP_SUFFIX: string
+export const WEBDAV_CONTENT_TYPE_CALENDAR: string
+export const WEBDAV_CONTENT_TYPE_VCARD: string
+export const WEBDAV_CONTENT_TYPE_XML: string
+export const WEBDAV_DEPTH_INFINITY: string
+export const WEBDAV_DEPTH_THIS: string
+export const WEBDAV_DEPTH_THIS_AND_CHILDREN: string
+export const WEBDAV_NS_CALDAV: string
+export const WEBDAV_NS_CALENDARSERVER: string
+export const WEBDAV_NS_CARDDAV: string
+export const WEBDAV_NS_DAV: string
+export const WEBDAV_NS_ICAL: string
 /**
  * Thread safe variant of g_object_bind_property(). See its documentation
  * for more information on arguments and return value.
@@ -914,7 +914,7 @@ export const WEBDAV_NS_ICAL: string | null
  * @param targetProperty the property on `target` to bind
  * @param flags flags to pass to #GBinding
  */
-export function bindingBindProperty(source: GObject.Object, sourceProperty: string | null, target: GObject.Object, targetProperty: string | null, flags: GObject.BindingFlags): GObject.Binding
+export function bindingBindProperty(source: GObject.Object, sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
 /**
  * Thread safe variant of g_object_bind_property_with_closures(). See its
  * documentation for more information on arguments and return value.
@@ -927,7 +927,7 @@ export function bindingBindProperty(source: GObject.Object, sourceProperty: stri
  * @param transformFrom a #GClosure wrapping the transformation function   from the `target` to the `source,` or %NULL to use the default
  * @returns the #GBinding instance representing the   binding between the two #GObject instances. The binding is released   whenever the #GBinding reference count reaches zero.
  */
-export function bindingBindPropertyFull(source: GObject.Object, sourceProperty: string | null, target: GObject.Object, targetProperty: string | null, flags: GObject.BindingFlags, transformTo: GObject.TClosure | null, transformFrom: GObject.TClosure | null): GObject.Binding
+export function bindingBindPropertyFull(source: GObject.Object, sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: GObject.TClosure | null, transformFrom: GObject.TClosure | null): GObject.Binding
 /**
  * Transforms an enumeration nickname to its corresponding value.
  * @param binding a #GBinding
@@ -956,7 +956,7 @@ export function bindingTransformEnumValueToNick(binding: GObject.Binding, source
  * @param iconFile full path of the icon associated to the category.
  * @param searchable whether the category can be used for searching in the GUI.
  */
-export function categoriesAdd(category: string | null, unused: string | null, iconFile: string | null, searchable: boolean): void
+export function categoriesAdd(category: string, unused: string, iconFile: string, searchable: boolean): void
 /**
  * Gets the icon file associated with the given category and returns a copy of
  * it.
@@ -965,7 +965,7 @@ export function categoriesAdd(category: string | null, unused: string | null, ic
  * @param category category to retrieve the icon file for.
  * @returns icon file name; free with g_free().
  */
-export function categoriesDupIconFileFor(category: string | null): string | null
+export function categoriesDupIconFileFor(category: string): string | null
 /**
  * Returns a sorted list of all the category names currently configured.
  * 
@@ -980,7 +980,7 @@ export function categoriesDupList(): string[]
  * @param category category to be searched.
  * @returns %TRUE if the category is available, %FALSE otherwise.
  */
-export function categoriesExist(category: string | null): boolean
+export function categoriesExist(category: string): boolean
 /**
  * Gets the icon file associated with the given category.
  * 
@@ -990,7 +990,7 @@ export function categoriesExist(category: string | null): boolean
  * @param category category to retrieve the icon file for.
  * @returns icon file name.
  */
-export function categoriesGetIconFileFor(category: string | null): string | null
+export function categoriesGetIconFileFor(category: string): string
 /**
  * Returns a sorted list of all the category names currently configured.
  * 
@@ -1008,7 +1008,7 @@ export function categoriesGetList(): string[]
  * Return value; %TRUE% if the category is searchable, %FALSE% if not.
  * @param category category name.
  */
-export function categoriesIsSearchable(category: string | null): boolean
+export function categoriesIsSearchable(category: string): boolean
 /**
  * Registers callback to be called on change of any category.
  * Pair listener and user_data is used to distinguish between listeners.
@@ -1024,7 +1024,7 @@ export function categoriesRegisterChangeListener(listener: GObject.Callback): vo
  * This function is thread safe.
  * @param category category to be removed.
  */
-export function categoriesRemove(category: string | null): void
+export function categoriesRemove(category: string): void
 /**
  * Sets the icon file associated with the given category.
  * 
@@ -1032,7 +1032,7 @@ export function categoriesRemove(category: string | null): void
  * @param category category to set the icon file for.
  * @param iconFile icon file.
  */
-export function categoriesSetIconFileFor(category: string | null, iconFile: string | null): void
+export function categoriesSetIconFileFor(category: string, iconFile: string): void
 /**
  * Removes previously registered callback from the list of listeners on changes.
  * If it was not registered, then does nothing.
@@ -1070,7 +1070,7 @@ export function debugLogDisableDomains(domains: string[]): void
  * @param filename a filename to save logged information to
  * @returns whether succeeded
  */
-export function debugLogDump(filename: string | null): boolean
+export function debugLogDump(filename: string): boolean
 /**
  * Saves current log information to a file "e-debug-log-YYYY-MM-DD-HH-mm-ss.txt"
  * in the user's HOME directory.
@@ -1083,13 +1083,13 @@ export function debugLogDumpToDatedFile(): boolean
  */
 export function debugLogEnableDomains(domains: string[]): void
 export function debugLogGetMaxLines(): number
-export function debugLogIsDomainEnabled(domain: string | null): boolean
+export function debugLogIsDomainEnabled(domain: string): boolean
 /**
  * Loads configuration for the logging from the given `filename`.
  * @param filename a configuration file name
  * @returns whether succeeded
  */
-export function debugLogLoadConfiguration(filename: string | null): boolean
+export function debugLogLoadConfiguration(filename: string): boolean
 /**
  * Limits how many lines the log can have.
  * @param numLines number of lines
@@ -1116,14 +1116,14 @@ export function edsCheckVersion(requiredMajor: number, requiredMinor: number, re
  * @param enumValue A return location to store the result
  * @returns %TRUE if the string was a valid name or nick        for the given @type, %FALSE if the conversion failed.
  */
-export function enumFromString(enumType: GObject.GType, string: string | null, enumValue: number): boolean
+export function enumFromString(enumType: GObject.GType, string: string, enumValue: number): boolean
 /**
  * Converts an enum value to a string using strings from the GType system.
  * @param enumType An enum type
  * @param enumValue The enum value to convert
  * @returns the string representing @eval
  */
-export function enumToString(enumType: GObject.GType, enumValue: number): string | null
+export function enumToString(enumType: GObject.GType, enumValue: number): string
 /**
  * Asynchronously deletes `file`.  If `file` is a directory, its contents
  * are deleted recursively before `file` itself is deleted.  The recursive
@@ -1175,7 +1175,7 @@ export function filenameMakeSafe(string: string | null): void
  * @param fileindex used when `filename` is NULL, then the filename        is generated as "file" + fileindex
  * @returns Full local path like g_build_filename() except that @fileprefix and @filename are encoded to create a proper file elements for a file system. Free returned pointer with g_free().
  */
-export function filenameMkdirEncoded(basepath: string | null, fileprefix: string | null, filename: string | null, fileindex: number): string | null
+export function filenameMkdirEncoded(basepath: string, fileprefix: string, filename: string | null, fileindex: number): string | null
 /**
  * Converts the `free_form_exp` to an S-Expression using the S-Expression
  * builders defined in the `symbols`. The `symbols` should have one symbol
@@ -1188,7 +1188,7 @@ export function filenameMkdirEncoded(basepath: string | null, fileprefix: string
  * @param symbols known symbols, which can be used in the Free From Expression
  * @returns converted @free_form_exp into S-Expression, %NULL on error.    Free the returned string with a g_free(), when done with it.
  */
-export function freeFormExpToSexp(freeFormExp: string | null, symbols: FreeFormExpSymbol): string | null
+export function freeFormExpToSexp(freeFormExp: string, symbols: FreeFormExpSymbol): string | null
 /**
  * Adds a Task:completed property `value` into the `builder,` which
  * should have started an object member.
@@ -1215,7 +1215,7 @@ export function gdataTaskAddDue(builder: Json.Builder, value: number): void
  * @param builder a #JsonBuilder with a started object member
  * @param value a Task::id property value
  */
-export function gdataTaskAddId(builder: Json.Builder, value: string | null): void
+export function gdataTaskAddId(builder: Json.Builder, value: string): void
 /**
  * Adds a Task::notes property `value` into the `builder,` which
  * should have started an object member.
@@ -1242,7 +1242,7 @@ export function gdataTaskAddStatus(builder: Json.Builder, value: GDataTaskStatus
  * @param builder a #JsonBuilder with a started object member
  * @param value a Task::title property value
  */
-export function gdataTaskAddTitle(builder: Json.Builder, value: string | null): void
+export function gdataTaskAddTitle(builder: Json.Builder, value: string): void
 /**
  * Returns Task::completed property, as Unix time.
  * @param task a GData Task
@@ -1327,14 +1327,14 @@ export function gdataTaskGetUpdated(task: Json.Object): number
  * @param builder a #JsonBuilder with a started object member
  * @param value a TaskList::id property value
  */
-export function gdataTasklistAddId(builder: Json.Builder, value: string | null): void
+export function gdataTasklistAddId(builder: Json.Builder, value: string): void
 /**
  * Adds a TaskList::title property `value` into the `builder,` which
  * should have started an object member.
  * @param builder a #JsonBuilder with a started object member
  * @param value a TaskList::title property value
  */
-export function gdataTasklistAddTitle(builder: Json.Builder, value: string | null): void
+export function gdataTasklistAddTitle(builder: Json.Builder, value: string): void
 /**
  * Returns TaskList::etag property.
  * @param tasklist a GData TaskList
@@ -1373,7 +1373,7 @@ export function gdataTasklistGetUpdated(tasklist: Json.Object): number
  * modified or freed.
  * @returns base directory for user-specific, non-essential data
  */
-export function getUserCacheDir(): string | null
+export function getUserCacheDir(): string
 /**
  * Returns a base directory in which to store user-specific configuration
  * information for Evolution or Evolution-Data-Server.
@@ -1382,7 +1382,7 @@ export function getUserCacheDir(): string | null
  * modified or freed.
  * @returns base directory for user-specific configuration information
  */
-export function getUserConfigDir(): string | null
+export function getUserConfigDir(): string
 /**
  * Returns a base directory in which to store user-specific data for
  * Evolution or Evolution-Data-Server.
@@ -1391,7 +1391,7 @@ export function getUserConfigDir(): string | null
  * modified or freed.
  * @returns base directory for user-specific data
  */
-export function getUserDataDir(): string | null
+export function getUserDataDir(): string
 /**
  * Converts the calendar time time representation `tt` to a broken-down
  * time representation, store in `tm,` and provides the offset in
@@ -1419,7 +1419,7 @@ export function mktimeUtc(tm: any | null): number
  * @param outGlobBuffSize size of the `out_glob_buff`
  * @returns processed @compile_value, saved into *out_glob_buff
  */
-export function oauth2ServiceUtilCompileValue(compileValue: string | null, outGlobBuffSize: number): [ /* returnType */ string | null, /* outGlobBuff */ string | null ]
+export function oauth2ServiceUtilCompileValue(compileValue: string, outGlobBuffSize: number): [ /* returnType */ string, /* outGlobBuff */ string | null ]
 /**
  * Extracts either an authorization code from a 'code' argument of the `in_uri,`
  * or an error code from an 'error' argument of the `in_uri` and an error description
@@ -1427,7 +1427,7 @@ export function oauth2ServiceUtilCompileValue(compileValue: string | null, outGl
  * @param inUri a URI returned from the server
  * @returns %TRUE, when any of the non-NULL out arguments had been populated.
  */
-export function oauth2ServiceUtilExtractFromUri(inUri: string | null): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null, /* outErrorCode */ string | null, /* outErrorDescription */ string | null ]
+export function oauth2ServiceUtilExtractFromUri(inUri: string): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null, /* outErrorCode */ string | null, /* outErrorDescription */ string | null ]
 /**
  * Sets `value` for `name` to `form`. The `form` should be
  * the one used in e_oauth2_service_prepare_authentication_uri_query(),
@@ -1440,7 +1440,7 @@ export function oauth2ServiceUtilExtractFromUri(inUri: string | null): [ /* retu
  * @param name a property name
  * @param value a property value
  */
-export function oauth2ServiceUtilSetToForm(form: GLib.HashTable, name: string | null, value: string | null): void
+export function oauth2ServiceUtilSetToForm(form: GLib.HashTable, name: string, value: string | null): void
 /**
  * Takes ownership of `value` and sets it for `name` to `form`. The `value`
  * will be freed with g_free(), when no longer needed. The `form` should be
@@ -1454,7 +1454,7 @@ export function oauth2ServiceUtilSetToForm(form: GLib.HashTable, name: string | 
  * @param name a property name
  * @param value a property value
  */
-export function oauth2ServiceUtilTakeToForm(form: GLib.HashTable, name: string | null, value: string | null): void
+export function oauth2ServiceUtilTakeToForm(form: GLib.HashTable, name: string, value: string | null): void
 /**
  * Transfers the contents of `src_queue` to the tail of `dst_queue`.
  * When the operation is complete, `src_queue` will be empty.
@@ -1474,7 +1474,7 @@ export function queueTransfer(srcQueue: GLib.Queue, dstQueue: GLib.Queue): void
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns %TRUE on success, %FALSE on error
  */
-export function secretStoreDeleteSync(uid: string | null, cancellable: Gio.Cancellable | null): boolean
+export function secretStoreDeleteSync(uid: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Looks up a secret for the `uid`. Both the default and session keyrings
  * are queried.
@@ -1488,7 +1488,7 @@ export function secretStoreDeleteSync(uid: string | null, cancellable: Gio.Cance
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns %TRUE on success, %FALSE on error
  */
-export function secretStoreLookupSync(uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outSecret */ string | null ]
+export function secretStoreLookupSync(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outSecret */ string | null ]
 /**
  * Stores the `secret` for the `uid`.
  * 
@@ -1502,7 +1502,7 @@ export function secretStoreLookupSync(uid: string | null, cancellable: Gio.Cance
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns %TRUE on success, %FALSE on error
  */
-export function secretStoreStoreSync(uid: string | null, secret: string | null, label: string | null, permanently: boolean, cancellable: Gio.Cancellable | null): boolean
+export function secretStoreStoreSync(uid: string, secret: string, label: string, permanently: boolean, cancellable: Gio.Cancellable | null): boolean
 /**
  * Sets up automatic SSL certificate trust handling for `soup_message` using the trust
  * data stored in `source'`s WebDAV extension. If `soup_message` is about to be sent on
@@ -1531,7 +1531,7 @@ export function soupSslTrustConnect(soupMessage: Soup.Message, source: Source): 
  * @param tm The time value to format.
  * @returns The number of characters placed in @s.
  */
-export function strftime(string: string | null, max: number, fmt: string | null, tm: any | null): number
+export function strftime(string: string | null, max: number, fmt: string, tm: any | null): number
 /**
  * Creates a string representation of the time value `date_tm` and
  * stores it in `buffer`.  `buffer_size` should be at least 64 to be
@@ -1573,7 +1573,7 @@ export function timeGetDFmtWith4digitYear(): string | null
  * @param result Return value for the parsed date.
  * @returns An #ETimeParseStatus result code indicating whether @value was an empty string, a valid date, or an invalid date.
  */
-export function timeParseDate(value: string | null, result: any | null): TimeParseStatus
+export function timeParseDate(value: string, result: any | null): TimeParseStatus
 /**
  * Parses a string `value` containing a date and a time and stores the
  * result in `result`. The date in `value` is expected to be in a format
@@ -1585,7 +1585,7 @@ export function timeParseDate(value: string | null, result: any | null): TimePar
  * @param result a #tm to store the result in
  * @returns E_TIME_PARSE_OK if the string was successfully parsed,          E_TIME_PARSE_NONE if the string was empty, or          E_TIME_PARSE_INVALID if the string could not be parsed.
  */
-export function timeParseDateAndTime(value: string | null, result: any | null): TimeParseStatus
+export function timeParseDateAndTime(value: string, result: any | null): TimeParseStatus
 /**
  * Parses a string `value` containing a date and a time and stores the
  * result in `result`. The date in `value` is expected to be in a format
@@ -1598,7 +1598,7 @@ export function timeParseDateAndTime(value: string | null, result: any | null): 
  * @param twoDigitYear set to TRUE, is parsing with two-digit year, else FALSE,    but only when not NULL.
  * @returns E_TIME_PARSE_OK if the string was successfully parsed,          E_TIME_PARSE_NONE if the string was empty, or          E_TIME_PARSE_INVALID if the string could not be parsed.
  */
-export function timeParseDateAndTimeEx(value: string | null, result: any | null, twoDigitYear: boolean): TimeParseStatus
+export function timeParseDateAndTimeEx(value: string, result: any | null, twoDigitYear: boolean): TimeParseStatus
 /**
  * Takes in a date string entered by the user and tries to convert it to
  * a struct #tm.
@@ -1607,7 +1607,7 @@ export function timeParseDateAndTimeEx(value: string | null, result: any | null,
  * @param twoDigitYear set to TRUE, is parsing with two-digit year, else FALSE,    but only when not NULL.
  * @returns An #ETimeParseStatus result code indicating whether @value was an empty string, a valid date, or an invalid date.
  */
-export function timeParseDateEx(value: string | null, result: any | null, twoDigitYear: boolean): TimeParseStatus
+export function timeParseDateEx(value: string, result: any | null, twoDigitYear: boolean): TimeParseStatus
 /**
  * Parses `value` using the `format` saving the parsed date into `out_result`.
  * Optionally sets whether there had been used two-digit year.
@@ -1615,7 +1615,7 @@ export function timeParseDateEx(value: string | null, result: any | null, twoDig
  * @param format a strftime() format string to use to parse the `value`
  * @returns An #ETimeParseStatus result code indicating whether    the @value was an empty string, a valid date, or an invalid date.
  */
-export function timeParseDateFormat(value: string | null, format: string | null): [ /* returnType */ TimeParseStatus, /* outResult */ any | null, /* outTwoDigitYear */ boolean ]
+export function timeParseDateFormat(value: string, format: string): [ /* returnType */ TimeParseStatus, /* outResult */ any | null, /* outTwoDigitYear */ boolean ]
 /**
  * Parses `value,` a string containing a time. `value` is expected to be
  * in a format like "14:20:00". gettext() is used to
@@ -1626,7 +1626,7 @@ export function timeParseDateFormat(value: string | null, format: string | null)
  * @param result A #tm to store the result in.
  * @returns An #ETimeParseStatus result code indicating whether @value was an empty string, a valid date, or an invalid date.
  */
-export function timeParseTime(value: string | null, result: any | null): TimeParseStatus
+export function timeParseTime(value: string, result: any | null): TimeParseStatus
 /**
  * Similar to g_timeout_add_seconds_full(), but also names the #GSource as
  * `name`.
@@ -1677,7 +1677,7 @@ export function uidNew(): string | null
  * @param tm The time value to format.
  * @returns The number of characters placed in @s.
  */
-export function utf8Strftime(string: string | null, max: number, fmt: string | null, tm: any | null): number
+export function utf8Strftime(string: string | null, max: number, fmt: string, tm: any | null): number
 /**
  * Checks whether the `collection_source` can be used as a credential source
  * for the `child_source`. The relationship is not tested in the function.
@@ -1756,7 +1756,7 @@ export function utilCopyStringSlist(copyTo: string[] | null, strings: string[]):
  * @param gdbusStr return location for the corrected string
  * @returns a valid UTF-8 string
  */
-export function utilEnsureGdbusString(str: string | null, gdbusStr: string | null): string | null
+export function utilEnsureGdbusString(str: string | null, gdbusStr: string | null): string
 /**
  * Calls g_object_unref() on each member of `objects` if non-%NULL and then frees
  * also `objects` itself.
@@ -1801,7 +1801,7 @@ export function utilGenerateUid(): string | null
  * @param withModulesDir whether to add also the modules directory
  * @returns a %GPtrArray    with paths to use, including the @main_path. Free it with    g_ptr_array_unref(), when no longer needed.
  */
-export function utilGetDirectoryVariants(mainPath: string | null, replacePrefix: string | null, withModulesDir: boolean): string[]
+export function utilGetDirectoryVariants(mainPath: string, replacePrefix: string, withModulesDir: boolean): string[]
 /**
  * Constructs a full name of the `source` with all of its parents
  * of the form: "&lt;account-name&gt; : &lt;parent&gt;/&lt;source&gt;" where
@@ -1883,7 +1883,7 @@ export function utilStrdupStrip(string: string | null): string | null
  * @param needle The string to search for.
  * @returns A pointer to the start of @needle in @haystack, or NULL if          @needle is not found.
  */
-export function utilStrstrcase(haystack: string | null, needle: string | null): string | null
+export function utilStrstrcase(haystack: string, needle: string): string | null
 /**
  * Compares `v1` and `v2` for equality, handling %NULL gracefully.
  * 
@@ -1898,14 +1898,14 @@ export function utilStrvEqual(v1: string[], v2: string[]): boolean
  * @param strv a NULL-terminated array of strings (const gchar *)
  * @returns Newly allocated #GSList of newly allocated strings. The returned pointer should be freed with e_util_free_string_slist(). Note: Pair function for this is e_util_slist_to_strv().
  */
-export function utilStrvToSlist(strv: string | null): string[]
+export function utilStrvToSlist(strv: string): string[]
 /**
  * Get a UTF-8 character from the beginning of `text`.
  * @param text The string to take the UTF-8 character from.
  * @param out The location to store the UTF-8 character in.
  * @returns A pointer to the next character in @text after @out.
  */
-export function utilUnicodeGetUtf8(text: string | null, out: string): string | null
+export function utilUnicodeGetUtf8(text: string, out: string): string | null
 /**
  * Unrefs the given `object` in a dedicated thread. This is useful when unreffing
  * object deep in call stack when the caller might still use the object and
@@ -1929,7 +1929,7 @@ export function utilUtf8DataMakeValid(data: string | null, dataBytes: number): s
  * @param text a UTF-8 string
  * @returns A newly allocated string, a decomposed    variant of the @text. Free with g_free(), when no longer needed.
  */
-export function utilUtf8Decompose(text: string | null): string | null
+export function utilUtf8Decompose(text: string): string | null
 /**
  * Returns a newly-allocated copy of `str,` with invalid characters
  * replaced by Unicode replacement characters (U+FFFD).
@@ -1956,7 +1956,7 @@ export function utilUtf8RemoveAccents(str: string | null): string | null
  * @param s2 another UTF-8 string
  * @returns < 0 if @s1 compares before @s2, 0 if they compare equal,          > 0 if @s1 compares after @s2
  */
-export function utilUtf8Strcasecmp(s1: string | null, s2: string | null): number
+export function utilUtf8Strcasecmp(s1: string, s2: string): number
 /**
  * Find the first instance of `needle` in `haystack,` ignoring case. (No
  * proper case folding or decomposing is done.) Both `needle` and
@@ -1974,7 +1974,7 @@ export function utilUtf8Strstrcase(haystack: string | null, needle: string | nul
  * @param needle The string to search for.
  * @returns A pointer to the first instance of @needle in @haystack,    or %NULL if either of the strings are not legal UTF-8 strings.
  */
-export function utilUtf8Strstrcasedecomp(haystack: string | null, needle: string | null): string | null
+export function utilUtf8Strstrcasedecomp(haystack: string, needle: string): string | null
 /**
  * Frees an #EWebDAVAccessControlEntry previously created with e_webdav_access_control_entry_new()
  * or e_webdav_access_control_entry_copy(). The function does nothing, if `ptr` is %NULL.
@@ -2025,7 +2025,7 @@ export function webdavDiscoverSources(source: Source, urlUsePath: string | null,
  * @param result a #GAsyncResult
  * @returns %TRUE on success, %FALSE on failure
  */
-export function webdavDiscoverSourcesFinish(source: Source, result: Gio.AsyncResult): [ /* returnType */ boolean, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outDiscoveredSources */ WebDAVDiscoveredSource[], /* outCalendarUserAddresses */ string[] ]
+export function webdavDiscoverSourcesFinish(source: Source, result: Gio.AsyncResult): [ /* returnType */ boolean, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outDiscoveredSources */ WebDAVDiscoveredSource[], /* outCalendarUserAddresses */ string[] ]
 /**
  * This is the same as e_webdav_discover_sources(), it only allows to
  * provide a callback function (with its user_data), to reference an additional
@@ -2056,7 +2056,7 @@ export function webdavDiscoverSourcesFull(source: Source, urlUsePath: string | n
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns %TRUE on success, %FALSE on failure
  */
-export function webdavDiscoverSourcesFullSync(source: Source, urlUsePath: string | null, onlySupports: number, credentials: NamedParameters | null, refSourceFunc: WebDAVDiscoverRefSourceFunc | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outDiscoveredSources */ WebDAVDiscoveredSource[], /* outCalendarUserAddresses */ string[] ]
+export function webdavDiscoverSourcesFullSync(source: Source, urlUsePath: string | null, onlySupports: number, credentials: NamedParameters | null, refSourceFunc: WebDAVDiscoverRefSourceFunc | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outDiscoveredSources */ WebDAVDiscoveredSource[], /* outCalendarUserAddresses */ string[] ]
 /**
  * Synchronously runs discovery of the WebDAV sources (CalDAV and CardDAV), eventually
  * limited by the `only_supports` filter, which can be %E_WEBDAV_DISCOVER_SUPPORTS_NONE
@@ -2086,7 +2086,7 @@ export function webdavDiscoverSourcesFullSync(source: Source, urlUsePath: string
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns %TRUE on success, %FALSE on failure
  */
-export function webdavDiscoverSourcesSync(source: Source, urlUsePath: string | null, onlySupports: number, credentials: NamedParameters | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outDiscoveredSources */ WebDAVDiscoveredSource[], /* outCalendarUserAddresses */ string[] ]
+export function webdavDiscoverSourcesSync(source: Source, urlUsePath: string | null, onlySupports: number, credentials: NamedParameters | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outDiscoveredSources */ WebDAVDiscoveredSource[], /* outCalendarUserAddresses */ string[] ]
 /**
  * Frees an #EWebDAVPrivilege previously created with e_webdav_privilege_new()
  * or e_webdav_privilege_copy(). The function does nothing, if `ptr` is %NULL.
@@ -2118,7 +2118,7 @@ export function xmlDestroyHash(hash: GLib.HashTable): void
  * @param doc an XML document structure
  * @returns 0 on success, -1 on failure
  */
-export function xmlSaveFile(filename: string | null, doc: libxml2.Doc): number
+export function xmlSaveFile(filename: string, doc: libxml2.Doc): number
 /**
  * Creates a #GHashTable representation of the #xmlDoc `doc`.
  * If `type` is * `E_XML_HASH_TYPE_PROPERTY,` all XML nodes will be
@@ -2136,7 +2136,7 @@ export function xmlToHash(doc: libxml2.Doc, type: XmlHashType): GLib.HashTable
  * @param key the key to use for the entry
  * @param data the value of the new entry
  */
-export function xmlhashAdd(hash: XmlHash, key: string | null, data: string | null): void
+export function xmlhashAdd(hash: XmlHash, key: string, data: string): void
 /**
  * Compares the value with key equal to `key` in `hash` against
  * `compare_data`.
@@ -2145,7 +2145,7 @@ export function xmlhashAdd(hash: XmlHash, key: string | null, data: string | nul
  * @param compareData the data to compare against the hash entry
  * @returns E_XMLHASH_STATUS_SAME if the value and @compare_data are          equal,E_XMLHASH_STATUS_DIFFERENT if they are different, or          E_XMLHASH_STATUS_NOT_FOUND if there is no entry in @hash with          its key equal to @key.
  */
-export function xmlhashCompare(hash: XmlHash, key: string | null, compareData: string | null): XmlHashStatus
+export function xmlhashCompare(hash: XmlHash, key: string, compareData: string): XmlHashStatus
 /**
  * Frees the memory associated with `hash`.
  * @param hash The #EXmlHash to destroy.
@@ -2169,7 +2169,7 @@ export function xmlhashForeachKeyRemove(hash: XmlHash, func: XmlHashRemoveFunc):
  * @param hash the #EXmlHash to remove an entry from
  * @param key the key of the entry to remove
  */
-export function xmlhashRemove(hash: XmlHash, key: string | null): void
+export function xmlhashRemove(hash: XmlHash, key: string): void
 /**
  * Writes the XML represented by `hash` to the file originally passed
  * to e_xmlhash_new().
@@ -2177,7 +2177,7 @@ export function xmlhashRemove(hash: XmlHash, key: string | null): void
  */
 export function xmlhashWrite(hash: XmlHash): void
 export interface FreeFormExpBuildSexpFunc {
-    (word: string | null, options: string | null, hint: string | null): string | null
+    (word: string, options: string, hint: string): string | null
 }
 /**
  * Callback used to traverse response from the server, which is
@@ -2191,7 +2191,7 @@ export interface GDataObjectCallback {
     (gdata: GDataSession, object: Json.Object): boolean
 }
 export interface OAuth2ServiceRefSourceFunc {
-    (uid: string | null): Source | null
+    (uid: string): Source | null
 }
 export interface SourceRefreshFunc {
     (source: Source): void
@@ -2205,7 +2205,7 @@ export interface TypeFunc {
     (type: GObject.GType): void
 }
 export interface WebDAVDiscoverRefSourceFunc {
-    (uid: string | null): Source | null
+    (uid: string): Source | null
 }
 /**
  * A callback function for e_webdav_session_propfind_sync(),
@@ -2226,10 +2226,10 @@ export interface WebDAVPropstatTraverseFunc {
     (webdav: WebDAVSession, propNode: libxml2.Node, requestUri: GLib.Uri, href: string | null, statusCode: number): boolean
 }
 export interface XmlHashFunc {
-    (key: string | null, value: string | null): void
+    (key: string, value: string): void
 }
 export interface XmlHashRemoveFunc {
-    (key: string | null, value: string | null): boolean
+    (key: string, value: string): boolean
 }
 export module Extensible {
 
@@ -2325,8 +2325,8 @@ export interface OAuth2Service {
      * @returns whether succeeded
      */
     deleteTokenSync(source: Source, cancellable: Gio.Cancellable | null): boolean
-    // Has conflict: extractAuthorizationCode(source: Source, pageTitle: string | null, pageUri: string | null, pageContent: string | null): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null ]
-    // Has conflict: extractErrorMessage(source: Source, pageTitle: string | null, pageUri: string | null, pageContent: string | null): [ /* returnType */ boolean, /* outErrorMessage */ string | null ]
+    // Has conflict: extractAuthorizationCode(source: Source, pageTitle: string, pageUri: string, pageContent: string | null): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null ]
+    // Has conflict: extractErrorMessage(source: Source, pageTitle: string, pageUri: string, pageContent: string | null): [ /* returnType */ boolean, /* outErrorMessage */ string | null ]
     /**
      * Reads access token information from the secret store for the `source` and
      * in case it's expired it refreshes the token, if possible.
@@ -2338,20 +2338,20 @@ export interface OAuth2Service {
      * @returns %TRUE, when the returned access token has been set and it's not expired,    %FALSE otherwise.
      */
     getAccessTokenSync(source: Source, refSource: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
-    // Has conflict: getAuthenticationPolicy(source: Source, uri: string | null): OAuth2ServiceNavigationPolicy
-    // Has conflict: getAuthenticationUri(source: Source): string | null
-    // Has conflict: getClientId(source: Source): string | null
+    // Has conflict: getAuthenticationPolicy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
+    // Has conflict: getAuthenticationUri(source: Source): string
+    // Has conflict: getClientId(source: Source): string
     // Has conflict: getClientSecret(source: Source): string | null
-    // Has conflict: getDisplayName(): string | null
+    // Has conflict: getDisplayName(): string
     // Has conflict: getFlags(): number
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: getRedirectUri(source: Source): string | null
-    // Has conflict: getRefreshUri(source: Source): string | null
+    // Has conflict: getRefreshUri(source: Source): string
     // Has conflict: guessCanProcess(protocol: string | null, hostname: string | null): boolean
     // Has conflict: prepareAuthenticationUriQuery(source: Source, uriQuery: GLib.HashTable): void
-    // Has conflict: prepareGetTokenForm(source: Source, authorizationCode: string | null, form: GLib.HashTable): void
+    // Has conflict: prepareGetTokenForm(source: Source, authorizationCode: string, form: GLib.HashTable): void
     // Has conflict: prepareGetTokenMessage(source: Source, message: Soup.Message): void
-    // Has conflict: prepareRefreshTokenForm(source: Source, refreshToken: string | null, form: GLib.HashTable): void
+    // Has conflict: prepareRefreshTokenForm(source: Source, refreshToken: string, form: GLib.HashTable): void
     // Has conflict: prepareRefreshTokenMessage(source: Source, message: Soup.Message): void
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to obtain
@@ -2363,7 +2363,7 @@ export interface OAuth2Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    receiveAndStoreTokenSync(source: Source, authorizationCode: string | null, refSource: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean
+    receiveAndStoreTokenSync(source: Source, authorizationCode: string, refSource: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean
     /**
      * Queries `service` at e_oauth2_service_get_refresh_uri() with a request to refresh
      * existing access token with provided `refresh_token` and stores it into the secret
@@ -2374,7 +2374,7 @@ export interface OAuth2Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    refreshAndStoreTokenSync(source: Source, refreshToken: string | null, refSource: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean
+    refreshAndStoreTokenSync(source: Source, refreshToken: string, refSource: OAuth2ServiceRefSourceFunc, cancellable: Gio.Cancellable | null): boolean
 
     // Own virtual methods of EDataServer-1.2.EDataServer.OAuth2Service
 
@@ -2418,7 +2418,7 @@ export interface OAuth2Service {
      * @param pageContent a web page content
      * @returns whether could recognized successful or failed server response.    The @out_authorization_code is populated on success too.
      */
-    extractAuthorizationCode(source: Source, pageTitle: string | null, pageUri: string | null, pageContent: string | null): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null ]
+    extractAuthorizationCode(source: Source, pageTitle: string, pageUri: string, pageContent: string | null): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null ]
     /**
      * Tries to extract error message from the server response, return %TRUE,
      * when an error message could be found, in which case also sets
@@ -2434,7 +2434,7 @@ export interface OAuth2Service {
      * @param pageContent a web page content
      * @returns whether could recognized failed server response.    The @out_error_message is populated on success.
      */
-    extractErrorMessage(source: Source, pageTitle: string | null, pageUri: string | null, pageContent: string | null): [ /* returnType */ boolean, /* outErrorMessage */ string | null ]
+    extractErrorMessage(source: Source, pageTitle: string, pageUri: string, pageContent: string | null): [ /* returnType */ boolean, /* outErrorMessage */ string | null ]
     /**
      * Used to decide what to do when the server redirects to the next page.
      * The default implementation always returns %E_OAUTH2_SERVICE_NAVIGATION_POLICY_ALLOW.
@@ -2448,9 +2448,9 @@ export interface OAuth2Service {
      * @param uri a URI of the navigation resource
      * @returns one of #EOAuth2ServiceNavigationPolicy
      */
-    getAuthenticationPolicy(source: Source, uri: string | null): OAuth2ServiceNavigationPolicy
-    getAuthenticationUri(source: Source): string | null
-    getClientId(source: Source): string | null
+    getAuthenticationPolicy(source: Source, uri: string): OAuth2ServiceNavigationPolicy
+    getAuthenticationUri(source: Source): string
+    getClientId(source: Source): string
     getClientSecret(source: Source): string | null
     /**
      * Returns a human readable name of the service. This is similar to
@@ -2459,7 +2459,7 @@ export interface OAuth2Service {
      * @virtual 
      * @returns the display name of the @service
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     getFlags(): number
     /**
      * Returns a unique name of the service. It can be named for example
@@ -2468,7 +2468,7 @@ export interface OAuth2Service {
      * @virtual 
      * @returns the name of the @service
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns a value for the "redirect_uri" keys in the authenticate and get_token
      * operations. The default implementation returns "urn:ietf:wg:oauth:2.0:oob".
@@ -2477,7 +2477,7 @@ export interface OAuth2Service {
      * @returns The redirect_uri to use, or %NULL for none
      */
     getRedirectUri(source: Source): string | null
-    getRefreshUri(source: Source): string | null
+    getRefreshUri(source: Source): string
     /**
      * Checks whether the `service` can be used with the given `protocol` and/or `hostname`.
      * Any of `protocol` and `hostname` can be %NULL, but not both. It's up to each implementer
@@ -2529,7 +2529,7 @@ export interface OAuth2Service {
      * @param authorizationCode authorization code, as returned from e_oauth2_service_extract_authorization_code()
      * @param form form parameters to be used in the POST request
      */
-    prepareGetTokenForm(source: Source, authorizationCode: string | null, form: GLib.HashTable): void
+    prepareGetTokenForm(source: Source, authorizationCode: string, form: GLib.HashTable): void
     /**
      * The `service` can change the `message` before it's sent to
      * the e_oauth2_service_get_authentication_uri(), with POST data
@@ -2555,7 +2555,7 @@ export interface OAuth2Service {
      * @param refreshToken a refresh token to be used
      * @param form form parameters to be used in the POST request
      */
-    prepareRefreshTokenForm(source: Source, refreshToken: string | null, form: GLib.HashTable): void
+    prepareRefreshTokenForm(source: Source, refreshToken: string, form: GLib.HashTable): void
     /**
      * The `service` can change the `message` before it's sent to
      * the e_oauth2_service_get_refresh_uri(), with POST data
@@ -2609,7 +2609,7 @@ export class OAuth2Service extends GObject.Object {
      * @param outGlobBuffSize size of the `out_glob_buff`
      * @returns processed @compile_value, saved into *out_glob_buff
      */
-    static utilCompileValue(compileValue: string | null, outGlobBuffSize: number): [ /* returnType */ string | null, /* outGlobBuff */ string | null ]
+    static utilCompileValue(compileValue: string, outGlobBuffSize: number): [ /* returnType */ string, /* outGlobBuff */ string | null ]
     /**
      * Extracts either an authorization code from a 'code' argument of the `in_uri,`
      * or an error code from an 'error' argument of the `in_uri` and an error description
@@ -2617,7 +2617,7 @@ export class OAuth2Service extends GObject.Object {
      * @param inUri a URI returned from the server
      * @returns %TRUE, when any of the non-NULL out arguments had been populated.
      */
-    static utilExtractFromUri(inUri: string | null): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null, /* outErrorCode */ string | null, /* outErrorDescription */ string | null ]
+    static utilExtractFromUri(inUri: string): [ /* returnType */ boolean, /* outAuthorizationCode */ string | null, /* outErrorCode */ string | null, /* outErrorDescription */ string | null ]
     /**
      * Sets `value` for `name` to `form`. The `form` should be
      * the one used in e_oauth2_service_prepare_authentication_uri_query(),
@@ -2630,7 +2630,7 @@ export class OAuth2Service extends GObject.Object {
      * @param name a property name
      * @param value a property value
      */
-    static utilSetToForm(form: GLib.HashTable, name: string | null, value: string | null): void
+    static utilSetToForm(form: GLib.HashTable, name: string, value: string | null): void
     /**
      * Takes ownership of `value` and sets it for `name` to `form`. The `value`
      * will be freed with g_free(), when no longer needed. The `form` should be
@@ -2644,7 +2644,7 @@ export class OAuth2Service extends GObject.Object {
      * @param name a property name
      * @param value a property value
      */
-    static utilTakeToForm(form: GLib.HashTable, name: string | null, value: string | null): void
+    static utilTakeToForm(form: GLib.HashTable, name: string, value: string | null): void
 }
 
 export module Client {
@@ -2738,7 +2738,7 @@ export interface Client {
      * @param capability a capability
      * @returns #GSList of const strings of capabilities
      */
-    checkCapability(capability: string | null): boolean
+    checkCapability(capability: string): boolean
     /**
      * Checks whether a client supports explicit refreshing
      * (see e_client_refresh()).
@@ -2751,9 +2751,9 @@ export interface Client {
      * @returns a newly-allocated string representing a D-Bus bus          name that will be used to connect the client to          the backend subprocess. The string should be          freed by the caller using g_free().
      */
     dupBusName(): string | null
-    // Has conflict: getBackendProperty(propName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: getBackendProperty(propName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: getBackendPropertyFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* propValue */ string | null ]
-    // Has conflict: getBackendPropertySync(propName: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* propValue */ string | null ]
+    // Has conflict: getBackendPropertySync(propName: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* propValue */ string | null ]
     /**
      * Get list of strings with capabilities advertised by a backend.
      * This list, together with inner strings, is owned by the `client`.
@@ -2825,15 +2825,15 @@ export interface Client {
      */
     retrievePropertiesFinish(result: Gio.AsyncResult): boolean
     // Has conflict: retrievePropertiesSync(cancellable: Gio.Cancellable | null): boolean
-    // Has conflict: setBackendProperty(propName: string | null, propValue: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: setBackendProperty(propName: string, propValue: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: setBackendPropertyFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: setBackendPropertySync(propName: string | null, propValue: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: setBackendPropertySync(propName: string, propValue: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets a D-Bus bus name that will be used to connect the client
      * to the backend subprocess.
      * @param busName a string representing a D-Bus bus name
      */
-    setBusName(busName: string | null): void
+    setBusName(busName: string): void
     // Has conflict: unwrapDbusError(dbusError: GLib.Error): void
     /**
      * Asynchronously waits until the `client` is connected (according
@@ -2868,8 +2868,8 @@ export interface Client {
     // Own virtual methods of EDataServer-1.2.EDataServer.Client
 
     backendDied(): void
-    backendError(errorMsg: string | null): void
-    backendPropertyChanged(propName: string | null, propValue: string | null): void
+    backendError(errorMsg: string): void
+    backendPropertyChanged(propName: string, propValue: string): void
     /**
      * Queries `client'`s backend for a property of name `prop_name`.
      * The call is finished by e_client_get_backend_property_finish()
@@ -2879,7 +2879,7 @@ export interface Client {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getBackendProperty(propName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getBackendProperty(propName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_get_backend_property().
      * @virtual 
@@ -2894,7 +2894,7 @@ export interface Client {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getBackendPropertySync(propName: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* propValue */ string | null ]
+    getBackendPropertySync(propName: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* propValue */ string | null ]
     /**
      * Opens the `client,` making it ready for queries and other operations.
      * The call is finished by e_client_open_finish() from the `callback`.
@@ -3024,7 +3024,7 @@ export interface Client {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    setBackendProperty(propName: string | null, propValue: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setBackendProperty(propName: string, propValue: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_client_set_backend_property().
      * @virtual 
@@ -3041,7 +3041,7 @@ export interface Client {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    setBackendPropertySync(propName: string | null, propValue: string | null, cancellable: Gio.Cancellable | null): boolean
+    setBackendPropertySync(propName: string, propValue: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Unwraps D-Bus error to local error. `dbus_error` is automatically freed.
      * `dbus_erorr` and `out_error` can point to the same variable.
@@ -3140,7 +3140,7 @@ export class Client extends GObject.Object {
      * @param code an #EClientError error code
      * @returns Localized human readable description of the given error code
      */
-    static errorToString(code: ClientError): string | null
+    static errorToString(code: ClientError): string
     /**
      * Copies a #GSList of #GObject<!-- -->s to the end of `copy_to`.
      * @param copyTo Where to copy; may be %NULL
@@ -3171,7 +3171,7 @@ export class Client extends GObject.Object {
      * @param strings string of comma-separated values
      * @returns Newly allocated #GSList of newly allocated strings corresponding to values parsed from @strings. Free the returned pointer with e_client_util_free_string_slist().
      */
-    static utilParseCommaStrings(strings: string | null): string[]
+    static utilParseCommaStrings(strings: string): string[]
     /**
      * Convert a list of strings into a %NULL-terminated array of strings.
      * @param strings a #GSList of strings (const gchar *)
@@ -3183,7 +3183,7 @@ export class Client extends GObject.Object {
      * @param strv a %NULL-terminated array of strings (const gchar *)
      * @returns Newly allocated #GSList of newly allocated strings. The returned pointer should be freed with e_client_util_free_string_slist(). Note: Paired function for this is e_client_util_slist_to_strv().
      */
-    static utilStrvToSlist(strv: string | null): string[]
+    static utilStrvToSlist(strv: string): string[]
     /**
      * The function takes a `dbus_error` and tries to find a match in `known_errors`
      * for it, if it is a G_IO_ERROR, G_IO_ERROR_DBUS_ERROR. If it is anything else
@@ -3293,7 +3293,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasklistsDeleteSync(tasklistId: string | null, cancellable: Gio.Cancellable | null): boolean
+    tasklistsDeleteSync(tasklistId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a task list `tasklist_id` and returns it as a #JsonObject,
      * which should be freed with json_object_unref(), when no longer needed.
@@ -3305,7 +3305,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasklistsGetSync(tasklistId: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outTasklist */ Json.Object ]
+    tasklistsGetSync(tasklistId: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outTasklist */ Json.Object ]
     /**
      * Creates a new task list, titled `title`. The `out_inserted_tasklist` should
      * be freed with json_object_unref(), when no longer needed.
@@ -3313,7 +3313,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasklistsInsertSync(title: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outInsertedTasklist */ Json.Object ]
+    tasklistsInsertSync(title: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outInsertedTasklist */ Json.Object ]
     /**
      * Lists all configured task lists for the user, calling the `cb` for each of them.
      * @param query an #EGDataQuery to limit returned task lists, or %NULL
@@ -3331,7 +3331,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasklistsPatchSync(tasklistId: string | null, tasklistProperties: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPatchedTasklist */ Json.Object ]
+    tasklistsPatchSync(tasklistId: string, tasklistProperties: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPatchedTasklist */ Json.Object ]
     /**
      * Updates a task list `tasklist_id` with values from the `tasklist`.
      * @param tasklistId id of a task list
@@ -3339,7 +3339,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasklistsUpdateSync(tasklistId: string | null, tasklist: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outUpdatedTasklist */ Json.Object ]
+    tasklistsUpdateSync(tasklistId: string, tasklist: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outUpdatedTasklist */ Json.Object ]
     /**
      * Clears all completed tasks from the task list `tasklist_id`. The affected tasks
      * will be marked as 'hidden' and no longer be returned by default when retrieving
@@ -3348,7 +3348,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksClearSync(tasklistId: string | null, cancellable: Gio.Cancellable | null): boolean
+    tasksClearSync(tasklistId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Deletes a task `task_id` from a task list `tasklist_id`.
      * @param tasklistId id of a task list
@@ -3356,7 +3356,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksDeleteSync(tasklistId: string | null, taskId: string | null, cancellable: Gio.Cancellable | null): boolean
+    tasksDeleteSync(tasklistId: string, taskId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a task `task_id` from a task list `tasklist_id` and returns it as a #JsonObject,
      * which should be freed with json_object_unref(), when no longer needed.
@@ -3369,7 +3369,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksGetSync(tasklistId: string | null, taskId: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outTask */ Json.Object ]
+    tasksGetSync(tasklistId: string, taskId: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outTask */ Json.Object ]
     /**
      * Creates a new task `task` in the task list `tasklist_id`. The `out_inserted_task` should
      * be freed with json_object_unref(), when no longer needed.
@@ -3380,7 +3380,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksInsertSync(tasklistId: string | null, task: Json.Builder, parentTaskId: string | null, previousTaskId: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outInsertedTask */ Json.Object ]
+    tasksInsertSync(tasklistId: string, task: Json.Builder, parentTaskId: string | null, previousTaskId: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outInsertedTask */ Json.Object ]
     /**
      * Lists all tasks in the task list `tasklist_id,` calling the `cb` for each of them.
      * @param tasklistId id of a task list
@@ -3388,7 +3388,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksListSync(tasklistId: string | null, query: GDataQuery | null, cancellable: Gio.Cancellable | null): boolean
+    tasksListSync(tasklistId: string, query: GDataQuery | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Moves the specified task `task_id` to another position in the task
      * list `tasklist_id`. This can include putting it as a child task under
@@ -3400,7 +3400,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksMoveSync(tasklistId: string | null, taskId: string | null, parentTaskId: string | null, previousTaskId: string | null, cancellable: Gio.Cancellable | null): boolean
+    tasksMoveSync(tasklistId: string, taskId: string, parentTaskId: string | null, previousTaskId: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Changes properties `task_properties` of a task `task_id` in the task list `tasklist_id`.
      * 
@@ -3412,7 +3412,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksPatchSync(tasklistId: string | null, taskId: string | null, taskProperties: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPatchedTask */ Json.Object ]
+    tasksPatchSync(tasklistId: string, taskId: string, taskProperties: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPatchedTask */ Json.Object ]
     /**
      * Updates a task `task_id` in a task list `tasklist_id` to the values from the `task`.
      * @param tasklistId id of a task list
@@ -3421,7 +3421,7 @@ export interface GDataSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    tasksUpdateSync(tasklistId: string | null, taskId: string | null, task: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outUpdatedTask */ Json.Object ]
+    tasksUpdateSync(tasklistId: string, taskId: string, task: Json.Builder, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outUpdatedTask */ Json.Object ]
 
     // Class property signals of EDataServer-1.2.EDataServer.GDataSession
 
@@ -3596,7 +3596,7 @@ export interface Module extends GObject.TypePlugin {
      * string is owned by `module` and should not be modified or freed.
      * @returns the filename for @module
      */
-    getFilename(): string | null
+    getFilename(): string
 
     // Conflicting methods
 
@@ -3665,7 +3665,7 @@ export class Module extends GObject.TypeModule {
      * @param filename filename of the shared library module
      * @returns a new #EModule for @filename
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new #EModule that will load the specific shared library
      * when in use.
@@ -3673,7 +3673,7 @@ export class Module extends GObject.TypeModule {
      * @param filename filename of the shared library module
      * @returns a new #EModule for @filename
      */
-    static new(filename: string | null): Module
+    static new(filename: string): Module
     _init(config?: Module.ConstructorProperties): void
     /**
      * Loads all the modules in the specified directory into memory.  If
@@ -3683,7 +3683,7 @@ export class Module extends GObject.TypeModule {
      * @param dirname pathname for a directory containing modules to load
      * @returns a list of #EModules loaded from @dirname
      */
-    static loadAllInDirectory(dirname: string | null): Module[]
+    static loadAllInDirectory(dirname: string): Module[]
     /**
      * Loads all the modules in the specified directory into memory and the other
      * custom prefixes returned by e_util_get_directory_variants().  If
@@ -3697,7 +3697,7 @@ export class Module extends GObject.TypeModule {
      * @param dirprefix prefix of `dirname,` which can be replaced by custom prefixes, or %NULL
      * @returns a list of #EModules loaded    from @dirname and any extra prefix directory.
      */
-    static loadAllInDirectoryAndPrefixes(dirname: string | null, dirprefix: string | null): Module[]
+    static loadAllInDirectoryAndPrefixes(dirname: string, dirprefix: string | null): Module[]
     /**
      * Load the module from the specified filename into memory. If
      * you want to unload it (enabling on-demand loading) you must call
@@ -3705,7 +3705,7 @@ export class Module extends GObject.TypeModule {
      * @param filename filename of the module to load
      * @returns an #EModule loaded from @filename
      */
-    static loadFile(filename: string | null): Module
+    static loadFile(filename: string): Module
 }
 
 export module NetworkMonitor {
@@ -4165,7 +4165,7 @@ export interface SoupAuthBearer {
      * @param accessToken an OAuth 2.0 access token
      * @param expiresInSeconds expiry for `access_token,` or 0 if unknown
      */
-    setAccessToken(accessToken: string | null, expiresInSeconds: number): void
+    setAccessToken(accessToken: string, expiresInSeconds: number): void
 
     // Class property signals of EDataServer-1.2.EDataServer.SoupAuthBearer
 
@@ -4311,7 +4311,7 @@ export interface SoupSession {
      * returned on #G_TLS_ERROR_BAD_CERTIFICATE error.
      * @returns Whether the information was available and set to the out parameters.
      */
-    getSslErrorDetails(): [ /* returnType */ boolean, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags ]
+    getSslErrorDetails(): [ /* returnType */ boolean, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags ]
     /**
      * Handles authentication failure and sets appropriate value to the `out_auth_result`
      * for the provided `op_error` and used `credentials`. Converts the `op_error`
@@ -4321,7 +4321,7 @@ export interface SoupSession {
      * @param credentials credentials used for the authentication
      * @param opError a #GError of the authentication operation
      */
-    handleAuthenticationFailure(credentials: NamedParameters | null, opError: GLib.Error): [ /* outAuthResult */ SourceAuthenticationResult, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags ]
+    handleAuthenticationFailure(credentials: NamedParameters | null, opError: GLib.Error): [ /* outAuthResult */ SourceAuthenticationResult, /* outCertificatePem */ string, /* outCertificateErrors */ Gio.TlsCertificateFlags ]
     /**
      * Creates a new #SoupMessage, similar to soup_message_new(),
      * but also presets request headers with "User-Agent" to be "Evolution/version"
@@ -4332,7 +4332,7 @@ export interface SoupSession {
      * @param uriString a URI string to use for the request
      * @returns a new #SoupMessage, or %NULL on error
      */
-    newMessage(method: string | null, uriString: string | null): Soup.Message
+    newMessage(method: string, uriString: string): Soup.Message
     /**
      * Creates a new #SoupMessage, similar to soup_message_new_from_uri(),
      * but also presets request headers with "User-Agent" to be "Evolution/version"
@@ -4343,7 +4343,7 @@ export interface SoupSession {
      * @param uri a #GUri to use for the request
      * @returns a new #SoupMessage, or %NULL on error
      */
-    newMessageFromUri(method: string | null, uri: GLib.Uri): Soup.Message
+    newMessageFromUri(method: string, uri: GLib.Uri): Soup.Message
     /**
      * Prepares the `message` to be a sent asynchronously with
      * e_soup_session_send_message(). The returned pointer is passed
@@ -4656,7 +4656,7 @@ export class SoupSession extends Soup.Session {
      * @param reasonPhrase preferred string to use for the message, or %NULL
      * @returns Error text based on given arguments. The returned    value is valid as long as @reason_phrase is not freed.
      */
-    static utilStatusToString(statusCode: number, reasonPhrase: string | null): string | null
+    static utilStatusToString(statusCode: number, reasonPhrase: string | null): string
 }
 
 export module Source {
@@ -4810,7 +4810,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param certificateErrors a bit-or of #GTlsCertificateFlags for secure connection certificate
      * @param opError a #GError with a description of the previous credentials error, or %NULL
      */
-    emitCredentialsRequired(reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error | null): void
+    emitCredentialsRequired(reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error | null): void
     /**
      * Checks two #ESource instances for equality.  #ESource instances are
      * equal if their unique identifier strings are equal.
@@ -4828,7 +4828,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * represent the #ESource in a user interface.
      * @returns the display name for @source
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Returns %TRUE if `source` is enabled.
      * 
@@ -4861,7 +4861,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param extensionName an extension name
      * @returns an instance of some #ESourceExtension subclass
      */
-    getExtension(extensionName: string | null): SourceExtension
+    getExtension(extensionName: string): SourceExtension
     /**
      * Asynchronously calls the GetLastCredentialsRequiredArguments method
      * on the server side, to get the last values used for the 'credentials-required'
@@ -4898,8 +4898,8 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      */
     getLastCredentialsRequiredArgumentsSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outReason */ SourceCredentialsReason, /* outCertificatePem */ string | null, /* outCertificateErrors */ Gio.TlsCertificateFlags, /* outOpError */ GLib.Error ]
     // Has conflict: getOauth2AccessToken(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    // Has conflict: getOauth2AccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
-    // Has conflict: getOauth2AccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
+    // Has conflict: getOauth2AccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
+    // Has conflict: getOauth2AccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
     /**
      * Returns the unique identifier string of the parent #ESource.
      * @returns the UID of the parent #ESource
@@ -4938,7 +4938,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * Returns the unique identifier string for `source`.
      * @returns the UID for @source
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Returns whether the D-Bus service will accept changes to `source`.
      * If `source` is not writable, calls to e_source_write() will fail.
@@ -4950,7 +4950,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param extensionName an extension name
      * @returns %TRUE if @source has such an extension, %FALSE if not
      */
-    hasExtension(extensionName: string | null): boolean
+    hasExtension(extensionName: string): boolean
     /**
      * Generates a hash value for `source`.  This function is intended for
      * easily hashing an #ESource to add to a #GHashTable or similar data
@@ -5001,7 +5001,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    invokeCredentialsRequired(reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    invokeCredentialsRequired(reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_invoke_credentials_required().
      * 
@@ -5036,7 +5036,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    invokeCredentialsRequiredSync(reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean
+    invokeCredentialsRequiredSync(reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously looks up a password for `source`.  Both the default and
      * session keyrings are queried.  This operation does not rely on the
@@ -5128,7 +5128,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    mailSignatureReplace(contents: string | null, length: number, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    mailSignatureReplace(contents: string, length: number, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with e_source_mail_signature_replace().
      * @param result a #GAsyncResult
@@ -5144,7 +5144,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on failure
      */
-    mailSignatureReplaceSync(contents: string | null, length: number, cancellable: Gio.Cancellable | null): boolean
+    mailSignatureReplaceSync(contents: string, length: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously replaces the signature file for `source` with a symbolic
      * link to `symlink_target,` which should be an executable file that prints
@@ -5159,7 +5159,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    mailSignatureSymlink(symlinkTarget: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    mailSignatureSymlink(symlinkTarget: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with e_source_mail_signature_symlink().
      * @param result a #GAsyncResult
@@ -5175,7 +5175,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on failure
      */
-    mailSignatureSymlinkSync(symlinkTarget: string | null, cancellable: Gio.Cancellable | null): boolean
+    mailSignatureSymlinkSync(symlinkTarget: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously determines what proxy, if any, to use to connect to `uri`.
      * See e_source_proxy_lookup_sync() for more details.
@@ -5186,7 +5186,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    proxyLookup(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    proxyLookup(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_proxy_lookup().
      * 
@@ -5224,7 +5224,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns a %NULL-terminated array of proxy URIs,    or %NULL
      */
-    proxyLookupSync(uri: string | null, cancellable: Gio.Cancellable | null): string[] | null
+    proxyLookupSync(uri: string, cancellable: Gio.Cancellable | null): string[] | null
     /**
      * Returns the #GDBusObject that was passed to e_source_new().
      * 
@@ -5305,7 +5305,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * and trailing whitespace.
      * @param displayName a display name
      */
-    setDisplayName(displayName: string | null): void
+    setDisplayName(displayName: string): void
     /**
      * Enables or disables `source`.
      * 
@@ -5341,7 +5341,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    storePassword(password: string | null, permanently: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    storePassword(password: string, permanently: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_store_password().
      * @param result a #GAsyncResult
@@ -5361,7 +5361,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    storePasswordSync(password: string | null, permanently: boolean, cancellable: Gio.Cancellable | null): boolean
+    storePasswordSync(password: string, permanently: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
      * Outputs the current contents of `source` as a key file string.
      * Free the returned string with g_free().
@@ -5412,7 +5412,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @virtual 
      */
     changed(): void
-    credentialsRequired(reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error): void
+    credentialsRequired(reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error): void
     /**
      * Asynchronously obtains the OAuth 2.0 access token for `source` along
      * with its expiry in seconds from the current time (or 0 if unknown).
@@ -5434,7 +5434,7 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
-    getOauth2AccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
+    getOauth2AccessTokenFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
     /**
      * Obtains the OAuth 2.0 access token for `source` along with its expiry
      * in seconds from the current time (or 0 if unknown).
@@ -5445,9 +5445,9 @@ export interface Source extends Gio.Initable, Gio.ProxyResolver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    getOauth2AccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
-    invokeAuthenticateImpl(dbusSource: any | null, argCredentials: string | null, cancellable: Gio.Cancellable | null): boolean
-    invokeCredentialsRequiredImpl(dbusSource: any | null, argReason: string | null, argCertificatePem: string | null, argCertificateErrors: string | null, argDbusErrorName: string | null, argDbusErrorMessage: string | null, cancellable: Gio.Cancellable | null): boolean
+    getOauth2AccessTokenSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
+    invokeAuthenticateImpl(dbusSource: any | null, argCredentials: string, cancellable: Gio.Cancellable | null): boolean
+    invokeCredentialsRequiredImpl(dbusSource: any | null, argReason: string, argCertificatePem: string, argCertificateErrors: string, argDbusErrorName: string, argDbusErrorMessage: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously creates a new remote resource by picking out relevant
      * details from `scratch_source`.  The `scratch_source` must be an #ESource
@@ -5732,7 +5732,7 @@ export class Source extends GObject.Object {
      * @param mainContext a #GMainContext or %NULL
      * @returns a new scratch #ESource, or %NULL on error
      */
-    static newWithUid(uid: string | null, mainContext: GLib.MainContext | null): Source
+    static newWithUid(uid: string, mainContext: GLib.MainContext | null): Source
     _init(config?: Source.ConstructorProperties): void
     /**
      * Converts a #GParamSpec name (e.g. "foo-bar" or "foo_bar")
@@ -5742,7 +5742,7 @@ export class Source extends GObject.Object {
      * Applications should not need to use this.
      * @param paramName a #GParamSpec name
      */
-    static parameterToKey(paramName: string | null): string | null
+    static parameterToKey(paramName: string): string | null
 }
 
 export module SourceAddressBook {
@@ -6055,7 +6055,7 @@ export interface SourceAuthentication {
      * settings for use when connecting to a remote account.
      * @returns the proxy profile #ESource:uid
      */
-    getProxyUid(): string | null
+    getProxyUid(): string
     /**
      * Returns whether to offer to remember the provided password by default
      * in password prompts.  This way, if the user unchecks the option it will
@@ -6133,7 +6133,7 @@ export interface SourceAuthentication {
      * for use when connecting to a remote account.
      * @param proxyUid the proxy profile #ESource:uid
      */
-    setProxyUid(proxyUid: string | null): void
+    setProxyUid(proxyUid: string): void
     /**
      * Sets whether to offer to remember the provided password by default in
      * password prompts.  This way, if the user unchecks the option it will be
@@ -6353,7 +6353,7 @@ export interface SourceAutoconfig {
      * If it matches, no copying is done.
      * @returns revision of the data source
      */
-    getRevision(): string | null
+    getRevision(): string
     /**
      * Sets the revision used to map a particular version of a system-wide source
      * to a user-specific source.
@@ -6368,7 +6368,7 @@ export interface SourceAutoconfig {
      * trailing whitespace.
      * @param revision a revision
      */
-    setRevision(revision: string | null): void
+    setRevision(revision: string): void
 
     // Class property signals of EDataServer-1.2.EDataServer.SourceAutoconfig
 
@@ -6658,7 +6658,7 @@ export class SourceCamel extends SourceExtension {
      * @param settingsType a subtype of #CamelSettings
      * @returns the #GType of the generated #ESourceCamel subtype
      */
-    static generateSubtype(protocol: string | null, settingsType: GObject.GType): GObject.GType
+    static generateSubtype(protocol: string, settingsType: GObject.GType): GObject.GType
     /**
      * Returns the extension name for the #ESourceCamel subtype for `protocol`.
      * The extension name can then be passed to e_source_get_extension() to
@@ -6669,7 +6669,7 @@ export class SourceCamel extends SourceExtension {
      * @param protocol a #CamelProvider protocol
      * @returns the #ESourceCamel extension name for @protocol
      */
-    static getExtensionName(protocol: string | null): string | null
+    static getExtensionName(protocol: string): string
     /**
      * Returns the #GType name of the registered #ESourceCamel subtype for
      * `protocol`.
@@ -6679,7 +6679,7 @@ export class SourceCamel extends SourceExtension {
      * @param protocol a #CamelProvider protocol
      * @returns the #ESourceCamel type name for @protocol
      */
-    static getTypeName(protocol: string | null): string | null
+    static getTypeName(protocol: string): string
     /**
      * Creates and registers subclasses of #ESourceCamel for each available
      * #CamelProvider.  This function should be called once during application
@@ -7123,7 +7123,7 @@ export interface SourceCredentialsProvider extends Extensible {
      * @returns Reference registry associated with this @provider. Unref it    with g_object_unref() when no longer needed.
      */
     refRegistry(): GObject.Object
-    // Has conflict: refSource(uid: string | null): Source | null
+    // Has conflict: refSource(uid: string): Source | null
     /**
      * Registers a credentials provider implementation and adds its own reference on
      * the `provider_impl`.
@@ -7183,7 +7183,7 @@ export interface SourceCredentialsProvider extends Extensible {
      * @param uid an #ESource UID
      * @returns Referenced #ESource with the given @uid, or %NULL, when it    could not be found. Unref the returned #ESource with g_object_unref(), when no longer needed.
      */
-    refSource(uid: string | null): Source | null
+    refSource(uid: string): Source | null
 
     // Class property signals of EDataServer-1.2.EDataServer.SourceCredentialsProvider
 
@@ -7811,16 +7811,16 @@ export interface SourceLDAP {
     dupRootDn(): string | null
     getAuthentication(): SourceLDAPAuthentication
     getCanBrowse(): boolean
-    getFilter(): string | null
+    getFilter(): string
     getLimit(): number
-    getRootDn(): string | null
+    getRootDn(): string
     getScope(): SourceLDAPScope
     getSecurity(): SourceLDAPSecurity
     setAuthentication(authentication: SourceLDAPAuthentication): void
     setCanBrowse(canBrowse: boolean): void
-    setFilter(filter: string | null): void
+    setFilter(filter: string): void
     setLimit(limit: number): void
-    setRootDn(rootDn: string | null): void
+    setRootDn(rootDn: string): void
     setScope(scope: SourceLDAPScope): void
     setSecurity(security: SourceLDAPSecurity): void
 
@@ -9377,7 +9377,7 @@ export interface SourceOpenPGP {
      * Returns the OpenPGP key ID used to sign and encrypt messages.
      * @returns the key ID used to sign and encrypt messages
      */
-    getKeyId(): string | null
+    getKeyId(): string
     /**
      * Returns, whether gpg can locate keys using Web Key Directory (WKD) lookup
      * when encrypting messages. The default is %TRUE.
@@ -9411,7 +9411,7 @@ export interface SourceOpenPGP {
      * messages.
      * @returns the signing algorithm for outgoing messages
      */
-    getSigningAlgorithm(): string | null
+    getSigningAlgorithm(): string
     /**
      * Sets whether to skip key validation and assume that used keys are
      * always fully trusted.
@@ -9437,7 +9437,7 @@ export interface SourceOpenPGP {
      * instead.
      * @param keyId the key ID used to sign and encrypt messages
      */
-    setKeyId(keyId: string | null): void
+    setKeyId(keyId: string): void
     /**
      * Sets the `locate_keys` on the `extension,` which is used to instruct
      * gpg to locate keys using Web Key Directory (WKD) lookup when encrypting
@@ -9478,7 +9478,7 @@ export interface SourceOpenPGP {
      * %NULL is set instead.
      * @param signingAlgorithm the signing algorithm for outgoing messages
      */
-    setSigningAlgorithm(signingAlgorithm: string | null): void
+    setSigningAlgorithm(signingAlgorithm: string): void
 
     // Class property signals of EDataServer-1.2.EDataServer.SourceOpenPGP
 
@@ -9686,13 +9686,13 @@ export interface SourceProxy {
      * is used to look up proxy information for all protocols.
      * @returns the autoconfiguration URL
      */
-    getAutoconfigUrl(): string | null
+    getAutoconfigUrl(): string
     /**
      * Returns the machine name to proxy FTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @returns FTP proxy host name
      */
-    getFtpHost(): string | null
+    getFtpHost(): string
     /**
      * Returns the port on the machine defined by #ESourceProxy:ftp-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9704,19 +9704,19 @@ export interface SourceProxy {
      * and #ESourceProxy:http-use-auth is %TRUE.
      * @returns HTTP proxy password
      */
-    getHttpAuthPassword(): string | null
+    getHttpAuthPassword(): string
     /**
      * Returns the user name to pass as authentication when doing HTTP proxying
      * and #ESourceProxy:http-use-auth is %TRUE.
      * @returns HTTP proxy username
      */
-    getHttpAuthUser(): string | null
+    getHttpAuthUser(): string
     /**
      * Returns the machine name to proxy HTTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @returns HTTP proxy host name
      */
-    getHttpHost(): string | null
+    getHttpHost(): string
     /**
      * Returns the port on the machine defined by #ESourceProxy:http-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9738,7 +9738,7 @@ export interface SourceProxy {
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @returns secure HTTP proxy host name
      */
-    getHttpsHost(): string | null
+    getHttpsHost(): string
     /**
      * Returns the port on the machine defined by #ESourceProxy:https-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9770,7 +9770,7 @@ export interface SourceProxy {
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @returns SOCKS proxy host name
      */
-    getSocksHost(): string | null
+    getSocksHost(): string
     /**
      * Returns the port on the machine defined by #ESourceProxy:socks-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9783,13 +9783,13 @@ export interface SourceProxy {
      * is used to look up proxy information for all protocols.
      * @param autoconfigUrl an autoconfiguration URL
      */
-    setAutoconfigUrl(autoconfigUrl: string | null): void
+    setAutoconfigUrl(autoconfigUrl: string): void
     /**
      * Sets the machine name to proxy FTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @param ftpHost FTP proxy host name
      */
-    setFtpHost(ftpHost: string | null): void
+    setFtpHost(ftpHost: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:ftp-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9801,19 +9801,19 @@ export interface SourceProxy {
      * and #ESourceProxy:http-use-auth is %TRUE.
      * @param httpAuthPassword HTTP proxy password
      */
-    setHttpAuthPassword(httpAuthPassword: string | null): void
+    setHttpAuthPassword(httpAuthPassword: string): void
     /**
      * Sets the user name to pass as authentication when doing HTTP proxying
      * and #ESourceProxy:http-use-auth is %TRUE.
      * @param httpAuthUser HTTP proxy username
      */
-    setHttpAuthUser(httpAuthUser: string | null): void
+    setHttpAuthUser(httpAuthUser: string): void
     /**
      * Sets the machine name to proxy HTTP through when `extension'`s
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @param httpHost HTTP proxy host name
      */
-    setHttpHost(httpHost: string | null): void
+    setHttpHost(httpHost: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:http-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9835,7 +9835,7 @@ export interface SourceProxy {
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @param httpsHost secure HTTP proxy host name
      */
-    setHttpsHost(httpsHost: string | null): void
+    setHttpsHost(httpsHost: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:https-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -9849,7 +9849,7 @@ export interface SourceProxy {
      * and network addresses with a netmask (something like 192.168.0.0/24).
      * @param ignoreHosts a %NULL-terminated string array of hosts
      */
-    setIgnoreHosts(ignoreHosts: string | null): void
+    setIgnoreHosts(ignoreHosts: string): void
     /**
      * Sets the proxy configuration method for `extension`.
      * 
@@ -9863,7 +9863,7 @@ export interface SourceProxy {
      * #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
      * @param socksHost SOCKS proxy host name
      */
-    setSocksHost(socksHost: string | null): void
+    setSocksHost(socksHost: string): void
     /**
      * Sets the port on the machine defined by #ESourceProxy:socks-host to proxy
      * through when `extension'`s #ESourceProxy:method is `E_PROXY_METHOD_MANUAL`.
@@ -10355,7 +10355,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      * @param extensionName the extension name to find
      * @returns an #ESource, or %NULL if no match was found
      */
-    findExtension(source: Source, extensionName: string | null): Source | null
+    findExtension(source: Source, extensionName: string): Source | null
     getOauth2Services(): OAuth2Services
     /**
      * Similar to e_source_registry_list_sources(), but returns only enabled
@@ -10508,7 +10508,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      * @param extensionName an extension_name
      * @returns the default #ESource based on @extension_name
      */
-    refDefaultForExtensionName(extensionName: string | null): Source | null
+    refDefaultForExtensionName(extensionName: string): Source | null
     /**
      * Returns the #ESource most recently passed to
      * e_source_registry_set_default_mail_account() either in this session
@@ -10559,7 +10559,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      * @param uid a unique identifier string
      * @returns an #ESource, or %NULL if no match was found
      */
-    refSource(uid: string | null): Source | null
+    refSource(uid: string): Source | null
     /**
      * Asynchronously requests the D-Bus service to refresh collection backend
      * for an #ESource with UID `source_uid`. The result means that the refresh
@@ -10573,7 +10573,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    refreshBackend(sourceUid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    refreshBackend(sourceUid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with e_source_registry_refresh_backend().
      * 
@@ -10593,7 +10593,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded
      */
-    refreshBackendSync(sourceUid: string | null, cancellable: Gio.Cancellable | null): boolean
+    refreshBackendSync(sourceUid: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets `default_source` as the default address book.  If `default_source`
      * is %NULL, the default address book is reset to the built-in address book.
@@ -10641,7 +10641,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
      * @param extensionName an extension name
      * @param defaultSource an #ESource, or %NULL
      */
-    setDefaultForExtensionName(extensionName: string | null, defaultSource: Source | null): void
+    setDefaultForExtensionName(extensionName: string, defaultSource: Source | null): void
     /**
      * Sets `default_source` as the default mail account.  If `default_source`
      * is %NULL, the default mail account is reset to the built-in mail account.
@@ -10673,7 +10673,7 @@ export interface SourceRegistry extends Gio.AsyncInitable, Gio.Initable {
 
     // Own virtual methods of EDataServer-1.2.EDataServer.SourceRegistry
 
-    credentialsRequired(source: Source, reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error): void
+    credentialsRequired(source: Source, reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error): void
     sourceAdded(source: Source): void
     sourceChanged(source: Source): void
     sourceDisabled(source: Source): void
@@ -11386,7 +11386,7 @@ export interface SourceSecurity {
      * desired, the convention is to set #ESourceSecurity:method to "none".
      * @returns the method used to establish a secure network connection
      */
-    getMethod(): string | null
+    getMethod(): string
     /**
      * This is a convenience function which returns whether a secure network
      * connection is desired, regardless of the method used.  This relies on
@@ -11772,9 +11772,9 @@ export interface SourceWeather {
     // Owm methods of EDataServer-1.2.EDataServer.SourceWeather
 
     dupLocation(): string | null
-    getLocation(): string | null
+    getLocation(): string
     getUnits(): SourceWeatherUnits
-    setLocation(location: string | null): void
+    setLocation(location: string): void
     setUnits(units: SourceWeatherUnits): void
 
     // Class property signals of EDataServer-1.2.EDataServer.SourceWeather
@@ -12181,7 +12181,7 @@ export interface SourceWebdav {
      * @param cert the invalid certificate of the connection over which `host` is about        to be sent
      * @param response user's response from a trust prompt for `cert`
      */
-    updateSslTrust(host: string | null, cert: Gio.TlsCertificate, response: TrustPromptResponse): void
+    updateSslTrust(host: string, cert: Gio.TlsCertificate, response: TrustPromptResponse): void
     /**
      * Verifies SSL/TLS trust for the given `host` and `cert,` as previously stored in the `extension`
      * with e_source_webdav_update_ssl_trust().
@@ -12189,7 +12189,7 @@ export interface SourceWebdav {
      * @param cert the invalid certificate of the connection over which `host` is about        to be sent
      * @param certErrors a bit-or of #GTlsCertificateFlags describing the reason   for the `cert` to be considered invalid
      */
-    verifySslTrust(host: string | null, cert: Gio.TlsCertificate, certErrors: Gio.TlsCertificateFlags): TrustPromptResponse
+    verifySslTrust(host: string, cert: Gio.TlsCertificate, certErrors: Gio.TlsCertificateFlags): TrustPromptResponse
 
     // Class property signals of EDataServer-1.2.EDataServer.SourceWebdav
 
@@ -12316,7 +12316,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    copySync(sourceUri: string | null, destinationUri: string | null, depth: string | null, canOverwrite: boolean, cancellable: Gio.Cancellable | null): boolean
+    copySync(sourceUri: string, destinationUri: string, depth: string, canOverwrite: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
      * Deletes a resource identified by `uri` on the server. The URI can
      * reference a collection, in which case `depth` should be %E_WEBDAV_DEPTH_INFINITY.
@@ -12336,7 +12336,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    deleteSync(uri: string | null, depth: string | null, etag: string | null, cancellable: Gio.Cancellable | null): boolean
+    deleteSync(uri: string, depth: string | null, etag: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Deletes a resource identified by `uri` on the server. The URI can
      * reference a collection, in which case `depth` should be %E_WEBDAV_DEPTH_INFINITY.
@@ -12360,7 +12360,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    deleteWithHeadersSync(uri: string | null, depth: string | null, etag: string | null, inHeaders: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): boolean
+    deleteWithHeadersSync(uri: string, depth: string | null, etag: string | null, inHeaders: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Converts possibly path-only `href` into a full URI under the `request_uri`.
      * When the `request_uri` is %NULL, the URI defined in associated #ESource is
@@ -12371,7 +12371,7 @@ export interface WebDAVSession {
      * @param href a possibly path-only href
      * @returns The @href as a full URI
      */
-    ensureFullUri(requestUri: GLib.Uri | null, href: string | null): string | null
+    ensureFullUri(requestUri: GLib.Uri | null, href: string): string | null
     /**
      * Gets Access Control List (ACL) restrictions for the `uri,` or, in case it's %NULL,
      * for the URI defined in associated #ESource. The `out_principal_kind` is valid only
@@ -12447,7 +12447,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    getDataSync(uri: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders, /* outBytes */ string | null, /* outLength */ number | null ]
+    getDataSync(uri: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders, /* outBytes */ string | null, /* outLength */ number | null ]
     /**
      * Returns last DAV error code as returned by the server. Each recognized code
      * is enclosed in "[]" in the returned string, to be able to distinguish between
@@ -12501,7 +12501,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    getSync(uri: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders, /* outStream */ Gio.OutputStream ]
+    getSync(uri: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders, /* outStream */ Gio.OutputStream ]
     /**
      * Issues a getctag property request for a collection identified by `uri,` or,
      * in case it's %NULL, on the URI defined in associated #ESource. The ctag is
@@ -12531,7 +12531,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    listSync(uri: string | null, depth: string | null, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outResources */ WebDAVResource[] ]
+    listSync(uri: string | null, depth: string, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outResources */ WebDAVResource[] ]
     /**
      * Locks a resource identified by `uri,` or, in case it's %NULL, by the URI defined
      * in associated #ESource. It obtains a write lock with the given `lock_scope`.
@@ -12568,7 +12568,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    lockSync(uri: string | null, depth: string | null, lockTimeout: number, xml: XmlDocument, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outLockToken */ string | null, /* outXmlResponse */ libxml2.Doc | null ]
+    lockSync(uri: string | null, depth: string, lockTimeout: number, xml: XmlDocument, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outLockToken */ string | null, /* outXmlResponse */ libxml2.Doc | null ]
     /**
      * Creates a new calendar collection identified by `uri` on the server.
      * The `supports` defines what component types can be stored into
@@ -12587,7 +12587,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    mkcalendarSync(uri: string | null, displayName: string | null, description: string | null, color: string | null, supports: number, cancellable: Gio.Cancellable | null): boolean
+    mkcalendarSync(uri: string, displayName: string | null, description: string | null, color: string | null, supports: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Creates a new address book collection identified by `uri` on the server.
      * 
@@ -12600,7 +12600,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    mkcolAddressbookSync(uri: string | null, displayName: string | null, description: string | null, cancellable: Gio.Cancellable | null): boolean
+    mkcolAddressbookSync(uri: string, displayName: string | null, description: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Creates a new generic collection identified by `uri` on the server.
      * To create specific collections use e_webdav_session_mkcalendar_sync()
@@ -12609,7 +12609,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    mkcolSync(uri: string | null, cancellable: Gio.Cancellable | null): boolean
+    mkcolSync(uri: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Moves a resource identified by `source_uri` to `destination_uri` on the server.
      * The `source_uri` can reference also collections.
@@ -12619,8 +12619,22 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    moveSync(sourceUri: string | null, destinationUri: string | null, canOverwrite: boolean, cancellable: Gio.Cancellable | null): boolean
-    newMessage(method: string | null, uri: string | null): Soup.Message
+    moveSync(sourceUri: string, destinationUri: string, canOverwrite: boolean, cancellable: Gio.Cancellable | null): boolean
+    newMessage(method: string, uri: string | null): Soup.Message
+
+    // Overloads of newMessage
+
+    /**
+     * Creates a new #SoupMessage, similar to soup_message_new(),
+     * but also presets request headers with "User-Agent" to be "Evolution/version"
+     * and with "Connection" to be "close".
+     * 
+     * See also e_soup_session_new_message_from_uri().
+     * @param method an HTTP method
+     * @param uriString a URI string to use for the request
+     * @returns a new #SoupMessage, or %NULL on error
+     */
+    newMessage(method: string, uriString: string): Soup.Message
     /**
      * Issues OPTIONS request on the provided `uri,` or, in case it's %NULL, on the URI
      * defined in associated #ESource.
@@ -12664,7 +12678,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    postSync(uri: string | null, data: string | null, dataLength: number, inContentType: string | null, inHeaders: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContentType */ string | null, /* outHeaders */ Soup.MessageHeaders, /* outContent */ number[] | null ]
+    postSync(uri: string | null, data: string, dataLength: number, inContentType: string | null, inHeaders: Soup.MessageHeaders | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContentType */ string | null, /* outHeaders */ Soup.MessageHeaders, /* outContent */ number[] | null ]
     /**
      * Issues a DAV:principal-property-search for the `uri,` or, in case it's %NULL,
      * for the URI defined in associated #ESource. The DAV:principal-property-search
@@ -12692,7 +12706,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded. Note it can report success also when no matching    principal had been found.
      */
-    principalPropertySearchSync(uri: string | null, applyToPrincipalCollectionSet: boolean, matchNsUri: string | null, matchProperty: string | null, matchValue: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPrincipals */ WebDAVResource[] ]
+    principalPropertySearchSync(uri: string | null, applyToPrincipalCollectionSet: boolean, matchNsUri: string | null, matchProperty: string, matchValue: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPrincipals */ WebDAVResource[] ]
     /**
      * Issues PROPFIND request on the provided `uri,` or, in case it's %NULL, on the URI
      * defined in associated #ESource. On success, calls `func` for each returned
@@ -12705,7 +12719,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    propfindSync(uri: string | null, depth: string | null, xml: XmlDocument | null, cancellable: Gio.Cancellable | null): boolean
+    propfindSync(uri: string | null, depth: string, xml: XmlDocument | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Issues PROPPATCH request on the provided `uri,` or, in case it's %NULL, on the URI
      * defined in associated #ESource, with the `changes`. The order of requested changes
@@ -12751,7 +12765,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    putDataSync(uri: string | null, etag: string | null, contentType: string | null, inHeaders: Soup.MessageHeaders | null, bytes: string | null, length: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders ]
+    putDataSync(uri: string, etag: string | null, contentType: string, inHeaders: Soup.MessageHeaders | null, bytes: string, length: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders ]
     /**
      * Writes data from `stream` to a resource identified by `uri` to the server.
      * The URI cannot reference a collection.
@@ -12792,7 +12806,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    putSync(uri: string | null, etag: string | null, contentType: string | null, inHeaders: Soup.MessageHeaders | null, stream: Gio.InputStream, streamLength: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders ]
+    putSync(uri: string, etag: string | null, contentType: string, inHeaders: Soup.MessageHeaders | null, stream: Gio.InputStream, streamLength: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outHref */ string | null, /* outEtag */ string | null, /* outHeaders */ Soup.MessageHeaders ]
     /**
      * Refreshes existing lock `lock_token` for a resource identified by `uri,`
      * or, in case it's %NULL, on the URI defined in associated #ESource.
@@ -12804,7 +12818,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    refreshLockSync(uri: string | null, lockToken: string | null, lockTimeout: number, cancellable: Gio.Cancellable | null): boolean
+    refreshLockSync(uri: string | null, lockToken: string, lockTimeout: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Tries to read detailed error information from `response_data,`
      * if not provided, then from `message'`s response_body. If the detailed
@@ -12916,7 +12930,7 @@ export interface WebDAVSession {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    unlockSync(uri: string | null, lockToken: string | null, cancellable: Gio.Cancellable | null): boolean
+    unlockSync(uri: string | null, lockToken: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Updates properties (set/remove) on the provided `uri,` or, in case it's %NULL,
      * on the URI defined in associated #ESource, with the `changes`. The order
@@ -13092,7 +13106,7 @@ export class WebDAVSession extends SoupSession {
      * @param href2 the second href
      * @returns whether the two href-s reference the same item
      */
-    static utilItemHrefEqual(href1: string | null, href2: string | null): boolean
+    static utilItemHrefEqual(href1: string, href2: string): boolean
     /**
      * Dequotes `text,` if it's enclosed in double-quotes. The function
      * changes `text,` it doesn't allocate new string. The function does
@@ -13129,7 +13143,7 @@ export interface XmlDocument {
      * @param name name of the attribute
      * @param value value of the attribute
      */
-    addAttribute(nsHref: string | null, name: string | null, value: string | null): void
+    addAttribute(nsHref: string | null, name: string, value: string): void
     /**
      * Adds a new attribute with a double value to the current element.
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
@@ -13139,7 +13153,7 @@ export interface XmlDocument {
      * @param name name of the attribute
      * @param value double value of the attribute
      */
-    addAttributeDouble(nsHref: string | null, name: string | null, value: number): void
+    addAttributeDouble(nsHref: string | null, name: string, value: number): void
     /**
      * Adds a new attribute with an integer value to the current element.
      * Use %NULL `ns_href,` to use the default namespace, otherwise either previously
@@ -13149,7 +13163,7 @@ export interface XmlDocument {
      * @param name name of the attribute
      * @param value integer value of the attribute
      */
-    addAttributeInt(nsHref: string | null, name: string | null, value: number): void
+    addAttributeInt(nsHref: string | null, name: string, value: number): void
     /**
      * Adds a new attribute with a time_t value in ISO 8601 format to the current element.
      * The format is "YYYY-MM-DDTHH:MM:SSZ".
@@ -13160,7 +13174,7 @@ export interface XmlDocument {
      * @param name name of the attribute
      * @param value time_t value of the attribute
      */
-    addAttributeTime(nsHref: string | null, name: string | null, value: number): void
+    addAttributeTime(nsHref: string | null, name: string, value: number): void
     /**
      * Adds a new attribute with a time_t value in iCalendar format to the current element.
      * The format is "YYYYMMDDTHHMMSSZ".
@@ -13171,7 +13185,7 @@ export interface XmlDocument {
      * @param name name of the attribute
      * @param value time_t value of the attribute
      */
-    addAttributeTimeIcal(nsHref: string | null, name: string | null, value: number): void
+    addAttributeTimeIcal(nsHref: string | null, name: string, value: number): void
     /**
      * Adds an empty element, which is an element with no attribute and no value.
      * 
@@ -13180,7 +13194,7 @@ export interface XmlDocument {
      * @param nsHref optional namespace href for the new element, or %NULL
      * @param name name of the new element
      */
-    addEmptyElement(nsHref: string | null, name: string | null): void
+    addEmptyElement(nsHref: string | null, name: string): void
     /**
      * This is a pair function for e_xml_document_start_element() and
      * e_xml_document_start_text_element(), which changes current
@@ -13206,7 +13220,7 @@ export interface XmlDocument {
      * @param nsHref optional namespace href for the new element, or %NULL
      * @param name name of the new element
      */
-    startElement(nsHref: string | null, name: string | null): void
+    startElement(nsHref: string | null, name: string): void
     /**
      * Starts a new text element as a child of the current element.
      * Each such call should be ended with corresponding e_xml_document_end_element().
@@ -13218,19 +13232,19 @@ export interface XmlDocument {
      * @param nsHref optional namespace href for the new element, or %NULL
      * @param name name of the new element
      */
-    startTextElement(nsHref: string | null, name: string | null): void
+    startTextElement(nsHref: string | null, name: string): void
     /**
      * Writes `value` of length `len,` encoded to base64, as content of the current element.
      * @param value value to write as the content
      * @param len length of `value`
      */
-    writeBase64(value: string | null, len: number): void
+    writeBase64(value: string, len: number): void
     /**
      * Writes `value` of length `len` as content of the current element.
      * @param value value to write as the content
      * @param len length of `value`
      */
-    writeBuffer(value: string | null, len: number): void
+    writeBuffer(value: string, len: number): void
     /**
      * Writes `value` as content of the current element.
      * @param value value to write as the content
@@ -13245,7 +13259,7 @@ export interface XmlDocument {
      * Writes `value` as content of the current element.
      * @param value value to write as the content
      */
-    writeString(value: string | null): void
+    writeString(value: string): void
     /**
      * Writes `value` in ISO 8601 format as content of the current element.
      * The format is "YYYY-MM-DDTHH:MM:SSZ".
@@ -13290,7 +13304,7 @@ export class XmlDocument extends GObject.Object {
      * @param rootElement root element name
      * @returns a new #EXmlDocument; free it with g_object_unref(),    when no longer needed.
      */
-    constructor(nsHref: string | null, rootElement: string | null) 
+    constructor(nsHref: string | null, rootElement: string) 
     /**
      * Creates a new #EXmlDocument with root element `root_element` and optionally
      * also with set default namespace `ns_href`.
@@ -13299,7 +13313,7 @@ export class XmlDocument extends GObject.Object {
      * @param rootElement root element name
      * @returns a new #EXmlDocument; free it with g_object_unref(),    when no longer needed.
      */
-    static new(nsHref: string | null, rootElement: string | null): XmlDocument
+    static new(nsHref: string | null, rootElement: string): XmlDocument
     _init(config?: XmlDocument.ConstructorProperties): void
 }
 
@@ -13342,12 +13356,12 @@ export interface ClientClass {
     retrieveCapabilities: (client: Client, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     retrieveCapabilitiesFinish: (client: Client, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* capabilities */ string | null ]
     retrieveCapabilitiesSync: (client: Client, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* capabilities */ string | null ]
-    getBackendProperty: (client: Client, propName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    getBackendProperty: (client: Client, propName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     getBackendPropertyFinish: (client: Client, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* propValue */ string | null ]
-    getBackendPropertySync: (client: Client, propName: string | null, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* propValue */ string | null ]
-    setBackendProperty: (client: Client, propName: string | null, propValue: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    getBackendPropertySync: (client: Client, propName: string, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* propValue */ string | null ]
+    setBackendProperty: (client: Client, propName: string, propValue: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     setBackendPropertyFinish: (client: Client, result: Gio.AsyncResult) => boolean
-    setBackendPropertySync: (client: Client, propName: string | null, propValue: string | null, cancellable: Gio.Cancellable | null) => boolean
+    setBackendPropertySync: (client: Client, propName: string, propValue: string, cancellable: Gio.Cancellable | null) => boolean
     open: (client: Client, onlyIfExists: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     openFinish: (client: Client, result: Gio.AsyncResult) => boolean
     openSync: (client: Client, onlyIfExists: boolean, cancellable: Gio.Cancellable | null) => boolean
@@ -13359,9 +13373,9 @@ export interface ClientClass {
     refreshSync: (client: Client, cancellable: Gio.Cancellable | null) => boolean
     retrievePropertiesSync: (client: Client, cancellable: Gio.Cancellable | null) => boolean
     opened: (client: Client, error: GLib.Error) => void
-    backendError: (client: Client, errorMsg: string | null) => void
+    backendError: (client: Client, errorMsg: string) => void
     backendDied: (client: Client) => void
-    backendPropertyChanged: (client: Client, propName: string | null, propValue: string | null) => void
+    backendPropertyChanged: (client: Client, propName: string, propValue: string) => void
 }
 
 export abstract class ClientClass {
@@ -13418,7 +13432,7 @@ export interface Collator {
      * @param str The string to generate a collation key for
      * @returns A collation key for @str, or    %NULL on failure with @error set.
      */
-    generateKey(str: string | null): string | null
+    generateKey(str: string): string | null
     /**
      * Generates a sort key for the given alphabetic `index`.
      * 
@@ -13442,7 +13456,7 @@ export interface Collator {
      * @param str A string
      * @returns The alphabetic index under which @str would sort
      */
-    getIndex(str: string | null): number
+    getIndex(str: string): number
     /**
      * Fetches the displayable labels and index positions for the active alphabet.
      * @returns    The array of displayable labels for each index in the active alphabet(s).
@@ -13480,7 +13494,7 @@ export class Collator {
      * @param locale The locale under which to sort
      * @returns A newly created #ECollator.
      */
-    constructor(locale: string | null) 
+    constructor(locale: string) 
     /**
      * Creates a new #ECollator for the given `locale,`
      * the returned collator should be freed with e_collator_unref().
@@ -13488,7 +13502,7 @@ export class Collator {
      * @param locale The locale under which to sort
      * @returns A newly created #ECollator.
      */
-    static new(locale: string | null): Collator
+    static new(locale: string): Collator
     /**
      * Creates a new #ECollator for the given `locale,`
      * the returned collator should be freed with e_collator_unref().
@@ -13499,7 +13513,7 @@ export class Collator {
      * @param locale The locale under which to sort
      * @returns A newly created #ECollator.
      */
-    static newInterpretCountry(locale: string | null): Collator
+    static newInterpretCountry(locale: string): Collator
     static errorQuark(): GLib.Quark
 }
 
@@ -13561,8 +13575,8 @@ export interface FreeFormExpSymbol {
 
     // Own fields of EDataServer-1.2.EDataServer.FreeFormExpSymbol
 
-    names: string | null
-    hint: string | null
+    names: string
+    hint: string
     buildSexp: FreeFormExpBuildSexpFunc
 }
 
@@ -13837,7 +13851,7 @@ export interface NamedParameters {
      * @returns whether the two parameters are equal
      */
     equal(parameters2: NamedParameters): boolean
-    exists(name: string | null): boolean
+    exists(name: string): boolean
     /**
      * Frees an instance of #ENamedParameters, previously allocated
      * with e_named_parameters_new(). Function does nothing, if
@@ -13850,7 +13864,7 @@ export interface NamedParameters {
      * @param name name of a parameter to get
      * @returns value of a parameter named @name, or %NULL.
      */
-    get(name: string | null): string | null
+    get(name: string): string | null
     getName(index: number): string | null
     /**
      * Creates a new instance of an #ENamedParameters, with initial content
@@ -13871,7 +13885,7 @@ export interface NamedParameters {
      * @param name name of a parameter to set
      * @param value value to set, or %NULL to unset
      */
-    set(name: string | null, value: string | null): void
+    set(name: string, value: string | null): void
     /**
      * Compares current value of parameter named `name` with given `value`
      * and returns whether they are equal, either case sensitively or
@@ -13882,7 +13896,7 @@ export interface NamedParameters {
      * @param caseSensitively whether to compare case sensitively
      * @returns Whether parameter of given name has stored value of given value.
      */
-    test(name: string | null, value: string | null, caseSensitively: boolean): boolean
+    test(name: string, value: string, caseSensitively: boolean): boolean
     toString(): string | null
     toStrv(): string[]
 }
@@ -13931,7 +13945,7 @@ export class NamedParameters {
      * @param str a string to be used as a content of a newly created #ENamedParameters
      * @returns newly allocated #ENamedParameters
      */
-    static newString(str: string | null): NamedParameters
+    static newString(str: string): NamedParameters
     /**
      * Creates a new instance of an #ENamedParameters, with initial content
      * being taken from `strv`. This should be freed with e_named_parameters_free(),
@@ -13943,7 +13957,7 @@ export class NamedParameters {
      * @param strv NULL-terminated string array to be used as a content of a newly     created #ENamedParameters
      * @returns newly allocated #ENamedParameters
      */
-    static newStrv(strv: string | null): NamedParameters
+    static newStrv(strv: string): NamedParameters
 }
 
 export interface NetworkMonitorClass {
@@ -14006,21 +14020,21 @@ export interface OAuth2ServiceInterface {
     canProcess: (service: OAuth2Service, source: Source) => boolean
     guessCanProcess: (service: OAuth2Service, protocol: string | null, hostname: string | null) => boolean
     getFlags: (service: OAuth2Service) => number
-    getName: (service: OAuth2Service) => string | null
-    getDisplayName: (service: OAuth2Service) => string | null
-    getClientId: (service: OAuth2Service, source: Source) => string | null
+    getName: (service: OAuth2Service) => string
+    getDisplayName: (service: OAuth2Service) => string
+    getClientId: (service: OAuth2Service, source: Source) => string
     getClientSecret: (service: OAuth2Service, source: Source) => string | null
-    getAuthenticationUri: (service: OAuth2Service, source: Source) => string | null
-    getRefreshUri: (service: OAuth2Service, source: Source) => string | null
+    getAuthenticationUri: (service: OAuth2Service, source: Source) => string
+    getRefreshUri: (service: OAuth2Service, source: Source) => string
     getRedirectUri: (service: OAuth2Service, source: Source) => string | null
     prepareAuthenticationUriQuery: (service: OAuth2Service, source: Source, uriQuery: GLib.HashTable) => void
-    getAuthenticationPolicy: (service: OAuth2Service, source: Source, uri: string | null) => OAuth2ServiceNavigationPolicy
-    extractAuthorizationCode: (service: OAuth2Service, source: Source, pageTitle: string | null, pageUri: string | null, pageContent: string | null) => [ /* returnType */ boolean, /* outAuthorizationCode */ string | null ]
-    prepareGetTokenForm: (service: OAuth2Service, source: Source, authorizationCode: string | null, form: GLib.HashTable) => void
+    getAuthenticationPolicy: (service: OAuth2Service, source: Source, uri: string) => OAuth2ServiceNavigationPolicy
+    extractAuthorizationCode: (service: OAuth2Service, source: Source, pageTitle: string, pageUri: string, pageContent: string | null) => [ /* returnType */ boolean, /* outAuthorizationCode */ string | null ]
+    prepareGetTokenForm: (service: OAuth2Service, source: Source, authorizationCode: string, form: GLib.HashTable) => void
     prepareGetTokenMessage: (service: OAuth2Service, source: Source, message: Soup.Message) => void
-    prepareRefreshTokenForm: (service: OAuth2Service, source: Source, refreshToken: string | null, form: GLib.HashTable) => void
+    prepareRefreshTokenForm: (service: OAuth2Service, source: Source, refreshToken: string, form: GLib.HashTable) => void
     prepareRefreshTokenMessage: (service: OAuth2Service, source: Source, message: Soup.Message) => void
-    extractErrorMessage: (service: OAuth2Service, source: Source, pageTitle: string | null, pageUri: string | null, pageContent: string | null) => [ /* returnType */ boolean, /* outErrorMessage */ string | null ]
+    extractErrorMessage: (service: OAuth2Service, source: Source, pageTitle: string, pageUri: string, pageContent: string | null) => [ /* returnType */ boolean, /* outErrorMessage */ string | null ]
     reserved: any[]
 }
 
@@ -14372,7 +14386,7 @@ export interface SourceClass {
 
     parentClass: GObject.ObjectClass
     changed: (source: Source) => void
-    credentialsRequired: (source: Source, reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error) => void
+    credentialsRequired: (source: Source, reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error) => void
     authenticate: (source: Source, credentials: NamedParameters) => void
     removeSync: (source: Source, cancellable: Gio.Cancellable | null) => boolean
     remove: (source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
@@ -14386,11 +14400,11 @@ export interface SourceClass {
     remoteDeleteSync: (source: Source, cancellable: Gio.Cancellable | null) => boolean
     remoteDelete: (source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     remoteDeleteFinish: (source: Source, result: Gio.AsyncResult) => boolean
-    getOauth2AccessTokenSync: (source: Source, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
+    getOauth2AccessTokenSync: (source: Source, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
     getOauth2AccessToken: (source: Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
-    getOauth2AccessTokenFinish: (source: Source, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number ]
-    invokeCredentialsRequiredImpl: (source: Source, dbusSource: any | null, argReason: string | null, argCertificatePem: string | null, argCertificateErrors: string | null, argDbusErrorName: string | null, argDbusErrorMessage: string | null, cancellable: Gio.Cancellable | null) => boolean
-    invokeAuthenticateImpl: (source: Source, dbusSource: any | null, argCredentials: string | null, cancellable: Gio.Cancellable | null) => boolean
+    getOauth2AccessTokenFinish: (source: Source, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* outAccessToken */ string, /* outExpiresIn */ number ]
+    invokeCredentialsRequiredImpl: (source: Source, dbusSource: any | null, argReason: string, argCertificatePem: string, argCertificateErrors: string, argDbusErrorName: string, argDbusErrorMessage: string, cancellable: Gio.Cancellable | null) => boolean
+    invokeAuthenticateImpl: (source: Source, dbusSource: any | null, argCredentials: string, cancellable: Gio.Cancellable | null) => boolean
     unsetLastCredentialsRequiredArgumentsImpl: (source: Source, cancellable: Gio.Cancellable | null) => boolean
     reserved: any[]
 }
@@ -14455,7 +14469,7 @@ export interface SourceCredentialsProviderClass {
     // Own fields of EDataServer-1.2.EDataServer.SourceCredentialsProviderClass
 
     parentClass: GObject.ObjectClass
-    refSource: (provider: SourceCredentialsProvider, uid: string | null) => Source | null
+    refSource: (provider: SourceCredentialsProvider, uid: string) => Source | null
 }
 
 export abstract class SourceCredentialsProviderClass {
@@ -14558,7 +14572,7 @@ export interface SourceExtensionClass {
     // Own fields of EDataServer-1.2.EDataServer.SourceExtensionClass
 
     parentClass: GObject.ObjectClass
-    name: string | null
+    name: string
 }
 
 export abstract class SourceExtensionClass {
@@ -14958,7 +14972,7 @@ export interface SourceRegistryClass {
     sourceRemoved: (registry: SourceRegistry, source: Source) => void
     sourceEnabled: (registry: SourceRegistry, source: Source) => void
     sourceDisabled: (registry: SourceRegistry, source: Source) => void
-    credentialsRequired: (registry: SourceRegistry, source: Source, reason: SourceCredentialsReason, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error) => void
+    credentialsRequired: (registry: SourceRegistry, source: Source, reason: SourceCredentialsReason, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, opError: GLib.Error) => void
 }
 
 export abstract class SourceRegistryClass {
@@ -15443,7 +15457,7 @@ export class WebDAVPropertyChange {
      * @param name name of the property
      * @returns A new #EWebDAVPropertyChange. Free it with    e_webdav_property_change_free(), when no longer needed.
      */
-    static newRemove(nsUri: string | null, name: string | null): WebDAVPropertyChange
+    static newRemove(nsUri: string, name: string): WebDAVPropertyChange
     /**
      * Creates a new #EWebDAVPropertyChange of kind %E_WEBDAV_PROPERTY_SET,
      * which is used to modify or set the property value. The `value` is a string
@@ -15456,7 +15470,7 @@ export class WebDAVPropertyChange {
      * @param value value of the property, or %NULL for empty value
      * @returns A new #EWebDAVPropertyChange. Free it with    e_webdav_property_change_free(), when no longer needed.
      */
-    static newSet(nsUri: string | null, name: string | null, value: string | null): WebDAVPropertyChange
+    static newSet(nsUri: string, name: string, value: string | null): WebDAVPropertyChange
     /**
      * Frees an #EWebDAVPropertyChange previously created with e_webdav_property_change_new_set(),
      * e_webdav_property_change_new_remove() or or e_webdav_property_change_copy().
@@ -15517,7 +15531,7 @@ export class WebDAVResource {
      * @param order sort order of the resource, or (guint) -1
      * @returns A newly created #EWebDAVResource, prefilled with    given values. Free it with e_webdav_resource_free(), when no longer needed.
      */
-    constructor(kind: WebDAVResourceKind, supports: number, href: string | null, etag: string | null, displayName: string | null, contentType: string | null, contentLength: number, creationDate: number, lastModified: number, description: string | null, color: string | null, order: number) 
+    constructor(kind: WebDAVResourceKind, supports: number, href: string, etag: string | null, displayName: string | null, contentType: string | null, contentLength: number, creationDate: number, lastModified: number, description: string | null, color: string | null, order: number) 
     /**
      * Some values of the resource are not always valid, depending on the `kind,`
      * but also whether server stores such values and whether it had been asked
@@ -15539,7 +15553,7 @@ export class WebDAVResource {
      * @param order sort order of the resource, or (guint) -1
      * @returns A newly created #EWebDAVResource, prefilled with    given values. Free it with e_webdav_resource_free(), when no longer needed.
      */
-    static new(kind: WebDAVResourceKind, supports: number, href: string | null, etag: string | null, displayName: string | null, contentType: string | null, contentLength: number, creationDate: number, lastModified: number, description: string | null, color: string | null, order: number): WebDAVResource
+    static new(kind: WebDAVResourceKind, supports: number, href: string, etag: string | null, displayName: string | null, contentType: string | null, contentLength: number, creationDate: number, lastModified: number, description: string | null, color: string | null, order: number): WebDAVResource
     /**
      * Frees an #EWebDAVResource previously created with e_webdav_resource_new()
      * or e_webdav_resource_copy(). The function does nothing, if `ptr` is %NULL.

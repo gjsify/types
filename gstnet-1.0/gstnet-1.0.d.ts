@@ -29,10 +29,10 @@ const NET_TIME_PACKET_SIZE: number
  * automatically select one based on the MAC address of interfaces
  */
 const PTP_CLOCK_ID_NONE: number
-const PTP_STATISTICS_BEST_MASTER_CLOCK_SELECTED: string | null
-const PTP_STATISTICS_NEW_DOMAIN_FOUND: string | null
-const PTP_STATISTICS_PATH_DELAY_MEASURED: string | null
-const PTP_STATISTICS_TIME_UPDATED: string | null
+const PTP_STATISTICS_BEST_MASTER_CLOCK_SELECTED: string
+const PTP_STATISTICS_NEW_DOMAIN_FOUND: string
+const PTP_STATISTICS_PATH_DELAY_MEASURED: string
+const PTP_STATISTICS_TIME_UPDATED: string
 /**
  * Attaches `addr` as metadata in a #GstNetAddressMeta to `buffer`.
  * @param buffer a #GstBuffer
@@ -336,7 +336,7 @@ class NetClientClock extends Gst.SystemClock {
      * @param base_time initial time of the clock
      * @returns a new #GstClock that receives a time from the remote clock.
      */
-    constructor(name: string | null, remote_address: string | null, remote_port: number, base_time: Gst.ClockTime) 
+    constructor(name: string | null, remote_address: string, remote_port: number, base_time: Gst.ClockTime) 
     /**
      * Create a new #GstNetClientClock that will report the time
      * provided by the #GstNetTimeProvider on `remote_address` and
@@ -348,7 +348,7 @@ class NetClientClock extends Gst.SystemClock {
      * @param base_time initial time of the clock
      * @returns a new #GstClock that receives a time from the remote clock.
      */
-    static new(name: string | null, remote_address: string | null, remote_port: number, base_time: Gst.ClockTime): NetClientClock
+    static new(name: string | null, remote_address: string, remote_port: number, base_time: Gst.ClockTime): NetClientClock
     _init(config?: NetClientClock.ConstructorProperties): void
 }
 
@@ -608,7 +608,7 @@ class NtpClock extends NetClientClock {
      * @param base_time initial time of the clock
      * @returns a new #GstClock that receives a time from the remote clock.
      */
-    constructor(name: string | null, remote_address: string | null, remote_port: number, base_time: Gst.ClockTime) 
+    constructor(name: string | null, remote_address: string, remote_port: number, base_time: Gst.ClockTime) 
     /**
      * Create a new #GstNtpClock that will report the time provided by
      * the NTPv4 server on `remote_address` and `remote_port`.
@@ -619,7 +619,7 @@ class NtpClock extends NetClientClock {
      * @param base_time initial time of the clock
      * @returns a new #GstClock that receives a time from the remote clock.
      */
-    static new(name: string | null, remote_address: string | null, remote_port: number, base_time: Gst.ClockTime): NtpClock
+    static new(name: string | null, remote_address: string, remote_port: number, base_time: Gst.ClockTime): NtpClock
     _init(config?: NtpClock.ConstructorProperties): void
 }
 
@@ -776,7 +776,7 @@ class PtpClock extends Gst.SystemClock {
      * @param domain PTP domain
      * @returns A new #GstClock
      */
-    constructor(name: string | null, domain: number) 
+    constructor(name: string, domain: number) 
     /**
      * Creates a new PTP clock instance that exports the PTP time of the master
      * clock in `domain`. This clock can be slaved to other clocks as needed.
@@ -794,7 +794,7 @@ class PtpClock extends Gst.SystemClock {
      * @param domain PTP domain
      * @returns A new #GstClock
      */
-    static new(name: string | null, domain: number): PtpClock
+    static new(name: string, domain: number): PtpClock
     _init(config?: PtpClock.ConstructorProperties): void
 }
 

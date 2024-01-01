@@ -252,7 +252,7 @@ interface FileFormat {
     equal(other_format: FileFormat): boolean
     get_default_write_options(): FileWriteOptions
     get_type_name(): string | null
-    open_writer(destination: Arrow.OutputStream, file_system: Arrow.FileSystem, path: string | null, schema: Arrow.Schema, options: FileWriteOptions): FileWriter
+    open_writer(destination: Arrow.OutputStream, file_system: Arrow.FileSystem, path: string, schema: Arrow.Schema, options: FileWriteOptions): FileWriter
 
     // Class property signals of ArrowDataset-1.0.ArrowDataset.FileFormat
 
@@ -428,14 +428,14 @@ interface FileSystemDatasetFactory {
 
     // Owm methods of ArrowDataset-1.0.ArrowDataset.FileSystemDatasetFactory
 
-    add_path(path: string | null): boolean
+    add_path(path: string): boolean
     finish(): FileSystemDataset | null
 
     // Overloads of finish
 
     finish(): Dataset | null
     set_file_system(file_system: Arrow.FileSystem): boolean
-    set_file_system_uri(uri: string | null): boolean
+    set_file_system_uri(uri: string): boolean
 
     // Class property signals of ArrowDataset-1.0.ArrowDataset.FileSystemDatasetFactory
 

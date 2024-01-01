@@ -615,7 +615,7 @@ enum BookOperationFlags {
  * Provides comma-separated list of all known categories used by
  * the contacts stored in the book backend.
  */
-const BOOK_BACKEND_PROPERTY_CATEGORIES: string | null
+const BOOK_BACKEND_PROPERTY_CATEGORIES: string
 /**
  * Provides comma-separated list of required fields by the book backend.
  * All of these attributes should be set, otherwise the backend will reject
@@ -624,13 +624,13 @@ const BOOK_BACKEND_PROPERTY_CATEGORIES: string | null
  * The e_contact_field_id() can be used to transform the field name
  * into an #EContactField.
  */
-const BOOK_BACKEND_PROPERTY_REQUIRED_FIELDS: string | null
+const BOOK_BACKEND_PROPERTY_REQUIRED_FIELDS: string
 /**
  * The current overall revision string, this can be used as
  * a quick check to see if data has changed at all since the
  * last time the addressbook revision was observed.
  */
-const BOOK_BACKEND_PROPERTY_REVISION: string | null
+const BOOK_BACKEND_PROPERTY_REVISION: string
 /**
  * Provides comma-separated list of supported fields by the book backend.
  * Attributes other than those listed here can be discarded. This can be
@@ -639,93 +639,93 @@ const BOOK_BACKEND_PROPERTY_REVISION: string | null
  * The e_contact_field_id() can be used to transform the field name
  * into an #EContactField.
  */
-const BOOK_BACKEND_PROPERTY_SUPPORTED_FIELDS: string | null
-const EVC_ADR: string | null
-const EVC_BDAY: string | null
-const EVC_CALURI: string | null
-const EVC_CATEGORIES: string | null
-const EVC_CL_UID: string | null
-const EVC_CONTACT_LIST: string | null
-const EVC_EMAIL: string | null
-const EVC_ENCODING: string | null
-const EVC_FBURL: string | null
-const EVC_FN: string | null
-const EVC_GEO: string | null
-const EVC_ICSCALENDAR: string | null
-const EVC_KEY: string | null
-const EVC_LABEL: string | null
-const EVC_LOGO: string | null
-const EVC_MAILER: string | null
-const EVC_N: string | null
-const EVC_NICKNAME: string | null
-const EVC_NOTE: string | null
-const EVC_ORG: string | null
-const EVC_PARENT_CL: string | null
-const EVC_PHOTO: string | null
-const EVC_PRODID: string | null
-const EVC_QUOTEDPRINTABLE: string | null
-const EVC_REV: string | null
-const EVC_ROLE: string | null
-const EVC_TEL: string | null
-const EVC_TITLE: string | null
-const EVC_TYPE: string | null
-const EVC_UID: string | null
-const EVC_URL: string | null
-const EVC_VALUE: string | null
-const EVC_VERSION: string | null
-const EVC_X_AIM: string | null
-const EVC_X_ANNIVERSARY: string | null
-const EVC_X_ASSISTANT: string | null
-const EVC_X_BIRTHDAY: string | null
-const EVC_X_BLOG_URL: string | null
-const EVC_X_BOOK_UID: string | null
-const EVC_X_CALLBACK: string | null
-const EVC_X_COMPANY: string | null
-const EVC_X_DEST_CONTACT_UID: string | null
-const EVC_X_DEST_EMAIL: string | null
-const EVC_X_DEST_EMAIL_NUM: string | null
-const EVC_X_DEST_HTML_MAIL: string | null
-const EVC_X_DEST_NAME: string | null
-const EVC_X_DEST_SOURCE_UID: string | null
-const EVC_X_E164: string | null
-const EVC_X_FILE_AS: string | null
-const EVC_X_GADUGADU: string | null
-const EVC_X_GOOGLE_TALK: string | null
-const EVC_X_GROUPWISE: string | null
-const EVC_X_ICQ: string | null
-const EVC_X_JABBER: string | null
-const EVC_X_LIST: string | null
-const EVC_X_LIST_NAME: string | null
-const EVC_X_LIST_SHOW_ADDRESSES: string | null
-const EVC_X_MANAGER: string | null
-const EVC_X_MATRIX: string | null
-const EVC_X_MSN: string | null
-const EVC_X_RADIO: string | null
-const EVC_X_SIP: string | null
-const EVC_X_SKYPE: string | null
-const EVC_X_SPOUSE: string | null
-const EVC_X_TELEX: string | null
-const EVC_X_TTYTDD: string | null
+const BOOK_BACKEND_PROPERTY_SUPPORTED_FIELDS: string
+const EVC_ADR: string
+const EVC_BDAY: string
+const EVC_CALURI: string
+const EVC_CATEGORIES: string
+const EVC_CL_UID: string
+const EVC_CONTACT_LIST: string
+const EVC_EMAIL: string
+const EVC_ENCODING: string
+const EVC_FBURL: string
+const EVC_FN: string
+const EVC_GEO: string
+const EVC_ICSCALENDAR: string
+const EVC_KEY: string
+const EVC_LABEL: string
+const EVC_LOGO: string
+const EVC_MAILER: string
+const EVC_N: string
+const EVC_NICKNAME: string
+const EVC_NOTE: string
+const EVC_ORG: string
+const EVC_PARENT_CL: string
+const EVC_PHOTO: string
+const EVC_PRODID: string
+const EVC_QUOTEDPRINTABLE: string
+const EVC_REV: string
+const EVC_ROLE: string
+const EVC_TEL: string
+const EVC_TITLE: string
+const EVC_TYPE: string
+const EVC_UID: string
+const EVC_URL: string
+const EVC_VALUE: string
+const EVC_VERSION: string
+const EVC_X_AIM: string
+const EVC_X_ANNIVERSARY: string
+const EVC_X_ASSISTANT: string
+const EVC_X_BIRTHDAY: string
+const EVC_X_BLOG_URL: string
+const EVC_X_BOOK_UID: string
+const EVC_X_CALLBACK: string
+const EVC_X_COMPANY: string
+const EVC_X_DEST_CONTACT_UID: string
+const EVC_X_DEST_EMAIL: string
+const EVC_X_DEST_EMAIL_NUM: string
+const EVC_X_DEST_HTML_MAIL: string
+const EVC_X_DEST_NAME: string
+const EVC_X_DEST_SOURCE_UID: string
+const EVC_X_E164: string
+const EVC_X_FILE_AS: string
+const EVC_X_GADUGADU: string
+const EVC_X_GOOGLE_TALK: string
+const EVC_X_GROUPWISE: string
+const EVC_X_ICQ: string
+const EVC_X_JABBER: string
+const EVC_X_LIST: string
+const EVC_X_LIST_NAME: string
+const EVC_X_LIST_SHOW_ADDRESSES: string
+const EVC_X_MANAGER: string
+const EVC_X_MATRIX: string
+const EVC_X_MSN: string
+const EVC_X_RADIO: string
+const EVC_X_SIP: string
+const EVC_X_SKYPE: string
+const EVC_X_SPOUSE: string
+const EVC_X_TELEX: string
+const EVC_X_TTYTDD: string
 /**
  * Twitter name(s).
  */
-const EVC_X_TWITTER: string | null
-const EVC_X_VIDEO_URL: string | null
-const EVC_X_WANTS_HTML: string | null
-const EVC_X_YAHOO: string | null
+const EVC_X_TWITTER: string
+const EVC_X_VIDEO_URL: string
+const EVC_X_WANTS_HTML: string
+const EVC_X_YAHOO: string
 /**
  * Pass this extension name to e_source_get_extension() to access
  * #ESourceBackendSummarySetup.  This is also used as a group name in key files.
  */
-const SOURCE_EXTENSION_BACKEND_SUMMARY_SETUP: string | null
+const SOURCE_EXTENSION_BACKEND_SUMMARY_SETUP: string
 /**
  * FIXME: Document me!
  */
-const VCARD_21_VALID_PARAMETERS: string | null
+const VCARD_21_VALID_PARAMETERS: string
 /**
  * FIXME: Document me!
  */
-const VCARD_21_VALID_PROPERTIES: string | null
+const VCARD_21_VALID_PROPERTIES: string
 /**
  * Parses a string representing a mailing address into a
  * structure of type #EAddressWestern.
@@ -740,7 +740,7 @@ function bookClientErrorQuark(): GLib.Quark
  * @param code an #EBookClientError code
  * @returns Localized human readable description of the given error code
  */
-function bookClientErrorToString(code: BookClientError): string | null
+function bookClientErrorToString(code: BookClientError): string
 /**
  * Returns whether the `self` considers contacts stored in the ascending order.
  * @param self an #EBookIndicesUpdater
@@ -768,7 +768,7 @@ function bookQueryAnd(nqs: number, qs: BookQuery, unref: boolean): BookQuery
  * @param value a value
  * @returns the new #EBookQuery
  */
-function bookQueryAnyFieldContains(value: string | null): BookQuery
+function bookQueryAnyFieldContains(value: string): BookQuery
 /**
  * Creates a new #EBookQuery which tests if the field `field` exists.
  * @param field an #EContactField
@@ -782,13 +782,13 @@ function bookQueryFieldExists(field: ContactField): BookQuery
  * @param value the value to test for
  * @returns the new #EBookQuery
  */
-function bookQueryFieldTest(field: ContactField, test: BookQueryTest, value: string | null): BookQuery
+function bookQueryFieldTest(field: ContactField, test: BookQueryTest, value: string): BookQuery
 /**
  * Parse `query_string` and return a new #EBookQuery representing it.
  * @param queryString the query
  * @returns the new #EBookQuery.
  */
-function bookQueryFromString(queryString: string | null): BookQuery
+function bookQueryFromString(queryString: string): BookQuery
 /**
  * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
  * @param nqs the number of queries to OR
@@ -803,7 +803,7 @@ function bookQueryOr(nqs: number, qs: BookQuery, unref: boolean): BookQuery
  * @param field a field name
  * @returns the new #EBookQuery
  */
-function bookQueryVcardFieldExists(field: string | null): BookQuery
+function bookQueryVcardFieldExists(field: string): BookQuery
 /**
  * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
  * @param field a EVCard field name to test
@@ -811,7 +811,7 @@ function bookQueryVcardFieldExists(field: string | null): BookQuery
  * @param value the value to test for
  * @returns the new #EBookQuery
  */
-function bookQueryVcardFieldTest(field: string | null, test: BookQueryTest, value: string | null): BookQuery
+function bookQueryVcardFieldTest(field: string, test: BookQueryTest, value: string): BookQuery
 /**
  * Encodes the #EConflictResolution into the bit-or of #EBookOperationFlags.
  * The returned value can be bit-or-ed with other #EBookOperationFlags values.
@@ -844,7 +844,7 @@ function bookUtilDiffCategories(oldContact: Contact | null, newContact: Contact 
  * @param emailAddress one or more email addresses as string
  * @param func a function to call for each email `user_data` (closure func): user data passed to `func`
  */
-function bookUtilForeachAddress(emailAddress: string | null, func: GLib.HRFunc): void
+function bookUtilForeachAddress(emailAddress: string, func: GLib.HRFunc): void
 /**
  * Decodes the #EConflictResolution from the bit-or of #EBookOperationFlags.
  * @param flags bit-or of #EBookOperationFlags
@@ -871,27 +871,27 @@ function contactAttrListFree(list: string[]): void
  * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
  * @returns A new #EContactDate struct.
  */
-function contactDateFromString(str: string | null): ContactDate
+function contactDateFromString(str: string): ContactDate
 /**
  * Creates a new #EContactName based on the parsed `name_str`.
  * @param nameStr a string representing a contact's full name
  * @returns A new #EContactName struct.
  */
-function contactNameFromString(nameStr: string | null): ContactName
+function contactNameFromString(nameStr: string): ContactName
 /**
  * Parses `full_name` and returns an #ENameWestern struct filled with
  * the component parts of the name.
  * @param fullName A string containing a western name.
  * @returns A new #ENameWestern struct.
  */
-function nameWesternParse(fullName: string | null): NameWestern
+function nameWesternParse(fullName: string): NameWestern
 /**
  * Compares two phone numbers.
  * @param firstNumber the first EPhoneNumber to compare
  * @param secondNumber the second EPhoneNumber to compare
  * @returns The quality of matching for the two phone numbers.
  */
-function phoneNumberCompareStrings(firstNumber: string | null, secondNumber: string | null): PhoneNumberMatch
+function phoneNumberCompareStrings(firstNumber: string, secondNumber: string): PhoneNumberMatch
 /**
  * Compares two phone numbers within the context of `region_code`.
  * @param firstNumber the first EPhoneNumber to compare
@@ -899,7 +899,7 @@ function phoneNumberCompareStrings(firstNumber: string | null, secondNumber: str
  * @param regionCode a two-letter country code, or %NULL
  * @returns The quality of matching for the two phone numbers.
  */
-function phoneNumberCompareStringsWithRegion(firstNumber: string | null, secondNumber: string | null, regionCode: string | null): PhoneNumberMatch
+function phoneNumberCompareStringsWithRegion(firstNumber: string, secondNumber: string, regionCode: string | null): PhoneNumberMatch
 function phoneNumberErrorQuark(): GLib.Quark
 /**
  * Parses the string passed in `phone_number`. Note that no validation is
@@ -917,7 +917,7 @@ function phoneNumberErrorQuark(): GLib.Quark
  * @param regionCode a two-letter country code, or %NULL
  * @returns a new #EPhoneNumber instance on success, or %NULL on error. Call e_phone_number_free() to release this instance.
  */
-function phoneNumberFromString(phoneNumber: string | null, regionCode: string | null): PhoneNumber
+function phoneNumberFromString(phoneNumber: string, regionCode: string | null): PhoneNumber
 /**
  * Retrieves the preferred country calling code for `region_code,`
  * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
@@ -976,7 +976,7 @@ interface BookIndicesUpdater {
      * @param indicesIndex index to the indices array the contact belongs to
      * @returns whether the indices changed
      */
-    add(uid: string | null, indicesIndex: number): boolean
+    add(uid: string, indicesIndex: number): boolean
     /**
      * Sets the initial indices to be updated by the `self`. If %NULL,
      * then unsets them.
@@ -992,7 +992,7 @@ interface BookIndicesUpdater {
      * @param uid a UID of a removed contact
      * @returns whether the indices changed
      */
-    remove(uid: string | null): boolean
+    remove(uid: string): boolean
     /**
      * Sets the initial indices to be updated by the `self`. If %NULL,
      * then unsets them. The function always discards data previously
@@ -2165,7 +2165,7 @@ class Contact extends VCard {
      * @param vcard a string representing a vcard
      * @returns A new #EContact.
      */
-    static newFromVcard(vcard: string | null): Contact
+    static newFromVcard(vcard: string): Contact
     /**
      * Creates a new #EContact based on a vcard and a predefined UID.
      * @constructor 
@@ -2173,20 +2173,20 @@ class Contact extends VCard {
      * @param uid a contact UID
      * @returns A new #EContact.
      */
-    static newFromVcardWithUid(vcard: string | null, uid: string | null): Contact
+    static newFromVcardWithUid(vcard: string, uid: string): Contact
     _init(config?: Contact.ConstructorProperties): void
     /**
      * Gets the #EContactField corresponding to the `field_name`.
      * @param fieldName a string representing a contact field
      * @returns An #EContactField corresponding to @field_name, or 0 if it doesn't exist.
      */
-    static fieldId(fieldName: string | null): ContactField
+    static fieldId(fieldName: string): ContactField
     /**
      * Gets the #EContactField corresponding to the `vcard_field`.
      * @param vcardField a string representing a vCard field
      * @returns An #EContactField corresponding to @vcard_field, or 0 if it doesn't exist.
      */
-    static fieldIdFromVcard(vcardField: string | null): ContactField
+    static fieldIdFromVcard(vcardField: string): ContactField
     /**
      * Returns whether the `field_id` is of a string type,
      * thus it can be used with e_contact_get_const().
@@ -2199,7 +2199,7 @@ class Contact extends VCard {
      * @param fieldId an #EContactField
      * @returns The string representation of @field_id
      */
-    static fieldName(fieldId: ContactField): string | null
+    static fieldName(fieldId: ContactField): string
     /**
      * Gets the #GType used for this contact field, this indicates
      * what kind of value can be passed to e_contact_set().
@@ -2213,13 +2213,13 @@ class Contact extends VCard {
      * @param fieldId an #EContactField
      * @returns The human-readable representation of @field_id
      */
-    static prettyName(fieldId: ContactField): string | null
+    static prettyName(fieldId: ContactField): string
     /**
      * Gets the vcard attribute corresponding to `field_id,` as a string.
      * @param fieldId an #EContactField
      * @returns The vcard attribute corresponding to @field_id
      */
-    static vcardAttribute(fieldId: ContactField): string | null
+    static vcardAttribute(fieldId: ContactField): string
 }
 
 module SourceBackendSummarySetup {
@@ -2373,7 +2373,7 @@ interface VCard {
      * @param attr an #EVCardAttribute to add
      * @param value a value to assign to the attribute
      */
-    addAttributeWithValue(attr: VCardAttribute, value: string | null): void
+    addAttributeWithValue(attr: VCardAttribute, value: string): void
     /**
      * Appends `attr` to `evc` to the end of a list of attributes. This takes
      * ownership of `attr`.
@@ -2389,14 +2389,14 @@ interface VCard {
      * @param attr an #EVCardAttribute to append
      * @param value a value to assign to the attribute
      */
-    appendAttributeWithValue(attr: VCardAttribute, value: string | null): void
+    appendAttributeWithValue(attr: VCardAttribute, value: string): void
     /**
      * Constructs the existing #EVCard, `evc,` setting its vCard data to `str`.
      * 
      * This modifies `evc`.
      * @param str a vCard string
      */
-    construct(str: string | null): void
+    construct(str: string): void
     /**
      * Similar to e_vcard_construct_with_uid(), but can also
      * be used with an `str` that is not %NULL terminated.
@@ -2404,7 +2404,7 @@ interface VCard {
      * @param len length of `str,` or -1 if `str` is %NULL terminated
      * @param uid a unique ID string
      */
-    constructFull(str: string | null, len: number, uid: string | null): void
+    constructFull(str: string, len: number, uid: string | null): void
     /**
      * Constructs the existing #EVCard, `evc,` setting its vCard data to `str,` and
      * adding a new UID attribute with the value given in `uid` (if `uid` is
@@ -2414,7 +2414,7 @@ interface VCard {
      * @param str a vCard string
      * @param uid a unique ID string
      */
-    constructWithUid(str: string | null, uid: string | null): void
+    constructWithUid(str: string, uid: string | null): void
     /**
      * Prints a dump of `evc'`s structure to stdout. Used for
      * debugging.
@@ -2437,14 +2437,14 @@ interface VCard {
      * @param name the name of the attribute to get
      * @returns An #EVCardAttribute if found, or %NULL.
      */
-    getAttribute(name: string | null): VCardAttribute | null
+    getAttribute(name: string): VCardAttribute | null
     /**
      * Similar to e_vcard_get_attribute() but this method will not attempt to
      * parse the vCard if it is not already parsed.
      * @param name the name of the attribute to get
      * @returns An #EVCardAttribute if found, or %NULL.
      */
-    getAttributeIfParsed(name: string | null): VCardAttribute | null
+    getAttributeIfParsed(name: string): VCardAttribute | null
     /**
      * Gets the list of all attributes from `evcard`. The list and its
      * contents are owned by `evcard,` and must not be freed.
@@ -2470,7 +2470,7 @@ interface VCard {
      * @param attrGroup group name of attributes to be removed
      * @param attrName name of the arributes to be removed
      */
-    removeAttributes(attrGroup: string | null, attrName: string | null): void
+    removeAttributes(attrGroup: string | null, attrName: string): void
     /**
      * Exports `evc` to a string representation, specified
      * by the `format` argument.
@@ -2478,14 +2478,14 @@ interface VCard {
      * @returns A newly allocated string representing the vcard.
      */
     toString(format: VCardFormat): string | null
-    utilDupXAttribute(xName: string | null): string | null
+    utilDupXAttribute(xName: string): string | null
     /**
      * Sets an "X-" attribute `x_name` to value `value` in `vcard,` or
      * removes it from `vcard,` when `value` is %NULL.
      * @param xName the attribute name, which starts with "X-"
      * @param value the value to set, or %NULL to unset
      */
-    utilSetXAttribute(xName: string | null, value: string | null): void
+    utilSetXAttribute(xName: string, value: string | null): void
 
     // Class property signals of EBookContacts-1.2.EBookContacts.VCard
 
@@ -2530,20 +2530,20 @@ class VCard extends GObject.Object {
      * @param str a string representation of the vcard to create
      * @returns A new #EVCard.
      */
-    static newFromString(str: string | null): VCard
+    static newFromString(str: string): VCard
     _init(config?: VCard.ConstructorProperties): void
     /**
      * Escapes a string according to RFC2426, section 5.
      * @param s the string to escape
      * @returns A newly allocated, escaped string.
      */
-    static escapeString(s: string | null): string | null
+    static escapeString(s: string): string | null
     /**
      * Unescapes a string according to RFC2426, section 5.
      * @param s the string to unescape
      * @returns A newly allocated, unescaped string.
      */
-    static unescapeString(s: string | null): string | null
+    static unescapeString(s: string): string | null
 }
 
 interface AddressWestern {
@@ -2793,7 +2793,7 @@ class BookQuery {
      * @param value a value
      * @returns the new #EBookQuery
      */
-    static anyFieldContains(value: string | null): BookQuery
+    static anyFieldContains(value: string): BookQuery
     /**
      * Creates a new #EBookQuery which tests if the field `field` exists.
      * @param field an #EContactField
@@ -2807,13 +2807,13 @@ class BookQuery {
      * @param value the value to test for
      * @returns the new #EBookQuery
      */
-    static fieldTest(field: ContactField, test: BookQueryTest, value: string | null): BookQuery
+    static fieldTest(field: ContactField, test: BookQueryTest, value: string): BookQuery
     /**
      * Parse `query_string` and return a new #EBookQuery representing it.
      * @param queryString the query
      * @returns the new #EBookQuery.
      */
-    static fromString(queryString: string | null): BookQuery
+    static fromString(queryString: string): BookQuery
     /**
      * Creates a new #EBookQuery which is the logical OR of the queries in #qs.
      * @param nqs the number of queries to OR
@@ -2828,7 +2828,7 @@ class BookQuery {
      * @param field a field name
      * @returns the new #EBookQuery
      */
-    static vcardFieldExists(field: string | null): BookQuery
+    static vcardFieldExists(field: string): BookQuery
     /**
      * Creates a new #EBookQuery which tests `field` for `value` using the test `test`.
      * @param field a EVCard field name to test
@@ -2836,7 +2836,7 @@ class BookQuery {
      * @param value the value to test for
      * @returns the new #EBookQuery
      */
-    static vcardFieldTest(field: string | null, test: BookQueryTest, value: string | null): BookQuery
+    static vcardFieldTest(field: string, test: BookQueryTest, value: string): BookQuery
 }
 
 interface ContactAddress {
@@ -2986,7 +2986,7 @@ class ContactDate {
      * @param str a date string in the format YYYY-MM-DD or YYYYMMDD
      * @returns A new #EContactDate struct.
      */
-    static fromString(str: string | null): ContactDate
+    static fromString(str: string): ContactDate
 }
 
 interface ContactGeo {
@@ -3087,7 +3087,7 @@ class ContactName {
      * @param nameStr a string representing a contact's full name
      * @returns A new #EContactName struct.
      */
-    static fromString(nameStr: string | null): ContactName
+    static fromString(nameStr: string): ContactName
 }
 
 interface ContactPhoto {
@@ -3131,12 +3131,12 @@ interface ContactPhoto {
      * Sets the `photo'`s mime type.
      * @param mimeType the mime type
      */
-    setMimeType(mimeType: string | null): void
+    setMimeType(mimeType: string): void
     /**
      * Sets the `photo'`s URI.
      * @param uri the `photo'`s URI
      */
-    setUri(uri: string | null): void
+    setUri(uri: string): void
 }
 
 class ContactPhoto {
@@ -3210,7 +3210,7 @@ class NameWestern {
      * @param fullName A string containing a western name.
      * @returns A new #ENameWestern struct.
      */
-    static parse(fullName: string | null): NameWestern
+    static parse(fullName: string): NameWestern
 }
 
 interface PhoneNumber {
@@ -3274,7 +3274,7 @@ class PhoneNumber {
      * @param secondNumber the second EPhoneNumber to compare
      * @returns The quality of matching for the two phone numbers.
      */
-    static compareStrings(firstNumber: string | null, secondNumber: string | null): PhoneNumberMatch
+    static compareStrings(firstNumber: string, secondNumber: string): PhoneNumberMatch
     /**
      * Compares two phone numbers within the context of `region_code`.
      * @param firstNumber the first EPhoneNumber to compare
@@ -3282,7 +3282,7 @@ class PhoneNumber {
      * @param regionCode a two-letter country code, or %NULL
      * @returns The quality of matching for the two phone numbers.
      */
-    static compareStringsWithRegion(firstNumber: string | null, secondNumber: string | null, regionCode: string | null): PhoneNumberMatch
+    static compareStringsWithRegion(firstNumber: string, secondNumber: string, regionCode: string | null): PhoneNumberMatch
     static errorQuark(): GLib.Quark
     /**
      * Parses the string passed in `phone_number`. Note that no validation is
@@ -3300,7 +3300,7 @@ class PhoneNumber {
      * @param regionCode a two-letter country code, or %NULL
      * @returns a new #EPhoneNumber instance on success, or %NULL on error. Call e_phone_number_free() to release this instance.
      */
-    static fromString(phoneNumber: string | null, regionCode: string | null): PhoneNumber
+    static fromString(phoneNumber: string, regionCode: string | null): PhoneNumber
     /**
      * Retrieves the preferred country calling code for `region_code,`
      * e.g. 358 for "fi" or 1 for "en_US`UTF-8`".
@@ -3379,12 +3379,12 @@ interface VCardAttribute {
      * @param param an #EVCardAttributeParam
      * @param value a string value
      */
-    addParamWithValue(param: VCardAttributeParam, value: string | null): void
+    addParamWithValue(param: VCardAttributeParam, value: string): void
     /**
      * Appends `value` to `attr'`s list of values.
      * @param value a string value
      */
-    addValue(value: string | null): void
+    addValue(value: string): void
     /**
      * Encodes `value` according to the encoding used for `attr,` and appends it to
      * `attr'`s list of values.
@@ -3394,7 +3394,7 @@ interface VCardAttribute {
      * @param value an encoded value
      * @param len the length of the encoded value, in bytes
      */
-    addValueDecoded(value: string | null, len: number): void
+    addValueDecoded(value: string, len: number): void
     /**
      * Makes a copy of `attr`.
      * @returns A new #EVCardAttribute identical to @attr.
@@ -3413,7 +3413,7 @@ interface VCardAttribute {
      * Gets the name of `attr`.
      * @returns The attribute's name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the list of values for the paramater `name` from `attr`. The list and its
      * contents are owned by `attr,` and must not be freed. If no parameter with the
@@ -3421,7 +3421,7 @@ interface VCardAttribute {
      * @param name a parameter name
      * @returns A list of string elements representing the parameter's values, or %NULL.
      */
-    getParam(name: string | null): string[] | null
+    getParam(name: string): string[] | null
     /**
      * Gets the list of parameters (of type #EVCardAttributeParam) from `attr`. The
      * list and its contents are owned by `attr,` and must not be freed.
@@ -3501,7 +3501,7 @@ interface VCardAttribute {
      * @param typestr a string representing the type
      * @returns %TRUE if such a parameter exists, %FALSE otherwise.
      */
-    hasType(typestr: string | null): boolean
+    hasType(typestr: string): boolean
     /**
      * Checks if `attr` has a single value.
      * @returns %TRUE if the attribute has exactly one value, %FALSE otherwise.
@@ -3513,7 +3513,7 @@ interface VCardAttribute {
      * parameters named `param_name` after this function returns.
      * @param paramName a parameter name
      */
-    removeParam(paramName: string | null): void
+    removeParam(paramName: string): void
     /**
      * Removes the value `s` from the parameter `param_name` on the attribute `attr`.
      * If `s` was the only value for parameter `param_name,` that parameter is removed
@@ -3521,7 +3521,7 @@ interface VCardAttribute {
      * @param paramName a parameter name
      * @param s a value
      */
-    removeParamValue(paramName: string | null, s: string | null): void
+    removeParamValue(paramName: string, s: string): void
     /**
      * Removes and frees all parameters from `attr`.
      * 
@@ -3532,7 +3532,7 @@ interface VCardAttribute {
      * Removes value `s` from the value list in `attr`. The value `s` is not freed.
      * @param s a value to remove
      */
-    removeValue(s: string | null): void
+    removeValue(s: string): void
     /**
      * Removes and frees all values from `attr`.
      */
@@ -3556,7 +3556,7 @@ class VCardAttribute {
      * @param attrName an attribute name
      * @returns A new #EVCardAttribute.
      */
-    constructor(attrGroup: string | null, attrName: string | null) 
+    constructor(attrGroup: string | null, attrName: string) 
     /**
      * Creates a new #EVCardAttribute with the specified group and
      * attribute names. The `attr_group` may be %NULL or the empty string if no
@@ -3566,7 +3566,7 @@ class VCardAttribute {
      * @param attrName an attribute name
      * @returns A new #EVCardAttribute.
      */
-    static new(attrGroup: string | null, attrName: string | null): VCardAttribute
+    static new(attrGroup: string | null, attrName: string): VCardAttribute
 }
 
 interface VCardAttributeParam {
@@ -3577,7 +3577,7 @@ interface VCardAttributeParam {
      * Appends `value` to `param'`s list of values.
      * @param value a string value to add
      */
-    addValue(value: string | null): void
+    addValue(value: string): void
     /**
      * Makes a copy of `param` and all its values.
      * @returns a new #EVCardAttributeParam identical to @param.
@@ -3600,7 +3600,7 @@ interface VCardAttributeParam {
      * %EVC_TYPE).
      * @returns The name of the parameter.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the list of values from `param`. The list and its
      * contents are owned by `param,` and must not be freed.
@@ -3635,14 +3635,14 @@ class VCardAttributeParam {
      * @param name the name of the new parameter
      * @returns A new #EVCardAttributeParam.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Creates a new parameter named `name`.
      * @constructor 
      * @param name the name of the new parameter
      * @returns A new #EVCardAttributeParam.
      */
-    static new(name: string | null): VCardAttributeParam
+    static new(name: string): VCardAttributeParam
 }
 
 interface VCardClass {

@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-cogl-11",
-    "version": "11.0.0-3.2.6",
+    "version": "11.0.0-3.2.7",
     "description": "Node.js TypeScript type definitions for Cogl-11, generated from library version 11.0.0",
     "type": "module",
     "module": "node-cogl-11.js",

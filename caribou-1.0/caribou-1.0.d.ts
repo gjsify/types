@@ -301,7 +301,7 @@ module DisplayAdapter {
      * Signal callback interface for `group-changed`
      */
     interface GroupChangedSignalCallback {
-        ($obj: DisplayAdapter, gid: number, group: string | null, variant: string | null): void
+        ($obj: DisplayAdapter, gid: number, group: string, variant: string): void
     }
 
     /**
@@ -363,7 +363,7 @@ interface DisplayAdapter {
     emit(sigName: "modifiers-changed", modifiers: number, ...args: any[]): void
     connect(sigName: "group-changed", callback: DisplayAdapter.GroupChangedSignalCallback): number
     connect_after(sigName: "group-changed", callback: DisplayAdapter.GroupChangedSignalCallback): number
-    emit(sigName: "group-changed", gid: number, group: string | null, variant: string | null, ...args: any[]): void
+    emit(sigName: "group-changed", gid: number, group: string, variant: string, ...args: any[]): void
     connect(sigName: "config-changed", callback: DisplayAdapter.ConfigChangedSignalCallback): number
     connect_after(sigName: "config-changed", callback: DisplayAdapter.ConfigChangedSignalCallback): number
     emit(sigName: "config-changed", ...args: any[]): void
@@ -476,14 +476,14 @@ module KeyboardModel {
      * Signal callback interface for `group-added`
      */
     interface GroupAddedSignalCallback {
-        ($obj: KeyboardModel, name: string | null): void
+        ($obj: KeyboardModel, name: string): void
     }
 
     /**
      * Signal callback interface for `group-removed`
      */
     interface GroupRemovedSignalCallback {
-        ($obj: KeyboardModel, name: string | null): void
+        ($obj: KeyboardModel, name: string): void
     }
 
 
@@ -517,19 +517,19 @@ interface KeyboardModel extends IKeyboardObject {
     // Owm methods of Caribou-1.0.Caribou.KeyboardModel
 
     get_groups(): string[]
-    get_group(group_name: string | null): GroupModel
-    get_active_group(): string | null
-    get_keyboard_type(): string | null
-    get_keyboard_file(): string | null
+    get_group(group_name: string): GroupModel
+    get_active_group(): string
+    get_keyboard_type(): string
+    get_keyboard_file(): string
 
     // Own signals of Caribou-1.0.Caribou.KeyboardModel
 
     connect(sigName: "group-added", callback: KeyboardModel.GroupAddedSignalCallback): number
     connect_after(sigName: "group-added", callback: KeyboardModel.GroupAddedSignalCallback): number
-    emit(sigName: "group-added", name: string | null, ...args: any[]): void
+    emit(sigName: "group-added", name: string, ...args: any[]): void
     connect(sigName: "group-removed", callback: KeyboardModel.GroupRemovedSignalCallback): number
     connect_after(sigName: "group-removed", callback: KeyboardModel.GroupRemovedSignalCallback): number
-    emit(sigName: "group-removed", name: string | null, ...args: any[]): void
+    emit(sigName: "group-removed", name: string, ...args: any[]): void
 
     // Class property signals of Caribou-1.0.Caribou.KeyboardModel
 
@@ -580,8 +580,8 @@ interface KeyboardService {
     set_entry_location(x: number, y: number, w: number, h: number): void
     show(timestamp: number): void
     hide(timestamp: number): void
-    register_keyboard(name: string | null): void
-    name_lost(name: string | null): void
+    register_keyboard(name: string): void
+    name_lost(name: string): void
 
     // Own virtual methods of Caribou-1.0.Caribou.KeyboardService
 
@@ -589,7 +589,7 @@ interface KeyboardService {
     vfunc_set_entry_location(x: number, y: number, w: number, h: number): void
     vfunc_show(timestamp: number): void
     vfunc_hide(timestamp: number): void
-    vfunc_name_lost(name: string | null): void
+    vfunc_name_lost(name: string): void
 
     // Class property signals of Caribou-1.0.Caribou.KeyboardService
 
@@ -641,8 +641,8 @@ interface GroupModel extends IKeyboardObject {
     // Owm methods of Caribou-1.0.Caribou.GroupModel
 
     get_levels(): string[]
-    get_level(level_name: string | null): LevelModel
-    get_active_level(): string | null
+    get_level(level_name: string): LevelModel
+    get_active_level(): string
 
     // Class property signals of Caribou-1.0.Caribou.GroupModel
 
@@ -665,10 +665,10 @@ class GroupModel extends GObject.Object {
     // Constructors of Caribou-1.0.Caribou.GroupModel
 
     constructor(config?: GroupModel.ConstructorProperties) 
-    constructor(group: string | null, variant: string | null) 
-    static new(group: string | null, variant: string | null): GroupModel
+    constructor(group: string, variant: string) 
+    static new(group: string, variant: string): GroupModel
     _init(config?: GroupModel.ConstructorProperties): void
-    static create_group_name(group: string | null, variant: string | null): string | null
+    static create_group_name(group: string, variant: string): string | null
 }
 
 module LevelModel {
@@ -679,7 +679,7 @@ module LevelModel {
      * Signal callback interface for `level-toggled`
      */
     interface LevelToggledSignalCallback {
-        ($obj: LevelModel, new_level: string | null): void
+        ($obj: LevelModel, new_level: string): void
     }
 
 
@@ -703,13 +703,13 @@ interface LevelModel extends IKeyboardObject {
     // Owm methods of Caribou-1.0.Caribou.LevelModel
 
     get_rows(): RowModel[]
-    get_mode(): string | null
+    get_mode(): string
 
     // Own signals of Caribou-1.0.Caribou.LevelModel
 
     connect(sigName: "level-toggled", callback: LevelModel.LevelToggledSignalCallback): number
     connect_after(sigName: "level-toggled", callback: LevelModel.LevelToggledSignalCallback): number
-    emit(sigName: "level-toggled", new_level: string | null, ...args: any[]): void
+    emit(sigName: "level-toggled", new_level: string, ...args: any[]): void
 
     // Class property signals of Caribou-1.0.Caribou.LevelModel
 
@@ -732,8 +732,8 @@ class LevelModel extends ScannableGroup {
     // Constructors of Caribou-1.0.Caribou.LevelModel
 
     constructor(config?: LevelModel.ConstructorProperties) 
-    constructor(mode: string | null) 
-    static new(mode: string | null): LevelModel
+    constructor(mode: string) 
+    static new(mode: string): LevelModel
     _init(config?: LevelModel.ConstructorProperties): void
 }
 
@@ -849,22 +849,22 @@ interface KeyModel extends IScannableItem, IKeyboardObject {
     release(): void
     get_extended_keys(): KeyModel[]
     activate(): void
-    get_align(): string | null
-    set_align(value: string | null): void
+    get_align(): string
+    set_align(value: string): void
     get_width(): number
     set_width(value: number): void
-    get_toggle(): string | null
-    set_toggle(value: string | null): void
+    get_toggle(): string
+    set_toggle(value: string): void
     get_repeatable(): boolean
     set_repeatable(value: boolean): void
     get_is_modifier(): boolean
     set_is_modifier(value: boolean): void
     get_show_subkeys(): boolean
-    get_name(): string | null
+    get_name(): string
     get_keyval(): number
     get_text(): string | null
-    get_label(): string | null
-    set_label(value: string | null): void
+    get_label(): string
+    set_label(value: string): void
 
     // Own signals of Caribou-1.0.Caribou.KeyModel
 
@@ -929,8 +929,8 @@ class KeyModel extends GObject.Object {
     // Constructors of Caribou-1.0.Caribou.KeyModel
 
     constructor(config?: KeyModel.ConstructorProperties) 
-    constructor(name: string | null, text?: string | null) 
-    static new(name: string | null, text?: string | null): KeyModel
+    constructor(name: string, text?: string | null) 
+    static new(name: string, text?: string | null): KeyModel
     _init(config?: KeyModel.ConstructorProperties): void
 }
 
@@ -1045,10 +1045,10 @@ interface Scanner {
     set_scan_enabled(value: boolean): void
     get_step_time(): number
     set_step_time(value: number): void
-    get_switch_device(): string | null
-    set_switch_device(value: string | null): void
-    get_keyboard_key(): string | null
-    set_keyboard_key(value: string | null): void
+    get_switch_device(): string
+    set_switch_device(value: string): void
+    get_keyboard_key(): string
+    set_keyboard_key(value: string): void
     get_mouse_button(): number
     set_mouse_button(value: number): void
     get_scan_cycles(): number
@@ -1257,7 +1257,7 @@ interface KeyboardServiceClass {
     set_entry_location: (x: number, y: number, w: number, h: number) => void
     show: (timestamp: number) => void
     hide: (timestamp: number) => void
-    name_lost: (name: string | null) => void
+    name_lost: (name: string) => void
 }
 
 abstract class KeyboardServiceClass {

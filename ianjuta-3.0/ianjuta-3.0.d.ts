@@ -827,77 +827,77 @@ enum VcsError {
 /**
  * Name of debugging configutation.
  */
-const BUILDER_CONFIGURATION_DEBUG: string | null
+const BUILDER_CONFIGURATION_DEBUG: string
 /**
  * Name of optimized configutation.
  */
-const BUILDER_CONFIGURATION_OPTIMIZED: string | null
+const BUILDER_CONFIGURATION_OPTIMIZED: string
 /**
  * Name of profiling configutation.
  */
-const BUILDER_CONFIGURATION_PROFILING: string | null
+const BUILDER_CONFIGURATION_PROFILING: string
 /**
  * Build directory uri. It is the same than the project_root_uri for
  * in source build.
  */
-const BUILDER_ROOT_URI: string | null
+const BUILDER_ROOT_URI: string
 /**
  * Anjuta shell value set by document manager to the current document
  */
-const DOCUMENT_MANAGER_CURRENT_DOCUMENT: string | null
+const DOCUMENT_MANAGER_CURRENT_DOCUMENT: string
 /**
  * Integer key, defines the number a space for one indentation step.
  */
-const EDITOR_INDENT_WIDTH_KEY: string | null
+const EDITOR_INDENT_WIDTH_KEY: string
 /**
  * Schema id used to store common editor settings.
  */
-const EDITOR_PREF_SCHEMA: string | null
+const EDITOR_PREF_SCHEMA: string
 /**
  * Integer key, defines the size of a tabulation in spaces.
  */
-const EDITOR_TAB_WIDTH_KEY: string | null
+const EDITOR_TAB_WIDTH_KEY: string
 /**
  * Boolean key, true is tabs has to be used for indenting.
  */
-const EDITOR_USE_TABS_KEY: string | null
+const EDITOR_USE_TABS_KEY: string
 /**
  * Anjuta shell value set by file manager to the selected file.
  */
-const FILE_MANAGER_SELECTED_FILE: string | null
+const FILE_MANAGER_SELECTED_FILE: string
 /**
  * Boolean key, true is adding '(' after function call autocompletion
  */
-const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_BRACE_AFTER_FUNC: string | null
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_BRACE_AFTER_FUNC: string
 /**
  * Boolean key, true is adding ')' after function call autocompletion
  */
-const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_CLOSEBRACE_AFTER_FUNC: string | null
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_CLOSEBRACE_AFTER_FUNC: string
 /**
  * Boolean key, true is code completion is enable.
  */
-const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_ENABLE: string | null
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_ENABLE: string
 /**
  * Boolean key, true is adding a space after function call autocompletion
  */
-const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_SPACE_AFTER_FUNC: string | null
+const LANGUAGE_PROVIDER_PREF_AUTOCOMPLETE_SPACE_AFTER_FUNC: string
 /**
  * Boolean key, true is calltips has to be shown.
  */
-const LANGUAGE_PROVIDER_PREF_CALLTIP_ENABLE: string | null
+const LANGUAGE_PROVIDER_PREF_CALLTIP_ENABLE: string
 /**
  * Anjuta shell value set by project manager to the current project object
  * which implement #IAnjutaProject interface.
  */
-const PROJECT_MANAGER_CURRENT_PROJECT: string | null
+const PROJECT_MANAGER_CURRENT_PROJECT: string
 /**
  * Anjuta shell value set by project manager to the current uri.
  */
-const PROJECT_MANAGER_CURRENT_URI: string | null
+const PROJECT_MANAGER_CURRENT_URI: string
 /**
  * Anjuta shell value set by project manager to the project root uri.
  */
-const PROJECT_MANAGER_PROJECT_ROOT_URI: string | null
+const PROJECT_MANAGER_PROJECT_ROOT_URI: string
 function buildable_error_quark(): GLib.Quark
 function builder_error_quark(): GLib.Quark
 function debug_manager_error_quark(): GLib.Quark
@@ -993,7 +993,7 @@ interface DebuggerCallback {
  * @param err error
  */
 interface DebuggerGCharCallback {
-    (value: string | null, err: GLib.Error): void
+    (value: string, err: GLib.Error): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerInstructionDisassembly.
@@ -1021,7 +1021,7 @@ interface DebuggerMemoryCallback {
  * @param output string
  */
 interface DebuggerOutputCallback {
-    (type: DebuggerOutputType, output: string | null): void
+    (type: DebuggerOutputType, output: string): void
 }
 /**
  * This callback function is used to return a #IAnjutaDebuggerVariableObject.
@@ -1039,7 +1039,7 @@ interface DebuggerVariableCallback {
  * @param diff Diff data
  */
 interface VcsDiffCallback {
-    (file: Gio.File, diff: string | null): void
+    (file: Gio.File, diff: string): void
 }
 /**
  * Callback called for each status record returned by
@@ -1068,38 +1068,38 @@ interface Buildable {
      * fixme
      * @param uri fixme
      */
-    build(uri: string | null): void
+    build(uri: string): void
     /**
      * fixme
      * @param uri fixme
      */
-    clean(uri: string | null): void
+    clean(uri: string): void
     /**
      * fixme
      * @param uri fixme
      */
-    configure(uri: string | null): void
+    configure(uri: string): void
     /**
      * fixme
      * @param uri fixme
      */
-    execute(uri: string | null): void
+    execute(uri: string): void
     /**
      * fixme
      * @param uri fixme
      */
-    generate(uri: string | null): void
+    generate(uri: string): void
     /**
      * Retrieves the currently set command override.
      * @param command_id Command to get override.
      * @returns The overridden command. NULL if no override set.
      */
-    get_command(command_id: BuildableCommand): string | null
+    get_command(command_id: BuildableCommand): string
     /**
      * fixme
      * @param uri fixme
      */
-    install(uri: string | null): void
+    install(uri: string): void
     /**
      * Resets the command overrides to defaults.
      */
@@ -1109,7 +1109,7 @@ interface Buildable {
      * @param command_id Command to override.
      * @param command Build command to override.
      */
-    set_command(command_id: BuildableCommand, command: string | null): void
+    set_command(command_id: BuildableCommand, command: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Buildable
 
@@ -1118,44 +1118,44 @@ interface Buildable {
      * @virtual 
      * @param uri fixme
      */
-    vfunc_build(uri: string | null): void
+    vfunc_build(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    vfunc_clean(uri: string | null): void
+    vfunc_clean(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    vfunc_configure(uri: string | null): void
+    vfunc_configure(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    vfunc_execute(uri: string | null): void
+    vfunc_execute(uri: string): void
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    vfunc_generate(uri: string | null): void
+    vfunc_generate(uri: string): void
     /**
      * Retrieves the currently set command override.
      * @virtual 
      * @param command_id Command to get override.
      * @returns The overridden command. NULL if no override set.
      */
-    vfunc_get_command(command_id: BuildableCommand): string | null
+    vfunc_get_command(command_id: BuildableCommand): string
     /**
      * fixme
      * @virtual 
      * @param uri fixme
      */
-    vfunc_install(uri: string | null): void
+    vfunc_install(uri: string): void
     /**
      * Resets the command overrides to defaults.
      * @virtual 
@@ -1167,7 +1167,7 @@ interface Buildable {
      * @param command_id Command to override.
      * @param command Build command to override.
      */
-    vfunc_set_command(command_id: BuildableCommand, command: string | null): void
+    vfunc_set_command(command_id: BuildableCommand, command: string): void
 
     // Class property signals of IAnjuta-3.0.IAnjuta.Buildable
 
@@ -1215,7 +1215,7 @@ interface Builder {
      * @param uri target uri
      * @returns The configuration name or NULL if the corresponding configuration cannot be found.
      */
-    get_uri_configuration(uri: string | null): string | null
+    get_uri_configuration(uri: string): string
     /**
      * List all defined configuration. These names returned are
      * the internal non localized names for the following
@@ -1240,7 +1240,7 @@ interface Builder {
      * @param uri target uri
      * @returns The configuration name or NULL if the corresponding configuration cannot be found.
      */
-    vfunc_get_uri_configuration(uri: string | null): string | null
+    vfunc_get_uri_configuration(uri: string): string
     /**
      * List all defined configuration. These names returned are
      * the internal non localized names for the following
@@ -1396,14 +1396,14 @@ interface DebugManager {
      * @param uri uri of the target
      * @returns TRUE if sucessful, other FALSE.
      */
-    start(uri: string | null): boolean
+    start(uri: string): boolean
     /**
      * Start the debugger of the given uri
      * @param server server (IP address:port)
      * @param uri uri of the local target
      * @returns TRUE if sucessful, other FALSE.
      */
-    start_remote(server: string | null, uri: string | null): boolean
+    start_remote(server: string, uri: string): boolean
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.DebugManager
 
@@ -1411,10 +1411,10 @@ interface DebugManager {
     vfunc_debugger_started(): void
     vfunc_debugger_stopped(err: GLib.Error): void
     vfunc_frame_changed(frame: number, thread: number): void
-    vfunc_location_changed(address: number, uri: string | null, line: number): void
+    vfunc_location_changed(address: number, uri: string, line: number): void
     vfunc_program_exited(): void
     vfunc_program_loaded(): void
-    vfunc_program_moved(pid: number, tid: number, address: number, file: string | null, line: number): void
+    vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void
     vfunc_program_running(): void
     vfunc_program_started(): void
     vfunc_program_stopped(): void
@@ -1426,14 +1426,14 @@ interface DebugManager {
      */
     vfunc_quit(): boolean
     vfunc_sharedlib_event(): void
-    vfunc_signal_received(name: string | null, description: string | null): void
+    vfunc_signal_received(name: string, description: string): void
     /**
      * Start the debugger of the given uri
      * @virtual 
      * @param uri uri of the target
      * @returns TRUE if sucessful, other FALSE.
      */
-    vfunc_start(uri: string | null): boolean
+    vfunc_start(uri: string): boolean
     /**
      * Start the debugger of the given uri
      * @virtual 
@@ -1441,7 +1441,7 @@ interface DebugManager {
      * @param uri uri of the local target
      * @returns TRUE if sucessful, other FALSE.
      */
-    vfunc_start_remote(server: string | null, uri: string | null): boolean
+    vfunc_start_remote(server: string, uri: string): boolean
 
     // Own signals of IAnjuta-3.0.IAnjuta.DebugManager
 
@@ -1623,7 +1623,7 @@ interface Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     /**
      * Disable debugger log.
      */
@@ -1651,7 +1651,7 @@ interface Debugger {
      * @param ignore TRUE if we ignore the signal
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    handle_signal(name: string | null, stop: boolean, print: boolean, ignore: boolean): boolean
+    handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
      * Interrupt the program currently running.
      * @returns TRUE if sucessful, otherwise FALSE.
@@ -1664,7 +1664,7 @@ interface Debugger {
      * @param source_search_directories List of directories to search for 		      source files.
      * @returns TRUE if sucessful, other FALSE.
      */
-    load(file: string | null, mime_type: string | null, source_search_directories: string[]): boolean
+    load(file: string, mime_type: string, source_search_directories: string[]): boolean
     /**
      * Quit the debugger, can wait until the debugger is ready.
      * @returns TRUE if sucessful, other FALSE.
@@ -1682,7 +1682,7 @@ interface Debugger {
      * @param line target line in file
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    run_from(file: string | null, line: number): boolean
+    run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
@@ -1690,7 +1690,7 @@ interface Debugger {
      * @param line target line in file
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    run_to(file: string | null, line: number): boolean
+    run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
@@ -1698,7 +1698,7 @@ interface Debugger {
      * @param command command
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    send_command(command: string | null): boolean
+    send_command(command: string): boolean
     /**
      * Set environment variable
      * @param env List environment variable
@@ -1722,7 +1722,7 @@ interface Debugger {
      * @param dir working program directory
      * @returns TRUE if sucessful, other FALSE.
      */
-    set_working_directory(dir: string | null): boolean
+    set_working_directory(dir: string): boolean
     /**
      * Start a loaded program under debugger control.
      * @param args command line argument of the program
@@ -1730,7 +1730,7 @@ interface Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessful, other FALSE.
      */
-    start(args: string | null, terminal: boolean, stop: boolean): boolean
+    start(args: string, terminal: boolean, stop: boolean): boolean
     /**
      * Execute a single C instruction of the program currently loaded.
      * @returns TRUE if sucessful, otherwise FALSE.
@@ -1779,7 +1779,7 @@ interface Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    vfunc_connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    vfunc_connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     vfunc_debugger_ready(state: DebuggerState): void
     vfunc_debugger_started(): void
     vfunc_debugger_stopped(err: GLib.Error): void
@@ -1816,7 +1816,7 @@ interface Debugger {
      * @param ignore TRUE if we ignore the signal
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    vfunc_handle_signal(name: string | null, stop: boolean, print: boolean, ignore: boolean): boolean
+    vfunc_handle_signal(name: string, stop: boolean, print: boolean, ignore: boolean): boolean
     /**
      * Interrupt the program currently running.
      * @virtual 
@@ -1831,10 +1831,10 @@ interface Debugger {
      * @param source_search_directories List of directories to search for 		      source files.
      * @returns TRUE if sucessful, other FALSE.
      */
-    vfunc_load(file: string | null, mime_type: string | null, source_search_directories: string[]): boolean
+    vfunc_load(file: string, mime_type: string, source_search_directories: string[]): boolean
     vfunc_program_exited(): void
     vfunc_program_loaded(): void
-    vfunc_program_moved(pid: number, tid: number, address: number, file: string | null, line: number): void
+    vfunc_program_moved(pid: number, tid: number, address: number, file: string, line: number): void
     vfunc_program_running(): void
     vfunc_program_stopped(): void
     /**
@@ -1857,7 +1857,7 @@ interface Debugger {
      * @param line target line in file
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    vfunc_run_from(file: string | null, line: number): boolean
+    vfunc_run_from(file: string, line: number): boolean
     /**
      * Execute the currently loaded program until it reachs the target
      * line.
@@ -1866,7 +1866,7 @@ interface Debugger {
      * @param line target line in file
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    vfunc_run_to(file: string | null, line: number): boolean
+    vfunc_run_to(file: string, line: number): boolean
     /**
      * Send a command directly to the debugger. Warning, changing the
      * debugger states, by sending a run command by example, will
@@ -1875,7 +1875,7 @@ interface Debugger {
      * @param command command
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    vfunc_send_command(command: string | null): boolean
+    vfunc_send_command(command: string): boolean
     /**
      * Set environment variable
      * @virtual 
@@ -1903,9 +1903,9 @@ interface Debugger {
      * @param dir working program directory
      * @returns TRUE if sucessful, other FALSE.
      */
-    vfunc_set_working_directory(dir: string | null): boolean
+    vfunc_set_working_directory(dir: string): boolean
     vfunc_sharedlib_event(): void
-    vfunc_signal_received(name: string | null, description: string | null): void
+    vfunc_signal_received(name: string, description: string): void
     /**
      * Start a loaded program under debugger control.
      * @virtual 
@@ -1914,7 +1914,7 @@ interface Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessful, other FALSE.
      */
-    vfunc_start(args: string | null, terminal: boolean, stop: boolean): boolean
+    vfunc_start(args: string, terminal: boolean, stop: boolean): boolean
     /**
      * Execute a single C instruction of the program currently loaded.
      * @virtual 
@@ -2041,7 +2041,7 @@ interface DebuggerBreakpoint extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
@@ -2142,7 +2142,7 @@ interface DebuggerInstruction extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
@@ -2187,7 +2187,7 @@ interface DebuggerMemory extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
@@ -2251,7 +2251,7 @@ interface DebuggerRegister extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
@@ -2290,14 +2290,14 @@ interface DebuggerVariable extends Debugger {
      * @param value Variable value
      * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
      */
-    assign(name: string | null, value: string | null): boolean
+    assign(name: string, value: string): boolean
     /**
      * Delete a previously created variable or child object
      * including its own children.
      * @param name Variable name
      * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
      */
-    destroy(name: string | null): boolean
+    destroy(name: string): boolean
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.DebuggerVariable
 
@@ -2308,7 +2308,7 @@ interface DebuggerVariable extends Debugger {
      * @param value Variable value
      * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
      */
-    vfunc_assign(name: string | null, value: string | null): boolean
+    vfunc_assign(name: string, value: string): boolean
     /**
      * Delete a previously created variable or child object
      * including its own children.
@@ -2316,7 +2316,7 @@ interface DebuggerVariable extends Debugger {
      * @param name Variable name
      * @returns TRUE if the request succeed and the callback is called. If FALSE, the callback will not be called.
      */
-    vfunc_destroy(name: string | null): boolean
+    vfunc_destroy(name: string): boolean
 
     // Class property signals of IAnjuta-3.0.IAnjuta.DebuggerVariable
 
@@ -2332,7 +2332,7 @@ interface DebuggerVariable extends Debugger {
      * @param stop TRUE if program is stopped at the beginning
      * @returns TRUE if sucessfull, otherwise FALSE.
      */
-    connect(server: string | null, args: string | null, terminal: boolean, stop: boolean): boolean
+    connect(server: string, args: string, terminal: boolean, stop: boolean): boolean
     connect_after(sigName: string, callback: (...args: any[]) => void): number
     emit(sigName: string, ...args: any[]): void
     disconnect(id: number): void
@@ -2410,7 +2410,7 @@ interface Document {
      * Allows obtaining of the filename the editor was loaded from.
      * @returns The name of the file. Not to be freed by caller.
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Grabs the focus.
      */
@@ -2473,7 +2473,7 @@ interface Document {
      * @virtual 
      * @returns The name of the file. Not to be freed by caller.
      */
-    vfunc_get_filename(): string | null
+    vfunc_get_filename(): string
     /**
      * Grabs the focus.
      * @virtual 
@@ -2562,7 +2562,7 @@ interface DocumentManager {
      * @param content Initial content of the buffer.
      * @returns the IAnjutaEditor instance that has been added.
      */
-    add_buffer(name: string | null, content: string | null): Editor
+    add_buffer(name: string, content: string): Editor
     /**
      * Adds a document to the document manager. This will open a new
      * Notebook tab and show the document there
@@ -2594,7 +2594,7 @@ interface DocumentManager {
      * @param filename short filename
      * @returns the GFile for the given short filename
      */
-    get_file(filename: string | null): Gio.File
+    get_file(filename: string): Gio.File
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor.
@@ -2638,7 +2638,7 @@ interface DocumentManager {
      * @param content Initial content of the buffer.
      * @returns the IAnjutaEditor instance that has been added.
      */
-    vfunc_add_buffer(name: string | null, content: string | null): Editor
+    vfunc_add_buffer(name: string, content: string): Editor
     /**
      * Adds a document to the document manager. This will open a new
      * Notebook tab and show the document there
@@ -2677,7 +2677,7 @@ interface DocumentManager {
      * @param filename short filename
      * @returns the GFile for the given short filename
      */
-    vfunc_get_file(filename: string | null): Gio.File
+    vfunc_get_file(filename: string): Gio.File
     /**
      * Loads the given file if not loaded yet, set its editor as current editor
      * and moves cursor to the given line in the editor.
@@ -2822,7 +2822,7 @@ interface Editor {
      * @param text Text to append.
      * @param length Length of `text` to use.
      */
-    append(text: string | null, length: number): void
+    append(text: string, length: number): void
     erase(position_start: Iterable, position_end: Iterable): void
     /**
      * Empties the whole editor buffer. There will be zero characters.
@@ -2947,7 +2947,7 @@ interface Editor {
      * @param text Text to append.
      * @param length Length of `text` to use.
      */
-    insert(position: Iterable, text: string | null, length: number): void
+    insert(position: Iterable, text: string, length: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
      * custom auto-indent can set this to false and override the preferences
@@ -2982,9 +2982,9 @@ interface Editor {
      * @param text Text to append.
      * @param length Length of `text` to use.
      */
-    vfunc_append(text: string | null, length: number): void
+    vfunc_append(text: string, length: number): void
     vfunc_backspace(): void
-    vfunc_changed(position: Iterable, added: boolean, length: number, lines: number, text: string | null): void
+    vfunc_changed(position: Iterable, added: boolean, length: number, lines: number, text: string): void
     vfunc_char_added(position: Iterable, ch: number): void
     vfunc_code_changed(position: Iterable, code: string | null): void
     vfunc_cursor_moved(): void
@@ -3134,7 +3134,7 @@ interface Editor {
      * @param text Text to append.
      * @param length Length of `text` to use.
      */
-    vfunc_insert(position: Iterable, text: string | null, length: number): void
+    vfunc_insert(position: Iterable, text: string, length: number): void
     vfunc_line_marks_gutter_clicked(location: number): void
     /**
      * Sets whether the editor should auto-indent itself. A plugin that does
@@ -3248,7 +3248,7 @@ interface EditorAssist extends Editor {
      * @param pre_word the word before the cursor
      * @param finished whether is was the last call in an async operation
      */
-    proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string | null, finished: boolean): void
+    proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void
     remove(provider: Provider): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorAssist
@@ -3267,7 +3267,7 @@ interface EditorAssist extends Editor {
      * @param pre_word the word before the cursor
      * @param finished whether is was the last call in an async operation
      */
-    vfunc_proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string | null, finished: boolean): void
+    vfunc_proposals(provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean): void
     vfunc_remove(provider: Provider): void
 
     // Own signals of IAnjuta-3.0.IAnjuta.EditorAssist
@@ -3678,7 +3678,7 @@ interface EditorGladeSignal extends Editor {
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorGladeSignal
 
-    vfunc_drop(iterator: Iterable, signal_data: string | null): void
+    vfunc_drop(iterator: Iterable, signal_data: string): void
     vfunc_drop_possible(iterator: Iterable): boolean
 
     // Own signals of IAnjuta-3.0.IAnjuta.EditorGladeSignal
@@ -3813,7 +3813,7 @@ interface EditorHover extends Editor {
      * @param position 
      * @param info String to display
      */
-    display(position: Iterable, info: string | null): void
+    display(position: Iterable, info: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorHover
 
@@ -3823,7 +3823,7 @@ interface EditorHover extends Editor {
      * @param position 
      * @param info String to display
      */
-    vfunc_display(position: Iterable, info: string | null): void
+    vfunc_display(position: Iterable, info: string): void
     vfunc_hover_leave(position: Iterable): void
     vfunc_hover_over(position: Iterable): void
 
@@ -3884,8 +3884,8 @@ interface EditorLanguage extends Editor {
     /**
      * Return the name of the currently used language
      */
-    get_language(): string | null
-    get_language_name(language: string | null): string | null
+    get_language(): string
+    get_language_name(language: string): string
     /**
      * Return a list of languages supported by the editor
      * Note: These list contains the names in the form
@@ -3896,7 +3896,7 @@ interface EditorLanguage extends Editor {
      * Force the editor to use a given language
      * @param language Language
      */
-    set_language(language: string | null): void
+    set_language(language: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorLanguage
 
@@ -3904,8 +3904,8 @@ interface EditorLanguage extends Editor {
      * Return the name of the currently used language
      * @virtual 
      */
-    vfunc_get_language(): string | null
-    vfunc_get_language_name(language: string | null): string | null
+    vfunc_get_language(): string
+    vfunc_get_language_name(language: string): string
     /**
      * Return a list of languages supported by the editor
      * Note: These list contains the names in the form
@@ -3913,13 +3913,13 @@ interface EditorLanguage extends Editor {
      * @virtual 
      */
     vfunc_get_supported_languages(): string[]
-    vfunc_language_changed(language: string | null): void
+    vfunc_language_changed(language: string): void
     /**
      * Force the editor to use a given language
      * @virtual 
      * @param language Language
      */
-    vfunc_set_language(language: string | null): void
+    vfunc_set_language(language: string): void
 
     // Own signals of IAnjuta-3.0.IAnjuta.EditorLanguage
 
@@ -4058,7 +4058,7 @@ interface EditorSearch extends Editor {
      * @param start Where to search from
      * @param end Where to stop searching
      */
-    backward(search: string | null, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     /**
      * Search forward from start to end
      * @param search String to search for
@@ -4066,7 +4066,7 @@ interface EditorSearch extends Editor {
      * @param start Where to search from
      * @param end Where to stop searching
      */
-    forward(search: string | null, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.EditorSearch
 
@@ -4078,7 +4078,7 @@ interface EditorSearch extends Editor {
      * @param start Where to search from
      * @param end Where to stop searching
      */
-    vfunc_backward(search: string | null, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    vfunc_backward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
     /**
      * Search forward from start to end
      * @virtual 
@@ -4087,7 +4087,7 @@ interface EditorSearch extends Editor {
      * @param start Where to search from
      * @param end Where to stop searching
      */
-    vfunc_forward(search: string | null, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    vfunc_forward(search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell): [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
 
     // Class property signals of IAnjuta-3.0.IAnjuta.EditorSearch
 
@@ -4142,7 +4142,7 @@ interface EditorSelection extends Editor {
      * @param text Replacement text.
      * @param length Length of the text to used in `text`.
      */
-    replace(text: string | null, length: number): void
+    replace(text: string, length: number): void
     select_all(): void
     /**
      * Selects current block of code. The definition of block of code
@@ -4190,7 +4190,7 @@ interface EditorSelection extends Editor {
      * @param text Replacement text.
      * @param length Length of the text to used in `text`.
      */
-    vfunc_replace(text: string | null, length: number): void
+    vfunc_replace(text: string, length: number): void
     vfunc_select_all(): void
     /**
      * Selects current block of code. The definition of block of code
@@ -4664,7 +4664,7 @@ interface FileManager {
      * fixme
      * @param root_uri fixme
      */
-    set_root(root_uri: string | null): void
+    set_root(root_uri: string): void
     /**
      * fixme.
      * @param file File to select
@@ -4679,7 +4679,7 @@ interface FileManager {
      * @virtual 
      * @param root_uri fixme
      */
-    vfunc_set_root(root_uri: string | null): void
+    vfunc_set_root(root_uri: string): void
     /**
      * fixme.
      * @virtual 
@@ -4916,7 +4916,7 @@ interface Help {
      * Search for string `query` in the help and display the result
      * @param query string to search in the help
      */
-    search(query: string | null): void
+    search(query: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Help
 
@@ -4925,7 +4925,7 @@ interface Help {
      * @virtual 
      * @param query string to search in the help
      */
-    vfunc_search(query: string | null): void
+    vfunc_search(query: string): void
 
     // Class property signals of IAnjuta-3.0.IAnjuta.Help
 
@@ -5379,17 +5379,17 @@ interface Language {
      * @returns A valid language id or 0
      */
     get_from_editor(editor: EditorLanguage): LanguageId
-    get_from_mime_type(mime_type: string | null): LanguageId
-    get_from_string(string: string | null): LanguageId
+    get_from_mime_type(mime_type: string): LanguageId
+    get_from_string(string: string): LanguageId
     get_languages(): number[]
-    get_make_target(id: LanguageId): string | null
-    get_name(id: LanguageId): string | null
+    get_make_target(id: LanguageId): string
+    get_name(id: LanguageId): string
     /**
      * Conviniece method to get the name directly from the editor
      * @param editor An object implementing IAnjutaEditorLanguage
      * @returns A language name or NULL
      */
-    get_name_from_editor(editor: EditorLanguage): string | null
+    get_name_from_editor(editor: EditorLanguage): string
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Language
 
@@ -5400,18 +5400,18 @@ interface Language {
      * @returns A valid language id or 0
      */
     vfunc_get_from_editor(editor: EditorLanguage): LanguageId
-    vfunc_get_from_mime_type(mime_type: string | null): LanguageId
-    vfunc_get_from_string(string: string | null): LanguageId
+    vfunc_get_from_mime_type(mime_type: string): LanguageId
+    vfunc_get_from_string(string: string): LanguageId
     vfunc_get_languages(): number[]
-    vfunc_get_make_target(id: LanguageId): string | null
-    vfunc_get_name(id: LanguageId): string | null
+    vfunc_get_make_target(id: LanguageId): string
+    vfunc_get_name(id: LanguageId): string
     /**
      * Conviniece method to get the name directly from the editor
      * @virtual 
      * @param editor An object implementing IAnjutaEditorLanguage
      * @returns A language name or NULL
      */
-    vfunc_get_name_from_editor(editor: EditorLanguage): string | null
+    vfunc_get_name_from_editor(editor: EditorLanguage): string
 
     // Class property signals of IAnjuta-3.0.IAnjuta.Language
 
@@ -5736,13 +5736,13 @@ interface MessageManager {
      * @param view A message view
      * @param icon Sets the icon of view.
      */
-    set_view_icon_from_stock(view: MessageView, icon: string | null): void
+    set_view_icon_from_stock(view: MessageView, icon: string): void
     /**
      * Sets the title of view.
      * @param view A message view
      * @param title Sets the title of view.
      */
-    set_view_title(view: MessageView, title: string | null): void
+    set_view_title(view: MessageView, title: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.MessageManager
 
@@ -5772,14 +5772,14 @@ interface MessageManager {
      * @param view A message view
      * @param icon Sets the icon of view.
      */
-    vfunc_set_view_icon_from_stock(view: MessageView, icon: string | null): void
+    vfunc_set_view_icon_from_stock(view: MessageView, icon: string): void
     /**
      * Sets the title of view.
      * @virtual 
      * @param view A message view
      * @param title Sets the title of view.
      */
-    vfunc_set_view_title(view: MessageView, title: string | null): void
+    vfunc_set_view_title(view: MessageView, title: string): void
 
     // Class property signals of IAnjuta-3.0.IAnjuta.MessageManager
 
@@ -5838,13 +5838,13 @@ interface MessageView {
      * @param summary summary of the message
      * @param details details of the message
      */
-    append(type: MessageViewType, summary: string | null, details: string | null): void
+    append(type: MessageViewType, summary: string, details: string): void
     /**
      * Appends the text in buffer. Flushes the buffer where a newline is found.
      * by emiiting buffer_flushed signal. The string is expected to be utf8.
      * @param text text to show as message
      */
-    buffer_append(text: string | null): void
+    buffer_append(text: string): void
     /**
      * Clear all messages in buffer
      */
@@ -5852,7 +5852,7 @@ interface MessageView {
     /**
      * Get the currently selected message
      */
-    get_current_message(): string | null
+    get_current_message(): string
     /**
      * Select next message (of type INFO, WARNING or ERROR)
      */
@@ -5871,15 +5871,15 @@ interface MessageView {
      * @param summary summary of the message
      * @param details details of the message
      */
-    vfunc_append(type: MessageViewType, summary: string | null, details: string | null): void
+    vfunc_append(type: MessageViewType, summary: string, details: string): void
     /**
      * Appends the text in buffer. Flushes the buffer where a newline is found.
      * by emiiting buffer_flushed signal. The string is expected to be utf8.
      * @virtual 
      * @param text text to show as message
      */
-    vfunc_buffer_append(text: string | null): void
-    vfunc_buffer_flushed(line: string | null): void
+    vfunc_buffer_append(text: string): void
+    vfunc_buffer_flushed(line: string): void
     /**
      * Clear all messages in buffer
      * @virtual 
@@ -5889,8 +5889,8 @@ interface MessageView {
      * Get the currently selected message
      * @virtual 
      */
-    vfunc_get_current_message(): string | null
-    vfunc_message_clicked(message: string | null): void
+    vfunc_get_current_message(): string
+    vfunc_message_clicked(message: string): void
     /**
      * Select next message (of type INFO, WARNING or ERROR)
      * @virtual 
@@ -6183,7 +6183,7 @@ interface Project {
      * @param name Name for map property
      * @returns TRUE if the node is removed
      */
-    remove_property(node: Anjuta.ProjectNode, id: string | null, name: string | null): boolean
+    remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean
     /**
      * Save a project node
      * @param node Project node to save
@@ -6198,7 +6198,7 @@ interface Project {
      * @param value Value
      * @returns The new property of NULL if the property cannot be set
      */
-    set_property(node: Anjuta.ProjectNode, id: string | null, name: string | null, value: string | null): Anjuta.ProjectProperty | null
+    set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
 
     // Overloads of set_property
 
@@ -6207,7 +6207,7 @@ interface Project {
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Project
 
@@ -6277,7 +6277,7 @@ interface Project {
      * @param name Name for map property
      * @returns TRUE if the node is removed
      */
-    vfunc_remove_property(node: Anjuta.ProjectNode, id: string | null, name: string | null): boolean
+    vfunc_remove_property(node: Anjuta.ProjectNode, id: string, name: string | null): boolean
     /**
      * Save a project node
      * @virtual 
@@ -6294,7 +6294,7 @@ interface Project {
      * @param value Value
      * @returns The new property of NULL if the property cannot be set
      */
-    vfunc_set_property(node: Anjuta.ProjectNode, id: string | null, name: string | null, value: string | null): Anjuta.ProjectProperty | null
+    vfunc_set_property(node: Anjuta.ProjectNode, id: string, name: string | null, value: string): Anjuta.ProjectProperty | null
 
     // Overloads of vfunc_set_property
 
@@ -6564,7 +6564,7 @@ interface ProjectManager {
      * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      * @returns A #GFile corresponding to the new group added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    add_group(name: string | null, default_group: Gio.File | null): Gio.File
+    add_group(name: string, default_group: Gio.File | null): Gio.File
     /**
      * Prompts the user to add a file to the project. If the user selects
      * multiple files only the first source file is returned.
@@ -6577,7 +6577,7 @@ interface ProjectManager {
      * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    add_source(name: string | null, default_target: Gio.File | null): Gio.File
+    add_source(name: string, default_target: Gio.File | null): Gio.File
     /**
      * Adds a file to the project without prompting the user.
      * 
@@ -6589,7 +6589,7 @@ interface ProjectManager {
      * @param target A #GFile corresponding to the parent target or group.
      * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    add_source_quiet(name: string | null, target: Gio.File): Gio.File
+    add_source_quiet(name: string, target: Gio.File): Gio.File
     /**
      * Prompts the user to add several files to the project. Depending on the
      * project backend, it can be possible that the source files must
@@ -6611,7 +6611,7 @@ interface ProjectManager {
      * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      * @returns A #GFile corresponding to the new target added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    add_target(name: string | null, default_group: Gio.File | null): Gio.File
+    add_target(name: string, default_group: Gio.File | null): Gio.File
     /**
      * Gets the capabilites of project whether it can add group, target
      * sources etc.
@@ -6679,7 +6679,7 @@ interface ProjectManager {
      * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      * @returns A #GFile corresponding to the new group added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    vfunc_add_group(name: string | null, default_group: Gio.File | null): Gio.File
+    vfunc_add_group(name: string, default_group: Gio.File | null): Gio.File
     /**
      * Prompts the user to add a file to the project. If the user selects
      * multiple files only the first source file is returned.
@@ -6693,7 +6693,7 @@ interface ProjectManager {
      * @param default_target A #GFile corresponding to the default target or group or 				%NULL if you don't care.
      * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    vfunc_add_source(name: string | null, default_target: Gio.File | null): Gio.File
+    vfunc_add_source(name: string, default_target: Gio.File | null): Gio.File
     /**
      * Adds a file to the project without prompting the user.
      * 
@@ -6706,7 +6706,7 @@ interface ProjectManager {
      * @param target A #GFile corresponding to the parent target or group.
      * @returns A #GFile corresponding to the new source file in the project view. You own the returned file; use g_object_unref() to release it.
      */
-    vfunc_add_source_quiet(name: string | null, target: Gio.File): Gio.File
+    vfunc_add_source_quiet(name: string, target: Gio.File): Gio.File
     /**
      * Prompts the user to add several files to the project. Depending on the
      * project backend, it can be possible that the source files must
@@ -6730,7 +6730,7 @@ interface ProjectManager {
      * @param default_group A #GFile corresponding to the default parent group or 				%NULL if don't care.
      * @returns A #GFile corresponding to the new target added in the project. You own the returned file; use g_object_unref() to release it.
      */
-    vfunc_add_target(name: string | null, default_group: Gio.File | null): Gio.File
+    vfunc_add_target(name: string, default_group: Gio.File | null): Gio.File
     vfunc_element_added(element: Gio.File): void
     vfunc_element_removed(element: Gio.File): void
     vfunc_element_selected(element: Gio.File): void
@@ -6860,7 +6860,7 @@ interface Provider {
     /**
      * Return a (translatable) name for the provider
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the iter where the current completion started
      * @returns current start iter
@@ -6889,7 +6889,7 @@ interface Provider {
      * Return a (translatable) name for the provider
      * @virtual 
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Get the iter where the current completion started
      * @virtual 
@@ -6947,7 +6947,7 @@ interface SnippetsManager {
      * @param key Trigger-key of the snippet
      * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
-    insert(key: string | null, editing_session: boolean): boolean
+    insert(key: string, editing_session: boolean): boolean
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.SnippetsManager
 
@@ -6957,7 +6957,7 @@ interface SnippetsManager {
      * @param key Trigger-key of the snippet
      * @param editing_session If after inserting the snippet there should be an editing session. Mark as FALSE if not interested in the dynamic capabilities of the snippet.
      */
-    vfunc_insert(key: string | null, editing_session: boolean): boolean
+    vfunc_insert(key: string, editing_session: boolean): boolean
 
     // Class property signals of IAnjuta-3.0.IAnjuta.SnippetsManager
 
@@ -7163,7 +7163,7 @@ interface Symbol {
      * @param field The field to retrieve.
      * @returns The string
      */
-    get_string(field: SymbolField): string | null
+    get_string(field: SymbolField): string
     /**
      * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
      * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
@@ -7201,7 +7201,7 @@ interface Symbol {
      * @param field The field to retrieve.
      * @returns The string
      */
-    vfunc_get_string(field: SymbolField): string | null
+    vfunc_get_string(field: SymbolField): string
     /**
      * A convenience method to get value of #IANJUTA_SYMBOL_FIELD_TYPE
      * field typecasted to IAnjutaSymbolType. Numerical value is unchanged.
@@ -7268,7 +7268,7 @@ interface SymbolManager {
      * @param pkg_version Version of the package. The colon char must be avoided.
      * @returns TRUE if the package was loaded (or will be loaded once scanned). FALSE if the version given was newer than the version in the database or the package was not found. In this case, add_package() should be called.
      */
-    activate_package(pkg_name: string | null, pkg_version: string | null): boolean
+    activate_package(pkg_name: string, pkg_version: string): boolean
     /**
      * Deactivates all activate packages
      */
@@ -7279,7 +7279,7 @@ interface SymbolManager {
      * @param pkg_name name of the package. The colon char must be avoided.
      * @param pkg_version Version of the package. The colon char must be avoided.
      */
-    deactivate_package(pkg_name: string | null, pkg_version: string | null): void
+    deactivate_package(pkg_name: string, pkg_version: string): void
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.SymbolManager
 
@@ -7290,7 +7290,7 @@ interface SymbolManager {
      * @param pkg_version Version of the package. The colon char must be avoided.
      * @returns TRUE if the package was loaded (or will be loaded once scanned). FALSE if the version given was newer than the version in the database or the package was not found. In this case, add_package() should be called.
      */
-    vfunc_activate_package(pkg_name: string | null, pkg_version: string | null): boolean
+    vfunc_activate_package(pkg_name: string, pkg_version: string): boolean
     /**
      * Deactivates all activate packages
      * @virtual 
@@ -7303,7 +7303,7 @@ interface SymbolManager {
      * @param pkg_name name of the package. The colon char must be avoided.
      * @param pkg_version Version of the package. The colon char must be avoided.
      */
-    vfunc_deactivate_package(pkg_name: string | null, pkg_version: string | null): void
+    vfunc_deactivate_package(pkg_name: string, pkg_version: string): void
     vfunc_prj_scan_end(process_id: number): void
     vfunc_sys_scan_end(process_id: number): void
 
@@ -7527,7 +7527,7 @@ interface Terminal {
      * @param environment List of additional environment variables
      * @returns Process ID
      */
-    execute_command(directory: string | null, command: string | null, environment: string[]): number
+    execute_command(directory: string, command: string, environment: string[]): number
 
     // Own virtual methods of IAnjuta-3.0.IAnjuta.Terminal
 
@@ -7541,7 +7541,7 @@ interface Terminal {
      * @param environment List of additional environment variables
      * @returns Process ID
      */
-    vfunc_execute_command(directory: string | null, command: string | null, environment: string[]): number
+    vfunc_execute_command(directory: string, command: string, environment: string[]): number
 
     // Own signals of IAnjuta-3.0.IAnjuta.Terminal
 
@@ -7648,7 +7648,7 @@ interface Vcs {
      * @param cancel An optional #GCancellable object to cancel the operation, or NULL
      * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
-    checkout(repository_location: string | null, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
+    checkout(repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     /**
      * Remove files from the VCS repository.
      * @param files List of files, represented as #Gfile objects, to remove
@@ -7673,7 +7673,7 @@ interface Vcs {
      * @param cancel An optional #GCancellable object to cancel the operation, or NULL
      * @param notify #AnjutaAsyncNotify object for finish notification and error reporting.
      */
-    vfunc_checkout(repository_location: string | null, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
+    vfunc_checkout(repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify): void
     /**
      * Remove files from the VCS repository.
      * @virtual 
@@ -7763,15 +7763,15 @@ interface BuildableIface {
     // Own fields of IAnjuta-3.0.IAnjuta.BuildableIface
 
     g_iface: GObject.TypeInterface
-    build: (obj: Buildable, uri: string | null) => void
-    clean: (obj: Buildable, uri: string | null) => void
-    configure: (obj: Buildable, uri: string | null) => void
-    execute: (obj: Buildable, uri: string | null) => void
-    generate: (obj: Buildable, uri: string | null) => void
-    get_command: (obj: Buildable, command_id: BuildableCommand) => string | null
-    install: (obj: Buildable, uri: string | null) => void
+    build: (obj: Buildable, uri: string) => void
+    clean: (obj: Buildable, uri: string) => void
+    configure: (obj: Buildable, uri: string) => void
+    execute: (obj: Buildable, uri: string) => void
+    generate: (obj: Buildable, uri: string) => void
+    get_command: (obj: Buildable, command_id: BuildableCommand) => string
+    install: (obj: Buildable, uri: string) => void
     reset_commands: (obj: Buildable) => void
-    set_command: (obj: Buildable, command_id: BuildableCommand, command: string | null) => void
+    set_command: (obj: Buildable, command_id: BuildableCommand, command: string) => void
 }
 
 abstract class BuildableIface {
@@ -7787,7 +7787,7 @@ interface BuilderIface {
 
     g_iface: GObject.TypeInterface
     cancel: (obj: Builder, handle: BuilderHandle) => void
-    get_uri_configuration: (obj: Builder, uri: string | null) => string | null
+    get_uri_configuration: (obj: Builder, uri: string) => string
     list_configuration: (obj: Builder) => string[]
 }
 
@@ -7807,19 +7807,19 @@ interface DebugManagerIface {
     debugger_started: (obj: DebugManager) => void
     debugger_stopped: (obj: DebugManager, err: GLib.Error) => void
     frame_changed: (obj: DebugManager, frame: number, thread: number) => void
-    location_changed: (obj: DebugManager, address: number, uri: string | null, line: number) => void
+    location_changed: (obj: DebugManager, address: number, uri: string, line: number) => void
     program_exited: (obj: DebugManager) => void
     program_loaded: (obj: DebugManager) => void
-    program_moved: (obj: DebugManager, pid: number, tid: number, address: number, file: string | null, line: number) => void
+    program_moved: (obj: DebugManager, pid: number, tid: number, address: number, file: string, line: number) => void
     program_running: (obj: DebugManager) => void
     program_started: (obj: DebugManager) => void
     program_stopped: (obj: DebugManager) => void
     program_unloaded: (obj: DebugManager) => void
     sharedlib_event: (obj: DebugManager) => void
-    signal_received: (obj: DebugManager, name: string | null, description: string | null) => void
+    signal_received: (obj: DebugManager, name: string, description: string) => void
     quit: (obj: DebugManager) => boolean
-    start: (obj: DebugManager, uri: string | null) => boolean
-    start_remote: (obj: DebugManager, server: string | null, uri: string | null) => boolean
+    start: (obj: DebugManager, uri: string) => boolean
+    start_remote: (obj: DebugManager, server: string, uri: string) => boolean
 }
 
 abstract class DebugManagerIface {
@@ -7989,31 +7989,31 @@ interface DebuggerIface {
     frame_changed: (obj: Debugger, frame: number, thread: number) => void
     program_exited: (obj: Debugger) => void
     program_loaded: (obj: Debugger) => void
-    program_moved: (obj: Debugger, pid: number, tid: number, address: number, file: string | null, line: number) => void
+    program_moved: (obj: Debugger, pid: number, tid: number, address: number, file: string, line: number) => void
     program_running: (obj: Debugger) => void
     program_stopped: (obj: Debugger) => void
     sharedlib_event: (obj: Debugger) => void
-    signal_received: (obj: Debugger, name: string | null, description: string | null) => void
+    signal_received: (obj: Debugger, name: string, description: string) => void
     abort: (obj: Debugger) => boolean
     attach: (obj: Debugger, pid: number, source_search_directories: string[]) => boolean
-    // Has conflict: connect: (obj: Debugger, server: string | null, args: string | null, terminal: boolean, stop: boolean) => boolean
+    // Has conflict: connect: (obj: Debugger, server: string, args: string, terminal: boolean, stop: boolean) => boolean
     disable_log: (obj: Debugger) => void
     enable_log: (obj: Debugger, log: MessageView) => void
     exit: (obj: Debugger) => boolean
     get_state: (obj: Debugger) => DebuggerState
-    handle_signal: (obj: Debugger, name: string | null, stop: boolean, print: boolean, ignore: boolean) => boolean
+    handle_signal: (obj: Debugger, name: string, stop: boolean, print: boolean, ignore: boolean) => boolean
     interrupt: (obj: Debugger) => boolean
-    load: (obj: Debugger, file: string | null, mime_type: string | null, source_search_directories: string[]) => boolean
+    load: (obj: Debugger, file: string, mime_type: string, source_search_directories: string[]) => boolean
     quit: (obj: Debugger) => boolean
     run: (obj: Debugger) => boolean
-    run_from: (obj: Debugger, file: string | null, line: number) => boolean
-    run_to: (obj: Debugger, file: string | null, line: number) => boolean
-    send_command: (obj: Debugger, command: string | null) => boolean
+    run_from: (obj: Debugger, file: string, line: number) => boolean
+    run_to: (obj: Debugger, file: string, line: number) => boolean
+    send_command: (obj: Debugger, command: string) => boolean
     set_environment: (obj: Debugger, env: string | null) => boolean
     set_frame: (obj: Debugger, frame: number) => boolean
     set_thread: (obj: Debugger, thread: number) => boolean
-    set_working_directory: (obj: Debugger, dir: string | null) => boolean
-    start: (obj: Debugger, args: string | null, terminal: boolean, stop: boolean) => boolean
+    set_working_directory: (obj: Debugger, dir: string) => boolean
+    start: (obj: Debugger, args: string, terminal: boolean, stop: boolean) => boolean
     step_in: (obj: Debugger) => boolean
     step_out: (obj: Debugger) => boolean
     step_over: (obj: Debugger) => boolean
@@ -8040,12 +8040,12 @@ interface DebuggerInstructionALine {
      * Optional label
      * @field 
      */
-    label: string | null
+    label: string
     /**
      * Diassembled instruction on the line
      * @field 
      */
-    text: string | null
+    text: string
 }
 
 /**
@@ -8186,8 +8186,8 @@ interface DebuggerVariableIface {
     // Own fields of IAnjuta-3.0.IAnjuta.DebuggerVariableIface
 
     g_iface: DebuggerIface
-    assign: (obj: DebuggerVariable, name: string | null, value: string | null) => boolean
-    destroy: (obj: DebuggerVariable, name: string | null) => boolean
+    assign: (obj: DebuggerVariable, name: string, value: string) => boolean
+    destroy: (obj: DebuggerVariable, name: string) => boolean
 }
 
 abstract class DebuggerVariableIface {
@@ -8272,7 +8272,7 @@ interface DocumentIface {
     copy: (obj: Document) => void
     cut: (obj: Document) => void
     end_undo_action: (obj: Document) => void
-    get_filename: (obj: Document) => string | null
+    get_filename: (obj: Document) => string
     grab_focus: (obj: Document) => void
     paste: (obj: Document) => void
     redo: (obj: Document) => void
@@ -8294,12 +8294,12 @@ interface DocumentManagerIface {
     document_added: (obj: DocumentManager, doc: Document) => void
     document_removed: (obj: DocumentManager, doc: Document) => void
     add_bookmark: (obj: DocumentManager, file: Gio.File, line: number) => void
-    add_buffer: (obj: DocumentManager, name: string | null, content: string | null) => Editor
+    add_buffer: (obj: DocumentManager, name: string, content: string) => Editor
     add_document: (obj: DocumentManager, document: Document) => void
     find_document_with_file: (obj: DocumentManager, file: Gio.File) => Document
     get_current_document: (obj: DocumentManager) => Document
     get_doc_widgets: (obj: DocumentManager) => Gtk.Widget[]
-    get_file: (obj: DocumentManager, filename: string | null) => Gio.File
+    get_file: (obj: DocumentManager, filename: string) => Gio.File
     goto_file_line: (obj: DocumentManager, file: Gio.File, lineno: number) => Editor
     goto_file_line_mark: (obj: DocumentManager, file: Gio.File, lineno: number, mark: boolean) => Editor
     remove_document: (obj: DocumentManager, document: Document, save_before: boolean) => boolean
@@ -8321,7 +8321,7 @@ interface EditorAssistIface {
     cancelled: (obj: EditorAssist) => void
     add: (obj: EditorAssist, provider: Provider) => void
     invoke: (obj: EditorAssist, provider: Provider) => void
-    proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], pre_word: string | null, finished: boolean) => void
+    proposals: (obj: EditorAssist, provider: Provider, proposals: EditorAssistProposal[], pre_word: string, finished: boolean) => void
     remove: (obj: EditorAssist, provider: Provider) => void
 }
 
@@ -8455,7 +8455,7 @@ interface EditorGladeSignalIface {
     // Own fields of IAnjuta-3.0.IAnjuta.EditorGladeSignalIface
 
     g_iface: EditorIface
-    drop: (obj: EditorGladeSignal, iterator: Iterable, signal_data: string | null) => void
+    drop: (obj: EditorGladeSignal, iterator: Iterable, signal_data: string) => void
     drop_possible: (obj: EditorGladeSignal, iterator: Iterable) => boolean
 }
 
@@ -8490,7 +8490,7 @@ interface EditorHoverIface {
     g_iface: EditorIface
     hover_leave: (obj: EditorHover, position: Iterable) => void
     hover_over: (obj: EditorHover, position: Iterable) => void
-    display: (obj: EditorHover, position: Iterable, info: string | null) => void
+    display: (obj: EditorHover, position: Iterable, info: string) => void
 }
 
 abstract class EditorHoverIface {
@@ -8506,14 +8506,14 @@ interface EditorIface {
 
     g_iface: GObject.TypeInterface
     backspace: (obj: Editor) => void
-    changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string | null) => void
+    changed: (obj: Editor, position: Iterable, added: boolean, length: number, lines: number, text: string) => void
     char_added: (obj: Editor, position: Iterable, ch: number) => void
     code_changed: (obj: Editor, position: Iterable, code: string | null) => void
     cursor_moved: (obj: Editor) => void
     glade_callback_add: (obj: Editor, widget_typename: string | null, signal_name: string | null, handler_name: string | null, object: string | null, swap: boolean, after: boolean, filename: string | null) => void
     glade_member_add: (obj: Editor, widget_typename: string | null, widget_name: string | null, filename: string | null) => void
     line_marks_gutter_clicked: (obj: Editor, location: number) => void
-    append: (obj: Editor, text: string | null, length: number) => void
+    append: (obj: Editor, text: string, length: number) => void
     erase: (obj: Editor, position_start: Iterable, position_end: Iterable) => void
     erase_all: (obj: Editor) => void
     get_column: (obj: Editor) => number
@@ -8537,7 +8537,7 @@ interface EditorIface {
     goto_line: (obj: Editor, lineno: number) => void
     goto_position: (obj: Editor, position: Iterable) => void
     goto_start: (obj: Editor) => void
-    insert: (obj: Editor, position: Iterable, text: string | null, length: number) => void
+    insert: (obj: Editor, position: Iterable, text: string, length: number) => void
     set_auto_indent: (obj: Editor, auto_indent: boolean) => void
     set_indentsize: (obj: Editor, indentsize: number) => void
     set_popup_menu: (obj: Editor, menu: Gtk.Widget) => void
@@ -8557,11 +8557,11 @@ interface EditorLanguageIface {
     // Own fields of IAnjuta-3.0.IAnjuta.EditorLanguageIface
 
     g_iface: EditorIface
-    language_changed: (obj: EditorLanguage, language: string | null) => void
-    get_language: (obj: EditorLanguage) => string | null
-    get_language_name: (obj: EditorLanguage, language: string | null) => string | null
+    language_changed: (obj: EditorLanguage, language: string) => void
+    get_language: (obj: EditorLanguage) => string
+    get_language_name: (obj: EditorLanguage, language: string) => string
     get_supported_languages: (obj: EditorLanguage) => string[]
-    set_language: (obj: EditorLanguage, language: string | null) => void
+    set_language: (obj: EditorLanguage, language: string) => void
 }
 
 abstract class EditorLanguageIface {
@@ -8594,8 +8594,8 @@ interface EditorSearchIface {
     // Own fields of IAnjuta-3.0.IAnjuta.EditorSearchIface
 
     g_iface: EditorIface
-    backward: (obj: EditorSearch, search: string | null, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
-    forward: (obj: EditorSearch, search: string | null, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    backward: (obj: EditorSearch, search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
+    forward: (obj: EditorSearch, search: string, case_sensitive: boolean, start: EditorCell, end: EditorCell) => [ /* returnType */ boolean, /* result_start */ EditorCell, /* result_end */ EditorCell ]
 }
 
 abstract class EditorSearchIface {
@@ -8612,7 +8612,7 @@ interface EditorSelectionIface {
     g_iface: EditorIface
     get: (obj: EditorSelection) => string | null
     has_selection: (obj: EditorSelection) => boolean
-    replace: (obj: EditorSelection, text: string | null, length: number) => void
+    replace: (obj: EditorSelection, text: string, length: number) => void
     select_all: (obj: EditorSelection) => void
     select_block: (obj: EditorSelection) => void
     select_function: (obj: EditorSelection) => void
@@ -8730,7 +8730,7 @@ interface FileManagerIface {
 
     g_iface: GObject.TypeInterface
     section_changed: (obj: FileManager, file: Gio.File) => void
-    set_root: (obj: FileManager, root_uri: string | null) => void
+    set_root: (obj: FileManager, root_uri: string) => void
     set_selected: (obj: FileManager, file: Gio.File) => void
 }
 
@@ -8783,7 +8783,7 @@ interface HelpIface {
     // Own fields of IAnjuta-3.0.IAnjuta.HelpIface
 
     g_iface: GObject.TypeInterface
-    search: (obj: Help, query: string | null) => void
+    search: (obj: Help, query: string) => void
 }
 
 abstract class HelpIface {
@@ -8872,12 +8872,12 @@ interface LanguageIface {
 
     g_iface: GObject.TypeInterface
     get_from_editor: (obj: Language, editor: EditorLanguage) => LanguageId
-    get_from_mime_type: (obj: Language, mime_type: string | null) => LanguageId
-    get_from_string: (obj: Language, string: string | null) => LanguageId
+    get_from_mime_type: (obj: Language, mime_type: string) => LanguageId
+    get_from_string: (obj: Language, string: string) => LanguageId
     get_languages: (obj: Language) => number[]
-    get_make_target: (obj: Language, id: LanguageId) => string | null
-    get_name: (obj: Language, id: LanguageId) => string | null
-    get_name_from_editor: (obj: Language, editor: EditorLanguage) => string | null
+    get_make_target: (obj: Language, id: LanguageId) => string
+    get_name: (obj: Language, id: LanguageId) => string
+    get_name_from_editor: (obj: Language, editor: EditorLanguage) => string
 }
 
 abstract class LanguageIface {
@@ -8947,8 +8947,8 @@ interface MessageManagerIface {
     remove_view: (obj: MessageManager, view: MessageView) => void
     set_current_view: (obj: MessageManager, view: MessageView) => void
     set_view_icon: (obj: MessageManager, view: MessageView, icon: GdkPixbuf.PixbufAnimation) => void
-    set_view_icon_from_stock: (obj: MessageManager, view: MessageView, icon: string | null) => void
-    set_view_title: (obj: MessageManager, view: MessageView, title: string | null) => void
+    set_view_icon_from_stock: (obj: MessageManager, view: MessageView, icon: string) => void
+    set_view_title: (obj: MessageManager, view: MessageView, title: string) => void
 }
 
 abstract class MessageManagerIface {
@@ -8963,12 +8963,12 @@ interface MessageViewIface {
     // Own fields of IAnjuta-3.0.IAnjuta.MessageViewIface
 
     g_iface: GObject.TypeInterface
-    buffer_flushed: (obj: MessageView, line: string | null) => void
-    message_clicked: (obj: MessageView, message: string | null) => void
-    append: (obj: MessageView, type: MessageViewType, summary: string | null, details: string | null) => void
-    buffer_append: (obj: MessageView, text: string | null) => void
+    buffer_flushed: (obj: MessageView, line: string) => void
+    message_clicked: (obj: MessageView, message: string) => void
+    append: (obj: MessageView, type: MessageViewType, summary: string, details: string) => void
+    buffer_append: (obj: MessageView, text: string) => void
     clear: (obj: MessageView) => void
-    get_current_message: (obj: MessageView) => string | null
+    get_current_message: (obj: MessageView) => string
     select_next: (obj: MessageView) => void
     select_previous: (obj: MessageView) => void
 }
@@ -9075,9 +9075,9 @@ interface ProjectIface {
     is_loaded: (obj: Project) => boolean
     load_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
     remove_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    remove_property: (obj: Project, node: Anjuta.ProjectNode, id: string | null, name: string | null) => boolean
+    remove_property: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null) => boolean
     save_node: (obj: Project, node: Anjuta.ProjectNode) => boolean
-    set_property: (obj: Project, node: Anjuta.ProjectNode, id: string | null, name: string | null, value: string | null) => Anjuta.ProjectProperty | null
+    set_property: (obj: Project, node: Anjuta.ProjectNode, id: string, name: string | null, value: string) => Anjuta.ProjectProperty | null
 }
 
 abstract class ProjectIface {
@@ -9096,11 +9096,11 @@ interface ProjectManagerIface {
     element_removed: (obj: ProjectManager, element: Gio.File) => void
     element_selected: (obj: ProjectManager, element: Gio.File) => void
     project_loaded: (obj: ProjectManager, error: GLib.Error) => void
-    add_group: (obj: ProjectManager, name: string | null, default_group: Gio.File | null) => Gio.File
-    add_source: (obj: ProjectManager, name: string | null, default_target: Gio.File | null) => Gio.File
-    add_source_quiet: (obj: ProjectManager, name: string | null, target: Gio.File) => Gio.File
+    add_group: (obj: ProjectManager, name: string, default_group: Gio.File | null) => Gio.File
+    add_source: (obj: ProjectManager, name: string, default_target: Gio.File | null) => Gio.File
+    add_source_quiet: (obj: ProjectManager, name: string, target: Gio.File) => Gio.File
     add_sources: (obj: ProjectManager, names: string[], default_target: Gio.File | null) => Gio.File[]
-    add_target: (obj: ProjectManager, name: string | null, default_group: Gio.File | null) => Gio.File
+    add_target: (obj: ProjectManager, name: string, default_group: Gio.File | null) => Gio.File
     get_capabilities: (obj: ProjectManager) => number
     get_children: (obj: ProjectManager, parent: Gio.File, children_type: number) => Gio.File[]
     get_current_project: (obj: ProjectManager) => Project
@@ -9126,7 +9126,7 @@ interface ProviderIface {
 
     g_iface: GObject.TypeInterface
     activate: (obj: Provider, iter: Iterable, data: any | null) => void
-    get_name: (obj: Provider) => string | null
+    get_name: (obj: Provider) => string
     get_start_iter: (obj: Provider) => Iterable
     populate: (obj: Provider, iter: Iterable) => void
 }
@@ -9143,7 +9143,7 @@ interface SnippetsManagerIface {
     // Own fields of IAnjuta-3.0.IAnjuta.SnippetsManagerIface
 
     g_iface: GObject.TypeInterface
-    insert: (obj: SnippetsManager, key: string | null, editing_session: boolean) => boolean
+    insert: (obj: SnippetsManager, key: string, editing_session: boolean) => boolean
 }
 
 abstract class SnippetsManagerIface {
@@ -9206,7 +9206,7 @@ interface SymbolIface {
     get_boolean: (obj: Symbol, field: SymbolField) => boolean
     get_icon: (obj: Symbol) => GdkPixbuf.Pixbuf
     get_int: (obj: Symbol, field: SymbolField) => number
-    get_string: (obj: Symbol, field: SymbolField) => string | null
+    get_string: (obj: Symbol, field: SymbolField) => string
     get_sym_type: (obj: Symbol) => SymbolType
 }
 
@@ -9224,9 +9224,9 @@ interface SymbolManagerIface {
     g_iface: GObject.TypeInterface
     prj_scan_end: (obj: SymbolManager, process_id: number) => void
     sys_scan_end: (obj: SymbolManager, process_id: number) => void
-    activate_package: (obj: SymbolManager, pkg_name: string | null, pkg_version: string | null) => boolean
+    activate_package: (obj: SymbolManager, pkg_name: string, pkg_version: string) => boolean
     deactivate_all: (obj: SymbolManager) => void
-    deactivate_package: (obj: SymbolManager, pkg_name: string | null, pkg_version: string | null) => void
+    deactivate_package: (obj: SymbolManager, pkg_name: string, pkg_version: string) => void
 }
 
 abstract class SymbolManagerIface {
@@ -9266,7 +9266,7 @@ interface TerminalIface {
 
     g_iface: GObject.TypeInterface
     child_exited: (obj: Terminal, pid: number, status: number) => void
-    execute_command: (obj: Terminal, directory: string | null, command: string | null, environment: string[]) => number
+    execute_command: (obj: Terminal, directory: string, command: string, environment: string[]) => number
 }
 
 abstract class TerminalIface {
@@ -9298,7 +9298,7 @@ interface VcsIface {
     g_iface: GObject.TypeInterface
     status_changed: (obj: Vcs) => void
     add: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
-    checkout: (obj: Vcs, repository_location: string | null, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
+    checkout: (obj: Vcs, repository_location: string, dest: Gio.File, cancel: Gio.Cancellable | null, notify: Anjuta.AsyncNotify) => void
     remove: (obj: Vcs, files: Gio.File[], notify: Anjuta.AsyncNotify) => void
 }
 

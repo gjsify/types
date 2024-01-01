@@ -88,7 +88,7 @@ export function trust_prompt_describe_certificate_errors(flags: Gio.TlsCertifica
  * @param cancellable a #GCancellable, or %NULL
  * @param callback a callback to call, when the prompt (an `source` save) is done
  */
-export function trust_prompt_run_for_source<Z = unknown>(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string | null, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null, allow_source_save: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+export function trust_prompt_run_for_source<Z = unknown>(parent: Gtk.Window, source: EDataServer.Source, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null, allow_source_save: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 /**
  * Finishes the operation started with e_trust_prompt_run_for_source().
  * The `response` will contain a code of the user's choice.
@@ -123,7 +123,7 @@ export function trust_prompt_run_for_source_finish(source: EDataServer.Source, r
  * @param error_text an optional error text to show in the dialog; can be %NULL
  * @returns A code of the user's choice. The #E_TRUST_PROMPT_RESPONSE_UNKNOWN    is returned, when the user cancelled the trust prompt dialog.
  */
-export function trust_prompt_run_modal(parent: Gtk.Window, source_extension: string | null, source_display_name: string | null, host: string | null, certificate_pem: string | null, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null): EDataServer.TrustPromptResponse
+export function trust_prompt_run_modal(parent: Gtk.Window, source_extension: string | null, source_display_name: string | null, host: string, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, error_text: string | null): EDataServer.TrustPromptResponse
 export interface CredentialsPrompterLoopPromptFunc {
     (prompter: CredentialsPrompter, source: EDataServer.Source, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): boolean
 }
@@ -279,7 +279,7 @@ export interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -293,7 +293,7 @@ export interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -304,7 +304,7 @@ export interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of EDataServerUI-1.2.EDataServerUI.CertificateWidget
 
@@ -912,7 +912,7 @@ export interface CredentialsPrompterImpl {
      * @param prompt_id a prompt ID to cancel
      */
     vfunc_cancel_prompt(prompt_id: any | null): void
-    vfunc_process_prompt(prompt_id: any | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters): void
+    vfunc_process_prompt(prompt_id: any | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters): void
     vfunc_prompt_finished(prompt_id: any | null, credentials: EDataServer.NamedParameters): void
 
     // Own signals of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl
@@ -1144,7 +1144,7 @@ export interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Exten
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1158,7 +1158,7 @@ export interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Exten
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1169,7 +1169,7 @@ export interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Exten
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of EDataServerUI-1.2.EDataServerUI.RemindersWidget
 
@@ -1405,7 +1405,7 @@ export interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildab
      * or even a %NULL.
      * @returns currently set base URL for the @content.
      */
-    get_base_url(): string | null
+    get_base_url(): string
     get_multiselect(): boolean
     /**
      * Returns information about selected source at index `index`. The function can be called
@@ -1461,7 +1461,7 @@ export interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildab
      * or even a %NULL.
      * @param base_url a base URL
      */
-    set_base_url(base_url: string | null): void
+    set_base_url(base_url: string): void
     /**
      * Sets whether the WebDAV discovery content allows multiselect.
      * @param multiselect whether multiselect is allowed
@@ -1488,7 +1488,7 @@ export interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1502,7 +1502,7 @@ export interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1513,7 +1513,7 @@ export interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverContent
 
@@ -1777,7 +1777,7 @@ export interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1791,7 +1791,7 @@ export interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1802,7 +1802,7 @@ export interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of EDataServerUI-1.2.EDataServerUI.WebDAVDiscoverDialog
 
@@ -2064,7 +2064,7 @@ export class WebDAVDiscoverDialog extends Gtk.Dialog {
      * @param supports_filter a bit-or of #EWebDAVDiscoverSupports, a filter to limit what source    types will be shown in the dialog content; use %E_WEBDAV_DISCOVER_SUPPORTS_NONE    to show all
      * @returns a newly created #GtkDialog, which should be freed with g_object_unref(), when no longer needed.
      */
-    constructor(parent: Gtk.Window, title: string | null, credentials_prompter: CredentialsPrompter, source: EDataServer.Source, base_url: string | null, supports_filter: number) 
+    constructor(parent: Gtk.Window, title: string, credentials_prompter: CredentialsPrompter, source: EDataServer.Source, base_url: string | null, supports_filter: number) 
     /**
      * Creates a new #GtkDialog which has as its content a WebDAV discovery widget,
      * created with e_webdav_discover_content_new(). This dialog can be shown to a user
@@ -2079,7 +2079,7 @@ export class WebDAVDiscoverDialog extends Gtk.Dialog {
      * @param supports_filter a bit-or of #EWebDAVDiscoverSupports, a filter to limit what source    types will be shown in the dialog content; use %E_WEBDAV_DISCOVER_SUPPORTS_NONE    to show all
      * @returns a newly created #GtkDialog, which should be freed with g_object_unref(), when no longer needed.
      */
-    static new(parent: Gtk.Window, title: string | null, credentials_prompter: CredentialsPrompter, source: EDataServer.Source, base_url: string | null, supports_filter: number): WebDAVDiscoverDialog
+    static new(parent: Gtk.Window, title: string, credentials_prompter: CredentialsPrompter, source: EDataServer.Source, base_url: string | null, supports_filter: number): WebDAVDiscoverDialog
 
     // Overloads of new
 
@@ -2189,8 +2189,8 @@ export interface CredentialsPrompterImplClass {
     // Own fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImplClass
 
     parent_class: EDataServer.ExtensionClass
-    authentication_methods: string | null
-    process_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id: any | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string | null, credentials: EDataServer.NamedParameters) => void
+    authentication_methods: string
+    process_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id: any | null, auth_source: EDataServer.Source, cred_source: EDataServer.Source, error_text: string, credentials: EDataServer.NamedParameters) => void
     cancel_prompt: (prompter_impl: CredentialsPrompterImpl, prompt_id: any | null) => void
     prompt_finished: (prompter_impl: CredentialsPrompterImpl, prompt_id: any | null, credentials: EDataServer.NamedParameters) => void
 }

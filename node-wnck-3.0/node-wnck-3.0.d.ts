@@ -525,13 +525,13 @@ interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -544,13 +544,13 @@ interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -563,7 +563,7 @@ interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -572,7 +572,7 @@ interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets an accelerator path for this menu from which accelerator paths
      * for its immediate children, its menu items, can be constructed.
@@ -664,7 +664,7 @@ interface ActionMenu extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1083,7 +1083,7 @@ interface Application {
      * are used to find it.
      * @returns the icon name of @app, or a fallback icon name if no icon name is available.
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Gets the mini-icon to be used for `app`. If no mini-icon is set for `app,`
      * a suboptimal heuristic is used to find an appropriate icon. If no mini-icon
@@ -1105,7 +1105,7 @@ interface Application {
      * should say that this is where the application name goes.
      * @returns the name of @app, or a fallback name if no name is available.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the process ID of `app`.
      * @returns the process ID of @app, or 0 if none is available.
@@ -1115,7 +1115,7 @@ interface Application {
      * Gets the startup sequence ID used for startup notification of `app`.
      * @returns the startup sequence ID used for startup notification of @app, or %NULL if none is available.
      */
-    getStartupId(): string | null
+    getStartupId(): string
     /**
      * Gets the list of #WnckWindow belonging to `app`.
      * @returns the list of #WnckWindow belonging to @app, or %NULL if the application contains no window. The list should not be modified nor freed, as it is owned by @app.
@@ -1237,7 +1237,7 @@ interface ClassGroup {
      * `class_group`.
      * @returns the identifier name of @class_group, or an empty string if the group has no identifier name.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the mini-icon to be used for `class_group`. Since there is no way to
      * properly find the mini-icon, the same suboptimal heuristic as the one for
@@ -1255,12 +1255,12 @@ interface ClassGroup {
      * resource class name is used.
      * @returns an human-readable name for @class_group.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the resource class name for `class_group`.
      * @returns the resource class name of @class_group, or an empty string if the group has no resource class name.
      */
-    getResClass(): string | null
+    getResClass(): string
     /**
      * Gets the list of #WnckWindow that are grouped in `class_group`.
      * @returns the list of #WnckWindow grouped in @class_group, or %NULL if the group contains no window. The list should not be modified nor freed, as it is owned by @class_group.
@@ -1320,7 +1320,7 @@ class ClassGroup extends GObject.Object {
      * @param id identifier name of the sought resource class.
      * @returns the #WnckClassGroup corresponding to @id, or %NULL if there is no #WnckClassGroup with the specified @id. The returned #WnckClassGroup is owned by libwnck and must not be referenced or unreferenced.
      */
-    static get(id: string | null): ClassGroup
+    static get(id: string): ClassGroup
 }
 
 module Handle {
@@ -1357,7 +1357,7 @@ interface Handle {
      * @param id identifier name of the sought resource class.
      * @returns the #WnckClassGroup corresponding to @id, or %NULL if there is no #WnckClassGroup with the specified @id. The returned #WnckClassGroup is owned by libwnck and must not be referenced or unreferenced.
      */
-    getClassGroup(id: string | null): ClassGroup
+    getClassGroup(id: string): ClassGroup
     /**
      * Gets the default #WnckScreen on the default display.
      * @returns the default #WnckScreen. The returned #WnckScreen is owned by #WnckHandle and must not be referenced or unreferenced. This can return %NULL if not on X11.
@@ -1517,7 +1517,7 @@ interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1538,7 +1538,7 @@ interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1551,7 +1551,7 @@ interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -1561,7 +1561,7 @@ interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Set the accelerator path on `menu_item,` through which runtime
      * changes of the menu item’s accelerator caused by the user can be
@@ -1652,7 +1652,7 @@ interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1661,13 +1661,13 @@ interface ImageMenuItem extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activa
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Wnck-3.0.Wnck.ImageMenuItem
 
@@ -1950,7 +1950,7 @@ class ImageMenuItem extends Gtk.MenuItem {
     constructor(config?: ImageMenuItem.ConstructorProperties) 
     constructor() 
     static new(): ImageMenuItem
-    static newWithLabel(label: string | null): ImageMenuItem
+    static newWithLabel(label: string): ImageMenuItem
     _init(config?: ImageMenuItem.ConstructorProperties): void
 }
 
@@ -2060,7 +2060,7 @@ interface Pager extends Atk.ImplementorIface, Gtk.Buildable {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2073,7 +2073,7 @@ interface Pager extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -2083,7 +2083,7 @@ interface Pager extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2096,7 +2096,7 @@ interface Pager extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2105,13 +2105,13 @@ interface Pager extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Wnck-3.0.Wnck.Pager
 
@@ -2577,7 +2577,7 @@ interface Screen {
      * Gets the name of the window manager.
      * @returns the name of the window manager, or %NULL if the window manager does not comply with the <ulink url="http://standards.freedesktop.org/wm-spec/wm-spec-latest.html">EWMH</ulink> specification.
      */
-    getWindowManagerName(): string | null
+    getWindowManagerName(): string
     /**
      * Gets the list of #WnckWindow on `screen`. The list is not in a defined
      * order, but should be "stable" (windows should not be reordered in it).
@@ -2632,7 +2632,7 @@ interface Screen {
      * @param atom a property atom.
      * @returns %TRUE if the window manager for @screen supports the @atom hint, %FALSE otherwise.
      */
-    netWmSupports(atom: string | null): boolean
+    netWmSupports(atom: string): boolean
     /**
      * Releases the ownership of the layout of #WnckWorkspace on `screen`.
      * `current_token` is used to verify that the caller is the owner of the layout.
@@ -2859,13 +2859,13 @@ interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2878,13 +2878,13 @@ interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2897,7 +2897,7 @@ interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2906,7 +2906,7 @@ interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2918,7 +2918,7 @@ interface Selector extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3373,13 +3373,13 @@ interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3392,13 +3392,13 @@ interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3411,7 +3411,7 @@ interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3420,7 +3420,7 @@ interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3432,7 +3432,7 @@ interface Tasklist extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3892,7 +3892,7 @@ interface Window {
      * which `window` belongs.
      * @returns the class group name for @window, or %NULL if @window belongs to no class group.
      */
-    getClassGroupName(): string | null
+    getClassGroupName(): string
     /**
      * Gets the class instance name from the <ulink
      * url="http://tronche.com/gui/x/icccm/sec-4.html&num;WM_CLASS">WM_CLASS Property</ulink>
@@ -3902,7 +3902,7 @@ interface Window {
      * same class group, so that they can use different resources.
      * @returns the class instance name for @window, or %NULL if @window has no class instance.
      */
-    getClassInstanceName(): string | null
+    getClassInstanceName(): string
     /**
      * Gets the size and position of `window,` as last received
      * in a ConfigureNotify event (i.e. this call does not round-trip
@@ -3954,7 +3954,7 @@ interface Window {
      * title, not its icon title.
      * @returns the icon name of @window, or a fallback icon name if no icon name is available.
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Gets the mini-icon to be used for `window`. If no mini-icon was found, a
      * fallback mini-icon is used. wnck_window_get_icon_is_fallback() can be used
@@ -3971,7 +3971,7 @@ interface Window {
      * For icons titles, use wnck_window_get_icon_name() instead.
      * @returns the name of @window, or a fallback name if no name is available.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the process ID of `window`.
      * @returns the process ID of @window, or 0 if none is available.
@@ -3983,7 +3983,7 @@ interface Window {
      * client leader window.
      * @returns role for @window, or %NULL if @window has no role.
      */
-    getRole(): string | null
+    getRole(): string
     /**
      * Gets the #WnckScreen `window` is on.
      * @returns the #WnckScreen @window is on. The returned #WnckScreen is owned by libwnck and must not be referenced or unreferenced.
@@ -3996,7 +3996,7 @@ interface Window {
      * See wnck_window_get_session_id_utf8().
      * @returns the session ID for @window in Latin-1, or %NULL if @window has no session ID.
      */
-    getSessionId(): string | null
+    getSessionId(): string
     /**
      * Gets the session ID for `window` in UTF-8 encoding.
      * The session ID should be in Latin-1 encoding, so the conversion should work,
@@ -4004,7 +4004,7 @@ interface Window {
      * UTF-8.
      * @returns the session ID for @window in UTF-8, or %NULL if @window has no session ID.
      */
-    getSessionIdUtf8(): string | null
+    getSessionIdUtf8(): string
     /**
      * Gets the sort order of `window,` used for ordering of `window` in
      * #WnckSelector and #WnckTasklist. The sort order is an internal state in
@@ -4512,7 +4512,7 @@ interface Workspace {
      * Changes the name of `space`.
      * @param name new name for `space`.
      */
-    changeName(name: string | null): void
+    changeName(name: string): void
     /**
      * Gets the height of `space`.
      * @returns the height of @space.
@@ -4539,7 +4539,7 @@ interface Workspace {
      * used.
      * @returns the name of @space.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the neighbor #WnckWorkspace of `space` in the `direction` direction.
      * @param direction direction in which to search the neighbor.

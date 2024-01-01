@@ -121,25 +121,25 @@ enum DirectoryFlags {
  * The name of the D-Bus interface to use for all data miners that
  * inter-operate with Tracker.
  */
-const MINER_DBUS_INTERFACE: string | null
+const MINER_DBUS_INTERFACE: string
 /**
  * D-Bus name prefix to use for all data miners. This allows custom
  * miners to be written using `TRACKER_MINER_DBUS_NAME_PREFIX` + "Files" for
  * example and would show up on D-Bus under
  * &quot;org.freedesktop.Tracker1.Miner.Files&quot;.
  */
-const MINER_DBUS_NAME_PREFIX: string | null
+const MINER_DBUS_NAME_PREFIX: string
 /**
  * D-Bus path prefix to use for all data miners. This allows custom
  * miners to be written using `TRACKER_MINER_DBUS_PATH_PREFIX` + "Files" for
  * example and would show up on D-Bus under
  * &quot;/org/freedesktop/Tracker1/Miner/Files&quot;.
  */
-const MINER_DBUS_PATH_PREFIX: string | null
+const MINER_DBUS_PATH_PREFIX: string
 /**
  * Used as the domain for any #GErrors reported by `TrackerMiner` objects.
  */
-const MINER_ERROR_DOMAIN: string | null
+const MINER_ERROR_DOMAIN: string
 module DataProvider {
 
     // Constructor properties interface
@@ -173,7 +173,7 @@ interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #TrackerEnumerator or %NULL on failure. This must be freed with g_object_unref().
      */
-    begin(url: Gio.File, attributes: string | null, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
+    begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
     /**
      * Precisely the same operation as tracker_data_provider_begin()
      * is performing, but asynchronously.
@@ -202,7 +202,7 @@ interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    begin_async(url: Gio.File, attributes: string | null, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of begin_async
 
@@ -236,7 +236,7 @@ interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @returns A Promise of: a #TrackerEnumerator or %NULL on failure. This must be freed with g_object_unref().
      */
-    begin_async(url: Gio.File, attributes: string | null, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Enumerator>
+    begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Enumerator>
     /**
      * Finishes the asynchronous operation started with
      * tracker_data_provider_begin_async().
@@ -353,7 +353,7 @@ interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #TrackerEnumerator or %NULL on failure. This must be freed with g_object_unref().
      */
-    vfunc_begin(url: Gio.File, attributes: string | null, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
+    vfunc_begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
     /**
      * Precisely the same operation as tracker_data_provider_begin()
      * is performing, but asynchronously.
@@ -383,7 +383,7 @@ interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    vfunc_begin_async(url: Gio.File, attributes: string | null, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_begin_async(url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes the asynchronous operation started with
      * tracker_data_provider_begin_async().
@@ -697,7 +697,7 @@ interface Decorator extends Gio.Initable {
      * so it's clear WHO has extracted this extended metadata.
      * @returns a const gchar* or #NULL if an error happened.
      */
-    get_data_source(): string | null
+    get_data_source(): string
     /**
      * Get the number of items left in the queue to be processed. This
      * indicates content that may already exist in Tracker but is waiting
@@ -740,7 +740,7 @@ interface Decorator extends Gio.Initable {
      * standard time it would take to index content.
      * @param rdf_types a string array of rdf types
      */
-    set_priority_rdf_types(rdf_types: string | null): void
+    set_priority_rdf_types(rdf_types: string): void
 
     // Own virtual methods of TrackerMiner-1.0.TrackerMiner.Decorator
 
@@ -971,7 +971,7 @@ interface IndexingTree {
      * @param filter filter type
      * @param glob_string glob-style string for the filter
      */
-    add_filter(filter: FilterType, glob_string: string | null): void
+    add_filter(filter: FilterType, glob_string: string): void
     /**
      * Clears all filters of a given type.
      * @param type filter type to clear
@@ -1287,12 +1287,12 @@ interface Miner extends Gio.Initable {
      * Gets the DBus name registered by `miner`
      * @returns a constant string which should not be modified by the caller.
      */
-    get_dbus_full_name(): string | null
+    get_dbus_full_name(): string
     /**
      * Gets the DBus path registered by `miner`
      * @returns a constant string which should not be modified by the caller.
      */
-    get_dbus_full_path(): string | null
+    get_dbus_full_path(): string
     /**
      * Returns the number of pause reasons holding `miner` from
      * indexing contents.
@@ -1321,7 +1321,7 @@ interface Miner extends Gio.Initable {
      * @param reason reason to pause
      * @returns The pause cookie ID.
      */
-    pause(reason: string | null): number
+    pause(reason: string): number
     /**
      * Asks the miner to resume processing. The cookie must be something
      * returned by tracker_miner_pause(). The miner won't actually resume
@@ -1348,7 +1348,7 @@ interface Miner extends Gio.Initable {
      */
     vfunc_ignore_next_update(urls: string[]): void
     vfunc_paused(): void
-    vfunc_progress(status: string | null, progress: number): void
+    vfunc_progress(status: string, progress: number): void
     vfunc_resumed(): void
     vfunc_started(): void
     vfunc_stopped(): void
@@ -1957,8 +1957,8 @@ interface DataProviderIface {
      * @field 
      */
     g_iface: GObject.TypeInterface
-    begin: (data_provider: DataProvider, url: Gio.File, attributes: string | null, flags: DirectoryFlags, cancellable: Gio.Cancellable | null) => Enumerator
-    begin_async: (data_provider: DataProvider, url: Gio.File, attributes: string | null, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    begin: (data_provider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null) => Enumerator
+    begin_async: (data_provider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     begin_finish: (data_provider: DataProvider, result: Gio.AsyncResult) => Enumerator
     end: (data_provider: DataProvider, enumerator: Enumerator, cancellable: Gio.Cancellable | null) => boolean
     end_async: (data_provider: DataProvider, enumerator: Enumerator, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
@@ -2048,7 +2048,7 @@ interface DecoratorInfo {
      * ¹: http://en.wikipedia.org/wiki/MIME
      * @returns the MIME type for #TrackerDecoratorInfo on success or #NULL on error.
      */
-    get_mimetype(): string | null
+    get_mimetype(): string
     /**
      * A #TrackerSparqlBuilder allows the caller to extract the final
      * SPARQL used to insert the extracted metadata into the database for
@@ -2075,13 +2075,13 @@ interface DecoratorInfo {
      * with a resource in the database. For example, 'file:///tmp/foo.txt'.
      * @returns the URL for #TrackerDecoratorInfo on success or #NULL on error.
      */
-    get_url(): string | null
+    get_url(): string
     /**
      * A URN is a Uniform Resource Name and should be a unique identifier
      * for a resource in the database.
      * @returns the URN for #TrackerDecoratorInfo on success or #NULL on error.
      */
-    get_urn(): string | null
+    get_urn(): string
     /**
      * Increases the reference count of `info` by 1.
      * @returns the same @info passed in, or %NULL on error.
@@ -2170,7 +2170,7 @@ interface MinerClass {
     stopped: (miner: Miner) => void
     paused: (miner: Miner) => void
     resumed: (miner: Miner) => void
-    progress: (miner: Miner, status: string | null, progress: number) => void
+    progress: (miner: Miner, status: string, progress: number) => void
     ignore_next_update: (miner: Miner, urls: string[]) => void
     /**
      * Reserved for future API improvements.

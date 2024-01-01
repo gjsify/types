@@ -85,12 +85,12 @@ interface MediaPlayer extends GObject.Object {
     seek_bytes(bytes: number): boolean
     get_protocols(): string[]
     get_mime_types(): string[]
-    play_speed_to_double(speed: string | null): number
+    play_speed_to_double(speed: string): number
     get_playback_state(): string | null
-    set_playback_state(value: string | null): void
+    set_playback_state(value: string): void
     get_allowed_playback_speeds(): string[]
     get_playback_speed(): string | null
-    set_playback_speed(value: string | null): void
+    set_playback_speed(value: string): void
     get_uri(): string | null
     set_uri(value: string | null): void
     get_volume(): number
@@ -120,10 +120,10 @@ interface MediaPlayer extends GObject.Object {
     vfunc_get_protocols(): string[]
     vfunc_get_mime_types(): string[]
     vfunc_get_playback_state(): string | null
-    vfunc_set_playback_state(value: string | null): void
+    vfunc_set_playback_state(value: string): void
     vfunc_get_allowed_playback_speeds(): string[]
     vfunc_get_playback_speed(): string | null
-    vfunc_set_playback_speed(value: string | null): void
+    vfunc_set_playback_speed(value: string): void
     vfunc_get_uri(): string | null
     vfunc_set_uri(value: string | null): void
     vfunc_get_volume(): number
@@ -268,65 +268,65 @@ interface PlayerController extends GObject.Object {
 
     next(): boolean
     previous(): boolean
-    set_single_play_uri(uri: string | null, metadata: string | null, mime: string | null, features: string | null): void
-    set_playlist_uri(uri: string | null, metadata: string | null, collection: GUPnPAV.MediaCollection): void
-    set_next_single_play_uri(uri: string | null, metadata: string | null, mime: string | null, features: string | null): void
-    set_next_playlist_uri(uri: string | null, metadata: string | null, collection: GUPnPAV.MediaCollection): void
-    is_play_mode_valid(play_mode: string | null): boolean
-    unescape(input: string | null): string | null
-    get_playback_state(): string | null
-    set_playback_state(value: string | null): void
+    set_single_play_uri(uri: string, metadata: string, mime: string | null, features: string | null): void
+    set_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void
+    set_next_single_play_uri(uri: string, metadata: string, mime: string | null, features: string | null): void
+    set_next_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void
+    is_play_mode_valid(play_mode: string): boolean
+    unescape(input: string): string | null
+    get_playback_state(): string
+    set_playback_state(value: string): void
     get_n_tracks(): number
     set_n_tracks(value: number): void
     get_track(): number
     set_track(value: number): void
     get_uri(): string | null
-    set_uri(value: string | null): void
+    set_uri(value: string): void
     get_metadata(): string | null
-    set_metadata(value: string | null): void
+    set_metadata(value: string): void
     get_track_uri(): string | null
-    set_track_uri(value: string | null): void
+    set_track_uri(value: string): void
     get_track_metadata(): string | null
-    set_track_metadata(value: string | null): void
+    set_track_metadata(value: string): void
     get_next_uri(): string | null
-    set_next_uri(value: string | null): void
+    set_next_uri(value: string): void
     get_next_metadata(): string | null
-    set_next_metadata(value: string | null): void
+    set_next_metadata(value: string): void
     get_current_transport_actions(): string | null
-    get_play_mode(): string | null
-    set_play_mode(value: string | null): void
+    get_play_mode(): string
+    set_play_mode(value: string): void
     get_can_pause(): boolean
 
     // Own virtual methods of RygelRenderer-2.8.RygelRenderer.PlayerController
 
     vfunc_next(): boolean
     vfunc_previous(): boolean
-    vfunc_set_single_play_uri(uri: string | null, metadata: string | null, mime: string | null, features: string | null): void
-    vfunc_set_playlist_uri(uri: string | null, metadata: string | null, collection: GUPnPAV.MediaCollection): void
-    vfunc_set_next_single_play_uri(uri: string | null, metadata: string | null, mime: string | null, features: string | null): void
-    vfunc_set_next_playlist_uri(uri: string | null, metadata: string | null, collection: GUPnPAV.MediaCollection): void
-    vfunc_is_play_mode_valid(play_mode: string | null): boolean
-    vfunc_get_playback_state(): string | null
-    vfunc_set_playback_state(value: string | null): void
+    vfunc_set_single_play_uri(uri: string, metadata: string, mime: string | null, features: string | null): void
+    vfunc_set_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void
+    vfunc_set_next_single_play_uri(uri: string, metadata: string, mime: string | null, features: string | null): void
+    vfunc_set_next_playlist_uri(uri: string, metadata: string, collection: GUPnPAV.MediaCollection): void
+    vfunc_is_play_mode_valid(play_mode: string): boolean
+    vfunc_get_playback_state(): string
+    vfunc_set_playback_state(value: string): void
     vfunc_get_n_tracks(): number
     vfunc_set_n_tracks(value: number): void
     vfunc_get_track(): number
     vfunc_set_track(value: number): void
     vfunc_get_uri(): string | null
-    vfunc_set_uri(value: string | null): void
+    vfunc_set_uri(value: string): void
     vfunc_get_metadata(): string | null
-    vfunc_set_metadata(value: string | null): void
+    vfunc_set_metadata(value: string): void
     vfunc_get_track_uri(): string | null
-    vfunc_set_track_uri(value: string | null): void
+    vfunc_set_track_uri(value: string): void
     vfunc_get_track_metadata(): string | null
-    vfunc_set_track_metadata(value: string | null): void
+    vfunc_set_track_metadata(value: string): void
     vfunc_get_next_uri(): string | null
-    vfunc_set_next_uri(value: string | null): void
+    vfunc_set_next_uri(value: string): void
     vfunc_get_next_metadata(): string | null
-    vfunc_set_next_metadata(value: string | null): void
+    vfunc_set_next_metadata(value: string): void
     vfunc_get_current_transport_actions(): string | null
-    vfunc_get_play_mode(): string | null
-    vfunc_set_play_mode(value: string | null): void
+    vfunc_get_play_mode(): string
+    vfunc_set_play_mode(value: string): void
     vfunc_get_can_pause(): boolean
 
     // Class property signals of RygelRenderer-2.8.RygelRenderer.PlayerController
@@ -468,12 +468,12 @@ class MediaRendererPlugin extends RygelCore.Plugin {
     // Constructors of RygelRenderer-2.8.RygelRenderer.MediaRendererPlugin
 
     constructor(config?: MediaRendererPlugin.ConstructorProperties) 
-    constructor(name: string | null, title: string | null, description: string | null, capabilities: RygelCore.PluginCapabilities) 
-    static new(name: string | null, title: string | null, description: string | null, capabilities: RygelCore.PluginCapabilities): MediaRendererPlugin
+    constructor(name: string, title: string | null, description: string | null, capabilities: RygelCore.PluginCapabilities) 
+    static new(name: string, title: string | null, description: string | null, capabilities: RygelCore.PluginCapabilities): MediaRendererPlugin
 
     // Overloads of new
 
-    static new(desc_path: string | null, name: string | null, title: string | null, description: string | null, capabilities: RygelCore.PluginCapabilities): RygelCore.Plugin
+    static new(desc_path: string, name: string, title: string | null, description: string | null, capabilities: RygelCore.PluginCapabilities): RygelCore.Plugin
     /**
      * Create a new #GUPnPResourceFactory object.
      * @constructor 
@@ -532,8 +532,8 @@ class MediaRenderer extends RygelCore.MediaDevice {
     // Constructors of RygelRenderer-2.8.RygelRenderer.MediaRenderer
 
     constructor(config?: MediaRenderer.ConstructorProperties) 
-    constructor(title: string | null, player: MediaPlayer, capabilities: RygelCore.PluginCapabilities) 
-    static new(title: string | null, player: MediaPlayer, capabilities: RygelCore.PluginCapabilities): MediaRenderer
+    constructor(title: string, player: MediaPlayer, capabilities: RygelCore.PluginCapabilities) 
+    static new(title: string, player: MediaPlayer, capabilities: RygelCore.PluginCapabilities): MediaRenderer
     _init(config?: MediaRenderer.ConstructorProperties): void
 }
 
@@ -591,10 +591,10 @@ interface MediaPlayerIface {
     get_protocols: () => [ /* returnType */ string[], /* result_length1 */ number ]
     get_mime_types: () => [ /* returnType */ string[], /* result_length1 */ number ]
     get_playback_state: (self: MediaPlayer) => string | null
-    set_playback_state: (self: MediaPlayer, value: string | null) => void
+    set_playback_state: (self: MediaPlayer, value: string) => void
     get_allowed_playback_speeds: () => [ /* returnType */ string[], /* result_length1 */ number ]
     get_playback_speed: (self: MediaPlayer) => string | null
-    set_playback_speed: (self: MediaPlayer, value: string | null) => void
+    set_playback_speed: (self: MediaPlayer, value: string) => void
     get_uri: (self: MediaPlayer) => string | null
     set_uri: (self: MediaPlayer, value: string | null) => void
     get_volume: (self: MediaPlayer) => number
@@ -628,32 +628,32 @@ interface PlayerControllerIface {
 
     next: (self: PlayerController) => boolean
     previous: (self: PlayerController) => boolean
-    set_single_play_uri: (self: PlayerController, uri: string | null, metadata: string | null, mime: string | null, features: string | null) => void
-    set_playlist_uri: (self: PlayerController, uri: string | null, metadata: string | null, collection: GUPnPAV.MediaCollection) => void
-    set_next_single_play_uri: (self: PlayerController, uri: string | null, metadata: string | null, mime: string | null, features: string | null) => void
-    set_next_playlist_uri: (self: PlayerController, uri: string | null, metadata: string | null, collection: GUPnPAV.MediaCollection) => void
-    is_play_mode_valid: (self: PlayerController, play_mode: string | null) => boolean
-    get_playback_state: (self: PlayerController) => string | null
-    set_playback_state: (self: PlayerController, value: string | null) => void
+    set_single_play_uri: (self: PlayerController, uri: string, metadata: string, mime: string | null, features: string | null) => void
+    set_playlist_uri: (self: PlayerController, uri: string, metadata: string, collection: GUPnPAV.MediaCollection) => void
+    set_next_single_play_uri: (self: PlayerController, uri: string, metadata: string, mime: string | null, features: string | null) => void
+    set_next_playlist_uri: (self: PlayerController, uri: string, metadata: string, collection: GUPnPAV.MediaCollection) => void
+    is_play_mode_valid: (self: PlayerController, play_mode: string) => boolean
+    get_playback_state: (self: PlayerController) => string
+    set_playback_state: (self: PlayerController, value: string) => void
     get_n_tracks: (self: PlayerController) => number
     set_n_tracks: (self: PlayerController, value: number) => void
     get_track: (self: PlayerController) => number
     set_track: (self: PlayerController, value: number) => void
     get_uri: (self: PlayerController) => string | null
-    set_uri: (self: PlayerController, value: string | null) => void
+    set_uri: (self: PlayerController, value: string) => void
     get_metadata: (self: PlayerController) => string | null
-    set_metadata: (self: PlayerController, value: string | null) => void
+    set_metadata: (self: PlayerController, value: string) => void
     get_track_uri: (self: PlayerController) => string | null
-    set_track_uri: (self: PlayerController, value: string | null) => void
+    set_track_uri: (self: PlayerController, value: string) => void
     get_track_metadata: (self: PlayerController) => string | null
-    set_track_metadata: (self: PlayerController, value: string | null) => void
+    set_track_metadata: (self: PlayerController, value: string) => void
     get_next_uri: (self: PlayerController) => string | null
-    set_next_uri: (self: PlayerController, value: string | null) => void
+    set_next_uri: (self: PlayerController, value: string) => void
     get_next_metadata: (self: PlayerController) => string | null
-    set_next_metadata: (self: PlayerController, value: string | null) => void
+    set_next_metadata: (self: PlayerController, value: string) => void
     get_current_transport_actions: (self: PlayerController) => string | null
-    get_play_mode: (self: PlayerController) => string | null
-    set_play_mode: (self: PlayerController, value: string | null) => void
+    get_play_mode: (self: PlayerController) => string
+    set_play_mode: (self: PlayerController, value: string) => void
     get_can_pause: (self: PlayerController) => boolean
 }
 

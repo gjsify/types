@@ -228,10 +228,10 @@ enum Type {
 const HASH_SIZE: number
 const STATUS_OK: number
 function contentCodeDmapType(code: ContentCode): Type
-function contentCodeName(code: ContentCode): string | null
-function contentCodeReadFromBuffer(buf: string | null): ContentCode
-function contentCodeString(code: ContentCode): string | null
-function contentCodeStringAsInt32(str: string | null): number
+function contentCodeName(code: ContentCode): string
+function contentCodeReadFromBuffer(buf: string): ContentCode
+function contentCodeString(code: ContentCode): string
+function contentCodeStringAsInt32(str: string): number
 function contentCodes(number: number): ContentCodeDefinition
 function hashGenerate(versionMajor: number, url: number, hashSelect: number, out: number, requestId: number): void
 function hashProgressiveFinal(context: HashContext, digest: number): void
@@ -240,14 +240,14 @@ function hashProgressiveToString(digest: number, string: string | null): void
 function hashProgressiveUpdate(context: HashContext, buffer: number, length: number): void
 function mdnsBrowserErrorQuark(): GLib.Quark
 function mdnsPublisherErrorQuark(): GLib.Quark
-function mimeToFormat(transcodeMimetype: string | null): string | null
+function mimeToFormat(transcodeMimetype: string): string | null
 function structureDestroy(structure: GLib.Node): void
 function structureGetSize(structure: GLib.Node): number
 function structureIncreaseByPredictedSize(structure: GLib.Node, size: number): void
 function structurePrint(structure: GLib.Node): void
 function structureSerialize(structure: GLib.Node, length: number): string | null
 interface ConnectionCallback {
-    (connection: Connection, result: boolean, reason: string | null): boolean
+    (connection: Connection, result: boolean, reason: string): boolean
 }
 interface ResponseHandler {
     (connection: Connection, status: number, structure: GLib.Node): void
@@ -398,10 +398,10 @@ interface Db {
     // Owm methods of DMAP-3.0.DMAP.Db
 
     // Has conflict: add(record: Record): number
-    // Has conflict: addPath(path: string | null): number
+    // Has conflict: addPath(path: string): number
     // Has conflict: addWithId(record: Record, id: number): number
     // Has conflict: count(): number
-    // Has conflict: lookupIdByLocation(location: string | null): number
+    // Has conflict: lookupIdByLocation(location: string): number
 
     // Own virtual methods of DMAP-3.0.DMAP.Db
 
@@ -418,7 +418,7 @@ interface Db {
      * @param path A path to an appropriate media file.
      * @returns The ID for the newly added record. See also the notes for dmap_db_add regarding reference counting.
      */
-    addPath(path: string | null): number
+    addPath(path: string): number
     /**
      * Add a record to the database and assign it the given ID.
      * @virtual 
@@ -428,7 +428,7 @@ interface Db {
      */
     addWithId(record: Record, id: number): number
     count(): number
-    lookupIdByLocation(location: string | null): number
+    lookupIdByLocation(location: string): number
 
     // Class property signals of DMAP-3.0.DMAP.Db
 
@@ -647,14 +647,14 @@ interface Connection {
      * @param auth A #SoupAuth
      * @param password A password
      */
-    authenticateMessage(session: Soup.Session, message: Soup.Message, auth: Soup.Auth, password: string | null): void
-    getHeaders(uri: string | null): Soup.MessageHeaders
+    authenticateMessage(session: Soup.Session, message: Soup.Message, auth: Soup.Auth, password: string): void
+    getHeaders(uri: string): Soup.MessageHeaders
     isConnected(): boolean
     setup(): void
 
     // Own virtual methods of DMAP-3.0.DMAP.Connection
 
-    authenticate(name: string | null): string | null
+    authenticate(name: string): string | null
     connected(): void
     connecting(state: ConnectionState, progress: number): void
     disconnected(): void
@@ -825,8 +825,8 @@ class GstInputStream extends Gio.InputStream {
     // Constructors of DMAP-3.0.DMAP.GstInputStream
 
     constructor(config?: GstInputStream.ConstructorProperties) 
-    constructor(transcodeMimetype: string | null, srcStream: Gio.InputStream) 
-    static new(transcodeMimetype: string | null, srcStream: Gio.InputStream): GstInputStream
+    constructor(transcodeMimetype: string, srcStream: Gio.InputStream) 
+    static new(transcodeMimetype: string, srcStream: Gio.InputStream): GstInputStream
     _init(config?: GstInputStream.ConstructorProperties): void
 }
 
@@ -979,14 +979,14 @@ interface MdnsPublisher {
 
     // Owm methods of DMAP-3.0.DMAP.MdnsPublisher
 
-    publish(name: string | null, port: number, typeOfService: string | null, passwordRequired: boolean, txtRecords: string | null): boolean
-    renameAtPort(port: number, name: string | null): boolean
+    publish(name: string, port: number, typeOfService: string, passwordRequired: boolean, txtRecords: string | null): boolean
+    renameAtPort(port: number, name: string): boolean
     withdraw(port: number): boolean
 
     // Own virtual methods of DMAP-3.0.DMAP.MdnsPublisher
 
-    nameCollision(name: string | null): void
-    published(name: string | null): void
+    nameCollision(name: string): void
+    published(name: string): void
 
     // Own signals of DMAP-3.0.DMAP.MdnsPublisher
 
@@ -1073,20 +1073,20 @@ interface Share {
 
     // Own virtual methods of DMAP-3.0.DMAP.Share
 
-    contentCodes(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    ctrlInt(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    databases(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext): void
-    databasesBrowseXxx(server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext): void
-    databasesItemsXxx(server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext): void
+    contentCodes(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    ctrlInt(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    databases(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext): void
+    databasesBrowseXxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext): void
+    databasesItemsXxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext): void
     getDesiredPort(): number
-    getTypeOfService(): string | null
-    login(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    logout(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    getTypeOfService(): string
+    login(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    logout(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
     messageAddStandardHeaders(msg: Soup.Message): void
-    nameCollision(publisher: MdnsPublisher, name: string | null): void
-    published(publisher: MdnsPublisher, name: string | null): void
-    serverInfo(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    update(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    nameCollision(publisher: MdnsPublisher, name: string): void
+    published(publisher: MdnsPublisher, name: string): void
+    serverInfo(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    update(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
 
     // Class property signals of DMAP-3.0.DMAP.Share
 
@@ -1174,7 +1174,7 @@ interface ConnectionClass {
     getQueryMetadata: (connection: Connection) => string | null
     connected: (connection: Connection) => void
     disconnected: (connection: Connection) => void
-    authenticate: (connection: Connection, name: string | null) => string | null
+    authenticate: (connection: Connection, name: string) => string | null
     connecting: (connection: Connection, state: ConnectionState, progress: number) => void
     operationDone: (connection: Connection) => void
 }
@@ -1235,8 +1235,8 @@ interface ContentCodeDefinition {
 
     code: ContentCode
     intCode: number
-    name: string | null
-    string: string | null
+    name: string
+    string: string
     type: Type
 }
 
@@ -1270,8 +1270,8 @@ interface DbIface {
     parent: GObject.TypeInterface
     add: (db: Db, record: Record) => number
     addWithId: (db: Db, record: Record, id: number) => number
-    addPath: (db: Db, path: string | null) => number
-    lookupIdByLocation: (db: Db, location: string | null) => number
+    addPath: (db: Db, path: string) => number
+    lookupIdByLocation: (db: Db, location: string) => number
     count: (db: Db) => number
 }
 
@@ -1375,8 +1375,8 @@ interface MdnsPublisherClass {
     // Own fields of DMAP-3.0.DMAP.MdnsPublisherClass
 
     parentClass: GObject.ObjectClass
-    published: (publisher: MdnsPublisher, name: string | null) => void
-    nameCollision: (publisher: MdnsPublisher, name: string | null) => void
+    published: (publisher: MdnsPublisher, name: string) => void
+    nameCollision: (publisher: MdnsPublisher, name: string) => void
 }
 
 abstract class MdnsPublisherClass {
@@ -1462,20 +1462,20 @@ interface ShareClass {
 
     parent: GObject.ObjectClass
     getDesiredPort: (share: Share) => number
-    getTypeOfService: (share: Share) => string | null
+    getTypeOfService: (share: Share) => string
     messageAddStandardHeaders: (share: Share, msg: Soup.Message) => void
     addEntryToMlcl: (id: any, record: Record, mb: any) => void
-    databasesBrowseXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext) => void
-    databasesItemsXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext) => void
-    serverInfo: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    contentCodes: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    login: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    logout: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    update: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    ctrlInt: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    published: (share: Share, publisher: MdnsPublisher, name: string | null) => void
-    nameCollision: (share: Share, publisher: MdnsPublisher, name: string | null) => void
-    databases: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext) => void
+    databasesBrowseXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    databasesItemsXxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    serverInfo: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    contentCodes: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    login: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    logout: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    update: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    ctrlInt: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    published: (share: Share, publisher: MdnsPublisher, name: string) => void
+    nameCollision: (share: Share, publisher: MdnsPublisher, name: string) => void
+    databases: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
 }
 
 abstract class ShareClass {

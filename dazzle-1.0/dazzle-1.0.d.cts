@@ -135,7 +135,7 @@ export enum TabStyle {
     BOTH,
 }
 export const COUNTER_REQUIRES_ATOMIC: number
-export const DOCK_BIN_STYLE_CLASS_PINNED: string | null
+export const DOCK_BIN_STYLE_CLASS_PINNED: string
 export const ENABLE_TRACE: number
 /**
  * Dzl major version component (e.g. 1 if %DZL_VERSION is 1.2.3)
@@ -153,7 +153,7 @@ export const MINOR_VERSION: number
  * Dazzle version, encoded as a string, useful for printing and
  * concatenation.
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 /**
  * `cr` a cairo context
  * Creates a region from the extents of the context's current clip area.
@@ -209,7 +209,7 @@ export function file_manager_show(file: Gio.File): boolean
  */
 export function frame_source_add(frames_per_sec: number, callback: GLib.SourceFunc): number
 export function frame_source_add_full(priority: number, frames_per_sec: number, callback: GLib.SourceFunc): number
-export function fuzzy_highlight(str: string | null, query: string | null, case_sensitive: boolean): string | null
+export function fuzzy_highlight(str: string, query: string, case_sensitive: boolean): string | null
 /**
  * Helper function to create a human-friendly string describing approximately
  * how long ago a #GDateTime is.
@@ -263,9 +263,9 @@ export function gtk_list_store_insert_sorted(store: Gtk.ListStore, key: any | nu
  * @param minimal_damage 
  */
 export function gtk_text_buffer_remove_tag(buffer: Gtk.TextBuffer, tag: Gtk.TextTag, start: Gtk.TextIter, end: Gtk.TextIter, minimal_damage: boolean): void
-export function gtk_widget_action(widget: Gtk.Widget, group: string | null, name: string | null, param: GLib.Variant): boolean
-export function gtk_widget_action_with_string(widget: Gtk.Widget, group: string | null, name: string | null, param: string | null): boolean
-export function gtk_widget_add_style_class(widget: Gtk.Widget, class_name: string | null): void
+export function gtk_widget_action(widget: Gtk.Widget, group: string, name: string, param: GLib.Variant): boolean
+export function gtk_widget_action_with_string(widget: Gtk.Widget, group: string, name: string, param: string): boolean
+export function gtk_widget_add_style_class(widget: Gtk.Widget, class_name: string): void
 /**
  * Tries to locate a widget in a hierarchy given it's #GType.
  * 
@@ -308,10 +308,10 @@ export function gtk_widget_is_ancestor_or_relative(widget: Gtk.Widget, ancestor:
  * @param mux_key a unique key to represent the muxing
  */
 export function gtk_widget_mux_action_groups(widget: Gtk.Widget, from_widget: Gtk.Widget, mux_key: string | null): void
-export function gtk_widget_remove_style_class(widget: Gtk.Widget, class_name: string | null): void
+export function gtk_widget_remove_style_class(widget: Gtk.Widget, class_name: string): void
 export function gtk_widget_show_with_fade(widget: Gtk.Widget): void
-export function levenshtein(needle: string | null, haystack: string | null): number
-export function overlay_add_child(self: DockOverlay, child: Gtk.Widget, type: string | null): void
+export function levenshtein(needle: string, haystack: string): number
+export function overlay_add_child(self: DockOverlay, child: Gtk.Widget, type: string): void
 /**
  * This function will generate CSS suitable for Gtk's CSS engine
  * based on the properties of the #PangoFontDescription.
@@ -418,7 +418,7 @@ export interface TreeNodeCompareFunc {
     (a: TreeNode, b: TreeNode): number
 }
 export interface TrieTraverseFunc {
-    (dzl_trie: Trie, key: string | null, value: any | null): boolean
+    (dzl_trie: Trie, key: string, value: any | null): boolean
 }
 export module Dock {
 
@@ -452,7 +452,7 @@ export interface Dock extends Gtk.Container {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -466,7 +466,7 @@ export interface Dock extends Gtk.Container {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -477,7 +477,7 @@ export interface Dock extends Gtk.Container {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.Dock
 
@@ -992,33 +992,33 @@ export interface Preferences {
 
     // Owm methods of Dazzle-1.0.Dazzle.Preferences
 
-    add_custom(page_name: string | null, group_name: string | null, widget: Gtk.Widget, keywords: string | null, priority: number): number
-    add_file_chooser(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, title: string | null, subtitle: string | null, action: Gtk.FileChooserAction, keywords: string | null, priority: number): number
-    add_font_button(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, title: string | null, keywords: string | null, priority: number): number
-    add_group(page_name: string | null, group_name: string | null, title: string | null, priority: number): void
-    add_list_group(page_name: string | null, group_name: string | null, title: string | null, mode: Gtk.SelectionMode, priority: number): void
-    add_page(page_name: string | null, title: string | null, priority: number): void
-    add_radio(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
-    add_spin_button(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
-    add_switch(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
+    add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number): number
+    add_file_chooser(page_name: string, group_name: string, schema_id: string, key: string, path: string, title: string, subtitle: string, action: Gtk.FileChooserAction, keywords: string, priority: number): number
+    add_font_button(page_name: string, group_name: string, schema_id: string, key: string, title: string, keywords: string, priority: number): number
+    add_group(page_name: string, group_name: string, title: string, priority: number): void
+    add_list_group(page_name: string, group_name: string, title: string, mode: Gtk.SelectionMode, priority: number): void
+    add_page(page_name: string, title: string, priority: number): void
+    add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
+    add_spin_button(page_name: string, group_name: string, schema_id: string, key: string, path: string, title: string, subtitle: string, keywords: string, priority: number): number
+    add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
     get_widget(widget_id: number): Gtk.Widget | null
     remove_id(widget_id: number): boolean
-    set_page(page_name: string | null, map: GLib.HashTable): void
+    set_page(page_name: string, map: GLib.HashTable): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.Preferences
 
-    vfunc_add_custom(page_name: string | null, group_name: string | null, widget: Gtk.Widget, keywords: string | null, priority: number): number
-    vfunc_add_file_chooser(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, title: string | null, subtitle: string | null, action: Gtk.FileChooserAction, keywords: string | null, priority: number): number
-    vfunc_add_font_button(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, title: string | null, keywords: string | null, priority: number): number
-    vfunc_add_group(page_name: string | null, group_name: string | null, title: string | null, priority: number): void
-    vfunc_add_list_group(page_name: string | null, group_name: string | null, title: string | null, mode: Gtk.SelectionMode, priority: number): void
-    vfunc_add_page(page_name: string | null, title: string | null, priority: number): void
-    vfunc_add_radio(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
-    vfunc_add_spin_button(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
-    vfunc_add_switch(page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
+    vfunc_add_custom(page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number): number
+    vfunc_add_file_chooser(page_name: string, group_name: string, schema_id: string, key: string, path: string, title: string, subtitle: string, action: Gtk.FileChooserAction, keywords: string, priority: number): number
+    vfunc_add_font_button(page_name: string, group_name: string, schema_id: string, key: string, title: string, keywords: string, priority: number): number
+    vfunc_add_group(page_name: string, group_name: string, title: string, priority: number): void
+    vfunc_add_list_group(page_name: string, group_name: string, title: string, mode: Gtk.SelectionMode, priority: number): void
+    vfunc_add_page(page_name: string, title: string, priority: number): void
+    vfunc_add_radio(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
+    vfunc_add_spin_button(page_name: string, group_name: string, schema_id: string, key: string, path: string, title: string, subtitle: string, keywords: string, priority: number): number
+    vfunc_add_switch(page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number): number
     vfunc_get_widget(widget_id: number): Gtk.Widget | null
     vfunc_remove_id(widget_id: number): boolean
-    vfunc_set_page(page_name: string | null, map: GLib.HashTable): void
+    vfunc_set_page(page_name: string, map: GLib.HashTable): void
 
     // Class property signals of Dazzle-1.0.Dazzle.Preferences
 
@@ -1208,14 +1208,14 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * keyboard shortcuts using `resource_path`.
      * @param resource_path the location of the resources.
      */
-    add_resources(resource_path: string | null): void
+    add_resources(resource_path: string): void
     /**
      * Similar to gtk_application_get_menu_by_id() but takes into account
      * menu merging which could have occurred upon loading plugins.
      * @param menu_id the id of the menu to locate
      * @returns A #GMenu
      */
-    get_menu_by_id(menu_id: string | null): Gio.Menu
+    get_menu_by_id(menu_id: string): Gio.Menu
     /**
      * Gets the menu manager for the application.
      * @returns A #DzlMenuManager
@@ -1236,7 +1236,7 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * dzl_application_add_resources().
      * @param resource_path the location of the resources.
      */
-    remove_resources(resource_path: string | null): void
+    remove_resources(resource_path: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.Application
 
@@ -1252,14 +1252,14 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @virtual 
      * @param resource_path the location of the resources.
      */
-    vfunc_add_resources(resource_path: string | null): void
+    vfunc_add_resources(resource_path: string): void
     /**
      * This attempts to undo as many side-effects as possible from a call to
      * dzl_application_add_resources().
      * @virtual 
      * @param resource_path the location of the resources.
      */
-    vfunc_remove_resources(resource_path: string | null): void
+    vfunc_remove_resources(resource_path: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.Application
 
@@ -1327,8 +1327,8 @@ export class Application extends Gtk.Application {
     // Constructors of Dazzle-1.0.Dazzle.Application
 
     constructor(config?: Application.ConstructorProperties) 
-    constructor(application_id: string | null, flags: Gio.ApplicationFlags) 
-    static new(application_id: string | null, flags: Gio.ApplicationFlags): Application
+    constructor(application_id: string, flags: Gio.ApplicationFlags) 
+    static new(application_id: string, flags: Gio.ApplicationFlags): Application
 
     // Overloads of new
 
@@ -1508,7 +1508,7 @@ export interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1522,7 +1522,7 @@ export interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1533,7 +1533,7 @@ export interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.ApplicationWindow
 
@@ -1844,7 +1844,7 @@ export interface Bin extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1858,7 +1858,7 @@ export interface Bin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1869,7 +1869,7 @@ export interface Bin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.Bin
 
@@ -2059,7 +2059,7 @@ export interface BindingGroup {
      * @param target_property the property on `target` to bind
      * @param flags the flags used to create the #GBinding
      */
-    bind(source_property: string | null, target: GObject.Object, target_property: string | null, flags: GObject.BindingFlags): void
+    bind(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): void
     /**
      * Creates a binding between `source_property` on the source object and
      * `target_property` on `target,` allowing you to set the transformation
@@ -2078,7 +2078,7 @@ export interface BindingGroup {
      * @param transform_to a #GClosure wrapping the     transformation function from the source object to the `target,`     or %NULL to use the default
      * @param transform_from a #GClosure wrapping the     transformation function from the `target` to the source object,     or %NULL to use the default
      */
-    bind_full(source_property: string | null, target: GObject.Object, target_property: string | null, flags: GObject.BindingFlags, transform_to: GObject.TClosure | null, transform_from: GObject.TClosure | null): void
+    bind_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: GObject.TClosure | null, transform_from: GObject.TClosure | null): void
     /**
      * Gets the source object used for binding properties.
      * @returns the source object.
@@ -2376,8 +2376,8 @@ export class BoldingLabel extends Gtk.Label {
     // Constructors of Dazzle-1.0.Dazzle.BoldingLabel
 
     constructor(config?: BoldingLabel.ConstructorProperties) 
-    constructor(str: string | null, bold: boolean) 
-    static new(str: string | null, bold: boolean): BoldingLabel
+    constructor(str: string, bold: boolean) 
+    static new(str: string, bold: boolean): BoldingLabel
 
     // Overloads of new
 
@@ -2389,7 +2389,7 @@ export class BoldingLabel extends Gtk.Label {
      * @returns the new #GtkLabel
      */
     static new(str: string | null): Gtk.Label
-    static new_with_mnemonic(str: string | null, bold: boolean): BoldingLabel
+    static new_with_mnemonic(str: string, bold: boolean): BoldingLabel
 
     // Overloads of new_with_mnemonic
 
@@ -2465,7 +2465,7 @@ export interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2479,7 +2479,7 @@ export interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2490,7 +2490,7 @@ export interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.Box
 
@@ -2788,7 +2788,7 @@ export interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2802,7 +2802,7 @@ export interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2813,7 +2813,7 @@ export interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.CenteringBin
 
@@ -3047,7 +3047,7 @@ export class ChildPropertyAction extends GObject.Object {
      * @param child_property_name the name of the child property
      * @returns A new #DzlChildPropertyAction.
      */
-    static new(name: string | null, container: Gtk.Container, child: Gtk.Widget, child_property_name: string | null): Gio.Action
+    static new(name: string, container: Gtk.Container, child: Gtk.Widget, child_property_name: string): Gio.Action
 }
 
 export module ColumnLayout {
@@ -3111,7 +3111,7 @@ export interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3125,7 +3125,7 @@ export interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3136,7 +3136,7 @@ export interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ColumnLayout
 
@@ -3358,7 +3358,7 @@ export interface CountersWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3372,7 +3372,7 @@ export interface CountersWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3383,7 +3383,7 @@ export interface CountersWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.CountersWindow
 
@@ -3925,8 +3925,8 @@ export class CssProvider extends Gtk.CssProvider {
     // Constructors of Dazzle-1.0.Dazzle.CssProvider
 
     constructor(config?: CssProvider.ConstructorProperties) 
-    constructor(base_path: string | null) 
-    static new(base_path: string | null): CssProvider
+    constructor(base_path: string) 
+    static new(base_path: string): CssProvider
 
     // Overloads of new
 
@@ -4023,7 +4023,7 @@ export interface DirectoryReaper {
 
     add_directory(directory: Gio.File, min_age: GLib.TimeSpan): void
     add_file(file: Gio.File, min_age: GLib.TimeSpan): void
-    add_glob(directory: Gio.File, glob: string | null, min_age: GLib.TimeSpan): void
+    add_glob(directory: Gio.File, glob: string, min_age: GLib.TimeSpan): void
     execute(cancellable: Gio.Cancellable | null): boolean
     execute_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -4130,7 +4130,7 @@ export interface DockBin extends Atk.ImplementorIface, Dock, DockItem, Gtk.Build
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4144,7 +4144,7 @@ export interface DockBin extends Atk.ImplementorIface, Dock, DockItem, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4155,7 +4155,7 @@ export interface DockBin extends Atk.ImplementorIface, Dock, DockItem, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: DockItem): boolean
 
     // Overloads of get_child_visible
@@ -4546,7 +4546,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, DockItem, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4558,7 +4558,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, DockItem, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4572,7 +4572,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, DockItem, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.DockBinEdge
 
@@ -4889,7 +4889,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Dock, DockItem, Gtk.B
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4903,7 +4903,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Dock, DockItem, Gtk.B
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4914,7 +4914,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Dock, DockItem, Gtk.B
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: DockItem): boolean
 
     // Overloads of get_child_visible
@@ -5304,7 +5304,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, DockItem, Gtk.Bui
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5316,7 +5316,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, DockItem, Gtk.Bui
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5330,7 +5330,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, DockItem, Gtk.Bui
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.DockOverlayEdge
 
@@ -5600,7 +5600,7 @@ export interface DockPaned extends Atk.ImplementorIface, DockItem, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5612,7 +5612,7 @@ export interface DockPaned extends Atk.ImplementorIface, DockItem, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5626,7 +5626,7 @@ export interface DockPaned extends Atk.ImplementorIface, DockItem, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.DockPaned
 
@@ -5856,7 +5856,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5870,7 +5870,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5881,7 +5881,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.DockRevealer
 
@@ -6215,7 +6215,7 @@ export interface DockStack extends Atk.ImplementorIface, DockItem, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6227,7 +6227,7 @@ export interface DockStack extends Atk.ImplementorIface, DockItem, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6241,7 +6241,7 @@ export interface DockStack extends Atk.ImplementorIface, DockItem, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.DockStack
 
@@ -6517,8 +6517,8 @@ export interface DockWidget extends Atk.ImplementorIface, DockItem, Gtk.Buildabl
     // Owm methods of Dazzle-1.0.Dazzle.DockWidget
 
     set_gicon(gicon: Gio.Icon): void
-    set_icon_name(icon_name: string | null): void
-    set_title(title: string | null): void
+    set_icon_name(icon_name: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -6620,7 +6620,7 @@ export interface DockWidget extends Atk.ImplementorIface, DockItem, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6632,7 +6632,7 @@ export interface DockWidget extends Atk.ImplementorIface, DockItem, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6646,7 +6646,7 @@ export interface DockWidget extends Atk.ImplementorIface, DockItem, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.DockWidget
 
@@ -6840,7 +6840,7 @@ export interface DockWindow extends Atk.ImplementorIface, Dock, DockItem, Gtk.Bu
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6854,7 +6854,7 @@ export interface DockWindow extends Atk.ImplementorIface, Dock, DockItem, Gtk.Bu
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6865,7 +6865,7 @@ export interface DockWindow extends Atk.ImplementorIface, Dock, DockItem, Gtk.Bu
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: DockItem): boolean
 
     // Overloads of get_child_visible
@@ -7298,7 +7298,7 @@ export interface ElasticBin extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7312,7 +7312,7 @@ export interface ElasticBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7323,7 +7323,7 @@ export interface ElasticBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ElasticBin
 
@@ -7511,13 +7511,13 @@ export interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Dazzle-1.0.Dazzle.EmptyState
 
-    get_icon_name(): string | null
-    get_subtitle(): string | null
-    get_title(): string | null
-    set_icon_name(icon_name: string | null): void
-    set_resource(resource: string | null): void
-    set_subtitle(title: string | null): void
-    set_title(title: string | null): void
+    get_icon_name(): string
+    get_subtitle(): string
+    get_title(): string
+    set_icon_name(icon_name: string): void
+    set_resource(resource: string): void
+    set_subtitle(title: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -7532,7 +7532,7 @@ export interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7546,7 +7546,7 @@ export interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7557,7 +7557,7 @@ export interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.EmptyState
 
@@ -7757,7 +7757,7 @@ export interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7771,7 +7771,7 @@ export interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7782,7 +7782,7 @@ export interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.EntryBox
 
@@ -8035,7 +8035,7 @@ export interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8049,7 +8049,7 @@ export interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8060,7 +8060,7 @@ export interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.FileChooserEntry
 
@@ -8233,8 +8233,8 @@ export class FileChooserEntry extends Gtk.Bin {
     // Constructors of Dazzle-1.0.Dazzle.FileChooserEntry
 
     constructor(config?: FileChooserEntry.ConstructorProperties) 
-    constructor(title: string | null, action: Gtk.FileChooserAction) 
-    static new(title: string | null, action: Gtk.FileChooserAction): FileChooserEntry
+    constructor(title: string, action: Gtk.FileChooserAction) 
+    static new(title: string, action: Gtk.FileChooserAction): FileChooserEntry
     _init(config?: FileChooserEntry.ConstructorProperties): void
 }
 
@@ -8335,10 +8335,10 @@ export interface FuzzyIndex {
      * @param key 
      * @returns A #GVariant or %NULL.
      */
-    get_metadata(key: string | null): GLib.Variant | null
-    get_metadata_string(key: string | null): string | null
-    get_metadata_uint32(key: string | null): number
-    get_metadata_uint64(key: string | null): number
+    get_metadata(key: string): GLib.Variant | null
+    get_metadata_string(key: string): string
+    get_metadata_uint32(key: string): number
+    get_metadata_uint64(key: string): number
     load_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
     load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -8354,7 +8354,7 @@ export interface FuzzyIndex {
      */
     load_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     load_file_finish(result: Gio.AsyncResult): boolean
-    query_async(query: string | null, max_matches: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of query_async
 
@@ -8367,7 +8367,7 @@ export interface FuzzyIndex {
      * @param cancellable 
      * @returns A Promise of: A #GListModel of results.
      */
-    query_async(query: string | null, max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>
+    query_async(query: string, max_matches: number, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.ListModel>
     /**
      * Completes an asynchronous request to dzl_fuzzy_index_query_async().
      * @param result 
@@ -8444,12 +8444,12 @@ export interface FuzzyIndexBuilder {
      * @param priority An optional priority for the keyword.
      * @returns The document id registered for @document.
      */
-    insert(key: string | null, document: GLib.Variant, priority: number): number
+    insert(key: string, document: GLib.Variant, priority: number): number
     set_case_sensitive(case_sensitive: boolean): void
-    set_metadata(key: string | null, value: GLib.Variant): void
-    set_metadata_string(key: string | null, value: string | null): void
-    set_metadata_uint32(key: string | null, value: number): void
-    set_metadata_uint64(key: string | null, value: number): void
+    set_metadata(key: string, value: GLib.Variant): void
+    set_metadata_string(key: string, value: string): void
+    set_metadata_uint32(key: string, value: number): void
+    set_metadata_uint64(key: string, value: number): void
     write(file: Gio.File, io_priority: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Builds and writes the index to `file`. The file format is a
@@ -8607,7 +8607,7 @@ export interface FuzzyIndexMatch {
     // Owm methods of Dazzle-1.0.Dazzle.FuzzyIndexMatch
 
     get_document(): GLib.Variant
-    get_key(): string | null
+    get_key(): string
     get_priority(): number
     get_score(): number
 
@@ -8669,8 +8669,8 @@ export interface GraphColumn {
 
     // Owm methods of Dazzle-1.0.Dazzle.GraphColumn
 
-    get_name(): string | null
-    set_name(name: string | null): void
+    get_name(): string
+    set_name(name: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.GraphColumn
 
@@ -8696,8 +8696,8 @@ export class GraphColumn extends GObject.Object {
     // Constructors of Dazzle-1.0.Dazzle.GraphColumn
 
     constructor(config?: GraphColumn.ConstructorProperties) 
-    constructor(name: string | null, value_type: GObject.GType) 
-    static new(name: string | null, value_type: GObject.GType): GraphColumn
+    constructor(name: string, value_type: GObject.GType) 
+    static new(name: string, value_type: GObject.GType): GraphColumn
     _init(config?: GraphColumn.ConstructorProperties): void
 }
 
@@ -8735,7 +8735,7 @@ export interface GraphLineRenderer extends GraphRenderer {
     // Owm methods of Dazzle-1.0.Dazzle.GraphLineRenderer
 
     get_stroke_color_rgba(): Gdk.RGBA
-    set_stroke_color(stroke_color: string | null): void
+    set_stroke_color(stroke_color: string): void
     set_stroke_color_rgba(stroke_color_rgba: Gdk.RGBA): void
 
     // Class property signals of Dazzle-1.0.Dazzle.GraphLineRenderer
@@ -9139,7 +9139,7 @@ export interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Dazzle-1.0.Dazzle.ListBox
 
     get_model(): Gio.ListModel | null
-    get_property_name(): string | null
+    get_property_name(): string
     get_row_type(): GObject.GType
     set_model(model: Gio.ListModel): void
     /**
@@ -9162,7 +9162,7 @@ export interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9176,7 +9176,7 @@ export interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9187,7 +9187,7 @@ export interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ListBox
 
@@ -9348,8 +9348,8 @@ export class ListBox extends Gtk.ListBox {
     // Constructors of Dazzle-1.0.Dazzle.ListBox
 
     constructor(config?: ListBox.ConstructorProperties) 
-    constructor(row_type: GObject.GType, property_name: string | null) 
-    static new(row_type: GObject.GType, property_name: string | null): ListBox
+    constructor(row_type: GObject.GType, property_name: string) 
+    static new(row_type: GObject.GType, property_name: string): ListBox
 
     // Overloads of new
 
@@ -9389,7 +9389,7 @@ export interface ListBoxRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Bu
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9401,7 +9401,7 @@ export interface ListBoxRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Bu
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9415,7 +9415,7 @@ export interface ListBoxRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Bu
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ListBoxRow
 
@@ -9801,7 +9801,7 @@ export interface MenuButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Ac
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9813,7 +9813,7 @@ export interface MenuButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Ac
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9827,7 +9827,7 @@ export interface MenuButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Ac
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Returns the direction the popup will be pointing at when popped up.
      * @returns a #GtkArrowType value
@@ -10136,7 +10136,7 @@ export class MenuButton extends Gtk.MenuButton {
      * @param model A #GMenuModel or %NULL
      * @returns A #DzlMenuButton
      */
-    static new_with_model(icon_name: string | null, model: Gio.MenuModel | null): MenuButton
+    static new_with_model(icon_name: string, model: Gio.MenuModel | null): MenuButton
     _init(config?: MenuButton.ConstructorProperties): void
 }
 
@@ -10153,10 +10153,10 @@ export interface MenuManager {
 
     // Owm methods of Dazzle-1.0.Dazzle.MenuManager
 
-    add_filename(filename: string | null): number
-    add_resource(resource: string | null): number
-    get_menu_by_id(menu_id: string | null): Gio.Menu
-    merge(menu_id: string | null, model: Gio.MenuModel): number
+    add_filename(filename: string): number
+    add_resource(resource: string): number
+    get_menu_by_id(menu_id: string): Gio.Menu
+    merge(menu_id: string, model: Gio.MenuModel): number
     /**
      * This removes items from menus that were added as part of a previous
      * menu merge. Use the value returned from dzl_menu_manager_merge() as
@@ -10286,7 +10286,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10300,7 +10300,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10311,7 +10311,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.MultiPaned
 
@@ -10606,7 +10606,7 @@ export interface PathBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10620,7 +10620,7 @@ export interface PathBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10631,7 +10631,7 @@ export interface PathBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.PathBar
 
@@ -10889,7 +10889,7 @@ export interface PathElement {
      * the name of a directory, or some other key as the id.
      * @returns The id for the #DzlPathElement.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the #DzlPathElement:title property. This is used by the
      * path bar to display text representing the element of the path.
@@ -10932,7 +10932,7 @@ export class PathElement extends GObject.Object {
      * @param title The title of the element.
      * @returns A #DzlPathElement
      */
-    constructor(id: string | null, icon_name: string | null, title: string | null) 
+    constructor(id: string | null, icon_name: string | null, title: string) 
     /**
      * Creates a new path element for an #DzlPath.
      * @constructor 
@@ -10941,7 +10941,7 @@ export class PathElement extends GObject.Object {
      * @param title The title of the element.
      * @returns A #DzlPathElement
      */
-    static new(id: string | null, icon_name: string | null, title: string | null): PathElement
+    static new(id: string | null, icon_name: string | null, title: string): PathElement
     _init(config?: PathElement.ConstructorProperties): void
 }
 
@@ -10966,8 +10966,8 @@ export interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Dazzle-1.0.Dazzle.PillBox
 
-    get_label(): string | null
-    set_label(label: string | null): void
+    get_label(): string
+    set_label(label: string): void
 
     // Conflicting methods
 
@@ -10982,7 +10982,7 @@ export interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10996,7 +10996,7 @@ export interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11007,7 +11007,7 @@ export interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PillBox
 
@@ -11162,8 +11162,8 @@ export class PillBox extends Gtk.EventBox {
     // Constructors of Dazzle-1.0.Dazzle.PillBox
 
     constructor(config?: PillBox.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): PillBox
+    constructor(label: string) 
+    static new(label: string): PillBox
 
     // Overloads of new
 
@@ -11230,7 +11230,7 @@ export interface PreferencesBin extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11244,7 +11244,7 @@ export interface PreferencesBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11255,7 +11255,7 @@ export interface PreferencesBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.PreferencesBin
 
@@ -11488,7 +11488,7 @@ export interface PreferencesEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11502,7 +11502,7 @@ export interface PreferencesEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11513,7 +11513,7 @@ export interface PreferencesEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.PreferencesEntry
 
@@ -11731,7 +11731,7 @@ export interface PreferencesFileChooserButton extends Atk.ImplementorIface, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11745,7 +11745,7 @@ export interface PreferencesFileChooserButton extends Atk.ImplementorIface, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11756,7 +11756,7 @@ export interface PreferencesFileChooserButton extends Atk.ImplementorIface, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PreferencesFileChooserButton
 
@@ -11957,7 +11957,7 @@ export interface PreferencesFlowBox extends Atk.ImplementorIface, Gtk.Buildable 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11971,7 +11971,7 @@ export interface PreferencesFlowBox extends Atk.ImplementorIface, Gtk.Buildable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11982,7 +11982,7 @@ export interface PreferencesFlowBox extends Atk.ImplementorIface, Gtk.Buildable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PreferencesFlowBox
 
@@ -12193,7 +12193,7 @@ export interface PreferencesFontButton extends Atk.ImplementorIface, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12207,7 +12207,7 @@ export interface PreferencesFontButton extends Atk.ImplementorIface, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12218,7 +12218,7 @@ export interface PreferencesFontButton extends Atk.ImplementorIface, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.PreferencesFontButton
 
@@ -12429,7 +12429,7 @@ export interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * @returns a #GtkSizeGroup
      */
     get_size_group(column: number): Gtk.SizeGroup
-    get_title(): string | null
+    get_title(): string
     refilter(spec: PatternSpec): number
     set_map(map: GLib.HashTable): void
 
@@ -12446,7 +12446,7 @@ export interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12460,7 +12460,7 @@ export interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12471,7 +12471,7 @@ export interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PreferencesGroup
 
@@ -12654,7 +12654,7 @@ export interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Dazzle-1.0.Dazzle.PreferencesPage
 
     add_group(group: PreferencesGroup): void
-    get_group(group_name: string | null): PreferencesGroup | null
+    get_group(group_name: string): PreferencesGroup | null
     refilter(spec: PatternSpec): void
     set_map(map: GLib.HashTable): void
 
@@ -12671,7 +12671,7 @@ export interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12685,7 +12685,7 @@ export interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12696,7 +12696,7 @@ export interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PreferencesPage
 
@@ -12902,7 +12902,7 @@ export interface PreferencesSpinButton extends Atk.ImplementorIface, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12916,7 +12916,7 @@ export interface PreferencesSpinButton extends Atk.ImplementorIface, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12927,7 +12927,7 @@ export interface PreferencesSpinButton extends Atk.ImplementorIface, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.PreferencesSpinButton
 
@@ -13159,7 +13159,7 @@ export interface PreferencesSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13173,7 +13173,7 @@ export interface PreferencesSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -13184,7 +13184,7 @@ export interface PreferencesSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.PreferencesSwitch
 
@@ -13416,7 +13416,7 @@ export interface PreferencesView extends Atk.ImplementorIface, Preferences, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13430,7 +13430,7 @@ export interface PreferencesView extends Atk.ImplementorIface, Preferences, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -13441,7 +13441,7 @@ export interface PreferencesView extends Atk.ImplementorIface, Preferences, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PreferencesView
 
@@ -13626,7 +13626,7 @@ export interface PriorityBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13640,7 +13640,7 @@ export interface PriorityBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -13651,7 +13651,7 @@ export interface PriorityBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PriorityBox
 
@@ -13875,7 +13875,7 @@ export interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -13887,7 +13887,7 @@ export interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13901,7 +13901,7 @@ export interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ProgressButton
 
@@ -14337,7 +14337,7 @@ export interface ProgressMenuButton extends Atk.ImplementorIface, Gtk.Actionable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -14349,7 +14349,7 @@ export interface ProgressMenuButton extends Atk.ImplementorIface, Gtk.Actionable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -14363,7 +14363,7 @@ export interface ProgressMenuButton extends Atk.ImplementorIface, Gtk.Actionable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Returns the direction the popup will be pointing at when popped up.
      * @returns a #GtkArrowType value
@@ -14703,7 +14703,7 @@ export interface PropertiesGroup extends Gio.ActionGroup {
      * @param name the name of the action
      * @param property_name the name of the property
      */
-    add_property(name: string | null, property_name: string | null): void
+    add_property(name: string, property_name: string): void
     /**
      * Adds a new stateful action named `name` which maps to the underlying
      * property `property_name` of #DzlPropertiesGroup:object.
@@ -14713,14 +14713,14 @@ export interface PropertiesGroup extends Gio.ActionGroup {
      * @param property_name the name of the property
      * @param flags optional flags for the action
      */
-    add_property_full(name: string | null, property_name: string | null, flags: PropertiesFlags): void
+    add_property_full(name: string, property_name: string, flags: PropertiesFlags): void
     /**
      * Removes an action from `self` that was previously added with
      * dzl_properties_group_add_property(). `name` should match the
      * name parameter to that function.
      * @param name the name of the action
      */
-    remove(name: string | null): void
+    remove(name: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.PropertiesGroup
 
@@ -14832,10 +14832,10 @@ export interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Dazzle-1.0.Dazzle.RadioBox
 
-    add_item(id: string | null, text: string | null): void
-    get_active_id(): string | null
-    remove_item(id: string | null): void
-    set_active_id(id: string | null): void
+    add_item(id: string, text: string): void
+    get_active_id(): string
+    remove_item(id: string): void
+    set_active_id(id: string): void
 
     // Conflicting methods
 
@@ -14850,7 +14850,7 @@ export interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -14864,7 +14864,7 @@ export interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -14875,7 +14875,7 @@ export interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.RadioBox
 
@@ -15255,7 +15255,7 @@ export interface ScrolledWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -15269,7 +15269,7 @@ export interface ScrolledWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -15280,7 +15280,7 @@ export interface ScrolledWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ScrolledWindow
 
@@ -15541,7 +15541,7 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -15555,7 +15555,7 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -15566,7 +15566,7 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.SearchBar
 
@@ -15812,7 +15812,7 @@ export class SettingsFlagAction extends GObject.Object {
      * @param flag_nick 
      * @returns A new #GAction.
      */
-    static new(schema_id: string | null, schema_key: string | null, flag_nick: string | null): Gio.Action
+    static new(schema_id: string, schema_key: string, flag_nick: string): Gio.Action
 }
 
 export module SettingsSandwich {
@@ -15841,7 +15841,7 @@ export interface SettingsSandwich {
     // Owm methods of Dazzle-1.0.Dazzle.SettingsSandwich
 
     append(settings: Gio.Settings): void
-    bind(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags): void
+    bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void
     /**
      * Creates a new binding similar to g_settings_bind_with_mapping() but applying
      * from the resolved value via the settings sandwich.
@@ -15852,22 +15852,22 @@ export interface SettingsSandwich {
      * @param get_mapping the get mapping function
      * @param set_mapping the set mapping function
      */
-    bind_with_mapping(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void
-    get_boolean(key: string | null): boolean
-    get_default_value(key: string | null): GLib.Variant
-    get_double(key: string | null): number
-    get_int(key: string | null): number
-    get_string(key: string | null): string | null
-    get_uint(key: string | null): number
-    get_user_value(key: string | null): GLib.Variant
-    get_value(key: string | null): GLib.Variant
-    set_boolean(key: string | null, val: boolean): void
-    set_double(key: string | null, val: number): void
-    set_int(key: string | null, val: number): void
-    set_string(key: string | null, val: string | null): void
-    set_uint(key: string | null, val: number): void
-    set_value(key: string | null, value: GLib.Variant): void
-    unbind(property: string | null): void
+    bind_with_mapping(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void
+    get_boolean(key: string): boolean
+    get_default_value(key: string): GLib.Variant
+    get_double(key: string): number
+    get_int(key: string): number
+    get_string(key: string): string | null
+    get_uint(key: string): number
+    get_user_value(key: string): GLib.Variant
+    get_value(key: string): GLib.Variant
+    set_boolean(key: string, val: boolean): void
+    set_double(key: string, val: number): void
+    set_int(key: string, val: number): void
+    set_string(key: string, val: string): void
+    set_uint(key: string, val: number): void
+    set_value(key: string, value: GLib.Variant): void
+    unbind(property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.SettingsSandwich
 
@@ -15893,8 +15893,8 @@ export class SettingsSandwich extends GObject.Object {
     // Constructors of Dazzle-1.0.Dazzle.SettingsSandwich
 
     constructor(config?: SettingsSandwich.ConstructorProperties) 
-    constructor(schema_id: string | null, path: string | null) 
-    static new(schema_id: string | null, path: string | null): SettingsSandwich
+    constructor(schema_id: string, path: string) 
+    static new(schema_id: string, path: string): SettingsSandwich
     _init(config?: SettingsSandwich.ConstructorProperties): void
 }
 
@@ -15929,9 +15929,9 @@ export interface ShortcutAccelDialog extends Atk.ImplementorIface, Gtk.Buildable
 
     get_accelerator(): string | null
     get_chord(): ShortcutChord
-    get_shortcut_title(): string | null
-    set_accelerator(accelerator: string | null): void
-    set_shortcut_title(title: string | null): void
+    get_shortcut_title(): string
+    set_accelerator(accelerator: string): void
+    set_shortcut_title(title: string): void
 
     // Conflicting methods
 
@@ -15968,7 +15968,7 @@ export interface ShortcutAccelDialog extends Atk.ImplementorIface, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -15982,7 +15982,7 @@ export interface ShortcutAccelDialog extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -15993,7 +15993,7 @@ export interface ShortcutAccelDialog extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutAccelDialog
 
@@ -16316,8 +16316,8 @@ export interface ShortcutContext {
     // Owm methods of Dazzle-1.0.Dazzle.ShortcutContext
 
     activate(widget: Gtk.Widget, chord: ShortcutChord): ShortcutMatch
-    add_action(accel: string | null, detailed_action_name: string | null): void
-    add_command(accel: string | null, command: string | null): void
+    add_action(accel: string, detailed_action_name: string): void
+    add_command(accel: string, command: string): void
     /**
      * This is similar to dzl_shortcut_context_add_signal() but is easier to use
      * from language bindings.
@@ -16325,11 +16325,11 @@ export interface ShortcutContext {
      * @param signal_name the name of the signal
      * @param values The   values to use when calling the signal.
      */
-    add_signalv(accel: string | null, signal_name: string | null, values: any[] | null): void
-    get_name(): string | null
-    load_from_data(data: string | null, len: number): boolean
-    load_from_resource(resource_path: string | null): boolean
-    remove(accel: string | null): boolean
+    add_signalv(accel: string, signal_name: string, values: any[] | null): void
+    get_name(): string
+    load_from_data(data: string, len: number): boolean
+    load_from_resource(resource_path: string): boolean
+    remove(accel: string): boolean
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutContext
 
@@ -16355,8 +16355,8 @@ export class ShortcutContext extends GObject.Object {
     // Constructors of Dazzle-1.0.Dazzle.ShortcutContext
 
     constructor(config?: ShortcutContext.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): ShortcutContext
+    constructor(name: string) 
+    static new(name: string): ShortcutContext
     _init(config?: ShortcutContext.ConstructorProperties): void
 }
 
@@ -16403,8 +16403,8 @@ export interface ShortcutController {
 
     // Owm methods of Dazzle-1.0.Dazzle.ShortcutController
 
-    add_command_action(command_id: string | null, default_accel: string | null, phase: ShortcutPhase, action: string | null): void
-    add_command_callback(command_id: string | null, default_accel: string | null, phase: ShortcutPhase, callback: Gtk.Callback): void
+    add_command_action(command_id: string, default_accel: string, phase: ShortcutPhase, action: string): void
+    add_command_callback(command_id: string, default_accel: string, phase: ShortcutPhase, callback: Gtk.Callback): void
     /**
      * This method will locate and execute the command matching the id `command`.
      * 
@@ -16412,7 +16412,7 @@ export interface ShortcutController {
      * @param command the id of the command
      * @returns %TRUE if the command was found and executed.
      */
-    execute_command(command: string | null): boolean
+    execute_command(command: string): boolean
     /**
      * This function gets the #DzlShortcutController:context property, which
      * is the current context to dispatch events to. An #DzlShortcutContext
@@ -16448,7 +16448,7 @@ export interface ShortcutController {
      */
     get_manager(): ShortcutManager
     get_widget(): Gtk.Widget
-    remove_accel(accel: string | null, phase: ShortcutPhase): void
+    remove_accel(accel: string, phase: ShortcutPhase): void
     /**
      * Changes the context for the controller to the context matching `name`.
      * 
@@ -16555,7 +16555,7 @@ export interface ShortcutLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * @returns A #DzlShortcutChord or %NULL
      */
     get_chord(): ShortcutChord | null
-    set_accelerator(accelerator: string | null): void
+    set_accelerator(accelerator: string): void
     set_chord(chord: ShortcutChord): void
 
     // Conflicting methods
@@ -16571,7 +16571,7 @@ export interface ShortcutLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -16585,7 +16585,7 @@ export interface ShortcutLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -16596,7 +16596,7 @@ export interface ShortcutLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutLabel
 
@@ -16819,8 +16819,8 @@ export interface ShortcutManager extends Gio.Initable, Gio.ListModel {
 
     // Owm methods of Dazzle-1.0.Dazzle.ShortcutManager
 
-    add_action(detailed_action_name: string | null, section: string | null, group: string | null, title: string | null, subtitle: string | null): void
-    add_command(command: string | null, section: string | null, group: string | null, title: string | null, subtitle: string | null): void
+    add_action(detailed_action_name: string, section: string, group: string, title: string, subtitle: string): void
+    add_command(command: string, section: string, group: string, title: string, subtitle: string): void
     /**
      * This method will add `shortcuts` to the #DzlShortcutManager.
      * 
@@ -16836,7 +16836,7 @@ export interface ShortcutManager extends Gio.Initable, Gio.ListModel {
      * @param window A #DzlShortcutsWindow
      */
     add_shortcuts_to_window(window: ShortcutsWindow): void
-    append_search_path(directory: string | null): void
+    append_search_path(directory: string): void
     /**
      * Gets the "theme" property.
      * @returns An #DzlShortcutTheme.
@@ -16852,8 +16852,8 @@ export interface ShortcutManager extends Gio.Initable, Gio.ListModel {
      * @returns A #DzlShortcutTheme or %NULL.
      */
     get_theme_by_name(theme_name: string | null): ShortcutTheme | null
-    get_theme_name(): string | null
-    get_user_dir(): string | null
+    get_theme_name(): string
+    get_user_dir(): string
     /**
      * This function will try to dispatch `event` to the proper widget and
      * #DzlShortcutContext. If the event is handled, then %TRUE is returned.
@@ -16865,17 +16865,17 @@ export interface ShortcutManager extends Gio.Initable, Gio.ListModel {
      * @returns %TRUE if the event was handled.
      */
     handle_event(event: Gdk.EventKey, toplevel: Gtk.Widget): boolean
-    prepend_search_path(directory: string | null): void
+    prepend_search_path(directory: string): void
     queue_reload(): void
     reload(cancellable: Gio.Cancellable | null): void
-    remove_search_path(directory: string | null): void
+    remove_search_path(directory: string): void
     /**
      * Sets the theme for the shortcut manager.
      * @param theme An #DzlShortcutTheme
      */
     set_theme(theme: ShortcutTheme): void
-    set_theme_name(theme_name: string | null): void
-    set_user_dir(user_dir: string | null): void
+    set_theme_name(theme_name: string): void
+    set_user_dir(user_dir: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.ShortcutManager
 
@@ -17025,14 +17025,14 @@ export interface ShortcutSimpleLabel extends Atk.ImplementorIface, Gtk.Buildable
 
     // Owm methods of Dazzle-1.0.Dazzle.ShortcutSimpleLabel
 
-    get_accel(): string | null
-    get_action(): string | null
-    get_command(): string | null
-    get_title(): string | null
-    set_accel(accel: string | null): void
-    set_action(action: string | null): void
-    set_command(command: string | null): void
-    set_title(title: string | null): void
+    get_accel(): string
+    get_action(): string
+    get_command(): string
+    get_title(): string
+    set_accel(accel: string): void
+    set_action(action: string): void
+    set_command(command: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -17047,7 +17047,7 @@ export interface ShortcutSimpleLabel extends Atk.ImplementorIface, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -17061,7 +17061,7 @@ export interface ShortcutSimpleLabel extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -17072,7 +17072,7 @@ export interface ShortcutSimpleLabel extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutSimpleLabel
 
@@ -17294,25 +17294,25 @@ export interface ShortcutTheme {
 
     // Owm methods of Dazzle-1.0.Dazzle.ShortcutTheme
 
-    add_command(accelerator: string | null, command: string | null): void
+    add_command(accelerator: string, command: string): void
     add_context(context: ShortcutContext): void
-    add_css_resource(path: string | null): void
+    add_css_resource(path: string): void
     /**
      * Gets the context named `name`. If the context does not exist, it will
      * be created.
      * @param name The name of the context
      * @returns An #DzlShortcutContext
      */
-    find_context_by_name(name: string | null): ShortcutContext
+    find_context_by_name(name: string): ShortcutContext
     /**
      * Finds the default context in the theme for `widget`.
      * @param widget 
      * @returns An #DzlShortcutContext or %NULL.
      */
     find_default_context(widget: Gtk.Widget): ShortcutContext | null
-    get_chord_for_action(detailed_action_name: string | null): ShortcutChord
-    get_chord_for_command(command: string | null): ShortcutChord
-    get_name(): string | null
+    get_chord_for_action(detailed_action_name: string): ShortcutChord
+    get_chord_for_command(command: string): ShortcutChord
+    get_name(): string
     /**
      * If the #DzlShortcutTheme:parent-name property has been set, this will fetch
      * the parent #DzlShortcutTheme.
@@ -17328,16 +17328,16 @@ export interface ShortcutTheme {
      * @returns The name of the parent theme, or %NULL if none is set.
      */
     get_parent_name(): string | null
-    get_subtitle(): string | null
-    get_title(): string | null
-    load_from_data(data: string | null, len: number): boolean
+    get_subtitle(): string
+    get_title(): string
+    load_from_data(data: string, len: number): boolean
     load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
-    load_from_path(path: string | null, cancellable: Gio.Cancellable | null): boolean
-    remove_css_resource(path: string | null): void
+    load_from_path(path: string, cancellable: Gio.Cancellable | null): boolean
+    remove_css_resource(path: string): void
     save_to_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
-    save_to_path(path: string | null, cancellable: Gio.Cancellable | null): boolean
+    save_to_path(path: string, cancellable: Gio.Cancellable | null): boolean
     save_to_stream(stream: Gio.OutputStream, cancellable: Gio.Cancellable | null): boolean
-    set_accel_for_action(detailed_action_name: string | null, accel: string | null, phase: ShortcutPhase): void
+    set_accel_for_action(detailed_action_name: string, accel: string, phase: ShortcutPhase): void
     /**
      * This will set the command to execute when `accel` is pressed.  If command is
      * %NULL, the accelerator will be cleared.  If accelerator is %NULL, all
@@ -17347,7 +17347,7 @@ export interface ShortcutTheme {
      * @param phase the phase to activate within, or 0 for the default
      */
     set_accel_for_command(command: string | null, accel: string | null, phase: ShortcutPhase): void
-    set_chord_for_action(detailed_action_name: string | null, chord: ShortcutChord, phase: ShortcutPhase): void
+    set_chord_for_action(detailed_action_name: string, chord: ShortcutChord, phase: ShortcutPhase): void
     /**
      * This will set the command to execute when `chord` is pressed.  If command is
      * %NULL, the accelerator will be cleared.  If `chord` is %NULL, all
@@ -17357,7 +17357,7 @@ export interface ShortcutTheme {
      * @param phase the phase to activate within, or 0 for the default
      */
     set_chord_for_command(command: string | null, chord: ShortcutChord | null, phase: ShortcutPhase): void
-    set_parent_name(parent_name: string | null): void
+    set_parent_name(parent_name: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutTheme
 
@@ -17389,8 +17389,8 @@ export class ShortcutTheme extends GObject.Object {
     // Constructors of Dazzle-1.0.Dazzle.ShortcutTheme
 
     constructor(config?: ShortcutTheme.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): ShortcutTheme
+    constructor(name: string) 
+    static new(name: string): ShortcutTheme
     _init(config?: ShortcutTheme.ConstructorProperties): void
 }
 
@@ -17449,7 +17449,7 @@ export interface ShortcutThemeEditor extends Atk.ImplementorIface, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -17463,7 +17463,7 @@ export interface ShortcutThemeEditor extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -17474,7 +17474,7 @@ export interface ShortcutThemeEditor extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.ShortcutThemeEditor
 
@@ -17703,7 +17703,7 @@ export interface ShortcutTooltip {
      * received.
      * @param command_id the command-id of the shortcut registered
      */
-    set_command_id(command_id: string | null): void
+    set_command_id(command_id: string): void
     /**
      * Sets the #DzlShortcutTooltip:title property, which can be used to
      * override the default title for the tooltip as discovered from the
@@ -17873,7 +17873,7 @@ export interface ShortcutsGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -17887,7 +17887,7 @@ export interface ShortcutsGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -17898,7 +17898,7 @@ export interface ShortcutsGroup extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutsGroup
 
@@ -18214,7 +18214,7 @@ export interface ShortcutsSection extends Atk.ImplementorIface, Gtk.Buildable, G
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -18228,7 +18228,7 @@ export interface ShortcutsSection extends Atk.ImplementorIface, Gtk.Buildable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -18239,7 +18239,7 @@ export interface ShortcutsSection extends Atk.ImplementorIface, Gtk.Buildable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.ShortcutsSection
 
@@ -18674,7 +18674,7 @@ export interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -18688,7 +18688,7 @@ export interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -18699,7 +18699,7 @@ export interface ShortcutsShortcut extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ShortcutsShortcut
 
@@ -19030,7 +19030,7 @@ export interface ShortcutsWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -19044,7 +19044,7 @@ export interface ShortcutsWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -19055,7 +19055,7 @@ export interface ShortcutsWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.ShortcutsWindow
 
@@ -19402,7 +19402,7 @@ export interface SignalGroup {
      * @param c_handler the #GCallback to connect
      * @param flags the flags used to create the signal connection
      */
-    connect_data(detailed_signal: string | null, c_handler: GObject.Callback, flags: GObject.ConnectFlags): void
+    connect_data(detailed_signal: string, c_handler: GObject.Callback, flags: GObject.ConnectFlags): void
     /**
      * Connects `callback` to the signal `detailed_signal`
      * on the target instance of `self`.
@@ -19414,7 +19414,7 @@ export interface SignalGroup {
      * @param detailed_signal a string of the form "signal-name::detail"
      * @param c_handler the #GCallback to connect
      */
-    connect_swapped(detailed_signal: string | null, c_handler: GObject.Callback): void
+    connect_swapped(detailed_signal: string, c_handler: GObject.Callback): void
     /**
      * Gets the target instance used when connecting signals.
      * @returns The target instance.
@@ -19538,10 +19538,10 @@ export interface SimpleLabel extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Dazzle-1.0.Dazzle.SimpleLabel
 
-    get_label(): string | null
+    get_label(): string
     get_width_chars(): number
     get_xalign(): number
-    set_label(label: string | null): void
+    set_label(label: string): void
     set_width_chars(width_chars: number): void
     set_xalign(xalign: number): void
 
@@ -19689,8 +19689,8 @@ export class SimpleLabel extends Gtk.Widget {
     // Constructors of Dazzle-1.0.Dazzle.SimpleLabel
 
     constructor(config?: SimpleLabel.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): SimpleLabel
+    constructor(label: string) 
+    static new(label: string): SimpleLabel
     _init(config?: SimpleLabel.ConstructorProperties): void
 }
 
@@ -19753,16 +19753,16 @@ export interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Dazzle-1.0.Dazzle.SimplePopover
 
-    get_button_text(): string | null
-    get_message(): string | null
+    get_button_text(): string
+    get_message(): string
     get_ready(): boolean
-    get_text(): string | null
-    get_title(): string | null
-    set_button_text(button_text: string | null): void
-    set_message(message: string | null): void
+    get_text(): string
+    get_title(): string
+    set_button_text(button_text: string): void
+    set_message(message: string): void
     set_ready(ready: boolean): void
-    set_text(text: string | null): void
-    set_title(title: string | null): void
+    set_text(text: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -19777,7 +19777,7 @@ export interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -19791,7 +19791,7 @@ export interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -19802,13 +19802,13 @@ export interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.SimplePopover
 
-    vfunc_activate(text: string | null): void
+    vfunc_activate(text: string): void
     vfunc_changed(): void
-    vfunc_insert_text(position: number, chars: string | null, n_chars: number): boolean
+    vfunc_insert_text(position: number, chars: string, n_chars: number): boolean
 
     // Own signals of Dazzle-1.0.Dazzle.SimplePopover
 
@@ -20056,7 +20056,7 @@ export interface Slider extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -20070,7 +20070,7 @@ export interface Slider extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -20081,7 +20081,7 @@ export interface Slider extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.Slider
 
@@ -20292,7 +20292,7 @@ export interface StackList extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -20306,7 +20306,7 @@ export interface StackList extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -20317,7 +20317,7 @@ export interface StackList extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.StackList
 
@@ -20510,9 +20510,9 @@ export interface StateMachine extends Gtk.Buildable {
 
     // Owm methods of Dazzle-1.0.Dazzle.StateMachine
 
-    add_binding(state: string | null, source_object: any | null, source_property: string | null, target_object: any | null, target_property: string | null, flags: GObject.BindingFlags): void
-    add_propertyv(state: string | null, object: any | null, property: string | null, value: any): void
-    add_style(state: string | null, widget: Gtk.Widget, style: string | null): void
+    add_binding(state: string, source_object: any | null, source_property: string, target_object: any | null, target_property: string, flags: GObject.BindingFlags): void
+    add_propertyv(state: string, object: any | null, property: string, value: any): void
+    add_style(state: string, widget: Gtk.Widget, style: string): void
     /**
      * Creates a new #GAction with the name of `name`.
      * 
@@ -20521,13 +20521,13 @@ export interface StateMachine extends Gtk.Buildable {
      * @param name the name of the action.
      * @returns A newly created #GAction.
      */
-    create_action(name: string | null): Gio.Action
+    create_action(name: string): Gio.Action
     /**
      * Gets the #DzlStateMachine:state property. This is the name of the
      * current state of the machine.
      * @returns The current state of the machine.
      */
-    get_state(): string | null
+    get_state(): string
     /**
      * Checks to see if the current state of the #DzlStateMachine matches `state`.
      * @param state the name of the state to check
@@ -20544,7 +20544,7 @@ export interface StateMachine extends Gtk.Buildable {
      * the last state before the cycle was detected.
      * @param state 
      */
-    set_state(state: string | null): void
+    set_state(state: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.StateMachine
 
@@ -20634,7 +20634,7 @@ export interface Suggestion {
      * @returns a #GIcon or %NULL
      */
     get_icon(): Gio.Icon | null
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * This function allows subclasses to dynamicly generate content for the
      * suggestion such as may be required when integrating with favicons or
@@ -20646,13 +20646,13 @@ export interface Suggestion {
      * @returns a #cairo_surface_t or %NULL
      */
     get_icon_surface(widget: Gtk.Widget): cairo.Surface | null
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the secondary icon for the suggestion, if any.
      * @returns a #GIcon or %NULL
      */
     get_secondary_icon(): Gio.Icon | null
-    get_secondary_icon_name(): string | null
+    get_secondary_icon_name(): string
     /**
      * This function allows subclasses to dynamicly generate content for the
      * suggestion such as may be required when integrating with favicons or
@@ -20664,8 +20664,8 @@ export interface Suggestion {
      * @returns a #cairo_surface_t or %NULL
      */
     get_secondary_icon_surface(widget: Gtk.Widget): cairo.Surface | null
-    get_subtitle(): string | null
-    get_title(): string | null
+    get_subtitle(): string
+    get_title(): string
     /**
      * This function is meant to be used to replace the text in the entry with text
      * that represents the suggestion most accurately. This happens when the user
@@ -20676,12 +20676,12 @@ export interface Suggestion {
      * @param typed_text the text that was typed into the entry
      * @returns The replacement text to insert into   the entry when "tab" is pressed to complete the insertion.
      */
-    replace_typed_text(typed_text: string | null): string | null
-    set_icon_name(icon_name: string | null): void
-    set_id(id: string | null): void
-    set_secondary_icon_name(icon_name: string | null): void
-    set_subtitle(subtitle: string | null): void
-    set_title(title: string | null): void
+    replace_typed_text(typed_text: string): string | null
+    set_icon_name(icon_name: string): void
+    set_id(id: string): void
+    set_secondary_icon_name(icon_name: string): void
+    set_subtitle(subtitle: string): void
+    set_title(title: string): void
     /**
      * This function requests potential text to append to `typed_text` to make it
      * more clear to the user what they will be activating by selecting this
@@ -20690,7 +20690,7 @@ export interface Suggestion {
      * @param typed_text The user entered text
      * @returns Suffix to append to @typed_text   or %NULL to leave it unchanged.
      */
-    suggest_suffix(typed_text: string | null): string | null
+    suggest_suffix(typed_text: string): string | null
 
     // Own virtual methods of Dazzle-1.0.Dazzle.Suggestion
 
@@ -20741,7 +20741,7 @@ export interface Suggestion {
      * @param typed_text the text that was typed into the entry
      * @returns The replacement text to insert into   the entry when "tab" is pressed to complete the insertion.
      */
-    vfunc_replace_typed_text(typed_text: string | null): string | null
+    vfunc_replace_typed_text(typed_text: string): string | null
     /**
      * This function requests potential text to append to `typed_text` to make it
      * more clear to the user what they will be activating by selecting this
@@ -20751,7 +20751,7 @@ export interface Suggestion {
      * @param typed_text The user entered text
      * @returns Suffix to append to @typed_text   or %NULL to leave it unchanged.
      */
-    vfunc_suggest_suffix(typed_text: string | null): string | null
+    vfunc_suggest_suffix(typed_text: string): string | null
 
     // Own signals of Dazzle-1.0.Dazzle.Suggestion
 
@@ -20844,7 +20844,7 @@ export interface SuggestionButton extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -20858,7 +20858,7 @@ export interface SuggestionButton extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -20869,7 +20869,7 @@ export interface SuggestionButton extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.SuggestionButton
 
@@ -21199,7 +21199,7 @@ export interface SuggestionEntry extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * @returns An #DzlSuggestion or %NULL.
      */
     get_suggestion(): Suggestion | null
-    get_typed_text(): string | null
+    get_typed_text(): string
     hide_suggestions(): void
     set_activate_on_single_click(activate_on_single_click: boolean): void
     /**
@@ -21604,7 +21604,7 @@ export interface SuggestionEntryBuffer {
      */
     get_suggestion(): Suggestion | null
     get_typed_length(): number
-    get_typed_text(): string | null
+    get_typed_text(): string
     /**
      * Sets the current suggestion for the entry buffer.
      * 
@@ -21762,7 +21762,7 @@ export interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -21776,7 +21776,7 @@ export interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -21787,7 +21787,7 @@ export interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.SuggestionPopover
 
@@ -22133,7 +22133,7 @@ export interface SuggestionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -22145,7 +22145,7 @@ export interface SuggestionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -22159,7 +22159,7 @@ export interface SuggestionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.SuggestionRow
 
@@ -22378,7 +22378,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable
     get_active(): boolean
     get_can_close(): boolean
     get_edge(): Gtk.PositionType
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_style(): TabStyle
 
     // Overloads of get_style
@@ -22388,13 +22388,13 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable
      * @returns the widget’s #GtkStyle
      */
     get_style(): Gtk.Style
-    get_title(): string | null
+    get_title(): string
     get_widget(): Gtk.Widget | null
     set_active(active: boolean): void
     set_can_close(can_close: boolean): void
     set_edge(edge: Gtk.PositionType): void
     set_gicon(gicon: Gio.Icon): void
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     set_style(style: TabStyle): void
 
     // Overloads of set_style
@@ -22405,7 +22405,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable
      * @param style a #GtkStyle, or %NULL to remove the effect     of a previous call to gtk_widget_set_style() and go back to     the default style
      */
     set_style(style: Gtk.Style | null): void
-    set_title(title: string | null): void
+    set_title(title: string): void
     set_widget(widget: Gtk.Widget): void
 
     // Conflicting methods
@@ -22420,7 +22420,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -22432,7 +22432,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -22446,7 +22446,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Dazzle-1.0.Dazzle.Tab
 
@@ -22689,7 +22689,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -22703,7 +22703,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -22714,7 +22714,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.TabStrip
 
@@ -23010,7 +23010,7 @@ export interface TaskCache {
      * @returns A #GObject or   %NULL if the key was not found in the cache.
      */
     peek(key: any | null): GObject.Object | null
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.TaskCache
 
@@ -23094,7 +23094,7 @@ export interface ThemeManager {
      * The "icons" sub-directory will be used to locate icon themes.
      * @param resource_path A path to a #GResources directory
      */
-    add_resources(resource_path: string | null): void
+    add_resources(resource_path: string): void
     /**
      * This removes the CSS providers that were registered using `resource_path`.
      * 
@@ -23105,7 +23105,7 @@ export interface ThemeManager {
      * be available even after calling this function.
      * @param resource_path A previously registered resources path
      */
-    remove_resources(resource_path: string | null): void
+    remove_resources(resource_path: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ThemeManager
 
@@ -23172,7 +23172,7 @@ export interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -23186,7 +23186,7 @@ export interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -23197,7 +23197,7 @@ export interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Dazzle-1.0.Dazzle.ThreeGrid
 
@@ -23493,7 +23493,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -23507,7 +23507,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -23518,11 +23518,11 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Dazzle-1.0.Dazzle.Tree
 
-    vfunc_action(action_group: string | null, action_name: string | null, param: string | null): void
+    vfunc_action(action_group: string, action_name: string, param: string): void
     vfunc_populate_popup(widget: Gtk.Widget): void
 
     // Own signals of Dazzle-1.0.Dazzle.Tree
@@ -24182,7 +24182,7 @@ export interface TreeNode {
      * Use dzl_tree_node_remove_emblem() to remove an emblem.
      * @param emblem_name the icon-name of the emblem
      */
-    add_emblem(emblem_name: string | null): void
+    add_emblem(emblem_name: string): void
     /**
      * Appends `child` to the list of children owned by `node`.
      * @param child A #DzlTreeNode.
@@ -24212,7 +24212,7 @@ export interface TreeNode {
     /**
      * Fetches the icon-name of the icon to display, or NULL for no icon.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets a #GObject for the node, if one was set.
      * @returns A #GObject or %NULL.
@@ -24230,7 +24230,7 @@ export interface TreeNode {
      */
     get_path(): Gtk.TreePath | null
     get_reset_on_collapse(): boolean
-    get_text(): string | null
+    get_text(): string
     /**
      * Fetches the #DzlTree instance that owns the node.
      * @returns A #DzlTree.
@@ -24243,7 +24243,7 @@ export interface TreeNode {
      * @param emblem_name a string containing the emblem name
      * @returns %TRUE if @emblem_name is used by @self
      */
-    has_emblem(emblem_name: string | null): boolean
+    has_emblem(emblem_name: string): boolean
     /**
      * Inserts `child` as a child of `self` at `position`.
      * @param child a #DzlTreeNode
@@ -24280,7 +24280,7 @@ export interface TreeNode {
      * @param child A #DzlTreeNode.
      */
     remove(child: TreeNode): void
-    remove_emblem(emblem_name: string | null): void
+    remove_emblem(emblem_name: string): void
     select(): void
     /**
      * If the node has not yet been built, setting this to %TRUE will add a
@@ -24289,7 +24289,7 @@ export interface TreeNode {
      * @param children_possible If the node has children.
      */
     set_children_possible(children_possible: boolean): void
-    set_emblems(emblems: string | null): void
+    set_emblems(emblems: string): void
     /**
      * Sets the foreground-rgba to be used by the row text.
      * 
@@ -24410,7 +24410,7 @@ export interface WidgetActionGroup extends Gio.ActionGroup {
 
     // Owm methods of Dazzle-1.0.Dazzle.WidgetActionGroup
 
-    set_action_enabled(action_name: string | null, enabled: boolean): void
+    set_action_enabled(action_name: string, enabled: boolean): void
 
     // Class property signals of Dazzle-1.0.Dazzle.WidgetActionGroup
 
@@ -24441,7 +24441,7 @@ export class WidgetActionGroup extends GObject.Object {
      * @param widget A #GtkWidget
      * @param group_name the group name to use for the action group
      */
-    static attach(widget: Gtk.Widget, group_name: string | null): void
+    static attach(widget: Gtk.Widget, group_name: string): void
 }
 
 export interface AnimationClass {
@@ -24463,8 +24463,8 @@ export interface ApplicationClass {
     // Own fields of Dazzle-1.0.Dazzle.ApplicationClass
 
     parent_class: Gtk.ApplicationClass
-    add_resources: (self: Application, resource_path: string | null) => void
-    remove_resources: (self: Application, resource_path: string | null) => void
+    add_resources: (self: Application, resource_path: string) => void
+    remove_resources: (self: Application, resource_path: string) => void
     _reserved1: any
     _reserved2: any
     _reserved3: any
@@ -24623,9 +24623,9 @@ export interface Counter {
     // Own fields of Dazzle-1.0.Dazzle.Counter
 
     values: CounterValue
-    category: string | null
-    name: string | null
-    description: string | null
+    category: string
+    name: string
+    description: string
 
     // Owm methods of Dazzle-1.0.Dazzle.Counter
 
@@ -25205,7 +25205,7 @@ export interface FuzzyMutableIndex {
      * the final sort until dzl_fuzzy_mutable_index_end_bulk_insert().
      */
     begin_bulk_insert(): void
-    contains(key: string | null): boolean
+    contains(key: string): boolean
     /**
      * Complete a bulk insert and resort the index.
      */
@@ -25215,7 +25215,7 @@ export interface FuzzyMutableIndex {
      * @param key A UTF-8 encoded string.
      * @param value A value to associate with key.
      */
-    insert(key: string | null, value: any | null): void
+    insert(key: string, value: any | null): void
     /**
      * DzlFuzzyMutableIndex searches within `fuzzy` for strings that fuzzy match `needle`.
      * Only up to `max_matches` will be returned.
@@ -25225,9 +25225,9 @@ export interface FuzzyMutableIndex {
      * @param max_matches The max number of matches to return.
      * @returns A newly allocated   #GArray containing #FuzzyMatch elements. This should be freed when   the caller is done with it using g_array_unref().   It is a programming error to keep the structure around longer than   the @fuzzy instance.
      */
-    match(needle: string | null, max_matches: number): FuzzyMutableIndexMatch[]
+    match(needle: string, max_matches: number): FuzzyMutableIndexMatch[]
     ref(): FuzzyMutableIndex
-    remove(key: string | null): void
+    remove(key: string): void
     set_free_func(free_func: GLib.DestroyNotify): void
     /**
      * Decrements the reference count of fuzzy by one. When the reference count
@@ -25265,7 +25265,7 @@ export interface FuzzyMutableIndexMatch {
 
     // Own fields of Dazzle-1.0.Dazzle.FuzzyMutableIndexMatch
 
-    key: string | null
+    key: string
     value: any
     score: number
     id: number
@@ -25648,8 +25648,8 @@ export interface PatternSpec {
 
     // Owm methods of Dazzle-1.0.Dazzle.PatternSpec
 
-    get_text(): string | null
-    match(haystack: string | null): boolean
+    get_text(): string
+    match(haystack: string): boolean
     ref(): PatternSpec
     unref(): void
 }
@@ -25662,8 +25662,8 @@ export class PatternSpec {
 
     // Constructors of Dazzle-1.0.Dazzle.PatternSpec
 
-    constructor(keywords: string | null) 
-    static new(keywords: string | null): PatternSpec
+    constructor(keywords: string) 
+    static new(keywords: string): PatternSpec
 }
 
 export interface PillBoxClass {
@@ -25780,16 +25780,16 @@ export interface PreferencesInterface {
     // Own fields of Dazzle-1.0.Dazzle.PreferencesInterface
 
     parent_interface: GObject.TypeInterface
-    set_page: (self: Preferences, page_name: string | null, map: GLib.HashTable) => void
-    add_page: (self: Preferences, page_name: string | null, title: string | null, priority: number) => void
-    add_group: (self: Preferences, page_name: string | null, group_name: string | null, title: string | null, priority: number) => void
-    add_list_group: (self: Preferences, page_name: string | null, group_name: string | null, title: string | null, mode: Gtk.SelectionMode, priority: number) => void
-    add_radio: (self: Preferences, page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number) => number
-    add_font_button: (self: Preferences, page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, title: string | null, keywords: string | null, priority: number) => number
-    add_switch: (self: Preferences, page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number) => number
-    add_spin_button: (self: Preferences, page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number) => number
-    add_file_chooser: (self: Preferences, page_name: string | null, group_name: string | null, schema_id: string | null, key: string | null, path: string | null, title: string | null, subtitle: string | null, action: Gtk.FileChooserAction, keywords: string | null, priority: number) => number
-    add_custom: (self: Preferences, page_name: string | null, group_name: string | null, widget: Gtk.Widget, keywords: string | null, priority: number) => number
+    set_page: (self: Preferences, page_name: string, map: GLib.HashTable) => void
+    add_page: (self: Preferences, page_name: string, title: string, priority: number) => void
+    add_group: (self: Preferences, page_name: string, group_name: string, title: string, priority: number) => void
+    add_list_group: (self: Preferences, page_name: string, group_name: string, title: string, mode: Gtk.SelectionMode, priority: number) => void
+    add_radio: (self: Preferences, page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number) => number
+    add_font_button: (self: Preferences, page_name: string, group_name: string, schema_id: string, key: string, title: string, keywords: string, priority: number) => number
+    add_switch: (self: Preferences, page_name: string, group_name: string, schema_id: string, key: string, path: string | null, variant_string: string | null, title: string | null, subtitle: string | null, keywords: string | null, priority: number) => number
+    add_spin_button: (self: Preferences, page_name: string, group_name: string, schema_id: string, key: string, path: string, title: string, subtitle: string, keywords: string, priority: number) => number
+    add_file_chooser: (self: Preferences, page_name: string, group_name: string, schema_id: string, key: string, path: string, title: string, subtitle: string, action: Gtk.FileChooserAction, keywords: string, priority: number) => number
+    add_custom: (self: Preferences, page_name: string, group_name: string, widget: Gtk.Widget, keywords: string | null, priority: number) => number
     remove_id: (self: Preferences, widget_id: number) => boolean
     get_widget: (self: Preferences, widget_id: number) => Gtk.Widget | null
 }
@@ -26133,7 +26133,7 @@ export class ShortcutChord {
     // Constructors of Dazzle-1.0.Dazzle.ShortcutChord
 
     static new_from_event(event: Gdk.EventKey): ShortcutChord
-    static new_from_string(accelerator: string | null): ShortcutChord
+    static new_from_string(accelerator: string): ShortcutChord
     static equal(data1: any | null, data2: any | null): boolean
     static hash(data: any | null): number
 }
@@ -26201,7 +26201,7 @@ export interface ShortcutEntry {
      * the command identifier
      * @field 
      */
-    command: string | null
+    command: string
     /**
      * the phase for activation, or 0 for the default
      * @field 
@@ -26211,27 +26211,27 @@ export interface ShortcutEntry {
      * the default accelerator for the command, if any
      * @field 
      */
-    default_accel: string | null
+    default_accel: string
     /**
      * the section for the shortcuts window
      * @field 
      */
-    section: string | null
+    section: string
     /**
      * the group for the shortcuts window
      * @field 
      */
-    group: string | null
+    group: string
     /**
      * the title for the shortcuts window
      * @field 
      */
-    title: string | null
+    title: string
     /**
      * the subtitle for the shortcuts window, if any
      * @field 
      */
-    subtitle: string | null
+    subtitle: string
 }
 
 /**
@@ -26448,8 +26448,8 @@ export interface SimplePopoverClass {
     // Own fields of Dazzle-1.0.Dazzle.SimplePopoverClass
 
     parent: Gtk.PopoverClass
-    activate: (self: SimplePopover, text: string | null) => void
-    insert_text: (self: SimplePopover, position: number, chars: string | null, n_chars: number) => boolean
+    activate: (self: SimplePopover, text: string) => void
+    insert_text: (self: SimplePopover, position: number, chars: string, n_chars: number) => boolean
     changed: (self: SimplePopover) => void
 }
 
@@ -26531,8 +26531,8 @@ export interface SuggestionClass {
     // Own fields of Dazzle-1.0.Dazzle.SuggestionClass
 
     parent_class: GObject.ObjectClass
-    suggest_suffix: (self: Suggestion, typed_text: string | null) => string | null
-    replace_typed_text: (self: Suggestion, typed_text: string | null) => string | null
+    suggest_suffix: (self: Suggestion, typed_text: string) => string | null
+    replace_typed_text: (self: Suggestion, typed_text: string) => string | null
     get_icon: (self: Suggestion) => Gio.Icon | null
     get_icon_surface: (self: Suggestion, widget: Gtk.Widget) => cairo.Surface | null
     get_secondary_icon: (self: Suggestion) => Gio.Icon | null
@@ -26733,7 +26733,7 @@ export interface TreeClass {
     // Own fields of Dazzle-1.0.Dazzle.TreeClass
 
     parent_class: Gtk.TreeViewClass
-    action: (self: Tree, action_group: string | null, action_name: string | null, param: string | null) => void
+    action: (self: Tree, action_group: string, action_name: string, param: string) => void
     populate_popup: (self: Tree, widget: Gtk.Widget) => void
 }
 
@@ -26771,13 +26771,13 @@ export interface Trie {
      * @param key The key to insert.
      * @param value The value to insert.
      */
-    insert(key: string | null, value: any | null): void
+    insert(key: string, value: any | null): void
     /**
      * Looks up `key` in `trie` and returns the value associated.
      * @param key The key to lookup.
      * @returns The value inserted or %NULL.
      */
-    lookup(key: string | null): any | null
+    lookup(key: string): any | null
     ref(): Trie
     /**
      * Removes `key` from `trie,` possibly destroying the value associated with
@@ -26785,7 +26785,7 @@ export interface Trie {
      * @param key The key to remove.
      * @returns %TRUE if @key was found, otherwise %FALSE.
      */
-    remove(key: string | null): boolean
+    remove(key: string): boolean
     /**
      * Traverses all nodes of `trie` according to the parameters. For each node
      * matching the traversal parameters, `func` will be executed.
@@ -26800,7 +26800,7 @@ export interface Trie {
      * @param max_depth the maximum depth to process.
      * @param func The func to execute for each matching node.
      */
-    traverse(key: string | null, order: GLib.TraverseType, flags: GLib.TraverseFlags, max_depth: number, func: TrieTraverseFunc): void
+    traverse(key: string, order: GLib.TraverseType, flags: GLib.TraverseFlags, max_depth: number, func: TrieTraverseFunc): void
     /**
      * Drops the reference count by one on `trie`. When it reaches zero, the
      * structure is freed.

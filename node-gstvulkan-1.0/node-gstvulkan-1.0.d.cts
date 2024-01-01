@@ -90,21 +90,21 @@ export enum VulkanFormatFlags {
     LE,
     COMPLEX,
 }
-export const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string | null
-export const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string | null
-export const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string | null
-export const VULKAN_DEVICE_CONTEXT_TYPE_STR: string | null
-export const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string | null
-export const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string | null
-export const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string | null
+export const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string
+export const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string
+export const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string
+export const VULKAN_DEVICE_CONTEXT_TYPE_STR: string
+export const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string
+export const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string
+export const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string
 export const VULKAN_MAX_COMPONENTS: number
-export const VULKAN_MEMORY_ALLOCATOR_NAME: string | null
+export const VULKAN_MEMORY_ALLOCATOR_NAME: string
 /**
  * The printf format specifier for raw Vulkan non dispatchable handles.
  */
-export const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string | null
-export const VULKAN_QUEUE_CONTEXT_TYPE_STR: string | null
-export const VULKAN_SWAPPER_VIDEO_FORMATS: string | null
+export const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string
+export const VULKAN_QUEUE_CONTEXT_TYPE_STR: string
+export const VULKAN_SWAPPER_VIDEO_FORMATS: string
 export function contextGetVulkanDevice(context: Gst.Context, device: VulkanDevice): boolean
 export function contextGetVulkanDisplay(context: Gst.Context, display: VulkanDisplay): boolean
 export function contextGetVulkanInstance(context: Gst.Context, instance: VulkanInstance): boolean
@@ -161,7 +161,7 @@ export function vulkanBufferMemoryInitOnce(): void
  */
 export function vulkanBufferMemoryWrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, userData: any | null, notify: GLib.DestroyNotify | null): Gst.Memory
 export function vulkanCreateShader(device: VulkanDevice, code: string | null, size: number): VulkanHandle
-export function vulkanDisplayTypeToExtensionString(type: VulkanDisplayType): string | null
+export function vulkanDisplayTypeToExtensionString(type: VulkanDisplayType): string
 /**
  * Perform the steps necessary for retrieving a #GstVulkanInstance and
  * (optionally) an #GstVulkanDisplay from the surrounding elements or from
@@ -185,7 +185,7 @@ export function vulkanGetOrCreateImageView(image: VulkanImageMemory): VulkanImag
  * @param element a #GstElement
  * @param contextType the context type to query for
  */
-export function vulkanGlobalContextQuery(element: Gst.Element, contextType: string | null): void
+export function vulkanGlobalContextQuery(element: Gst.Element, contextType: string): void
 export function vulkanHandleContextQuery(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null, instance: VulkanInstance | null, device: VulkanDevice | null): boolean
 /**
  * Helper function for implementing #GstElementClass.set_context() in
@@ -224,7 +224,7 @@ export function vulkanImageMemoryWrapped(device: VulkanDevice, image: Vulkan.Ima
  * @param element a #GstElement
  * @param contextType the context type to query for
  */
-export function vulkanLocalContextQuery(element: Gst.Element, contextType: string | null): Gst.Query
+export function vulkanLocalContextQuery(element: Gst.Element, contextType: string): Gst.Query
 /**
  * Allocated a new #GstVulkanMemory.
  * @param device a #GstVulkanDevice
@@ -805,7 +805,7 @@ export interface VulkanDevice {
      * @param name name of the function to retrieve
      * @returns the function pointer for @name or %NULL
      */
-    getProcAddress(name: string | null): any | null
+    getProcAddress(name: string): any | null
     getQueue(queueFamily: number, queueI: number): VulkanQueue
     /**
      * Attempts to create the internal #VkDevice object.
@@ -1566,7 +1566,7 @@ export interface VulkanInstance {
      * @param name name of the function to retrieve
      * @returns the function pointer for @name or %NULL
      */
-    getProcAddress(name: string | null): any | null
+    getProcAddress(name: string): any | null
     open(): boolean
 
     // Conflicting methods
@@ -1863,7 +1863,7 @@ export class VulkanPhysicalDevice extends Gst.Object {
     constructor(instance: VulkanInstance, deviceIndex: number) 
     static new(instance: VulkanInstance, deviceIndex: number): VulkanPhysicalDevice
     _init(config?: VulkanPhysicalDevice.ConstructorProperties): void
-    static typeToString(type: Vulkan.PhysicalDeviceType): string | null
+    static typeToString(type: Vulkan.PhysicalDeviceType): string
 }
 
 export module VulkanQueue {
@@ -2497,8 +2497,8 @@ export interface VulkanWindow {
      * @param height the new height
      */
     resize(width: number, height: number): void
-    sendKeyEvent(eventType: string | null, keyStr: string | null): void
-    sendMouseEvent(eventType: string | null, button: number, posx: number, posy: number): void
+    sendKeyEvent(eventType: string, keyStr: string): void
+    sendMouseEvent(eventType: string, button: number, posx: number, posy: number): void
     // Has conflict: setWindowHandle(handle: never): void
 
     // Conflicting methods
@@ -3017,7 +3017,7 @@ export interface VulkanFormatInfo {
      * name of this format
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * how raw data is interpreted and scaled
      * `n_components;` number of components in this format

@@ -121,7 +121,7 @@ function ioReadStreamFinish(res: Gio.AsyncResult): [ /* data */ number[], /* siz
  * @param dirs 
  * @param callback 
  */
-function ioOpenFromDirs(filename: string | null, dirs: string[], callback?: Gio.AsyncReadyCallback | null): void
+function ioOpenFromDirs(filename: string, dirs: string[], callback?: Gio.AsyncReadyCallback | null): void
 function ioOpenFromDirsFinish(res: Gio.AsyncResult): Gio.FileInputStream | null
 /**
  * <para>Like open_from_dirs&lpar;&rpar; but scans first the user data dir and then the system data dirs as defined by the XDG_DATA_DIRS environment 
@@ -129,7 +129,7 @@ function ioOpenFromDirsFinish(res: Gio.AsyncResult): Gio.FileInputStream | null
  * @param filename 
  * @param callback 
  */
-function ioOpenFromDataDirs(filename: string | null, callback?: Gio.AsyncReadyCallback | null): void
+function ioOpenFromDataDirs(filename: string, callback?: Gio.AsyncReadyCallback | null): void
 function ioOpenFromDataDirsFinish(res: Gio.AsyncResult): Gio.FileInputStream | null
 function ioGetSystemDataDirs(): string[]
 module MergeStrategy {
@@ -197,7 +197,7 @@ module AppInfoManager {
      * Signal callback interface for `changed`
      */
     interface ChangedSignalCallback {
-        (id: string | null, newAppinfo?: Gio.AppInfo | null): void
+        (id: string, newAppinfo?: Gio.AppInfo | null): void
     }
 
 
@@ -227,14 +227,14 @@ interface AppInfoManager {
      * <para>If the AppInfo is not already cached this method will do synchronous IO to look it up.</para>
      * @param id 
      */
-    lookup(id: string | null): Gio.AppInfo | null
+    lookup(id: string): Gio.AppInfo | null
     /**
      * <para>Look up XDG categories for for desktop id or file path &commat;id. Returns null if id is not found. This method will do sync IO if the desktop 
      * file for &commat;id is not already cached. So if you are living in an async world you must first do an async call to lookup_async&lpar;id&rpar; 
      * before calling this method, in which case no sync io will be done.</para>
      * @param id 
      */
-    getCategories(id: string | null): string[] | null
+    getCategories(id: string): string[] | null
     /**
      * <para>Look up keywords for for desktop id or file path &commat;id. The keywords will be an amalgamation of the X-GNOME-Keywords and X-AppInstall-
      * Keywords fields from the .desktopfile. Returns null if id is not found. This method will do sync IO if the desktop file for &commat;id is not already 
@@ -242,14 +242,14 @@ interface AppInfoManager {
      * case no sync io will be done.</para>
      * @param id 
      */
-    getKeywords(id: string | null): string[] | null
+    getKeywords(id: string): string[] | null
     /**
      * <para>Look up the full path to the desktop file for desktop id &commat;id. Returns null if &commat;id is not found. This method will do sync IO if 
      * the desktop file for &commat;id is not already cached. So if you are living in an async world you must first do an async call to lookup_async&lpar;id
      * &rpar; before calling this method, in which case no sync io will be done.</para>
      * @param id 
      */
-    getPath(id: string | null): string | null
+    getPath(id: string): string | null
     /**
      * <para>Look up an AppInfo given its desktop id or absolute path. The desktop id is the base filename of the .desktop file for the application 
      * including the .desktop extension.</para>
@@ -257,7 +257,7 @@ interface AppInfoManager {
      * @param id 
      * @param callback 
      */
-    lookupAsync(id: string | null, callback?: Gio.AsyncReadyCallback | null): void
+    lookupAsync(id: string, callback?: Gio.AsyncReadyCallback | null): void
     lookupFinish(res: Gio.AsyncResult): Gio.AppInfo | null
     clear(): void
 
@@ -570,9 +570,9 @@ class LauncherEntry extends GObject.Object {
 
     constructor(config?: LauncherEntry.ConstructorProperties) 
     _init(config?: LauncherEntry.ConstructorProperties): void
-    static getForAppUri(appUri: string | null): LauncherEntry
-    static getForDesktopId(desktopId: string | null): LauncherEntry
-    static getForDesktopFile(desktopFile: string | null): LauncherEntry
+    static getForAppUri(appUri: string): LauncherEntry
+    static getForDesktopId(desktopId: string): LauncherEntry
+    static getForDesktopFile(desktopFile: string): LauncherEntry
 }
 
 module LauncherFavorites {
@@ -608,8 +608,8 @@ interface LauncherFavorites {
     // Owm methods of Unity-6.0.Unity.LauncherFavorites
 
     hasAppInfo(appinfo: Gio.AppInfo): boolean
-    hasAppId(appId: string | null): boolean
-    lookup(appId: string | null): Gio.AppInfo | null
+    hasAppId(appId: string): boolean
+    lookup(appId: string): Gio.AppInfo | null
     enumerateIds(): string[]
     enumerateAppInfos(): Gio.AppInfo[]
 
@@ -714,8 +714,8 @@ class ActivationResponse extends GObject.InitiallyUnowned {
     // Constructors of Unity-6.0.Unity.ActivationResponse
 
     constructor(config?: ActivationResponse.ConstructorProperties) 
-    constructor(handled: HandledType, gotoUri: string | null) 
-    static new(handled: HandledType, gotoUri: string | null): ActivationResponse
+    constructor(handled: HandledType, gotoUri: string) 
+    static new(handled: HandledType, gotoUri: string): ActivationResponse
     static withPreview(preview: Preview): ActivationResponse
     _init(config?: ActivationResponse.ConstructorProperties): void
 }
@@ -788,8 +788,8 @@ class Category extends GObject.Object {
     // Constructors of Unity-6.0.Unity.Category
 
     constructor(config?: Category.ConstructorProperties) 
-    constructor(name: string | null, iconHint: Gio.Icon, renderer: CategoryRenderer) 
-    static new(name: string | null, iconHint: Gio.Icon, renderer: CategoryRenderer): Category
+    constructor(name: string, iconHint: Gio.Icon, renderer: CategoryRenderer) 
+    static new(name: string, iconHint: Gio.Icon, renderer: CategoryRenderer): Category
     _init(config?: Category.ConstructorProperties): void
 }
 
@@ -985,8 +985,8 @@ class FilterOption extends GObject.Object {
     // Constructors of Unity-6.0.Unity.FilterOption
 
     constructor(config?: FilterOption.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, active: boolean) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, active: boolean): FilterOption
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, active: boolean) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, active: boolean): FilterOption
     _init(config?: FilterOption.ConstructorProperties): void
 }
 
@@ -1018,14 +1018,14 @@ interface OptionsFilter {
 
     // Owm methods of Unity-6.0.Unity.OptionsFilter
 
-    addOption(id: string | null, displayName: string | null, iconHint?: Gio.Icon | null): FilterOption
-    getOption(id: string | null): FilterOption | null
+    addOption(id: string, displayName: string, iconHint?: Gio.Icon | null): FilterOption
+    getOption(id: string): FilterOption | null
     /**
      * <para>Removes a FilterOption from the OptionsFilter.</para>
      * @param id 
      * @returns true if a FilterOption was removed, false if FilterOption with given id couldn&apos;t be found. 
      */
-    removeOption(id: string | null): boolean
+    removeOption(id: string): boolean
 
     // Class property signals of Unity-6.0.Unity.OptionsFilter
 
@@ -1184,8 +1184,8 @@ class RadioOptionFilter extends OptionsFilter {
     // Constructors of Unity-6.0.Unity.RadioOptionFilter
 
     constructor(config?: RadioOptionFilter.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean): RadioOptionFilter
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean): RadioOptionFilter
 
     // Overloads of new
 
@@ -1277,8 +1277,8 @@ class CheckOptionFilter extends OptionsFilter {
     // Constructors of Unity-6.0.Unity.CheckOptionFilter
 
     constructor(config?: CheckOptionFilter.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean): CheckOptionFilter
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean): CheckOptionFilter
 
     // Overloads of new
 
@@ -1370,8 +1370,8 @@ class CheckOptionFilterCompact extends OptionsFilter {
     // Constructors of Unity-6.0.Unity.CheckOptionFilterCompact
 
     constructor(config?: CheckOptionFilterCompact.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean): CheckOptionFilterCompact
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean): CheckOptionFilterCompact
 
     // Overloads of new
 
@@ -1468,8 +1468,8 @@ class RatingsFilter extends Filter {
     // Constructors of Unity-6.0.Unity.RatingsFilter
 
     constructor(config?: RatingsFilter.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean): RatingsFilter
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean): RatingsFilter
     _init(config?: RatingsFilter.ConstructorProperties): void
 }
 
@@ -1562,8 +1562,8 @@ class MultiRangeFilter extends OptionsFilter {
     // Constructors of Unity-6.0.Unity.MultiRangeFilter
 
     constructor(config?: MultiRangeFilter.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, collapsed: boolean): MultiRangeFilter
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, collapsed: boolean): MultiRangeFilter
 
     // Overloads of new
 
@@ -1679,7 +1679,7 @@ interface LensSearch {
 
     emitFinished(): void
     equals(other?: LensSearch | null): boolean
-    setReplyHint(key: string | null, variant: GLib.Variant): void
+    setReplyHint(key: string, variant: GLib.Variant): void
 
     // Own signals of Unity-6.0.Unity.LensSearch
 
@@ -1728,8 +1728,8 @@ class LensSearch extends GObject.InitiallyUnowned {
     // Constructors of Unity-6.0.Unity.LensSearch
 
     constructor(config?: LensSearch.ConstructorProperties) 
-    constructor(searchString: string | null, hints: GLib.HashTable, resultsModel: Dee.SerializableModel) 
-    static new(searchString: string | null, hints: GLib.HashTable, resultsModel: Dee.SerializableModel): LensSearch
+    constructor(searchString: string, hints: GLib.HashTable, resultsModel: Dee.SerializableModel) 
+    static new(searchString: string, hints: GLib.HashTable, resultsModel: Dee.SerializableModel): LensSearch
     _init(config?: LensSearch.ConstructorProperties): void
 }
 
@@ -1883,8 +1883,8 @@ class Lens extends GObject.Object {
     // Constructors of Unity-6.0.Unity.Lens
 
     constructor(config?: Lens.ConstructorProperties) 
-    constructor(dbusPath: string | null, id: string | null) 
-    static new(dbusPath: string | null, id: string | null): Lens
+    constructor(dbusPath: string, id: string) 
+    static new(dbusPath: string, id: string): Lens
     _init(config?: Lens.ConstructorProperties): void
 }
 
@@ -2004,7 +2004,7 @@ module PreviewAction {
      * Signal callback interface for `activated`
      */
     interface ActivatedSignalCallback {
-        (uri: string | null): ActivationResponse
+        (uri: string): ActivationResponse
     }
 
 
@@ -2102,9 +2102,9 @@ class PreviewAction extends GObject.Object {
     // Constructors of Unity-6.0.Unity.PreviewAction
 
     constructor(config?: PreviewAction.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint?: Gio.Icon | null) 
-    static new(id: string | null, displayName: string | null, iconHint?: Gio.Icon | null): PreviewAction
-    static withLayoutHint(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, layout: LayoutHint): PreviewAction
+    constructor(id: string, displayName: string, iconHint?: Gio.Icon | null) 
+    static new(id: string, displayName: string, iconHint?: Gio.Icon | null): PreviewAction
+    static withLayoutHint(id: string, displayName: string, iconHint: Gio.Icon | null, layout: LayoutHint): PreviewAction
     _init(config?: PreviewAction.ConstructorProperties): void
 }
 
@@ -2183,9 +2183,9 @@ class InfoHint extends GObject.InitiallyUnowned {
     // Constructors of Unity-6.0.Unity.InfoHint
 
     constructor(config?: InfoHint.ConstructorProperties) 
-    constructor(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, data: string | null) 
-    static new(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, data: string | null): InfoHint
-    static withVariant(id: string | null, displayName: string | null, iconHint: Gio.Icon | null, data: GLib.Variant): InfoHint
+    constructor(id: string, displayName: string, iconHint: Gio.Icon | null, data: string) 
+    static new(id: string, displayName: string, iconHint: Gio.Icon | null, data: string): InfoHint
+    static withVariant(id: string, displayName: string, iconHint: Gio.Icon | null, data: GLib.Variant): InfoHint
     _init(config?: InfoHint.ConstructorProperties): void
 }
 
@@ -2258,8 +2258,8 @@ class GenericPreview extends Preview {
     // Constructors of Unity-6.0.Unity.GenericPreview
 
     constructor(config?: GenericPreview.ConstructorProperties) 
-    constructor(title: string | null, description: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, description: string | null, image?: Gio.Icon | null): GenericPreview
+    constructor(title: string, description: string, image?: Gio.Icon | null) 
+    static new(title: string, description: string, image?: Gio.Icon | null): GenericPreview
     _init(config?: GenericPreview.ConstructorProperties): void
 }
 
@@ -2367,8 +2367,8 @@ class ApplicationPreview extends Preview {
     // Constructors of Unity-6.0.Unity.ApplicationPreview
 
     constructor(config?: ApplicationPreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, description: string | null, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, description: string | null, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null): ApplicationPreview
+    constructor(title: string, subtitle: string, description: string, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, description: string, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null): ApplicationPreview
     _init(config?: ApplicationPreview.ConstructorProperties): void
 }
 
@@ -2380,14 +2380,14 @@ module MusicPreview {
      * Signal callback interface for `play`
      */
     interface PlaySignalCallback {
-        (uri: string | null): void
+        (uri: string): void
     }
 
     /**
      * Signal callback interface for `pause`
      */
     interface PauseSignalCallback {
-        (uri: string | null): void
+        (uri: string): void
     }
 
 
@@ -2499,8 +2499,8 @@ class MusicPreview extends Preview {
     // Constructors of Unity-6.0.Unity.MusicPreview
 
     constructor(config?: MusicPreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, image?: Gio.Icon | null): MusicPreview
+    constructor(title: string, subtitle: string, image?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, image?: Gio.Icon | null): MusicPreview
     _init(config?: MusicPreview.ConstructorProperties): void
 }
 
@@ -2587,8 +2587,8 @@ class MoviePreview extends Preview {
     // Constructors of Unity-6.0.Unity.MoviePreview
 
     constructor(config?: MoviePreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, description: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, description: string | null, image?: Gio.Icon | null): MoviePreview
+    constructor(title: string, subtitle: string, description: string, image?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, description: string, image?: Gio.Icon | null): MoviePreview
     _init(config?: MoviePreview.ConstructorProperties): void
 }
 
@@ -2689,8 +2689,8 @@ class SocialPreview extends Preview {
     // Constructors of Unity-6.0.Unity.SocialPreview
 
     constructor(config?: SocialPreview.ConstructorProperties) 
-    constructor(sender: string | null, subtitle: string | null, content: string | null, avatar?: Gio.Icon | null) 
-    static new(sender: string | null, subtitle: string | null, content: string | null, avatar?: Gio.Icon | null): SocialPreview
+    constructor(sender: string, subtitle: string, content: string, avatar?: Gio.Icon | null) 
+    static new(sender: string, subtitle: string, content: string, avatar?: Gio.Icon | null): SocialPreview
     _init(config?: SocialPreview.ConstructorProperties): void
 }
 
@@ -2769,8 +2769,8 @@ class SocialPreviewComment extends GObject.InitiallyUnowned {
     // Constructors of Unity-6.0.Unity.SocialPreviewComment
 
     constructor(config?: SocialPreviewComment.ConstructorProperties) 
-    constructor(id: string | null, name: string | null, text: string | null, time: string | null) 
-    static new(id: string | null, name: string | null, text: string | null, time: string | null): SocialPreviewComment
+    constructor(id: string, name: string, text: string, time: string) 
+    static new(id: string, name: string, text: string, time: string): SocialPreviewComment
     _init(config?: SocialPreviewComment.ConstructorProperties): void
 }
 
@@ -2889,14 +2889,14 @@ module Scope {
      * Signal callback interface for `activate_uri`
      */
     interface ActivateUriSignalCallback {
-        (uri: string | null): ActivationResponse | null
+        (uri: string): ActivationResponse | null
     }
 
     /**
      * Signal callback interface for `preview_uri`
      */
     interface PreviewUriSignalCallback {
-        (uri: string | null): Preview | null
+        (uri: string): Preview | null
     }
 
     /**
@@ -2967,7 +2967,7 @@ interface Scope {
     // Owm methods of Unity-6.0.Unity.Scope
 
     export(): void
-    getFilter(id: string | null): Filter | null
+    getFilter(id: string): Filter | null
     /**
      * <para>Invalidates current search and queues new search.</para>
      * <para>This method will invalidate &lpar;and cancel&rpar; last search and queue a new search &lpar;with the same search_string&rpar;. The #UnityScope::search-changed
@@ -3086,8 +3086,8 @@ class Scope extends GObject.Object {
     // Constructors of Unity-6.0.Unity.Scope
 
     constructor(config?: Scope.ConstructorProperties) 
-    constructor(dbusPath: string | null) 
-    static new(dbusPath: string | null): Scope
+    constructor(dbusPath: string) 
+    static new(dbusPath: string): Scope
     _init(config?: Scope.ConstructorProperties): void
 }
 
@@ -3196,7 +3196,7 @@ class TrackMetadata extends GObject.Object {
     constructor(config?: TrackMetadata.ConstructorProperties) 
     constructor() 
     static new(): TrackMetadata
-    static full(uri: string | null, trackNo: number, title: string | null, artist: string | null, album: string | null, length: number): TrackMetadata
+    static full(uri: string, trackNo: number, title: string, artist: string, album: string, length: number): TrackMetadata
     _init(config?: TrackMetadata.ConstructorProperties): void
 }
 
@@ -3289,8 +3289,8 @@ class Playlist extends GObject.Object {
     // Constructors of Unity-6.0.Unity.Playlist
 
     constructor(config?: Playlist.ConstructorProperties) 
-    constructor(id: string | null) 
-    static new(id: string | null): Playlist
+    constructor(id: string) 
+    static new(id: string): Playlist
     _init(config?: Playlist.ConstructorProperties): void
 }
 
@@ -3388,7 +3388,7 @@ interface MusicPlayer {
     addPlaylist(p: Playlist): boolean
     removePlaylist(p: Playlist): boolean
     getPlaylists(): Playlist[]
-    editPlaylistName(id: string | null, name: string | null): void
+    editPlaylistName(id: string, name: string): void
 
     // Own signals of Unity-6.0.Unity.MusicPlayer
 
@@ -3507,8 +3507,8 @@ class MusicPlayer extends GObject.Object {
     // Constructors of Unity-6.0.Unity.MusicPlayer
 
     constructor(config?: MusicPlayer.ConstructorProperties) 
-    constructor(desktop: string | null) 
-    static new(desktop: string | null): MusicPlayer
+    constructor(desktop: string) 
+    static new(desktop: string): MusicPlayer
     _init(config?: MusicPlayer.ConstructorProperties): void
 }
 

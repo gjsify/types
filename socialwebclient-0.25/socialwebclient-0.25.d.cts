@@ -61,7 +61,7 @@ export interface Client {
 
     // Owm methods of SocialWebClient-0.25.SocialWebClient.Client
 
-    get_service(service_name: string | null): ClientService
+    get_service(service_name: string): ClientService
     get_services(cb: ClientGetServicesCallback): void
     is_online(cb: ClientIsOnlineCallback): void
 
@@ -295,8 +295,8 @@ export interface ClientLastfm {
 
     // Owm methods of SocialWebClient-0.25.SocialWebClient.ClientLastfm
 
-    now_playing(artist: string | null, album: string | null, track: string | null, length: number, tracknumber: number, musicbrainz_id: string | null): void
-    submit_track(artist: string | null, album: string | null, track: string | null, time: number, source: string | null, rating: string | null, length: number, tracknumber: number, musicbrainz_id: string | null): void
+    now_playing(artist: string, album: string, track: string, length: number, tracknumber: number, musicbrainz_id: string): void
+    submit_track(artist: string, album: string, track: string, time: number, source: string, rating: string, length: number, tracknumber: number, musicbrainz_id: string): void
 
     // Class property signals of SocialWebClient-0.25.SocialWebClient.ClientLastfm
 
@@ -369,24 +369,24 @@ export interface ClientService {
 
     // Owm methods of SocialWebClient-0.25.SocialWebClient.ClientService
 
-    banishable_hide_item(uid: string | null): void
-    contacts_query_open_view(query: string | null, params: GLib.HashTable, cb: ClientServiceContactsQueryOpenViewCallback): void
+    banishable_hide_item(uid: string): void
+    contacts_query_open_view(query: string, params: GLib.HashTable, cb: ClientServiceContactsQueryOpenViewCallback): void
     credentials_updated(): void
-    get_display_name(): string | null
+    get_display_name(): string
     get_dynamic_capabilities(cb: ClientServiceGetCapabilitiesCallback): void
-    get_name(): string | null
+    get_name(): string
     get_static_capabilities(cb: ClientServiceGetCapabilitiesCallback): void
-    query_open_view(query: string | null, params: GLib.HashTable, cb: ClientServiceQueryOpenViewCallback): void
+    query_open_view(query: string, params: GLib.HashTable, cb: ClientServiceQueryOpenViewCallback): void
     request_avatar(): void
-    update_status(cb: ClientServiceUpdateStatusCallback, status_msg: string | null): void
-    update_status_with_fields(cb: ClientServiceUpdateStatusCallback, status_msg: string | null, fields: GLib.HashTable): void
+    update_status(cb: ClientServiceUpdateStatusCallback, status_msg: string): void
+    update_status_with_fields(cb: ClientServiceUpdateStatusCallback, status_msg: string, fields: GLib.HashTable): void
     upload_photo_finish(res: Gio.AsyncResult): boolean
     upload_video_finish(res: Gio.AsyncResult): boolean
 
     // Own virtual methods of SocialWebClient-0.25.SocialWebClient.ClientService
 
     vfunc_avatar_retrieved(path: string | null): void
-    vfunc_capabilities_changed(caps: string | null): void
+    vfunc_capabilities_changed(caps: string): void
     vfunc_status_updated(success: boolean): void
     vfunc_user_changed(): void
 
@@ -424,7 +424,7 @@ export class ClientService extends GObject.Object {
 
     constructor(config?: ClientService.ConstructorProperties) 
     _init(config?: ClientService.ConstructorProperties): void
-    static has_cap(caps: string[], cap: string | null): boolean
+    static has_cap(caps: string[], cap: string): boolean
 }
 
 export interface ClientClass {
@@ -488,7 +488,7 @@ export interface ClientServiceClass {
     // Own fields of SocialWebClient-0.25.SocialWebClient.ClientServiceClass
 
     parent_class: GObject.ObjectClass
-    capabilities_changed: (service: ClientService, caps: string | null) => void
+    capabilities_changed: (service: ClientService, caps: string) => void
     user_changed: (service: ClientService) => void
     avatar_retrieved: (service: ClientService, path: string | null) => void
     status_updated: (service: ClientService, success: boolean) => void
@@ -514,9 +514,9 @@ export interface Contact {
     // Owm methods of SocialWebClient-0.25.SocialWebClient.Contact
 
     free(): void
-    get_value(key: string | null): string | null
-    get_value_all(key: string | null): string[]
-    has_key(key: string | null): boolean
+    get_value(key: string): string
+    get_value_all(key: string): string[]
+    has_key(key: string): boolean
     is_from_cache(): boolean
     ref(): Contact
     unref(): void
@@ -547,8 +547,8 @@ export interface Item {
     // Owm methods of SocialWebClient-0.25.SocialWebClient.Item
 
     free(): void
-    get_value(key: string | null): string | null
-    has_key(key: string | null): boolean
+    get_value(key: string): string
+    has_key(key: string): boolean
     is_from_cache(): boolean
     ref(): Item
     unref(): void

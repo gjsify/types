@@ -237,7 +237,7 @@ function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancel
  * @param uri the uri to decode
  * @returns %TRUE if the uri could be properly decoded, %FALSE otherwise.
  */
-function utils_decode_uri(uri: string | null): [ /* returnType */ boolean, /* scheme */ string | null, /* user */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null ]
+function utils_decode_uri(uri: string): [ /* returnType */ boolean, /* scheme */ string, /* user */ string, /* host */ string, /* port */ string, /* path */ string ]
 /**
  * The asynchronous version of g_file_query_exists(). When the operation is
  * finished, `callback` will be called. You can then call
@@ -280,7 +280,7 @@ function utils_file_query_exists_finish(file: Gio.File, result: Gio.AsyncResult)
  * @param filename a filename.
  * @returns the @filename's extension with the dot, in lowercase. Free with g_free().
  */
-function utils_get_file_extension(filename: string | null): string | null
+function utils_get_file_extension(filename: string): string | null
 /**
  * Returns `filename` without its extension. With the “extension” having the same
  * definition as in tepl_utils_get_file_extension(); in other words it returns
@@ -288,7 +288,7 @@ function utils_get_file_extension(filename: string | null): string | null
  * @param filename a filename.
  * @returns the @filename without its extension. Free with g_free().
  */
-function utils_get_file_shortname(filename: string | null): string | null
+function utils_get_file_shortname(filename: string): string | null
 /**
  * Removes all rows of `list_box,` to obtain an empty #GtkListBox.
  * @param list_box a #GtkListBox.
@@ -365,21 +365,21 @@ function utils_list_box_setup_scrolling(list_box: Gtk.ListBox, scrolled_window: 
  * @param src a nul-terminated UTF-8 string.
  * @returns a newly allocated string with the escaped text, or %NULL if @src is not a valid UTF-8 string. Free with g_free() when no longer needed.
  */
-function utils_markup_escape_text(src: string | null): string | null
+function utils_markup_escape_text(src: string): string | null
 /**
  * Replaces the home directory with a tilde, if the home directory is present in
  * the `filename`.
  * @param filename the filename.
  * @returns the new filename. Free with g_free().
  */
-function utils_replace_home_dir_with_tilde(filename: string | null): string | null
+function utils_replace_home_dir_with_tilde(filename: string): string | null
 /**
  * Like tepl_utils_str_middle_truncate() but the “…” character is at the end.
  * @param str a UTF-8 string.
  * @param truncate_length truncate the string at that length, in UTF-8 characters   (not bytes).
  * @returns the truncated string. Free with g_free().
  */
-function utils_str_end_truncate(str: string | null, truncate_length: number): string | null
+function utils_str_end_truncate(str: string, truncate_length: number): string | null
 /**
  * If `str` is longer than `truncate_length,` then this function returns `str`
  * truncated in the middle with a “…” character. Otherwise it just returns a
@@ -388,7 +388,7 @@ function utils_str_end_truncate(str: string | null, truncate_length: number): st
  * @param truncate_length truncate the string at that length, in UTF-8 characters   (not bytes).
  * @returns the truncated string. Free with g_free().
  */
-function utils_str_middle_truncate(str: string | null, truncate_length: number): string | null
+function utils_str_middle_truncate(str: string, truncate_length: number): string | null
 /**
  * Replaces all occurences of `search` by `replacement`.
  * 
@@ -404,7 +404,7 @@ function utils_str_middle_truncate(str: string | null, truncate_length: number):
  * @param replacement the replacement string
  * @returns A newly allocated string with the replacements. Free with g_free().
  */
-function utils_str_replace(string: string | null, search: string | null, replacement: string | null): string | null
+function utils_str_replace(string: string, search: string, replacement: string): string | null
 module LanguageChooser {
 
     // Signal callback interfaces
@@ -1191,7 +1191,7 @@ interface Buffer {
      * gtk_source_style_scheme_manager_get_default().
      * @param style_scheme_id the new value.
      */
-    set_style_scheme_id(style_scheme_id: string | null): void
+    set_style_scheme_id(style_scheme_id: string): void
 
     // Own virtual methods of Tepl-5.Tepl.Buffer
 
@@ -1898,7 +1898,7 @@ interface GotoLineBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1912,7 +1912,7 @@ interface GotoLineBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1923,7 +1923,7 @@ interface GotoLineBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.GotoLineBar
 
@@ -2233,12 +2233,12 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Adds a primary message.
      * @param primary_msg a primary message.
      */
-    add_primary_message(primary_msg: string | null): void
+    add_primary_message(primary_msg: string): void
     /**
      * Adds a secondary message.
      * @param secondary_msg a secondary message.
      */
-    add_secondary_message(secondary_msg: string | null): void
+    add_secondary_message(secondary_msg: string): void
     /**
      * Sets the desired orientation (horizontal or vertical) for the action area as
      * returned by gtk_info_bar_get_action_area(). The action area is where the
@@ -2267,7 +2267,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2281,7 +2281,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2292,7 +2292,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.InfoBar
 
@@ -2487,7 +2487,7 @@ class InfoBar extends Gtk.InfoBar {
      * @param secondary_msg the secondary message, or %NULL.
      * @returns a new #TeplInfoBar.
      */
-    static new_simple(msg_type: Gtk.MessageType, primary_msg: string | null, secondary_msg: string | null): InfoBar
+    static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar
     _init(config?: InfoBar.ConstructorProperties): void
     /**
      * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
@@ -2553,7 +2553,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, Gtk.Buildable, Lan
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2567,7 +2567,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, Gtk.Buildable, Lan
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2578,7 +2578,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, Gtk.Buildable, Lan
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.LanguageChooserDialog
 
@@ -2898,7 +2898,7 @@ interface LanguageChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2912,7 +2912,7 @@ interface LanguageChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2923,7 +2923,7 @@ interface LanguageChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.LanguageChooserWidget
 
@@ -3127,7 +3127,7 @@ interface Metadata {
      * @param key a key.
      * @returns the associated value (a UTF-8 string), or %NULL. Free with g_free() when no longer needed.
      */
-    get(key: string | null): string | null
+    get(key: string): string | null
     /**
      * Sets or unsets `key`. This function just stores the new metadata value in the
      * `metadata` object memory.
@@ -3137,7 +3137,7 @@ interface Metadata {
      * @param key a key.
      * @param value a nul-terminated UTF-8 string, or %NULL to unset the key.
      */
-    set(key: string | null, value: string | null): void
+    set(key: string, value: string | null): void
 
     // Class property signals of Tepl-5.Tepl.Metadata
 
@@ -3292,7 +3292,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3306,7 +3306,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3317,7 +3317,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.Notebook
 
@@ -3524,7 +3524,7 @@ interface Panel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param title a human-readable title for `component`.
      * @param icon_name the icon name for `component,` or %NULL.
      */
-    add_component(component: Gtk.Widget, name: string | null, title: string | null, icon_name: string | null): void
+    add_component(component: Gtk.Widget, name: string, title: string, icon_name: string | null): void
     get_stack(): Gtk.Stack
     /**
      * Provides a #GSettings key for saving and restoring the
@@ -3540,7 +3540,7 @@ interface Panel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param settings a #GSettings object.
      * @param setting_key a #GSettings key of type string.
      */
-    provide_active_component_gsetting(settings: Gio.Settings, setting_key: string | null): void
+    provide_active_component_gsetting(settings: Gio.Settings, setting_key: string): void
     /**
      * Restores the state of `panel` according to the provided #GSettings.
      * 
@@ -3566,7 +3566,7 @@ interface Panel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3580,7 +3580,7 @@ interface Panel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3591,7 +3591,7 @@ interface Panel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.Panel
 
@@ -3832,7 +3832,7 @@ interface SpaceDrawerPrefs extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3846,7 +3846,7 @@ interface SpaceDrawerPrefs extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3857,7 +3857,7 @@ interface SpaceDrawerPrefs extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.SpaceDrawerPrefs
 
@@ -4131,7 +4131,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4145,7 +4145,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4156,7 +4156,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.Statusbar
 
@@ -4401,7 +4401,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * gtk_source_style_scheme_manager_get_default().
      * @param style_scheme_id the new value.
      */
-    set_style_scheme_id(style_scheme_id: string | null): void
+    set_style_scheme_id(style_scheme_id: string): void
 
     // Conflicting methods
 
@@ -4416,7 +4416,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4430,7 +4430,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4441,7 +4441,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.StyleSchemeChooserWidget
 
@@ -4756,7 +4756,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4770,7 +4770,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4781,7 +4781,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Tepl-5.Tepl.Tab
 
@@ -5052,7 +5052,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5066,7 +5066,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5077,7 +5077,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Tepl-5.Tepl.TabLabel
 
@@ -5371,7 +5371,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5385,7 +5385,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5396,7 +5396,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-5.Tepl.View
 

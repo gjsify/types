@@ -107,7 +107,7 @@ export function fileToMedia(content: Grl.Media, file: Gio.File, info: Gio.FileIn
  * Do not free the result of this function.
  * @returns a string containing the list of attributes.
  */
-export function getFileAttributes(): string | null
+export function getFileAttributes(): string
 /**
  * Check if a file identified by GrlMedia object is a playlist or not.
  * This function does blocking I/O.

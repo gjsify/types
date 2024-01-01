@@ -403,24 +403,24 @@ interface Connection {
     fetchStoragePoolsAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     fetchStoragePoolsFinish(result: Gio.AsyncResult): boolean
     findDomainById(id: number): Domain
-    findDomainByName(name: string | null): Domain
+    findDomainByName(name: string): Domain
     /**
      * Get a particular interface which has MAC address `mac`.
      * @param macaddr MAC address to lookup
      * @returns A new reference to a #GVirInterface, or NULL if no interface exists with MAC address @mac. The returned object must be unreffed using g_object_unref() once used.
      */
-    findInterfaceByMac(macaddr: string | null): Interface
+    findInterfaceByMac(macaddr: string): Interface
     /**
      * Get a particular network which has name `name`.
      * @param name name of the network to search for
      * @returns A new reference to a #GVirNetwork, or NULL if no network exists with name @name. The returned object must be unreffed using g_object_unref() once used.
      */
-    findNetworkByName(name: string | null): Network
-    findStoragePoolByName(name: string | null): StoragePool
+    findNetworkByName(name: string): Network
+    findStoragePoolByName(name: string): StoragePool
     getCapabilities(): LibvirtGConfig.Capabilities
     getCapabilitiesAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     getCapabilitiesFinish(result: Gio.AsyncResult): LibvirtGConfig.Capabilities
-    getDomain(uuid: string | null): Domain
+    getDomain(uuid: string): Domain
     getDomainCapabilities(emulatorbin: string | null, arch: string | null, machine: string | null, virttype: string | null, flags: number): LibvirtGConfig.DomainCapabilities
     getDomainCapabilitiesAsync(emulatorbin: string | null, arch: string | null, machine: string | null, virttype: string | null, flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     getDomainCapabilitiesFinish(result: Gio.AsyncResult): LibvirtGConfig.DomainCapabilities
@@ -439,7 +439,7 @@ interface Connection {
      * @param name interface name to lookup
      * @returns A new reference to a #GVirInterface, or NULL if no interface exists with name @name. The returned object must be unreffed using g_object_unref() once used.
      */
-    getInterface(name: string | null): Interface
+    getInterface(name: string): Interface
     /**
      * Get a list of all the network interfaces managed by connection `conn` on
      * host machine.
@@ -451,21 +451,21 @@ interface Connection {
      * @param uuid UUID of the network to lookup
      * @returns A new reference to a #GVirNetwork, or NULL if no network exists with UUID @uuid. The returned object must be unreffed using g_object_unref() once used.
      */
-    getNetwork(uuid: string | null): Network
+    getNetwork(uuid: string): Network
     /**
      * Get a list of all the network networks available through `conn`.
      * @returns List of #GVirNetwork. The returned list should be freed with g_list_free(), after its elements have been unreffed with g_object_unref().
      */
     getNetworks(): Network[]
     getNodeInfo(): NodeInfo
-    getStoragePool(uuid: string | null): StoragePool
+    getStoragePool(uuid: string): StoragePool
     /**
      * Gets a list of the storage pools available through `conn`.
      * @returns List of #GVirStoragePool. The returned list should be freed with g_list_free(), after its elements have been unreffed with g_object_unref().
      */
     getStoragePools(): StoragePool[]
     getStream(flags: number): Stream
-    getUri(): string | null
+    getUri(): string
     /**
      * Get version of current hypervisor used.
      * @returns version on success, 0 otherwise and @err set.
@@ -575,8 +575,8 @@ class Connection extends GObject.Object {
     // Constructors of LibvirtGObject-1.0.LibvirtGObject.Connection
 
     constructor(config?: Connection.ConstructorProperties) 
-    constructor(uri: string | null) 
-    static new(uri: string | null): Connection
+    constructor(uri: string) 
+    static new(uri: string): Connection
     _init(config?: Connection.ConstructorProperties): void
 }
 
@@ -683,11 +683,11 @@ interface Domain {
      * @returns the info. The returned object should be unreffed with g_object_unref() when no longer needed.
      */
     getInfoFinish(result: Gio.AsyncResult): DomainInfo
-    getName(): string | null
+    getName(): string
     getPersistent(): boolean
     getSaved(): boolean
     getSnapshots(): DomainSnapshot[]
-    getUuid(): string | null
+    getUuid(): string
     /**
      * Open a text console for the domain `dom,` connecting it to the
      * stream `stream`. If `devname` is NULL, the default console will
@@ -1157,7 +1157,7 @@ interface DomainSnapshot {
     deleteFinish(res: Gio.AsyncResult): boolean
     getConfig(flags: number): LibvirtGConfig.DomainSnapshot
     getIsCurrent(flags: number): [ /* returnType */ boolean, /* isCurrent */ boolean ]
-    getName(): string | null
+    getName(): string
     revertTo(flags: number): boolean
     revertToAsync(flags: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     revertToFinish(result: Gio.AsyncResult): boolean
@@ -1229,8 +1229,8 @@ interface Interface {
     // Owm methods of LibvirtGObject-1.0.LibvirtGObject.Interface
 
     getConfig(flags: number): LibvirtGConfig.Interface
-    getMac(): string | null
-    getName(): string | null
+    getMac(): string
+    getName(): string
 
     // Class property signals of LibvirtGObject-1.0.LibvirtGObject.Interface
 
@@ -1304,7 +1304,7 @@ interface Manager {
     // Owm methods of LibvirtGObject-1.0.LibvirtGObject.Manager
 
     addConnection(conn: Connection): void
-    findConnectionByUri(uri: string | null): Connection | null
+    findConnectionByUri(uri: string): Connection | null
     getConnections(): Connection[]
     removeConnection(conn: Connection): void
 
@@ -1393,8 +1393,8 @@ interface Network {
      * @returns the list of network leases. Each object in the returned list should be unreffed with g_object_unref() and the list itself using g_list_free, when no longer needed.
      */
     getDhcpLeases(mac: string | null, flags: number): NetworkDHCPLease[]
-    getName(): string | null
-    getUuid(): string | null
+    getName(): string
+    getUuid(): string
 
     // Own virtual methods of LibvirtGObject-1.0.LibvirtGObject.Network
 
@@ -1460,14 +1460,14 @@ interface NetworkDHCPLease {
 
     // Owm methods of LibvirtGObject-1.0.LibvirtGObject.NetworkDHCPLease
 
-    getClientId(): string | null
+    getClientId(): string
     getExpiryTime(): number
-    getHostname(): string | null
-    getIaid(): string | null
-    getIface(): string | null
-    getIp(): string | null
+    getHostname(): string
+    getIaid(): string
+    getIface(): string
+    getIp(): string
     getIpType(): number
-    getMac(): string | null
+    getMac(): string
     getPrefix(): number
 
     // Class property signals of LibvirtGObject-1.0.LibvirtGObject.NetworkDHCPLease
@@ -1530,8 +1530,8 @@ interface NetworkFilter {
     // Owm methods of LibvirtGObject-1.0.LibvirtGObject.NetworkFilter
 
     getConfig(flags: number): LibvirtGConfig.NetworkFilter
-    getName(): string | null
-    getUuid(): string | null
+    getName(): string
+    getUuid(): string
 
     // Class property signals of LibvirtGObject-1.0.LibvirtGObject.NetworkFilter
 
@@ -1593,7 +1593,7 @@ interface NodeDevice {
     // Owm methods of LibvirtGObject-1.0.LibvirtGObject.NodeDevice
 
     getConfig(flags: number): LibvirtGConfig.NodeDevice
-    getName(): string | null
+    getName(): string
 
     // Class property signals of LibvirtGObject-1.0.LibvirtGObject.NodeDevice
 
@@ -1655,8 +1655,8 @@ interface Secret {
     // Owm methods of LibvirtGObject-1.0.LibvirtGObject.Secret
 
     getConfig(flags: number): LibvirtGConfig.Secret
-    getName(): string | null
-    getUuid(): string | null
+    getName(): string
+    getUuid(): string
 
     // Class property signals of LibvirtGObject-1.0.LibvirtGObject.Secret
 
@@ -1728,10 +1728,10 @@ interface StoragePool {
     getAutostart(): boolean
     getConfig(flags: number): LibvirtGConfig.StoragePool
     getInfo(): StoragePoolInfo
-    getName(): string | null
+    getName(): string
     getPersistent(): boolean
-    getUuid(): string | null
-    getVolume(name: string | null): StorageVol
+    getUuid(): string
+    getVolume(name: string): StorageVol
     getVolumes(): StorageVol[]
     refresh(cancellable: Gio.Cancellable | null): boolean
     refreshAsync(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
@@ -1822,8 +1822,8 @@ interface StorageVol {
     download(stream: Stream, offset: number, length: number, flags: number): boolean
     getConfig(flags: number): LibvirtGConfig.StorageVol
     getInfo(): StorageVolInfo
-    getName(): string | null
-    getPath(): string | null
+    getName(): string
+    getPath(): string
     /**
      * Changes the capacity of the storage volume `vol` to `capacity`.
      * @param capacity the new capacity of the volume
@@ -1944,7 +1944,7 @@ interface Stream {
      * @param cancellable a %GCancellable or %NULL
      * @returns Number of bytes written.
      */
-    send(buffer: string | null, size: number, cancellable: Gio.Cancellable | null): number
+    send(buffer: string, size: number, cancellable: Gio.Cancellable | null): number
     /**
      * Send the entire data stream, sending the data to the
      * requested data source. This is simply a convenient alternative

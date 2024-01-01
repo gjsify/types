@@ -1541,7 +1541,7 @@ export const VERSION_MINOR: number
 /**
  * A string literal containing the version of Pango available at compile-time.
  */
-export const VERSION_STRING: string | null
+export const VERSION_STRING: string
 /**
  * Create a new allow-breaks attribute.
  * 
@@ -1590,7 +1590,7 @@ export function attr_baseline_shift_new(shift: number): Attribute
  * @param offset Byte offset of `text` from the beginning of the paragraph
  * @param attrs array with one `PangoLogAttr`   per character in `text,` plus one extra, to be filled in
  */
-export function attr_break(text: string | null, length: number, attr_list: AttrList, offset: number, attrs: LogAttr[]): void
+export function attr_break(text: string, length: number, attr_list: AttrList, offset: number, attrs: LogAttr[]): void
 /**
  * Create a new font fallback attribute.
  * 
@@ -1607,7 +1607,7 @@ export function attr_fallback_new(enable_fallback: boolean): Attribute
  * @param family the family or comma-separated list of families
  * @returns the newly allocated   `PangoAttribute`, which should be freed with   [method@Pango.Attribute.destroy]
  */
-export function attr_family_new(family: string | null): Attribute
+export function attr_family_new(family: string): Attribute
 /**
  * Create a new font description attribute.
  * 
@@ -1625,7 +1625,7 @@ export function attr_font_desc_new(desc: FontDescription): Attribute
  * @param features a string with OpenType font features, with the syntax of the [CSS font-feature-settings property](https://www.w3.org/TR/css-fonts-4/#font-rend-desc)
  * @returns the newly allocated   `PangoAttribute`, which should be freed with   [method@Pango.Attribute.destroy]
  */
-export function attr_font_features_new(features: string | null): Attribute
+export function attr_font_features_new(features: string): Attribute
 /**
  * Create a new font scale attribute.
  * 
@@ -1711,7 +1711,7 @@ export function attr_line_height_new_absolute(height: number): Attribute
  * @param text a string
  * @returns a new `PangoAttrList`
  */
-export function attr_list_from_string(text: string | null): AttrList | null
+export function attr_list_from_string(text: string): AttrList | null
 /**
  * Create a new overline color attribute.
  * 
@@ -1854,7 +1854,7 @@ export function attr_type_get_name(type: AttrType): string | null
  * @param name an identifier for the type
  * @returns the new type ID.
  */
-export function attr_type_register(name: string | null): AttrType
+export function attr_type_register(name: string): AttrType
 /**
  * Create a new underline color attribute.
  * 
@@ -1912,7 +1912,7 @@ export function bidi_type_for_unichar(ch: string): BidiType
  * @param analysis `PangoAnalysis` structure for `text`
  * @param attrs an array to store character information in
  */
-export function break_TODO(text: string | null, length: number, analysis: Analysis, attrs: LogAttr[]): void
+export function break_TODO(text: string, length: number, analysis: Analysis, attrs: LogAttr[]): void
 /**
  * This is the default break algorithm.
  * 
@@ -1929,7 +1929,7 @@ export function break_TODO(text: string | null, length: number, analysis: Analys
  * @param attrs logical attributes to fill in
  * @param attrs_len size of the array passed as `attrs`
  */
-export function default_break(text: string | null, length: number, analysis: Analysis | null, attrs: LogAttr, attrs_len: number): void
+export function default_break(text: string, length: number, analysis: Analysis | null, attrs: LogAttr, attrs_len: number): void
 /**
  * Converts extents from Pango units to device units.
  * 
@@ -1959,7 +1959,7 @@ export function extents_to_pixels(inclusive: Rectangle | null, nearest: Rectangl
  * @param length length of `text` in bytes (may be -1 if `text` is nul-terminated)
  * @returns The direction corresponding to the first strong character.   If no such character is found, then %PANGO_DIRECTION_NEUTRAL is returned.
  */
-export function find_base_dir(text: string | null, length: number): Direction
+export function find_base_dir(text: string, length: number): Direction
 /**
  * Locates a paragraph boundary in `text`.
  * 
@@ -1978,7 +1978,7 @@ export function find_base_dir(text: string | null, length: number): Direction
  * @param text UTF-8 text
  * @param length length of `text` in bytes, or -1 if nul-terminated
  */
-export function find_paragraph_boundary(text: string | null, length: number): [ /* paragraph_delimiter_index */ number, /* next_paragraph_start */ number ]
+export function find_paragraph_boundary(text: string, length: number): [ /* paragraph_delimiter_index */ number, /* next_paragraph_start */ number ]
 /**
  * Creates a new font description from a string representation.
  * 
@@ -2027,7 +2027,7 @@ export function find_paragraph_boundary(text: string | null, length: number): [ 
  * @param str string representation of a font description.
  * @returns a new `PangoFontDescription`.
  */
-export function font_description_from_string(str: string | null): FontDescription
+export function font_description_from_string(str: string): FontDescription
 /**
  * Computes a `PangoLogAttr` for each character in `text`.
  * 
@@ -2044,7 +2044,7 @@ export function font_description_from_string(str: string | null): FontDescriptio
  * @param language language tag
  * @param attrs array with one `PangoLogAttr`   per character in `text,` plus one extra, to be filled in
  */
-export function get_log_attrs(text: string | null, length: number, level: number, language: Language, attrs: LogAttr[]): void
+export function get_log_attrs(text: string, length: number, level: number, language: Language, attrs: LogAttr[]): void
 /**
  * Returns the mirrored character of a Unicode character.
  * 
@@ -2140,7 +2140,7 @@ export function is_zero_width(ch: string): boolean
  * @param cached_iter Cached attribute iterator
  * @returns a `GList` of   [struct@Pango.Item] structures. The items should be freed using   [method@Pango.Item.free] in combination with [func@GLib.List.free_full].
  */
-export function itemize(context: Context, text: string | null, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator | null): Item[]
+export function itemize(context: Context, text: string, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator | null): Item[]
 /**
  * Like `pango_itemize()`, but with an explicitly specified base direction.
  * 
@@ -2156,7 +2156,7 @@ export function itemize(context: Context, text: string | null, start_index: numb
  * @param cached_iter Cached attribute iterator
  * @returns a `GList` of   [struct@Pango.Item] structures. The items should be freed using   [method@Pango.Item.free] probably in combination with [func@GLib.List.free_full].
  */
-export function itemize_with_base_dir(context: Context, base_dir: Direction, text: string | null, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator | null): Item[]
+export function itemize_with_base_dir(context: Context, base_dir: Direction, text: string, start_index: number, length: number, attrs: AttrList, cached_iter: AttrIterator | null): Item[]
 /**
  * Convert a language tag to a `PangoLanguage`.
  * 
@@ -2238,7 +2238,7 @@ export function layout_deserialize_error_quark(): GLib.Quark
  * @param pbase_dir input base direction, and output resolved direction.
  * @returns a newly allocated array of embedding levels, one item per   character (not byte), that should be freed using [func@GLib.free].
  */
-export function log2vis_get_embedding_levels(text: string | null, length: number, pbase_dir: Direction): number
+export function log2vis_get_embedding_levels(text: string, length: number, pbase_dir: Direction): number
 /**
  * Finishes parsing markup.
  * 
@@ -2249,7 +2249,7 @@ export function log2vis_get_embedding_levels(text: string | null, length: number
  * @param context A valid parse context that was returned from [func`markup_parser_new]`
  * @returns %FALSE if @error is set, otherwise %TRUE
  */
-export function markup_parser_finish(context: GLib.MarkupParseContext): [ /* returnType */ boolean, /* attr_list */ AttrList, /* text */ string | null, /* accel_char */ string ]
+export function markup_parser_finish(context: GLib.MarkupParseContext): [ /* returnType */ boolean, /* attr_list */ AttrList, /* text */ string, /* accel_char */ string ]
 /**
  * Incrementally parses marked-up text to create a plain-text string
  * and an attribute list.
@@ -2293,7 +2293,7 @@ export function markup_parser_new(accel_marker: string): GLib.MarkupParseContext
  * @param warn if %TRUE, issue a g_warning() on bad input
  * @returns %TRUE if @str was successfully parsed
  */
-export function parse_enum(type: GObject.GType, str: string | null, warn: boolean): [ /* returnType */ boolean, /* value */ number, /* possible_values */ string | null ]
+export function parse_enum(type: GObject.GType, str: string | null, warn: boolean): [ /* returnType */ boolean, /* value */ number, /* possible_values */ string ]
 /**
  * Parses marked-up text to create a plain-text string and an attribute list.
  * 
@@ -2317,7 +2317,7 @@ export function parse_enum(type: GObject.GType, str: string | null, warn: boolea
  * @param accel_marker character that precedes an accelerator, or 0 for none
  * @returns %FALSE if @error is set, otherwise %TRUE
  */
-export function parse_markup(markup_text: string | null, length: number, accel_marker: string): [ /* returnType */ boolean, /* attr_list */ AttrList, /* text */ string | null, /* accel_char */ string ]
+export function parse_markup(markup_text: string, length: number, accel_marker: string): [ /* returnType */ boolean, /* attr_list */ AttrList, /* text */ string, /* accel_char */ string ]
 /**
  * Parses a font stretch.
  * 
@@ -2330,7 +2330,7 @@ export function parse_markup(markup_text: string | null, length: number, accel_m
  * @param warn if %TRUE, issue a g_warning() on bad input.
  * @returns %TRUE if @str was successfully parsed.
  */
-export function parse_stretch(str: string | null, warn: boolean): [ /* returnType */ boolean, /* stretch */ Stretch ]
+export function parse_stretch(str: string, warn: boolean): [ /* returnType */ boolean, /* stretch */ Stretch ]
 /**
  * Parses a font style.
  * 
@@ -2341,7 +2341,7 @@ export function parse_stretch(str: string | null, warn: boolean): [ /* returnTyp
  * @param warn if %TRUE, issue a g_warning() on bad input.
  * @returns %TRUE if @str was successfully parsed.
  */
-export function parse_style(str: string | null, warn: boolean): [ /* returnType */ boolean, /* style */ Style ]
+export function parse_style(str: string, warn: boolean): [ /* returnType */ boolean, /* style */ Style ]
 /**
  * Parses a font variant.
  * 
@@ -2352,7 +2352,7 @@ export function parse_style(str: string | null, warn: boolean): [ /* returnType 
  * @param warn if %TRUE, issue a g_warning() on bad input.
  * @returns %TRUE if @str was successfully parsed.
  */
-export function parse_variant(str: string | null, warn: boolean): [ /* returnType */ boolean, /* variant */ Variant ]
+export function parse_variant(str: string, warn: boolean): [ /* returnType */ boolean, /* variant */ Variant ]
 /**
  * Parses a font weight.
  * 
@@ -2363,7 +2363,7 @@ export function parse_variant(str: string | null, warn: boolean): [ /* returnTyp
  * @param warn if %TRUE, issue a g_warning() on bad input.
  * @returns %TRUE if @str was successfully parsed.
  */
-export function parse_weight(str: string | null, warn: boolean): [ /* returnType */ boolean, /* weight */ Weight ]
+export function parse_weight(str: string, warn: boolean): [ /* returnType */ boolean, /* weight */ Weight ]
 /**
  * Quantizes the thickness and position of a line to whole device pixels.
  * 
@@ -2411,7 +2411,7 @@ export function reorder_items(items: Item[]): Item[]
  * @param pos in/out string position
  * @returns %FALSE if a parse error occurred
  */
-export function scan_int(pos: string | null): [ /* returnType */ boolean, /* pos */ string | null, /* out */ number ]
+export function scan_int(pos: string): [ /* returnType */ boolean, /* pos */ string, /* out */ number ]
 /**
  * Scans a string into a `GString` buffer.
  * 
@@ -2422,7 +2422,7 @@ export function scan_int(pos: string | null): [ /* returnType */ boolean, /* pos
  * @param out a `GString` into which to write the result
  * @returns %FALSE if a parse error occurred
  */
-export function scan_string(pos: string | null, out: GLib.String): [ /* returnType */ boolean, /* pos */ string | null ]
+export function scan_string(pos: string, out: GLib.String): [ /* returnType */ boolean, /* pos */ string ]
 /**
  * Scans a word into a `GString` buffer.
  * 
@@ -2432,7 +2432,7 @@ export function scan_string(pos: string | null, out: GLib.String): [ /* returnTy
  * @param out a `GString` into which to write the result
  * @returns %FALSE if a parse error occurred
  */
-export function scan_word(pos: string | null, out: GLib.String): [ /* returnType */ boolean, /* pos */ string | null ]
+export function scan_word(pos: string, out: GLib.String): [ /* returnType */ boolean, /* pos */ string ]
 /**
  * Looks up the script for a particular character.
  * 
@@ -2508,7 +2508,7 @@ export function script_get_sample_language(script: Script): Language | null
  * @param analysis `PangoAnalysis` structure from [func`Pango`.itemize]
  * @param glyphs glyph string in which to store results
  */
-export function shape(text: string | null, length: number, analysis: Analysis, glyphs: GlyphString): void
+export function shape(text: string, length: number, analysis: Analysis, glyphs: GlyphString): void
 /**
  * Convert the characters in `text` into glyphs.
  * 
@@ -2538,7 +2538,7 @@ export function shape(text: string | null, length: number, analysis: Analysis, g
  * @param analysis `PangoAnalysis` structure from [func`Pango`.itemize].
  * @param glyphs glyph string in which to store results.
  */
-export function shape_full(item_text: string | null, item_length: number, paragraph_text: string | null, paragraph_length: number, analysis: Analysis, glyphs: GlyphString): void
+export function shape_full(item_text: string, item_length: number, paragraph_text: string | null, paragraph_length: number, analysis: Analysis, glyphs: GlyphString): void
 /**
  * Convert the characters in `item` into glyphs.
  * 
@@ -2588,20 +2588,20 @@ export function shape_item(item: Item, paragraph_text: string | null, paragraph_
  * @param glyphs glyph string in which to store results
  * @param flags flags influencing the shaping process
  */
-export function shape_with_flags(item_text: string | null, item_length: number, paragraph_text: string | null, paragraph_length: number, analysis: Analysis, glyphs: GlyphString, flags: ShapeFlags): void
+export function shape_with_flags(item_text: string, item_length: number, paragraph_text: string | null, paragraph_length: number, analysis: Analysis, glyphs: GlyphString, flags: ShapeFlags): void
 /**
  * Skips 0 or more characters of white space.
  * @param pos in/out string position
  * @returns %FALSE if skipping the white space leaves   the position at a '\0' character.
  */
-export function skip_space(pos: string | null): [ /* returnType */ boolean, /* pos */ string | null ]
+export function skip_space(pos: string): [ /* returnType */ boolean, /* pos */ string ]
 /**
  * Splits a %G_SEARCHPATH_SEPARATOR-separated list of files, stripping
  * white space and substituting ~/ with $HOME/.
  * @param str a %G_SEARCHPATH_SEPARATOR separated list of filenames
  * @returns a list of   strings to be freed with g_strfreev()
  */
-export function split_file_list(str: string | null): string[]
+export function split_file_list(str: string): string[]
 /**
  * Deserializes a `PangoTabArray` from a string.
  * 
@@ -2610,7 +2610,7 @@ export function split_file_list(str: string | null): string[]
  * @param text a string
  * @returns a new `PangoTabArray`
  */
-export function tab_array_from_string(text: string | null): TabArray | null
+export function tab_array_from_string(text: string): TabArray | null
 /**
  * Apply language-specific tailoring to the breaks in `attrs`.
  * 
@@ -2627,13 +2627,13 @@ export function tab_array_from_string(text: string | null): TabArray | null
  * @param offset Byte offset of `text` from the beginning of the   paragraph, or -1 to ignore attributes from `analysis`
  * @param attrs array with one `PangoLogAttr`   per character in `text,` plus one extra, to be filled in
  */
-export function tailor_break(text: string | null, length: number, analysis: Analysis, offset: number, attrs: LogAttr[]): void
+export function tailor_break(text: string, length: number, analysis: Analysis, offset: number, attrs: LogAttr[]): void
 /**
  * Trims leading and trailing whitespace from a string.
  * @param str a string
  * @returns A newly-allocated string that must be freed with g_free()
  */
-export function trim_string(str: string | null): string | null
+export function trim_string(str: string): string | null
 /**
  * Determines the inherent direction of a character.
  * 
@@ -2705,7 +2705,7 @@ export function version_check(required_major: number, required_minor: number, re
  * macro returns the version available at compile-time.
  * @returns A string containing the version of Pango library available   at run time. The returned string is owned by Pango and should not   be modified or freed.
  */
-export function version_string(): string | null
+export function version_string(): string
 /**
  * Type of a function that can duplicate user data for an attribute.
  * @callback 
@@ -3415,7 +3415,7 @@ export interface FontFace {
      * face for the same style).
      * @returns the face name for the face. This string is   owned by the face object and must not be modified or freed.
      */
-    get_face_name(): string | null
+    get_face_name(): string
     /**
      * Gets the `PangoFontFamily` that `face` belongs to.
      * @returns the `PangoFontFamily`
@@ -3461,7 +3461,7 @@ export interface FontFace {
      * @virtual 
      * @returns the face name for the face. This string is   owned by the face object and must not be modified or freed.
      */
-    vfunc_get_face_name(): string | null
+    vfunc_get_face_name(): string
     /**
      * Gets the `PangoFontFamily` that `face` belongs to.
      * @virtual 
@@ -3565,7 +3565,7 @@ export interface FontFamily extends Gio.ListModel {
      * this family is desired.
      * @returns the name of the family. This string is owned   by the family object and must not be modified or freed.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * A monospace font is a font designed for text display where the the
      * characters form a regular grid.
@@ -3625,7 +3625,7 @@ export interface FontFamily extends Gio.ListModel {
      * @virtual 
      * @returns the name of the family. This string is owned   by the family object and must not be modified or freed.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * A monospace font is a font designed for text display where the the
      * characters form a regular grid.
@@ -3769,7 +3769,7 @@ export interface FontMap extends Gio.ListModel {
      * @param name a family name
      * @returns the `PangoFontFamily`
      */
-    get_family(name: string | null): FontFamily
+    get_family(name: string): FontFamily
     /**
      * Returns the current serial number of `fontmap`.
      * 
@@ -3831,7 +3831,7 @@ export interface FontMap extends Gio.ListModel {
      * @param name a family name
      * @returns the `PangoFontFamily`
      */
-    vfunc_get_family(name: string | null): FontFamily
+    vfunc_get_family(name: string): FontFamily
     /**
      * Returns the current serial number of `fontmap`.
      * 
@@ -4388,7 +4388,7 @@ export interface Layout {
      * The returned text should not be freed or modified.
      * @returns the text in the @layout
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Counts the number of unknown glyphs in `layout`.
      * 
@@ -4655,7 +4655,7 @@ export interface Layout {
      * @param markup marked-up text
      * @param length length of marked-up text in bytes, or -1 if `markup` is   `NUL`-terminated
      */
-    set_markup(markup: string | null, length: number): void
+    set_markup(markup: string, length: number): void
     /**
      * Sets the layout text and attribute list from marked-up text.
      * 
@@ -4674,7 +4674,7 @@ export interface Layout {
      * @param length length of marked-up text in bytes, or -1 if `markup` is   `NUL`-terminated
      * @param accel_marker marker for accelerators in the text
      */
-    set_markup_with_accel(markup: string | null, length: number, accel_marker: string): /* accel_char */ string
+    set_markup_with_accel(markup: string, length: number, accel_marker: string): /* accel_char */ string
     /**
      * Sets the single paragraph mode of `layout`.
      * 
@@ -4738,7 +4738,7 @@ export interface Layout {
      * @param text the text
      * @param length maximum length of `text,` in bytes. -1 indicates that   the string is nul-terminated and the length should be calculated.   The text will also be truncated on encountering a nul-termination   even when `length` is positive.
      */
-    set_text(text: string | null, length: number): void
+    set_text(text: string, length: number): void
     /**
      * Sets the width to which the lines of the `PangoLayout` should wrap or
      * ellipsized.
@@ -5479,7 +5479,7 @@ export class AttrFontFeatures {
      * @param features a string with OpenType font features, with the syntax of the [CSS font-feature-settings property](https://www.w3.org/TR/css-fonts-4/#font-rend-desc)
      * @returns the newly allocated   `PangoAttribute`, which should be freed with   [method@Pango.Attribute.destroy]
      */
-    static new(features: string | null): Attribute
+    static new(features: string): Attribute
 }
 
 export interface AttrInt {
@@ -5830,7 +5830,7 @@ export class AttrList {
      * @param text a string
      * @returns a new `PangoAttrList`
      */
-    static from_string(text: string | null): AttrList | null
+    static from_string(text: string): AttrList | null
 }
 
 export interface AttrShape {
@@ -6171,7 +6171,7 @@ export interface Color {
      * @param spec a string specifying the new color
      * @returns %TRUE if parsing of the specifier succeeded,   otherwise %FALSE
      */
-    parse(spec: string | null): boolean
+    parse(spec: string): boolean
     /**
      * Fill in the fields of a color from a string specification.
      * 
@@ -6191,7 +6191,7 @@ export interface Color {
      * @param spec a string specifying the new color
      * @returns %TRUE if parsing of the specifier succeeded,   otherwise %FALSE
      */
-    parse_with_alpha(spec: string | null): [ /* returnType */ boolean, /* alpha */ number ]
+    parse_with_alpha(spec: string): [ /* returnType */ boolean, /* alpha */ number ]
     /**
      * Returns a textual specification of `color`.
      * 
@@ -6420,7 +6420,7 @@ export interface FontDescription {
      * separated list of family names for this field.
      * @param family a string representing the family name.
      */
-    set_family(family: string | null): void
+    set_family(family: string): void
     /**
      * Sets the family name field of a font description, without copying the string.
      * 
@@ -6431,7 +6431,7 @@ export interface FontDescription {
      * string such as a C string literal, or if `desc` is only needed temporarily.
      * @param family a string representing the family name
      */
-    set_family_static(family: string | null): void
+    set_family_static(family: string): void
     /**
      * Sets the gravity field of a font description.
      * 
@@ -6514,7 +6514,7 @@ export interface FontDescription {
      * or if `desc` is only needed temporarily.
      * @param variations a string representing the variations
      */
-    set_variations_static(variations: string | null): void
+    set_variations_static(variations: string): void
     /**
      * Sets the weight field of a font description.
      * 
@@ -6631,7 +6631,7 @@ export class FontDescription {
      * @param str string representation of a font description.
      * @returns a new `PangoFontDescription`.
      */
-    static from_string(str: string | null): FontDescription
+    static from_string(str: string): FontDescription
 }
 
 export interface FontFaceClass {
@@ -6639,7 +6639,7 @@ export interface FontFaceClass {
     // Own fields of Pango-1.0.Pango.FontFaceClass
 
     parent_class: GObject.ObjectClass
-    get_face_name: (face: FontFace) => string | null
+    get_face_name: (face: FontFace) => string
     describe: (face: FontFace) => FontDescription
     list_sizes: (face: FontFace) => /* sizes */ number[] | null
     is_synthesized: (face: FontFace) => boolean
@@ -6659,7 +6659,7 @@ export interface FontFamilyClass {
 
     parent_class: GObject.ObjectClass
     list_faces: (family: FontFamily) => /* faces */ FontFace[]
-    get_name: (family: FontFamily) => string | null
+    get_name: (family: FontFamily) => string
     is_monospace: (family: FontFamily) => boolean
     is_variable: (family: FontFamily) => boolean
     get_face: (family: FontFamily, name: string | null) => FontFace | null
@@ -6689,10 +6689,10 @@ export interface FontMapClass {
      * can handle fonts of this fonts loaded with this fontmap.
      * @field 
      */
-    shape_engine_type: string | null
+    shape_engine_type: string
     get_serial: (fontmap: FontMap) => number
     changed: (fontmap: FontMap) => void
-    get_family: (fontmap: FontMap, name: string | null) => FontFamily
+    get_family: (fontmap: FontMap, name: string) => FontFamily
 }
 
 /**
@@ -6998,7 +6998,7 @@ export interface GlyphItem {
      * @param list a `PangoAttrList`
      * @returns a   list of glyph items resulting from splitting @glyph_item. Free   the elements using [method@Pango.GlyphItem.free], the list using   g_slist_free().
      */
-    apply_attrs(text: string | null, list: AttrList): GlyphItem[]
+    apply_attrs(text: string, list: AttrList): GlyphItem[]
     /**
      * Make a deep copy of an existing `PangoGlyphItem` structure.
      * @returns the newly allocated `PangoGlyphItem`
@@ -7019,7 +7019,7 @@ export interface GlyphItem {
      * @param text text that `glyph_item` corresponds to   (glyph_item->item->offset is an offset from the   start of `text)`
      * @param logical_widths an array whose length is the number of   characters in glyph_item (equal to glyph_item->item->num_chars)   to be filled in with the resulting character widths.
      */
-    get_logical_widths(text: string | null, logical_widths: number[]): void
+    get_logical_widths(text: string, logical_widths: number[]): void
     /**
      * Adds spacing between the graphemes of `glyph_item` to
      * give the effect of typographic letter spacing.
@@ -7027,7 +7027,7 @@ export interface GlyphItem {
      * @param log_attrs logical attributes for the item   (the first logical attribute refers to the position   before the first character in the item)
      * @param letter_spacing amount of letter spacing to add   in Pango units. May be negative, though too large   negative values will give ugly results.
      */
-    letter_space(text: string | null, log_attrs: LogAttr[], letter_spacing: number): void
+    letter_space(text: string, log_attrs: LogAttr[], letter_spacing: number): void
     /**
      * Modifies `orig` to cover only the text after `split_index,` and
      * returns a new item that covers the text before `split_index` that
@@ -7044,7 +7044,7 @@ export interface GlyphItem {
      * @param split_index byte index of position to split item, relative to the   start of the item
      * @returns the newly allocated item   representing text before @split_index, which should be freed   with pango_glyph_item_free().
      */
-    split(text: string | null, split_index: number): GlyphItem | null
+    split(text: string, split_index: number): GlyphItem | null
 }
 
 /**
@@ -7068,7 +7068,7 @@ export interface GlyphItemIter {
     // Own fields of Pango-1.0.Pango.GlyphItemIter
 
     glyph_item: GlyphItem
-    text: string | null
+    text: string
     start_glyph: number
     start_index: number
     start_char: number
@@ -7096,7 +7096,7 @@ export interface GlyphItemIter {
      * @param text text corresponding to the glyph item
      * @returns %FALSE if there are no clusters in the glyph item
      */
-    init_end(glyph_item: GlyphItem, text: string | null): boolean
+    init_end(glyph_item: GlyphItem, text: string): boolean
     /**
      * Initializes a `PangoGlyphItemIter` structure to point to the
      * first cluster in a glyph item.
@@ -7106,7 +7106,7 @@ export interface GlyphItemIter {
      * @param text text corresponding to the glyph item
      * @returns %FALSE if there are no clusters in the glyph item
      */
-    init_start(glyph_item: GlyphItem, text: string | null): boolean
+    init_start(glyph_item: GlyphItem, text: string): boolean
     /**
      * Advances the iterator to the next cluster in the glyph item.
      * 
@@ -7240,7 +7240,7 @@ export interface GlyphString {
      * @param embedding_level the embedding level of the string
      * @param logical_widths an array whose length is the number of   characters in text (equal to `g_utf8_strlen (text, length)` unless   text has `NUL` bytes) to be filled in with the resulting character widths.
      */
-    get_logical_widths(text: string | null, length: number, embedding_level: number, logical_widths: number[]): void
+    get_logical_widths(text: string, length: number, embedding_level: number, logical_widths: number[]): void
     /**
      * Computes the logical width of the glyph string.
      * 
@@ -7269,7 +7269,7 @@ export interface GlyphString {
      * @param index_ the byte index within `text`
      * @param trailing whether we should compute the result for the beginning (%FALSE)   or end (%TRUE) of the character.
      */
-    index_to_x(text: string | null, length: number, analysis: Analysis, index_: number, trailing: boolean): /* x_pos */ number
+    index_to_x(text: string, length: number, analysis: Analysis, index_: number, trailing: boolean): /* x_pos */ number
     /**
      * Converts from character position to x position.
      * 
@@ -7284,7 +7284,7 @@ export interface GlyphString {
      * @param index_ the byte index within `text`
      * @param trailing whether we should compute the result for the beginning (%FALSE)   or end (%TRUE) of the character.
      */
-    index_to_x_full(text: string | null, length: number, analysis: Analysis, attrs: LogAttr | null, index_: number, trailing: boolean): /* x_pos */ number
+    index_to_x_full(text: string, length: number, analysis: Analysis, attrs: LogAttr | null, index_: number, trailing: boolean): /* x_pos */ number
     /**
      * Resize a glyph string to the given length.
      * @param new_len the new length of the string
@@ -7303,7 +7303,7 @@ export interface GlyphString {
      * @param analysis the analysis information return from [func`itemize]`
      * @param x_pos the x offset (in Pango units)
      */
-    x_to_index(text: string | null, length: number, analysis: Analysis, x_pos: number): [ /* index_ */ number, /* trailing */ number ]
+    x_to_index(text: string, length: number, analysis: Analysis, x_pos: number): [ /* index_ */ number, /* trailing */ number ]
 }
 
 /**
@@ -7498,7 +7498,7 @@ export interface Language {
      * ```
      * @returns the sample string
      */
-    get_sample_string(): string | null
+    get_sample_string(): string
     /**
      * Determines the scripts used to to write `language`.
      * 
@@ -7554,13 +7554,13 @@ export interface Language {
      * @param range_list a list of language ranges, separated by ';', ':',   ',', or space characters.   Each element must either be '*', or a RFC 3066 language range   canonicalized as by [func`Pango`.Language.from_string]
      * @returns %TRUE if a match was found
      */
-    matches(range_list: string | null): boolean
+    matches(range_list: string): boolean
     /**
      * Gets the RFC-3066 format string representing the given language tag.
      * 
      * Returns (transfer none): a string representing the language tag
      */
-    to_string(): string | null
+    to_string(): string
 }
 
 /**
@@ -8418,7 +8418,7 @@ export interface ScriptIter {
      * `GUnicodeScript` values. Callers must be prepared to handle unknown
      * values.
      */
-    get_range(): [ /* start */ string | null, /* end */ string | null, /* script */ Script ]
+    get_range(): [ /* start */ string, /* end */ string, /* script */ Script ]
     /**
      * Advances a `PangoScriptIter` to the next range.
      * 
@@ -8454,7 +8454,7 @@ export class ScriptIter {
      * @param length length of `text,` or -1 if `text` is nul-terminated
      * @returns the new script iterator, initialized  to point at the first range in the text, which should be  freed with [method@Pango.ScriptIter.free]. If the string is  empty, it will point at an empty range.
      */
-    constructor(text: string | null, length: number) 
+    constructor(text: string, length: number) 
     /**
      * Create a new `PangoScriptIter`, used to break a string of
      * Unicode text into runs by Unicode script.
@@ -8467,7 +8467,7 @@ export class ScriptIter {
      * @param length length of `text,` or -1 if `text` is nul-terminated
      * @returns the new script iterator, initialized  to point at the first range in the text, which should be  freed with [method@Pango.ScriptIter.free]. If the string is  empty, it will point at an empty range.
      */
-    static new(text: string | null, length: number): ScriptIter
+    static new(text: string, length: number): ScriptIter
 }
 
 export interface TabArray {
@@ -8617,7 +8617,7 @@ export class TabArray {
      * @param text a string
      * @returns a new `PangoTabArray`
      */
-    static from_string(text: string | null): TabArray | null
+    static from_string(text: string): TabArray | null
 }
 
     export type Glyph = number

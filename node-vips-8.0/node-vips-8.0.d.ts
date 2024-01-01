@@ -1567,7 +1567,7 @@ const A_Z0: number
 const B_X0: number
 const B_Y0: number
 const B_Z0: number
-const CONFIG: string | null
+const CONFIG: string
 /**
  * Areas under curves for illuminant C (6774K), 2 degree observer.
  */
@@ -1642,35 +1642,35 @@ const MAX_COORD: number
 /**
  * The name that JPEG read and write operations use for the image's EXIF data.
  */
-const META_EXIF_NAME: string | null
+const META_EXIF_NAME: string
 /**
  * The name we use to attach an ICC profile. The file read and write
  * operations for TIFF, JPEG, PNG and others use this item of metadata to
  * attach and save ICC profiles. The profile is updated by the
  * vips_icc_transform() operations.
  */
-const META_ICC_NAME: string | null
+const META_ICC_NAME: string
 /**
  * The IMAGEDESCRIPTION tag. Often has useful metadata.
  */
-const META_IMAGEDESCRIPTION: string | null
+const META_IMAGEDESCRIPTION: string
 /**
  * The name that read and write operations use for the image's IPTC data.
  */
-const META_IPTC_NAME: string | null
+const META_IPTC_NAME: string
 /**
  * Record the name of the original loader here. Handy for hinting file formats
  * and for debugging.
  */
-const META_LOADER: string | null
+const META_LOADER: string
 /**
  * If set, the number of pages in the original file.
  */
-const META_N_PAGES: string | null
+const META_N_PAGES: string
 /**
  * If set, the number of subifds in the first page of the file.
  */
-const META_N_SUBIFDS: string | null
+const META_N_SUBIFDS: string
 /**
  * The orientation tag for this image. An int from 1 - 8 using the standard
  * exif/tiff meanings.
@@ -1692,33 +1692,33 @@ const META_N_SUBIFDS: string | null
  * * 8 - The 0th row represents the visual left-hand side of the image, and the
  *   0th column represents the visual bottom.
  */
-const META_ORIENTATION: string | null
+const META_ORIENTATION: string
 /**
  * If set, the height of each page when this image was loaded. If you save an
  * image with "page-height" set to a format that supports multiple pages, such
  * as tiff, the image will be saved as a series of pages.
  */
-const META_PAGE_HEIGHT: string | null
+const META_PAGE_HEIGHT: string
 /**
  * The name that TIFF read and write operations use for the image's
  * TIFFTAG_PHOTOSHOP data.
  */
-const META_PHOTOSHOP_NAME: string | null
+const META_PHOTOSHOP_NAME: string
 /**
  * The JPEG and TIFF read and write operations use this to record the
  * file's preferred unit for resolution.
  */
-const META_RESOLUTION_UNIT: string | null
+const META_RESOLUTION_UNIT: string
 /**
  * Images loaded via vips_sequential() have this int field defined. Some
  * operations (eg. vips_shrinkv()) add extra caches if they see it on their
  * input.
  */
-const META_SEQUENTIAL: string | null
+const META_SEQUENTIAL: string
 /**
  * The name that read and write operations use for the image's XMP data.
  */
-const META_XMP_NAME: string | null
+const META_XMP_NAME: string
 const MICRO_VERSION: number
 const MINOR_VERSION: number
 /**
@@ -1730,8 +1730,8 @@ const TRANSFORM_SCALE: number
  * calculation. This is how many bits of precision they use.
  */
 const TRANSFORM_SHIFT: number
-const VERSION: string | null
-const VERSION_STRING: string | null
+const VERSION: string
+const VERSION_STRING: string
 function objectSetMember(object: Object, pspec: GObject.ParamSpec, member: GObject.Object, argument: GObject.Object): void
 /**
  * Add the standard vips %GOptionEntry to a %GOptionGroup.
@@ -1909,7 +1909,7 @@ function callOptions(group: GLib.OptionGroup, operation: Operation): void
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function check8or16(domain: string | null, im: Image): number
+function check8or16(domain: string, im: Image): number
 /**
  * `bandno` should be a valid band number (ie. 0 to im->Bands - 1), or can be
  * -1, meaning all bands.
@@ -1922,7 +1922,7 @@ function check8or16(domain: string | null, im: Image): number
  * @param bandno band number
  * @returns 0 if OK, -1 otherwise.
  */
-function checkBandno(domain: string | null, im: Image, bandno: number): number
+function checkBandno(domain: string, im: Image, bandno: number): number
 /**
  * Check that the image has `bands` bands.
  * Otherwise set an error message
@@ -1934,7 +1934,7 @@ function checkBandno(domain: string | null, im: Image, bandno: number): number
  * @param bands must have this many bands
  * @returns 0 if OK, -1 otherwise.
  */
-function checkBands(domain: string | null, im: Image, bands: number): number
+function checkBands(domain: string, im: Image, bands: number): number
 /**
  * Check that the image has either one or three bands.
  * Otherwise set an error message
@@ -1945,7 +1945,7 @@ function checkBands(domain: string | null, im: Image, bands: number): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkBands1or3(domain: string | null, im: Image): number
+function checkBands1or3(domain: string, im: Image): number
 /**
  * Check that the images have the same number of bands, or that one of the
  * images has just 1 band.
@@ -1958,7 +1958,7 @@ function checkBands1or3(domain: string | null, im: Image): number
  * @param im2 second image to check
  * @returns 0 on OK, or -1 on error.
  */
-function checkBands1orn(domain: string | null, im1: Image, im2: Image): number
+function checkBands1orn(domain: string, im1: Image, im2: Image): number
 /**
  * Check that an image has 1 or `n` bands. Handy for unary operations, cf.
  * vips_check_bands_1orn().
@@ -1971,7 +1971,7 @@ function checkBands1orn(domain: string | null, im1: Image, im2: Image): number
  * @param n number of bands, or 1
  * @returns 0 on OK, or -1 on error.
  */
-function checkBands1ornUnary(domain: string | null, im: Image, n: number): number
+function checkBands1ornUnary(domain: string, im: Image, n: number): number
 /**
  * Check that the image has at least `bands` bands.
  * Otherwise set an error message
@@ -1983,7 +1983,7 @@ function checkBands1ornUnary(domain: string | null, im: Image, n: number): numbe
  * @param bands at least this many bands
  * @returns 0 if OK, -1 otherwise.
  */
-function checkBandsAtleast(domain: string | null, im: Image, bands: number): number
+function checkBandsAtleast(domain: string, im: Image, bands: number): number
 /**
  * Check that the images have the same number of bands.
  * If not, set an error message
@@ -1995,7 +1995,7 @@ function checkBandsAtleast(domain: string | null, im: Image, bands: number): num
  * @param im2 second image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkBandsSame(domain: string | null, im1: Image, im2: Image): number
+function checkBandsSame(domain: string, im1: Image, im2: Image): number
 /**
  * Check that the image has the required `coding`.
  * If not, set an error message
@@ -2007,7 +2007,7 @@ function checkBandsSame(domain: string | null, im1: Image, im2: Image): number
  * @param coding required coding
  * @returns 0 on OK, or -1 on error.
  */
-function checkCoding(domain: string | null, im: Image, coding: Coding): number
+function checkCoding(domain: string, im: Image, coding: Coding): number
 /**
  * Check that the image is uncoded, LABQ coded or RAD coded.
  * If not, set an error message
@@ -2018,7 +2018,7 @@ function checkCoding(domain: string | null, im: Image, coding: Coding): number
  * @param im image to check
  * @returns 0 on OK, or -1 on error.
  */
-function checkCodingKnown(domain: string | null, im: Image): number
+function checkCodingKnown(domain: string, im: Image): number
 /**
  * Check that the image is uncoded or LABQ coded.
  * If not, set an error message
@@ -2029,7 +2029,7 @@ function checkCodingKnown(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 on OK, or -1 on error.
  */
-function checkCodingNoneorlabq(domain: string | null, im: Image): number
+function checkCodingNoneorlabq(domain: string, im: Image): number
 /**
  * Check that the images have the same coding.
  * If not, set an error message
@@ -2041,7 +2041,7 @@ function checkCodingNoneorlabq(domain: string | null, im: Image): number
  * @param im2 second image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkCodingSame(domain: string | null, im1: Image, im2: Image): number
+function checkCodingSame(domain: string, im1: Image, im2: Image): number
 /**
  * Check that the image is complex.
  * Otherwise set an error message
@@ -2052,7 +2052,7 @@ function checkCodingSame(domain: string | null, im1: Image, im2: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkComplex(domain: string | null, im: Image): number
+function checkComplex(domain: string, im: Image): number
 /**
  * Check that the image has the specified format.
  * Otherwise set an error message
@@ -2064,7 +2064,7 @@ function checkComplex(domain: string | null, im: Image): number
  * @param fmt format to test for
  * @returns 0 if OK, -1 otherwise.
  */
-function checkFormat(domain: string | null, im: Image, fmt: BandFormat): number
+function checkFormat(domain: string, im: Image, fmt: BandFormat): number
 /**
  * Check that the images have the same format.
  * If not, set an error message
@@ -2076,7 +2076,7 @@ function checkFormat(domain: string | null, im: Image, fmt: BandFormat): number
  * @param im2 second image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkFormatSame(domain: string | null, im1: Image, im2: Image): number
+function checkFormatSame(domain: string, im1: Image, im2: Image): number
 /**
  * Histogram images must have width or height 1, and must not have more than
  * 65536 elements. Return 0 if the image will pass as a histogram, or -1 and
@@ -2087,7 +2087,7 @@ function checkFormatSame(domain: string | null, im1: Image, im2: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkHist(domain: string | null, im: Image): number
+function checkHist(domain: string, im: Image): number
 /**
  * Check that the image is in one of the integer formats.
  * Otherwise set an error message
@@ -2098,7 +2098,7 @@ function checkHist(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkInt(domain: string | null, im: Image): number
+function checkInt(domain: string, im: Image): number
 /**
  * Matrix images must have width and height less than 100000 and have 1 band.
  * 
@@ -2115,7 +2115,7 @@ function checkInt(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkMatrix(domain: string | null, im: Image): [ /* returnType */ number, /* out */ Image ]
+function checkMatrix(domain: string, im: Image): [ /* returnType */ number, /* out */ Image ]
 /**
  * Check that the image has exactly one band.
  * Otherwise set an error message
@@ -2126,7 +2126,7 @@ function checkMatrix(domain: string | null, im: Image): [ /* returnType */ numbe
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkMono(domain: string | null, im: Image): number
+function checkMono(domain: string, im: Image): number
 /**
  * Check that the image is not complex.
  * Otherwise set an error message
@@ -2137,7 +2137,7 @@ function checkMono(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkNoncomplex(domain: string | null, im: Image): number
+function checkNoncomplex(domain: string, im: Image): number
 /**
  * Check that the image is square and that the sides are odd.
  * If not, set an error message
@@ -2148,7 +2148,7 @@ function checkNoncomplex(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkOddsquare(domain: string | null, im: Image): number
+function checkOddsquare(domain: string, im: Image): number
 /**
  * Check that `prec` image is either float or int.
  * If not, set an error message
@@ -2159,7 +2159,7 @@ function checkOddsquare(domain: string | null, im: Image): number
  * @param precision precision to check
  * @returns 0 on OK, or -1 on error.
  */
-function checkPrecisionIntfloat(domain: string | null, precision: Precision): number
+function checkPrecisionIntfloat(domain: string, precision: Precision): number
 /**
  * Separable matrix images must have width or height 1.
  * Return 0 if the image will pass, or -1 and
@@ -2170,7 +2170,7 @@ function checkPrecisionIntfloat(domain: string | null, precision: Precision): nu
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkSeparable(domain: string | null, im: Image): number
+function checkSeparable(domain: string, im: Image): number
 /**
  * Check that the images have the same size.
  * If not, set an error message
@@ -2182,7 +2182,7 @@ function checkSeparable(domain: string | null, im: Image): number
  * @param im2 second image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkSizeSame(domain: string | null, im1: Image, im2: Image): number
+function checkSizeSame(domain: string, im1: Image, im2: Image): number
 /**
  * Check that the image is has two "components", ie. is a one-band complex or
  * a two-band non-complex.
@@ -2194,7 +2194,7 @@ function checkSizeSame(domain: string | null, im1: Image, im2: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkTwocomponents(domain: string | null, im: Image): number
+function checkTwocomponents(domain: string, im: Image): number
 /**
  * Check that the image is 8 or 16-bit unsigned integer.
  * Otherwise set an error message
@@ -2205,7 +2205,7 @@ function checkTwocomponents(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkU8or16(domain: string | null, im: Image): number
+function checkU8or16(domain: string, im: Image): number
 /**
  * Check that the image is 8 or 16-bit unsigned integer, or float.
  * Otherwise set an error message and return non-zero.
@@ -2215,7 +2215,7 @@ function checkU8or16(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkU8or16orf(domain: string | null, im: Image): number
+function checkU8or16orf(domain: string, im: Image): number
 /**
  * Check that the image is in one of the unsigned integer formats.
  * Otherwise set an error message
@@ -2226,7 +2226,7 @@ function checkU8or16orf(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkUint(domain: string | null, im: Image): number
+function checkUint(domain: string, im: Image): number
 /**
  * Check that the image is unsigned int or float.
  * Otherwise set an error message and return non-zero.
@@ -2236,7 +2236,7 @@ function checkUint(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 if OK, -1 otherwise.
  */
-function checkUintorf(domain: string | null, im: Image): number
+function checkUintorf(domain: string, im: Image): number
 /**
  * Check that the image is not coded.
  * If not, set an error message
@@ -2247,7 +2247,7 @@ function checkUintorf(domain: string | null, im: Image): number
  * @param im image to check
  * @returns 0 on OK, or -1 on error.
  */
-function checkUncoded(domain: string | null, im: Image): number
+function checkUncoded(domain: string, im: Image): number
 /**
  * Operations with a vector constant need a 1-element vector, or a vector with
  * the same number of elements as there are bands in the image, or a 1-band
@@ -2259,7 +2259,7 @@ function checkUncoded(domain: string | null, im: Image): number
  * @param im image to check against
  * @returns 0 if OK, -1 otherwise.
  */
-function checkVector(domain: string | null, n: number, im: Image): number
+function checkVector(domain: string, n: number, im: Image): number
 /**
  * Check that `n` == `len`.
  * 
@@ -2269,7 +2269,7 @@ function checkVector(domain: string | null, n: number, im: Image): number
  * @param len number of elements vector should have
  * @returns 0 if OK, -1 otherwise.
  */
-function checkVectorLength(domain: string | null, n: number, len: number): number
+function checkVectorLength(domain: string, n: number, len: number): number
 /**
  * Search below `basename,` return the first class whose name or `nickname`
  * matches.
@@ -2279,7 +2279,7 @@ function checkVectorLength(domain: string | null, n: number, len: number): numbe
  * @param nickname search for a class with this nickname
  * @returns the found class.
  */
-function classFind(basename: string | null, nickname: string | null): ObjectClass
+function classFind(basename: string, nickname: string): ObjectClass
 /**
  * Calculate Ccmc from C.
  * @param c Chroma
@@ -2436,7 +2436,7 @@ function concurrencySet(concurrency: number): void
  * See also: vips_error_clear().
  * @returns the error buffer as a C string which must not be freed
  */
-function errorBuffer(): string | null
+function errorBuffer(): string
 /**
  * Return a copy of the vips error buffer, and clear it.
  * @returns a copy of the libvips error buffer
@@ -2477,7 +2477,7 @@ function errorThaw(): void
  * @param vipsFilename a filename including a set of options
  * @returns transfer full: just the filename component.
  */
-function filenameGetFilename(vipsFilename: string | null): string | null
+function filenameGetFilename(vipsFilename: string): string | null
 /**
  * Given a vips filename like "fred.jpg[Q=90]", return a new string of
  * just the options part, "[Q=90]" in this case.
@@ -2488,7 +2488,7 @@ function filenameGetFilename(vipsFilename: string | null): string | null
  * @param vipsFilename a filename including a set of options
  * @returns transfer full: just the options component.
  */
-function filenameGetOptions(vipsFilename: string | null): string | null
+function filenameGetOptions(vipsFilename: string): string | null
 /**
  * Return the flags for `filename` using `loader`.
  * `loader` is something like "tiffload" or "VipsForeignLoadTiff".
@@ -2496,7 +2496,7 @@ function filenameGetOptions(vipsFilename: string | null): string | null
  * @param filename file to test
  * @returns the flags for @filename.
  */
-function foreignFlags(loader: string | null, filename: string | null): ForeignFlags
+function foreignFlags(loader: string, filename: string): ForeignFlags
 function formatSizeof(format: BandFormat): number
 /**
  * This function adds the %GError to the vips error buffer and clears it. It's
@@ -2509,7 +2509,7 @@ function gError(): void
  * See also: VIPS_INIT().
  * @returns a pointer to an internal copy of the argv0 string passed to VIPS_INIT(). Do not free this value
  */
-function getArgv0(): string | null
+function getArgv0(): string
 /**
  * Return the number of bytes at which we flip between open via memory and
  * open via disc. This defaults to 100mb, but can be changed with the
@@ -2524,7 +2524,7 @@ function getDiscThreshold(): number
  * See also: VIPS_INIT().
  * @returns a pointer to an internal copy of the program name. Do not free this value
  */
-function getPrgname(): string | null
+function getPrgname(): string
 /**
  * vips_guess_libdir() tries to guess the install directory (usually the
  * configure libdir, or $prefix/lib). You should pass
@@ -2542,7 +2542,7 @@ function getPrgname(): string | null
  * @param envName save prefix in this environment variable
  * @returns the libdir as a static string, do not free.
  */
-function guessLibdir(argv0: string | null, envName: string | null): string | null
+function guessLibdir(argv0: string, envName: string): string
 /**
  * vips_guess_prefix() tries to guess the install directory. You should pass
  * in the value of argv[0] (the name your program was run as) as a clue to
@@ -2559,7 +2559,7 @@ function guessLibdir(argv0: string | null, envName: string | null): string | nul
  * @param envName save prefix in this environment variable
  * @returns the install prefix as a static string, do not free.
  */
-function guessPrefix(argv0: string | null, envName: string | null): string | null
+function guessPrefix(argv0: string, envName: string): string
 function iccIsCompatibleProfile(image: Image, data: any | null, dataLength: number): boolean
 /**
  * VIPS can optionally be built without the ICC library. Use this function to
@@ -2577,7 +2577,7 @@ function iccPresent(): number
  * @param argv0 name of application
  * @returns 0 on success, -1 otherwise
  */
-function init(argv0: string | null): number
+function init(argv0: string): number
 /**
  * Turn on or off vips leak checking. See also --vips-leak,
  * vips_add_option_entries() and the `VIPS_LEAK` environment variable.
@@ -2605,17 +2605,17 @@ function malloc(object: Object | null, size: number): any | null
  * @param type #GType to search for
  * @returns the class nickname.
  */
-function nicknameFind(type: GObject.GType): string | null
+function nicknameFind(type: GObject.GType): string
 /**
  * Return the filename part of a vips7 path. For testing only.
  * @param path path to split
  */
-function pathFilename7(path: string | null): string | null
+function pathFilename7(path: string): string | null
 /**
  * Return the mode part of a vips7 path. For testing only.
  * @param path path to split
  */
-function pathMode7(path: string | null): string | null
+function pathMode7(path: string): string | null
 /**
  * If set, vips will print messages about the progress of computation to
  * stdout. This can also be enabled with the --vips-progress option, or by
@@ -2660,7 +2660,7 @@ function shutdown(): void
  * @param str string to copy
  * @returns a pointer to the allocated memory
  */
-function strdup(object: Object | null, str: string | null): string | null
+function strdup(object: Object | null, str: string): string | null
 /**
  * Free any thread-private data and flush any profiling information.
  * 
@@ -2752,7 +2752,7 @@ function trackedMalloc(size: number): any | null
  * @param mode open mode
  * @returns a file descriptor, or -1 on error.
  */
-function trackedOpen(pathname: string | null, flags: number, mode: number): number
+function trackedOpen(pathname: string, flags: number, mode: number): number
 function typeDepth(type: GObject.GType): number
 /**
  * Search below `basename,` return the %GType of the class whose name or
@@ -2766,7 +2766,7 @@ function typeDepth(type: GObject.GType): number
  * @param nickname search for a class with this nickname
  * @returns the %GType of the class, or 0 if the class is not found.
  */
-function typeFind(basename: string | null, nickname: string | null): GObject.GType
+function typeFind(basename: string, nickname: string): GObject.GType
 /**
  * Get the pointer from an area. Don't touch count (area is static).
  * @param value get from this value
@@ -2827,13 +2827,13 @@ function valueGetBlob(value: any): [ /* returnType */ any | null, /* length */ n
  * @param value %GValue to get from
  * @returns The C string held by @value.
  */
-function valueGetRefString(value: any): [ /* returnType */ string | null, /* length */ number ]
+function valueGetRefString(value: any): [ /* returnType */ string, /* length */ number ]
 /**
  * Get the C string held internally by the GValue.
  * @param value GValue to get from
  * @returns The C string held by @value.
  */
-function valueGetSaveString(value: any): string | null
+function valueGetSaveString(value: any): string
 function valueIsNull(psoec: GObject.ParamSpec, value: any): boolean
 /**
  * Set value to be a ref-counted area of memory with a free function.
@@ -2919,14 +2919,14 @@ function valueSetBlobFree(value: any, data: any | null, length: number): void
  * `str` should be a valid utf-8 string.
  * @param str C string to copy into the GValue
  */
-function valueSetRefString(str: string | null): /* value */ any
+function valueSetRefString(str: string): /* value */ any
 /**
  * Copies the C string into `value`.
  * 
  * `str` should be a valid utf-8 string.
  * @param str C string to copy into the GValue
  */
-function valueSetSaveString(str: string | null): /* value */ any
+function valueSetSaveString(str: string): /* value */ any
 /**
  * Get the major, minor or micro library version, with `flag` values 0, 1 and
  * 2.
@@ -2942,7 +2942,7 @@ function version(flag: number): number
  * Do not free.
  * @returns a static version string
  */
-function versionString(): string | null
+function versionString(): string
 interface ArgumentClassMapFn {
     (objectClass: ObjectClass, pspec: GObject.ParamSpec, argumentClass: ArgumentClass, a: any | null, b: any | null): any | null
 }
@@ -2972,7 +2972,7 @@ interface GenerateFn {
     (out: Region, seq: any | null, a: any | null, b: any | null, stop: boolean): number
 }
 interface ImageMapFn {
-    (image: Image, name: string | null, value: any, a: any | null): any | null
+    (image: Image, name: string, value: any, a: any | null): any | null
 }
 /**
  * An interpolation function. It should read source pixels from `in` with
@@ -3097,7 +3097,7 @@ class Foreign extends Operation {
      * @param filename file to find a loader for
      * @returns the name of an operation on success, %NULL on error
      */
-    static findLoad(filename: string | null): string | null
+    static findLoad(filename: string): string
     /**
      * Searches for an operation you could use to load a memory buffer. To see the
      * range of buffer loaders supported by your vips, try something like:
@@ -3108,7 +3108,7 @@ class Foreign extends Operation {
      * @param data start of memory buffer
      * @returns the name of an operation on success, %NULL on error.
      */
-    static findLoadBuffer(data: number[]): string | null
+    static findLoadBuffer(data: number[]): string
     /**
      * Searches for an operation you could use to load a source. To see the
      * range of source loaders supported by your vips, try something like:
@@ -3119,7 +3119,7 @@ class Foreign extends Operation {
      * @param source source to load from
      * @returns the name of an operation on success, %NULL on error.
      */
-    static findLoadSource(source: Source): string | null
+    static findLoadSource(source: Source): string
     /**
      * Searches for an operation you could use to write to `filename`.
      * Any trailing options on `filename` are stripped and ignored.
@@ -3128,7 +3128,7 @@ class Foreign extends Operation {
      * @param filename name to find a saver for
      * @returns the name of an operation on success, %NULL on error
      */
-    static findSave(filename: string | null): string | null
+    static findSave(filename: string): string | null
     /**
      * Searches for an operation you could use to write to a buffer in `suffix`
      * format.
@@ -3137,7 +3137,7 @@ class Foreign extends Operation {
      * @param suffix name to find a saver for
      * @returns the name of an operation on success, %NULL on error
      */
-    static findSaveBuffer(suffix: string | null): string | null
+    static findSaveBuffer(suffix: string): string | null
     /**
      * Searches for an operation you could use to write to a target in `suffix`
      * format.
@@ -3146,7 +3146,7 @@ class Foreign extends Operation {
      * @param suffix format to find a saver for
      * @returns the name of an operation on success, %NULL on error
      */
-    static findSaveTarget(suffix: string | null): string | null
+    static findSaveTarget(suffix: string): string | null
     /**
      * Get a %NULL-terminated array listing all the supported suffixes.
      * 
@@ -3166,7 +3166,7 @@ class Foreign extends Operation {
      * @param filename file to test
      * @returns %TRUE if @filename can be loaded by @loader.
      */
-    static isA(loader: string | null, filename: string | null): boolean
+    static isA(loader: string, filename: string): boolean
     /**
      * Return %TRUE if `data` can be loaded by `loader`. `loader` is something
      * like "tiffload_buffer" or "VipsForeignLoadTiffBuffer".
@@ -3174,7 +3174,7 @@ class Foreign extends Operation {
      * @param data pointer to the buffer to test
      * @returns %TRUE if @data can be loaded by @loader.
      */
-    static isABuffer(loader: string | null, data: number[]): boolean
+    static isABuffer(loader: string, data: number[]): boolean
     /**
      * Return %TRUE if `source` can be loaded by `loader`. `loader` is something
      * like "tiffload_source" or "VipsForeignLoadTiffSource".
@@ -3182,7 +3182,7 @@ class Foreign extends Operation {
      * @param source source to test
      * @returns %TRUE if @data can be loaded by @source.
      */
-    static isASource(loader: string | null, source: Source): boolean
+    static isASource(loader: string, source: Source): boolean
     /**
      * Apply a function to every #VipsForeignClass that VIPS knows about. Foreigns
      * are presented to the function in priority order.
@@ -3198,7 +3198,7 @@ class Foreign extends Operation {
      * @param b user data
      * @returns the result of iteration
      */
-    static map(base: string | null, fn: SListMap2Fn, a: any | null, b: any | null): any | null
+    static map(base: string, fn: SListMap2Fn, a: any | null, b: any | null): any | null
 }
 
 module ForeignLoad {
@@ -3601,7 +3601,7 @@ interface Image {
      * @param name the name to fetch
      * @returns 0 on success, -1 otherwise.
      */
-    get(name: string | null): [ /* returnType */ number, /* valueCopy */ any ]
+    get(name: string): [ /* returnType */ number, /* valueCopy */ any ]
     /**
      * Gets `data` from `image` under the name `name`. A convenience
      * function over vips_image_get(). Use vips_image_get_typeof() to test for
@@ -3612,7 +3612,7 @@ interface Image {
      * @param name metadata name
      * @returns 0 on success, -1 otherwise.
      */
-    getArea(name: string | null): [ /* returnType */ number, /* data */ any | null ]
+    getArea(name: string): [ /* returnType */ number, /* data */ any | null ]
     /**
      * Gets `out` from `im` under the name `name`.
      * The field must be of type
@@ -3627,7 +3627,7 @@ interface Image {
      * @param name metadata name
      * @returns 0 on success, -1 otherwise.
      */
-    getArrayDouble(name: string | null): [ /* returnType */ number, /* out */ number[] ]
+    getArrayDouble(name: string): [ /* returnType */ number, /* out */ number[] ]
     /**
      * Gets `out` from `im` under the name `name`.
      * The field must be of type
@@ -3642,7 +3642,7 @@ interface Image {
      * @param name metadata name
      * @returns 0 on success, -1 otherwise.
      */
-    getArrayInt(name: string | null): [ /* returnType */ number, /* out */ number[] ]
+    getArrayInt(name: string): [ /* returnType */ number, /* out */ number[] ]
     /**
      * Returns `name` from `image` in `out`.
      * This function will read any field, returning it as a printable string.
@@ -3655,7 +3655,7 @@ interface Image {
      * @param name field name
      * @returns 0 on success, -1 otherwise.
      */
-    getAsString(name: string | null): [ /* returnType */ number, /* out */ string | null ]
+    getAsString(name: string): [ /* returnType */ number, /* out */ string | null ]
     getBands(): number
     /**
      * Gets `blob` from `image` under the name `name,` optionally returns its length in
@@ -3668,7 +3668,7 @@ interface Image {
      * @param name metadata name
      * @returns 0 on success, -1 otherwise.
      */
-    getBlob(name: string | null): [ /* returnType */ number, /* data */ number[] ]
+    getBlob(name: string): [ /* returnType */ number, /* data */ number[] ]
     getCoding(): Coding
     /**
      * Return a pointer to the image's pixel data, if possible. This can involve
@@ -3690,7 +3690,7 @@ interface Image {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets `out` from `im` under the name `name`.
      * The value will be transformed into
@@ -3700,7 +3700,7 @@ interface Image {
      * @param name field name
      * @returns 0 on success, -1 otherwise.
      */
-    getDouble(name: string | null): [ /* returnType */ number, /* out */ number ]
+    getDouble(name: string): [ /* returnType */ number, /* out */ number ]
     /**
      * Get a %NULL-terminated array listing all the metadata field names on `image`.
      * Free the return result with g_strfreev().
@@ -3710,7 +3710,7 @@ interface Image {
      * @returns metadata fields in image, as a %NULL-terminated array.
      */
     getFields(): string[]
-    getFilename(): string | null
+    getFilename(): string
     getFormat(): BandFormat
     getHeight(): number
     /**
@@ -3725,7 +3725,7 @@ interface Image {
      * See also: vips_image_history_printf().
      * @returns The history of @image as a C string. Do not free!
      */
-    getHistory(): string | null
+    getHistory(): string
     /**
      * Gets `out` from `im` under the name `name`.
      * The field must be of type
@@ -3738,7 +3738,7 @@ interface Image {
      * @param name metadata name
      * @returns 0 on success, -1 otherwise.
      */
-    getImage(name: string | null): [ /* returnType */ number, /* out */ Image ]
+    getImage(name: string): [ /* returnType */ number, /* out */ Image ]
     /**
      * Gets `out` from `im` under the name `name`.
      * The value will be transformed into
@@ -3748,7 +3748,7 @@ interface Image {
      * @param name field name
      * @returns 0 on success, -1 otherwise.
      */
-    getInt(name: string | null): [ /* returnType */ number, /* out */ number ]
+    getInt(name: string): [ /* returnType */ number, /* out */ number ]
     /**
      * Return the #VipsInterpretation set in the image header.
      * Use vips_image_guess_interpretation() if you want a sanity-checked value.
@@ -3760,7 +3760,7 @@ interface Image {
      * meaning a delayed computation.
      * @returns the image mode.
      */
-    getMode(): string | null
+    getMode(): string
     /**
      * Fetch and sanity-check #VIPS_META_N_PAGES. Default to 1 if not present or
      * crazy.
@@ -3818,7 +3818,7 @@ interface Image {
      * @param name field name
      * @returns 0 on success, -1 otherwise.
      */
-    getString(name: string | null): [ /* returnType */ number, /* out */ string | null ]
+    getString(name: string): [ /* returnType */ number, /* out */ string ]
     /**
      * Read the %GType for a header field. Returns zero if there is no
      * field of that name.
@@ -3827,7 +3827,7 @@ interface Image {
      * @param name the name to search for
      * @returns the %GType of the field, or zero if there is no field of that name.
      */
-    getTypeof(name: string | null): GObject.GType
+    getTypeof(name: string): GObject.GType
     getWidth(): number
     getXoffset(): number
     getXres(): number
@@ -3865,7 +3865,7 @@ interface Image {
      * @param argv program arguments
      * @returns 0 on success, -1 on error.
      */
-    historyArgs(name: string | null, argv: string[]): number
+    historyArgs(name: string, argv: string[]): number
     /**
      * Transform an image from absolute to relative colorimetry using the
      * MediaWhitePoint stored in the ICC profile.
@@ -3874,7 +3874,7 @@ interface Image {
      * @param profileFilename use this profile
      * @returns 0 on success, -1 on error.
      */
-    iccAc2rc(profileFilename: string | null): [ /* returnType */ number, /* out */ Image ]
+    iccAc2rc(profileFilename: string): [ /* returnType */ number, /* out */ Image ]
     /**
      * A convenience function to set the header fields after creating an image.
      * Normally you copy the fields from your input images with
@@ -3996,7 +3996,7 @@ interface Image {
      * Prints field `name` to stdout as ASCII. Handy for debugging.
      * @param name field name
      */
-    printField(name: string | null): void
+    printField(name: string): void
     /**
      * Find and remove an item of metadata. Return %FALSE if no metadata of that
      * name was found.
@@ -4005,7 +4005,7 @@ interface Image {
      * @param name the name to search for
      * @returns %TRUE if an item of metadata of that name was found and removed
      */
-    remove(name: string | null): boolean
+    remove(name: string): boolean
     /**
      * vips_reorder_margin_hint() sets a hint that `image` contains a margin, that
      * is, that each vips_region_prepare() on `image` will request a slightly larger
@@ -4055,7 +4055,7 @@ interface Image {
      * @param name the name to give the metadata
      * @param value the %GValue to copy into the image
      */
-    set(name: string | null, value: any): void
+    set(name: string, value: any): void
     /**
      * Attaches `data` as a metadata item on `image` under the name `name`. When
      * VIPS no longer needs the metadata, it will be freed with `free_fn`.
@@ -4064,7 +4064,7 @@ interface Image {
      * @param name metadata name
      * @param freeFn free function for `data`
      */
-    setArea(name: string | null, freeFn: CallbackFn): void
+    setArea(name: string, freeFn: CallbackFn): void
     /**
      * Attaches `array` as a metadata item on `image` as `name`.
      * A convenience function over vips_image_set().
@@ -4073,7 +4073,7 @@ interface Image {
      * @param name metadata name
      * @param array array of doubles
      */
-    setArrayDouble(name: string | null, array: number[] | null): void
+    setArrayDouble(name: string, array: number[] | null): void
     /**
      * Attaches `array` as a metadata item on `image` as `name`.
      * A convenience function over vips_image_set().
@@ -4082,7 +4082,7 @@ interface Image {
      * @param name metadata name
      * @param array array of ints
      */
-    setArrayInt(name: string | null, array: number[] | null): void
+    setArrayInt(name: string, array: number[] | null): void
     /**
      * Attaches `blob` as a metadata item on `image` under the name `name`. A
      * convenience
@@ -4093,7 +4093,7 @@ interface Image {
      * @param freeFn free function for `data`
      * @param data pointer to area of memory
      */
-    setBlob(name: string | null, freeFn: CallbackFn, data: number[]): void
+    setBlob(name: string, freeFn: CallbackFn, data: number[]): void
     /**
      * Attaches `blob` as a metadata item on `image` under the name `name,` taking
      * a copy of the memory area. A convenience function over
@@ -4103,7 +4103,7 @@ interface Image {
      * @param name metadata name
      * @param data pointer to area of memory
      */
-    setBlobCopy(name: string | null, data: number[]): void
+    setBlobCopy(name: string, data: number[]): void
     /**
      * Sets the delete_on_close flag for the image. If this flag is set, when
      * `image` is finalized, the filename held in `image->`filename at the time of
@@ -4124,7 +4124,7 @@ interface Image {
      * @param name metadata name
      * @param d metadata value
      */
-    setDouble(name: string | null, d: number): void
+    setDouble(name: string, d: number): void
     /**
      * Attaches `im` as a metadata item on `image` as `name`.
      * A convenience function over vips_image_set().
@@ -4133,7 +4133,7 @@ interface Image {
      * @param name metadata name
      * @param im metadata value
      */
-    setImage(name: string | null, im: Image): void
+    setImage(name: string, im: Image): void
     /**
      * Attaches `i` as a metadata item on `image` under the name `name`. A
      * convenience
@@ -4143,7 +4143,7 @@ interface Image {
      * @param name metadata name
      * @param i metadata value
      */
-    setInt(name: string | null, i: number): void
+    setInt(name: string, i: number): void
     /**
      * Set the #VipsImage.kill flag on an image. Handy for stopping sets of
      * threads.
@@ -4169,7 +4169,7 @@ interface Image {
      * @param name metadata name
      * @param str metadata value
      */
-    setString(name: string | null, str: string | null): void
+    setString(name: string, str: string): void
     /**
      * Check that an image is readable via the VIPS_IMAGE_ADDR() macro, that is,
      * that the entire image is in memory and all pixels can be read with
@@ -4420,7 +4420,7 @@ class Image extends Object {
      * @param filename filename to open
      * @returns the new #VipsImage, or %NULL on error.
      */
-    static newFromFileRW(filename: string | null): Image
+    static newFromFileRW(filename: string): Image
     /**
      * This function maps the named file and returns a #VipsImage you can use to
      * read it.
@@ -4437,7 +4437,7 @@ class Image extends Object {
      * @param offset bytes to skip at start of file
      * @returns the new #VipsImage, or %NULL on error.
      */
-    static newFromFileRaw(filename: string | null, xsize: number, ysize: number, bands: number, offset: number): Image
+    static newFromFileRaw(filename: string, xsize: number, ysize: number, bands: number, offset: number): Image
     /**
      * Creates a new image with width, height, format, interpretation, resolution
      * and offset taken from `image,` but with number of bands taken from `n` and the
@@ -4544,7 +4544,7 @@ class Image extends Object {
      * @param format format of file
      * @returns the new #VipsImage, or %NULL on error.
      */
-    static newTempFile(format: string | null): Image
+    static newTempFile(format: string): Image
     _init(config?: Image.ConstructorProperties): void
     static getFormatMax(format: BandFormat): number
 }
@@ -4622,7 +4622,7 @@ class Interpolate extends Object {
      * @param nickname nickname for interpolator
      * @returns an interpolator, or %NULL on error.
      */
-    constructor(nickname: string | null) 
+    constructor(nickname: string) 
     /**
      * Look up an interpolator from a nickname and make one. You need to free the
      * result with g_object_unref() when you're done with it.
@@ -4632,7 +4632,7 @@ class Interpolate extends Object {
      * @param nickname nickname for interpolator
      * @returns an interpolator, or %NULL on error.
      */
-    static new(nickname: string | null): Interpolate
+    static new(nickname: string): Interpolate
     _init(config?: Interpolate.ConstructorProperties): void
     /**
      * A convenience function that returns a bilinear interpolator you
@@ -4719,22 +4719,22 @@ interface Object {
      * @param name arg to fetch
      * @returns %TRUE if the argument has been assigned.
      */
-    argumentIsset(name: string | null): boolean
-    argumentNeedsstring(name: string | null): boolean
+    argumentIsset(name: string): boolean
+    argumentNeedsstring(name: string): boolean
     // Has conflict: build(): number
     /**
      * Convenience: get the flags for an argument. Useful for bindings.
      * @param name arg to fetch
      * @returns The #VipsArgumentFlags for this argument.
      */
-    getArgumentFlags(name: string | null): ArgumentFlags
+    getArgumentFlags(name: string): ArgumentFlags
     /**
      * Convenience: get the priority for an argument. Useful for bindings.
      * @param name arg to fetch
      * @returns The priority of this argument.
      */
-    getArgumentPriority(name: string | null): number
-    getArgumentToString(name: string | null, arg: string | null): number
+    getArgumentPriority(name: string): number
+    getArgumentToString(name: string, arg: string): number
     /**
      * Fetch the object description. Useful for language bindings.
      * 
@@ -4743,14 +4743,14 @@ interface Object {
      * to the class description if we are too early.
      * @returns the object description
      */
-    getDescription(): string | null
+    getDescription(): string
     localCb(gobject: GObject.Object): void
     printDump(): void
     printName(): void
     printSummary(): void
     // Has conflict: rewind(): void
     // Has conflict: sanity(): boolean
-    setArgumentFromString(name: string | null, value: string | null): number
+    setArgumentFromString(name: string, value: string): number
     /**
      * Set object arguments from a string. The string can be something like
      * "a=12", or "a = 12, b = 13", or "fred". The string can optionally be
@@ -4763,8 +4763,8 @@ interface Object {
      * @param string arguments as a string
      * @returns 0 on success, -1 on error
      */
-    setFromString(string: string | null): number
-    setRequired(value: string | null): number
+    setFromString(string: string): number
+    setRequired(value: string): number
     setStatic(staticObject: boolean): void
     // Has conflict: toString(buf: Buf): void
     /**
@@ -4783,7 +4783,7 @@ interface Object {
 
     build(): number
     close(): void
-    outputToArg(string: string | null): number
+    outputToArg(string: string): number
     postbuild(data: any | null): number
     postclose(): void
     preclose(): void
@@ -4844,7 +4844,7 @@ class Object extends GObject.Object {
     // Constructors of Vips-8.0.Vips.Object
 
     constructor(config?: Object.ConstructorProperties) 
-    static newFromString(objectClass: ObjectClass, p: string | null): Object
+    static newFromString(objectClass: ObjectClass, p: string): Object
     _init(config?: Object.ConstructorProperties): void
     static getProperty(gobject: GObject.Object, propertyId: number, value: any, pspec: GObject.ParamSpec): void
     static printAll(): void
@@ -4943,7 +4943,7 @@ class Operation extends Object {
      * @param name nickname of operation to create
      * @returns the new operation.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Return a new #VipsOperation with the specified nickname. Useful for
      * language bindings.
@@ -4954,7 +4954,7 @@ class Operation extends Object {
      * @param name nickname of operation to create
      * @returns the new operation.
      */
-    static new(name: string | null): Operation
+    static new(name: string): Operation
     _init(config?: Operation.ConstructorProperties): void
     /**
      * Set the block state on all operations in the libvips class hierarchy at
@@ -4979,7 +4979,7 @@ class Operation extends Object {
      * @param name set block state at this point and below
      * @param state the block state to set
      */
-    static blockSet(name: string | null, state: boolean): void
+    static blockSet(name: string, state: boolean): void
 }
 
 module Region {
@@ -5517,7 +5517,7 @@ class ArrayImage {
      * @returns A new #VipsArrayImage.
      */
     static new(array: Image[]): ArrayImage
-    static newFromString(string: string | null, flags: Access): ArrayImage
+    static newFromString(string: string, flags: Access): ArrayImage
 }
 
 interface ArrayInt {
@@ -5658,7 +5658,7 @@ interface ForeignClass {
 
     parentClass: OperationClass
     priority: number
-    suffs: string | null
+    suffs: string
 }
 
 abstract class ForeignClass {
@@ -5673,10 +5673,10 @@ interface ForeignLoadClass {
     // Own fields of Vips-8.0.Vips.ForeignLoadClass
 
     parentClass: ForeignClass
-    isA: (filename: string | null) => boolean
+    isA: (filename: string) => boolean
     isABuffer: (data: any, size: number) => boolean
     isASource: (source: Source) => boolean
-    getFlagsFilename: (filename: string | null) => ForeignFlags
+    getFlagsFilename: (filename: string) => ForeignFlags
     getFlags: (load: ForeignLoad) => ForeignFlags
     header: (load: ForeignLoad) => number
     load: (load: ForeignLoad) => number
@@ -5803,9 +5803,9 @@ interface ObjectClass {
     postclose: (object: Object) => void
     toString: (object: Object, buf: Buf) => void
     outputNeedsArg: boolean
-    outputToArg: (object: Object, string: string | null) => number
-    nickname: string | null
-    description: string | null
+    outputToArg: (object: Object, string: string) => number
+    nickname: string
+    description: string
     argumentTable: ArgumentTable
     argumentTableTraverse: any[]
     argumentTableTraverseGtype: GObject.GType
@@ -6005,7 +6005,7 @@ interface RefString {
      * See also: vips_value_get_ref_string().
      * @returns The C string held by @refstr.
      */
-    get(): [ /* returnType */ string | null, /* length */ number ]
+    get(): [ /* returnType */ string, /* length */ number ]
 }
 
 class RefString {
@@ -6027,7 +6027,7 @@ class RefString {
      * @param str string to store
      * @returns the new #VipsRefString, or NULL on error.
      */
-    constructor(str: string | null) 
+    constructor(str: string) 
     /**
      * Create a new refstring. These are reference-counted immutable strings, used
      * to store string data in vips image metadata.
@@ -6039,7 +6039,7 @@ class RefString {
      * @param str string to store
      * @returns the new #VipsRefString, or NULL on error.
      */
-    static new(str: string | null): RefString
+    static new(str: string): RefString
 }
 
 interface RegionClass {

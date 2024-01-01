@@ -136,7 +136,7 @@ function menu_item_get_long_description(menu_item: Gtk.MenuItem): string | null
  * @param item a #GtkMenuItem.
  * @param icon_name an icon name.
  */
-function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string | null): void
+function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string): void
 /**
  * Sets the long description of `menu_item`. A possible use-case is to display it
  * in a #GtkStatusbar, or as a tooltip.
@@ -144,8 +144,8 @@ function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string | null): 
  * @param long_description the long description, or %NULL to unset it.
  */
 function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_description: string | null): void
-function shortcuts_group_new(title: string | null): Gtk.Container
-function shortcuts_section_new(title: string | null): Gtk.Container
+function shortcuts_group_new(title: string): Gtk.Container
+function shortcuts_section_new(title: string): Gtk.Container
 /**
  * Creates a new #GtkShortcutsWindow. The #GtkWindow:modal property is set to
  * %TRUE.
@@ -189,7 +189,7 @@ function shortcuts_window_new(parent: Gtk.Window): Gtk.ShortcutsWindow
  * @param gtk_action_group a #GtkActionGroup.
  * @param gtk_action_name a #GtkAction name present in `gtk_action_group`.
  */
-function utils_bind_g_action_to_gtk_action(g_action_map: Gio.ActionMap, detailed_g_action_name_without_prefix: string | null, gtk_action_group: Gtk.ActionGroup, gtk_action_name: string | null): void
+function utils_bind_g_action_to_gtk_action(g_action_map: Gio.ActionMap, detailed_g_action_name_without_prefix: string, gtk_action_group: Gtk.ActionGroup, gtk_action_name: string): void
 /**
  * Utility function to be able to port an application gradually to #GAction and
  * #AmtkActionInfo, when #GtkUIManager is still used. This function goes one
@@ -214,7 +214,7 @@ function utils_bind_g_action_to_gtk_action(g_action_map: Gio.ActionMap, detailed
  * @param gtk_action_group a #GtkActionGroup.
  * @param gtk_action_name the name of the #GtkAction to create and add to   `gtk_action_group`.
  */
-function utils_create_gtk_action(g_action_map: Gio.ActionMap, detailed_g_action_name_with_prefix: string | null, gtk_action_group: Gtk.ActionGroup, gtk_action_name: string | null): void
+function utils_create_gtk_action(g_action_map: Gio.ActionMap, detailed_g_action_name_with_prefix: string, gtk_action_group: Gtk.ActionGroup, gtk_action_name: string): void
 /**
  * This function wraps `menubar` into a container, to allow the menubar to shrink
  * below its minimum width.
@@ -243,7 +243,7 @@ function utils_recent_chooser_menu_get_item_uri(menu: Gtk.RecentChooserMenu, ite
  * @param str a string.
  * @returns the new string with the mnemonics removed. Free with g_free() when no longer needed.
  */
-function utils_remove_mnemonic(str: string | null): string | null
+function utils_remove_mnemonic(str: string): string | null
 module ActionInfoCentralStore {
 
     // Constructor properties interface
@@ -262,7 +262,7 @@ interface ActionInfoCentralStore {
 
     // Owm methods of Amtk-5.Amtk.ActionInfoCentralStore
 
-    lookup(action_name: string | null): ActionInfo
+    lookup(action_name: string): ActionInfo
 
     // Class property signals of Amtk-5.Amtk.ActionInfoCentralStore
 
@@ -333,7 +333,7 @@ interface ActionInfoStore {
      * by a library, to easily see which actions are not used by the application.
      */
     check_all_used(): void
-    lookup(action_name: string | null): ActionInfo
+    lookup(action_name: string): ActionInfo
     /**
      * Calls gtk_application_set_accels_for_action() for all #AmtkActionInfo's part
      * of `store` with the accelerators returned by amtk_action_info_get_accels().
@@ -586,7 +586,7 @@ interface Factory {
      * @param action_name an action name.
      * @returns a new #GtkCheckMenuItem for @action_name.
      */
-    create_check_menu_item(action_name: string | null): Gtk.Widget
+    create_check_menu_item(action_name: string): Gtk.Widget
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
@@ -600,14 +600,14 @@ interface Factory {
      * @param flags #AmtkFactoryFlags.
      * @returns a new #GtkCheckMenuItem for @action_name.
      */
-    create_check_menu_item_full(action_name: string | null, flags: FactoryFlags): Gtk.Widget
+    create_check_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget
     /**
      * Calls amtk_factory_create_gmenu_item_full() with the
      * #AmtkFactory:default-flags.
      * @param action_name an action name.
      * @returns a new #GMenuItem for @action_name.
      */
-    create_gmenu_item(action_name: string | null): Gio.MenuItem
+    create_gmenu_item(action_name: string): Gio.MenuItem
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
@@ -618,14 +618,14 @@ interface Factory {
      * @param flags #AmtkFactoryFlags.
      * @returns a new #GMenuItem for @action_name.
      */
-    create_gmenu_item_full(action_name: string | null, flags: FactoryFlags): Gio.MenuItem
+    create_gmenu_item_full(action_name: string, flags: FactoryFlags): Gio.MenuItem
     /**
      * Creates a new #GtkMenuItem for `action_name` with the
      * #AmtkFactory:default-flags.
      * @param action_name an action name.
      * @returns a new #GtkMenuItem for @action_name.
      */
-    create_menu_item(action_name: string | null): Gtk.Widget
+    create_menu_item(action_name: string): Gtk.Widget
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
@@ -633,7 +633,7 @@ interface Factory {
      * @param flags #AmtkFactoryFlags.
      * @returns a new #GtkMenuItem for @action_name.
      */
-    create_menu_item_full(action_name: string | null, flags: FactoryFlags): Gtk.Widget
+    create_menu_item_full(action_name: string, flags: FactoryFlags): Gtk.Widget
     /**
      * Creates a new #GtkMenuToolButton for `action_name` with the
      * #AmtkFactory:default-flags.
@@ -643,7 +643,7 @@ interface Factory {
      * @param action_name an action name.
      * @returns a new #GtkMenuToolButton for @action_name.
      */
-    create_menu_tool_button(action_name: string | null): Gtk.MenuToolButton
+    create_menu_tool_button(action_name: string): Gtk.MenuToolButton
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
@@ -654,14 +654,14 @@ interface Factory {
      * @param flags #AmtkFactoryFlags.
      * @returns a new #GtkMenuToolButton for @action_name.
      */
-    create_menu_tool_button_full(action_name: string | null, flags: FactoryFlags): Gtk.MenuToolButton
+    create_menu_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.MenuToolButton
     /**
      * Calls amtk_factory_create_shortcut_full() with the
      * #AmtkFactory:default-flags.
      * @param action_name an action name.
      * @returns a new #GtkShortcutsShortcut for @action_name.
      */
-    create_shortcut(action_name: string | null): Gtk.Widget
+    create_shortcut(action_name: string): Gtk.Widget
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
@@ -688,7 +688,7 @@ interface Factory {
      * @param flags #AmtkFactoryFlags.
      * @returns a new #GtkShortcutsShortcut for @action_name.
      */
-    create_shortcut_full(action_name: string | null, flags: FactoryFlags): Gtk.Widget
+    create_shortcut_full(action_name: string, flags: FactoryFlags): Gtk.Widget
     /**
      * Calls amtk_factory_create_simple_menu_full() with the
      * #AmtkFactory:default-flags.
@@ -720,7 +720,7 @@ interface Factory {
      * @param action_name an action name.
      * @returns a new #GtkToolButton for @action_name.
      */
-    create_tool_button(action_name: string | null): Gtk.ToolItem
+    create_tool_button(action_name: string): Gtk.ToolItem
     /**
      * This function ignores the #AmtkFactory:default-flags property and takes the
      * `flags` argument instead.
@@ -728,7 +728,7 @@ interface Factory {
      * @param flags #AmtkFactoryFlags.
      * @returns a new #GtkToolButton for @action_name.
      */
-    create_tool_button_full(action_name: string | null, flags: FactoryFlags): Gtk.ToolItem
+    create_tool_button_full(action_name: string, flags: FactoryFlags): Gtk.ToolItem
     get_application(): Gtk.Application | null
     get_default_flags(): FactoryFlags
     /**
@@ -941,7 +941,7 @@ interface ActionInfo {
      * name, see g_action_parse_detailed_name().
      * @param action_name the action name.
      */
-    set_action_name(action_name: string | null): void
+    set_action_name(action_name: string): void
     set_icon_name(icon_name: string | null): void
     /**
      * Sets the label with a mnemonic. To know how to encode the mnemonic, see the
@@ -1014,28 +1014,28 @@ interface ActionInfoEntry {
      *   g_action_parse_detailed_name().
      * @field 
      */
-    action_name: string | null
+    action_name: string
     /**
      * the icon name, or %NULL.
      * @field 
      */
-    icon_name: string | null
+    icon_name: string
     /**
      * the label (i.e. a short description) with a mnemonic, or %NULL.
      * @field 
      */
-    label: string | null
+    label: string
     /**
      * the accelerator, in the format understood by gtk_accelerator_parse().
      *   Or %NULL.
      * @field 
      */
-    accel: string | null
+    accel: string
     /**
      * the tooltip (i.e. a long description), or %NULL.
      * @field 
      */
-    tooltip: string | null
+    tooltip: string
 }
 
 /**

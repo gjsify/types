@@ -81,13 +81,13 @@ export enum TranscoderState {
  * @param error a #GstTranscoderError
  * @returns a string with the given error.
  */
-export function transcoderErrorGetName(error: TranscoderError): string | null
+export function transcoderErrorGetName(error: TranscoderError): string
 export function transcoderErrorQuark(): GLib.Quark
 /**
  * Returns (transfer none): The message name
  * @param message a #GstTranscoderMessage
  */
-export function transcoderMessageGetName(message: TranscoderMessage): string | null
+export function transcoderMessageGetName(message: TranscoderMessage): string
 /**
  * Parse the given duration `msg` and extract the corresponding #GstClockTime
  * @param msg A #GstMessage
@@ -118,7 +118,7 @@ export function transcoderMessageParseWarning(msg: Gst.Message): [ /* error */ G
  * @param state a #GstTranscoderState
  * @returns a string with the name of the state.
  */
-export function transcoderStateGetName(state: TranscoderState): string | null
+export function transcoderStateGetName(state: TranscoderState): string
 export module Transcoder {
 
     // Constructor properties interface
@@ -338,9 +338,9 @@ export class Transcoder extends Gst.Object {
     // Constructors of GstTranscoder-1.0.GstTranscoder.Transcoder
 
     constructor(config?: Transcoder.ConstructorProperties) 
-    constructor(sourceUri: string | null, destUri: string | null, encodingProfile: string | null) 
-    static new(sourceUri: string | null, destUri: string | null, encodingProfile: string | null): Transcoder
-    static newFull(sourceUri: string | null, destUri: string | null, profile: GstPbutils.EncodingProfile): Transcoder
+    constructor(sourceUri: string, destUri: string, encodingProfile: string) 
+    static new(sourceUri: string, destUri: string, encodingProfile: string): Transcoder
+    static newFull(sourceUri: string, destUri: string, profile: GstPbutils.EncodingProfile): Transcoder
     _init(config?: Transcoder.ConstructorProperties): void
     static isTranscoderMessage(msg: Gst.Message): boolean
 }

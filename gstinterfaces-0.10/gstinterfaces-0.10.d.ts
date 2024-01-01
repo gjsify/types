@@ -751,7 +751,7 @@ interface PropertyProbe {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets the possible (probed) values for the given property,
      * requires the property to have been probed before.

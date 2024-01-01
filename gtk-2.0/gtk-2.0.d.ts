@@ -1257,605 +1257,605 @@ const MAX_COMPOSE_LEN: number
 const MICRO_VERSION: number
 const MINOR_VERSION: number
 const NO_TEXT_INPUT_MOD_MASK: number
-const PAPER_NAME_A3: string | null
-const PAPER_NAME_A4: string | null
-const PAPER_NAME_A5: string | null
-const PAPER_NAME_B5: string | null
-const PAPER_NAME_EXECUTIVE: string | null
-const PAPER_NAME_LEGAL: string | null
-const PAPER_NAME_LETTER: string | null
+const PAPER_NAME_A3: string
+const PAPER_NAME_A4: string
+const PAPER_NAME_A5: string
+const PAPER_NAME_B5: string
+const PAPER_NAME_EXECUTIVE: string
+const PAPER_NAME_LEGAL: string
+const PAPER_NAME_LETTER: string
 const PARAM_READABLE: number
 const PARAM_READWRITE: number
 const PARAM_WRITABLE: number
 const PATH_PRIO_MASK: number
-const PRINT_SETTINGS_COLLATE: string | null
-const PRINT_SETTINGS_DEFAULT_SOURCE: string | null
-const PRINT_SETTINGS_DITHER: string | null
-const PRINT_SETTINGS_DUPLEX: string | null
-const PRINT_SETTINGS_FINISHINGS: string | null
-const PRINT_SETTINGS_MEDIA_TYPE: string | null
-const PRINT_SETTINGS_NUMBER_UP: string | null
-const PRINT_SETTINGS_NUMBER_UP_LAYOUT: string | null
-const PRINT_SETTINGS_N_COPIES: string | null
-const PRINT_SETTINGS_ORIENTATION: string | null
-const PRINT_SETTINGS_OUTPUT_BIN: string | null
-const PRINT_SETTINGS_OUTPUT_FILE_FORMAT: string | null
-const PRINT_SETTINGS_OUTPUT_URI: string | null
-const PRINT_SETTINGS_PAGE_RANGES: string | null
-const PRINT_SETTINGS_PAGE_SET: string | null
-const PRINT_SETTINGS_PAPER_FORMAT: string | null
-const PRINT_SETTINGS_PAPER_HEIGHT: string | null
-const PRINT_SETTINGS_PAPER_WIDTH: string | null
-const PRINT_SETTINGS_PRINTER: string | null
-const PRINT_SETTINGS_PRINTER_LPI: string | null
-const PRINT_SETTINGS_PRINT_PAGES: string | null
-const PRINT_SETTINGS_QUALITY: string | null
-const PRINT_SETTINGS_RESOLUTION: string | null
-const PRINT_SETTINGS_RESOLUTION_X: string | null
-const PRINT_SETTINGS_RESOLUTION_Y: string | null
-const PRINT_SETTINGS_REVERSE: string | null
-const PRINT_SETTINGS_SCALE: string | null
-const PRINT_SETTINGS_USE_COLOR: string | null
-const PRINT_SETTINGS_WIN32_DRIVER_EXTRA: string | null
-const PRINT_SETTINGS_WIN32_DRIVER_VERSION: string | null
+const PRINT_SETTINGS_COLLATE: string
+const PRINT_SETTINGS_DEFAULT_SOURCE: string
+const PRINT_SETTINGS_DITHER: string
+const PRINT_SETTINGS_DUPLEX: string
+const PRINT_SETTINGS_FINISHINGS: string
+const PRINT_SETTINGS_MEDIA_TYPE: string
+const PRINT_SETTINGS_NUMBER_UP: string
+const PRINT_SETTINGS_NUMBER_UP_LAYOUT: string
+const PRINT_SETTINGS_N_COPIES: string
+const PRINT_SETTINGS_ORIENTATION: string
+const PRINT_SETTINGS_OUTPUT_BIN: string
+const PRINT_SETTINGS_OUTPUT_FILE_FORMAT: string
+const PRINT_SETTINGS_OUTPUT_URI: string
+const PRINT_SETTINGS_PAGE_RANGES: string
+const PRINT_SETTINGS_PAGE_SET: string
+const PRINT_SETTINGS_PAPER_FORMAT: string
+const PRINT_SETTINGS_PAPER_HEIGHT: string
+const PRINT_SETTINGS_PAPER_WIDTH: string
+const PRINT_SETTINGS_PRINTER: string
+const PRINT_SETTINGS_PRINTER_LPI: string
+const PRINT_SETTINGS_PRINT_PAGES: string
+const PRINT_SETTINGS_QUALITY: string
+const PRINT_SETTINGS_RESOLUTION: string
+const PRINT_SETTINGS_RESOLUTION_X: string
+const PRINT_SETTINGS_RESOLUTION_Y: string
+const PRINT_SETTINGS_REVERSE: string
+const PRINT_SETTINGS_SCALE: string
+const PRINT_SETTINGS_USE_COLOR: string
+const PRINT_SETTINGS_WIN32_DRIVER_EXTRA: string
+const PRINT_SETTINGS_WIN32_DRIVER_VERSION: string
 const PRIORITY_REDRAW: number
 const PRIORITY_RESIZE: number
 /**
  * The "About" item.
  * <inlinegraphic fileref="help-about.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ABOUT: string | null
+const STOCK_ABOUT: string
 /**
  * The "Add" item.
  * <inlinegraphic fileref="list-add.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ADD: string | null
+const STOCK_ADD: string
 /**
  * The "Apply" item.
  * <inlinegraphic fileref="gtk-apply.png" format="PNG"></inlinegraphic>
  */
-const STOCK_APPLY: string | null
+const STOCK_APPLY: string
 /**
  * The "Bold" item.
  * <inlinegraphic fileref="format-text-bold.png" format="PNG"></inlinegraphic>
  */
-const STOCK_BOLD: string | null
+const STOCK_BOLD: string
 /**
  * The "Cancel" item.
  * <inlinegraphic fileref="gtk-cancel.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CANCEL: string | null
+const STOCK_CANCEL: string
 /**
  * The "Caps Lock Warning" icon.
  * <inlinegraphic fileref="gtk-caps-lock-warning.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CAPS_LOCK_WARNING: string | null
+const STOCK_CAPS_LOCK_WARNING: string
 /**
  * The "CD-Rom" item.
  * <inlinegraphic fileref="media-optical.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CDROM: string | null
+const STOCK_CDROM: string
 /**
  * The "Clear" item.
  * <inlinegraphic fileref="edit-clear.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CLEAR: string | null
+const STOCK_CLEAR: string
 /**
  * The "Close" item.
  * <inlinegraphic fileref="window-close.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CLOSE: string | null
+const STOCK_CLOSE: string
 /**
  * The "Color Picker" item.
  * <inlinegraphic fileref="gtk-color-picker.png" format="PNG"></inlinegraphic>
  */
-const STOCK_COLOR_PICKER: string | null
+const STOCK_COLOR_PICKER: string
 /**
  * The "Connect" icon.
  * <inlinegraphic fileref="gtk-connect.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CONNECT: string | null
+const STOCK_CONNECT: string
 /**
  * The "Convert" item.
  * <inlinegraphic fileref="gtk-convert.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CONVERT: string | null
+const STOCK_CONVERT: string
 /**
  * The "Copy" item.
  * <inlinegraphic fileref="edit-copy.png" format="PNG"></inlinegraphic>
  */
-const STOCK_COPY: string | null
+const STOCK_COPY: string
 /**
  * The "Cut" item.
  * <inlinegraphic fileref="edit-cut.png" format="PNG"></inlinegraphic>
  */
-const STOCK_CUT: string | null
+const STOCK_CUT: string
 /**
  * The "Delete" item.
  * <inlinegraphic fileref="edit-delete.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DELETE: string | null
+const STOCK_DELETE: string
 /**
  * The "Authentication" item.
  * <inlinegraphic fileref="dialog-password.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DIALOG_AUTHENTICATION: string | null
+const STOCK_DIALOG_AUTHENTICATION: string
 /**
  * The "Error" item.
  * <inlinegraphic fileref="dialog-error.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DIALOG_ERROR: string | null
+const STOCK_DIALOG_ERROR: string
 /**
  * The "Information" item.
  * <inlinegraphic fileref="dialog-information.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DIALOG_INFO: string | null
+const STOCK_DIALOG_INFO: string
 /**
  * The "Question" item.
  * <inlinegraphic fileref="dialog-question.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DIALOG_QUESTION: string | null
+const STOCK_DIALOG_QUESTION: string
 /**
  * The "Warning" item.
  * <inlinegraphic fileref="dialog-warning.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DIALOG_WARNING: string | null
+const STOCK_DIALOG_WARNING: string
 /**
  * The "Directory" icon.
  * <inlinegraphic fileref="folder.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DIRECTORY: string | null
+const STOCK_DIRECTORY: string
 /**
  * The "Discard" item.
  */
-const STOCK_DISCARD: string | null
+const STOCK_DISCARD: string
 /**
  * The "Disconnect" icon.
  * <inlinegraphic fileref="gtk-disconnect.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DISCONNECT: string | null
+const STOCK_DISCONNECT: string
 /**
  * The "Drag-And-Drop" icon.
  * <inlinegraphic fileref="gtk-dnd.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DND: string | null
+const STOCK_DND: string
 /**
  * The "Drag-And-Drop multiple" icon.
  * <inlinegraphic fileref="gtk-dnd-multiple.png" format="PNG"></inlinegraphic>
  */
-const STOCK_DND_MULTIPLE: string | null
+const STOCK_DND_MULTIPLE: string
 /**
  * The "Edit" item.
  * <inlinegraphic fileref="gtk-edit.png" format="PNG"></inlinegraphic>
  */
-const STOCK_EDIT: string | null
+const STOCK_EDIT: string
 /**
  * The "Execute" item.
  * <inlinegraphic fileref="system-run.png" format="PNG"></inlinegraphic>
  */
-const STOCK_EXECUTE: string | null
+const STOCK_EXECUTE: string
 /**
  * The "File" icon.
  * <inlinegraphic fileref="document-x-generic.png" format="PNG"></inlinegraphic>
  */
-const STOCK_FILE: string | null
+const STOCK_FILE: string
 /**
  * The "Find" item.
  * <inlinegraphic fileref="edit-find.png" format="PNG"></inlinegraphic>
  */
-const STOCK_FIND: string | null
+const STOCK_FIND: string
 /**
  * The "Find and Replace" item.
  * <inlinegraphic fileref="edit-find-replace.png" format="PNG"></inlinegraphic>
  */
-const STOCK_FIND_AND_REPLACE: string | null
+const STOCK_FIND_AND_REPLACE: string
 /**
  * The "Floppy" item.
  * <inlinegraphic fileref="media-floppy.png" format="PNG"></inlinegraphic>
  */
-const STOCK_FLOPPY: string | null
+const STOCK_FLOPPY: string
 /**
  * The "Fullscreen" item.
  * <inlinegraphic fileref="view-fullscreen.png" format="PNG"></inlinegraphic>
  */
-const STOCK_FULLSCREEN: string | null
+const STOCK_FULLSCREEN: string
 /**
  * The "Bottom" item.
  * <inlinegraphic fileref="go-bottom.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GOTO_BOTTOM: string | null
+const STOCK_GOTO_BOTTOM: string
 /**
  * The "First" item.
  * <inlinegraphic fileref="go-first-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="go-first-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GOTO_FIRST: string | null
+const STOCK_GOTO_FIRST: string
 /**
  * The "Last" item.
  * <inlinegraphic fileref="go-last-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="go-last-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GOTO_LAST: string | null
+const STOCK_GOTO_LAST: string
 /**
  * The "Top" item.
  * <inlinegraphic fileref="go-top.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GOTO_TOP: string | null
+const STOCK_GOTO_TOP: string
 /**
  * The "Back" item.
  * <inlinegraphic fileref="go-previous-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="go-previous-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GO_BACK: string | null
+const STOCK_GO_BACK: string
 /**
  * The "Down" item.
  * <inlinegraphic fileref="go-down.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GO_DOWN: string | null
+const STOCK_GO_DOWN: string
 /**
  * The "Forward" item.
  * <inlinegraphic fileref="go-next-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="go-next-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GO_FORWARD: string | null
+const STOCK_GO_FORWARD: string
 /**
  * The "Up" item.
  * <inlinegraphic fileref="go-up.png" format="PNG"></inlinegraphic>
  */
-const STOCK_GO_UP: string | null
+const STOCK_GO_UP: string
 /**
  * The "Harddisk" item.
  * <inlinegraphic fileref="drive-harddisk.png" format="PNG"></inlinegraphic>
  */
-const STOCK_HARDDISK: string | null
+const STOCK_HARDDISK: string
 /**
  * The "Help" item.
  * <inlinegraphic fileref="help-contents.png" format="PNG"></inlinegraphic>
  */
-const STOCK_HELP: string | null
+const STOCK_HELP: string
 /**
  * The "Home" item.
  * <inlinegraphic fileref="go-home.png" format="PNG"></inlinegraphic>
  */
-const STOCK_HOME: string | null
+const STOCK_HOME: string
 /**
  * The "Indent" item.
  * <inlinegraphic fileref="gtk-indent-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="gtk-indent-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_INDENT: string | null
+const STOCK_INDENT: string
 /**
  * The "Index" item.
  * <inlinegraphic fileref="gtk-index.png" format="PNG"></inlinegraphic>
  */
-const STOCK_INDEX: string | null
+const STOCK_INDEX: string
 /**
  * The "Info" item.
  * <inlinegraphic fileref="dialog-information.png" format="PNG"></inlinegraphic>
  */
-const STOCK_INFO: string | null
+const STOCK_INFO: string
 /**
  * The "Italic" item.
  * <inlinegraphic fileref="format-text-italic.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ITALIC: string | null
+const STOCK_ITALIC: string
 /**
  * The "Jump to" item.
  * <inlinegraphic fileref="go-jump-ltr.png" format="PNG"></inlinegraphic>
  * RTL-variant
  * <inlinegraphic fileref="go-jump-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_JUMP_TO: string | null
+const STOCK_JUMP_TO: string
 /**
  * The "Center" item.
  * <inlinegraphic fileref="format-justify-center.png" format="PNG"></inlinegraphic>
  */
-const STOCK_JUSTIFY_CENTER: string | null
+const STOCK_JUSTIFY_CENTER: string
 /**
  * The "Fill" item.
  * <inlinegraphic fileref="format-justify-fill.png" format="PNG"></inlinegraphic>
  */
-const STOCK_JUSTIFY_FILL: string | null
+const STOCK_JUSTIFY_FILL: string
 /**
  * The "Left" item.
  * <inlinegraphic fileref="format-justify-left.png" format="PNG"></inlinegraphic>
  */
-const STOCK_JUSTIFY_LEFT: string | null
+const STOCK_JUSTIFY_LEFT: string
 /**
  * The "Right" item.
  * <inlinegraphic fileref="format-justify-right.png" format="PNG"></inlinegraphic>
  */
-const STOCK_JUSTIFY_RIGHT: string | null
+const STOCK_JUSTIFY_RIGHT: string
 /**
  * The "Leave Fullscreen" item.
  * <inlinegraphic fileref="view-restore.png" format="PNG"></inlinegraphic>
  */
-const STOCK_LEAVE_FULLSCREEN: string | null
+const STOCK_LEAVE_FULLSCREEN: string
 /**
  * The "Media Forward" item.
  * <inlinegraphic fileref="media-seek-forward-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="media-seek-forward-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_FORWARD: string | null
+const STOCK_MEDIA_FORWARD: string
 /**
  * The "Media Next" item.
  * <inlinegraphic fileref="media-skip-forward-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="media-skip-forward-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_NEXT: string | null
+const STOCK_MEDIA_NEXT: string
 /**
  * The "Media Pause" item.
  * <inlinegraphic fileref="media-playback-pause.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_PAUSE: string | null
+const STOCK_MEDIA_PAUSE: string
 /**
  * The "Media Play" item.
  * <inlinegraphic fileref="media-playback-start-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="media-playback-start-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_PLAY: string | null
+const STOCK_MEDIA_PLAY: string
 /**
  * The "Media Previous" item.
  * <inlinegraphic fileref="media-skip-backward-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="media-skip-backward-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_PREVIOUS: string | null
+const STOCK_MEDIA_PREVIOUS: string
 /**
  * The "Media Record" item.
  * <inlinegraphic fileref="media-record.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_RECORD: string | null
+const STOCK_MEDIA_RECORD: string
 /**
  * The "Media Rewind" item.
  * <inlinegraphic fileref="media-seek-backward-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="media-seek-backward-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_REWIND: string | null
+const STOCK_MEDIA_REWIND: string
 /**
  * The "Media Stop" item.
  * <inlinegraphic fileref="media-playback-stop.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MEDIA_STOP: string | null
+const STOCK_MEDIA_STOP: string
 /**
  * The "Missing image" icon.
  * <inlinegraphic fileref="image-missing.png" format="PNG"></inlinegraphic>
  */
-const STOCK_MISSING_IMAGE: string | null
+const STOCK_MISSING_IMAGE: string
 /**
  * The "Network" item.
  * <inlinegraphic fileref="network-idle.png" format="PNG"></inlinegraphic>
  */
-const STOCK_NETWORK: string | null
+const STOCK_NETWORK: string
 /**
  * The "New" item.
  * <inlinegraphic fileref="document-new.png" format="PNG"></inlinegraphic>
  */
-const STOCK_NEW: string | null
+const STOCK_NEW: string
 /**
  * The "No" item.
  * <inlinegraphic fileref="gtk-no.png" format="PNG"></inlinegraphic>
  */
-const STOCK_NO: string | null
+const STOCK_NO: string
 /**
  * The "OK" item.
  * <inlinegraphic fileref="gtk-ok.png" format="PNG"></inlinegraphic>
  */
-const STOCK_OK: string | null
+const STOCK_OK: string
 /**
  * The "Open" item.
  * <inlinegraphic fileref="document-open.png" format="PNG"></inlinegraphic>
  */
-const STOCK_OPEN: string | null
+const STOCK_OPEN: string
 /**
  * The "Landscape Orientation" item.
  * <inlinegraphic fileref="gtk-orientation-landscape.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ORIENTATION_LANDSCAPE: string | null
+const STOCK_ORIENTATION_LANDSCAPE: string
 /**
  * The "Portrait Orientation" item.
  * <inlinegraphic fileref="gtk-orientation-portrait.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ORIENTATION_PORTRAIT: string | null
+const STOCK_ORIENTATION_PORTRAIT: string
 /**
  * The "Reverse Landscape Orientation" item.
  * <inlinegraphic fileref="gtk-orientation-reverse-landscape.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ORIENTATION_REVERSE_LANDSCAPE: string | null
+const STOCK_ORIENTATION_REVERSE_LANDSCAPE: string
 /**
  * The "Reverse Portrait Orientation" item.
  * <inlinegraphic fileref="gtk-orientation-reverse-portrait.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ORIENTATION_REVERSE_PORTRAIT: string | null
+const STOCK_ORIENTATION_REVERSE_PORTRAIT: string
 /**
  * The "Page Setup" item.
  * <inlinegraphic fileref="gtk-page-setup.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PAGE_SETUP: string | null
+const STOCK_PAGE_SETUP: string
 /**
  * The "Paste" item.
  * <inlinegraphic fileref="edit-paste.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PASTE: string | null
+const STOCK_PASTE: string
 /**
  * The "Preferences" item.
  * <inlinegraphic fileref="gtk-preferences.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PREFERENCES: string | null
+const STOCK_PREFERENCES: string
 /**
  * The "Print" item.
  * <inlinegraphic fileref="document-print.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PRINT: string | null
+const STOCK_PRINT: string
 /**
  * The "Print Error" icon.
  * <inlinegraphic fileref="printer-error.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PRINT_ERROR: string | null
+const STOCK_PRINT_ERROR: string
 /**
  * The "Print Paused" icon.
  * <inlinegraphic fileref="printer-paused.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PRINT_PAUSED: string | null
+const STOCK_PRINT_PAUSED: string
 /**
  * The "Print Preview" item.
  * <inlinegraphic fileref="document-print-preview.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PRINT_PREVIEW: string | null
+const STOCK_PRINT_PREVIEW: string
 /**
  * The "Print Report" icon.
  * <inlinegraphic fileref="printer-info.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PRINT_REPORT: string | null
+const STOCK_PRINT_REPORT: string
 /**
  * The "Print Warning" icon.
  * <inlinegraphic fileref="printer-warning.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PRINT_WARNING: string | null
+const STOCK_PRINT_WARNING: string
 /**
  * The "Properties" item.
  * <inlinegraphic fileref="document-properties.png" format="PNG"></inlinegraphic>
  */
-const STOCK_PROPERTIES: string | null
+const STOCK_PROPERTIES: string
 /**
  * The "Quit" item.
  * <inlinegraphic fileref="application-exit.png" format="PNG"></inlinegraphic>
  */
-const STOCK_QUIT: string | null
+const STOCK_QUIT: string
 /**
  * The "Redo" item.
  * <inlinegraphic fileref="edit-redo-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="edit-redo-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_REDO: string | null
+const STOCK_REDO: string
 /**
  * The "Refresh" item.
  * <inlinegraphic fileref="view-refresh.png" format="PNG"></inlinegraphic>
  */
-const STOCK_REFRESH: string | null
+const STOCK_REFRESH: string
 /**
  * The "Remove" item.
  * <inlinegraphic fileref="list-remove.png" format="PNG"></inlinegraphic>
  */
-const STOCK_REMOVE: string | null
+const STOCK_REMOVE: string
 /**
  * The "Revert" item.
  * <inlinegraphic fileref="document-revert-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="document-revert-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_REVERT_TO_SAVED: string | null
+const STOCK_REVERT_TO_SAVED: string
 /**
  * The "Save" item.
  * <inlinegraphic fileref="document-save.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SAVE: string | null
+const STOCK_SAVE: string
 /**
  * The "Save As" item.
  * <inlinegraphic fileref="document-save-as.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SAVE_AS: string | null
+const STOCK_SAVE_AS: string
 /**
  * The "Select All" item.
  * <inlinegraphic fileref="edit-select-all.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SELECT_ALL: string | null
+const STOCK_SELECT_ALL: string
 /**
  * The "Color" item.
  * <inlinegraphic fileref="gtk-select-color.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SELECT_COLOR: string | null
+const STOCK_SELECT_COLOR: string
 /**
  * The "Font" item.
  * <inlinegraphic fileref="gtk-font.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SELECT_FONT: string | null
+const STOCK_SELECT_FONT: string
 /**
  * The "Ascending" item.
  * <inlinegraphic fileref="view-sort-ascending.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SORT_ASCENDING: string | null
+const STOCK_SORT_ASCENDING: string
 /**
  * The "Descending" item.
  * <inlinegraphic fileref="view-sort-descending.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SORT_DESCENDING: string | null
+const STOCK_SORT_DESCENDING: string
 /**
  * The "Spell Check" item.
  * <inlinegraphic fileref="tools-check-spelling.png" format="PNG"></inlinegraphic>
  */
-const STOCK_SPELL_CHECK: string | null
+const STOCK_SPELL_CHECK: string
 /**
  * The "Stop" item.
  * <inlinegraphic fileref="process-stop.png" format="PNG"></inlinegraphic>
  */
-const STOCK_STOP: string | null
+const STOCK_STOP: string
 /**
  * The "Strikethrough" item.
  * <inlinegraphic fileref="format-text-strikethrough.png" format="PNG"></inlinegraphic>
  */
-const STOCK_STRIKETHROUGH: string | null
+const STOCK_STRIKETHROUGH: string
 /**
  * The "Undelete" item.
  * <inlinegraphic fileref="gtk-undelete-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="gtk-undelete-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_UNDELETE: string | null
+const STOCK_UNDELETE: string
 /**
  * The "Underline" item.
  * <inlinegraphic fileref="format-text-underline.png" format="PNG"></inlinegraphic>
  */
-const STOCK_UNDERLINE: string | null
+const STOCK_UNDERLINE: string
 /**
  * The "Undo" item.
  * <inlinegraphic fileref="edit-undo-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="edit-undo-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_UNDO: string | null
+const STOCK_UNDO: string
 /**
  * The "Unindent" item.
  * <inlinegraphic fileref="format-indent-less-ltr.png" format="PNG"></inlinegraphic>
  * RTL variant
  * <inlinegraphic fileref="format-indent-less-rtl.png" format="PNG"></inlinegraphic>
  */
-const STOCK_UNINDENT: string | null
+const STOCK_UNINDENT: string
 /**
  * The "Yes" item.
  * <inlinegraphic fileref="gtk-yes.png" format="PNG"></inlinegraphic>
  */
-const STOCK_YES: string | null
+const STOCK_YES: string
 /**
  * The "Zoom 100%" item.
  * <inlinegraphic fileref="zoom-original.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ZOOM_100: string | null
+const STOCK_ZOOM_100: string
 /**
  * The "Zoom to Fit" item.
  * <inlinegraphic fileref="zoom-fit-best.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ZOOM_FIT: string | null
+const STOCK_ZOOM_FIT: string
 /**
  * The "Zoom In" item.
  * <inlinegraphic fileref="zoom-in.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ZOOM_IN: string | null
+const STOCK_ZOOM_IN: string
 /**
  * The "Zoom Out" item.
  * <inlinegraphic fileref="zoom-out.png" format="PNG"></inlinegraphic>
  */
-const STOCK_ZOOM_OUT: string | null
+const STOCK_ZOOM_OUT: string
 const TEXT_VIEW_PRIORITY_VALIDATE: number
 const TOGGLE_GROUP_MOD_MASK: number
 const TYPE_FUNDAMENTAL_LAST: number
@@ -1915,7 +1915,7 @@ function accelerator_name(accelerator_key: number, accelerator_mods: Gdk.Modifie
  * be set to 0 (zero).
  * @param accelerator string representing an accelerator
  */
-function accelerator_parse(accelerator: string | null): [ /* accelerator_key */ number, /* accelerator_mods */ Gdk.ModifierType ]
+function accelerator_parse(accelerator: string): [ /* accelerator_key */ number, /* accelerator_mods */ Gdk.ModifierType ]
 /**
  * Sets the modifiers that will be considered significant for keyboard
  * accelerators. The default mod mask is #GDK_CONTROL_MASK |
@@ -1965,7 +1965,7 @@ function alternative_dialog_button_order(screen: Gdk.Screen | null): boolean
  * @param signal_name signal name to be bound
  * @param binding_args      list of #GtkBindingArg signal arguments
  */
-function binding_entry_add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string | null, binding_args: BindingArg[]): void
+function binding_entry_add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: BindingArg[]): void
 /**
  * Clears a binding entry.
  * @param binding_set binding set to clear an entry of
@@ -2003,7 +2003,7 @@ function binding_parse_binding(scanner: GLib.Scanner): number
  * @param set_name unique binding set name
  * @returns %NULL or the specified binding set
  */
-function binding_set_find(set_name: string | null): BindingSet
+function binding_set_find(set_name: string): BindingSet
 /**
  * Find a key binding matching `keyval` and `modifiers` and activate the
  * binding on `object`.
@@ -2050,7 +2050,7 @@ function builder_error_quark(): GLib.Quark
  * @param required_micro the required micro version.
  * @returns %NULL if the GTK+ library is compatible with the   given version, or a string describing the version mismatch.   The returned string is owned by GTK+ and should not be modified   or freed.
  */
-function check_version(required_major: number, required_minor: number, required_micro: number): string | null
+function check_version(required_major: number, required_minor: number, required_micro: number): string
 function ctree_node_get_type(): GObject.GType
 /**
  * Prevents gtk_init(), gtk_init_check(), gtk_init_with_args() and
@@ -2258,7 +2258,7 @@ function drag_set_icon_default(context: Gdk.DragContext): void
  * @param hot_x the X offset of the hotspot within the icon
  * @param hot_y the Y offset of the hotspot within the icon
  */
-function drag_set_icon_name(context: Gdk.DragContext, icon_name: string | null, hot_x: number, hot_y: number): void
+function drag_set_icon_name(context: Gdk.DragContext, icon_name: string, hot_x: number, hot_y: number): void
 /**
  * Sets `pixbuf` as the icon for a given drag.
  * @param context the context for a drag. (This must be called            with a  context for the source side of a drag)
@@ -2287,7 +2287,7 @@ function drag_set_icon_pixmap(context: Gdk.DragContext, colormap: Gdk.Colormap, 
  * @param hot_x the X offset within the icon of the hotspot.
  * @param hot_y the Y offset within the icon of the hotspot.
  */
-function drag_set_icon_stock(context: Gdk.DragContext, stock_id: string | null, hot_x: number, hot_y: number): void
+function drag_set_icon_stock(context: Gdk.DragContext, stock_id: string, hot_x: number, hot_y: number): void
 /**
  * Changes the icon for a widget to a given widget. GTK+
  * will not destroy the icon, so if you don't want
@@ -2359,7 +2359,7 @@ function drag_source_set_icon(widget: Widget, colormap: Gdk.Colormap, pixmap: Gd
  * @param widget a #GtkWidget
  * @param icon_name name of icon to use
  */
-function drag_source_set_icon_name(widget: Widget, icon_name: string | null): void
+function drag_source_set_icon_name(widget: Widget, icon_name: string): void
 /**
  * Sets the icon that will be used for drags from a particular widget
  * from a #GdkPixbuf. GTK+ retains a reference for `pixbuf` and will
@@ -2374,7 +2374,7 @@ function drag_source_set_icon_pixbuf(widget: Widget, pixbuf: GdkPixbuf.Pixbuf): 
  * @param widget a #GtkWidget
  * @param stock_id the ID of the stock icon to use
  */
-function drag_source_set_icon_stock(widget: Widget, stock_id: string | null): void
+function drag_source_set_icon_stock(widget: Widget, stock_id: string): void
 /**
  * Changes the target types that this widget offers for drag-and-drop.
  * The widget must first be made into a drag source with
@@ -2637,7 +2637,7 @@ function draw_slider(style: Style, window: Gdk.Window, state_type: StateType, sh
  * @param y y origin
  * @param string the string to draw
  */
-function draw_string(style: Style, window: Gdk.Window, state_type: StateType, x: number, y: number, string: string | null): void
+function draw_string(style: Style, window: Gdk.Window, state_type: StateType, x: number, y: number, string: string): void
 /**
  * Draws an option menu tab (i.e. the up and down pointing arrows)
  * in the given rectangle on `window` using the given parameters.
@@ -2734,14 +2734,14 @@ function grab_remove(widget: Widget): void
  * @param name the name to look up.
  * @returns the icon size
  */
-function icon_size_from_name(name: string | null): number
+function icon_size_from_name(name: string): number
 /**
  * Gets the canonical name of the given icon size. The returned string
  * is statically allocated and should not be freed.
  * @param size a #GtkIconSize.
  * @returns the name of the given icon size.
  */
-function icon_size_get_name(size: number): string | null
+function icon_size_get_name(size: number): string
 /**
  * Obtains the pixel size of a semantic icon size, possibly
  * modified by user preferences for the default #GtkSettings.
@@ -2782,7 +2782,7 @@ function icon_size_lookup_for_settings(settings: Settings, size: number): [ /* r
  * @param height the icon height
  * @returns integer value representing the size
  */
-function icon_size_register(name: string | null, width: number, height: number): number
+function icon_size_register(name: string, width: number, height: number): number
 /**
  * Registers `alias` as another name for `target`.
  * So calling gtk_icon_size_from_name() with `alias` as argument
@@ -2790,7 +2790,7 @@ function icon_size_register(name: string | null, width: number, height: number):
  * @param alias an alias for `target`
  * @param target an existing icon size
  */
-function icon_size_register_alias(alias: string | null, target: number): void
+function icon_size_register_alias(alias: string, target: number): void
 function icon_theme_error_quark(): GLib.Quark
 function idle_remove(idle_handler_id: number): void
 function idle_remove_by_data(data: any | null): void
@@ -2849,7 +2849,7 @@ function init_check(argv: string[] | null): [ /* returnType */ boolean, /* argv 
  * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    and the `parameter_string` with gettext(), or %NULL
  * @returns %TRUE if the GUI has been successfully initialized,               %FALSE otherwise.
  */
-function init_with_args(argv: string[], parameter_string: string | null, entries: GLib.OptionEntry[], translation_domain: string | null): [ /* returnType */ boolean, /* argv */ string[] ]
+function init_with_args(argv: string[], parameter_string: string, entries: GLib.OptionEntry[], translation_domain: string): [ /* returnType */ boolean, /* argv */ string[] ]
 function input_remove(input_handler_id: number): void
 function key_snooper_remove(snooper_handler_id: number): void
 function main(): void
@@ -3205,7 +3205,7 @@ function paint_spinner(style: Style, window: Gdk.Window, state_type: StateType, 
  * @param y y origin
  * @param string the string to draw
  */
-function paint_string(style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle | null, widget: Widget | null, detail: string | null, x: number, y: number, string: string | null): void
+function paint_string(style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle | null, widget: Widget | null, detail: string | null, x: number, y: number, string: string): void
 /**
  * Draws an option menu tab (i.e. the up and down pointing arrows)
  * in the given rectangle on `window` using the given parameters.
@@ -3241,7 +3241,7 @@ function paint_vline(style: Style, window: Gdk.Window, state_type: StateType, ar
  * depends on the current locale.
  * @returns the name of the default paper size. The string is owned by GTK+ and should not be modified.
  */
-function paper_size_get_default(): string | null
+function paper_size_get_default(): string
 /**
  * Creates a list of known paper sizes.
  * @param include_custom whether to include custom paper sizes     as defined in the page setup dialog
@@ -3306,22 +3306,22 @@ function propagate_event(widget: Widget, event: Gdk.Event): void
 function quit_add_destroy(main_level: number, object: Object): void
 function quit_remove(quit_handler_id: number): void
 function quit_remove_by_data(data: any | null): void
-function rc_add_class_style(rc_style: RcStyle, pattern: string | null): void
+function rc_add_class_style(rc_style: RcStyle, pattern: string): void
 /**
  * Adds a file to the list of files to be parsed at the
  * end of gtk_init().
  * @param filename the pathname to the file. If `filename` is not absolute, it    is searched in the current directory.
  */
-function rc_add_default_file(filename: string | null): void
-function rc_add_widget_class_style(rc_style: RcStyle, pattern: string | null): void
-function rc_add_widget_name_style(rc_style: RcStyle, pattern: string | null): void
+function rc_add_default_file(filename: string): void
+function rc_add_widget_class_style(rc_style: RcStyle, pattern: string): void
+function rc_add_widget_name_style(rc_style: RcStyle, pattern: string): void
 /**
  * Searches for a theme engine in the GTK+ search path. This function
  * is not useful for applications and should not be used.
  * @param module_file name of a theme engine
  * @returns The filename, if found (must be freed with g_free()),   otherwise %NULL.
  */
-function rc_find_module_in_path(module_file: string | null): string | null
+function rc_find_module_in_path(module_file: string): string | null
 /**
  * Looks up a file in pixmap path for the specified #GtkSettings.
  * If the file is not found, it outputs a warning message using
@@ -3331,7 +3331,7 @@ function rc_find_module_in_path(module_file: string | null): string | null
  * @param pixmap_file name of the pixmap file to locate.
  * @returns the filename.
  */
-function rc_find_pixmap_in_path(settings: Settings, scanner: GLib.Scanner, pixmap_file: string | null): string | null
+function rc_find_pixmap_in_path(settings: Settings, scanner: GLib.Scanner, pixmap_file: string): string | null
 /**
  * Retrieves the current list of RC files that will be parsed
  * at the end of gtk_init().
@@ -3398,7 +3398,7 @@ function rc_get_style(widget: Widget): Style
  */
 function rc_get_style_by_paths(settings: Settings, widget_path: string | null, class_path: string | null, type: GObject.GType): Style
 function rc_get_theme_dir(): string | null
-function rc_parse(filename: string | null): void
+function rc_parse(filename: string): void
 /**
  * Parses a color in the <link linkend="color=format">format</link> expected
  * in a RC file.
@@ -3420,7 +3420,7 @@ function rc_parse_color(scanner: GLib.Scanner): [ /* returnType */ number, /* co
 function rc_parse_color_full(scanner: GLib.Scanner, style: RcStyle | null): [ /* returnType */ number, /* color */ Gdk.Color ]
 function rc_parse_priority(scanner: GLib.Scanner, priority: PathPriorityType): number
 function rc_parse_state(scanner: GLib.Scanner, state: StateType): number
-function rc_parse_string(rc_string: string | null): void
+function rc_parse_string(rc_string: string): void
 /**
  * A #GtkRcPropertyParser for use with gtk_settings_install_property_parser()
  * or gtk_widget_class_install_style_property_parser() which parses
@@ -3640,11 +3640,11 @@ function set_locale(): string | null
  * @param timestamp a timestamp to prevent focus stealing.
  * @returns %TRUE on success, %FALSE on error.
  */
-function show_uri(screen: Gdk.Screen | null, uri: string | null, timestamp: number): boolean
-function signal_emit_stop_by_name(object: Object, name: string | null): void
+function show_uri(screen: Gdk.Screen | null, uri: string, timestamp: number): boolean
+function signal_emit_stop_by_name(object: Object, name: string): void
 function signal_emitv(object: Object, signal_id: number, args: Arg): void
-function signal_emitv_by_name(object: Object, name: string | null, args: Arg): void
-function signal_newv(name: string | null, signal_flags: SignalRunType, object_type: GObject.GType, function_offset: number, marshaller: GObject.SignalCMarshaller, return_val: GObject.GType, n_args: number, args: GObject.GType): number
+function signal_emitv_by_name(object: Object, name: string, args: Arg): void
+function signal_newv(name: string, signal_flags: SignalRunType, object_type: GObject.GType, function_offset: number, marshaller: GObject.SignalCMarshaller, return_val: GObject.GType, n_args: number, args: GObject.GType): number
 /**
  * Registers each of the stock items in `items`. If an item already
  * exists with the same stock ID as one of the `items,` the old item
@@ -3674,7 +3674,7 @@ function stock_list_ids(): string[]
  * @param stock_id a stock item name
  * @returns %TRUE if @item was initialized
  */
-function stock_lookup(stock_id: string | null): [ /* returnType */ boolean, /* item */ StockItem ]
+function stock_lookup(stock_id: string): [ /* returnType */ boolean, /* item */ StockItem ]
 /**
  * Sets a function to be used for translating the `label` of
  * a stock item.
@@ -3715,7 +3715,7 @@ function stock_lookup(stock_id: string | null): [ /* returnType */ boolean, /* i
  * @param domain the translation domain for which `func` shall be used
  * @param func a #GtkTranslateFunc
  */
-function stock_set_translate_func(domain: string | null, func: TranslateFunc): void
+function stock_set_translate_func(domain: string, func: TranslateFunc): void
 /**
  * This function frees a target table as returned by
  * gtk_target_table_new_from_list()
@@ -3770,7 +3770,7 @@ function targets_include_uri(targets: Gdk.Atom[]): boolean
  * @param dialog_text Text inside the window to be displayed.
  * @returns a widget pointer to the newly created GtkWindow.
  */
-function test_create_simple_window(window_title: string | null, dialog_text: string | null): Widget
+function test_create_simple_window(window_title: string, dialog_text: string): Widget
 /**
  * This function will search `widget` and all its descendants for a GtkLabel
  * widget with a text string matching `label_pattern`.
@@ -3783,7 +3783,7 @@ function test_create_simple_window(window_title: string | null, dialog_text: str
  * @param label_pattern Shell-glob pattern to match a label string.
  * @returns a GtkLabel widget if any is found.
  */
-function test_find_label(widget: Widget, label_pattern: string | null): Widget
+function test_find_label(widget: Widget, label_pattern: string): Widget
 /**
  * This function will search siblings of `base_widget` and siblings of its
  * ancestors for all widgets matching `widget_type`.
@@ -3810,7 +3810,7 @@ function test_find_sibling(base_widget: Widget, widget_type: GObject.GType): Wid
  * @param widget_type Type of a aearched for label sibling widget.
  * @returns a valid widget if any is found or %NULL.
  */
-function test_find_widget(widget: Widget, label_pattern: string | null, widget_type: GObject.GType): Widget
+function test_find_widget(widget: Widget, label_pattern: string, widget_type: GObject.GType): Widget
 /**
  * Return the type ids that have been registered after
  * calling gtk_test_register_all_types().
@@ -3866,7 +3866,7 @@ function test_text_get(widget: Widget): string | null
  * @param widget valid widget pointer.
  * @param string a 0-terminated C string
  */
-function test_text_set(widget: Widget, string: string | null): void
+function test_text_set(widget: Widget, string: string): void
 /**
  * This function will generate a `button` click (button press and button
  * release event) in the middle of the first GdkWindow found that belongs
@@ -3965,7 +3965,7 @@ function type_unique(parent_type: Type, gtkinfo: TypeInfo): Type
  * @param data user data that was passed when the function was registered  with gtk_about_dialog_set_email_hook() or  gtk_about_dialog_set_url_hook()
  */
 interface AboutDialogActivateLinkFunc {
-    (about: AboutDialog, link_: string | null, data: any | null): void
+    (about: AboutDialog, link_: string, data: any | null): void
 }
 interface AccelGroupActivate {
     (accel_group: AccelGroup, acceleratable: GObject.Object, keyval: number, modifier: Gdk.ModifierType): boolean
@@ -3974,7 +3974,7 @@ interface AccelGroupFindFunc {
     (key: AccelKey, closure: GObject.TClosure, data: any | null): boolean
 }
 interface AccelMapForeach {
-    (data: any | null, accel_path: string | null, accel_key: number, accel_mods: Gdk.ModifierType, changed: boolean): void
+    (data: any | null, accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType, changed: boolean): void
 }
 /**
  * A function used by gtk_assistant_set_forward_page_func() to know which
@@ -4004,7 +4004,7 @@ interface AssistantPageFunc {
  * @param flags #GConnectFlags to use
  */
 interface BuilderConnectFunc {
-    (builder: Builder, object: GObject.Object, signal_name: string | null, handler_name: string | null, connect_object: GObject.Object, flags: GObject.ConnectFlags): void
+    (builder: Builder, object: GObject.Object, signal_name: string, handler_name: string, connect_object: GObject.Object, flags: GObject.ConnectFlags): void
 }
 interface CListCompareFunc {
     (clist: CList, ptr1: any | null, ptr2: any | null): number
@@ -4067,7 +4067,7 @@ interface ClipboardTargetsReceivedFunc {
     (clipboard: Clipboard, atoms: Gdk.Atom, n_atoms: number, data: any | null): void
 }
 interface ClipboardTextReceivedFunc {
-    (clipboard: Clipboard, text: string | null, data: any | null): void
+    (clipboard: Clipboard, text: string, data: any | null): void
 }
 interface ClipboardURIReceivedFunc {
     (clipboard: Clipboard, uris: string | null, data: any | null): void
@@ -4082,7 +4082,7 @@ interface DestroyNotify {
     (data: any | null): void
 }
 interface EntryCompletionMatchFunc {
-    (completion: EntryCompletion, key: string | null, iter: TreeIter): boolean
+    (completion: EntryCompletion, key: string, iter: TreeIter): boolean
 }
 interface FileFilterFunc {
     (filter_info: FileFilterInfo, data: any | null): boolean
@@ -4106,7 +4106,7 @@ interface KeySnoopFunc {
     (grab_widget: Widget, event: Gdk.EventKey, func_data: any | null): number
 }
 interface LinkButtonUriFunc {
-    (button: LinkButton, link_: string | null): void
+    (button: LinkButton, link_: string): void
 }
 interface MenuCallback {
     (widget: Widget): void
@@ -4127,10 +4127,10 @@ interface PageSetupDoneFunc {
     (page_setup: PageSetup, data: any | null): void
 }
 interface PrintFunc {
-    (func_data: any | null, str: string | null): void
+    (func_data: any | null, str: string): void
 }
 interface PrintSettingsFunc {
-    (key: string | null, value: string | null): void
+    (key: string, value: string): void
 }
 interface RcPropertyParser {
     (pspec: GObject.ParamSpec, rc_string: GLib.String, property_value: any): boolean
@@ -4160,7 +4160,7 @@ interface TextTagTableForeach {
     (tag: TextTag, data: any | null): void
 }
 interface TranslateFunc {
-    (path: string | null, func_data: any | null): string | null
+    (path: string, func_data: any | null): string | null
 }
 interface TreeCellDataFunc {
     (tree_column: TreeViewColumn, cell: CellRenderer, tree_model: TreeModel, iter: TreeIter, data: any | null): void
@@ -4196,7 +4196,7 @@ interface TreeViewRowSeparatorFunc {
     (model: TreeModel, iter: TreeIter, data: any | null): boolean
 }
 interface TreeViewSearchEqualFunc {
-    (model: TreeModel, column: number, key: string | null, iter: TreeIter, search_data: any | null): boolean
+    (model: TreeModel, column: number, key: string, iter: TreeIter, search_data: any | null): boolean
 }
 interface TreeViewSearchPositionFunc {
     (tree_view: TreeView, search_dialog: Widget): void
@@ -4376,7 +4376,7 @@ interface Activatable {
      * @param action the related #GtkAction or %NULL
      */
     vfunc_sync_action_properties(action: Action | null): void
-    vfunc_update(action: Action, property_name: string | null): void
+    vfunc_update(action: Action, property_name: string): void
 
     // Class property signals of Gtk-2.0.Gtk.Activatable
 
@@ -4674,7 +4674,7 @@ interface Buildable {
      * @param name name of child to construct
      * @returns the constructed child
      */
-    construct_child(builder: Builder, name: string | null): GObject.Object
+    construct_child(builder: Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
@@ -4683,7 +4683,7 @@ interface Buildable {
      * @param tagname the name of the tag
      * @param data user data created in custom_tag_start
      */
-    custom_finished(builder: Builder, child: GObject.Object | null, tagname: string | null, data: any | null): void
+    custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: any | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
@@ -4692,7 +4692,7 @@ interface Buildable {
      * @param tagname name of tag
      * @param data user data that will be passed in to parser functions
      */
-    custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string | null, data: any | null): void
+    custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: any | null): void
     /**
      * This is called for each unknown element under &lt;child&gt;.
      * @param builder a #GtkBuilder used to construct this object
@@ -4700,14 +4700,14 @@ interface Buildable {
      * @param tagname name of tag
      * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
      */
-    custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string | null): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ any | null ]
+    custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ any | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
      * @param builder a #GtkBuilder
      * @param childname name of child
      * @returns the internal child of the buildable object
      */
-    get_internal_child(builder: Builder, childname: string | null): GObject.Object
+    get_internal_child(builder: Builder, childname: string): GObject.Object
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -4716,7 +4716,7 @@ interface Buildable {
      * used to construct the `buildable`.
      * @returns the name set with gtk_buildable_set_name()
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Called when the builder finishes the parsing of a
      * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>.
@@ -4732,12 +4732,12 @@ interface Buildable {
      * @param name name of property
      * @param value value of property
      */
-    set_buildable_property(builder: Builder, name: string | null, value: any): void
+    set_buildable_property(builder: Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
      * @param name name to set
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Own virtual methods of Gtk-2.0.Gtk.Buildable
 
@@ -4760,7 +4760,7 @@ interface Buildable {
      * @param name name of child to construct
      * @returns the constructed child
      */
-    vfunc_construct_child(builder: Builder, name: string | null): GObject.Object
+    vfunc_construct_child(builder: Builder, name: string): GObject.Object
     /**
      * This is similar to gtk_buildable_parser_finished() but is
      * called once for each custom tag handled by the `buildable`.
@@ -4770,7 +4770,7 @@ interface Buildable {
      * @param tagname the name of the tag
      * @param data user data created in custom_tag_start
      */
-    vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string | null, data: any | null): void
+    vfunc_custom_finished(builder: Builder, child: GObject.Object | null, tagname: string, data: any | null): void
     /**
      * This is called at the end of each custom element handled by
      * the buildable.
@@ -4780,7 +4780,7 @@ interface Buildable {
      * @param tagname name of tag
      * @param data user data that will be passed in to parser functions
      */
-    vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string | null, data: any | null): void
+    vfunc_custom_tag_end(builder: Builder, child: GObject.Object | null, tagname: string, data: any | null): void
     /**
      * This is called for each unknown element under &lt;child&gt;.
      * @virtual 
@@ -4789,7 +4789,7 @@ interface Buildable {
      * @param tagname name of tag
      * @returns %TRUE if a object has a custom implementation, %FALSE          if it doesn't.
      */
-    vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string | null): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ any | null ]
+    vfunc_custom_tag_start(builder: Builder, child: GObject.Object | null, tagname: string): [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ any | null ]
     /**
      * Get the internal child called `childname` of the `buildable` object.
      * @virtual 
@@ -4797,7 +4797,7 @@ interface Buildable {
      * @param childname name of child
      * @returns the internal child of the buildable object
      */
-    vfunc_get_internal_child(builder: Builder, childname: string | null): GObject.Object
+    vfunc_get_internal_child(builder: Builder, childname: string): GObject.Object
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -4807,7 +4807,7 @@ interface Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Called when the builder finishes the parsing of a
      * <link linkend="BUILDER-UI">GtkBuilder UI definition</link>.
@@ -4825,13 +4825,13 @@ interface Buildable {
      * @param name name of property
      * @param value value of property
      */
-    vfunc_set_buildable_property(builder: Builder, name: string | null, value: any): void
+    vfunc_set_buildable_property(builder: Builder, name: string, value: any): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    vfunc_set_name(name: string | null): void
+    vfunc_set_name(name: string): void
 
     // Class property signals of Gtk-2.0.Gtk.Buildable
 
@@ -5070,7 +5070,7 @@ interface CellLayout {
      * @param attribute An attribute on the renderer.
      * @param column The column position on the model to get the attribute from.
      */
-    add_attribute(cell: CellRenderer, attribute: string | null, column: number): void
+    add_attribute(cell: CellRenderer, attribute: string, column: number): void
     /**
      * Unsets all the mappings on all renderers on `cell_layout` and
      * removes all renderers from `cell_layout`.
@@ -5137,7 +5137,7 @@ interface CellLayout {
      * @param attribute An attribute on the renderer.
      * @param column The column position on the model to get the attribute from.
      */
-    vfunc_add_attribute(cell: CellRenderer, attribute: string | null, column: number): void
+    vfunc_add_attribute(cell: CellRenderer, attribute: string, column: number): void
     /**
      * Unsets all the mappings on all renderers on `cell_layout` and
      * removes all renderers from `cell_layout`.
@@ -5327,7 +5327,7 @@ interface Editable {
      * @param new_text_length the length of the text in bytes, or -1
      * @param position location of the position text will be inserted at
      */
-    insert_text(new_text: string | null, new_text_length: number, position: number): /* position */ number
+    insert_text(new_text: string, new_text_length: number, position: number): /* position */ number
     /**
      * Pastes the content of the clipboard to the current position of the
      * cursor in the editable.
@@ -5560,7 +5560,7 @@ interface FileChooser extends Widget {
      * @param uri URI of the folder to add
      * @returns %TRUE if the folder could be added successfully, %FALSE otherwise.  In the latter case, the @error will be set as appropriate.
      */
-    add_shortcut_folder_uri(uri: string | null): boolean
+    add_shortcut_folder_uri(uri: string): boolean
     /**
      * Gets the type of operation that the file chooser is performing; see
      * gtk_file_chooser_set_action().
@@ -5763,7 +5763,7 @@ interface FileChooser extends Widget {
      * @param uri URI of the folder to remove
      * @returns %TRUE if the operation succeeds, %FALSE otherwise. In the latter case, the @error will be set as appropriate. See also: gtk_file_chooser_add_shortcut_folder_uri()
      */
-    remove_shortcut_folder_uri(uri: string | null): boolean
+    remove_shortcut_folder_uri(uri: string): boolean
     /**
      * Selects all the files in the current folder of a file chooser.
      */
@@ -5790,7 +5790,7 @@ interface FileChooser extends Widget {
      * @param uri the URI to select
      * @returns %TRUE if both the folder could be changed and the URI was selected successfully, %FALSE otherwise.
      */
-    select_uri(uri: string | null): boolean
+    select_uri(uri: string): boolean
     /**
      * Sets the type of operation that the chooser is performing; the
      * user interface is adapted to suit the selected action. For example,
@@ -5829,7 +5829,7 @@ interface FileChooser extends Widget {
      * @param uri the URI for the new current folder
      * @returns %TRUE if the folder could be changed successfully, %FALSE otherwise.
      */
-    set_current_folder_uri(uri: string | null): boolean
+    set_current_folder_uri(uri: string): boolean
     /**
      * Sets the current name in the file selector, as if entered
      * by the user. Note that the name passed in here is a UTF-8
@@ -6047,7 +6047,7 @@ interface FileChooser extends Widget {
      * @param uri the URI to set as current
      * @returns %TRUE if both the folder could be changed and the URI was selected successfully, %FALSE otherwise.
      */
-    set_uri(uri: string | null): boolean
+    set_uri(uri: string): boolean
     /**
      * Sets whether the file chooser should display a stock label with the name of
      * the file that is being previewed; the default is %TRUE.  Applications that
@@ -6081,7 +6081,7 @@ interface FileChooser extends Widget {
      * is otherwise not currently selected, does nothing.
      * @param uri the URI to unselect
      */
-    unselect_uri(uri: string | null): void
+    unselect_uri(uri: string): void
 
     // Own signals of Gtk-2.0.Gtk.FileChooser
 
@@ -7303,13 +7303,13 @@ interface RecentChooser {
      * @param uri a URI
      * @returns %TRUE if @uri was found.
      */
-    select_uri(uri: string | null): boolean
+    select_uri(uri: string): boolean
     /**
      * Sets `uri` as the current URI for `chooser`.
      * @param uri a URI
      * @returns %TRUE if the URI was found.
      */
-    set_current_uri(uri: string | null): boolean
+    set_current_uri(uri: string): boolean
     /**
      * Sets `filter` as the current #GtkRecentFilter object used by `chooser`
      * to affect the displayed recently used resources.
@@ -7389,7 +7389,7 @@ interface RecentChooser {
      * Unselects `uri` inside `chooser`.
      * @param uri a URI
      */
-    unselect_uri(uri: string | null): void
+    unselect_uri(uri: string): void
 
     // Own virtual methods of Gtk-2.0.Gtk.RecentChooser
 
@@ -7442,7 +7442,7 @@ interface RecentChooser {
      * @param uri a URI
      * @returns %TRUE if @uri was found.
      */
-    vfunc_select_uri(uri: string | null): boolean
+    vfunc_select_uri(uri: string): boolean
     vfunc_selection_changed(): void
     /**
      * Sets `uri` as the current URI for `chooser`.
@@ -7450,7 +7450,7 @@ interface RecentChooser {
      * @param uri a URI
      * @returns %TRUE if the URI was found.
      */
-    vfunc_set_current_uri(uri: string | null): boolean
+    vfunc_set_current_uri(uri: string): boolean
     /**
      * Sets the comparison function used when sorting to be `sort_func`.  If
      * the `chooser` has the sort type set to #GTK_RECENT_SORT_CUSTOM then
@@ -7474,7 +7474,7 @@ interface RecentChooser {
      * @virtual 
      * @param uri a URI
      */
-    vfunc_unselect_uri(uri: string | null): void
+    vfunc_unselect_uri(uri: string): void
 
     // Own signals of Gtk-2.0.Gtk.RecentChooser
 
@@ -8050,7 +8050,7 @@ interface TreeModel {
      * @param path_string A string representation of a #GtkTreePath.
      * @returns %TRUE, if @iter was set.
      */
-    get_iter_from_string(path_string: string | null): [ /* returnType */ boolean, /* iter */ TreeIter ]
+    get_iter_from_string(path_string: string): [ /* returnType */ boolean, /* iter */ TreeIter ]
     /**
      * Returns the number of columns supported by `tree_model`.
      * @returns The number of columns.
@@ -8845,12 +8845,12 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * Returns the comments string.
      * @returns The comments. The string is owned by the about  dialog and must not be modified.
      */
-    get_comments(): string | null
+    get_comments(): string
     /**
      * Returns the copyright string.
      * @returns The copyright string. The string is owned by the about  dialog and must not be modified.
      */
-    get_copyright(): string | null
+    get_copyright(): string
     /**
      * Returns the string which are displayed in the documenters
      * tab of the secondary credits dialog.
@@ -8861,7 +8861,7 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * Returns the license information.
      * @returns The license information. The string is owned by the about  dialog and must not be modified.
      */
-    get_license(): string | null
+    get_license(): string
     /**
      * Returns the pixbuf displayed as logo in the about dialog.
      * @returns the pixbuf displayed as logo. The   pixbuf is owned by the about dialog. If you want to keep a   reference to it, you have to call g_object_ref() on it.
@@ -8871,38 +8871,38 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * Returns the icon name displayed as logo in the about dialog.
      * @returns the icon name displayed as logo. The string is   owned by the dialog. If you want to keep a reference   to it, you have to call g_strdup() on it.
      */
-    get_logo_icon_name(): string | null
+    get_logo_icon_name(): string
     /**
      * Returns the program name displayed in the about dialog.
      * @returns The program name. The string is owned by the about  dialog and must not be modified.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns the program name displayed in the about dialog.
      * @returns The program name. The string is owned by the about  dialog and must not be modified.
      */
-    get_program_name(): string | null
+    get_program_name(): string
     /**
      * Returns the translator credits string which is displayed
      * in the translators tab of the secondary credits dialog.
      * @returns The translator credits string. The string is   owned by the about dialog and must not be modified.
      */
-    get_translator_credits(): string | null
+    get_translator_credits(): string
     /**
      * Returns the version string.
      * @returns The version string. The string is owned by the about  dialog and must not be modified.
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Returns the website URL.
      * @returns The website URL. The string is owned by the about  dialog and must not be modified.
      */
-    get_website(): string | null
+    get_website(): string
     /**
      * Returns the label used for the website link.
      * @returns The label used for the website link. The string is     owned by the about dialog and must not be modified.
      */
-    get_website_label(): string | null
+    get_website_label(): string
     /**
      * Returns whether the license text in `about` is
      * automatically wrapped.
@@ -8914,13 +8914,13 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * of the secondary credits dialog.
      * @param artists a %NULL-terminated array of strings
      */
-    set_artists(artists: string | null): void
+    set_artists(artists: string): void
     /**
      * Sets the strings which are displayed in the authors tab
      * of the secondary credits dialog.
      * @param authors a %NULL-terminated array of strings
      */
-    set_authors(authors: string | null): void
+    set_authors(authors: string): void
     /**
      * Sets the comments string to display in the about dialog.
      * This should be a short string of one or two lines.
@@ -8938,7 +8938,7 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * of the secondary credits dialog.
      * @param documenters a %NULL-terminated array of strings
      */
-    set_documenters(documenters: string | null): void
+    set_documenters(documenters: string): void
     /**
      * Sets the license information to be displayed in the secondary
      * license dialog. If `license` is %NULL, the license button is
@@ -8966,12 +8966,20 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * @param name the program name
      */
     set_name(name: string | null): void
+
+    // Overloads of set_name
+
+    /**
+     * Sets the name of the `buildable` object.
+     * @param name name to set
+     */
+    set_name(name: string): void
     /**
      * Sets the name to display in the about dialog.
      * If this is not set, it defaults to g_get_application_name().
      * @param name the program name
      */
-    set_program_name(name: string | null): void
+    set_program_name(name: string): void
     /**
      * Sets the translator credits string which is displayed in
      * the translators tab of the secondary credits dialog.
@@ -9010,7 +9018,7 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
      * It defaults to the website URL.
      * @param website_label the label used for the website link
      */
-    set_website_label(website_label: string | null): void
+    set_website_label(website_label: string): void
     /**
      * Sets whether the license text in `about` is
      * automatically wrapped.
@@ -9053,7 +9061,7 @@ interface AboutDialog extends Atk.ImplementorIface, Buildable {
 
     // Own virtual methods of Gtk-2.0.Gtk.AboutDialog
 
-    vfunc_activate_link(uri: string | null): boolean
+    vfunc_activate_link(uri: string): boolean
 
     // Own signals of Gtk-2.0.Gtk.AboutDialog
 
@@ -9441,7 +9449,7 @@ interface AccelGroup {
      * @param accel_path path used for determining key and modifiers.
      * @param closure closure to be executed upon accelerator activation
      */
-    connect_by_path(accel_path: string | null, closure: GObject.TClosure): void
+    connect_by_path(accel_path: string, closure: GObject.TClosure): void
     /**
      * Removes an accelerator previously installed through
      * gtk_accel_group_connect().
@@ -9831,14 +9839,14 @@ class AccelLabel extends Label {
      * @param string the label string. Must be non-%NULL.
      * @returns a new #GtkAccelLabel.
      */
-    constructor(string: string | null) 
+    constructor(string: string) 
     /**
      * Creates a new #GtkAccelLabel.
      * @constructor 
      * @param string the label string. Must be non-%NULL.
      * @returns a new #GtkAccelLabel.
      */
-    static new(string: string | null): AccelLabel
+    static new(string: string): AccelLabel
     _init(config?: AccelLabel.ConstructorProperties): void
 }
 
@@ -9911,7 +9919,7 @@ class AccelMap extends GObject.Object {
      * @param accel_key the accelerator key
      * @param accel_mods the accelerator modifiers
      */
-    static add_entry(accel_path: string | null, accel_key: number, accel_mods: Gdk.ModifierType): void
+    static add_entry(accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType): void
     /**
      * Adds a filter to the global list of accel path filters.
      * 
@@ -9923,7 +9931,7 @@ class AccelMap extends GObject.Object {
      * map dump.
      * @param filter_pattern a pattern (see #GPatternSpec)
      */
-    static add_filter(filter_pattern: string | null): void
+    static add_filter(filter_pattern: string): void
     /**
      * Changes the `accel_key` and `accel_mods` currently associated with `accel_path`.
      * Due to conflicts with other accelerators, a change may not always be possible,
@@ -9941,13 +9949,13 @@ class AccelMap extends GObject.Object {
      * @param replace %TRUE if other accelerators may be deleted upon conflicts
      * @returns %TRUE if the accelerator could be changed, %FALSE otherwise
      */
-    static change_entry(accel_path: string | null, accel_key: number, accel_mods: Gdk.ModifierType, replace: boolean): boolean
+    static change_entry(accel_path: string, accel_key: number, accel_mods: Gdk.ModifierType, replace: boolean): boolean
     /**
      * Parses a file previously saved with gtk_accel_map_save() for
      * accelerator specifications, and propagates them accordingly.
      * @param file_name a file containing accelerator specifications,   in the GLib file name encoding
      */
-    static load(file_name: string | null): void
+    static load(file_name: string): void
     /**
      * Filedescriptor variant of gtk_accel_map_load().
      * 
@@ -9979,14 +9987,14 @@ class AccelMap extends GObject.Object {
      * have to be unlocked.
      * @param accel_path a valid accelerator path
      */
-    static lock_path(accel_path: string | null): void
+    static lock_path(accel_path: string): void
     /**
      * Looks up the accelerator entry for `accel_path` and fills in `key`.
      * @param accel_path a valid accelerator path
      * @param key the accelerator key to be filled in (optional)
      * @returns %TRUE if @accel_path is known, %FALSE otherwise
      */
-    static lookup_entry(accel_path: string | null, key: AccelKey): boolean
+    static lookup_entry(accel_path: string, key: AccelKey): boolean
     /**
      * Saves current accelerator specifications (accelerator path, key
      * and modifiers) to `file_name`.
@@ -9994,7 +10002,7 @@ class AccelMap extends GObject.Object {
      * gtk_accel_map_load().
      * @param file_name the name of the file to contain accelerator specifications,   in the GLib file name encoding
      */
-    static save(file_name: string | null): void
+    static save(file_name: string): void
     /**
      * Filedescriptor variant of gtk_accel_map_save().
      * 
@@ -10007,7 +10015,7 @@ class AccelMap extends GObject.Object {
      * Refer to gtk_accel_map_lock_path() for information about accelerator path locking.
      * @param accel_path a valid accelerator path
      */
-    static unlock_path(accel_path: string | null): void
+    static unlock_path(accel_path: string): void
 }
 
 module Accessible {
@@ -10462,7 +10470,7 @@ interface Action extends Buildable {
      * Returns the accel path for this action.
      * @returns the accel path for this action, or %NULL   if none is set. The returned string is owned by GTK+   and must not be freed or modified.
      */
-    get_accel_path(): string | null
+    get_accel_path(): string
     /**
      * Returns whether `action<`!-- -->'s menu item proxies will ignore the
      * #GtkSettings:gtk-menu-images setting and always show their image,
@@ -10479,7 +10487,7 @@ interface Action extends Buildable {
      * Gets the icon name of `action`.
      * @returns the icon name
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Checks whether `action` is important or not
      * @returns whether @action is important
@@ -10489,12 +10497,12 @@ interface Action extends Buildable {
      * Gets the label text of `action`.
      * @returns the label text
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Returns the name of the action.
      * @returns the name of the action. The string belongs to GTK+ and should not   be freed.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns the proxy widgets for an action.
      * See also gtk_widget_get_action().
@@ -10512,17 +10520,17 @@ interface Action extends Buildable {
      * Gets the short label text of `action`.
      * @returns the short label text.
      */
-    get_short_label(): string | null
+    get_short_label(): string
     /**
      * Gets the stock id of `action`.
      * @returns the stock id
      */
-    get_stock_id(): string | null
+    get_stock_id(): string
     /**
      * Gets the tooltip text of `action`.
      * @returns the tooltip text
      */
-    get_tooltip(): string | null
+    get_tooltip(): string
     /**
      * Returns whether the action itself is visible. Note that this doesn't
      * necessarily mean effective visibility. See gtk_action_is_sensitive()
@@ -10566,7 +10574,7 @@ interface Action extends Buildable {
      * g_intern_static_string().
      * @param accel_path the accelerator path
      */
-    set_accel_path(accel_path: string | null): void
+    set_accel_path(accel_path: string): void
     /**
      * Sets whether `action<`!-- -->'s menu item proxies will ignore the
      * #GtkSettings:gtk-menu-images setting and always show their image, if available.
@@ -10585,7 +10593,7 @@ interface Action extends Buildable {
      * Sets the icon name on `action`
      * @param icon_name the icon name to set
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * Sets whether the action is important, this attribute is used
      * primarily by toolbar items to decide whether to show a label
@@ -10597,7 +10605,7 @@ interface Action extends Buildable {
      * Sets the label of `action`.
      * @param label the label text to set
      */
-    set_label(label: string | null): void
+    set_label(label: string): void
     /**
      * Sets the ::sensitive property of the action to `sensitive`. Note that
      * this doesn't necessarily mean effective sensitivity. See
@@ -10610,17 +10618,17 @@ interface Action extends Buildable {
      * Sets a shorter label text on `action`.
      * @param short_label the label text to set
      */
-    set_short_label(short_label: string | null): void
+    set_short_label(short_label: string): void
     /**
      * Sets the stock id on `action`
      * @param stock_id the stock id
      */
-    set_stock_id(stock_id: string | null): void
+    set_stock_id(stock_id: string): void
     /**
      * Sets the tooltip text on `action`
      * @param tooltip the tooltip text
      */
-    set_tooltip(tooltip: string | null): void
+    set_tooltip(tooltip: string): void
     /**
      * Sets the ::visible property of the action to `visible`. Note that
      * this doesn't necessarily mean effective visibility. See
@@ -10823,7 +10831,7 @@ class Action extends GObject.Object {
      * @param stock_id the stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkAction
      */
-    constructor(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null) 
+    constructor(name: string, label: string | null, tooltip: string | null, stock_id: string) 
     /**
      * Creates a new #GtkAction object. To add the action to a
      * #GtkActionGroup and set the accelerator for the action,
@@ -10837,7 +10845,7 @@ class Action extends GObject.Object {
      * @param stock_id the stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkAction
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null): Action
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string): Action
     _init(config?: Action.ConstructorProperties): void
 }
 
@@ -10979,12 +10987,12 @@ interface ActionGroup extends Buildable {
      * @param action_name the name of the action
      * @returns the action, or %NULL if no action by that name exists
      */
-    get_action(action_name: string | null): Action
+    get_action(action_name: string): Action
     /**
      * Gets the name of the action group.
      * @returns the name of the action group.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns %TRUE if the group is sensitive.  The constituent actions
      * can only be logically sensitive (see gtk_action_is_sensitive()) if
@@ -11034,7 +11042,7 @@ interface ActionGroup extends Buildable {
      * gtk_action_group_set_translate_func().
      * @param domain the translation domain to use for g_dgettext() calls
      */
-    set_translation_domain(domain: string | null): void
+    set_translation_domain(domain: string): void
     /**
      * Changes the visible of `action_group`.
      * @param visible new visiblity
@@ -11046,7 +11054,7 @@ interface ActionGroup extends Buildable {
      * @param string a string
      * @returns the translation of @string
      */
-    translate_string(string: string | null): string | null
+    translate_string(string: string): string
 
     // Own virtual methods of Gtk-2.0.Gtk.ActionGroup
 
@@ -11056,7 +11064,7 @@ interface ActionGroup extends Buildable {
      * @param action_name the name of the action
      * @returns the action, or %NULL if no action by that name exists
      */
-    vfunc_get_action(action_name: string | null): Action
+    vfunc_get_action(action_name: string): Action
 
     // Own signals of Gtk-2.0.Gtk.ActionGroup
 
@@ -11108,7 +11116,7 @@ class ActionGroup extends GObject.Object {
      * @param name the name of the action group.
      * @returns the new #GtkActionGroup
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Creates a new #GtkActionGroup object. The name of the action group
      * is used when associating <link linkend="Action-Accel">keybindings</link>
@@ -11117,7 +11125,7 @@ class ActionGroup extends GObject.Object {
      * @param name the name of the action group.
      * @returns the new #GtkActionGroup
      */
-    static new(name: string | null): ActionGroup
+    static new(name: string): ActionGroup
     _init(config?: ActionGroup.ConstructorProperties): void
 }
 
@@ -11967,7 +11975,7 @@ class AspectFrame extends Frame {
      * @param obey_child If %TRUE, `ratio` is ignored, and the aspect  ratio is taken from the requistion of the child.
      * @returns the new #GtkAspectFrame.
      */
-    constructor(label: string | null, xalign: number, yalign: number, ratio: number, obey_child: boolean) 
+    constructor(label: string, xalign: number, yalign: number, ratio: number, obey_child: boolean) 
     /**
      * Create a new #GtkAspectFrame.
      * @constructor 
@@ -11978,7 +11986,7 @@ class AspectFrame extends Frame {
      * @param obey_child If %TRUE, `ratio` is ignored, and the aspect  ratio is taken from the requistion of the child.
      * @returns the new #GtkAspectFrame.
      */
-    static new(label: string | null, xalign: number, yalign: number, ratio: number, obey_child: boolean): AspectFrame
+    static new(label: string, xalign: number, yalign: number, ratio: number, obey_child: boolean): AspectFrame
 
     // Overloads of new
 
@@ -11989,7 +11997,7 @@ class AspectFrame extends Frame {
      * @param label the text to use as the label of the frame
      * @returns a new #GtkFrame widget
      */
-    static new(label: string | null): Frame
+    static new(label: string): Frame
     _init(config?: AspectFrame.ConstructorProperties): void
 }
 
@@ -12113,7 +12121,7 @@ interface Assistant extends Atk.ImplementorIface, Buildable {
      * @param page a page of `assistant`
      * @returns the title for @page.
      */
-    get_page_title(page: Widget): string | null
+    get_page_title(page: Widget): string
     /**
      * Gets the page type of `page`.
      * @param page a page of `assistant`
@@ -12181,7 +12189,7 @@ interface Assistant extends Atk.ImplementorIface, Buildable {
      * @param page a page of `assistant`
      * @param title the new title for `page`
      */
-    set_page_title(page: Widget, title: string | null): void
+    set_page_title(page: Widget, title: string): void
     /**
      * Sets the page type for `page`. The page type determines the page
      * behavior in the `assistant`.
@@ -12872,7 +12880,7 @@ interface Builder {
      * @param filename the name of the file to parse
      * @returns A positive value on success, 0 if an error occurred
      */
-    add_from_file(filename: string | null): number
+    add_from_file(filename: string): number
     /**
      * Parses a string containing a <link linkend="BUILDER-UI">GtkBuilder
      * UI definition</link> and merges it with the current contents of `builder`.
@@ -12883,7 +12891,7 @@ interface Builder {
      * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
      * @returns A positive value on success, 0 if an error occurred
      */
-    add_from_string(buffer: string | null, length: number): number
+    add_from_string(buffer: string, length: number): number
     /**
      * Parses a file containing a <link linkend="BUILDER-UI">GtkBuilder
      * UI definition</link> building only the requested objects and merges
@@ -12902,7 +12910,7 @@ interface Builder {
      * @param object_ids nul-terminated array of objects to build
      * @returns A positive value on success, 0 if an error occurred
      */
-    add_objects_from_file(filename: string | null, object_ids: string | null): number
+    add_objects_from_file(filename: string, object_ids: string | null): number
     /**
      * Parses a string containing a <link linkend="BUILDER-UI">GtkBuilder
      * UI definition</link> building only the requested objects and merges
@@ -12921,7 +12929,7 @@ interface Builder {
      * @param object_ids nul-terminated array of objects to build
      * @returns A positive value on success, 0 if an error occurred
      */
-    add_objects_from_string(buffer: string | null, length: number, object_ids: string | null): number
+    add_objects_from_string(buffer: string, length: number, object_ids: string | null): number
     /**
      * This method is a simpler variation of gtk_builder_connect_signals_full().
      * It uses #GModule's introspective features (by opening the module %NULL)
@@ -12953,7 +12961,7 @@ interface Builder {
      * @param name name of object to get
      * @returns the object named @name or %NULL if    it could not be found in the object tree.
      */
-    get_object(name: string | null): GObject.Object
+    get_object(name: string): GObject.Object
     /**
      * Gets all objects that have been constructed by `builder`. Note that
      * this function does not increment the reference counts of the returned
@@ -12965,7 +12973,7 @@ interface Builder {
      * Gets the translation domain of `builder`.
      * @returns the translation domain. This string is owned by the builder object and must not be modified or freed.
      */
-    get_translation_domain(): string | null
+    get_translation_domain(): string
     /**
      * Looks up a type by name, using the virtual function that
      * #GtkBuilder has for that purpose. This is mainly used when
@@ -12973,7 +12981,7 @@ interface Builder {
      * @param type_name type name to lookup
      * @returns the #GType found for @type_name or #G_TYPE_INVALID   if no type was found
      */
-    get_type_from_name(type_name: string | null): GObject.GType
+    get_type_from_name(type_name: string): GObject.GType
     /**
      * Sets the translation domain of `builder`.
      * See #GtkBuilder:translation-domain.
@@ -12996,7 +13004,7 @@ interface Builder {
      * @param string the string representation of the value
      * @returns %TRUE on success
      */
-    value_from_string(pspec: GObject.ParamSpec, string: string | null): [ /* returnType */ boolean, /* value */ any ]
+    value_from_string(pspec: GObject.ParamSpec, string: string): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Like gtk_builder_value_from_string(), this function demarshals
      * a value from a string, but takes a #GType instead of #GParamSpec.
@@ -13009,7 +13017,7 @@ interface Builder {
      * @param string the string representation of the value
      * @returns %TRUE on success
      */
-    value_from_string_type(type: GObject.GType, string: string | null): [ /* returnType */ boolean, /* value */ any ]
+    value_from_string_type(type: GObject.GType, string: string): [ /* returnType */ boolean, /* value */ any ]
 
     // Own virtual methods of Gtk-2.0.Gtk.Builder
 
@@ -13021,7 +13029,7 @@ interface Builder {
      * @param type_name type name to lookup
      * @returns the #GType found for @type_name or #G_TYPE_INVALID   if no type was found
      */
-    vfunc_get_type_from_name(type_name: string | null): GObject.GType
+    vfunc_get_type_from_name(type_name: string): GObject.GType
 
     // Class property signals of Gtk-2.0.Gtk.Builder
 
@@ -13232,7 +13240,7 @@ interface Button extends Atk.ImplementorIface, Activatable, Buildable {
      * use as a container.
      * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
      */
-    get_label(): string | null
+    get_label(): string
     get_relief(): ReliefStyle
     /**
      * Returns whether the button label is a stock item.
@@ -13285,7 +13293,7 @@ interface Button extends Atk.ImplementorIface, Activatable, Buildable {
      * This will also clear any previously set labels.
      * @param label a string
      */
-    set_label(label: string | null): void
+    set_label(label: string): void
     set_relief(newstyle: ReliefStyle): void
     /**
      * If %TRUE, the label set on the button is used as a
@@ -13460,8 +13468,8 @@ class Button extends Bin {
      * @param stock_id the name of the stock item
      * @returns a new #GtkButton
      */
-    static new_from_stock(stock_id: string | null): Button
-    static new_with_label(label: string | null): Button
+    static new_from_stock(stock_id: string): Button
+    static new_with_label(label: string): Button
     /**
      * Creates a new #GtkButton containing a label.
      * If characters in `label` are preceded by an underscore, they are underlined.
@@ -13473,7 +13481,7 @@ class Button extends Bin {
      * @param label The text of the button, with an underscore in front of the         mnemonic character
      * @returns a new #GtkButton
      */
-    static new_with_mnemonic(label: string | null): Button
+    static new_with_mnemonic(label: string): Button
     _init(config?: Button.ConstructorProperties): void
 }
 
@@ -13905,14 +13913,14 @@ interface CList extends Atk.ImplementorIface, Buildable {
     set_column_max_width(column: number, max_width: number): void
     set_column_min_width(column: number, min_width: number): void
     set_column_resizeable(column: number, resizeable: boolean): void
-    set_column_title(column: number, title: string | null): void
+    set_column_title(column: number, title: string): void
     set_column_visibility(column: number, visible: boolean): void
     set_column_widget(column: number, widget: Widget): void
     set_column_width(column: number, width: number): void
     set_foreground(row: number, color: Gdk.Color): void
     set_hadjustment(adjustment: Adjustment): void
     set_pixmap(row: number, column: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap | null): void
-    set_pixtext(row: number, column: number, text: string | null, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap): void
+    set_pixtext(row: number, column: number, text: string, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap): void
     set_reorderable(reorderable: boolean): void
     set_row_data(row: number, data: any | null): void
     set_row_data_full(row: number, data: any | null, destroy: GLib.DestroyNotify): void
@@ -13924,7 +13932,7 @@ interface CList extends Atk.ImplementorIface, Buildable {
     set_shift(row: number, column: number, vertical: number, horizontal: number): void
     set_sort_column(column: number): void
     set_sort_type(sort_type: SortType): void
-    set_text(row: number, column: number, text: string | null): void
+    set_text(row: number, column: number, text: string): void
     set_use_drag_icons(use_icons: boolean): void
     set_vadjustment(adjustment: Adjustment): void
     sort(): void
@@ -13954,7 +13962,7 @@ interface CList extends Atk.ImplementorIface, Buildable {
     vfunc_scroll_vertical(scroll_type: ScrollType, position: number): void
     vfunc_select_all(): void
     vfunc_select_row(row: number, column: number, event: Gdk.Event): void
-    vfunc_set_cell_contents(clist_row: CListRow, column: number, type: CellType, text: string | null, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap): void
+    vfunc_set_cell_contents(clist_row: CListRow, column: number, type: CellType, text: string, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap): void
     vfunc_set_scroll_adjustments(hadjustment: Adjustment, vadjustment: Adjustment): void
     vfunc_sort_list(): void
     vfunc_start_selection(): void
@@ -14235,13 +14243,13 @@ interface CTree extends Atk.ImplementorIface, Buildable {
     node_set_cell_style(node: CTreeNode, column: number, style: Style): void
     node_set_foreground(node: CTreeNode, color: Gdk.Color): void
     node_set_pixmap(node: CTreeNode, column: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap | null): void
-    node_set_pixtext(node: CTreeNode, column: number, text: string | null, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap | null): void
+    node_set_pixtext(node: CTreeNode, column: number, text: string, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap | null): void
     node_set_row_data(node: CTreeNode, data: any | null): void
     node_set_row_data_full(node: CTreeNode, data: any | null, destroy: GLib.DestroyNotify): void
     node_set_row_style(node: CTreeNode, style: Style): void
     node_set_selectable(node: CTreeNode, selectable: boolean): void
     node_set_shift(node: CTreeNode, column: number, vertical: number, horizontal: number): void
-    node_set_text(node: CTreeNode, column: number, text: string | null): void
+    node_set_text(node: CTreeNode, column: number, text: string): void
     real_select_recursive(node: CTreeNode, state: number): void
     remove_node(node: CTreeNode): void
     select(node: CTreeNode): void
@@ -14249,7 +14257,7 @@ interface CTree extends Atk.ImplementorIface, Buildable {
     set_expander_style(expander_style: CTreeExpanderStyle): void
     set_indent(indent: number): void
     set_line_style(line_style: CTreeLineStyle): void
-    set_node_info(node: CTreeNode, text: string | null, spacing: number, pixmap_closed: Gdk.Pixmap | null, mask_closed: Gdk.Bitmap | null, pixmap_opened: Gdk.Pixmap | null, mask_opened: Gdk.Bitmap | null, is_leaf: boolean, expanded: boolean): void
+    set_node_info(node: CTreeNode, text: string, spacing: number, pixmap_closed: Gdk.Pixmap | null, mask_closed: Gdk.Bitmap | null, pixmap_opened: Gdk.Pixmap | null, mask_opened: Gdk.Bitmap | null, is_leaf: boolean, expanded: boolean): void
     set_show_stub(show_stub: boolean): void
     set_spacing(spacing: number): void
     sort_node(node: CTreeNode): void
@@ -15051,7 +15059,7 @@ interface CellRenderer {
      * @param flags render flags
      * @returns %TRUE if the event was consumed/handled
      */
-    activate(event: Gdk.Event, widget: Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): boolean
+    activate(event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): boolean
     /**
      * Causes the cell renderer to emit the #GtkCellRenderer::editing-canceled
      * signal.
@@ -15149,7 +15157,7 @@ interface CellRenderer {
      * @param flags render flags
      * @returns A new #GtkCellEditable, or %NULL
      */
-    start_editing(event: Gdk.Event, widget: Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): CellEditable
+    start_editing(event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): CellEditable
     /**
      * Informs the cell renderer that the editing is stopped.
      * If `canceled` is %TRUE, the cell renderer will emit the
@@ -15177,7 +15185,7 @@ interface CellRenderer {
      * @param flags render flags
      * @returns %TRUE if the event was consumed/handled
      */
-    vfunc_activate(event: Gdk.Event, widget: Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): boolean
+    vfunc_activate(event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): boolean
     /**
      * Causes the cell renderer to emit the #GtkCellRenderer::editing-canceled
      * signal.
@@ -15188,7 +15196,7 @@ interface CellRenderer {
      * @virtual 
      */
     vfunc_editing_canceled(): void
-    vfunc_editing_started(editable: CellEditable, path: string | null): void
+    vfunc_editing_started(editable: CellEditable, path: string): void
     /**
      * Obtains the width and height needed to render the cell. Used by view
      * widgets to determine the appropriate size for the cell_area passed to
@@ -15230,7 +15238,7 @@ interface CellRenderer {
      * @param flags render flags
      * @returns A new #GtkCellEditable, or %NULL
      */
-    vfunc_start_editing(event: Gdk.Event, widget: Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): CellEditable
+    vfunc_start_editing(event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState): CellEditable
 
     // Own signals of Gtk-2.0.Gtk.CellRenderer
 
@@ -15392,8 +15400,8 @@ interface CellRendererAccel {
 
     // Own virtual methods of Gtk-2.0.Gtk.CellRendererAccel
 
-    vfunc_accel_cleared(path_string: string | null): void
-    vfunc_accel_edited(path_string: string | null, accel_key: number, accel_mods: Gdk.ModifierType, hardware_keycode: number): void
+    vfunc_accel_cleared(path_string: string): void
+    vfunc_accel_edited(path_string: string, accel_key: number, accel_mods: Gdk.ModifierType, hardware_keycode: number): void
 
     // Own signals of Gtk-2.0.Gtk.CellRendererAccel
 
@@ -16928,7 +16936,7 @@ interface CellRendererText {
 
     // Own virtual methods of Gtk-2.0.Gtk.CellRendererText
 
-    vfunc_edited(path: string | null, new_text: string | null): void
+    vfunc_edited(path: string, new_text: string): void
 
     // Own signals of Gtk-2.0.Gtk.CellRendererText
 
@@ -17217,7 +17225,7 @@ interface CellRendererToggle {
 
     // Own virtual methods of Gtk-2.0.Gtk.CellRendererToggle
 
-    vfunc_toggled(path: string | null): void
+    vfunc_toggled(path: string): void
 
     // Own signals of Gtk-2.0.Gtk.CellRendererToggle
 
@@ -17502,7 +17510,7 @@ class CellView extends Widget {
      * @param markup the text to display in the cell view
      * @returns A newly created #GtkCellView widget.
      */
-    static new_with_markup(markup: string | null): CellView
+    static new_with_markup(markup: string): CellView
     /**
      * Creates a new #GtkCellView widget, adds a #GtkCellRendererPixbuf
      * to it, and makes its show `pixbuf`.
@@ -17518,7 +17526,7 @@ class CellView extends Widget {
      * @param text the text to display in the cell view
      * @returns A newly created #GtkCellView widget.
      */
-    static new_with_text(text: string | null): CellView
+    static new_with_text(text: string): CellView
     _init(config?: CellView.ConstructorProperties): void
 }
 
@@ -17663,7 +17671,7 @@ class CheckButton extends ToggleButton {
     constructor(config?: CheckButton.ConstructorProperties) 
     constructor() 
     static new(): CheckButton
-    static new_with_label(label: string | null): CheckButton
+    static new_with_label(label: string): CheckButton
     /**
      * Creates a new #GtkCheckButton containing a label. The label
      * will be created using gtk_label_new_with_mnemonic(), so underscores
@@ -17672,7 +17680,7 @@ class CheckButton extends ToggleButton {
      * @param label The text of the button, with an underscore in front of the         mnemonic character
      * @returns a new #GtkCheckButton
      */
-    static new_with_mnemonic(label: string | null): CheckButton
+    static new_with_mnemonic(label: string): CheckButton
     _init(config?: CheckButton.ConstructorProperties): void
 }
 
@@ -17976,7 +17984,7 @@ class CheckMenuItem extends MenuItem {
     constructor(config?: CheckMenuItem.ConstructorProperties) 
     constructor() 
     static new(): CheckMenuItem
-    static new_with_label(label: string | null): CheckMenuItem
+    static new_with_label(label: string): CheckMenuItem
     /**
      * Creates a new #GtkCheckMenuItem containing a label. The label
      * will be created using gtk_label_new_with_mnemonic(), so underscores
@@ -17985,7 +17993,7 @@ class CheckMenuItem extends MenuItem {
      * @param label The text of the button, with an underscore in front of the         mnemonic character
      * @returns a new #GtkCheckMenuItem
      */
-    static new_with_mnemonic(label: string | null): CheckMenuItem
+    static new_with_mnemonic(label: string): CheckMenuItem
     _init(config?: CheckMenuItem.ConstructorProperties): void
 }
 
@@ -18059,7 +18067,7 @@ interface Clipboard {
      * @param text a UTF-8 string.
      * @param len length of `text,` in bytes, or -1, in which case             the length will be determined with <function>strlen()</function>.
      */
-    set_text(text: string | null, len: number): void
+    set_text(text: string, len: number): void
     /**
      * Stores the current clipboard data somewhere so that it will stay
      * around after the application has quit.
@@ -18338,7 +18346,7 @@ interface ColorButton extends Atk.ImplementorIface, Activatable, Buildable {
      * Gets the title of the color selection dialog.
      * @returns An internal string, do not free the return value
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Does the color selection dialog use the alpha channel?
      * @returns %TRUE if the color sample uses alpha channel, %FALSE if not.
@@ -18358,7 +18366,7 @@ interface ColorButton extends Atk.ImplementorIface, Activatable, Buildable {
      * Sets the title for the color selection dialog.
      * @param title String containing new window title.
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets whether or not the color button should use the alpha channel.
      * @param use_alpha %TRUE if color button should use alpha channel, %FALSE if not.
@@ -18808,7 +18816,7 @@ class ColorSelection extends VBox {
      * @param str a string encoding a color palette.
      * @returns %TRUE if a palette was successfully parsed.
      */
-    static palette_from_string(str: string | null): [ /* returnType */ boolean, /* colors */ Gdk.Color[] ]
+    static palette_from_string(str: string): [ /* returnType */ boolean, /* colors */ Gdk.Color[] ]
     /**
      * Encodes a palette as a string, useful for persistent storage.
      * @param colors an array of colors.
@@ -19061,8 +19069,8 @@ class ColorSelectionDialog extends Dialog {
     // Constructors of Gtk-2.0.Gtk.ColorSelectionDialog
 
     constructor(config?: ColorSelectionDialog.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): ColorSelectionDialog
+    constructor(title: string) 
+    static new(title: string): ColorSelectionDialog
 
     // Overloads of new
 
@@ -19135,7 +19143,7 @@ interface Combo extends Atk.ImplementorIface, Buildable, Orientable {
 
     disable_activate(): void
     set_case_sensitive(val: boolean): void
-    set_item_string(item: Item, item_value: string | null): void
+    set_item_string(item: Item, item_value: string): void
     set_use_arrows(val: boolean): void
     set_use_arrows_always(val: boolean): void
     set_value_in_list(val: boolean, ok_if_empty: boolean): void
@@ -19567,7 +19575,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * gtk_combo_box_new_text().
      * @param text A string
      */
-    append_text(text: string | null): void
+    append_text(text: string): void
     /**
      * Returns the index of the currently active item, or -1 if there's no
      * active item. If the model is a non-flat treemodel, and the active item
@@ -19647,7 +19655,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * gtk_combo_box_set_add_tearoffs().
      * @returns the menu's title in tearoff mode. This is an internal copy of the string which must not be freed.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Returns the wrap width which is used to determine the number of columns
      * for the popup menu. If the wrap width is larger than 1, the combo box
@@ -19662,7 +19670,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * @param position An index to insert `text`
      * @param text A string
      */
-    insert_text(position: number, text: string | null): void
+    insert_text(position: number, text: string): void
     /**
      * Hides the menu or dropdown list of `combo_box`.
      * 
@@ -19683,7 +19691,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * gtk_combo_box_new_text().
      * @param text A string
      */
-    prepend_text(text: string | null): void
+    prepend_text(text: string): void
     /**
      * Removes the string at `position` from `combo_box`. Note that you can only use
      * this function with combo boxes constructed with gtk_combo_box_new_text().
@@ -19767,7 +19775,7 @@ interface ComboBox extends Atk.ImplementorIface, Buildable, CellEditable, CellLa
      * Sets the menu's title in tearoff mode.
      * @param title a title for the menu in tearoff mode
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets the wrap width of `combo_box` to be `width`. The wrap width is basically
      * the preferred number of columns when you want the popup to be layed out
@@ -20250,7 +20258,7 @@ interface ComboBoxText extends Atk.ImplementorIface, Buildable, CellEditable, Ce
      * Appends `string` to the list of strings stored in `combo_box`.
      * @param text A string
      */
-    append_text(text: string | null): void
+    append_text(text: string): void
     /**
      * Returns the currently active string in `combo_box,` or %NULL
      * if none is selected. If `combo_box` contains an entry, this
@@ -20264,12 +20272,12 @@ interface ComboBoxText extends Atk.ImplementorIface, Buildable, CellEditable, Ce
      * @param position An index to insert `text`
      * @param text A string
      */
-    insert_text(position: number, text: string | null): void
+    insert_text(position: number, text: string): void
     /**
      * Prepends `string` to the list of strings stored in `combo_box`.
      * @param text A string
      */
-    prepend_text(text: string | null): void
+    prepend_text(text: string): void
     /**
      * Removes the string at `position` from `combo_box`.
      * @param position Index of the item to remove
@@ -20570,14 +20578,14 @@ interface Container extends Atk.ImplementorIface, Buildable {
      * @param property_name the name of the property to get
      * @param value a location to return the value
      */
-    child_get_property(child: Widget, property_name: string | null, value: any): void
+    child_get_property(child: Widget, property_name: string, value: any): void
     /**
      * Sets a child property for `child` and `container`.
      * @param child a widget which is a child of `container`
      * @param property_name the name of the property to set
      * @param value the value to set the property to
      */
-    child_set_property(child: Widget, property_name: string | null, value: any): void
+    child_set_property(child: Widget, property_name: string, value: any): void
     /**
      * Returns the type of the children supported by the container.
      * 
@@ -21186,7 +21194,7 @@ interface Dialog extends Atk.ImplementorIface, Buildable {
      * @param response_id response ID for the button
      * @returns the button widget that was added
      */
-    add_button(button_text: string | null, response_id: number): Widget
+    add_button(button_text: string, response_id: number): Widget
     /**
      * Returns the action area of `dialog`.
      * @returns the action area.
@@ -22470,7 +22478,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * Appends the given text to the contents of the widget.
      * @param text the text to append
      */
-    append_text(text: string | null): void
+    append_text(text: string): void
     /**
      * Retrieves the value set by gtk_entry_set_activates_default().
      * @returns %TRUE if the entry will activate the default widget
@@ -22543,7 +22551,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * @param icon_pos Icon position
      * @returns An icon name, or %NULL if no icon is set or if the icon          wasn't set from an icon name
      */
-    get_icon_name(icon_pos: EntryIconPosition): string | null
+    get_icon_name(icon_pos: EntryIconPosition): string
     /**
      * Retrieves the image used for the icon.
      * 
@@ -22567,7 +22575,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * @param icon_pos Icon position
      * @returns A stock id, or %NULL if no icon is set or if the icon          wasn't set from a stock id
      */
-    get_icon_stock(icon_pos: EntryIconPosition): string | null
+    get_icon_stock(icon_pos: EntryIconPosition): string
     /**
      * Gets the type of representation being used by the icon
      * to store image data. If the icon has no image data,
@@ -22691,7 +22699,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * </programlisting></informalexample>
      * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the widget and must not be freed, modified or      stored.
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Retrieves the current length of the text in
      * `entry`.
@@ -22756,7 +22764,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * Prepends the given text to the contents of the widget.
      * @param text the text to prepend
      */
-    prepend_text(text: string | null): void
+    prepend_text(text: string): void
     /**
      * Indicates that some progress is made, but you don't know how much.
      * Causes the entry's progress indicator to enter "activity mode,"
@@ -23006,7 +23014,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
      * See gtk_entry_buffer_set_text().
      * @param text the new text
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
     /**
      * Sets whether the contents of the entry are visible or not.
      * When visibility is set to %FALSE, characters are displayed
@@ -23051,7 +23059,7 @@ interface Entry extends Atk.ImplementorIface, Buildable, CellEditable, Editable 
     vfunc_cut_clipboard(): void
     vfunc_delete_from_cursor(type: DeleteType, count: number): void
     vfunc_get_text_area_size(x: number, y: number, width: number, height: number): void
-    vfunc_insert_at_cursor(str: string | null): void
+    vfunc_insert_at_cursor(str: string): void
     vfunc_move_cursor(step: MovementStep, count: number, extend_selection: boolean): void
     vfunc_paste_clipboard(): void
     vfunc_populate_popup(menu: Menu): void
@@ -23420,7 +23428,7 @@ interface EntryBuffer {
      * @param chars text that was inserted
      * @param n_chars number of characters inserted
      */
-    emit_inserted_text(position: number, chars: string | null, n_chars: number): void
+    emit_inserted_text(position: number, chars: string, n_chars: number): void
     /**
      * Retrieves the length in bytes of the buffer.
      * See gtk_entry_buffer_get_length().
@@ -23445,7 +23453,7 @@ interface EntryBuffer {
      * unless this object emits a signal, or is finalized.
      * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the buffer and must not be freed, modified or      stored.
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Inserts `n_chars` characters of `chars` into the contents of the
      * buffer, at position `position`.
@@ -23461,7 +23469,7 @@ interface EntryBuffer {
      * @param n_chars the length of the text in characters, or -1
      * @returns The number of characters actually inserted.
      */
-    insert_text(position: number, chars: string | null, n_chars: number): number
+    insert_text(position: number, chars: string, n_chars: number): number
     /**
      * Sets the maximum allowed length of the contents of the buffer. If
      * the current contents are longer than the given length, then they
@@ -23479,7 +23487,7 @@ interface EntryBuffer {
      * @param chars the new text
      * @param n_chars the number of characters in `text,` or -1
      */
-    set_text(chars: string | null, n_chars: number): void
+    set_text(chars: string, n_chars: number): void
 
     // Own virtual methods of Gtk-2.0.Gtk.EntryBuffer
 
@@ -23505,7 +23513,7 @@ interface EntryBuffer {
      * @returns The number of characters in the buffer.
      */
     vfunc_get_length(): number
-    vfunc_get_text(n_bytes: number): string | null
+    vfunc_get_text(n_bytes: number): string
     /**
      * Inserts `n_chars` characters of `chars` into the contents of the
      * buffer, at position `position`.
@@ -23522,8 +23530,8 @@ interface EntryBuffer {
      * @param n_chars the length of the text in characters, or -1
      * @returns The number of characters actually inserted.
      */
-    vfunc_insert_text(position: number, chars: string | null, n_chars: number): number
-    vfunc_inserted_text(position: number, chars: string | null, n_chars: number): void
+    vfunc_insert_text(position: number, chars: string, n_chars: number): number
+    vfunc_inserted_text(position: number, chars: string, n_chars: number): void
 
     // Own signals of Gtk-2.0.Gtk.EntryBuffer
 
@@ -23814,7 +23822,7 @@ interface EntryCompletion extends Buildable, CellLayout {
      * the completion or %NULL if there's no completion ongoing.
      * @returns the prefix for the current completion
      */
-    get_completion_prefix(): string | null
+    get_completion_prefix(): string
     /**
      * Gets the entry `completion` has been attached to.
      * @returns The entry @completion has been attached to.
@@ -23870,7 +23878,7 @@ interface EntryCompletion extends Buildable, CellLayout {
      * @param index_ The index of the item to insert.
      * @param markup Markup of the item to insert.
      */
-    insert_action_markup(index_: number, markup: string | null): void
+    insert_action_markup(index_: number, markup: string): void
     /**
      * Inserts an action in `completion'`s action item list at position `index_`
      * with text `text`. If you want the action item to have markup, use
@@ -23878,7 +23886,7 @@ interface EntryCompletion extends Buildable, CellLayout {
      * @param index_ The index of the item to insert.
      * @param text Text of the item to insert.
      */
-    insert_action_text(index_: number, text: string | null): void
+    insert_action_text(index_: number, text: string): void
     /**
      * Requests a prefix insertion.
      */
@@ -23953,7 +23961,7 @@ interface EntryCompletion extends Buildable, CellLayout {
 
     vfunc_action_activated(index_: number): void
     vfunc_cursor_on_match(model: TreeModel, iter: TreeIter): boolean
-    vfunc_insert_prefix(prefix: string | null): boolean
+    vfunc_insert_prefix(prefix: string): boolean
     vfunc_match_selected(model: TreeModel, iter: TreeIter): boolean
 
     // Own signals of Gtk-2.0.Gtk.EntryCompletion
@@ -24299,7 +24307,7 @@ interface Expander extends Atk.ImplementorIface, Buildable {
      * widget.
      * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Returns whether the label widget will fill all available horizontal
      * space allocated to `expander`.
@@ -24500,14 +24508,14 @@ class Expander extends Bin {
      * @param label the text of the label
      * @returns a new #GtkExpander widget.
      */
-    constructor(label: string | null) 
+    constructor(label: string) 
     /**
      * Creates a new expander using `label` as the text of the label.
      * @constructor 
      * @param label the text of the label
      * @returns a new #GtkExpander widget.
      */
-    static new(label: string | null): Expander
+    static new(label: string): Expander
     /**
      * Creates a new expander using `label` as the text of the label.
      * If characters in `label` are preceded by an underscore, they are underlined.
@@ -24615,7 +24623,7 @@ interface FileChooserButton extends Atk.ImplementorIface, Buildable, FileChooser
      * should not be modified or freed.
      * @returns a pointer to the browse dialog's title.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Retrieves the width in characters of the `button` widget's entry and/or label.
      * @returns an integer width (in characters) that the button will use to size itself.
@@ -24633,7 +24641,7 @@ interface FileChooserButton extends Atk.ImplementorIface, Buildable, FileChooser
      * Modifies the `title` of the browse dialog used by `button`.
      * @param title the new browse dialog title.
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets the width (in characters) that `button` will use to `n_chars`.
      * @param n_chars the new width, in characters.
@@ -24795,7 +24803,7 @@ class FileChooserButton extends HBox {
      * @param action the open mode for the widget.
      * @returns a new button widget.
      */
-    constructor(title: string | null, action: FileChooserAction) 
+    constructor(title: string, action: FileChooserAction) 
     /**
      * Creates a new file-selecting button widget.
      * @constructor 
@@ -24803,7 +24811,7 @@ class FileChooserButton extends HBox {
      * @param action the open mode for the widget.
      * @returns a new button widget.
      */
-    static new(title: string | null, action: FileChooserAction): FileChooserButton
+    static new(title: string, action: FileChooserAction): FileChooserButton
 
     // Overloads of new
 
@@ -24823,7 +24831,7 @@ class FileChooserButton extends HBox {
      * @param backend the name of the #GtkFileSystem backend to use.
      * @returns a new button widget.
      */
-    static new_with_backend(title: string | null, action: FileChooserAction, backend: string | null): FileChooserButton
+    static new_with_backend(title: string, action: FileChooserAction, backend: string): FileChooserButton
     /**
      * Creates a #GtkFileChooserButton widget which uses `dialog` as its
      * file-picking window.
@@ -25281,7 +25289,7 @@ class FileChooserWidget extends VBox {
      * @param backend The name of the specific filesystem backend to use.
      * @returns a new #GtkFileChooserWidget
      */
-    static new_with_backend(action: FileChooserAction, backend: string | null): FileChooserWidget
+    static new_with_backend(action: FileChooserAction, backend: string): FileChooserWidget
     _init(config?: FileChooserWidget.ConstructorProperties): void
 }
 
@@ -25312,12 +25320,12 @@ interface FileFilter {
      * Adds a rule allowing a given mime type to `filter`.
      * @param mime_type name of a MIME type
      */
-    add_mime_type(mime_type: string | null): void
+    add_mime_type(mime_type: string): void
     /**
      * Adds a rule allowing a shell style glob to a filter.
      * @param pattern a shell style glob
      */
-    add_pattern(pattern: string | null): void
+    add_pattern(pattern: string): void
     /**
      * Adds a rule allowing image files in the formats supported
      * by GdkPixbuf.
@@ -25339,7 +25347,7 @@ interface FileFilter {
      * Gets the human-readable name for the filter. See gtk_file_filter_set_name().
      * @returns The human-readable name of the filter,   or %NULL. This value is owned by GTK+ and must not   be modified or freed.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the fields that need to be filled in for the structure
      * passed to gtk_file_filter_filter()
@@ -25473,7 +25481,7 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
 
     // Owm methods of Gtk-2.0.Gtk.FileSelection
 
-    complete(pattern: string | null): void
+    complete(pattern: string): void
     /**
      * This function returns the selected filename in the GLib file name
      * encoding. To convert to UTF-8, call g_filename_to_utf8(). The
@@ -25483,7 +25491,7 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
      * If no file is selected then the selected directory path is returned.
      * @returns currently-selected filename in the on-disk encoding.
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Determines whether or not the user is allowed to select multiple files in
      * the file list. See gtk_file_selection_set_select_multiple().
@@ -25504,7 +25512,7 @@ interface FileSelection extends Atk.ImplementorIface, Buildable {
      * may not be UTF-8. See g_filename_from_utf8().
      * @param filename a string to set as the default file name.
      */
-    set_filename(filename: string | null): void
+    set_filename(filename: string): void
     /**
      * Sets whether the user is allowed to select multiple files in the file list.
      * Use gtk_file_selection_get_selections () to get the list of selected files.
@@ -25714,8 +25722,8 @@ class FileSelection extends Dialog {
     // Constructors of Gtk-2.0.Gtk.FileSelection
 
     constructor(config?: FileSelection.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): FileSelection
+    constructor(title: string) 
+    static new(title: string): FileSelection
 
     // Overloads of new
 
@@ -26026,7 +26034,7 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
      * #PangoFontDescription object.
      * @returns an internal copy of the font name which must not be freed.
      */
-    get_font_name(): string | null
+    get_font_name(): string
     /**
      * Returns whether the font size will be shown in the label.
      * @returns whether the font size will be shown in the label.
@@ -26041,7 +26049,7 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
      * Retrieves the title of the font selection dialog.
      * @returns an internal copy of the title string which must not be freed.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Returns whether the selected font is used in the label.
      * @returns whether the selected font is used in the label.
@@ -26057,7 +26065,7 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
      * @param fontname Name of font to display in font selection dialog
      * @returns Return value of gtk_font_selection_dialog_set_font_name() if the font selection dialog exists, otherwise %FALSE.
      */
-    set_font_name(fontname: string | null): boolean
+    set_font_name(fontname: string): boolean
     /**
      * If `show_size` is %TRUE, the font size will be displayed along with the name of the selected font.
      * @param show_size %TRUE if font size should be displayed in dialog.
@@ -26072,7 +26080,7 @@ interface FontButton extends Atk.ImplementorIface, Activatable, Buildable {
      * Sets the title for the font selection dialog.
      * @param title a string containing the font selection dialog title
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * If `use_font` is %TRUE, the font name will be written using the selected font.
      * @param use_font If %TRUE, font name will be written using font chosen.
@@ -26247,7 +26255,7 @@ class FontButton extends Button {
      * @param fontname Name of font to display in font selection dialog
      * @returns a new font picker widget.
      */
-    static new_with_font(fontname: string | null): FontButton
+    static new_with_font(fontname: string): FontButton
     _init(config?: FontButton.ConstructorProperties): void
 }
 
@@ -26345,7 +26353,7 @@ interface FontSelection extends Atk.ImplementorIface, Buildable, Orientable {
      * Gets the text displayed in the preview area.
      * @returns the text displayed in the preview area.     This string is owned by the widget and should not be     modified or freed
      */
-    get_preview_text(): string | null
+    get_preview_text(): string
     /**
      * The selected font size.
      * @returns A n integer representing the selected font size,     or -1 if no font size is selected.
@@ -26371,13 +26379,13 @@ interface FontSelection extends Atk.ImplementorIface, Buildable, Orientable {
      * @param fontname a font name like "Helvetica 12" or "Times Bold 18"
      * @returns %TRUE if the font could be set successfully; %FALSE if no     such font exists or if the @fontsel doesn't belong to a particular     screen yet.
      */
-    set_font_name(fontname: string | null): boolean
+    set_font_name(fontname: string): boolean
     /**
      * Sets the text displayed in the preview area.
      * The `text` is used to show how the selected font looks.
      * @param text the text to display in the preview area
      */
-    set_preview_text(text: string | null): void
+    set_preview_text(text: string): void
 
     // Class property signals of Gtk-2.0.Gtk.FontSelection
 
@@ -26562,18 +26570,18 @@ interface FontSelectionDialog extends Atk.ImplementorIface, Buildable {
      * Gets the text displayed in the preview area.
      * @returns the text displayed in the preview area.     This string is owned by the widget and should not be     modified or freed
      */
-    get_preview_text(): string | null
+    get_preview_text(): string
     /**
      * Sets the currently selected font.
      * @param fontname a font name like "Helvetica 12" or "Times Bold 18"
      * @returns %TRUE if the font selected in @fsd is now the     @fontname specified, %FALSE otherwise.
      */
-    set_font_name(fontname: string | null): boolean
+    set_font_name(fontname: string): boolean
     /**
      * Sets the text displayed in the preview area.
      * @param text the text to display in the preview area
      */
-    set_preview_text(text: string | null): void
+    set_preview_text(text: string): void
 
     // Conflicting methods
 
@@ -26773,14 +26781,14 @@ class FontSelectionDialog extends Dialog {
      * @param title the title of the dialog window
      * @returns a new #GtkFontSelectionDialog
      */
-    constructor(title: string | null) 
+    constructor(title: string) 
     /**
      * Creates a new #GtkFontSelectionDialog.
      * @constructor 
      * @param title the title of the dialog window
      * @returns a new #GtkFontSelectionDialog
      */
-    static new(title: string | null): FontSelectionDialog
+    static new(title: string): FontSelectionDialog
 
     // Overloads of new
 
@@ -26857,7 +26865,7 @@ interface Frame extends Atk.ImplementorIface, Buildable {
      * to gtk_frame_new().)
      * @returns the text in the label, or %NULL if there               was no label widget or the lable widget was not               a #GtkLabel. This string is owned by GTK+ and               must not be modified or freed.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Retrieves the X and Y alignment of the frame's label. See
      * gtk_frame_set_label_align().
@@ -27017,7 +27025,7 @@ class Frame extends Bin {
      * @param label the text to use as the label of the frame
      * @returns a new #GtkFrame widget
      */
-    constructor(label: string | null) 
+    constructor(label: string) 
     /**
      * Creates a new #GtkFrame, with optional label `label`.
      * If `label` is %NULL, the label is omitted.
@@ -27025,7 +27033,7 @@ class Frame extends Bin {
      * @param label the text to use as the label of the frame
      * @returns a new #GtkFrame widget
      */
-    static new(label: string | null): Frame
+    static new(label: string): Frame
     _init(config?: Frame.ConstructorProperties): void
 }
 
@@ -28573,7 +28581,7 @@ interface IMContext {
      * @param len the length of `text,` or -1 if `text` is nul-terminated
      * @param cursor_index the byte index of the insertion cursor within `text`.
      */
-    set_surrounding(text: string | null, len: number, cursor_index: number): void
+    set_surrounding(text: string, len: number, cursor_index: number): void
     /**
      * Sets whether the IM context should use the preedit string
      * to display feedback. If `use_preedit` is FALSE (default
@@ -28585,7 +28593,7 @@ interface IMContext {
 
     // Own virtual methods of Gtk-2.0.Gtk.IMContext
 
-    vfunc_commit(str: string | null): void
+    vfunc_commit(str: string): void
     /**
      * Asks the widget that the input context is attached to to delete
      * characters around the cursor position by emitting the
@@ -28697,7 +28705,7 @@ interface IMContext {
      * @param len the length of `text,` or -1 if `text` is nul-terminated
      * @param cursor_index the byte index of the insertion cursor within `text`.
      */
-    vfunc_set_surrounding(text: string | null, len: number, cursor_index: number): void
+    vfunc_set_surrounding(text: string, len: number, cursor_index: number): void
     /**
      * Sets whether the IM context should use the preedit string
      * to display feedback. If `use_preedit` is FALSE (default
@@ -28923,7 +28931,7 @@ interface IMMulticontext {
      * Gets the id of the currently active slave of the `context`.
      * @returns the id of the currently active slave
      */
-    get_context_id(): string | null
+    get_context_id(): string
     /**
      * Sets the context id for `context`.
      * 
@@ -28931,7 +28939,7 @@ interface IMMulticontext {
      * replaced by the slave corresponding to the new context id.
      * @param context_id the id to use
      */
-    set_context_id(context_id: string | null): void
+    set_context_id(context_id: string): void
 
     // Class property signals of Gtk-2.0.Gtk.IMMulticontext
 
@@ -28998,7 +29006,7 @@ interface IconFactory extends Buildable {
      * @param stock_id icon name
      * @param icon_set icon set
      */
-    add(stock_id: string | null, icon_set: IconSet): void
+    add(stock_id: string, icon_set: IconSet): void
     /**
      * Adds an icon factory to the list of icon factories searched by
      * gtk_style_lookup_icon_set(). This means that, for example,
@@ -29017,7 +29025,7 @@ interface IconFactory extends Buildable {
      * @param stock_id an icon name
      * @returns icon set of @stock_id.
      */
-    lookup(stock_id: string | null): IconSet
+    lookup(stock_id: string): IconSet
     /**
      * Removes an icon factory from the list of default icon
      * factories. Not normally used; you might use it for a library that
@@ -29089,7 +29097,7 @@ class IconFactory extends GObject.Object {
      * @param stock_id an icon name
      * @returns a #GtkIconSet, or %NULL
      */
-    static lookup_default(stock_id: string | null): IconSet
+    static lookup_default(stock_id: string): IconSet
 }
 
 module IconTheme {
@@ -29120,7 +29128,7 @@ interface IconTheme {
      * See gtk_icon_theme_set_search_path().
      * @param path directory name to append to the icon path
      */
-    append_search_path(path: string | null): void
+    append_search_path(path: string): void
     /**
      * Looks up a named icon and returns a structure containing
      * information such as the filename of the icon. The icon
@@ -29152,7 +29160,7 @@ interface IconTheme {
      * @param icon_name the name of an icon
      * @returns An newly allocated array describing the sizes at which the icon is available. The array should be freed with g_free() when it is no longer needed.
      */
-    get_icon_sizes(icon_name: string | null): number[]
+    get_icon_sizes(icon_name: string): number[]
     /**
      * Gets the current search path. See gtk_icon_theme_set_search_path().
      */
@@ -29163,7 +29171,7 @@ interface IconTheme {
      * @param icon_name the name of an icon
      * @returns %TRUE if @icon_theme includes an  icon for @icon_name.
      */
-    has_icon(icon_name: string | null): boolean
+    has_icon(icon_name: string): boolean
     /**
      * Gets the list of contexts available within the current
      * hierarchy of icon themes
@@ -29179,7 +29187,7 @@ interface IconTheme {
      * @param context a string identifying a particular type of icon,           or %NULL to list all icons.
      * @returns a #GList list  holding the names of all the icons in the theme. You must first  free each element in the list with g_free(), then free the list  itself with g_list_free().
      */
-    list_icons(context: string | null): string[]
+    list_icons(context: string): string[]
     /**
      * Looks up an icon in an icon theme, scales it to the given size
      * and renders it into a pixbuf. This is a convenience function;
@@ -29198,7 +29206,7 @@ interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns the rendered icon; this may be a newly  created icon or a new reference to an internal icon, so you must not modify  the icon. Use g_object_unref() to release your reference to the  icon. %NULL if the icon isn't found.
      */
-    load_icon(icon_name: string | null, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf
+    load_icon(icon_name: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf
     /**
      * Looks up an icon and returns a structure containing
      * information such as the filename of the icon.
@@ -29221,13 +29229,13 @@ interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns a #GtkIconInfo structure containing information about the icon, or %NULL if the icon wasn't found. Free with gtk_icon_info_free()
      */
-    lookup_icon(icon_name: string | null, size: number, flags: IconLookupFlags): IconInfo
+    lookup_icon(icon_name: string, size: number, flags: IconLookupFlags): IconInfo
     /**
      * Prepends a directory to the search path.
      * See gtk_icon_theme_set_search_path().
      * @param path directory name to prepend to the icon path
      */
-    prepend_search_path(path: string | null): void
+    prepend_search_path(path: string): void
     /**
      * Checks to see if the icon theme has changed; if it has, any
      * currently cached information is discarded and will be reloaded
@@ -29242,7 +29250,7 @@ interface IconTheme {
      * and gtk_icon_theme_get_for_screen().
      * @param theme_name name of icon theme to use instead of configured theme,   or %NULL to unset a previously set custom theme
      */
-    set_custom_theme(theme_name: string | null): void
+    set_custom_theme(theme_name: string): void
     /**
      * Sets the screen for an icon theme; the screen is used
      * to track the user's currently configured icon theme,
@@ -29336,7 +29344,7 @@ class IconTheme extends GObject.Object {
      * @param size the size at which to register the icon (different        images can be registered for the same icon name        at different sizes.)
      * @param pixbuf #GdkPixbuf that contains the image to use          for `icon_name`.
      */
-    static add_builtin_icon(icon_name: string | null, size: number, pixbuf: GdkPixbuf.Pixbuf): void
+    static add_builtin_icon(icon_name: string, size: number, pixbuf: GdkPixbuf.Pixbuf): void
     /**
      * Gets the icon theme for the default screen. See
      * gtk_icon_theme_get_for_screen().
@@ -30536,7 +30544,7 @@ interface Image extends Atk.ImplementorIface, Buildable {
      * The returned string is owned by the #GtkImage and should not
      * be freed.
      */
-    get_icon_name(): [ /* icon_name */ string | null, /* size */ number ]
+    get_icon_name(): [ /* icon_name */ string, /* size */ number ]
     /**
      * Gets the icon set and size being displayed by the #GtkImage.
      * The storage type of the image must be %GTK_IMAGE_EMPTY or
@@ -30580,7 +30588,7 @@ interface Image extends Atk.ImplementorIface, Buildable {
      * The returned string is owned by the #GtkImage and should not
      * be freed.
      */
-    get_stock(): [ /* stock_id */ string | null, /* size */ number ]
+    get_stock(): [ /* stock_id */ string, /* size */ number ]
     /**
      * Gets the type of representation being used by the #GtkImage
      * to store image data. If the #GtkImage has no image data,
@@ -30616,7 +30624,7 @@ interface Image extends Atk.ImplementorIface, Buildable {
      * @param icon_name an icon name
      * @param size an icon size
      */
-    set_from_icon_name(icon_name: string | null, size: number): void
+    set_from_icon_name(icon_name: string, size: number): void
     /**
      * See gtk_image_new_from_icon_set() for details.
      * @param icon_set a #GtkIconSet
@@ -30645,7 +30653,7 @@ interface Image extends Atk.ImplementorIface, Buildable {
      * @param stock_id a stock icon name
      * @param size a stock icon size
      */
-    set_from_stock(stock_id: string | null, size: number): void
+    set_from_stock(stock_id: string, size: number): void
     /**
      * Sets the pixel size to use for named icons. If the pixel size is set
      * to a value != -1, it is used instead of the icon size set by
@@ -30901,7 +30909,7 @@ class Image extends Misc {
      * @param filename a filename
      * @returns a new #GtkImage
      */
-    static new_from_file(filename: string | null): Image
+    static new_from_file(filename: string): Image
     /**
      * Creates a #GtkImage displaying an icon from the current icon theme.
      * If the icon name isn't known, a "broken image" icon will be
@@ -30923,7 +30931,7 @@ class Image extends Misc {
      * @param size a stock icon size
      * @returns a new #GtkImage displaying the themed icon
      */
-    static new_from_icon_name(icon_name: string | null, size: number): Image
+    static new_from_icon_name(icon_name: string, size: number): Image
     /**
      * Creates a #GtkImage displaying an icon set. Sample stock sizes are
      * #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_SMALL_TOOLBAR. Instead of using
@@ -30992,7 +31000,7 @@ class Image extends Misc {
      * @param size a stock icon size
      * @returns a new #GtkImage displaying the stock icon
      */
-    static new_from_stock(stock_id: string | null, size: number): Image
+    static new_from_stock(stock_id: string, size: number): Image
     _init(config?: Image.ConstructorProperties): void
 }
 
@@ -31385,14 +31393,14 @@ class ImageMenuItem extends MenuItem {
      * @param accel_group the #GtkAccelGroup to add the menu items   accelerator to, or %NULL.
      * @returns a new #GtkImageMenuItem.
      */
-    static new_from_stock(stock_id: string | null, accel_group: AccelGroup | null): ImageMenuItem
+    static new_from_stock(stock_id: string, accel_group: AccelGroup | null): ImageMenuItem
     /**
      * Creates a new #GtkImageMenuItem containing a label.
      * @constructor 
      * @param label the text of the menu item.
      * @returns a new #GtkImageMenuItem.
      */
-    static new_with_label(label: string | null): ImageMenuItem
+    static new_with_label(label: string): ImageMenuItem
     /**
      * Creates a new #GtkImageMenuItem containing a label. The label
      * will be created using gtk_label_new_with_mnemonic(), so underscores
@@ -31401,7 +31409,7 @@ class ImageMenuItem extends MenuItem {
      * @param label the text of the menu item, with an underscore in front of the         mnemonic character
      * @returns a new #GtkImageMenuItem
      */
-    static new_with_mnemonic(label: string | null): ImageMenuItem
+    static new_with_mnemonic(label: string): ImageMenuItem
     _init(config?: ImageMenuItem.ConstructorProperties): void
 }
 
@@ -31528,7 +31536,7 @@ interface InfoBar extends Atk.ImplementorIface, Buildable, Orientable {
      * @param response_id response ID for the button
      * @returns the button widget that was added
      */
-    add_button(button_text: string | null, response_id: number): Widget
+    add_button(button_text: string, response_id: number): Widget
     /**
      * Returns the action area of `info_bar`.
      * @returns the action area
@@ -32347,7 +32355,7 @@ class Item extends Bin {
      * @param ifactory_path a factory path to prepend to `path`. May be %NULL if `path`   starts with a factory path
      * @param path a path
      */
-    static factories_path_delete(ifactory_path: string | null, path: string | null): void
+    static factories_path_delete(ifactory_path: string, path: string): void
 }
 
 module ItemFactory {
@@ -32380,7 +32388,7 @@ interface ItemFactory {
      * @param path the factory path of `ifactory,` a string of the form    <literal>"&lt;name&gt;"</literal>
      * @param accel_group a #GtkAccelGroup to which the accelerators for the    menu items will be added, or %NULL to create a new one
      */
-    construct(container_type: GObject.GType, path: string | null, accel_group: AccelGroup): void
+    construct(container_type: GObject.GType, path: string, accel_group: AccelGroup): void
     /**
      * Creates an item for `entry`.
      * @param entry the #GtkItemFactoryEntry to create an item for
@@ -32421,7 +32429,7 @@ interface ItemFactory {
      * item factory.
      * @param path a path
      */
-    delete_item(path: string | null): void
+    delete_item(path: string): void
     /**
      * Pops up the menu constructed from the item factory at (`x,` `y)`.
      * 
@@ -32511,7 +32519,7 @@ class ItemFactory extends Object {
      * @param accel_group a #GtkAccelGroup to which the accelerators for the    menu items will be added, or %NULL to create a new one
      * @returns a new #GtkItemFactory
      */
-    constructor(container_type: GObject.GType, path: string | null, accel_group: AccelGroup | null) 
+    constructor(container_type: GObject.GType, path: string, accel_group: AccelGroup | null) 
     /**
      * Creates a new #GtkItemFactory.
      * 
@@ -32522,7 +32530,7 @@ class ItemFactory extends Object {
      * @param accel_group a #GtkAccelGroup to which the accelerators for the    menu items will be added, or %NULL to create a new one
      * @returns a new #GtkItemFactory
      */
-    static new(container_type: GObject.GType, path: string | null, accel_group: AccelGroup | null): ItemFactory
+    static new(container_type: GObject.GType, path: string, accel_group: AccelGroup | null): ItemFactory
     _init(config?: ItemFactory.ConstructorProperties): void
     /**
      * Installs an accelerator for `accel_widget` in `accel_group,` that causes
@@ -32538,7 +32546,7 @@ class ItemFactory extends Object {
      * @param keyval key value of the accelerator
      * @param modifiers modifier combination of the accelerator
      */
-    static add_foreign(accel_widget: Widget, full_path: string | null, accel_group: AccelGroup, keyval: number, modifiers: Gdk.ModifierType): void
+    static add_foreign(accel_widget: Widget, full_path: string, accel_group: AccelGroup, keyval: number, modifiers: Gdk.ModifierType): void
     /**
      * Creates the menu items from the `entries`.
      * @param n_entries the length of `entries`
@@ -32553,7 +32561,7 @@ class ItemFactory extends Object {
      * @param widget a widget
      * @returns the full path to @widget if it has been created by an item   factory, %NULL otherwise. This value is owned by GTK+ and must not be   modified or freed.
      */
-    static path_from_widget(widget: Widget): string | null
+    static path_from_widget(widget: Widget): string
     /**
      * Obtains the `popup_data` which was passed to
      * gtk_item_factory_popup_with_data(). This data is available until the menu
@@ -32868,7 +32876,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * or for use in a #GtkWidget::query-tooltip handler.
      * @returns the currently active URI. The string is owned by GTK+ and must   not be freed or modified.
      */
-    get_current_uri(): string | null
+    get_current_uri(): string
     /**
      * Returns the ellipsizing position of the label. See gtk_label_set_ellipsize().
      * @returns #PangoEllipsizeMode
@@ -32885,7 +32893,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * gtk_label_get_text()).
      * @returns the text of the label widget. This string is   owned by the widget and must not be modified or freed.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #PangoLayout used to display the label.
      * The layout is useful to e.g. convert text positions to
@@ -32958,7 +32966,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * indicating mnemonics or Pango markup. (See gtk_label_get_label())
      * @returns the text in the label widget. This is the internal   string used by the label, and must not be modified.
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Returns whether the label is currently keeping track
      * of clicked links.
@@ -32984,7 +32992,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * @returns the width of the label in characters.
      */
     get_width_chars(): number
-    parse_uline(string: string | null): number
+    parse_uline(string: string): number
     /**
      * Selects a range of characters in the label, if the label is selectable.
      * See gtk_label_set_selectable(). If the label is not selectable,
@@ -33038,7 +33046,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * #GtkLabel:use-markup properties.
      * @param str the new text to set for the label
      */
-    set_label(str: string | null): void
+    set_label(str: string): void
     /**
      * Toggles line wrapping within the #GtkLabel widget. %TRUE makes it break
      * lines if text exceeds the widget's size. %FALSE lets the text get cut off
@@ -33076,7 +33084,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * 
      * @param str a markup string (see <link linkend="PangoMarkupFormat">Pango markup format</link>)
      */
-    set_markup(str: string | null): void
+    set_markup(str: string): void
     /**
      * Parses `str` which is marked up with the <link linkend="PangoMarkupFormat">Pango text markup language</link>,
      * setting the label's text and attribute list based on the parse results.
@@ -33087,7 +33095,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * automatically, or explicitly using gtk_label_set_mnemonic_widget().
      * @param str a markup string (see <link linkend="PangoMarkupFormat">Pango markup format</link>)
      */
-    set_markup_with_mnemonic(str: string | null): void
+    set_markup_with_mnemonic(str: string): void
     /**
      * Sets the desired maximum width in characters of `label` to `n_chars`.
      * @param n_chars the new desired maximum width, in characters.
@@ -33111,7 +33119,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * @param widget the target #GtkWidget
      */
     set_mnemonic_widget(widget: Widget | null): void
-    set_pattern(pattern: string | null): void
+    set_pattern(pattern: string): void
     /**
      * Selectable labels allow the user to select text from the label, for
      * copy-and-paste.
@@ -33130,7 +33138,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * This will also clear any previously set mnemonic accelerators.
      * @param str The text you want to set
      */
-    set_text(str: string | null): void
+    set_text(str: string): void
     /**
      * Sets the label's text from the string `str`.
      * If characters in `str` are preceded by an underscore, they are underlined
@@ -33139,7 +33147,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
      * automatically, or explicitly using gtk_label_set_mnemonic_widget().
      * @param str a string
      */
-    set_text_with_mnemonic(str: string | null): void
+    set_text_with_mnemonic(str: string): void
     /**
      * Sets whether the label should keep track of clicked
      * links (and use a different color for them).
@@ -33167,7 +33175,7 @@ interface Label extends Atk.ImplementorIface, Buildable {
 
     // Own virtual methods of Gtk-2.0.Gtk.Label
 
-    vfunc_activate_link(uri: string | null): boolean
+    vfunc_activate_link(uri: string): boolean
     vfunc_copy_clipboard(): void
     vfunc_move_cursor(step: MovementStep, count: number, extend_selection: boolean): void
     vfunc_populate_popup(menu: Menu): void
@@ -33332,7 +33340,7 @@ class Label extends Misc {
      * @param str The text of the label
      * @returns the new #GtkLabel
      */
-    constructor(str: string | null) 
+    constructor(str: string) 
     /**
      * Creates a new label with the given text inside it. You can
      * pass %NULL to get an empty label widget.
@@ -33340,7 +33348,7 @@ class Label extends Misc {
      * @param str The text of the label
      * @returns the new #GtkLabel
      */
-    static new(str: string | null): Label
+    static new(str: string): Label
     /**
      * Creates a new #GtkLabel, containing the text in `str`.
      * 
@@ -33360,7 +33368,7 @@ class Label extends Misc {
      * @param str The text of the label, with an underscore in front of the       mnemonic character
      * @returns the new #GtkLabel
      */
-    static new_with_mnemonic(str: string | null): Label
+    static new_with_mnemonic(str: string): Label
     _init(config?: Label.ConstructorProperties): void
 }
 
@@ -33645,7 +33653,7 @@ interface LinkButton extends Atk.ImplementorIface, Activatable, Buildable {
      * Retrieves the URI set using gtk_link_button_set_uri().
      * @returns a valid URI.  The returned string is owned by the link button   and should not be modified or freed.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Retrieves the 'visited' state of the URI where the #GtkLinkButton
      * points. The button becomes visited when it is clicked. If the URI
@@ -33660,7 +33668,7 @@ interface LinkButton extends Atk.ImplementorIface, Activatable, Buildable {
      * this unsets the 'visited' state of the button.
      * @param uri a valid URI
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
     /**
      * Sets the 'visited' state of the URI where the #GtkLinkButton
      * points.  See gtk_link_button_get_visited() for more details.
@@ -33797,14 +33805,14 @@ class LinkButton extends Button {
      * @param uri a valid URI
      * @returns a new link button widget.
      */
-    constructor(uri: string | null) 
+    constructor(uri: string) 
     /**
      * Creates a new #GtkLinkButton with the URI as its text.
      * @constructor 
      * @param uri a valid URI
      * @returns a new link button widget.
      */
-    static new(uri: string | null): LinkButton
+    static new(uri: string): LinkButton
 
     // Overloads of new
 
@@ -33816,11 +33824,11 @@ class LinkButton extends Button {
      * @param label the text of the button
      * @returns a new link button widget.
      */
-    static new_with_label(uri: string | null, label: string | null): LinkButton
+    static new_with_label(uri: string, label: string | null): LinkButton
 
     // Overloads of new_with_label
 
-    static new_with_label(label: string | null): Button
+    static new_with_label(label: string): Button
     _init(config?: LinkButton.ConstructorProperties): void
 }
 
@@ -34248,7 +34256,7 @@ class ListItem extends Item {
     constructor(config?: ListItem.ConstructorProperties) 
     constructor() 
     static new(): ListItem
-    static new_with_label(label: string | null): ListItem
+    static new_with_label(label: string): ListItem
     _init(config?: ListItem.ConstructorProperties): void
 }
 
@@ -34651,7 +34659,7 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      * Retrieves the accelerator path set on the menu.
      * @returns the accelerator path set on the menu.
      */
-    get_accel_path(): string | null
+    get_accel_path(): string
     /**
      * Returns the selected menu item from the menu.  This is used by the
      * #GtkOptionMenu.
@@ -34684,7 +34692,7 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      * Returns the title of the menu. See gtk_menu_set_title().
      * @returns the title of the menu, or %NULL if the menu has no title set on it. This string is owned by the widget and should not be modified or freed.
      */
-    get_title(): string | null
+    get_title(): string
     popdown(): void
     reorder_child(child: Widget, position: number): void
     reposition(): void
@@ -34773,7 +34781,7 @@ interface Menu extends Atk.ImplementorIface, Buildable {
      * that menu item's label.
      * @param title a string containing the title for the menu.
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
 
     // Own signals of Gtk-2.0.Gtk.Menu
 
@@ -35241,12 +35249,12 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      * See gtk_menu_item_set_accel_path() for details.
      * @returns the accelerator path corresponding to this menu item's              functionality, or %NULL if not set
      */
-    get_accel_path(): string | null
+    get_accel_path(): string
     /**
      * Sets `text` on the `menu_item` label
      * @returns The text in the @menu_item label. This is the internal   string used by the label, and must not be modified.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets whether the menu item appears justified at the right
      * side of the menu bar.
@@ -35325,7 +35333,7 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      * Sets `text` on the `menu_item` label
      * @param label the text you want to set
      */
-    set_label(label: string | null): void
+    set_label(label: string): void
     /**
      * Sets whether the menu item appears justified at the right
      * side of a menu bar. This was traditionally done for "Help" menu
@@ -35359,13 +35367,13 @@ interface MenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      * @virtual 
      * @returns The text in the @menu_item label. This is the internal   string used by the label, and must not be modified.
      */
-    vfunc_get_label(): string | null
+    vfunc_get_label(): string
     /**
      * Sets `text` on the `menu_item` label
      * @virtual 
      * @param label the text you want to set
      */
-    vfunc_set_label(label: string | null): void
+    vfunc_set_label(label: string): void
     vfunc_toggle_size_allocate(allocation: number): void
     vfunc_toggle_size_request(requisition: number): void
 
@@ -35491,7 +35499,7 @@ class MenuItem extends Item {
     constructor(config?: MenuItem.ConstructorProperties) 
     constructor() 
     static new(): MenuItem
-    static new_with_label(label: string | null): MenuItem
+    static new_with_label(label: string): MenuItem
     /**
      * Creates a new #GtkMenuItem containing a label. The label
      * will be created using gtk_label_new_with_mnemonic(), so underscores
@@ -35500,7 +35508,7 @@ class MenuItem extends Item {
      * @param label The text of the button, with an underscore in front of the         mnemonic character
      * @returns a new #GtkMenuItem
      */
-    static new_with_mnemonic(label: string | null): MenuItem
+    static new_with_mnemonic(label: string): MenuItem
     _init(config?: MenuItem.ConstructorProperties): void
 }
 
@@ -35866,20 +35874,56 @@ interface MenuToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * tooltip on the whole #GtkMenuToolButton.
      * @param markup markup text to be used as tooltip text for button's arrow button
      */
-    set_arrow_tooltip_markup(markup: string | null): void
+    set_arrow_tooltip_markup(markup: string): void
     /**
      * Sets the tooltip text to be used as tooltip for the arrow button which
      * pops up the menu.  See gtk_tool_item_set_tooltip() for setting a tooltip
      * on the whole #GtkMenuToolButton.
      * @param text text to be used as tooltip text for button's arrow button
      */
-    set_arrow_tooltip_text(text: string | null): void
+    set_arrow_tooltip_text(text: string): void
     /**
      * Sets the #GtkMenu that is popped up when the user clicks on the arrow.
      * If `menu` is NULL, the arrow button becomes insensitive.
      * @param menu the #GtkMenu associated with #GtkMenuToolButton
      */
     set_menu(menu: Widget): void
+
+    // Conflicting methods
+
+    /**
+     * Sets the markup text to be displayed as tooltip on the item.
+     * See gtk_widget_set_tooltip_markup().
+     * @param markup markup text to be used as tooltip for `tool_item`
+     */
+    set_tooltip_markup(markup: string): void
+
+    // Overloads of set_tooltip_markup
+
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
 
     // Own virtual methods of Gtk-2.0.Gtk.MenuToolButton
 
@@ -36058,7 +36102,7 @@ class MenuToolButton extends ToolButton {
      * @param stock_id the name of a stock item
      * @returns the new #GtkMenuToolButton
      */
-    static new_from_stock(stock_id: string | null): MenuToolButton
+    static new_from_stock(stock_id: string): MenuToolButton
     _init(config?: MenuToolButton.ConstructorProperties): void
 }
 
@@ -36224,7 +36268,7 @@ interface MessageDialog extends Atk.ImplementorIface, Buildable {
      * language</link>.
      * @param str markup string (see <link linkend="PangoMarkupFormat">Pango markup format</link>)
      */
-    set_markup(str: string | null): void
+    set_markup(str: string): void
 
     // Conflicting methods
 
@@ -36981,7 +37025,7 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
      *  Return Value: (transfer none): the group name,
      *     or %NULL if none is set.
      */
-    get_group_name(): string | null
+    get_group_name(): string
     /**
      * Retrieves the menu label widget of the page containing `child`.
      * @param child a widget contained in a page of `notebook`
@@ -36994,7 +37038,7 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
      * @param child the child widget of a page of the notebook.
      * @returns the text of the tab label, or %NULL if the               widget does not have a menu label other than               the default menu label, or the menu label widget               is not a #GtkLabel. The string is owned by               the widget and must not be freed.
      */
-    get_menu_label_text(child: Widget): string | null
+    get_menu_label_text(child: Widget): string
     /**
      * Gets the number of pages in a notebook.
      * @returns the number of pages in the notebook.
@@ -37049,7 +37093,7 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
      * @param child a widget contained in a page of `notebook`
      * @returns the text of the tab label, or %NULL if the               tab label widget is not a #GtkLabel. The               string is owned by the widget and must not               be freed.
      */
-    get_tab_label_text(child: Widget): string | null
+    get_tab_label_text(child: Widget): string
     /**
      * Gets the edge at which the tabs for switching pages in the
      * notebook are drawn.
@@ -37196,7 +37240,7 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
      * not be able to exchange tabs with any other notebook.
      * @param group_name 
      */
-    set_group_name(group_name: string | null): void
+    set_group_name(group_name: string): void
     /**
      * Sets whether the tabs must have all the same size or not.
      * @param homogeneous %TRUE if all tabs should be the same size.
@@ -37213,7 +37257,7 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
      * @param child the child widget
      * @param menu_text the label text
      */
-    set_menu_label_text(child: Widget, menu_text: string | null): void
+    set_menu_label_text(child: Widget, menu_text: string): void
     /**
      * Sets whether the tab label area will have arrows for scrolling if
      * there are too many tabs to fit in the area.
@@ -37311,7 +37355,7 @@ interface Notebook extends Atk.ImplementorIface, Buildable {
      * @param child the page
      * @param tab_text the label text
      */
-    set_tab_label_text(child: Widget, tab_text: string | null): void
+    set_tab_label_text(child: Widget, tab_text: string): void
     /**
      * Sets the edge at which the tabs for switching pages in the
      * notebook are drawn.
@@ -37548,17 +37592,17 @@ interface Object {
     // Owm methods of Gtk-2.0.Gtk.Object
 
     destroy(): void
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     get_data_by_id(data_id: GLib.Quark): any | null
     get_user_data(): any | null
-    remove_data(key: string | null): void
+    remove_data(key: string): void
     remove_data_by_id(data_id: GLib.Quark): void
-    remove_no_notify(key: string | null): void
+    remove_no_notify(key: string): void
     remove_no_notify_by_id(key_id: GLib.Quark): void
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     set_data_by_id(data_id: GLib.Quark, data: any | null): void
     set_data_by_id_full(data_id: GLib.Quark, data: any | null, destroy: GLib.DestroyNotify): void
-    set_data_full(key: string | null, data: any | null, destroy: GLib.DestroyNotify): void
+    set_data_full(key: string, data: any | null, destroy: GLib.DestroyNotify): void
     set_user_data(data: any | null): void
     sink(): void
     unref(): void
@@ -37599,7 +37643,7 @@ class Object extends GObject.InitiallyUnowned {
 
     constructor(config?: Object.ConstructorProperties) 
     _init(config?: Object.ConstructorProperties): void
-    static add_arg_type(arg_name: string | null, arg_type: GObject.GType, arg_flags: number, arg_id: number): void
+    static add_arg_type(arg_name: string, arg_type: GObject.GType, arg_flags: number, arg_id: number): void
 }
 
 module OffscreenWindow {
@@ -38454,7 +38498,7 @@ interface PageSetup {
      * @param file_name the filename to read the page setup from
      * @returns %TRUE on success
      */
-    load_file(file_name: string | null): boolean
+    load_file(file_name: string): boolean
     /**
      * Reads the page setup from the group `group_name` in the key file
      * `key_file`.
@@ -38510,13 +38554,13 @@ interface PageSetup {
      * @param file_name the file to save to
      * @returns %TRUE on success
      */
-    to_file(file_name: string | null): boolean
+    to_file(file_name: string): boolean
     /**
      * This function adds the page setup from `setup` to `key_file`.
      * @param key_file the #GKeyFile to save the page setup to
      * @param group_name the group to add the settings to in `key_file,`      or %NULL to use the default name "Page Setup"
      */
-    to_key_file(key_file: GLib.KeyFile, group_name: string | null): void
+    to_key_file(key_file: GLib.KeyFile, group_name: string): void
 
     // Class property signals of Gtk-2.0.Gtk.PageSetup
 
@@ -38556,7 +38600,7 @@ class PageSetup extends GObject.Object {
      * @param file_name the filename to read the page setup from
      * @returns the restored #GtkPageSetup
      */
-    static new_from_file(file_name: string | null): PageSetup
+    static new_from_file(file_name: string): PageSetup
     /**
      * Reads the page setup from the group `group_name` in the key file
      * `key_file`. Returns a new #GtkPageSetup object with the restored
@@ -40232,7 +40276,7 @@ interface PrintOperation extends PrintOperationPreview {
      * value that is suitable for programmatic use.
      * @returns a string representation of the status    of the print operation
      */
-    get_status_string(): string | null
+    get_status_string(): string
     /**
      * Gets the value of #GtkPrintOperation::support-selection property.
      * @returns whether the application supports print of selection
@@ -40368,7 +40412,7 @@ interface PrintOperation extends PrintOperationPreview {
      * of printers in the print dialog.
      * @param filename the filename for the exported file
      */
-    set_export_filename(filename: string | null): void
+    set_export_filename(filename: string): void
     /**
      * Sets whether there is a selection to print.
      * 
@@ -40386,7 +40430,7 @@ interface PrintOperation extends PrintOperationPreview {
      * numbering successive print jobs.
      * @param job_name a string that identifies the print job
      */
-    set_job_name(job_name: string | null): void
+    set_job_name(job_name: string): void
     /**
      * Sets the number of pages in the document.
      * 
@@ -40613,7 +40657,7 @@ interface PrintSettings {
      * @param key a key
      * @returns the string value for @key
      */
-    get(key: string | null): string | null
+    get(key: string): string
     /**
      * Returns the boolean represented by the value
      * that is associated with `key`.
@@ -40623,7 +40667,7 @@ interface PrintSettings {
      * @param key a key
      * @returns %TRUE, if @key maps to a true value.
      */
-    get_bool(key: string | null): boolean
+    get_bool(key: string): boolean
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_COLLATE.
      * @returns whether to collate the printed pages
@@ -40633,18 +40677,18 @@ interface PrintSettings {
      * Gets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
      * @returns the default source
      */
-    get_default_source(): string | null
+    get_default_source(): string
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_DITHER.
      * @returns the dithering that is used
      */
-    get_dither(): string | null
+    get_dither(): string
     /**
      * Returns the double value associated with `key,` or 0.
      * @param key a key
      * @returns the double value of @key
      */
-    get_double(key: string | null): number
+    get_double(key: string): number
     /**
      * Returns the floating point number represented by
      * the value that is associated with `key,` or `default_val`
@@ -40655,7 +40699,7 @@ interface PrintSettings {
      * @param def the default value
      * @returns the floating point number associated with @key
      */
-    get_double_with_default(key: string | null, def: number): number
+    get_double_with_default(key: string, def: number): number
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_DUPLEX.
      * @returns whether to print the output in duplex.
@@ -40665,13 +40709,13 @@ interface PrintSettings {
      * Gets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
      * @returns the finishings
      */
-    get_finishings(): string | null
+    get_finishings(): string
     /**
      * Returns the integer value of `key,` or 0.
      * @param key a key
      * @returns the integer value of @key
      */
-    get_int(key: string | null): number
+    get_int(key: string): number
     /**
      * Returns the value of `key,` interpreted as
      * an integer, or the default value.
@@ -40679,7 +40723,7 @@ interface PrintSettings {
      * @param def the default value
      * @returns the integer value of @key
      */
-    get_int_with_default(key: string | null, def: number): number
+    get_int_with_default(key: string, def: number): number
     /**
      * Returns the value associated with `key,` interpreted
      * as a length. The returned value is converted to `units`.
@@ -40687,7 +40731,7 @@ interface PrintSettings {
      * @param unit the unit of the return value
      * @returns the length value of @key, converted to @unit
      */
-    get_length(key: string | null, unit: Unit): number
+    get_length(key: string, unit: Unit): number
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_MEDIA_TYPE.
      * 
@@ -40695,7 +40739,7 @@ interface PrintSettings {
      * <!-- FIXME link here -->
      * @returns the media type
      */
-    get_media_type(): string | null
+    get_media_type(): string
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_N_COPIES.
      * @returns the number of copies to print
@@ -40721,7 +40765,7 @@ interface PrintSettings {
      * Gets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
      * @returns the output bin
      */
-    get_output_bin(): string | null
+    get_output_bin(): string
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_PAGE_RANGES.
      * @returns an array     of #GtkPageRange<!-- -->s.  Use g_free() to free the array when     it is no longer needed.
@@ -40762,7 +40806,7 @@ interface PrintSettings {
      * %GTK_PRINT_SETTINGS_PRINTER.
      * @returns the printer name
      */
-    get_printer(): string | null
+    get_printer(): string
     /**
      * Gets the value of %GTK_PRINT_SETTINGS_PRINTER_LPI.
      * @returns the resolution in lpi (lines per inch)
@@ -40808,7 +40852,7 @@ interface PrintSettings {
      * @param key a key
      * @returns %TRUE, if @key has a value
      */
-    has_key(key: string | null): boolean
+    has_key(key: string): boolean
     /**
      * Reads the print settings from `file_name`. If the file could not be loaded
      * then error is set to either a #GFileError or #GKeyFileError.
@@ -40816,7 +40860,7 @@ interface PrintSettings {
      * @param file_name the filename to read the settings from
      * @returns %TRUE on success
      */
-    load_file(file_name: string | null): boolean
+    load_file(file_name: string): boolean
     /**
      * Reads the print settings from the group `group_name` in `key_file`. If the
      * file could not be loaded then error is set to either a #GFileError or
@@ -40831,13 +40875,13 @@ interface PrintSettings {
      * @param key a key
      * @param value a string value, or %NULL
      */
-    set(key: string | null, value: string | null): void
+    set(key: string, value: string | null): void
     /**
      * Sets `key` to a boolean value.
      * @param key a key
      * @param value a boolean
      */
-    set_bool(key: string | null, value: boolean): void
+    set_bool(key: string, value: boolean): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_COLLATE.
      * @param collate whether to collate the output
@@ -40847,18 +40891,18 @@ interface PrintSettings {
      * Sets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
      * @param default_source the default source
      */
-    set_default_source(default_source: string | null): void
+    set_default_source(default_source: string): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_DITHER.
      * @param dither the dithering that is used
      */
-    set_dither(dither: string | null): void
+    set_dither(dither: string): void
     /**
      * Sets `key` to a double value.
      * @param key a key
      * @param value a double value
      */
-    set_double(key: string | null, value: number): void
+    set_double(key: string, value: number): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_DUPLEX.
      * @param duplex a #GtkPrintDuplex value
@@ -40868,20 +40912,20 @@ interface PrintSettings {
      * Sets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
      * @param finishings the finishings
      */
-    set_finishings(finishings: string | null): void
+    set_finishings(finishings: string): void
     /**
      * Sets `key` to an integer value.
      * @param key a key
      * @param value an integer
      */
-    set_int(key: string | null, value: number): void
+    set_int(key: string, value: number): void
     /**
      * Associates a length in units of `unit` with `key`.
      * @param key a key
      * @param value a length
      * @param unit the unit of `length`
      */
-    set_length(key: string | null, value: number, unit: Unit): void
+    set_length(key: string, value: number, unit: Unit): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_MEDIA_TYPE.
      * 
@@ -40889,7 +40933,7 @@ interface PrintSettings {
      * <!-- FIXME link here -->
      * @param media_type the media type
      */
-    set_media_type(media_type: string | null): void
+    set_media_type(media_type: string): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_N_COPIES.
      * @param num_copies the number of copies
@@ -40914,7 +40958,7 @@ interface PrintSettings {
      * Sets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
      * @param output_bin the output bin
      */
-    set_output_bin(output_bin: string | null): void
+    set_output_bin(output_bin: string): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_PAGE_RANGES.
      * @param page_ranges an array of #GtkPageRange<!-- -->s
@@ -40954,7 +40998,7 @@ interface PrintSettings {
      * to `printer`.
      * @param printer the printer name
      */
-    set_printer(printer: string | null): void
+    set_printer(printer: string): void
     /**
      * Sets the value of %GTK_PRINT_SETTINGS_PRINTER_LPI.
      * @param lpi the resolution in lpi (lines per inch)
@@ -41002,19 +41046,19 @@ interface PrintSettings {
      * @param file_name the file to save to
      * @returns %TRUE on success
      */
-    to_file(file_name: string | null): boolean
+    to_file(file_name: string): boolean
     /**
      * This function adds the print settings from `settings` to `key_file`.
      * @param key_file the #GKeyFile to save the print settings to
      * @param group_name the group to add the settings to in `key_file,` or     %NULL to use the default "Print Settings"
      */
-    to_key_file(key_file: GLib.KeyFile, group_name: string | null): void
+    to_key_file(key_file: GLib.KeyFile, group_name: string): void
     /**
      * Removes any value associated with `key`.
      * This has the same effect as setting the value to %NULL.
      * @param key a key
      */
-    unset(key: string | null): void
+    unset(key: string): void
 
     // Class property signals of Gtk-2.0.Gtk.PrintSettings
 
@@ -41055,7 +41099,7 @@ class PrintSettings extends GObject.Object {
      * @param file_name the filename to read the settings from
      * @returns the restored #GtkPrintSettings
      */
-    static new_from_file(file_name: string | null): PrintSettings
+    static new_from_file(file_name: string): PrintSettings
     /**
      * Reads the print settings from the group `group_name` in `key_file`.  Returns a
      * new #GtkPrintSettings object with the restored settings, or %NULL if an
@@ -41123,7 +41167,7 @@ interface Progress extends Atk.ImplementorIface, Buildable {
     get_value(): number
     set_activity_mode(activity_mode: boolean): void
     set_adjustment(adjustment: Adjustment): void
-    set_format_string(format: string | null): void
+    set_format_string(format: string): void
     set_percentage(percentage: number): void
     set_show_text(show_text: boolean): void
     set_text_alignment(x_align: number, y_align: number): void
@@ -41325,7 +41369,7 @@ interface ProgressBar extends Atk.ImplementorIface, Buildable {
      * if you change the text in the progress bar.
      * @returns text, or %NULL; this string is owned by the widget and should not be modified or freed.
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Indicates that some progress is made, but you don't know how much.
      * Causes the progress bar to enter "activity mode," where a block
@@ -41722,7 +41766,7 @@ class RadioAction extends ToggleAction {
      * @param value The value which gtk_radio_action_get_current_value() should   return if this action is selected.
      * @returns a new #GtkRadioAction
      */
-    constructor(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null, value: number) 
+    constructor(name: string, label: string | null, tooltip: string | null, stock_id: string, value: number) 
     /**
      * Creates a new #GtkRadioAction object. To add the action to
      * a #GtkActionGroup and set the accelerator for the action,
@@ -41735,7 +41779,7 @@ class RadioAction extends ToggleAction {
      * @param value The value which gtk_radio_action_get_current_value() should   return if this action is selected.
      * @returns a new #GtkRadioAction
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null, value: number): RadioAction
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string, value: number): RadioAction
 
     // Overloads of new
 
@@ -41750,7 +41794,7 @@ class RadioAction extends ToggleAction {
      * @param stock_id The stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkToggleAction
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null): ToggleAction
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string): ToggleAction
     /**
      * Creates a new #GtkAction object. To add the action to a
      * #GtkActionGroup and set the accelerator for the action,
@@ -41764,7 +41808,7 @@ class RadioAction extends ToggleAction {
      * @param stock_id the stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkAction
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null): Action
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string): Action
     _init(config?: RadioAction.ConstructorProperties): void
 }
 
@@ -41959,7 +42003,7 @@ class RadioButton extends CheckButton {
      * @param label a text string to display next to the radio button.
      * @returns a new radio button.
      */
-    static new_with_label_from_widget(radio_group_member: RadioButton | null, label: string | null): RadioButton
+    static new_with_label_from_widget(radio_group_member: RadioButton | null, label: string): RadioButton
     /**
      * Creates a new #GtkRadioButton containing a label. The label
      * will be created using gtk_label_new_with_mnemonic(), so underscores
@@ -41969,7 +42013,7 @@ class RadioButton extends CheckButton {
      * @param label the text of the button, with an underscore in front of the         mnemonic character
      * @returns a new #GtkRadioButton
      */
-    static new_with_mnemonic_from_widget(radio_group_member: RadioButton | null, label: string | null): RadioButton
+    static new_with_mnemonic_from_widget(radio_group_member: RadioButton | null, label: string): RadioButton
     _init(config?: RadioButton.ConstructorProperties): void
 }
 
@@ -42019,7 +42063,7 @@ interface RadioMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      * @param label the text for the label
      * @returns The new #GtkRadioMenuItem
      */
-    new_with_label_from_widget(label: string | null): Widget
+    new_with_label_from_widget(label: string): Widget
     /**
      * Creates a new GtkRadioMenuItem containing a label. The label will be
      * created using gtk_label_new_with_mnemonic(), so underscores in label
@@ -42029,7 +42073,7 @@ interface RadioMenuItem extends Atk.ImplementorIface, Activatable, Buildable {
      * @param label the text of the button, with an underscore in front of the         mnemonic character
      * @returns The new #GtkRadioMenuItem
      */
-    new_with_mnemonic_from_widget(label: string | null): Widget
+    new_with_mnemonic_from_widget(label: string): Widget
 
     // Conflicting methods
 
@@ -42256,11 +42300,11 @@ class RadioMenuItem extends CheckMenuItem {
      * @param label the text for the label
      * @returns A new #GtkRadioMenuItem
      */
-    static new_with_label(group: RadioMenuItem[], label: string | null): RadioMenuItem
+    static new_with_label(group: RadioMenuItem[], label: string): RadioMenuItem
 
     // Overloads of new_with_label
 
-    static new_with_label(label: string | null): CheckMenuItem
+    static new_with_label(label: string): CheckMenuItem
     _init(config?: RadioMenuItem.ConstructorProperties): void
 }
 
@@ -42307,7 +42351,43 @@ interface RadioToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * @param stock_id the name of a stock item
      * @returns A new #GtkRadioToolButton
      */
-    new_with_stock_from_widget(stock_id: string | null): ToolItem
+    new_with_stock_from_widget(stock_id: string): ToolItem
+
+    // Conflicting methods
+
+    /**
+     * Sets the markup text to be displayed as tooltip on the item.
+     * See gtk_widget_set_tooltip_markup().
+     * @param markup markup text to be used as tooltip for `tool_item`
+     */
+    set_tooltip_markup(markup: string): void
+
+    // Overloads of set_tooltip_markup
+
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
 
     // Class property signals of Gtk-2.0.Gtk.RadioToolButton
 
@@ -43187,7 +43267,7 @@ class RecentAction extends Action {
      * @param stock_id the stock icon to display in widgets representing the   action, or %NULL
      * @returns the newly created #GtkRecentAction.
      */
-    constructor(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null) 
+    constructor(name: string, label: string | null, tooltip: string | null, stock_id: string) 
     /**
      * Creates a new #GtkRecentAction object. To add the action to
      * a #GtkActionGroup and set the accelerator for the action,
@@ -43199,7 +43279,7 @@ class RecentAction extends Action {
      * @param stock_id the stock icon to display in widgets representing the   action, or %NULL
      * @returns the newly created #GtkRecentAction.
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null): RecentAction
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string): RecentAction
     /**
      * Creates a new #GtkRecentAction object. To add the action to
      * a #GtkActionGroup and set the accelerator for the action,
@@ -43212,7 +43292,7 @@ class RecentAction extends Action {
      * @param manager a #GtkRecentManager, or %NULL for using the default   #GtkRecentManager
      * @returns the newly created #GtkRecentAction
      */
-    static new_for_manager(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null, manager: RecentManager | null): RecentAction
+    static new_for_manager(name: string, label: string | null, tooltip: string | null, stock_id: string, manager: RecentManager | null): RecentAction
     _init(config?: RecentAction.ConstructorProperties): void
 }
 
@@ -43991,7 +44071,7 @@ interface RecentFilter {
      * that has registered them.
      * @param application an application name
      */
-    add_application(application: string | null): void
+    add_application(application: string): void
     /**
      * Adds a rule to a filter that allows resources based on a custom callback
      * function. The bitfield `needed` which is passed in provides information
@@ -44007,18 +44087,18 @@ interface RecentFilter {
      * to which they belong
      * @param group a group name
      */
-    add_group(group: string | null): void
+    add_group(group: string): void
     /**
      * Adds a rule that allows resources based on their registered MIME type.
      * @param mime_type a MIME type
      */
-    add_mime_type(mime_type: string | null): void
+    add_mime_type(mime_type: string): void
     /**
      * Adds a rule that allows resources based on a pattern matching their
      * display name.
      * @param pattern a file pattern
      */
-    add_pattern(pattern: string | null): void
+    add_pattern(pattern: string): void
     /**
      * Adds a rule allowing image files in the formats supported
      * by GdkPixbuf.
@@ -44041,7 +44121,7 @@ interface RecentFilter {
      * See gtk_recent_filter_set_name().
      * @returns the name of the filter, or %NULL.  The returned string   is owned by the filter object and should not be freed.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the fields that need to be filled in for the structure
      * passed to gtk_recent_filter_filter()
@@ -44058,7 +44138,7 @@ interface RecentFilter {
      * user interface if there is a selectable list of filters.
      * @param name then human readable name of `filter`
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of Gtk-2.0.Gtk.RecentFilter
 
@@ -44195,7 +44275,7 @@ interface RecentManager {
      * @param recent_data metadata of the resource
      * @returns %TRUE if the new item was successfully added to the recently used resources list, %FALSE otherwise.
      */
-    add_full(uri: string | null, recent_data: RecentData): boolean
+    add_full(uri: string, recent_data: RecentData): boolean
     /**
      * Adds a new resource, pointed by `uri,` into the recently used
      * resources list.
@@ -44209,7 +44289,7 @@ interface RecentManager {
      * @param uri a valid URI
      * @returns %TRUE if the new item was successfully added   to the recently used resources list
      */
-    add_item(uri: string | null): boolean
+    add_item(uri: string): boolean
     /**
      * Gets the list of recently used resources.
      * @returns a list of   newly allocated #GtkRecentInfo objects. Use   gtk_recent_info_unref() on each item inside the list, and then   free the list itself using g_list_free().
@@ -44227,7 +44307,7 @@ interface RecentManager {
      * @param uri a URI
      * @returns %TRUE if the resource was found, %FALSE otherwise.
      */
-    has_item(uri: string | null): boolean
+    has_item(uri: string): boolean
     /**
      * Searches for a URI inside the recently used resources list, and
      * returns a structure containing informations about the resource
@@ -44235,7 +44315,7 @@ interface RecentManager {
      * @param uri a URI
      * @returns a #GtkRecentInfo structure containing information   about the resource pointed by @uri, or %NULL if the URI was   not registered in the recently used resources list.  Free with   gtk_recent_info_unref().
      */
-    lookup_item(uri: string | null): RecentInfo
+    lookup_item(uri: string): RecentInfo
     /**
      * Changes the location of a recently used resource from `uri` to `new_uri`.
      * 
@@ -44245,7 +44325,7 @@ interface RecentManager {
      * @param new_uri the new URI of the recently used resource, or %NULL to    remove the item pointed by `uri` in the list
      * @returns %TRUE on success.
      */
-    move_item(uri: string | null, new_uri: string | null): boolean
+    move_item(uri: string, new_uri: string | null): boolean
     /**
      * Purges every item from the recently used resources list.
      * @returns the number of items that have been removed from the   recently used resources list.
@@ -44257,7 +44337,7 @@ interface RecentManager {
      * @param uri the URI of the item you wish to remove
      * @returns %TRUE if the item pointed by @uri has been successfully   removed by the recently used resources list, and %FALSE otherwise.
      */
-    remove_item(uri: string | null): boolean
+    remove_item(uri: string): boolean
     /**
      * Sets the maximum number of item that the gtk_recent_manager_get_items()
      * function should return.  If `limit` is set to -1, then return all the
@@ -45916,6 +45996,42 @@ interface SeparatorToolItem extends Atk.ImplementorIface, Activatable, Buildable
      */
     set_draw(draw: boolean): void
 
+    // Conflicting methods
+
+    /**
+     * Sets the markup text to be displayed as tooltip on the item.
+     * See gtk_widget_set_tooltip_markup().
+     * @param markup markup text to be used as tooltip for `tool_item`
+     */
+    set_tooltip_markup(markup: string): void
+
+    // Overloads of set_tooltip_markup
+
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
+
     // Class property signals of Gtk-2.0.Gtk.SeparatorToolItem
 
     connect(sigName: "notify::draw", callback: (($obj: SeparatorToolItem, pspec: GObject.ParamSpec) => void)): number
@@ -47089,10 +47205,10 @@ interface Settings {
 
     // Owm methods of Gtk-2.0.Gtk.Settings
 
-    set_double_property(name: string | null, v_double: number, origin: string | null): void
-    set_long_property(name: string | null, v_long: number, origin: string | null): void
-    set_property_value(name: string | null, svalue: SettingsValue): void
-    set_string_property(name: string | null, v_string: string | null, origin: string | null): void
+    set_double_property(name: string, v_double: number, origin: string): void
+    set_long_property(name: string, v_long: number, origin: string): void
+    set_property_value(name: string, svalue: SettingsValue): void
+    set_string_property(name: string, v_string: string, origin: string): void
 
     // Class property signals of Gtk-2.0.Gtk.Settings
 
@@ -48738,7 +48854,7 @@ interface StatusIcon {
      * be freed or modified.
      * @returns name of the displayed icon, or %NULL if the image is empty.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the #GdkPixbuf being displayed by the #GtkStatusIcon.
      * The storage type of the status icon must be %GTK_IMAGE_EMPTY or
@@ -48773,7 +48889,7 @@ interface StatusIcon {
      * be freed or modified.
      * @returns stock id of the displayed stock icon,   or %NULL if the image is empty.
      */
-    get_stock(): string | null
+    get_stock(): string
     /**
      * Gets the type of representation being used by the #GtkStatusIcon
      * to store image data. If the #GtkStatusIcon has no image data,
@@ -48785,7 +48901,7 @@ interface StatusIcon {
      * Gets the title of this tray icon. See gtk_status_icon_set_title().
      * @returns the title of the status icon
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Gets the contents of the tooltip for `status_icon`.
      * @returns the tooltip text, or %NULL. You should free the   returned string with g_free() when done.
@@ -48837,7 +48953,7 @@ interface StatusIcon {
      * See gtk_status_icon_new_from_file() for details.
      * @param filename a filename
      */
-    set_from_file(filename: string | null): void
+    set_from_file(filename: string): void
     /**
      * Makes `status_icon` display the #GIcon.
      * See gtk_status_icon_new_from_gicon() for details.
@@ -48850,7 +48966,7 @@ interface StatusIcon {
      * See gtk_status_icon_new_from_icon_name() for details.
      * @param icon_name an icon name
      */
-    set_from_icon_name(icon_name: string | null): void
+    set_from_icon_name(icon_name: string): void
     /**
      * Makes `status_icon` display `pixbuf`.
      * See gtk_status_icon_new_from_pixbuf() for details.
@@ -48862,7 +48978,7 @@ interface StatusIcon {
      * See gtk_status_icon_new_from_stock() for details.
      * @param stock_id a stock icon id
      */
-    set_from_stock(stock_id: string | null): void
+    set_from_stock(stock_id: string): void
     /**
      * Sets the has-tooltip property on `status_icon` to `has_tooltip`.
      * See #GtkStatusIcon:has-tooltip for more information.
@@ -48876,7 +48992,7 @@ interface StatusIcon {
      * the user.
      * @param name the name
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the #GdkScreen where `status_icon` is displayed; if
      * the icon is already mapped, it will be unmapped, and
@@ -48891,7 +49007,7 @@ interface StatusIcon {
      * readers to render the tray icon.
      * @param title the title
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets the tooltip of the status icon.
      * @param tooltip_text the tooltip text, or %NULL
@@ -48920,7 +49036,7 @@ interface StatusIcon {
      * gtk_tooltip_set_text().
      * @param text the contents of the tooltip for `status_icon`
      */
-    set_tooltip_text(text: string | null): void
+    set_tooltip_text(text: string): void
     /**
      * Shows or hides a status icon.
      * @param visible %TRUE to show the status icon, %FALSE to hide it
@@ -49048,7 +49164,7 @@ class StatusIcon extends GObject.Object {
      * @param filename a filename
      * @returns a new #GtkStatusIcon
      */
-    static new_from_file(filename: string | null): StatusIcon
+    static new_from_file(filename: string): StatusIcon
     /**
      * Creates a status icon displaying a #GIcon. If the icon is a
      * themed icon, it will be updated when the theme changes.
@@ -49065,7 +49181,7 @@ class StatusIcon extends GObject.Object {
      * @param icon_name an icon name
      * @returns a new #GtkStatusIcon
      */
-    static new_from_icon_name(icon_name: string | null): StatusIcon
+    static new_from_icon_name(icon_name: string): StatusIcon
     /**
      * Creates a status icon displaying `pixbuf`.
      * 
@@ -49085,7 +49201,7 @@ class StatusIcon extends GObject.Object {
      * @param stock_id a stock icon id
      * @returns a new #GtkStatusIcon
      */
-    static new_from_stock(stock_id: string | null): StatusIcon
+    static new_from_stock(stock_id: string): StatusIcon
     _init(config?: StatusIcon.ConstructorProperties): void
     /**
      * Menu positioning function to use with gtk_menu_popup()
@@ -49166,7 +49282,7 @@ interface Statusbar extends Atk.ImplementorIface, Buildable, Orientable {
      * @param context_description textual description of what context                       the new message is being used in
      * @returns an integer id
      */
-    get_context_id(context_description: string | null): number
+    get_context_id(context_description: string): number
     /**
      * Returns whether the statusbar has a resize grip.
      * @returns %TRUE if the statusbar has a resize grip.
@@ -49193,7 +49309,7 @@ interface Statusbar extends Atk.ImplementorIface, Buildable, Orientable {
      * @param text the message to add to the statusbar
      * @returns a message id that can be used with          gtk_statusbar_remove().
      */
-    push(context_id: number, text: string | null): number
+    push(context_id: number, text: string): number
     /**
      * Forces the removal of a message from a statusbar's stack.
      * The exact `context_id` and `message_id` must be specified.
@@ -49232,8 +49348,8 @@ interface Statusbar extends Atk.ImplementorIface, Buildable, Orientable {
 
     // Own virtual methods of Gtk-2.0.Gtk.Statusbar
 
-    vfunc_text_popped(context_id: number, text: string | null): void
-    vfunc_text_pushed(context_id: number, text: string | null): void
+    vfunc_text_popped(context_id: number, text: string): void
+    vfunc_text_pushed(context_id: number, text: string): void
 
     // Own signals of Gtk-2.0.Gtk.Statusbar
 
@@ -49447,7 +49563,7 @@ interface Style {
      * @param property_name the name of the style property to get
      * @param value a #GValue where the value of the property being     queried will be stored
      */
-    get_style_property(widget_type: GObject.GType, property_name: string | null, value: any): void
+    get_style_property(widget_type: GObject.GType, property_name: string, value: any): void
     /**
      * Looks up `color_name` in the style's logical color mappings,
      * filling in `color` and returning %TRUE if found, otherwise
@@ -49457,7 +49573,7 @@ interface Style {
      * @param color_name the name of the logical color to look up
      * @returns %TRUE if the mapping was found.
      */
-    lookup_color(color_name: string | null): [ /* returnType */ boolean, /* color */ Gdk.Color ]
+    lookup_color(color_name: string): [ /* returnType */ boolean, /* color */ Gdk.Color ]
     /**
      * Looks up `stock_id` in the icon factories associated with `style`
      * and the default icon factory, returning an icon set if found,
@@ -49465,7 +49581,7 @@ interface Style {
      * @param stock_id an icon name
      * @returns icon set of @stock_id
      */
-    lookup_icon_set(stock_id: string | null): IconSet
+    lookup_icon_set(stock_id: string): IconSet
     /**
      * Renders the icon specified by `source` at the given `size`
      * according to the given parameters and returns the result in a
@@ -49502,28 +49618,28 @@ interface Style {
     // Own virtual methods of Gtk-2.0.Gtk.Style
 
     vfunc_copy(src: Style): void
-    vfunc_draw_arrow(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, arrow_type: ArrowType, fill: boolean, x: number, y: number, width: number, height: number): void
-    vfunc_draw_box(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_box_gap(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number): void
-    vfunc_draw_check(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_diamond(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_expander(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, expander_style: ExpanderStyle): void
-    vfunc_draw_extension(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, gap_side: PositionType): void
-    vfunc_draw_flat_box(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_focus(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_handle(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, orientation: Orientation): void
-    vfunc_draw_hline(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x1: number, x2: number, y: number): void
-    vfunc_draw_layout(window: Gdk.Window, state_type: StateType, use_text: boolean, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, layout: Pango.Layout): void
-    vfunc_draw_option(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_polygon(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, point: Gdk.Point, npoints: number, fill: boolean): void
-    vfunc_draw_resize_grip(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, edge: Gdk.WindowEdge, x: number, y: number, width: number, height: number): void
-    vfunc_draw_shadow(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_shadow_gap(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number): void
-    vfunc_draw_slider(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, orientation: Orientation): void
-    vfunc_draw_spinner(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, step: number, x: number, y: number, width: number, height: number): void
-    vfunc_draw_string(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, string: string | null): void
-    vfunc_draw_tab(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number): void
-    vfunc_draw_vline(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, y1_: number, y2_: number, x: number): void
+    vfunc_draw_arrow(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, arrow_type: ArrowType, fill: boolean, x: number, y: number, width: number, height: number): void
+    vfunc_draw_box(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_box_gap(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number): void
+    vfunc_draw_check(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_diamond(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_expander(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, expander_style: ExpanderStyle): void
+    vfunc_draw_extension(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType): void
+    vfunc_draw_flat_box(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_focus(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_handle(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation): void
+    vfunc_draw_hline(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x1: number, x2: number, y: number): void
+    vfunc_draw_layout(window: Gdk.Window, state_type: StateType, use_text: boolean, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, layout: Pango.Layout): void
+    vfunc_draw_option(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_polygon(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, point: Gdk.Point, npoints: number, fill: boolean): void
+    vfunc_draw_resize_grip(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, edge: Gdk.WindowEdge, x: number, y: number, width: number, height: number): void
+    vfunc_draw_shadow(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_shadow_gap(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number): void
+    vfunc_draw_slider(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation): void
+    vfunc_draw_spinner(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, step: number, x: number, y: number, width: number, height: number): void
+    vfunc_draw_string(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, string: string): void
+    vfunc_draw_tab(window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number): void
+    vfunc_draw_vline(window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, y1_: number, y2_: number, x: number): void
     vfunc_init_from_rc(rc_style: RcStyle): void
     vfunc_realize(): void
     /**
@@ -50223,7 +50339,7 @@ interface TextBuffer {
      * @param start one bound of range to be tagged
      * @param end other bound of range to be tagged
      */
-    apply_tag_by_name(name: string | null, start: TextIter, end: TextIter): void
+    apply_tag_by_name(name: string, start: TextIter, end: TextIter): void
     /**
      * Performs the appropriate action as if the user hit the delete
      * key with the cursor at the position specified by `iter`. In the
@@ -50349,7 +50465,7 @@ interface TextBuffer {
      * gtk_text_buffer_delete_mark() for details.
      * @param name name of a mark in `buffer`
      */
-    delete_mark_by_name(name: string | null): void
+    delete_mark_by_name(name: string): void
     /**
      * Deletes the range between the "insert" and "selection_bound" marks,
      * that is, the currently-selected text. If `interactive` is %TRUE,
@@ -50512,7 +50628,7 @@ interface TextBuffer {
      * @param name a mark name
      * @returns a #GtkTextMark, or %NULL
      */
-    get_mark(name: string | null): TextMark
+    get_mark(name: string): TextMark
     /**
      * Indicates whether the buffer has been modified since the last call
      * to gtk_text_buffer_set_modified() set the modification flag to
@@ -50616,14 +50732,14 @@ interface TextBuffer {
      * @param text text in UTF-8 format
      * @param len length of text in bytes, or -1
      */
-    insert(iter: TextIter, text: string | null, len: number): void
+    insert(iter: TextIter, text: string, len: number): void
     /**
      * Simply calls gtk_text_buffer_insert(), using the current
      * cursor position as the insertion point.
      * @param text text in UTF-8 format
      * @param len length of text, in bytes
      */
-    insert_at_cursor(text: string | null, len: number): void
+    insert_at_cursor(text: string, len: number): void
     /**
      * Inserts a child widget anchor into the text buffer at `iter`. The
      * anchor will be counted as one character in character counts, and
@@ -50655,7 +50771,7 @@ interface TextBuffer {
      * @param default_editable default editability of buffer
      * @returns whether text was actually inserted
      */
-    insert_interactive(iter: TextIter, text: string | null, len: number, default_editable: boolean): boolean
+    insert_interactive(iter: TextIter, text: string, len: number, default_editable: boolean): boolean
     /**
      * Calls gtk_text_buffer_insert_interactive() at the cursor
      * position.
@@ -50668,7 +50784,7 @@ interface TextBuffer {
      * @param default_editable default editability of buffer
      * @returns whether text was actually inserted
      */
-    insert_interactive_at_cursor(text: string | null, len: number, default_editable: boolean): boolean
+    insert_interactive_at_cursor(text: string, len: number, default_editable: boolean): boolean
     /**
      * Inserts an image into the text buffer at `iter`. The image will be
      * counted as one character in character counts, and when obtaining
@@ -50722,7 +50838,7 @@ interface TextBuffer {
      * @param name name of a mark
      * @param where new location for mark
      */
-    move_mark_by_name(name: string | null, where: TextIter): void
+    move_mark_by_name(name: string, where: TextIter): void
     /**
      * Pastes the contents of a clipboard at the insertion point, or
      * at `override_location`. (Note: pasting is asynchronous, that is,
@@ -50751,7 +50867,7 @@ interface TextBuffer {
      * @param function_ the deserialize function to register
      * @returns the #GdkAtom that corresponds to the               newly registered format's mime-type.
      */
-    register_deserialize_format(mime_type: string | null, function_: TextBufferDeserializeFunc): Gdk.Atom
+    register_deserialize_format(mime_type: string, function_: TextBufferDeserializeFunc): Gdk.Atom
     /**
      * This function registers GTK+'s internal rich text serialization
      * format with the passed `buffer`. See
@@ -50767,7 +50883,7 @@ interface TextBuffer {
      * @param function_ the serialize function to register
      * @returns the #GdkAtom that corresponds to the               newly registered format's mime-type.
      */
-    register_serialize_format(mime_type: string | null, function_: TextBufferSerializeFunc): Gdk.Atom
+    register_serialize_format(mime_type: string, function_: TextBufferSerializeFunc): Gdk.Atom
     /**
      * This function registers GTK+'s internal rich text serialization
      * format with the passed `buffer`. The internal format does not comply
@@ -50822,7 +50938,7 @@ interface TextBuffer {
      * @param start one bound of range to be untagged
      * @param end other bound of range to be untagged
      */
-    remove_tag_by_name(name: string | null, start: TextIter, end: TextIter): void
+    remove_tag_by_name(name: string, start: TextIter, end: TextIter): void
     /**
      * This function moves the "insert" and "selection_bound" marks
      * simultaneously.  If you move them in two steps
@@ -50864,7 +50980,7 @@ interface TextBuffer {
      * @param text UTF-8 text to insert
      * @param len length of `text` in bytes
      */
-    set_text(text: string | null, len: number): void
+    set_text(text: string, len: number): void
     /**
      * This function unregisters a rich text format that was previously
      * registered using gtk_text_buffer_register_deserialize_format() or
@@ -50952,7 +51068,7 @@ interface TextBuffer {
      * @param pixbuf a #GdkPixbuf
      */
     vfunc_insert_pixbuf(pos: TextIter, pixbuf: GdkPixbuf.Pixbuf): void
-    vfunc_insert_text(pos: TextIter, text: string | null, length: number): void
+    vfunc_insert_text(pos: TextIter, text: string, length: number): void
     vfunc_mark_deleted(mark: TextMark): void
     vfunc_mark_set(location: TextIter, mark: TextMark): void
     vfunc_modified_changed(): void
@@ -51349,7 +51465,7 @@ interface TextLayout {
      * @param preedit_attrs a #PangoAttrList of attributes that apply to `preedit_string`
      * @param cursor_pos position of cursor within preedit string in chars
      */
-    set_preedit_string(preedit_string: string | null, preedit_attrs: Pango.AttrList, cursor_pos: number): void
+    set_preedit_string(preedit_string: string, preedit_attrs: Pango.AttrList, cursor_pos: number): void
     set_screen_width(width: number): void
     spew(): void
     /**
@@ -51466,7 +51582,7 @@ interface TextMark {
      * Returns the mark name; returns NULL for anonymous marks.
      * @returns mark name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns %TRUE if the mark is visible (i.e. a cursor is displayed
      * for it).
@@ -52241,7 +52357,7 @@ interface TextTagTable extends Buildable {
      * @param name name of a tag
      * @returns The tag, or %NULL if none by that name is in the table.
      */
-    lookup(name: string | null): TextTag
+    lookup(name: string): TextTag
     /**
      * Remove a tag from the table. This will remove the table's
      * reference to the tag, so be careful - the tag will end
@@ -53117,7 +53233,7 @@ interface TextView extends Atk.ImplementorIface, Buildable {
     vfunc_copy_clipboard(): void
     vfunc_cut_clipboard(): void
     vfunc_delete_from_cursor(type: DeleteType, count: number): void
-    vfunc_insert_at_cursor(str: string | null): void
+    vfunc_insert_at_cursor(str: string): void
     vfunc_move_cursor(step: MovementStep, count: number, extend_selection: boolean): void
     vfunc_move_focus(direction: DirectionType): void
     vfunc_page_horizontally(count: number, extend_selection: boolean): void
@@ -53403,7 +53519,7 @@ interface TipsQuery extends Atk.ImplementorIface, Buildable {
     // Owm methods of Gtk-2.0.Gtk.TipsQuery
 
     set_caller(caller: Widget): void
-    set_labels(label_inactive: string | null, label_no_tip: string | null): void
+    set_labels(label_inactive: string, label_no_tip: string): void
     start_query(): void
     stop_query(): void
 
@@ -53411,8 +53527,8 @@ interface TipsQuery extends Atk.ImplementorIface, Buildable {
 
     vfunc_start_query(): void
     vfunc_stop_query(): void
-    vfunc_widget_entered(widget: Widget, tip_text: string | null, tip_private: string | null): void
-    vfunc_widget_selected(widget: Widget, tip_text: string | null, tip_private: string | null, event: Gdk.EventButton): number
+    vfunc_widget_entered(widget: Widget, tip_text: string, tip_private: string): void
+    vfunc_widget_selected(widget: Widget, tip_text: string, tip_private: string, event: Gdk.EventButton): number
 
     // Own signals of Gtk-2.0.Gtk.TipsQuery
 
@@ -53585,7 +53701,7 @@ class TipsQuery extends Label {
      * @param str The text of the label
      * @returns the new #GtkLabel
      */
-    static new(str: string | null): Label
+    static new(str: string): Label
     _init(config?: TipsQuery.ConstructorProperties): void
 }
 
@@ -53780,7 +53896,7 @@ class ToggleAction extends Action {
      * @param stock_id The stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkToggleAction
      */
-    constructor(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null) 
+    constructor(name: string, label: string | null, tooltip: string | null, stock_id: string) 
     /**
      * Creates a new #GtkToggleAction object. To add the action to
      * a #GtkActionGroup and set the accelerator for the action,
@@ -53792,7 +53908,7 @@ class ToggleAction extends Action {
      * @param stock_id The stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkToggleAction
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null): ToggleAction
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string): ToggleAction
 
     // Overloads of new
 
@@ -53809,7 +53925,7 @@ class ToggleAction extends Action {
      * @param stock_id the stock icon to display in widgets representing the   action, or %NULL
      * @returns a new #GtkAction
      */
-    static new(name: string | null, label: string | null, tooltip: string | null, stock_id: string | null): Action
+    static new(name: string, label: string | null, tooltip: string | null, stock_id: string): Action
     _init(config?: ToggleAction.ConstructorProperties): void
 }
 
@@ -54024,7 +54140,7 @@ class ToggleButton extends Button {
     constructor(config?: ToggleButton.ConstructorProperties) 
     constructor() 
     static new(): ToggleButton
-    static new_with_label(label: string | null): ToggleButton
+    static new_with_label(label: string): ToggleButton
     /**
      * Creates a new #GtkToggleButton containing a label. The label
      * will be created using gtk_label_new_with_mnemonic(), so underscores
@@ -54033,7 +54149,7 @@ class ToggleButton extends Button {
      * @param label the text of the button, with an underscore in front of the         mnemonic character
      * @returns a new #GtkToggleButton
      */
-    static new_with_mnemonic(label: string | null): ToggleButton
+    static new_with_mnemonic(label: string): ToggleButton
     _init(config?: ToggleButton.ConstructorProperties): void
 }
 
@@ -54091,6 +54207,42 @@ interface ToggleToolButton extends Atk.ImplementorIface, Activatable, Buildable 
      * @param is_active whether `button` should be active
      */
     set_active(is_active: boolean): void
+
+    // Conflicting methods
+
+    /**
+     * Sets the markup text to be displayed as tooltip on the item.
+     * See gtk_widget_set_tooltip_markup().
+     * @param markup markup text to be used as tooltip for `tool_item`
+     */
+    set_tooltip_markup(markup: string): void
+
+    // Overloads of set_tooltip_markup
+
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
 
     // Own virtual methods of Gtk-2.0.Gtk.ToggleToolButton
 
@@ -54265,7 +54417,7 @@ class ToggleToolButton extends ToolButton {
      * @param stock_id the name of the stock item
      * @returns A new #GtkToggleToolButton
      */
-    static new_from_stock(stock_id: string | null): ToggleToolButton
+    static new_from_stock(stock_id: string): ToggleToolButton
     _init(config?: ToggleToolButton.ConstructorProperties): void
 }
 
@@ -54349,7 +54501,7 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * see gtk_tool_button_set_icon_name().
      * @returns the icon name or %NULL if the tool button has no themed icon
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Return the widget used as icon widget on `button`.
      * See gtk_tool_button_set_icon_widget().
@@ -54362,7 +54514,7 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * string is owned by GTK+, and must not be modified or freed.
      * @returns The label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Returns the widget used as label on `button`.
      * See gtk_tool_button_set_label_widget().
@@ -54374,7 +54526,7 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * The returned string is owned by GTK+ and must not be freed or modifed.
      * @returns the name of the stock item for @button.
      */
-    get_stock_id(): string | null
+    get_stock_id(): string
     /**
      * Returns whether underscores in the label property are used as mnemonics
      * on menu items on the overflow menu. See gtk_tool_button_set_use_underline().
@@ -54434,6 +54586,42 @@ interface ToolButton extends Atk.ImplementorIface, Activatable, Buildable {
      * @param use_underline whether the button label has the form "_Open"
      */
     set_use_underline(use_underline: boolean): void
+
+    // Conflicting methods
+
+    /**
+     * Sets the markup text to be displayed as tooltip on the item.
+     * See gtk_widget_set_tooltip_markup().
+     * @param markup markup text to be used as tooltip for `tool_item`
+     */
+    set_tooltip_markup(markup: string): void
+
+    // Overloads of set_tooltip_markup
+
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
+    set_tooltip_markup(markup: string | null): void
 
     // Own virtual methods of Gtk-2.0.Gtk.ToolButton
 
@@ -54602,7 +54790,7 @@ class ToolButton extends ToolItem {
      * @param stock_id the name of the stock item
      * @returns A new #GtkToolButton
      */
-    static new_from_stock(stock_id: string | null): ToolButton
+    static new_from_stock(stock_id: string): ToolButton
     _init(config?: ToolButton.ConstructorProperties): void
 }
 
@@ -54715,7 +54903,7 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
      * @param menu_item_id a string used to identify the menu item
      * @returns The #GtkMenuItem passed to     gtk_tool_item_set_proxy_menu_item(), if the @menu_item_id<!-- -->s     match.
      */
-    get_proxy_menu_item(menu_item_id: string | null): Widget
+    get_proxy_menu_item(menu_item_id: string): Widget
     /**
      * Returns the relief style of `tool_item`. See gtk_button_set_relief_style().
      * Custom subclasses of #GtkToolItem should call this function in the handler
@@ -54836,7 +55024,7 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
      * @param menu_item_id a string used to identify `menu_item`
      * @param menu_item a #GtkMenuItem to be used in the overflow menu
      */
-    set_proxy_menu_item(menu_item_id: string | null, menu_item: Widget): void
+    set_proxy_menu_item(menu_item_id: string, menu_item: Widget): void
     /**
      * Sets the #GtkTooltips object to be used for `tool_item,` the
      * text to be displayed as tooltip on the item and the private text
@@ -54851,13 +55039,28 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
      * See gtk_widget_set_tooltip_markup().
      * @param markup markup text to be used as tooltip for `tool_item`
      */
+    set_tooltip_markup(markup: string): void
+
+    // Overloads of set_tooltip_markup
+
+    /**
+     * Sets `markup` as the contents of the tooltip, which is marked up with
+     *  the <link linkend="PangoMarkupFormat">Pango text markup language</link>.
+     * 
+     * This function will take care of setting GtkWidget:has-tooltip to %TRUE
+     * and of the default handler for the GtkWidget::query-tooltip signal.
+     * 
+     * See also the GtkWidget:tooltip-markup property and
+     * gtk_tooltip_set_markup().
+     * @param markup the contents of the tooltip for `widget,` or %NULL
+     */
     set_tooltip_markup(markup: string | null): void
     /**
      * Sets the text to be displayed as tooltip on the item.
      * See gtk_widget_set_tooltip_text().
      * @param text text to be used as tooltip for `tool_item`
      */
-    set_tooltip_text(text: string | null): void
+    set_tooltip_text(text: string): void
     /**
      * Sets whether `tool_item` has a drag window. When %TRUE the
      * toolitem can be used as a drag source through gtk_drag_source_set().
@@ -54889,7 +55092,7 @@ interface ToolItem extends Atk.ImplementorIface, Activatable, Buildable {
     // Own virtual methods of Gtk-2.0.Gtk.ToolItem
 
     vfunc_create_menu_proxy(): boolean
-    vfunc_set_tooltip(tooltips: Tooltips, tip_text: string | null, tip_private: string | null): boolean
+    vfunc_set_tooltip(tooltips: Tooltips, tip_text: string, tip_private: string): boolean
     /**
      * Emits the signal #GtkToolItem::toolbar_reconfigured on `tool_item`.
      * #GtkToolbar and other #GtkToolShell implementations use this function
@@ -55110,7 +55313,7 @@ interface ToolItemGroup extends Atk.ImplementorIface, Buildable, ToolShell {
      * Gets the label of `group`.
      * @returns the label of @group. The label is an internal string of @group     and must not be modified. Note that %NULL is returned if a custom     label has been set with gtk_tool_item_group_set_label_widget()
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the label widget of `group`.
      * See gtk_tool_item_group_set_label_widget().
@@ -55161,7 +55364,7 @@ interface ToolItemGroup extends Atk.ImplementorIface, Buildable, ToolShell {
      * of the group.
      * @param label the new human-readable label of of the group
      */
-    set_label(label: string | null): void
+    set_label(label: string): void
     /**
      * Sets the label of the tool item group.
      * The label widget is displayed in the header of the group, in place
@@ -55307,14 +55510,14 @@ class ToolItemGroup extends Container {
      * @param label the label of the new group
      * @returns a new #GtkToolItemGroup.
      */
-    constructor(label: string | null) 
+    constructor(label: string) 
     /**
      * Creates a new tool item group with label `label`.
      * @constructor 
      * @param label the label of the new group
      * @returns a new #GtkToolItemGroup.
      */
-    static new(label: string | null): ToolItemGroup
+    static new(label: string): ToolItemGroup
     _init(config?: ToolItemGroup.ConstructorProperties): void
 }
 
@@ -57790,7 +57993,7 @@ interface TreeView extends Atk.ImplementorIface, Buildable {
      * @param func function to set attributes of cell renderer
      * @returns number of columns in the tree view post-insert
      */
-    insert_column_with_data_func(position: number, title: string | null, cell: CellRenderer, func: TreeCellDataFunc): number
+    insert_column_with_data_func(position: number, title: string, cell: CellRenderer, func: TreeCellDataFunc): number
     /**
      * Returns whether a rubber banding operation is currently being done
      * in `tree_view`.
@@ -58544,7 +58747,7 @@ interface TreeViewColumn extends Buildable, CellLayout {
      * @param attribute An attribute on the renderer
      * @param column The column position on the model to get the attribute from.
      */
-    add_attribute(cell_renderer: CellRenderer, attribute: string | null, column: number): void
+    add_attribute(cell_renderer: CellRenderer, attribute: string, column: number): void
     /**
      * Obtains the horizontal position and size of a cell in a column. If the
      * cell is not found in the column, `start_pos` and `width` are not changed and
@@ -58675,7 +58878,7 @@ interface TreeViewColumn extends Buildable, CellLayout {
      * Returns the title of the widget.
      * @returns the title of the column. This string should not be modified or freed.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Returns the #GtkTreeView wherein `tree_column` has been inserted.
      * If `column` is currently not inserted in any tree view, %NULL is
@@ -58845,7 +59048,7 @@ interface TreeViewColumn extends Buildable, CellLayout {
      * this value is ignored.
      * @param title The title of the `tree_column`.
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets the visibility of `tree_column`.
      * @param visible %TRUE if the `tree_column` is visible.
@@ -59051,14 +59254,14 @@ interface UIManager extends Buildable {
      * @param type the type of UI element to add.
      * @param top if %TRUE, the UI element is added before its siblings, otherwise it   is added after its siblings.
      */
-    add_ui(merge_id: number, path: string | null, name: string | null, action: string | null, type: UIManagerItemType, top: boolean): void
+    add_ui(merge_id: number, path: string, name: string, action: string | null, type: UIManagerItemType, top: boolean): void
     /**
      * Parses a file containing a <link linkend="XML-UI">UI definition</link> and
      * merges it with the current contents of `self`.
      * @param filename the name of the file to parse
      * @returns The merge id for the merged UI. The merge id can be used   to unmerge the UI with gtk_ui_manager_remove_ui(). If an error occurred,   the return value is 0.
      */
-    add_ui_from_file(filename: string | null): number
+    add_ui_from_file(filename: string): number
     /**
      * Parses a string containing a <link linkend="XML-UI">UI definition</link> and
      * merges it with the current contents of `self`. An enclosing &lt;ui&gt;
@@ -59067,7 +59270,7 @@ interface UIManager extends Buildable {
      * @param length the length of `buffer` (may be -1 if `buffer` is nul-terminated)
      * @returns The merge id for the merged UI. The merge id can be used   to unmerge the UI with gtk_ui_manager_remove_ui(). If an error occurred,   the return value is 0.
      */
-    add_ui_from_string(buffer: string | null, length: number): number
+    add_ui_from_string(buffer: string, length: number): number
     /**
      * Makes sure that all pending updates to the UI have been completed.
      * 
@@ -59099,7 +59302,7 @@ interface UIManager extends Buildable {
      * @param path a path
      * @returns the action whose proxy widget is found by following the path,     or %NULL if no widget was found.
      */
-    get_action(path: string | null): Action
+    get_action(path: string): Action
     /**
      * Returns the list of action groups associated with `self`.
      * @returns a #GList of   action groups. The list is owned by GTK+   and should not be modified.
@@ -59139,7 +59342,7 @@ interface UIManager extends Buildable {
      * @param path a path
      * @returns the widget found by following the path, or %NULL if no widget   was found.
      */
-    get_widget(path: string | null): Widget
+    get_widget(path: string): Widget
     /**
      * Inserts an action group into the list of action groups associated
      * with `self`. Actions in earlier groups hide actions with the same
@@ -59188,7 +59391,7 @@ interface UIManager extends Buildable {
      * @param path a path
      * @returns the action whose proxy widget is found by following the path,     or %NULL if no widget was found.
      */
-    vfunc_get_action(path: string | null): Action
+    vfunc_get_action(path: string): Action
     /**
      * Looks up a widget by following a path.
      * The path consists of the names specified in the XML description of the UI.
@@ -59207,7 +59410,7 @@ interface UIManager extends Buildable {
      * @param path a path
      * @returns the widget found by following the path, or %NULL if no widget   was found.
      */
-    vfunc_get_widget(path: string | null): Widget
+    vfunc_get_widget(path: string): Widget
     vfunc_post_activate(action: Action): void
     vfunc_pre_activate(action: Action): void
 
@@ -61389,7 +61592,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * @param accel_mods modifier key combination of the accelerator
      * @param accel_flags flag accelerators, e.g. %GTK_ACCEL_VISIBLE
      */
-    add_accelerator(accel_signal: string | null, accel_group: AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags): void
+    add_accelerator(accel_signal: string, accel_group: AccelGroup, accel_key: number, accel_mods: Gdk.ModifierType, accel_flags: AccelFlags): void
     /**
      * Adds the events in the bitfield `events` to the event mask for
      * `widget`. See gtk_widget_set_events() for details.
@@ -61456,12 +61659,12 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * This is the analogue of g_object_notify() for child properties.
      * @param child_property the name of a child property installed on the                  class of `widget<`!-- -->'s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Same as gtk_widget_path(), but always uses the name of a widget's type,
      * never uses a custom name set with gtk_widget_set_name().
      */
-    class_path(): [ /* path_length */ number, /* path */ string | null, /* path_reversed */ string | null ]
+    class_path(): [ /* path_length */ number, /* path */ string, /* path_reversed */ string ]
     /**
      * Creates a new #PangoContext with the appropriate font map,
      * font description, and base direction for drawing text for
@@ -61482,7 +61685,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * @param text text to set on the layout (can be %NULL)
      * @returns the new #PangoLayout
      */
-    create_pango_layout(text: string | null): Pango.Layout
+    create_pango_layout(text: string): Pango.Layout
     /**
      * Destroys a widget. Equivalent to gtk_object_destroy(), except that
      * you don't have to cast the widget to #GtkObject. When a widget is
@@ -61742,7 +61945,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns the current value of the GtkWidget:no-show-all property,
      * which determines whether calls to gtk_widget_show_all() and
@@ -62233,7 +62436,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * i.e. starting with `widget'`s name instead of starting with the name
      * of `widget'`s outermost ancestor.
      */
-    path(): [ /* path_length */ number, /* path */ string | null, /* path_reversed */ string | null ]
+    path(): [ /* path_length */ number, /* path */ string, /* path_reversed */ string ]
     /**
      * This function does the same as gtk_widget_queue_draw().
      */
@@ -62352,7 +62555,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * @param detail render detail to pass to theme engine
      * @returns a new pixbuf, or %NULL if the     stock ID wasn't known
      */
-    render_icon(stock_id: string | null, size: number, detail: string | null): GdkPixbuf.Pixbuf
+    render_icon(stock_id: string, size: number, detail: string | null): GdkPixbuf.Pixbuf
     /**
      * Moves a widget from one #GtkContainer to another, handling reference
      * count issues to avoid destroying the widget.
@@ -62520,7 +62723,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * a composite child of its parent; see gtk_widget_push_composite_child().
      * @param name the name to set
      */
-    set_composite_name(name: string | null): void
+    set_composite_name(name: string): void
     /**
      * Sets the reading direction on a particular widget. This direction
      * controls the primary direction for widgets containing text,
@@ -62617,7 +62820,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * gtk_widget_path()), so names with embedded periods may cause confusion.
      * @param name name for the widget
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the #GtkWidget:no-show-all property, which determines whether
      * calls to gtk_widget_show_all() and gtk_widget_hide_all() will affect
@@ -62767,7 +62970,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * See also the GtkWidget:tooltip-text property and gtk_tooltip_set_text().
      * @param text the contents of the tooltip for `widget`
      */
-    set_tooltip_text(text: string | null): void
+    set_tooltip_text(text: string): void
     /**
      * Replaces the default, usually yellow, window used for displaying
      * tooltips with `custom_window`. GTK+ will take care of showing and
@@ -62925,7 +63128,7 @@ interface Widget extends Atk.ImplementorIface, Buildable {
      * @param property_name the name of a style property
      * @param value location to return the property value
      */
-    style_get_property(property_name: string | null, value: any): void
+    style_get_property(property_name: string, value: any): void
     /**
      * Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
      * This causes all queued #GtkWidget::child-notify signals on `widget` to be
@@ -64114,7 +64317,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * see gtk_window_set_icon_name().
      * @returns the icon name or %NULL if the window has no themed icon
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Returns the mnemonic modifier for this window. See
      * gtk_window_set_mnemonic_modifier().
@@ -64182,7 +64385,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * further explanation.
      * @returns the role of the window if set, or %NULL. The   returned is owned by the widget and must not be modified   or freed.
      */
-    get_role(): string | null
+    get_role(): string
     /**
      * Returns the #GdkScreen associated with `window`.
      * @returns a #GdkScreen.
@@ -64249,7 +64452,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * Retrieves the title of the window. See gtk_window_set_title().
      * @returns the title of the window, or %NULL if none has    been set explicitely. The returned string is owned by the widget    and must not be modified or freed.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Fetches the transient parent for this window. See
      * gtk_window_set_transient_for().
@@ -64441,7 +64644,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * @param geometry geometry string
      * @returns %TRUE if string was parsed successfully
      */
-    parse_geometry(geometry: string | null): boolean
+    parse_geometry(geometry: string): boolean
     /**
      * Presents a window to the user. This may mean raising the window
      * in the stacking order, deiconifying it, moving it to the current
@@ -64698,7 +64901,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * @param filename location of icon file
      * @returns %TRUE if setting the icon succeeded.
      */
-    set_icon_from_file(filename: string | null): boolean
+    set_icon_from_file(filename: string): boolean
     /**
      * Sets the icon for the window from a named themed icon. See
      * the docs for #GtkIconTheme for more details.
@@ -64818,7 +65021,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * restoring the session.
      * @param role unique identifier for the window to be used when restoring a session
      */
-    set_role(role: string | null): void
+    set_role(role: string): void
     /**
      * Sets the #GdkScreen where the `window` is displayed; if
      * the window is already mapped, it will be unmapped, and
@@ -64854,7 +65057,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * This function is only useful on X11, not with other GTK+ targets.
      * @param startup_id a string with startup-notification identifier
      */
-    set_startup_id(startup_id: string | null): void
+    set_startup_id(startup_id: string): void
     /**
      * Sets the title of the #GtkWindow. The title of a window will be
      * displayed in its title bar; on the X Window System, the title bar
@@ -64866,7 +65069,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * document filename, for example.
      * @param title title of the window
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Dialog windows should be set transient for the main application
      * window they were spawned from. This allows <link
@@ -64913,7 +65116,7 @@ interface Window extends Atk.ImplementorIface, Buildable {
      * @param wmclass_name window name hint
      * @param wmclass_class window class hint
      */
-    set_wmclass(wmclass_name: string | null, wmclass_class: string | null): void
+    set_wmclass(wmclass_name: string, wmclass_class: string): void
     /**
      * Asks to stick `window,` which means that it will appear on all user
      * desktops. Note that you shouldn't assume the window is definitely
@@ -65212,7 +65415,7 @@ class Window extends Bin {
      * gtk_window_set_default_icon_name().
      * @returns the fallback icon name for windows
      */
-    static get_default_icon_name(): string | null
+    static get_default_icon_name(): string
     /**
      * Returns a list of all existing toplevel windows. The widgets
      * in the list are not individually referenced. If you want
@@ -65249,7 +65452,7 @@ class Window extends Bin {
      * @param filename location of icon file
      * @returns %TRUE if setting the icon succeeded.
      */
-    static set_default_icon_from_file(filename: string | null): boolean
+    static set_default_icon_from_file(filename: string): boolean
     /**
      * Sets an icon list to be used as fallback for windows that haven't
      * had gtk_window_set_icon_list() called on them to set up a
@@ -65266,7 +65469,7 @@ class Window extends Bin {
      * themed icon, see gtk_window_set_icon_name().
      * @param name the name of the themed icon
      */
-    static set_default_icon_name(name: string | null): void
+    static set_default_icon_name(name: string): void
 }
 
 module WindowGroup {
@@ -65343,7 +65546,7 @@ interface AboutDialogClass {
     // Own fields of Gtk-2.0.Gtk.AboutDialogClass
 
     parent_class: DialogClass
-    activate_link: (dialog: AboutDialog, uri: string | null) => boolean
+    activate_link: (dialog: AboutDialog, uri: string) => boolean
 }
 
 abstract class AboutDialogClass {
@@ -65473,11 +65676,11 @@ interface ActionEntry {
 
     // Own fields of Gtk-2.0.Gtk.ActionEntry
 
-    name: string | null
-    stock_id: string | null
-    label: string | null
-    accelerator: string | null
-    tooltip: string | null
+    name: string
+    stock_id: string
+    label: string
+    accelerator: string
+    tooltip: string
     callback: GObject.Callback
 }
 
@@ -65493,7 +65696,7 @@ interface ActionGroupClass {
     // Own fields of Gtk-2.0.Gtk.ActionGroupClass
 
     parent_class: GObject.ObjectClass
-    get_action: (action_group: ActionGroup, action_name: string | null) => Action
+    get_action: (action_group: ActionGroup, action_name: string) => Action
 }
 
 abstract class ActionGroupClass {
@@ -65528,7 +65731,7 @@ interface ActivatableIface {
     // Own fields of Gtk-2.0.Gtk.ActivatableIface
 
     g_iface: GObject.TypeInterface
-    update: (activatable: Activatable, action: Action, property_name: string | null) => void
+    update: (activatable: Activatable, action: Action, property_name: string) => void
     sync_action_properties: (activatable: Activatable, action: Action | null) => void
 }
 
@@ -65710,7 +65913,7 @@ class BindingEntry {
      * @param signal_name signal name to be bound
      * @param binding_args      list of #GtkBindingArg signal arguments
      */
-    static add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string | null, binding_args: BindingArg[]): void
+    static add_signall(binding_set: BindingSet, keyval: number, modifiers: Gdk.ModifierType, signal_name: string, binding_args: BindingArg[]): void
     /**
      * Clears a binding entry.
      * @param binding_set binding set to clear an entry of
@@ -65768,7 +65971,7 @@ interface BindingSet {
      * @param path_pattern the actual match pattern
      * @param priority binding priority
      */
-    add_path(path_type: PathType, path_pattern: string | null, priority: PathPriorityType): void
+    add_path(path_type: PathType, path_pattern: string, priority: PathPriorityType): void
 }
 
 class BindingSet {
@@ -65786,7 +65989,7 @@ class BindingSet {
      * @param set_name unique binding set name
      * @returns %NULL or the specified binding set
      */
-    static find(set_name: string | null): BindingSet
+    static find(set_name: string): BindingSet
 }
 
 interface BindingSignal {
@@ -65931,16 +66134,16 @@ interface BuildableIface {
      * @field 
      */
     g_iface: GObject.TypeInterface
-    set_name: (buildable: Buildable, name: string | null) => void
-    get_name: (buildable: Buildable) => string | null
+    set_name: (buildable: Buildable, name: string) => void
+    get_name: (buildable: Buildable) => string
     add_child: (buildable: Buildable, builder: Builder, child: GObject.Object, type: string | null) => void
-    set_buildable_property: (buildable: Buildable, builder: Builder, name: string | null, value: any) => void
-    construct_child: (buildable: Buildable, builder: Builder, name: string | null) => GObject.Object
-    custom_tag_start: (buildable: Buildable, builder: Builder, child: GObject.Object | null, tagname: string | null) => [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ any | null ]
-    custom_tag_end: (buildable: Buildable, builder: Builder, child: GObject.Object | null, tagname: string | null, data: any | null) => void
-    custom_finished: (buildable: Buildable, builder: Builder, child: GObject.Object | null, tagname: string | null, data: any | null) => void
+    set_buildable_property: (buildable: Buildable, builder: Builder, name: string, value: any) => void
+    construct_child: (buildable: Buildable, builder: Builder, name: string) => GObject.Object
+    custom_tag_start: (buildable: Buildable, builder: Builder, child: GObject.Object | null, tagname: string) => [ /* returnType */ boolean, /* parser */ GLib.MarkupParser, /* data */ any | null ]
+    custom_tag_end: (buildable: Buildable, builder: Builder, child: GObject.Object | null, tagname: string, data: any | null) => void
+    custom_finished: (buildable: Buildable, builder: Builder, child: GObject.Object | null, tagname: string, data: any | null) => void
     parser_finished: (buildable: Buildable, builder: Builder) => void
-    get_internal_child: (buildable: Buildable, builder: Builder, childname: string | null) => GObject.Object
+    get_internal_child: (buildable: Buildable, builder: Builder, childname: string) => GObject.Object
 }
 
 /**
@@ -65961,7 +66164,7 @@ interface BuilderClass {
     // Own fields of Gtk-2.0.Gtk.BuilderClass
 
     parent_class: GObject.ObjectClass
-    get_type_from_name: (builder: Builder, type_name: string | null) => GObject.GType
+    get_type_from_name: (builder: Builder, type_name: string) => GObject.GType
 }
 
 abstract class BuilderClass {
@@ -66061,7 +66264,7 @@ interface CListClass {
     sort_list: (clist: CList) => void
     insert_row: (clist: CList, row: number, text: string | null) => number
     remove_row: (clist: CList, row: number) => void
-    set_cell_contents: (clist: CList, clist_row: CListRow, column: number, type: CellType, text: string | null, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap) => void
+    set_cell_contents: (clist: CList, clist_row: CListRow, column: number, type: CellType, text: string, spacing: number, pixmap: Gdk.Pixmap, mask: Gdk.Bitmap) => void
     cell_size_request: (clist: CList, clist_row: CListRow, column: number, requisition: Requisition) => void
 }
 
@@ -66267,7 +66470,7 @@ interface CellLayoutIface {
     pack_start: (cell_layout: CellLayout, cell: CellRenderer, expand: boolean) => void
     pack_end: (cell_layout: CellLayout, cell: CellRenderer, expand: boolean) => void
     clear: (cell_layout: CellLayout) => void
-    add_attribute: (cell_layout: CellLayout, cell: CellRenderer, attribute: string | null, column: number) => void
+    add_attribute: (cell_layout: CellLayout, cell: CellRenderer, attribute: string, column: number) => void
     set_cell_data_func: (cell_layout: CellLayout, cell: CellRenderer, func: CellLayoutDataFunc) => void
     clear_attributes: (cell_layout: CellLayout, cell: CellRenderer) => void
     reorder: (cell_layout: CellLayout, cell: CellRenderer, position: number) => void
@@ -66326,8 +66529,8 @@ interface CellRendererAccelClass {
     // Own fields of Gtk-2.0.Gtk.CellRendererAccelClass
 
     parent_class: CellRendererTextClass
-    accel_edited: (accel: CellRendererAccel, path_string: string | null, accel_key: number, accel_mods: Gdk.ModifierType, hardware_keycode: number) => void
-    accel_cleared: (accel: CellRendererAccel, path_string: string | null) => void
+    accel_edited: (accel: CellRendererAccel, path_string: string, accel_key: number, accel_mods: Gdk.ModifierType, hardware_keycode: number) => void
+    accel_cleared: (accel: CellRendererAccel, path_string: string) => void
 }
 
 abstract class CellRendererAccelClass {
@@ -66344,10 +66547,10 @@ interface CellRendererClass {
     parent_class: ObjectClass
     get_size: (cell: CellRenderer, widget: Widget, cell_area: Gdk.Rectangle | null) => [ /* x_offset */ number, /* y_offset */ number, /* width */ number, /* height */ number ]
     render: (cell: CellRenderer, window: Gdk.Drawable, widget: Widget, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, expose_area: Gdk.Rectangle, flags: CellRendererState) => void
-    activate: (cell: CellRenderer, event: Gdk.Event, widget: Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState) => boolean
-    start_editing: (cell: CellRenderer, event: Gdk.Event, widget: Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState) => CellEditable
+    activate: (cell: CellRenderer, event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState) => boolean
+    start_editing: (cell: CellRenderer, event: Gdk.Event, widget: Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: CellRendererState) => CellEditable
     editing_canceled: (cell: CellRenderer) => void
-    editing_started: (cell: CellRenderer, editable: CellEditable, path: string | null) => void
+    editing_started: (cell: CellRenderer, editable: CellEditable, path: string) => void
 }
 
 abstract class CellRendererClass {
@@ -66462,7 +66665,7 @@ interface CellRendererTextClass {
     // Own fields of Gtk-2.0.Gtk.CellRendererTextClass
 
     parent_class: CellRendererClass
-    edited: (cell_renderer_text: CellRendererText, path: string | null, new_text: string | null) => void
+    edited: (cell_renderer_text: CellRendererText, path: string, new_text: string) => void
 }
 
 abstract class CellRendererTextClass {
@@ -66477,7 +66680,7 @@ interface CellRendererToggleClass {
     // Own fields of Gtk-2.0.Gtk.CellRendererToggleClass
 
     parent_class: CellRendererClass
-    toggled: (cell_renderer_toggle: CellRendererToggle, path: string | null) => void
+    toggled: (cell_renderer_toggle: CellRendererToggle, path: string) => void
 }
 
 abstract class CellRendererToggleClass {
@@ -66741,7 +66944,7 @@ interface ContainerClass {
      * @param property_name the name of the child property to find
      * @returns the #GParamSpec of the child property or           %NULL if @class has no child property with that name.
      */
-    find_child_property(cclass: Container | Function | GObject.GType, property_name: string | null): GObject.ParamSpec
+    find_child_property(cclass: Container | Function | GObject.GType, property_name: string): GObject.ParamSpec
     /**
      * Installs a child property on a container class.
      * @param property_id the id for the property
@@ -66812,10 +67015,10 @@ interface EditableClass {
     // Own fields of Gtk-2.0.Gtk.EditableClass
 
     base_iface: GObject.TypeInterface
-    insert_text: (editable: Editable, text: string | null, length: number, position: number) => void
+    insert_text: (editable: Editable, text: string, length: number, position: number) => void
     delete_text: (editable: Editable, start_pos: number, end_pos: number) => void
     changed: (editable: Editable) => void
-    do_insert_text: (editable: Editable, text: string | null, length: number, position: number) => void
+    do_insert_text: (editable: Editable, text: string, length: number, position: number) => void
     do_delete_text: (editable: Editable, start_pos: number, end_pos: number) => void
     get_chars: (editable: Editable, start_pos: number, end_pos: number) => string | null
     set_selection_bounds: (editable: Editable, start_pos: number, end_pos: number) => void
@@ -66836,11 +67039,11 @@ interface EntryBufferClass {
     // Own fields of Gtk-2.0.Gtk.EntryBufferClass
 
     parent_class: GObject.ObjectClass
-    inserted_text: (buffer: EntryBuffer, position: number, chars: string | null, n_chars: number) => void
+    inserted_text: (buffer: EntryBuffer, position: number, chars: string, n_chars: number) => void
     deleted_text: (buffer: EntryBuffer, position: number, n_chars: number) => void
-    get_text: (buffer: EntryBuffer, n_bytes: number) => string | null
+    get_text: (buffer: EntryBuffer, n_bytes: number) => string
     get_length: (buffer: EntryBuffer) => number
-    insert_text: (buffer: EntryBuffer, position: number, chars: string | null, n_chars: number) => number
+    insert_text: (buffer: EntryBuffer, position: number, chars: string, n_chars: number) => number
     delete_text: (buffer: EntryBuffer, position: number, n_chars: number) => number
 }
 
@@ -66869,7 +67072,7 @@ interface EntryClass {
     populate_popup: (entry: Entry, menu: Menu) => void
     activate: (entry: Entry) => void
     move_cursor: (entry: Entry, step: MovementStep, count: number, extend_selection: boolean) => void
-    insert_at_cursor: (entry: Entry, str: string | null) => void
+    insert_at_cursor: (entry: Entry, str: string) => void
     delete_from_cursor: (entry: Entry, type: DeleteType, count: number) => void
     backspace: (entry: Entry) => void
     cut_clipboard: (entry: Entry) => void
@@ -66893,7 +67096,7 @@ interface EntryCompletionClass {
     parent_class: GObject.ObjectClass
     match_selected: (completion: EntryCompletion, model: TreeModel, iter: TreeIter) => boolean
     action_activated: (completion: EntryCompletion, index_: number) => void
-    insert_prefix: (completion: EntryCompletion, prefix: string | null) => boolean
+    insert_prefix: (completion: EntryCompletion, prefix: string) => boolean
     cursor_on_match: (completion: EntryCompletion, model: TreeModel, iter: TreeIter) => boolean
 }
 
@@ -67030,10 +67233,10 @@ interface FileFilterInfo {
     // Own fields of Gtk-2.0.Gtk.FileFilterInfo
 
     contains: FileFilterFlags
-    filename: string | null
-    uri: string | null
-    display_name: string | null
-    mime_type: string | null
+    filename: string
+    uri: string
+    display_name: string
+    mime_type: string
 }
 
 class FileFilterInfo {
@@ -67306,7 +67509,7 @@ interface IMContextClass {
     preedit_start: (context: IMContext) => void
     preedit_end: (context: IMContext) => void
     preedit_changed: (context: IMContext) => void
-    commit: (context: IMContext, str: string | null) => void
+    commit: (context: IMContext, str: string) => void
     retrieve_surrounding: (context: IMContext) => boolean
     delete_surrounding: (context: IMContext, offset: number, n_chars: number) => boolean
     set_client_window: (context: IMContext, window: Gdk.Window | null) => void
@@ -67317,7 +67520,7 @@ interface IMContextClass {
     reset: (context: IMContext) => void
     set_cursor_location: (context: IMContext, area: Gdk.Rectangle) => void
     set_use_preedit: (context: IMContext, use_preedit: boolean) => void
-    set_surrounding: (context: IMContext, text: string | null, len: number, cursor_index: number) => void
+    set_surrounding: (context: IMContext, text: string, len: number, cursor_index: number) => void
     get_surrounding: (context: IMContext) => [ /* returnType */ boolean, /* text */ string | null, /* cursor_index */ number ]
 }
 
@@ -67336,28 +67539,28 @@ interface IMContextInfo {
      * The unique identification string of the input method.
      * @field 
      */
-    context_id: string | null
+    context_id: string
     /**
      * The human-readable name of the input method.
      * @field 
      */
-    context_name: string | null
+    context_name: string
     /**
      * Translation domain to be used with dgettext()
      * @field 
      */
-    domain: string | null
+    domain: string
     /**
      * Name of locale directory for use with bindtextdomain()
      * @field 
      */
-    domain_dirname: string | null
+    domain_dirname: string
     /**
      * A colon-separated list of locales where this input method
      *   should be the default. The asterisk "*" sets the default for all locales.
      * @field 
      */
-    default_locales: string | null
+    default_locales: string
 }
 
 /**
@@ -67469,7 +67672,7 @@ interface IconInfo {
      * visible context like a list of icons.
      * @returns the display name for the icon or %NULL, if  the icon doesn't have a specified display name. This value  is owned @icon_info and must not be modified or free.
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets the coordinates of a rectangle within the icon
      * that can be used for display of information such
@@ -67487,7 +67690,7 @@ interface IconInfo {
      * case, you should use gtk_icon_info_get_builtin_pixbuf().
      * @returns the filename for the icon, or %NULL  if gtk_icon_info_get_builtin_pixbuf() should  be used instead. The return value is owned by  GTK+ and should not be modified or freed.
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Renders an icon previously looked up in an icon theme using
      * gtk_icon_theme_lookup_icon(); the size will be based on the size
@@ -67693,14 +67896,14 @@ interface IconSource {
      * persist beyond the lifetime of the icon source.
      * @returns image filename. This string must not be modified or freed.
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Retrieves the source icon name, or %NULL if none is set. The
      * icon_name is not a copy, and should not be modified or expected to
      * persist beyond the lifetime of the icon source.
      * @returns icon name. This string must not be modified or freed.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Retrieves the source pixbuf, or %NULL if none is set.
      * In addition, if a filename source is in use, this
@@ -67764,7 +67967,7 @@ interface IconSource {
      * icon variants for #GtkIconSet. The filename must be absolute.
      * @param filename image file to use
      */
-    set_filename(filename: string | null): void
+    set_filename(filename: string): void
     /**
      * Sets the name of an icon to look up in the current icon theme
      * to use as a base image when creating icon variants for #GtkIconSet.
@@ -68244,7 +68447,7 @@ interface LabelClass {
     move_cursor: (label: Label, step: MovementStep, count: number, extend_selection: boolean) => void
     copy_clipboard: (label: Label) => void
     populate_popup: (label: Label, menu: Menu) => void
-    activate_link: (label: Label, uri: string | null) => boolean
+    activate_link: (label: Label, uri: string) => boolean
 }
 
 abstract class LabelClass {
@@ -68414,8 +68617,8 @@ interface MenuItemClass {
     activate_item: (menu_item: MenuItem) => void
     toggle_size_request: (menu_item: MenuItem, requisition: number) => void
     toggle_size_allocate: (menu_item: MenuItem, allocation: number) => void
-    set_label: (menu_item: MenuItem, label: string | null) => void
-    get_label: (menu_item: MenuItem) => string | null
+    set_label: (menu_item: MenuItem, label: string) => void
+    get_label: (menu_item: MenuItem) => string
 }
 
 abstract class MenuItemClass {
@@ -68734,7 +68937,7 @@ interface PaperSize {
      * Gets the human-readable name of the #GtkPaperSize.
      * @returns the human-readable name of @size
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets the paper height of the #GtkPaperSize, in
      * units of `unit`.
@@ -68746,13 +68949,13 @@ interface PaperSize {
      * Gets the name of the #GtkPaperSize.
      * @returns the name of @size
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the PPD name of the #GtkPaperSize, which
      * may be %NULL.
      * @returns the PPD name of @size
      */
-    get_ppd_name(): string | null
+    get_ppd_name(): string
     /**
      * Gets the paper width of the #GtkPaperSize, in
      * units of `unit`.
@@ -68783,7 +68986,7 @@ interface PaperSize {
      * @param key_file the #GKeyFile to save the paper size to
      * @param group_name the group to add the settings to in `key_file`
      */
-    to_key_file(key_file: GLib.KeyFile, group_name: string | null): void
+    to_key_file(key_file: GLib.KeyFile, group_name: string): void
 }
 
 class PaperSize {
@@ -68829,7 +69032,7 @@ class PaperSize {
      * @param unit the unit for `width` and `height`
      * @returns a new #GtkPaperSize object, use gtk_paper_size_free() to free it
      */
-    static new_custom(name: string | null, display_name: string | null, width: number, height: number, unit: Unit): PaperSize
+    static new_custom(name: string, display_name: string, width: number, height: number, unit: Unit): PaperSize
     /**
      * Reads a paper size from the group `group_name` in the key file
      * `key_file`.
@@ -68838,7 +69041,7 @@ class PaperSize {
      * @param group_name the name ofthe group in the key file to read,     or %NULL to read the first group
      * @returns a new #GtkPaperSize object with the restored          paper size, or %NULL if an error occurred.
      */
-    static new_from_key_file(key_file: GLib.KeyFile, group_name: string | null): PaperSize
+    static new_from_key_file(key_file: GLib.KeyFile, group_name: string): PaperSize
     /**
      * Creates a new #GtkPaperSize object by using
      * PPD information.
@@ -68853,13 +69056,13 @@ class PaperSize {
      * @param height the paper height in points
      * @returns a new #GtkPaperSize, use gtk_paper_size_free() to free it
      */
-    static new_from_ppd(ppd_name: string | null, ppd_display_name: string | null, width: number, height: number): PaperSize
+    static new_from_ppd(ppd_name: string, ppd_display_name: string, width: number, height: number): PaperSize
     /**
      * Returns the name of the default paper size, which
      * depends on the current locale.
      * @returns the name of the default paper size. The string is owned by GTK+ and should not be modified.
      */
-    static get_default(): string | null
+    static get_default(): string
     /**
      * Creates a list of known paper sizes.
      * @param include_custom whether to include custom paper sizes     as defined in the page setup dialog
@@ -69030,11 +69233,11 @@ interface RadioActionEntry {
 
     // Own fields of Gtk-2.0.Gtk.RadioActionEntry
 
-    name: string | null
-    stock_id: string | null
-    label: string | null
-    accelerator: string | null
-    tooltip: string | null
+    name: string
+    stock_id: string
+    label: string
+    accelerator: string
+    tooltip: string
     value: number
 }
 
@@ -69302,10 +69505,10 @@ interface RecentChooserIface {
     // Own fields of Gtk-2.0.Gtk.RecentChooserIface
 
     base_iface: GObject.TypeInterface
-    set_current_uri: (chooser: RecentChooser, uri: string | null) => boolean
+    set_current_uri: (chooser: RecentChooser, uri: string) => boolean
     get_current_uri: (chooser: RecentChooser) => string | null
-    select_uri: (chooser: RecentChooser, uri: string | null) => boolean
-    unselect_uri: (chooser: RecentChooser, uri: string | null) => void
+    select_uri: (chooser: RecentChooser, uri: string) => boolean
+    unselect_uri: (chooser: RecentChooser, uri: string) => void
     select_all: (chooser: RecentChooser) => void
     unselect_all: (chooser: RecentChooser) => void
     get_items: (chooser: RecentChooser) => RecentInfo[]
@@ -69441,11 +69644,11 @@ interface RecentFilterInfo {
     // Own fields of Gtk-2.0.Gtk.RecentFilterInfo
 
     contains: RecentFilterFlags
-    uri: string | null
-    display_name: string | null
-    mime_type: string | null
-    applications: string | null
-    groups: string | null
+    uri: string
+    display_name: string
+    mime_type: string
+    applications: string
+    groups: string
     age: number
 }
 
@@ -69487,7 +69690,7 @@ interface RecentInfo {
      * @param app_name the name of the application that has registered this item
      * @returns %TRUE if an application with @app_name has registered this   resource inside the recently used list, or %FALSE otherwise. The   @app_exec string is owned by the #GtkRecentInfo and should not be   modified or freed
      */
-    get_application_info(app_name: string | null): [ /* returnType */ boolean, /* app_exec */ string | null, /* count */ number, /* time_ */ number ]
+    get_application_info(app_name: string): [ /* returnType */ boolean, /* app_exec */ string, /* count */ number, /* time_ */ number ]
     /**
      * Retrieves the list of applications that have registered this resource.
      * @returns      a newly allocated %NULL-terminated array of strings.     Use g_strfreev() to free it.
@@ -69497,13 +69700,13 @@ interface RecentInfo {
      * Gets the (short) description of the resource.
      * @returns the description of the resource.  The returned string   is owned by the recent manager, and should not be freed.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the name of the resource.  If none has been defined, the basename
      * of the resource is obtained.
      * @returns the display name of the resource.  The returned string   is owned by the recent manager, and should not be freed.
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Returns all groups registered for the recently used item `info`.  The
      * array of returned group names will be %NULL terminated, so length might
@@ -69521,7 +69724,7 @@ interface RecentInfo {
      * Gets the MIME type of the resource.
      * @returns the MIME type of the resource.  The returned string   is owned by the recent manager, and should not be freed.
      */
-    get_mime_type(): string | null
+    get_mime_type(): string
     /**
      * Gets the timestamp (seconds from system's Epoch) when the resource
      * was last modified.
@@ -69546,7 +69749,7 @@ interface RecentInfo {
      * Gets the URI of the resource.
      * @returns the URI of the resource.  The returned string is   owned by the recent manager, and should not be freed.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Gets a displayable version of the resource's URI.  If the resource
      * is local, it returns a local path; if the resource is not local,
@@ -69565,14 +69768,14 @@ interface RecentInfo {
      * @param app_name a string containing an application name
      * @returns %TRUE if an application with name @app_name was found,   %FALSE otherwise.
      */
-    has_application(app_name: string | null): boolean
+    has_application(app_name: string): boolean
     /**
      * Checks whether `group_name` appears inside the groups registered for the
      * recently used item `info`.
      * @param group_name name of a group
      * @returns %TRUE if the group was found.
      */
-    has_group(group_name: string | null): boolean
+    has_group(group_name: string): boolean
     /**
      * Checks whether the resource is local or not by looking at the
      * scheme of its URI.
@@ -69889,7 +70092,7 @@ interface SelectionData {
      * @param len the length of `str,` or -1 if `str` is nul-terminated.
      * @returns %TRUE if the selection was successfully set,   otherwise %FALSE.
      */
-    set_text(str: string | null, len: number): boolean
+    set_text(str: string, len: number): boolean
     /**
      * Sets the contents of the selection from a list of URIs.
      * The string is converted to the form determined by
@@ -70140,8 +70343,8 @@ interface StatusbarClass {
 
     parent_class: HBoxClass
     reserved: any
-    text_pushed: (statusbar: Statusbar, context_id: number, text: string | null) => void
-    text_popped: (statusbar: Statusbar, context_id: number, text: string | null) => void
+    text_pushed: (statusbar: Statusbar, context_id: number, text: string) => void
+    text_popped: (statusbar: Statusbar, context_id: number, text: string) => void
 }
 
 abstract class StatusbarClass {
@@ -70189,28 +70392,28 @@ interface StyleClass {
     init_from_rc: (style: Style, rc_style: RcStyle) => void
     set_background: (style: Style, window: Gdk.Window, state_type: StateType) => void
     render_icon: (style: Style, source: IconSource, direction: TextDirection, state: StateType, size: number, widget: Widget | null, detail: string | null) => GdkPixbuf.Pixbuf
-    draw_hline: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x1: number, x2: number, y: number) => void
-    draw_vline: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, y1_: number, y2_: number, x: number) => void
-    draw_shadow: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_polygon: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, point: Gdk.Point, npoints: number, fill: boolean) => void
-    draw_arrow: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, arrow_type: ArrowType, fill: boolean, x: number, y: number, width: number, height: number) => void
-    draw_diamond: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_string: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, string: string | null) => void
-    draw_box: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_flat_box: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_check: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_option: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_tab: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_shadow_gap: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number) => void
-    draw_box_gap: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number) => void
-    draw_extension: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, gap_side: PositionType) => void
-    draw_focus: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number) => void
-    draw_slider: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, orientation: Orientation) => void
-    draw_handle: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, width: number, height: number, orientation: Orientation) => void
-    draw_expander: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, expander_style: ExpanderStyle) => void
-    draw_layout: (style: Style, window: Gdk.Window, state_type: StateType, use_text: boolean, area: Gdk.Rectangle, widget: Widget, detail: string | null, x: number, y: number, layout: Pango.Layout) => void
-    draw_resize_grip: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, edge: Gdk.WindowEdge, x: number, y: number, width: number, height: number) => void
-    draw_spinner: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string | null, step: number, x: number, y: number, width: number, height: number) => void
+    draw_hline: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x1: number, x2: number, y: number) => void
+    draw_vline: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, y1_: number, y2_: number, x: number) => void
+    draw_shadow: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_polygon: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, point: Gdk.Point, npoints: number, fill: boolean) => void
+    draw_arrow: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, arrow_type: ArrowType, fill: boolean, x: number, y: number, width: number, height: number) => void
+    draw_diamond: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_string: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, string: string) => void
+    draw_box: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_flat_box: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_check: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_option: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_tab: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_shadow_gap: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number) => void
+    draw_box_gap: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType, gap_x: number, gap_width: number) => void
+    draw_extension: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, gap_side: PositionType) => void
+    draw_focus: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number) => void
+    draw_slider: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation) => void
+    draw_handle: (style: Style, window: Gdk.Window, state_type: StateType, shadow_type: ShadowType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, width: number, height: number, orientation: Orientation) => void
+    draw_expander: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, expander_style: ExpanderStyle) => void
+    draw_layout: (style: Style, window: Gdk.Window, state_type: StateType, use_text: boolean, area: Gdk.Rectangle, widget: Widget, detail: string, x: number, y: number, layout: Pango.Layout) => void
+    draw_resize_grip: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, edge: Gdk.WindowEdge, x: number, y: number, width: number, height: number) => void
+    draw_spinner: (style: Style, window: Gdk.Window, state_type: StateType, area: Gdk.Rectangle, widget: Widget, detail: string, step: number, x: number, y: number, width: number, height: number) => void
 }
 
 abstract class StyleClass {
@@ -70550,7 +70753,7 @@ interface TextBufferClass {
     // Own fields of Gtk-2.0.Gtk.TextBufferClass
 
     parent_class: GObject.ObjectClass
-    insert_text: (buffer: TextBuffer, pos: TextIter, text: string | null, length: number) => void
+    insert_text: (buffer: TextBuffer, pos: TextIter, text: string, length: number) => void
     insert_pixbuf: (buffer: TextBuffer, pos: TextIter, pixbuf: GdkPixbuf.Pixbuf) => void
     insert_child_anchor: (buffer: TextBuffer, pos: TextIter, anchor: TextChildAnchor) => void
     delete_range: (buffer: TextBuffer, start: TextIter, end: TextIter) => void
@@ -70676,7 +70879,7 @@ interface TextIter {
      * @param limit location of last possible `match_start,` or %NULL for start of buffer
      * @returns whether a match was found
      */
-    backward_search(str: string | null, flags: TextSearchFlags, limit: TextIter | null): [ /* returnType */ boolean, /* match_start */ TextIter, /* match_end */ TextIter ]
+    backward_search(str: string, flags: TextSearchFlags, limit: TextIter | null): [ /* returnType */ boolean, /* match_start */ TextIter, /* match_end */ TextIter ]
     /**
      * Moves backward to the previous sentence start; if `iter` is already at
      * the start of a sentence, moves backward to the next one.  Sentence
@@ -70970,7 +71173,7 @@ interface TextIter {
      * @param limit bound for the search, or %NULL for the end of the buffer
      * @returns whether a match was found
      */
-    forward_search(str: string | null, flags: TextSearchFlags, limit: TextIter | null): [ /* returnType */ boolean, /* match_start */ TextIter, /* match_end */ TextIter ]
+    forward_search(str: string, flags: TextSearchFlags, limit: TextIter | null): [ /* returnType */ boolean, /* match_start */ TextIter, /* match_end */ TextIter ]
     /**
      * Moves forward to the next sentence end. (If `iter` is at the end of
      * a sentence, moves to the next end of sentence.)  Sentence
@@ -71563,7 +71766,7 @@ interface TextViewClass {
     move_cursor: (text_view: TextView, step: MovementStep, count: number, extend_selection: boolean) => void
     page_horizontally: (text_view: TextView, count: number, extend_selection: boolean) => void
     set_anchor: (text_view: TextView) => void
-    insert_at_cursor: (text_view: TextView, str: string | null) => void
+    insert_at_cursor: (text_view: TextView, str: string) => void
     delete_from_cursor: (text_view: TextView, type: DeleteType, count: number) => void
     backspace: (text_view: TextView) => void
     cut_clipboard: (text_view: TextView) => void
@@ -71607,8 +71810,8 @@ interface TipsQueryClass {
     parent_class: LabelClass
     start_query: (tips_query: TipsQuery) => void
     stop_query: (tips_query: TipsQuery) => void
-    widget_entered: (tips_query: TipsQuery, widget: Widget, tip_text: string | null, tip_private: string | null) => void
-    widget_selected: (tips_query: TipsQuery, widget: Widget, tip_text: string | null, tip_private: string | null, event: Gdk.EventButton) => number
+    widget_entered: (tips_query: TipsQuery, widget: Widget, tip_text: string, tip_private: string) => void
+    widget_selected: (tips_query: TipsQuery, widget: Widget, tip_text: string, tip_private: string, event: Gdk.EventButton) => number
 }
 
 abstract class TipsQueryClass {
@@ -71637,11 +71840,11 @@ interface ToggleActionEntry {
 
     // Own fields of Gtk-2.0.Gtk.ToggleActionEntry
 
-    name: string | null
-    stock_id: string | null
-    label: string | null
-    accelerator: string | null
-    tooltip: string | null
+    name: string
+    stock_id: string
+    label: string
+    accelerator: string
+    tooltip: string
     callback: GObject.Callback
     is_active: boolean
 }
@@ -71736,7 +71939,7 @@ interface ToolItemClass {
     parent_class: BinClass
     create_menu_proxy: (tool_item: ToolItem) => boolean
     toolbar_reconfigured: (tool_item: ToolItem) => void
-    set_tooltip: (tool_item: ToolItem, tooltips: Tooltips, tip_text: string | null, tip_private: string | null) => boolean
+    set_tooltip: (tool_item: ToolItem, tooltips: Tooltips, tip_text: string, tip_private: string) => boolean
 }
 
 abstract class ToolItemClass {
@@ -72171,7 +72374,7 @@ class TreePath {
      * @param path The string representation of a path.
      * @returns A newly-created #GtkTreePath, or %NULL
      */
-    static new_from_string(path: string | null): TreePath
+    static new_from_string(path: string): TreePath
 }
 
 interface TreeRowReference {
@@ -72425,8 +72628,8 @@ interface UIManagerClass {
     disconnect_proxy: (merge: UIManager, action: Action, proxy: Widget) => void
     pre_activate: (merge: UIManager, action: Action) => void
     post_activate: (merge: UIManager, action: Action) => void
-    get_widget: (manager: UIManager, path: string | null) => Widget
-    get_action: (manager: UIManager, path: string | null) => Action
+    get_widget: (manager: UIManager, path: string) => Widget
+    get_action: (manager: UIManager, path: string) => Action
 }
 
 abstract class UIManagerClass {
@@ -72673,7 +72876,7 @@ interface WidgetClass {
      * @param property_name the name of the style property to find
      * @returns the #GParamSpec of the style property or   %NULL if @class has no style property with that name.
      */
-    find_style_property(klass: Widget | Function | GObject.GType, property_name: string | null): GObject.ParamSpec
+    find_style_property(klass: Widget | Function | GObject.GType, property_name: string): GObject.ParamSpec
     /**
      * Installs a style property on a widget class. The parser for the
      * style property is determined by the value type of `pspec`.

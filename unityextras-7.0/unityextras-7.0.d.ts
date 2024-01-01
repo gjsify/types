@@ -19,10 +19,10 @@ import type Unity from '@girs/unity-7.0';
 
 export namespace UnityExtras {
 
-function show_in_folder<Z = unknown>(uri: string | null, _callback_?: Gio.AsyncReadyCallback<Z> | null): void
+function show_in_folder<Z = unknown>(uri: string, _callback_?: Gio.AsyncReadyCallback<Z> | null): void
 function show_in_folder_finish(_res_: Gio.AsyncResult): void
-function dbus_name_has_owner(name: string | null): boolean
-function dbus_own_name(name: string | null, scope_creation_cb: CreateScopeCallback): Gio.Application | null
+function dbus_name_has_owner(name: string): boolean
+function dbus_own_name(name: string, scope_creation_cb: CreateScopeCallback): Gio.Application | null
 interface CreateScopeCallback {
     (): void
 }
@@ -34,7 +34,7 @@ module PreviewPlayer {
      * Signal callback interface for `progress`
      */
     interface ProgressSignalCallback {
-        ($obj: PreviewPlayer, uri: string | null, state: Unity.MusicPreviewTrackState, progress: number): void
+        ($obj: PreviewPlayer, uri: string, state: Unity.MusicPreviewTrackState, progress: number): void
     }
 
 
@@ -49,7 +49,7 @@ interface PreviewPlayer {
 
     // Owm methods of UnityExtras-7.0.UnityExtras.PreviewPlayer
 
-    play(uri: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    play(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     play_finish(_res_: Gio.AsyncResult): void
     pause(_callback_?: Gio.AsyncReadyCallback<this> | null): void
     pause_finish(_res_: Gio.AsyncResult): void
@@ -61,14 +61,14 @@ interface PreviewPlayer {
     stop_finish(_res_: Gio.AsyncResult): void
     close(_callback_?: Gio.AsyncReadyCallback<this> | null): void
     close_finish(_res_: Gio.AsyncResult): void
-    video_properties(uri: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    video_properties(uri: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     video_properties_finish(_res_: Gio.AsyncResult): GLib.HashTable
 
     // Own signals of UnityExtras-7.0.UnityExtras.PreviewPlayer
 
     connect(sigName: "progress", callback: PreviewPlayer.ProgressSignalCallback): number
     connect_after(sigName: "progress", callback: PreviewPlayer.ProgressSignalCallback): number
-    emit(sigName: "progress", uri: string | null, state: Unity.MusicPreviewTrackState, progress: number, ...args: any[]): void
+    emit(sigName: "progress", uri: string, state: Unity.MusicPreviewTrackState, progress: number, ...args: any[]): void
 
     // Class property signals of UnityExtras-7.0.UnityExtras.PreviewPlayer
 

@@ -173,12 +173,12 @@ export class PlaybinRenderer extends RygelRenderer.MediaRenderer {
     // Constructors of RygelRendererGst-2.8.RygelRendererGst.PlaybinRenderer
 
     constructor(config?: PlaybinRenderer.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): PlaybinRenderer
+    constructor(title: string) 
+    static new(title: string): PlaybinRenderer
 
     // Overloads of new
 
-    static new(title: string | null, player: RygelRenderer.MediaPlayer, capabilities: RygelCore.PluginCapabilities): RygelRenderer.MediaRenderer
+    static new(title: string, player: RygelRenderer.MediaPlayer, capabilities: RygelCore.PluginCapabilities): RygelRenderer.MediaRenderer
     _init(config?: PlaybinRenderer.ConstructorProperties): void
 }
 

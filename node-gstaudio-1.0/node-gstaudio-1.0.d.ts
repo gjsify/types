@@ -841,19 +841,19 @@ enum AudioResamplerFlags {
 /**
  * Maximum range of allowed channels, for use in template caps strings.
  */
-const AUDIO_CHANNELS_RANGE: string | null
+const AUDIO_CHANNELS_RANGE: string
 /**
  * #GstAudioDitherMethod, The dither method to use when
  * changing bit depth.
  * Default is #GST_AUDIO_DITHER_NONE.
  */
-const AUDIO_CONVERTER_OPT_DITHER_METHOD: string | null
+const AUDIO_CONVERTER_OPT_DITHER_METHOD: string
 /**
  * Threshold for the output bit depth at/below which to apply dithering.
  * 
  * Default is 20 bit.
  */
-const AUDIO_CONVERTER_OPT_DITHER_THRESHOLD: string | null
+const AUDIO_CONVERTER_OPT_DITHER_THRESHOLD: string
 /**
  * #GST_TYPE_LIST, The channel mapping matrix.
  * 
@@ -885,25 +885,25 @@ const AUDIO_CONVERTER_OPT_DITHER_THRESHOLD: string | null
  * ```
  * 
  */
-const AUDIO_CONVERTER_OPT_MIX_MATRIX: string | null
+const AUDIO_CONVERTER_OPT_MIX_MATRIX: string
 /**
  * #GstAudioNoiseShapingMethod, The noise shaping method to use
  * to mask noise from quantization errors.
  * Default is #GST_AUDIO_NOISE_SHAPING_NONE.
  */
-const AUDIO_CONVERTER_OPT_NOISE_SHAPING_METHOD: string | null
+const AUDIO_CONVERTER_OPT_NOISE_SHAPING_METHOD: string
 /**
  * #G_TYPE_UINT, The quantization amount. Components will be
  * quantized to multiples of this value.
  * Default is 1
  */
-const AUDIO_CONVERTER_OPT_QUANTIZATION: string | null
+const AUDIO_CONVERTER_OPT_QUANTIZATION: string
 /**
  * #GstAudioResamplerMethod, The resampler method to use when
  * changing sample rates.
  * Default is #GST_AUDIO_RESAMPLER_METHOD_BLACKMAN_NUTTALL.
  */
-const AUDIO_CONVERTER_OPT_RESAMPLER_METHOD: string | null
+const AUDIO_CONVERTER_OPT_RESAMPLER_METHOD: string
 /**
  * Default maximum number of errors tolerated before signaling error.
  */
@@ -911,11 +911,11 @@ const AUDIO_DECODER_MAX_ERRORS: number
 /**
  * The name of the templates for the sink pad.
  */
-const AUDIO_DECODER_SINK_NAME: string | null
+const AUDIO_DECODER_SINK_NAME: string
 /**
  * The name of the templates for the source pad.
  */
-const AUDIO_DECODER_SRC_NAME: string | null
+const AUDIO_DECODER_SRC_NAME: string
 /**
  * Standard number of channels used in consumer audio.
  */
@@ -923,7 +923,7 @@ const AUDIO_DEF_CHANNELS: number
 /**
  * Standard format used in consumer audio.
  */
-const AUDIO_DEF_FORMAT: string | null
+const AUDIO_DEF_FORMAT: string
 /**
  * Standard sampling rate used in consumer audio.
  */
@@ -931,11 +931,11 @@ const AUDIO_DEF_RATE: number
 /**
  * the name of the templates for the sink pad
  */
-const AUDIO_ENCODER_SINK_NAME: string | null
+const AUDIO_ENCODER_SINK_NAME: string
 /**
  * the name of the templates for the source pad
  */
-const AUDIO_ENCODER_SRC_NAME: string | null
+const AUDIO_ENCODER_SRC_NAME: string
 /**
  * List of all audio formats, for use in template caps strings.
  * 
@@ -945,11 +945,11 @@ const AUDIO_ENCODER_SRC_NAME: string | null
  *   - Float > Signed > Unsigned
  *   - native endianness preferred
  */
-const AUDIO_FORMATS_ALL: string | null
+const AUDIO_FORMATS_ALL: string
 /**
  * Maximum range of allowed sample rates, for use in template caps strings.
  */
-const AUDIO_RATE_RANGE: string | null
+const AUDIO_RATE_RANGE: string
 /**
  * G_TYPE_DOUBLE, B parameter of the cubic filter.
  * Values between 0.0 and 2.0 are accepted. 1.0 is the default.
@@ -960,77 +960,77 @@ const AUDIO_RATE_RANGE: string | null
  * Spline            1.0     0.0
  * Catmull-Rom       0.0     1/2
  */
-const AUDIO_RESAMPLER_OPT_CUBIC_B: string | null
+const AUDIO_RESAMPLER_OPT_CUBIC_B: string
 /**
  * G_TYPE_DOUBLE, C parameter of the cubic filter.
  * Values between 0.0 and 2.0 are accepted. 0.0 is the default.
  * 
  * See #GST_AUDIO_RESAMPLER_OPT_CUBIC_B for some more common values
  */
-const AUDIO_RESAMPLER_OPT_CUBIC_C: string | null
+const AUDIO_RESAMPLER_OPT_CUBIC_C: string
 /**
  * G_TYPE_DOUBLE, Cutoff parameter for the filter. 0.940 is the default.
  */
-const AUDIO_RESAMPLER_OPT_CUTOFF: string | null
+const AUDIO_RESAMPLER_OPT_CUTOFF: string
 /**
  * GST_TYPE_AUDIO_RESAMPLER_INTERPOLATION: how the filter coefficients should be
  *    interpolated.
  * GST_AUDIO_RESAMPLER_FILTER_INTERPOLATION_CUBIC is default.
  */
-const AUDIO_RESAMPLER_OPT_FILTER_INTERPOLATION: string | null
+const AUDIO_RESAMPLER_OPT_FILTER_INTERPOLATION: string
 /**
  * GST_TYPE_AUDIO_RESAMPLER_FILTER_MODE: how the filter tables should be
  * constructed.
  * GST_AUDIO_RESAMPLER_FILTER_MODE_AUTO is the default.
  */
-const AUDIO_RESAMPLER_OPT_FILTER_MODE: string | null
+const AUDIO_RESAMPLER_OPT_FILTER_MODE: string
 /**
  * G_TYPE_UINT: the amount of memory to use for full filter tables before
  * switching to interpolated filter tables.
  * 1048576 is the default.
  */
-const AUDIO_RESAMPLER_OPT_FILTER_MODE_THRESHOLD: string | null
+const AUDIO_RESAMPLER_OPT_FILTER_MODE_THRESHOLD: string
 /**
  * G_TYPE_UINT, oversampling to use when interpolating filters
  * 8 is the default.
  */
-const AUDIO_RESAMPLER_OPT_FILTER_OVERSAMPLE: string | null
+const AUDIO_RESAMPLER_OPT_FILTER_OVERSAMPLE: string
 /**
  * G_TYPE_DOUBLE: The maximum allowed phase error when switching sample
  * rates.
  * 0.1 is the default.
  */
-const AUDIO_RESAMPLER_OPT_MAX_PHASE_ERROR: string | null
+const AUDIO_RESAMPLER_OPT_MAX_PHASE_ERROR: string
 /**
  * G_TYPE_INT: the number of taps to use for the filter.
  * 0 is the default and selects the taps automatically.
  */
-const AUDIO_RESAMPLER_OPT_N_TAPS: string | null
+const AUDIO_RESAMPLER_OPT_N_TAPS: string
 /**
  * G_TYPE_DOUBLE, stopband attenuation in decibels. The attenuation
  * after the stopband for the kaiser window. 85 dB is the default.
  */
-const AUDIO_RESAMPLER_OPT_STOP_ATTENUATION: string | null
+const AUDIO_RESAMPLER_OPT_STOP_ATTENUATION: string
 /**
  * G_TYPE_DOUBLE, transition bandwidth. The width of the
  * transition band for the kaiser window. 0.087 is the default.
  */
-const AUDIO_RESAMPLER_OPT_TRANSITION_BANDWIDTH: string | null
+const AUDIO_RESAMPLER_OPT_TRANSITION_BANDWIDTH: string
 const AUDIO_RESAMPLER_QUALITY_DEFAULT: number
 const AUDIO_RESAMPLER_QUALITY_MAX: number
 const AUDIO_RESAMPLER_QUALITY_MIN: number
 /**
  * This metadata stays relevant as long as channels are unchanged.
  */
-const META_TAG_AUDIO_CHANNELS_STR: string | null
+const META_TAG_AUDIO_CHANNELS_STR: string
 /**
  * This metadata stays relevant as long as sample rate is unchanged.
  */
-const META_TAG_AUDIO_RATE_STR: string | null
+const META_TAG_AUDIO_RATE_STR: string
 /**
  * This metadata is relevant for audio streams.
  */
-const META_TAG_AUDIO_STR: string | null
+const META_TAG_AUDIO_STR: string
 /**
  * Clip the buffer to the given %GstSegment.
  * 
@@ -1184,7 +1184,7 @@ function audioFormatFillSilence(info: AudioFormatInfo, dest: number[]): void
  * @param format a format string
  * @returns the #GstAudioFormat for @format or GST_AUDIO_FORMAT_UNKNOWN when the string is not a known format.
  */
-function audioFormatFromString(format: string | null): AudioFormat
+function audioFormatFromString(format: string): AudioFormat
 /**
  * Get the #GstAudioFormatInfo for `format`
  * @param format a #GstAudioFormat
@@ -1192,7 +1192,7 @@ function audioFormatFromString(format: string | null): AudioFormat
  */
 function audioFormatGetInfo(format: AudioFormat): AudioFormatInfo
 function audioFormatInfoGetType(): GObject.GType
-function audioFormatToString(format: AudioFormat): string | null
+function audioFormatToString(format: AudioFormat): string
 /**
  * Return all the raw audio formats supported by GStreamer.
  * @returns an array of #GstAudioFormat
@@ -2846,7 +2846,7 @@ interface AudioCdSrc extends Gst.URIHandler {
     // Own virtual methods of GstAudio-1.0.GstAudio.AudioCdSrc
 
     close(): void
-    open(device: string | null): boolean
+    open(device: string): boolean
     readSector(sector: number): Gst.Buffer
 
     // Class property signals of GstAudio-1.0.GstAudio.AudioCdSrc
@@ -3097,7 +3097,7 @@ class AudioClock extends Gst.SystemClock {
      * @param func a function
      * @returns a new #GstAudioClock casted to a #GstClock.
      */
-    constructor(name: string | null, func: AudioClockGetTimeFunc) 
+    constructor(name: string, func: AudioClockGetTimeFunc) 
     /**
      * Create a new #GstAudioClock instance. Whenever the clock time should be
      * calculated it will call `func` with `user_data`. When `func` returns
@@ -3107,7 +3107,7 @@ class AudioClock extends Gst.SystemClock {
      * @param func a function
      * @returns a new #GstAudioClock casted to a #GstClock.
      */
-    static new(name: string | null, func: AudioClockGetTimeFunc): AudioClock
+    static new(name: string, func: AudioClockGetTimeFunc): AudioClock
     _init(config?: AudioClock.ConstructorProperties): void
 }
 
@@ -5373,7 +5373,7 @@ interface AudioCdSrcClass {
      * @field 
      */
     pushsrcClass: GstBase.PushSrcClass
-    open: (src: AudioCdSrc, device: string | null) => boolean
+    open: (src: AudioCdSrc, device: string) => boolean
     close: (src: AudioCdSrc) => void
     readSector: (src: AudioCdSrc, sector: number) => Gst.Buffer
 }
@@ -5923,12 +5923,12 @@ interface AudioFormatInfo {
      * string representation of the format
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * user readable description of the format
      * @field 
      */
-    description: string | null
+    description: string
     /**
      * #GstAudioFormatFlags
      * @field 

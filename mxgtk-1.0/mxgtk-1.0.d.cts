@@ -168,7 +168,7 @@ export class Frame extends Gtk.Frame {
      * @param label the text to use as the label of the frame
      * @returns a new #GtkFrame widget
      */
-    static new(label: string | null): Gtk.Frame
+    static new(label: string): Gtk.Frame
     _init(config?: Frame.ConstructorProperties): void
 }
 

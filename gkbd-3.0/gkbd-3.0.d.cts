@@ -42,20 +42,20 @@ export enum KeyboardDrawingItemType {
     KEY_EXTRA,
     DOODAD,
 }
-export const DESKTOP_SCHEMA: string | null
+export const DESKTOP_SCHEMA: string
 export const KEYBOARD_DRAWING_H: number
-export const KEYBOARD_SCHEMA: string | null
+export const KEYBOARD_SCHEMA: string
 export function install_glib_log_appender(): void
 export function keyboard_config_add_default_switch_option_if_necessary(layouts_list: string | null, options_list: string | null, was_appended: boolean): string[]
-export function keyboard_config_format_full_description(layout_descr: string | null, variant_descr: string | null): string | null
-export function keyboard_config_get_descriptions(config_registry: Xkl.ConfigRegistry, name: string | null, layout_short_descr: string | null, layout_descr: string | null, variant_short_descr: string | null, variant_descr: string | null): boolean
-export function keyboard_config_merge_items(parent: string | null, child: string | null): string | null
-export function keyboard_config_split_items(merged: string | null, parent: string | null, child: string | null): boolean
+export function keyboard_config_format_full_description(layout_descr: string, variant_descr: string): string
+export function keyboard_config_get_descriptions(config_registry: Xkl.ConfigRegistry, name: string, layout_short_descr: string | null, layout_descr: string | null, variant_short_descr: string | null, variant_descr: string | null): boolean
+export function keyboard_config_merge_items(parent: string, child: string): string
+export function keyboard_config_split_items(merged: string, parent: string | null, child: string | null): boolean
 export function preview_load_position(): Gdk.Rectangle
 export function preview_save_position(rect: Gdk.Rectangle): void
 export function strv_append(arr: string | null, element: string | null): string[]
 export function strv_behead(arr: string | null): void
-export function strv_remove(arr: string | null, element: string | null): boolean
+export function strv_remove(arr: string | null, element: string): boolean
 export module Configuration {
 
     // Signal callback interfaces
@@ -201,7 +201,7 @@ export interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -215,7 +215,7 @@ export interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -226,7 +226,7 @@ export interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gkbd-3.0.Gkbd.Indicator
 
@@ -435,12 +435,12 @@ export interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Gkbd-3.0.Gkbd.KeyboardDrawing
 
-    get_compat(): string | null
-    get_geometry(): string | null
-    get_keycodes(): string | null
-    get_symbols(): string | null
-    get_types(): string | null
-    print(parent_window: Gtk.Window, description: string | null): void
+    get_compat(): string
+    get_geometry(): string
+    get_keycodes(): string
+    get_symbols(): string
+    get_types(): string
+    print(parent_window: Gtk.Window, description: string): void
     /**
      * Renders a keyboard layout to a cairo_t context.  `cr` and `layout` can be got
      * from e.g. a GtkWidget or a GtkPrintContext.  `cr` and `layout` may be modified
@@ -457,7 +457,7 @@ export interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
      */
     render(cr: cairo.Context, layout: Pango.Layout, x: number, y: number, width: number, height: number, dpi_x: number, dpi_y: number): boolean
     set_groups_levels(groupLevels: KeyboardDrawingGroupLevel): void
-    set_layout(id: string | null): void
+    set_layout(id: string): void
     set_track_config(enable: boolean): void
     set_track_modifiers(enable: boolean): void
 
@@ -611,7 +611,7 @@ export class KeyboardDrawing extends Gtk.DrawingArea {
     static new(): KeyboardDrawing
     _init(config?: KeyboardDrawing.ConstructorProperties): void
     static dialog_set_group(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, group: number): void
-    static dialog_set_layout(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, layout: string | null): void
+    static dialog_set_layout(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, layout: string): void
 }
 
 export module Status {
@@ -737,7 +737,7 @@ export interface DesktopConfig {
     activate(): boolean
     init(engine: Xkl.Engine): void
     load(): void
-    load_group_descriptions(registry: Xkl.ConfigRegistry, layout_ids: string | null, variant_ids: string | null, short_group_names: string | null, full_group_names: string | null): boolean
+    load_group_descriptions(registry: Xkl.ConfigRegistry, layout_ids: string, variant_ids: string, short_group_names: string | null, full_group_names: string | null): boolean
     lock_next_group(): void
     lock_prev_group(): void
     restore_group(): void
@@ -844,10 +844,10 @@ export class KeyboardConfig {
     // Constructors of Gkbd-3.0.Gkbd.KeyboardConfig
 
     static add_default_switch_option_if_necessary(layouts_list: string | null, options_list: string | null, was_appended: boolean): string[]
-    static format_full_description(layout_descr: string | null, variant_descr: string | null): string | null
-    static get_descriptions(config_registry: Xkl.ConfigRegistry, name: string | null, layout_short_descr: string | null, layout_descr: string | null, variant_short_descr: string | null, variant_descr: string | null): boolean
-    static merge_items(parent: string | null, child: string | null): string | null
-    static split_items(merged: string | null, parent: string | null, child: string | null): boolean
+    static format_full_description(layout_descr: string, variant_descr: string): string
+    static get_descriptions(config_registry: Xkl.ConfigRegistry, name: string, layout_short_descr: string | null, layout_descr: string | null, variant_short_descr: string | null, variant_descr: string | null): boolean
+    static merge_items(parent: string, child: string): string
+    static split_items(merged: string, parent: string | null, child: string | null): boolean
 }
 
 export interface KeyboardDrawingClass {

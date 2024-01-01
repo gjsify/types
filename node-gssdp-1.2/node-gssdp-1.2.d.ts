@@ -53,7 +53,7 @@ enum UDAVersion {
 /**
  * SSDP search target for finding all possible resources.
  */
-const ALL_RESOURCES: string | null
+const ALL_RESOURCES: string
 function errorQuark(): GLib.Quark
 module Client {
 
@@ -234,7 +234,7 @@ interface Client extends Gio.Initable {
      * @param ipAddress The host to add to the cache
      * @param userAgent User agent ot the host to add
      */
-    addCacheEntry(ipAddress: string | null, userAgent: string | null): void
+    addCacheEntry(ipAddress: string, userAgent: string): void
     /**
      * Adds a header field to the messages sent by this `client`. It is intended to
      * be used by clients requiring vendor specific header fields.
@@ -243,7 +243,7 @@ interface Client extends Gio.Initable {
      * @param name Header name
      * @param value Header value
      */
-    appendHeader(name: string | null, value: string | null): void
+    appendHeader(name: string, value: string | null): void
     /**
      * Check if the peer at `address` is reachable using this `client`.
      * @param address A #GInetSocketAddress of the target. The port part of the address may be 0
@@ -270,33 +270,33 @@ interface Client extends Gio.Initable {
      * Get the IP address we advertise ourselves as using.
      * @returns The IP address. This string should not be freed.
      */
-    getHostIp(): string | null
+    getHostIp(): string
     getIndex(): number
     /**
      * Get the name of the network interface associated to `client`.
      * @returns The network interface name. This string should not be freed.
      */
-    getInterface(): string | null
+    getInterface(): string
     /**
      * Get the network identifier of the client. See [property`GSSDP`.Client:network]
      * for  details.
      * @returns The network identification. This string should not be freed.
      */
-    getNetwork(): string | null
-    getServerId(): string | null
+    getNetwork(): string
+    getServerId(): string
     getUdaVersion(): UDAVersion
     /**
      * Try to get a User-Agent for `ip_address`.
      * @param ipAddress IP address to guess the user-agent for
      * @returns The User-Agent cached for this IP, %NULL if none is cached.
      */
-    guessUserAgent(ipAddress: string | null): string | null
+    guessUserAgent(ipAddress: string): string
     /**
      * Removes `name` from the list of headers. If there are multiple values for
      * `name,` they are all removed.
      * @param name Header name
      */
-    removeHeader(name: string | null): void
+    removeHeader(name: string): void
     /**
      * Will set the new boot-id for this SSDP client. Does nothing if the UDA
      * version used by the client is UDA 1.0
@@ -316,7 +316,7 @@ interface Client extends Gio.Initable {
      * Sets the network identification of `client` to `network`.
      * @param network The string identifying the network
      */
-    setNetwork(network: string | null): void
+    setNetwork(network: string): void
     /**
      * Sets the server ID of `client` to `server_id`. This string is used as the
      * "Server:" identification header for SSDP discovery and response packets
@@ -326,7 +326,7 @@ interface Client extends Gio.Initable {
      * defined in the UDA documents: OS/Version UPnP/Version GSSDP/Version.
      * @param serverId The server ID
      */
-    setServerId(serverId: string | null): void
+    setServerId(serverId: string): void
 
     // Own signals of GSSDP-1.2.GSSDP.Client
 
@@ -565,7 +565,7 @@ interface ResourceBrowser {
      * Get the current browse target.
      * @returns The browser target.
      */
-    getTarget(): string | null
+    getTarget(): string
     /**
      * Begins discovery if `resource_browser` is active and no discovery is
      * performed. Otherwise does nothing.
@@ -586,12 +586,12 @@ interface ResourceBrowser {
      * Sets the browser target of `resource_browser` to `target`.
      * @param target The browser target
      */
-    setTarget(target: string | null): void
+    setTarget(target: string): void
 
     // Own virtual methods of GSSDP-1.2.GSSDP.ResourceBrowser
 
-    resourceUnavailable(usn: string | null): void
-    resourceUpdate(usn: string | null, bootId: number, nextBootId: number): void
+    resourceUnavailable(usn: string): void
+    resourceUpdate(usn: string, bootId: number, nextBootId: number): void
 
     // Own signals of GSSDP-1.2.GSSDP.ResourceBrowser
 
@@ -686,7 +686,7 @@ class ResourceBrowser extends GObject.Object {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    constructor(client: Client, target: string | null) 
+    constructor(client: Client, target: string) 
     /**
      * Create a new resource browser for `target`.
      * 
@@ -704,7 +704,7 @@ class ResourceBrowser extends GObject.Object {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    static new(client: Client, target: string | null): ResourceBrowser
+    static new(client: Client, target: string): ResourceBrowser
     _init(config?: ResourceBrowser.ConstructorProperties): void
 }
 
@@ -783,7 +783,7 @@ interface ResourceGroup {
      * @param locations A #GList of the resource's locations
      * @returns The ID of the added resource.
      */
-    addResource(target: string | null, usn: string | null, locations: string[]): number
+    addResource(target: string, usn: string, locations: string[]): number
     /**
      * Adds a resource with target `target,` USN `usn,` and location `location`
      * to `resource_group`. If the resource group is set [property`GSSDP`.ResourceGroup:available],
@@ -796,7 +796,7 @@ interface ResourceGroup {
      * @param location The resource's location
      * @returns The ID of the added resource.
      */
-    addResourceSimple(target: string | null, usn: string | null, location: string | null): number
+    addResourceSimple(target: string, usn: string, location: string): number
     getAvailable(): boolean
     getClient(): Client
     getMaxAge(): number
@@ -906,8 +906,8 @@ interface ResourceBrowserClass {
     // Own fields of GSSDP-1.2.GSSDP.ResourceBrowserClass
 
     parentClass: GObject.ObjectClass
-    resourceUpdate: (resourceBrowser: ResourceBrowser, usn: string | null, bootId: number, nextBootId: number) => void
-    resourceUnavailable: (resourceBrowser: ResourceBrowser, usn: string | null) => void
+    resourceUpdate: (resourceBrowser: ResourceBrowser, usn: string, bootId: number, nextBootId: number) => void
+    resourceUnavailable: (resourceBrowser: ResourceBrowser, usn: string) => void
 }
 
 abstract class ResourceBrowserClass {

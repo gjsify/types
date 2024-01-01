@@ -165,7 +165,7 @@ interface ARGBControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    get_g_value_array(property_name: string | null, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
+    get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets a number of #GValues for the given controlled property starting at the
      * requested time. The array `values` need to hold enough space for `n_values` of
@@ -179,7 +179,7 @@ interface ARGBControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    get_g_value_array(property_name: string | null, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
+    get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
      * @param timestamp the time the control-change should be read from
@@ -195,14 +195,14 @@ interface ARGBControlBinding {
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Gets the value for the given controlled property at the requested time.
      * @param property_name the name of the property to get
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Sets the property of the `object,` according to the #GstControlSources that
      * handles it and for the given timestamp.
@@ -324,7 +324,7 @@ class ARGBControlBinding extends Gst.ControlBinding {
      * @param cs_b the control source for the blue channel
      * @returns the new #GstARGBControlBinding
      */
-    constructor(object: Gst.Object, property_name: string | null, cs_a: Gst.ControlSource, cs_r: Gst.ControlSource, cs_g: Gst.ControlSource, cs_b: Gst.ControlSource) 
+    constructor(object: Gst.Object, property_name: string, cs_a: Gst.ControlSource, cs_r: Gst.ControlSource, cs_g: Gst.ControlSource, cs_b: Gst.ControlSource) 
     /**
      * Create a new control-binding that attaches the given #GstControlSource to the
      * #GObject property.
@@ -337,7 +337,7 @@ class ARGBControlBinding extends Gst.ControlBinding {
      * @param cs_b the control source for the blue channel
      * @returns the new #GstARGBControlBinding
      */
-    static new(object: Gst.Object, property_name: string | null, cs_a: Gst.ControlSource, cs_r: Gst.ControlSource, cs_g: Gst.ControlSource, cs_b: Gst.ControlSource): ARGBControlBinding
+    static new(object: Gst.Object, property_name: string, cs_a: Gst.ControlSource, cs_r: Gst.ControlSource, cs_g: Gst.ControlSource, cs_b: Gst.ControlSource): ARGBControlBinding
     _init(config?: ARGBControlBinding.ConstructorProperties): void
 }
 
@@ -403,7 +403,7 @@ interface DirectControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    get_g_value_array(property_name: string | null, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
+    get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets a number of #GValues for the given controlled property starting at the
      * requested time. The array `values` need to hold enough space for `n_values` of
@@ -417,7 +417,7 @@ interface DirectControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    get_g_value_array(property_name: string | null, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
+    get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
      * @param timestamp the time the control-change should be read from
@@ -433,14 +433,14 @@ interface DirectControlBinding {
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Gets the value for the given controlled property at the requested time.
      * @param property_name the name of the property to get
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Sets the property of the `object,` according to the #GstControlSources that
      * handles it and for the given timestamp.
@@ -557,7 +557,7 @@ class DirectControlBinding extends Gst.ControlBinding {
      * @param cs the control source
      * @returns the new #GstDirectControlBinding
      */
-    constructor(object: Gst.Object, property_name: string | null, cs: Gst.ControlSource) 
+    constructor(object: Gst.Object, property_name: string, cs: Gst.ControlSource) 
     /**
      * Create a new control-binding that attaches the #GstControlSource to the
      * #GObject property. It will map the control source range [0.0 ... 1.0] to
@@ -568,7 +568,7 @@ class DirectControlBinding extends Gst.ControlBinding {
      * @param cs the control source
      * @returns the new #GstDirectControlBinding
      */
-    static new(object: Gst.Object, property_name: string | null, cs: Gst.ControlSource): DirectControlBinding
+    static new(object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding
     /**
      * Create a new control-binding that attaches the #GstControlSource to the
      * #GObject property. It will directly map the control source values to the
@@ -579,7 +579,7 @@ class DirectControlBinding extends Gst.ControlBinding {
      * @param cs the control source
      * @returns the new #GstDirectControlBinding
      */
-    static new_absolute(object: Gst.Object, property_name: string | null, cs: Gst.ControlSource): DirectControlBinding
+    static new_absolute(object: Gst.Object, property_name: string, cs: Gst.ControlSource): DirectControlBinding
     _init(config?: DirectControlBinding.ConstructorProperties): void
 }
 
@@ -905,7 +905,7 @@ interface ProxyControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    get_g_value_array(property_name: string | null, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
+    get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets a number of #GValues for the given controlled property starting at the
      * requested time. The array `values` need to hold enough space for `n_values` of
@@ -919,7 +919,7 @@ interface ProxyControlBinding {
      * @param values array to put control-values in
      * @returns %TRUE if the given array could be filled, %FALSE otherwise
      */
-    get_g_value_array(property_name: string | null, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
+    get_g_value_array(property_name: string, timestamp: Gst.ClockTime, interval: Gst.ClockTime, values: any[]): boolean
     /**
      * Gets the value for the given controlled property at the requested time.
      * @param timestamp the time the control-change should be read from
@@ -935,14 +935,14 @@ interface ProxyControlBinding {
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Gets the value for the given controlled property at the requested time.
      * @param property_name the name of the property to get
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Sets the property of the `object,` according to the #GstControlSources that
      * handles it and for the given timestamp.
@@ -1049,7 +1049,7 @@ class ProxyControlBinding extends Gst.ControlBinding {
      * @param ref_property_name the property_name in `ref_object` to control
      * @returns a new #GstControlBinding that proxies the control interface between properties on different #GstObject's
      */
-    constructor(object: Gst.Object, property_name: string | null, ref_object: Gst.Object, ref_property_name: string | null) 
+    constructor(object: Gst.Object, property_name: string, ref_object: Gst.Object, ref_property_name: string) 
     /**
      * #GstProxyControlBinding forwards all access to data or `sync_values()`
      * requests from `property_name` on `object` to the control binding at
@@ -1061,7 +1061,7 @@ class ProxyControlBinding extends Gst.ControlBinding {
      * @param ref_property_name the property_name in `ref_object` to control
      * @returns a new #GstControlBinding that proxies the control interface between properties on different #GstObject's
      */
-    static new(object: Gst.Object, property_name: string | null, ref_object: Gst.Object, ref_property_name: string | null): ProxyControlBinding
+    static new(object: Gst.Object, property_name: string, ref_object: Gst.Object, ref_property_name: string): ProxyControlBinding
     _init(config?: ProxyControlBinding.ConstructorProperties): void
 }
 

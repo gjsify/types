@@ -282,13 +282,13 @@ enum ColumnFlags {
     HIDDEN,
     SORTABLE,
 }
-const ICON_CERTIFICATE: string | null
-const ICON_GNUPG: string | null
-const ICON_HOME_DIRECTORY: string | null
-const ICON_KEY: string | null
-const ICON_KEY_PAIR: string | null
-const ICON_PASSWORD: string | null
-const ICON_SMART_CARD: string | null
+const ICON_CERTIFICATE: string
+const ICON_GNUPG: string
+const ICON_HOME_DIRECTORY: string
+const ICON_KEY: string
+const ICON_KEY_PAIR: string
+const ICON_PASSWORD: string
+const ICON_SMART_CARD: string
 /**
  * The major version number of the Gcr library.
  */
@@ -304,31 +304,31 @@ const MINOR_VERSION: number
 /**
  * The purpose used to verify the client certificate in a TLS connection.
  */
-const PURPOSE_CLIENT_AUTH: string | null
+const PURPOSE_CLIENT_AUTH: string
 /**
  * The purpose used to verify certificate used for the signature on signed code.
  */
-const PURPOSE_CODE_SIGNING: string | null
+const PURPOSE_CODE_SIGNING: string
 /**
  * The purpose used to verify certificates that are used in email communication
  * such as S/MIME.
  */
-const PURPOSE_EMAIL: string | null
+const PURPOSE_EMAIL: string
 /**
  * The purpose used to verify the server certificate in a TLS connection. This
  * is the most common purpose in use.
  */
-const PURPOSE_SERVER_AUTH: string | null
+const PURPOSE_SERVER_AUTH: string
 /**
  * The current secret exchange protocol. Key agreement is done using DH with the
  * 1536 bit IKE parameter group. Keys are derived using SHA256 with HKDF. The
  * transport encryption is done with 128 bit AES.
  */
-const SECRET_EXCHANGE_PROTOCOL_1: string | null
-const UNLOCK_OPTION_ALWAYS: string | null
-const UNLOCK_OPTION_IDLE: string | null
-const UNLOCK_OPTION_SESSION: string | null
-const UNLOCK_OPTION_TIMEOUT: string | null
+const SECRET_EXCHANGE_PROTOCOL_1: string
+const UNLOCK_OPTION_ALWAYS: string
+const UNLOCK_OPTION_IDLE: string
+const UNLOCK_OPTION_SESSION: string
+const UNLOCK_OPTION_TIMEOUT: string
 /**
  * Compare one certificate against another. If the certificates are equal
  * then zero is returned. If one certificate is %NULL or not a certificate,
@@ -457,7 +457,7 @@ function mock_prompter_set_delay_msec(delay_msec: number): void
  * name with gcr_system_prompt_open_for_prompter() to connect to this prompter.
  * @returns the bus name that the mock prompter is listening on
  */
-function mock_prompter_start(): string | null
+function mock_prompter_start(): string
 /**
  * Stop the mock prompter. This is often used from the
  * <literal>teardown<!-- -->()</literal> function of tests.
@@ -490,7 +490,7 @@ function pkcs11_add_module(module: Gck.Module): void
  * @param unused unused
  * @returns whether the module was sucessfully added.
  */
-function pkcs11_add_module_from_file(module_path: string | null, unused: any | null): boolean
+function pkcs11_add_module_from_file(module_path: string, unused: any | null): boolean
 /**
  * List all the PKCS#11 modules that are used by the GCR library.
  * Each module is a [class`Gck`.Module] object.
@@ -608,7 +608,7 @@ function pkcs11_set_trust_store_uri(pkcs11_uri: string | null): void
  * @param cancellable a #GCancellable
  * @returns %TRUE if the pinned certificate is recorded successfully
  */
-function trust_add_pinned_certificate(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): boolean
+function trust_add_pinned_certificate(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Add a pinned certificate for communication with `peer` for `purpose`. A pinned
  * certificate overrides all other certificate verification and should be used
@@ -626,7 +626,7 @@ function trust_add_pinned_certificate(certificate: Certificate, purpose: string 
  * @param cancellable a #GCancellable
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
-function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of trust_add_pinned_certificate_async
 
@@ -649,7 +649,7 @@ function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificat
  * @param cancellable a #GCancellable
  * @returns A Promise of: %TRUE if the pinned certificate is recorded successfully
  */
-function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+function trust_add_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_add_pinned_certificate_async().
@@ -672,7 +672,7 @@ function trust_add_pinned_certificate_finish(result: Gio.AsyncResult): boolean
  * @param cancellable a #GCancellable
  * @returns %TRUE if the certificate is a trust anchor
  */
-function trust_is_certificate_anchored(certificate: Certificate, purpose: string | null, cancellable: Gio.Cancellable | null): boolean
+function trust_is_certificate_anchored(certificate: Certificate, purpose: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Check if the `certificate` is a trust anchor for the given `purpose`. A trust
  * anchor is used to verify the signatures on other certificates when verifying
@@ -685,7 +685,7 @@ function trust_is_certificate_anchored(certificate: Certificate, purpose: string
  * @param cancellable a #GCancellable
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
-function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certificate, purpose: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certificate, purpose: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of trust_is_certificate_anchored_async
 
@@ -703,7 +703,7 @@ function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certifica
  * @param cancellable a #GCancellable
  * @returns A Promise of: %TRUE if the certificate is a trust anchor
  */
-function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certificate, purpose: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+function trust_is_certificate_anchored_async<Z = unknown>(certificate: Certificate, purpose: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_is_certificate_anchored_async().
@@ -729,7 +729,7 @@ function trust_is_certificate_anchored_finish(result: Gio.AsyncResult): boolean
  * @param cancellable a #GCancellable
  * @returns %TRUE if the certificate is pinned for the host and purpose
  */
-function trust_is_certificate_pinned(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): boolean
+function trust_is_certificate_pinned(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Check if `certificate` is pinned for `purpose` to communicate with `peer`. A
  * pinned certificate overrides all other certificate verification.
@@ -743,7 +743,7 @@ function trust_is_certificate_pinned(certificate: Certificate, purpose: string |
  * @param cancellable a #GCancellable
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
-function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of trust_is_certificate_pinned_async
 
@@ -762,7 +762,7 @@ function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate
  * @param cancellable a #GCancellable
  * @returns A Promise of: %TRUE if the certificate is pinned.
  */
-function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+function trust_is_certificate_pinned_async<Z = unknown>(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_is_certificate_pinned_async().
@@ -787,7 +787,7 @@ function trust_is_certificate_pinned_finish(result: Gio.AsyncResult): boolean
  * @param cancellable a #GCancellable
  * @returns %TRUE if the pinned certificate no longer exists
  */
-function trust_remove_pinned_certificate(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): boolean
+function trust_remove_pinned_certificate(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null): boolean
 /**
  * Remove a pinned certificate for communication with `peer` for `purpose`.
  * 
@@ -803,7 +803,7 @@ function trust_remove_pinned_certificate(certificate: Certificate, purpose: stri
  * @param cancellable a #GCancellable
  * @param callback a #GAsyncReadyCallback to call when the operation completes
  */
-function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of trust_remove_pinned_certificate_async
 
@@ -824,7 +824,7 @@ function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certifi
  * @param cancellable a #GCancellable
  * @returns A Promise of: %TRUE if the pinned certificate no longer exists
  */
-function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string | null, peer: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+function trust_remove_pinned_certificate_async<Z = unknown>(certificate: Certificate, purpose: string, peer: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
 /**
  * Finishes an asynchronous operation started by
  * gcr_trust_remove_pinned_certificate_async().
@@ -970,7 +970,7 @@ interface Certificate extends Comparable {
      * @param part a DN type string or OID.
      * @returns the allocated part of the issuer DN, or %NULL if no          such part is present
      */
-    get_issuer_part(part: string | null): string | null
+    get_issuer_part(part: string): string | null
     /**
      * Get the raw DER data for the issuer DN of the certificate.
      * 
@@ -1042,7 +1042,7 @@ interface Certificate extends Comparable {
      * @param part a DN type string or OID.
      * @returns the allocated part of the subject DN, or %NULL if no          such part is present.
      */
-    get_subject_part(part: string | null): string | null
+    get_subject_part(part: string): string | null
     /**
      * Get the raw DER data for the subject DN of the certificate.
      * 
@@ -2152,7 +2152,7 @@ interface Prompt {
      * @param cancellable optional cancellation object
      * @returns the password owned by the prompt, or %NULL
      */
-    password(cancellable: Gio.Cancellable | null): string | null
+    password(cancellable: Gio.Cancellable | null): string
     /**
      * Prompts for password. Set the various properties on the prompt before calling
      * this method to explain which password should be entered.
@@ -2175,7 +2175,7 @@ interface Prompt {
      * @param cancellable optional cancellation object
      * @returns A Promise of: the password owned by the prompt, or %NULL
      */
-    password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
+    password_async(cancellable: Gio.Cancellable | null): globalThis.Promise<string>
     /**
      * Complete an operation to prompt for a password.
      * 
@@ -2188,7 +2188,7 @@ interface Prompt {
      * @param result asynchronous result passed to callback
      * @returns the password owned by the prompt, or %NULL
      */
-    password_finish(result: Gio.AsyncResult): string | null
+    password_finish(result: Gio.AsyncResult): string
     /**
      * Prompts for password. Set the various properties on the prompt before calling
      * this method to explain which password should be entered.
@@ -2206,7 +2206,7 @@ interface Prompt {
      * @param cancellable optional cancellation object
      * @returns the password owned by the prompt, or %NULL
      */
-    password_run(cancellable: Gio.Cancellable | null): string | null
+    password_run(cancellable: Gio.Cancellable | null): string
     /**
      * Reset the contents and properties of the prompt.
      */
@@ -2219,7 +2219,7 @@ interface Prompt {
      * way it sees fit.
      * @param window_id the window id
      */
-    set_caller_window(window_id: string | null): void
+    set_caller_window(window_id: string): void
     /**
      * Set the label for the continue button.
      * 
@@ -2227,7 +2227,7 @@ interface Prompt {
      * from the prompt.
      * @param cancel_label the label
      */
-    set_cancel_label(cancel_label: string | null): void
+    set_cancel_label(cancel_label: string): void
     /**
      * Set whether the additional choice is chosen or not.
      * 
@@ -2255,7 +2255,7 @@ interface Prompt {
      * from the prompt.
      * @param continue_label the label
      */
-    set_continue_label(continue_label: string | null): void
+    set_continue_label(continue_label: string): void
     /**
      * Set the detailed description of the prompt.
      * 
@@ -2264,14 +2264,14 @@ interface Prompt {
      * information.
      * @param description the detailed description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the prompt message for the user.
      * 
      * A prompt implementation should always display this message.
      * @param message the prompt message
      */
-    set_message(message: string | null): void
+    set_message(message: string): void
     /**
      * Set whether the prompt will prompt for a new password.
      * 
@@ -2288,7 +2288,7 @@ interface Prompt {
      * prompt message should contain relevant information.
      * @param title the prompt title
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Set a prompt warning displayed on the prompt.
      * 
@@ -2348,7 +2348,7 @@ interface Prompt {
      * @param result asynchronous result passed to callback
      * @returns the password owned by the prompt, or %NULL
      */
-    vfunc_prompt_password_finish(result: Gio.AsyncResult): string | null
+    vfunc_prompt_password_finish(result: Gio.AsyncResult): string
 
     // Own signals of Gcr-3.Gcr.Prompt
 
@@ -2503,7 +2503,7 @@ interface CertificateChain {
      * @param cancellable a #GCancellable or %NULL
      * @returns whether the operation completed successfully
      */
-    build(purpose: string | null, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null): boolean
+    build(purpose: string, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Complete a certificate chain. Once a certificate chain has been built
      * its status can be examined.
@@ -2540,7 +2540,7 @@ interface CertificateChain {
      * @param cancellable a #GCancellable or %NULL
      * @param callback this will be called when the operation completes.
      */
-    build_async(purpose: string | null, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    build_async(purpose: string, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of build_async
 
@@ -2582,7 +2582,7 @@ interface CertificateChain {
      * @param cancellable a #GCancellable or %NULL
      * @returns A Promise of: whether the operation succeeded
      */
-    build_async(purpose: string | null, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    build_async(purpose: string, peer: string | null, flags: CertificateChainFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous operation started by
      * gcr_certificate_chain_build_async().
@@ -2800,7 +2800,7 @@ interface CertificateRequest {
      * Set the common name encoded in the certificate request.
      * @param cn common name to set on the request
      */
-    set_cn(cn: string | null): void
+    set_cn(cn: string): void
 
     // Class property signals of Gcr-3.Gcr.CertificateRequest
 
@@ -3056,7 +3056,7 @@ interface Parser {
      * Get the filename of the parser item.
      * @returns the filename set on the parser, or %NULL
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Get the currently parsed item
      * @returns the currently parsed item
@@ -3297,13 +3297,13 @@ interface Pkcs11Certificate extends Certificate, Comparable {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
 
     // Class property signals of Gcr-3.Gcr.Pkcs11Certificate
 
@@ -3456,7 +3456,7 @@ interface SecretExchange {
      * been called successfully.
      * @returns the protocol or %NULL
      */
-    get_protocol(): string | null
+    get_protocol(): string
     /**
      * Returns the last secret received. If no secret has yet been received this
      * will return %NULL. The string is owned by the #GcrSecretExchange object
@@ -3480,7 +3480,7 @@ interface SecretExchange {
      * @param exchange the string received
      * @returns whether the string was successfully parsed and received
      */
-    receive(exchange: string | null): boolean
+    receive(exchange: string): boolean
     /**
      * Send a reply to the other side of the secret exchange, optionally sending a
      * secret.
@@ -3497,7 +3497,7 @@ interface SecretExchange {
     // Own virtual methods of Gcr-3.Gcr.SecretExchange
 
     vfunc_derive_transport_key(peer: number, n_peer: number): boolean
-    vfunc_generate_exchange_key(scheme: string | null, public_key: number, n_public_key: number): boolean
+    vfunc_generate_exchange_key(scheme: string, public_key: number, n_public_key: number): boolean
 
     // Class property signals of Gcr-3.Gcr.SecretExchange
 
@@ -4456,10 +4456,10 @@ interface Column {
 
     // Own fields of Gcr-3.Gcr.Column
 
-    property_name: string | null
+    property_name: string
     property_type: GObject.GType
     column_type: GObject.GType
-    label: string | null
+    label: string
     flags: ColumnFlags
     transformer: GObject.ValueTransform
     user_data: any
@@ -4607,7 +4607,7 @@ interface Parsed {
      * Get the filename of the parsed item.
      * @returns the filename of          the parsed item, or %NULL
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Get the format of the parsed item.
      * @returns the data format of the item
@@ -4709,7 +4709,7 @@ interface PromptIface {
      */
     parent_iface: GObject.TypeInterface
     prompt_password_async: (prompt: Prompt, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
-    prompt_password_finish: (prompt: Prompt, result: Gio.AsyncResult) => string | null
+    prompt_password_finish: (prompt: Prompt, result: Gio.AsyncResult) => string
     prompt_confirm_async: (prompt: Prompt, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     prompt_confirm_finish: (prompt: Prompt, result: Gio.AsyncResult) => PromptReply
     prompt_close: (prompt: Prompt) => void
@@ -4730,7 +4730,7 @@ interface SecretExchangeClass {
 
     // Own fields of Gcr-3.Gcr.SecretExchangeClass
 
-    generate_exchange_key: (exchange: SecretExchange, scheme: string | null, public_key: number, n_public_key: number) => boolean
+    generate_exchange_key: (exchange: SecretExchange, scheme: string, public_key: number, n_public_key: number) => boolean
     derive_transport_key: (exchange: SecretExchange, peer: number, n_peer: number) => boolean
 }
 

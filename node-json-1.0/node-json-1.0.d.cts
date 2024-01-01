@@ -140,7 +140,7 @@ export const MINOR_VERSION: number
  * The version of JSON-GLib, encoded as a string, useful for printing and
  * concatenation.
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 /**
  * Checks whether it is possible to deserialize a `GBoxed` of
  * type `gboxed_type` from a [struct`Json`.Node] of type `node_type`.
@@ -193,7 +193,7 @@ export function boxedSerialize(gboxedType: GObject.GType, boxed: any | null): No
  * @param length length of the data stream (unused)
  * @returns a new object instance of the given   type
  */
-export function constructGobject(gtype: GObject.GType, data: string | null, length: number): GObject.Object | null
+export function constructGobject(gtype: GObject.GType, data: string, length: number): GObject.Object | null
 /**
  * Parses the given string and returns the corresponding JSON tree.
  * 
@@ -204,7 +204,7 @@ export function constructGobject(gtype: GObject.GType, data: string | null, leng
  * @param str a valid UTF-8 string containing JSON data
  * @returns the root node of the JSON tree
  */
-export function fromString(str: string | null): Node | null
+export function fromString(str: string): Node | null
 /**
  * Creates a new `GObject` instance of the given type, and constructs it
  * using the members of the object in the given node.
@@ -228,7 +228,7 @@ export function gobjectDeserialize(gtype: GObject.GType, node: Node): GObject.Ob
  * @param length length of the data stream, or -1 if it is `NUL`-terminated
  * @returns a new object instance of the given type
  */
-export function gobjectFromData(gtype: GObject.GType, data: string | null, length: number): GObject.Object | null
+export function gobjectFromData(gtype: GObject.GType, data: string, length: number): GObject.Object | null
 /**
  * Creates a JSON tree representing the passed object instance.
  * 
@@ -296,7 +296,7 @@ export function gvariantDeserialize(jsonNode: Node, signature: string | null): G
  * @param signature A valid `GVariant` type string
  * @returns A newly created `GVariant`D compliant
  */
-export function gvariantDeserializeData(json: string | null, length: number, signature: string | null): GLib.Variant | null
+export function gvariantDeserializeData(json: string, length: number, signature: string | null): GLib.Variant | null
 /**
  * Converts `variant` to a JSON tree.
  * @param variant A `GVariant` to convert
@@ -453,7 +453,7 @@ export interface BoxedSerializeFunc {
  * @param memberNode the value of the member
  */
 export interface ObjectForeach {
-    (object: Object, memberName: string | null, memberNode: Node): void
+    (object: Object, memberName: string, memberNode: Node): void
 }
 export module Serializable {
 
@@ -496,7 +496,7 @@ export interface Serializable {
      * @param propertyNode the JSON node containing the serialized property
      * @returns `TRUE` if the property was successfully deserialized
      */
-    defaultDeserializeProperty(propertyName: string | null, value: any, pspec: GObject.ParamSpec, propertyNode: Node): boolean
+    defaultDeserializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec, propertyNode: Node): boolean
     /**
      * Calls the default implementation of the [vfunc`Json`.Serializable.serialize_property]
      * virtual function.
@@ -522,9 +522,9 @@ export interface Serializable {
      * @param pspec a property description
      * @returns a node containing the   serialized property
      */
-    defaultSerializeProperty(propertyName: string | null, value: any, pspec: GObject.ParamSpec): Node | null
-    // Has conflict: deserializeProperty(propertyName: string | null, pspec: GObject.ParamSpec, propertyNode: Node): [ /* returnType */ boolean, /* value */ any ]
-    // Has conflict: findProperty(name: string | null): GObject.ParamSpec | null
+    defaultSerializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Node | null
+    // Has conflict: deserializeProperty(propertyName: string, pspec: GObject.ParamSpec, propertyNode: Node): [ /* returnType */ boolean, /* value */ any ]
+    // Has conflict: findProperty(name: string): GObject.ParamSpec | null
     // Has conflict: getProperty(pspec: GObject.ParamSpec): /* value */ any
     /**
      * Calls the [vfunc`Json`.Serializable.list_properties] implementation on
@@ -533,7 +533,7 @@ export interface Serializable {
      * @returns the serializable   properties of the object
      */
     listProperties(): GObject.ParamSpec[]
-    // Has conflict: serializeProperty(propertyName: string | null, value: any, pspec: GObject.ParamSpec): Node
+    // Has conflict: serializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Node
     // Has conflict: setProperty(pspec: GObject.ParamSpec, value: any): void
 
     // Own virtual methods of Json-1.0.Json.Serializable
@@ -558,7 +558,7 @@ export interface Serializable {
      * @param propertyNode the JSON node containing the serialized property
      * @returns `TRUE` if the property was successfully deserialized
      */
-    deserializeProperty(propertyName: string | null, pspec: GObject.ParamSpec, propertyNode: Node): [ /* returnType */ boolean, /* value */ any ]
+    deserializeProperty(propertyName: string, pspec: GObject.ParamSpec, propertyNode: Node): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Calls the [vfunc`Json`.Serializable.find_property] implementation on
      * the `JsonSerializable` instance, which will return the property
@@ -567,7 +567,7 @@ export interface Serializable {
      * @param name the name of the property
      * @returns the property description
      */
-    findProperty(name: string | null): GObject.ParamSpec | null
+    findProperty(name: string): GObject.ParamSpec | null
     /**
      * Calls the [vfunc`Json`.Serializable.get_property] implementation
      * on the `JsonSerializable` instance, which will get the value of
@@ -609,7 +609,7 @@ export interface Serializable {
      * @param pspec a property description
      * @returns a node containing the serialized property
      */
-    serializeProperty(propertyName: string | null, value: any, pspec: GObject.ParamSpec): Node
+    serializeProperty(propertyName: string, value: any, pspec: GObject.ParamSpec): Node
     /**
      * Calls the [vfunc`Json`.Serializable.set_property] implementation
      * on the `JsonSerializable` instance, which will set the property
@@ -757,7 +757,7 @@ export interface Builder {
      * @param value the value of the member or element
      * @returns the builder instance
      */
-    addStringValue(value: string | null): Builder | null
+    addStringValue(value: string): Builder | null
     /**
      * Adds a value to the currently open object member or array.
      * 
@@ -835,7 +835,7 @@ export interface Builder {
      * @param memberName the name of the member
      * @returns the builder instance
      */
-    setMemberName(memberName: string | null): Builder | null
+    setMemberName(memberName: string): Builder | null
 
     // Class property signals of Json-1.0.Json.Builder
 
@@ -1290,7 +1290,7 @@ export interface Parser {
      * used.
      * @returns `TRUE` if there was an assignment, and `FALSE` otherwise
      */
-    hasAssignment(): [ /* returnType */ boolean, /* variableName */ string | null ]
+    hasAssignment(): [ /* returnType */ boolean, /* variableName */ string ]
     /**
      * Loads a JSON stream from a buffer and parses it.
      * 
@@ -1300,7 +1300,7 @@ export interface Parser {
      * @param length the length of the buffer, or -1 if it is `NUL` terminated
      * @returns `TRUE` if the buffer was succesfully parsed
      */
-    loadFromData(data: string | null, length: number): boolean
+    loadFromData(data: string, length: number): boolean
     /**
      * Loads a JSON stream from the content of `filename` and parses it.
      * 
@@ -1374,7 +1374,7 @@ export interface Parser {
     arrayStart(): void
     error(error: GLib.Error): void
     objectEnd(object: Object): void
-    objectMember(object: Object, memberName: string | null): void
+    objectMember(object: Object, memberName: string): void
     objectStart(): void
     parseEnd(): void
     parseStart(): void
@@ -1548,7 +1548,7 @@ export interface Path {
      * @param expression a JSONPath expression
      * @returns `TRUE` if the compilation was successful, and `FALSE`   otherwise
      */
-    compile(expression: string | null): boolean
+    compile(expression: string): boolean
     /**
      * Matches the JSON tree pointed by `root` using the expression compiled
      * into the `JsonPath`.
@@ -1743,7 +1743,7 @@ export class Path extends GObject.Object {
      * @param root the root of a JSON tree
      * @returns a newly-created node of type   `JSON_NODE_ARRAY` containing the array of matching nodes
      */
-    static query(expression: string | null, root: Node): Node
+    static query(expression: string, root: Node): Node
 }
 
 export module Reader {
@@ -1855,7 +1855,7 @@ export interface Reader {
      * See also: [method`Json`.Reader.get_value]
      * @returns the string value
      */
-    getStringValue(): string | null
+    getStringValue(): string
     /**
      * Retrieves the value node at the current position of the reader.
      * 
@@ -1992,7 +1992,7 @@ export interface Reader {
      * @param memberName the name of the member to read
      * @returns `TRUE` on success, and `FALSE` otherwise
      */
-    readMember(memberName: string | null): boolean
+    readMember(memberName: string): boolean
     /**
      * Sets the root node of the JSON tree to be read by `reader`.
      * 
@@ -2175,7 +2175,7 @@ export interface Array {
      * See also: [method`Json`.Array.add_element], [method`Json`.Node.set_string]
      * @param value the string value to add
      */
-    addStringElement(value: string | null): void
+    addStringElement(value: string): void
     /**
      * Retrieves a copy of the element at the given position in the array.
      * @param index the index of the element to retrieve
@@ -2279,7 +2279,7 @@ export interface Array {
      * @param index the index of the element to retrieve
      * @returns the string value
      */
-    getStringElement(index: number): string | null
+    getStringElement(index: number): string
     /**
      * Calculates a hash value for the given `key`.
      * 
@@ -2737,7 +2737,7 @@ export interface Node {
      * a value node.
      * @param value a string value
      */
-    setString(value: string | null): void
+    setString(value: string): void
     /**
      * Sets a scalar value inside the given node.
      * 
@@ -2787,7 +2787,7 @@ export interface Node {
      * guarantee the name will stay the same across different versions.
      * @returns a string containing the name of the type
      */
-    typeName(): string | null
+    typeName(): string
     /**
      * Decrements the reference count of `node`.
      * 
@@ -2890,13 +2890,13 @@ export interface Object {
      * @param memberName the name of the member
      * @param node the value of the member
      */
-    addMember(memberName: string | null, node: Node): void
+    addMember(memberName: string, node: Node): void
     /**
      * Retrieves a copy of the value of the given member inside an object.
      * @param memberName the name of the JSON object member to access
      * @returns a copy of the value for the   requested object member
      */
-    dupMember(memberName: string | null): Node | null
+    dupMember(memberName: string): Node | null
     /**
      * Check whether `a` and `b` are equal objects, meaning they have the same
      * set of members, and the values of corresponding members are equal.
@@ -2928,7 +2928,7 @@ export interface Object {
      * @param memberName the name of the member
      * @returns the array inside the object's member
      */
-    getArrayMember(memberName: string | null): Array | null
+    getArrayMember(memberName: string): Array | null
     /**
      * Convenience function that retrieves the boolean value
      * stored in `member_name` of `object`. It is an error to specify a
@@ -2939,7 +2939,7 @@ export interface Object {
      * @param memberName the name of the member
      * @returns the boolean value of the object's member
      */
-    getBooleanMember(memberName: string | null): boolean
+    getBooleanMember(memberName: string): boolean
     /**
      * Convenience function that retrieves the boolean value
      * stored in `member_name` of `object`.
@@ -2950,7 +2950,7 @@ export interface Object {
      * @param defaultValue the value to return if `member_name` is not valid
      * @returns the boolean value of the object's member, or the   given default
      */
-    getBooleanMemberWithDefault(memberName: string | null, defaultValue: boolean): boolean
+    getBooleanMemberWithDefault(memberName: string, defaultValue: boolean): boolean
     /**
      * Convenience function that retrieves the floating point value
      * stored in `member_name` of `object`. It is an error to specify a
@@ -2961,7 +2961,7 @@ export interface Object {
      * @param memberName the name of the member
      * @returns the floating point value of the object's member
      */
-    getDoubleMember(memberName: string | null): number
+    getDoubleMember(memberName: string): number
     /**
      * Convenience function that retrieves the floating point value
      * stored in `member_name` of `object`.
@@ -2972,7 +2972,7 @@ export interface Object {
      * @param defaultValue the value to return if `member_name` is not valid
      * @returns the floating point value of the object's member, or the   given default
      */
-    getDoubleMemberWithDefault(memberName: string | null, defaultValue: number): number
+    getDoubleMemberWithDefault(memberName: string, defaultValue: number): number
     /**
      * Convenience function that retrieves the integer value
      * stored in `member_name` of `object`. It is an error to specify a
@@ -2983,7 +2983,7 @@ export interface Object {
      * @param memberName the name of the object member
      * @returns the integer value of the object's member
      */
-    getIntMember(memberName: string | null): number
+    getIntMember(memberName: string): number
     /**
      * Convenience function that retrieves the integer value
      * stored in `member_name` of `object`.
@@ -2994,13 +2994,13 @@ export interface Object {
      * @param defaultValue the value to return if `member_name` is not valid
      * @returns the integer value of the object's member, or the   given default
      */
-    getIntMemberWithDefault(memberName: string | null, defaultValue: number): number
+    getIntMemberWithDefault(memberName: string, defaultValue: number): number
     /**
      * Retrieves the value of the given member inside an object.
      * @param memberName the name of the JSON object member to access
      * @returns the value for the   requested object member
      */
-    getMember(memberName: string | null): Node | null
+    getMember(memberName: string): Node | null
     /**
      * Retrieves all the names of the members of an object.
      * 
@@ -3018,7 +3018,7 @@ export interface Object {
      * @param memberName the name of the member
      * @returns `TRUE` if the value is `null`
      */
-    getNullMember(memberName: string | null): boolean
+    getNullMember(memberName: string): boolean
     /**
      * Convenience function that retrieves the object
      * stored in `member_name` of `object`. It is an error to specify a `member_name`
@@ -3030,7 +3030,7 @@ export interface Object {
      * @param memberName the name of the member
      * @returns the object inside the object's member
      */
-    getObjectMember(memberName: string | null): Object | null
+    getObjectMember(memberName: string): Object | null
     /**
      * Retrieves the number of members of a JSON object.
      * @returns the number of members
@@ -3046,7 +3046,7 @@ export interface Object {
      * @param memberName the name of the member
      * @returns the string value of the object's member
      */
-    getStringMember(memberName: string | null): string | null
+    getStringMember(memberName: string): string
     /**
      * Convenience function that retrieves the string value
      * stored in `member_name` of `object`.
@@ -3057,7 +3057,7 @@ export interface Object {
      * @param defaultValue the value to return if `member_name` is not valid
      * @returns the string value of the object's member, or the   given default
      */
-    getStringMemberWithDefault(memberName: string | null, defaultValue: string | null): string | null
+    getStringMemberWithDefault(memberName: string, defaultValue: string): string
     /**
      * Retrieves all the values of the members of an object.
      * @returns the   member values of the object
@@ -3068,7 +3068,7 @@ export interface Object {
      * @param memberName the name of a JSON object member
      * @returns `TRUE` if the JSON object has the requested member
      */
-    hasMember(memberName: string | null): boolean
+    hasMember(memberName: string): boolean
     /**
      * Calculate a hash value for the given `key` (a JSON object).
      * 
@@ -3093,7 +3093,7 @@ export interface Object {
      * Removes `member_name` from `object,` freeing its allocated resources.
      * @param memberName the name of the member to remove
      */
-    removeMember(memberName: string | null): void
+    removeMember(memberName: string): void
     /**
      * Seals the object, making it immutable to further changes.
      * 
@@ -3109,7 +3109,7 @@ export interface Object {
      * @param memberName the name of the member
      * @param value the value of the member
      */
-    setArrayMember(memberName: string | null, value: Array): void
+    setArrayMember(memberName: string, value: Array): void
     /**
      * Convenience function for setting an object member with a boolean value.
      * 
@@ -3117,7 +3117,7 @@ export interface Object {
      * @param memberName the name of the member
      * @param value the value of the member
      */
-    setBooleanMember(memberName: string | null, value: boolean): void
+    setBooleanMember(memberName: string, value: boolean): void
     /**
      * Convenience function for setting an object member with a floating point value.
      * 
@@ -3125,7 +3125,7 @@ export interface Object {
      * @param memberName the name of the member
      * @param value the value of the member
      */
-    setDoubleMember(memberName: string | null, value: number): void
+    setDoubleMember(memberName: string, value: number): void
     /**
      * Convenience function for setting an object member with an integer value.
      * 
@@ -3133,7 +3133,7 @@ export interface Object {
      * @param memberName the name of the member
      * @param value the value of the member
      */
-    setIntMember(memberName: string | null, value: number): void
+    setIntMember(memberName: string, value: number): void
     /**
      * Sets the value of a member inside an object.
      * 
@@ -3145,14 +3145,14 @@ export interface Object {
      * @param memberName the name of the member
      * @param node the value of the member
      */
-    setMember(memberName: string | null, node: Node): void
+    setMember(memberName: string, node: Node): void
     /**
      * Convenience function for setting an object member with a `null` value.
      * 
      * See also: [method`Json`.Object.set_member], [method`Json`.Node.init_null]
      * @param memberName the name of the member
      */
-    setNullMember(memberName: string | null): void
+    setNullMember(memberName: string): void
     /**
      * Convenience function for setting an object member with an object value.
      * 
@@ -3160,7 +3160,7 @@ export interface Object {
      * @param memberName the name of the member
      * @param value the value of the member
      */
-    setObjectMember(memberName: string | null, value: Object): void
+    setObjectMember(memberName: string, value: Object): void
     /**
      * Convenience function for setting an object member with a string value.
      * 
@@ -3168,7 +3168,7 @@ export interface Object {
      * @param memberName the name of the member
      * @param value the value of the member
      */
-    setStringMember(memberName: string | null, value: string | null): void
+    setStringMember(memberName: string, value: string): void
     /**
      * Releases a reference on the given object.
      * 
@@ -3284,7 +3284,7 @@ export interface ObjectIter {
      * See also: [method`Json`.ObjectIter.next_ordered]
      * @returns `TRUE` if @member_name and @member_node are valid; `FALSE` if   there are no more members
      */
-    next(): [ /* returnType */ boolean, /* memberName */ string | null, /* memberNode */ Node ]
+    next(): [ /* returnType */ boolean, /* memberName */ string, /* memberNode */ Node ]
     /**
      * Advances the iterator and retrieves the next member in the object.
      * 
@@ -3302,7 +3302,7 @@ export interface ObjectIter {
      * See also: [method`Json`.ObjectIter.next]
      * @returns `TRUE `if @member_name and @member_node are valid; `FALSE` if the end    of the object has been reached
      */
-    nextOrdered(): [ /* returnType */ boolean, /* memberName */ string | null, /* memberNode */ Node ]
+    nextOrdered(): [ /* returnType */ boolean, /* memberName */ string, /* memberNode */ Node ]
 }
 
 /**
@@ -3331,7 +3331,7 @@ export interface ParserClass {
 
     parseStart: (parser: Parser) => void
     objectStart: (parser: Parser) => void
-    objectMember: (parser: Parser, object: Object, memberName: string | null) => void
+    objectMember: (parser: Parser, object: Object, memberName: string) => void
     objectEnd: (parser: Parser, object: Object) => void
     arrayStart: (parser: Parser) => void
     arrayElement: (parser: Parser, array: Array, index: number) => void
@@ -3395,9 +3395,9 @@ export interface SerializableIface {
 
     // Own fields of Json-1.0.Json.SerializableIface
 
-    serializeProperty: (serializable: Serializable, propertyName: string | null, value: any, pspec: GObject.ParamSpec) => Node
-    deserializeProperty: (serializable: Serializable, propertyName: string | null, pspec: GObject.ParamSpec, propertyNode: Node) => [ /* returnType */ boolean, /* value */ any ]
-    findProperty: (serializable: Serializable, name: string | null) => GObject.ParamSpec | null
+    serializeProperty: (serializable: Serializable, propertyName: string, value: any, pspec: GObject.ParamSpec) => Node
+    deserializeProperty: (serializable: Serializable, propertyName: string, pspec: GObject.ParamSpec, propertyNode: Node) => [ /* returnType */ boolean, /* value */ any ]
+    findProperty: (serializable: Serializable, name: string) => GObject.ParamSpec | null
     setProperty: (serializable: Serializable, pspec: GObject.ParamSpec, value: any) => void
     getProperty: (serializable: Serializable, pspec: GObject.ParamSpec) => /* value */ any
 }

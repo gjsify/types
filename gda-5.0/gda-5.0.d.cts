@@ -868,34 +868,34 @@ export enum ValueAttribute {
 /**
  * The corresponding attribute specifies if the object it refers to is auto incremented (value has a G_TYPE_BOOLEAN type).
  */
-export const ATTRIBUTE_AUTO_INCREMENT: string | null
+export const ATTRIBUTE_AUTO_INCREMENT: string
 /**
  * The corresponding attribute is the description of the object it refers to (value has a G_TYPE_STRING type).
  */
-export const ATTRIBUTE_DESCRIPTION: string | null
+export const ATTRIBUTE_DESCRIPTION: string
 /**
  * The corresponding attribute specifies if the object it refers to has its value to default (value has a G_TYPE_BOOLEAN type).
  */
-export const ATTRIBUTE_IS_DEFAULT: string | null
+export const ATTRIBUTE_IS_DEFAULT: string
 /**
  * The corresponding attribute is the name of the object it refers to (value has a G_TYPE_STRING type).
  */
-export const ATTRIBUTE_NAME: string | null
+export const ATTRIBUTE_NAME: string
 /**
  * The corresponding attribute is the number of significant digits of the object it refers to (value has a G_TYPE_INT type).
  */
-export const ATTRIBUTE_NUMERIC_PRECISION: string | null
+export const ATTRIBUTE_NUMERIC_PRECISION: string
 /**
  * The corresponding attribute is the number of significant digits to the right of the decimal point of the object it refers to (value has a G_TYPE_INT type).
  */
-export const ATTRIBUTE_NUMERIC_SCALE: string | null
+export const ATTRIBUTE_NUMERIC_SCALE: string
 /**
  * This attribute, if %TRUE specifies that a tree node may or may not have any children nodes (value has a G_TYPE_BOOLEAN type).
  */
-export const ATTRIBUTE_TREE_NODE_UNKNOWN_CHILDREN: string | null
-export const EXTRA_AUTO_INCREMENT: string | null
-export const SQLSTATE_GENERAL_ERROR: string | null
-export const SQLSTATE_NO_ERROR: string | null
+export const ATTRIBUTE_TREE_NODE_UNKNOWN_CHILDREN: string
+export const EXTRA_AUTO_INCREMENT: string
+export const SQLSTATE_GENERAL_ERROR: string
+export const SQLSTATE_NO_ERROR: string
 export const TIMEZONE_INVALID: number
 /**
  * Does the opposite of gda_text_to_alphanum(), in the same string
@@ -935,7 +935,7 @@ export function blob_free(boxed: any | null): void
  * @param end ending position within `sql` of the "token" to complete
  * @returns a new array of strings, or %NULL (use g_strfreev() to free the returned array)
  */
-export function completion_list_get(cnc: Connection, sql: string | null, start: number, end: number): string[] | null
+export function completion_list_get(cnc: Connection, sql: string, start: number, end: number): string[] | null
 /**
  * Creates an INSERT, an UPDATE and a DELETE statement from a SELECT statement
  * using the database metadata available in `cnc'`s meta store. Each statements are computed only if
@@ -966,14 +966,14 @@ export function data_model_error_quark(): GLib.Quark
  * @param string string to escape
  * @returns a new string
  */
-export function default_escape_string(string: string | null): string | null
+export function default_escape_string(string: string): string | null
 /**
  * Do the reverse of gda_default_escape_string(): transforms any "''" into "'", any
  * "\\" into "\" and any "\'" into "'".
  * @param string string to unescape
  * @returns a new unescaped string, or %NULL in an error was found in @string
  */
-export function default_unescape_string(string: string | null): string | null
+export function default_unescape_string(string: string): string | null
 /**
  * Extract the DSN, username and password from `string`. in `string,` the various parts are strings
  * which are expected to be encoded using an RFC 1738 compliant encoding. If they are specified,
@@ -985,7 +985,7 @@ export function default_unescape_string(string: string | null): string | null
  * @param out_username a place to store the new string containing the &lt;username&gt; part
  * @param out_password a place to store the new string containing the &lt;password&gt; part
  */
-export function dsn_split(string: string | null, out_dsn: string | null, out_username: string | null, out_password: string | null): void
+export function dsn_split(string: string, out_dsn: string | null, out_username: string | null, out_password: string | null): void
 /**
  * Converts a named type to ts GType type (also see the gda_g_type_to_string() function).
  * 
@@ -1012,7 +1012,7 @@ export function dsn_split(string: string | null, out_dsn: string | null, out_use
  * @param str the name of a #GType, as returned by gda_g_type_to_string().
  * @returns the #GType represented by the given @str, or #G_TYPE_INVALID if not found
  */
-export function g_type_from_string(str: string | null): GObject.GType
+export function g_type_from_string(str: string): GObject.GType
 /**
  * Converts a GType to its string representation (use gda_g_type_from_string() for the
  * operation in the other direction).
@@ -1023,7 +1023,7 @@ export function g_type_from_string(str: string | null): GObject.GType
  * @param type Type to convert from.
  * @returns the GDA's string representing the given #GType or the name returned by #g_type_name.
  */
-export function g_type_to_string(type: GObject.GType): string | null
+export function g_type_to_string(type: GObject.GType): string
 export function geometricpoint_copy(boxed: any | null): any | null
 export function geometricpoint_free(boxed: any | null): void
 /**
@@ -1034,7 +1034,7 @@ export function geometricpoint_free(boxed: any | null): void
  * @param app_name the name of the application to find
  * @returns the path as a new string, or %NULL if the application cannot be found
  */
-export function get_application_exec_path(app_name: string | null): string | null
+export function get_application_exec_path(app_name: string): string | null
 /**
  * Does the same as strcmp(`id1`, `id2`), but handles the case where id1 and/or id2 are enclosed in double quotes.
  * can also be used in hash tables as a #GEqualFunc.
@@ -1042,13 +1042,13 @@ export function get_application_exec_path(app_name: string | null): string | nul
  * @param id2 an identifier string
  * @returns %TRUE if @id1 and @id2 are equal.
  */
-export function identifier_equal(id1: string | null, id2: string | null): boolean
+export function identifier_equal(id1: string, id2: string): boolean
 /**
  * computes a hash string from `id,` to be used in hash tables as a #GHashFunc
  * @param id an identifier string
  * @returns a new hash
  */
-export function identifier_hash(id: string | null): number
+export function identifier_hash(id: string): number
 /**
  * Initializes the GDA library, must be called prior to any Libgda usage.
  * 
@@ -1089,8 +1089,8 @@ export function mutex_unlock(mutex: Mutex): void
  * @param sep spcifies the expected separator character bewteen year, month and day (for example '-')
  * @returns %TRUE if @value has been sucessfuly parsed as a valid date (see g_date_valid()).
  */
-export function parse_formatted_date(gdate: GLib.Date, value: string | null, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean
-export function parse_formatted_time(timegda: Time, value: string | null, sep: number): boolean
+export function parse_formatted_date(gdate: GLib.Date, value: string, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean
+export function parse_formatted_time(timegda: Time, value: string, sep: number): boolean
 /**
  * This function is similar to gda_parse_iso8601_timestamp() (with `first` being `G_DATE_YEAR,` `second` being `G_DATE_MONTH,`
  * `third` being `G_DATE_DAY` and `sep` being '-') but allows one to specify the expected date format.
@@ -1102,7 +1102,7 @@ export function parse_formatted_time(timegda: Time, value: string | null, sep: n
  * @param sep spcifies the expected separator character bewteen year, month and day (for example '-')
  * @returns %TRUE if @value has been sucessfuly parsed as a valid date (see g_date_valid()).
  */
-export function parse_formatted_timestamp(timestamp: Timestamp, value: string | null, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean
+export function parse_formatted_timestamp(timestamp: Timestamp, value: string, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean
 /**
  * Extracts date parts from `value,` and sets `gdate'`s contents
  * 
@@ -1113,7 +1113,7 @@ export function parse_formatted_timestamp(timestamp: Timestamp, value: string | 
  * @param value a string
  * @returns %TRUE if @value has been sucessfuly parsed as a valid date (see g_date_valid()).
  */
-export function parse_iso8601_date(gdate: GLib.Date, value: string | null): boolean
+export function parse_iso8601_date(gdate: GLib.Date, value: string): boolean
 /**
  * Extracts time parts from `value,` and sets `timegda'`s contents
  * 
@@ -1122,7 +1122,7 @@ export function parse_iso8601_date(gdate: GLib.Date, value: string | null): bool
  * @param value a string
  * @returns %TRUE if no error occurred
  */
-export function parse_iso8601_time(timegda: Time, value: string | null): boolean
+export function parse_iso8601_time(timegda: Time, value: string): boolean
 /**
  * Extracts date and time parts from `value,` and sets `timestamp'`s contents
  * 
@@ -1131,7 +1131,7 @@ export function parse_iso8601_time(timegda: Time, value: string | null): boolean
  * @param value a string
  * @returns %TRUE if @value has been sucessfuly parsed as a valid timestamp (see g_date_valid())
  */
-export function parse_iso8601_timestamp(timestamp: Timestamp, value: string | null): boolean
+export function parse_iso8601_timestamp(timestamp: Timestamp, value: string): boolean
 /**
  * Modifies `stmt` to take into account any parameter which might be %NULL: if `stmt` contains the
  * equivalent of "xxx = &lt;parameter definition&gt;" and if that parameter is in `params` and
@@ -1182,7 +1182,7 @@ export function rfc1738_decode(string: string | null): boolean
  * @param string a string to encode
  * @returns a new string
  */
-export function rfc1738_encode(string: string | null): string | null
+export function rfc1738_encode(string: string): string | null
 /**
  * Creates a new #GdaStatement, selecting the same data as `stmt,` but which always returns an
  * empty (no row) data model. This is use dy database providers' implementations.
@@ -1368,7 +1368,7 @@ export function sql_error_quark(): GLib.Quark
  * @param force_quotes set to %TRUE to force the returned string to be quoted
  * @returns the representation of @id ready to be used in SQL statement, as a new string,          or %NULL if @id is in a wrong format
  */
-export function sql_identifier_quote(id: string | null, cnc: Connection | null, prov: ServerProvider | null, meta_store_convention: boolean, force_quotes: boolean): string | null
+export function sql_identifier_quote(id: string, cnc: Connection | null, prov: ServerProvider | null, meta_store_convention: boolean, force_quotes: boolean): string | null
 /**
  * Splits `id` into an array of it sub parts. `id'`s format has to be "&lt;part&gt;[.&lt;part&gt;[...]]" where
  * each part is either a text surrounded by double quotes which can contain upper and lower cases or
@@ -1378,10 +1378,10 @@ export function sql_identifier_quote(id: string | null, cnc: Connection | null, 
  * @param id an SQL identifier
  * @returns a new %NULL-terminated array of strings, or NULL (use g_strfreev() to free the returned array)
  */
-export function sql_identifier_split(id: string | null): string[] | null
-export function sql_operation_operator_from_string(op: string | null): SqlOperatorType
-export function sql_operation_operator_to_string(op: SqlOperatorType): string | null
-export function sql_select_join_type_to_string(type: SqlSelectJoinType): string | null
+export function sql_identifier_split(id: string): string[] | null
+export function sql_operation_operator_from_string(op: string): SqlOperatorType
+export function sql_operation_operator_to_string(op: SqlOperatorType): string
+export function sql_select_join_type_to_string(type: SqlSelectJoinType): string
 /**
  * Performs the reverse of gda_binary_to_string() (note that for any "\xyz" succession
  * of 4 characters where "xyz" represents a valid octal value, the resulting read value will
@@ -1397,7 +1397,7 @@ export function string_to_binary(str: string | null): Binary
  * @param str a string to convert
  * @returns a new #gdaBlob if no error were found in @str, or NULL otherwise
  */
-export function string_to_blob(str: string | null): Blob
+export function string_to_blob(str: string): Blob
 /**
  * The "encoding" consists in replacing non
  * alphanumeric character with the string "__gdaXX" where XX is the hex. representation
@@ -1405,7 +1405,7 @@ export function string_to_blob(str: string | null): Blob
  * @param text the text to convert
  * @returns a new string
  */
-export function text_to_alphanum(text: string | null): string | null
+export function text_to_alphanum(text: string): string | null
 export function time_copy(boxed: any | null): any | null
 export function time_free(boxed: any | null): void
 export function timestamp_copy(boxed: any | null): any | null
@@ -1438,7 +1438,7 @@ export function utility_data_model_dump_data_to_xml(model: DataModel, parent: li
  * @param field_name field name
  * @returns The field's description, or NULL if description is not set
  */
-export function utility_data_model_find_column_description(model: DataSelect, field_name: string | null): string | null
+export function utility_data_model_find_column_description(model: DataSelect, field_name: string): string
 /**
  * Note: this method may set the "source" custom string property
  * @param holder a #GdaHolder
@@ -1490,10 +1490,10 @@ export function value_differ(value1: any, value2: any): number
  */
 export function value_stringify(value: any): string | null
 export interface AttributesManagerFunc {
-    (att_name: string | null, value: any, data: any | null): void
+    (att_name: string, value: any, data: any | null): void
 }
 export interface AttributesManagerSignal {
-    (obj: GObject.Object, att_name: string | null, value: any, data: any | null): void
+    (obj: GObject.Object, att_name: string, value: any, data: any | null): void
 }
 /**
  * Function to be called by Libgda when the associated asynchronous method invoked finishes.
@@ -1532,7 +1532,7 @@ export interface SqlRenderingValue {
     (value: any, context: SqlRenderingContext): string | null
 }
 export interface SqlReservedKeywordsFunc {
-    (word: string | null): boolean
+    (word: string): boolean
 }
 /**
  * Specifies the type of function to be passed to gda_thread_wrapper_connect_raw()
@@ -1546,7 +1546,7 @@ export interface SqlReservedKeywordsFunc {
  * @param data a pointer to the data (which is the `data` argument passed to gda_thread_wrapper_connect_raw())
  */
 export interface ThreadWrapperCallback {
-    (wrapper: ThreadWrapper, instance: any | null, signame: string | null, n_param_values: number, param_values: any, gda_reserved: any | null, data: any | null): void
+    (wrapper: ThreadWrapper, instance: any | null, signame: string, n_param_values: number, param_values: any, gda_reserved: any | null, data: any | null): void
 }
 /**
  * Specifies the type of function to be passed to gda_thread_wrapper_execute().
@@ -1588,7 +1588,7 @@ export interface DataHandler {
      * Get a short description of the GdaDataHandler
      * @returns the description
      */
-    get_descr(): string | null
+    get_descr(): string
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
@@ -1662,7 +1662,7 @@ export interface DataHandler {
      * @virtual 
      * @returns the description
      */
-    vfunc_get_descr(): string | null
+    vfunc_get_descr(): string
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
@@ -1968,7 +1968,7 @@ export interface DataModel {
      * @param options list of options for the export
      * @returns TRUE if no error occurred
      */
-    export_to_file(format: DataModelIOFormat, file: string | null, cols: number[] | null, rows: number[] | null, options: Set): boolean
+    export_to_file(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
      * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
      * gda_data_model_export_to_file() documentation for more information about the `options` argument (except for the
@@ -2013,9 +2013,9 @@ export interface DataModel {
      * @param name a column name
      * @returns the column index, or -1 if no column named @name was found
      */
-    get_column_index(name: string | null): number
-    get_column_name(col: number): string | null
-    get_column_title(col: number): string | null
+    get_column_index(name: string): number
+    get_column_name(col: number): string
+    get_column_title(col: number): string
     /**
      * Get the global data model exception(s) that occurred when using `model`.
      * This is useful for example for the LDAP related
@@ -2098,7 +2098,7 @@ export interface DataModel {
      * @param options list of options for the export
      * @returns TRUE if no error occurred
      */
-    import_from_file(file: string | null, cols_trans: GLib.HashTable | null, options: Set): boolean
+    import_from_file(file: string, cols_trans: GLib.HashTable | null, options: Set): boolean
     /**
      * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
      * orrurs.
@@ -2134,7 +2134,7 @@ export interface DataModel {
      * @param options list of options for the export
      * @returns TRUE if no error occurred.
      */
-    import_from_string(string: string | null, cols_trans: GLib.HashTable | null, options: Set): boolean
+    import_from_string(string: string, cols_trans: GLib.HashTable | null, options: Set): boolean
     /**
      * Moves `iter` to the row number given by `row`.
      * @param iter a #GdaDataModelIter object.
@@ -2208,13 +2208,13 @@ export interface DataModel {
      * @param col column number
      * @param name name for the given column.
      */
-    set_column_name(col: number, name: string | null): void
+    set_column_name(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
      * @param col column number
      * @param title title for the given column.
      */
-    set_column_title(col: number, title: string | null): void
+    set_column_title(col: number, title: string): void
     /**
      * Enable or disable notifications changes on the given data model.
      * @param do_notify_changes Set to TRUE if you require notifications.
@@ -2888,13 +2888,13 @@ export interface Column {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @column
      */
-    get_attribute(attribute: string | null): any
+    get_attribute(attribute: string): any
     get_auto_increment(): boolean
-    get_dbms_type(): string | null
+    get_dbms_type(): string
     get_default_value(): any | null
-    get_description(): string | null
+    get_description(): string
     get_g_type(): GObject.GType
-    get_name(): string | null
+    get_name(): string
     get_position(): number
     /**
      * Sets the 'allow null' flag of the given column.
@@ -2926,7 +2926,7 @@ export interface Column {
      * @param value a #GValue, or %NULL
      * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
-    set_attribute(attribute: string | null, value: any | null, destroy: GLib.DestroyNotify | null): void
+    set_attribute(attribute: string, value: any | null, destroy: GLib.DestroyNotify | null): void
     /**
      * Sets the auto increment flag for the given column.
      * @param is_auto auto increment status.
@@ -2936,7 +2936,7 @@ export interface Column {
      * Defines `column'`s database type
      * @param dbms_type a string
      */
-    set_dbms_type(dbms_type: string | null): void
+    set_dbms_type(dbms_type: string): void
     /**
      * Sets `column'`s default #GValue.
      * @param default_value default #GValue for the column
@@ -2946,7 +2946,7 @@ export interface Column {
      * Sets the column's description
      * @param title title name.
      */
-    set_description(title: string | null): void
+    set_description(title: string): void
     /**
      * Sets the type of `column` to `type`.
      * @param type the new type of `column`.
@@ -2956,7 +2956,7 @@ export interface Column {
      * Sets the name of `column` to `name`.
      * @param name the new name of `column`.
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the position of the column refer to in the containing
      * data model.
@@ -2967,7 +2967,7 @@ export interface Column {
     // Own virtual methods of Gda-5.0.Gda.Column
 
     vfunc_g_type_changed(old_type: GObject.GType, new_type: GObject.GType): void
-    vfunc_name_changed(old_name: string | null): void
+    vfunc_name_changed(old_name: string): void
 
     // Own signals of Gda-5.0.Gda.Column
 
@@ -3156,7 +3156,7 @@ export class Config extends GObject.Object {
      * @param dsn_name the name of a DSN, in the "[&lt;username&gt;[:&lt;password&gt;]`]`&lt;DSN&gt;" format
      * @returns TRUE if an authentication is needed
      */
-    static dsn_needs_authentication(dsn_name: string | null): boolean
+    static dsn_needs_authentication(dsn_name: string): boolean
     static error_quark(): GLib.Quark
     /**
      * Get a pointer to the global (unique) #GdaConfig object. This functions increments
@@ -3173,7 +3173,7 @@ export class Config extends GObject.Object {
      * @param dsn_name the name of the DSN to look for
      * @returns a pointer to read-only #GdaDsnInfo structure, or %NULL if not found
      */
-    static get_dsn_info(dsn_name: string | null): DsnInfo
+    static get_dsn_info(dsn_name: string): DsnInfo
     /**
      * Get a pointer to a read-only #GdaDsnInfo at the `index` position
      * @param index an index
@@ -3185,7 +3185,7 @@ export class Config extends GObject.Object {
      * @param dsn_name a DSN
      * @returns the index or -1 if not found
      */
-    static get_dsn_info_index(dsn_name: string | null): number
+    static get_dsn_info_index(dsn_name: string): number
     /**
      * Get the number of defined DSN
      * @returns the number of defined DSN
@@ -3200,13 +3200,13 @@ export class Config extends GObject.Object {
      * @param provider_name a database provider
      * @returns a pointer to the #GdaServerProvider, or %NULL if an error occurred
      */
-    static get_provider(provider_name: string | null): ServerProvider
+    static get_provider(provider_name: string): ServerProvider
     /**
      * Get some information about the a database provider (adapter) named
      * @param provider_name a database provider
      * @returns a pointer to read-only #GdaProviderInfo structure, or %NULL if not found
      */
-    static get_provider_info(provider_name: string | null): ProviderInfo
+    static get_provider_info(provider_name: string): ProviderInfo
     /**
      * Get a #GdaDataModel representing all the configured DSN, and keeping itself up to date with
      * the changes in the declared DSN.
@@ -3243,7 +3243,7 @@ export class Config extends GObject.Object {
      * @param dsn_name the name of the DSN to remove
      * @returns TRUE if no error occurred
      */
-    static remove_dsn(dsn_name: string | null): boolean
+    static remove_dsn(dsn_name: string): boolean
 }
 
 export module Connection {
@@ -3618,7 +3618,7 @@ export interface Connection extends Lockable {
      * @param condition_value the `condition_column_type'`s GType
      * @returns TRUE if no error occurred, FALSE otherwise
      */
-    delete_row_from_table(table: string | null, condition_column_name: string | null, condition_value: any): boolean
+    delete_row_from_table(table: string, condition_column_name: string, condition_value: any): boolean
     /**
      * Delete the SAVEPOINT named `name` when not used anymore.
      * @param name name of the savepoint to delete
@@ -3631,18 +3631,18 @@ export interface Connection extends Lockable {
      * @param sql a query statement that must not begin with "SELECT"
      * @returns the number of rows affected or -1, or -2
      */
-    execute_non_select_command(sql: string | null): number
+    execute_non_select_command(sql: string): number
     /**
      * Execute a SQL SELECT command over an opened connection.
      * @param sql a query statement that must begin with "SELECT"
      * @returns a new #GdaDataModel if successful, %NULL otherwise
      */
-    execute_select_command(sql: string | null): DataModel
+    execute_select_command(sql: string): DataModel
     /**
      * Gets the user name used to open this connection.
      * @returns the user name.
      */
-    get_authentication(): string | null
+    get_authentication(): string
     /**
      * Gets the connection string used to open this connection.
      * 
@@ -3651,13 +3651,13 @@ export interface Connection extends Lockable {
      * to open a connection on the underlying data source.
      * @returns the connection string used when opening the connection.
      */
-    get_cnc_string(): string | null
+    get_cnc_string(): string
     /**
      * This function allows you to determine the actual format for the date values.
      * @returns %TRUE if no error occurred
      */
-    get_date_format(): [ /* returnType */ boolean, /* out_first */ GLib.DateDMY, /* out_second */ GLib.DateDMY, /* out_third */ GLib.DateDMY, /* out_sep */ string | null ]
-    get_dsn(): string | null
+    get_date_format(): [ /* returnType */ boolean, /* out_first */ GLib.DateDMY, /* out_second */ GLib.DateDMY, /* out_third */ GLib.DateDMY, /* out_sep */ string ]
+    get_dsn(): string
     /**
      * Retrieves a list of the last errors occurred during the connection. The returned list is
      * chronologically ordered such as that the most recent event is the #GdaConnectionEvent of the first node.
@@ -3699,7 +3699,7 @@ export interface Connection extends Lockable {
      * Gets the name (identifier) of the database provider used by `cnc`
      * @returns a non modifiable string
      */
-    get_provider_name(): string | null
+    get_provider_name(): string
     /**
      * Get the status of `cnc` regarding transactions. The returned object should not be modified
      * or destroyed; however it may be modified or destroyed by the connection itself.
@@ -3720,7 +3720,7 @@ export interface Connection extends Lockable {
      * @param values a list of values (as #GValue)
      * @returns TRUE if no error occurred, FALSE otherwise
      */
-    insert_row_into_table_v(table: string | null, col_names: string[], values: any[]): boolean
+    insert_row_into_table_v(table: string, col_names: string[], values: any[]): boolean
     /**
      * Checks whether a connection is open or not.
      * @returns %TRUE if the connection is open, %FALSE if it's not.
@@ -3736,7 +3736,7 @@ export interface Connection extends Lockable {
      * @param sql an SQL command to parse, not %NULL
      * @returns a #GdaStatement representing the SQL command, or %NULL if an error occurred
      */
-    parse_sql_string(sql: string | null): [ /* returnType */ Statement, /* params */ Set ]
+    parse_sql_string(sql: string): [ /* returnType */ Statement, /* params */ Set ]
     /**
      * Performs the operation described by `op` (which should have been created using
      * gda_connection_create_operation()). It is a wrapper around the gda_server_provider_perform_operation()
@@ -3771,7 +3771,7 @@ export interface Connection extends Lockable {
      * @param id an SQL identifier
      * @returns a new string, to free with g_free() once not needed anymore
      */
-    quote_sql_identifier(id: string | null): string | null
+    quote_sql_identifier(id: string): string | null
     /**
      * Executes the statement upon which `rstmt` is built. Note that as several statements can actually be executed by this
      * method, it is recommended to be within a transaction.
@@ -3998,7 +3998,7 @@ export interface Connection extends Lockable {
      * @param values a list of values (as #GValue)
      * @returns TRUE if no error occurred, FALSE otherwise
      */
-    update_row_in_table_v(table: string | null, condition_column_name: string | null, condition_value: any, col_names: string[], values: any[]): boolean
+    update_row_in_table_v(table: string, condition_column_name: string, condition_value: any, col_names: string[], values: any[]): boolean
     /**
      * Produces a fully quoted and escaped string from a GValue
      * @param from #GValue to convert from
@@ -4096,7 +4096,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection if connection opening was successful or %NULL if there was an error.
      */
-    static new_from_dsn(dsn: string | null, auth_string: string | null, options: ConnectionOptions): Connection
+    static new_from_dsn(dsn: string, auth_string: string | null, options: ConnectionOptions): Connection
     /**
      * This function is similar to gda_connection_open_from_string(), except it does not actually open the
      * connection, you have to open it using gda_connection_open().
@@ -4107,7 +4107,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection if connection opening was successful or %NULL if there was an error.
      */
-    static new_from_string(provider_name: string | null, cnc_string: string | null, auth_string: string | null, options: ConnectionOptions): Connection
+    static new_from_string(provider_name: string | null, cnc_string: string, auth_string: string | null, options: ConnectionOptions): Connection
     _init(config?: Connection.ConstructorProperties): void
     static error_quark(): GLib.Quark
     /**
@@ -4137,7 +4137,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection if connection opening was successful or %NULL if there was an error.
      */
-    static open_from_dsn(dsn: string | null, auth_string: string | null, options: ConnectionOptions): Connection
+    static open_from_dsn(dsn: string, auth_string: string | null, options: ConnectionOptions): Connection
     /**
      * Opens a connection given a provider ID and a connection string. This
      * allows applications to open connections without having to create
@@ -4182,7 +4182,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection if connection opening was successful or %NULL if there was an error.
      */
-    static open_from_string(provider_name: string | null, cnc_string: string | null, auth_string: string | null, options: ConnectionOptions): Connection
+    static open_from_string(provider_name: string | null, cnc_string: string, auth_string: string | null, options: ConnectionOptions): Connection
     /**
      * Opens an SQLite connection even if the SQLite provider is not installed,
      * to be used by database providers which need a temporary database to store
@@ -4192,7 +4192,7 @@ export class Connection extends GObject.Object {
      * @param auto_unlink if %TRUE, then the database file will be removed afterwards
      * @returns a new #GdaConnection, or %NULL if an error occurred
      */
-    static open_sqlite(directory: string | null, filename: string | null, auto_unlink: boolean): Connection
+    static open_sqlite(directory: string | null, filename: string, auto_unlink: boolean): Connection
     /**
      * Extract the provider, connection parameters, username and password from `string`.
      * in `string,` the various parts are strings
@@ -4224,7 +4224,7 @@ export class Connection extends GObject.Object {
      * @param out_username a place to store the new string containing the &lt;username&gt; part
      * @param out_password a place to store the new string containing the &lt;password&gt; part, or %NULL
      */
-    static string_split(string: string | null, out_cnc_params: string | null, out_provider: string | null, out_username: string | null, out_password: string | null): void
+    static string_split(string: string, out_cnc_params: string | null, out_provider: string | null, out_username: string | null, out_password: string | null): void
 }
 
 export module ConnectionEvent {
@@ -4259,7 +4259,7 @@ export interface ConnectionEvent {
      * the the description is the SQL of the command.
      * @returns @event's description.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Get `event'`s severity (from a simple notice to a fatal event)
      * @returns the event type
@@ -4270,14 +4270,14 @@ export interface ConnectionEvent {
      * @returns the #GdaConnectionEventCode event's code
      */
     get_gda_code(): ConnectionEventCode
-    get_source(): string | null
+    get_source(): string
     /**
      * Get the SQLSTATE value of `event`. Even though the SQLSTATE values are specified by ANSI SQL and ODBC,
      * consult each DBMS for the possible values. However, the "00000" (success) value means that there is no error,
      * and the "HY000" (general error) value means an error but no better error code available.
      * @returns @event's SQL state.
      */
-    get_sqlstate(): string | null
+    get_sqlstate(): string
     /**
      * Sets `event'`s code: the code is specific to the provider being used.
      * If you want to have a common understanding of the event codes, use
@@ -4311,14 +4311,14 @@ export interface ConnectionEvent {
      * Sets `event'`s `source;` this function should not be called directly
      * @param source a source.
      */
-    set_source(source: string | null): void
+    set_source(source: string): void
     /**
      * Changes the SQLSTATE code of `event,` this function should not be called directly
      * 
      * Sets `event'`s SQL state.
      * @param sqlstate SQL state.
      */
-    set_sqlstate(sqlstate: string | null): void
+    set_sqlstate(sqlstate: string): void
 
     // Class property signals of Gda-5.0.Gda.ConnectionEvent
 
@@ -4698,7 +4698,7 @@ export class DataModelDir extends GObject.Object {
      * @param basedir a directory
      * @returns a new #GdaDataModel
      */
-    static new(basedir: string | null): DataModel
+    static new(basedir: string): DataModel
 }
 
 export module DataModelImport {
@@ -4876,7 +4876,7 @@ export class DataModelImport extends GObject.Object {
      * @param options importing options
      * @returns a pointer to the newly created #GdaDataModel.
      */
-    static new_file(filename: string | null, random_access: boolean, options: Set | null): DataModel
+    static new_file(filename: string, random_access: boolean, options: Set | null): DataModel
     /**
      * Creates a new #GdaDataModel object which contains the data stored in the `data` string.
      * 
@@ -4887,7 +4887,7 @@ export class DataModelImport extends GObject.Object {
      * @param options importing options, see gda_data_model_import_new_file() for more information
      * @returns a pointer to the newly created #GdaDataModel.
      */
-    static new_mem(data: string | null, random_access: boolean, options: Set | null): DataModel
+    static new_mem(data: string, random_access: boolean, options: Set | null): DataModel
     /**
      * Creates a new #GdaDataModel and loads the data in `node`. The resulting data model
      * can be accessed in a random way.
@@ -4990,7 +4990,7 @@ export interface DataModelIter {
      * @param field_name the requested column name
      * @returns the #GValue, or %NULL
      */
-    get_value_for_field(field_name: string | null): any | null
+    get_value_for_field(field_name: string): any | null
     /**
      * Declare all the parameters in `iter` invalid, without modifying the
      * #GdaDataModel `iter` is for or changing the row it represents. This method
@@ -5313,7 +5313,7 @@ export interface DataPivot extends DataModel {
      * @param alias the field alias, or %NULL
      * @returns %TRUE if no error occurred
      */
-    add_data(aggregate_type: DataPivotAggregate, field: string | null, alias: string | null): boolean
+    add_data(aggregate_type: DataPivotAggregate, field: string, alias: string | null): boolean
     /**
      * Specifies that `field` has to be included in the analysis.
      * `field` is a field specification with the following accepted syntaxes:
@@ -5334,7 +5334,7 @@ export interface DataPivot extends DataModel {
      * @param alias the field alias, or %NULL
      * @returns %TRUE if no error occurred
      */
-    add_field(field_type: DataPivotFieldType, field: string | null, alias: string | null): boolean
+    add_field(field_type: DataPivotFieldType, field: string, alias: string | null): boolean
     /**
      * Acutally populates `pivot` by analysing the data from the provided data model.
      * @returns %TRUE if no error occurred.
@@ -5553,7 +5553,7 @@ export interface DataProxy extends DataModel {
      * Get the current filter expression used by `proxy`.
      * @returns the current filter expression or %NULL if no filter has been set
      */
-    get_filter_expr(): string | null
+    get_filter_expr(): string
     /**
      * Get the total number of filtered rows in `proxy` if a filter has been applied. As new rows
      * (rows added to the proxy and not yet added to the proxied data model) and rows to remove
@@ -5990,7 +5990,7 @@ export interface DataSelect extends DataModel {
      * @param sql an SQL text
      * @returns TRUE if no error occurred.
      */
-    set_modification_statement_sql(sql: string | null): boolean
+    set_modification_statement_sql(sql: string): boolean
     /**
      * Specifies the SQL condition corresponding to the WHERE part of a SELECT statement which would
      * return only 1 row (the expression of the primary key).
@@ -6008,7 +6008,7 @@ export interface DataSelect extends DataModel {
      * @param sql_where an SQL condition (without the WHERE keyword)
      * @returns TRUE if no error occurred
      */
-    set_row_selection_condition_sql(sql_where: string | null): boolean
+    set_row_selection_condition_sql(sql_where: string): boolean
 
     // Own virtual methods of Gda-5.0.Gda.DataSelect
 
@@ -6524,7 +6524,7 @@ export interface Holder extends Lockable {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @holder
      */
-    get_attribute(attribute: string | null): any
+    get_attribute(attribute: string): any
     /**
      * Get the holder which makes `holder` change its value when the holder's value is changed.
      * @returns the #GdaHolder or %NULL
@@ -6541,7 +6541,7 @@ export interface Holder extends Lockable {
      * Get the ID of `holder`. The ID can be set using `holder'`s "id" property
      * @returns the ID (don't modify the string).
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Get wether the holder can be NULL or not
      * @returns TRUE if the holder cannot be NULL
@@ -6604,7 +6604,7 @@ export interface Holder extends Lockable {
      * @param value a #GValue, or %NULL
      * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
-    set_attribute(attribute: string | null, value: any, destroy: GLib.DestroyNotify): void
+    set_attribute(attribute: string, value: any, destroy: GLib.DestroyNotify): void
     /**
      * Sets `holder` to change when `bind_to` changes (and does not make `bind_to` change when `holder` changes).
      * For the operation to succeed, the GType of `holder` and `bind_to` must be the same, with the exception that
@@ -6676,7 +6676,7 @@ export interface Holder extends Lockable {
      * @param value a value to set the holder to, as a string
      * @returns TRUE if value has been set
      */
-    set_value_str(dh: DataHandler, value: string | null): boolean
+    set_value_str(dh: DataHandler, value: string): boolean
     /**
      * Set `holder'`s value to its default value.
      * @returns TRUE if @holder has got a default value
@@ -6735,7 +6735,7 @@ export interface Holder extends Lockable {
 
     // Own virtual methods of Gda-5.0.Gda.Holder
 
-    vfunc_att_changed(att_name: string | null, att_value: any): void
+    vfunc_att_changed(att_name: string, att_value: any): void
     vfunc_changed(): void
     vfunc_source_changed(): void
     vfunc_validate_change(new_value: any): GLib.Error
@@ -6887,7 +6887,7 @@ export interface MetaStore {
      * @param table_name the name of a table present in `store`
      * @returns a new #GdaDataModel
      */
-    create_modify_data_model(table_name: string | null): DataModel
+    create_modify_data_model(table_name: string): DataModel
     /**
      * Defines a new declared foreign key into `store`. If another declared foreign key is already defined
      * between the two tables and with the same name, then it is first removed.
@@ -6918,7 +6918,7 @@ export interface MetaStore {
      * @param ref_colnames an array of column names from the referenced table
      * @returns %TRUE if no error occurred
      */
-    declare_foreign_key(mstruct: MetaStruct | null, fk_name: string | null, catalog: string | null, schema: string | null, table: string | null, ref_catalog: string | null, ref_schema: string | null, ref_table: string | null, colnames: string[], ref_colnames: string[]): boolean
+    declare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string, colnames: string[], ref_colnames: string[]): boolean
     /**
      * Extracts some data stored in `store` using a custom SELECT query. If the `select_sql` filter involves
      * SQL identifiers (such as table or column names), then the values should have been adapted using
@@ -6931,7 +6931,7 @@ export interface MetaStore {
      * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
      * @returns a new #GdaDataModel, or %NULL if an error occurred
      */
-    extract(select_sql: string | null, vars: GLib.HashTable | null): DataModel
+    extract(select_sql: string, vars: GLib.HashTable | null): DataModel
     /**
      * The #GdaMetaStore object maintains a list of (name,value) attributes (attributes names starting with a '_'
      * character are for internal use only and cannot be altered). This method and the gda_meta_store_set_attribute_value()
@@ -6945,7 +6945,7 @@ export interface MetaStore {
      * @param att_name name of the attribute to get
      * @returns TRUE if no error occurred
      */
-    get_attribute_value(att_name: string | null): [ /* returnType */ boolean, /* att_value */ string | null ]
+    get_attribute_value(att_name: string): [ /* returnType */ boolean, /* att_value */ string | null ]
     /**
      * Get a pointer to the #GdaConnection object internally used by `store` to store
      * its contents.
@@ -6971,7 +6971,7 @@ export interface MetaStore {
      * @param values values
      * @returns %TRUE if no error occurred
      */
-    modify(table_name: string | null, new_data: DataModel | null, condition: string | null, value_names: string[], values: any[]): boolean
+    modify(table_name: string, new_data: DataModel | null, condition: string | null, value_names: string[], values: any[]): boolean
     /**
      * Propagates an update to `store,` the update's contents is represented by `new_data,` this function is
      * primarily reserved to database providers.
@@ -7033,7 +7033,7 @@ export interface MetaStore {
      * @param xml_description an XML description of the table or view to add to `store`
      * @returns TRUE if the new object has successfully been added
      */
-    schema_add_custom_object(xml_description: string | null): boolean
+    schema_add_custom_object(xml_description: string): boolean
     /**
      * Get an ordered list of the tables `store` knows about. The tables are ordered in a way that tables dependencies
      * are respected: if table B has a foreign key on table A, then table A will be listed before table B in the returned
@@ -7049,7 +7049,7 @@ export interface MetaStore {
      * @param table_name the name of the table for which all the dependencies must be listed
      * @returns a new list of tables names (as gchar*), the list must be freed when no longer needed, but the strings present in the list must not be modified.
      */
-    schema_get_depend_tables(table_name: string | null): string[]
+    schema_get_depend_tables(table_name: string): string[]
     /**
      * Creates a new #GdaMetaStruct object representing `store'`s internal database structure.
      * @returns a new #GdaMetaStruct object, or %NULL if an error occurred
@@ -7060,7 +7060,7 @@ export interface MetaStore {
      * @param obj_name name of the custom object to remove
      * @returns TRUE if the custom object has successfully been removed
      */
-    schema_remove_custom_object(obj_name: string | null): boolean
+    schema_remove_custom_object(obj_name: string): boolean
     /**
      * Set the value of the attribute named `att_name` to `att_value;` see gda_meta_store_get_attribute_value() for
      * more information.
@@ -7068,7 +7068,7 @@ export interface MetaStore {
      * @param att_value value of the attribute to set, or %NULL to unset the attribute
      * @returns TRUE if no error occurred
      */
-    set_attribute_value(att_name: string | null, att_value: string | null): boolean
+    set_attribute_value(att_name: string, att_value: string | null): boolean
     /**
      * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
      * database providers.
@@ -7106,7 +7106,7 @@ export interface MetaStore {
      * @param ref_table the name of the referenced table
      * @returns %TRUE if no error occurred
      */
-    undeclare_foreign_key(mstruct: MetaStruct | null, fk_name: string | null, catalog: string | null, schema: string | null, table: string | null, ref_catalog: string | null, ref_schema: string | null, ref_table: string | null): boolean
+    undeclare_foreign_key(mstruct: MetaStruct | null, fk_name: string, catalog: string | null, schema: string | null, table: string, ref_catalog: string | null, ref_schema: string | null, ref_table: string): boolean
 
     // Own virtual methods of Gda-5.0.Gda.MetaStore
 
@@ -7176,7 +7176,7 @@ export class MetaStore extends GObject.Object {
      * @param file_name a file name
      * @returns the newly created object, or %NULL if an error occurred
      */
-    static new_with_file(file_name: string | null): MetaStore
+    static new_with_file(file_name: string): MetaStore
     _init(config?: MetaStore.ConstructorProperties): void
     static error_quark(): GLib.Quark
     /**
@@ -7190,7 +7190,7 @@ export class MetaStore extends GObject.Object {
      * @param cnc a #GdaConnection
      * @returns a new string, to free with g_free() once not needed anymore
      */
-    static sql_identifier_quote(id: string | null, cnc: Connection): string | null
+    static sql_identifier_quote(id: string, cnc: Connection): string | null
 }
 
 export module MetaStruct {
@@ -7321,7 +7321,7 @@ export interface MetaStruct {
      * @param xml_spec_file the specifications as the name of an XML file
      * @returns TRUE if no error has occurred
      */
-    load_from_xml_file(catalog: string | null, schema: string | null, xml_spec_file: string | null): boolean
+    load_from_xml_file(catalog: string | null, schema: string | null, xml_spec_file: string): boolean
     /**
      * Reorders the list of database objects within `mstruct` in a way specified by `sort_type`.
      * @param sort_type the kind of sorting requested
@@ -7711,27 +7711,27 @@ export interface ServerOperation {
 
     // Owm methods of Gda-5.0.Gda.ServerOperation
 
-    add_item_to_sequence(seq_path: string | null): number
-    del_item_from_sequence(item_path: string | null): boolean
+    add_item_to_sequence(seq_path: string): number
+    del_item_from_sequence(item_path: string): boolean
     /**
      * Get the complete path to the parent of the node defined by `path`
      * @param path a complete path to a node (starting with "/")
      * @returns a new string or %NULL if the node does not have any parent or does not exist.
      */
-    get_node_parent(path: string | null): string | null
+    get_node_parent(path: string): string | null
     /**
      * Get the last part of `path`
      * @param path a complete path to a node (starting with "/")
      * @returns a new string, or %NULL if an error occurred
      */
-    get_node_path_portion(path: string | null): string | null
+    get_node_path_portion(path: string): string | null
     /**
      * Convenience function to get the type of a node.
      * @param path a complete path to a node (starting with "/")
      * @param status a place to store the status of the node, or %NULL
      * @returns the type of node, or GDA_SERVER_OPERATION_NODE_UNKNOWN if the node was not found
      */
-    get_node_type(path: string | null, status: ServerOperationNodeStatus | null): ServerOperationNodeType
+    get_node_type(path: string, status: ServerOperationNodeStatus | null): ServerOperationNodeType
     /**
      * Get the type of operation `op` is for
      * @returns a #GdaServerOperationType enum
@@ -7748,11 +7748,11 @@ export interface ServerOperation {
      * @param path a complete path to a sequence node (starting with "/")
      * @returns a array of strings containing the complete paths of the nodes contained at @path (free with g_strfreev())
      */
-    get_sequence_item_names(path: string | null): string[]
-    get_sequence_max_size(path: string | null): number
-    get_sequence_min_size(path: string | null): number
-    get_sequence_name(path: string | null): string | null
-    get_sequence_size(path: string | null): number
+    get_sequence_item_names(path: string): string[]
+    get_sequence_max_size(path: string): number
+    get_sequence_min_size(path: string): number
+    get_sequence_name(path: string): string
+    get_sequence_size(path: string): number
     /**
      * This method is similar to gda_server_operation_get_value_at(), but for SQL identifiers: a new string
      * is returned instead of a #GValue. Also the returned string is assumed to represents an SQL identifier
@@ -7763,13 +7763,13 @@ export interface ServerOperation {
      * @param path a complete path to a node (starting with "/")
      * @returns a new string, or %NULL if the value is undefined or if the @path is not defined or @path does not hold any value, or if the value held is not a string (in that last case a warning is shown).
      */
-    get_sql_identifier_at(cnc: Connection | null, prov: ServerProvider | null, path: string | null): string | null
+    get_sql_identifier_at(cnc: Connection | null, prov: ServerProvider | null, path: string): string | null
     /**
      * Get the value for the node at the `path` path
      * @param path a complete path to a node (starting with "/")
      * @returns a constant #GValue if a value has been defined, or %NULL if the value is undefined or if the @path is not defined or @path does not hold any value.
      */
-    get_value_at(path: string | null): any | null
+    get_value_at(path: string): any | null
     /**
      * Tells if all the required values in `op` have been defined.
      * 
@@ -7846,12 +7846,12 @@ export interface ServerOperation {
      * @param path a complete path to a node (starting with "/")
      * @returns %TRUE if no error occurred
      */
-    set_value_at(value: string | null, path: string | null): boolean
+    set_value_at(value: string | null, path: string): boolean
 
     // Own virtual methods of Gda-5.0.Gda.ServerOperation
 
-    vfunc_seq_item_added(seq_path: string | null, item_index: number): void
-    vfunc_seq_item_remove(seq_path: string | null, item_index: number): void
+    vfunc_seq_item_added(seq_path: string, item_index: number): void
+    vfunc_seq_item_remove(seq_path: string, item_index: number): void
 
     // Own signals of Gda-5.0.Gda.ServerOperation
 
@@ -7906,7 +7906,7 @@ export class ServerOperation extends GObject.Object {
      * @param xml_file a file which has the specifications for the GdaServerOperation object to create
      * @returns a new #GdaServerOperation object
      */
-    constructor(op_type: ServerOperationType, xml_file: string | null) 
+    constructor(op_type: ServerOperationType, xml_file: string) 
     /**
      * IMPORTANT NOTE: Using this funtion is not the recommended way of creating a #GdaServerOperation object, the
      * correct way is to use gda_server_provider_create_operation(); this method is reserved for the database provider's
@@ -7921,7 +7921,7 @@ export class ServerOperation extends GObject.Object {
      * @param xml_file a file which has the specifications for the GdaServerOperation object to create
      * @returns a new #GdaServerOperation object
      */
-    static new(op_type: ServerOperationType, xml_file: string | null): ServerOperation
+    static new(op_type: ServerOperationType, xml_file: string): ServerOperation
     _init(config?: ServerOperation.ConstructorProperties): void
     static error_quark(): GLib.Quark
     /**
@@ -7929,7 +7929,7 @@ export class ServerOperation extends GObject.Object {
      * @param type a #GdaServerOperationType value
      * @returns a non %NULL string (do not free or modify)
      */
-    static op_type_to_string(type: ServerOperationType): string | null
+    static op_type_to_string(type: ServerOperationType): string
     /**
      * Creates a new #GdaServerOperation object which contains the specifications required
      * to create a database. Once these specifications provided, use
@@ -7941,7 +7941,7 @@ export class ServerOperation extends GObject.Object {
      * @param db_name the name of the database to create, or %NULL
      * @returns new #GdaServerOperation object, or %NULL if the provider does not support database creation
      */
-    static prepare_create_database(provider: string | null, db_name: string | null): ServerOperation | null
+    static prepare_create_database(provider: string, db_name: string | null): ServerOperation | null
     /**
      * Creates a new #GdaServerOperation object which contains the specifications required
      * to drop a database. Once these specifications provided, use
@@ -7953,7 +7953,7 @@ export class ServerOperation extends GObject.Object {
      * @param db_name the name of the database to drop, or %NULL
      * @returns new #GdaServerOperation object, or %NULL if the provider does not support database destruction
      */
-    static prepare_drop_database(provider: string | null, db_name: string | null): ServerOperation | null
+    static prepare_drop_database(provider: string, db_name: string | null): ServerOperation | null
     /**
      * This is just a convenient function to create a #GdaServerOperation to drop a
      * table in an opened connection.
@@ -7961,13 +7961,13 @@ export class ServerOperation extends GObject.Object {
      * @param table_name name of the table to drop
      * @returns a new #GdaServerOperation or %NULL if couldn't create the opereration.
      */
-    static prepare_drop_table(cnc: Connection, table_name: string | null): ServerOperation | null
+    static prepare_drop_table(cnc: Connection, table_name: string): ServerOperation | null
     /**
      * Performs the reverse of gda_server_operation_op_type_to_string()
      * @param str a string
      * @returns the #GdaServerOperationType represented by @str, or #G_MAXINT if @str is not a valid representation of a #GdaServerOperationType
      */
-    static string_to_op_type(str: string | null): ServerOperationType
+    static string_to_op_type(str: string): ServerOperationType
 }
 
 export module ServerProvider {
@@ -8018,7 +8018,7 @@ export interface ServerProvider {
      * @param str a string to escape
      * @returns a new string suitable to use in SQL statements
      */
-    escape_string(cnc: Connection | null, str: string | null): string | null
+    escape_string(cnc: Connection | null, str: string): string | null
     /**
      * Finds the location of a `filename`. This function should only be used by database provider's
      * implementations
@@ -8026,7 +8026,7 @@ export interface ServerProvider {
      * @param filename name of the file to find
      * @returns the complete path to @filename, or %NULL if not found
      */
-    find_file(inst_dir: string | null, filename: string | null): string | null
+    find_file(inst_dir: string, filename: string): string | null
     /**
      * Find a #GdaDataHandler object to manipulate data of type `for_type`.
      * 
@@ -8035,7 +8035,7 @@ export interface ServerProvider {
      * @param for_type a DBMS type definition
      * @returns a #GdaDataHandler, or %NULL if the provider does not know about the @for_type type
      */
-    get_data_handler_dbms(cnc: Connection | null, for_type: string | null): DataHandler
+    get_data_handler_dbms(cnc: Connection | null, for_type: string): DataHandler
     /**
      * Provides the implementation when the default Libgda's data handlers must be used
      * @param cnc a #GdaConnection object, or %NULL
@@ -8043,7 +8043,7 @@ export interface ServerProvider {
      * @param dbms_type a DBMS type definition
      * @returns a #GdaDataHandler, or %NULL
      */
-    get_data_handler_default(cnc: Connection | null, type: GObject.GType, dbms_type: string | null): DataHandler
+    get_data_handler_default(cnc: Connection | null, type: GObject.GType, dbms_type: string): DataHandler
     /**
      * Find a #GdaDataHandler object to manipulate data of type `for_type`. The returned object must not be modified.
      * @param cnc a #GdaConnection object, or %NULL
@@ -8066,19 +8066,19 @@ export interface ServerProvider {
      * Get the name (identifier) of the provider
      * @returns a string containing the provider's name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the version of the database to which the connection is opened.
      * @param cnc a #GdaConnection object
      * @returns a (read only) string, or %NULL if an error occurred
      */
-    get_server_version(cnc: Connection): string | null
+    get_server_version(cnc: Connection): string
     /**
      * Get the version of the provider.
      * @returns a string containing the version identification.
      */
-    get_version(): string | null
-    handler_declare(dh: DataHandler, cnc: Connection, g_type: GObject.GType, dbms_type: string | null): void
+    get_version(): string
+    handler_declare(dh: DataHandler, cnc: Connection, g_type: GObject.GType, dbms_type: string): void
     /**
      * Reserved to database provider's implementations: get the #GdaDataHandler associated to `prov`
      * for connection `cnc`. You probably want to use gda_server_provider_get_data_handler_g_type().
@@ -8142,7 +8142,7 @@ export interface ServerProvider {
      * @param dbms_type place to get the actual database type used if the conversion succeeded, or %NULL
      * @returns a new #GValue, or %NULL
      */
-    string_to_value(cnc: Connection | null, string: string | null, preferred_type: GObject.GType, dbms_type: string | null): any
+    string_to_value(cnc: Connection | null, string: string, preferred_type: GObject.GType, dbms_type: string | null): any
     /**
      * Tests if a feature is supported
      * @param cnc a #GdaConnection object, or %NULL
@@ -8165,7 +8165,7 @@ export interface ServerProvider {
      * @param str a string to escape
      * @returns a new string
      */
-    unescape_string(cnc: Connection | null, str: string | null): string | null
+    unescape_string(cnc: Connection | null, str: string): string | null
     /**
      * Produces a fully quoted and escaped string from a GValue
      * @param cnc a #GdaConnection object, or %NULL
@@ -8176,11 +8176,11 @@ export interface ServerProvider {
 
     // Own virtual methods of Gda-5.0.Gda.ServerProvider
 
-    vfunc_add_savepoint(cnc: Connection, name: string | null): boolean
-    vfunc_begin_transaction(cnc: Connection, name: string | null, level: TransactionIsolation): boolean
+    vfunc_add_savepoint(cnc: Connection, name: string): boolean
+    vfunc_begin_transaction(cnc: Connection, name: string, level: TransactionIsolation): boolean
     vfunc_cancel(cnc: Connection, task_id: number): boolean
     vfunc_close_connection(cnc: Connection): boolean
-    vfunc_commit_transaction(cnc: Connection, name: string | null): boolean
+    vfunc_commit_transaction(cnc: Connection, name: string): boolean
     /**
      * Creates a new #GdaServerOperation object which can be modified in order to perform the `type` type of
      * action. The `options` can contain:
@@ -8206,7 +8206,7 @@ export interface ServerProvider {
      * @returns a new #GdaSqlParser object, or %NULL.
      */
     vfunc_create_parser(cnc: Connection | null): SqlParser
-    vfunc_delete_savepoint(cnc: Connection, name: string | null): boolean
+    vfunc_delete_savepoint(cnc: Connection, name: string): boolean
     /**
      * Escapes `str` for use within an SQL command (to avoid SQL injection attacks). Note that the returned value still needs
      * to be enclosed in single quotes before being used in an SQL statement.
@@ -8215,30 +8215,30 @@ export interface ServerProvider {
      * @param str a string to escape
      * @returns a new string suitable to use in SQL statements
      */
-    vfunc_escape_string(cnc: Connection | null, str: string | null): string | null
-    vfunc_get_database(cnc: Connection): string | null
-    vfunc_get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string | null
+    vfunc_escape_string(cnc: Connection | null, str: string): string | null
+    vfunc_get_database(cnc: Connection): string
+    vfunc_get_def_dbms_type(cnc: Connection, g_type: GObject.GType): string
     /**
      * Get the name (identifier) of the provider
      * @virtual 
      * @returns a string containing the provider's name
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Get the version of the database to which the connection is opened.
      * @virtual 
      * @param cnc a #GdaConnection object
      * @returns a (read only) string, or %NULL if an error occurred
      */
-    vfunc_get_server_version(cnc: Connection): string | null
+    vfunc_get_server_version(cnc: Connection): string
     /**
      * Get the version of the provider.
      * @virtual 
      * @returns a string containing the version identification.
      */
-    vfunc_get_version(): string | null
+    vfunc_get_version(): string
     vfunc_handle_async(cnc: Connection): boolean
-    vfunc_identifier_quote(cnc: Connection, id: string | null, for_meta_store: boolean, force_quotes: boolean): string | null
+    vfunc_identifier_quote(cnc: Connection, id: string, for_meta_store: boolean, force_quotes: boolean): string | null
     vfunc_is_busy(cnc: Connection): boolean
     /**
      * Creates an SQL statement (possibly using some specific extensions of the DBMS) corresponding to the
@@ -8252,8 +8252,8 @@ export interface ServerProvider {
      * @returns a new string, or %NULL if an error occurred or operation cannot be rendered as SQL.
      */
     vfunc_render_operation(cnc: Connection | null, op: ServerOperation): string | null
-    vfunc_rollback_savepoint(cnc: Connection, name: string | null): boolean
-    vfunc_rollback_transaction(cnc: Connection, name: string | null): boolean
+    vfunc_rollback_savepoint(cnc: Connection, name: string): boolean
+    vfunc_rollback_transaction(cnc: Connection, name: string): boolean
     vfunc_statement_prepare(cnc: Connection, stmt: Statement): boolean
     /**
      * Tests if a feature is supported
@@ -8280,7 +8280,7 @@ export interface ServerProvider {
      * @param str a string to escape
      * @returns a new string
      */
-    vfunc_unescape_string(cnc: Connection | null, str: string | null): string | null
+    vfunc_unescape_string(cnc: Connection | null, str: string): string | null
 
     // Class property signals of Gda-5.0.Gda.ServerProvider
 
@@ -8311,7 +8311,7 @@ export class ServerProvider extends GObject.Object {
      * @param filename name of the file to load
      * @returns a new string containing @filename's contents, or %NULL if not found or if an error occurred
      */
-    static load_file_contents(inst_dir: string | null, data_dir: string | null, filename: string | null): string | null
+    static load_file_contents(inst_dir: string, data_dir: string, filename: string): string | null
 }
 
 export module Set {
@@ -8468,13 +8468,13 @@ export interface Set {
      * @param holder_id the ID of the requested value holder
      * @returns the requested #GdaHolder or %NULL
      */
-    get_holder(holder_id: string | null): Holder
+    get_holder(holder_id: string): Holder
     /**
      * Get the value of the #GdaHolder which ID is `holder_id`
      * @param holder_id the ID of the holder to set the value
      * @returns the requested GValue, or %NULL (see gda_holder_get_value())
      */
-    get_holder_value(holder_id: string | null): any | null
+    get_holder_value(holder_id: string): any | null
     /**
      * Finds a #GdaSetNode holding information for `holder,` don't modify the returned structure
      * @param holder a #GdaHolder object
@@ -8536,7 +8536,7 @@ export interface Set {
 
     // Own virtual methods of Gda-5.0.Gda.Set
 
-    vfunc_holder_attr_changed(holder: Holder, attr_name: string | null, attr_value: any): void
+    vfunc_holder_attr_changed(holder: Holder, attr_name: string, attr_value: any): void
     vfunc_holder_changed(holder: Holder): void
     vfunc_holder_type_set(holder: Holder): void
     vfunc_public_data_changed(): void
@@ -8631,7 +8631,7 @@ export class Set extends GObject.Object {
      * @param xml_spec a string
      * @returns a new object, or %NULL if an error occurred
      */
-    static new_from_spec_string(xml_spec: string | null): Set
+    static new_from_spec_string(xml_spec: string): Set
     /**
      * Creates a new #GdaSet like gda_set_new(), but does not allow modifications to any of the #GdaHolder
      * object in `holders`. This function is used for Libgda's database providers' implementation.
@@ -8729,7 +8729,7 @@ export interface SqlBuilder {
      * @param table_name a table name, or %NULL
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    add_field_id(field_name: string | null, table_name: string | null): SqlBuilderId
+    add_field_id(field_name: string, table_name: string | null): SqlBuilderId
     /**
      * Valid only for: INSERT, UPDATE statements.
      * 
@@ -8738,7 +8738,7 @@ export interface SqlBuilder {
      * @param field_name a field name
      * @param value value to set the field to, or %NULL or a GDA_TYPE_NULL value to represent an SQL NULL
      */
-    add_field_value_as_gvalue(field_name: string | null, value: any | null): void
+    add_field_value_as_gvalue(field_name: string, value: any | null): void
     /**
      * Valid only for: INSERT, UPDATE, SELECT statements
      * <itemizedlist>
@@ -8764,7 +8764,7 @@ export interface SqlBuilder {
      * @param args an array of IDs representing the function's arguments
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    add_function(func_name: string | null, args: SqlBuilderId[]): SqlBuilderId
+    add_function(func_name: string, args: SqlBuilderId[]): SqlBuilderId
     /**
      * Defines an expression representing an identifier in `builder,`
      * which may be reused to build other parts of a statement,
@@ -8790,7 +8790,7 @@ export interface SqlBuilder {
      * @param str a string
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    add_id(str: string | null): SqlBuilderId
+    add_id(str: string): SqlBuilderId
     /**
      * Defines a parameter in `builder` which may be reused to build other parts of a statement.
      * 
@@ -8810,7 +8810,7 @@ export interface SqlBuilder {
      * @param nullok TRUE if the parameter can be set to %NULL
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    add_param(param_name: string | null, type: GObject.GType, nullok: boolean): SqlBuilderId
+    add_param(param_name: string, type: GObject.GType, nullok: boolean): SqlBuilderId
     /**
      * Add a sub select to a COMPOUND statement
      * @param subselect a #GdaSqlBuilder, which has to be a SELECT or compound SELECT. This will be copied.
@@ -8839,7 +8839,7 @@ export interface SqlBuilder {
      * @param join_id the ID of the join to modify (not %0)
      * @param field_name the name of the field to use in the join condition (not %NULL)
      */
-    join_add_field(join_id: SqlBuilderId, field_name: string | null): void
+    join_add_field(join_id: SqlBuilderId, field_name: string): void
     /**
      * Valid only for: SELECT statements.
      * 
@@ -8851,14 +8851,14 @@ export interface SqlBuilder {
      * @param alias an alias (eg. for the "AS" clause), or %NULL
      * @returns the ID of the added field, or %0 if there was an error
      */
-    select_add_field(field_name: string | null, table_name: string | null, alias: string | null): SqlBuilderId
+    select_add_field(field_name: string, table_name: string | null, alias: string | null): SqlBuilderId
     /**
      * Adds a new target to a SELECT statement
      * @param table_name the name of the target table
      * @param alias the alias to give to the target, or %NULL
      * @returns the ID of the new target, or %0 if there was an error
      */
-    select_add_target(table_name: string | null, alias: string | null): SqlBuilderId
+    select_add_target(table_name: string, alias: string | null): SqlBuilderId
     /**
      * Adds a new target to a SELECT statement. If there already exists a target representing
      * the same table and the same alias (or with the same absence of alias) then the same target
@@ -8918,7 +8918,7 @@ export interface SqlBuilder {
      * Sets the name of the table on which the built statement operates.
      * @param table_name a table name
      */
-    set_table(table_name: string | null): void
+    set_table(table_name: string): void
     /**
      * Valid only for: UPDATE, DELETE, SELECT statements
      * 
@@ -9010,7 +9010,7 @@ export interface SqlParser extends Lockable {
      * @param filename name of the file to parse
      * @returns a new #GdaBatch object, or %NULL if an error occurred
      */
-    parse_file_as_batch(filename: string | null): Batch | null
+    parse_file_as_batch(filename: string): Batch | null
     /**
      * Parses `sql` and creates a #GdaStatement statement from the first SQL statement contained in `sql:` if `sql`
      * contains more than one statement, then the remaining part of the string is not parsed at all, and `remain` (if
@@ -9021,7 +9021,7 @@ export interface SqlParser extends Lockable {
      * @param sql the SQL string to parse
      * @returns a new #GdaStatement object, or %NULL if an error occurred
      */
-    parse_string(sql: string | null): [ /* returnType */ Statement | null, /* remain */ string | null ]
+    parse_string(sql: string): [ /* returnType */ Statement | null, /* remain */ string ]
     /**
      * Parse `sql` and creates a #GdaBatch object which contains all the #GdaStatement objects created while parsing (one object
      * per SQL statement). Empty statements (composed of spaces only) do not appear in the resulting object.
@@ -9037,7 +9037,7 @@ export interface SqlParser extends Lockable {
      * @param sql the SQL string to parse
      * @returns a new #GdaBatch object, or %NULL if an error occurred
      */
-    parse_string_as_batch(sql: string | null): [ /* returnType */ Batch | null, /* remain */ string | null ]
+    parse_string_as_batch(sql: string): [ /* returnType */ Batch | null, /* remain */ string ]
     set_overflow_error(): void
     set_syntax_error(): void
 
@@ -9311,7 +9311,7 @@ export interface ThreadWrapper {
      * @param callback a #GdaThreadWrapperCallback function
      * @returns the handler ID
      */
-    connect_raw(instance: any | null, sig_name: string | null, private_thread: boolean, private_job: boolean, callback: ThreadWrapperCallback): number
+    connect_raw(instance: any | null, sig_name: string, private_thread: boolean, private_job: boolean, callback: ThreadWrapperCallback): number
     /**
      * Disconnects the emission of a signal, does the opposite of gda_thread_wrapper_connect_raw().
      * 
@@ -9475,7 +9475,7 @@ export interface TransactionStatus {
 
     // Owm methods of Gda-5.0.Gda.TransactionStatus
 
-    find(str: string | null, destev: TransactionStatusEvent): TransactionStatus | null
+    find(str: string, destev: TransactionStatusEvent): TransactionStatus | null
     /**
      * Find a pointer to the "current" _unnamed_ transaction, which is the last
      * transaction if there are several nested transactions
@@ -9510,7 +9510,7 @@ export class TransactionStatus extends GObject.Object {
      * @param name name for the transaction
      * @returns the newly created object.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Creates a new #GdaTransactionStatus object, which allows a fine-tune and
      * full control of transactions to be used with providers.
@@ -9518,7 +9518,7 @@ export class TransactionStatus extends GObject.Object {
      * @param name name for the transaction
      * @returns the newly created object.
      */
-    static new(name: string | null): TransactionStatus
+    static new(name: string): TransactionStatus
     _init(config?: TransactionStatus.ConstructorProperties): void
 }
 
@@ -9603,7 +9603,7 @@ export interface Tree {
      * @param use_names if %TRUE, then `tree_path` will be interpreted as a unix style path, and if %FALSE,             then `tree_path` will be interpreted similarly to the #GtkTreePath's string representation.
      * @returns the requested #GdaTreeNode pointer, or %NULL if not found
      */
-    get_node(tree_path: string | null, use_names: boolean): TreeNode | null
+    get_node(tree_path: string, use_names: boolean): TreeNode | null
     /**
      * Get the #GdaTreeManager which created `node` in `tree`
      * @param node a #GdaTreeNode present in `tree`
@@ -9632,7 +9632,7 @@ export interface Tree {
      * @param value a #GValue, or %NULL
      * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
-    set_attribute(attribute: string | null, value: any, destroy: GLib.DestroyNotify): void
+    set_attribute(attribute: string, value: any, destroy: GLib.DestroyNotify): void
     /**
      * Requests that `tree` be populated with nodes. If an error occurs, then `tree'`s contents is left
      * unchanged, and otherwise `tree'`s previous contents is completely replaced by the new one.
@@ -9656,7 +9656,7 @@ export interface Tree {
     // Own virtual methods of Gda-5.0.Gda.Tree
 
     vfunc_node_changed(node: TreeNode): void
-    vfunc_node_deleted(node_path: string | null): void
+    vfunc_node_deleted(node_path: string): void
     vfunc_node_has_child_toggled(node: TreeNode): void
     vfunc_node_inserted(node: TreeNode): void
 
@@ -9783,7 +9783,7 @@ export interface TreeManager {
      * @param attribute an attribute name
      * @param value the attribute's value, or %NULL
      */
-    add_new_node_attribute(attribute: string | null, value: any | null): void
+    add_new_node_attribute(attribute: string, value: any | null): void
     /**
      * Requests that `manager` creates a new #GdaTreeNode. The new node is not in any
      * way linked to `manager` yet, consider this method as a #GdaTreeNode factory.
@@ -9954,7 +9954,7 @@ export class TreeMgrColumns extends TreeManager {
      * @param table_name the name of the table
      * @returns a new #GdaTreeManager object
      */
-    constructor(cnc: Connection, schema: string | null, table_name: string | null) 
+    constructor(cnc: Connection, schema: string, table_name: string) 
     /**
      * Creates a new #GdaTreeManager object which will add one tree node for each
      * column in the table named `table_name` in the `schema` schema.
@@ -9964,7 +9964,7 @@ export class TreeMgrColumns extends TreeManager {
      * @param table_name the name of the table
      * @returns a new #GdaTreeManager object
      */
-    static new(cnc: Connection, schema: string | null, table_name: string | null): TreeMgrColumns
+    static new(cnc: Connection, schema: string, table_name: string): TreeMgrColumns
     _init(config?: TreeMgrColumns.ConstructorProperties): void
 }
 
@@ -10025,14 +10025,14 @@ export class TreeMgrLabel extends TreeManager {
      * @param label a label string
      * @returns a new #GdaTreeManager object
      */
-    constructor(label: string | null) 
+    constructor(label: string) 
     /**
      * Creates a new #GdaTreeManager object which will add one tree node labelled `label`
      * @constructor 
      * @param label a label string
      * @returns a new #GdaTreeManager object
      */
-    static new(label: string | null): TreeMgrLabel
+    static new(label: string): TreeMgrLabel
     _init(config?: TreeMgrLabel.ConstructorProperties): void
 }
 
@@ -10493,7 +10493,7 @@ export interface TreeNode {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @node
      */
-    fetch_attribute(attribute: string | null): any
+    fetch_attribute(attribute: string): any
     /**
      * Get the #GdaTreeNode child of `node` at position `index` (starting at 0).
      * @param index a index
@@ -10505,7 +10505,7 @@ export interface TreeNode {
      * @param name requested node's name
      * @returns the #GdaTreeNode, or %NULL if not found
      */
-    get_child_name(name: string | null): TreeNode
+    get_child_name(name: string): TreeNode
     /**
      * Get a list of all `node'`s children, free it with g_slist_free() after usage
      * @returns a new #GSList of #GdaTreeNode objects, or %NULL if @node does not have any child
@@ -10521,7 +10521,7 @@ export interface TreeNode {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @node
      */
-    get_node_attribute(attribute: string | null): any
+    get_node_attribute(attribute: string): any
     /**
      * Get the #GdaTreeNode parent of `node` in the #GdaTree node belongs to. If `node` is at the top level,
      * then this method return %NULL.
@@ -10550,14 +10550,14 @@ export interface TreeNode {
      * @param value a #GValue, or %NULL
      * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
-    set_node_attribute(attribute: string | null, value: any | null, destroy: GLib.DestroyNotify): void
+    set_node_attribute(attribute: string, value: any | null, destroy: GLib.DestroyNotify): void
 
     // Own virtual methods of Gda-5.0.Gda.TreeNode
 
-    vfunc_dump_children(prefix: string | null, in_string: GLib.String): void
+    vfunc_dump_children(prefix: string, in_string: GLib.String): void
     vfunc_dump_header(): string | null
     vfunc_node_changed(node: TreeNode): void
-    vfunc_node_deleted(relative_path: string | null): void
+    vfunc_node_deleted(relative_path: string): void
     vfunc_node_has_child_toggled(node: TreeNode): void
     vfunc_node_inserted(node: TreeNode): void
 
@@ -10696,7 +10696,7 @@ export interface XaTransaction {
      * @param branch the branch qualifier
      * @returns %TRUE if no error occurred
      */
-    register_connection(cnc: Connection, branch: string | null): boolean
+    register_connection(cnc: Connection, branch: string): boolean
     /**
      * Cancels a distributed transaction (managed by `xa_trans)`.
      * @returns %TRUE if no error occurred
@@ -10741,7 +10741,7 @@ export class XaTransaction extends GObject.Object {
      * @param global_transaction_id the global transaction ID
      * @returns the newly created object.
      */
-    constructor(format: number, global_transaction_id: string | null) 
+    constructor(format: number, global_transaction_id: string) 
     /**
      * Creates a new #GdaXaTransaction object, which will control the process of
      * performing a distributed transaction across several connections.
@@ -10750,7 +10750,7 @@ export class XaTransaction extends GObject.Object {
      * @param global_transaction_id the global transaction ID
      * @returns the newly created object.
      */
-    static new(format: number, global_transaction_id: string | null): XaTransaction
+    static new(format: number, global_transaction_id: string): XaTransaction
     _init(config?: XaTransaction.ConstructorProperties): void
     static error_quark(): GLib.Quark
 }
@@ -10762,9 +10762,9 @@ export interface AttributesManager {
     clear(ptr: any | null): void
     foreach(ptr: any | null, func: AttributesManagerFunc): void
     free(): void
-    get(ptr: any | null, att_name: string | null): any
-    set(ptr: any | null, att_name: string | null, value: any): void
-    set_full(ptr: any | null, att_name: string | null, value: any, destroy: GLib.DestroyNotify): void
+    get(ptr: any | null, att_name: string): any
+    set(ptr: any | null, att_name: string, value: any): void
+    set_full(ptr: any | null, att_name: string, value: any, destroy: GLib.DestroyNotify): void
 }
 
 export class AttributesManager {
@@ -10937,7 +10937,7 @@ export interface ColumnClass {
     // Own fields of Gda-5.0.Gda.ColumnClass
 
     parent_class: GObject.ObjectClass
-    name_changed: (column: Column, old_name: string | null) => void
+    name_changed: (column: Column, old_name: string) => void
     g_type_changed: (column: Column, old_type: GObject.GType, new_type: GObject.GType) => void
 }
 
@@ -11100,7 +11100,7 @@ export interface DataHandlerIface {
     get_value_from_str: (dh: DataHandler, str: string | null, type: GObject.GType) => any
     get_sane_init_value: (dh: DataHandler, type: GObject.GType) => any | null
     accepts_g_type: (dh: DataHandler, type: GObject.GType) => boolean
-    get_descr: (dh: DataHandler) => string | null
+    get_descr: (dh: DataHandler) => string
 }
 
 export abstract class DataHandlerIface {
@@ -11620,7 +11620,7 @@ export interface HolderClass {
     changed: (holder: Holder) => void
     source_changed: (holder: Holder) => void
     validate_change: (holder: Holder, new_value: any) => GLib.Error
-    att_changed: (holder: Holder, att_name: string | null, att_value: any) => void
+    att_changed: (holder: Holder, att_name: string, att_value: any) => void
 }
 
 export abstract class HolderClass {
@@ -11703,7 +11703,7 @@ export interface MetaContext {
      * Get table's name to used in the context.
      * @returns A string with the table's name used in the context.
      */
-    get_table(): string | null
+    get_table(): string
     /**
      * Sets a new column/value pair to the given context `ctx`. Column, must be a column in the given table's
      * name setted by #gda_meta_context_set_table () (a table in the <link linkend="information_schema">database
@@ -11714,7 +11714,7 @@ export interface MetaContext {
      * @param value the column's value
      * @param cnc a #GdaConnection to be used when identifier are normalized, or NULL
      */
-    set_column(column: string | null, value: any, cnc: Connection | null): void
+    set_column(column: string, value: any, cnc: Connection | null): void
     /**
      * Set columns to use in the context. The #GHashTable use column's name as key and a #GValue as value,
      * to represent its value.
@@ -11730,7 +11730,7 @@ export interface MetaContext {
      * about database's tables.
      * @param table a string with the table's name to use in context
      */
-    set_table(table: string | null): void
+    set_table(table: string): void
 }
 
 /**
@@ -12014,7 +12014,7 @@ export interface MetaTableColumn {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @column
      */
-    get_attribute(attribute: string | null): any
+    get_attribute(attribute: string): any
     /**
      * Set the value associated to a named attribute.
      * 
@@ -12028,7 +12028,7 @@ export interface MetaTableColumn {
      * @param value a #GValue, or %NULL
      * @param destroy function called when `attribute` has to be freed, or %NULL
      */
-    set_attribute(attribute: string | null, value: any | null, destroy: GLib.DestroyNotify | null): void
+    set_attribute(attribute: string, value: any | null, destroy: GLib.DestroyNotify | null): void
 }
 
 /**
@@ -12186,7 +12186,7 @@ export interface Numeric {
      * Sets `numeric` with a number represented by `str,` in the C locale format (dot as a fraction separator).
      * @param str a string representing a number, in the C locale format
      */
-    set_from_string(str: string | null): void
+    set_from_string(str: string): void
     /**
      * Sets the precision of a #GdaNumeric.
      * @param precision a #glong
@@ -12313,7 +12313,7 @@ export interface QuarkList {
      * @param string a string.
      * @param cleanup whether to cleanup the previous content or not.
      */
-    add_from_string(string: string | null, cleanup: boolean): void
+    add_from_string(string: string, cleanup: boolean): void
     /**
      * Removes all strings in the given #GdaQuarkList.
      */
@@ -12330,7 +12330,7 @@ export interface QuarkList {
      * @param name the name of the value to search for.
      * @returns the value associated with the given key if found, or %NULL if not found.
      */
-    find(name: string | null): string | null
+    find(name: string): string
     /**
      * Calls the given function for each of the key/value pairs in `qlist`. The function is passed the key and value
      * of each pair, and the given user_data parameter. `qlist` may not be modified while iterating over it.
@@ -12350,7 +12350,7 @@ export interface QuarkList {
      * Removes an entry from the #GdaQuarkList, given its name.
      * @param name an entry name.
      */
-    remove(name: string | null): void
+    remove(name: string): void
 }
 
 export class QuarkList {
@@ -12393,7 +12393,7 @@ export class QuarkList {
      * @param string a string.
      * @returns the newly created #GdaQuarkList. Free-function: gda_quark_list_free
      */
-    static new_from_string(string: string | null): QuarkList
+    static new_from_string(string: string): QuarkList
 }
 
 export interface RepetitiveStatementClass {
@@ -12439,8 +12439,8 @@ export interface ServerOperationClass {
     // Own fields of Gda-5.0.Gda.ServerOperationClass
 
     parent_class: GObject.ObjectClass
-    seq_item_added: (op: ServerOperation, seq_path: string | null, item_index: number) => void
-    seq_item_remove: (op: ServerOperation, seq_path: string | null, item_index: number) => void
+    seq_item_added: (op: ServerOperation, seq_path: string, item_index: number) => void
+    seq_item_remove: (op: ServerOperation, seq_path: string, item_index: number) => void
 }
 
 export abstract class ServerOperationClass {
@@ -12486,31 +12486,31 @@ export interface ServerProviderClass {
 
     parent_class: GObject.ObjectClass
     limiting_thread: GLib.Thread
-    get_name: (provider: ServerProvider) => string | null
-    get_version: (provider: ServerProvider) => string | null
-    get_server_version: (provider: ServerProvider, cnc: Connection) => string | null
+    get_name: (provider: ServerProvider) => string
+    get_version: (provider: ServerProvider) => string
+    get_server_version: (provider: ServerProvider, cnc: Connection) => string
     supports_feature: (provider: ServerProvider, cnc: Connection | null, feature: ConnectionFeature) => boolean
-    get_def_dbms_type: (provider: ServerProvider, cnc: Connection, g_type: GObject.GType) => string | null
-    escape_string: (provider: ServerProvider, cnc: Connection | null, str: string | null) => string | null
-    unescape_string: (provider: ServerProvider, cnc: Connection | null, str: string | null) => string | null
+    get_def_dbms_type: (provider: ServerProvider, cnc: Connection, g_type: GObject.GType) => string
+    escape_string: (provider: ServerProvider, cnc: Connection | null, str: string) => string | null
+    unescape_string: (provider: ServerProvider, cnc: Connection | null, str: string) => string | null
     close_connection: (provider: ServerProvider, cnc: Connection) => boolean
-    get_database: (provider: ServerProvider, cnc: Connection) => string | null
+    get_database: (provider: ServerProvider, cnc: Connection) => string
     supports_operation: (provider: ServerProvider, cnc: Connection | null, type: ServerOperationType, options: Set | null) => boolean
     create_operation: (provider: ServerProvider, cnc: Connection | null, type: ServerOperationType, options: Set | null) => ServerOperation | null
     render_operation: (provider: ServerProvider, cnc: Connection | null, op: ServerOperation) => string | null
-    begin_transaction: (provider: ServerProvider, cnc: Connection, name: string | null, level: TransactionIsolation) => boolean
-    commit_transaction: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    rollback_transaction: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    add_savepoint: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    rollback_savepoint: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    delete_savepoint: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
+    begin_transaction: (provider: ServerProvider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
+    commit_transaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    rollback_transaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    add_savepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    rollback_savepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    delete_savepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
     create_parser: (provider: ServerProvider, cnc: Connection | null) => SqlParser
     statement_prepare: (provider: ServerProvider, cnc: Connection, stmt: Statement) => boolean
     is_busy: (provider: ServerProvider, cnc: Connection) => boolean
     cancel: (provider: ServerProvider, cnc: Connection, task_id: number) => boolean
     meta_funcs: ServerProviderMeta
     xa_funcs: ServerProviderXa
-    identifier_quote: (provider: ServerProvider, cnc: Connection, id: string | null, for_meta_store: boolean, force_quotes: boolean) => string | null
+    identifier_quote: (provider: ServerProvider, cnc: Connection, id: string, for_meta_store: boolean, force_quotes: boolean) => string | null
     handle_async: (provider: ServerProvider, cnc: Connection) => boolean
 }
 
@@ -12629,7 +12629,7 @@ export interface SetClass {
     validate_holder_change: (set: Set, holder: Holder, new_value: any) => GLib.Error
     validate_set: (set: Set) => GLib.Error
     holder_changed: (set: Set, holder: Holder) => void
-    holder_attr_changed: (set: Set, holder: Holder, attr_name: string | null, attr_value: any) => void
+    holder_attr_changed: (set: Set, holder: Holder, attr_name: string, attr_value: any) => void
     public_data_changed: (set: Set) => void
     holder_type_set: (set: Set, holder: Holder) => void
     source_model_changed: (set: Set, source: SetSource) => void
@@ -13163,8 +13163,8 @@ export class SqlOperation {
 
     // Constructors of Gda-5.0.Gda.SqlOperation
 
-    static operator_from_string(op: string | null): SqlOperatorType
-    static operator_to_string(op: SqlOperatorType): string | null
+    static operator_from_string(op: string): SqlOperatorType
+    static operator_to_string(op: SqlOperatorType): string
 }
 
 export interface SqlParserClass {
@@ -13402,7 +13402,7 @@ export class SqlSelectJoin {
 
     // Constructors of Gda-5.0.Gda.SqlSelectJoin
 
-    static type_to_string(type: SqlSelectJoinType): string | null
+    static type_to_string(type: SqlSelectJoinType): string
 }
 
 export interface SqlSelectOrder {
@@ -13952,7 +13952,7 @@ export interface TreeClass {
     node_changed: (tree: Tree, node: TreeNode) => void
     node_inserted: (tree: Tree, node: TreeNode) => void
     node_has_child_toggled: (tree: Tree, node: TreeNode) => void
-    node_deleted: (tree: Tree, node_path: string | null) => void
+    node_deleted: (tree: Tree, node_path: string) => void
 }
 
 export abstract class TreeClass {
@@ -14138,9 +14138,9 @@ export interface TreeNodeClass {
     node_changed: (reporting: TreeNode, node: TreeNode) => void
     node_inserted: (reporting: TreeNode, node: TreeNode) => void
     node_has_child_toggled: (reporting: TreeNode, node: TreeNode) => void
-    node_deleted: (reporting: TreeNode, relative_path: string | null) => void
+    node_deleted: (reporting: TreeNode, relative_path: string) => void
     dump_header: (node: TreeNode) => string | null
-    dump_children: (node: TreeNode, prefix: string | null, in_string: GLib.String) => void
+    dump_children: (node: TreeNode, prefix: string, in_string: GLib.String) => void
 }
 
 export abstract class TreeNodeClass {

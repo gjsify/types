@@ -51,13 +51,13 @@ export interface Frame extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -70,13 +70,13 @@ export interface Frame extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * gtkrc file. You can apply a style to widgets with a particular name
@@ -87,7 +87,7 @@ export interface Frame extends Atk.ImplementorIface, Gtk.Buildable {
      * gtk_widget_path()), so names with embedded periods may cause confusion.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -96,7 +96,7 @@ export interface Frame extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Destroys a widget. Equivalent to gtk_object_destroy(), except that
      * you don't have to cast the widget to #GtkObject. When a widget is
@@ -291,7 +291,7 @@ export class Frame extends Gtk.Frame {
      * @param label the text to use as the label of the frame
      * @returns a new #GtkFrame widget
      */
-    static new(label: string | null): Gtk.Frame
+    static new(label: string): Gtk.Frame
     _init(config?: Frame.ConstructorProperties): void
 }
 
@@ -349,13 +349,13 @@ export interface LightSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -368,13 +368,13 @@ export interface LightSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * gtkrc file. You can apply a style to widgets with a particular name
@@ -385,7 +385,7 @@ export interface LightSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * gtk_widget_path()), so names with embedded periods may cause confusion.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -394,7 +394,7 @@ export interface LightSwitch extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Destroys a widget. Equivalent to gtk_object_destroy(), except that
      * you don't have to cast the widget to #GtkObject. When a widget is

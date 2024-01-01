@@ -238,7 +238,7 @@ export enum Type {
 /**
  * A convenience value used to select the first device regardless of its address.
  */
-export const CHOOSER_COMBO_FIRST_DEVICE: string | null
+export const CHOOSER_COMBO_FIRST_DEVICE: string
 /**
  * Use this value to select any Bluetooth audio device where a #BluetoothType enum is required.
  */
@@ -283,26 +283,26 @@ export function classToType(class_: number): Type
  * @param address Remote device to use
  * @param alias Remote device's name
  */
-export function sendToAddress(address: string | null, alias: string | null): void
+export function sendToAddress(address: string, alias: string): void
 /**
  * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
  * The returned string is already translated with gettext().
  * @param type a #BluetoothType
  * @returns a string.
  */
-export function typeToString(type: number): string | null
+export function typeToString(type: number): string
 /**
  * Returns a string representing a human-readable (but not usable for display to users) version of the `uuid`. Do not free the return value.
  * @param uuid a string representing a Bluetooth UUID
  * @returns a string.
  */
-export function uuidToString(uuid: string | null): string | null
+export function uuidToString(uuid: string): string
 /**
  * Returns whether the string is a valid Bluetooth address. This does not contact the device in any way.
  * @param bdaddr a string representing a Bluetooth address
  * @returns %TRUE if the address is valid, %FALSE if not.
  */
-export function verifyAddress(bdaddr: string | null): boolean
+export function verifyAddress(bdaddr: string): boolean
 export module Chooser {
 
     // Signal callback interfaces
@@ -393,7 +393,7 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param value An empty #GValue to set.
      * @returns %TRUE if the @value has been set.
      */
-    getSelectedDeviceInfo(field: string | null, value: any): boolean
+    getSelectedDeviceInfo(field: string, value: any): boolean
     /**
      * Returns whether the selected device is connected to this computer.
      * @returns whether the selected device is connected to this computer, will always be %FALSE if no devices are selected.
@@ -433,13 +433,13 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -452,13 +452,13 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -471,7 +471,7 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -480,7 +480,7 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -492,7 +492,7 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -523,8 +523,8 @@ export interface Chooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
 
     // Own virtual methods of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
-    selectedDeviceActivated(address: string | null): void
-    selectedDeviceChanged(address: string | null): void
+    selectedDeviceActivated(address: string): void
+    selectedDeviceChanged(address: string): void
 
     // Own signals of GnomeBluetooth-1.0.GnomeBluetooth.Chooser
 
@@ -969,7 +969,7 @@ export interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -990,7 +990,7 @@ export interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1003,7 +1003,7 @@ export interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -1013,7 +1013,7 @@ export interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1026,7 +1026,7 @@ export interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1035,13 +1035,13 @@ export interface ChooserButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of GnomeBluetooth-1.0.GnomeBluetooth.ChooserButton
 
@@ -1440,13 +1440,13 @@ export interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1459,13 +1459,13 @@ export interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1478,7 +1478,7 @@ export interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1487,7 +1487,7 @@ export interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1499,7 +1499,7 @@ export interface ChooserCombo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1906,7 +1906,7 @@ export interface Client {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the connection is complete
      */
-    connectService(path: string | null, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    connectService(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the connection operation. See bluetooth_client_connect_service().
      * @param res a #GAsyncResult
@@ -2072,13 +2072,13 @@ export interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2091,13 +2091,13 @@ export interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2110,7 +2110,7 @@ export interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2119,7 +2119,7 @@ export interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2131,7 +2131,7 @@ export interface FilterWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2517,13 +2517,13 @@ export interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2536,13 +2536,13 @@ export interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2555,7 +2555,7 @@ export interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2564,7 +2564,7 @@ export interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2576,7 +2576,7 @@ export interface SettingsWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2923,8 +2923,8 @@ export interface ChooserClass {
     // Own fields of GnomeBluetooth-1.0.GnomeBluetooth.ChooserClass
 
     parentClass: Gtk.BoxClass
-    selectedDeviceChanged: (chooser: Chooser, address: string | null) => void
-    selectedDeviceActivated: (chooser: Chooser, address: string | null) => void
+    selectedDeviceChanged: (chooser: Chooser, address: string) => void
+    selectedDeviceActivated: (chooser: Chooser, address: string) => void
 }
 
 export abstract class ChooserClass {

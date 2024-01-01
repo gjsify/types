@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-coglpango-13)
 
 
-Node.js TypeScript type definitions for CoglPango-13, generated from library version 13.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+Node.js TypeScript type definitions for CoglPango-13, generated from library version 13.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 
 ## Install

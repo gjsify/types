@@ -69,7 +69,7 @@ export interface Discoverer {
      * @param uri URI to gather metadata for
      * @returns TRUE if @uri was successfully queued, FALSE otherwise.
      */
-    discover_uri(uri: string | null): boolean
+    discover_uri(uri: string): boolean
 
     // Overloads of discover_uri
 
@@ -81,13 +81,13 @@ export interface Discoverer {
      * @param uri The URI to run on.
      * @returns the result of the scanning. Can be %NULL if an error occurred.
      */
-    discover_uri(uri: string | null): GstPbutils.DiscovererInfo
+    discover_uri(uri: string): GstPbutils.DiscovererInfo
     /**
      * Synchronously gathers metadata for `uri`.
      * @param uri URI to gather metadata for
      * @returns a #GUPnPDLNAInformation with the metadata for @uri on success, NULL otherwise
      */
-    discover_uri_sync(uri: string | null): Information
+    discover_uri_sync(uri: string): Information
     get_extended_mode(): boolean
     /**
      * Given `name,` this finds the corresponding DLNA profile information (stored
@@ -95,7 +95,7 @@ export interface Discoverer {
      * @param name The name of the DLNA profile to be retrieved
      * @returns a #GUPnPDLNAProfile on success, NULL otherwise.
      */
-    get_profile(name: string | null): Profile
+    get_profile(name: string): Profile
     get_relaxed_mode(): boolean
     /**
      * Retuns a list of the all the DLNA profiles supported by `self`.
@@ -210,8 +210,8 @@ export interface Information {
     // Owm methods of GUPnPDLNA-1.0.GUPnPDLNA.Information
 
     get_info(): GstPbutils.DiscovererInfo
-    get_mime(): string | null
-    get_name(): string | null
+    get_mime(): string
+    get_name(): string
 
     // Class property signals of GUPnPDLNA-1.0.GUPnPDLNA.Information
 
@@ -294,8 +294,8 @@ export interface Profile {
 
     get_encoding_profile(): GstPbutils.EncodingProfile
     get_extended(): boolean
-    get_mime(): string | null
-    get_name(): string | null
+    get_mime(): string
+    get_name(): string
 
     // Class property signals of GUPnPDLNA-1.0.GUPnPDLNA.Profile
 

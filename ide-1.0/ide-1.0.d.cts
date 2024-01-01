@@ -513,13 +513,13 @@ export const BUFFER_LINE_FLAGS_DIAGNOSTICS_MASK: number
 export const BUILD_PHASE_MASK: number
 export const BUILD_PHASE_WHENCE_MASK: number
 export const ENABLE_TRACE: number
-export const FILE_SETTINGS_EXTENSION_POINT: string | null
+export const FILE_SETTINGS_EXTENSION_POINT: string
 export const LANGSERV_COMPLETION_PROVIDER_PRIORITY: number
 export const PREFERENCES_PERSPECTIVE_PRIORITY: number
-export const RECENT_PROJECTS_BOOKMARK_FILENAME: string | null
-export const RECENT_PROJECTS_BUILD_SYSTEM_GROUP_PREFIX: string | null
-export const RECENT_PROJECTS_GROUP: string | null
-export const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string | null
+export const RECENT_PROJECTS_BOOKMARK_FILENAME: string
+export const RECENT_PROJECTS_BUILD_SYSTEM_GROUP_PREFIX: string
+export const RECENT_PROJECTS_GROUP: string
+export const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string
 /**
  * Asynchronously creates a new #IdeBuildSystem instance using the registered
  * #GIOExtensionPoint system. Each extension point will be tried asynchronously
@@ -533,7 +533,7 @@ export const RECENT_PROJECTS_LANGUAGE_GROUP_PREFIX: string | null
  * @param cancellable A #GCancellable
  * @param callback A callback to execute upon completion
  */
-export function build_system_new_async<Z = unknown>(context: Context, project_file: Gio.File, build_system_hint: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+export function build_system_new_async<Z = unknown>(context: Context, project_file: Gio.File, build_system_hint: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of build_system_new_async
 
@@ -552,21 +552,21 @@ export function build_system_new_async<Z = unknown>(context: Context, project_fi
  * @param cancellable A #GCancellable
  * @returns A Promise of: An #IdeBuildSystem if successful; otherwise   %NULL and @error is set.
  */
-export function build_system_new_async<Z = unknown>(context: Context, project_file: Gio.File, build_system_hint: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<BuildSystem>
+export function build_system_new_async<Z = unknown>(context: Context, project_file: Gio.File, build_system_hint: string, cancellable: Gio.Cancellable | null): globalThis.Promise<BuildSystem>
 /**
  * Complete an asynchronous call to ide_build_system_new_async().
  * @param result 
  * @returns An #IdeBuildSystem if successful; otherwise   %NULL and @error is set.
  */
 export function build_system_new_finish(result: Gio.AsyncResult): BuildSystem
-export function build_utils_color_codes_filtering(txt: string | null): string | null
+export function build_utils_color_codes_filtering(txt: string): string | null
 export function completion_provider_context_current_word(context: GtkSource.CompletionContext): string | null
 export function completion_provider_context_in_comment(context: GtkSource.CompletionContext): boolean
 export function completion_provider_context_in_comment_or_string(context: GtkSource.CompletionContext): boolean
 export function device_error_quark(): GLib.Quark
-export function diagnostic_severity_to_string(severity: DiagnosticSeverity): string | null
+export function diagnostic_severity_to_string(severity: DiagnosticSeverity): string
 export function doap_error_quark(): GLib.Quark
-export function flatpak_get_app_path(path: string | null): string | null
+export function flatpak_get_app_path(path: string): string | null
 /**
  * This is just like g_task_return_boolean() except that it enforces
  * that the current stack return to the main context before dispatching
@@ -584,12 +584,12 @@ export function g_task_return_boolean_from_main(task: Gio.Task, value: boolean):
 export function g_task_return_error_from_main(task: Gio.Task, error: GLib.Error): void
 export function g_task_return_int_from_main(task: Gio.Task, value: number): void
 export function g_task_return_pointer_from_main(task: Gio.Task, value: any | null, notify: GLib.DestroyNotify): void
-export function get_program_name(): string | null
+export function get_program_name(): string
 export function get_resource(): Gio.Resource
 export function get_system_arch(): string | null
 export function get_system_page_size(): number
-export function get_system_type(): string | null
-export function gettext(message: string | null): string | null
+export function get_system_type(): string
+export function gettext(message: string): string
 export function icons_get_resource(): Gio.Resource
 /**
  * This function checks to see if the application is running within
@@ -599,7 +599,7 @@ export function icons_get_resource(): Gio.Resource
 export function is_flatpak(): boolean
 export function langserv_decode_completion_kind(kind: number): SymbolKind
 export function langserv_decode_symbol_kind(kind: number): SymbolKind
-export function language_format_header(language: GtkSource.Language, header: string | null): string | null
+export function language_format_header(language: GtkSource.Language, header: string): string | null
 export function log_get_verbosity(): number
 /**
  * Increases the amount of logging that will occur. By default, only
@@ -624,7 +624,7 @@ export function log_increase_verbosity(): void
  * @param stdout_ Indicates logging should be written to stdout.
  * @param filename An optional file in which to store logs.
  */
-export function log_init(stdout_: boolean, filename: string | null): void
+export function log_init(stdout_: boolean, filename: string): void
 export function log_set_verbosity(level: number): void
 /**
  * Cleans up after the logging subsystem.
@@ -639,7 +639,7 @@ export function log_shutdown(): void
  * @param path 
  * @returns A new path, possibly collapsed.
  */
-export function path_collapse(path: string | null): string | null
+export function path_collapse(path: string): string | null
 /**
  * This function will expand various "shell-like" features of the provided
  * path using the POSIX wordexp(3) function. Command substitution will
@@ -647,11 +647,11 @@ export function path_collapse(path: string | null): string | null
  * @param path 
  * @returns A newly allocated string containing the   expansion. A copy of the input string upon failure to expand.
  */
-export function path_expand(path: string | null): string | null
+export function path_expand(path: string): string | null
 export function runtime_error_quark(): GLib.Quark
-export function set_program_name(program_name: string | null): void
-export function source_style_scheme_apply_style(style_scheme: GtkSource.StyleScheme, style: string | null, tag: Gtk.TextTag): boolean
-export function symbol_kind_get_icon_name(kind: SymbolKind): string | null
+export function set_program_name(program_name: string): void
+export function source_style_scheme_apply_style(style_scheme: GtkSource.StyleScheme, style: string, tag: Gtk.TextTag): boolean
+export function symbol_kind_get_icon_name(kind: SymbolKind): string
 /**
  * Runs the callback on the thread pool thread.
  * @param kind the threadpool kind to use.
@@ -666,7 +666,7 @@ export function thread_pool_push(kind: ThreadPoolKind, func: ThreadFunc): void
  * @param func The thread worker to execute for `task`.
  */
 export function thread_pool_push_task(kind: ThreadPoolKind, task: Gio.Task, func: Gio.TaskThreadFunc): void
-export function uri_build(scheme: string | null, userinfo: string | null, host: string | null, port: string | null, path: string | null, query: string | null, fragment: string | null): string | null
+export function uri_build(scheme: string, userinfo: string, host: string, port: string, path: string, query: string, fragment: string): string | null
 export function uri_error_quark(): GLib.Quark
 /**
  * Utility function for parsing "network" URIs. This extracts just the
@@ -676,7 +676,7 @@ export function uri_error_quark(): GLib.Quark
  * @param flags flags for parsing `uri_string`
  * @returns %TRUE on success, %FALSE on failure.
  */
-export function uri_parse_host(uri_string: string | null, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
+export function uri_parse_host(uri_string: string, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
 /**
  * Many URI schemes include one or more attribute/value pairs
  * as part of the URI value. This method can be used to parse them
@@ -696,7 +696,7 @@ export function uri_parse_host(uri_string: string | null, flags: UriParseFlags):
  * @param case_insensitive whether to match parameter names case-insensitively
  * @returns a hash table of attribute/value pairs. Both names and values will be fully-decoded. If @params cannot be parsed (eg, it contains two @separator characters in a row), then %NULL is returned.
  */
-export function uri_parse_params(params: string | null, length: number, separator: number, case_insensitive: boolean): GLib.HashTable
+export function uri_parse_params(params: string, length: number, separator: number, case_insensitive: boolean): GLib.HashTable
 /**
  * Parses `uri_string` more-or-less according to the generic grammar of
  * RFC 3986 ("more" if `strict` is %TRUE, "less" if %FALSE), and
@@ -710,7 +710,7 @@ export function uri_parse_params(params: string | null, length: number, separato
  * @param uri_string a string containing a relative or absolute URI
  * @param strict whether to parse `uri_string` strictly
  */
-export function uri_split(uri_string: string | null, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
+export function uri_split(uri_string: string, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
 export function vcs_new_async<Z = unknown>(context: Context, io_priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of vcs_new_async
@@ -731,8 +731,8 @@ export function vcs_new_async<Z = unknown>(context: Context, io_priority: number
  * @returns An #IdeVcs.
  */
 export function vcs_new_finish(result: Gio.AsyncResult): Vcs
-export function vcs_register_ignored(pattern: string | null): void
-export function vcs_uri_is_valid(uri_string: string | null): boolean
+export function vcs_register_ignored(pattern: string): void
+export function vcs_uri_is_valid(uri_string: string): boolean
 /**
  * Gets the workbench `widget` is associated with, if any.
  * 
@@ -748,13 +748,13 @@ export function widget_get_workbench(widget: Gtk.Widget): Workbench | null
  */
 export function widget_set_context_handler(widget: Gtk.Widget, handler: WidgetContextHandler): void
 export interface BuildLogObserver {
-    (log_stream: BuildLogStream, message: string | null, message_len: number): void
+    (log_stream: BuildLogStream, message: string, message_len: number): void
 }
 export interface ExtensionSetAdapterForeachFunc {
     (set: ExtensionSetAdapter, plugin_info: Peas.PluginInfo, extension: Peas.Extension): void
 }
 export interface HighlightCallback {
-    (begin: Gtk.TextIter, end: Gtk.TextIter, style_name: string | null): HighlightResult
+    (begin: Gtk.TextIter, end: Gtk.TextIter, style_name: string): HighlightResult
 }
 export interface RunHandler {
     (self: RunManager, runner: Runner): void
@@ -1073,7 +1073,7 @@ export class BuildSystem extends GObject.Object {
      * @param cancellable A #GCancellable
      * @param callback A callback to execute upon completion
      */
-    static new_async(context: Context, project_file: Gio.File, build_system_hint: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<BuildSystem> | null): void
+    static new_async(context: Context, project_file: Gio.File, build_system_hint: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<BuildSystem> | null): void
     // Has conflict: static new_finish(result: Gio.AsyncResult): BuildSystem
 
     // Overloads of new_finish
@@ -1494,7 +1494,7 @@ export interface EditorViewAddin {
 
     // Own virtual methods of Ide-1.0.Ide.EditorViewAddin
 
-    vfunc_language_changed(language_id: string | null): void
+    vfunc_language_changed(language_id: string): void
     vfunc_load(view: EditorView): void
     vfunc_load_source_view(source_view: SourceView): void
     vfunc_unload(view: EditorView): void
@@ -2435,7 +2435,7 @@ export interface RenameProvider extends Object {
      * @param cancellable A #GCancellable or %NULL
      * @param callback a callback to complete the request
      */
-    rename_async(location: SourceLocation, new_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    rename_async(location: SourceLocation, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of rename_async
 
@@ -2451,7 +2451,7 @@ export interface RenameProvider extends Object {
      * @param cancellable A #GCancellable or %NULL
      * @returns A Promise of: %TRUE if successful and @edits is set. Otherwise %FALSE and @error is set.
      */
-    rename_async(location: SourceLocation, new_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise</* edits */ ProjectEdit[] | null>
+    rename_async(location: SourceLocation, new_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise</* edits */ ProjectEdit[] | null>
     /**
      * Completes a request to ide_rename_provider_rename_async().
      * 
@@ -2476,7 +2476,7 @@ export interface RenameProvider extends Object {
      * @param cancellable A #GCancellable or %NULL
      * @param callback a callback to complete the request
      */
-    vfunc_rename_async(location: SourceLocation, new_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_rename_async(location: SourceLocation, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Completes a request to ide_rename_provider_rename_async().
      * 
@@ -2600,8 +2600,8 @@ export interface RuntimeProvider {
 
     // Owm methods of Ide-1.0.Ide.RuntimeProvider
 
-    can_install(runtime_id: string | null): boolean
-    install_async(runtime_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    can_install(runtime_id: string): boolean
+    install_async(runtime_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of install_async
 
@@ -2613,15 +2613,15 @@ export interface RuntimeProvider {
      * @param cancellable 
      * @returns A Promise of the result of {@link install_async}
      */
-    install_async(runtime_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    install_async(runtime_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     install_finish(result: Gio.AsyncResult): boolean
     load(manager: RuntimeManager): void
     unload(manager: RuntimeManager): void
 
     // Own virtual methods of Ide-1.0.Ide.RuntimeProvider
 
-    vfunc_can_install(runtime_id: string | null): boolean
-    vfunc_install_async(runtime_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_can_install(runtime_id: string): boolean
+    vfunc_install_async(runtime_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_install_finish(result: Gio.AsyncResult): boolean
     vfunc_load(manager: RuntimeManager): void
     vfunc_unload(manager: RuntimeManager): void
@@ -2669,8 +2669,8 @@ export interface SearchProvider extends Object {
     create_row(result: SearchResult): Gtk.Widget
     get_prefix(): string
     get_priority(): number
-    get_verb(): string | null
-    populate(context: SearchContext, search_terms: string | null, max_results: number, cancellable: Gio.Cancellable | null): void
+    get_verb(): string
+    populate(context: SearchContext, search_terms: string, max_results: number, cancellable: Gio.Cancellable | null): void
 
     // Own virtual methods of Ide-1.0.Ide.SearchProvider
 
@@ -2684,8 +2684,8 @@ export interface SearchProvider extends Object {
     vfunc_create_row(result: SearchResult): Gtk.Widget
     vfunc_get_prefix(): string
     vfunc_get_priority(): number
-    vfunc_get_verb(): string | null
-    vfunc_populate(context: SearchContext, search_terms: string | null, max_results: number, cancellable: Gio.Cancellable | null): void
+    vfunc_get_verb(): string
+    vfunc_populate(context: SearchContext, search_terms: string, max_results: number, cancellable: Gio.Cancellable | null): void
 
     // Class property signals of Ide-1.0.Ide.SearchProvider
 
@@ -2734,14 +2734,14 @@ export interface Service extends Object {
 
     // Owm methods of Ide-1.0.Ide.Service
 
-    get_name(): string | null
+    get_name(): string
     start(): void
     stop(): void
 
     // Own virtual methods of Ide-1.0.Ide.Service
 
     vfunc_context_loaded(): void
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     vfunc_start(): void
     vfunc_stop(): void
 
@@ -2848,11 +2848,11 @@ export interface Subprocess {
      * @param cancellable 
      * @returns A Promise of: %TRUE if successful; otherwise %FALSE and @error is set.
      */
-    communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* stdout_buf */ string | null, /* stderr_buf */ string | null ]>
-    communicate_utf8_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_buf */ string | null, /* stderr_buf */ string | null ]
+    communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* stdout_buf */ string, /* stderr_buf */ string ]>
+    communicate_utf8_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_buf */ string, /* stderr_buf */ string ]
     force_exit(): void
     get_exit_status(): number
-    get_identifier(): string | null
+    get_identifier(): string
     get_if_exited(): boolean
     get_if_signaled(): boolean
     get_status(): number
@@ -2925,10 +2925,10 @@ export interface Subprocess {
      */
     vfunc_communicate_utf8(stdin_buf: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* stdout_buf */ string | null, /* stderr_buf */ string | null ]
     vfunc_communicate_utf8_async(stdin_buf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
-    vfunc_communicate_utf8_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_buf */ string | null, /* stderr_buf */ string | null ]
+    vfunc_communicate_utf8_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_buf */ string, /* stderr_buf */ string ]
     vfunc_force_exit(): void
     vfunc_get_exit_status(): number
-    vfunc_get_identifier(): string | null
+    vfunc_get_identifier(): string
     vfunc_get_if_exited(): boolean
     vfunc_get_if_signaled(): boolean
     vfunc_get_status(): number
@@ -3439,7 +3439,7 @@ export class Vcs extends GObject.Object {
     // Overloads of new_finish
 
     static new_finish(result: Gio.AsyncResult): Object
-    static register_ignored(pattern: string | null): void
+    static register_ignored(pattern: string): void
 }
 
 export module VcsConfig {
@@ -3582,7 +3582,7 @@ export interface WorkbenchAddin {
      * @param workbench An #IdeWorkbench
      */
     load(workbench: Workbench): void
-    open_async(uri: Uri, content_type: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    open_async(uri: Uri, content_type: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of open_async
 
@@ -3596,7 +3596,7 @@ export interface WorkbenchAddin {
      * @param cancellable 
      * @returns A Promise of the result of {@link open_async}
      */
-    open_async(uri: Uri, content_type: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    open_async(uri: Uri, content_type: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_finish(result: Gio.AsyncResult): boolean
     /**
      * This function is called when the workbench changes the perspective.
@@ -3650,7 +3650,7 @@ export interface WorkbenchAddin {
      * @param workbench An #IdeWorkbench
      */
     vfunc_load(workbench: Workbench): void
-    vfunc_open_async(uri: Uri, content_type: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_open_async(uri: Uri, content_type: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_open_finish(result: Gio.AsyncResult): boolean
     /**
      * This function is called when the workbench changes the perspective.
@@ -3762,7 +3762,7 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
     // Owm methods of Ide-1.0.Ide.Application
 
     add_reaper(reaper: Dazzle.DirectoryReaper): void
-    get_keybindings_mode(): string | null
+    get_keybindings_mode(): string
     get_mode(): ApplicationMode
     /**
      * This method will retreive an #IdeRecentProjects for the application that
@@ -3794,7 +3794,7 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback or %NULL.
      */
-    get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_worker_async
 
@@ -3814,7 +3814,7 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A Promise of: A #GDBusProxy or %NULL.
      */
-    get_worker_async(plugin_name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>
+    get_worker_async(plugin_name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.DBusProxy>
     /**
      * Completes an asynchronous request to get a proxy to a worker process.
      * @param result A #GAsyncResult
@@ -3895,7 +3895,7 @@ export class Application extends Dazzle.Application {
 
     // Overloads of new
 
-    static new(application_id: string | null, flags: Gio.ApplicationFlags): Dazzle.Application
+    static new(application_id: string, flags: Gio.ApplicationFlags): Dazzle.Application
     /**
      * Creates a new #GtkApplication instance.
      * 
@@ -4349,7 +4349,7 @@ export interface Buffer {
      * This property contains the current style scheme used by the buffer.
      * @returns A string containing the name of the currently used style scheme.
      */
-    get_style_scheme_name(): string | null
+    get_style_scheme_name(): string
     /**
      * Asynchronously get a possible symbol at `location`.
      * @param location a #GtkTextIter indicating a position to search for a symbol.
@@ -4385,7 +4385,7 @@ export interface Buffer {
      * for display.
      * @returns A string containing the buffer title.
      */
-    get_title(): string | null
+    get_title(): string
     get_uri(): string | null
     /**
      * Gets the word found under the position denoted by `iter`.
@@ -4416,7 +4416,7 @@ export interface Buffer {
      * Sets the style scheme to be used by this buffer.
      * @param style_scheme_name A string containing the name of the style scheme to use.
      */
-    set_style_scheme_name(style_scheme_name: string | null): void
+    set_style_scheme_name(style_scheme_name: string): void
     sync_to_unsaved_files(): void
     /**
      * Trim trailing whitespaces from the buffer.
@@ -5323,7 +5323,7 @@ export interface BuildPipeline extends Gio.Initable {
      * @param flags 
      * @returns an error format id that may be passed to   ide_build_pipeline_remove_error_format().
      */
-    add_error_format(regex: string | null, flags: GLib.RegexCompileFlags): number
+    add_error_format(regex: string, flags: GLib.RegexCompileFlags): number
     add_log_observer(observer: BuildLogObserver): number
     clean_async(phase: BuildPhase, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -5422,7 +5422,7 @@ export interface BuildPipeline extends Gio.Initable {
      * the location that build systems will use for out-of-tree builds.
      * @returns the path of the build directory
      */
-    get_builddir(): string | null
+    get_builddir(): string
     get_busy(): boolean
     /**
      * Gets the #IdeConfiguration to use for the pipeline.
@@ -5441,7 +5441,7 @@ export interface BuildPipeline extends Gio.Initable {
      * IdeVcs:working-directory property as a string.
      * @returns the path of the source directory
      */
-    get_srcdir(): string | null
+    get_srcdir(): string
     /**
      * Gets the stage matching the identifier `stage_id` as returned from
      * ide_build_pipeline_connect().
@@ -5791,10 +5791,10 @@ export interface BuildStage {
     get_check_stdout(): boolean
     get_completed(): boolean
     get_disabled(): boolean
-    get_name(): string | null
-    get_stdout_path(): string | null
+    get_name(): string
+    get_stdout_path(): string
     get_transient(): boolean
-    log(stream: BuildLogStream, message: string | null, message_len: number): void
+    log(stream: BuildLogStream, message: string, message_len: number): void
     /**
      * This function will begin logging `subprocess` by reading from the
      * stdout and stderr streams of the subprocess. You must have created
@@ -5818,8 +5818,8 @@ export interface BuildStage {
      * @param observer The observer for the log entries
      */
     set_log_observer(observer: BuildLogObserver): void
-    set_name(name: string | null): void
-    set_stdout_path(path: string | null): void
+    set_name(name: string): void
+    set_stdout_path(path: string): void
     set_transient(transient: boolean): void
     unpause(): void
 
@@ -6027,7 +6027,7 @@ export interface BuildStageMkdirs {
 
     // Owm methods of Ide-1.0.Ide.BuildStageMkdirs
 
-    add_path(path: string | null, with_parents: boolean, mode: number): void
+    add_path(path: string, with_parents: boolean, mode: number): void
 
     // Class property signals of Ide-1.0.Ide.BuildStageMkdirs
 
@@ -6179,8 +6179,8 @@ export interface BuildconfigConfiguration {
 
     get_postbuild(): string[]
     get_prebuild(): string[]
-    set_postbuild(postbuild: string | null): void
-    set_prebuild(prebuild: string | null): void
+    set_postbuild(postbuild: string): void
+    set_prebuild(prebuild: string): void
 
     // Class property signals of Ide-1.0.Ide.BuildconfigConfiguration
 
@@ -6313,12 +6313,12 @@ export interface CompletionItem {
 
     // Owm methods of Ide-1.0.Ide.CompletionItem
 
-    match(query: string | null, casefold: string | null): boolean
+    match(query: string, casefold: string): boolean
     set_priority(priority: number): void
 
     // Own virtual methods of Ide-1.0.Ide.CompletionItem
 
-    vfunc_match(query: string | null, casefold: string | null): boolean
+    vfunc_match(query: string, casefold: string): boolean
 
     // Class property signals of Ide-1.0.Ide.CompletionItem
 
@@ -6341,7 +6341,7 @@ export class CompletionItem extends GObject.Object {
     constructor() 
     static new(): CompletionItem
     _init(config?: CompletionItem.ConstructorProperties): void
-    static fuzzy_highlight(haystack: string | null, casefold_query: string | null): string | null
+    static fuzzy_highlight(haystack: string, casefold_query: string): string | null
     /**
      * This helper function can do a fuzzy match for you giving a haystack and
      * casefolded needle. Casefold your needle using g_utf8_casefold() before
@@ -6353,7 +6353,7 @@ export class CompletionItem extends GObject.Object {
      * @param casefold_needle A g_utf8_casefold() version of the needle.
      * @returns %TRUE if @haystack matched @casefold_needle, otherwise %FALSE.
      */
-    static fuzzy_match(haystack: string | null, casefold_needle: string | null): [ /* returnType */ boolean, /* priority */ number ]
+    static fuzzy_match(haystack: string, casefold_needle: string): [ /* returnType */ boolean, /* priority */ number ]
 }
 
 export module CompletionResults {
@@ -6381,11 +6381,11 @@ export interface CompletionResults {
 
     // Owm methods of Ide-1.0.Ide.CompletionResults
 
-    get_query(): string | null
+    get_query(): string
     get_size(): number
     invalidate_sort(): void
     present(provider: GtkSource.CompletionProvider, context: GtkSource.CompletionContext): void
-    replay(query: string | null): boolean
+    replay(query: string): boolean
     take_proposal(proposal: CompletionItem): void
 
     // Own virtual methods of Ide-1.0.Ide.CompletionResults
@@ -6413,8 +6413,8 @@ export class CompletionResults extends GObject.Object {
     // Constructors of Ide-1.0.Ide.CompletionResults
 
     constructor(config?: CompletionResults.ConstructorProperties) 
-    constructor(query: string | null) 
-    static new(query: string | null): CompletionResults
+    constructor(query: string) 
+    static new(query: string): CompletionResults
     _init(config?: CompletionResults.ConstructorProperties): void
 }
 
@@ -6562,37 +6562,37 @@ export interface Configuration {
      */
     get_app_id(): string | null
     get_build_commands(): string[]
-    get_config_opts(): string | null
+    get_config_opts(): string
     get_debug(): boolean
     /**
      * Gets the device for the configuration.
      * @returns An #IdeDevice.
      */
     get_device(): Device | null
-    get_device_id(): string | null
+    get_device_id(): string
     get_dirty(): boolean
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets the environment to use when spawning processes.
      * @returns An array of key=value environment variables.
      */
     get_environ(): string[]
     get_environment(): Environment
-    get_id(): string | null
-    get_internal_boolean(key: string | null): boolean
-    get_internal_int(key: string | null): number
-    get_internal_int64(key: string | null): number
+    get_id(): string
+    get_internal_boolean(key: string): boolean
+    get_internal_int(key: string): number
+    get_internal_int64(key: string): number
     /**
      * Gets the value associated with `key` if it is a #GObject.
      * @param key The key to get
      * @returns A #GObject or %NULL.
      */
-    get_internal_object(key: string | null): GObject.Object | null
-    get_internal_string(key: string | null): string | null
-    get_internal_strv(key: string | null): string[]
+    get_internal_object(key: string): GObject.Object | null
+    get_internal_string(key: string): string
+    get_internal_strv(key: string): string[]
     get_parallelism(): number
     get_post_install_commands(): string[]
-    get_prefix(): string | null
+    get_prefix(): string
     /**
      * Determines if the configuration is ready for use. That means that the
      * build device can be accessed and the runtime is loaded. This may change
@@ -6605,7 +6605,7 @@ export interface Configuration {
      * @returns An #IdeRuntime
      */
     get_runtime(): Runtime | null
-    get_runtime_id(): string | null
+    get_runtime_id(): string
     /**
      * This returns a sequence number for the configuration. This is useful
      * for build systems that want to clear the "dirty" bit on the configuration
@@ -6617,33 +6617,33 @@ export interface Configuration {
      * @returns A monotonic sequence number.
      */
     get_sequence(): number
-    getenv(key: string | null): string | null
-    set_app_id(app_id: string | null): void
-    set_build_commands(build_commands: string | null): void
-    set_config_opts(config_opts: string | null): void
+    getenv(key: string): string
+    set_app_id(app_id: string): void
+    set_build_commands(build_commands: string): void
+    set_config_opts(config_opts: string): void
     set_debug(debug: boolean): void
     set_device(device: Device): void
-    set_device_id(device_id: string | null): void
+    set_device_id(device_id: string): void
     set_dirty(dirty: boolean): void
-    set_display_name(display_name: string | null): void
+    set_display_name(display_name: string): void
     set_environment(environment: Environment): void
-    set_internal_boolean(key: string | null, value: boolean): void
-    set_internal_int(key: string | null, value: number): void
-    set_internal_int64(key: string | null, value: number): void
+    set_internal_boolean(key: string, value: boolean): void
+    set_internal_int(key: string, value: number): void
+    set_internal_int64(key: string, value: number): void
     /**
      * Sets the value for `key` to `instance`.
      * @param key the key to set
      * @param instance A #GObject or %NULL
      */
-    set_internal_object(key: string | null, instance: GObject.Object | null): void
-    set_internal_string(key: string | null, value: string | null): void
-    set_internal_strv(key: string | null, value: string | null): void
+    set_internal_object(key: string, instance: GObject.Object | null): void
+    set_internal_string(key: string, value: string): void
+    set_internal_strv(key: string, value: string): void
     set_parallelism(parallelism: number): void
-    set_post_install_commands(post_install_commands: string | null): void
-    set_prefix(prefix: string | null): void
+    set_post_install_commands(post_install_commands: string): void
+    set_prefix(prefix: string): void
     set_runtime(runtime: Runtime): void
-    set_runtime_id(runtime_id: string | null): void
-    setenv(key: string | null, value: string | null): void
+    set_runtime_id(runtime_id: string): void
+    setenv(key: string, value: string): void
     /**
      * Makes a snapshot of the configuration that can be used by build processes
      * to build the project without synchronizing with other threads.
@@ -6747,8 +6747,8 @@ export class Configuration extends Object {
     // Constructors of Ide-1.0.Ide.Configuration
 
     constructor(config?: Configuration.ConstructorProperties) 
-    constructor(context: Context, id: string | null, device_id: string | null, runtime_id: string | null) 
-    static new(context: Context, id: string | null, device_id: string | null, runtime_id: string | null): Configuration
+    constructor(context: Context, id: string, device_id: string, runtime_id: string) 
+    static new(context: Context, id: string, device_id: string, runtime_id: string): Configuration
     _init(config?: Configuration.ConstructorProperties): void
 }
 
@@ -6791,7 +6791,7 @@ export interface ConfigurationManager extends Gio.AsyncInitable, Gio.ListModel {
      * @param id The string identifier of the configuration
      * @returns An #IdeConfiguration or %NULL if   the configuration could not be found.
      */
-    get_configuration(id: string | null): Configuration | null
+    get_configuration(id: string): Configuration | null
     /**
      * Gets the current configuration to use for building.
      * 
@@ -6981,7 +6981,7 @@ export interface Context extends Gio.AsyncInitable {
      * that will contain builds made for various devices.
      * @returns A string containing the "root-build-dir" property.
      */
-    get_root_build_dir(): string | null
+    get_root_build_dir(): string
     /**
      * Gets the #IdeRunManager for the context. This manager object simplifies
      * the process of running an #IdeBuildTarget from the build system. Primarily,
@@ -7022,7 +7022,7 @@ export interface Context extends Gio.AsyncInitable {
      * @param relative_path 
      * @returns An #IdeSettings.
      */
-    get_settings(schema_id: string | null, relative_path: string | null): Settings
+    get_settings(schema_id: string, relative_path: string): Settings
     /**
      * Gets the #IdeContext:snippets-manager property.
      * @returns An #IdeSourceSnippetsManager.
@@ -7085,7 +7085,7 @@ export interface Context extends Gio.AsyncInitable {
      * tree.
      * @param root_build_dir the path to the root build directory.
      */
-    set_root_build_dir(root_build_dir: string | null): void
+    set_root_build_dir(root_build_dir: string): void
     /**
      * This function attempts to unload various components in the #IdeContext. This
      * should be called before you dispose the context. Unsaved buffers will be
@@ -7284,7 +7284,7 @@ export interface Device {
      * user friendly name as it is often a guid.
      * @returns A unique identifier for the device.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * This is the description of the system we are building for. Commonly, this
      * is referred to as a "system_type". A combination of the machine architecture
@@ -7293,10 +7293,10 @@ export interface Device {
      * "x86_64-linux-gnu" might be one such system.
      * @returns A string containing the system type.
      */
-    get_system_type(): string | null
+    get_system_type(): string
     prepare_configuration(configuration: Configuration): void
-    set_display_name(display_name: string | null): void
-    set_id(id: string | null): void
+    set_display_name(display_name: string): void
+    set_id(id: string): void
 
     // Own virtual methods of Ide-1.0.Ide.Device
 
@@ -7309,7 +7309,7 @@ export interface Device {
      * @virtual 
      * @returns A string containing the system type.
      */
-    vfunc_get_system_type(): string | null
+    vfunc_get_system_type(): string
     vfunc_prepare_configuration(configuration: Configuration): void
 
     // Class property signals of Ide-1.0.Ide.Device
@@ -7385,7 +7385,7 @@ export interface DeviceManager extends Gio.ListModel {
      * @param device_id The device identifier string.
      * @returns An #IdeDevice or %NULL.
      */
-    get_device(device_id: string | null): Device
+    get_device(device_id: string): Device
     /**
      * Retrieves all of the devices that are registered with the #IdeDeviceManager.
      * @returns An array of devices   registered with the #IdeManager.
@@ -7637,16 +7637,16 @@ export interface Doap {
 
     // Owm methods of Ide-1.0.Ide.Doap
 
-    get_bug_database(): string | null
-    get_category(): string | null
-    get_description(): string | null
-    get_download_page(): string | null
-    get_homepage(): string | null
+    get_bug_database(): string
+    get_category(): string
+    get_description(): string
+    get_download_page(): string
+    get_homepage(): string
     get_languages(): string[]
     get_maintainers(): DoapPerson[]
-    get_name(): string | null
-    get_shortdesc(): string | null
-    load_from_data(data: string | null, length: number): boolean
+    get_name(): string
+    get_shortdesc(): string
+    load_from_data(data: string, length: number): boolean
     load_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of Ide-1.0.Ide.Doap
@@ -7719,10 +7719,10 @@ export interface DoapPerson {
 
     // Owm methods of Ide-1.0.Ide.DoapPerson
 
-    get_email(): string | null
-    get_name(): string | null
-    set_email(email: string | null): void
-    set_name(name: string | null): void
+    get_email(): string
+    get_name(): string
+    set_email(email: string): void
+    set_name(name: string): void
 
     // Class property signals of Ide-1.0.Ide.DoapPerson
 
@@ -7831,7 +7831,7 @@ export interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Da
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7845,7 +7845,7 @@ export interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Da
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7856,7 +7856,7 @@ export interface EditorPerspective extends Atk.ImplementorIface, Dazzle.Dock, Da
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: Dazzle.DockItem): boolean
 
     // Overloads of get_child_visible
@@ -8165,7 +8165,7 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8179,7 +8179,7 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8190,7 +8190,7 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.EditorView
 
@@ -8407,9 +8407,9 @@ export interface Environment extends Gio.ListModel {
      * @returns A newly allocated string array.
      */
     get_environ(): string[]
-    getenv(key: string | null): string | null
+    getenv(key: string): string
     remove(variable: EnvironmentVariable): void
-    setenv(key: string | null, value: string | null): void
+    setenv(key: string, value: string): void
 
     // Own signals of Ide-1.0.Ide.Environment
 
@@ -8463,10 +8463,10 @@ export interface EnvironmentVariable {
 
     // Owm methods of Ide-1.0.Ide.EnvironmentVariable
 
-    get_key(): string | null
-    get_value(): string | null
-    set_key(key: string | null): void
-    set_value(value: string | null): void
+    get_key(): string
+    get_value(): string
+    set_key(key: string): void
+    set_value(value: string): void
 
     // Class property signals of Ide-1.0.Ide.EnvironmentVariable
 
@@ -8492,8 +8492,8 @@ export class EnvironmentVariable extends GObject.Object {
     // Constructors of Ide-1.0.Ide.EnvironmentVariable
 
     constructor(config?: EnvironmentVariable.ConstructorProperties) 
-    constructor(key: string | null, value: string | null) 
-    static new(key: string | null, value: string | null): EnvironmentVariable
+    constructor(key: string, value: string) 
+    static new(key: string, value: string): EnvironmentVariable
     _init(config?: EnvironmentVariable.ConstructorProperties): void
 }
 
@@ -8538,10 +8538,10 @@ export interface ExtensionAdapter {
      */
     get_extension(): GObject.Object
     get_interface_type(): GObject.GType
-    get_key(): string | null
-    get_value(): string | null
-    set_key(key: string | null): void
-    set_value(value: string | null): void
+    get_key(): string
+    get_value(): string
+    set_key(key: string): void
+    set_value(value: string): void
 
     // Class property signals of Ide-1.0.Ide.ExtensionAdapter
 
@@ -8600,7 +8600,7 @@ export class ExtensionAdapter extends Object {
      * @param value The value to use when matching keys.
      * @returns A newly created #IdeExtensionAdapter.
      */
-    constructor(context: Context, engine: Peas.Engine | null, interface_type: GObject.GType, key: string | null, value: string | null) 
+    constructor(context: Context, engine: Peas.Engine | null, interface_type: GObject.GType, key: string, value: string | null) 
     /**
      * Creates a new #IdeExtensionAdapter.
      * 
@@ -8622,7 +8622,7 @@ export class ExtensionAdapter extends Object {
      * @param value The value to use when matching keys.
      * @returns A newly created #IdeExtensionAdapter.
      */
-    static new(context: Context, engine: Peas.Engine | null, interface_type: GObject.GType, key: string | null, value: string | null): ExtensionAdapter
+    static new(context: Context, engine: Peas.Engine | null, interface_type: GObject.GType, key: string, value: string | null): ExtensionAdapter
     _init(config?: ExtensionAdapter.ConstructorProperties): void
 }
 
@@ -8683,11 +8683,11 @@ export interface ExtensionSetAdapter {
      */
     get_engine(): Peas.Engine
     get_interface_type(): GObject.GType
-    get_key(): string | null
+    get_key(): string
     get_n_extensions(): number
-    get_value(): string | null
-    set_key(key: string | null): void
-    set_value(value: string | null): void
+    get_value(): string
+    set_key(key: string): void
+    set_value(value: string): void
 
     // Own signals of Ide-1.0.Ide.ExtensionSetAdapter
 
@@ -8731,8 +8731,8 @@ export class ExtensionSetAdapter extends Object {
     // Constructors of Ide-1.0.Ide.ExtensionSetAdapter
 
     constructor(config?: ExtensionSetAdapter.ConstructorProperties) 
-    constructor(context: Context, engine: Peas.Engine, interface_type: GObject.GType, key: string | null, value: string | null) 
-    static new(context: Context, engine: Peas.Engine, interface_type: GObject.GType, key: string | null, value: string | null): ExtensionSetAdapter
+    constructor(context: Context, engine: Peas.Engine, interface_type: GObject.GType, key: string, value: string) 
+    static new(context: Context, engine: Peas.Engine, interface_type: GObject.GType, key: string, value: string): ExtensionSetAdapter
     _init(config?: ExtensionSetAdapter.ConstructorProperties): void
 }
 
@@ -8802,8 +8802,8 @@ export interface File {
      * @returns A #GtkSourceLanguage or %NULL.
      */
     get_language(): GtkSource.Language | null
-    get_language_id(): string | null
-    get_path(): string | null
+    get_language_id(): string
+    get_path(): string
     /**
      * Gets the #IdeFile:temporary-id property for the file.
      * 
@@ -8882,7 +8882,7 @@ export class File extends Object {
      * @returns An #IdeFile.
      */
     static new(context: Context | null, file: Gio.File): File
-    static new_for_path(context: Context, path: string | null): File
+    static new_for_path(context: Context, path: string): File
     _init(config?: File.ConstructorProperties): void
 }
 
@@ -9209,7 +9209,7 @@ export interface HighlightEngine {
      * @param style_name the name of the style to retrieve
      * @returns A #GtkTextTag.
      */
-    get_style(style_name: string | null): Gtk.TextTag
+    get_style(style_name: string): Gtk.TextTag
     /**
      * This function will extend the invalidated range of the buffer to include
      * the range of `begin` to `end`.
@@ -9309,7 +9309,7 @@ export interface LangservClient {
 
     // Owm methods of Ide-1.0.Ide.LangservClient
 
-    add_language(language_id: string | null): void
+    add_language(language_id: string): void
     /**
      * Asynchronously queries the Language Server using the JSON-RPC protocol.
      * @param method the method to call
@@ -9317,7 +9317,7 @@ export interface LangservClient {
      * @param cancellable A cancellable or %NULL
      * @param callback the callback to receive the result, or %NULL
      */
-    call_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of call_async
 
@@ -9330,7 +9330,7 @@ export interface LangservClient {
      * @param cancellable A cancellable or %NULL
      * @returns A Promise of the result of {@link call_async}
      */
-    call_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    call_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     call_finish(result: Gio.AsyncResult, return_value: GLib.Variant): boolean
     get_diagnostics_async(file: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -9358,7 +9358,7 @@ export interface LangservClient {
      * @param cancellable A cancellable or %NULL
      * @param notificationback the notificationback to receive the result, or %NULL
      */
-    send_notification_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback: Gio.AsyncReadyCallback<this> | null): void
+    send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null, notificationback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of send_notification_async
 
@@ -9372,16 +9372,16 @@ export interface LangservClient {
      * @param notificationback the notificationback to receive the result, or %NULL
      * @returns A Promise of the result of {@link send_notification_async}
      */
-    send_notification_async(method: string | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    send_notification_async(method: string, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     send_notification_finish(result: Gio.AsyncResult): boolean
     start(): void
     stop(): void
 
     // Own virtual methods of Ide-1.0.Ide.LangservClient
 
-    vfunc_notification(method: string | null, params: GLib.Variant): void
+    vfunc_notification(method: string, params: GLib.Variant): void
     vfunc_published_diagnostics(file: Gio.File, diagnostics: Diagnostics): void
-    vfunc_supports_language(language_id: string | null): boolean
+    vfunc_supports_language(language_id: string): boolean
 
     // Own signals of Ide-1.0.Ide.LangservClient
 
@@ -9738,7 +9738,7 @@ export interface LangservSymbolNode {
 
     // Owm methods of Ide-1.0.Ide.LangservSymbolNode
 
-    get_parent_name(): string | null
+    get_parent_name(): string
     is_parent_of(other: LangservSymbolNode): boolean
 
     // Class property signals of Ide-1.0.Ide.LangservSymbolNode
@@ -9774,8 +9774,8 @@ export class LangservSymbolNode extends SymbolNode {
     // Constructors of Ide-1.0.Ide.LangservSymbolNode
 
     constructor(config?: LangservSymbolNode.ConstructorProperties) 
-    constructor(file: Gio.File, name: string | null, parent_name: string | null, kind: number, begin_line: number, begin_column: number, end_line: number, end_column: number) 
-    static new(file: Gio.File, name: string | null, parent_name: string | null, kind: number, begin_line: number, begin_column: number, end_line: number, end_column: number): LangservSymbolNode
+    constructor(file: Gio.File, name: string, parent_name: string, kind: number, begin_line: number, begin_column: number, end_line: number, end_column: number) 
+    static new(file: Gio.File, name: string, parent_name: string, kind: number, begin_line: number, begin_column: number, end_line: number, end_column: number): LangservSymbolNode
     _init(config?: LangservSymbolNode.ConstructorProperties): void
 }
 
@@ -9921,7 +9921,7 @@ export interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockIt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9935,7 +9935,7 @@ export interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockIt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9946,7 +9946,7 @@ export interface Layout extends Atk.ImplementorIface, Dazzle.Dock, Dazzle.DockIt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     get_child_visible(child: Dazzle.DockItem): boolean
 
     // Overloads of get_child_visible
@@ -10258,7 +10258,7 @@ export interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10272,7 +10272,7 @@ export interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10283,7 +10283,7 @@ export interface LayoutGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.LayoutGrid
 
@@ -10555,7 +10555,7 @@ export interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.B
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10567,7 +10567,7 @@ export interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.B
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10581,7 +10581,7 @@ export interface LayoutPane extends Atk.ImplementorIface, Dazzle.DockItem, Gtk.B
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.LayoutPane
 
@@ -10810,7 +10810,7 @@ export interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10824,7 +10824,7 @@ export interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10835,7 +10835,7 @@ export interface LayoutStack extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.LayoutStack
 
@@ -11070,7 +11070,7 @@ export interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11084,7 +11084,7 @@ export interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11095,7 +11095,7 @@ export interface LayoutView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Ide-1.0.Ide.LayoutView
 
@@ -11483,7 +11483,7 @@ export interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11497,7 +11497,7 @@ export interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11508,7 +11508,7 @@ export interface OmniBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.OmniBar
 
@@ -11739,7 +11739,7 @@ export interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11753,7 +11753,7 @@ export interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11764,7 +11764,7 @@ export interface OmniSearchDisplay extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.OmniSearchDisplay
 
@@ -12354,7 +12354,7 @@ export interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12368,7 +12368,7 @@ export interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12379,7 +12379,7 @@ export interface OmniSearchGroup extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.OmniSearchGroup
 
@@ -12596,7 +12596,7 @@ export interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -12608,7 +12608,7 @@ export interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12622,7 +12622,7 @@ export interface OmniSearchRow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.OmniSearchRow
 
@@ -12841,8 +12841,8 @@ export class PkconTransfer extends Transfer {
     // Constructors of Ide-1.0.Ide.PkconTransfer
 
     constructor(config?: PkconTransfer.ConstructorProperties) 
-    constructor(packages: string | null) 
-    static new(packages: string | null): PkconTransfer
+    constructor(packages: string) 
+    static new(packages: string): PkconTransfer
     _init(config?: PkconTransfer.ConstructorProperties): void
 }
 
@@ -12874,7 +12874,7 @@ export interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Pre
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12888,7 +12888,7 @@ export interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Pre
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12899,7 +12899,7 @@ export interface PreferencesPerspective extends Atk.ImplementorIface, Dazzle.Pre
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.PreferencesPerspective
 
@@ -13081,7 +13081,7 @@ export interface Progress {
     get_fraction(): number
     get_message(): string | null
     set_fraction(fraction: number): void
-    set_message(message: string | null): void
+    set_message(message: string): void
 
     // Class property signals of Ide-1.0.Ide.Progress
 
@@ -13124,7 +13124,7 @@ export class Progress extends GObject.Object {
      * @param user_data 
      */
     static file_progress_callback(current_num_bytes: number, total_num_bytes: number, user_data: any | null): void
-    static flatpak_progress_callback(status: string | null, progress: number, estimating: boolean, user_data: any | null): void
+    static flatpak_progress_callback(status: string, progress: number, estimating: boolean, user_data: any | null): void
 }
 
 export module Project {
@@ -13178,15 +13178,15 @@ export interface Project {
      * @param path A relative path from the project root.
      * @returns An #IdeFile or %NULL if no matching   file could be found.
      */
-    get_file_for_path(path: string | null): File | null
+    get_file_for_path(path: string): File | null
     /**
      * Gets the #IdeProjectFiles instance within the project tree.
      * If it has not yet been loaded, %NULL is returned.
      * @returns An #IdeProjectFiles or %NULL.
      */
     get_files(): ProjectFiles | null
-    get_id(): string | null
-    get_name(): string | null
+    get_id(): string
+    get_name(): string
     /**
      * Gets a new #IdeFile representing `gfile`.
      * @param gfile A #GFile.
@@ -13315,9 +13315,9 @@ export interface ProjectEdit {
      * @returns An #IdeSourceRange
      */
     get_range(): SourceRange | null
-    get_replacement(): string | null
+    get_replacement(): string
     set_range(range: SourceRange): void
-    set_replacement(replacement: string | null): void
+    set_replacement(replacement: string): void
 
     // Class property signals of Ide-1.0.Ide.ProjectEdit
 
@@ -13394,8 +13394,8 @@ export interface ProjectFile {
      */
     get_file_info(): Gio.FileInfo
     get_is_directory(): boolean
-    get_name(): string | null
-    get_path(): string | null
+    get_name(): string
+    get_path(): string
 
     // Class property signals of Ide-1.0.Ide.ProjectFile
 
@@ -13470,7 +13470,7 @@ export interface ProjectFiles {
      * @param path 
      * @returns An #IdeFile or %NULL.
      */
-    get_file_for_path(path: string | null): File | null
+    get_file_for_path(path: string): File | null
 
     // Class property signals of Ide-1.0.Ide.ProjectFiles
 
@@ -13545,8 +13545,8 @@ export interface ProjectInfo {
     // Owm methods of Ide-1.0.Ide.ProjectInfo
 
     compare(info2: ProjectInfo): number
-    get_build_system_name(): string | null
-    get_description(): string | null
+    get_build_system_name(): string
+    get_description(): string
     /**
      * Gets the #IdeProjectInfo:directory property.
      * This is the directory containing the project (if known).
@@ -13563,15 +13563,15 @@ export interface ProjectInfo {
     get_is_recent(): boolean
     get_languages(): string[]
     get_last_modified_at(): GLib.DateTime | null
-    get_name(): string | null
+    get_name(): string
     get_priority(): number
-    set_build_system_name(build_system_name: string | null): void
-    set_description(description: string | null): void
+    set_build_system_name(build_system_name: string): void
+    set_description(description: string): void
     set_directory(directory: Gio.File): void
     set_file(file: Gio.File): void
     set_is_recent(is_recent: boolean): void
     set_languages(languages: string | null): void
-    set_name(name: string | null): void
+    set_name(name: string): void
     set_priority(priority: number): void
 
     // Class property signals of Ide-1.0.Ide.ProjectInfo
@@ -13782,7 +13782,7 @@ export interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13796,7 +13796,7 @@ export interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -13807,7 +13807,7 @@ export interface RunButton extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.RunButton
 
@@ -14023,7 +14023,7 @@ export interface RunManager extends Gio.ActionGroup, Gio.Initable {
 
     // Owm methods of Ide-1.0.Ide.RunManager
 
-    add_handler(id: string | null, title: string | null, icon_name: string | null, accel: string | null, run_handler: RunHandler): void
+    add_handler(id: string, title: string, icon_name: string, accel: string, run_handler: RunHandler): void
     cancel(): void
     discover_default_target_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -14046,8 +14046,8 @@ export interface RunManager extends Gio.ActionGroup, Gio.Initable {
      */
     get_build_target(): BuildTarget
     get_busy(): boolean
-    get_handler(): string | null
-    remove_handler(id: string | null): void
+    get_handler(): string
+    remove_handler(id: string): void
     run_async(build_target: BuildTarget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of run_async
@@ -14063,7 +14063,7 @@ export interface RunManager extends Gio.ActionGroup, Gio.Initable {
     run_async(build_target: BuildTarget, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     run_finish(result: Gio.AsyncResult): boolean
     set_build_target(build_target: BuildTarget): void
-    set_handler(id: string | null): void
+    set_handler(id: string): void
 
     // Own signals of Ide-1.0.Ide.RunManager
 
@@ -14188,7 +14188,7 @@ export interface Runner {
 
     // Owm methods of Ide-1.0.Ide.Runner
 
-    append_argv(param: string | null): void
+    append_argv(param: string): void
     force_quit(): void
     /**
      * Gets the argument list as a newly allocated string array.
@@ -14210,7 +14210,7 @@ export interface Runner {
     get_stderr(): Gio.InputStream | null
     get_stdin(): Gio.OutputStream | null
     get_stdout(): Gio.InputStream | null
-    prepend_argv(param: string | null): void
+    prepend_argv(param: string): void
     run_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of run_async
@@ -14224,7 +14224,7 @@ export interface Runner {
      */
     run_async(cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     run_finish(result: Gio.AsyncResult): boolean
-    set_argv(argv: string | null): void
+    set_argv(argv: string): void
     set_clear_env(clear_env: boolean): void
     set_failed(failed: boolean): void
     set_flags(flags: Gio.SubprocessFlags): void
@@ -14339,7 +14339,7 @@ export interface Runtime {
 
     // Owm methods of Ide-1.0.Ide.Runtime
 
-    contains_program_in_path(program: string | null, cancellable: Gio.Cancellable | null): boolean
+    contains_program_in_path(program: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Creates a launcher for the runtime.
      * 
@@ -14358,11 +14358,11 @@ export interface Runtime {
      * @returns An #IdeRunner if successful, otherwise   %NULL and @error is set.
      */
     create_runner(build_target: BuildTarget): Runner | null
-    get_display_name(): string | null
-    get_id(): string | null
+    get_display_name(): string
+    get_id(): string
     prepare_configuration(configuration: Configuration): void
-    set_display_name(display_name: string | null): void
-    set_id(id: string | null): void
+    set_display_name(display_name: string): void
+    set_id(id: string): void
     /**
      * Translates the file from a path within the runtime to a path that can
      * be accessed from the host system.
@@ -14373,7 +14373,7 @@ export interface Runtime {
 
     // Own virtual methods of Ide-1.0.Ide.Runtime
 
-    vfunc_contains_program_in_path(program: string | null, cancellable: Gio.Cancellable | null): boolean
+    vfunc_contains_program_in_path(program: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Creates a launcher for the runtime.
      * 
@@ -14431,8 +14431,8 @@ export class Runtime extends Object {
     // Constructors of Ide-1.0.Ide.Runtime
 
     constructor(config?: Runtime.ConstructorProperties) 
-    constructor(context: Context, id: string | null, title: string | null) 
-    static new(context: Context, id: string | null, title: string | null): Runtime
+    constructor(context: Context, id: string, title: string) 
+    static new(context: Context, id: string, title: string): Runtime
     _init(config?: Runtime.ConstructorProperties): void
 }
 
@@ -14463,7 +14463,7 @@ export interface RuntimeManager extends Gio.Initable, Gio.ListModel {
      * @param cancellable A #GCancellable or %NULL
      * @param callback a callback to call after execution
      */
-    ensure_async(runtime_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    ensure_async(runtime_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of ensure_async
 
@@ -14482,14 +14482,14 @@ export interface RuntimeManager extends Gio.Initable, Gio.ListModel {
      * @param cancellable A #GCancellable or %NULL
      * @returns A Promise of: An #IdeRuntime or %NULL.
      */
-    ensure_async(runtime_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Runtime>
+    ensure_async(runtime_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Runtime>
     ensure_finish(result: Gio.AsyncResult): Runtime
     /**
      * Gets the runtime by its internal identifier.
      * @param id the identifier of the runtime
      * @returns An #IdeRuntime.
      */
-    get_runtime(id: string | null): Runtime
+    get_runtime(id: string): Runtime
     remove(runtime: Runtime): void
 
     // Class property signals of Ide-1.0.Ide.RuntimeManager
@@ -14562,7 +14562,7 @@ export interface SearchContext {
 
     add_result(provider: SearchProvider, result: SearchResult): void
     cancel(): void
-    execute(search_terms: string | null, max_results: number): void
+    execute(search_terms: string, max_results: number): void
     get_max_results(): number
     /**
      * Retrieve the list of providers for the search context.
@@ -14632,7 +14632,7 @@ export interface SearchEngine {
      * @param search_terms The search terms.
      * @returns An #IdeSearchContext or %NULL if no   providers could be loaded.
      */
-    search(search_terms: string | null): SearchContext | null
+    search(search_terms: string): SearchContext | null
 
     // Class property signals of Ide-1.0.Ide.SearchEngine
 
@@ -14697,8 +14697,8 @@ export interface SearchResult {
      */
     get_provider(): SearchProvider
     get_score(): number
-    get_subtitle(): string | null
-    get_title(): string | null
+    get_subtitle(): string
+    get_title(): string
 
     // Own virtual methods of Ide-1.0.Ide.SearchResult
 
@@ -14737,8 +14737,8 @@ export class SearchResult extends Object {
     // Constructors of Ide-1.0.Ide.SearchResult
 
     constructor(config?: SearchResult.ConstructorProperties) 
-    constructor(provider: SearchProvider, title: string | null, subtitle: string | null, score: number) 
-    static new(provider: SearchProvider, title: string | null, subtitle: string | null, score: number): SearchResult
+    constructor(provider: SearchProvider, title: string, subtitle: string, score: number) 
+    static new(provider: SearchProvider, title: string, subtitle: string, score: number): SearchResult
     _init(config?: SearchResult.ConstructorProperties): void
 }
 
@@ -14783,7 +14783,7 @@ export interface Settings {
 
     // Owm methods of Ide-1.0.Ide.Settings
 
-    bind(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags): void
+    bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void
     /**
      * Like ide_settings_bind() but allows transforming to and from settings storage using
      * `get_mapping` and `set_mapping` transformation functions.
@@ -14796,25 +14796,25 @@ export interface Settings {
      * @param get_mapping variant to value mapping
      * @param set_mapping value to variant mapping
      */
-    bind_with_mapping(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping | null, set_mapping: Gio.SettingsBindSetMapping | null): void
-    get_boolean(key: string | null): boolean
-    get_default_value(key: string | null): GLib.Variant
-    get_double(key: string | null): number
+    bind_with_mapping(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping | null, set_mapping: Gio.SettingsBindSetMapping | null): void
+    get_boolean(key: string): boolean
+    get_default_value(key: string): GLib.Variant
+    get_double(key: string): number
     get_ignore_project_settings(): boolean
-    get_int(key: string | null): number
-    get_relative_path(): string | null
-    get_schema_id(): string | null
-    get_string(key: string | null): string | null
-    get_uint(key: string | null): number
-    get_user_value(key: string | null): GLib.Variant
-    get_value(key: string | null): GLib.Variant
-    set_boolean(key: string | null, val: boolean): void
-    set_double(key: string | null, val: number): void
-    set_int(key: string | null, val: number): void
-    set_string(key: string | null, val: string | null): void
-    set_uint(key: string | null, val: number): void
-    set_value(key: string | null, value: GLib.Variant): void
-    unbind(property: string | null): void
+    get_int(key: string): number
+    get_relative_path(): string
+    get_schema_id(): string
+    get_string(key: string): string | null
+    get_uint(key: string): number
+    get_user_value(key: string): GLib.Variant
+    get_value(key: string): GLib.Variant
+    set_boolean(key: string, val: boolean): void
+    set_double(key: string, val: number): void
+    set_int(key: string, val: number): void
+    set_string(key: string, val: string): void
+    set_uint(key: string, val: number): void
+    set_value(key: string, value: GLib.Variant): void
+    unbind(property: string): void
 
     // Own signals of Ide-1.0.Ide.Settings
 
@@ -14935,7 +14935,7 @@ export interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -14949,7 +14949,7 @@ export interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -14960,7 +14960,7 @@ export interface SourceMap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.SourceMap
 
@@ -15291,19 +15291,19 @@ export interface SourceSnippet {
     copy(): SourceSnippet
     get_chunk_range(chunk: SourceSnippetChunk, begin: Gtk.TextIter, end: Gtk.TextIter): void
     get_context(): SourceSnippetContext
-    get_description(): string | null
-    get_language(): string | null
+    get_description(): string
+    get_language(): string
     get_mark_begin(): Gtk.TextMark
     get_mark_end(): Gtk.TextMark
     get_n_chunks(): number
     get_nth_chunk(n: number): SourceSnippetChunk
-    get_snippet_text(): string | null
+    get_snippet_text(): string
     get_tab_stop(): number
-    get_trigger(): string | null
-    set_description(description: string | null): void
-    set_language(language: string | null): void
-    set_snippet_text(snippet_text: string | null): void
-    set_trigger(trigger: string | null): void
+    get_trigger(): string
+    set_description(description: string): void
+    set_language(language: string): void
+    set_snippet_text(snippet_text: string): void
+    set_trigger(trigger: string): void
 
     // Class property signals of Ide-1.0.Ide.SourceSnippet
 
@@ -15347,8 +15347,8 @@ export class SourceSnippet extends GObject.Object {
     // Constructors of Ide-1.0.Ide.SourceSnippet
 
     constructor(config?: SourceSnippet.ConstructorProperties) 
-    constructor(trigger: string | null, language: string | null) 
-    static new(trigger: string | null, language: string | null): SourceSnippet
+    constructor(trigger: string, language: string) 
+    static new(trigger: string, language: string): SourceSnippet
     _init(config?: SourceSnippet.ConstructorProperties): void
 }
 
@@ -15395,14 +15395,14 @@ export interface SourceSnippetChunk {
      * @returns An #IdeSourceSnippetContext.
      */
     get_context(): SourceSnippetContext
-    get_spec(): string | null
+    get_spec(): string
     get_tab_stop(): number
-    get_text(): string | null
+    get_text(): string
     get_text_set(): boolean
     set_context(context: SourceSnippetContext): void
-    set_spec(spec: string | null): void
+    set_spec(spec: string): void
     set_tab_stop(tab_stop: number): void
-    set_text(text: string | null): void
+    set_text(text: string): void
     set_text_set(text_set: boolean): void
 
     // Class property signals of Ide-1.0.Ide.SourceSnippetChunk
@@ -15466,14 +15466,14 @@ export interface SourceSnippetContext {
 
     // Owm methods of Ide-1.0.Ide.SourceSnippetContext
 
-    add_shared_variable(key: string | null, value: string | null): void
-    add_variable(key: string | null, value: string | null): void
+    add_shared_variable(key: string, value: string): void
+    add_variable(key: string, value: string): void
     clear_variables(): void
     dump(): void
     emit_changed(): void
-    expand(input: string | null): string | null
-    get_variable(key: string | null): string | null
-    set_line_prefix(line_prefix: string | null): void
+    expand(input: string): string | null
+    get_variable(key: string): string
+    set_line_prefix(line_prefix: string): void
     set_tab_width(tab_size: number): void
     set_use_spaces(use_spaces: boolean): void
 
@@ -15532,7 +15532,7 @@ export interface SourceSnippets {
     add(snippet: SourceSnippet): void
     clear(): void
     count(): number
-    foreach(prefix: string | null, foreach_func: GLib.Func): void
+    foreach(prefix: string, foreach_func: GLib.Func): void
     merge(other: SourceSnippets): void
 
     // Class property signals of Ide-1.0.Ide.SourceSnippets
@@ -15582,7 +15582,7 @@ export interface SourceSnippetsManager {
      * @param language_id 
      * @returns An #IdeSourceSnippets or %NULL.
      */
-    get_for_language_id(language_id: string | null): SourceSnippets | null
+    get_for_language_id(language_id: string): SourceSnippets | null
     load_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of load_async
@@ -16148,8 +16148,8 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     get_highlight_current_line(): boolean
     get_insert_matching_brace(): boolean
     get_iter_at_visual_column(column: number, location: Gtk.TextIter): void
-    get_mode_display_name(): string | null
-    get_mode_name(): string | null
+    get_mode_display_name(): string
+    get_mode_name(): string
     get_overwrite(): boolean
     get_overwrite_braces(): boolean
     get_rubberband_search(): boolean
@@ -16278,7 +16278,7 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     set_count(count: number): void
     set_enable_word_completion(enable_word_copletion: boolean): void
     set_font_desc(font_desc: Pango.FontDescription): void
-    set_font_name(font_name: string | null): void
+    set_font_name(font_name: string): void
     set_highlight_current_line(highlight_current_line: boolean): void
     set_insert_matching_brace(insert_matching_brace: boolean): void
     set_misspelled_word(start: Gtk.TextIter, end: Gtk.TextIter): void
@@ -16351,7 +16351,7 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -16365,7 +16365,7 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -16376,7 +16376,7 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Ide-1.0.Ide.SourceView
 
@@ -16400,7 +16400,7 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     vfunc_hide_completion(): void
     vfunc_increase_font_size(): void
     vfunc_indent_selection(level: number): void
-    vfunc_insert_at_cursor_and_indent(str: string | null): void
+    vfunc_insert_at_cursor_and_indent(str: string): void
     vfunc_insert_modifier(use_count: boolean): void
     vfunc_jump(location: Gtk.TextIter): void
     vfunc_move_error(dir: Gtk.DirectionType): void
@@ -16418,12 +16418,12 @@ export interface SourceView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
     vfunc_save_command(): void
     vfunc_save_insert_mark(): void
     vfunc_save_search_char(): void
-    vfunc_select_inner(inner_left: string | null, inner_right: string | null, exclusive: boolean, string_mode: boolean): void
+    vfunc_select_inner(inner_left: string, inner_right: string, exclusive: boolean, string_mode: boolean): void
     vfunc_select_tag(exclusive: boolean): void
     vfunc_selection_theatric(theatric: SourceViewTheatric): void
-    vfunc_set_mode(mode: string | null, type: SourceViewModeType): void
+    vfunc_set_mode(mode: string, type: SourceViewModeType): void
     vfunc_set_overwrite(overwrite: boolean): void
-    vfunc_set_search_text(search_text: string | null, from_selection: boolean): void
+    vfunc_set_search_text(search_text: string, from_selection: boolean): void
     vfunc_sort(ignore_case: boolean, reverse: boolean): void
     vfunc_swap_selection_bounds(): void
 
@@ -17450,11 +17450,11 @@ export interface SourceViewMode extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Ide-1.0.Ide.SourceViewMode
 
     get_block_cursor(): boolean
-    get_default_mode(): string | null
-    get_display_name(): string | null
+    get_default_mode(): string
+    get_display_name(): string
     get_keep_mark_on_char(): boolean
     get_mode_type(): SourceViewModeType
-    get_name(): string | null
+    get_name(): string
     get_repeat_insert_with_count(): boolean
     get_suppress_unbound(): boolean
     set_has_indenter(has_indenter: boolean): void
@@ -17852,7 +17852,7 @@ export interface SubprocessLauncher {
 
     get_argv(): string[]
     get_clear_env(): boolean
-    get_cwd(): string | null
+    get_cwd(): string
     get_environ(): string[]
     get_flags(): Gio.SubprocessFlags
     /**
@@ -17865,8 +17865,8 @@ export interface SubprocessLauncher {
      * @returns %TRUE if the process should be executed outside the containment zone.
      */
     get_run_on_host(): boolean
-    getenv(key: string | null): string | null
-    insert_argv(index: number, arg: string | null): void
+    getenv(key: string): string
+    insert_argv(index: number, arg: string): void
     overlay_environment(environment: Environment): void
     pop_argv(): string | null
     /**
@@ -17877,11 +17877,11 @@ export interface SubprocessLauncher {
      * @param args the arguments
      */
     push_args(args: string[] | null): void
-    push_argv(argv: string | null): void
-    replace_argv(index: number, arg: string | null): void
+    push_argv(argv: string): void
+    replace_argv(index: number, arg: string): void
     set_clear_env(clear_env: boolean): void
-    set_cwd(cwd: string | null): void
-    set_environ(environ_: string | null): void
+    set_cwd(cwd: string): void
+    set_environ(environ_: string): void
     set_flags(flags: Gio.SubprocessFlags): void
     /**
      * Sets the #IdeSubprocessLauncher:run-on-host property. See
@@ -17889,8 +17889,8 @@ export interface SubprocessLauncher {
      * @param run_on_host 
      */
     set_run_on_host(run_on_host: boolean): void
-    set_stdout_file_path(stdout_file_path: string | null): void
-    setenv(key: string | null, value: string | null, replace: boolean): void
+    set_stdout_file_path(stdout_file_path: string): void
+    setenv(key: string, value: string, replace: boolean): void
     /**
      * Synchronously spawn a process using the internal state.
      * @param cancellable 
@@ -18096,7 +18096,7 @@ export interface SymbolNode {
      * @returns An #IdeSourceLocation or %NULL.
      */
     get_location_finish(result: Gio.AsyncResult): SourceLocation | null
-    get_name(): string | null
+    get_name(): string
     get_use_markup(): boolean
 
     // Own virtual methods of Ide-1.0.Ide.SymbolNode
@@ -18183,8 +18183,8 @@ export interface TemplateBase {
 
     // Owm methods of Ide-1.0.Ide.TemplateBase
 
-    add_path(path: string | null, destination: Gio.File, scope: Template.Scope, mode: number): void
-    add_resource(resource_path: string | null, destination: Gio.File, scope: Template.Scope, mode: number): void
+    add_path(path: string, destination: Gio.File, scope: Template.Scope, mode: number): void
+    add_resource(resource_path: string, destination: Gio.File, scope: Template.Scope, mode: number): void
     expand_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of expand_all_async
@@ -18281,14 +18281,14 @@ export interface Transfer {
     execute_finish(result: Gio.AsyncResult): boolean
     get_active(): boolean
     get_completed(): boolean
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_progress(): number
-    get_status(): string | null
-    get_title(): string | null
-    set_icon_name(icon_name: string | null): void
+    get_status(): string
+    get_title(): string
+    set_icon_name(icon_name: string): void
     set_progress(progress: number): void
-    set_status(status: string | null): void
-    set_title(title: string | null): void
+    set_status(status: string): void
+    set_title(title: string): void
 
     // Own virtual methods of Ide-1.0.Ide.Transfer
 
@@ -18370,7 +18370,7 @@ export interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -18382,7 +18382,7 @@ export interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -18396,7 +18396,7 @@ export interface TransferButton extends Atk.ImplementorIface, Gtk.Actionable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.TransferButton
 
@@ -18782,7 +18782,7 @@ export interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -18794,7 +18794,7 @@ export interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -18808,7 +18808,7 @@ export interface TransferRow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.TransferRow
 
@@ -18999,7 +18999,7 @@ export interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -19011,7 +19011,7 @@ export interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, G
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -19025,7 +19025,7 @@ export interface TransfersButton extends Atk.ImplementorIface, Gtk.Actionable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Returns the direction the popup will be pointing at when popped up.
      * @returns a #GtkArrowType value
@@ -19727,13 +19727,13 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @param name 
      * @returns An #IdePerspective or %NULL.
      */
-    get_perspective_by_name(name: string | null): Perspective | null
+    get_perspective_by_name(name: string): Perspective | null
     /**
      * Gets the current perspective.
      * @returns An #IdePerspective.
      */
     get_visible_perspective(): Perspective
-    get_visible_perspective_name(): string | null
+    get_visible_perspective_name(): string
     /**
      * Starts the process of loading the buffers for the given `files,` possibly
      * creating an #IdeEditorView for each depending on `flags`.
@@ -19744,7 +19744,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @param cancellable A #GCancellable.
      * @param callback A #GASyncReadyCallback.
      */
-    open_files_async(files: Gio.File, n_files: number, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    open_files_async(files: Gio.File, n_files: number, hint: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of open_files_async
 
@@ -19760,7 +19760,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @param cancellable A #GCancellable.
      * @returns A Promise of the result of {@link open_files_async}
      */
-    open_files_async(files: Gio.File, n_files: number, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    open_files_async(files: Gio.File, n_files: number, hint: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_files_finish(result: Gio.AsyncResult): boolean
     open_project_async(file_or_directory: Gio.File, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
@@ -19776,7 +19776,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      */
     open_project_async(file_or_directory: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_project_finish(result: Gio.AsyncResult): boolean
-    open_uri_async(uri: Uri, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    open_uri_async(uri: Uri, hint: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of open_uri_async
 
@@ -19790,9 +19790,9 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @param cancellable 
      * @returns A Promise of the result of {@link open_uri_async}
      */
-    open_uri_async(uri: Uri, hint: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    open_uri_async(uri: Uri, hint: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     open_uri_finish(result: Gio.AsyncResult): boolean
-    pop_message(message_id: string | null): boolean
+    pop_message(message_id: string): boolean
     push_message(message: WorkbenchMessage): void
     remove_perspective(perspective: Perspective): void
     save_all_async(cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
@@ -19810,7 +19810,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
     save_all_finish(result: Gio.AsyncResult): boolean
     set_fullscreen(fullscreen: boolean): void
     set_visible_perspective(perspective: Perspective): void
-    set_visible_perspective_name(name: string | null): void
+    set_visible_perspective_name(name: string): void
     /**
      * Executes `callback` for every #IdeLayoutView across all perspectives.
      * @param callback The callback to execute
@@ -19852,7 +19852,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -19866,7 +19866,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -19877,7 +19877,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Ide-1.0.Ide.Workbench
 
@@ -20191,7 +20191,7 @@ export interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -20205,7 +20205,7 @@ export interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -20216,7 +20216,7 @@ export interface WorkbenchHeaderBar extends Atk.ImplementorIface, Gtk.Buildable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.WorkbenchHeaderBar
 
@@ -20420,13 +20420,13 @@ export interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, G
 
     // Owm methods of Ide-1.0.Ide.WorkbenchMessage
 
-    add_action(label: string | null, action_name: string | null): void
-    get_id(): string | null
-    get_subtitle(): string | null
-    get_title(): string | null
-    set_id(id: string | null): void
-    set_subtitle(subtitle: string | null): void
-    set_title(title: string | null): void
+    add_action(label: string, action_name: string): void
+    get_id(): string
+    get_subtitle(): string
+    get_title(): string
+    set_id(id: string): void
+    set_subtitle(subtitle: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -20441,7 +20441,7 @@ export interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, G
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -20455,7 +20455,7 @@ export interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -20466,7 +20466,7 @@ export interface WorkbenchMessage extends Atk.ImplementorIface, Gtk.Buildable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Ide-1.0.Ide.WorkbenchMessage
 
@@ -21061,7 +21061,7 @@ export interface CompletionItemClass {
     // Own fields of Ide-1.0.Ide.CompletionItemClass
 
     parent_class: GObject.ObjectClass
-    match: (self: CompletionItem, query: string | null, casefold: string | null) => boolean
+    match: (self: CompletionItem, query: string, casefold: string) => boolean
 }
 
 export abstract class CompletionItemClass {
@@ -21221,7 +21221,7 @@ export interface DeviceClass {
     // Own fields of Ide-1.0.Ide.DeviceClass
 
     parent: ObjectClass
-    get_system_type: (self: Device) => string | null
+    get_system_type: (self: Device) => string
     prepare_configuration: (self: Device, configuration: Configuration) => void
 }
 
@@ -21302,7 +21302,7 @@ export interface Diagnostic {
      */
     get_range(index: number): SourceRange | null
     get_severity(): DiagnosticSeverity
-    get_text(): string | null
+    get_text(): string
     /**
      * This creates a new string that is formatted using the diagnostics line number, column, severity,
      * and message text in the format "line:column: severity: message".
@@ -21349,7 +21349,7 @@ export class Diagnostic {
      * @param location the location of the diagnostic
      * @returns An #IdeDiagnostic.
      */
-    constructor(severity: DiagnosticSeverity, text: string | null, location: SourceLocation) 
+    constructor(severity: DiagnosticSeverity, text: string, location: SourceLocation) 
     /**
      * Creates a new diagnostic.
      * 
@@ -21361,7 +21361,7 @@ export class Diagnostic {
      * @param location the location of the diagnostic
      * @returns An #IdeDiagnostic.
      */
-    static new(severity: DiagnosticSeverity, text: string | null, location: SourceLocation): Diagnostic
+    static new(severity: DiagnosticSeverity, text: string, location: SourceLocation): Diagnostic
 }
 
 export interface DiagnosticProviderInterface {
@@ -21537,7 +21537,7 @@ export interface EditorViewAddinInterface {
     parent: GObject.TypeInterface
     load: (self: EditorViewAddin, view: EditorView) => void
     unload: (self: EditorViewAddin, view: EditorView) => void
-    language_changed: (self: EditorViewAddin, language_id: string | null) => void
+    language_changed: (self: EditorViewAddin, language_id: string) => void
     load_source_view: (self: EditorViewAddin, source_view: SourceView) => void
     unload_source_view: (self: EditorViewAddin, source_view: SourceView) => void
 }
@@ -21662,7 +21662,7 @@ export interface Fixit {
      * Gets the text to replace the source range with.
      * @returns A string with the replacement text.
      */
-    get_text(): string | null
+    get_text(): string
     ref(): Fixit
     unref(): void
 }
@@ -21748,7 +21748,7 @@ export interface HighlightIndex {
     // Owm methods of Ide-1.0.Ide.HighlightIndex
 
     dump(): void
-    insert(word: string | null, tag: any | null): void
+    insert(word: string, tag: any | null): void
     /**
      * Gets the pointer tag that was registered for `word,` or %NULL.  This can be
      * any arbitrary value. Some highlight engines might use it to point at
@@ -21756,7 +21756,7 @@ export interface HighlightIndex {
      * @param word 
      * @returns Highlighter specific tag.
      */
-    lookup(word: string | null): any | null
+    lookup(word: string): any | null
     ref(): HighlightIndex
     unref(): void
 }
@@ -21811,8 +21811,8 @@ export interface LangservClientClass {
     // Own fields of Ide-1.0.Ide.LangservClientClass
 
     parent_class: ObjectClass
-    notification: (self: LangservClient, method: string | null, params: GLib.Variant) => void
-    supports_language: (self: LangservClient, language_id: string | null) => boolean
+    notification: (self: LangservClient, method: string, params: GLib.Variant) => void
+    supports_language: (self: LangservClient, language_id: string) => boolean
     published_diagnostics: (self: LangservClient, file: Gio.File, diagnostics: Diagnostics) => void
     _reserved1: any
     _reserved2: any
@@ -22215,8 +22215,8 @@ export interface PatternSpec {
 
     // Owm methods of Ide-1.0.Ide.PatternSpec
 
-    get_text(): string | null
-    match(haystack: string | null): boolean
+    get_text(): string
+    match(haystack: string): boolean
     ref(): PatternSpec
     unref(): void
 }
@@ -22237,8 +22237,8 @@ export class PatternSpec {
 
     // Constructors of Ide-1.0.Ide.PatternSpec
 
-    constructor(keywords: string | null) 
-    static new(keywords: string | null): PatternSpec
+    constructor(keywords: string) 
+    static new(keywords: string): PatternSpec
 }
 
 export interface PerspectiveInterface {
@@ -22471,7 +22471,7 @@ export interface RenameProviderInterface {
     // Own fields of Ide-1.0.Ide.RenameProviderInterface
 
     parent_iface: GObject.TypeInterface
-    rename_async: (self: RenameProvider, location: SourceLocation, new_name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    rename_async: (self: RenameProvider, location: SourceLocation, new_name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     rename_finish: (self: RenameProvider, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* edits */ ProjectEdit[] | null ]
     load: (self: RenameProvider) => void
 }
@@ -22566,7 +22566,7 @@ export interface RuntimeClass {
     // Own fields of Ide-1.0.Ide.RuntimeClass
 
     parent: ObjectClass
-    contains_program_in_path: (self: Runtime, program: string | null, cancellable: Gio.Cancellable | null) => boolean
+    contains_program_in_path: (self: Runtime, program: string, cancellable: Gio.Cancellable | null) => boolean
     create_launcher: (self: Runtime) => SubprocessLauncher
     prepare_configuration: (self: Runtime, configuration: Configuration) => void
     create_runner: (self: Runtime, build_target: BuildTarget) => Runner | null
@@ -22614,8 +22614,8 @@ export interface RuntimeProviderInterface {
     parent: GObject.TypeInterface
     load: (self: RuntimeProvider, manager: RuntimeManager) => void
     unload: (self: RuntimeProvider, manager: RuntimeManager) => void
-    can_install: (self: RuntimeProvider, runtime_id: string | null) => boolean
-    install_async: (self: RuntimeProvider, runtime_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    can_install: (self: RuntimeProvider, runtime_id: string) => boolean
+    install_async: (self: RuntimeProvider, runtime_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     install_finish: (self: RuntimeProvider, result: Gio.AsyncResult) => boolean
 }
 
@@ -22681,8 +22681,8 @@ export interface SearchProviderInterface {
     parent_iface: GObject.TypeInterface
     get_prefix: (provider: SearchProvider) => string
     get_priority: (provider: SearchProvider) => number
-    get_verb: (provider: SearchProvider) => string | null
-    populate: (provider: SearchProvider, context: SearchContext, search_terms: string | null, max_results: number, cancellable: Gio.Cancellable | null) => void
+    get_verb: (provider: SearchProvider) => string
+    populate: (provider: SearchProvider, context: SearchContext, search_terms: string, max_results: number, cancellable: Gio.Cancellable | null) => void
     create_row: (provider: SearchProvider, result: SearchResult) => Gtk.Widget
     activate: (provider: SearchProvider, row: Gtk.Widget, result: SearchResult) => void
 }
@@ -22740,7 +22740,7 @@ export interface ServiceInterface {
 
     parent_interface: GObject.TypeInterface
     context_loaded: (service: Service) => void
-    get_name: (service: Service) => string | null
+    get_name: (service: Service) => string
     start: (service: Service) => void
     stop: (service: Service) => void
 }
@@ -22980,7 +22980,7 @@ export interface SourceViewClass {
     goto_definition: (self: SourceView) => void
     hide_completion: (self: SourceView) => void
     indent_selection: (self: SourceView, level: number) => void
-    insert_at_cursor_and_indent: (self: SourceView, str: string | null) => void
+    insert_at_cursor_and_indent: (self: SourceView, str: string) => void
     insert_modifier: (self: SourceView, use_count: boolean) => void
     jump: (self: SourceView, location: Gtk.TextIter) => void
     movement: (self: SourceView, movement: SourceViewMovement, extend_selection: boolean, exclusive: boolean, apply_count: boolean) => void
@@ -22996,12 +22996,12 @@ export interface SourceViewClass {
     save_command: (self: SourceView) => void
     save_search_char: (self: SourceView) => void
     save_insert_mark: (self: SourceView) => void
-    select_inner: (self: SourceView, inner_left: string | null, inner_right: string | null, exclusive: boolean, string_mode: boolean) => void
+    select_inner: (self: SourceView, inner_left: string, inner_right: string, exclusive: boolean, string_mode: boolean) => void
     select_tag: (self: SourceView, exclusive: boolean) => void
     selection_theatric: (self: SourceView, theatric: SourceViewTheatric) => void
-    set_mode: (self: SourceView, mode: string | null, type: SourceViewModeType) => void
+    set_mode: (self: SourceView, mode: string, type: SourceViewModeType) => void
     set_overwrite: (self: SourceView, overwrite: boolean) => void
-    set_search_text: (self: SourceView, search_text: string | null, from_selection: boolean) => void
+    set_search_text: (self: SourceView, search_text: string, from_selection: boolean) => void
     sort: (self: SourceView, ignore_case: boolean, reverse: boolean) => void
     swap_selection_bounds: (self: SourceView) => void
     increase_font_size: (self: SourceView) => void
@@ -23062,7 +23062,7 @@ export interface SubprocessInterface {
     // Own fields of Ide-1.0.Ide.SubprocessInterface
 
     parent_interface: GObject.TypeInterface
-    get_identifier: (self: Subprocess) => string | null
+    get_identifier: (self: Subprocess) => string
     get_stdout_pipe: (self: Subprocess) => Gio.InputStream
     get_stderr_pipe: (self: Subprocess) => Gio.InputStream
     get_stdin_pipe: (self: Subprocess) => Gio.OutputStream
@@ -23082,7 +23082,7 @@ export interface SubprocessInterface {
     communicate_async: (self: Subprocess, stdin_buf: GLib.Bytes | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     communicate_finish: (self: Subprocess, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* stdout_buf */ GLib.Bytes, /* stderr_buf */ GLib.Bytes ]
     communicate_utf8_async: (self: Subprocess, stdin_buf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
-    communicate_utf8_finish: (self: Subprocess, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* stdout_buf */ string | null, /* stderr_buf */ string | null ]
+    communicate_utf8_finish: (self: Subprocess, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* stdout_buf */ string, /* stderr_buf */ string ]
 }
 
 export abstract class SubprocessInterface {
@@ -23164,7 +23164,7 @@ export interface Symbol {
     get_definition_location(): SourceLocation | null
     get_flags(): SymbolFlags
     get_kind(): SymbolKind
-    get_name(): string | null
+    get_name(): string
     ref(): Symbol
     unref(): void
 }
@@ -23177,8 +23177,8 @@ export class Symbol {
 
     // Constructors of Ide-1.0.Ide.Symbol
 
-    constructor(name: string | null, kind: SymbolKind, flags: SymbolFlags, declaration_location: SourceLocation | null, definition_location: SourceLocation | null, canonical_location: SourceLocation | null) 
-    static new(name: string | null, kind: SymbolKind, flags: SymbolFlags, declaration_location: SourceLocation | null, definition_location: SourceLocation | null, canonical_location: SourceLocation | null): Symbol
+    constructor(name: string, kind: SymbolKind, flags: SymbolFlags, declaration_location: SourceLocation | null, definition_location: SourceLocation | null, canonical_location: SourceLocation | null) 
+    static new(name: string, kind: SymbolKind, flags: SymbolFlags, declaration_location: SourceLocation | null, definition_location: SourceLocation | null, canonical_location: SourceLocation | null): Symbol
 }
 
 export interface SymbolNodeClass {
@@ -23427,7 +23427,7 @@ export interface UnsavedFile {
      */
     get_file(): Gio.File
     get_sequence(): number
-    get_temp_path(): string | null
+    get_temp_path(): string
     persist(cancellable: Gio.Cancellable | null): boolean
     ref(): UnsavedFile
     unref(): void
@@ -23469,32 +23469,32 @@ export interface Uri {
      * information.
      * @returns @uri's authentication parameters.
      */
-    get_auth_params(): string | null
+    get_auth_params(): string
     /**
      * Gets `uri'`s fragment, which may contain %<!-- -->-encoding,
      * depending on the flags with which `uri` was parsed.
      * @returns @uri's fragment.
      */
-    get_fragment(): string | null
+    get_fragment(): string
     /**
      * Gets `uri'`s host. If `uri` contained an IPv6 address literal, this
      * value will not include the brackets that are required by the URI
      * syntax.
      * @returns @uri's host.
      */
-    get_host(): string | null
+    get_host(): string
     /**
      * Gets `uri'`s password. If `uri` was not parsed with
      * %IDE_URI_PARSE_PASSWORD, this will always be %NULL.
      * @returns @uri's password.
      */
-    get_password(): string | null
+    get_password(): string
     /**
      * Gets `uri'`s path, which may contain %<!-- -->-encoding, depending
      * on the flags with which `uri` was parsed.
      * @returns @uri's path.
      */
-    get_path(): string | null
+    get_path(): string
     /**
      * Gets `uri'`s port.
      * @returns @uri's port, or %0 if it was unset
@@ -23508,12 +23508,12 @@ export interface Uri {
      * ide_uri_parse_params() may be useful.
      * @returns @uri's query.
      */
-    get_query(): string | null
+    get_query(): string
     /**
      * Gets `uri'`s scheme.
      * @returns @uri's scheme.
      */
-    get_scheme(): string | null
+    get_scheme(): string
     /**
      * Gets `uri'`s user. If `uri` was parsed with %IDE_URI_PARSE_PASSWORD or
      * %IDE_URI_PARSE_AUTH_PARAMS, this is the string that appears before the
@@ -23521,7 +23521,7 @@ export interface Uri {
      * userinfo is considered the user.
      * @returns @uri's user.
      */
-    get_user(): string | null
+    get_user(): string
     is_file(file: Gio.File): boolean
     /**
      * Parses `uri_string` according to `flags` and, if it is a relative
@@ -23531,7 +23531,7 @@ export interface Uri {
      * @param flags flags describing how to parse `uri_string`
      * @returns a new #IdeUri.
      */
-    new_relative(uri_string: string | null, flags: UriParseFlags): Uri
+    new_relative(uri_string: string, flags: UriParseFlags): Uri
     /**
      * Increments the reference count of `uri` by one.
      * @returns uri
@@ -23541,14 +23541,14 @@ export interface Uri {
      * Sets `uri'`s authentication parameters to `auth_params`.
      * @param auth_params the authentication parameters, or %NULL
      */
-    set_auth_params(auth_params: string | null): void
+    set_auth_params(auth_params: string): void
     /**
      * Sets `uri'`s fragment to `fragment,` which is assumed to have been
      * %<!-- -->-encoded by the caller. See ide_uri_set_path() for more
      * details.
      * @param fragment the (%<!-- -->-encoded) fragment
      */
-    set_fragment(fragment: string | null): void
+    set_fragment(fragment: string): void
     /**
      * Sets `uri'`s host to `host`.
      * 
@@ -23557,12 +23557,12 @@ export interface Uri {
      * converting `uri` to a string.
      * @param host the hostname or IP address, or %NULL
      */
-    set_host(host: string | null): void
+    set_host(host: string): void
     /**
      * Sets `uri'`s password to `password`.
      * @param password the password, or %NULL
      */
-    set_password(password: string | null): void
+    set_password(password: string): void
     /**
      * Sets `uri'`s path to `path,` which is assumed to have been
      * appropriately %<!-- -->-encoded. In particular, this means that if
@@ -23573,7 +23573,7 @@ export interface Uri {
      * again would give a different result.
      * @param path the (%<!-- -->-encoded) path
      */
-    set_path(path: string | null): void
+    set_path(path: string): void
     /**
      * Sets `uri'`s port to `port`. If `port` is 0, it will not be output
      * when calling ide_uri_to_string().
@@ -23586,18 +23586,18 @@ export interface Uri {
      * details.
      * @param query the (%<!-- -->-encoded) query
      */
-    set_query(query: string | null): void
+    set_query(query: string): void
     /**
      * Sets `uri'`s scheme to `scheme`.
      * @param scheme the URI scheme
      */
-    set_scheme(scheme: string | null): void
+    set_scheme(scheme: string): void
     /**
      * Sets `uri'`s user to `user`. See ide_uri_get_user() for a description
      * of how this interacts with various parsing flags.
      * @param user the username, or %NULL
      */
-    set_user(user: string | null): void
+    set_user(user: string): void
     /**
      * Creates a #GFile that represents the resource `uri`.
      * @returns A #GFile or %NULL upon failure.
@@ -23636,7 +23636,7 @@ export class Uri {
      * @param flags flags describing how to parse `uri_string`
      * @returns a new #IdeUri.
      */
-    constructor(uri_string: string | null, flags: UriParseFlags) 
+    constructor(uri_string: string, flags: UriParseFlags) 
     /**
      * Parses `uri_string` according to `flags`. If the result is not a
      * valid absolute URI, it will be discarded, and an error returned.
@@ -23645,7 +23645,7 @@ export class Uri {
      * @param flags flags describing how to parse `uri_string`
      * @returns a new #IdeUri.
      */
-    static new(uri_string: string | null, flags: UriParseFlags): Uri
+    static new(uri_string: string, flags: UriParseFlags): Uri
     /**
      * Creates a new #IdeUri from the uri provided by `file`.
      * @constructor 
@@ -23653,7 +23653,7 @@ export class Uri {
      * @returns A newly allcoated #IdeUri.
      */
     static new_from_file(file: Gio.File): Uri
-    static build(scheme: string | null, userinfo: string | null, host: string | null, port: string | null, path: string | null, query: string | null, fragment: string | null): string | null
+    static build(scheme: string, userinfo: string, host: string, port: string, path: string, query: string, fragment: string): string | null
     static error_quark(): GLib.Quark
     /**
      * Utility function for parsing "network" URIs. This extracts just the
@@ -23663,7 +23663,7 @@ export class Uri {
      * @param flags flags for parsing `uri_string`
      * @returns %TRUE on success, %FALSE on failure.
      */
-    static parse_host(uri_string: string | null, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
+    static parse_host(uri_string: string, flags: UriParseFlags): [ /* returnType */ boolean, /* scheme */ string | null, /* host */ string | null, /* port */ number ]
     /**
      * Many URI schemes include one or more attribute/value pairs
      * as part of the URI value. This method can be used to parse them
@@ -23683,7 +23683,7 @@ export class Uri {
      * @param case_insensitive whether to match parameter names case-insensitively
      * @returns a hash table of attribute/value pairs. Both names and values will be fully-decoded. If @params cannot be parsed (eg, it contains two @separator characters in a row), then %NULL is returned.
      */
-    static parse_params(params: string | null, length: number, separator: number, case_insensitive: boolean): GLib.HashTable
+    static parse_params(params: string, length: number, separator: number, case_insensitive: boolean): GLib.HashTable
     /**
      * Parses `uri_string` more-or-less according to the generic grammar of
      * RFC 3986 ("more" if `strict` is %TRUE, "less" if %FALSE), and
@@ -23697,7 +23697,7 @@ export class Uri {
      * @param uri_string a string containing a relative or absolute URI
      * @param strict whether to parse `uri_string` strictly
      */
-    static split(uri_string: string | null, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
+    static split(uri_string: string, strict: boolean): [ /* scheme */ string | null, /* userinfo */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null, /* query */ string | null, /* fragment */ string | null ]
 }
 
 export interface VcsConfigInterface {
@@ -23758,17 +23758,17 @@ export interface VcsUri {
 
     // Owm methods of Ide-1.0.Ide.VcsUri
 
-    get_host(): string | null
-    get_path(): string | null
+    get_host(): string
+    get_path(): string
     get_port(): number
-    get_scheme(): string | null
-    get_user(): string | null
+    get_scheme(): string
+    get_user(): string
     ref(): VcsUri
-    set_host(host: string | null): void
-    set_path(path: string | null): void
+    set_host(host: string): void
+    set_path(path: string): void
     set_port(port: number): void
-    set_scheme(scheme: string | null): void
-    set_user(user: string | null): void
+    set_scheme(scheme: string): void
+    set_user(user: string): void
     to_string(): string | null
     unref(): void
 }
@@ -23781,9 +23781,9 @@ export class VcsUri {
 
     // Constructors of Ide-1.0.Ide.VcsUri
 
-    constructor(uri: string | null) 
-    static new(uri: string | null): VcsUri
-    static is_valid(uri_string: string | null): boolean
+    constructor(uri: string) 
+    static new(uri: string): VcsUri
+    static is_valid(uri_string: string): boolean
 }
 
 export interface WorkbenchAddinInterface {
@@ -23795,7 +23795,7 @@ export interface WorkbenchAddinInterface {
     load: (self: WorkbenchAddin, workbench: Workbench) => void
     unload: (self: WorkbenchAddin, workbench: Workbench) => void
     can_open: (self: WorkbenchAddin, uri: Uri, content_type: string | null) => [ /* returnType */ boolean, /* priority */ number ]
-    open_async: (self: WorkbenchAddin, uri: Uri, content_type: string | null, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    open_async: (self: WorkbenchAddin, uri: Uri, content_type: string, flags: WorkbenchOpenFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     open_finish: (self: WorkbenchAddin, result: Gio.AsyncResult) => boolean
     perspective_set: (self: WorkbenchAddin, perspective: Perspective) => void
 }

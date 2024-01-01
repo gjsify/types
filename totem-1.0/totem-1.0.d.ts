@@ -158,7 +158,7 @@ enum RemoteSetting {
 /**
  * The GSettings schema under which all Totem settings are stored.
  */
-const GSETTINGS_SCHEMA: string | null
+const GSETTINGS_SCHEMA: string
 /**
  * Return a %NULL-terminated array of paths to directories which can contain Totem plugins. This respects the GSettings disable_user_plugins setting.
  * @returns a %NULL-terminated array of paths to plugin directories
@@ -173,7 +173,7 @@ function get_plugin_paths(): string[]
  * @param pack_type A #GtkPackType to tell us where to include the button
  * @returns the button passed as input
  */
-function interface_create_header_button(header: Gtk.Widget, button: Gtk.Widget, icon_name: string | null, pack_type: Gtk.PackType): Gtk.Widget
+function interface_create_header_button(header: Gtk.Widget, button: Gtk.Widget, icon_name: string, pack_type: Gtk.PackType): Gtk.Widget
 /**
  * Display a modal error dialogue with `title` as its primary error text, and `reason`
  * as its secondary text.
@@ -181,7 +181,7 @@ function interface_create_header_button(header: Gtk.Widget, button: Gtk.Widget, 
  * @param reason the error reason (secondary text)
  * @param parent the error dialogue's parent #GtkWindow
  */
-function interface_error(title: string | null, reason: string | null, parent: Gtk.Window): void
+function interface_error(title: string, reason: string, parent: Gtk.Window): void
 /**
  * Display a modal error dialogue like totem_interface_error() which blocks until the user has
  * dismissed it.
@@ -189,7 +189,7 @@ function interface_error(title: string | null, reason: string | null, parent: Gt
  * @param reason the error reason (secondary text)
  * @param parent the error dialogue's parent #GtkWindow
  */
-function interface_error_blocking(title: string | null, reason: string | null, parent: Gtk.Window): void
+function interface_error_blocking(title: string, reason: string, parent: Gtk.Window): void
 /**
  * Display a modal error dialogue like totem_interface_error(),
  * but add a button which will open `uri` in a browser window.
@@ -199,8 +199,8 @@ function interface_error_blocking(title: string | null, reason: string | null, p
  * @param label a label for the URI's button, or %NULL to use `uri` as the label
  * @param parent the error dialogue's parent #GtkWindow
  */
-function interface_error_with_link(title: string | null, reason: string | null, uri: string | null, label: string | null, parent: Gtk.Window): void
-function interface_get_full_path(name: string | null): string | null
+function interface_error_with_link(title: string, reason: string, uri: string, label: string, parent: Gtk.Window): void
+function interface_get_full_path(name: string): string | null
 /**
  * Load a #GtkBuilder UI file with the given name and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
  * @param name the #GtkBuilder UI file to load
@@ -209,13 +209,13 @@ function interface_get_full_path(name: string | null): string | null
  * @param user_data the user data to pass to gtk_builder_connect_signals(), or %NULL
  * @returns the loaded #GtkBuilder object, or %NULL
  */
-function interface_load(name: string | null, fatal: boolean, parent: Gtk.Window | null, user_data: any | null): Gtk.Builder
+function interface_load(name: string, fatal: boolean, parent: Gtk.Window | null, user_data: any | null): Gtk.Builder
 /**
  * Load the image called `name` in the directory given by totem_interface_get_full_path() into a #GdkPixbuf.
  * @param name the image file name
  * @returns the loaded pixbuf, or %NULL
  */
-function interface_load_pixbuf(name: string | null): GdkPixbuf.Pixbuf
+function interface_load_pixbuf(name: string): GdkPixbuf.Pixbuf
 /**
  * Load a #GtkBuilder UI file from the given path and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
  * @param filename the #GtkBuilder UI file path to load
@@ -224,7 +224,7 @@ function interface_load_pixbuf(name: string | null): GdkPixbuf.Pixbuf
  * @param user_data the user data to pass to gtk_builder_connect_signals(), or %NULL
  * @returns the loaded #GtkBuilder object, or %NULL
  */
-function interface_load_with_full_path(filename: string | null, fatal: boolean, parent: Gtk.Window | null, user_data: any | null): Gtk.Builder
+function interface_load_with_full_path(filename: string, fatal: boolean, parent: Gtk.Window | null, user_data: any | null): Gtk.Builder
 /**
  * Finds the specified `file` by looking in the plugin paths
  * listed by totem_get_plugin_paths() and then in the system
@@ -236,7 +236,7 @@ function interface_load_with_full_path(filename: string | null, fatal: boolean, 
  * @param file the file to find
  * @returns a newly-allocated absolute path for the file, or %NULL
  */
-function plugin_find_file(plugin_name: string | null, file: string | null): string | null
+function plugin_find_file(plugin_name: string, file: string): string | null
 /**
  * Loads an interface file (GtkBuilder UI file) for a plugin, given its filename and
  * assuming it's installed in the plugin's data directory.
@@ -249,7 +249,7 @@ function plugin_find_file(plugin_name: string | null, file: string | null): stri
  * @param user_data a pointer to be passed to each signal handler in the interface when they're called
  * @returns the #GtkBuilder instance for the interface
  */
-function plugin_load_interface(plugin_name: string | null, name: string | null, fatal: boolean, parent: Gtk.Window | null, user_data: any | null): Gtk.Builder
+function plugin_load_interface(plugin_name: string, name: string, fatal: boolean, parent: Gtk.Window | null, user_data: any | null): Gtk.Builder
 function remote_command_quark(): GLib.Quark
 function remote_setting_quark(): GLib.Quark
 module Object {
@@ -379,13 +379,13 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param display_name the display name of the URI
      * @param play whether to play the added item
      */
-    add_to_playlist(uri: string | null, display_name: string | null, play: boolean): void
+    add_to_playlist(uri: string, display_name: string, play: boolean): void
     /**
      * Adds a local media file to the main view.
      * @param file a #GFile representing a media
      * @param title a title for the media, or %NULL
      */
-    add_to_view(file: Gio.File, title: string | null): void
+    add_to_view(file: Gio.File, title: string): void
     /**
      * Returns true if totem_object_seek_next() would have an effect.
      */
@@ -404,7 +404,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * will not have the associated action removed.
      * @param id the ID for the menu section to empty
      */
-    empty_menu_section(id: string | null): void
+    empty_menu_section(id: string): void
     /**
      * Closes Totem.
      */
@@ -430,7 +430,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param id the ID for the menu section to look up
      * @returns a #GMenu or %NULL on failure
      */
-    get_menu_section(id: string | null): Gio.Menu | null
+    get_menu_section(id: string): Gio.Menu | null
     /**
      * Returns the length of the current playlist.
      * @returns the playlist length
@@ -518,7 +518,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param cmd a #TotemRemoteCommand
      * @param url an MRL to play, or %NULL
      */
-    remote_command(cmd: RemoteCommand, url: string | null): void
+    remote_command(cmd: RemoteCommand, url: string): void
     /**
      * Returns the value of `setting` for this instance of Totem.
      * @param setting a #TotemRemoteSetting
@@ -561,7 +561,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * playlist entry.
      * @param subtitle_uri the URI of the subtitle file to add
      */
-    set_current_subtitle(subtitle_uri: string | null): void
+    set_current_subtitle(subtitle_uri: string): void
     /**
      * Sets the playback rate, with `1.0` being the normal playback rate.
      * @param rate the new absolute playback rate
@@ -579,7 +579,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param title the error dialog title
      * @param reason the error dialog text
      */
-    show_error(title: string | null, reason: string | null): void
+    show_error(title: string, reason: string): void
     /**
      * Stops playback, and sets the playlist back at the start.
      */
@@ -588,11 +588,11 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
     // Own virtual methods of Totem-1.0.Totem.Object
 
     vfunc_file_closed(): void
-    vfunc_file_has_played(mrl: string | null): void
-    vfunc_file_opened(mrl: string | null): void
-    vfunc_get_text_subtitle(mrl: string | null): string | null
-    vfunc_get_user_agent(mrl: string | null): string | null
-    vfunc_metadata_updated(artist: string | null, title: string | null, album: string | null, track_num: number): void
+    vfunc_file_has_played(mrl: string): void
+    vfunc_file_opened(mrl: string): void
+    vfunc_get_text_subtitle(mrl: string): string | null
+    vfunc_get_user_agent(mrl: string): string | null
+    vfunc_metadata_updated(artist: string, title: string, album: string, track_num: number): void
 
     // Own signals of Totem-1.0.Totem.Object
 
@@ -725,12 +725,12 @@ interface ObjectClass {
     // Own fields of Totem-1.0.Totem.ObjectClass
 
     parent_class: Gtk.ApplicationClass
-    file_opened: (totem: Object, mrl: string | null) => void
+    file_opened: (totem: Object, mrl: string) => void
     file_closed: (totem: Object) => void
-    file_has_played: (totem: Object, mrl: string | null) => void
-    metadata_updated: (totem: Object, artist: string | null, title: string | null, album: string | null, track_num: number) => void
-    get_user_agent: (totem: Object, mrl: string | null) => string | null
-    get_text_subtitle: (totem: Object, mrl: string | null) => string | null
+    file_has_played: (totem: Object, mrl: string) => void
+    metadata_updated: (totem: Object, artist: string, title: string, album: string, track_num: number) => void
+    get_user_agent: (totem: Object, mrl: string) => string | null
+    get_text_subtitle: (totem: Object, mrl: string) => string | null
 }
 
 abstract class ObjectClass {

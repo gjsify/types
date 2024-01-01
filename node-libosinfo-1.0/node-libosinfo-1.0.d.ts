@@ -211,107 +211,107 @@ enum InstallScriptInjectionMethod {
 enum MediaDetectFlags {
     BOOTABLE,
 }
-const ARCHITECTURE_ALL: string | null
-const AVATAR_FORMAT_PROP_ALPHA: string | null
-const AVATAR_FORMAT_PROP_HEIGHT: string | null
-const AVATAR_FORMAT_PROP_MIME_TYPE: string | null
-const AVATAR_FORMAT_PROP_WIDTH: string | null
-const DEVICELINK_PROP_DRIVER: string | null
-const DEVICELINK_PROP_SUPPORTED: string | null
+const ARCHITECTURE_ALL: string
+const AVATAR_FORMAT_PROP_ALPHA: string
+const AVATAR_FORMAT_PROP_HEIGHT: string
+const AVATAR_FORMAT_PROP_MIME_TYPE: string
+const AVATAR_FORMAT_PROP_WIDTH: string
+const DEVICELINK_PROP_DRIVER: string
+const DEVICELINK_PROP_SUPPORTED: string
 const DEVICE_DRIVER_DEFAULT_PRIORITY: number
-const DEVICE_DRIVER_PROP_ARCHITECTURE: string | null
-const DEVICE_DRIVER_PROP_DEVICE: string | null
-const DEVICE_DRIVER_PROP_FILE: string | null
-const DEVICE_DRIVER_PROP_LOCATION: string | null
-const DEVICE_DRIVER_PROP_PRE_INSTALLABLE: string | null
-const DEVICE_DRIVER_PROP_PRIORITY: string | null
-const DEVICE_DRIVER_PROP_SIGNED: string | null
-const DEVICE_PROP_BUS_TYPE: string | null
-const DEVICE_PROP_CLASS: string | null
-const DEVICE_PROP_NAME: string | null
-const DEVICE_PROP_PRODUCT: string | null
-const DEVICE_PROP_PRODUCT_ID: string | null
-const DEVICE_PROP_SUBSYSTEM: string | null
-const DEVICE_PROP_VENDOR: string | null
-const DEVICE_PROP_VENDOR_ID: string | null
-const ENTITY_PROP_ID: string | null
-const FIRMWARE_PROP_ARCHITECTURE: string | null
-const FIRMWARE_PROP_SUPPORTED: string | null
-const FIRMWARE_PROP_TYPE: string | null
+const DEVICE_DRIVER_PROP_ARCHITECTURE: string
+const DEVICE_DRIVER_PROP_DEVICE: string
+const DEVICE_DRIVER_PROP_FILE: string
+const DEVICE_DRIVER_PROP_LOCATION: string
+const DEVICE_DRIVER_PROP_PRE_INSTALLABLE: string
+const DEVICE_DRIVER_PROP_PRIORITY: string
+const DEVICE_DRIVER_PROP_SIGNED: string
+const DEVICE_PROP_BUS_TYPE: string
+const DEVICE_PROP_CLASS: string
+const DEVICE_PROP_NAME: string
+const DEVICE_PROP_PRODUCT: string
+const DEVICE_PROP_PRODUCT_ID: string
+const DEVICE_PROP_SUBSYSTEM: string
+const DEVICE_PROP_VENDOR: string
+const DEVICE_PROP_VENDOR_ID: string
+const ENTITY_PROP_ID: string
+const FIRMWARE_PROP_ARCHITECTURE: string
+const FIRMWARE_PROP_SUPPORTED: string
+const FIRMWARE_PROP_TYPE: string
 const GIBIBYTES: number
-const IMAGE_PROP_ARCHITECTURE: string | null
-const IMAGE_PROP_CLOUD_INIT: string | null
-const IMAGE_PROP_FORMAT: string | null
-const IMAGE_PROP_URL: string | null
-const IMAGE_PROP_VARIANT: string | null
-const INSTALL_CONFIG_PARAM_PROP_DATAMAP: string | null
-const INSTALL_CONFIG_PARAM_PROP_NAME: string | null
-const INSTALL_CONFIG_PARAM_PROP_POLICY: string | null
-const INSTALL_CONFIG_PROP_ADMIN_PASSWORD: string | null
-const INSTALL_CONFIG_PROP_AVATAR_DISK: string | null
-const INSTALL_CONFIG_PROP_AVATAR_LOCATION: string | null
-const INSTALL_CONFIG_PROP_DRIVER_SIGNING: string | null
-const INSTALL_CONFIG_PROP_HARDWARE_ARCH: string | null
-const INSTALL_CONFIG_PROP_HOSTNAME: string | null
-const INSTALL_CONFIG_PROP_INSTALLATION_URL: string | null
-const INSTALL_CONFIG_PROP_L10N_KEYBOARD: string | null
-const INSTALL_CONFIG_PROP_L10N_LANGUAGE: string | null
-const INSTALL_CONFIG_PROP_L10N_TIMEZONE: string | null
-const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_DISK: string | null
-const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_LOCATION: string | null
-const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_DISK: string | null
-const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_LOCATION: string | null
-const INSTALL_CONFIG_PROP_REG_LOGIN: string | null
-const INSTALL_CONFIG_PROP_REG_PASSWORD: string | null
-const INSTALL_CONFIG_PROP_REG_PRODUCTKEY: string | null
-const INSTALL_CONFIG_PROP_SCRIPT_DISK: string | null
-const INSTALL_CONFIG_PROP_TARGET_DISK: string | null
-const INSTALL_CONFIG_PROP_USER_ADMIN: string | null
-const INSTALL_CONFIG_PROP_USER_AUTOLOGIN: string | null
-const INSTALL_CONFIG_PROP_USER_LOGIN: string | null
-const INSTALL_CONFIG_PROP_USER_PASSWORD: string | null
-const INSTALL_CONFIG_PROP_USER_REALNAME: string | null
-const INSTALL_SCRIPT_PROFILE_DESKTOP: string | null
-const INSTALL_SCRIPT_PROFILE_JEOS: string | null
-const INSTALL_SCRIPT_PROP_CAN_POST_INSTALL_DRIVERS: string | null
-const INSTALL_SCRIPT_PROP_CAN_PRE_INSTALL_DRIVERS: string | null
-const INSTALL_SCRIPT_PROP_EXPECTED_FILENAME: string | null
-const INSTALL_SCRIPT_PROP_INJECTION_METHOD: string | null
-const INSTALL_SCRIPT_PROP_INSTALLATION_SOURCE: string | null
-const INSTALL_SCRIPT_PROP_NEEDS_INTERNET: string | null
-const INSTALL_SCRIPT_PROP_PATH_FORMAT: string | null
-const INSTALL_SCRIPT_PROP_POST_INSTALL_DRIVERS_SIGNING_REQ: string | null
-const INSTALL_SCRIPT_PROP_PREFERRED_INJECTION_METHOD: string | null
-const INSTALL_SCRIPT_PROP_PRE_INSTALL_DRIVERS_SIGNING_REQ: string | null
-const INSTALL_SCRIPT_PROP_PRODUCT_KEY_FORMAT: string | null
-const INSTALL_SCRIPT_PROP_PROFILE: string | null
-const INSTALL_SCRIPT_PROP_TEMPLATE_DATA: string | null
-const INSTALL_SCRIPT_PROP_TEMPLATE_URI: string | null
+const IMAGE_PROP_ARCHITECTURE: string
+const IMAGE_PROP_CLOUD_INIT: string
+const IMAGE_PROP_FORMAT: string
+const IMAGE_PROP_URL: string
+const IMAGE_PROP_VARIANT: string
+const INSTALL_CONFIG_PARAM_PROP_DATAMAP: string
+const INSTALL_CONFIG_PARAM_PROP_NAME: string
+const INSTALL_CONFIG_PARAM_PROP_POLICY: string
+const INSTALL_CONFIG_PROP_ADMIN_PASSWORD: string
+const INSTALL_CONFIG_PROP_AVATAR_DISK: string
+const INSTALL_CONFIG_PROP_AVATAR_LOCATION: string
+const INSTALL_CONFIG_PROP_DRIVER_SIGNING: string
+const INSTALL_CONFIG_PROP_HARDWARE_ARCH: string
+const INSTALL_CONFIG_PROP_HOSTNAME: string
+const INSTALL_CONFIG_PROP_INSTALLATION_URL: string
+const INSTALL_CONFIG_PROP_L10N_KEYBOARD: string
+const INSTALL_CONFIG_PROP_L10N_LANGUAGE: string
+const INSTALL_CONFIG_PROP_L10N_TIMEZONE: string
+const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_DISK: string
+const INSTALL_CONFIG_PROP_POST_INSTALL_DRIVERS_LOCATION: string
+const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_DISK: string
+const INSTALL_CONFIG_PROP_PRE_INSTALL_DRIVERS_LOCATION: string
+const INSTALL_CONFIG_PROP_REG_LOGIN: string
+const INSTALL_CONFIG_PROP_REG_PASSWORD: string
+const INSTALL_CONFIG_PROP_REG_PRODUCTKEY: string
+const INSTALL_CONFIG_PROP_SCRIPT_DISK: string
+const INSTALL_CONFIG_PROP_TARGET_DISK: string
+const INSTALL_CONFIG_PROP_USER_ADMIN: string
+const INSTALL_CONFIG_PROP_USER_AUTOLOGIN: string
+const INSTALL_CONFIG_PROP_USER_LOGIN: string
+const INSTALL_CONFIG_PROP_USER_PASSWORD: string
+const INSTALL_CONFIG_PROP_USER_REALNAME: string
+const INSTALL_SCRIPT_PROFILE_DESKTOP: string
+const INSTALL_SCRIPT_PROFILE_JEOS: string
+const INSTALL_SCRIPT_PROP_CAN_POST_INSTALL_DRIVERS: string
+const INSTALL_SCRIPT_PROP_CAN_PRE_INSTALL_DRIVERS: string
+const INSTALL_SCRIPT_PROP_EXPECTED_FILENAME: string
+const INSTALL_SCRIPT_PROP_INJECTION_METHOD: string
+const INSTALL_SCRIPT_PROP_INSTALLATION_SOURCE: string
+const INSTALL_SCRIPT_PROP_NEEDS_INTERNET: string
+const INSTALL_SCRIPT_PROP_PATH_FORMAT: string
+const INSTALL_SCRIPT_PROP_POST_INSTALL_DRIVERS_SIGNING_REQ: string
+const INSTALL_SCRIPT_PROP_PREFERRED_INJECTION_METHOD: string
+const INSTALL_SCRIPT_PROP_PRE_INSTALL_DRIVERS_SIGNING_REQ: string
+const INSTALL_SCRIPT_PROP_PRODUCT_KEY_FORMAT: string
+const INSTALL_SCRIPT_PROP_PROFILE: string
+const INSTALL_SCRIPT_PROP_TEMPLATE_DATA: string
+const INSTALL_SCRIPT_PROP_TEMPLATE_URI: string
 const KIBIBYTES: number
 /**
  * libosinfo major version number.
  */
 const MAJOR_VERSION: number
 const MEBIBYTES: number
-const MEDIA_PROP_APPLICATION_ID: string | null
-const MEDIA_PROP_ARCHITECTURE: string | null
-const MEDIA_PROP_BOOTABLE: string | null
-const MEDIA_PROP_EJECT_AFTER_INSTALL: string | null
-const MEDIA_PROP_INITRD: string | null
-const MEDIA_PROP_INSTALLER: string | null
-const MEDIA_PROP_INSTALLER_REBOOTS: string | null
-const MEDIA_PROP_INSTALLER_SCRIPT: string | null
-const MEDIA_PROP_KERNEL: string | null
-const MEDIA_PROP_LANG: string | null
-const MEDIA_PROP_LANG_MAP: string | null
-const MEDIA_PROP_LANG_REGEX: string | null
-const MEDIA_PROP_LIVE: string | null
-const MEDIA_PROP_PUBLISHER_ID: string | null
-const MEDIA_PROP_SYSTEM_ID: string | null
-const MEDIA_PROP_URL: string | null
-const MEDIA_PROP_VARIANT: string | null
-const MEDIA_PROP_VOLUME_ID: string | null
-const MEDIA_PROP_VOLUME_SIZE: string | null
+const MEDIA_PROP_APPLICATION_ID: string
+const MEDIA_PROP_ARCHITECTURE: string
+const MEDIA_PROP_BOOTABLE: string
+const MEDIA_PROP_EJECT_AFTER_INSTALL: string
+const MEDIA_PROP_INITRD: string
+const MEDIA_PROP_INSTALLER: string
+const MEDIA_PROP_INSTALLER_REBOOTS: string
+const MEDIA_PROP_INSTALLER_SCRIPT: string
+const MEDIA_PROP_KERNEL: string
+const MEDIA_PROP_LANG: string
+const MEDIA_PROP_LANG_MAP: string
+const MEDIA_PROP_LANG_REGEX: string
+const MEDIA_PROP_LIVE: string
+const MEDIA_PROP_PUBLISHER_ID: string
+const MEDIA_PROP_SYSTEM_ID: string
+const MEDIA_PROP_URL: string
+const MEDIA_PROP_VARIANT: string
+const MEDIA_PROP_VOLUME_ID: string
+const MEDIA_PROP_VOLUME_SIZE: string
 const MEGAHERTZ: number
 /**
  * libosinfo micro version number.
@@ -321,36 +321,36 @@ const MICRO_VERSION: number
  * libosinfo minor version number.
  */
 const MINOR_VERSION: number
-const OS_PROP_CLOUD_IMAGE_USERNAME: string | null
-const OS_PROP_DISTRO: string | null
-const OS_PROP_FAMILY: string | null
-const OS_PROP_KERNEL_URL_ARGUMENT: string | null
-const OS_PROP_RELEASE_STATUS: string | null
-const OS_VARIANT_PROP_NAME: string | null
-const PRODUCT_PROP_CODENAME: string | null
-const PRODUCT_PROP_EOL_DATE: string | null
-const PRODUCT_PROP_LOGO: string | null
-const PRODUCT_PROP_NAME: string | null
-const PRODUCT_PROP_RELEASE_DATE: string | null
-const PRODUCT_PROP_SHORT_ID: string | null
-const PRODUCT_PROP_VENDOR: string | null
-const PRODUCT_PROP_VERSION: string | null
-const RESOURCES_PROP_ARCHITECTURE: string | null
-const RESOURCES_PROP_CPU: string | null
-const RESOURCES_PROP_N_CPUS: string | null
-const RESOURCES_PROP_RAM: string | null
-const RESOURCES_PROP_STORAGE: string | null
-const TREE_PROP_ARCHITECTURE: string | null
-const TREE_PROP_BOOT_ISO: string | null
-const TREE_PROP_HAS_TREEINFO: string | null
-const TREE_PROP_INITRD: string | null
-const TREE_PROP_KERNEL: string | null
-const TREE_PROP_TREEINFO_ARCH: string | null
-const TREE_PROP_TREEINFO_FAMILY: string | null
-const TREE_PROP_TREEINFO_VARIANT: string | null
-const TREE_PROP_TREEINFO_VERSION: string | null
-const TREE_PROP_URL: string | null
-const TREE_PROP_VARIANT: string | null
+const OS_PROP_CLOUD_IMAGE_USERNAME: string
+const OS_PROP_DISTRO: string
+const OS_PROP_FAMILY: string
+const OS_PROP_KERNEL_URL_ARGUMENT: string
+const OS_PROP_RELEASE_STATUS: string
+const OS_VARIANT_PROP_NAME: string
+const PRODUCT_PROP_CODENAME: string
+const PRODUCT_PROP_EOL_DATE: string
+const PRODUCT_PROP_LOGO: string
+const PRODUCT_PROP_NAME: string
+const PRODUCT_PROP_RELEASE_DATE: string
+const PRODUCT_PROP_SHORT_ID: string
+const PRODUCT_PROP_VENDOR: string
+const PRODUCT_PROP_VERSION: string
+const RESOURCES_PROP_ARCHITECTURE: string
+const RESOURCES_PROP_CPU: string
+const RESOURCES_PROP_N_CPUS: string
+const RESOURCES_PROP_RAM: string
+const RESOURCES_PROP_STORAGE: string
+const TREE_PROP_ARCHITECTURE: string
+const TREE_PROP_BOOT_ISO: string
+const TREE_PROP_HAS_TREEINFO: string
+const TREE_PROP_INITRD: string
+const TREE_PROP_KERNEL: string
+const TREE_PROP_TREEINFO_ARCH: string
+const TREE_PROP_TREEINFO_FAMILY: string
+const TREE_PROP_TREEINFO_VARIANT: string
+const TREE_PROP_TREEINFO_VERSION: string
+const TREE_PROP_URL: string
+const TREE_PROP_VARIANT: string
 /**
  * Gets a #GQuark representing the string "libosinfo"
  * @returns the #GQuark representing the string.
@@ -497,17 +497,17 @@ interface Datamap {
      * @param inval the input value
      * @param outval the output value
      */
-    insert(inval: string | null, outval: string | null): void
+    insert(inval: string, outval: string): void
     /**
      * Returns the output value with which `inval` is associated to.
      * @param inval the input value
      */
-    lookup(inval: string | null): string | null
+    lookup(inval: string): string
     /**
      * Returns the input value with which `outval` is associated to.
      * @param outval the output value
      */
-    reverseLookup(outval: string | null): string | null
+    reverseLookup(outval: string): string
 
     // Class property signals of Libosinfo-1.0.Libosinfo.Datamap
 
@@ -544,14 +544,14 @@ class Datamap extends Entity {
      * @param id the unique identifier
      * @returns an empty datamap
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Construct a new datamapa that is initially empty.
      * @constructor 
      * @param id the unique identifier
      * @returns an empty datamap
      */
-    static new(id: string | null): Datamap
+    static new(id: string): Datamap
     _init(config?: Datamap.ConstructorProperties): void
 }
 
@@ -654,17 +654,17 @@ interface Db {
      * @returns the deployment, or NULL
      */
     findDeployment(os: Os, platform: Platform): Deployment
-    getDatamap(id: string | null): Datamap
+    getDatamap(id: string): Datamap
     getDatamapList(): DatamapList
-    getDeployment(id: string | null): Deployment
+    getDeployment(id: string): Deployment
     getDeploymentList(): DeploymentList
-    getDevice(id: string | null): Device
+    getDevice(id: string): Device
     getDeviceList(): DeviceList
-    getInstallScript(id: string | null): InstallScript
+    getInstallScript(id: string): InstallScript
     getInstallScriptList(): InstallScriptList
-    getOs(id: string | null): Os
+    getOs(id: string): Os
     getOsList(): OsList
-    getPlatform(id: string | null): Platform
+    getPlatform(id: string): Platform
     getPlatformList(): PlatformList
     /**
      * Guess operating system given an #OsinfoMedia object.
@@ -754,28 +754,28 @@ interface Db {
      * @param propName a property name
      * @returns a list of strings
      */
-    uniqueValuesForPropertyInDeployment(propName: string | null): string[]
+    uniqueValuesForPropertyInDeployment(propName: string): string[]
     /**
      * Get all unique values for a named property amongst all
      * devices in the database
      * @param propName a property name
      * @returns a list of strings
      */
-    uniqueValuesForPropertyInDevice(propName: string | null): string[]
+    uniqueValuesForPropertyInDevice(propName: string): string[]
     /**
      * Get all unique values for a named property amongst all
      * operating systems in the database
      * @param propName a property name
      * @returns a list of strings
      */
-    uniqueValuesForPropertyInOs(propName: string | null): string[]
+    uniqueValuesForPropertyInOs(propName: string): string[]
     /**
      * Get all unique values for a named property amongst all
      * platforms in the database
      * @param propName a property name
      * @returns a list of strings
      */
-    uniqueValuesForPropertyInPlatform(propName: string | null): string[]
+    uniqueValuesForPropertyInPlatform(propName: string): string[]
 
     // Class property signals of Libosinfo-1.0.Libosinfo.Db
 
@@ -939,7 +939,7 @@ class Deployment extends Entity {
      * @param platform the platform to deploy on
      * @returns A deployment entity
      */
-    constructor(id: string | null, os: Os, platform: Platform) 
+    constructor(id: string, os: Os, platform: Platform) 
     /**
      * Create a new deployment entity
      * @constructor 
@@ -948,7 +948,7 @@ class Deployment extends Entity {
      * @param platform the platform to deploy on
      * @returns A deployment entity
      */
-    static new(id: string | null, os: Os, platform: Platform): Deployment
+    static new(id: string, os: Os, platform: Platform): Deployment
     _init(config?: Deployment.ConstructorProperties): void
 }
 
@@ -1107,14 +1107,14 @@ interface Device {
 
     // Owm methods of Libosinfo-1.0.Libosinfo.Device
 
-    getBusType(): string | null
-    getClass(): string | null
-    getName(): string | null
-    getProduct(): string | null
-    getProductId(): string | null
-    getSubsystem(): string | null
-    getVendor(): string | null
-    getVendorId(): string | null
+    getBusType(): string
+    getClass(): string
+    getName(): string
+    getProduct(): string
+    getProductId(): string
+    getSubsystem(): string
+    getVendor(): string
+    getVendorId(): string
 
     // Class property signals of Libosinfo-1.0.Libosinfo.Device
 
@@ -1145,8 +1145,8 @@ class Device extends Entity {
     // Constructors of Libosinfo-1.0.Libosinfo.Device
 
     constructor(config?: Device.ConstructorProperties) 
-    constructor(id: string | null) 
-    static new(id: string | null): Device
+    constructor(id: string) 
+    static new(id: string): Device
     _init(config?: Device.ConstructorProperties): void
 }
 
@@ -1176,7 +1176,7 @@ interface DeviceDriver {
      * Retrieves the target hardware architecture of `driver`.
      * @returns the hardware architecture.
      */
-    getArchitecture(): string | null
+    getArchitecture(): string
     getDevices(): DeviceList
     /**
      * Retrieves the names of driver files under the location returned by
@@ -1188,7 +1188,7 @@ interface DeviceDriver {
      * Retrieves the location of the `driver` as a URL.
      * @returns the location of the driver.
      */
-    getLocation(): string | null
+    getLocation(): string
     getPreInstallable(): boolean
     /**
      * Returns the priority of the device driver. The higher the value, the more
@@ -1332,7 +1332,7 @@ interface DeviceLink {
 
     // Owm methods of Libosinfo-1.0.Libosinfo.DeviceLink
 
-    getDriver(): string | null
+    getDriver(): string
     /**
      * Retrieve the #OsinfoDevice that the link points to.
      * @returns the target of the device link
@@ -1807,18 +1807,18 @@ interface Entity {
      * @param key the name of the key
      * @param value the data to associated with that key
      */
-    addParam(key: string | null, value: string | null): void
+    addParam(key: string, value: string): void
     /**
      * Remove all values associated with a key
      * @param key the name of the key
      */
-    clearParam(key: string | null): void
+    clearParam(key: string): void
     /**
      * Retrieves the unique key for the entity. The format of identifiers
      * is undefined, but the recommended practice is to use a URI.
      * @returns the unique key for the entity
      */
-    getId(): string | null
+    getId(): string
     /**
      * Retrieve all the known parameter keys associated with
      * the entity
@@ -1832,7 +1832,7 @@ interface Entity {
      * @param key the name of the key
      * @returns the value associated with the key, or NULL
      */
-    getParamValue(key: string | null): string | null
+    getParamValue(key: string): string
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
@@ -1840,7 +1840,7 @@ interface Entity {
      * @param key the name of the key
      * @returns the value associated with the key as a boolean, or FALSE
      */
-    getParamValueBoolean(key: string | null): boolean
+    getParamValueBoolean(key: string): boolean
     /**
      * Retrieve the parameter value associated with a named key as a
      * boolean. If multiple values are stored against the key, only the
@@ -1850,7 +1850,7 @@ interface Entity {
      * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      * @returns the value associated with the key as a boolean, or @default_value
      */
-    getParamValueBooleanWithDefault(key: string | null, defaultValue: boolean): boolean
+    getParamValueBooleanWithDefault(key: string, defaultValue: boolean): boolean
     /**
      * Retrieve the parameter value associated with a named key as an
      * enum value. If multiple values are stored against the key, only
@@ -1861,7 +1861,7 @@ interface Entity {
      * @param defaultValue the default value to be used, in case there's                 no value associated with the key
      * @returns the enum value associated with the key, or @default_value.
      */
-    getParamValueEnum(key: string | null, enumType: GObject.GType, defaultValue: number): number
+    getParamValueEnum(key: string, enumType: GObject.GType, defaultValue: number): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
@@ -1869,7 +1869,7 @@ interface Entity {
      * @param key the name of the key
      * @returns the value associated with the key as an int64, or -1.
      */
-    getParamValueInt64(key: string | null): number
+    getParamValueInt64(key: string): number
     /**
      * Retrieve the parameter value associated with a named key as an
      * int64. If multiple values are stored against the key, only the
@@ -1879,14 +1879,14 @@ interface Entity {
      * @param defaultValue the value to be returned in case there's no value                 associated with the `key`
      * @returns the value associated with the key as an int64, or @default_value
      */
-    getParamValueInt64WithDefault(key: string | null, defaultValue: number): number
+    getParamValueInt64WithDefault(key: string, defaultValue: number): number
     /**
      * Retrieve all the parameter values associated with a named
      * key. If no values are associated, NULL is returned
      * @param key the name of the key
      * @returns the values associated with the key
      */
-    getParamValueList(key: string | null): string[]
+    getParamValueList(key: string): string[]
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
@@ -1894,7 +1894,7 @@ interface Entity {
      * @param key the name of the key
      * @param value the data to associated with that key
      */
-    setParam(key: string | null, value: string | null): void
+    setParam(key: string, value: string): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
@@ -1902,7 +1902,7 @@ interface Entity {
      * @param key the name of the key
      * @param value the boolean value to be associated with that key
      */
-    setParamBoolean(key: string | null, value: boolean): void
+    setParamBoolean(key: string, value: boolean): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
@@ -1911,7 +1911,7 @@ interface Entity {
      * @param value the enum value to be associated with that key
      * @param enumType the enum type
      */
-    setParamEnum(key: string | null, value: number, enumType: GObject.GType): void
+    setParamEnum(key: string, value: number, enumType: GObject.GType): void
     /**
      * Sets a new parameter against the entity. If the key already
      * has a value associated with it, the existing value will be
@@ -1919,7 +1919,7 @@ interface Entity {
      * @param key the name of the key
      * @param value the int64 value to be associated with that key
      */
-    setParamInt64(key: string | null, value: number): void
+    setParamInt64(key: string, value: number): void
 
     // Class property signals of Libosinfo-1.0.Libosinfo.Entity
 
@@ -1984,13 +1984,13 @@ interface Filter {
      * @param propName the name of the parameter key
      * @param propVal the required property value
      */
-    addConstraint(propName: string | null, propVal: string | null): void
+    addConstraint(propName: string, propVal: string): void
     /**
      * Remove all filter constraints for the matching property
      * name.
      * @param propName name of the key to remove constraints for
      */
-    clearConstraint(propName: string | null): void
+    clearConstraint(propName: string): void
     /**
      * Remove all filter property constraints
      */
@@ -2005,7 +2005,7 @@ interface Filter {
      * @param propName the name of the key
      * @returns List of constraint values
      */
-    getConstraintValues(propName: string | null): string[]
+    getConstraintValues(propName: string): string[]
     // Has conflict: matches(entity: Entity): boolean
 
     // Own virtual methods of Libosinfo-1.0.Libosinfo.Filter
@@ -2096,12 +2096,12 @@ interface Firmware {
      * Retrieves the target hardware architecture of the OS `firmware` provides.
      * @returns the hardware architecture, or NULL
      */
-    getArchitecture(): string | null
+    getArchitecture(): string
     /**
      * The type of the `firmware`
      * @returns the type, or NULL
      */
-    getFirmwareType(): string | null
+    getFirmwareType(): string
     /**
      * Whether the `firmware` is supported or not
      * @returns TRUE if supported, FALSE otherwise.
@@ -2147,8 +2147,8 @@ class Firmware extends Entity {
     // Constructors of Libosinfo-1.0.Libosinfo.Firmware
 
     constructor(config?: Firmware.ConstructorProperties) 
-    constructor(id: string | null, architecture: string | null, type: string | null) 
-    static new(id: string | null, architecture: string | null, type: string | null): Firmware
+    constructor(id: string, architecture: string, type: string) 
+    static new(id: string, architecture: string, type: string): Firmware
     _init(config?: Firmware.ConstructorProperties): void
 }
 
@@ -2277,7 +2277,7 @@ interface Image {
      * Retrieves the target hardware architecture of the OS `image` provides.
      * @returns the hardware architecture, or NULL
      */
-    getArchitecture(): string | null
+    getArchitecture(): string
     /**
      * Whether `image` supports cloud init customizations
      * @returns #TRUE if @image supports cloud init customizations, #FALSE otherwise.
@@ -2287,7 +2287,7 @@ interface Image {
      * The format of the `image`
      * @returns the format, or NULL
      */
-    getFormat(): string | null
+    getFormat(): string
     getOs(): Os
     /**
      * Gets the varriants of the associated operating system
@@ -2298,7 +2298,7 @@ interface Image {
      * The URL to the `image`
      * @returns the URL, or NULL
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * Sets the #OsinfoOs associated to the #OsinfoImage instance.
      * @param os an #OsinfoOs instance
@@ -2354,8 +2354,8 @@ class Image extends Entity {
     // Constructors of Libosinfo-1.0.Libosinfo.Image
 
     constructor(config?: Image.ConstructorProperties) 
-    constructor(id: string | null, architecture: string | null, format: string | null) 
-    static new(id: string | null, architecture: string | null, format: string | null): Image
+    constructor(id: string, architecture: string, format: string) 
+    static new(id: string, architecture: string, format: string): Image
     _init(config?: Image.ConstructorProperties): void
 }
 
@@ -2445,38 +2445,38 @@ interface InstallConfig {
 
     // Owm methods of Libosinfo-1.0.Libosinfo.InstallConfig
 
-    getAdminPassword(): string | null
-    getAvatarDisk(): string | null
-    getAvatarLocation(): string | null
+    getAdminPassword(): string
+    getAvatarDisk(): string
+    getAvatarLocation(): string
     getDriverSigning(): boolean
-    getHardwareArch(): string | null
-    getHostname(): string | null
+    getHardwareArch(): string
+    getHostname(): string
     /**
      * Returns the URL the script will use to perform the installation.
      */
-    getInstallationUrl(): string | null
-    getL10nKeyboard(): string | null
-    getL10nLanguage(): string | null
-    getL10nTimezone(): string | null
-    getPostInstallDriversDisk(): string | null
-    getPostInstallDriversLocation(): string | null
-    getPreInstallDriversDisk(): string | null
-    getPreInstallDriversLocation(): string | null
-    getRegLogin(): string | null
-    getRegPassword(): string | null
-    getRegProductKey(): string | null
-    getScriptDisk(): string | null
-    getTargetDisk(): string | null
+    getInstallationUrl(): string
+    getL10nKeyboard(): string
+    getL10nLanguage(): string
+    getL10nTimezone(): string
+    getPostInstallDriversDisk(): string
+    getPostInstallDriversLocation(): string
+    getPreInstallDriversDisk(): string
+    getPreInstallDriversLocation(): string
+    getRegLogin(): string
+    getRegPassword(): string
+    getRegProductKey(): string
+    getScriptDisk(): string
+    getTargetDisk(): string
     getUserAdministrator(): boolean
     getUserAutologin(): boolean
-    getUserLogin(): string | null
-    getUserPassword(): string | null
-    getUserRealname(): string | null
+    getUserLogin(): string
+    getUserPassword(): string
+    getUserRealname(): string
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_ADMIN_PASSWORD parameter
      * @param password the administrator password to be set
      */
-    setAdminPassword(password: string | null): void
+    setAdminPassword(password: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_AVATAR_DISK parameter.
      * 
@@ -2484,7 +2484,7 @@ interface InstallConfig {
      * explanation on the format of `disk` string.
      * @param disk the avatar disk
      */
-    setAvatarDisk(disk: string | null): void
+    setAvatarDisk(disk: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_AVATAR_LOCATION parameter.
      * 
@@ -2497,7 +2497,7 @@ interface InstallConfig {
      * and the leading ':' must not be included in the path.
      * @param location new location
      */
-    setAvatarLocation(location: string | null): void
+    setAvatarLocation(location: string): void
     /**
      * If a script requires drivers to be signed, this function can be used to
      * disable that security feature. WARNING: Disabling driver signing may very
@@ -2511,7 +2511,7 @@ interface InstallConfig {
      * The list of valid architectures are part of osinfo.rng schema
      * @param arch the hardware architecture
      */
-    setHardwareArch(arch: string | null): void
+    setHardwareArch(arch: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_HOSTNAME parameter.
      * 
@@ -2523,13 +2523,13 @@ interface InstallConfig {
      * fail.
      * @param hostname the desired hostname
      */
-    setHostname(hostname: string | null): void
+    setHostname(hostname: string): void
     /**
      * When performing a tree based installation the script will need the installation
      * URL to be set, whenever the installation is performed from a non canonical place.
      * @param url the URL used to perform the installation
      */
-    setInstallationUrl(url: string | null): void
+    setInstallationUrl(url: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_L10N_KEYBOARD parameter.
      * 
@@ -2537,7 +2537,7 @@ interface InstallConfig {
      * #osinfo_install_config_set_l10n_language function's 'language' parameter.
      * @param keyboard the keyboard
      */
-    setL10nKeyboard(keyboard: string | null): void
+    setL10nKeyboard(keyboard: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_L10N_LANGUAGE parameter.
      * 
@@ -2550,14 +2550,14 @@ interface InstallConfig {
      * but 'pt_BR.utf8' is not.
      * @param language the language
      */
-    setL10nLanguage(language: string | null): void
+    setL10nLanguage(language: string): void
     /**
      * Set the #OSINFO_INSTALL_CONFIG_PROP_L10N_TIMEZONE parameter.
      * 
      * The expected format of this string is the tzdata names standard.
      * @param tz the timezone
      */
-    setL10nTimezone(tz: string | null): void
+    setL10nTimezone(tz: string): void
     /**
      * Specify the disk on which drivers to be installed at the end of installation,
      * are available.
@@ -2570,7 +2570,7 @@ interface InstallConfig {
      * install script supports it.
      * @param disk the target disk
      */
-    setPostInstallDriversDisk(disk: string | null): void
+    setPostInstallDriversDisk(disk: string): void
     /**
      * Specify the disk on which drivers to be installed at the end of installation,
      * are available.
@@ -2583,7 +2583,7 @@ interface InstallConfig {
      * install script supports it.
      * @param location the location of avatar
      */
-    setPostInstallDriversLocation(location: string | null): void
+    setPostInstallDriversLocation(location: string): void
     /**
      * Specify the disk on which drivers to be installed at the very beginning of
      * installation, are available. This is usually needed for devices for which the
@@ -2601,7 +2601,7 @@ interface InstallConfig {
      * present in the script disk under the toplevel directory.
      * @param disk the disk
      */
-    setPreInstallDriversDisk(disk: string | null): void
+    setPreInstallDriversDisk(disk: string): void
     /**
      * Specify the location on which drivers to be installed at the very beginning of
      * installation, are available. Please read documentation on
@@ -2612,18 +2612,18 @@ interface InstallConfig {
      * explanation on the format of `location` string.
      * @param location the location
      */
-    setPreInstallDriversLocation(location: string | null): void
+    setPreInstallDriversLocation(location: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_LOGIN parameter.
      * @param name the registration login
      */
-    setRegLogin(name: string | null): void
+    setRegLogin(name: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_REG_PASSWORD parameter.
      * @param password the registration password
      */
-    setRegPassword(password: string | null): void
-    setRegProductKey(key: string | null): void
+    setRegPassword(password: string): void
+    setRegProductKey(key: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_SCRIPT_DISK parameter.
      * 
@@ -2631,7 +2631,7 @@ interface InstallConfig {
      * explanation on the format of `disk` string.
      * @param disk the disk
      */
-    setScriptDisk(disk: string | null): void
+    setScriptDisk(disk: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_TARGET_DISK parameter.
      * 
@@ -2643,7 +2643,7 @@ interface InstallConfig {
      * In case of #OSINFO_PATH_FORMAT_DOS drive letters are expected, e.g "A".
      * @param disk the target disk
      */
-    setTargetDisk(disk: string | null): void
+    setTargetDisk(disk: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_ADMIN parameter.
      * @param admin whether the user should be set as administrator or not
@@ -2658,17 +2658,17 @@ interface InstallConfig {
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_LOGIN parameter.
      * @param username the chosen username for the user log into the system
      */
-    setUserLogin(username: string | null): void
+    setUserLogin(username: string): void
     /**
      * Sets the #OSINFO_INSTALL_CONFIG_PROP_USER_PASSWORD parameter
      * @param password the user password to be set
      */
-    setUserPassword(password: string | null): void
+    setUserPassword(password: string): void
     /**
      * Sets the value of #OSINFO_INSTALL_CONFIG_PROP_USER_REALNAME parameter.
      * @param name the user real name to be displayed
      */
-    setUserRealname(name: string | null): void
+    setUserRealname(name: string): void
 
     // Class property signals of Libosinfo-1.0.Libosinfo.InstallConfig
 
@@ -2708,7 +2708,7 @@ class InstallConfig extends Entity {
      * @param id the unique identifier
      * @returns an install configuration with default values
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Construct a new install configuration with default values for
      * language, keyboard, timezone and admin password. The default values
@@ -2718,7 +2718,7 @@ class InstallConfig extends Entity {
      * @param id the unique identifier
      * @returns an install configuration with default values
      */
-    static new(id: string | null): InstallConfig
+    static new(id: string): InstallConfig
     _init(config?: InstallConfig.ConstructorProperties): void
 }
 
@@ -2769,7 +2769,7 @@ interface InstallConfigParam {
 
     // Owm methods of Libosinfo-1.0.Libosinfo.InstallConfigParam
 
-    getName(): string | null
+    getName(): string
     getPolicy(): InstallConfigParamPolicy
     getValueMap(): Datamap
     isOptional(): boolean
@@ -2832,14 +2832,14 @@ class InstallConfigParam extends Entity {
      * @param name the configuration parameter name
      * @returns the new configuration parameter
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Construct a new configuration parameter for an #OsinfoInstallScript.
      * @constructor 
      * @param name the configuration parameter name
      * @returns the new configuration parameter
      */
-    static new(name: string | null): InstallConfigParam
+    static new(name: string): InstallConfigParam
     _init(config?: InstallConfigParam.ConstructorProperties): void
 }
 
@@ -3148,7 +3148,7 @@ interface InstallScript {
      * @param name name of the parameter
      * @returns the sought config param, if exists.                           NULL otherwise. This code assumes that the 'id' and 'name' entity properties are the same.
      */
-    getConfigParam(name: string | null): InstallConfigParam
+    getConfigParam(name: string): InstallConfigParam
     /**
      * Get the list of valid config parameters for `script`.
      * @returns the list of valid #OsinfoInstallConfigParam parameters. Free with g_list_free() when done. The elements are owned by libosinfo.
@@ -3164,7 +3164,7 @@ interface InstallScript {
      * particular name to work.
      * @returns the expected script filename
      */
-    getExpectedFilename(): string | null
+    getExpectedFilename(): string
     /**
      * Retrieve the supported method to inject the script in to the installation process.
      * @returns bitwise-or of supported methods for install script injection.
@@ -3183,8 +3183,8 @@ interface InstallScript {
      * osinfo_install_script_set_output_prefix() function.
      * @returns the output script filename
      */
-    getOutputFilename(): string | null
-    getOutputPrefix(): string | null
+    getOutputFilename(): string
+    getOutputPrefix(): string
     /**
      * Returns the path format to be used for the files and disks which will
      * be used during the installation.
@@ -3222,7 +3222,7 @@ interface InstallScript {
      * and 23.
      * @returns Product key format mask, or NULL.
      */
-    getProductKeyFormat(): string | null
+    getProductKeyFormat(): string
     /**
      * Returns a string representing the install script profile that's going to be
      * used.
@@ -3230,15 +3230,15 @@ interface InstallScript {
      * The values supported are "jeos" for minimal installations and "desktop" for
      * workstation/desktop installations.
      */
-    getProfile(): string | null
+    getProfile(): string
     /**
      * Returns the stylesheet data used to construct the install script.
      */
-    getTemplateData(): string | null
+    getTemplateData(): string
     /**
      * Returns the stylesheet URI used to construct the install script.
      */
-    getTemplateUri(): string | null
+    getTemplateUri(): string
     /**
      * Returns whether the `script` has the `config_param` searched or not.
      * 
@@ -3250,7 +3250,7 @@ interface InstallScript {
      * Returns whether the `script` has a configuration parameter matching `name` or not.
      * @param name the configuration parameter name
      */
-    hasConfigParamName(name: string | null): boolean
+    hasConfigParamName(name: string): boolean
     /**
      * Set the installation source to be used with the `script`.
      * @param source one of the installation sources: OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_MEDIA, OSINFO_INSTALL_SCRIPT_INSTALLATION_SOURCE_NETWORK
@@ -3260,7 +3260,7 @@ interface InstallScript {
      * Mind that not all installers support any name for the installer scripts.
      * @param prefix a prefix to be added to the file generated
      */
-    setOutputPrefix(prefix: string | null): void
+    setOutputPrefix(prefix: string): void
     /**
      * Set the preferred injection method to be used with the `script`
      * @param method one of the injection methods: OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_CDROM, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_DISK, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_FLOPPY, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_INITRD, OSINFO_INSTALL_SCRIPT_INJECTION_METHOD_WEB
@@ -3336,8 +3336,8 @@ class InstallScript extends Entity {
     // Constructors of Libosinfo-1.0.Libosinfo.InstallScript
 
     constructor(config?: InstallScript.ConstructorProperties) 
-    constructor(id: string | null) 
-    static new(id: string | null): InstallScript
+    constructor(id: string) 
+    static new(id: string): InstallScript
     /**
      * Construct a new install script from stylesheet data
      * @constructor 
@@ -3346,7 +3346,7 @@ class InstallScript extends Entity {
      * @param templateData style sheet data
      * @returns an new install script
      */
-    static newData(id: string | null, profile: string | null, templateData: string | null): InstallScript
+    static newData(id: string, profile: string, templateData: string): InstallScript
     /**
      * Construct a new install script from a stylesheet URI
      * @constructor 
@@ -3355,7 +3355,7 @@ class InstallScript extends Entity {
      * @param templateUri style sheet URI
      * @returns an new install script
      */
-    static newUri(id: string | null, profile: string | null, templateUri: string | null): InstallScript
+    static newUri(id: string, profile: string, templateUri: string): InstallScript
     _init(config?: InstallScript.ConstructorProperties): void
 }
 
@@ -3573,7 +3573,7 @@ interface List {
      * @param id the unique identifier
      * @returns the matching entity, or NULL
      */
-    findById(id: string | null): Entity
+    findById(id: string): Entity
     /**
      * Retrieves the type of the subclass of #OsinfoEntity
      * that may be stored in the list
@@ -3698,7 +3698,7 @@ interface Loader {
      * be recursively traversed, loading all files as XML.
      * @param path the fully qualified path
      */
-    processPath(path: string | null): void
+    processPath(path: string): void
     /**
      * Loads data from the system path.
      */
@@ -3710,7 +3710,7 @@ interface Loader {
      * be recursively traversed, loading all files as XML.
      * @param uri the data source URI
      */
-    processUri(uri: string | null): void
+    processUri(uri: string): void
     /**
      * Loads data from user path.
      */
@@ -3964,12 +3964,12 @@ interface Media {
      * matches it.
      * @returns the application id, or NULL
      */
-    getApplicationId(): string | null
+    getApplicationId(): string
     /**
      * Retrieves the target hardware architecture of the OS `media` provides.
      * @returns the hardware architecture, or NULL
      */
-    getArchitecture(): string | null
+    getArchitecture(): string
     /**
      * Whether `media` should ejected after the installation procces.
      * @returns #TRUE if media should be ejected, #FALSE otherwise
@@ -3981,7 +3981,7 @@ interface Media {
      * Note: This only applies to installer medias of 'linux' OS family.
      * @returns the path to initrd image, or NULL
      */
-    getInitrdPath(): string | null
+    getInitrdPath(): string
     getInstallScriptList(): InstallScriptList
     /**
      * Whether `media` provides an installer for an OS.
@@ -4007,7 +4007,7 @@ interface Media {
      * Note: This only applies to installer medias of 'linux' OS family.
      * @returns the path to kernel image, or NULL
      */
-    getKernelPath(): string | null
+    getKernelPath(): string
     /**
      * If media is an installer, this property indicates the languages that
      * can be used during automatic installations.
@@ -4039,7 +4039,7 @@ interface Media {
      * matches it.
      * @returns the publisher id, or NULL
      */
-    getPublisherId(): string | null
+    getPublisherId(): string
     /**
      * If `media` is an ISO9660 image/device, this function retrieves the expected
      * system ID.
@@ -4049,12 +4049,12 @@ interface Media {
      * it.
      * @returns the system id, or NULL
      */
-    getSystemId(): string | null
+    getSystemId(): string
     /**
      * The URL to the `media`
      * @returns the URL, or NULL
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * If `media` is an ISO9660 image/device, this function retrieves the expected
      * volume ID.
@@ -4064,7 +4064,7 @@ interface Media {
      * it.
      * @returns the volume id, or NULL
      */
-    getVolumeId(): string | null
+    getVolumeId(): string
     getVolumeSize(): number
     isBootable(): boolean
     /**
@@ -4192,8 +4192,8 @@ class Media extends Entity {
     // Constructors of Libosinfo-1.0.Libosinfo.Media
 
     constructor(config?: Media.ConstructorProperties) 
-    constructor(id: string | null, architecture: string | null) 
-    static new(id: string | null, architecture: string | null): Media
+    constructor(id: string, architecture: string) 
+    static new(id: string, architecture: string): Media
     _init(config?: Media.ConstructorProperties): void
     /**
      * Creates a new #OsinfoMedia for installation media at `location`. The `location`
@@ -4204,7 +4204,7 @@ class Media extends Entity {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #OsinfoMedia , or NULL on error
      */
-    static createFromLocation(location: string | null, cancellable: Gio.Cancellable | null): Media
+    static createFromLocation(location: string, cancellable: Gio.Cancellable | null): Media
     /**
      * Asynchronous variant of #osinfo_media_create_from_location.
      * @param location the location of an installation media
@@ -4212,7 +4212,7 @@ class Media extends Entity {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback Function to call when result of this call is ready
      */
-    static createFromLocationAsync(location: string | null, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static createFromLocationAsync(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous media object creation process started with
      * #osinfo_media_create_from_location_async.
@@ -4230,7 +4230,7 @@ class Media extends Entity {
      * @param flags An #OsinfoMediaDetectFlag, or 0.
      * @returns a new #OsinfoMedia , or NULL on error
      */
-    static createFromLocationWithFlags(location: string | null, cancellable: Gio.Cancellable | null, flags: number): Media
+    static createFromLocationWithFlags(location: string, cancellable: Gio.Cancellable | null, flags: number): Media
     /**
      * Asynchronous variant of #osinfo_media_create_from_location_with_flags.
      * @param location the location of an installation media
@@ -4239,7 +4239,7 @@ class Media extends Entity {
      * @param callback Function to call when result of this call is ready
      * @param flags An #OsinfoMediaDetectFlag, or 0.
      */
-    static createFromLocationWithFlagsAsync(location: string | null, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null, flags: number): void
+    static createFromLocationWithFlagsAsync(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null, flags: number): void
     /**
      * Finishes an asynchronous media object creation process started with
      * #osinfo_media_create_from_location_async.
@@ -4487,7 +4487,7 @@ interface Os {
      * @param variant the variant to add
      */
     addVariant(variant: OsVariant): void
-    findInstallScript(profile: string | null): InstallScript
+    findInstallScript(profile: string): InstallScript
     /**
      * Get all devicelinks matching a given filter but unlike
      * osinfo_os_get_device_links this function also retrieves devices from all
@@ -4509,7 +4509,7 @@ interface Os {
      * installation.
      * @returns the username, if present. Otherwise, NULL.
      */
-    getCloudImageUsername(): string | null
+    getCloudImageUsername(): string
     /**
      * Get the complete firmwares matching a given filter, including the non-supported ones.
      * @param filter an optional firmware property filter
@@ -4547,19 +4547,19 @@ interface Os {
      * @param inherited Should devices from inherited and cloned OSs be included in the search.
      * @returns The found devices
      */
-    getDevicesByProperty(property: string | null, value: string | null, inherited: boolean): DeviceList
+    getDevicesByProperty(property: string, value: string, inherited: boolean): DeviceList
     /**
      * Retrieves the generic family the OS `os` belongs to, for example fedora,
      * ubuntu, windows, solaris, freebsd etc.
      * @returns the distro of this os
      */
-    getDistro(): string | null
+    getDistro(): string
     /**
      * Retrieves the generic family the OS `os` belongs to, based upon its kernel,
      * for example linux, winnt, solaris, freebsd etc.
      * @returns the family of this os
      */
-    getFamily(): string | null
+    getFamily(): string
     /**
      * Get all the supported firmwares matching a given filter
      * @param filter an optional firmware property filter
@@ -4577,7 +4577,7 @@ interface Os {
      * performing a tree based installation.
      * @returns the kernel url argument, if present. Otherwise, NULL.
      */
-    getKernelUrlArgument(): string | null
+    getKernelUrlArgument(): string
     /**
      * Get the list of maximum resources for the operating system `os`.
      * @returns A list of resources
@@ -4705,14 +4705,14 @@ class Os extends Product {
      * @param id a unique identifier
      * @returns a new operating system entity
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Create a new operating system entity
      * @constructor 
      * @param id a unique identifier
      * @returns a new operating system entity
      */
-    static new(id: string | null): Os
+    static new(id: string): Os
     _init(config?: Os.ConstructorProperties): void
 }
 
@@ -4922,7 +4922,7 @@ interface OsVariant {
      * The name of the `variant`
      * @returns the name, or NULL
      */
-    getName(): string | null
+    getName(): string
 
     // Class property signals of Libosinfo-1.0.Libosinfo.OsVariant
 
@@ -4964,14 +4964,14 @@ class OsVariant extends Entity {
      * @param id the id of the os variant to be created
      * @returns An os variant entity
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Creates a new os variant
      * @constructor 
      * @param id the id of the os variant to be created
      * @returns An os variant entity
      */
-    static new(id: string | null): OsVariant
+    static new(id: string): OsVariant
     _init(config?: OsVariant.ConstructorProperties): void
 }
 
@@ -5156,14 +5156,14 @@ class Platform extends Product {
      * @param id a unique identifier
      * @returns A platform entity
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Create a new platform entity
      * @constructor 
      * @param id a unique identifier
      * @returns A platform entity
      */
-    static new(id: string | null): Platform
+    static new(id: string): Platform
     _init(config?: Platform.ConstructorProperties): void
 }
 
@@ -5388,11 +5388,11 @@ interface Product {
      * @param otherproduct the product to relate to
      */
     addRelated(relshp: ProductRelationship, otherproduct: Product): void
-    getCodename(): string | null
+    getCodename(): string
     getEolDate(): GLib.Date
-    getEolDateString(): string | null
-    getLogo(): string | null
-    getName(): string | null
+    getEolDateString(): string
+    getLogo(): string
+    getName(): string
     /**
      * Get a list of products satisfying the requested
      * relationship
@@ -5401,15 +5401,15 @@ interface Product {
      */
     getRelated(relshp: ProductRelationship): ProductList
     getReleaseDate(): GLib.Date
-    getReleaseDateString(): string | null
-    getShortId(): string | null
+    getReleaseDateString(): string
+    getShortId(): string
     /**
      * Retrieve all the short-ids associated with the product.
      * @returns the list of short-ids.
      */
     getShortIdList(): string[]
-    getVendor(): string | null
-    getVersion(): string | null
+    getVendor(): string
+    getVersion(): string
 
     // Class property signals of Libosinfo-1.0.Libosinfo.Product
 
@@ -5778,7 +5778,7 @@ interface Resources {
      * #OSINFO_ARCHITECTURE_ALL.
      * @returns the hardware architecture.
      */
-    getArchitecture(): string | null
+    getArchitecture(): string
     /**
      * Retrieves the CPU frequency in hertz (Hz). Divide the value by #OSINFO_MEGAHERTZ if
      * you need this value in megahertz (MHz).
@@ -5877,8 +5877,8 @@ class Resources extends Entity {
     // Constructors of Libosinfo-1.0.Libosinfo.Resources
 
     constructor(config?: Resources.ConstructorProperties) 
-    constructor(id: string | null, architecture: string | null) 
-    static new(id: string | null, architecture: string | null): Resources
+    constructor(id: string, architecture: string) 
+    static new(id: string, architecture: string): Resources
     _init(config?: Resources.ConstructorProperties): void
 }
 
@@ -6138,26 +6138,26 @@ interface Tree {
      * Retrieves the target hardware architecture of the OS `tree` provides.
      * @returns the hardware architecture, or NULL
      */
-    getArchitecture(): string | null
+    getArchitecture(): string
     /**
      * Retrieves the path to the boot_iso image in the install tree.
      * @returns the path to boot_iso image, or NULL
      */
-    getBootIsoPath(): string | null
+    getBootIsoPath(): string
     /**
      * Retrieves the path to the initrd image in the install tree.
      * 
      * Note: This only applies to installer trees of 'linux' OS family.
      * @returns the path to initrd image, or NULL
      */
-    getInitrdPath(): string | null
+    getInitrdPath(): string
     /**
      * Retrieves the path to the kernel image in the install tree.
      * 
      * Note: This only applies to installer trees of 'linux' OS family.
      * @returns the path to kernel image, or NULL
      */
-    getKernelPath(): string | null
+    getKernelPath(): string
     getOs(): Os
     /**
      * Gets the variants of the associated operating system.
@@ -6171,7 +6171,7 @@ interface Tree {
      * architecture but rather a regular expression that matches it.
      * @returns the treeinfo architecture, or NULL
      */
-    getTreeinfoArch(): string | null
+    getTreeinfoArch(): string
     /**
      * If `tree` has treeinfo, this function retrieves the expected family.
      * 
@@ -6179,7 +6179,7 @@ interface Tree {
      * but rather a regular expression that matches it.
      * @returns the treeinfo family, or NULL
      */
-    getTreeinfoFamily(): string | null
+    getTreeinfoFamily(): string
     /**
      * If `tree` has treeinfo, this function retrieves the expected variant.
      * 
@@ -6187,7 +6187,7 @@ interface Tree {
      * but rather a regular expression that matches it.
      * @returns the treeinfo variant, or NULL
      */
-    getTreeinfoVariant(): string | null
+    getTreeinfoVariant(): string
     /**
      * If `tree` has treeinfo, this function retrieves the expected version.
      * 
@@ -6195,12 +6195,12 @@ interface Tree {
      * rather a regular expression that matches it.
      * @returns the treeinfo version, or NULL
      */
-    getTreeinfoVersion(): string | null
+    getTreeinfoVersion(): string
     /**
      * The URL to the `tree`
      * @returns the URL, or NULL
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * Determines whether the metadata for the unidentified `tree` is a match
      * for the `reference` tree.
@@ -6308,7 +6308,7 @@ class Tree extends Entity {
      * @param architecture the architecture of the tree to be created
      * @returns A tree entity
      */
-    constructor(id: string | null, architecture: string | null) 
+    constructor(id: string, architecture: string) 
     /**
      * Create a new tree entity
      * @constructor 
@@ -6316,7 +6316,7 @@ class Tree extends Entity {
      * @param architecture the architecture of the tree to be created
      * @returns A tree entity
      */
-    static new(id: string | null, architecture: string | null): Tree
+    static new(id: string, architecture: string): Tree
     _init(config?: Tree.ConstructorProperties): void
     /**
      * Creates a new #OsinfoTree for installation tree at `location`. The `location`
@@ -6327,7 +6327,7 @@ class Tree extends Entity {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #OsinfoTree , or NULL on error
      */
-    static createFromLocation(location: string | null, cancellable: Gio.Cancellable | null): Tree
+    static createFromLocation(location: string, cancellable: Gio.Cancellable | null): Tree
     /**
      * Asynchronous variant of #osinfo_tree_create_from_location.
      * @param location the location of an installation tree
@@ -6335,7 +6335,7 @@ class Tree extends Entity {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback Function to call when result of this call is ready
      */
-    static createFromLocationAsync(location: string | null, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static createFromLocationAsync(location: string, priority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous tree object creation process started with
      * #osinfo_tree_create_from_location_async.
@@ -6349,7 +6349,7 @@ class Tree extends Entity {
      * @param location the location of the original `treeinfo`
      * @returns a new #OsinfoTree, or NULL on error
      */
-    static createFromTreeinfo(treeinfo: string | null, location: string | null): Tree
+    static createFromTreeinfo(treeinfo: string, location: string): Tree
 }
 
 module TreeList {

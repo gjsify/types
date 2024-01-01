@@ -58,17 +58,17 @@ function get_nameslist_equals(uc: string): string[]
 function get_nameslist_exes(uc: string): string
 function get_nameslist_pounds(uc: string): string[]
 function get_nameslist_stars(uc: string): string[]
-function get_unicode_category_name(uc: string): string | null
-function get_unicode_data_name(uc: string): string | null
+function get_unicode_category_name(uc: string): string
+function get_unicode_data_name(uc: string): string
 function get_unicode_data_name_count(): number
-function get_unicode_kCantonese(uc: string): string | null
-function get_unicode_kDefinition(uc: string): string | null
-function get_unicode_kJapaneseKun(uc: string): string | null
-function get_unicode_kJapaneseOn(uc: string): string | null
-function get_unicode_kKorean(uc: string): string | null
-function get_unicode_kMandarin(uc: string): string | null
-function get_unicode_kTang(uc: string): string | null
-function get_unicode_name(uc: string): string | null
+function get_unicode_kCantonese(uc: string): string
+function get_unicode_kDefinition(uc: string): string
+function get_unicode_kJapaneseKun(uc: string): string
+function get_unicode_kJapaneseOn(uc: string): string
+function get_unicode_kKorean(uc: string): string
+function get_unicode_kMandarin(uc: string): string
+function get_unicode_kTang(uc: string): string
+function get_unicode_name(uc: string): string
 function get_unicode_version(uc: string): UnicodeVersion
 function get_unihan_count(): number
 /**
@@ -109,7 +109,7 @@ function unichar_validate(uc: string): boolean
  * @returns a unicode character
  */
 function unicode_get_locale_character(): string
-function unicode_get_script_for_char(wc: string): string | null
+function unicode_get_script_for_char(wc: string): string
 /**
  * Returns an array of untranslated script names.
  * 
@@ -119,7 +119,7 @@ function unicode_get_script_for_char(wc: string): string | null
  * @returns a newly allocated %NULL-terminated array of strings
  */
 function unicode_list_scripts(): string[]
-function unicode_version_to_string(version: UnicodeVersion): string | null
+function unicode_version_to_string(version: UnicodeVersion): string
 module BlockChaptersModel {
 
     // Constructor properties interface
@@ -266,8 +266,8 @@ interface ChaptersModel extends Gtk.Buildable, Gtk.TreeDragDest, Gtk.TreeDragSou
      * @returns the newly-created #GucharmapCodepointList, or NULL if there is no chapter selected. The caller should release the result with g_object_unref() when finished.
      */
     get_codepoint_list(iter: Gtk.TreeIter): CodepointList
-    get_title(): string | null
-    id_to_iter(id: string | null): [ /* returnType */ boolean, /* _iter */ Gtk.TreeIter ]
+    get_title(): string
+    id_to_iter(id: string): [ /* returnType */ boolean, /* _iter */ Gtk.TreeIter ]
 
     // Own virtual methods of Gucharmap-2.90.Gucharmap.ChaptersModel
 
@@ -360,7 +360,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @param model The model.
      */
     set_model(model: Gtk.TreeModel | null): void
-    set_selected(name: string | null): boolean
+    set_selected(name: string): boolean
 
     // Conflicting methods
 
@@ -375,7 +375,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -389,7 +389,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -400,7 +400,7 @@ interface ChaptersView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gucharmap-2.90.Gucharmap.ChaptersView
 
@@ -742,7 +742,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     get_snap_pow2(): boolean
     next_chapter(): void
     previous_chapter(): void
-    set_active_chapter(chapter: string | null): void
+    set_active_chapter(chapter: string): void
     set_active_character(uc: string): void
     set_active_page(page: number): void
     set_chapters_model(model: ChaptersModel): void
@@ -774,7 +774,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -788,7 +788,7 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -799,12 +799,12 @@ interface Charmap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gucharmap-2.90.Gucharmap.Charmap
 
     vfunc_link_clicked(old_character: string, new_character: string): void
-    vfunc_status_message(message: string | null): void
+    vfunc_status_message(message: string): void
 
     // Own signals of Gucharmap-2.90.Gucharmap.Charmap
 
@@ -1161,7 +1161,7 @@ interface Chartable extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable 
     vfunc_paste_clipboard(): void
     vfunc_set_active_char(ch: number): void
     vfunc_set_scroll_adjustments(hadjustment: Gtk.Adjustment, vadjustment: Gtk.Adjustment): void
-    vfunc_status_message(message: string | null): void
+    vfunc_status_message(message: string): void
 
     // Own signals of Gucharmap-2.90.Gucharmap.Chartable
 
@@ -1381,7 +1381,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -1405,14 +1405,14 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -1420,7 +1420,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Gets the position of `component` in the form of
      * a point specifying `component'`s top-left corner.
@@ -1461,7 +1461,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -1487,7 +1487,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -1495,7 +1495,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -1504,7 +1504,7 @@ interface ChartableAccessible extends Atk.Action, Atk.Component, Atk.Document, A
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
     /**
      * Gets the position of `component` in the form of
      * a point specifying `component'`s top-left corner.
@@ -1655,7 +1655,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -1679,14 +1679,14 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -1694,7 +1694,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -1707,7 +1707,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -1733,7 +1733,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -1741,7 +1741,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -1750,7 +1750,7 @@ interface ChartableCellAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Class property signals of Gucharmap-2.90.Gucharmap.ChartableCellAccessible
 
@@ -1938,20 +1938,20 @@ interface ScriptCodepointList {
      * @param script the script name
      * @returns %TRUE on success, %FALSE if there is no such script, in which case the codepoint list is not changed.
      */
-    append_script(script: string | null): boolean
+    append_script(script: string): boolean
     /**
      * Sets the script for the codepoint list.
      * @param script the script name
      * @returns %TRUE on success, %FALSE if there is no such script, in which case the script is not changed.
      */
-    set_script(script: string | null): boolean
+    set_script(script: string): boolean
     /**
      * Sets multiple scripts for the codepoint list. Codepoints are sorted
      * according to their order in `scripts`.
      * @param scripts NULL-terminated array of script names
      * @returns %TRUE on success, %FALSE if any of the scripts don’t exist, in which case the script is not changed.
      */
-    set_scripts(scripts: string | null): boolean
+    set_scripts(scripts: string): boolean
 
     // Class property signals of Gucharmap-2.90.Gucharmap.ScriptCodepointList
 
@@ -2039,7 +2039,7 @@ interface ChaptersModelClass {
     // Own fields of Gucharmap-2.90.Gucharmap.ChaptersModelClass
 
     parent_class: Gtk.ListStoreClass
-    title: string | null
+    title: string
     character_to_iter: (chapters: ChaptersModel, wc: string) => [ /* returnType */ boolean, /* iter */ Gtk.TreeIter ]
     get_codepoint_list: (chapters: ChaptersModel, iter: Gtk.TreeIter) => CodepointList
     get_book_codepoint_list: (chapters: ChaptersModel) => CodepointList
@@ -2095,7 +2095,7 @@ interface CharmapClass {
     // Own fields of Gucharmap-2.90.Gucharmap.CharmapClass
 
     parent_class: Gtk.PanedClass
-    status_message: (charmap: Charmap, message: string | null) => void
+    status_message: (charmap: Charmap, message: string) => void
     link_clicked: (charmap: Charmap, old_character: string, new_character: string) => void
 }
 
@@ -2151,7 +2151,7 @@ interface ChartableClass {
     copy_clipboard: (chartable: Chartable) => void
     paste_clipboard: (chartable: Chartable) => void
     set_active_char: (chartable: Chartable, ch: number) => void
-    status_message: (chartable: Chartable, message: string | null) => void
+    status_message: (chartable: Chartable, message: string) => void
 }
 
 abstract class ChartableClass {

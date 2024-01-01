@@ -211,185 +211,185 @@ export enum VerifyFlags {
      */
     UNRECOGNIZED,
 }
-export const DEVHELP_FALLBACK_ICON_FILE: string | null
-export const DEVHELP_ICON_NAME: string | null
-export const ENV_BUNDLED: string | null
-export const ENV_CATALOG_PATH: string | null
-export const ENV_ICON_THEME_PATH: string | null
-export const ENV_MODULE_PATH: string | null
-export const ENV_PIXMAP_DIR: string | null
-export const ENV_TESTING: string | null
+export const DEVHELP_FALLBACK_ICON_FILE: string
+export const DEVHELP_ICON_NAME: string
+export const ENV_BUNDLED: string
+export const ENV_CATALOG_PATH: string
+export const ENV_ICON_THEME_PATH: string
+export const ENV_MODULE_PATH: string
+export const ENV_PIXMAP_DIR: string
+export const ENV_TESTING: string
 export const GTKBUILDER_VERSIONING_BASE_MAJOR: number
 export const GTKBUILDER_VERSIONING_BASE_MINOR: number
-export const PROPERTY_DEF_OBJECT_DELIMITER: string | null
-export const TAG_ACTION: string | null
-export const TAG_ACTIONS: string | null
-export const TAG_ACTION_ACTIVATE_FUNCTION: string | null
-export const TAG_ACTION_SUBMENU_FUNCTION: string | null
-export const TAG_ADAPTOR: string | null
-export const TAG_ADD_CHILD_FUNCTION: string | null
-export const TAG_ADD_CHILD_VERIFY_FUNCTION: string | null
-export const TAG_ANARCHIST: string | null
-export const TAG_ATK_PROPERTY: string | null
-export const TAG_BIND_FLAGS: string | null
-export const TAG_BIND_PROPERTY: string | null
-export const TAG_BIND_SOURCE: string | null
-export const TAG_BOOK: string | null
-export const TAG_BUILDER_SINCE: string | null
-export const TAG_CHILD_ACTION_ACTIVATE_FUNCTION: string | null
-export const TAG_CHILD_GET_PROP_FUNCTION: string | null
-export const TAG_CHILD_PROPERTY: string | null
-export const TAG_CHILD_SET_PROP_FUNCTION: string | null
-export const TAG_CHILD_VERIFY_FUNCTION: string | null
-export const TAG_COMMENT: string | null
-export const TAG_COMMON: string | null
-export const TAG_CONSTRUCTOR_FUNCTION: string | null
-export const TAG_CONSTRUCT_OBJECT_FUNCTION: string | null
-export const TAG_CONSTRUCT_ONLY: string | null
-export const TAG_CONTEXT: string | null
-export const TAG_CREATE_EDITABLE_FUNCTION: string | null
-export const TAG_CREATE_EPROP_FUNCTION: string | null
-export const TAG_CREATE_TYPE: string | null
-export const TAG_CREATE_WIDGET_FUNCTION: string | null
-export const TAG_CUSTOM_LAYOUT: string | null
-export const TAG_DEEP_POST_CREATE_FUNCTION: string | null
-export const TAG_DEFAULT: string | null
-export const TAG_DEFAULT_HEIGHT: string | null
-export const TAG_DEFAULT_PALETTE_STATE: string | null
-export const TAG_DEFAULT_WIDTH: string | null
-export const TAG_DEPENDS: string | null
-export const TAG_DEPENDS_FUNCTION: string | null
-export const TAG_DEPRECATED: string | null
-export const TAG_DEPRECATED_SINCE: string | null
-export const TAG_DESTROY_OBJECT_FUNCTION: string | null
-export const TAG_DISABLED: string | null
-export const TAG_DISPLAYABLE_VALUES: string | null
-export const TAG_DOMAIN: string | null
-export const TAG_EDITABLE: string | null
-export const TAG_EVENT_HANDLER_CONNECTED: string | null
-export const TAG_EXPANDED: string | null
-export const TAG_FALSE: string | null
-export const TAG_GENERIC_NAME: string | null
-export const TAG_GET_CHILDREN_FUNCTION: string | null
-export const TAG_GET_FUNCTION: string | null
-export const TAG_GET_INTERNAL_CHILD_FUNCTION: string | null
-export const TAG_GET_TYPE_FUNCTION: string | null
-export const TAG_GLADE_CATALOG: string | null
-export const TAG_GLADE_WIDGET_CLASS: string | null
-export const TAG_GLADE_WIDGET_CLASSES: string | null
-export const TAG_GLADE_WIDGET_CLASS_REF: string | null
-export const TAG_GLADE_WIDGET_GROUP: string | null
-export const TAG_HAS_CONTEXT: string | null
-export const TAG_ICON_NAME: string | null
-export const TAG_ICON_PREFIX: string | null
-export const TAG_ID: string | null
-export const TAG_IGNORE: string | null
-export const TAG_IMPORTANT: string | null
-export const TAG_INIT_FUNCTION: string | null
-export const TAG_INTERNAL_CHILDREN: string | null
-export const TAG_KEY: string | null
-export const TAG_LIBRARY: string | null
-export const TAG_MAX_VALUE: string | null
-export const TAG_MIN_VALUE: string | null
-export const TAG_MULTILINE: string | null
-export const TAG_NAME: string | null
-export const TAG_NEEDS_SYNC: string | null
-export const TAG_NICK: string | null
-export const TAG_NO: string | null
-export const TAG_OPTIONAL: string | null
-export const TAG_OPTIONAL_DEFAULT: string | null
-export const TAG_PACKING_ACTIONS: string | null
-export const TAG_PACKING_DEFAULTS: string | null
-export const TAG_PACKING_PROPERTIES: string | null
-export const TAG_PARENT: string | null
-export const TAG_PARENTLESS_WIDGET: string | null
-export const TAG_PARENT_CLASS: string | null
-export const TAG_POST_CREATE_FUNCTION: string | null
-export const TAG_PROPERTIES: string | null
-export const TAG_PROPERTY: string | null
-export const TAG_QUERY: string | null
-export const TAG_READ_CHILD_FUNCTION: string | null
-export const TAG_READ_WIDGET_FUNCTION: string | null
-export const TAG_REMOVE_CHILD_FUNCTION: string | null
-export const TAG_REPLACE_CHILD_FUNCTION: string | null
-export const TAG_RESOURCE: string | null
-export const TAG_SAVE: string | null
-export const TAG_SAVE_ALWAYS: string | null
-export const TAG_SET_FUNCTION: string | null
-export const TAG_SIGNAL: string | null
-export const TAG_SIGNALS: string | null
-export const TAG_SPEC: string | null
-export const TAG_SPECIAL_CHILD_TYPE: string | null
-export const TAG_SPECIFICATIONS: string | null
-export const TAG_STOCK: string | null
-export const TAG_STOCK_ICON: string | null
-export const TAG_STRING_FROM_VALUE_FUNCTION: string | null
-export const TAG_TARGETABLE: string | null
-export const TAG_TEMPLATE_PREFIX: string | null
-export const TAG_THEMED_ICON: string | null
-export const TAG_TITLE: string | null
-export const TAG_TOOLTIP: string | null
-export const TAG_TOPLEVEL: string | null
-export const TAG_TRANSFER_ON_PASTE: string | null
-export const TAG_TRANSLATABLE: string | null
-export const TAG_TRUE: string | null
-export const TAG_TYPE: string | null
-export const TAG_USE_PLACEHOLDERS: string | null
-export const TAG_VALUE: string | null
-export const TAG_VALUE_TYPE: string | null
-export const TAG_VERIFY_FUNCTION: string | null
-export const TAG_VERSION: string | null
-export const TAG_VERSION_SINCE: string | null
-export const TAG_VISIBLE: string | null
-export const TAG_WEIGHT: string | null
-export const TAG_WRITE_CHILD_FUNCTION: string | null
-export const TAG_WRITE_WIDGET_AFTER_FUNCTION: string | null
-export const TAG_WRITE_WIDGET_FUNCTION: string | null
-export const TAG_YES: string | null
-export const UNNAMED_PREFIX: string | null
+export const PROPERTY_DEF_OBJECT_DELIMITER: string
+export const TAG_ACTION: string
+export const TAG_ACTIONS: string
+export const TAG_ACTION_ACTIVATE_FUNCTION: string
+export const TAG_ACTION_SUBMENU_FUNCTION: string
+export const TAG_ADAPTOR: string
+export const TAG_ADD_CHILD_FUNCTION: string
+export const TAG_ADD_CHILD_VERIFY_FUNCTION: string
+export const TAG_ANARCHIST: string
+export const TAG_ATK_PROPERTY: string
+export const TAG_BIND_FLAGS: string
+export const TAG_BIND_PROPERTY: string
+export const TAG_BIND_SOURCE: string
+export const TAG_BOOK: string
+export const TAG_BUILDER_SINCE: string
+export const TAG_CHILD_ACTION_ACTIVATE_FUNCTION: string
+export const TAG_CHILD_GET_PROP_FUNCTION: string
+export const TAG_CHILD_PROPERTY: string
+export const TAG_CHILD_SET_PROP_FUNCTION: string
+export const TAG_CHILD_VERIFY_FUNCTION: string
+export const TAG_COMMENT: string
+export const TAG_COMMON: string
+export const TAG_CONSTRUCTOR_FUNCTION: string
+export const TAG_CONSTRUCT_OBJECT_FUNCTION: string
+export const TAG_CONSTRUCT_ONLY: string
+export const TAG_CONTEXT: string
+export const TAG_CREATE_EDITABLE_FUNCTION: string
+export const TAG_CREATE_EPROP_FUNCTION: string
+export const TAG_CREATE_TYPE: string
+export const TAG_CREATE_WIDGET_FUNCTION: string
+export const TAG_CUSTOM_LAYOUT: string
+export const TAG_DEEP_POST_CREATE_FUNCTION: string
+export const TAG_DEFAULT: string
+export const TAG_DEFAULT_HEIGHT: string
+export const TAG_DEFAULT_PALETTE_STATE: string
+export const TAG_DEFAULT_WIDTH: string
+export const TAG_DEPENDS: string
+export const TAG_DEPENDS_FUNCTION: string
+export const TAG_DEPRECATED: string
+export const TAG_DEPRECATED_SINCE: string
+export const TAG_DESTROY_OBJECT_FUNCTION: string
+export const TAG_DISABLED: string
+export const TAG_DISPLAYABLE_VALUES: string
+export const TAG_DOMAIN: string
+export const TAG_EDITABLE: string
+export const TAG_EVENT_HANDLER_CONNECTED: string
+export const TAG_EXPANDED: string
+export const TAG_FALSE: string
+export const TAG_GENERIC_NAME: string
+export const TAG_GET_CHILDREN_FUNCTION: string
+export const TAG_GET_FUNCTION: string
+export const TAG_GET_INTERNAL_CHILD_FUNCTION: string
+export const TAG_GET_TYPE_FUNCTION: string
+export const TAG_GLADE_CATALOG: string
+export const TAG_GLADE_WIDGET_CLASS: string
+export const TAG_GLADE_WIDGET_CLASSES: string
+export const TAG_GLADE_WIDGET_CLASS_REF: string
+export const TAG_GLADE_WIDGET_GROUP: string
+export const TAG_HAS_CONTEXT: string
+export const TAG_ICON_NAME: string
+export const TAG_ICON_PREFIX: string
+export const TAG_ID: string
+export const TAG_IGNORE: string
+export const TAG_IMPORTANT: string
+export const TAG_INIT_FUNCTION: string
+export const TAG_INTERNAL_CHILDREN: string
+export const TAG_KEY: string
+export const TAG_LIBRARY: string
+export const TAG_MAX_VALUE: string
+export const TAG_MIN_VALUE: string
+export const TAG_MULTILINE: string
+export const TAG_NAME: string
+export const TAG_NEEDS_SYNC: string
+export const TAG_NICK: string
+export const TAG_NO: string
+export const TAG_OPTIONAL: string
+export const TAG_OPTIONAL_DEFAULT: string
+export const TAG_PACKING_ACTIONS: string
+export const TAG_PACKING_DEFAULTS: string
+export const TAG_PACKING_PROPERTIES: string
+export const TAG_PARENT: string
+export const TAG_PARENTLESS_WIDGET: string
+export const TAG_PARENT_CLASS: string
+export const TAG_POST_CREATE_FUNCTION: string
+export const TAG_PROPERTIES: string
+export const TAG_PROPERTY: string
+export const TAG_QUERY: string
+export const TAG_READ_CHILD_FUNCTION: string
+export const TAG_READ_WIDGET_FUNCTION: string
+export const TAG_REMOVE_CHILD_FUNCTION: string
+export const TAG_REPLACE_CHILD_FUNCTION: string
+export const TAG_RESOURCE: string
+export const TAG_SAVE: string
+export const TAG_SAVE_ALWAYS: string
+export const TAG_SET_FUNCTION: string
+export const TAG_SIGNAL: string
+export const TAG_SIGNALS: string
+export const TAG_SPEC: string
+export const TAG_SPECIAL_CHILD_TYPE: string
+export const TAG_SPECIFICATIONS: string
+export const TAG_STOCK: string
+export const TAG_STOCK_ICON: string
+export const TAG_STRING_FROM_VALUE_FUNCTION: string
+export const TAG_TARGETABLE: string
+export const TAG_TEMPLATE_PREFIX: string
+export const TAG_THEMED_ICON: string
+export const TAG_TITLE: string
+export const TAG_TOOLTIP: string
+export const TAG_TOPLEVEL: string
+export const TAG_TRANSFER_ON_PASTE: string
+export const TAG_TRANSLATABLE: string
+export const TAG_TRUE: string
+export const TAG_TYPE: string
+export const TAG_USE_PLACEHOLDERS: string
+export const TAG_VALUE: string
+export const TAG_VALUE_TYPE: string
+export const TAG_VERIFY_FUNCTION: string
+export const TAG_VERSION: string
+export const TAG_VERSION_SINCE: string
+export const TAG_VISIBLE: string
+export const TAG_WEIGHT: string
+export const TAG_WRITE_CHILD_FUNCTION: string
+export const TAG_WRITE_WIDGET_AFTER_FUNCTION: string
+export const TAG_WRITE_WIDGET_FUNCTION: string
+export const TAG_YES: string
+export const UNNAMED_PREFIX: string
 /**
  * Class prefix used for abstract classes (ie GtkBin -> GladeInstantiableGtkBin)
  */
-export const WIDGET_ADAPTOR_INSTANTIABLE_PREFIX: string | null
-export const XML_TAG_AFTER: string | null
-export const XML_TAG_CHILD: string | null
-export const XML_TAG_CLASS: string | null
-export const XML_TAG_FILENAME: string | null
-export const XML_TAG_HANDLER: string | null
-export const XML_TAG_I18N_TRUE: string | null
-export const XML_TAG_ID: string | null
-export const XML_TAG_INTERNAL_CHILD: string | null
-export const XML_TAG_LIB: string | null
-export const XML_TAG_NAME: string | null
-export const XML_TAG_OBJECT: string | null
-export const XML_TAG_PACKING: string | null
-export const XML_TAG_PLACEHOLDER: string | null
-export const XML_TAG_PROJECT: string | null
-export const XML_TAG_PROPERTY: string | null
-export const XML_TAG_REQUIRES: string | null
-export const XML_TAG_SIGNAL: string | null
-export const XML_TAG_SIGNAL_FALSE: string | null
-export const XML_TAG_SIGNAL_TRUE: string | null
-export const XML_TAG_SOURCE: string | null
-export const XML_TAG_SOURCES: string | null
-export const XML_TAG_STOCK_ID: string | null
-export const XML_TAG_SWAPPED: string | null
-export const XML_TAG_TEMPLATE: string | null
-export const XML_TAG_TYPE: string | null
-export const XML_TAG_TYPE_FUNC: string | null
-export const XML_TAG_VERSION: string | null
-export const XML_TAG_WIDGET: string | null
+export const WIDGET_ADAPTOR_INSTANTIABLE_PREFIX: string
+export const XML_TAG_AFTER: string
+export const XML_TAG_CHILD: string
+export const XML_TAG_CLASS: string
+export const XML_TAG_FILENAME: string
+export const XML_TAG_HANDLER: string
+export const XML_TAG_I18N_TRUE: string
+export const XML_TAG_ID: string
+export const XML_TAG_INTERNAL_CHILD: string
+export const XML_TAG_LIB: string
+export const XML_TAG_NAME: string
+export const XML_TAG_OBJECT: string
+export const XML_TAG_PACKING: string
+export const XML_TAG_PLACEHOLDER: string
+export const XML_TAG_PROJECT: string
+export const XML_TAG_PROPERTY: string
+export const XML_TAG_REQUIRES: string
+export const XML_TAG_SIGNAL: string
+export const XML_TAG_SIGNAL_FALSE: string
+export const XML_TAG_SIGNAL_TRUE: string
+export const XML_TAG_SOURCE: string
+export const XML_TAG_SOURCES: string
+export const XML_TAG_STOCK_ID: string
+export const XML_TAG_SWAPPED: string
+export const XML_TAG_TEMPLATE: string
+export const XML_TAG_TYPE: string
+export const XML_TAG_TYPE_FUNC: string
+export const XML_TAG_VERSION: string
+export const XML_TAG_WIDGET: string
 /**
  * Adds a new path to the list of path to look catalogs for.
  * @param path the new path containing catalogs
  */
-export function catalog_add_path(path: string | null): void
+export function catalog_add_path(path: string): void
 /**
  * Destroy and free all resources related with every loaded catalog.
  */
 export function catalog_destroy_all(): void
 export function catalog_get_extra_paths(): string[]
-export function catalog_is_loaded(name: string | null): boolean
+export function catalog_is_loaded(name: string): boolean
 /**
  * Loads all available catalogs in the system.
  * First loads catalogs from GLADE_ENV_CATALOG_PATH,
@@ -417,21 +417,21 @@ export function cursor_init(): void
  * @param type a #GladeCursorType
  */
 export function cursor_set(project: Project, window: Gdk.Window, type: CursorType): void
-export function displayable_value_is_disabled(type: GObject.GType, value: string | null): boolean
-export function displayable_value_set_disabled(type: GObject.GType, value: string | null, disabled: boolean): void
+export function displayable_value_is_disabled(type: GObject.GType, value: string): boolean
+export function displayable_value_set_disabled(type: GObject.GType, value: string, disabled: boolean): void
 export function get_debug_flags(): number
-export function get_displayable_value(type: GObject.GType, value: string | null): string | null
-export function get_value_from_displayable(type: GObject.GType, displayabe: string | null): string | null
+export function get_displayable_value(type: GObject.GType, value: string): string
+export function get_value_from_displayable(type: GObject.GType, displayabe: string): string
 /**
  * Initialization function for libgladeui (not #GladeApp)
  * It builds paths, bind text domain, and register icons
  */
 export function init(): void
 export function init_debug_flags(): void
-export function param_spec_objects(name: string | null, nick: string | null, blurb: string | null, accepted_type: GObject.GType, flags: GObject.ParamFlags): GObject.ParamSpec
-export function propert_get_insensitive_tooltip(property: Property): string | null
+export function param_spec_objects(name: string, nick: string, blurb: string, accepted_type: GObject.GType, flags: GObject.ParamFlags): GObject.ParamSpec
+export function propert_get_insensitive_tooltip(property: Property): string
 export function property_def_get_default_from_spec(spec: GObject.ParamSpec): any
-export function property_def_make_flags_from_string(type: GObject.GType, string: string | null): number
+export function property_def_make_flags_from_string(type: GObject.GType, string: string): number
 /**
  * This function assigns "weight" to each property in its natural order staring from 1.
  * If parent is 0 weight will be set for every #GladePropertyDef in the list.
@@ -449,9 +449,9 @@ export function property_def_set_weights(properties: PropertyDef[], parent: GObj
  * @param domain the domain to translate catalog strings from
  * @returns %TRUE on success. @property_def_ref is set to NULL if the property          has Disabled="TRUE".
  */
-export function property_def_update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: PropertyDef | null, domain: string | null): [ /* returnType */ boolean, /* property_def_ref */ PropertyDef | null ]
-export function register_displayable_value(type: GObject.GType, value: string | null, domain: string | null, string: string | null): void
-export function register_translated_value(type: GObject.GType, value: string | null, string: string | null): void
+export function property_def_update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: PropertyDef | null, domain: string): [ /* returnType */ boolean, /* property_def_ref */ PropertyDef | null ]
+export function register_displayable_value(type: GObject.GType, value: string, domain: string, string: string): void
+export function register_translated_value(type: GObject.GType, value: string, string: string): void
 /**
  * Sets up a log handler to manage all %G_LOG_LEVEL_MASK errors of domain:
  * GLib, GLib-GObject, Gtk, Gdk, and domainless.
@@ -469,14 +469,14 @@ export function standard_int_spec(): GObject.ParamSpec
  */
 export function standard_objects_spec(): GObject.ParamSpec
 export function standard_pixbuf_spec(): GObject.ParamSpec
-export function standard_stock_append_prefix(prefix: string | null): void
+export function standard_stock_append_prefix(prefix: string): void
 export function standard_stock_image_spec(): GObject.ParamSpec
 export function standard_stock_spec(): GObject.ParamSpec
 export function standard_string_spec(): GObject.ParamSpec
 export function standard_strv_spec(): GObject.ParamSpec
 export function standard_uint_spec(): GObject.ParamSpec
 export function type_has_displayable_values(type: GObject.GType): boolean
-export function util_canonical_path(path: string | null): string | null
+export function util_canonical_path(path: string): string | null
 export function util_check_and_warn_scrollable(parent: Widget, child_adaptor: WidgetAdaptor, parent_widget: Gtk.Widget): boolean
 /**
  * This is a #GCompareFunc that compares the labels of two stock items,
@@ -501,15 +501,15 @@ export function util_count_placeholders(parent: Widget): number
  * @param name a string
  * @returns a newly allocated string
  */
-export function util_duplicate_underscores(name: string | null): string | null
-export function util_file_dialog_new(title: string | null, project: Project, parent: Gtk.Window, action: UtilFileDialogType): Gtk.Widget
+export function util_duplicate_underscores(name: string): string | null
+export function util_file_dialog_new(title: string, project: Project, parent: Gtk.Window, action: UtilFileDialogType): Gtk.Widget
 /**
  * Checks whether the file at `path` is writeable
  * @param path the path to the file
  * @returns TRUE if file is writeable
  */
-export function util_file_is_writeable(path: string | null): boolean
-export function util_filename_to_icon_name(value: string | null): string | null
+export function util_file_is_writeable(path: string): boolean
+export function util_filename_to_icon_name(value: string): string | null
 /**
  * Looks through `model` for the #GtkTreeIter corresponding to
  * `findme` under `column`.
@@ -530,7 +530,7 @@ export function util_get_devhelp_icon(size: Gtk.IconSize): Gtk.Widget
  * @param filename A filename
  * @returns The mtime of the file, or %0 if the file attributes          could not be read.
  */
-export function util_get_file_mtime(filename: string | null): number
+export function util_get_file_mtime(filename: string): number
 export function util_get_placeholder_from_pointer(container: Gtk.Container): Gtk.Widget
 /**
  * Returns the type using the "get type" function name based on `name`.
@@ -540,16 +540,16 @@ export function util_get_placeholder_from_pointer(container: Gtk.Container): Gtk
  * @param have_func function-name flag -- true if the name is a "get-type" function.
  * @returns the new #GType
  */
-export function util_get_type_from_name(name: string | null, have_func: boolean): GObject.GType
+export function util_get_type_from_name(name: string, have_func: boolean): GObject.GType
 export function util_have_devhelp(): boolean
-export function util_icon_name_to_filename(value: string | null): string | null
+export function util_icon_name_to_filename(value: string): string | null
 export function util_object_is_loading(object: GObject.Object): boolean
 /**
  * Return a usable version of a property identifier as found
  * in a freshly parserd #GladeInterface
  * @param str a string
  */
-export function util_read_prop_name(str: string | null): string | null
+export function util_read_prop_name(str: string): string | null
 export function util_remove_scroll_events(widget: Gtk.Widget): void
 /**
  * Replaces each occurrence of the character `a` in `str` to `b`.
@@ -558,27 +558,27 @@ export function util_remove_scroll_events(widget: Gtk.Widget): void
  * @param b a #gchar
  */
 export function util_replace(str: string | null, a: number, b: number): void
-export function util_search_devhelp(book: string | null, page: string | null, search: string | null): void
+export function util_search_devhelp(book: string, page: string, search: string): void
 /**
  * Portable function for showing an URL `url` in a web browser.
  * @param url An URL to display
  * @returns TRUE if a web browser was successfully launched, or FALSE
  */
-export function util_url_show(url: string | null): boolean
+export function util_url_show(url: string): boolean
 /**
  * Parse a boolean value
  * @param string the string to convert
  * @returns %TRUE if there was an error on the conversion, %FALSE otherwise.
  */
-export function utils_boolean_from_string(string: string | null): [ /* returnType */ boolean, /* value */ boolean ]
+export function utils_boolean_from_string(string: string): [ /* returnType */ boolean, /* value */ boolean ]
 export function utils_cairo_draw_line(cr: cairo.Context, color: Gdk.Color, x1: number, y1: number, x2: number, y2: number): void
 export function utils_cairo_draw_rectangle(cr: cairo.Context, color: Gdk.Color, filled: boolean, x: number, y: number, width: number, height: number): void
 export function utils_enum_string_from_value(enum_type: GObject.GType, value: number): string | null
 export function utils_enum_string_from_value_displayable(flags_type: GObject.GType, value: number): string | null
-export function utils_enum_value_from_string(enum_type: GObject.GType, strval: string | null): number
+export function utils_enum_value_from_string(enum_type: GObject.GType, strval: string): number
 export function utils_flags_string_from_value(enum_type: GObject.GType, value: number): string | null
 export function utils_flags_string_from_value_displayable(flags_type: GObject.GType, value: number): string | null
-export function utils_flags_value_from_string(enum_type: GObject.GType, strval: string | null): number
+export function utils_flags_value_from_string(enum_type: GObject.GType, strval: string): number
 /**
  * Get's the pointer position relative to `widget,` while `window` and `device`
  * are not absolutely needed, they should be passed wherever possible.
@@ -589,7 +589,7 @@ export function utils_flags_value_from_string(enum_type: GObject.GType, strval: 
  * @param y The location to store the mouse pointer Y position
  */
 export function utils_get_pointer(widget: Gtk.Widget, window: Gdk.Window, device: Gdk.Device, x: number, y: number): void
-export function utils_get_pspec_from_funcname(funcname: string | null): GObject.ParamSpec | null
+export function utils_get_pspec_from_funcname(funcname: string): GObject.ParamSpec | null
 /**
  * This function is meant to be attached to key-press-event of a toplevel,
  * it simply allows the window contents to treat key events /before/
@@ -619,7 +619,7 @@ export function utils_liststore_from_enum_type(enum_type: GObject.GType, include
  * @returns the rendered #GdkPixbuf
  */
 export function utils_pointer_mode_render_icon(mode: PointerMode, size: Gtk.IconSize): GdkPixbuf.Pixbuf
-export function utils_replace_home_dir_with_tilde(path: string | null): string | null
+export function utils_replace_home_dir_with_tilde(path: string): string | null
 /**
  * Serializes #GValue into a string
  * (using glade conversion routines)
@@ -635,33 +635,33 @@ export function utils_string_from_value(value: any): string | null
  * @param project the #GladeProject to look for formats of object names when needed
  * @returns A newly allocated and set #GValue
  */
-export function utils_value_from_string(type: GObject.GType, string: string | null, project: Project): any
+export function utils_value_from_string(type: GObject.GType, string: string, project: Project): any
 /**
  * Dump the XML string from the context.
  * @param context a #GladeXmlContext
  * @returns the XML string, free the allocated memory with g_free() after use
  */
 export function xml_dump_from_context(context: XmlContext): string | null
-export function xml_get_boolean(node: XmlNode, name: string | null, _default: boolean): boolean
+export function xml_get_boolean(node: XmlNode, name: string, _default: boolean): boolean
 /**
  * Gets a string containing the content of `node_in`.
  * @param node_in a #GladeXmlNode
  * @returns A newly allocated string
  */
 export function xml_get_content(node_in: XmlNode): string | null
-export function xml_get_property_boolean(node_in: XmlNode, name: string | null, _default: boolean): boolean
-export function xml_get_property_double(node_in: XmlNode, name: string | null, _default: number): number
-export function xml_get_property_int(node_in: XmlNode, name: string | null, _default: number): number
-export function xml_get_property_string(node_in: XmlNode, name: string | null): string | null
-export function xml_get_property_string_required(node_in: XmlNode, name: string | null, xtra: string | null): string | null
+export function xml_get_property_boolean(node_in: XmlNode, name: string, _default: boolean): boolean
+export function xml_get_property_double(node_in: XmlNode, name: string, _default: number): number
+export function xml_get_property_int(node_in: XmlNode, name: string, _default: number): number
+export function xml_get_property_string(node_in: XmlNode, name: string): string | null
+export function xml_get_property_string_required(node_in: XmlNode, name: string, xtra: string): string | null
 /**
  * Get the list of targetable versions for a property
  * @param node_in a #GladeXmlNode
  * @param name a property name
  * @returns a list of #GladeTargetableVersion
  */
-export function xml_get_property_targetable_versions(node_in: XmlNode, name: string | null): TargetableVersion[]
-export function xml_get_property_version(node_in: XmlNode, name: string | null, major: number, minor: number): boolean
+export function xml_get_property_targetable_versions(node_in: XmlNode, name: string): TargetableVersion[]
+export function xml_get_property_version(node_in: XmlNode, name: string, major: number, minor: number): boolean
 /**
  * Gets an integer value for a node either carried as an attribute or as
  * the content of a child.
@@ -670,7 +670,7 @@ export function xml_get_property_version(node_in: XmlNode, name: string | null, 
  * @param val a pointer to an #int
  * @returns %TRUE if the node is found, %FALSE otherwise
  */
-export function xml_get_value_int(node_in: XmlNode, name: string | null, val: number): boolean
+export function xml_get_value_int(node_in: XmlNode, name: string, val: number): boolean
 /**
  * This is a wrapper around glade_xml_get_value_int(), only it emits
  * a g_warning() if `node` did not contain the requested tag
@@ -679,11 +679,11 @@ export function xml_get_value_int(node_in: XmlNode, name: string | null, val: nu
  * @param val a pointer to an #int
  * @returns %FALSE if @name is not in @node
  */
-export function xml_get_value_int_required(node: XmlNode, name: string | null, val: number): boolean
-export function xml_get_value_string(node: XmlNode, name: string | null): string | null
-export function xml_get_value_string_required(node: XmlNode, name: string | null, xtra_info: string | null): string | null
+export function xml_get_value_int_required(node: XmlNode, name: string, val: number): boolean
+export function xml_get_value_string(node: XmlNode, name: string): string | null
+export function xml_get_value_string_required(node: XmlNode, name: string, xtra_info: string): string | null
 export function xml_load_sym_from_node(node_in: XmlNode, module: GModule.Module, tagname: string | null, sym_location: any | null): boolean
-export function xml_search_child(node: XmlNode, name: string | null): XmlNode
+export function xml_search_child(node: XmlNode, name: string): XmlNode
 /**
  * just a small wrapper around glade_xml_search_child that displays
  * an error if the child was not found
@@ -691,20 +691,20 @@ export function xml_search_child(node: XmlNode, name: string | null): XmlNode
  * @param name the name of the child
  * @returns the requested #GladeXmlNode
  */
-export function xml_search_child_required(tree: XmlNode, name: string | null): XmlNode | null
+export function xml_search_child_required(tree: XmlNode, name: string): XmlNode | null
 /**
  * Sets the content of `node` to `content`.
  * @param node_in a #GladeXmlNode
  * @param content a string
  */
-export function xml_set_content(node_in: XmlNode, content: string | null): void
+export function xml_set_content(node_in: XmlNode, content: string): void
 /**
  * Sets the property `name` in `node_in` to `val`
  * @param node_in a #GladeXmlNode
  * @param name a string
  * @param val a string
  */
-export function xml_set_value(node_in: XmlNode, name: string | null, val: string | null): void
+export function xml_set_value(node_in: XmlNode, name: string, val: string): void
 /**
  * This delegate function is used to catch actions from the core.
  * @callback 
@@ -713,7 +713,7 @@ export function xml_set_value(node_in: XmlNode, name: string | null, val: string
  * @param action_path The action identifier in the action tree
  */
 export interface ActionActivateFunc {
-    (adaptor: WidgetAdaptor, object: GObject.Object, action_path: string | null): void
+    (adaptor: WidgetAdaptor, object: GObject.Object, action_path: string): void
 }
 /**
  * This delegate function is used to create dynamically customized
@@ -725,7 +725,7 @@ export interface ActionActivateFunc {
  * @returns A newly created #GtkMenu or %NULL
  */
 export interface ActionSubmenuFunc {
-    (adaptor: WidgetAdaptor, object: GObject.Object, action_path: string | null): Gtk.Widget | null
+    (adaptor: WidgetAdaptor, object: GObject.Object, action_path: string): Gtk.Widget | null
 }
 /**
  * Called to add `child` to `container`.
@@ -760,7 +760,7 @@ export interface AddChildVerifyFunc {
  * @param name The name of the catalog
  */
 export interface CatalogInitFunc {
-    (name: string | null): void
+    (name: string): void
 }
 /**
  * This delegate function is used to catch packing actions from the core.
@@ -771,7 +771,7 @@ export interface CatalogInitFunc {
  * @param action_path The action identifier in the action tree
  */
 export interface ChildActionActivateFunc {
-    (adaptor: WidgetAdaptor, container: GObject.Object, object: GObject.Object, action_path: string | null): void
+    (adaptor: WidgetAdaptor, container: GObject.Object, object: GObject.Object, action_path: string): void
 }
 /**
  * Called to get the packing property `property_name`
@@ -784,7 +784,7 @@ export interface ChildActionActivateFunc {
  * @param value The `GValue`
  */
 export interface ChildGetPropertyFunc {
-    (adaptor: WidgetAdaptor, container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): void
+    (adaptor: WidgetAdaptor, container: GObject.Object, child: GObject.Object, property_name: string, value: any): void
 }
 /**
  * Called to set the packing property `property_name` to `value`
@@ -797,7 +797,7 @@ export interface ChildGetPropertyFunc {
  * @param value The `GValue`
  */
 export interface ChildSetPropertyFunc {
-    (adaptor: WidgetAdaptor, container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): void
+    (adaptor: WidgetAdaptor, container: GObject.Object, child: GObject.Object, property_name: string, value: any): void
 }
 /**
  * This delegate function is always called whenever setting any
@@ -814,7 +814,7 @@ export interface ChildSetPropertyFunc {
  * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
  */
 export interface ChildVerifyPropertyFunc {
-    (adaptor: WidgetAdaptor, container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): boolean
+    (adaptor: WidgetAdaptor, container: GObject.Object, child: GObject.Object, property_name: string, value: any): boolean
 }
 /**
  * This function is called to construct a GObject instance.
@@ -903,7 +903,7 @@ export interface GetChildrenFunc {
  * @returns The internal #GObject
  */
 export interface GetInternalFunc {
-    (adaptor: WidgetAdaptor, object: GObject.Object, internal_name: string | null): GObject.Object | null
+    (adaptor: WidgetAdaptor, object: GObject.Object, internal_name: string): GObject.Object | null
 }
 /**
  * Gets `value` on `object` for a given #GladePropertyDef
@@ -914,7 +914,7 @@ export interface GetInternalFunc {
  * @param value The #GValue
  */
 export interface GetPropertyFunc {
-    (adaptor: WidgetAdaptor, object: GObject.Object, property_name: string | null, value: any): void
+    (adaptor: WidgetAdaptor, object: GObject.Object, property_name: string, value: any): void
 }
 /**
  * This function is called exactly once for any project object
@@ -971,7 +971,7 @@ export interface ReplaceChildFunc {
  * @param value The #GValue
  */
 export interface SetPropertyFunc {
-    (adaptor: WidgetAdaptor, object: GObject.Object, property_name: string | null, value: any): void
+    (adaptor: WidgetAdaptor, object: GObject.Object, property_name: string, value: any): void
 }
 /**
  * For normal properties this is used to serialize
@@ -1001,7 +1001,7 @@ export interface StringFromValueFunc {
  * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
  */
 export interface VerifyPropertyFunc {
-    (adaptor: WidgetAdaptor, object: GObject.Object, property_name: string | null, value: any): boolean
+    (adaptor: WidgetAdaptor, object: GObject.Object, property_name: string, value: any): boolean
 }
 /**
  * This function is called to fill in `node` from `widget`.
@@ -1242,7 +1242,7 @@ export interface AdaptorChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1256,7 +1256,7 @@ export interface AdaptorChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1267,7 +1267,7 @@ export interface AdaptorChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gladeui-2.0.Gladeui.AdaptorChooser
 
@@ -1531,26 +1531,26 @@ export class App extends GObject.Object {
     static do_event(event: Gdk.Event): boolean
     static get(): App
     static get_accel_group(): Gtk.AccelGroup
-    static get_bin_dir(): string | null
-    static get_catalog(name: string | null): Catalog | null
-    static get_catalog_version(name: string | null): [ /* returnType */ boolean, /* major */ number, /* minor */ number ]
+    static get_bin_dir(): string
+    static get_catalog(name: string): Catalog | null
+    static get_catalog_version(name: string): [ /* returnType */ boolean, /* major */ number, /* minor */ number ]
     static get_catalogs(): Catalog[]
-    static get_catalogs_dir(): string | null
+    static get_catalogs_dir(): string
     static get_clipboard(): Clipboard
     static get_config(): GLib.KeyFile
-    static get_lib_dir(): string | null
-    static get_locale_dir(): string | null
-    static get_modules_dir(): string | null
-    static get_pixmaps_dir(): string | null
+    static get_lib_dir(): string
+    static get_locale_dir(): string
+    static get_modules_dir(): string
+    static get_pixmaps_dir(): string
     /**
      * Finds an open project with `path`
      * @param project_path The path of an open project
      * @returns A #GladeProject, or NULL if no such open project was found
      */
-    static get_project_by_path(project_path: string | null): Project | null
+    static get_project_by_path(project_path: string): Project | null
     static get_projects(): Catalog[]
     static get_window(): Gtk.Widget
-    static is_project_loaded(project_path: string | null): boolean
+    static is_project_loaded(project_path: string): boolean
     static remove_project(project: Project): void
     /**
      * Searches for `book,` `page` and `search` in the documentation.
@@ -1558,7 +1558,7 @@ export class App extends GObject.Object {
      * @param page the name of a page
      * @param search the search query
      */
-    static search_docs(book: string | null, page: string | null, search: string | null): void
+    static search_docs(book: string, page: string, search: string): void
     /**
      * Sets `accel_group` to app.
      * The acceleration group will made available for editor dialog windows
@@ -1691,7 +1691,7 @@ export interface BaseEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1705,7 +1705,7 @@ export interface BaseEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1716,7 +1716,7 @@ export interface BaseEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gladeui-2.0.Gladeui.BaseEditor
 
@@ -1953,7 +1953,7 @@ export interface CellRendererIcon {
 
     // Own virtual methods of Gladeui-2.0.Gladeui.CellRendererIcon
 
-    vfunc_activate(path: string | null): void
+    vfunc_activate(path: string): void
 
     // Overloads of vfunc_activate
 
@@ -1970,7 +1970,7 @@ export interface CellRendererIcon {
      * @param flags render flags
      * @returns %TRUE if the event was consumed/handled
      */
-    vfunc_activate(event: Gdk.Event, widget: Gtk.Widget, path: string | null, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): boolean
+    vfunc_activate(event: Gdk.Event, widget: Gtk.Widget, path: string, background_area: Gdk.Rectangle, cell_area: Gdk.Rectangle, flags: Gtk.CellRendererState): boolean
 
     // Own signals of Gladeui-2.0.Gladeui.CellRendererIcon
 
@@ -2169,7 +2169,7 @@ export interface Command {
      * @param other another #GladeCommand
      */
     collapse(other: Command): void
-    description(): string | null
+    description(): string
     /**
      * Executes `command`
      * @returns whether the command was successfully executed
@@ -2329,26 +2329,26 @@ export class Command extends GObject.Object {
      * @param context a #const gchar *
      * @param comment a #const gchar *
      */
-    static set_i18n(property: Property, translatable: boolean, context: string | null, comment: string | null): void
-    static set_name(glade_widget: Widget, name: string | null): void
+    static set_i18n(property: Property, translatable: boolean, context: string, comment: string): void
+    static set_name(glade_widget: Widget, name: string): void
     /**
      * Sets `domain` as the translation domain for `project`.
      * @param project A #GladeProject
      * @param domain The translation domain for `project`
      */
-    static set_project_domain(project: Project, domain: string | null): void
+    static set_project_domain(project: Project, domain: string): void
     /**
      * Sets the license agreement for `project`. It will be saved in the xml as comment.
      * @param project A #GladeProject
      * @param license License of `project`
      */
-    static set_project_license(project: Project, license: string | null): void
+    static set_project_license(project: Project, license: string): void
     /**
      * Sets a resource path `project`.
      * @param project A #GladeProject
      * @param path path to load resources from.
      */
-    static set_project_resource_path(project: Project, path: string | null): void
+    static set_project_resource_path(project: Project, path: string): void
     /**
      * Sets the target of `catalog` to `major`.`minor` in `project`.
      * @param project A #GladeProject
@@ -2356,7 +2356,7 @@ export class Command extends GObject.Object {
      * @param major The new major version of `catalog` to target
      * @param minor The new minor version of `catalog` to target
      */
-    static set_project_target(project: Project, catalog: string | null, major: number, minor: number): void
+    static set_project_target(project: Project, catalog: string, major: number, minor: number): void
     /**
      * Sets `widget` to be the template widget in `project`.
      * @param project A #GladeProject
@@ -2421,7 +2421,7 @@ export interface DesignView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2435,7 +2435,7 @@ export interface DesignView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2446,7 +2446,7 @@ export interface DesignView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gladeui-2.0.Gladeui.DesignView
 
@@ -2665,7 +2665,7 @@ export interface EPropBool extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -2686,7 +2686,7 @@ export interface EPropBool extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -2721,7 +2721,7 @@ export interface EPropBool extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2733,7 +2733,7 @@ export interface EPropBool extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2747,7 +2747,7 @@ export interface EPropBool extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -2988,7 +2988,7 @@ export interface EPropCheck extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -3009,7 +3009,7 @@ export interface EPropCheck extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -3044,7 +3044,7 @@ export interface EPropCheck extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3056,7 +3056,7 @@ export interface EPropCheck extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3070,7 +3070,7 @@ export interface EPropCheck extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -3311,7 +3311,7 @@ export interface EPropColor extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -3332,7 +3332,7 @@ export interface EPropColor extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -3367,7 +3367,7 @@ export interface EPropColor extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3379,7 +3379,7 @@ export interface EPropColor extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3393,7 +3393,7 @@ export interface EPropColor extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -3634,7 +3634,7 @@ export interface EPropEnum extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -3655,7 +3655,7 @@ export interface EPropEnum extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -3690,7 +3690,7 @@ export interface EPropEnum extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3702,7 +3702,7 @@ export interface EPropEnum extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3716,7 +3716,7 @@ export interface EPropEnum extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -3957,7 +3957,7 @@ export interface EPropFlags extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -3978,7 +3978,7 @@ export interface EPropFlags extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4013,7 +4013,7 @@ export interface EPropFlags extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4025,7 +4025,7 @@ export interface EPropFlags extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4039,7 +4039,7 @@ export interface EPropFlags extends Atk.ImplementorIface, Editable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4280,7 +4280,7 @@ export interface EPropNamedIcon extends Atk.ImplementorIface, Editable, Gtk.Buil
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -4301,7 +4301,7 @@ export interface EPropNamedIcon extends Atk.ImplementorIface, Editable, Gtk.Buil
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4336,7 +4336,7 @@ export interface EPropNamedIcon extends Atk.ImplementorIface, Editable, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4348,7 +4348,7 @@ export interface EPropNamedIcon extends Atk.ImplementorIface, Editable, Gtk.Buil
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4362,7 +4362,7 @@ export interface EPropNamedIcon extends Atk.ImplementorIface, Editable, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4603,7 +4603,7 @@ export interface EPropNumeric extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -4624,7 +4624,7 @@ export interface EPropNumeric extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4659,7 +4659,7 @@ export interface EPropNumeric extends Atk.ImplementorIface, Editable, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4671,7 +4671,7 @@ export interface EPropNumeric extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4685,7 +4685,7 @@ export interface EPropNumeric extends Atk.ImplementorIface, Editable, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4926,7 +4926,7 @@ export interface EPropObject extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -4947,7 +4947,7 @@ export interface EPropObject extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -4982,7 +4982,7 @@ export interface EPropObject extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4994,7 +4994,7 @@ export interface EPropObject extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5008,7 +5008,7 @@ export interface EPropObject extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -5249,7 +5249,7 @@ export interface EPropObjects extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -5270,7 +5270,7 @@ export interface EPropObjects extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -5305,7 +5305,7 @@ export interface EPropObjects extends Atk.ImplementorIface, Editable, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5317,7 +5317,7 @@ export interface EPropObjects extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5331,7 +5331,7 @@ export interface EPropObjects extends Atk.ImplementorIface, Editable, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -5572,7 +5572,7 @@ export interface EPropText extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -5593,7 +5593,7 @@ export interface EPropText extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -5628,7 +5628,7 @@ export interface EPropText extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5640,7 +5640,7 @@ export interface EPropText extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5654,7 +5654,7 @@ export interface EPropText extends Atk.ImplementorIface, Editable, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -5895,7 +5895,7 @@ export interface EPropUnichar extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -5916,7 +5916,7 @@ export interface EPropUnichar extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -5951,7 +5951,7 @@ export interface EPropUnichar extends Atk.ImplementorIface, Editable, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5963,7 +5963,7 @@ export interface EPropUnichar extends Atk.ImplementorIface, Editable, Gtk.Builda
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5977,7 +5977,7 @@ export interface EPropUnichar extends Atk.ImplementorIface, Editable, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Loads `widget` property values into `editable`
      * (the editable will watch the widgets properties
@@ -6237,7 +6237,7 @@ export interface Editor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6251,7 +6251,7 @@ export interface Editor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6262,7 +6262,7 @@ export interface Editor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gladeui-2.0.Gladeui.Editor
 
@@ -6525,7 +6525,7 @@ export interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buil
      */
     commit(value: any): void
     commit_no_callback(value: any): void
-    get_custom_text(): string | null
+    get_custom_text(): string
     get_disable_check(): boolean
     get_item_label(): Gtk.Widget
     get_property(): Property
@@ -6552,7 +6552,7 @@ export interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buil
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     get_property_def(): PropertyDef
     /**
      * Loads `property` values into `eprop` and connects.
@@ -6578,7 +6578,7 @@ export interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buil
      */
     load_by_widget(widget: Widget): void
     loading(): boolean
-    set_custom_text(custom_text: string | null): void
+    set_custom_text(custom_text: string): void
     set_disable_check(disable_check: boolean): void
 
     // Conflicting methods
@@ -6593,7 +6593,7 @@ export interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6605,7 +6605,7 @@ export interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buil
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6619,7 +6619,7 @@ export interface EditorProperty extends Atk.ImplementorIface, Editable, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gladeui-2.0.Gladeui.EditorProperty
 
@@ -6838,7 +6838,7 @@ export class EditorProperty extends Gtk.Box {
      * @returns %TRUE if OK was selected.
      */
     static show_i18n_dialog(parent: Gtk.Widget, text: string | null, context: string | null, comment: string | null, translatable: boolean): boolean
-    static show_object_dialog(project: Project, title: string | null, parent: Gtk.Widget, object_type: GObject.GType, exception: Widget, object: Widget): boolean
+    static show_object_dialog(project: Project, title: string, parent: Gtk.Widget, object_type: GObject.GType, exception: Widget, object: Widget): boolean
     static show_resource_dialog(project: Project, parent: Gtk.Widget, filename: string | null): boolean
 }
 
@@ -6873,7 +6873,7 @@ export interface EditorSkeleton extends Atk.ImplementorIface, Editable, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6885,7 +6885,7 @@ export interface EditorSkeleton extends Atk.ImplementorIface, Editable, Gtk.Buil
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6899,7 +6899,7 @@ export interface EditorSkeleton extends Atk.ImplementorIface, Editable, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gladeui-2.0.Gladeui.EditorSkeleton
 
@@ -7110,7 +7110,7 @@ export interface EditorTable extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7122,7 +7122,7 @@ export interface EditorTable extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7136,7 +7136,7 @@ export interface EditorTable extends Atk.ImplementorIface, Editable, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gladeui-2.0.Gladeui.EditorTable
 
@@ -7403,7 +7403,7 @@ export interface Inspector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7417,7 +7417,7 @@ export interface Inspector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7428,7 +7428,7 @@ export interface Inspector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gladeui-2.0.Gladeui.Inspector
 
@@ -7680,8 +7680,21 @@ export interface NamedIconChooserDialog extends Atk.ImplementorIface, Gtk.Builda
 
     get_context(): string | null
     get_icon_name(): string | null
-    set_context(context: string | null): boolean
-    set_icon_name(icon_name: string | null): void
+    set_context(context: string): boolean
+    set_icon_name(icon_name: string): void
+
+    // Overloads of set_icon_name
+
+    /**
+     * Sets the icon for the window from a named themed icon.
+     * See the docs for #GtkIconTheme for more details.
+     * On some platforms, the window icon is not used at all.
+     * 
+     * Note that this has nothing to do with the WM_ICON_NAME
+     * property which is mentioned in the ICCCM.
+     * @param name the name of the themed icon
+     */
+    set_icon_name(name: string | null): void
 
     // Conflicting methods
 
@@ -7718,7 +7731,7 @@ export interface NamedIconChooserDialog extends Atk.ImplementorIface, Gtk.Builda
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7732,7 +7745,7 @@ export interface NamedIconChooserDialog extends Atk.ImplementorIface, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7743,7 +7756,7 @@ export interface NamedIconChooserDialog extends Atk.ImplementorIface, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gladeui-2.0.Gladeui.NamedIconChooserDialog
 
@@ -8095,7 +8108,7 @@ export interface Palette extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8109,7 +8122,7 @@ export interface Palette extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8120,7 +8133,7 @@ export interface Palette extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gladeui-2.0.Gladeui.Palette
 
@@ -8694,7 +8707,7 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
      * @param name base name of the widget to create
      * @returns whether the name is available or not.
      */
-    available_widget_name(widget: Widget, name: string | null): boolean
+    available_widget_name(widget: Widget, name: string): boolean
     /**
      * Backup the last file which `project` has saved to
      * or was loaded from.
@@ -8708,7 +8721,7 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
      * @param path location to save glade file
      * @returns %TRUE on success, %FALSE on failure
      */
-    backup(path: string | null): boolean
+    backup(path: string): boolean
     cancel_load(): void
     check_reordered(parent: Widget, old_order: GObject.Object[]): void
     command_cut(): void
@@ -8717,10 +8730,10 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
     copy_selection(): void
     display_dependencies(): string | null
     get_add_item(): WidgetAdaptor
-    get_css_provider_path(): string | null
+    get_css_provider_path(): string
     get_file_mtime(): number
     get_has_selection(): boolean
-    get_license(): string | null
+    get_license(): string
     /**
      * Get's whether the project has been modified since it was last saved.
      * @returns %TRUE if the project has been modified since it was last saved
@@ -8728,7 +8741,7 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
     get_modified(): boolean
     get_name(): string | null
     get_objects(): GObject.Object[]
-    get_path(): string | null
+    get_path(): string
 
     // Overloads of get_path
 
@@ -8746,27 +8759,27 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
      * @returns TRUE if project is read only
      */
     get_readonly(): boolean
-    get_resource_path(): string | null
+    get_resource_path(): string
     /**
      * Fetches the target version of the `project` for `catalog`.
      * @param catalog the name of the catalog `project` includes
      * @param major the return location for the target major version
      * @param minor the return location for the target minor version
      */
-    get_target_version(catalog: string | null, major: number, minor: number): void
+    get_target_version(catalog: string, major: number, minor: number): void
     get_template(): Widget
-    get_translation_domain(): string | null
+    get_translation_domain(): string
     /**
      * Searches under `ancestor` in `project` looking for a #GladeWidget named `name`.
      * @param name The user visible name of the widget we are looking for
      * @returns a pointer to the widget, %NULL if the widget does not exist
      */
-    get_widget_by_name(name: string | null): Widget | null
+    get_widget_by_name(name: string): Widget | null
     has_object(object: GObject.Object): boolean
     is_loading(): boolean
     is_selected(object: GObject.Object): boolean
     load_cancelled(): boolean
-    load_from_file(path: string | null): boolean
+    load_from_file(path: string): boolean
     /**
      * Creates a new name for a widget that doesn't collide with any of the names
      * already in `project`. This name will start with `base_name`.
@@ -8776,7 +8789,7 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
      * @param base_name base name of the widget to create
      * @returns a string containing the new name, %NULL if there is not enough          memory for this string
      */
-    new_widget_name(widget: Widget, base_name: string | null): string | null
+    new_widget_name(widget: Widget, base_name: string): string | null
     /**
      * Gets the next redo item on `project'`s command stack.
      * @returns the #GladeCommand
@@ -8832,20 +8845,20 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
      * @param resource The resource basename
      * @returns A newly allocated string holding the          full path to the resource.
      */
-    resource_fullpath(resource: string | null): string | null
+    resource_fullpath(resource: string): string | null
     /**
      * Saves `project` to the given path.
      * @param path location to save glade file
      * @returns %TRUE on success, %FALSE on failure
      */
-    save(path: string | null): boolean
+    save(path: string): boolean
     /**
      * Saves `project` to the given path.
      * @param path location to save glade file
      * @param flags the #GladeVerifyFlags to warn about
      * @returns %TRUE on success, %FALSE on failure
      */
-    save_verify(path: string | null, flags: VerifyFlags): boolean
+    save_verify(path: string, flags: VerifyFlags): boolean
     /**
      * Adds `object` to the selection chain of `project`
      * 
@@ -8887,24 +8900,24 @@ export interface Project extends Gtk.TreeDragSource, Gtk.TreeModel {
      * Set the custom CSS provider path to use in `project`
      * @param path a CSS file path
      */
-    set_css_provider_path(path: string | null): void
-    set_license(license: string | null): void
+    set_css_provider_path(path: string): void
+    set_license(license: string): void
     set_pointer_mode(mode: PointerMode): void
-    set_resource_path(path: string | null): void
-    set_target_version(catalog: string | null, major: number, minor: number): void
+    set_resource_path(path: string): void
+    set_target_version(catalog: string, major: number, minor: number): void
     set_template(widget: Widget): void
     /**
      * Set the project translation domain.
      * @param domain the translation domain
      */
-    set_translation_domain(domain: string | null): void
+    set_translation_domain(domain: string): void
     /**
      * Sets `name` on `widget` in `project,` if `name` is not
      * available then a new name will be used.
      * @param widget the #GladeWidget to set a name on
      * @param name the name to set.
      */
-    set_widget_name(widget: Widget, name: string | null): void
+    set_widget_name(widget: Widget, name: string): void
     toplevels(): Gtk.Widget[]
     /**
      * Undoes a #GladeCommand in this project.
@@ -9106,7 +9119,7 @@ export class Project extends GObject.Object {
      * @param path the path of the project to load
      * @returns a new #GladeProject for the opened project on success,          %NULL on failure
      */
-    static load(path: string | null): Project | null
+    static load(path: string): Project | null
     static verify_property(property: Property): void
     static verify_signal(widget: Widget, signal: Signal): void
 }
@@ -9198,18 +9211,18 @@ export interface Property {
     get_save_always(): boolean
     get_sensitive(): boolean
     get_state(): PropertyState
-    get_support_warning(): string | null
+    get_support_warning(): string
     /**
      * Retrieve the property value
      * @param value a #GValue
      */
     get_value(value: any): void
     get_widget(): Widget
-    i18n_get_comment(): string | null
-    i18n_get_context(): string | null
+    i18n_get_comment(): string
+    i18n_get_context(): string
     i18n_get_translatable(): boolean
-    i18n_set_comment(str: string | null): void
-    i18n_set_context(str: string | null): void
+    i18n_set_comment(str: string): void
+    i18n_set_context(str: string): void
     i18n_set_translatable(translatable: boolean): void
     inline_value(): any
     /**
@@ -9254,8 +9267,8 @@ export interface Property {
      * @param setting the value to set
      */
     set_save_always(setting: boolean): void
-    set_sensitive(sensitive: boolean, reason: string | null): void
-    set_support_warning(disable: boolean, reason: string | null): void
+    set_sensitive(sensitive: boolean, reason: string): void
+    set_support_warning(disable: boolean, reason: string): void
     /**
      * Sets the property's value
      * @param value a #GValue
@@ -9302,7 +9315,7 @@ export interface Property {
      * @virtual 
      */
     vfunc_sync(): void
-    vfunc_tooltip_changed(tooltip: string | null, insensitive_tooltip: string | null, support_warning: string | null): void
+    vfunc_tooltip_changed(tooltip: string, insensitive_tooltip: string, support_warning: string): void
     vfunc_value_changed(old_value: any, new_value: any): void
 
     // Own signals of Gladeui-2.0.Gladeui.Property
@@ -9424,8 +9437,8 @@ export interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Build
     // Owm methods of Gladeui-2.0.Gladeui.PropertyLabel
 
     get_append_colon(): boolean
-    get_custom_text(): string | null
-    get_custom_tooltip(): string | null
+    get_custom_text(): string
+    get_custom_tooltip(): string
     get_packing(): boolean
     get_property(): Property
 
@@ -9451,11 +9464,11 @@ export interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Build
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
-    get_property_name(): string | null
+    get_property(property_name: string, value: any): void
+    get_property_name(): string
     set_append_colon(append_colon: boolean): void
-    set_custom_text(custom_text: string | null): void
-    set_custom_tooltip(custom_tooltip: string | null): void
+    set_custom_text(custom_text: string): void
+    set_custom_tooltip(custom_tooltip: string): void
     set_packing(packing: boolean): void
     set_property(property: Property): void
 
@@ -9466,8 +9479,8 @@ export interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Build
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
-    set_property_name(property_name: string | null): void
+    set_property(property_name: string, value: any): void
+    set_property_name(property_name: string): void
 
     // Conflicting methods
 
@@ -9481,7 +9494,7 @@ export interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9493,7 +9506,7 @@ export interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Build
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9507,7 +9520,7 @@ export interface PropertyLabel extends Atk.ImplementorIface, Editable, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gladeui-2.0.Gladeui.PropertyLabel
 
@@ -9740,15 +9753,15 @@ export interface PropertyShell extends Atk.ImplementorIface, Editable, Gtk.Build
 
     // Owm methods of Gladeui-2.0.Gladeui.PropertyShell
 
-    get_custom_text(): string | null
+    get_custom_text(): string
     get_disable_check(): boolean
     get_packing(): boolean
-    get_property_name(): string | null
+    get_property_name(): string
     get_use_command(): boolean
-    set_custom_text(custom_text: string | null): void
+    set_custom_text(custom_text: string): void
     set_disable_check(disable_check: boolean): void
     set_packing(packing: boolean): void
-    set_property_name(property_name: string | null): void
+    set_property_name(property_name: string): void
     set_use_command(use_command: boolean): void
 
     // Conflicting methods
@@ -9763,7 +9776,7 @@ export interface PropertyShell extends Atk.ImplementorIface, Editable, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9775,7 +9788,7 @@ export interface PropertyShell extends Atk.ImplementorIface, Editable, Gtk.Build
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9789,7 +9802,7 @@ export interface PropertyShell extends Atk.ImplementorIface, Editable, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Gladeui-2.0.Gladeui.PropertyShell
 
@@ -10047,18 +10060,18 @@ export interface Signal {
      * Get the signal detail.
      * @returns the detail of the signal
      */
-    get_detail(): string | null
+    get_detail(): string
     /**
      * Get the signal handler.
      * @returns the handler of the signal
      */
-    get_handler(): string | null
+    get_handler(): string
     /**
      * Get the name of the signal from the signal definition.
      * @returns The name of the signal
      */
-    get_name(): string | null
-    get_support_warning(): string | null
+    get_name(): string
+    get_support_warning(): string
     /**
      * Get whether the instance and userdata arguments should be swapped.
      * @returns whether the instance and userdata arguments should be swapped
@@ -10068,7 +10081,7 @@ export interface Signal {
      * Get the userdata handler.
      * @returns the userdata of the signal
      */
-    get_userdata(): string | null
+    get_userdata(): string
     /**
      * Set whether the handler should be called before or after the default handler
      * of the signal.
@@ -10079,13 +10092,13 @@ export interface Signal {
      * Set the detail of the signal.
      * @param detail the detail of the signal
      */
-    set_detail(detail: string | null): void
+    set_detail(detail: string): void
     /**
      * Set the handler of the signal.
      * @param handler the handler of the signal
      */
-    set_handler(handler: string | null): void
-    set_support_warning(support_warning: string | null): void
+    set_handler(handler: string): void
+    set_support_warning(support_warning: string): void
     /**
      * Set whether the instance and userdata arguments should be swapped.
      * @param swapped if the instance and userdata arguments should be swapped
@@ -10095,7 +10108,7 @@ export interface Signal {
      * Set the userdata of the signal.
      * @param userdata the userdata of the signal
      */
-    set_userdata(userdata: string | null): void
+    set_userdata(userdata: string): void
     /**
      * Writes `signal` to `node`
      * @param context A #GladeXmlContext
@@ -10152,7 +10165,7 @@ export class Signal extends GObject.Object {
      * @param swapped whether the handler's user data should be swapped with the emitter instance.
      * @returns the new #GladeSignal
      */
-    constructor(sig_def: SignalDef, handler: string | null, userdata: string | null, after: boolean, swapped: boolean) 
+    constructor(sig_def: SignalDef, handler: string, userdata: string, after: boolean, swapped: boolean) 
     /**
      * Creates a new #GladeSignal with the given parameters.
      * @constructor 
@@ -10163,7 +10176,7 @@ export class Signal extends GObject.Object {
      * @param swapped whether the handler's user data should be swapped with the emitter instance.
      * @returns the new #GladeSignal
      */
-    static new(sig_def: SignalDef, handler: string | null, userdata: string | null, after: boolean, swapped: boolean): Signal
+    static new(sig_def: SignalDef, handler: string, userdata: string, after: boolean, swapped: boolean): Signal
     _init(config?: Signal.ConstructorProperties): void
     /**
      * Reads and creates a ner #GladeSignal based on `node`
@@ -10254,7 +10267,7 @@ export interface SignalEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10268,7 +10281,7 @@ export interface SignalEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10279,7 +10292,7 @@ export interface SignalEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Gladeui-2.0.Gladeui.SignalEditor
 
@@ -10656,7 +10669,7 @@ export interface Widget {
      * @param reason The #GladeCreateReason for which this internal widget                     was created (usually just pass the reason from the post_create                     function; note also this is used only by the plugin code so                     pass something useful here).
      * @returns a freshly created #GladeWidget wrapper object for the          @internal_object of name @internal_name
      */
-    adaptor_create_internal(internal_object: GObject.Object, internal_name: string | null, parent_name: string | null, anarchist: boolean, reason: CreateReason): Widget
+    adaptor_create_internal(internal_object: GObject.Object, internal_name: string, parent_name: string, anarchist: boolean, reason: CreateReason): Widget
     /**
      * Adds `child` to `parent` in a generic way for this #GladeWidget parent.
      * @param child the #GladeWidget to add
@@ -10699,14 +10712,14 @@ export interface Widget {
      * @param property_name The id of the property
      * @param value The `GValue`
      */
-    child_get_property(child: Widget, property_name: string | null, value: any): void
+    child_get_property(child: Widget, property_name: string, value: any): void
     /**
      * Sets `child'`s packing property identified by `property_name` to `value`.
      * @param child The #GladeWidget child
      * @param property_name The id of the property
      * @param value The `GValue`
      */
-    child_set_property(child: Widget, property_name: string | null, value: any): void
+    child_set_property(child: Widget, property_name: string, value: any): void
     /**
      * Sets properties in `widget` based on the values of
      * matching properties in `template_widget`
@@ -10729,7 +10742,7 @@ export interface Widget {
      * @param use_command Whether the undo/redo stack applies here.
      * @returns A newly created and connected GladeEditorProperty
      */
-    create_editor_property(property: string | null, packing: boolean, use_command: boolean): EditorProperty
+    create_editor_property(property: string, packing: boolean, use_command: boolean): EditorProperty
     /**
      * Determines whether `widget` is somehow dependent on `other,` in
      * which case it should be serialized after `other`.
@@ -10772,7 +10785,7 @@ export interface Widget {
      * @param name child name
      * @returns The child of widget or %NULL if it was not found.
      */
-    find_child(name: string | null): Widget | null
+    find_child(name: string): Widget | null
     /**
      * Creates a user friendly name to describe project widgets
      * @returns A newly allocated string
@@ -10783,7 +10796,7 @@ export interface Widget {
      * @param action_path a full action path including groups
      * @returns the action or %NULL if not found.
      */
-    get_action(action_path: string | null): WidgetAction | null
+    get_action(action_path: string): WidgetAction | null
     get_actions(): WidgetAction[]
     get_adaptor(): WidgetAdaptor
     /**
@@ -10791,8 +10804,8 @@ export interface Widget {
      * @returns The children of widget <note><para>This differs from a direct call to glade_widget_adaptor_get_children() as it only returns children which have an associated GladeWidget. This function will not return any placeholders or internal composite children that have not been exposed for Glade configuration</para></note>
      */
     get_children(): GObject.Object[]
-    get_display_name(): string | null
-    get_internal(): string | null
+    get_display_name(): string
+    get_internal(): string
     /**
      * Checks if `widget` is a composite template to be used
      * with gtk_widget_class_set_template().
@@ -10805,23 +10818,23 @@ export interface Widget {
      * @returns a #GladeWidget or %NULL if none is locked
      */
     get_locker(): Widget | null
-    get_name(): string | null
+    get_name(): string
     get_object(): GObject.Object
     /**
      * Returns a #GladeWidgetAction object indentified by `action_path`.
      * @param action_path a full action path including groups
      * @returns the action or %NULL if not found.
      */
-    get_pack_action(action_path: string | null): WidgetAction | null
+    get_pack_action(action_path: string): WidgetAction | null
     get_pack_actions(): WidgetAction[]
-    get_pack_property(id_property: string | null): Property | null
+    get_pack_property(id_property: string): Property | null
     get_packing_properties(): Property[]
     get_parent(): Widget
     get_parentless_reffed_widgets(): Property[]
     get_parentless_widget_ref(): Property
     get_project(): Project
     get_properties(): Property[]
-    get_property(id_property: string | null): Property | null
+    get_property(id_property: string): Property | null
 
     // Overloads of get_property
 
@@ -10845,7 +10858,7 @@ export interface Widget {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Compiles a list of #GladeSignal elements
      * @returns a newly allocated #GList of #GladeSignal, the caller must call g_list_free() to free the list.
@@ -10870,7 +10883,7 @@ export interface Widget {
     is_ancestor(ancestor: Widget): boolean
     list_locked_widgets(): Widget[]
     list_prop_refs(): Property[]
-    list_signal_handlers(signal_name: string | null): Signal[]
+    list_signal_handlers(signal_name: string): Signal[]
     /**
      * Sets `locked` to be in a locked up state
      * spoken for by `widget,` locked widgets cannot
@@ -10884,21 +10897,21 @@ export interface Widget {
      * @param property_name The property identifier
      * @param value The #GValue
      */
-    object_get_property(property_name: string | null, value: any): void
+    object_get_property(property_name: string, value: any): void
     /**
      * This function applies `value` to the property `property_name` on
      * the runtime object of `widget`.
      * @param property_name The property identifier
      * @param value The #GValue
      */
-    object_set_property(property_name: string | null, value: any): void
-    pack_property_default(id_property: string | null): boolean
+    object_set_property(property_name: string, value: any): void
+    pack_property_default(id_property: string): boolean
     /**
      * Resets `id_property` in `widget'`s packing properties to it's default value
      * @param id_property a string naming a #GladeProperty
      * @returns whether @id_property was found or not.
      */
-    pack_property_reset(id_property: string | null): boolean
+    pack_property_reset(id_property: string): boolean
     /**
      * Sets the enabled state of `id_property` in `widget'`s packing
      * properties; this is used for optional properties.
@@ -10906,7 +10919,7 @@ export interface Widget {
      * @param enabled setting enabled or disabled
      * @returns whether @id_property was found or not.
      */
-    pack_property_set_enabled(id_property: string | null, enabled: boolean): boolean
+    pack_property_set_enabled(id_property: string, enabled: boolean): boolean
     /**
      * Sets whether `id_property` in `widget` should be special cased
      * to always be saved regardless of its default value.
@@ -10917,7 +10930,7 @@ export interface Widget {
      * @param setting the setting
      * @returns whether @id_property was found or not.
      */
-    pack_property_set_save_always(id_property: string | null, setting: boolean): boolean
+    pack_property_set_save_always(id_property: string, setting: boolean): boolean
     /**
      * Sets the sensitivity of `id_property` in `widget'`s packing properties.
      * @param id_property a string naming a #GladeProperty
@@ -10925,7 +10938,7 @@ export interface Widget {
      * @param reason a description of why the user cant edit this property          which will be used as a tooltip
      * @returns whether @id_property was found or not.
      */
-    pack_property_set_sensitive(id_property: string | null, sensitive: boolean, reason: string | null): boolean
+    pack_property_set_sensitive(id_property: string, sensitive: boolean, reason: string): boolean
     /**
      * Same as glade_widget_property_string() but for packing
      * properties.
@@ -10933,7 +10946,7 @@ export interface Widget {
      * @param value the #GValue to print or %NULL
      * @returns A newly allocated string representing @id_property
      */
-    pack_property_string(id_property: string | null, value: any): string | null
+    pack_property_string(id_property: string, value: any): string | null
     /**
      * Returns whether placeholders should be used
      * in operations concerning this parent & child.
@@ -10945,14 +10958,14 @@ export interface Widget {
      * @returns whether to use placeholders for this relationship.
      */
     placeholder_relation(widget: Widget): boolean
-    property_default(id_property: string | null): boolean
-    property_original_default(id_property: string | null): boolean
+    property_default(id_property: string): boolean
+    property_original_default(id_property: string): boolean
     /**
      * Resets `id_property` in `widget` to it's default value
      * @param id_property a string naming a #GladeProperty
      * @returns whether @id_property was found or not.
      */
-    property_reset(id_property: string | null): boolean
+    property_reset(id_property: string): boolean
     /**
      * Sets the enabled state of `id_property` in `widget;` this is
      * used for optional properties.
@@ -10960,7 +10973,7 @@ export interface Widget {
      * @param enabled setting enabled or disabled
      * @returns whether @id_property was found or not.
      */
-    property_set_enabled(id_property: string | null, enabled: boolean): boolean
+    property_set_enabled(id_property: string, enabled: boolean): boolean
     /**
      * Sets whether `id_property` in `widget` should be special cased
      * to always be saved regardless of its default value.
@@ -10971,7 +10984,7 @@ export interface Widget {
      * @param setting the setting
      * @returns whether @id_property was found or not.
      */
-    property_set_save_always(id_property: string | null, setting: boolean): boolean
+    property_set_save_always(id_property: string, setting: boolean): boolean
     /**
      * Sets the sensitivity of `id_property` in `widget`
      * @param id_property a string naming a #GladeProperty
@@ -10979,7 +10992,7 @@ export interface Widget {
      * @param reason a description of why the user cant edit this property          which will be used as a tooltip
      * @returns whether @id_property was found or not.
      */
-    property_set_sensitive(id_property: string | null, sensitive: boolean, reason: string | null): boolean
+    property_set_sensitive(id_property: string, sensitive: boolean, reason: string): boolean
     /**
      * Creates a printable string representing `id_property` in
      * `widget,` if `value` is specified it will be used in place
@@ -10990,7 +11003,7 @@ export interface Widget {
      * @param value the #GValue to print or %NULL
      * @returns A newly allocated string representing @id_property
      */
-    property_string(id_property: string | null, value: any): string | null
+    property_string(id_property: string, value: any): string | null
     /**
      * Reads in a child widget from the xml (handles 'child' tag)
      * @param node a #GladeXmlNode
@@ -11024,7 +11037,7 @@ export interface Widget {
      * style properties).
      * @param id_property the name of the property
      */
-    remove_property(id_property: string | null): void
+    remove_property(id_property: string): void
     /**
      * Removes a signal handler from `widget`
      * @param signal_handler The #GladeSignal
@@ -11045,21 +11058,21 @@ export interface Widget {
      * @param sensitive setting sensitive or insensitive
      * @returns whether @action_path was found or not.
      */
-    set_action_sensitive(action_path: string | null, sensitive: boolean): boolean
+    set_action_sensitive(action_path: string, sensitive: boolean): boolean
     /**
      * Sets the visibility of `action_path` in `widget`
      * @param action_path a full action path including groups
      * @param visible setting visible or invisible
      * @returns whether @action_path was found or not.
      */
-    set_action_visible(action_path: string | null, visible: boolean): boolean
+    set_action_visible(action_path: string, visible: boolean): boolean
     set_child_type_from_node(child: GObject.Object, node: XmlNode): void
     set_in_project(in_project: boolean): void
     /**
      * Sets the internal name of `widget` to `internal`
      * @param internal The internal name
      */
-    set_internal(internal: string | null): void
+    set_internal(internal: string): void
     /**
      * Set's this widget to be toplevel composite object to be
      * eventually used with gtk_widget_class_set_template()
@@ -11072,21 +11085,21 @@ export interface Widget {
      * Sets `widget'`s name to `name`.
      * @param name a string
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the sensitivity of `action_path` in `widget`
      * @param action_path a full action path including groups
      * @param sensitive setting sensitive or insensitive
      * @returns whether @action_path was found or not.
      */
-    set_pack_action_sensitive(action_path: string | null, sensitive: boolean): boolean
+    set_pack_action_sensitive(action_path: string, sensitive: boolean): boolean
     /**
      * Sets the visibility of `action_path` in `widget`
      * @param action_path a full action path including groups
      * @param visible setting visible or invisible
      * @returns whether @action_path was found or not.
      */
-    set_pack_action_visible(action_path: string | null, visible: boolean): boolean
+    set_pack_action_visible(action_path: string, visible: boolean): boolean
     /**
      * Generates the packing_properties list of the widget, given
      * the class of the container we are adding the widget to.
@@ -11105,7 +11118,7 @@ export interface Widget {
      * @param project a #GladeProject
      */
     set_project(project: Project): void
-    set_support_warning(warning: string | null): void
+    set_support_warning(warning: string): void
     /**
      * Display `widget` in it's project's GladeDesignView
      */
@@ -11454,7 +11467,7 @@ export interface WidgetAdaptor {
      * @param object The #GObject
      * @param action_path The action identifier in the action tree
      */
-    action_activate(object: GObject.Object, action_path: string | null): void
+    action_activate(object: GObject.Object, action_path: string): void
     /**
      * Add an action to `adaptor`.
      * If the action is present then it overrides label and stock
@@ -11464,13 +11477,13 @@ export interface WidgetAdaptor {
      * @param important if this action is important.
      * @returns whether or not the action was added/updated.
      */
-    action_add(action_path: string | null, label: string | null, stock: string | null, important: boolean): boolean
+    action_add(action_path: string, label: string, stock: string, important: boolean): boolean
     /**
      * Remove an `adaptor'`s action.
      * @param action_path The identifier of this action in the action tree
      * @returns whether or not the action was removed.
      */
-    action_remove(action_path: string | null): boolean
+    action_remove(action_path: string): boolean
     /**
      * This delegate function is used to create dynamically customized
      * submenus. Called only for actions that don't have children.
@@ -11478,7 +11491,7 @@ export interface WidgetAdaptor {
      * @param action_path The action identifier in the action tree
      * @returns A newly created #GtkMenu or %NULL
      */
-    action_submenu(object: GObject.Object, action_path: string | null): Gtk.Widget | null
+    action_submenu(object: GObject.Object, action_path: string): Gtk.Widget | null
     /**
      * Create a list of actions.
      * @returns a new list of GladeWidgetAction.
@@ -11508,7 +11521,7 @@ export interface WidgetAdaptor {
      * @param object The #GObject
      * @param action_path The action identifier in the action tree
      */
-    child_action_activate(container: GObject.Object, object: GObject.Object, action_path: string | null): void
+    child_action_activate(container: GObject.Object, object: GObject.Object, action_path: string): void
     /**
      * Gets `child'`s packing property identified by `property_name`.
      * @param container The #GObject container
@@ -11516,7 +11529,7 @@ export interface WidgetAdaptor {
      * @param property_name The id of the property
      * @param value The `GValue`
      */
-    child_get_property(container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): void
+    child_get_property(container: GObject.Object, child: GObject.Object, property_name: string, value: any): void
     /**
      * Sets `child'`s packing property identified by `property_name` to `value`.
      * @param container The #GObject container
@@ -11524,7 +11537,7 @@ export interface WidgetAdaptor {
      * @param property_name The id of the property
      * @param value The `GValue`
      */
-    child_set_property(container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): void
+    child_set_property(container: GObject.Object, child: GObject.Object, property_name: string, value: any): void
     /**
      * This delegate function is always called whenever setting any
      * properties with the exception of load time, and copy/paste time
@@ -11537,7 +11550,7 @@ export interface WidgetAdaptor {
      * @param value The `GValue`
      * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
      */
-    child_verify_property(container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): boolean
+    child_verify_property(container: GObject.Object, child: GObject.Object, property_name: string, value: any): boolean
     /**
      * This function is called to construct a GObject instance for
      * a #GladeWidget of the said `adaptor`. (provided for language
@@ -11569,7 +11582,7 @@ export interface WidgetAdaptor {
      * @param use_command whether to use the GladeCommand interface to commit property changes
      * @returns A newly created #GladeEditorProperty
      */
-    create_eprop_by_name(property_id: string | null, packing: boolean, use_command: boolean): EditorProperty
+    create_eprop_by_name(property_id: string, packing: boolean, use_command: boolean): EditorProperty
     default_params(construct: boolean): GObject.Parameter[]
     /**
      * Checks whether `widget` depends on `another` to be placed earlier in
@@ -11592,33 +11605,33 @@ export interface WidgetAdaptor {
      * @returns the closest #GladeWidgetAdaptor in the ancestry to @adaptor          which is responsable for introducing @pspec.
      */
     from_pspec(pspec: GObject.ParamSpec): WidgetAdaptor
-    get_book(): string | null
-    get_catalog(): string | null
+    get_book(): string
+    get_catalog(): string
     /**
      * Lists the children of `container`.
      * @param container The #GObject container
      * @returns A #GList of children
      */
     get_children(container: GObject.Object): GObject.Object[]
-    get_display_name(): string | null
-    get_generic_name(): string | null
-    get_icon_name(): string | null
+    get_display_name(): string
+    get_generic_name(): string
+    get_icon_name(): string
     /**
      * Retrieves the internal object `internal_name` from `object`
      * @param object The #GObject
      * @param internal_name The string identifier of the internal object
      * @returns The internal #GObject
      */
-    get_internal_child(object: GObject.Object, internal_name: string | null): GObject.Object | null
-    get_missing_icon(): string | null
-    get_name(): string | null
+    get_internal_child(object: GObject.Object, internal_name: string): GObject.Object | null
+    get_missing_icon(): string
+    get_name(): string
     get_object_type(): GObject.GType
     /**
      * Retrieves the #GladePropertyDef for `name` in  `adaptor'`s child properties
      * @param name a string
      * @returns A #GladePropertyDef object
      */
-    get_pack_property_def(name: string | null): PropertyDef | null
+    get_pack_property_def(name: string): PropertyDef | null
     /**
      * Gets the default value for `property_id` on a widget governed by
      * `child_adaptor` when parented in a widget governed by `parent_adaptor`
@@ -11626,7 +11639,7 @@ export interface WidgetAdaptor {
      * @param id The string property identifier
      * @returns a string representing the default value for @property_id
      */
-    get_packing_default(container_adaptor: WidgetAdaptor, id: string | null): string | null
+    get_packing_default(container_adaptor: WidgetAdaptor, id: string): string
     get_packing_props(): PropertyDef[]
     get_parent_adaptor(): WidgetAdaptor
     get_properties(): PropertyDef[]
@@ -11636,7 +11649,7 @@ export interface WidgetAdaptor {
      * @param property_name The property identifier
      * @param value The #GValue
      */
-    get_property(object: GObject.Object, property_name: string | null, value: any): void
+    get_property(object: GObject.Object, property_name: string, value: any): void
 
     // Overloads of get_property
 
@@ -11660,21 +11673,21 @@ export interface WidgetAdaptor {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Retrieves the #GladePropertyDef for `name` in `adaptor`
      * @param name a string
      * @returns A #GladePropertyDef object
      */
-    get_property_def(name: string | null): PropertyDef | null
+    get_property_def(name: string): PropertyDef | null
     /**
      * Looks up signal class `name` on `adaptor`.
      * @param name the name of the signal class.
      * @returns a #GladeSignalDef or %NULL
      */
-    get_signal_def(name: string | null): SignalDef | null
+    get_signal_def(name: string): SignalDef | null
     get_signals(): SignalDef[]
-    get_title(): string | null
+    get_title(): string
     /**
      * Get the _get_type () function name if it is set, a %NULL value means that the
      * default heuristic for getting the GType is enough for both Glade and GtkBuilder.
@@ -11698,13 +11711,13 @@ export interface WidgetAdaptor {
      * @param important if this action is important.
      * @returns whether or not the action was added/updated.
      */
-    pack_action_add(action_path: string | null, label: string | null, stock: string | null, important: boolean): boolean
+    pack_action_add(action_path: string, label: string, stock: string, important: boolean): boolean
     /**
      * Remove an `adaptor'`s packing action.
      * @param action_path The identifier of this action in the action tree
      * @returns whether or not the action was removed.
      */
-    pack_action_remove(action_path: string | null): boolean
+    pack_action_remove(action_path: string): boolean
     /**
      * Create a list of packing actions.
      * @returns a new list of GladeWidgetAction.
@@ -11758,7 +11771,7 @@ export interface WidgetAdaptor {
      * @param property_name The property identifier
      * @param value The #GValue
      */
-    set_property(object: GObject.Object, property_name: string | null, value: any): void
+    set_property(object: GObject.Object, property_name: string, value: any): void
 
     // Overloads of set_property
 
@@ -11767,7 +11780,7 @@ export interface WidgetAdaptor {
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
     /**
      * For normal properties this is used to serialize
      * property values, for custom properties its still
@@ -11788,7 +11801,7 @@ export interface WidgetAdaptor {
      * @param value The #GValue
      * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
      */
-    verify_property(object: GObject.Object, property_name: string | null, value: any): boolean
+    verify_property(object: GObject.Object, property_name: string, value: any): boolean
     /**
      * This function is called to write the child `widget` to `node`
      * when writing xml files (takes care of packing and recurses
@@ -11823,7 +11836,7 @@ export interface WidgetAdaptor {
      * @param object The #GObject
      * @param action_path The action identifier in the action tree
      */
-    vfunc_action_activate(object: GObject.Object, action_path: string | null): void
+    vfunc_action_activate(object: GObject.Object, action_path: string): void
     /**
      * This delegate function is used to create dynamically customized
      * submenus. Called only for actions that don't have children.
@@ -11832,7 +11845,7 @@ export interface WidgetAdaptor {
      * @param action_path The action identifier in the action tree
      * @returns A newly created #GtkMenu or %NULL
      */
-    vfunc_action_submenu(object: GObject.Object, action_path: string | null): Gtk.Widget | null
+    vfunc_action_submenu(object: GObject.Object, action_path: string): Gtk.Widget | null
     /**
      * Adds `child` to `container`.
      * @virtual 
@@ -11860,7 +11873,7 @@ export interface WidgetAdaptor {
      * @param object The #GObject
      * @param action_path The action identifier in the action tree
      */
-    vfunc_child_action_activate(container: GObject.Object, object: GObject.Object, action_path: string | null): void
+    vfunc_child_action_activate(container: GObject.Object, object: GObject.Object, action_path: string): void
     /**
      * Gets `child'`s packing property identified by `property_name`.
      * @virtual 
@@ -11869,7 +11882,7 @@ export interface WidgetAdaptor {
      * @param property_name The id of the property
      * @param value The `GValue`
      */
-    vfunc_child_get_property(container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): void
+    vfunc_child_get_property(container: GObject.Object, child: GObject.Object, property_name: string, value: any): void
     /**
      * Sets `child'`s packing property identified by `property_name` to `value`.
      * @virtual 
@@ -11878,7 +11891,7 @@ export interface WidgetAdaptor {
      * @param property_name The id of the property
      * @param value The `GValue`
      */
-    vfunc_child_set_property(container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): void
+    vfunc_child_set_property(container: GObject.Object, child: GObject.Object, property_name: string, value: any): void
     /**
      * This delegate function is always called whenever setting any
      * properties with the exception of load time, and copy/paste time
@@ -11892,7 +11905,7 @@ export interface WidgetAdaptor {
      * @param value The `GValue`
      * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
      */
-    vfunc_child_verify_property(container: GObject.Object, child: GObject.Object, property_name: string | null, value: any): boolean
+    vfunc_child_verify_property(container: GObject.Object, child: GObject.Object, property_name: string, value: any): boolean
     /**
      * This function is called to construct a GObject instance for
      * a #GladeWidget of the said `adaptor`. (provided for language
@@ -11950,7 +11963,7 @@ export interface WidgetAdaptor {
      * @param internal_name The string identifier of the internal object
      * @returns The internal #GObject
      */
-    vfunc_get_internal_child(object: GObject.Object, internal_name: string | null): GObject.Object | null
+    vfunc_get_internal_child(object: GObject.Object, internal_name: string): GObject.Object | null
     /**
      * Gets `value` of `property_name` on `object`.
      * @virtual 
@@ -11958,7 +11971,7 @@ export interface WidgetAdaptor {
      * @param property_name The property identifier
      * @param value The #GValue
      */
-    vfunc_get_property(object: GObject.Object, property_name: string | null, value: any): void
+    vfunc_get_property(object: GObject.Object, property_name: string, value: any): void
 
     // Overloads of vfunc_get_property
 
@@ -12012,7 +12025,7 @@ export interface WidgetAdaptor {
      * @param property_name The property identifier
      * @param value The #GValue
      */
-    vfunc_set_property(object: GObject.Object, property_name: string | null, value: any): void
+    vfunc_set_property(object: GObject.Object, property_name: string, value: any): void
 
     // Overloads of vfunc_set_property
 
@@ -12039,7 +12052,7 @@ export interface WidgetAdaptor {
      * @param value The #GValue
      * @returns whether or not its OK to set @value on @object, this function will silently return TRUE if the class did not provide a verify function.
      */
-    vfunc_verify_property(object: GObject.Object, property_name: string | null, value: any): boolean
+    vfunc_verify_property(object: GObject.Object, property_name: string, value: any): boolean
     /**
      * This function is called to write the child `widget` to `node`
      * when writing xml files (takes care of packing and recurses
@@ -12129,7 +12142,7 @@ export class WidgetAdaptor extends GObject.Object {
      * @returns a newly allocated #GladeWidgetAdaptor
      */
     static from_catalog(catalog: Catalog, class_node: XmlNode, module: GModule.Module): WidgetAdaptor
-    static get_by_name(name: string | null): WidgetAdaptor | null
+    static get_by_name(name: string): WidgetAdaptor | null
     static get_by_type(type: GObject.GType): WidgetAdaptor | null
     /**
      * Compiles a list of all registered adaptors.
@@ -12192,13 +12205,13 @@ export interface Catalog {
     // Owm methods of Gladeui-2.0.Gladeui.Catalog
 
     get_adaptors(): WidgetAdaptor[]
-    get_book(): string | null
-    get_domain(): string | null
-    get_icon_prefix(): string | null
+    get_book(): string
+    get_domain(): string
+    get_icon_prefix(): string
     get_major_version(): number
     get_minor_version(): number
-    get_name(): string | null
-    get_prefix(): string | null
+    get_name(): string
+    get_prefix(): string
     get_targets(): TargetableVersion[]
     get_widget_groups(): WidgetGroup[]
 }
@@ -12215,13 +12228,13 @@ export class Catalog {
      * Adds a new path to the list of path to look catalogs for.
      * @param path the new path containing catalogs
      */
-    static add_path(path: string | null): void
+    static add_path(path: string): void
     /**
      * Destroy and free all resources related with every loaded catalog.
      */
     static destroy_all(): void
     static get_extra_paths(): string[]
-    static is_loaded(name: string | null): boolean
+    static is_loaded(name: string): boolean
     /**
      * Loads all available catalogs in the system.
      * First loads catalogs from GLADE_ENV_CATALOG_PATH,
@@ -12243,7 +12256,7 @@ export interface CellRendererIconClass {
     // Own fields of Gladeui-2.0.Gladeui.CellRendererIconClass
 
     parent_class: Gtk.CellRendererPixbufClass
-    activate: (cell_renderer_icon: CellRendererIcon, path: string | null) => void
+    activate: (cell_renderer_icon: CellRendererIcon, path: string) => void
 }
 
 export abstract class CellRendererIconClass {
@@ -12506,12 +12519,12 @@ export interface NameContext {
 
     // Owm methods of Gladeui-2.0.Gladeui.NameContext
 
-    add_name(name: string | null): boolean
+    add_name(name: string): boolean
     destroy(): void
-    has_name(name: string | null): boolean
+    has_name(name: string): boolean
     n_names(): number
-    new_name(base_name: string | null): string | null
-    release_name(name: string | null): void
+    new_name(base_name: string): string | null
+    release_name(name: string): void
 }
 
 export class NameContext {
@@ -12666,7 +12679,7 @@ export interface PropertyClass {
     sync: (property: Property) => void
     load: (property: Property) => void
     value_changed: (property: Property, old_value: any, new_value: any) => void
-    tooltip_changed: (property: Property, tooltip: string | null, insensitive_tooltip: string | null, support_warning: string | null) => void
+    tooltip_changed: (property: Property, tooltip: string, insensitive_tooltip: string, support_warning: string) => void
     glade_reserved1: () => void
     glade_reserved2: () => void
     glade_reserved3: () => void
@@ -12696,7 +12709,7 @@ export interface PropertyDef {
      * @returns -1, 0 or +1, if value1 is found to be less than, equal to or greater than value2, respectively.
      */
     compare(value1: any, value2: any): number
-    create_type(): string | null
+    create_type(): string
     custom_layout(): boolean
     deprecated(): boolean
     deprecated_since_major(): number
@@ -12710,12 +12723,12 @@ export interface PropertyDef {
     get_default(): any
     get_ignore(): boolean
     get_is_packing(): boolean
-    get_name(): string | null
+    get_name(): string
     get_original_default(): any
     get_pspec(): GObject.ParamSpec
-    get_tooltip(): string | null
+    get_tooltip(): string
     get_virtual(): boolean
-    id(): string | null
+    id(): string
     is_object(): boolean
     is_visible(): boolean
     load_defaults_from_spec(): void
@@ -12724,7 +12737,7 @@ export interface PropertyDef {
      * @returns An appropriate #GtkAdjustment for use in the Property editor
      */
     make_adjustment(): Gtk.Adjustment
-    make_gvalue_from_string(string: string | null, project: Project): any
+    make_gvalue_from_string(string: string, project: Project): any
     make_string_from_gvalue(value: any): string | null
     match(comp: PropertyDef): boolean
     multiline(): boolean
@@ -12739,9 +12752,9 @@ export interface PropertyDef {
     set_construct_only(construct_only: boolean): void
     set_ignore(ignore: boolean): void
     set_is_packing(is_packing: boolean): void
-    set_name(name: string | null): void
+    set_name(name: string): void
     set_pspec(pspec: GObject.ParamSpec): void
-    set_tooltip(tooltip: string | null): void
+    set_tooltip(tooltip: string): void
     set_virtual(value: boolean): void
     since_major(): number
     since_minor(): number
@@ -12762,12 +12775,12 @@ export class PropertyDef {
 
     // Constructors of Gladeui-2.0.Gladeui.PropertyDef
 
-    constructor(adaptor: WidgetAdaptor, id: string | null) 
-    static new(adaptor: WidgetAdaptor, id: string | null): PropertyDef
+    constructor(adaptor: WidgetAdaptor, id: string) 
+    static new(adaptor: WidgetAdaptor, id: string): PropertyDef
     static new_from_spec(adaptor: WidgetAdaptor, spec: GObject.ParamSpec): PropertyDef
     static new_from_spec_full(adaptor: WidgetAdaptor, spec: GObject.ParamSpec, need_handle: boolean): PropertyDef
     static get_default_from_spec(spec: GObject.ParamSpec): any
-    static make_flags_from_string(type: GObject.GType, string: string | null): number
+    static make_flags_from_string(type: GObject.GType, string: string): number
     /**
      * This function assigns "weight" to each property in its natural order staring from 1.
      * If parent is 0 weight will be set for every #GladePropertyDef in the list.
@@ -12785,7 +12798,7 @@ export class PropertyDef {
      * @param domain the domain to translate catalog strings from
      * @returns %TRUE on success. @property_def_ref is set to NULL if the property          has Disabled="TRUE".
      */
-    static update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: PropertyDef | null, domain: string | null): [ /* returnType */ boolean, /* property_def_ref */ PropertyDef | null ]
+    static update_from_node(node: XmlNode, object_type: GObject.GType, property_def_ref: PropertyDef | null, domain: string): [ /* returnType */ boolean, /* property_def_ref */ PropertyDef | null ]
 }
 
 export interface PropertyLabelClass {
@@ -12907,12 +12920,12 @@ export interface SignalDef {
      * Get the name of the signal.
      * @returns the name of the signal
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the name of the object class that this signal belongs to.
      * @returns the type name of the signal
      */
-    get_object_type_name(): string | null
+    get_object_type_name(): string
     /**
      * Set if the signal is deprecated.
      * @param deprecated %TRUE if the signal is deprecated
@@ -12934,7 +12947,7 @@ export interface SignalDef {
      * @returns the minor version
      */
     since_minor(): number
-    update_from_node(node: XmlNode, domain: string | null): void
+    update_from_node(node: XmlNode, domain: string): void
 }
 
 export class SignalDef {
@@ -13051,7 +13064,7 @@ export interface WidgetActionDef {
 
     // Own fields of Gladeui-2.0.Gladeui.WidgetActionDef
 
-    id: string | null
+    id: string
     path: string | null
     label: string | null
     stock: string | null
@@ -13066,8 +13079,8 @@ export interface WidgetActionDef {
      */
     free(): void
     set_important(important: boolean): void
-    set_label(label: string | null): void
-    set_stock(stock: string | null): void
+    set_label(label: string): void
+    set_stock(stock: string): void
 }
 
 export class WidgetActionDef {
@@ -13078,8 +13091,8 @@ export class WidgetActionDef {
 
     // Constructors of Gladeui-2.0.Gladeui.WidgetActionDef
 
-    constructor(path: string | null) 
-    static new(path: string | null): WidgetActionDef
+    constructor(path: string) 
+    static new(path: string): WidgetActionDef
 }
 
 export interface WidgetActionPrivate {
@@ -13186,8 +13199,8 @@ export interface WidgetGroup {
 
     get_adaptors(): WidgetAdaptor[]
     get_expanded(): boolean
-    get_name(): string | null
-    get_title(): string | null
+    get_name(): string
+    get_title(): string
 }
 
 export class WidgetGroup {
@@ -13241,7 +13254,7 @@ export class XmlContext {
      * @param root_name the expected root name
      * @returns a new #GladeXmlContext or %NULL on failure
      */
-    static new_from_path(full_path: string | null, nspace: string | null, root_name: string | null): XmlContext
+    static new_from_path(full_path: string, nspace: string | null, root_name: string | null): XmlContext
 }
 
 export interface XmlDoc {
@@ -13249,13 +13262,13 @@ export interface XmlDoc {
     // Owm methods of Gladeui-2.0.Gladeui.XmlDoc
 
     get_root(): XmlNode
-    new_comment(comment: string | null): XmlNode
+    new_comment(comment: string): XmlNode
     /**
      * Increases the reference of the #GladeXmlDoc.
      * @returns the given #GladeXmlDoc
      */
     ref(): XmlDoc
-    save(full_path: string | null): number
+    save(full_path: string): number
     set_root(node: XmlNode): void
     /**
      * Decreases the reference of the #GladeXmlDoc.
@@ -13296,29 +13309,29 @@ export interface XmlNode {
     delete(): void
     get_children(): XmlNode
     get_children_with_comments(): XmlNode
-    get_name(): string | null
+    get_name(): string
     get_parent(): XmlNode
     is_comment(): boolean
     next(): XmlNode
     next_with_comments(): XmlNode
     prev_with_comments(): XmlNode
     remove(): void
-    set_property_boolean(name: string | null, value: boolean): void
+    set_property_boolean(name: string, value: boolean): void
     /**
      * Set a property as a string in the `node_in`. Note that %NULL `string` value
      * Are simply ignored and not written in the XML.
      * @param name the name of the property to set
      * @param string the string value of the property to set
      */
-    set_property_string(name: string | null, string: string | null): void
+    set_property_string(name: string, string: string | null): void
     /**
      * This is a wrapper around glade_xml_node_verify_silent(), only it emits
      * a g_warning() if `node_in` has a name different than `name`.
      * @param name a string
      * @returns %TRUE if @node_in's name is equal to @name, %FALSE otherwise
      */
-    verify(name: string | null): boolean
-    verify_silent(name: string | null): boolean
+    verify(name: string): boolean
+    verify_silent(name: string): boolean
 }
 
 export class XmlNode {
@@ -13329,9 +13342,9 @@ export class XmlNode {
 
     // Constructors of Gladeui-2.0.Gladeui.XmlNode
 
-    constructor(context: XmlContext, name: string | null) 
-    static new(context: XmlContext, name: string | null): XmlNode
-    static new_comment(context: XmlContext, comment: string | null): XmlNode
+    constructor(context: XmlContext, name: string) 
+    static new(context: XmlContext, name: string): XmlNode
+    static new_comment(context: XmlContext, comment: string): XmlNode
 }
 
 /**

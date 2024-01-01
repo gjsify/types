@@ -19,54 +19,54 @@ import type GLib from '@girs/node-glib-2.0';
 /**
  * Symbol defining the #QrtrBus:lookup-timeout property.
  */
-export const BUS_LOOKUP_TIMEOUT: string | null
+export const BUS_LOOKUP_TIMEOUT: string
 /**
  * Symbol defining the #QrtrBus::node-added signal.
  */
-export const BUS_SIGNAL_NODE_ADDED: string | null
+export const BUS_SIGNAL_NODE_ADDED: string
 /**
  * Symbol defining the #QrtrBus::node-removed signal.
  */
-export const BUS_SIGNAL_NODE_REMOVED: string | null
+export const BUS_SIGNAL_NODE_REMOVED: string
 /**
  * The QRTR node this client refers to.
  */
-export const CLIENT_NODE: string | null
+export const CLIENT_NODE: string
 /**
  * The QRTR node port this client refers to.
  */
-export const CLIENT_PORT: string | null
+export const CLIENT_PORT: string
 /**
  * Symbol defining the #QrtrClient::client-message signal.
  */
-export const CLIENT_SIGNAL_MESSAGE: string | null
+export const CLIENT_SIGNAL_MESSAGE: string
 /**
  * The QRTR bus.
  */
-export const NODE_BUS: string | null
+export const NODE_BUS: string
 /**
  * The node id.
  */
-export const NODE_ID: string | null
+export const NODE_ID: string
 /**
  * Symbol defining the #QrtrNode::node-removed signal.
  */
-export const NODE_SIGNAL_REMOVED: string | null
+export const NODE_SIGNAL_REMOVED: string
 /**
  * Symbol defining the #QrtrNode::service-added signal.
  */
-export const NODE_SIGNAL_SERVICE_ADDED: string | null
+export const NODE_SIGNAL_SERVICE_ADDED: string
 /**
  * Symbol defining the #QrtrNode::service-removed signal.
  */
-export const NODE_SIGNAL_SERVICE_REMOVED: string | null
+export const NODE_SIGNAL_SERVICE_REMOVED: string
 /**
  * Get the QRTR node id from the specified URI.
  * @param uri a URI.
  * @param nodeId return location for the node id.
  * @returns %TRUE if @node_id is set, %FALSE otherwise.
  */
-export function getNodeForUri(uri: string | null, nodeId: number): boolean
+export function getNodeForUri(uri: string, nodeId: number): boolean
 /**
  * Build a URI for the given QRTR node.
  * @param nodeId node id.

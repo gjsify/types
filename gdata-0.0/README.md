@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gdata-0.0)
 
 
-GJS TypeScript type definitions for GData-0.0, generated from library version 0.19.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+GJS TypeScript type definitions for GData-0.0, generated from library version 0.19.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 GData (Google data) is a set of Application Programming Interfaces (APIs) for the Common Language Infrastructure (CLI) which provide a simple protocol for reading and writing data on the web.
 

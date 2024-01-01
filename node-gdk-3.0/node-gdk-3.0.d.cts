@@ -4620,7 +4620,7 @@ export function addOptionEntriesLibgtkOnly(group: GLib.OptionGroup): void
  * @param onlyIfExists if %TRUE, GDK is allowed to not create a new atom, but   just return %GDK_NONE if the requested atom doesn’t already   exists. Currently, the flag is ignored, since checking the   existance of an atom is as expensive as creating it.
  * @returns the atom corresponding to @atom_name.
  */
-export function atomIntern(atomName: string | null, onlyIfExists: boolean): Atom
+export function atomIntern(atomName: string, onlyIfExists: boolean): Atom
 /**
  * Finds or creates an atom corresponding to a given string.
  * 
@@ -4635,7 +4635,7 @@ export function atomIntern(atomName: string | null, onlyIfExists: boolean): Atom
  * @param atomName a static string
  * @returns the atom corresponding to @atom_name
  */
-export function atomInternStaticString(atomName: string | null): Atom
+export function atomInternStaticString(atomName: string): Atom
 /**
  * Emits a short beep on the default display.
  */
@@ -4783,7 +4783,7 @@ export function cairoSurfaceCreateFromPixbuf(pixbuf: GdkPixbuf.Pixbuf, scale: nu
  * @param spec the string specifying the color
  * @returns %TRUE if the parsing succeeded
  */
-export function colorParse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+export function colorParse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
 /**
  * Disables multidevice support in GDK. This call must happen prior
  * to gdk_display_open(), gtk_init(), gtk_init_with_args() or
@@ -5104,7 +5104,7 @@ export function getDisplayArgName(): string | null
  * with g_get_prgname()) with the first character converted to uppercase.
  * @returns the program class.
  */
-export function getProgramClass(): string | null
+export function getProgramClass(): string
 /**
  * Gets whether event debugging output is enabled.
  * @returns %TRUE if event debugging output is enabled.
@@ -5172,7 +5172,7 @@ export function keyvalConvertCase(symbol: number): [ /* lower */ number, /* uppe
  * @param keyvalName a key name
  * @returns the corresponding key value, or %GDK_KEY_VoidSymbol     if the key name is not a valid key
  */
-export function keyvalFromName(keyvalName: string | null): number
+export function keyvalFromName(keyvalName: string): number
 /**
  * Returns %TRUE if the given key value is in lower case.
  * @param keyval a key value.
@@ -5246,7 +5246,7 @@ export function notifyStartupComplete(): void
  * disable that feature.
  * @param startupId a startup-notification identifier, for which     notification process should be completed
  */
-export function notifyStartupCompleteWithId(startupId: string | null): void
+export function notifyStartupCompleteWithId(startupId: string): void
 /**
  * Gets the window that `window` is embedded in.
  * @param window a #GdkWindow
@@ -5586,7 +5586,7 @@ export function selectionSendNotifyForDisplay(display: Display, requestor: Windo
  * in order to take effect.
  * @param backends a comma-separated list of backends
  */
-export function setAllowedBackends(backends: string | null): void
+export function setAllowedBackends(backends: string): void
 /**
  * Set the double click time for the default display. See
  * gdk_display_set_double_click_time().
@@ -5605,7 +5605,7 @@ export function setDoubleClickTime(msec: number): void
  * line option.
  * @param programClass a string.
  */
-export function setProgramClass(programClass: string | null): void
+export function setProgramClass(programClass: string): void
 /**
  * Sets whether a trace of received events is output.
  * Note that GTK+ must be compiled with debugging (that is,
@@ -5621,7 +5621,7 @@ export function setShowEvents(showEvents: boolean): void
  * @param value location to store the value of the setting.
  * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
  */
-export function settingGet(name: string | null, value: any): boolean
+export function settingGet(name: string, value: any): boolean
 export function synthesizeWindowState(window: Window, unsetFlags: WindowState, setFlags: WindowState): void
 /**
  * Retrieves a pixel from `window` to force the windowing
@@ -5834,7 +5834,7 @@ export function unicodeToKeyval(wc: number): number
  * @param str a UTF-8 string
  * @returns the newly-allocated string, or %NULL if the          conversion failed. (It should not fail for any properly          formed UTF-8 string unless system limits like memory or          file descriptors are exceeded.)
  */
-export function utf8ToStringTarget(str: string | null): string | null
+export function utf8ToStringTarget(str: string): string | null
 /**
  * Specifies the type of function passed to gdk_event_handler_set() to
  * handle all GDK events.
@@ -6421,7 +6421,7 @@ export class Cursor extends GObject.Object {
      * @param name the name of the cursor
      * @returns a new #GdkCursor, or %NULL if there is no   cursor with the given name
      */
-    static newFromName(display: Display, name: string | null): Cursor
+    static newFromName(display: Display, name: string): Cursor
     /**
      * Creates a new cursor from a pixbuf.
      * 
@@ -6687,7 +6687,7 @@ export interface Device {
      * Determines the name of the device.
      * @returns a name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the current location of `device`. As a slave device
      * coordinates are those of its master pointer, This function
@@ -7506,7 +7506,7 @@ export interface Display {
      * Gets the name of the display.
      * @returns a string representing the display name. This string is owned by GDK and should not be modified or freed.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the current location of the pointer and the current modifier
      * mask for a given display.
@@ -7573,7 +7573,7 @@ export interface Display {
      * disable that feature.
      * @param startupId a startup-notification identifier, for which     notification process should be completed
      */
-    notifyStartupComplete(startupId: string | null): void
+    notifyStartupComplete(startupId: string): void
     /**
      * Gets a copy of the first #GdkEvent in the `display’`s event queue, without
      * removing the event from the queue.  (Note that this function will
@@ -7802,7 +7802,7 @@ export class Display extends GObject.Object {
      * @param displayName the name of the display to open
      * @returns a #GdkDisplay, or %NULL if the     display could not be opened
      */
-    static open(displayName: string | null): Display | null
+    static open(displayName: string): Display | null
     /**
      * Opens the default display specified by command line arguments or
      * environment variables, sets it as the default display, and returns
@@ -7861,7 +7861,7 @@ export interface DisplayManager {
      * @param name the name of the display to open
      * @returns a #GdkDisplay, or %NULL if the     display could not be opened
      */
-    openDisplay(name: string | null): Display | null
+    openDisplay(name: string): Display | null
     /**
      * Sets `display` as the default display.
      * @param display a #GdkDisplay
@@ -9509,7 +9509,7 @@ export interface Screen {
      * @param value location to store the value of the setting
      * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
      */
-    getSetting(name: string | null, value: any): boolean
+    getSetting(name: string, value: any): boolean
     /**
      * Get the system’s default visual for `screen`.
      * This is the visual for the root window of the display.
@@ -11588,7 +11588,7 @@ export interface Window {
      * non-interchangeable kind of window.
      * @param role a string indicating its role
      */
-    setRole(role: string | null): void
+    setRole(role: string): void
     /**
      * Newer GTK+ windows using client-side decorations use extra geometry
      * around their frames for effects like shadows and invisible borders.
@@ -11641,7 +11641,7 @@ export interface Window {
      * instead of this low-level function.
      * @param startupId a string with startup-notification identifier
      */
-    setStartupId(startupId: string | null): void
+    setStartupId(startupId: string): void
     /**
      * Used to set the bit gravity of the given window to static, and flag
      * it so all children get static subwindow gravity. This is used if you
@@ -11667,7 +11667,7 @@ export interface Window {
      * user-readable strings in GDK/GTK+). `title` may not be %NULL.
      * @param title title of `window`
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Indicates to the window manager that `window` is a transient dialog
      * associated with the application window `parent`. This allows the
@@ -11990,7 +11990,7 @@ export class Atom {
      * @param onlyIfExists if %TRUE, GDK is allowed to not create a new atom, but   just return %GDK_NONE if the requested atom doesn’t already   exists. Currently, the flag is ignored, since checking the   existance of an atom is as expensive as creating it.
      * @returns the atom corresponding to @atom_name.
      */
-    static intern(atomName: string | null, onlyIfExists: boolean): Atom
+    static intern(atomName: string, onlyIfExists: boolean): Atom
     /**
      * Finds or creates an atom corresponding to a given string.
      * 
@@ -12005,7 +12005,7 @@ export class Atom {
      * @param atomName a static string
      * @returns the atom corresponding to @atom_name
      */
-    static internStaticString(atomName: string | null): Atom
+    static internStaticString(atomName: string): Atom
 }
 
 export interface Color {
@@ -12099,7 +12099,7 @@ export class Color {
      * @param spec the string specifying the color
      * @returns %TRUE if the parsing succeeded
      */
-    static parse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+    static parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
 }
 
 export interface DevicePadInterface {
@@ -14070,7 +14070,7 @@ export interface RGBA {
      * @param spec the string specifying the color
      * @returns %TRUE if the parsing succeeded
      */
-    parse(spec: string | null): boolean
+    parse(spec: string): boolean
     /**
      * Returns a textual specification of `rgba` in the form
      * `rgb(r,g,b)` or

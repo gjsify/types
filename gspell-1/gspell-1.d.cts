@@ -47,7 +47,7 @@ export function language_get_available(): Language[]
  * @returns the default #GspellLanguage, or %NULL if no dictionaries are available.
  */
 export function language_get_default(): Language | null
-export function language_lookup(language_code: string | null): Language | null
+export function language_lookup(language_code: string): Language | null
 export module LanguageChooser {
 
     // Constructor properties interface
@@ -100,7 +100,7 @@ export interface LanguageChooser {
     // Owm methods of Gspell-1.Gspell.LanguageChooser
 
     get_language(): Language | null
-    get_language_code(): string | null
+    get_language_code(): string
     /**
      * Sets the selected language.
      * @param language a #GspellLanguage or %NULL to pick the default   language.
@@ -168,7 +168,7 @@ export interface Navigator extends GObject.InitiallyUnowned {
      * @param word the word to change.
      * @param change_to the replacement.
      */
-    change(word: string | null, change_to: string | null): void
+    change(word: string, change_to: string): void
     /**
      * Changes all occurrences of `word` by `change_to` in the text.
      * 
@@ -178,13 +178,13 @@ export interface Navigator extends GObject.InitiallyUnowned {
      * @param word the word to change.
      * @param change_to the replacement.
      */
-    change_all(word: string | null, change_to: string | null): void
+    change_all(word: string, change_to: string): void
     /**
      * Goes to the next misspelled word. When called the first time, goes to the
      * first misspelled word.
      * @returns %TRUE if a next misspelled word has been found, %FALSE if the spell checking is finished or if an error occurred.
      */
-    goto_next(): [ /* returnType */ boolean, /* word */ string | null, /* spell_checker */ Checker ]
+    goto_next(): [ /* returnType */ boolean, /* word */ string, /* spell_checker */ Checker ]
 
     // Own virtual methods of Gspell-1.Gspell.Navigator
 
@@ -199,7 +199,7 @@ export interface Navigator extends GObject.InitiallyUnowned {
      * @param word the word to change.
      * @param change_to the replacement.
      */
-    vfunc_change(word: string | null, change_to: string | null): void
+    vfunc_change(word: string, change_to: string): void
     /**
      * Changes all occurrences of `word` by `change_to` in the text.
      * 
@@ -210,14 +210,14 @@ export interface Navigator extends GObject.InitiallyUnowned {
      * @param word the word to change.
      * @param change_to the replacement.
      */
-    vfunc_change_all(word: string | null, change_to: string | null): void
+    vfunc_change_all(word: string, change_to: string): void
     /**
      * Goes to the next misspelled word. When called the first time, goes to the
      * first misspelled word.
      * @virtual 
      * @returns %TRUE if a next misspelled word has been found, %FALSE if the spell checking is finished or if an error occurred.
      */
-    vfunc_goto_next(): [ /* returnType */ boolean, /* word */ string | null, /* spell_checker */ Checker ]
+    vfunc_goto_next(): [ /* returnType */ boolean, /* word */ string, /* spell_checker */ Checker ]
 
     // Class property signals of Gspell-1.Gspell.Navigator
 
@@ -301,7 +301,7 @@ export interface Checker {
      * @param word a word.
      * @param word_length the byte length of `word,` or -1 if `word` is nul-terminated.
      */
-    add_word_to_personal(word: string | null, word_length: number): void
+    add_word_to_personal(word: string, word_length: number): void
     /**
      * Adds a word to the session dictionary. Each #GspellChecker instance has a
      * different session dictionary. The session dictionary is lost when the
@@ -312,7 +312,7 @@ export interface Checker {
      * @param word a word.
      * @param word_length the byte length of `word,` or -1 if `word` is nul-terminated.
      */
-    add_word_to_session(word: string | null, word_length: number): void
+    add_word_to_session(word: string, word_length: number): void
     /**
      * If the #GspellChecker:language is %NULL, i.e. when no dictonaries are
      * available, this function returns %TRUE to limit the damage.
@@ -320,7 +320,7 @@ export interface Checker {
      * @param word_length the byte length of `word,` or -1 if `word` is nul-terminated.
      * @returns %TRUE if @word is correctly spelled, %FALSE otherwise.
      */
-    check_word(word: string | null, word_length: number): boolean
+    check_word(word: string, word_length: number): boolean
     /**
      * Clears the session dictionary.
      */
@@ -333,7 +333,7 @@ export interface Checker {
      * @param word_length the byte length of `word,` or -1 if `word` is nul-terminated.
      * @returns the list of suggestions.
      */
-    get_suggestions(word: string | null, word_length: number): string[]
+    get_suggestions(word: string, word_length: number): string[]
     /**
      * Informs the spell checker that `word` is replaced/corrected by `replacement`.
      * @param word a word.
@@ -341,7 +341,7 @@ export interface Checker {
      * @param replacement the replacement word.
      * @param replacement_length the byte length of `replacement,` or -1 if `replacement`   is nul-terminated.
      */
-    set_correction(word: string | null, word_length: number, replacement: string | null, replacement_length: number): void
+    set_correction(word: string, word_length: number, replacement: string, replacement_length: number): void
     /**
      * Sets the language to use for the spell checking. If `language` is %NULL, the
      * default language is picked with gspell_language_get_default().
@@ -352,8 +352,8 @@ export interface Checker {
     // Own virtual methods of Gspell-1.Gspell.Checker
 
     vfunc_session_cleared(): void
-    vfunc_word_added_to_personal(word: string | null): void
-    vfunc_word_added_to_session(word: string | null): void
+    vfunc_word_added_to_personal(word: string): void
+    vfunc_word_added_to_session(word: string): void
 
     // Own signals of Gspell-1.Gspell.Checker
 
@@ -487,7 +487,7 @@ export interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -501,7 +501,7 @@ export interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -512,7 +512,7 @@ export interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gspell-1.Gspell.CheckerDialog
 
@@ -1059,7 +1059,7 @@ export interface LanguageChooserButton extends Atk.ImplementorIface, LanguageCho
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1071,7 +1071,7 @@ export interface LanguageChooserButton extends Atk.ImplementorIface, LanguageCho
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1085,7 +1085,7 @@ export interface LanguageChooserButton extends Atk.ImplementorIface, LanguageCho
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gspell-1.Gspell.LanguageChooserButton
 
@@ -1345,7 +1345,7 @@ export interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageCho
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1359,7 +1359,7 @@ export interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageCho
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1370,7 +1370,7 @@ export interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageCho
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gspell-1.Gspell.LanguageChooserDialog
 
@@ -1981,8 +1981,8 @@ export interface CheckerClass {
     // Own fields of Gspell-1.Gspell.CheckerClass
 
     parent_class: GObject.ObjectClass
-    word_added_to_personal: (checker: Checker, word: string | null) => void
-    word_added_to_session: (checker: Checker, word: string | null) => void
+    word_added_to_personal: (checker: Checker, word: string) => void
+    word_added_to_session: (checker: Checker, word: string) => void
     session_cleared: (checker: Checker) => void
     padding: any[]
 }
@@ -2057,14 +2057,14 @@ export interface Language {
      * Used by language bindings.
      */
     free(): void
-    get_code(): string | null
+    get_code(): string
     /**
      * Returns the `language` name translated to the current locale. For example
      * "French (Belgium)" is returned if the current locale is in English and the
      * `language` code is fr_BE.
      * @returns the @language name.
      */
-    get_name(): string | null
+    get_name(): string
 }
 
 export class Language {
@@ -2081,7 +2081,7 @@ export class Language {
      * @returns the default #GspellLanguage, or %NULL if no dictionaries are available.
      */
     static get_default(): Language | null
-    static lookup(language_code: string | null): Language | null
+    static lookup(language_code: string): Language | null
 }
 
 export interface LanguageChooserButtonClass {
@@ -2135,9 +2135,9 @@ export interface NavigatorInterface {
     // Own fields of Gspell-1.Gspell.NavigatorInterface
 
     parent_interface: GObject.TypeInterface
-    goto_next: (navigator: Navigator) => [ /* returnType */ boolean, /* word */ string | null, /* spell_checker */ Checker ]
-    change: (navigator: Navigator, word: string | null, change_to: string | null) => void
-    change_all: (navigator: Navigator, word: string | null, change_to: string | null) => void
+    goto_next: (navigator: Navigator) => [ /* returnType */ boolean, /* word */ string, /* spell_checker */ Checker ]
+    change: (navigator: Navigator, word: string, change_to: string) => void
+    change_all: (navigator: Navigator, word: string, change_to: string) => void
 }
 
 export abstract class NavigatorInterface {

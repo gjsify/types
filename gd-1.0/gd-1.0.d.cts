@@ -112,9 +112,33 @@ export interface HeaderButton extends Gtk.Button {
     // Owm methods of Gd-1.0.Gd.HeaderButton
 
     get_label(): string | null
+
+    // Overloads of get_label
+
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
     get_symbolic_icon_name(): string | null
     get_use_markup(): boolean
     set_label(label: string | null): void
+
+    // Overloads of set_label
+
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
     set_symbolic_icon_name(symbolic_icon_name: string | null): void
     set_use_markup(use_markup: boolean): void
 
@@ -130,7 +154,7 @@ export interface HeaderButton extends Gtk.Button {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -142,7 +166,7 @@ export interface HeaderButton extends Gtk.Button {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -156,7 +180,7 @@ export interface HeaderButton extends Gtk.Button {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.HeaderButton
 
@@ -572,12 +596,12 @@ export interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Retrieves the subtitle of the header. See gd_header_bar_set_subtitle().
      * @returns the subtitle of the header, or %NULL if none has    been set explicitely. The returned string is owned by the widget    and must not be modified or freed.
      */
-    get_subtitle(): string | null
+    get_subtitle(): string
     /**
      * Retrieves the title of the header. See gd_header_bar_set_title().
      * @returns the title of the header, or %NULL if none has    been set explicitely. The returned string is owned by the widget    and must not be modified or freed.
      */
-    get_title(): string | null
+    get_title(): string
     pack_end(child: Gtk.Widget): void
     pack_start(child: Gtk.Widget): void
     /**
@@ -615,7 +639,7 @@ export interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -629,7 +653,7 @@ export interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -640,7 +664,7 @@ export interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.HeaderBar
 
@@ -826,6 +850,50 @@ export interface HeaderMenuButton extends Atk.ImplementorIface, HeaderButton, Gt
 
     // Conflicting methods
 
+    get_label(): string | null
+
+    // Overloads of get_label
+
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    set_label(label: string | null): void
+
+    // Overloads of set_label
+
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -836,7 +904,7 @@ export interface HeaderMenuButton extends Atk.ImplementorIface, HeaderButton, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -848,7 +916,7 @@ export interface HeaderMenuButton extends Atk.ImplementorIface, HeaderButton, Gt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -862,7 +930,7 @@ export interface HeaderMenuButton extends Atk.ImplementorIface, HeaderButton, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Returns the direction the popup will be pointing at when popped up.
      * @returns a #GtkArrowType value
@@ -1166,6 +1234,50 @@ export interface HeaderRadioButton extends Atk.ImplementorIface, HeaderButton, G
 
     // Conflicting methods
 
+    get_label(): string | null
+
+    // Overloads of get_label
+
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    set_label(label: string | null): void
+
+    // Overloads of set_label
+
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1176,7 +1288,7 @@ export interface HeaderRadioButton extends Atk.ImplementorIface, HeaderButton, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1188,7 +1300,7 @@ export interface HeaderRadioButton extends Atk.ImplementorIface, HeaderButton, G
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1202,7 +1314,7 @@ export interface HeaderRadioButton extends Atk.ImplementorIface, HeaderButton, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.HeaderRadioButton
 
@@ -1446,6 +1558,50 @@ export interface HeaderSimpleButton extends Atk.ImplementorIface, HeaderButton, 
 
     // Conflicting methods
 
+    get_label(): string | null
+
+    // Overloads of get_label
+
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    set_label(label: string | null): void
+
+    // Overloads of set_label
+
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1456,7 +1612,7 @@ export interface HeaderSimpleButton extends Atk.ImplementorIface, HeaderButton, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1468,7 +1624,7 @@ export interface HeaderSimpleButton extends Atk.ImplementorIface, HeaderButton, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1482,7 +1638,7 @@ export interface HeaderSimpleButton extends Atk.ImplementorIface, HeaderButton, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.HeaderSimpleButton
 
@@ -1691,6 +1847,50 @@ export interface HeaderToggleButton extends Atk.ImplementorIface, HeaderButton, 
 
     // Conflicting methods
 
+    get_label(): string | null
+
+    // Overloads of get_label
+
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    /**
+     * Fetches the text from the label of the button, as set by
+     * gtk_button_set_label(). If the label text has not
+     * been set the return value will be %NULL. This will be the
+     * case if you create an empty button with gtk_button_new() to
+     * use as a container.
+     * @returns The text of the label widget. This string is owned by the widget and must not be modified or freed.
+     */
+    get_label(): string
+    set_label(label: string | null): void
+
+    // Overloads of set_label
+
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
+    /**
+     * Sets the text of the label of the button to `str`. This text is
+     * also used to select the stock item if gtk_button_set_use_stock()
+     * is used.
+     * 
+     * This will also clear any previously set labels.
+     * @param label a string
+     */
+    set_label(label: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1701,7 +1901,7 @@ export interface HeaderToggleButton extends Atk.ImplementorIface, HeaderButton, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1713,7 +1913,7 @@ export interface HeaderToggleButton extends Atk.ImplementorIface, HeaderButton, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1727,7 +1927,7 @@ export interface HeaderToggleButton extends Atk.ImplementorIface, HeaderButton, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.HeaderToggleButton
 
@@ -2007,7 +2207,7 @@ export interface MainIconView extends Atk.ImplementorIface, MainViewGeneric, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2019,7 +2219,7 @@ export interface MainIconView extends Atk.ImplementorIface, MainViewGeneric, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2033,7 +2233,7 @@ export interface MainIconView extends Atk.ImplementorIface, MainViewGeneric, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.MainIconView
 
@@ -2307,7 +2507,7 @@ export interface MainListView extends Atk.ImplementorIface, MainViewGeneric, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2319,7 +2519,7 @@ export interface MainListView extends Atk.ImplementorIface, MainViewGeneric, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2333,7 +2533,7 @@ export interface MainListView extends Atk.ImplementorIface, MainViewGeneric, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.MainListView
 
@@ -2580,7 +2780,7 @@ export interface MainToolbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
 
     add_button(icon_name: string | null, label: string | null, pack_start: boolean): Gtk.Widget
     add_menu(icon_name: string | null, label: string | null, pack_start: boolean): Gtk.Widget
-    add_mode(label: string | null): Gtk.Widget
+    add_mode(label: string): Gtk.Widget
     add_toggle(icon_name: string | null, label: string | null, pack_start: boolean): Gtk.Widget
     add_widget(widget: Gtk.Widget, pack_start: boolean): void
     clear(): void
@@ -2662,7 +2862,7 @@ export interface MainToolbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2674,7 +2874,7 @@ export interface MainToolbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2688,7 +2888,7 @@ export interface MainToolbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Or
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Alters the view of `toolbar` to display either icons only, text only, or both.
      * @param style the new style for `toolbar`.
@@ -2963,7 +3163,7 @@ export interface MainView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2977,7 +3177,7 @@ export interface MainView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2988,7 +3188,7 @@ export interface MainView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Gd-1.0.Gd.MainView
 
@@ -3278,7 +3478,7 @@ export interface Revealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3292,7 +3492,7 @@ export interface Revealer extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3303,7 +3503,7 @@ export interface Revealer extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.Revealer
 
@@ -3508,8 +3708,8 @@ export interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Gd-1.0.Gd.Stack
 
-    add_named(child: Gtk.Widget, name: string | null): void
-    add_titled(child: Gtk.Widget, name: string | null, title: string | null): void
+    add_named(child: Gtk.Widget, name: string): void
+    add_titled(child: Gtk.Widget, name: string, title: string): void
     get_homogeneous(): boolean
     get_transition_duration(): number
     get_transition_type(): StackTransitionType
@@ -3520,12 +3720,12 @@ export interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
      * @returns pointer to child of the #GdStack
      */
     get_visible_child(): Gtk.Widget
-    get_visible_child_name(): string | null
+    get_visible_child_name(): string
     set_homogeneous(homogeneous: boolean): void
     set_transition_duration(transition_duration: number): void
     set_transition_type(type: StackTransitionType): void
     set_visible_child(child: Gtk.Widget): void
-    set_visible_child_name(name: string | null): void
+    set_visible_child_name(name: string): void
 
     // Conflicting methods
 
@@ -3540,7 +3740,7 @@ export interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3554,7 +3754,7 @@ export interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3565,7 +3765,7 @@ export interface Stack extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.Stack
 
@@ -3781,7 +3981,7 @@ export interface StackSwitcher extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3795,7 +3995,7 @@ export interface StackSwitcher extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3806,7 +4006,7 @@ export interface StackSwitcher extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gd-1.0.Gd.StackSwitcher
 
@@ -4001,8 +4201,8 @@ export interface StyledTextRenderer {
 
     // Owm methods of Gd-1.0.Gd.StyledTextRenderer
 
-    add_class(class_: string | null): void
-    remove_class(class_: string | null): void
+    add_class(class_: string): void
+    remove_class(class_: string): void
 
     // Class property signals of Gd-1.0.Gd.StyledTextRenderer
 
@@ -4622,11 +4822,11 @@ export interface TaggedEntryTag {
 
     get_area(rect: cairo.RectangleInt): boolean
     get_has_close_button(): boolean
-    get_label(): string | null
-    get_style(): string | null
+    get_label(): string
+    get_style(): string
     set_has_close_button(has_close_button: boolean): void
-    set_label(label: string | null): void
-    set_style(style: string | null): void
+    set_label(label: string): void
+    set_style(style: string): void
 
     // Class property signals of Gd-1.0.Gd.TaggedEntryTag
 
@@ -4655,8 +4855,8 @@ export class TaggedEntryTag extends GObject.Object {
     // Constructors of Gd-1.0.Gd.TaggedEntryTag
 
     constructor(config?: TaggedEntryTag.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): TaggedEntryTag
+    constructor(label: string) 
+    static new(label: string): TaggedEntryTag
     _init(config?: TaggedEntryTag.ConstructorProperties): void
 }
 

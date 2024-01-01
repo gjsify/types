@@ -825,7 +825,7 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * Gets the icon name for `self`.
      * @returns the icon name for @self
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the subtitle for `self`.
      * @returns the subtitle for @self
@@ -862,7 +862,7 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * Sets the icon name for `self`.
      * @param icon_name the icon name
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * Sets the subtitle for `self`.
      * @param subtitle the subtitle
@@ -903,7 +903,7 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -915,7 +915,7 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -929,7 +929,7 @@ interface ActionRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Handy-1.Handy.ActionRow
 
@@ -1219,7 +1219,7 @@ interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup, Gio.A
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1233,7 +1233,7 @@ interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup, Gio.A
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1244,7 +1244,7 @@ interface ApplicationWindow extends Atk.ImplementorIface, Gio.ActionGroup, Gio.A
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.ApplicationWindow
 
@@ -2280,7 +2280,7 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2292,7 +2292,7 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2306,7 +2306,7 @@ interface Carousel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Handy-1.Handy.Carousel
 
@@ -3091,7 +3091,7 @@ interface Clamp extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3105,7 +3105,7 @@ interface Clamp extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3116,7 +3116,7 @@ interface Clamp extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Clamp
 
@@ -3498,7 +3498,7 @@ interface ComboRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3510,7 +3510,7 @@ interface ComboRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3524,7 +3524,7 @@ interface ComboRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.ComboRow
 
@@ -3977,7 +3977,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * @param name the name of the child to find
      * @returns the requested child of @self
      */
-    get_child_by_name(name: string | null): Gtk.Widget | null
+    get_child_by_name(name: string): Gtk.Widget | null
     /**
      * Gets whether `self` is homogeneous for the given orientation.
      * @param orientation the orientation
@@ -4013,7 +4013,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * Gets the name of the currently visible child widget.
      * @returns the name of the visible child
      */
-    get_visible_child_name(): string | null
+    get_visible_child_name(): string
     /**
      * Inserts `child` in the position after `sibling` in the list of children.
      * 
@@ -4096,7 +4096,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * See [method`Deck`.set_visible_child] for more details.
      * @param name the name of a child
      */
-    set_visible_child_name(name: string | null): void
+    set_visible_child_name(name: string): void
 
     // Conflicting methods
 
@@ -4111,7 +4111,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4125,7 +4125,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4136,7 +4136,7 @@ interface Deck extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Deck
 
@@ -4371,12 +4371,12 @@ interface EnumValueObject {
      * Gets the name of `self`.
      * @returns the name of @self
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the nick of `self`.
      * @returns the nick of @self
      */
-    get_nick(): string | null
+    get_nick(): string
     /**
      * Gets the value of `self`.
      * @returns the value of @self
@@ -4552,7 +4552,7 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * Gets the icon name for `self`.
      * @returns the icon name for @self
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets whether the switch enabling the expansion of `self` is visible.
      * @returns whether the switch enabling the expansion of @self is visible
@@ -4579,7 +4579,7 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * Sets the icon name for `self`.
      * @param icon_name the icon name
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * Sets whether the switch enabling the expansion of `self` is visible.
      * @param show_enable_switch `TRUE` to show the switch enabling the expansion
@@ -4609,7 +4609,7 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4621,7 +4621,7 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4635,7 +4635,7 @@ interface ExpanderRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.ExpanderRow
 
@@ -5329,7 +5329,7 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5343,7 +5343,7 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5354,7 +5354,7 @@ interface Flap extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, Swip
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Flap
 
@@ -5914,7 +5914,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Gets the decoration layout.
      * @returns the decoration layout
      */
-    get_decoration_layout(): string | null
+    get_decoration_layout(): string
     /**
      * Gets whether space is reserved for a subtitle, regardless if one is currently
      * set or not.
@@ -6038,7 +6038,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6052,7 +6052,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6063,7 +6063,7 @@ interface HeaderBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.HeaderBar
 
@@ -6780,7 +6780,7 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6794,7 +6794,7 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6805,7 +6805,7 @@ interface Keypad extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Keypad
 
@@ -7303,7 +7303,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * @param name the name of the child to find
      * @returns the requested child of @self
      */
-    get_child_by_name(name: string | null): Gtk.Widget | null
+    get_child_by_name(name: string): Gtk.Widget | null
     /**
      * Gets the amount of time that transitions between children will take.
      * @returns the child transition duration, in milliseconds
@@ -7351,7 +7351,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * Gets the name of the currently visible child widget.
      * @returns the name of the visible child
      */
-    get_visible_child_name(): string | null
+    get_visible_child_name(): string
     /**
      * Inserts `child` in the position after `sibling` in the list of children.
      * 
@@ -7443,7 +7443,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * See [method`Leaflet`.set_visible_child] for more details.
      * @param name the name of a child
      */
-    set_visible_child_name(name: string | null): void
+    set_visible_child_name(name: string): void
 
     // Conflicting methods
 
@@ -7458,7 +7458,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7472,7 +7472,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7483,7 +7483,7 @@ interface Leaflet extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, S
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Leaflet
 
@@ -7781,12 +7781,12 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Handy-1.Handy.PreferencesGroup
 
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the title of `self`.
      * @returns the title of @self
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Gets whether `self` uses markup for the title and description.
      * @returns whether @self uses markup for its labels
@@ -7796,12 +7796,12 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * Sets the description for `self`.
      * @param description the description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the title for `self`.
      * @param title the title
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Sets whether `self` uses markup for the title and description.
      * @param use_markup whether to use markup
@@ -7821,7 +7821,7 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7835,7 +7835,7 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7846,7 +7846,7 @@ interface PreferencesGroup extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.PreferencesGroup
 
@@ -8112,7 +8112,7 @@ interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8126,7 +8126,7 @@ interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8137,7 +8137,7 @@ interface PreferencesPage extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.PreferencesPage
 
@@ -8395,7 +8395,7 @@ interface PreferencesRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -8407,7 +8407,7 @@ interface PreferencesRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Build
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8421,7 +8421,7 @@ interface PreferencesRow extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.PreferencesRow
 
@@ -8739,7 +8739,7 @@ interface PreferencesWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8753,7 +8753,7 @@ interface PreferencesWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8764,7 +8764,7 @@ interface PreferencesWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.PreferencesWindow
 
@@ -9222,7 +9222,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9236,7 +9236,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9247,7 +9247,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.SearchBar
 
@@ -9743,7 +9743,7 @@ interface Squeezer extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9757,7 +9757,7 @@ interface Squeezer extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9768,7 +9768,7 @@ interface Squeezer extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Squeezer
 
@@ -10067,7 +10067,7 @@ interface StatusPage extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10081,7 +10081,7 @@ interface StatusPage extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10092,7 +10092,7 @@ interface StatusPage extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.StatusPage
 
@@ -11294,7 +11294,7 @@ interface TabBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -11308,7 +11308,7 @@ interface TabBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -11319,7 +11319,7 @@ interface TabBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Handy-1.Handy.TabBar
 
@@ -12546,7 +12546,7 @@ interface TabView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12560,7 +12560,7 @@ interface TabView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12571,7 +12571,7 @@ interface TabView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Handy-1.Handy.TabView
 
@@ -12873,7 +12873,7 @@ interface TitleBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -12887,7 +12887,7 @@ interface TitleBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -12898,7 +12898,7 @@ interface TitleBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.TitleBar
 
@@ -13122,7 +13122,7 @@ interface ValueObject {
      * Returns the contained string if the value is of type `G_TYPE_STRING`.
      * @returns the contained string
      */
-    get_string(): string | null
+    get_string(): string
     /**
      * Return the contained value.
      * @returns the contained [struct@GObject.Value]
@@ -13297,7 +13297,7 @@ interface ViewSwitcher extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13311,7 +13311,7 @@ interface ViewSwitcher extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -13322,7 +13322,7 @@ interface ViewSwitcher extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.ViewSwitcher
 
@@ -13600,7 +13600,7 @@ interface ViewSwitcherBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -13614,7 +13614,7 @@ interface ViewSwitcherBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -13625,7 +13625,7 @@ interface ViewSwitcherBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.ViewSwitcherBar
 
@@ -14030,7 +14030,7 @@ interface ViewSwitcherTitle extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -14044,7 +14044,7 @@ interface ViewSwitcherTitle extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -14055,7 +14055,7 @@ interface ViewSwitcherTitle extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.ViewSwitcherTitle
 
@@ -14339,7 +14339,7 @@ interface Window extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -14353,7 +14353,7 @@ interface Window extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -14364,7 +14364,7 @@ interface Window extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.Window
 
@@ -14735,7 +14735,7 @@ interface WindowHandle extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -14749,7 +14749,7 @@ interface WindowHandle extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -14760,7 +14760,7 @@ interface WindowHandle extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Handy-1.Handy.WindowHandle
 

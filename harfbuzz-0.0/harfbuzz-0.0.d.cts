@@ -3557,7 +3557,7 @@ export const VERSION_MINOR: number
 /**
  * A string literal containing the library version available at compile-time.
  */
-export const VERSION_STRING: string | null
+export const VERSION_STRING: string
 /**
  * Fetches the name identifier of the specified feature type in the face's `name` table.
  * @param face #hb_face_t to work upon
@@ -3621,14 +3621,14 @@ export function blob_copy_writable_or_fail(blob: blob_t): blob_t
  * @param file_name A font filename
  * @returns An #hb_blob_t pointer with the content of the file, or hb_blob_get_empty() if failed.
  */
-export function blob_create_from_file(file_name: string | null): blob_t
+export function blob_create_from_file(file_name: string): blob_t
 /**
  * Creates a new blob containing the data from the
  * specified binary font file.
  * @param file_name A font filename
  * @returns An #hb_blob_t pointer with the content of the file, or `NULL` if failed.
  */
-export function blob_create_from_file_or_fail(file_name: string | null): blob_t
+export function blob_create_from_file_or_fail(file_name: string): blob_t
 /**
  * Returns a blob that represents a range of bytes in `parent`.  The new
  * blob is always created with #HB_MEMORY_MODE_READONLY, meaning that it
@@ -3803,7 +3803,7 @@ export function buffer_create_similar(src: buffer_t): buffer_t
  * @param format the #hb_buffer_serialize_format_t of the input `buf`
  * @returns `true` if parse was successful, `false` if an error occurred.
  */
-export function buffer_deserialize_glyphs(buffer: buffer_t, buf: string[], font: font_t | null, format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* end_ptr */ string | null ]
+export function buffer_deserialize_glyphs(buffer: buffer_t, buf: string[], font: font_t | null, format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* end_ptr */ string ]
 /**
  * Deserializes Unicode `buffer` from textual representation in the format
  * produced by hb_buffer_serialize_unicode().
@@ -3812,7 +3812,7 @@ export function buffer_deserialize_glyphs(buffer: buffer_t, buf: string[], font:
  * @param format the #hb_buffer_serialize_format_t of the input `buf`
  * @returns `true` if parse was successful, `false` if an error occurred.
  */
-export function buffer_deserialize_unicode(buffer: buffer_t, buf: string[], format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* end_ptr */ string | null ]
+export function buffer_deserialize_unicode(buffer: buffer_t, buf: string[], format: buffer_serialize_format_t): [ /* returnType */ bool_t, /* end_ptr */ string ]
 /**
  * If dottedcircle_glyph is (hb_codepoint_t) -1 then #HB_BUFFER_DIFF_FLAG_DOTTED_CIRCLE_PRESENT
  * and #HB_BUFFER_DIFF_FLAG_NOTDEF_PRESENT are never returned.  This should be used by most
@@ -4024,7 +4024,7 @@ export function buffer_serialize_format_from_string(str: Uint8Array): buffer_ser
  * @param format an #hb_buffer_serialize_format_t to convert.
  * @returns  A `NULL` terminated string corresponding to @format. Should not be freed.
  */
-export function buffer_serialize_format_to_string(format: buffer_serialize_format_t): string | null
+export function buffer_serialize_format_to_string(format: buffer_serialize_format_t): string
 /**
  * Serializes `buffer` into a textual representation of its glyph content,
  * useful for showing the contents of the buffer, for example during debugging.
@@ -4324,7 +4324,7 @@ export function direction_from_string(str: Uint8Array): direction_t
  * @param direction The #hb_direction_t to convert
  * @returns The string corresponding to @direction
  */
-export function direction_to_string(direction: direction_t): string | null
+export function direction_to_string(direction: direction_t): string
 /**
  * Perform a "close-path" draw operation.
  * @param dfuncs draw functions
@@ -5660,7 +5660,7 @@ export function language_matches(language: language_t, specific: language_t): bo
  * @param language The #hb_language_t to convert
  * @returns  A `NULL`-terminated string representing the @language. Must not be freed by the caller.
  */
-export function language_to_string(language: language_t): string | null
+export function language_to_string(language: language_t): string
 /**
  * Tests whether memory allocation for a set was successful.
  * @param map A map
@@ -7356,7 +7356,7 @@ export function shape_plan_get_empty(): shape_plan_t
  * @param shape_plan A shaping plan
  * @returns The shaper
  */
-export function shape_plan_get_shaper(shape_plan: shape_plan_t): string | null
+export function shape_plan_get_shaper(shape_plan: shape_plan_t): string
 /**
  * Searches variation axes of a #hb_font_t object for a specific axis first,
  * if not set, then tries to get default style values from different
@@ -7571,7 +7571,7 @@ export function version_atleast(major: number, minor: number, micro: number): bo
  * Returns library version as a string with three components.
  * @returns Library version string
  */
-export function version_string(): string | null
+export function version_string(): string
 /**
  * A callback method for #hb_buffer_t. The method gets called with the
  * #hb_buffer_t it was set on, the #hb_font_t the buffer is shaped with and a
@@ -7585,7 +7585,7 @@ export function version_string(): string | null
  * @returns `true` to perform the shaping step, `false` to skip it.
  */
 export interface buffer_message_func_t {
-    (buffer: buffer_t, font: font_t, message: string | null): bool_t
+    (buffer: buffer_t, font: font_t, message: string): bool_t
 }
 /**
  * A virtual method for the #hb_color_line_t to fetch color stops.
@@ -8750,7 +8750,7 @@ export interface language_t {
      * Converts an #hb_language_t to a string.
      * @returns  A `NULL`-terminated string representing the @language. Must not be freed by the caller.
      */
-    _string(): string | null
+    _string(): string
 }
 
 /**

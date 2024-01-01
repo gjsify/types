@@ -33,7 +33,7 @@ import type Gio from '@girs/gio-2.0';
  * This is equivalent to FC_FONT_FEATURES in versions of
  * fontconfig that have that.
  */
-export const FONT_FEATURES: string | null
+export const FONT_FEATURES: string
 /**
  * Fontconfig property that Pango reads from font
  * patterns to populate list of OpenType font variations
@@ -46,7 +46,7 @@ export const FONT_FEATURES: string | null
  * This is equivalent to FC_FONT_VARIATIONS in versions of
  * fontconfig that have that.
  */
-export const FONT_VARIATIONS: string | null
+export const FONT_VARIATIONS: string
 /**
  * Fontconfig property that Pango sets on any
  * fontconfig pattern it passes to fontconfig
@@ -58,7 +58,7 @@ export const FONT_VARIATIONS: string | null
  * rules to choose different fonts for horizontal and vertical
  * writing directions.
  */
-export const GRAVITY: string | null
+export const GRAVITY: string
 /**
  * Fontconfig property that Pango sets on any
  * fontconfig pattern it passes to fontconfig.
@@ -71,7 +71,7 @@ export const GRAVITY: string | null
  * This is equivalent to FC_PRGNAME in versions of
  * fontconfig that have that.
  */
-export const PRGNAME: string | null
+export const PRGNAME: string
 /**
  * Fontconfig property that Pango sets on any
  * fontconfig pattern it passes to fontconfig.
@@ -82,7 +82,7 @@ export const PRGNAME: string | null
  * pango versions (or only pango-using applications, or only
  * non-pango-using applications).
  */
-export const VERSION: string | null
+export const VERSION: string
 /**
  * Function type for doing final config tweaking on prepared `FcPattern`s.
  * @callback 

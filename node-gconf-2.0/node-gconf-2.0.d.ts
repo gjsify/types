@@ -59,13 +59,13 @@ enum ValueType {
 enum UnsetFlags {
     NAMES,
 }
-function concatDirAndKey(dir: string | null, key: string | null): string | null
+function concatDirAndKey(dir: string, key: string): string | null
 /**
  * Detach from the config server and release
  * all related resources
  */
 function debugShutdown(): number
-function enumToString(lookupTable: EnumStringPair, enumValue: number): string | null
+function enumToString(lookupTable: EnumStringPair, enumValue: number): string
 function errorQuark(): GLib.Quark
 /**
  * Escape `arbitrary_text` such that it's a valid key element (i.e. one
@@ -77,13 +77,13 @@ function errorQuark(): GLib.Quark
  * @param len length of `arbitrary_text` in bytes, or -1 if `arbitrary_text` is nul-terminated
  * @returns a nul-terminated valid GConf key
  */
-function escapeKey(arbitraryText: string | null, len: number): string | null
+function escapeKey(arbitraryText: string, len: number): string | null
 function init(argc: number, argv: string | null): boolean
 function isInitialized(): boolean
-function keyIsBelow(above: string | null, below: string | null): boolean
+function keyIsBelow(above: string, below: string): boolean
 function postinit(app: any | null, modInfo: any | null): void
 function preinit(app: any | null, modInfo: any | null): void
-function stringToEnum(lookupTable: EnumStringPair, str: string | null, enumValueRetloc: number): boolean
+function stringToEnum(lookupTable: EnumStringPair, str: string, enumValueRetloc: number): boolean
 /**
  * Converts a string escaped with gconf_escape_key() back into its original
  * form.
@@ -91,12 +91,12 @@ function stringToEnum(lookupTable: EnumStringPair, str: string | null, enumValue
  * @param len length of `escaped_key` in bytes, or -1 if `escaped_key` is nul-terminated
  * @returns the original string that was escaped to create @escaped_key
  */
-function unescapeKey(escapedKey: string | null, len: number): string | null
+function unescapeKey(escapedKey: string, len: number): string | null
 function uniqueKey(): string | null
-function validKey(key: string | null, whyInvalid: string | null): boolean
-function valueDecode(encoded: string | null): Value
+function validKey(key: string, whyInvalid: string | null): boolean
+function valueDecode(encoded: string): Value
 interface ChangeSetForeachFunc {
-    (cs: ChangeSet, key: string | null, value: Value): void
+    (cs: ChangeSet, key: string, value: Value): void
 }
 interface ClientErrorHandlerFunc {
     (client: Client, error: GLib.Error): void
@@ -105,10 +105,10 @@ interface ClientNotifyFunc {
     (client: Client, cnxnId: number, entry: Entry): void
 }
 interface ListenersForeach {
-    (location: string | null, cnxnId: number, listenerData: any | null): void
+    (location: string, cnxnId: number, listenerData: any | null): void
 }
 interface ListenersPredicate {
-    (location: string | null, cnxnId: number, listenerData: any | null): boolean
+    (location: string, cnxnId: number, listenerData: any | null): boolean
 }
 module Client {
 
@@ -155,7 +155,7 @@ interface Client {
 
     // Owm methods of GConf-2.0.GConf.Client
 
-    addDir(dir: string | null, preload: ClientPreloadType): void
+    addDir(dir: string, preload: ClientPreloadType): void
     /**
      * Lists the subdirectories in `dir`. The returned list contains
      * allocated strings. Each string is the absolute path of a
@@ -165,7 +165,7 @@ interface Client {
      * @param dir directory to get subdirectories from.
      * @returns List of allocated subdirectory names.
      */
-    allDirs(dir: string | null): string[]
+    allDirs(dir: string): string[]
     /**
      * Lists the key-value pairs in `dir`. Does not list subdirectories; for
      * that use gconf_client_all_dirs(). The returned list contains #GConfEntry
@@ -177,23 +177,23 @@ interface Client {
      * @param dir directory to list.
      * @returns List of #GConfEntry.
      */
-    allEntries(dir: string | null): Entry[]
-    changeSetFromCurrentv(keys: string | null): ChangeSet
+    allEntries(dir: string): Entry[]
+    changeSetFromCurrentv(keys: string): ChangeSet
     clearCache(): void
     commitChangeSet(cs: ChangeSet, removeCommitted: boolean): boolean
-    dirExists(dir: string | null): boolean
+    dirExists(dir: string): boolean
     // Has conflict: error(error: GLib.Error): void
-    get(key: string | null): Value
-    getBool(key: string | null): boolean
-    getDefaultFromSchema(key: string | null): Value
-    getEntry(key: string | null, locale: string | null, useSchemaDefault: boolean): Entry
-    getFloat(key: string | null): number
-    getInt(key: string | null): number
-    getPair(key: string | null, carType: ValueType, cdrType: ValueType, carRetloc: any | null, cdrRetloc: any | null): boolean
-    getString(key: string | null): string | null
-    getWithoutDefault(key: string | null): Value
-    keyIsWritable(key: string | null): boolean
-    notify(key: string | null): void
+    get(key: string): Value
+    getBool(key: string): boolean
+    getDefaultFromSchema(key: string): Value
+    getEntry(key: string, locale: string, useSchemaDefault: boolean): Entry
+    getFloat(key: string): number
+    getInt(key: string): number
+    getPair(key: string, carType: ValueType, cdrType: ValueType, carRetloc: any | null, cdrRetloc: any | null): boolean
+    getString(key: string): string | null
+    getWithoutDefault(key: string): Value
+    keyIsWritable(key: string): boolean
+    notify(key: string): void
 
     // Overloads of notify
 
@@ -212,29 +212,29 @@ interface Client {
      * @param pspec 
      */
     notify(pspec: GObject.ParamSpec): void
-    notifyAdd(namespaceSection: string | null, func: ClientNotifyFunc): number
+    notifyAdd(namespaceSection: string, func: ClientNotifyFunc): number
     notifyRemove(cnxn: number): void
-    preload(dirname: string | null, type: ClientPreloadType): void
-    recursiveUnset(key: string | null, flags: UnsetFlags): boolean
-    removeDir(dir: string | null): void
+    preload(dirname: string, type: ClientPreloadType): void
+    recursiveUnset(key: string, flags: UnsetFlags): boolean
+    removeDir(dir: string): void
     reverseChangeSet(cs: ChangeSet): ChangeSet
-    set(key: string | null, val: Value): void
-    setBool(key: string | null, val: boolean): boolean
+    set(key: string, val: Value): void
+    setBool(key: string, val: boolean): boolean
     setErrorHandling(mode: ClientErrorHandlingMode): void
-    setFloat(key: string | null, val: number): boolean
-    setInt(key: string | null, val: number): boolean
-    setPair(key: string | null, carType: ValueType, cdrType: ValueType, addressOfCar: any | null, addressOfCdr: any | null): boolean
-    setString(key: string | null, val: string | null): boolean
+    setFloat(key: string, val: number): boolean
+    setInt(key: string, val: number): boolean
+    setPair(key: string, carType: ValueType, cdrType: ValueType, addressOfCar: any | null, addressOfCdr: any | null): boolean
+    setString(key: string, val: string): boolean
     suggestSync(): void
     // Has conflict: unreturnedError(error: GLib.Error): void
-    unset(key: string | null): boolean
-    // Has conflict: valueChanged(key: string | null, value: Value): void
+    unset(key: string): boolean
+    // Has conflict: valueChanged(key: string, value: Value): void
 
     // Own virtual methods of GConf-2.0.GConf.Client
 
     error(error: GLib.Error): void
     unreturnedError(error: GLib.Error): void
-    valueChanged(key: string | null, value: Value): void
+    valueChanged(key: string, value: Value): void
 
     // Own signals of GConf-2.0.GConf.Client
 
@@ -293,7 +293,7 @@ interface ChangeSet {
 
     // Owm methods of GConf-2.0.GConf.ChangeSet
 
-    checkValue(key: string | null, valueRetloc: Value): boolean
+    checkValue(key: string, valueRetloc: Value): boolean
     clear(): void
     /**
      * Iterates over a #GConfChangeSet by calling a
@@ -305,17 +305,17 @@ interface ChangeSet {
      */
     foreach(func: ChangeSetForeachFunc): void
     ref(): ChangeSet
-    remove(key: string | null): void
-    set(key: string | null, value: Value): void
-    setBool(key: string | null, val: boolean): void
-    setFloat(key: string | null, val: number): void
-    setInt(key: string | null, val: number): void
-    setNocopy(key: string | null, value: Value): void
-    setPair(key: string | null, carType: ValueType, cdrType: ValueType, addressOfCar: any | null, addressOfCdr: any | null): void
-    setString(key: string | null, val: string | null): void
+    remove(key: string): void
+    set(key: string, value: Value): void
+    setBool(key: string, val: boolean): void
+    setFloat(key: string, val: number): void
+    setInt(key: string, val: number): void
+    setNocopy(key: string, value: Value): void
+    setPair(key: string, carType: ValueType, cdrType: ValueType, addressOfCar: any | null, addressOfCdr: any | null): void
+    setString(key: string, val: string): void
     size(): number
     unref(): void
-    unset(key: string | null): void
+    unset(key: string): void
 }
 
 class ChangeSet {
@@ -335,7 +335,7 @@ interface ClientClass {
     // Own fields of GConf-2.0.GConf.ClientClass
 
     parentClass: GObject.ObjectClass
-    valueChanged: (client: Client, key: string | null, value: Value) => void
+    valueChanged: (client: Client, key: string, value: Value) => void
     unreturnedError: (client: Client, error: GLib.Error) => void
     error: (client: Client, error: GLib.Error) => void
     pad1: GLib.Func
@@ -362,7 +362,7 @@ interface Engine {
      * @param dir Directory to get subdirectories from.
      * @returns List of allocated subdirectory names.
      */
-    allDirs(dir: string | null): string[]
+    allDirs(dir: string): string[]
     /**
      * Lists the key-value pairs in `dir`. Does not list subdirectories; for
      * that use gconf_engine_all_dirs(). The returned list contains #GConfEntry
@@ -373,40 +373,40 @@ interface Engine {
      * @param dir Directory to list.
      * @returns List of #GConfEntry.
      */
-    allEntries(dir: string | null): Entry[]
-    associateSchema(key: string | null, schemaKey: string | null): boolean
-    changeSetFromCurrent(err: GLib.Error, firstKey: string | null, ...args: any): ChangeSet
-    changeSetFromCurrentv(keys: string | null): ChangeSet
+    allEntries(dir: string): Entry[]
+    associateSchema(key: string, schemaKey: string): boolean
+    changeSetFromCurrent(err: GLib.Error, firstKey: string, ...args: any): ChangeSet
+    changeSetFromCurrentv(keys: string): ChangeSet
     commitChangeSet(cs: ChangeSet, removeCommitted: boolean): boolean
-    dirExists(dir: string | null): boolean
-    get(key: string | null): Value
-    getBool(key: string | null): boolean
-    getDefaultFromSchema(key: string | null): Value
-    getEntry(key: string | null, locale: string | null, useSchemaDefault: boolean): Entry
-    getFloat(key: string | null): number
-    getFull(key: string | null, locale: string | null, useSchemaDefault: boolean, isDefaultP: boolean, isWritableP: boolean): Value
-    getInt(key: string | null): number
-    getPair(key: string | null, carType: ValueType, cdrType: ValueType, carRetloc: any | null, cdrRetloc: any | null): boolean
-    getString(key: string | null): string | null
+    dirExists(dir: string): boolean
+    get(key: string): Value
+    getBool(key: string): boolean
+    getDefaultFromSchema(key: string): Value
+    getEntry(key: string, locale: string, useSchemaDefault: boolean): Entry
+    getFloat(key: string): number
+    getFull(key: string, locale: string, useSchemaDefault: boolean, isDefaultP: boolean, isWritableP: boolean): Value
+    getInt(key: string): number
+    getPair(key: string, carType: ValueType, cdrType: ValueType, carRetloc: any | null, cdrRetloc: any | null): boolean
+    getString(key: string): string | null
     getUserData(): any | null
-    getWithLocale(key: string | null, locale: string | null): Value
-    getWithoutDefault(key: string | null): Value
-    keyIsWritable(key: string | null): boolean
+    getWithLocale(key: string, locale: string): Value
+    getWithoutDefault(key: string): Value
+    keyIsWritable(key: string): boolean
     notifyRemove(cnxn: number): void
     ref(): void
-    removeDir(dir: string | null): void
+    removeDir(dir: string): void
     reverseChangeSet(cs: ChangeSet): ChangeSet
-    set(key: string | null, value: Value): boolean
-    setBool(key: string | null, val: boolean): boolean
-    setFloat(key: string | null, val: number): boolean
-    setInt(key: string | null, val: number): boolean
-    setList(key: string | null, listType: ValueType, list: any[]): boolean
-    setPair(key: string | null, carType: ValueType, cdrType: ValueType, addressOfCar: any | null, addressOfCdr: any | null): boolean
-    setString(key: string | null, val: string | null): boolean
+    set(key: string, value: Value): boolean
+    setBool(key: string, val: boolean): boolean
+    setFloat(key: string, val: number): boolean
+    setInt(key: string, val: number): boolean
+    setList(key: string, listType: ValueType, list: any[]): boolean
+    setPair(key: string, carType: ValueType, cdrType: ValueType, addressOfCar: any | null, addressOfCdr: any | null): boolean
+    setString(key: string, val: string): boolean
     setUserData(data: any | null, dnotify: GLib.DestroyNotify): void
     suggestSync(): void
     unref(): void
-    unset(key: string | null): boolean
+    unset(key: string): boolean
 }
 
 /**
@@ -434,13 +434,13 @@ interface Entry {
     free(): void
     getIsDefault(): boolean
     getIsWritable(): boolean
-    getKey(): string | null
-    getSchemaName(): string | null
+    getKey(): string
+    getSchemaName(): string
     getValue(): Value
     ref(): Entry
     setIsDefault(isDefault: boolean): void
     setIsWritable(isWritable: boolean): void
-    setSchemaName(name: string | null): void
+    setSchemaName(name: string): void
     setValue(val: Value): void
     setValueNocopy(val: Value): void
     stealValue(): Value
@@ -455,8 +455,8 @@ class Entry {
 
     // Constructors of GConf-2.0.GConf.Entry
 
-    constructor(key: string | null, val: Value) 
-    static new(key: string | null, val: Value): Entry
+    constructor(key: string, val: Value) 
+    static new(key: string, val: Value): Entry
     static newNocopy(key: string | null, val: Value): Entry
 }
 
@@ -465,7 +465,7 @@ interface EnumStringPair {
     // Own fields of GConf-2.0.GConf.EnumStringPair
 
     enumValue: number
-    str: string | null
+    str: string
 }
 
 class EnumStringPair {
@@ -479,12 +479,12 @@ interface Listeners {
 
     // Owm methods of GConf-2.0.GConf.Listeners
 
-    add(listenPoint: string | null, listenerData: any | null, destroyNotify: GLib.FreeFunc): number
+    add(listenPoint: string, listenerData: any | null, destroyNotify: GLib.FreeFunc): number
     count(): number
     foreach(callback: ListenersForeach): void
     free(): void
-    getData(cnxnId: number, listenerDataP: any | null, locationP: string | null): boolean
-    notify(allAbove: string | null, callback: any): void
+    getData(cnxnId: number, listenerDataP: any | null, locationP: string): boolean
+    notify(allAbove: string, callback: any): void
     remove(cnxnId: number): void
     removeIf(predicate: ListenersPredicate): void
 }
@@ -515,11 +515,11 @@ interface MetaInfo {
     // Owm methods of GConf-2.0.GConf.MetaInfo
 
     free(): void
-    getModUser(): string | null
-    getSchema(): string | null
+    getModUser(): string
+    getSchema(): string
     setModTime(modTime: GLib.Time): void
-    setModUser(modUser: string | null): void
-    setSchema(schemaName: string | null): void
+    setModUser(modUser: string): void
+    setSchema(schemaName: string): void
 }
 
 class MetaInfo {
@@ -538,20 +538,20 @@ interface Schema {
     getCdrType(): ValueType
     getDefaultValue(): Value
     getListType(): ValueType
-    getLocale(): string | null
-    getLongDesc(): string | null
-    getOwner(): string | null
-    getShortDesc(): string | null
+    getLocale(): string
+    getLongDesc(): string
+    getOwner(): string
+    getShortDesc(): string
     getType(): ValueType
     setCarType(type: ValueType): void
     setCdrType(type: ValueType): void
     setDefaultValue(val: Value): void
     setDefaultValueNocopy(val: Value): void
     setListType(type: ValueType): void
-    setLocale(locale: string | null): void
-    setLongDesc(desc: string | null): void
-    setOwner(owner: string | null): void
-    setShortDesc(desc: string | null): void
+    setLocale(locale: string): void
+    setLongDesc(desc: string): void
+    setOwner(owner: string): void
+    setShortDesc(desc: string): void
     setType(type: ValueType): void
 }
 
@@ -593,7 +593,7 @@ interface Value {
      */
     getList(): Value[]
     getListType(): ValueType
-    getString(): string | null
+    getString(): string
     setBool(theBool: boolean): void
     setCar(car: Value): void
     setCarNocopy(car: Value): void
@@ -602,7 +602,7 @@ interface Value {
     setFloat(theFloat: number): void
     setInt(theInt: number): void
     setListType(type: ValueType): void
-    setString(theStr: string | null): void
+    setString(theStr: string): void
     toString(): string | null
 }
 
@@ -616,8 +616,8 @@ class Value {
 
     constructor(type: ValueType) 
     static new(type: ValueType): Value
-    static newFromString(type: ValueType, str: string | null): Value
-    static decode(encoded: string | null): Value
+    static newFromString(type: ValueType, str: string): Value
+    static decode(encoded: string): Value
 }
 
 }

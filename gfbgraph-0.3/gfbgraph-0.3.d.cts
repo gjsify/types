@@ -142,14 +142,14 @@ export interface Connectable extends Node {
      * @param payload a const #gchar with the response string from the Facebook Graph API.
      * @returns a newly-allocated #GList of #GFBGraphNode with the same #GType as @self.
      */
-    default_parse_connected_data(payload: string | null): Node[]
+    default_parse_connected_data(payload: string): Node[]
     /**
      * Get the Facebook Graph API function path to retrieve the nodes connected with `node_type`
      * managed by the #GFBGraphConnectable object.
      * @param node_type a #GType, required a #GFBGRAPH_TYPE_NODE or children.
      * @returns a const #gchar with the function path or %NULL.
      */
-    get_connection_path(node_type: GObject.GType): string | null
+    get_connection_path(node_type: GObject.GType): string
     /**
      * Get the params to be inserted in a request to the Facebook Graph API
      * in order to append the node `self` to a node of type `node_type`.
@@ -170,7 +170,7 @@ export interface Connectable extends Node {
      * @param payload a const #gchar with the response string from the Facebook Graph API.
      * @returns a newly-allocated #GList of #GFBGraphNode created from the @payload or %NULL.
      */
-    parse_connected_data(payload: string | null): Node[]
+    parse_connected_data(payload: string): Node[]
 
     // Own virtual methods of GFBGraph-0.3.GFBGraph.Connectable
 
@@ -189,7 +189,7 @@ export interface Connectable extends Node {
      * @param payload a const #gchar with the response string from the Facebook Graph API.
      * @returns a newly-allocated #GList of #GFBGraphNode created from the @payload or %NULL.
      */
-    vfunc_parse_connected_data(payload: string | null): Node[]
+    vfunc_parse_connected_data(payload: string): Node[]
 
     // Class property signals of GFBGraph-0.3.GFBGraph.Connectable
 
@@ -276,19 +276,19 @@ export interface Album extends Connectable {
     // Owm methods of GFBGraph-0.3.GFBGraph.Album
 
     get_count(): number
-    get_cover_photo_id(): string | null
-    get_description(): string | null
-    get_name(): string | null
+    get_cover_photo_id(): string
+    get_description(): string
+    get_name(): string
     /**
      * Sets the description for the `album`.
      * @param description a const pointer to a #gchar.
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the name for the `album`.
      * @param name a const pointer to a #gchar.
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of GFBGraph-0.3.GFBGraph.Album
 
@@ -360,7 +360,7 @@ export class Album extends Node {
      * @param id a const #gchar with the album ID.
      * @returns a new #GFBGraphAlbum; unref with g_object_unref()
      */
-    static new_from_id(authorizer: Authorizer, id: string | null): Album
+    static new_from_id(authorizer: Authorizer, id: string): Album
 
     // Overloads of new_from_id
 
@@ -372,7 +372,7 @@ export class Album extends Node {
      * @param node_type a #GFBGraphNode type #GType.
      * @returns a #GFBGraphNode or %NULL.
      */
-    static new_from_id(authorizer: Authorizer, id: string | null, node_type: GObject.GType): Node
+    static new_from_id(authorizer: Authorizer, id: string, node_type: GObject.GType): Node
     _init(config?: Album.ConstructorProperties): void
 }
 
@@ -499,24 +499,24 @@ export interface Node {
      * Gets a node created time.
      * @returns an ISO 8601 encoded date when the node was initially published.
      */
-    get_created_time(): string | null
+    get_created_time(): string
     /**
      * Gets the Facebook Graph unique node ID.
      * @returns the node ID.
      */
-    get_id(): string | null
-    get_link(): string | null
+    get_id(): string
+    get_link(): string
     /**
      * Gets a node updated time.
      * @returns an ISO 8601 encoded date when the node was updated.
      */
-    get_updated_time(): string | null
+    get_updated_time(): string
     /**
      * Sets the ID for a node. Just useful when a new node is created
      * and the Graph API returns the ID of the new created node.
      * @param id a const pointer to a #gchar.
      */
-    set_id(id: string | null): void
+    set_id(id: string): void
 
     // Class property signals of GFBGraph-0.3.GFBGraph.Node
 
@@ -568,7 +568,7 @@ export class Node extends GObject.Object {
      * @param node_type a #GFBGraphNode type #GType.
      * @returns a #GFBGraphNode or %NULL.
      */
-    static new_from_id(authorizer: Authorizer, id: string | null, node_type: GObject.GType): Node
+    static new_from_id(authorizer: Authorizer, id: string, node_type: GObject.GType): Node
     _init(config?: Node.ConstructorProperties): void
     static error_quark(): GLib.Quark
 }
@@ -644,13 +644,13 @@ export interface Photo extends Connectable, Json.Serializable {
      */
     download_default_size(authorizer: Authorizer): Gio.InputStream
     get_default_height(): number
-    get_default_source_uri(): string | null
+    get_default_source_uri(): string
     get_default_width(): number
     get_image_hires(): PhotoImage
     get_image_near_height(height: number): PhotoImage
     get_image_near_width(width: number): PhotoImage
     get_images(): PhotoImage[]
-    get_name(): string | null
+    get_name(): string
 
     // Conflicting methods
 
@@ -684,7 +684,7 @@ export interface Photo extends Connectable, Json.Serializable {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -705,7 +705,7 @@ export interface Photo extends Connectable, Json.Serializable {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Calls the [vfunc`Json`.Serializable.set_property] implementation
      * on the `JsonSerializable` instance, which will set the property
@@ -722,13 +722,13 @@ export interface Photo extends Connectable, Json.Serializable {
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
     /**
      * Sets a property on an object.
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
     /**
      * Calls the [vfunc`Json`.Serializable.get_property] implementation
      * on the `JsonSerializable` instance, which will get the value of
@@ -830,7 +830,7 @@ export class Photo extends Node {
      * @param id a const #gchar with the photo ID.
      * @returns a new #GFBGraphPhoto; unref with g_object_unref()
      */
-    static new_from_id(authorizer: Authorizer, id: string | null): Photo
+    static new_from_id(authorizer: Authorizer, id: string): Photo
 
     // Overloads of new_from_id
 
@@ -842,7 +842,7 @@ export class Photo extends Node {
      * @param node_type a #GFBGraphNode type #GType.
      * @returns a #GFBGraphNode or %NULL.
      */
-    static new_from_id(authorizer: Authorizer, id: string | null, node_type: GObject.GType): Node
+    static new_from_id(authorizer: Authorizer, id: string, node_type: GObject.GType): Node
     _init(config?: Photo.ConstructorProperties): void
 }
 
@@ -899,7 +899,7 @@ export class SimpleAuthorizer extends GObject.Object {
      * @param access_token a const `gchar`.
      * @returns a #GFBGraphSimpleAuthorizer.
      */
-    constructor(access_token: string | null) 
+    constructor(access_token: string) 
     /**
      * Creates a new #GFBGraphAuthorizer to use with the GFBGraph library using the `access_token` as access token.
      * It's only a test authorizer, don't use in final code.
@@ -907,7 +907,7 @@ export class SimpleAuthorizer extends GObject.Object {
      * @param access_token a const `gchar`.
      * @returns a #GFBGraphSimpleAuthorizer.
      */
-    static new(access_token: string | null): SimpleAuthorizer
+    static new(access_token: string): SimpleAuthorizer
     _init(config?: SimpleAuthorizer.ConstructorProperties): void
 }
 
@@ -979,12 +979,12 @@ export interface User {
      * permission.
      * @returns a const #gchar with the user email, or %NULL.
      */
-    get_email(): string | null
+    get_email(): string
     /**
      * Get the user full name.
      * @returns a const #gchar with the user full name, or %NULL.
      */
-    get_name(): string | null
+    get_name(): string
 
     // Class property signals of GFBGraph-0.3.GFBGraph.User
 
@@ -1050,7 +1050,7 @@ export class User extends Node {
      * @param id a const #gchar with the user ID.
      * @returns a new #GFBGraphUser; unref with g_object_unref()
      */
-    static new_from_id(authorizer: Authorizer, id: string | null): User
+    static new_from_id(authorizer: Authorizer, id: string): User
 
     // Overloads of new_from_id
 
@@ -1062,7 +1062,7 @@ export class User extends Node {
      * @param node_type a #GFBGraphNode type #GType.
      * @returns a #GFBGraphNode or %NULL.
      */
-    static new_from_id(authorizer: Authorizer, id: string | null, node_type: GObject.GType): Node
+    static new_from_id(authorizer: Authorizer, id: string, node_type: GObject.GType): Node
     _init(config?: User.ConstructorProperties): void
     /**
      * Retrieve the current user logged using the https://graph.facebook.com/me Graph API function.
@@ -1148,7 +1148,7 @@ export interface ConnectableInterface {
     parent: GObject.TypeInterface
     connections: GLib.HashTable
     get_connection_post_params: (self: Connectable, node_type: GObject.GType) => GLib.HashTable
-    parse_connected_data: (self: Connectable, payload: string | null) => Node[]
+    parse_connected_data: (self: Connectable, payload: string) => Node[]
 }
 
 export abstract class ConnectableInterface {

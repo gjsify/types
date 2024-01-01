@@ -110,7 +110,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param result a #GAsyncResult
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    addContactFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAddedUid */ string | null ]
+    addContactFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* outAddedUid */ string ]
     /**
      * Adds `contact` to `client` and
      * sets `out_added_uid` to a UID of a newly added contact.
@@ -123,7 +123,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    addContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAddedUid */ string | null ]
+    addContactSync(contact: EBookContacts.Contact, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAddedUid */ string ]
     /**
      * Adds `contacts` to `client`.
      * The call is finished by e_book_client_add_contacts_finish()
@@ -175,14 +175,14 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    containsEmail(emailAddress: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    containsEmail(emailAddress: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_contains_email().
      * @param result a #GAsyncResult
      * @returns %TRUE if successful, %FALSE otherwise.
      */
     containsEmailFinish(result: Gio.AsyncResult): boolean
-    containsEmailSync(emailAddress: string | null, cancellable: Gio.Cancellable | null): boolean
+    containsEmailSync(emailAddress: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Receive #EContact from the `client` for the gived `uid`.
      * The call is finished by e_book_client_get_contact_finish()
@@ -191,7 +191,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getContact(uid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getContact(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contact().
      * If successful, then the `out_contact` is set to newly allocated
@@ -208,7 +208,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getContactSync(uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContact */ EBookContacts.Contact ]
+    getContactSync(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContact */ EBookContacts.Contact ]
     /**
      * Query `client` with `sexp,` receiving a list of contacts which
      * matched. The call is finished by e_book_client_get_contacts_finish()
@@ -220,7 +220,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getContacts(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getContacts(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contacts().
      * If successful, then the `out_contacts` is set to newly allocated list of
@@ -240,7 +240,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getContactsSync(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContacts */ EBookContacts.Contact[] ]
+    getContactsSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContacts */ EBookContacts.Contact[] ]
     /**
      * Query `client` with `sexp,` receiving a list of contacts UIDs which
      * matched. The call is finished by e_book_client_get_contacts_uids_finish()
@@ -252,7 +252,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getContactsUids(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getContactsUids(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_contacts_uids().
      * If successful, then the `out_contact_uids` is set to newly allocated list
@@ -272,7 +272,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getContactsUidsSync(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContactUids */ string[] ]
+    getContactsUidsSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outContactUids */ string[] ]
     /**
      * Create an #EBookClientCursor.
      * The call is finished by e_book_client_get_view_finish()
@@ -287,7 +287,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getCursor(sexp: string | null, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getCursor(sexp: string, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_cursor().
      * If successful, then the `out_cursor` is set to newly create
@@ -311,7 +311,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getCursorSync(sexp: string | null, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCursor */ BookClientCursor ]
+    getCursorSync(sexp: string, sortFields: EBookContacts.ContactField, sortTypes: EBookContacts.BookCursorSortType, nFields: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCursor */ BookClientCursor ]
     /**
      * Reports the locale in use for `client`. The addressbook might sort contacts
      * in different orders, or store and compare phone numbers in different ways
@@ -323,7 +323,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * after a locale change is detected.
      * @returns The currently set locale for @client
      */
-    getLocale(): string | null
+    getLocale(): string
     /**
      * Query `client` with `sexp,` creating an #EBookClientView.
      * The call is finished by e_book_client_get_view_finish()
@@ -335,7 +335,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getView(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getView(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_get_view().
      * If successful, then the `out_view` is set to newly allocated
@@ -355,7 +355,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getViewSync(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outView */ BookClientView ]
+    getViewSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outView */ BookClientView ]
     /**
      * Applies the changes made to `contact` to the stored version in `client`.
      * The call is finished by e_book_client_modify_contact_finish()
@@ -423,7 +423,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    removeContactByUid(uid: string | null, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    removeContactByUid(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_book_client_remove_contact_by_uid().
      * @param result a #GAsyncResult
@@ -437,7 +437,7 @@ interface BookClient extends Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    removeContactByUidSync(uid: string | null, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
+    removeContactByUidSync(uid: string, opflags: EBookContacts.BookOperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Finishes previous call of e_book_client_remove_contact().
      * @param result a #GAsyncResult
@@ -956,7 +956,7 @@ interface BookClientCursor extends Gio.Initable {
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      * @param callback callback to call when a result is ready
      */
-    setSexp(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setSexp(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous call initiated by e_book_client_cursor_set_sexp(), reporting
      * whether the new search expression was accepted.
@@ -984,7 +984,7 @@ interface BookClientCursor extends Gio.Initable {
      * @param cancellable a #GCancellable to optionally cancel this operation while in progress
      * @returns %TRUE on success, otherwise %FALSE is returned and @error is set.
      */
-    setSexpSync(sexp: string | null, cancellable: Gio.Cancellable | null): boolean
+    setSexpSync(sexp: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * <link linkend="cursor-iteration">Steps the cursor through the results</link> by
      * a maximum of `count` and fetch the results traversed.
@@ -1282,7 +1282,7 @@ interface BookClientView extends Gio.Initable {
      * Returns the object path used to create the D-Bus proxy.
      * @returns the object path
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     isRunning(): boolean
     /**
      * Returns the #EBookClientView:client associated with `client_view`.
@@ -1340,7 +1340,7 @@ interface BookClientView extends Gio.Initable {
     // Own virtual methods of EBook-1.2.EBook.BookClientView
 
     complete(error: GLib.Error): void
-    progress(percent: number, message: string | null): void
+    progress(percent: number, message: string): void
 
     // Own signals of EBook-1.2.EBook.BookClientView
 
@@ -1512,7 +1512,7 @@ interface Destination {
      * Gets the e-mail address of `dest'`s addressee.
      * @returns An e-mail address, or an empty string if none was set.
      */
-    getEmail(): string | null
+    getEmail(): string
     /**
      * Gets the index of the e-mail address of the contact that
      * `dest` is pointing to, if any.
@@ -1544,7 +1544,7 @@ interface Destination {
      * @param includeEmail whether to include the e-mail address
      * @returns A textual representation of the destination.
      */
-    getTextrep(includeEmail: boolean): string | null
+    getTextrep(includeEmail: boolean): string
     /**
      * Checks if `dest` is flagged as an automatic recipient, meaning
      * it was not explicitly specified by the user. This can be used
@@ -1608,12 +1608,12 @@ interface Destination {
      * @param uid a unique contact ID
      * @param emailNum an email index
      */
-    setContactUid(uid: string | null, emailNum: number): void
+    setContactUid(uid: string, emailNum: number): void
     /**
      * Sets the e-mail address of `dest'`s addressee.
      * @param email the destination's e-mail address
      */
-    setEmail(email: string | null): void
+    setEmail(email: string): void
     /**
      * Specifies whether `dest` wants to get mail formatted as HTML.
      * @param flag whether the destination wants HTML mail
@@ -1628,13 +1628,13 @@ interface Destination {
      * Sets the full name of `dest'`s addressee.
      * @param name the destination's full name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets `dest` to point to the name and e-mail address resulting from
      * parsing the supplied string. Useful for user input.
      * @param raw an unparsed string
      */
-    setRaw(raw: string | null): void
+    setRaw(raw: string): void
 
     // Own virtual methods of EBook-1.2.EBook.Destination
 
@@ -1708,14 +1708,14 @@ class Destination extends GObject.Object {
      * @param str an XML string
      * @returns An #EDestination, or %NULL if the document was not well-formed.
      */
-    static import(str: string | null): Destination | null
+    static import(str: string): Destination | null
     /**
      * Creates an array of pointers to #EDestination elements
      * from an XML document.
      * @param str an XML string
      * @returns A %NULL-terminated array of pointers to #EDestination elements.
      */
-    static importv(str: string | null): Destination[]
+    static importv(str: string): Destination[]
 }
 
 interface BookClientClass {
@@ -1774,7 +1774,7 @@ interface BookClientViewClass {
 
     // Own fields of EBook-1.2.EBook.BookClientViewClass
 
-    progress: (clientView: BookClientView, percent: number, message: string | null) => void
+    progress: (clientView: BookClientView, percent: number, message: string) => void
     complete: (clientView: BookClientView, error: GLib.Error) => void
 }
 

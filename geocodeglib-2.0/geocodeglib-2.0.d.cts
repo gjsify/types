@@ -863,7 +863,7 @@ export class Forward extends GObject.Object {
      * @param str a string containing a free-form description of the location
      * @returns a new #GeocodeForward. Use g_object_unref() when done.
      */
-    static new_for_string(str: string | null): Forward
+    static new_for_string(str: string): Forward
     _init(config?: Forward.ConstructorProperties): void
 }
 
@@ -988,7 +988,7 @@ export interface Location {
      * Gets the description of location `loc`.
      * @returns The description of location @loc.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Calculates the distance in km, along the curvature of the Earth,
      * between 2 locations. Note that altitude changes are not
@@ -1017,7 +1017,7 @@ export interface Location {
      * Sets the description of `loc` to `description`.
      * @param description a description for the location
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Initialize a #GeocodeLocation object with the given `uri`.
      * 
@@ -1034,7 +1034,7 @@ export interface Location {
      * @param uri a URI mapping out a location
      * @returns %TRUE on success and %FALSE on error.
      */
-    set_from_uri(uri: string | null): boolean
+    set_from_uri(uri: string): boolean
     /**
      * Creates a URI representing `loc` in the scheme specified in `scheme`.
      * @param scheme the scheme of the requested URI
@@ -1112,7 +1112,7 @@ export class Location extends GObject.Object {
      * @param description a description for the location
      * @returns a new #GeocodeLocation object. Use g_object_unref() when done.
      */
-    static new_with_description(latitude: number, longitude: number, accuracy: number, description: string | null): Location
+    static new_with_description(latitude: number, longitude: number, accuracy: number, description: string): Location
     _init(config?: Location.ConstructorProperties): void
 }
 
@@ -1349,8 +1349,8 @@ export interface Nominatim extends Backend {
 
     // Own virtual methods of GeocodeGlib-2.0.GeocodeGlib.Nominatim
 
-    vfunc_query(uri: string | null, cancellable: Gio.Cancellable | null): string | null
-    vfunc_query_async(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_query(uri: string, cancellable: Gio.Cancellable | null): string | null
+    vfunc_query_async(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_query_finish(res: Gio.AsyncResult): string | null
 
     // Class property signals of GeocodeGlib-2.0.GeocodeGlib.Nominatim
@@ -1394,7 +1394,7 @@ export class Nominatim extends GObject.Object {
      * @param maintainer_email_address the email address of the software maintainer.
      * @returns a new #GeocodeNominatim. Use g_object_unref() when done.
      */
-    constructor(base_url: string | null, maintainer_email_address: string | null) 
+    constructor(base_url: string, maintainer_email_address: string) 
     /**
      * Creates a new backend implementation for an online Nominatim server. See
      * the documentation for #GeocodeNominatim:base-url and
@@ -1404,7 +1404,7 @@ export class Nominatim extends GObject.Object {
      * @param maintainer_email_address the email address of the software maintainer.
      * @returns a new #GeocodeNominatim. Use g_object_unref() when done.
      */
-    static new(base_url: string | null, maintainer_email_address: string | null): Nominatim
+    static new(base_url: string, maintainer_email_address: string): Nominatim
     _init(config?: Nominatim.ConstructorProperties): void
     /**
      * Gets a reference to the default Nominatim server on nominatim.gnome.org.
@@ -1662,12 +1662,12 @@ export interface Place {
      * Gets the local administrative area of the `place`.
      * @returns The local administrative area of the @place.
      */
-    get_administrative_area(): string | null
+    get_administrative_area(): string
     /**
      * Gets the area of the `place`.
      * @returns The area of the @place.
      */
-    get_area(): string | null
+    get_area(): string
     /**
      * Gets the bounding box for the place `place`.
      * @returns A #GeocodeBoundingBox, or NULL if boundaries are unknown.
@@ -1677,27 +1677,27 @@ export interface Place {
      * Gets the building of the `place`.
      * @returns The building of the @place.
      */
-    get_building(): string | null
+    get_building(): string
     /**
      * Gets the continent of the `place`.
      * @returns The continent of the @place.
      */
-    get_continent(): string | null
+    get_continent(): string
     /**
      * Gets the country of the `place`.
      * @returns The country of the @place.
      */
-    get_country(): string | null
+    get_country(): string
     /**
      * Gets the ISO-3166 country code of the `place`.
      * @returns The ISO-3166 country code of the @place, in upper case.
      */
-    get_country_code(): string | null
+    get_country_code(): string
     /**
      * Gets the county of the `place`.
      * @returns The country of the @place.
      */
-    get_county(): string | null
+    get_county(): string
     /**
      * Gets the #GIcon representing the `place`.
      * @returns The #GIcon representing the @place.
@@ -1712,12 +1712,12 @@ export interface Place {
      * Gets the name of the `place`.
      * @returns The name of the @place.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the OpenStreetMap ID of the `place`.
      * @returns The osm ID of the @place.
      */
-    get_osm_id(): string | null
+    get_osm_id(): string
     /**
      * Gets the OpenStreetMap type of the `place`.
      * @returns The osm type of the @place.
@@ -1732,37 +1732,37 @@ export interface Place {
      * Gets the postal code of the `place`.
      * @returns The postal code of the @place.
      */
-    get_postal_code(): string | null
+    get_postal_code(): string
     /**
      * Gets the state of the `place`.
      * @returns The state of the @place.
      */
-    get_state(): string | null
+    get_state(): string
     /**
      * Gets the street of the `place`.
      * @returns The street of the @place.
      */
-    get_street(): string | null
+    get_street(): string
     /**
      * Gets the street address of the `place`.
      * @returns The street address of the @place.
      */
-    get_street_address(): string | null
+    get_street_address(): string
     /**
      * Gets the town of the `place`.
      * @returns The town of the @place.
      */
-    get_town(): string | null
+    get_town(): string
     /**
      * Sets the local administrative area of `place` to `admin_area`.
      * @param admin_area an administrative area for the place
      */
-    set_administrative_area(admin_area: string | null): void
+    set_administrative_area(admin_area: string): void
     /**
      * Sets the area of `place` to `area`.
      * @param area a area
      */
-    set_area(area: string | null): void
+    set_area(area: string): void
     /**
      * Sets the #GeocodeBoundingBox for the place `place`.
      * @param bbox A #GeocodeBoundingBox for the place
@@ -1772,27 +1772,27 @@ export interface Place {
      * Sets the building of `place` to `building`.
      * @param building a building
      */
-    set_building(building: string | null): void
+    set_building(building: string): void
     /**
      * Sets the continent of `place` to `continent`.
      * @param continent a continent for the place
      */
-    set_continent(continent: string | null): void
+    set_continent(continent: string): void
     /**
      * Sets the country of `place` to `country`.
      * @param country a country for the place
      */
-    set_country(country: string | null): void
+    set_country(country: string): void
     /**
      * Sets the ISO country code of `place` to `country_code`.
      * @param country_code an ISO country code for the place
      */
-    set_country_code(country_code: string | null): void
+    set_country_code(country_code: string): void
     /**
      * Sets the county of `place` to `county`.
      * @param county a county for the place
      */
-    set_county(county: string | null): void
+    set_county(county: string): void
     /**
      * Sets the location of `place` to `location`.
      * @param location A location
@@ -1802,32 +1802,32 @@ export interface Place {
      * Sets the name of the `place` to `name`.
      * @param name the name of place
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the postal code of `place` to `postal_code`.
      * @param postal_code a postal code for the place
      */
-    set_postal_code(postal_code: string | null): void
+    set_postal_code(postal_code: string): void
     /**
      * Sets the state of `place` to `state`.
      * @param state a state for the place
      */
-    set_state(state: string | null): void
+    set_state(state: string): void
     /**
      * Sets the street of `place` to `street`.
      * @param street a street
      */
-    set_street(street: string | null): void
+    set_street(street: string): void
     /**
      * Sets the street address of `place` to `street_address`.
      * @param street_address a street address for the place
      */
-    set_street_address(street_address: string | null): void
+    set_street_address(street_address: string): void
     /**
      * Sets the town of `place` to `town`.
      * @param town a town for the place
      */
-    set_town(town: string | null): void
+    set_town(town: string): void
 
     // Class property signals of GeocodeGlib-2.0.GeocodeGlib.Place
 
@@ -1915,7 +1915,7 @@ export class Place extends GObject.Object {
      * @param place_type the type of place
      * @returns a new #GeocodePlace object. Use g_object_unref() when done.
      */
-    constructor(name: string | null, place_type: PlaceType) 
+    constructor(name: string, place_type: PlaceType) 
     /**
      * Creates a new #GeocodePlace object.
      * @constructor 
@@ -1923,7 +1923,7 @@ export class Place extends GObject.Object {
      * @param place_type the type of place
      * @returns a new #GeocodePlace object. Use g_object_unref() when done.
      */
-    static new(name: string | null, place_type: PlaceType): Place
+    static new(name: string, place_type: PlaceType): Place
     /**
      * Creates a new #GeocodePlace object.
      * @constructor 
@@ -1932,7 +1932,7 @@ export class Place extends GObject.Object {
      * @param location the location info for the place
      * @returns a new #GeocodePlace object. Use g_object_unref() when done.
      */
-    static new_with_location(name: string | null, place_type: PlaceType, location: Location): Place
+    static new_with_location(name: string, place_type: PlaceType, location: Location): Place
     _init(config?: Place.ConstructorProperties): void
 }
 
@@ -2197,8 +2197,8 @@ export interface NominatimClass {
     // Own fields of GeocodeGlib-2.0.GeocodeGlib.NominatimClass
 
     parent_class: GObject.ObjectClass
-    query: (self: Nominatim, uri: string | null, cancellable: Gio.Cancellable | null) => string | null
-    query_async: (self: Nominatim, uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    query: (self: Nominatim, uri: string, cancellable: Gio.Cancellable | null) => string | null
+    query_async: (self: Nominatim, uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     query_finish: (self: Nominatim, res: Gio.AsyncResult) => string | null
 }
 

@@ -85,28 +85,28 @@ export enum ThumbnailSize {
  * Friendly name</ulink> for the Documents folder. It can be used as
  * the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
  */
-export const SKYDRIVE_FOLDER_MY_DOCUMENTS: string | null
+export const SKYDRIVE_FOLDER_MY_DOCUMENTS: string
 /**
  * <ulink
  * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
  * Friendly name</ulink> for the Pictures folder. It can be used as the
  * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
  */
-export const SKYDRIVE_FOLDER_MY_PHOTOS: string | null
+export const SKYDRIVE_FOLDER_MY_PHOTOS: string
 /**
  * <ulink
  * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
  * Friendly name</ulink> for the Public folder. It can be used as the
  * #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
  */
-export const SKYDRIVE_FOLDER_PUBLIC_DOCUMENTS: string | null
+export const SKYDRIVE_FOLDER_PUBLIC_DOCUMENTS: string
 /**
  * <ulink
  * url="http://msdn.microsoft.com/en-us/library/live/hh826545#friendly">
  * Friendly name</ulink> for the Skydrive top-level folder. It can be
  * used as the #ZpjSkydriveEntry:id and #ZpjSkydriveEntry:parent_id.
  */
-export const SKYDRIVE_FOLDER_SKYDRIVE: string | null
+export const SKYDRIVE_FOLDER_SKYDRIVE: string
 export function errorQuark(): GLib.Quark
 export module Authorizer {
 
@@ -250,8 +250,8 @@ export interface AuthorizationDomain {
 
     // Owm methods of Zpj-0.0.Zpj.AuthorizationDomain
 
-    getScope(): string | null
-    getServiceName(): string | null
+    getScope(): string
+    getServiceName(): string
 
     // Class property signals of Zpj-0.0.Zpj.AuthorizationDomain
 
@@ -370,7 +370,7 @@ export interface Skydrive {
     // Owm methods of Zpj-0.0.Zpj.Skydrive
 
     createFolder(folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean
-    createFolderFromName(name: string | null, parentId: string | null, cancellable: Gio.Cancellable | null): boolean
+    createFolderFromName(name: string, parentId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronously deletes the entry corresponding to `entry_id` from
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
@@ -379,7 +379,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns %TRUE if the #ZpjSkydriveEntry was deleted successfully.
      */
-    deleteEntryId(entryId: string | null, cancellable: Gio.Cancellable | null): boolean
+    deleteEntryId(entryId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronously downloads the file corresponding to `file_id` from
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
@@ -392,7 +392,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
      */
-    downloadFileIdToPath(fileId: string | null, path: string | null, cancellable: Gio.Cancellable | null): boolean
+    downloadFileIdToPath(fileId: string, path: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronously returns a stream for downloading the file
      * corresponding to `file_id` from
@@ -404,7 +404,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns A #GInputStream to read the file data from. Free the returned object with g_object_unref().
      */
-    downloadFileIdToStream(fileId: string | null, cancellable: Gio.Cancellable | null): Gio.InputStream
+    downloadFileIdToStream(fileId: string, cancellable: Gio.Cancellable | null): Gio.InputStream
     /**
      * Asynchronously returns a stream for downloading the file
      * corresponding to `file_id` from
@@ -419,7 +419,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
-    downloadFileIdToStreamAsync(fileId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    downloadFileIdToStreamAsync(fileId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_download_file_id_to_stream_async().
@@ -439,7 +439,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns %TRUE if the #ZpjSkydriveFile was downloaded successfully.
      */
-    downloadFileToPath(file: SkydriveFile, path: string | null, cancellable: Gio.Cancellable | null): boolean
+    downloadFileToPath(file: SkydriveFile, path: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronously returns a stream for downloading `file` from
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
@@ -494,7 +494,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns A list of the #ZpjSkydrive entries within the #ZpjSkydriveFolder, or %NULL on error. Free the returned list with g_list_free() after each element has been freed with g_object_unref().
      */
-    listFolderId(folderId: string | null, cancellable: Gio.Cancellable | null): SkydriveEntry[]
+    listFolderId(folderId: string, cancellable: Gio.Cancellable | null): SkydriveEntry[]
     /**
      * Asynchronously lists the contents of the folder corresponding to
      * `folder_id` from
@@ -509,7 +509,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
-    listFolderIdAsync(folderId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    listFolderIdAsync(folderId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_list_folder_id_async().
@@ -527,7 +527,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns A new #ZpjSkydriveEntry. Free the returned object with g_object_unref().
      */
-    queryInfoFromId(id: string | null, cancellable: Gio.Cancellable | null): SkydriveEntry
+    queryInfoFromId(id: string, cancellable: Gio.Cancellable | null): SkydriveEntry
     /**
      * Asynchronously reads the properties of the entry corresponding to
      * `id` from
@@ -542,7 +542,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @param callback A #GAsyncReadyCallback to call when the   request is satisfied.
      */
-    queryInfoFromIdAsync(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    queryInfoFromIdAsync(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous operation started with
      * zpj_skydrive_query_info_from_id_async().
@@ -573,7 +573,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns A #GInputStream to read the thumbnail data from. Free the returned object with g_object_unref().
      */
-    thumbnailFileIdToStream(fileId: string | null, size: ThumbnailSize, cancellable: Gio.Cancellable | null): Gio.InputStream
+    thumbnailFileIdToStream(fileId: string, size: ThumbnailSize, cancellable: Gio.Cancellable | null): Gio.InputStream
     /**
      * Synchronously uploads the file at `path` to
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
@@ -583,7 +583,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns %TRUE if the file was uploaded successfully.
      */
-    uploadPathToFolder(path: string | null, folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean
+    uploadPathToFolder(path: string, folder: SkydriveFolder, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronously uploads the file at `path` to
      * <ulink url="http://msdn.microsoft.com/en-us/library/live/hh826521">
@@ -594,7 +594,7 @@ export interface Skydrive {
      * @param cancellable An optional #GCancellable object, or   %NULL.
      * @returns %TRUE if the file was uploaded successfully.
      */
-    uploadPathToFolderId(path: string | null, folderId: string | null, cancellable: Gio.Cancellable | null): boolean
+    uploadPathToFolderId(path: string, folderId: string, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of Zpj-0.0.Zpj.Skydrive
 
@@ -696,7 +696,7 @@ export interface SkydriveEntry {
      * description</ulink> member in the JSON returned by the server.
      * @returns description of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the ID of the user who created or uploaded `self`. This is part
      * of the <ulink
@@ -704,7 +704,7 @@ export interface SkydriveEntry {
      * from</ulink> object in the JSON returned by the server.
      * @returns ID of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
      */
-    getFromId(): string | null
+    getFromId(): string
     /**
      * Gets the name of the user who created or uploaded `self`. This is
      * part of the <ulink
@@ -712,21 +712,21 @@ export interface SkydriveEntry {
      * from</ulink> object in the JSON returned by the server.
      * @returns name of the user who created the entry. This string is by the #ZpjSkydriveEntry and should not be modified or freed.
      */
-    getFromName(): string | null
+    getFromName(): string
     /**
      * Gets the ID of `self`. This is the value of the <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
      * id</ulink> member in the JSON returned by the server.
      * @returns the entry's ID. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the name of `self`. This is the value of the <ulink
      * url="http://msdn.microsoft.com/en-us/library/live/hh243648">
      * name</ulink> member in the JSON returned by the server.
      * @returns name of the entry. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the ID of the folder containing `self`. This is the value of
      * the <ulink
@@ -734,7 +734,7 @@ export interface SkydriveEntry {
      * parent_id</ulink> member in the JSON returned by the server.
      * @returns ID of the parent folder. This string is owned by the #ZpjSkydriveEntry and should not be modified or freed.
      */
-    getParentId(): string | null
+    getParentId(): string
     /**
      * Gets the time at which `self` was last updated. This is the value of
      * the <ulink

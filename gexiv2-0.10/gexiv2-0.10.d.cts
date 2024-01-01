@@ -196,7 +196,7 @@ export function log_use_glib_logging(): void
  * @param msg The log message
  */
 export interface LogHandler {
-    (level: LogLevel, msg: string | null): void
+    (level: LogLevel, msg: string): void
 }
 export module Metadata {
 
@@ -239,7 +239,7 @@ export interface Metadata {
      * @param tag Exiv2 tag
      * @returns TRUE if the tag was present.
      */
-    clear_tag(tag: string | null): boolean
+    clear_tag(tag: string): boolean
     /**
      * Clears all XMP metadata from the loaded image.
      */
@@ -306,7 +306,7 @@ export interface Metadata {
      * @param tag The tag you want the rational value for
      * @returns Boolean success value
      */
-    get_exif_tag_rational(tag: string | null): [ /* returnType */ boolean, /* nom */ number, /* den */ number ]
+    get_exif_tag_rational(tag: string): [ /* returnType */ boolean, /* nom */ number, /* den */ number ]
     /**
      * Query `self` for a list of available EXIF tags
      * @returns A unique list of the available EXIF tags in the loaded image
@@ -384,7 +384,7 @@ export interface Metadata {
      * Query mime type of currently loaded image.
      * @returns The MIME type of the loaded image, %NULL if not loaded or unknown.
      */
-    get_mime_type(): string | null
+    get_mime_type(): string
     /**
      * The EXIF Orientation field
      * @returns A #GExiv2Orientation value representing the EXIF orientation value.
@@ -437,13 +437,13 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The tag's interpreted value as a string
      */
-    get_tag_interpreted_string(tag: string | null): string | null
+    get_tag_interpreted_string(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag Exiv2 tag name
      * @returns The tag's value as a glong
      */
-    get_tag_long(tag: string | null): number
+    get_tag_long(tag: string): number
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -453,7 +453,7 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The multiple string values of the tag.  Returns %NULL if parameters are %NULL or @tag does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed @tag, returns array[0] = %NULL if @tag is undefined or is not set in the current metadata. (Note: <ulink url="https://gitlab.gnome.org/GNOME/gexiv2/-/issues/61">xmpText/langAlt bug</ulink>  is fixed in gexiv2_metadata_try_get_tag_multiple())
      */
-    get_tag_multiple(tag: string | null): string[] | null
+    get_tag_multiple(tag: string): string[] | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -462,7 +462,7 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The tag's raw value as a byte array
      */
-    get_tag_raw(tag: string | null): GLib.Bytes | null
+    get_tag_raw(tag: string): GLib.Bytes | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -474,7 +474,7 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The tag's value as a string
      */
-    get_tag_string(tag: string | null): string | null
+    get_tag_string(tag: string): string | null
     get_xmp_packet(): string | null
     get_xmp_tags(): string[]
     has_exif(): boolean
@@ -484,7 +484,7 @@ export interface Metadata {
      * @param tag Exiv2 tag
      * @returns TRUE if the tag is present.
      */
-    has_tag(tag: string | null): boolean
+    has_tag(tag: string): boolean
     has_xmp(): boolean
     /**
      * The buffer must be an image format supported by Exiv2.
@@ -497,26 +497,26 @@ export interface Metadata {
      * @param path Path to the file you want to open
      * @returns Boolean success indicator
      */
-    open_path(path: string | null): boolean
+    open_path(path: string): boolean
     /**
      * Saves the metadata to the specified using an XMP sidecar file.
      * @param path Path to the file you want to save to.
      * @returns Boolean success indicator.
      */
-    save_external(path: string | null): boolean
+    save_external(path: string): boolean
     /**
      * Saves the metadata to the specified file by reading the file into memory,copying this object's
      * metadata into the image, then writing the image back out.
      * @param path Path to the file you want to save to.
      * @returns Boolean success indicator.
      */
-    save_file(path: string | null): boolean
+    save_file(path: string): boolean
     /**
      * This is a composite setter that will set a number of fields to the supplied value.  See
      * #gexiv2_metadata_get_comment for more information.
      * @param comment Comment string to set. Must not be %NULL
      */
-    set_comment(comment: string | null): void
+    set_comment(comment: string): void
     /**
      * Set EXIF `tag` represented by a fraction, with `nom` being the numerator,
      * `den` the denominator of the fraction.
@@ -525,14 +525,14 @@ export interface Metadata {
      * @param den Rational denominator
      * @returns Boolean success value
      */
-    set_exif_tag_rational(tag: string | null, nom: number, den: number): boolean
+    set_exif_tag_rational(tag: string, nom: number, den: number): boolean
     set_exif_thumbnail_from_buffer(buffer: Uint8Array): void
     /**
      * Sets or replaces the EXIF thumbnail with the image in the file
      * @param path Path of image file
      * @returns Boolean success value
      */
-    set_exif_thumbnail_from_file(path: string | null): boolean
+    set_exif_thumbnail_from_file(path: string): boolean
     /**
      * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
      * GPS information that is currently set. See gexiv2_metadata_update_gps_info() for
@@ -564,7 +564,7 @@ export interface Metadata {
      * @param value The value to set or replace the existing value
      * @returns TRUE on success
      */
-    set_tag_long(tag: string | null, value: number): boolean
+    set_tag_long(tag: string, value: number): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -579,7 +579,7 @@ export interface Metadata {
      * @param values An array of values to set or replace the existing value(s)
      * @returns Boolean success value
      */
-    set_tag_multiple(tag: string | null, values: string[]): boolean
+    set_tag_multiple(tag: string, values: string[]): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -593,14 +593,14 @@ export interface Metadata {
      * @param value The value to set or replace the existing value
      * @returns TRUE on success
      */
-    set_tag_string(tag: string | null, value: string | null): boolean
+    set_tag_string(tag: string, value: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag Exiv2 tag name
      * @param type The GExiv2StructureType specifying the type of structure
      * @returns TRUE on success
      */
-    set_xmp_tag_struct(tag: string | null, type: StructureType): boolean
+    set_xmp_tag_struct(tag: string, type: StructureType): boolean
     /**
      * Removes the Exiv2 tag from the metadata object.
      * 
@@ -608,7 +608,7 @@ export interface Metadata {
      * @param tag Exiv2 tag
      * @returns TRUE if the tag was present.
      */
-    try_clear_tag(tag: string | null): boolean
+    try_clear_tag(tag: string): boolean
     /**
      * Removes all GPS metadata from the loaded image
      */
@@ -655,7 +655,7 @@ export interface Metadata {
      * @param tag The tag you want the rational value for
      * @returns Boolean success value
      */
-    try_get_exif_tag_rational(tag: string | null): [ /* returnType */ boolean, /* nom */ number, /* den */ number ]
+    try_get_exif_tag_rational(tag: string): [ /* returnType */ boolean, /* nom */ number, /* den */ number ]
     /**
      * Returns the exposure time in seconds (shutter speed, <emphasis>not</emphasis> date-time of exposure) as a
      * rational.  See <ulink url="https://en.wikipedia.org/wiki/Shutter_speed"></ulink> for more information.
@@ -730,19 +730,19 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The tag's interpreted value as a string
      */
-    try_get_tag_interpreted_string(tag: string | null): string | null
+    try_get_tag_interpreted_string(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag Exiv2 tag name
      * @returns The tag's value as a glong
      */
-    try_get_tag_long(tag: string | null): number
+    try_get_tag_long(tag: string): number
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag Exiv2 tag name
      * @returns The multiple string values of @tag.  Returns %NULL if parameters are %NULL or @tag does not begin with recognised type of metadata ("Exif.", "Xmp." or "Iptc.").  For a well formed @tag, returns array[0] = %NULL if @tag is undefined or is not set in the current metadata.
      */
-    try_get_tag_multiple(tag: string | null): string[] | null
+    try_get_tag_multiple(tag: string): string[] | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -751,7 +751,7 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The tag's raw value as a byte array
      */
-    try_get_tag_raw(tag: string | null): GLib.Bytes | null
+    try_get_tag_raw(tag: string): GLib.Bytes | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -759,20 +759,20 @@ export interface Metadata {
      * @param tag Exiv2 tag name
      * @returns The tag's value as a string
      */
-    try_get_tag_string(tag: string | null): string | null
+    try_get_tag_string(tag: string): string | null
     try_get_xmp_packet(): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag Exiv2 tag
      * @returns TRUE if the tag is present.
      */
-    try_has_tag(tag: string | null): boolean
+    try_has_tag(tag: string): boolean
     /**
      * This is a composite setter that will set a number of fields to the supplied value.  See
      * #gexiv2_metadata_get_comment for more information.
      * @param comment Comment string to set. Must not be %NULL
      */
-    try_set_comment(comment: string | null): void
+    try_set_comment(comment: string): void
     /**
      * Set EXIF `tag` represented by a fraction, with `nom` being the numerator,
      * `den` the denominator of the fraction.
@@ -781,7 +781,7 @@ export interface Metadata {
      * @param den Rational denominator
      * @returns Boolean success value
      */
-    try_set_exif_tag_rational(tag: string | null, nom: number, den: number): boolean
+    try_set_exif_tag_rational(tag: string, nom: number, den: number): boolean
     try_set_exif_thumbnail_from_buffer(buffer: Uint8Array): void
     /**
      * Convenience function to create a new set of simple GPS data. Warning: Will remove any other
@@ -814,7 +814,7 @@ export interface Metadata {
      * @param value The value to set or replace the existing value
      * @returns TRUE on success
      */
-    try_set_tag_long(tag: string | null, value: number): boolean
+    try_set_tag_long(tag: string, value: number): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * 
@@ -825,7 +825,7 @@ export interface Metadata {
      * @param values An array of values to set or replace the existing value(s)
      * @returns Boolean success value
      */
-    try_set_tag_multiple(tag: string | null, values: string[]): boolean
+    try_set_tag_multiple(tag: string, values: string[]): boolean
     /**
      * If a tag supports multiple values, then `value` is added to any existing values. For single
      * tags, `value` replaces the value.
@@ -835,14 +835,14 @@ export interface Metadata {
      * @param value The value to set or replace the existing value
      * @returns TRUE on success
      */
-    try_set_tag_string(tag: string | null, value: string | null): boolean
+    try_set_tag_string(tag: string, value: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag Exiv2 tag name
      * @param type The GExiv2StructureType specifying the type of structure
      * @returns TRUE on success
      */
-    try_set_xmp_tag_struct(tag: string | null, type: StructureType): boolean
+    try_set_xmp_tag_struct(tag: string, type: StructureType): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="https://www.exiv2.org/metadata.html"></ulink>
      * 
@@ -852,7 +852,7 @@ export interface Metadata {
      * @param tag An Exiv2 tag
      * @returns Whether @tag is capable of storing multiple values or not. If @tag is undefined (i.e. not built-in and not added to @self), then @error is set and %FALSE is returned.
      */
-    try_tag_supports_multiple_values(tag: string | null): boolean
+    try_tag_supports_multiple_values(tag: string): boolean
     /**
      * Convenience function to update longitude, latitude and altitude at once.
      * @param longitude Longitude value to set or replace current value
@@ -912,13 +912,13 @@ export class Metadata extends GObject.Object {
      * @param tag An Exiv2 tag
      * @returns The tag's description
      */
-    static get_tag_description(tag: string | null): string | null
+    static get_tag_description(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag An Exiv2 tag
      * @returns The tag's label
      */
-    static get_tag_label(tag: string | null): string | null
+    static get_tag_label(tag: string): string | null
     /**
      * The names of the various Exiv2 tag types can be found at Exiv2::TypeId,
      * <ulink url="http://exiv2.org/doc/namespaceExiv2.html#a5153319711f35fe81cbc13f4b852450c"></ulink>
@@ -927,39 +927,39 @@ export class Metadata extends GObject.Object {
      * @param tag An Exiv2 tag
      * @returns The tag's type name.
      */
-    static get_tag_type(tag: string | null): string | null
-    static get_xmp_namespace_for_tag(tag: string | null): string | null
+    static get_tag_type(tag: string): string | null
+    static get_xmp_namespace_for_tag(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag An Exiv2 tag
      * @returns TRUE if the Exiv2 tag is for the EXIF domain.
      */
-    static is_exif_tag(tag: string | null): boolean
+    static is_exif_tag(tag: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag An Exiv2 tag
      * @returns TRUE if the Exiv2 tag is for the IPTC domain.
      */
-    static is_iptc_tag(tag: string | null): boolean
+    static is_iptc_tag(tag: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag An Exiv2 tag
      * @returns TRUE if the Exiv2 tag is for the XMP domain.
      */
-    static is_xmp_tag(tag: string | null): boolean
-    static register_xmp_namespace(name: string | null, prefix: string | null): boolean
+    static is_xmp_tag(tag: string): boolean
+    static register_xmp_namespace(name: string, prefix: string): boolean
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag An Exiv2 tag
      * @returns The tag's description
      */
-    static try_get_tag_description(tag: string | null): string | null
+    static try_get_tag_description(tag: string): string | null
     /**
      * The Exiv2 Tag Reference can be found at <ulink url="http://exiv2.org/metadata.html"></ulink>
      * @param tag An Exiv2 tag
      * @returns The tag's label
      */
-    static try_get_tag_label(tag: string | null): string | null
+    static try_get_tag_label(tag: string): string | null
     /**
      * The names of the various Exiv2 tag types can be found at Exiv2::TypeId,
      * <ulink url="http://exiv2.org/doc/namespaceExiv2.html#a5153319711f35fe81cbc13f4b852450c"></ulink>
@@ -968,13 +968,13 @@ export class Metadata extends GObject.Object {
      * @param tag An Exiv2 tag
      * @returns The tag's type name.
      */
-    static try_get_tag_type(tag: string | null): string | null
-    static try_get_xmp_namespace_for_tag(tag: string | null): string | null
-    static try_register_xmp_namespace(name: string | null, prefix: string | null): boolean
+    static try_get_tag_type(tag: string): string | null
+    static try_get_xmp_namespace_for_tag(tag: string): string | null
+    static try_register_xmp_namespace(name: string, prefix: string): boolean
     static try_unregister_all_xmp_namespaces(): void
-    static try_unregister_xmp_namespace(name: string | null): boolean
+    static try_unregister_xmp_namespace(name: string): boolean
     static unregister_all_xmp_namespaces(): void
-    static unregister_xmp_namespace(name: string | null): boolean
+    static unregister_xmp_namespace(name: string): boolean
 }
 
 export module PreviewImage {
@@ -1007,13 +1007,13 @@ export interface PreviewImage {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    get_extension(): string | null
+    get_data(key: string): any | null
+    get_extension(): string
     get_height(): number
-    get_mime_type(): string | null
+    get_mime_type(): string
     get_width(): number
-    try_write_file(path: string | null): number
-    write_file(path: string | null): number
+    try_write_file(path: string): number
+    write_file(path: string): number
 
     // Class property signals of GExiv2-0.10.GExiv2.PreviewImage
 
@@ -1053,9 +1053,9 @@ export interface PreviewProperties {
 
     // Owm methods of GExiv2-0.10.GExiv2.PreviewProperties
 
-    get_extension(): string | null
+    get_extension(): string
     get_height(): number
-    get_mime_type(): string | null
+    get_mime_type(): string
     get_size(): number
     get_width(): number
 

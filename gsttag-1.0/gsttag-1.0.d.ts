@@ -208,11 +208,11 @@ enum TagLicenseFlags {
 /**
  * AcoustID Fingerprint (Chromaprint)
  */
-const TAG_ACOUSTID_FINGERPRINT: string | null
+const TAG_ACOUSTID_FINGERPRINT: string
 /**
  * AcoustID Identifier
  */
-const TAG_ACOUSTID_ID: string | null
+const TAG_ACOUSTID_ID: string
 /**
  * Direction of contrast processing applied when capturing an image. (string)
  * 
@@ -221,15 +221,15 @@ const TAG_ACOUSTID_ID: string | null
  *  "soft"
  *  "hard"
  */
-const TAG_CAPTURING_CONTRAST: string | null
+const TAG_CAPTURING_CONTRAST: string
 /**
  * Digital zoom ratio used when capturing an image. (double)
  */
-const TAG_CAPTURING_DIGITAL_ZOOM_RATIO: string | null
+const TAG_CAPTURING_DIGITAL_ZOOM_RATIO: string
 /**
  * Exposure compensation using when capturing an image in EV. (double)
  */
-const TAG_CAPTURING_EXPOSURE_COMPENSATION: string | null
+const TAG_CAPTURING_EXPOSURE_COMPENSATION: string
 /**
  * Exposure mode used when capturing an image. (string)
  * 
@@ -238,7 +238,7 @@ const TAG_CAPTURING_EXPOSURE_COMPENSATION: string | null
  *   "manual-exposure"
  *   "auto-bracket"
  */
-const TAG_CAPTURING_EXPOSURE_MODE: string | null
+const TAG_CAPTURING_EXPOSURE_MODE: string
 /**
  * Type of exposure control used when capturing an image. (string)
  * 
@@ -253,14 +253,14 @@ const TAG_CAPTURING_EXPOSURE_MODE: string | null
  *   "portrait" - closeup, leaving background out of focus
  *   "landscape" - landscape photos, background in focus
  */
-const TAG_CAPTURING_EXPOSURE_PROGRAM: string | null
+const TAG_CAPTURING_EXPOSURE_PROGRAM: string
 /**
  * If flash was fired during the capture of an image. (boolean)
  * 
  * Note that if this tag isn't present, it should not be assumed that
  * the flash did not fire. It should be treated as unknown.
  */
-const TAG_CAPTURING_FLASH_FIRED: string | null
+const TAG_CAPTURING_FLASH_FIRED: string
 /**
  * The flash mode selected during the capture of an image. (string)
  * 
@@ -269,22 +269,22 @@ const TAG_CAPTURING_FLASH_FIRED: string | null
  *  "always"
  *  "never"
  */
-const TAG_CAPTURING_FLASH_MODE: string | null
+const TAG_CAPTURING_FLASH_MODE: string
 /**
  * Focal length used when capturing an image, in mm. (double)
  */
-const TAG_CAPTURING_FOCAL_LENGTH: string | null
+const TAG_CAPTURING_FOCAL_LENGTH: string
 /**
  * 35 mm equivalent focal length used when capturing an image, in mm. (double)
  */
-const TAG_CAPTURING_FOCAL_LENGTH_35_MM: string | null
+const TAG_CAPTURING_FOCAL_LENGTH_35_MM: string
 /**
  * Focal ratio (f-number) used when capturing an image. (double)
  * 
  * The value stored is the denominator of the focal ratio (f-number).
  * For example, if this tag value is 2, the focal ratio is f/2.
  */
-const TAG_CAPTURING_FOCAL_RATIO: string | null
+const TAG_CAPTURING_FOCAL_RATIO: string
 /**
  * Gain adjustment applied to an image. (string)
  * 
@@ -295,11 +295,11 @@ const TAG_CAPTURING_FOCAL_RATIO: string | null
  *   "low-gain-down"
  *   "high-gain-down"
  */
-const TAG_CAPTURING_GAIN_ADJUSTMENT: string | null
+const TAG_CAPTURING_GAIN_ADJUSTMENT: string
 /**
  * ISO speed used when capturing an image. (integer)
  */
-const TAG_CAPTURING_ISO_SPEED: string | null
+const TAG_CAPTURING_ISO_SPEED: string
 /**
  * Defines the way a camera determines the exposure. (string)
  * 
@@ -313,7 +313,7 @@ const TAG_CAPTURING_ISO_SPEED: string | null
  *   "partial"
  *   "other"
  */
-const TAG_CAPTURING_METERING_MODE: string | null
+const TAG_CAPTURING_METERING_MODE: string
 /**
  * Direction of saturation processing applied when capturing an image. (string)
  * 
@@ -322,7 +322,7 @@ const TAG_CAPTURING_METERING_MODE: string | null
  *  "low-saturation"
  *  "high-saturation"
  */
-const TAG_CAPTURING_SATURATION: string | null
+const TAG_CAPTURING_SATURATION: string
 /**
  * Scene mode used when capturing an image. (string)
  * 
@@ -332,7 +332,7 @@ const TAG_CAPTURING_SATURATION: string | null
  *   "portrait"
  *   "night-scene"
  */
-const TAG_CAPTURING_SCENE_CAPTURE_TYPE: string | null
+const TAG_CAPTURING_SCENE_CAPTURE_TYPE: string
 /**
  * Direction of sharpness processing applied when capturing an image. (string)
  * 
@@ -341,11 +341,11 @@ const TAG_CAPTURING_SCENE_CAPTURE_TYPE: string | null
  *  "soft"
  *  "hard"
  */
-const TAG_CAPTURING_SHARPNESS: string | null
+const TAG_CAPTURING_SHARPNESS: string
 /**
  * Shutter speed used when capturing an image, in seconds. (fraction)
  */
-const TAG_CAPTURING_SHUTTER_SPEED: string | null
+const TAG_CAPTURING_SHUTTER_SPEED: string
 /**
  * Indicates the source of capture. The device/medium used to do the
  * capture. (string)
@@ -356,7 +356,7 @@ const TAG_CAPTURING_SHUTTER_SPEED: string | null
  *   "reflex-scanner"
  *   "other"
  */
-const TAG_CAPTURING_SOURCE: string | null
+const TAG_CAPTURING_SOURCE: string
 /**
  * White balance mode used when capturing an image. (string)
  * 
@@ -370,35 +370,35 @@ const TAG_CAPTURING_SOURCE: string | null
  *   "fluorescent h" (newer daylight-calibrated fluorescents)
  *   "flash"
  */
-const TAG_CAPTURING_WHITE_BALANCE: string | null
+const TAG_CAPTURING_WHITE_BALANCE: string
 /**
  * CDDB disc id in its short form (e.g. 'aa063d0f')
  */
-const TAG_CDDA_CDDB_DISCID: string | null
+const TAG_CDDA_CDDB_DISCID: string
 /**
  * CDDB disc id including all details
  */
-const TAG_CDDA_CDDB_DISCID_FULL: string | null
+const TAG_CDDA_CDDB_DISCID_FULL: string
 /**
  * Musicbrainz disc id (e.g. 'ahg7JUcfR3vCYBphSDIogOOWrr0-')
  */
-const TAG_CDDA_MUSICBRAINZ_DISCID: string | null
+const TAG_CDDA_MUSICBRAINZ_DISCID: string
 /**
  * Musicbrainz disc id details
  */
-const TAG_CDDA_MUSICBRAINZ_DISCID_FULL: string | null
+const TAG_CDDA_MUSICBRAINZ_DISCID_FULL: string
 /**
  * Annodex CMML clip element tag
  */
-const TAG_CMML_CLIP: string | null
+const TAG_CMML_CLIP: string
 /**
  * Annodex CMML head element tag
  */
-const TAG_CMML_HEAD: string | null
+const TAG_CMML_HEAD: string
 /**
  * Annodex CMML stream element tag
  */
-const TAG_CMML_STREAM: string | null
+const TAG_CMML_STREAM: string
 /**
  * ID3V2 header size considered minimum input for some functions such as
  * gst_tag_list_from_id3v2_tag() and gst_tag_get_id3v2_tag_size() for example.
@@ -407,11 +407,11 @@ const TAG_ID3V2_HEADER_SIZE: number
 /**
  * Media (image/video) intended horizontal pixel density in ppi. (double)
  */
-const TAG_IMAGE_HORIZONTAL_PPI: string | null
+const TAG_IMAGE_HORIZONTAL_PPI: string
 /**
  * Media (image/video) intended vertical pixel density in ppi. (double)
  */
-const TAG_IMAGE_VERTICAL_PPI: string | null
+const TAG_IMAGE_VERTICAL_PPI: string
 /**
  * Musical key in which the sound starts. It is represented as a string
  * with a maximum length of three characters. The ground keys are
@@ -421,35 +421,35 @@ const TAG_IMAGE_VERTICAL_PPI: string | null
  * This notation might be extended in the future to support non-minor/major
  * keys.
  */
-const TAG_MUSICAL_KEY: string | null
+const TAG_MUSICAL_KEY: string
 /**
  * MusicBrainz album artist ID
  */
-const TAG_MUSICBRAINZ_ALBUMARTISTID: string | null
+const TAG_MUSICBRAINZ_ALBUMARTISTID: string
 /**
  * MusicBrainz album ID
  */
-const TAG_MUSICBRAINZ_ALBUMID: string | null
+const TAG_MUSICBRAINZ_ALBUMID: string
 /**
  * MusicBrainz artist ID
  */
-const TAG_MUSICBRAINZ_ARTISTID: string | null
+const TAG_MUSICBRAINZ_ARTISTID: string
 /**
  * MusicBrainz Release Group ID
  */
-const TAG_MUSICBRAINZ_RELEASEGROUPID: string | null
+const TAG_MUSICBRAINZ_RELEASEGROUPID: string
 /**
  * MusicBrainz Release Track ID
  */
-const TAG_MUSICBRAINZ_RELEASETRACKID: string | null
+const TAG_MUSICBRAINZ_RELEASETRACKID: string
 /**
  * MusicBrainz track ID
  */
-const TAG_MUSICBRAINZ_TRACKID: string | null
+const TAG_MUSICBRAINZ_TRACKID: string
 /**
  * MusicBrainz track TRM ID
  */
-const TAG_MUSICBRAINZ_TRMID: string | null
+const TAG_MUSICBRAINZ_TRMID: string
 /**
  * Check if a given string contains a known ISO 639 language code.
  * 
@@ -460,7 +460,7 @@ const TAG_MUSICBRAINZ_TRMID: string | null
  * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
  * @returns TRUE if the two- or three-letter language code in @lang_code     is a valid ISO-639 language code.
  */
-function tag_check_language_code(lang_code: string | null): boolean
+function tag_check_language_code(lang_code: string): boolean
 /**
  * Convenience function to read a string with unknown character encoding. If
  * the string is already in UTF-8 encoding, it will be returned right away.
@@ -480,7 +480,7 @@ function tag_freeform_string_to_utf8(data: number[], env_vars: string[]): string
  * @param id3_tag ID3v2 tag to convert to GStreamer tag
  * @returns The corresponding GStreamer tag or NULL if none exists.
  */
-function tag_from_id3_tag(id3_tag: string | null): string | null
+function tag_from_id3_tag(id3_tag: string): string | null
 /**
  * Looks up the GStreamer tag for an ID3v2 user tag (e.g. description in
  * TXXX frame or owner in UFID frame).
@@ -488,13 +488,13 @@ function tag_from_id3_tag(id3_tag: string | null): string | null
  * @param id3_user_tag ID3v2 user tag to convert to GStreamer tag
  * @returns The corresponding GStreamer tag or NULL if none exists.
  */
-function tag_from_id3_user_tag(type: string | null, id3_user_tag: string | null): string | null
+function tag_from_id3_user_tag(type: string, id3_user_tag: string): string | null
 /**
  * Looks up the GStreamer tag for a vorbiscomment tag.
  * @param vorbis_tag vorbiscomment tag to convert to GStreamer tag
  * @returns The corresponding GStreamer tag or NULL if none exists.
  */
-function tag_from_vorbis_tag(vorbis_tag: string | null): string | null
+function tag_from_vorbis_tag(vorbis_tag: string): string | null
 /**
  * Determines size of an ID3v2 tag on buffer containing at least ID3v2 header,
  * i.e. at least #GST_TAG_ID3V2_HEADER_SIZE (10) bytes;
@@ -511,7 +511,7 @@ function tag_get_id3v2_tag_size(buffer: Gst.Buffer): number
  * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
  * @returns two-letter ISO-639-1 language code string that maps to @lang_code,     or NULL if no mapping is known. The returned string must not be     modified or freed.
  */
-function tag_get_language_code_iso_639_1(lang_code: string | null): string | null
+function tag_get_language_code_iso_639_1(lang_code: string): string | null
 /**
  * Returns three-letter ISO-639-2 "bibliographic" language code given a
  * two-letter ISO-639-1 language code or a three-letter ISO-639-2 language
@@ -525,7 +525,7 @@ function tag_get_language_code_iso_639_1(lang_code: string | null): string | nul
  * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
  * @returns three-letter ISO-639-2 language code string that maps to @lang_code,     or NULL if no mapping is known. The returned string must not be     modified or freed.
  */
-function tag_get_language_code_iso_639_2B(lang_code: string | null): string | null
+function tag_get_language_code_iso_639_2B(lang_code: string): string | null
 /**
  * Returns three-letter ISO-639-2 "terminological" language code given a
  * two-letter ISO-639-1 language code or a three-letter ISO-639-2 language
@@ -539,7 +539,7 @@ function tag_get_language_code_iso_639_2B(lang_code: string | null): string | nu
  * @param lang_code ISO-639 language code (e.g. "deu" or "ger" or "de")
  * @returns three-letter ISO-639-2 language code string that maps to @lang_code,     or NULL if no mapping is known. The returned string must not be     modified or freed.
  */
-function tag_get_language_code_iso_639_2T(lang_code: string | null): string | null
+function tag_get_language_code_iso_639_2T(lang_code: string): string | null
 /**
  * Returns a list of known language codes (in form of two-letter ISO-639-1
  * codes). This is useful for UIs to build a list of available languages for
@@ -558,21 +558,21 @@ function tag_get_language_codes(): string[]
  * @param language_code two or three-letter ISO-639 language code
  * @returns language name in UTF-8 format, or NULL if @language_code could     not be mapped to a language name. The returned string must not be     modified and does not need to freed; it will stay valid until the     application is terminated.
  */
-function tag_get_language_name(language_code: string | null): string | null
+function tag_get_language_name(language_code: string): string | null
 /**
  * Get the description of a license, which is a translated description
  * of the license's main features.
  * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
  * @returns the description of the license, or NULL if the license is unknown    or a description is not available.
  */
-function tag_get_license_description(license_ref: string | null): string | null
+function tag_get_license_description(license_ref: string): string | null
 /**
  * Get the flags of a license, which describe most of the features of
  * a license in their most general form.
  * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
  * @returns the flags of the license, or 0 if the license is unknown
  */
-function tag_get_license_flags(license_ref: string | null): TagLicenseFlags
+function tag_get_license_flags(license_ref: string): TagLicenseFlags
 /**
  * Get the jurisdiction code of a license. This is usually a two-letter
  * ISO 3166-1 alpha-2 code, but there is also the special case of Scotland,
@@ -584,27 +584,27 @@ function tag_get_license_flags(license_ref: string | null): TagLicenseFlags
  * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
  * @returns the jurisdiction code of the license, or NULL if the license is    unknown or is not specific to a particular jurisdiction.
  */
-function tag_get_license_jurisdiction(license_ref: string | null): string | null
+function tag_get_license_jurisdiction(license_ref: string): string | null
 /**
  * Get the nick name of a license, which is a short (untranslated) string
  * such as e.g. "CC BY-NC-ND 2.0 UK".
  * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
  * @returns the nick name of the license, or NULL if the license is unknown
  */
-function tag_get_license_nick(license_ref: string | null): string | null
+function tag_get_license_nick(license_ref: string): string | null
 /**
  * Get the title of a license, which is a short translated description
  * of the license's features (generally not very pretty though).
  * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
  * @returns the title of the license, or NULL if the license is unknown or    no title is available.
  */
-function tag_get_license_title(license_ref: string | null): string | null
+function tag_get_license_title(license_ref: string): string | null
 /**
  * Get the version of a license.
  * @param license_ref a license reference string in form of a URI,     e.g. "http://creativecommons.org/licenses/by-nc-nd/2.0/"
  * @returns the version of the license, or NULL if the license is not known or    has no version
  */
-function tag_get_license_version(license_ref: string | null): string | null
+function tag_get_license_version(license_ref: string): string | null
 /**
  * Returns a list of known license references (in form of URIs). This is
  * useful for UIs to build a list of available licenses for tagging purposes
@@ -694,7 +694,7 @@ function tag_list_from_id3v2_tag(buffer: Gst.Buffer): Gst.TagList | null
  * @param id_data identification data at start of stream
  * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
  */
-function tag_list_from_vorbiscomment(data: Uint8Array, id_data: Uint8Array): [ /* returnType */ Gst.TagList | null, /* vendor_string */ string | null ]
+function tag_list_from_vorbiscomment(data: Uint8Array, id_data: Uint8Array): [ /* returnType */ Gst.TagList | null, /* vendor_string */ string ]
 /**
  * Creates a new tag list that contains the information parsed out of a
  * vorbiscomment packet.
@@ -702,7 +702,7 @@ function tag_list_from_vorbiscomment(data: Uint8Array, id_data: Uint8Array): [ /
  * @param id_data identification data at start of stream
  * @returns A new #GstTagList with all tags that could be extracted from the          given vorbiscomment buffer or NULL on error.
  */
-function tag_list_from_vorbiscomment_buffer(buffer: Gst.Buffer, id_data: Uint8Array): [ /* returnType */ Gst.TagList | null, /* vendor_string */ string | null ]
+function tag_list_from_vorbiscomment_buffer(buffer: Gst.Buffer, id_data: Uint8Array): [ /* returnType */ Gst.TagList | null, /* vendor_string */ string ]
 /**
  * Parse a xmp packet into a taglist.
  * @param buffer buffer
@@ -762,7 +762,7 @@ function tag_list_to_xmp_buffer(list: Gst.TagList, read_only: boolean, schemas: 
  * @param fail_if_no_key whether to fail if strings are not in key=value form
  * @returns TRUE if the string could be parsed, otherwise FALSE
  */
-function tag_parse_extended_comment(ext_comment: string | null, fail_if_no_key: boolean): [ /* returnType */ boolean, /* key */ string | null, /* lang */ string | null, /* value */ string | null ]
+function tag_parse_extended_comment(ext_comment: string, fail_if_no_key: boolean): [ /* returnType */ boolean, /* key */ string | null, /* lang */ string | null, /* value */ string | null ]
 /**
  * Registers additional musicbrainz-specific tags with the GStreamer tag
  * system. Plugins and applications that use these tags should call this
@@ -774,7 +774,7 @@ function tag_register_musicbrainz_tags(): void
  * @param gst_tag GStreamer tag to convert to vorbiscomment tag
  * @returns The corresponding ID3v2 tag or NULL if none exists.
  */
-function tag_to_id3_tag(gst_tag: string | null): string | null
+function tag_to_id3_tag(gst_tag: string): string | null
 /**
  * Creates a new tag list that contains the information parsed out of a
  * vorbiscomment packet.
@@ -782,13 +782,13 @@ function tag_to_id3_tag(gst_tag: string | null): string | null
  * @param tag a GStreamer tag identifier, such as #GST_TAG_ARTIST
  * @returns A #GList of newly-allocated     key=value strings. Free with g_list_foreach (list, (GFunc) g_free, NULL)     plus g_list_free (list)
  */
-function tag_to_vorbis_comments(list: Gst.TagList, tag: string | null): string[]
+function tag_to_vorbis_comments(list: Gst.TagList, tag: string): string[]
 /**
  * Looks up the vorbiscomment tag for a GStreamer tag.
  * @param gst_tag GStreamer tag to convert to vorbiscomment tag
  * @returns The corresponding vorbiscomment tag or NULL if none exists.
  */
-function tag_to_vorbis_tag(gst_tag: string | null): string | null
+function tag_to_vorbis_tag(gst_tag: string): string | null
 /**
  * Gets the list of supported schemas in the xmp lib
  * @returns a %NULL terminated array of strings with the     schema names
@@ -805,7 +805,7 @@ function tag_xmp_list_schemas(): string[]
  * @param tag a vorbiscomment tag string (key in key=value), must be valid UTF-8
  * @param value a vorbiscomment value string (value in key=value), must be valid UTF-8
  */
-function vorbis_tag_add(list: Gst.TagList, tag: string | null, value: string | null): void
+function vorbis_tag_add(list: Gst.TagList, tag: string, value: string): void
 module TagXmpWriter {
 
     // Constructor properties interface
@@ -832,13 +832,13 @@ interface TagXmpWriter extends Gst.Element {
      * Adds `schema` to the list schemas
      * @param schema the schema to be added
      */
-    add_schema(schema: string | null): void
+    add_schema(schema: string): void
     /**
      * Checks if `schema` is going to be used
      * @param schema the schema to test
      * @returns %TRUE if it is going to be used
      */
-    has_schema(schema: string | null): boolean
+    has_schema(schema: string): boolean
     /**
      * Removes all schemas from the list of schemas to use. Meaning that no
      * XMP will be generated.
@@ -849,7 +849,7 @@ interface TagXmpWriter extends Gst.Element {
      * the schema wasn't in the list
      * @param schema the schema to remove
      */
-    remove_schema(schema: string | null): void
+    remove_schema(schema: string): void
     tag_list_to_xmp_buffer(taglist: Gst.TagList, read_only: boolean): Gst.Buffer
 
     // Conflicting methods

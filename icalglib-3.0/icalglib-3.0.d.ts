@@ -740,13 +740,13 @@ function error_get_error_state(error: ErrorEnum): ErrorState
  * the current error.
  * @returns The string representation of the current error
  */
-function error_perror(): string | null
+function error_perror(): string
 /**
  * Restores the error to specified state.
  * @param error The error to be restored
  * @param es The error state to be restored
  */
-function error_restore(error: string | null, es: ErrorState): void
+function error_restore(error: string, es: ErrorState): void
 /**
  * Sets the errno.
  * @param x The error to be set
@@ -764,13 +764,13 @@ function error_stop_here(): void
  * @param e The #ICalErrorEnum to be translated
  * @returns The string representation of @e
  */
-function error_strerror(e: ErrorEnum): string | null
+function error_strerror(e: ErrorEnum): string
 /**
  * Suppresses the error.
  * @param error The error to be suppressed
  * @returns The error state suppressed
  */
-function error_supress(error: string | null): ErrorState
+function error_supress(error: string): ErrorState
 /**
  * Gets the setting of #ICalUnknowntokenhandling.
  * @returns The setting of #ICalUnknowntokenhandling
@@ -798,7 +798,7 @@ function memory_append_char(buf: number[], pos: number[], ch: number): [ /* buf 
  * @param pos The position at which the new string to be appended
  * @param str The string to be allocated
  */
-function memory_append_string(buf: number[], pos: number[], str: string | null): [ /* buf */ number[], /* pos */ number[] ]
+function memory_append_string(buf: number[], pos: number[], str: string): [ /* buf */ number[], /* pos */ number[] ]
 /**
  * Frees the buffer.
  * @param buf The buffer to be freed
@@ -823,7 +823,7 @@ function memory_resize_buffer(buf: any | null, size: number): any | null
  * @param s The string to be cloned
  * @returns The cloned string.
  */
-function memory_strdup(s: string | null): string | null
+function memory_strdup(s: string): string | null
 /**
  * Creates a buffer with target size.
  * @param size The size of the buffer to be created
@@ -835,7 +835,7 @@ function memory_tmp_buffer(size: number): any | null
  * @param str The string to be copied
  * @returns The new copy of the @str.
  */
-function memory_tmp_copy(str: string | null): string | null
+function memory_tmp_copy(str: string): string | null
 /**
  * Parses data to #ICalComponent using the given function.
  * @param func The parsing function
@@ -851,7 +851,7 @@ function mime_parse(func: MimeParseFunc): Component
  * @param count The number of elements to be filled up in the `array`
  * @returns If successful, return the array. NULL if failed.
  */
-function recur_expand_recurrence(rule: string | null, start: number, count: number): number[]
+function recur_expand_recurrence(rule: string, start: number, count: number): number[]
 /**
  * Returns the code for a request status.
  * @param stat The #ICalRequestStatus to be queried
@@ -863,7 +863,7 @@ function request_status_code(stat: RequestStatus): string | null
  * @param stat The #ICalRequestStatus to be translated
  * @returns The description of the @stat
  */
-function request_status_desc(stat: RequestStatus): string | null
+function request_status_desc(stat: RequestStatus): string
 /**
  * Returns a request status for major/minor status numbers.
  * @param major The major number
@@ -1008,7 +1008,7 @@ interface Attach {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Checks whether the #ICalAttach is built from url.
      * @returns Whether the @attach is built from url
@@ -1073,14 +1073,14 @@ class Attach extends Object {
      * @param free_fn The function used to free the data when the create #ICalAttach is destroyed
      * @returns The newly created #ICalAttach
      */
-    static new_from_data(data: string | null, free_fn: GLib.Func | null): Attach
+    static new_from_data(data: string, free_fn: GLib.Func | null): Attach
     /**
      * Creates a new #ICalAttach from the url.
      * @constructor 
      * @param url The url from which the object is created
      * @returns The newly created #ICalAttach from the @url
      */
-    static new_from_url(url: string | null): Attach
+    static new_from_url(url: string): Attach
     _init(config?: Attach.ConstructorProperties): void
 }
 
@@ -1240,7 +1240,7 @@ interface Component {
      * Gets the comment of the #ICalComponent.
      * @returns The comment of @comp.
      */
-    get_comment(): string | null
+    get_comment(): string
     /**
      * Gets the current #ICalComponent in #ICalComponent.
      * @returns The current #ICalComponent.
@@ -1255,7 +1255,7 @@ interface Component {
      * Gets the description of the #ICalComponent.
      * @returns The description of @comp.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the dtend of the #ICalComponent.
      * @returns A #ICalTime.
@@ -1307,7 +1307,7 @@ interface Component {
      * Gets the location of the #ICalComponent.
      * @returns The location of @comp.
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Gets the method of the #ICalComponent.
      * @returns A #ICalPropertyMethod.
@@ -1339,7 +1339,7 @@ interface Component {
      * Gets the relcalid of the #ICalComponent.
      * @returns The relcalid of @comp.
      */
-    get_relcalid(): string | null
+    get_relcalid(): string
     /**
      * Gets the sequence of the #ICalComponent.
      * @returns The sequence of @comp.
@@ -1359,18 +1359,18 @@ interface Component {
      * Gets the summary of the #ICalComponent.
      * @returns The summary of @comp.
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Returns the icaltimezone in the component corresponding to the TZID, or NULL if it can't be found.
      * @param tzid A string representing timezone
      * @returns A #ICalTimezone.
      */
-    get_timezone(tzid: string | null): Timezone | null
+    get_timezone(tzid: string): Timezone | null
     /**
      * Gets the uid of the #ICalComponent.
      * @returns The uid of @comp.
      */
-    get_uid(): string | null
+    get_uid(): string
     /**
      * Checks whether #ICalComponent is valid.
      * @returns 1 if yes, 0 if not.
@@ -1407,12 +1407,12 @@ interface Component {
      * Sets the comment of the #ICalComponent.
      * @param v A string representing comment
      */
-    set_comment(v: string | null): void
+    set_comment(v: string): void
     /**
      * Sets the description of the #ICalComponent.
      * @param v A string representing description
      */
-    set_description(v: string | null): void
+    set_description(v: string): void
     /**
      * Sets the dtend of the #ICalComponent.
      * @param v A #ICalTime
@@ -1442,7 +1442,7 @@ interface Component {
      * Sets the location of the #ICalComponent.
      * @param v A string representing location
      */
-    set_location(v: string | null): void
+    set_location(v: string): void
     /**
      * Sets the method of the #ICalComponent.
      * @param method A #ICalPropertyMethod
@@ -1462,7 +1462,7 @@ interface Component {
      * Sets the relcalid of the #ICalComponent.
      * @param v A string representing relcalid
      */
-    set_relcalid(v: string | null): void
+    set_relcalid(v: string): void
     /**
      * Sets the sequence of the #ICalComponent.
      * @param v The sequence number
@@ -1477,12 +1477,12 @@ interface Component {
      * Sets the summary of the #ICalComponent.
      * @param v A string representing summary
      */
-    set_summary(v: string | null): void
+    set_summary(v: string): void
     /**
      * Sets the uid of the #ICalComponent.
      * @param v A string representing uid
      */
-    set_uid(v: string | null): void
+    set_uid(v: string): void
     /**
      * Removes all X-LIC-ERROR properties.
      */
@@ -1545,7 +1545,7 @@ class Component extends Object {
      * @param str The string used to create #ICalComponent
      * @returns The newly created #ICalComponent based on @str.
      */
-    static new_from_string(str: string | null): Component
+    static new_from_string(str: string): Component
     /**
      * Creates a #ICalComponent with the type to be vagenda.
      * @constructor 
@@ -1624,7 +1624,7 @@ class Component extends Object {
      * @param x_name The name of x property
      * @returns The newly created #ICalComponent.
      */
-    static new_x(x_name: string | null): Component
+    static new_x(x_name: string): Component
     /**
      * Creates a #ICalComponent with the type to be xavailable.
      * @constructor 
@@ -1655,7 +1655,7 @@ class Component extends Object {
      * @param string A string
      * @returns A #ICalComponentKind
      */
-    static kind_from_string(string: string | null): ComponentKind
+    static kind_from_string(string: string): ComponentKind
     /**
      * Checks if a #ICalComponentKind is valid.
      * @param kind A #ICalComponentKind
@@ -1667,7 +1667,7 @@ class Component extends Object {
      * @param kind A #ICalComponentKind
      * @returns The string representation of @kind.
      */
-    static kind_to_string(kind: ComponentKind): string | null
+    static kind_to_string(kind: ComponentKind): string
 }
 
 module Datetimeperiod {
@@ -1906,7 +1906,7 @@ class Duration extends Object {
      * @param str The string representation of the duration
      * @returns The newly created #ICalDuration
      */
-    static new_from_string(str: string | null): Duration
+    static new_from_string(str: string): Duration
     /**
      * Creates a #ICalDuration with all the fields to be zero.
      * @constructor 
@@ -2325,42 +2325,42 @@ interface Parameter {
      */
     isa_parameter(): number
     set_actionparam(v: ParameterAction): void
-    set_altrep(v: string | null): void
-    set_charset(v: string | null): void
-    set_cn(v: string | null): void
+    set_altrep(v: string): void
+    set_charset(v: string): void
+    set_cn(v: string): void
     set_cutype(v: ParameterCutype): void
-    set_delegatedfrom(v: string | null): void
-    set_delegatedto(v: string | null): void
-    set_dir(v: string | null): void
+    set_delegatedfrom(v: string): void
+    set_delegatedto(v: string): void
+    set_dir(v: string): void
     set_display(value: ParameterDisplay): void
-    set_email(value: string | null): void
+    set_email(value: string): void
     set_enable(v: ParameterEnable): void
     set_encoding(v: ParameterEncoding): void
     set_fbtype(v: ParameterFbtype): void
     set_feature(value: ParameterFeature): void
-    set_filename(v: string | null): void
-    set_fmttype(v: string | null): void
-    set_iana(v: string | null): void
+    set_filename(v: string): void
+    set_fmttype(v: string): void
+    set_iana(v: string): void
     /**
      * Sets the iana_name property of the native part of the #ICalParameter.
      * @param v The name to be set into the `param`
      */
-    set_iana_name(v: string | null): void
+    set_iana_name(v: string): void
     /**
      * Sets the iana_value property of the native part of the #ICalParameter.
      * @param v The value to be set into the `param`
      */
-    set_iana_value(v: string | null): void
-    set_id(v: string | null): void
-    set_label(value: string | null): void
-    set_language(v: string | null): void
-    set_latency(v: string | null): void
+    set_iana_value(v: string): void
+    set_id(v: string): void
+    set_label(value: string): void
+    set_language(v: string): void
+    set_latency(v: string): void
     set_local(v: ParameterLocal): void
-    set_localize(v: string | null): void
-    set_managedid(v: string | null): void
-    set_member(v: string | null): void
-    set_modified(v: string | null): void
-    set_options(v: string | null): void
+    set_localize(v: string): void
+    set_managedid(v: string): void
+    set_member(v: string): void
+    set_modified(v: string): void
+    set_options(v: string): void
     /**
      * Sets the parent #ICalProperty of an #ICalParameter.
      * @param property The parent #ICalProperty
@@ -2368,9 +2368,9 @@ interface Parameter {
     set_parent(property: Property | null): void
     set_partstat(v: ParameterPartstat): void
     set_patchaction(value: ParameterPatchaction): void
-    set_publiccomment(v: string | null): void
+    set_publiccomment(v: string): void
     set_range(v: ParameterRange): void
-    set_reason(v: string | null): void
+    set_reason(v: string): void
     set_related(v: ParameterRelated): void
     set_reltype(v: ParameterReltype): void
     set_required(v: ParameterRequired): void
@@ -2379,26 +2379,26 @@ interface Parameter {
     set_rsvp(v: ParameterRsvp): void
     set_scheduleagent(v: ParameterScheduleagent): void
     set_scheduleforcesend(v: ParameterScheduleforcesend): void
-    set_schedulestatus(v: string | null): void
-    set_sentby(v: string | null): void
-    set_size(v: string | null): void
+    set_schedulestatus(v: string): void
+    set_sentby(v: string): void
+    set_size(v: string): void
     set_stayinformed(v: ParameterStayinformed): void
     set_substate(v: ParameterSubstate): void
-    set_tzid(v: string | null): void
+    set_tzid(v: string): void
     set_value(v: ParameterValue): void
-    set_x(v: string | null): void
+    set_x(v: string): void
     set_xliccomparetype(v: ParameterXliccomparetype): void
     set_xlicerrortype(v: ParameterXlicerrortype): void
     /**
      * Sets the xname property of the native part of the #ICalParameter.
      * @param v The name to be set into the `param`
      */
-    set_xname(v: string | null): void
+    set_xname(v: string): void
     /**
      * Sets the xvalue property of the native part of the #ICalParameter.
      * @param v The value to be set into the `param`
      */
-    set_xvalue(v: string | null): void
+    set_xvalue(v: string): void
 
     // Class property signals of ICalGLib-3.0.ICalGLib.Parameter
 
@@ -2458,15 +2458,15 @@ class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static new_actionparam(v: ParameterAction): Parameter
-    static new_altrep(v: string | null): Parameter
-    static new_charset(v: string | null): Parameter
-    static new_cn(v: string | null): Parameter
+    static new_altrep(v: string): Parameter
+    static new_charset(v: string): Parameter
+    static new_cn(v: string): Parameter
     static new_cutype(v: ParameterCutype): Parameter
-    static new_delegatedfrom(v: string | null): Parameter
-    static new_delegatedto(v: string | null): Parameter
-    static new_dir(v: string | null): Parameter
+    static new_delegatedfrom(v: string): Parameter
+    static new_delegatedto(v: string): Parameter
+    static new_dir(v: string): Parameter
     static new_display(value: ParameterDisplay): Parameter
-    static new_email(value: string | null): Parameter
+    static new_email(value: string): Parameter
     /**
      * Creates a new #ICalParameter according to the enable type.
      * @constructor 
@@ -2489,15 +2489,15 @@ class Parameter extends Object {
      */
     static new_fbtype(v: ParameterFbtype): Parameter
     static new_feature(value: ParameterFeature): Parameter
-    static new_filename(v: string | null): Parameter
-    static new_fmttype(v: string | null): Parameter
+    static new_filename(v: string): Parameter
+    static new_fmttype(v: string): Parameter
     /**
      * Creates a #ICalParameter from a string of form "PARAMNAME=VALUE".
      * @constructor 
      * @param value The string from which the #ICalParameter is created
      * @returns The newly created $ICalParameter with the properties specified in the @value.
      */
-    static new_from_string(value: string | null): Parameter
+    static new_from_string(value: string): Parameter
     /**
      * Creates a new #ICalParameter from just the value, the part after the "="
      * @constructor 
@@ -2505,12 +2505,12 @@ class Parameter extends Object {
      * @param value The string from which #ICalParameter to be created
      * @returns The newly created #ICalParameter
      */
-    static new_from_value_string(kind: ParameterKind, value: string | null): Parameter
-    static new_iana(v: string | null): Parameter
-    static new_id(v: string | null): Parameter
-    static new_label(value: string | null): Parameter
-    static new_language(v: string | null): Parameter
-    static new_latency(v: string | null): Parameter
+    static new_from_value_string(kind: ParameterKind, value: string): Parameter
+    static new_iana(v: string): Parameter
+    static new_id(v: string): Parameter
+    static new_label(value: string): Parameter
+    static new_language(v: string): Parameter
+    static new_latency(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the local type.
      * @constructor 
@@ -2518,11 +2518,11 @@ class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static new_local(v: ParameterLocal): Parameter
-    static new_localize(v: string | null): Parameter
-    static new_managedid(v: string | null): Parameter
-    static new_member(v: string | null): Parameter
-    static new_modified(v: string | null): Parameter
-    static new_options(v: string | null): Parameter
+    static new_localize(v: string): Parameter
+    static new_managedid(v: string): Parameter
+    static new_member(v: string): Parameter
+    static new_modified(v: string): Parameter
+    static new_options(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the partstat type.
      * @constructor 
@@ -2531,7 +2531,7 @@ class Parameter extends Object {
      */
     static new_partstat(v: ParameterPartstat): Parameter
     static new_patchaction(value: ParameterPatchaction): Parameter
-    static new_publiccomment(v: string | null): Parameter
+    static new_publiccomment(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the range type.
      * @constructor 
@@ -2539,7 +2539,7 @@ class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static new_range(v: ParameterRange): Parameter
-    static new_reason(v: string | null): Parameter
+    static new_reason(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the related type.
      * @constructor 
@@ -2596,9 +2596,9 @@ class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static new_scheduleforcesend(v: ParameterScheduleforcesend): Parameter
-    static new_schedulestatus(v: string | null): Parameter
-    static new_sentby(v: string | null): Parameter
-    static new_size(v: string | null): Parameter
+    static new_schedulestatus(v: string): Parameter
+    static new_sentby(v: string): Parameter
+    static new_size(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the stayinformed type.
      * @constructor 
@@ -2613,7 +2613,7 @@ class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static new_substate(v: ParameterSubstate): Parameter
-    static new_tzid(v: string | null): Parameter
+    static new_tzid(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the value type.
      * @constructor 
@@ -2621,7 +2621,7 @@ class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static new_value(v: ParameterValue): Parameter
-    static new_x(v: string | null): Parameter
+    static new_x(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the xliccomparetype type.
      * @constructor 
@@ -2642,7 +2642,7 @@ class Parameter extends Object {
      * @param string The string representation of the #ICalParameter
      * @returns The #ICalParameterKind converted from @string
      */
-    static kind_from_string(string: string | null): ParameterKind
+    static kind_from_string(string: string): ParameterKind
     /**
      * Checks whether #ICalParameterKind is valid.
      * @param kind The #ICalPropertyKind
@@ -2654,7 +2654,7 @@ class Parameter extends Object {
      * @param kind The #ICalParameterKind to be converted
      * @returns The string representation of @kind.
      */
-    static kind_to_string(kind: ParameterKind): string | null
+    static kind_to_string(kind: ParameterKind): string
     /**
      * Converts the #ICalParameterValue to #ICalValueKind.
      * @param value A #ICalParameterValue
@@ -2768,7 +2768,7 @@ class Parser extends Object {
      * @param str The string to be parsed
      * @returns The #ICalComponent parsed from str.
      */
-    static parse_string(str: string | null): Component
+    static parse_string(str: string): Component
 }
 
 module Period {
@@ -2873,7 +2873,7 @@ class Period extends Object {
      * @param str The string used to create the #ICalPeriod
      * @returns The newly created #ICalPeriod
      */
-    static new_from_string(str: string | null): Period
+    static new_from_string(str: string): Period
     /**
      * Creates a default #ICalPeriod.
      * @constructor 
@@ -2921,7 +2921,7 @@ interface Property {
      * Gets the acceptresponse of #ICalProperty.
      * @returns Get the acceptresponse of #ICalProperty.
      */
-    get_acceptresponse(): string | null
+    get_acceptresponse(): string
     /**
      * Gets the acknowledged time of #ICalProperty.
      * @returns Get the acknowledged time of #ICalProperty.
@@ -2936,7 +2936,7 @@ interface Property {
      * Gets the allowconflict of #ICalProperty.
      * @returns Get the allowconflict of #ICalProperty.
      */
-    get_allowconflict(): string | null
+    get_allowconflict(): string
     /**
      * Gets the attach of #ICalProperty.
      * @returns Get the attach of #ICalProperty.
@@ -2946,7 +2946,7 @@ interface Property {
      * Gets the attendee of #ICalProperty.
      * @returns Get the attendee of #ICalProperty.
      */
-    get_attendee(): string | null
+    get_attendee(): string
     /**
      * Gets the busytype of #ICalProperty.
      * @returns Get the busytype of #ICalProperty.
@@ -2956,27 +2956,27 @@ interface Property {
      * Gets the calid of #ICalProperty.
      * @returns Get the calid of #ICalProperty.
      */
-    get_calid(): string | null
+    get_calid(): string
     /**
      * Gets the calmaster of #ICalProperty.
      * @returns Get the calmaster of #ICalProperty.
      */
-    get_calmaster(): string | null
+    get_calmaster(): string
     /**
      * Gets the calscale of #ICalProperty.
      * @returns Get the calscale of #ICalProperty.
      */
-    get_calscale(): string | null
+    get_calscale(): string
     /**
      * Gets the capversion of #ICalProperty.
      * @returns Get the capversion of #ICalProperty.
      */
-    get_capversion(): string | null
+    get_capversion(): string
     /**
      * Gets the carid of #ICalProperty.
      * @returns Get the carid of #ICalProperty.
      */
-    get_carid(): string | null
+    get_carid(): string
     /**
      * Gets the carlevel of #ICalProperty.
      * @returns Get the carlevel of #ICalProperty.
@@ -2986,7 +2986,7 @@ interface Property {
      * Gets the categories of #ICalProperty.
      * @returns Get the categories of #ICalProperty.
      */
-    get_categories(): string | null
+    get_categories(): string
     /**
      * Gets the class of #ICalProperty.
      * @returns Get the class of #ICalProperty.
@@ -3001,12 +3001,12 @@ interface Property {
      * Gets the color property of the `prop`.
      * @returns Get the color property.
      */
-    get_color(): string | null
+    get_color(): string
     /**
      * Gets the comment of #ICalProperty.
      * @returns Get the comment of #ICalProperty.
      */
-    get_comment(): string | null
+    get_comment(): string
     /**
      * Gets the completed time of #ICalProperty.
      * @returns Get the completed time of #ICalProperty.
@@ -3016,12 +3016,12 @@ interface Property {
      * Gets the components of #ICalProperty.
      * @returns Get the components of #ICalProperty.
      */
-    get_components(): string | null
+    get_components(): string
     /**
      * Gets the contact of #ICalProperty.
      * @returns Get the contact of #ICalProperty.
      */
-    get_contact(): string | null
+    get_contact(): string
     /**
      * Gets the created time of #ICalProperty.
      * @returns Get the created time of #ICalProperty.
@@ -3031,7 +3031,7 @@ interface Property {
      * Gets the csid of #ICalProperty.
      * @returns Get the csid of #ICalProperty.
      */
-    get_csid(): string | null
+    get_csid(): string
     /**
      * Gets the datemax time of #ICalProperty.
      * @returns Get the datemax time of #ICalProperty.
@@ -3057,37 +3057,37 @@ interface Property {
      * Gets the decreed of #ICalProperty.
      * @returns Get the decreed of #ICalProperty.
      */
-    get_decreed(): string | null
+    get_decreed(): string
     /**
      * Gets the defaultcharset of #ICalProperty.
      * @returns Get the defaultcharset of #ICalProperty.
      */
-    get_defaultcharset(): string | null
+    get_defaultcharset(): string
     /**
      * Gets the defaultlocale of #ICalProperty.
      * @returns Get the defaultlocale of #ICalProperty.
      */
-    get_defaultlocale(): string | null
+    get_defaultlocale(): string
     /**
      * Gets the defaulttzid of #ICalProperty.
      * @returns Get the defaulttzid of #ICalProperty.
      */
-    get_defaulttzid(): string | null
+    get_defaulttzid(): string
     /**
      * Gets the defaultvcars of #ICalProperty.
      * @returns Get the defaultvcars of #ICalProperty.
      */
-    get_defaultvcars(): string | null
+    get_defaultvcars(): string
     /**
      * Gets the deny of #ICalProperty.
      * @returns Get the deny of #ICalProperty.
      */
-    get_deny(): string | null
+    get_deny(): string
     /**
      * Gets the description of #ICalProperty.
      * @returns Get the description of #ICalProperty.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the dtend time of #ICalProperty.
      * @returns Get the dtend time of #ICalProperty.
@@ -3153,12 +3153,12 @@ interface Property {
      * Gets the grant of #ICalProperty.
      * @returns Get the grant of #ICalProperty.
      */
-    get_grant(): string | null
+    get_grant(): string
     /**
      * Gets the itipversion of #ICalProperty.
      * @returns Get the itipversion of #ICalProperty.
      */
-    get_itipversion(): string | null
+    get_itipversion(): string
     /**
      * Gets the lastmodified time of #ICalProperty.
      * @returns Get the lastmodified time of #ICalProperty.
@@ -3168,7 +3168,7 @@ interface Property {
      * Gets the location of #ICalProperty.
      * @returns Get the location of #ICalProperty.
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Gets the maxcomponentsize of #ICalProperty.
      * @returns Get the maxcomponentsize of #ICalProperty.
@@ -3203,12 +3203,12 @@ interface Property {
      * Gets the multipart of #ICalProperty.
      * @returns Get the multipart of #ICalProperty.
      */
-    get_multipart(): string | null
+    get_multipart(): string
     /**
      * Gets the name of #ICalProperty.
      * @returns Get the name of #ICalProperty.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the next #ICalParameter from the parent #ICalProperty.
      * @param kind The target kind of #ICalParameter to be retrieved
@@ -3219,18 +3219,18 @@ interface Property {
      * Gets the organizer of #ICalProperty.
      * @returns Get the organizer of #ICalProperty.
      */
-    get_organizer(): string | null
+    get_organizer(): string
     /**
      * Gets the owner of #ICalProperty.
      * @returns Get the owner of #ICalProperty.
      */
-    get_owner(): string | null
+    get_owner(): string
     /**
      * Gets the string representation of the target parameter in the #ICalProperty.
      * @param name The name of the target parameter
      * @returns The string representation of the parameter.
      */
-    get_parameter_as_string(name: string | null): string | null
+    get_parameter_as_string(name: string): string | null
     /**
      * Gets the parent component of the property. Use with caution. When icalproperty is deallocated, it won't
      * deallocate its parent. However the #ICalComponent object created using this method will be deallocated
@@ -3248,7 +3248,7 @@ interface Property {
      * Gets the permission of #ICalProperty.
      * @returns Get the permission of #ICalProperty.
      */
-    get_permission(): string | null
+    get_permission(): string
     /**
      * Gets the pollcompletion of #ICalProperty.
      * @returns Get the pollcompletion of #ICalProperty.
@@ -3268,7 +3268,7 @@ interface Property {
      * Gets the pollproperties of #ICalProperty.
      * @returns Get the pollproperties of #ICalProperty.
      */
-    get_pollproperties(): string | null
+    get_pollproperties(): string
     /**
      * Gets the pollwinner of #ICalProperty.
      * @returns Get the pollwinner of #ICalProperty.
@@ -3283,7 +3283,7 @@ interface Property {
      * Gets the prodid of #ICalProperty.
      * @returns Get the prodid of #ICalProperty.
      */
-    get_prodid(): string | null
+    get_prodid(): string
     /**
      * Gets the property name of #ICalProperty.
      * @returns Property name of #ICalProperty.
@@ -3293,12 +3293,12 @@ interface Property {
      * Gets the query of #ICalProperty.
      * @returns Get the query of #ICalProperty.
      */
-    get_query(): string | null
+    get_query(): string
     /**
      * Gets the queryid of #ICalProperty.
      * @returns Get the queryid of #ICalProperty.
      */
-    get_queryid(): string | null
+    get_queryid(): string
     /**
      * Gets the querylevel of #ICalProperty.
      * @returns Get the querylevel of #ICalProperty.
@@ -3308,7 +3308,7 @@ interface Property {
      * Gets the queryname of #ICalProperty.
      * @returns Get the queryname of #ICalProperty.
      */
-    get_queryname(): string | null
+    get_queryname(): string
     /**
      * Gets the rdate  of #ICalProperty.
      * @returns Get the rdate  of #ICalProperty.
@@ -3318,17 +3318,17 @@ interface Property {
      * Gets the recuraccepted of #ICalProperty.
      * @returns Get the recuraccepted of #ICalProperty.
      */
-    get_recuraccepted(): string | null
+    get_recuraccepted(): string
     /**
      * Gets the recurexpand of #ICalProperty.
      * @returns Get the recurexpand of #ICalProperty.
      */
-    get_recurexpand(): string | null
+    get_recurexpand(): string
     /**
      * Gets the recurlimit of #ICalProperty.
      * @returns Get the recurlimit of #ICalProperty.
      */
-    get_recurlimit(): string | null
+    get_recurlimit(): string
     /**
      * Gets the recurrenceid time of #ICalProperty.
      * @returns Get the recurrenceid time of #ICalProperty.
@@ -3338,12 +3338,12 @@ interface Property {
      * Gets the relatedto of #ICalProperty.
      * @returns Get the relatedto of #ICalProperty.
      */
-    get_relatedto(): string | null
+    get_relatedto(): string
     /**
      * Gets the relcalid of #ICalProperty.
      * @returns Get the relcalid of #ICalProperty.
      */
-    get_relcalid(): string | null
+    get_relcalid(): string
     /**
      * Gets the repeat of #ICalProperty.
      * @returns Get the repeat of #ICalProperty.
@@ -3353,7 +3353,7 @@ interface Property {
      * Gets the replyurl of #ICalProperty.
      * @returns Get the replyurl of #ICalProperty.
      */
-    get_replyurl(): string | null
+    get_replyurl(): string
     /**
      * Gets the requeststatus of #ICalProperty.
      * @returns Get the requeststatus of #ICalProperty.
@@ -3363,7 +3363,7 @@ interface Property {
      * Gets the resources of #ICalProperty.
      * @returns Get the resources of #ICalProperty.
      */
-    get_resources(): string | null
+    get_resources(): string
     /**
      * Gets the response of #ICalProperty.
      * @returns Get the response of #ICalProperty.
@@ -3373,7 +3373,7 @@ interface Property {
      * Gets the restriction of #ICalProperty.
      * @returns Get the restriction of #ICalProperty.
      */
-    get_restriction(): string | null
+    get_restriction(): string
     /**
      * Gets the rrule recurrence type of #ICalProperty.
      * @returns Get the rrule recurrence type of #ICalProperty.
@@ -3383,7 +3383,7 @@ interface Property {
      * Gets the scope of #ICalProperty.
      * @returns Get the scope of #ICalProperty.
      */
-    get_scope(): string | null
+    get_scope(): string
     /**
      * Gets the sequence of #ICalProperty.
      * @returns Get the sequence of #ICalProperty.
@@ -3398,17 +3398,17 @@ interface Property {
      * Gets the storesexpanded of #ICalProperty.
      * @returns Get the storesexpanded of #ICalProperty.
      */
-    get_storesexpanded(): string | null
+    get_storesexpanded(): string
     /**
      * Gets the summary of #ICalProperty.
      * @returns Get the summary of #ICalProperty.
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Gets the target of #ICalProperty.
      * @returns Get the target of #ICalProperty.
      */
-    get_target(): string | null
+    get_target(): string
     /**
      * Gets the taskmode of #ICalProperty.
      * @returns Get the taskmode of #ICalProperty.
@@ -3428,17 +3428,17 @@ interface Property {
      * Gets the tzid of #ICalProperty.
      * @returns Get the tzid of #ICalProperty.
      */
-    get_tzid(): string | null
+    get_tzid(): string
     /**
      * Gets the tzidaliasof of #ICalProperty.
      * @returns Get the tzidaliasof of #ICalProperty.
      */
-    get_tzidaliasof(): string | null
+    get_tzidaliasof(): string
     /**
      * Gets the tzname of #ICalProperty.
      * @returns Get the tzname of #ICalProperty.
      */
-    get_tzname(): string | null
+    get_tzname(): string
     /**
      * Gets the tzoffsetfrom of #ICalProperty.
      * @returns Get the tzoffsetfrom of #ICalProperty.
@@ -3458,17 +3458,17 @@ interface Property {
      * Gets the tzurl of #ICalProperty.
      * @returns Get the tzurl of #ICalProperty.
      */
-    get_tzurl(): string | null
+    get_tzurl(): string
     /**
      * Gets the uid of #ICalProperty.
      * @returns Get the uid of #ICalProperty.
      */
-    get_uid(): string | null
+    get_uid(): string
     /**
      * Gets the url of #ICalProperty.
      * @returns Get the url of #ICalProperty.
      */
-    get_url(): string | null
+    get_url(): string
     /**
      * Gets the #ICalValue of #ICalProperty.
      * @returns The #ICalValue of @prop.
@@ -3483,17 +3483,17 @@ interface Property {
      * Gets the version of #ICalProperty.
      * @returns Get the version of #ICalProperty.
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Gets the voter of #ICalProperty.
      * @returns Get the voter of #ICalProperty.
      */
-    get_voter(): string | null
+    get_voter(): string
     /**
      * Gets the x of #ICalProperty.
      * @returns Get the x of #ICalProperty.
      */
-    get_x(): string | null
+    get_x(): string
     /**
      * Gets the name of x property.
      * @returns The name of x property.
@@ -3508,42 +3508,42 @@ interface Property {
      * Gets the xlicclustercount of #ICalProperty.
      * @returns Get the xlicclustercount of #ICalProperty.
      */
-    get_xlicclustercount(): string | null
+    get_xlicclustercount(): string
     /**
      * Gets the xlicerror of #ICalProperty.
      * @returns Get the xlicerror of #ICalProperty.
      */
-    get_xlicerror(): string | null
+    get_xlicerror(): string
     /**
      * Gets the xlicmimecharset of #ICalProperty.
      * @returns Get the xlicmimecharset of #ICalProperty.
      */
-    get_xlicmimecharset(): string | null
+    get_xlicmimecharset(): string
     /**
      * Gets the xlicmimecid of #ICalProperty.
      * @returns Get the xlicmimecid of #ICalProperty.
      */
-    get_xlicmimecid(): string | null
+    get_xlicmimecid(): string
     /**
      * Gets the xlicmimecontenttype of #ICalProperty.
      * @returns Get the xlicmimecontenttype of #ICalProperty.
      */
-    get_xlicmimecontenttype(): string | null
+    get_xlicmimecontenttype(): string
     /**
      * Gets the xlicmimeencoding of #ICalProperty.
      * @returns Get the xlicmimeencoding of #ICalProperty.
      */
-    get_xlicmimeencoding(): string | null
+    get_xlicmimeencoding(): string
     /**
      * Gets the xlicmimefilename of #ICalProperty.
      * @returns Get the xlicmimefilename of #ICalProperty.
      */
-    get_xlicmimefilename(): string | null
+    get_xlicmimefilename(): string
     /**
      * Gets the xlicmimeoptinfo of #ICalProperty.
      * @returns Get the xlicmimeoptinfo of #ICalProperty.
      */
-    get_xlicmimeoptinfo(): string | null
+    get_xlicmimeoptinfo(): string
     /**
      * Gets the kind of #ICalProperty.
      * @returns The type of #ICalProperty.
@@ -3563,7 +3563,7 @@ interface Property {
      * Removes parameter in the #ICalProperty by name.
      * @param name The name of the parameter to be removed
      */
-    remove_parameter_by_name(name: string | null): void
+    remove_parameter_by_name(name: string): void
     /**
      * Removes the parameter in the #ICalProperty by ref.
      * @param param The #ICalParameter to be removed
@@ -3573,7 +3573,7 @@ interface Property {
      * Sets the acceptresponse for the #ICalProperty.
      * @param v The acceptresponse
      */
-    set_acceptresponse(v: string | null): void
+    set_acceptresponse(v: string): void
     /**
      * Sets the acknowledged time for the #ICalProperty.
      * @param v The acknowledgement time
@@ -3588,7 +3588,7 @@ interface Property {
      * Sets the allowconflict for the #ICalProperty.
      * @param v The allowconflict
      */
-    set_allowconflict(v: string | null): void
+    set_allowconflict(v: string): void
     /**
      * Sets the attach for the #ICalProperty.
      * @param v The attach
@@ -3598,7 +3598,7 @@ interface Property {
      * Sets the attendee for the #ICalProperty.
      * @param v The attendee
      */
-    set_attendee(v: string | null): void
+    set_attendee(v: string): void
     /**
      * Sets the busytype for the #ICalProperty.
      * @param v The busytype
@@ -3608,27 +3608,27 @@ interface Property {
      * Sets the calid for the #ICalProperty.
      * @param v The calid
      */
-    set_calid(v: string | null): void
+    set_calid(v: string): void
     /**
      * Sets the calmaster for the #ICalProperty.
      * @param v The calmaster
      */
-    set_calmaster(v: string | null): void
+    set_calmaster(v: string): void
     /**
      * Sets the calscale for the #ICalProperty.
      * @param v The calscale
      */
-    set_calscale(v: string | null): void
+    set_calscale(v: string): void
     /**
      * Sets the capversion for the #ICalProperty.
      * @param v The capversion
      */
-    set_capversion(v: string | null): void
+    set_capversion(v: string): void
     /**
      * Sets the carid for the #ICalProperty.
      * @param v The carid
      */
-    set_carid(v: string | null): void
+    set_carid(v: string): void
     /**
      * Sets the carlevel for the #ICalProperty.
      * @param v The carlevel
@@ -3638,7 +3638,7 @@ interface Property {
      * Sets the categories for the #ICalProperty.
      * @param v The categories
      */
-    set_categories(v: string | null): void
+    set_categories(v: string): void
     /**
      * Sets the class for the #ICalProperty.
      * @param v The class
@@ -3653,12 +3653,12 @@ interface Property {
      * Sets the color for the `prop`.
      * @param v The color
      */
-    set_color(v: string | null): void
+    set_color(v: string): void
     /**
      * Sets the comment for the #ICalProperty.
      * @param v The comment
      */
-    set_comment(v: string | null): void
+    set_comment(v: string): void
     /**
      * Sets the completed time for the #ICalProperty.
      * @param v The completed time
@@ -3668,12 +3668,12 @@ interface Property {
      * Sets the components for the #ICalProperty.
      * @param v The components
      */
-    set_components(v: string | null): void
+    set_components(v: string): void
     /**
      * Sets the contact for the #ICalProperty.
      * @param v The contact
      */
-    set_contact(v: string | null): void
+    set_contact(v: string): void
     /**
      * Sets the created time for the #ICalProperty.
      * @param v The created time
@@ -3683,7 +3683,7 @@ interface Property {
      * Sets the csid for the #ICalProperty.
      * @param v The csid
      */
-    set_csid(v: string | null): void
+    set_csid(v: string): void
     /**
      * Sets the datemax time for the #ICalProperty.
      * @param v The datemax time
@@ -3698,37 +3698,37 @@ interface Property {
      * Sets the decreed for the #ICalProperty.
      * @param v The decreed
      */
-    set_decreed(v: string | null): void
+    set_decreed(v: string): void
     /**
      * Sets the defaultcharset for the #ICalProperty.
      * @param v The defaultcharset
      */
-    set_defaultcharset(v: string | null): void
+    set_defaultcharset(v: string): void
     /**
      * Sets the defaultlocale for the #ICalProperty.
      * @param v The defaultlocale
      */
-    set_defaultlocale(v: string | null): void
+    set_defaultlocale(v: string): void
     /**
      * Sets the defaulttzid for the #ICalProperty.
      * @param v The defaulttzid
      */
-    set_defaulttzid(v: string | null): void
+    set_defaulttzid(v: string): void
     /**
      * Sets the defaultvcars for the #ICalProperty.
      * @param v The defaultvcars
      */
-    set_defaultvcars(v: string | null): void
+    set_defaultvcars(v: string): void
     /**
      * Sets the deny for the #ICalProperty.
      * @param v The deny
      */
-    set_deny(v: string | null): void
+    set_deny(v: string): void
     /**
      * Sets the description for the #ICalProperty.
      * @param v The description
      */
-    set_description(v: string | null): void
+    set_description(v: string): void
     /**
      * Sets the dtend time for the #ICalProperty.
      * @param v The dtend time
@@ -3788,12 +3788,12 @@ interface Property {
      * Sets the grant for the #ICalProperty.
      * @param v The grant
      */
-    set_grant(v: string | null): void
+    set_grant(v: string): void
     /**
      * Sets the itipversion for the #ICalProperty.
      * @param v The itipversion
      */
-    set_itipversion(v: string | null): void
+    set_itipversion(v: string): void
     /**
      * Sets the lastmodified time for the #ICalProperty.
      * @param v The lastmodified time
@@ -3803,7 +3803,7 @@ interface Property {
      * Sets the location for the #ICalProperty.
      * @param v The location
      */
-    set_location(v: string | null): void
+    set_location(v: string): void
     /**
      * Sets the maxcomponentsize for the #ICalProperty.
      * @param v The maxcomponentsize
@@ -3838,22 +3838,22 @@ interface Property {
      * Sets the multipart for the #ICalProperty.
      * @param v The multipart
      */
-    set_multipart(v: string | null): void
+    set_multipart(v: string): void
     /**
      * Sets the name for the #ICalProperty.
      * @param v The name
      */
-    set_name(v: string | null): void
+    set_name(v: string): void
     /**
      * Sets the organizer for the #ICalProperty.
      * @param v The organizer
      */
-    set_organizer(v: string | null): void
+    set_organizer(v: string): void
     /**
      * Sets the owner for the #ICalProperty.
      * @param v The owner
      */
-    set_owner(v: string | null): void
+    set_owner(v: string): void
 
     // Overloads of set_owner
 
@@ -3874,7 +3874,7 @@ interface Property {
      * @param name The name of the parameter
      * @param value The value of the parameter
      */
-    set_parameter_from_string(name: string | null, value: string | null): void
+    set_parameter_from_string(name: string, value: string): void
     /**
      * Sets the parent #ICalComponent of the specified #ICalProperty.
      * @param component An #ICalComponent
@@ -3889,7 +3889,7 @@ interface Property {
      * Sets the permission for the #ICalProperty.
      * @param v The permission
      */
-    set_permission(v: string | null): void
+    set_permission(v: string): void
     /**
      * Sets the pollcompletion for the #ICalProperty.
      * @param v The pollcompletion
@@ -3909,7 +3909,7 @@ interface Property {
      * Sets the pollproperties for the #ICalProperty.
      * @param v The pollproperties
      */
-    set_pollproperties(v: string | null): void
+    set_pollproperties(v: string): void
     /**
      * Sets the pollwinner for the #ICalProperty.
      * @param v The pollwinner
@@ -3924,17 +3924,17 @@ interface Property {
      * Sets the prodid for the #ICalProperty.
      * @param v The prodid
      */
-    set_prodid(v: string | null): void
+    set_prodid(v: string): void
     /**
      * Sets the query for the #ICalProperty.
      * @param v The query
      */
-    set_query(v: string | null): void
+    set_query(v: string): void
     /**
      * Sets the queryid for the #ICalProperty.
      * @param v The queryid
      */
-    set_queryid(v: string | null): void
+    set_queryid(v: string): void
     /**
      * Sets the querylevel for the #ICalProperty.
      * @param v The querylevel
@@ -3944,7 +3944,7 @@ interface Property {
      * Sets the queryname for the #ICalProperty.
      * @param v The queryname
      */
-    set_queryname(v: string | null): void
+    set_queryname(v: string): void
     /**
      * Sets the rdate for the #ICalProperty.
      * @param v The rdate
@@ -3954,17 +3954,17 @@ interface Property {
      * Sets the recuraccepted for the #ICalProperty.
      * @param v The recuraccepted
      */
-    set_recuraccepted(v: string | null): void
+    set_recuraccepted(v: string): void
     /**
      * Sets the recurexpand for the #ICalProperty.
      * @param v The recurexpand
      */
-    set_recurexpand(v: string | null): void
+    set_recurexpand(v: string): void
     /**
      * Sets the recurlimit for the #ICalProperty.
      * @param v The recurlimit
      */
-    set_recurlimit(v: string | null): void
+    set_recurlimit(v: string): void
     /**
      * Sets the recurrenceid time for the #ICalProperty.
      * @param v The recurrenceid time
@@ -3974,12 +3974,12 @@ interface Property {
      * Sets the relatedto for the #ICalProperty.
      * @param v The relatedto
      */
-    set_relatedto(v: string | null): void
+    set_relatedto(v: string): void
     /**
      * Sets the relcalid for the #ICalProperty.
      * @param v The relcalid
      */
-    set_relcalid(v: string | null): void
+    set_relcalid(v: string): void
     /**
      * Sets the repeat for the #ICalProperty.
      * @param v The repeat
@@ -3989,7 +3989,7 @@ interface Property {
      * Sets the replyurl for the #ICalProperty.
      * @param v The replyurl
      */
-    set_replyurl(v: string | null): void
+    set_replyurl(v: string): void
     /**
      * Sets the requeststatus for the #ICalProperty.
      * @param v The requeststatus
@@ -3999,7 +3999,7 @@ interface Property {
      * Sets the resources for the #ICalProperty.
      * @param v The resources
      */
-    set_resources(v: string | null): void
+    set_resources(v: string): void
     /**
      * Sets the response for the #ICalProperty.
      * @param v The response
@@ -4009,7 +4009,7 @@ interface Property {
      * Sets the restriction for the #ICalProperty.
      * @param v The restriction
      */
-    set_restriction(v: string | null): void
+    set_restriction(v: string): void
     /**
      * Sets the rrule for the #ICalProperty.
      * @param v The rrule recurrence type
@@ -4019,7 +4019,7 @@ interface Property {
      * Sets the scope for the #ICalProperty.
      * @param v The scope
      */
-    set_scope(v: string | null): void
+    set_scope(v: string): void
     /**
      * Sets the sequence for the #ICalProperty.
      * @param v The sequence
@@ -4034,17 +4034,17 @@ interface Property {
      * Sets the storesexpanded for the #ICalProperty.
      * @param v The storesexpanded
      */
-    set_storesexpanded(v: string | null): void
+    set_storesexpanded(v: string): void
     /**
      * Sets the summary for the #ICalProperty.
      * @param v The summary
      */
-    set_summary(v: string | null): void
+    set_summary(v: string): void
     /**
      * Sets the target for the #ICalProperty.
      * @param v The target
      */
-    set_target(v: string | null): void
+    set_target(v: string): void
     /**
      * Sets the taskmode for the #ICalProperty.
      * @param v The taskmode
@@ -4064,17 +4064,17 @@ interface Property {
      * Sets the tzid for the #ICalProperty.
      * @param v The tzid
      */
-    set_tzid(v: string | null): void
+    set_tzid(v: string): void
     /**
      * Sets the tzidaliasof for the #ICalProperty.
      * @param v The tzidaliasof
      */
-    set_tzidaliasof(v: string | null): void
+    set_tzidaliasof(v: string): void
     /**
      * Sets the tzname for the #ICalProperty.
      * @param v The tzname
      */
-    set_tzname(v: string | null): void
+    set_tzname(v: string): void
     /**
      * Sets the tzoffsetfrom for the #ICalProperty.
      * @param v The tzoffsetfrom
@@ -4094,17 +4094,17 @@ interface Property {
      * Sets the tzurl for the #ICalProperty.
      * @param v The tzurl
      */
-    set_tzurl(v: string | null): void
+    set_tzurl(v: string): void
     /**
      * Sets the uid for the #ICalProperty.
      * @param v The uid
      */
-    set_uid(v: string | null): void
+    set_uid(v: string): void
     /**
      * Sets the url for the #ICalProperty.
      * @param v The url
      */
-    set_url(v: string | null): void
+    set_url(v: string): void
     /**
      * Sets the #ICalProperty with the #ICalValue.
      * @param value The #ICalValue will be set as the property of `prop`
@@ -4115,27 +4115,27 @@ interface Property {
      * @param value The value used to construct the #ICalValue
      * @param kind The kind used to construct the #ICalValue
      */
-    set_value_from_string(value: string | null, kind: string | null): void
+    set_value_from_string(value: string, kind: string): void
     /**
      * Sets the version for the #ICalProperty.
      * @param v The version
      */
-    set_version(v: string | null): void
+    set_version(v: string): void
     /**
      * Sets the voter for the #ICalProperty.
      * @param v The voter
      */
-    set_voter(v: string | null): void
+    set_voter(v: string): void
     /**
      * Sets the x for the #ICalProperty.
      * @param v The x
      */
-    set_x(v: string | null): void
+    set_x(v: string): void
     /**
      * Sets the name of x property for the #ICalProperty.
      * @param name The name string
      */
-    set_x_name(name: string | null): void
+    set_x_name(name: string): void
     /**
      * Sets the xlicclass for the #ICalProperty.
      * @param v The xlicclass
@@ -4145,42 +4145,42 @@ interface Property {
      * Sets the xlicclustercount for the #ICalProperty.
      * @param v The xlicclustercount
      */
-    set_xlicclustercount(v: string | null): void
+    set_xlicclustercount(v: string): void
     /**
      * Sets the xlicerror for the #ICalProperty.
      * @param v The xlicerror
      */
-    set_xlicerror(v: string | null): void
+    set_xlicerror(v: string): void
     /**
      * Sets the xlicmimecharset for the #ICalProperty.
      * @param v The xlicmimecharset
      */
-    set_xlicmimecharset(v: string | null): void
+    set_xlicmimecharset(v: string): void
     /**
      * Sets the xlicmimecid for the #ICalProperty.
      * @param v The xlicmimecid
      */
-    set_xlicmimecid(v: string | null): void
+    set_xlicmimecid(v: string): void
     /**
      * Sets the xlicmimecontenttype for the #ICalProperty.
      * @param v The xlicmimecontenttype
      */
-    set_xlicmimecontenttype(v: string | null): void
+    set_xlicmimecontenttype(v: string): void
     /**
      * Sets the xlicmimeencoding for the #ICalProperty.
      * @param v The xlicmimeencoding
      */
-    set_xlicmimeencoding(v: string | null): void
+    set_xlicmimeencoding(v: string): void
     /**
      * Sets the xlicmimefilename for the #ICalProperty.
      * @param v The xlicmimefilename
      */
-    set_xlicmimefilename(v: string | null): void
+    set_xlicmimefilename(v: string): void
     /**
      * Sets the xlicmimeoptinfo for the #ICalProperty.
      * @param v The xlicmimeoptinfo
      */
-    set_xlicmimeoptinfo(v: string | null): void
+    set_xlicmimeoptinfo(v: string): void
 
     // Class property signals of ICalGLib-3.0.ICalGLib.Property
 
@@ -4239,7 +4239,7 @@ class Property extends Object {
      * @param v The acceptresponse
      * @returns The newly created #ICalProperty
      */
-    static new_acceptresponse(v: string | null): Property
+    static new_acceptresponse(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4260,7 +4260,7 @@ class Property extends Object {
      * @param v The allowconflict
      * @returns The newly created #ICalProperty
      */
-    static new_allowconflict(v: string | null): Property
+    static new_allowconflict(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4274,7 +4274,7 @@ class Property extends Object {
      * @param v The attendee
      * @returns The newly created #ICalProperty
      */
-    static new_attendee(v: string | null): Property
+    static new_attendee(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4288,35 +4288,35 @@ class Property extends Object {
      * @param v The calid
      * @returns The newly created #ICalProperty
      */
-    static new_calid(v: string | null): Property
+    static new_calid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The calmaster
      * @returns The newly created #ICalProperty
      */
-    static new_calmaster(v: string | null): Property
+    static new_calmaster(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The calscale
      * @returns The newly created #ICalProperty
      */
-    static new_calscale(v: string | null): Property
+    static new_calscale(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The capversion
      * @returns The newly created #ICalProperty
      */
-    static new_capversion(v: string | null): Property
+    static new_capversion(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The carid
      * @returns The newly created #ICalProperty
      */
-    static new_carid(v: string | null): Property
+    static new_carid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4330,7 +4330,7 @@ class Property extends Object {
      * @param v The categories
      * @returns The newly created #ICalProperty
      */
-    static new_categories(v: string | null): Property
+    static new_categories(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4351,14 +4351,14 @@ class Property extends Object {
      * @param v The color
      * @returns The newly created #ICalProperty
      */
-    static new_color(v: string | null): Property
+    static new_color(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The comment
      * @returns The newly created #ICalProperty
      */
-    static new_comment(v: string | null): Property
+    static new_comment(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4372,14 +4372,14 @@ class Property extends Object {
      * @param v The components
      * @returns The newly created #ICalProperty
      */
-    static new_components(v: string | null): Property
+    static new_components(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The contact
      * @returns The newly created #ICalProperty
      */
-    static new_contact(v: string | null): Property
+    static new_contact(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4393,7 +4393,7 @@ class Property extends Object {
      * @param v The csid
      * @returns The newly created #ICalProperty
      */
-    static new_csid(v: string | null): Property
+    static new_csid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4414,49 +4414,49 @@ class Property extends Object {
      * @param v The decreed
      * @returns The newly created #ICalProperty
      */
-    static new_decreed(v: string | null): Property
+    static new_decreed(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaultcharset
      * @returns The newly created #ICalProperty
      */
-    static new_defaultcharset(v: string | null): Property
+    static new_defaultcharset(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaultlocale
      * @returns The newly created #ICalProperty
      */
-    static new_defaultlocale(v: string | null): Property
+    static new_defaultlocale(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaulttzid
      * @returns The newly created #ICalProperty
      */
-    static new_defaulttzid(v: string | null): Property
+    static new_defaulttzid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaultvcars
      * @returns The newly created #ICalProperty
      */
-    static new_defaultvcars(v: string | null): Property
+    static new_defaultvcars(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The deny
      * @returns The newly created #ICalProperty
      */
-    static new_deny(v: string | null): Property
+    static new_deny(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The description
      * @returns The newly created #ICalProperty
      */
-    static new_description(v: string | null): Property
+    static new_description(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4533,7 +4533,7 @@ class Property extends Object {
      * @param str The string used to construct a #ICalProperty
      * @returns The newly created #ICalProperty from @str.
      */
-    static new_from_string(str: string | null): Property
+    static new_from_string(str: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4547,14 +4547,14 @@ class Property extends Object {
      * @param v The grant
      * @returns The newly created #ICalProperty
      */
-    static new_grant(v: string | null): Property
+    static new_grant(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The itipversion
      * @returns The newly created #ICalProperty
      */
-    static new_itipversion(v: string | null): Property
+    static new_itipversion(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4568,7 +4568,7 @@ class Property extends Object {
      * @param v The location
      * @returns The newly created #ICalProperty
      */
-    static new_location(v: string | null): Property
+    static new_location(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4617,28 +4617,28 @@ class Property extends Object {
      * @param v The multipart
      * @returns The newly created #ICalProperty
      */
-    static new_multipart(v: string | null): Property
+    static new_multipart(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The name
      * @returns The newly created #ICalProperty
      */
-    static new_name(v: string | null): Property
+    static new_name(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The organizer
      * @returns The newly created #ICalProperty
      */
-    static new_organizer(v: string | null): Property
+    static new_organizer(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The owner
      * @returns The newly created #ICalProperty
      */
-    static new_owner(v: string | null): Property
+    static new_owner(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4652,7 +4652,7 @@ class Property extends Object {
      * @param v The permission
      * @returns The newly created #ICalProperty
      */
-    static new_permission(v: string | null): Property
+    static new_permission(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4680,7 +4680,7 @@ class Property extends Object {
      * @param v The pollproperties
      * @returns The newly created #ICalProperty
      */
-    static new_pollproperties(v: string | null): Property
+    static new_pollproperties(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4701,21 +4701,21 @@ class Property extends Object {
      * @param v The prodid
      * @returns The newly created #ICalProperty
      */
-    static new_prodid(v: string | null): Property
+    static new_prodid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The query
      * @returns The newly created #ICalProperty
      */
-    static new_query(v: string | null): Property
+    static new_query(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The queryid
      * @returns The newly created #ICalProperty
      */
-    static new_queryid(v: string | null): Property
+    static new_queryid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4729,7 +4729,7 @@ class Property extends Object {
      * @param v The queryname
      * @returns The newly created #ICalProperty
      */
-    static new_queryname(v: string | null): Property
+    static new_queryname(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4743,21 +4743,21 @@ class Property extends Object {
      * @param v The recuraccepted
      * @returns The newly created #ICalProperty
      */
-    static new_recuraccepted(v: string | null): Property
+    static new_recuraccepted(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The recurexpand
      * @returns The newly created #ICalProperty
      */
-    static new_recurexpand(v: string | null): Property
+    static new_recurexpand(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The recurlimit
      * @returns The newly created #ICalProperty
      */
-    static new_recurlimit(v: string | null): Property
+    static new_recurlimit(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4771,14 +4771,14 @@ class Property extends Object {
      * @param v The relatedto
      * @returns The newly created #ICalProperty
      */
-    static new_relatedto(v: string | null): Property
+    static new_relatedto(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The relcalid
      * @returns The newly created #ICalProperty
      */
-    static new_relcalid(v: string | null): Property
+    static new_relcalid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4792,7 +4792,7 @@ class Property extends Object {
      * @param v The replyurl
      * @returns The newly created #ICalProperty
      */
-    static new_replyurl(v: string | null): Property
+    static new_replyurl(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4806,7 +4806,7 @@ class Property extends Object {
      * @param v The resources
      * @returns The newly created #ICalProperty
      */
-    static new_resources(v: string | null): Property
+    static new_resources(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4820,7 +4820,7 @@ class Property extends Object {
      * @param v The restriction
      * @returns The newly created #ICalProperty
      */
-    static new_restriction(v: string | null): Property
+    static new_restriction(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4834,7 +4834,7 @@ class Property extends Object {
      * @param v The scope
      * @returns The newly created #ICalProperty
      */
-    static new_scope(v: string | null): Property
+    static new_scope(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4855,21 +4855,21 @@ class Property extends Object {
      * @param v The storesexpanded
      * @returns The newly created #ICalProperty
      */
-    static new_storesexpanded(v: string | null): Property
+    static new_storesexpanded(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The summary
      * @returns The newly created #ICalProperty
      */
-    static new_summary(v: string | null): Property
+    static new_summary(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The target
      * @returns The newly created #ICalProperty
      */
-    static new_target(v: string | null): Property
+    static new_target(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4897,21 +4897,21 @@ class Property extends Object {
      * @param v The tzid
      * @returns The newly created #ICalProperty
      */
-    static new_tzid(v: string | null): Property
+    static new_tzid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The tzidaliasof
      * @returns The newly created #ICalProperty
      */
-    static new_tzidaliasof(v: string | null): Property
+    static new_tzidaliasof(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The tzname
      * @returns The newly created #ICalProperty
      */
-    static new_tzname(v: string | null): Property
+    static new_tzname(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4939,42 +4939,42 @@ class Property extends Object {
      * @param v The tzurl
      * @returns The newly created #ICalProperty
      */
-    static new_tzurl(v: string | null): Property
+    static new_tzurl(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The uid
      * @returns The newly created #ICalProperty
      */
-    static new_uid(v: string | null): Property
+    static new_uid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The url
      * @returns The newly created #ICalProperty
      */
-    static new_url(v: string | null): Property
+    static new_url(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The version
      * @returns The newly created #ICalProperty
      */
-    static new_version(v: string | null): Property
+    static new_version(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The voter
      * @returns The newly created #ICalProperty
      */
-    static new_voter(v: string | null): Property
+    static new_voter(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The x
      * @returns The newly created #ICalProperty
      */
-    static new_x(v: string | null): Property
+    static new_x(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4988,56 +4988,56 @@ class Property extends Object {
      * @param v The xlicclustercount
      * @returns The newly created #ICalProperty
      */
-    static new_xlicclustercount(v: string | null): Property
+    static new_xlicclustercount(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicerror
      * @returns The newly created #ICalProperty
      */
-    static new_xlicerror(v: string | null): Property
+    static new_xlicerror(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimecharset
      * @returns The newly created #ICalProperty
      */
-    static new_xlicmimecharset(v: string | null): Property
+    static new_xlicmimecharset(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimecid
      * @returns The newly created #ICalProperty
      */
-    static new_xlicmimecid(v: string | null): Property
+    static new_xlicmimecid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimecontenttype
      * @returns The newly created #ICalProperty
      */
-    static new_xlicmimecontenttype(v: string | null): Property
+    static new_xlicmimecontenttype(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimeencoding
      * @returns The newly created #ICalProperty
      */
-    static new_xlicmimeencoding(v: string | null): Property
+    static new_xlicmimeencoding(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimefilename
      * @returns The newly created #ICalProperty
      */
-    static new_xlicmimefilename(v: string | null): Property
+    static new_xlicmimefilename(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimeoptinfo
      * @returns The newly created #ICalProperty
      */
-    static new_xlicmimeoptinfo(v: string | null): Property
+    static new_xlicmimeoptinfo(v: string): Property
     _init(config?: Property.ConstructorProperties): void
     /**
      * Converts the enum to string.
@@ -5051,13 +5051,13 @@ class Property extends Object {
      * @param str A string
      * @returns The enum.
      */
-    static kind_and_string_to_enum(kind: number, str: string | null): number
+    static kind_and_string_to_enum(kind: number, str: string): number
     /**
      * Converts the string to #ICalPropertyKind.
      * @param string A string representing #ICalPropertyKind
      * @returns The #ICalPropertyKind.
      */
-    static kind_from_string(string: string | null): PropertyKind
+    static kind_from_string(string: string): PropertyKind
     /**
      * Checks whether the enum belongs to the #ICalPropertyKind.
      * @param kind A #ICalPropertyKind
@@ -5076,7 +5076,7 @@ class Property extends Object {
      * @param kind A #ICalPropertyKind
      * @returns The string representation of @kind.
      */
-    static kind_to_string(kind: PropertyKind): string | null
+    static kind_to_string(kind: PropertyKind): string
     /**
      * Converts the #ICalPropertyKind to #ICalValueKind.
      * @param kind A #ICalPropertyKind
@@ -5088,13 +5088,13 @@ class Property extends Object {
      * @param str A string
      * @returns The #ICalPropertyMethod.
      */
-    static method_from_string(str: string | null): PropertyMethod
+    static method_from_string(str: string): PropertyMethod
     /**
      * Converts the #ICalPropertyMethod to string.
      * @param method The #ICalPropertyMethod
      * @returns The string representation of #ICalPropertyMethod.
      */
-    static method_to_string(method: PropertyMethod): string | null
+    static method_to_string(method: PropertyMethod): string
     /**
      * Decides if this recurrence is acceptable. This function decides if a specific recurrence value is excluded
      * by EXRULE or EXDATE properties.
@@ -5109,13 +5109,13 @@ class Property extends Object {
      * @param str A string
      * @returns The #ICalPropertyStatus.
      */
-    static status_from_string(str: string | null): PropertyStatus
+    static status_from_string(str: string): PropertyStatus
     /**
      * Converts the #ICalPropertyStatus to string.
      * @param method The #ICalPropertyStatus
      * @returns The string representation of #ICalPropertyStatus.
      */
-    static status_to_string(method: PropertyStatus): string | null
+    static status_to_string(method: PropertyStatus): string
 }
 
 module RecurIterator {
@@ -5536,7 +5536,7 @@ class Recurrence extends Object {
      * @param str The string representation of the #ICalRecurrence
      * @returns The #ICalRecurrence converted from @str.
      */
-    static new_from_string(str: string | null): Recurrence
+    static new_from_string(str: string): Recurrence
     _init(config?: Recurrence.ConstructorProperties): void
     /**
      * Decodes a day to a weekday in a week.
@@ -5555,13 +5555,13 @@ class Recurrence extends Object {
      * @param str The string representation of the frequency
      * @returns The enum representation of the frequency.
      */
-    static frequency_from_string(str: string | null): RecurrenceFrequency
+    static frequency_from_string(str: string): RecurrenceFrequency
     /**
      * Converts a enum representation to a string representation for the frequency.
      * @param kind The frequency enum
      * @returns The string representation of frequency
      */
-    static frequency_to_string(kind: RecurrenceFrequency): string | null
+    static frequency_to_string(kind: RecurrenceFrequency): string
     /**
      * Decodes a month and check whether it is a leap month.
      * @param month The month to be decoded
@@ -5584,25 +5584,25 @@ class Recurrence extends Object {
      * @param str The string representation of the skip
      * @returns The enum representation of the skip.
      */
-    static skip_from_string(str: string | null): RecurrenceSkip
+    static skip_from_string(str: string): RecurrenceSkip
     /**
      * Converts a enum representation to a string representation for the skip.
      * @param kind The frequency enum
      * @returns The string representation of skip
      */
-    static skip_to_string(kind: RecurrenceSkip): string | null
+    static skip_to_string(kind: RecurrenceSkip): string
     /**
      * Converts a string representation to an enum representation for the weekday.
      * @param str The string representation of the weekday
      * @returns The enum representation of the weekday.
      */
-    static weekday_from_string(str: string | null): RecurrenceWeekday
+    static weekday_from_string(str: string): RecurrenceWeekday
     /**
      * Converts a enum representation to a string representation for the weekday.
      * @param kind The frequency enum
      * @returns The string representation of weekday
      */
-    static weekday_to_string(kind: RecurrenceWeekday): string | null
+    static weekday_to_string(kind: RecurrenceWeekday): string
 }
 
 module Reqstat {
@@ -5627,12 +5627,12 @@ interface Reqstat {
      * Gets the debug of #ICalReqstat.
      * @returns The debug of @reqstat.
      */
-    get_debug(): string | null
+    get_debug(): string
     /**
      * Gets the desc of #ICalReqstat.
      * @returns The desc of @reqstat.
      */
-    get_desc(): string | null
+    get_desc(): string
     /**
      * Sets the code of #ICalReqstat.
      * @param code The code of `reqstat`
@@ -5687,7 +5687,7 @@ class Reqstat extends Object {
      * @param str A string
      * @returns The newly created #ICalReqstat.
      */
-    static new_from_string(str: string | null): Reqstat
+    static new_from_string(str: string): Reqstat
     _init(config?: Reqstat.ConstructorProperties): void
 }
 
@@ -6018,7 +6018,7 @@ class Time extends Object {
      * @param str The ISO format string
      * @returns The newly created #ICalTime
      */
-    static new_from_string(str: string | null): Time
+    static new_from_string(str: string): Time
     /**
      * Converts seconds past UNIX epoch to a timetype, using timezones.
      * @constructor 
@@ -6237,7 +6237,7 @@ interface Timezone {
      * Gets the display name of the `zone`.
      * @returns The display name of @zone
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Returns the latitude of a builtin timezone.
      * @returns The latitude of the #ICalTimezone
@@ -6418,7 +6418,7 @@ class Timezone extends Object {
      * Gets the directory to look for the zonefiles.
      * @returns The path to look for the zonefiles
      */
-    static get_zone_directory(): string | null
+    static get_zone_directory(): string
     /**
      * Frees memory dedicated to the zonefile directory.
      */
@@ -6434,12 +6434,12 @@ class Timezone extends Object {
      * Do not change or de-allocate the string buffer after calling this.
      * @param new_prefix The #ICalTimezone to be set
      */
-    static set_tzid_prefix(new_prefix: string | null): void
+    static set_tzid_prefix(new_prefix: string): void
     /**
      * Sets the directory to look for the zonefiles.
      * @param path The path to look for the zonefiles
      */
-    static set_zone_directory(path: string | null): void
+    static set_zone_directory(path: string): void
 }
 
 module Trigger {
@@ -6536,7 +6536,7 @@ class Trigger extends Object {
      * @param str A string
      * @returns The newly created #ICalTrigger.
      */
-    static new_from_string(str: string | null): Trigger
+    static new_from_string(str: string): Trigger
     _init(config?: Trigger.ConstructorProperties): void
 }
 
@@ -6782,7 +6782,7 @@ interface Value {
      * Sets the binary in the #ICalValue.
      * @param v The binary value
      */
-    set_binary(v: string | null): void
+    set_binary(v: string): void
     /**
      * Sets the boolean in the #ICalValue.
      * @param v The boolean value
@@ -6797,7 +6797,7 @@ interface Value {
      * Sets the caladdress in the #ICalValue.
      * @param v The caladdress value
      */
-    set_caladdress(v: string | null): void
+    set_caladdress(v: string): void
     /**
      * Sets the carlevel in the #ICalValue.
      * @param v The carlevel value
@@ -6882,7 +6882,7 @@ interface Value {
      * Sets the query in the #ICalValue.
      * @param v The query value
      */
-    set_query(v: string | null): void
+    set_query(v: string): void
     /**
      * Sets the querylevel in the #ICalValue.
      * @param v The querylevel value
@@ -6907,7 +6907,7 @@ interface Value {
      * Sets the string in the #ICalValue.
      * @param v The string value
      */
-    set_string(v: string | null): void
+    set_string(v: string): void
     /**
      * Sets the taskmode in the #ICalValue.
      * @param v The taskmode value
@@ -6917,7 +6917,7 @@ interface Value {
      * Sets the text in the #ICalValue.
      * @param v The text value
      */
-    set_text(v: string | null): void
+    set_text(v: string): void
     /**
      * Sets the transp in the #ICalValue.
      * @param v The transp value
@@ -6932,7 +6932,7 @@ interface Value {
      * Sets the uri in the #ICalValue.
      * @param v The uri value
      */
-    set_uri(v: string | null): void
+    set_uri(v: string): void
     /**
      * Sets the utcoffset in the #ICalValue.
      * @param v The utcoffset value
@@ -6942,7 +6942,7 @@ interface Value {
      * Sets the x in the #ICalValue.
      * @param v The x value
      */
-    set_x(v: string | null): void
+    set_x(v: string): void
     /**
      * Sets the xlicclass in the #ICalValue.
      * @param v The xlicclass value
@@ -7020,7 +7020,7 @@ class Value extends Object {
      * @param v The binary value
      * @returns The newly created #ICalValue.
      */
-    static new_binary(v: string | null): Value
+    static new_binary(v: string): Value
     /**
      * Creates a new #ICalValue with the type boolean.
      * @constructor 
@@ -7041,7 +7041,7 @@ class Value extends Object {
      * @param v The caladdress value
      * @returns The newly created #ICalValue.
      */
-    static new_caladdress(v: string | null): Value
+    static new_caladdress(v: string): Value
     /**
      * Creates a new #ICalValue with the type carlevel.
      * @constructor 
@@ -7112,7 +7112,7 @@ class Value extends Object {
      * @param str A string
      * @returns The newly created #ICalValue based on the @kind and @str.
      */
-    static new_from_string(kind: ValueKind, str: string | null): Value
+    static new_from_string(kind: ValueKind, str: string): Value
     /**
      * Creates a new #ICalValue with the type geo.
      * @constructor 
@@ -7161,7 +7161,7 @@ class Value extends Object {
      * @param v The query value
      * @returns The newly created #ICalValue.
      */
-    static new_query(v: string | null): Value
+    static new_query(v: string): Value
     /**
      * Creates a new #ICalValue with the type querylevel.
      * @constructor 
@@ -7196,7 +7196,7 @@ class Value extends Object {
      * @param v The string value
      * @returns The newly created #ICalValue.
      */
-    static new_string(v: string | null): Value
+    static new_string(v: string): Value
     /**
      * Creates a new #ICalValue with the type taskmode.
      * @constructor 
@@ -7210,7 +7210,7 @@ class Value extends Object {
      * @param v The text value
      * @returns The newly created #ICalValue.
      */
-    static new_text(v: string | null): Value
+    static new_text(v: string): Value
     /**
      * Creates a new #ICalValue with the type transp.
      * @constructor 
@@ -7231,7 +7231,7 @@ class Value extends Object {
      * @param v The uri value
      * @returns The newly created #ICalValue.
      */
-    static new_uri(v: string | null): Value
+    static new_uri(v: string): Value
     /**
      * Creates a new #ICalValue with the type utcoffset.
      * @constructor 
@@ -7245,7 +7245,7 @@ class Value extends Object {
      * @param v The x value
      * @returns The newly created #ICalValue.
      */
-    static new_x(v: string | null): Value
+    static new_x(v: string): Value
     /**
      * Creates a new #ICalValue with the type xlicclass.
      * @constructor 
@@ -7259,19 +7259,19 @@ class Value extends Object {
      * @param szText A string
      * @returns The decoded string. NULL if fail.
      */
-    static decode_ical_string(szText: string | null): string | null
+    static decode_ical_string(szText: string): string | null
     /**
      * Encodes a character string in ical format, escape certain characters, etc.
      * @param szText A string
      * @returns The encoded string. NULL if fail.
      */
-    static encode_ical_string(szText: string | null): string | null
+    static encode_ical_string(szText: string): string | null
     /**
      * Converts a string to #ICalValueKind.
      * @param str A string
      * @returns A #ICalValueKind.
      */
-    static kind_from_string(str: string | null): ValueKind
+    static kind_from_string(str: string): ValueKind
     /**
      * Checks whether the #ICalValueKind is valid.
      * @param kind The #ICalValueKind to be checked
@@ -7289,7 +7289,7 @@ class Value extends Object {
      * @param kind A #ICalValueKind
      * @returns The string representation of #ICalValueKind.
      */
-    static kind_to_string(kind: ValueKind): string | null
+    static kind_to_string(kind: ValueKind): string
 }
 
 interface ArrayClass {

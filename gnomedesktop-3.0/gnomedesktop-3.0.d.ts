@@ -68,7 +68,7 @@ enum RRRotation {
     REFLECT_Y,
 }
 const DESKTOP_PLATFORM_VERSION: number
-const RR_CONNECTOR_TYPE_PANEL: string | null
+const RR_CONNECTOR_TYPE_PANEL: string
 /**
  * Returns whether the thumbnail has the correct uri and mtime embedded in the
  * png options. This function is threadsafe and does no blocking I/O.
@@ -77,7 +77,7 @@ const RR_CONNECTOR_TYPE_PANEL: string | null
  * @param mtime the mtime
  * @returns TRUE if the thumbnail has the right @uri and @mtime
  */
-function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string | null, mtime: number): boolean
+function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean
 /**
  * Returns the filename that a thumbnail of size `size` for `uri` would have.
  * This function is threadsafe and does no blocking I/O.
@@ -85,7 +85,7 @@ function desktop_thumbnail_is_valid(pixbuf: GdkPixbuf.Pixbuf, uri: string | null
  * @param size a thumbnail size
  * @returns an absolute filename
  */
-function desktop_thumbnail_path_for_uri(uri: string | null, size: DesktopThumbnailSize): string | null
+function desktop_thumbnail_path_for_uri(uri: string, size: DesktopThumbnailSize): string | null
 /**
  * Gets all locales.
  * @returns    a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
@@ -98,7 +98,7 @@ function get_all_locales(): string[]
  * @param translation a locale string
  * @returns the country name. Caller takes ownership.
  */
-function get_country_from_code(code: string | null, translation: string | null): string | null
+function get_country_from_code(code: string, translation: string | null): string | null
 /**
  * Gets the country description for `locale`. If `translation` is
  * provided the returned string is translated accordingly.
@@ -106,7 +106,7 @@ function get_country_from_code(code: string | null, translation: string | null):
  * @param translation a locale string
  * @returns the country description. Caller takes ownership.
  */
-function get_country_from_locale(locale: string | null, translation: string | null): string | null
+function get_country_from_locale(locale: string, translation: string | null): string | null
 /**
  * Asynchronously fetches a list of of default input sources based on locale and system
  * configuration. This is for when a user has no input sources configured
@@ -128,7 +128,7 @@ function get_default_input_sources_finish(result: Gio.AsyncResult): [ /* returnT
  * @param locale a locale string
  * @returns %TRUE if a input source exists or %FALSE otherwise.
  */
-function get_input_source_from_locale(locale: string | null): [ /* returnType */ boolean, /* type */ string | null, /* id */ string | null ]
+function get_input_source_from_locale(locale: string): [ /* returnType */ boolean, /* type */ string, /* id */ string ]
 /**
  * Gets the language name for `code`. If `translation` is provided the
  * returned string is translated accordingly.
@@ -136,7 +136,7 @@ function get_input_source_from_locale(locale: string | null): [ /* returnType */
  * @param translation a locale string
  * @returns the language name. Caller takes ownership.
  */
-function get_language_from_code(code: string | null, translation: string | null): string | null
+function get_language_from_code(code: string, translation: string | null): string | null
 /**
  * Gets the language description for `locale`. If `translation` is
  * provided the returned string is translated accordingly.
@@ -144,7 +144,7 @@ function get_language_from_code(code: string | null, translation: string | null)
  * @param translation a locale string
  * @returns the language description. Caller takes ownership.
  */
-function get_language_from_locale(locale: string | null, translation: string | null): string | null
+function get_language_from_locale(locale: string, translation: string | null): string | null
 /**
  * Returns an integer with the major version of GNOME. Useful for
  * dynamic languages like Javascript or Python (static languages like
@@ -161,27 +161,27 @@ function get_platform_version(): number
  * @param translation a locale string
  * @returns the translated modifier string. Caller takes ownership.
  */
-function get_translated_modifier(modifier: string | null, translation: string | null): string | null
+function get_translated_modifier(modifier: string, translation: string | null): string | null
 /**
  * Returns whether or not the input source has the ability to enter latin characters.
  * @param type an input source type (e.g., "xkb" or "ibus")
  * @param id an input source id (e.g., "us+dvorak" or "anthy")
  * @returns %TRUE if it can't enter latin characters
  */
-function input_source_is_non_latin(type: string | null, id: string | null): boolean
+function input_source_is_non_latin(type: string, id: string): boolean
 /**
  * Returns %TRUE if there are translations for language `code`.
  * @param code an ISO 639 code string
  * @returns %TRUE if there are translations for language @code.
  */
-function language_has_translations(code: string | null): boolean
+function language_has_translations(code: string): boolean
 /**
  * Gets the normalized locale string in the form
  * [language[_country][.codeset][`modifier]`] for `name`.
  * @param locale a locale string
  * @returns normalized locale string. Caller takes ownership.
  */
-function normalize_locale(locale: string | null): string | null
+function normalize_locale(locale: string): string | null
 /**
  * Extracts the various components of a locale string in XPG format.
  * ([language[_country][.codeset][`modifier]`]). See
@@ -189,7 +189,7 @@ function normalize_locale(locale: string | null): string | null
  * @param locale a locale string
  * @returns %TRUE if parsing was successful.
  */
-function parse_locale(locale: string | null): [ /* returnType */ boolean, /* language_codep */ string | null, /* country_codep */ string | null, /* codesetp */ string | null, /* modifierp */ string | null ]
+function parse_locale(locale: string): [ /* returnType */ boolean, /* language_codep */ string, /* country_codep */ string | null, /* codesetp */ string | null, /* modifierp */ string | null ]
 /**
  * Returns the #GQuark that will be used for #GError values returned by the
  * GnomeRR API.
@@ -223,7 +223,7 @@ function rr_error_quark(): GLib.Quark
  * @param cancellable #GCancellable to use
  * @param callback Callback to call when the operation is done
  */
-function start_systemd_scope<Z = unknown>(name: string | null, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function start_systemd_scope<Z = unknown>(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 /**
  * Finish an asynchronous operation to create a transient scope that was
  * started with gnome_start_systemd_scope().
@@ -290,7 +290,7 @@ interface BG {
     create_surface(window: Gdk.Window, width: number, height: number): cairo.Surface
     create_thumbnail(factory: DesktopThumbnailFactory, screen: Gdk.Screen, dest_width: number, dest_height: number): GdkPixbuf.Pixbuf
     draw(dest: GdkPixbuf.Pixbuf): void
-    get_filename(): string | null
+    get_filename(): string
     get_image_size(factory: DesktopThumbnailFactory, best_width: number, best_height: number, width: number, height: number): boolean
     get_placement(): GDesktopEnums.BackgroundStyle
     get_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void
@@ -298,7 +298,7 @@ interface BG {
     is_dark(dest_width: number, dest_height: number): boolean
     load_from_preferences(settings: Gio.Settings): void
     save_to_preferences(settings: Gio.Settings): void
-    set_filename(filename: string | null): void
+    set_filename(filename: string): void
     set_placement(placement: GDesktopEnums.BackgroundStyle): void
     set_rgba(type: GDesktopEnums.BackgroundShading, primary: Gdk.RGBA, secondary: Gdk.RGBA): void
 
@@ -519,7 +519,7 @@ interface BGSlideShow {
      * @param width monitor width
      * @param height monitor height
      */
-    get_current_slide(width: number, height: number): [ /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string | null, /* file2 */ string | null ]
+    get_current_slide(width: number, height: number): [ /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string, /* file2 */ string ]
     /**
      * gets whether or not the slide show has multiple sizes for different monitors
      * @returns %TRUE if multiple sizes
@@ -536,7 +536,7 @@ interface BGSlideShow {
      * @param height monitor height
      * @returns %TRUE if successful
      */
-    get_slide(frame_number: number, width: number, height: number): [ /* returnType */ boolean, /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string | null, /* file2 */ string | null ]
+    get_slide(frame_number: number, width: number, height: number): [ /* returnType */ boolean, /* progress */ number, /* duration */ number, /* is_fixed */ boolean, /* file1 */ string, /* file2 */ string ]
     /**
      * gets the start time of the slide show
      * @returns a timestamp
@@ -596,7 +596,7 @@ class BGSlideShow extends GObject.Object {
      * @param filename The filename of the slide show
      * @returns the new #GnomeBGSlideShow
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new object to manage a slide show.
      * window background between two #cairo_surface_ts.
@@ -604,7 +604,7 @@ class BGSlideShow extends GObject.Object {
      * @param filename The filename of the slide show
      * @returns the new #GnomeBGSlideShow
      */
-    static new(filename: string | null): BGSlideShow
+    static new(filename: string): BGSlideShow
     _init(config?: BGSlideShow.ConstructorProperties): void
 }
 
@@ -636,7 +636,7 @@ interface DesktopThumbnailFactory {
      * @param mtime the mtime of the file
      * @returns TRUE if the file can be thumbnailed.
      */
-    can_thumbnail(uri: string | null, mime_type: string | null, mtime: number): boolean
+    can_thumbnail(uri: string, mime_type: string, mtime: number): boolean
     /**
      * Creates a failed thumbnail for the file so that we don't try
      * to re-thumbnail the file later.
@@ -647,7 +647,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a GCancellable object, or NULL
      * @returns TRUE if everything went fine; FALSE if there was an error.
      */
-    create_failed_thumbnail(uri: string | null, mtime: number, cancellable: Gio.Cancellable | null): boolean
+    create_failed_thumbnail(uri: string, mtime: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
      * 
@@ -657,7 +657,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @param callback a function that will be called when the task has ended
      */
-    create_failed_thumbnail_async(uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    create_failed_thumbnail_async(uri: string, original_mtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of create_failed_thumbnail_async
 
@@ -672,7 +672,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @returns A Promise of: TRUE if the operation was correct; FALSE if there was an error Since 43.0
      */
-    create_failed_thumbnail_async(uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    create_failed_thumbnail_async(uri: string, original_mtime: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     create_failed_thumbnail_finish(result: Gio.AsyncResult): boolean
     /**
      * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -684,7 +684,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a #GCancellable object or NULL
      * @returns thumbnail pixbuf if thumbnailing succeeded, %NULL otherwise and error will be set
      */
-    generate_thumbnail(uri: string | null, mime_type: string | null, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf
+    generate_thumbnail(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_generate_thumbnail()
      * 
@@ -694,7 +694,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @param callback a function that will be called when the task has ended
      */
-    generate_thumbnail_async(uri: string | null, mime_type: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    generate_thumbnail_async(uri: string, mime_type: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of generate_thumbnail_async
 
@@ -709,7 +709,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @returns A Promise of: thumbnail pixbuf if thumbnailing succeeded, %NULL otherwise. Since 43.0
      */
-    generate_thumbnail_async(uri: string | null, mime_type: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>
+    generate_thumbnail_async(uri: string, mime_type: string, cancellable: Gio.Cancellable | null): globalThis.Promise<GdkPixbuf.Pixbuf>
     generate_thumbnail_finish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf
     /**
      * Tries to locate an failed thumbnail for the file specified. Writing
@@ -721,7 +721,7 @@ interface DesktopThumbnailFactory {
      * @param mtime the mtime of the file
      * @returns TRUE if there is a failed thumbnail for the file.
      */
-    has_valid_failed_thumbnail(uri: string | null, mtime: number): boolean
+    has_valid_failed_thumbnail(uri: string, mtime: number): boolean
     /**
      * Tries to locate an existing thumbnail for the file specified.
      * 
@@ -730,7 +730,7 @@ interface DesktopThumbnailFactory {
      * @param mtime the mtime of the file
      * @returns The absolute path of the thumbnail, or %NULL if none exist.
      */
-    lookup(uri: string | null, mtime: number): string | null
+    lookup(uri: string, mtime: number): string | null
     /**
      * Saves `thumbnail` at the right place. If the save fails a
      * failed thumbnail is written.
@@ -742,7 +742,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a GCancellable object, or NULL
      * @returns TRUE if everything went fine; FALSE if there was an error.
      */
-    save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null): boolean
+    save_thumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_save_thumbnail()
      * 
@@ -753,7 +753,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @param callback a function that will be called when the task has ended
      */
-    save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of save_thumbnail_async
 
@@ -769,7 +769,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @returns A Promise of: TRUE if the operation was correct; FALSE if there was an error Since 43.0
      */
-    save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, original_mtime: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    save_thumbnail_async(thumbnail: GdkPixbuf.Pixbuf, uri: string, original_mtime: number, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     save_thumbnail_finish(result: Gio.AsyncResult): boolean
 
     // Class property signals of GnomeDesktop-3.0.GnomeDesktop.DesktopThumbnailFactory
@@ -886,7 +886,7 @@ interface PnpIds {
      * @param pnp_id the PNP ID to look for
      * @returns a new string representing the manufacturer name, or %NULL when not found.
      */
-    get_pnp_id(pnp_id: string | null): string | null
+    get_pnp_id(pnp_id: string): string | null
 
     // Class property signals of GnomeDesktop-3.0.GnomeDesktop.PnpIds
 
@@ -1013,12 +1013,12 @@ interface RROutputInfo {
     get_preferred_height(): number
     get_preferred_width(): number
     get_primary(): boolean
-    get_product(): string | null
+    get_product(): string
     get_refresh_rate(): number
     get_rotation(): RRRotation
-    get_serial(): string | null
+    get_serial(): string
     get_underscanning(): boolean
-    get_vendor(): string | null
+    get_vendor(): string
     is_active(): boolean
     is_connected(): boolean
     is_primary_tile(): boolean
@@ -1118,7 +1118,7 @@ interface RRScreen extends Gio.AsyncInitable, Gio.Initable {
     get_crtc_by_id(id: number): RRCrtc
     get_dpms_mode(): [ /* returnType */ boolean, /* mode */ RRDpmsMode ]
     get_output_by_id(id: number): RROutput
-    get_output_by_name(name: string | null): RROutput
+    get_output_by_name(name: string): RROutput
     /**
      * Get the ranges of the screen
      */
@@ -1293,7 +1293,7 @@ interface WallClock {
      * according to the user settings.
      * @returns the time of the clock as a string.      This string points to internally allocated storage and      must not be freed, modified or stored.
      */
-    get_clock(): string | null
+    get_clock(): string
     /**
      * Returns the current local time zone used by this clock.
      * @returns the #GTimeZone of the clock.
@@ -1374,8 +1374,8 @@ interface XkbInfo {
 
     // Owm methods of GnomeDesktop-3.0.GnomeDesktop.XkbInfo
 
-    description_for_group(group_id: string | null): string | null
-    description_for_option(group_id: string | null, id: string | null): string | null
+    description_for_group(group_id: string): string
+    description_for_option(group_id: string, id: string): string
     /**
      * Returns a list of all layout identifiers we know about.
      * @returns the list of layout names. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
@@ -1392,7 +1392,7 @@ interface XkbInfo {
      * @param layout_id a layout identifier
      * @returns the list of ISO 639 code strings. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    get_languages_for_layout(layout_id: string | null): string[]
+    get_languages_for_layout(layout_id: string): string[]
     /**
      * Retrieves information about a layout. Both `display_name` and
      * `short_name` are suitable to show in UIs and might be localized if
@@ -1407,28 +1407,28 @@ interface XkbInfo {
      * @param id layout's identifier about which to retrieve the info
      * @returns %TRUE if the layout exists or %FALSE otherwise.
      */
-    get_layout_info(id: string | null): [ /* returnType */ boolean, /* display_name */ string | null, /* short_name */ string | null, /* xkb_layout */ string | null, /* xkb_variant */ string | null ]
+    get_layout_info(id: string): [ /* returnType */ boolean, /* display_name */ string | null, /* short_name */ string | null, /* xkb_layout */ string | null, /* xkb_variant */ string | null ]
     /**
      * Returns a list of all layout identifiers we know about for
      * `country_code`.
      * @param country_code an ISO 3166 code string
      * @returns the list of layout ids. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    get_layouts_for_country(country_code: string | null): string[]
+    get_layouts_for_country(country_code: string): string[]
     /**
      * Returns a list of all layout identifiers we know about for
      * `language_code`.
      * @param language_code an ISO 639 code string
      * @returns the list of layout ids. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    get_layouts_for_language(language_code: string | null): string[]
+    get_layouts_for_language(language_code: string): string[]
     /**
      * Returns a list of all option identifiers we know about for group
      * `group_id`.
      * @param group_id group's identifier about which to retrieve the options
      * @returns the list of option ids. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    get_options_for_group(group_id: string | null): string[]
+    get_options_for_group(group_id: string): string[]
 
     // Own signals of GnomeDesktop-3.0.GnomeDesktop.XkbInfo
 
@@ -1682,14 +1682,14 @@ interface RROutput {
     get_backlight(): number
     get_crtc(): RRCrtc
     get_current_mode(): RRMode
-    get_display_name(): string | null
+    get_display_name(): string
     get_edid_data(size: number): number
     get_id(): number
-    get_ids_from_edid(): [ /* vendor */ string | null, /* product */ string | null, /* serial */ string | null ]
+    get_ids_from_edid(): [ /* vendor */ string, /* product */ string, /* serial */ string ]
     get_is_primary(): boolean
     get_is_underscanning(): boolean
     get_min_backlight_step(): number
-    get_name(): string | null
+    get_name(): string
     get_physical_size(): [ /* width_mm */ number, /* height_mm */ number ]
     get_position(): [ /* x */ number, /* y */ number ]
     get_possible_crtcs(): RRCrtc[]

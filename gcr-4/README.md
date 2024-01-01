@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/gcr-4)
 
 
-GJS TypeScript type definitions for Gcr-4, generated from library version 4.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+GJS TypeScript type definitions for Gcr-4, generated from library version 4.1.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 A library for bits of crypto UI and parsing
 

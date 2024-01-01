@@ -44,29 +44,29 @@ enum WindowType {
     SPLASHSCREEN,
     UNKNOWN,
 }
-const APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED: string | null
-const APPLICATION_SIGNAL_WINDOW_ADDED: string | null
-const APPLICATION_SIGNAL_WINDOW_REMOVED: string | null
-const MATCHER_SIGNAL_ACTIVE_APPLICATION_CHANGED: string | null
-const MATCHER_SIGNAL_ACTIVE_WINDOW_CHANGED: string | null
-const MATCHER_SIGNAL_STACKING_ORDER_CHANGED: string | null
-const MATCHER_SIGNAL_VIEW_CLOSED: string | null
-const MATCHER_SIGNAL_VIEW_OPENED: string | null
-const VIEW_SIGNAL_ACTIVE_CHANGED: string | null
-const VIEW_SIGNAL_CHILD_ADDED: string | null
-const VIEW_SIGNAL_CHILD_MOVED: string | null
-const VIEW_SIGNAL_CHILD_REMOVED: string | null
-const VIEW_SIGNAL_CLOSED: string | null
-const VIEW_SIGNAL_ICON_CHANGED: string | null
-const VIEW_SIGNAL_NAME_CHANGED: string | null
-const VIEW_SIGNAL_RUNNING_CHANGED: string | null
-const VIEW_SIGNAL_STARTING_CHANGED: string | null
-const VIEW_SIGNAL_URGENT_CHANGED: string | null
-const VIEW_SIGNAL_USER_VISIBLE_CHANGED: string | null
-const WINDOW_SIGNAL_MAXIMIZED_CHANGED: string | null
-const WINDOW_SIGNAL_MONITOR_CHANGED: string | null
+const APPLICATION_SIGNAL_DESKTOP_FILE_UPDATED: string
+const APPLICATION_SIGNAL_WINDOW_ADDED: string
+const APPLICATION_SIGNAL_WINDOW_REMOVED: string
+const MATCHER_SIGNAL_ACTIVE_APPLICATION_CHANGED: string
+const MATCHER_SIGNAL_ACTIVE_WINDOW_CHANGED: string
+const MATCHER_SIGNAL_STACKING_ORDER_CHANGED: string
+const MATCHER_SIGNAL_VIEW_CLOSED: string
+const MATCHER_SIGNAL_VIEW_OPENED: string
+const VIEW_SIGNAL_ACTIVE_CHANGED: string
+const VIEW_SIGNAL_CHILD_ADDED: string
+const VIEW_SIGNAL_CHILD_MOVED: string
+const VIEW_SIGNAL_CHILD_REMOVED: string
+const VIEW_SIGNAL_CLOSED: string
+const VIEW_SIGNAL_ICON_CHANGED: string
+const VIEW_SIGNAL_NAME_CHANGED: string
+const VIEW_SIGNAL_RUNNING_CHANGED: string
+const VIEW_SIGNAL_STARTING_CHANGED: string
+const VIEW_SIGNAL_URGENT_CHANGED: string
+const VIEW_SIGNAL_USER_VISIBLE_CHANGED: string
+const WINDOW_SIGNAL_MAXIMIZED_CHANGED: string
+const WINDOW_SIGNAL_MONITOR_CHANGED: string
 interface TabPreviewReadyCallback {
-    (self: Tab, previewData: string | null): void
+    (self: Tab, previewData: string): void
 }
 module Application {
 
@@ -119,13 +119,13 @@ interface Application {
      * @returns %TRUE if found, %FALSE otherwise.
      */
     getApplicationMenu(): [ /* returnType */ boolean, /* name */ string | null, /* objectPath */ string | null ]
-    getApplicationType(): string | null
+    getApplicationType(): string
     /**
      * Used to fetch the path to the .desktop file associated with the passed application. If
      * none exists, the result is NULL.
      * @returns A string representing the path to the desktop file.
      */
-    getDesktopFile(): string | null
+    getDesktopFile(): string
     getFocusableChild(): View
     /**
      * Used to discover whether the application wants menu stubs shown.
@@ -248,8 +248,8 @@ interface Control {
     // Owm methods of Bamf-3.Bamf.Control
 
     createLocalDesktopFile(application: Application): void
-    insertDesktopFile(desktopFile: string | null): void
-    registerApplicationForPid(desktopFile: string | null, pid: number): void
+    insertDesktopFile(desktopFile: string): void
+    registerApplicationForPid(desktopFile: string, pid: number): void
     setApproverBehavior(behavior: number): void
 
     // Class property signals of Bamf-3.Bamf.Control
@@ -340,7 +340,7 @@ interface Matcher {
 
     // Owm methods of Bamf-3.Bamf.Matcher
 
-    applicationIsRunning(desktopFile: string | null): boolean
+    applicationIsRunning(desktopFile: string): boolean
     /**
      * Used to fetch the active #BamfApplication.
      * @returns The active #BamfApplication.
@@ -351,7 +351,7 @@ interface Matcher {
      * @returns The active #BamfWindow.
      */
     getActiveWindow(): Window
-    getApplicationForDesktopFile(desktopFilePath: string | null, createIfNotFound: boolean): Application
+    getApplicationForDesktopFile(desktopFilePath: string, createIfNotFound: boolean): Application
     /**
      * Used to fetch the #BamfApplication containing the passed window.
      * @param window The window to look for
@@ -406,7 +406,7 @@ interface Matcher {
      * @param desktopFile 
      * @returns A list of xids.
      */
-    getXidsForApplication(desktopFile: string | null): number[]
+    getXidsForApplication(desktopFile: string): number[]
     /**
      * Used to effect how bamf performs matching. Desktop files passed to this method will
      * be prefered by bamf to system desktop files.
@@ -505,9 +505,9 @@ interface Tab {
      * @returns %TRUE if success, %FALSE otherwise.
      */
     close(): boolean
-    // Has conflict: getDesktopName(): string | null
+    // Has conflict: getDesktopName(): string
     // Has conflict: getIsForegroundTab(): boolean
-    // Has conflict: getLocation(): string | null
+    // Has conflict: getLocation(): string
     // Has conflict: getXid(): number
     /**
      * Selects the `self` tab in the parent window.
@@ -523,9 +523,9 @@ interface Tab {
      * @virtual 
      * @returns The tab desktop id or %NULL if not set or available. Do not free the returned value, it belongs to @self.
      */
-    getDesktopName(): string | null
+    getDesktopName(): string
     getIsForegroundTab(): boolean
-    getLocation(): string | null
+    getLocation(): string
     /**
      * The desktop file for the tab.
      * @virtual 
@@ -726,7 +726,7 @@ interface View {
      * The view type of a window is a short string used to represent all views of the same class. These
      * descriptions should not be used to do casting as they are not considered stable.
      */
-    getViewType(): string | null
+    getViewType(): string
     hasChild(child: View): boolean
     // Has conflict: isActive(): boolean
     /**
@@ -794,7 +794,7 @@ interface View {
     isUserVisible(): boolean
     nameChanged(oldName: string | null, newName: string | null): void
     runningChanged(running: boolean): void
-    setPath(path: string | null): void
+    setPath(path: string): void
     setSticky(value: boolean): void
     startingChanged(starting: boolean): void
     urgentChanged(urgent: boolean): void
@@ -804,7 +804,7 @@ interface View {
      * descriptions should not be used to do casting as they are not considered stable.
      * @virtual 
      */
-    viewType(): string | null
+    viewType(): string
 
     // Own signals of Bamf-3.Bamf.View
 
@@ -963,7 +963,7 @@ interface Window {
     // Has conflict: getMonitor(): number
     // Has conflict: getPid(): number
     // Has conflict: getTransient(): Window
-    // Has conflict: getUtf8Prop(prop: string | null): string | null
+    // Has conflict: getUtf8Prop(prop: string): string | null
     // Has conflict: getWindowType(): WindowType
     // Has conflict: getXid(): number
     // Has conflict: lastActive(): number
@@ -974,7 +974,7 @@ interface Window {
     getMonitor(): number
     getPid(): number
     getTransient(): Window
-    getUtf8Prop(prop: string | null): string | null
+    getUtf8Prop(prop: string): string | null
     getWindowType(): WindowType
     getXid(): number
     lastActive(): number
@@ -1129,8 +1129,8 @@ interface TabClass {
     // Own fields of Bamf-3.Bamf.TabClass
 
     parentClass: ViewClass
-    getDesktopName: (self: Tab) => string | null
-    getLocation: (self: Tab) => string | null
+    getDesktopName: (self: Tab) => string
+    getLocation: (self: Tab) => string
     getXid: (self: Tab) => number
     getIsForegroundTab: (self: Tab) => boolean
 }
@@ -1164,8 +1164,8 @@ interface ViewClass {
     isUserVisible: (view: View) => boolean
     getName: (view: View) => string | null
     getIcon: (view: View) => string | null
-    viewType: (view: View) => string | null
-    setPath: (view: View, path: string | null) => void
+    viewType: (view: View) => string
+    setPath: (view: View, path: string) => void
     setSticky: (view: View, value: boolean) => void
     clickBehavior: (view: View) => ClickBehavior
     activeChanged: (view: View, active: boolean) => void
@@ -1209,7 +1209,7 @@ interface WindowClass {
     getXid: (self: Window) => number
     getPid: (self: Window) => number
     getMonitor: (self: Window) => number
-    getUtf8Prop: (self: Window, prop: string | null) => string | null
+    getUtf8Prop: (self: Window, prop: string) => string | null
     maximized: (self: Window) => WindowMaximizationType
     lastActive: (self: Window) => number
     monitorChanged: (window: Window, oldValue: number, newValue: number) => void

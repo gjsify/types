@@ -307,7 +307,7 @@ export function iconThemeErrorQuark(): GLib.Quark
  * @param text text from the clipboard
  */
 export interface ClipboardCallbackFunc {
-    (clipboard: Clipboard, text: string | null): void
+    (clipboard: Clipboard, text: string): void
 }
 /**
  * Callback function called when content is retrieved from the clipboard.
@@ -598,7 +598,7 @@ export interface Adjustment extends Clutter.Animatable {
      * @param name a unique name for the transition
      * @param transition a #ClutterTransition
      */
-    addTransition(name: string | null, transition: Clutter.Transition): void
+    addTransition(name: string, transition: Clutter.Transition): void
     /**
      * Adjusts the adjustment using delta values from a scroll event.
      * You should use this instead of using st_adjustment_set_value()
@@ -621,7 +621,7 @@ export interface Adjustment extends Clutter.Animatable {
      * @param name a transition name
      * @returns a #ClutterTransition
      */
-    getTransition(name: string | null): Clutter.Transition | null
+    getTransition(name: string): Clutter.Transition | null
     /**
      * Gets the current value of the adjustment. See st_adjustment_set_value().
      * @returns The current value of the adjustment
@@ -631,7 +631,7 @@ export interface Adjustment extends Clutter.Animatable {
      * Gets all of `adjustment'`s values at once.
      */
     getValues(): [ /* value */ number, /* lower */ number, /* upper */ number, /* stepIncrement */ number, /* pageIncrement */ number, /* pageSize */ number ]
-    removeTransition(name: string | null): void
+    removeTransition(name: string): void
     /**
      * Sets the #StAdjustment value. The value is clamped to lie between
      * #StAdjustment:lower and #StAdjustment:upper - #StAdjustment:page-size.
@@ -1994,7 +1994,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * will be returned instead of %NULL.
      * @returns the text for the button
      */
-    getLabel(): string | null
+    getLabel(): string
     /**
      * Get the toggle mode status of the button.
      * @returns %TRUE if toggle mode is set, otherwise %FALSE
@@ -2018,7 +2018,7 @@ export interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * be removed and replaced with the icon.
      * @param iconName an icon name
      */
-    setIconName(iconName: string | null): void
+    setIconName(iconName: string): void
     /**
      * Sets the text displayed on the button.
      * @param text text to set the label to
@@ -2539,7 +2539,7 @@ export class Button extends Bin {
      * @param text text to set the label to
      * @returns a new #StButton
      */
-    static newWithLabel(text: string | null): Button
+    static newWithLabel(text: string): Button
     _init(config?: Button.ConstructorProperties): void
 }
 
@@ -2567,7 +2567,7 @@ export interface Clipboard {
      * @param mimetype The mimetype to get content for
      * @param callback function to be called when the type is retrieved
      */
-    getContent(type: ClipboardType, mimetype: string | null, callback: ClipboardContentCallbackFunc): void
+    getContent(type: ClipboardType, mimetype: string, callback: ClipboardContentCallbackFunc): void
     /**
      * Gets a list of the mimetypes supported by the default #StClipboard.
      * @param type 
@@ -2589,13 +2589,13 @@ export interface Clipboard {
      * @param mimetype content mimetype
      * @param bytes content data
      */
-    setContent(type: ClipboardType, mimetype: string | null, bytes: any): void
+    setContent(type: ClipboardType, mimetype: string, bytes: any): void
     /**
      * Sets text as the current contents of the clipboard.
      * @param type The type of clipboard that you want to set
      * @param text text to copy to the clipboard
      */
-    setText(type: ClipboardType, text: string | null): void
+    setText(type: ClipboardType, text: string): void
 
     // Class property signals of St-12.St.Clipboard
 
@@ -3299,7 +3299,7 @@ export interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * be returned instead of %NULL.
      * @returns the text for the entry
      */
-    getText(): string | null
+    getText(): string
     /**
      * Set the hint actor of the entry to `hint_actor`.
      * @param hintActor a #ClutterActor
@@ -4008,7 +4008,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -4034,7 +4034,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -4042,7 +4042,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -4051,7 +4051,7 @@ export interface GenericAccessible extends Atk.Action, Atk.Component, Atk.Value 
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 
@@ -4287,7 +4287,7 @@ export interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * #GThemedIcon that is currently set.
      * @returns The name of the icon or %NULL if no icon is set
      */
-    getFallbackIconName(): string | null
+    getFallbackIconName(): string
     /**
      * Gets the current #GIcon in use.
      * @returns The current #GIcon, if set, otherwise %NULL
@@ -5008,7 +5008,7 @@ export interface IconTheme {
      * of a subdirectory are also considered as ultimate fallback.
      * @param path a resource path
      */
-    addResourcePath(path: string | null): void
+    addResourcePath(path: string): void
     /**
      * Appends a directory to the search path.
      * See st_icon_theme_set_search_path().
@@ -5056,7 +5056,7 @@ export interface IconTheme {
      * @param iconName the name of an icon
      * @returns An newly allocated array describing the sizes at which the icon is available. The array should be freed with g_free() when it is no longer needed.
      */
-    getIconSizes(iconName: string | null): number[]
+    getIconSizes(iconName: string): number[]
     /**
      * Gets the current search path. See st_icon_theme_set_search_path().
      */
@@ -5067,7 +5067,7 @@ export interface IconTheme {
      * @param iconName the name of an icon
      * @returns %TRUE if @icon_theme includes an  icon for @icon_name.
      */
-    hasIcon(iconName: string | null): boolean
+    hasIcon(iconName: string): boolean
     /**
      * Gets the list of contexts available within the current
      * hierarchy of icon themes.
@@ -5107,7 +5107,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use g_object_unref() to release     your reference to the icon. %NULL if the icon isn’t found.
      */
-    loadIcon(iconName: string | null, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
+    loadIcon(iconName: string, size: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
     /**
      * Looks up an icon in an icon theme for a particular window scale,
      * scales it to the given size and renders it into a pixbuf. This is a
@@ -5128,7 +5128,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns the rendered icon; this may be     a newly created icon or a new reference to an internal icon, so     you must not modify the icon. Use g_object_unref() to release     your reference to the icon. %NULL if the icon isn’t found.
      */
-    loadIconForScale(iconName: string | null, size: number, scale: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
+    loadIconForScale(iconName: string, size: number, scale: number, flags: IconLookupFlags): GdkPixbuf.Pixbuf | null
     /**
      * Looks up an icon and returns a #StIconInfo containing information
      * such as the filename of the icon. The icon can then be rendered
@@ -5173,7 +5173,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
      */
-    lookupIcon(iconName: string | null, size: number, flags: IconLookupFlags): IconInfo | null
+    lookupIcon(iconName: string, size: number, flags: IconLookupFlags): IconInfo | null
     /**
      * Looks up a named icon for a particular window scale and returns a
      * #StIconInfo containing information such as the filename of the
@@ -5186,7 +5186,7 @@ export interface IconTheme {
      * @param flags flags modifying the behavior of the icon lookup
      * @returns a #StIconInfo object     containing information about the icon, or %NULL if the     icon wasn’t found.
      */
-    lookupIconForScale(iconName: string | null, size: number, scale: number, flags: IconLookupFlags): IconInfo | null
+    lookupIconForScale(iconName: string, size: number, scale: number, flags: IconLookupFlags): IconInfo | null
     /**
      * Prepends a directory to the search path.
      * See st_icon_theme_set_search_path().
@@ -5365,7 +5365,7 @@ export interface ImageContent extends Clutter.Content, Gio.Icon, Gio.LoadableIco
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -5380,7 +5380,7 @@ export interface ImageContent extends Clutter.Content, Gio.Icon, Gio.LoadableIco
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of St-12.St.ImageContent
 
@@ -5471,7 +5471,7 @@ export interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * Get the text displayed on the label.
      * @returns the text for the label. This must not be freed by the application
      */
-    getText(): string | null
+    getText(): string
     /**
      * Sets the text displayed by the label.
      * @param text text to set the label to
@@ -8015,7 +8015,7 @@ export interface TextureCache {
      * @param propertyName Name of a property
      * @returns A new #GIcon
      */
-    bindCairoSurfaceProperty(object: GObject.Object, propertyName: string | null): Gio.Icon
+    bindCairoSurfaceProperty(object: GObject.Object, propertyName: string): Gio.Icon
     /**
      * Create a #GIcon from `surface`.
      * @param surface A #cairo_surface_t
@@ -8535,7 +8535,7 @@ export interface ThemeNode {
      * indicated color.
      * @param propertyName The name of the color property
      */
-    getColor(propertyName: string | null): /* color */ Clutter.Color
+    getColor(propertyName: string): /* color */ Clutter.Color
     /**
      * Gets the box within an actor's allocation that contents the content
      * of an actor (excluding borders and padding). This is a convenience function
@@ -8554,7 +8554,7 @@ export interface ThemeNode {
      * @param propertyName The name of the numeric property
      * @returns the value found. If @property_name is not  found, a warning will be logged and 0 will be returned.
      */
-    getDouble(propertyName: string | null): number
+    getDouble(propertyName: string): number
     /**
      * Get the list of element classes for `node`.
      * @returns the element's classes
@@ -8564,7 +8564,7 @@ export interface ThemeNode {
      * Get the unique element ID for `node`.
      * @returns the element's ID
      */
-    getElementId(): string | null
+    getElementId(): string
     /**
      * Get the element #GType for `node`.
      * @returns the element type
@@ -8621,7 +8621,7 @@ export interface ThemeNode {
      * @param propertyName The name of the length property
      * @returns the length, in pixels, or 0 if the property was not found.
      */
-    getLength(propertyName: string | null): number
+    getLength(propertyName: string): number
     /**
      * Gets the value for the letter-spacing style property, in physical pixels.
      * @returns the value of the letter-spacing property, if   found, or zero if such property has not been found.
@@ -8701,7 +8701,7 @@ export interface ThemeNode {
      * @param propertyName The name of the shadow property
      * @returns the shadow, or %NULL if the property was   not found.
      */
-    getShadow(propertyName: string | null): Shadow | null
+    getShadow(propertyName: string): Shadow | null
     /**
      * Get the text alignment of `node`.
      * @returns the alignment of text for @node
@@ -8738,7 +8738,7 @@ export interface ThemeNode {
      * @param propertyName The name of the string property
      * @returns the newly allocated value if found.  If @property_name is not found, a warning will be logged and %NULL  will be returned.
      */
-    getUrl(propertyName: string | null): Gio.File | null
+    getUrl(propertyName: string): Gio.File | null
     /**
      * Gets the total vertical padding (top + bottom padding), in physical pixels.
      * @returns the total vertical padding in physical pixels
@@ -8767,7 +8767,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookupColor(propertyName: string | null, inherit: boolean): [ /* returnType */ boolean, /* color */ Clutter.Color ]
+    lookupColor(propertyName: string, inherit: boolean): [ /* returnType */ boolean, /* color */ Clutter.Color ]
     /**
      * Generically looks up a property containing a single numeric value
      *  without units.
@@ -8777,7 +8777,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookupDouble(propertyName: string | null, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
+    lookupDouble(propertyName: string, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Generically looks up a property containing a single length value. When
      * specific getters (like st_theme_node_get_border_width()) exist, they
@@ -8789,7 +8789,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookupLength(propertyName: string | null, inherit: boolean): [ /* returnType */ boolean, /* length */ number ]
+    lookupLength(propertyName: string, inherit: boolean): [ /* returnType */ boolean, /* length */ number ]
     /**
      * If the property is not found, the value in the shadow variable will not
      * be changed.
@@ -8804,7 +8804,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this   theme node (or in the properties of parent nodes when inheriting.), %FALSE   if the property was not found, or was explicitly set to 'none'.
      */
-    lookupShadow(propertyName: string | null, inherit: boolean): [ /* returnType */ boolean, /* shadow */ Shadow ]
+    lookupShadow(propertyName: string, inherit: boolean): [ /* returnType */ boolean, /* shadow */ Shadow ]
     /**
      * Generically looks up a property containing a single time value,
      *  which is converted to milliseconds.
@@ -8812,7 +8812,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookupTime(propertyName: string | null, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
+    lookupTime(propertyName: string, inherit: boolean): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Looks up a property containing a single URL value.
      * 
@@ -8821,7 +8821,7 @@ export interface ThemeNode {
      * @param inherit if %TRUE, if a value is not found for the property on the   node, then it will be looked up on the parent node, and then on the   parent's parent, and so forth. Note that if the property has a   value of 'inherit' it will be inherited even if %FALSE is passed   in for `inherit;` this only affects the default behavior for inheritance.
      * @returns %TRUE if the property was found in the properties for this  theme node (or in the properties of parent nodes when inheriting.)
      */
-    lookupUrl(propertyName: string | null, inherit: boolean): [ /* returnType */ boolean, /* file */ Gio.File ]
+    lookupUrl(propertyName: string, inherit: boolean): [ /* returnType */ boolean, /* file */ Gio.File ]
     /**
      * Check if st_theme_node_paint() will paint identically for `node` as it does
      * for `other`. Note that in some cases this function may return %TRUE even
@@ -8876,7 +8876,7 @@ export class ThemeNode extends GObject.Object {
      * @param inlineStyle 
      * @returns a new #StThemeNode
      */
-    constructor(context: ThemeContext, parentNode: ThemeNode | null, theme: Theme | null, elementType: GObject.GType, elementId: string | null, elementClass: string | null, pseudoClass: string | null, inlineStyle: string | null) 
+    constructor(context: ThemeContext, parentNode: ThemeNode | null, theme: Theme | null, elementType: GObject.GType, elementId: string | null, elementClass: string | null, pseudoClass: string | null, inlineStyle: string) 
     /**
      * Creates a new #StThemeNode. Once created, a node is immutable. If any
      * of the attributes of the node (like the `element_class)` change the node
@@ -8892,7 +8892,7 @@ export class ThemeNode extends GObject.Object {
      * @param inlineStyle 
      * @returns a new #StThemeNode
      */
-    static new(context: ThemeContext, parentNode: ThemeNode | null, theme: Theme | null, elementType: GObject.GType, elementId: string | null, elementClass: string | null, pseudoClass: string | null, inlineStyle: string | null): ThemeNode
+    static new(context: ThemeContext, parentNode: ThemeNode | null, theme: Theme | null, elementType: GObject.GType, elementId: string | null, elementClass: string | null, pseudoClass: string | null, inlineStyle: string): ThemeNode
     _init(config?: ThemeNode.ConstructorProperties): void
 }
 
@@ -9512,13 +9512,13 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * already present.
      * @param styleClass a style class name string
      */
-    addStyleClassName(styleClass: string | null): void
+    addStyleClassName(styleClass: string): void
     /**
      * Adds `pseudo_class` to `actor'`s pseudo class list, if it is not
      * already present.
      * @param pseudoClass a pseudo class string
      */
-    addStylePseudoClass(pseudoClass: string | null): void
+    addStylePseudoClass(pseudoClass: string): void
     /**
      * Ensures that `widget` has read its style information and propagated any
      * changes to its children.
@@ -9529,7 +9529,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * st_widget_set_accessible_name() for more information.
      * @returns a character string representing the accessible name of the widget.
      */
-    getAccessibleName(): string | null
+    getAccessibleName(): string
     /**
      * Gets the #AtkRole for this widget. See
      * st_widget_set_accessible_role() for more information.
@@ -9563,7 +9563,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * Get the current style class name
      * @returns the class name string. The string is owned by the #StWidget and should not be modified or freed.
      */
-    getStyleClassName(): string | null
+    getStyleClassName(): string
     /**
      * Get the current style pseudo class list.
      * 
@@ -9572,7 +9572,7 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * st_widget_has_style_pseudo_class().
      * @returns the pseudo class list string. The string is owned by the #StWidget and should not be modified or freed.
      */
-    getStylePseudoClass(): string | null
+    getStylePseudoClass(): string
     /**
      * Gets the theme node holding style information for the widget.
      * The theme node is used to access standard and custom CSS
@@ -9594,13 +9594,13 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param styleClass a style class string
      * @returns whether or not @actor's style class list includes @style_class.
      */
-    hasStyleClassName(styleClass: string | null): boolean
+    hasStyleClassName(styleClass: string): boolean
     /**
      * Tests if `actor'`s pseudo class list includes `pseudo_class`.
      * @param pseudoClass a pseudo class string
      * @returns whether or not @actor's pseudo class list includes @pseudo_class.
      */
-    hasStylePseudoClass(pseudoClass: string | null): boolean
+    hasStylePseudoClass(pseudoClass: string): boolean
     // Has conflict: navigateFocus(from: Clutter.Actor | null, direction: DirectionType, wrapAround: boolean): boolean
     /**
      * Paint the background of the widget. This is meant to be called by
@@ -9629,12 +9629,12 @@ export interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * present.
      * @param styleClass a style class name string
      */
-    removeStyleClassName(styleClass: string | null): void
+    removeStyleClassName(styleClass: string): void
     /**
      * Removes `pseudo_class` from `actor'`s pseudo class, if it is present.
      * @param pseudoClass a pseudo class string
      */
-    removeStylePseudoClass(pseudoClass: string | null): void
+    removeStylePseudoClass(pseudoClass: string): void
     /**
      * This method allows to set a customly created accessible object to
      * this widget. For example if you define a new subclass of
@@ -10244,7 +10244,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -10270,7 +10270,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -10278,7 +10278,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -10287,7 +10287,7 @@ export interface WidgetAccessible extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 

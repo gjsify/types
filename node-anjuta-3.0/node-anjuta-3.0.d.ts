@@ -259,7 +259,7 @@ enum VcsStatus {
     IGNORED,
     ALL,
 }
-const SYSTEM_PROFILE_NAME: string | null
+const SYSTEM_PROFILE_NAME: string
 const VCS_DEFAULT_STATUS_CODES: number
 function cclosureMarshalVOIDBOXEDENUM(closure: GObject.TClosure, returnValue: any, nParamValues: number, paramValues: any, invocationHint: any | null, marshalData: any | null): void
 function cclosureMarshalVOIDINTINTULONG(closure: GObject.TClosure, returnValue: any, nParamValues: number, paramValues: any, invocationHint: any | null, marshalData: any | null): void
@@ -276,32 +276,32 @@ function cclosureMarshalVOIDSTRINGPOINTER(closure: GObject.TClosure, returnValue
  */
 function checkAutogen(): boolean
 function convertErrorQuark(): GLib.Quark
-function convertFromUtf8(content: string | null, len: number, encoding: Encoding, newLen: number): string | null
-function convertToUtf8(content: string | null, len: number, encoding: Encoding, newLen: number): string | null
+function convertFromUtf8(content: string, len: number, encoding: Encoding, newLen: number): string | null
+function convertToUtf8(content: string, len: number, encoding: Encoding, newLen: number): string | null
 function encodingGetCurrent(): Encoding
-function encodingGetFromCharset(charset: string | null): Encoding
+function encodingGetFromCharset(charset: string): Encoding
 function encodingGetFromIndex(index: number): Encoding
 function encodingGetUtf8(): Encoding
-function pkgConfigGetVersion(package: string | null): string | null
-function pkgConfigIgnorePackage(name: string | null): boolean
+function pkgConfigGetVersion(package: string): string | null
+function pkgConfigIgnorePackage(name: string): boolean
 function pluginDescriptionParseErrorQuark(): GLib.Quark
 function pluginManagerErrorQuark(): GLib.Quark
 function profileErrorQuark(): GLib.Quark
 function resGetDataDir(): string | null
-function resGetDataFile(pixfile: string | null): string | null
+function resGetDataFile(pixfile: string): string | null
 function resGetDocDir(): string | null
-function resGetDocFile(docfile: string | null): string | null
+function resGetDocFile(docfile: string): string | null
 function resGetHelpDir(): string | null
-function resGetHelpDirLocale(locale: string | null): string | null
-function resGetHelpFile(helpfile: string | null): string | null
-function resGetHelpFileLocale(helpfile: string | null, locale: string | null): string | null
+function resGetHelpDirLocale(locale: string): string | null
+function resGetHelpFile(helpfile: string): string | null
+function resGetHelpFileLocale(helpfile: string, locale: string): string | null
 function resGetPixmapDir(): string | null
-function resGetPixmapFile(pixfile: string | null): string | null
-function resHelpSearch(word: string | null): void
-function resUrlShow(url: string | null): void
+function resGetPixmapFile(pixfile: string): string | null
+function resHelpSearch(word: string): void
+function resUrlShow(url: string): void
 function shellErrorQuark(): GLib.Quark
-function utilColorFromString(val: string | null, r: number, g: number, b: number): void
-function utilConvertToUtf8(str: string | null): string | null
+function utilColorFromString(val: string, r: number, g: number, b: number): void
+function utilConvertToUtf8(str: string): string | null
 /**
  * Copies `src` to `dest` and shows a dialog error in case is needed.
  * @param src the file where copy
@@ -309,20 +309,20 @@ function utilConvertToUtf8(str: string | null): string | null
  * @param showError %TRUE to show a dialog error
  * @returns %TRUE if there was an error copying the file.
  */
-function utilCopyFile(src: string | null, dest: string | null, showError: boolean): boolean
-function utilCreateDir(d: string | null): boolean
-function utilDialogInput(parent: Gtk.Window, label: string | null, defaultValue: string | null, value: string | null): boolean
-function utilDiff(uri: string | null, text: string | null): boolean
-function utilEscapeQuotes(str: string | null): string | null
-function utilExecuteShell(dir: string | null, command: string | null): GLib.Pid
-function utilExecuteTerminalShell(dir: string | null, command: string | null): GLib.Pid
+function utilCopyFile(src: string, dest: string, showError: boolean): boolean
+function utilCreateDir(d: string): boolean
+function utilDialogInput(parent: Gtk.Window, label: string, defaultValue: string, value: string | null): boolean
+function utilDiff(uri: string, text: string): boolean
+function utilEscapeQuotes(str: string): string | null
+function utilExecuteShell(dir: string, command: string): GLib.Pid
+function utilExecuteTerminalShell(dir: string, command: string): GLib.Pid
 /**
  * Create a new file corresponding to arg, unlike g_file_new_for_commandline_arg,
  * keeps symbolic links in path name.
  * @param arg URI or relative or absolute file path
  * @returns A new GFile object
  */
-function utilFileNewForCommandlineArg(arg: string | null): Gio.File
+function utilFileNewForCommandlineArg(arg: string): Gio.File
 function utilGetATmpFile(): string | null
 /**
  * Get current working directory, unlike g_get_current_dir, keeps symbolic links
@@ -332,10 +332,10 @@ function utilGetATmpFile(): string | null
 function utilGetCurrentDir(): string | null
 function utilGetFileInfoMimeType(info: Gio.FileInfo): string | null
 function utilGetFileMimeType(file: Gio.File): string | null
-function utilGetLocalPathFromUri(uri: string | null): string | null
-function utilGetRealPath(path: string | null): string | null
+function utilGetLocalPathFromUri(uri: string): string | null
+function utilGetRealPath(path: string): string | null
 function utilGetUserMail(): string | null
-function utilHelpDisplay(parent: Gtk.Widget, docId: string | null, item: string | null): void
+function utilHelpDisplay(parent: Gtk.Widget, docId: string, item: string): void
 function utilInstallFiles(names: string): boolean
 /**
  * Return %TRUE if the file is an anjuta project file. It is implemented by
@@ -345,7 +345,7 @@ function utilInstallFiles(names: string): boolean
  * @param filename the file name
  * @returns %TRUE if the file is a project file, else %FALSE
  */
-function utilIsProjectFile(filename: string | null): boolean
+function utilIsProjectFile(filename: string): boolean
 /**
  * Return %TRUE if the file is an template project file. It is implemented by
  * checking only the file extension. So it does not check the existence
@@ -354,29 +354,29 @@ function utilIsProjectFile(filename: string | null): boolean
  * @param filename the file name
  * @returns %TRUE if the file is a template file, else %FALSE
  */
-function utilIsTemplateFile(filename: string | null): boolean
-function utilPackageIsInstalled(lib: string | null, show: boolean): boolean
+function utilIsTemplateFile(filename: string): boolean
+function utilPackageIsInstalled(lib: string, show: boolean): boolean
 /**
  * Parse arguments from a string to a GList.
  * @param string arguments
  * @returns A newly allocated GList of strings.
  */
-function utilParseArgsFromString(string: string | null): string[]
-function utilProgIsInstalled(prog: string | null, show: boolean): boolean
-function utilReplaceHomeDirWithTilde(uri: string | null): string | null
-function utilSetAnjutaPrefix(name: string | null): void
-function utilSetUserMail(id: string | null): void
+function utilParseArgsFromString(string: string): string[]
+function utilProgIsInstalled(prog: string, show: boolean): boolean
+function utilReplaceHomeDirWithTilde(uri: string): string | null
+function utilSetAnjutaPrefix(name: string): void
+function utilSetUserMail(id: string): void
 /**
  * Expand environment variables $(var_name) and tilde (~) in the input string.
  * @param string input string
  * @returns a newly-allocated string that must be freed with g_free().
  */
-function utilShellExpand(string: string | null): string | null
-function utilStrMiddleTruncate(string: string | null, truncateLength: number): string | null
+function utilShellExpand(string: string): string | null
+function utilStrMiddleTruncate(string: string, truncateLength: number): string | null
 function utilStringFromColor(r: number, g: number, b: number): string | null
-function utilStringFromType(map: UtilStringMap, type: number): string | null
-function utilTypeFromString(map: UtilStringMap, str: string | null): number
-function utilUriGetDirname(uri: string | null): string | null
+function utilStringFromType(map: UtilStringMap, type: number): string
+function utilTypeFromString(map: UtilStringMap, str: string): number
+function utilUriGetDirname(uri: string): string | null
 /**
  * Retrieves the user's preferred shell.
  * @returns A newly allocated string that is the path to the shell.
@@ -403,13 +403,13 @@ interface AutogenFunc {
  * @param data user data passed to the callback.
  */
 interface AutogenOutputFunc {
-    (output: string | null, data: any | null): void
+    (output: string, data: any | null): void
 }
 interface CompletionFilterFunc {
     (item: any | null): boolean
 }
 interface CompletionNameFunc {
-    (item: any | null): string | null
+    (item: any | null): string
 }
 /**
  * This callback is called when new characters arrive from the launcher
@@ -420,13 +420,13 @@ interface CompletionNameFunc {
  * @param chars Characters being outputed
  */
 interface LauncherOutputCallback {
-    (launcher: Launcher, outputType: LauncherOutputType, chars: string | null): void
+    (launcher: Launcher, outputType: LauncherOutputType, chars: string): void
 }
 interface PluginDescriptionLineFunc {
-    (df: PluginDescription, key: string | null, locale: string | null, value: string | null, data: any | null): void
+    (df: PluginDescription, key: string, locale: string, value: string, data: any | null): void
 }
 interface PluginDescriptionSectionFunc {
-    (df: PluginDescription, name: string | null): void
+    (df: PluginDescription, name: string): void
 }
 /**
  * The callback to pass to anjuta_plugin_add_watch(). When a `name` value
@@ -437,7 +437,7 @@ interface PluginDescriptionSectionFunc {
  * @param value value of value being added.
  */
 interface PluginValueAdded {
-    (plugin: Plugin, name: string | null, value: any): void
+    (plugin: Plugin, name: string, value: any): void
 }
 /**
  * The callback to pass to anjuta_plugin_add_watch(). When the `name` value
@@ -448,10 +448,10 @@ interface PluginValueAdded {
  * @param name name of value being added.
  */
 interface PluginValueRemoved {
-    (plugin: Plugin, name: string | null): void
+    (plugin: Plugin, name: string): void
 }
 interface PreferencesCallback {
-    (pr: Preferences, key: string | null, data: any | null): boolean
+    (pr: Preferences, key: string, data: any | null): boolean
 }
 interface ProjectNodeForeachFunc {
     (node: ProjectNode): void
@@ -520,7 +520,7 @@ interface Shell {
 
     // Owm methods of Anjuta-3.0.Anjuta.Shell
 
-    // Has conflict: addValue(name: string | null, value: any): void
+    // Has conflict: addValue(name: string, value: any): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -531,9 +531,9 @@ interface Shell {
      * @param stockId Icon stock ID. Could be null.
      * @param placement Placement of the widget in shell.
      */
-    addWidget(widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, placement: ShellPlacement): void
-    // Has conflict: addWidgetCustom(widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, label: Gtk.Widget, placement: ShellPlacement): void
-    // Has conflict: addWidgetFull(widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, placement: ShellPlacement, locked: boolean): void
+    addWidget(widget: Gtk.Widget, name: string, title: string, stockId: string, placement: ShellPlacement): void
+    // Has conflict: addWidgetCustom(widget: Gtk.Widget, name: string, title: string, stockId: string, label: Gtk.Widget, placement: ShellPlacement): void
+    // Has conflict: addWidgetFull(widget: Gtk.Widget, name: string, title: string, stockId: string, placement: ShellPlacement, locked: boolean): void
     /**
      * Freezes addition of any UI elements (widgets) in the shell. All widget
      * additions are queued for later additions when freeze count reaches 0.
@@ -542,24 +542,24 @@ interface Shell {
      * 1 and real thawing happens when the count reaches 0.
      */
     freeze(): void
-    // Has conflict: getObject(ifaceName: string | null): GObject.Object
+    // Has conflict: getObject(ifaceName: string): GObject.Object
     // Has conflict: getPluginManager(): PluginManager
     // Has conflict: getPreferences(): Preferences
     // Has conflict: getProfileManager(): ProfileManager
     // Has conflict: getStatus(): Status
     // Has conflict: getUi(): UI
-    // Has conflict: getValue(name: string | null, value: any): void
+    // Has conflict: getValue(name: string, value: any): void
     // Has conflict: hideDockableWidget(widget: Gtk.Widget): void
     // Has conflict: iconifyDockableWidget(widget: Gtk.Widget): void
-    // Has conflict: maximizeWidget(widgetName: string | null): void
+    // Has conflict: maximizeWidget(widgetName: string): void
     // Has conflict: presentWidget(widget: Gtk.Widget): void
-    // Has conflict: removeValue(name: string | null): void
+    // Has conflict: removeValue(name: string): void
     // Has conflict: removeWidget(widget: Gtk.Widget): void
     // Has conflict: savePrompt(prompt: SavePrompt): void
     // Has conflict: savingPop(): void
     // Has conflict: savingPush(): void
-    sessionLoad(sessionDirectory: string | null): void
-    sessionSave(sessionDirectory: string | null): void
+    sessionLoad(sessionDirectory: string): void
+    sessionSave(sessionDirectory: string): void
     // Has conflict: showDockableWidget(widget: Gtk.Widget): void
     /**
      * Reduces the freeze count by one and performs pending widget additions
@@ -578,7 +578,7 @@ interface Shell {
      * @param name Name of the value
      * @param value Value to add
      */
-    addValue(name: string | null, value: any): void
+    addValue(name: string, value: any): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -593,7 +593,7 @@ interface Shell {
      * @param label Label widget to use
      * @param placement Placement of the widget in shell.
      */
-    addWidgetCustom(widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, label: Gtk.Widget, placement: ShellPlacement): void
+    addWidgetCustom(widget: Gtk.Widget, name: string, title: string, stockId: string, label: Gtk.Widget, placement: ShellPlacement): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -609,7 +609,7 @@ interface Shell {
      * @param placement Placement of the widget in shell.
      * @param locked Whether to lock that widget (do not use this, it's only 			useful to some stock plugins
      */
-    addWidgetFull(widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, placement: ShellPlacement, locked: boolean): void
+    addWidgetFull(widget: Gtk.Widget, name: string, title: string, stockId: string, placement: ShellPlacement, locked: boolean): void
     /**
      * Searches the currently available plugins to find the one which
      * implements the given interface as primary interface and returns it. If
@@ -631,7 +631,7 @@ interface Shell {
      * @param ifaceName The interface implemented by the object to be found
      * @returns A plugin object implementing the primary interface or %NULL.
      */
-    getObject(ifaceName: string | null): GObject.Object
+    getObject(ifaceName: string): GObject.Object
     /**
      * Retrieves the #AnjutaPluginManager object associated with the shell.
      * @virtual 
@@ -669,7 +669,7 @@ interface Shell {
      * @param name Name of the value to get
      * @param value Value to get
      */
-    getValue(name: string | null, value: any): void
+    getValue(name: string, value: any): void
     /**
      * If the widget is dockable, it hides it.
      * @virtual 
@@ -688,7 +688,7 @@ interface Shell {
      * @virtual 
      * @param widgetName Name of the widget to be maximized.
      */
-    maximizeWidget(widgetName: string | null): void
+    maximizeWidget(widgetName: string): void
     /**
      * Make sure the widget is visible to user. If the widget is hidden, it will
      * be shown. If it is not visible to user, it will be made visible.
@@ -703,7 +703,7 @@ interface Shell {
      * @virtual 
      * @param name Name of the value to remove
      */
-    removeValue(name: string | null): void
+    removeValue(name: string): void
     /**
      * Removes the widget from shell. The widget should have been added before
      * with #anjuta_shell_add_widget.
@@ -855,7 +855,7 @@ class AsyncCommand extends Command {
      * @param command AnjutaAsyncCommand object
      * @param errorMessage The error message that should be used
      */
-    static setErrorMessage(command: Command, errorMessage: string | null): void
+    static setErrorMessage(command: Command, errorMessage: string): void
 }
 
 module AsyncNotify {
@@ -1010,7 +1010,7 @@ interface Autogen {
      * @param endMarker end marker string
      * @returns %TRUE if the file has been read without error.
      */
-    setInputFile(filename: string | null, startMarker: string | null, endMarker: string | null): boolean
+    setInputFile(filename: string, startMarker: string | null, endMarker: string | null): boolean
     /**
      * Add a new directory in the list of autogen libraries path.
      * 
@@ -1019,7 +1019,7 @@ interface Autogen {
      * add other directories.
      * @param directory A path containing autogen library.
      */
-    setLibraryPath(directory: string | null): void
+    setLibraryPath(directory: string): void
     /**
      * Define that autogen output should be send to a function as soon as it arrives.
      * @param func Function call each time we get new data from autogen
@@ -1031,7 +1031,7 @@ interface Autogen {
      * @param filename name of the generated file
      * @returns %TRUE if the file has been set without error.
      */
-    setOutputFile(filename: string | null): boolean
+    setOutputFile(filename: string): boolean
     /**
      * Write the autogen definition file. The definition file defined variables
      * those will be used, typically replaced, in the template files.
@@ -1171,7 +1171,7 @@ class CModule extends GObject.TypeModule {
      * @param name The name of the module
      * @returns a new #AnjutaCModule object.
      */
-    constructor(path: string | null, name: string | null) 
+    constructor(path: string, name: string) 
     /**
      * Create a new #AnjutaCModule object.
      * @constructor 
@@ -1179,7 +1179,7 @@ class CModule extends GObject.TypeModule {
      * @param name The name of the module
      * @returns a new #AnjutaCModule object.
      */
-    static new(path: string | null, name: string | null): CModule
+    static new(path: string, name: string): CModule
     _init(config?: CModule.ConstructorProperties): void
 }
 
@@ -1418,7 +1418,7 @@ interface CellRendererDiff {
 
     // Owm methods of Anjuta-3.0.Anjuta.CellRendererDiff
 
-    setDiff(diff: string | null): void
+    setDiff(diff: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.CellRendererDiff
 
@@ -1598,7 +1598,7 @@ interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activata
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1619,7 +1619,7 @@ interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activata
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1632,7 +1632,7 @@ interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activata
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -1642,7 +1642,7 @@ interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activata
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1655,7 +1655,7 @@ interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activata
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1664,13 +1664,13 @@ interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activata
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.CloseButton
 
@@ -2011,13 +2011,13 @@ interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2030,13 +2030,13 @@ interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2049,7 +2049,7 @@ interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2058,7 +2058,7 @@ interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2070,7 +2070,7 @@ interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2428,7 +2428,7 @@ interface Command {
     // Has conflict: notifyComplete(returnCode: number): void
     // Has conflict: notifyDataArrived(): void
     // Has conflict: notifyProgress(progress: number): void
-    // Has conflict: setErrorMessage(errorMessage: string | null): void
+    // Has conflict: setErrorMessage(errorMessage: string): void
     // Has conflict: start(): void
     // Has conflict: startAutomaticMonitor(): boolean
     // Has conflict: stopAutomaticMonitor(): void
@@ -2481,7 +2481,7 @@ interface Command {
      * @virtual 
      * @param errorMessage Error message.
      */
-    setErrorMessage(errorMessage: string | null): void
+    setErrorMessage(errorMessage: string): void
     /**
      * Starts a command. Client code can handle data from the command by connecting
      * to the ::data-arrived signal.
@@ -2588,18 +2588,18 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param entries A list of entries to add
      * @param userData User data to pass to the entry callback
      */
-    addActionGroup(groupName: string | null, entries: CommandBarEntry[], userData: any | null): void
+    addActionGroup(groupName: string, entries: CommandBarEntry[], userData: any | null): void
     /**
      * Removes an action group from an AnjutaCommandBar.
      * @param groupName Name of the action group to remove
      */
-    removeActionGroup(groupName: string | null): void
+    removeActionGroup(groupName: string): void
     /**
      * Causes the actions in the given group to become visible, replacing the
      * previously visible group.
      * @param groupName The name of the action group to show
      */
-    showActionGroup(groupName: string | null): void
+    showActionGroup(groupName: string): void
 
     // Conflicting methods
 
@@ -2612,13 +2612,13 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2631,13 +2631,13 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2650,7 +2650,7 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2659,7 +2659,7 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2671,7 +2671,7 @@ interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3180,7 +3180,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param userData User data to pass to the entry callback
      * @returns %TRUE if the pane was added, or %FALSE if a pane with the same name already exists in the dock
      */
-    addPane(paneName: string | null, paneLabel: string | null, stockIcon: string | null, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, userData: any | null): boolean
+    addPane(paneName: string, paneLabel: string, stockIcon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, userData: any | null): boolean
     /**
      * Does the same thing as anjuta_dock_add_pane, but allows GDL dock behavior
      * flags to be specified.
@@ -3194,7 +3194,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param behavior Any combination of #GdlDockItemBehavior flags
      * @returns %TRUE if the pane was added, or %FALSE if a pane with the same name already exists in the dock
      */
-    addPaneFull(paneName: string | null, paneLabel: string | null, stockIcon: string | null, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, userData: any | null, behavior: Gdl.DockItemBehavior): boolean
+    addPaneFull(paneName: string, paneLabel: string, stockIcon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, userData: any | null, behavior: Gdl.DockItemBehavior): boolean
     getCommandBar(): CommandBar | null
     /**
      * Makes the given pane invisible
@@ -3225,7 +3225,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param entries #AnjutaCommandBar entries 		 for this pane. Can be %NULL
      * @param userData User data to pass to the entry callback
      */
-    replaceCommandPane(paneName: string | null, paneLabel: string | null, stockIcon: string | null, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, userData: any | null): void
+    replaceCommandPane(paneName: string, paneLabel: string, stockIcon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, userData: any | null): void
     /**
      * Associates an #AnjutaCommandBar with this dock. Command bars can be used to
      * provide different sets of commands based on the currently visible pane.
@@ -3249,12 +3249,12 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of the object. This name is used to identify the object.
      * @returns the name of the object.
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3267,19 +3267,19 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3292,18 +3292,18 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Set the name of the object used to identify it.
      * @param name a name for the object
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3312,7 +3312,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3325,7 +3325,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3338,7 +3338,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3347,7 +3347,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Get the top level #GdlDock widget of `object` or %NULL if cannot be found.
      * @returns A #GdlDock or %NULL.
@@ -3441,7 +3441,7 @@ interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3912,13 +3912,13 @@ interface DropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3931,13 +3931,13 @@ interface DropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3950,7 +3950,7 @@ interface DropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditabl
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3959,7 +3959,7 @@ interface DropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditabl
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * For widgets that can be “activated” (buttons, menu items, etc.)
      * this function activates them. Activation is what happens when you
@@ -4540,13 +4540,13 @@ interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, G
     // Owm methods of Anjuta-3.0.Anjuta.Entry
 
     dupText(): string | null
-    getText(): string | null
+    getText(): string
     isShowingHelpText(): boolean
     /**
      * Sets the text on the entry, showing the help text if the text is empty.
      * @param text The new text
      */
-    setText(text: string | null): void
+    setText(text: string): void
 
     // Conflicting methods
 
@@ -4559,13 +4559,13 @@ interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4578,13 +4578,13 @@ interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4597,7 +4597,7 @@ interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, G
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4606,7 +4606,7 @@ interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEditable, G
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -5195,7 +5195,7 @@ interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Anjuta-3.0.Anjuta.EnvironmentEditor
 
     reset(): void
-    setVariable(variable: string | null): void
+    setVariable(variable: string): void
 
     // Conflicting methods
 
@@ -5208,13 +5208,13 @@ interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5227,13 +5227,13 @@ interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5246,7 +5246,7 @@ interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5255,7 +5255,7 @@ interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5267,7 +5267,7 @@ interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5574,7 +5574,7 @@ interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
 
     // Owm methods of Anjuta-3.0.Anjuta.FileDropEntry
 
-    setRelativePath(path: string | null): void
+    setRelativePath(path: string): void
 
     // Conflicting methods
 
@@ -5587,13 +5587,13 @@ interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5606,13 +5606,13 @@ interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5625,7 +5625,7 @@ interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5634,7 +5634,7 @@ interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * For widgets that can be “activated” (buttons, menu items, etc.)
      * this function activates them. Activation is what happens when you
@@ -6222,7 +6222,7 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     // Owm methods of Anjuta-3.0.Anjuta.FileList
 
     clear(): void
-    setRelativePath(path: string | null): void
+    setRelativePath(path: string): void
 
     // Conflicting methods
 
@@ -6235,13 +6235,13 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6254,13 +6254,13 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6273,7 +6273,7 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6282,7 +6282,7 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6294,7 +6294,7 @@ interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -6639,7 +6639,7 @@ interface LanguageProvider {
      * @param scopeContextCh language-specific context characters                    the end is marked with a '0' character
      * @returns name of the method to show a calltip for or %NULL
      */
-    getCalltipContext(itip: GObject.Object, iter: GObject.Object, scopeContextCh: string | null): string | null
+    getCalltipContext(itip: GObject.Object, iter: GObject.Object, scopeContextCh: string): string | null
     /**
      * Search for the current typed word
      * @param editor IAnjutaEditor object
@@ -6648,7 +6648,7 @@ interface LanguageProvider {
      * @param wordCharacters 
      * @returns The current word (needs to be freed) or %NULL if no word was found
      */
-    getPreWord(editor: GObject.Object, iter: GObject.Object, startIter: GObject.Object, wordCharacters: string | null): string | null
+    getPreWord(editor: GObject.Object, iter: GObject.Object, startIter: GObject.Object, wordCharacters: string): string | null
     /**
      * Install the settings for AnjutaLanguageProvider
      * @param ieditor IAnjutaEditor object
@@ -6750,12 +6750,12 @@ interface Launcher {
      * read from TTY input of the process.
      * @param inputStr The string to send to PTY of the process.
      */
-    sendPtyin(inputStr: string | null): void
+    sendPtyin(inputStr: string): void
     /**
      * Sends a string to Standard input of the process currently being executed.
      * @param inputStr The string to send to STDIN of the process.
      */
-    sendStdin(inputStr: string | null): void
+    sendStdin(inputStr: string): void
     /**
      * Sends a EOF to Standard input of the process currently being executed.
      */
@@ -6777,7 +6777,7 @@ interface Launcher {
      * Sets the character set to use for Input/Output with the process.
      * @param charset Character set to use for Input/Output with the process.
      */
-    setEncoding(charset: string | null): void
+    setEncoding(charset: string): void
     /**
      * Sets if input (those given in STDIN) should enabled or disabled. By default,
      * it is disabled.
@@ -6913,13 +6913,13 @@ interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6932,13 +6932,13 @@ interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6951,7 +6951,7 @@ interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6960,7 +6960,7 @@ interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6972,7 +6972,7 @@ interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -7003,8 +7003,8 @@ interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scro
 
     // Own virtual methods of Anjuta-3.0.Anjuta.PkgConfigChooser
 
-    packageActivated(package: string | null): void
-    packageDeactivated(package: string | null): void
+    packageActivated(package: string): void
+    packageDeactivated(package: string): void
 
     // Own signals of Anjuta-3.0.Anjuta.PkgConfigChooser
 
@@ -7397,8 +7397,8 @@ interface PkgScanner {
 
     // Owm methods of Anjuta-3.0.Anjuta.PkgScanner
 
-    getPackage(): string | null
-    getVersion(): string | null
+    getPackage(): string
+    getVersion(): string
 
     // Class property signals of Anjuta-3.0.Anjuta.PkgScanner
 
@@ -7434,8 +7434,8 @@ class PkgScanner extends AsyncCommand {
     // Constructors of Anjuta-3.0.Anjuta.PkgScanner
 
     constructor(config?: PkgScanner.ConstructorProperties) 
-    constructor(package: string | null, version: string | null) 
-    static new(package: string | null, version: string | null): PkgScanner
+    constructor(package: string, version: string) 
+    static new(package: string, version: string): PkgScanner
     _init(config?: PkgScanner.ConstructorProperties): void
 }
 
@@ -7495,7 +7495,7 @@ interface Plugin {
      * @param removed Callback to call when the value is removed.
      * @returns Watch ID.
      */
-    addWatch(name: string | null, added: PluginValueAdded, removed: PluginValueRemoved): number
+    addWatch(name: string, added: PluginValueAdded, removed: PluginValueRemoved): number
     // Has conflict: deactivate(): boolean
     getShell(): Shell
     /**
@@ -7613,16 +7613,16 @@ interface PluginHandle {
 
     // Owm methods of Anjuta-3.0.Anjuta.PluginHandle
 
-    getAbout(): string | null
+    getAbout(): string
     getCanLoad(): boolean
     getCanUnload(): boolean
     getChecked(): boolean
     getDescription(): PluginDescription
-    getIconPath(): string | null
-    getId(): string | null
-    getLanguage(): string | null
-    getName(): string | null
-    getPath(): string | null
+    getIconPath(): string
+    getId(): string
+    getLanguage(): string
+    getName(): string
+    getPath(): string
     getResident(): boolean
     getResolvePass(): number
     getUserActivatable(): boolean
@@ -7741,8 +7741,8 @@ class PluginHandle extends GObject.Object {
     // Constructors of Anjuta-3.0.Anjuta.PluginHandle
 
     constructor(config?: PluginHandle.ConstructorProperties) 
-    constructor(pluginDescPath: string | null) 
-    static new(pluginDescPath: string | null): PluginHandle
+    constructor(pluginDescPath: string) 
+    static new(pluginDescPath: string): PluginHandle
     _init(config?: PluginHandle.ConstructorProperties): void
 }
 
@@ -7810,7 +7810,7 @@ interface PluginManager {
      * @param ifaceName The interface implemented by the object to be found
      * @returns %TRUE is the plugin is currently loaded.
      */
-    isActivePlugin(ifaceName: string | null): boolean
+    isActivePlugin(ifaceName: string): boolean
     /**
      * Set the list of plugins loaded when there is a choice between several
      * ones without asking the user.
@@ -7826,7 +7826,7 @@ interface PluginManager {
      * SymbolDBPlugin, it will choose SymbolDBPlugin.
      * @param rememberedPlugins A list of prefered plugins
      */
-    setRememberedPlugins(rememberedPlugins: string | null): void
+    setRememberedPlugins(rememberedPlugins: string): void
     /**
      * Unload all plugins. Do not take care of the dependencies because all plugins
      * are unloaded anyway.
@@ -7937,7 +7937,7 @@ interface Preferences {
 
     // Owm methods of Anjuta-3.0.Anjuta.Preferences
 
-    addFromBuilder(builder: Gtk.Builder, settings: Gio.Settings, gladeWidgetName: string | null, stitle: string | null, iconFilename: string | null): void
+    addFromBuilder(builder: Gtk.Builder, settings: Gio.Settings, gladeWidgetName: string, stitle: string, iconFilename: string): void
     isDialogCreated(): boolean
     /**
      * This will register all the properties names of the format described above
@@ -7957,8 +7957,8 @@ interface Preferences {
      * @param key Property key
      * @returns %TRUE if sucessful.
      */
-    registerProperty(settings: Gio.Settings, object: Gtk.Widget, key: string | null): boolean
-    removePage(pageName: string | null): void
+    registerProperty(settings: Gio.Settings, object: Gtk.Widget, key: string): boolean
+    removePage(pageName: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.Preferences
 
@@ -7991,7 +7991,7 @@ class Preferences extends GObject.Object {
      * @param commonSchemaId Common schema id used for key starting with .
      * @returns A #AnjutaPreferences object.
      */
-    constructor(pluginManager: PluginManager, commonSchemaId: string | null) 
+    constructor(pluginManager: PluginManager, commonSchemaId: string) 
     /**
      * Creates a new #AnjutaPreferences object
      * @constructor 
@@ -7999,7 +7999,7 @@ class Preferences extends GObject.Object {
      * @param commonSchemaId Common schema id used for key starting with .
      * @returns A #AnjutaPreferences object.
      */
-    static new(pluginManager: PluginManager, commonSchemaId: string | null): Preferences
+    static new(pluginManager: PluginManager, commonSchemaId: string): Preferences
     _init(config?: Preferences.ConstructorProperties): void
 }
 
@@ -8037,12 +8037,12 @@ interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param icon Icon file name.
      * @param page page widget.
      */
-    addPage(name: string | null, title: string | null, icon: GdkPixbuf.Pixbuf, page: Gtk.Widget): void
+    addPage(name: string, title: string, icon: GdkPixbuf.Pixbuf, page: Gtk.Widget): void
     /**
      * Removes a preferences page.
      * @param title Name of the preferences page.
      */
-    removePage(title: string | null): void
+    removePage(title: string): void
 
     // Conflicting methods
 
@@ -8055,13 +8055,13 @@ interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -8074,13 +8074,13 @@ interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -8093,7 +8093,7 @@ interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -8102,7 +8102,7 @@ interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -8158,7 +8158,7 @@ interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -8729,7 +8729,7 @@ interface Profile {
      * Get the profile name.
      * @returns the profile name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Check if a plugin is included in the profile plugin list.
      * @param plugin a #AnjutaPluginHandle
@@ -8848,7 +8848,7 @@ class Profile extends GObject.Object {
      * @param pluginManager the #AnjutaPluginManager used by this profile.
      * @returns the new #AnjutaProfile object.
      */
-    constructor(name: string | null, pluginManager: PluginManager) 
+    constructor(name: string, pluginManager: PluginManager) 
     /**
      * Create a new profile.
      * @constructor 
@@ -8856,7 +8856,7 @@ class Profile extends GObject.Object {
      * @param pluginManager the #AnjutaPluginManager used by this profile.
      * @returns the new #AnjutaProfile object.
      */
-    static new(name: string | null, pluginManager: PluginManager): Profile
+    static new(name: string, pluginManager: PluginManager): Profile
     _init(config?: Profile.ConstructorProperties): void
 }
 
@@ -9076,12 +9076,12 @@ interface ProjectNode {
     getFile(): Gio.File
     getFullType(): ProjectNodeType
     getGroupFromFile(directory: Gio.File): ProjectNode
-    getMapProperty(id: string | null, name: string | null): ProjectProperty
-    getName(): string | null
+    getMapProperty(id: string, name: string): ProjectProperty
+    getName(): string
     getNodeType(): ProjectNodeType
     getProperties(): ProjectProperty[]
     getPropertiesInfo(): ProjectPropertyInfo[]
-    getProperty(id: string | null): ProjectProperty
+    getProperty(id: string): ProjectProperty
 
     // Overloads of getProperty
 
@@ -9106,7 +9106,7 @@ interface ProjectNode {
      * @param value return location for the property value
      */
     getProperty<T = unknown>(propertyName: string): T
-    getPropertyInfo(id: string | null): ProjectPropertyInfo
+    getPropertyInfo(id: string): ProjectPropertyInfo
     getSourceFromFile(file: Gio.File): ProjectNode
     getState(): ProjectNodeState
     insertAfter(sibling: ProjectNode | null, node: ProjectNode): ProjectNode
@@ -9231,13 +9231,13 @@ interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -9250,13 +9250,13 @@ interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -9269,7 +9269,7 @@ interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -9278,7 +9278,7 @@ interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -9334,7 +9334,7 @@ interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -9879,12 +9879,12 @@ interface Serializer {
 
     // Owm methods of Anjuta-3.0.Anjuta.Serializer
 
-    readFloat(name: string | null, value: number): boolean
-    readInt(name: string | null, value: number): boolean
-    readString(name: string | null, value: string | null, replace: boolean): boolean
-    writeFloat(name: string | null, value: number): boolean
-    writeInt(name: string | null, value: number): boolean
-    writeString(name: string | null, value: string | null): boolean
+    readFloat(name: string, value: number): boolean
+    readInt(name: string, value: number): boolean
+    readString(name: string, value: string | null, replace: boolean): boolean
+    writeFloat(name: string, value: number): boolean
+    writeInt(name: string, value: number): boolean
+    writeString(name: string, value: string): boolean
 
     // Class property signals of Anjuta-3.0.Anjuta.Serializer
 
@@ -9920,8 +9920,8 @@ class Serializer extends GObject.Object {
     // Constructors of Anjuta-3.0.Anjuta.Serializer
 
     constructor(config?: Serializer.ConstructorProperties) 
-    constructor(filepath: string | null, mode: SerializerMode) 
-    static new(filepath: string | null, mode: SerializerMode): Serializer
+    constructor(filepath: string, mode: SerializerMode) 
+    static new(filepath: string, mode: SerializerMode): Serializer
     _init(config?: Serializer.ConstructorProperties): void
 }
 
@@ -9955,7 +9955,7 @@ interface Session {
      * Clears the given section in session object.
      * @param section Section to clear.
      */
-    clearSection(section: string | null): void
+    clearSection(section: string): void
     /**
      * Return a GFile corresponding to the URI and and optional fragment,
      * normally read from a session key.
@@ -9968,21 +9968,21 @@ interface Session {
      * @param fragment fragment part of the URI if existing, can be %NULL
      * @returns A new GFile that has to be freed with g_object_unref().
      */
-    getFileFromRelativeUri(uri: string | null, fragment: string | null): Gio.File
+    getFileFromRelativeUri(uri: string, fragment: string | null): Gio.File
     /**
      * Get a float `value` of `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @returns Key value
      */
-    getFloat(section: string | null, key: string | null): number
+    getFloat(section: string, key: string): number
     /**
      * Get an integer `value` of `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @returns Key value
      */
-    getInt(section: string | null, key: string | null): number
+    getInt(section: string, key: string): number
     /**
      * Return an URI relative to the session directory file with an optional
      * fragment.
@@ -9992,12 +9992,12 @@ interface Session {
      * @param fragment an optional fragment
      * @returns A string that has to be freed with g_free().
      */
-    getRelativeUriFromFile(file: Gio.File, fragment: string | null): string | null
+    getRelativeUriFromFile(file: Gio.File, fragment: string): string | null
     /**
      * Returns the directory corresponding to this session object.
      * @returns session directory
      */
-    getSessionDirectory(): string | null
+    getSessionDirectory(): string
     /**
      * Gets the session filename corresponding to this session object.
      * @returns session (absolute) filename
@@ -10009,28 +10009,28 @@ interface Session {
      * @param key Key name.
      * @returns Key value
      */
-    getString(section: string | null, key: string | null): string | null
+    getString(section: string, key: string): string | null
     /**
      * Set a float `value` to `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @param value Key value
      */
-    setFloat(section: string | null, key: string | null, value: number): void
+    setFloat(section: string, key: string, value: number): void
     /**
      * Set an integer `value` to `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @param value Key value
      */
-    setInt(section: string | null, key: string | null, value: number): void
+    setInt(section: string, key: string, value: number): void
     /**
      * Set a string `value` to `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @param value Key value
      */
-    setString(section: string | null, key: string | null, value: string | null): void
+    setString(section: string, key: string, value: string): void
     /**
      * Synchronizes session object with session file
      */
@@ -10068,7 +10068,7 @@ class Session extends GObject.Object {
      * @param sessionDirectory Directory where session is loaded from/saved to.
      * @returns an #AnjutaSession Object
      */
-    constructor(sessionDirectory: string | null) 
+    constructor(sessionDirectory: string) 
     /**
      * Created a new session object. `session_directory` is the directory
      * where session information will be stored or loaded in case of existing
@@ -10077,7 +10077,7 @@ class Session extends GObject.Object {
      * @param sessionDirectory Directory where session is loaded from/saved to.
      * @returns an #AnjutaSession Object
      */
-    static new(sessionDirectory: string | null): Session
+    static new(sessionDirectory: string): Session
     _init(config?: Session.ConstructorProperties): void
 }
 
@@ -10120,12 +10120,12 @@ interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
     disableSplash(disableSplash: boolean): void
     pop(): void
     progressAddTicks(ticks: number): void
-    progressIncrementTicks(ticks: number, text: string | null): void
-    progressPulse(text: string | null): void
+    progressIncrementTicks(ticks: number, text: string): void
+    progressPulse(text: string): void
     progressReset(): void
-    progressTick(icon: GdkPixbuf.Pixbuf, text: string | null): void
-    setSplash(splashFile: string | null, splashProgressPosition: number): void
-    setTitle(title: string | null): void
+    progressTick(icon: GdkPixbuf.Pixbuf, text: string): void
+    setSplash(splashFile: string, splashProgressPosition: number): void
+    setTitle(title: string): void
     setTitleWindow(window: Gtk.Widget): void
 
     // Conflicting methods
@@ -10139,13 +10139,13 @@ interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -10158,13 +10158,13 @@ interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -10177,7 +10177,7 @@ interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -10186,7 +10186,7 @@ interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10198,7 +10198,7 @@ interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -10604,13 +10604,13 @@ interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -10623,13 +10623,13 @@ interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -10642,7 +10642,7 @@ interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -10651,7 +10651,7 @@ interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10663,7 +10663,7 @@ interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -11080,7 +11080,7 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      */
     setActive(isActive: boolean): void
     setActiveIter(iter: Gtk.TreeIter): void
-    setInvalidText(str: string | null): void
+    setInvalidText(str: string): void
     setModel(model: Gtk.TreeModel): void
     setValidFunction(func: Gtk.TreeModelFilterVisibleFunc): void
 
@@ -11129,7 +11129,7 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -11150,7 +11150,7 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11163,7 +11163,7 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -11173,7 +11173,7 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11186,7 +11186,7 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11195,13 +11195,13 @@ interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activat
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of Anjuta-3.0.Anjuta.TreeComboBox
 
@@ -11578,14 +11578,14 @@ interface UI extends Gtk.Buildable {
      * @param actionGroup Action group.
      * @param actionName Action name.
      */
-    activateActionByGroup(actionGroup: Gtk.ActionGroup, actionName: string | null): void
+    activateActionByGroup(actionGroup: Gtk.ActionGroup, actionName: string): void
     /**
      * Activates the action represented by `action_path`. The path is in the form
      * "ActionGroupName/ActionName". Note that it will only work if the group has
      * been added using methods in #AnjutaUI.
      * @param actionPath Path of the action in the form "GroupName/ActionName"
      */
-    activateActionByPath(actionPath: string | null): void
+    activateActionByPath(actionPath: string): void
     /**
      * This is similar to anjuta_ui_add_action_group_entries(), except that
      * it adds #GtkActionGroup object `action_group` directly. All actions in this
@@ -11596,7 +11596,7 @@ interface UI extends Gtk.Buildable {
      * @param actionGroup #GtkActionGroup object to add.
      * @param canCustomize 
      */
-    addActionGroup(actionGroupName: string | null, actionGroupLabel: string | null, actionGroup: Gtk.ActionGroup, canCustomize: boolean): void
+    addActionGroup(actionGroupName: string, actionGroupLabel: string, actionGroup: Gtk.ActionGroup, canCustomize: boolean): void
     /**
      * #GtkAction objects are created from the #GtkActionEntry structures and
      * added to the UI Manager. "activate" signal of #GtkAction is connected for
@@ -11616,7 +11616,7 @@ interface UI extends Gtk.Buildable {
      * @param userData User data to pass to action objects. This is the data that will come as user_data in "activate" signal of the actions.
      * @returns A #GtkActionGroup object holding all the action objects.
      */
-    addActionGroupEntries(actionGroupName: string | null, actionGroupLabel: string | null, entries: Gtk.ActionEntry[], translationDomain: string | null, canCustomize: boolean, userData: any | null): Gtk.ActionGroup
+    addActionGroupEntries(actionGroupName: string, actionGroupLabel: string, entries: Gtk.ActionEntry[], translationDomain: string, canCustomize: boolean, userData: any | null): Gtk.ActionGroup
     /**
      * This is similar to anjuta_ui_add_action_group_entries(), except that
      * it adds #GtkToggleAction objects after creating them from the `entries`.
@@ -11628,7 +11628,7 @@ interface UI extends Gtk.Buildable {
      * @param userData User data to pass to action objects. This is the data that will come as user_data in "activate" signal of the actions.
      * @returns A #GtkActionGroup object holding all the action objects.
      */
-    addToggleActionGroupEntries(actionGroupName: string | null, actionGroupLabel: string | null, entries: Gtk.ToggleActionEntry[], translationDomain: string | null, canCustomize: boolean, userData: any | null): Gtk.ActionGroup
+    addToggleActionGroupEntries(actionGroupName: string, actionGroupLabel: string, entries: Gtk.ToggleActionEntry[], translationDomain: string, canCustomize: boolean, userData: any | null): Gtk.ActionGroup
     /**
      * Dumps the current UI XML tree in STDOUT. Useful for debugging.
      */
@@ -11652,7 +11652,7 @@ interface UI extends Gtk.Buildable {
      * @param actionName Action name.
      * @returns A #GtkAction object
      */
-    getAction(actionGroupName: string | null, actionName: string | null): Gtk.Action
+    getAction(actionGroupName: string, actionName: string): Gtk.Action
 
     // Overloads of getAction
 
@@ -11663,7 +11663,7 @@ interface UI extends Gtk.Buildable {
      * @param path a path
      * @returns the action whose proxy widget is found by following the path,     or %NULL if no widget was found.
      */
-    getAction(path: string | null): Gtk.Action
+    getAction(path: string): Gtk.Action
     /**
      * This returns the IconFactory object. All icons should be registered using
      * this icon factory. Read the documentation for #GtkIconFactory on how to
@@ -11679,7 +11679,7 @@ interface UI extends Gtk.Buildable {
      * @param uiFilename UI file to merge into UI manager.
      * @returns Integer merge ID
      */
-    merge(uiFilename: string | null): number
+    merge(uiFilename: string): number
     /**
      * Removes a previous added action group. All actions in this group are
      * also unregistered from UI manager.
@@ -11750,8 +11750,8 @@ class UI extends Gtk.UIManager {
      */
     static new(): Gtk.UIManager
     _init(config?: UI.ConstructorProperties): void
-    static loadAccels(filename: string | null): void
-    static saveAccels(filename: string | null): void
+    static loadAccels(filename: string): void
+    static saveAccels(filename: string): void
 }
 
 module VcsStatusTreeView {
@@ -11867,13 +11867,13 @@ interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11886,13 +11886,13 @@ interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11905,7 +11905,7 @@ interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11914,7 +11914,7 @@ interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -11926,7 +11926,7 @@ interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -12512,18 +12512,18 @@ interface CommandBarEntry {
      * The name of the action for this entry
      * @field 
      */
-    actionName: string | null
+    actionName: string
     /**
      * The display label for this entry
      * @field 
      */
-    label: string | null
-    tooltip: string | null
+    label: string
+    tooltip: string
     /**
      * The stock icon to display for this entry
      * @field 
      */
-    stockIcon: string | null
+    stockIcon: string
     /**
      * Function to call when this entry's action is activated
      * @field 
@@ -12564,7 +12564,7 @@ interface CommandClass {
     notifyDataArrived: (self: Command) => void
     notifyComplete: (self: Command, returnCode: number) => void
     notifyProgress: (self: Command, progress: number) => void
-    setErrorMessage: (self: Command, errorMessage: string | null) => void
+    setErrorMessage: (self: Command, errorMessage: string) => void
     getErrorMessage: (self: Command) => string | null
     startAutomaticMonitor: (self: Command) => boolean
     stopAutomaticMonitor: (self: Command) => void
@@ -12720,8 +12720,8 @@ interface Encoding {
      * This function is used by language bindings.
      */
     free(): void
-    getCharset(): string | null
-    getName(): string | null
+    getCharset(): string
+    getName(): string
     toString(): string | null
 }
 
@@ -12734,7 +12734,7 @@ class Encoding {
     // Constructors of Anjuta-3.0.Anjuta.Encoding
 
     static getCurrent(): Encoding
-    static getFromCharset(charset: string | null): Encoding
+    static getFromCharset(charset: string): Encoding
     static getFromIndex(index: number): Encoding
     static getUtf8(): Encoding
 }
@@ -12926,8 +12926,8 @@ interface PkgConfigChooserClass {
     // Own fields of Anjuta-3.0.Anjuta.PkgConfigChooserClass
 
     parentClass: Gtk.TreeViewClass
-    packageActivated: (self: PkgConfigChooser, package: string | null) => void
-    packageDeactivated: (self: PkgConfigChooser, package: string | null) => void
+    packageActivated: (self: PkgConfigChooser, package: string) => void
+    packageDeactivated: (self: PkgConfigChooser, package: string) => void
 }
 
 abstract class PkgConfigChooserClass {
@@ -13005,7 +13005,7 @@ interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    getBoolean(section: string | null, keyname: string | null, val: boolean): boolean
+    getBoolean(section: string, keyname: string, val: boolean): boolean
     /**
      * Returns the value of key as integer in the given section.
      * @param section Section name.
@@ -13013,7 +13013,7 @@ interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    getInteger(section: string | null, keyname: string | null, val: number): boolean
+    getInteger(section: string, keyname: string, val: number): boolean
     /**
      * Returns the value of key in the given section in current locale.
      * @param section Section name.
@@ -13021,7 +13021,7 @@ interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    getLocaleString(section: string | null, keyname: string | null, val: string | null): boolean
+    getLocaleString(section: string, keyname: string, val: string | null): boolean
     /**
      * Retrieves the value of a key (in the given section) for the given locale.
      * The value returned in `val` must be freed after use.
@@ -13030,7 +13030,7 @@ interface PluginDescription {
      * @param locale The locale for which the value is to be retrieved.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    getRaw(sectionName: string | null, keyname: string | null, locale: string | null): [ /* returnType */ boolean, /* val */ string | null ]
+    getRaw(sectionName: string, keyname: string, locale: string): [ /* returnType */ boolean, /* val */ string ]
     /**
      * Returns the value of key in the given section.
      * @param section Section name.
@@ -13038,7 +13038,7 @@ interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    getString(section: string | null, keyname: string | null, val: string | null): boolean
+    getString(section: string, keyname: string, val: string | null): boolean
     /**
      * Override the value of a key in the description. This can be removed using
      * the function anjuta_plugin_description_remove().
@@ -13047,14 +13047,14 @@ interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    override(sectionName: string | null, keyname: string | null, val: string | null): boolean
+    override(sectionName: string, keyname: string, val: string): boolean
     /**
      * Remove a key from the description.
      * @param sectionName Section name.
      * @param keyname Key name.
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    remove(sectionName: string | null, keyname: string | null): boolean
+    remove(sectionName: string, keyname: string): boolean
     /**
      * Converts the description detains into string format, usually for
      * saving it in a file.
@@ -13071,8 +13071,8 @@ class PluginDescription {
 
     // Constructors of Anjuta-3.0.Anjuta.PluginDescription
 
-    constructor(filename: string | null) 
-    static new(filename: string | null): PluginDescription
+    constructor(filename: string) 
+    static new(filename: string): PluginDescription
     /**
      * Parses the given plugin description data (usally read from the plugin
      * description file and creates an instance of #AnjutaPluginDescription.
@@ -13276,7 +13276,7 @@ interface ProjectNodeInfo {
 
     copy(): ProjectNodeInfo
     free(): void
-    mime(): string | null
+    mime(): string
 }
 
 class ProjectNodeInfo {
@@ -13287,8 +13287,8 @@ class ProjectNodeInfo {
 
     // Constructors of Anjuta-3.0.Anjuta.ProjectNodeInfo
 
-    constructor(type: ProjectNodeType, name: string | null, mimeType: string | null) 
-    static new(type: ProjectNodeType, name: string | null, mimeType: string | null): ProjectNodeInfo
+    constructor(type: ProjectNodeType, name: string, mimeType: string) 
+    static new(type: ProjectNodeType, name: string, mimeType: string): ProjectNodeInfo
 }
 
 interface ProjectProperty {
@@ -13314,8 +13314,8 @@ class ProjectProperty {
 
     // Constructors of Anjuta-3.0.Anjuta.ProjectProperty
 
-    constructor(value: string | null, name: string | null, userData: any | null) 
-    static new(value: string | null, name: string | null, userData: any | null): ProjectProperty
+    constructor(value: string, name: string | null, userData: any | null) 
+    static new(value: string, name: string | null, userData: any | null): ProjectProperty
 }
 
 interface ProjectPropertyInfo {
@@ -13344,8 +13344,8 @@ class ProjectPropertyInfo {
 
     // Constructors of Anjuta-3.0.Anjuta.ProjectPropertyInfo
 
-    constructor(id: string | null, name: string | null, type: ProjectValueType, flags: ProjectPropertyFlags, description: string | null, defaultValue: ProjectProperty, userData: any | null) 
-    static new(id: string | null, name: string | null, type: ProjectValueType, flags: ProjectPropertyFlags, description: string | null, defaultValue: ProjectProperty, userData: any | null): ProjectPropertyInfo
+    constructor(id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, defaultValue: ProjectProperty, userData: any | null) 
+    static new(id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, defaultValue: ProjectProperty, userData: any | null): ProjectPropertyInfo
 }
 
 interface Property {
@@ -13445,21 +13445,21 @@ interface ShellIface {
     getPreferences: (shell: Shell) => Preferences
     getPluginManager: (shell: Shell) => PluginManager
     getProfileManager: (shell: Shell) => ProfileManager
-    addWidgetFull: (shell: Shell, widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, placement: ShellPlacement, locked: boolean) => void
-    addWidgetCustom: (shell: Shell, widget: Gtk.Widget, name: string | null, title: string | null, stockId: string | null, label: Gtk.Widget, placement: ShellPlacement) => void
+    addWidgetFull: (shell: Shell, widget: Gtk.Widget, name: string, title: string, stockId: string, placement: ShellPlacement, locked: boolean) => void
+    addWidgetCustom: (shell: Shell, widget: Gtk.Widget, name: string, title: string, stockId: string, label: Gtk.Widget, placement: ShellPlacement) => void
     removeWidget: (shell: Shell, widget: Gtk.Widget) => void
     presentWidget: (shell: Shell, widget: Gtk.Widget) => void
     iconifyDockableWidget: (shell: Shell, widget: Gtk.Widget) => void
     hideDockableWidget: (shell: Shell, widget: Gtk.Widget) => void
     showDockableWidget: (shell: Shell, widget: Gtk.Widget) => void
-    maximizeWidget: (shell: Shell, widgetName: string | null) => void
+    maximizeWidget: (shell: Shell, widgetName: string) => void
     unmaximize: (shell: Shell) => void
-    addValue: (shell: Shell, name: string | null, value: any) => void
-    getValue: (shell: Shell, name: string | null, value: any) => void
-    removeValue: (shell: Shell, name: string | null) => void
+    addValue: (shell: Shell, name: string, value: any) => void
+    getValue: (shell: Shell, name: string, value: any) => void
+    removeValue: (shell: Shell, name: string) => void
     savingPush: (shell: Shell) => void
     savingPop: (shell: Shell) => void
-    getObject: (shell: Shell, ifaceName: string | null) => GObject.Object
+    getObject: (shell: Shell, ifaceName: string) => GObject.Object
 }
 
 abstract class ShellIface {
@@ -13545,13 +13545,13 @@ interface Token {
     evaluateName(): string | null
     getFlags(): number
     getLength(): number
-    getString(): string | null
+    getString(): string
     getType(): number
     isEmpty(): boolean
     removeItem(): void
     setFlags(flags: number): void
     setLength(length: number): void
-    setString(value: string | null, length: number): void
+    setString(value: string, length: number): void
     setType(type: number): void
 }
 

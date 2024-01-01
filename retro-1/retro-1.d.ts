@@ -327,7 +327,7 @@ function controller_type_get_index_count(type: ControllerType): number
  * @param log_level the log level, either from #GLogLevelFlags or a user-defined level
  * @param message the message to log
  */
-function g_log(sender: Core, log_domain: string | null, log_level: GLib.LogLevelFlags, message: string | null): void
+function g_log(sender: Core, log_domain: string | null, log_level: GLib.LogLevelFlags, message: string): void
 function gtk_get_resource(): Gio.Resource
 function joypad_id_from_button_code(button_code: number): JoypadId
 function joypad_id_to_button_code(joypad_id: JoypadId): number
@@ -350,7 +350,7 @@ function pixbuf_set_aspect_ratio(pixbuf: GdkPixbuf.Pixbuf, aspect_ratio: number)
  * @param filter a filter name
  * @returns a #RetroVideoFilter
  */
-function video_filter_from_string(filter: string | null): VideoFilter
+function video_filter_from_string(filter: string): VideoFilter
 module Controller {
 
     // Signal callback interfaces
@@ -749,12 +749,12 @@ interface Core {
      * @returns whether the state of @self can be accessed
      */
     get_can_access_state(): boolean
-    get_content_directory(): string | null
+    get_content_directory(): string
     /**
      * Gets the filename of the core.
      * @returns the filename of the core
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Gets the FPS rate for the core's video output.
      * @returns the FPS rate for the core's video output
@@ -781,7 +781,7 @@ interface Core {
      * @param key the key of the option
      * @returns the option
      */
-    get_option(key: string | null): Option
+    get_option(key: string): Option
     get_runahead(): number
     /**
      * Gets the save directory of the core.
@@ -789,7 +789,7 @@ interface Core {
      * The core will save some data here.
      * @returns the save directory of the core
      */
-    get_save_directory(): string | null
+    get_save_directory(): string
     /**
      * Gets the speed rate at which to run the core.
      * @returns the speed rate
@@ -807,18 +807,18 @@ interface Core {
      * configuration files.
      * @returns the system directory of the core
      */
-    get_system_directory(): string | null
+    get_system_directory(): string
     /**
      * Gets the name of the user.
      * @returns the name of the user
      */
-    get_user_name(): string | null
+    get_user_name(): string
     /**
      * Gets whether the core has an option for the given key.
      * @param key the key of the option
      * @returns whether the core has an option for the given key
      */
-    has_option(key: string | null): boolean
+    has_option(key: string): boolean
     /**
      * Creates a new #RetroControllerIterator which can be used to iterate through
      * the controllers plugged into `self`.
@@ -840,12 +840,12 @@ interface Core {
      * @param memory_type the type of memory
      * @param filename a file to load the data from
      */
-    load_memory(memory_type: MemoryType, filename: string | null): void
+    load_memory(memory_type: MemoryType, filename: string): void
     /**
      * Loads the state of the `self`.
      * @param filename the file to load the state from
      */
-    load_state(filename: string | null): void
+    load_state(filename: string): void
     /**
      * Overrides default value for the option `key`. This can be used to set value
      * for a startup-only option.
@@ -854,7 +854,7 @@ interface Core {
      * @param key the key of the option
      * @param value the default value
      */
-    override_option_default(key: string | null, value: string | null): void
+    override_option_default(key: string, value: string): void
     /**
      * Resets `self`.
      */
@@ -869,13 +869,13 @@ interface Core {
      * @param memory_type the type of memory
      * @param filename a file to save the data to
      */
-    save_memory(memory_type: MemoryType, filename: string | null): void
+    save_memory(memory_type: MemoryType, filename: string): void
     /**
      * Saves the state of `self`.
      * @param filename the file to save the state to
      */
-    save_state(filename: string | null): void
-    set_content_directory(content_directory: string | null): void
+    save_state(filename: string): void
+    set_content_directory(content_directory: string): void
     /**
      * Plugs `controller` into the specified port number of `self`.
      * @param port the port number
@@ -916,7 +916,7 @@ interface Core {
      * The core will save some data here.
      * @param save_directory the save directory
      */
-    set_save_directory(save_directory: string | null): void
+    set_save_directory(save_directory: string): void
     /**
      * Sets the speed rate at which to run the core.
      * @param speed_rate a speed rate
@@ -929,12 +929,12 @@ interface Core {
      * configuration files.
      * @param system_directory the system directory
      */
-    set_system_directory(system_directory: string | null): void
+    set_system_directory(system_directory: string): void
     /**
      * Sets the name of the user.
      * @param user_name the user name
      */
-    set_user_name(user_name: string | null): void
+    set_user_name(user_name: string): void
     /**
      * Stops running the core.
      */
@@ -1018,14 +1018,14 @@ class Core extends GObject.Object {
      * @param filename the filename of a Libretro core
      * @returns a new #RetroCore
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new #RetroCore.
      * @constructor 
      * @param filename the filename of a Libretro core
      * @returns a new #RetroCore
      */
-    static new(filename: string | null): Core
+    static new(filename: string): Core
     _init(config?: Core.ConstructorProperties): void
 }
 
@@ -1047,25 +1047,25 @@ interface CoreDescriptor {
      * @param firmware a firmware name
      * @returns a string or %NULL, free it with g_free()
      */
-    get_firmware_md5(firmware: string | null): string | null
+    get_firmware_md5(firmware: string): string | null
     /**
      * Gets the demanded path to the firmware file, or %NULL.
      * @param firmware a firmware name
      * @returns a string or %NULL, free it with g_free()
      */
-    get_firmware_path(firmware: string | null): string | null
+    get_firmware_path(firmware: string): string | null
     /**
      * Gets the SHA512 fingerprint of the firmware file, or %NULL.
      * @param firmware a firmware name
      * @returns a string or %NULL, free it with g_free()
      */
-    get_firmware_sha512(firmware: string | null): string | null
+    get_firmware_sha512(firmware: string): string | null
     /**
      * Gets the list of firmwares used by the core for this platform.
      * @param platform a platform name
      * @returns a %NULL-terminated string array or %NULL, the array should be freed with g_strfreev()
      */
-    get_firmwares(platform: string | null): string[]
+    get_firmwares(platform: string): string[]
     /**
      * Gets the icon, or %NULL if it doesn't exist.
      * @returns a #GIcon or %NULL
@@ -1086,7 +1086,7 @@ interface CoreDescriptor {
      * @param firmware a firmware name
      * @returns whether the firmware is mandatory for the core to function
      */
-    get_is_firmware_mandatory(firmware: string | null): boolean
+    get_is_firmware_mandatory(firmware: string): boolean
     /**
      * Gets whether the core is a game, and hence can't load games.
      * @returns whether the core is a game
@@ -1097,7 +1097,7 @@ interface CoreDescriptor {
      * @param platform a platform name
      * @returns a %NULL-terminated string array or %NULL, the array should be freed with g_strfreev()
      */
-    get_mime_type(platform: string | null): string[]
+    get_mime_type(platform: string): string[]
     /**
      * Gets the module file name, or %NULL if it doesn't exist.
      * @returns a string or %NULL, free it with g_free()
@@ -1119,7 +1119,7 @@ interface CoreDescriptor {
      * @param mime_types the MIME types
      * @returns whether the platform supports all of the given MIME types
      */
-    get_platform_supports_mime_types(platform: string | null, mime_types: string[]): boolean
+    get_platform_supports_mime_types(platform: string, mime_types: string[]): boolean
     /**
      * Gets the URI of the file of `self`.
      * @returns the URI of the file of @self, free it with g_free()
@@ -1130,19 +1130,19 @@ interface CoreDescriptor {
      * @param firmware a firmware name
      * @returns whether the firmware declares its MD5 fingerprint
      */
-    has_firmware_md5(firmware: string | null): boolean
+    has_firmware_md5(firmware: string): boolean
     /**
      * Gets whether the firmware declares its SHA512 fingerprint.
      * @param firmware a firmware name
      * @returns whether the firmware declares its SHA512 fingerprint
      */
-    has_firmware_sha512(firmware: string | null): boolean
+    has_firmware_sha512(firmware: string): boolean
     /**
      * Gets whether the platform has associated firmwares.
      * @param platform a platform name
      * @returns whether the platform has associated firmwares
      */
-    has_firmwares(platform: string | null): boolean
+    has_firmwares(platform: string): boolean
     /**
      * Gets whether the core has an icon.
      * @returns whether the core has an icon
@@ -1153,7 +1153,7 @@ interface CoreDescriptor {
      * @param platform a platform name
      * @returns whether the core descriptor declares the given platform
      */
-    has_platform(platform: string | null): boolean
+    has_platform(platform: string): boolean
 
     // Class property signals of Retro-1.Retro.CoreDescriptor
 
@@ -1179,14 +1179,14 @@ class CoreDescriptor extends GObject.Object {
      * @param filename the file name of the core descriptor
      * @returns a new #RetroCoreDescriptor
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new #RetroCoreDescriptor.
      * @constructor 
      * @param filename the file name of the core descriptor
      * @returns a new #RetroCoreDescriptor
      */
-    static new(filename: string | null): CoreDescriptor
+    static new(filename: string): CoreDescriptor
     _init(config?: CoreDescriptor.ConstructorProperties): void
 }
 
@@ -1333,7 +1333,7 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1347,7 +1347,7 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1358,7 +1358,7 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Retro-1.Retro.CoreView
 
@@ -1754,17 +1754,17 @@ interface Option {
      * Gets the description of `self`.
      * @returns the description of @self
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the key of `self`.
      * @returns the key of @self
      */
-    get_key(): string | null
+    get_key(): string
     /**
      * Gets the value of `self`.
      * @returns the value of @self
      */
-    get_value(): string | null
+    get_value(): string
     /**
      * Gets the value of `self`.
      * @returns the value of @self
@@ -1775,7 +1775,7 @@ interface Option {
      * `self`.
      * @param value the value
      */
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Own signals of Retro-1.Retro.Option
 

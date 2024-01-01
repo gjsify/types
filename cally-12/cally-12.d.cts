@@ -85,7 +85,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * @param callback the callback of the action
      * @returns added action id, or -1 if failure
      */
-    add_action(action_name: string | null, action_description: string | null, action_keybinding: string | null, callback: ActionCallback): number
+    add_action(action_name: string, action_description: string, action_keybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by [method`Actor`.add_action]
      * @param action_id the action id
@@ -98,7 +98,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * @param action_name the name of the action to remove
      * @returns %TRUE if the operation was successful, %FALSE otherwise
      */
-    remove_action_by_name(action_name: string | null): boolean
+    remove_action_by_name(action_name: string): boolean
 
     // Conflicting methods
 
@@ -112,7 +112,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -136,14 +136,14 @@ export interface Actor extends Atk.Action, Atk.Component {
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -151,7 +151,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -164,7 +164,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -190,7 +190,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -198,7 +198,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -207,7 +207,7 @@ export interface Actor extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Class property signals of Cally-12.Cally.Actor
 
@@ -323,7 +323,7 @@ export interface Clone extends Atk.Action, Atk.Component {
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -347,14 +347,14 @@ export interface Clone extends Atk.Action, Atk.Component {
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -362,7 +362,7 @@ export interface Clone extends Atk.Action, Atk.Component {
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -375,7 +375,7 @@ export interface Clone extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -401,7 +401,7 @@ export interface Clone extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -409,7 +409,7 @@ export interface Clone extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -418,7 +418,7 @@ export interface Clone extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Class property signals of Cally-12.Cally.Clone
 
@@ -644,7 +644,7 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -668,14 +668,14 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -683,7 +683,7 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -696,7 +696,7 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -722,7 +722,7 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -730,7 +730,7 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -739,7 +739,7 @@ export interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Class property signals of Cally-12.Cally.Stage
 
@@ -862,7 +862,7 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -886,14 +886,14 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -901,7 +901,7 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Returns a description of the specified action of the object.
      * @virtual 
@@ -914,7 +914,7 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -940,7 +940,7 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -948,7 +948,7 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -957,7 +957,7 @@ export interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.T
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
 
     // Class property signals of Cally-12.Cally.Text
 

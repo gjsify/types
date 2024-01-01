@@ -367,7 +367,7 @@ export function cairoMatrixFree(matrix: cairo.Matrix): void
  * @param propertyName the name of the child property to find
  * @returns the #GParamSpec of the  child property or %NULL if @class has no child property with that name.
  */
-export function canvasItemClassFindChildProperty(iclass: GObject.ObjectClass, propertyName: string | null): GObject.ParamSpec
+export function canvasItemClassFindChildProperty(iclass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
 /**
  * This function is only intended to be used when implementing new canvas
  * items, specifically layout container items such as #GooCanvasTable.
@@ -397,7 +397,7 @@ export function canvasItemClassListChildProperties(iclass: GObject.ObjectClass):
  * @param propertyName the name of the child property to find
  * @returns The #GParamSpec of the child  property or %NULL if @class has no child property with that name.
  */
-export function canvasItemModelClassFindChildProperty(mclass: GObject.ObjectClass, propertyName: string | null): GObject.ParamSpec
+export function canvasItemModelClassFindChildProperty(mclass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
 /**
  * This function is only intended to be used when implementing new canvas
  * item models, specifically layout container item models such as
@@ -604,7 +604,7 @@ export interface CanvasItem {
     // Has conflict: getBounds(): /* bounds */ CanvasBounds
     // Has conflict: getCanvas(): Canvas
     // Has conflict: getChild(childNum: number): CanvasItem
-    // Has conflict: getChildProperty(child: CanvasItem, propertyName: string | null, value: any): void
+    // Has conflict: getChildProperty(child: CanvasItem, propertyName: string, value: any): void
     // Has conflict: getIsStatic(): boolean
     // Has conflict: getItemsAt(x: number, y: number, cr: cairo.Context, isPointerEvent: boolean, parentIsVisible: boolean, foundItems: CanvasItem[]): CanvasItem[]
     // Has conflict: getModel(): CanvasItemModel
@@ -667,7 +667,7 @@ export interface CanvasItem {
      */
     scale(sx: number, sy: number): void
     // Has conflict: setCanvas(canvas: Canvas): void
-    // Has conflict: setChildProperty(child: CanvasItem, propertyName: string | null, value: any): void
+    // Has conflict: setChildProperty(child: CanvasItem, propertyName: string, value: any): void
     // Has conflict: setIsStatic(isStatic: boolean): void
     // Has conflict: setModel(model: CanvasItemModel): void
     // Has conflict: setParent(parent: CanvasItem): void
@@ -1146,7 +1146,7 @@ export class CanvasItem extends GObject.Object {
      * @param propertyName the name of the child property to find
      * @returns the #GParamSpec of the  child property or %NULL if @class has no child property with that name.
      */
-    static classFindChildProperty(iclass: GObject.ObjectClass, propertyName: string | null): GObject.ParamSpec
+    static classFindChildProperty(iclass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * This function is only intended to be used when implementing new canvas
      * items, specifically layout container items such as #GooCanvasTable.
@@ -1272,7 +1272,7 @@ export interface CanvasItemModel {
      */
     findChild(child: CanvasItemModel): number
     // Has conflict: getChild(childNum: number): CanvasItemModel
-    // Has conflict: getChildProperty(child: CanvasItemModel, propertyName: string | null, value: any): void
+    // Has conflict: getChildProperty(child: CanvasItemModel, propertyName: string, value: any): void
     // Has conflict: getNChildren(): number
     // Has conflict: getParent(): CanvasItemModel
     /**
@@ -1328,7 +1328,7 @@ export interface CanvasItemModel {
      * @param sy the amount to scale the vertical axis.
      */
     scale(sx: number, sy: number): void
-    // Has conflict: setChildProperty(child: CanvasItemModel, propertyName: string | null, value: any): void
+    // Has conflict: setChildProperty(child: CanvasItemModel, propertyName: string, value: any): void
     // Has conflict: setParent(parent: CanvasItemModel): void
     /**
      * A convenience function to set the item model's transformation matrix.
@@ -1581,7 +1581,7 @@ export class CanvasItemModel extends GObject.Object {
      * @param propertyName the name of the child property to find
      * @returns The #GParamSpec of the child  property or %NULL if @class has no child property with that name.
      */
-    static classFindChildProperty(mclass: GObject.ObjectClass, propertyName: string | null): GObject.ParamSpec
+    static classFindChildProperty(mclass: GObject.ObjectClass, propertyName: string): GObject.ParamSpec
     /**
      * This function is only intended to be used when implementing new canvas
      * item models, specifically layout container item models such as
@@ -2110,13 +2110,13 @@ export interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrolla
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2129,13 +2129,13 @@ export interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrolla
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2148,7 +2148,7 @@ export interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrolla
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2157,7 +2157,7 @@ export interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrolla
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2169,7 +2169,7 @@ export interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrolla
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2645,7 +2645,7 @@ export class Canvas extends Gtk.Container {
      * @param pathData the sequence of path commands, specified as a string using the  same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable  Vector Graphics (SVG)</ulink> path element.
      * @returns a #GArray of #GooCanvasPathCommand elements.
      */
-    static parsePathData(pathData: string | null): CanvasPathCommand[]
+    static parsePathData(pathData: string): CanvasPathCommand[]
 }
 
 export module CanvasAccessibleFactory {

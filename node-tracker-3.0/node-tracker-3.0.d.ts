@@ -244,59 +244,59 @@ const MINOR_VERSION: number
 /**
  * The Prefix of the DC (Dublin Core) namespace
  */
-const PREFIX_DC: string | null
+const PREFIX_DC: string
 /**
  * The Prefix of the MFO namespace
  */
-const PREFIX_MFO: string | null
+const PREFIX_MFO: string
 /**
  * The Prefix of the NAO namespace
  */
-const PREFIX_NAO: string | null
+const PREFIX_NAO: string
 /**
  * The Prefix of the NCO namespace
  */
-const PREFIX_NCO: string | null
+const PREFIX_NCO: string
 /**
  * The Prefix of the NFO namespace
  */
-const PREFIX_NFO: string | null
+const PREFIX_NFO: string
 /**
  * The Prefix of the NIE namespace
  */
-const PREFIX_NIE: string | null
+const PREFIX_NIE: string
 /**
  * The Prefix of the RDF namespace
  */
-const PREFIX_NMM: string | null
+const PREFIX_NMM: string
 /**
  * The Prefix of the NRL namespace
  */
-const PREFIX_NRL: string | null
+const PREFIX_NRL: string
 /**
  * The Prefix of the Osinfo namespace
  */
-const PREFIX_OSINFO: string | null
+const PREFIX_OSINFO: string
 /**
  * The Prefix of the RDF namespace
  */
-const PREFIX_RDF: string | null
+const PREFIX_RDF: string
 /**
  * The Prefix of the RDFS namespace
  */
-const PREFIX_RDFS: string | null
+const PREFIX_RDFS: string
 /**
  * The Prefix of the SLO namespace
  */
-const PREFIX_SLO: string | null
+const PREFIX_SLO: string
 /**
  * The Prefix of the Tracker namespace
  */
-const PREFIX_TRACKER: string | null
+const PREFIX_TRACKER: string
 /**
  * The Prefix of the XSD namespace
  */
-const PREFIX_XSD: string | null
+const PREFIX_XSD: string
 /**
  * Checks that the Tracker library in use is compatible with the given version.
  * 
@@ -318,7 +318,7 @@ const PREFIX_XSD: string | null
  * @param requiredMicro the required micro version.
  * @returns %NULL if the Tracker library is compatible with the   given version, or a string describing the version mismatch.
  */
-function checkVersion(requiredMajor: number, requiredMinor: number, requiredMicro: number): string | null
+function checkVersion(requiredMajor: number, requiredMinor: number, requiredMicro: number): string
 function sparqlErrorQuark(): GLib.Quark
 /**
  * Escapes `literal` so it is suitable for insertion in
@@ -330,13 +330,13 @@ function sparqlErrorQuark(): GLib.Quark
  * @param literal a string to escape
  * @returns the escaped string
  */
-function sparqlEscapeString(literal: string | null): string | null
+function sparqlEscapeString(literal: string): string | null
 /**
  * Escapes a string for use as a URI.
  * @param uri a string to be escaped, following the tracker sparql rules
  * @returns a newly-allocated string holding the result.
  */
-function sparqlEscapeUri(uri: string | null): string | null
+function sparqlEscapeUri(uri: string): string | null
 /**
  * Returns a path to the built-in Nepomuk ontologies.
  * @returns a #GFile instance.
@@ -394,7 +394,7 @@ interface Batch {
      * @param defaultGraph Default graph that will receive the RDF data
      * @param stream Input stream with RDF data
      */
-    addRdf(flags: DeserializeFlags, format: RdfFormat, defaultGraph: string | null, stream: Gio.InputStream): void
+    addRdf(flags: DeserializeFlags, format: RdfFormat, defaultGraph: string, stream: Gio.InputStream): void
     /**
      * Adds the RDF represented by `resource` to `batch`.
      * @param graph RDF graph to insert the resource to
@@ -405,7 +405,7 @@ interface Batch {
      * Adds an SPARQL update string to `batch`.
      * @param sparql A SPARQL update string
      */
-    addSparql(sparql: string | null): void
+    addSparql(sparql: string): void
     /**
      * Adds a [class`Tracker`.SparqlStatement] containing an SPARQL update. The statement will
      * be executed once in the batch, with the values bound as specified by `variable_names`
@@ -932,7 +932,7 @@ interface NamespaceManager {
      * @param prefix a short, unique prefix to identify `namespace`
      * @param ns the URL of the given namespace
      */
-    addPrefix(prefix: string | null, ns: string | null): void
+    addPrefix(prefix: string, ns: string): void
     /**
      * If `uri` begins with one of the namespaces known to this
      * `TrackerNamespaceManager`, then the return value will be the
@@ -940,7 +940,7 @@ interface NamespaceManager {
      * @param uri a URI or compact URI
      * @returns (nullable): the compressed URI
      */
-    compressUri(uri: string | null): string | null
+    compressUri(uri: string): string | null
     /**
      * If `compact_uri` begins with one of the prefixes known to this
      * `TrackerNamespaceManager`, then the return value will be the
@@ -948,7 +948,7 @@ interface NamespaceManager {
      * @param compactUri a URI or compact URI
      * @returns The possibly expanded URI in a newly-allocated string.
      */
-    expandUri(compactUri: string | null): string | null
+    expandUri(compactUri: string): string | null
     /**
      * Calls `func` for each known prefix / URI pair.
      * @param func the function to call for each prefix / URI pair
@@ -959,14 +959,14 @@ interface NamespaceManager {
      * @param prefix a string
      * @returns %TRUE if the `TrackerNamespaceManager` knows about @prefix, %FALSE otherwise
      */
-    hasPrefix(prefix: string | null): boolean
+    hasPrefix(prefix: string): boolean
     /**
      * Looks up the namespace URI corresponding to `prefix,` or %NULL if the prefix
      * is not known.
      * @param prefix a string
      * @returns a string owned by the `TrackerNamespaceManager`, or %NULL
      */
-    lookupPrefix(prefix: string | null): string | null
+    lookupPrefix(prefix: string): string | null
     /**
      * Writes out all namespaces as ``prefix`` statements in
      * the [Turtle](https://www.w3.org/TR/turtle/) RDF format.
@@ -1098,7 +1098,7 @@ interface Notifier {
      * @param graph Graph to listen events for, or %NULL
      * @returns An ID for this subscription
      */
-    signalSubscribe(connection: Gio.DBusConnection, service: string | null, objectPath: string | null, graph: string | null): number
+    signalSubscribe(connection: Gio.DBusConnection, service: string, objectPath: string | null, graph: string | null): number
     /**
      * Undoes a signal subscription done through [method`Tracker`.Notifier.signal_subscribe].
      * 
@@ -1225,7 +1225,7 @@ interface Resource {
      * @param propertyUri A string identifying the property to modify
      * @param value The property boolean value
      */
-    addBoolean(propertyUri: string | null, value: boolean): void
+    addBoolean(propertyUri: string, value: boolean): void
     /**
      * Adds a date property as a [type`GLib`.DateTime]. Previous values for the
      * same property are kept.
@@ -1238,7 +1238,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    addDatetime(propertyUri: string | null, value: GLib.DateTime): void
+    addDatetime(propertyUri: string, value: GLib.DateTime): void
     /**
      * Adds a numeric property with double precision. Previous values for the same property are kept.
      * 
@@ -1249,7 +1249,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    addDouble(propertyUri: string | null, value: number): void
+    addDouble(propertyUri: string, value: number): void
     /**
      * Add `value` to the list of values for given property.
      * 
@@ -1259,7 +1259,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to set
      * @param value an initialised [struct`GObject`.Value]
      */
-    addGvalue(propertyUri: string | null, value: any): void
+    addGvalue(propertyUri: string, value: any): void
     /**
      * Adds a numeric property with integer precision. Previous values for the same property are kept.
      * 
@@ -1270,7 +1270,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    addInt(propertyUri: string | null, value: number): void
+    addInt(propertyUri: string, value: number): void
     /**
      * Adds a numeric property with 64-bit integer precision. Previous values for the same property are kept.
      * 
@@ -1281,7 +1281,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    addInt64(propertyUri: string | null, value: number): void
+    addInt64(propertyUri: string, value: number): void
     /**
      * Adds a resource property as a `TrackerResource`. Previous values for the same property are kept.
      * 
@@ -1298,7 +1298,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param resource the property object
      */
-    addRelation(propertyUri: string | null, resource: Resource): void
+    addRelation(propertyUri: string, resource: Resource): void
     /**
      * Adds a string property. Previous values for the same property are kept.
      * 
@@ -1309,7 +1309,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    addString(propertyUri: string | null, value: string | null): void
+    addString(propertyUri: string, value: string): void
     /**
      * Adds a resource property as a `TrackerResource`. Previous values for the same property are kept.
      * Takes ownership on the given `resource`.
@@ -1327,7 +1327,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param resource the property object
      */
-    addTakeRelation(propertyUri: string | null, resource: Resource): void
+    addTakeRelation(propertyUri: string, resource: Resource): void
     /**
      * Adds a resource property as an URI string. Previous values for the same property are kept.
      * 
@@ -1343,55 +1343,55 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    addUri(propertyUri: string | null, value: string | null): void
+    addUri(propertyUri: string, value: string): void
     /**
      * Returns the first boolean object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first boolean object
      */
-    getFirstBoolean(propertyUri: string | null): boolean
+    getFirstBoolean(propertyUri: string): boolean
     /**
      * Returns the first [type`GLib`.DateTime] previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first GDateTime object
      */
-    getFirstDatetime(propertyUri: string | null): GLib.DateTime | null
+    getFirstDatetime(propertyUri: string): GLib.DateTime | null
     /**
      * Returns the first double object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first double object
      */
-    getFirstDouble(propertyUri: string | null): number
+    getFirstDouble(propertyUri: string): number
     /**
      * Returns the first integer object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first integer object
      */
-    getFirstInt(propertyUri: string | null): number
+    getFirstInt(propertyUri: string): number
     /**
      * Returns the first integer object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first integer object
      */
-    getFirstInt64(propertyUri: string | null): number
+    getFirstInt64(propertyUri: string): number
     /**
      * Returns the first resource object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first resource object
      */
-    getFirstRelation(propertyUri: string | null): Resource | null
+    getFirstRelation(propertyUri: string): Resource | null
     /**
      * Returns the first string object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first string object
      */
-    getFirstString(propertyUri: string | null): string | null
+    getFirstString(propertyUri: string): string | null
     /**
      * Returns the first resource object previously assigned to a property.
      * @param propertyUri a string identifying the property to look up
      * @returns the first resource object as an URI.
      */
-    getFirstUri(propertyUri: string | null): string | null
+    getFirstUri(propertyUri: string): string | null
     /**
      * Returns the identifier of a resource.
      * 
@@ -1411,20 +1411,20 @@ interface Resource {
      * @param propertyUri a string identifying the property to query
      * @returns #TRUE if the property would be overwritten
      */
-    getPropertyOverwrite(propertyUri: string | null): boolean
+    getPropertyOverwrite(propertyUri: string): boolean
     /**
      * Returns the list of all known values of the given property.
      * @param propertyUri a string identifying the property to look up
      * @returns a [struct@GLib.List] of   [struct@GObject.Value] instances. The list should be freed with [func@GLib.List.free]
      */
-    getValues(propertyUri: string | null): any[] | null
+    getValues(propertyUri: string): any[] | null
     /**
      * A helper function that compares a `TrackerResource` by its identifier
      * string.
      * @param identifier a string identifying the resource
      * @returns an integer less than, equal to, or greater than zero, if the          resource identifier is <, == or > than @identifier
      */
-    identifierCompareFunc(identifier: string | null): number
+    identifierCompareFunc(identifier: string): number
     /**
      * Serialize all the information in `resource` as a JSON-LD document.
      * 
@@ -1489,7 +1489,7 @@ interface Resource {
      * @param propertyUri A string identifying the property to modify
      * @param value The property boolean value
      */
-    setBoolean(propertyUri: string | null, value: boolean): void
+    setBoolean(propertyUri: string, value: boolean): void
     /**
      * Sets a date property as a [type`GLib`.DateTime]. Replaces any previous value.
      * 
@@ -1498,7 +1498,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    setDatetime(propertyUri: string | null, value: GLib.DateTime): void
+    setDatetime(propertyUri: string, value: GLib.DateTime): void
     /**
      * Sets a numeric property with double precision. Replaces any previous value.
      * 
@@ -1506,7 +1506,7 @@ interface Resource {
      * @param propertyUri A string identifying the property to modify
      * @param value The property object
      */
-    setDouble(propertyUri: string | null, value: number): void
+    setDouble(propertyUri: string, value: number): void
     /**
      * Replace any previously existing value for `property_uri` with `value`.
      * 
@@ -1520,7 +1520,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to set
      * @param value an initialised [struct`GObject`.Value]
      */
-    setGvalue(propertyUri: string | null, value: any): void
+    setGvalue(propertyUri: string, value: any): void
     /**
      * Changes the identifier of a `TrackerResource`. The identifier should be a
      * URI or compact URI, but this is not necessarily enforced. Invalid
@@ -1539,7 +1539,7 @@ interface Resource {
      * @param propertyUri A string identifying the property to modify
      * @param value The property object
      */
-    setInt(propertyUri: string | null, value: number): void
+    setInt(propertyUri: string, value: number): void
     /**
      * Sets a numeric property with 64-bit integer precision. Replaces any previous value.
      * 
@@ -1547,7 +1547,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    setInt64(propertyUri: string | null, value: number): void
+    setInt64(propertyUri: string, value: number): void
     /**
      * Sets a resource property as a `TrackerResource`. Replaces any previous value.
      * 
@@ -1561,7 +1561,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param resource the property object
      */
-    setRelation(propertyUri: string | null, resource: Resource): void
+    setRelation(propertyUri: string, resource: Resource): void
     /**
      * Sets a string property. Replaces any previous value.
      * 
@@ -1569,7 +1569,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    setString(propertyUri: string | null, value: string | null): void
+    setString(propertyUri: string, value: string): void
     /**
      * Sets a resource property as a `TrackerResource`. Replaces any previous value.
      * Takes ownership on the given `resource`.
@@ -1584,7 +1584,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param resource the property object
      */
-    setTakeRelation(propertyUri: string | null, resource: Resource): void
+    setTakeRelation(propertyUri: string, resource: Resource): void
     /**
      * Sets a resource property as an URI string. Replaces any previous value.
      * 
@@ -1597,7 +1597,7 @@ interface Resource {
      * @param propertyUri a string identifying the property to modify
      * @param value the property object
      */
-    setUri(propertyUri: string | null, value: string | null): void
+    setUri(propertyUri: string, value: string): void
 
     // Class property signals of Tracker-3.0.Tracker.Resource
 
@@ -1767,7 +1767,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
-    deserializeAsync(flags: DeserializeFlags, format: RdfFormat, defaultGraph: string | null, stream: Gio.InputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deserializeAsync(flags: DeserializeFlags, format: RdfFormat, defaultGraph: string, stream: Gio.InputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with [method`Tracker`.SparqlConnection.deserialize_async].
      * @param result A [type`Gio`.AsyncResult] with the result of the operation
@@ -1791,7 +1791,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns A prepared statement
      */
-    loadStatementFromGresource(resourcePath: string | null, cancellable: Gio.Cancellable | null): SparqlStatement | null
+    loadStatementFromGresource(resourcePath: string, cancellable: Gio.Cancellable | null): SparqlStatement | null
     /**
      * Maps a `TrackerSparqlConnection` onto another through a `private:`handle_name`` URI.
      * 
@@ -1821,7 +1821,7 @@ interface SparqlConnection {
      * @param handleName Handle name for `service_connection`
      * @param serviceConnection a `TrackerSparqlConnection` to use from `connection`
      */
-    mapConnection(handleName: string | null, serviceConnection: SparqlConnection): void
+    mapConnection(handleName: string, serviceConnection: SparqlConnection): void
     /**
      * Executes a SPARQL query on `connection`.
      * 
@@ -1839,7 +1839,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns a [class@Tracker.SparqlCursor] with the results.
      */
-    query(sparql: string | null, cancellable: Gio.Cancellable | null): SparqlCursor
+    query(sparql: string, cancellable: Gio.Cancellable | null): SparqlCursor
     /**
      * Executes asynchronously a SPARQL query on `connection`
      * 
@@ -1853,7 +1853,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
-    queryAsync(sparql: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    queryAsync(sparql: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with [method`Tracker`.SparqlConnection.query_async].
      * @param res A [type`Gio`.AsyncResult] with the result of the operation
@@ -1870,7 +1870,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns A prepared statement
      */
-    queryStatement(sparql: string | null, cancellable: Gio.Cancellable | null): SparqlStatement | null
+    queryStatement(sparql: string, cancellable: Gio.Cancellable | null): SparqlStatement | null
     /**
      * Serializes a `DESCRIBE` or `CONSTRUCT` query into the specified RDF format.
      * 
@@ -1888,7 +1888,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
-    serializeAsync(flags: SerializeFlags, format: RdfFormat, query: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    serializeAsync(flags: SerializeFlags, format: RdfFormat, query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with [method`Tracker`.SparqlConnection.serialize_async].
      * @param result A [type`Gio`.AsyncResult] with the result of the operation
@@ -1916,7 +1916,7 @@ interface SparqlConnection {
      * @param sparql String containing the SPARQL update query
      * @param cancellable Optional [type`Gio`.Cancellable]
      */
-    update(sparql: string | null, cancellable: Gio.Cancellable | null): void
+    update(sparql: string, cancellable: Gio.Cancellable | null): void
     /**
      * Executes asynchronously an array of SPARQL updates. All updates in the
      * array are handled within a single transaction.
@@ -1958,7 +1958,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
-    updateAsync(sparql: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    updateAsync(sparql: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Executes a SPARQL update and returns the names of the generated blank nodes.
      * 
@@ -1980,7 +1980,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns a [type@GLib.Variant] with the generated URNs.
      */
-    updateBlank(sparql: string | null, cancellable: Gio.Cancellable | null): GLib.Variant
+    updateBlank(sparql: string, cancellable: Gio.Cancellable | null): GLib.Variant
     /**
      * Executes asynchronously a SPARQL update and returns the names of the generated blank nodes.
      * 
@@ -1990,7 +1990,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
-    updateBlankAsync(sparql: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    updateBlankAsync(sparql: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with [method`Tracker`.SparqlConnection.update_blank_async].
      * 
@@ -2049,7 +2049,7 @@ interface SparqlConnection {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @returns A prepared statement
      */
-    updateStatement(sparql: string | null, cancellable: Gio.Cancellable | null): SparqlStatement | null
+    updateStatement(sparql: string, cancellable: Gio.Cancellable | null): SparqlStatement | null
 
     // Class property signals of Tracker-3.0.Tracker.SparqlConnection
 
@@ -2146,7 +2146,7 @@ class SparqlConnection extends GObject.Object {
      * @param dbusConnection The [type`Gio`.DBusConnection] to use, or %NULL to use the session bus
      * @returns a new `TrackerSparqlConnection`.
      */
-    static busNew(serviceName: string | null, objectPath: string | null, dbusConnection: Gio.DBusConnection | null): SparqlConnection
+    static busNew(serviceName: string, objectPath: string | null, dbusConnection: Gio.DBusConnection | null): SparqlConnection
     /**
      * Finishes the operation started with [func`Tracker`.SparqlConnection.bus_new_async].
      * @constructor 
@@ -2253,7 +2253,7 @@ class SparqlConnection extends GObject.Object {
      * @param uriBase Base URI of the remote connection
      * @returns a new remote `TrackerSparqlConnection`.
      */
-    static remoteNew(uriBase: string | null): SparqlConnection
+    static remoteNew(uriBase: string): SparqlConnection
     _init(config?: SparqlConnection.ConstructorProperties): void
     /**
      * Creates or opens a process-local database asynchronously.
@@ -2275,7 +2275,7 @@ class SparqlConnection extends GObject.Object {
      * @param cancellable Optional [type`Gio`.Cancellable]
      * @param callback User-defined [type`Gio`.AsyncReadyCallback] to be called when            the asynchronous operation is finished.
      */
-    static busNewAsync(serviceName: string | null, objectPath: string | null, dbusConnection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static busNewAsync(serviceName: string, objectPath: string | null, dbusConnection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module SparqlCursor {
@@ -2557,31 +2557,31 @@ interface SparqlStatement {
      * @param name variable name
      * @param value value
      */
-    bindBoolean(name: string | null, value: boolean): void
+    bindBoolean(name: string, value: boolean): void
     /**
      * Binds the [type`GLib`.DateTime] `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
-    bindDatetime(name: string | null, value: GLib.DateTime): void
+    bindDatetime(name: string, value: GLib.DateTime): void
     /**
      * Binds the double `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
-    bindDouble(name: string | null, value: number): void
+    bindDouble(name: string, value: number): void
     /**
      * Binds the integer `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
-    bindInt(name: string | null, value: number): void
+    bindInt(name: string, value: number): void
     /**
      * Binds the string `value` to the parameterized variable given by `name`.
      * @param name variable name
      * @param value value
      */
-    bindString(name: string | null, value: string | null): void
+    bindString(name: string, value: string): void
     /**
      * Clears all bindings.
      */
@@ -2636,7 +2636,7 @@ interface SparqlStatement {
      * Returns the SPARQL string that this prepared statement holds.
      * @returns The contained SPARQL query
      */
-    getSparql(): string | null
+    getSparql(): string
     /**
      * Serializes a `DESCRIBE` or `CONSTRUCT` query into the given RDF `format`.
      * 
@@ -2835,7 +2835,7 @@ interface NotifierEvent {
      * notified upon, typically of the form `urn:uuid:...`.
      * @returns The element URN
      */
-    getUrn(): string | null
+    getUrn(): string
 }
 
 /**

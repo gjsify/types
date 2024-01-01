@@ -1360,33 +1360,33 @@ export enum OfflineFlags {
 /**
  * The DBUS interface used by the PackageKit service.
  */
-export const DBUS_INTERFACE: string | null
+export const DBUS_INTERFACE: string
 /**
  * The DBUS interface for PackageKit offline update functionality
  */
-export const DBUS_INTERFACE_OFFLINE: string | null
+export const DBUS_INTERFACE_OFFLINE: string
 /**
  * The DBUS interface for PackageKit transactions.
  */
-export const DBUS_INTERFACE_TRANSACTION: string | null
+export const DBUS_INTERFACE_TRANSACTION: string
 /**
  * The DBUS path to the PackageKit service.
  */
-export const DBUS_PATH: string | null
+export const DBUS_PATH: string
 /**
  * The DBUS name for the PackageKit system service.
  */
-export const DBUS_SERVICE: string | null
+export const DBUS_SERVICE: string
 /**
  * The default location for the desktop files
  */
-export const DESKTOP_DEFAULT_APPLICATION_DIR: string | null
+export const DESKTOP_DEFAULT_APPLICATION_DIR: string
 export const MAJOR_VERSION: number
 export const MICRO_VERSION: number
 export const MINOR_VERSION: number
-export const OFFLINE_DESTDIR: string | null
-export const OFFLINE_RESULTS_GROUP: string | null
-export const PACKAGE_IDS_DELIM: string | null
+export const OFFLINE_DESTDIR: string
+export const OFFLINE_RESULTS_GROUP: string
+export const PACKAGE_IDS_DELIM: string
 /**
  * Alias to get an arch field from the result of pk_package_id_split
  */
@@ -1403,20 +1403,20 @@ export const PACKAGE_ID_NAME: number
  * Alias to get a version field from the result of pk_package_id_split
  */
 export const PACKAGE_ID_VERSION: number
-export const SYSTEM_PACKAGE_CACHE_FILENAME: string | null
-export const SYSTEM_PACKAGE_LIST_FILENAME: string | null
+export const SYSTEM_PACKAGE_CACHE_FILENAME: string
+export const SYSTEM_PACKAGE_LIST_FILENAME: string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param authorizeType Text describing the enumerated type
  * @returns the enumerated constant value, e.g. %PK_AUTHORIZE_ENUM_YES
  */
-export function authorizeTypeEnumFromString(authorizeType: string | null): AuthorizeEnum
+export function authorizeTypeEnumFromString(authorizeType: string): AuthorizeEnum
 /**
  * Converts a enumerated type to its text representation
  * @param authorizeType The enumerated type value
  * @returns the enumerated constant value, e.g. "yes"
  */
-export function authorizeTypeEnumToString(authorizeType: AuthorizeEnum): string | null
+export function authorizeTypeEnumToString(authorizeType: AuthorizeEnum): string
 /**
  * An error quark for #PkClientError.
  * @returns an error quark.
@@ -1431,7 +1431,7 @@ export function controlErrorQuark(): GLib.Quark
  * Add a log domain to the debug output.
  * @param logDomain a log domain
  */
-export function debugAddLogDomain(logDomain: string | null): void
+export function debugAddLogDomain(logDomain: string): void
 /**
  * Check if verbose debugging is enabled.
  * @returns %TRUE if we have debugging enabled
@@ -1447,57 +1447,57 @@ export function debugSetVerbose(verbose: boolean): void
  * @param upgrade Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_DISTRO_UPGRADE_ENUM_STABLE
  */
-export function distroUpgradeEnumFromString(upgrade: string | null): DistroUpgradeEnum
+export function distroUpgradeEnumFromString(upgrade: string): DistroUpgradeEnum
 /**
  * Converts a enumerated type to its text representation
  * @param upgrade The enumerated type value
  * @returns the enumerated constant value, e.g. "stable"
  */
-export function distroUpgradeEnumToString(upgrade: DistroUpgradeEnum): string | null
+export function distroUpgradeEnumToString(upgrade: DistroUpgradeEnum): string
 /**
  * Search for a enum value in a table of constants.
  * @param table A #PkEnumMatch enum table of values
  * @param value the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  * @returns the string constant, e.g. "desktop-gnome"
  */
-export function enumFindString(table: EnumMatch, value: number): string | null
+export function enumFindString(table: EnumMatch, value: number): string
 /**
  * Search for a string value in a table of constants.
  * @param table A #PkEnumMatch enum table of values
  * @param string the string constant to search for, e.g. "desktop-gnome"
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function enumFindValue(table: EnumMatch, string: string | null): number
+export function enumFindValue(table: EnumMatch, string: string): number
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param code Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function errorEnumFromString(code: string | null): ErrorEnum
+export function errorEnumFromString(code: string): ErrorEnum
 /**
  * Converts a enumerated type to its text representation
  * @param code The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function errorEnumToString(code: ErrorEnum): string | null
+export function errorEnumToString(code: ErrorEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param exit Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function exitEnumFromString(exit: string | null): ExitEnum
+export function exitEnumFromString(exit: string): ExitEnum
 /**
  * Converts a enumerated type to its text representation
  * @param exit The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function exitEnumToString(exit: ExitEnum): string | null
+export function exitEnumToString(exit: ExitEnum): string
 /**
  * Converts text representation to its enumerated type bitfield, or 0 for invalid
  * @param filters the enumerated constant value, e.g. "available;~gui"
  * @returns The enumerated type values
  */
-export function filterBitfieldFromString(filters: string | null): Bitfield
+export function filterBitfieldFromString(filters: string): Bitfield
 /**
  * Converts a enumerated type bitfield to its text representation
  * @param filters The enumerated type values
@@ -1509,13 +1509,13 @@ export function filterBitfieldToString(filters: Bitfield): string | null
  * @param filter Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function filterEnumFromString(filter: string | null): FilterEnum
+export function filterEnumFromString(filter: string): FilterEnum
 /**
  * Converts a enumerated type to its text representation
  * @param filter The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function filterEnumToString(filter: FilterEnum): string | null
+export function filterEnumToString(filter: FilterEnum): string
 /**
  * Get the distribution ID for the current host, typically "distro;version;arch"
  * @returns a distribution ID
@@ -1526,7 +1526,7 @@ export function getDistroId(): string | null
  * @param groups the enumerated constant value, e.g. "available;~gui"
  * @returns The enumerated type values, or 0 for invalid
  */
-export function groupBitfieldFromString(groups: string | null): Bitfield
+export function groupBitfieldFromString(groups: string): Bitfield
 /**
  * Converts a enumerated type bitfield to its text representation
  * @param groups The enumerated type values
@@ -1538,37 +1538,37 @@ export function groupBitfieldToString(groups: Bitfield): string | null
  * @param group Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function groupEnumFromString(group: string | null): GroupEnum
+export function groupEnumFromString(group: string): GroupEnum
 /**
  * Converts a enumerated type to its text representation
  * @param group The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function groupEnumToString(group: GroupEnum): string | null
+export function groupEnumToString(group: GroupEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param info Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function infoEnumFromString(info: string | null): InfoEnum
+export function infoEnumFromString(info: string): InfoEnum
 /**
  * Converts a enumerated type to its localized description
  * @param info The enumerated type value
  * @returns the translated text
  */
-export function infoEnumToLocalisedPast(info: InfoEnum): string | null
+export function infoEnumToLocalisedPast(info: InfoEnum): string
 /**
  * Converts a enumerated type to its localized description
  * @param info The enumerated type value
  * @returns the translated text
  */
-export function infoEnumToLocalisedPresent(info: InfoEnum): string | null
+export function infoEnumToLocalisedPresent(info: InfoEnum): string
 /**
  * Converts a enumerated type to its text representation
  * @param info The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function infoEnumToString(info: InfoEnum): string | null
+export function infoEnumToString(info: InfoEnum): string
 /**
  * Convert a date into an ISO8601 data string.
  * @param date a #GDate to convert
@@ -1585,43 +1585,43 @@ export function iso8601Present(): string | null
  * @param mediaType Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_MEDIA_TYPE_ENUM_CD
  */
-export function mediaTypeEnumFromString(mediaType: string | null): MediaTypeEnum
+export function mediaTypeEnumFromString(mediaType: string): MediaTypeEnum
 /**
  * Converts a enumerated type to its text representation
  * @param mediaType The enumerated type value
  * @returns the enumerated constant value, e.g. "dvd"
  */
-export function mediaTypeEnumToString(mediaType: MediaTypeEnum): string | null
+export function mediaTypeEnumToString(mediaType: MediaTypeEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param network Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function networkEnumFromString(network: string | null): NetworkEnum
+export function networkEnumFromString(network: string): NetworkEnum
 /**
  * Converts a enumerated type to its text representation
  * @param network The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function networkEnumToString(network: NetworkEnum): string | null
+export function networkEnumToString(network: NetworkEnum): string
 /**
  * Converts the string to the enumerated value.
  * @param action a string representation of a #PkOfflineAction, e.g. "reboot"
  * @returns A #PkOfflineAction, or %PK_OFFLINE_ACTION_UNKNOWN for invalid
  */
-export function offlineActionFromString(action: string | null): OfflineAction
+export function offlineActionFromString(action: string): OfflineAction
 /**
  * Converts the enumerated value to a string.
  * @param action a #PkOfflineAction, e.g. %PK_OFFLINE_ACTION_REBOOT
  * @returns string value, or %NULL for invalid
  */
-export function offlineActionToString(action: OfflineAction): string | null
+export function offlineActionToString(action: OfflineAction): string
 export function offlineAuthCancel(): boolean
 export function offlineAuthClearResults(): boolean
 export function offlineAuthInvalidate(): boolean
 export function offlineAuthSetAction(action: OfflineAction): boolean
 export function offlineAuthSetPreparedIds(packageIds: string | null): boolean
-export function offlineAuthSetPreparedUpgrade(name: string | null, releaseVer: string | null): boolean
+export function offlineAuthSetPreparedUpgrade(name: string, releaseVer: string): boolean
 export function offlineAuthSetResults(results: Results): boolean
 export function offlineAuthTrigger(action: OfflineAction): boolean
 export function offlineAuthTriggerUpgrade(action: OfflineAction): boolean
@@ -1772,19 +1772,19 @@ export function ptrArrayToStrv(array: string[]): string[]
  * @param restart Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function restartEnumFromString(restart: string | null): RestartEnum
+export function restartEnumFromString(restart: string): RestartEnum
 /**
  * Converts a enumerated type to its text representation
  * @param restart The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function restartEnumToString(restart: RestartEnum): string | null
+export function restartEnumToString(restart: RestartEnum): string
 /**
  * Converts text representation to its enumerated type bitfield
  * @param roles the enumerated constant value, e.g. "search-file;update-system"
  * @returns The enumerated type values, or 0 for invalid
  */
-export function roleBitfieldFromString(roles: string | null): Bitfield
+export function roleBitfieldFromString(roles: string): Bitfield
 /**
  * Converts a enumerated type bitfield to its text representation
  * @param roles The enumerated type values
@@ -1796,50 +1796,50 @@ export function roleBitfieldToString(roles: Bitfield): string | null
  * @param role Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function roleEnumFromString(role: string | null): RoleEnum
+export function roleEnumFromString(role: string): RoleEnum
 /**
  * Converts a enumerated type to its localized description
  * @param role The enumerated type value
  * @returns the translated text
  */
-export function roleEnumToLocalisedPresent(role: RoleEnum): string | null
+export function roleEnumToLocalisedPresent(role: RoleEnum): string
 /**
  * Converts a enumerated type to its text representation
  * @param role The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function roleEnumToString(role: RoleEnum): string | null
+export function roleEnumToString(role: RoleEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param sigType Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function sigTypeEnumFromString(sigType: string | null): SigTypeEnum
+export function sigTypeEnumFromString(sigType: string): SigTypeEnum
 /**
  * Converts a enumerated type to its text representation
  * @param sigType The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function sigTypeEnumToString(sigType: SigTypeEnum): string | null
+export function sigTypeEnumToString(sigType: SigTypeEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param status Text describing the enumerated type
  * @returns the enumerated constant value, e.g. PK_SIGTYPE_ENUM_GPG
  */
-export function statusEnumFromString(status: string | null): StatusEnum
-export function statusEnumToLocalisedText(status: StatusEnum): string | null
+export function statusEnumFromString(status: string): StatusEnum
+export function statusEnumToLocalisedText(status: StatusEnum): string
 /**
  * Converts a enumerated type to its text representation
  * @param status The enumerated type value
  * @returns the enumerated constant value, e.g. "available"
  */
-export function statusEnumToString(status: StatusEnum): string | null
+export function statusEnumToString(status: StatusEnum): string
 /**
  * Converts text representation to its enumerated type bitfield, or 0 for invalid
  * @param transactionFlags the enumerated constant value, e.g. "only-trusted;simulate"
  * @returns The enumerated type values
  */
-export function transactionFlagBitfieldFromString(transactionFlags: string | null): Bitfield
+export function transactionFlagBitfieldFromString(transactionFlags: string): Bitfield
 /**
  * Converts a enumerated type bitfield to its text representation
  * @param transactionFlags The enumerated type values
@@ -1851,37 +1851,37 @@ export function transactionFlagBitfieldToString(transactionFlags: Bitfield): str
  * @param transactionFlag Text describing the enumerated type
  * @returns the enumerated constant value, e.g. %PK_TRANSACTION_FLAG_ENUM_SIMULATE
  */
-export function transactionFlagEnumFromString(transactionFlag: string | null): TransactionFlagEnum
+export function transactionFlagEnumFromString(transactionFlag: string): TransactionFlagEnum
 /**
  * Converts a enumerated type to its text representation
  * @param transactionFlag The enumerated type value
  * @returns the enumerated constant value, e.g. "simulate"
  */
-export function transactionFlagEnumToString(transactionFlag: TransactionFlagEnum): string | null
+export function transactionFlagEnumToString(transactionFlag: TransactionFlagEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param updateState Text describing the enumerated type
  * @returns the enumerated constant value, e.g. %PK_UPDATE_STATE_ENUM_STABLE
  */
-export function updateStateEnumFromString(updateState: string | null): UpdateStateEnum
+export function updateStateEnumFromString(updateState: string): UpdateStateEnum
 /**
  * Converts a enumerated type to its text representation
  * @param updateState The enumerated type value
  * @returns the enumerated constant value, e.g. "testing"
  */
-export function updateStateEnumToString(updateState: UpdateStateEnum): string | null
+export function updateStateEnumToString(updateState: UpdateStateEnum): string
 /**
  * Converts a text enumerated type to its unsigned integer representation
  * @param upgradeKind Text describing the enumerated type
  * @returns the enumerated constant value, e.g. %PK_UPGRADE_KIND_ENUM_MINIMAL
  */
-export function upgradeKindEnumFromString(upgradeKind: string | null): UpgradeKindEnum
+export function upgradeKindEnumFromString(upgradeKind: string): UpgradeKindEnum
 /**
  * Converts a enumerated type to its text representation
  * @param upgradeKind The enumerated type value
  * @returns the enumerated constant value, e.g. "minimal"
  */
-export function upgradeKindEnumToString(upgradeKind: UpgradeKindEnum): string | null
+export function upgradeKindEnumToString(upgradeKind: UpgradeKindEnum): string
 /**
  * Function to filter packages in #PkPackageSack.
  * @callback 
@@ -1939,52 +1939,52 @@ export interface Category {
      * Gets the icon filename.
      * @returns the string value, or %NULL for unset.
      */
-    getIcon(): string | null
+    getIcon(): string
     /**
      * Gets the id specific to this category.
      * @returns the string value, or %NULL for unset.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the name.
      * @returns the string value, or %NULL for unset.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the parent category id.
      * @returns the string value, or %NULL for unset.
      */
-    getParentId(): string | null
+    getParentId(): string
     /**
      * Gets the summary.
      * @returns the string value, or %NULL for unset.
      */
-    getSummary(): string | null
+    getSummary(): string
     /**
      * Sets the icon filename.
      * @param icon the new value
      */
-    setIcon(icon: string | null): void
+    setIcon(icon: string): void
     /**
      * Sets the id specific to this category.
      * @param catId the new value
      */
-    setId(catId: string | null): void
+    setId(catId: string): void
     /**
      * Sets the name.
      * @param name the new value
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the parent category id.
      * @param parentId the new value
      */
-    setParentId(parentId: string | null): void
+    setParentId(parentId: string): void
     /**
      * Sets the summary.
      * @param summary the new value
      */
-    setSummary(summary: string | null): void
+    setSummary(summary: string): void
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.Category
 
@@ -2100,7 +2100,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    acceptEula(eulaId: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    acceptEula(eulaId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * We may want to agree to a EULA dialog if one is presented.
      * @param eulaId the <literal>eula_id</literal> we are agreeing to
@@ -2108,7 +2108,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    acceptEulaAsync(eulaId: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    acceptEulaAsync(eulaId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Adopt a transaction.
      * 
@@ -2119,7 +2119,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    adopt(transactionId: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    adopt(transactionId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Adopt a transaction which allows the caller to monitor the state or cancel it.
      * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
@@ -2127,7 +2127,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    adoptAsync(transactionId: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    adoptAsync(transactionId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Get the packages that depend this one, i.e. child.parent.
      * 
@@ -2162,7 +2162,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    downloadPackages(packageIds: string[], directory: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    downloadPackages(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Downloads package files to a specified location.
      * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
@@ -2171,7 +2171,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    downloadPackagesAsync(packageIds: string[], directory: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    downloadPackagesAsync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -2325,7 +2325,7 @@ export interface Client {
      * Gets the locale used for this transaction.
      * @returns The locale.
      */
-    getLocale(): string | null
+    getLocale(): string
     /**
      * Get the old transaction list, mainly used for the transaction viewer.
      * 
@@ -2373,14 +2373,14 @@ export interface Client {
      * @param cancellable a #GCancellable or %NULL
      * @returns a #PkResults object, or %NULL for error
      */
-    getProgress(transactionId: string | null, cancellable: Gio.Cancellable | null): Progress
+    getProgress(transactionId: string, cancellable: Gio.Cancellable | null): Progress
     /**
      * Find the current state of a transaction.
      * @param transactionId a transaction ID such as "/21_ebcbdaae_data"
      * @param cancellable a #GCancellable or %NULL
      * @param callbackReady the function to run on completion
      */
-    getProgressAsync(transactionId: string | null, cancellable: Gio.Cancellable | null, callbackReady: Gio.AsyncReadyCallback | null): void
+    getProgressAsync(transactionId: string, cancellable: Gio.Cancellable | null, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -2502,7 +2502,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    installSignature(type: SigTypeEnum, keyId: string | null, packageId: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    installSignature(type: SigTypeEnum, keyId: string, packageId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Install a software repository signature of the newest and most correct version.
      * @param type the signature type, e.g. %PK_SIGTYPE_ENUM_GPG
@@ -2512,7 +2512,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    installSignatureAsync(type: SigTypeEnum, keyId: string | null, packageId: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    installSignatureAsync(type: SigTypeEnum, keyId: string, packageId: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Refresh the cache, i.e. download new metadata from a remote URL so that
      * package lists are up to date.
@@ -2607,7 +2607,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    repoEnable(repoId: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    repoEnable(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Enable or disable the repository.
      * @param repoId a repo_id structure such as "livna-devel"
@@ -2616,7 +2616,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    repoEnableAsync(repoId: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    repoEnableAsync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Removes a repo and optionally the packages installed from it.
      * 
@@ -2629,7 +2629,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    repoRemove(transactionFlags: Bitfield, repoId: string | null, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    repoRemove(transactionFlags: Bitfield, repoId: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Removes a repo and optionally the packages installed from it.
      * @param transactionFlags transaction flags
@@ -2639,7 +2639,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    repoRemoveAsync(transactionFlags: Bitfield, repoId: string | null, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    repoRemoveAsync(transactionFlags: Bitfield, repoId: string, autoremove: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * We may want to set a repository parameter.
      * NOTE: this is free text, and is left to the backend to define a format.
@@ -2653,7 +2653,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    repoSetData(repoId: string | null, parameter: string | null, value: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    repoSetData(repoId: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * We may want to set a repository parameter.
      * NOTE: this is free text, and is left to the backend to define a format.
@@ -2664,7 +2664,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    repoSetDataAsync(repoId: string | null, parameter: string | null, value: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    repoSetDataAsync(repoId: string, parameter: string, value: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Get the packages that require this one, i.e. parent.child.
      * 
@@ -2832,7 +2832,7 @@ export interface Client {
      * results.
      * @param locale the locale to set, e.g. "en_GB.UTF-8"
      */
-    setLocale(locale: string | null): void
+    setLocale(locale: string): void
     /**
      * Update specific packages to the newest available versions.
      * 
@@ -2870,7 +2870,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    upgradeSystem(transactionFlags: Bitfield, distroId: string | null, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    upgradeSystem(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * This transaction will update the distro to the next version, which may
      * involve just downloading the installer and setting up the boot device,
@@ -2884,7 +2884,7 @@ export interface Client {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    upgradeSystemAsync(transactionFlags: Bitfield, distroId: string | null, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    upgradeSystemAsync(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * This should return packages that provide the supplied attributes.
      * This method is useful for finding out what package(s) provide a modalias
@@ -3018,7 +3018,7 @@ export interface ClientHelper {
      * @param envp the environment
      * @returns %TRUE for success
      */
-    start(socketFilename: string | null, argv: string | null, envp: string | null): boolean
+    start(socketFilename: string, argv: string | null, envp: string | null): boolean
     /**
      * Starts the helper process, by running the helper process and setting
      * up the socket for use.
@@ -3154,7 +3154,7 @@ export interface Control {
      * @param cancellable a #GCancellable or %NULL
      * @param callback the function to run on completion
      */
-    canAuthorizeAsync(actionId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    canAuthorizeAsync(actionId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3248,7 +3248,7 @@ export interface Control {
      * @param cancellable a #GCancellable or %NULL
      * @returns %TRUE if the proxy was set correctly NOTE: This is just provided for backwards compatibility. Clients should really be using pk_control_set_proxy2().
      */
-    setProxy(proxyHttp: string | null, proxyFtp: string | null, cancellable: Gio.Cancellable | null): boolean
+    setProxy(proxyHttp: string, proxyFtp: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the network proxy to use in the daemon.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
@@ -3262,7 +3262,7 @@ export interface Control {
      * @param cancellable a #GCancellable or %NULL
      * @returns %TRUE if the proxy was set correctly
      */
-    setProxy2(proxyHttp: string | null, proxyHttps: string | null, proxyFtp: string | null, proxySocks: string | null, noProxy: string | null, pac: string | null, cancellable: Gio.Cancellable | null): boolean
+    setProxy2(proxyHttp: string, proxyHttps: string, proxyFtp: string, proxySocks: string, noProxy: string, pac: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Set a proxy on the PK daemon
      * @param proxyHttp a HTTP proxy string such as "username:password`server`.lan:8080", or %NULL
@@ -3274,7 +3274,7 @@ export interface Control {
      * @param cancellable a #GCancellable or %NULL
      * @param callback the function to run on completion
      */
-    setProxy2Async(proxyHttp: string | null, proxyHttps: string | null, proxyFtp: string | null, proxySocks: string | null, noProxy: string | null, pac: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setProxy2Async(proxyHttp: string, proxyHttps: string, proxyFtp: string, proxySocks: string, noProxy: string, pac: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Set a proxy on the PK daemon
      * 
@@ -3285,7 +3285,7 @@ export interface Control {
      * @param cancellable a #GCancellable or %NULL
      * @param callback the function to run on completion
      */
-    setProxyAsync(proxyHttp: string | null, proxyFtp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setProxyAsync(proxyHttp: string, proxyFtp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -3478,20 +3478,20 @@ export interface Desktop {
      * @param package the package name, e.g. "gnome-power-manager"
      * @returns string array of results, free with g_ptr_array_unref() NOTE: This method is unused and will be removed next time the library soname changes!
      */
-    getFilesForPackage(package: string | null): string[]
+    getFilesForPackage(package: string): string[]
     /**
      * Returns the package name that owns the desktop file. Fast.
      * @param filename a fully qualified filename
      * @returns package name, or %NULL NOTE: This method is unused and will be removed next time the library soname changes!
      */
-    getPackageForFile(filename: string | null): string | null
+    getPackageForFile(filename: string): string | null
     /**
      * Return all desktop files owned by a package that would be shown in a menu,
      * i.e are an application
      * @param package the package name, e.g. "gnome-power-manager"
      * @returns string array of results, free with g_ptr_array_unref() NOTE: This method is unused and will be removed next time the library soname changes!
      */
-    getShownForPackage(package: string | null): string[]
+    getShownForPackage(package: string): string[]
     /**
      * This method is unused and will be removed next time the library
      * soname changes!
@@ -3583,7 +3583,7 @@ export interface Details {
      * Gets the description for the details object.
      * @returns string value
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the package download size.
      * @returns the package download size, 0 if already downloaded and G_MAXUINT64 when unknown
@@ -3598,12 +3598,12 @@ export interface Details {
      * Gets the license for the details object.
      * @returns string value
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets the PackageId for the details object.
      * @returns string value
      */
-    getPackageId(): string | null
+    getPackageId(): string
     /**
      * Gets the size for the details object: for installed packages it will return
      * the installed size, for the rest the package size.
@@ -3614,12 +3614,12 @@ export interface Details {
      * Gets the summary for the details object.
      * @returns string value
      */
-    getSummary(): string | null
+    getSummary(): string
     /**
      * Gets the url for the details object.
      * @returns string value
      */
-    getUrl(): string | null
+    getUrl(): string
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.Details
 
@@ -3740,7 +3740,7 @@ export interface DistroUpgrade {
      * You use this value to call UpgradeSystem.
      * @returns the distro-id, e.g. "fedora-14"
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the status of the distribution upgrade.
      * @returns the printable name, e.g. %PK_DISTRO_UPGRADE_ENUM_UNSTABLE
@@ -3750,7 +3750,7 @@ export interface DistroUpgrade {
      * Gets the description of the distribution upgrade.
      * @returns the printable name, e.g. "Fedora 14"
      */
-    getSummary(): string | null
+    getSummary(): string
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.DistroUpgrade
 
@@ -3848,7 +3848,7 @@ export interface Error {
      * Get details for this error.
      * @returns an string description
      */
-    getDetails(): string | null
+    getDetails(): string
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.Error
 
@@ -3964,22 +3964,22 @@ export interface EulaRequired {
      * Get the ID for this EULA
      * @returns an ID
      */
-    getEulaId(): string | null
+    getEulaId(): string
     /**
      * Get the text of the license agreement.
      * @returns license agreement text
      */
-    getLicenseAgreement(): string | null
+    getLicenseAgreement(): string
     /**
      * Get the PackageID this EULA is for
      * @returns a PackageID
      */
-    getPackageId(): string | null
+    getPackageId(): string
     /**
      * Get the vendor this EULA is from.
      * @returns license vendor name
      */
-    getVendorName(): string | null
+    getVendorName(): string
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.EulaRequired
 
@@ -4082,7 +4082,7 @@ export interface Files {
      * Gets the package-id
      * @returns Gets the package_id for the files object
      */
-    getPackageId(): string | null
+    getPackageId(): string
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.Files
 
@@ -4172,7 +4172,7 @@ export interface ItemProgress {
      * Get the package ID this item is working on.
      * @returns a package ID
      */
-    getPackageId(): string | null
+    getPackageId(): string
     /**
      * Get the percentage complete of this item.
      * @returns a progress percentage (0-100)
@@ -4437,14 +4437,14 @@ export interface Package {
      * Gets the package arch.
      * @returns the arch, or %NULL if unset
      */
-    getArch(): string | null
+    getArch(): string
     /**
      * Gets the package data, which is usually the repository ID that contains the
      * package. Special ID's include "installed" for installed packages, and "local"
      * for local packages that exist on disk but not in a repository.
      * @returns the data, or %NULL if unset
      */
-    getData(): string | null
+    getData(): string
 
     // Overloads of getData
 
@@ -4453,12 +4453,12 @@ export interface Package {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets the package object ID
      * @returns the ID, or %NULL if unset
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the package object ID
      * @returns the #PkInfoEnum
@@ -4468,12 +4468,12 @@ export interface Package {
      * Gets the package name.
      * @returns the name, or %NULL if unset
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the package object ID
      * @returns the summary, or %NULL if unset
      */
-    getSummary(): string | null
+    getSummary(): string
     /**
      * Returns the `package` update severity. Can be one of %PK_INFO_ENUM_UNKNOWN,
      * %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL, %PK_INFO_ENUM_IMPORTANT or
@@ -4485,13 +4485,13 @@ export interface Package {
      * Gets the package version.
      * @returns the version, or %NULL if unset
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Parses the data to populate the #PkPackage.
      * @param data the data describing the package
      * @returns %TRUE if the data was parsed correcty
      */
-    parse(data: string | null): boolean
+    parse(data: string): boolean
     /**
      * Prints details about the package to standard out.
      */
@@ -4501,7 +4501,7 @@ export interface Package {
      * @param packageId the valid package_id
      * @returns %TRUE if the package_id was set
      */
-    setId(packageId: string | null): boolean
+    setId(packageId: string): boolean
     /**
      * Sets the package info enum.
      * @param info the #PkInfoEnum
@@ -4511,7 +4511,7 @@ export interface Package {
      * Sets the package summary.
      * @param summary the package summary
      */
-    setSummary(summary: string | null): void
+    setSummary(summary: string): void
     /**
      * Set an update severity for the `package`. The `update_severity` can be
      * one of %PK_INFO_ENUM_UNKNOWN, %PK_INFO_ENUM_LOW, %PK_INFO_ENUM_NORMAL,
@@ -4681,13 +4681,13 @@ export class Package extends Source {
      * @param data the package extra data
      * @returns returns a string to form the PackageID.
      */
-    static idBuild(name: string | null, version: string | null, arch: string | null, data: string | null): string | null
+    static idBuild(name: string, version: string, arch: string, data: string): string | null
     /**
      * Check if a Packageid is well formed.
      * @param packageId the PackageID to check
      * @returns %TRUE if the PackageID was well formed.
      */
-    static idCheck(packageId: string | null): boolean
+    static idCheck(packageId: string): boolean
     /**
      * Only compare the name, version, and arch, where the architecture will fuzzy
      * match with i*86.
@@ -4695,27 +4695,27 @@ export class Package extends Source {
      * @param packageId2 the second PackageID
      * @returns %TRUE if the PackageIDs can be considered equal.
      */
-    static idEqualFuzzyArch(packageId1: string | null, packageId2: string | null): boolean
+    static idEqualFuzzyArch(packageId1: string, packageId2: string): boolean
     /**
      * Splits a PackageID into the correct number of parts, checking the correct
      * number of delimiters are present.
      * @param packageId the ; delimited PackageID to split
      * @returns a GStrv or %NULL if invalid, use g_strfreev() to free
      */
-    static idSplit(packageId: string | null): string[]
+    static idSplit(packageId: string): string[]
     /**
      * Formats the PackageID to be printable to the user.
      * @param packageId the PackageID
      * @returns the name-version.arch formatted string, use g_free() to free.
      */
-    static idToPrintable(packageId: string | null): string | null
+    static idToPrintable(packageId: string): string | null
     /**
      * Adds a package_id to an existing list.
      * @param packageIds a string array of package_id's
      * @param packageId a single package_id
      * @returns the new list, free g_strfreev()
      */
-    static idsAddId(packageIds: string | null, packageId: string | null): string[]
+    static idsAddId(packageIds: string | null, packageId: string): string[]
     /**
      * Adds a package_id to an existing list.
      * @param packageIds a string array of package_id's
@@ -4735,28 +4735,28 @@ export class Package extends Source {
      * @param packageId A single package_id
      * @returns the string array, or %NULL if invalid, free with g_strfreev()
      */
-    static idsFromId(packageId: string | null): string[]
+    static idsFromId(packageId: string): string[]
     /**
      * Form a composite string array of package_id's from
      * a delimited string
      * @param packageId A single package_id
      * @returns the string array, or %NULL if invalid, free with g_strfreev()
      */
-    static idsFromString(packageId: string | null): string[]
+    static idsFromString(packageId: string): string[]
     /**
      * Finds out if a package ID is present in the list.
      * @param packageIds a string array of package_id's
      * @param packageId a single package_id
      * @returns %TRUE if the package ID is present
      */
-    static idsPresentId(packageIds: string | null, packageId: string | null): boolean
+    static idsPresentId(packageIds: string | null, packageId: string): boolean
     /**
      * Removes a package ID from the the list.
      * @param packageIds a string array of package_id's
      * @param packageId a single package_id
      * @returns the new list, free g_strfreev()
      */
-    static idsRemoveId(packageIds: string | null, packageId: string | null): string[]
+    static idsRemoveId(packageIds: string | null, packageId: string): string[]
     /**
      * Cats the string array of package_id's into one delimited string
      * @param packageIds a string array of package_id's
@@ -4798,7 +4798,7 @@ export interface PackageSack {
      * @param packageId a package_id descriptor
      * @returns %TRUE if the package was added to the sack
      */
-    addPackageById(packageId: string | null): boolean
+    addPackageById(packageId: string): boolean
     /**
      * Adds packages from package-list file to a #PkPackageSack.
      * @param file a valid package-list file
@@ -4829,14 +4829,14 @@ export interface PackageSack {
      * @param packageId a package_id descriptor
      * @returns the #PkPackage object, or %NULL if unfound. Free with g_object_unref()
      */
-    findById(packageId: string | null): Package
+    findById(packageId: string): Package
     /**
      * Finds a package in a sack by package name and architecture. As soon as one
      * package is found the search is stopped.
      * @param packageId a package_id descriptor
      * @returns the #PkPackage object, or %NULL if not found.
      */
-    findByIdNameArch(packageId: string | null): Package
+    findByIdNameArch(packageId: string): Package
     /**
      * Gets the package array from the sack
      * @returns A #GPtrArray, free with g_ptr_array_unref().
@@ -4912,7 +4912,7 @@ export interface PackageSack {
      * @param packageId a package_id descriptor
      * @returns %TRUE if the package was removed from the sack
      */
-    removePackageById(packageId: string | null): boolean
+    removePackageById(packageId: string): boolean
     /**
      * Gets the properties the daemon supports.
      * Warning: this function is synchronous, and may block. Do not use it in GUI
@@ -5160,7 +5160,7 @@ export interface Progress {
      * Get the package ID this transaction is acting on.
      * @returns a PackageID
      */
-    getPackageId(): string | null
+    getPackageId(): string
     /**
      * Get the percentage complete.
      * @returns a percentage (0-100)
@@ -5200,7 +5200,7 @@ export interface Progress {
      * Get the ID used by this transaction.
      * @returns a transaction ID.
      */
-    getTransactionId(): string | null
+    getTransactionId(): string
     /**
      * Get the UID that started this transaction.
      * @returns an UID
@@ -5247,7 +5247,7 @@ export interface Progress {
      * @param packageId a PackageID
      * @returns %TRUE if value changed.
      */
-    setPackageId(packageId: string | null): boolean
+    setPackageId(packageId: string): boolean
     /**
      * Set the percentage complete of this transaction.
      * @param percentage a percentage value (0-100)
@@ -5271,7 +5271,7 @@ export interface Progress {
      * @param busName a D-Bus name
      * @returns %TRUE if value changed.
      */
-    setSender(busName: string | null): boolean
+    setSender(busName: string): boolean
     /**
      * Set the speed of this transaction.
      * @param speed speed in bits per second or 0 if unknown
@@ -5295,7 +5295,7 @@ export interface Progress {
      * @param transactionId a transaction ID.
      * @returns %TRUE if value changed.
      */
-    setTransactionId(transactionId: string | null): boolean
+    setTransactionId(transactionId: string): boolean
     /**
      * Set the UID that started this transaction.
      * @param uid a UID
@@ -5459,7 +5459,7 @@ export interface RepoDetail {
      * Gets the repository description.
      * @returns string ID, e.g. "Fedora 20 - i386"
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the repository enabled status.
      * @returns %TRUE for enabled
@@ -5469,7 +5469,7 @@ export interface RepoDetail {
      * Gets the repository ID.
      * @returns string ID, e.g. "fedora"
      */
-    getId(): string | null
+    getId(): string
 
     // Class property signals of PackageKitGlib-1.0.PackageKitGlib.RepoDetail
 
@@ -6172,7 +6172,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    downloadPackagesAsync(packageIds: string[], directory: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    downloadPackagesAsync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Downloads packages
      * @param packageIds a null terminated array of package_id structures such as "hal;0.0.1;i386;fedora"
@@ -6181,7 +6181,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    downloadPackagesSync(packageIds: string[], directory: string | null, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    downloadPackagesSync(packageIds: string[], directory: string, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -6489,7 +6489,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    repoEnableAsync(repoId: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    repoEnableAsync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * Enable or disable a specific repo.
      * @param repoId The software repository ID
@@ -6498,7 +6498,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    repoEnableSync(repoId: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    repoEnableSync(repoId: string, enabled: boolean, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Get the packages this package requires.
      * @param filters a bitfield of filters that can be used to limit the results
@@ -6679,7 +6679,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    upgradeSystemAsync(distroId: string | null, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    upgradeSystemAsync(distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
 
     // Overloads of upgradeSystemAsync
 
@@ -6696,7 +6696,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @param callbackReady the function to run on completion
      */
-    upgradeSystemAsync(transactionFlags: Bitfield, distroId: string | null, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
+    upgradeSystemAsync(transactionFlags: Bitfield, distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback, callbackReady: Gio.AsyncReadyCallback | null): void
     /**
      * This transaction will update the distro to the next version, which may
      * involve just downloading the installer and setting up the boot device,
@@ -6709,7 +6709,7 @@ export interface Task {
      * @param progressCallback the function to run when the progress changes
      * @returns a #PkResults object, or %NULL for error
      */
-    upgradeSystemSync(distroId: string | null, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
+    upgradeSystemSync(distroId: string, upgradeKind: UpgradeKindEnum, cancellable: Gio.Cancellable | null, progressCallback: ProgressCallback): Results
     /**
      * Mark a EULA as accepted by the user.
      * @param request request ID for EULA.
@@ -6891,8 +6891,8 @@ export interface TransactionList {
 
     // Own virtual methods of PackageKitGlib-1.0.PackageKitGlib.TransactionList
 
-    added(tid: string | null): void
-    removed(tid: string | null): void
+    added(tid: string): void
+    removed(tid: string): void
 
     // Own signals of PackageKitGlib-1.0.PackageKitGlib.TransactionList
 
@@ -6981,12 +6981,12 @@ export interface TransactionPast {
      * Gets the past transaction cmdline value;
      * @returns The transaction data
      */
-    getCmdline(): string | null
+    getCmdline(): string
     /**
      * Gets the past transaction data;
      * @returns The transaction data
      */
-    getData(): string | null
+    getData(): string
 
     // Overloads of getData
 
@@ -6995,7 +6995,7 @@ export interface TransactionPast {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets the past transaction date & time value;
      * @returns The transaction data, or %NULL if it's not available
@@ -7010,7 +7010,7 @@ export interface TransactionPast {
      * Gets the past transaction ID value;
      * @returns The transaction data
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the past transaction role;
      * @returns The transaction data
@@ -7025,7 +7025,7 @@ export interface TransactionPast {
      * Gets the past transaction timespec value;
      * @returns The transaction data
      */
-    getTimespec(): string | null
+    getTimespec(): string
     /**
      * Gets the past transaction timestamp
      * @returns The transaction data, or 0 if it's not available
@@ -7173,7 +7173,7 @@ export interface UpdateDetail {
      * Gets the update detail changelog.
      * @returns string values
      */
-    getChangelog(): string | null
+    getChangelog(): string
     /**
      * Gets the update detail CVE URLs.
      * @returns string values
@@ -7183,7 +7183,7 @@ export interface UpdateDetail {
      * Gets the update detail issued string.
      * @returns string values
      */
-    getIssued(): string | null
+    getIssued(): string
     /**
      * Gets the update detail obsoletes IDs.
      * @returns string values
@@ -7193,7 +7193,7 @@ export interface UpdateDetail {
      * Gets the update detail package ID.
      * @returns string values
      */
-    getPackageId(): string | null
+    getPackageId(): string
     /**
      * Gets the update detail restart kind.
      * @returns enum values
@@ -7208,12 +7208,12 @@ export interface UpdateDetail {
      * Gets the update detail update text.
      * @returns string values
      */
-    getUpdateText(): string | null
+    getUpdateText(): string
     /**
      * Gets the update detail updated string.
      * @returns string values
      */
-    getUpdated(): string | null
+    getUpdated(): string
     /**
      * Gets the update detail updates IDs.
      * @returns string values
@@ -7545,7 +7545,7 @@ export interface EnumMatch {
      * string for given value
      * @field 
      */
-    string: string | null
+    string: string
 }
 
 /**
@@ -7974,8 +7974,8 @@ export interface TransactionListClass {
     // Own fields of PackageKitGlib-1.0.PackageKitGlib.TransactionListClass
 
     parentClass: GObject.ObjectClass
-    added: (tlist: TransactionList, tid: string | null) => void
-    removed: (tlist: TransactionList, tid: string | null) => void
+    added: (tlist: TransactionList, tid: string) => void
+    removed: (tlist: TransactionList, tid: string) => void
 }
 
 export abstract class TransactionListClass {

@@ -37,7 +37,7 @@ export enum RegisterFlags {
  * @param subject The subject to become an authentication agent for, typically a #PolkitUnixSession object.
  * @param objectPath The D-Bus object path to use for the authentication agent or %NULL for the default object path.
  */
-export function registerListener(listener: Listener, subject: Polkit.Subject, objectPath: string | null): boolean
+export function registerListener(listener: Listener, subject: Polkit.Subject, objectPath: string): boolean
 export module Listener {
 
     // Constructor properties interface
@@ -59,7 +59,7 @@ export interface Listener {
 
     // Owm methods of PolkitAgent-1.0.PolkitAgent.Listener
 
-    // Has conflict: initiateAuthentication(actionId: string | null, message: string | null, iconName: string | null, details: Polkit.Details, cookie: string | null, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: initiateAuthentication(actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: initiateAuthenticationFinish(res: Gio.AsyncResult): boolean
     /**
      * Registers `listener` with the PolicyKit daemon as an authentication
@@ -84,7 +84,7 @@ export interface Listener {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %NULL if @error is set, otherwise a registration handle that can be used with polkit_agent_listener_unregister().
      */
-    register(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string | null, cancellable: Gio.Cancellable | null): any | null
+    register(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string, cancellable: Gio.Cancellable | null): any | null
     /**
      * Like polkit_agent_listener_register() but takes options to influence registration. See the
      * <link linkend="eggdbus-method-org.freedesktop.PolicyKit1.Authority.RegisterAuthenticationAgentWithOptions">RegisterAuthenticationAgentWithOptions()</link> D-Bus method for details.
@@ -95,7 +95,7 @@ export interface Listener {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %NULL if @error is set, otherwise a registration handle that can be used with polkit_agent_listener_unregister().
      */
-    registerWithOptions(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): any | null
+    registerWithOptions(flags: RegisterFlags, subject: Polkit.Subject, objectPath: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): any | null
 
     // Own virtual methods of PolkitAgent-1.0.PolkitAgent.Listener
 
@@ -127,7 +127,7 @@ export interface Listener {
      * @param cancellable A #GCancellable.
      * @param callback Function to call when the user is done authenticating.
      */
-    initiateAuthentication(actionId: string | null, message: string | null, iconName: string | null, details: Polkit.Details, cookie: string | null, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    initiateAuthentication(actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an authentication request from the PolicyKit daemon, see
      * polkit_agent_listener_initiate_authentication() for details.
@@ -270,7 +270,7 @@ export interface Session {
      * via the #PolkitAgentSession::request signal.
      * @param response Response from the user, typically a password.
      */
-    response(response: string | null): void
+    response(response: string): void
 
     // Own signals of PolkitAgent-1.0.PolkitAgent.Session
 
@@ -368,7 +368,7 @@ export class Session extends GObject.Object {
      * @param cookie The cookie obtained from the PolicyKit daemon
      * @returns A #PolkitAgentSession. Free with g_object_unref().
      */
-    constructor(identity: Polkit.Identity, cookie: string | null) 
+    constructor(identity: Polkit.Identity, cookie: string) 
     /**
      * Creates a new authentication session.
      * 
@@ -383,7 +383,7 @@ export class Session extends GObject.Object {
      * @param cookie The cookie obtained from the PolicyKit daemon
      * @returns A #PolkitAgentSession. Free with g_object_unref().
      */
-    static new(identity: Polkit.Identity, cookie: string | null): Session
+    static new(identity: Polkit.Identity, cookie: string): Session
     _init(config?: Session.ConstructorProperties): void
 }
 
@@ -463,7 +463,7 @@ export interface ListenerClass {
      * @field 
      */
     parentClass: GObject.ObjectClass
-    initiateAuthentication: (listener: Listener, actionId: string | null, message: string | null, iconName: string | null, details: Polkit.Details, cookie: string | null, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    initiateAuthentication: (listener: Listener, actionId: string, message: string, iconName: string, details: Polkit.Details, cookie: string, identities: Polkit.Identity[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     initiateAuthenticationFinish: (listener: Listener, res: Gio.AsyncResult) => boolean
 }
 

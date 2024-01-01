@@ -98,14 +98,14 @@ export interface Tree {
      * gmenu_tree_load_sync() or a variant thereof.
      * @returns The absolute and canonicalized path to the loaded menu file
      */
-    getCanonicalMenuPath(): string | null
-    getDirectoryFromPath(path: string | null): TreeDirectory
+    getCanonicalMenuPath(): string
+    getDirectoryFromPath(path: string): TreeDirectory
     /**
      * Look up the entry corresponding to the given "desktop file id".
      * @param id a desktop file ID
      * @returns A newly referenced #GMenuTreeEntry, or %NULL if none
      */
-    getEntryById(id: string | null): TreeEntry
+    getEntryById(id: string): TreeEntry
     /**
      * Get the root directory; you must have loaded the tree first (at
      * least once) via gmenu_tree_load_sync() or a variant thereof.
@@ -167,9 +167,9 @@ export class Tree extends GObject.Object {
     // Constructors of GMenu-3.0.GMenu.Tree
 
     constructor(config?: Tree.ConstructorProperties) 
-    constructor(menuBasename: string | null, flags: TreeFlags) 
-    static new(menuBasename: string | null, flags: TreeFlags): Tree
-    static newForPath(menuPath: string | null, flags: TreeFlags): Tree
+    constructor(menuBasename: string, flags: TreeFlags) 
+    static new(menuBasename: string, flags: TreeFlags): Tree
+    static newForPath(menuPath: string, flags: TreeFlags): Tree
     _init(config?: Tree.ConstructorProperties): void
     static itemRef(item: any | null): any | null
     static itemUnref(item: any | null): void
@@ -216,17 +216,17 @@ export interface TreeDirectory {
 
     // Owm methods of GMenu-3.0.GMenu.TreeDirectory
 
-    getComment(): string | null
-    getDesktopFilePath(): string | null
-    getGenericName(): string | null
+    getComment(): string
+    getDesktopFilePath(): string
+    getGenericName(): string
     /**
      * Gets the icon for the directory.
      * @returns The #GIcon for this directory
      */
     getIcon(): Gio.Icon
     getIsNodisplay(): boolean
-    getMenuId(): string | null
-    getName(): string | null
+    getMenuId(): string
+    getName(): string
     getParent(): TreeDirectory
     /**
      * Grab the tree associated with a #GMenuTreeItem.
@@ -249,8 +249,8 @@ export interface TreeEntry {
     // Owm methods of GMenu-3.0.GMenu.TreeEntry
 
     getAppInfo(): Gio.DesktopAppInfo
-    getDesktopFileId(): string | null
-    getDesktopFilePath(): string | null
+    getDesktopFileId(): string
+    getDesktopFilePath(): string
     getIsExcluded(): boolean
     getIsNodisplayRecurse(): boolean
     getIsUnallocated(): boolean

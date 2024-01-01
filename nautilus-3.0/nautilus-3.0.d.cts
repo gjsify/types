@@ -48,11 +48,11 @@ export enum OperationResult {
     IN_PROGRESS,
 }
 export function file_info_create(location: Gio.File): FileInfo
-export function file_info_create_for_uri(uri: string | null): FileInfo
+export function file_info_create_for_uri(uri: string): FileInfo
 export function file_info_list_copy(files: FileInfo[]): FileInfo[]
 export function file_info_list_free(files: FileInfo[]): void
 export function file_info_lookup(location: Gio.File): FileInfo | null
-export function file_info_lookup_for_uri(uri: string | null): FileInfo | null
+export function file_info_lookup_for_uri(uri: string): FileInfo | null
 export function info_provider_update_complete_invoke(update_complete: GObject.TClosure, provider: InfoProvider, handle: OperationHandle, result: OperationResult): void
 export module ColumnProvider {
 
@@ -103,8 +103,8 @@ export interface FileInfo {
 
     // Owm methods of Nautilus-3.0.Nautilus.FileInfo
 
-    add_emblem(emblem_name: string | null): void
-    add_string_attribute(attribute_name: string | null, value: string | null): void
+    add_emblem(emblem_name: string): void
+    add_string_attribute(attribute_name: string, value: string): void
     can_write(): boolean
     get_activation_uri(): string | null
     get_file_type(): Gio.FileType
@@ -120,18 +120,18 @@ export interface FileInfo {
     get_parent_info(): FileInfo | null
     get_parent_location(): Gio.File | null
     get_parent_uri(): string | null
-    get_string_attribute(attribute_name: string | null): string | null
+    get_string_attribute(attribute_name: string): string | null
     get_uri(): string | null
     get_uri_scheme(): string | null
     invalidate_extension_info(): void
     is_directory(): boolean
     is_gone(): boolean
-    is_mime_type(mime_type: string | null): boolean
+    is_mime_type(mime_type: string): boolean
 
     // Own virtual methods of Nautilus-3.0.Nautilus.FileInfo
 
-    vfunc_add_emblem(emblem_name: string | null): void
-    vfunc_add_string_attribute(attribute_name: string | null, value: string | null): void
+    vfunc_add_emblem(emblem_name: string): void
+    vfunc_add_string_attribute(attribute_name: string, value: string): void
     vfunc_can_write(): boolean
     vfunc_get_activation_uri(): string | null
     vfunc_get_file_type(): Gio.FileType
@@ -148,13 +148,13 @@ export interface FileInfo {
     vfunc_get_parent_info(): FileInfo | null
     vfunc_get_parent_location(): Gio.File | null
     vfunc_get_parent_uri(): string | null
-    vfunc_get_string_attribute(attribute_name: string | null): string | null
+    vfunc_get_string_attribute(attribute_name: string): string | null
     vfunc_get_uri(): string | null
     vfunc_get_uri_scheme(): string | null
     vfunc_invalidate_extension_info(): void
     vfunc_is_directory(): boolean
     vfunc_is_gone(): boolean
-    vfunc_is_mime_type(mime_type: string | null): boolean
+    vfunc_is_mime_type(mime_type: string): boolean
 
     // Class property signals of Nautilus-3.0.Nautilus.FileInfo
 
@@ -176,11 +176,11 @@ export class FileInfo extends GObject.Object {
     constructor(config?: FileInfo.ConstructorProperties) 
     _init(config?: FileInfo.ConstructorProperties): void
     static create(location: Gio.File): FileInfo
-    static create_for_uri(uri: string | null): FileInfo
+    static create_for_uri(uri: string): FileInfo
     static list_copy(files: FileInfo[]): FileInfo[]
     static list_free(files: FileInfo[]): void
     static lookup(location: Gio.File): FileInfo | null
-    static lookup_for_uri(uri: string | null): FileInfo | null
+    static lookup_for_uri(uri: string): FileInfo | null
 }
 
 export module InfoProvider {
@@ -234,7 +234,7 @@ export interface LocationWidgetProvider {
 
     // Owm methods of Nautilus-3.0.Nautilus.LocationWidgetProvider
 
-    get_widget(uri: string | null, window: Gtk.Widget): Gtk.Widget | null
+    get_widget(uri: string, window: Gtk.Widget): Gtk.Widget | null
 
     // Class property signals of Nautilus-3.0.Nautilus.LocationWidgetProvider
 
@@ -431,8 +431,8 @@ export class Column extends GObject.Object {
     // Constructors of Nautilus-3.0.Nautilus.Column
 
     constructor(config?: Column.ConstructorProperties) 
-    constructor(name: string | null, attribute: string | null, label: string | null, description: string | null) 
-    static new(name: string | null, attribute: string | null, label: string | null, description: string | null): Column
+    constructor(name: string, attribute: string, label: string, description: string) 
+    static new(name: string, attribute: string, label: string, description: string): Column
     _init(config?: Column.ConstructorProperties): void
 }
 
@@ -594,7 +594,7 @@ export class MenuItem extends GObject.Object {
      * @param icon the name of the icon to display in the menu item
      * @returns a new #NautilusMenuItem
      */
-    constructor(name: string | null, label: string | null, tip: string | null, icon: string | null) 
+    constructor(name: string, label: string, tip: string | null, icon: string | null) 
     /**
      * Creates a new menu item that can be added to the toolbar or to a contextual menu.
      * @constructor 
@@ -604,7 +604,7 @@ export class MenuItem extends GObject.Object {
      * @param icon the name of the icon to display in the menu item
      * @returns a new #NautilusMenuItem
      */
-    static new(name: string | null, label: string | null, tip: string | null, icon: string | null): MenuItem
+    static new(name: string, label: string, tip: string | null, icon: string | null): MenuItem
     _init(config?: MenuItem.ConstructorProperties): void
     static list_free(item_list: MenuItem[]): void
 }
@@ -659,8 +659,8 @@ export class PropertyPage extends GObject.Object {
     // Constructors of Nautilus-3.0.Nautilus.PropertyPage
 
     constructor(config?: PropertyPage.ConstructorProperties) 
-    constructor(name: string | null, label: Gtk.Widget, page: Gtk.Widget) 
-    static new(name: string | null, label: Gtk.Widget, page: Gtk.Widget): PropertyPage
+    constructor(name: string, label: Gtk.Widget, page: Gtk.Widget) 
+    static new(name: string, label: Gtk.Widget, page: Gtk.Widget): PropertyPage
     _init(config?: PropertyPage.ConstructorProperties): void
 }
 
@@ -725,11 +725,11 @@ export interface FileInfoInterface {
     get_parent_uri: (file_info: FileInfo) => string | null
     get_uri_scheme: (file_info: FileInfo) => string | null
     get_mime_type: (file_info: FileInfo) => string | null
-    is_mime_type: (file_info: FileInfo, mime_type: string | null) => boolean
+    is_mime_type: (file_info: FileInfo, mime_type: string) => boolean
     is_directory: (file_info: FileInfo) => boolean
-    add_emblem: (file_info: FileInfo, emblem_name: string | null) => void
-    get_string_attribute: (file_info: FileInfo, attribute_name: string | null) => string | null
-    add_string_attribute: (file_info: FileInfo, attribute_name: string | null, value: string | null) => void
+    add_emblem: (file_info: FileInfo, emblem_name: string) => void
+    get_string_attribute: (file_info: FileInfo, attribute_name: string) => string | null
+    add_string_attribute: (file_info: FileInfo, attribute_name: string, value: string) => void
     invalidate_extension_info: (file_info: FileInfo) => void
     get_activation_uri: (file_info: FileInfo) => string | null
     get_file_type: (file_info: FileInfo) => Gio.FileType

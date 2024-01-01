@@ -1,6 +1,6 @@
 {
     "name": "@girs/telepathyglib-0.12",
-    "version": "0.12.0-3.2.6",
+    "version": "0.12.0-3.2.7",
     "description": "GJS TypeScript type definitions for TelepathyGLib-0.12, generated from library version 0.12.0",
     "type": "module",
     "module": "telepathyglib-0.12.js",

@@ -6870,7 +6870,7 @@ interface Session {
      * @param acltype 
      * @returns the returned string, or NULL on error
      */
-    aclGetFile(path: string, acltype: string | null): string | null
+    aclGetFile(path: string, acltype: string): string | null
     /**
      * set the POSIX ACL attached to a file
      * 
@@ -6911,7 +6911,7 @@ interface Session {
      * @param acl 
      * @returns true on success, false on error
      */
-    aclSetFile(path: string, acltype: string | null, acl: string | null): boolean
+    aclSetFile(path: string, acltype: string, acl: string): boolean
     /**
      * add a CD-ROM disk image to examine
      * 
@@ -6922,7 +6922,7 @@ interface Session {
      * @param filename 
      * @returns true on success, false on error
      */
-    addCdrom(filename: string | null): boolean
+    addCdrom(filename: string): boolean
     /**
      * add the disk(s) from a named libvirt domain
      * 
@@ -7004,7 +7004,7 @@ interface Session {
      * @param optargs a GuestfsAddDomain containing optional arguments
      * @returns the returned value, or -1 on error
      */
-    addDomain(dom: string | null, optargs: AddDomain | null): number
+    addDomain(dom: string, optargs: AddDomain | null): number
     /**
      * add an image to examine or modify
      * 
@@ -7237,7 +7237,7 @@ interface Session {
      * @param optargs a GuestfsAddDrive containing optional arguments
      * @returns true on success, false on error
      */
-    addDrive(filename: string | null, optargs: AddDrive | null): boolean
+    addDrive(filename: string, optargs: AddDrive | null): boolean
     /**
      * add a drive in snapshot mode (read-only)
      * 
@@ -7248,7 +7248,7 @@ interface Session {
      * @param filename 
      * @returns true on success, false on error
      */
-    addDriveRo(filename: string | null): boolean
+    addDriveRo(filename: string): boolean
     /**
      * add a drive read-only specifying the QEMU block emulation to use
      * 
@@ -7258,7 +7258,7 @@ interface Session {
      * @param iface 
      * @returns true on success, false on error
      */
-    addDriveRoWithIf(filename: string | null, iface: string | null): boolean
+    addDriveRoWithIf(filename: string, iface: string): boolean
     /**
      * add a temporary scratch drive
      * 
@@ -7283,7 +7283,7 @@ interface Session {
      * @param iface 
      * @returns true on success, false on error
      */
-    addDriveWithIf(filename: string | null, iface: string | null): boolean
+    addDriveWithIf(filename: string, iface: string): boolean
     /**
      * add the disk(s) from a libvirt domain
      * 
@@ -7332,7 +7332,7 @@ interface Session {
      * @param augpath 
      * @returns true on success, false on error
      */
-    augClear(augpath: string | null): boolean
+    augClear(augpath: string): boolean
     /**
      * close the current Augeas handle
      * 
@@ -7358,7 +7358,7 @@ interface Session {
      * @param val 
      * @returns a IntBool object, or NULL on error
      */
-    augDefnode(name: string | null, expr: string | null, val: string | null): IntBool
+    augDefnode(name: string, expr: string, val: string): IntBool
     /**
      * define an Augeas variable
      * 
@@ -7371,7 +7371,7 @@ interface Session {
      * @param expr 
      * @returns the returned value, or -1 on error
      */
-    augDefvar(name: string | null, expr: string | null): number
+    augDefvar(name: string, expr: string | null): number
     /**
      * look up the value of an Augeas path
      * 
@@ -7380,7 +7380,7 @@ interface Session {
      * @param augpath 
      * @returns the returned string, or NULL on error
      */
-    augGet(augpath: string | null): string | null
+    augGet(augpath: string): string | null
     /**
      * create a new Augeas handle
      * 
@@ -7441,7 +7441,7 @@ interface Session {
      * @param before 
      * @returns true on success, false on error
      */
-    augInsert(augpath: string | null, label: string | null, before: boolean): boolean
+    augInsert(augpath: string, label: string, before: boolean): boolean
     /**
      * return the label from an Augeas path expression
      * 
@@ -7451,7 +7451,7 @@ interface Session {
      * @param augpath 
      * @returns the returned string, or NULL on error
      */
-    augLabel(augpath: string | null): string | null
+    augLabel(augpath: string): string | null
     /**
      * load files into the tree
      * 
@@ -7469,7 +7469,7 @@ interface Session {
      * @param augpath 
      * @returns an array of returned strings, or NULL on error
      */
-    augLs(augpath: string | null): string[]
+    augLs(augpath: string): string[]
     /**
      * return Augeas nodes which match augpath
      * 
@@ -7479,7 +7479,7 @@ interface Session {
      * @param augpath 
      * @returns an array of returned strings, or NULL on error
      */
-    augMatch(augpath: string | null): string[]
+    augMatch(augpath: string): string[]
     /**
      * move Augeas node
      * 
@@ -7489,7 +7489,7 @@ interface Session {
      * @param dest 
      * @returns true on success, false on error
      */
-    augMv(src: string | null, dest: string | null): boolean
+    augMv(src: string, dest: string): boolean
     /**
      * remove an Augeas path
      * 
@@ -7499,7 +7499,7 @@ interface Session {
      * @param augpath 
      * @returns the returned value, or -1 on error
      */
-    augRm(augpath: string | null): number
+    augRm(augpath: string): number
     /**
      * write all pending Augeas changes to disk
      * 
@@ -7523,7 +7523,7 @@ interface Session {
      * @param val 
      * @returns true on success, false on error
      */
-    augSet(augpath: string | null, val: string | null): boolean
+    augSet(augpath: string, val: string): boolean
     /**
      * set multiple Augeas nodes
      * 
@@ -7539,7 +7539,7 @@ interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    augSetm(base: string | null, sub: string | null, val: string | null): number
+    augSetm(base: string, sub: string | null, val: string): number
     /**
      * add/remove an Augeas lens transformation
      * 
@@ -7553,7 +7553,7 @@ interface Session {
      * @param optargs a GuestfsAugTransform containing optional arguments
      * @returns true on success, false on error
      */
-    augTransform(lens: string | null, file: string | null, optargs: AugTransform | null): boolean
+    augTransform(lens: string, file: string, optargs: AugTransform | null): boolean
     /**
      * test availability of some parts of the API
      * 
@@ -8016,7 +8016,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    btrfsQgroupAssign(src: string | null, dst: string | null, path: string): boolean
+    btrfsQgroupAssign(src: string, dst: string, path: string): boolean
     /**
      * create a subvolume quota group
      * 
@@ -8028,7 +8028,7 @@ interface Session {
      * @param subvolume 
      * @returns true on success, false on error
      */
-    btrfsQgroupCreate(qgroupid: string | null, subvolume: string): boolean
+    btrfsQgroupCreate(qgroupid: string, subvolume: string): boolean
     /**
      * destroy a subvolume quota group
      * 
@@ -8040,7 +8040,7 @@ interface Session {
      * @param subvolume 
      * @returns true on success, false on error
      */
-    btrfsQgroupDestroy(qgroupid: string | null, subvolume: string): boolean
+    btrfsQgroupDestroy(qgroupid: string, subvolume: string): boolean
     /**
      * limit the size of a subvolume
      * 
@@ -8065,7 +8065,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    btrfsQgroupRemove(src: string | null, dst: string | null, path: string): boolean
+    btrfsQgroupRemove(src: string, dst: string, path: string): boolean
     /**
      * show subvolume quota groups
      * 
@@ -8364,7 +8364,7 @@ interface Session {
      * @param device 
      * @returns the returned string, or NULL on error
      */
-    canonicalDeviceName(device: string | null): string | null
+    canonicalDeviceName(device: string): string | null
     /**
      * get the Linux capabilities attached to a file
      * 
@@ -8392,7 +8392,7 @@ interface Session {
      * @param cap 
      * @returns true on success, false on error
      */
-    capSetFile(path: string, cap: string | null): boolean
+    capSetFile(path: string, cap: string): boolean
     /**
      * return true path on case-insensitive filesystem
      * 
@@ -8496,7 +8496,7 @@ interface Session {
      * @param path 
      * @returns the returned string, or NULL on error
      */
-    checksum(csumtype: string | null, path: string): string | null
+    checksum(csumtype: string, path: string): string | null
     /**
      * compute MD5, SHAx or CRC checksum of the contents of a device
      * 
@@ -8507,7 +8507,7 @@ interface Session {
      * @param device 
      * @returns the returned string, or NULL on error
      */
-    checksumDevice(csumtype: string | null, device: string): string | null
+    checksumDevice(csumtype: string, device: string): string | null
     /**
      * compute MD5, SHAx or CRC checksum of files in a directory
      * 
@@ -8526,7 +8526,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    checksumsOut(csumtype: string | null, directory: string, sumsfile: string, cancellable: Gio.Cancellable | null): boolean
+    checksumsOut(csumtype: string, directory: string, sumsfile: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * change file mode
      * 
@@ -8570,7 +8570,7 @@ interface Session {
      * @param name 
      * @returns the returned value, or -1 on error
      */
-    clearBackendSetting(name: string | null): number
+    clearBackendSetting(name: string): number
     /**
      * Close a libguestfs session.
      * @returns true on success, false on error
@@ -8633,7 +8633,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    compressDeviceOut(ctype: string | null, device: string, zdevice: string, optargs: CompressDeviceOut | null, cancellable: Gio.Cancellable | null): boolean
+    compressDeviceOut(ctype: string, device: string, zdevice: string, optargs: CompressDeviceOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * output compressed file
      * 
@@ -8655,7 +8655,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    compressOut(ctype: string | null, file: string, zfile: string, optargs: CompressOut | null, cancellable: Gio.Cancellable | null): boolean
+    compressOut(ctype: string, file: string, zfile: string, optargs: CompressOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * add hypervisor parameters
      * 
@@ -8671,7 +8671,7 @@ interface Session {
      * @param hvvalue 
      * @returns true on success, false on error
      */
-    config(hvparam: string | null, hvvalue: string | null): boolean
+    config(hvparam: string, hvvalue: string | null): boolean
     /**
      * copy the attributes of a path (file/directory) to another
      * 
@@ -8790,7 +8790,7 @@ interface Session {
      * @param remotedir 
      * @returns true on success, false on error
      */
-    copyIn(localpath: string | null, remotedir: string): boolean
+    copyIn(localpath: string, remotedir: string): boolean
     /**
      * copy remote files or directories out of an image
      * 
@@ -8807,7 +8807,7 @@ interface Session {
      * @param localdir 
      * @returns true on success, false on error
      */
-    copyOut(remotepath: string, localdir: string | null): boolean
+    copyOut(remotepath: string, localdir: string): boolean
     /**
      * copy size bytes from source to destination using dd
      * 
@@ -8880,7 +8880,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    cpioOut(directory: string | null, cpiofile: string, optargs: CpioOut | null, cancellable: Gio.Cancellable | null): boolean
+    cpioOut(directory: string, cpiofile: string, optargs: CpioOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * copy from source to destination using dd
      * 
@@ -8909,7 +8909,7 @@ interface Session {
      * @param extraargs an array of strings
      * @returns the returned string, or NULL on error
      */
-    debug(subcmd: string | null, extraargs: string[]): string | null
+    debug(subcmd: string, extraargs: string[]): string | null
     /**
      * debug the drives (internal use only)
      * 
@@ -8932,7 +8932,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    debugUpload(filename: string, tmpname: string | null, mode: number, cancellable: Gio.Cancellable | null): boolean
+    debugUpload(filename: string, tmpname: string, mode: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * convert device to index
      * 
@@ -9013,7 +9013,7 @@ interface Session {
      * @param optargs a GuestfsDiskCreate containing optional arguments
      * @returns true on success, false on error
      */
-    diskCreate(filename: string | null, format: string | null, size: number, optargs: DiskCreate | null): boolean
+    diskCreate(filename: string, format: string, size: number, optargs: DiskCreate | null): boolean
     /**
      * detect the disk format of a disk image
      * 
@@ -9028,7 +9028,7 @@ interface Session {
      * @param filename 
      * @returns the returned string, or NULL on error
      */
-    diskFormat(filename: string | null): string | null
+    diskFormat(filename: string): string | null
     /**
      * return whether disk has a backing file
      * 
@@ -9039,7 +9039,7 @@ interface Session {
      * @param filename 
      * @returns the returned value, or -1 on error
      */
-    diskHasBackingFile(filename: string | null): number
+    diskHasBackingFile(filename: string): number
     /**
      * return virtual size of a disk
      * 
@@ -9051,7 +9051,7 @@ interface Session {
      * @param filename 
      * @returns the returned value, or -1 on error
      */
-    diskVirtualSize(filename: string | null): number
+    diskVirtualSize(filename: string): number
     /**
      * return kernel messages
      * 
@@ -9238,7 +9238,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    egrep(regex: string | null, path: string): string[]
+    egrep(regex: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -9248,7 +9248,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    egrepi(regex: string | null, path: string): string[]
+    egrepi(regex: string, path: string): string[]
     /**
      * test if two files have equal contents
      * 
@@ -9367,7 +9367,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    fgrep(pattern: string | null, path: string): string[]
+    fgrep(pattern: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -9377,7 +9377,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    fgrepi(pattern: string | null, path: string): string[]
+    fgrepi(pattern: string, path: string): string[]
     /**
      * determine file type
      * 
@@ -9522,7 +9522,7 @@ interface Session {
      * @param filesystem 
      * @returns the returned value, or -1 on error
      */
-    filesystemAvailable(filesystem: string | null): number
+    filesystemAvailable(filesystem: string): number
     /**
      * walk through the filesystem content
      * 
@@ -9662,7 +9662,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    fillPattern(pattern: string | null, len: number, path: string): boolean
+    fillPattern(pattern: string, len: number, path: string): boolean
     /**
      * find all files and directories
      * 
@@ -9746,7 +9746,7 @@ interface Session {
      * @param label 
      * @returns the returned string, or NULL on error
      */
-    findfsLabel(label: string | null): string | null
+    findfsLabel(label: string): string | null
     /**
      * find a filesystem by UUID
      * 
@@ -9757,7 +9757,7 @@ interface Session {
      * @param uuid 
      * @returns the returned string, or NULL on error
      */
-    findfsUuid(uuid: string | null): string | null
+    findfsUuid(uuid: string): string | null
     /**
      * run the filesystem checker
      * 
@@ -9782,7 +9782,7 @@ interface Session {
      * @param device 
      * @returns the returned value, or -1 on error
      */
-    fsck(fstype: string | null, device: string): number
+    fsck(fstype: string, device: string): number
     /**
      * trim free space in a filesystem
      * 
@@ -9823,7 +9823,7 @@ interface Session {
      * If `NULL` then no options are added.
      * @returns the returned string. Note that NULL does not indicate error
      */
-    getAppend(): string | null
+    getAppend(): string
     /**
      * get the backend
      * 
@@ -9865,7 +9865,7 @@ interface Session {
      * @param name 
      * @returns the returned string, or NULL on error
      */
-    getBackendSetting(name: string | null): string | null
+    getBackendSetting(name: string): string | null
     /**
      * get per-backend settings
      * 
@@ -10012,7 +10012,7 @@ interface Session {
      * Get the handle identifier. See guestfs_session_set_identifier().
      * @returns the returned string, or NULL on error
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * challenge of i'th requested credential
      * 
@@ -10096,7 +10096,7 @@ interface Session {
      * the default path.
      * @returns the returned string, or NULL on error
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * get process group flag
      * 
@@ -10120,7 +10120,7 @@ interface Session {
      * Get the program name. See guestfs_session_set_program().
      * @returns the returned string, or NULL on error
      */
-    getProgram(): string | null
+    getProgram(): string
     /**
      * get the hypervisor binary (usually qemu)
      * 
@@ -10130,7 +10130,7 @@ interface Session {
      * the default qemu binary name.
      * @returns the returned string, or NULL on error
      */
-    getQemu(): string | null
+    getQemu(): string
     /**
      * get recovery process enabled flag
      * 
@@ -10248,7 +10248,7 @@ interface Session {
      * @param name 
      * @returns an array of binary data, or NULL on error
      */
-    getxattr(path: string, name: string | null): number[]
+    getxattr(path: string, name: string): number[]
     /**
      * list extended attributes of a file or directory
      * 
@@ -10314,7 +10314,7 @@ interface Session {
      * @param optargs a GuestfsGrep containing optional arguments
      * @returns an array of returned strings, or NULL on error
      */
-    grep(regex: string | null, path: string, optargs: Grep | null): string[]
+    grep(regex: string, path: string, optargs: Grep | null): string[]
     /**
      * return lines matching a pattern
      * 
@@ -10324,7 +10324,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    grepi(regex: string | null, path: string): string[]
+    grepi(regex: string, path: string): string[]
     /**
      * install GRUB 1
      * 
@@ -10435,7 +10435,7 @@ interface Session {
      * @param name 
      * @returns the returned value, or -1 on error
      */
-    hivexNodeAddChild(parent: number, name: string | null): number
+    hivexNodeAddChild(parent: number, name: string): number
     /**
      * return list of nodes which are subkeys of node
      * 
@@ -10476,7 +10476,7 @@ interface Session {
      * @param name 
      * @returns the returned value, or -1 on error
      */
-    hivexNodeGetChild(nodeh: number, name: string | null): number
+    hivexNodeGetChild(nodeh: number, name: string): number
     /**
      * return the named value
      * 
@@ -10491,7 +10491,7 @@ interface Session {
      * @param key 
      * @returns the returned value, or -1 on error
      */
-    hivexNodeGetValue(nodeh: number, key: string | null): number
+    hivexNodeGetValue(nodeh: number, key: string): number
     /**
      * return the name of the node
      * 
@@ -10534,7 +10534,7 @@ interface Session {
      * @param val an array of binary data
      * @returns true on success, false on error
      */
-    hivexNodeSetValue(nodeh: number, key: string | null, t: number, val: number[]): boolean
+    hivexNodeSetValue(nodeh: number, key: string, t: number, val: number[]): boolean
     /**
      * return list of values attached to node
      * 
@@ -10671,7 +10671,7 @@ interface Session {
      * @param filename 
      * @returns an array of binary data, or NULL on error
      */
-    initrdCat(initrdpath: string, filename: string | null): number[]
+    initrdCat(initrdpath: string, filename: string): number[]
     /**
      * list files in an initrd
      * 
@@ -11622,7 +11622,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    internalTest(str: string | null, optstr: string | null, strlist: string[], b: boolean, integer: number, integer64: number, filein: string, fileout: string, bufferin: number[], optargs: InternalTest | null, cancellable: Gio.Cancellable | null): boolean
+    internalTest(str: string, optstr: string | null, strlist: string[], b: boolean, integer: number, integer64: number, filein: string, fileout: string, bufferin: number[], optargs: InternalTest | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * internal test function - do not use
      * 
@@ -11683,7 +11683,7 @@ interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    internalTestRbool(val: string | null): number
+    internalTestRbool(val: string): number
     /**
      * internal test function - do not use
      * 
@@ -11710,7 +11710,7 @@ interface Session {
      * @param val 
      * @returns an array of binary data, or NULL on error
      */
-    internalTestRbufferout(val: string | null): number[]
+    internalTestRbufferout(val: string): number[]
     /**
      * internal test function - do not use
      * 
@@ -11737,7 +11737,7 @@ interface Session {
      * @param val 
      * @returns the returned string. Note that NULL does not indicate error
      */
-    internalTestRconstoptstring(val: string | null): string | null
+    internalTestRconstoptstring(val: string): string
     /**
      * internal test function - do not use
      * 
@@ -11750,7 +11750,7 @@ interface Session {
      * You probably don't want to call this function.
      * @returns the returned string. Note that NULL does not indicate error
      */
-    internalTestRconstoptstringerr(): string | null
+    internalTestRconstoptstringerr(): string
     /**
      * internal test function - do not use
      * 
@@ -11764,7 +11764,7 @@ interface Session {
      * @param val 
      * @returns the returned string, or NULL on error
      */
-    internalTestRconststring(val: string | null): string | null
+    internalTestRconststring(val: string): string
     /**
      * internal test function - do not use
      * 
@@ -11777,7 +11777,7 @@ interface Session {
      * You probably don't want to call this function.
      * @returns the returned string, or NULL on error
      */
-    internalTestRconststringerr(): string | null
+    internalTestRconststringerr(): string
     /**
      * internal test function - do not use
      * 
@@ -11791,7 +11791,7 @@ interface Session {
      * @param val 
      * @returns a GHashTable of results, or NULL on error
      */
-    internalTestRhashtable(val: string | null): GLib.HashTable
+    internalTestRhashtable(val: string): GLib.HashTable
     /**
      * internal test function - do not use
      * 
@@ -11818,7 +11818,7 @@ interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    internalTestRint(val: string | null): number
+    internalTestRint(val: string): number
     /**
      * internal test function - do not use
      * 
@@ -11832,7 +11832,7 @@ interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    internalTestRint64(val: string | null): number
+    internalTestRint64(val: string): number
     /**
      * internal test function - do not use
      * 
@@ -11872,7 +11872,7 @@ interface Session {
      * @param val 
      * @returns the returned string, or NULL on error
      */
-    internalTestRstring(val: string | null): string | null
+    internalTestRstring(val: string): string | null
     /**
      * internal test function - do not use
      * 
@@ -11899,7 +11899,7 @@ interface Session {
      * @param val 
      * @returns an array of returned strings, or NULL on error
      */
-    internalTestRstringlist(val: string | null): string[]
+    internalTestRstringlist(val: string): string[]
     /**
      * internal test function - do not use
      * 
@@ -11926,7 +11926,7 @@ interface Session {
      * @param val 
      * @returns a PV object, or NULL on error
      */
-    internalTestRstruct(val: string | null): PV
+    internalTestRstruct(val: string): PV
     /**
      * internal test function - do not use
      * 
@@ -11953,7 +11953,7 @@ interface Session {
      * @param val 
      * @returns an array of PV objects, or NULL on error
      */
-    internalTestRstructlist(val: string | null): PV[]
+    internalTestRstructlist(val: string): PV[]
     /**
      * internal test function - do not use
      * 
@@ -11980,7 +11980,7 @@ interface Session {
      * @param filename 
      * @returns true on success, false on error
      */
-    internalTestSetOutput(filename: string | null): boolean
+    internalTestSetOutput(filename: string): boolean
     /**
      * test if block device
      * 
@@ -12395,7 +12395,7 @@ interface Session {
      * @param diskgroup 
      * @returns an array of returned strings, or NULL on error
      */
-    ldmtoolDiskgroupDisks(diskgroup: string | null): string[]
+    ldmtoolDiskgroupDisks(diskgroup: string): string[]
     /**
      * return the name of a Windows dynamic disk group
      * 
@@ -12408,7 +12408,7 @@ interface Session {
      * @param diskgroup 
      * @returns the returned string, or NULL on error
      */
-    ldmtoolDiskgroupName(diskgroup: string | null): string | null
+    ldmtoolDiskgroupName(diskgroup: string): string | null
     /**
      * return the volumes in a Windows dynamic disk group
      * 
@@ -12421,7 +12421,7 @@ interface Session {
      * @param diskgroup 
      * @returns an array of returned strings, or NULL on error
      */
-    ldmtoolDiskgroupVolumes(diskgroup: string | null): string[]
+    ldmtoolDiskgroupVolumes(diskgroup: string): string[]
     /**
      * remove all Windows dynamic disk volumes
      * 
@@ -12479,7 +12479,7 @@ interface Session {
      * @param volume 
      * @returns the returned string, or NULL on error
      */
-    ldmtoolVolumeHint(diskgroup: string | null, volume: string | null): string | null
+    ldmtoolVolumeHint(diskgroup: string, volume: string): string | null
     /**
      * return the partitions in a Windows dynamic disk volume
      * 
@@ -12492,7 +12492,7 @@ interface Session {
      * @param volume 
      * @returns an array of returned strings, or NULL on error
      */
-    ldmtoolVolumePartitions(diskgroup: string | null, volume: string | null): string[]
+    ldmtoolVolumePartitions(diskgroup: string, volume: string): string[]
     /**
      * return the type of a Windows dynamic disk volume
      * 
@@ -12508,7 +12508,7 @@ interface Session {
      * @param volume 
      * @returns the returned string, or NULL on error
      */
-    ldmtoolVolumeType(diskgroup: string | null, volume: string | null): string | null
+    ldmtoolVolumeType(diskgroup: string, volume: string): string | null
     /**
      * get a single extended attribute
      * 
@@ -12535,7 +12535,7 @@ interface Session {
      * @param name 
      * @returns an array of binary data, or NULL on error
      */
-    lgetxattr(path: string, name: string | null): number[]
+    lgetxattr(path: string, name: string): number[]
     /**
      * list extended attributes of a file or directory
      * 
@@ -12710,7 +12710,7 @@ interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    ln(target: string | null, linkname: string): boolean
+    ln(target: string, linkname: string): boolean
     /**
      * create a hard link
      * 
@@ -12720,7 +12720,7 @@ interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    lnF(target: string | null, linkname: string): boolean
+    lnF(target: string, linkname: string): boolean
     /**
      * create a symbolic link
      * 
@@ -12729,7 +12729,7 @@ interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    lnS(target: string | null, linkname: string): boolean
+    lnS(target: string, linkname: string): boolean
     /**
      * create a symbolic link
      * 
@@ -12739,7 +12739,7 @@ interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    lnSf(target: string | null, linkname: string): boolean
+    lnSf(target: string, linkname: string): boolean
     /**
      * remove extended attribute of a file or directory
      * 
@@ -12752,7 +12752,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    lremovexattr(xattr: string | null, path: string): boolean
+    lremovexattr(xattr: string, path: string): boolean
     /**
      * list the files in a directory
      * 
@@ -12792,7 +12792,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    lsetxattr(xattr: string | null, val: string | null, vallen: number, path: string): boolean
+    lsetxattr(xattr: string, val: string, vallen: number, path: string): boolean
     /**
      * get file information for a symbolic link
      * 
@@ -12878,7 +12878,7 @@ interface Session {
      * @param keyslot 
      * @returns true on success, false on error
      */
-    luksAddKey(device: string, key: string | null, newkey: string | null, keyslot: number): boolean
+    luksAddKey(device: string, key: string, newkey: string, keyslot: number): boolean
     /**
      * close a LUKS device
      * 
@@ -12907,7 +12907,7 @@ interface Session {
      * @param keyslot 
      * @returns true on success, false on error
      */
-    luksFormat(device: string, key: string | null, keyslot: number): boolean
+    luksFormat(device: string, key: string, keyslot: number): boolean
     /**
      * format a block device as a LUKS encrypted device
      * 
@@ -12922,7 +12922,7 @@ interface Session {
      * @param cipher 
      * @returns true on success, false on error
      */
-    luksFormatCipher(device: string, key: string | null, keyslot: number, cipher: string | null): boolean
+    luksFormatCipher(device: string, key: string, keyslot: number, cipher: string): boolean
     /**
      * remove a key from a LUKS encrypted device
      * 
@@ -12936,7 +12936,7 @@ interface Session {
      * @param keyslot 
      * @returns true on success, false on error
      */
-    luksKillSlot(device: string, key: string | null, keyslot: number): boolean
+    luksKillSlot(device: string, key: string, keyslot: number): boolean
     /**
      * open a LUKS-encrypted block device
      * 
@@ -12965,7 +12965,7 @@ interface Session {
      * @param mapname 
      * @returns true on success, false on error
      */
-    luksOpen(device: string, key: string | null, mapname: string | null): boolean
+    luksOpen(device: string, key: string, mapname: string): boolean
     /**
      * open a LUKS-encrypted block device read-only
      * 
@@ -12979,7 +12979,7 @@ interface Session {
      * @param mapname 
      * @returns true on success, false on error
      */
-    luksOpenRo(device: string, key: string | null, mapname: string | null): boolean
+    luksOpenRo(device: string, key: string, mapname: string): boolean
     /**
      * create an LVM logical volume
      * 
@@ -12993,7 +12993,7 @@ interface Session {
      * @param mbytes 
      * @returns true on success, false on error
      */
-    lvcreate(logvol: string | null, volgroup: string | null, mbytes: number): boolean
+    lvcreate(logvol: string, volgroup: string, mbytes: number): boolean
     /**
      * create an LVM logical volume in % remaining free space
      * 
@@ -13009,7 +13009,7 @@ interface Session {
      * @param percent 
      * @returns true on success, false on error
      */
-    lvcreateFree(logvol: string | null, volgroup: string | null, percent: number): boolean
+    lvcreateFree(logvol: string, volgroup: string, percent: number): boolean
     /**
      * get canonical name of an LV
      * 
@@ -13025,7 +13025,7 @@ interface Session {
      * @param lvname 
      * @returns the returned string, or NULL on error
      */
-    lvmCanonicalLvName(lvname: string | null): string | null
+    lvmCanonicalLvName(lvname: string): string | null
     /**
      * clear LVM device filter
      * 
@@ -13116,7 +13116,7 @@ interface Session {
      * @param newlogvol 
      * @returns true on success, false on error
      */
-    lvrename(logvol: string | null, newlogvol: string | null): boolean
+    lvrename(logvol: string, newlogvol: string): boolean
     /**
      * resize an LVM logical volume
      * 
@@ -13277,7 +13277,7 @@ interface Session {
      * @param optargs a GuestfsMDCreate containing optional arguments
      * @returns true on success, false on error
      */
-    mdCreate(name: string | null, devices: string[], optargs: MDCreate | null): boolean
+    mdCreate(name: string, devices: string[], optargs: MDCreate | null): boolean
     /**
      * obtain metadata for an MD device
      * 
@@ -13438,7 +13438,7 @@ interface Session {
      * @param journal 
      * @returns true on success, false on error
      */
-    mke2fsJ(fstype: string | null, blocksize: number, device: string, journal: string): boolean
+    mke2fsJ(fstype: string, blocksize: number, device: string, journal: string): boolean
     /**
      * make ext2/3/4 filesystem with external journal
      * 
@@ -13452,7 +13452,7 @@ interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    mke2fsJL(fstype: string | null, blocksize: number, device: string, label: string | null): boolean
+    mke2fsJL(fstype: string, blocksize: number, device: string, label: string): boolean
     /**
      * make ext2/3/4 filesystem with external journal
      * 
@@ -13469,7 +13469,7 @@ interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    mke2fsJU(fstype: string | null, blocksize: number, device: string, uuid: string | null): boolean
+    mke2fsJU(fstype: string, blocksize: number, device: string, uuid: string): boolean
     /**
      * make ext2/3/4 external journal
      * 
@@ -13491,7 +13491,7 @@ interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mke2journalL(blocksize: number, label: string | null, device: string): boolean
+    mke2journalL(blocksize: number, label: string, device: string): boolean
     /**
      * make ext2/3/4 external journal with UUID
      * 
@@ -13504,7 +13504,7 @@ interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mke2journalU(blocksize: number, uuid: string | null, device: string): boolean
+    mke2journalU(blocksize: number, uuid: string, device: string): boolean
     /**
      * make FIFO (named pipe)
      * 
@@ -13563,7 +13563,7 @@ interface Session {
      * @param optargs a GuestfsMkfs containing optional arguments
      * @returns true on success, false on error
      */
-    mkfs(fstype: string | null, device: string, optargs: Mkfs | null): boolean
+    mkfs(fstype: string, device: string, optargs: Mkfs | null): boolean
     /**
      * make a filesystem with block size
      * 
@@ -13579,7 +13579,7 @@ interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mkfsB(fstype: string | null, blocksize: number, device: string): boolean
+    mkfsB(fstype: string, blocksize: number, device: string): boolean
     /**
      * create a btrfs filesystem
      * 
@@ -13661,7 +13661,7 @@ interface Session {
      * @param exemptpath 
      * @returns true on success, false on error
      */
-    mkmountpoint(exemptpath: string | null): boolean
+    mkmountpoint(exemptpath: string): boolean
     /**
      * make block, character or FIFO devices
      * 
@@ -13785,7 +13785,7 @@ interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mkswapL(label: string | null, device: string): boolean
+    mkswapL(label: string, device: string): boolean
     /**
      * create a swap partition with an explicit UUID
      * 
@@ -13797,7 +13797,7 @@ interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mkswapU(uuid: string | null, device: string): boolean
+    mkswapU(uuid: string, device: string): boolean
     /**
      * create a swap file
      * 
@@ -13844,7 +13844,7 @@ interface Session {
      * @param modulename 
      * @returns true on success, false on error
      */
-    modprobe(modulename: string | null): boolean
+    modprobe(modulename: string): boolean
     /**
      * mount a guest disk at a position in the filesystem
      * 
@@ -13872,7 +13872,7 @@ interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mount(mountable: string, mountpoint: string | null): boolean
+    mount(mountable: string, mountpoint: string): boolean
     /**
      * mount 9p filesystem
      * 
@@ -13887,7 +13887,7 @@ interface Session {
      * @param optargs a GuestfsMount9P containing optional arguments
      * @returns true on success, false on error
      */
-    mount9p(mounttag: string | null, mountpoint: string | null, optargs: Mount9P | null): boolean
+    mount9p(mounttag: string, mountpoint: string, optargs: Mount9P | null): boolean
     /**
      * mount on the local filesystem
      * 
@@ -13918,7 +13918,7 @@ interface Session {
      * @param optargs a GuestfsMountLocal containing optional arguments
      * @returns true on success, false on error
      */
-    mountLocal(localmountpoint: string | null, optargs: MountLocal | null): boolean
+    mountLocal(localmountpoint: string, optargs: MountLocal | null): boolean
     /**
      * run main loop of mount on the local filesystem
      * 
@@ -13965,7 +13965,7 @@ interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mountOptions(options: string | null, mountable: string, mountpoint: string | null): boolean
+    mountOptions(options: string, mountable: string, mountpoint: string): boolean
     /**
      * mount a guest disk, read-only
      * 
@@ -13975,7 +13975,7 @@ interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mountRo(mountable: string, mountpoint: string | null): boolean
+    mountRo(mountable: string, mountpoint: string): boolean
     /**
      * mount a guest disk with mount options and vfstype
      * 
@@ -13988,7 +13988,7 @@ interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mountVfs(options: string | null, vfstype: string | null, mountable: string, mountpoint: string | null): boolean
+    mountVfs(options: string, vfstype: string, mountable: string, mountpoint: string): boolean
     /**
      * extract the device part of a mountable
      * 
@@ -14259,7 +14259,7 @@ interface Session {
      * @param endsect 
      * @returns true on success, false on error
      */
-    partAdd(device: string, prlogex: string | null, startsect: number, endsect: number): boolean
+    partAdd(device: string, prlogex: string, startsect: number, endsect: number): boolean
     /**
      * delete a partition
      * 
@@ -14285,7 +14285,7 @@ interface Session {
      * @param parttype 
      * @returns true on success, false on error
      */
-    partDisk(device: string, parttype: string | null): boolean
+    partDisk(device: string, parttype: string): boolean
     /**
      * move backup GPT header to the end of the disk
      * 
@@ -14466,7 +14466,7 @@ interface Session {
      * @param parttype 
      * @returns true on success, false on error
      */
-    partInit(device: string, parttype: string | null): boolean
+    partInit(device: string, parttype: string): boolean
     /**
      * list partitions on a device
      * 
@@ -14538,7 +14538,7 @@ interface Session {
      * @param guid 
      * @returns true on success, false on error
      */
-    partSetDiskGuid(device: string, guid: string | null): boolean
+    partSetDiskGuid(device: string, guid: string): boolean
     /**
      * set the GUID of a GPT-partitioned disk to random value
      * 
@@ -14586,7 +14586,7 @@ interface Session {
      * @param guid 
      * @returns true on success, false on error
      */
-    partSetGptGuid(device: string, partnum: number, guid: string | null): boolean
+    partSetGptGuid(device: string, partnum: number, guid: string): boolean
     /**
      * set the type GUID of a GPT partition
      * 
@@ -14607,7 +14607,7 @@ interface Session {
      * @param guid 
      * @returns true on success, false on error
      */
-    partSetGptType(device: string, partnum: number, guid: string | null): boolean
+    partSetGptType(device: string, partnum: number, guid: string): boolean
     /**
      * set the MBR type byte (ID byte) of a partition
      * 
@@ -14638,7 +14638,7 @@ interface Session {
      * @param name 
      * @returns true on success, false on error
      */
-    partSetName(device: string, partnum: number, name: string | null): boolean
+    partSetName(device: string, partnum: number, name: string): boolean
     /**
      * convert partition name to device name
      * 
@@ -14994,7 +14994,7 @@ interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    removeDrive(label: string | null): boolean
+    removeDrive(label: string): boolean
     /**
      * remove extended attribute of a file or directory
      * 
@@ -15008,7 +15008,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    removexattr(xattr: string | null, path: string): boolean
+    removexattr(xattr: string, path: string): boolean
     /**
      * rename a file on the same filesystem
      * 
@@ -15109,7 +15109,7 @@ interface Session {
      * @param exemptpath 
      * @returns true on success, false on error
      */
-    rmmountpoint(exemptpath: string | null): boolean
+    rmmountpoint(exemptpath: string): boolean
     /**
      * synchronize the contents of two directories
      * 
@@ -15165,7 +15165,7 @@ interface Session {
      * @param optargs a GuestfsRsyncIn containing optional arguments
      * @returns true on success, false on error
      */
-    rsyncIn(remote: string | null, dest: string, optargs: RsyncIn | null): boolean
+    rsyncIn(remote: string, dest: string, optargs: RsyncIn | null): boolean
     /**
      * synchronize filesystem with host or remote filesystem
      * 
@@ -15201,7 +15201,7 @@ interface Session {
      * @param optargs a GuestfsRsyncOut containing optional arguments
      * @returns true on success, false on error
      */
-    rsyncOut(src: string, remote: string | null, optargs: RsyncOut | null): boolean
+    rsyncOut(src: string, remote: string, optargs: RsyncOut | null): boolean
     /**
      * scrub (securely wipe) a device
      * 
@@ -15276,7 +15276,7 @@ interface Session {
      * @param optargs a GuestfsSelinuxRelabel containing optional arguments
      * @returns true on success, false on error
      */
-    selinuxRelabel(specfile: string | null, path: string, optargs: SelinuxRelabel | null): boolean
+    selinuxRelabel(specfile: string, path: string, optargs: SelinuxRelabel | null): boolean
     /**
      * add options to kernel command line
      * 
@@ -15302,7 +15302,7 @@ interface Session {
      * @param backend 
      * @returns true on success, false on error
      */
-    setAttachMethod(backend: string | null): boolean
+    setAttachMethod(backend: string): boolean
     /**
      * set autosync mode
      * 
@@ -15328,7 +15328,7 @@ interface Session {
      * @param backend 
      * @returns true on success, false on error
      */
-    setBackend(backend: string | null): boolean
+    setBackend(backend: string): boolean
     /**
      * set a single per-backend settings string
      * 
@@ -15341,7 +15341,7 @@ interface Session {
      * @param val 
      * @returns true on success, false on error
      */
-    setBackendSetting(name: string | null, val: string | null): boolean
+    setBackendSetting(name: string, val: string): boolean
     /**
      * replace per-backend settings strings
      * 
@@ -15421,7 +15421,7 @@ interface Session {
      * @param optargs a GuestfsSetE2attrs containing optional arguments
      * @returns true on success, false on error
      */
-    setE2attrs(file: string, attrs: string | null, optargs: SetE2attrs | null): boolean
+    setE2attrs(file: string, attrs: string, optargs: SetE2attrs | null): boolean
     /**
      * set ext2 file generation of a file
      * 
@@ -15446,7 +15446,7 @@ interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    setE2label(device: string, label: string | null): boolean
+    setE2label(device: string, label: string): boolean
     /**
      * set the ext2/3/4 filesystem UUID
      * 
@@ -15460,7 +15460,7 @@ interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    setE2uuid(device: string, uuid: string | null): boolean
+    setE2uuid(device: string, uuid: string): boolean
     /**
      * set the hypervisor binary
      * 
@@ -15484,7 +15484,7 @@ interface Session {
      * @param hv 
      * @returns true on success, false on error
      */
-    setHv(hv: string | null): boolean
+    setHv(hv: string): boolean
     /**
      * set the handle identifier
      * 
@@ -15515,7 +15515,7 @@ interface Session {
      * @param identifier 
      * @returns true on success, false on error
      */
-    setIdentifier(identifier: string | null): boolean
+    setIdentifier(identifier: string): boolean
     /**
      * set filesystem label
      * 
@@ -15552,7 +15552,7 @@ interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    setLabel(mountable: string, label: string | null): boolean
+    setLabel(mountable: string, label: string): boolean
     /**
      * pass requested credential back to libvirt
      * 
@@ -15664,7 +15664,7 @@ interface Session {
      * @param program 
      * @returns true on success, false on error
      */
-    setProgram(program: string | null): boolean
+    setProgram(program: string): boolean
     /**
      * set the hypervisor binary (usually qemu)
      * 
@@ -15780,7 +15780,7 @@ interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    setUuid(device: string, uuid: string | null): boolean
+    setUuid(device: string, uuid: string): boolean
     /**
      * set a random UUID for the filesystem
      * 
@@ -15823,7 +15823,7 @@ interface Session {
      * @param context 
      * @returns true on success, false on error
      */
-    setcon(context: string | null): boolean
+    setcon(context: string): boolean
     /**
      * set extended attribute of a file or directory
      * 
@@ -15840,7 +15840,7 @@ interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    setxattr(xattr: string | null, val: string | null, vallen: number, path: string): boolean
+    setxattr(xattr: string, val: string, vallen: number, path: string): boolean
     /**
      * create partitions on a block device
      * 
@@ -15907,7 +15907,7 @@ interface Session {
      * @param line 
      * @returns true on success, false on error
      */
-    sfdiskN(device: string, partnum: number, cyls: number, heads: number, sectors: number, line: string | null): boolean
+    sfdiskN(device: string, partnum: number, cyls: number, heads: number, sectors: number, line: string): boolean
     /**
      * display the disk geometry from the partition table
      * 
@@ -15959,7 +15959,7 @@ interface Session {
      * @param command 
      * @returns the returned string, or NULL on error
      */
-    sh(command: string | null): string | null
+    sh(command: string): string | null
     /**
      * run a command via the shell returning lines
      * 
@@ -15970,7 +15970,7 @@ interface Session {
      * @param command 
      * @returns an array of returned strings, or NULL on error
      */
-    shLines(command: string | null): string[]
+    shLines(command: string): string[]
     /**
      * shutdown the hypervisor
      * 
@@ -16079,7 +16079,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    stringsE(encoding: string | null, path: string): string[]
+    stringsE(encoding: string, path: string): string[]
     /**
      * disable swap on device
      * 
@@ -16105,7 +16105,7 @@ interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    swapoffLabel(label: string | null): boolean
+    swapoffLabel(label: string): boolean
     /**
      * disable swap on swap partition by UUID
      * 
@@ -16117,7 +16117,7 @@ interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    swapoffUuid(uuid: string | null): boolean
+    swapoffUuid(uuid: string): boolean
     /**
      * enable swap on device
      * 
@@ -16152,7 +16152,7 @@ interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    swaponLabel(label: string | null): boolean
+    swaponLabel(label: string): boolean
     /**
      * enable swap on swap partition by UUID
      * 
@@ -16164,7 +16164,7 @@ interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    swaponUuid(uuid: string | null): boolean
+    swaponUuid(uuid: string): boolean
     /**
      * sync disks, writes are flushed through to the disk image
      * 
@@ -16298,7 +16298,7 @@ interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    tarOut(directory: string | null, tarfile: string, optargs: TarOut | null, cancellable: Gio.Cancellable | null): boolean
+    tarOut(directory: string, tarfile: string, optargs: TarOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * unpack compressed tarball to directory
      * 
@@ -16747,7 +16747,7 @@ interface Session {
      * @param vg 
      * @returns true on success, false on error
      */
-    vgchangeUuid(vg: string | null): boolean
+    vgchangeUuid(vg: string): boolean
     /**
      * generate new random UUIDs for all volume groups
      * 
@@ -16770,7 +16770,7 @@ interface Session {
      * @param physvols an array of strings
      * @returns true on success, false on error
      */
-    vgcreate(volgroup: string | null, physvols: string[]): boolean
+    vgcreate(volgroup: string, physvols: string[]): boolean
     /**
      * get the LV UUIDs of all LVs in the volume group
      * 
@@ -16785,7 +16785,7 @@ interface Session {
      * @param vgname 
      * @returns an array of returned strings, or NULL on error
      */
-    vglvuuids(vgname: string | null): string[]
+    vglvuuids(vgname: string): string[]
     /**
      * get volume group metadata
      * 
@@ -16800,7 +16800,7 @@ interface Session {
      * @param vgname 
      * @returns an array of binary data, or NULL on error
      */
-    vgmeta(vgname: string | null): number[]
+    vgmeta(vgname: string): number[]
     /**
      * get the PV UUIDs containing the volume group
      * 
@@ -16815,7 +16815,7 @@ interface Session {
      * @param vgname 
      * @returns an array of returned strings, or NULL on error
      */
-    vgpvuuids(vgname: string | null): string[]
+    vgpvuuids(vgname: string): string[]
     /**
      * remove an LVM volume group
      * 
@@ -16829,7 +16829,7 @@ interface Session {
      * @param vgname 
      * @returns true on success, false on error
      */
-    vgremove(vgname: string | null): boolean
+    vgremove(vgname: string): boolean
     /**
      * rename an LVM volume group
      * 
@@ -16838,7 +16838,7 @@ interface Session {
      * @param newvolgroup 
      * @returns true on success, false on error
      */
-    vgrename(volgroup: string | null, newvolgroup: string | null): boolean
+    vgrename(volgroup: string, newvolgroup: string): boolean
     /**
      * list the LVM volume groups (VGs)
      * 
@@ -16881,7 +16881,7 @@ interface Session {
      * @param vgname 
      * @returns the returned string, or NULL on error
      */
-    vguuid(vgname: string | null): string | null
+    vguuid(vgname: string): string | null
     /**
      * wait until the hypervisor launches (no op)
      * 
@@ -16984,7 +16984,7 @@ interface Session {
      * @param size 
      * @returns true on success, false on error
      */
-    writeFile(path: string, content: string | null, size: number): boolean
+    writeFile(path: string, content: string, size: number): boolean
     /**
      * change parameters of an XFS filesystem
      * 
@@ -17124,7 +17124,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zegrep(regex: string | null, path: string): string[]
+    zegrep(regex: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -17134,7 +17134,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zegrepi(regex: string | null, path: string): string[]
+    zegrepi(regex: string, path: string): string[]
     /**
      * write zeroes to the device
      * 
@@ -17210,7 +17210,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zfgrep(pattern: string | null, path: string): string[]
+    zfgrep(pattern: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -17220,7 +17220,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zfgrepi(pattern: string | null, path: string): string[]
+    zfgrepi(pattern: string, path: string): string[]
     /**
      * determine file type inside a compressed file
      * 
@@ -17234,7 +17234,7 @@ interface Session {
      * @param path 
      * @returns the returned string, or NULL on error
      */
-    zfile(meth: string | null, path: string): string | null
+    zfile(meth: string, path: string): string | null
     /**
      * return lines matching a pattern
      * 
@@ -17243,7 +17243,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zgrep(regex: string | null, path: string): string[]
+    zgrep(regex: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -17253,7 +17253,7 @@ interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zgrepi(regex: string | null, path: string): string[]
+    zgrepi(regex: string, path: string): string[]
 
     // Own signals of Guestfs-1.0.Guestfs.Session
 

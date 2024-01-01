@@ -82,52 +82,52 @@ export enum SettingsColorScheme {
     DARK,
     LIGHT,
 }
-export const StyleClassBADGE: string | null
-export const StyleClassCATEGORY_EXPANDER: string | null
-export const StyleClassCONTENT_VIEW: string | null
-export const StyleClassCONTENT_VIEW_WINDOW: string | null
-export const StyleClassCOMPOSITED: string | null
-export const StyleClassDECORATED_WINDOW: string | null
-export const StyleClassH1_TEXT: string | null
-export const StyleClassH2_TEXT: string | null
-export const StyleClassH3_TEXT: string | null
-export const StyleClassHELP_BUTTON: string | null
-export const StyleClassOVERLAY_BAR: string | null
-export const StyleClassPOPOVER: string | null
-export const StyleClassPOPOVER_BG: string | null
-export const StyleClassSOURCE_LIST: string | null
-export const StyleClassTHIN_PANE_SEPARATOR: string | null
-export const StyleClassTITLE_TEXT: string | null
-export const STYLE_CLASS_ACCENT: string | null
-export const STYLE_CLASS_AVATAR: string | null
-export const STYLE_CLASS_BACK_BUTTON: string | null
-export const STYLE_CLASS_BADGE: string | null
-export const STYLE_CLASS_CARD: string | null
-export const STYLE_CLASS_CATEGORY_EXPANDER: string | null
-export const STYLE_CLASS_CHECKERBOARD: string | null
-export const STYLE_CLASS_COLOR_BUTTON: string | null
-export const STYLE_CLASS_DEFAULT_DECORATION: string | null
-export const STYLE_CLASS_H1_LABEL: string | null
-export const STYLE_CLASS_H2_LABEL: string | null
-export const STYLE_CLASS_H3_LABEL: string | null
-export const STYLE_CLASS_H4_LABEL: string | null
-export const STYLE_CLASS_KEYCAP: string | null
-export const STYLE_CLASS_MODE_SWITCH: string | null
-export const STYLE_CLASS_OVERLAY_BAR: string | null
-export const STYLE_CLASS_PRIMARY_LABEL: string | null
-export const STYLE_CLASS_ROUNDED: string | null
-export const STYLE_CLASS_SEEKBAR: string | null
-export const STYLE_CLASS_SMALL_LABEL: string | null
-export const STYLE_CLASS_SOURCE_LIST: string | null
-export const STYLE_CLASS_STORAGEBAR: string | null
-export const STYLE_CLASS_TERMINAL: string | null
-export const STYLE_CLASS_WELCOME: string | null
-export const STYLE_CLASS_WARMTH: string | null
-export const STYLE_CLASS_TEMPERATURE: string | null
+export const StyleClassBADGE: string
+export const StyleClassCATEGORY_EXPANDER: string
+export const StyleClassCONTENT_VIEW: string
+export const StyleClassCONTENT_VIEW_WINDOW: string
+export const StyleClassCOMPOSITED: string
+export const StyleClassDECORATED_WINDOW: string
+export const StyleClassH1_TEXT: string
+export const StyleClassH2_TEXT: string
+export const StyleClassH3_TEXT: string
+export const StyleClassHELP_BUTTON: string
+export const StyleClassOVERLAY_BAR: string
+export const StyleClassPOPOVER: string
+export const StyleClassPOPOVER_BG: string
+export const StyleClassSOURCE_LIST: string
+export const StyleClassTHIN_PANE_SEPARATOR: string
+export const StyleClassTITLE_TEXT: string
+export const STYLE_CLASS_ACCENT: string
+export const STYLE_CLASS_AVATAR: string
+export const STYLE_CLASS_BACK_BUTTON: string
+export const STYLE_CLASS_BADGE: string
+export const STYLE_CLASS_CARD: string
+export const STYLE_CLASS_CATEGORY_EXPANDER: string
+export const STYLE_CLASS_CHECKERBOARD: string
+export const STYLE_CLASS_COLOR_BUTTON: string
+export const STYLE_CLASS_DEFAULT_DECORATION: string
+export const STYLE_CLASS_H1_LABEL: string
+export const STYLE_CLASS_H2_LABEL: string
+export const STYLE_CLASS_H3_LABEL: string
+export const STYLE_CLASS_H4_LABEL: string
+export const STYLE_CLASS_KEYCAP: string
+export const STYLE_CLASS_MODE_SWITCH: string
+export const STYLE_CLASS_OVERLAY_BAR: string
+export const STYLE_CLASS_PRIMARY_LABEL: string
+export const STYLE_CLASS_ROUNDED: string
+export const STYLE_CLASS_SEEKBAR: string
+export const STYLE_CLASS_SMALL_LABEL: string
+export const STYLE_CLASS_SOURCE_LIST: string
+export const STYLE_CLASS_STORAGEBAR: string
+export const STYLE_CLASS_TERMINAL: string
+export const STYLE_CLASS_WELCOME: string
+export const STYLE_CLASS_WARMTH: string
+export const STYLE_CLASS_TEMPERATURE: string
 export const TRANSITION_DURATION_CLOSE: number
 export const TRANSITION_DURATION_IN_PLACE: number
 export const TRANSITION_DURATION_OPEN: number
-export const TOOLTIP_SECONDARY_TEXT_MARKUP: string | null
+export const TOOLTIP_SECONDARY_TEXT_MARKUP: string
 export function dateTimeGetDefaultTimeFormat(is12h: boolean, withSecond: boolean): string | null
 export function dateTimeGetRelativeDatetime(dateTime: GLib.DateTime): string | null
 export function dateTimeIsSameDay(day1: GLib.DateTime, day2: GLib.DateTime): boolean
@@ -142,9 +142,9 @@ export function servicesApplicationSetProgressFinish(res: Gio.AsyncResult): bool
 export function servicesApplicationSetProgressVisible(visible: boolean, callback: Gio.AsyncReadyCallback | null): void
 export function servicesApplicationSetProgressVisibleFinish(res: Gio.AsyncResult): boolean
 export function widgetsUtilsSetColorPrimary(window: Gtk.Widget, color: Gdk.RGBA, priority: number): Gtk.CssProvider | null
-export function widgetsUtilsSetTheming(widget: Gtk.Widget, stylesheet: string | null, className: string | null, priority: number): Gtk.CssProvider | null
-export function widgetsUtilsSetThemingForScreen(screen: Gdk.Screen, stylesheet: string | null, priority: number): Gtk.CssProvider | null
-export function widgetsUtilsGetCssProvider(stylesheet: string | null): Gtk.CssProvider | null
+export function widgetsUtilsSetTheming(widget: Gtk.Widget, stylesheet: string, className: string | null, priority: number): Gtk.CssProvider | null
+export function widgetsUtilsSetThemingForScreen(screen: Gdk.Screen, stylesheet: string, priority: number): Gtk.CssProvider | null
+export function widgetsUtilsGetCssProvider(stylesheet: string): Gtk.CssProvider | null
 export function widgetsUtilsApplyTextStyleToLabel(textStyle: TextStyle, label: Gtk.Label): void
 export function widgetsUtilsGetDefaultCloseButtonPosition(): [ /* returnType */ boolean, /* position */ CloseButtonPosition ]
 export function widgetsUtilsGetButtonLayoutSchema(): string | null
@@ -233,12 +233,12 @@ export interface ServicesSettingsSerializable extends GObject.Object {
     // Owm methods of Granite-1.0.Granite.ServicesSettingsSerializable
 
     // Has conflict: settingsSerialize(): string | null
-    // Has conflict: settingsDeserialize(s: string | null): void
+    // Has conflict: settingsDeserialize(s: string): void
 
     // Own virtual methods of Granite-1.0.Granite.ServicesSettingsSerializable
 
     settingsSerialize(): string | null
-    settingsDeserialize(s: string | null): void
+    settingsDeserialize(s: string): void
 
     // Class property signals of Granite-1.0.Granite.ServicesSettingsSerializable
 
@@ -742,7 +742,7 @@ export class DrawingColor extends GObject.Object {
     static new(r: number, g: number, b: number, a: number): DrawingColor
     static fromGdk(color: Gdk.Color): DrawingColor
     static fromRgba(color: Gdk.RGBA): DrawingColor
-    static fromString(color: string | null): DrawingColor
+    static fromString(color: string): DrawingColor
     static fromInt(color: number): DrawingColor
     _init(config?: DrawingColor.ConstructorProperties): void
     static alphaFromInt(color: number): number
@@ -857,7 +857,7 @@ export class ServicesContractorProxy extends GObject.Object {
     _init(config?: ServicesContractorProxy.ConstructorProperties): void
     static getInstance(): any
     static getAllContracts(): Gee.List
-    static getContractsByMime(mimeType: string | null): Gee.List
+    static getContractsByMime(mimeType: string): Gee.List
     static getContractsByMimelist(mimeTypes: string[]): Gee.List
     static getContractsForFile(file: Gio.File): Gee.List
     static getContractsForFiles(files: Gio.File[]): Gee.List
@@ -881,7 +881,7 @@ export interface ServicesIconFactory {
     // Owm methods of Granite-1.0.Granite.ServicesIconFactory
 
     loadSymbolicIconFromGicon(style: Gtk.StyleContext, gicon: Gio.Icon, size: number): GdkPixbuf.Pixbuf | null
-    loadSymbolicIcon(style: Gtk.StyleContext, iconname: string | null, size: number): GdkPixbuf.Pixbuf | null
+    loadSymbolicIcon(style: Gtk.StyleContext, iconname: string, size: number): GdkPixbuf.Pixbuf | null
 
     // Class property signals of Granite-1.0.Granite.ServicesIconFactory
 
@@ -957,8 +957,8 @@ export class ServicesLogger extends GObject.Object {
     _init(config?: ServicesLogger.ConstructorProperties): void
     static getDisplayLevel(): any
     static setDisplayLevel(value: any): void
-    static initialize(appName: string | null): void
-    static notification(msg: string | null): void
+    static initialize(appName: string): void
+    static notification(msg: string): void
 }
 
 export module ServicesPaths {
@@ -1021,7 +1021,7 @@ export class ServicesPaths extends GObject.Object {
     static setUserDataFolder(value: Gio.File): void
     static getUserCacheFolder(): Gio.File
     static setUserCacheFolder(value: Gio.File): void
-    static initialize(appName: string | null, dataFolderPath: string | null): void
+    static initialize(appName: string, dataFolderPath: string): void
     static ensureDirectoryExists(dir: Gio.File): boolean
 }
 
@@ -1058,11 +1058,11 @@ export interface ServicesSettings {
     // Owm methods of Granite-1.0.Granite.ServicesSettings
 
     getSchema(): Gio.Settings
-    // Has conflict: verify(key: string | null): void
+    // Has conflict: verify(key: string): void
 
     // Own virtual methods of Granite-1.0.Granite.ServicesSettings
 
-    verify(key: string | null): void
+    verify(key: string): void
 
     // Own signals of Granite-1.0.Granite.ServicesSettings
 
@@ -1119,21 +1119,21 @@ export module ServicesSimpleCommand {
      * Signal callback interface for `output-changed`
      */
     export interface OutputChangedSignalCallback {
-        (text: string | null): void
+        (text: string): void
     }
 
     /**
      * Signal callback interface for `standard-changed`
      */
     export interface StandardChangedSignalCallback {
-        (text: string | null): void
+        (text: string): void
     }
 
     /**
      * Signal callback interface for `error-changed`
      */
     export interface ErrorChangedSignalCallback {
-        (text: string | null): void
+        (text: string): void
     }
 
 
@@ -1207,8 +1207,8 @@ export class ServicesSimpleCommand extends GObject.Object {
     // Constructors of Granite-1.0.Granite.ServicesSimpleCommand
 
     constructor(config?: ServicesSimpleCommand.ConstructorProperties) 
-    constructor(dir: string | null, command: string | null) 
-    static new(dir: string | null, command: string | null): ServicesSimpleCommand
+    constructor(dir: string, command: string) 
+    static new(dir: string, command: string): ServicesSimpleCommand
     _init(config?: ServicesSimpleCommand.ConstructorProperties): void
 }
 
@@ -1254,11 +1254,11 @@ export class ServicesSystem extends GObject.Object {
     constructor() 
     static new(): ServicesSystem
     _init(config?: ServicesSystem.ConstructorProperties): void
-    static openUri(uri: string | null): void
+    static openUri(uri: string): void
     static open(file: Gio.File): void
     static openFiles(files: Gio.File[]): void
     static launch(app: Gio.File): void
-    static executeCommand(command: string | null): boolean
+    static executeCommand(command: string): boolean
     static launchWithFiles(app: Gio.File | null, files: Gio.File[]): void
     static historyIsEnabled(): boolean
 }
@@ -1299,12 +1299,12 @@ export interface WidgetsAlertView {
 
     // Owm methods of Granite-1.0.Granite.WidgetsAlertView
 
-    getTitle(): string | null
-    setTitle(value: string | null): void
-    getDescription(): string | null
-    setDescription(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
+    getDescription(): string
+    setDescription(value: string): void
     getIconName(): string | null
-    setIconName(value: string | null): void
+    setIconName(value: string): void
     showAction(label: string | null): void
     hideAction(): void
 
@@ -1319,13 +1319,13 @@ export interface WidgetsAlertView {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1338,13 +1338,13 @@ export interface WidgetsAlertView {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1357,7 +1357,7 @@ export interface WidgetsAlertView {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1366,7 +1366,7 @@ export interface WidgetsAlertView {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1378,7 +1378,7 @@ export interface WidgetsAlertView {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1689,8 +1689,8 @@ export class WidgetsAlertView extends Gtk.Grid {
     // Constructors of Granite-1.0.Granite.WidgetsAlertView
 
     constructor(config?: WidgetsAlertView.ConstructorProperties) 
-    constructor(title: string | null, description: string | null, iconName: string | null) 
-    static new(title: string | null, description: string | null, iconName: string | null): WidgetsAlertView
+    constructor(title: string, description: string, iconName: string) 
+    static new(title: string, description: string, iconName: string): WidgetsAlertView
 
     // Overloads of new
 
@@ -1740,13 +1740,13 @@ export interface WidgetsAvatar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1759,13 +1759,13 @@ export interface WidgetsAvatar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1778,7 +1778,7 @@ export interface WidgetsAvatar {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1787,7 +1787,7 @@ export interface WidgetsAvatar {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1799,7 +1799,7 @@ export interface WidgetsAvatar {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2089,7 +2089,7 @@ export class WidgetsAvatar extends Gtk.EventBox {
      */
     static new(): Gtk.EventBox
     static fromPixbuf(pixbuf: GdkPixbuf.Pixbuf): WidgetsAvatar
-    static fromFile(filepath: string | null, pixelSize: number): WidgetsAvatar
+    static fromFile(filepath: string, pixelSize: number): WidgetsAvatar
     static withDefaultIcon(pixelSize: number): WidgetsAvatar
     _init(config?: WidgetsAvatar.ConstructorProperties): void
 }
@@ -2116,8 +2116,8 @@ export interface WidgetsCellRendererBadge {
 
     // Owm methods of Granite-1.0.Granite.WidgetsCellRendererBadge
 
-    getText(): string | null
-    setText(value: string | null): void
+    getText(): string
+    setText(value: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsCellRendererBadge
 
@@ -2413,13 +2413,13 @@ export interface WidgetsCollapsiblePaned {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2432,13 +2432,13 @@ export interface WidgetsCollapsiblePaned {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2451,7 +2451,7 @@ export interface WidgetsCollapsiblePaned {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2460,7 +2460,7 @@ export interface WidgetsCollapsiblePaned {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2472,7 +2472,7 @@ export interface WidgetsCollapsiblePaned {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2806,13 +2806,13 @@ export interface WidgetsCompositedWindow extends Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2825,13 +2825,13 @@ export interface WidgetsCompositedWindow extends Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2844,7 +2844,7 @@ export interface WidgetsCompositedWindow extends Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2853,7 +2853,7 @@ export interface WidgetsCompositedWindow extends Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -2889,7 +2889,7 @@ export interface WidgetsCompositedWindow extends Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3390,7 +3390,7 @@ export interface WidgetsDatePicker extends Gtk.Buildable {
 
     // Owm methods of Granite-1.0.Granite.WidgetsDatePicker
 
-    getFormat(): string | null
+    getFormat(): string
     getDate(): GLib.DateTime
     setDate(value: GLib.DateTime): void
     // Has conflict: positionDropdown(): /* rect */ Gdk.Rectangle
@@ -3406,13 +3406,13 @@ export interface WidgetsDatePicker extends Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3425,13 +3425,13 @@ export interface WidgetsDatePicker extends Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3444,7 +3444,7 @@ export interface WidgetsDatePicker extends Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3453,7 +3453,7 @@ export interface WidgetsDatePicker extends Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -4013,7 +4013,7 @@ export class WidgetsDatePicker extends Gtk.Entry {
     // Constructors of Granite-1.0.Granite.WidgetsDatePicker
 
     constructor(config?: WidgetsDatePicker.ConstructorProperties) 
-    static withFormat(format: string | null): WidgetsDatePicker
+    static withFormat(format: string): WidgetsDatePicker
     constructor() 
     static new(): WidgetsDatePicker
 
@@ -4084,15 +4084,15 @@ export interface WidgetsTab {
 
     // Owm methods of Granite-1.0.Granite.WidgetsTab
 
-    getLabel(): string | null
-    setLabel(value: string | null): void
-    setTooltip(value: string | null): void
+    getLabel(): string
+    setLabel(value: string): void
+    setTooltip(value: string): void
     getPinned(): boolean
     setPinned(value: boolean): void
     getPinnable(): boolean
     setPinnable(value: boolean): void
-    getRestoreData(): string | null
-    setRestoreData(value: string | null): void
+    getRestoreData(): string
+    setRestoreData(value: string): void
     getCloseTabLabel(): AccelLabel | null
     getDuplicateTabLabel(): AccelLabel | null
     getNewWindowLabel(): AccelLabel | null
@@ -4119,13 +4119,13 @@ export interface WidgetsTab {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4138,13 +4138,13 @@ export interface WidgetsTab {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4157,7 +4157,7 @@ export interface WidgetsTab {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4166,7 +4166,7 @@ export interface WidgetsTab {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4178,7 +4178,7 @@ export interface WidgetsTab {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4576,7 +4576,7 @@ export module WidgetsDynamicNotebook {
      * Signal callback interface for `tab-restored`
      */
     export interface TabRestoredSignalCallback {
-        (label: string | null, data: string | null, icon: Gio.Icon | null): void
+        (label: string, data: string, icon: Gio.Icon | null): void
     }
 
     /**
@@ -4669,15 +4669,15 @@ export interface WidgetsDynamicNotebook {
     setAllowPinning(value: boolean): void
     getForceLeft(): boolean
     setForceLeft(value: boolean): void
-    getAddButtonTooltip(): string | null
-    setAddButtonTooltip(value: string | null): void
+    getAddButtonTooltip(): string
+    setAddButtonTooltip(value: string): void
     getNewTabLabel(): AccelLabel
     getRestoreTabLabel(): AccelLabel
     getCurrent(): WidgetsTab
     setCurrent(value: WidgetsTab): void
     getTabs(): WidgetsTab[]
-    getGroupName(): string | null
-    setGroupName(value: string | null): void
+    getGroupName(): string
+    setGroupName(value: string): void
     getTabBarBehavior(): WidgetsDynamicNotebookTabBarBehavior
     setTabBarBehavior(value: WidgetsDynamicNotebookTabBarBehavior): void
     getMenu(): Gtk.Menu
@@ -4703,13 +4703,13 @@ export interface WidgetsDynamicNotebook {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4722,13 +4722,13 @@ export interface WidgetsDynamicNotebook {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4741,7 +4741,7 @@ export interface WidgetsDynamicNotebook {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4750,7 +4750,7 @@ export interface WidgetsDynamicNotebook {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4762,7 +4762,7 @@ export interface WidgetsDynamicNotebook {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4827,7 +4827,7 @@ export interface WidgetsDynamicNotebook {
     on(sigName: "tab-restored", callback: WidgetsDynamicNotebook.TabRestoredSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "tab-restored", callback: WidgetsDynamicNotebook.TabRestoredSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "tab-restored", callback: WidgetsDynamicNotebook.TabRestoredSignalCallback): NodeJS.EventEmitter
-    emit(sigName: "tab-restored", data: string | null, icon: Gio.Icon | null, ...args: any[]): void
+    emit(sigName: "tab-restored", data: string, icon: Gio.Icon | null, ...args: any[]): void
     connect(sigName: "new-tab-requested", callback: WidgetsDynamicNotebook.NewTabRequestedSignalCallback): number
     on(sigName: "new-tab-requested", callback: WidgetsDynamicNotebook.NewTabRequestedSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "new-tab-requested", callback: WidgetsDynamicNotebook.NewTabRequestedSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -5244,8 +5244,8 @@ export interface WidgetsModeButton {
     setSelected(value: number): void
     getNItems(): number
     appendPixbuf(pixbuf: GdkPixbuf.Pixbuf): number
-    appendText(text: string | null): number
-    appendIcon(iconName: string | null, size: Gtk.IconSize): number
+    appendText(text: string): number
+    appendIcon(iconName: string, size: Gtk.IconSize): number
     append(w: Gtk.Widget): number
     setActive(newActiveIndex: number): void
     setItemVisible(index: number, val: boolean): void
@@ -5280,13 +5280,13 @@ export interface WidgetsModeButton {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5299,13 +5299,13 @@ export interface WidgetsModeButton {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5318,7 +5318,7 @@ export interface WidgetsModeButton {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5327,7 +5327,7 @@ export interface WidgetsModeButton {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5339,7 +5339,7 @@ export interface WidgetsModeButton {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5690,10 +5690,10 @@ export interface WidgetsOverlayBar {
     // Owm methods of Granite-1.0.Granite.WidgetsOverlayBar
 
     getOverlay(): Gtk.Overlay | null
-    getStatus(): string | null
-    setStatus(value: string | null): void
-    getLabel(): string | null
-    setLabel(value: string | null): void
+    getStatus(): string
+    setStatus(value: string): void
+    getLabel(): string
+    setLabel(value: string): void
     getActive(): boolean
     setActive(value: boolean): void
 
@@ -5708,13 +5708,13 @@ export interface WidgetsOverlayBar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5727,13 +5727,13 @@ export interface WidgetsOverlayBar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5746,7 +5746,7 @@ export interface WidgetsOverlayBar {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5755,7 +5755,7 @@ export interface WidgetsOverlayBar {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5767,7 +5767,7 @@ export interface WidgetsOverlayBar {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -6150,13 +6150,13 @@ export interface WidgetsSourceList {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6169,13 +6169,13 @@ export interface WidgetsSourceList {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6188,7 +6188,7 @@ export interface WidgetsSourceList {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6197,7 +6197,7 @@ export interface WidgetsSourceList {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6209,7 +6209,7 @@ export interface WidgetsSourceList {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -6608,7 +6608,7 @@ export module WidgetsSourceListItem {
      * Signal callback interface for `edited`
      */
     export interface EditedSignalCallback {
-        (newName: string | null): void
+        (newName: string): void
     }
 
     /**
@@ -6667,14 +6667,14 @@ export interface WidgetsSourceListItem {
     // Owm methods of Granite-1.0.Granite.WidgetsSourceListItem
 
     getParent(): WidgetsSourceListExpandableItem
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getTooltip(): string | null
     setTooltip(value: string | null): void
     getMarkup(): string | null
     setMarkup(value: string | null): void
-    getBadge(): string | null
-    setBadge(value: string | null): void
+    getBadge(): string
+    setBadge(value: string): void
     getEditable(): boolean
     setEditable(value: boolean): void
     getVisible(): boolean
@@ -6685,13 +6685,13 @@ export interface WidgetsSourceListItem {
     setIcon(value: Gio.Icon): void
     getActivatable(): Gio.Icon
     setActivatable(value: Gio.Icon): void
-    getActivatableTooltip(): string | null
-    setActivatableTooltip(value: string | null): void
+    getActivatableTooltip(): string
+    setActivatableTooltip(value: string): void
     // Has conflict: getContextMenu(): Gtk.Menu | null
 
     // Own virtual methods of Granite-1.0.Granite.WidgetsSourceListItem
 
-    edited(newName: string | null): void
+    edited(newName: string): void
     actionActivated(): void
     activated(): void
     getContextMenu(): Gtk.Menu | null
@@ -6793,8 +6793,8 @@ export class WidgetsSourceListItem extends GObject.Object {
     // Constructors of Granite-1.0.Granite.WidgetsSourceListItem
 
     constructor(config?: WidgetsSourceListItem.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): WidgetsSourceListItem
+    constructor(name: string) 
+    static new(name: string): WidgetsSourceListItem
     _init(config?: WidgetsSourceListItem.ConstructorProperties): void
 }
 
@@ -6984,12 +6984,12 @@ export class WidgetsSourceListExpandableItem extends WidgetsSourceListItem {
     // Constructors of Granite-1.0.Granite.WidgetsSourceListExpandableItem
 
     constructor(config?: WidgetsSourceListExpandableItem.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): WidgetsSourceListExpandableItem
+    constructor(name: string) 
+    static new(name: string): WidgetsSourceListExpandableItem
 
     // Overloads of new
 
-    static new(name: string | null): WidgetsSourceListItem
+    static new(name: string): WidgetsSourceListItem
     _init(config?: WidgetsSourceListExpandableItem.ConstructorProperties): void
 }
 
@@ -7038,13 +7038,13 @@ export interface WidgetsStorageBar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -7057,13 +7057,13 @@ export interface WidgetsStorageBar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -7076,7 +7076,7 @@ export interface WidgetsStorageBar {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -7085,7 +7085,7 @@ export interface WidgetsStorageBar {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7097,7 +7097,7 @@ export interface WidgetsStorageBar {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -7443,8 +7443,8 @@ export interface WidgetsTimePicker {
 
     // Owm methods of Granite-1.0.Granite.WidgetsTimePicker
 
-    getFormat12(): string | null
-    getFormat24(): string | null
+    getFormat12(): string
+    getFormat24(): string
     getTime(): GLib.DateTime
     setTime(value: GLib.DateTime): void
     // Has conflict: positionDropdown(): [ /* x */ number, /* y */ number ]
@@ -7460,13 +7460,13 @@ export interface WidgetsTimePicker {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -7479,13 +7479,13 @@ export interface WidgetsTimePicker {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -7498,7 +7498,7 @@ export interface WidgetsTimePicker {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -7507,7 +7507,7 @@ export interface WidgetsTimePicker {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -8072,7 +8072,7 @@ export class WidgetsTimePicker extends Gtk.Entry {
     // Constructors of Granite-1.0.Granite.WidgetsTimePicker
 
     constructor(config?: WidgetsTimePicker.ConstructorProperties) 
-    static withFormat(format12: string | null, format24: string | null): WidgetsTimePicker
+    static withFormat(format12: string, format24: string): WidgetsTimePicker
     constructor() 
     static new(): WidgetsTimePicker
 
@@ -8130,8 +8130,8 @@ export interface WidgetsToast {
 
     // Owm methods of Granite-1.0.Granite.WidgetsToast
 
-    getTitle(): string | null
-    setTitle(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
     setDefaultAction(label: string | null): void
     sendNotification(): void
 
@@ -8146,13 +8146,13 @@ export interface WidgetsToast {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -8165,13 +8165,13 @@ export interface WidgetsToast {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -8184,7 +8184,7 @@ export interface WidgetsToast {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -8193,7 +8193,7 @@ export interface WidgetsToast {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -8205,7 +8205,7 @@ export interface WidgetsToast {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -8506,8 +8506,8 @@ export class WidgetsToast extends Gtk.Revealer {
     // Constructors of Granite-1.0.Granite.WidgetsToast
 
     constructor(config?: WidgetsToast.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): WidgetsToast
+    constructor(title: string) 
+    static new(title: string): WidgetsToast
 
     // Overloads of new
 
@@ -8546,10 +8546,10 @@ export interface WidgetsWelcomeButton {
 
     // Owm methods of Granite-1.0.Granite.WidgetsWelcomeButton
 
-    getTitle(): string | null
-    setTitle(value: string | null): void
-    getDescription(): string | null
-    setDescription(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
+    getDescription(): string
+    setDescription(value: string): void
     getIcon(): Gtk.Image | null
     setIcon(value: Gtk.Image | null): void
 
@@ -8586,7 +8586,7 @@ export interface WidgetsWelcomeButton {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -8619,7 +8619,7 @@ export interface WidgetsWelcomeButton {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -8632,7 +8632,7 @@ export interface WidgetsWelcomeButton {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -8642,7 +8642,7 @@ export interface WidgetsWelcomeButton {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -8655,7 +8655,7 @@ export interface WidgetsWelcomeButton {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -8664,13 +8664,13 @@ export interface WidgetsWelcomeButton {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsWelcomeButton
 
@@ -8966,8 +8966,8 @@ export class WidgetsWelcomeButton extends Gtk.Button {
     // Constructors of Granite-1.0.Granite.WidgetsWelcomeButton
 
     constructor(config?: WidgetsWelcomeButton.ConstructorProperties) 
-    constructor(image: Gtk.Image | null, optionText: string | null, descriptionText: string | null) 
-    static new(image: Gtk.Image | null, optionText: string | null, descriptionText: string | null): WidgetsWelcomeButton
+    constructor(image: Gtk.Image | null, optionText: string, descriptionText: string) 
+    static new(image: Gtk.Image | null, optionText: string, descriptionText: string): WidgetsWelcomeButton
 
     // Overloads of new
 
@@ -9020,16 +9020,16 @@ export interface WidgetsWelcome {
 
     // Owm methods of Granite-1.0.Granite.WidgetsWelcome
 
-    getTitle(): string | null
-    setTitle(value: string | null): void
-    getSubtitle(): string | null
-    setSubtitle(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
+    getSubtitle(): string
+    setSubtitle(value: string): void
     setItemVisible(index: number, val: boolean): void
     removeItem(index: number): void
     setItemSensitivity(index: number, val: boolean): void
-    append(iconName: string | null, optionText: string | null, descriptionText: string | null): number
-    appendWithPixbuf(pixbuf: GdkPixbuf.Pixbuf | null, optionText: string | null, descriptionText: string | null): number
-    appendWithImage(image: Gtk.Image | null, optionText: string | null, descriptionText: string | null): number
+    append(iconName: string, optionText: string, descriptionText: string): number
+    appendWithPixbuf(pixbuf: GdkPixbuf.Pixbuf | null, optionText: string, descriptionText: string): number
+    appendWithImage(image: Gtk.Image | null, optionText: string, descriptionText: string): number
     getButtonFromIndex(index: number): WidgetsWelcomeButton | null
 
     // Conflicting methods
@@ -9043,13 +9043,13 @@ export interface WidgetsWelcome {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -9062,13 +9062,13 @@ export interface WidgetsWelcome {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -9081,7 +9081,7 @@ export interface WidgetsWelcome {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -9090,7 +9090,7 @@ export interface WidgetsWelcome {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9102,7 +9102,7 @@ export interface WidgetsWelcome {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -9393,8 +9393,8 @@ export class WidgetsWelcome extends Gtk.EventBox {
     // Constructors of Granite-1.0.Granite.WidgetsWelcome
 
     constructor(config?: WidgetsWelcome.ConstructorProperties) 
-    constructor(titleText: string | null, subtitleText: string | null) 
-    static new(titleText: string | null, subtitleText: string | null): WidgetsWelcome
+    constructor(titleText: string, subtitleText: string) 
+    static new(titleText: string, subtitleText: string): WidgetsWelcome
 
     // Overloads of new
 
@@ -9682,12 +9682,12 @@ export interface SettingsPage {
     setStatusType(value: SettingsPageStatusType): void
     getDisplayWidget(): Gtk.Widget | null
     getHeader(): string | null
-    getStatus(): string | null
-    setStatus(value: string | null): void
+    getStatus(): string
+    setStatus(value: string): void
     getIconName(): string | null
     setIconName(value: string | null): void
-    getTitle(): string | null
-    setTitle(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
 
     // Conflicting methods
 
@@ -9700,13 +9700,13 @@ export interface SettingsPage {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -9719,13 +9719,13 @@ export interface SettingsPage {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -9738,7 +9738,7 @@ export interface SettingsPage {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -9747,7 +9747,7 @@ export interface SettingsPage {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9759,7 +9759,7 @@ export interface SettingsPage {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -10162,12 +10162,20 @@ export interface SimpleSettingsPage {
     getContentArea(): Gtk.Grid
     getStatusSwitch(): Gtk.Switch | null
     getActivatable(): boolean
-    getDescription(): string | null
-    setDescription(value: string | null): void
+    getDescription(): string
+    setDescription(value: string): void
+    getIconName(): string
+
+    // Overloads of getIconName
+
     getIconName(): string | null
+    setIconName(value: string): void
+
+    // Overloads of setIconName
+
     setIconName(value: string | null): void
-    getTitle(): string | null
-    setTitle(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
 
     // Conflicting methods
 
@@ -10180,13 +10188,13 @@ export interface SimpleSettingsPage {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -10199,13 +10207,13 @@ export interface SimpleSettingsPage {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -10218,7 +10226,7 @@ export interface SimpleSettingsPage {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -10227,7 +10235,7 @@ export interface SimpleSettingsPage {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10239,7 +10247,7 @@ export interface SimpleSettingsPage {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -10661,12 +10669,12 @@ export interface AccelLabel {
 
     // Owm methods of Granite-1.0.Granite.AccelLabel
 
-    getActionName(): string | null
-    setActionName(value: string | null): void
+    getActionName(): string
+    setActionName(value: string): void
     getAccelString(): string | null
     setAccelString(value: string | null): void
-    getLabel(): string | null
-    setLabel(value: string | null): void
+    getLabel(): string
+    setLabel(value: string): void
 
     // Conflicting methods
 
@@ -10679,13 +10687,13 @@ export interface AccelLabel {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -10698,13 +10706,13 @@ export interface AccelLabel {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -10717,7 +10725,7 @@ export interface AccelLabel {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -10726,7 +10734,7 @@ export interface AccelLabel {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10738,7 +10746,7 @@ export interface AccelLabel {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -11041,8 +11049,8 @@ export class AccelLabel extends Gtk.Grid {
     // Constructors of Granite-1.0.Granite.AccelLabel
 
     constructor(config?: AccelLabel.ConstructorProperties) 
-    constructor(label: string | null, accelString: string | null) 
-    static new(label: string | null, accelString: string | null): AccelLabel
+    constructor(label: string, accelString: string | null) 
+    static new(label: string, accelString: string | null): AccelLabel
 
     // Overloads of new
 
@@ -11052,7 +11060,7 @@ export class AccelLabel extends Gtk.Grid {
      * @returns the new #GtkGrid
      */
     static new(): Gtk.Grid
-    static fromActionName(label: string | null, actionName: string | null): AccelLabel
+    static fromActionName(label: string, actionName: string): AccelLabel
     _init(config?: AccelLabel.ConstructorProperties): void
 }
 
@@ -11088,7 +11096,7 @@ export interface AsyncImage {
     getSizeAsync(): number
     setFromGiconAsync(icon: Gio.Icon, size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     setFromGiconFinish(res: Gio.AsyncResult): void
-    setFromIconNameAsync(iconName: string | null, iconSize: Gtk.IconSize, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setFromIconNameAsync(iconName: string, iconSize: Gtk.IconSize, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     setFromIconNameFinish(res: Gio.AsyncResult): void
     setFromFileAsync(file: Gio.File, width: number, height: number, preserveAspectRatio: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     setFromFileFinish(res: Gio.AsyncResult): void
@@ -11104,13 +11112,13 @@ export interface AsyncImage {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11123,13 +11131,13 @@ export interface AsyncImage {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11142,7 +11150,7 @@ export interface AsyncImage {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11151,7 +11159,7 @@ export interface AsyncImage {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Granite-1.0.Granite.AsyncImage
 
@@ -11489,7 +11497,7 @@ export class AsyncImage extends Gtk.Image {
      */
     static new(): Gtk.Image
     static fromGiconAsync(icon: Gio.Icon, size: number, loadOnRealize: boolean, autoSizeRequest: boolean): AsyncImage
-    static fromIconNameAsync(iconName: string | null, iconSize: Gtk.IconSize, loadOnRealize: boolean, autoSizeRequest: boolean): AsyncImage
+    static fromIconNameAsync(iconName: string, iconSize: Gtk.IconSize, loadOnRealize: boolean, autoSizeRequest: boolean): AsyncImage
     _init(config?: AsyncImage.ConstructorProperties): void
 }
 
@@ -11523,13 +11531,13 @@ export interface Dialog {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -11542,13 +11550,13 @@ export interface Dialog {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -11561,7 +11569,7 @@ export interface Dialog {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -11570,7 +11578,7 @@ export interface Dialog {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -11626,7 +11634,7 @@ export interface Dialog {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -12128,13 +12136,13 @@ export interface HeaderLabel {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -12147,13 +12155,13 @@ export interface HeaderLabel {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -12166,7 +12174,7 @@ export interface HeaderLabel {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -12175,7 +12183,7 @@ export interface HeaderLabel {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Granite-1.0.Granite.HeaderLabel
 
@@ -12516,8 +12524,8 @@ export class HeaderLabel extends Gtk.Label {
     // Constructors of Granite-1.0.Granite.HeaderLabel
 
     constructor(config?: HeaderLabel.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): HeaderLabel
+    constructor(label: string) 
+    static new(label: string): HeaderLabel
 
     // Overloads of new
 
@@ -12586,13 +12594,13 @@ export interface HyperTextView {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -12605,13 +12613,13 @@ export interface HyperTextView {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -12624,7 +12632,7 @@ export interface HyperTextView {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -12633,7 +12641,7 @@ export interface HyperTextView {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -12645,7 +12653,7 @@ export interface HyperTextView {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -13070,10 +13078,10 @@ export interface MessageDialog {
 
     // Owm methods of Granite-1.0.Granite.MessageDialog
 
-    getPrimaryText(): string | null
-    setPrimaryText(value: string | null): void
-    getSecondaryText(): string | null
-    setSecondaryText(value: string | null): void
+    getPrimaryText(): string
+    setPrimaryText(value: string): void
+    getSecondaryText(): string
+    setSecondaryText(value: string): void
     getImageIcon(): Gio.Icon
     setImageIcon(value: Gio.Icon): void
     getBadgeIcon(): Gio.Icon
@@ -13081,7 +13089,7 @@ export interface MessageDialog {
     getPrimaryLabel(): Gtk.Label
     getSecondaryLabel(): Gtk.Label
     getCustomBin(): Gtk.Bin
-    showErrorDetails(errorMessage: string | null): void
+    showErrorDetails(errorMessage: string): void
 
     // Conflicting methods
 
@@ -13094,13 +13102,13 @@ export interface MessageDialog {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -13113,13 +13121,13 @@ export interface MessageDialog {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -13132,7 +13140,7 @@ export interface MessageDialog {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -13141,7 +13149,7 @@ export interface MessageDialog {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -13197,7 +13205,7 @@ export interface MessageDialog {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -13670,8 +13678,8 @@ export class MessageDialog extends Dialog {
     // Constructors of Granite-1.0.Granite.MessageDialog
 
     constructor(config?: MessageDialog.ConstructorProperties) 
-    constructor(primaryText: string | null, secondaryText: string | null, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType) 
-    static new(primaryText: string | null, secondaryText: string | null, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType): MessageDialog
+    constructor(primaryText: string, secondaryText: string, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType) 
+    static new(primaryText: string, secondaryText: string, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType): MessageDialog
 
     // Overloads of new
 
@@ -13711,7 +13719,7 @@ export class MessageDialog extends Dialog {
      * @returns a new #GtkWindow.
      */
     static new(type: Gtk.WindowType): Gtk.Window
-    static withImageFromIconName(primaryText: string | null, secondaryText: string | null, imageIconName: string | null, buttons: Gtk.ButtonsType): MessageDialog
+    static withImageFromIconName(primaryText: string, secondaryText: string, imageIconName: string, buttons: Gtk.ButtonsType): MessageDialog
     _init(config?: MessageDialog.ConstructorProperties): void
 }
 
@@ -13753,16 +13761,16 @@ export interface ModeSwitch {
     setActive(value: boolean): void
     getPrimaryIconGicon(): Gio.Icon
     setPrimaryIconGicon(value: Gio.Icon): void
-    getPrimaryIconName(): string | null
-    setPrimaryIconName(value: string | null): void
-    getPrimaryIconTooltipText(): string | null
-    setPrimaryIconTooltipText(value: string | null): void
+    getPrimaryIconName(): string
+    setPrimaryIconName(value: string): void
+    getPrimaryIconTooltipText(): string
+    setPrimaryIconTooltipText(value: string): void
     getSecondaryIconGicon(): Gio.Icon
     setSecondaryIconGicon(value: Gio.Icon): void
-    getSecondaryIconName(): string | null
-    setSecondaryIconName(value: string | null): void
-    getSecondaryIconTooltipText(): string | null
-    setSecondaryIconTooltipText(value: string | null): void
+    getSecondaryIconName(): string
+    setSecondaryIconName(value: string): void
+    getSecondaryIconTooltipText(): string
+    setSecondaryIconTooltipText(value: string): void
 
     // Conflicting methods
 
@@ -13775,13 +13783,13 @@ export interface ModeSwitch {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -13794,13 +13802,13 @@ export interface ModeSwitch {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -13813,7 +13821,7 @@ export interface ModeSwitch {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -13822,7 +13830,7 @@ export interface ModeSwitch {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -13834,7 +13842,7 @@ export interface ModeSwitch {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -14168,7 +14176,7 @@ export class ModeSwitch extends Gtk.Grid {
      * @returns the new #GtkGrid
      */
     static new(): Gtk.Grid
-    static fromIconName(primaryIconName: string | null, secondaryIconName: string | null): ModeSwitch
+    static fromIconName(primaryIconName: string, secondaryIconName: string): ModeSwitch
     _init(config?: ModeSwitch.ConstructorProperties): void
 }
 
@@ -14230,13 +14238,13 @@ export interface SeekBar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -14249,13 +14257,13 @@ export interface SeekBar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -14268,7 +14276,7 @@ export interface SeekBar {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -14277,7 +14285,7 @@ export interface SeekBar {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -14289,7 +14297,7 @@ export interface SeekBar {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -14669,13 +14677,13 @@ export interface SettingsSidebar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -14688,13 +14696,13 @@ export interface SettingsSidebar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -14707,7 +14715,7 @@ export interface SettingsSidebar {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -14716,7 +14724,7 @@ export interface SettingsSidebar {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -14728,7 +14736,7 @@ export interface SettingsSidebar {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -15178,8 +15186,8 @@ export interface SwitchModelButton {
 
     // Owm methods of Granite-1.0.Granite.SwitchModelButton
 
-    getText(): string | null
-    setText(value: string | null): void
+    getText(): string
+    setText(value: string): void
     getDescription(): string | null
     setDescription(value: string | null): void
 
@@ -15228,7 +15236,7 @@ export interface SwitchModelButton {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -15249,7 +15257,7 @@ export interface SwitchModelButton {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -15262,7 +15270,7 @@ export interface SwitchModelButton {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -15272,7 +15280,7 @@ export interface SwitchModelButton {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -15285,7 +15293,7 @@ export interface SwitchModelButton {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -15294,13 +15302,13 @@ export interface SwitchModelButton {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Granite-1.0.Granite.SwitchModelButton
 
@@ -15606,8 +15614,8 @@ export class SwitchModelButton extends Gtk.ToggleButton {
     // Constructors of Granite-1.0.Granite.SwitchModelButton
 
     constructor(config?: SwitchModelButton.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): SwitchModelButton
+    constructor(text: string) 
+    static new(text: string): SwitchModelButton
 
     // Overloads of new
 
@@ -15664,13 +15672,13 @@ export interface ValidatedEntry {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -15683,13 +15691,13 @@ export interface ValidatedEntry {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -15702,7 +15710,7 @@ export interface ValidatedEntry {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -15711,7 +15719,7 @@ export interface ValidatedEntry {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     activate(): void
 
     // Overloads of activate
@@ -16423,7 +16431,7 @@ export interface ServicesSettingsClass {
 
     // Own fields of Granite-1.0.Granite.ServicesSettingsClass
 
-    verify: (self: any, key: string | null) => void
+    verify: (self: any, key: string) => void
 }
 
 export abstract class ServicesSettingsClass {
@@ -16506,7 +16514,7 @@ export interface ServicesSettingsSerializableIface {
     // Own fields of Granite-1.0.Granite.ServicesSettingsSerializableIface
 
     settingsSerialize: (self: any) => string | null
-    settingsDeserialize: (self: any, s: string | null) => void
+    settingsDeserialize: (self: any, s: string) => void
 }
 
 export abstract class ServicesSettingsSerializableIface {
@@ -16773,7 +16781,7 @@ export interface WidgetsSourceListItemClass {
     // Own fields of Granite-1.0.Granite.WidgetsSourceListItemClass
 
     getContextMenu: (self: WidgetsSourceListItem) => Gtk.Menu | null
-    edited: (self: WidgetsSourceListItem, newName: string | null) => void
+    edited: (self: WidgetsSourceListItem, newName: string) => void
     actionActivated: (self: WidgetsSourceListItem) => void
     activated: (self: WidgetsSourceListItem) => void
 }

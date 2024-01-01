@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-evinceview-3.0",
-    "version": "3.0.0-3.2.6",
+    "version": "3.0.0-3.2.7",
     "description": "Node.js TypeScript type definitions for EvinceView-3.0, generated from library version 3.0.0",
     "type": "module",
     "module": "node-evinceview-3.0.js",

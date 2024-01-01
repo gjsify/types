@@ -1157,31 +1157,31 @@ const I: number
 /**
  * D-Bus interface for IBus config.
  */
-const INTERFACE_CONFIG: string | null
+const INTERFACE_CONFIG: string
 /**
  * D-Bus interface for IBus engine.
  */
-const INTERFACE_ENGINE: string | null
+const INTERFACE_ENGINE: string
 /**
  * D-Bus interface for IBus factory.
  */
-const INTERFACE_FACTORY: string | null
+const INTERFACE_FACTORY: string
 /**
  * D-Bus interface for IBus.
  */
-const INTERFACE_IBUS: string | null
+const INTERFACE_IBUS: string
 /**
  * D-Bus interface for IBus input context.
  */
-const INTERFACE_INPUT_CONTEXT: string | null
+const INTERFACE_INPUT_CONTEXT: string
 /**
  * D-Bus interface for IBus notifications.
  */
-const INTERFACE_NOTIFICATIONS: string | null
+const INTERFACE_NOTIFICATIONS: string
 /**
  * D-Bus interface for IBus panel.
  */
-const INTERFACE_PANEL: string | null
+const INTERFACE_PANEL: string
 const ISO_Center_Object: number
 const ISO_Continuous_Underline: number
 const ISO_Discontinuous_Underline: number
@@ -3483,27 +3483,27 @@ const P: number
 /**
  * D-Bus path for IBus config.
  */
-const PATH_CONFIG: string | null
+const PATH_CONFIG: string
 /**
  * D-Bus path for IBus factory.
  */
-const PATH_FACTORY: string | null
+const PATH_FACTORY: string
 /**
  * D-Bus path for IBus
  */
-const PATH_IBUS: string | null
+const PATH_IBUS: string
 /**
  * Template of D-Bus path for IBus input context.
  */
-const PATH_INPUT_CONTEXT: string | null
+const PATH_INPUT_CONTEXT: string
 /**
  * D-Bus path for IBus notifications.
  */
-const PATH_NOTIFICATIONS: string | null
+const PATH_NOTIFICATIONS: string
 /**
  * D-Bus path for IBus panel.
  */
-const PATH_PANEL: string | null
+const PATH_PANEL: string
 const Pabovedot: number
 const Page_Down: number
 const Page_Up: number
@@ -3577,19 +3577,19 @@ const SCHWA: number
 /**
  * Address of IBus config service.
  */
-const SERVICE_CONFIG: string | null
+const SERVICE_CONFIG: string
 /**
  * Address of IBus service.
  */
-const SERVICE_IBUS: string | null
+const SERVICE_IBUS: string
 /**
  * Address of IBus notification service.
  */
-const SERVICE_NOTIFICATIONS: string | null
+const SERVICE_NOTIFICATIONS: string
 /**
  * Address of IBus panel service.
  */
-const SERVICE_PANEL: string | null
+const SERVICE_PANEL: string
 const Sabovedot: number
 const Sacute: number
 const Scaron: number
@@ -4684,23 +4684,23 @@ function freeStrv(strv: string | null): void
  * </orderedlist>
  * @returns D-Bus address of IBus. %NULL for not found. See also: ibus_write_address().
  */
-function getAddress(): string | null
+function getAddress(): string
 /**
  * Get UID of ibus-daemon.
  * @returns UID of ibus-daemon; or 0 if UID is not available.
  */
 function getDaemonUid(): number
-function getLanguageName(locale: string | null): string | null
+function getLanguageName(locale: string): string
 /**
  * Obtains the machine UUID of the machine this process is running on.
  * @returns A newly allocated string that shows the UUID of the machine.
  */
-function getLocalMachineId(): string | null
+function getLocalMachineId(): string
 /**
  * Get the path of socket file.
  * @returns A newly allocated string that stores the path of socket file.
  */
-function getSocketPath(): string | null
+function getSocketPath(): string
 /**
  * Get the GDBus timeout in milliseconds. The timeout is for clients (e.g.
  * im-ibus.so), not for ibus-daemon.
@@ -4709,7 +4709,7 @@ function getSocketPath(): string | null
  * @returns A GDBus timeout in milliseconds. -1 when default timeout for     GDBus should be used.
  */
 function getTimeout(): number
-function getUntranslatedLanguageName(locale: string | null): string | null
+function getUntranslatedLanguageName(locale: string): string
 /**
  * Get the current user name.
  * It is determined by:
@@ -4724,7 +4724,7 @@ function getUntranslatedLanguageName(locale: string | null): string | null
  * </orderedlist>
  * @returns A newly allocated string that stores current user name.
  */
-function getUserName(): string | null
+function getUserName(): string
 /**
  * Initialize the ibus types.
  */
@@ -4736,7 +4736,7 @@ function init(): void
  * @param modifiers Variable that hold modifiers result.
  * @returns %TRUE for succeed; %FALSE if failed.
  */
-function keyEventFromString(string: string | null, keyval: number, modifiers: number): boolean
+function keyEventFromString(string: string, keyval: number, modifiers: number): boolean
 /**
  * Return the name of a key symbol and modifiers.
  * 
@@ -4746,7 +4746,7 @@ function keyEventFromString(string: string | null, keyval: number, modifiers: nu
  * @param modifiers Modifiers such as Ctrl or Shift.
  * @returns The name of a key symbol and modifier.
  */
-function keyEventToString(keyval: number, modifiers: number): string | null
+function keyEventToString(keyval: number, modifiers: number): string
 /**
  * Obtains the upper- and lower-case versions of the keyval `symbol`.
  * Examples of keyvals are #IBUS_KEY_a, #IBUS_KEY_Return, #IBUS_KEY_F1, etc.
@@ -4758,7 +4758,7 @@ function keyvalConvertCase(symbol: number): [ /* lower */ number, /* upper */ nu
  * @param keyvalName Key name in #gdk_keys_by_name.
  * @returns Corresponding key symbol.
  */
-function keyvalFromName(keyvalName: string | null): number
+function keyvalFromName(keyvalName: string): number
 /**
  * Return the name of a key symbol.
  * 
@@ -4766,7 +4766,7 @@ function keyvalFromName(keyvalName: string | null): number
  * @param keyval Key symbol.
  * @returns Corresponding key name. %NULL if no such key symbol.
  */
-function keyvalName(keyval: number): string | null
+function keyvalName(keyval: number): string
 /**
  * Converts a key value to lower case, if applicable.
  * @param keyval a key value.
@@ -4803,7 +4803,7 @@ function quit(): void
  * Set the display address.
  * @param display Display address, as in DISPLAY environment for X.
  */
-function setDisplay(display: string | null): void
+function setDisplay(display: string): void
 /**
  * Sets GLIB's log handler to ours. Our log handler adds time info
  * including hour, minute, second, and microsecond, like:
@@ -4835,20 +4835,20 @@ function unsetLogHandler(): void
  * See also: ibus_get_address().
  * @param address D-Bus address of IBus.
  */
-function writeAddress(address: string | null): void
+function writeAddress(address: string): void
 /**
  * Parse a string buffer which contains an XML-formatted string,
  * and return a corresponding XML tree.
  * @param buffer Buffer to be parsed.
  * @returns Root node of parsed XML tree.
  */
-function xmlParseBuffer(buffer: string | null): XML
+function xmlParseBuffer(buffer: string): XML
 /**
  * Parse an XML file and return a corresponding XML tree.
  * @param name File name to be parsed.
  * @returns Root node of parsed XML tree.
  */
-function xmlParseFile(name: string | null): XML
+function xmlParseFile(name: string): XML
 /**
  * Free function prototype.
  * @callback 
@@ -5196,7 +5196,7 @@ interface Bus {
      * @param rule Match rule.
      * @returns %TRUE if the rule is added. %FALSE otherwise.
      */
-    addMatch(rule: string | null): boolean
+    addMatch(rule: string): boolean
     /**
      * Add a match rule to an #IBusBus asynchronously.
      * @param rule Match rule.
@@ -5204,7 +5204,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    addMatchAsync(rule: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    addMatchAsync(rule: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_add_match_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_add_match_async().
@@ -5216,7 +5216,7 @@ interface Bus {
      * @param clientName Name of client.      "CreateInputContext" call is suceeded, %NULL otherwise.
      * @returns An newly allocated #IBusInputContext if the
      */
-    createInputContext(clientName: string | null): InputContext
+    createInputContext(clientName: string): InputContext
     /**
      * Create an input context for client asynchronously.
      * @param clientName Name of client.
@@ -5224,7 +5224,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      It should not be %NULL.
      */
-    createInputContextAsync(clientName: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createInputContextAsync(clientName: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_create_input_context_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_create_input_context_async().
@@ -5310,7 +5310,7 @@ interface Bus {
      * @param propertyName property name in org.freedesktop.DBus.Properties.Get
      * @returns The value in org.freedesktop.DBus.Properties.Get           The returned value must be freed with g_variant_unref().
      */
-    getIbusProperty(propertyName: string | null): GLib.Variant
+    getIbusProperty(propertyName: string): GLib.Variant
     /**
      * Get org.freedesktop.DBus.Properties asynchronously.
      * @param propertyName property name in org.freedesktop.DBus.Properties.Get
@@ -5318,7 +5318,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    getIbusPropertyAsync(propertyName: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getIbusPropertyAsync(propertyName: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_ibus_property_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_ibus_property_async().
@@ -5330,7 +5330,7 @@ interface Bus {
      * @param name Name.
      * @returns Owner of the name. The returned value must be freed with g_free().
      */
-    getNameOwner(name: string | null): string | null
+    getNameOwner(name: string): string | null
     /**
      * Return the name owner asynchronously.
      * @param name Name.
@@ -5338,7 +5338,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    getNameOwnerAsync(name: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getNameOwnerAsync(name: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_get_name_owner_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_get_name_owner_async().
@@ -5387,7 +5387,7 @@ interface Bus {
      * which replies the unique name of current IBus process.
      * @returns The unique name of IBus process in DBus.
      */
-    hello(): string | null
+    hello(): string
     /**
      * Return %TRUE if `bus` is connected to IBus daemon.
      * @returns %TRUE if @bus is connected, %FALSE otherwise.
@@ -5460,13 +5460,13 @@ interface Bus {
      * @param name Name to be queried.
      * @returns            The unique bus names of connections currently queued for @name.
      */
-    listQueuedOwners(name: string | null): string[]
+    listQueuedOwners(name: string): string[]
     /**
      * Checks whether the name has owner synchronously.
      * @param name Name to be checked.
      * @returns %TRUE if the name has owner, %FALSE otherwise.
      */
-    nameHasOwner(name: string | null): boolean
+    nameHasOwner(name: string): boolean
     /**
      * Checks whether the name has owner asynchronously.
      * @param name Name to be checked.
@@ -5474,7 +5474,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    nameHasOwnerAsync(name: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    nameHasOwnerAsync(name: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_name_has_owner_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_name_has_owner_async().
@@ -5526,7 +5526,7 @@ interface Bus {
      * @param name Name to be released.
      * @returns 0 if failed; positive number otherwise.
      */
-    releaseName(name: string | null): number
+    releaseName(name: string): number
     /**
      * Release a name to IBus daemon asynchronously.
      * @param name Name to be released.
@@ -5534,7 +5534,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    releaseNameAsync(name: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    releaseNameAsync(name: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_release_name_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_release_name_async().
@@ -5546,7 +5546,7 @@ interface Bus {
      * @param rule Match rule.
      * @returns %TRUE if the rule is removed. %FALSE otherwise.
      */
-    removeMatch(rule: string | null): boolean
+    removeMatch(rule: string): boolean
     /**
      * Remove a match rule to an IBusBus asynchronously.
      * @param rule Match rule.
@@ -5554,7 +5554,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    removeMatchAsync(rule: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    removeMatchAsync(rule: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_remove_match_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_remove_match_async().
@@ -5567,7 +5567,7 @@ interface Bus {
      * @param flags IBusBusNameFlag.
      * @returns 0 if failed; IBusBusRequestNameReply otherwise.
      */
-    requestName(name: string | null, flags: number): number
+    requestName(name: string, flags: number): number
     /**
      * Request a name from IBus daemon asynchronously.
      * @param name Name to be requested.
@@ -5576,7 +5576,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL      if you don't care about the result of the method invocation.
      */
-    requestNameAsync(name: string | null, flags: number, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    requestNameAsync(name: string, flags: number, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_request_name_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_request_name_async().
@@ -5588,7 +5588,7 @@ interface Bus {
      * @param globalEngine A new engine name.
      * @returns %TRUE if the global engine was set successfully.
      */
-    setGlobalEngine(globalEngine: string | null): boolean
+    setGlobalEngine(globalEngine: string): boolean
     /**
      * Set current global engine asynchronously.
      * @param globalEngine A new engine name.
@@ -5596,7 +5596,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    setGlobalEngineAsync(globalEngine: string | null, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setGlobalEngineAsync(globalEngine: string, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_set_global_engine_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_global_engine_async().
@@ -5608,7 +5608,7 @@ interface Bus {
      * @param propertyName property name in org.freedesktop.DBus.Properties.Set
      * @param value value in org.freedesktop.DBus.Properties.Set
      */
-    setIbusProperty(propertyName: string | null, value: GLib.Variant): void
+    setIbusProperty(propertyName: string, value: GLib.Variant): void
     /**
      * Set org.freedesktop.DBus.Properties asynchronously.
      * @param propertyName property name in org.freedesktop.DBus.Properties.Set
@@ -5617,7 +5617,7 @@ interface Bus {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied      or %NULL if you don't care about the result of the method invocation.
      */
-    setIbusPropertyAsync(propertyName: string | null, value: GLib.Variant, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setIbusPropertyAsync(propertyName: string, value: GLib.Variant, timeoutMsec: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_bus_set_ibus_property_async().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to   ibus_bus_set_ibus_property_async().
@@ -5816,7 +5816,7 @@ interface Component {
      * @param path Observed path to be added.
      * @param accessFs %TRUE for filling the file status; %FALSE otherwise.
      */
-    addObservedPath(path: string | null, accessFs: boolean): void
+    addObservedPath(path: string, accessFs: boolean): void
     /**
      * Check whether the observed paths of component is modified.
      * @returns %TRUE if at least one of the observed paths is modified; %FALSE otherwise.
@@ -5826,12 +5826,12 @@ interface Component {
      * Gets the author property in #IBusComponent. It should not be freed.
      * @returns author property in #IBusComponent
      */
-    getAuthor(): string | null
+    getAuthor(): string
     /**
      * Gets the description property in #IBusComponent. It should not be freed.
      * @returns description property in #IBusComponent
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the engines of this component.
      * @returns  A newly allocated GList that contains engines.
@@ -5841,22 +5841,22 @@ interface Component {
      * Gets the exec property in #IBusComponent. It should not be freed.
      * @returns exec property in #IBusComponent
      */
-    getExec(): string | null
+    getExec(): string
     /**
      * Gets the homepage property in #IBusComponent. It should not be freed.
      * @returns homepage property in #IBusComponent
      */
-    getHomepage(): string | null
+    getHomepage(): string
     /**
      * Gets the license property in #IBusComponent. It should not be freed.
      * @returns license property in #IBusComponent
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets the name property in #IBusComponent. It should not be freed.
      * @returns name property in #IBusComponent
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the observed paths of this component.
      * @returns A newly allocated GList that contains observed paths.
@@ -5866,12 +5866,12 @@ interface Component {
      * Gets the textdomain property in #IBusComponent. It should not be freed.
      * @returns textdomain property in #IBusComponent
      */
-    getTextdomain(): string | null
+    getTextdomain(): string
     /**
      * Gets the version property in #IBusComponent. It should not be freed.
      * @returns version property in #IBusComponent
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Output #IBusComponent as an XML-formatted string.
      * The output string can be then shown on the screen or written to file.
@@ -5977,7 +5977,7 @@ class Component extends Serializable {
      * @param textdomain Domain name for dgettext()
      * @returns A newly allocated #IBusComponent.
      */
-    constructor(name: string | null, description: string | null, version: string | null, license: string | null, author: string | null, homepage: string | null, commandLine: string | null, textdomain: string | null) 
+    constructor(name: string, description: string, version: string, license: string, author: string, homepage: string, commandLine: string, textdomain: string) 
     /**
      * Creates a new #IBusComponent.
      * @constructor 
@@ -5991,7 +5991,7 @@ class Component extends Serializable {
      * @param textdomain Domain name for dgettext()
      * @returns A newly allocated #IBusComponent.
      */
-    static new(name: string | null, description: string | null, version: string | null, license: string | null, author: string | null, homepage: string | null, commandLine: string | null, textdomain: string | null): Component
+    static new(name: string, description: string, version: string, license: string, author: string, homepage: string, commandLine: string, textdomain: string): Component
 
     // Overloads of new
 
@@ -6016,7 +6016,7 @@ class Component extends Serializable {
      * @param filename An XML file that contains component information.
      * @returns A newly allocated #IBusComponent.
      */
-    static newFromFile(filename: string | null): Component
+    static newFromFile(filename: string): Component
     /**
      * Creates a new #IBusComponent from an XML tree.
      * @constructor 
@@ -6069,7 +6069,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param name Name of the configure option.
      * @returns A #GVariant or %NULL. Free with g_variant_unref().
      */
-    getValue(section: string | null, name: string | null): GLib.Variant
+    getValue(section: string, name: string): GLib.Variant
     /**
      * Get the value of a configuration option asynchronously.
      * 
@@ -6080,7 +6080,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the return value is ready.
      */
-    getValueAsync(section: string | null, name: string | null, timeoutMs: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getValueAsync(section: string, name: string, timeoutMs: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish get value of a configuration option.
      * @param result A #GAsyncResult.
@@ -6092,7 +6092,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param section Section name of the configuration option.
      * @returns A #GVariant or %NULL. Free with g_variant_unref(). See also: ibus_config_set_value().
      */
-    getValues(section: string | null): GLib.Variant
+    getValues(section: string): GLib.Variant
     /**
      * Get all values in a section asynchronously.
      * 
@@ -6102,7 +6102,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the return value is ready.
      */
-    getValuesAsync(section: string | null, timeoutMs: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getValuesAsync(section: string, timeoutMs: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish get values in a section.
      * @param result A #GAsyncResult.
@@ -6116,7 +6116,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param value A #GVariant that holds the value. If the value is floating, the function takes ownership of it.
      * @returns %TRUE if succeed; %FALSE otherwise. See also: ibus_config_get_value().
      */
-    setValue(section: string | null, name: string | null, value: GLib.Variant): boolean
+    setValue(section: string, name: string, value: GLib.Variant): boolean
     /**
      * Set the value of a configuration option asynchronously.
      * 
@@ -6128,7 +6128,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the return value is ready.
      */
-    setValueAsync(section: string | null, name: string | null, value: GLib.Variant, timeoutMs: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setValueAsync(section: string, name: string, value: GLib.Variant, timeoutMs: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finish set value of a configuration option.
      * @param result A #GAsyncResult.
@@ -6141,7 +6141,7 @@ interface Config extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable {
      * @param name Name of the configure option its self.
      * @returns %TRUE if succeed; %FALSE otherwise. See also: ibus_config_get_value().
      */
-    unset(section: string | null, name: string | null): boolean
+    unset(section: string, name: string): boolean
     /**
      * Unsubscribe from the configuration option change notification.
      * @param section Section name of the configuration option.
@@ -6302,7 +6302,7 @@ class Config extends Proxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_config_new_async().
      * @constructor 
@@ -6344,14 +6344,14 @@ interface ConfigService {
      * @param name Name of the configure option.
      * @param value GVariant that holds the value.
      */
-    valueChanged(section: string | null, name: string | null, value: GLib.Variant): void
+    valueChanged(section: string, name: string, value: GLib.Variant): void
 
     // Own virtual methods of IBus-1.0.IBus.ConfigService
 
-    getValue(section: string | null, name: string | null): GLib.Variant
-    getValues(section: string | null): GLib.Variant
-    setValue(section: string | null, name: string | null, value: GLib.Variant): boolean
-    unsetValue(section: string | null, name: string | null): boolean
+    getValue(section: string, name: string): GLib.Variant
+    getValues(section: string): GLib.Variant
+    setValue(section: string, name: string, value: GLib.Variant): boolean
+    unsetValue(section: string, name: string): boolean
 
     // Class property signals of IBus-1.0.IBus.ConfigService
 
@@ -6515,7 +6515,7 @@ class ConfigService extends Service {
      * @param path Object path.
      * @returns A newly allocated #IBusService
      */
-    static new(connection: Gio.DBusConnection, path: string | null): Service
+    static new(connection: Gio.DBusConnection, path: string): Service
     /**
      * Creates  a new #IBusObject.
      * @constructor 
@@ -6746,7 +6746,7 @@ interface Engine {
      * Return the name of #IBusEngine.
      * @returns Name of #IBusEngine.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get surrounding text.
      * 
@@ -6878,9 +6878,9 @@ interface Engine {
     pageUp(): void
     processHandWritingEvent(coordinates: number, coordinatesLen: number): void
     processKeyEvent(keyval: number, keycode: number, state: number): boolean
-    propertyActivate(propName: string | null, propState: number): void
-    propertyHide(propName: string | null): void
-    propertyShow(propName: string | null): void
+    propertyActivate(propName: string, propState: number): void
+    propertyHide(propName: string): void
+    propertyShow(propName: string): void
     reset(): void
     setCapabilities(caps: number): void
     setContentType(purpose: number, hints: number): void
@@ -7044,7 +7044,7 @@ class Engine extends Service {
      * @param connection An opened GDBusConnection.
      * @returns A newly allocated IBusEngine.
      */
-    constructor(engineName: string | null, objectPath: string | null, connection: Gio.DBusConnection) 
+    constructor(engineName: string, objectPath: string, connection: Gio.DBusConnection) 
     /**
      * Create a new #IBusEngine.
      * @constructor 
@@ -7053,7 +7053,7 @@ class Engine extends Service {
      * @param connection An opened GDBusConnection.
      * @returns A newly allocated IBusEngine.
      */
-    static new(engineName: string | null, objectPath: string | null, connection: Gio.DBusConnection): Engine
+    static new(engineName: string, objectPath: string, connection: Gio.DBusConnection): Engine
 
     // Overloads of new
 
@@ -7064,7 +7064,7 @@ class Engine extends Service {
      * @param path Object path.
      * @returns A newly allocated #IBusService
      */
-    static new(connection: Gio.DBusConnection, path: string | null): Service
+    static new(connection: Gio.DBusConnection, path: string): Service
     /**
      * Creates  a new #IBusObject.
      * @constructor 
@@ -7080,7 +7080,7 @@ class Engine extends Service {
      * @param connection An opened GDBusConnection.
      * @returns A newly allocated IBusEngine.
      */
-    static newWithType(engineType: GObject.GType, engineName: string | null, objectPath: string | null, connection: Gio.DBusConnection): Engine
+    static newWithType(engineType: GObject.GType, engineName: string, objectPath: string, connection: Gio.DBusConnection): Engine
     _init(config?: Engine.ConstructorProperties): void
 }
 
@@ -7248,63 +7248,63 @@ interface EngineDesc {
      * Gets the author property in IBusEngineDesc. It should not be freed.
      * @returns author property in IBusEngineDesc
      */
-    getAuthor(): string | null
+    getAuthor(): string
     /**
      * Gets the description property in IBusEngineDesc. It should not be freed.
      * @returns description property in IBusEngineDesc
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the hotkeys property in IBusEngineDesc. It should not be freed.
      * @returns hotkeys property in IBusEngineDesc
      */
-    getHotkeys(): string | null
+    getHotkeys(): string
     /**
      * Gets the icon property in IBusEngineDesc. It should not be freed.
      * @returns icon property in IBusEngineDesc
      */
-    getIcon(): string | null
+    getIcon(): string
     /**
      * Gets the key of IBusProperty to load the panel icon dynamically
      * in IBusEngineDesc. It should not be freed.
      * @returns IBusProperty.key for dynamic panel icon in IBusEngineDesc
      */
-    getIconPropKey(): string | null
+    getIconPropKey(): string
     /**
      * Gets the language property in IBusEngineDesc. It should not be freed.
      * @returns language property in IBusEngineDesc
      */
-    getLanguage(): string | null
+    getLanguage(): string
     /**
      * Gets the layout property in IBusEngineDesc. It should not be freed.
      * @returns layout property in IBusEngineDesc
      */
-    getLayout(): string | null
+    getLayout(): string
     /**
      * Gets the keyboard option property in IBusEngineDesc. It should not be freed.
      * @returns keyboard option property in IBusEngineDesc
      */
-    getLayoutOption(): string | null
+    getLayoutOption(): string
     /**
      * Gets the keyboard variant property in IBusEngineDesc. It should not be freed.
      * @returns keyboard variant property in IBusEngineDesc
      */
-    getLayoutVariant(): string | null
+    getLayoutVariant(): string
     /**
      * Gets the license property in IBusEngineDesc. It should not be freed.
      * @returns license property in IBusEngineDesc
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets the longname property in IBusEngineDesc. It should not be freed.
      * @returns longname property in IBusEngineDesc
      */
-    getLongname(): string | null
+    getLongname(): string
     /**
      * Gets the name property in IBusEngineDesc. It should not be freed.
      * @returns name property in IBusEngineDesc
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the rank property in IBusEngineDesc.
      * @returns rank property in IBusEngineDesc
@@ -7314,22 +7314,22 @@ interface EngineDesc {
      * Gets the setup property in IBusEngineDesc. It should not be freed.
      * @returns setup property in IBusEngineDesc
      */
-    getSetup(): string | null
+    getSetup(): string
     /**
      * Gets the symbol property in IBusEngineDesc. It should not be freed.
      * @returns symbol property in IBusEngineDesc
      */
-    getSymbol(): string | null
+    getSymbol(): string
     /**
      * Gets the textdomain property in IBusEngineDesc. It should not be freed.
      * @returns textdomain in IBusEngineDesc
      */
-    getTextdomain(): string | null
+    getTextdomain(): string
     /**
      * Gets the version property in IBusEngineDesc. It should not be freed.
      * @returns version in IBusEngineDesc
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Output XML-formatted input method engine description.
      * The result will be append to GString specified in `output`.
@@ -7473,7 +7473,7 @@ class EngineDesc extends Serializable {
      * @param layout Keyboard layout
      * @returns A newly allocated IBusEngineDesc.
      */
-    constructor(name: string | null, longname: string | null, description: string | null, language: string | null, license: string | null, author: string | null, icon: string | null, layout: string | null) 
+    constructor(name: string, longname: string, description: string, language: string, license: string, author: string, icon: string, layout: string) 
     /**
      * Creates a new #IBusEngineDesc.
      * @constructor 
@@ -7487,7 +7487,7 @@ class EngineDesc extends Serializable {
      * @param layout Keyboard layout
      * @returns A newly allocated IBusEngineDesc.
      */
-    static new(name: string | null, longname: string | null, description: string | null, language: string | null, license: string | null, author: string | null, icon: string | null, layout: string | null): EngineDesc
+    static new(name: string, longname: string, description: string, language: string, license: string, author: string, icon: string, layout: string): EngineDesc
 
     // Overloads of new
 
@@ -7538,7 +7538,7 @@ interface EngineSimple {
      * @param file The compose file. If the `file` is %NULL,        the current locale is used.
      * @returns %TRUE if the @file is loaded.
      */
-    addComposeFile(file: string | null): boolean
+    addComposeFile(file: string): boolean
     /**
      * Adds an additional table to search to the engine. Each row of the table
      * consists of max_seq_len key symbols followed by two guint16 interpreted as
@@ -7643,8 +7643,8 @@ interface Factory {
      * @param engineName Name of an engine.
      * @param engineType GType of an engine.
      */
-    addEngine(engineName: string | null, engineType: GObject.GType): void
-    // Has conflict: createEngine(engineName: string | null): Engine
+    addEngine(engineName: string, engineType: GObject.GType): void
+    // Has conflict: createEngine(engineName: string): Engine
 
     // Own virtual methods of IBus-1.0.IBus.Factory
 
@@ -7654,7 +7654,7 @@ interface Factory {
      * @param engineName Name of an engine.
      * @returns #IBusEngine with @engine_name.
      */
-    createEngine(engineName: string | null): Engine
+    createEngine(engineName: string): Engine
 
     // Own signals of IBus-1.0.IBus.Factory
 
@@ -7730,7 +7730,7 @@ class Factory extends Service {
      * @param path Object path.
      * @returns A newly allocated #IBusService
      */
-    static new(connection: Gio.DBusConnection, path: string | null): Service
+    static new(connection: Gio.DBusConnection, path: string): Service
     /**
      * Creates  a new #IBusObject.
      * @constructor 
@@ -7787,7 +7787,7 @@ interface HotkeyProfile {
      * @param event The event to be associated.
      * @returns FALSE if @str contains invalid symbol; TRUE otherwise.
      */
-    addHotkeyFromString(str: string | null, event: GLib.Quark): boolean
+    addHotkeyFromString(str: string, event: GLib.Quark): boolean
     /**
      * Emits a <constant>::trigger</constant> signal when a hotkey is in a profile.
      * @param keyval Keycode of the hotkey.
@@ -8158,7 +8158,7 @@ interface InputContext extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initabl
      * @param propName A property name (e.g. "InputMode.WideLatin")
      * @param state A status of the property (e.g. PROP_STATE_CHECKED)
      */
-    propertyActivate(propName: string | null, state: number): void
+    propertyActivate(propName: string, state: number): void
     /**
      * Invoked when the IME is reset. An asynchronous IPC will be performed.
      * 
@@ -8202,7 +8202,7 @@ interface InputContext extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initabl
      * An asynchronous IPC will be performed.
      * @param name A name of the engine.
      */
-    setEngine(name: string | null): void
+    setEngine(name: string): void
     setSurroundingText(text: Text, cursorPos: number, anchorPos: number): void
 
     // Own signals of IBus-1.0.IBus.InputContext
@@ -8394,7 +8394,7 @@ class InputContext extends Proxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A newly allocated #IBusInputContext.
      */
-    constructor(path: string | null, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null) 
+    constructor(path: string, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null) 
     /**
      * Creates a new #IBusInputContext.
      * @constructor 
@@ -8403,7 +8403,7 @@ class InputContext extends Proxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A newly allocated #IBusInputContext.
      */
-    static new(path: string | null, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null): InputContext
+    static new(path: string, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null): InputContext
 
     // Overloads of new
 
@@ -8444,7 +8444,7 @@ class InputContext extends Proxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with ibus_input_context_new_async().
      * @constructor 
@@ -8460,14 +8460,14 @@ class InputContext extends Proxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      The callback should not be %NULL.
      */
-    static newAsync(path: string | null, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newAsync(path: string, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets an existing IBusInputContext.
      * @param path The path to the object that emitting the signal.
      * @param connection A GDBusConnection.
      * @returns An existing #IBusInputContext.
      */
-    static getInputContext(path: string | null, connection: Gio.DBusConnection): InputContext
+    static getInputContext(path: string, connection: Gio.DBusConnection): InputContext
     /**
      * Gets an existing #IBusInputContext asynchronously.
      * @param path The path to the object that emitting the signal.
@@ -8475,7 +8475,7 @@ class InputContext extends Proxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.      The callback should not be %NULL.
      */
-    static getInputContextAsync(path: string | null, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static getInputContextAsync(path: string, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with
      * ibus_input_context_get_input_context_async().
@@ -8571,7 +8571,7 @@ class Keymap extends Object {
      * @param name The keymap file to be loaded, such as 'us', 'jp'.
      * @returns An #IBusKeymap associated with the giving name; or %NULL if failed.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Get an #IBusKeymap associated with the giving name.
      * 
@@ -8581,7 +8581,7 @@ class Keymap extends Object {
      * @param name The keymap file to be loaded, such as 'us', 'jp'.
      * @returns An #IBusKeymap associated with the giving name; or %NULL if failed.
      */
-    static new(name: string | null): Keymap
+    static new(name: string): Keymap
 
     // Overloads of new
 
@@ -8600,7 +8600,7 @@ class Keymap extends Object {
      * @param name The keymap file to be loaded, such as 'us', 'jp'.
      * @returns An #IBusKeymap associated with the giving name; or %NULL if failed.
      */
-    static get(name: string | null): Keymap
+    static get(name: string): Keymap
 }
 
 module LookupTable {
@@ -9063,7 +9063,7 @@ class ObservedPath extends Serializable {
      * @param fillStat Auto-fill the path status.
      * @returns A newly allocated #IBusObservedPath.
      */
-    constructor(path: string | null, fillStat: boolean) 
+    constructor(path: string, fillStat: boolean) 
     /**
      * Creates a new #IBusObservedPath from an XML node.
      * @constructor 
@@ -9071,7 +9071,7 @@ class ObservedPath extends Serializable {
      * @param fillStat Auto-fill the path status.
      * @returns A newly allocated #IBusObservedPath.
      */
-    static new(path: string | null, fillStat: boolean): ObservedPath
+    static new(path: string, fillStat: boolean): ObservedPath
 
     // Overloads of new
 
@@ -9331,27 +9331,27 @@ interface PanelService {
      * @param propName A property name
      * @param propState State of the property
      */
-    propertyActivate(propName: string | null, propState: number): void
+    propertyActivate(propName: string, propState: number): void
     /**
      * Notify that a property is hidden
      * by sending a "ValueChanged" message to IBus service.
      * @param propName A property name
      */
-    propertyHide(propName: string | null): void
+    propertyHide(propName: string): void
     /**
      * Notify that a property is shown
      * by sending a "ValueChanged" message to IBus service.
      * @param propName A property name
      */
-    propertyShow(propName: string | null): void
+    propertyShow(propName: string): void
 
     // Own virtual methods of IBus-1.0.IBus.PanelService
 
     cursorDownLookupTable(): void
     cursorUpLookupTable(): void
-    destroyContext(inputContextPath: string | null): void
-    focusIn(inputContextPath: string | null): void
-    focusOut(inputContextPath: string | null): void
+    destroyContext(inputContextPath: string): void
+    focusIn(inputContextPath: string): void
+    focusOut(inputContextPath: string): void
     hideAuxiliaryText(): void
     hideLanguageBar(): void
     hideLookupTable(): void
@@ -9564,7 +9564,7 @@ class PanelService extends Service {
      * @param path Object path.
      * @returns A newly allocated #IBusService
      */
-    static new(connection: Gio.DBusConnection, path: string | null): Service
+    static new(connection: Gio.DBusConnection, path: string): Service
     /**
      * Creates  a new #IBusObject.
      * @constructor 
@@ -9720,12 +9720,12 @@ interface Property {
      * Get the icon of #IBusProperty.
      * @returns the icon of #IBusProperty. Should not be freed.
      */
-    getIcon(): string | null
+    getIcon(): string
     /**
      * Get the key of #IBusProperty.
      * @returns the key of #IBusProperty. Should not be freed.
      */
-    getKey(): string | null
+    getKey(): string
     /**
      * Get the label of #IBusProperty.
      * @returns the label of #IBusProperty. Should not be freed.
@@ -9766,7 +9766,7 @@ interface Property {
      * Set the icon of #IBusProperty.
      * @param icon Icon shown in UI. It could be a full path of an icon file or an icon name.
      */
-    setIcon(icon: string | null): void
+    setIcon(icon: string): void
     /**
      * Set the label of #IBusProperty.
      * @param label Text shown in UI.
@@ -9910,7 +9910,7 @@ class Property extends Serializable {
      * @param propList #IBusPropList that contains sub IBusProperties.
      * @returns A newly allocated #IBusProperty.
      */
-    constructor(key: string | null, type: PropType, label: Text, icon: string | null, tooltip: Text, sensitive: boolean, visible: boolean, state: PropState, propList: PropList | null) 
+    constructor(key: string, type: PropType, label: Text, icon: string | null, tooltip: Text, sensitive: boolean, visible: boolean, state: PropState, propList: PropList | null) 
     /**
      * Creates a new #IBusProperty.
      * @constructor 
@@ -9925,7 +9925,7 @@ class Property extends Serializable {
      * @param propList #IBusPropList that contains sub IBusProperties.
      * @returns A newly allocated #IBusProperty.
      */
-    static new(key: string | null, type: PropType, label: Text, icon: string | null, tooltip: Text, sensitive: boolean, visible: boolean, state: PropState, propList: PropList | null): Property
+    static new(key: string, type: PropType, label: Text, icon: string | null, tooltip: Text, sensitive: boolean, visible: boolean, state: PropState, propList: PropList | null): Property
 
     // Overloads of new
 
@@ -10145,7 +10145,7 @@ interface Registry {
      * @param filename The file path of the registry cache
      * @returns %TRUE if the cache exists and is loaded successfully,           %FALSE otherwise.
      */
-    loadCacheFile(filename: string | null): boolean
+    loadCacheFile(filename: string): boolean
     /**
      * Read all XML files in `dirname,` create a #IBusComponent object for each file,
      * and add the component objects to the registry.
@@ -10153,7 +10153,7 @@ interface Registry {
      * ibus_registry_load() are same.
      * @param dirname IBus component directory which includes XML files.
      */
-    loadInDir(dirname: string | null): void
+    loadInDir(dirname: string): void
     /**
      * Output #IBusRegistry as an XML-formatted string.
      * The output string can be then shown on the screen or written to file.
@@ -10172,7 +10172,7 @@ interface Registry {
      * @param filename The file path of the registry cache
      * @returns %TRUE if the cache is saved successfully, %FALSE otherwise.
      */
-    saveCacheFile(filename: string | null): boolean
+    saveCacheFile(filename: string): boolean
     /**
      * Start to monitor observed paths.
      */
@@ -10405,7 +10405,7 @@ interface Service {
 
     // Owm methods of IBus-1.0.IBus.Service
 
-    emitSignal(destBusName: string | null, interfaceName: string | null, signalName: string | null, parameters: GLib.Variant): boolean
+    emitSignal(destBusName: string, interfaceName: string, signalName: string, parameters: GLib.Variant): boolean
     /**
      * Gets a connections.
      * @returns A #GDBusConnection of an #IBusService instance.
@@ -10415,7 +10415,7 @@ interface Service {
      * Gets the object path of an IBusService.
      * @returns The object path of @service
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Registers service to a connection.
      * @param connection A GDBusConnection the service will be registered to.
@@ -10441,7 +10441,7 @@ interface Service {
      * @param propertyName A property name.
      * @returns A variant.
      */
-    serviceGetProperty(connection: Gio.DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, propertyName: string | null): GLib.Variant | null
+    serviceGetProperty(connection: Gio.DBusConnection, sender: string, objectPath: string, interfaceName: string, propertyName: string): GLib.Variant | null
     /**
      * The ::service_method_call class method is to connect
      * GDBusInterfaceMethodCallFunc().
@@ -10454,7 +10454,7 @@ interface Service {
      * @param parameters A parameters.
      * @param invocation A dbus method invocation.
      */
-    serviceMethodCall(connection: Gio.DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
+    serviceMethodCall(connection: Gio.DBusConnection, sender: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation): void
     /**
      * The ::service_set_property class method is to connect
      * GDBusInterfaceSetPropertyFunc().
@@ -10467,7 +10467,7 @@ interface Service {
      * @param value An property value.
      * @returns %TRUE if set the value else %FALSE.
      */
-    serviceSetProperty(connection: Gio.DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, propertyName: string | null, value: GLib.Variant): boolean
+    serviceSetProperty(connection: Gio.DBusConnection, sender: string, objectPath: string, interfaceName: string, propertyName: string, value: GLib.Variant): boolean
 
     // Class property signals of IBus-1.0.IBus.Service
 
@@ -10514,7 +10514,7 @@ class Service extends Object {
      * @param path Object path.
      * @returns A newly allocated #IBusService
      */
-    constructor(connection: Gio.DBusConnection, path: string | null) 
+    constructor(connection: Gio.DBusConnection, path: string) 
     /**
      * Creantes a new #IBusService.
      * @constructor 
@@ -10522,7 +10522,7 @@ class Service extends Object {
      * @param path Object path.
      * @returns A newly allocated #IBusService
      */
-    static new(connection: Gio.DBusConnection, path: string | null): Service
+    static new(connection: Gio.DBusConnection, path: string): Service
 
     // Overloads of new
 
@@ -10538,7 +10538,7 @@ class Service extends Object {
      * @param xmlData The introspection xml data.
      * @returns %TRUE if @xml_data is valid and succeeded to be added;          %FALSE otherwise.
      */
-    static addInterfaces(klass: Service | Function | GObject.GType, xmlData: string | null): boolean
+    static addInterfaces(klass: Service | Function | GObject.GType, xmlData: string): boolean
 }
 
 module Text {
@@ -10601,7 +10601,7 @@ interface Text {
      * Return the text in an #IBusText. Should not be freed.
      * @returns the text in @text.
      */
-    getText(): string | null
+    getText(): string
     setAttributes(attrs: AttrList): void
 
     // Class property signals of IBus-1.0.IBus.Text
@@ -10645,7 +10645,7 @@ class Text extends Serializable {
      * @param str An text string to be set.
      * @returns A newly allocated #IBusText.
      */
-    static newFromString(str: string | null): Text
+    static newFromString(str: string): Text
     /**
      * Creates a new #IBusText from an UCS-4 encoded string.
      * `str` will be duplicated in IBusText, so feel free to free `str` after this
@@ -10769,10 +10769,10 @@ interface ConfigServiceClass {
 
     // Own fields of IBus-1.0.IBus.ConfigServiceClass
 
-    setValue: (config: ConfigService, section: string | null, name: string | null, value: GLib.Variant) => boolean
-    getValue: (config: ConfigService, section: string | null, name: string | null) => GLib.Variant
-    unsetValue: (config: ConfigService, section: string | null, name: string | null) => boolean
-    getValues: (config: ConfigService, section: string | null) => GLib.Variant
+    setValue: (config: ConfigService, section: string, name: string, value: GLib.Variant) => boolean
+    getValue: (config: ConfigService, section: string, name: string) => GLib.Variant
+    unsetValue: (config: ConfigService, section: string, name: string) => boolean
+    getValues: (config: ConfigService, section: string) => GLib.Variant
 }
 
 abstract class ConfigServiceClass {
@@ -10798,9 +10798,9 @@ interface EngineClass {
     pageDown: (engine: Engine) => void
     cursorUp: (engine: Engine) => void
     cursorDown: (engine: Engine) => void
-    propertyActivate: (engine: Engine, propName: string | null, propState: number) => void
-    propertyShow: (engine: Engine, propName: string | null) => void
-    propertyHide: (engine: Engine, propName: string | null) => void
+    propertyActivate: (engine: Engine, propName: string, propState: number) => void
+    propertyShow: (engine: Engine, propName: string) => void
+    propertyHide: (engine: Engine, propName: string) => void
     candidateClicked: (engine: Engine, index: number, button: number, state: number) => void
     setSurroundingText: (engine: Engine, text: Text, cursorIndex: number, anchorPos: number) => void
     processHandWritingEvent: (engine: Engine, coordinates: number, coordinatesLen: number) => void
@@ -10873,7 +10873,7 @@ interface FactoryClass {
 
     // Own fields of IBus-1.0.IBus.FactoryClass
 
-    createEngine: (factory: Factory, engineName: string | null) => Engine
+    createEngine: (factory: Factory, engineName: string) => Engine
 }
 
 abstract class FactoryClass {
@@ -10994,8 +10994,8 @@ interface PanelServiceClass {
     // Own fields of IBus-1.0.IBus.PanelServiceClass
 
     parent: ServiceClass
-    focusIn: (panel: PanelService, inputContextPath: string | null) => void
-    focusOut: (panel: PanelService, inputContextPath: string | null) => void
+    focusIn: (panel: PanelService, inputContextPath: string) => void
+    focusOut: (panel: PanelService, inputContextPath: string) => void
     registerProperties: (panel: PanelService, propList: PropList) => void
     setCursorLocation: (panel: PanelService, x: number, y: number, w: number, h: number) => void
     updateAuxiliaryText: (panel: PanelService, text: Text, visible: boolean) => void
@@ -11017,7 +11017,7 @@ interface PanelServiceClass {
     showPreeditText: (panel: PanelService) => void
     startSetup: (panel: PanelService) => void
     stateChanged: (panel: PanelService) => void
-    destroyContext: (panel: PanelService, inputContextPath: string | null) => void
+    destroyContext: (panel: PanelService, inputContextPath: string) => void
     setContentType: (panel: PanelService, purpose: number, hints: number) => void
 }
 
@@ -11176,9 +11176,9 @@ interface ServiceClass {
 
     // Own fields of IBus-1.0.IBus.ServiceClass
 
-    serviceMethodCall: (service: Service, connection: Gio.DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation) => void
-    serviceGetProperty: (service: Service, connection: Gio.DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, propertyName: string | null) => GLib.Variant | null
-    serviceSetProperty: (service: Service, connection: Gio.DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, propertyName: string | null, value: GLib.Variant) => boolean
+    serviceMethodCall: (service: Service, connection: Gio.DBusConnection, sender: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, invocation: Gio.DBusMethodInvocation) => void
+    serviceGetProperty: (service: Service, connection: Gio.DBusConnection, sender: string, objectPath: string, interfaceName: string, propertyName: string) => GLib.Variant | null
+    serviceSetProperty: (service: Service, connection: Gio.DBusConnection, sender: string, objectPath: string, interfaceName: string, propertyName: string, value: GLib.Variant) => boolean
 }
 
 abstract class ServiceClass {
@@ -11194,7 +11194,7 @@ abstract class ServiceClass {
      * @param xmlData The introspection xml data.
      * @returns %TRUE if @xml_data is valid and succeeded to be added;          %FALSE otherwise.
      */
-    static addInterfaces(klass: Service | Function | GObject.GType, xmlData: string | null): boolean
+    static addInterfaces(klass: Service | Function | GObject.GType, xmlData: string): boolean
 }
 
 interface ServicePrivate {
@@ -11285,13 +11285,13 @@ class XML {
      * @param buffer Buffer to be parsed.
      * @returns Root node of parsed XML tree.
      */
-    static parseBuffer(buffer: string | null): XML
+    static parseBuffer(buffer: string): XML
     /**
      * Parse an XML file and return a corresponding XML tree.
      * @param name File name to be parsed.
      * @returns Root node of parsed XML tree.
      */
-    static parseFile(name: string | null): XML
+    static parseFile(name: string): XML
 }
 
 }

@@ -314,63 +314,63 @@ export enum YouTubeStandardFeedType {
 /**
  * The users specified by the #GDataAccessRule have no rights.
  */
-export const ACCESS_ROLE_NONE: string | null
+export const ACCESS_ROLE_NONE: string
 /**
  * The #GDataAccessRule applies to all users.
  */
-export const ACCESS_SCOPE_DEFAULT: string | null
+export const ACCESS_SCOPE_DEFAULT: string
 /**
  * The #GDataAccessRule applies to all users in a Google Apps For Your Domain domain, given in #GDataAccessRule:scope-value.
  */
-export const ACCESS_SCOPE_DOMAIN: string | null
+export const ACCESS_SCOPE_DOMAIN: string
 /**
  * The #GDataAccessRule applies to a single individual, whose e-mail address is given in #GDataAccessRule:scope-value.
  */
-export const ACCESS_SCOPE_USER: string | null
+export const ACCESS_SCOPE_USER: string
 /**
  * The users specified by the #GDataCalendarAccessRule have full edit access to
  * the calendar, except they can’t change the calendar’s access rules.
  */
-export const CALENDAR_ACCESS_ROLE_EDITOR: string | null
+export const CALENDAR_ACCESS_ROLE_EDITOR: string
 /**
  * The users specified by the #GDataCalendarAccessRule can only see the
  * free/busy information on the calendar; not event details.
  */
-export const CALENDAR_ACCESS_ROLE_FREE_BUSY: string | null
+export const CALENDAR_ACCESS_ROLE_FREE_BUSY: string
 /**
  * The users specified by the #GDataCalendarAccessRule have full owner access
  * to the calendar.
  */
-export const CALENDAR_ACCESS_ROLE_OWNER: string | null
+export const CALENDAR_ACCESS_ROLE_OWNER: string
 /**
  * The users specified by the #GDataCalendarAccessRule have read-only access to
  * the calendar.
  */
-export const CALENDAR_ACCESS_ROLE_READ: string | null
+export const CALENDAR_ACCESS_ROLE_READ: string
 /**
  * The users specified by the #GDataCalendarAccessRule have full administrator
  * access to the calendar server. This is only available in Google Apps For
  * Your Domain.
  */
-export const CALENDAR_ACCESS_ROLE_ROOT: string | null
+export const CALENDAR_ACCESS_ROLE_ROOT: string
 /**
  * A schema for categories which label the entry they're applied to in some way, such as starring it. The semantics of the various labels
  * (such as %GDATA_CATEGORY_SCHEMA_LABELS_STARRED) are service-specific.
  */
-export const CATEGORY_SCHEMA_LABELS: string | null
+export const CATEGORY_SCHEMA_LABELS: string
 /**
  * The users specified by the #GDataAccessRule have full owner access to the document. This allows them to modify the access rules and delete
  * the document, amongst other things.
  */
-export const DOCUMENTS_ACCESS_ROLE_OWNER: string | null
+export const DOCUMENTS_ACCESS_ROLE_OWNER: string
 /**
  * The users specified by the #GDataAccessRule have read-only access to the document.
  */
-export const DOCUMENTS_ACCESS_ROLE_READER: string | null
+export const DOCUMENTS_ACCESS_ROLE_READER: string
 /**
  * The users specified by the #GDataAccessRule have write access to the document. They cannot modify the access rules or delete the document.
  */
-export const DOCUMENTS_ACCESS_ROLE_WRITER: string | null
+export const DOCUMENTS_ACCESS_ROLE_WRITER: string
 /**
  * The export format for JPEG image format.
  * 
@@ -378,7 +378,7 @@ export const DOCUMENTS_ACCESS_ROLE_WRITER: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_drawings">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_DRAWING_JPEG: string | null
+export const DOCUMENTS_DRAWING_JPEG: string
 /**
  * The export format for Portable Document Format (PDF).
  * 
@@ -386,7 +386,7 @@ export const DOCUMENTS_DRAWING_JPEG: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_drawings">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_DRAWING_PDF: string | null
+export const DOCUMENTS_DRAWING_PDF: string
 /**
  * The export format for Portable Network Graphics (PNG) image format.
  * 
@@ -394,7 +394,7 @@ export const DOCUMENTS_DRAWING_PDF: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_drawings">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_DRAWING_PNG: string | null
+export const DOCUMENTS_DRAWING_PNG: string
 /**
  * The export format for Scalable Vector Graphics (SVG) image format.
  * 
@@ -402,7 +402,7 @@ export const DOCUMENTS_DRAWING_PNG: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_drawings">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_DRAWING_SVG: string | null
+export const DOCUMENTS_DRAWING_SVG: string
 /**
  * The export format for Portable Document Format (PDF).
  * 
@@ -410,7 +410,7 @@ export const DOCUMENTS_DRAWING_SVG: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_presentations">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_PRESENTATION_PDF: string | null
+export const DOCUMENTS_PRESENTATION_PDF: string
 /**
  * The export format for Portable Network Graphics (PNG) image format.
  * 
@@ -418,7 +418,7 @@ export const DOCUMENTS_PRESENTATION_PDF: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_presentations">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_PRESENTATION_PNG: string | null
+export const DOCUMENTS_PRESENTATION_PNG: string
 /**
  * The export format for Microsoft PowerPoint (PPT) format.
  * 
@@ -426,7 +426,7 @@ export const DOCUMENTS_PRESENTATION_PNG: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_presentations">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_PRESENTATION_PPT: string | null
+export const DOCUMENTS_PRESENTATION_PPT: string
 /**
  * The export format for plain text format.
  * 
@@ -434,18 +434,18 @@ export const DOCUMENTS_PRESENTATION_PPT: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_presentations">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_PRESENTATION_TXT: string | null
+export const DOCUMENTS_PRESENTATION_TXT: string
 /**
  * The #GDataDocumentsProperty having the visibility set to FALSE (default) corresponds to having the visibility property on a Drive Property Resource
  * set to "PRIVATE". This makes the Property Resource accessible only by the app that created it.
  */
-export const DOCUMENTS_PROPERTY_VISIBILITY_PRIVATE: string | null
+export const DOCUMENTS_PROPERTY_VISIBILITY_PRIVATE: string
 /**
  * The #GDataDocumentsProperty having the visibility set to TRUE corresponds to having the visibility property
  * on a Drive Property Resource
  * set to "PUBLIC". This makes the Property Resource visible to other apps.
  */
-export const DOCUMENTS_PROPERTY_VISIBILITY_PUBLIC: string | null
+export const DOCUMENTS_PROPERTY_VISIBILITY_PUBLIC: string
 /**
  * The export format for Comma-Separated Values (CSV) format.
  * 
@@ -453,7 +453,7 @@ export const DOCUMENTS_PROPERTY_VISIBILITY_PUBLIC: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_spreadsheets">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_SPREADSHEET_CSV: string | null
+export const DOCUMENTS_SPREADSHEET_CSV: string
 /**
  * The export format for HyperText Markup Language (HTML) format.
  * 
@@ -461,7 +461,7 @@ export const DOCUMENTS_SPREADSHEET_CSV: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_spreadsheets">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_SPREADSHEET_HTML: string | null
+export const DOCUMENTS_SPREADSHEET_HTML: string
 /**
  * The export format for OpenDocument Spreadsheet (ODS) format.
  * 
@@ -469,7 +469,7 @@ export const DOCUMENTS_SPREADSHEET_HTML: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_spreadsheets">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_SPREADSHEET_ODS: string | null
+export const DOCUMENTS_SPREADSHEET_ODS: string
 /**
  * The export format for Portable Document Format (PDF).
  * 
@@ -477,7 +477,7 @@ export const DOCUMENTS_SPREADSHEET_ODS: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_spreadsheets">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_SPREADSHEET_PDF: string | null
+export const DOCUMENTS_SPREADSHEET_PDF: string
 /**
  * The export format for Tab-Separated Values (TSV) format.
  * 
@@ -485,7 +485,7 @@ export const DOCUMENTS_SPREADSHEET_PDF: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_spreadsheets">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_SPREADSHEET_TSV: string | null
+export const DOCUMENTS_SPREADSHEET_TSV: string
 /**
  * The export format for Microsoft Excel spreadsheet (XLS) format.
  * 
@@ -493,7 +493,7 @@ export const DOCUMENTS_SPREADSHEET_TSV: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_formats_for_spreadsheets">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_SPREADSHEET_XLS: string | null
+export const DOCUMENTS_SPREADSHEET_XLS: string
 /**
  * The export format for Microsoft Word (DOC) format.
  * 
@@ -501,7 +501,7 @@ export const DOCUMENTS_SPREADSHEET_XLS: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_DOC: string | null
+export const DOCUMENTS_TEXT_DOC: string
 /**
  * The export format for HyperText Markup Language (HTML) format.
  * 
@@ -509,7 +509,7 @@ export const DOCUMENTS_TEXT_DOC: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_HTML: string | null
+export const DOCUMENTS_TEXT_HTML: string
 /**
  * The export format for JPEG image format.
  * 
@@ -517,7 +517,7 @@ export const DOCUMENTS_TEXT_HTML: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_JPEG: string | null
+export const DOCUMENTS_TEXT_JPEG: string
 /**
  * The export format for OpenDocument Text (ODT) format.
  * 
@@ -525,7 +525,7 @@ export const DOCUMENTS_TEXT_JPEG: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_ODT: string | null
+export const DOCUMENTS_TEXT_ODT: string
 /**
  * The export format for Portable Document Format (PDF).
  * 
@@ -533,7 +533,7 @@ export const DOCUMENTS_TEXT_ODT: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_PDF: string | null
+export const DOCUMENTS_TEXT_PDF: string
 /**
  * The export format for Portable Network Graphics (PNG) image format.
  * 
@@ -541,7 +541,7 @@ export const DOCUMENTS_TEXT_PDF: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_PNG: string | null
+export const DOCUMENTS_TEXT_PNG: string
 /**
  * The export format for Rich Text Format (RTF).
  * 
@@ -549,7 +549,7 @@ export const DOCUMENTS_TEXT_PNG: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_RTF: string | null
+export const DOCUMENTS_TEXT_RTF: string
 /**
  * The export format for plain text format.
  * 
@@ -557,7 +557,7 @@ export const DOCUMENTS_TEXT_RTF: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_TXT: string | null
+export const DOCUMENTS_TEXT_TXT: string
 /**
  * The export format for a ZIP archive containing images and exported HTML.
  * 
@@ -565,539 +565,539 @@ export const DOCUMENTS_TEXT_TXT: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/#valid_download_formats_for_text_documents">
  * GData protocol specification</ulink>.
  */
-export const DOCUMENTS_TEXT_ZIP: string | null
+export const DOCUMENTS_TEXT_ZIP: string
 /**
  * The relation type URI for a contact's free/busy calendar.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">
  * gContact specification</ulink>.
  */
-export const GCONTACT_CALENDAR_FREE_BUSY: string | null
+export const GCONTACT_CALENDAR_FREE_BUSY: string
 /**
  * The relation type URI for a contact's home calendar.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">
  * gContact specification</ulink>.
  */
-export const GCONTACT_CALENDAR_HOME: string | null
+export const GCONTACT_CALENDAR_HOME: string
 /**
  * The relation type URI for a contact's work calendar.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">
  * gContact specification</ulink>.
  */
-export const GCONTACT_CALENDAR_WORK: string | null
+export const GCONTACT_CALENDAR_WORK: string
 /**
  * The relation type URI for an anniversary event.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">
  * gContact specification</ulink>.
  */
-export const GCONTACT_EVENT_ANNIVERSARY: string | null
+export const GCONTACT_EVENT_ANNIVERSARY: string
 /**
  * The relation type URI for a miscellaneous event.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcEvent">
  * gContact specification</ulink>.
  */
-export const GCONTACT_EVENT_OTHER: string | null
+export const GCONTACT_EVENT_OTHER: string
 /**
  * The relation type URI for an account number identifier.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
  * gContact specification</ulink>.
  */
-export const GCONTACT_EXTERNAL_ID_ACCOUNT: string | null
+export const GCONTACT_EXTERNAL_ID_ACCOUNT: string
 /**
  * The relation type URI for a customer identifier.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
  * gContact specification</ulink>.
  */
-export const GCONTACT_EXTERNAL_ID_CUSTOMER: string | null
+export const GCONTACT_EXTERNAL_ID_CUSTOMER: string
 /**
  * The relation type URI for a network identifier.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
  * gContact specification</ulink>.
  */
-export const GCONTACT_EXTERNAL_ID_NETWORK: string | null
+export const GCONTACT_EXTERNAL_ID_NETWORK: string
 /**
  * The relation type URI for an identifier related to an organization the contact is associated with.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">
  * gContact specification</ulink>.
  */
-export const GCONTACT_EXTERNAL_ID_ORGANIZATION: string | null
+export const GCONTACT_EXTERNAL_ID_ORGANIZATION: string
 /**
  * The relation type URI for a jot about a contact's home.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
  * gContact specification</ulink>.
  */
-export const GCONTACT_JOT_HOME: string | null
+export const GCONTACT_JOT_HOME: string
 /**
  * The relation type URI for a jot with keywords about a contact.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
  * gContact specification</ulink>.
  */
-export const GCONTACT_JOT_KEYWORDS: string | null
+export const GCONTACT_JOT_KEYWORDS: string
 /**
  * The relation type URI for a jot about an other facet of a contact.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
  * gContact specification</ulink>.
  */
-export const GCONTACT_JOT_OTHER: string | null
+export const GCONTACT_JOT_OTHER: string
 /**
  * The relation type URI for a jot about the relationship between a contact and the user.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
  * gContact specification</ulink>.
  */
-export const GCONTACT_JOT_USER: string | null
+export const GCONTACT_JOT_USER: string
 /**
  * The relation type URI for a jot about a contact's work.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">
  * gContact specification</ulink>.
  */
-export const GCONTACT_JOT_WORK: string | null
+export const GCONTACT_JOT_WORK: string
 /**
  * The relation type URI for a contact's assistant.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_ASSISTANT: string | null
+export const GCONTACT_RELATION_ASSISTANT: string
 /**
  * The relation type URI for a contact's brother.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_BROTHER: string | null
+export const GCONTACT_RELATION_BROTHER: string
 /**
  * The relation type URI for a contact's child.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_CHILD: string | null
+export const GCONTACT_RELATION_CHILD: string
 /**
  * The relation type URI for a contact's domestic partner.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_DOMESTIC_PARTNER: string | null
+export const GCONTACT_RELATION_DOMESTIC_PARTNER: string
 /**
  * The relation type URI for a contact's father.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_FATHER: string | null
+export const GCONTACT_RELATION_FATHER: string
 /**
  * The relation type URI for a contact's friend.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_FRIEND: string | null
+export const GCONTACT_RELATION_FRIEND: string
 /**
  * The relation type URI for a contact's manager.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_MANAGER: string | null
+export const GCONTACT_RELATION_MANAGER: string
 /**
  * The relation type URI for a contact's mother.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_MOTHER: string | null
+export const GCONTACT_RELATION_MOTHER: string
 /**
  * The relation type URI for a contact's parent.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_PARENT: string | null
+export const GCONTACT_RELATION_PARENT: string
 /**
  * The relation type URI for a contact's business partner.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_PARTNER: string | null
+export const GCONTACT_RELATION_PARTNER: string
 /**
  * The relation type URI for a contact's referrer.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_REFERRER: string | null
+export const GCONTACT_RELATION_REFERRER: string
 /**
  * The relation type URI for a contact's (general) family relative.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_RELATIVE: string | null
+export const GCONTACT_RELATION_RELATIVE: string
 /**
  * The relation type URI for a contact's sister.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_SISTER: string | null
+export const GCONTACT_RELATION_SISTER: string
 /**
  * The relation type URI for a contact's spouse.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">
  * gContact specification</ulink>.
  */
-export const GCONTACT_RELATION_SPOUSE: string | null
+export const GCONTACT_RELATION_SPOUSE: string
 /**
  * The relation type URI for a contact's blog.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_BLOG: string | null
+export const GCONTACT_WEBSITE_BLOG: string
 /**
  * The relation type URI for a contact's FTP site.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_FTP: string | null
+export const GCONTACT_WEBSITE_FTP: string
 /**
  * The relation type URI for a contact's home website.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_HOME: string | null
+export const GCONTACT_WEBSITE_HOME: string
 /**
  * The relation type URI for a contact's home page.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_HOME_PAGE: string | null
+export const GCONTACT_WEBSITE_HOME_PAGE: string
 /**
  * The relation type URI for a miscellaneous website of the contact.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_OTHER: string | null
+export const GCONTACT_WEBSITE_OTHER: string
 /**
  * The relation type URI for a contact's online profile.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_PROFILE: string | null
+export const GCONTACT_WEBSITE_PROFILE: string
 /**
  * The relation type URI for a contact's work website.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">
  * gContact specification</ulink>.
  */
-export const GCONTACT_WEBSITE_WORK: string | null
+export const GCONTACT_WEBSITE_WORK: string
 /**
  * The address is for general usage. Value for #GDataGDPostalAddress:usage.
  */
-export const GD_ADDRESS_USAGE_GENERAL: string | null
+export const GD_ADDRESS_USAGE_GENERAL: string
 /**
  * The address is for local usage. Value for #GDataGDPostalAddress:usage.
  */
-export const GD_ADDRESS_USAGE_LOCAL: string | null
+export const GD_ADDRESS_USAGE_LOCAL: string
 /**
  * The relation type URI for a home e-mail address.
  */
-export const GD_EMAIL_ADDRESS_HOME: string | null
+export const GD_EMAIL_ADDRESS_HOME: string
 /**
  * The relation type URI for a miscellaneous e-mail address.
  */
-export const GD_EMAIL_ADDRESS_OTHER: string | null
+export const GD_EMAIL_ADDRESS_OTHER: string
 /**
  * The relation type URI for a work e-mail address.
  */
-export const GD_EMAIL_ADDRESS_WORK: string | null
+export const GD_EMAIL_ADDRESS_WORK: string
 /**
  * The event has been canceled.
  */
-export const GD_EVENT_STATUS_CANCELED: string | null
+export const GD_EVENT_STATUS_CANCELED: string
 /**
  * The event has been planned and confirmed.
  */
-export const GD_EVENT_STATUS_CONFIRMED: string | null
+export const GD_EVENT_STATUS_CONFIRMED: string
 /**
  * The event has been planned, but only tentatively scheduled.
  */
-export const GD_EVENT_STATUS_TENTATIVE: string | null
+export const GD_EVENT_STATUS_TENTATIVE: string
 /**
  * The event consumes time in calendars; its time will be marked as busy in a free/busy search.
  */
-export const GD_EVENT_TRANSPARENCY_OPAQUE: string | null
+export const GD_EVENT_TRANSPARENCY_OPAQUE: string
 /**
  * The event does not consume time in calendars; its time will be not marked as busy in a free/busy search.
  */
-export const GD_EVENT_TRANSPARENCY_TRANSPARENT: string | null
+export const GD_EVENT_TRANSPARENCY_TRANSPARENT: string
 /**
  * The event is visible to only certain people.
  */
-export const GD_EVENT_VISIBILITY_CONFIDENTIAL: string | null
+export const GD_EVENT_VISIBILITY_CONFIDENTIAL: string
 /**
  * The event's visibility is inherited from the preferences of its owner.
  */
-export const GD_EVENT_VISIBILITY_DEFAULT: string | null
+export const GD_EVENT_VISIBILITY_DEFAULT: string
 /**
  * The event is visible to very few people.
  */
-export const GD_EVENT_VISIBILITY_PRIVATE: string | null
+export const GD_EVENT_VISIBILITY_PRIVATE: string
 /**
  * The event is visible to most people.
  */
-export const GD_EVENT_VISIBILITY_PUBLIC: string | null
+export const GD_EVENT_VISIBILITY_PUBLIC: string
 /**
  * The relation type URI for a home IM address.
  */
-export const GD_IM_ADDRESS_HOME: string | null
+export const GD_IM_ADDRESS_HOME: string
 /**
  * The relation type URI for a Microsoft NetMeeting IM address.
  */
-export const GD_IM_ADDRESS_NETMEETING: string | null
+export const GD_IM_ADDRESS_NETMEETING: string
 /**
  * The relation type URI for a miscellaneous IM address.
  */
-export const GD_IM_ADDRESS_OTHER: string | null
+export const GD_IM_ADDRESS_OTHER: string
 /**
  * The relation type URI for a work IM address.
  */
-export const GD_IM_ADDRESS_WORK: string | null
+export const GD_IM_ADDRESS_WORK: string
 /**
  * The protocol type URI for an AIM IM address.
  */
-export const GD_IM_PROTOCOL_AIM: string | null
+export const GD_IM_PROTOCOL_AIM: string
 /**
  * The protocol type URI for a Google Talk IM address.
  */
-export const GD_IM_PROTOCOL_GOOGLE_TALK: string | null
+export const GD_IM_PROTOCOL_GOOGLE_TALK: string
 /**
  * The protocol type URI for an ICQ IM address.
  */
-export const GD_IM_PROTOCOL_ICQ: string | null
+export const GD_IM_PROTOCOL_ICQ: string
 /**
  * The protocol type URI for a Jabber IM address.
  */
-export const GD_IM_PROTOCOL_JABBER: string | null
+export const GD_IM_PROTOCOL_JABBER: string
 /**
  * The protocol type URI for an Windows Live Messenger IM address.
  */
-export const GD_IM_PROTOCOL_LIVE_MESSENGER: string | null
+export const GD_IM_PROTOCOL_LIVE_MESSENGER: string
 /**
  * The protocol type URI for a QQ IM address.
  */
-export const GD_IM_PROTOCOL_QQ: string | null
+export const GD_IM_PROTOCOL_QQ: string
 /**
  * The protocol type URI for a Skype IM address.
  */
-export const GD_IM_PROTOCOL_SKYPE: string | null
+export const GD_IM_PROTOCOL_SKYPE: string
 /**
  * The protocol type URI for a Yahoo! Messenger IM address.
  */
-export const GD_IM_PROTOCOL_YAHOO_MESSENGER: string | null
+export const GD_IM_PROTOCOL_YAHOO_MESSENGER: string
 /**
  * Parcels and letters can be sent to the address. Value for #GDataGDPostalAddress:mail-class.
  */
-export const GD_MAIL_CLASS_BOTH: string | null
+export const GD_MAIL_CLASS_BOTH: string
 /**
  * Only letters can be sent to the address. Value for #GDataGDPostalAddress:mail-class.
  */
-export const GD_MAIL_CLASS_LETTERS: string | null
+export const GD_MAIL_CLASS_LETTERS: string
 /**
  * Address is purely locational and cannot be used for mail. Value for #GDataGDPostalAddress:mail-class.
  */
-export const GD_MAIL_CLASS_NEITHER: string | null
+export const GD_MAIL_CLASS_NEITHER: string
 /**
  * Only parcels can be sent to the address. Value for #GDataGDPostalAddress:mail-class.
  */
-export const GD_MAIL_CLASS_PARCELS: string | null
+export const GD_MAIL_CLASS_PARCELS: string
 /**
  * The relation type URI for a miscellaneous organization.
  */
-export const GD_ORGANIZATION_OTHER: string | null
+export const GD_ORGANIZATION_OTHER: string
 /**
  * The relation type URI for a work organization.
  */
-export const GD_ORGANIZATION_WORK: string | null
+export const GD_ORGANIZATION_WORK: string
 /**
  * The relation type URI for the phone number of an assistant.
  */
-export const GD_PHONE_NUMBER_ASSISTANT: string | null
+export const GD_PHONE_NUMBER_ASSISTANT: string
 /**
  * The relation type URI for the phone number of a callback service.
  */
-export const GD_PHONE_NUMBER_CALLBACK: string | null
+export const GD_PHONE_NUMBER_CALLBACK: string
 /**
  * The relation type URI for the phone number of a car phone.
  */
-export const GD_PHONE_NUMBER_CAR: string | null
+export const GD_PHONE_NUMBER_CAR: string
 /**
  * The relation type URI for the main phone number of a company.
  */
-export const GD_PHONE_NUMBER_COMPANY_MAIN: string | null
+export const GD_PHONE_NUMBER_COMPANY_MAIN: string
 /**
  * The relation type URI for the phone number of a fax machine.
  */
-export const GD_PHONE_NUMBER_FAX: string | null
+export const GD_PHONE_NUMBER_FAX: string
 /**
  * The relation type URI for a home phone number.
  */
-export const GD_PHONE_NUMBER_HOME: string | null
+export const GD_PHONE_NUMBER_HOME: string
 /**
  * The relation type URI for the phone number of a home fax machine.
  */
-export const GD_PHONE_NUMBER_HOME_FAX: string | null
+export const GD_PHONE_NUMBER_HOME_FAX: string
 /**
  * The relation type URI for the phone number of an ISDN phone.
  */
-export const GD_PHONE_NUMBER_ISDN: string | null
+export const GD_PHONE_NUMBER_ISDN: string
 /**
  * The relation type URI for the main phone number of a person.
  */
-export const GD_PHONE_NUMBER_MAIN: string | null
+export const GD_PHONE_NUMBER_MAIN: string
 /**
  * The relation type URI for the phone number of a mobile phone.
  */
-export const GD_PHONE_NUMBER_MOBILE: string | null
+export const GD_PHONE_NUMBER_MOBILE: string
 /**
  * The relation type URI for a miscellaneous phone number.
  */
-export const GD_PHONE_NUMBER_OTHER: string | null
+export const GD_PHONE_NUMBER_OTHER: string
 /**
  * The relation type URI for a miscellaneous fax machine's phone number.
  */
-export const GD_PHONE_NUMBER_OTHER_FAX: string | null
+export const GD_PHONE_NUMBER_OTHER_FAX: string
 /**
  * The relation type URI for the phone number of a pager.
  */
-export const GD_PHONE_NUMBER_PAGER: string | null
+export const GD_PHONE_NUMBER_PAGER: string
 /**
  * The relation type URI for the phone number of a radio phone.
  */
-export const GD_PHONE_NUMBER_RADIO: string | null
+export const GD_PHONE_NUMBER_RADIO: string
 /**
  * The relation type URI for the phone number of a telex machine.
  */
-export const GD_PHONE_NUMBER_TELEX: string | null
+export const GD_PHONE_NUMBER_TELEX: string
 /**
  * The relation type URI for the phone number of a TTY TTD.
  */
-export const GD_PHONE_NUMBER_TTY_TDD: string | null
+export const GD_PHONE_NUMBER_TTY_TDD: string
 /**
  * The relation type URI for the phone number of a work place.
  */
-export const GD_PHONE_NUMBER_WORK: string | null
+export const GD_PHONE_NUMBER_WORK: string
 /**
  * The relation type URI for the phone number of a work fax machine.
  */
-export const GD_PHONE_NUMBER_WORK_FAX: string | null
+export const GD_PHONE_NUMBER_WORK_FAX: string
 /**
  * The relation type URI for the phone number of a work mobile phone.
  */
-export const GD_PHONE_NUMBER_WORK_MOBILE: string | null
+export const GD_PHONE_NUMBER_WORK_MOBILE: string
 /**
  * The relation type URI for the phone number of a work pager.
  */
-export const GD_PHONE_NUMBER_WORK_PAGER: string | null
+export const GD_PHONE_NUMBER_WORK_PAGER: string
 /**
  * The relation type URI for the postal address of a home.
  */
-export const GD_POSTAL_ADDRESS_HOME: string | null
+export const GD_POSTAL_ADDRESS_HOME: string
 /**
  * The relation type URI for a miscellaneous postal address.
  */
-export const GD_POSTAL_ADDRESS_OTHER: string | null
+export const GD_POSTAL_ADDRESS_OTHER: string
 /**
  * The relation type URI for the postal address of a workplace.
  */
-export const GD_POSTAL_ADDRESS_WORK: string | null
+export const GD_POSTAL_ADDRESS_WORK: string
 /**
  * The #GDataGDReminder:method for an alert to appear in the user's browser.
  */
-export const GD_REMINDER_ALERT: string | null
+export const GD_REMINDER_ALERT: string
 /**
  * The #GDataGDReminder:method for an alert to be sent to the user by e-mail.
  */
-export const GD_REMINDER_EMAIL: string | null
+export const GD_REMINDER_EMAIL: string
 /**
  * The #GDataGDReminder:method for an alert to be sent to the user by SMS.
  */
-export const GD_REMINDER_SMS: string | null
+export const GD_REMINDER_SMS: string
 /**
  * The relation type URI for an event location.
  */
-export const GD_WHERE_EVENT: string | null
+export const GD_WHERE_EVENT: string
 /**
  * The relation type URI for an alternate event location, such as a video conference site.
  */
-export const GD_WHERE_EVENT_ALTERNATE: string | null
+export const GD_WHERE_EVENT_ALTERNATE: string
 /**
  * The relation type URI for an event's parking lot.
  */
-export const GD_WHERE_EVENT_PARKING: string | null
+export const GD_WHERE_EVENT_PARKING: string
 /**
  * The relation type URI for a general meeting or event attendee.
  */
-export const GD_WHO_EVENT_ATTENDEE: string | null
+export const GD_WHO_EVENT_ATTENDEE: string
 /**
  * The relation type URI for an event organizer (not necessarily an attendee).
  */
-export const GD_WHO_EVENT_ORGANIZER: string | null
+export const GD_WHO_EVENT_ORGANIZER: string
 /**
  * The relation type URI for an event performer, which is similar to %GDATA_GD_WHO_EVENT_SPEAKER, but with more emphasis on art rather than speaking.
  */
-export const GD_WHO_EVENT_PERFORMER: string | null
+export const GD_WHO_EVENT_PERFORMER: string
 /**
  * The relation type URI for a speaker at an event.
  */
-export const GD_WHO_EVENT_SPEAKER: string | null
+export const GD_WHO_EVENT_SPEAKER: string
 /**
  * The relation type URI of the access control list location for this resource.
  * 
  * For more information, see the
  * <ulink type="http" url="http://code.google.com/apis/calendar/data/2.0/developers_guide_protocol.html#SharingACalendar">ACL specification</ulink>.
  */
-export const LINK_ACCESS_CONTROL_LIST: string | null
+export const LINK_ACCESS_CONTROL_LIST: string
 /**
  * The relation type URI for alternate resources to the current one.
  * 
  * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
  * Atom specification</ulink>.
  */
-export const LINK_ALTERNATE: string | null
+export const LINK_ALTERNATE: string
 /**
  * The relation type URI for the batch operation URI for a given #GDataFeed.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/gdata/docs/batch.html#Submit_HTTP">GData specification</ulink>.
  */
-export const LINK_BATCH: string | null
+export const LINK_BATCH: string
 /**
  * The relation type URI of the edit location for this resource.
  * 
  * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/protocol/atom-protocol-spec.php#new-link-relation">
  * Atom Publishing Protocol specification</ulink>.
  */
-export const LINK_EDIT: string | null
+export const LINK_EDIT: string
 /**
  * The relation type URI of the edit location for media resources attached to this resource.
  * 
@@ -1105,14 +1105,14 @@ export const LINK_EDIT: string | null
  * <ulink type="http" url="http://www.atomenabled.org/developers/protocol/atom-protocol-spec.php#new-media-link-relation">
  * Atom Publishing Protocol specification</ulink>.
  */
-export const LINK_EDIT_MEDIA: string | null
+export const LINK_EDIT_MEDIA: string
 /**
  * The relation type URI for attached objects which may be large in size.
  * 
  * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
  * Atom specification</ulink>.
  */
-export const LINK_ENCLOSURE: string | null
+export const LINK_ENCLOSURE: string
 /**
  * The relation type URI of the of the location of the parent resource in a
  * hierarchy of entries.
@@ -1122,14 +1122,14 @@ export const LINK_ENCLOSURE: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/documents-list/v2/schema/document_list_atom.rnc">
  * RelaxNG schema</ulink>.
  */
-export const LINK_PARENT: string | null
+export const LINK_PARENT: string
 /**
  * The relation type URI for resources related to the current one.
  * 
  * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
  * Atom specification</ulink>.
  */
-export const LINK_RELATED: string | null
+export const LINK_RELATED: string
 /**
  * The relation type URI of the resumable upload location for resources attached to this resource.
  * 
@@ -1137,7 +1137,7 @@ export const LINK_RELATED: string | null
  * <ulink type="http" url="http://code.google.com/apis/gdata/docs/resumable_upload.html#ResumableUploadInitiate">GData resumable upload protocol
  * specification</ulink>.
  */
-export const LINK_RESUMABLE_CREATE_MEDIA: string | null
+export const LINK_RESUMABLE_CREATE_MEDIA: string
 /**
  * The relation type URI of the resumable update location for resources attached to this resource.
  * 
@@ -1145,21 +1145,21 @@ export const LINK_RESUMABLE_CREATE_MEDIA: string | null
  * <ulink type="http" url="http://code.google.com/apis/gdata/docs/resumable_upload.html#ResumableUploadInitiate">GData resumable upload protocol
  * specification</ulink>.
  */
-export const LINK_RESUMABLE_EDIT_MEDIA: string | null
+export const LINK_RESUMABLE_EDIT_MEDIA: string
 /**
  * The relation type URI for the current resource.
  * 
  * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
  * Atom specification</ulink>.
  */
-export const LINK_SELF: string | null
+export const LINK_SELF: string
 /**
  * The relation type URI for the source document of the current resource.
  * 
  * For more information, see the <ulink type="http" url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#rel_attribute">
  * Atom specification</ulink>.
  */
-export const LINK_VIA: string | null
+export const LINK_VIA: string
 /**
  * Evaluates to the major version of the GData headers at compile time.
  * (e.g. in libgdata version 1.2.3 this is 1).
@@ -1183,7 +1183,7 @@ export const MINOR_VERSION: number
  * <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
  * documentation</ulink> for details.
  */
-export const OAUTH2_REDIRECT_URI_OOB: string | null
+export const OAUTH2_REDIRECT_URI_OOB: string
 /**
  * OAuth 2 redirect URI for out-of-band authorisation code transfer, where the
  * user is not shown the authorisation code or asked to copy it.
@@ -1192,23 +1192,23 @@ export const OAUTH2_REDIRECT_URI_OOB: string | null
  * <ulink type="http" url="https://developers.google.com/accounts/docs/OAuth2InstalledApp#choosingredirecturi">reference
  * documentation</ulink> for details.
  */
-export const OAUTH2_REDIRECT_URI_OOB_AUTO: string | null
+export const OAUTH2_REDIRECT_URI_OOB_AUTO: string
 /**
  * There was an error while processing or thumbnailing the video and it should be deleted.
  */
-export const PICASAWEB_VIDEO_STATUS_FAILED: string | null
+export const PICASAWEB_VIDEO_STATUS_FAILED: string
 /**
  * The video has been processed and thumbnailed.
  */
-export const PICASAWEB_VIDEO_STATUS_FINAL: string | null
+export const PICASAWEB_VIDEO_STATUS_FINAL: string
 /**
  * The video is still being processed.
  */
-export const PICASAWEB_VIDEO_STATUS_PENDING: string | null
+export const PICASAWEB_VIDEO_STATUS_PENDING: string
 /**
  * The video has been processed, but still needs thumbnailing.
  */
-export const PICASAWEB_VIDEO_STATUS_READY: string | null
+export const PICASAWEB_VIDEO_STATUS_READY: string
 /**
  * A value for #GDataTasksTask:status indicating the task has been completed.
  * 
@@ -1216,7 +1216,7 @@ export const PICASAWEB_VIDEO_STATUS_READY: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/tasks/v1/reference/tasks#status">
  * Google Tasks documentation</ulink>.
  */
-export const TASKS_STATUS_COMPLETED: string | null
+export const TASKS_STATUS_COMPLETED: string
 /**
  * A value for #GDataTasksTask:status indicating the task still needs action
  * before it is complete.
@@ -1225,61 +1225,61 @@ export const TASKS_STATUS_COMPLETED: string | null
  * <ulink type="http" url="https://developers.google.com/google-apps/tasks/v1/reference/tasks#status">
  * Google Tasks documentation</ulink>.
  */
-export const TASKS_STATUS_NEEDS_ACTION: string | null
+export const TASKS_STATUS_NEEDS_ACTION: string
 /**
  * An action to comment on a video, for use with gdata_youtube_video_set_access_control().
  */
-export const YOUTUBE_ACTION_COMMENT: string | null
+export const YOUTUBE_ACTION_COMMENT: string
 /**
  * An action to rate other users' comments on a video, for use with gdata_youtube_video_set_access_control().
  */
-export const YOUTUBE_ACTION_COMMENT_VOTE: string | null
+export const YOUTUBE_ACTION_COMMENT_VOTE: string
 /**
  * An action to embed a video on third-party websites, for use with gdata_youtube_video_set_access_control().
  */
-export const YOUTUBE_ACTION_EMBED: string | null
+export const YOUTUBE_ACTION_EMBED: string
 /**
  * An action to rate a video, for use with gdata_youtube_video_set_access_control().
  */
-export const YOUTUBE_ACTION_RATE: string | null
+export const YOUTUBE_ACTION_RATE: string
 /**
  * An action allowing YouTube to show the video on mobile phones and televisions, for use with gdata_youtube_video_set_access_control().
  */
-export const YOUTUBE_ACTION_SYNDICATE: string | null
+export const YOUTUBE_ACTION_SYNDICATE: string
 /**
  * An action to add a video response to a video, for use with gdata_youtube_video_set_access_control().
  */
-export const YOUTUBE_ACTION_VIDEO_RESPOND: string | null
+export const YOUTUBE_ACTION_VIDEO_RESPOND: string
 /**
  * The aspect ratio for widescreen (16:9) videos.
  * 
  * For more information, see the <ulink type="http" url="http://code.google.com/apis/youtube/2.0/reference.html#youtube_data_api_tag_yt:aspectratio">
  * online documentation</ulink>.
  */
-export const YOUTUBE_ASPECT_RATIO_WIDESCREEN: string | null
+export const YOUTUBE_ASPECT_RATIO_WIDESCREEN: string
 /**
  * Value for #GDataYouTubeQuery:license to restrict search results to only videos which are Creative Commons licensed. Specifically, the license
  * is the Creative Commons Attribution 3.0 Unported license; see the
  * <ulink type="http" url="http://www.google.com/support/youtube/bin/answer.py?hl=en&answer=1284989">YouTube Help</ulink> for more information.
  */
-export const YOUTUBE_LICENSE_CC: string | null
+export const YOUTUBE_LICENSE_CC: string
 /**
  * Value for #GDataYouTubeQuery:license to restrict search results to only videos which are under the standard YouTube license.
  */
-export const YOUTUBE_LICENSE_STANDARD: string | null
+export const YOUTUBE_LICENSE_STANDARD: string
 /**
  * A rating type to pass to gdata_youtube_video_get_media_rating() for ratings by the <ulink type="http" url="http://www.mpaa.org/">MPAA</ulink>. The
  * values which can be returned for such ratings are: <code class="literal">g</code>, <code class="literal">pg</code>,
  * <code class="literal">pg-13</code>, <code class="literal">r</code> and <code class="literal">nc-17</code>.
  */
-export const YOUTUBE_RATING_TYPE_MPAA: string | null
+export const YOUTUBE_RATING_TYPE_MPAA: string
 /**
  * A rating type to pass to gdata_youtube_video_get_media_rating() for ratings following the FCC
  * <ulink type="http" url="http://www.fcc.gov/vchip/">V-Chip</ulink> system. The values which can be returned for such ratings are:
  * <code class="literal">tv-y</code>, <code class="literal">tv-y7</code>, <code class="literal">tv-y7-fv</code>, <code class="literal">tv-g</code>,
  * <code class="literal">tv-pg</code>, <code class="literal">tv-14</code> and <code class="literal">tv-ma</code>.
  */
-export const YOUTUBE_RATING_TYPE_V_CHIP: string | null
+export const YOUTUBE_RATING_TYPE_V_CHIP: string
 /**
  * Parses `hexadecimal` and returns a #GDataColor describing it in `color`.
  * 
@@ -1289,7 +1289,7 @@ export const YOUTUBE_RATING_TYPE_V_CHIP: string | null
  * @param hexadecimal a hexadecimal color string
  * @returns %TRUE on success, %FALSE otherwise
  */
-export function color_from_hexadecimal(hexadecimal: string | null): [ /* returnType */ boolean, /* color */ Color ]
+export function color_from_hexadecimal(hexadecimal: string): [ /* returnType */ boolean, /* color */ Color ]
 export function documents_service_error_quark(): GLib.Quark
 export function parser_error_quark(): GLib.Quark
 export function service_error_quark(): GLib.Quark
@@ -1718,7 +1718,7 @@ export interface Batchable extends Service {
      * @param feed_uri the URI to send the batch operation request to
      * @returns a new #GDataBatchOperation; unref with g_object_unref()
      */
-    create_operation(domain: AuthorizationDomain | null, feed_uri: string | null): BatchOperation
+    create_operation(domain: AuthorizationDomain | null, feed_uri: string): BatchOperation
 
     // Class property signals of GData-0.0.GData.Batchable
 
@@ -2211,23 +2211,23 @@ export interface AccessRule {
      * Gets the #GDataAccessRule:key property.
      * @returns the access rule's authorisation key, or %NULL
      */
-    get_key(): string | null
+    get_key(): string
     /**
      * Gets the #GDataAccessRule:role property.
      * @returns the access rule's role, or %NULL
      */
-    get_role(): string | null
+    get_role(): string
     /**
      * Gets the #GDataAccessRule:scope-type and #GDataAccessRule:scope-value properties.
      */
-    get_scope(): [ /* type */ string | null, /* value */ string | null ]
+    get_scope(): [ /* type */ string, /* value */ string ]
     /**
      * Sets the #GDataAccessRule:role property to `role`. `role` must be a non-empty string, such as %GDATA_ACCESS_ROLE_NONE.
      * 
      * Set `role` to %NULL to unset the property in the access rule.
      * @param role a new role, or %NULL
      */
-    set_role(role: string | null): void
+    set_role(role: string): void
     /**
      * Sets the #GDataAccessRule:scope-type property to `type` and the #GDataAccessRule:scope-value property to `value`.
      * 
@@ -2240,7 +2240,7 @@ export interface AccessRule {
      * @param type a new scope type
      * @param value a new scope value, or %NULL
      */
-    set_scope(type: string | null, value: string | null): void
+    set_scope(type: string, value: string | null): void
 
     // Class property signals of GData-0.0.GData.AccessRule
 
@@ -2318,14 +2318,14 @@ export class AccessRule extends Entry {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataAccessRule; unref with g_object_unref()
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Creates a new #GDataAccessRule with the given ID and default properties.
      * @constructor 
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataAccessRule; unref with g_object_unref()
      */
-    static new(id: string | null): AccessRule
+    static new(id: string): AccessRule
 
     // Overloads of new
 
@@ -2423,17 +2423,17 @@ export interface Author extends Comparable {
      * Gets the #GDataAuthor:email-address property. If the e-mail address is non-%NULL, it will be non-empty.
      * @returns the author's e-mail address, or %NULL
      */
-    get_email_address(): string | null
+    get_email_address(): string
     /**
      * Gets the #GDataAuthor:name property. The name will always be a non-%NULL, non-empty string.
      * @returns the author's name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the #GDataAuthor:uri property. If the URI is non-%NULL, it will be non-empty.
      * @returns the author's URI, or %NULL
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Sets the #GDataAuthor:email-address property to `email_address`. `email_address` must be %NULL or non-empty.
      * 
@@ -2445,7 +2445,7 @@ export interface Author extends Comparable {
      * Sets the #GDataAuthor:name property to `name`. `name` must be non-%NULL and non-empty.
      * @param name the new name for the author
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the #GDataAuthor:uri property to `uri`. `uri` must be %NULL or non-empty.
      * 
@@ -2499,7 +2499,7 @@ export class Author extends Parsable {
      * @param email_address the author's e-mail address, or %NULL
      * @returns a new #GDataAuthor, or %NULL; unref with g_object_unref()
      */
-    constructor(name: string | null, uri: string | null, email_address: string | null) 
+    constructor(name: string, uri: string | null, email_address: string | null) 
     /**
      * Creates a new #GDataAuthor. More information is available in the <ulink type="http"
      * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.author">Atom specification</ulink>.
@@ -2511,7 +2511,7 @@ export class Author extends Parsable {
      * @param email_address the author's e-mail address, or %NULL
      * @returns a new #GDataAuthor, or %NULL; unref with g_object_unref()
      */
-    static new(name: string | null, uri: string | null, email_address: string | null): Author
+    static new(name: string, uri: string | null, email_address: string | null): Author
     _init(config?: Author.ConstructorProperties): void
 }
 
@@ -2568,12 +2568,12 @@ export interface AuthorizationDomain {
      * Returns a URI detailing the scope of the authorization domain. See #GDataAuthorizationDomain:scope for more details.
      * @returns URI detailing the scope of the authorization domain
      */
-    get_scope(): string | null
+    get_scope(): string
     /**
      * Returns the name of the service containing the authorization domain. See #GDataAuthorizationDomain:service-name for more details.
      * @returns name of the service containing the authorization domain
      */
-    get_service_name(): string | null
+    get_service_name(): string
 
     // Class property signals of GData-0.0.GData.AuthorizationDomain
 
@@ -2728,7 +2728,7 @@ export interface BatchOperation {
      * @param callback a #GDataBatchOperationCallback to call when the query is finished, or %NULL
      * @returns operation ID for the added query, or <code class="literal">0</code>
      */
-    add_query(id: string | null, entry_type: GObject.GType, callback: BatchOperationCallback): number
+    add_query(id: string, entry_type: GObject.GType, callback: BatchOperationCallback): number
     /**
      * Add an entry to the #GDataBatchOperation, to be updated on the server when the operation is run. The update will return the updated version of
      * `entry`. `entry` is reffed by the function, so may be freed after it returns.
@@ -2752,7 +2752,7 @@ export interface BatchOperation {
      * Gets the #GDataBatchOperation:feed-uri property.
      * @returns the batch operation's feed URI
      */
-    get_feed_uri(): string | null
+    get_feed_uri(): string
     /**
      * Gets the #GDataBatchOperation:service property.
      * @returns the batch operation's attached service
@@ -2946,7 +2946,7 @@ export class CalendarAccessRule extends AccessRule {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataCalendarAccessRule; unref with   g_object_unref()
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Creates a new #GDataCalendarAccessRule with the given ID and default
      * properties.
@@ -2954,7 +2954,7 @@ export class CalendarAccessRule extends AccessRule {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataCalendarAccessRule; unref with   g_object_unref()
      */
-    static new(id: string | null): CalendarAccessRule
+    static new(id: string): CalendarAccessRule
 
     // Overloads of new
 
@@ -2964,7 +2964,7 @@ export class CalendarAccessRule extends AccessRule {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataAccessRule; unref with g_object_unref()
      */
-    static new(id: string | null): AccessRule
+    static new(id: string): AccessRule
     /**
      * Creates a new #GDataEntry with the given ID and default properties.
      * @constructor 
@@ -3069,7 +3069,7 @@ export interface CalendarCalendar extends AccessHandler {
      * Gets the #GDataCalendarCalendar:access-level property.
      * @returns the authenticated user's access level to the calendar, or %NULL
      */
-    get_access_level(): string | null
+    get_access_level(): string
     /**
      * Gets the #GDataCalendarCalendar:color property and puts it in `color`.
      */
@@ -3078,7 +3078,7 @@ export interface CalendarCalendar extends AccessHandler {
      * Gets the #GDataCalendarCalendar:timezone property.
      * @returns the calendar's timezone, or %NULL
      */
-    get_timezone(): string | null
+    get_timezone(): string
     /**
      * Sets the #GDataCalendarCalendar:color property to `color`.
      * @param color a new #GDataColor
@@ -3531,7 +3531,7 @@ export interface CalendarEvent {
      * Gets the #GDataCalendarEvent:recurrence property.
      * @returns the event recurrence patterns, or %NULL
      */
-    get_recurrence(): string | null
+    get_recurrence(): string
     /**
      * Gets the #GDataCalendarEvent:sequence property.
      * @returns the event's sequence number
@@ -3541,7 +3541,7 @@ export interface CalendarEvent {
      * Gets the #GDataCalendarEvent:status property.
      * @returns the event status, or %NULL
      */
-    get_status(): string | null
+    get_status(): string
     /**
      * Gets a list of the time periods associated with the event.
      * @returns a #GList of #GDataGDWhens, or %NULL
@@ -3551,17 +3551,17 @@ export interface CalendarEvent {
      * Gets the #GDataCalendarEvent:transparency property.
      * @returns the event transparency, or %NULL
      */
-    get_transparency(): string | null
+    get_transparency(): string
     /**
      * Gets the #GDataCalendarEvent:uid property.
      * @returns the event's UID, or %NULL
      */
-    get_uid(): string | null
+    get_uid(): string
     /**
      * Gets the #GDataCalendarEvent:visibility property.
      * @returns the event visibility, or %NULL
      */
-    get_visibility(): string | null
+    get_visibility(): string
     /**
      * Determines whether the event is an exception to a recurring event. If it is, details of the original event
      * can be retrieved using gdata_calendar_event_get_original_event_details().
@@ -4050,7 +4050,7 @@ export interface CalendarQuery {
      * Gets the #GDataCalendarQuery:order-by property.
      * @returns the order by property, or %NULL if it is unset
      */
-    get_order_by(): string | null
+    get_order_by(): string
     /**
      * Gets the #GDataCalendarQuery:single-events property.
      * @returns the single events property
@@ -4070,7 +4070,7 @@ export interface CalendarQuery {
      * Gets the #GDataCalendarQuery:timezone property.
      * @returns the timezone property, or %NULL if it is unset
      */
-    get_timezone(): string | null
+    get_timezone(): string
     /**
      * Sets the #GDataCalendarQuery:future-events property of the #GDataCalendarQuery to `future_events`.
      * @param future_events %TRUE to unconditionally show future events, %FALSE otherwise
@@ -4512,17 +4512,17 @@ export interface Category extends Comparable {
      * Gets the #GDataCategory:label property.
      * @returns the category's label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataCategory:scheme property. If the scheme is non-%NULL, it will be non-empty.
      * @returns the category's scheme, or %NULL
      */
-    get_scheme(): string | null
+    get_scheme(): string
     /**
      * Gets the #GDataCategory:term property. The term will always be a non-%NULL, non-empty string.
      * @returns the category's term
      */
-    get_term(): string | null
+    get_term(): string
     /**
      * Sets the #GDataCategory:label property to `label`.
      * 
@@ -4541,7 +4541,7 @@ export interface Category extends Comparable {
      * Sets the #GDataCategory:term property to `term`. `term` must be non-%NULL and non-empty.
      * @param term the new term for the category
      */
-    set_term(term: string | null): void
+    set_term(term: string): void
 
     // Class property signals of GData-0.0.GData.Category
 
@@ -4588,7 +4588,7 @@ export class Category extends Parsable {
      * @param label a human-readable label for the category, or %NULL
      * @returns a new #GDataCategory, or %NULL; unref with g_object_unref()
      */
-    constructor(term: string | null, scheme: string | null, label: string | null) 
+    constructor(term: string, scheme: string | null, label: string | null) 
     /**
      * Creates a new #GDataCategory. More information is available in the <ulink type="http"
      * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.category">Atom specification</ulink>.
@@ -4600,7 +4600,7 @@ export class Category extends Parsable {
      * @param label a human-readable label for the category, or %NULL
      * @returns a new #GDataCategory, or %NULL; unref with g_object_unref()
      */
-    static new(term: string | null, scheme: string | null, label: string | null): Category
+    static new(term: string, scheme: string | null, label: string | null): Category
     _init(config?: Category.ConstructorProperties): void
 }
 
@@ -4775,7 +4775,7 @@ export class DocumentsAccessRule extends AccessRule {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataDocumentsAccessRule; unref with   g_object_unref()
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Creates a new #GDataDocumentsAccessRule with the given ID and default
      * properties.
@@ -4783,7 +4783,7 @@ export class DocumentsAccessRule extends AccessRule {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataDocumentsAccessRule; unref with   g_object_unref()
      */
-    static new(id: string | null): DocumentsAccessRule
+    static new(id: string): DocumentsAccessRule
 
     // Overloads of new
 
@@ -4793,7 +4793,7 @@ export class DocumentsAccessRule extends AccessRule {
      * @param id the access rule's ID, or %NULL
      * @returns a new #GDataAccessRule; unref with g_object_unref()
      */
-    static new(id: string | null): AccessRule
+    static new(id: string): AccessRule
     /**
      * Creates a new #GDataEntry with the given ID and default properties.
      * @constructor 
@@ -4852,7 +4852,7 @@ export interface DocumentsDocument extends AccessHandler {
      * @param cancellable a #GCancellable for the entire download stream, or %NULL
      * @returns a #GDataDownloadStream to download the document with, or %NULL; unref with g_object_unref()
      */
-    download(service: DocumentsService, export_format: string | null, cancellable: Gio.Cancellable | null): DownloadStream
+    download(service: DocumentsService, export_format: string, cancellable: Gio.Cancellable | null): DownloadStream
     /**
      * Builds and returns the download URI for the given #GDataDocumentsDocument in the desired format. Note that directly downloading the document using
      * this URI isn't possible, as authentication is required. You should instead use gdata_download_stream_new() with the URI, and use the resulting
@@ -4865,7 +4865,7 @@ export interface DocumentsDocument extends AccessHandler {
      * @param export_format the format in which the document should be exported when downloaded
      * @returns the download URI, or %NULL; free with g_free()
      */
-    get_download_uri(export_format: string | null): string | null
+    get_download_uri(export_format: string): string | null
     /**
      * Gets the URI of the thumbnail for the #GDataDocumentsDocument. If no thumbnail exists for the document, %NULL will be returned.
      * 
@@ -5531,7 +5531,7 @@ export interface DocumentsEntry extends AccessHandler {
      * Gets the #GDataDocumentsEntry:resource-id property.
      * @returns the document's resource ID
      */
-    get_resource_id(): string | null
+    get_resource_id(): string
     /**
      * Gets the #GDataDocumentsEntry:shared-with-me-date property. If the property is unset, `-1` will be returned.
      * @returns the UNIX timestamp for the time at which this file was shared with the user, or `-1`
@@ -6269,12 +6269,12 @@ export interface DocumentsProperty extends Comparable {
      * Returns the ETag of the property.
      * @returns the property's ETag. The ETag will never be empty; it's either %NULL or a valid ETag.
      */
-    get_etag(): string | null
+    get_etag(): string
     /**
      * Returns the key of the property. This will never be %NULL or an empty string ("").
      * @returns the property's key
      */
-    get_key(): string | null
+    get_key(): string
     /**
      * Returns the value of the property.
      * 
@@ -6286,7 +6286,7 @@ export interface DocumentsProperty extends Comparable {
      * Returns the visibility status of the property.
      * @returns %GDATA_DOCUMENTS_PROPERTY_VISIBILITY_PUBLIC if the #GDataDocumentsProperty is publicly visible to other apps, %GDATA_DOCUMENTS_PROPERTY_VISIBILITY_PRIVATE if the #GDataDocumentsProperty is restricted to the application which created it.
      */
-    get_visibility(): string | null
+    get_visibility(): string
     /**
      * Sets #GDataDocumentsProperty:value to `value,` corresponding to the key.
      * 
@@ -6300,7 +6300,7 @@ export interface DocumentsProperty extends Comparable {
      * private properties (default).
      * @param visibility the new visibility status of the property
      */
-    set_visibility(visibility: string | null): void
+    set_visibility(visibility: string): void
 
     // Class property signals of GData-0.0.GData.DocumentsProperty
 
@@ -6345,14 +6345,14 @@ export class DocumentsProperty extends Parsable {
      * @param key the property's key
      * @returns a new #GDataDocumentsProperty; unref with g_object_unref()
      */
-    constructor(key: string | null) 
+    constructor(key: string) 
     /**
      * Creates a new #GDataEntry with the given ID and default properties.
      * @constructor 
      * @param key the property's key
      * @returns a new #GDataDocumentsProperty; unref with g_object_unref()
      */
-    static new(key: string | null): DocumentsProperty
+    static new(key: string): DocumentsProperty
     _init(config?: DocumentsProperty.ConstructorProperties): void
 }
 
@@ -6458,12 +6458,12 @@ export interface DocumentsQuery {
      * Add `email_address` as a #GDataGDEmailAddress to the list of collaborators whose edited documents will be queried.
      * @param email_address the e-mail address of the collaborator to add
      */
-    add_collaborator(email_address: string | null): void
+    add_collaborator(email_address: string): void
     /**
      * Add `email_address` as a #GDataGDEmailAddress to the list of readers, the documents readable by whom will be queried.
      * @param email_address the e-mail address of the reader to add
      */
-    add_reader(email_address: string | null): void
+    add_reader(email_address: string): void
     /**
      * Gets a list of #GDataGDEmailAddress<!-- -->es of the document collaborators whose documents will be queried.
      * @returns a list of #GDataGDEmailAddress<!-- -->es of the collaborators concerned by the query, or %NULL
@@ -6478,7 +6478,7 @@ export interface DocumentsQuery {
      * Gets the #GDataDocumentsQuery:folder-id property.
      * @returns the ID of the folder to be queried, or %NULL
      */
-    get_folder_id(): string | null
+    get_folder_id(): string
     /**
      * Gets a list of #GDataGDEmailAddress<!-- -->es of the document readers whose documents will be queried.
      * @returns a list of #GDataGDEmailAddress<!-- -->es of the readers concerned by the query, or %NULL
@@ -6488,7 +6488,7 @@ export interface DocumentsQuery {
      * Gets the #GDataDocumentsQuery:title property.
      * @returns the title (or title fragment) being queried for, or %NULL
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Sets the #GDataDocumentsQuery:folder-id property to `folder_id`.
      * 
@@ -6929,7 +6929,7 @@ export interface DocumentsService extends Batchable {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a #GDataUploadStream to write the document data to; unref with g_object_unref()
      */
-    update_document(document: DocumentsDocument, slug: string | null, content_type: string | null, cancellable: Gio.Cancellable | null): UploadStream
+    update_document(document: DocumentsDocument, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream
     /**
      * Update the document using the properties from `document` and the document data written to the resulting #GDataUploadStream. If the document data does
      * not need to be changed, just the metadata, use gdata_service_update_entry() instead.
@@ -6956,7 +6956,7 @@ export interface DocumentsService extends Batchable {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a #GDataUploadStream to write the document data to; unref with g_object_unref()
      */
-    update_document_resumable(document: DocumentsDocument, slug: string | null, content_type: string | null, content_length: number, cancellable: Gio.Cancellable | null): UploadStream
+    update_document_resumable(document: DocumentsDocument, slug: string, content_type: string, content_length: number, cancellable: Gio.Cancellable | null): UploadStream
     /**
      * Uploads a document to Google Documents, using the properties from `document` and the document data written to the resulting #GDataUploadStream. If
      * the document data does not need to be provided at the moment, just the metadata, use gdata_service_insert_entry() instead (e.g. in the case of
@@ -6984,7 +6984,7 @@ export interface DocumentsService extends Batchable {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a #GDataUploadStream to write the document data to, or %NULL; unref with g_object_unref()
      */
-    upload_document(document: DocumentsDocument | null, slug: string | null, content_type: string | null, folder: DocumentsFolder | null, cancellable: Gio.Cancellable | null): UploadStream
+    upload_document(document: DocumentsDocument | null, slug: string, content_type: string, folder: DocumentsFolder | null, cancellable: Gio.Cancellable | null): UploadStream
     /**
      * Uploads a document to Google Documents, using the properties from `document` and the document data written to the resulting #GDataUploadStream. If
      * the document data does not need to be provided at the moment, just the metadata, use gdata_service_insert_entry() instead (e.g. in the case of
@@ -7020,7 +7020,7 @@ export interface DocumentsService extends Batchable {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a #GDataUploadStream to write the document data to, or %NULL; unref with g_object_unref()
      */
-    upload_document_resumable(document: DocumentsDocument | null, slug: string | null, content_type: string | null, content_length: number, query: DocumentsUploadQuery | null, cancellable: Gio.Cancellable | null): UploadStream
+    upload_document_resumable(document: DocumentsDocument | null, slug: string, content_type: string, content_length: number, query: DocumentsUploadQuery | null, cancellable: Gio.Cancellable | null): UploadStream
 
     // Class property signals of GData-0.0.GData.DocumentsService
 
@@ -7131,7 +7131,7 @@ export interface DocumentsSpreadsheet extends AccessHandler {
      * @param gid the <code class="literal">0</code>-based sheet ID to download, or <code class="literal">-1</code>
      * @returns the download URI; free with g_free()
      */
-    get_download_uri(export_format: string | null, gid: number): string | null
+    get_download_uri(export_format: string, gid: number): string | null
 
     // Overloads of get_download_uri
 
@@ -7147,7 +7147,7 @@ export interface DocumentsSpreadsheet extends AccessHandler {
      * @param export_format the format in which the document should be exported when downloaded
      * @returns the download URI, or %NULL; free with g_free()
      */
-    get_download_uri(export_format: string | null): string | null
+    get_download_uri(export_format: string): string | null
 
     // Class property signals of GData-0.0.GData.DocumentsSpreadsheet
 
@@ -7677,12 +7677,12 @@ export interface DownloadStream extends Gio.Seekable {
      * been received, %NULL will be returned.
      * @returns the content type of the file being downloaded, or %NULL
      */
-    get_content_type(): string | null
+    get_content_type(): string
     /**
      * Gets the URI of the file being downloaded, as passed to gdata_download_stream_new().
      * @returns the URI of the file being downloaded
      */
-    get_download_uri(): string | null
+    get_download_uri(): string
     /**
      * Gets the service used to authorize the download, as passed to gdata_download_stream_new().
      * @returns the #GDataService used to authorize the download
@@ -7747,7 +7747,7 @@ export class DownloadStream extends Gio.InputStream {
      * @param cancellable a #GCancellable for the entire download stream, or %NULL
      * @returns a new #GInputStream, or %NULL; unref with g_object_unref()
      */
-    constructor(service: Service, domain: AuthorizationDomain | null, download_uri: string | null, cancellable: Gio.Cancellable | null) 
+    constructor(service: Service, domain: AuthorizationDomain | null, download_uri: string, cancellable: Gio.Cancellable | null) 
     /**
      * Creates a new #GDataDownloadStream, allowing a file to be downloaded from a GData service using standard #GInputStream API.
      * 
@@ -7766,7 +7766,7 @@ export class DownloadStream extends Gio.InputStream {
      * @param cancellable a #GCancellable for the entire download stream, or %NULL
      * @returns a new #GInputStream, or %NULL; unref with g_object_unref()
      */
-    static new(service: Service, domain: AuthorizationDomain | null, download_uri: string | null, cancellable: Gio.Cancellable | null): DownloadStream
+    static new(service: Service, domain: AuthorizationDomain | null, download_uri: string, cancellable: Gio.Cancellable | null): DownloadStream
     _init(config?: DownloadStream.ConstructorProperties): void
 }
 
@@ -7970,13 +7970,13 @@ export interface Entry {
      * returned by gdata_entry_get_content_uri().
      * @returns the entry's content, or %NULL
      */
-    get_content(): string | null
+    get_content(): string
     /**
      * Returns a URI pointing to the content of this entry. If the content in this entry is stored directly, %NULL will be returned; the content will be
      * returned by gdata_entry_get_content().
      * @returns a URI pointing to the entry's content, or %NULL
      */
-    get_content_uri(): string | null
+    get_content_uri(): string
     /**
      * Returns the ETag of the entry; a unique identifier for each version of the entry. For more information, see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/reference.html#ResourceVersioning">online documentation</ulink>.
@@ -8001,17 +8001,17 @@ export interface Entry {
      * Returns the rights pertaining to the entry, or %NULL if not set.
      * @returns the entry's rights information
      */
-    get_rights(): string | null
+    get_rights(): string
     /**
      * Returns the summary of the entry.
      * @returns the entry's summary, or %NULL
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Returns the title of the entry. This will never be %NULL, but may be an empty string.
      * @returns the entry's title
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Gets the time the entry was last updated.
      * @returns the UNIX timestamp for the last update of the entry
@@ -8025,7 +8025,7 @@ export interface Entry {
      * @param rel the value of the <structfield>rel</structfield> attribute of the desired link
      * @returns a #GDataLink, or %NULL if one was not found
      */
-    look_up_link(rel: string | null): Link
+    look_up_link(rel: string): Link
     /**
      * Looks up a list of links by relation type from the list of links in the entry. If the links have one of the standard Atom
      * relation types, use one of the defined `rel` values, instead of a static string. e.g. %GDATA_LINK_EDIT or %GDATA_LINK_SELF.
@@ -8034,7 +8034,7 @@ export interface Entry {
      * @param rel the value of the <structfield>rel</structfield> attribute of the desired links
      * @returns a #GList of #GDataLinks, or %NULL if none were found; free the list with g_list_free()
      */
-    look_up_links(rel: string | null): Link[]
+    look_up_links(rel: string): Link[]
     /**
      * Removes `_link` from the list of links in the given #GDataEntry and decrements its reference count (since the #GDataEntry held a reference to it
      * while it was in the list).
@@ -8306,7 +8306,7 @@ export interface Feed {
      * Returns the feed's unique ETag for this version.
      * @returns the feed's ETag
      */
-    get_etag(): string | null
+    get_etag(): string
     /**
      * Returns details about the software which generated the feed.
      * @returns a #GDataGenerator, or %NULL
@@ -8316,12 +8316,12 @@ export interface Feed {
      * Returns the icon URI of the feed.
      * @returns the feed's icon URI, or %NULL
      */
-    get_icon(): string | null
+    get_icon(): string
     /**
      * Returns the feed's unique and permanent URN ID.
      * @returns the feed's ID
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Returns the number of items per results page feed.
      * @returns the number of items per results page feed, or <code class="literal">0</code>
@@ -8336,7 +8336,7 @@ export interface Feed {
      * Returns the logo URI of the feed.
      * @returns the feed's logo URI, or %NULL
      */
-    get_logo(): string | null
+    get_logo(): string
     /**
      * Returns the next page token for a query result, or %NULL if not set.
      * This is #GDataFeed:next-page-token. The page token might not be set if there
@@ -8350,7 +8350,7 @@ export interface Feed {
      * Returns the rights pertaining to the entire feed, or %NULL if not set.
      * @returns the feed's rights information
      */
-    get_rights(): string | null
+    get_rights(): string
     /**
      * Returns the one-based start index of the results feed in the result set.
      * @returns the one-based start index, or <code class="literal">0</code>
@@ -8360,12 +8360,12 @@ export interface Feed {
      * Returns the subtitle of the feed.
      * @returns the feed's subtitle, or %NULL
      */
-    get_subtitle(): string | null
+    get_subtitle(): string
     /**
      * Returns the title of the feed.
      * @returns the feed's title
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Returns the total number of results in the result set, including results on other
      * pages. If this is zero, the total number is unknown.
@@ -8382,13 +8382,13 @@ export interface Feed {
      * @param id the entry's ID
      * @returns the #GDataEntry, or %NULL
      */
-    look_up_entry(id: string | null): Entry
+    look_up_entry(id: string): Entry
     /**
      * Looks up a link by #GDataLink:relation-type value from the list of links in the feed.
      * @param rel the value of the #GDataLink:relation-type property of the desired link
      * @returns a #GDataLink, or %NULL if one was not found
      */
-    look_up_link(rel: string | null): Link
+    look_up_link(rel: string): Link
 
     // Class property signals of GData-0.0.GData.Feed
 
@@ -8573,17 +8573,17 @@ export interface GContactCalendar extends Comparable {
      * Gets the #GDataGContactCalendar:label property.
      * @returns a free-form label for the calendar, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGContactCalendar:relation-type property.
      * @returns the type of the relation, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGContactCalendar:uri property.
      * @returns the calendar's URI
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Sets the #GDataGContactCalendar:is-primary property to `is_primary`.
      * @param is_primary %TRUE if this is the contact's primary calendar, %FALSE otherwise
@@ -8610,7 +8610,7 @@ export interface GContactCalendar extends Comparable {
      * Sets the #GDataGContactCalendar:uri property to `uri`.
      * @param uri the new URI for the calendar
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
 
     // Class property signals of GData-0.0.GData.GContactCalendar
 
@@ -8661,7 +8661,7 @@ export class GContactCalendar extends Parsable {
      * @param is_primary %TRUE if this calendar is its owner's primary calendar, %FALSE otherwise
      * @returns a new #GDataGContactCalendar; unref with g_object_unref()
      */
-    constructor(uri: string | null, relation_type: string | null, label: string | null, is_primary: boolean) 
+    constructor(uri: string, relation_type: string | null, label: string | null, is_primary: boolean) 
     /**
      * Creates a new #GDataGContactCalendar. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcCalendarLink">gContact specification</ulink>.
@@ -8674,7 +8674,7 @@ export class GContactCalendar extends Parsable {
      * @param is_primary %TRUE if this calendar is its owner's primary calendar, %FALSE otherwise
      * @returns a new #GDataGContactCalendar; unref with g_object_unref()
      */
-    static new(uri: string | null, relation_type: string | null, label: string | null, is_primary: boolean): GContactCalendar
+    static new(uri: string, relation_type: string | null, label: string | null, is_primary: boolean): GContactCalendar
     _init(config?: GContactCalendar.ConstructorProperties): void
 }
 
@@ -8772,12 +8772,12 @@ export interface GContactEvent {
      * Gets the #GDataGContactEvent:label property.
      * @returns the event's label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGContactEvent:relation-type property.
      * @returns the event's relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Sets the #GDataGContactEvent:date property to `date`.
      * @param date the new date for the event
@@ -8950,17 +8950,17 @@ export interface GContactExternalID extends Comparable {
      * Gets the #GDataGContactExternalID:label property.
      * @returns a free-form label for the external ID, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGContactExternalID:relation-type property.
      * @returns the type of the relation, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGContactExternalID:value property.
      * @returns the external ID's value
      */
-    get_value(): string | null
+    get_value(): string
     /**
      * Sets the #GDataGContactExternalID:label property to `label`.
      * 
@@ -8982,7 +8982,7 @@ export interface GContactExternalID extends Comparable {
      * Sets the #GDataGContactExternalID:value property to `value`.
      * @param value the new value for the external ID
      */
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Class property signals of GData-0.0.GData.GContactExternalID
 
@@ -9029,7 +9029,7 @@ export class GContactExternalID extends Parsable {
      * @param label a free-form label for the external ID, or %NULL
      * @returns a new #GDataGContactExternalID; unref with g_object_unref()
      */
-    constructor(value: string | null, relation_type: string | null, label: string | null) 
+    constructor(value: string, relation_type: string | null, label: string | null) 
     /**
      * Creates a new #GDataGContactExternalID. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcExternalId">gContact specification</ulink>.
@@ -9041,7 +9041,7 @@ export class GContactExternalID extends Parsable {
      * @param label a free-form label for the external ID, or %NULL
      * @returns a new #GDataGContactExternalID; unref with g_object_unref()
      */
-    static new(value: string | null, relation_type: string | null, label: string | null): GContactExternalID
+    static new(value: string, relation_type: string | null, label: string | null): GContactExternalID
     _init(config?: GContactExternalID.ConstructorProperties): void
 }
 
@@ -9115,23 +9115,23 @@ export interface GContactJot {
      * Gets the #GDataGContactJot:content property.
      * @returns the jot's content
      */
-    get_content(): string | null
+    get_content(): string
     /**
      * Gets the #GDataGContactJot:relation-type property.
      * @returns the jot's relation type
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Sets the #GDataGContactJot:content property to `content`.
      * @param content the new content
      */
-    set_content(content: string | null): void
+    set_content(content: string): void
     /**
      * Sets the #GDataGContactJot:relation-type property to `relation_type`
      * such as %GDATA_GCONTACT_JOT_HOME or %GDATA_GCONTACT_JOT_OTHER.
      * @param relation_type the new relation type for the jot, or %NULL
      */
-    set_relation_type(relation_type: string | null): void
+    set_relation_type(relation_type: string): void
 
     // Class property signals of GData-0.0.GData.GContactJot
 
@@ -9172,7 +9172,7 @@ export class GContactJot extends Parsable {
      * @param relation_type the relationship between the jot and its owner
      * @returns a new #GDataGContactJot; unref with g_object_unref()
      */
-    constructor(content: string | null, relation_type: string | null) 
+    constructor(content: string, relation_type: string) 
     /**
      * Creates a new #GDataGContactJot. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcJot">gContact specification</ulink>.
@@ -9181,7 +9181,7 @@ export class GContactJot extends Parsable {
      * @param relation_type the relationship between the jot and its owner
      * @returns a new #GDataGContactJot; unref with g_object_unref()
      */
-    static new(content: string | null, relation_type: string | null): GContactJot
+    static new(content: string, relation_type: string): GContactJot
     _init(config?: GContactJot.ConstructorProperties): void
 }
 
@@ -9241,12 +9241,12 @@ export interface GContactLanguage extends Comparable {
      * Gets the #GDataGContactLanguage:code property.
      * @returns the language's code, or %NULL
      */
-    get_code(): string | null
+    get_code(): string
     /**
      * Gets the #GDataGContactLanguage:label property.
      * @returns a free-form label for the language, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Sets the #GDataGContactLanguage:code property to `code`.
      * 
@@ -9408,17 +9408,17 @@ export interface GContactRelation {
      * Gets the #GDataGContactRelation:label property.
      * @returns a free-form label for the type of the relation, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGContactRelation:name property.
      * @returns the relation's name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the #GDataGContactRelation:relation-type property.
      * @returns the type of the relation, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Sets the #GDataGContactRelation:label property to `label`.
      * 
@@ -9487,7 +9487,7 @@ export class GContactRelation extends Parsable {
      * @param label a free-form label for the type of relation, or %NULL
      * @returns a new #GDataGContactRelation; unref with g_object_unref()
      */
-    constructor(name: string | null, relation_type: string | null, label: string | null) 
+    constructor(name: string, relation_type: string | null, label: string | null) 
     /**
      * Creates a new #GDataGContactRelation. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcRelation">gContact specification</ulink>.
@@ -9499,7 +9499,7 @@ export class GContactRelation extends Parsable {
      * @param label a free-form label for the type of relation, or %NULL
      * @returns a new #GDataGContactRelation; unref with g_object_unref()
      */
-    static new(name: string | null, relation_type: string | null, label: string | null): GContactRelation
+    static new(name: string, relation_type: string | null, label: string | null): GContactRelation
     _init(config?: GContactRelation.ConstructorProperties): void
 }
 
@@ -9621,17 +9621,17 @@ export interface GContactWebsite extends Comparable {
      * Gets the #GDataGContactWebsite:label property.
      * @returns the website's label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGContactWebsite:relation-type property.
      * @returns the website's relation type
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGContactWebsite:uri property.
      * @returns the URI of the website
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Sets the #GDataGContactWebsite:is-primary property to `is_primary`.
      * @param is_primary %TRUE if this is the primary website, %FALSE otherwise
@@ -9653,12 +9653,12 @@ export interface GContactWebsite extends Comparable {
      * exactly one of #GDataGContactWebsite:relation-type and #GDataGContactWebsite:label must be %NULL.
      * @param relation_type the new relation type for the website
      */
-    set_relation_type(relation_type: string | null): void
+    set_relation_type(relation_type: string): void
     /**
      * Sets the #GDataGContactWebsite:uri property to `uri`.
      * @param uri the new website URI
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
 
     // Class property signals of GData-0.0.GData.GContactWebsite
 
@@ -9709,7 +9709,7 @@ export class GContactWebsite extends Parsable {
      * @param is_primary %TRUE if this website is its owner's primary website, %FALSE otherwise
      * @returns a new #GDataGContactWebsite; unref with g_object_unref()
      */
-    constructor(uri: string | null, relation_type: string | null, label: string | null, is_primary: boolean) 
+    constructor(uri: string, relation_type: string, label: string | null, is_primary: boolean) 
     /**
      * Creates a new #GDataGContactWebsite. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/contacts/docs/3.0/reference.html#gcWebsite">gContact specification</ulink>.
@@ -9722,7 +9722,7 @@ export class GContactWebsite extends Parsable {
      * @param is_primary %TRUE if this website is its owner's primary website, %FALSE otherwise
      * @returns a new #GDataGContactWebsite; unref with g_object_unref()
      */
-    static new(uri: string | null, relation_type: string | null, label: string | null, is_primary: boolean): GContactWebsite
+    static new(uri: string, relation_type: string, label: string | null, is_primary: boolean): GContactWebsite
     _init(config?: GContactWebsite.ConstructorProperties): void
 }
 
@@ -9866,27 +9866,27 @@ export interface GDEmailAddress extends Comparable {
      * Gets the #GDataGDEmailAddress:address property.
      * @returns the e-mail address itself, or %NULL
      */
-    get_address(): string | null
+    get_address(): string
     /**
      * Gets the #GDataGDEmailAddress:display-name property.
      * @returns a display name for the e-mail address, or %NULL
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets the #GDataGDEmailAddress:label property.
      * @returns the e-mail address' label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGDEmailAddress:relation-type property.
      * @returns the e-mail address' relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Sets the #GDataGDEmailAddress:address property to `address`.
      * @param address the new e-mail address
      */
-    set_address(address: string | null): void
+    set_address(address: string): void
     /**
      * Sets the #GDataGDEmailAddress:display-name property to `display_name`.
      * 
@@ -9964,7 +9964,7 @@ export class GDEmailAddress extends Parsable {
      * @param is_primary %TRUE if this e-mail address is its owner's primary address, %FALSE otherwise
      * @returns a new #GDataGDEmailAddress, or %NULL; unref with g_object_unref()
      */
-    constructor(address: string | null, relation_type: string | null, label: string | null, is_primary: boolean) 
+    constructor(address: string, relation_type: string | null, label: string | null, is_primary: boolean) 
     /**
      * Creates a new #GDataGDEmailAddress. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdEmail">GData specification</ulink>.
@@ -9975,7 +9975,7 @@ export class GDEmailAddress extends Parsable {
      * @param is_primary %TRUE if this e-mail address is its owner's primary address, %FALSE otherwise
      * @returns a new #GDataGDEmailAddress, or %NULL; unref with g_object_unref()
      */
-    static new(address: string | null, relation_type: string | null, label: string | null, is_primary: boolean): GDEmailAddress
+    static new(address: string, relation_type: string | null, label: string | null, is_primary: boolean): GDEmailAddress
     _init(config?: GDEmailAddress.ConstructorProperties): void
 }
 
@@ -10105,27 +10105,27 @@ export interface GDIMAddress extends Comparable {
      * Gets the #GDataGDIMAddress:address property.
      * @returns the IM address itself, or %NULL
      */
-    get_address(): string | null
+    get_address(): string
     /**
      * Gets the #GDataGDIMAddress:label property.
      * @returns the IM address' label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGDIMAddress:protocol property.
      * @returns the IM address' protocol, or %NULL
      */
-    get_protocol(): string | null
+    get_protocol(): string
     /**
      * Gets the #GDataGDIMAddress:relation-type property.
      * @returns the IM address' relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Sets the #GDataGDIMAddress:address property to `address`.
      * @param address the new IM address
      */
-    set_address(address: string | null): void
+    set_address(address: string): void
     /**
      * Sets the #GDataGDIMAddress:is-primary property to `is_primary`.
      * @param is_primary %TRUE if this is the primary IM address, %FALSE otherwise
@@ -10202,7 +10202,7 @@ export class GDIMAddress extends Parsable {
      * @param is_primary %TRUE if this IM address is its owner's primary address, %FALSE otherwise
      * @returns a new #GDataGDIMAddress, or %NULL; unref with g_object_unref()
      */
-    constructor(address: string | null, protocol: string | null, relation_type: string | null, label: string | null, is_primary: boolean) 
+    constructor(address: string, protocol: string | null, relation_type: string | null, label: string | null, is_primary: boolean) 
     /**
      * Creates a new #GDataGDIMAddress. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdIm">GData specification</ulink>.
@@ -10214,7 +10214,7 @@ export class GDIMAddress extends Parsable {
      * @param is_primary %TRUE if this IM address is its owner's primary address, %FALSE otherwise
      * @returns a new #GDataGDIMAddress, or %NULL; unref with g_object_unref()
      */
-    static new(address: string | null, protocol: string | null, relation_type: string | null, label: string | null, is_primary: boolean): GDIMAddress
+    static new(address: string, protocol: string | null, relation_type: string | null, label: string | null, is_primary: boolean): GDIMAddress
     _init(config?: GDIMAddress.ConstructorProperties): void
 }
 
@@ -10390,32 +10390,32 @@ export interface GDName extends Comparable {
      * Gets the #GDataGDName:additional-name property.
      * @returns the person's additional name, or %NULL
      */
-    get_additional_name(): string | null
+    get_additional_name(): string
     /**
      * Gets the #GDataGDName:family-name property.
      * @returns the person's family name, or %NULL
      */
-    get_family_name(): string | null
+    get_family_name(): string
     /**
      * Gets the #GDataGDName:full-name property.
      * @returns the person's full name, or %NULL
      */
-    get_full_name(): string | null
+    get_full_name(): string
     /**
      * Gets the #GDataGDName:given-name property.
      * @returns the person's given name, or %NULL
      */
-    get_given_name(): string | null
+    get_given_name(): string
     /**
      * Gets the #GDataGDName:prefix property.
      * @returns the person's name prefix, or %NULL
      */
-    get_prefix(): string | null
+    get_prefix(): string
     /**
      * Gets the #GDataGDName:suffix property.
      * @returns the person's name suffix, or %NULL
      */
-    get_suffix(): string | null
+    get_suffix(): string
     /**
      * Sets the #GDataGDName:additional-name property to `additional_name`.
      * @param additional_name the new additional name, or %NULL
@@ -10709,17 +10709,17 @@ export interface GDOrganization extends Comparable {
      * Gets the #GDataGDOrganization:department property.
      * @returns the department in which the person works in this organization, or %NULL
      */
-    get_department(): string | null
+    get_department(): string
     /**
      * Gets the #GDataGDOrganization:job-description property.
      * @returns the job description of the person in the organization, or %NULL
      */
-    get_job_description(): string | null
+    get_job_description(): string
     /**
      * Gets the #GDataGDOrganization:label property.
      * @returns the organization's label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGDOrganization:location property.
      * @returns the organization's location, or %NULL
@@ -10729,22 +10729,22 @@ export interface GDOrganization extends Comparable {
      * Gets the #GDataGDOrganization:name property.
      * @returns the organization's name, or %NULL
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the #GDataGDOrganization:relation-type property.
      * @returns the organization's relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGDOrganization:symbol property.
      * @returns the organization's stock symbol, or %NULL
      */
-    get_symbol(): string | null
+    get_symbol(): string
     /**
      * Gets the #GDataGDOrganization:title property.
      * @returns the organization's title, or %NULL
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Sets the #GDataGDOrganization:department property to `department`.
      * 
@@ -11012,22 +11012,22 @@ export interface GDPhoneNumber extends Comparable {
      * Gets the #GDataGDPhoneNumber:label property.
      * @returns the phone number's label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGDPhoneNumber:number property.
      * @returns the phone number itself
      */
-    get_number(): string | null
+    get_number(): string
     /**
      * Gets the #GDataGDPhoneNumber:relation-type property.
      * @returns the phone number's relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGDPhoneNumber:uri property.
      * @returns the phone number's URI, or %NULL
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Sets the #GDataGDPhoneNumber:is-primary property to `is_primary`.
      * @param is_primary %TRUE if this is the primary phone number, %FALSE otherwise
@@ -11044,7 +11044,7 @@ export interface GDPhoneNumber extends Comparable {
      * Sets the #GDataGDPhoneNumber:number property to `number`.
      * @param number the new phone number
      */
-    set_number(number: string | null): void
+    set_number(number: string): void
     /**
      * Sets the #GDataGDPhoneNumber:relation-type property to `relation_type`.
      * 
@@ -11111,7 +11111,7 @@ export class GDPhoneNumber extends Parsable {
      * @param is_primary %TRUE if this phone number is its owner's primary number, %FALSE otherwise
      * @returns a new #GDataGDPhoneNumber, or %NULL; unref with g_object_unref()
      */
-    constructor(number: string | null, relation_type: string | null, label: string | null, uri: string | null, is_primary: boolean) 
+    constructor(number: string, relation_type: string | null, label: string | null, uri: string | null, is_primary: boolean) 
     /**
      * Creates a new #GDataGDPhoneNumber. More information is available in the <ulink type="http"
      * url="http://code.google.com/apis/gdata/docs/2.0/elements.html#gdPhoneNumber">GData specification</ulink>.
@@ -11123,7 +11123,7 @@ export class GDPhoneNumber extends Parsable {
      * @param is_primary %TRUE if this phone number is its owner's primary number, %FALSE otherwise
      * @returns a new #GDataGDPhoneNumber, or %NULL; unref with g_object_unref()
      */
-    static new(number: string | null, relation_type: string | null, label: string | null, uri: string | null, is_primary: boolean): GDPhoneNumber
+    static new(number: string, relation_type: string | null, label: string | null, uri: string | null, is_primary: boolean): GDPhoneNumber
     _init(config?: GDPhoneNumber.ConstructorProperties): void
 }
 
@@ -11469,82 +11469,82 @@ export interface GDPostalAddress extends Comparable {
      * Gets the #GDataGDPostalAddress:address property.
      * @returns the postal address itself, or %NULL
      */
-    get_address(): string | null
+    get_address(): string
     /**
      * Gets the #GDataGDPostalAddress:agent property.
      * @returns the postal address' agent, or %NULL
      */
-    get_agent(): string | null
+    get_agent(): string
     /**
      * Gets the #GDataGDPostalAddress:city property.
      * @returns the postal address' city, or %NULL
      */
-    get_city(): string | null
+    get_city(): string
     /**
      * Gets the #GDataGDPostalAddress:country property.
      * @returns the postal address' country, or %NULL
      */
-    get_country(): string | null
+    get_country(): string
     /**
      * Gets the #GDataGDPostalAddress:country-code property.
      * @returns the postal address' ISO 3166-1 alpha-2 country code, or %NULL
      */
-    get_country_code(): string | null
+    get_country_code(): string
     /**
      * Gets the #GDataGDPostalAddress:house-name property.
      * @returns the postal address' house name, or %NULL
      */
-    get_house_name(): string | null
+    get_house_name(): string
     /**
      * Gets the #GDataGDPostalAddress:label property.
      * @returns the postal address' label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGDPostalAddress:mail-class property.
      * @returns the postal address' mail class, or %NULL
      */
-    get_mail_class(): string | null
+    get_mail_class(): string
     /**
      * Gets the #GDataGDPostalAddress:neighborhood property.
      * @returns the postal address' neighborhood, or %NULL
      */
-    get_neighborhood(): string | null
+    get_neighborhood(): string
     /**
      * Gets the #GDataGDPostalAddress:po-box property.
      * @returns the postal address' P.O. box, or %NULL
      */
-    get_po_box(): string | null
+    get_po_box(): string
     /**
      * Gets the #GDataGDPostalAddress:postcode property.
      * @returns the postal address' postcode, or %NULL
      */
-    get_postcode(): string | null
+    get_postcode(): string
     /**
      * Gets the #GDataGDPostalAddress:region property.
      * @returns the postal address' region, or %NULL
      */
-    get_region(): string | null
+    get_region(): string
     /**
      * Gets the #GDataGDPostalAddress:relation-type property.
      * @returns the postal address' relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGDPostalAddress:street property.
      * @returns the postal address' street, or %NULL
      */
-    get_street(): string | null
+    get_street(): string
     /**
      * Gets the #GDataGDPostalAddress:subregion property.
      * @returns the postal address' subregion, or %NULL
      */
-    get_subregion(): string | null
+    get_subregion(): string
     /**
      * Gets the #GDataGDPostalAddress:usage property.
      * @returns the postal address' usage, or %NULL
      */
-    get_usage(): string | null
+    get_usage(): string
     /**
      * Sets the #GDataGDPostalAddress:address property to `address`.
      * @param address the new postal address, or %NULL
@@ -11872,7 +11872,7 @@ export interface GDReminder extends Comparable {
      * Gets the #GDataGDReminder:method property.
      * @returns the method, or %NULL
      */
-    get_method(): string | null
+    get_method(): string
     /**
      * Gets the #GDataGDReminder:relative-time property.
      * @returns the relative time, or <code class="literal">-1</code>
@@ -12128,7 +12128,7 @@ export interface GDWhen extends Comparable {
      * Gets the #GDataGDWhen:value-string property.
      * @returns the value string, or %NULL
      */
-    get_value_string(): string | null
+    get_value_string(): string
     /**
      * Sets the #GDataGDWhen:end-time property to `end_time`.
      * 
@@ -12316,17 +12316,17 @@ export interface GDWhere extends Comparable {
      * Gets the #GDataGDWhere:label property.
      * @returns the label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataGDWhere:relation-type property.
      * @returns the relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGDWhere:value-string property.
      * @returns the value string, or %NULL
      */
-    get_value_string(): string | null
+    get_value_string(): string
     /**
      * Sets the #GDataGDWhere:label property to `label`.
      * 
@@ -12526,17 +12526,17 @@ export interface GDWho extends Comparable {
      * Gets the #GDataGDWho:email-address property.
      * @returns the e-mail address, or %NULL
      */
-    get_email_address(): string | null
+    get_email_address(): string
     /**
      * Gets the #GDataGDWho:relation-type property.
      * @returns the relation type, or %NULL
      */
-    get_relation_type(): string | null
+    get_relation_type(): string
     /**
      * Gets the #GDataGDWho:value-string property.
      * @returns the value string, or %NULL
      */
-    get_value_string(): string | null
+    get_value_string(): string
     /**
      * Sets the #GDataGDWho:email-address property to `email_address`.
      * 
@@ -12679,7 +12679,7 @@ export interface Generator extends Comparable {
      * Gets the #GDataGenerator:version property.
      * @returns the generator's version, or %NULL
      */
-    get_version(): string | null
+    get_version(): string
 
     // Class property signals of GData-0.0.GData.Generator
 
@@ -12946,6 +12946,14 @@ export interface Link extends Comparable {
      * @returns the link's content type, or %NULL
      */
     get_content_type(): string | null
+
+    // Overloads of get_content_type
+
+    /**
+     * Returns the content type upon which the #GDataParsable is built. For example, `application/atom+xml` or `application/json`.
+     * @returns the parsable's content type
+     */
+    get_content_type(): string
     /**
      * Gets the #GDataLink:language property. If the language is non-%NULL, it will be non-empty.
      * @returns the link's language, or %NULL
@@ -12965,7 +12973,7 @@ export interface Link extends Comparable {
      * Gets the #GDataLink:title property.
      * @returns the link's title, or %NULL
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Gets the #GDataLink:uri property. The return value is guaranteed to be a valid IRI, as
      * specified by the Atom protocol. Common relationship values such as <literal>alternate</literal>
@@ -12975,7 +12983,7 @@ export interface Link extends Comparable {
      * Atom specification</ulink>.
      * @returns the link's URI
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Sets the #GDataLink:content-type property to `content_type`. `content_type` must be %NULL or non-empty.
      * 
@@ -13016,7 +13024,7 @@ export interface Link extends Comparable {
      * Sets the #GDataLink:uri property to `uri`. `uri` must be non-%NULL and non-empty.
      * @param uri the new URI for the link
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
 
     // Class property signals of GData-0.0.GData.Link
 
@@ -13071,7 +13079,7 @@ export class Link extends Parsable {
      * @param relation_type the relationship of the link to the current document, or %NULL
      * @returns a new #GDataLink, or %NULL; unref with g_object_unref()
      */
-    constructor(uri: string | null, relation_type: string | null) 
+    constructor(uri: string, relation_type: string | null) 
     /**
      * Creates a new #GDataLink. More information is available in the <ulink type="http"
      * url="http://www.atomenabled.org/developers/syndication/atom-format-spec.php#element.link">Atom specification</ulink>.
@@ -13082,7 +13090,7 @@ export class Link extends Parsable {
      * @param relation_type the relationship of the link to the current document, or %NULL
      * @returns a new #GDataLink, or %NULL; unref with g_object_unref()
      */
-    static new(uri: string | null, relation_type: string | null): Link
+    static new(uri: string, relation_type: string | null): Link
     _init(config?: Link.ConstructorProperties): void
 }
 
@@ -13150,22 +13158,22 @@ export interface MediaCategory {
      * Gets the #GDataMediaCategory:category property.
      * @returns the actual category
      */
-    get_category(): string | null
+    get_category(): string
     /**
      * Gets the #GDataMediaCategory:label property.
      * @returns the category's label, or %NULL
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the #GDataMediaCategory:scheme property.
      * @returns the category's scheme, or %NULL
      */
-    get_scheme(): string | null
+    get_scheme(): string
     /**
      * Sets the #GDataMediaCategory:category property to `category`.
      * @param category the new category
      */
-    set_category(category: string | null): void
+    set_category(category: string): void
     /**
      * Sets the #GDataMediaCategory:label property to `label`.
      * 
@@ -13224,7 +13232,7 @@ export class MediaCategory extends Parsable {
      * @param label a human-readable name for the category, or %NULL
      * @returns a new #GDataMediaCategory, or %NULL; unref with g_object_unref()
      */
-    constructor(category: string | null, scheme: string | null, label: string | null) 
+    constructor(category: string, scheme: string | null, label: string | null) 
     /**
      * Creates a new #GDataMediaCategory. More information is available in the <ulink type="http"
      * url="http://search.yahoo.com/mrss/">Media RSS specification</ulink>.
@@ -13234,7 +13242,7 @@ export class MediaCategory extends Parsable {
      * @param label a human-readable name for the category, or %NULL
      * @returns a new #GDataMediaCategory, or %NULL; unref with g_object_unref()
      */
-    static new(category: string | null, scheme: string | null, label: string | null): MediaCategory
+    static new(category: string, scheme: string | null, label: string | null): MediaCategory
     _init(config?: MediaCategory.ConstructorProperties): void
 }
 
@@ -13345,7 +13353,7 @@ export interface MediaContent {
      * Gets the #GDataMediaContent:content-type property.
      * @returns the content's content (MIME) type, or %NULL
      */
-    get_content_type(): string | null
+    get_content_type(): string
     /**
      * Gets the #GDataMediaContent:duration property.
      * @returns the content's duration in seconds, or <code class="literal">0</code>
@@ -13375,7 +13383,7 @@ export interface MediaContent {
      * Gets the #GDataMediaContent:uri property.
      * @returns the content's URI
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Gets the #GDataMediaContent:width property.
      * @returns the content's width in pixels, or <code class="literal">0</code>
@@ -13480,17 +13488,17 @@ export interface MediaCredit {
      * Gets the #GDataMediaCredit:credit property.
      * @returns the name of the credited entity
      */
-    get_credit(): string | null
+    get_credit(): string
     /**
      * Gets the #GDataMediaCredit:role property.
      * @returns the credited entity's role, or %NULL
      */
-    get_role(): string | null
+    get_role(): string
     /**
      * Gets the #GDataMediaCredit:scheme property.
      * @returns the credit's role scheme, or %NULL
      */
-    get_scheme(): string | null
+    get_scheme(): string
 
     // Class property signals of GData-0.0.GData.MediaCredit
 
@@ -13603,7 +13611,7 @@ export interface MediaThumbnail {
      * Gets the #GDataMediaThumbnail:uri property.
      * @returns the thumbnail's URI
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Gets the #GDataMediaThumbnail:width property.
      * @returns the thumbnail's width in pixels, or <code class="literal">0</code>
@@ -14009,13 +14017,13 @@ export interface OAuth2Authorizer extends Authorizer {
      * specified on constructing the #GDataOAuth2Authorizer.
      * @returns the authorizer's client ID
      */
-    get_client_id(): string | null
+    get_client_id(): string
     /**
      * Returns the authorizer's client secret, #GDataOAuth2Authorizer:client-secret,
      * as specified on constructing the #GDataOAuth2Authorizer.
      * @returns the authorizer's client secret
      */
-    get_client_secret(): string | null
+    get_client_secret(): string
     /**
      * Returns the locale currently being used for network requests, or %NULL if the
      * locale is the default.
@@ -14032,7 +14040,7 @@ export interface OAuth2Authorizer extends Authorizer {
      * as specified on constructing the #GDataOAuth2Authorizer.
      * @returns the authorizer’s redirect URI
      */
-    get_redirect_uri(): string | null
+    get_redirect_uri(): string
     /**
      * Gets the #GDataOAuth2Authorizer:timeout property; the network timeout, in
      * seconds.
@@ -14054,14 +14062,14 @@ export interface OAuth2Authorizer extends Authorizer {
      * @param cancellable a #GCancellable, or %NULL
      * @returns %TRUE on success, %FALSE otherwise
      */
-    request_authorization(authorization_code: string | null, cancellable: Gio.Cancellable | null): boolean
+    request_authorization(authorization_code: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronous version of gdata_oauth2_authorizer_request_authorization().
      * @param authorization_code code returned from the authentication page
      * @param cancellable an optional #GCancellable, or %NULL
      * @param callback a #GAsyncReadyCallback to call when authorization is finished
      */
-    request_authorization_async(authorization_code: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    request_authorization_async(authorization_code: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of request_authorization_async
 
@@ -14073,7 +14081,7 @@ export interface OAuth2Authorizer extends Authorizer {
      * @param cancellable an optional #GCancellable, or %NULL
      * @returns A Promise of: %TRUE if authorization was successful, %FALSE otherwise
      */
-    request_authorization_async(authorization_code: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    request_authorization_async(authorization_code: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes an asynchronous authorization operation started with
      * gdata_oauth2_authorizer_request_authorization_async().
@@ -14170,7 +14178,7 @@ export class OAuth2Authorizer extends GObject.Object {
      * @param service_type the #GType of a #GDataService subclass which the #GDataOAuth2Authorizer will be used with
      * @returns a new #GDataOAuth2Authorizer; unref with g_object_unref()
      */
-    constructor(client_id: string | null, client_secret: string | null, redirect_uri: string | null, service_type: GObject.GType) 
+    constructor(client_id: string, client_secret: string, redirect_uri: string, service_type: GObject.GType) 
     /**
      * Creates a new #GDataOAuth2Authorizer. The `client_id` must be unique for your
      * application, and as registered with Google, and the `client_secret` must be
@@ -14182,7 +14190,7 @@ export class OAuth2Authorizer extends GObject.Object {
      * @param service_type the #GType of a #GDataService subclass which the #GDataOAuth2Authorizer will be used with
      * @returns a new #GDataOAuth2Authorizer; unref with g_object_unref()
      */
-    static new(client_id: string | null, client_secret: string | null, redirect_uri: string | null, service_type: GObject.GType): OAuth2Authorizer
+    static new(client_id: string, client_secret: string, redirect_uri: string, service_type: GObject.GType): OAuth2Authorizer
     /**
      * Creates a new #GDataOAuth2Authorizer. The `client_id` must be unique for your
      * application, and as registered with Google, and the `client_secret` must be
@@ -14194,7 +14202,7 @@ export class OAuth2Authorizer extends GObject.Object {
      * @param authorization_domains  a non-empty list of #GDataAuthorizationDomains to be authorized against by the #GDataOAuth2Authorizer
      * @returns a new #GDataOAuth2Authorizer; unref with g_object_unref()
      */
-    static new_for_authorization_domains(client_id: string | null, client_secret: string | null, redirect_uri: string | null, authorization_domains: AuthorizationDomain[]): OAuth2Authorizer
+    static new_for_authorization_domains(client_id: string, client_secret: string, redirect_uri: string, authorization_domains: AuthorizationDomain[]): OAuth2Authorizer
     _init(config?: OAuth2Authorizer.ConstructorProperties): void
 }
 
@@ -14242,7 +14250,7 @@ export interface Parsable {
      * Returns the content type upon which the #GDataParsable is built. For example, `application/atom+xml` or `application/json`.
      * @returns the parsable's content type
      */
-    get_content_type(): string | null
+    get_content_type(): string
     /**
      * Builds a JSON representation of the #GDataParsable in its current state, such that it could be inserted on the server. The JSON
      * is valid for stand-alone use.
@@ -14310,7 +14318,7 @@ export class Parsable extends GObject.Object {
      * @param length the length of `json,` or -1
      * @returns a new #GDataParsable, or %NULL; unref with g_object_unref()
      */
-    static new_from_json(parsable_type: GObject.GType, json: string | null, length: number): Parsable
+    static new_from_json(parsable_type: GObject.GType, json: string, length: number): Parsable
     /**
      * Creates a new #GDataParsable subclass (of the given `parsable_type)` from the given `xml`.
      * 
@@ -14328,7 +14336,7 @@ export class Parsable extends GObject.Object {
      * @param length the length of `xml,` or -1
      * @returns a new #GDataParsable, or %NULL; unref with g_object_unref()
      */
-    static new_from_xml(parsable_type: GObject.GType, xml: string | null, length: number): Parsable
+    static new_from_xml(parsable_type: GObject.GType, xml: string, length: number): Parsable
     _init(config?: Parsable.ConstructorProperties): void
 }
 
@@ -14596,17 +14604,27 @@ export interface PicasaWebAlbum {
      * Gets the #GDataPicasaWebAlbum:album-id property.
      * @returns the album's ID
      */
+    get_id(): string
+
+    // Overloads of get_id
+
+    /**
+     * Returns the URN ID of the entry; a unique and permanent identifier for the object the entry represents.
+     * 
+     * The ID may be %NULL if and only if the #GDataEntry has been newly created, and hasn't yet been inserted on the server.
+     * @returns the entry's ID, or %NULL
+     */
     get_id(): string | null
     /**
      * Gets the #GDataPicasaWebAlbum:location property.
      * @returns the album's location, or %NULL
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Gets the #GDataPicasaWebAlbum:nickname property.
      * @returns the album owner's nickname
      */
-    get_nickname(): string | null
+    get_nickname(): string
     /**
      * Gets the #GDataPicasaWebAlbum:num-photos property.
      * @returns the number of photos currently in the album
@@ -14638,7 +14656,7 @@ export interface PicasaWebAlbum {
      * Gets the #GDataPicasaWebAlbum:user property.
      * @returns the album owner's username
      */
-    get_user(): string | null
+    get_user(): string
     /**
      * Gets the #GDataPicasaWebAlbum:visibility property.
      * @returns the album's visibility level
@@ -14893,14 +14911,14 @@ export class PicasaWebComment extends Comment {
      * @param id the comment's ID, or %NULL
      * @returns a new #GDataPicasaWebComment; unref with g_object_unref()
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Creates a new #GDataPicasaWebComment with the given ID and default properties.
      * @constructor 
      * @param id the comment's ID, or %NULL
      * @returns a new #GDataPicasaWebComment; unref with g_object_unref()
      */
-    static new(id: string | null): PicasaWebComment
+    static new(id: string): PicasaWebComment
 
     // Overloads of new
 
@@ -15360,17 +15378,17 @@ export interface PicasaWebFile extends Commentable {
      * Gets the #GDataPicasaWebFile:album-id property. This is in the same form as returned by gdata_picasaweb_album_get_id().
      * @returns the ID of the album containing the #GDataPicasaWebFile
      */
-    get_album_id(): string | null
+    get_album_id(): string
     /**
      * Gets the #GDataPicasaWebFile:caption property.
      * @returns the file's descriptive caption, or %NULL
      */
-    get_caption(): string | null
+    get_caption(): string
     /**
      * Gets the #GDataPicasaWebFile:checksum property.
      * @returns the checksum assigned to this file, or %NULL
      */
-    get_checksum(): string | null
+    get_checksum(): string
     /**
      * Gets the #GDataPicasaWebFile:comment-count property.
      * @returns the number of comments on the file
@@ -15391,7 +15409,7 @@ export interface PicasaWebFile extends Commentable {
      * Gets the #GDataPicasaWebFile:credit property.
      * @returns the nickname of the user credited with this file
      */
-    get_credit(): string | null
+    get_credit(): string
     /**
      * Gets the #GDataPicasaWebFile:distance property.
      * @returns the distance recorded in the photo's EXIF, or <code class="literal">-1</code> if unknown
@@ -15431,12 +15449,22 @@ export interface PicasaWebFile extends Commentable {
      * Gets the #GDataPicasaWebFile:file-id property.
      * @returns the file's ID
      */
+    get_id(): string
+
+    // Overloads of get_id
+
+    /**
+     * Returns the URN ID of the entry; a unique and permanent identifier for the object the entry represents.
+     * 
+     * The ID may be %NULL if and only if the #GDataEntry has been newly created, and hasn't yet been inserted on the server.
+     * @returns the entry's ID, or %NULL
+     */
     get_id(): string | null
     /**
      * Gets the #GDataPicasaWebFile:image-unique-id property.
      * @returns the photo's unique EXIF identifier, or %NULL
      */
-    get_image_unique_id(): string | null
+    get_image_unique_id(): string
     /**
      * Gets the #GDataPicasaWebFile:iso property.
      * @returns the ISO speed, or <code class="literal">-1</code> if unknown
@@ -15446,12 +15474,12 @@ export interface PicasaWebFile extends Commentable {
      * Gets the #GDataPicasaWebFile:make property.
      * @returns the name of the manufacturer of the camera, or %NULL if unknown
      */
-    get_make(): string | null
+    get_make(): string
     /**
      * Gets the #GDataPicasaWebFile:model property.
      * @returns the model name of the camera, or %NULL if unknown
      */
-    get_model(): string | null
+    get_model(): string
     /**
      * Gets the #GDataPicasaWebFile:rotation property.
      * @returns the image's rotation, in degrees
@@ -15486,12 +15514,12 @@ export interface PicasaWebFile extends Commentable {
      * Gets the #GDataPicasaWebFile:version property.
      * @returns the file's version number, or %NULL
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Gets the #GDataPicasaWebFile:video-status property.
      * @returns the status of this video ("pending", "ready", "final" or "failed"), or %NULL
      */
-    get_video_status(): string | null
+    get_video_status(): string
     /**
      * Gets the #GDataPicasaWebFile:width property.
      * @returns the width of the image or video, in pixels
@@ -15501,7 +15529,7 @@ export interface PicasaWebFile extends Commentable {
      * Sets the #GDataPicasaWebFile:album-id property, effectively moving the file to the album.
      * @param album_id the ID of the new album for this file
      */
-    set_album_id(album_id: string | null): void
+    set_album_id(album_id: string): void
     /**
      * Sets the #GDataPicasaWebFile:caption property to `caption`.
      * 
@@ -15829,22 +15857,22 @@ export interface PicasaWebQuery {
      * Gets the #GDataPicasaWebQuery:image-size property.
      * @returns the currently set desired image size for retrieval, or %NULL
      */
-    get_image_size(): string | null
+    get_image_size(): string
     /**
      * Gets the #GDataPicasaWebQuery:location property.
      * @returns a location which returned objects must be near, or %NULL
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Gets the #GDataPicasaWebQuery:tag property.
      * @returns a tag which retrieved objects must have, or %NULL
      */
-    get_tag(): string | null
+    get_tag(): string
     /**
      * Gets the #GDataPicasaWebQuery:thumbnail-size property.
      * @returns a comma-separated list of thumbnail sizes to retrieve, or %NULL
      */
-    get_thumbnail_size(): string | null
+    get_thumbnail_size(): string
     /**
      * Gets the #GDataPicasaWebQuery:visibility property.
      * @returns the visibility of the objects to retrieve, or <code class="literal">0</code> to retrieve all objects
@@ -16197,7 +16225,7 @@ export interface PicasaWebService {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a #GDataUploadStream to write the file data to, or %NULL; unref with g_object_unref()
      */
-    upload_file(album: PicasaWebAlbum | null, file_entry: PicasaWebFile, slug: string | null, content_type: string | null, cancellable: Gio.Cancellable | null): UploadStream
+    upload_file(album: PicasaWebAlbum | null, file_entry: PicasaWebFile, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream
 
     // Class property signals of GData-0.0.GData.PicasaWebService
 
@@ -16353,7 +16381,7 @@ export interface PicasaWebUser {
      * Gets the #GDataPicasaWebUser:nickname property.
      * @returns the nickname of the feed's user's nickname, or %NULL
      */
-    get_nickname(): string | null
+    get_nickname(): string
     /**
      * Gets the #GDataPicasaWebUser:quota-current property.  Note that
      * this information is not available when accessing feeds which we
@@ -16372,12 +16400,12 @@ export interface PicasaWebUser {
      * Gets the #GDataPicasaWebUser:thumbnail-uri property.
      * @returns the URI for the thumbnail of the account, or %NULL
      */
-    get_thumbnail_uri(): string | null
+    get_thumbnail_uri(): string
     /**
      * Gets the #GDataPicasaWebUser:user property.
      * @returns the feed's user, or %NULL
      */
-    get_user(): string | null
+    get_user(): string
 
     // Class property signals of GData-0.0.GData.PicasaWebUser
 
@@ -16729,17 +16757,17 @@ export interface Query {
      * Gets the #GDataQuery:author property.
      * @returns the author property, or %NULL if it is unset
      */
-    get_author(): string | null
+    get_author(): string
     /**
      * Gets the #GDataQuery:categories property.
      * @returns the categories property, or %NULL if it is unset
      */
-    get_categories(): string | null
+    get_categories(): string
     /**
      * Gets the #GDataQuery:etag property.
      * @returns the ETag property, or %NULL if it is unset
      */
-    get_etag(): string | null
+    get_etag(): string
     /**
      * Gets the #GDataQuery:max-results property.
      * @returns the maximum results property, or <code class="literal">0</code> if it is unset
@@ -16759,7 +16787,7 @@ export interface Query {
      * Gets the #GDataQuery:q property.
      * @returns the q property, or %NULL if it is unset
      */
-    get_q(): string | null
+    get_q(): string
     /**
      * Builds a query URI from the given base feed URI, using the properties of the #GDataQuery. This function will take care
      * of all necessary URI escaping, so it should <emphasis>not</emphasis> be done beforehand.
@@ -16768,7 +16796,7 @@ export interface Query {
      * @param feed_uri the feed URI on which to build the query URI
      * @returns a query URI; free with g_free()
      */
-    get_query_uri(feed_uri: string | null): string | null
+    get_query_uri(feed_uri: string): string | null
     /**
      * Gets the #GDataQuery:start-index property.
      * @returns the start index property, or <code class="literal">0</code> if it is unset
@@ -16880,7 +16908,7 @@ export interface Query {
 
     // Own virtual methods of GData-0.0.GData.Query
 
-    vfunc_get_query_uri(feed_uri: string | null, query_uri: GLib.String, params_started: boolean): void
+    vfunc_get_query_uri(feed_uri: string, query_uri: GLib.String, params_started: boolean): void
 
     // Class property signals of GData-0.0.GData.Query
 
@@ -17139,7 +17167,7 @@ export interface Service {
      * Returns the locale currently being used for network requests, or %NULL if the locale is the default.
      * @returns the current locale
      */
-    get_locale(): string | null
+    get_locale(): string
     /**
      * Gets the #GProxyResolver on the #GDataService's #SoupSession.
      * @returns a #GProxyResolver, or %NULL
@@ -17174,7 +17202,7 @@ export interface Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns an updated #GDataEntry, or %NULL; unref with g_object_unref()
      */
-    insert_entry(domain: AuthorizationDomain | null, upload_uri: string | null, entry: Entry, cancellable: Gio.Cancellable | null): Entry
+    insert_entry(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null): Entry
     /**
      * Inserts `entry` by uploading it to the online service at `upload_uri`. `self,` `upload_uri` and
      * `entry` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -17189,7 +17217,7 @@ export interface Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when insertion is finished, or %NULL
      */
-    insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string | null, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of insert_entry_async
 
@@ -17209,7 +17237,7 @@ export interface Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns A Promise of: an updated #GDataEntry, or %NULL; unref with g_object_unref()
      */
-    insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string | null, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
+    insert_entry_async(domain: AuthorizationDomain | null, upload_uri: string, entry: Entry, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
     /**
      * Finishes an asynchronous entry insertion operation started with gdata_service_insert_entry_async().
      * @param async_result a #GAsyncResult
@@ -17253,7 +17281,7 @@ export interface Service {
      * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
      * @returns a #GDataFeed of query results, or %NULL; unref with g_object_unref()
      */
-    query(domain: AuthorizationDomain | null, feed_uri: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed
+    query(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): Feed
     /**
      * Queries the service's `feed_uri` feed to build a #GDataFeed. `self,` `feed_uri` and
      * `query` are all reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -17270,7 +17298,7 @@ export interface Service {
      * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the query is finished
      */
-    query_async(domain: AuthorizationDomain | null, feed_uri: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    query_async(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of query_async
 
@@ -17292,7 +17320,7 @@ export interface Service {
      * @param progress_callback a #GDataQueryProgressCallback to call when an entry is loaded, or %NULL
      * @returns A Promise of: a #GDataFeed of query results, or %NULL; unref with g_object_unref()
      */
-    query_async(domain: AuthorizationDomain | null, feed_uri: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed>
+    query_async(domain: AuthorizationDomain | null, feed_uri: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, progress_callback: QueryProgressCallback | null): globalThis.Promise<Feed>
     /**
      * Finishes an asynchronous query operation started with gdata_service_query_async().
      * @param async_result a #GAsyncResult
@@ -17315,7 +17343,7 @@ export interface Service {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a #GDataEntry, or %NULL; unref with g_object_unref()
      */
-    query_single_entry(domain: AuthorizationDomain | null, entry_id: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): Entry
+    query_single_entry(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): Entry
     /**
      * Retrieves information about the single entry with the given `entry_id`. `entry_id` should be as returned by
      * gdata_entry_get_id(). `self,` `query` and `entry_id` are reffed/copied when this
@@ -17332,7 +17360,7 @@ export interface Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the query is finished
      */
-    query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of query_single_entry_async
 
@@ -17354,7 +17382,7 @@ export interface Service {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns A Promise of: a #GDataEntry, or %NULL; unref with g_object_unref()
      */
-    query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string | null, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
+    query_single_entry_async(domain: AuthorizationDomain | null, entry_id: string, query: Query | null, entry_type: GObject.GType, cancellable: Gio.Cancellable | null): globalThis.Promise<Entry>
     /**
      * Finishes an asynchronous query operation for a single entry, as started with gdata_service_query_single_entry_async().
      * @param async_result a #GAsyncResult
@@ -17453,7 +17481,7 @@ export interface Service {
     // Own virtual methods of GData-0.0.GData.Service
 
     vfunc_append_query_headers(domain: AuthorizationDomain, message: Soup.Message): void
-    vfunc_parse_error_response(operation_type: OperationType, status: number, reason_phrase: string | null, response_body: string | null, length: number): void
+    vfunc_parse_error_response(operation_type: OperationType, status: number, reason_phrase: string, response_body: string, length: number): void
 
     // Class property signals of GData-0.0.GData.Service
 
@@ -18299,7 +18327,7 @@ export interface TasksTask {
      * Sets the #GDataTasksTask:position property.
      * @param position position of the task in the list
      */
-    set_position(position: string | null): void
+    set_position(position: string): void
     /**
      * Sets the #GDataTasksTask:status property to the new status, `status`.
      * 
@@ -18693,7 +18721,7 @@ export interface UploadStream {
      * Gets the content type of the file being uploaded.
      * @returns the content type of the file being uploaded
      */
-    get_content_type(): string | null
+    get_content_type(): string
     /**
      * Gets the entry being used to upload metadata, if one was passed to gdata_upload_stream_new().
      * @returns the entry used for metadata, or %NULL
@@ -18703,7 +18731,7 @@ export interface UploadStream {
      * Gets the HTTP request method being used to upload the file, as passed to gdata_upload_stream_new().
      * @returns the HTTP request method in use
      */
-    get_method(): string | null
+    get_method(): string
     /**
      * Returns the server's response to the upload operation performed by the #GDataUploadStream. If the operation
      * is still underway, or the server's response hasn't been received yet, %NULL is returned and `length` is set to <code class="literal">-1</code>.
@@ -18719,7 +18747,7 @@ export interface UploadStream {
      * of gdata_upload_stream_get_response(), rather than g_output_stream_is_closed().
      * @returns the server's response to the upload, or %NULL
      */
-    get_response(): [ /* returnType */ string | null, /* length */ number ]
+    get_response(): [ /* returnType */ string, /* length */ number ]
     /**
      * Gets the service used to authorize the upload, as passed to gdata_upload_stream_new().
      * @returns the #GDataService used to authorize the upload
@@ -18729,12 +18757,12 @@ export interface UploadStream {
      * Gets the slug (filename) of the file being uploaded.
      * @returns the slug of the file being uploaded
      */
-    get_slug(): string | null
+    get_slug(): string
     /**
      * Gets the URI the file is being uploaded to, as passed to gdata_upload_stream_new().
      * @returns the URI which the file is being uploaded to
      */
-    get_upload_uri(): string | null
+    get_upload_uri(): string
 
     // Class property signals of GData-0.0.GData.UploadStream
 
@@ -18819,7 +18847,7 @@ export class UploadStream extends Gio.OutputStream {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a new #GOutputStream, or %NULL; unref with g_object_unref()
      */
-    constructor(service: Service, domain: AuthorizationDomain | null, method: string | null, upload_uri: string | null, entry: Entry | null, slug: string | null, content_type: string | null, cancellable: Gio.Cancellable | null) 
+    constructor(service: Service, domain: AuthorizationDomain | null, method: string, upload_uri: string, entry: Entry | null, slug: string, content_type: string, cancellable: Gio.Cancellable | null) 
     /**
      * Creates a new #GDataUploadStream, allowing a file to be uploaded from a GData service using standard #GOutputStream API.
      * 
@@ -18854,7 +18882,7 @@ export class UploadStream extends Gio.OutputStream {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a new #GOutputStream, or %NULL; unref with g_object_unref()
      */
-    static new(service: Service, domain: AuthorizationDomain | null, method: string | null, upload_uri: string | null, entry: Entry | null, slug: string | null, content_type: string | null, cancellable: Gio.Cancellable | null): UploadStream
+    static new(service: Service, domain: AuthorizationDomain | null, method: string, upload_uri: string, entry: Entry | null, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream
     /**
      * Creates a new resumable #GDataUploadStream, allowing a file to be uploaded from a GData service using standard #GOutputStream API. The upload will
      * use GData's resumable upload API, so should be more reliable than a normal upload (especially if the file is large). See the
@@ -18894,7 +18922,7 @@ export class UploadStream extends Gio.OutputStream {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a new #GOutputStream, or %NULL; unref with g_object_unref()
      */
-    static new_resumable(service: Service, domain: AuthorizationDomain | null, method: string | null, upload_uri: string | null, entry: Entry | null, slug: string | null, content_type: string | null, content_length: number, cancellable: Gio.Cancellable | null): UploadStream
+    static new_resumable(service: Service, domain: AuthorizationDomain | null, method: string, upload_uri: string, entry: Entry | null, slug: string, content_type: string, content_length: number, cancellable: Gio.Cancellable | null): UploadStream
     _init(config?: UploadStream.ConstructorProperties): void
 }
 
@@ -18941,7 +18969,7 @@ export interface YouTubeCategory extends Comparable {
      * @param region a two-letter region ID
      * @returns whether the category is browsable in @region
      */
-    is_browsable(region: string | null): boolean
+    is_browsable(region: string): boolean
 
     // Class property signals of GData-0.0.GData.YouTubeCategory
 
@@ -19038,7 +19066,7 @@ export interface YouTubeComment {
      * Gets the #GDataYouTubeComment:parent-comment-uri property.
      * @returns the parent comment URI, or %NULL
      */
-    get_parent_comment_uri(): string | null
+    get_parent_comment_uri(): string
     /**
      * Sets the #GDataYouTubeComment:parent-comment-uri property to `parent_comment_uri`.
      * 
@@ -19049,7 +19077,7 @@ export interface YouTubeComment {
      * documentation</ulink> for more information.
      * @param parent_comment_uri a new parent comment URI, or %NULL
      */
-    set_parent_comment_uri(parent_comment_uri: string | null): void
+    set_parent_comment_uri(parent_comment_uri: string): void
 
     // Class property signals of GData-0.0.GData.YouTubeComment
 
@@ -19115,14 +19143,14 @@ export class YouTubeComment extends Comment {
      * @param id the comment's ID, or %NULL
      * @returns a new #GDataYouTubeComment; unref with g_object_unref()
      */
-    constructor(id: string | null) 
+    constructor(id: string) 
     /**
      * Creates a new #GDataYouTubeComment with the given ID and default properties.
      * @constructor 
      * @param id the comment's ID, or %NULL
      * @returns a new #GDataYouTubeComment; unref with g_object_unref()
      */
-    static new(id: string | null): YouTubeComment
+    static new(id: string): YouTubeComment
 
     // Overloads of new
 
@@ -19456,7 +19484,7 @@ export interface YouTubeQuery {
      * Gets the #GDataYouTubeQuery:license property.
      * @returns the license property, or %NULL if it is unset
      */
-    get_license(): string | null
+    get_license(): string
     /**
      * Gets the location-based properties of the #GDataYouTubeQuery<!-- -->: #GDataYouTubeQuery:latitude, #GDataYouTubeQuery:longitude,
      * #GDataYouTubeQuery:location-radius and #GDataYouTubeQuery:has-location.
@@ -19466,12 +19494,12 @@ export interface YouTubeQuery {
      * Gets the #GDataYouTubeQuery:order-by property.
      * @returns the order by property, or %NULL if it is unset
      */
-    get_order_by(): string | null
+    get_order_by(): string
     /**
      * Gets the #GDataYouTubeQuery:restriction property.
      * @returns the restriction property, or %NULL if it is unset
      */
-    get_restriction(): string | null
+    get_restriction(): string
     /**
      * Gets the #GDataYouTubeQuery:safe-search property.
      * @returns the safe search property
@@ -19741,7 +19769,7 @@ export interface YouTubeService extends Batchable {
      * Gets the #GDataYouTubeService:developer-key property from the #GDataYouTubeService.
      * @returns the developer key property
      */
-    get_developer_key(): string | null
+    get_developer_key(): string
     /**
      * Queries the service for videos related to `video`. The algorithm determining which videos are related is on the server side.
      * 
@@ -19845,7 +19873,7 @@ export interface YouTubeService extends Batchable {
      * @param cancellable a #GCancellable for the entire upload stream, or %NULL
      * @returns a #GDataUploadStream to write the video data to, or %NULL; unref with g_object_unref()
      */
-    upload_video(video: YouTubeVideo, slug: string | null, content_type: string | null, cancellable: Gio.Cancellable | null): UploadStream
+    upload_video(video: YouTubeVideo, slug: string, content_type: string, cancellable: Gio.Cancellable | null): UploadStream
 
     // Class property signals of GData-0.0.GData.YouTubeService
 
@@ -19893,7 +19921,7 @@ export class YouTubeService extends Service {
      * @param authorizer a #GDataAuthorizer to authorize the service's requests, or %NULL
      * @returns a new #GDataYouTubeService, or %NULL; unref with g_object_unref()
      */
-    constructor(developer_key: string | null, authorizer: Authorizer | null) 
+    constructor(developer_key: string, authorizer: Authorizer | null) 
     /**
      * Creates a new #GDataYouTubeService using the given #GDataAuthorizer. If `authorizer` is %NULL, all requests are made as an unauthenticated user.
      * The `developer_key` must be unique for your application, and as
@@ -19903,7 +19931,7 @@ export class YouTubeService extends Service {
      * @param authorizer a #GDataAuthorizer to authorize the service's requests, or %NULL
      * @returns a new #GDataYouTubeService, or %NULL; unref with g_object_unref()
      */
-    static new(developer_key: string | null, authorizer: Authorizer | null): YouTubeService
+    static new(developer_key: string, authorizer: Authorizer | null): YouTubeService
     _init(config?: YouTubeService.ConstructorProperties): void
     /**
      * The primary #GDataAuthorizationDomain for interacting with YouTube. This will not normally need to be used, as it's used internally
@@ -20032,22 +20060,22 @@ export interface YouTubeState {
      * Gets the #GDataYouTubeState:help-uri property.
      * @returns the help URI, or %NULL
      */
-    get_help_uri(): string | null
+    get_help_uri(): string
     /**
      * Gets the #GDataYouTubeState:message property.
      * @returns the status message, or %NULL
      */
-    get_message(): string | null
+    get_message(): string
     /**
      * Gets the #GDataYouTubeState:name property.
      * @returns the status name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the #GDataYouTubeState:reason-code property.
      * @returns the status reason code, or %NULL
      */
-    get_reason_code(): string | null
+    get_reason_code(): string
 
     // Class property signals of GData-0.0.GData.YouTubeState
 
@@ -20367,12 +20395,12 @@ export interface YouTubeVideo extends Commentable {
      * @param action the action whose permission should be returned
      * @returns the permission associated with @action, or %GDATA_YOUTUBE_PERMISSION_DENIED
      */
-    get_access_control(action: string | null): YouTubePermission
+    get_access_control(action: string): YouTubePermission
     /**
      * Gets the #GDataYouTubeVideo:aspect-ratio property.
      * @returns the aspect ratio property, or %NULL
      */
-    get_aspect_ratio(): string | null
+    get_aspect_ratio(): string
     /**
      * Gets the #GDataYouTubeVideo:category property.
      * @returns a #GDataMediaCategory giving the video's single and mandatory category
@@ -20387,7 +20415,7 @@ export interface YouTubeVideo extends Commentable {
      * Gets the #GDataYouTubeVideo:description property.
      * @returns the video's long text description, or %NULL
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the #GDataYouTubeVideo:duration property.
      * @returns the video duration in seconds, or <code class="literal">0</code> if unknown
@@ -20407,7 +20435,7 @@ export interface YouTubeVideo extends Commentable {
      * Gets the #GDataYouTubeVideo:location property.
      * @returns a string describing the video's location, or %NULL
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Returns the rating of the given type for the video, if one exists. For example, this could be a film rating awarded by the MPAA; or a simple
      * rating specifying whether the video contains adult content.
@@ -20420,12 +20448,12 @@ export interface YouTubeVideo extends Commentable {
      * @param rating_type the type of rating to retrieve
      * @returns the rating of the video for the given @rating_type, or %NULL if the video isn't rated with that type (or the type is unknown)
      */
-    get_media_rating(rating_type: string | null): string | null
+    get_media_rating(rating_type: string): string
     /**
      * Gets the #GDataYouTubeVideo:player-uri property.
      * @returns a URI where the video is playable in a web browser, or %NULL
      */
-    get_player_uri(): string | null
+    get_player_uri(): string
     /**
      * Gets various properties of the ratings on the video.
      * 
@@ -20468,7 +20496,7 @@ export interface YouTubeVideo extends Commentable {
      * @param country an ISO 3166 two-letter country code to check
      * @returns %TRUE if the video is restricted in @country, %FALSE otherwise
      */
-    is_restricted_in_country(country: string | null): boolean
+    is_restricted_in_country(country: string): boolean
     /**
      * Sets the permission associated with `action` on the #GDataYouTubeVideo, allowing restriction or derestriction of various
      * operations on YouTube videos.
@@ -20477,7 +20505,7 @@ export interface YouTubeVideo extends Commentable {
      * @param action the action whose permission is being set
      * @param permission the permission to give to the action
      */
-    set_access_control(action: string | null, permission: YouTubePermission): void
+    set_access_control(action: string, permission: YouTubePermission): void
     /**
      * Sets the #GDataYouTubeVideo:aspect-ratio property to specify the video's aspect ratio.
      * If `aspect_ratio` is %NULL, the property will be unset.
@@ -20687,7 +20715,7 @@ export class YouTubeVideo extends Entry {
      * @param video_uri a YouTube video player URI
      * @returns the video ID, or %NULL; free with g_free()
      */
-    static get_video_id_from_uri(video_uri: string | null): string | null
+    static get_video_id_from_uri(video_uri: string): string | null
 }
 
 export interface APPCategoriesClass {
@@ -21091,7 +21119,7 @@ export class Color {
      * @param hexadecimal a hexadecimal color string
      * @returns %TRUE on success, %FALSE otherwise
      */
-    static from_hexadecimal(hexadecimal: string | null): [ /* returnType */ boolean, /* color */ Color ]
+    static from_hexadecimal(hexadecimal: string): [ /* returnType */ boolean, /* color */ Color ]
 }
 
 export interface CommentClass {
@@ -21583,13 +21611,13 @@ export interface EntryClass {
      * @field 
      */
     parent: ParsableClass
-    get_entry_uri: (id: string | null) => string | null
+    get_entry_uri: (id: string) => string | null
     /**
      * the term for this entry's kind category (see the
      * <ulink type="http" url="http://code.google.com/apis/gdata/docs/2.0/elements.html#Introduction">documentation on kinds</ulink>)
      * @field 
      */
-    kind_term: string | null
+    kind_term: string
 }
 
 /**
@@ -22255,17 +22283,17 @@ export interface ParsableClass {
     parse_json: (parsable: Parsable, reader: Json.Reader) => boolean
     post_parse_json: (parsable: Parsable) => boolean
     get_json: (parsable: Parsable, builder: Json.Builder) => void
-    get_content_type: () => string | null
+    get_content_type: () => string
     /**
      * the name of the XML element which represents this parsable
      * @field 
      */
-    element_name: string | null
+    element_name: string
     /**
      * the prefix of the XML namespace used for the parsable
      * @field 
      */
-    element_namespace: string | null
+    element_namespace: string
 }
 
 /**
@@ -22442,7 +22470,7 @@ export interface QueryClass {
 
     // Own fields of GData-0.0.GData.QueryClass
 
-    get_query_uri: (self: Query, feed_uri: string | null, query_uri: GLib.String, params_started: boolean) => void
+    get_query_uri: (self: Query, feed_uri: string, query_uri: GLib.String, params_started: boolean) => void
 }
 
 /**
@@ -22479,14 +22507,14 @@ export interface ServiceClass {
      * the version of the GData API used by the service (typically <code class="literal">2</code>)
      * @field 
      */
-    api_version: string | null
+    api_version: string
     /**
      * the #GType of the feed class (subclass of #GDataFeed) to use for query results from this service
      * @field 
      */
     feed_type: GObject.GType
     append_query_headers: (self: Service, domain: AuthorizationDomain, message: Soup.Message) => void
-    parse_error_response: (self: Service, operation_type: OperationType, status: number, reason_phrase: string | null, response_body: string | null, length: number) => void
+    parse_error_response: (self: Service, operation_type: OperationType, status: number, reason_phrase: string, response_body: string, length: number) => void
 }
 
 /**

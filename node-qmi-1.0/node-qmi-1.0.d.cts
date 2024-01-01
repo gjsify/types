@@ -12044,39 +12044,39 @@ export const CID_NONE: number
 /**
  * Symbol defining the #QmiClient:client-cid property.
  */
-export const CLIENT_CID: string | null
+export const CLIENT_CID: string
 /**
  * Symbol defining the #QmiClient:client-device property.
  */
-export const CLIENT_DEVICE: string | null
+export const CLIENT_DEVICE: string
 /**
  * Symbol defining the #QmiClient:client-service property.
  */
-export const CLIENT_SERVICE: string | null
+export const CLIENT_SERVICE: string
 /**
  * Symbol defining the #QmiClient:client-valid property.
  */
-export const CLIENT_VALID: string | null
+export const CLIENT_VALID: string
 /**
  * Symbol defining the #QmiClient:client-version-major property.
  */
-export const CLIENT_VERSION_MAJOR: string | null
+export const CLIENT_VERSION_MAJOR: string
 /**
  * Symbol defining the #QmiClient:client-version-minor property.
  */
-export const CLIENT_VERSION_MINOR: string | null
+export const CLIENT_VERSION_MINOR: string
 /**
  * Symbol defining the common string prefix used for all libqmi errors in DBus.
  */
-export const DBUS_ERROR_PREFIX: string | null
+export const DBUS_ERROR_PREFIX: string
 /**
  * Symbol defining the #QmiDevice:device-consecutive-timeouts property.
  */
-export const DEVICE_CONSECUTIVE_TIMEOUTS: string | null
+export const DEVICE_CONSECUTIVE_TIMEOUTS: string
 /**
  * Symbol defining the #QmiDevice:device-file property.
  */
-export const DEVICE_FILE: string | null
+export const DEVICE_FILE: string
 /**
  * Symbol defining the maximum supported mux id.
  */
@@ -12097,27 +12097,27 @@ export const DEVICE_MUX_ID_UNBOUND: number
  * This property is only available when the library is built with QRTR support.
  * </para></note>
  */
-export const DEVICE_NODE: string | null
+export const DEVICE_NODE: string
 /**
  * Symbol defining the #QmiDevice:device-no-file-check property.
  */
-export const DEVICE_NO_FILE_CHECK: string | null
+export const DEVICE_NO_FILE_CHECK: string
 /**
  * Symbol defining the #QmiDevice:device-proxy-path property.
  */
-export const DEVICE_PROXY_PATH: string | null
+export const DEVICE_PROXY_PATH: string
 /**
  * Symbol defining the #QmiDevice::indication signal.
  */
-export const DEVICE_SIGNAL_INDICATION: string | null
+export const DEVICE_SIGNAL_INDICATION: string
 /**
  * Symbol defining the #QmiDevice::device-removed signal.
  */
-export const DEVICE_SIGNAL_REMOVED: string | null
+export const DEVICE_SIGNAL_REMOVED: string
 /**
  * Symbol defining the #QmiDevice:device-wwan-iface property.
  */
-export const DEVICE_WWAN_IFACE: string | null
+export const DEVICE_WWAN_IFACE: string
 /**
  * First byte of every QMI message.
  */
@@ -12129,11 +12129,11 @@ export const MESSAGE_VENDOR_GENERIC: number
 /**
  * Symbol defining the #QmiProxy:qmi-proxy-n-clients property.
  */
-export const PROXY_N_CLIENTS: string | null
+export const PROXY_N_CLIENTS: string
 /**
  * Symbol defining the default abstract socket name where the #QmiProxy will listen.
  */
-export const PROXY_SOCKET_PATH: string | null
+export const PROXY_SOCKET_PATH: string
 /**
  * The TX/RX rate information is unavailable or cannot be measured.
  */
@@ -12143,14 +12143,14 @@ export const WDS_RATE_UNAVAILABLE: number
  * @param val a QmiCoreError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function coreErrorGetString(val: CoreError): string | null
+export function coreErrorGetString(val: CoreError): string
 export function coreErrorQuark(): GLib.Quark
 /**
  * Gets the nickname string for the #QmiDataEndpointType specified at `val`.
  * @param val a QmiDataEndpointType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dataEndpointTypeGetString(val: DataEndpointType): string | null
+export function dataEndpointTypeGetString(val: DataEndpointType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDeviceAddLinkFlags in `mask`.
@@ -12163,7 +12163,7 @@ export function deviceAddLinkFlagsBuildStringFromMask(mask: DeviceAddLinkFlags):
  * @param val a QmiDeviceExpectedDataFormat.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function deviceExpectedDataFormatGetString(val: DeviceExpectedDataFormat): string | null
+export function deviceExpectedDataFormatGetString(val: DeviceExpectedDataFormat): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDeviceOpenFlags in `mask`.
@@ -12183,7 +12183,7 @@ export function deviceReleaseClientFlagsBuildStringFromMask(mask: DeviceReleaseC
  * @param val a QmiDmsActivationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsActivationStateGetString(val: DmsActivationState): string | null
+export function dmsActivationStateGetString(val: DmsActivationState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDmsBandCapability in `mask`.
@@ -12196,37 +12196,37 @@ export function dmsBandCapabilityBuildStringFromMask(mask: DmsBandCapability): s
  * @param val a QmiDmsBootImageDownloadMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsBootImageDownloadModeGetString(val: DmsBootImageDownloadMode): string | null
+export function dmsBootImageDownloadModeGetString(val: DmsBootImageDownloadMode): string
 /**
  * Gets the nickname string for the #QmiDmsDataServiceCapability specified at `val`.
  * @param val a QmiDmsDataServiceCapability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsDataServiceCapabilityGetString(val: DmsDataServiceCapability): string | null
+export function dmsDataServiceCapabilityGetString(val: DmsDataServiceCapability): string
 /**
  * Gets the nickname string for the #QmiDmsFirmwareImageType specified at `val`.
  * @param val a QmiDmsFirmwareImageType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsFirmwareImageTypeGetString(val: DmsFirmwareImageType): string | null
+export function dmsFirmwareImageTypeGetString(val: DmsFirmwareImageType): string
 /**
  * Gets the nickname string for the #QmiDmsFoxconnDeviceMode specified at `val`.
  * @param val a QmiDmsFoxconnDeviceMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsFoxconnDeviceModeGetString(val: DmsFoxconnDeviceMode): string | null
+export function dmsFoxconnDeviceModeGetString(val: DmsFoxconnDeviceMode): string
 /**
  * Gets the nickname string for the #QmiDmsFoxconnFirmwareVersionType specified at `val`.
  * @param val a QmiDmsFoxconnFirmwareVersionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsFoxconnFirmwareVersionTypeGetString(val: DmsFoxconnFirmwareVersionType): string | null
+export function dmsFoxconnFirmwareVersionTypeGetString(val: DmsFoxconnFirmwareVersionType): string
 /**
  * Gets the nickname string for the #QmiDmsHpDeviceMode specified at `val`.
  * @param val a QmiDmsHpDeviceMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsHpDeviceModeGetString(val: DmsHpDeviceMode): string | null
+export function dmsHpDeviceModeGetString(val: DmsHpDeviceMode): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDmsLteBandCapability in `mask`.
@@ -12239,7 +12239,7 @@ export function dmsLteBandCapabilityBuildStringFromMask(mask: DmsLteBandCapabili
  * @param val a QmiDmsMacType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsMacTypeGetString(val: DmsMacType): string | null
+export function dmsMacTypeGetString(val: DmsMacType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDmsOfflineReason in `mask`.
@@ -12252,7 +12252,7 @@ export function dmsOfflineReasonBuildStringFromMask(mask: DmsOfflineReason): str
  * @param val a QmiDmsOperatingMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsOperatingModeGetString(val: DmsOperatingMode): string | null
+export function dmsOperatingModeGetString(val: DmsOperatingMode): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDmsPowerState in `mask`.
@@ -12265,73 +12265,73 @@ export function dmsPowerStateBuildStringFromMask(mask: DmsPowerState): string | 
  * @param val a QmiDmsRadioInterface.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsRadioInterfaceGetString(val: DmsRadioInterface): string | null
+export function dmsRadioInterfaceGetString(val: DmsRadioInterface): string
 /**
  * Gets the nickname string for the #QmiDmsSimCapability specified at `val`.
  * @param val a QmiDmsSimCapability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsSimCapabilityGetString(val: DmsSimCapability): string | null
+export function dmsSimCapabilityGetString(val: DmsSimCapability): string
 /**
  * Gets a text description of the Sierra Wireless USB composition.
  * @param value a #QmiDmsSwiUsbComposition.
  * @returns a string.
  */
-export function dmsSwiUsbCompositionGetDescription(value: DmsSwiUsbComposition): string | null
+export function dmsSwiUsbCompositionGetDescription(value: DmsSwiUsbComposition): string
 /**
  * Gets the nickname string for the #QmiDmsSwiUsbComposition specified at `val`.
  * @param val a QmiDmsSwiUsbComposition.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsSwiUsbCompositionGetString(val: DmsSwiUsbComposition): string | null
+export function dmsSwiUsbCompositionGetString(val: DmsSwiUsbComposition): string
 /**
  * Gets the nickname string for the #QmiDmsTimeReferenceType specified at `val`.
  * @param val a QmiDmsTimeReferenceType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsTimeReferenceTypeGetString(val: DmsTimeReferenceType): string | null
+export function dmsTimeReferenceTypeGetString(val: DmsTimeReferenceType): string
 /**
  * Gets the nickname string for the #QmiDmsTimeSource specified at `val`.
  * @param val a QmiDmsTimeSource.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsTimeSourceGetString(val: DmsTimeSource): string | null
+export function dmsTimeSourceGetString(val: DmsTimeSource): string
 /**
  * Gets the nickname string for the #QmiDmsUimFacility specified at `val`.
  * @param val a QmiDmsUimFacility.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsUimFacilityGetString(val: DmsUimFacility): string | null
+export function dmsUimFacilityGetString(val: DmsUimFacility): string
 /**
  * Gets the nickname string for the #QmiDmsUimFacilityState specified at `val`.
  * @param val a QmiDmsUimFacilityState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsUimFacilityStateGetString(val: DmsUimFacilityState): string | null
+export function dmsUimFacilityStateGetString(val: DmsUimFacilityState): string
 /**
  * Gets the nickname string for the #QmiDmsUimPinId specified at `val`.
  * @param val a QmiDmsUimPinId.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsUimPinIdGetString(val: DmsUimPinId): string | null
+export function dmsUimPinIdGetString(val: DmsUimPinId): string
 /**
  * Gets the nickname string for the #QmiDmsUimPinStatus specified at `val`.
  * @param val a QmiDmsUimPinStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsUimPinStatusGetString(val: DmsUimPinStatus): string | null
+export function dmsUimPinStatusGetString(val: DmsUimPinStatus): string
 /**
  * Gets the nickname string for the #QmiDmsUimState specified at `val`.
  * @param val a QmiDmsUimState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dmsUimStateGetString(val: DmsUimState): string | null
+export function dmsUimStateGetString(val: DmsUimState): string
 /**
  * Gets the nickname string for the #QmiDsdApnType specified at `val`.
  * @param val a QmiDsdApnType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dsdApnTypeGetString(val: DsdApnType): string | null
+export function dsdApnTypeGetString(val: DsdApnType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDsdApnTypePreference in `mask`.
@@ -12344,13 +12344,13 @@ export function dsdApnTypePreferenceBuildStringFromMask(mask: DsdApnTypePreferen
  * @param val a QmiDsdDataSystemNetworkType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dsdDataSystemNetworkTypeGetString(val: DsdDataSystemNetworkType): string | null
+export function dsdDataSystemNetworkTypeGetString(val: DsdDataSystemNetworkType): string
 /**
  * Gets the nickname string for the #QmiDsdRadioAccessTechnology specified at `val`.
  * @param val a QmiDsdRadioAccessTechnology.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function dsdRadioAccessTechnologyGetString(val: DsdRadioAccessTechnology): string | null
+export function dsdRadioAccessTechnologyGetString(val: DsdRadioAccessTechnology): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiDsdSoMask in `mask`.
@@ -12363,25 +12363,25 @@ export function dsdSoMaskBuildStringFromMask(mask: DsdSoMask): string | null
  * @param val a QmiEndian.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function endianGetString(val: Endian): string | null
+export function endianGetString(val: Endian): string
 /**
  * Gets the nickname string for the #QmiFoxFirmwareVersionType specified at `val`.
  * @param val a QmiFoxFirmwareVersionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function foxFirmwareVersionTypeGetString(val: FoxFirmwareVersionType): string | null
+export function foxFirmwareVersionTypeGetString(val: FoxFirmwareVersionType): string
 /**
  * Gets the nickname string for the #QmiGasFirmwareListingMode specified at `val`.
  * @param val a QmiGasFirmwareListingMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function gasFirmwareListingModeGetString(val: GasFirmwareListingMode): string | null
+export function gasFirmwareListingModeGetString(val: GasFirmwareListingMode): string
 /**
  * Gets the nickname string for the #QmiGasUsbCompositionEndpointType specified at `val`.
  * @param val a QmiGasUsbCompositionEndpointType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function gasUsbCompositionEndpointTypeGetString(val: GasUsbCompositionEndpointType): string | null
+export function gasUsbCompositionEndpointTypeGetString(val: GasUsbCompositionEndpointType): string
 /**
  * Parses a #QmiMessage and builds a #QmiIndicationAtrReceivedOutput out of it.
  * The operation fails if the message is of the wrong type.
@@ -12786,7 +12786,7 @@ export function locDeleteSvInfoBuildStringFromMask(mask: LocDeleteSvInfo): strin
  * @param val a QmiLocEngineState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locEngineStateGetString(val: LocEngineState): string | null
+export function locEngineStateGetString(val: LocEngineState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiLocEventRegistrationFlag in `mask`.
@@ -12799,37 +12799,37 @@ export function locEventRegistrationFlagBuildStringFromMask(mask: LocEventRegist
  * @param val a QmiLocFixRecurrenceType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locFixRecurrenceTypeGetString(val: LocFixRecurrenceType): string | null
+export function locFixRecurrenceTypeGetString(val: LocFixRecurrenceType): string
 /**
  * Gets the nickname string for the #QmiLocHealthStatus specified at `val`.
  * @param val a QmiLocHealthStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locHealthStatusGetString(val: LocHealthStatus): string | null
+export function locHealthStatusGetString(val: LocHealthStatus): string
 /**
  * Gets the nickname string for the #QmiLocIndicationStatus specified at `val`.
  * @param val a QmiLocIndicationStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locIndicationStatusGetString(val: LocIndicationStatus): string | null
+export function locIndicationStatusGetString(val: LocIndicationStatus): string
 /**
  * Gets the nickname string for the #QmiLocIntermediateReportState specified at `val`.
  * @param val a QmiLocIntermediateReportState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locIntermediateReportStateGetString(val: LocIntermediateReportState): string | null
+export function locIntermediateReportStateGetString(val: LocIntermediateReportState): string
 /**
  * Gets the nickname string for the #QmiLocLockType specified at `val`.
  * @param val a QmiLocLockType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locLockTypeGetString(val: LocLockType): string | null
+export function locLockTypeGetString(val: LocLockType): string
 /**
  * Gets the nickname string for the #QmiLocNavigationData specified at `val`.
  * @param val a QmiLocNavigationData.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locNavigationDataGetString(val: LocNavigationData): string | null
+export function locNavigationDataGetString(val: LocNavigationData): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiLocNmeaType in `mask`.
@@ -12842,25 +12842,25 @@ export function locNmeaTypeBuildStringFromMask(mask: LocNmeaType): string | null
  * @param val a QmiLocOperationMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locOperationModeGetString(val: LocOperationMode): string | null
+export function locOperationModeGetString(val: LocOperationMode): string
 /**
  * Gets the nickname string for the #QmiLocPredictedOrbitsDataFormat specified at `val`.
  * @param val a QmiLocPredictedOrbitsDataFormat.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locPredictedOrbitsDataFormatGetString(val: LocPredictedOrbitsDataFormat): string | null
+export function locPredictedOrbitsDataFormatGetString(val: LocPredictedOrbitsDataFormat): string
 /**
  * Gets the nickname string for the #QmiLocReliability specified at `val`.
  * @param val a QmiLocReliability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locReliabilityGetString(val: LocReliability): string | null
+export function locReliabilityGetString(val: LocReliability): string
 /**
  * Gets the nickname string for the #QmiLocSatelliteStatus specified at `val`.
  * @param val a QmiLocSatelliteStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locSatelliteStatusGetString(val: LocSatelliteStatus): string | null
+export function locSatelliteStatusGetString(val: LocSatelliteStatus): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiLocSatelliteValidInformation in `mask`.
@@ -12887,19 +12887,19 @@ export function locServerAddressTypeBuildStringFromMask(mask: LocServerAddressTy
  * @param val a QmiLocServerType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locServerTypeGetString(val: LocServerType): string | null
+export function locServerTypeGetString(val: LocServerType): string
 /**
  * Gets the nickname string for the #QmiLocSessionStatus specified at `val`.
  * @param val a QmiLocSessionStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locSessionStatusGetString(val: LocSessionStatus): string | null
+export function locSessionStatusGetString(val: LocSessionStatus): string
 /**
  * Gets the nickname string for the #QmiLocSystem specified at `val`.
  * @param val a QmiLocSystem.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locSystemGetString(val: LocSystem): string | null
+export function locSystemGetString(val: LocSystem): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiLocTechnologyUsed in `mask`.
@@ -12912,7 +12912,7 @@ export function locTechnologyUsedBuildStringFromMask(mask: LocTechnologyUsed): s
  * @param val a QmiLocTimeSource.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function locTimeSourceGetString(val: LocTimeSource): string | null
+export function locTimeSourceGetString(val: LocTimeSource): string
 /**
  * Creates a new `type` TLV with the value given in `raw,` and adds it to the #QmiMessage.
  * @param self a #QmiMessage.
@@ -13484,7 +13484,7 @@ export function messageGetMessageId(self: Message): number
  * @param linePrefix prefix string to use in each new generated line.
  * @returns a newly allocated string, which should be freed with g_free().
  */
-export function messageGetPrintableFull(self: Message, context: MessageContext, linePrefix: string | null): string | null
+export function messageGetPrintableFull(self: Message, context: MessageContext, linePrefix: string): string | null
 /**
  * Gets the raw data buffer of the #QmiMessage.
  * @param self a #QmiMessage.
@@ -13515,7 +13515,7 @@ export function messageGetService(self: Message): Service
  * @param rawLength length of the raw data buffer.
  * @returns a newly allocated string, which should be freed with g_free().
  */
-export function messageGetTlvPrintable(self: Message, linePrefix: string | null, type: number, raw: number, rawLength: number): string | null
+export function messageGetTlvPrintable(self: Message, linePrefix: string, type: number, raw: number, rawLength: number): string | null
 /**
  * Gets the transaction ID of the message.
  * @param self a #QmiMessage.
@@ -14518,7 +14518,7 @@ export function messageTlvWriteSizedGuint(self: Message, nBytes: number, endian:
  * @param inLength length of `in,` or -1 if `in` is NUL-terminated.
  * @returns %TRUE if the string is successfully added, otherwise %FALSE is returned and @error is set.
  */
-export function messageTlvWriteString(self: Message, nSizePrefixBytes: number, in_: string | null, inLength: number): boolean
+export function messageTlvWriteString(self: Message, nSizePrefixBytes: number, in_: string, inLength: number): boolean
 /**
  * Parses a #QmiMessage and builds a #QmiMessageUimChangePinOutput out of it.
  * The operation fails if the message is of the wrong type.
@@ -15167,13 +15167,13 @@ export function messageWmsSetRoutesResponseParse(message: Message): MessageWmsSe
  * @param val a QmiNasActiveBand.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasActiveBandGetString(val: NasActiveBand): string | null
+export function nasActiveBandGetString(val: NasActiveBand): string
 /**
  * Gets the nickname string for the #QmiNasAttachState specified at `val`.
  * @param val a QmiNasAttachState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasAttachStateGetString(val: NasAttachState): string | null
+export function nasAttachStateGetString(val: NasAttachState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasBandPreference in `mask`.
@@ -15186,91 +15186,91 @@ export function nasBandPreferenceBuildStringFromMask(mask: NasBandPreference): s
  * @param val a QmiNasBoolean.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasBooleanGetString(val: NasBoolean): string | null
+export function nasBooleanGetString(val: NasBoolean): string
 /**
  * Gets the nickname string for the #QmiNasCallBarringStatus specified at `val`.
  * @param val a QmiNasCallBarringStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasCallBarringStatusGetString(val: NasCallBarringStatus): string | null
+export function nasCallBarringStatusGetString(val: NasCallBarringStatus): string
 /**
  * Gets the nickname string for the #QmiNasCdmaPilotType specified at `val`.
  * @param val a QmiNasCdmaPilotType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasCdmaPilotTypeGetString(val: NasCdmaPilotType): string | null
+export function nasCdmaPilotTypeGetString(val: NasCdmaPilotType): string
 /**
  * Gets the nickname string for the #QmiNasCdmaPrlPreference specified at `val`.
  * @param val a QmiNasCdmaPrlPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasCdmaPrlPreferenceGetString(val: NasCdmaPrlPreference): string | null
+export function nasCdmaPrlPreferenceGetString(val: NasCdmaPrlPreference): string
 /**
  * Gets the nickname string for the #QmiNasCellBroadcastCapability specified at `val`.
  * @param val a QmiNasCellBroadcastCapability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasCellBroadcastCapabilityGetString(val: NasCellBroadcastCapability): string | null
+export function nasCellBroadcastCapabilityGetString(val: NasCellBroadcastCapability): string
 /**
  * Gets the nickname string for the #QmiNasChangeDuration specified at `val`.
  * @param val a QmiNasChangeDuration.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasChangeDurationGetString(val: NasChangeDuration): string | null
+export function nasChangeDurationGetString(val: NasChangeDuration): string
 /**
  * Gets the nickname string for the #QmiNasDataCapability specified at `val`.
  * @param val a QmiNasDataCapability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasDataCapabilityGetString(val: NasDataCapability): string | null
+export function nasDataCapabilityGetString(val: NasDataCapability): string
 /**
  * Gets the nickname string for the #QmiNasDayOfWeek specified at `val`.
  * @param val a QmiNasDayOfWeek.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasDayOfWeekGetString(val: NasDayOfWeek): string | null
+export function nasDayOfWeekGetString(val: NasDayOfWeek): string
 /**
  * Gets the nickname string for the #QmiNasDaylightSavingsAdjustment specified at `val`.
  * @param val a QmiNasDaylightSavingsAdjustment.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasDaylightSavingsAdjustmentGetString(val: NasDaylightSavingsAdjustment): string | null
+export function nasDaylightSavingsAdjustmentGetString(val: NasDaylightSavingsAdjustment): string
 /**
  * Gets the nickname string for the #QmiNasDLBandwidth specified at `val`.
  * @param val a QmiNasDLBandwidth.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasDlBandwidthGetString(val: NasDLBandwidth): string | null
+export function nasDlBandwidthGetString(val: NasDLBandwidth): string
 /**
  * Gets the nickname string for the #QmiNasDrx specified at `val`.
  * @param val a QmiNasDrx.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasDrxGetString(val: NasDrx): string | null
+export function nasDrxGetString(val: NasDrx): string
 /**
  * Gets the nickname string for the #QmiNasEvdoSinrLevel specified at `val`.
  * @param val a QmiNasEvdoSinrLevel.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasEvdoSinrLevelGetString(val: NasEvdoSinrLevel): string | null
+export function nasEvdoSinrLevelGetString(val: NasEvdoSinrLevel): string
 /**
  * Gets the nickname string for the #QmiNasGsmWcdmaAcquisitionOrderPreference specified at `val`.
  * @param val a QmiNasGsmWcdmaAcquisitionOrderPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasGsmWcdmaAcquisitionOrderPreferenceGetString(val: NasGsmWcdmaAcquisitionOrderPreference): string | null
+export function nasGsmWcdmaAcquisitionOrderPreferenceGetString(val: NasGsmWcdmaAcquisitionOrderPreference): string
 /**
  * Gets the nickname string for the #QmiNasHdrPersonality specified at `val`.
  * @param val a QmiNasHdrPersonality.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasHdrPersonalityGetString(val: NasHdrPersonality): string | null
+export function nasHdrPersonalityGetString(val: NasHdrPersonality): string
 /**
  * Gets the nickname string for the #QmiNasHdrProtocolRevision specified at `val`.
  * @param val a QmiNasHdrProtocolRevision.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasHdrProtocolRevisionGetString(val: NasHdrProtocolRevision): string | null
+export function nasHdrProtocolRevisionGetString(val: NasHdrProtocolRevision): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasLteBandPreference in `mask`.
@@ -15283,31 +15283,31 @@ export function nasLteBandPreferenceBuildStringFromMask(mask: NasLteBandPreferen
  * @param val a QmiNasLteCellAccessStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasLteCellAccessStatusGetString(val: NasLteCellAccessStatus): string | null
+export function nasLteCellAccessStatusGetString(val: NasLteCellAccessStatus): string
 /**
  * Gets the nickname string for the #QmiNasLteRegistrationDomain specified at `val`.
  * @param val a QmiNasLteRegistrationDomain.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasLteRegistrationDomainGetString(val: NasLteRegistrationDomain): string | null
+export function nasLteRegistrationDomainGetString(val: NasLteRegistrationDomain): string
 /**
  * Gets the nickname string for the #QmiNasLteVoiceDomain specified at `val`.
  * @param val a QmiNasLteVoiceDomain.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasLteVoiceDomainGetString(val: NasLteVoiceDomain): string | null
+export function nasLteVoiceDomainGetString(val: NasLteVoiceDomain): string
 /**
  * Gets the nickname string for the #QmiNasNetworkDescriptionDisplay specified at `val`.
  * @param val a QmiNasNetworkDescriptionDisplay.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkDescriptionDisplayGetString(val: NasNetworkDescriptionDisplay): string | null
+export function nasNetworkDescriptionDisplayGetString(val: NasNetworkDescriptionDisplay): string
 /**
  * Gets the nickname string for the #QmiNasNetworkDescriptionEncoding specified at `val`.
  * @param val a QmiNasNetworkDescriptionEncoding.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkDescriptionEncodingGetString(val: NasNetworkDescriptionEncoding): string | null
+export function nasNetworkDescriptionEncodingGetString(val: NasNetworkDescriptionEncoding): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasNetworkNameDisplayCondition in `mask`.
@@ -15320,19 +15320,19 @@ export function nasNetworkNameDisplayConditionBuildStringFromMask(mask: NasNetwo
  * @param val a QmiNasNetworkNameSource.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkNameSourceGetString(val: NasNetworkNameSource): string | null
+export function nasNetworkNameSourceGetString(val: NasNetworkNameSource): string
 /**
  * Gets the nickname string for the #QmiNasNetworkRegisterType specified at `val`.
  * @param val a QmiNasNetworkRegisterType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkRegisterTypeGetString(val: NasNetworkRegisterType): string | null
+export function nasNetworkRegisterTypeGetString(val: NasNetworkRegisterType): string
 /**
  * Gets the nickname string for the #QmiNasNetworkScanResult specified at `val`.
  * @param val a QmiNasNetworkScanResult.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkScanResultGetString(val: NasNetworkScanResult): string | null
+export function nasNetworkScanResultGetString(val: NasNetworkScanResult): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasNetworkScanType in `mask`.
@@ -15345,19 +15345,19 @@ export function nasNetworkScanTypeBuildStringFromMask(mask: NasNetworkScanType):
  * @param val a QmiNasNetworkSelectionPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkSelectionPreferenceGetString(val: NasNetworkSelectionPreference): string | null
+export function nasNetworkSelectionPreferenceGetString(val: NasNetworkSelectionPreference): string
 /**
  * Gets the nickname string for the #QmiNasNetworkSelectionRegistrationRestriction specified at `val`.
  * @param val a QmiNasNetworkSelectionRegistrationRestriction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkSelectionRegistrationRestrictionGetString(val: NasNetworkSelectionRegistrationRestriction): string | null
+export function nasNetworkSelectionRegistrationRestrictionGetString(val: NasNetworkSelectionRegistrationRestriction): string
 /**
  * Gets the nickname string for the #QmiNasNetworkServiceDomain specified at `val`.
  * @param val a QmiNasNetworkServiceDomain.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkServiceDomainGetString(val: NasNetworkServiceDomain): string | null
+export function nasNetworkServiceDomainGetString(val: NasNetworkServiceDomain): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasNetworkStatus in `mask`.
@@ -15370,7 +15370,7 @@ export function nasNetworkStatusBuildStringFromMask(mask: NasNetworkStatus): str
  * @param val a QmiNasNetworkType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasNetworkTypeGetString(val: NasNetworkType): string | null
+export function nasNetworkTypeGetString(val: NasNetworkType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasPlmnAccessTechnologyIdentifier in `mask`.
@@ -15383,43 +15383,43 @@ export function nasPlmnAccessTechnologyIdentifierBuildStringFromMask(mask: NasPl
  * @param val a QmiNasPlmnEncodingScheme.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasPlmnEncodingSchemeGetString(val: NasPlmnEncodingScheme): string | null
+export function nasPlmnEncodingSchemeGetString(val: NasPlmnEncodingScheme): string
 /**
  * Gets the nickname string for the #QmiNasPlmnLanguageId specified at `val`.
  * @param val a QmiNasPlmnLanguageId.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasPlmnLanguageIdGetString(val: NasPlmnLanguageId): string | null
+export function nasPlmnLanguageIdGetString(val: NasPlmnLanguageId): string
 /**
  * Gets the nickname string for the #QmiNasPlmnNameCountryInitials specified at `val`.
  * @param val a QmiNasPlmnNameCountryInitials.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasPlmnNameCountryInitialsGetString(val: NasPlmnNameCountryInitials): string | null
+export function nasPlmnNameCountryInitialsGetString(val: NasPlmnNameCountryInitials): string
 /**
  * Gets the nickname string for the #QmiNasPlmnNameSpareBits specified at `val`.
  * @param val a QmiNasPlmnNameSpareBits.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasPlmnNameSpareBitsGetString(val: NasPlmnNameSpareBits): string | null
+export function nasPlmnNameSpareBitsGetString(val: NasPlmnNameSpareBits): string
 /**
  * Gets the nickname string for the #QmiNasPreferenceDuration specified at `val`.
  * @param val a QmiNasPreferenceDuration.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasPreferenceDurationGetString(val: NasPreferenceDuration): string | null
+export function nasPreferenceDurationGetString(val: NasPreferenceDuration): string
 /**
  * Gets the nickname string for the #QmiNasPsAttachAction specified at `val`.
  * @param val a QmiNasPsAttachAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasPsAttachActionGetString(val: NasPsAttachAction): string | null
+export function nasPsAttachActionGetString(val: NasPsAttachAction): string
 /**
  * Gets the nickname string for the #QmiNasRadioInterface specified at `val`.
  * @param val a QmiNasRadioInterface.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasRadioInterfaceGetString(val: NasRadioInterface): string | null
+export function nasRadioInterfaceGetString(val: NasRadioInterface): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasRadioTechnologyPreference in `mask`.
@@ -15455,49 +15455,49 @@ export function nasReadStringFromPlmnEncodedArray(encoding: NasPlmnEncodingSchem
  * @param val a QmiNasRegistrationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasRegistrationStateGetString(val: NasRegistrationState): string | null
+export function nasRegistrationStateGetString(val: NasRegistrationState): string
 /**
  * Gets the nickname string for the #QmiNasRejectCause specified at `val`.
  * @param val a QmiNasRejectCause.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasRejectCauseGetString(val: NasRejectCause): string | null
+export function nasRejectCauseGetString(val: NasRejectCause): string
 /**
  * Gets the nickname string for the #QmiNasRoamingIndicatorStatus specified at `val`.
  * @param val a QmiNasRoamingIndicatorStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasRoamingIndicatorStatusGetString(val: NasRoamingIndicatorStatus): string | null
+export function nasRoamingIndicatorStatusGetString(val: NasRoamingIndicatorStatus): string
 /**
  * Gets the nickname string for the #QmiNasRoamingPreference specified at `val`.
  * @param val a QmiNasRoamingPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasRoamingPreferenceGetString(val: NasRoamingPreference): string | null
+export function nasRoamingPreferenceGetString(val: NasRoamingPreference): string
 /**
  * Gets the nickname string for the #QmiNasRoamingStatus specified at `val`.
  * @param val a QmiNasRoamingStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasRoamingStatusGetString(val: NasRoamingStatus): string | null
+export function nasRoamingStatusGetString(val: NasRoamingStatus): string
 /**
  * Gets the nickname string for the #QmiNasScellState specified at `val`.
  * @param val a QmiNasScellState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasScellStateGetString(val: NasScellState): string | null
+export function nasScellStateGetString(val: NasScellState): string
 /**
  * Gets the nickname string for the #QmiNasServiceDomainPreference specified at `val`.
  * @param val a QmiNasServiceDomainPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasServiceDomainPreferenceGetString(val: NasServiceDomainPreference): string | null
+export function nasServiceDomainPreferenceGetString(val: NasServiceDomainPreference): string
 /**
  * Gets the nickname string for the #QmiNasServiceStatus specified at `val`.
  * @param val a QmiNasServiceStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasServiceStatusGetString(val: NasServiceStatus): string | null
+export function nasServiceStatusGetString(val: NasServiceStatus): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasSignalStrengthRequest in `mask`.
@@ -15510,43 +15510,43 @@ export function nasSignalStrengthRequestBuildStringFromMask(mask: NasSignalStren
  * @param val a QmiNasSimRejectState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSimRejectStateGetString(val: NasSimRejectState): string | null
+export function nasSimRejectStateGetString(val: NasSimRejectState): string
 /**
  * Gets the nickname string for the #QmiNasSwiEmmConnectionState specified at `val`.
  * @param val a QmiNasSwiEmmConnectionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSwiEmmConnectionStateGetString(val: NasSwiEmmConnectionState): string | null
+export function nasSwiEmmConnectionStateGetString(val: NasSwiEmmConnectionState): string
 /**
  * Gets the nickname string for the #QmiNasSwiEmmState specified at `val`.
  * @param val a QmiNasSwiEmmState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSwiEmmStateGetString(val: NasSwiEmmState): string | null
+export function nasSwiEmmStateGetString(val: NasSwiEmmState): string
 /**
  * Gets the nickname string for the #QmiNasSwiImsRegState specified at `val`.
  * @param val a QmiNasSwiImsRegState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSwiImsRegStateGetString(val: NasSwiImsRegState): string | null
+export function nasSwiImsRegStateGetString(val: NasSwiImsRegState): string
 /**
  * Gets the nickname string for the #QmiNasSwiModemMode specified at `val`.
  * @param val a QmiNasSwiModemMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSwiModemModeGetString(val: NasSwiModemMode): string | null
+export function nasSwiModemModeGetString(val: NasSwiModemMode): string
 /**
  * Gets the nickname string for the #QmiNasSwiPsState specified at `val`.
  * @param val a QmiNasSwiPsState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSwiPsStateGetString(val: NasSwiPsState): string | null
+export function nasSwiPsStateGetString(val: NasSwiPsState): string
 /**
  * Gets the nickname string for the #QmiNasSwiSystemMode specified at `val`.
  * @param val a QmiNasSwiSystemMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasSwiSystemModeGetString(val: NasSwiSystemMode): string | null
+export function nasSwiSystemModeGetString(val: NasSwiSystemMode): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiNasTdScdmaBandPreference in `mask`.
@@ -15559,49 +15559,49 @@ export function nasTdScdmaBandPreferenceBuildStringFromMask(mask: NasTdScdmaBand
  * @param val a QmiNasUsagePreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasUsagePreferenceGetString(val: NasUsagePreference): string | null
+export function nasUsagePreferenceGetString(val: NasUsagePreference): string
 /**
  * Gets the nickname string for the #QmiNasVoiceDomainPreference specified at `val`.
  * @param val a QmiNasVoiceDomainPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasVoiceDomainPreferenceGetString(val: NasVoiceDomainPreference): string | null
+export function nasVoiceDomainPreferenceGetString(val: NasVoiceDomainPreference): string
 /**
  * Gets the nickname string for the #QmiNasWcdmaHsService specified at `val`.
  * @param val a QmiNasWcdmaHsService.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasWcdmaHsServiceGetString(val: NasWcdmaHsService): string | null
+export function nasWcdmaHsServiceGetString(val: NasWcdmaHsService): string
 /**
  * Gets the nickname string for the #QmiNasWcdmaRrcState specified at `val`.
  * @param val a QmiNasWcdmaRrcState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function nasWcdmaRrcStateGetString(val: NasWcdmaRrcState): string | null
+export function nasWcdmaRrcStateGetString(val: NasWcdmaRrcState): string
 /**
  * Gets the nickname string for the #QmiOmaHfaFeatureDoneState specified at `val`.
  * @param val a QmiOmaHfaFeatureDoneState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function omaHfaFeatureDoneStateGetString(val: OmaHfaFeatureDoneState): string | null
+export function omaHfaFeatureDoneStateGetString(val: OmaHfaFeatureDoneState): string
 /**
  * Gets the nickname string for the #QmiOmaSessionFailedReason specified at `val`.
  * @param val a QmiOmaSessionFailedReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function omaSessionFailedReasonGetString(val: OmaSessionFailedReason): string | null
+export function omaSessionFailedReasonGetString(val: OmaSessionFailedReason): string
 /**
  * Gets the nickname string for the #QmiOmaSessionState specified at `val`.
  * @param val a QmiOmaSessionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function omaSessionStateGetString(val: OmaSessionState): string | null
+export function omaSessionStateGetString(val: OmaSessionState): string
 /**
  * Gets the nickname string for the #QmiOmaSessionType specified at `val`.
  * @param val a QmiOmaSessionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function omaSessionTypeGetString(val: OmaSessionType): string | null
+export function omaSessionTypeGetString(val: OmaSessionType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiPbmEventRegistrationFlag in `mask`.
@@ -15621,19 +15621,19 @@ export function pbmPhonebookTypeBuildStringFromMask(mask: PbmPhonebookType): str
  * @param val a QmiPbmSessionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pbmSessionTypeGetString(val: PbmSessionType): string | null
+export function pbmSessionTypeGetString(val: PbmSessionType): string
 /**
  * Gets the nickname string for the #QmiPdcConfigurationType specified at `val`.
  * @param val a QmiPdcConfigurationType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdcConfigurationTypeGetString(val: PdcConfigurationType): string | null
+export function pdcConfigurationTypeGetString(val: PdcConfigurationType): string
 /**
  * Gets the nickname string for the #QmiPdcRefreshEventType specified at `val`.
  * @param val a QmiPdcRefreshEventType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdcRefreshEventTypeGetString(val: PdcRefreshEventType): string | null
+export function pdcRefreshEventTypeGetString(val: PdcRefreshEventType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiPdsDataValid in `mask`.
@@ -15646,116 +15646,116 @@ export function pdsDataValidBuildStringFromMask(mask: PdsDataValid): string | nu
  * @param val a QmiPdsNetworkMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdsNetworkModeGetString(val: PdsNetworkMode): string | null
+export function pdsNetworkModeGetString(val: PdsNetworkMode): string
 /**
  * Gets the nickname string for the #QmiPdsOperatingMode specified at `val`.
  * @param val a QmiPdsOperatingMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdsOperatingModeGetString(val: PdsOperatingMode): string | null
+export function pdsOperatingModeGetString(val: PdsOperatingMode): string
 /**
  * Gets the nickname string for the #QmiPdsOperationMode specified at `val`.
  * @param val a QmiPdsOperationMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdsOperationModeGetString(val: PdsOperationMode): string | null
+export function pdsOperationModeGetString(val: PdsOperationMode): string
 /**
  * Gets the nickname string for the #QmiPdsPositionSessionStatus specified at `val`.
  * @param val a QmiPdsPositionSessionStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdsPositionSessionStatusGetString(val: PdsPositionSessionStatus): string | null
+export function pdsPositionSessionStatusGetString(val: PdsPositionSessionStatus): string
 /**
  * Gets the nickname string for the #QmiPdsTrackingSessionState specified at `val`.
  * @param val a QmiPdsTrackingSessionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function pdsTrackingSessionStateGetString(val: PdsTrackingSessionState): string | null
+export function pdsTrackingSessionStateGetString(val: PdsTrackingSessionState): string
 /**
  * Gets the nickname string for the #QmiProtocolError specified at `val`.
  * @param val a QmiProtocolError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function protocolErrorGetString(val: ProtocolError): string | null
+export function protocolErrorGetString(val: ProtocolError): string
 export function protocolErrorQuark(): GLib.Quark
 /**
  * Gets the nickname string for the #QmiQosEvent specified at `val`.
  * @param val a QmiQosEvent.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function qosEventGetString(val: QosEvent): string | null
+export function qosEventGetString(val: QosEvent): string
 /**
  * Gets the nickname string for the #QmiQosStatus specified at `val`.
  * @param val a QmiQosStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function qosStatusGetString(val: QosStatus): string | null
+export function qosStatusGetString(val: QosStatus): string
 /**
  * Gets the nickname string for the #QmiSarRfState specified at `val`.
  * @param val a QmiSarRfState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function sarRfStateGetString(val: SarRfState): string | null
+export function sarRfStateGetString(val: SarRfState): string
 /**
  * Gets the nickname string for the #QmiService specified at `val`.
  * @param val a QmiService.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function serviceGetString(val: Service): string | null
+export function serviceGetString(val: Service): string
 /**
  * Gets the nickname string for the #QmiSioPort specified at `val`.
  * @param val a QmiSioPort.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function sioPortGetString(val: SioPort): string | null
+export function sioPortGetString(val: SioPort): string
 /**
  * Gets the nickname string for the #QmiUimCardApplicationPersonalizationFeature specified at `val`.
  * @param val a QmiUimCardApplicationPersonalizationFeature.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardApplicationPersonalizationFeatureGetString(val: UimCardApplicationPersonalizationFeature): string | null
+export function uimCardApplicationPersonalizationFeatureGetString(val: UimCardApplicationPersonalizationFeature): string
 /**
  * Gets the nickname string for the #QmiUimCardApplicationPersonalizationFeatureStatus specified at `val`.
  * @param val a QmiUimCardApplicationPersonalizationFeatureStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardApplicationPersonalizationFeatureStatusGetString(val: UimCardApplicationPersonalizationFeatureStatus): string | null
+export function uimCardApplicationPersonalizationFeatureStatusGetString(val: UimCardApplicationPersonalizationFeatureStatus): string
 /**
  * Gets the nickname string for the #QmiUimCardApplicationPersonalizationState specified at `val`.
  * @param val a QmiUimCardApplicationPersonalizationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardApplicationPersonalizationStateGetString(val: UimCardApplicationPersonalizationState): string | null
+export function uimCardApplicationPersonalizationStateGetString(val: UimCardApplicationPersonalizationState): string
 /**
  * Gets the nickname string for the #QmiUimCardApplicationState specified at `val`.
  * @param val a QmiUimCardApplicationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardApplicationStateGetString(val: UimCardApplicationState): string | null
+export function uimCardApplicationStateGetString(val: UimCardApplicationState): string
 /**
  * Gets the nickname string for the #QmiUimCardApplicationType specified at `val`.
  * @param val a QmiUimCardApplicationType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardApplicationTypeGetString(val: UimCardApplicationType): string | null
+export function uimCardApplicationTypeGetString(val: UimCardApplicationType): string
 /**
  * Gets the nickname string for the #QmiUimCardError specified at `val`.
  * @param val a QmiUimCardError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardErrorGetString(val: UimCardError): string | null
+export function uimCardErrorGetString(val: UimCardError): string
 /**
  * Gets the nickname string for the #QmiUimCardProtocol specified at `val`.
  * @param val a QmiUimCardProtocol.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardProtocolGetString(val: UimCardProtocol): string | null
+export function uimCardProtocolGetString(val: UimCardProtocol): string
 /**
  * Gets the nickname string for the #QmiUimCardState specified at `val`.
  * @param val a QmiUimCardState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimCardStateGetString(val: UimCardState): string | null
+export function uimCardStateGetString(val: UimCardState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiUimConfiguration in `mask`.
@@ -15768,7 +15768,7 @@ export function uimConfigurationBuildStringFromMask(mask: UimConfiguration): str
  * @param val a QmiUimDepersonalizationOperation.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimDepersonalizationOperationGetString(val: UimDepersonalizationOperation): string | null
+export function uimDepersonalizationOperationGetString(val: UimDepersonalizationOperation): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiUimEventRegistrationFlag in `mask`.
@@ -15781,37 +15781,37 @@ export function uimEventRegistrationFlagBuildStringFromMask(mask: UimEventRegist
  * @param val a QmiUimFileType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimFileTypeGetString(val: UimFileType): string | null
+export function uimFileTypeGetString(val: UimFileType): string
 /**
  * Gets the nickname string for the #QmiUimPhysicalCardState specified at `val`.
  * @param val a QmiUimPhysicalCardState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimPhysicalCardStateGetString(val: UimPhysicalCardState): string | null
+export function uimPhysicalCardStateGetString(val: UimPhysicalCardState): string
 /**
  * Gets the nickname string for the #QmiUimPinId specified at `val`.
  * @param val a QmiUimPinId.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimPinIdGetString(val: UimPinId): string | null
+export function uimPinIdGetString(val: UimPinId): string
 /**
  * Gets the nickname string for the #QmiUimPinState specified at `val`.
  * @param val a QmiUimPinState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimPinStateGetString(val: UimPinState): string | null
+export function uimPinStateGetString(val: UimPinState): string
 /**
  * Gets the nickname string for the #QmiUimRefreshMode specified at `val`.
  * @param val a QmiUimRefreshMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimRefreshModeGetString(val: UimRefreshMode): string | null
+export function uimRefreshModeGetString(val: UimRefreshMode): string
 /**
  * Gets the nickname string for the #QmiUimRefreshStage specified at `val`.
  * @param val a QmiUimRefreshStage.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimRefreshStageGetString(val: UimRefreshStage): string | null
+export function uimRefreshStageGetString(val: UimRefreshStage): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiUimSecurityAttribute in `mask`.
@@ -15824,19 +15824,19 @@ export function uimSecurityAttributeBuildStringFromMask(mask: UimSecurityAttribu
  * @param val a QmiUimSecurityAttributeLogic.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimSecurityAttributeLogicGetString(val: UimSecurityAttributeLogic): string | null
+export function uimSecurityAttributeLogicGetString(val: UimSecurityAttributeLogic): string
 /**
  * Gets the nickname string for the #QmiUimSessionType specified at `val`.
  * @param val a QmiUimSessionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimSessionTypeGetString(val: UimSessionType): string | null
+export function uimSessionTypeGetString(val: UimSessionType): string
 /**
  * Gets the nickname string for the #QmiUimSlotState specified at `val`.
  * @param val a QmiUimSlotState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function uimSlotStateGetString(val: UimSlotState): string | null
+export function uimSlotStateGetString(val: UimSlotState): string
 /**
  * Checks whether personal info should be hidden when traces are enabled.
  * @returns %TRUE to show personal info in trace, %FALSE otherwise.
@@ -15862,121 +15862,121 @@ export function utilsSetTracesEnabled(enabled: boolean): void
  * @param val a QmiVoiceAlphaDataCodingScheme.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceAlphaDataCodingSchemeGetString(val: VoiceAlphaDataCodingScheme): string | null
+export function voiceAlphaDataCodingSchemeGetString(val: VoiceAlphaDataCodingScheme): string
 /**
  * Gets the nickname string for the #QmiVoiceAls specified at `val`.
  * @param val a QmiVoiceAls.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceAlsGetString(val: VoiceAls): string | null
+export function voiceAlsGetString(val: VoiceAls): string
 /**
  * Gets the nickname string for the #QmiVoiceCallControlResultType specified at `val`.
  * @param val a QmiVoiceCallControlResultType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallControlResultTypeGetString(val: VoiceCallControlResultType): string | null
+export function voiceCallControlResultTypeGetString(val: VoiceCallControlResultType): string
 /**
  * Gets the nickname string for the #QmiVoiceCallControlSupplementaryServiceType specified at `val`.
  * @param val a QmiVoiceCallControlSupplementaryServiceType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallControlSupplementaryServiceTypeGetString(val: VoiceCallControlSupplementaryServiceType): string | null
+export function voiceCallControlSupplementaryServiceTypeGetString(val: VoiceCallControlSupplementaryServiceType): string
 /**
  * Gets the nickname string for the #QmiVoiceCallDirection specified at `val`.
  * @param val a QmiVoiceCallDirection.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallDirectionGetString(val: VoiceCallDirection): string | null
+export function voiceCallDirectionGetString(val: VoiceCallDirection): string
 /**
  * Gets the nickname string for the #QmiVoiceCallEndReason specified at `val`.
  * @param val a QmiVoiceCallEndReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallEndReasonGetString(val: VoiceCallEndReason): string | null
+export function voiceCallEndReasonGetString(val: VoiceCallEndReason): string
 /**
  * Gets the nickname string for the #QmiVoiceCallMode specified at `val`.
  * @param val a QmiVoiceCallMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallModeGetString(val: VoiceCallMode): string | null
+export function voiceCallModeGetString(val: VoiceCallMode): string
 /**
  * Gets the nickname string for the #QmiVoiceCallState specified at `val`.
  * @param val a QmiVoiceCallState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallStateGetString(val: VoiceCallState): string | null
+export function voiceCallStateGetString(val: VoiceCallState): string
 /**
  * Gets the nickname string for the #QmiVoiceCallType specified at `val`.
  * @param val a QmiVoiceCallType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceCallTypeGetString(val: VoiceCallType): string | null
+export function voiceCallTypeGetString(val: VoiceCallType): string
 /**
  * Gets the nickname string for the #QmiVoiceDomain specified at `val`.
  * @param val a QmiVoiceDomain.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceDomainGetString(val: VoiceDomain): string | null
+export function voiceDomainGetString(val: VoiceDomain): string
 /**
  * Gets the nickname string for the #QmiVoicePresentation specified at `val`.
  * @param val a QmiVoicePresentation.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voicePresentationGetString(val: VoicePresentation): string | null
+export function voicePresentationGetString(val: VoicePresentation): string
 /**
  * Gets the nickname string for the #QmiVoicePrivacy specified at `val`.
  * @param val a QmiVoicePrivacy.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voicePrivacyGetString(val: VoicePrivacy): string | null
+export function voicePrivacyGetString(val: VoicePrivacy): string
 /**
  * Gets the nickname string for the #QmiVoiceServiceOption specified at `val`.
  * @param val a QmiVoiceServiceOption.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceServiceOptionGetString(val: VoiceServiceOption): string | null
+export function voiceServiceOptionGetString(val: VoiceServiceOption): string
 /**
  * Gets the nickname string for the #QmiVoiceSupplementaryServiceAction specified at `val`.
  * @param val a QmiVoiceSupplementaryServiceAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceSupplementaryServiceActionGetString(val: VoiceSupplementaryServiceAction): string | null
+export function voiceSupplementaryServiceActionGetString(val: VoiceSupplementaryServiceAction): string
 /**
  * Gets the nickname string for the #QmiVoiceSupplementaryServiceNotificationType specified at `val`.
  * @param val a QmiVoiceSupplementaryServiceNotificationType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceSupplementaryServiceNotificationTypeGetString(val: VoiceSupplementaryServiceNotificationType): string | null
+export function voiceSupplementaryServiceNotificationTypeGetString(val: VoiceSupplementaryServiceNotificationType): string
 /**
  * Gets the nickname string for the #QmiVoiceSupplementaryServiceReason specified at `val`.
  * @param val a QmiVoiceSupplementaryServiceReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceSupplementaryServiceReasonGetString(val: VoiceSupplementaryServiceReason): string | null
+export function voiceSupplementaryServiceReasonGetString(val: VoiceSupplementaryServiceReason): string
 /**
  * Gets the nickname string for the #QmiVoiceSupplementaryServiceType specified at `val`.
  * @param val a QmiVoiceSupplementaryServiceType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceSupplementaryServiceTypeGetString(val: VoiceSupplementaryServiceType): string | null
+export function voiceSupplementaryServiceTypeGetString(val: VoiceSupplementaryServiceType): string
 /**
  * Gets the nickname string for the #QmiVoiceTtyMode specified at `val`.
  * @param val a QmiVoiceTtyMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceTtyModeGetString(val: VoiceTtyMode): string | null
+export function voiceTtyModeGetString(val: VoiceTtyMode): string
 /**
  * Gets the nickname string for the #QmiVoiceUserAction specified at `val`.
  * @param val a QmiVoiceUserAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceUserActionGetString(val: VoiceUserAction): string | null
+export function voiceUserActionGetString(val: VoiceUserAction): string
 /**
  * Gets the nickname string for the #QmiVoiceUssDataCodingScheme specified at `val`.
  * @param val a QmiVoiceUssDataCodingScheme.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function voiceUssDataCodingSchemeGetString(val: VoiceUssDataCodingScheme): string | null
+export function voiceUssDataCodingSchemeGetString(val: VoiceUssDataCodingScheme): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiVoiceWcdmaAmrStatus in `mask`.
@@ -15989,13 +15989,13 @@ export function voiceWcdmaAmrStatusBuildStringFromMask(mask: VoiceWcdmaAmrStatus
  * @param val a QmiWdaDataAggregationProtocol.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdaDataAggregationProtocolGetString(val: WdaDataAggregationProtocol): string | null
+export function wdaDataAggregationProtocolGetString(val: WdaDataAggregationProtocol): string
 /**
  * Gets the nickname string for the #QmiWdaLinkLayerProtocol specified at `val`.
  * @param val a QmiWdaLinkLayerProtocol.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdaLinkLayerProtocolGetString(val: WdaLinkLayerProtocol): string | null
+export function wdaLinkLayerProtocolGetString(val: WdaLinkLayerProtocol): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiWdsApnTypeMask in `mask`.
@@ -16008,7 +16008,7 @@ export function wdsApnTypeMaskBuildStringFromMask(mask: WdsApnTypeMask): string 
  * @param val a QmiWdsAttachPdnListAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsAttachPdnListActionGetString(val: WdsAttachPdnListAction): string | null
+export function wdsAttachPdnListActionGetString(val: WdsAttachPdnListAction): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiWdsAuthentication in `mask`.
@@ -16021,85 +16021,85 @@ export function wdsAuthenticationBuildStringFromMask(mask: WdsAuthentication): s
  * @param val a QmiWdsAutoconnectSetting.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsAutoconnectSettingGetString(val: WdsAutoconnectSetting): string | null
+export function wdsAutoconnectSettingGetString(val: WdsAutoconnectSetting): string
 /**
  * Gets the nickname string for the #QmiWdsAutoconnectSettingRoaming specified at `val`.
  * @param val a QmiWdsAutoconnectSettingRoaming.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsAutoconnectSettingRoamingGetString(val: WdsAutoconnectSettingRoaming): string | null
+export function wdsAutoconnectSettingRoamingGetString(val: WdsAutoconnectSettingRoaming): string
 /**
  * Gets the nickname string for the #QmiWdsCallEndReason specified at `val`.
  * @param val a QmiWdsCallEndReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsCallEndReasonGetString(val: WdsCallEndReason): string | null
+export function wdsCallEndReasonGetString(val: WdsCallEndReason): string
 /**
  * Gets the nickname string for the #QmiWdsCallType specified at `val`.
  * @param val a QmiWdsCallType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsCallTypeGetString(val: WdsCallType): string | null
+export function wdsCallTypeGetString(val: WdsCallType): string
 /**
  * Gets the nickname string for the #QmiWdsClientType specified at `val`.
  * @param val a QmiWdsClientType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsClientTypeGetString(val: WdsClientType): string | null
+export function wdsClientTypeGetString(val: WdsClientType): string
 /**
  * Gets the nickname string for the #QmiWdsConnectionStatus specified at `val`.
  * @param val a QmiWdsConnectionStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsConnectionStatusGetString(val: WdsConnectionStatus): string | null
+export function wdsConnectionStatusGetString(val: WdsConnectionStatus): string
 /**
  * Gets the nickname string for the #QmiWdsDataBearerTechnology specified at `val`.
  * @param val a QmiWdsDataBearerTechnology.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDataBearerTechnologyGetString(val: WdsDataBearerTechnology): string | null
+export function wdsDataBearerTechnologyGetString(val: WdsDataBearerTechnology): string
 /**
  * Gets the nickname string for the #QmiWdsDataCallStatus specified at `val`.
  * @param val a QmiWdsDataCallStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDataCallStatusGetString(val: WdsDataCallStatus): string | null
+export function wdsDataCallStatusGetString(val: WdsDataCallStatus): string
 /**
  * Gets the nickname string for the #QmiWdsDataCallType specified at `val`.
  * @param val a QmiWdsDataCallType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDataCallTypeGetString(val: WdsDataCallType): string | null
+export function wdsDataCallTypeGetString(val: WdsDataCallType): string
 /**
  * Gets the nickname string for the #QmiWdsDataSystem specified at `val`.
  * @param val a QmiWdsDataSystem.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDataSystemGetString(val: WdsDataSystem): string | null
+export function wdsDataSystemGetString(val: WdsDataSystem): string
 /**
  * Gets the nickname string for the #QmiWdsDataSystemNetworkType specified at `val`.
  * @param val a QmiWdsDataSystemNetworkType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDataSystemNetworkTypeGetString(val: WdsDataSystemNetworkType): string | null
+export function wdsDataSystemNetworkTypeGetString(val: WdsDataSystemNetworkType): string
 /**
  * Gets the nickname string for the #QmiWdsDeliveryOrder specified at `val`.
  * @param val a QmiWdsDeliveryOrder.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDeliveryOrderGetString(val: WdsDeliveryOrder): string | null
+export function wdsDeliveryOrderGetString(val: WdsDeliveryOrder): string
 /**
  * Gets the nickname string for the #QmiWdsDormancyStatus specified at `val`.
  * @param val a QmiWdsDormancyStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDormancyStatusGetString(val: WdsDormancyStatus): string | null
+export function wdsDormancyStatusGetString(val: WdsDormancyStatus): string
 /**
  * Gets the nickname string for the #QmiWdsDsProfileError specified at `val`.
  * @param val a QmiWdsDsProfileError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsDsProfileErrorGetString(val: WdsDsProfileError): string | null
+export function wdsDsProfileErrorGetString(val: WdsDsProfileError): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiWdsExtendedDataBearerTechnology3gpp2 in `mask`.
@@ -16119,25 +16119,25 @@ export function wdsExtendedDataBearerTechnology3gppBuildStringFromMask(mask: Wds
  * @param val a QmiWdsExtendedTechnologyPreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsExtendedTechnologyPreferenceGetString(val: WdsExtendedTechnologyPreference): string | null
+export function wdsExtendedTechnologyPreferenceGetString(val: WdsExtendedTechnologyPreference): string
 /**
  * Gets the nickname string for the #QmiWdsIpFamily specified at `val`.
  * @param val a QmiWdsIpFamily.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsIpFamilyGetString(val: WdsIpFamily): string | null
+export function wdsIpFamilyGetString(val: WdsIpFamily): string
 /**
  * Gets the nickname string for the #QmiWdsIpSupportType specified at `val`.
  * @param val a QmiWdsIpSupportType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsIpSupportTypeGetString(val: WdsIpSupportType): string | null
+export function wdsIpSupportTypeGetString(val: WdsIpSupportType): string
 /**
  * Gets the nickname string for the #QmiWdsNetworkType specified at `val`.
  * @param val a QmiWdsNetworkType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsNetworkTypeGetString(val: WdsNetworkType): string | null
+export function wdsNetworkTypeGetString(val: WdsNetworkType): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiWdsPacketStatisticsMaskFlag in `mask`.
@@ -16150,49 +16150,49 @@ export function wdsPacketStatisticsMaskFlagBuildStringFromMask(mask: WdsPacketSt
  * @param val a QmiWdsPdpDataCompressionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsPdpDataCompressionTypeGetString(val: WdsPdpDataCompressionType): string | null
+export function wdsPdpDataCompressionTypeGetString(val: WdsPdpDataCompressionType): string
 /**
  * Gets the nickname string for the #QmiWdsPdpHeaderCompressionType specified at `val`.
  * @param val a QmiWdsPdpHeaderCompressionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsPdpHeaderCompressionTypeGetString(val: WdsPdpHeaderCompressionType): string | null
+export function wdsPdpHeaderCompressionTypeGetString(val: WdsPdpHeaderCompressionType): string
 /**
  * Gets the nickname string for the #QmiWdsPdpType specified at `val`.
  * @param val a QmiWdsPdpType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsPdpTypeGetString(val: WdsPdpType): string | null
+export function wdsPdpTypeGetString(val: WdsPdpType): string
 /**
  * Gets the nickname string for the #QmiWdsProfileChangeEvent specified at `val`.
  * @param val a QmiWdsProfileChangeEvent.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsProfileChangeEventGetString(val: WdsProfileChangeEvent): string | null
+export function wdsProfileChangeEventGetString(val: WdsProfileChangeEvent): string
 /**
  * Gets the nickname string for the #QmiWdsProfileFamily specified at `val`.
  * @param val a QmiWdsProfileFamily.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsProfileFamilyGetString(val: WdsProfileFamily): string | null
+export function wdsProfileFamilyGetString(val: WdsProfileFamily): string
 /**
  * Gets the nickname string for the #QmiWdsProfileType specified at `val`.
  * @param val a QmiWdsProfileType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsProfileTypeGetString(val: WdsProfileType): string | null
+export function wdsProfileTypeGetString(val: WdsProfileType): string
 /**
  * Gets the nickname string for the #QmiWdsQosClassIdentifier specified at `val`.
  * @param val a QmiWdsQosClassIdentifier.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsQosClassIdentifierGetString(val: WdsQosClassIdentifier): string | null
+export function wdsQosClassIdentifierGetString(val: WdsQosClassIdentifier): string
 /**
  * Gets the nickname string for the #QmiWdsRadioAccessTechnology specified at `val`.
  * @param val a QmiWdsRadioAccessTechnology.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsRadioAccessTechnologyGetString(val: WdsRadioAccessTechnology): string | null
+export function wdsRadioAccessTechnologyGetString(val: WdsRadioAccessTechnology): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiWdsRat3gpp2 in `mask`.
@@ -16219,19 +16219,19 @@ export function wdsRequestedSettingsBuildStringFromMask(mask: WdsRequestedSettin
  * @param val a QmiWdsSduErroneousDelivery.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsSduErroneousDeliveryGetString(val: WdsSduErroneousDelivery): string | null
+export function wdsSduErroneousDeliveryGetString(val: WdsSduErroneousDelivery): string
 /**
  * Gets the nickname string for the #QmiWdsSduErrorRatio specified at `val`.
  * @param val a QmiWdsSduErrorRatio.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsSduErrorRatioGetString(val: WdsSduErrorRatio): string | null
+export function wdsSduErrorRatioGetString(val: WdsSduErrorRatio): string
 /**
  * Gets the nickname string for the #QmiWdsSduResidualBitErrorRatio specified at `val`.
  * @param val a QmiWdsSduResidualBitErrorRatio.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsSduResidualBitErrorRatioGetString(val: WdsSduResidualBitErrorRatio): string | null
+export function wdsSduResidualBitErrorRatioGetString(val: WdsSduResidualBitErrorRatio): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #QmiWdsSetEventReportTransferStatistics in `mask`.
@@ -16279,176 +16279,176 @@ export function wdsTechnologyPreferenceBuildStringFromMask(mask: WdsTechnologyPr
  * @param val a QmiWdsTetheredCallType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsTetheredCallTypeGetString(val: WdsTetheredCallType): string | null
+export function wdsTetheredCallTypeGetString(val: WdsTetheredCallType): string
 /**
  * Gets the nickname string for the #QmiWdsTrafficClass specified at `val`.
  * @param val a QmiWdsTrafficClass.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsTrafficClassGetString(val: WdsTrafficClass): string | null
+export function wdsTrafficClassGetString(val: WdsTrafficClass): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReason3gpp specified at `val`.
  * @param val a QmiWdsVerboseCallEndReason3gpp.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReason3gppGetString(val: WdsVerboseCallEndReason3gpp): string | null
+export function wdsVerboseCallEndReason3gppGetString(val: WdsVerboseCallEndReason3gpp): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonCm specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonCm.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonCmGetString(val: WdsVerboseCallEndReasonCm): string | null
+export function wdsVerboseCallEndReasonCmGetString(val: WdsVerboseCallEndReasonCm): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonEhrpd specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonEhrpd.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonEhrpdGetString(val: WdsVerboseCallEndReasonEhrpd): string | null
+export function wdsVerboseCallEndReasonEhrpdGetString(val: WdsVerboseCallEndReasonEhrpd): string
 /**
  * Get verbose call end reason based on the reason type.
  * @param type a #QmiWdsVerboseCallEndReasonType.
  * @param reason the reason id.
  * @returns a string with the reason, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonGetString(type: WdsVerboseCallEndReasonType, reason: number): string | null
+export function wdsVerboseCallEndReasonGetString(type: WdsVerboseCallEndReasonType, reason: number): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonInternal specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonInternal.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonInternalGetString(val: WdsVerboseCallEndReasonInternal): string | null
+export function wdsVerboseCallEndReasonInternalGetString(val: WdsVerboseCallEndReasonInternal): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonIpv6 specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonIpv6.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonIpv6GetString(val: WdsVerboseCallEndReasonIpv6): string | null
+export function wdsVerboseCallEndReasonIpv6GetString(val: WdsVerboseCallEndReasonIpv6): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonMip specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonMip.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonMipGetString(val: WdsVerboseCallEndReasonMip): string | null
+export function wdsVerboseCallEndReasonMipGetString(val: WdsVerboseCallEndReasonMip): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonPpp specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonPpp.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonPppGetString(val: WdsVerboseCallEndReasonPpp): string | null
+export function wdsVerboseCallEndReasonPppGetString(val: WdsVerboseCallEndReasonPpp): string
 /**
  * Gets the nickname string for the #QmiWdsVerboseCallEndReasonType specified at `val`.
  * @param val a QmiWdsVerboseCallEndReasonType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wdsVerboseCallEndReasonTypeGetString(val: WdsVerboseCallEndReasonType): string | null
+export function wdsVerboseCallEndReasonTypeGetString(val: WdsVerboseCallEndReasonType): string
 /**
  * Gets the nickname string for the #QmiWmsAckFailureCause specified at `val`.
  * @param val a QmiWmsAckFailureCause.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsAckFailureCauseGetString(val: WmsAckFailureCause): string | null
+export function wmsAckFailureCauseGetString(val: WmsAckFailureCause): string
 /**
  * Gets the nickname string for the #QmiWmsAckIndicator specified at `val`.
  * @param val a QmiWmsAckIndicator.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsAckIndicatorGetString(val: WmsAckIndicator): string | null
+export function wmsAckIndicatorGetString(val: WmsAckIndicator): string
 /**
  * Gets the nickname string for the #QmiWmsCdmaCauseCode specified at `val`.
  * @param val a QmiWmsCdmaCauseCode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsCdmaCauseCodeGetString(val: WmsCdmaCauseCode): string | null
+export function wmsCdmaCauseCodeGetString(val: WmsCdmaCauseCode): string
 /**
  * Gets the nickname string for the #QmiWmsCdmaErrorClass specified at `val`.
  * @param val a QmiWmsCdmaErrorClass.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsCdmaErrorClassGetString(val: WmsCdmaErrorClass): string | null
+export function wmsCdmaErrorClassGetString(val: WmsCdmaErrorClass): string
 /**
  * Gets the nickname string for the #QmiWmsCdmaServiceOption specified at `val`.
  * @param val a QmiWmsCdmaServiceOption.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsCdmaServiceOptionGetString(val: WmsCdmaServiceOption): string | null
+export function wmsCdmaServiceOptionGetString(val: WmsCdmaServiceOption): string
 /**
  * Gets the nickname string for the #QmiWmsGsmUmtsRpCause specified at `val`.
  * @param val a QmiWmsGsmUmtsRpCause.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsGsmUmtsRpCauseGetString(val: WmsGsmUmtsRpCause): string | null
+export function wmsGsmUmtsRpCauseGetString(val: WmsGsmUmtsRpCause): string
 /**
  * Gets the nickname string for the #QmiWmsGsmUmtsTpCause specified at `val`.
  * @param val a QmiWmsGsmUmtsTpCause.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsGsmUmtsTpCauseGetString(val: WmsGsmUmtsTpCause): string | null
+export function wmsGsmUmtsTpCauseGetString(val: WmsGsmUmtsTpCause): string
 /**
  * Gets the nickname string for the #QmiWmsMessageClass specified at `val`.
  * @param val a QmiWmsMessageClass.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageClassGetString(val: WmsMessageClass): string | null
+export function wmsMessageClassGetString(val: WmsMessageClass): string
 /**
  * Gets the nickname string for the #QmiWmsMessageDeliveryFailureType specified at `val`.
  * @param val a QmiWmsMessageDeliveryFailureType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageDeliveryFailureTypeGetString(val: WmsMessageDeliveryFailureType): string | null
+export function wmsMessageDeliveryFailureTypeGetString(val: WmsMessageDeliveryFailureType): string
 /**
  * Gets the nickname string for the #QmiWmsMessageFormat specified at `val`.
  * @param val a QmiWmsMessageFormat.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageFormatGetString(val: WmsMessageFormat): string | null
+export function wmsMessageFormatGetString(val: WmsMessageFormat): string
 /**
  * Gets the nickname string for the #QmiWmsMessageMode specified at `val`.
  * @param val a QmiWmsMessageMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageModeGetString(val: WmsMessageMode): string | null
+export function wmsMessageModeGetString(val: WmsMessageMode): string
 /**
  * Gets the nickname string for the #QmiWmsMessageProtocol specified at `val`.
  * @param val a QmiWmsMessageProtocol.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageProtocolGetString(val: WmsMessageProtocol): string | null
+export function wmsMessageProtocolGetString(val: WmsMessageProtocol): string
 /**
  * Gets the nickname string for the #QmiWmsMessageTagType specified at `val`.
  * @param val a QmiWmsMessageTagType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageTagTypeGetString(val: WmsMessageTagType): string | null
+export function wmsMessageTagTypeGetString(val: WmsMessageTagType): string
 /**
  * Gets the nickname string for the #QmiWmsMessageType specified at `val`.
  * @param val a QmiWmsMessageType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsMessageTypeGetString(val: WmsMessageType): string | null
+export function wmsMessageTypeGetString(val: WmsMessageType): string
 /**
  * Gets the nickname string for the #QmiWmsNotificationType specified at `val`.
  * @param val a QmiWmsNotificationType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsNotificationTypeGetString(val: WmsNotificationType): string | null
+export function wmsNotificationTypeGetString(val: WmsNotificationType): string
 /**
  * Gets the nickname string for the #QmiWmsReceiptAction specified at `val`.
  * @param val a QmiWmsReceiptAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsReceiptActionGetString(val: WmsReceiptAction): string | null
+export function wmsReceiptActionGetString(val: WmsReceiptAction): string
 /**
  * Gets the nickname string for the #QmiWmsStorageType specified at `val`.
  * @param val a QmiWmsStorageType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsStorageTypeGetString(val: WmsStorageType): string | null
+export function wmsStorageTypeGetString(val: WmsStorageType): string
 /**
  * Gets the nickname string for the #QmiWmsTransferIndication specified at `val`.
  * @param val a QmiWmsTransferIndication.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-export function wmsTransferIndicationGetString(val: WmsTransferIndication): string | null
+export function wmsTransferIndicationGetString(val: WmsTransferIndication): string
 /**
  * Callback to run when processing the command abortion. This callback
  * should parse the abort response provided by the device, and build an
@@ -23603,7 +23603,7 @@ export interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    addLink(muxId: number, baseIfname: string | null, ifnamePrefix: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    addLink(muxId: number, baseIfname: string, ifnamePrefix: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_add_link().
      * @param res a #GAsyncResult.
@@ -23634,7 +23634,7 @@ export interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    addLinkWithFlags(muxId: number, baseIfname: string | null, ifnamePrefix: string | null, flags: DeviceAddLinkFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    addLinkWithFlags(muxId: number, baseIfname: string, ifnamePrefix: string, flags: DeviceAddLinkFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_add_link_finish().
      * @param res a #GAsyncResult.
@@ -23756,7 +23756,7 @@ export interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    deleteAllLinks(baseIfname: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteAllLinks(baseIfname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_delete_all_links().
      * @param res a #GAsyncResult.
@@ -23784,7 +23784,7 @@ export interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    deleteLink(ifname: string | null, muxId: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteLink(ifname: string, muxId: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with qmi_device_delete_link().
      * @param res a #GAsyncResult.
@@ -23828,12 +23828,12 @@ export interface Device extends Gio.AsyncInitable {
      * Get the system path of the underlying QMI device.
      * @returns the system path of the device.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Get the system path of the underlying QMI device in UTF-8.
      * @returns UTF-8 encoded system path of the device.
      */
-    getPathDisplay(): string | null
+    getPathDisplay(): string
     /**
      * Asynchronously requests the service version information of the device.
      * 
@@ -23860,7 +23860,7 @@ export interface Device extends Gio.AsyncInitable {
      * </para></note>
      * @returns UTF-8 encoded network interface name, or %NULL if not available.
      */
-    getWwanIface(): string | null
+    getWwanIface(): string
     /**
      * Checks whether the #QmiDevice is open for I/O.
      * @returns %TRUE if @self is open, %FALSE otherwise.
@@ -23872,7 +23872,7 @@ export interface Device extends Gio.AsyncInitable {
      * @param baseIfname the base interface.
      * @returns %TRUE if successful, %FALSE if @error is set.
      */
-    listLinks(baseIfname: string | null): [ /* returnType */ boolean, /* outLinks */ string[] ]
+    listLinks(baseIfname: string): [ /* returnType */ boolean, /* outLinks */ string[] ]
     /**
      * Asynchronously opens a #QmiDevice for I/O.
      * 
@@ -24438,7 +24438,7 @@ export interface IndicationAtrReceivedOutput {
      * Get the 'Message' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMessage(): [ /* returnType */ boolean, /* valueMessage */ string | null ]
+    getMessage(): [ /* returnType */ boolean, /* valueMessage */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -24883,7 +24883,7 @@ export interface IndicationLocGetServerOutput {
      * Get the 'URL' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUrl(): [ /* returnType */ boolean, /* valueUrl */ string | null ]
+    getUrl(): [ /* returnType */ boolean, /* valueUrl */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -25095,7 +25095,7 @@ export interface IndicationLocNmeaOutput {
      * Get the 'NMEA String' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getNmeaString(): [ /* returnType */ boolean, /* valueNmeaString */ string | null ]
+    getNmeaString(): [ /* returnType */ boolean, /* valueNmeaString */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -25688,12 +25688,12 @@ export interface IndicationNasOperatorNameOutput {
      * Get the 'Operator String Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getOperatorStringName(): [ /* returnType */ boolean, /* valueOperatorStringName */ string | null ]
+    getOperatorStringName(): [ /* returnType */ boolean, /* valueOperatorStringName */ string ]
     /**
      * Get the 'Service Provider Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getServiceProviderName(): [ /* returnType */ boolean, /* valueServiceProviderNameNameDisplayCondition */ NasNetworkNameDisplayCondition, /* valueServiceProviderNameName */ string | null ]
+    getServiceProviderName(): [ /* returnType */ boolean, /* valueServiceProviderNameNameDisplayCondition */ NasNetworkNameDisplayCondition, /* valueServiceProviderNameName */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -25850,7 +25850,7 @@ export interface IndicationNasServingSystemOutput {
      * Get the 'Current PLMN' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCurrentPlmn(): [ /* returnType */ boolean, /* valueCurrentPlmnMcc */ number, /* valueCurrentPlmnMnc */ number, /* valueCurrentPlmnDescription */ string | null ]
+    getCurrentPlmn(): [ /* returnType */ boolean, /* valueCurrentPlmnMcc */ number, /* valueCurrentPlmnMnc */ number, /* valueCurrentPlmnDescription */ string ]
     /**
      * Get the 'Data Service Capability' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26116,7 +26116,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'CDMA System Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCdmaSystemInfo(): [ /* returnType */ boolean, /* valueCdmaSystemInfoDomainValid */ boolean, /* valueCdmaSystemInfoDomain */ NasNetworkServiceDomain, /* valueCdmaSystemInfoServiceCapabilityValid */ boolean, /* valueCdmaSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueCdmaSystemInfoRoamingStatusValid */ boolean, /* valueCdmaSystemInfoRoamingStatus */ NasRoamingStatus, /* valueCdmaSystemInfoForbiddenValid */ boolean, /* valueCdmaSystemInfoForbidden */ boolean, /* valueCdmaSystemInfoPrlMatchValid */ boolean, /* valueCdmaSystemInfoPrlMatch */ boolean, /* valueCdmaSystemInfoPRevValid */ boolean, /* valueCdmaSystemInfoPRev */ number, /* valueCdmaSystemInfoBaseStationPRevValid */ boolean, /* valueCdmaSystemInfoBaseStationPRev */ number, /* valueCdmaSystemInfoConcurrentServiceSupportValid */ boolean, /* valueCdmaSystemInfoConcurrentServiceSupport */ boolean, /* valueCdmaSystemInfoCdmaSystemIdValid */ boolean, /* valueCdmaSystemInfoSid */ number, /* valueCdmaSystemInfoNid */ number, /* valueCdmaSystemInfoBaseStationInfoValid */ boolean, /* valueCdmaSystemInfoBaseStationId */ number, /* valueCdmaSystemInfoBaseStationLatitude */ number, /* valueCdmaSystemInfoBaseStationLongitude */ number, /* valueCdmaSystemInfoPacketZoneValid */ boolean, /* valueCdmaSystemInfoPacketZone */ number, /* valueCdmaSystemInfoNetworkIdValid */ boolean, /* valueCdmaSystemInfoMcc */ string | null, /* valueCdmaSystemInfoMnc */ string | null ]
+    getCdmaSystemInfo(): [ /* returnType */ boolean, /* valueCdmaSystemInfoDomainValid */ boolean, /* valueCdmaSystemInfoDomain */ NasNetworkServiceDomain, /* valueCdmaSystemInfoServiceCapabilityValid */ boolean, /* valueCdmaSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueCdmaSystemInfoRoamingStatusValid */ boolean, /* valueCdmaSystemInfoRoamingStatus */ NasRoamingStatus, /* valueCdmaSystemInfoForbiddenValid */ boolean, /* valueCdmaSystemInfoForbidden */ boolean, /* valueCdmaSystemInfoPrlMatchValid */ boolean, /* valueCdmaSystemInfoPrlMatch */ boolean, /* valueCdmaSystemInfoPRevValid */ boolean, /* valueCdmaSystemInfoPRev */ number, /* valueCdmaSystemInfoBaseStationPRevValid */ boolean, /* valueCdmaSystemInfoBaseStationPRev */ number, /* valueCdmaSystemInfoConcurrentServiceSupportValid */ boolean, /* valueCdmaSystemInfoConcurrentServiceSupport */ boolean, /* valueCdmaSystemInfoCdmaSystemIdValid */ boolean, /* valueCdmaSystemInfoSid */ number, /* valueCdmaSystemInfoNid */ number, /* valueCdmaSystemInfoBaseStationInfoValid */ boolean, /* valueCdmaSystemInfoBaseStationId */ number, /* valueCdmaSystemInfoBaseStationLatitude */ number, /* valueCdmaSystemInfoBaseStationLongitude */ number, /* valueCdmaSystemInfoPacketZoneValid */ boolean, /* valueCdmaSystemInfoPacketZone */ number, /* valueCdmaSystemInfoNetworkIdValid */ boolean, /* valueCdmaSystemInfoMcc */ string, /* valueCdmaSystemInfoMnc */ string ]
     /**
      * Get the 'DCNR restriction Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26146,7 +26146,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'GSM System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getGsmSystemInfoV2(): [ /* returnType */ boolean, /* valueGsmSystemInfoV2DomainValid */ boolean, /* valueGsmSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2ServiceCapabilityValid */ boolean, /* valueGsmSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RoamingStatusValid */ boolean, /* valueGsmSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueGsmSystemInfoV2ForbiddenValid */ boolean, /* valueGsmSystemInfoV2Forbidden */ boolean, /* valueGsmSystemInfoV2LacValid */ boolean, /* valueGsmSystemInfoV2Lac */ number, /* valueGsmSystemInfoV2CidValid */ boolean, /* valueGsmSystemInfoV2Cid */ number, /* valueGsmSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueGsmSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueGsmSystemInfoV2NetworkIdValid */ boolean, /* valueGsmSystemInfoV2Mcc */ string | null, /* valueGsmSystemInfoV2Mnc */ string | null, /* valueGsmSystemInfoV2EgprsSupportValid */ boolean, /* valueGsmSystemInfoV2EgprsSupport */ boolean, /* valueGsmSystemInfoV2DtmSupportValid */ boolean, /* valueGsmSystemInfoV2DtmSupport */ boolean ]
+    getGsmSystemInfoV2(): [ /* returnType */ boolean, /* valueGsmSystemInfoV2DomainValid */ boolean, /* valueGsmSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2ServiceCapabilityValid */ boolean, /* valueGsmSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RoamingStatusValid */ boolean, /* valueGsmSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueGsmSystemInfoV2ForbiddenValid */ boolean, /* valueGsmSystemInfoV2Forbidden */ boolean, /* valueGsmSystemInfoV2LacValid */ boolean, /* valueGsmSystemInfoV2Lac */ number, /* valueGsmSystemInfoV2CidValid */ boolean, /* valueGsmSystemInfoV2Cid */ number, /* valueGsmSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueGsmSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueGsmSystemInfoV2NetworkIdValid */ boolean, /* valueGsmSystemInfoV2Mcc */ string, /* valueGsmSystemInfoV2Mnc */ string, /* valueGsmSystemInfoV2EgprsSupportValid */ boolean, /* valueGsmSystemInfoV2EgprsSupport */ boolean, /* valueGsmSystemInfoV2DtmSupportValid */ boolean, /* valueGsmSystemInfoV2DtmSupport */ boolean ]
     /**
      * Get the 'HDR Service Status' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26156,7 +26156,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'HDR System Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getHdrSystemInfo(): [ /* returnType */ boolean, /* valueHdrSystemInfoDomainValid */ boolean, /* valueHdrSystemInfoDomain */ NasNetworkServiceDomain, /* valueHdrSystemInfoServiceCapabilityValid */ boolean, /* valueHdrSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueHdrSystemInfoRoamingStatusValid */ boolean, /* valueHdrSystemInfoRoamingStatus */ NasRoamingStatus, /* valueHdrSystemInfoForbiddenValid */ boolean, /* valueHdrSystemInfoForbidden */ boolean, /* valueHdrSystemInfoPrlMatchValid */ boolean, /* valueHdrSystemInfoPrlMatch */ boolean, /* valueHdrSystemInfoPersonalityValid */ boolean, /* valueHdrSystemInfoPersonality */ NasHdrPersonality, /* valueHdrSystemInfoProtocolRevisionValid */ boolean, /* valueHdrSystemInfoProtocolRevision */ NasHdrProtocolRevision, /* valueHdrSystemInfoIs856SystemIdValid */ boolean, /* valueHdrSystemInfoIs856SystemId */ string | null ]
+    getHdrSystemInfo(): [ /* returnType */ boolean, /* valueHdrSystemInfoDomainValid */ boolean, /* valueHdrSystemInfoDomain */ NasNetworkServiceDomain, /* valueHdrSystemInfoServiceCapabilityValid */ boolean, /* valueHdrSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueHdrSystemInfoRoamingStatusValid */ boolean, /* valueHdrSystemInfoRoamingStatus */ NasRoamingStatus, /* valueHdrSystemInfoForbiddenValid */ boolean, /* valueHdrSystemInfoForbidden */ boolean, /* valueHdrSystemInfoPrlMatchValid */ boolean, /* valueHdrSystemInfoPrlMatch */ boolean, /* valueHdrSystemInfoPersonalityValid */ boolean, /* valueHdrSystemInfoPersonality */ NasHdrPersonality, /* valueHdrSystemInfoProtocolRevisionValid */ boolean, /* valueHdrSystemInfoProtocolRevision */ NasHdrProtocolRevision, /* valueHdrSystemInfoIs856SystemIdValid */ boolean, /* valueHdrSystemInfoIs856SystemId */ string ]
     /**
      * Get the 'LTE eMBMS Coverage Info Support' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26171,7 +26171,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'LTE System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getLteSystemInfoV2(): [ /* returnType */ boolean, /* valueLteSystemInfoV2DomainValid */ boolean, /* valueLteSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2ServiceCapabilityValid */ boolean, /* valueLteSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RoamingStatusValid */ boolean, /* valueLteSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueLteSystemInfoV2ForbiddenValid */ boolean, /* valueLteSystemInfoV2Forbidden */ boolean, /* valueLteSystemInfoV2LacValid */ boolean, /* valueLteSystemInfoV2Lac */ number, /* valueLteSystemInfoV2CidValid */ boolean, /* valueLteSystemInfoV2Cid */ number, /* valueLteSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueLteSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueLteSystemInfoV2NetworkIdValid */ boolean, /* valueLteSystemInfoV2Mcc */ string | null, /* valueLteSystemInfoV2Mnc */ string | null, /* valueLteSystemInfoV2TacValid */ boolean, /* valueLteSystemInfoV2Tac */ number ]
+    getLteSystemInfoV2(): [ /* returnType */ boolean, /* valueLteSystemInfoV2DomainValid */ boolean, /* valueLteSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2ServiceCapabilityValid */ boolean, /* valueLteSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RoamingStatusValid */ boolean, /* valueLteSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueLteSystemInfoV2ForbiddenValid */ boolean, /* valueLteSystemInfoV2Forbidden */ boolean, /* valueLteSystemInfoV2LacValid */ boolean, /* valueLteSystemInfoV2Lac */ number, /* valueLteSystemInfoV2CidValid */ boolean, /* valueLteSystemInfoV2Cid */ number, /* valueLteSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueLteSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueLteSystemInfoV2NetworkIdValid */ boolean, /* valueLteSystemInfoV2Mcc */ string, /* valueLteSystemInfoV2Mnc */ string, /* valueLteSystemInfoV2TacValid */ boolean, /* valueLteSystemInfoV2Tac */ number ]
     /**
      * Get the 'LTE Voice Support' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26186,7 +26186,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'NR5G System Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getNr5gSystemInfo(): [ /* returnType */ boolean, /* valueNr5gSystemInfoDomainValid */ boolean, /* valueNr5gSystemInfoDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoServiceCapabilityValid */ boolean, /* valueNr5gSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRoamingStatusValid */ boolean, /* valueNr5gSystemInfoRoamingStatus */ NasRoamingStatus, /* valueNr5gSystemInfoForbiddenValid */ boolean, /* valueNr5gSystemInfoForbidden */ boolean, /* valueNr5gSystemInfoLacValid */ boolean, /* valueNr5gSystemInfoLac */ number, /* valueNr5gSystemInfoCidValid */ boolean, /* valueNr5gSystemInfoCid */ number, /* valueNr5gSystemInfoRegistrationRejectInfoValid */ boolean, /* valueNr5gSystemInfoRegistrationRejectDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRegistrationRejectCause */ number, /* valueNr5gSystemInfoNetworkIdValid */ boolean, /* valueNr5gSystemInfoMcc */ string | null, /* valueNr5gSystemInfoMnc */ string | null, /* valueNr5gSystemInfoTacValid */ boolean, /* valueNr5gSystemInfoTac */ number ]
+    getNr5gSystemInfo(): [ /* returnType */ boolean, /* valueNr5gSystemInfoDomainValid */ boolean, /* valueNr5gSystemInfoDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoServiceCapabilityValid */ boolean, /* valueNr5gSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRoamingStatusValid */ boolean, /* valueNr5gSystemInfoRoamingStatus */ NasRoamingStatus, /* valueNr5gSystemInfoForbiddenValid */ boolean, /* valueNr5gSystemInfoForbidden */ boolean, /* valueNr5gSystemInfoLacValid */ boolean, /* valueNr5gSystemInfoLac */ number, /* valueNr5gSystemInfoCidValid */ boolean, /* valueNr5gSystemInfoCid */ number, /* valueNr5gSystemInfoRegistrationRejectInfoValid */ boolean, /* valueNr5gSystemInfoRegistrationRejectDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRegistrationRejectCause */ number, /* valueNr5gSystemInfoNetworkIdValid */ boolean, /* valueNr5gSystemInfoMcc */ string, /* valueNr5gSystemInfoMnc */ string, /* valueNr5gSystemInfoTacValid */ boolean, /* valueNr5gSystemInfoTac */ number ]
     /**
      * Get the 'NR5G Tracking Area Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26211,7 +26211,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'TD SCMA System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getTdScmaSystemInfoV2(): [ /* returnType */ boolean, /* valueTdScmaSystemInfoV2DomainValid */ boolean, /* valueTdScmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueTdScmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueTdScmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueTdScmaSystemInfoV2RoamingStatusValid */ boolean, /* valueTdScmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueTdScmaSystemInfoV2ForbiddenValid */ boolean, /* valueTdScmaSystemInfoV2Forbidden */ boolean, /* valueTdScmaSystemInfoV2LacValid */ boolean, /* valueTdScmaSystemInfoV2Lac */ number, /* valueTdScmaSystemInfoV2CidValid */ boolean, /* valueTdScmaSystemInfoV2Cid */ number, /* valueTdScmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueTdScmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueTdScmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueTdScmaSystemInfoV2NetworkIdValid */ boolean, /* valueTdScmaSystemInfoV2Mcc */ string | null, /* valueTdScmaSystemInfoV2Mnc */ string | null, /* valueTdScmaSystemInfoV2HsCallStatusValid */ boolean, /* valueTdScmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueTdScmaSystemInfoV2HsServiceValid */ boolean, /* valueTdScmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueTdScmaSystemInfoV2CellParameterIdValid */ boolean, /* valueTdScmaSystemInfoV2CellParameterId */ number, /* valueTdScmaSystemInfoV2CellBroadcastSupportValid */ boolean, /* valueTdScmaSystemInfoV2CellBroadcastSupport */ NasCellBroadcastCapability, /* valueTdScmaSystemInfoV2CsCallBarringStatusValid */ boolean, /* valueTdScmaSystemInfoV2CsCallBarringStatus */ NasCallBarringStatus, /* valueTdScmaSystemInfoV2PsCallBarringStatusValid */ boolean, /* valueTdScmaSystemInfoV2PsCallBarringStatus */ NasCallBarringStatus, /* valueTdScmaSystemInfoV2CipherDomainValid */ boolean, /* valueTdScmaSystemInfoV2CipherDomain */ NasNetworkServiceDomain ]
+    getTdScmaSystemInfoV2(): [ /* returnType */ boolean, /* valueTdScmaSystemInfoV2DomainValid */ boolean, /* valueTdScmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueTdScmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueTdScmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueTdScmaSystemInfoV2RoamingStatusValid */ boolean, /* valueTdScmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueTdScmaSystemInfoV2ForbiddenValid */ boolean, /* valueTdScmaSystemInfoV2Forbidden */ boolean, /* valueTdScmaSystemInfoV2LacValid */ boolean, /* valueTdScmaSystemInfoV2Lac */ number, /* valueTdScmaSystemInfoV2CidValid */ boolean, /* valueTdScmaSystemInfoV2Cid */ number, /* valueTdScmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueTdScmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueTdScmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueTdScmaSystemInfoV2NetworkIdValid */ boolean, /* valueTdScmaSystemInfoV2Mcc */ string, /* valueTdScmaSystemInfoV2Mnc */ string, /* valueTdScmaSystemInfoV2HsCallStatusValid */ boolean, /* valueTdScmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueTdScmaSystemInfoV2HsServiceValid */ boolean, /* valueTdScmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueTdScmaSystemInfoV2CellParameterIdValid */ boolean, /* valueTdScmaSystemInfoV2CellParameterId */ number, /* valueTdScmaSystemInfoV2CellBroadcastSupportValid */ boolean, /* valueTdScmaSystemInfoV2CellBroadcastSupport */ NasCellBroadcastCapability, /* valueTdScmaSystemInfoV2CsCallBarringStatusValid */ boolean, /* valueTdScmaSystemInfoV2CsCallBarringStatus */ NasCallBarringStatus, /* valueTdScmaSystemInfoV2PsCallBarringStatusValid */ boolean, /* valueTdScmaSystemInfoV2PsCallBarringStatus */ NasCallBarringStatus, /* valueTdScmaSystemInfoV2CipherDomainValid */ boolean, /* valueTdScmaSystemInfoV2CipherDomain */ NasNetworkServiceDomain ]
     /**
      * Get the 'WCDMA Call Barring Status' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26231,7 +26231,7 @@ export interface IndicationNasSystemInfoOutput {
      * Get the 'WCDMA System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getWcdmaSystemInfoV2(): [ /* returnType */ boolean, /* valueWcdmaSystemInfoV2DomainValid */ boolean, /* valueWcdmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueWcdmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RoamingStatusValid */ boolean, /* valueWcdmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueWcdmaSystemInfoV2ForbiddenValid */ boolean, /* valueWcdmaSystemInfoV2Forbidden */ boolean, /* valueWcdmaSystemInfoV2LacValid */ boolean, /* valueWcdmaSystemInfoV2Lac */ number, /* valueWcdmaSystemInfoV2CidValid */ boolean, /* valueWcdmaSystemInfoV2Cid */ number, /* valueWcdmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueWcdmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueWcdmaSystemInfoV2NetworkIdValid */ boolean, /* valueWcdmaSystemInfoV2Mcc */ string | null, /* valueWcdmaSystemInfoV2Mnc */ string | null, /* valueWcdmaSystemInfoV2HsCallStatusValid */ boolean, /* valueWcdmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2HsServiceValid */ boolean, /* valueWcdmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2PrimaryScramblingCodeValid */ boolean, /* valueWcdmaSystemInfoV2PrimaryScramblingCode */ number ]
+    getWcdmaSystemInfoV2(): [ /* returnType */ boolean, /* valueWcdmaSystemInfoV2DomainValid */ boolean, /* valueWcdmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueWcdmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RoamingStatusValid */ boolean, /* valueWcdmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueWcdmaSystemInfoV2ForbiddenValid */ boolean, /* valueWcdmaSystemInfoV2Forbidden */ boolean, /* valueWcdmaSystemInfoV2LacValid */ boolean, /* valueWcdmaSystemInfoV2Lac */ number, /* valueWcdmaSystemInfoV2CidValid */ boolean, /* valueWcdmaSystemInfoV2Cid */ number, /* valueWcdmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueWcdmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueWcdmaSystemInfoV2NetworkIdValid */ boolean, /* valueWcdmaSystemInfoV2Mcc */ string, /* valueWcdmaSystemInfoV2Mnc */ string, /* valueWcdmaSystemInfoV2HsCallStatusValid */ boolean, /* valueWcdmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2HsServiceValid */ boolean, /* valueWcdmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2PrimaryScramblingCodeValid */ boolean, /* valueWcdmaSystemInfoV2PrimaryScramblingCode */ number ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -26383,7 +26383,7 @@ export interface IndicationPdcGetConfigInfoOutput {
      * Get the 'Description' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getDescription(): [ /* returnType */ boolean, /* valueDescription */ string | null ]
+    getDescription(): [ /* returnType */ boolean, /* valueDescription */ string ]
     /**
      * Get the 'Indication Result' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -26691,12 +26691,12 @@ export interface IndicationPdsEventReportOutput {
      * Get the 'Extended NMEA Position' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getExtendedNmeaPosition(): [ /* returnType */ boolean, /* valueExtendedNmeaPositionOperationMode */ PdsOperationMode, /* valueExtendedNmeaPositionNmea */ string | null ]
+    getExtendedNmeaPosition(): [ /* returnType */ boolean, /* valueExtendedNmeaPositionOperationMode */ PdsOperationMode, /* valueExtendedNmeaPositionNmea */ string ]
     /**
      * Get the 'NMEA Position' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getNmeaPosition(): [ /* returnType */ boolean, /* valueNmeaPosition */ string | null ]
+    getNmeaPosition(): [ /* returnType */ boolean, /* valueNmeaPosition */ string ]
     /**
      * Get the 'Position Session Status' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -27754,7 +27754,7 @@ export interface IndicationWmsEventReportOutput {
      * Get the 'SMSC Address' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getSmscAddress(): [ /* returnType */ boolean, /* valueSmscAddress */ string | null ]
+    getSmscAddress(): [ /* returnType */ boolean, /* valueSmscAddress */ string ]
     /**
      * Get the 'Transfer Route MT Message' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -27792,7 +27792,7 @@ export interface IndicationWmsSmscAddressOutput {
      * Get the 'Address' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getAddress(): [ /* returnType */ boolean, /* valueAddressType */ string | null, /* valueAddressDigits */ string | null ]
+    getAddress(): [ /* returnType */ boolean, /* valueAddressType */ string, /* valueAddressDigits */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -27825,7 +27825,7 @@ export interface MessageAtrSendInput {
      * Get the 'Message' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMessage(): [ /* returnType */ boolean, /* valueMessage */ string | null ]
+    getMessage(): [ /* returnType */ boolean, /* valueMessage */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -27836,7 +27836,7 @@ export interface MessageAtrSendInput {
      * @param valueMessage a constant string with a maximum length of 1024 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setMessage(valueMessage: string | null): boolean
+    setMessage(valueMessage: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -27964,7 +27964,7 @@ export interface MessageDmsActivateAutomaticInput {
      * Get the 'Activation Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getActivationCode(): [ /* returnType */ boolean, /* valueActivationCode */ string | null ]
+    getActivationCode(): [ /* returnType */ boolean, /* valueActivationCode */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -27975,7 +27975,7 @@ export interface MessageDmsActivateAutomaticInput {
      * @param valueActivationCode a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setActivationCode(valueActivationCode: string | null): boolean
+    setActivationCode(valueActivationCode: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -28051,17 +28051,17 @@ export interface MessageDmsActivateManualInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoServiceProgrammingCode */ string | null, /* valueInfoSystemIdentificationNumber */ number, /* valueInfoMobileDirectoryNumber */ string | null, /* valueInfoMobileIdentificationNumber */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoServiceProgrammingCode */ string, /* valueInfoSystemIdentificationNumber */ number, /* valueInfoMobileDirectoryNumber */ string, /* valueInfoMobileIdentificationNumber */ string ]
     /**
      * Get the 'MN AAA key' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMnAaaKey(): [ /* returnType */ boolean, /* valueMnAaaKey */ string | null ]
+    getMnAaaKey(): [ /* returnType */ boolean, /* valueMnAaaKey */ string ]
     /**
      * Get the 'MN HA key' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMnHaKey(): [ /* returnType */ boolean, /* valueMnHaKey */ string | null ]
+    getMnHaKey(): [ /* returnType */ boolean, /* valueMnHaKey */ string ]
     /**
      * Get the 'PRL' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -28080,19 +28080,19 @@ export interface MessageDmsActivateManualInput {
      * @param valueInfoMobileIdentificationNumber a constant string with a maximum length of 15 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoServiceProgrammingCode: string | null, valueInfoSystemIdentificationNumber: number, valueInfoMobileDirectoryNumber: string | null, valueInfoMobileIdentificationNumber: string | null): boolean
+    setInfo(valueInfoServiceProgrammingCode: string, valueInfoSystemIdentificationNumber: number, valueInfoMobileDirectoryNumber: string, valueInfoMobileIdentificationNumber: string): boolean
     /**
      * Set the 'MN AAA key' field in the message.
      * @param valueMnAaaKey a constant string with a maximum length of 16 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setMnAaaKey(valueMnAaaKey: string | null): boolean
+    setMnAaaKey(valueMnAaaKey: string): boolean
     /**
      * Set the 'MN HA key' field in the message.
      * @param valueMnHaKey a constant string with a maximum length of 16 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setMnHaKey(valueMnHaKey: string | null): boolean
+    setMnHaKey(valueMnHaKey: string): boolean
     /**
      * Set the 'PRL' field in the message.
      * @param valuePrlPrlTotalLength a #guint16.
@@ -28176,7 +28176,7 @@ export interface MessageDmsDeleteStoredImageInput {
      * Get the 'Image Details' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getImageDetails(): [ /* returnType */ boolean, /* valueImageDetailsType */ DmsFirmwareImageType, /* valueImageDetailsUniqueId */ number[], /* valueImageDetailsBuildId */ string | null ]
+    getImageDetails(): [ /* returnType */ boolean, /* valueImageDetailsType */ DmsFirmwareImageType, /* valueImageDetailsUniqueId */ number[], /* valueImageDetailsBuildId */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -28189,7 +28189,7 @@ export interface MessageDmsDeleteStoredImageInput {
      * @param valueImageDetailsBuildId a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setImageDetails(valueImageDetailsType: DmsFirmwareImageType, valueImageDetailsUniqueId: number[], valueImageDetailsBuildId: string | null): boolean
+    setImageDetails(valueImageDetailsType: DmsFirmwareImageType, valueImageDetailsUniqueId: number[], valueImageDetailsBuildId: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -28411,7 +28411,7 @@ export interface MessageDmsFoxconnGetFirmwareVersionOutput {
      * Get the 'Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string | null ]
+    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -28536,7 +28536,7 @@ export interface MessageDmsFoxconnSetFccAuthenticationV2Input {
      * Get the 'Magic String' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMagicString(): [ /* returnType */ boolean, /* valueMagicString */ string | null ]
+    getMagicString(): [ /* returnType */ boolean, /* valueMagicString */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -28553,7 +28553,7 @@ export interface MessageDmsFoxconnSetFccAuthenticationV2Input {
      * @param valueMagicString a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setMagicString(valueMagicString: string | null): boolean
+    setMagicString(valueMagicString: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -28839,7 +28839,7 @@ export interface MessageDmsGetFactorySkuOutput {
      * Get the 'SKU' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getSku(): [ /* returnType */ boolean, /* valueSku */ string | null ]
+    getSku(): [ /* returnType */ boolean, /* valueSku */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -28950,7 +28950,7 @@ export interface MessageDmsGetHardwareRevisionOutput {
      * Get the 'Revision' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getRevision(): [ /* returnType */ boolean, /* valueRevision */ string | null ]
+    getRevision(): [ /* returnType */ boolean, /* valueRevision */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -28983,22 +28983,22 @@ export interface MessageDmsGetIdsOutput {
      * Get the 'Esn' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getEsn(): [ /* returnType */ boolean, /* valueEsn */ string | null ]
+    getEsn(): [ /* returnType */ boolean, /* valueEsn */ string ]
     /**
      * Get the 'Imei' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getImei(): [ /* returnType */ boolean, /* valueImei */ string | null ]
+    getImei(): [ /* returnType */ boolean, /* valueImei */ string ]
     /**
      * Get the 'Imei Software Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getImeiSoftwareVersion(): [ /* returnType */ boolean, /* valueImeiSoftwareVersion */ string | null ]
+    getImeiSoftwareVersion(): [ /* returnType */ boolean, /* valueImeiSoftwareVersion */ string ]
     /**
      * Get the 'Meid' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMeid(): [ /* returnType */ boolean, /* valueMeid */ string | null ]
+    getMeid(): [ /* returnType */ boolean, /* valueMeid */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -29128,7 +29128,7 @@ export interface MessageDmsGetManufacturerOutput {
      * Get the 'Manufacturer' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getManufacturer(): [ /* returnType */ boolean, /* valueManufacturer */ string | null ]
+    getManufacturer(): [ /* returnType */ boolean, /* valueManufacturer */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -29166,7 +29166,7 @@ export interface MessageDmsGetModelOutput {
      * Get the 'Model' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getModel(): [ /* returnType */ boolean, /* valueModel */ string | null ]
+    getModel(): [ /* returnType */ boolean, /* valueModel */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -29204,7 +29204,7 @@ export interface MessageDmsGetMsisdnOutput {
      * Get the 'MSISDN' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getMsisdn(): [ /* returnType */ boolean, /* valueMsisdn */ string | null ]
+    getMsisdn(): [ /* returnType */ boolean, /* valueMsisdn */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -29376,7 +29376,7 @@ export interface MessageDmsGetRevisionOutput {
      * Get the 'Revision' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getRevision(): [ /* returnType */ boolean, /* valueRevision */ string | null ]
+    getRevision(): [ /* returnType */ boolean, /* valueRevision */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -29414,7 +29414,7 @@ export interface MessageDmsGetSoftwareVersionOutput {
      * Get the 'Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string | null ]
+    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -29447,7 +29447,7 @@ export interface MessageDmsGetStoredImageInfoInput {
      * Get the 'Image Details' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getImageDetails(): [ /* returnType */ boolean, /* valueImageDetailsType */ DmsFirmwareImageType, /* valueImageDetailsUniqueId */ number[], /* valueImageDetailsBuildId */ string | null ]
+    getImageDetails(): [ /* returnType */ boolean, /* valueImageDetailsType */ DmsFirmwareImageType, /* valueImageDetailsUniqueId */ number[], /* valueImageDetailsBuildId */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -29460,7 +29460,7 @@ export interface MessageDmsGetStoredImageInfoInput {
      * @param valueImageDetailsBuildId a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setImageDetails(valueImageDetailsType: DmsFirmwareImageType, valueImageDetailsUniqueId: number[], valueImageDetailsBuildId: string | null): boolean
+    setImageDetails(valueImageDetailsType: DmsFirmwareImageType, valueImageDetailsUniqueId: number[], valueImageDetailsBuildId: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -29513,7 +29513,7 @@ export interface MessageDmsGetStoredImageInfoOutput {
      * Get the 'PRI Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPriVersion(): [ /* returnType */ boolean, /* valuePriVersionPriVersion */ number, /* valuePriVersionPriInfo */ string | null ]
+    getPriVersion(): [ /* returnType */ boolean, /* valuePriVersionPriVersion */ number, /* valuePriVersionPriInfo */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -30026,7 +30026,7 @@ export interface MessageDmsRestoreFactoryDefaultsInput {
      * Get the 'Service Programming Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getServiceProgrammingCode(): [ /* returnType */ boolean, /* valueServiceProgrammingCode */ string | null ]
+    getServiceProgrammingCode(): [ /* returnType */ boolean, /* valueServiceProgrammingCode */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -30037,7 +30037,7 @@ export interface MessageDmsRestoreFactoryDefaultsInput {
      * @param valueServiceProgrammingCode a constant string of exactly 6 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setServiceProgrammingCode(valueServiceProgrammingCode: string | null): boolean
+    setServiceProgrammingCode(valueServiceProgrammingCode: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -30754,12 +30754,12 @@ export interface MessageDmsSetServiceProgrammingCodeInput {
      * Get the 'Current Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCurrentCode(): [ /* returnType */ boolean, /* valueCurrentCode */ string | null ]
+    getCurrentCode(): [ /* returnType */ boolean, /* valueCurrentCode */ string ]
     /**
      * Get the 'New Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getNewCode(): [ /* returnType */ boolean, /* valueNewCode */ string | null ]
+    getNewCode(): [ /* returnType */ boolean, /* valueNewCode */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -30770,13 +30770,13 @@ export interface MessageDmsSetServiceProgrammingCodeInput {
      * @param valueCurrentCode a constant string of exactly 6 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setCurrentCode(valueCurrentCode: string | null): boolean
+    setCurrentCode(valueCurrentCode: string): boolean
     /**
      * Set the 'New Code' field in the message.
      * @param valueNewCode a constant string of exactly 6 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setNewCode(valueNewCode: string | null): boolean
+    setNewCode(valueNewCode: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -30950,7 +30950,7 @@ export interface MessageDmsSetUserLockCodeInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoOldCode */ string | null, /* valueInfoNewCode */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoOldCode */ string, /* valueInfoNewCode */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -30962,7 +30962,7 @@ export interface MessageDmsSetUserLockCodeInput {
      * @param valueInfoNewCode a constant string of exactly 4 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoOldCode: string | null, valueInfoNewCode: string | null): boolean
+    setInfo(valueInfoOldCode: string, valueInfoNewCode: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -31038,7 +31038,7 @@ export interface MessageDmsSetUserLockStateInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoEnabled */ boolean, /* valueInfoLockCode */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoEnabled */ boolean, /* valueInfoLockCode */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31050,7 +31050,7 @@ export interface MessageDmsSetUserLockStateInput {
      * @param valueInfoLockCode a constant string of exactly 4 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoEnabled: boolean, valueInfoLockCode: string | null): boolean
+    setInfo(valueInfoEnabled: boolean, valueInfoLockCode: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -31126,42 +31126,42 @@ export interface MessageDmsSwiGetCurrentFirmwareOutput {
      * Get the 'AMSS version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getAmssVersion(): [ /* returnType */ boolean, /* valueAmssVersion */ string | null ]
+    getAmssVersion(): [ /* returnType */ boolean, /* valueAmssVersion */ string ]
     /**
      * Get the 'Boot version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getBootVersion(): [ /* returnType */ boolean, /* valueBootVersion */ string | null ]
+    getBootVersion(): [ /* returnType */ boolean, /* valueBootVersion */ string ]
     /**
      * Get the 'Carrier' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCarrier(): [ /* returnType */ boolean, /* valueCarrier */ string | null ]
+    getCarrier(): [ /* returnType */ boolean, /* valueCarrier */ string ]
     /**
      * Get the 'Carrier ID' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCarrierId(): [ /* returnType */ boolean, /* valueCarrierId */ string | null ]
+    getCarrierId(): [ /* returnType */ boolean, /* valueCarrierId */ string ]
     /**
      * Get the 'Config version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getConfigVersion(): [ /* returnType */ boolean, /* valueConfigVersion */ string | null ]
+    getConfigVersion(): [ /* returnType */ boolean, /* valueConfigVersion */ string ]
     /**
      * Get the 'Model' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getModel(): [ /* returnType */ boolean, /* valueModel */ string | null ]
+    getModel(): [ /* returnType */ boolean, /* valueModel */ string ]
     /**
      * Get the 'Package ID' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPackageId(): [ /* returnType */ boolean, /* valuePackageId */ string | null ]
+    getPackageId(): [ /* returnType */ boolean, /* valuePackageId */ string ]
     /**
      * Get the 'PRI version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPriVersion(): [ /* returnType */ boolean, /* valuePriVersion */ string | null ]
+    getPriVersion(): [ /* returnType */ boolean, /* valuePriVersion */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -31171,7 +31171,7 @@ export interface MessageDmsSwiGetCurrentFirmwareOutput {
      * Get the 'SKU ID' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getSkuId(): [ /* returnType */ boolean, /* valueSkuId */ string | null ]
+    getSkuId(): [ /* returnType */ boolean, /* valueSkuId */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31334,7 +31334,7 @@ export interface MessageDmsUimChangePinInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoOldPin */ string | null, /* valueInfoNewPin */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoOldPin */ string, /* valueInfoNewPin */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31347,7 +31347,7 @@ export interface MessageDmsUimChangePinInput {
      * @param valueInfoNewPin a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: DmsUimPinId, valueInfoOldPin: string | null, valueInfoNewPin: string | null): boolean
+    setInfo(valueInfoPinId: DmsUimPinId, valueInfoOldPin: string, valueInfoNewPin: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -31525,7 +31525,7 @@ export interface MessageDmsUimGetIccidOutput {
      * Get the 'ICCID' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getIccid(): [ /* returnType */ boolean, /* valueIccid */ string | null ]
+    getIccid(): [ /* returnType */ boolean, /* valueIccid */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -31563,7 +31563,7 @@ export interface MessageDmsUimGetImsiOutput {
      * Get the 'IMSI' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getImsi(): [ /* returnType */ boolean, /* valueImsi */ string | null ]
+    getImsi(): [ /* returnType */ boolean, /* valueImsi */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -31682,7 +31682,7 @@ export interface MessageDmsUimSetCkProtectionInput {
      * Get the 'Facility' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getFacility(): [ /* returnType */ boolean, /* valueFacilityFacility */ DmsUimFacility, /* valueFacilityFacilityState */ DmsUimFacilityState, /* valueFacilityFacilityDepersonalizationControlKey */ string | null ]
+    getFacility(): [ /* returnType */ boolean, /* valueFacilityFacility */ DmsUimFacility, /* valueFacilityFacilityState */ DmsUimFacilityState, /* valueFacilityFacilityDepersonalizationControlKey */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31695,7 +31695,7 @@ export interface MessageDmsUimSetCkProtectionInput {
      * @param valueFacilityFacilityDepersonalizationControlKey a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setFacility(valueFacilityFacility: DmsUimFacility, valueFacilityFacilityState: DmsUimFacilityState, valueFacilityFacilityDepersonalizationControlKey: string | null): boolean
+    setFacility(valueFacilityFacility: DmsUimFacility, valueFacilityFacilityState: DmsUimFacilityState, valueFacilityFacilityDepersonalizationControlKey: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -31776,7 +31776,7 @@ export interface MessageDmsUimSetPinProtectionInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoProtectionEnabled */ boolean, /* valueInfoPin */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoProtectionEnabled */ boolean, /* valueInfoPin */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31789,7 +31789,7 @@ export interface MessageDmsUimSetPinProtectionInput {
      * @param valueInfoPin a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: DmsUimPinId, valueInfoProtectionEnabled: boolean, valueInfoPin: string | null): boolean
+    setInfo(valueInfoPinId: DmsUimPinId, valueInfoProtectionEnabled: boolean, valueInfoPin: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -31870,7 +31870,7 @@ export interface MessageDmsUimUnblockCkInput {
      * Get the 'Facility' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getFacility(): [ /* returnType */ boolean, /* valueFacilityFacility */ DmsUimFacility, /* valueFacilityFacilityControlKey */ string | null ]
+    getFacility(): [ /* returnType */ boolean, /* valueFacilityFacility */ DmsUimFacility, /* valueFacilityFacilityControlKey */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31882,7 +31882,7 @@ export interface MessageDmsUimUnblockCkInput {
      * @param valueFacilityFacilityControlKey a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setFacility(valueFacilityFacility: DmsUimFacility, valueFacilityFacilityControlKey: string | null): boolean
+    setFacility(valueFacilityFacility: DmsUimFacility, valueFacilityFacilityControlKey: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -31963,7 +31963,7 @@ export interface MessageDmsUimUnblockPinInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoPuk */ string | null, /* valueInfoNewPin */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoPuk */ string, /* valueInfoNewPin */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -31976,7 +31976,7 @@ export interface MessageDmsUimUnblockPinInput {
      * @param valueInfoNewPin a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: DmsUimPinId, valueInfoPuk: string | null, valueInfoNewPin: string | null): boolean
+    setInfo(valueInfoPinId: DmsUimPinId, valueInfoPuk: string, valueInfoNewPin: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -32057,7 +32057,7 @@ export interface MessageDmsUimVerifyPinInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoPin */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ DmsUimPinId, /* valueInfoPin */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -32069,7 +32069,7 @@ export interface MessageDmsUimVerifyPinInput {
      * @param valueInfoPin a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: DmsUimPinId, valueInfoPin: string | null): boolean
+    setInfo(valueInfoPinId: DmsUimPinId, valueInfoPin: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -32150,7 +32150,7 @@ export interface MessageDmsValidateServiceProgrammingCodeInput {
      * Get the 'Service Programming Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getServiceProgrammingCode(): [ /* returnType */ boolean, /* valueServiceProgrammingCode */ string | null ]
+    getServiceProgrammingCode(): [ /* returnType */ boolean, /* valueServiceProgrammingCode */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -32161,7 +32161,7 @@ export interface MessageDmsValidateServiceProgrammingCodeInput {
      * @param valueServiceProgrammingCode a constant string of exactly 6 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setServiceProgrammingCode(valueServiceProgrammingCode: string | null): boolean
+    setServiceProgrammingCode(valueServiceProgrammingCode: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -32630,7 +32630,7 @@ export interface MessageDsdGetApnInfoOutput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -32741,7 +32741,7 @@ export interface MessageDsdSetApnTypeInput {
      * Get the 'APN Type' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnType(): [ /* returnType */ boolean, /* valueApnTypeName */ string | null, /* valueApnTypeType */ DsdApnTypePreference ]
+    getApnType(): [ /* returnType */ boolean, /* valueApnTypeName */ string, /* valueApnTypeType */ DsdApnTypePreference ]
     /**
      * Get the 'APN Type Preference Mask' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -32758,7 +32758,7 @@ export interface MessageDsdSetApnTypeInput {
      * @param valueApnTypeType a #QmiDsdApnTypePreference.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setApnType(valueApnTypeName: string | null, valueApnTypeType: DsdApnTypePreference): boolean
+    setApnType(valueApnTypeName: string, valueApnTypeType: DsdApnTypePreference): boolean
     /**
      * Set the 'APN Type Preference Mask' field in the message.
      * @param valueApnTypePreferenceMask a #QmiDsdApnTypePreference.
@@ -32986,7 +32986,7 @@ export interface MessageFoxGetFirmwareVersionOutput {
      * Get the 'Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string | null ]
+    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -33024,7 +33024,7 @@ export interface MessageGasDmsGetFirmwareListInput {
      * Get the 'Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getName(): [ /* returnType */ boolean, /* valueName */ string | null ]
+    getName(): [ /* returnType */ boolean, /* valueName */ string ]
     /**
      * Get the 'Slot Index' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -33034,7 +33034,7 @@ export interface MessageGasDmsGetFirmwareListInput {
      * Get the 'Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string | null ]
+    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -33051,7 +33051,7 @@ export interface MessageGasDmsGetFirmwareListInput {
      * @param valueName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setName(valueName: string | null): boolean
+    setName(valueName: string): boolean
     /**
      * Set the 'Slot Index' field in the message.
      * @param valueSlotIndex a #guint8.
@@ -33063,7 +33063,7 @@ export interface MessageGasDmsGetFirmwareListInput {
      * @param valueVersion a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setVersion(valueVersion: string | null): boolean
+    setVersion(valueVersion: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -33116,22 +33116,22 @@ export interface MessageGasDmsGetFirmwareListOutput {
      * Get the 'Stored Firmware 1' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getStoredFirmware1(): [ /* returnType */ boolean, /* valueStoredFirmware1Index */ number, /* valueStoredFirmware1Name */ string | null, /* valueStoredFirmware1Version */ string | null, /* valueStoredFirmware1PriRevision */ string | null ]
+    getStoredFirmware1(): [ /* returnType */ boolean, /* valueStoredFirmware1Index */ number, /* valueStoredFirmware1Name */ string, /* valueStoredFirmware1Version */ string, /* valueStoredFirmware1PriRevision */ string ]
     /**
      * Get the 'Stored Firmware 2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getStoredFirmware2(): [ /* returnType */ boolean, /* valueStoredFirmware2Index */ number, /* valueStoredFirmware2Name */ string | null, /* valueStoredFirmware2Version */ string | null, /* valueStoredFirmware2PriRevision */ string | null ]
+    getStoredFirmware2(): [ /* returnType */ boolean, /* valueStoredFirmware2Index */ number, /* valueStoredFirmware2Name */ string, /* valueStoredFirmware2Version */ string, /* valueStoredFirmware2PriRevision */ string ]
     /**
      * Get the 'Stored Firmware 3' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getStoredFirmware3(): [ /* returnType */ boolean, /* valueStoredFirmware3Index */ number, /* valueStoredFirmware3Name */ string | null, /* valueStoredFirmware3Version */ string | null, /* valueStoredFirmware3PriRevision */ string | null ]
+    getStoredFirmware3(): [ /* returnType */ boolean, /* valueStoredFirmware3Index */ number, /* valueStoredFirmware3Name */ string, /* valueStoredFirmware3Version */ string, /* valueStoredFirmware3PriRevision */ string ]
     /**
      * Get the 'Stored Firmware 4' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getStoredFirmware4(): [ /* returnType */ boolean, /* valueStoredFirmware4Index */ number, /* valueStoredFirmware4Name */ string | null, /* valueStoredFirmware4Version */ string | null, /* valueStoredFirmware4PriRevision */ string | null ]
+    getStoredFirmware4(): [ /* returnType */ boolean, /* valueStoredFirmware4Index */ number, /* valueStoredFirmware4Name */ string, /* valueStoredFirmware4Version */ string, /* valueStoredFirmware4PriRevision */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -33222,7 +33222,7 @@ export interface MessageGasDmsSetActiveFirmwareInput {
      * Get the 'Carrier Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCarrierName(): [ /* returnType */ boolean, /* valueCarrierName */ string | null ]
+    getCarrierName(): [ /* returnType */ boolean, /* valueCarrierName */ string ]
     /**
      * Get the 'Slot Index' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -33232,7 +33232,7 @@ export interface MessageGasDmsSetActiveFirmwareInput {
      * Get the 'Version' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string | null ]
+    getVersion(): [ /* returnType */ boolean, /* valueVersion */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -33243,7 +33243,7 @@ export interface MessageGasDmsSetActiveFirmwareInput {
      * @param valueCarrierName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setCarrierName(valueCarrierName: string | null): boolean
+    setCarrierName(valueCarrierName: string): boolean
     /**
      * Set the 'Slot Index' field in the message.
      * @param valueSlotIndex a #guint8.
@@ -33255,7 +33255,7 @@ export interface MessageGasDmsSetActiveFirmwareInput {
      * @param valueVersion a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setVersion(valueVersion: string | null): boolean
+    setVersion(valueVersion: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -34613,7 +34613,7 @@ export interface MessageLocSetServerInput {
      * Get the 'URL' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUrl(): [ /* returnType */ boolean, /* valueUrl */ string | null ]
+    getUrl(): [ /* returnType */ boolean, /* valueUrl */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -34644,7 +34644,7 @@ export interface MessageLocSetServerInput {
      * @param valueUrl a constant string with a maximum length of 256 characters.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setUrl(valueUrl: string | null): boolean
+    setUrl(valueUrl: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -36551,7 +36551,7 @@ export interface MessageNasGetHomeNetworkOutput {
      * Get the 'Home Network' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getHomeNetwork(): [ /* returnType */ boolean, /* valueHomeNetworkMcc */ number, /* valueHomeNetworkMnc */ number, /* valueHomeNetworkDescription */ string | null ]
+    getHomeNetwork(): [ /* returnType */ boolean, /* valueHomeNetworkMcc */ number, /* valueHomeNetworkMnc */ number, /* valueHomeNetworkDescription */ string ]
     /**
      * Get the 'Home Network 3GPP2 Ext' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -36738,7 +36738,7 @@ export interface MessageNasGetOperatorNameOutput {
      * Get the 'Operator String Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getOperatorStringName(): [ /* returnType */ boolean, /* valueOperatorStringName */ string | null ]
+    getOperatorStringName(): [ /* returnType */ boolean, /* valueOperatorStringName */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -36748,7 +36748,7 @@ export interface MessageNasGetOperatorNameOutput {
      * Get the 'Service Provider Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getServiceProviderName(): [ /* returnType */ boolean, /* valueServiceProviderNameNameDisplayCondition */ NasNetworkNameDisplayCondition, /* valueServiceProviderNameName */ string | null ]
+    getServiceProviderName(): [ /* returnType */ boolean, /* valueServiceProviderNameNameDisplayCondition */ NasNetworkNameDisplayCondition, /* valueServiceProviderNameName */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -37396,7 +37396,7 @@ export interface MessageNasGetServingSystemOutput {
      * Get the 'Current PLMN' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCurrentPlmn(): [ /* returnType */ boolean, /* valueCurrentPlmnMcc */ number, /* valueCurrentPlmnMnc */ number, /* valueCurrentPlmnDescription */ string | null ]
+    getCurrentPlmn(): [ /* returnType */ boolean, /* valueCurrentPlmnMcc */ number, /* valueCurrentPlmnMnc */ number, /* valueCurrentPlmnDescription */ string ]
     /**
      * Get the 'Data Service Capability' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -37967,7 +37967,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'CDMA System Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCdmaSystemInfo(): [ /* returnType */ boolean, /* valueCdmaSystemInfoDomainValid */ boolean, /* valueCdmaSystemInfoDomain */ NasNetworkServiceDomain, /* valueCdmaSystemInfoServiceCapabilityValid */ boolean, /* valueCdmaSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueCdmaSystemInfoRoamingStatusValid */ boolean, /* valueCdmaSystemInfoRoamingStatus */ NasRoamingStatus, /* valueCdmaSystemInfoForbiddenValid */ boolean, /* valueCdmaSystemInfoForbidden */ boolean, /* valueCdmaSystemInfoPrlMatchValid */ boolean, /* valueCdmaSystemInfoPrlMatch */ boolean, /* valueCdmaSystemInfoPRevValid */ boolean, /* valueCdmaSystemInfoPRev */ number, /* valueCdmaSystemInfoBaseStationPRevValid */ boolean, /* valueCdmaSystemInfoBaseStationPRev */ number, /* valueCdmaSystemInfoConcurrentServiceSupportValid */ boolean, /* valueCdmaSystemInfoConcurrentServiceSupport */ boolean, /* valueCdmaSystemInfoCdmaSystemIdValid */ boolean, /* valueCdmaSystemInfoSid */ number, /* valueCdmaSystemInfoNid */ number, /* valueCdmaSystemInfoBaseStationInfoValid */ boolean, /* valueCdmaSystemInfoBaseStationId */ number, /* valueCdmaSystemInfoBaseStationLatitude */ number, /* valueCdmaSystemInfoBaseStationLongitude */ number, /* valueCdmaSystemInfoPacketZoneValid */ boolean, /* valueCdmaSystemInfoPacketZone */ number, /* valueCdmaSystemInfoNetworkIdValid */ boolean, /* valueCdmaSystemInfoMcc */ string | null, /* valueCdmaSystemInfoMnc */ string | null ]
+    getCdmaSystemInfo(): [ /* returnType */ boolean, /* valueCdmaSystemInfoDomainValid */ boolean, /* valueCdmaSystemInfoDomain */ NasNetworkServiceDomain, /* valueCdmaSystemInfoServiceCapabilityValid */ boolean, /* valueCdmaSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueCdmaSystemInfoRoamingStatusValid */ boolean, /* valueCdmaSystemInfoRoamingStatus */ NasRoamingStatus, /* valueCdmaSystemInfoForbiddenValid */ boolean, /* valueCdmaSystemInfoForbidden */ boolean, /* valueCdmaSystemInfoPrlMatchValid */ boolean, /* valueCdmaSystemInfoPrlMatch */ boolean, /* valueCdmaSystemInfoPRevValid */ boolean, /* valueCdmaSystemInfoPRev */ number, /* valueCdmaSystemInfoBaseStationPRevValid */ boolean, /* valueCdmaSystemInfoBaseStationPRev */ number, /* valueCdmaSystemInfoConcurrentServiceSupportValid */ boolean, /* valueCdmaSystemInfoConcurrentServiceSupport */ boolean, /* valueCdmaSystemInfoCdmaSystemIdValid */ boolean, /* valueCdmaSystemInfoSid */ number, /* valueCdmaSystemInfoNid */ number, /* valueCdmaSystemInfoBaseStationInfoValid */ boolean, /* valueCdmaSystemInfoBaseStationId */ number, /* valueCdmaSystemInfoBaseStationLatitude */ number, /* valueCdmaSystemInfoBaseStationLongitude */ number, /* valueCdmaSystemInfoPacketZoneValid */ boolean, /* valueCdmaSystemInfoPacketZone */ number, /* valueCdmaSystemInfoNetworkIdValid */ boolean, /* valueCdmaSystemInfoMcc */ string, /* valueCdmaSystemInfoMnc */ string ]
     /**
      * Get the 'DCNR restriction Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -38002,7 +38002,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'GSM System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getGsmSystemInfoV2(): [ /* returnType */ boolean, /* valueGsmSystemInfoV2DomainValid */ boolean, /* valueGsmSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2ServiceCapabilityValid */ boolean, /* valueGsmSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RoamingStatusValid */ boolean, /* valueGsmSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueGsmSystemInfoV2ForbiddenValid */ boolean, /* valueGsmSystemInfoV2Forbidden */ boolean, /* valueGsmSystemInfoV2LacValid */ boolean, /* valueGsmSystemInfoV2Lac */ number, /* valueGsmSystemInfoV2CidValid */ boolean, /* valueGsmSystemInfoV2Cid */ number, /* valueGsmSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueGsmSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueGsmSystemInfoV2NetworkIdValid */ boolean, /* valueGsmSystemInfoV2Mcc */ string | null, /* valueGsmSystemInfoV2Mnc */ string | null, /* valueGsmSystemInfoV2EgprsSupportValid */ boolean, /* valueGsmSystemInfoV2EgprsSupport */ boolean, /* valueGsmSystemInfoV2DtmSupportValid */ boolean, /* valueGsmSystemInfoV2DtmSupport */ boolean ]
+    getGsmSystemInfoV2(): [ /* returnType */ boolean, /* valueGsmSystemInfoV2DomainValid */ boolean, /* valueGsmSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2ServiceCapabilityValid */ boolean, /* valueGsmSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RoamingStatusValid */ boolean, /* valueGsmSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueGsmSystemInfoV2ForbiddenValid */ boolean, /* valueGsmSystemInfoV2Forbidden */ boolean, /* valueGsmSystemInfoV2LacValid */ boolean, /* valueGsmSystemInfoV2Lac */ number, /* valueGsmSystemInfoV2CidValid */ boolean, /* valueGsmSystemInfoV2Cid */ number, /* valueGsmSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueGsmSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueGsmSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueGsmSystemInfoV2NetworkIdValid */ boolean, /* valueGsmSystemInfoV2Mcc */ string, /* valueGsmSystemInfoV2Mnc */ string, /* valueGsmSystemInfoV2EgprsSupportValid */ boolean, /* valueGsmSystemInfoV2EgprsSupport */ boolean, /* valueGsmSystemInfoV2DtmSupportValid */ boolean, /* valueGsmSystemInfoV2DtmSupport */ boolean ]
     /**
      * Get the 'HDR Service Status' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -38012,7 +38012,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'HDR System Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getHdrSystemInfo(): [ /* returnType */ boolean, /* valueHdrSystemInfoDomainValid */ boolean, /* valueHdrSystemInfoDomain */ NasNetworkServiceDomain, /* valueHdrSystemInfoServiceCapabilityValid */ boolean, /* valueHdrSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueHdrSystemInfoRoamingStatusValid */ boolean, /* valueHdrSystemInfoRoamingStatus */ NasRoamingStatus, /* valueHdrSystemInfoForbiddenValid */ boolean, /* valueHdrSystemInfoForbidden */ boolean, /* valueHdrSystemInfoPrlMatchValid */ boolean, /* valueHdrSystemInfoPrlMatch */ boolean, /* valueHdrSystemInfoPersonalityValid */ boolean, /* valueHdrSystemInfoPersonality */ NasHdrPersonality, /* valueHdrSystemInfoProtocolRevisionValid */ boolean, /* valueHdrSystemInfoProtocolRevision */ NasHdrProtocolRevision, /* valueHdrSystemInfoIs856SystemIdValid */ boolean, /* valueHdrSystemInfoIs856SystemId */ string | null ]
+    getHdrSystemInfo(): [ /* returnType */ boolean, /* valueHdrSystemInfoDomainValid */ boolean, /* valueHdrSystemInfoDomain */ NasNetworkServiceDomain, /* valueHdrSystemInfoServiceCapabilityValid */ boolean, /* valueHdrSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueHdrSystemInfoRoamingStatusValid */ boolean, /* valueHdrSystemInfoRoamingStatus */ NasRoamingStatus, /* valueHdrSystemInfoForbiddenValid */ boolean, /* valueHdrSystemInfoForbidden */ boolean, /* valueHdrSystemInfoPrlMatchValid */ boolean, /* valueHdrSystemInfoPrlMatch */ boolean, /* valueHdrSystemInfoPersonalityValid */ boolean, /* valueHdrSystemInfoPersonality */ NasHdrPersonality, /* valueHdrSystemInfoProtocolRevisionValid */ boolean, /* valueHdrSystemInfoProtocolRevision */ NasHdrProtocolRevision, /* valueHdrSystemInfoIs856SystemIdValid */ boolean, /* valueHdrSystemInfoIs856SystemId */ string ]
     /**
      * Get the 'IMS Voice Support' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -38047,7 +38047,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'LTE System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getLteSystemInfoV2(): [ /* returnType */ boolean, /* valueLteSystemInfoV2DomainValid */ boolean, /* valueLteSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2ServiceCapabilityValid */ boolean, /* valueLteSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RoamingStatusValid */ boolean, /* valueLteSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueLteSystemInfoV2ForbiddenValid */ boolean, /* valueLteSystemInfoV2Forbidden */ boolean, /* valueLteSystemInfoV2LacValid */ boolean, /* valueLteSystemInfoV2Lac */ number, /* valueLteSystemInfoV2CidValid */ boolean, /* valueLteSystemInfoV2Cid */ number, /* valueLteSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueLteSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueLteSystemInfoV2NetworkIdValid */ boolean, /* valueLteSystemInfoV2Mcc */ string | null, /* valueLteSystemInfoV2Mnc */ string | null, /* valueLteSystemInfoV2TacValid */ boolean, /* valueLteSystemInfoV2Tac */ number ]
+    getLteSystemInfoV2(): [ /* returnType */ boolean, /* valueLteSystemInfoV2DomainValid */ boolean, /* valueLteSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2ServiceCapabilityValid */ boolean, /* valueLteSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RoamingStatusValid */ boolean, /* valueLteSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueLteSystemInfoV2ForbiddenValid */ boolean, /* valueLteSystemInfoV2Forbidden */ boolean, /* valueLteSystemInfoV2LacValid */ boolean, /* valueLteSystemInfoV2Lac */ number, /* valueLteSystemInfoV2CidValid */ boolean, /* valueLteSystemInfoV2Cid */ number, /* valueLteSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueLteSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueLteSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueLteSystemInfoV2NetworkIdValid */ boolean, /* valueLteSystemInfoV2Mcc */ string, /* valueLteSystemInfoV2Mnc */ string, /* valueLteSystemInfoV2TacValid */ boolean, /* valueLteSystemInfoV2Tac */ number ]
     /**
      * Get the 'LTE Voice Domain' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -38072,7 +38072,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'NR5G System Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getNr5gSystemInfo(): [ /* returnType */ boolean, /* valueNr5gSystemInfoDomainValid */ boolean, /* valueNr5gSystemInfoDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoServiceCapabilityValid */ boolean, /* valueNr5gSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRoamingStatusValid */ boolean, /* valueNr5gSystemInfoRoamingStatus */ NasRoamingStatus, /* valueNr5gSystemInfoForbiddenValid */ boolean, /* valueNr5gSystemInfoForbidden */ boolean, /* valueNr5gSystemInfoLacValid */ boolean, /* valueNr5gSystemInfoLac */ number, /* valueNr5gSystemInfoCidValid */ boolean, /* valueNr5gSystemInfoCid */ number, /* valueNr5gSystemInfoRegistrationRejectInfoValid */ boolean, /* valueNr5gSystemInfoRegistrationRejectDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRegistrationRejectCause */ number, /* valueNr5gSystemInfoNetworkIdValid */ boolean, /* valueNr5gSystemInfoMcc */ string | null, /* valueNr5gSystemInfoMnc */ string | null, /* valueNr5gSystemInfoTacValid */ boolean, /* valueNr5gSystemInfoTac */ number ]
+    getNr5gSystemInfo(): [ /* returnType */ boolean, /* valueNr5gSystemInfoDomainValid */ boolean, /* valueNr5gSystemInfoDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoServiceCapabilityValid */ boolean, /* valueNr5gSystemInfoServiceCapability */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRoamingStatusValid */ boolean, /* valueNr5gSystemInfoRoamingStatus */ NasRoamingStatus, /* valueNr5gSystemInfoForbiddenValid */ boolean, /* valueNr5gSystemInfoForbidden */ boolean, /* valueNr5gSystemInfoLacValid */ boolean, /* valueNr5gSystemInfoLac */ number, /* valueNr5gSystemInfoCidValid */ boolean, /* valueNr5gSystemInfoCid */ number, /* valueNr5gSystemInfoRegistrationRejectInfoValid */ boolean, /* valueNr5gSystemInfoRegistrationRejectDomain */ NasNetworkServiceDomain, /* valueNr5gSystemInfoRegistrationRejectCause */ number, /* valueNr5gSystemInfoNetworkIdValid */ boolean, /* valueNr5gSystemInfoMcc */ string, /* valueNr5gSystemInfoMnc */ string, /* valueNr5gSystemInfoTacValid */ boolean, /* valueNr5gSystemInfoTac */ number ]
     /**
      * Get the 'NR5G Tracking Area Code' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -38097,7 +38097,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'TD SCDMA System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getTdScdmaSystemInfoV2(): [ /* returnType */ boolean, /* valueTdScdmaSystemInfoV2DomainValid */ boolean, /* valueTdScdmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueTdScdmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueTdScdmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueTdScdmaSystemInfoV2RoamingStatusValid */ boolean, /* valueTdScdmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueTdScdmaSystemInfoV2ForbiddenValid */ boolean, /* valueTdScdmaSystemInfoV2Forbidden */ boolean, /* valueTdScdmaSystemInfoV2LacValid */ boolean, /* valueTdScdmaSystemInfoV2Lac */ number, /* valueTdScdmaSystemInfoV2CidValid */ boolean, /* valueTdScdmaSystemInfoV2Cid */ number, /* valueTdScdmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueTdScdmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueTdScdmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueTdScdmaSystemInfoV2NetworkIdValid */ boolean, /* valueTdScdmaSystemInfoV2Mcc */ string | null, /* valueTdScdmaSystemInfoV2Mnc */ string | null, /* valueTdScdmaSystemInfoV2HsCallStatusValid */ boolean, /* valueTdScdmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueTdScdmaSystemInfoV2HsServiceValid */ boolean, /* valueTdScdmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueTdScdmaSystemInfoV2CellParameterIdValid */ boolean, /* valueTdScdmaSystemInfoV2CellParameterId */ number, /* valueTdScdmaSystemInfoV2CellBroadcastSupportValid */ boolean, /* valueTdScdmaSystemInfoV2CellBroadcastSupport */ NasCellBroadcastCapability, /* valueTdScdmaSystemInfoV2CsCallBarringStatusValid */ boolean, /* valueTdScdmaSystemInfoV2CsCallBarringStatus */ NasCallBarringStatus, /* valueTdScdmaSystemInfoV2PsCallBarringStatusValid */ boolean, /* valueTdScdmaSystemInfoV2PsCallBarringStatus */ NasCallBarringStatus, /* valueTdScdmaSystemInfoV2CipherDomainValid */ boolean, /* valueTdScdmaSystemInfoV2CipherDomain */ NasNetworkServiceDomain ]
+    getTdScdmaSystemInfoV2(): [ /* returnType */ boolean, /* valueTdScdmaSystemInfoV2DomainValid */ boolean, /* valueTdScdmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueTdScdmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueTdScdmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueTdScdmaSystemInfoV2RoamingStatusValid */ boolean, /* valueTdScdmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueTdScdmaSystemInfoV2ForbiddenValid */ boolean, /* valueTdScdmaSystemInfoV2Forbidden */ boolean, /* valueTdScdmaSystemInfoV2LacValid */ boolean, /* valueTdScdmaSystemInfoV2Lac */ number, /* valueTdScdmaSystemInfoV2CidValid */ boolean, /* valueTdScdmaSystemInfoV2Cid */ number, /* valueTdScdmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueTdScdmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueTdScdmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueTdScdmaSystemInfoV2NetworkIdValid */ boolean, /* valueTdScdmaSystemInfoV2Mcc */ string, /* valueTdScdmaSystemInfoV2Mnc */ string, /* valueTdScdmaSystemInfoV2HsCallStatusValid */ boolean, /* valueTdScdmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueTdScdmaSystemInfoV2HsServiceValid */ boolean, /* valueTdScdmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueTdScdmaSystemInfoV2CellParameterIdValid */ boolean, /* valueTdScdmaSystemInfoV2CellParameterId */ number, /* valueTdScdmaSystemInfoV2CellBroadcastSupportValid */ boolean, /* valueTdScdmaSystemInfoV2CellBroadcastSupport */ NasCellBroadcastCapability, /* valueTdScdmaSystemInfoV2CsCallBarringStatusValid */ boolean, /* valueTdScdmaSystemInfoV2CsCallBarringStatus */ NasCallBarringStatus, /* valueTdScdmaSystemInfoV2PsCallBarringStatusValid */ boolean, /* valueTdScdmaSystemInfoV2PsCallBarringStatus */ NasCallBarringStatus, /* valueTdScdmaSystemInfoV2CipherDomainValid */ boolean, /* valueTdScdmaSystemInfoV2CipherDomain */ NasNetworkServiceDomain ]
     /**
      * Get the 'WCDMA Call Barring Status' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -38122,7 +38122,7 @@ export interface MessageNasGetSystemInfoOutput {
      * Get the 'WCDMA System Info v2' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getWcdmaSystemInfoV2(): [ /* returnType */ boolean, /* valueWcdmaSystemInfoV2DomainValid */ boolean, /* valueWcdmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueWcdmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RoamingStatusValid */ boolean, /* valueWcdmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueWcdmaSystemInfoV2ForbiddenValid */ boolean, /* valueWcdmaSystemInfoV2Forbidden */ boolean, /* valueWcdmaSystemInfoV2LacValid */ boolean, /* valueWcdmaSystemInfoV2Lac */ number, /* valueWcdmaSystemInfoV2CidValid */ boolean, /* valueWcdmaSystemInfoV2Cid */ number, /* valueWcdmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueWcdmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueWcdmaSystemInfoV2NetworkIdValid */ boolean, /* valueWcdmaSystemInfoV2Mcc */ string | null, /* valueWcdmaSystemInfoV2Mnc */ string | null, /* valueWcdmaSystemInfoV2HsCallStatusValid */ boolean, /* valueWcdmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2HsServiceValid */ boolean, /* valueWcdmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2PrimaryScramblingCodeValid */ boolean, /* valueWcdmaSystemInfoV2PrimaryScramblingCode */ number ]
+    getWcdmaSystemInfoV2(): [ /* returnType */ boolean, /* valueWcdmaSystemInfoV2DomainValid */ boolean, /* valueWcdmaSystemInfoV2Domain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2ServiceCapabilityValid */ boolean, /* valueWcdmaSystemInfoV2ServiceCapability */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RoamingStatusValid */ boolean, /* valueWcdmaSystemInfoV2RoamingStatus */ NasRoamingStatus, /* valueWcdmaSystemInfoV2ForbiddenValid */ boolean, /* valueWcdmaSystemInfoV2Forbidden */ boolean, /* valueWcdmaSystemInfoV2LacValid */ boolean, /* valueWcdmaSystemInfoV2Lac */ number, /* valueWcdmaSystemInfoV2CidValid */ boolean, /* valueWcdmaSystemInfoV2Cid */ number, /* valueWcdmaSystemInfoV2RegistrationRejectInfoValid */ boolean, /* valueWcdmaSystemInfoV2RegistrationRejectDomain */ NasNetworkServiceDomain, /* valueWcdmaSystemInfoV2RegistrationRejectCause */ NasRejectCause, /* valueWcdmaSystemInfoV2NetworkIdValid */ boolean, /* valueWcdmaSystemInfoV2Mcc */ string, /* valueWcdmaSystemInfoV2Mnc */ string, /* valueWcdmaSystemInfoV2HsCallStatusValid */ boolean, /* valueWcdmaSystemInfoV2HsCallStatus */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2HsServiceValid */ boolean, /* valueWcdmaSystemInfoV2HsService */ NasWcdmaHsService, /* valueWcdmaSystemInfoV2PrimaryScramblingCodeValid */ boolean, /* valueWcdmaSystemInfoV2PrimaryScramblingCode */ number ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -41783,7 +41783,7 @@ export interface MessagePdcGetDefaultConfigInfoOutput {
      * Get the 'Description' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getDescription(): [ /* returnType */ boolean, /* valueDescription */ string | null ]
+    getDescription(): [ /* returnType */ boolean, /* valueDescription */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -43722,7 +43722,7 @@ export interface MessageUimChangePinInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoOldPin */ string | null, /* valueInfoNewPin */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoOldPin */ string, /* valueInfoNewPin */ string ]
     /**
      * Get the 'Response In Indication Token' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -43745,7 +43745,7 @@ export interface MessageUimChangePinInput {
      * @param valueInfoNewPin a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: UimPinId, valueInfoOldPin: string | null, valueInfoNewPin: string | null): boolean
+    setInfo(valueInfoPinId: UimPinId, valueInfoOldPin: string, valueInfoNewPin: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
      * @param valueResponseInIndicationToken a #guint32.
@@ -43949,7 +43949,7 @@ export interface MessageUimDepersonalizationInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoFeature */ UimCardApplicationPersonalizationFeature, /* valueInfoOperation */ UimDepersonalizationOperation, /* valueInfoControlKey */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoFeature */ UimCardApplicationPersonalizationFeature, /* valueInfoOperation */ UimDepersonalizationOperation, /* valueInfoControlKey */ string ]
     /**
      * Get the 'Slot' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -43967,7 +43967,7 @@ export interface MessageUimDepersonalizationInput {
      * @param valueInfoControlKey a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoFeature: UimCardApplicationPersonalizationFeature, valueInfoOperation: UimDepersonalizationOperation, valueInfoControlKey: string | null): boolean
+    setInfo(valueInfoFeature: UimCardApplicationPersonalizationFeature, valueInfoOperation: UimDepersonalizationOperation, valueInfoControlKey: string): boolean
     /**
      * Set the 'Slot' field in the message.
      * @param valueSlot a #guint8.
@@ -45762,7 +45762,7 @@ export interface MessageUimSetPinProtectionInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoPinEnabled */ boolean, /* valueInfoPinValue */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoPinEnabled */ boolean, /* valueInfoPinValue */ string ]
     /**
      * Get the 'Response In Indication Token' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -45785,7 +45785,7 @@ export interface MessageUimSetPinProtectionInput {
      * @param valueInfoPinValue a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: UimPinId, valueInfoPinEnabled: boolean, valueInfoPinValue: string | null): boolean
+    setInfo(valueInfoPinId: UimPinId, valueInfoPinEnabled: boolean, valueInfoPinValue: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
      * @param valueResponseInIndicationToken a #guint32.
@@ -45982,7 +45982,7 @@ export interface MessageUimUnblockPinInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoPuk */ string | null, /* valueInfoNewPin */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoPuk */ string, /* valueInfoNewPin */ string ]
     /**
      * Get the 'Response In Indication Token' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -46005,7 +46005,7 @@ export interface MessageUimUnblockPinInput {
      * @param valueInfoNewPin a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: UimPinId, valueInfoPuk: string | null, valueInfoNewPin: string | null): boolean
+    setInfo(valueInfoPinId: UimPinId, valueInfoPuk: string, valueInfoNewPin: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
      * @param valueResponseInIndicationToken a #guint32.
@@ -46109,7 +46109,7 @@ export interface MessageUimVerifyPinInput {
      * Get the 'Info' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoPinValue */ string | null ]
+    getInfo(): [ /* returnType */ boolean, /* valueInfoPinId */ UimPinId, /* valueInfoPinValue */ string ]
     /**
      * Get the 'Response In Indication Token' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -46131,7 +46131,7 @@ export interface MessageUimVerifyPinInput {
      * @param valueInfoPinValue a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setInfo(valueInfoPinId: UimPinId, valueInfoPinValue: string | null): boolean
+    setInfo(valueInfoPinId: UimPinId, valueInfoPinValue: string): boolean
     /**
      * Set the 'Response In Indication Token' field in the message.
      * @param valueResponseInIndicationToken a #guint32.
@@ -46415,7 +46415,7 @@ export interface MessageVoiceBurstDtmfInput {
      * Get the 'Data' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getData(): [ /* returnType */ boolean, /* valueDataCallId */ number, /* valueDataDigitBuffer */ string | null ]
+    getData(): [ /* returnType */ boolean, /* valueDataCallId */ number, /* valueDataDigitBuffer */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -46427,7 +46427,7 @@ export interface MessageVoiceBurstDtmfInput {
      * @param valueDataDigitBuffer a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setData(valueDataCallId: number, valueDataDigitBuffer: string | null): boolean
+    setData(valueDataCallId: number, valueDataDigitBuffer: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -46541,7 +46541,7 @@ export interface MessageVoiceDialCallInput {
      * Get the 'Calling Number' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getCallingNumber(): [ /* returnType */ boolean, /* valueCallingNumber */ string | null ]
+    getCallingNumber(): [ /* returnType */ boolean, /* valueCallingNumber */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -46552,7 +46552,7 @@ export interface MessageVoiceDialCallInput {
      * @param valueCallingNumber a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setCallingNumber(valueCallingNumber: string | null): boolean
+    setCallingNumber(valueCallingNumber: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -48751,7 +48751,7 @@ export interface MessageWdsCreateProfileInput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the 'APN Type Mask' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -48806,7 +48806,7 @@ export interface MessageWdsCreateProfileInput {
      * Get the 'Password' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string | null ]
+    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string ]
     /**
      * Get the 'PCSCF Address Using DHCP' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -48856,7 +48856,7 @@ export interface MessageWdsCreateProfileInput {
      * Get the 'Profile Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string | null ]
+    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string ]
     /**
      * Get the 'Profile Type' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -48896,7 +48896,7 @@ export interface MessageWdsCreateProfileInput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -48913,7 +48913,7 @@ export interface MessageWdsCreateProfileInput {
      * @param valueApnName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setApnName(valueApnName: string | null): boolean
+    setApnName(valueApnName: string): boolean
     /**
      * Set the 'APN Type Mask' field in the message.
      * @param valueApnTypeMask a #QmiWdsApnTypeMask.
@@ -48991,7 +48991,7 @@ export interface MessageWdsCreateProfileInput {
      * @param valuePassword a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setPassword(valuePassword: string | null): boolean
+    setPassword(valuePassword: string): boolean
     /**
      * Set the 'PCSCF Address Using DHCP' field in the message.
      * @param valuePcscfAddressUsingDhcp a #gboolean.
@@ -49051,7 +49051,7 @@ export interface MessageWdsCreateProfileInput {
      * @param valueProfileName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setProfileName(valueProfileName: string | null): boolean
+    setProfileName(valueProfileName: string): boolean
     /**
      * Set the 'Profile Type' field in the message.
      * @param valueProfileType a #QmiWdsProfileType.
@@ -49145,7 +49145,7 @@ export interface MessageWdsCreateProfileInput {
      * @param valueUsername a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setUsername(valueUsername: string | null): boolean
+    setUsername(valueUsername: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -49502,7 +49502,7 @@ export interface MessageWdsGetCurrentSettingsOutput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the 'Authentication' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -49612,7 +49612,7 @@ export interface MessageWdsGetCurrentSettingsOutput {
      * Get the 'Profile Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string | null ]
+    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -49632,7 +49632,7 @@ export interface MessageWdsGetCurrentSettingsOutput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -49860,7 +49860,7 @@ export interface MessageWdsGetDefaultSettingsOutput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the 'Authentication' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -49915,7 +49915,7 @@ export interface MessageWdsGetDefaultSettingsOutput {
      * Get the 'Password' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string | null ]
+    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string ]
     /**
      * Get the 'PCSCF Address Using DHCP' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -49965,7 +49965,7 @@ export interface MessageWdsGetDefaultSettingsOutput {
      * Get the 'Profile Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string | null ]
+    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -50000,7 +50000,7 @@ export interface MessageWdsGetDefaultSettingsOutput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -50071,7 +50071,7 @@ export interface MessageWdsGetLteAttachParametersOutput {
      * Get the 'APN' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApn(): [ /* returnType */ boolean, /* valueApn */ string | null ]
+    getApn(): [ /* returnType */ boolean, /* valueApn */ string ]
     /**
      * Get the 'IP Support Type' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -50714,7 +50714,7 @@ export interface MessageWdsGetProfileSettingsOutput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the 'APN Type Mask' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -50774,7 +50774,7 @@ export interface MessageWdsGetProfileSettingsOutput {
      * Get the 'Password' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string | null ]
+    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string ]
     /**
      * Get the 'PCSCF Address Using DHCP' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -50824,7 +50824,7 @@ export interface MessageWdsGetProfileSettingsOutput {
      * Get the 'Profile Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string | null ]
+    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string ]
     /**
      * Get the result of the QMI operation.
      * @returns %TRUE if the QMI operation succeeded, %FALSE if @error is set.
@@ -50864,7 +50864,7 @@ export interface MessageWdsGetProfileSettingsOutput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -51104,7 +51104,7 @@ export interface MessageWdsModifyProfileInput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the 'APN Type Mask' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -51159,7 +51159,7 @@ export interface MessageWdsModifyProfileInput {
      * Get the 'Password' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string | null ]
+    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string ]
     /**
      * Get the 'PCSCF Address Using DHCP' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -51214,7 +51214,7 @@ export interface MessageWdsModifyProfileInput {
      * Get the 'Profile Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string | null ]
+    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string ]
     /**
      * Get the 'Roaming Disallowed Flag' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -51249,7 +51249,7 @@ export interface MessageWdsModifyProfileInput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -51266,7 +51266,7 @@ export interface MessageWdsModifyProfileInput {
      * @param valueApnName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setApnName(valueApnName: string | null): boolean
+    setApnName(valueApnName: string): boolean
     /**
      * Set the 'APN Type Mask' field in the message.
      * @param valueApnTypeMask a #QmiWdsApnTypeMask.
@@ -51344,7 +51344,7 @@ export interface MessageWdsModifyProfileInput {
      * @param valuePassword a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setPassword(valuePassword: string | null): boolean
+    setPassword(valuePassword: string): boolean
     /**
      * Set the 'PCSCF Address Using DHCP' field in the message.
      * @param valuePcscfAddressUsingDhcp a #gboolean.
@@ -51411,7 +51411,7 @@ export interface MessageWdsModifyProfileInput {
      * @param valueProfileName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setProfileName(valueProfileName: string | null): boolean
+    setProfileName(valueProfileName: string): boolean
     /**
      * Set the 'Roaming Disallowed Flag' field in the message.
      * @param valueRoamingDisallowedFlag a #gboolean.
@@ -51499,7 +51499,7 @@ export interface MessageWdsModifyProfileInput {
      * @param valueUsername a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setUsername(valueUsername: string | null): boolean
+    setUsername(valueUsername: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -52221,7 +52221,7 @@ export interface MessageWdsStartNetworkInput {
      * Get the 'APN' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApn(): [ /* returnType */ boolean, /* valueApn */ string | null ]
+    getApn(): [ /* returnType */ boolean, /* valueApn */ string ]
     /**
      * Get the 'Authentication Preference' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -52256,7 +52256,7 @@ export interface MessageWdsStartNetworkInput {
      * Get the 'Password' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string | null ]
+    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string ]
     /**
      * Get the 'Primary DNS Address Preference' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -52296,7 +52296,7 @@ export interface MessageWdsStartNetworkInput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -52307,7 +52307,7 @@ export interface MessageWdsStartNetworkInput {
      * @param valueApn a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setApn(valueApn: string | null): boolean
+    setApn(valueApn: string): boolean
     /**
      * Set the 'Authentication Preference' field in the message.
      * @param valueAuthenticationPreference a #QmiWdsAuthentication.
@@ -52349,7 +52349,7 @@ export interface MessageWdsStartNetworkInput {
      * @param valuePassword a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setPassword(valuePassword: string | null): boolean
+    setPassword(valuePassword: string): boolean
     /**
      * Set the 'Primary DNS Address Preference' field in the message.
      * @param valuePrimaryDnsAddressPreference a #guint32.
@@ -52397,7 +52397,7 @@ export interface MessageWdsStartNetworkInput {
      * @param valueUsername a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setUsername(valueUsername: string | null): boolean
+    setUsername(valueUsername: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -52591,7 +52591,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * Get the 'APN Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string | null ]
+    getApnName(): [ /* returnType */ boolean, /* valueApnName */ string ]
     /**
      * Get the 'Authentication' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -52606,7 +52606,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * Get the 'Password' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string | null ]
+    getPassword(): [ /* returnType */ boolean, /* valuePassword */ string ]
     /**
      * Get the 'PDP Context Number' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -52631,7 +52631,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * Get the 'Profile Name' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string | null ]
+    getProfileName(): [ /* returnType */ boolean, /* valueProfileName */ string ]
     /**
      * Get the 'Roaming Disallowed Flag' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
@@ -52646,7 +52646,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * Get the 'Username' field from `self`.
      * @returns %TRUE if the field is found, %FALSE otherwise.
      */
-    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string | null ]
+    getUsername(): [ /* returnType */ boolean, /* valueUsername */ string ]
     /**
      * Atomically increments the reference count of `self` by one.
      * @returns the new reference to @self.
@@ -52663,7 +52663,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * @param valueApnName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setApnName(valueApnName: string | null): boolean
+    setApnName(valueApnName: string): boolean
     /**
      * Set the 'Authentication' field in the message.
      * @param valueAuthentication a #QmiWdsAuthentication.
@@ -52681,7 +52681,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * @param valuePassword a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setPassword(valuePassword: string | null): boolean
+    setPassword(valuePassword: string): boolean
     /**
      * Set the 'PDP Context Number' field in the message.
      * @param valuePdpContextNumber a #guint8.
@@ -52712,7 +52712,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * @param valueProfileName a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setProfileName(valueProfileName: string | null): boolean
+    setProfileName(valueProfileName: string): boolean
     /**
      * Set the 'Roaming Disallowed Flag' field in the message.
      * @param valueRoamingDisallowedFlag a #gboolean.
@@ -52730,7 +52730,7 @@ export interface MessageWdsSwiCreateProfileIndexedInput {
      * @param valueUsername a constant string.
      * @returns %TRUE if @value was successfully set, %FALSE otherwise.
      */
-    setUsername(valueUsername: string | null): boolean
+    setUsername(valueUsername: string): boolean
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.

@@ -329,27 +329,27 @@ const MIKEY_VERSION: number
 /**
  * The Application-Specific Maximum bandwidth modifier.
  */
-const SDP_BWTYPE_AS: string | null
+const SDP_BWTYPE_AS: string
 /**
  * The Conference Total bandwidth modifier.
  */
-const SDP_BWTYPE_CT: string | null
+const SDP_BWTYPE_CT: string
 /**
  * The extension prefix bandwidth modifier.
  */
-const SDP_BWTYPE_EXT_PREFIX: string | null
+const SDP_BWTYPE_EXT_PREFIX: string
 /**
  * RTCP bandwidth allocated to data receivers (RFC 3556).
  */
-const SDP_BWTYPE_RR: string | null
+const SDP_BWTYPE_RR: string
 /**
  * RTCP bandwidth allocated to active data senders (RFC 3556).
  */
-const SDP_BWTYPE_RS: string | null
+const SDP_BWTYPE_RS: string
 /**
  * Transport Independent Application Specific Maximum bandwidth (RFC 3890).
  */
-const SDP_BWTYPE_TIAS: string | null
+const SDP_BWTYPE_TIAS: string
 /**
  * Check if the given `addr` is a multicast address.
  * @param nettype a network type
@@ -357,14 +357,14 @@ const SDP_BWTYPE_TIAS: string | null
  * @param addr an address
  * @returns TRUE when @addr is multicast.
  */
-function sdp_address_is_multicast(nettype: string | null, addrtype: string | null, addr: string | null): boolean
+function sdp_address_is_multicast(nettype: string, addrtype: string, addr: string): boolean
 /**
  * Makes key management data
  * @param uri a #gchar URI
  * @param base64 a #gchar base64-encoded key data
  * @returns a #gchar key-mgmt data,
  */
-function sdp_make_keymgmt(uri: string | null, base64: string | null): string | null
+function sdp_make_keymgmt(uri: string, base64: string): string | null
 /**
  * Initialize `media` so that its contents are as if it was freshly allocated
  * with gst_sdp_media_new(). This function is mostly used to initialize a media
@@ -406,7 +406,7 @@ function sdp_media_set_media_from_caps(caps: Gst.Caps): [ /* returnType */ SDPRe
  * @param msg the #GstSDPMessage
  * @returns a uri for @msg.
  */
-function sdp_message_as_uri(scheme: string | null, msg: SDPMessage): string | null
+function sdp_message_as_uri(scheme: string, msg: SDPMessage): string | null
 /**
  * Initialize `msg` so that its contents are as if it was freshly allocated
  * with gst_sdp_message_new(). This function is mostly used to initialize a message
@@ -427,7 +427,7 @@ function sdp_message_new(): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
  * @param text A dynamically allocated string representing the SDP description
  * @returns a #GstSDPResult.
  */
-function sdp_message_new_from_text(text: string | null): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
+function sdp_message_new_from_text(text: string): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
 /**
  * Parse the contents of `size` bytes pointed to by `data` and store the result in
  * `msg`.
@@ -450,7 +450,7 @@ function sdp_message_parse_buffer(data: Uint8Array, msg: SDPMessage): SDPResult
  * @param msg the result #GstSDPMessage
  * @returns #GST_SDP_OK on success.
  */
-function sdp_message_parse_uri(uri: string | null, msg: SDPMessage): SDPResult
+function sdp_message_parse_uri(uri: string, msg: SDPMessage): SDPResult
 interface MIKEYDecryptInfo {
 }
 
@@ -1208,7 +1208,7 @@ interface SDPAttribute {
      * @param value the value
      * @returns @GST_SDP_OK.
      */
-    set(key: string | null, value: string | null): SDPResult
+    set(key: string, value: string | null): SDPResult
 }
 
 /**
@@ -1250,7 +1250,7 @@ interface SDPBandwidth {
      * @param bandwidth the bandwidth in kilobits per second
      * @returns a #GstSDPResult.
      */
-    set(bwtype: string | null, bandwidth: number): SDPResult
+    set(bwtype: string, bandwidth: number): SDPResult
 }
 
 /**
@@ -1312,7 +1312,7 @@ interface SDPConnection {
      * @param addr_number the number of layers
      * @returns @GST_SDP_OK.
      */
-    set(nettype: string | null, addrtype: string | null, address: string | null, ttl: number, addr_number: number): SDPResult
+    set(nettype: string, addrtype: string, address: string, ttl: number, addr_number: number): SDPResult
 }
 
 /**
@@ -1417,14 +1417,14 @@ interface SDPMedia {
      * @param value a value
      * @returns #GST_SDP_OK.
      */
-    add_attribute(key: string | null, value: string | null): SDPResult
+    add_attribute(key: string, value: string | null): SDPResult
     /**
      * Add the bandwidth information with `bwtype` and `bandwidth` to `media`.
      * @param bwtype the bandwidth modifier type
      * @param bandwidth the bandwidth in kilobits per second
      * @returns #GST_SDP_OK.
      */
-    add_bandwidth(bwtype: string | null, bandwidth: number): SDPResult
+    add_bandwidth(bwtype: string, bandwidth: number): SDPResult
     /**
      * Add the given connection parameters to `media`.
      * @param nettype the type of network. "IN" is defined to have the meaning "Internet".
@@ -1434,13 +1434,13 @@ interface SDPMedia {
      * @param addr_number the number of layers
      * @returns a #GstSDPResult.
      */
-    add_connection(nettype: string | null, addrtype: string | null, address: string | null, ttl: number, addr_number: number): SDPResult
+    add_connection(nettype: string, addrtype: string, address: string, ttl: number, addr_number: number): SDPResult
     /**
      * Add the format information to `media`.
      * @param format the format
      * @returns #GST_SDP_OK.
      */
-    add_format(format: string | null): SDPResult
+    add_format(format: string): SDPResult
     /**
      * Convert the contents of `media` to a text string.
      * @returns A dynamically allocated string representing the media.
@@ -1496,14 +1496,14 @@ interface SDPMedia {
      * @param key a key
      * @returns the first attribute value for @key.
      */
-    get_attribute_val(key: string | null): string | null
+    get_attribute_val(key: string): string | null
     /**
      * Get the `nth` attribute value for `key` in `media`.
      * @param key a key
      * @param nth an index
      * @returns the @nth attribute value.
      */
-    get_attribute_val_n(key: string | null, nth: number): string | null
+    get_attribute_val_n(key: string, nth: number): string | null
     /**
      * Get the bandwidth at position `idx` in `media`.
      * @param idx an index
@@ -1535,12 +1535,12 @@ interface SDPMedia {
      * @param idx an index
      * @returns the format at position @idx.
      */
-    get_format(idx: number): string | null
+    get_format(idx: number): string
     /**
      * Get the information of `media`
      * @returns the information of @media.
      */
-    get_information(): string | null
+    get_information(): string
     /**
      * Get the encryption information from `media`.
      * @returns a #GstSDPKey.
@@ -1550,7 +1550,7 @@ interface SDPMedia {
      * Get the media description of `media`.
      * @returns the media description.
      */
-    get_media(): string | null
+    get_media(): string
     /**
      * Get the number of ports for `media`.
      * @returns the number of ports for @media.
@@ -1565,7 +1565,7 @@ interface SDPMedia {
      * Get the transport protocol of `media`
      * @returns the transport protocol of @media.
      */
-    get_proto(): string | null
+    get_proto(): string
     /**
      * Insert the attribute to `media` at `idx`. When `idx` is -1,
      * the attribute is appended.
@@ -1597,7 +1597,7 @@ interface SDPMedia {
      * @param format the format
      * @returns #GST_SDP_OK.
      */
-    insert_format(idx: number, format: string | null): SDPResult
+    insert_format(idx: number, format: string): SDPResult
     /**
      * Creates a new #GstMIKEYMessage after parsing the key-mgmt attribute
      * from a #GstSDPMedia.
@@ -1655,26 +1655,26 @@ interface SDPMedia {
      * @param format the format
      * @returns #GST_SDP_OK.
      */
-    replace_format(idx: number, format: string | null): SDPResult
+    replace_format(idx: number, format: string): SDPResult
     /**
      * Set the media information of `media` to `information`.
      * @param information the media information
      * @returns #GST_SDP_OK.
      */
-    set_information(information: string | null): SDPResult
+    set_information(information: string): SDPResult
     /**
      * Adds the encryption information to `media`.
      * @param type the encryption type
      * @param data the encryption data
      * @returns a #GstSDPResult.
      */
-    set_key(type: string | null, data: string | null): SDPResult
+    set_key(type: string, data: string): SDPResult
     /**
      * Set the media description of `media` to `med`.
      * @param med the media description
      * @returns #GST_SDP_OK.
      */
-    set_media(med: string | null): SDPResult
+    set_media(med: string): SDPResult
     /**
      * Set the port information in `media`.
      * @param port the port number
@@ -1687,7 +1687,7 @@ interface SDPMedia {
      * @param proto the media transport protocol
      * @returns #GST_SDP_OK.
      */
-    set_proto(proto: string | null): SDPResult
+    set_proto(proto: string): SDPResult
     /**
      * Free all resources allocated in `media`. `media` should not be used anymore after
      * this function. This function should be used when `media` was allocated on the
@@ -1825,20 +1825,20 @@ interface SDPMessage {
      * @param value the value
      * @returns @GST_SDP_OK.
      */
-    add_attribute(key: string | null, value: string | null): SDPResult
+    add_attribute(key: string, value: string | null): SDPResult
     /**
      * Add the specified bandwidth information to `msg`.
      * @param bwtype the bandwidth modifier type
      * @param bandwidth the bandwidth in kilobits per second
      * @returns a #GstSDPResult.
      */
-    add_bandwidth(bwtype: string | null, bandwidth: number): SDPResult
+    add_bandwidth(bwtype: string, bandwidth: number): SDPResult
     /**
      * Add `email` to the list of emails in `msg`.
      * @param email an email
      * @returns a #GstSDPResult.
      */
-    add_email(email: string | null): SDPResult
+    add_email(email: string): SDPResult
     /**
      * Adds `media` to the array of medias in `msg`. This function takes ownership of
      * the contents of `media` so that `media` will have to be reinitialized with
@@ -1852,7 +1852,7 @@ interface SDPMessage {
      * @param phone a phone
      * @returns a #GstSDPResult.
      */
-    add_phone(phone: string | null): SDPResult
+    add_phone(phone: string): SDPResult
     /**
      * Add time information `start` and `stop` to `msg`.
      * @param start the start time
@@ -1860,14 +1860,14 @@ interface SDPMessage {
      * @param repeat the repeat times
      * @returns a #GstSDPResult.
      */
-    add_time(start: string | null, stop: string | null, repeat: string[]): SDPResult
+    add_time(start: string, stop: string, repeat: string[]): SDPResult
     /**
      * Add time zone information to `msg`.
      * @param adj_time the NTP time that a time zone adjustment happens
      * @param typed_time the offset from the time when the session was first scheduled
      * @returns a #GstSDPResult.
      */
-    add_zone(adj_time: string | null, typed_time: string | null): SDPResult
+    add_zone(adj_time: string, typed_time: string): SDPResult
     /**
      * Convert the contents of `msg` to a text string.
      * @returns A dynamically allocated string representing the SDP description.
@@ -1923,14 +1923,14 @@ interface SDPMessage {
      * @param key the key
      * @returns the attribute value of the first attribute with @key.
      */
-    get_attribute_val(key: string | null): string | null
+    get_attribute_val(key: string): string | null
     /**
      * Get the `nth` attribute with key `key` in `msg`.
      * @param key the key
      * @param nth the index
      * @returns the attribute value of the @nth attribute with @key.
      */
-    get_attribute_val_n(key: string | null, nth: number): string | null
+    get_attribute_val_n(key: string, nth: number): string | null
     /**
      * Get the bandwidth at index `idx` from `msg`.
      * @param idx the bandwidth index
@@ -1947,12 +1947,12 @@ interface SDPMessage {
      * @param idx an email index
      * @returns the email at position @idx.
      */
-    get_email(idx: number): string | null
+    get_email(idx: number): string
     /**
      * Get the information in `msg`.
      * @returns a #GstSDPResult.
      */
-    get_information(): string | null
+    get_information(): string
     /**
      * Get the encryption information from `msg`.
      * @returns a #GstSDPKey.
@@ -1974,12 +1974,12 @@ interface SDPMessage {
      * @param idx a phone index
      * @returns the phone at position @idx.
      */
-    get_phone(idx: number): string | null
+    get_phone(idx: number): string
     /**
      * Get the session name in `msg`.
      * @returns a #GstSDPResult.
      */
-    get_session_name(): string | null
+    get_session_name(): string
     /**
      * Get time information with index `idx` from `msg`.
      * @param idx the time index
@@ -1990,12 +1990,12 @@ interface SDPMessage {
      * Get the URI in `msg`.
      * @returns a #GstSDPResult.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Get the version in `msg`.
      * @returns a #GstSDPResult.
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Get time zone information with index `idx` from `msg`.
      * @param idx the zone index
@@ -2027,7 +2027,7 @@ interface SDPMessage {
      * @param email an email
      * @returns a #GstSDPResult.
      */
-    insert_email(idx: number, email: string | null): SDPResult
+    insert_email(idx: number, email: string): SDPResult
     /**
      * Insert `phone` into the array of phone numbers in `msg` at index `idx`.
      * When -1 is given as `idx,` the phone is inserted at the end.
@@ -2035,7 +2035,7 @@ interface SDPMessage {
      * @param phone a phone
      * @returns a #GstSDPResult.
      */
-    insert_phone(idx: number, phone: string | null): SDPResult
+    insert_phone(idx: number, phone: string): SDPResult
     /**
      * Insert time parameters into the array of times in `msg`
      * at index `idx`.
@@ -2132,14 +2132,14 @@ interface SDPMessage {
      * @param email an email
      * @returns a #GstSDPResult.
      */
-    replace_email(idx: number, email: string | null): SDPResult
+    replace_email(idx: number, email: string): SDPResult
     /**
      * Replace the phone number in `msg` at index `idx` with `phone`.
      * @param idx a phone index
      * @param phone a phone
      * @returns a #GstSDPResult.
      */
-    replace_phone(idx: number, phone: string | null): SDPResult
+    replace_phone(idx: number, phone: string): SDPResult
     /**
      * Replace the time information in `msg` at index `idx` with `t`.
      * @param idx the index
@@ -2163,20 +2163,20 @@ interface SDPMessage {
      * @param addr_number the number of layers
      * @returns a #GstSDPResult.
      */
-    set_connection(nettype: string | null, addrtype: string | null, address: string | null, ttl: number, addr_number: number): SDPResult
+    set_connection(nettype: string, addrtype: string, address: string, ttl: number, addr_number: number): SDPResult
     /**
      * Set the information in `msg`.
      * @param information the information
      * @returns a #GstSDPResult.
      */
-    set_information(information: string | null): SDPResult
+    set_information(information: string): SDPResult
     /**
      * Adds the encryption information to `msg`.
      * @param type the encryption type
      * @param data the encryption data
      * @returns a #GstSDPResult.
      */
-    set_key(type: string | null, data: string | null): SDPResult
+    set_key(type: string, data: string): SDPResult
     /**
      * Configure the SDP origin in `msg` with the given parameters.
      * @param username the user name
@@ -2187,25 +2187,25 @@ interface SDPMessage {
      * @param addr an address
      * @returns #GST_SDP_OK.
      */
-    set_origin(username: string | null, sess_id: string | null, sess_version: string | null, nettype: string | null, addrtype: string | null, addr: string | null): SDPResult
+    set_origin(username: string, sess_id: string, sess_version: string, nettype: string, addrtype: string, addr: string): SDPResult
     /**
      * Set the session name in `msg`.
      * @param session_name the session name
      * @returns a #GstSDPResult.
      */
-    set_session_name(session_name: string | null): SDPResult
+    set_session_name(session_name: string): SDPResult
     /**
      * Set the URI in `msg`.
      * @param uri the URI
      * @returns a #GstSDPResult.
      */
-    set_uri(uri: string | null): SDPResult
+    set_uri(uri: string): SDPResult
     /**
      * Set the version in `msg`.
      * @param version the version
      * @returns a #GstSDPResult.
      */
-    set_version(version: string | null): SDPResult
+    set_version(version: string): SDPResult
     /**
      * Get the number of time information entries in `msg`.
      * @returns the number of time information entries in @msg.
@@ -2248,7 +2248,7 @@ class SDPMessage {
      * @param text A dynamically allocated string representing the SDP description
      * @returns a #GstSDPResult.
      */
-    static new_from_text(text: string | null): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
+    static new_from_text(text: string): [ /* returnType */ SDPResult, /* msg */ SDPMessage ]
     /**
      * Creates a uri from `msg` with the given `scheme`. The uri has the format:
      * 
@@ -2259,7 +2259,7 @@ class SDPMessage {
      * @param msg the #GstSDPMessage
      * @returns a uri for @msg.
      */
-    static as_uri(scheme: string | null, msg: SDPMessage): string | null
+    static as_uri(scheme: string, msg: SDPMessage): string | null
     /**
      * Initialize `msg` so that its contents are as if it was freshly allocated
      * with gst_sdp_message_new(). This function is mostly used to initialize a message
@@ -2292,7 +2292,7 @@ class SDPMessage {
      * @param msg the result #GstSDPMessage
      * @returns #GST_SDP_OK on success.
      */
-    static parse_uri(uri: string | null, msg: SDPMessage): SDPResult
+    static parse_uri(uri: string, msg: SDPMessage): SDPResult
 }
 
 interface SDPOrigin {
@@ -2385,7 +2385,7 @@ interface SDPTime {
      * @param repeat the repeat times
      * @returns a #GstSDPResult.
      */
-    set(start: string | null, stop: string | null, repeat: string[]): SDPResult
+    set(start: string, stop: string, repeat: string[]): SDPResult
 }
 
 /**
@@ -2428,7 +2428,7 @@ interface SDPZone {
      * @param typed_time the offset from the time when the session was first scheduled
      * @returns a #GstSDPResult.
      */
-    set(adj_time: string | null, typed_time: string | null): SDPResult
+    set(adj_time: string, typed_time: string): SDPResult
 }
 
 /**

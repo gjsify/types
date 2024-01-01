@@ -21,54 +21,54 @@ export namespace Qrtr {
 /**
  * Symbol defining the #QrtrBus:lookup-timeout property.
  */
-const BUS_LOOKUP_TIMEOUT: string | null
+const BUS_LOOKUP_TIMEOUT: string
 /**
  * Symbol defining the #QrtrBus::node-added signal.
  */
-const BUS_SIGNAL_NODE_ADDED: string | null
+const BUS_SIGNAL_NODE_ADDED: string
 /**
  * Symbol defining the #QrtrBus::node-removed signal.
  */
-const BUS_SIGNAL_NODE_REMOVED: string | null
+const BUS_SIGNAL_NODE_REMOVED: string
 /**
  * The QRTR node this client refers to.
  */
-const CLIENT_NODE: string | null
+const CLIENT_NODE: string
 /**
  * The QRTR node port this client refers to.
  */
-const CLIENT_PORT: string | null
+const CLIENT_PORT: string
 /**
  * Symbol defining the #QrtrClient::client-message signal.
  */
-const CLIENT_SIGNAL_MESSAGE: string | null
+const CLIENT_SIGNAL_MESSAGE: string
 /**
  * The QRTR bus.
  */
-const NODE_BUS: string | null
+const NODE_BUS: string
 /**
  * The node id.
  */
-const NODE_ID: string | null
+const NODE_ID: string
 /**
  * Symbol defining the #QrtrNode::node-removed signal.
  */
-const NODE_SIGNAL_REMOVED: string | null
+const NODE_SIGNAL_REMOVED: string
 /**
  * Symbol defining the #QrtrNode::service-added signal.
  */
-const NODE_SIGNAL_SERVICE_ADDED: string | null
+const NODE_SIGNAL_SERVICE_ADDED: string
 /**
  * Symbol defining the #QrtrNode::service-removed signal.
  */
-const NODE_SIGNAL_SERVICE_REMOVED: string | null
+const NODE_SIGNAL_SERVICE_REMOVED: string
 /**
  * Get the QRTR node id from the specified URI.
  * @param uri a URI.
  * @param nodeId return location for the node id.
  * @returns %TRUE if @node_id is set, %FALSE otherwise.
  */
-function getNodeForUri(uri: string | null, nodeId: number): boolean
+function getNodeForUri(uri: string, nodeId: number): boolean
 /**
  * Build a URI for the given QRTR node.
  * @param nodeId node id.

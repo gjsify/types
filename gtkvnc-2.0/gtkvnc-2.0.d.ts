@@ -368,7 +368,7 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of GtkVnc-2.0.GtkVnc.Display
 
-    client_cut_text(text: string | null): void
+    client_cut_text(text: string): void
     /**
      * Request that the connection to the remote display
      * is closed. The actual close will complete asynchronously
@@ -443,7 +443,7 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * emitted
      * @returns the remote desktop name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Take a screenshot of the display.
      * @returns a #GdkPixbuf with the screenshot image buffer
@@ -559,7 +559,7 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @param port the service name or port number
      * @returns TRUE if a connection was opened, FALSE if already open
      */
-    open_host(host: string | null, port: string | null): boolean
+    open_host(host: string, port: string): boolean
     request_update(): boolean
     /**
      * Send keyval click events to the display. Al the
@@ -611,7 +611,7 @@ interface Display extends Atk.ImplementorIface, Gtk.Buildable {
      * @param data the value associated with the credential
      * @returns TRUE if an error occurs, FALSE otherwise
      */
-    set_credential(type: number, data: string | null): boolean
+    set_credential(type: number, data: string): boolean
     /**
      * Set the desired colour depth. Higher quality colour
      * depths will require greater network bandwidth. The
@@ -1126,7 +1126,7 @@ class GrabSequence {
      * @param str string of keysym names
      * @returns a new grab sequence object
      */
-    static new_from_string(str: string | null): GrabSequence
+    static new_from_string(str: string): GrabSequence
 }
 
 /**

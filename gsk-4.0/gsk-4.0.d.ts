@@ -410,7 +410,7 @@ function serialization_error_quark(): GLib.Quark
  * @param string the string to parse
  * @returns %TRUE if @string described a valid transform.
  */
-function transform_parse(string: string | null): [ /* returnType */ boolean, /* out_transform */ Transform ]
+function transform_parse(string: string): [ /* returnType */ boolean, /* out_transform */ Transform ]
 /**
  * Retrieves the `GskRenderNode` stored inside the given `value`, and acquires
  * a reference to it.
@@ -1153,7 +1153,7 @@ interface DebugNode {
      * Gets the debug message that was set on this node
      * @returns The debug message
      */
-    get_message(): string | null
+    get_message(): string
 }
 
 /**
@@ -1301,7 +1301,7 @@ interface GLShader {
      * @param name uniform name
      * @returns The index of the uniform, or -1
      */
-    find_uniform_by_name(name: string | null): number
+    find_uniform_by_name(name: string): number
     /**
      * Gets the value of the uniform `idx` in the `args` block.
      * 
@@ -1400,7 +1400,7 @@ interface GLShader {
      * @param idx index of the uniform
      * @returns The name of the declared uniform
      */
-    get_uniform_name(idx: number): string | null
+    get_uniform_name(idx: number): string
     /**
      * Get the offset into the data block where data for this uniforms is stored.
      * @param idx index of the uniform
@@ -1567,7 +1567,7 @@ class GLShader extends GObject.Object {
      * @param resource_path path to a resource that contains the GLSL sourcecode for     the shader
      * @returns A new `GskGLShader`
      */
-    static new_from_resource(resource_path: string | null): GLShader
+    static new_from_resource(resource_path: string): GLShader
     _init(config?: GLShader.ConstructorProperties): void
 }
 
@@ -3522,7 +3522,7 @@ class Transform {
      * @param string the string to parse
      * @returns %TRUE if @string described a valid transform.
      */
-    static parse(string: string | null): [ /* returnType */ boolean, /* out_transform */ Transform ]
+    static parse(string: string): [ /* returnType */ boolean, /* out_transform */ Transform ]
 }
 
 /**

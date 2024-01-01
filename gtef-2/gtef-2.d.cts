@@ -212,7 +212,7 @@ export function menu_item_get_long_description(menu_item: Gtk.MenuItem): string 
  * @param item a #GtkMenuItem.
  * @param icon_name an icon name.
  */
-export function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string | null): void
+export function menu_item_set_icon_name(item: Gtk.MenuItem, icon_name: string): void
 /**
  * Sets the long description of `menu_item`. A possible use-case is to display it
  * in a #GtkStatusbar, or as a tooltip.
@@ -230,7 +230,7 @@ export function menu_item_set_long_description(menu_item: Gtk.MenuItem, long_des
  * directory. See g_get_user_data_dir().
  * @param metadata_path the filename where the metadata is stored.
  */
-export function metadata_manager_init(metadata_path: string | null): void
+export function metadata_manager_init(metadata_path: string): void
 /**
  * This function saves synchronously metadata if they need to be saved, and
  * frees the internal data of the metadata manager.
@@ -266,7 +266,7 @@ export interface ActionInfoCentralStore {
 
     // Owm methods of Gtef-2.Gtef.ActionInfoCentralStore
 
-    lookup(action_name: string | null): ActionInfo
+    lookup(action_name: string): ActionInfo
 
     // Class property signals of Gtef-2.Gtef.ActionInfoCentralStore
 
@@ -370,9 +370,9 @@ export interface ActionInfoStore {
      * @param action_name an action name.
      * @returns a new #GtkMenuItem for @action_name.
      */
-    create_menu_item(action_name: string | null): Gtk.Widget
+    create_menu_item(action_name: string): Gtk.Widget
     get_application(): Gtk.Application | null
-    lookup(action_name: string | null): ActionInfo
+    lookup(action_name: string): ActionInfo
 
     // Class property signals of Gtef-2.Gtef.ActionInfoStore
 
@@ -745,7 +745,7 @@ export interface Buffer {
      * gtk_source_style_scheme_manager_get_default().
      * @param style_scheme_id the new value.
      */
-    set_style_scheme_id(style_scheme_id: string | null): void
+    set_style_scheme_id(style_scheme_id: string): void
 
     // Own virtual methods of Gtef-2.Gtef.Buffer
 
@@ -948,7 +948,7 @@ export interface File {
      * released and can be used by a later untitled file.
      * @returns the @file short name.
      */
-    get_short_name(): string | null
+    get_short_name(): string
     /**
      * Returns whether the file has been deleted. If the
      * #GtefFile:location is %NULL, returns %FALSE.
@@ -1293,7 +1293,7 @@ export interface FileMetadata {
      * @param key the name of the metadata.
      * @returns the value of the metadata, or %NULL if the metadata   doesn't exist. Free with g_free().
      */
-    get(key: string | null): string | null
+    get(key: string): string | null
     get_file(): File
     /**
      * Loads synchronously the metadata from #GtefFile:location. The loaded
@@ -1402,7 +1402,7 @@ export interface FileMetadata {
      * @param key the name of the metadata.
      * @param value the value of the metadata, or %NULL to unset.
      */
-    set(key: string | null, value: string | null): void
+    set(key: string, value: string | null): void
 
     // Class property signals of Gtef-2.Gtef.FileMetadata
 
@@ -1900,12 +1900,12 @@ export interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Adds a primary message.
      * @param primary_msg a primary message.
      */
-    add_primary_message(primary_msg: string | null): void
+    add_primary_message(primary_msg: string): void
     /**
      * Adds a secondary message.
      * @param secondary_msg a secondary message.
      */
-    add_secondary_message(secondary_msg: string | null): void
+    add_secondary_message(secondary_msg: string): void
 
     // Conflicting methods
 
@@ -1920,7 +1920,7 @@ export interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1934,7 +1934,7 @@ export interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1945,7 +1945,7 @@ export interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gtef-2.Gtef.InfoBar
 
@@ -2140,7 +2140,7 @@ export class InfoBar extends Gtk.InfoBar {
      * @param secondary_msg the secondary message, or %NULL.
      * @returns a new #GtefInfoBar.
      */
-    static new_simple(msg_type: Gtk.MessageType, primary_msg: string | null, secondary_msg: string | null): InfoBar
+    static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar
     _init(config?: InfoBar.ConstructorProperties): void
     /**
      * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
@@ -2295,7 +2295,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2309,7 +2309,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2320,7 +2320,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gtef-2.Gtef.Tab
 
@@ -2607,7 +2607,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2621,7 +2621,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2632,7 +2632,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gtef-2.Gtef.View
 
@@ -2943,7 +2943,7 @@ export interface ActionInfo {
      * Sets the action name, for example `"win.save"`.
      * @param action_name the action name.
      */
-    set_action_name(action_name: string | null): void
+    set_action_name(action_name: string): void
     set_icon_name(icon_name: string | null): void
     set_label(label: string | null): void
     set_tooltip(tooltip: string | null): void
@@ -3010,28 +3010,28 @@ export interface ActionInfoEntry {
      * the action name.
      * @field 
      */
-    action_name: string | null
+    action_name: string
     /**
      * the icon name, or %NULL.
      * @field 
      */
-    icon_name: string | null
+    icon_name: string
     /**
      * the label (i.e. a short description), or %NULL.
      * @field 
      */
-    label: string | null
+    label: string
     /**
      * the accelerator, in the format understood by gtk_accelerator_parse().
      * Or %NULL.
      * @field 
      */
-    accel: string | null
+    accel: string
     /**
      * the tooltip (i.e. a long description), or %NULL.
      * @field 
      */
-    tooltip: string | null
+    tooltip: string
 }
 
 /**
@@ -3152,12 +3152,12 @@ export interface Encoding {
      * Gets the character set of the #GtefEncoding, such as "UTF-8" or "ISO-8859-1".
      * @returns the character set of the #GtefEncoding.
      */
-    get_charset(): string | null
+    get_charset(): string
     /**
      * Gets the name of the #GtefEncoding such as "Unicode" or "Western".
      * @returns the name of the #GtefEncoding.
      */
-    get_name(): string | null
+    get_name(): string
     is_utf8(): boolean
     /**
      * Returns the encoding name with the charset in parenthesis, for example
@@ -3182,7 +3182,7 @@ export class Encoding {
      * @param charset a character set.
      * @returns the new #GtefEncoding. Free with gtef_encoding_free().
      */
-    constructor(charset: string | null) 
+    constructor(charset: string) 
     /**
      * Creates a new #GtefEncoding from a character set such as "UTF-8" or
      * "ISO-8859-1".
@@ -3190,7 +3190,7 @@ export class Encoding {
      * @param charset a character set.
      * @returns the new #GtefEncoding. Free with gtef_encoding_free().
      */
-    static new(charset: string | null): Encoding
+    static new(charset: string): Encoding
     /**
      * Creates a new #GtefEncoding from the current locale, as returned by
      * g_get_charset().

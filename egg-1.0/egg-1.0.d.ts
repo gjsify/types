@@ -262,7 +262,7 @@ interface BindingGroup {
      * @param target_property the property on `target` to bind
      * @param flags the flags used to create the #GBinding
      */
-    bind(source_property: string | null, target: GObject.Object, target_property: string | null, flags: GObject.BindingFlags): void
+    bind(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags): void
     /**
      * Creates a binding between `source_property` on the source object and
      * `target_property` on `target,` allowing you to set the transformation
@@ -281,7 +281,7 @@ interface BindingGroup {
      * @param transform_to a #GClosure wrapping the     transformation function from the source object to the `target,`     or %NULL to use the default
      * @param transform_from a #GClosure wrapping the     transformation function from the `target` to the source object,     or %NULL to use the default
      */
-    bind_full(source_property: string | null, target: GObject.Object, target_property: string | null, flags: GObject.BindingFlags, transform_to: GObject.TClosure | null, transform_from: GObject.TClosure | null): void
+    bind_full(source_property: string, target: GObject.Object, target_property: string, flags: GObject.BindingFlags, transform_to: GObject.TClosure | null, transform_from: GObject.TClosure | null): void
     /**
      * Gets the source object used for binding properties.
      * @returns the source object.
@@ -388,7 +388,7 @@ interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -402,7 +402,7 @@ interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -413,7 +413,7 @@ interface Box extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.Box
 
@@ -628,7 +628,7 @@ interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -642,7 +642,7 @@ interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -653,7 +653,7 @@ interface CenteringBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.CenteringBin
 
@@ -878,7 +878,7 @@ interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -892,7 +892,7 @@ interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -903,7 +903,7 @@ interface ColumnLayout extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.ColumnLayout
 
@@ -1094,7 +1094,7 @@ interface ElasticBin extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1108,7 +1108,7 @@ interface ElasticBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1119,7 +1119,7 @@ interface ElasticBin extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.ElasticBin
 
@@ -1307,13 +1307,13 @@ interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Egg-1.0.Egg.EmptyState
 
-    get_icon_name(): string | null
-    get_subtitle(): string | null
-    get_title(): string | null
-    set_icon_name(icon_name: string | null): void
-    set_resource(resource: string | null): void
-    set_subtitle(title: string | null): void
-    set_title(title: string | null): void
+    get_icon_name(): string
+    get_subtitle(): string
+    get_title(): string
+    set_icon_name(icon_name: string): void
+    set_resource(resource: string): void
+    set_subtitle(title: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -1328,7 +1328,7 @@ interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1342,7 +1342,7 @@ interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1353,7 +1353,7 @@ interface EmptyState extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.EmptyState
 
@@ -1553,7 +1553,7 @@ interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1567,7 +1567,7 @@ interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1578,7 +1578,7 @@ interface EntryBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.EntryBox
 
@@ -1826,7 +1826,7 @@ interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1840,7 +1840,7 @@ interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1851,7 +1851,7 @@ interface FileChooserEntry extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.FileChooserEntry
 
@@ -2024,8 +2024,8 @@ class FileChooserEntry extends Gtk.Bin {
     // Constructors of Egg-1.0.Egg.FileChooserEntry
 
     constructor(config?: FileChooserEntry.ConstructorProperties) 
-    constructor(title: string | null, action: Gtk.FileChooserAction) 
-    static new(title: string | null, action: Gtk.FileChooserAction): FileChooserEntry
+    constructor(title: string, action: Gtk.FileChooserAction) 
+    static new(title: string, action: Gtk.FileChooserAction): FileChooserEntry
     _init(config?: FileChooserEntry.ConstructorProperties): void
 }
 
@@ -2065,7 +2065,7 @@ interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Egg-1.0.Egg.ListBox
 
     get_model(): Gio.ListModel | null
-    get_property_name(): string | null
+    get_property_name(): string
     get_row_type(): GObject.GType
     set_model(model: Gio.ListModel): void
 
@@ -2082,7 +2082,7 @@ interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2096,7 +2096,7 @@ interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2107,7 +2107,7 @@ interface ListBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.ListBox
 
@@ -2268,8 +2268,8 @@ class ListBox extends Gtk.ListBox {
     // Constructors of Egg-1.0.Egg.ListBox
 
     constructor(config?: ListBox.ConstructorProperties) 
-    constructor(row_type: GObject.GType, property_name: string | null) 
-    static new(row_type: GObject.GType, property_name: string | null): ListBox
+    constructor(row_type: GObject.GType, property_name: string) 
+    static new(row_type: GObject.GType, property_name: string): ListBox
 
     // Overloads of new
 
@@ -2295,9 +2295,9 @@ interface MenuManager {
 
     // Owm methods of Egg-1.0.Egg.MenuManager
 
-    add_filename(filename: string | null): number
-    add_resource(resource: string | null): number
-    get_menu_by_id(menu_id: string | null): Gio.Menu
+    add_filename(filename: string): number
+    add_resource(resource: string): number
+    get_menu_by_id(menu_id: string): Gio.Menu
     remove(merge_id: number): void
 
     // Class property signals of Egg-1.0.Egg.MenuManager
@@ -2365,8 +2365,8 @@ interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Egg-1.0.Egg.PillBox
 
-    get_label(): string | null
-    set_label(label: string | null): void
+    get_label(): string
+    set_label(label: string): void
 
     // Conflicting methods
 
@@ -2381,7 +2381,7 @@ interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2395,7 +2395,7 @@ interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2406,7 +2406,7 @@ interface PillBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.PillBox
 
@@ -2561,8 +2561,8 @@ class PillBox extends Gtk.EventBox {
     // Constructors of Egg-1.0.Egg.PillBox
 
     constructor(config?: PillBox.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): PillBox
+    constructor(label: string) 
+    static new(label: string): PillBox
 
     // Overloads of new
 
@@ -2603,7 +2603,7 @@ interface PriorityBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2617,7 +2617,7 @@ interface PriorityBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2628,7 +2628,7 @@ interface PriorityBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.PriorityBox
 
@@ -2852,7 +2852,7 @@ interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2864,7 +2864,7 @@ interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2878,7 +2878,7 @@ interface ProgressButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activ
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.ProgressButton
 
@@ -3117,9 +3117,9 @@ interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Egg-1.0.Egg.RadioBox
 
-    add_item(id: string | null, text: string | null): void
-    get_active_id(): string | null
-    set_active_id(id: string | null): void
+    add_item(id: string, text: string): void
+    get_active_id(): string
+    set_active_id(id: string): void
 
     // Conflicting methods
 
@@ -3134,7 +3134,7 @@ interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3148,7 +3148,7 @@ interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3159,7 +3159,7 @@ interface RadioBox extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Egg-1.0.Egg.RadioBox
 
@@ -3353,7 +3353,7 @@ interface ScrolledWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3367,7 +3367,7 @@ interface ScrolledWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3378,7 +3378,7 @@ interface ScrolledWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.ScrolledWindow
 
@@ -3639,7 +3639,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3653,7 +3653,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3664,7 +3664,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Egg-1.0.Egg.SearchBar
 
@@ -3910,7 +3910,7 @@ class SettingsFlagAction extends GObject.Object {
      * @param flag_nick 
      * @returns A new #GAction.
      */
-    static new(schema_id: string | null, schema_key: string | null, flag_nick: string | null): Gio.Action
+    static new(schema_id: string, schema_key: string, flag_nick: string): Gio.Action
 }
 
 module SettingsSandwich {
@@ -3939,7 +3939,7 @@ interface SettingsSandwich {
     // Owm methods of Egg-1.0.Egg.SettingsSandwich
 
     append(settings: Gio.Settings): void
-    bind(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags): void
+    bind(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags): void
     /**
      * Creates a new binding similar to g_settings_bind_with_mapping() but applying
      * from the resolved value via the settings sandwich.
@@ -3950,22 +3950,22 @@ interface SettingsSandwich {
      * @param get_mapping the get mapping function
      * @param set_mapping the set mapping function
      */
-    bind_with_mapping(key: string | null, object: any | null, property: string | null, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void
-    get_boolean(key: string | null): boolean
-    get_default_value(key: string | null): GLib.Variant
-    get_double(key: string | null): number
-    get_int(key: string | null): number
-    get_string(key: string | null): string | null
-    get_uint(key: string | null): number
-    get_user_value(key: string | null): GLib.Variant
-    get_value(key: string | null): GLib.Variant
-    set_boolean(key: string | null, val: boolean): void
-    set_double(key: string | null, val: number): void
-    set_int(key: string | null, val: number): void
-    set_string(key: string | null, val: string | null): void
-    set_uint(key: string | null, val: number): void
-    set_value(key: string | null, value: GLib.Variant): void
-    unbind(property: string | null): void
+    bind_with_mapping(key: string, object: any | null, property: string, flags: Gio.SettingsBindFlags, get_mapping: Gio.SettingsBindGetMapping, set_mapping: Gio.SettingsBindSetMapping): void
+    get_boolean(key: string): boolean
+    get_default_value(key: string): GLib.Variant
+    get_double(key: string): number
+    get_int(key: string): number
+    get_string(key: string): string | null
+    get_uint(key: string): number
+    get_user_value(key: string): GLib.Variant
+    get_value(key: string): GLib.Variant
+    set_boolean(key: string, val: boolean): void
+    set_double(key: string, val: number): void
+    set_int(key: string, val: number): void
+    set_string(key: string, val: string): void
+    set_uint(key: string, val: number): void
+    set_value(key: string, value: GLib.Variant): void
+    unbind(property: string): void
 
     // Class property signals of Egg-1.0.Egg.SettingsSandwich
 
@@ -3991,8 +3991,8 @@ class SettingsSandwich extends GObject.Object {
     // Constructors of Egg-1.0.Egg.SettingsSandwich
 
     constructor(config?: SettingsSandwich.ConstructorProperties) 
-    constructor(schema_id: string | null, path: string | null) 
-    static new(schema_id: string | null, path: string | null): SettingsSandwich
+    constructor(schema_id: string, path: string) 
+    static new(schema_id: string, path: string): SettingsSandwich
     _init(config?: SettingsSandwich.ConstructorProperties): void
 }
 
@@ -4075,7 +4075,7 @@ interface SignalGroup {
      * @param c_handler the #GCallback to connect
      * @param flags the flags used to create the signal connection
      */
-    connect_data(detailed_signal: string | null, c_handler: GObject.Callback, flags: GObject.ConnectFlags): void
+    connect_data(detailed_signal: string, c_handler: GObject.Callback, flags: GObject.ConnectFlags): void
     /**
      * Connects `callback` to the signal `detailed_signal`
      * on the target instance of `self`.
@@ -4087,7 +4087,7 @@ interface SignalGroup {
      * @param detailed_signal a string of the form "signal-name::detail"
      * @param c_handler the #GCallback to connect
      */
-    connect_swapped(detailed_signal: string | null, c_handler: GObject.Callback): void
+    connect_swapped(detailed_signal: string, c_handler: GObject.Callback): void
     /**
      * Gets the target instance used when connecting signals.
      * @returns The target instance.
@@ -4211,10 +4211,10 @@ interface SimpleLabel extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Egg-1.0.Egg.SimpleLabel
 
-    get_label(): string | null
+    get_label(): string
     get_width_chars(): number
     get_xalign(): number
-    set_label(label: string | null): void
+    set_label(label: string): void
     set_width_chars(width_chars: number): void
     set_xalign(xalign: number): void
 
@@ -4362,8 +4362,8 @@ class SimpleLabel extends Gtk.Widget {
     // Constructors of Egg-1.0.Egg.SimpleLabel
 
     constructor(config?: SimpleLabel.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): SimpleLabel
+    constructor(label: string) 
+    static new(label: string): SimpleLabel
     _init(config?: SimpleLabel.ConstructorProperties): void
 }
 
@@ -4426,16 +4426,16 @@ interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Egg-1.0.Egg.SimplePopover
 
-    get_button_text(): string | null
-    get_message(): string | null
+    get_button_text(): string
+    get_message(): string
     get_ready(): boolean
-    get_text(): string | null
-    get_title(): string | null
-    set_button_text(button_text: string | null): void
-    set_message(message: string | null): void
+    get_text(): string
+    get_title(): string
+    set_button_text(button_text: string): void
+    set_message(message: string): void
     set_ready(ready: boolean): void
-    set_text(text: string | null): void
-    set_title(title: string | null): void
+    set_text(text: string): void
+    set_title(title: string): void
 
     // Conflicting methods
 
@@ -4450,7 +4450,7 @@ interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4464,7 +4464,7 @@ interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4475,13 +4475,13 @@ interface SimplePopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Egg-1.0.Egg.SimplePopover
 
-    vfunc_activate(text: string | null): void
+    vfunc_activate(text: string): void
     vfunc_changed(): void
-    vfunc_insert_text(position: number, chars: string | null, n_chars: number): boolean
+    vfunc_insert_text(position: number, chars: string, n_chars: number): boolean
 
     // Own signals of Egg-1.0.Egg.SimplePopover
 
@@ -4729,7 +4729,7 @@ interface Slider extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4743,7 +4743,7 @@ interface Slider extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4754,7 +4754,7 @@ interface Slider extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.Slider
 
@@ -4933,9 +4933,9 @@ interface StateMachine extends Gtk.Buildable {
 
     // Owm methods of Egg-1.0.Egg.StateMachine
 
-    add_binding(state: string | null, source_object: any | null, source_property: string | null, target_object: any | null, target_property: string | null, flags: GObject.BindingFlags): void
-    add_propertyv(state: string | null, object: any | null, property: string | null, value: any): void
-    add_style(state: string | null, widget: Gtk.Widget, style: string | null): void
+    add_binding(state: string, source_object: any | null, source_property: string, target_object: any | null, target_property: string, flags: GObject.BindingFlags): void
+    add_propertyv(state: string, object: any | null, property: string, value: any): void
+    add_style(state: string, widget: Gtk.Widget, style: string): void
     /**
      * Creates a new #GAction with the name of `name`.
      * 
@@ -4944,13 +4944,13 @@ interface StateMachine extends Gtk.Buildable {
      * @param name the name of the action.
      * @returns A newly created #GAction.
      */
-    create_action(name: string | null): Gio.Action
+    create_action(name: string): Gio.Action
     /**
      * Gets the #EggStateMachine:state property. This is the name of the
      * current state of the machine.
      * @returns The current state of the machine.
      */
-    get_state(): string | null
+    get_state(): string
     /**
      * Sets the #EggStateMachine:state property.
      * 
@@ -4961,7 +4961,7 @@ interface StateMachine extends Gtk.Buildable {
      * the last state before the cycle was detected.
      * @param state 
      */
-    set_state(state: string | null): void
+    set_state(state: string): void
 
     // Class property signals of Egg-1.0.Egg.StateMachine
 
@@ -5039,10 +5039,10 @@ interface Suggestion {
 
     // Owm methods of Egg-1.0.Egg.Suggestion
 
-    get_icon_name(): string | null
-    get_id(): string | null
-    get_subtitle(): string | null
-    get_title(): string | null
+    get_icon_name(): string
+    get_id(): string
+    get_subtitle(): string
+    get_title(): string
     /**
      * This function is meant to be used to replace the text in the entry with text
      * that represents the suggestion most accurately. This happens when the user
@@ -5053,11 +5053,11 @@ interface Suggestion {
      * @param typed_text the text that was typed into the entry
      * @returns The replacement text to insert into   the entry when "tab" is pressed to complete the insertion.
      */
-    replace_typed_text(typed_text: string | null): string | null
-    set_icon_name(icon_name: string | null): void
-    set_id(id: string | null): void
-    set_subtitle(subtitle: string | null): void
-    set_title(title: string | null): void
+    replace_typed_text(typed_text: string): string | null
+    set_icon_name(icon_name: string): void
+    set_id(id: string): void
+    set_subtitle(subtitle: string): void
+    set_title(title: string): void
     /**
      * This function requests potential text to append to `typed_text` to make it
      * more clear to the user what they will be activating by selecting this
@@ -5066,7 +5066,7 @@ interface Suggestion {
      * @param typed_text The user entered text
      * @returns Suffix to append to @typed_text   or %NULL to leave it unchanged.
      */
-    suggest_suffix(typed_text: string | null): string | null
+    suggest_suffix(typed_text: string): string | null
 
     // Own virtual methods of Egg-1.0.Egg.Suggestion
 
@@ -5081,7 +5081,7 @@ interface Suggestion {
      * @param typed_text the text that was typed into the entry
      * @returns The replacement text to insert into   the entry when "tab" is pressed to complete the insertion.
      */
-    vfunc_replace_typed_text(typed_text: string | null): string | null
+    vfunc_replace_typed_text(typed_text: string): string | null
     /**
      * This function requests potential text to append to `typed_text` to make it
      * more clear to the user what they will be activating by selecting this
@@ -5091,7 +5091,7 @@ interface Suggestion {
      * @param typed_text The user entered text
      * @returns Suffix to append to @typed_text   or %NULL to leave it unchanged.
      */
-    vfunc_suggest_suffix(typed_text: string | null): string | null
+    vfunc_suggest_suffix(typed_text: string): string | null
 
     // Own signals of Egg-1.0.Egg.Suggestion
 
@@ -5212,7 +5212,7 @@ interface SuggestionEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellE
      * @returns An #EggSuggestion or %NULL.
      */
     get_suggestion(): Suggestion | null
-    get_typed_text(): string | null
+    get_typed_text(): string
     set_model(model: Gio.ListModel): void
     set_suggestion(suggestion: Suggestion): void
 
@@ -5576,7 +5576,7 @@ interface SuggestionEntryBuffer {
      */
     get_suggestion(): Suggestion | null
     get_typed_length(): number
-    get_typed_text(): string | null
+    get_typed_text(): string
     /**
      * Sets the current suggestion for the entry buffer.
      * 
@@ -5726,7 +5726,7 @@ interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5740,7 +5740,7 @@ interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5751,7 +5751,7 @@ interface SuggestionPopover extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Egg-1.0.Egg.SuggestionPopover
 
@@ -6089,7 +6089,7 @@ interface SuggestionRow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6101,7 +6101,7 @@ interface SuggestionRow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6115,7 +6115,7 @@ interface SuggestionRow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.SuggestionRow
 
@@ -6391,7 +6391,7 @@ interface TaskCache {
      * @returns A #GObject or   %NULL if the key was not found in the cache.
      */
     peek(key: any | null): GObject.Object | null
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of Egg-1.0.Egg.TaskCache
 
@@ -6486,7 +6486,7 @@ interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6500,7 +6500,7 @@ interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6511,7 +6511,7 @@ interface ThreeGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Egg-1.0.Egg.ThreeGrid
 
@@ -6689,7 +6689,7 @@ interface WidgetActionGroup extends Gio.ActionGroup {
 
     // Owm methods of Egg-1.0.Egg.WidgetActionGroup
 
-    set_action_enabled(action_name: string | null, enabled: boolean): void
+    set_action_enabled(action_name: string, enabled: boolean): void
 
     // Class property signals of Egg-1.0.Egg.WidgetActionGroup
 
@@ -6720,7 +6720,7 @@ class WidgetActionGroup extends GObject.Object {
      * @param widget A #GtkWidget
      * @param group_name the group name to use for the action group
      */
-    static attach(widget: Gtk.Widget, group_name: string | null): void
+    static attach(widget: Gtk.Widget, group_name: string): void
 }
 
 interface AnimationClass {
@@ -6798,9 +6798,9 @@ interface Counter {
     // Own fields of Egg-1.0.Egg.Counter
 
     values: CounterValue
-    category: string | null
-    name: string | null
-    description: string | null
+    category: string
+    name: string
+    description: string
 
     // Owm methods of Egg-1.0.Egg.Counter
 
@@ -7214,8 +7214,8 @@ interface SimplePopoverClass {
     // Own fields of Egg-1.0.Egg.SimplePopoverClass
 
     parent: Gtk.PopoverClass
-    activate: (self: SimplePopover, text: string | null) => void
-    insert_text: (self: SimplePopover, position: number, chars: string | null, n_chars: number) => boolean
+    activate: (self: SimplePopover, text: string) => void
+    insert_text: (self: SimplePopover, position: number, chars: string, n_chars: number) => boolean
     changed: (self: SimplePopover) => void
 }
 
@@ -7259,8 +7259,8 @@ interface SuggestionClass {
     // Own fields of Egg-1.0.Egg.SuggestionClass
 
     parent_class: GObject.ObjectClass
-    suggest_suffix: (self: Suggestion, typed_text: string | null) => string | null
-    replace_typed_text: (self: Suggestion, typed_text: string | null) => string | null
+    suggest_suffix: (self: Suggestion, typed_text: string) => string | null
+    replace_typed_text: (self: Suggestion, typed_text: string) => string | null
     _reserved1: any
     _reserved2: any
     _reserved3: any

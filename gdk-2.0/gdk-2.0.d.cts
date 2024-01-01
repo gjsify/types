@@ -2847,7 +2847,7 @@ export function color_change(colormap: Colormap, color: Color): number
  * @param spec the string specifying the color.
  * @returns %TRUE if the parsing succeeded.
  */
-export function color_parse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+export function color_parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
 /**
  * Returns the white color for a given colormap. The resulting
  * value has already allocated been allocated.
@@ -3280,7 +3280,7 @@ export function draw_segments(drawable: Drawable, gc: GC, segs: Segment, n_segs:
  * @param y the y coordinate of the baseline of the text.
  * @param string the string of characters to draw.
  */
-export function draw_string(drawable: Drawable, font: Font, gc: GC, x: number, y: number, string: string | null): void
+export function draw_string(drawable: Drawable, font: Font, gc: GC, x: number, y: number, string: string): void
 /**
  * Draws a number of characters in the given font or fontset.
  * @param drawable a #GdkDrawable (a #GdkWindow or a #GdkPixmap).
@@ -3291,7 +3291,7 @@ export function draw_string(drawable: Drawable, font: Font, gc: GC, x: number, y
  * @param text the characters to draw.
  * @param text_length the number of characters of `text` to draw.
  */
-export function draw_text(drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string | null, text_length: number): void
+export function draw_text(drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string, text_length: number): void
 /**
  * Draws a number of wide characters using the given font of fontset.
  * If the font is a 1-byte font, the string is converted into 1-byte
@@ -3407,10 +3407,10 @@ export function font_from_description_for_display(display: Display, font_desc: P
  * @param font_name a XLFD describing the font to load.
  * @returns a #GdkFont, or %NULL if the font could not be loaded.
  */
-export function font_load(font_name: string | null): Font
-export function font_load_for_display(display: Display, font_name: string | null): Font
-export function fontset_load(fontset_name: string | null): Font
-export function fontset_load_for_display(display: Display, fontset_name: string | null): Font
+export function font_load(font_name: string): Font
+export function font_load_for_display(display: Display, font_name: string): Font
+export function fontset_load(fontset_name: string): Font
+export function fontset_load_for_display(display: Display, fontset_name: string): Font
 export function free_compound_text(ctext: number): void
 export function free_text_list(list: string | null): void
 export function get_display(): string | null
@@ -3419,8 +3419,8 @@ export function get_display(): string | null
  * to gdk_init() or gdk_parse_args(), if any.
  * @returns the display name, if specified explicitely, otherwise %NULL   this string is owned by GTK+ and must not be modified or freed.
  */
-export function get_display_arg_name(): string | null
-export function get_program_class(): string | null
+export function get_display_arg_name(): string
+export function get_program_class(): string
 /**
  * Gets whether event debugging output is enabled.
  * @returns %TRUE if event debugging output is enabled.
@@ -3490,7 +3490,7 @@ export function keyval_convert_case(symbol: number): [ /* lower */ number, /* up
  * @param keyval_name a key name
  * @returns the corresponding key value, or %GDK_KEY_VoidSymbol     if the key name is not a valid key
  */
-export function keyval_from_name(keyval_name: string | null): number
+export function keyval_from_name(keyval_name: string): number
 export function keyval_is_lower(keyval: number): boolean
 export function keyval_is_upper(keyval: number): boolean
 /**
@@ -3532,7 +3532,7 @@ export function list_visuals(): Visual[]
  * @param dest_max the maximum number of wide characters to place in `dest`.
  * @returns the number of wide characters written into @dest, or -1 if   the conversion failed.
  */
-export function mbstowcs(dest: WChar, src: string | null, dest_max: number): number
+export function mbstowcs(dest: WChar, src: string, dest_max: number): number
 /**
  * Indicates to the GUI environment that the application has finished
  * loading. If the applications opens windows, this function is
@@ -3554,7 +3554,7 @@ export function notify_startup_complete(): void
  * that feature.
  * @param startup_id a startup-notification identifier, for which notification              process should be completed
  */
-export function notify_startup_complete_with_id(startup_id: string | null): void
+export function notify_startup_complete_with_id(startup_id: string): void
 /**
  * Sets `window` to be embedded in `embedder`.
  * 
@@ -3852,7 +3852,7 @@ export function selection_send_notify_for_display(display: Display, requestor: N
  */
 export function set_double_click_time(msec: number): void
 export function set_locale(): string | null
-export function set_program_class(program_class: string | null): void
+export function set_program_class(program_class: string): void
 /**
  * Sets whether a trace of received events is output.
  * Note that GTK+ must be compiled with debugging (that is,
@@ -3872,7 +3872,7 @@ export function set_show_events(show_events: boolean): void
  * (Both documents are part of the X Window System distribution.)
  * @param sm_client_id the client id assigned by the session manager when the    connection was opened, or %NULL to remove the property.
  */
-export function set_sm_client_id(sm_client_id: string | null): void
+export function set_sm_client_id(sm_client_id: string): void
 export function set_use_xshm(use_xshm: boolean): void
 /**
  * Obtains a desktop-wide setting, such as the double-click time,
@@ -3881,7 +3881,7 @@ export function set_use_xshm(use_xshm: boolean): void
  * @param value location to store the value of the setting.
  * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
  */
-export function setting_get(name: string | null, value: any): boolean
+export function setting_get(name: string, value: any): boolean
 /**
  * Like g_spawn_command_line_async(), except the child process is
  * spawned in such an environment that on calling gdk_display_open()
@@ -3894,7 +3894,7 @@ export function setting_get(name: string | null, value: any): boolean
  * @param command_line a command line
  * @returns %TRUE on success, %FALSE if error is set.
  */
-export function spawn_command_line_on_screen(screen: Screen, command_line: string | null): boolean
+export function spawn_command_line_on_screen(screen: Screen, command_line: string): boolean
 /**
  * Gets the metrics of a nul-terminated string.
  * @param font a #GdkFont.
@@ -3905,7 +3905,7 @@ export function spawn_command_line_on_screen(screen: Screen, command_line: strin
  * @param ascent the ascent of the string.
  * @param descent the descent of the string.
  */
-export function string_extents(font: Font, string: string | null, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
+export function string_extents(font: Font, string: string, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
 /**
  * Determines the total height of a given nul-terminated
  * string. This value is not generally useful, because you
@@ -3915,7 +3915,7 @@ export function string_extents(font: Font, string: string | null, lbearing: numb
  * @param string the nul-terminated string to measure.
  * @returns the height of the string in pixels.
  */
-export function string_height(font: Font, string: string | null): number
+export function string_height(font: Font, string: string): number
 /**
  * Determines the distance from the origin to the rightmost
  * portion of a nul-terminated string when drawn. This is not the
@@ -3926,8 +3926,8 @@ export function string_height(font: Font, string: string | null): number
  * @param string the nul-terminated string to measure.
  * @returns the right bearing of the string in pixels.
  */
-export function string_measure(font: Font, string: string | null): number
-export function string_to_compound_text(str: string | null, encoding: Atom, format: number, ctext: number, length: number): number
+export function string_measure(font: Font, string: string): number
+export function string_to_compound_text(str: string, encoding: Atom, format: number, ctext: number, length: number): number
 /**
  * Convert a string from the encoding of the current
  * locale into a form suitable for storing in a window property.
@@ -3939,7 +3939,7 @@ export function string_to_compound_text(str: string | null, encoding: Atom, form
  * @param length the length of `text,` in bytes
  * @returns 0 upon success, non-zero upon failure.
  */
-export function string_to_compound_text_for_display(display: Display, str: string | null, encoding: Atom, format: number, ctext: number, length: number): number
+export function string_to_compound_text_for_display(display: Display, str: string, encoding: Atom, format: number, ctext: number, length: number): number
 /**
  * Determines the width of a nul-terminated string.
  * (The distance from the origin of the string to the
@@ -3949,7 +3949,7 @@ export function string_to_compound_text_for_display(display: Display, str: strin
  * @param string the nul-terminated string to measure
  * @returns the width of the string in pixels.
  */
-export function string_width(font: Font, string: string | null): number
+export function string_width(font: Font, string: string): number
 export function synthesize_window_state(window: Window, unset_flags: WindowState, set_flags: WindowState): void
 /**
  * This function retrieves a pixel from `window` to force the windowing
@@ -4007,7 +4007,7 @@ export function test_simulate_button(window: Window, x: number, y: number, butto
  * @returns whether all actions neccessary for a key event simulation     were carried out successfully.
  */
 export function test_simulate_key(window: Window, x: number, y: number, keyval: number, modifiers: ModifierType, key_pressrelease: EventType): boolean
-export function text_extents(font: Font, text: string | null, text_length: number, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
+export function text_extents(font: Font, text: string, text_length: number, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
 export function text_extents_wc(font: Font, text: WChar, text_length: number, lbearing: number, rbearing: number, width: number, ascent: number, descent: number): void
 /**
  * Determines the total height of a given string.
@@ -4019,7 +4019,7 @@ export function text_extents_wc(font: Font, text: WChar, text_length: number, lb
  * @param text_length the length of the text in bytes.
  * @returns the height of the string in pixels.
  */
-export function text_height(font: Font, text: string | null, text_length: number): number
+export function text_height(font: Font, text: string, text_length: number): number
 /**
  * Determines the distance from the origin to the rightmost
  * portion of a string when drawn. This is not the
@@ -4031,7 +4031,7 @@ export function text_height(font: Font, text: string | null, text_length: number
  * @param text_length the length of the text in bytes.
  * @returns the right bearing of the string in pixels.
  */
-export function text_measure(font: Font, text: string | null, text_length: number): number
+export function text_measure(font: Font, text: string, text_length: number): number
 export function text_property_to_text_list(encoding: Atom, format: number, text: number, length: number, list: string | null): number
 /**
  * Convert a text string from the encoding as it is stored
@@ -4070,7 +4070,7 @@ export function text_property_to_utf8_list(encoding: Atom, format: number, text:
  * @returns the number of strings in the resulting               list.
  */
 export function text_property_to_utf8_list_for_display(display: Display, encoding: Atom, format: number, text: number, length: number, list: string | null): number
-export function text_width(font: Font, text: string | null, text_length: number): number
+export function text_width(font: Font, text: string, text_length: number): number
 export function text_width_wc(font: Font, text: WChar, text_length: number): number
 /**
  * Adds a function to be called whenever there are no higher priority
@@ -4210,7 +4210,7 @@ export function unicode_to_keyval(wc: number): number
  * @param length location to store the length of the data            stored in `ctext`
  * @returns %TRUE if the conversion succeeded, otherwise               false.
  */
-export function utf8_to_compound_text(str: string | null, encoding: Atom, format: number, ctext: number, length: number): boolean
+export function utf8_to_compound_text(str: string, encoding: Atom, format: number, ctext: number, length: number): boolean
 /**
  * Converts from UTF-8 to compound text.
  * @param display a #GdkDisplay
@@ -4221,7 +4221,7 @@ export function utf8_to_compound_text(str: string | null, encoding: Atom, format
  * @param length location to store the length of the data            stored in `ctext`
  * @returns %TRUE if the conversion succeeded, otherwise               %FALSE.
  */
-export function utf8_to_compound_text_for_display(display: Display, str: string | null, encoding: Atom, format: number, ctext: number, length: number): boolean
+export function utf8_to_compound_text_for_display(display: Display, str: string, encoding: Atom, format: number, ctext: number, length: number): boolean
 /**
  * Converts an UTF-8 string into the best possible representation
  * as a STRING. The representation of characters not in STRING
@@ -4230,7 +4230,7 @@ export function utf8_to_compound_text_for_display(display: Display, str: string 
  * @param str a UTF-8 string
  * @returns the newly-allocated string, or %NULL if the               conversion failed. (It should not fail for               any properly formed UTF-8 string unless system               limits like memory or file descriptors are exceeded.)
  */
-export function utf8_to_string_target(str: string | null): string | null
+export function utf8_to_string_target(str: string): string | null
 /**
  * Converts a wide character string to a multi-byte string.
  * (The function name comes from an acronym of 'Wide Character String TO
@@ -4627,7 +4627,7 @@ export interface Device {
      * Determines the name of the device.
      * @returns a name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Determines the type of the device.
      * @returns a #GdkInputSource
@@ -4738,7 +4738,7 @@ export interface Display {
      * Gets the name of the display.
      * @returns a string representing the display name. This string is owned by GDK and should not be modified or freed.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the current location of the pointer and the current modifier
      * mask for a given display.
@@ -4904,7 +4904,7 @@ export interface Display {
     // Own virtual methods of Gdk-2.0.Gdk.Display
 
     vfunc_closed(is_error: boolean): void
-    vfunc_get_display_name(): string | null
+    vfunc_get_display_name(): string
     /**
      * Gets the number of screen managed by the `display`.
      * @virtual 
@@ -5174,7 +5174,7 @@ export interface Drawable {
      * @param key name the data was stored under
      * @returns the data stored at @key
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Obtains the bit depth of the drawable, that is, the number of bits
      * that make up a pixel in the drawable's visual. Examples are 8 bits
@@ -5210,7 +5210,7 @@ export interface Drawable {
      * @param data arbitrary data
      * @param destroy_func function to free `data,` or %NULL
      */
-    set_data(key: string | null, data: any | null, destroy_func: GLib.DestroyNotify | null): void
+    set_data(key: string, data: any | null, destroy_func: GLib.DestroyNotify | null): void
 
     // Overloads of set_data
 
@@ -5228,7 +5228,7 @@ export interface Drawable {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Deprecated equivalent of calling g_object_unref() on `drawable`.
      */
@@ -5249,7 +5249,7 @@ export interface Drawable {
     vfunc_draw_polygon(gc: GC, filled: boolean, points: Point, npoints: number): void
     vfunc_draw_rectangle(gc: GC, filled: boolean, x: number, y: number, width: number, height: number): void
     vfunc_draw_segments(gc: GC, segs: Segment, nsegs: number): void
-    vfunc_draw_text(font: Font, gc: GC, x: number, y: number, text: string | null, text_length: number): void
+    vfunc_draw_text(font: Font, gc: GC, x: number, y: number, text: string, text_length: number): void
     vfunc_draw_text_wc(font: Font, gc: GC, x: number, y: number, text: WChar, text_length: number): void
     vfunc_draw_trapezoids(gc: GC, trapezoids: Trapezoid, n_trapezoids: number): void
     /**
@@ -6110,7 +6110,7 @@ export interface Pixmap {
      * @param data arbitrary data
      * @param destroy_func function to free `data,` or %NULL
      */
-    set_data(key: string | null, data: any | null, destroy_func: GLib.DestroyNotify | null): void
+    set_data(key: string, data: any | null, destroy_func: GLib.DestroyNotify | null): void
 
     // Overloads of set_data
 
@@ -6128,7 +6128,7 @@ export interface Pixmap {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -6143,7 +6143,7 @@ export interface Pixmap {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Gdk-2.0.Gdk.Pixmap
 
@@ -6217,7 +6217,7 @@ export class Pixmap extends Drawable {
      * @param filename the filename of a file containing XPM data.
      * @returns the #GdkPixmap.
      */
-    static colormap_create_from_xpm(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparent_color: Color, filename: string | null): Pixmap
+    static colormap_create_from_xpm(drawable: Drawable, colormap: Colormap, mask: Bitmap, transparent_color: Color, filename: string): Pixmap
     /**
      * Create a pixmap from data in XPM format using a particular
      * colormap.
@@ -6236,7 +6236,7 @@ export class Pixmap extends Drawable {
      * @param filename the filename of a file containing XPM data.
      * @returns the #GdkPixmap
      */
-    static create_from_xpm(drawable: Drawable, transparent_color: Color, filename: string | null): [ /* returnType */ Pixmap, /* mask */ Bitmap ]
+    static create_from_xpm(drawable: Drawable, transparent_color: Color, filename: string): [ /* returnType */ Pixmap, /* mask */ Bitmap ]
     /**
      * Create a pixmap from data in XPM format.
      * @param drawable a #GdkDrawable, used to determine default values     for the new pixmap.
@@ -6447,7 +6447,7 @@ export interface Screen {
      * @returns the root window
      */
     get_root_window(): Window
-    get_setting(name: string | null, value: any): boolean
+    get_setting(name: string, value: any): boolean
     /**
      * Gets the system's default colormap for `screen`
      * @returns the default colormap for @screen.
@@ -7920,7 +7920,7 @@ export interface Window {
      * gdk_window_set_title() will again update the icon title as well.
      * @param name name of window while iconified (minimized)
      */
-    set_icon_name(name: string | null): void
+    set_icon_name(name: string): void
     /**
      * Set if `window` must be kept above other windows. If the
      * window was already above, then this function does nothing.
@@ -7999,7 +7999,7 @@ export interface Window {
      * non-interchangeable kind of window.
      * @param role a string indicating its role
      */
-    set_role(role: string | null): void
+    set_role(role: string): void
     /**
      * Toggles whether a window should appear in a pager (workspace
      * switcher, or other desktop utility program that displays a small
@@ -8027,7 +8027,7 @@ export interface Window {
      * instead of this low-level function.
      * @param startup_id a string with startup-notification identifier
      */
-    set_startup_id(startup_id: string | null): void
+    set_startup_id(startup_id: string): void
     /**
      * Set the bit gravity of the given window to static, and flag it so
      * all children get static subwindow gravity. This is used if you are
@@ -8045,7 +8045,7 @@ export interface Window {
      * user-readable strings in GDK/GTK+). `title` may not be %NULL.
      * @param title title of `window`
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Indicates to the window manager that `window` is a transient dialog
      * associated with the application window `parent`. This allows the
@@ -8220,7 +8220,7 @@ export interface Window {
      * @param data arbitrary data
      * @param destroy_func function to free `data,` or %NULL
      */
-    set_data(key: string | null, data: any | null, destroy_func: GLib.DestroyNotify | null): void
+    set_data(key: string, data: any | null, destroy_func: GLib.DestroyNotify | null): void
 
     // Overloads of set_data
 
@@ -8238,7 +8238,7 @@ export interface Window {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -8253,7 +8253,7 @@ export interface Window {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Own signals of Gdk-2.0.Gdk.Window
 
@@ -8437,7 +8437,7 @@ export class Color {
      * @param spec the string specifying the color.
      * @returns %TRUE if the parsing succeeded.
      */
-    static parse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+    static parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
     /**
      * Returns the white color for a given colormap. The resulting
      * value has already allocated been allocated.
@@ -8588,7 +8588,7 @@ export class Cursor {
      * @param name the name of the cursor
      * @returns a new #GdkCursor, or %NULL if there is no cursor with   the given name
      */
-    static new_from_name(display: Display, name: string | null): Cursor
+    static new_from_name(display: Display, name: string): Cursor
     /**
      * Creates a new cursor from a pixbuf.
      * 
@@ -8715,7 +8715,7 @@ export interface DisplayClass {
     // Own fields of Gdk-2.0.Gdk.DisplayClass
 
     parent_class: GObject.ObjectClass
-    get_display_name: (display: Display) => string | null
+    get_display_name: (display: Display) => string
     get_n_screens: (display: Display) => number
     closed: (display: Display, is_error: boolean) => void
 }
@@ -8778,7 +8778,7 @@ export interface DrawableClass {
     draw_rectangle: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number) => void
     draw_arc: (drawable: Drawable, gc: GC, filled: boolean, x: number, y: number, width: number, height: number, angle1: number, angle2: number) => void
     draw_polygon: (drawable: Drawable, gc: GC, filled: boolean, points: Point, npoints: number) => void
-    draw_text: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string | null, text_length: number) => void
+    draw_text: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: string, text_length: number) => void
     draw_text_wc: (drawable: Drawable, font: Font, gc: GC, x: number, y: number, text: WChar, text_length: number) => void
     draw_drawable: (drawable: Drawable, gc: GC, src: Drawable, xsrc: number, ysrc: number, xdest: number, ydest: number, width: number, height: number) => void
     draw_points: (drawable: Drawable, gc: GC, points: Point, npoints: number) => void
@@ -9257,8 +9257,8 @@ export class Font {
      * @param font_name a XLFD describing the font to load.
      * @returns a #GdkFont, or %NULL if the font could not be loaded.
      */
-    static load(font_name: string | null): Font
-    static load_for_display(display: Display, font_name: string | null): Font
+    static load(font_name: string): Font
+    static load_for_display(display: Display, font_name: string): Font
 }
 
 export interface GCClass {

@@ -239,27 +239,27 @@ export enum PbUtilsCapsDescriptionFlags {
  * #GstEncodingTarget category for recording and capture.
  * Targets within this category are optimized for low latency encoding.
  */
-export const ENCODING_CATEGORY_CAPTURE: string | null
+export const ENCODING_CATEGORY_CAPTURE: string
 /**
  * #GstEncodingTarget category for device-specific targets.
  * The name of the target will usually be the constructor and model of the device,
  * and that target will contain #GstEncodingProfiles suitable for that device.
  */
-export const ENCODING_CATEGORY_DEVICE: string | null
+export const ENCODING_CATEGORY_DEVICE: string
 /**
  * #GstEncodingTarget category for file extensions.
  * The name of the target will be the name of the file extensions possible
  * for a particular target. Those targets are defining like 'default' formats
  * usually used for a particular file extension.
  */
-export const ENCODING_CATEGORY_FILE_EXTENSION: string | null
+export const ENCODING_CATEGORY_FILE_EXTENSION: string
 /**
  * #GstEncodingTarget category for online-services.
  * The name of the target will usually be the name of the online service
  * and that target will contain #GstEncodingProfiles suitable for that online
  * service.
  */
-export const ENCODING_CATEGORY_ONLINE_SERVICE: string | null
+export const ENCODING_CATEGORY_ONLINE_SERVICE: string
 /**
  * #GstEncodingTarget category for storage, archiving and editing targets.
  * Those targets can be lossless and/or provide very fast random access content.
@@ -267,7 +267,7 @@ export const ENCODING_CATEGORY_ONLINE_SERVICE: string | null
  * and that target will contain #GstEncodingProfiles suitable for editing or
  * storage.
  */
-export const ENCODING_CATEGORY_STORAGE_EDITING: string | null
+export const ENCODING_CATEGORY_STORAGE_EDITING: string
 /**
  * The major version of GStreamer's gst-plugins-base libraries at compile time.
  */
@@ -356,7 +356,7 @@ export function codecUtilsAacGetSampleRateFromIndex(srIdx: number): number
  * @param codecsField A mime codec string field
  * @returns The corresponding #GstCaps or %NULL
  */
-export function codecUtilsCapsFromMimeCodec(codecsField: string | null): Gst.Caps | null
+export function codecUtilsCapsFromMimeCodec(codecsField: string): Gst.Caps | null
 /**
  * Converts `caps` to a RFC 6381 compatible codec string if possible.
  * 
@@ -390,7 +390,7 @@ export function codecUtilsH264GetLevel(sps: number[]): string | null
  * @param level A level string from caps
  * @returns the level_idc or 0 if the level is unknown
  */
-export function codecUtilsH264GetLevelIdc(level: string | null): number
+export function codecUtilsH264GetLevelIdc(level: string): number
 /**
  * Converts the profile indication (profile_idc) in the stream's
  * sequence parameter set into a string. The SPS is expected to have the
@@ -445,7 +445,7 @@ export function codecUtilsH265GetLevel(profileTierLevel: number[]): string | nul
  * @param level A level string from caps
  * @returns the level_idc or 0 if the level is unknown
  */
-export function codecUtilsH265GetLevelIdc(level: string | null): number
+export function codecUtilsH265GetLevelIdc(level: string): number
 /**
  * Converts the profile indication (general_profile_idc) in the stream's
  * profile_level_tier structure into a string. The profile_tier_level is
@@ -596,7 +596,7 @@ export function installPluginsInstallationInProgress(): boolean
  * @param ret the return status code
  * @returns a descriptive string for the status code in @ret
  */
-export function installPluginsReturnGetName(ret: InstallPluginsReturn): string | null
+export function installPluginsReturnGetName(ret: InstallPluginsReturn): string
 /**
  * Checks whether plugin installation is likely to be supported by the
  * current environment. This currently only checks whether the helper script
@@ -659,7 +659,7 @@ export function missingDecoderMessageNew(element: Gst.Element, decodeCaps: Gst.C
  * @param factoryName the name of the missing element (element factory),            e.g. "videoscale" or "cdparanoiasrc"
  * @returns a newly-allocated detail string. Free string          with g_free() when not needed any longer.
  */
-export function missingElementInstallerDetailNew(factoryName: string | null): string | null
+export function missingElementInstallerDetailNew(factoryName: string): string | null
 /**
  * Creates a missing-plugin message for `element` to notify the application
  * that a certain required element is missing. This function is mainly for
@@ -668,7 +668,7 @@ export function missingElementInstallerDetailNew(factoryName: string | null): st
  * @param factoryName the name of the missing element (element factory),            e.g. "videoscale" or "cdparanoiasrc"
  * @returns a new #GstMessage
  */
-export function missingElementMessageNew(element: Gst.Element, factoryName: string | null): Gst.Message
+export function missingElementMessageNew(element: Gst.Element, factoryName: string): Gst.Message
 /**
  * Returns an opaque string containing all the details about the missing
  * element to be passed to an external installer called via
@@ -726,7 +726,7 @@ export function missingPluginMessageGetInstallerDetail(msg: Gst.Message): string
  * @param protocol the URI protocol the missing source needs to implement,            e.g. "http" or "mms"
  * @returns a newly-allocated detail string. Free string          with g_free() when not needed any longer.
  */
-export function missingUriSinkInstallerDetailNew(protocol: string | null): string | null
+export function missingUriSinkInstallerDetailNew(protocol: string): string | null
 /**
  * Creates a missing-plugin message for `element` to notify the application
  * that a sink element for a particular URI protocol is missing. This
@@ -735,7 +735,7 @@ export function missingUriSinkInstallerDetailNew(protocol: string | null): strin
  * @param protocol the URI protocol the missing sink needs to implement,            e.g. "http" or "smb"
  * @returns a new #GstMessage
  */
-export function missingUriSinkMessageNew(element: Gst.Element, protocol: string | null): Gst.Message
+export function missingUriSinkMessageNew(element: Gst.Element, protocol: string): Gst.Message
 /**
  * Returns an opaque string containing all the details about the missing
  * element to be passed to an external installer called via
@@ -748,7 +748,7 @@ export function missingUriSinkMessageNew(element: Gst.Element, protocol: string 
  * @param protocol the URI protocol the missing source needs to implement,            e.g. "http" or "mms"
  * @returns a newly-allocated detail string. Free string          with g_free() when not needed any longer.
  */
-export function missingUriSourceInstallerDetailNew(protocol: string | null): string | null
+export function missingUriSourceInstallerDetailNew(protocol: string): string | null
 /**
  * Creates a missing-plugin message for `element` to notify the application
  * that a source element for a particular URI protocol is missing. This
@@ -757,7 +757,7 @@ export function missingUriSourceInstallerDetailNew(protocol: string | null): str
  * @param protocol the URI protocol the missing source needs to implement,            e.g. "http" or "mms"
  * @returns a new #GstMessage
  */
-export function missingUriSourceMessageNew(element: Gst.Element, protocol: string | null): Gst.Message
+export function missingUriSourceMessageNew(element: Gst.Element, protocol: string): Gst.Message
 /**
  * Adds a codec tag describing the format specified by `caps` to `taglist`.
  * @param taglist a #GstTagList
@@ -805,7 +805,7 @@ export function pbUtilsGetDecoderDescription(caps: Gst.Caps): string | null
  * @param factoryName the name of the element, e.g. "giosrc"
  * @returns a newly-allocated description string. Free          string with g_free() when not needed any longer.
  */
-export function pbUtilsGetElementDescription(factoryName: string | null): string | null
+export function pbUtilsGetElementDescription(factoryName: string): string | null
 /**
  * Returns a localised string describing an encoder for the format specified
  * in `caps,` for use in error dialogs or other messages to be seen by the user.
@@ -834,7 +834,7 @@ export function pbUtilsGetFileExtensionFromCaps(caps: Gst.Caps): string | null
  * @param protocol the protocol the sink element needs to handle, e.g. "http"
  * @returns a newly-allocated description string. Free          string with g_free() when not needed any longer.
  */
-export function pbUtilsGetSinkDescription(protocol: string | null): string | null
+export function pbUtilsGetSinkDescription(protocol: string): string | null
 /**
  * Returns a localised string describing a source element handling the protocol
  * specified in `protocol,` for use in error dialogs or other messages to be
@@ -846,7 +846,7 @@ export function pbUtilsGetSinkDescription(protocol: string | null): string | nul
  * @param protocol the protocol the source element needs to handle, e.g. "http"
  * @returns a newly-allocated description string. Free          string with g_free() when not needed any longer.
  */
-export function pbUtilsGetSourceDescription(protocol: string | null): string | null
+export function pbUtilsGetSourceDescription(protocol: string): string | null
 /**
  * Initialises the base utils support library. This function is not
  * thread-safe. Applications should call it after calling gst_init(),
@@ -1091,7 +1091,7 @@ export interface Discoverer {
      * @param uri The URI to run on.
      * @returns the result of the scanning. Can be %NULL if an error occurred.
      */
-    discoverUri(uri: string | null): DiscovererInfo
+    discoverUri(uri: string): DiscovererInfo
     /**
      * Appends the given `uri` to the list of URIs to discoverer. The actual
      * discovery of the `uri` will only take place if gst_discoverer_start() has
@@ -1102,7 +1102,7 @@ export interface Discoverer {
      * @param uri the URI to add.
      * @returns %TRUE if the @uri was successfully appended to the list of pending uris, else %FALSE
      */
-    discoverUriAsync(uri: string | null): boolean
+    discoverUriAsync(uri: string): boolean
     /**
      * Allow asynchronous discovering of URIs to take place.
      * A #GMainLoop must be available for #GstDiscoverer to properly work in
@@ -1388,7 +1388,7 @@ export interface DiscovererInfo {
     getSubtitleStreams(): DiscovererSubtitleInfo[]
     getTags(): Gst.TagList | null
     getToc(): Gst.Toc | null
-    getUri(): string | null
+    getUri(): string
     /**
      * Finds all the #GstDiscovererVideoInfo contained in `info`
      * @returns A #GList of matching #GstDiscovererStreamInfo. The caller should free it with gst_discoverer_stream_info_list_free().
@@ -1466,7 +1466,7 @@ export interface DiscovererStreamInfo {
     getPrevious(): DiscovererStreamInfo | null
     getStreamId(): string | null
     getStreamNumber(): number
-    getStreamTypeNick(): string | null
+    getStreamTypeNick(): string
     getTags(): Gst.TagList | null
     getToc(): Gst.Toc | null
 
@@ -1879,7 +1879,7 @@ export interface EncodingProfile {
     getPresetName(): string | null
     getRestriction(): Gst.Caps | null
     getSingleSegment(): boolean
-    getTypeNick(): string | null
+    getTypeNick(): string
     isEnabled(): boolean
     /**
      * Checks whether the two #GstEncodingProfile are equal
@@ -2017,7 +2017,7 @@ export class EncodingProfile extends GObject.Object {
      * @param category The target category. Can be %NULL
      * @returns The matching #GstEncodingProfile or %NULL.
      */
-    static find(targetname: string | null, profilename: string | null, category: string | null): EncodingProfile | null
+    static find(targetname: string, profilename: string | null, category: string | null): EncodingProfile | null
     /**
      * Creates a #GstEncodingProfile matching the formats from the given
      * #GstDiscovererInfo. Streams other than audio or video (eg,
@@ -2056,11 +2056,11 @@ export interface EncodingTarget {
      * @returns %TRUE if the profile was added, else %FALSE.
      */
     addProfile(profile: EncodingProfile): boolean
-    getCategory(): string | null
-    getDescription(): string | null
-    getName(): string | null
+    getCategory(): string
+    getDescription(): string
+    getName(): string
     getPath(): string | null
-    getProfile(name: string | null): EncodingProfile | null
+    getProfile(name: string): EncodingProfile | null
     getProfiles(): EncodingProfile[]
     /**
      * Saves the `target` to a default user-local directory.
@@ -2123,7 +2123,7 @@ export class EncodingTarget extends GObject.Object {
      * @param profiles A #GList of #GstEncodingProfile.
      * @returns The newly created #GstEncodingTarget or %NULL if there was an error.
      */
-    constructor(name: string | null, category: string | null, description: string | null, profiles: EncodingProfile[]) 
+    constructor(name: string, category: string, description: string, profiles: EncodingProfile[]) 
     /**
      * Creates a new #GstEncodingTarget.
      * 
@@ -2142,7 +2142,7 @@ export class EncodingTarget extends GObject.Object {
      * @param profiles A #GList of #GstEncodingProfile.
      * @returns The newly created #GstEncodingTarget or %NULL if there was an error.
      */
-    static new(name: string | null, category: string | null, description: string | null, profiles: EncodingProfile[]): EncodingTarget
+    static new(name: string, category: string, description: string, profiles: EncodingProfile[]): EncodingTarget
     _init(config?: EncodingTarget.ConstructorProperties): void
     /**
      * Searches for the #GstEncodingTarget with the given name, loads it
@@ -2154,7 +2154,7 @@ export class EncodingTarget extends GObject.Object {
      * @param category the name of the target category, like #GST_ENCODING_CATEGORY_DEVICE. Can be %NULL
      * @returns The #GstEncodingTarget if available, else %NULL.
      */
-    static load(name: string | null, category: string | null): EncodingTarget
+    static load(name: string, category: string | null): EncodingTarget
     /**
      * Opens the provided file and returns the contained #GstEncodingTarget.
      * @param filepath The file location to load the #GstEncodingTarget from
@@ -2415,7 +2415,7 @@ export interface InstallPluginsContext {
      * --desktop-id= command line option.
      * @param desktopId the desktop file ID of the calling application
      */
-    setDesktopId(desktopId: string | null): void
+    setDesktopId(desktopId: string): void
     /**
      * Sets the startup notification ID for the launched process.
      * 
@@ -2439,7 +2439,7 @@ export interface InstallPluginsContext {
      * 
      * @param startupId the startup notification ID
      */
-    setStartupNotificationId(startupId: string | null): void
+    setStartupNotificationId(startupId: string): void
     /**
      * This function is for X11-based applications (such as most Gtk/Qt
      * applications on linux/unix) only. You can use it to tell the external

@@ -108,13 +108,13 @@ export interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns A string which should not be freed or %NULL if none is specified.
      */
-    getDescription(miner: string | null): string | null
+    getDescription(miner: string): string
     /**
      * Returns a translated display name for `miner`.
      * @param miner miner reference
      * @returns A string which should not be freed or %NULL.
      */
-    getDisplayName(miner: string | null): string | null
+    getDisplayName(miner: string): string
     /**
      * Returns a list of references for all active miners. Active miners
      * are miners which are running within a process.
@@ -128,7 +128,7 @@ export interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns %TRUE if the status could be retrieved successfully, otherwise %FALSE
      */
-    getStatus(miner: string | null): [ /* returnType */ boolean, /* status */ string | null, /* progress */ number, /* remainingTime */ number ]
+    getStatus(miner: string): [ /* returnType */ boolean, /* status */ string, /* progress */ number, /* remainingTime */ number ]
     /**
      * Tells the `miner` to ignore any events for the next `urls`. This is
      * used for cases where a file is updated by Tracker by the
@@ -138,7 +138,7 @@ export interface MinerManager extends Gio.Initable {
      * @param urls the subjects to ignore the next updates of
      * @returns %TRUE on success, otherwise %FALSE.
      */
-    ignoreNextUpdate(miner: string | null, urls: string | null): boolean
+    ignoreNextUpdate(miner: string, urls: string): boolean
     /**
      * Tells the filesystem miner to start indexing the `file`.
      * 
@@ -205,7 +205,7 @@ export interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns %TRUE if the @miner is active, otherwise %FALSE.
      */
-    isActive(miner: string | null): boolean
+    isActive(miner: string): boolean
     /**
      * This function either returns %FALSE if the miner is not paused,
      * or returns %TRUE and fills in `applications` and `reasons` with
@@ -215,7 +215,7 @@ export interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns %TRUE if @miner is paused, otherwise %FALSE.
      */
-    isPaused(miner: string | null): [ /* returnType */ boolean, /* applications */ string[], /* reasons */ string[] ]
+    isPaused(miner: string): [ /* returnType */ boolean, /* applications */ string[], /* reasons */ string[] ]
     /**
      * Asks `miner` to pause. a miner could be paused by
      * several reasons, and its activity won't be resumed
@@ -224,7 +224,7 @@ export interface MinerManager extends Gio.Initable {
      * @param reason reason to pause
      * @returns %TRUE if the miner was paused successfully, otherwise %FALSE.
      */
-    pause(miner: string | null, reason: string | null): [ /* returnType */ boolean, /* cookie */ number ]
+    pause(miner: string, reason: string): [ /* returnType */ boolean, /* cookie */ number ]
     /**
      * This function operates exactly the same way as
      * tracker_miner_manager_pause() with the exception that if the calling
@@ -239,7 +239,7 @@ export interface MinerManager extends Gio.Initable {
      * @param reason reason to pause
      * @returns %TRUE if the miner was paused successfully, otherwise %FALSE.
      */
-    pauseForProcess(miner: string | null, reason: string | null): [ /* returnType */ boolean, /* cookie */ number ]
+    pauseForProcess(miner: string, reason: string): [ /* returnType */ boolean, /* cookie */ number ]
     /**
      * Tells the filesystem miner to reindex any file with a mimetype in
      * the `mimetypes` list.
@@ -256,15 +256,15 @@ export interface MinerManager extends Gio.Initable {
      * @param cookie pause cookie
      * @returns %TRUE if the miner was successfully resumed, otherwise %FALSE.
      */
-    resume(miner: string | null, cookie: number): boolean
+    resume(miner: string, cookie: number): boolean
 
     // Own virtual methods of TrackerControl-1.0.TrackerControl.MinerManager
 
-    minerActivated(minerName: string | null): void
-    minerDeactivated(minerName: string | null): void
-    minerPaused(minerName: string | null): void
-    minerProgress(minerName: string | null, status: string | null, progress: number): void
-    minerResumed(minerName: string | null): void
+    minerActivated(minerName: string): void
+    minerDeactivated(minerName: string): void
+    minerPaused(minerName: string): void
+    minerProgress(minerName: string, status: string, progress: number): void
+    minerResumed(minerName: string): void
 
     // Own signals of TrackerControl-1.0.TrackerControl.MinerManager
 
@@ -359,11 +359,11 @@ export interface MinerManagerClass {
     // Own fields of TrackerControl-1.0.TrackerControl.MinerManagerClass
 
     parentClass: GObject.ObjectClass
-    minerProgress: (manager: MinerManager, minerName: string | null, status: string | null, progress: number) => void
-    minerPaused: (manager: MinerManager, minerName: string | null) => void
-    minerResumed: (manager: MinerManager, minerName: string | null) => void
-    minerActivated: (manager: MinerManager, minerName: string | null) => void
-    minerDeactivated: (manager: MinerManager, minerName: string | null) => void
+    minerProgress: (manager: MinerManager, minerName: string, status: string, progress: number) => void
+    minerPaused: (manager: MinerManager, minerName: string) => void
+    minerResumed: (manager: MinerManager, minerName: string) => void
+    minerActivated: (manager: MinerManager, minerName: string) => void
+    minerDeactivated: (manager: MinerManager, minerName: string) => void
 }
 
 export abstract class MinerManagerClass {

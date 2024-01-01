@@ -58,7 +58,7 @@ export const MINOR_VERSION: number
  * pnl version, encoded as a string, useful for printing and
  * concatenation.
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 /**
  * Creates a new frame source that will execute when the timeout interval
  * for the source has elapsed. The timing will try to synchronize based
@@ -70,7 +70,7 @@ export const VERSION_S: string | null
 export function frameSourceAdd(framesPerSec: number, callback: GLib.SourceFunc): number
 export function gtkBinDraw(widget: Gtk.Widget, cr: cairo.Context): boolean
 export function gtkBinSizeAllocate(widget: Gtk.Widget, allocation: Gtk.Allocation): void
-export function overlayAddChild(self: DockOverlay, child: Gtk.Widget, type: string | null): void
+export function overlayAddChild(self: DockOverlay, child: Gtk.Widget, type: string): void
 export module Dock {
 
     // Constructor properties interface
@@ -104,7 +104,7 @@ export interface Dock extends Gtk.Container {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -137,7 +137,7 @@ export interface Dock extends Gtk.Container {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -150,7 +150,7 @@ export interface Dock extends Gtk.Container {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -160,7 +160,7 @@ export interface Dock extends Gtk.Container {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -173,7 +173,7 @@ export interface Dock extends Gtk.Container {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -182,13 +182,13 @@ export interface Dock extends Gtk.Container {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Pnl-1.0.Pnl.Dock
 
@@ -298,7 +298,7 @@ export interface DockItem extends Gtk.Widget {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -311,7 +311,7 @@ export interface DockItem extends Gtk.Widget {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -321,7 +321,7 @@ export interface DockItem extends Gtk.Widget {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -334,7 +334,7 @@ export interface DockItem extends Gtk.Widget {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -343,13 +343,13 @@ export interface DockItem extends Gtk.Widget {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of Pnl-1.0.Pnl.DockItem
 
@@ -824,13 +824,13 @@ export interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, Dock
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -843,13 +843,13 @@ export interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, Dock
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -862,7 +862,7 @@ export interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, Dock
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -871,7 +871,7 @@ export interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, Dock
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -883,7 +883,7 @@ export interface DockBin extends Atk.ImplementorIface, Gtk.Buildable, Dock, Dock
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1294,13 +1294,13 @@ export interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockIt
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1313,13 +1313,13 @@ export interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockIt
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1332,7 +1332,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockIt
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1341,7 +1341,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockIt
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: DockItem): boolean
 
     // Overloads of getChildVisible
@@ -1453,7 +1453,7 @@ export interface DockBinEdge extends Atk.ImplementorIface, Gtk.Buildable, DockIt
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1887,13 +1887,13 @@ export interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1906,13 +1906,13 @@ export interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1925,7 +1925,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1934,7 +1934,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1946,7 +1946,7 @@ export interface DockOverlay extends Atk.ImplementorIface, Gtk.Buildable, Dock, 
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2369,13 +2369,13 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, Do
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2388,13 +2388,13 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, Do
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2407,7 +2407,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, Do
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2416,7 +2416,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, Do
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: DockItem): boolean
 
     // Overloads of getChildVisible
@@ -2516,7 +2516,7 @@ export interface DockOverlayEdge extends Atk.ImplementorIface, Gtk.Buildable, Do
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2826,13 +2826,13 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2845,13 +2845,13 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2864,7 +2864,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2873,7 +2873,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: DockItem): boolean
 
     // Overloads of getChildVisible
@@ -2973,7 +2973,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3305,13 +3305,13 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3324,13 +3324,13 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3343,7 +3343,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3352,7 +3352,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3364,7 +3364,7 @@ export interface DockRevealer extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3712,13 +3712,13 @@ export interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3731,13 +3731,13 @@ export interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3750,7 +3750,7 @@ export interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3759,7 +3759,7 @@ export interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: DockItem): boolean
 
     // Overloads of getChildVisible
@@ -3859,7 +3859,7 @@ export interface DockStack extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4193,13 +4193,13 @@ export interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4212,13 +4212,13 @@ export interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4231,7 +4231,7 @@ export interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4240,7 +4240,7 @@ export interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4252,7 +4252,7 @@ export interface DockTabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4656,8 +4656,8 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
 
     // Owm methods of Pnl-1.0.Pnl.DockWidget
 
-    getTitle(): string | null
-    setTitle(title: string | null): void
+    getTitle(): string
+    setTitle(title: string): void
 
     // Conflicting methods
 
@@ -4670,13 +4670,13 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4689,13 +4689,13 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4708,7 +4708,7 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4717,7 +4717,7 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     getChildVisible(child: DockItem): boolean
 
     // Overloads of getChildVisible
@@ -4817,7 +4817,7 @@ export interface DockWidget extends Atk.ImplementorIface, Gtk.Buildable, DockIte
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5125,13 +5125,13 @@ export interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, D
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5144,13 +5144,13 @@ export interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, D
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5163,7 +5163,7 @@ export interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, D
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5172,7 +5172,7 @@ export interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, D
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5184,7 +5184,7 @@ export interface DockWindow extends Atk.ImplementorIface, Gtk.Buildable, Dock, D
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5819,13 +5819,13 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5838,13 +5838,13 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5857,7 +5857,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5866,7 +5866,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5878,7 +5878,7 @@ export interface MultiPaned extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -6202,10 +6202,10 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
     // Owm methods of Pnl-1.0.Pnl.Tab
 
     getEdge(): Gtk.PositionType
-    getTitle(): string | null
+    getTitle(): string
     getWidget(): Gtk.Widget | null
     setEdge(edge: Gtk.PositionType): void
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     setWidget(widget: Gtk.Widget): void
 
     // Conflicting methods
@@ -6253,7 +6253,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -6274,7 +6274,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6287,7 +6287,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -6297,7 +6297,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6310,7 +6310,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6319,13 +6319,13 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Actionable, Gtk.Activatab
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Pnl-1.0.Pnl.Tab
 
@@ -6705,13 +6705,13 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6724,13 +6724,13 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6743,7 +6743,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6752,7 +6752,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6764,7 +6764,7 @@ export interface TabStrip extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 

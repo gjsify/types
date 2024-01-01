@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-template-1.0)
 
 
-Node.js TypeScript type definitions for Template-1.0, generated from library version 3.36.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+Node.js TypeScript type definitions for Template-1.0, generated from library version 3.36.2 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 Template-GLib is a library to generate text from a template and user defined state. Template-GLib allows you to access properties on GObjects as well as call simple methods via GObject-Introspection Template-GLib does not use a language runtime, so it is safe to use from any GObject-Introspectable language.
 

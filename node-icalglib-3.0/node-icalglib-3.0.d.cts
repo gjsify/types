@@ -738,13 +738,13 @@ export function errorGetErrorState(error: ErrorEnum): ErrorState
  * the current error.
  * @returns The string representation of the current error
  */
-export function errorPerror(): string | null
+export function errorPerror(): string
 /**
  * Restores the error to specified state.
  * @param error The error to be restored
  * @param es The error state to be restored
  */
-export function errorRestore(error: string | null, es: ErrorState): void
+export function errorRestore(error: string, es: ErrorState): void
 /**
  * Sets the errno.
  * @param x The error to be set
@@ -762,13 +762,13 @@ export function errorStopHere(): void
  * @param e The #ICalErrorEnum to be translated
  * @returns The string representation of @e
  */
-export function errorStrerror(e: ErrorEnum): string | null
+export function errorStrerror(e: ErrorEnum): string
 /**
  * Suppresses the error.
  * @param error The error to be suppressed
  * @returns The error state suppressed
  */
-export function errorSupress(error: string | null): ErrorState
+export function errorSupress(error: string): ErrorState
 /**
  * Gets the setting of #ICalUnknowntokenhandling.
  * @returns The setting of #ICalUnknowntokenhandling
@@ -796,7 +796,7 @@ export function memoryAppendChar(buf: number[], pos: number[], ch: number): [ /*
  * @param pos The position at which the new string to be appended
  * @param str The string to be allocated
  */
-export function memoryAppendString(buf: number[], pos: number[], str: string | null): [ /* buf */ number[], /* pos */ number[] ]
+export function memoryAppendString(buf: number[], pos: number[], str: string): [ /* buf */ number[], /* pos */ number[] ]
 /**
  * Frees the buffer.
  * @param buf The buffer to be freed
@@ -821,7 +821,7 @@ export function memoryResizeBuffer(buf: any | null, size: number): any | null
  * @param s The string to be cloned
  * @returns The cloned string.
  */
-export function memoryStrdup(s: string | null): string | null
+export function memoryStrdup(s: string): string | null
 /**
  * Creates a buffer with target size.
  * @param size The size of the buffer to be created
@@ -833,7 +833,7 @@ export function memoryTmpBuffer(size: number): any | null
  * @param str The string to be copied
  * @returns The new copy of the @str.
  */
-export function memoryTmpCopy(str: string | null): string | null
+export function memoryTmpCopy(str: string): string | null
 /**
  * Parses data to #ICalComponent using the given function.
  * @param func The parsing function
@@ -849,7 +849,7 @@ export function mimeParse(func: MimeParseFunc): Component
  * @param count The number of elements to be filled up in the `array`
  * @returns If successful, return the array. NULL if failed.
  */
-export function recurExpandRecurrence(rule: string | null, start: number, count: number): number[]
+export function recurExpandRecurrence(rule: string, start: number, count: number): number[]
 /**
  * Returns the code for a request status.
  * @param stat The #ICalRequestStatus to be queried
@@ -861,7 +861,7 @@ export function requestStatusCode(stat: RequestStatus): string | null
  * @param stat The #ICalRequestStatus to be translated
  * @returns The description of the @stat
  */
-export function requestStatusDesc(stat: RequestStatus): string | null
+export function requestStatusDesc(stat: RequestStatus): string
 /**
  * Returns a request status for major/minor status numbers.
  * @param major The major number
@@ -1030,7 +1030,7 @@ export interface Attach {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Checks whether the #ICalAttach is built from url.
      * @returns Whether the @attach is built from url
@@ -1111,14 +1111,14 @@ export class Attach extends Object {
      * @param freeFn The function used to free the data when the create #ICalAttach is destroyed
      * @returns The newly created #ICalAttach
      */
-    static newFromData(data: string | null, freeFn: GLib.Func | null): Attach
+    static newFromData(data: string, freeFn: GLib.Func | null): Attach
     /**
      * Creates a new #ICalAttach from the url.
      * @constructor 
      * @param url The url from which the object is created
      * @returns The newly created #ICalAttach from the @url
      */
-    static newFromUrl(url: string | null): Attach
+    static newFromUrl(url: string): Attach
     _init(config?: Attach.ConstructorProperties): void
 }
 
@@ -1302,7 +1302,7 @@ export interface Component {
      * Gets the comment of the #ICalComponent.
      * @returns The comment of @comp.
      */
-    getComment(): string | null
+    getComment(): string
     /**
      * Gets the current #ICalComponent in #ICalComponent.
      * @returns The current #ICalComponent.
@@ -1317,7 +1317,7 @@ export interface Component {
      * Gets the description of the #ICalComponent.
      * @returns The description of @comp.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the dtend of the #ICalComponent.
      * @returns A #ICalTime.
@@ -1369,7 +1369,7 @@ export interface Component {
      * Gets the location of the #ICalComponent.
      * @returns The location of @comp.
      */
-    getLocation(): string | null
+    getLocation(): string
     /**
      * Gets the method of the #ICalComponent.
      * @returns A #ICalPropertyMethod.
@@ -1401,7 +1401,7 @@ export interface Component {
      * Gets the relcalid of the #ICalComponent.
      * @returns The relcalid of @comp.
      */
-    getRelcalid(): string | null
+    getRelcalid(): string
     /**
      * Gets the sequence of the #ICalComponent.
      * @returns The sequence of @comp.
@@ -1421,18 +1421,18 @@ export interface Component {
      * Gets the summary of the #ICalComponent.
      * @returns The summary of @comp.
      */
-    getSummary(): string | null
+    getSummary(): string
     /**
      * Returns the icaltimezone in the component corresponding to the TZID, or NULL if it can't be found.
      * @param tzid A string representing timezone
      * @returns A #ICalTimezone.
      */
-    getTimezone(tzid: string | null): Timezone | null
+    getTimezone(tzid: string): Timezone | null
     /**
      * Gets the uid of the #ICalComponent.
      * @returns The uid of @comp.
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Checks whether #ICalComponent is valid.
      * @returns 1 if yes, 0 if not.
@@ -1469,12 +1469,12 @@ export interface Component {
      * Sets the comment of the #ICalComponent.
      * @param v A string representing comment
      */
-    setComment(v: string | null): void
+    setComment(v: string): void
     /**
      * Sets the description of the #ICalComponent.
      * @param v A string representing description
      */
-    setDescription(v: string | null): void
+    setDescription(v: string): void
     /**
      * Sets the dtend of the #ICalComponent.
      * @param v A #ICalTime
@@ -1504,7 +1504,7 @@ export interface Component {
      * Sets the location of the #ICalComponent.
      * @param v A string representing location
      */
-    setLocation(v: string | null): void
+    setLocation(v: string): void
     /**
      * Sets the method of the #ICalComponent.
      * @param method A #ICalPropertyMethod
@@ -1524,7 +1524,7 @@ export interface Component {
      * Sets the relcalid of the #ICalComponent.
      * @param v A string representing relcalid
      */
-    setRelcalid(v: string | null): void
+    setRelcalid(v: string): void
     /**
      * Sets the sequence of the #ICalComponent.
      * @param v The sequence number
@@ -1539,12 +1539,12 @@ export interface Component {
      * Sets the summary of the #ICalComponent.
      * @param v A string representing summary
      */
-    setSummary(v: string | null): void
+    setSummary(v: string): void
     /**
      * Sets the uid of the #ICalComponent.
      * @param v A string representing uid
      */
-    setUid(v: string | null): void
+    setUid(v: string): void
     /**
      * Removes all X-LIC-ERROR properties.
      */
@@ -1623,7 +1623,7 @@ export class Component extends Object {
      * @param str The string used to create #ICalComponent
      * @returns The newly created #ICalComponent based on @str.
      */
-    static newFromString(str: string | null): Component
+    static newFromString(str: string): Component
     /**
      * Creates a #ICalComponent with the type to be vagenda.
      * @constructor 
@@ -1702,7 +1702,7 @@ export class Component extends Object {
      * @param xName The name of x property
      * @returns The newly created #ICalComponent.
      */
-    static newX(xName: string | null): Component
+    static newX(xName: string): Component
     /**
      * Creates a #ICalComponent with the type to be xavailable.
      * @constructor 
@@ -1733,7 +1733,7 @@ export class Component extends Object {
      * @param string A string
      * @returns A #ICalComponentKind
      */
-    static kindFromString(string: string | null): ComponentKind
+    static kindFromString(string: string): ComponentKind
     /**
      * Checks if a #ICalComponentKind is valid.
      * @param kind A #ICalComponentKind
@@ -1745,7 +1745,7 @@ export class Component extends Object {
      * @param kind A #ICalComponentKind
      * @returns The string representation of @kind.
      */
-    static kindToString(kind: ComponentKind): string | null
+    static kindToString(kind: ComponentKind): string
 }
 
 export module Datetimeperiod {
@@ -2024,7 +2024,7 @@ export class Duration extends Object {
      * @param str The string representation of the duration
      * @returns The newly created #ICalDuration
      */
-    static newFromString(str: string | null): Duration
+    static newFromString(str: string): Duration
     /**
      * Creates a #ICalDuration with all the fields to be zero.
      * @constructor 
@@ -2456,42 +2456,42 @@ export interface Parameter {
      */
     isaParameter(): number
     setActionparam(v: ParameterAction): void
-    setAltrep(v: string | null): void
-    setCharset(v: string | null): void
-    setCn(v: string | null): void
+    setAltrep(v: string): void
+    setCharset(v: string): void
+    setCn(v: string): void
     setCutype(v: ParameterCutype): void
-    setDelegatedfrom(v: string | null): void
-    setDelegatedto(v: string | null): void
-    setDir(v: string | null): void
+    setDelegatedfrom(v: string): void
+    setDelegatedto(v: string): void
+    setDir(v: string): void
     setDisplay(value: ParameterDisplay): void
-    setEmail(value: string | null): void
+    setEmail(value: string): void
     setEnable(v: ParameterEnable): void
     setEncoding(v: ParameterEncoding): void
     setFbtype(v: ParameterFbtype): void
     setFeature(value: ParameterFeature): void
-    setFilename(v: string | null): void
-    setFmttype(v: string | null): void
-    setIana(v: string | null): void
+    setFilename(v: string): void
+    setFmttype(v: string): void
+    setIana(v: string): void
     /**
      * Sets the iana_name property of the native part of the #ICalParameter.
      * @param v The name to be set into the `param`
      */
-    setIanaName(v: string | null): void
+    setIanaName(v: string): void
     /**
      * Sets the iana_value property of the native part of the #ICalParameter.
      * @param v The value to be set into the `param`
      */
-    setIanaValue(v: string | null): void
-    setId(v: string | null): void
-    setLabel(value: string | null): void
-    setLanguage(v: string | null): void
-    setLatency(v: string | null): void
+    setIanaValue(v: string): void
+    setId(v: string): void
+    setLabel(value: string): void
+    setLanguage(v: string): void
+    setLatency(v: string): void
     setLocal(v: ParameterLocal): void
-    setLocalize(v: string | null): void
-    setManagedid(v: string | null): void
-    setMember(v: string | null): void
-    setModified(v: string | null): void
-    setOptions(v: string | null): void
+    setLocalize(v: string): void
+    setManagedid(v: string): void
+    setMember(v: string): void
+    setModified(v: string): void
+    setOptions(v: string): void
     /**
      * Sets the parent #ICalProperty of an #ICalParameter.
      * @param property The parent #ICalProperty
@@ -2499,9 +2499,9 @@ export interface Parameter {
     setParent(property: Property | null): void
     setPartstat(v: ParameterPartstat): void
     setPatchaction(value: ParameterPatchaction): void
-    setPubliccomment(v: string | null): void
+    setPubliccomment(v: string): void
     setRange(v: ParameterRange): void
-    setReason(v: string | null): void
+    setReason(v: string): void
     setRelated(v: ParameterRelated): void
     setReltype(v: ParameterReltype): void
     setRequired(v: ParameterRequired): void
@@ -2510,26 +2510,26 @@ export interface Parameter {
     setRsvp(v: ParameterRsvp): void
     setScheduleagent(v: ParameterScheduleagent): void
     setScheduleforcesend(v: ParameterScheduleforcesend): void
-    setSchedulestatus(v: string | null): void
-    setSentby(v: string | null): void
-    setSize(v: string | null): void
+    setSchedulestatus(v: string): void
+    setSentby(v: string): void
+    setSize(v: string): void
     setStayinformed(v: ParameterStayinformed): void
     setSubstate(v: ParameterSubstate): void
-    setTzid(v: string | null): void
+    setTzid(v: string): void
     setValue(v: ParameterValue): void
-    setX(v: string | null): void
+    setX(v: string): void
     setXliccomparetype(v: ParameterXliccomparetype): void
     setXlicerrortype(v: ParameterXlicerrortype): void
     /**
      * Sets the xname property of the native part of the #ICalParameter.
      * @param v The name to be set into the `param`
      */
-    setXname(v: string | null): void
+    setXname(v: string): void
     /**
      * Sets the xvalue property of the native part of the #ICalParameter.
      * @param v The value to be set into the `param`
      */
-    setXvalue(v: string | null): void
+    setXvalue(v: string): void
 
     // Class property signals of ICalGLib-3.0.ICalGLib.Parameter
 
@@ -2605,15 +2605,15 @@ export class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static newActionparam(v: ParameterAction): Parameter
-    static newAltrep(v: string | null): Parameter
-    static newCharset(v: string | null): Parameter
-    static newCn(v: string | null): Parameter
+    static newAltrep(v: string): Parameter
+    static newCharset(v: string): Parameter
+    static newCn(v: string): Parameter
     static newCutype(v: ParameterCutype): Parameter
-    static newDelegatedfrom(v: string | null): Parameter
-    static newDelegatedto(v: string | null): Parameter
-    static newDir(v: string | null): Parameter
+    static newDelegatedfrom(v: string): Parameter
+    static newDelegatedto(v: string): Parameter
+    static newDir(v: string): Parameter
     static newDisplay(value: ParameterDisplay): Parameter
-    static newEmail(value: string | null): Parameter
+    static newEmail(value: string): Parameter
     /**
      * Creates a new #ICalParameter according to the enable type.
      * @constructor 
@@ -2636,15 +2636,15 @@ export class Parameter extends Object {
      */
     static newFbtype(v: ParameterFbtype): Parameter
     static newFeature(value: ParameterFeature): Parameter
-    static newFilename(v: string | null): Parameter
-    static newFmttype(v: string | null): Parameter
+    static newFilename(v: string): Parameter
+    static newFmttype(v: string): Parameter
     /**
      * Creates a #ICalParameter from a string of form "PARAMNAME=VALUE".
      * @constructor 
      * @param value The string from which the #ICalParameter is created
      * @returns The newly created $ICalParameter with the properties specified in the @value.
      */
-    static newFromString(value: string | null): Parameter
+    static newFromString(value: string): Parameter
     /**
      * Creates a new #ICalParameter from just the value, the part after the "="
      * @constructor 
@@ -2652,12 +2652,12 @@ export class Parameter extends Object {
      * @param value The string from which #ICalParameter to be created
      * @returns The newly created #ICalParameter
      */
-    static newFromValueString(kind: ParameterKind, value: string | null): Parameter
-    static newIana(v: string | null): Parameter
-    static newId(v: string | null): Parameter
-    static newLabel(value: string | null): Parameter
-    static newLanguage(v: string | null): Parameter
-    static newLatency(v: string | null): Parameter
+    static newFromValueString(kind: ParameterKind, value: string): Parameter
+    static newIana(v: string): Parameter
+    static newId(v: string): Parameter
+    static newLabel(value: string): Parameter
+    static newLanguage(v: string): Parameter
+    static newLatency(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the local type.
      * @constructor 
@@ -2665,11 +2665,11 @@ export class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static newLocal(v: ParameterLocal): Parameter
-    static newLocalize(v: string | null): Parameter
-    static newManagedid(v: string | null): Parameter
-    static newMember(v: string | null): Parameter
-    static newModified(v: string | null): Parameter
-    static newOptions(v: string | null): Parameter
+    static newLocalize(v: string): Parameter
+    static newManagedid(v: string): Parameter
+    static newMember(v: string): Parameter
+    static newModified(v: string): Parameter
+    static newOptions(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the partstat type.
      * @constructor 
@@ -2678,7 +2678,7 @@ export class Parameter extends Object {
      */
     static newPartstat(v: ParameterPartstat): Parameter
     static newPatchaction(value: ParameterPatchaction): Parameter
-    static newPubliccomment(v: string | null): Parameter
+    static newPubliccomment(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the range type.
      * @constructor 
@@ -2686,7 +2686,7 @@ export class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static newRange(v: ParameterRange): Parameter
-    static newReason(v: string | null): Parameter
+    static newReason(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the related type.
      * @constructor 
@@ -2743,9 +2743,9 @@ export class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static newScheduleforcesend(v: ParameterScheduleforcesend): Parameter
-    static newSchedulestatus(v: string | null): Parameter
-    static newSentby(v: string | null): Parameter
-    static newSize(v: string | null): Parameter
+    static newSchedulestatus(v: string): Parameter
+    static newSentby(v: string): Parameter
+    static newSize(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the stayinformed type.
      * @constructor 
@@ -2760,7 +2760,7 @@ export class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static newSubstate(v: ParameterSubstate): Parameter
-    static newTzid(v: string | null): Parameter
+    static newTzid(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the value type.
      * @constructor 
@@ -2768,7 +2768,7 @@ export class Parameter extends Object {
      * @returns The newly created #ICalParameter.
      */
     static newValue(v: ParameterValue): Parameter
-    static newX(v: string | null): Parameter
+    static newX(v: string): Parameter
     /**
      * Creates a new #ICalParameter according to the xliccomparetype type.
      * @constructor 
@@ -2789,7 +2789,7 @@ export class Parameter extends Object {
      * @param string The string representation of the #ICalParameter
      * @returns The #ICalParameterKind converted from @string
      */
-    static kindFromString(string: string | null): ParameterKind
+    static kindFromString(string: string): ParameterKind
     /**
      * Checks whether #ICalParameterKind is valid.
      * @param kind The #ICalPropertyKind
@@ -2801,7 +2801,7 @@ export class Parameter extends Object {
      * @param kind The #ICalParameterKind to be converted
      * @returns The string representation of @kind.
      */
-    static kindToString(kind: ParameterKind): string | null
+    static kindToString(kind: ParameterKind): string
     /**
      * Converts the #ICalParameterValue to #ICalValueKind.
      * @param value A #ICalParameterValue
@@ -2935,7 +2935,7 @@ export class Parser extends Object {
      * @param str The string to be parsed
      * @returns The #ICalComponent parsed from str.
      */
-    static parseString(str: string | null): Component
+    static parseString(str: string): Component
 }
 
 export module Period {
@@ -3060,7 +3060,7 @@ export class Period extends Object {
      * @param str The string used to create the #ICalPeriod
      * @returns The newly created #ICalPeriod
      */
-    static newFromString(str: string | null): Period
+    static newFromString(str: string): Period
     /**
      * Creates a default #ICalPeriod.
      * @constructor 
@@ -3112,7 +3112,7 @@ export interface Property {
      * Gets the acceptresponse of #ICalProperty.
      * @returns Get the acceptresponse of #ICalProperty.
      */
-    getAcceptresponse(): string | null
+    getAcceptresponse(): string
     /**
      * Gets the acknowledged time of #ICalProperty.
      * @returns Get the acknowledged time of #ICalProperty.
@@ -3127,7 +3127,7 @@ export interface Property {
      * Gets the allowconflict of #ICalProperty.
      * @returns Get the allowconflict of #ICalProperty.
      */
-    getAllowconflict(): string | null
+    getAllowconflict(): string
     /**
      * Gets the attach of #ICalProperty.
      * @returns Get the attach of #ICalProperty.
@@ -3137,7 +3137,7 @@ export interface Property {
      * Gets the attendee of #ICalProperty.
      * @returns Get the attendee of #ICalProperty.
      */
-    getAttendee(): string | null
+    getAttendee(): string
     /**
      * Gets the busytype of #ICalProperty.
      * @returns Get the busytype of #ICalProperty.
@@ -3147,27 +3147,27 @@ export interface Property {
      * Gets the calid of #ICalProperty.
      * @returns Get the calid of #ICalProperty.
      */
-    getCalid(): string | null
+    getCalid(): string
     /**
      * Gets the calmaster of #ICalProperty.
      * @returns Get the calmaster of #ICalProperty.
      */
-    getCalmaster(): string | null
+    getCalmaster(): string
     /**
      * Gets the calscale of #ICalProperty.
      * @returns Get the calscale of #ICalProperty.
      */
-    getCalscale(): string | null
+    getCalscale(): string
     /**
      * Gets the capversion of #ICalProperty.
      * @returns Get the capversion of #ICalProperty.
      */
-    getCapversion(): string | null
+    getCapversion(): string
     /**
      * Gets the carid of #ICalProperty.
      * @returns Get the carid of #ICalProperty.
      */
-    getCarid(): string | null
+    getCarid(): string
     /**
      * Gets the carlevel of #ICalProperty.
      * @returns Get the carlevel of #ICalProperty.
@@ -3177,7 +3177,7 @@ export interface Property {
      * Gets the categories of #ICalProperty.
      * @returns Get the categories of #ICalProperty.
      */
-    getCategories(): string | null
+    getCategories(): string
     /**
      * Gets the class of #ICalProperty.
      * @returns Get the class of #ICalProperty.
@@ -3192,12 +3192,12 @@ export interface Property {
      * Gets the color property of the `prop`.
      * @returns Get the color property.
      */
-    getColor(): string | null
+    getColor(): string
     /**
      * Gets the comment of #ICalProperty.
      * @returns Get the comment of #ICalProperty.
      */
-    getComment(): string | null
+    getComment(): string
     /**
      * Gets the completed time of #ICalProperty.
      * @returns Get the completed time of #ICalProperty.
@@ -3207,12 +3207,12 @@ export interface Property {
      * Gets the components of #ICalProperty.
      * @returns Get the components of #ICalProperty.
      */
-    getComponents(): string | null
+    getComponents(): string
     /**
      * Gets the contact of #ICalProperty.
      * @returns Get the contact of #ICalProperty.
      */
-    getContact(): string | null
+    getContact(): string
     /**
      * Gets the created time of #ICalProperty.
      * @returns Get the created time of #ICalProperty.
@@ -3222,7 +3222,7 @@ export interface Property {
      * Gets the csid of #ICalProperty.
      * @returns Get the csid of #ICalProperty.
      */
-    getCsid(): string | null
+    getCsid(): string
     /**
      * Gets the datemax time of #ICalProperty.
      * @returns Get the datemax time of #ICalProperty.
@@ -3248,37 +3248,37 @@ export interface Property {
      * Gets the decreed of #ICalProperty.
      * @returns Get the decreed of #ICalProperty.
      */
-    getDecreed(): string | null
+    getDecreed(): string
     /**
      * Gets the defaultcharset of #ICalProperty.
      * @returns Get the defaultcharset of #ICalProperty.
      */
-    getDefaultcharset(): string | null
+    getDefaultcharset(): string
     /**
      * Gets the defaultlocale of #ICalProperty.
      * @returns Get the defaultlocale of #ICalProperty.
      */
-    getDefaultlocale(): string | null
+    getDefaultlocale(): string
     /**
      * Gets the defaulttzid of #ICalProperty.
      * @returns Get the defaulttzid of #ICalProperty.
      */
-    getDefaulttzid(): string | null
+    getDefaulttzid(): string
     /**
      * Gets the defaultvcars of #ICalProperty.
      * @returns Get the defaultvcars of #ICalProperty.
      */
-    getDefaultvcars(): string | null
+    getDefaultvcars(): string
     /**
      * Gets the deny of #ICalProperty.
      * @returns Get the deny of #ICalProperty.
      */
-    getDeny(): string | null
+    getDeny(): string
     /**
      * Gets the description of #ICalProperty.
      * @returns Get the description of #ICalProperty.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the dtend time of #ICalProperty.
      * @returns Get the dtend time of #ICalProperty.
@@ -3344,12 +3344,12 @@ export interface Property {
      * Gets the grant of #ICalProperty.
      * @returns Get the grant of #ICalProperty.
      */
-    getGrant(): string | null
+    getGrant(): string
     /**
      * Gets the itipversion of #ICalProperty.
      * @returns Get the itipversion of #ICalProperty.
      */
-    getItipversion(): string | null
+    getItipversion(): string
     /**
      * Gets the lastmodified time of #ICalProperty.
      * @returns Get the lastmodified time of #ICalProperty.
@@ -3359,7 +3359,7 @@ export interface Property {
      * Gets the location of #ICalProperty.
      * @returns Get the location of #ICalProperty.
      */
-    getLocation(): string | null
+    getLocation(): string
     /**
      * Gets the maxcomponentsize of #ICalProperty.
      * @returns Get the maxcomponentsize of #ICalProperty.
@@ -3394,12 +3394,12 @@ export interface Property {
      * Gets the multipart of #ICalProperty.
      * @returns Get the multipart of #ICalProperty.
      */
-    getMultipart(): string | null
+    getMultipart(): string
     /**
      * Gets the name of #ICalProperty.
      * @returns Get the name of #ICalProperty.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the next #ICalParameter from the parent #ICalProperty.
      * @param kind The target kind of #ICalParameter to be retrieved
@@ -3410,18 +3410,18 @@ export interface Property {
      * Gets the organizer of #ICalProperty.
      * @returns Get the organizer of #ICalProperty.
      */
-    getOrganizer(): string | null
+    getOrganizer(): string
     /**
      * Gets the owner of #ICalProperty.
      * @returns Get the owner of #ICalProperty.
      */
-    getOwner(): string | null
+    getOwner(): string
     /**
      * Gets the string representation of the target parameter in the #ICalProperty.
      * @param name The name of the target parameter
      * @returns The string representation of the parameter.
      */
-    getParameterAsString(name: string | null): string | null
+    getParameterAsString(name: string): string | null
     /**
      * Gets the parent component of the property. Use with caution. When icalproperty is deallocated, it won't
      * deallocate its parent. However the #ICalComponent object created using this method will be deallocated
@@ -3439,7 +3439,7 @@ export interface Property {
      * Gets the permission of #ICalProperty.
      * @returns Get the permission of #ICalProperty.
      */
-    getPermission(): string | null
+    getPermission(): string
     /**
      * Gets the pollcompletion of #ICalProperty.
      * @returns Get the pollcompletion of #ICalProperty.
@@ -3459,7 +3459,7 @@ export interface Property {
      * Gets the pollproperties of #ICalProperty.
      * @returns Get the pollproperties of #ICalProperty.
      */
-    getPollproperties(): string | null
+    getPollproperties(): string
     /**
      * Gets the pollwinner of #ICalProperty.
      * @returns Get the pollwinner of #ICalProperty.
@@ -3474,7 +3474,7 @@ export interface Property {
      * Gets the prodid of #ICalProperty.
      * @returns Get the prodid of #ICalProperty.
      */
-    getProdid(): string | null
+    getProdid(): string
     /**
      * Gets the property name of #ICalProperty.
      * @returns Property name of #ICalProperty.
@@ -3484,12 +3484,12 @@ export interface Property {
      * Gets the query of #ICalProperty.
      * @returns Get the query of #ICalProperty.
      */
-    getQuery(): string | null
+    getQuery(): string
     /**
      * Gets the queryid of #ICalProperty.
      * @returns Get the queryid of #ICalProperty.
      */
-    getQueryid(): string | null
+    getQueryid(): string
     /**
      * Gets the querylevel of #ICalProperty.
      * @returns Get the querylevel of #ICalProperty.
@@ -3499,7 +3499,7 @@ export interface Property {
      * Gets the queryname of #ICalProperty.
      * @returns Get the queryname of #ICalProperty.
      */
-    getQueryname(): string | null
+    getQueryname(): string
     /**
      * Gets the rdate  of #ICalProperty.
      * @returns Get the rdate  of #ICalProperty.
@@ -3509,17 +3509,17 @@ export interface Property {
      * Gets the recuraccepted of #ICalProperty.
      * @returns Get the recuraccepted of #ICalProperty.
      */
-    getRecuraccepted(): string | null
+    getRecuraccepted(): string
     /**
      * Gets the recurexpand of #ICalProperty.
      * @returns Get the recurexpand of #ICalProperty.
      */
-    getRecurexpand(): string | null
+    getRecurexpand(): string
     /**
      * Gets the recurlimit of #ICalProperty.
      * @returns Get the recurlimit of #ICalProperty.
      */
-    getRecurlimit(): string | null
+    getRecurlimit(): string
     /**
      * Gets the recurrenceid time of #ICalProperty.
      * @returns Get the recurrenceid time of #ICalProperty.
@@ -3529,12 +3529,12 @@ export interface Property {
      * Gets the relatedto of #ICalProperty.
      * @returns Get the relatedto of #ICalProperty.
      */
-    getRelatedto(): string | null
+    getRelatedto(): string
     /**
      * Gets the relcalid of #ICalProperty.
      * @returns Get the relcalid of #ICalProperty.
      */
-    getRelcalid(): string | null
+    getRelcalid(): string
     /**
      * Gets the repeat of #ICalProperty.
      * @returns Get the repeat of #ICalProperty.
@@ -3544,7 +3544,7 @@ export interface Property {
      * Gets the replyurl of #ICalProperty.
      * @returns Get the replyurl of #ICalProperty.
      */
-    getReplyurl(): string | null
+    getReplyurl(): string
     /**
      * Gets the requeststatus of #ICalProperty.
      * @returns Get the requeststatus of #ICalProperty.
@@ -3554,7 +3554,7 @@ export interface Property {
      * Gets the resources of #ICalProperty.
      * @returns Get the resources of #ICalProperty.
      */
-    getResources(): string | null
+    getResources(): string
     /**
      * Gets the response of #ICalProperty.
      * @returns Get the response of #ICalProperty.
@@ -3564,7 +3564,7 @@ export interface Property {
      * Gets the restriction of #ICalProperty.
      * @returns Get the restriction of #ICalProperty.
      */
-    getRestriction(): string | null
+    getRestriction(): string
     /**
      * Gets the rrule recurrence type of #ICalProperty.
      * @returns Get the rrule recurrence type of #ICalProperty.
@@ -3574,7 +3574,7 @@ export interface Property {
      * Gets the scope of #ICalProperty.
      * @returns Get the scope of #ICalProperty.
      */
-    getScope(): string | null
+    getScope(): string
     /**
      * Gets the sequence of #ICalProperty.
      * @returns Get the sequence of #ICalProperty.
@@ -3589,17 +3589,17 @@ export interface Property {
      * Gets the storesexpanded of #ICalProperty.
      * @returns Get the storesexpanded of #ICalProperty.
      */
-    getStoresexpanded(): string | null
+    getStoresexpanded(): string
     /**
      * Gets the summary of #ICalProperty.
      * @returns Get the summary of #ICalProperty.
      */
-    getSummary(): string | null
+    getSummary(): string
     /**
      * Gets the target of #ICalProperty.
      * @returns Get the target of #ICalProperty.
      */
-    getTarget(): string | null
+    getTarget(): string
     /**
      * Gets the taskmode of #ICalProperty.
      * @returns Get the taskmode of #ICalProperty.
@@ -3619,17 +3619,17 @@ export interface Property {
      * Gets the tzid of #ICalProperty.
      * @returns Get the tzid of #ICalProperty.
      */
-    getTzid(): string | null
+    getTzid(): string
     /**
      * Gets the tzidaliasof of #ICalProperty.
      * @returns Get the tzidaliasof of #ICalProperty.
      */
-    getTzidaliasof(): string | null
+    getTzidaliasof(): string
     /**
      * Gets the tzname of #ICalProperty.
      * @returns Get the tzname of #ICalProperty.
      */
-    getTzname(): string | null
+    getTzname(): string
     /**
      * Gets the tzoffsetfrom of #ICalProperty.
      * @returns Get the tzoffsetfrom of #ICalProperty.
@@ -3649,17 +3649,17 @@ export interface Property {
      * Gets the tzurl of #ICalProperty.
      * @returns Get the tzurl of #ICalProperty.
      */
-    getTzurl(): string | null
+    getTzurl(): string
     /**
      * Gets the uid of #ICalProperty.
      * @returns Get the uid of #ICalProperty.
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Gets the url of #ICalProperty.
      * @returns Get the url of #ICalProperty.
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * Gets the #ICalValue of #ICalProperty.
      * @returns The #ICalValue of @prop.
@@ -3674,17 +3674,17 @@ export interface Property {
      * Gets the version of #ICalProperty.
      * @returns Get the version of #ICalProperty.
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Gets the voter of #ICalProperty.
      * @returns Get the voter of #ICalProperty.
      */
-    getVoter(): string | null
+    getVoter(): string
     /**
      * Gets the x of #ICalProperty.
      * @returns Get the x of #ICalProperty.
      */
-    getX(): string | null
+    getX(): string
     /**
      * Gets the name of x property.
      * @returns The name of x property.
@@ -3699,42 +3699,42 @@ export interface Property {
      * Gets the xlicclustercount of #ICalProperty.
      * @returns Get the xlicclustercount of #ICalProperty.
      */
-    getXlicclustercount(): string | null
+    getXlicclustercount(): string
     /**
      * Gets the xlicerror of #ICalProperty.
      * @returns Get the xlicerror of #ICalProperty.
      */
-    getXlicerror(): string | null
+    getXlicerror(): string
     /**
      * Gets the xlicmimecharset of #ICalProperty.
      * @returns Get the xlicmimecharset of #ICalProperty.
      */
-    getXlicmimecharset(): string | null
+    getXlicmimecharset(): string
     /**
      * Gets the xlicmimecid of #ICalProperty.
      * @returns Get the xlicmimecid of #ICalProperty.
      */
-    getXlicmimecid(): string | null
+    getXlicmimecid(): string
     /**
      * Gets the xlicmimecontenttype of #ICalProperty.
      * @returns Get the xlicmimecontenttype of #ICalProperty.
      */
-    getXlicmimecontenttype(): string | null
+    getXlicmimecontenttype(): string
     /**
      * Gets the xlicmimeencoding of #ICalProperty.
      * @returns Get the xlicmimeencoding of #ICalProperty.
      */
-    getXlicmimeencoding(): string | null
+    getXlicmimeencoding(): string
     /**
      * Gets the xlicmimefilename of #ICalProperty.
      * @returns Get the xlicmimefilename of #ICalProperty.
      */
-    getXlicmimefilename(): string | null
+    getXlicmimefilename(): string
     /**
      * Gets the xlicmimeoptinfo of #ICalProperty.
      * @returns Get the xlicmimeoptinfo of #ICalProperty.
      */
-    getXlicmimeoptinfo(): string | null
+    getXlicmimeoptinfo(): string
     /**
      * Gets the kind of #ICalProperty.
      * @returns The type of #ICalProperty.
@@ -3754,7 +3754,7 @@ export interface Property {
      * Removes parameter in the #ICalProperty by name.
      * @param name The name of the parameter to be removed
      */
-    removeParameterByName(name: string | null): void
+    removeParameterByName(name: string): void
     /**
      * Removes the parameter in the #ICalProperty by ref.
      * @param param The #ICalParameter to be removed
@@ -3764,7 +3764,7 @@ export interface Property {
      * Sets the acceptresponse for the #ICalProperty.
      * @param v The acceptresponse
      */
-    setAcceptresponse(v: string | null): void
+    setAcceptresponse(v: string): void
     /**
      * Sets the acknowledged time for the #ICalProperty.
      * @param v The acknowledgement time
@@ -3779,7 +3779,7 @@ export interface Property {
      * Sets the allowconflict for the #ICalProperty.
      * @param v The allowconflict
      */
-    setAllowconflict(v: string | null): void
+    setAllowconflict(v: string): void
     /**
      * Sets the attach for the #ICalProperty.
      * @param v The attach
@@ -3789,7 +3789,7 @@ export interface Property {
      * Sets the attendee for the #ICalProperty.
      * @param v The attendee
      */
-    setAttendee(v: string | null): void
+    setAttendee(v: string): void
     /**
      * Sets the busytype for the #ICalProperty.
      * @param v The busytype
@@ -3799,27 +3799,27 @@ export interface Property {
      * Sets the calid for the #ICalProperty.
      * @param v The calid
      */
-    setCalid(v: string | null): void
+    setCalid(v: string): void
     /**
      * Sets the calmaster for the #ICalProperty.
      * @param v The calmaster
      */
-    setCalmaster(v: string | null): void
+    setCalmaster(v: string): void
     /**
      * Sets the calscale for the #ICalProperty.
      * @param v The calscale
      */
-    setCalscale(v: string | null): void
+    setCalscale(v: string): void
     /**
      * Sets the capversion for the #ICalProperty.
      * @param v The capversion
      */
-    setCapversion(v: string | null): void
+    setCapversion(v: string): void
     /**
      * Sets the carid for the #ICalProperty.
      * @param v The carid
      */
-    setCarid(v: string | null): void
+    setCarid(v: string): void
     /**
      * Sets the carlevel for the #ICalProperty.
      * @param v The carlevel
@@ -3829,7 +3829,7 @@ export interface Property {
      * Sets the categories for the #ICalProperty.
      * @param v The categories
      */
-    setCategories(v: string | null): void
+    setCategories(v: string): void
     /**
      * Sets the class for the #ICalProperty.
      * @param v The class
@@ -3844,12 +3844,12 @@ export interface Property {
      * Sets the color for the `prop`.
      * @param v The color
      */
-    setColor(v: string | null): void
+    setColor(v: string): void
     /**
      * Sets the comment for the #ICalProperty.
      * @param v The comment
      */
-    setComment(v: string | null): void
+    setComment(v: string): void
     /**
      * Sets the completed time for the #ICalProperty.
      * @param v The completed time
@@ -3859,12 +3859,12 @@ export interface Property {
      * Sets the components for the #ICalProperty.
      * @param v The components
      */
-    setComponents(v: string | null): void
+    setComponents(v: string): void
     /**
      * Sets the contact for the #ICalProperty.
      * @param v The contact
      */
-    setContact(v: string | null): void
+    setContact(v: string): void
     /**
      * Sets the created time for the #ICalProperty.
      * @param v The created time
@@ -3874,7 +3874,7 @@ export interface Property {
      * Sets the csid for the #ICalProperty.
      * @param v The csid
      */
-    setCsid(v: string | null): void
+    setCsid(v: string): void
     /**
      * Sets the datemax time for the #ICalProperty.
      * @param v The datemax time
@@ -3889,37 +3889,37 @@ export interface Property {
      * Sets the decreed for the #ICalProperty.
      * @param v The decreed
      */
-    setDecreed(v: string | null): void
+    setDecreed(v: string): void
     /**
      * Sets the defaultcharset for the #ICalProperty.
      * @param v The defaultcharset
      */
-    setDefaultcharset(v: string | null): void
+    setDefaultcharset(v: string): void
     /**
      * Sets the defaultlocale for the #ICalProperty.
      * @param v The defaultlocale
      */
-    setDefaultlocale(v: string | null): void
+    setDefaultlocale(v: string): void
     /**
      * Sets the defaulttzid for the #ICalProperty.
      * @param v The defaulttzid
      */
-    setDefaulttzid(v: string | null): void
+    setDefaulttzid(v: string): void
     /**
      * Sets the defaultvcars for the #ICalProperty.
      * @param v The defaultvcars
      */
-    setDefaultvcars(v: string | null): void
+    setDefaultvcars(v: string): void
     /**
      * Sets the deny for the #ICalProperty.
      * @param v The deny
      */
-    setDeny(v: string | null): void
+    setDeny(v: string): void
     /**
      * Sets the description for the #ICalProperty.
      * @param v The description
      */
-    setDescription(v: string | null): void
+    setDescription(v: string): void
     /**
      * Sets the dtend time for the #ICalProperty.
      * @param v The dtend time
@@ -3979,12 +3979,12 @@ export interface Property {
      * Sets the grant for the #ICalProperty.
      * @param v The grant
      */
-    setGrant(v: string | null): void
+    setGrant(v: string): void
     /**
      * Sets the itipversion for the #ICalProperty.
      * @param v The itipversion
      */
-    setItipversion(v: string | null): void
+    setItipversion(v: string): void
     /**
      * Sets the lastmodified time for the #ICalProperty.
      * @param v The lastmodified time
@@ -3994,7 +3994,7 @@ export interface Property {
      * Sets the location for the #ICalProperty.
      * @param v The location
      */
-    setLocation(v: string | null): void
+    setLocation(v: string): void
     /**
      * Sets the maxcomponentsize for the #ICalProperty.
      * @param v The maxcomponentsize
@@ -4029,22 +4029,22 @@ export interface Property {
      * Sets the multipart for the #ICalProperty.
      * @param v The multipart
      */
-    setMultipart(v: string | null): void
+    setMultipart(v: string): void
     /**
      * Sets the name for the #ICalProperty.
      * @param v The name
      */
-    setName(v: string | null): void
+    setName(v: string): void
     /**
      * Sets the organizer for the #ICalProperty.
      * @param v The organizer
      */
-    setOrganizer(v: string | null): void
+    setOrganizer(v: string): void
     /**
      * Sets the owner for the #ICalProperty.
      * @param v The owner
      */
-    setOwner(v: string | null): void
+    setOwner(v: string): void
 
     // Overloads of setOwner
 
@@ -4065,7 +4065,7 @@ export interface Property {
      * @param name The name of the parameter
      * @param value The value of the parameter
      */
-    setParameterFromString(name: string | null, value: string | null): void
+    setParameterFromString(name: string, value: string): void
     /**
      * Sets the parent #ICalComponent of the specified #ICalProperty.
      * @param component An #ICalComponent
@@ -4080,7 +4080,7 @@ export interface Property {
      * Sets the permission for the #ICalProperty.
      * @param v The permission
      */
-    setPermission(v: string | null): void
+    setPermission(v: string): void
     /**
      * Sets the pollcompletion for the #ICalProperty.
      * @param v The pollcompletion
@@ -4100,7 +4100,7 @@ export interface Property {
      * Sets the pollproperties for the #ICalProperty.
      * @param v The pollproperties
      */
-    setPollproperties(v: string | null): void
+    setPollproperties(v: string): void
     /**
      * Sets the pollwinner for the #ICalProperty.
      * @param v The pollwinner
@@ -4115,17 +4115,17 @@ export interface Property {
      * Sets the prodid for the #ICalProperty.
      * @param v The prodid
      */
-    setProdid(v: string | null): void
+    setProdid(v: string): void
     /**
      * Sets the query for the #ICalProperty.
      * @param v The query
      */
-    setQuery(v: string | null): void
+    setQuery(v: string): void
     /**
      * Sets the queryid for the #ICalProperty.
      * @param v The queryid
      */
-    setQueryid(v: string | null): void
+    setQueryid(v: string): void
     /**
      * Sets the querylevel for the #ICalProperty.
      * @param v The querylevel
@@ -4135,7 +4135,7 @@ export interface Property {
      * Sets the queryname for the #ICalProperty.
      * @param v The queryname
      */
-    setQueryname(v: string | null): void
+    setQueryname(v: string): void
     /**
      * Sets the rdate for the #ICalProperty.
      * @param v The rdate
@@ -4145,17 +4145,17 @@ export interface Property {
      * Sets the recuraccepted for the #ICalProperty.
      * @param v The recuraccepted
      */
-    setRecuraccepted(v: string | null): void
+    setRecuraccepted(v: string): void
     /**
      * Sets the recurexpand for the #ICalProperty.
      * @param v The recurexpand
      */
-    setRecurexpand(v: string | null): void
+    setRecurexpand(v: string): void
     /**
      * Sets the recurlimit for the #ICalProperty.
      * @param v The recurlimit
      */
-    setRecurlimit(v: string | null): void
+    setRecurlimit(v: string): void
     /**
      * Sets the recurrenceid time for the #ICalProperty.
      * @param v The recurrenceid time
@@ -4165,12 +4165,12 @@ export interface Property {
      * Sets the relatedto for the #ICalProperty.
      * @param v The relatedto
      */
-    setRelatedto(v: string | null): void
+    setRelatedto(v: string): void
     /**
      * Sets the relcalid for the #ICalProperty.
      * @param v The relcalid
      */
-    setRelcalid(v: string | null): void
+    setRelcalid(v: string): void
     /**
      * Sets the repeat for the #ICalProperty.
      * @param v The repeat
@@ -4180,7 +4180,7 @@ export interface Property {
      * Sets the replyurl for the #ICalProperty.
      * @param v The replyurl
      */
-    setReplyurl(v: string | null): void
+    setReplyurl(v: string): void
     /**
      * Sets the requeststatus for the #ICalProperty.
      * @param v The requeststatus
@@ -4190,7 +4190,7 @@ export interface Property {
      * Sets the resources for the #ICalProperty.
      * @param v The resources
      */
-    setResources(v: string | null): void
+    setResources(v: string): void
     /**
      * Sets the response for the #ICalProperty.
      * @param v The response
@@ -4200,7 +4200,7 @@ export interface Property {
      * Sets the restriction for the #ICalProperty.
      * @param v The restriction
      */
-    setRestriction(v: string | null): void
+    setRestriction(v: string): void
     /**
      * Sets the rrule for the #ICalProperty.
      * @param v The rrule recurrence type
@@ -4210,7 +4210,7 @@ export interface Property {
      * Sets the scope for the #ICalProperty.
      * @param v The scope
      */
-    setScope(v: string | null): void
+    setScope(v: string): void
     /**
      * Sets the sequence for the #ICalProperty.
      * @param v The sequence
@@ -4225,17 +4225,17 @@ export interface Property {
      * Sets the storesexpanded for the #ICalProperty.
      * @param v The storesexpanded
      */
-    setStoresexpanded(v: string | null): void
+    setStoresexpanded(v: string): void
     /**
      * Sets the summary for the #ICalProperty.
      * @param v The summary
      */
-    setSummary(v: string | null): void
+    setSummary(v: string): void
     /**
      * Sets the target for the #ICalProperty.
      * @param v The target
      */
-    setTarget(v: string | null): void
+    setTarget(v: string): void
     /**
      * Sets the taskmode for the #ICalProperty.
      * @param v The taskmode
@@ -4255,17 +4255,17 @@ export interface Property {
      * Sets the tzid for the #ICalProperty.
      * @param v The tzid
      */
-    setTzid(v: string | null): void
+    setTzid(v: string): void
     /**
      * Sets the tzidaliasof for the #ICalProperty.
      * @param v The tzidaliasof
      */
-    setTzidaliasof(v: string | null): void
+    setTzidaliasof(v: string): void
     /**
      * Sets the tzname for the #ICalProperty.
      * @param v The tzname
      */
-    setTzname(v: string | null): void
+    setTzname(v: string): void
     /**
      * Sets the tzoffsetfrom for the #ICalProperty.
      * @param v The tzoffsetfrom
@@ -4285,17 +4285,17 @@ export interface Property {
      * Sets the tzurl for the #ICalProperty.
      * @param v The tzurl
      */
-    setTzurl(v: string | null): void
+    setTzurl(v: string): void
     /**
      * Sets the uid for the #ICalProperty.
      * @param v The uid
      */
-    setUid(v: string | null): void
+    setUid(v: string): void
     /**
      * Sets the url for the #ICalProperty.
      * @param v The url
      */
-    setUrl(v: string | null): void
+    setUrl(v: string): void
     /**
      * Sets the #ICalProperty with the #ICalValue.
      * @param value The #ICalValue will be set as the property of `prop`
@@ -4306,27 +4306,27 @@ export interface Property {
      * @param value The value used to construct the #ICalValue
      * @param kind The kind used to construct the #ICalValue
      */
-    setValueFromString(value: string | null, kind: string | null): void
+    setValueFromString(value: string, kind: string): void
     /**
      * Sets the version for the #ICalProperty.
      * @param v The version
      */
-    setVersion(v: string | null): void
+    setVersion(v: string): void
     /**
      * Sets the voter for the #ICalProperty.
      * @param v The voter
      */
-    setVoter(v: string | null): void
+    setVoter(v: string): void
     /**
      * Sets the x for the #ICalProperty.
      * @param v The x
      */
-    setX(v: string | null): void
+    setX(v: string): void
     /**
      * Sets the name of x property for the #ICalProperty.
      * @param name The name string
      */
-    setXName(name: string | null): void
+    setXName(name: string): void
     /**
      * Sets the xlicclass for the #ICalProperty.
      * @param v The xlicclass
@@ -4336,42 +4336,42 @@ export interface Property {
      * Sets the xlicclustercount for the #ICalProperty.
      * @param v The xlicclustercount
      */
-    setXlicclustercount(v: string | null): void
+    setXlicclustercount(v: string): void
     /**
      * Sets the xlicerror for the #ICalProperty.
      * @param v The xlicerror
      */
-    setXlicerror(v: string | null): void
+    setXlicerror(v: string): void
     /**
      * Sets the xlicmimecharset for the #ICalProperty.
      * @param v The xlicmimecharset
      */
-    setXlicmimecharset(v: string | null): void
+    setXlicmimecharset(v: string): void
     /**
      * Sets the xlicmimecid for the #ICalProperty.
      * @param v The xlicmimecid
      */
-    setXlicmimecid(v: string | null): void
+    setXlicmimecid(v: string): void
     /**
      * Sets the xlicmimecontenttype for the #ICalProperty.
      * @param v The xlicmimecontenttype
      */
-    setXlicmimecontenttype(v: string | null): void
+    setXlicmimecontenttype(v: string): void
     /**
      * Sets the xlicmimeencoding for the #ICalProperty.
      * @param v The xlicmimeencoding
      */
-    setXlicmimeencoding(v: string | null): void
+    setXlicmimeencoding(v: string): void
     /**
      * Sets the xlicmimefilename for the #ICalProperty.
      * @param v The xlicmimefilename
      */
-    setXlicmimefilename(v: string | null): void
+    setXlicmimefilename(v: string): void
     /**
      * Sets the xlicmimeoptinfo for the #ICalProperty.
      * @param v The xlicmimeoptinfo
      */
-    setXlicmimeoptinfo(v: string | null): void
+    setXlicmimeoptinfo(v: string): void
 
     // Class property signals of ICalGLib-3.0.ICalGLib.Property
 
@@ -4446,7 +4446,7 @@ export class Property extends Object {
      * @param v The acceptresponse
      * @returns The newly created #ICalProperty
      */
-    static newAcceptresponse(v: string | null): Property
+    static newAcceptresponse(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4467,7 +4467,7 @@ export class Property extends Object {
      * @param v The allowconflict
      * @returns The newly created #ICalProperty
      */
-    static newAllowconflict(v: string | null): Property
+    static newAllowconflict(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4481,7 +4481,7 @@ export class Property extends Object {
      * @param v The attendee
      * @returns The newly created #ICalProperty
      */
-    static newAttendee(v: string | null): Property
+    static newAttendee(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4495,35 +4495,35 @@ export class Property extends Object {
      * @param v The calid
      * @returns The newly created #ICalProperty
      */
-    static newCalid(v: string | null): Property
+    static newCalid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The calmaster
      * @returns The newly created #ICalProperty
      */
-    static newCalmaster(v: string | null): Property
+    static newCalmaster(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The calscale
      * @returns The newly created #ICalProperty
      */
-    static newCalscale(v: string | null): Property
+    static newCalscale(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The capversion
      * @returns The newly created #ICalProperty
      */
-    static newCapversion(v: string | null): Property
+    static newCapversion(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The carid
      * @returns The newly created #ICalProperty
      */
-    static newCarid(v: string | null): Property
+    static newCarid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4537,7 +4537,7 @@ export class Property extends Object {
      * @param v The categories
      * @returns The newly created #ICalProperty
      */
-    static newCategories(v: string | null): Property
+    static newCategories(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4558,14 +4558,14 @@ export class Property extends Object {
      * @param v The color
      * @returns The newly created #ICalProperty
      */
-    static newColor(v: string | null): Property
+    static newColor(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The comment
      * @returns The newly created #ICalProperty
      */
-    static newComment(v: string | null): Property
+    static newComment(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4579,14 +4579,14 @@ export class Property extends Object {
      * @param v The components
      * @returns The newly created #ICalProperty
      */
-    static newComponents(v: string | null): Property
+    static newComponents(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The contact
      * @returns The newly created #ICalProperty
      */
-    static newContact(v: string | null): Property
+    static newContact(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4600,7 +4600,7 @@ export class Property extends Object {
      * @param v The csid
      * @returns The newly created #ICalProperty
      */
-    static newCsid(v: string | null): Property
+    static newCsid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4621,49 +4621,49 @@ export class Property extends Object {
      * @param v The decreed
      * @returns The newly created #ICalProperty
      */
-    static newDecreed(v: string | null): Property
+    static newDecreed(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaultcharset
      * @returns The newly created #ICalProperty
      */
-    static newDefaultcharset(v: string | null): Property
+    static newDefaultcharset(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaultlocale
      * @returns The newly created #ICalProperty
      */
-    static newDefaultlocale(v: string | null): Property
+    static newDefaultlocale(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaulttzid
      * @returns The newly created #ICalProperty
      */
-    static newDefaulttzid(v: string | null): Property
+    static newDefaulttzid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The defaultvcars
      * @returns The newly created #ICalProperty
      */
-    static newDefaultvcars(v: string | null): Property
+    static newDefaultvcars(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The deny
      * @returns The newly created #ICalProperty
      */
-    static newDeny(v: string | null): Property
+    static newDeny(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The description
      * @returns The newly created #ICalProperty
      */
-    static newDescription(v: string | null): Property
+    static newDescription(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4740,7 +4740,7 @@ export class Property extends Object {
      * @param str The string used to construct a #ICalProperty
      * @returns The newly created #ICalProperty from @str.
      */
-    static newFromString(str: string | null): Property
+    static newFromString(str: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4754,14 +4754,14 @@ export class Property extends Object {
      * @param v The grant
      * @returns The newly created #ICalProperty
      */
-    static newGrant(v: string | null): Property
+    static newGrant(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The itipversion
      * @returns The newly created #ICalProperty
      */
-    static newItipversion(v: string | null): Property
+    static newItipversion(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4775,7 +4775,7 @@ export class Property extends Object {
      * @param v The location
      * @returns The newly created #ICalProperty
      */
-    static newLocation(v: string | null): Property
+    static newLocation(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4824,28 +4824,28 @@ export class Property extends Object {
      * @param v The multipart
      * @returns The newly created #ICalProperty
      */
-    static newMultipart(v: string | null): Property
+    static newMultipart(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The name
      * @returns The newly created #ICalProperty
      */
-    static newName(v: string | null): Property
+    static newName(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The organizer
      * @returns The newly created #ICalProperty
      */
-    static newOrganizer(v: string | null): Property
+    static newOrganizer(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The owner
      * @returns The newly created #ICalProperty
      */
-    static newOwner(v: string | null): Property
+    static newOwner(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4859,7 +4859,7 @@ export class Property extends Object {
      * @param v The permission
      * @returns The newly created #ICalProperty
      */
-    static newPermission(v: string | null): Property
+    static newPermission(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4887,7 +4887,7 @@ export class Property extends Object {
      * @param v The pollproperties
      * @returns The newly created #ICalProperty
      */
-    static newPollproperties(v: string | null): Property
+    static newPollproperties(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4908,21 +4908,21 @@ export class Property extends Object {
      * @param v The prodid
      * @returns The newly created #ICalProperty
      */
-    static newProdid(v: string | null): Property
+    static newProdid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The query
      * @returns The newly created #ICalProperty
      */
-    static newQuery(v: string | null): Property
+    static newQuery(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The queryid
      * @returns The newly created #ICalProperty
      */
-    static newQueryid(v: string | null): Property
+    static newQueryid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4936,7 +4936,7 @@ export class Property extends Object {
      * @param v The queryname
      * @returns The newly created #ICalProperty
      */
-    static newQueryname(v: string | null): Property
+    static newQueryname(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4950,21 +4950,21 @@ export class Property extends Object {
      * @param v The recuraccepted
      * @returns The newly created #ICalProperty
      */
-    static newRecuraccepted(v: string | null): Property
+    static newRecuraccepted(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The recurexpand
      * @returns The newly created #ICalProperty
      */
-    static newRecurexpand(v: string | null): Property
+    static newRecurexpand(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The recurlimit
      * @returns The newly created #ICalProperty
      */
-    static newRecurlimit(v: string | null): Property
+    static newRecurlimit(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4978,14 +4978,14 @@ export class Property extends Object {
      * @param v The relatedto
      * @returns The newly created #ICalProperty
      */
-    static newRelatedto(v: string | null): Property
+    static newRelatedto(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The relcalid
      * @returns The newly created #ICalProperty
      */
-    static newRelcalid(v: string | null): Property
+    static newRelcalid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -4999,7 +4999,7 @@ export class Property extends Object {
      * @param v The replyurl
      * @returns The newly created #ICalProperty
      */
-    static newReplyurl(v: string | null): Property
+    static newReplyurl(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5013,7 +5013,7 @@ export class Property extends Object {
      * @param v The resources
      * @returns The newly created #ICalProperty
      */
-    static newResources(v: string | null): Property
+    static newResources(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5027,7 +5027,7 @@ export class Property extends Object {
      * @param v The restriction
      * @returns The newly created #ICalProperty
      */
-    static newRestriction(v: string | null): Property
+    static newRestriction(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5041,7 +5041,7 @@ export class Property extends Object {
      * @param v The scope
      * @returns The newly created #ICalProperty
      */
-    static newScope(v: string | null): Property
+    static newScope(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5062,21 +5062,21 @@ export class Property extends Object {
      * @param v The storesexpanded
      * @returns The newly created #ICalProperty
      */
-    static newStoresexpanded(v: string | null): Property
+    static newStoresexpanded(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The summary
      * @returns The newly created #ICalProperty
      */
-    static newSummary(v: string | null): Property
+    static newSummary(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The target
      * @returns The newly created #ICalProperty
      */
-    static newTarget(v: string | null): Property
+    static newTarget(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5104,21 +5104,21 @@ export class Property extends Object {
      * @param v The tzid
      * @returns The newly created #ICalProperty
      */
-    static newTzid(v: string | null): Property
+    static newTzid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The tzidaliasof
      * @returns The newly created #ICalProperty
      */
-    static newTzidaliasof(v: string | null): Property
+    static newTzidaliasof(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The tzname
      * @returns The newly created #ICalProperty
      */
-    static newTzname(v: string | null): Property
+    static newTzname(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5146,42 +5146,42 @@ export class Property extends Object {
      * @param v The tzurl
      * @returns The newly created #ICalProperty
      */
-    static newTzurl(v: string | null): Property
+    static newTzurl(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The uid
      * @returns The newly created #ICalProperty
      */
-    static newUid(v: string | null): Property
+    static newUid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The url
      * @returns The newly created #ICalProperty
      */
-    static newUrl(v: string | null): Property
+    static newUrl(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The version
      * @returns The newly created #ICalProperty
      */
-    static newVersion(v: string | null): Property
+    static newVersion(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The voter
      * @returns The newly created #ICalProperty
      */
-    static newVoter(v: string | null): Property
+    static newVoter(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The x
      * @returns The newly created #ICalProperty
      */
-    static newX(v: string | null): Property
+    static newX(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
@@ -5195,56 +5195,56 @@ export class Property extends Object {
      * @param v The xlicclustercount
      * @returns The newly created #ICalProperty
      */
-    static newXlicclustercount(v: string | null): Property
+    static newXlicclustercount(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicerror
      * @returns The newly created #ICalProperty
      */
-    static newXlicerror(v: string | null): Property
+    static newXlicerror(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimecharset
      * @returns The newly created #ICalProperty
      */
-    static newXlicmimecharset(v: string | null): Property
+    static newXlicmimecharset(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimecid
      * @returns The newly created #ICalProperty
      */
-    static newXlicmimecid(v: string | null): Property
+    static newXlicmimecid(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimecontenttype
      * @returns The newly created #ICalProperty
      */
-    static newXlicmimecontenttype(v: string | null): Property
+    static newXlicmimecontenttype(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimeencoding
      * @returns The newly created #ICalProperty
      */
-    static newXlicmimeencoding(v: string | null): Property
+    static newXlicmimeencoding(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimefilename
      * @returns The newly created #ICalProperty
      */
-    static newXlicmimefilename(v: string | null): Property
+    static newXlicmimefilename(v: string): Property
     /**
      * Creates a new #ICalProperty.
      * @constructor 
      * @param v The xlicmimeoptinfo
      * @returns The newly created #ICalProperty
      */
-    static newXlicmimeoptinfo(v: string | null): Property
+    static newXlicmimeoptinfo(v: string): Property
     _init(config?: Property.ConstructorProperties): void
     /**
      * Converts the enum to string.
@@ -5258,13 +5258,13 @@ export class Property extends Object {
      * @param str A string
      * @returns The enum.
      */
-    static kindAndStringToEnum(kind: number, str: string | null): number
+    static kindAndStringToEnum(kind: number, str: string): number
     /**
      * Converts the string to #ICalPropertyKind.
      * @param string A string representing #ICalPropertyKind
      * @returns The #ICalPropertyKind.
      */
-    static kindFromString(string: string | null): PropertyKind
+    static kindFromString(string: string): PropertyKind
     /**
      * Checks whether the enum belongs to the #ICalPropertyKind.
      * @param kind A #ICalPropertyKind
@@ -5283,7 +5283,7 @@ export class Property extends Object {
      * @param kind A #ICalPropertyKind
      * @returns The string representation of @kind.
      */
-    static kindToString(kind: PropertyKind): string | null
+    static kindToString(kind: PropertyKind): string
     /**
      * Converts the #ICalPropertyKind to #ICalValueKind.
      * @param kind A #ICalPropertyKind
@@ -5295,13 +5295,13 @@ export class Property extends Object {
      * @param str A string
      * @returns The #ICalPropertyMethod.
      */
-    static methodFromString(str: string | null): PropertyMethod
+    static methodFromString(str: string): PropertyMethod
     /**
      * Converts the #ICalPropertyMethod to string.
      * @param method The #ICalPropertyMethod
      * @returns The string representation of #ICalPropertyMethod.
      */
-    static methodToString(method: PropertyMethod): string | null
+    static methodToString(method: PropertyMethod): string
     /**
      * Decides if this recurrence is acceptable. This function decides if a specific recurrence value is excluded
      * by EXRULE or EXDATE properties.
@@ -5316,13 +5316,13 @@ export class Property extends Object {
      * @param str A string
      * @returns The #ICalPropertyStatus.
      */
-    static statusFromString(str: string | null): PropertyStatus
+    static statusFromString(str: string): PropertyStatus
     /**
      * Converts the #ICalPropertyStatus to string.
      * @param method The #ICalPropertyStatus
      * @returns The string representation of #ICalPropertyStatus.
      */
-    static statusToString(method: PropertyStatus): string | null
+    static statusToString(method: PropertyStatus): string
 }
 
 export module RecurIterator {
@@ -5783,7 +5783,7 @@ export class Recurrence extends Object {
      * @param str The string representation of the #ICalRecurrence
      * @returns The #ICalRecurrence converted from @str.
      */
-    static newFromString(str: string | null): Recurrence
+    static newFromString(str: string): Recurrence
     _init(config?: Recurrence.ConstructorProperties): void
     /**
      * Decodes a day to a weekday in a week.
@@ -5802,13 +5802,13 @@ export class Recurrence extends Object {
      * @param str The string representation of the frequency
      * @returns The enum representation of the frequency.
      */
-    static frequencyFromString(str: string | null): RecurrenceFrequency
+    static frequencyFromString(str: string): RecurrenceFrequency
     /**
      * Converts a enum representation to a string representation for the frequency.
      * @param kind The frequency enum
      * @returns The string representation of frequency
      */
-    static frequencyToString(kind: RecurrenceFrequency): string | null
+    static frequencyToString(kind: RecurrenceFrequency): string
     /**
      * Decodes a month and check whether it is a leap month.
      * @param month The month to be decoded
@@ -5831,25 +5831,25 @@ export class Recurrence extends Object {
      * @param str The string representation of the skip
      * @returns The enum representation of the skip.
      */
-    static skipFromString(str: string | null): RecurrenceSkip
+    static skipFromString(str: string): RecurrenceSkip
     /**
      * Converts a enum representation to a string representation for the skip.
      * @param kind The frequency enum
      * @returns The string representation of skip
      */
-    static skipToString(kind: RecurrenceSkip): string | null
+    static skipToString(kind: RecurrenceSkip): string
     /**
      * Converts a string representation to an enum representation for the weekday.
      * @param str The string representation of the weekday
      * @returns The enum representation of the weekday.
      */
-    static weekdayFromString(str: string | null): RecurrenceWeekday
+    static weekdayFromString(str: string): RecurrenceWeekday
     /**
      * Converts a enum representation to a string representation for the weekday.
      * @param kind The frequency enum
      * @returns The string representation of weekday
      */
-    static weekdayToString(kind: RecurrenceWeekday): string | null
+    static weekdayToString(kind: RecurrenceWeekday): string
 }
 
 export module Reqstat {
@@ -5878,12 +5878,12 @@ export interface Reqstat {
      * Gets the debug of #ICalReqstat.
      * @returns The debug of @reqstat.
      */
-    getDebug(): string | null
+    getDebug(): string
     /**
      * Gets the desc of #ICalReqstat.
      * @returns The desc of @reqstat.
      */
-    getDesc(): string | null
+    getDesc(): string
     /**
      * Sets the code of #ICalReqstat.
      * @param code The code of `reqstat`
@@ -5954,7 +5954,7 @@ export class Reqstat extends Object {
      * @param str A string
      * @returns The newly created #ICalReqstat.
      */
-    static newFromString(str: string | null): Reqstat
+    static newFromString(str: string): Reqstat
     _init(config?: Reqstat.ConstructorProperties): void
 }
 
@@ -6305,7 +6305,7 @@ export class Time extends Object {
      * @param str The ISO format string
      * @returns The newly created #ICalTime
      */
-    static newFromString(str: string | null): Time
+    static newFromString(str: string): Time
     /**
      * Converts seconds past UNIX epoch to a timetype, using timezones.
      * @constructor 
@@ -6548,7 +6548,7 @@ export interface Timezone {
      * Gets the display name of the `zone`.
      * @returns The display name of @zone
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Returns the latitude of a builtin timezone.
      * @returns The latitude of the #ICalTimezone
@@ -6745,7 +6745,7 @@ export class Timezone extends Object {
      * Gets the directory to look for the zonefiles.
      * @returns The path to look for the zonefiles
      */
-    static getZoneDirectory(): string | null
+    static getZoneDirectory(): string
     /**
      * Frees memory dedicated to the zonefile directory.
      */
@@ -6761,12 +6761,12 @@ export class Timezone extends Object {
      * Do not change or de-allocate the string buffer after calling this.
      * @param newPrefix The #ICalTimezone to be set
      */
-    static setTzidPrefix(newPrefix: string | null): void
+    static setTzidPrefix(newPrefix: string): void
     /**
      * Sets the directory to look for the zonefiles.
      * @param path The path to look for the zonefiles
      */
-    static setZoneDirectory(path: string | null): void
+    static setZoneDirectory(path: string): void
 }
 
 export module Trigger {
@@ -6883,7 +6883,7 @@ export class Trigger extends Object {
      * @param str A string
      * @returns The newly created #ICalTrigger.
      */
-    static newFromString(str: string | null): Trigger
+    static newFromString(str: string): Trigger
     _init(config?: Trigger.ConstructorProperties): void
 }
 
@@ -7133,7 +7133,7 @@ export interface Value {
      * Sets the binary in the #ICalValue.
      * @param v The binary value
      */
-    setBinary(v: string | null): void
+    setBinary(v: string): void
     /**
      * Sets the boolean in the #ICalValue.
      * @param v The boolean value
@@ -7148,7 +7148,7 @@ export interface Value {
      * Sets the caladdress in the #ICalValue.
      * @param v The caladdress value
      */
-    setCaladdress(v: string | null): void
+    setCaladdress(v: string): void
     /**
      * Sets the carlevel in the #ICalValue.
      * @param v The carlevel value
@@ -7233,7 +7233,7 @@ export interface Value {
      * Sets the query in the #ICalValue.
      * @param v The query value
      */
-    setQuery(v: string | null): void
+    setQuery(v: string): void
     /**
      * Sets the querylevel in the #ICalValue.
      * @param v The querylevel value
@@ -7258,7 +7258,7 @@ export interface Value {
      * Sets the string in the #ICalValue.
      * @param v The string value
      */
-    setString(v: string | null): void
+    setString(v: string): void
     /**
      * Sets the taskmode in the #ICalValue.
      * @param v The taskmode value
@@ -7268,7 +7268,7 @@ export interface Value {
      * Sets the text in the #ICalValue.
      * @param v The text value
      */
-    setText(v: string | null): void
+    setText(v: string): void
     /**
      * Sets the transp in the #ICalValue.
      * @param v The transp value
@@ -7283,7 +7283,7 @@ export interface Value {
      * Sets the uri in the #ICalValue.
      * @param v The uri value
      */
-    setUri(v: string | null): void
+    setUri(v: string): void
     /**
      * Sets the utcoffset in the #ICalValue.
      * @param v The utcoffset value
@@ -7293,7 +7293,7 @@ export interface Value {
      * Sets the x in the #ICalValue.
      * @param v The x value
      */
-    setX(v: string | null): void
+    setX(v: string): void
     /**
      * Sets the xlicclass in the #ICalValue.
      * @param v The xlicclass value
@@ -7387,7 +7387,7 @@ export class Value extends Object {
      * @param v The binary value
      * @returns The newly created #ICalValue.
      */
-    static newBinary(v: string | null): Value
+    static newBinary(v: string): Value
     /**
      * Creates a new #ICalValue with the type boolean.
      * @constructor 
@@ -7408,7 +7408,7 @@ export class Value extends Object {
      * @param v The caladdress value
      * @returns The newly created #ICalValue.
      */
-    static newCaladdress(v: string | null): Value
+    static newCaladdress(v: string): Value
     /**
      * Creates a new #ICalValue with the type carlevel.
      * @constructor 
@@ -7479,7 +7479,7 @@ export class Value extends Object {
      * @param str A string
      * @returns The newly created #ICalValue based on the @kind and @str.
      */
-    static newFromString(kind: ValueKind, str: string | null): Value
+    static newFromString(kind: ValueKind, str: string): Value
     /**
      * Creates a new #ICalValue with the type geo.
      * @constructor 
@@ -7528,7 +7528,7 @@ export class Value extends Object {
      * @param v The query value
      * @returns The newly created #ICalValue.
      */
-    static newQuery(v: string | null): Value
+    static newQuery(v: string): Value
     /**
      * Creates a new #ICalValue with the type querylevel.
      * @constructor 
@@ -7563,7 +7563,7 @@ export class Value extends Object {
      * @param v The string value
      * @returns The newly created #ICalValue.
      */
-    static newString(v: string | null): Value
+    static newString(v: string): Value
     /**
      * Creates a new #ICalValue with the type taskmode.
      * @constructor 
@@ -7577,7 +7577,7 @@ export class Value extends Object {
      * @param v The text value
      * @returns The newly created #ICalValue.
      */
-    static newText(v: string | null): Value
+    static newText(v: string): Value
     /**
      * Creates a new #ICalValue with the type transp.
      * @constructor 
@@ -7598,7 +7598,7 @@ export class Value extends Object {
      * @param v The uri value
      * @returns The newly created #ICalValue.
      */
-    static newUri(v: string | null): Value
+    static newUri(v: string): Value
     /**
      * Creates a new #ICalValue with the type utcoffset.
      * @constructor 
@@ -7612,7 +7612,7 @@ export class Value extends Object {
      * @param v The x value
      * @returns The newly created #ICalValue.
      */
-    static newX(v: string | null): Value
+    static newX(v: string): Value
     /**
      * Creates a new #ICalValue with the type xlicclass.
      * @constructor 
@@ -7626,19 +7626,19 @@ export class Value extends Object {
      * @param szText A string
      * @returns The decoded string. NULL if fail.
      */
-    static decodeIcalString(szText: string | null): string | null
+    static decodeIcalString(szText: string): string | null
     /**
      * Encodes a character string in ical format, escape certain characters, etc.
      * @param szText A string
      * @returns The encoded string. NULL if fail.
      */
-    static encodeIcalString(szText: string | null): string | null
+    static encodeIcalString(szText: string): string | null
     /**
      * Converts a string to #ICalValueKind.
      * @param str A string
      * @returns A #ICalValueKind.
      */
-    static kindFromString(str: string | null): ValueKind
+    static kindFromString(str: string): ValueKind
     /**
      * Checks whether the #ICalValueKind is valid.
      * @param kind The #ICalValueKind to be checked
@@ -7656,7 +7656,7 @@ export class Value extends Object {
      * @param kind A #ICalValueKind
      * @returns The string representation of #ICalValueKind.
      */
-    static kindToString(kind: ValueKind): string | null
+    static kindToString(kind: ValueKind): string
 }
 
 export interface ArrayClass {

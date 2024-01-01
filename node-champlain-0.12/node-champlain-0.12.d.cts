@@ -92,57 +92,57 @@ export enum Unit {
  * The major version of libchamplain (1, if %CHAMPLAIN_VERSION is 1.2.3)
  */
 export const MAJOR_VERSION: number
-export const MAP_SOURCE_MEMPHIS_LOCAL: string | null
-export const MAP_SOURCE_MEMPHIS_NETWORK: string | null
+export const MAP_SOURCE_MEMPHIS_LOCAL: string
+export const MAP_SOURCE_MEMPHIS_NETWORK: string
 /**
  * Maps for Free Relief
  */
-export const MAP_SOURCE_MFF_RELIEF: string | null
+export const MAP_SOURCE_MFF_RELIEF: string
 /**
  * OpenAerialMap
  */
-export const MAP_SOURCE_OAM: string | null
+export const MAP_SOURCE_OAM: string
 /**
  * Mapquest Open Aerial
  */
-export const MAP_SOURCE_OSM_AERIAL_MAP: string | null
+export const MAP_SOURCE_OSM_AERIAL_MAP: string
 /**
  * OpenStreetMap Cycle Map
  */
-export const MAP_SOURCE_OSM_CYCLE_MAP: string | null
+export const MAP_SOURCE_OSM_CYCLE_MAP: string
 /**
  * OpenStreetMap Mapnik
  */
-export const MAP_SOURCE_OSM_MAPNIK: string | null
-export const MAP_SOURCE_OSM_MAPQUEST: string | null
+export const MAP_SOURCE_OSM_MAPNIK: string
+export const MAP_SOURCE_OSM_MAPQUEST: string
 /**
  * OpenStreetMap Osmarender
  */
-export const MAP_SOURCE_OSM_OSMARENDER: string | null
+export const MAP_SOURCE_OSM_OSMARENDER: string
 /**
  * OpenStreetMap Transport Map
  */
-export const MAP_SOURCE_OSM_TRANSPORT_MAP: string | null
+export const MAP_SOURCE_OSM_TRANSPORT_MAP: string
 /**
  * OpenWeatherMap clouds layer
  */
-export const MAP_SOURCE_OWM_CLOUDS: string | null
+export const MAP_SOURCE_OWM_CLOUDS: string
 /**
  * OpenWeatherMap precipitation
  */
-export const MAP_SOURCE_OWM_PRECIPITATION: string | null
+export const MAP_SOURCE_OWM_PRECIPITATION: string
 /**
  * OpenWeatherMap sea level pressure
  */
-export const MAP_SOURCE_OWM_PRESSURE: string | null
+export const MAP_SOURCE_OWM_PRESSURE: string
 /**
  * OpenWeatherMap temperature
  */
-export const MAP_SOURCE_OWM_TEMPERATURE: string | null
+export const MAP_SOURCE_OWM_TEMPERATURE: string
 /**
  * OpenWeatherMap wind
  */
-export const MAP_SOURCE_OWM_WIND: string | null
+export const MAP_SOURCE_OWM_WIND: string
 export const MAX_LATITUDE: number
 export const MAX_LONGITUDE: number
 /**
@@ -167,7 +167,7 @@ export const VERSION_HEX: number
  * The full version of libchamplain, in string form (suited for
  * string concatenation)
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 export module Exportable {
 
     // Constructor properties interface
@@ -1190,7 +1190,7 @@ export interface ErrorTileRenderer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1205,7 +1205,7 @@ export interface ErrorTileRenderer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of Champlain-0.12.Champlain.ErrorTileRenderer
 
@@ -1307,7 +1307,7 @@ export interface FileCache {
      * Gets the directory where the cache database is stored.
      * @returns the directory
      */
-    getCacheDir(): string | null
+    getCacheDir(): string
     /**
      * Gets the cache size limit in bytes.
      * @returns size limit
@@ -1419,7 +1419,7 @@ export interface FileTileSource {
      * Loads the OpenStreetMap XML file at the given path.
      * @param mapPath a path to a map data file
      */
-    loadMapData(mapPath: string | null): void
+    loadMapData(mapPath: string): void
 
     // Class property signals of Champlain-0.12.Champlain.FileTileSource
 
@@ -1519,7 +1519,7 @@ export class FileTileSource extends TileSource {
      * @param renderer the #ChamplainRenderer used to render tiles
      * @returns a constructed #ChamplainFileTileSource object
      */
-    static newFull(id: string | null, name: string | null, license: string | null, licenseUri: string | null, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, renderer: Renderer): FileTileSource
+    static newFull(id: string, name: string, license: string, licenseUri: string, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, renderer: Renderer): FileTileSource
     _init(config?: FileTileSource.ConstructorProperties): void
 }
 
@@ -1568,7 +1568,7 @@ export interface ImageRenderer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1583,7 +1583,7 @@ export interface ImageRenderer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of Champlain-0.12.Champlain.ImageRenderer
 
@@ -2377,7 +2377,7 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
      * Gets the label's font name.
      * @returns the label's font name.
      */
-    getFontName(): string | null
+    getFontName(): string
     /**
      * Get the label's image.
      * @returns the label's image.
@@ -2392,7 +2392,7 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
      * Get the label's text.
      * @returns the label's text.
      */
-    getText(): string | null
+    getText(): string
     /**
      * Gets the label's text color.
      * @returns the label's text color.
@@ -2462,7 +2462,7 @@ export interface Label extends Atk.ImplementorIface, Location, Clutter.Animatabl
      * Sets the label's text.
      * @param text The new text of the label
      */
-    setText(text: string | null): void
+    setText(text: string): void
     /**
      * Sets the label's text color.
      * @param color The label's text color or NULL to reset the text to the default         color. The color parameter is copied.
@@ -3104,7 +3104,7 @@ export class Label extends Marker {
      * @param filename The filename of the image.
      * @returns a new #ChamplainLabel with a drawn label containing the given image.
      */
-    static newFromFile(filename: string | null): Label
+    static newFromFile(filename: string): Label
     /**
      * Creates a new instance of #ChamplainLabel consisting of a custom #ClutterActor.
      * @constructor 
@@ -3112,7 +3112,7 @@ export class Label extends Marker {
      * @param actor The image as a `ClutterActor`
      * @returns a new #ChamplainLabel with a drawn label containing the given image.
      */
-    static newFull(text: string | null, actor: Clutter.Actor): Label
+    static newFull(text: string, actor: Clutter.Actor): Label
     /**
      * Creates a new instance of #ChamplainLabel with image.
      * @constructor 
@@ -3129,7 +3129,7 @@ export class Label extends Marker {
      * @param labelColor a #ClutterColor, the color of the label, can be NULL
      * @returns a new #ChamplainLabel with a drawn label containing the given text.
      */
-    static newWithText(text: string | null, font: string | null, textColor: Clutter.Color | null, labelColor: Clutter.Color | null): Label
+    static newWithText(text: string, font: string | null, textColor: Clutter.Color | null, labelColor: Clutter.Color | null): Label
     _init(config?: Label.ConstructorProperties): void
 }
 
@@ -3755,7 +3755,7 @@ export interface License extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * Gets the additional license text.
      * @returns the additional license text
      */
-    getExtraText(): string | null
+    getExtraText(): string
     /**
      * Set the license's text alignment.
      * @param alignment The license's text alignment
@@ -3766,7 +3766,7 @@ export interface License extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * map's licence when displayed. Use "\n" to separate the lines.
      * @param text the additional license text
      */
-    setExtraText(text: string | null): void
+    setExtraText(text: string): void
 
     // Conflicting methods
 
@@ -4354,7 +4354,7 @@ export interface MapSource {
      * @returns the number of tiles in a column
      */
     getColumnCount(zoomLevel: number): number
-    // Has conflict: getId(): string | null
+    // Has conflict: getId(): string
     /**
      * Gets the latitude corresponding to this y position in the map source's
      * projection.
@@ -4363,8 +4363,8 @@ export interface MapSource {
      * @returns the latitude
      */
     getLatitude(zoomLevel: number, y: number): number
-    // Has conflict: getLicense(): string | null
-    // Has conflict: getLicenseUri(): string | null
+    // Has conflict: getLicense(): string
+    // Has conflict: getLicenseUri(): string
     /**
      * Gets the longitude corresponding to this x position in the map source's
      * projection.
@@ -4383,7 +4383,7 @@ export interface MapSource {
      */
     getMetersPerPixel(zoomLevel: number, latitude: number, longitude: number): number
     // Has conflict: getMinZoomLevel(): number
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     /**
      * Get the next source in the chain.
      * @returns the next source in the chain.
@@ -4443,19 +4443,19 @@ export interface MapSource {
      * @virtual 
      * @returns the map source's id.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets map source's license.
      * @virtual 
      * @returns the map source's license.
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets map source's license URI.
      * @virtual 
      * @returns the map source's license URI.
      */
-    getLicenseUri(): string | null
+    getLicenseUri(): string
     /**
      * Gets map source's maximum zoom level.
      * @virtual 
@@ -4473,7 +4473,7 @@ export interface MapSource {
      * @virtual 
      * @returns the map source's name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets map source's projection.
      * @virtual 
@@ -4741,22 +4741,22 @@ export interface MapSourceDesc {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets map source's id.
      * @returns the map source's id.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets map source's license.
      * @returns the map source's license.
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets map source's license URI.
      * @returns the map source's license URI.
      */
-    getLicenseUri(): string | null
+    getLicenseUri(): string
     /**
      * Gets map source's maximum zoom level.
      * @returns the maximum zoom level this map source supports
@@ -4771,7 +4771,7 @@ export interface MapSourceDesc {
      * Gets map source's name.
      * @returns the map source's name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets map source's projection.
      * @returns the map source's projection.
@@ -4786,7 +4786,7 @@ export interface MapSourceDesc {
      * Gets network map source's URI format.
      * @returns the URI format.
      */
-    getUriFormat(): string | null
+    getUriFormat(): string
 
     // Class property signals of Champlain-0.12.Champlain.MapSourceDesc
 
@@ -4903,13 +4903,13 @@ export interface MapSourceFactory {
      * @param id the wanted map source id
      * @returns a ready to use #ChamplainMapSource matching the given name; returns NULL if the source with the given name doesn't exist.
      */
-    create(id: string | null): MapSource
+    create(id: string): MapSource
     /**
      * Creates a cached map source.
      * @param id the wanted map source id
      * @returns a ready to use #ChamplainMapSourceChain consisting of #ChamplainMemoryCache, #ChamplainFileCache, #ChamplainMapSource matching the given name, and an error tile source created with champlain_map_source_factory_create_error_source (). Returns NULL if the source with the given name doesn't exist.
      */
-    createCachedSource(id: string | null): MapSource
+    createCachedSource(id: string): MapSource
     /**
      * Creates a map source generating error tiles.
      * @param tileSize the size of the error tile
@@ -4921,7 +4921,7 @@ export interface MapSourceFactory {
      * @param id the wanted map source id
      * @returns a ready to use #ChamplainMapSourceChain consisting of #ChamplainMemoryCache and #ChamplainMapSource matching the given name. Returns NULL if the source with the given name doesn't exist.
      */
-    createMemcachedSource(id: string | null): MapSource
+    createMemcachedSource(id: string): MapSource
     /**
      * Get the list of registered map sources.
      * @returns the list of registered map sources, the items should not be freed, the list should be freed with #g_slist_free.
@@ -6533,7 +6533,7 @@ export interface NetworkBboxTileSource {
      * Gets the URI of the API server.
      * @returns the URI of the API server.
      */
-    getApiUri(): string | null
+    getApiUri(): string
     /**
      * Asynchronously loads map data within a bounding box from the server.
      * The box must not exceed an edge size of 0.25 degree. There are also
@@ -6549,12 +6549,12 @@ export interface NetworkBboxTileSource {
      * Sets the URI of the API server.
      * @param apiUri an URI of an API server
      */
-    setApiUri(apiUri: string | null): void
+    setApiUri(apiUri: string): void
     /**
      * Sets the User-Agent header used communicating with the server.
      * @param userAgent A User-Agent string
      */
-    setUserAgent(userAgent: string | null): void
+    setUserAgent(userAgent: string): void
 
     // Class property signals of Champlain-0.12.Champlain.NetworkBboxTileSource
 
@@ -6674,7 +6674,7 @@ export class NetworkBboxTileSource extends TileSource {
      * @param renderer the #ChamplainRenderer used to render tiles
      * @returns a constructed #ChamplainNetworkBboxTileSource object
      */
-    static newFull(id: string | null, name: string | null, license: string | null, licenseUri: string | null, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, renderer: Renderer): NetworkBboxTileSource
+    static newFull(id: string, name: string, license: string, licenseUri: string, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, renderer: Renderer): NetworkBboxTileSource
     _init(config?: NetworkBboxTileSource.ConstructorProperties): void
 }
 
@@ -6766,12 +6766,12 @@ export interface NetworkTileSource {
      * Gets the proxy uri used to access network.
      * @returns the proxy uri
      */
-    getProxyUri(): string | null
+    getProxyUri(): string
     /**
      * Default constructor of #ChamplainNetworkTileSource.
      * @returns A URI format used for URI creation when downloading tiles. See champlain_network_tile_source_set_uri_format() for more information.
      */
-    getUriFormat(): string | null
+    getUriFormat(): string
     /**
      * Sets the max number of allowed simultaneous connections for this tile source.
      * 
@@ -6789,7 +6789,7 @@ export interface NetworkTileSource {
      * Override the default proxy for accessing the network.
      * @param proxyUri the proxy uri used to access network
      */
-    setProxyUri(proxyUri: string | null): void
+    setProxyUri(proxyUri: string): void
     /**
      * A URI format is a URI where x, y and zoom level information have been
      * marked for parsing and insertion.  There can be an unlimited number of
@@ -6801,12 +6801,12 @@ export interface NetworkTileSource {
      * "https://tile.openstreetmap.org/\#Z\#/\#X\#/\#Y\#.png"
      * @param uriFormat the URI format
      */
-    setUriFormat(uriFormat: string | null): void
+    setUriFormat(uriFormat: string): void
     /**
      * Sets the User-Agent header used communicating with the server.
      * @param userAgent A User-Agent string
      */
-    setUserAgent(userAgent: string | null): void
+    setUserAgent(userAgent: string): void
 
     // Class property signals of Champlain-0.12.Champlain.NetworkTileSource
 
@@ -6932,7 +6932,7 @@ export class NetworkTileSource extends TileSource {
      * @param renderer the #ChamplainRenderer used to render tiles
      * @returns a constructed #ChamplainNetworkTileSource object
      */
-    static newFull(id: string | null, name: string | null, license: string | null, licenseUri: string | null, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, uriFormat: string | null, renderer: Renderer): NetworkTileSource
+    static newFull(id: string, name: string, license: string, licenseUri: string, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, uriFormat: string, renderer: Renderer): NetworkTileSource
     _init(config?: NetworkTileSource.ConstructorProperties): void
 }
 
@@ -8532,7 +8532,7 @@ export interface Renderer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of Champlain-0.12.Champlain.Renderer
 
@@ -9301,7 +9301,7 @@ export interface Tile extends Atk.ImplementorIface, Exportable, Clutter.Animatab
      * Gets the tile's ETag.
      * @returns the tile's ETag
      */
-    getEtag(): string | null
+    getEtag(): string
     /**
      * Checks whether the tile should fade in.
      * @returns the return value determines whether the tile should fade in when loading.
@@ -9370,7 +9370,7 @@ export interface Tile extends Atk.ImplementorIface, Exportable, Clutter.Animatab
      * Sets the tile's ETag
      * @param etag the tile's ETag as sent by the server
      */
-    setEtag(etag: string | null): void
+    setEtag(etag: string): void
     /**
      * Sets the flag determining whether the tile should fade in when loading
      * @param fadeIn determines whether the tile should fade in when loading
@@ -10031,7 +10031,7 @@ export interface TileCache {
 
     // Has conflict: onTileFilled(tile: Tile): void
     // Has conflict: refreshTileTime(tile: Tile): void
-    // Has conflict: storeTile(tile: Tile, contents: string | null, size: number): void
+    // Has conflict: storeTile(tile: Tile, contents: string, size: number): void
 
     // Own virtual methods of Champlain-0.12.Champlain.TileCache
 
@@ -10060,7 +10060,7 @@ export interface TileCache {
      * @param contents the tile contents that should be stored
      * @param size size of the contents in bytes
      */
-    storeTile(tile: Tile, contents: string | null, size: number): void
+    storeTile(tile: Tile, contents: string, size: number): void
 
     // Class property signals of Champlain-0.12.Champlain.TileCache
 
@@ -10215,17 +10215,17 @@ export interface TileSource {
      * Sets the tile source's id.
      * @param id an id
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Sets the tile source's license.
      * @param license the licence
      */
-    setLicense(license: string | null): void
+    setLicense(license: string): void
     /**
      * Sets the tile source's license URI.
      * @param licenseUri the licence URI
      */
-    setLicenseUri(licenseUri: string | null): void
+    setLicenseUri(licenseUri: string): void
     /**
      * Sets the tile source's maximum zoom level.
      * @param zoomLevel the maximum zoom level
@@ -10240,7 +10240,7 @@ export interface TileSource {
      * Sets the tile source's name.
      * @param name a name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the tile source's projection.
      * @param projection a #ChamplainMapProjection
@@ -12463,10 +12463,10 @@ export interface MapSourceClass {
     // Own fields of Champlain-0.12.Champlain.MapSourceClass
 
     parentClass: GObject.InitiallyUnownedClass
-    getId: (mapSource: MapSource) => string | null
-    getName: (mapSource: MapSource) => string | null
-    getLicense: (mapSource: MapSource) => string | null
-    getLicenseUri: (mapSource: MapSource) => string | null
+    getId: (mapSource: MapSource) => string
+    getName: (mapSource: MapSource) => string
+    getLicense: (mapSource: MapSource) => string
+    getLicenseUri: (mapSource: MapSource) => string
     getMinZoomLevel: (mapSource: MapSource) => number
     getMaxZoomLevel: (mapSource: MapSource) => number
     getTileSize: (mapSource: MapSource) => number
@@ -12776,7 +12776,7 @@ export interface TileCacheClass {
     // Own fields of Champlain-0.12.Champlain.TileCacheClass
 
     parentClass: MapSourceClass
-    storeTile: (tileCache: TileCache, tile: Tile, contents: string | null, size: number) => void
+    storeTile: (tileCache: TileCache, tile: Tile, contents: string, size: number) => void
     refreshTileTime: (tileCache: TileCache, tile: Tile) => void
     onTileFilled: (tileCache: TileCache, tile: Tile) => void
 }

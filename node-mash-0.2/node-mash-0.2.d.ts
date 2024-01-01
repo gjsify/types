@@ -105,7 +105,7 @@ interface Data {
      * @param filename The name of a file to load
      * @returns %TRUE if the load succeeded or %FALSE otherwise.
      */
-    load(flags: DataFlags, filename: string | null): boolean
+    load(flags: DataFlags, filename: string): boolean
     /**
      * Renders the data contained in the model to the Clutter
      * scene. The current Cogl source material will be used to affect the
@@ -182,7 +182,7 @@ interface DataLoader {
     // Owm methods of Mash-0.2.Mash.DataLoader
 
     // Has conflict: getData(loaderData: DataLoaderData): void
-    // Has conflict: load(flags: DataFlags, filename: string | null): boolean
+    // Has conflict: load(flags: DataFlags, filename: string): boolean
 
     // Own virtual methods of Mash-0.2.Mash.DataLoader
 
@@ -195,7 +195,7 @@ interface DataLoader {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Obtains the loaded data after calling mash_data_loader_load().
      * This function is not usually called by applications.
@@ -203,7 +203,7 @@ interface DataLoader {
      * @param flags 
      * @param filename 
      */
-    load(flags: DataFlags, filename: string | null): boolean
+    load(flags: DataFlags, filename: string): boolean
 
     // Class property signals of Mash-0.2.Mash.DataLoader
 
@@ -844,7 +844,7 @@ interface Light extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param shaderSource The string to append to
      * @param snippet A snippet of GLSL
      */
-    appendShader(shaderSource: GLib.String, snippet: string | null): void
+    appendShader(shaderSource: GLib.String, snippet: string): void
     // Has conflict: generateShader(uniformSource: GLib.String, mainSource: GLib.String): void
     /**
      * Retrieves the ‘ambient’ color emitted by the light.
@@ -882,7 +882,7 @@ interface Light extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param program The program passed in from mash_light_update_uniforms().
      * @param uniformName The name of a uniform
      */
-    getUniformLocation(program: Cogl.Handle, uniformName: string | null): number
+    getUniformLocation(program: Cogl.Handle, uniformName: string): number
     /**
      * Sets the ‘ambient’ color emitted by the light. If the light reaches
      * a vertex at all then the ambient color affects the vertex
@@ -1689,7 +1689,7 @@ interface Model extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * This sets whether the actor should scale the model to fit the
      * actor's allocation. If it's %TRUE then all of the axes of the model
@@ -2300,7 +2300,7 @@ class Model extends Clutter.Actor {
      * @param filename The name of a PLY file to load.
      * @returns a new #MashModel or %NULL if the load failed.
      */
-    static newFromFile(flags: DataFlags, filename: string | null): Model
+    static newFromFile(flags: DataFlags, filename: string): Model
     _init(config?: Model.ConstructorProperties): void
 }
 
@@ -3581,7 +3581,7 @@ interface DataLoaderClass {
 
     // Own fields of Mash-0.2.Mash.DataLoaderClass
 
-    load: (dataLoader: DataLoader, flags: DataFlags, filename: string | null) => boolean
+    load: (dataLoader: DataLoader, flags: DataFlags, filename: string) => boolean
     getData: (dataLoader: DataLoader, loaderData: DataLoaderData) => void
 }
 

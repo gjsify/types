@@ -123,10 +123,10 @@ export enum StreamDirection {
     RECV,
     BOTH,
 }
-export const CODEC_FORMAT: string | null
+export const CODEC_FORMAT: string
 export const CODEC_ID_ANY: number
 export const CODEC_ID_DISABLE: number
-export const RTP_HEADER_EXTENSION_FORMAT: string | null
+export const RTP_HEADER_EXTENSION_FORMAT: string
 /**
  * Copies a GList of #FsCandidate and its contents
  * @param candidate_list A GList of #FsCandidate

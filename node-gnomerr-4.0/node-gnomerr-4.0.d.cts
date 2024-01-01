@@ -58,7 +58,7 @@ export enum Rotation {
     REFLECT_X,
     REFLECT_Y,
 }
-export const CONNECTOR_TYPE_PANEL: string | null
+export const CONNECTOR_TYPE_PANEL: string
 /**
  * Returns the error domain used by the GnomeRR API.
  * @returns the GnomeRR error domain
@@ -149,7 +149,7 @@ export interface OutputInfo {
     // Owm methods of GnomeRR-4.0.GnomeRR.OutputInfo
 
     getAspectRatio(): number
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Get the geometry for the monitor connected to the specified output.
      * 
@@ -160,16 +160,16 @@ export interface OutputInfo {
      * Retrieves the output name.
      * @returns the output name
      */
-    getName(): string | null
+    getName(): string
     getPreferredHeight(): number
     getPreferredWidth(): number
     getPrimary(): boolean
-    getProduct(): string | null
+    getProduct(): string
     getRefreshRate(): number
     getRotation(): Rotation
-    getSerial(): string | null
+    getSerial(): string
     getUnderscanning(): boolean
-    getVendor(): string | null
+    getVendor(): string
     isActive(): boolean
     isConnected(): boolean
     isPrimaryTile(): boolean
@@ -292,7 +292,7 @@ export interface Screen extends Gio.AsyncInitable, Gio.Initable {
      * @param name 
      * @returns the output identified by @name
      */
-    getOutputByName(name: string | null): Output
+    getOutputByName(name: string): Output
     /**
      * Get the ranges of the screen
      */
@@ -520,13 +520,13 @@ export interface Output {
      * Retrieves the display name of the given output.
      * @returns the display name
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     getEdidData(size: number): number
     getId(): number
     /**
      * Retrieves the model identifiers from the EDID of the given output.
      */
-    getIdsFromEdid(): [ /* vendor */ string | null, /* product */ string | null, /* serial */ string | null ]
+    getIdsFromEdid(): [ /* vendor */ string, /* product */ string, /* serial */ string ]
     /**
      * Checks whether the given output is the primary output.
      * @returns `TRUE` if the output is the primary one
@@ -543,7 +543,7 @@ export interface Output {
      * Retrieves the name of the given output.
      * @returns the name of the output
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the physical size of the given output.
      */

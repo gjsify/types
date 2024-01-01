@@ -223,8 +223,8 @@ interface Information {
     // Has conflict: getAudioInformation(): AudioInformation
     // Has conflict: getContainerInformation(): ContainerInformation
     // Has conflict: getImageInformation(): ImageInformation
-    // Has conflict: getProfileName(): string | null
-    getUri(): string | null
+    // Has conflict: getProfileName(): string
+    getUri(): string
     // Has conflict: getVideoInformation(): VideoInformation
 
     // Own virtual methods of GUPnPDLNA-2.0.GUPnPDLNA.Information
@@ -250,7 +250,7 @@ interface Information {
      * @returns A #GUPnPDLNAImageInformation object or %NULL.
      */
     getImageInformation(): ImageInformation
-    getProfileName(): string | null
+    getProfileName(): string
     /**
      * Get an container information of media file if applicable (e.g. for
      * video files).
@@ -352,8 +352,8 @@ interface MetadataExtractor {
      * @param error A #GError.
      */
     emitDone(info: Information, error: GLib.Error | null): void
-    // Has conflict: extractAsync(uri: string | null, timeoutInMs: number): boolean
-    // Has conflict: extractSync(uri: string | null, timeoutInMs: number): Information
+    // Has conflict: extractAsync(uri: string, timeoutInMs: number): boolean
+    // Has conflict: extractSync(uri: string, timeoutInMs: number): Information
 
     // Own virtual methods of GUPnPDLNA-2.0.GUPnPDLNA.MetadataExtractor
 
@@ -365,7 +365,7 @@ interface MetadataExtractor {
      * @param timeoutInMs Timeout in miliseconds.
      * @returns %TRUE if @uri was successfully queued, %FALSE otherwise.
      */
-    extractAsync(uri: string | null, timeoutInMs: number): boolean
+    extractAsync(uri: string, timeoutInMs: number): boolean
     /**
      * Discovers synchronously metadata of given `uri`.
      * @virtual 
@@ -373,7 +373,7 @@ interface MetadataExtractor {
      * @param timeoutInMs Timeout in miliseconds.
      * @returns A #GUPnPDLNAInformation object if discovery succeeded, otherwise %NULL.
      */
-    extractSync(uri: string | null, timeoutInMs: number): Information
+    extractSync(uri: string, timeoutInMs: number): Information
 
     // Own signals of GUPnPDLNA-2.0.GUPnPDLNA.MetadataExtractor
 
@@ -482,8 +482,8 @@ interface Profile {
      * @returns Image restrictions. Do not modify.
      */
     getImageRestrictions(): Restriction[]
-    getMime(): string | null
-    getName(): string | null
+    getMime(): string
+    getName(): string
     /**
      * Gets a list of video restrictions.
      * @returns Video restrictions. Do not modify.
@@ -617,7 +617,7 @@ interface ProfileGuesser {
      * @param name The name of the DLNA profile to be retrieved.
      * @returns A #GUPnPDLNAProfile object on success, %NULL otherwise.
      */
-    getProfile(name: string | null): Profile
+    getProfile(name: string): Profile
     getRelaxedMode(): boolean
     /**
      * Asynchronously guesses DLNA profile for given `uri`. When guessing
@@ -626,7 +626,7 @@ interface ProfileGuesser {
      * @param timeoutInMs Timeout of guessing in miliseconds.
      * @returns %TRUE if @uri was successfully queued, %FALSE otherwise.
      */
-    guessProfileAsync(uri: string | null, timeoutInMs: number): boolean
+    guessProfileAsync(uri: string, timeoutInMs: number): boolean
     /**
      * Guesses the profile which fits to passed `info`.
      * @param info The #GUPnPDLNAInformation object.
@@ -639,7 +639,7 @@ interface ProfileGuesser {
      * @param timeoutInMs Timeout of guessing in miliseconds.
      * @returns DLNA profile if any had matched, %NULL otherwise.
      */
-    guessProfileSync(uri: string | null, timeoutInMs: number): [ /* returnType */ Profile, /* dlnaInfo */ Information ]
+    guessProfileSync(uri: string, timeoutInMs: number): [ /* returnType */ Profile, /* dlnaInfo */ Information ]
     /**
      * Gets a list of the all DLNA profiles supported by `guesser`.
      * @returns A #GList of #GUPnPDLNAProfile on success, %NULL otherwise.
@@ -945,7 +945,7 @@ interface InformationClass {
     getContainerInformation: (info: Information) => ContainerInformation
     getImageInformation: (info: Information) => ImageInformation
     getVideoInformation: (info: Information) => VideoInformation
-    getProfileName: (info: Information) => string | null
+    getProfileName: (info: Information) => string
     /**
      * Padding. Ignore it.
      * @field 
@@ -1016,8 +1016,8 @@ interface MetadataExtractorClass {
      * @field 
      */
     parentClass: GObject.ObjectClass
-    extractAsync: (extractor: MetadataExtractor, uri: string | null, timeoutInMs: number) => boolean
-    extractSync: (extractor: MetadataExtractor, uri: string | null, timeoutInMs: number) => Information
+    extractAsync: (extractor: MetadataExtractor, uri: string, timeoutInMs: number) => boolean
+    extractSync: (extractor: MetadataExtractor, uri: string, timeoutInMs: number) => Information
     /**
      * Padding. Ignore it.
      * @field 
@@ -1087,7 +1087,7 @@ interface Restriction {
      * Gets `restriction'`s MIME type.
      * @returns MIME type. Do not modify.
      */
-    getMime(): string | null
+    getMime(): string
     isEmpty(): boolean
     /**
      * Creates a string representation of `restriction`.

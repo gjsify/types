@@ -81,13 +81,13 @@ export enum TranscoderState {
  * @param error a #GstTranscoderError
  * @returns a string with the given error.
  */
-export function transcoder_error_get_name(error: TranscoderError): string | null
+export function transcoder_error_get_name(error: TranscoderError): string
 export function transcoder_error_quark(): GLib.Quark
 /**
  * Returns (transfer none): The message name
  * @param message a #GstTranscoderMessage
  */
-export function transcoder_message_get_name(message: TranscoderMessage): string | null
+export function transcoder_message_get_name(message: TranscoderMessage): string
 /**
  * Parse the given duration `msg` and extract the corresponding #GstClockTime
  * @param msg A #GstMessage
@@ -118,7 +118,7 @@ export function transcoder_message_parse_warning(msg: Gst.Message): [ /* error *
  * @param state a #GstTranscoderState
  * @returns a string with the name of the state.
  */
-export function transcoder_state_get_name(state: TranscoderState): string | null
+export function transcoder_state_get_name(state: TranscoderState): string
 export module Transcoder {
 
     // Constructor properties interface
@@ -329,9 +329,9 @@ export class Transcoder extends Gst.Object {
     // Constructors of GstTranscoder-1.0.GstTranscoder.Transcoder
 
     constructor(config?: Transcoder.ConstructorProperties) 
-    constructor(source_uri: string | null, dest_uri: string | null, encoding_profile: string | null) 
-    static new(source_uri: string | null, dest_uri: string | null, encoding_profile: string | null): Transcoder
-    static new_full(source_uri: string | null, dest_uri: string | null, profile: GstPbutils.EncodingProfile): Transcoder
+    constructor(source_uri: string, dest_uri: string, encoding_profile: string) 
+    static new(source_uri: string, dest_uri: string, encoding_profile: string): Transcoder
+    static new_full(source_uri: string, dest_uri: string, profile: GstPbutils.EncodingProfile): Transcoder
     _init(config?: Transcoder.ConstructorProperties): void
     static is_transcoder_message(msg: Gst.Message): boolean
 }

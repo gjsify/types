@@ -560,7 +560,7 @@ export const VERSION_MINOR: number
  * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
  * for snapshot version.
  */
-export const VERSION_TAG: string | null
+export const VERSION_TAG: string
 export function error_quark(): GLib.Quark
 /**
  * Finalize the S3 APIs.
@@ -854,8 +854,8 @@ export class Aggregation extends GObject.Object {
     // Constructors of Arrow-1.0.Arrow.Aggregation
 
     constructor(config?: Aggregation.ConstructorProperties) 
-    constructor(function_: string | null, options: FunctionOptions | null, input: string | null, output: string | null) 
-    static new(function_: string | null, options: FunctionOptions | null, input: string | null, output: string | null): Aggregation
+    constructor(function_: string, options: FunctionOptions | null, input: string, output: string) 
+    static new(function_: string, options: FunctionOptions | null, input: string, output: string): Aggregation
     _init(config?: Aggregation.ConstructorProperties): void
 }
 
@@ -1804,7 +1804,7 @@ export interface Buffer {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     get_mutable_data(): GLib.Bytes | null
     get_parent(): Buffer | null
     get_size(): number
@@ -2285,21 +2285,21 @@ export interface CSVReadOptions {
 
     // Owm methods of Arrow-1.0.Arrow.CSVReadOptions
 
-    add_column_name(column_name: string | null): void
+    add_column_name(column_name: string): void
     /**
      * Add value type of a column.
      * @param name The name of the target column.
      * @param data_type The #GArrowDataType for the column.
      */
-    add_column_type(name: string | null, data_type: DataType): void
-    add_false_value(false_value: string | null): void
-    add_null_value(null_value: string | null): void
+    add_column_type(name: string, data_type: DataType): void
+    add_false_value(false_value: string): void
+    add_null_value(null_value: string): void
     /**
      * Add value types for columns in the schema.
      * @param schema The #GArrowSchema that specifies columns and their types.
      */
     add_schema(schema: Schema): void
-    add_true_value(true_value: string | null): void
+    add_true_value(true_value: string): void
     get_column_names(): string[] | null
     get_column_types(): GLib.HashTable
     get_false_values(): string[] | null
@@ -2468,8 +2468,8 @@ export class CallExpression extends Expression {
     // Constructors of Arrow-1.0.Arrow.CallExpression
 
     constructor(config?: CallExpression.ConstructorProperties) 
-    constructor(function_: string | null, arguments_: Expression[], options: FunctionOptions | null) 
-    static new(function_: string | null, arguments_: Expression[], options: FunctionOptions | null): CallExpression
+    constructor(function_: string, arguments_: Expression[], options: FunctionOptions | null) 
+    static new(function_: string, arguments_: Expression[], options: FunctionOptions | null): CallExpression
     _init(config?: CallExpression.ConstructorProperties): void
 }
 
@@ -2800,7 +2800,7 @@ export interface Codec {
 
     get_compression_level(): number
     get_compression_type(): CompressionType
-    get_name(): string | null
+    get_name(): string
 
     // Class property signals of Arrow-1.0.Arrow.Codec
 
@@ -3715,7 +3715,7 @@ export class Decimal128 extends GObject.Object {
 
     constructor(config?: Decimal128.ConstructorProperties) 
     static new_integer(data: number): Decimal128
-    static new_string(data: string | null): Decimal128
+    static new_string(data: string): Decimal128
     _init(config?: Decimal128.ConstructorProperties): void
 }
 
@@ -4037,7 +4037,7 @@ export class Decimal256 extends GObject.Object {
 
     constructor(config?: Decimal256.ConstructorProperties) 
     static new_integer(data: number): Decimal256
-    static new_string(data: string | null): Decimal256
+    static new_string(data: string): Decimal256
     _init(config?: Decimal256.ConstructorProperties): void
 }
 
@@ -4993,7 +4993,7 @@ export interface ExecuteNode {
 
     // Owm methods of Arrow-1.0.Arrow.ExecuteNode
 
-    get_kind_name(): string | null
+    get_kind_name(): string
     get_output_schema(): Schema
 
     // Class property signals of Arrow-1.0.Arrow.ExecuteNode
@@ -5109,7 +5109,7 @@ export interface ExecutePlan {
      * @returns A newly built and added #GArrowExecuteNode   for hash join on success, %NULL on error.
      */
     build_hash_join_node(left: ExecuteNode, right: ExecuteNode, options: HashJoinNodeOptions): ExecuteNode
-    build_node(factory_name: string | null, inputs: ExecuteNode[], options: ExecuteNodeOptions): ExecuteNode
+    build_node(factory_name: string, inputs: ExecuteNode[], options: ExecuteNodeOptions): ExecuteNode
     /**
      * This is a shortcut of garrow_execute_plan_build_node() for sink
      * node.
@@ -5366,7 +5366,7 @@ export interface ExtensionDataTypeRegistry {
 
     // Owm methods of Arrow-1.0.Arrow.ExtensionDataTypeRegistry
 
-    lookup(name: string | null): ExtensionDataType
+    lookup(name: string): ExtensionDataType
     /**
      * Register the given `data_type` to the `registry`.
      * @param data_type A #GArrowExtensionDataType to be registered.
@@ -5379,7 +5379,7 @@ export interface ExtensionDataTypeRegistry {
      * @param name An extension data type name to be unregistered.
      * @returns %TRUE on success, %FALSE on error.
      */
-    unregister(name: string | null): boolean
+    unregister(name: string): boolean
 
     // Class property signals of Arrow-1.0.Arrow.ExtensionDataTypeRegistry
 
@@ -5608,7 +5608,7 @@ export interface Field {
     export(): any | null
     get_data_type(): DataType
     get_metadata(): GLib.HashTable | null
-    get_name(): string | null
+    get_name(): string
     has_metadata(): boolean
     is_nullable(): boolean
     remove_metadata(): Field
@@ -5641,9 +5641,9 @@ export class Field extends GObject.Object {
     // Constructors of Arrow-1.0.Arrow.Field
 
     constructor(config?: Field.ConstructorProperties) 
-    constructor(name: string | null, data_type: DataType) 
-    static new(name: string | null, data_type: DataType): Field
-    static new_full(name: string | null, data_type: DataType, nullable: boolean): Field
+    constructor(name: string, data_type: DataType) 
+    static new(name: string, data_type: DataType): Field
+    static new_full(name: string, data_type: DataType, nullable: boolean): Field
     _init(config?: Field.ConstructorProperties): void
     static import(c_abi_schema: any): Field | null
 }
@@ -5681,8 +5681,8 @@ export class FieldExpression extends Expression {
     // Constructors of Arrow-1.0.Arrow.FieldExpression
 
     constructor(config?: FieldExpression.ConstructorProperties) 
-    constructor(reference: string | null) 
-    static new(reference: string | null): FieldExpression
+    constructor(reference: string) 
+    static new(reference: string): FieldExpression
     _init(config?: FieldExpression.ConstructorProperties): void
 }
 
@@ -5941,8 +5941,8 @@ export class FileInputStream extends SeekableInputStream {
     // Constructors of Arrow-1.0.Arrow.FileInputStream
 
     constructor(config?: FileInputStream.ConstructorProperties) 
-    constructor(path: string | null) 
-    static new(path: string | null): FileInputStream
+    constructor(path: string) 
+    static new(path: string): FileInputStream
     static new_file_descriptor(file_descriptor: number): FileInputStream
     _init(config?: FileInputStream.ConstructorProperties): void
 }
@@ -5983,8 +5983,8 @@ export class FileOutputStream extends OutputStream {
     // Constructors of Arrow-1.0.Arrow.FileOutputStream
 
     constructor(config?: FileOutputStream.ConstructorProperties) 
-    constructor(path: string | null, append: boolean) 
-    static new(path: string | null, append: boolean): FileOutputStream
+    constructor(path: string, append: boolean) 
+    static new(path: string, append: boolean): FileOutputStream
     _init(config?: FileOutputStream.ConstructorProperties): void
 }
 
@@ -6145,7 +6145,7 @@ export interface FileSystem {
      * @param dest The path of the destination.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
-    copy_file(src: string | null, dest: string | null): boolean
+    copy_file(src: string, dest: string): boolean
     /**
      * Create a directory and subdirectories.
      * This function succeeds if the directory already exists.
@@ -6153,13 +6153,13 @@ export interface FileSystem {
      * @param recursive Whether creating directory recursively or not.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
-    create_dir(path: string | null, recursive: boolean): boolean
+    create_dir(path: string, recursive: boolean): boolean
     /**
      * Delete a directory and its contents, recursively.
      * @param path The paths of the directory.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
-    delete_dir(path: string | null): boolean
+    delete_dir(path: string): boolean
     /**
      * Delete a directory's contents, recursively. Like
      * garrow_file_system_delete_dir(), but doesn't delete the directory
@@ -6168,13 +6168,13 @@ export interface FileSystem {
      * @param path The paths of the directory.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
-    delete_dir_contents(path: string | null): boolean
+    delete_dir_contents(path: string): boolean
     /**
      * Delete a file.
      * @param path The paths of the file to be delete.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
-    delete_file(path: string | null): boolean
+    delete_file(path: string): boolean
     /**
      * Delete many files.
      * @param paths    The paths of the files to be delete.
@@ -6192,7 +6192,7 @@ export interface FileSystem {
      * @param path The path of the target.
      * @returns A #GArrowFileInfo.
      */
-    get_file_info(path: string | null): FileInfo | null
+    get_file_info(path: string): FileInfo | null
     /**
      * Get information same as garrow_file_system_get_file_info()
      * for the given many targets at once.
@@ -6221,33 +6221,33 @@ export interface FileSystem {
      * @param dest The path of the destination.
      * @returns %TRUE on success, %FALSE if there was an error.
      */
-    move(src: string | null, dest: string | null): boolean
+    move(src: string, dest: string): boolean
     /**
      * Open an output stream for appending.
      * If the target doesn't exist, a new empty file is created.
      * @param path The path of the output stream.
      * @returns A newly created #GArrowOutputStream   for appending.
      */
-    open_append_stream(path: string | null): OutputStream | null
+    open_append_stream(path: string): OutputStream | null
     /**
      * Open an input file for random access reading.
      * @param path The path of the input file.
      * @returns A newly created   #GArrowSeekableInputStream.
      */
-    open_input_file(path: string | null): SeekableInputStream | null
+    open_input_file(path: string): SeekableInputStream | null
     /**
      * Open an input stream for sequential reading.
      * @param path The path of the input stream.
      * @returns A newly created   #GArrowInputStream.
      */
-    open_input_stream(path: string | null): InputStream | null
+    open_input_stream(path: string): InputStream | null
     /**
      * Open an output stream for sequential writing.
      * If the target already exists, the existing data is truncated.
      * @param path The path of the output stream.
      * @returns A newly created   #GArrowOutputStream.
      */
-    open_output_stream(path: string | null): OutputStream | null
+    open_output_stream(path: string): OutputStream | null
 
     // Class property signals of Arrow-1.0.Arrow.FileSystem
 
@@ -6277,7 +6277,7 @@ export class FileSystem extends GObject.Object {
      * @param uri An URI to specify file system with options. If you only have an   absolute path, g_filename_to_uri() will help you.
      * @returns The newly created file system   that is an object of a subclass of #GArrowFileSystem.
      */
-    static create(uri: string | null): FileSystem | null
+    static create(uri: string): FileSystem | null
 }
 
 export module FilterOptions {
@@ -6878,7 +6878,7 @@ export interface Function {
     execute(args: Datum[], options: FunctionOptions | null, context: ExecuteContext | null): Datum | null
     get_default_options(): FunctionOptions | null
     get_doc(): FunctionDoc
-    get_name(): string | null
+    get_name(): string
     get_options_type(): GObject.GType
     to_string(): string | null
 
@@ -6905,7 +6905,7 @@ export class Function extends GObject.Object {
     constructor(config?: Function.ConstructorProperties) 
     _init(config?: Function.ConstructorProperties): void
     static all(): Function[]
-    static find(name: string | null): Function
+    static find(name: string): Function
 }
 
 export module FunctionDoc {
@@ -9103,7 +9103,7 @@ export interface LargeStringArrayBuilder {
 
     // Owm methods of Arrow-1.0.Arrow.LargeStringArrayBuilder
 
-    append_string(value: string | null): boolean
+    append_string(value: string): boolean
     /**
      * Append multiple values at once. It's more efficient than multiple
      * `append` and `append_null` calls.
@@ -9975,8 +9975,8 @@ export class MemoryMappedInputStream extends SeekableInputStream {
     // Constructors of Arrow-1.0.Arrow.MemoryMappedInputStream
 
     constructor(config?: MemoryMappedInputStream.ConstructorProperties) 
-    constructor(path: string | null) 
-    static new(path: string | null): MemoryMappedInputStream
+    constructor(path: string) 
+    static new(path: string): MemoryMappedInputStream
     _init(config?: MemoryMappedInputStream.ConstructorProperties): void
 }
 
@@ -10136,7 +10136,7 @@ export interface MutableBuffer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     slice(offset: number, size: number): MutableBuffer
 
     // Overloads of slice
@@ -10154,13 +10154,13 @@ export interface MutableBuffer {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
 
     // Class property signals of Arrow-1.0.Arrow.MutableBuffer
 
@@ -11269,7 +11269,7 @@ export interface ResizableBuffer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -11284,7 +11284,7 @@ export interface ResizableBuffer {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     slice(offset: number, size: number): MutableBuffer
 
     // Overloads of slice
@@ -11300,13 +11300,13 @@ export interface ResizableBuffer {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
 
     // Class property signals of Arrow-1.0.Arrow.ResizableBuffer
 
@@ -11840,8 +11840,8 @@ export interface Schema {
     equal(other_schema: Schema): boolean
     export(): any | null
     get_field(i: number): Field
-    get_field_by_name(name: string | null): Field
-    get_field_index(name: string | null): number
+    get_field_by_name(name: string): Field
+    get_field_index(name: string): number
     get_fields(): Field[]
     get_metadata(): GLib.HashTable | null
     has_metadata(): boolean
@@ -12280,8 +12280,8 @@ export class SortKey extends GObject.Object {
     // Constructors of Arrow-1.0.Arrow.SortKey
 
     constructor(config?: SortKey.ConstructorProperties) 
-    constructor(target: string | null, order: SortOrder) 
-    static new(target: string | null, order: SortOrder): SortKey
+    constructor(target: string, order: SortOrder) 
+    static new(target: string, order: SortOrder): SortKey
     _init(config?: SortKey.ConstructorProperties): void
 }
 
@@ -12631,12 +12631,12 @@ export interface StringArrayBuilder {
 
     // Owm methods of Arrow-1.0.Arrow.StringArrayBuilder
 
-    append(value: string | null): boolean
+    append(value: string): boolean
 
     // Overloads of append
 
     append(value: Uint8Array): boolean
-    append_string(value: string | null): boolean
+    append_string(value: string): boolean
     /**
      * Append multiple values at once. It's more efficient than multiple
      * `append` and `append_null` calls.
@@ -12742,7 +12742,7 @@ export interface StringDictionaryArrayBuilder {
      * @returns %TRUE on success, %FALSE if there was an error.
      */
     append_indices(values: number[], is_valids: boolean[] | null): boolean
-    append_string(value: string | null): boolean
+    append_string(value: string): boolean
     finish_delta(): [ /* returnType */ boolean, /* out_indices */ Array, /* out_delta */ Array ]
     get_dictionary_length(): number
     insert_memo_values(values: StringArray): boolean
@@ -12952,8 +12952,8 @@ export interface StructDataType {
     // Owm methods of Arrow-1.0.Arrow.StructDataType
 
     get_field(i: number): Field | null
-    get_field_by_name(name: string | null): Field | null
-    get_field_index(name: string | null): number
+    get_field_by_name(name: string): Field | null
+    get_field_index(name: string): number
     get_fields(): Field[]
     get_n_fields(): number
 
@@ -13080,8 +13080,8 @@ export class SubTreeFileSystem extends FileSystem {
     // Constructors of Arrow-1.0.Arrow.SubTreeFileSystem
 
     constructor(config?: SubTreeFileSystem.ConstructorProperties) 
-    constructor(base_path: string | null, base_file_system: FileSystem) 
-    static new(base_path: string | null, base_file_system: FileSystem): SubTreeFileSystem
+    constructor(base_path: string, base_file_system: FileSystem) 
+    static new(base_path: string, base_file_system: FileSystem): SubTreeFileSystem
     _init(config?: SubTreeFileSystem.ConstructorProperties): void
 }
 
@@ -13492,7 +13492,7 @@ export interface Tensor {
 
     equal(other_tensor: Tensor): boolean
     get_buffer(): Buffer
-    get_dimension_name(i: number): string | null
+    get_dimension_name(i: number): string
     get_n_dimensions(): number
     get_shape(): number[]
     get_size(): number

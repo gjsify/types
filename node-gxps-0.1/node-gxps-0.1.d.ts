@@ -80,7 +80,7 @@ const MINOR_VERSION: number
 /**
  * The version number of the GXPS library as a string
  */
-const VERSION_STRING: string | null
+const VERSION_STRING: string
 function errorQuark(): GLib.Quark
 module CoreProperties {
 
@@ -112,18 +112,18 @@ interface CoreProperties extends Gio.Initable {
      * Get the category.
      * @returns a string containing the category or %NULL
      */
-    getCategory(): string | null
+    getCategory(): string
     /**
      * Get the status of the content (e.g. Draft, Reviewed, Final)
      * @returns a string containing the status of the content or %NULL
      */
-    getContentStatus(): string | null
+    getContentStatus(): string
     /**
      * Get the type of content represented, generally defined by a
      * specific use and intended audience. This is not the MIME-Type.
      * @returns a string containing the type of content or %NULL
      */
-    getContentType(): string | null
+    getContentType(): string
     /**
      * Get the creating date.
      * @returns the creating date as a <type>time_t</type> or -1.
@@ -133,32 +133,32 @@ interface CoreProperties extends Gio.Initable {
      * Get the creator.
      * @returns a string containing the creator or %NULL
      */
-    getCreator(): string | null
+    getCreator(): string
     /**
      * Get the description.
      * @returns a string containing the description or %NULL
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Get the unique identifier.
      * @returns a string containing the identifier or %NULL
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * Get the keywords.
      * @returns a string containing the keywords or %NULL
      */
-    getKeywords(): string | null
+    getKeywords(): string
     /**
      * Get the language.
      * @returns a string containing the language or %NULL
      */
-    getLanguage(): string | null
+    getLanguage(): string
     /**
      * Get the user who performed the last modification.
      * @returns a string containing the user who performed the    last modification or %NULL
      */
-    getLastModifiedBy(): string | null
+    getLastModifiedBy(): string
     /**
      * Get the date of the last printing.
      * @returns the date of the last printing as a <type>time_t</type> or -1.
@@ -173,22 +173,22 @@ interface CoreProperties extends Gio.Initable {
      * Get the revision number.
      * @returns a string containing the revision number or %NULL
      */
-    getRevision(): string | null
+    getRevision(): string
     /**
      * Get the subject.
      * @returns a string containing the subject or %NULL
      */
-    getSubject(): string | null
+    getSubject(): string
     /**
      * Get the title.
      * @returns a string containing the title or %NULL
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Get the version number.
      * @returns a string containing the version number or %NULL
      */
-    getVersion(): string | null
+    getVersion(): string
 
     // Class property signals of GXPS-0.1.GXPS.CoreProperties
 
@@ -271,7 +271,7 @@ interface Document extends Gio.Initable {
      * @param anchor the name of an anchor
      * @returns the page index of the given anchor.
      */
-    getPageForAnchor(anchor: string | null): number
+    getPageForAnchor(anchor: string): number
     /**
      * Gets the typical size of the page at index `n_page` in `doc` document.
      * This function is useful to get the advisory size of pages in a document
@@ -573,7 +573,7 @@ interface Page extends Gio.Initable {
      * @param anchor the name of an anchor in `page`
      * @returns %TRUE if the destination for the anchor was found in page     and @area contains the rectangle, %FALSE otherwise.
      */
-    getAnchorDestination(anchor: string | null): [ /* returnType */ boolean, /* area */ cairo.Rectangle ]
+    getAnchorDestination(anchor: string): [ /* returnType */ boolean, /* area */ cairo.Rectangle ]
     /**
      * Gets a list of #GXPSLink items that map from a location
      * in `page` to a #GXPSLinkTarget. Items in the list should
@@ -785,12 +785,12 @@ interface LinkTarget {
      * `target` does not have an anchor.
      * @returns the name of the anchor of @target.
      */
-    getAnchor(): string | null
+    getAnchor(): string
     /**
      * Gets the URI `target` links to.
      * @returns the URI of @target.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Gets whether `target` destination is internal or not.
      * @returns %TRUE if the #GXPSLinkTarget points to an internal location,     %FALSE if it points to a external one.
@@ -827,7 +827,7 @@ interface OutlineIter {
      * more details.
      * @returns the description of the outline item
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the #GXPSLinkTarget of the outline item associated with `iter`.
      * See gxps_document_structure_outline_iter_init() for

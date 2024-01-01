@@ -1,6 +1,6 @@
 {
     "name": "@girs/gnomeautoargtk-0.1",
-    "version": "0.1.0-3.2.6",
+    "version": "0.1.0-3.2.7",
     "description": "GJS TypeScript type definitions for GnomeAutoarGtk-0.1, generated from library version 0.1.0",
     "type": "module",
     "module": "gnomeautoargtk-0.1.js",

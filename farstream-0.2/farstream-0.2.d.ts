@@ -273,7 +273,7 @@ enum StreamDirection {
 /**
  * A format that can be used in printf like format strings to format a FsCodec
  */
-const CODEC_FORMAT: string | null
+const CODEC_FORMAT: string
 /**
  * If the id of a #FsCodec is #FS_CODEC_ID_ANY, then it will be replaced
  * with a dynamic payload type at runtime
@@ -288,7 +288,7 @@ const CODEC_ID_DISABLE: number
  * A format that can be used in printf like format strings to format a
  * FsRtpHeaderExtension
  */
-const RTP_HEADER_EXTENSION_FORMAT: string | null
+const RTP_HEADER_EXTENSION_FORMAT: string
 /**
  * Copies a GList of #FsCandidate and its contents
  * @param candidate_list A GList of #FsCandidate
@@ -335,14 +335,14 @@ function codec_list_copy(codec_list: Codec[]): Codec[]
  * @param filename Name of the #GKeyFile to read the codecs parameters from
  * @returns  The #GList of #FsCodec or %NULL if the keyfile was empty or an error occured.
  */
-function codec_list_from_keyfile(filename: string | null): Codec[]
+function codec_list_from_keyfile(filename: string): Codec[]
 function error_quark(): GLib.Quark
 /**
  * Gives a user-printable string representing the media type
  * @param media_type A media type
  * @returns a static string representing the media type
  */
-function media_type_to_string(media_type: MediaType): string | null
+function media_type_to_string(media_type: MediaType): string
 /**
  * Parses a "farstream-farstream" message and checks if it matches
  * the `object` parameters.
@@ -350,7 +350,7 @@ function media_type_to_string(media_type: MediaType): string | null
  * @param message a #GstMessage to parse
  * @returns %TRUE if the message matches the object and is valid.
  */
-function parse_error(object: GObject.Object, message: Gst.Message): [ /* returnType */ boolean, /* error */ Error, /* error_msg */ string | null ]
+function parse_error(object: GObject.Object, message: Gst.Message): [ /* returnType */ boolean, /* error */ Error, /* error_msg */ string ]
 /**
  * Does a deep copy of a #GList of #FsRtpHeaderExtension
  * @param extensions    a #GList of #FsRtpHeaderExtension
@@ -390,7 +390,7 @@ function rtp_header_extension_list_copy(extensions: RtpHeaderExtension[]): RtpHe
  * @param media_type The media type for which to get header extensions
  * @returns a #GList of #FsRtpHeaderExtension that must be freed with fs_rtp_header_extension_list_destroy()
  */
-function rtp_header_extension_list_from_keyfile(filename: string | null, media_type: MediaType): RtpHeaderExtension[]
+function rtp_header_extension_list_from_keyfile(filename: string, media_type: MediaType): RtpHeaderExtension[]
 /**
  * These default codec preferences should work with the elements that are
  * available in the main GStreamer element repositories.
@@ -465,7 +465,7 @@ interface Conference extends Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -489,7 +489,7 @@ interface Conference extends Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -510,7 +510,7 @@ interface Conference extends Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 
@@ -649,7 +649,7 @@ interface ElementAddedNotifier {
      * @param filename The name of the keyfile to use
      * @returns %TRUE if the file was successfully loaded, %FALSE otherwise
      */
-    set_properties_from_file(filename: string | null): boolean
+    set_properties_from_file(filename: string): boolean
     /**
      * Using a #GKeyFile where the groups are the element's type or name
      * and the key=value are the property and its value, this function
@@ -818,7 +818,7 @@ class Plugin extends GObject.TypeModule {
      * @param type_suffix Get list of plugins with this type suffix
      * @returns a newly allocated NULL terminated array of strings or %NULL if no strings were found. It should be freed with g_strfreev().
      */
-    static list_available(type_suffix: string | null): string[]
+    static list_available(type_suffix: string): string[]
 }
 
 module Session {
@@ -1071,14 +1071,14 @@ interface Session {
      * @param error_no The number of the error of type #FsError
      * @param error_msg Error message
      */
-    emit_error(error_no: number, error_msg: string | null): void
+    emit_error(error_no: number, error_msg: string): void
     /**
      * Returns the GType of the stream transmitter, bindings can use it
      * to validate/convert the parameters passed to fs_session_new_stream().
      * @param transmitter The name of the transmitter
      * @returns The #GType of the stream transmitter
      */
-    get_stream_transmitter_type(transmitter: string | null): GObject.GType
+    get_stream_transmitter_type(transmitter: string): GObject.GType
     /**
      * Get the list of all available transmitters for this session.
      * @returns a newly-allocagted %NULL terminated array of named of transmitters or %NULL if no transmitter is needed for this type of session. It should be freed with g_strfreev().
@@ -1217,7 +1217,7 @@ interface Session {
      * @param transmitter The name of the transmitter
      * @returns The #GType of the stream transmitter
      */
-    vfunc_get_stream_transmitter_type(transmitter: string | null): GObject.GType
+    vfunc_get_stream_transmitter_type(transmitter: string): GObject.GType
     /**
      * Get the list of all available transmitters for this session.
      * @virtual 
@@ -1555,7 +1555,7 @@ interface Stream {
      * @param error_no The number of the error
      * @param error_msg Error message to be displayed to user
      */
-    emit_error(error_no: number, error_msg: string | null): void
+    emit_error(error_no: number, error_msg: string): void
     /**
      * Emits the #FsStream::src-pad-added" signal, it should only be
      * called by subclasses.
@@ -1640,7 +1640,7 @@ interface Stream {
      * @param stream_transmitter_parameters    an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
-    set_transmitter(transmitter: string | null, stream_transmitter_parameters: GObject.Parameter[] | null): boolean
+    set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean
     /**
      * Set the transmitter to use for this stream. This function will only succeed
      * once.
@@ -1654,7 +1654,7 @@ interface Stream {
      * @param stream_transmitter_parameters    A #GHashTable of string->GValue containing the parameters.
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
-    set_transmitter_ht(transmitter: string | null, stream_transmitter_parameters: GLib.HashTable | null): boolean
+    set_transmitter_ht(transmitter: string, stream_transmitter_parameters: GLib.HashTable | null): boolean
 
     // Own virtual methods of Farstream-0.2.Farstream.Stream
 
@@ -1725,7 +1725,7 @@ interface Stream {
      * @param stream_transmitter_parameters    an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
-    vfunc_set_transmitter(transmitter: string | null, stream_transmitter_parameters: GObject.Parameter[] | null): boolean
+    vfunc_set_transmitter(transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null): boolean
 
     // Own signals of Farstream-0.2.Farstream.Stream
 
@@ -1894,7 +1894,7 @@ interface StreamTransmitter {
      * @param error_no The number of the error
      * @param error_msg Error message (for the programmer)
      */
-    emit_error(error_no: number, error_msg: string | null): void
+    emit_error(error_no: number, error_msg: string): void
     /**
      * This function forces data to be sent immediately to the selected remote
      * candidate, by-passing any connectivity checks. There should be at most
@@ -2113,7 +2113,7 @@ interface Transmitter {
      * @param error_no The number of the error
      * @param error_msg Error message to be displayed to user
      */
-    emit_error(error_no: number, error_msg: string | null): void
+    emit_error(error_no: number, error_msg: string): void
     /**
      * This function returns the GObject type for the stream transmitter.
      * This is meant for bindings that need to introspect the type of arguments
@@ -2204,7 +2204,7 @@ class Transmitter extends GObject.Object {
      * @param tos The Type of Service of the socket, max is 255
      * @returns a newly-created #FsTransmitter of the requested type    (or NULL if there is an error)
      */
-    constructor(type: string | null, components: number, tos: number) 
+    constructor(type: string, components: number, tos: number) 
     /**
      * This function creates a new transmitter of the requested type.
      * It will load the appropriate plugin as required.
@@ -2214,7 +2214,7 @@ class Transmitter extends GObject.Object {
      * @param tos The Type of Service of the socket, max is 255
      * @returns a newly-created #FsTransmitter of the requested type    (or NULL if there is an error)
      */
-    static new(type: string | null, components: number, tos: number): Transmitter
+    static new(type: string, components: number, tos: number): Transmitter
     _init(config?: Transmitter.ConstructorProperties): void
     /**
      * Get the list of all available transmitters
@@ -2323,7 +2323,7 @@ class Candidate {
      * @param port the UDP/TCP port
      * @returns a newly-allocated #FsCandidate
      */
-    constructor(foundation: string | null, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number) 
+    constructor(foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number) 
     /**
      * Allocates a new #FsCandidate, the rest of the fields can be optionally
      * filled manually. See also fs_candidate_new_full()
@@ -2336,7 +2336,7 @@ class Candidate {
      * @param port the UDP/TCP port
      * @returns a newly-allocated #FsCandidate
      */
-    static new(foundation: string | null, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number): Candidate
+    static new(foundation: string, component_id: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number): Candidate
     /**
      * Allocates a new #FsCandidate, filling all the fields. See also
      * fs_candidate_new()
@@ -2355,7 +2355,7 @@ class Candidate {
      * @param ttl The TTL used when sending Multicast packet (0 = auto)
      * @returns a newly-allocated #FsCandidate
      */
-    static new_full(foundation: string | null, component_id: number, ip: string | null, port: number, base_ip: string | null, base_port: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: string | null, password: string | null, ttl: number): Candidate
+    static new_full(foundation: string, component_id: number, ip: string | null, port: number, base_ip: string | null, base_port: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: string | null, password: string | null, ttl: number): Candidate
 }
 
 interface Codec {
@@ -2414,13 +2414,13 @@ interface Codec {
      * @param subtype The subtype of the feedback parameter
      * @param extra_params The extra_params of the feeback parameter
      */
-    add_feedback_parameter(type: string | null, subtype: string | null, extra_params: string | null): void
+    add_feedback_parameter(type: string, subtype: string, extra_params: string): void
     /**
      * This function adds an new optional parameter to a #FsCodec
      * @param name The name of the optional parameter
      * @param value The extra_params of the optional parameter
      */
-    add_optional_parameter(name: string | null, value: string | null): void
+    add_optional_parameter(name: string, value: string): void
     /**
      * Compare two codecs, it will declare two codecs to be identical even
      * if their optional parameters are in a different order. %NULL encoding names
@@ -2450,7 +2450,7 @@ interface Codec {
      * @param value The value of the parameter to search for or %NULL for any value
      * @returns the #FsCodecParameter from the #FsCodec or %NULL
      */
-    get_optional_parameter(name: string | null, value: string | null): CodecParameter
+    get_optional_parameter(name: string, value: string | null): CodecParameter
     /**
      * Removes an optional parameter from a codec.
      * 
@@ -2493,7 +2493,7 @@ class Codec {
      * @param clock_rate The clock rate this codec encodes at, if applicable
      * @returns A newly allocated #FsCodec
      */
-    constructor(id: number, encoding_name: string | null, media_type: MediaType, clock_rate: number) 
+    constructor(id: number, encoding_name: string, media_type: MediaType, clock_rate: number) 
     /**
      * Allocates and initializes a #FsCodec structure
      * @constructor 
@@ -2503,7 +2503,7 @@ class Codec {
      * @param clock_rate The clock rate this codec encodes at, if applicable
      * @returns A newly allocated #FsCodec
      */
-    static new(id: number, encoding_name: string | null, media_type: MediaType, clock_rate: number): Codec
+    static new(id: number, encoding_name: string, media_type: MediaType, clock_rate: number): Codec
 }
 
 interface CodecParameter {
@@ -2753,7 +2753,7 @@ class RtpHeaderExtension {
      * @param uri The URI that defines this extension
      * @returns a new #FsRtpHeaderExtension
      */
-    constructor(id: number, direction: StreamDirection, uri: string | null) 
+    constructor(id: number, direction: StreamDirection, uri: string) 
     /**
      * Creates a new #FsRtpHeaderExtension
      * @constructor 
@@ -2762,7 +2762,7 @@ class RtpHeaderExtension {
      * @param uri The URI that defines this extension
      * @returns a new #FsRtpHeaderExtension
      */
-    static new(id: number, direction: StreamDirection, uri: string | null): RtpHeaderExtension
+    static new(id: number, direction: StreamDirection, uri: string): RtpHeaderExtension
 }
 
 interface SessionClass {
@@ -2780,7 +2780,7 @@ interface SessionClass {
     set_send_codec: (session: Session, send_codec: Codec) => boolean
     set_codec_preferences: (session: Session, codec_preferences: Codec[] | null) => boolean
     list_transmitters: (session: Session) => string[]
-    get_stream_transmitter_type: (session: Session, transmitter: string | null) => GObject.GType
+    get_stream_transmitter_type: (session: Session, transmitter: string) => GObject.GType
     codecs_need_resend: (session: Session, old_codecs: Codec[] | null, new_codecs: Codec[] | null) => Codec[]
     set_allowed_caps: (session: Session, sink_caps: Gst.Caps | null, src_caps: Gst.Caps | null) => boolean
     set_encryption_parameters: (session: Session, parameters: Gst.Structure | null) => boolean
@@ -2820,7 +2820,7 @@ interface StreamClass {
     force_remote_candidates: (stream: Stream, remote_candidates: Candidate[]) => boolean
     set_remote_codecs: (stream: Stream, remote_codecs: Codec[]) => boolean
     add_id: (stream: Stream, id: number) => void
-    set_transmitter: (stream: Stream, transmitter: string | null, stream_transmitter_parameters: GObject.Parameter[] | null) => boolean
+    set_transmitter: (stream: Stream, transmitter: string, stream_transmitter_parameters: GObject.Parameter[] | null) => boolean
     set_decryption_parameters: (stream: Stream, parameters: Gst.Structure) => boolean
 }
 

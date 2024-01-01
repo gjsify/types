@@ -36,7 +36,7 @@ const DESKTOP_PLATFORM_VERSION: number
  * @param mtime the mtime
  * @returns TRUE if the thumbnail has the right @uri and @mtime
  */
-function desktopThumbnailIsValid(pixbuf: GdkPixbuf.Pixbuf, uri: string | null, mtime: number): boolean
+function desktopThumbnailIsValid(pixbuf: GdkPixbuf.Pixbuf, uri: string, mtime: number): boolean
 /**
  * Returns the filename that a thumbnail of size `size` for `uri` would have.
  * This function is threadsafe and does no blocking I/O.
@@ -44,7 +44,7 @@ function desktopThumbnailIsValid(pixbuf: GdkPixbuf.Pixbuf, uri: string | null, m
  * @param size a thumbnail size
  * @returns an absolute filename
  */
-function desktopThumbnailPathForUri(uri: string | null, size: DesktopThumbnailSize): string | null
+function desktopThumbnailPathForUri(uri: string, size: DesktopThumbnailSize): string | null
 /**
  * Gets all locales.
  * @returns    a newly allocated %NULL-terminated string array containing the   all locales. Free with g_strfreev().
@@ -57,7 +57,7 @@ function getAllLocales(): string[]
  * @param translation a locale string
  * @returns the country name. Caller takes ownership.
  */
-function getCountryFromCode(code: string | null, translation: string | null): string | null
+function getCountryFromCode(code: string, translation: string | null): string | null
 /**
  * Gets the country description for `locale`. If `translation` is
  * provided the returned string is translated accordingly.
@@ -65,14 +65,14 @@ function getCountryFromCode(code: string | null, translation: string | null): st
  * @param translation a locale string
  * @returns the country description. Caller takes ownership.
  */
-function getCountryFromLocale(locale: string | null, translation: string | null): string | null
+function getCountryFromLocale(locale: string, translation: string | null): string | null
 /**
  * Gets the default input source's type and identifier for a given
  * locale.
  * @param locale a locale string
  * @returns %TRUE if a input source exists or %FALSE otherwise.
  */
-function getInputSourceFromLocale(locale: string | null): [ /* returnType */ boolean, /* type */ string | null, /* id */ string | null ]
+function getInputSourceFromLocale(locale: string): [ /* returnType */ boolean, /* type */ string, /* id */ string ]
 /**
  * Gets the language name for `code`. If `translation` is provided the
  * returned string is translated accordingly.
@@ -80,7 +80,7 @@ function getInputSourceFromLocale(locale: string | null): [ /* returnType */ boo
  * @param translation a locale string
  * @returns the language name. Caller takes ownership.
  */
-function getLanguageFromCode(code: string | null, translation: string | null): string | null
+function getLanguageFromCode(code: string, translation: string | null): string | null
 /**
  * Gets the language description for `locale`. If `translation` is
  * provided the returned string is translated accordingly.
@@ -88,7 +88,7 @@ function getLanguageFromCode(code: string | null, translation: string | null): s
  * @param translation a locale string
  * @returns the language description. Caller takes ownership.
  */
-function getLanguageFromLocale(locale: string | null, translation: string | null): string | null
+function getLanguageFromLocale(locale: string, translation: string | null): string | null
 /**
  * Returns an integer with the major version of GNOME. Useful for
  * dynamic languages like Javascript or Python (static languages like
@@ -105,20 +105,20 @@ function getPlatformVersion(): number
  * @param translation a locale string
  * @returns the translated modifier string. Caller takes ownership.
  */
-function getTranslatedModifier(modifier: string | null, translation: string | null): string | null
+function getTranslatedModifier(modifier: string, translation: string | null): string | null
 /**
  * Returns %TRUE if there are translations for language `code`.
  * @param code an ISO 639 code string
  * @returns %TRUE if there are translations for language @code.
  */
-function languageHasTranslations(code: string | null): boolean
+function languageHasTranslations(code: string): boolean
 /**
  * Gets the normalized locale string in the form
  * [language[_country][.codeset][`modifier]`] for `name`.
  * @param locale a locale string
  * @returns normalized locale string. Caller takes ownership.
  */
-function normalizeLocale(locale: string | null): string | null
+function normalizeLocale(locale: string): string | null
 /**
  * Extracts the various components of a locale string in XPG format.
  * ([language[_country][.codeset][`modifier]`]). See
@@ -126,7 +126,7 @@ function normalizeLocale(locale: string | null): string | null
  * @param locale a locale string
  * @returns %TRUE if parsing was successful.
  */
-function parseLocale(locale: string | null): [ /* returnType */ boolean, /* languageCodep */ string | null, /* countryCodep */ string | null, /* codesetp */ string | null, /* modifierp */ string | null ]
+function parseLocale(locale: string): [ /* returnType */ boolean, /* languageCodep */ string, /* countryCodep */ string | null, /* codesetp */ string | null, /* modifierp */ string | null ]
 /**
  * If the current process is running inside a user systemd instance, then move
  * the launched PID into a transient scope. The given `name` will be used to
@@ -154,7 +154,7 @@ function parseLocale(locale: string | null): [ /* returnType */ boolean, /* lang
  * @param cancellable #GCancellable to use
  * @param callback Callback to call when the operation is done
  */
-function startSystemdScope(name: string | null, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+function startSystemdScope(name: string, pid: number, description: string | null, connection: Gio.DBusConnection | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Finish an asynchronous operation to create a transient scope that was
  * started with gnome_start_systemd_scope().
@@ -200,7 +200,7 @@ interface DesktopThumbnailFactory {
      * @param mtime the mtime of the file
      * @returns TRUE if the file can be thumbnailed.
      */
-    canThumbnail(uri: string | null, mimeType: string | null, mtime: number): boolean
+    canThumbnail(uri: string, mimeType: string, mtime: number): boolean
     /**
      * Creates a failed thumbnail for the file so that we don't try
      * to re-thumbnail the file later.
@@ -211,7 +211,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a GCancellable object, or NULL
      * @returns TRUE if everything went fine; FALSE if there was an error.
      */
-    createFailedThumbnail(uri: string | null, mtime: number, cancellable: Gio.Cancellable | null): boolean
+    createFailedThumbnail(uri: string, mtime: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_create_failed_thumbnail()
      * 
@@ -221,7 +221,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @param callback a function that will be called when the task has ended
      */
-    createFailedThumbnailAsync(uri: string | null, originalMtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createFailedThumbnailAsync(uri: string, originalMtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     createFailedThumbnailFinish(result: Gio.AsyncResult): boolean
     /**
      * Tries to generate a thumbnail for the specified file. If it succeeds
@@ -233,7 +233,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a #GCancellable object or NULL
      * @returns thumbnail pixbuf if thumbnailing succeeded, %NULL otherwise and error will be set
      */
-    generateThumbnail(uri: string | null, mimeType: string | null, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf
+    generateThumbnail(uri: string, mimeType: string, cancellable: Gio.Cancellable | null): GdkPixbuf.Pixbuf
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_generate_thumbnail()
      * 
@@ -243,7 +243,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @param callback a function that will be called when the task has ended
      */
-    generateThumbnailAsync(uri: string | null, mimeType: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    generateThumbnailAsync(uri: string, mimeType: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     generateThumbnailFinish(result: Gio.AsyncResult): GdkPixbuf.Pixbuf
     /**
      * Tries to locate an failed thumbnail for the file specified. Writing
@@ -255,7 +255,7 @@ interface DesktopThumbnailFactory {
      * @param mtime the mtime of the file
      * @returns TRUE if there is a failed thumbnail for the file.
      */
-    hasValidFailedThumbnail(uri: string | null, mtime: number): boolean
+    hasValidFailedThumbnail(uri: string, mtime: number): boolean
     /**
      * Tries to locate an existing thumbnail for the file specified.
      * 
@@ -264,7 +264,7 @@ interface DesktopThumbnailFactory {
      * @param mtime the mtime of the file
      * @returns The absolute path of the thumbnail, or %NULL if none exist.
      */
-    lookup(uri: string | null, mtime: number): string | null
+    lookup(uri: string, mtime: number): string | null
     /**
      * Saves `thumbnail` at the right place. If the save fails a
      * failed thumbnail is written.
@@ -276,7 +276,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a GCancellable object, or NULL
      * @returns TRUE if everything went fine; FALSE if there was an error.
      */
-    saveThumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, originalMtime: number, cancellable: Gio.Cancellable | null): boolean
+    saveThumbnail(thumbnail: GdkPixbuf.Pixbuf, uri: string, originalMtime: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronous version of gnome_desktop_thumbnail_factory_save_thumbnail()
      * 
@@ -287,7 +287,7 @@ interface DesktopThumbnailFactory {
      * @param cancellable a Cancellable object
      * @param callback a function that will be called when the task has ended
      */
-    saveThumbnailAsync(thumbnail: GdkPixbuf.Pixbuf, uri: string | null, originalMtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    saveThumbnailAsync(thumbnail: GdkPixbuf.Pixbuf, uri: string, originalMtime: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     saveThumbnailFinish(result: Gio.AsyncResult): boolean
 
     // Class property signals of GnomeDesktop-4.0.GnomeDesktop.DesktopThumbnailFactory
@@ -424,7 +424,7 @@ interface PnpIds {
      * @param pnpId the PNP ID to look for
      * @returns a new string representing the manufacturer name, or %NULL when not found.
      */
-    getPnpId(pnpId: string | null): string | null
+    getPnpId(pnpId: string): string | null
 
     // Class property signals of GnomeDesktop-4.0.GnomeDesktop.PnpIds
 
@@ -527,7 +527,7 @@ interface WallClock {
      * according to the user settings.
      * @returns the time of the clock as a string.      This string points to internally allocated storage and      must not be freed, modified or stored.
      */
-    getClock(): string | null
+    getClock(): string
     /**
      * Returns the current local time zone used by this clock.
      * @returns the #GTimeZone of the clock.
@@ -626,8 +626,8 @@ interface XkbInfo {
 
     // Owm methods of GnomeDesktop-4.0.GnomeDesktop.XkbInfo
 
-    descriptionForGroup(groupId: string | null): string | null
-    descriptionForOption(groupId: string | null, id: string | null): string | null
+    descriptionForGroup(groupId: string): string
+    descriptionForOption(groupId: string, id: string): string
     /**
      * Returns a list of all layout identifiers we know about.
      * @returns the list of layout names. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
@@ -644,7 +644,7 @@ interface XkbInfo {
      * @param layoutId a layout identifier
      * @returns the list of ISO 639 code strings. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    getLanguagesForLayout(layoutId: string | null): string[]
+    getLanguagesForLayout(layoutId: string): string[]
     /**
      * Retrieves information about a layout. Both `display_name` and
      * `short_name` are suitable to show in UIs and might be localized if
@@ -659,28 +659,28 @@ interface XkbInfo {
      * @param id layout's identifier about which to retrieve the info
      * @returns %TRUE if the layout exists or %FALSE otherwise.
      */
-    getLayoutInfo(id: string | null): [ /* returnType */ boolean, /* displayName */ string | null, /* shortName */ string | null, /* xkbLayout */ string | null, /* xkbVariant */ string | null ]
+    getLayoutInfo(id: string): [ /* returnType */ boolean, /* displayName */ string | null, /* shortName */ string | null, /* xkbLayout */ string | null, /* xkbVariant */ string | null ]
     /**
      * Returns a list of all layout identifiers we know about for
      * `country_code`.
      * @param countryCode an ISO 3166 code string
      * @returns the list of layout ids. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    getLayoutsForCountry(countryCode: string | null): string[]
+    getLayoutsForCountry(countryCode: string): string[]
     /**
      * Returns a list of all layout identifiers we know about for
      * `language_code`.
      * @param languageCode an ISO 639 code string
      * @returns the list of layout ids. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    getLayoutsForLanguage(languageCode: string | null): string[]
+    getLayoutsForLanguage(languageCode: string): string[]
     /**
      * Returns a list of all option identifiers we know about for group
      * `group_id`.
      * @param groupId group's identifier about which to retrieve the options
      * @returns the list of option ids. The caller takes ownership of the #GList but not of the strings themselves, those are internally allocated and must not be modified.
      */
-    getOptionsForGroup(groupId: string | null): string[]
+    getOptionsForGroup(groupId: string): string[]
 
     // Own signals of GnomeDesktop-4.0.GnomeDesktop.XkbInfo
 

@@ -47,7 +47,7 @@ interface MessageCallback {
     (message: Message): void
 }
 interface RefNameEditingDone {
-    (newName: string | null, cancelled: boolean): void
+    (newName: string, cancelled: boolean): void
 }
 module Action {
 
@@ -140,12 +140,12 @@ interface Activity extends GObject.Object, UIElement {
 
     // Owm methods of GitgExt-1.0.GitgExt.Activity
 
-    // Has conflict: isDefaultFor(action: string | null): boolean
+    // Has conflict: isDefaultFor(action: string): boolean
     // Has conflict: onKeyPressed(event: Gdk.EventKey): boolean
 
     // Own virtual methods of GitgExt-1.0.GitgExt.Activity
 
-    isDefaultFor(action: string | null): boolean
+    isDefaultFor(action: string): boolean
     onKeyPressed(event: Gdk.EventKey): boolean
 
     // Class property signals of GitgExt-1.0.GitgExt.Activity
@@ -242,12 +242,12 @@ interface Application extends GObject.Object {
     // Owm methods of GitgExt-1.0.GitgExt.Application
 
     // Has conflict: getVerifiedCommitter(): Ggit.Signature | null
-    // Has conflict: getActivityById(id: string | null): Activity | null
-    // Has conflict: setActivityById(id: string | null): Activity | null
+    // Has conflict: getActivityById(id: string): Activity | null
+    // Has conflict: setActivityById(id: string): Activity | null
     // Has conflict: userQuery(query: UserQuery): void
     // Has conflict: userQueryAsync(query: UserQuery, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: userQueryFinish(res: Gio.AsyncResult): Gtk.ResponseType
-    // Has conflict: showInfobar(primaryMsg: string | null, secondaryMsg: string | null, type: Gtk.MessageType): void
+    // Has conflict: showInfobar(primaryMsg: string, secondaryMsg: string, type: Gtk.MessageType): void
     // Has conflict: openNew(repository: Ggit.Repository, hint: string | null): Application
     // Has conflict: openRepository(path: Gio.File): void
     // Has conflict: getRepository(): Gitg.Repository | null
@@ -263,12 +263,12 @@ interface Application extends GObject.Object {
     // Own virtual methods of GitgExt-1.0.GitgExt.Application
 
     getVerifiedCommitter(): Ggit.Signature | null
-    getActivityById(id: string | null): Activity | null
-    setActivityById(id: string | null): Activity | null
+    getActivityById(id: string): Activity | null
+    setActivityById(id: string): Activity | null
     userQuery(query: UserQuery): void
     userQueryAsync(query: UserQuery, callback: Gio.AsyncReadyCallback | null): void
     userQueryFinish(res: Gio.AsyncResult): Gtk.ResponseType
-    showInfobar(primaryMsg: string | null, secondaryMsg: string | null, type: Gtk.MessageType): void
+    showInfobar(primaryMsg: string, secondaryMsg: string, type: Gtk.MessageType): void
     openNew(repository: Ggit.Repository, hint: string | null): Application
     openRepository(path: Gio.File): void
     getRepository(): Gitg.Repository | null
@@ -1101,11 +1101,11 @@ interface RemoteLookup extends GObject.Object {
 
     // Owm methods of GitgExt-1.0.GitgExt.RemoteLookup
 
-    // Has conflict: lookup(name: string | null): Gitg.Remote | null
+    // Has conflict: lookup(name: string): Gitg.Remote | null
 
     // Own virtual methods of GitgExt-1.0.GitgExt.RemoteLookup
 
-    lookup(name: string | null): Gitg.Remote | null
+    lookup(name: string): Gitg.Remote | null
 
     // Class property signals of GitgExt-1.0.GitgExt.RemoteLookup
 
@@ -1162,7 +1162,7 @@ interface Searchable extends GObject.Object, Activity {
     // Owm methods of GitgExt-1.0.GitgExt.Searchable
 
     // Has conflict: getSearchText(): string | null
-    // Has conflict: setSearchText(value: string | null): void
+    // Has conflict: setSearchText(value: string): void
     // Has conflict: getSearchVisible(): boolean
     // Has conflict: setSearchVisible(value: boolean): void
     // Has conflict: getSearchAvailable(): boolean
@@ -1171,7 +1171,7 @@ interface Searchable extends GObject.Object, Activity {
     // Own virtual methods of GitgExt-1.0.GitgExt.Searchable
 
     getSearchText(): string | null
-    setSearchText(value: string | null): void
+    setSearchText(value: string): void
     getSearchVisible(): boolean
     setSearchVisible(value: boolean): void
     getSearchAvailable(): boolean
@@ -1561,7 +1561,7 @@ interface MessageBus {
     lookup(id: MessageId): GObject.GType
     register(messageType: GObject.GType, id: MessageId): void
     unregister(id: MessageId): void
-    unregisterAll(objectPath: string | null): void
+    unregisterAll(objectPath: string): void
     isRegistered(id: MessageId): boolean
     connect(id: MessageId, callback: MessageCallback): number
     disconnect(id: number): void
@@ -1649,10 +1649,10 @@ interface MessageId {
     hash(): number
     equal(other: MessageId): boolean
     copy(): MessageId
-    getObjectPath(): string | null
-    setObjectPath(value: string | null): void
-    getMethod(): string | null
-    setMethod(value: string | null): void
+    getObjectPath(): string
+    setObjectPath(value: string): void
+    getMethod(): string
+    setMethod(value: string): void
     getId(): string | null
 
     // Class property signals of GitgExt-1.0.GitgExt.MessageId
@@ -1694,10 +1694,10 @@ class MessageId extends GObject.Object {
     // Constructors of GitgExt-1.0.GitgExt.MessageId
 
     constructor(config?: MessageId.ConstructorProperties) 
-    constructor(objectPath: string | null, method: string | null) 
-    static new(objectPath: string | null, method: string | null): MessageId
+    constructor(objectPath: string, method: string) 
+    static new(objectPath: string, method: string): MessageId
     _init(config?: MessageId.ConstructorProperties): void
-    static validObjectPath(path: string | null): boolean
+    static validObjectPath(path: string): boolean
 }
 
 module Message {
@@ -1722,7 +1722,7 @@ interface Message {
 
     // Owm methods of GitgExt-1.0.GitgExt.Message
 
-    has(propname: string | null): boolean
+    has(propname: string): boolean
     getId(): MessageId
     setId(value: MessageId): void
 
@@ -1756,8 +1756,8 @@ class Message extends GObject.Object {
 
     constructor(config?: Message.ConstructorProperties) 
     _init(config?: Message.ConstructorProperties): void
-    static typeHas(type: GObject.GType, propname: string | null): boolean
-    static typeCheck(type: GObject.GType, propname: string | null, valueType: GObject.GType): boolean
+    static typeHas(type: GObject.GType, propname: string): boolean
+    static typeCheck(type: GObject.GType, propname: string, valueType: GObject.GType): boolean
 }
 
 interface UI {
@@ -1823,8 +1823,8 @@ class UserQueryResponse extends GObject.Object {
     // Constructors of GitgExt-1.0.GitgExt.UserQueryResponse
 
     constructor(config?: UserQueryResponse.ConstructorProperties) 
-    constructor(text: string | null, responseType: Gtk.ResponseType) 
-    static new(text: string | null, responseType: Gtk.ResponseType): UserQueryResponse
+    constructor(text: string, responseType: Gtk.ResponseType) 
+    static new(text: string, responseType: Gtk.ResponseType): UserQueryResponse
     _init(config?: UserQueryResponse.ConstructorProperties): void
 }
 
@@ -1884,10 +1884,10 @@ interface UserQuery {
 
     getResponses(): UserQueryResponse[]
     setResponses(value: UserQueryResponse[]): void
-    getTitle(): string | null
-    setTitle(value: string | null): void
-    getMessage(): string | null
-    setMessage(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
+    getMessage(): string
+    setMessage(value: string): void
     getMessageType(): Gtk.MessageType
     setMessageType(value: Gtk.MessageType): void
     getDefaultResponse(): Gtk.ResponseType
@@ -2133,7 +2133,7 @@ interface ActivityIface {
 
     // Own fields of GitgExt-1.0.GitgExt.ActivityIface
 
-    isDefaultFor: (self: Activity, action: string | null) => boolean
+    isDefaultFor: (self: Activity, action: string) => boolean
     onKeyPressed: (self: Activity, event: Gdk.EventKey) => boolean
 }
 
@@ -2149,12 +2149,12 @@ interface ApplicationIface {
     // Own fields of GitgExt-1.0.GitgExt.ApplicationIface
 
     getVerifiedCommitter: (self: Application) => Ggit.Signature | null
-    getActivityById: (self: Application, id: string | null) => Activity | null
-    setActivityById: (self: Application, id: string | null) => Activity | null
+    getActivityById: (self: Application, id: string) => Activity | null
+    setActivityById: (self: Application, id: string) => Activity | null
     userQuery: (self: Application, query: UserQuery) => void
     userQueryAsync: (self: Application, query: UserQuery, callback: Gio.AsyncReadyCallback | null) => void
     userQueryFinish: (self: Application, res: Gio.AsyncResult) => Gtk.ResponseType
-    showInfobar: (self: Application, primaryMsg: string | null, secondaryMsg: string | null, type: Gtk.MessageType) => void
+    showInfobar: (self: Application, primaryMsg: string, secondaryMsg: string, type: Gtk.MessageType) => void
     openNew: (self: Application, repository: Ggit.Repository, hint: string | null) => Application
     openRepository: (self: Application, path: Gio.File) => void
     getRepository: (self: Application) => Gitg.Repository | null
@@ -2326,7 +2326,7 @@ interface RemoteLookupIface {
 
     // Own fields of GitgExt-1.0.GitgExt.RemoteLookupIface
 
-    lookup: (self: RemoteLookup, name: string | null) => Gitg.Remote | null
+    lookup: (self: RemoteLookup, name: string) => Gitg.Remote | null
 }
 
 abstract class RemoteLookupIface {
@@ -2341,7 +2341,7 @@ interface SearchableIface {
     // Own fields of GitgExt-1.0.GitgExt.SearchableIface
 
     getSearchText: (self: Searchable) => string | null
-    setSearchText: (self: Searchable, value: string | null) => void
+    setSearchText: (self: Searchable, value: string) => void
     getSearchVisible: (self: Searchable) => boolean
     setSearchVisible: (self: Searchable, value: boolean) => void
     getSearchAvailable: (self: Searchable) => boolean

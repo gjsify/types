@@ -42,8 +42,8 @@ export enum FdMemoryFlags {
      */
     DONT_CLOSE,
 }
-export const ALLOCATOR_DMABUF: string | null
-export const ALLOCATOR_FD: string | null
+export const ALLOCATOR_DMABUF: string
+export const ALLOCATOR_FD: string
 /**
  * Constant that defines the caps feature name for DMA buffer sharing.
  * 
@@ -70,7 +70,7 @@ export const ALLOCATOR_FD: string | null
  * In this case the importer element should check all incoming memory using
  * gst_is_dmabuf_memory().
  */
-export const CAPS_FEATURE_MEMORY_DMABUF: string | null
+export const CAPS_FEATURE_MEMORY_DMABUF: string
 /**
  * Return the file descriptor associated with `mem`.
  * @param mem the memory to get the file descriptor

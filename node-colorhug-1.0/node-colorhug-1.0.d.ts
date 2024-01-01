@@ -1258,19 +1258,19 @@ const CMD_WRITE_FLASH: number
  * ColorHugALS    |      ×       |      ×
  */
 const CMD_WRITE_SRAM: number
-const DEVICE_GUID_COLORHUG: string | null
-const DEVICE_GUID_COLORHUG2: string | null
-const DEVICE_GUID_COLORHUG_ALS: string | null
-const DEVICE_GUID_COLORHUG_PLUS: string | null
+const DEVICE_GUID_COLORHUG: string
+const DEVICE_GUID_COLORHUG2: string
+const DEVICE_GUID_COLORHUG_ALS: string
+const DEVICE_GUID_COLORHUG_PLUS: string
 const DEVICE_USB_TIMEOUT: number
 const EEPROM_ADDR_RUNCODE: number
 const EEPROM_ADDR_RUNCODE_ALS: number
 const EP0_TRANSFER_SIZE: number
 const EP0_TRANSFER_SIZE_V2: number
-const FIRMWARE_ID_TOKEN1: string | null
-const FIRMWARE_ID_TOKEN2: string | null
-const FIRMWARE_ID_TOKEN_ALS: string | null
-const FIRMWARE_ID_TOKEN_PLUS: string | null
+const FIRMWARE_ID_TOKEN1: string
+const FIRMWARE_ID_TOKEN2: string
+const FIRMWARE_ID_TOKEN_ALS: string
+const FIRMWARE_ID_TOKEN_PLUS: string
 const FLASH_ERASE_BLOCK_SIZE: number
 const FLASH_RECONNECT_TIMEOUT: number
 const FLASH_TRANSFER_BLOCK_SIZE: number
@@ -1299,9 +1299,9 @@ const USB_PID_FIRMWARE_PLUS: number
 const USB_PID_LEGACY: number
 const USB_VID: number
 const USB_VID_LEGACY: number
-const WRITE_EEPROM_MAGIC: string | null
-function colorSelectToString(colorSelect: ColorSelect): string | null
-function commandToString(cmd: Cmd): string | null
+const WRITE_EEPROM_MAGIC: string
+function colorSelectToString(colorSelect: ColorSelect): string
+function commandToString(cmd: Cmd): string
 /**
  * Checks the firmware is suitable for the ColorHug device that is attached.
  * @param device 
@@ -1349,7 +1349,7 @@ function deviceGetError(device: GUsb.Device, cancellable: Gio.Cancellable | null
  * @param device A #GUsbDevice
  * @returns the GUID address, or %NULL for error
  */
-function deviceGetGuid(device: GUsb.Device): string | null
+function deviceGetGuid(device: GUsb.Device): string
 /**
  * Gets the illuminants from the device.
  * @param device A #GUsbDevice
@@ -1433,7 +1433,7 @@ function deviceLoadSram(device: GUsb.Device, cancellable: Gio.Cancellable | null
  * @returns A #ChDeviceMode
  */
 function deviceModeFromFirmware(data: number, dataLen: number): DeviceMode
-function deviceModeToString(deviceMode: DeviceMode): string | null
+function deviceModeToString(deviceMode: DeviceMode): string
 function deviceOpen(device: GUsb.Device): boolean
 /**
  * Opens the device ready for use.
@@ -1592,16 +1592,16 @@ function deviceWriteCommandFinish(device: GUsb.Device, res: Gio.AsyncResult): bo
  * @returns %TRUE for success
  */
 function deviceWriteSram(device: GUsb.Device, addr: number, data: any, cancellable: Gio.Cancellable | null): boolean
-function measureModeToString(measureMode: MeasureMode): string | null
-function multiplierToString(multiplier: FreqScale): string | null
+function measureModeToString(measureMode: MeasureMode): string
+function multiplierToString(multiplier: FreqScale): string
 /**
  * Parses a SHA1 hash from a string value.
  * @param value A string representation of the SHA1 hash
  * @param sha1 A %ChSha1
  * @returns %TRUE for success
  */
-function sha1Parse(value: string | null, sha1: Sha1): boolean
-function strerror(errorEnum: Error): string | null
+function sha1Parse(value: string, sha1: Sha1): boolean
+function strerror(errorEnum: Error): string
 module DeviceQueue {
 
     // Signal callback interfaces
@@ -1930,7 +1930,7 @@ interface DeviceQueue {
      * @param types The types the matrix supports
      * @param description The description of the calibration
      */
-    setCalibration(device: GUsb.Device, calibrationIndex: number, calibration: Colord.Mat3x3, types: number, description: string | null): void
+    setCalibration(device: GUsb.Device, calibrationIndex: number, calibration: Colord.Mat3x3, types: number, description: string): void
     setCalibrationCcmx(device: GUsb.Device, calibrationIndex: number, ccmx: Colord.It8): boolean
     /**
      * Sets the calibration map.
@@ -2025,7 +2025,7 @@ interface DeviceQueue {
      * @param device A #GUsbDevice
      * @param email An email address
      */
-    setOwnerEmail(device: GUsb.Device, email: string | null): void
+    setOwnerEmail(device: GUsb.Device, email: string): void
     /**
      * Sets the owner name.
      * 
@@ -2033,7 +2033,7 @@ interface DeviceQueue {
      * @param device A #GUsbDevice
      * @param name The owner name
      */
-    setOwnerName(device: GUsb.Device, name: string | null): void
+    setOwnerName(device: GUsb.Device, name: string): void
     /**
      * Sets the PCB board errata.
      * 
@@ -2142,7 +2142,7 @@ interface DeviceQueue {
      * @param device A #GUsbDevice
      * @param magic The magic sekret string
      */
-    writeEeprom(device: GUsb.Device, magic: string | null): void
+    writeEeprom(device: GUsb.Device, magic: string): void
     /**
      * Writes new firmware to the device.
      * 
@@ -2175,7 +2175,7 @@ interface DeviceQueue {
 
     // Own virtual methods of ColorHug-1.0.ColorHug.DeviceQueue
 
-    deviceFailed(device: GUsb.Device, errorMessage: string | null): void
+    deviceFailed(device: GUsb.Device, errorMessage: string): void
     progressChanged(percentage: number): void
 
     // Own signals of ColorHug-1.0.ColorHug.DeviceQueue
@@ -2225,7 +2225,7 @@ interface DeviceQueueClass {
     // Own fields of ColorHug-1.0.ColorHug.DeviceQueueClass
 
     parentClass: GObject.ObjectClass
-    deviceFailed: (deviceQueue: DeviceQueue, device: GUsb.Device, errorMessage: string | null) => void
+    deviceFailed: (deviceQueue: DeviceQueue, device: GUsb.Device, errorMessage: string) => void
     progressChanged: (deviceQueue: DeviceQueue, percentage: number) => void
 }
 
@@ -2265,7 +2265,7 @@ class Sha1 {
      * @param sha1 A %ChSha1
      * @returns %TRUE for success
      */
-    static parse(value: string | null, sha1: Sha1): boolean
+    static parse(value: string, sha1: Sha1): boolean
 }
 
     type Cmd = number

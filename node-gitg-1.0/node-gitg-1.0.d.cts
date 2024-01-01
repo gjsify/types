@@ -360,11 +360,11 @@ export interface CredentialsProvider extends GObject.Object {
 
     // Owm methods of Gitg-1.0.Gitg.CredentialsProvider
 
-    // Has conflict: credentials(url: string | null, usernameFromUrl: string | null, allowedTypes: Ggit.Credtype): Ggit.Cred | null
+    // Has conflict: credentials(url: string, usernameFromUrl: string | null, allowedTypes: Ggit.Credtype): Ggit.Cred | null
 
     // Own virtual methods of Gitg-1.0.Gitg.CredentialsProvider
 
-    credentials(url: string | null, usernameFromUrl: string | null, allowedTypes: Ggit.Credtype): Ggit.Cred | null
+    credentials(url: string, usernameFromUrl: string | null, allowedTypes: Ggit.Credtype): Ggit.Cred | null
 
     // Class property signals of Gitg-1.0.Gitg.CredentialsProvider
 
@@ -612,8 +612,8 @@ export interface AuthenticationDialog {
 
     // Owm methods of Gitg-1.0.Gitg.AuthenticationDialog
 
-    getUsername(): string | null
-    getPassword(): string | null
+    getUsername(): string
+    getPassword(): string
     getLifeTime(): AuthenticationLifeTime
 
     // Conflicting methods
@@ -627,13 +627,13 @@ export interface AuthenticationDialog {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -646,13 +646,13 @@ export interface AuthenticationDialog {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -665,7 +665,7 @@ export interface AuthenticationDialog {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -674,7 +674,7 @@ export interface AuthenticationDialog {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -730,7 +730,7 @@ export interface AuthenticationDialog {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1178,8 +1178,8 @@ export class AuthenticationDialog extends Gtk.Dialog {
     // Constructors of Gitg-1.0.Gitg.AuthenticationDialog
 
     constructor(config?: AuthenticationDialog.ConstructorProperties) 
-    constructor(url: string | null, username: string | null, failed: boolean) 
-    static new(url: string | null, username: string | null, failed: boolean): AuthenticationDialog
+    constructor(url: string, username: string | null, failed: boolean) 
+    static new(url: string, username: string | null, failed: boolean): AuthenticationDialog
 
     // Overloads of new
 
@@ -1238,7 +1238,7 @@ export interface AvatarCache {
 
     // Owm methods of Gitg-1.0.Gitg.AvatarCache
 
-    load(email: string | null, size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    load(email: string, size: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     loadFinish(res: Gio.AsyncResult): GdkPixbuf.Pixbuf | null
 
     // Class property signals of Gitg-1.0.Gitg.AvatarCache
@@ -1913,13 +1913,13 @@ export interface CommitListView extends Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1932,13 +1932,13 @@ export interface CommitListView extends Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1951,7 +1951,7 @@ export interface CommitListView extends Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1960,7 +1960,7 @@ export interface CommitListView extends Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1972,7 +1972,7 @@ export interface CommitListView extends Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2613,7 +2613,7 @@ export interface CredentialsManager {
 
     // Owm methods of Gitg-1.0.Gitg.CredentialsManager
 
-    credentials(url: string | null, username: string | null, allowedTypes: Ggit.Credtype): Ggit.Cred | null
+    credentials(url: string, username: string | null, allowedTypes: Ggit.Credtype): Ggit.Cred | null
 }
 
 export class CredentialsManager {
@@ -2652,8 +2652,8 @@ export interface Date extends Gio.Initable {
     // Owm methods of Gitg-1.0.Gitg.Date
 
     forDisplay(): string | null
-    getDateString(): string | null
-    setDateString(value: string | null): void
+    getDateString(): string
+    setDateString(value: string): void
     getDate(): GLib.DateTime
 
     // Class property signals of Gitg-1.0.Gitg.Date
@@ -2690,11 +2690,11 @@ export class Date extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.Date
 
     constructor(config?: Date.ConstructorProperties) 
-    constructor(date: string | null) 
-    static new(date: string | null): Date
+    constructor(date: string) 
+    static new(date: string): Date
     static forDateTime(dt: GLib.DateTime): Date
     _init(config?: Date.ConstructorProperties): void
-    static parse(date: string | null): GLib.DateTime
+    static parse(date: string): GLib.DateTime
 }
 
 export module DiffStat {
@@ -2733,7 +2733,7 @@ export interface DiffStat {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2746,7 +2746,7 @@ export interface DiffStat {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -2756,7 +2756,7 @@ export interface DiffStat {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2769,7 +2769,7 @@ export interface DiffStat {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2778,13 +2778,13 @@ export interface DiffStat {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Gitg-1.0.Gitg.DiffStat
 
@@ -3165,13 +3165,13 @@ export interface DiffViewOptions {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3184,13 +3184,13 @@ export interface DiffViewOptions {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3203,7 +3203,7 @@ export interface DiffViewOptions {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3212,7 +3212,7 @@ export interface DiffViewOptions {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the orientation of the `orientable`.
      * @returns the orientation of the @orientable.
@@ -3237,7 +3237,7 @@ export interface DiffViewOptions {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3659,13 +3659,13 @@ export interface DiffView {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3678,13 +3678,13 @@ export interface DiffView {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3697,7 +3697,7 @@ export interface DiffView {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3706,7 +3706,7 @@ export interface DiffView {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3718,7 +3718,7 @@ export interface DiffView {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4183,7 +4183,7 @@ export class GPGUtils {
 
     constructor() 
     static new(): GPGUtils
-    static signCommitObject(commitContent: string | null, signingKey: string | null): string | null
+    static signCommitObject(commitContent: string, signingKey: string): string | null
 }
 
 export module Hook {
@@ -4213,15 +4213,15 @@ export interface Hook {
 
     // Owm methods of Gitg-1.0.Gitg.Hook
 
-    addArgument(arg: string | null): void
+    addArgument(arg: string): void
     existsIn(repository: Ggit.Repository): boolean
     runSync(repository: Ggit.Repository): number
     run(repository: Ggit.Repository, callback: Gio.AsyncReadyCallback | null): void
     runFinish(res: Gio.AsyncResult): number
     getEnvironment(): Gee.HashMap
     setEnvironment(value: Gee.HashMap): void
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getWorkingDirectory(): Gio.File | null
     setWorkingDirectory(value: Gio.File | null): void
     getOutput(): string[]
@@ -4270,8 +4270,8 @@ export class Hook extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.Hook
 
     constructor(config?: Hook.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): Hook
+    constructor(name: string) 
+    static new(name: string): Hook
     _init(config?: Hook.ConstructorProperties): void
 }
 
@@ -4488,13 +4488,13 @@ export interface ProgressBin {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4507,13 +4507,13 @@ export interface ProgressBin {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4526,7 +4526,7 @@ export interface ProgressBin {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4535,7 +4535,7 @@ export interface ProgressBin {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4547,7 +4547,7 @@ export interface ProgressBin {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4998,8 +4998,8 @@ export class ParsedRefName extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.ParsedRefName
 
     constructor(config?: ParsedRefName.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): ParsedRefName
+    constructor(name: string) 
+    static new(name: string): ParsedRefName
     _init(config?: ParsedRefName.ConstructorProperties): void
 }
 
@@ -5011,7 +5011,7 @@ export module Remote {
      * Signal callback interface for `tip-updated`
      */
     export interface TipUpdatedSignalCallback {
-        (refname: string | null, a: Ggit.OId, b: Ggit.OId): void
+        (refname: string, a: Ggit.OId, b: Ggit.OId): void
     }
 
 
@@ -5086,7 +5086,7 @@ export interface Remote {
      */
     download(specs: string[] | null, fetchOptions: Ggit.FetchOptions): boolean
     downloadFinish(res: Gio.AsyncResult): void
-    push(branch: string | null, callbacks: Ggit.RemoteCallbacks | null, callback: Gio.AsyncReadyCallback | null): void
+    push(branch: string, callbacks: Ggit.RemoteCallbacks | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of push
 
@@ -5321,7 +5321,7 @@ export class Remote extends Ggit.Remote {
      * @param url the remote repository's URL.
      * @returns a newly allocated #GgitRemote or %NULL.
      */
-    static new(repository: Ggit.Repository, name: string | null, url: string | null): Ggit.Remote
+    static new(repository: Ggit.Repository, name: string, url: string): Ggit.Remote
     _init(config?: Remote.ConstructorProperties): void
 }
 
@@ -5340,7 +5340,7 @@ export module RepositoryListBox {
      * Signal callback interface for `show-error`
      */
     export interface ShowErrorSignalCallback {
-        (primaryMessage: string | null, secondaryMessage: string | null): void
+        (primaryMessage: string, secondaryMessage: string): void
     }
 
 
@@ -5398,13 +5398,13 @@ export interface RepositoryListBox {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5417,13 +5417,13 @@ export interface RepositoryListBox {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5436,7 +5436,7 @@ export interface RepositoryListBox {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5445,7 +5445,7 @@ export interface RepositoryListBox {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5457,7 +5457,7 @@ export interface RepositoryListBox {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5497,7 +5497,7 @@ export interface RepositoryListBox {
     on(sigName: "show-error", callback: RepositoryListBox.ShowErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "show-error", callback: RepositoryListBox.ShowErrorSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "show-error", callback: RepositoryListBox.ShowErrorSignalCallback): NodeJS.EventEmitter
-    emit(sigName: "show-error", secondaryMessage: string | null, ...args: any[]): void
+    emit(sigName: "show-error", secondaryMessage: string, ...args: any[]): void
 
     // Class property signals of Gitg-1.0.Gitg.RepositoryListBox
 
@@ -5891,7 +5891,7 @@ export interface RepositoryListBoxRow {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5924,7 +5924,7 @@ export interface RepositoryListBoxRow {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -5937,7 +5937,7 @@ export interface RepositoryListBoxRow {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -5947,7 +5947,7 @@ export interface RepositoryListBoxRow {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -5960,7 +5960,7 @@ export interface RepositoryListBoxRow {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -5969,13 +5969,13 @@ export interface RepositoryListBoxRow {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own signals of Gitg-1.0.Gitg.RepositoryListBoxRow
 
@@ -6284,8 +6284,8 @@ export class RepositoryListBoxRow extends Gtk.ListBoxRow {
     // Constructors of Gitg-1.0.Gitg.RepositoryListBoxRow
 
     constructor(config?: RepositoryListBoxRow.ConstructorProperties) 
-    constructor(repository: Repository | null, dirname: string | null) 
-    static new(repository: Repository | null, dirname: string | null): RepositoryListBoxRow
+    constructor(repository: Repository | null, dirname: string) 
+    static new(repository: Repository | null, dirname: string): RepositoryListBoxRow
 
     // Overloads of new
 
@@ -6341,7 +6341,7 @@ export interface Repository {
      * @returns the found #GgitObject, or %NULL on error.
      */
     lookup(oid: Ggit.OId, gtype: GObject.GType): Ggit.Object | null
-    lookupReference(name: string | null): Ref
+    lookupReference(name: string): Ref
 
     // Overloads of lookupReference
 
@@ -6351,8 +6351,8 @@ export interface Repository {
      * @param name the long name for the reference (e.g. HEAD, ref/heads/master, refs/tags/v0.1.0, ...).
      * @returns the searched reference.
      */
-    lookupReference(name: string | null): Ggit.Ref | null
-    lookupReferenceDwim(shortName: string | null): Ref
+    lookupReference(name: string): Ggit.Ref | null
+    lookupReferenceDwim(shortName: string): Ref
 
     // Overloads of lookupReferenceDwim
 
@@ -6363,8 +6363,8 @@ export interface Repository {
      * @param shortName the short name for the reference (e.g. master, v0.1.0, ...).
      * @returns the searched reference.
      */
-    lookupReferenceDwim(shortName: string | null): Ggit.Ref | null
-    createBranch(name: string | null, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch
+    lookupReferenceDwim(shortName: string): Ggit.Ref | null
+    createBranch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch
 
     // Overloads of createBranch
 
@@ -6375,8 +6375,8 @@ export interface Repository {
      * @param flags a #GgitCreateFlags.
      * @returns the reference to which the branch                                        points, or %NULL in case of an error.
      */
-    createBranch(branchName: string | null, target: Ggit.Object, flags: Ggit.CreateFlags): Ggit.Branch | null
-    createReference(name: string | null, oid: Ggit.OId, message: string | null): Ref
+    createBranch(branchName: string, target: Ggit.Object, flags: Ggit.CreateFlags): Ggit.Branch | null
+    createReference(name: string, oid: Ggit.OId, message: string): Ref
 
     // Overloads of createReference
 
@@ -6390,8 +6390,8 @@ export interface Repository {
      * @param logMessage The one line long message to be appended to the reflog.
      * @returns the newly created reference.
      */
-    createReference(name: string | null, oid: Ggit.OId, logMessage: string | null): Ggit.Ref | null
-    createSymbolicReference(name: string | null, target: string | null, message: string | null): Ref
+    createReference(name: string, oid: Ggit.OId, logMessage: string): Ggit.Ref | null
+    createSymbolicReference(name: string, target: string, message: string): Ref
 
     // Overloads of createSymbolicReference
 
@@ -6405,7 +6405,7 @@ export interface Repository {
      * @param logMessage The one line long message to be appended to the reflog.
      * @returns the newly created reference.
      */
-    createSymbolicReference(name: string | null, target: string | null, logMessage: string | null): Ggit.Ref | null
+    createSymbolicReference(name: string, target: string, logMessage: string): Ggit.Ref | null
     getHead(): Ref
 
     // Overloads of getHead
@@ -6418,7 +6418,7 @@ export interface Repository {
      * @returns a #GgitRef
      */
     getHead(): Ggit.Ref | null
-    getSignatureWithEnvironment(env: Gee.Map, envname: string | null): Ggit.Signature
+    getSignatureWithEnvironment(env: Gee.Map, envname: string): Ggit.Signature
     getName(): string | null
     getStage(): Stage
 
@@ -6529,7 +6529,7 @@ export class Resource {
 
     constructor() 
     static new(): Resource
-    static loadCss(id: string | null): Gtk.CssProvider | null
+    static loadCss(id: string): Gtk.CssProvider | null
 }
 
 export module SidebarStore {
@@ -6550,7 +6550,7 @@ export interface SidebarStore {
 
     // Owm methods of Gitg-1.0.Gitg.SidebarStore
 
-    appendDummy(text: string | null): SidebarStore
+    appendDummy(text: string): SidebarStore
     append(item: SidebarItem): SidebarStore
 
     // Overloads of append
@@ -6564,7 +6564,7 @@ export interface SidebarStore {
      * @param parent A valid #GtkTreeIter, or %NULL
      */
     append(parent: Gtk.TreeIter | null): /* iter */ Gtk.TreeIter
-    beginHeader(text: string | null, id: number): SidebarStoreSidebarHeader
+    beginHeader(text: string, id: number): SidebarStoreSidebarHeader
     endHeader(): SidebarStore
     beginSection(): number
     endSection(): void
@@ -6666,8 +6666,8 @@ export class SidebarStoreSidebarText extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.SidebarStoreSidebarText
 
     constructor(config?: SidebarStoreSidebarText.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): SidebarStoreSidebarText
+    constructor(text: string) 
+    static new(text: string): SidebarStoreSidebarText
     _init(config?: SidebarStoreSidebarText.ConstructorProperties): void
 }
 
@@ -6720,12 +6720,12 @@ export class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
     // Constructors of Gitg-1.0.Gitg.SidebarStoreSidebarHeader
 
     constructor(config?: SidebarStoreSidebarHeader.ConstructorProperties) 
-    constructor(text: string | null, id: number) 
-    static new(text: string | null, id: number): SidebarStoreSidebarHeader
+    constructor(text: string, id: number) 
+    static new(text: string, id: number): SidebarStoreSidebarHeader
 
     // Overloads of new
 
-    static new(text: string | null): SidebarStoreSidebarText
+    static new(text: string): SidebarStoreSidebarText
     _init(config?: SidebarStoreSidebarHeader.ConstructorProperties): void
 }
 
@@ -6808,13 +6808,13 @@ export interface Sidebar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -6827,13 +6827,13 @@ export interface Sidebar {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -6846,7 +6846,7 @@ export interface Sidebar {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -6855,7 +6855,7 @@ export interface Sidebar {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6867,7 +6867,7 @@ export interface Sidebar {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -7326,8 +7326,8 @@ export class StageStatusFile extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.StageStatusFile
 
     constructor(config?: StageStatusFile.ConstructorProperties) 
-    constructor(path: string | null, flags: Ggit.StatusFlags) 
-    static new(path: string | null, flags: Ggit.StatusFlags): StageStatusFile
+    constructor(path: string, flags: Ggit.StatusFlags) 
+    static new(path: string, flags: Ggit.StatusFlags): StageStatusFile
     _init(config?: StageStatusFile.ConstructorProperties): void
 }
 
@@ -7522,33 +7522,33 @@ export interface Stage {
     fileStatus(options: Ggit.StatusOptions | null): StageStatusEnumerator
     preCommitHook(author: Ggit.Signature, callback: Gio.AsyncReadyCallback | null): void
     preCommitHookFinish(res: Gio.AsyncResult): void
-    commitIndex(index: Ggit.Index, reference: Ggit.Ref, message: string | null, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, callback: Gio.AsyncReadyCallback | null): void
+    commitIndex(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, callback: Gio.AsyncReadyCallback | null): void
     commitIndexFinish(res: Gio.AsyncResult): Ggit.OId | null
-    commitTree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string | null, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, callback: Gio.AsyncReadyCallback | null): void
+    commitTree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, callback: Gio.AsyncReadyCallback | null): void
     commitTreeFinish(res: Gio.AsyncResult): Ggit.OId | null
-    commit(message: string | null, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, callback: Gio.AsyncReadyCallback | null): void
+    commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, callback: Gio.AsyncReadyCallback | null): void
     commitFinish(res: Gio.AsyncResult): Ggit.OId | null
     revert(file: Gio.File, callback: Gio.AsyncReadyCallback | null): void
     revertFinish(res: Gio.AsyncResult): void
-    revertPath(path: string | null, callback: Gio.AsyncReadyCallback | null): void
+    revertPath(path: string, callback: Gio.AsyncReadyCallback | null): void
     revertPathFinish(res: Gio.AsyncResult): void
     revertPatch(patch: PatchSet, callback: Gio.AsyncReadyCallback | null): void
     revertPatchFinish(res: Gio.AsyncResult): void
     delete(file: Gio.File, callback: Gio.AsyncReadyCallback | null): void
     deleteFinish(res: Gio.AsyncResult): void
-    deletePath(path: string | null, callback: Gio.AsyncReadyCallback | null): void
+    deletePath(path: string, callback: Gio.AsyncReadyCallback | null): void
     deletePathFinish(res: Gio.AsyncResult): void
     stage(file: Gio.File, callback: Gio.AsyncReadyCallback | null): void
     stageFinish(res: Gio.AsyncResult): void
-    stagePath(path: string | null, callback: Gio.AsyncReadyCallback | null): void
+    stagePath(path: string, callback: Gio.AsyncReadyCallback | null): void
     stagePathFinish(res: Gio.AsyncResult): void
-    stageCommit(path: string | null, commit: Ggit.Commit, callback: Gio.AsyncReadyCallback | null): void
+    stageCommit(path: string, commit: Ggit.Commit, callback: Gio.AsyncReadyCallback | null): void
     stageCommitFinish(res: Gio.AsyncResult): void
     stagePatch(patch: PatchSet, callback: Gio.AsyncReadyCallback | null): void
     stagePatchFinish(res: Gio.AsyncResult): void
     unstage(file: Gio.File, callback: Gio.AsyncReadyCallback | null): void
     unstageFinish(res: Gio.AsyncResult): void
-    unstagePath(path: string | null, callback: Gio.AsyncReadyCallback | null): void
+    unstagePath(path: string, callback: Gio.AsyncReadyCallback | null): void
     unstagePathFinish(res: Gio.AsyncResult): void
     unstagePatch(patch: PatchSet, callback: Gio.AsyncReadyCallback | null): void
     unstagePatchFinish(res: Gio.AsyncResult): void
@@ -7636,7 +7636,7 @@ export interface Theme {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -7649,7 +7649,7 @@ export interface Theme {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -7659,7 +7659,7 @@ export interface Theme {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -7672,7 +7672,7 @@ export interface Theme {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -7681,13 +7681,13 @@ export interface Theme {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Gitg-1.0.Gitg.Theme
 
@@ -7932,7 +7932,7 @@ export class Utils {
     constructor() 
     static new(): Utils
     static replaceHomeDirWithTilde(file: Gio.File): string | null
-    static expandHomeDir(path: string | null): string | null
+    static expandHomeDir(path: string): string | null
 }
 
 export interface WhenMapped {
@@ -8844,7 +8844,7 @@ export interface CredentialsProviderIface {
 
     // Own fields of Gitg-1.0.Gitg.CredentialsProviderIface
 
-    credentials: (self: CredentialsProvider, url: string | null, usernameFromUrl: string | null, allowedTypes: Ggit.Credtype) => Ggit.Cred | null
+    credentials: (self: CredentialsProvider, url: string, usernameFromUrl: string | null, allowedTypes: Ggit.Credtype) => Ggit.Cred | null
 }
 
 export abstract class CredentialsProviderIface {

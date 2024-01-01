@@ -412,7 +412,7 @@ export function encodingGetDefaultCandidates(): Encoding[]
  * @param charset a character set.
  * @returns the corresponding #GtkSourceEncoding, or %NULL if not found.
  */
-export function encodingGetFromCharset(charset: string | null): Encoding | null
+export function encodingGetFromCharset(charset: string): Encoding | null
 export function encodingGetUtf8(): Encoding
 export function fileLoaderErrorQuark(): GLib.Quark
 export function fileSaverErrorQuark(): GLib.Quark
@@ -436,7 +436,7 @@ export function fileSaverErrorQuark(): GLib.Quark
  * @param text the text to escape.
  * @returns the escaped @text.
  */
-export function utilsEscapeSearchText(text: string | null): string | null
+export function utilsEscapeSearchText(text: string): string | null
 /**
  * Use this function before gtk_source_search_settings_set_search_text(), to
  * unescape the following sequences of characters: `\n`, `\r`, `\t` and `\\`.
@@ -449,7 +449,7 @@ export function utilsEscapeSearchText(text: string | null): string | null
  * @param text the text to unescape.
  * @returns the unescaped @text.
  */
-export function utilsUnescapeSearchText(text: string | null): string | null
+export function utilsUnescapeSearchText(text: string): string | null
 export module CompletionProposal {
 
     // Signal callback interfaces
@@ -1178,7 +1178,7 @@ export interface Buffer {
      * @param where location to place the mark.
      * @returns a new #GtkSourceMark, owned by the buffer.
      */
-    createSourceMark(name: string | null, category: string | null, where: Gtk.TextIter): Mark
+    createSourceMark(name: string | null, category: string, where: Gtk.TextIter): Mark
     /**
      * Marks the end of a not undoable action on the buffer.  When the
      * last not undoable block is closed through the call to this
@@ -1284,7 +1284,7 @@ export interface Buffer {
      * @param contextClass the context class.
      * @returns whether we found a context class toggle before @iter
      */
-    iterBackwardToContextClassToggle(iter: Gtk.TextIter, contextClass: string | null): boolean
+    iterBackwardToContextClassToggle(iter: Gtk.TextIter, contextClass: string): boolean
     /**
      * Moves forward to the next toggle (on or off) of the context class. If no
      * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
@@ -1297,7 +1297,7 @@ export interface Buffer {
      * @param contextClass the context class.
      * @returns whether we found a context class toggle after @iter
      */
-    iterForwardToContextClassToggle(iter: Gtk.TextIter, contextClass: string | null): boolean
+    iterForwardToContextClassToggle(iter: Gtk.TextIter, contextClass: string): boolean
     /**
      * Check if the class `context_class` is set on `iter`.
      * 
@@ -1306,7 +1306,7 @@ export interface Buffer {
      * @param contextClass class to search for.
      * @returns whether @iter has the context class.
      */
-    iterHasContextClass(iter: Gtk.TextIter, contextClass: string | null): boolean
+    iterHasContextClass(iter: Gtk.TextIter, contextClass: string): boolean
     /**
      * Joins the lines of text between the specified iterators.
      * @param start a #GtkTextIter.
@@ -2161,13 +2161,13 @@ export interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2180,13 +2180,13 @@ export interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2199,7 +2199,7 @@ export interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2208,7 +2208,7 @@ export interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -2244,7 +2244,7 @@ export interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2877,7 +2877,7 @@ export class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    constructor(label: string | null, text: string | null, icon: GdkPixbuf.Pixbuf | null, info: string | null) 
+    constructor(label: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null) 
     /**
      * Create a new #GtkSourceCompletionItem with label `label,` icon `icon` and
      * extra information `info`. Both `icon` and `info` can be %NULL in which case
@@ -2889,7 +2889,7 @@ export class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    static new(label: string | null, text: string | null, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
+    static new(label: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
     /**
      * Creates a new #GtkSourceCompletionItem from a stock item. If `label` is %NULL,
      * the stock label will be used.
@@ -2900,7 +2900,7 @@ export class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    static newFromStock(label: string | null, text: string | null, stock: string | null, info: string | null): CompletionItem
+    static newFromStock(label: string | null, text: string, stock: string, info: string | null): CompletionItem
     /**
      * Create a new #GtkSourceCompletionItem with markup label `markup,` icon
      * `icon` and extra information `info`. Both `icon` and `info` can be %NULL in
@@ -2912,7 +2912,7 @@ export class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    static newWithMarkup(markup: string | null, text: string | null, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
+    static newWithMarkup(markup: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
     _init(config?: CompletionItem.ConstructorProperties): void
     /**
      * Creates a new #GtkSourceCompletionItem. The desired properties need to be set
@@ -4276,13 +4276,13 @@ export interface GutterRendererPixbuf {
      * @returns a #GIcon
      */
     getGicon(): Gio.Icon
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Get the pixbuf of the renderer.
      * @returns a #GdkPixbuf
      */
     getPixbuf(): GdkPixbuf.Pixbuf
-    getStockId(): string | null
+    getStockId(): string
     setGicon(icon: Gio.Icon | null): void
     setIconName(iconName: string | null): void
     setPixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void
@@ -4431,15 +4431,15 @@ export interface GutterRendererText {
      * #GtkSourceGutterRendererText.
      * @param text the text to measure.
      */
-    measure(text: string | null): [ /* width */ number, /* height */ number ]
+    measure(text: string): [ /* width */ number, /* height */ number ]
     /**
      * Measures the pango markup provided using the pango layout used by the
      * #GtkSourceGutterRendererText.
      * @param markup the pango markup to measure.
      */
-    measureMarkup(markup: string | null): [ /* width */ number, /* height */ number ]
-    setMarkup(markup: string | null, length: number): void
-    setText(text: string | null, length: number): void
+    measureMarkup(markup: string): [ /* width */ number, /* height */ number ]
+    setMarkup(markup: string, length: number): void
+    setText(text: string, length: number): void
 
     // Class property signals of GtkSource-3.0.GtkSource.GutterRendererText
 
@@ -4589,8 +4589,8 @@ export interface Language {
      * or modified.
      * @returns the ID of @language.
      */
-    getId(): string | null
-    getMetadata(name: string | null): string | null
+    getId(): string
+    getMetadata(name: string): string | null
     /**
      * Returns the mime types associated to this language. This is just
      * an utility wrapper around gtk_source_language_get_metadata() to
@@ -4605,7 +4605,7 @@ export interface Language {
      * or modified.
      * @returns the name of @language.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns the localized section of the language.
      * Each language belong to a section (ex. HTML belogs to the
@@ -4614,14 +4614,14 @@ export interface Language {
      * or modified.
      * @returns the section of @language.
      */
-    getSection(): string | null
+    getSection(): string
     /**
      * Returns the ID of the style to use if the specified `style_id`
      * is not present in the current style scheme.
      * @param styleId a style ID.
      * @returns the ID of the style to use if the specified @style_id is not present in the current style scheme or %NULL if the style has no fallback defined. The returned string is owned by the @language and must not be modified.
      */
-    getStyleFallback(styleId: string | null): string | null
+    getStyleFallback(styleId: string): string | null
     /**
      * Returns the ids of the styles defined by this `language`.
      * @returns  a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
@@ -4632,7 +4632,7 @@ export interface Language {
      * @param styleId a style ID.
      * @returns the name of the style with ID @style_id defined by this @language or %NULL if the style has no name or there is no style with ID @style_id defined by this @language. The returned string is owned by the @language and must not be modified.
      */
-    getStyleName(styleId: string | null): string | null
+    getStyleName(styleId: string): string | null
 
     // Class property signals of GtkSource-3.0.GtkSource.Language
 
@@ -4715,7 +4715,7 @@ export interface LanguageManager {
      * @param id a language id.
      * @returns a #GtkSourceLanguage, or %NULL if there is no language identified by the given @id. Return value is owned by @lm and should not be freed.
      */
-    getLanguage(id: string | null): Language | null
+    getLanguage(id: string): Language | null
     /**
      * Returns the ids of the available languages.
      * @returns  a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
@@ -4893,13 +4893,13 @@ export interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4912,13 +4912,13 @@ export interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4931,7 +4931,7 @@ export interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4940,7 +4940,7 @@ export interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the #GdkWindow corresponding to an area of the text view;
      * possible windows include the overall widget window, child windows
@@ -4976,7 +4976,7 @@ export interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -5512,7 +5512,7 @@ export interface Mark {
      * Returns the mark category.
      * @returns the category of the #GtkSourceMark.
      */
-    getCategory(): string | null
+    getCategory(): string
     /**
      * Returns the next #GtkSourceMark in the buffer or %NULL if the mark
      * was not added to a buffer. If there is no next mark, %NULL will be returned.
@@ -5530,7 +5530,7 @@ export interface Mark {
      * @param category a string specifying the mark category, or %NULL.
      * @returns the previous #GtkSourceMark, or %NULL.
      */
-    prev(category: string | null): Mark | null
+    prev(category: string): Mark | null
 
     // Class property signals of GtkSource-3.0.GtkSource.Mark
 
@@ -5582,7 +5582,7 @@ export class Mark extends Gtk.TextMark {
      * @param category is used to classify marks according to common characteristics (e.g. all the marks representing a bookmark could belong to the "bookmark" category, or all the marks representing a compilation error could belong to "error" category).
      * @returns a new #GtkSourceMark that can be added using gtk_text_buffer_add_mark().
      */
-    constructor(name: string | null, category: string | null) 
+    constructor(name: string, category: string) 
     /**
      * Creates a text mark. Add it to a buffer using gtk_text_buffer_add_mark().
      * If name is NULL, the mark is anonymous; otherwise, the mark can be retrieved
@@ -5594,7 +5594,7 @@ export class Mark extends Gtk.TextMark {
      * @param category is used to classify marks according to common characteristics (e.g. all the marks representing a bookmark could belong to the "bookmark" category, or all the marks representing a compilation error could belong to "error" category).
      * @returns a new #GtkSourceMark that can be added using gtk_text_buffer_add_mark().
      */
-    static new(name: string | null, category: string | null): Mark
+    static new(name: string, category: string): Mark
 
     // Overloads of new
 
@@ -5710,7 +5710,7 @@ export interface MarkAttributes {
      * icon name can be %NULL if it wasn't set earlier.
      * @returns An icon name. The string belongs to @attributes and should not be freed.
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Gets a #GdkPixbuf to be used as a base for rendered icon. Note that the
      * pixbuf can be %NULL if it wasn't set earlier.
@@ -5722,7 +5722,7 @@ export interface MarkAttributes {
      * be %NULL if it wasn't set earlier.
      * @returns Stock id. Returned string is owned by @attributes and shouldn't be freed.
      */
-    getStockId(): string | null
+    getStockId(): string
     /**
      * Queries for a tooltip by emitting
      * a #GtkSourceMarkAttributes::query-tooltip-markup signal. The tooltip may contain
@@ -5764,7 +5764,7 @@ export interface MarkAttributes {
      * Sets a name of an icon to be used as a base for rendered icon.
      * @param iconName name of an icon to be used.
      */
-    setIconName(iconName: string | null): void
+    setIconName(iconName: string): void
     /**
      * Sets a pixbuf to be used as a base for rendered icon.
      * @param pixbuf a #GdkPixbuf to be used.
@@ -5774,7 +5774,7 @@ export interface MarkAttributes {
      * Sets stock id to be used as a base for rendered icon.
      * @param stockId a stock id.
      */
-    setStockId(stockId: string | null): void
+    setStockId(stockId: string): void
 
     // Own signals of GtkSource-3.0.GtkSource.MarkAttributes
 
@@ -6300,7 +6300,7 @@ export interface PrintCompositor {
      * gtk_source_print_compositor_paginate() function.
      * @param fontName the name of the default font for the body text.
      */
-    setBodyFontName(fontName: string | null): void
+    setBodyFontName(fontName: string): void
     /**
      * Sets the bottom margin used by `compositor`.
      * @param margin the new bottom margin in units of `unit`.
@@ -6949,7 +6949,7 @@ export interface SearchContext {
      * @param replaceLength the length of `replace` in bytes, or -1.
      * @returns whether the match has been replaced.
      */
-    replace(matchStart: Gtk.TextIter, matchEnd: Gtk.TextIter, replace: string | null, replaceLength: number): boolean
+    replace(matchStart: Gtk.TextIter, matchEnd: Gtk.TextIter, replace: string, replaceLength: number): boolean
     /**
      * Replaces a search match by another text. If `match_start` and `match_end`
      * doesn't correspond to a search match, %FALSE is returned.
@@ -6966,7 +6966,7 @@ export interface SearchContext {
      * @param replaceLength the length of `replace` in bytes, or -1.
      * @returns whether the match has been replaced.
      */
-    replace2(matchStart: Gtk.TextIter, matchEnd: Gtk.TextIter, replace: string | null, replaceLength: number): boolean
+    replace2(matchStart: Gtk.TextIter, matchEnd: Gtk.TextIter, replace: string, replaceLength: number): boolean
     /**
      * Replaces all search matches by another text. It is a synchronous function, so
      * it can block the user interface.
@@ -6978,7 +6978,7 @@ export interface SearchContext {
      * @param replaceLength the length of `replace` in bytes, or -1.
      * @returns the number of replaced matches.
      */
-    replaceAll(replace: string | null, replaceLength: number): number
+    replaceAll(replace: string, replaceLength: number): number
     /**
      * Enables or disables the search occurrences highlighting.
      * @param highlight the setting.
@@ -7355,7 +7355,7 @@ export interface SpaceDrawer {
      * @param key the `settings` key to bind.
      * @param flags flags for the binding.
      */
-    bindMatrixSetting(settings: Gio.Settings, key: string | null, flags: Gio.SettingsBindFlags): void
+    bindMatrixSetting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void
     getEnableMatrix(): boolean
     /**
      * Gets the value of the #GtkSourceSpaceDrawer:matrix property, as a #GVariant.
@@ -7702,9 +7702,9 @@ export interface StyleScheme {
     getAuthors(): string[] | null
     getDescription(): string | null
     getFilename(): string | null
-    getId(): string | null
-    getName(): string | null
-    getStyle(styleId: string | null): Style | null
+    getId(): string
+    getName(): string
+    getStyle(styleId: string): Style | null
 
     // Class property signals of GtkSource-3.0.GtkSource.StyleScheme
 
@@ -7817,7 +7817,7 @@ export interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Acti
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -7838,7 +7838,7 @@ export interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Acti
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -7851,7 +7851,7 @@ export interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Acti
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -7861,7 +7861,7 @@ export interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Acti
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -7874,7 +7874,7 @@ export interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Acti
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -7883,13 +7883,13 @@ export interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Acti
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of GtkSource-3.0.GtkSource.StyleSchemeChooserButton
 
@@ -8240,13 +8240,13 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -8259,13 +8259,13 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -8278,7 +8278,7 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -8287,7 +8287,7 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -8299,7 +8299,7 @@ export interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buil
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -8616,7 +8616,7 @@ export interface StyleSchemeManager {
      * See gtk_source_style_scheme_manager_set_search_path() for details.
      * @param path a directory or a filename.
      */
-    appendSearchPath(path: string | null): void
+    appendSearchPath(path: string): void
     /**
      * Mark any currently cached information about the available style scehems
      * as invalid. All the available style schemes will be reloaded next time
@@ -8628,7 +8628,7 @@ export interface StyleSchemeManager {
      * @param schemeId style scheme id to find.
      * @returns a #GtkSourceStyleScheme object. Returned value is owned by @manager and must not be unref'ed.
      */
-    getScheme(schemeId: string | null): StyleScheme
+    getScheme(schemeId: string): StyleScheme
     /**
      * Returns the ids of the available style schemes.
      * @returns  a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
@@ -8646,7 +8646,7 @@ export interface StyleSchemeManager {
      * See gtk_source_style_scheme_manager_set_search_path() for details.
      * @param path a directory or a filename.
      */
-    prependSearchPath(path: string | null): void
+    prependSearchPath(path: string): void
     /**
      * Sets the list of directories where the `manager` looks for
      * style scheme files.
@@ -9463,7 +9463,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param priority place where priority of the category will be stored.
      * @returns #GtkSourceMarkAttributes for the @category. The object belongs to @view, so it must not be unreffed.
      */
-    getMarkAttributes(category: string | null, priority: number): MarkAttributes
+    getMarkAttributes(category: string, priority: number): MarkAttributes
     /**
      * Gets the position of the right margin in the given `view`.
      * @returns the position of the right margin.
@@ -9601,7 +9601,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param attributes mark attributes.
      * @param priority priority of the category.
      */
-    setMarkAttributes(category: string | null, attributes: MarkAttributes, priority: number): void
+    setMarkAttributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
      * @param pos the width in characters where to position the right margin.
@@ -9660,13 +9660,13 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -9679,13 +9679,13 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -9698,7 +9698,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -9707,7 +9707,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the #GdkWindow corresponding to an area of the text view;
      * possible windows include the overall widget window, child windows
@@ -9743,7 +9743,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -10571,12 +10571,12 @@ export interface Encoding {
      * "ISO-8859-1".
      * @returns the character set of the #GtkSourceEncoding.
      */
-    getCharset(): string | null
+    getCharset(): string
     /**
      * Gets the name of the #GtkSourceEncoding such as "Unicode" or "Western".
      * @returns the name of the #GtkSourceEncoding.
      */
-    getName(): string | null
+    getName(): string
     toString(): string | null
 }
 
@@ -10614,7 +10614,7 @@ export class Encoding {
      * @param charset a character set.
      * @returns the corresponding #GtkSourceEncoding, or %NULL if not found.
      */
-    static getFromCharset(charset: string | null): Encoding | null
+    static getFromCharset(charset: string): Encoding | null
     static getUtf8(): Encoding
 }
 

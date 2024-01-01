@@ -80,7 +80,7 @@ function bus_get(bus_type: Gio.BusType): Future
  * @param timeout_msec 
  * @returns a #DexFuture that resolves to a #GVariant   or rejects with error.
  */
-function dbus_connection_call(connection: Gio.DBusConnection, bus_name: string | null, object_path: string | null, interface_name: string | null, method_name: string | null, parameters: GLib.Variant, reply_type: GLib.VariantType, flags: Gio.DBusCallFlags, timeout_msec: number): Future
+function dbus_connection_call(connection: Gio.DBusConnection, bus_name: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, reply_type: GLib.VariantType, flags: Gio.DBusCallFlags, timeout_msec: number): Future
 /**
  * Wrapper for g_dbus_connection_call_with_unix_fd_list().
  * @param connection 
@@ -95,7 +95,7 @@ function dbus_connection_call(connection: Gio.DBusConnection, bus_name: string |
  * @param fd_list a #GUnixFDList
  * @returns a #DexFutureSet that resolves to a #GVariant.   The #DexFuture containing the resulting #GUnixFDList can be retrieved   with dex_future_set_get_future_at() with an index of 1.
  */
-function dbus_connection_call_with_unix_fd_list(connection: Gio.DBusConnection, bus_name: string | null, object_path: string | null, interface_name: string | null, method_name: string | null, parameters: GLib.Variant, reply_type: GLib.VariantType, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list: Gio.UnixFDList | null): Future
+function dbus_connection_call_with_unix_fd_list(connection: Gio.DBusConnection, bus_name: string, object_path: string, interface_name: string, method_name: string, parameters: GLib.Variant, reply_type: GLib.VariantType, flags: Gio.DBusCallFlags, timeout_msec: number, fd_list: Gio.UnixFDList | null): Future
 /**
  * Wrapper for g_dbus_connection_send_message_with_reply().
  * @param connection a #GDBusConnection
@@ -116,7 +116,7 @@ function error_quark(): GLib.Quark
  * @returns a #DexFuture
  */
 function file_copy(source: Gio.File, destination: Gio.File, flags: Gio.FileCopyFlags, io_priority: number): Future
-function file_enumerate_children(file: Gio.File, attributes: string | null, flags: Gio.FileQueryInfoFlags, io_priority: number): Future
+function file_enumerate_children(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number): Future
 function file_enumerator_next_files(file_enumerator: Gio.FileEnumerator, num_files: number, io_priority: number): Future
 function file_load_contents_bytes(file: Gio.File): Future
 /**
@@ -127,7 +127,7 @@ function file_load_contents_bytes(file: Gio.File): Future
  * @returns a #DexFuture
  */
 function file_make_directory(file: Gio.File, io_priority: number): Future
-function file_query_info(file: Gio.File, attributes: string | null, flags: Gio.FileQueryInfoFlags, io_priority: number): Future
+function file_query_info(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, io_priority: number): Future
 /**
  * Asynchronously opens a file for reading.
  * @param file a #GFile
@@ -135,7 +135,7 @@ function file_query_info(file: Gio.File, attributes: string | null, flags: Gio.F
  * @returns a #DexFuture
  */
 function file_read(file: Gio.File, io_priority: number): Future
-function file_replace(file: Gio.File, etag: string | null, make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number): Future
+function file_replace(file: Gio.File, etag: string, make_backup: boolean, flags: Gio.FileCreateFlags, io_priority: number): Future
 function get_min_stack_size(): number
 function get_page_size(): number
 function init(): void
@@ -148,7 +148,7 @@ function output_stream_close(self: Gio.OutputStream, io_priority: number): Futur
 function output_stream_splice(output: Gio.OutputStream, input: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, io_priority: number): Future
 function output_stream_write(self: Gio.OutputStream, buffer: any | null, count: number, io_priority: number): Future
 function output_stream_write_bytes(self: Gio.OutputStream, bytes: GLib.Bytes, io_priority: number): Future
-function resolver_lookup_by_name(resolver: Gio.Resolver, address: string | null): Future
+function resolver_lookup_by_name(resolver: Gio.Resolver, address: string): Future
 function socket_client_connect(socket_client: Gio.SocketClient, socket_connectable: Gio.SocketConnectable): Future
 function socket_listener_accept(listener: Gio.SocketListener): Future
 /**
@@ -309,14 +309,14 @@ interface AsyncResult extends Gio.AsyncResult {
      * @returns a #DexFuture or %NULL
      */
     dup_future(): Future | null
-    get_name(): string | null
+    get_name(): string
     propagate_boolean(): boolean
     propagate_double(): number
     propagate_int(): number
     propagate_pointer(): any | null
-    set_name(name: string | null): void
+    set_name(name: string): void
     set_priority(priority: number): void
-    set_static_name(name: string | null): void
+    set_static_name(name: string): void
 
     // Class property signals of Dex-1.Dex.AsyncResult
 
@@ -625,7 +625,7 @@ interface Future {
      * be no observer interested in the futures completion or rejection.
      */
     disown(): void
-    get_name(): string | null
+    get_name(): string
     get_status(): FutureStatus
     get_value(): any
 }
@@ -788,7 +788,7 @@ class Future extends Object {
      * @param string the resolved value for the future
      * @returns a resolved #DexFuture
      */
-    static new_for_string(string: string | null): Future
+    static new_for_string(string: string): Future
     /**
      * Creates a new #DexFuture and resolves it with `v_uint`.
      * @constructor 

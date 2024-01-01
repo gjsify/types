@@ -23,9 +23,9 @@ const CONN_INTERNET: number
 const CONN_IPC: number
 const CONN_UNIX: number
 const DEFAULT_PORT: number
-const DEFAUTH_NAME: string | null
+const DEFAUTH_NAME: string
 const EOT_CHR: number
-const EOT_STR: string | null
+const EOT_STR: string
 const FALSE: number
 const GLIBTOP_CMND_CPU: number
 const GLIBTOP_CMND_DISK: number
@@ -409,9 +409,9 @@ const HOSTNAMSZ: number
 const LIBGTOP_MAJOR_VERSION: number
 const LIBGTOP_MICRO_VERSION: number
 const LIBGTOP_MINOR_VERSION: number
-const MCOOKIE_NAME: string | null
-const MCOOKIE_SCREEN: string | null
-const MCOOKIE_X_NAME: string | null
+const MCOOKIE_NAME: string
+const MCOOKIE_SCREEN: string
+const MCOOKIE_X_NAME: string
 const PATCHLEVEL: number
 const REPLYSIZ: number
 const TABLE_SIZE: number
@@ -419,13 +419,13 @@ const TRUE: number
 function glibtopClose(): void
 function glibtopGetCpu(buf: glibtop_cpu): void
 function glibtopGetDisk(buf: glibtop_disk): void
-function glibtopGetFsusage(buf: glibtop_fsusage, mountDir: string | null): void
+function glibtopGetFsusage(buf: glibtop_fsusage, mountDir: string): void
 function glibtopGetLoadavg(buf: glibtop_loadavg): void
 function glibtopGetMem(buf: glibtop_mem): void
 function glibtopGetMountlist(buf: glibtop_mountlist, allFs: number): glibtop_mountentry[]
 function glibtopGetMsgLimits(buf: glibtop_msg_limits): void
 function glibtopGetNetlist(buf: glibtop_netlist): string[]
-function glibtopGetNetload(buf: glibtop_netload, interface: string | null): void
+function glibtopGetNetload(buf: glibtop_netload, interface: string): void
 function glibtopGetPpp(buf: glibtop_ppp, device: number): void
 function glibtopGetProcAffinity(buf: glibtop_proc_affinity, pid: number): number
 function glibtopGetProcArgs(buf: glibtop_proc_args, pid: number, maxLen: number): string | null
@@ -450,8 +450,8 @@ function glibtopGetSysinfo(): glibtop_sysinfo
 function glibtopGetUptime(buf: glibtop_uptime): void
 function glibtopInit(): glibtop
 function glibtopInitR(features: number, flags: number): [ /* returnType */ glibtop, /* serverPtr */ glibtop ]
-function glibtopInternetAddr(host: string | null): number
-function glibtopMakeConnection(hostarg: string | null, portarg: number, s: number): number
+function glibtopInternetAddr(host: string): number
+function glibtopMakeConnection(hostarg: string, portarg: number, s: number): number
 interface glibtop {
 
     // Own fields of GTop-2.0.GTop.glibtop
@@ -465,11 +465,11 @@ interface glibtop {
     ncpu: number
     realNcpu: number
     osVersionCode: number
-    name: string | null
-    serverCommand: string | null
-    serverHost: string | null
-    serverUser: string | null
-    serverRsh: string | null
+    name: string
+    serverCommand: string
+    serverHost: string
+    serverUser: string
+    serverRsh: string
     features: number
     serverPort: number
     sysdeps: glibtop_sysdeps
@@ -494,8 +494,8 @@ interface glibtop {
     getCpuS(buf: glibtop_cpu): void
     getDiskL(buf: glibtop_disk): void
     getDiskS(buf: glibtop_disk): void
-    getFsusageL(buf: glibtop_fsusage, mountDir: string | null): void
-    getFsusageS(buf: glibtop_fsusage, mountDir: string | null): void
+    getFsusageL(buf: glibtop_fsusage, mountDir: string): void
+    getFsusageS(buf: glibtop_fsusage, mountDir: string): void
     getLoadavgL(buf: glibtop_loadavg): void
     getLoadavgS(buf: glibtop_loadavg): void
     getMemL(buf: glibtop_mem): void
@@ -506,8 +506,8 @@ interface glibtop {
     getMsgLimitsS(buf: glibtop_msg_limits): void
     getNetlistL(buf: glibtop_netlist): string[]
     getNetlistS(buf: glibtop_netlist): string[]
-    getNetloadL(buf: glibtop_netload, interface: string | null): void
-    getNetloadS(buf: glibtop_netload, interface: string | null): void
+    getNetloadL(buf: glibtop_netload, interface: string): void
+    getNetloadS(buf: glibtop_netload, interface: string): void
     getParameterL(parameter: number, dataPtr: any | null, dataSize: number): number
     getPppL(buf: glibtop_ppp, device: number): void
     getPppS(buf: glibtop_ppp, device: number): void
@@ -548,9 +548,9 @@ interface glibtop {
     getUptimeL(buf: glibtop_uptime): void
     getUptimeS(buf: glibtop_uptime): void
     initP(features: number, flags: number): void
-    openL(programName: string | null, features: number, flags: number): void
-    openP(programName: string | null, features: number, flags: number): void
-    openS(programName: string | null, features: number, flags: number): void
+    openL(programName: string, features: number, flags: number): void
+    openP(programName: string, features: number, flags: number): void
+    openS(programName: string, features: number, flags: number): void
     setParameterL(parameter: number, dataPtr: any | null, dataSize: number): void
 }
 
@@ -565,13 +565,13 @@ class glibtop {
     static close(): void
     static getCpu(buf: glibtop_cpu): void
     static getDisk(buf: glibtop_disk): void
-    static getFsusage(buf: glibtop_fsusage, mountDir: string | null): void
+    static getFsusage(buf: glibtop_fsusage, mountDir: string): void
     static getLoadavg(buf: glibtop_loadavg): void
     static getMem(buf: glibtop_mem): void
     static getMountlist(buf: glibtop_mountlist, allFs: number): glibtop_mountentry[]
     static getMsgLimits(buf: glibtop_msg_limits): void
     static getNetlist(buf: glibtop_netlist): string[]
-    static getNetload(buf: glibtop_netload, interface: string | null): void
+    static getNetload(buf: glibtop_netload, interface: string): void
     static getPpp(buf: glibtop_ppp, device: number): void
     static getProcAffinity(buf: glibtop_proc_affinity, pid: number): number
     static getProcArgs(buf: glibtop_proc_args, pid: number, maxLen: number): string | null
@@ -596,8 +596,8 @@ class glibtop {
     static getUptime(buf: glibtop_uptime): void
     static init(): glibtop
     static initR(features: number, flags: number): [ /* returnType */ glibtop, /* serverPtr */ glibtop ]
-    static internetAddr(host: string | null): number
-    static makeConnection(hostarg: string | null, portarg: number, s: number): number
+    static internetAddr(host: string): number
+    static makeConnection(hostarg: string, portarg: number, s: number): number
 }
 
 interface glibtop_command {
@@ -1367,8 +1367,8 @@ interface glibtop_signame {
     // Own fields of GTop-2.0.GTop.glibtop_signame
 
     number: number
-    name: string | null
-    label: string | null
+    name: string
+    label: string
 }
 
 class glibtop_signame {

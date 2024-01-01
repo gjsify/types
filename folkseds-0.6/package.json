@@ -1,6 +1,6 @@
 {
     "name": "@girs/folkseds-0.6",
-    "version": "0.6.0-3.2.6",
+    "version": "0.6.0-3.2.7",
     "description": "GJS TypeScript type definitions for FolksEds-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "folkseds-0.6.js",

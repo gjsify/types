@@ -497,52 +497,52 @@ export const RTCP_VALID_VALUE: number
  * The supported RTCP version 2.
  */
 export const RTCP_VERSION: number
-export const RTP_HDREXT_BASE: string | null
+export const RTP_HDREXT_BASE: string
 /**
  * Constant string used in element classification to signal that this element
  * is a RTP header extension.
  */
-export const RTP_HDREXT_ELEMENT_CLASS: string | null
-export const RTP_HDREXT_NTP_56: string | null
+export const RTP_HDREXT_ELEMENT_CLASS: string
+export const RTP_HDREXT_NTP_56: string
 export const RTP_HDREXT_NTP_56_SIZE: number
-export const RTP_HDREXT_NTP_64: string | null
+export const RTP_HDREXT_NTP_64: string
 export const RTP_HDREXT_NTP_64_SIZE: number
-export const RTP_HEADER_EXTENSION_URI_METADATA_KEY: string | null
-export const RTP_PAYLOAD_1016_STRING: string | null
-export const RTP_PAYLOAD_CELLB_STRING: string | null
-export const RTP_PAYLOAD_CN_STRING: string | null
-export const RTP_PAYLOAD_DVI4_11025_STRING: string | null
-export const RTP_PAYLOAD_DVI4_16000_STRING: string | null
-export const RTP_PAYLOAD_DVI4_22050_STRING: string | null
-export const RTP_PAYLOAD_DVI4_8000_STRING: string | null
-export const RTP_PAYLOAD_DYNAMIC_STRING: string | null
-export const RTP_PAYLOAD_G721_STRING: string | null
-export const RTP_PAYLOAD_G722_STRING: string | null
+export const RTP_HEADER_EXTENSION_URI_METADATA_KEY: string
+export const RTP_PAYLOAD_1016_STRING: string
+export const RTP_PAYLOAD_CELLB_STRING: string
+export const RTP_PAYLOAD_CN_STRING: string
+export const RTP_PAYLOAD_DVI4_11025_STRING: string
+export const RTP_PAYLOAD_DVI4_16000_STRING: string
+export const RTP_PAYLOAD_DVI4_22050_STRING: string
+export const RTP_PAYLOAD_DVI4_8000_STRING: string
+export const RTP_PAYLOAD_DYNAMIC_STRING: string
+export const RTP_PAYLOAD_G721_STRING: string
+export const RTP_PAYLOAD_G722_STRING: string
 export const RTP_PAYLOAD_G723_53: number
-export const RTP_PAYLOAD_G723_53_STRING: string | null
+export const RTP_PAYLOAD_G723_53_STRING: string
 export const RTP_PAYLOAD_G723_63: number
-export const RTP_PAYLOAD_G723_63_STRING: string | null
-export const RTP_PAYLOAD_G723_STRING: string | null
-export const RTP_PAYLOAD_G728_STRING: string | null
-export const RTP_PAYLOAD_G729_STRING: string | null
-export const RTP_PAYLOAD_GSM_STRING: string | null
-export const RTP_PAYLOAD_H261_STRING: string | null
-export const RTP_PAYLOAD_H263_STRING: string | null
-export const RTP_PAYLOAD_JPEG_STRING: string | null
-export const RTP_PAYLOAD_L16_MONO_STRING: string | null
-export const RTP_PAYLOAD_L16_STEREO_STRING: string | null
-export const RTP_PAYLOAD_LPC_STRING: string | null
-export const RTP_PAYLOAD_MP2T_STRING: string | null
-export const RTP_PAYLOAD_MPA_STRING: string | null
-export const RTP_PAYLOAD_MPV_STRING: string | null
-export const RTP_PAYLOAD_NV_STRING: string | null
-export const RTP_PAYLOAD_PCMA_STRING: string | null
-export const RTP_PAYLOAD_PCMU_STRING: string | null
-export const RTP_PAYLOAD_QCELP_STRING: string | null
+export const RTP_PAYLOAD_G723_63_STRING: string
+export const RTP_PAYLOAD_G723_STRING: string
+export const RTP_PAYLOAD_G728_STRING: string
+export const RTP_PAYLOAD_G729_STRING: string
+export const RTP_PAYLOAD_GSM_STRING: string
+export const RTP_PAYLOAD_H261_STRING: string
+export const RTP_PAYLOAD_H263_STRING: string
+export const RTP_PAYLOAD_JPEG_STRING: string
+export const RTP_PAYLOAD_L16_MONO_STRING: string
+export const RTP_PAYLOAD_L16_STEREO_STRING: string
+export const RTP_PAYLOAD_LPC_STRING: string
+export const RTP_PAYLOAD_MP2T_STRING: string
+export const RTP_PAYLOAD_MPA_STRING: string
+export const RTP_PAYLOAD_MPV_STRING: string
+export const RTP_PAYLOAD_NV_STRING: string
+export const RTP_PAYLOAD_PCMA_STRING: string
+export const RTP_PAYLOAD_PCMU_STRING: string
+export const RTP_PAYLOAD_QCELP_STRING: string
 export const RTP_PAYLOAD_TS41: number
-export const RTP_PAYLOAD_TS41_STRING: string | null
+export const RTP_PAYLOAD_TS41_STRING: string
 export const RTP_PAYLOAD_TS48: number
-export const RTP_PAYLOAD_TS48_STRING: string | null
+export const RTP_PAYLOAD_TS48_STRING: string
 export const RTP_SOURCE_META_MAX_CSRC_COUNT: number
 /**
  * The supported RTP version 2.
@@ -643,14 +643,14 @@ export function rtcp_ntp_to_unix(ntptime: number): number
  * @param name a SDES name
  * @returns the #GstRTCPSDESType for @name or #GST_RTCP_SDES_PRIV when @name is a private sdes item.
  */
-export function rtcp_sdes_name_to_type(name: string | null): RTCPSDESType
+export function rtcp_sdes_name_to_type(name: string): RTCPSDESType
 /**
  * Converts `type` to the string equivalent. The string is typically used as a
  * key in a #GstStructure containing SDES items.
  * @param type a #GstRTCPSDESType
  * @returns the string equivalent of @type
  */
-export function rtcp_sdes_type_to_name(type: RTCPSDESType): string | null
+export function rtcp_sdes_type_to_name(type: RTCPSDESType): string
 /**
  * Converts a UNIX timestamp in nanoseconds to an NTP time. The caller should
  * pass a value with nanoseconds since 1970. The NTP time will, in the upper
@@ -831,7 +831,7 @@ export function rtp_hdrext_set_ntp_64(data: any | null, size: number, ntptime: n
  * @param encoding_name the encoding name to find
  * @returns a #GstRTPPayloadInfo or NULL when no info could be found.
  */
-export function rtp_payload_info_for_name(media: string | null, encoding_name: string | null): RTPPayloadInfo | null
+export function rtp_payload_info_for_name(media: string, encoding_name: string): RTPPayloadInfo | null
 /**
  * Get the #GstRTPPayloadInfo for `payload_type`. This function is
  * mostly used to get the default clock-rate and bandwidth for static payload
@@ -1746,7 +1746,7 @@ export interface RTPBasePayload {
      * @param encoding_name the encoding name
      * @param clock_rate the clock rate of the media
      */
-    set_options(media: string | null, dynamic: boolean, encoding_name: string | null, clock_rate: number): void
+    set_options(media: string, dynamic: boolean, encoding_name: string, clock_rate: number): void
     /**
      * Configure the output caps with the optional fields.
      * @param s a #GstStructure with the caps fields
@@ -1991,7 +1991,7 @@ export interface RTPHeaderExtension {
      * @param attributes 
      * @returns whether the @ext attributes could be set on @caps.
      */
-    set_caps_from_attributes_helper(caps: Gst.Caps, attributes: string | null): boolean
+    set_caps_from_attributes_helper(caps: Gst.Caps, attributes: string): boolean
     /**
      * Set the direction that this header extension should be used in.
      * If #GST_RTP_HEADER_EXTENSION_DIRECTION_INHERITED is included, the
@@ -2109,7 +2109,7 @@ export interface RTPHeaderExtension {
      * @returns whether the extension could be read from @data
      */
     vfunc_read(read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer): boolean
-    vfunc_set_attributes(direction: RTPHeaderExtensionDirection, attributes: string | null): boolean
+    vfunc_set_attributes(direction: RTPHeaderExtensionDirection, attributes: string): boolean
     /**
      * gst_rtp_header_extension_set_id() must have been called with a valid
      * extension id that is contained in these caps.
@@ -2173,12 +2173,12 @@ export class RTPHeaderExtension extends Gst.Element {
 
     constructor(config?: RTPHeaderExtension.ConstructorProperties) 
     _init(config?: RTPHeaderExtension.ConstructorProperties): void
-    static create_from_uri(uri: string | null): RTPHeaderExtension | null
+    static create_from_uri(uri: string): RTPHeaderExtension | null
     /**
      * Set the URI for this RTP header extension implementation.
      * @param uri the RTP Header extension uri for `klass`
      */
-    static set_uri(klass: RTPHeaderExtension | Function | GObject.GType, uri: string | null): void
+    static set_uri(klass: RTPHeaderExtension | Function | GObject.GType, uri: string): void
 }
 
 export interface RTCPBuffer {
@@ -2361,7 +2361,7 @@ export interface RTCPPacket {
      * Get the name field of the APP `packet`.
      * @returns The 4-byte name field, not zero-terminated.
      */
-    app_get_name(): string | null
+    app_get_name(): string
     /**
      * Get the SSRC/CSRC field of the APP `packet`.
      * @returns The SSRC/CSRC.
@@ -2383,7 +2383,7 @@ export interface RTCPPacket {
      * Set the name field of the APP `packet`.
      * @param name 4-byte ASCII name
      */
-    app_set_name(name: string | null): void
+    app_set_name(name: string): void
     /**
      * Set the SSRC/CSRC field of the APP `packet`.
      * @param ssrc SSRC/CSRC of the packet
@@ -2432,7 +2432,7 @@ export interface RTCPPacket {
      * @param reason a reason string
      * @returns TRUE if the string could be set.
      */
-    bye_set_reason(reason: string | null): boolean
+    bye_set_reason(reason: string): boolean
     /**
      * The profile-specific extension data is copied into a new allocated
      * memory area `data`. This must be freed with g_free() after usage.
@@ -3275,7 +3275,7 @@ export interface RTPHeaderExtensionClass {
     read: (ext: RTPHeaderExtension, read_flags: RTPHeaderExtensionFlags, data: Uint8Array, buffer: Gst.Buffer) => boolean
     set_non_rtp_sink_caps: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
     update_non_rtp_src_caps: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
-    set_attributes: (ext: RTPHeaderExtension, direction: RTPHeaderExtensionDirection, attributes: string | null) => boolean
+    set_attributes: (ext: RTPHeaderExtension, direction: RTPHeaderExtensionDirection, attributes: string) => boolean
     set_caps_from_attributes: (ext: RTPHeaderExtension, caps: Gst.Caps) => boolean
 }
 
@@ -3295,7 +3295,7 @@ export abstract class RTPHeaderExtensionClass {
      * Set the URI for this RTP header extension implementation.
      * @param uri the RTP Header extension uri for `klass`
      */
-    static set_uri(klass: RTPHeaderExtension | Function | GObject.GType, uri: string | null): void
+    static set_uri(klass: RTPHeaderExtension | Function | GObject.GType, uri: string): void
 }
 
 export interface RTPPayloadInfo {
@@ -3312,12 +3312,12 @@ export interface RTPPayloadInfo {
      * "message".
      * @field 
      */
-    media: string | null
+    media: string
     /**
      * the encoding name of `pt`
      * @field 
      */
-    encoding_name: string | null
+    encoding_name: string
     /**
      * default clock rate, 0 = unknown/variable
      * @field 
@@ -3328,7 +3328,7 @@ export interface RTPPayloadInfo {
      * channels. NULL = not applicable.
      * @field 
      */
-    encoding_parameters: string | null
+    encoding_parameters: string
     /**
      * the bitrate of the media. 0 = unknown/variable.
      * @field 
@@ -3358,7 +3358,7 @@ export class RTPPayloadInfo {
      * @param encoding_name the encoding name to find
      * @returns a #GstRTPPayloadInfo or NULL when no info could be found.
      */
-    static for_name(media: string | null, encoding_name: string | null): RTPPayloadInfo | null
+    static for_name(media: string, encoding_name: string): RTPPayloadInfo | null
     /**
      * Get the #GstRTPPayloadInfo for `payload_type`. This function is
      * mostly used to get the default clock-rate and bandwidth for static payload

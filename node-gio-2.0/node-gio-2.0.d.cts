@@ -2632,16 +2632,16 @@ export const DBUS_METHOD_INVOCATION_UNHANDLED: boolean
  * Extension point for debug control functionality.
  * See [Extending GIO][extending-gio].
  */
-export const DEBUG_CONTROLLER_EXTENSION_POINT_NAME: string | null
+export const DEBUG_CONTROLLER_EXTENSION_POINT_NAME: string
 /**
  * Extension point for default handler to URI association. See
  * [Extending GIO][extending-gio].
  */
-export const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string | null
+export const DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME: string
 /**
  * The string used to obtain a Unix device path with g_drive_get_identifier().
  */
-export const DRIVE_IDENTIFIER_KIND_UNIX_DEVICE: string | null
+export const DRIVE_IDENTIFIER_KIND_UNIX_DEVICE: string
 /**
  * A key in the "access" namespace for checking deletion privileges.
  * 
@@ -2649,7 +2649,7 @@ export const DRIVE_IDENTIFIER_KIND_UNIX_DEVICE: string | null
  * 
  * This attribute will be %TRUE if the user is able to delete the file.
  */
-export const FILE_ATTRIBUTE_ACCESS_CAN_DELETE: string | null
+export const FILE_ATTRIBUTE_ACCESS_CAN_DELETE: string
 /**
  * A key in the "access" namespace for getting execution privileges.
  * 
@@ -2657,7 +2657,7 @@ export const FILE_ATTRIBUTE_ACCESS_CAN_DELETE: string | null
  * 
  * This attribute will be %TRUE if the user is able to execute the file.
  */
-export const FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE: string | null
+export const FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE: string
 /**
  * A key in the "access" namespace for getting read privileges.
  * 
@@ -2665,7 +2665,7 @@ export const FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE: string | null
  * 
  * This attribute will be %TRUE if the user is able to read the file.
  */
-export const FILE_ATTRIBUTE_ACCESS_CAN_READ: string | null
+export const FILE_ATTRIBUTE_ACCESS_CAN_READ: string
 /**
  * A key in the "access" namespace for checking renaming privileges.
  * 
@@ -2673,7 +2673,7 @@ export const FILE_ATTRIBUTE_ACCESS_CAN_READ: string | null
  * 
  * This attribute will be %TRUE if the user is able to rename the file.
  */
-export const FILE_ATTRIBUTE_ACCESS_CAN_RENAME: string | null
+export const FILE_ATTRIBUTE_ACCESS_CAN_RENAME: string
 /**
  * A key in the "access" namespace for checking trashing privileges.
  * 
@@ -2682,7 +2682,7 @@ export const FILE_ATTRIBUTE_ACCESS_CAN_RENAME: string | null
  * This attribute will be %TRUE if the user is able to move the file to
  * the trash.
  */
-export const FILE_ATTRIBUTE_ACCESS_CAN_TRASH: string | null
+export const FILE_ATTRIBUTE_ACCESS_CAN_TRASH: string
 /**
  * A key in the "access" namespace for getting write privileges.
  * 
@@ -2690,7 +2690,7 @@ export const FILE_ATTRIBUTE_ACCESS_CAN_TRASH: string | null
  * 
  * This attribute will be %TRUE if the user is able to write to the file.
  */
-export const FILE_ATTRIBUTE_ACCESS_CAN_WRITE: string | null
+export const FILE_ATTRIBUTE_ACCESS_CAN_WRITE: string
 /**
  * A key in the "dos" namespace for checking if the file's archive flag
  * is set.
@@ -2701,7 +2701,7 @@ export const FILE_ATTRIBUTE_ACCESS_CAN_WRITE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_DOS_IS_ARCHIVE: string | null
+export const FILE_ATTRIBUTE_DOS_IS_ARCHIVE: string
 /**
  * A key in the "dos" namespace for checking if the file is a NTFS mount point
  * (a volume mount or a junction point).
@@ -2713,7 +2713,7 @@ export const FILE_ATTRIBUTE_DOS_IS_ARCHIVE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT: string | null
+export const FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT: string
 /**
  * A key in the "dos" namespace for checking if the file's backup flag
  * is set.
@@ -2724,7 +2724,7 @@ export const FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_DOS_IS_SYSTEM: string | null
+export const FILE_ATTRIBUTE_DOS_IS_SYSTEM: string
 /**
  * A key in the "dos" namespace for getting the file NTFS reparse tag.
  * 
@@ -2735,21 +2735,21 @@ export const FILE_ATTRIBUTE_DOS_IS_SYSTEM: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG: string | null
+export const FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG: string
 /**
  * A key in the "etag" namespace for getting the value of the file's
  * entity tag.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_ETAG_VALUE: string | null
+export const FILE_ATTRIBUTE_ETAG_VALUE: string
 /**
  * A key in the "filesystem" namespace for getting the number of bytes
  * of free space left on the file system.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_FREE: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_FREE: string
 /**
  * A key in the "filesystem" namespace for checking if the file system
  * is read only.
@@ -2758,7 +2758,7 @@ export const FILE_ATTRIBUTE_FILESYSTEM_FREE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_READONLY: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_READONLY: string
 /**
  * A key in the "filesystem" namespace for checking if the file system
  * is remote.
@@ -2767,27 +2767,27 @@ export const FILE_ATTRIBUTE_FILESYSTEM_READONLY: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_REMOTE: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_REMOTE: string
 /**
  * A key in the "filesystem" namespace for getting the total size (in
  * bytes) of the file system, used in g_file_query_filesystem_info().
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_SIZE: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_SIZE: string
 /**
  * A key in the "filesystem" namespace for getting the file system's type.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_TYPE: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_TYPE: string
 /**
  * A key in the "filesystem" namespace for getting the number of bytes
  * used by data on the file system.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_USED: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_USED: string
 /**
  * A key in the "filesystem" namespace for hinting a file manager
  * application whether it should preview (e.g. thumbnail) files on the
@@ -2795,14 +2795,14 @@ export const FILE_ATTRIBUTE_FILESYSTEM_USED: string | null
  * 
  * The value for this key contain a #GFilesystemPreviewType.
  */
-export const FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW: string | null
+export const FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW: string
 /**
  * A key in the "gvfs" namespace that gets the name of the current
  * GVFS backend in use.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_GVFS_BACKEND: string | null
+export const FILE_ATTRIBUTE_GVFS_BACKEND: string
 /**
  * A key in the "id" namespace for getting a file identifier.
  * 
@@ -2811,7 +2811,7 @@ export const FILE_ATTRIBUTE_GVFS_BACKEND: string | null
  * An example use would be during listing files, to avoid recursive
  * directory scanning.
  */
-export const FILE_ATTRIBUTE_ID_FILE: string | null
+export const FILE_ATTRIBUTE_ID_FILE: string
 /**
  * A key in the "id" namespace for getting the file system identifier.
  * 
@@ -2821,108 +2821,108 @@ export const FILE_ATTRIBUTE_ID_FILE: string | null
  * and target are on the same filesystem (default to move) or not (default
  * to copy).
  */
-export const FILE_ATTRIBUTE_ID_FILESYSTEM: string | null
+export const FILE_ATTRIBUTE_ID_FILESYSTEM: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) can be ejected.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_EJECT: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) is mountable.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_MOUNT: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) can be polled.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) can be started.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_START: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_START: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) can be started degraded.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) can be stopped.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE)  is unmountable.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_CAN_UNMOUNT: string
 /**
  * A key in the "mountable" namespace for getting the HAL UDI for the mountable
  * file.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_HAL_UDI: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_HAL_UDI: string
 /**
  * A key in the "mountable" namespace for checking if a file (of
  * type G_FILE_TYPE_MOUNTABLE) is automatically polled for media.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC: string
 /**
  * A key in the "mountable" namespace for getting the #GDriveStartStopType.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE: string
 /**
  * A key in the "mountable" namespace for getting the unix device.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE: string
 /**
  * A key in the "mountable" namespace for getting the unix device file.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE: string | null
+export const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE: string
 /**
  * A key in the "owner" namespace for getting the file owner's group.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_OWNER_GROUP: string | null
+export const FILE_ATTRIBUTE_OWNER_GROUP: string
 /**
  * A key in the "owner" namespace for getting the user name of the
  * file's owner.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_OWNER_USER: string | null
+export const FILE_ATTRIBUTE_OWNER_USER: string
 /**
  * A key in the "owner" namespace for getting the real name of the
  * user that owns the file.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_OWNER_USER_REAL: string | null
+export const FILE_ATTRIBUTE_OWNER_USER_REAL: string
 /**
  * A key in the "preview" namespace for getting a #GIcon that can be
  * used to get preview of the file.
@@ -2933,14 +2933,14 @@ export const FILE_ATTRIBUTE_OWNER_USER_REAL: string | null
  * 
  * The value for this key should contain a #GIcon.
  */
-export const FILE_ATTRIBUTE_PREVIEW_ICON: string | null
+export const FILE_ATTRIBUTE_PREVIEW_ICON: string
 /**
  * A key in the "recent" namespace for getting time, when the metadata for the
  * file in `recent:///` was last changed.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_INT64.
  */
-export const FILE_ATTRIBUTE_RECENT_MODIFIED: string | null
+export const FILE_ATTRIBUTE_RECENT_MODIFIED: string
 /**
  * A key in the "selinux" namespace for getting the file's SELinux
  * context.
@@ -2950,7 +2950,7 @@ export const FILE_ATTRIBUTE_RECENT_MODIFIED: string | null
  * Note that this attribute is only available if GLib has been built
  * with SELinux support.
  */
-export const FILE_ATTRIBUTE_SELINUX_CONTEXT: string | null
+export const FILE_ATTRIBUTE_SELINUX_CONTEXT: string
 /**
  * A key in the "standard" namespace for getting the amount of disk space
  * that is consumed by the file (in bytes).
@@ -2960,7 +2960,7 @@ export const FILE_ATTRIBUTE_SELINUX_CONTEXT: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE: string | null
+export const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE: string
 /**
  * A key in the "standard" namespace for getting the content type of the file.
  * 
@@ -2968,7 +2968,7 @@ export const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE: string | null
  * 
  * The value for this key should contain a valid content type.
  */
-export const FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE: string | null
+export const FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE: string
 /**
  * A key in the "standard" namespace for getting the copy name of the file.
  * 
@@ -2980,7 +2980,7 @@ export const FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_COPY_NAME: string | null
+export const FILE_ATTRIBUTE_STANDARD_COPY_NAME: string
 /**
  * A key in the "standard" namespace for getting the description of the file.
  * 
@@ -2992,7 +2992,7 @@ export const FILE_ATTRIBUTE_STANDARD_COPY_NAME: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_DESCRIPTION: string | null
+export const FILE_ATTRIBUTE_STANDARD_DESCRIPTION: string
 /**
  * A key in the "standard" namespace for getting the display name of the file.
  * 
@@ -3001,7 +3001,7 @@ export const FILE_ATTRIBUTE_STANDARD_DESCRIPTION: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME: string | null
+export const FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME: string
 /**
  * A key in the "standard" namespace for edit name of the file.
  * 
@@ -3012,7 +3012,7 @@ export const FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_EDIT_NAME: string | null
+export const FILE_ATTRIBUTE_STANDARD_EDIT_NAME: string
 /**
  * A key in the "standard" namespace for getting the fast content type.
  * 
@@ -3022,7 +3022,7 @@ export const FILE_ATTRIBUTE_STANDARD_EDIT_NAME: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE: string | null
+export const FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE: string
 /**
  * A key in the "standard" namespace for getting the icon for the file.
  * 
@@ -3030,19 +3030,19 @@ export const FILE_ATTRIBUTE_STANDARD_FAST_CONTENT_TYPE: string | null
  * 
  * The value for this key should contain a #GIcon.
  */
-export const FILE_ATTRIBUTE_STANDARD_ICON: string | null
+export const FILE_ATTRIBUTE_STANDARD_ICON: string
 /**
  * A key in the "standard" namespace for checking if a file is a backup file.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_STANDARD_IS_BACKUP: string | null
+export const FILE_ATTRIBUTE_STANDARD_IS_BACKUP: string
 /**
  * A key in the "standard" namespace for checking if a file is hidden.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_STANDARD_IS_HIDDEN: string | null
+export const FILE_ATTRIBUTE_STANDARD_IS_HIDDEN: string
 /**
  * A key in the "standard" namespace for checking if the file is a symlink.
  * Typically the actual type is something else, if we followed the symlink
@@ -3052,13 +3052,13 @@ export const FILE_ATTRIBUTE_STANDARD_IS_HIDDEN: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_STANDARD_IS_SYMLINK: string | null
+export const FILE_ATTRIBUTE_STANDARD_IS_SYMLINK: string
 /**
  * A key in the "standard" namespace for checking if a file is virtual.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL: string | null
+export const FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL: string
 /**
  * A key in the "standard" namespace for checking if a file is
  * volatile. This is meant for opaque, non-POSIX-like backends to
@@ -3067,7 +3067,7 @@ export const FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_STANDARD_IS_VOLATILE: string | null
+export const FILE_ATTRIBUTE_STANDARD_IS_VOLATILE: string
 /**
  * A key in the "standard" namespace for getting the name of the file.
  * 
@@ -3080,13 +3080,13 @@ export const FILE_ATTRIBUTE_STANDARD_IS_VOLATILE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_NAME: string | null
+export const FILE_ATTRIBUTE_STANDARD_NAME: string
 /**
  * A key in the "standard" namespace for getting the file's size (in bytes).
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_STANDARD_SIZE: string | null
+export const FILE_ATTRIBUTE_STANDARD_SIZE: string
 /**
  * A key in the "standard" namespace for setting the sort order of a file.
  * 
@@ -3097,7 +3097,7 @@ export const FILE_ATTRIBUTE_STANDARD_SIZE: string | null
  * should be sorted first, and files without sort order as if sort order
  * was zero.
  */
-export const FILE_ATTRIBUTE_STANDARD_SORT_ORDER: string | null
+export const FILE_ATTRIBUTE_STANDARD_SORT_ORDER: string
 /**
  * A key in the "standard" namespace for getting the symbolic icon for the file.
  * 
@@ -3105,21 +3105,21 @@ export const FILE_ATTRIBUTE_STANDARD_SORT_ORDER: string | null
  * 
  * The value for this key should contain a #GIcon.
  */
-export const FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON: string | null
+export const FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON: string
 /**
  * A key in the "standard" namespace for getting the symlink target, if the file
  * is a symlink.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET: string | null
+export const FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET: string
 /**
  * A key in the "standard" namespace for getting the target URI for the file, in
  * the case of %G_FILE_TYPE_SHORTCUT or %G_FILE_TYPE_MOUNTABLE files.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_STANDARD_TARGET_URI: string | null
+export const FILE_ATTRIBUTE_STANDARD_TARGET_URI: string
 /**
  * A key in the "standard" namespace for storing file types.
  * 
@@ -3127,7 +3127,7 @@ export const FILE_ATTRIBUTE_STANDARD_TARGET_URI: string | null
  * 
  * The value for this key should contain a #GFileType.
  */
-export const FILE_ATTRIBUTE_STANDARD_TYPE: string | null
+export const FILE_ATTRIBUTE_STANDARD_TYPE: string
 /**
  * A key in the "thumbnail" namespace for checking if thumbnailing failed.
  * 
@@ -3135,7 +3135,7 @@ export const FILE_ATTRIBUTE_STANDARD_TYPE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string | null
+export const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string
 /**
  * A key in the "thumbnail" namespace for checking if thumbnailing failed
  * for the large image.
@@ -3144,7 +3144,7 @@ export const FILE_ATTRIBUTE_THUMBNAILING_FAILED: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE: string
 /**
  * A key in the "thumbnail" namespace for checking if thumbnailing failed
  * for the normal image.
@@ -3153,7 +3153,7 @@ export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_LARGE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL: string | null
+export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL: string
 /**
  * A key in the "thumbnail" namespace for checking if thumbnailing failed
  * for the x-large image.
@@ -3162,7 +3162,7 @@ export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_NORMAL: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE: string
 /**
  * A key in the "thumbnail" namespace for checking if thumbnailing failed
  * for the xx-large image.
@@ -3171,7 +3171,7 @@ export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XLARGE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE: string
 /**
  * A key in the "thumbnail" namespace for checking whether the thumbnail is outdated.
  * 
@@ -3183,7 +3183,7 @@ export const FILE_ATTRIBUTE_THUMBNAILING_FAILED_XXLARGE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID: string
 /**
  * A key in the "thumbnail" namespace for checking whether the large
  * thumbnail is outdated.
@@ -3198,7 +3198,7 @@ export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE: string
 /**
  * A key in the "thumbnail" namespace for checking whether the normal
  * thumbnail is outdated.
@@ -3213,7 +3213,7 @@ export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_LARGE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL: string
 /**
  * A key in the "thumbnail" namespace for checking whether the x-large
  * thumbnail is outdated.
@@ -3228,7 +3228,7 @@ export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_NORMAL: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE: string
 /**
  * A key in the "thumbnail" namespace for checking whether the xx-large
  * thumbnail is outdated.
@@ -3243,42 +3243,42 @@ export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XLARGE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XXLARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_IS_VALID_XXLARGE: string
 /**
  * A key in the "thumbnail" namespace for getting the path to the thumbnail
  * image with the biggest size available.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_PATH: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_PATH: string
 /**
  * A key in the "thumbnail" namespace for getting the path to the large
  * thumbnail image.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_PATH_LARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_PATH_LARGE: string
 /**
  * A key in the "thumbnail" namespace for getting the path to the normal
  * thumbnail image.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_PATH_NORMAL: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_PATH_NORMAL: string
 /**
  * A key in the "thumbnail" namespace for getting the path to the x-large
  * thumbnail image.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_PATH_XLARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_PATH_XLARGE: string
 /**
  * A key in the "thumbnail" namespace for getting the path to the xx-large
  * thumbnail image.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE: string | null
+export const FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE: string
 /**
  * A key in the "time" namespace for getting the time the file was last
  * accessed.
@@ -3287,14 +3287,14 @@ export const FILE_ATTRIBUTE_THUMBNAIL_PATH_XXLARGE: string | null
  * contains the time since the file was last accessed, in seconds since the
  * UNIX epoch.
  */
-export const FILE_ATTRIBUTE_TIME_ACCESS: string | null
+export const FILE_ATTRIBUTE_TIME_ACCESS: string
 /**
  * A key in the "time" namespace for getting the nanoseconds of the time
  * the file was last accessed. This should be used in conjunction with
  * #G_FILE_ATTRIBUTE_TIME_ACCESS. Corresponding #GFileAttributeType is
  * %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_ACCESS_NSEC: string | null
+export const FILE_ATTRIBUTE_TIME_ACCESS_NSEC: string
 /**
  * A key in the "time" namespace for getting the microseconds of the time
  * the file was last accessed.
@@ -3303,7 +3303,7 @@ export const FILE_ATTRIBUTE_TIME_ACCESS_NSEC: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_ACCESS_USEC: string | null
+export const FILE_ATTRIBUTE_TIME_ACCESS_USEC: string
 /**
  * A key in the "time" namespace for getting the time the file was last
  * changed.
@@ -3314,14 +3314,14 @@ export const FILE_ATTRIBUTE_TIME_ACCESS_USEC: string | null
  * 
  * This corresponds to the traditional UNIX ctime.
  */
-export const FILE_ATTRIBUTE_TIME_CHANGED: string | null
+export const FILE_ATTRIBUTE_TIME_CHANGED: string
 /**
  * A key in the "time" namespace for getting the nanoseconds of the time
  * the file was last changed. This should be used in conjunction with
  * #G_FILE_ATTRIBUTE_TIME_CHANGED. Corresponding #GFileAttributeType is
  * %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_CHANGED_NSEC: string | null
+export const FILE_ATTRIBUTE_TIME_CHANGED_NSEC: string
 /**
  * A key in the "time" namespace for getting the microseconds of the time
  * the file was last changed.
@@ -3330,7 +3330,7 @@ export const FILE_ATTRIBUTE_TIME_CHANGED_NSEC: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_CHANGED_USEC: string | null
+export const FILE_ATTRIBUTE_TIME_CHANGED_USEC: string
 /**
  * A key in the "time" namespace for getting the time the file was created.
  * 
@@ -3341,14 +3341,14 @@ export const FILE_ATTRIBUTE_TIME_CHANGED_USEC: string | null
  * This may correspond to Linux `stx_btime`, FreeBSD `st_birthtim`, NetBSD
  * `st_birthtime` or NTFS `ctime`.
  */
-export const FILE_ATTRIBUTE_TIME_CREATED: string | null
+export const FILE_ATTRIBUTE_TIME_CREATED: string
 /**
  * A key in the "time" namespace for getting the nanoseconds of the time
  * the file was created. This should be used in conjunction with
  * #G_FILE_ATTRIBUTE_TIME_CREATED. Corresponding #GFileAttributeType is
  * %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_CREATED_NSEC: string | null
+export const FILE_ATTRIBUTE_TIME_CREATED_NSEC: string
 /**
  * A key in the "time" namespace for getting the microseconds of the time
  * the file was created.
@@ -3357,7 +3357,7 @@ export const FILE_ATTRIBUTE_TIME_CREATED_NSEC: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_CREATED_USEC: string | null
+export const FILE_ATTRIBUTE_TIME_CREATED_USEC: string
 /**
  * A key in the "time" namespace for getting the time the file was last
  * modified.
@@ -3366,14 +3366,14 @@ export const FILE_ATTRIBUTE_TIME_CREATED_USEC: string | null
  * contains the time since the file was modified, in seconds since the UNIX
  * epoch.
  */
-export const FILE_ATTRIBUTE_TIME_MODIFIED: string | null
+export const FILE_ATTRIBUTE_TIME_MODIFIED: string
 /**
  * A key in the "time" namespace for getting the nanoseconds of the time
  * the file was last modified. This should be used in conjunction with
  * #G_FILE_ATTRIBUTE_TIME_MODIFIED. Corresponding #GFileAttributeType is
  * %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_MODIFIED_NSEC: string | null
+export const FILE_ATTRIBUTE_TIME_MODIFIED_NSEC: string
 /**
  * A key in the "time" namespace for getting the microseconds of the time
  * the file was last modified.
@@ -3382,7 +3382,7 @@ export const FILE_ATTRIBUTE_TIME_MODIFIED_NSEC: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TIME_MODIFIED_USEC: string | null
+export const FILE_ATTRIBUTE_TIME_MODIFIED_USEC: string
 /**
  * A key in the "trash" namespace for getting the deletion date and time
  * of a file inside the `trash:///` folder.
@@ -3391,21 +3391,21 @@ export const FILE_ATTRIBUTE_TIME_MODIFIED_USEC: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
  */
-export const FILE_ATTRIBUTE_TRASH_DELETION_DATE: string | null
+export const FILE_ATTRIBUTE_TRASH_DELETION_DATE: string
 /**
  * A key in the "trash" namespace for getting the number of (toplevel) items
  * that are present in the `trash:///` folder.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_TRASH_ITEM_COUNT: string | null
+export const FILE_ATTRIBUTE_TRASH_ITEM_COUNT: string
 /**
  * A key in the "trash" namespace for getting the original path of a file
  * inside the `trash:///` folder before it was trashed.
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING.
  */
-export const FILE_ATTRIBUTE_TRASH_ORIG_PATH: string | null
+export const FILE_ATTRIBUTE_TRASH_ORIG_PATH: string
 /**
  * A key in the "unix" namespace for getting the number of blocks allocated
  * for the file.
@@ -3414,7 +3414,7 @@ export const FILE_ATTRIBUTE_TRASH_ORIG_PATH: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_UNIX_BLOCKS: string | null
+export const FILE_ATTRIBUTE_UNIX_BLOCKS: string
 /**
  * A key in the "unix" namespace for getting the block size for the file
  * system.
@@ -3423,7 +3423,7 @@ export const FILE_ATTRIBUTE_UNIX_BLOCKS: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_BLOCK_SIZE: string | null
+export const FILE_ATTRIBUTE_UNIX_BLOCK_SIZE: string
 /**
  * A key in the "unix" namespace for getting the device id of the device the
  * file is located on (see stat() documentation).
@@ -3432,7 +3432,7 @@ export const FILE_ATTRIBUTE_UNIX_BLOCK_SIZE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_DEVICE: string | null
+export const FILE_ATTRIBUTE_UNIX_DEVICE: string
 /**
  * A key in the "unix" namespace for getting the group ID for the file.
  * 
@@ -3440,7 +3440,7 @@ export const FILE_ATTRIBUTE_UNIX_DEVICE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_GID: string | null
+export const FILE_ATTRIBUTE_UNIX_GID: string
 /**
  * A key in the "unix" namespace for getting the inode of the file.
  * 
@@ -3448,7 +3448,7 @@ export const FILE_ATTRIBUTE_UNIX_GID: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
  */
-export const FILE_ATTRIBUTE_UNIX_INODE: string | null
+export const FILE_ATTRIBUTE_UNIX_INODE: string
 /**
  * A key in the "unix" namespace for checking if the file represents a
  * UNIX mount point.
@@ -3461,7 +3461,7 @@ export const FILE_ATTRIBUTE_UNIX_INODE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
  */
-export const FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT: string | null
+export const FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT: string
 /**
  * A key in the "unix" namespace for getting the mode of the file
  * (e.g. whether the file is a regular file, symlink, etc).
@@ -3474,7 +3474,7 @@ export const FILE_ATTRIBUTE_UNIX_IS_MOUNTPOINT: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_MODE: string | null
+export const FILE_ATTRIBUTE_UNIX_MODE: string
 /**
  * A key in the "unix" namespace for getting the number of hard links
  * for a file.
@@ -3485,7 +3485,7 @@ export const FILE_ATTRIBUTE_UNIX_MODE: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_NLINK: string | null
+export const FILE_ATTRIBUTE_UNIX_NLINK: string
 /**
  * A key in the "unix" namespace for getting the device ID for the file
  * (if it is a special file).
@@ -3496,7 +3496,7 @@ export const FILE_ATTRIBUTE_UNIX_NLINK: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_RDEV: string | null
+export const FILE_ATTRIBUTE_UNIX_RDEV: string
 /**
  * A key in the "unix" namespace for getting the user ID for the file.
  * 
@@ -3504,12 +3504,12 @@ export const FILE_ATTRIBUTE_UNIX_RDEV: string | null
  * 
  * Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
  */
-export const FILE_ATTRIBUTE_UNIX_UID: string | null
+export const FILE_ATTRIBUTE_UNIX_UID: string
 /**
  * Extension point for memory usage monitoring functionality.
  * See [Extending GIO][extending-gio].
  */
-export const MEMORY_MONITOR_EXTENSION_POINT_NAME: string | null
+export const MEMORY_MONITOR_EXTENSION_POINT_NAME: string
 /**
  * The menu item attribute which holds the action name of the item.  Action
  * names are namespaced with an identifier for the action group in which the
@@ -3518,12 +3518,12 @@ export const MEMORY_MONITOR_EXTENSION_POINT_NAME: string | null
  * 
  * See also g_menu_model_get_item_attribute() and g_menu_item_set_attribute().
  */
-export const MENU_ATTRIBUTE_ACTION: string | null
+export const MENU_ATTRIBUTE_ACTION: string
 /**
  * The menu item attribute that holds the namespace for all action names in
  * menus that are linked from this item.
  */
-export const MENU_ATTRIBUTE_ACTION_NAMESPACE: string | null
+export const MENU_ATTRIBUTE_ACTION_NAMESPACE: string
 /**
  * The menu item attribute which holds the icon of the item.
  * 
@@ -3533,18 +3533,18 @@ export const MENU_ATTRIBUTE_ACTION_NAMESPACE: string | null
  * favicons for a webpage, or application icons.  It should not be used
  * for 'verbs' (ie: stock icons).
  */
-export const MENU_ATTRIBUTE_ICON: string | null
+export const MENU_ATTRIBUTE_ICON: string
 /**
  * The menu item attribute which holds the label of the item.
  */
-export const MENU_ATTRIBUTE_LABEL: string | null
+export const MENU_ATTRIBUTE_LABEL: string
 /**
  * The menu item attribute which holds the target with which the item's action
  * will be activated.
  * 
  * See also g_menu_item_set_action_and_target()
  */
-export const MENU_ATTRIBUTE_TARGET: string | null
+export const MENU_ATTRIBUTE_TARGET: string
 /**
  * The maximum number of entries in a menu section supported by
  * g_dbus_connection_export_menu_model().
@@ -3559,58 +3559,58 @@ export const MENU_EXPORTER_MAX_SECTION_SIZE: number
  * 
  * See also g_menu_item_set_link().
  */
-export const MENU_LINK_SECTION: string | null
+export const MENU_LINK_SECTION: string
 /**
  * The name of the link that associates a menu item with a submenu.
  * 
  * See also g_menu_item_set_link().
  */
-export const MENU_LINK_SUBMENU: string | null
-export const NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME: string | null
+export const MENU_LINK_SUBMENU: string
+export const NATIVE_VOLUME_MONITOR_EXTENSION_POINT_NAME: string
 /**
  * Extension point for network status monitoring functionality.
  * See [Extending GIO][extending-gio].
  */
-export const NETWORK_MONITOR_EXTENSION_POINT_NAME: string | null
+export const NETWORK_MONITOR_EXTENSION_POINT_NAME: string
 /**
  * Extension point for power profile usage monitoring functionality.
  * See [Extending GIO][extending-gio].
  */
-export const POWER_PROFILE_MONITOR_EXTENSION_POINT_NAME: string | null
+export const POWER_PROFILE_MONITOR_EXTENSION_POINT_NAME: string
 /**
  * Extension point for proxy functionality.
  * See [Extending GIO][extending-gio].
  */
-export const PROXY_EXTENSION_POINT_NAME: string | null
+export const PROXY_EXTENSION_POINT_NAME: string
 /**
  * Extension point for proxy resolving functionality.
  * See [Extending GIO][extending-gio].
  */
-export const PROXY_RESOLVER_EXTENSION_POINT_NAME: string | null
+export const PROXY_RESOLVER_EXTENSION_POINT_NAME: string
 /**
  * Extension point for #GSettingsBackend functionality.
  */
-export const SETTINGS_BACKEND_EXTENSION_POINT_NAME: string | null
+export const SETTINGS_BACKEND_EXTENSION_POINT_NAME: string
 /**
  * Extension point for TLS functionality via #GTlsBackend.
  * See [Extending GIO][extending-gio].
  */
-export const TLS_BACKEND_EXTENSION_POINT_NAME: string | null
+export const TLS_BACKEND_EXTENSION_POINT_NAME: string
 /**
  * The purpose used to verify the client certificate in a TLS connection.
  * Used by TLS servers.
  */
-export const TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT: string | null
+export const TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT: string
 /**
  * The purpose used to verify the server certificate in a TLS connection. This
  * is the most common purpose in use. Used by TLS clients.
  */
-export const TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER: string | null
+export const TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER: string
 /**
  * Extension point for #GVfs functionality.
  * See [Extending GIO][extending-gio].
  */
-export const VFS_EXTENSION_POINT_NAME: string | null
+export const VFS_EXTENSION_POINT_NAME: string
 /**
  * The string used to obtain the volume class with g_volume_get_identifier().
  * 
@@ -3622,32 +3622,32 @@ export const VFS_EXTENSION_POINT_NAME: string | null
  * file chooser can use this information to show `network` volumes under
  * a "Network" heading and `device` volumes under a "Devices" heading.
  */
-export const VOLUME_IDENTIFIER_KIND_CLASS: string | null
+export const VOLUME_IDENTIFIER_KIND_CLASS: string
 /**
  * The string used to obtain a Hal UDI with g_volume_get_identifier().
  */
-export const VOLUME_IDENTIFIER_KIND_HAL_UDI: string | null
+export const VOLUME_IDENTIFIER_KIND_HAL_UDI: string
 /**
  * The string used to obtain a filesystem label with g_volume_get_identifier().
  */
-export const VOLUME_IDENTIFIER_KIND_LABEL: string | null
+export const VOLUME_IDENTIFIER_KIND_LABEL: string
 /**
  * The string used to obtain a NFS mount with g_volume_get_identifier().
  */
-export const VOLUME_IDENTIFIER_KIND_NFS_MOUNT: string | null
+export const VOLUME_IDENTIFIER_KIND_NFS_MOUNT: string
 /**
  * The string used to obtain a Unix device path with g_volume_get_identifier().
  */
-export const VOLUME_IDENTIFIER_KIND_UNIX_DEVICE: string | null
+export const VOLUME_IDENTIFIER_KIND_UNIX_DEVICE: string
 /**
  * The string used to obtain a UUID with g_volume_get_identifier().
  */
-export const VOLUME_IDENTIFIER_KIND_UUID: string | null
+export const VOLUME_IDENTIFIER_KIND_UUID: string
 /**
  * Extension point for volume monitor functionality.
  * See [Extending GIO][extending-gio].
  */
-export const VOLUME_MONITOR_EXTENSION_POINT_NAME: string | null
+export const VOLUME_MONITOR_EXTENSION_POINT_NAME: string
 /**
  * Checks if `action_name` is valid.
  * 
@@ -3659,7 +3659,7 @@ export const VOLUME_MONITOR_EXTENSION_POINT_NAME: string | null
  * @param actionName a potential action name
  * @returns %TRUE if @action_name is valid
  */
-export function actionNameIsValid(actionName: string | null): boolean
+export function actionNameIsValid(actionName: string): boolean
 /**
  * Parses a detailed action name into its separate name and target
  * components.
@@ -3694,7 +3694,7 @@ export function actionNameIsValid(actionName: string | null): boolean
  * @param detailedName a detailed action name
  * @returns %TRUE if successful, else %FALSE with @error set
  */
-export function actionParseDetailedName(detailedName: string | null): [ /* returnType */ boolean, /* actionName */ string | null, /* targetValue */ GLib.Variant | null ]
+export function actionParseDetailedName(detailedName: string): [ /* returnType */ boolean, /* actionName */ string, /* targetValue */ GLib.Variant | null ]
 /**
  * Formats a detailed action name from `action_name` and `target_value`.
  * 
@@ -3710,7 +3710,7 @@ export function actionParseDetailedName(detailedName: string | null): [ /* retur
  * @param targetValue a #GVariant target value, or %NULL
  * @returns a detailed format string
  */
-export function actionPrintDetailedName(actionName: string | null, targetValue: GLib.Variant | null): string | null
+export function actionPrintDetailedName(actionName: string, targetValue: GLib.Variant | null): string | null
 /**
  * Creates a new #GAppInfo from the given information.
  * 
@@ -3745,14 +3745,14 @@ export function appInfoGetAll(): AppInfo[]
  * @param contentType the content type to find a #GAppInfo for
  * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
  */
-export function appInfoGetAllForType(contentType: string | null): AppInfo[]
+export function appInfoGetAllForType(contentType: string): AppInfo[]
 /**
  * Gets the default #GAppInfo for a given content type.
  * @param contentType the content type to find a #GAppInfo for
  * @param mustSupportUris if %TRUE, the #GAppInfo is expected to     support URIs
  * @returns #GAppInfo for given @content_type or     %NULL on error.
  */
-export function appInfoGetDefaultForType(contentType: string | null, mustSupportUris: boolean): AppInfo | null
+export function appInfoGetDefaultForType(contentType: string, mustSupportUris: boolean): AppInfo | null
 /**
  * Asynchronously gets the default #GAppInfo for a given content type.
  * @param contentType the content type to find a #GAppInfo for
@@ -3760,7 +3760,7 @@ export function appInfoGetDefaultForType(contentType: string | null, mustSupport
  * @param cancellable optional #GCancellable object, %NULL to ignore
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
-export function appInfoGetDefaultForTypeAsync(contentType: string | null, mustSupportUris: boolean, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+export function appInfoGetDefaultForTypeAsync(contentType: string, mustSupportUris: boolean, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 /**
  * Finishes a default #GAppInfo lookup started by
  * g_app_info_get_default_for_type_async().
@@ -3778,7 +3778,7 @@ export function appInfoGetDefaultForTypeFinish(result: AsyncResult): AppInfo
  * @param uriScheme a string containing a URI scheme.
  * @returns #GAppInfo for given @uri_scheme or     %NULL on error.
  */
-export function appInfoGetDefaultForUriScheme(uriScheme: string | null): AppInfo | null
+export function appInfoGetDefaultForUriScheme(uriScheme: string): AppInfo | null
 /**
  * Asynchronously gets the default application for handling URIs with
  * the given URI scheme. A URI scheme is the initial part
@@ -3788,7 +3788,7 @@ export function appInfoGetDefaultForUriScheme(uriScheme: string | null): AppInfo
  * @param cancellable optional #GCancellable object, %NULL to ignore
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
-export function appInfoGetDefaultForUriSchemeAsync(uriScheme: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+export function appInfoGetDefaultForUriSchemeAsync(uriScheme: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 /**
  * Finishes a default #GAppInfo lookup started by
  * g_app_info_get_default_for_uri_scheme_async().
@@ -3805,7 +3805,7 @@ export function appInfoGetDefaultForUriSchemeFinish(result: AsyncResult): AppInf
  * @param contentType the content type to find a #GAppInfo for
  * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
  */
-export function appInfoGetFallbackForType(contentType: string | null): AppInfo[]
+export function appInfoGetFallbackForType(contentType: string): AppInfo[]
 /**
  * Gets a list of recommended #GAppInfos for a given content type, i.e.
  * those applications which claim to support the given content type exactly,
@@ -3816,7 +3816,7 @@ export function appInfoGetFallbackForType(contentType: string | null): AppInfo[]
  * @param contentType the content type to find a #GAppInfo for
  * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
  */
-export function appInfoGetRecommendedForType(contentType: string | null): AppInfo[]
+export function appInfoGetRecommendedForType(contentType: string): AppInfo[]
 /**
  * Utility function that launches the default application
  * registered to handle the specified uri. Synchronous I/O
@@ -3830,7 +3830,7 @@ export function appInfoGetRecommendedForType(contentType: string | null): AppInf
  * @param context an optional #GAppLaunchContext
  * @returns %TRUE on success, %FALSE on error.
  */
-export function appInfoLaunchDefaultForUri(uri: string | null, context: AppLaunchContext | null): boolean
+export function appInfoLaunchDefaultForUri(uri: string, context: AppLaunchContext | null): boolean
 /**
  * Async version of g_app_info_launch_default_for_uri().
  * 
@@ -3847,7 +3847,7 @@ export function appInfoLaunchDefaultForUri(uri: string | null, context: AppLaunc
  * @param cancellable a #GCancellable
  * @param callback a #GAsyncReadyCallback to call when the request is done
  */
-export function appInfoLaunchDefaultForUriAsync(uri: string | null, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+export function appInfoLaunchDefaultForUriAsync(uri: string, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 /**
  * Finishes an asynchronous launch-default-for-uri operation.
  * @param result a #GAsyncResult
@@ -3862,7 +3862,7 @@ export function appInfoLaunchDefaultForUriFinish(result: AsyncResult): boolean
  * g_app_info_remove_supports_type().
  * @param contentType a content type
  */
-export function appInfoResetTypeAssociations(contentType: string | null): void
+export function appInfoResetTypeAssociations(contentType: string): void
 /**
  * Helper function for constructing #GAsyncInitable object. This is
  * similar to g_object_newv() but also initializes the object asynchronously.
@@ -3942,7 +3942,7 @@ export function busGetSync(busType: BusType, cancellable: Cancellable | null): D
  * @param nameLostClosure #GClosure to invoke when `name` is lost     or %NULL
  * @returns an identifier (never 0) that can be used with     g_bus_unown_name() to stop owning the name.
  */
-export function busOwnNameOnConnection(connection: DBusConnection, name: string | null, flags: BusNameOwnerFlags, nameAcquiredClosure: GObject.TClosure | null, nameLostClosure: GObject.TClosure | null): number
+export function busOwnNameOnConnection(connection: DBusConnection, name: string, flags: BusNameOwnerFlags, nameAcquiredClosure: GObject.TClosure | null, nameLostClosure: GObject.TClosure | null): number
 /**
  * Version of g_bus_own_name() using closures instead of callbacks for
  * easier binding in other languages.
@@ -3954,7 +3954,7 @@ export function busOwnNameOnConnection(connection: DBusConnection, name: string 
  * @param nameLostClosure #GClosure to invoke when `name` is lost or     %NULL
  * @returns an identifier (never 0) that can be used with     g_bus_unown_name() to stop owning the name.
  */
-export function busOwnName(busType: BusType, name: string | null, flags: BusNameOwnerFlags, busAcquiredClosure: GObject.TClosure | null, nameAcquiredClosure: GObject.TClosure | null, nameLostClosure: GObject.TClosure | null): number
+export function busOwnName(busType: BusType, name: string, flags: BusNameOwnerFlags, busAcquiredClosure: GObject.TClosure | null, nameAcquiredClosure: GObject.TClosure | null, nameLostClosure: GObject.TClosure | null): number
 /**
  * Stops owning a name.
  * 
@@ -3989,7 +3989,7 @@ export function busUnwatchName(watcherId: number): void
  * @param nameVanishedClosure #GClosure to invoke when `name` is known to not exist or %NULL.
  * @returns An identifier (never 0) that can be used with g_bus_unwatch_name() to stop watching the name.
  */
-export function busWatchNameOnConnection(connection: DBusConnection, name: string | null, flags: BusNameWatcherFlags, nameAppearedClosure: GObject.TClosure | null, nameVanishedClosure: GObject.TClosure | null): number
+export function busWatchNameOnConnection(connection: DBusConnection, name: string, flags: BusNameWatcherFlags, nameAppearedClosure: GObject.TClosure | null, nameVanishedClosure: GObject.TClosure | null): number
 /**
  * Version of g_bus_watch_name() using closures instead of callbacks for
  * easier binding in other languages.
@@ -4000,33 +4000,33 @@ export function busWatchNameOnConnection(connection: DBusConnection, name: strin
  * @param nameVanishedClosure #GClosure to invoke when `name` is known to not exist or %NULL.
  * @returns An identifier (never 0) that can be used with g_bus_unwatch_name() to stop watching the name.
  */
-export function busWatchName(busType: BusType, name: string | null, flags: BusNameWatcherFlags, nameAppearedClosure: GObject.TClosure | null, nameVanishedClosure: GObject.TClosure | null): number
+export function busWatchName(busType: BusType, name: string, flags: BusNameWatcherFlags, nameAppearedClosure: GObject.TClosure | null, nameVanishedClosure: GObject.TClosure | null): number
 /**
  * Checks if a content type can be executable. Note that for instance
  * things like text files can be executables (i.e. scripts and batch files).
  * @param type a content type string
  * @returns %TRUE if the file type corresponds to a type that     can be executable, %FALSE otherwise.
  */
-export function contentTypeCanBeExecutable(type: string | null): boolean
+export function contentTypeCanBeExecutable(type: string): boolean
 /**
  * Compares two content types for equality.
  * @param type1 a content type string
  * @param type2 a content type string
  * @returns %TRUE if the two strings are identical or equivalent,     %FALSE otherwise.
  */
-export function contentTypeEquals(type1: string | null, type2: string | null): boolean
+export function contentTypeEquals(type1: string, type2: string): boolean
 /**
  * Tries to find a content type based on the mime type name.
  * @param mimeType a mime type string
  * @returns Newly allocated string with content type or     %NULL. Free with g_free()
  */
-export function contentTypeFromMimeType(mimeType: string | null): string | null
+export function contentTypeFromMimeType(mimeType: string): string | null
 /**
  * Gets the human readable description of the content type.
  * @param type a content type string
  * @returns a short description of the content type @type. Free the     returned string with g_free()
  */
-export function contentTypeGetDescription(type: string | null): string | null
+export function contentTypeGetDescription(type: string): string | null
 /**
  * Gets the generic icon name for a content type.
  * 
@@ -4036,13 +4036,13 @@ export function contentTypeGetDescription(type: string | null): string | null
  * @param type a content type string
  * @returns the registered generic icon name for the given @type,     or %NULL if unknown. Free with g_free()
  */
-export function contentTypeGetGenericIconName(type: string | null): string | null
+export function contentTypeGetGenericIconName(type: string): string | null
 /**
  * Gets the icon for a content type.
  * @param type a content type string
  * @returns #GIcon corresponding to the content type. Free the returned     object with g_object_unref()
  */
-export function contentTypeGetIcon(type: string | null): Icon
+export function contentTypeGetIcon(type: string): Icon
 /**
  * Get the list of directories which MIME data is loaded from. See
  * g_content_type_set_mime_dirs() for details.
@@ -4054,13 +4054,13 @@ export function contentTypeGetMimeDirs(): string[]
  * @param type a content type string
  * @returns the registered mime type for the     given @type, or %NULL if unknown; free with g_free().
  */
-export function contentTypeGetMimeType(type: string | null): string | null
+export function contentTypeGetMimeType(type: string): string | null
 /**
  * Gets the symbolic icon for a content type.
  * @param type a content type string
  * @returns symbolic #GIcon corresponding to the content type.     Free the returned object with g_object_unref()
  */
-export function contentTypeGetSymbolicIcon(type: string | null): Icon
+export function contentTypeGetSymbolicIcon(type: string): Icon
 /**
  * Guesses the content type based on example data. If the function is
  * uncertain, `result_uncertain` will be set to %TRUE. Either `filename`
@@ -4094,7 +4094,7 @@ export function contentTypeGuessForTree(root: File): string[]
  * @param supertype a content type string
  * @returns %TRUE if @type is a kind of @supertype,     %FALSE otherwise.
  */
-export function contentTypeIsA(type: string | null, supertype: string | null): boolean
+export function contentTypeIsA(type: string, supertype: string): boolean
 /**
  * Determines if `type` is a subset of `mime_type`.
  * Convenience wrapper around g_content_type_is_a().
@@ -4102,7 +4102,7 @@ export function contentTypeIsA(type: string | null, supertype: string | null): b
  * @param mimeType a mime type string
  * @returns %TRUE if @type is a kind of @mime_type,     %FALSE otherwise.
  */
-export function contentTypeIsMimeType(type: string | null, mimeType: string | null): boolean
+export function contentTypeIsMimeType(type: string, mimeType: string): boolean
 /**
  * Checks if the content type is the generic "unknown" type.
  * On UNIX this is the "application/octet-stream" mimetype,
@@ -4111,7 +4111,7 @@ export function contentTypeIsMimeType(type: string | null, mimeType: string | nu
  * @param type a content type string
  * @returns %TRUE if the type is the unknown type.
  */
-export function contentTypeIsUnknown(type: string | null): boolean
+export function contentTypeIsUnknown(type: string): boolean
 /**
  * Set the list of directories used by GIO to load the MIME database.
  * If `dirs` is %NULL, the directories used are the default:
@@ -4159,7 +4159,7 @@ export function contentTypesGetRegistered(): string[]
  * @param string an unescaped string to be included in a D-Bus address     as the value in a key-value pair
  * @returns a copy of @string with all     non-optionally-escaped bytes escaped
  */
-export function dbusAddressEscapeValue(string: string | null): string | null
+export function dbusAddressEscapeValue(string: string): string | null
 /**
  * Synchronously looks up the D-Bus address for the well-known message
  * bus instance specified by `bus_type`. This may involve using various
@@ -4188,7 +4188,7 @@ export function dbusAddressGetForBusSync(busType: BusType, cancellable: Cancella
  * @param cancellable A #GCancellable or %NULL.
  * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
  */
-export function dbusAddressGetStream(address: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+export function dbusAddressGetStream(address: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 /**
  * Finishes an operation started with g_dbus_address_get_stream().
  * 
@@ -4213,7 +4213,7 @@ export function dbusAddressGetStreamFinish(res: AsyncResult): [ /* returnType */
  * @param cancellable A #GCancellable or %NULL.
  * @returns A #GIOStream or %NULL if @error is set.
  */
-export function dbusAddressGetStreamSync(address: string | null, cancellable: Cancellable | null): [ /* returnType */ IOStream, /* outGuid */ string | null ]
+export function dbusAddressGetStreamSync(address: string, cancellable: Cancellable | null): [ /* returnType */ IOStream, /* outGuid */ string | null ]
 /**
  * Looks up the value of an annotation.
  * 
@@ -4222,7 +4222,7 @@ export function dbusAddressGetStreamSync(address: string | null, cancellable: Ca
  * @param name The name of the annotation to look up.
  * @returns The value or %NULL if not found. Do not free, it is owned by @annotations.
  */
-export function dbusAnnotationInfoLookup(annotations: DBusAnnotationInfo[] | null, name: string | null): string | null
+export function dbusAnnotationInfoLookup(annotations: DBusAnnotationInfo[] | null, name: string): string | null
 /**
  * Creates a D-Bus error name to use for `error`. If `error` matches
  * a registered error (cf. g_dbus_error_register_error()), the corresponding
@@ -4288,7 +4288,7 @@ export function dbusErrorIsRemoteError(error: GLib.Error): boolean
  * @param dbusErrorMessage D-Bus error message.
  * @returns An allocated #GError. Free with g_error_free().
  */
-export function dbusErrorNewForDbusError(dbusErrorName: string | null, dbusErrorMessage: string | null): GLib.Error
+export function dbusErrorNewForDbusError(dbusErrorName: string, dbusErrorMessage: string): GLib.Error
 export function dbusErrorQuark(): GLib.Quark
 /**
  * Creates an association to map between `dbus_error_name` and
@@ -4301,7 +4301,7 @@ export function dbusErrorQuark(): GLib.Quark
  * @param dbusErrorName A D-Bus error name.
  * @returns %TRUE if the association was created, %FALSE if it already exists.
  */
-export function dbusErrorRegisterError(errorDomain: GLib.Quark, errorCode: number, dbusErrorName: string | null): boolean
+export function dbusErrorRegisterError(errorDomain: GLib.Quark, errorCode: number, dbusErrorName: string): boolean
 /**
  * Helper function for associating a #GError error domain with D-Bus error names.
  * 
@@ -4311,7 +4311,7 @@ export function dbusErrorRegisterError(errorDomain: GLib.Quark, errorCode: numbe
  * @param quarkVolatile A pointer where to store the #GQuark.
  * @param entries A pointer to `num_entries` #GDBusErrorEntry struct items.
  */
-export function dbusErrorRegisterErrorDomain(errorDomainQuarkName: string | null, quarkVolatile: number, entries: DBusErrorEntry[]): void
+export function dbusErrorRegisterErrorDomain(errorDomainQuarkName: string, quarkVolatile: number, entries: DBusErrorEntry[]): void
 /**
  * Looks for extra information in the error message used to recover
  * the D-Bus error name and strips it if found. If stripped, the
@@ -4330,13 +4330,13 @@ export function dbusErrorStripRemoteError(error: GLib.Error): boolean
  * @param dbusErrorName A D-Bus error name.
  * @returns %TRUE if the association was destroyed, %FALSE if it wasn't found.
  */
-export function dbusErrorUnregisterError(errorDomain: GLib.Quark, errorCode: number, dbusErrorName: string | null): boolean
+export function dbusErrorUnregisterError(errorDomain: GLib.Quark, errorCode: number, dbusErrorName: string): boolean
 /**
  * This is a language binding friendly version of g_dbus_escape_object_path_bytestring().
  * @param s the string to escape
  * @returns an escaped version of @s. Free with g_free().
  */
-export function dbusEscapeObjectPath(s: string | null): string | null
+export function dbusEscapeObjectPath(s: string): string | null
 /**
  * Escapes `bytes` for use in a D-Bus object path component.
  * `bytes` is an array of zero or more nonzero bytes in an
@@ -4432,7 +4432,7 @@ export function dbusGvariantToGvalue(value: GLib.Variant): /* outGvalue */ any
  * @param string A string.
  * @returns %TRUE if @string is a valid D-Bus address, %FALSE otherwise.
  */
-export function dbusIsAddress(string: string | null): boolean
+export function dbusIsAddress(string: string): boolean
 /**
  * Check whether `string` is a valid D-Bus error name.
  * 
@@ -4442,7 +4442,7 @@ export function dbusIsAddress(string: string | null): boolean
  * @param string The string to check.
  * @returns %TRUE if valid, %FALSE otherwise.
  */
-export function dbusIsErrorName(string: string | null): boolean
+export function dbusIsErrorName(string: string): boolean
 /**
  * Checks if `string` is a D-Bus GUID.
  * 
@@ -4451,25 +4451,25 @@ export function dbusIsErrorName(string: string | null): boolean
  * @param string The string to check.
  * @returns %TRUE if @string is a GUID, %FALSE otherwise.
  */
-export function dbusIsGuid(string: string | null): boolean
+export function dbusIsGuid(string: string): boolean
 /**
  * Checks if `string` is a valid D-Bus interface name.
  * @param string The string to check.
  * @returns %TRUE if valid, %FALSE otherwise.
  */
-export function dbusIsInterfaceName(string: string | null): boolean
+export function dbusIsInterfaceName(string: string): boolean
 /**
  * Checks if `string` is a valid D-Bus member (e.g. signal or method) name.
  * @param string The string to check.
  * @returns %TRUE if valid, %FALSE otherwise.
  */
-export function dbusIsMemberName(string: string | null): boolean
+export function dbusIsMemberName(string: string): boolean
 /**
  * Checks if `string` is a valid D-Bus bus name (either unique or well-known).
  * @param string The string to check.
  * @returns %TRUE if valid, %FALSE otherwise.
  */
-export function dbusIsName(string: string | null): boolean
+export function dbusIsName(string: string): boolean
 /**
  * Like g_dbus_is_address() but also checks if the library supports the
  * transports in `string` and that key/value pairs for each transport
@@ -4478,13 +4478,13 @@ export function dbusIsName(string: string | null): boolean
  * @param string A string.
  * @returns %TRUE if @string is a valid D-Bus address that is supported by this library, %FALSE if @error is set.
  */
-export function dbusIsSupportedAddress(string: string | null): boolean
+export function dbusIsSupportedAddress(string: string): boolean
 /**
  * Checks if `string` is a valid D-Bus unique bus name.
  * @param string The string to check.
  * @returns %TRUE if valid, %FALSE otherwise.
  */
-export function dbusIsUniqueName(string: string | null): boolean
+export function dbusIsUniqueName(string: string): boolean
 /**
  * Unescapes an string that was previously escaped with
  * g_dbus_escape_object_path(). If the string is in a format that could
@@ -4497,7 +4497,7 @@ export function dbusIsUniqueName(string: string | null): boolean
  * @param s the string to unescape
  * @returns an   unescaped version of @s, or %NULL if @s is not a string returned   from g_dbus_escape_object_path(). Free with g_free().
  */
-export function dbusUnescapeObjectPath(s: string | null): number[] | null
+export function dbusUnescapeObjectPath(s: string): number[] | null
 /**
  * Creates a new #GDtlsClientConnection wrapping `base_socket` which is
  * assumed to communicate with the server identified by `server_identity`.
@@ -4575,7 +4575,7 @@ export function fileNewForPath(path: string): File
  * @param uri a UTF-8 string containing a URI
  * @returns a new #GFile for the given @uri.   Free the returned object with g_object_unref().
  */
-export function fileNewForUri(uri: string | null): File
+export function fileNewForUri(uri: string): File
 /**
  * Opens a file in the preferred directory for temporary files (as
  * returned by g_get_tmp_dir()) and returns a #GFile and
@@ -4638,7 +4638,7 @@ export function fileNewTmpFinish(result: AsyncResult): [ /* returnType */ File, 
  * @param parseName a file name or path to be parsed
  * @returns a new #GFile.
  */
-export function fileParseName(parseName: string | null): File
+export function fileParseName(parseName: string): File
 /**
  * Deserializes a #GIcon previously serialized using g_icon_serialize().
  * @param value a #GVariant created with g_icon_serialize()
@@ -4655,7 +4655,7 @@ export function iconDeserialize(value: GLib.Variant): Icon | null
  * @param str A string obtained via g_icon_to_string().
  * @returns An object implementing the #GIcon          interface or %NULL if @error is set.
  */
-export function iconNewForString(str: string | null): Icon
+export function iconNewForString(str: string): Icon
 /**
  * Helper function for constructing #GInitable object. This is
  * similar to g_object_newv() but also initializes the object
@@ -4701,19 +4701,19 @@ export function ioErrorQuark(): GLib.Quark
  * @param priority the priority for the extension
  * @returns a #GIOExtension object for #GType
  */
-export function ioExtensionPointImplement(extensionPointName: string | null, type: GObject.GType, extensionName: string | null, priority: number): IOExtension
+export function ioExtensionPointImplement(extensionPointName: string, type: GObject.GType, extensionName: string, priority: number): IOExtension
 /**
  * Looks up an existing extension point.
  * @param name the name of the extension point
  * @returns the #GIOExtensionPoint, or %NULL if there    is no registered extension point with the given name.
  */
-export function ioExtensionPointLookup(name: string | null): IOExtensionPoint
+export function ioExtensionPointLookup(name: string): IOExtensionPoint
 /**
  * Registers an extension point.
  * @param name The name of the extension point
  * @returns the new #GIOExtensionPoint. This object is    owned by GIO and should not be freed.
  */
-export function ioExtensionPointRegister(name: string | null): IOExtensionPoint
+export function ioExtensionPointRegister(name: string): IOExtensionPoint
 /**
  * Loads all the modules in the specified directory.
  * 
@@ -4846,7 +4846,7 @@ export function ioSchedulerPushJob(jobFunc: IOSchedulerJobFunc, ioPriority: numb
  * @param rootGroup the group name corresponding to              `root_path,` or %NULL
  * @returns a keyfile-backed #GSettingsBackend
  */
-export function keyfileSettingsBackendNew(filename: string | null, rootPath: string | null, rootGroup: string | null): SettingsBackend
+export function keyfileSettingsBackendNew(filename: string, rootPath: string, rootGroup: string | null): SettingsBackend
 /**
  * Gets a reference to the default #GMemoryMonitor for the system.
  * @returns a new reference to the default #GMemoryMonitor
@@ -4974,7 +4974,7 @@ export function powerProfileMonitorDupDefault(): PowerProfileMonitor
  * @param protocol the proxy protocol name (e.g. http, socks, etc)
  * @returns return a #GProxy or NULL if protocol               is not supported.
  */
-export function proxyGetDefaultForProtocol(protocol: string | null): Proxy | null
+export function proxyGetDefaultForProtocol(protocol: string): Proxy | null
 /**
  * Gets the default #GProxyResolver for the system.
  * @returns the default #GProxyResolver, which     will be a dummy object if no proxy resolver is available
@@ -5016,7 +5016,7 @@ export function resourceLoad(filename: string): Resource
  * @param lookupFlags A #GResourceLookupFlags
  * @returns an array of constant strings
  */
-export function resourcesEnumerateChildren(path: string | null, lookupFlags: ResourceLookupFlags): string[]
+export function resourcesEnumerateChildren(path: string, lookupFlags: ResourceLookupFlags): string[]
 /**
  * Looks for a file at the specified `path` in the set of
  * globally registered resources and if found returns information about it.
@@ -5026,7 +5026,7 @@ export function resourcesEnumerateChildren(path: string | null, lookupFlags: Res
  * @param lookupFlags A #GResourceLookupFlags
  * @returns %TRUE if the file was found. %FALSE if there were errors
  */
-export function resourcesGetInfo(path: string | null, lookupFlags: ResourceLookupFlags): [ /* returnType */ boolean, /* size */ number, /* flags */ number ]
+export function resourcesGetInfo(path: string, lookupFlags: ResourceLookupFlags): [ /* returnType */ boolean, /* size */ number, /* flags */ number ]
 /**
  * Looks for a file at the specified `path` in the set of
  * globally registered resources and returns a #GBytes that
@@ -5046,7 +5046,7 @@ export function resourcesGetInfo(path: string | null, lookupFlags: ResourceLooku
  * @param lookupFlags A #GResourceLookupFlags
  * @returns #GBytes or %NULL on error.     Free the returned object with g_bytes_unref()
  */
-export function resourcesLookupData(path: string | null, lookupFlags: ResourceLookupFlags): any
+export function resourcesLookupData(path: string, lookupFlags: ResourceLookupFlags): any
 /**
  * Looks for a file at the specified `path` in the set of
  * globally registered resources and returns a #GInputStream
@@ -5057,7 +5057,7 @@ export function resourcesLookupData(path: string | null, lookupFlags: ResourceLo
  * @param lookupFlags A #GResourceLookupFlags
  * @returns #GInputStream or %NULL on error.     Free the returned object with g_object_unref()
  */
-export function resourcesOpenStream(path: string | null, lookupFlags: ResourceLookupFlags): InputStream
+export function resourcesOpenStream(path: string, lookupFlags: ResourceLookupFlags): InputStream
 /**
  * Registers the resource with the process-global set of resources.
  * Once a resource is registered the files in it can be accessed
@@ -5165,7 +5165,7 @@ export function unixIsMountPathSystemInternal(mountPath: string): boolean
  * @param devicePath a device path, e.g. `/dev/loop0` or `nfsd`
  * @returns %TRUE if @device_path is considered an implementation detail of    the OS.
  */
-export function unixIsSystemDevicePath(devicePath: string | null): boolean
+export function unixIsSystemDevicePath(devicePath: string): boolean
 /**
  * Determines if `fs_type` is considered a type of file system which is only
  * used in implementation of the OS. This is primarily used for hiding
@@ -5177,7 +5177,7 @@ export function unixIsSystemDevicePath(devicePath: string | null): boolean
  * @param fsType a file system type, e.g. `procfs` or `tmpfs`
  * @returns %TRUE if @fs_type is considered an implementation detail of the OS.
  */
-export function unixIsSystemFsType(fsType: string | null): boolean
+export function unixIsSystemFsType(fsType: string): boolean
 /**
  * Gets a #GUnixMountEntry for a given mount path. If `time_read`
  * is set, it will be filled with a unix timestamp for checking
@@ -5234,7 +5234,7 @@ export function unixMountGetDevicePath(mountEntry: UnixMountEntry): string
  * @param mountEntry a #GUnixMount.
  * @returns a string containing the file system type.
  */
-export function unixMountGetFsType(mountEntry: UnixMountEntry): string | null
+export function unixMountGetFsType(mountEntry: UnixMountEntry): string
 /**
  * Gets the mount path for a unix mount.
  * @param mountEntry input #GUnixMountEntry to get the mount path for.
@@ -5377,7 +5377,7 @@ export interface AsyncReadyCallback {
  * @param name The name that is requested to be owned.
  */
 export interface BusAcquiredCallback {
-    (connection: DBusConnection, name: string | null): void
+    (connection: DBusConnection, name: string): void
 }
 /**
  * Invoked when the name is acquired.
@@ -5386,7 +5386,7 @@ export interface BusAcquiredCallback {
  * @param name The name being owned.
  */
 export interface BusNameAcquiredCallback {
-    (connection: DBusConnection, name: string | null): void
+    (connection: DBusConnection, name: string): void
 }
 /**
  * Invoked when the name being watched is known to have to have an owner.
@@ -5396,7 +5396,7 @@ export interface BusNameAcquiredCallback {
  * @param nameOwner Unique name of the owner of the name being watched.
  */
 export interface BusNameAppearedCallback {
-    (connection: DBusConnection, name: string | null, nameOwner: string | null): void
+    (connection: DBusConnection, name: string, nameOwner: string): void
 }
 /**
  * Invoked when the name is lost or `connection` has been closed.
@@ -5405,7 +5405,7 @@ export interface BusNameAppearedCallback {
  * @param name The name being owned.
  */
 export interface BusNameLostCallback {
-    (connection: DBusConnection, name: string | null): void
+    (connection: DBusConnection, name: string): void
 }
 /**
  * Invoked when the name being watched is known not to have to have an owner.
@@ -5418,7 +5418,7 @@ export interface BusNameLostCallback {
  * @param name The name being watched.
  */
 export interface BusNameVanishedCallback {
-    (connection: DBusConnection, name: string | null): void
+    (connection: DBusConnection, name: string): void
 }
 /**
  * This is the function type of the callback used for the #GSource
@@ -5443,7 +5443,7 @@ export interface CancellableSourceFunc {
  * @returns A #GVariant with the value for @property_name or %NULL if     @error is set. If the returned #GVariant is floating, it is     consumed - otherwise its reference count is decreased by one.
  */
 export interface DBusInterfaceGetPropertyFunc {
-    (connection: DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, propertyName: string | null, error: GLib.Error): GLib.Variant
+    (connection: DBusConnection, sender: string, objectPath: string, interfaceName: string, propertyName: string, error: GLib.Error): GLib.Variant
 }
 /**
  * The type of the `method_call` function in #GDBusInterfaceVTable.
@@ -5457,7 +5457,7 @@ export interface DBusInterfaceGetPropertyFunc {
  * @param invocation A #GDBusMethodInvocation object that must be used to return a value or error.
  */
 export interface DBusInterfaceMethodCallFunc {
-    (connection: DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, invocation: DBusMethodInvocation): void
+    (connection: DBusConnection, sender: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, invocation: DBusMethodInvocation): void
 }
 /**
  * The type of the `set_property` function in #GDBusInterfaceVTable.
@@ -5472,7 +5472,7 @@ export interface DBusInterfaceMethodCallFunc {
  * @returns %TRUE if the property was set to @value, %FALSE if @error is set.
  */
 export interface DBusInterfaceSetPropertyFunc {
-    (connection: DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, propertyName: string | null, value: GLib.Variant, error: GLib.Error): boolean
+    (connection: DBusConnection, sender: string, objectPath: string, interfaceName: string, propertyName: string, value: GLib.Variant, error: GLib.Error): boolean
 }
 /**
  * Signature for function used in g_dbus_connection_add_filter().
@@ -5565,7 +5565,7 @@ export interface DBusMessageFilterFunction {
  * @returns A #GType to use for the remote object. The returned type   must be a #GDBusProxy or #GDBusObjectProxy -derived   type.
  */
 export interface DBusProxyTypeFunc {
-    (manager: DBusObjectManagerClient, objectPath: string | null, interfaceName: string | null, data: any | null): GObject.GType
+    (manager: DBusObjectManagerClient, objectPath: string, interfaceName: string | null, data: any | null): GObject.GType
 }
 /**
  * Signature for callback function used in g_dbus_connection_signal_subscribe().
@@ -5578,7 +5578,7 @@ export interface DBusProxyTypeFunc {
  * @param parameters A #GVariant tuple with parameters for the signal.
  */
 export interface DBusSignalCallback {
-    (connection: DBusConnection, senderName: string | null, objectPath: string | null, interfaceName: string | null, signalName: string | null, parameters: GLib.Variant): void
+    (connection: DBusConnection, senderName: string | null, objectPath: string, interfaceName: string, signalName: string, parameters: GLib.Variant): void
 }
 /**
  * The type of the `dispatch` function in #GDBusSubtreeVTable.
@@ -5595,7 +5595,7 @@ export interface DBusSignalCallback {
  * @returns A #GDBusInterfaceVTable or %NULL if you don't want to handle the methods.
  */
 export interface DBusSubtreeDispatchFunc {
-    (connection: DBusConnection, sender: string | null, objectPath: string | null, interfaceName: string | null, node: string | null, outUserData: any): DBusInterfaceVTable | null
+    (connection: DBusConnection, sender: string, objectPath: string, interfaceName: string, node: string, outUserData: any): DBusInterfaceVTable | null
 }
 /**
  * The type of the `enumerate` function in #GDBusSubtreeVTable.
@@ -5616,7 +5616,7 @@ export interface DBusSubtreeDispatchFunc {
  * @returns A newly allocated array of strings for node names that are children of @object_path.
  */
 export interface DBusSubtreeEnumerateFunc {
-    (connection: DBusConnection, sender: string | null, objectPath: string | null): string[]
+    (connection: DBusConnection, sender: string, objectPath: string): string[]
 }
 /**
  * The type of the `introspect` function in #GDBusSubtreeVTable.
@@ -5645,7 +5645,7 @@ export interface DBusSubtreeEnumerateFunc {
  * @returns A %NULL-terminated array of pointers to #GDBusInterfaceInfo, or %NULL.
  */
 export interface DBusSubtreeIntrospectFunc {
-    (connection: DBusConnection, sender: string | null, objectPath: string | null, node: string | null): DBusInterfaceInfo[] | null
+    (connection: DBusConnection, sender: string, objectPath: string, node: string): DBusInterfaceInfo[] | null
 }
 /**
  * This is the function type of the callback used for the #GSource
@@ -5732,7 +5732,7 @@ export interface FileProgressCallback {
  * @returns %TRUE if more data should be read back. %FALSE otherwise.
  */
 export interface FileReadMoreCallback {
-    (fileContents: string | null, fileSize: number, callbackData: any | null): boolean
+    (fileContents: string, fileSize: number, callbackData: any | null): boolean
 }
 /**
  * I/O Job function.
@@ -5875,7 +5875,7 @@ export interface TaskThreadFunc {
  * @returns a #GFile for @identifier.
  */
 export interface VfsFileLookupFunc {
-    (vfs: Vfs, identifier: string | null): File
+    (vfs: Vfs, identifier: string): File
 }
 export module Action {
 
@@ -5924,7 +5924,7 @@ export interface Action {
     // Has conflict: activate(parameter: GLib.Variant | null): void
     // Has conflict: changeState(value: GLib.Variant): void
     // Has conflict: getEnabled(): boolean
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: getParameterType(): GLib.VariantType | null
     // Has conflict: getState(): GLib.Variant | null
     // Has conflict: getStateHint(): GLib.Variant | null
@@ -5973,7 +5973,7 @@ export interface Action {
      * @virtual 
      * @returns the name of the action
      */
-    getName(): string | null
+    getName(): string
     /**
      * Queries the type of the parameter that must be given when activating
      * `action`.
@@ -6134,7 +6134,7 @@ export class Action extends GObject.Object {
      * @param actionName a potential action name
      * @returns %TRUE if @action_name is valid
      */
-    static nameIsValid(actionName: string | null): boolean
+    static nameIsValid(actionName: string): boolean
     /**
      * Parses a detailed action name into its separate name and target
      * components.
@@ -6169,7 +6169,7 @@ export class Action extends GObject.Object {
      * @param detailedName a detailed action name
      * @returns %TRUE if successful, else %FALSE with @error set
      */
-    static parseDetailedName(detailedName: string | null): [ /* returnType */ boolean, /* actionName */ string | null, /* targetValue */ GLib.Variant | null ]
+    static parseDetailedName(detailedName: string): [ /* returnType */ boolean, /* actionName */ string, /* targetValue */ GLib.Variant | null ]
     /**
      * Formats a detailed action name from `action_name` and `target_value`.
      * 
@@ -6185,7 +6185,7 @@ export class Action extends GObject.Object {
      * @param targetValue a #GVariant target value, or %NULL
      * @returns a detailed format string
      */
-    static printDetailedName(actionName: string | null, targetValue: GLib.Variant | null): string | null
+    static printDetailedName(actionName: string, targetValue: GLib.Variant | null): string | null
 }
 
 export module ActionGroup {
@@ -6236,20 +6236,20 @@ export interface ActionGroup {
 
     // Owm methods of Gio-2.0.Gio.ActionGroup
 
-    // Has conflict: actionAdded(actionName: string | null): void
-    // Has conflict: actionEnabledChanged(actionName: string | null, enabled: boolean): void
-    // Has conflict: actionRemoved(actionName: string | null): void
-    // Has conflict: actionStateChanged(actionName: string | null, state: GLib.Variant): void
-    // Has conflict: activateAction(actionName: string | null, parameter: GLib.Variant | null): void
-    // Has conflict: changeActionState(actionName: string | null, value: GLib.Variant): void
-    // Has conflict: getActionEnabled(actionName: string | null): boolean
-    // Has conflict: getActionParameterType(actionName: string | null): GLib.VariantType | null
-    // Has conflict: getActionState(actionName: string | null): GLib.Variant | null
-    // Has conflict: getActionStateHint(actionName: string | null): GLib.Variant | null
-    // Has conflict: getActionStateType(actionName: string | null): GLib.VariantType | null
-    // Has conflict: hasAction(actionName: string | null): boolean
+    // Has conflict: actionAdded(actionName: string): void
+    // Has conflict: actionEnabledChanged(actionName: string, enabled: boolean): void
+    // Has conflict: actionRemoved(actionName: string): void
+    // Has conflict: actionStateChanged(actionName: string, state: GLib.Variant): void
+    // Has conflict: activateAction(actionName: string, parameter: GLib.Variant | null): void
+    // Has conflict: changeActionState(actionName: string, value: GLib.Variant): void
+    // Has conflict: getActionEnabled(actionName: string): boolean
+    // Has conflict: getActionParameterType(actionName: string): GLib.VariantType | null
+    // Has conflict: getActionState(actionName: string): GLib.Variant | null
+    // Has conflict: getActionStateHint(actionName: string): GLib.Variant | null
+    // Has conflict: getActionStateType(actionName: string): GLib.VariantType | null
+    // Has conflict: hasAction(actionName: string): boolean
     // Has conflict: listActions(): string[]
-    // Has conflict: queryAction(actionName: string | null): [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType, /* stateType */ GLib.VariantType, /* stateHint */ GLib.Variant, /* state */ GLib.Variant ]
+    // Has conflict: queryAction(actionName: string): [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType, /* stateType */ GLib.VariantType, /* stateHint */ GLib.Variant, /* state */ GLib.Variant ]
 
     // Own virtual methods of Gio-2.0.Gio.ActionGroup
 
@@ -6260,7 +6260,7 @@ export interface ActionGroup {
      * @virtual 
      * @param actionName the name of an action in the group
      */
-    actionAdded(actionName: string | null): void
+    actionAdded(actionName: string): void
     /**
      * Emits the #GActionGroup::action-enabled-changed signal on `action_group`.
      * 
@@ -6269,7 +6269,7 @@ export interface ActionGroup {
      * @param actionName the name of an action in the group
      * @param enabled whether or not the action is now enabled
      */
-    actionEnabledChanged(actionName: string | null, enabled: boolean): void
+    actionEnabledChanged(actionName: string, enabled: boolean): void
     /**
      * Emits the #GActionGroup::action-removed signal on `action_group`.
      * 
@@ -6277,7 +6277,7 @@ export interface ActionGroup {
      * @virtual 
      * @param actionName the name of an action in the group
      */
-    actionRemoved(actionName: string | null): void
+    actionRemoved(actionName: string): void
     /**
      * Emits the #GActionGroup::action-state-changed signal on `action_group`.
      * 
@@ -6286,7 +6286,7 @@ export interface ActionGroup {
      * @param actionName the name of an action in the group
      * @param state the new state of the named action
      */
-    actionStateChanged(actionName: string | null, state: GLib.Variant): void
+    actionStateChanged(actionName: string, state: GLib.Variant): void
     /**
      * Activate the named action within `action_group`.
      * 
@@ -6327,7 +6327,7 @@ export interface ActionGroup {
      * @param actionName the name of the action to activate
      * @param parameter parameters to the activation
      */
-    activateAction(actionName: string | null, parameter: GLib.Variant | null): void
+    activateAction(actionName: string, parameter: GLib.Variant | null): void
     /**
      * Request for the state of the named action within `action_group` to be
      * changed to `value`.
@@ -6344,7 +6344,7 @@ export interface ActionGroup {
      * @param actionName the name of the action to request the change on
      * @param value the new state
      */
-    changeActionState(actionName: string | null, value: GLib.Variant): void
+    changeActionState(actionName: string, value: GLib.Variant): void
     /**
      * Checks if the named action within `action_group` is currently enabled.
      * 
@@ -6354,7 +6354,7 @@ export interface ActionGroup {
      * @param actionName the name of the action to query
      * @returns whether or not the action is currently enabled
      */
-    getActionEnabled(actionName: string | null): boolean
+    getActionEnabled(actionName: string): boolean
     /**
      * Queries the type of the parameter that must be given when activating
      * the named action within `action_group`.
@@ -6373,7 +6373,7 @@ export interface ActionGroup {
      * @param actionName the name of the action to query
      * @returns the parameter type
      */
-    getActionParameterType(actionName: string | null): GLib.VariantType | null
+    getActionParameterType(actionName: string): GLib.VariantType | null
     /**
      * Queries the current state of the named action within `action_group`.
      * 
@@ -6387,7 +6387,7 @@ export interface ActionGroup {
      * @param actionName the name of the action to query
      * @returns the current state of the action
      */
-    getActionState(actionName: string | null): GLib.Variant | null
+    getActionState(actionName: string): GLib.Variant | null
     /**
      * Requests a hint about the valid range of values for the state of the
      * named action within `action_group`.
@@ -6411,7 +6411,7 @@ export interface ActionGroup {
      * @param actionName the name of the action to query
      * @returns the state range hint
      */
-    getActionStateHint(actionName: string | null): GLib.Variant | null
+    getActionStateHint(actionName: string): GLib.Variant | null
     /**
      * Queries the type of the state of the named action within
      * `action_group`.
@@ -6433,14 +6433,14 @@ export interface ActionGroup {
      * @param actionName the name of the action to query
      * @returns the state type, if the action is stateful
      */
-    getActionStateType(actionName: string | null): GLib.VariantType | null
+    getActionStateType(actionName: string): GLib.VariantType | null
     /**
      * Checks if the named action exists within `action_group`.
      * @virtual 
      * @param actionName the name of the action to check for
      * @returns whether the named action exists
      */
-    hasAction(actionName: string | null): boolean
+    hasAction(actionName: string): boolean
     /**
      * Lists the actions contained within `action_group`.
      * 
@@ -6482,7 +6482,7 @@ export interface ActionGroup {
      * @param actionName the name of an action in the group
      * @returns %TRUE if the action exists, else %FALSE
      */
-    queryAction(actionName: string | null): [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType, /* stateType */ GLib.VariantType, /* stateHint */ GLib.Variant, /* state */ GLib.Variant ]
+    queryAction(actionName: string): [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType, /* stateType */ GLib.VariantType, /* stateHint */ GLib.Variant, /* state */ GLib.Variant ]
 
     // Own signals of Gio-2.0.Gio.ActionGroup
 
@@ -6644,8 +6644,8 @@ export interface ActionMap {
      * @param userData the user data for signal connections
      */
     addActionEntries(entries: ActionEntry[], userData: any | null): void
-    // Has conflict: lookupAction(actionName: string | null): Action | null
-    // Has conflict: removeAction(actionName: string | null): void
+    // Has conflict: lookupAction(actionName: string): Action | null
+    // Has conflict: removeAction(actionName: string): void
     /**
      * Remove actions from a #GActionMap. This is meant as the reverse of
      * g_action_map_add_action_entries().
@@ -6696,7 +6696,7 @@ export interface ActionMap {
      * @param actionName the name of an action
      * @returns a #GAction, or %NULL
      */
-    lookupAction(actionName: string | null): Action | null
+    lookupAction(actionName: string): Action | null
     /**
      * Removes the named action from the action map.
      * 
@@ -6704,7 +6704,7 @@ export interface ActionMap {
      * @virtual 
      * @param actionName the name of the action
      */
-    removeAction(actionName: string | null): void
+    removeAction(actionName: string): void
 
     // Class property signals of Gio-2.0.Gio.ActionMap
 
@@ -6762,7 +6762,7 @@ export interface AppInfo {
 
     // Owm methods of Gio-2.0.Gio.AppInfo
 
-    // Has conflict: addSupportsType(contentType: string | null): boolean
+    // Has conflict: addSupportsType(contentType: string): boolean
     // Has conflict: canDelete(): boolean
     // Has conflict: canRemoveSupportsType(): boolean
     /**
@@ -6778,20 +6778,20 @@ export interface AppInfo {
     // Has conflict: equal(appinfo2: AppInfo): boolean
     // Has conflict: getCommandline(): string | null
     // Has conflict: getDescription(): string | null
-    // Has conflict: getDisplayName(): string | null
+    // Has conflict: getDisplayName(): string
     // Has conflict: getExecutable(): string
     // Has conflict: getIcon(): Icon | null
     // Has conflict: getId(): string | null
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: getSupportedTypes(): string[]
     // Has conflict: launch(files: File[] | null, context: AppLaunchContext | null): boolean
     // Has conflict: launchUris(uris: string[] | null, context: AppLaunchContext | null): boolean
     // Has conflict: launchUrisAsync(uris: string[] | null, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: launchUrisFinish(result: AsyncResult): boolean
-    // Has conflict: removeSupportsType(contentType: string | null): boolean
+    // Has conflict: removeSupportsType(contentType: string): boolean
     // Has conflict: setAsDefaultForExtension(extension: string): boolean
-    // Has conflict: setAsDefaultForType(contentType: string | null): boolean
-    // Has conflict: setAsLastUsedForType(contentType: string | null): boolean
+    // Has conflict: setAsDefaultForType(contentType: string): boolean
+    // Has conflict: setAsLastUsedForType(contentType: string): boolean
     // Has conflict: shouldShow(): boolean
     // Has conflict: supportsFiles(): boolean
     // Has conflict: supportsUris(): boolean
@@ -6805,7 +6805,7 @@ export interface AppInfo {
      * @param contentType a string.
      * @returns %TRUE on success, %FALSE on error.
      */
-    addSupportsType(contentType: string | null): boolean
+    addSupportsType(contentType: string): boolean
     /**
      * Obtains the information whether the #GAppInfo can be deleted.
      * See g_app_info_delete().
@@ -6865,7 +6865,7 @@ export interface AppInfo {
      * @virtual 
      * @returns the display name of the application for @appinfo, or the name if no display name is available.
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Gets the executable's name for the installed application.
      * 
@@ -6899,7 +6899,7 @@ export interface AppInfo {
      * @virtual 
      * @returns the name of the application for @appinfo.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the list of content types that `app_info` claims to support.
      * If this information is not provided by the environment, this function
@@ -6991,7 +6991,7 @@ export interface AppInfo {
      * @param contentType a string.
      * @returns %TRUE on success, %FALSE on error.
      */
-    removeSupportsType(contentType: string | null): boolean
+    removeSupportsType(contentType: string): boolean
     /**
      * Sets the application as the default handler for the given file extension.
      * @virtual 
@@ -7005,7 +7005,7 @@ export interface AppInfo {
      * @param contentType the content type.
      * @returns %TRUE on success, %FALSE on error.
      */
-    setAsDefaultForType(contentType: string | null): boolean
+    setAsDefaultForType(contentType: string): boolean
     /**
      * Sets the application as the last used application for a given type.
      * This will make the application appear as first in the list returned
@@ -7015,7 +7015,7 @@ export interface AppInfo {
      * @param contentType the content type.
      * @returns %TRUE on success, %FALSE on error.
      */
-    setAsLastUsedForType(contentType: string | null): boolean
+    setAsLastUsedForType(contentType: string): boolean
     /**
      * Checks if the application info should be shown in menus that
      * list available applications.
@@ -7148,14 +7148,14 @@ export class AppInfo extends GObject.Object {
      * @param contentType the content type to find a #GAppInfo for
      * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
      */
-    static getAllForType(contentType: string | null): AppInfo[]
+    static getAllForType(contentType: string): AppInfo[]
     /**
      * Gets the default #GAppInfo for a given content type.
      * @param contentType the content type to find a #GAppInfo for
      * @param mustSupportUris if %TRUE, the #GAppInfo is expected to     support URIs
      * @returns #GAppInfo for given @content_type or     %NULL on error.
      */
-    static getDefaultForType(contentType: string | null, mustSupportUris: boolean): AppInfo | null
+    static getDefaultForType(contentType: string, mustSupportUris: boolean): AppInfo | null
     /**
      * Asynchronously gets the default #GAppInfo for a given content type.
      * @param contentType the content type to find a #GAppInfo for
@@ -7163,7 +7163,7 @@ export class AppInfo extends GObject.Object {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
-    static getDefaultForTypeAsync(contentType: string | null, mustSupportUris: boolean, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static getDefaultForTypeAsync(contentType: string, mustSupportUris: boolean, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes a default #GAppInfo lookup started by
      * g_app_info_get_default_for_type_async().
@@ -7181,7 +7181,7 @@ export class AppInfo extends GObject.Object {
      * @param uriScheme a string containing a URI scheme.
      * @returns #GAppInfo for given @uri_scheme or     %NULL on error.
      */
-    static getDefaultForUriScheme(uriScheme: string | null): AppInfo | null
+    static getDefaultForUriScheme(uriScheme: string): AppInfo | null
     /**
      * Asynchronously gets the default application for handling URIs with
      * the given URI scheme. A URI scheme is the initial part
@@ -7191,7 +7191,7 @@ export class AppInfo extends GObject.Object {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
-    static getDefaultForUriSchemeAsync(uriScheme: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static getDefaultForUriSchemeAsync(uriScheme: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes a default #GAppInfo lookup started by
      * g_app_info_get_default_for_uri_scheme_async().
@@ -7208,7 +7208,7 @@ export class AppInfo extends GObject.Object {
      * @param contentType the content type to find a #GAppInfo for
      * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
      */
-    static getFallbackForType(contentType: string | null): AppInfo[]
+    static getFallbackForType(contentType: string): AppInfo[]
     /**
      * Gets a list of recommended #GAppInfos for a given content type, i.e.
      * those applications which claim to support the given content type exactly,
@@ -7219,7 +7219,7 @@ export class AppInfo extends GObject.Object {
      * @param contentType the content type to find a #GAppInfo for
      * @returns #GList of #GAppInfos     for given @content_type or %NULL on error.
      */
-    static getRecommendedForType(contentType: string | null): AppInfo[]
+    static getRecommendedForType(contentType: string): AppInfo[]
     /**
      * Utility function that launches the default application
      * registered to handle the specified uri. Synchronous I/O
@@ -7233,7 +7233,7 @@ export class AppInfo extends GObject.Object {
      * @param context an optional #GAppLaunchContext
      * @returns %TRUE on success, %FALSE on error.
      */
-    static launchDefaultForUri(uri: string | null, context: AppLaunchContext | null): boolean
+    static launchDefaultForUri(uri: string, context: AppLaunchContext | null): boolean
     /**
      * Async version of g_app_info_launch_default_for_uri().
      * 
@@ -7250,7 +7250,7 @@ export class AppInfo extends GObject.Object {
      * @param cancellable a #GCancellable
      * @param callback a #GAsyncReadyCallback to call when the request is done
      */
-    static launchDefaultForUriAsync(uri: string | null, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static launchDefaultForUriAsync(uri: string, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous launch-default-for-uri operation.
      * @param result a #GAsyncResult
@@ -7265,7 +7265,7 @@ export class AppInfo extends GObject.Object {
      * g_app_info_remove_supports_type().
      * @param contentType a content type
      */
-    static resetTypeAssociations(contentType: string | null): void
+    static resetTypeAssociations(contentType: string): void
 }
 
 export module AsyncInitable {
@@ -7942,9 +7942,9 @@ export interface DBusObject {
 
     // Owm methods of Gio-2.0.Gio.DBusObject
 
-    // Has conflict: getInterface(interfaceName: string | null): DBusInterface | null
+    // Has conflict: getInterface(interfaceName: string): DBusInterface | null
     // Has conflict: getInterfaces(): DBusInterface[]
-    // Has conflict: getObjectPath(): string | null
+    // Has conflict: getObjectPath(): string
 
     // Own virtual methods of Gio-2.0.Gio.DBusObject
 
@@ -7955,7 +7955,7 @@ export interface DBusObject {
      * @param interfaceName A D-Bus interface name.
      * @returns %NULL if not found, otherwise a   #GDBusInterface that must be freed with g_object_unref().
      */
-    getInterface(interfaceName: string | null): DBusInterface | null
+    getInterface(interfaceName: string): DBusInterface | null
     /**
      * Gets the D-Bus interfaces associated with `object`.
      * @virtual 
@@ -7967,7 +7967,7 @@ export interface DBusObject {
      * @virtual 
      * @returns A string owned by @object. Do not free.
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     interfaceAdded(interface: DBusInterface): void
     interfaceRemoved(interface: DBusInterface): void
 
@@ -8066,9 +8066,9 @@ export interface DBusObjectManager {
 
     // Owm methods of Gio-2.0.Gio.DBusObjectManager
 
-    // Has conflict: getInterface(objectPath: string | null, interfaceName: string | null): DBusInterface | null
-    // Has conflict: getObject(objectPath: string | null): DBusObject | null
-    // Has conflict: getObjectPath(): string | null
+    // Has conflict: getInterface(objectPath: string, interfaceName: string): DBusInterface | null
+    // Has conflict: getObject(objectPath: string): DBusObject | null
+    // Has conflict: getObjectPath(): string
     // Has conflict: getObjects(): DBusObject[]
 
     // Own virtual methods of Gio-2.0.Gio.DBusObjectManager
@@ -8081,20 +8081,20 @@ export interface DBusObjectManager {
      * @param interfaceName D-Bus interface name to look up.
      * @returns A #GDBusInterface instance or %NULL. Free   with g_object_unref().
      */
-    getInterface(objectPath: string | null, interfaceName: string | null): DBusInterface | null
+    getInterface(objectPath: string, interfaceName: string): DBusInterface | null
     /**
      * Gets the #GDBusObject at `object_path,` if any.
      * @virtual 
      * @param objectPath Object path to look up.
      * @returns A #GDBusObject or %NULL. Free with   g_object_unref().
      */
-    getObject(objectPath: string | null): DBusObject | null
+    getObject(objectPath: string): DBusObject | null
     /**
      * Gets the object path that `manager` is for.
      * @virtual 
      * @returns A string owned by @manager. Do not free.
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Gets all #GDBusObject objects known to `manager`.
      * @virtual 
@@ -8563,7 +8563,7 @@ export interface DesktopAppInfoLookup {
 
     // Owm methods of Gio-2.0.Gio.DesktopAppInfoLookup
 
-    // Has conflict: getDefaultForUriScheme(uriScheme: string | null): AppInfo | null
+    // Has conflict: getDefaultForUriScheme(uriScheme: string): AppInfo | null
 
     // Own virtual methods of Gio-2.0.Gio.DesktopAppInfoLookup
 
@@ -8580,7 +8580,7 @@ export interface DesktopAppInfoLookup {
      * @param uriScheme a string containing a URI scheme.
      * @returns #GAppInfo for given @uri_scheme or    %NULL on error.
      */
-    getDefaultForUriScheme(uriScheme: string | null): AppInfo | null
+    getDefaultForUriScheme(uriScheme: string): AppInfo | null
 
     // Class property signals of Gio-2.0.Gio.DesktopAppInfoLookup
 
@@ -8673,7 +8673,7 @@ export interface Drive {
     // Has conflict: ejectWithOperationFinish(result: AsyncResult): boolean
     // Has conflict: enumerateIdentifiers(): string[]
     // Has conflict: getIcon(): Icon
-    // Has conflict: getIdentifier(kind: string | null): string | null
+    // Has conflict: getIdentifier(kind: string): string | null
     // Has conflict: getName(): string | null
     // Has conflict: getSortKey(): string | null
     // Has conflict: getStartStopType(): DriveStartStopType
@@ -8786,7 +8786,7 @@ export interface Drive {
      * @param kind the kind of identifier to return
      * @returns a newly allocated string containing the     requested identifier, or %NULL if the #GDrive     doesn't have this kind of identifier.
      */
-    getIdentifier(kind: string | null): string | null
+    getIdentifier(kind: string): string | null
     /**
      * Gets the name of `drive`.
      * @virtual 
@@ -10131,8 +10131,8 @@ export interface File {
     // Has conflict: ejectMountableFinish(result: AsyncResult): boolean
     // Has conflict: ejectMountableWithOperation(flags: MountUnmountFlags, mountOperation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: ejectMountableWithOperationFinish(result: AsyncResult): boolean
-    // Has conflict: enumerateChildren(attributes: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileEnumerator
-    // Has conflict: enumerateChildrenAsync(attributes: string | null, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: enumerateChildren(attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileEnumerator
+    // Has conflict: enumerateChildrenAsync(attributes: string, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: enumerateChildrenFinish(res: AsyncResult): FileEnumerator
     // Has conflict: equal(file2: File): boolean
     // Has conflict: findEnclosingMount(cancellable: Cancellable | null): Mount
@@ -10151,7 +10151,7 @@ export interface File {
      * @returns a #GFile to a child specified by @name.   Free the returned object with g_object_unref().
      */
     getChild(name: string): File
-    // Has conflict: getChildForDisplayName(displayName: string | null): File
+    // Has conflict: getChildForDisplayName(displayName: string): File
     // Has conflict: getParent(): File | null
     // Has conflict: getParseName(): string | null
     // Has conflict: getPath(): string | null
@@ -10187,7 +10187,7 @@ export interface File {
      * @returns %TRUE if the @file's parent, grandparent, etc is @prefix,   %FALSE otherwise.
      */
     hasPrefix(prefix: File): boolean
-    // Has conflict: hasUriScheme(uriScheme: string | null): boolean
+    // Has conflict: hasUriScheme(uriScheme: string): boolean
     // Has conflict: hash(): number
     // Has conflict: isNative(): boolean
     /**
@@ -10427,11 +10427,11 @@ export interface File {
      * @returns The #GFileType of the file and %G_FILE_TYPE_UNKNOWN   if the file does not exist
      */
     queryFileType(flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileType
-    // Has conflict: queryFilesystemInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
-    // Has conflict: queryFilesystemInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: queryFilesystemInfo(attributes: string, cancellable: Cancellable | null): FileInfo
+    // Has conflict: queryFilesystemInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: queryFilesystemInfoFinish(res: AsyncResult): FileInfo
-    // Has conflict: queryInfo(attributes: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileInfo
-    // Has conflict: queryInfoAsync(attributes: string | null, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: queryInfo(attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileInfo
+    // Has conflict: queryInfoAsync(attributes: string, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: queryInfoFinish(res: AsyncResult): FileInfo
     // Has conflict: querySettableAttributes(cancellable: Cancellable | null): FileAttributeInfoList
     // Has conflict: queryWritableNamespaces(cancellable: Cancellable | null): FileAttributeInfoList
@@ -10538,7 +10538,7 @@ export interface File {
     // Has conflict: replaceReadwriteAsync(etag: string | null, makeBackup: boolean, flags: FileCreateFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: replaceReadwriteFinish(res: AsyncResult): FileIOStream
     // Has conflict: resolveRelativePath(relativePath: string): File
-    // Has conflict: setAttribute(attribute: string | null, type: FileAttributeType, valueP: any | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    // Has conflict: setAttribute(attribute: string, type: FileAttributeType, valueP: any | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Sets `attribute` of type %G_FILE_ATTRIBUTE_TYPE_BYTE_STRING to `value`.
      * If `attribute` is of a different type, this operation will fail,
@@ -10553,7 +10553,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the @attribute was successfully set to @value   in the @file, %FALSE otherwise.
      */
-    setAttributeByteString(attribute: string | null, value: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttributeByteString(attribute: string, value: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Sets `attribute` of type %G_FILE_ATTRIBUTE_TYPE_INT32 to `value`.
      * If `attribute` is of a different type, this operation will fail.
@@ -10567,7 +10567,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the @attribute was successfully set to @value   in the @file, %FALSE otherwise.
      */
-    setAttributeInt32(attribute: string | null, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttributeInt32(attribute: string, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Sets `attribute` of type %G_FILE_ATTRIBUTE_TYPE_INT64 to `value`.
      * If `attribute` is of a different type, this operation will fail.
@@ -10581,7 +10581,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the @attribute was successfully set, %FALSE otherwise.
      */
-    setAttributeInt64(attribute: string | null, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttributeInt64(attribute: string, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Sets `attribute` of type %G_FILE_ATTRIBUTE_TYPE_STRING to `value`.
      * If `attribute` is of a different type, this operation will fail.
@@ -10595,7 +10595,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the @attribute was successfully set, %FALSE otherwise.
      */
-    setAttributeString(attribute: string | null, value: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttributeString(attribute: string, value: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Sets `attribute` of type %G_FILE_ATTRIBUTE_TYPE_UINT32 to `value`.
      * If `attribute` is of a different type, this operation will fail.
@@ -10609,7 +10609,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the @attribute was successfully set to @value   in the @file, %FALSE otherwise.
      */
-    setAttributeUint32(attribute: string | null, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttributeUint32(attribute: string, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Sets `attribute` of type %G_FILE_ATTRIBUTE_TYPE_UINT64 to `value`.
      * If `attribute` is of a different type, this operation will fail.
@@ -10623,12 +10623,12 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the @attribute was successfully set to @value   in the @file, %FALSE otherwise.
      */
-    setAttributeUint64(attribute: string | null, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttributeUint64(attribute: string, value: number, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     // Has conflict: setAttributesAsync(info: FileInfo, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: setAttributesFinish(result: AsyncResult): [ /* returnType */ boolean, /* info */ FileInfo ]
     // Has conflict: setAttributesFromInfo(info: FileInfo, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
-    // Has conflict: setDisplayName(displayName: string | null, cancellable: Cancellable | null): File
-    // Has conflict: setDisplayNameAsync(displayName: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: setDisplayName(displayName: string, cancellable: Cancellable | null): File
+    // Has conflict: setDisplayNameAsync(displayName: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: setDisplayNameFinish(res: AsyncResult): File
     // Has conflict: startMountable(flags: DriveStartFlags, startOperation: MountOperation | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: startMountableFinish(result: AsyncResult): boolean
@@ -11022,7 +11022,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns A #GFileEnumerator if successful,   %NULL on error. Free the returned object with g_object_unref().
      */
-    enumerateChildren(attributes: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileEnumerator
+    enumerateChildren(attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileEnumerator
     /**
      * Asynchronously gets the requested information about the files
      * in a directory. The result is a #GFileEnumerator object that will
@@ -11041,7 +11041,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    enumerateChildrenAsync(attributes: string | null, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    enumerateChildrenAsync(attributes: string, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an async enumerate children operation.
      * See g_file_enumerate_children_async().
@@ -11132,7 +11132,7 @@ export interface File {
      * @param displayName string to a possible child
      * @returns a #GFile to the specified child, or   %NULL if the display name couldn't be converted.   Free the returned object with g_object_unref().
      */
-    getChildForDisplayName(displayName: string | null): File
+    getChildForDisplayName(displayName: string): File
     /**
      * Gets the parent directory for the `file`.
      * If the `file` represents the root directory of the
@@ -11214,7 +11214,7 @@ export interface File {
      * @param uriScheme a string containing a URI scheme
      * @returns %TRUE if #GFile's backend supports the   given URI scheme, %FALSE if URI scheme is %NULL,   not supported, or #GFile is invalid.
      */
-    hasUriScheme(uriScheme: string | null): boolean
+    hasUriScheme(uriScheme: string): boolean
     /**
      * Creates a hash value for a #GFile.
      * 
@@ -11599,7 +11599,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns a #GFileInfo or %NULL if there was an error.   Free the returned object with g_object_unref().
      */
-    queryFilesystemInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
+    queryFilesystemInfo(attributes: string, cancellable: Cancellable | null): FileInfo
     /**
      * Asynchronously gets the requested information about the filesystem
      * that the specified `file` is on. The result is a #GFileInfo object
@@ -11618,7 +11618,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    queryFilesystemInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    queryFilesystemInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous filesystem info query.
      * See g_file_query_filesystem_info_async().
@@ -11664,7 +11664,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns a #GFileInfo for the given @file, or %NULL   on error. Free the returned object with g_object_unref().
      */
-    queryInfo(attributes: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileInfo
+    queryInfo(attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null): FileInfo
     /**
      * Asynchronously gets the requested information about specified `file`.
      * The result is a #GFileInfo object that contains key-value attributes
@@ -11682,7 +11682,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    queryInfoAsync(attributes: string | null, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    queryInfoAsync(attributes: string, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous file info query.
      * See g_file_query_info_async().
@@ -11913,7 +11913,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns %TRUE if the attribute was set, %FALSE otherwise.
      */
-    setAttribute(attribute: string | null, type: FileAttributeType, valueP: any | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    setAttribute(attribute: string, type: FileAttributeType, valueP: any | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * Asynchronously sets the attributes of `file` with `info`.
      * 
@@ -11979,7 +11979,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @returns a #GFile specifying what @file was renamed to,   or %NULL if there was an error.   Free the returned object with g_object_unref().
      */
-    setDisplayName(displayName: string | null, cancellable: Cancellable | null): File
+    setDisplayName(displayName: string, cancellable: Cancellable | null): File
     /**
      * Asynchronously sets the display name for a given #GFile.
      * 
@@ -11995,7 +11995,7 @@ export interface File {
      * @param cancellable optional #GCancellable object,   %NULL to ignore
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    setDisplayNameAsync(displayName: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    setDisplayNameAsync(displayName: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes setting a display name started with
      * g_file_set_display_name_async().
@@ -12320,7 +12320,7 @@ export class File extends GObject.Object {
      * @param uri a UTF-8 string containing a URI
      * @returns a new #GFile for the given @uri.   Free the returned object with g_object_unref().
      */
-    static newForUri(uri: string | null): File
+    static newForUri(uri: string): File
     /**
      * Opens a file in the preferred directory for temporary files (as
      * returned by g_get_tmp_dir()) and returns a #GFile and
@@ -12383,7 +12383,7 @@ export class File extends GObject.Object {
      * @param parseName a file name or path to be parsed
      * @returns a new #GFile.
      */
-    static parseName(parseName: string | null): File
+    static parseName(parseName: string): File
 }
 
 export module FileDescriptorBased {
@@ -12590,7 +12590,7 @@ export class Icon extends GObject.Object {
      * @param str A string obtained via g_icon_to_string().
      * @returns An object implementing the #GIcon          interface or %NULL if @error is set.
      */
-    static newForString(str: string | null): Icon
+    static newForString(str: string): Icon
     /**
      * Deserializes a #GIcon previously serialized using g_icon_serialize().
      * @param value a #GVariant created with g_icon_serialize()
@@ -12949,9 +12949,9 @@ export interface LoadableIcon extends Icon {
 
     // Owm methods of Gio-2.0.Gio.LoadableIcon
 
-    // Has conflict: load(size: number, cancellable: Cancellable | null): [ /* returnType */ InputStream, /* type */ string | null ]
+    // Has conflict: load(size: number, cancellable: Cancellable | null): [ /* returnType */ InputStream, /* type */ string ]
     // Has conflict: loadAsync(size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
-    // Has conflict: loadFinish(res: AsyncResult): [ /* returnType */ InputStream, /* type */ string | null ]
+    // Has conflict: loadFinish(res: AsyncResult): [ /* returnType */ InputStream, /* type */ string ]
 
     // Own virtual methods of Gio-2.0.Gio.LoadableIcon
 
@@ -12963,7 +12963,7 @@ export interface LoadableIcon extends Icon {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #GInputStream to read the icon from.
      */
-    load(size: number, cancellable: Cancellable | null): [ /* returnType */ InputStream, /* type */ string | null ]
+    load(size: number, cancellable: Cancellable | null): [ /* returnType */ InputStream, /* type */ string ]
     /**
      * Loads an icon asynchronously. To finish this function, see
      * g_loadable_icon_load_finish(). For the synchronous, blocking
@@ -12980,7 +12980,7 @@ export interface LoadableIcon extends Icon {
      * @param res a #GAsyncResult.
      * @returns a #GInputStream to read the icon from.
      */
-    loadFinish(res: AsyncResult): [ /* returnType */ InputStream, /* type */ string | null ]
+    loadFinish(res: AsyncResult): [ /* returnType */ InputStream, /* type */ string ]
 
     // Class property signals of Gio-2.0.Gio.LoadableIcon
 
@@ -14251,7 +14251,7 @@ export class Proxy extends GObject.Object {
      * @param protocol the proxy protocol name (e.g. http, socks, etc)
      * @returns return a #GProxy or NULL if protocol               is not supported.
      */
-    static getDefaultForProtocol(protocol: string | null): Proxy | null
+    static getDefaultForProtocol(protocol: string): Proxy | null
 }
 
 export module ProxyResolver {
@@ -14272,8 +14272,8 @@ export interface ProxyResolver {
     // Owm methods of Gio-2.0.Gio.ProxyResolver
 
     // Has conflict: isSupported(): boolean
-    // Has conflict: lookup(uri: string | null, cancellable: Cancellable | null): string[]
-    // Has conflict: lookupAsync(uri: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: lookup(uri: string, cancellable: Cancellable | null): string[]
+    // Has conflict: lookupAsync(uri: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupFinish(result: AsyncResult): string[]
 
     // Own virtual methods of Gio-2.0.Gio.ProxyResolver
@@ -14307,7 +14307,7 @@ export interface ProxyResolver {
      * @param cancellable a #GCancellable, or %NULL
      * @returns A               NULL-terminated array of proxy URIs. Must be freed               with g_strfreev().
      */
-    lookup(uri: string | null, cancellable: Cancellable | null): string[]
+    lookup(uri: string, cancellable: Cancellable | null): string[]
     /**
      * Asynchronous lookup of proxy. See g_proxy_resolver_lookup() for more
      * details.
@@ -14316,7 +14316,7 @@ export interface ProxyResolver {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback callback to call after resolution completes
      */
-    lookupAsync(uri: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupAsync(uri: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Call this function to obtain the array of proxy URIs when
      * g_proxy_resolver_lookup_async() is complete. See
@@ -14386,8 +14386,8 @@ export interface RemoteActionGroup extends ActionGroup {
 
     // Owm methods of Gio-2.0.Gio.RemoteActionGroup
 
-    // Has conflict: activateActionFull(actionName: string | null, parameter: GLib.Variant | null, platformData: GLib.Variant): void
-    // Has conflict: changeActionStateFull(actionName: string | null, value: GLib.Variant, platformData: GLib.Variant): void
+    // Has conflict: activateActionFull(actionName: string, parameter: GLib.Variant | null, platformData: GLib.Variant): void
+    // Has conflict: changeActionStateFull(actionName: string, value: GLib.Variant, platformData: GLib.Variant): void
 
     // Own virtual methods of Gio-2.0.Gio.RemoteActionGroup
 
@@ -14406,7 +14406,7 @@ export interface RemoteActionGroup extends ActionGroup {
      * @param parameter the optional parameter to the activation
      * @param platformData the platform data to send
      */
-    activateActionFull(actionName: string | null, parameter: GLib.Variant | null, platformData: GLib.Variant): void
+    activateActionFull(actionName: string, parameter: GLib.Variant | null, platformData: GLib.Variant): void
     /**
      * Changes the state of a remote action.
      * 
@@ -14422,7 +14422,7 @@ export interface RemoteActionGroup extends ActionGroup {
      * @param value the new requested value for the state
      * @param platformData the platform data to send
      */
-    changeActionStateFull(actionName: string | null, value: GLib.Variant, platformData: GLib.Variant): void
+    changeActionStateFull(actionName: string, value: GLib.Variant, platformData: GLib.Variant): void
 
     // Class property signals of Gio-2.0.Gio.RemoteActionGroup
 
@@ -15500,7 +15500,7 @@ export interface Volume {
     // Has conflict: getActivationRoot(): File | null
     // Has conflict: getDrive(): Drive | null
     // Has conflict: getIcon(): Icon
-    // Has conflict: getIdentifier(kind: string | null): string | null
+    // Has conflict: getIdentifier(kind: string): string | null
     // Has conflict: getMount(): Mount | null
     // Has conflict: getName(): string | null
     // Has conflict: getSortKey(): string | null
@@ -15633,7 +15633,7 @@ export interface Volume {
      * @param kind the kind of identifier to return
      * @returns a newly allocated string containing the     requested identifier, or %NULL if the #GVolume     doesn't have this kind of identifier
      */
-    getIdentifier(kind: string | null): string | null
+    getIdentifier(kind: string): string | null
     /**
      * Gets the mount for the `volume`.
      * @virtual 
@@ -15950,7 +15950,7 @@ export interface AppLaunchContext {
      */
     getEnvironment(): string[]
     // Has conflict: getStartupNotifyId(info: AppInfo, files: File[]): string | null
-    // Has conflict: launchFailed(startupNotifyId: string | null): void
+    // Has conflict: launchFailed(startupNotifyId: string): void
     /**
      * Arranges for `variable` to be set to `value` in the child's
      * environment when `context` is used to launch an application.
@@ -16003,7 +16003,7 @@ export interface AppLaunchContext {
      * @virtual 
      * @param startupNotifyId the startup notification id that was returned by g_app_launch_context_get_startup_notify_id().
      */
-    launchFailed(startupNotifyId: string | null): void
+    launchFailed(startupNotifyId: string): void
     launchStarted(info: AppInfo, platformData: GLib.Variant): void
     launched(info: AppInfo, platformData: GLib.Variant): void
 
@@ -16183,7 +16183,7 @@ export interface Application extends ActionGroup, ActionMap {
      * @param description the description for the option in `--help` output
      * @param argDescription the placeholder to use for the extra argument    parsed by the option in `--help` output
      */
-    addMainOption(longName: string | null, shortName: number, flags: GLib.OptionFlags, arg: GLib.OptionArg, description: string | null, argDescription: string | null): void
+    addMainOption(longName: string, shortName: number, flags: GLib.OptionFlags, arg: GLib.OptionArg, description: string, argDescription: string | null): void
     /**
      * Adds main option entries to be handled by `application`.
      * 
@@ -16283,7 +16283,7 @@ export interface Application extends ActionGroup, ActionMap {
      * @param object a #GObject
      * @param property the name of a boolean property of `object`
      */
-    bindBusyProperty(object: GObject.Object, property: string | null): void
+    bindBusyProperty(object: GObject.Object, property: string): void
     /**
      * Gets the unique identifier for `application`.
      * @returns the identifier for @application, owned by @application
@@ -16399,7 +16399,7 @@ export interface Application extends ActionGroup, ActionMap {
      * The application must be registered before calling this function.
      */
     markBusy(): void
-    // Has conflict: open(files: File[], hint: string | null): void
+    // Has conflict: open(files: File[], hint: string): void
     /**
      * Immediately quits the application.
      * 
@@ -16687,7 +16687,7 @@ export interface Application extends ActionGroup, ActionMap {
      * @param object a #GObject
      * @param property the name of a boolean property of `object`
      */
-    unbindBusyProperty(object: GObject.Object, property: string | null): void
+    unbindBusyProperty(object: GObject.Object, property: string): void
     /**
      * Decreases the busy count of `application`.
      * 
@@ -16714,7 +16714,7 @@ export interface Application extends ActionGroup, ActionMap {
      * there is no need to explicitly withdraw the notification in that case.
      * @param id id of a previously sent notification
      */
-    withdrawNotification(id: string | null): void
+    withdrawNotification(id: string): void
 
     // Own virtual methods of Gio-2.0.Gio.Application
 
@@ -16732,8 +16732,8 @@ export interface Application extends ActionGroup, ActionMap {
     afterEmit(platformData: GLib.Variant): void
     beforeEmit(platformData: GLib.Variant): void
     commandLine(commandLine: ApplicationCommandLine): number
-    dbusRegister(connection: DBusConnection, objectPath: string | null): boolean
-    dbusUnregister(connection: DBusConnection, objectPath: string | null): void
+    dbusRegister(connection: DBusConnection, objectPath: string): boolean
+    dbusUnregister(connection: DBusConnection, objectPath: string): void
     handleLocalOptions(options: GLib.VariantDict): number
     /**
      * This virtual function is always invoked in the local instance. It
@@ -16771,7 +16771,7 @@ export interface Application extends ActionGroup, ActionMap {
      * @param files an array of #GFiles to open
      * @param hint a hint (or ""), but never %NULL
      */
-    open(files: File[], hint: string | null): void
+    open(files: File[], hint: string): void
     quitMainloop(): void
     runMainloop(): void
     shutdown(): void
@@ -17089,7 +17089,7 @@ export class Application extends GObject.Object {
      * @param applicationId a potential application identifier
      * @returns %TRUE if @application_id is valid
      */
-    static idIsValid(applicationId: string | null): boolean
+    static idIsValid(applicationId: string): boolean
 }
 
 export module ApplicationCommandLine {
@@ -17278,8 +17278,8 @@ export interface ApplicationCommandLine {
      * @returns a #GInputStream for stdin
      */
     getStdin(): InputStream | null
-    printLiteral(message: string | null): void
-    printerrLiteral(message: string | null): void
+    printLiteral(message: string): void
+    printerrLiteral(message: string): void
 
     // Class property signals of Gio-2.0.Gio.ApplicationCommandLine
 
@@ -18303,7 +18303,7 @@ export class CharsetConverter extends GObject.Object {
      * @param fromCharset source charset
      * @returns a new #GCharsetConverter or %NULL on error.
      */
-    constructor(toCharset: string | null, fromCharset: string | null) 
+    constructor(toCharset: string, fromCharset: string) 
     /**
      * Creates a new #GCharsetConverter.
      * @constructor 
@@ -18311,7 +18311,7 @@ export class CharsetConverter extends GObject.Object {
      * @param fromCharset source charset
      * @returns a new #GCharsetConverter or %NULL on error.
      */
-    static new(toCharset: string | null, fromCharset: string | null): CharsetConverter
+    static new(toCharset: string, fromCharset: string): CharsetConverter
     _init(config?: CharsetConverter.ConstructorProperties): void
 }
 
@@ -18724,7 +18724,7 @@ export class DBusActionGroup extends GObject.Object {
      * @param objectPath the object path at which the action group is exported
      * @returns a #GDBusActionGroup
      */
-    static get(connection: DBusConnection, busName: string | null, objectPath: string | null): DBusActionGroup
+    static get(connection: DBusConnection, busName: string | null, objectPath: string): DBusActionGroup
 }
 
 export module DBusAuthObserver {
@@ -18766,7 +18766,7 @@ export interface DBusAuthObserver {
      * @param mechanism The name of the mechanism, e.g. `DBUS_COOKIE_SHA1`.
      * @returns %TRUE if @mechanism can be used to authenticate the other peer, %FALSE if not.
      */
-    allowMechanism(mechanism: string | null): boolean
+    allowMechanism(mechanism: string): boolean
     /**
      * Emits the #GDBusAuthObserver::authorize-authenticated-peer signal on `observer`.
      * @param stream A #GIOStream for the #GDBusConnection.
@@ -19147,7 +19147,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param cancellable a #GCancellable or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request     is satisfied or %NULL if you don't care about the result of the     method invocation
      */
-    call(busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    call(busName: string | null, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_connection_call().
      * @param res a #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_connection_call()
@@ -19204,7 +19204,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param cancellable a #GCancellable or %NULL
      * @returns %NULL if @error is set. Otherwise a non-floating     #GVariant tuple with return values. Free with g_variant_unref().
      */
-    callSync(busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null): GLib.Variant
+    callSync(busName: string | null, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_connection_call() but also takes a #GUnixFDList object.
      * 
@@ -19233,7 +19233,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param cancellable a #GCancellable or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is     satisfied or %NULL if you don't * care about the result of the     method invocation
      */
-    callWithUnixFdList(busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    callWithUnixFdList(busName: string | null, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_connection_call_with_unix_fd_list().
      * 
@@ -19269,7 +19269,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param cancellable a #GCancellable or %NULL
      * @returns %NULL if @error is set. Otherwise a non-floating     #GVariant tuple with return values. Free with g_variant_unref().
      */
-    callWithUnixFdListSync(busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null): [ /* returnType */ GLib.Variant, /* outFdList */ UnixFDList ]
+    callWithUnixFdListSync(busName: string | null, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant | null, replyType: GLib.VariantType | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null): [ /* returnType */ GLib.Variant, /* outFdList */ UnixFDList ]
     /**
      * Closes `connection`. Note that this never causes the process to
      * exit (this might only happen if the other end of a shared message
@@ -19329,7 +19329,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param parameters a #GVariant tuple with parameters for the signal              or %NULL if not passing parameters
      * @returns %TRUE unless @error is set
      */
-    emitSignal(destinationBusName: string | null, objectPath: string | null, interfaceName: string | null, signalName: string | null, parameters: GLib.Variant | null): boolean
+    emitSignal(destinationBusName: string | null, objectPath: string, interfaceName: string, signalName: string, parameters: GLib.Variant | null): boolean
     /**
      * Exports `action_group` on `connection` at `object_path`.
      * 
@@ -19356,7 +19356,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param actionGroup a #GActionGroup
      * @returns the ID of the export (never zero), or 0 in case of failure
      */
-    exportActionGroup(objectPath: string | null, actionGroup: ActionGroup): number
+    exportActionGroup(objectPath: string, actionGroup: ActionGroup): number
     /**
      * Exports `menu` on `connection` at `object_path`.
      * 
@@ -19378,7 +19378,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param menu a #GMenuModel
      * @returns the ID of the export (never zero), or 0 in case of failure
      */
-    exportMenuModel(objectPath: string | null, menu: MenuModel): number
+    exportMenuModel(objectPath: string, menu: MenuModel): number
     /**
      * Asynchronously flushes `connection,` that is, writes all queued
      * outgoing message to the transport and then flushes the transport
@@ -19435,7 +19435,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * authenticating. See #GDBusConnection:guid for more details.
      * @returns The GUID. Do not free this string, it is owned by     @connection.
      */
-    getGuid(): string | null
+    getGuid(): string
     /**
      * Retrieves the last serial number assigned to a #GDBusMessage on
      * the current thread. This includes messages sent via both low-level
@@ -19489,7 +19489,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param setPropertyClosure #GClosure for setting a property.
      * @returns 0 if @error is set, otherwise a registration ID (never 0) that can be used with g_dbus_connection_unregister_object() .
      */
-    registerObject(objectPath: string | null, interfaceInfo: DBusInterfaceInfo, methodCallClosure: GObject.TClosure | null, getPropertyClosure: GObject.TClosure | null, setPropertyClosure: GObject.TClosure | null): number
+    registerObject(objectPath: string, interfaceInfo: DBusInterfaceInfo, methodCallClosure: GObject.TClosure | null, getPropertyClosure: GObject.TClosure | null, setPropertyClosure: GObject.TClosure | null): number
     /**
      * Registers a whole subtree of dynamic objects.
      * 
@@ -19532,7 +19532,7 @@ export interface DBusConnection extends AsyncInitable, Initable {
      * @param userDataFreeFunc function to call when the subtree is unregistered
      * @returns 0 if @error is set, otherwise a subtree registration ID (never 0) that can be used with g_dbus_connection_unregister_subtree()
      */
-    registerSubtree(objectPath: string | null, vtable: DBusSubtreeVTable, flags: DBusSubtreeFlags, userData: any | null, userDataFreeFunc: GLib.DestroyNotify): number
+    registerSubtree(objectPath: string, vtable: DBusSubtreeVTable, flags: DBusSubtreeFlags, userData: any | null, userDataFreeFunc: GLib.DestroyNotify): number
     /**
      * Removes a filter.
      * 
@@ -19960,7 +19960,7 @@ export class DBusConnection extends GObject.Object {
      * @param cancellable a #GCancellable or %NULL
      * @returns a #GDBusConnection or %NULL if @error is set.     Free with g_object_unref().
      */
-    static newForAddressSync(address: string | null, flags: DBusConnectionFlags, observer: DBusAuthObserver | null, cancellable: Cancellable | null): DBusConnection
+    static newForAddressSync(address: string, flags: DBusConnectionFlags, observer: DBusAuthObserver | null, cancellable: Cancellable | null): DBusConnection
     /**
      * Synchronously sets up a D-Bus connection for exchanging D-Bus messages
      * with the end represented by `stream`.
@@ -20045,7 +20045,7 @@ export class DBusConnection extends GObject.Object {
      * @param cancellable a #GCancellable or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    static newForAddress(address: string | null, flags: DBusConnectionFlags, observer: DBusAuthObserver | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static newForAddress(address: string, flags: DBusConnectionFlags, observer: DBusAuthObserver | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 }
 
 export module DBusInterfaceSkeleton {
@@ -20098,7 +20098,7 @@ export interface DBusInterfaceSkeleton extends DBusInterface {
      * @param objectPath The path to export the interface at.
      * @returns %TRUE if the interface was exported on @connection, otherwise %FALSE with @error set.
      */
-    export(connection: DBusConnection, objectPath: string | null): boolean
+    export(connection: DBusConnection, objectPath: string): boolean
     // Has conflict: flush(): void
     /**
      * Gets the first connection that `interface_` is exported on, if any.
@@ -20302,7 +20302,7 @@ export class DBusMenuModel extends MenuModel {
      * @param objectPath the object path at which the menu model is exported
      * @returns a #GDBusMenuModel object. Free with     g_object_unref().
      */
-    static get(connection: DBusConnection, busName: string | null, objectPath: string | null): DBusMenuModel
+    static get(connection: DBusConnection, busName: string | null, objectPath: string): DBusMenuModel
 }
 
 export module DBusMessage {
@@ -20430,7 +20430,7 @@ export interface DBusMessage {
      * This will always be non-%NULL, but may be an empty string.
      * @returns The value.
      */
-    getSignature(): string | null
+    getSignature(): string
     /**
      * Gets the UNIX file descriptors associated with `message,` if any.
      * 
@@ -20454,7 +20454,7 @@ export interface DBusMessage {
      * @param errorMessage The D-Bus error message.
      * @returns A #GDBusMessage. Free with g_object_unref().
      */
-    newMethodErrorLiteral(errorName: string | null, errorMessage: string | null): DBusMessage
+    newMethodErrorLiteral(errorName: string, errorMessage: string): DBusMessage
     /**
      * Creates a new #GDBusMessage that is a reply to `method_call_message`.
      * @returns #GDBusMessage. Free with g_object_unref().
@@ -20524,7 +20524,7 @@ export interface DBusMessage {
      * Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME header field.
      * @param value The value to set.
      */
-    setErrorName(value: string | null): void
+    setErrorName(value: string): void
     /**
      * Sets the flags to set on `message`.
      * @param flags Flags for `message` that are set (typically values from the #GDBusMessageFlags enumeration bitwise ORed together).
@@ -20685,7 +20685,7 @@ export class DBusMessage extends GObject.Object {
      * @param method A valid method name.
      * @returns A #GDBusMessage. Free with g_object_unref().
      */
-    static newMethodCall(name: string | null, path: string | null, interface: string | null, method: string | null): DBusMessage
+    static newMethodCall(name: string | null, path: string, interface: string | null, method: string): DBusMessage
     /**
      * Creates a new #GDBusMessage for a signal emission.
      * @constructor 
@@ -20694,7 +20694,7 @@ export class DBusMessage extends GObject.Object {
      * @param signal A valid signal name.
      * @returns A #GDBusMessage. Free with g_object_unref().
      */
-    static newSignal(path: string | null, interface: string | null, signal: string | null): DBusMessage
+    static newSignal(path: string, interface: string, signal: string): DBusMessage
     _init(config?: DBusMessage.ConstructorProperties): void
     /**
      * Utility function to calculate how many bytes are needed to
@@ -20736,7 +20736,7 @@ export interface DBusMethodInvocation {
      * #GDBusInterfaceVTable for more information.
      * @returns A string. Do not free, it is owned by @invocation.
      */
-    getInterfaceName(): string | null
+    getInterfaceName(): string
     /**
      * Gets the #GDBusMessage for the method invocation. This is useful if
      * you need to use low-level protocol features, such as UNIX file
@@ -20763,12 +20763,12 @@ export interface DBusMethodInvocation {
      * Gets the name of the method that was invoked.
      * @returns A string. Do not free, it is owned by @invocation.
      */
-    getMethodName(): string | null
+    getMethodName(): string
     /**
      * Gets the object path the method was invoked on.
      * @returns A string. Do not free, it is owned by @invocation.
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Gets the parameters of the method invocation. If there are no input
      * parameters then this will return a GVariant with 0 children rather than NULL.
@@ -20794,7 +20794,7 @@ export interface DBusMethodInvocation {
      * Gets the bus name that invoked the method.
      * @returns A string. Do not free, it is owned by @invocation.
      */
-    getSender(): string | null
+    getSender(): string
     /**
      * Finishes handling a D-Bus method call by returning an error.
      * 
@@ -20804,7 +20804,7 @@ export interface DBusMethodInvocation {
      * @param errorName A valid D-Bus error name.
      * @param errorMessage A valid D-Bus error message.
      */
-    returnDbusError(errorName: string | null, errorMessage: string | null): void
+    returnDbusError(errorName: string, errorMessage: string): void
     /**
      * Like g_dbus_method_invocation_return_error() but without printf()-style formatting.
      * 
@@ -20815,7 +20815,7 @@ export interface DBusMethodInvocation {
      * @param code The error code.
      * @param message The error message.
      */
-    returnErrorLiteral(domain: GLib.Quark, code: number, message: string | null): void
+    returnErrorLiteral(domain: GLib.Quark, code: number, message: string): void
     /**
      * Like g_dbus_method_invocation_return_error() but takes a #GError
      * instead of the error domain, error code and message.
@@ -21044,7 +21044,7 @@ export interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManage
      * connection.
      * @returns A unique or well-known name. Do not free, the string belongs to @manager.
      */
-    getName(): string | null
+    getName(): string
     /**
      * The unique name that owns the name that `manager` is for or %NULL if
      * no-one currently owns that name. You can connect to the
@@ -21056,8 +21056,8 @@ export interface DBusObjectManagerClient extends AsyncInitable, DBusObjectManage
 
     // Own virtual methods of Gio-2.0.Gio.DBusObjectManagerClient
 
-    interfaceProxyPropertiesChanged(objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, changedProperties: GLib.Variant, invalidatedProperties: string | null): void
-    interfaceProxySignal(objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, senderName: string | null, signalName: string | null, parameters: GLib.Variant): void
+    interfaceProxyPropertiesChanged(objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, changedProperties: GLib.Variant, invalidatedProperties: string): void
+    interfaceProxySignal(objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, senderName: string, signalName: string, parameters: GLib.Variant): void
 
     // Own signals of Gio-2.0.Gio.DBusObjectManagerClient
 
@@ -21249,7 +21249,7 @@ export class DBusObjectManagerClient extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newForBusSync(busType: BusType, flags: DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null): DBusObjectManagerClient
+    static newForBusSync(busType: BusType, flags: DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null): DBusObjectManagerClient
     /**
      * Creates a new #GDBusObjectManagerClient object.
      * 
@@ -21265,7 +21265,7 @@ export class DBusObjectManagerClient extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newSync(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null): DBusObjectManagerClient
+    static newSync(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string | null, objectPath: string, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null): DBusObjectManagerClient
     _init(config?: DBusObjectManagerClient.ConstructorProperties): void
     /**
      * Asynchronously creates a new #GDBusObjectManagerClient object.
@@ -21284,7 +21284,7 @@ export class DBusObjectManagerClient extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static new(connection: DBusConnection, flags: DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Like g_dbus_object_manager_client_new() but takes a #GBusType instead of a
      * #GDBusConnection.
@@ -21303,7 +21303,7 @@ export class DBusObjectManagerClient extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: BusType, flags: DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static newForBus(busType: BusType, flags: DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: DBusProxyTypeFunc | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 }
 
 export module DBusObjectManagerServer {
@@ -21390,7 +21390,7 @@ export interface DBusObjectManagerServer extends DBusObjectManager {
      * @param objectPath An object path.
      * @returns %TRUE if object at @object_path was removed, %FALSE otherwise.
      */
-    unexport(objectPath: string | null): boolean
+    unexport(objectPath: string): boolean
 
     // Class property signals of Gio-2.0.Gio.DBusObjectManagerServer
 
@@ -21463,7 +21463,7 @@ export class DBusObjectManagerServer extends GObject.Object {
      * @param objectPath The object path to export the manager object at.
      * @returns A #GDBusObjectManagerServer object. Free with g_object_unref().
      */
-    constructor(objectPath: string | null) 
+    constructor(objectPath: string) 
     /**
      * Creates a new #GDBusObjectManagerServer object.
      * 
@@ -21476,7 +21476,7 @@ export class DBusObjectManagerServer extends GObject.Object {
      * @param objectPath The object path to export the manager object at.
      * @returns A #GDBusObjectManagerServer object. Free with g_object_unref().
      */
-    static new(objectPath: string | null): DBusObjectManagerServer
+    static new(objectPath: string): DBusObjectManagerServer
     _init(config?: DBusObjectManagerServer.ConstructorProperties): void
 }
 
@@ -21571,7 +21571,7 @@ export class DBusObjectProxy extends GObject.Object {
      * @param objectPath the object path
      * @returns a new #GDBusObjectProxy
      */
-    constructor(connection: DBusConnection, objectPath: string | null) 
+    constructor(connection: DBusConnection, objectPath: string) 
     /**
      * Creates a new #GDBusObjectProxy for the given connection and
      * object path.
@@ -21580,7 +21580,7 @@ export class DBusObjectProxy extends GObject.Object {
      * @param objectPath the object path
      * @returns a new #GDBusObjectProxy
      */
-    static new(connection: DBusConnection, objectPath: string | null): DBusObjectProxy
+    static new(connection: DBusConnection, objectPath: string): DBusObjectProxy
     _init(config?: DBusObjectProxy.ConstructorProperties): void
 }
 
@@ -21651,12 +21651,12 @@ export interface DBusObjectSkeleton extends DBusObject {
      * does nothing.
      * @param interfaceName A D-Bus interface name.
      */
-    removeInterfaceByName(interfaceName: string | null): void
+    removeInterfaceByName(interfaceName: string): void
     /**
      * Sets the object path for `object`.
      * @param objectPath A valid D-Bus object path.
      */
-    setObjectPath(objectPath: string | null): void
+    setObjectPath(objectPath: string): void
 
     // Own virtual methods of Gio-2.0.Gio.DBusObjectSkeleton
 
@@ -21713,14 +21713,14 @@ export class DBusObjectSkeleton extends GObject.Object {
      * @param objectPath An object path.
      * @returns A #GDBusObjectSkeleton. Free with g_object_unref().
      */
-    constructor(objectPath: string | null) 
+    constructor(objectPath: string) 
     /**
      * Creates a new #GDBusObjectSkeleton.
      * @constructor 
      * @param objectPath An object path.
      * @returns A #GDBusObjectSkeleton. Free with g_object_unref().
      */
-    static new(objectPath: string | null): DBusObjectSkeleton
+    static new(objectPath: string): DBusObjectSkeleton
     _init(config?: DBusObjectSkeleton.ConstructorProperties): void
 }
 
@@ -21949,7 +21949,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
-    call(methodName: string | null, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    call(methodName: string, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call().
@@ -22000,7 +22000,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %NULL if @error is set. Otherwise a #GVariant tuple with return values. Free with g_variant_unref().
      */
-    callSync(methodName: string | null, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null): GLib.Variant
+    callSync(methodName: string, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, cancellable: Cancellable | null): GLib.Variant
     /**
      * Like g_dbus_proxy_call() but also takes a #GUnixFDList object.
      * 
@@ -22013,7 +22013,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL if you don't care about the result of the method invocation.
      */
-    callWithUnixFdList(methodName: string | null, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    callWithUnixFdList(methodName: string, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with g_dbus_proxy_call_with_unix_fd_list().
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to g_dbus_proxy_call_with_unix_fd_list().
@@ -22032,7 +22032,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %NULL if @error is set. Otherwise a #GVariant tuple with return values. Free with g_variant_unref().
      */
-    callWithUnixFdListSync(methodName: string | null, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null): [ /* returnType */ GLib.Variant, /* outFdList */ UnixFDList ]
+    callWithUnixFdListSync(methodName: string, parameters: GLib.Variant | null, flags: DBusCallFlags, timeoutMsec: number, fdList: UnixFDList | null, cancellable: Cancellable | null): [ /* returnType */ GLib.Variant, /* outFdList */ UnixFDList ]
     /**
      * Looks up the value for a property from the cache. This call does no
      * blocking IO.
@@ -22043,7 +22043,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * @param propertyName Property name.
      * @returns A reference to the #GVariant instance    that holds the value for @property_name or %NULL if the value is not in    the cache. The returned reference must be freed with g_variant_unref().
      */
-    getCachedProperty(propertyName: string | null): GLib.Variant | null
+    getCachedProperty(propertyName: string): GLib.Variant | null
     /**
      * Gets the names of all cached properties on `proxy`.
      * @returns A          %NULL-terminated array of strings or %NULL if          @proxy has no cached properties. Free the returned array with          g_strfreev().
@@ -22079,7 +22079,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * Gets the D-Bus interface name `proxy` is for.
      * @returns A string owned by @proxy. Do not free.
      */
-    getInterfaceName(): string | null
+    getInterfaceName(): string
     /**
      * Gets the name that `proxy` was constructed for.
      * 
@@ -22101,7 +22101,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * Gets the object path `proxy` is for.
      * @returns A string owned by @proxy. Do not free.
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * If `value` is not %NULL, sets the cached value for the property with
      * name `property_name` to the value in `value`.
@@ -22141,7 +22141,7 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
      * @param propertyName Property name.
      * @param value Value for the property or %NULL to remove it from the cache.
      */
-    setCachedProperty(propertyName: string | null, value: GLib.Variant | null): void
+    setCachedProperty(propertyName: string, value: GLib.Variant | null): void
     /**
      * Sets the timeout to use if -1 (specifying default timeout) is
      * passed as `timeout_msec` in the g_dbus_proxy_call() and
@@ -22161,8 +22161,8 @@ export interface DBusProxy extends AsyncInitable, DBusInterface, Initable {
 
     // Own virtual methods of Gio-2.0.Gio.DBusProxy
 
-    gPropertiesChanged(changedProperties: GLib.Variant, invalidatedProperties: string | null): void
-    gSignal(senderName: string | null, signalName: string | null, parameters: GLib.Variant): void
+    gPropertiesChanged(changedProperties: GLib.Variant, invalidatedProperties: string): void
+    gSignal(senderName: string, signalName: string, parameters: GLib.Variant): void
 
     // Own signals of Gio-2.0.Gio.DBusProxy
 
@@ -22321,7 +22321,7 @@ export class DBusProxy extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: BusType, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Cancellable | null): DBusProxy
+    static newForBusSync(busType: BusType, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Cancellable | null): DBusProxy
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and synchronously
@@ -22355,7 +22355,7 @@ export class DBusProxy extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: DBusConnection, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Cancellable | null): DBusProxy
+    static newSync(connection: DBusConnection, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Cancellable | null): DBusProxy
     _init(config?: DBusProxy.ConstructorProperties): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
@@ -22394,7 +22394,7 @@ export class DBusProxy extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: DBusConnection, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static new(connection: DBusConnection, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -22408,7 +22408,7 @@ export class DBusProxy extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: BusType, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    static newForBus(busType: BusType, flags: DBusProxyFlags, info: DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
 }
 
 export module DBusServer {
@@ -22493,7 +22493,7 @@ export interface DBusServer extends Initable {
      * This is valid and non-empty if initializing the #GDBusServer succeeded.
      * @returns A D-Bus address string. Do not free, the string is owned by @server.
      */
-    getClientAddress(): string | null
+    getClientAddress(): string
     /**
      * Gets the flags for `server`.
      * @returns A set of flags from the #GDBusServerFlags enumeration.
@@ -22503,7 +22503,7 @@ export interface DBusServer extends Initable {
      * Gets the GUID for `server,` as provided to g_dbus_server_new_sync().
      * @returns A D-Bus GUID. Do not free this string, it is owned by @server.
      */
-    getGuid(): string | null
+    getGuid(): string
     /**
      * Gets whether `server` is active.
      * @returns %TRUE if server is active, %FALSE otherwise.
@@ -22630,7 +22630,7 @@ export class DBusServer extends GObject.Object {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusServer or %NULL if @error is set. Free with g_object_unref().
      */
-    static newSync(address: string | null, flags: DBusServerFlags, guid: string | null, observer: DBusAuthObserver | null, cancellable: Cancellable | null): DBusServer
+    static newSync(address: string, flags: DBusServerFlags, guid: string, observer: DBusAuthObserver | null, cancellable: Cancellable | null): DBusServer
     _init(config?: DBusServer.ConstructorProperties): void
 }
 
@@ -22832,7 +22832,7 @@ export interface DataInputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a string with the data that was read     before encountering any of the stop characters. Set @length to     a #gsize to get the length of the string. This function will     return %NULL on an error.
      */
-    readUntil(stopChars: string | null, cancellable: Cancellable | null): [ /* returnType */ string | null, /* length */ number ]
+    readUntil(stopChars: string, cancellable: Cancellable | null): [ /* returnType */ string | null, /* length */ number ]
     /**
      * The asynchronous version of g_data_input_stream_read_until().
      * It is an error to have two outstanding calls to this function.
@@ -22854,7 +22854,7 @@ export interface DataInputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback callback to call when the request is satisfied.
      */
-    readUntilAsync(stopChars: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    readUntilAsync(stopChars: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_until_async().
@@ -22880,7 +22880,7 @@ export interface DataInputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @returns a string with the data that was read     before encountering any of the stop characters. Set @length to     a #gsize to get the length of the string. This function will     return %NULL on an error
      */
-    readUpto(stopChars: string | null, stopCharsLen: number, cancellable: Cancellable | null): [ /* returnType */ string | null, /* length */ number ]
+    readUpto(stopChars: string, stopCharsLen: number, cancellable: Cancellable | null): [ /* returnType */ string | null, /* length */ number ]
     /**
      * The asynchronous version of g_data_input_stream_read_upto().
      * It is an error to have two outstanding calls to this function.
@@ -22902,7 +22902,7 @@ export interface DataInputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback callback to call when the request is satisfied
      */
-    readUptoAsync(stopChars: string | null, stopCharsLen: number, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    readUptoAsync(stopChars: string, stopCharsLen: number, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous call started by
      * g_data_input_stream_read_upto_async().
@@ -23082,7 +23082,7 @@ export interface DataOutputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns %TRUE if @string was successfully added to the @stream.
      */
-    putString(str: string | null, cancellable: Cancellable | null): boolean
+    putString(str: string, cancellable: Cancellable | null): boolean
     /**
      * Puts an unsigned 16-bit integer into the output stream.
      * @param data a #guint16.
@@ -23464,7 +23464,7 @@ export interface DesktopAppInfo extends AppInfo {
      * @param actionName the name of the action as from   g_desktop_app_info_list_actions()
      * @returns the locale-specific action name
      */
-    getActionName(actionName: string | null): string | null
+    getActionName(actionName: string): string | null
     /**
      * Looks up a boolean value in the keyfile backing `info`.
      * 
@@ -23472,7 +23472,7 @@ export interface DesktopAppInfo extends AppInfo {
      * @param key the key to look up
      * @returns the boolean value, or %FALSE if the key     is not found
      */
-    getBoolean(key: string | null): boolean
+    getBoolean(key: string): boolean
     /**
      * Gets the categories from the desktop file.
      * @returns The unparsed Categories key from the desktop file;     i.e. no attempt is made to split it by ';' or validate it.
@@ -23509,7 +23509,7 @@ export interface DesktopAppInfo extends AppInfo {
      * @param key the key to look up
      * @returns a newly allocated string, or %NULL if the key     is not found
      */
-    getLocaleString(key: string | null): string | null
+    getLocaleString(key: string): string | null
     /**
      * Gets the value of the NoDisplay key, which helps determine if the
      * application info should be shown in menus. See
@@ -23547,7 +23547,7 @@ export interface DesktopAppInfo extends AppInfo {
      * @param key the key to look up
      * @returns a newly allocated string, or %NULL if the key     is not found
      */
-    getString(key: string | null): string | null
+    getString(key: string): string | null
     /**
      * Looks up a string list value in the keyfile backing `info`.
      * 
@@ -23555,14 +23555,14 @@ export interface DesktopAppInfo extends AppInfo {
      * @param key the key to look up
      * @returns   a %NULL-terminated string array or %NULL if the specified  key cannot be found. The array should be freed with g_strfreev().
      */
-    getStringList(key: string | null): string[]
+    getStringList(key: string): string[]
     /**
      * Returns whether `key` exists in the "Desktop Entry" group
      * of the keyfile backing `info`.
      * @param key the key to look up
      * @returns %TRUE if the @key exists
      */
-    hasKey(key: string | null): boolean
+    hasKey(key: string): boolean
     /**
      * Activates the named application action.
      * 
@@ -23582,7 +23582,7 @@ export interface DesktopAppInfo extends AppInfo {
      * @param actionName the name of the action as from   g_desktop_app_info_list_actions()
      * @param launchContext a #GAppLaunchContext
      */
-    launchAction(actionName: string | null, launchContext: AppLaunchContext | null): void
+    launchAction(actionName: string, launchContext: AppLaunchContext | null): void
     /**
      * This function performs the equivalent of g_app_info_launch_uris(),
      * but is intended primarily for operating system components that
@@ -23687,7 +23687,7 @@ export class DesktopAppInfo extends GObject.Object {
      * @param desktopId the desktop file id
      * @returns a new #GDesktopAppInfo, or %NULL if no desktop     file with that id exists.
      */
-    constructor(desktopId: string | null) 
+    constructor(desktopId: string) 
     /**
      * Creates a new #GDesktopAppInfo based on a desktop file id.
      * 
@@ -23704,7 +23704,7 @@ export class DesktopAppInfo extends GObject.Object {
      * @param desktopId the desktop file id
      * @returns a new #GDesktopAppInfo, or %NULL if no desktop     file with that id exists.
      */
-    static new(desktopId: string | null): DesktopAppInfo
+    static new(desktopId: string): DesktopAppInfo
     /**
      * Creates a new #GDesktopAppInfo.
      * @constructor 
@@ -23728,7 +23728,7 @@ export class DesktopAppInfo extends GObject.Object {
      * @param interface the name of the interface
      * @returns a list of #GDesktopAppInfo objects.
      */
-    static getImplementations(interface: string | null): DesktopAppInfo[]
+    static getImplementations(interface: string): DesktopAppInfo[]
     /**
      * Searches desktop files for ones that match `search_string`.
      * 
@@ -23748,7 +23748,7 @@ export class DesktopAppInfo extends GObject.Object {
      * @param searchString the search string to use
      * @returns a   list of strvs.  Free each item with g_strfreev() and free the outer   list with g_free().
      */
-    static search(searchString: string | null): string[]
+    static search(searchString: string): string[]
     /**
      * Sets the name of the desktop that the application is running in.
      * This is used by g_app_info_should_show() and
@@ -23759,7 +23759,7 @@ export class DesktopAppInfo extends GObject.Object {
      * Should be called only once; subsequent calls are ignored.
      * @param desktopEnv a string specifying what desktop this is
      */
-    static setDesktopEnv(desktopEnv: string | null): void
+    static setDesktopEnv(desktopEnv: string): void
 }
 
 export module Emblem {
@@ -24309,8 +24309,8 @@ export interface FileIOStream extends Seekable {
     // Owm methods of Gio-2.0.Gio.FileIOStream
 
     // Has conflict: getEtag(): string | null
-    // Has conflict: queryInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
-    // Has conflict: queryInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: queryInfo(attributes: string, cancellable: Cancellable | null): FileInfo
+    // Has conflict: queryInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: queryInfoFinish(result: AsyncResult): FileInfo
 
     // Own virtual methods of Gio-2.0.Gio.FileIOStream
@@ -24367,7 +24367,7 @@ export interface FileIOStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #GFileInfo for the @stream, or %NULL on error.
      */
-    queryInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
+    queryInfo(attributes: string, cancellable: Cancellable | null): FileInfo
     /**
      * Asynchronously queries the `stream` for a #GFileInfo. When completed,
      * `callback` will be called with a #GAsyncResult which can be used to
@@ -24381,7 +24381,7 @@ export interface FileIOStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    queryInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    queryInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finalizes the asynchronous query started
      * by g_file_io_stream_query_info_async().
@@ -24631,27 +24631,27 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns a UTF-8 string associated with the given @attribute, or    %NULL if the attribute wasn’t set.    When you're done with the string it must be freed with g_free().
      */
-    getAttributeAsString(attribute: string | null): string | null
+    getAttributeAsString(attribute: string): string | null
     /**
      * Gets the value of a boolean attribute. If the attribute does not
      * contain a boolean value, %FALSE will be returned.
      * @param attribute a file attribute key.
      * @returns the boolean value contained within the attribute.
      */
-    getAttributeBoolean(attribute: string | null): boolean
+    getAttributeBoolean(attribute: string): boolean
     /**
      * Gets the value of a byte string attribute. If the attribute does
      * not contain a byte string, %NULL will be returned.
      * @param attribute a file attribute key.
      * @returns the contents of the @attribute value as a byte string, or %NULL otherwise.
      */
-    getAttributeByteString(attribute: string | null): string | null
+    getAttributeByteString(attribute: string): string | null
     /**
      * Gets the attribute type, value and status for an attribute key.
      * @param attribute a file attribute key
      * @returns %TRUE if @info has an attribute named @attribute,      %FALSE otherwise.
      */
-    getAttributeData(attribute: string | null): [ /* returnType */ boolean, /* type */ FileAttributeType, /* valuePp */ any, /* status */ FileAttributeStatus ]
+    getAttributeData(attribute: string): [ /* returnType */ boolean, /* type */ FileAttributeType, /* valuePp */ any, /* status */ FileAttributeStatus ]
     /**
      * Gets the value of a byte string attribute as a file path.
      * 
@@ -24662,7 +24662,7 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns the contents of the @attribute value as a file path, or %NULL otherwise.
      */
-    getAttributeFilePath(attribute: string | null): string | null
+    getAttributeFilePath(attribute: string): string | null
     /**
      * Gets a signed 32-bit integer contained within the attribute. If the
      * attribute does not contain a signed 32-bit integer, or is invalid,
@@ -24670,7 +24670,7 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns a signed 32-bit integer from the attribute.
      */
-    getAttributeInt32(attribute: string | null): number
+    getAttributeInt32(attribute: string): number
     /**
      * Gets a signed 64-bit integer contained within the attribute. If the
      * attribute does not contain a signed 64-bit integer, or is invalid,
@@ -24678,40 +24678,40 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns a signed 64-bit integer from the attribute.
      */
-    getAttributeInt64(attribute: string | null): number
+    getAttributeInt64(attribute: string): number
     /**
      * Gets the value of a #GObject attribute. If the attribute does
      * not contain a #GObject, %NULL will be returned.
      * @param attribute a file attribute key.
      * @returns a #GObject associated with the given @attribute, or %NULL otherwise.
      */
-    getAttributeObject(attribute: string | null): GObject.Object | null
+    getAttributeObject(attribute: string): GObject.Object | null
     /**
      * Gets the attribute status for an attribute key.
      * @param attribute a file attribute key
      * @returns a #GFileAttributeStatus for the given @attribute, or    %G_FILE_ATTRIBUTE_STATUS_UNSET if the key is invalid.
      */
-    getAttributeStatus(attribute: string | null): FileAttributeStatus
+    getAttributeStatus(attribute: string): FileAttributeStatus
     /**
      * Gets the value of a string attribute. If the attribute does
      * not contain a string, %NULL will be returned.
      * @param attribute a file attribute key.
      * @returns the contents of the @attribute value as a UTF-8 string, or %NULL otherwise.
      */
-    getAttributeString(attribute: string | null): string | null
+    getAttributeString(attribute: string): string | null
     /**
      * Gets the value of a stringv attribute. If the attribute does
      * not contain a stringv, %NULL will be returned.
      * @param attribute a file attribute key.
      * @returns the contents of the @attribute value as a stringv, or %NULL otherwise. Do not free. These returned strings are UTF-8.
      */
-    getAttributeStringv(attribute: string | null): string[] | null
+    getAttributeStringv(attribute: string): string[] | null
     /**
      * Gets the attribute type for an attribute key.
      * @param attribute a file attribute key.
      * @returns a #GFileAttributeType for the given @attribute, or %G_FILE_ATTRIBUTE_TYPE_INVALID if the key is not set.
      */
-    getAttributeType(attribute: string | null): FileAttributeType
+    getAttributeType(attribute: string): FileAttributeType
     /**
      * Gets an unsigned 32-bit integer contained within the attribute. If the
      * attribute does not contain an unsigned 32-bit integer, or is invalid,
@@ -24719,7 +24719,7 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns an unsigned 32-bit integer from the attribute.
      */
-    getAttributeUint32(attribute: string | null): number
+    getAttributeUint32(attribute: string): number
     /**
      * Gets a unsigned 64-bit integer contained within the attribute. If the
      * attribute does not contain an unsigned 64-bit integer, or is invalid,
@@ -24727,7 +24727,7 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns a unsigned 64-bit integer from the attribute.
      */
-    getAttributeUint64(attribute: string | null): number
+    getAttributeUint64(attribute: string): number
     /**
      * Gets the file's content type.
      * 
@@ -24764,7 +24764,7 @@ export interface FileInfo {
      * %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
      * @returns a string containing the display name.
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Gets the edit name for a file.
      * 
@@ -24772,7 +24772,7 @@ export interface FileInfo {
      * %G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
      * @returns a string containing the edit name.
      */
-    getEditName(): string | null
+    getEditName(): string
     /**
      * Gets the [entity tag][gfile-etag] for a given
      * #GFileInfo. See %G_FILE_ATTRIBUTE_ETAG_VALUE.
@@ -24894,14 +24894,14 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @returns %TRUE if @info has an attribute named @attribute,     %FALSE otherwise.
      */
-    hasAttribute(attribute: string | null): boolean
+    hasAttribute(attribute: string): boolean
     /**
      * Checks if a file info structure has an attribute in the
      * specified `name_space`.
      * @param nameSpace a file attribute namespace.
      * @returns %TRUE if @info has an attribute in @name_space,     %FALSE otherwise.
      */
-    hasNamespace(nameSpace: string | null): boolean
+    hasNamespace(nameSpace: string): boolean
     /**
      * Lists the file info structure's attributes.
      * @param nameSpace a file attribute key's namespace, or %NULL to list   all attributes.
@@ -24912,7 +24912,7 @@ export interface FileInfo {
      * Removes all cases of `attribute` from `info` if it exists.
      * @param attribute a file attribute key.
      */
-    removeAttribute(attribute: string | null): void
+    removeAttribute(attribute: string): void
     /**
      * Sets the %G_FILE_ATTRIBUTE_TIME_ACCESS and
      * %G_FILE_ATTRIBUTE_TIME_ACCESS_USEC attributes in the file info to the
@@ -24929,21 +24929,21 @@ export interface FileInfo {
      * @param type a #GFileAttributeType
      * @param valueP pointer to the value
      */
-    setAttribute(attribute: string | null, type: FileAttributeType, valueP: any): void
+    setAttribute(attribute: string, type: FileAttributeType, valueP: any): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute a file attribute key.
      * @param attrValue a boolean value.
      */
-    setAttributeBoolean(attribute: string | null, attrValue: boolean): void
+    setAttributeBoolean(attribute: string, attrValue: boolean): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute a file attribute key.
      * @param attrValue a byte string.
      */
-    setAttributeByteString(attribute: string | null, attrValue: string | null): void
+    setAttributeByteString(attribute: string, attrValue: string): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
@@ -24953,21 +24953,21 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @param attrValue a file path.
      */
-    setAttributeFilePath(attribute: string | null, attrValue: string): void
+    setAttributeFilePath(attribute: string, attrValue: string): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute a file attribute key.
      * @param attrValue a signed 32-bit integer
      */
-    setAttributeInt32(attribute: string | null, attrValue: number): void
+    setAttributeInt32(attribute: string, attrValue: number): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute attribute name to set.
      * @param attrValue int64 value to set attribute to.
      */
-    setAttributeInt64(attribute: string | null, attrValue: number): void
+    setAttributeInt64(attribute: string, attrValue: number): void
     /**
      * Sets `mask` on `info` to match specific attribute types.
      * @param mask a #GFileAttributeMatcher.
@@ -24979,7 +24979,7 @@ export interface FileInfo {
      * @param attribute a file attribute key.
      * @param attrValue a #GObject.
      */
-    setAttributeObject(attribute: string | null, attrValue: GObject.Object): void
+    setAttributeObject(attribute: string, attrValue: GObject.Object): void
     /**
      * Sets the attribute status for an attribute key. This is only
      * needed by external code that implement g_file_set_attributes_from_info()
@@ -24991,14 +24991,14 @@ export interface FileInfo {
      * @param status a #GFileAttributeStatus
      * @returns %TRUE if the status was changed, %FALSE if the key was not set.
      */
-    setAttributeStatus(attribute: string | null, status: FileAttributeStatus): boolean
+    setAttributeStatus(attribute: string, status: FileAttributeStatus): boolean
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute a file attribute key.
      * @param attrValue a UTF-8 string.
      */
-    setAttributeString(attribute: string | null, attrValue: string | null): void
+    setAttributeString(attribute: string, attrValue: string): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
@@ -25007,27 +25007,27 @@ export interface FileInfo {
      * @param attribute a file attribute key
      * @param attrValue a %NULL   terminated array of UTF-8 strings.
      */
-    setAttributeStringv(attribute: string | null, attrValue: string[]): void
+    setAttributeStringv(attribute: string, attrValue: string[]): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute a file attribute key.
      * @param attrValue an unsigned 32-bit integer.
      */
-    setAttributeUint32(attribute: string | null, attrValue: number): void
+    setAttributeUint32(attribute: string, attrValue: number): void
     /**
      * Sets the `attribute` to contain the given `attr_value,`
      * if possible.
      * @param attribute a file attribute key.
      * @param attrValue an unsigned 64-bit integer.
      */
-    setAttributeUint64(attribute: string | null, attrValue: number): void
+    setAttributeUint64(attribute: string, attrValue: number): void
     /**
      * Sets the content type attribute for a given #GFileInfo.
      * See %G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
      * @param contentType a content type. See [GContentType][gio-GContentType]
      */
-    setContentType(contentType: string | null): void
+    setContentType(contentType: string): void
     /**
      * Sets the %G_FILE_ATTRIBUTE_TIME_CREATED and
      * %G_FILE_ATTRIBUTE_TIME_CREATED_USEC attributes in the file info to the
@@ -25042,13 +25042,13 @@ export interface FileInfo {
      * See %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
      * @param displayName a string containing a display name.
      */
-    setDisplayName(displayName: string | null): void
+    setDisplayName(displayName: string): void
     /**
      * Sets the edit name for the current file.
      * See %G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
      * @param editName a string containing an edit name.
      */
-    setEditName(editName: string | null): void
+    setEditName(editName: string): void
     /**
      * Sets the file type in a #GFileInfo to `type`.
      * See %G_FILE_ATTRIBUTE_STANDARD_TYPE.
@@ -25224,8 +25224,8 @@ export interface FileInputStream extends Seekable {
 
     // Owm methods of Gio-2.0.Gio.FileInputStream
 
-    // Has conflict: queryInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
-    // Has conflict: queryInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: queryInfo(attributes: string, cancellable: Cancellable | null): FileInfo
+    // Has conflict: queryInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: queryInfoFinish(result: AsyncResult): FileInfo
 
     // Own virtual methods of Gio-2.0.Gio.FileInputStream
@@ -25251,7 +25251,7 @@ export interface FileInputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #GFileInfo, or %NULL on error.
      */
-    queryInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
+    queryInfo(attributes: string, cancellable: Cancellable | null): FileInfo
     /**
      * Queries the stream information asynchronously.
      * When the operation is finished `callback` will be called.
@@ -25270,7 +25270,7 @@ export interface FileInputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback a #GAsyncReadyCallback   to call when the request is satisfied
      */
-    queryInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    queryInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous info query operation.
      * @virtual 
@@ -25511,8 +25511,8 @@ export interface FileOutputStream extends Seekable {
     // Owm methods of Gio-2.0.Gio.FileOutputStream
 
     // Has conflict: getEtag(): string | null
-    // Has conflict: queryInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
-    // Has conflict: queryInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: queryInfo(attributes: string, cancellable: Cancellable | null): FileInfo
+    // Has conflict: queryInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: queryInfoFinish(result: AsyncResult): FileInfo
 
     // Own virtual methods of Gio-2.0.Gio.FileOutputStream
@@ -25569,7 +25569,7 @@ export interface FileOutputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #GFileInfo for the @stream, or %NULL on error.
      */
-    queryInfo(attributes: string | null, cancellable: Cancellable | null): FileInfo
+    queryInfo(attributes: string, cancellable: Cancellable | null): FileInfo
     /**
      * Asynchronously queries the `stream` for a #GFileInfo. When completed,
      * `callback` will be called with a #GAsyncResult which can be used to
@@ -25583,7 +25583,7 @@ export interface FileOutputStream extends Seekable {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback callback to call when the request is satisfied
      */
-    queryInfoAsync(attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    queryInfoAsync(attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finalizes the asynchronous query started
      * by g_file_output_stream_query_info_async().
@@ -25706,13 +25706,13 @@ export interface FilenameCompleter {
      * @param initialText text to be completed.
      * @returns a completed string, or %NULL if no     completion exists. This string is not owned by GIO, so remember to g_free()     it when finished.
      */
-    getCompletionSuffix(initialText: string | null): string | null
+    getCompletionSuffix(initialText: string): string | null
     /**
      * Gets an array of completion strings for a given initial text.
      * @param initialText text to be completed.
      * @returns array of strings with possible completions for @initial_text. This array must be freed by g_strfreev() when finished.
      */
-    getCompletions(initialText: string | null): string[]
+    getCompletions(initialText: string): string[]
     /**
      * If `dirs_only` is %TRUE, `completer` will only
      * complete directory names, and not file names.
@@ -26594,7 +26594,7 @@ export class InetAddress extends GObject.Object {
      * @param string a string representation of an IP address
      * @returns a new #GInetAddress corresponding to @string, or %NULL if @string could not be parsed.     Free the returned object with g_object_unref().
      */
-    static newFromString(string: string | null): InetAddress
+    static newFromString(string: string): InetAddress
     /**
      * Creates a #GInetAddress for the loopback address for `family`.
      * @constructor 
@@ -26740,7 +26740,7 @@ export class InetAddressMask extends GObject.Object {
      * @param maskString an IP address or address/length string
      * @returns a new #GInetAddressMask corresponding to @string, or %NULL on error.
      */
-    static newFromString(maskString: string | null): InetAddressMask
+    static newFromString(maskString: string): InetAddressMask
     _init(config?: InetAddressMask.ConstructorProperties): void
 }
 
@@ -26885,7 +26885,7 @@ export class InetSocketAddress extends SocketAddress {
      * @param port a port number
      * @returns a new #GInetSocketAddress, or %NULL if @address cannot be parsed.
      */
-    static newFromString(address: string | null, port: number): InetSocketAddress
+    static newFromString(address: string, port: number): InetSocketAddress
     _init(config?: InetSocketAddress.ConstructorProperties): void
 }
 
@@ -27637,7 +27637,7 @@ export interface MemoryOutputStream extends PollableOutputStream, Seekable {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Returns the number of bytes from the start up to including the last
      * byte written in the stream that has not been truncated away.
@@ -27688,7 +27688,7 @@ export interface MemoryOutputStream extends PollableOutputStream, Seekable {
      * @param key name of the key
      * @returns the data if found, or %NULL          if no such data exists.
      */
-    stealData(key: string | null): any | null
+    stealData(key: string): any | null
 
     // Class property signals of Gio-2.0.Gio.MemoryOutputStream
 
@@ -27987,8 +27987,8 @@ export interface MenuAttributeIter {
      * The iterator is not advanced.
      * @returns the name of the attribute
      */
-    getName(): string | null
-    // Has conflict: getNext(): [ /* returnType */ boolean, /* outName */ string | null, /* value */ GLib.Variant ]
+    getName(): string
+    // Has conflict: getNext(): [ /* returnType */ boolean, /* outName */ string, /* value */ GLib.Variant ]
     /**
      * Gets the value of the attribute at the current iterator position.
      * 
@@ -28031,7 +28031,7 @@ export interface MenuAttributeIter {
      * @virtual 
      * @returns %TRUE on success, or %FALSE if there is no additional     attribute
      */
-    getNext(): [ /* returnType */ boolean, /* outName */ string | null, /* value */ GLib.Variant ]
+    getNext(): [ /* returnType */ boolean, /* outName */ string, /* value */ GLib.Variant ]
 
     // Class property signals of Gio-2.0.Gio.MenuAttributeIter
 
@@ -28092,13 +28092,13 @@ export interface MenuItem {
      * @param expectedType the expected type of the attribute
      * @returns the attribute value, or %NULL
      */
-    getAttributeValue(attribute: string | null, expectedType: GLib.VariantType | null): GLib.Variant | null
+    getAttributeValue(attribute: string, expectedType: GLib.VariantType | null): GLib.Variant | null
     /**
      * Queries the named `link` on `menu_item`.
      * @param link the link name to query
      * @returns the link, or %NULL
      */
-    getLink(link: string | null): MenuModel | null
+    getLink(link: string): MenuModel | null
     /**
      * Sets or unsets the "action" and "target" attributes of `menu_item`.
      * 
@@ -28163,7 +28163,7 @@ export interface MenuItem {
      * @param attribute the attribute to set
      * @param value a #GVariant to use as the value, or %NULL
      */
-    setAttributeValue(attribute: string | null, value: GLib.Variant | null): void
+    setAttributeValue(attribute: string, value: GLib.Variant | null): void
     /**
      * Sets the "action" and possibly the "target" attribute of `menu_item`.
      * 
@@ -28178,7 +28178,7 @@ export interface MenuItem {
      * the semantics of the action and target attributes.
      * @param detailedAction the "detailed" action string
      */
-    setDetailedAction(detailedAction: string | null): void
+    setDetailedAction(detailedAction: string): void
     /**
      * Sets (or unsets) the icon on `menu_item`.
      * 
@@ -28217,7 +28217,7 @@ export interface MenuItem {
      * @param link type of link to establish or unset
      * @param model the #GMenuModel to link to (or %NULL to unset)
      */
-    setLink(link: string | null, model: MenuModel | null): void
+    setLink(link: string, model: MenuModel | null): void
     /**
      * Sets or unsets the "section" link of `menu_item` to `section`.
      * 
@@ -28425,8 +28425,8 @@ export interface MenuLinkIter {
      * The iterator is not advanced.
      * @returns the type of the link
      */
-    getName(): string | null
-    // Has conflict: getNext(): [ /* returnType */ boolean, /* outLink */ string | null, /* value */ MenuModel ]
+    getName(): string
+    // Has conflict: getNext(): [ /* returnType */ boolean, /* outLink */ string, /* value */ MenuModel ]
     /**
      * Gets the linked #GMenuModel at the current iterator position.
      * 
@@ -28467,7 +28467,7 @@ export interface MenuLinkIter {
      * @virtual 
      * @returns %TRUE on success, or %FALSE if there is no additional link
      */
-    getNext(): [ /* returnType */ boolean, /* outLink */ string | null, /* value */ MenuModel ]
+    getNext(): [ /* returnType */ boolean, /* outLink */ string, /* value */ MenuModel ]
 
     // Class property signals of Gio-2.0.Gio.MenuLinkIter
 
@@ -28533,8 +28533,8 @@ export interface MenuModel {
 
     // Owm methods of Gio-2.0.Gio.MenuModel
 
-    // Has conflict: getItemAttributeValue(itemIndex: number, attribute: string | null, expectedType: GLib.VariantType | null): GLib.Variant | null
-    // Has conflict: getItemLink(itemIndex: number, link: string | null): MenuModel | null
+    // Has conflict: getItemAttributeValue(itemIndex: number, attribute: string, expectedType: GLib.VariantType | null): GLib.Variant | null
+    // Has conflict: getItemLink(itemIndex: number, link: string): MenuModel | null
     // Has conflict: getNItems(): number
     // Has conflict: isMutable(): boolean
     /**
@@ -28581,7 +28581,7 @@ export interface MenuModel {
      * @param expectedType the expected type of the attribute, or     %NULL
      * @returns the value of the attribute
      */
-    getItemAttributeValue(itemIndex: number, attribute: string | null, expectedType: GLib.VariantType | null): GLib.Variant | null
+    getItemAttributeValue(itemIndex: number, attribute: string, expectedType: GLib.VariantType | null): GLib.Variant | null
     /**
      * Gets all the attributes associated with the item in the menu model.
      * @virtual 
@@ -28599,7 +28599,7 @@ export interface MenuModel {
      * @param link the link to query
      * @returns the linked #GMenuModel, or %NULL
      */
-    getItemLink(itemIndex: number, link: string | null): MenuModel | null
+    getItemLink(itemIndex: number, link: string): MenuModel | null
     /**
      * Gets all the links associated with the item in the menu model.
      * @virtual 
@@ -29051,14 +29051,14 @@ export interface MountOperation {
     // Own virtual methods of Gio-2.0.Gio.MountOperation
 
     aborted(): void
-    askPassword(message: string | null, defaultUser: string | null, defaultDomain: string | null, flags: AskPasswordFlags): void
+    askPassword(message: string, defaultUser: string, defaultDomain: string, flags: AskPasswordFlags): void
     /**
      * Virtual implementation of #GMountOperation::ask-question.
      * @virtual 
      * @param message string containing a message to display to the user
      * @param choices an array of    strings for each possible choice
      */
-    askQuestion(message: string | null, choices: string[]): void
+    askQuestion(message: string, choices: string[]): void
     /**
      * Emits the #GMountOperation::reply signal.
      * @virtual 
@@ -29072,8 +29072,8 @@ export interface MountOperation {
      * @param processes an array of #GPid for processes blocking    the operation
      * @param choices an array of    strings for each possible choice
      */
-    showProcesses(message: string | null, processes: GLib.Pid[], choices: string[]): void
-    showUnmountProgress(message: string | null, timeLeft: number, bytesLeft: number): void
+    showProcesses(message: string, processes: GLib.Pid[], choices: string[]): void
+    showUnmountProgress(message: string, timeLeft: number, bytesLeft: number): void
 
     // Own signals of Gio-2.0.Gio.MountOperation
 
@@ -29368,7 +29368,7 @@ export interface NetworkAddress extends SocketConnectable {
      * depending on what `addr` was created with.
      * @returns @addr's hostname
      */
-    getHostname(): string | null
+    getHostname(): string
     /**
      * Gets `addr'`s port number
      * @returns @addr's port (which may be 0)
@@ -29446,7 +29446,7 @@ export class NetworkAddress extends GObject.Object {
      * @param port the port
      * @returns the new #GNetworkAddress
      */
-    constructor(hostname: string | null, port: number) 
+    constructor(hostname: string, port: number) 
     /**
      * Creates a new #GSocketConnectable for connecting to the given
      * `hostname` and `port`.
@@ -29461,7 +29461,7 @@ export class NetworkAddress extends GObject.Object {
      * @param port the port
      * @returns the new #GNetworkAddress
      */
-    static new(hostname: string | null, port: number): NetworkAddress
+    static new(hostname: string, port: number): NetworkAddress
     /**
      * Creates a new #GSocketConnectable for connecting to the local host
      * over a loopback connection to the given `port`. This is intended for
@@ -29507,7 +29507,7 @@ export class NetworkAddress extends GObject.Object {
      * @param defaultPort the default port if not in `host_and_port`
      * @returns the new   #GNetworkAddress, or %NULL on error
      */
-    static parse(hostAndPort: string | null, defaultPort: number): NetworkAddress
+    static parse(hostAndPort: string, defaultPort: number): NetworkAddress
     /**
      * Creates a new #GSocketConnectable for connecting to the given
      * `uri`. May fail and return %NULL in case parsing `uri` fails.
@@ -29519,7 +29519,7 @@ export class NetworkAddress extends GObject.Object {
      * @param defaultPort The default port if none is found in the URI
      * @returns the new   #GNetworkAddress, or %NULL on error
      */
-    static parseUri(uri: string | null, defaultPort: number): NetworkAddress
+    static parseUri(uri: string, defaultPort: number): NetworkAddress
 }
 
 export module NetworkService {
@@ -29559,29 +29559,29 @@ export interface NetworkService extends SocketConnectable {
      * ASCII-encoded, depending on what `srv` was created with.
      * @returns @srv's domain name
      */
-    getDomain(): string | null
+    getDomain(): string
     /**
      * Gets `srv'`s protocol name (eg, "tcp").
      * @returns @srv's protocol name
      */
-    getProtocol(): string | null
+    getProtocol(): string
     /**
      * Gets the URI scheme used to resolve proxies. By default, the service name
      * is used as scheme.
      * @returns @srv's scheme name
      */
-    getScheme(): string | null
+    getScheme(): string
     /**
      * Gets `srv'`s service name (eg, "ldap").
      * @returns @srv's service name
      */
-    getService(): string | null
+    getService(): string
     /**
      * Set's the URI scheme used to resolve proxies. By default, the service name
      * is used as scheme.
      * @param scheme a URI scheme
      */
-    setScheme(scheme: string | null): void
+    setScheme(scheme: string): void
 
     // Class property signals of Gio-2.0.Gio.NetworkService
 
@@ -29649,7 +29649,7 @@ export class NetworkService extends GObject.Object {
      * @param domain the DNS domain to look up the service in
      * @returns a new #GNetworkService
      */
-    constructor(service: string | null, protocol: string | null, domain: string | null) 
+    constructor(service: string, protocol: string, domain: string) 
     /**
      * Creates a new #GNetworkService representing the given `service,`
      * `protocol,` and `domain`. This will initially be unresolved; use the
@@ -29660,7 +29660,7 @@ export class NetworkService extends GObject.Object {
      * @param domain the DNS domain to look up the service in
      * @returns a new #GNetworkService
      */
-    static new(service: string | null, protocol: string | null, domain: string | null): NetworkService
+    static new(service: string, protocol: string, domain: string): NetworkService
     _init(config?: NetworkService.ConstructorProperties): void
 }
 
@@ -29693,7 +29693,7 @@ export interface Notification {
      * @param label label of the button
      * @param detailedAction a detailed action name
      */
-    addButton(label: string | null, detailedAction: string | null): void
+    addButton(label: string, detailedAction: string): void
     /**
      * Adds a button to `notification` that activates `action` when clicked.
      * `action` must be an application-wide action (it must start with "app.").
@@ -29704,7 +29704,7 @@ export interface Notification {
      * @param action an action name
      * @param target a #GVariant to use as `action'`s parameter, or %NULL
      */
-    addButtonWithTarget(label: string | null, action: string | null, target: GLib.Variant | null): void
+    addButtonWithTarget(label: string, action: string, target: GLib.Variant | null): void
     /**
      * Sets the body of `notification` to `body`.
      * @param body the new body for `notification,` or %NULL
@@ -29734,7 +29734,7 @@ export interface Notification {
      * was sent on is activated.
      * @param detailedAction a detailed action name
      */
-    setDefaultAction(detailedAction: string | null): void
+    setDefaultAction(detailedAction: string): void
     /**
      * Sets the default action of `notification` to `action`. This action is
      * activated when the notification is clicked on. It must be an
@@ -29748,7 +29748,7 @@ export interface Notification {
      * @param action an action name
      * @param target a #GVariant to use as `action'`s parameter, or %NULL
      */
-    setDefaultActionAndTarget(action: string | null, target: GLib.Variant | null): void
+    setDefaultActionAndTarget(action: string, target: GLib.Variant | null): void
     /**
      * Sets the icon of `notification` to `icon`.
      * @param icon the icon to be shown in `notification,` as a #GIcon
@@ -29764,7 +29764,7 @@ export interface Notification {
      * Sets the title of `notification` to `title`.
      * @param title the new title for `notification`
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Deprecated in favor of g_notification_set_priority().
      * @param urgent %TRUE if `notification` is urgent
@@ -29855,7 +29855,7 @@ export class Notification extends GObject.Object {
      * @param title the title of the notification
      * @returns a new #GNotification instance
      */
-    constructor(title: string | null) 
+    constructor(title: string) 
     /**
      * Creates a new #GNotification with `title` as its title.
      * 
@@ -29867,7 +29867,7 @@ export class Notification extends GObject.Object {
      * @param title the title of the notification
      * @returns a new #GNotification instance
      */
-    static new(title: string | null): Notification
+    static new(title: string): Notification
     _init(config?: Notification.ConstructorProperties): void
 }
 
@@ -30923,7 +30923,7 @@ export class PropertyAction extends GObject.Object {
      * @param propertyName the name of the property
      * @returns a new #GPropertyAction
      */
-    constructor(name: string | null, object: GObject.Object, propertyName: string | null) 
+    constructor(name: string, object: GObject.Object, propertyName: string) 
     /**
      * Creates a #GAction corresponding to the value of property
      * `property_name` on `object`.
@@ -30939,7 +30939,7 @@ export class PropertyAction extends GObject.Object {
      * @param propertyName the name of the property
      * @returns a new #GPropertyAction
      */
-    static new(name: string | null, object: GObject.Object, propertyName: string | null): PropertyAction
+    static new(name: string, object: GObject.Object, propertyName: string): PropertyAction
     _init(config?: PropertyAction.ConstructorProperties): void
 }
 
@@ -31003,7 +31003,7 @@ export interface ProxyAddress extends SocketConnectable {
      * itself.
      * @returns the @proxy's destination hostname
      */
-    getDestinationHostname(): string | null
+    getDestinationHostname(): string
     /**
      * Gets `proxy'`s destination port; that is, the port on the
      * destination host that will be connected to via the proxy, not the
@@ -31016,7 +31016,7 @@ export interface ProxyAddress extends SocketConnectable {
      * server; eg, "http" or "ftp".
      * @returns the @proxy's destination protocol
      */
-    getDestinationProtocol(): string | null
+    getDestinationProtocol(): string
     /**
      * Gets `proxy'`s password.
      * @returns the @proxy's password
@@ -31026,7 +31026,7 @@ export interface ProxyAddress extends SocketConnectable {
      * Gets `proxy'`s protocol. eg, "socks" or "http"
      * @returns the @proxy's protocol
      */
-    getProtocol(): string | null
+    getProtocol(): string
     /**
      * Gets the proxy URI that `proxy` was constructed from.
      * @returns the @proxy's URI, or %NULL if unknown
@@ -31143,7 +31143,7 @@ export class ProxyAddress extends InetSocketAddress {
      * @param password The password to authenticate to the proxy server     (or %NULL).
      * @returns a new #GProxyAddress
      */
-    constructor(inetaddr: InetAddress, port: number, protocol: string | null, destHostname: string | null, destPort: number, username: string | null, password: string | null) 
+    constructor(inetaddr: InetAddress, port: number, protocol: string, destHostname: string, destPort: number, username: string | null, password: string | null) 
     /**
      * Creates a new #GProxyAddress for `inetaddr` with `protocol` that should
      * tunnel through `dest_hostname` and `dest_port`.
@@ -31161,7 +31161,7 @@ export class ProxyAddress extends InetSocketAddress {
      * @param password The password to authenticate to the proxy server     (or %NULL).
      * @returns a new #GProxyAddress
      */
-    static new(inetaddr: InetAddress, port: number, protocol: string | null, destHostname: string | null, destPort: number, username: string | null, password: string | null): ProxyAddress
+    static new(inetaddr: InetAddress, port: number, protocol: string, destHostname: string, destPort: number, username: string | null, password: string | null): ProxyAddress
 
     // Overloads of new
 
@@ -31344,14 +31344,14 @@ export interface Resolver {
     // Has conflict: lookupByAddress(address: InetAddress, cancellable: Cancellable | null): string | null
     // Has conflict: lookupByAddressAsync(address: InetAddress, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupByAddressFinish(result: AsyncResult): string | null
-    // Has conflict: lookupByName(hostname: string | null, cancellable: Cancellable | null): InetAddress[]
-    // Has conflict: lookupByNameAsync(hostname: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: lookupByName(hostname: string, cancellable: Cancellable | null): InetAddress[]
+    // Has conflict: lookupByNameAsync(hostname: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupByNameFinish(result: AsyncResult): InetAddress[]
-    // Has conflict: lookupByNameWithFlags(hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null): InetAddress[]
-    // Has conflict: lookupByNameWithFlagsAsync(hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: lookupByNameWithFlags(hostname: string, flags: ResolverNameLookupFlags, cancellable: Cancellable | null): InetAddress[]
+    // Has conflict: lookupByNameWithFlagsAsync(hostname: string, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupByNameWithFlagsFinish(result: AsyncResult): InetAddress[]
-    // Has conflict: lookupRecords(rrname: string | null, recordType: ResolverRecordType, cancellable: Cancellable | null): GLib.Variant[]
-    // Has conflict: lookupRecordsAsync(rrname: string | null, recordType: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: lookupRecords(rrname: string, recordType: ResolverRecordType, cancellable: Cancellable | null): GLib.Variant[]
+    // Has conflict: lookupRecordsAsync(rrname: string, recordType: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupRecordsFinish(result: AsyncResult): GLib.Variant[]
     /**
      * Synchronously performs a DNS SRV lookup for the given `service` and
@@ -31381,8 +31381,8 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a non-empty #GList of #GSrvTarget, or %NULL on error. You must free each of the targets and the list when you are done with it. (You can use g_resolver_free_targets() to do this.)
      */
-    lookupService(service: string | null, protocol: string | null, domain: string | null, cancellable: Cancellable | null): SrvTarget[]
-    // Has conflict: lookupServiceAsync(service: string | null, protocol: string | null, domain: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupService(service: string, protocol: string, domain: string, cancellable: Cancellable | null): SrvTarget[]
+    // Has conflict: lookupServiceAsync(service: string, protocol: string, domain: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupServiceFinish(result: AsyncResult): SrvTarget[]
     /**
      * Sets `resolver` to be the application's default resolver (reffing
@@ -31471,7 +31471,7 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a non-empty #GList of #GInetAddress, or %NULL on error. You must unref each of the addresses and free the list when you are done with it. (You can use g_resolver_free_addresses() to do this.)
      */
-    lookupByName(hostname: string | null, cancellable: Cancellable | null): InetAddress[]
+    lookupByName(hostname: string, cancellable: Cancellable | null): InetAddress[]
     /**
      * Begins asynchronously resolving `hostname` to determine its
      * associated IP address(es), and eventually calls `callback,` which
@@ -31482,7 +31482,7 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback callback to call after resolution completes
      */
-    lookupByNameAsync(hostname: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupByNameAsync(hostname: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Retrieves the result of a call to
      * g_resolver_lookup_by_name_async().
@@ -31505,7 +31505,7 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a non-empty #GList of #GInetAddress, or %NULL on error. You must unref each of the addresses and free the list when you are done with it. (You can use g_resolver_free_addresses() to do this.)
      */
-    lookupByNameWithFlags(hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null): InetAddress[]
+    lookupByNameWithFlags(hostname: string, flags: ResolverNameLookupFlags, cancellable: Cancellable | null): InetAddress[]
     /**
      * Begins asynchronously resolving `hostname` to determine its
      * associated IP address(es), and eventually calls `callback,` which
@@ -31517,7 +31517,7 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback callback to call after resolution completes
      */
-    lookupByNameWithFlagsAsync(hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupByNameWithFlagsAsync(hostname: string, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Retrieves the result of a call to
      * g_resolver_lookup_by_name_with_flags_async().
@@ -31547,7 +31547,7 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a non-empty #GList of #GVariant, or %NULL on error. You must free each of the records and the list when you are done with it. (You can use g_list_free_full() with g_variant_unref() to do this.)
      */
-    lookupRecords(rrname: string | null, recordType: ResolverRecordType, cancellable: Cancellable | null): GLib.Variant[]
+    lookupRecords(rrname: string, recordType: ResolverRecordType, cancellable: Cancellable | null): GLib.Variant[]
     /**
      * Begins asynchronously performing a DNS lookup for the given
      * `rrname,` and eventually calls `callback,` which must call
@@ -31559,7 +31559,7 @@ export interface Resolver {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback callback to call after resolution completes
      */
-    lookupRecordsAsync(rrname: string | null, recordType: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupRecordsAsync(rrname: string, recordType: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Retrieves the result of a previous call to
      * g_resolver_lookup_records_async(). Returns a non-empty list of records as
@@ -31574,7 +31574,7 @@ export interface Resolver {
      * @returns a non-empty #GList of #GVariant, or %NULL on error. You must free each of the records and the list when you are done with it. (You can use g_list_free_full() with g_variant_unref() to do this.)
      */
     lookupRecordsFinish(result: AsyncResult): GLib.Variant[]
-    lookupServiceAsync(rrname: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupServiceAsync(rrname: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Retrieves the result of a previous call to
      * g_resolver_lookup_service_async().
@@ -31820,7 +31820,7 @@ export interface Settings {
      * @param property the name of the property to bind
      * @param flags flags for the binding
      */
-    bind(key: string | null, object: GObject.Object, property: string | null, flags: SettingsBindFlags): void
+    bind(key: string, object: GObject.Object, property: string, flags: SettingsBindFlags): void
     /**
      * Create a binding between the writability of `key` in the
      * `settings` object and the property `property` of `object`.
@@ -31844,7 +31844,7 @@ export interface Settings {
      * @param property the name of a boolean property to bind
      * @param inverted whether to 'invert' the value
      */
-    bindWritable(key: string | null, object: GObject.Object, property: string | null, inverted: boolean): void
+    bindWritable(key: string, object: GObject.Object, property: string, inverted: boolean): void
     /**
      * Creates a #GAction corresponding to a given #GSettings key.
      * 
@@ -31863,7 +31863,7 @@ export interface Settings {
      * @param key the name of a key in `settings`
      * @returns a new #GAction
      */
-    createAction(key: string | null): Action
+    createAction(key: string): Action
     /**
      * Changes the #GSettings object into 'delay-apply' mode. In this
      * mode, changes to `settings` are not immediately propagated to the
@@ -31880,7 +31880,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a boolean
      */
-    getBoolean(key: string | null): boolean
+    getBoolean(key: string): boolean
     /**
      * Creates a child settings object which has a base path of
      * `base-path/`name``, where `base-path` is the base path of
@@ -31894,7 +31894,7 @@ export interface Settings {
      * @param name the name of the child schema
      * @returns a 'child' settings object
      */
-    getChild(name: string | null): Settings
+    getChild(name: string): Settings
     /**
      * Gets the "default value" of a key.
      * 
@@ -31920,7 +31920,7 @@ export interface Settings {
      * @param key the key to get the default value for
      * @returns the default value
      */
-    getDefaultValue(key: string | null): GLib.Variant | null
+    getDefaultValue(key: string): GLib.Variant | null
     /**
      * Gets the value that is stored at `key` in `settings`.
      * 
@@ -31931,7 +31931,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a double
      */
-    getDouble(key: string | null): number
+    getDouble(key: string): number
     /**
      * Gets the value that is stored in `settings` for `key` and converts it
      * to the enum value that it represents.
@@ -31948,7 +31948,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns the enum value
      */
-    getEnum(key: string | null): number
+    getEnum(key: string): number
     /**
      * Gets the value that is stored in `settings` for `key` and converts it
      * to the flags value that it represents.
@@ -31965,7 +31965,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns the flags value
      */
-    getFlags(key: string | null): number
+    getFlags(key: string): number
     /**
      * Returns whether the #GSettings object has any unapplied
      * changes.  This can only be the case if it is in 'delayed-apply' mode.
@@ -31982,7 +31982,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns an integer
      */
-    getInt(key: string | null): number
+    getInt(key: string): number
     /**
      * Gets the value that is stored at `key` in `settings`.
      * 
@@ -31993,7 +31993,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a 64-bit integer
      */
-    getInt64(key: string | null): number
+    getInt64(key: string): number
     /**
      * Gets the value that is stored at `key` in `settings,` subject to
      * application-level validation/mapping.
@@ -32026,12 +32026,12 @@ export interface Settings {
      * @param mapping the function to map the value in the           settings database to the value used by the application
      * @returns the result, which may be %NULL
      */
-    getMapped(key: string | null, mapping: SettingsGetMapping): any | null
+    getMapped(key: string, mapping: SettingsGetMapping): any | null
     /**
      * Queries the range of a key.
      * @param key the key to query the range of
      */
-    getRange(key: string | null): GLib.Variant
+    getRange(key: string): GLib.Variant
     /**
      * Gets the value that is stored at `key` in `settings`.
      * 
@@ -32042,7 +32042,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a newly-allocated string
      */
-    getString(key: string | null): string | null
+    getString(key: string): string | null
     /**
      * A convenience variant of g_settings_get() for string arrays.
      * 
@@ -32051,7 +32051,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a newly-allocated, %NULL-terminated array of strings, the value that is stored at @key in @settings.
      */
-    getStrv(key: string | null): string[]
+    getStrv(key: string): string[]
     /**
      * Gets the value that is stored at `key` in `settings`.
      * 
@@ -32063,7 +32063,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns an unsigned integer
      */
-    getUint(key: string | null): number
+    getUint(key: string): number
     /**
      * Gets the value that is stored at `key` in `settings`.
      * 
@@ -32075,7 +32075,7 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a 64-bit unsigned integer
      */
-    getUint64(key: string | null): number
+    getUint64(key: string): number
     /**
      * Checks the "user value" of a key, if there is one.
      * 
@@ -32098,7 +32098,7 @@ export interface Settings {
      * @param key the key to get the user value for
      * @returns the user's value, if set
      */
-    getUserValue(key: string | null): GLib.Variant | null
+    getUserValue(key: string): GLib.Variant | null
     /**
      * Gets the value that is stored in `settings` for `key`.
      * 
@@ -32107,13 +32107,13 @@ export interface Settings {
      * @param key the key to get the value for
      * @returns a new #GVariant
      */
-    getValue(key: string | null): GLib.Variant
+    getValue(key: string): GLib.Variant
     /**
      * Finds out if a key can be written or not
      * @param name the name of a key
      * @returns %TRUE if the key @name is writable
      */
-    isWritable(name: string | null): boolean
+    isWritable(name: string): boolean
     /**
      * Gets the list of children on `settings`.
      * 
@@ -32148,7 +32148,7 @@ export interface Settings {
      * @param value the value to check
      * @returns %TRUE if @value is valid for @key
      */
-    rangeCheck(key: string | null, value: GLib.Variant): boolean
+    rangeCheck(key: string, value: GLib.Variant): boolean
     /**
      * Resets `key` to its default value.
      * 
@@ -32157,7 +32157,7 @@ export interface Settings {
      * administrator.
      * @param key the name of a key
      */
-    reset(key: string | null): void
+    reset(key: string): void
     /**
      * Reverts all non-applied changes to the settings.  This function
      * does nothing unless `settings` is in 'delay-apply' mode; see
@@ -32178,7 +32178,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setBoolean(key: string | null, value: boolean): boolean
+    setBoolean(key: string, value: boolean): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32190,7 +32190,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setDouble(key: string | null, value: number): boolean
+    setDouble(key: string, value: number): boolean
     /**
      * Looks up the enumerated type nick for `value` and writes it to `key,`
      * within `settings`.
@@ -32206,7 +32206,7 @@ export interface Settings {
      * @param value an enumerated value
      * @returns %TRUE, if the set succeeds
      */
-    setEnum(key: string | null, value: number): boolean
+    setEnum(key: string, value: number): boolean
     /**
      * Looks up the flags type nicks for the bits specified by `value,` puts
      * them in an array of strings and writes the array to `key,` within
@@ -32223,7 +32223,7 @@ export interface Settings {
      * @param value a flags value
      * @returns %TRUE, if the set succeeds
      */
-    setFlags(key: string | null, value: number): boolean
+    setFlags(key: string, value: number): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32235,7 +32235,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setInt(key: string | null, value: number): boolean
+    setInt(key: string, value: number): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32247,7 +32247,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setInt64(key: string | null, value: number): boolean
+    setInt64(key: string, value: number): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32259,7 +32259,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setString(key: string | null, value: string | null): boolean
+    setString(key: string, value: string): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32272,7 +32272,7 @@ export interface Settings {
      * @param value the value to set it to, or %NULL
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setStrv(key: string | null, value: string[] | null): boolean
+    setStrv(key: string, value: string[] | null): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32285,7 +32285,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setUint(key: string | null, value: number): boolean
+    setUint(key: string, value: number): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32298,7 +32298,7 @@ export interface Settings {
      * @param value the value to set it to
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setUint64(key: string | null, value: number): boolean
+    setUint64(key: string, value: number): boolean
     /**
      * Sets `key` in `settings` to `value`.
      * 
@@ -32311,14 +32311,14 @@ export interface Settings {
      * @param value a #GVariant of the correct type
      * @returns %TRUE if setting the key succeeded,     %FALSE if the key was not writable
      */
-    setValue(key: string | null, value: GLib.Variant): boolean
+    setValue(key: string, value: GLib.Variant): boolean
 
     // Own virtual methods of Gio-2.0.Gio.Settings
 
     changeEvent(keys: GLib.Quark, nKeys: number): boolean
-    changed(key: string | null): void
+    changed(key: string): void
     writableChangeEvent(key: GLib.Quark): boolean
-    writableChanged(key: string | null): void
+    writableChanged(key: string): void
 
     // Own signals of Gio-2.0.Gio.Settings
 
@@ -32730,7 +32730,7 @@ export class Settings extends GObject.Object {
      * @param schemaId the id of the schema
      * @returns a new #GSettings object
      */
-    constructor(schemaId: string | null) 
+    constructor(schemaId: string) 
     /**
      * Creates a new #GSettings object with the schema specified by
      * `schema_id`.
@@ -32749,7 +32749,7 @@ export class Settings extends GObject.Object {
      * @param schemaId the id of the schema
      * @returns a new #GSettings object
      */
-    static new(schemaId: string | null): Settings
+    static new(schemaId: string): Settings
     /**
      * Creates a new #GSettings object with a given schema, backend and
      * path.
@@ -32795,7 +32795,7 @@ export class Settings extends GObject.Object {
      * @param backend the #GSettingsBackend to use
      * @returns a new #GSettings object
      */
-    static newWithBackend(schemaId: string | null, backend: SettingsBackend): Settings
+    static newWithBackend(schemaId: string, backend: SettingsBackend): Settings
     /**
      * Creates a new #GSettings object with the schema specified by
      * `schema_id` and a given #GSettingsBackend and path.
@@ -32808,7 +32808,7 @@ export class Settings extends GObject.Object {
      * @param path the path to use
      * @returns a new #GSettings object
      */
-    static newWithBackendAndPath(schemaId: string | null, backend: SettingsBackend, path: string | null): Settings
+    static newWithBackendAndPath(schemaId: string, backend: SettingsBackend, path: string): Settings
     /**
      * Creates a new #GSettings object with the relocatable schema specified
      * by `schema_id` and a given path.
@@ -32828,7 +32828,7 @@ export class Settings extends GObject.Object {
      * @param path the path to use
      * @returns a new #GSettings object
      */
-    static newWithPath(schemaId: string | null, path: string | null): Settings
+    static newWithPath(schemaId: string, path: string): Settings
     _init(config?: Settings.ConstructorProperties): void
     /**
      * Deprecated.
@@ -32862,7 +32862,7 @@ export class Settings extends GObject.Object {
      * @param object the object
      * @param property the property whose binding is removed
      */
-    static unbind(object: GObject.Object, property: string | null): void
+    static unbind(object: GObject.Object, property: string): void
 }
 
 export module SettingsBackend {
@@ -32912,7 +32912,7 @@ export interface SettingsBackend {
      * @param key the name of the key
      * @param originTag the origin tag
      */
-    changed(key: string | null, originTag: any | null): void
+    changed(key: string, originTag: any | null): void
     /**
      * This call is a convenience wrapper.  It gets the list of changes from
      * `tree,` computes the longest common prefix and calls
@@ -32947,7 +32947,7 @@ export interface SettingsBackend {
      * @param items the %NULL-terminated list of changed keys
      * @param originTag the origin tag
      */
-    keysChanged(path: string | null, items: string[], originTag: any | null): void
+    keysChanged(path: string, items: string[], originTag: any | null): void
     /**
      * Signals that all keys below a given path may have possibly changed.
      * Backend implementations should call this if an entire path of keys
@@ -32973,7 +32973,7 @@ export interface SettingsBackend {
      * @param path the path containing the changes
      * @param originTag the origin tag
      */
-    pathChanged(path: string | null, originTag: any | null): void
+    pathChanged(path: string, originTag: any | null): void
     /**
      * Signals that the writability of all keys below a given path may have
      * changed.
@@ -32982,7 +32982,7 @@ export interface SettingsBackend {
      * will always be made in response to external events.
      * @param path the name of the path
      */
-    pathWritableChanged(path: string | null): void
+    pathWritableChanged(path: string): void
     /**
      * Signals that the writability of a single key has possibly changed.
      * 
@@ -32990,18 +32990,18 @@ export interface SettingsBackend {
      * will always be made in response to external events.
      * @param key the name of the key
      */
-    writableChanged(key: string | null): void
+    writableChanged(key: string): void
 
     // Own virtual methods of Gio-2.0.Gio.SettingsBackend
 
-    getWritable(key: string | null): boolean
-    read(key: string | null, expectedType: GLib.VariantType, defaultValue: boolean): GLib.Variant
-    readUserValue(key: string | null, expectedType: GLib.VariantType): GLib.Variant
-    reset(key: string | null, originTag: any | null): void
-    subscribe(name: string | null): void
+    getWritable(key: string): boolean
+    read(key: string, expectedType: GLib.VariantType, defaultValue: boolean): GLib.Variant
+    readUserValue(key: string, expectedType: GLib.VariantType): GLib.Variant
+    reset(key: string, originTag: any | null): void
+    subscribe(name: string): void
     sync(): void
-    unsubscribe(name: string | null): void
-    write(key: string | null, value: GLib.Variant, originTag: any | null): boolean
+    unsubscribe(name: string): void
+    write(key: string, value: GLib.Variant, originTag: any | null): boolean
     writeTree(tree: GLib.Tree, originTag: any | null): boolean
 
     // Class property signals of Gio-2.0.Gio.SettingsBackend
@@ -33276,7 +33276,7 @@ export class SimpleAction extends GObject.Object {
      * @param parameterType the type of parameter that will be passed to   handlers for the #GSimpleAction::activate signal, or %NULL for no parameter
      * @returns a new #GSimpleAction
      */
-    constructor(name: string | null, parameterType: GLib.VariantType | null) 
+    constructor(name: string, parameterType: GLib.VariantType | null) 
     /**
      * Creates a new action.
      * 
@@ -33287,7 +33287,7 @@ export class SimpleAction extends GObject.Object {
      * @param parameterType the type of parameter that will be passed to   handlers for the #GSimpleAction::activate signal, or %NULL for no parameter
      * @returns a new #GSimpleAction
      */
-    static new(name: string | null, parameterType: GLib.VariantType | null): SimpleAction
+    static new(name: string, parameterType: GLib.VariantType | null): SimpleAction
     /**
      * Creates a new stateful action.
      * 
@@ -33301,7 +33301,7 @@ export class SimpleAction extends GObject.Object {
      * @param state the initial state of the action
      * @returns a new #GSimpleAction
      */
-    static newStateful(name: string | null, parameterType: GLib.VariantType | null, state: GLib.Variant): SimpleAction
+    static newStateful(name: string, parameterType: GLib.VariantType | null, state: GLib.Variant): SimpleAction
     _init(config?: SimpleAction.ConstructorProperties): void
 }
 
@@ -33346,14 +33346,14 @@ export interface SimpleActionGroup extends ActionGroup, ActionMap {
      * @param actionName the name of an action
      * @returns a #GAction, or %NULL
      */
-    lookup(actionName: string | null): Action
+    lookup(actionName: string): Action
     /**
      * Removes the named action from the action group.
      * 
      * If no action of this name is in the group then nothing happens.
      * @param actionName the name of the action
      */
-    remove(actionName: string | null): void
+    remove(actionName: string): void
 
     // Class property signals of Gio-2.0.Gio.SimpleActionGroup
 
@@ -34085,7 +34085,7 @@ export interface SimpleProxyResolver extends ProxyResolver {
      * @param uriScheme the URI scheme to add a proxy for
      * @param proxy the proxy to use for `uri_scheme`
      */
-    setUriProxy(uriScheme: string | null, proxy: string | null): void
+    setUriProxy(uriScheme: string, proxy: string): void
 
     // Class property signals of Gio-2.0.Gio.SimpleProxyResolver
 
@@ -35827,7 +35827,7 @@ export interface SocketClient {
      * specific handshake.
      * @param protocol The proxy protocol
      */
-    addApplicationProxy(protocol: string | null): void
+    addApplicationProxy(protocol: string): void
     /**
      * Tries to resolve the `connectable` and make a network connection to it.
      * 
@@ -35914,7 +35914,7 @@ export interface SocketClient {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a #GSocketConnection on success, %NULL on error.
      */
-    connectToHost(hostAndPort: string | null, defaultPort: number, cancellable: Cancellable | null): SocketConnection
+    connectToHost(hostAndPort: string, defaultPort: number, cancellable: Cancellable | null): SocketConnection
     /**
      * This is the asynchronous version of g_socket_client_connect_to_host().
      * 
@@ -35926,7 +35926,7 @@ export interface SocketClient {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback a #GAsyncReadyCallback
      */
-    connectToHostAsync(hostAndPort: string | null, defaultPort: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    connectToHostAsync(hostAndPort: string, defaultPort: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an async connect operation. See g_socket_client_connect_to_host_async()
      * @param result a #GAsyncResult.
@@ -35953,7 +35953,7 @@ export interface SocketClient {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a #GSocketConnection if successful, or %NULL on error
      */
-    connectToService(domain: string | null, service: string | null, cancellable: Cancellable | null): SocketConnection
+    connectToService(domain: string, service: string, cancellable: Cancellable | null): SocketConnection
     /**
      * This is the asynchronous version of
      * g_socket_client_connect_to_service().
@@ -35962,7 +35962,7 @@ export interface SocketClient {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback a #GAsyncReadyCallback
      */
-    connectToServiceAsync(domain: string | null, service: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    connectToServiceAsync(domain: string, service: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an async connect operation. See g_socket_client_connect_to_service_async()
      * @param result a #GAsyncResult.
@@ -35996,7 +35996,7 @@ export interface SocketClient {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a #GSocketConnection on success, %NULL on error.
      */
-    connectToUri(uri: string | null, defaultPort: number, cancellable: Cancellable | null): SocketConnection
+    connectToUri(uri: string, defaultPort: number, cancellable: Cancellable | null): SocketConnection
     /**
      * This is the asynchronous version of g_socket_client_connect_to_uri().
      * 
@@ -36008,7 +36008,7 @@ export interface SocketClient {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback a #GAsyncReadyCallback
      */
-    connectToUriAsync(uri: string | null, defaultPort: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    connectToUriAsync(uri: string, defaultPort: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finishes an async connect operation. See g_socket_client_connect_to_uri_async()
      * @param result a #GAsyncResult.
@@ -37590,7 +37590,7 @@ export interface SubprocessLauncher {
      * This feature is only available on UNIX.
      * @param path 
      */
-    setStdinFilePath(path: string | null): void
+    setStdinFilePath(path: string): void
     /**
      * Sets the file path to use as the stdout for spawned processes.
      * 
@@ -39185,7 +39185,7 @@ export interface TestDBus {
      * called after g_test_dbus_up().
      * @param path path to a directory containing .service files
      */
-    addServiceDir(path: string | null): void
+    addServiceDir(path: string): void
     /**
      * Stop the session bus started by g_test_dbus_up().
      * 
@@ -39446,7 +39446,7 @@ export interface ThemedIcon extends Icon {
      * to g_icon_hash().
      * @param iconname name of icon to append to list of icons from within `icon`.
      */
-    appendName(iconname: string | null): void
+    appendName(iconname: string): void
     /**
      * Gets the names of icons from within `icon`.
      * @returns a list of icon names.
@@ -39459,7 +39459,7 @@ export interface ThemedIcon extends Icon {
      * to g_icon_hash().
      * @param iconname name of icon to prepend to list of icons from within `icon`.
      */
-    prependName(iconname: string | null): void
+    prependName(iconname: string): void
 
     // Class property signals of Gio-2.0.Gio.ThemedIcon
 
@@ -39516,14 +39516,14 @@ export class ThemedIcon extends GObject.Object {
      * @param iconname a string containing an icon name.
      * @returns a new #GThemedIcon.
      */
-    constructor(iconname: string | null) 
+    constructor(iconname: string) 
     /**
      * Creates a new themed icon for `iconname`.
      * @constructor 
      * @param iconname a string containing an icon name.
      * @returns a new #GThemedIcon.
      */
-    static new(iconname: string | null): ThemedIcon
+    static new(iconname: string): ThemedIcon
     /**
      * Creates a new themed icon for `iconnames`.
      * @constructor 
@@ -39553,7 +39553,7 @@ export class ThemedIcon extends GObject.Object {
      * @param iconname a string containing an icon name
      * @returns a new #GThemedIcon.
      */
-    static newWithDefaultFallbacks(iconname: string | null): ThemedIcon
+    static newWithDefaultFallbacks(iconname: string): ThemedIcon
     _init(config?: ThemedIcon.ConstructorProperties): void
 }
 
@@ -40174,7 +40174,7 @@ export class TlsCertificate extends GObject.Object {
      * @param password password for PKCS #12 files
      * @returns the new certificate, or %NULL on error
      */
-    static newFromFileWithPassword(file: string, password: string | null): TlsCertificate
+    static newFromFileWithPassword(file: string, password: string): TlsCertificate
     /**
      * Creates a #GTlsCertificate from the PEM-encoded data in `cert_file`
      * and `key_file`. The returned certificate will be the first certificate
@@ -40216,7 +40216,7 @@ export class TlsCertificate extends GObject.Object {
      * @param length the length of `data,` or -1 if it's 0-terminated.
      * @returns the new certificate, or %NULL if @data is invalid
      */
-    static newFromPem(data: string | null, length: number): TlsCertificate
+    static newFromPem(data: string, length: number): TlsCertificate
     /**
      * Creates a #GTlsCertificate from a
      * [PKCS \#11](https://docs.oasis-open.org/pkcs11/pkcs11-base/v3.0/os/pkcs11-base-v3.0-os.html) URI.
@@ -40249,7 +40249,7 @@ export class TlsCertificate extends GObject.Object {
      * @param privateKeyPkcs11Uri A PKCS \#11 URI
      * @returns the new certificate, or %NULL on error
      */
-    static newFromPkcs11Uris(pkcs11Uri: string | null, privateKeyPkcs11Uri: string | null): TlsCertificate
+    static newFromPkcs11Uris(pkcs11Uri: string, privateKeyPkcs11Uri: string | null): TlsCertificate
     /**
      * Creates a #GTlsCertificate from the data in `data`. It must contain
      * a certificate and matching private key.
@@ -40915,8 +40915,8 @@ export interface TlsDatabase {
     // Owm methods of Gio-2.0.Gio.TlsDatabase
 
     // Has conflict: createCertificateHandle(certificate: TlsCertificate): string | null
-    // Has conflict: lookupCertificateForHandle(handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): TlsCertificate | null
-    // Has conflict: lookupCertificateForHandleAsync(handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: lookupCertificateForHandle(handle: string, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): TlsCertificate | null
+    // Has conflict: lookupCertificateForHandleAsync(handle: string, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupCertificateForHandleFinish(result: AsyncResult): TlsCertificate
     // Has conflict: lookupCertificateIssuer(certificate: TlsCertificate, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): TlsCertificate
     // Has conflict: lookupCertificateIssuerAsync(certificate: TlsCertificate, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
@@ -40924,8 +40924,8 @@ export interface TlsDatabase {
     // Has conflict: lookupCertificatesIssuedBy(issuerRawDn: number[], interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): TlsCertificate[]
     // Has conflict: lookupCertificatesIssuedByAsync(issuerRawDn: number[], interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: lookupCertificatesIssuedByFinish(result: AsyncResult): TlsCertificate[]
-    // Has conflict: verifyChain(chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null): TlsCertificateFlags
-    // Has conflict: verifyChainAsync(chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    // Has conflict: verifyChain(chain: TlsCertificate, purpose: string, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null): TlsCertificateFlags
+    // Has conflict: verifyChainAsync(chain: TlsCertificate, purpose: string, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     // Has conflict: verifyChainFinish(result: AsyncResult): TlsCertificateFlags
 
     // Own virtual methods of Gio-2.0.Gio.TlsDatabase
@@ -40964,7 +40964,7 @@ export interface TlsDatabase {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a newly allocated #GTlsCertificate, or %NULL. Use g_object_unref() to release the certificate.
      */
-    lookupCertificateForHandle(handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): TlsCertificate | null
+    lookupCertificateForHandle(handle: string, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null): TlsCertificate | null
     /**
      * Asynchronously look up a certificate by its handle in the database. See
      * g_tls_database_lookup_certificate_for_handle() for more information.
@@ -40975,7 +40975,7 @@ export interface TlsDatabase {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback callback to call when the operation completes
      */
-    lookupCertificateForHandleAsync(handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    lookupCertificateForHandleAsync(handle: string, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous lookup of a certificate by its handle. See
      * g_tls_database_lookup_certificate_for_handle() for more information.
@@ -41141,7 +41141,7 @@ export interface TlsDatabase {
      * @param cancellable a #GCancellable, or %NULL
      * @returns the appropriate #GTlsCertificateFlags which represents the result of verification.
      */
-    verifyChain(chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null): TlsCertificateFlags
+    verifyChain(chain: TlsCertificate, purpose: string, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null): TlsCertificateFlags
     /**
      * Asynchronously determines the validity of a certificate chain after
      * looking up and adding any missing certificates to the chain. See
@@ -41155,7 +41155,7 @@ export interface TlsDatabase {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback callback to call when the operation completes
      */
-    verifyChainAsync(chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
+    verifyChainAsync(chain: TlsCertificate, purpose: string, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null): void
     /**
      * Finish an asynchronous verify chain operation. See
      * g_tls_database_verify_chain() for more information.
@@ -41490,7 +41490,7 @@ export interface TlsPassword {
      * Get a description string about what the password will be used for.
      * @returns The description of the password.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Get flags about the password.
      * @returns The flags about the password.
@@ -41503,12 +41503,12 @@ export interface TlsPassword {
      * g_tls_password_get_flags().
      * @returns The warning.
      */
-    getWarning(): string | null
+    getWarning(): string
     /**
      * Set a description string about what the password will be used for.
      * @param description The description of the password
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Set flags about the password.
      * @param flags The flags about the password
@@ -41535,11 +41535,11 @@ export interface TlsPassword {
      * g_tls_password_get_flags().
      * @param warning The user readable warning
      */
-    setWarning(warning: string | null): void
+    setWarning(warning: string): void
 
     // Own virtual methods of Gio-2.0.Gio.TlsPassword
 
-    getDefaultWarning(): string | null
+    getDefaultWarning(): string
     /**
      * Get the password value. If `length` is not %NULL then it will be
      * filled in with the length of the password value. (Note that the
@@ -41616,7 +41616,7 @@ export class TlsPassword extends GObject.Object {
      * @param description description of what the password is for
      * @returns The newly allocated password object
      */
-    constructor(flags: TlsPasswordFlags, description: string | null) 
+    constructor(flags: TlsPasswordFlags, description: string) 
     /**
      * Create a new #GTlsPassword object.
      * @constructor 
@@ -41624,7 +41624,7 @@ export class TlsPassword extends GObject.Object {
      * @param description description of what the password is for
      * @returns The newly allocated password object
      */
-    static new(flags: TlsPasswordFlags, description: string | null): TlsPassword
+    static new(flags: TlsPasswordFlags, description: string): TlsPassword
     _init(config?: TlsPassword.ConstructorProperties): void
 }
 
@@ -42762,7 +42762,7 @@ export interface UnixSocketAddress extends SocketConnectable {
      * of this string.
      * @returns the path for @address
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the length of `address'`s path.
      * 
@@ -42850,7 +42850,7 @@ export class UnixSocketAddress extends SocketAddress {
      * @param path the socket path
      * @returns a new #GUnixSocketAddress
      */
-    constructor(path: string | null) 
+    constructor(path: string) 
     /**
      * Creates a new #GUnixSocketAddress for `path`.
      * 
@@ -42860,7 +42860,7 @@ export class UnixSocketAddress extends SocketAddress {
      * @param path the socket path
      * @returns a new #GUnixSocketAddress
      */
-    static new(path: string | null): UnixSocketAddress
+    static new(path: string): UnixSocketAddress
     /**
      * Creates a new %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED
      * #GUnixSocketAddress for `path`.
@@ -42936,11 +42936,11 @@ export interface Vfs {
 
     // Owm methods of Gio-2.0.Gio.Vfs
 
-    // Has conflict: getFileForPath(path: string | null): File
-    // Has conflict: getFileForUri(uri: string | null): File
+    // Has conflict: getFileForPath(path: string): File
+    // Has conflict: getFileForUri(uri: string): File
     // Has conflict: getSupportedUriSchemes(): string[]
     // Has conflict: isActive(): boolean
-    // Has conflict: parseName(parseName: string | null): File
+    // Has conflict: parseName(parseName: string): File
     /**
      * Registers `uri_func` and `parse_name_func` as the #GFile URI and parse name
      * lookup functions for URIs with a scheme matching `scheme`.
@@ -42967,14 +42967,14 @@ export interface Vfs {
      * @param parseNameFunc a #GVfsFileLookupFunc
      * @returns %TRUE if @scheme was successfully registered, or %FALSE if a handler     for @scheme already exists.
      */
-    registerUriScheme(scheme: string | null, uriFunc: VfsFileLookupFunc | null, parseNameFunc: VfsFileLookupFunc | null): boolean
+    registerUriScheme(scheme: string, uriFunc: VfsFileLookupFunc | null, parseNameFunc: VfsFileLookupFunc | null): boolean
     /**
      * Unregisters the URI handler for `scheme` previously registered with
      * g_vfs_register_uri_scheme().
      * @param scheme an URI scheme, e.g. "http"
      * @returns %TRUE if @scheme was successfully unregistered, or %FALSE if a     handler for @scheme does not exist.
      */
-    unregisterUriScheme(scheme: string | null): boolean
+    unregisterUriScheme(scheme: string): boolean
 
     // Own virtual methods of Gio-2.0.Gio.Vfs
 
@@ -42985,7 +42985,7 @@ export interface Vfs {
      * @param path a string containing a VFS path.
      * @returns a #GFile.     Free the returned object with g_object_unref().
      */
-    getFileForPath(path: string | null): File
+    getFileForPath(path: string): File
     /**
      * Gets a #GFile for `uri`.
      * 
@@ -42996,7 +42996,7 @@ export interface Vfs {
      * @param uri a string containing a URI
      * @returns a #GFile.     Free the returned object with g_object_unref().
      */
-    getFileForUri(uri: string | null): File
+    getFileForUri(uri: string): File
     /**
      * Gets a list of URI schemes supported by `vfs`.
      * @virtual 
@@ -43009,10 +43009,10 @@ export interface Vfs {
      * @returns %TRUE if construction of the @vfs was successful     and it is now active.
      */
     isActive(): boolean
-    localFileAddInfo(filename: string | null, device: number, attributeMatcher: FileAttributeMatcher, info: FileInfo, cancellable: Cancellable | null, extraData: any | null, freeExtraData: GLib.DestroyNotify): void
-    localFileMoved(source: string | null, dest: string | null): void
-    localFileRemoved(filename: string | null): void
-    localFileSetAttributes(filename: string | null, info: FileInfo, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
+    localFileAddInfo(filename: string, device: number, attributeMatcher: FileAttributeMatcher, info: FileInfo, cancellable: Cancellable | null, extraData: any | null, freeExtraData: GLib.DestroyNotify): void
+    localFileMoved(source: string, dest: string): void
+    localFileRemoved(filename: string): void
+    localFileSetAttributes(filename: string, info: FileInfo, flags: FileQueryInfoFlags, cancellable: Cancellable | null): boolean
     /**
      * This operation never fails, but the returned object might
      * not support any I/O operations if the `parse_name` cannot
@@ -43021,7 +43021,7 @@ export interface Vfs {
      * @param parseName a string to be parsed by the VFS module.
      * @returns a #GFile for the given @parse_name.     Free the returned object with g_object_unref().
      */
-    parseName(parseName: string | null): File
+    parseName(parseName: string): File
 
     // Class property signals of Gio-2.0.Gio.Vfs
 
@@ -43173,9 +43173,9 @@ export interface VolumeMonitor {
     // Owm methods of Gio-2.0.Gio.VolumeMonitor
 
     // Has conflict: getConnectedDrives(): Drive[]
-    // Has conflict: getMountForUuid(uuid: string | null): Mount | null
+    // Has conflict: getMountForUuid(uuid: string): Mount | null
     // Has conflict: getMounts(): Mount[]
-    // Has conflict: getVolumeForUuid(uuid: string | null): Volume | null
+    // Has conflict: getVolumeForUuid(uuid: string): Volume | null
     // Has conflict: getVolumes(): Volume[]
 
     // Own virtual methods of Gio-2.0.Gio.VolumeMonitor
@@ -43200,7 +43200,7 @@ export interface VolumeMonitor {
      * @param uuid the UUID to look for
      * @returns a #GMount or %NULL if no such mount is available.     Free the returned object with g_object_unref().
      */
-    getMountForUuid(uuid: string | null): Mount | null
+    getMountForUuid(uuid: string): Mount | null
     /**
      * Gets a list of the mounts on the system.
      * 
@@ -43216,7 +43216,7 @@ export interface VolumeMonitor {
      * @param uuid the UUID to look for
      * @returns a #GVolume or %NULL if no such volume is available.     Free the returned object with g_object_unref().
      */
-    getVolumeForUuid(uuid: string | null): Volume | null
+    getVolumeForUuid(uuid: string): Volume | null
     /**
      * Gets a list of the volumes on the system.
      * 
@@ -43596,7 +43596,7 @@ export interface ActionEntry {
      * the name of the action
      * @field 
      */
-    name: string | null
+    name: string
     activate: (action: SimpleAction, parameter: GLib.Variant) => void
     /**
      * the type of the parameter that must be passed to the
@@ -43604,7 +43604,7 @@ export interface ActionEntry {
      *                  GVariant type string (or %NULL for no parameter)
      * @field 
      */
-    parameterType: string | null
+    parameterType: string
     /**
      * the initial state for this action, given in
      *         [GVariant text format][gvariant-text].  The state is parsed
@@ -43613,7 +43613,7 @@ export interface ActionEntry {
      *         give %NULL here.
      * @field 
      */
-    state: string | null
+    state: string
     changeState: (action: SimpleAction, value: GLib.Variant) => void
 }
 
@@ -43642,20 +43642,20 @@ export interface ActionGroupInterface {
     // Own fields of Gio-2.0.Gio.ActionGroupInterface
 
     gIface: GObject.TypeInterface
-    hasAction: (actionGroup: ActionGroup, actionName: string | null) => boolean
+    hasAction: (actionGroup: ActionGroup, actionName: string) => boolean
     listActions: (actionGroup: ActionGroup) => string[]
-    getActionEnabled: (actionGroup: ActionGroup, actionName: string | null) => boolean
-    getActionParameterType: (actionGroup: ActionGroup, actionName: string | null) => GLib.VariantType | null
-    getActionStateType: (actionGroup: ActionGroup, actionName: string | null) => GLib.VariantType | null
-    getActionStateHint: (actionGroup: ActionGroup, actionName: string | null) => GLib.Variant | null
-    getActionState: (actionGroup: ActionGroup, actionName: string | null) => GLib.Variant | null
-    changeActionState: (actionGroup: ActionGroup, actionName: string | null, value: GLib.Variant) => void
-    activateAction: (actionGroup: ActionGroup, actionName: string | null, parameter: GLib.Variant | null) => void
-    actionAdded: (actionGroup: ActionGroup, actionName: string | null) => void
-    actionRemoved: (actionGroup: ActionGroup, actionName: string | null) => void
-    actionEnabledChanged: (actionGroup: ActionGroup, actionName: string | null, enabled: boolean) => void
-    actionStateChanged: (actionGroup: ActionGroup, actionName: string | null, state: GLib.Variant) => void
-    queryAction: (actionGroup: ActionGroup, actionName: string | null) => [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType, /* stateType */ GLib.VariantType, /* stateHint */ GLib.Variant, /* state */ GLib.Variant ]
+    getActionEnabled: (actionGroup: ActionGroup, actionName: string) => boolean
+    getActionParameterType: (actionGroup: ActionGroup, actionName: string) => GLib.VariantType | null
+    getActionStateType: (actionGroup: ActionGroup, actionName: string) => GLib.VariantType | null
+    getActionStateHint: (actionGroup: ActionGroup, actionName: string) => GLib.Variant | null
+    getActionState: (actionGroup: ActionGroup, actionName: string) => GLib.Variant | null
+    changeActionState: (actionGroup: ActionGroup, actionName: string, value: GLib.Variant) => void
+    activateAction: (actionGroup: ActionGroup, actionName: string, parameter: GLib.Variant | null) => void
+    actionAdded: (actionGroup: ActionGroup, actionName: string) => void
+    actionRemoved: (actionGroup: ActionGroup, actionName: string) => void
+    actionEnabledChanged: (actionGroup: ActionGroup, actionName: string, enabled: boolean) => void
+    actionStateChanged: (actionGroup: ActionGroup, actionName: string, state: GLib.Variant) => void
+    queryAction: (actionGroup: ActionGroup, actionName: string) => [ /* returnType */ boolean, /* enabled */ boolean, /* parameterType */ GLib.VariantType, /* stateType */ GLib.VariantType, /* stateHint */ GLib.Variant, /* state */ GLib.Variant ]
 }
 
 /**
@@ -43674,7 +43674,7 @@ export interface ActionInterface {
     // Own fields of Gio-2.0.Gio.ActionInterface
 
     gIface: GObject.TypeInterface
-    getName: (action: Action) => string | null
+    getName: (action: Action) => string
     getParameterType: (action: Action) => GLib.VariantType | null
     getStateType: (action: Action) => GLib.VariantType | null
     getStateHint: (action: Action) => GLib.Variant | null
@@ -43700,9 +43700,9 @@ export interface ActionMapInterface {
     // Own fields of Gio-2.0.Gio.ActionMapInterface
 
     gIface: GObject.TypeInterface
-    lookupAction: (actionMap: ActionMap, actionName: string | null) => Action | null
+    lookupAction: (actionMap: ActionMap, actionName: string) => Action | null
     addAction: (actionMap: ActionMap, action: Action) => void
-    removeAction: (actionMap: ActionMap, actionName: string | null) => void
+    removeAction: (actionMap: ActionMap, actionName: string) => void
 }
 
 /**
@@ -43728,7 +43728,7 @@ export interface AppInfoIface {
     dup: (appinfo: AppInfo) => AppInfo
     equal: (appinfo1: AppInfo, appinfo2: AppInfo) => boolean
     getId: (appinfo: AppInfo) => string | null
-    getName: (appinfo: AppInfo) => string | null
+    getName: (appinfo: AppInfo) => string
     getDescription: (appinfo: AppInfo) => string | null
     getExecutable: (appinfo: AppInfo) => string
     getIcon: (appinfo: AppInfo) => Icon | null
@@ -43737,16 +43737,16 @@ export interface AppInfoIface {
     supportsFiles: (appinfo: AppInfo) => boolean
     launchUris: (appinfo: AppInfo, uris: string[] | null, context: AppLaunchContext | null) => boolean
     shouldShow: (appinfo: AppInfo) => boolean
-    setAsDefaultForType: (appinfo: AppInfo, contentType: string | null) => boolean
+    setAsDefaultForType: (appinfo: AppInfo, contentType: string) => boolean
     setAsDefaultForExtension: (appinfo: AppInfo, extension: string) => boolean
-    addSupportsType: (appinfo: AppInfo, contentType: string | null) => boolean
+    addSupportsType: (appinfo: AppInfo, contentType: string) => boolean
     canRemoveSupportsType: (appinfo: AppInfo) => boolean
-    removeSupportsType: (appinfo: AppInfo, contentType: string | null) => boolean
+    removeSupportsType: (appinfo: AppInfo, contentType: string) => boolean
     canDelete: (appinfo: AppInfo) => boolean
     doDelete: (appinfo: AppInfo) => boolean
     getCommandline: (appinfo: AppInfo) => string | null
-    getDisplayName: (appinfo: AppInfo) => string | null
-    setAsLastUsedForType: (appinfo: AppInfo, contentType: string | null) => boolean
+    getDisplayName: (appinfo: AppInfo) => string
+    setAsLastUsedForType: (appinfo: AppInfo, contentType: string) => boolean
     getSupportedTypes: (appinfo: AppInfo) => string[]
     launchUrisAsync: (appinfo: AppInfo, uris: string[] | null, context: AppLaunchContext | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     launchUrisFinish: (appinfo: AppInfo, result: AsyncResult) => boolean
@@ -43770,7 +43770,7 @@ export interface AppLaunchContextClass {
     parentClass: GObject.ObjectClass
     getDisplay: (context: AppLaunchContext, info: AppInfo, files: File[]) => string | null
     getStartupNotifyId: (context: AppLaunchContext, info: AppInfo, files: File[]) => string | null
-    launchFailed: (context: AppLaunchContext, startupNotifyId: string | null) => void
+    launchFailed: (context: AppLaunchContext, startupNotifyId: string) => void
     launched: (context: AppLaunchContext, info: AppInfo, platformData: GLib.Variant) => void
     launchStarted: (context: AppLaunchContext, info: AppInfo, platformData: GLib.Variant) => void
 }
@@ -43798,7 +43798,7 @@ export interface ApplicationClass {
 
     startup: (application: Application) => void
     activate: (application: Application) => void
-    open: (application: Application, files: File[], hint: string | null) => void
+    open: (application: Application, files: File[], hint: string) => void
     commandLine: (application: Application, commandLine: ApplicationCommandLine) => number
     localCommandLine: (application: Application, arguments_: string[]) => [ /* returnType */ boolean, /* arguments_ */ string[], /* exitStatus */ number ]
     beforeEmit: (application: Application, platformData: GLib.Variant) => void
@@ -43807,8 +43807,8 @@ export interface ApplicationClass {
     quitMainloop: (application: Application) => void
     runMainloop: (application: Application) => void
     shutdown: (application: Application) => void
-    dbusRegister: (application: Application, connection: DBusConnection, objectPath: string | null) => boolean
-    dbusUnregister: (application: Application, connection: DBusConnection, objectPath: string | null) => void
+    dbusRegister: (application: Application, connection: DBusConnection, objectPath: string) => boolean
+    dbusUnregister: (application: Application, connection: DBusConnection, objectPath: string) => void
     handleLocalOptions: (application: Application, options: GLib.VariantDict) => number
     nameLost: (application: Application) => boolean
 }
@@ -43828,8 +43828,8 @@ export interface ApplicationCommandLineClass {
 
     // Own fields of Gio-2.0.Gio.ApplicationCommandLineClass
 
-    printLiteral: (cmdline: ApplicationCommandLine, message: string | null) => void
-    printerrLiteral: (cmdline: ApplicationCommandLine, message: string | null) => void
+    printLiteral: (cmdline: ApplicationCommandLine, message: string) => void
+    printerrLiteral: (cmdline: ApplicationCommandLine, message: string) => void
     getStdin: (cmdline: ApplicationCommandLine) => InputStream | null
 }
 
@@ -44154,7 +44154,7 @@ export class DBusAnnotationInfo {
      * @param name The name of the annotation to look up.
      * @returns The value or %NULL if not found. Do not free, it is owned by @annotations.
      */
-    static lookup(annotations: DBusAnnotationInfo[] | null, name: string | null): string | null
+    static lookup(annotations: DBusAnnotationInfo[] | null, name: string): string | null
 }
 
 export interface DBusArgInfo {
@@ -44222,7 +44222,7 @@ export interface DBusErrorEntry {
      * The D-Bus error name to associate with `error_code`.
      * @field 
      */
-    dbusErrorName: string | null
+    dbusErrorName: string
 }
 
 /**
@@ -44337,7 +44337,7 @@ export interface DBusInterfaceInfo {
      * @param name A D-Bus method name (typically in CamelCase)
      * @returns A #GDBusMethodInfo or %NULL if not found. Do not free, it is owned by @info.
      */
-    lookupMethod(name: string | null): DBusMethodInfo | null
+    lookupMethod(name: string): DBusMethodInfo | null
     /**
      * Looks up information about a property.
      * 
@@ -44346,7 +44346,7 @@ export interface DBusInterfaceInfo {
      * @param name A D-Bus property name (typically in CamelCase).
      * @returns A #GDBusPropertyInfo or %NULL if not found. Do not free, it is owned by @info.
      */
-    lookupProperty(name: string | null): DBusPropertyInfo | null
+    lookupProperty(name: string): DBusPropertyInfo | null
     /**
      * Looks up information about a signal.
      * 
@@ -44355,7 +44355,7 @@ export interface DBusInterfaceInfo {
      * @param name A D-Bus signal name (typically in CamelCase)
      * @returns A #GDBusSignalInfo or %NULL if not found. Do not free, it is owned by @info.
      */
-    lookupSignal(name: string | null): DBusSignalInfo | null
+    lookupSignal(name: string): DBusSignalInfo | null
     /**
      * If `info` is statically allocated does nothing. Otherwise increases
      * the reference count.
@@ -44595,7 +44595,7 @@ export interface DBusNodeInfo {
      * @param name A D-Bus interface name.
      * @returns A #GDBusInterfaceInfo or %NULL if not found. Do not free, it is owned by @info.
      */
-    lookupInterface(name: string | null): DBusInterfaceInfo | null
+    lookupInterface(name: string): DBusInterfaceInfo | null
     /**
      * If `info` is statically allocated does nothing. Otherwise increases
      * the reference count.
@@ -44635,7 +44635,7 @@ export class DBusNodeInfo {
      * @param xmlData Valid D-Bus introspection XML.
      * @returns A #GDBusNodeInfo structure or %NULL if @error is set. Free with g_dbus_node_info_unref().
      */
-    static newForXml(xmlData: string | null): DBusNodeInfo
+    static newForXml(xmlData: string): DBusNodeInfo
 }
 
 export interface DBusObjectIface {
@@ -44647,9 +44647,9 @@ export interface DBusObjectIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    getObjectPath: (object: DBusObject) => string | null
+    getObjectPath: (object: DBusObject) => string
     getInterfaces: (object: DBusObject) => DBusInterface[]
-    getInterface: (object: DBusObject, interfaceName: string | null) => DBusInterface | null
+    getInterface: (object: DBusObject, interfaceName: string) => DBusInterface | null
     interfaceAdded: (object: DBusObject, interface: DBusInterface) => void
     interfaceRemoved: (object: DBusObject, interface: DBusInterface) => void
 }
@@ -44674,8 +44674,8 @@ export interface DBusObjectManagerClientClass {
      * @field 
      */
     parentClass: GObject.ObjectClass
-    interfaceProxySignal: (manager: DBusObjectManagerClient, objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, senderName: string | null, signalName: string | null, parameters: GLib.Variant) => void
-    interfaceProxyPropertiesChanged: (manager: DBusObjectManagerClient, objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, changedProperties: GLib.Variant, invalidatedProperties: string | null) => void
+    interfaceProxySignal: (manager: DBusObjectManagerClient, objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, senderName: string, signalName: string, parameters: GLib.Variant) => void
+    interfaceProxyPropertiesChanged: (manager: DBusObjectManagerClient, objectProxy: DBusObjectProxy, interfaceProxy: DBusProxy, changedProperties: GLib.Variant, invalidatedProperties: string) => void
 }
 
 /**
@@ -44708,10 +44708,10 @@ export interface DBusObjectManagerIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    getObjectPath: (manager: DBusObjectManager) => string | null
+    getObjectPath: (manager: DBusObjectManager) => string
     getObjects: (manager: DBusObjectManager) => DBusObject[]
-    getObject: (manager: DBusObjectManager, objectPath: string | null) => DBusObject | null
-    getInterface: (manager: DBusObjectManager, objectPath: string | null, interfaceName: string | null) => DBusInterface | null
+    getObject: (manager: DBusObjectManager, objectPath: string) => DBusObject | null
+    getInterface: (manager: DBusObjectManager, objectPath: string, interfaceName: string) => DBusInterface | null
     objectAdded: (manager: DBusObjectManager, object: DBusObject) => void
     objectRemoved: (manager: DBusObjectManager, object: DBusObject) => void
     interfaceAdded: (manager: DBusObjectManager, object: DBusObject, interface: DBusInterface) => void
@@ -44887,8 +44887,8 @@ export interface DBusProxyClass {
 
     // Own fields of Gio-2.0.Gio.DBusProxyClass
 
-    gPropertiesChanged: (proxy: DBusProxy, changedProperties: GLib.Variant, invalidatedProperties: string | null) => void
-    gSignal: (proxy: DBusProxy, senderName: string | null, signalName: string | null, parameters: GLib.Variant) => void
+    gPropertiesChanged: (proxy: DBusProxy, changedProperties: GLib.Variant, invalidatedProperties: string) => void
+    gSignal: (proxy: DBusProxy, senderName: string, signalName: string, parameters: GLib.Variant) => void
 }
 
 /**
@@ -45132,7 +45132,7 @@ export interface DesktopAppInfoLookupIface {
     // Own fields of Gio-2.0.Gio.DesktopAppInfoLookupIface
 
     gIface: GObject.TypeInterface
-    getDefaultForUriScheme: (lookup: DesktopAppInfoLookup, uriScheme: string | null) => AppInfo | null
+    getDefaultForUriScheme: (lookup: DesktopAppInfoLookup, uriScheme: string) => AppInfo | null
 }
 
 /**
@@ -45172,7 +45172,7 @@ export interface DriveIface {
     ejectFinish: (drive: Drive, result: AsyncResult) => boolean
     pollForMedia: (drive: Drive, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     pollForMediaFinish: (drive: Drive, result: AsyncResult) => boolean
-    getIdentifier: (drive: Drive, kind: string | null) => string | null
+    getIdentifier: (drive: Drive, kind: string) => string | null
     enumerateIdentifiers: (drive: Drive) => string[]
     getStartStopType: (drive: Drive) => DriveStartStopType
     canStart: (drive: Drive) => boolean
@@ -45367,7 +45367,7 @@ export interface FileAttributeInfoList {
      * @param type the #GFileAttributeType for the attribute.
      * @param flags #GFileAttributeInfoFlags for the attribute.
      */
-    add(name: string | null, type: FileAttributeType, flags: FileAttributeInfoFlags): void
+    add(name: string, type: FileAttributeType, flags: FileAttributeInfoFlags): void
     /**
      * Makes a duplicate of a file attribute info list.
      * @returns a copy of the given @list.
@@ -45378,7 +45378,7 @@ export interface FileAttributeInfoList {
      * @param name the name of the attribute to look up.
      * @returns a #GFileAttributeInfo for the @name, or %NULL if an attribute isn't found.
      */
-    lookup(name: string | null): FileAttributeInfo
+    lookup(name: string): FileAttributeInfo
     /**
      * References a file attribute info list.
      * @returns #GFileAttributeInfoList or %NULL on error.
@@ -45432,7 +45432,7 @@ export interface FileAttributeMatcher {
      * @param ns a string containing a file attribute namespace.
      * @returns %TRUE if the matcher matches all of the entries in the given @ns, %FALSE otherwise.
      */
-    enumerateNamespace(ns: string | null): boolean
+    enumerateNamespace(ns: string): boolean
     /**
      * Gets the next matched attribute from a #GFileAttributeMatcher.
      * @returns a string containing the next attribute or, %NULL if no more attribute exist.
@@ -45445,14 +45445,14 @@ export interface FileAttributeMatcher {
      * @param attribute a file attribute key.
      * @returns %TRUE if @attribute matches @matcher. %FALSE otherwise.
      */
-    matches(attribute: string | null): boolean
+    matches(attribute: string): boolean
     /**
      * Checks if an attribute matcher only matches a given attribute. Always
      * returns %FALSE if "*" was used when creating the matcher.
      * @param attribute a file attribute key.
      * @returns %TRUE if the matcher only matches @attribute. %FALSE otherwise.
      */
-    matchesOnly(attribute: string | null): boolean
+    matchesOnly(attribute: string): boolean
     /**
      * References a file attribute matcher.
      * @returns a #GFileAttributeMatcher.
@@ -45522,7 +45522,7 @@ export class FileAttributeMatcher {
      * @param attributes an attribute string to match.
      * @returns a #GFileAttributeMatcher
      */
-    constructor(attributes: string | null) 
+    constructor(attributes: string) 
     /**
      * Creates a new file attribute matcher, which matches attributes
      * against a given string. #GFileAttributeMatchers are reference
@@ -45547,7 +45547,7 @@ export class FileAttributeMatcher {
      * @param attributes an attribute string to match.
      * @returns a #GFileAttributeMatcher
      */
-    static new(attributes: string | null): FileAttributeMatcher
+    static new(attributes: string): FileAttributeMatcher
 }
 
 export interface FileDescriptorBasedIface {
@@ -45613,8 +45613,8 @@ export interface FileIOStreamClass {
     seek: (stream: FileIOStream, offset: number, type: GLib.SeekType, cancellable: Cancellable | null) => boolean
     canTruncate: (stream: FileIOStream) => boolean
     truncateFn: (stream: FileIOStream, size: number, cancellable: Cancellable | null) => boolean
-    queryInfo: (stream: FileIOStream, attributes: string | null, cancellable: Cancellable | null) => FileInfo
-    queryInfoAsync: (stream: FileIOStream, attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    queryInfo: (stream: FileIOStream, attributes: string, cancellable: Cancellable | null) => FileInfo
+    queryInfoAsync: (stream: FileIOStream, attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     queryInfoFinish: (stream: FileIOStream, result: AsyncResult) => FileInfo
     getEtag: (stream: FileIOStream) => string | null
 }
@@ -45659,7 +45659,7 @@ export interface FileIface {
     hash: (file: File) => number
     equal: (file1: File, file2: File) => boolean
     isNative: (file: File) => boolean
-    hasUriScheme: (file: File, uriScheme: string | null) => boolean
+    hasUriScheme: (file: File, uriScheme: string) => boolean
     getUriScheme: (file: File) => string | null
     getBasename: (file: File) => string | null
     getPath: (file: File) => string | null
@@ -45669,25 +45669,25 @@ export interface FileIface {
     prefixMatches: (prefix: File, file: File) => boolean
     getRelativePath: (parent: File, descendant: File) => string | null
     resolveRelativePath: (file: File, relativePath: string) => File
-    getChildForDisplayName: (file: File, displayName: string | null) => File
-    enumerateChildren: (file: File, attributes: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => FileEnumerator
-    enumerateChildrenAsync: (file: File, attributes: string | null, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    getChildForDisplayName: (file: File, displayName: string) => File
+    enumerateChildren: (file: File, attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => FileEnumerator
+    enumerateChildrenAsync: (file: File, attributes: string, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     enumerateChildrenFinish: (file: File, res: AsyncResult) => FileEnumerator
-    queryInfo: (file: File, attributes: string | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => FileInfo
-    queryInfoAsync: (file: File, attributes: string | null, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    queryInfo: (file: File, attributes: string, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => FileInfo
+    queryInfoAsync: (file: File, attributes: string, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     queryInfoFinish: (file: File, res: AsyncResult) => FileInfo
-    queryFilesystemInfo: (file: File, attributes: string | null, cancellable: Cancellable | null) => FileInfo
-    queryFilesystemInfoAsync: (file: File, attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    queryFilesystemInfo: (file: File, attributes: string, cancellable: Cancellable | null) => FileInfo
+    queryFilesystemInfoAsync: (file: File, attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     queryFilesystemInfoFinish: (file: File, res: AsyncResult) => FileInfo
     findEnclosingMount: (file: File, cancellable: Cancellable | null) => Mount
     findEnclosingMountAsync: (file: File, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     findEnclosingMountFinish: (file: File, res: AsyncResult) => Mount
-    setDisplayName: (file: File, displayName: string | null, cancellable: Cancellable | null) => File
-    setDisplayNameAsync: (file: File, displayName: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    setDisplayName: (file: File, displayName: string, cancellable: Cancellable | null) => File
+    setDisplayNameAsync: (file: File, displayName: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     setDisplayNameFinish: (file: File, res: AsyncResult) => File
     querySettableAttributes: (file: File, cancellable: Cancellable | null) => FileAttributeInfoList
     queryWritableNamespaces: (file: File, cancellable: Cancellable | null) => FileAttributeInfoList
-    setAttribute: (file: File, attribute: string | null, type: FileAttributeType, valueP: any | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => boolean
+    setAttribute: (file: File, attribute: string, type: FileAttributeType, valueP: any | null, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => boolean
     setAttributesFromInfo: (file: File, info: FileInfo, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => boolean
     setAttributesAsync: (file: File, info: FileInfo, flags: FileQueryInfoFlags, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     setAttributesFinish: (file: File, result: AsyncResult) => [ /* returnType */ boolean, /* info */ FileInfo ]
@@ -45787,8 +45787,8 @@ export interface FileInputStreamClass {
     tell: (stream: FileInputStream) => number
     canSeek: (stream: FileInputStream) => boolean
     seek: (stream: FileInputStream, offset: number, type: GLib.SeekType, cancellable: Cancellable | null) => boolean
-    queryInfo: (stream: FileInputStream, attributes: string | null, cancellable: Cancellable | null) => FileInfo
-    queryInfoAsync: (stream: FileInputStream, attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    queryInfo: (stream: FileInputStream, attributes: string, cancellable: Cancellable | null) => FileInfo
+    queryInfoAsync: (stream: FileInputStream, attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     queryInfoFinish: (stream: FileInputStream, result: AsyncResult) => FileInfo
 }
 
@@ -45845,8 +45845,8 @@ export interface FileOutputStreamClass {
     seek: (stream: FileOutputStream, offset: number, type: GLib.SeekType, cancellable: Cancellable | null) => boolean
     canTruncate: (stream: FileOutputStream) => boolean
     truncateFn: (stream: FileOutputStream, size: number, cancellable: Cancellable | null) => boolean
-    queryInfo: (stream: FileOutputStream, attributes: string | null, cancellable: Cancellable | null) => FileInfo
-    queryInfoAsync: (stream: FileOutputStream, attributes: string | null, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    queryInfo: (stream: FileOutputStream, attributes: string, cancellable: Cancellable | null) => FileInfo
+    queryInfoAsync: (stream: FileOutputStream, attributes: string, ioPriority: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     queryInfoFinish: (stream: FileOutputStream, result: AsyncResult) => FileInfo
     getEtag: (stream: FileOutputStream) => string | null
 }
@@ -45922,7 +45922,7 @@ export interface IOExtension {
      * for multiple extension points, under different names.
      * @returns the name of @extension.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the priority with which `extension` was registered.
      * @returns the priority of @extension
@@ -45956,7 +45956,7 @@ export interface IOExtensionPoint {
      * @param name the name of the extension to get
      * @returns the #GIOExtension for @extension_point that has the    given name, or %NULL if there is no extension with that name
      */
-    getExtensionByName(name: string | null): IOExtension
+    getExtensionByName(name: string): IOExtension
     /**
      * Gets a list of all extensions that implement this extension point.
      * The list is sorted by priority, beginning with the highest priority.
@@ -46001,19 +46001,19 @@ export class IOExtensionPoint {
      * @param priority the priority for the extension
      * @returns a #GIOExtension object for #GType
      */
-    static implement(extensionPointName: string | null, type: GObject.GType, extensionName: string | null, priority: number): IOExtension
+    static implement(extensionPointName: string, type: GObject.GType, extensionName: string, priority: number): IOExtension
     /**
      * Looks up an existing extension point.
      * @param name the name of the extension point
      * @returns the #GIOExtensionPoint, or %NULL if there    is no registered extension point with the given name.
      */
-    static lookup(name: string | null): IOExtensionPoint
+    static lookup(name: string): IOExtensionPoint
     /**
      * Registers an extension point.
      * @param name The name of the extension point
      * @returns the new #GIOExtensionPoint. This object is    owned by GIO and should not be freed.
      */
-    static register(name: string | null): IOExtensionPoint
+    static register(name: string): IOExtensionPoint
 }
 
 export interface IOModuleClass {
@@ -46036,7 +46036,7 @@ export interface IOModuleScope {
      * or g_io_modules_load_all_in_directory_with_scope().
      * @param basename the basename to block
      */
-    block(basename: string | null): void
+    block(basename: string): void
     /**
      * Free a module scope.
      */
@@ -46448,9 +46448,9 @@ export interface LoadableIconIface {
      * @field 
      */
     gIface: GObject.TypeInterface
-    load: (icon: LoadableIcon, size: number, cancellable: Cancellable | null) => [ /* returnType */ InputStream, /* type */ string | null ]
+    load: (icon: LoadableIcon, size: number, cancellable: Cancellable | null) => [ /* returnType */ InputStream, /* type */ string ]
     loadAsync: (icon: LoadableIcon, size: number, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
-    loadFinish: (icon: LoadableIcon, res: AsyncResult) => [ /* returnType */ InputStream, /* type */ string | null ]
+    loadFinish: (icon: LoadableIcon, res: AsyncResult) => [ /* returnType */ InputStream, /* type */ string ]
 }
 
 /**
@@ -46535,7 +46535,7 @@ export interface MenuAttributeIterClass {
     // Own fields of Gio-2.0.Gio.MenuAttributeIterClass
 
     parentClass: GObject.ObjectClass
-    getNext: (iter: MenuAttributeIter) => [ /* returnType */ boolean, /* outName */ string | null, /* value */ GLib.Variant ]
+    getNext: (iter: MenuAttributeIter) => [ /* returnType */ boolean, /* outName */ string, /* value */ GLib.Variant ]
 }
 
 export abstract class MenuAttributeIterClass {
@@ -46560,7 +46560,7 @@ export interface MenuLinkIterClass {
     // Own fields of Gio-2.0.Gio.MenuLinkIterClass
 
     parentClass: GObject.ObjectClass
-    getNext: (iter: MenuLinkIter) => [ /* returnType */ boolean, /* outLink */ string | null, /* value */ MenuModel ]
+    getNext: (iter: MenuLinkIter) => [ /* returnType */ boolean, /* outLink */ string, /* value */ MenuModel ]
 }
 
 export abstract class MenuLinkIterClass {
@@ -46589,10 +46589,10 @@ export interface MenuModelClass {
     getNItems: (model: MenuModel) => number
     getItemAttributes: (model: MenuModel, itemIndex: number) => /* attributes */ GLib.HashTable
     iterateItemAttributes: (model: MenuModel, itemIndex: number) => MenuAttributeIter
-    getItemAttributeValue: (model: MenuModel, itemIndex: number, attribute: string | null, expectedType: GLib.VariantType | null) => GLib.Variant | null
+    getItemAttributeValue: (model: MenuModel, itemIndex: number, attribute: string, expectedType: GLib.VariantType | null) => GLib.Variant | null
     getItemLinks: (model: MenuModel, itemIndex: number) => /* links */ GLib.HashTable
     iterateItemLinks: (model: MenuModel, itemIndex: number) => MenuLinkIter
-    getItemLink: (model: MenuModel, itemIndex: number, link: string | null) => MenuModel | null
+    getItemLink: (model: MenuModel, itemIndex: number, link: string) => MenuModel | null
 }
 
 export abstract class MenuModelClass {
@@ -46666,12 +46666,12 @@ export interface MountOperationClass {
     // Own fields of Gio-2.0.Gio.MountOperationClass
 
     parentClass: GObject.ObjectClass
-    askPassword: (op: MountOperation, message: string | null, defaultUser: string | null, defaultDomain: string | null, flags: AskPasswordFlags) => void
-    askQuestion: (op: MountOperation, message: string | null, choices: string[]) => void
+    askPassword: (op: MountOperation, message: string, defaultUser: string, defaultDomain: string, flags: AskPasswordFlags) => void
+    askQuestion: (op: MountOperation, message: string, choices: string[]) => void
     reply: (op: MountOperation, result: MountOperationResult) => void
     aborted: (op: MountOperation) => void
-    showProcesses: (op: MountOperation, message: string | null, processes: GLib.Pid[], choices: string[]) => void
-    showUnmountProgress: (op: MountOperation, message: string | null, timeLeft: number, bytesLeft: number) => void
+    showProcesses: (op: MountOperation, message: string, processes: GLib.Pid[], choices: string[]) => void
+    showUnmountProgress: (op: MountOperation, message: string, timeLeft: number, bytesLeft: number) => void
 }
 
 export abstract class MountOperationClass {
@@ -47137,8 +47137,8 @@ export interface ProxyResolverInterface {
      */
     gIface: GObject.TypeInterface
     isSupported: (resolver: ProxyResolver) => boolean
-    lookup: (resolver: ProxyResolver, uri: string | null, cancellable: Cancellable | null) => string[]
-    lookupAsync: (resolver: ProxyResolver, uri: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    lookup: (resolver: ProxyResolver, uri: string, cancellable: Cancellable | null) => string[]
+    lookupAsync: (resolver: ProxyResolver, uri: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupFinish: (resolver: ProxyResolver, result: AsyncResult) => string[]
 }
 
@@ -47158,8 +47158,8 @@ export interface RemoteActionGroupInterface {
     // Own fields of Gio-2.0.Gio.RemoteActionGroupInterface
 
     gIface: GObject.TypeInterface
-    activateActionFull: (remote: RemoteActionGroup, actionName: string | null, parameter: GLib.Variant | null, platformData: GLib.Variant) => void
-    changeActionStateFull: (remote: RemoteActionGroup, actionName: string | null, value: GLib.Variant, platformData: GLib.Variant) => void
+    activateActionFull: (remote: RemoteActionGroup, actionName: string, parameter: GLib.Variant | null, platformData: GLib.Variant) => void
+    changeActionStateFull: (remote: RemoteActionGroup, actionName: string, value: GLib.Variant, platformData: GLib.Variant) => void
 }
 
 /**
@@ -47179,20 +47179,20 @@ export interface ResolverClass {
 
     parentClass: GObject.ObjectClass
     reload: (resolver: Resolver) => void
-    lookupByName: (resolver: Resolver, hostname: string | null, cancellable: Cancellable | null) => InetAddress[]
-    lookupByNameAsync: (resolver: Resolver, hostname: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    lookupByName: (resolver: Resolver, hostname: string, cancellable: Cancellable | null) => InetAddress[]
+    lookupByNameAsync: (resolver: Resolver, hostname: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupByNameFinish: (resolver: Resolver, result: AsyncResult) => InetAddress[]
     lookupByAddress: (resolver: Resolver, address: InetAddress, cancellable: Cancellable | null) => string | null
     lookupByAddressAsync: (resolver: Resolver, address: InetAddress, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupByAddressFinish: (resolver: Resolver, result: AsyncResult) => string | null
-    lookupServiceAsync: (resolver: Resolver, rrname: string | null, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    lookupServiceAsync: (resolver: Resolver, rrname: string, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupServiceFinish: (resolver: Resolver, result: AsyncResult) => SrvTarget[]
-    lookupRecords: (resolver: Resolver, rrname: string | null, recordType: ResolverRecordType, cancellable: Cancellable | null) => GLib.Variant[]
-    lookupRecordsAsync: (resolver: Resolver, rrname: string | null, recordType: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    lookupRecords: (resolver: Resolver, rrname: string, recordType: ResolverRecordType, cancellable: Cancellable | null) => GLib.Variant[]
+    lookupRecordsAsync: (resolver: Resolver, rrname: string, recordType: ResolverRecordType, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupRecordsFinish: (resolver: Resolver, result: AsyncResult) => GLib.Variant[]
-    lookupByNameWithFlagsAsync: (resolver: Resolver, hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    lookupByNameWithFlagsAsync: (resolver: Resolver, hostname: string, flags: ResolverNameLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupByNameWithFlagsFinish: (resolver: Resolver, result: AsyncResult) => InetAddress[]
-    lookupByNameWithFlags: (resolver: Resolver, hostname: string | null, flags: ResolverNameLookupFlags, cancellable: Cancellable | null) => InetAddress[]
+    lookupByNameWithFlags: (resolver: Resolver, hostname: string, flags: ResolverNameLookupFlags, cancellable: Cancellable | null) => InetAddress[]
 }
 
 export abstract class ResolverClass {
@@ -47239,7 +47239,7 @@ export interface Resource {
      * @param lookupFlags A #GResourceLookupFlags
      * @returns an array of constant strings
      */
-    enumerateChildren(path: string | null, lookupFlags: ResourceLookupFlags): string[]
+    enumerateChildren(path: string, lookupFlags: ResourceLookupFlags): string[]
     /**
      * Looks for a file at the specified `path` in the resource and
      * if found returns information about it.
@@ -47249,7 +47249,7 @@ export interface Resource {
      * @param lookupFlags A #GResourceLookupFlags
      * @returns %TRUE if the file was found. %FALSE if there were errors
      */
-    getInfo(path: string | null, lookupFlags: ResourceLookupFlags): [ /* returnType */ boolean, /* size */ number, /* flags */ number ]
+    getInfo(path: string, lookupFlags: ResourceLookupFlags): [ /* returnType */ boolean, /* size */ number, /* flags */ number ]
     /**
      * Looks for a file at the specified `path` in the resource and
      * returns a #GBytes that lets you directly access the data in
@@ -47269,7 +47269,7 @@ export interface Resource {
      * @param lookupFlags A #GResourceLookupFlags
      * @returns #GBytes or %NULL on error.     Free the returned object with g_bytes_unref()
      */
-    lookupData(path: string | null, lookupFlags: ResourceLookupFlags): any
+    lookupData(path: string, lookupFlags: ResourceLookupFlags): any
     /**
      * Looks for a file at the specified `path` in the resource and
      * returns a #GInputStream that lets you read the data.
@@ -47279,7 +47279,7 @@ export interface Resource {
      * @param lookupFlags A #GResourceLookupFlags
      * @returns #GInputStream or %NULL on error.     Free the returned object with g_object_unref()
      */
-    openStream(path: string | null, lookupFlags: ResourceLookupFlags): InputStream
+    openStream(path: string, lookupFlags: ResourceLookupFlags): InputStream
     /**
      * Atomically increments the reference count of `resource` by one. This
      * function is MT-safe and may be called from any thread.
@@ -47515,15 +47515,15 @@ export interface SettingsBackendClass {
     // Own fields of Gio-2.0.Gio.SettingsBackendClass
 
     parentClass: GObject.ObjectClass
-    read: (backend: SettingsBackend, key: string | null, expectedType: GLib.VariantType, defaultValue: boolean) => GLib.Variant
-    getWritable: (backend: SettingsBackend, key: string | null) => boolean
-    write: (backend: SettingsBackend, key: string | null, value: GLib.Variant, originTag: any | null) => boolean
+    read: (backend: SettingsBackend, key: string, expectedType: GLib.VariantType, defaultValue: boolean) => GLib.Variant
+    getWritable: (backend: SettingsBackend, key: string) => boolean
+    write: (backend: SettingsBackend, key: string, value: GLib.Variant, originTag: any | null) => boolean
     writeTree: (backend: SettingsBackend, tree: GLib.Tree, originTag: any | null) => boolean
-    reset: (backend: SettingsBackend, key: string | null, originTag: any | null) => void
-    subscribe: (backend: SettingsBackend, name: string | null) => void
-    unsubscribe: (backend: SettingsBackend, name: string | null) => void
+    reset: (backend: SettingsBackend, key: string, originTag: any | null) => void
+    subscribe: (backend: SettingsBackend, name: string) => void
+    unsubscribe: (backend: SettingsBackend, name: string) => void
     sync: (backend: SettingsBackend) => void
-    readUserValue: (backend: SettingsBackend, key: string | null, expectedType: GLib.VariantType) => GLib.Variant
+    readUserValue: (backend: SettingsBackend, key: string, expectedType: GLib.VariantType) => GLib.Variant
 }
 
 /**
@@ -47552,8 +47552,8 @@ export interface SettingsClass {
     // Own fields of Gio-2.0.Gio.SettingsClass
 
     parentClass: GObject.ObjectClass
-    writableChanged: (settings: Settings, key: string | null) => void
-    changed: (settings: Settings, key: string | null) => void
+    writableChanged: (settings: Settings, key: string) => void
+    changed: (settings: Settings, key: string) => void
     writableChangeEvent: (settings: Settings, key: GLib.Quark) => boolean
     changeEvent: (settings: Settings, keys: GLib.Quark, nKeys: number) => boolean
     padding: any[]
@@ -47584,7 +47584,7 @@ export interface SettingsSchema {
      * Get the ID of `schema`.
      * @returns the ID
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the key named `name` from `schema`.
      * 
@@ -47593,7 +47593,7 @@ export interface SettingsSchema {
      * @param name the name of a key
      * @returns the #GSettingsSchemaKey for @name
      */
-    getKey(name: string | null): SettingsSchemaKey
+    getKey(name: string): SettingsSchemaKey
     /**
      * Gets the path associated with `schema,` or %NULL.
      * 
@@ -47612,7 +47612,7 @@ export interface SettingsSchema {
      * @param name the name of a key
      * @returns %TRUE if such a key exists
      */
-    hasKey(name: string | null): boolean
+    hasKey(name: string): boolean
     /**
      * Gets the list of children in `schema`.
      * 
@@ -47779,7 +47779,7 @@ export interface SettingsSchemaKey {
      * Gets the name of `key`.
      * @returns the name of @key.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Queries the range of a key.
      * 
@@ -47910,7 +47910,7 @@ export interface SettingsSchemaSource {
      * @param recursive %TRUE if the lookup should be recursive
      * @returns a new #GSettingsSchema
      */
-    lookup(schemaId: string | null, recursive: boolean): SettingsSchema | null
+    lookup(schemaId: string, recursive: boolean): SettingsSchema | null
     /**
      * Increase the reference count of `source,` returning a new reference.
      * @returns a new reference to @source
@@ -48292,7 +48292,7 @@ export interface SrvTarget {
      * g_hostname_to_unicode() to convert it if it does.)
      * @returns @target's hostname
      */
-    getHostname(): string | null
+    getHostname(): string
     /**
      * Gets `target'`s port
      * @returns @target's port
@@ -48351,7 +48351,7 @@ export class SrvTarget {
      * @param weight the target's weight
      * @returns a new #GSrvTarget.
      */
-    constructor(hostname: string | null, port: number, priority: number, weight: number) 
+    constructor(hostname: string, port: number, priority: number, weight: number) 
     /**
      * Creates a new #GSrvTarget with the given parameters.
      * 
@@ -48364,7 +48364,7 @@ export class SrvTarget {
      * @param weight the target's weight
      * @returns a new #GSrvTarget.
      */
-    static new(hostname: string | null, port: number, priority: number, weight: number): SrvTarget
+    static new(hostname: string, port: number, priority: number, weight: number): SrvTarget
 }
 
 export interface StaticResource {
@@ -48626,12 +48626,12 @@ export interface TlsDatabaseClass {
     // Own fields of Gio-2.0.Gio.TlsDatabaseClass
 
     parentClass: GObject.ObjectClass
-    verifyChain: (self: TlsDatabase, chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null) => TlsCertificateFlags
-    verifyChainAsync: (self: TlsDatabase, chain: TlsCertificate, purpose: string | null, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    verifyChain: (self: TlsDatabase, chain: TlsCertificate, purpose: string, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null) => TlsCertificateFlags
+    verifyChainAsync: (self: TlsDatabase, chain: TlsCertificate, purpose: string, identity: SocketConnectable | null, interaction: TlsInteraction | null, flags: TlsDatabaseVerifyFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     verifyChainFinish: (self: TlsDatabase, result: AsyncResult) => TlsCertificateFlags
     createCertificateHandle: (self: TlsDatabase, certificate: TlsCertificate) => string | null
-    lookupCertificateForHandle: (self: TlsDatabase, handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null) => TlsCertificate | null
-    lookupCertificateForHandleAsync: (self: TlsDatabase, handle: string | null, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
+    lookupCertificateForHandle: (self: TlsDatabase, handle: string, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null) => TlsCertificate | null
+    lookupCertificateForHandleAsync: (self: TlsDatabase, handle: string, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     lookupCertificateForHandleFinish: (self: TlsDatabase, result: AsyncResult) => TlsCertificate
     lookupCertificateIssuer: (self: TlsDatabase, certificate: TlsCertificate, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null) => TlsCertificate
     lookupCertificateIssuerAsync: (self: TlsDatabase, certificate: TlsCertificate, interaction: TlsInteraction | null, flags: TlsDatabaseLookupFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
@@ -48739,7 +48739,7 @@ export interface TlsPasswordClass {
     parentClass: GObject.ObjectClass
     getValue: (password: TlsPassword) => number[]
     setValue: (password: TlsPassword, value: number[], destroy: GLib.DestroyNotify | null) => void
-    getDefaultWarning: (password: TlsPassword) => string | null
+    getDefaultWarning: (password: TlsPassword) => string
 }
 
 /**
@@ -48962,7 +48962,7 @@ export interface UnixMountPoint {
      * Gets the file system type for the mount point.
      * @returns a string containing the file system type.
      */
-    getFsType(): string | null
+    getFsType(): string
     /**
      * Gets the mount path for a unix mount point.
      * @returns a string containing the mount path.
@@ -49091,15 +49091,15 @@ export interface VfsClass {
 
     parentClass: GObject.ObjectClass
     isActive: (vfs: Vfs) => boolean
-    getFileForPath: (vfs: Vfs, path: string | null) => File
-    getFileForUri: (vfs: Vfs, uri: string | null) => File
+    getFileForPath: (vfs: Vfs, path: string) => File
+    getFileForUri: (vfs: Vfs, uri: string) => File
     getSupportedUriSchemes: (vfs: Vfs) => string[]
-    parseName: (vfs: Vfs, parseName: string | null) => File
-    localFileAddInfo: (vfs: Vfs, filename: string | null, device: number, attributeMatcher: FileAttributeMatcher, info: FileInfo, cancellable: Cancellable | null, extraData: any | null, freeExtraData: GLib.DestroyNotify) => void
+    parseName: (vfs: Vfs, parseName: string) => File
+    localFileAddInfo: (vfs: Vfs, filename: string, device: number, attributeMatcher: FileAttributeMatcher, info: FileInfo, cancellable: Cancellable | null, extraData: any | null, freeExtraData: GLib.DestroyNotify) => void
     addWritableNamespaces: (vfs: Vfs, list: FileAttributeInfoList) => void
-    localFileSetAttributes: (vfs: Vfs, filename: string | null, info: FileInfo, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => boolean
-    localFileRemoved: (vfs: Vfs, filename: string | null) => void
-    localFileMoved: (vfs: Vfs, source: string | null, dest: string | null) => void
+    localFileSetAttributes: (vfs: Vfs, filename: string, info: FileInfo, flags: FileQueryInfoFlags, cancellable: Cancellable | null) => boolean
+    localFileRemoved: (vfs: Vfs, filename: string) => void
+    localFileMoved: (vfs: Vfs, source: string, dest: string) => void
 }
 
 export abstract class VfsClass {
@@ -49131,7 +49131,7 @@ export interface VolumeIface {
     mountFinish: (volume: Volume, result: AsyncResult) => boolean
     eject: (volume: Volume, flags: MountUnmountFlags, cancellable: Cancellable | null, callback: AsyncReadyCallback | null) => void
     ejectFinish: (volume: Volume, result: AsyncResult) => boolean
-    getIdentifier: (volume: Volume, kind: string | null) => string | null
+    getIdentifier: (volume: Volume, kind: string) => string | null
     enumerateIdentifiers: (volume: Volume) => string[]
     shouldAutomount: (volume: Volume) => boolean
     getActivationRoot: (volume: Volume) => File | null
@@ -49171,8 +49171,8 @@ export interface VolumeMonitorClass {
     getConnectedDrives: (volumeMonitor: VolumeMonitor) => Drive[]
     getVolumes: (volumeMonitor: VolumeMonitor) => Volume[]
     getMounts: (volumeMonitor: VolumeMonitor) => Mount[]
-    getVolumeForUuid: (volumeMonitor: VolumeMonitor, uuid: string | null) => Volume | null
-    getMountForUuid: (volumeMonitor: VolumeMonitor, uuid: string | null) => Mount | null
+    getVolumeForUuid: (volumeMonitor: VolumeMonitor, uuid: string) => Volume | null
+    getMountForUuid: (volumeMonitor: VolumeMonitor, uuid: string) => Mount | null
     driveEjectButton: (volumeMonitor: VolumeMonitor, drive: Drive) => void
     driveStopButton: (volumeMonitor: VolumeMonitor, drive: Drive) => void
 }

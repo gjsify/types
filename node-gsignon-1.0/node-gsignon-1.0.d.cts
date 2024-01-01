@@ -219,39 +219,39 @@ export enum IdentityType {
 /**
  * Caption for the UI dialog.
  */
-export const SESSION_DATA_CAPTION: string | null
+export const SESSION_DATA_CAPTION: string
 /**
  * Proxy.
  */
-export const SESSION_DATA_PROXY: string | null
+export const SESSION_DATA_PROXY: string
 /**
  * Realm.
  */
-export const SESSION_DATA_REALM: string | null
+export const SESSION_DATA_REALM: string
 /**
  * Requests the signon plugin to obtain a new token (boolean).
  */
-export const SESSION_DATA_RENEW_TOKEN: string | null
+export const SESSION_DATA_RENEW_TOKEN: string
 /**
  * Secret.
  */
-export const SESSION_DATA_SECRET: string | null
+export const SESSION_DATA_SECRET: string
 /**
  * Network timeout, in milliseconds (uint32).
  */
-export const SESSION_DATA_TIMEOUT: string | null
+export const SESSION_DATA_TIMEOUT: string
 /**
  * Policy for the signon process.
  */
-export const SESSION_DATA_UI_POLICY: string | null
+export const SESSION_DATA_UI_POLICY: string
 /**
  * Username.
  */
-export const SESSION_DATA_USERNAME: string | null
+export const SESSION_DATA_USERNAME: string
 /**
  * Platform-specific window id (for dialog transiency) - uint32.
  */
-export const SESSION_DATA_WINDOW_ID: string | null
+export const SESSION_DATA_WINDOW_ID: string
 /**
  * Creates and returns a domain for gSSO errors.
  */
@@ -327,7 +327,7 @@ export interface IdentityInfoCb {
  * @param objectPath a D-Bus object path for the session.
  */
 export interface IdentitySessionReadyCb {
-    (self: AuthSession, error: GLib.Error, connection: Gio.DBusConnection, busName: string | null, objectPath: string | null): void
+    (self: AuthSession, error: GLib.Error, connection: Gio.DBusConnection, busName: string, objectPath: string): void
 }
 /**
  * Callback to be passed to signon_identity_store_credentials_with_args() or
@@ -378,7 +378,7 @@ export interface QueryIdentitiesCb {
  * @param error a #GError if an error occurred, %NULL otherwise.
  */
 export interface QueryMechanismCb {
-    (authService: AuthService, method: string | null, mechanisms: string[], error: GLib.Error): void
+    (authService: AuthService, method: string, mechanisms: string[], error: GLib.Error): void
 }
 /**
  * Callback to be passed to signon_auth_service_query_methods().
@@ -442,13 +442,13 @@ export interface AuthService {
      * @param applicationContext application security context, can be %NULL.
      * @param cb callback to be invoked.
      */
-    queryIdentities(filter: GLib.HashTable, applicationContext: string | null, cb: QueryIdentitiesCb): void
+    queryIdentities(filter: GLib.HashTable, applicationContext: string, cb: QueryIdentitiesCb): void
     /**
      * Lists all the available mechanisms for an authentication method.
      * @param method the name of the method whose mechanisms must be retrieved.
      * @param cb callback to be invoked.
      */
-    queryMechanisms(method: string | null, cb: QueryMechanismCb): void
+    queryMechanisms(method: string, cb: QueryMechanismCb): void
     /**
      * Lists all the available authentication methods.
      * @param cb callback to be invoked.
@@ -538,7 +538,7 @@ export interface AuthSession {
      * Get the current authentication method.
      * @returns the authentication method being used, or %NULL on failure.
      */
-    getMethod(): string | null
+    getMethod(): string
     /**
      * Performs one step of the authentication process. If the #SignonIdentity that
      * this session belongs to contains a username and a password, they will be also
@@ -550,7 +550,7 @@ export interface AuthSession {
      * @param mechanism the authentication mechanism to be used.
      * @param cb a callback which will be called with the result.
      */
-    process(sessionData: GLib.HashTable, mechanism: string | null, cb: AuthSessionProcessCb): void
+    process(sessionData: GLib.HashTable, mechanism: string, cb: AuthSessionProcessCb): void
     /**
      * Performs one step of the authentication process.
      * `session_data` should be used to add additional authentication parameters to the
@@ -570,7 +570,7 @@ export interface AuthSession {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback a callback which will be called when the authentication reply is available.
      */
-    processAsync(sessionData: GLib.Variant, mechanism: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    processAsync(sessionData: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_auth_session_process_async() operation.
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process_async().
@@ -585,7 +585,7 @@ export interface AuthSession {
      * @param wantedMechanisms a %NULL-terminated list of mechanisms supported by the client.
      * @param cb a callback which will be called with the result.
      */
-    queryAvailableMechanisms(wantedMechanisms: string | null, cb: AuthSessionQueryAvailableMechanismsCb): void
+    queryAvailableMechanisms(wantedMechanisms: string, cb: AuthSessionQueryAvailableMechanismsCb): void
 
     // Own signals of gSignon-1.0.gSignon.AuthSession
 
@@ -636,7 +636,7 @@ export class AuthSession extends GObject.Object {
      * @param methodName the name of the authentication method to be used.
      * @returns a new #SignonAuthSession.
      */
-    constructor(id: number, methodName: string | null) 
+    constructor(id: number, methodName: string) 
     /**
      * Creates a new #SignonAuthSession, which can be used to authenticate using
      * the specified method.
@@ -645,7 +645,7 @@ export class AuthSession extends GObject.Object {
      * @param methodName the name of the authentication method to be used.
      * @returns a new #SignonAuthSession.
      */
-    static new(id: number, methodName: string | null): AuthSession
+    static new(id: number, methodName: string): AuthSession
     /**
      * Creates a new #SignonAuthSession, which can be used to authenticate using
      * the specified method.
@@ -654,7 +654,7 @@ export class AuthSession extends GObject.Object {
      * @param methodName the name of the authentication method to be used.
      * @returns a new #SignonAuthSession.
      */
-    static newForIdentity(identity: Identity, methodName: string | null): AuthSession
+    static newForIdentity(identity: Identity, methodName: string): AuthSession
     _init(config?: AuthSession.ConstructorProperties): void
 }
 
@@ -704,7 +704,7 @@ export interface Identity {
      * @param reference reference to be added
      * @param cb callback
      */
-    addReference(reference: string | null, cb: IdentityReferenceAddedCb): void
+    addReference(reference: string, cb: IdentityReferenceAddedCb): void
     /**
      * Creates an authentication session for this identity. If the identity has been
      * retrieved from the database, the authentication method must be one of those
@@ -713,7 +713,7 @@ export interface Identity {
      * @param method authentication method.
      * @returns a new #SignonAuthSession.
      */
-    createSession(method: string | null): AuthSession
+    createSession(method: string): AuthSession
     /**
      * Obtain a remote object for a local session object. Should not be used by
      * applications.
@@ -721,7 +721,7 @@ export interface Identity {
      * @param method method name for the session.
      * @param cb completion callback.
      */
-    getAuthSession(session: AuthSession, method: string | null, cb: IdentitySessionReadyCb): void
+    getAuthSession(session: AuthSession, method: string, cb: IdentitySessionReadyCb): void
     /**
      * Get the most recent error that occurred on `identity`.
      * @returns a #GError containing the most recent error, or %NULL on failure.
@@ -743,13 +743,13 @@ export interface Identity {
      * @param reference reference to be removed
      * @param cb callback
      */
-    removeReference(reference: string | null, cb: IdentityReferenceRemovedCb): void
+    removeReference(reference: string, cb: IdentityReferenceRemovedCb): void
     /**
      * Requests user to re-enter his credentials.
      * @param message message to be displayed to the user.
      * @param cb callback to be called when the operation has completed.
      */
-    requestCredentialsUpdate(message: string | null, cb: IdentityCredentialsUpdatedCb): void
+    requestCredentialsUpdate(message: string, cb: IdentityCredentialsUpdatedCb): void
     /**
      * Asks signond to close all authentication sessions for this
      * identity, and to remove any stored secrets associated with it (password and
@@ -875,7 +875,7 @@ export class Identity extends GObject.Object {
      * @param applicationContext application security context, can be %NULL.
      * @returns an instance of an #SignonIdentity.
      */
-    static newWithContext(applicationContext: string | null): Identity
+    static newWithContext(applicationContext: string): Identity
     /**
      * Construct an identity object associated with an existing identity
      * record. See #SignonSecurityContext for a discussion of `application_context` contents.
@@ -892,7 +892,7 @@ export class Identity extends GObject.Object {
      * @param applicationContext application security context, can be %NULL.
      * @returns an instance of a #SignonIdentity.
      */
-    static newWithContextFromDb(id: number, applicationContext: string | null): Identity
+    static newWithContextFromDb(id: number, applicationContext: string): Identity
     _init(config?: Identity.ConstructorProperties): void
 }
 
@@ -1001,7 +1001,7 @@ export interface IdentityInfo {
      * Get the display name of `info`.
      * @returns the display name for the identity.
      */
-    getCaption(): string | null
+    getCaption(): string
     /**
      * Get the numeric identity ID of `info`.
      * @returns the numeric ID of the identity.
@@ -1037,7 +1037,7 @@ export interface IdentityInfo {
      * Get the username associated with an identity.
      * @returns the username, or %NULL.
      */
-    getUsername(): string | null
+    getUsername(): string
     /**
      * Set authentication methods that are allowed to be used with this identity.
      * 
@@ -1050,7 +1050,7 @@ export interface IdentityInfo {
      * Remove `method` from the list of allowed authentication methods.
      * @param method an authentication method.
      */
-    removeMethod(method: string | null): void
+    removeMethod(method: string): void
     /**
      * Set an access control list associated with an identity.
      * @param accessControlList a list of ACL security contexts.
@@ -1060,7 +1060,7 @@ export interface IdentityInfo {
      * Sets the caption (display name) for the identity.
      * @param caption the caption.
      */
-    setCaption(caption: string | null): void
+    setCaption(caption: string): void
     /**
      * Specifies the type of this identity.
      * @param type the type of the identity.
@@ -1071,7 +1071,7 @@ export interface IdentityInfo {
      * @param method an authentication method.
      * @param mechanisms a %NULL-terminated list of mechanisms.
      */
-    setMethod(method: string | null, mechanisms: string[]): void
+    setMethod(method: string, mechanisms: string[]): void
     /**
      * Set authentication methods that are allowed to be used with this identity.
      * @param methods methods.
@@ -1087,7 +1087,7 @@ export interface IdentityInfo {
      * @param systemContext owner's system context.
      * @param applicationContext owner's application context.
      */
-    setOwnerFromValues(systemContext: string | null, applicationContext: string | null): void
+    setOwnerFromValues(systemContext: string, applicationContext: string): void
     /**
      * Specify what realms this identity can be used in.
      * @param realms a %NULL-terminated list of realms.
@@ -1099,12 +1099,12 @@ export interface IdentityInfo {
      * @param secret the secret.
      * @param storeSecret whether signond should store the secret in its DB.
      */
-    setSecret(secret: string | null, storeSecret: boolean): void
+    setSecret(secret: string, storeSecret: boolean): void
     /**
      * Sets the username for the identity.
      * @param username the username.
      */
-    setUsername(username: string | null): void
+    setUsername(username: string): void
 }
 
 /**
@@ -1180,25 +1180,25 @@ export interface SecurityContext {
      * the #SignonSecurityContext.
      * @returns application context.
      */
-    getApplicationContext(): string | null
+    getApplicationContext(): string
     /**
      * Get the system context part (such as SMACK label or MSSF token) of the
      * #SignonSecurityContext.
      * @returns system context.
      */
-    getSystemContext(): string | null
+    getSystemContext(): string
     /**
      * Sets the application context part (such as a script name or a web page) of
      * the #SignonSecurityContext.
      * @param applicationContext application security context.
      */
-    setApplicationContext(applicationContext: string | null): void
+    setApplicationContext(applicationContext: string): void
     /**
      * Sets the system context part (such as SMACK label or MSSF token) of the
      * #SignonSecurityContext.
      * @param systemContext system security context.
      */
-    setSystemContext(systemContext: string | null): void
+    setSystemContext(systemContext: string): void
 }
 
 /**
@@ -1232,7 +1232,7 @@ export class SecurityContext {
      * @param applicationContext application security context (such as a script name).
      * @returns allocated #SignonSecurityContext.
      */
-    static newFromValues(systemContext: string | null, applicationContext: string | null): SecurityContext
+    static newFromValues(systemContext: string, applicationContext: string): SecurityContext
     /**
      * Builds a #SignonSecurityContext item from a GVariant of type "(ss)".
      * @param variant GVariant item with a #SignonSecurityContext construct.

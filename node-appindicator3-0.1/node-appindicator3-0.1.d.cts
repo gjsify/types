@@ -75,31 +75,31 @@ export enum IndicatorStatus {
 /**
  * String identifier for the #AppIndicator::connection-changed signal.
  */
-export const INDICATOR_SIGNAL_CONNECTION_CHANGED: string | null
+export const INDICATOR_SIGNAL_CONNECTION_CHANGED: string
 /**
  * String identifier for the #AppIndicator::new-attention-icon signal.
  */
-export const INDICATOR_SIGNAL_NEW_ATTENTION_ICON: string | null
+export const INDICATOR_SIGNAL_NEW_ATTENTION_ICON: string
 /**
  * String identifier for the #AppIndicator::new-icon signal.
  */
-export const INDICATOR_SIGNAL_NEW_ICON: string | null
+export const INDICATOR_SIGNAL_NEW_ICON: string
 /**
  * String identifier for the #AppIndicator::new-icon-theme-path signal.
  */
-export const INDICATOR_SIGNAL_NEW_ICON_THEME_PATH: string | null
+export const INDICATOR_SIGNAL_NEW_ICON_THEME_PATH: string
 /**
  * String identifier for the #AppIndicator::new-label signal.
  */
-export const INDICATOR_SIGNAL_NEW_LABEL: string | null
+export const INDICATOR_SIGNAL_NEW_LABEL: string
 /**
  * String identifier for the #AppIndicator::new-status signal.
  */
-export const INDICATOR_SIGNAL_NEW_STATUS: string | null
+export const INDICATOR_SIGNAL_NEW_STATUS: string
 /**
  * String identifier for the #AppIndicator::scroll-event signal.
  */
-export const INDICATOR_SIGNAL_SCROLL_EVENT: string | null
+export const INDICATOR_SIGNAL_SCROLL_EVENT: string
 export module Indicator {
 
     // Signal callback interfaces
@@ -346,17 +346,17 @@ export interface Indicator {
      * @param desktopFile A path to the desktop file to build the menu from
      * @param desktopProfile Which entries should be used from the desktop file
      */
-    buildMenuFromDesktop(desktopFile: string | null, desktopProfile: string | null): void
+    buildMenuFromDesktop(desktopFile: string, desktopProfile: string): void
     /**
      * Wrapper function for property #AppIndicator:attention-icon-name.
      * @returns The current attention icon name.
      */
-    getAttentionIcon(): string | null
+    getAttentionIcon(): string
     /**
      * Wrapper function for property #AppIndicator:attention-icon-desc.
      * @returns The current attention icon description.
      */
-    getAttentionIconDesc(): string | null
+    getAttentionIconDesc(): string
     /**
      * Wrapper function for property #AppIndicator:category.
      * @returns The current category.
@@ -366,32 +366,32 @@ export interface Indicator {
      * Wrapper function for property #AppIndicator:icon-name.
      * @returns The current icon name.
      */
-    getIcon(): string | null
+    getIcon(): string
     /**
      * Wrapper function for property #AppIndicator:icon-desc.
      * @returns The current icon description.
      */
-    getIconDesc(): string | null
+    getIconDesc(): string
     /**
      * Wrapper function for property #AppIndicator:icon-theme-path.
      * @returns The current icon theme path.
      */
-    getIconThemePath(): string | null
+    getIconThemePath(): string
     /**
      * Wrapper function for property #AppIndicator:id.
      * @returns The current ID
      */
-    getId(): string | null
+    getId(): string
     /**
      * Wrapper function for property #AppIndicator:label.
      * @returns The current label.
      */
-    getLabel(): string | null
+    getLabel(): string
     /**
      * Wrapper function for property #AppIndicator:label-guide.
      * @returns The current label guide.
      */
-    getLabelGuide(): string | null
+    getLabelGuide(): string
     /**
      * Gets the menu being used for this application indicator.
      * Wrapper function for property #AppIndicator:menu.
@@ -418,25 +418,25 @@ export interface Indicator {
      * app_indicator_set_title() for information on the title.
      * @returns The current title.
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Wrapper for app_indicator_set_attention_icon_full() with a NULL
      * description.
      * @param iconName The name of the attention icon to set for this indicator
      */
-    setAttentionIcon(iconName: string | null): void
+    setAttentionIcon(iconName: string): void
     /**
      * Wrapper function for property #AppIndicator:attention-icon-name.
      * @param iconName The name of the attention icon to set for this indicator
      * @param iconDesc A textual description of the icon
      */
-    setAttentionIconFull(iconName: string | null, iconDesc: string | null): void
+    setAttentionIconFull(iconName: string, iconDesc: string): void
     /**
      * Wrapper function for app_indicator_set_icon_full() with a NULL
      * description.
      * @param iconName The icon name to set.
      */
-    setIcon(iconName: string | null): void
+    setIcon(iconName: string): void
     /**
      * Sets the default icon to use when the status is active but
      * not set to attention.  In most cases, this should be the
@@ -447,12 +447,12 @@ export interface Indicator {
      * @param iconName The icon name to set.
      * @param iconDesc A textual description of the icon for accessibility
      */
-    setIconFull(iconName: string | null, iconDesc: string | null): void
+    setIconFull(iconName: string, iconDesc: string): void
     /**
      * Sets the path to use when searching for icons.
      * @param iconThemePath The icon theme path to set.
      */
-    setIconThemePath(iconThemePath: string | null): void
+    setIconThemePath(iconThemePath: string): void
     /**
      * This is a wrapper function for the #AppIndicator:label and
      * #AppIndicator:guide properties.  This function can take #NULL
@@ -460,7 +460,7 @@ export interface Indicator {
      * @param label The label to show next to the icon.
      * @param guide A guide to size the label correctly.
      */
-    setLabel(label: string | null, guide: string | null): void
+    setLabel(label: string, guide: string): void
     /**
      * Sets the menu that should be shown when the Application Indicator
      * is clicked on in the panel.  An application indicator will not
@@ -515,9 +515,9 @@ export interface Indicator {
     connectionChanged(connected: boolean): void
     newAttentionIcon(): void
     newIcon(): void
-    newIconThemePath(iconThemePath: string | null): void
-    newLabel(label: string | null, guide: string | null): void
-    newStatus(status: string | null): void
+    newIconThemePath(iconThemePath: string): void
+    newLabel(label: string, guide: string): void
+    newStatus(status: string): void
     scrollEvent(delta: number, direction: Gdk.ScrollDirection): void
     unfallback(statusIcon: Gtk.StatusIcon): void
 
@@ -667,7 +667,7 @@ export class Indicator extends GObject.Object {
      * @param category The category of indicator.
      * @returns A pointer to a new #AppIndicator object.
      */
-    constructor(id: string | null, iconName: string | null, category: IndicatorCategory) 
+    constructor(id: string, iconName: string, category: IndicatorCategory) 
     /**
      * Creates a new #AppIndicator setting the properties:
      * #AppIndicator:id with `id,` #AppIndicator:category with `category`
@@ -678,7 +678,7 @@ export class Indicator extends GObject.Object {
      * @param category The category of indicator.
      * @returns A pointer to a new #AppIndicator object.
      */
-    static new(id: string | null, iconName: string | null, category: IndicatorCategory): Indicator
+    static new(id: string, iconName: string, category: IndicatorCategory): Indicator
     /**
      * Creates a new #AppIndicator setting the properties:
      * #AppIndicator:id with `id,` #AppIndicator:category with `category,`
@@ -691,7 +691,7 @@ export class Indicator extends GObject.Object {
      * @param iconThemePath A custom path for finding icons.
      * @returns A pointer to a new #AppIndicator object.
      */
-    static newWithPath(id: string | null, iconName: string | null, category: IndicatorCategory, iconThemePath: string | null): Indicator
+    static newWithPath(id: string, iconName: string, category: IndicatorCategory, iconThemePath: string): Indicator
     _init(config?: Indicator.ConstructorProperties): void
 }
 
@@ -706,9 +706,9 @@ export interface IndicatorClass {
     parentClass: GObject.ObjectClass
     newIcon: (indicator: Indicator) => void
     newAttentionIcon: (indicator: Indicator) => void
-    newStatus: (indicator: Indicator, status: string | null) => void
-    newIconThemePath: (indicator: Indicator, iconThemePath: string | null) => void
-    newLabel: (indicator: Indicator, label: string | null, guide: string | null) => void
+    newStatus: (indicator: Indicator, status: string) => void
+    newIconThemePath: (indicator: Indicator, iconThemePath: string) => void
+    newLabel: (indicator: Indicator, label: string, guide: string) => void
     connectionChanged: (indicator: Indicator, connected: boolean) => void
     scrollEvent: (indicator: Indicator, delta: number, direction: Gdk.ScrollDirection) => void
     appIndicatorReservedAts: () => void

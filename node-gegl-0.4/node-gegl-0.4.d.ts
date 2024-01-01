@@ -233,7 +233,7 @@ function config(): Config
  * @param relDim relative dimension to scale rel suffixed values by
  * @param pathRoot path in filesystem to use as relative root
  */
-function createChain(ops: string | null, opStart: Node, opEnd: Node, time: number, relDim: number, pathRoot: string | null): void
+function createChain(ops: string, opStart: Node, opEnd: Node, time: number, relDim: number, pathRoot: string): void
 /**
  * Create a node chain from argv style list of op data.
  * @param ops an argv style, NULL terminated array of arguments
@@ -243,7 +243,7 @@ function createChain(ops: string | null, opStart: Node, opEnd: Node, time: numbe
  * @param relDim relative dimension to scale rel suffixed values by
  * @param pathRoot path in filesystem to use as relative root
  */
-function createChainArgv(ops: string | null, opStart: Node, opEnd: Node, time: number, relDim: number, pathRoot: string | null): void
+function createChainArgv(ops: string | null, opStart: Node, opEnd: Node, time: number, relDim: number, pathRoot: string): void
 /**
  * Call this function when you're done using GEGL. It will clean up
  * caches and write/dump debug information if the correct debug flags
@@ -256,7 +256,7 @@ function exit(): void
  * @param formatName A Babl format name, e.g. "RGBA float"
  * @returns the format pointer
  */
-function format(formatName: string | null): any | null
+function format(formatName: string): any | null
 function formatGetName(format: any): string | null
 /**
  * This function fetches the version of the GEGL library being used by
@@ -275,7 +275,7 @@ function graphDumpOutputs(node: Node): void
  * @param roi The request rectangle
  */
 function graphDumpRequest(node: Node, roi: Rectangle): void
-function hasOperation(operationType: string | null): boolean
+function hasOperation(operationType: string): boolean
 /**
  * Call this function before using any other GEGL functions. It will
  * initialize everything needed to operate GEGL and parses some
@@ -295,7 +295,7 @@ function listOperations(): string[]
  * Load all gegl modules found in the given directory.
  * @param path the directory to load modules from
  */
-function loadModuleDirectory(path: string | null): void
+function loadModuleDirectory(path: string): void
 /**
  * Distributes the execution of a function across multiple threads,
  * by calling it with a different index on each thread.
@@ -330,7 +330,7 @@ function parallelDistributeRange(size: number, threadCost: number, func: Paralle
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecAudioFragment(name: string | null, nick: string | null, blurb: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecAudioFragment(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GParamSpec instance specifying a #GeglColor property.
  * @param name canonical name of the property specified
@@ -340,7 +340,7 @@ function paramSpecAudioFragment(name: string | null, nick: string | null, blurb:
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecColor(name: string | null, nick: string | null, blurb: string | null, defaultColor: Color, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecColor(name: string, nick: string, blurb: string, defaultColor: Color, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GParamSpec instance specifying a #GeglColor property.
  * @param name canonical name of the property specified
@@ -350,7 +350,7 @@ function paramSpecColor(name: string | null, nick: string | null, blurb: string 
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecColorFromString(name: string | null, nick: string | null, blurb: string | null, defaultColorString: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecColorFromString(name: string, nick: string, blurb: string, defaultColorString: string, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Get the default color value of the param spec
  * @param self a #GeglColor #GParamSpec
@@ -366,7 +366,7 @@ function paramSpecColorGetDefault(self: GObject.ParamSpec): Color
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecCurve(name: string | null, nick: string | null, blurb: string | null, defaultCurve: Curve, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecCurve(name: string, nick: string, blurb: string, defaultCurve: Curve, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GeglParamSpecDouble instance.
  * @param name canonical name of the property specified
@@ -381,7 +381,7 @@ function paramSpecCurve(name: string | null, nick: string | null, blurb: string 
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecDouble(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, defaultValue: number, uiMinimum: number, uiMaximum: number, uiGamma: number, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecDouble(name: string, nick: string, blurb: string, minimum: number, maximum: number, defaultValue: number, uiMinimum: number, uiMaximum: number, uiGamma: number, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GeglParamSpecEnum instance.
  * @param name canonical name of the property specified
@@ -392,7 +392,7 @@ function paramSpecDouble(name: string | null, nick: string | null, blurb: string
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecEnum(name: string | null, nick: string | null, blurb: string | null, enumType: GObject.GType, defaultValue: number, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecEnum(name: string, nick: string, blurb: string, enumType: GObject.GType, defaultValue: number, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GeglParamSpecFilePath instance.
  * @param name canonical name of the property specified
@@ -404,7 +404,7 @@ function paramSpecEnum(name: string | null, nick: string | null, blurb: string |
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecFilePath(name: string | null, nick: string | null, blurb: string | null, noValidate: boolean, nullOk: boolean, defaultValue: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecFilePath(name: string, nick: string, blurb: string, noValidate: boolean, nullOk: boolean, defaultValue: string, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GeglParamSpecFormat instance specifying a Babl format.
  * @param name canonical name of the property specified
@@ -413,8 +413,8 @@ function paramSpecFilePath(name: string | null, nick: string | null, blurb: stri
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecFormat(name: string | null, nick: string | null, blurb: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
-function paramSpecGetPropertyKey(pspec: GObject.ParamSpec, keyName: string | null): string | null
+function paramSpecFormat(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecGetPropertyKey(pspec: GObject.ParamSpec, keyName: string): string
 /**
  * Creates a new #GeglParamSpecInt instance.
  * @param name canonical name of the property specified
@@ -429,7 +429,7 @@ function paramSpecGetPropertyKey(pspec: GObject.ParamSpec, keyName: string | nul
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecInt(name: string | null, nick: string | null, blurb: string | null, minimum: number, maximum: number, defaultValue: number, uiMinimum: number, uiMaximum: number, uiGamma: number, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecInt(name: string, nick: string, blurb: string, minimum: number, maximum: number, defaultValue: number, uiMinimum: number, uiMaximum: number, uiGamma: number, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GParamSpec instance specifying a #GeglPath property.
  * @param name canonical name of the property specified
@@ -439,7 +439,7 @@ function paramSpecInt(name: string | null, nick: string | null, blurb: string | 
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecPath(name: string | null, nick: string | null, blurb: string | null, defaultPath: Path, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecPath(name: string, nick: string, blurb: string, defaultPath: Path, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GeglParamSpecSeed instance specifying an integer random seed.
  * @param name canonical name of the property specified
@@ -448,8 +448,8 @@ function paramSpecPath(name: string | null, nick: string | null, blurb: string |
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecSeed(name: string | null, nick: string | null, blurb: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
-function paramSpecSetPropertyKey(pspec: GObject.ParamSpec, keyName: string | null, value: string | null): void
+function paramSpecSeed(name: string, nick: string, blurb: string, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecSetPropertyKey(pspec: GObject.ParamSpec, keyName: string, value: string): void
 /**
  * Creates a new #GeglParamSpecString instance.
  * @param name canonical name of the property specified
@@ -461,7 +461,7 @@ function paramSpecSetPropertyKey(pspec: GObject.ParamSpec, keyName: string | nul
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecString(name: string | null, nick: string | null, blurb: string | null, noValidate: boolean, nullOk: boolean, defaultValue: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecString(name: string, nick: string, blurb: string, noValidate: boolean, nullOk: boolean, defaultValue: string, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Creates a new #GeglParamSpecUri instance.
  * @param name canonical name of the property specified
@@ -473,7 +473,7 @@ function paramSpecString(name: string | null, nick: string | null, blurb: string
  * @param flags flags for the property specified
  * @returns a newly created parameter specification
  */
-function paramSpecUri(name: string | null, nick: string | null, blurb: string | null, noValidate: boolean, nullOk: boolean, defaultValue: string | null, flags: GObject.ParamFlags): GObject.ParamSpec
+function paramSpecUri(name: string, nick: string, blurb: string, noValidate: boolean, nullOk: boolean, defaultValue: string, flags: GObject.ParamFlags): GObject.ParamSpec
 /**
  * Returns a GeglRectangle that represents an infininte plane.
  */
@@ -483,7 +483,7 @@ function rectangleInfinitePlane(): Rectangle
  * by #gegl_stats().
  */
 function resetStats(): void
-function serialize(start: Node, end: Node, basepath: string | null, serializeFlags: SerializeFlag): string | null
+function serialize(start: Node, end: Node, basepath: string, serializeFlags: SerializeFlag): string | null
 /**
  * Returns a GeglStats object with properties that can be read to monitor
  * GEGL statistics.
@@ -562,10 +562,10 @@ interface Metadata {
     // Has conflict: getResolution(unit: ResolutionUnit, x: number, y: number): boolean
     // Has conflict: iterGetValue(iter: MetadataIter, value: any): boolean
     // Has conflict: iterInit(iter: MetadataIter): void
-    // Has conflict: iterLookup(iter: MetadataIter, key: string | null): boolean
-    // Has conflict: iterNext(iter: MetadataIter): string | null
+    // Has conflict: iterLookup(iter: MetadataIter, key: string): boolean
+    // Has conflict: iterNext(iter: MetadataIter): string
     // Has conflict: iterSetValue(iter: MetadataIter, value: any): boolean
-    // Has conflict: registerMap(fileModule: string | null, flags: number, map: MetadataMap[]): void
+    // Has conflict: registerMap(fileModule: string, flags: number, map: MetadataMap[]): void
     // Has conflict: setResolution(unit: ResolutionUnit, x: number, y: number): boolean
     /**
      * Unregister the file module mappings and any further mappings added or
@@ -614,14 +614,14 @@ interface Metadata {
      * @param key Name of the value look up
      * @returns %TRUE if key is found.
      */
-    iterLookup(iter: MetadataIter, key: string | null): boolean
+    iterLookup(iter: MetadataIter, key: string): boolean
     /**
      * Move the iterator to the next metadata item
      * @virtual 
      * @param iter #GeglMetadataIter to be updated
      * @returns key name if found, else %NULL
      */
-    iterNext(iter: MetadataIter): string | null
+    iterNext(iter: MetadataIter): string
     /**
      * Set application data retrieved from image file's metadata.  Intended for use
      * by the image file reader.  If the operation fails it returns %FALSE and
@@ -641,7 +641,7 @@ interface Metadata {
      * @param flags Flags specifying capabilities of underlying file format
      * @param map Array of mappings from file module metadata              names to Gegl well-known names.
      */
-    registerMap(fileModule: string | null, flags: number, map: MetadataMap[]): void
+    registerMap(fileModule: string, flags: number, map: MetadataMap[]): void
     /**
      * Set resolution retrieved from image file's metadata.  Intended for use by
      * the image file reader.  If resolution is not supported by the application or
@@ -908,7 +908,7 @@ interface Buffer {
      * @param formatName the format of the input data.
      * @param src pixel data to write to `buffer`.
      */
-    set(rect: Rectangle, formatName: string | null, src: number[]): void
+    set(rect: Rectangle, formatName: string, src: number[]): void
     /**
      * This function makes sure GeglBuffer and underlying code is aware of changes
      * being made to the linear buffer. If the request was not a compatible one
@@ -931,7 +931,7 @@ interface Buffer {
      * @param path the path where the gegl buffer will be saved, any writable GIO uri is valid.
      * @param roi the region of interest to write, this is the tiles that will be collected and written to disk.
      */
-    save(path: string | null, roi: Rectangle): void
+    save(path: string, roi: Rectangle): void
     /**
      * Changes the size and position of the abyss rectangle of a buffer.
      * 
@@ -988,7 +988,7 @@ interface Buffer {
      * @param cHandler c function callback
      * @returns an handle like g_signal_connect.
      */
-    signalConnect(detailedSignal: string | null, cHandler: GObject.Callback): number
+    signalConnect(detailedSignal: string, cHandler: GObject.Callback): number
     /**
      * Unblocks emission of the "changed" signal for `buffer`.
      * 
@@ -1128,7 +1128,7 @@ class Buffer extends TileHandler {
      * @param width width of the buffer's extent
      * @param height height of the buffer's extent
      */
-    constructor(formatName: string | null, x: number, y: number, width: number, height: number) 
+    constructor(formatName: string, x: number, y: number, width: number, height: number) 
     /**
      * Create a new GeglBuffer with the given format and dimensions.
      * @constructor 
@@ -1138,7 +1138,7 @@ class Buffer extends TileHandler {
      * @param width width of the buffer's extent
      * @param height height of the buffer's extent
      */
-    static new(formatName: string | null, x: number, y: number, width: number, height: number): Buffer
+    static new(formatName: string, x: number, y: number, width: number, height: number): Buffer
     /**
      * Create a new GeglBuffer from a backend, if NULL is passed in the extent of
      * the buffer will be inherited from the extent of the backend.
@@ -1157,7 +1157,7 @@ class Buffer extends TileHandler {
      * @param path the path to a gegl buffer on disk.
      * @returns a #GeglBuffer object.
      */
-    static load(path: string | null): Buffer
+    static load(path: string): Buffer
     /**
      * Open an existing on-disk GeglBuffer, this buffer is opened in a monitored
      * state so multiple instances of gegl can share the same buffer. Sets on
@@ -1165,7 +1165,7 @@ class Buffer extends TileHandler {
      * @param path the path to a gegl buffer on disk.
      * @returns a GeglBuffer object.
      */
-    static open(path: string | null): Buffer
+    static open(path: string): Buffer
     /**
      * Generates a unique filename in the GEGL swap directory, suitable for
      * using as swap space.  When the file is no longer needed, it may be
@@ -1285,7 +1285,7 @@ class Color extends GObject.Object {
      * @constructor 
      * @param string a string describing the color to be created.
      */
-    constructor(string: string | null) 
+    constructor(string: string) 
     /**
      * Creates a new #GeglColor.
      * 
@@ -1293,7 +1293,7 @@ class Color extends GObject.Object {
      * @constructor 
      * @param string a string describing the color to be created.
      */
-    static new(string: string | null): Color
+    static new(string: string): Color
     _init(config?: Color.ConstructorProperties): void
 }
 
@@ -1892,32 +1892,32 @@ interface MetadataStore extends Metadata {
      * Get name of image creator.
      * @returns Artist or %NULL if not set
      */
-    getArtist(): string | null
+    getArtist(): string
     /**
      * Get the comment.
      * @returns Comment or %NULL if not set
      */
-    getComment(): string | null
+    getComment(): string
     /**
      * Get the copyright notice.
      * @returns Copyright or %NULL if not set
      */
-    getCopyright(): string | null
+    getCopyright(): string
     /**
      * Get description of image.
      * @returns Description or %NULL if not set
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Get the legal disclaimer.
      * @returns Disclaimer or %NULL if not set
      */
-    getDisclaimer(): string | null
+    getDisclaimer(): string
     /**
      * Return the name registered by the current file module.
      * @returns Current file module name or %NULL.
      */
-    getFileModuleName(): string | null
+    getFileModuleName(): string
     /**
      * Get the units used for resolution.
      * @returns a #GeglResolutionUnit.
@@ -1937,12 +1937,12 @@ interface MetadataStore extends Metadata {
      * Get software used to create the image.
      * @returns Software or %NULL if not set
      */
-    getSoftware(): string | null
+    getSoftware(): string
     /**
      * Get device used to create the image.
      * @returns source or %NULL if not set
      */
-    getSource(): string | null
+    getSource(): string
     /**
      * A slightly more efficient version of gegl_metadata_store_get_value()
      * for string values avoiding a duplication. Otherwise it behaves the same
@@ -1950,7 +1950,7 @@ interface MetadataStore extends Metadata {
      * @param name Metadata name
      * @returns String or %NULL.
      */
-    getString(name: string | null): string | null
+    getString(name: string): string
     /**
      * Get time of original image creation.
      * @returns #GDateTime or %NULL if not set. Free with                           g_date_time_unref() when done.
@@ -1960,14 +1960,14 @@ interface MetadataStore extends Metadata {
      * Get title or caption for image.
      * @returns Title or %NULL if not set
      */
-    getTitle(): string | null
-    // Has conflict: getValue(name: string | null, value: any): /* value */ any
+    getTitle(): string
+    // Has conflict: getValue(name: string, value: any): /* value */ any
     /**
      * Get warning.
      * @returns Warning or %NULL if not set
      */
-    getWarning(): string | null
-    // Has conflict: hasValue(name: string | null): boolean
+    getWarning(): string
+    // Has conflict: hasValue(name: string): boolean
     /**
      * gegl_metadata_store_notify() is called by subclasses when the value of a
      * metadata variable changes. It emits the `::changed` signal with the variable
@@ -1996,32 +1996,32 @@ interface MetadataStore extends Metadata {
      * @param pspec 
      */
     notify(pspec: GObject.ParamSpec): void
-    register(localName: string | null, name: string | null, transform: GObject.ValueTransform): void
+    register(localName: string, name: string, transform: GObject.ValueTransform): void
     /**
      * Set name of image creator.
      * @param artist Artist string
      */
-    setArtist(artist: string | null): void
+    setArtist(artist: string): void
     /**
      * Set the miscellaneous comment; conversion from GIF comment.
      * @param comment Comment string
      */
-    setComment(comment: string | null): void
+    setComment(comment: string): void
     /**
      * Set the copyright notice.
      * @param copyright Copyright string
      */
-    setCopyright(copyright: string | null): void
+    setCopyright(copyright: string): void
     /**
      * Set description of image.
      * @param description Description string
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Set the legal disclaimer.
      * @param disclaimer Disclaimer string
      */
-    setDisclaimer(disclaimer: string | null): void
+    setDisclaimer(disclaimer: string): void
     /**
      * Set the units used for the resolution (density) values.
      * @param unit Units as a #GeglResolutionUnit
@@ -2041,12 +2041,12 @@ interface MetadataStore extends Metadata {
      * Set software used to create the image.
      * @param software Software string
      */
-    setSoftware(software: string | null): void
+    setSoftware(software: string): void
     /**
      * Set device used to create the image.
      * @param source Source string
      */
-    setSource(source: string | null): void
+    setSource(source: string): void
     /**
      * A slightly more efficient version of gegl_metadata_store_set_value()
      * for string values avoiding a duplication. Otherwise it behaves the same
@@ -2054,7 +2054,7 @@ interface MetadataStore extends Metadata {
      * @param name Metadata name
      * @param string String value to set
      */
-    setString(name: string | null, string: string | null): void
+    setString(name: string, string: string): void
     /**
      * Set time of original image creation.
      * @param timestamp A #GDateTime
@@ -2064,32 +2064,32 @@ interface MetadataStore extends Metadata {
      * Set title or caption for image.
      * @param title Title string
      */
-    setTitle(title: string | null): void
-    // Has conflict: setValue(name: string | null, value: any): void
+    setTitle(title: string): void
+    // Has conflict: setValue(name: string, value: any): void
     /**
      * Set the warning of nature of content.
      * @param warning Warning string
      */
-    setWarning(warning: string | null): void
+    setWarning(warning: string): void
     /**
      * Get the declared type of the value in the #GeglMetadataStore.
      * @param name Metadata name
      * @returns Declared #GType of metadata value or %G_TYPE_INVALID.
      */
-    typeofValue(name: string | null): GObject.GType
+    typeofValue(name: string): GObject.GType
 
     // Own virtual methods of Gegl-0.4.Gegl.MetadataStore
 
     declare(pspec: GObject.ParamSpec, shadow: boolean): void
-    getValue(name: string | null): any
+    getValue(name: string): any
     /**
      * Test whether the #GeglMetadataStore contains a value for the specified name.
      * @virtual 
      * @param name Metadata name
      * @returns %TRUE if metadata is declared and contains a valid value.
      */
-    hasValue(name: string | null): boolean
-    registerHook(fileModuleName: string | null, flags: number): void
+    hasValue(name: string): boolean
+    registerHook(fileModuleName: string, flags: number): void
     /**
      * Set the specified metadata value. If `value` is %NULL the default value from
      * the associated #GParamSpec is used. This operation will fail if the value
@@ -2100,7 +2100,7 @@ interface MetadataStore extends Metadata {
      * @param name Metadata name
      * @param value (nullable): A valid #GValue or %NULL
      */
-    setValue(name: string | null, value: any): void
+    setValue(name: string, value: any): void
 
     // Own signals of Gegl-0.4.Gegl.MetadataStore
 
@@ -2309,7 +2309,7 @@ interface Node {
      * @param b another node
      * @param bPadName and its pad to be connected.
      */
-    connect(aPadName: string | null, b: Node, bPadName: string | null): boolean
+    connect(aPadName: string, b: Node, bPadName: string): boolean
     /**
      * Makes a connection between the pads of two nodes.
      * 
@@ -2318,7 +2318,7 @@ interface Node {
      * @param source the node producing data we want to connect.
      * @param outputPadName the output pad we want to use on the source.
      */
-    connectFrom(inputPadName: string | null, source: Node, outputPadName: string | null): boolean
+    connectFrom(inputPadName: string, source: Node, outputPadName: string): boolean
     /**
      * Makes a connection between the pads of two nodes.
      * 
@@ -2327,7 +2327,7 @@ interface Node {
      * @param sink the node we're connecting an input to
      * @param inputPadName the name of the input pad we are connecting to
      */
-    connectTo(outputPadName: string | null, sink: Node, inputPadName: string | null): boolean
+    connectTo(outputPadName: string, sink: Node, inputPadName: string): boolean
     /**
      * Creates a new processing node that performs the specified operation.
      * All properties of the operation will have their default values. This
@@ -2337,7 +2337,7 @@ interface Node {
      * @param operation the type of node to create.
      * @returns a newly created node. The node will be destroyed by the parent. Calling g_object_unref on a node will cause the node to be dropped by the parent. (You may also add additional references using g_object_ref/g_object_unref, but in general relying on the parents reference counting is easiest.)
      */
-    createChild(operation: string | null): Node
+    createChild(operation: string): Node
     /**
      * Performs hit detection by returning the node providing data at a given
      * coordinate pair. Currently operates only on bounding boxes and not
@@ -2353,8 +2353,8 @@ interface Node {
      * Returns TRUE if a connection was broken.
      * @param inputPad the input pad to disconnect.
      */
-    disconnect(inputPad: string | null): boolean
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    disconnect(inputPad: string): boolean
+    findProperty(propertyName: string): GObject.ParamSpec
     getChildren(): Node[]
     /**
      * Retrieve which pads on which nodes are connected to a named output_pad,
@@ -2365,7 +2365,7 @@ interface Node {
      * Returns the number of consumers connected to this output_pad.
      * @param outputPad the output pad we want to know who uses.
      */
-    getConsumers(outputPad: string | null): [ /* returnType */ number, /* nodes */ Node[], /* pads */ string[] ]
+    getConsumers(outputPad: string): [ /* returnType */ number, /* nodes */ Node[], /* pads */ string[] ]
     getGeglOperation(): Operation | null
     /**
      * Proxies are used to route between nodes of a subgraph contained within
@@ -2373,34 +2373,34 @@ interface Node {
      * @param padName the name of the pad.
      * @returns Returns an input proxy for the named pad. If no input proxy exists with this name a new one will be created.
      */
-    getInputProxy(padName: string | null): Node
-    getOperation(): string | null
+    getInputProxy(padName: string): Node
+    getOperation(): string
     /**
      * Proxies are used to route between nodes of a subgraph contained within
      * a node.
      * @param padName the name of the pad.
      * @returns Returns a output proxy for the named pad. If no output proxy exists with this name a new one will be created.
      */
-    getOutputProxy(padName: string | null): Node
+    getOutputProxy(padName: string): Node
     /**
      * Returns a GeglNode that keeps a reference on a child.
      * @returns the parent of a node or NULL.
      */
     getParent(): Node
     getPassthrough(): boolean
-    getProducer(inputPadName: string | null, outputPadName: string | null): Node
+    getProducer(inputPadName: string, outputPadName: string | null): Node
     /**
      * Returns TRUE if the node has a pad with the specified name
      * @param padName the pad name we are looking for
      */
-    hasPad(padName: string | null): boolean
+    hasPad(padName: string): boolean
     /**
      * Returns the position and dimensions of a rectangle spanning the area
      * defined by a node.
      * @returns pointer a #GeglRectangle
      */
     getBoundingBox(): Rectangle
-    getProperty(propertyName: string | null): any
+    getProperty(propertyName: string): any
 
     // Overloads of getProperty
 
@@ -2488,7 +2488,7 @@ interface Node {
      * @returns the child.
      */
     removeChild(child: Node): Node
-    setEnumAsString(key: string | null, value: string | null): void
+    setEnumAsString(key: string, value: string): void
     setPassthrough(passthrough: boolean): void
     /**
      * This is mainly included for language bindings. Using #gegl_node_set is
@@ -2496,7 +2496,7 @@ interface Node {
      * @param propertyName the name of the property to set
      * @param value a GValue containing the value to be set in the property.
      */
-    setProperty(propertyName: string | null, value: any): void
+    setProperty(propertyName: string, value: any): void
 
     // Overloads of setProperty
 
@@ -2521,7 +2521,7 @@ interface Node {
      * for the serialization.
      * @param pathRoot filesystem path to construct relative paths from.
      */
-    toXml(pathRoot: string | null): string | null
+    toXml(pathRoot: string): string | null
     /**
      * Returns a freshly allocated \0 terminated string containing a XML
      * serialization of a segment of a graph from `head` to `tail` nodes.
@@ -2530,7 +2530,7 @@ interface Node {
      * @param pathRoot filesystem path to construct relative paths from.
      * @returns XML serialization of a graph segment.
      */
-    toXmlFull(tail: Node | null, pathRoot: string | null): string | null
+    toXmlFull(tail: Node | null, pathRoot: string): string | null
 
     // Own signals of Gegl-0.4.Gegl.Node
 
@@ -2629,8 +2629,8 @@ class Node extends GObject.Object {
      * @param path the path to a file on the local file system to be parsed.
      * @returns a GeglNode containing the parsed XML as a subgraph.
      */
-    static newFromFile(path: string | null): Node
-    static newFromSerialized(chaindata: string | null, pathRoot: string | null): Node
+    static newFromFile(path: string): Node
+    static newFromSerialized(chaindata: string, pathRoot: string): Node
     /**
      * The #GeglNode returned contains the graph described by the tree of stacks
      * in the XML document. The tree is connected to the "output" pad of the
@@ -2640,7 +2640,7 @@ class Node extends GObject.Object {
      * @param pathRoot a file system path that relative paths in the XML will be resolved in relation to.
      * @returns a GeglNode containing the parsed XML as a subgraph.
      */
-    static newFromXml(xmldata: string | null, pathRoot: string | null): Node
+    static newFromXml(xmldata: string, pathRoot: string): Node
     _init(config?: Node.ConstructorProperties): void
 }
 
@@ -2684,13 +2684,13 @@ class Operation extends GObject.Object {
 
     constructor(config?: Operation.ConstructorProperties) 
     _init(config?: Operation.ConstructorProperties): void
-    static findProperty(operationType: string | null, propertyName: string | null): GObject.ParamSpec
-    static getKey(operationType: string | null, keyName: string | null): string | null
-    static getOpVersion(opName: string | null): string | null
-    static getPropertyKey(operationType: string | null, propertyName: string | null, propertyKeyName: string | null): string | null
-    static listKeys(operationType: string | null): string[]
-    static listProperties(operationType: string | null): GObject.ParamSpec[]
-    static listPropertyKeys(operationType: string | null, propertyName: string | null): string[]
+    static findProperty(operationType: string, propertyName: string): GObject.ParamSpec
+    static getKey(operationType: string, keyName: string): string
+    static getOpVersion(opName: string): string
+    static getPropertyKey(operationType: string, propertyName: string, propertyKeyName: string): string
+    static listKeys(operationType: string): string[]
+    static listProperties(operationType: string): GObject.ParamSpec[]
+    static listPropertyKeys(operationType: string, propertyName: string): string[]
 }
 
 interface ParamAudioFragment {
@@ -2934,7 +2934,7 @@ interface Path {
      * gegl_path_clean() first if you want to replace the existing path.
      * @param instructions a string describing a path.
      */
-    parseString(instructions: string | null): void
+    parseString(instructions: string): void
     /**
      * Removes the node number `pos` in `path`.
      * @param pos a node in the path.
@@ -3019,7 +3019,7 @@ class Path extends GObject.Object {
      * @constructor 
      * @param instructions a string describing the path.
      */
-    static newFromString(instructions: string | null): Path
+    static newFromString(instructions: string): Path
     _init(config?: Path.ConstructorProperties): void
     /**
      * Adds a new type to the path system, FIXME this should probably
@@ -3029,7 +3029,7 @@ class Path extends GObject.Object {
      * @param items the number of floating point data items the instruction takes
      * @param description a human readable description of this entry
      */
-    static addType(type: number, items: number, description: string | null): void
+    static addType(type: number, items: number, description: string): void
 }
 
 module Processor {
@@ -3775,7 +3775,7 @@ interface Matrix3 {
      * Parse a transofmation matrix from a string.
      * @param string a string describing the matrix (right now a small subset of the transform strings allowed by SVG)
      */
-    parseString(string: string | null): void
+    parseString(string: string): void
     /**
      * Rounds numerical errors in `matrix` to the nearest integer.
      */
@@ -3826,12 +3826,12 @@ interface MetadataInterface {
 
     // Own fields of Gegl-0.4.Gegl.MetadataInterface
 
-    registerMap: (metadata: Metadata, fileModule: string | null, flags: number, map: MetadataMap[]) => void
+    registerMap: (metadata: Metadata, fileModule: string, flags: number, map: MetadataMap[]) => void
     setResolution: (metadata: Metadata, unit: ResolutionUnit, x: number, y: number) => boolean
     getResolution: (metadata: Metadata, unit: ResolutionUnit, x: number, y: number) => boolean
-    iterLookup: (metadata: Metadata, iter: MetadataIter, key: string | null) => boolean
+    iterLookup: (metadata: Metadata, iter: MetadataIter, key: string) => boolean
     iterInit: (metadata: Metadata, iter: MetadataIter) => void
-    iterNext: (metadata: Metadata, iter: MetadataIter) => string | null
+    iterNext: (metadata: Metadata, iter: MetadataIter) => string
     iterSetValue: (metadata: Metadata, iter: MetadataIter, value: any) => boolean
     iterGetValue: (metadata: Metadata, iter: MetadataIter, value: any) => boolean
 }
@@ -3869,12 +3869,12 @@ interface MetadataMap {
      * Name of metadata variable used in the file module.
      * @field 
      */
-    localName: string | null
+    localName: string
     /**
      * Standard metadata variable name used by Gegl.
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * Optional #GValue transform function.
      * @field 
@@ -3899,9 +3899,9 @@ interface MetadataStoreClass {
 
     // Own fields of Gegl-0.4.Gegl.MetadataStoreClass
 
-    setValue: (self: MetadataStore, name: string | null, value: any) => void
-    hasValue: (self: MetadataStore, name: string | null) => boolean
-    registerHook: (self: MetadataStore, fileModuleName: string | null, flags: number) => void
+    setValue: (self: MetadataStore, name: string, value: any) => void
+    hasValue: (self: MetadataStore, name: string) => boolean
+    registerHook: (self: MetadataStore, fileModuleName: string, flags: number) => void
 }
 
 /**

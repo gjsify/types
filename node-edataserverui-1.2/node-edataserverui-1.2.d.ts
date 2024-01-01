@@ -90,7 +90,7 @@ function trustPromptDescribeCertificateErrors(flags: Gio.TlsCertificateFlags): s
  * @param cancellable a #GCancellable, or %NULL
  * @param callback a callback to call, when the prompt (an `source` save) is done
  */
-function trustPromptRunForSource(parent: Gtk.Window, source: EDataServer.Source, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null, allowSourceSave: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+function trustPromptRunForSource(parent: Gtk.Window, source: EDataServer.Source, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null, allowSourceSave: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Finishes the operation started with e_trust_prompt_run_for_source().
  * The `response` will contain a code of the user's choice.
@@ -125,7 +125,7 @@ function trustPromptRunForSourceFinish(source: EDataServer.Source, result: Gio.A
  * @param errorText an optional error text to show in the dialog; can be %NULL
  * @returns A code of the user's choice. The #E_TRUST_PROMPT_RESPONSE_UNKNOWN    is returned, when the user cancelled the trust prompt dialog.
  */
-function trustPromptRunModal(parent: Gtk.Window, sourceExtension: string | null, sourceDisplayName: string | null, host: string | null, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null): EDataServer.TrustPromptResponse
+function trustPromptRunModal(parent: Gtk.Window, sourceExtension: string | null, sourceDisplayName: string | null, host: string, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null): EDataServer.TrustPromptResponse
 interface CredentialsPrompterLoopPromptFunc {
     (prompter: CredentialsPrompter, source: EDataServer.Source, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): boolean
 }
@@ -324,13 +324,13 @@ interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -343,13 +343,13 @@ interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -362,7 +362,7 @@ interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -371,7 +371,7 @@ interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -383,7 +383,7 @@ interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1138,7 +1138,7 @@ interface CredentialsPrompterImpl {
      * @param promptId a prompt ID to cancel
      */
     cancelPrompt(promptId: any | null): void
-    processPrompt(promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string | null, credentials: EDataServer.NamedParameters): void
+    processPrompt(promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string, credentials: EDataServer.NamedParameters): void
     promptFinished(promptId: any | null, credentials: EDataServer.NamedParameters): void
 
     // Own signals of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImpl
@@ -1403,13 +1403,13 @@ interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Extensible, 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1422,13 +1422,13 @@ interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Extensible, 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1441,7 +1441,7 @@ interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Extensible, 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1450,7 +1450,7 @@ interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Extensible, 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1462,7 +1462,7 @@ interface RemindersWidget extends Atk.ImplementorIface, EDataServer.Extensible, 
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1839,7 +1839,7 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * or even a %NULL.
      * @returns currently set base URL for the @content.
      */
-    getBaseUrl(): string | null
+    getBaseUrl(): string
     getMultiselect(): boolean
     /**
      * Returns information about selected source at index `index`. The function can be called
@@ -1895,7 +1895,7 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * or even a %NULL.
      * @param baseUrl a base URL
      */
-    setBaseUrl(baseUrl: string | null): void
+    setBaseUrl(baseUrl: string): void
     /**
      * Sets whether the WebDAV discovery content allows multiselect.
      * @param multiselect whether multiselect is allowed
@@ -1920,13 +1920,13 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1939,13 +1939,13 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1958,7 +1958,7 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1967,7 +1967,7 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1979,7 +1979,7 @@ interface WebDAVDiscoverContent extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2352,13 +2352,13 @@ interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2371,13 +2371,13 @@ interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2390,7 +2390,7 @@ interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2399,7 +2399,7 @@ interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -2455,7 +2455,7 @@ interface WebDAVDiscoverDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2902,7 +2902,7 @@ class WebDAVDiscoverDialog extends Gtk.Dialog {
      * @param supportsFilter a bit-or of #EWebDAVDiscoverSupports, a filter to limit what source    types will be shown in the dialog content; use %E_WEBDAV_DISCOVER_SUPPORTS_NONE    to show all
      * @returns a newly created #GtkDialog, which should be freed with g_object_unref(), when no longer needed.
      */
-    constructor(parent: Gtk.Window, title: string | null, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number) 
+    constructor(parent: Gtk.Window, title: string, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number) 
     /**
      * Creates a new #GtkDialog which has as its content a WebDAV discovery widget,
      * created with e_webdav_discover_content_new(). This dialog can be shown to a user
@@ -2917,7 +2917,7 @@ class WebDAVDiscoverDialog extends Gtk.Dialog {
      * @param supportsFilter a bit-or of #EWebDAVDiscoverSupports, a filter to limit what source    types will be shown in the dialog content; use %E_WEBDAV_DISCOVER_SUPPORTS_NONE    to show all
      * @returns a newly created #GtkDialog, which should be freed with g_object_unref(), when no longer needed.
      */
-    static new(parent: Gtk.Window, title: string | null, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number): WebDAVDiscoverDialog
+    static new(parent: Gtk.Window, title: string, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number): WebDAVDiscoverDialog
 
     // Overloads of new
 
@@ -3027,8 +3027,8 @@ interface CredentialsPrompterImplClass {
     // Own fields of EDataServerUI-1.2.EDataServerUI.CredentialsPrompterImplClass
 
     parentClass: EDataServer.ExtensionClass
-    authenticationMethods: string | null
-    processPrompt: (prompterImpl: CredentialsPrompterImpl, promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string | null, credentials: EDataServer.NamedParameters) => void
+    authenticationMethods: string
+    processPrompt: (prompterImpl: CredentialsPrompterImpl, promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string, credentials: EDataServer.NamedParameters) => void
     cancelPrompt: (prompterImpl: CredentialsPrompterImpl, promptId: any | null) => void
     promptFinished: (prompterImpl: CredentialsPrompterImpl, promptId: any | null, credentials: EDataServer.NamedParameters) => void
 }

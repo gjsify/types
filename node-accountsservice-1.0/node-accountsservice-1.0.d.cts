@@ -161,17 +161,17 @@ export interface User {
      * Retrieves the email address set by `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getEmail(): string | null
+    getEmail(): string
     /**
      * Retrieves the home directory for `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getHomeDir(): string | null
+    getHomeDir(): string
     /**
      * Returns the path to the account icon belonging to `user`.
      * @returns a path to an icon
      */
-    getIconFile(): string | null
+    getIconFile(): string
     /**
      * Returns the value of #ActUser:language.
      * @returns the user’s language, or the empty string    if they are using the system default language, or %NULL if there is no    connection to the daemon
@@ -186,7 +186,7 @@ export interface User {
      * Retrieves the location set by `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getLocation(): string | null
+    getLocation(): string
     /**
      * Returns whether or not the #ActUser account is locked.
      * @returns %TRUE or %FALSE
@@ -228,7 +228,7 @@ export interface User {
      * with it.
      * @returns the object path of the user
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Get the password expiration policy for a user.
      * 
@@ -239,7 +239,7 @@ export interface User {
      * Retrieves the password hint set by `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getPasswordHint(): string | null
+    getPasswordHint(): string
     /**
      * Retrieves the password mode of `user`.
      * @returns a #ActUserPasswordMode
@@ -252,12 +252,12 @@ export interface User {
      * the seat of the session of the calling process.
      * @returns the id of the primary session of the user
      */
-    getPrimarySessionId(): string | null
+    getPrimarySessionId(): string
     /**
      * Retrieves the display name of `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getRealName(): string | null
+    getRealName(): string
     /**
      * Returns whether or not the #ActUser account has retained state in accountsservice.
      * @returns %TRUE or %FALSE
@@ -267,17 +267,17 @@ export interface User {
      * Returns the path to the configured session for `user`.
      * @returns a path to an icon
      */
-    getSession(): string | null
+    getSession(): string
     /**
      * Returns the type of the configured session for `user`.
      * @returns a path to an icon
      */
-    getSessionType(): string | null
+    getSessionType(): string
     /**
      * Retrieves the shell assigned to `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getShell(): string | null
+    getShell(): string
     /**
      * Retrieves the ID of `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
@@ -287,12 +287,12 @@ export interface User {
      * Retrieves the login name of `user`.
      * @returns a pointer to an array of characters which must not be modified or  freed, or %NULL.
      */
-    getUserName(): string | null
+    getUserName(): string
     /**
      * Returns the path to the configured X session for `user`.
      * @returns a path to an icon
      */
-    getXSession(): string | null
+    getXSession(): string
     /**
      * Retrieves whether the user is a local account or not.
      * @returns %TRUE if the user is local
@@ -347,21 +347,21 @@ export interface User {
      * Note this function is synchronous and ignores errors.
      * @param email an email address
      */
-    setEmail(email: string | null): void
+    setEmail(email: string): void
     /**
      * Assigns a new icon for `user`.
      * 
      * Note this function is synchronous and ignores errors.
      * @param iconFile path to an icon
      */
-    setIconFile(iconFile: string | null): void
+    setIconFile(iconFile: string): void
     /**
      * Assigns a new locale for `user,` setting #ActUser:language.
      * 
      * Note this function is synchronous and ignores errors.
      * @param language a locale (for example, `en_US.utf8`), or the empty    string to use the system default locale
      */
-    setLanguage(language: string | null): void
+    setLanguage(language: string): void
     /**
      * Assigns preferred languages for `user,` setting #ActUser:languages, and
      * overriding #ActUser:language with the first item in the list if there is one.
@@ -376,7 +376,7 @@ export interface User {
      * Note this function is synchronous and ignores errors.
      * @param location a location
      */
-    setLocation(location: string | null): void
+    setLocation(location: string): void
     /**
      * Note this function is synchronous and ignores errors.
      * @param locked whether or not the account is locked
@@ -390,7 +390,7 @@ export interface User {
      * @param password a password
      * @param hint a hint to help user recall password
      */
-    setPassword(password: string | null, hint: string | null): void
+    setPassword(password: string, hint: string): void
     /**
      * Set the password expiration policy for a user.
      * 
@@ -401,7 +401,7 @@ export interface User {
      * @param daysAfterExpirationUntilLock location to write number of days account will be locked after password expires.
      */
     setPasswordExpirationPolicy(minDaysBetweenChanges: number, maxDaysBetweenChanges: number, daysToWarn: number, daysAfterExpirationUntilLock: number): void
-    setPasswordHint(hint: string | null): void
+    setPasswordHint(hint: string): void
     /**
      * Changes the password of `user`.  If `password_mode` is
      * ACT_USER_PASSWORD_MODE_SET_AT_LOGIN then the user will
@@ -419,21 +419,21 @@ export interface User {
      * Note this function is synchronous and ignores errors.
      * @param realName a new name
      */
-    setRealName(realName: string | null): void
+    setRealName(realName: string): void
     /**
      * Assigns a new session for `user`.
      * 
      * Note this function is synchronous and ignores errors.
      * @param session a session (e.g. gnome)
      */
-    setSession(session: string | null): void
+    setSession(session: string): void
     /**
      * Assigns a type to the session for `user`.
      * 
      * Note this function is synchronous and ignores errors.
      * @param sessionType a type of session (e.g. "wayland" or "x11")
      */
-    setSessionType(sessionType: string | null): void
+    setSessionType(sessionType: string): void
     /**
      * Set the user expiration policy for a user.
      * 
@@ -447,14 +447,14 @@ export interface User {
      * Note this function is synchronous and ignores errors.
      * @param userName a new user name
      */
-    setUserName(userName: string | null): void
+    setUserName(userName: string): void
     /**
      * Assigns a new x session for `user`.
      * 
      * Note this function is synchronous and ignores errors.
      * @param xSession an x session (e.g. gnome)
      */
-    setXSession(xSession: string | null): void
+    setXSession(xSession: string): void
 
     // Own signals of AccountsService-1.0.AccountsService.User
 
@@ -683,7 +683,7 @@ export interface UserManager {
      * @param username a user name
      * @returns user object
      */
-    cacheUser(username: string | null): User
+    cacheUser(username: string): User
     /**
      * Asynchronously caches a user account so it shows up via
      * act_user_manager_list_users().
@@ -694,7 +694,7 @@ export interface UserManager {
      * @param cancellable optional #GCancellable object,     %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
-    cacheUserAsync(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    cacheUserAsync(username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous user caching.
      * 
@@ -715,7 +715,7 @@ export interface UserManager {
      * @param accounttype a #ActUserAccountType
      * @returns user object
      */
-    createUser(username: string | null, fullname: string | null, accounttype: UserAccountType): User
+    createUser(username: string, fullname: string, accounttype: UserAccountType): User
     /**
      * Asynchronously creates a user account on the system.
      * 
@@ -727,7 +727,7 @@ export interface UserManager {
      * @param cancellable optional #GCancellable object,     %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call     when the request is satisfied
      */
-    createUserAsync(username: string | null, fullname: string | null, accounttype: UserAccountType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createUserAsync(username: string, fullname: string, accounttype: UserAccountType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous user creation.
      * 
@@ -770,7 +770,7 @@ export interface UserManager {
      * @param username the login name of the user to get.
      * @returns #ActUser object
      */
-    getUser(username: string | null): User
+    getUser(username: string): User
     /**
      * Retrieves a pointer to the #ActUser object for the user with the
      * given uid from `manager`. Trying to use this object before its
@@ -803,8 +803,8 @@ export interface UserManager {
      * @param username a user name
      * @returns %TRUE if successful, otherwise %FALSE
      */
-    uncacheUser(username: string | null): boolean
-    uncacheUserAsync(username: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    uncacheUser(username: string): boolean
+    uncacheUserAsync(username: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous user uncaching.
      * 

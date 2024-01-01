@@ -77,8 +77,8 @@ export class Client extends GObject.Object {
     // Constructors of Plasma-1.0.Plasma.Client
 
     constructor(config?: Client.ConstructorProperties) 
-    constructor(storeSocketName: string | null, options: ClientOptions | null) 
-    static new(storeSocketName: string | null, options: ClientOptions | null): Client
+    constructor(storeSocketName: string, options: ClientOptions | null) 
+    static new(storeSocketName: string, options: ClientOptions | null): Client
     _init(config?: Client.ConstructorProperties): void
 }
 

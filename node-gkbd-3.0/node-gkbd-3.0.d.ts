@@ -44,20 +44,20 @@ enum KeyboardDrawingItemType {
     KEY_EXTRA,
     DOODAD,
 }
-const DESKTOP_SCHEMA: string | null
+const DESKTOP_SCHEMA: string
 const KEYBOARD_DRAWING_H: number
-const KEYBOARD_SCHEMA: string | null
+const KEYBOARD_SCHEMA: string
 function installGlibLogAppender(): void
 function keyboardConfigAddDefaultSwitchOptionIfNecessary(layoutsList: string | null, optionsList: string | null, wasAppended: boolean): string[]
-function keyboardConfigFormatFullDescription(layoutDescr: string | null, variantDescr: string | null): string | null
-function keyboardConfigGetDescriptions(configRegistry: Xkl.ConfigRegistry, name: string | null, layoutShortDescr: string | null, layoutDescr: string | null, variantShortDescr: string | null, variantDescr: string | null): boolean
-function keyboardConfigMergeItems(parent: string | null, child: string | null): string | null
-function keyboardConfigSplitItems(merged: string | null, parent: string | null, child: string | null): boolean
+function keyboardConfigFormatFullDescription(layoutDescr: string, variantDescr: string): string
+function keyboardConfigGetDescriptions(configRegistry: Xkl.ConfigRegistry, name: string, layoutShortDescr: string | null, layoutDescr: string | null, variantShortDescr: string | null, variantDescr: string | null): boolean
+function keyboardConfigMergeItems(parent: string, child: string): string
+function keyboardConfigSplitItems(merged: string, parent: string | null, child: string | null): boolean
 function previewLoadPosition(): Gdk.Rectangle
 function previewSavePosition(rect: Gdk.Rectangle): void
 function strvAppend(arr: string | null, element: string | null): string[]
 function strvBehead(arr: string | null): void
-function strvRemove(arr: string | null, element: string | null): boolean
+function strvRemove(arr: string | null, element: string): boolean
 module Configuration {
 
     // Signal callback interfaces
@@ -221,13 +221,13 @@ interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -240,13 +240,13 @@ interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -259,7 +259,7 @@ interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -268,7 +268,7 @@ interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -280,7 +280,7 @@ interface Indicator extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -626,12 +626,12 @@ interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Owm methods of Gkbd-3.0.Gkbd.KeyboardDrawing
 
-    getCompat(): string | null
-    getGeometry(): string | null
-    getKeycodes(): string | null
-    getSymbols(): string | null
-    getTypes(): string | null
-    print(parentWindow: Gtk.Window, description: string | null): void
+    getCompat(): string
+    getGeometry(): string
+    getKeycodes(): string
+    getSymbols(): string
+    getTypes(): string
+    print(parentWindow: Gtk.Window, description: string): void
     /**
      * Renders a keyboard layout to a cairo_t context.  `cr` and `layout` can be got
      * from e.g. a GtkWidget or a GtkPrintContext.  `cr` and `layout` may be modified
@@ -648,7 +648,7 @@ interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
      */
     render(cr: cairo.Context, layout: Pango.Layout, x: number, y: number, width: number, height: number, dpiX: number, dpiY: number): boolean
     setGroupsLevels(groupLevels: KeyboardDrawingGroupLevel): void
-    setLayout(id: string | null): void
+    setLayout(id: string): void
     setTrackConfig(enable: boolean): void
     setTrackModifiers(enable: boolean): void
 
@@ -663,13 +663,13 @@ interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -682,13 +682,13 @@ interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -701,7 +701,7 @@ interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -710,7 +710,7 @@ interface KeyboardDrawing extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of Gkbd-3.0.Gkbd.KeyboardDrawing
 
@@ -948,7 +948,7 @@ class KeyboardDrawing extends Gtk.DrawingArea {
     static new(): KeyboardDrawing
     _init(config?: KeyboardDrawing.ConstructorProperties): void
     static dialogSetGroup(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, group: number): void
-    static dialogSetLayout(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, layout: string | null): void
+    static dialogSetLayout(dialog: Gtk.Widget, registry: Xkl.ConfigRegistry, layout: string): void
 }
 
 module Status {
@@ -1114,7 +1114,7 @@ interface DesktopConfig {
     activate(): boolean
     init(engine: Xkl.Engine): void
     load(): void
-    loadGroupDescriptions(registry: Xkl.ConfigRegistry, layoutIds: string | null, variantIds: string | null, shortGroupNames: string | null, fullGroupNames: string | null): boolean
+    loadGroupDescriptions(registry: Xkl.ConfigRegistry, layoutIds: string, variantIds: string, shortGroupNames: string | null, fullGroupNames: string | null): boolean
     lockNextGroup(): void
     lockPrevGroup(): void
     restoreGroup(): void
@@ -1221,10 +1221,10 @@ class KeyboardConfig {
     // Constructors of Gkbd-3.0.Gkbd.KeyboardConfig
 
     static addDefaultSwitchOptionIfNecessary(layoutsList: string | null, optionsList: string | null, wasAppended: boolean): string[]
-    static formatFullDescription(layoutDescr: string | null, variantDescr: string | null): string | null
-    static getDescriptions(configRegistry: Xkl.ConfigRegistry, name: string | null, layoutShortDescr: string | null, layoutDescr: string | null, variantShortDescr: string | null, variantDescr: string | null): boolean
-    static mergeItems(parent: string | null, child: string | null): string | null
-    static splitItems(merged: string | null, parent: string | null, child: string | null): boolean
+    static formatFullDescription(layoutDescr: string, variantDescr: string): string
+    static getDescriptions(configRegistry: Xkl.ConfigRegistry, name: string, layoutShortDescr: string | null, layoutDescr: string | null, variantShortDescr: string | null, variantDescr: string | null): boolean
+    static mergeItems(parent: string, child: string): string
+    static splitItems(merged: string, parent: string | null, child: string | null): boolean
 }
 
 interface KeyboardDrawingClass {

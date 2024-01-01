@@ -355,12 +355,12 @@ class Capabilities extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): Capabilities
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): Capabilities
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: Capabilities.ConstructorProperties): void
 }
 
@@ -387,7 +387,7 @@ interface CapabilitiesCpu {
      * @param feature 
      */
     add_feature(feature: CapabilitiesCpuFeature): void
-    get_arch(): string | null
+    get_arch(): string
     /**
      * Gets the features of this CPU.
      * @returns  a newly allocated #GList of #GVirConfigCapabilitiesCpuFeature.
@@ -463,8 +463,8 @@ interface CapabilitiesCpuFeature {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesCpuFeature
 
-    get_name(): string | null
-    set_name(name: string | null): void
+    get_name(): string
+    set_name(name: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesCpuFeature
 
@@ -511,8 +511,8 @@ interface CapabilitiesCpuModel {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesCpuModel
 
-    get_name(): string | null
-    set_name(name: string | null): void
+    get_name(): string
+    set_name(name: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesCpuModel
 
@@ -543,12 +543,12 @@ class CapabilitiesCpuModel extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): CapabilitiesCpuModel
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): CapabilitiesCpuModel
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: CapabilitiesCpuModel.ConstructorProperties): void
 }
 
@@ -606,12 +606,12 @@ class CapabilitiesCpuTopology extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): CapabilitiesCpuTopology
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): CapabilitiesCpuTopology
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: CapabilitiesCpuTopology.ConstructorProperties): void
 }
 
@@ -695,8 +695,8 @@ interface CapabilitiesGuestArch {
      * @returns  a newly allocated #GList of #GVirConfigCapabilitiesGuestDomain.
      */
     get_domains(): CapabilitiesGuestDomain[]
-    get_emulator(): string | null
-    get_name(): string | null
+    get_emulator(): string
+    get_name(): string
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesGuestArch
 
@@ -743,7 +743,7 @@ interface CapabilitiesGuestDomain {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesGuestDomain
 
-    get_emulator(): string | null
+    get_emulator(): string
     get_virt_type(): DomainVirtType
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesGuestDomain
@@ -791,7 +791,7 @@ interface CapabilitiesGuestFeature {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesGuestFeature
 
-    get_name(): string | null
+    get_name(): string
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesGuestFeature
 
@@ -848,7 +848,7 @@ interface CapabilitiesHost {
      * @returns  a newly allocated #GList of #GVirConfigCapabilitiesHostSecModel.
      */
     get_secmodels(): CapabilitiesHostSecModel[]
-    get_uuid(): string | null
+    get_uuid(): string
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesHost
 
@@ -895,8 +895,8 @@ interface CapabilitiesHostSecModel {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesHostSecModel
 
-    get_doi(): string | null
-    get_model(): string | null
+    get_doi(): string
+    get_model(): string
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.CapabilitiesHostSecModel
 
@@ -979,8 +979,8 @@ interface Domain {
      */
     get_cpu(): DomainCpu
     get_current_memory(): number
-    get_custom_xml(ns_uri: string | null): string | null
-    get_description(): string | null
+    get_custom_xml(ns_uri: string): string | null
+    get_description(): string
     /**
      * Gets the list of devices attached to `domain`.  The returned list should
      * be freed with g_list_free(), after its elements have been unreffed with
@@ -990,14 +990,14 @@ interface Domain {
     get_devices(): DomainDevice[]
     get_features(): string[]
     get_memory(): number
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the operating system configuration of `domain`
      * @returns A #GVirConfigDomainOs. The returned object should be unreffed with g_object_unref() when no longer needed.
      */
     get_os(): DomainOs
-    get_title(): string | null
-    get_uuid(): string | null
+    get_title(): string
+    get_uuid(): string
     get_vcpus(): number
     get_virt_type(): DomainVirtType
     set_clock(klock: DomainClock | null): void
@@ -1012,8 +1012,8 @@ interface Domain {
      * @param memory The current amount of RAM in kilobytes.
      */
     set_current_memory(memory: number): void
-    set_custom_xml(xml: string | null, ns: string | null, ns_uri: string | null): boolean
-    set_custom_xml_ns_children(xml: string | null, ns: string | null, ns_uri: string | null): boolean
+    set_custom_xml(xml: string, ns: string, ns_uri: string): boolean
+    set_custom_xml_ns_children(xml: string, ns: string, ns_uri: string): boolean
     set_description(description: string | null): void
     set_devices(devices: DomainDevice[]): void
     set_features(features: string[]): void
@@ -1091,12 +1091,12 @@ class Domain extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): Domain
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): Domain
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: Domain.ConstructorProperties): void
 }
 
@@ -1201,12 +1201,12 @@ class DomainAddressPci extends DomainAddress {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainAddressPci
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainAddressPci
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainAddressPci.ConstructorProperties): void
 }
 
@@ -1229,7 +1229,7 @@ interface DomainAddressUsb {
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainAddressUsb
 
     set_bus(bus: number): void
-    set_port(port: string | null): void
+    set_port(port: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainAddressUsb
 
@@ -1260,12 +1260,12 @@ class DomainAddressUsb extends DomainAddress {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainAddressUsb
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainAddressUsb
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainAddressUsb.ConstructorProperties): void
 }
 
@@ -1322,12 +1322,12 @@ class DomainCapabilities extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainCapabilities
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainCapabilities
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainCapabilities.ConstructorProperties): void
 }
 
@@ -1411,9 +1411,9 @@ interface DomainChannel {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainChannel
 
-    get_target_name(): string | null
+    get_target_name(): string
     get_target_type(): DomainChannelTargetType
-    set_target_name(name: string | null): void
+    set_target_name(name: string): void
     set_target_type(type: DomainChannelTargetType): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainChannel
@@ -1445,12 +1445,12 @@ class DomainChannel extends DomainChardev {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainChannel
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainChannel
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainChannel.ConstructorProperties): void
 }
 
@@ -1567,8 +1567,8 @@ interface DomainChardevSourcePty {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainChardevSourcePty
 
-    get_path(): string | null
-    set_path(path: string | null): void
+    get_path(): string
+    set_path(path: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainChardevSourcePty
 
@@ -1599,12 +1599,12 @@ class DomainChardevSourcePty extends DomainChardevSource {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainChardevSourcePty
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainChardevSourcePty
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainChardevSourcePty.ConstructorProperties): void
 }
 
@@ -1626,8 +1626,8 @@ interface DomainChardevSourceSpicePort {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainChardevSourceSpicePort
 
-    get_channel(): string | null
-    set_channel(channel: string | null): void
+    get_channel(): string
+    set_channel(channel: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainChardevSourceSpicePort
 
@@ -1658,12 +1658,12 @@ class DomainChardevSourceSpicePort extends DomainChardevSource {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainChardevSourceSpicePort
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainChardevSourceSpicePort
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainChardevSourceSpicePort.ConstructorProperties): void
 }
 
@@ -1712,12 +1712,12 @@ class DomainChardevSourceSpiceVmc extends DomainChardevSource {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainChardevSourceSpiceVmc
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainChardevSourceSpiceVmc
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainChardevSourceSpiceVmc.ConstructorProperties): void
 }
 
@@ -1766,12 +1766,12 @@ class DomainChardevSourceUnix extends DomainChardevSource {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainChardevSourceUnix
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainChardevSourceUnix
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainChardevSourceUnix.ConstructorProperties): void
 }
 
@@ -1795,10 +1795,10 @@ interface DomainClock {
 
     add_timer(timer: DomainTimer): void
     get_offset(): DomainClockOffset
-    get_timezone(): string | null
+    get_timezone(): string
     get_variable_offset(): number
     set_offset(offset: DomainClockOffset): void
-    set_timezone(tz: string | null): void
+    set_timezone(tz: string): void
     set_variable_offset(seconds: number): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainClock
@@ -1830,12 +1830,12 @@ class DomainClock extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainClock
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainClock
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainClock.ConstructorProperties): void
 }
 
@@ -1888,12 +1888,12 @@ class DomainConsole extends DomainChardev {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainConsole
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainConsole
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainConsole.ConstructorProperties): void
 }
 
@@ -2029,7 +2029,7 @@ class DomainControllerUsb extends DomainController {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
+    static new(type: GObject.GType, root_name: string, schema: string): Object
     /**
      * Creates a new #GVirConfigDomainControllerUsb with a reference count of 1.
      * The controller object will be created using the XML description stored
@@ -2039,11 +2039,11 @@ class DomainControllerUsb extends DomainController {
      * @param xml xml data to create the controller from
      * @returns a new #GVirConfigDomainControllerUsb, or NULL if @xml failed to be parsed.
      */
-    static new_from_xml(xml: string | null): DomainControllerUsb
+    static new_from_xml(xml: string): DomainControllerUsb
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainControllerUsb.ConstructorProperties): void
 }
 
@@ -2100,12 +2100,12 @@ class DomainCpu extends CapabilitiesCpu {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainCpu
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainCpu
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainCpu.ConstructorProperties): void
 }
 
@@ -2159,12 +2159,12 @@ class DomainCpuFeature extends CapabilitiesCpuFeature {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainCpuFeature
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainCpuFeature
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainCpuFeature.ConstructorProperties): void
 }
 
@@ -2214,13 +2214,13 @@ class DomainCpuModel extends CapabilitiesCpuModel {
     // Overloads of new
 
     static new(): CapabilitiesCpuModel
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainCpuModel
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainCpuModel
 
     // Overloads of new_from_xml
 
-    static new_from_xml(xml: string | null): CapabilitiesCpuModel
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(xml: string): CapabilitiesCpuModel
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainCpuModel.ConstructorProperties): void
 }
 
@@ -2242,7 +2242,7 @@ interface DomainDevice {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainDevice
 
-    get_alias(): string | null
+    get_alias(): string
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainDevice
 
@@ -2297,14 +2297,14 @@ interface DomainDisk {
     get_driver(): DomainDiskDriver
     get_driver_cache(): DomainDiskCacheType
     get_driver_format(): DomainDiskFormat
-    get_driver_name(): string | null
-    get_driver_type(): string | null
+    get_driver_name(): string
+    get_driver_type(): string
     get_guest_device_type(): DomainDiskGuestDeviceType
     get_snapshot_type(): DomainDiskSnapshotType
-    get_source(): string | null
+    get_source(): string
     get_startup_policy(): DomainDiskStartupPolicy
     get_target_bus(): DomainDiskBus
-    get_target_dev(): string | null
+    get_target_dev(): string
     /**
      * Uses `driver` as the driver configuration for `disk`.
      * @param driver a #GVirConfigDomainDiskDriver
@@ -2312,15 +2312,15 @@ interface DomainDisk {
     set_driver(driver: DomainDiskDriver | null): void
     set_driver_cache(cache_type: DomainDiskCacheType): void
     set_driver_format(format: DomainDiskFormat): void
-    set_driver_name(driver_name: string | null): void
-    set_driver_type(driver_type: string | null): void
+    set_driver_name(driver_name: string): void
+    set_driver_type(driver_type: string): void
     set_guest_device_type(type: DomainDiskGuestDeviceType): void
     set_readonly(readonly: boolean): void
     set_snapshot_type(type: DomainDiskSnapshotType): void
-    set_source(source: string | null): void
+    set_source(source: string): void
     set_startup_policy(policy: DomainDiskStartupPolicy): void
     set_target_bus(bus: DomainDiskBus): void
-    set_target_dev(dev: string | null): void
+    set_target_dev(dev: string): void
     set_type(type: DomainDiskType): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainDisk
@@ -2352,12 +2352,12 @@ class DomainDisk extends DomainDevice {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainDisk
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainDisk
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainDisk.ConstructorProperties): void
 }
 
@@ -2385,14 +2385,14 @@ interface DomainDiskDriver {
     get_error_policy(): DomainDiskDriverErrorPolicy
     get_format(): DomainDiskFormat
     get_io_policy(): DomainDiskDriverIoPolicy
-    get_name(): string | null
+    get_name(): string
     set_cache(cache_type: DomainDiskCacheType): void
     set_copy_on_read(copy_on_read: boolean): void
     set_discard(discard: DomainDiskDriverDiscard): void
     set_error_policy(policy: DomainDiskDriverErrorPolicy): void
     set_format(format: DomainDiskFormat): void
     set_io_policy(policy: DomainDiskDriverIoPolicy): void
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainDiskDriver
 
@@ -2423,12 +2423,12 @@ class DomainDiskDriver extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainDiskDriver
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainDiskDriver
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainDiskDriver.ConstructorProperties): void
 }
 
@@ -2455,8 +2455,8 @@ interface DomainFilesys {
     set_driver_type(type: DomainFilesysDriverType): void
     set_ram_usage(bytes: number): void
     set_readonly(readonly: boolean): void
-    set_source(source: string | null): void
-    set_target(target: string | null): void
+    set_source(source: string): void
+    set_target(target: string): void
     set_type(type: DomainFilesysType): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainFilesys
@@ -2488,12 +2488,12 @@ class DomainFilesys extends DomainDevice {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainFilesys
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainFilesys
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainFilesys.ConstructorProperties): void
 }
 
@@ -2558,9 +2558,9 @@ interface DomainGraphicsDesktop {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainGraphicsDesktop
 
-    get_display(): string | null
+    get_display(): string
     get_fullscreen(): boolean
-    set_display(disp: string | null): void
+    set_display(disp: string): void
     set_fullscreen(fullscreen: boolean): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainGraphicsDesktop
@@ -2592,12 +2592,12 @@ class DomainGraphicsDesktop extends DomainGraphics {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainGraphicsDesktop
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainGraphicsDesktop
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainGraphicsDesktop.ConstructorProperties): void
 }
 
@@ -2656,12 +2656,12 @@ class DomainGraphicsRdp extends DomainGraphics {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainGraphicsRdp
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainGraphicsRdp
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainGraphicsRdp.ConstructorProperties): void
 }
 
@@ -2683,9 +2683,9 @@ interface DomainGraphicsSdl {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainGraphicsSdl
 
-    set_display(disp: string | null): void
+    set_display(disp: string): void
     set_fullscreen(fullscreen: boolean): void
-    set_xauthority(path: string | null): void
+    set_xauthority(path: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainGraphicsSdl
 
@@ -2716,12 +2716,12 @@ class DomainGraphicsSdl extends DomainGraphics {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainGraphicsSdl
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainGraphicsSdl
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainGraphicsSdl.ConstructorProperties): void
 }
 
@@ -2748,7 +2748,7 @@ interface DomainGraphicsSpice {
     set_autoport(autoport: boolean): void
     set_gl(gl: boolean): void
     set_image_compression(compression: DomainGraphicsSpiceImageCompression): void
-    set_password(password: string | null): void
+    set_password(password: string): void
     set_port(port: number): void
     set_tls_port(port: number): void
 
@@ -2781,12 +2781,12 @@ class DomainGraphicsSpice extends DomainGraphics {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainGraphicsSpice
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainGraphicsSpice
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainGraphicsSpice.ConstructorProperties): void
 }
 
@@ -2809,11 +2809,11 @@ interface DomainGraphicsVnc {
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainGraphicsVnc
 
     get_port(): number
-    get_socket(): string | null
+    get_socket(): string
     set_autoport(autoport: boolean): void
-    set_password(password: string | null): void
+    set_password(password: string): void
     set_port(port: number): void
-    set_socket(socket: string | null): void
+    set_socket(socket: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainGraphicsVnc
 
@@ -2844,12 +2844,12 @@ class DomainGraphicsVnc extends DomainGraphics {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainGraphicsVnc
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainGraphicsVnc
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainGraphicsVnc.ConstructorProperties): void
 }
 
@@ -2943,11 +2943,11 @@ interface DomainHostdevPci {
     get_address(): DomainAddressPci
     get_managed(): boolean
     get_rom_bar(): boolean
-    get_rom_file(): string | null
+    get_rom_file(): string
     set_address(address: DomainAddressPci): void
     set_managed(managed: boolean): void
     set_rom_bar(bar: boolean): void
-    set_rom_file(file: string | null): void
+    set_rom_file(file: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainHostdevPci
 
@@ -2988,7 +2988,7 @@ class DomainHostdevPci extends DomainHostdev {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
+    static new(type: GObject.GType, root_name: string, schema: string): Object
     /**
      * Creates a new #GVirConfigDomainHostdevPci. The host device object will be
      * created using the XML description stored in `xml`. This is a fragment of
@@ -2997,11 +2997,11 @@ class DomainHostdevPci extends DomainHostdev {
      * @param xml xml data to create the host device from
      * @returns a new #GVirConfigDomainHostdevPci, or NULL if @xml failed to be parsed. The returned object should be unreffed with g_object_unref() when no longer needed.
      */
-    static new_from_xml(xml: string | null): DomainHostdevPci
+    static new_from_xml(xml: string): DomainHostdevPci
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainHostdevPci.ConstructorProperties): void
 }
 
@@ -3057,12 +3057,12 @@ class DomainInput extends DomainDevice {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainInput
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainInput
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainInput.ConstructorProperties): void
 }
 
@@ -3089,15 +3089,15 @@ interface DomainInterface {
      * @returns A #GVirConfigDomainInterfaceFilterref. The returned object should be unreffed with g_object_unref() when no longer needed.
      */
     get_filterref(): DomainInterfaceFilterref
-    get_ifname(): string | null
+    get_ifname(): string
     get_link_state(): DomainInterfaceLinkState
-    get_mac(): string | null
-    get_model(): string | null
+    get_mac(): string
+    get_model(): string
     set_filterref(filterref: DomainInterfaceFilterref | null): void
-    set_ifname(ifname: string | null): void
+    set_ifname(ifname: string): void
     set_link_state(state: DomainInterfaceLinkState): void
-    set_mac(mac_address: string | null): void
-    set_model(model: string | null): void
+    set_mac(mac_address: string): void
+    set_model(model: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterface
 
@@ -3144,7 +3144,7 @@ interface DomainInterfaceBridge {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceBridge
 
-    set_source(brname: string | null): void
+    set_source(brname: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceBridge
 
@@ -3175,12 +3175,12 @@ class DomainInterfaceBridge extends DomainInterface {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainInterfaceBridge
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainInterfaceBridge
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainInterfaceBridge.ConstructorProperties): void
 }
 
@@ -3203,7 +3203,7 @@ interface DomainInterfaceFilterref {
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceFilterref
 
     add_parameter(parameter: DomainInterfaceFilterrefParameter): void
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the list of parameters attached to `filterref`. The returned list should be
      * freed with g_list_free(), after its elements have been unreffed with
@@ -3211,7 +3211,7 @@ interface DomainInterfaceFilterref {
      * @returns  a newly allocated #GList of #GVirConfigDomainInterfaceFilterrefParameter.
      */
     get_parameters(): DomainInterfaceFilterrefParameter[]
-    set_name(filter: string | null): void
+    set_name(filter: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceFilterref
 
@@ -3242,12 +3242,12 @@ class DomainInterfaceFilterref extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainInterfaceFilterref
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainInterfaceFilterref
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainInterfaceFilterref.ConstructorProperties): void
 }
 
@@ -3269,10 +3269,10 @@ interface DomainInterfaceFilterrefParameter {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceFilterrefParameter
 
-    get_name(): string | null
-    get_value(): string | null
-    set_name(name: string | null): void
-    set_value(value: string | null): void
+    get_name(): string
+    get_value(): string
+    set_name(name: string): void
+    set_value(value: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceFilterrefParameter
 
@@ -3303,12 +3303,12 @@ class DomainInterfaceFilterrefParameter extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainInterfaceFilterrefParameter
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainInterfaceFilterrefParameter
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainInterfaceFilterrefParameter.ConstructorProperties): void
 }
 
@@ -3330,7 +3330,7 @@ interface DomainInterfaceNetwork {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceNetwork
 
-    set_source(source: string | null): void
+    set_source(source: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainInterfaceNetwork
 
@@ -3361,12 +3361,12 @@ class DomainInterfaceNetwork extends DomainInterface {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainInterfaceNetwork
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainInterfaceNetwork
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainInterfaceNetwork.ConstructorProperties): void
 }
 
@@ -3415,12 +3415,12 @@ class DomainInterfaceUser extends DomainInterface {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainInterfaceUser
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainInterfaceUser
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainInterfaceUser.ConstructorProperties): void
 }
 
@@ -3473,12 +3473,12 @@ class DomainMemballoon extends DomainDevice {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainMemballoon
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainMemballoon
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainMemballoon.ConstructorProperties): void
 }
 
@@ -3502,7 +3502,7 @@ interface DomainOs {
 
     bios_enable_serial(enable: boolean): void
     enable_boot_menu(enable: boolean): void
-    get_arch(): string | null
+    get_arch(): string
     /**
      * Gets the list of devices attached to `os`. The returned list should be
      * freed with g_list_free().
@@ -3510,16 +3510,16 @@ interface DomainOs {
      */
     get_boot_devices(): DomainOsBootDevice[]
     get_firmware(): DomainOsFirmware
-    get_machine(): string | null
+    get_machine(): string
     get_os_type(): DomainOsType
-    set_arch(arch: string | null): void
+    set_arch(arch: string): void
     set_boot_devices(boot_devices: DomainOsBootDevice[]): void
     set_cmdline(cmdline: string | null): void
     set_firmware(firmware: DomainOsFirmware): void
     set_init(init: string | null): void
     set_kernel(kernel: string | null): void
     set_loader(loader: string | null): void
-    set_machine(machine: string | null): void
+    set_machine(machine: string): void
     set_os_type(type: DomainOsType): void
     set_ramdisk(ramdisk: string | null): void
     set_smbios_mode(mode: DomainOsSmBiosMode): void
@@ -3553,12 +3553,12 @@ class DomainOs extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainOs
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainOs
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainOs.ConstructorProperties): void
 }
 
@@ -3607,12 +3607,12 @@ class DomainParallel extends DomainChardev {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainParallel
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainParallel
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainParallel.ConstructorProperties): void
 }
 
@@ -3666,12 +3666,12 @@ class DomainPowerManagement extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainPowerManagement
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainPowerManagement
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainPowerManagement.ConstructorProperties): void
 }
 
@@ -3725,12 +3725,12 @@ class DomainRedirdev extends DomainChardev {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainRedirdev
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainRedirdev
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainRedirdev.ConstructorProperties): void
 }
 
@@ -3754,7 +3754,7 @@ interface DomainSeclabel {
 
     set_baselabel(label: string | null): void
     set_label(label: string | null): void
-    set_model(model: string | null): void
+    set_model(model: string): void
     set_type(type: DomainSeclabelType): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainSeclabel
@@ -3786,12 +3786,12 @@ class DomainSeclabel extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSeclabel
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSeclabel
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSeclabel.ConstructorProperties): void
 }
 
@@ -3840,12 +3840,12 @@ class DomainSerial extends DomainChardev {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSerial
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSerial
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSerial.ConstructorProperties): void
 }
 
@@ -3938,12 +3938,12 @@ class DomainSmartcardHost extends DomainSmartcard {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSmartcardHost
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSmartcardHost
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSmartcardHost.ConstructorProperties): void
 }
 
@@ -3997,12 +3997,12 @@ class DomainSmartcardHostCertificates extends DomainSmartcard {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSmartcardHostCertificates
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSmartcardHostCertificates
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSmartcardHostCertificates.ConstructorProperties): void
 }
 
@@ -4055,12 +4055,12 @@ class DomainSmartcardPassthrough extends DomainSmartcard {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSmartcardPassthrough
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSmartcardPassthrough
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSmartcardPassthrough.ConstructorProperties): void
 }
 
@@ -4084,7 +4084,7 @@ interface DomainSnapshot {
 
     add_disk(disk: DomainSnapshotDisk): void
     get_creation_time(): number
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the list of disks attached to `snapshot`.  The returned list should
      * be freed with g_list_free(), after its elements have been unreffed with
@@ -4097,16 +4097,16 @@ interface DomainSnapshot {
      * @returns A #GVirConfigDomain. The returned object should be unreffed with g_object_unref() when no longer needed.
      */
     get_domain(): Domain
-    get_memory_file(): string | null
+    get_memory_file(): string
     get_memory_state(): DomainSnapshotMemoryState
-    get_name(): string | null
-    get_parent(): string | null
+    get_name(): string
+    get_parent(): string
     get_state(): DomainSnapshotDomainState
-    set_description(description: string | null): void
+    set_description(description: string): void
     set_disks(disks: DomainSnapshotDisk[]): void
-    set_memory_file(filename: string | null): void
+    set_memory_file(filename: string): void
     set_memory_state(state: DomainSnapshotMemoryState): void
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainSnapshot
 
@@ -4137,12 +4137,12 @@ class DomainSnapshot extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSnapshot
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSnapshot
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSnapshot.ConstructorProperties): void
 }
 
@@ -4165,13 +4165,13 @@ interface DomainSnapshotDisk {
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.DomainSnapshotDisk
 
     get_driver_format(): DomainDiskFormat
-    get_name(): string | null
+    get_name(): string
     get_snapshot_type(): DomainDiskSnapshotType
-    get_source_file(): string | null
+    get_source_file(): string
     set_driver_format(format: DomainDiskFormat): void
-    set_name(name: string | null): void
+    set_name(name: string): void
     set_snapshot_type(type: DomainDiskSnapshotType): void
-    set_source_file(filename: string | null): void
+    set_source_file(filename: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.DomainSnapshotDisk
 
@@ -4202,12 +4202,12 @@ class DomainSnapshotDisk extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSnapshotDisk
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSnapshotDisk
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSnapshotDisk.ConstructorProperties): void
 }
 
@@ -4260,12 +4260,12 @@ class DomainSound extends DomainDevice {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainSound
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainSound
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainSound.ConstructorProperties): void
 }
 
@@ -4364,12 +4364,12 @@ class DomainTimerHpet extends DomainTimer {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainTimerHpet
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainTimerHpet
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainTimerHpet.ConstructorProperties): void
 }
 
@@ -4418,12 +4418,12 @@ class DomainTimerPit extends DomainTimer {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainTimerPit
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainTimerPit
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainTimerPit.ConstructorProperties): void
 }
 
@@ -4472,12 +4472,12 @@ class DomainTimerRtc extends DomainTimer {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainTimerRtc
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainTimerRtc
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainTimerRtc.ConstructorProperties): void
 }
 
@@ -4536,12 +4536,12 @@ class DomainVideo extends DomainDevice {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): DomainVideo
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): DomainVideo
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: DomainVideo.ConstructorProperties): void
 }
 
@@ -4590,12 +4590,12 @@ class Interface extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): Interface
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): Interface
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: Interface.ConstructorProperties): void
 }
 
@@ -4644,12 +4644,12 @@ class Network extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): Network
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): Network
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: Network.ConstructorProperties): void
 }
 
@@ -4698,12 +4698,12 @@ class NetworkFilter extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): NetworkFilter
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): NetworkFilter
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: NetworkFilter.ConstructorProperties): void
 }
 
@@ -4752,12 +4752,12 @@ class NodeDevice extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): NodeDevice
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): NodeDevice
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: NodeDevice.ConstructorProperties): void
 }
 
@@ -4789,7 +4789,7 @@ interface Object {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.Object
 
-    get_schema(): string | null
+    get_schema(): string
     to_xml(): string | null
     validate(): void
 
@@ -4817,9 +4817,9 @@ class Object extends GObject.Object {
     // Constructors of LibvirtGConfig-1.0.LibvirtGConfig.Object
 
     constructor(config?: Object.ConstructorProperties) 
-    constructor(type: GObject.GType, root_name: string | null, schema: string | null) 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    constructor(type: GObject.GType, root_name: string, schema: string) 
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: Object.ConstructorProperties): void
     static error_quark(): GLib.Quark
 }
@@ -4869,12 +4869,12 @@ class Secret extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): Secret
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): Secret
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: Secret.ConstructorProperties): void
 }
 
@@ -4905,7 +4905,7 @@ interface StoragePermissions {
      * Gets the MAC label string associated with `perms`.
      * @returns MAC label string.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Gets the octal permission set associated with `perms`.
      * @returns permission set
@@ -4950,12 +4950,12 @@ class StoragePermissions extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StoragePermissions
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StoragePermissions
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StoragePermissions.ConstructorProperties): void
 }
 
@@ -4996,7 +4996,7 @@ interface StoragePool {
      * Gets the name of the pool.
      * @returns name of @pool.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the type of the pool.
      * @returns #Gname of @pool.
@@ -5016,7 +5016,7 @@ interface StoragePool {
      * Gets the unique identifier for `pool`.
      * @returns unique identifier for @pool.
      */
-    get_uuid(): string | null
+    get_uuid(): string
     set_allocation(allocation: number): void
     set_available(available: number): void
     set_capacity(capacity: number): void
@@ -5055,12 +5055,12 @@ class StoragePool extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StoragePool
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StoragePool
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StoragePool.ConstructorProperties): void
 }
 
@@ -5086,55 +5086,55 @@ interface StoragePoolSource {
      * For pools backed by a SCSI adapter, returns the SCSI adapter name
      * @returns the SCSI adapter name.
      */
-    get_adapter(): string | null
+    get_adapter(): string
     /**
      * For pools backed by a physical device, returns the path to the block
      * device node
      * @returns fully qualified path to the block device node.
      */
-    get_device_path(): string | null
+    get_device_path(): string
     /**
      * For pools backed by a directory, returns the path to the backing directory
      * @returns path to the directory backing directory.
      */
-    get_directory(): string | null
+    get_directory(): string
     /**
      * Provides information about the format of the pool. This format is
      * backend-specific but is typically used to indicate filesystem type, or
      * network filesystem type, or partition table type, or LVM metadata type.
      * @returns the storage pool format.
      */
-    get_format(): string | null
+    get_format(): string
     /**
      * For pools backed by storage from remote server, returns the hostname
      * of the remote server.
      * @returns hostname or IP address of the remote server.
      */
-    get_host(): string | null
+    get_host(): string
     /**
      * For pools backed by storage from a named element (for example, LV
      * groups), returns the name of the element
      * @returns name of the element used by @source
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the product name of the storage device.
      * @returns product name of the storage device.
      */
-    get_product(): string | null
+    get_product(): string
     /**
      * Gets the vendor name of the storage device.
      * @returns vendor name of the storage device.
      */
-    get_vendor(): string | null
-    set_adapter(adapter: string | null): void
-    set_device_path(device_path: string | null): void
-    set_directory(directory: string | null): void
-    set_format(format: string | null): void
-    set_host(host: string | null): void
+    get_vendor(): string
+    set_adapter(adapter: string): void
+    set_device_path(device_path: string): void
+    set_directory(directory: string): void
+    set_format(format: string): void
+    set_host(host: string): void
     set_name(name: string | null): void
-    set_product(product: string | null): void
-    set_vendor(vendor: string | null): void
+    set_product(product: string): void
+    set_vendor(vendor: string): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.StoragePoolSource
 
@@ -5165,12 +5165,12 @@ class StoragePoolSource extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StoragePoolSource
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StoragePoolSource
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StoragePoolSource.ConstructorProperties): void
 }
 
@@ -5197,7 +5197,7 @@ interface StoragePoolTarget {
      * will be mapped into the local filesystem namespace.
      * @returns local filesystem path the storage pool is mapped at.
      */
-    get_path(): string | null
+    get_path(): string
     /**
      * Gets the permissions associated with `target`
      * @returns a new #GVirConfigStoragePoolPermissions instance.
@@ -5235,12 +5235,12 @@ class StoragePoolTarget extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StoragePoolTarget
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StoragePoolTarget
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StoragePoolTarget.ConstructorProperties): void
 }
 
@@ -5297,12 +5297,12 @@ class StorageVol extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StorageVol
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StorageVol
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StorageVol.ConstructorProperties): void
 }
 
@@ -5324,7 +5324,7 @@ interface StorageVolBackingStore {
 
     // Owm methods of LibvirtGConfig-1.0.LibvirtGConfig.StorageVolBackingStore
 
-    set_format(format: string | null): void
+    set_format(format: string): void
     set_path(path: string | null): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.StorageVolBackingStore
@@ -5356,12 +5356,12 @@ class StorageVolBackingStore extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StorageVolBackingStore
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StorageVolBackingStore
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StorageVolBackingStore.ConstructorProperties): void
 }
 
@@ -5385,7 +5385,7 @@ interface StorageVolTarget {
 
     set_compat(compat: string | null): void
     set_features(features: number): void
-    set_format(format: string | null): void
+    set_format(format: string): void
     set_permissions(perms: StoragePermissions | null): void
 
     // Class property signals of LibvirtGConfig-1.0.LibvirtGConfig.StorageVolTarget
@@ -5417,12 +5417,12 @@ class StorageVolTarget extends Object {
 
     // Overloads of new
 
-    static new(type: GObject.GType, root_name: string | null, schema: string | null): Object
-    static new_from_xml(xml: string | null): StorageVolTarget
+    static new(type: GObject.GType, root_name: string, schema: string): Object
+    static new_from_xml(xml: string): StorageVolTarget
 
     // Overloads of new_from_xml
 
-    static new_from_xml(type: GObject.GType, root_name: string | null, schema: string | null, xml: string | null): Object
+    static new_from_xml(type: GObject.GType, root_name: string, schema: string, xml: string): Object
     _init(config?: StorageVolTarget.ConstructorProperties): void
 }
 

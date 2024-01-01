@@ -145,7 +145,7 @@ interface Database {
      * @param file an MST transform file path
      * @returns %TRUE on success
      */
-    apply_transform(file: string | null): boolean
+    apply_transform(file: string): boolean
     commit(): boolean
     /**
      * Writes a file containing the table data as tab separated ASCII.
@@ -162,16 +162,16 @@ interface Database {
      * @param fd a file descriptor
      * @returns %TRUE on success
      */
-    export(table: string | null, fd: number): boolean
-    get_primary_keys(table: string | null): Record
+    export(table: string, fd: number): boolean
+    get_primary_keys(table: string): Record
     /**
      * Import a table to the database from file `path`.
      * @param path path to a table file
      * @returns %TRUE on success
      */
-    import(path: string | null): boolean
+    import(path: string): boolean
     is_readonly(): boolean
-    is_table_persistent(table: string | null): boolean
+    is_table_persistent(table: string): boolean
     merge(merge: Database, table: string | null): boolean
 
     // Class property signals of Libmsi-1.0.Libmsi.Database
@@ -209,7 +209,7 @@ class Database extends GObject.Object {
      * @param persist path to output MSI file
      * @returns a new #LibmsiDatabase on success, %NULL if fail.
      */
-    constructor(path: string | null, flags: number, persist: string | null) 
+    constructor(path: string, flags: number, persist: string | null) 
     /**
      * Create a MSI database or open from `path`.
      * @constructor 
@@ -218,7 +218,7 @@ class Database extends GObject.Object {
      * @param persist path to output MSI file
      * @returns a new #LibmsiDatabase on success, %NULL if fail.
      */
-    static new(path: string | null, flags: number, persist: string | null): Database
+    static new(path: string, flags: number, persist: string | null): Database
     _init(config?: Database.ConstructorProperties): void
 }
 
@@ -271,7 +271,7 @@ interface Query {
     /**
      * Call this to get more information on the last query error.
      */
-    get_error(): /* column */ string | null
+    get_error(): /* column */ string
 
     // Class property signals of Libmsi-1.0.Libmsi.Query
 
@@ -304,7 +304,7 @@ class Query extends GObject.Object {
      * @param query a SQL query
      * @returns a new %LibmsiQuery on success, %NULL on failure
      */
-    constructor(database: Database, query: string | null) 
+    constructor(database: Database, query: string) 
     /**
      * Create a SQL query for `database`.
      * @constructor 
@@ -312,7 +312,7 @@ class Query extends GObject.Object {
      * @param query a SQL query
      * @returns a new %LibmsiQuery on success, %NULL on failure
      */
-    static new(database: Database, query: string | null): Query
+    static new(database: Database, query: string): Query
     _init(config?: Query.ConstructorProperties): void
 }
 
@@ -370,7 +370,7 @@ interface Record {
      * @param filename a filename or %NULL
      * @returns %TRUE on success.
      */
-    load_stream(field: number, filename: string | null): boolean
+    load_stream(field: number, filename: string): boolean
     /**
      * Set the %field to the integer value %val.
      * @param field a field identifier
@@ -393,7 +393,7 @@ interface Record {
      * @param val a string or %NULL
      * @returns %TRUE on success.
      */
-    set_string(field: number, val: string | null): boolean
+    set_string(field: number, val: string): boolean
 
     // Class property signals of Libmsi-1.0.Libmsi.Record
 
@@ -450,7 +450,7 @@ interface SummaryInfo {
     get_int(prop: Property): number
     get_properties(): Property[]
     get_property_type(prop: Property): PropertyType
-    get_string(prop: Property): string | null
+    get_string(prop: Property): string
     /**
      * Save summary informations to the associated database.
      * @returns %TRUE on success
@@ -482,7 +482,7 @@ interface SummaryInfo {
      * @param value a string value
      * @returns %TRUE on success
      */
-    set_string(prop: Property, value: string | null): boolean
+    set_string(prop: Property, value: string): boolean
 
     // Class property signals of Libmsi-1.0.Libmsi.SummaryInfo
 

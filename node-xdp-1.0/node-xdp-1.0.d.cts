@@ -566,7 +566,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    addNotification(id: string | null, notification: GLib.Variant, flags: NotificationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    addNotification(id: string, notification: GLib.Variant, flags: NotificationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the notification request.
      * 
@@ -647,7 +647,7 @@ export interface Portal extends Gio.Initable {
      * @param desktopFileId the .desktop file name
      * @returns the contents of the desktop file, or %NULL with   @error set
      */
-    dynamicLauncherGetDesktopEntry(desktopFileId: string | null): string | null
+    dynamicLauncherGetDesktopEntry(desktopFileId: string): string | null
     /**
      * This function gets the icon associated with a .desktop file that was previously
      * installed by the dynamic launcher portal.
@@ -659,7 +659,7 @@ export interface Portal extends Gio.Initable {
      * @param outIconSize return location for icon size
      * @returns the icon in a format recognized by g_icon_deserialize(),   or %NULL with @error set
      */
-    dynamicLauncherGetIcon(desktopFileId: string | null, outIconFormat: string | null, outIconSize: number | null): GLib.Variant
+    dynamicLauncherGetIcon(desktopFileId: string, outIconFormat: string | null, outIconSize: number | null): GLib.Variant
     /**
      * This function completes installation of a launcher so that the icon and name
      * given in previous method calls will show up in the desktop environment's menu.
@@ -676,8 +676,8 @@ export interface Portal extends Gio.Initable {
      * @param desktopEntry the key-file to be used for the contents of the .desktop file
      * @returns %TRUE if the installation was successful, %FALSE with @error set   otherwise
      */
-    dynamicLauncherInstall(token: string | null, desktopFileId: string | null, desktopEntry: string | null): boolean
-    dynamicLauncherLaunch(desktopFileId: string | null, activationToken: string | null): boolean
+    dynamicLauncherInstall(token: string, desktopFileId: string, desktopEntry: string): boolean
+    dynamicLauncherLaunch(desktopFileId: string, activationToken: string): boolean
     /**
      * Presents a dialog to the user so they can confirm they want to install a
      * launcher to their desktop.
@@ -694,7 +694,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    dynamicLauncherPrepareInstall(parent: Parent | null, name: string | null, iconV: GLib.Variant, launcherType: LauncherType, target: string | null, editableName: boolean, editableIcon: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    dynamicLauncherPrepareInstall(parent: Parent | null, name: string, iconV: GLib.Variant, launcherType: LauncherType, target: string | null, editableName: boolean, editableIcon: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the prepare-install-launcher request, and returns
      * [struct`GLib`.Variant] dictionary with the following information:
@@ -718,7 +718,7 @@ export interface Portal extends Gio.Initable {
      * @param iconV a #GBytesIcon as returned by g_icon_serialize(). Must be a png or jpeg no larger than 512x512, or an svg
      * @returns a token that can be passed to   [method@Portal.dynamic_launcher_install], or %NULL with @error set
      */
-    dynamicLauncherRequestInstallToken(name: string | null, iconV: GLib.Variant): string | null
+    dynamicLauncherRequestInstallToken(name: string, iconV: GLib.Variant): string | null
     /**
      * This function uninstalls a launcher that was previously installed using the
      * dynamic launcher portal, resulting in the .desktop file and icon being deleted.
@@ -728,7 +728,7 @@ export interface Portal extends Gio.Initable {
      * @param desktopFileId the .desktop file name
      * @returns %TRUE if the uninstallation was successful, %FALSE with @error set   otherwise
      */
-    dynamicLauncherUninstall(desktopFileId: string | null): boolean
+    dynamicLauncherUninstall(desktopFileId: string): boolean
     /**
      * Gets information about the user.
      * 
@@ -805,7 +805,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    openDirectory(parent: Parent, uri: string | null, flags: OpenUriFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openDirectory(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-directory request.
      * 
@@ -850,7 +850,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    openFile(parent: Parent | null, title: string | null, filters: GLib.Variant | null, currentFilter: GLib.Variant | null, choices: GLib.Variant | null, flags: OpenFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openFile(parent: Parent | null, title: string, filters: GLib.Variant | null, currentFilter: GLib.Variant | null, choices: GLib.Variant | null, flags: OpenFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-file request
      * 
@@ -883,7 +883,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    openUri(parent: Parent, uri: string | null, flags: OpenUriFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    openUri(parent: Parent, uri: string, flags: OpenUriFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-uri request.
      * 
@@ -924,7 +924,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    preparePrint(parent: Parent | null, title: string | null, settings: GLib.Variant | null, pageSetup: GLib.Variant | null, flags: PrintFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    preparePrint(parent: Parent | null, title: string, settings: GLib.Variant | null, pageSetup: GLib.Variant | null, flags: PrintFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the prepare-print request.
      * 
@@ -955,7 +955,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    printFile(parent: Parent | null, title: string | null, token: number, file: string | null, flags: PrintFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    printFile(parent: Parent | null, title: string, token: number, file: string, flags: PrintFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the print request.
      * @param result a [iface`Gio`.AsyncResult]
@@ -966,7 +966,7 @@ export interface Portal extends Gio.Initable {
      * Withdraws a desktop notification.
      * @param id the ID of an notification
      */
-    removeNotification(id: string | null): void
+    removeNotification(id: string): void
     /**
      * Requests background permissions.
      * 
@@ -1009,7 +1009,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    saveFile(parent: Parent | null, title: string | null, currentName: string | null, currentFolder: string | null, currentFile: string | null, filters: GLib.Variant | null, currentFilter: GLib.Variant | null, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    saveFile(parent: Parent | null, title: string, currentName: string | null, currentFolder: string | null, currentFile: string | null, filters: GLib.Variant | null, currentFilter: GLib.Variant | null, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the save-file request.
      * 
@@ -1046,7 +1046,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    saveFiles(parent: Parent | null, title: string | null, currentName: string | null, currentFolder: string | null, files: GLib.Variant, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    saveFiles(parent: Parent | null, title: string, currentName: string | null, currentFolder: string | null, files: GLib.Variant, choices: GLib.Variant | null, flags: SaveFileFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the save-files request.
      * 
@@ -1154,7 +1154,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    setWallpaper(parent: Parent | null, uri: string | null, flags: WallpaperFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setWallpaper(parent: Parent | null, uri: string, flags: WallpaperFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the open-uri request.
      * 
@@ -1180,7 +1180,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    spawn(cwd: string | null, argv: string[], fds: number[] | null, mapTo: number[] | null, env: string[] | null, flags: SpawnFlags, sandboxExpose: string[] | null, sandboxExposeRo: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    spawn(cwd: string, argv: string[], fds: number[] | null, mapTo: number[] | null, env: string[] | null, flags: SpawnFlags, sandboxExpose: string[] | null, sandboxExposeRo: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the spawn request.
      * 
@@ -1222,7 +1222,7 @@ export interface Portal extends Gio.Initable {
      * @param cancellable optional [class`Gio`.Cancellable]
      * @param callback a callback to call when the request is done
      */
-    trashFile(path: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    trashFile(path: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the trash-file request.
      * 

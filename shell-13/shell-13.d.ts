@@ -137,9 +137,9 @@ enum ActionMode {
      */
     ALL,
 }
-const KEYRING_SK_TAG: string | null
-const KEYRING_SN_TAG: string | null
-const KEYRING_UUID_TAG: string | null
+const KEYRING_SK_TAG: string
+const KEYRING_SN_TAG: string
+const KEYRING_UUID_TAG: string
 /**
  * Synchronously load the contents of a file as a NUL terminated
  * string, validating it as UTF-8.  Embedded NUL characters count as
@@ -147,7 +147,7 @@ const KEYRING_UUID_TAG: string | null
  * @param path UTF-8 encoded filename path
  * @returns File contents
  */
-function get_file_contents_utf8_sync(path: string | null): string | null
+function get_file_contents_utf8_sync(path: string): string | null
 /**
  * Walk over all open file descriptors. Check them for the FD_CLOEXEC flag.
  * If this flag is not set, log the offending file descriptor number.
@@ -175,7 +175,7 @@ function util_create_pixbuf_from_data(data: Uint8Array, colorspace: GdkPixbuf.Co
  * @param name the untranslated folder name
  * @returns a translated string or %NULL
  */
-function util_get_translated_folder_name(name: string | null): string | null
+function util_get_translated_folder_name(name: string): string | null
 /**
  * A wrapper around getuid() so that it can be used from JavaScript. This
  * function will always succeed.
@@ -195,14 +195,14 @@ function util_get_week_start(): number
  * @param display A #MetaDisplay
  * @param extension An X11 extension
  */
-function util_has_x11_display_extension(display: Meta.Display, extension: string | null): boolean
+function util_has_x11_display_extension(display: Meta.Display, extension: string): boolean
 /**
  * A wrapper around g_regex_escape_string() that takes its argument as
  * \0-terminated string rather than a byte-array that confuses gjs.
  * @param str a UTF-8 string to escape
  * @returns @str with all regex-special characters escaped
  */
-function util_regex_escape(str: string | null): string | null
+function util_regex_escape(str: string): string | null
 function util_sd_notify(): void
 /**
  * If `hidden` is %TRUE, hide `actor` from pick even with a mode of
@@ -211,11 +211,11 @@ function util_sd_notify(): void
  * @param hidden Whether `actor` should be hidden from pick
  */
 function util_set_hidden_from_pick(actor: Clutter.Actor, hidden: boolean): void
-function util_start_systemd_unit<Z = unknown>(unit: string | null, mode: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function util_start_systemd_unit<Z = unknown>(unit: string, mode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 function util_start_systemd_unit_finish(res: Gio.AsyncResult): boolean
-function util_stop_systemd_unit<Z = unknown>(unit: string | null, mode: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function util_stop_systemd_unit<Z = unknown>(unit: string, mode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 function util_stop_systemd_unit_finish(res: Gio.AsyncResult): boolean
-function util_systemd_unit_exists<Z = unknown>(unit: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function util_systemd_unit_exists<Z = unknown>(unit: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 function util_systemd_unit_exists_finish(res: Gio.AsyncResult): boolean
 function util_touch_file_async<Z = unknown>(file: Gio.File, callback: Gio.AsyncReadyCallback<Z> | null): void
 
@@ -237,7 +237,7 @@ function util_touch_file_finish(file: Gio.File, res: Gio.AsyncResult): boolean
  * @param str String to translate
  * @returns the translated string
  */
-function util_translate_time_string(str: string | null): string | null
+function util_translate_time_string(str: string): string
 /**
  * Implements libc standard WIFEXITED, that cannot be used JS
  * code.
@@ -252,12 +252,12 @@ function util_wifexited(status: number): [ /* returnType */ boolean, /* exit */ 
  * @param str a UTF-8 string to write to `stream`
  * @returns %TRUE if write succeeded
  */
-function write_string_to_stream(stream: Gio.OutputStream, str: string | null): boolean
+function write_string_to_stream(stream: Gio.OutputStream, str: string): boolean
 interface LeisureFunction {
     (data: any | null): void
 }
 interface PerfReplayFunction {
-    (time: number, name: string | null, signature: string | null, arg: any): void
+    (time: number, name: string, signature: string, arg: any): void
 }
 interface PerfStatisticsCallback {
     (perf_log: PerfLog, data: any | null): void
@@ -393,15 +393,15 @@ interface App {
     create_icon_texture(size: number): Clutter.Actor
     get_app_info(): Gio.DesktopAppInfo
     get_busy(): boolean
-    get_description(): string | null
+    get_description(): string
     /**
      * Look up the icon for this application
      * @returns A #GIcon
      */
     get_icon(): Gio.Icon
-    get_id(): string | null
+    get_id(): string
     get_n_windows(): number
-    get_name(): string | null
+    get_name(): string
     get_pids(): number[]
     get_state(): AppState
     /**
@@ -420,7 +420,7 @@ interface App {
      */
     is_window_backed(): boolean
     launch(timestamp: number, workspace: number, gpu_pref: AppLaunchGpu): boolean
-    launch_action(action_name: string | null, timestamp: number, workspace: number): void
+    launch_action(action_name: string, timestamp: number, workspace: number): void
     /**
      * Request that the application create a new window.
      * @param workspace open on this workspace, or -1 for default
@@ -529,7 +529,7 @@ interface AppSystem {
      * @param id 
      * @returns The #ShellApp for id, or %NULL if none
      */
-    lookup_app(id: string | null): App
+    lookup_app(id: string): App
     /**
      * Find a valid application whose .desktop file, without the extension
      * and properly canonicalized, matches `wmclass`.
@@ -544,7 +544,7 @@ interface AppSystem {
      * @param id Probable application identifier
      * @returns A #ShellApp for @name
      */
-    lookup_heuristic_basename(id: string | null): App
+    lookup_heuristic_basename(id: string): App
     /**
      * Find a valid application whose .desktop file contains a
      * StartupWMClass entry matching `wmclass`.
@@ -588,7 +588,7 @@ class AppSystem extends GObject.Object {
      * @param search_string the search string to use
      * @returns a   list of strvs.  Free each item with g_strfreev() and free the outer   list with g_free().
      */
-    static search(search_string: string | null): any[]
+    static search(search_string: string): any[]
 }
 
 module AppUsage {
@@ -610,7 +610,7 @@ interface AppUsage {
      * @param id_b ID of second app
      * @returns -1 if @id_a ranks higher than @id_b, 1 if @id_b ranks higher          than @id_a, and 0 if both rank equally.
      */
-    compare(id_a: string | null, id_b: string | null): number
+    compare(id_a: string, id_b: string): number
     get_most_used(): App[]
 
     // Class property signals of Shell-13.Shell.AppUsage
@@ -776,8 +776,8 @@ interface GLSLEffect {
      * @param code GLSL code
      * @param is_replace whether Cogl code should be replaced by the custom shader
      */
-    add_glsl_snippet(hook: SnippetHook, declarations: string | null, code: string | null, is_replace: boolean): void
-    get_uniform_location(name: string | null): number
+    add_glsl_snippet(hook: SnippetHook, declarations: string, code: string, is_replace: boolean): void
+    get_uniform_location(name: string): number
     set_uniform_float(uniform: number, n_components: number, value: number[]): void
     set_uniform_matrix(uniform: number, transpose: boolean, dimensions: number, value: number[]): void
 
@@ -945,7 +945,7 @@ interface Global {
      * @param property_name Name of the property
      * @returns The value of a serialized property, or %NULL if none stored
      */
-    get_persistent_state(property_type: string | null, property_name: string | null): GLib.Variant
+    get_persistent_state(property_type: string, property_name: string): GLib.Variant
     /**
      * Gets the pointer coordinates and current modifier key state.
      */
@@ -957,8 +957,8 @@ interface Global {
      * @param property_name Name of the property
      * @returns The value of a serialized property, or %NULL if none stored
      */
-    get_runtime_state(property_type: string | null, property_name: string | null): GLib.Variant
-    get_session_mode(): string | null
+    get_runtime_state(property_type: string, property_name: string): GLib.Variant
+    get_session_mode(): string
     /**
      * Get the global GSettings instance.
      * @returns The GSettings object
@@ -990,7 +990,7 @@ interface Global {
      * @param msg Error message
      * @param details Error details
      */
-    notify_error(msg: string | null, details: string | null): void
+    notify_error(msg: string, details: string): void
     /**
      * Restart the current process.  Only intended for development purposes.
      */
@@ -1016,13 +1016,13 @@ interface Global {
      * @param property_name Name of the property
      * @param variant A #GVariant, or %NULL to unset
      */
-    set_persistent_state(property_name: string | null, variant: GLib.Variant | null): void
+    set_persistent_state(property_name: string, variant: GLib.Variant | null): void
     /**
      * Change the value of serialized runtime state.
      * @param property_name Name of the property
      * @param variant A #GVariant, or %NULL to unset
      */
-    set_runtime_state(property_name: string | null, variant: GLib.Variant | null): void
+    set_runtime_state(property_name: string, variant: GLib.Variant | null): void
     /**
      * Sets the area of the stage that is responsive to mouse clicks when
      * we don't have a modal or grab.
@@ -1528,7 +1528,7 @@ interface NetworkAgent extends Gio.AsyncInitable, Gio.Initable {
 
     add_vpn_secret(request_id: string | null, setting_key: string | null, setting_value: string | null): void
     respond(request_id: string | null, response: NetworkAgentResponse): void
-    search_vpn_plugin(service: string | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    search_vpn_plugin(service: string, callback: Gio.AsyncReadyCallback<this> | null): void
     search_vpn_plugin_finish(result: Gio.AsyncResult): NM.VpnPluginInfo | null
     set_password(request_id: string | null, setting_key: string | null, setting_value: string | null): void
 
@@ -1610,7 +1610,7 @@ interface PerfLog {
      * @param description human readable description of the event.
      * @param signature signature defining the arguments that event takes.   This is a string of type characters, using the same characters   as D-Bus or GVariant. Only a very limited number of signatures   are supported: , '', 's', 'i', and 'x'. This mean respectively:   no arguments, one string, one 32-bit integer, and one 64-bit   integer.
      */
-    define_event(name: string | null, description: string | null, signature: string | null): void
+    define_event(name: string, description: string, signature: string): void
     /**
      * Defines a statistic. A statistic is a numeric value that is stored
      * by the performance log and recorded periodically or when
@@ -1626,7 +1626,7 @@ interface PerfLog {
      * @param description human readable description of the statistic.
      * @param signature The type of the data stored for statistic. Must  currently be 'i' or 'x'.
      */
-    define_statistic(name: string | null, description: string | null, signature: string | null): void
+    define_statistic(name: string, description: string, signature: string): void
     /**
      * Dump the definition of currently defined events and statistics, formatted
      * as JSON, to the specified output stream. The JSON output is an array,
@@ -1654,25 +1654,25 @@ interface PerfLog {
      * Records a performance event with no arguments.
      * @param name name of the event
      */
-    event(name: string | null): void
+    event(name: string): void
     /**
      * Records a performance event with one 32-bit integer argument.
      * @param name name of the event
      * @param arg the argument
      */
-    event_i(name: string | null, arg: number): void
+    event_i(name: string, arg: number): void
     /**
      * Records a performance event with one string argument.
      * @param name name of the event
      * @param arg the argument
      */
-    event_s(name: string | null, arg: string | null): void
+    event_s(name: string, arg: string): void
     /**
      * Records a performance event with one 64-bit integer argument.
      * @param name name of the event
      * @param arg the argument
      */
-    event_x(name: string | null, arg: number): void
+    event_x(name: string, arg: number): void
     /**
      * Replays the log by calling the given function for each event
      * in the log.
@@ -1689,13 +1689,13 @@ interface PerfLog {
      * @param name name of the statistic
      * @param value new value for the statistic
      */
-    update_statistic_i(name: string | null, value: number): void
+    update_statistic_i(name: string, value: number): void
     /**
      * Updates the current value of an 64-bit integer statistic.
      * @param name name of the statistic
      * @param value new value for the statistic
      */
-    update_statistic_x(name: string | null, value: number): void
+    update_statistic_x(name: string, value: number): void
 
     // Class property signals of Shell-13.Shell.PerfLog
 
@@ -1782,7 +1782,7 @@ interface PolkitAuthenticationAgent {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %NULL if @error is set, otherwise a registration handle that can be used with polkit_agent_listener_unregister().
      */
-    register(flags: PolkitAgent.RegisterFlags, subject: Polkit.Subject, object_path: string | null, cancellable: Gio.Cancellable | null): any | null
+    register(flags: PolkitAgent.RegisterFlags, subject: Polkit.Subject, object_path: string, cancellable: Gio.Cancellable | null): any | null
     unregister(): void
 
     // Own signals of Shell-13.Shell.PolkitAuthenticationAgent

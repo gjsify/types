@@ -154,7 +154,7 @@ function server_error_quark(): GLib.Quark
  * @param entry A value used to filter network
  * @returns %TRUE if @entry is added, %FALSE otherwise.
  */
-function white_list_add_entry(white_list: WhiteList, entry: string | null): boolean
+function white_list_add_entry(white_list: WhiteList, entry: string): boolean
 /**
  * Add a list of entries to a #GUPnPWhiteList. This is a helper function to
  * directly add a %NULL-terminated array of string usually aquired from
@@ -211,7 +211,7 @@ function white_list_new(): WhiteList
  * @param entry A value to remove from the filter list.
  * @returns %TRUE if @entry is removed, %FALSE otherwise.
  */
-function white_list_remove_entry(white_list: WhiteList, entry: string | null): boolean
+function white_list_remove_entry(white_list: WhiteList, entry: string): boolean
 /**
  * Enable or disable the #GUPnPWhiteList to perform the network filtering.
  * @param white_list A #GUPnPWhiteList
@@ -248,7 +248,7 @@ interface ServiceProxyActionCallback {
  * @param value The #GValue of the variable being notified
  */
 interface ServiceProxyNotifyCallback {
-    (proxy: ServiceProxy, variable: string | null, value: any): void
+    (proxy: ServiceProxy, variable: string, value: any): void
 }
 module Acl {
 
@@ -275,7 +275,7 @@ interface Acl {
      * @param address IP address of the peer.
      * @param agent The User-Agent header of the peer or %NULL if not unknown. `returns` %TRUE if the peer is allowed, %FALSE otherwise
      */
-    is_allowed(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null): boolean
+    is_allowed(device: any | null, service: any | null, path: string, address: string, agent: string | null): boolean
     /**
      * Optional. Check asynchronously whether an IP address is allowed to access
      * this resource. Use this function if the process of verifying the access right
@@ -292,7 +292,7 @@ interface Acl {
      * @param cancellable A #GCancellable which can be used to cancel the operation.
      * @param callback Callback to call after the function is done.
      */
-    is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    is_allowed_async(device: any | null, service: any | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of is_allowed_async
 
@@ -314,7 +314,7 @@ interface Acl {
      * @param cancellable A #GCancellable which can be used to cancel the operation.
      * @returns A Promise of the result of {@link is_allowed_async}
      */
-    is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    is_allowed_async(device: any | null, service: any | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     is_allowed_finish(res: Gio.AsyncResult): boolean
 
     // Own virtual methods of GUPnP-1.2.GUPnP.Acl
@@ -333,7 +333,7 @@ interface Acl {
      * @param address IP address of the peer.
      * @param agent The User-Agent header of the peer or %NULL if not unknown. `returns` %TRUE if the peer is allowed, %FALSE otherwise
      */
-    vfunc_is_allowed(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null): boolean
+    vfunc_is_allowed(device: any | null, service: any | null, path: string, address: string, agent: string | null): boolean
     /**
      * Optional. Check asynchronously whether an IP address is allowed to access
      * this resource. Use this function if the process of verifying the access right
@@ -351,7 +351,7 @@ interface Acl {
      * @param cancellable A #GCancellable which can be used to cancel the operation.
      * @param callback Callback to call after the function is done.
      */
-    vfunc_is_allowed_async(device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_is_allowed_async(device: any | null, service: any | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     vfunc_is_allowed_finish(res: Gio.AsyncResult): boolean
 
     // Class property signals of GUPnP-1.2.GUPnP.Acl
@@ -480,7 +480,7 @@ interface Context extends Gio.Initable {
      * @param path the toplevel path for the handler.
      * @param callback callback to invoke for requests under `path`
      */
-    add_server_handler(use_acl: boolean, path: string | null, callback: Soup.ServerCallback): void
+    add_server_handler(use_acl: boolean, path: string, callback: Soup.ServerCallback): void
     /**
      * Access the #GUPnPAcl associated with this client. If there isn't any,
      * retturns %NULL. The returned ACL must not be freed.
@@ -491,7 +491,7 @@ interface Context extends Gio.Initable {
      * Get the default Content-Language header for this context.
      * @returns The default content of the Content-Language header.
      */
-    get_default_language(): string | null
+    get_default_language(): string
     /**
      * Get the port that the SOAP server is running on.
      * @returns The port the SOAP server is running on.
@@ -520,7 +520,7 @@ interface Context extends Gio.Initable {
      * @param local_path Path to the local file or folder to be hosted
      * @param server_path Web server path where `local_path` should be hosted
      */
-    host_path(local_path: string | null, server_path: string | null): void
+    host_path(local_path: string, server_path: string): void
     /**
      * Use this method to serve different local path to specific user-agent(s). The
      * path `server_path` must already be hosted by `context`.
@@ -529,19 +529,19 @@ interface Context extends Gio.Initable {
      * @param user_agent The user-agent as a #GRegex.
      * @returns %TRUE on success, %FALSE otherwise.
      */
-    host_path_for_agent(local_path: string | null, server_path: string | null, user_agent: GLib.Regex): boolean
+    host_path_for_agent(local_path: string, server_path: string, user_agent: GLib.Regex): boolean
     /**
      * Remove a #SoupServerCallback from the #GUPnPContext<!-- -->'s #SoupServer.
      * @param path the toplevel path for the handler.
      */
-    remove_server_handler(path: string | null): void
+    remove_server_handler(path: string): void
     /**
      * Utility function to re-write an uri to the IPv6 link-local form which has
      * the zone index appended to the IP address.
      * @param uri an uri to rewrite if necessary
      * @returns A re-written version of the @uri if the context is on a link-local IPv6 address, a copy of the @uri otherwise or %NULL if @uri was invalid
      */
-    rewrite_uri(uri: string | null): string | null
+    rewrite_uri(uri: string): string | null
     /**
      * Attach or remove the assoicated access control list to this context. If
      * `acl` is %NULL, the current access control list will be removed.
@@ -557,7 +557,7 @@ interface Context extends Gio.Initable {
      * Content-Language header is set to this value. The default value is "en".
      * @param language A language tag as defined in RFC 2616 3.10
      */
-    set_default_language(language: string | null): void
+    set_default_language(language: string): void
     /**
      * Sets the event subscription timeout to `timeout`. Use 0 if you don't
      * want subscriptions to time out. Note that any client side subscriptions
@@ -569,7 +569,7 @@ interface Context extends Gio.Initable {
      * Stop hosting the file or folder at `server_path`.
      * @param server_path Web server path where the file or folder is hosted
      */
-    unhost_path(server_path: string | null): void
+    unhost_path(server_path: string): void
 
     // Class property signals of GUPnP-1.2.GUPnP.Context
 
@@ -723,7 +723,7 @@ interface ContextFilter {
      * @param entry A value used to filter network
      * @returns %TRUE if @entry is added, %FALSE otherwise.
      */
-    add_entry(entry: string | null): boolean
+    add_entry(entry: string): boolean
     /**
      * Add a list of entries to a #GUPnPContextFilter. This is a helper function to
      * directly add a %NULL-terminated array of string usually aquired from
@@ -767,7 +767,7 @@ interface ContextFilter {
      * @param entry A value to remove from the filter list.
      * @returns %TRUE if @entry is removed, %FALSE otherwise.
      */
-    remove_entry(entry: string | null): boolean
+    remove_entry(entry: string): boolean
     /**
      * Enable or disable the #GUPnPContextFilter to perform the network filtering.
      * @param enable %TRUE to enable `context_filter,` %FALSE otherwise
@@ -1176,7 +1176,7 @@ class ControlPoint extends GSSDP.ResourceBrowser {
      * @param target The search target
      * @returns A new #GUPnPControlPoint object.
      */
-    constructor(context: Context, target: string | null) 
+    constructor(context: Context, target: string) 
     /**
      * Create a new #GUPnPControlPoint with the specified `context` and `target`.
      * 
@@ -1188,7 +1188,7 @@ class ControlPoint extends GSSDP.ResourceBrowser {
      * @param target The search target
      * @returns A new #GUPnPControlPoint object.
      */
-    static new(context: Context, target: string | null): ControlPoint
+    static new(context: Context, target: string): ControlPoint
 
     // Overloads of new
 
@@ -1209,7 +1209,7 @@ class ControlPoint extends GSSDP.ResourceBrowser {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    static new(client: GSSDP.Client, target: string | null): GSSDP.ResourceBrowser
+    static new(client: GSSDP.Client, target: string): GSSDP.ResourceBrowser
     /**
      * Create a new #GUPnPControlPoint with the specified `context,` `factory` and
      * `target`.
@@ -1223,7 +1223,7 @@ class ControlPoint extends GSSDP.ResourceBrowser {
      * @param target The search target
      * @returns A new #GUPnPControlPoint object.
      */
-    static new_full(context: Context, factory: ResourceFactory, target: string | null): ControlPoint
+    static new_full(context: Context, factory: ResourceFactory, target: string): ControlPoint
     _init(config?: ControlPoint.ConstructorProperties): void
 }
 
@@ -1438,7 +1438,7 @@ interface DeviceInfo {
      * @param element Name of the description element to retrieve
      * @returns a newly allocated string or %NULL if the device               description doesn't contain the given @element
      */
-    get_description_value(element: string | null): string | null
+    get_description_value(element: string): string | null
     /**
      * Get the service with type `type` directly contained in `info` as
      * a new object implementing #GUPnPDeviceInfo, or %NULL if no such device
@@ -1450,12 +1450,12 @@ interface DeviceInfo {
      * @param type The type of the device to be retrieved.
      * @returns A new #GUPnPDeviceInfo.
      */
-    get_device(type: string | null): DeviceInfo | null
+    get_device(type: string): DeviceInfo | null
     /**
      * Get the UPnP device type.
      * @returns A constant string, or %NULL.
      */
-    get_device_type(): string | null
+    get_device_type(): string
     /**
      * Get the friendly name of the device.
      * @returns A string, or %NULL. g_free() after use.
@@ -1476,12 +1476,12 @@ interface DeviceInfo {
      * @param prefer_bigger %TRUE if a bigger, rather than a smaller icon should be returned if no exact match could be found
      * @returns a string, or %NULL.  g_free() after use.
      */
-    get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [ /* returnType */ string | null, /* mime_type */ string | null, /* depth */ number, /* width */ number, /* height */ number ]
+    get_icon_url(requested_mime_type: string | null, requested_depth: number, requested_width: number, requested_height: number, prefer_bigger: boolean): [ /* returnType */ string | null, /* mime_type */ string, /* depth */ number, /* width */ number, /* height */ number ]
     /**
      * Get the location of the device description file.
      * @returns A constant string.
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Get the manufacturer of the device.
      * @returns A string, or %NULL. g_free() after use.
@@ -1539,12 +1539,12 @@ interface DeviceInfo {
      * @param type The type of the service to be retrieved.
      * @returns A #GUPnPServiceInfo.
      */
-    get_service(type: string | null): ServiceInfo | null
+    get_service(type: string): ServiceInfo | null
     /**
      * Get the Unique Device Name of the device.
      * @returns A constant string.
      */
-    get_udn(): string | null
+    get_udn(): string
     /**
      * Get the Universal Product Code of the device.
      * @returns A string, or %NULL. g_free() after use.
@@ -1736,7 +1736,7 @@ interface ResourceFactory {
      * @param upnp_type The UPnP type name of the resource.
      * @param type The requested GType assignment for the resource proxy.
      */
-    register_resource_proxy_type(upnp_type: string | null, type: GObject.GType): void
+    register_resource_proxy_type(upnp_type: string, type: GObject.GType): void
     /**
      * Registers the GType `type` for the resource of UPnP type `upnp_type`. After
      * this call, the factory `factory` will create object of GType `type` each time
@@ -1752,20 +1752,20 @@ interface ResourceFactory {
      * @param upnp_type The UPnP type name of the resource.
      * @param type The requested GType assignment for the resource.
      */
-    register_resource_type(upnp_type: string | null, type: GObject.GType): void
+    register_resource_type(upnp_type: string, type: GObject.GType): void
     /**
      * Unregisters the GType assignment for the proxy of resource of UPnP type
      * `upnp_type`.
      * @param upnp_type The UPnP type name of the resource.
      * @returns %TRUE if GType assignment was removed successfully, %FALSE otherwise.
      */
-    unregister_resource_proxy_type(upnp_type: string | null): boolean
+    unregister_resource_proxy_type(upnp_type: string): boolean
     /**
      * Unregisters the GType assignment for the resource of UPnP type `upnp_type`.
      * @param upnp_type The UPnP type name of the resource.
      * @returns %TRUE if GType assignment was removed successfully, %FALSE otherwise.
      */
-    unregister_resource_type(upnp_type: string | null): boolean
+    unregister_resource_type(upnp_type: string): boolean
 
     // Class property signals of GUPnP-1.2.GUPnP.ResourceFactory
 
@@ -1898,22 +1898,22 @@ interface RootDevice extends Gio.Initable {
      * `root_device`.
      * @returns The path to description document directory of @root_device.
      */
-    get_description_dir(): string | null
+    get_description_dir(): string
     /**
      * Gets the name of the description document as hosted via HTTP.
      * @returns The relative location of @root_device.
      */
-    get_description_document_name(): string | null
+    get_description_document_name(): string
     /**
      * Get the path to the device description document of `root_device`.
      * @returns The path to device description document of @root_device.
      */
-    get_description_path(): string | null
+    get_description_path(): string
     /**
      * Get the relative location of `root_device`.
      * @returns The relative location of @root_device.
      */
-    get_relative_location(): string | null
+    get_relative_location(): string
     /**
      * Get the #GSSDPResourceGroup used by `root_device`.
      * @returns The #GSSDPResourceGroup of @root_device.
@@ -1992,7 +1992,7 @@ class RootDevice extends Device {
      * @param description_dir Path to directory where description documents are provided.
      * @returns A new @GUPnPRootDevice object.
      */
-    constructor(context: Context, description_path: string | null, description_dir: string | null) 
+    constructor(context: Context, description_path: string, description_dir: string) 
     /**
      * Create a new #GUPnPRootDevice object, automatically loading and parsing
      * device description document from `description_path`.
@@ -2002,7 +2002,7 @@ class RootDevice extends Device {
      * @param description_dir Path to directory where description documents are provided.
      * @returns A new @GUPnPRootDevice object.
      */
-    static new(context: Context, description_path: string | null, description_dir: string | null): RootDevice
+    static new(context: Context, description_path: string, description_dir: string): RootDevice
     /**
      * Create a new #GUPnPRootDevice, automatically loading and parsing
      * device description document from `description_path` if `description_doc` is
@@ -2015,7 +2015,7 @@ class RootDevice extends Device {
      * @param description_dir Path to directory where description documents are provided.
      * @returns A new #GUPnPRootDevice object.
      */
-    static new_full(context: Context, factory: ResourceFactory, description_doc: XMLDoc, description_path: string | null, description_dir: string | null): RootDevice
+    static new_full(context: Context, factory: ResourceFactory, description_doc: XMLDoc, description_path: string, description_dir: string): RootDevice
     _init(config?: RootDevice.ConstructorProperties): void
 }
 
@@ -2092,7 +2092,7 @@ interface Service {
      * @param variable The name of the variable to notify
      * @param value The value of the variable
      */
-    notify_value(variable: string | null, value: any): void
+    notify_value(variable: string, value: any): void
     /**
      * A convenience function that attempts to connect all possible
      * #GUPnPService::action-invoked and #GUPnPService::query-variable signals to
@@ -2129,7 +2129,7 @@ interface Service {
     // Own virtual methods of GUPnP-1.2.GUPnP.Service
 
     vfunc_action_invoked(action: ServiceAction): void
-    vfunc_query_variable(variable: string | null, value: any): void
+    vfunc_query_variable(variable: string, value: any): void
 
     // Own signals of GUPnP-1.2.GUPnP.Service
 
@@ -2325,7 +2325,7 @@ interface ServiceInfo {
      * Get the location of the device description file.
      * @returns A constant string.
      */
-    get_location(): string | null
+    get_location(): string
     /**
      * Get the SCPD URL for this service, or %NULL if there is no SCPD.
      * @returns A string. This string should be freed with g_free() after use.
@@ -2335,12 +2335,12 @@ interface ServiceInfo {
      * Get the UPnP service type, or %NULL.
      * @returns A constant string.
      */
-    get_service_type(): string | null
+    get_service_type(): string
     /**
      * Get the Unique Device Name of the containing device.
      * @returns A constant string.
      */
-    get_udn(): string | null
+    get_udn(): string
     /**
      * Get the URL base of this service.
      * @returns A constant #SoupURI.
@@ -2455,13 +2455,13 @@ interface ServiceIntrospection {
      * @param action_name The name of the action to retrieve
      * @returns the action or %NULL. Do not modify or free it.
      */
-    get_action(action_name: string | null): ServiceActionInfo | null
+    get_action(action_name: string): ServiceActionInfo | null
     /**
      * Returns the state variable by the name `variable_name` in this service.
      * @param variable_name The name of the variable to retrieve
      * @returns the state variable or %NULL. Do not modify or free it.
      */
-    get_state_variable(variable_name: string | null): ServiceStateVariableInfo | null
+    get_state_variable(variable_name: string): ServiceStateVariableInfo | null
     /**
      * Returns a GList of names of all the actions in this service.
      * @returns A GList of names of all the actions or %NULL. Do not modify or free it or its contents.
@@ -2558,7 +2558,7 @@ interface ServiceProxy {
      * @param callback The callback to call when `variable` changes
      * @returns %TRUE on success.
      */
-    add_notify(variable: string | null, type: GObject.GType, callback: ServiceProxyNotifyCallback): boolean
+    add_notify(variable: string, type: GObject.GType, callback: ServiceProxyNotifyCallback): boolean
     /**
      * Get a notification for anything that happens on the peer. `value` in
      * `callback` will be of type #G_TYPE_POINTER and contain the pre-parsed
@@ -2576,7 +2576,7 @@ interface ServiceProxy {
      * @param callback The callback to call when sending the action has succeeded or failed
      * @returns A #GUPnPServiceProxyAction handle. This will be freed when calling gupnp_service_proxy_cancel_action() or gupnp_service_proxy_end_action_list().
      */
-    begin_action_list(action: string | null, in_names: string[], in_values: any[], callback: ServiceProxyActionCallback): ServiceProxyAction
+    begin_action_list(action: string, in_names: string[], in_values: any[], callback: ServiceProxyActionCallback): ServiceProxyAction
     /**
      * Synchronously call the `action` on the remote UPnP service.
      * @param action An action
@@ -2663,7 +2663,7 @@ interface ServiceProxy {
      * @param callback The callback to call when `variable` changes
      * @returns %TRUE on success.
      */
-    remove_notify(variable: string | null, callback: ServiceProxyNotifyCallback): boolean
+    remove_notify(variable: string, callback: ServiceProxyNotifyCallback): boolean
     /**
      * Cancels the variable change notification for `callback` and `user_data`.
      * 
@@ -2684,7 +2684,7 @@ interface ServiceProxy {
      * @param out_types #GList of types (as #GType) that line up with `out_names`
      * @returns %TRUE if sending the action was succesful.
      */
-    send_action_list(action: string | null, in_names: string[], in_values: any[], out_names: string[], out_types: GObject.GType[]): [ /* returnType */ boolean, /* out_values */ any[] ]
+    send_action_list(action: string, in_names: string[], in_values: any[], out_names: string[], out_types: GObject.GType[]): [ /* returnType */ boolean, /* out_values */ any[] ]
     /**
      * (Un)subscribes to this service.
      * 
@@ -2808,7 +2808,7 @@ class XMLDoc extends GObject.Object {
      * @param path Path to xml document
      * @returns A new #GUPnPXMLDoc, or %NULL on an error
      */
-    static new_from_path(path: string | null): XMLDoc
+    static new_from_path(path: string): XMLDoc
     _init(config?: XMLDoc.ConstructorProperties): void
 }
 
@@ -2821,8 +2821,8 @@ interface AclInterface {
      * @field 
      */
     parent: GObject.TypeInterface
-    is_allowed: (self: Acl, device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null) => boolean
-    is_allowed_async: (self: Acl, device: any | null, service: any | null, path: string | null, address: string | null, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    is_allowed: (self: Acl, device: any | null, service: any | null, path: string, address: string, agent: string | null) => boolean
+    is_allowed_async: (self: Acl, device: any | null, service: any | null, path: string, address: string, agent: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     is_allowed_finish: (self: Acl, res: Gio.AsyncResult) => boolean
     can_sync: (self: Acl) => boolean
 }
@@ -2985,7 +2985,7 @@ interface ServiceAction {
      * @param type The type of argument to retrieve
      * @returns Value as #GValue associated with @action. g_value_unset() and g_slice_free() it after usage.
      */
-    get_value(argument: string | null, type: GObject.GType): any
+    get_value(argument: string, type: GObject.GType): any
     /**
      * Get an ordered (preferred first) #GList of locales preferred by
      * the client. Free list and elements after use.
@@ -3002,7 +3002,7 @@ interface ServiceAction {
      * Get the name of `action`.
      * @returns The name of @action
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * A variant of #gupnp_service_action_get that uses #GList instead of varargs.
      * @param arg_names A #GList of argument names as string
@@ -3019,7 +3019,7 @@ interface ServiceAction {
      * @param error_code The error code
      * @param error_description The error description, or %NULL if `error_code` is one of #GUPNP_CONTROL_ERROR_INVALID_ACTION, #GUPNP_CONTROL_ERROR_INVALID_ARGS, #GUPNP_CONTROL_ERROR_OUT_OF_SYNC or #GUPNP_CONTROL_ERROR_ACTION_FAILED, in which case a description is provided automatically.
      */
-    return_error(error_code: number, error_description: string | null): void
+    return_error(error_code: number, error_description: string): void
     /**
      * Return succesfully.
      */
@@ -3029,7 +3029,7 @@ interface ServiceAction {
      * @param argument The name of the return value to retrieve
      * @param value The #GValue to store the return value
      */
-    set_value(argument: string | null, value: any): void
+    set_value(argument: string, value: any): void
     /**
      * Sets the specified action return values.
      * @param arg_names A #GList of argument names
@@ -3121,7 +3121,7 @@ interface ServiceClass {
 
     parent_class: ServiceInfoClass
     action_invoked: (service: Service, action: ServiceAction) => void
-    query_variable: (service: Service, variable: string | null, value: any) => void
+    query_variable: (service: Service, variable: string, value: any) => void
 }
 
 abstract class ServiceClass {
@@ -3281,7 +3281,7 @@ interface ServiceProxyAction {
      * @param value the new value of `key`
      * @returns true if successfully modified, false otherwise
      */
-    set(key: string | null, value: any): boolean
+    set(key: string, value: any): boolean
     unref(): void
 }
 
@@ -3341,7 +3341,7 @@ class ServiceProxyAction {
      * @param in_values #GList of values (as #GValue) that line up with `in_names`
      * @returns A newly created #GUPnPServiceProxyAction
      */
-    static new_from_list(action: string | null, in_names: string[], in_values: any[]): ServiceProxyAction
+    static new_from_list(action: string, in_names: string[], in_values: any[]): ServiceProxyAction
 }
 
 interface ServiceProxyClass {

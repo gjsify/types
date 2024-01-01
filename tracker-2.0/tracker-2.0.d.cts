@@ -94,15 +94,15 @@ export enum NotifierFlags {
      */
     NOTIFY_UNEXTRACTED,
 }
-export const DBUS_SERVICE: string | null
-export const DBUS_INTERFACE_RESOURCES: string | null
-export const DBUS_OBJECT_RESOURCES: string | null
-export const DBUS_INTERFACE_STATISTICS: string | null
-export const DBUS_OBJECT_STATISTICS: string | null
-export const DBUS_INTERFACE_STATUS: string | null
-export const DBUS_OBJECT_STATUS: string | null
-export const DBUS_INTERFACE_STEROIDS: string | null
-export const DBUS_OBJECT_STEROIDS: string | null
+export const DBUS_SERVICE: string
+export const DBUS_INTERFACE_RESOURCES: string
+export const DBUS_OBJECT_RESOURCES: string
+export const DBUS_INTERFACE_STATISTICS: string
+export const DBUS_OBJECT_STATISTICS: string
+export const DBUS_INTERFACE_STATUS: string
+export const DBUS_OBJECT_STATUS: string
+export const DBUS_INTERFACE_STEROIDS: string
+export const DBUS_OBJECT_STEROIDS: string
 /**
  * Checks that the Tracker library in use is compatible with the
  * given version. Generally you would pass in the constants
@@ -123,9 +123,9 @@ export const DBUS_OBJECT_STEROIDS: string | null
  * @param required_micro the required micro version.
  * @returns %NULL if the Tracker library is compatible with the   given version, or a string describing the version mismatch.   The returned string is owned by Tracker and must not be modified   or freed.
  */
-export function check_version(required_major: number, required_minor: number, required_micro: number): string | null
-export function sparql_escape_uri(uri: string | null): string | null
-export function sparql_escape_string(literal: string | null): string | null
+export function check_version(required_major: number, required_minor: number, required_micro: number): string
+export function sparql_escape_uri(uri: string): string | null
+export function sparql_escape_string(literal: string): string | null
 export function sparql_get_uuid_urn(): string | null
 export module NamespaceManager {
 
@@ -148,7 +148,7 @@ export interface NamespaceManager {
      * @param prefix a short, unique prefix to identify `namespace`
      * @param ns the URL of the given namespace
      */
-    add_prefix(prefix: string | null, ns: string | null): void
+    add_prefix(prefix: string, ns: string): void
     /**
      * If `compact_uri` begins with one of the prefixes known to this
      * #TrackerNamespaceManager, then the return value will be the
@@ -156,20 +156,20 @@ export interface NamespaceManager {
      * @param compact_uri a URI or compact URI
      * @returns a newly-allocated string
      */
-    expand_uri(compact_uri: string | null): string | null
+    expand_uri(compact_uri: string): string | null
     /**
      * Calls `func` for each known prefix / URI pair.
      * @param func the function to call for each prefix / URI pair
      */
     foreach(func: GLib.HFunc): void
-    has_prefix(prefix: string | null): boolean
+    has_prefix(prefix: string): boolean
     /**
      * Looks up the namespace URI corresponding to `prefix,` or %NULL if the prefix
      * is not known.
      * @param prefix a string
      * @returns a string owned by the #TrackerNamespaceManager, or %NULL
      */
-    lookup_prefix(prefix: string | null): string | null
+    lookup_prefix(prefix: string): string
     /**
      * Writes out all namespaces as Turtle `prefix` statements.
      * @returns a newly-allocated string
@@ -346,13 +346,13 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    add_boolean(property_uri: string | null, value: boolean): void
+    add_boolean(property_uri: string, value: boolean): void
     /**
      * Adds a double object to a multi-valued property.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    add_double(property_uri: string | null, value: number): void
+    add_double(property_uri: string, value: number): void
     /**
      * Add 'value' to the list of values for given property.
      * 
@@ -362,19 +362,19 @@ export interface Resource {
      * @param property_uri a string identifying the property to set
      * @param value an initialised #GValue
      */
-    add_gvalue(property_uri: string | null, value: any): void
+    add_gvalue(property_uri: string, value: any): void
     /**
      * Adds an integer object to a multi-valued property.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    add_int(property_uri: string | null, value: number): void
+    add_int(property_uri: string, value: number): void
     /**
      * Adds an integer object to a multi-valued property.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    add_int64(property_uri: string | null, value: number): void
+    add_int64(property_uri: string, value: number): void
     /**
      * Adds a resource object to a multi-valued property. This
      * function produces similar RDF to tracker_resource_add_uri(),
@@ -383,13 +383,13 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param resource the property object
      */
-    add_relation(property_uri: string | null, resource: Resource): void
+    add_relation(property_uri: string, resource: Resource): void
     /**
      * Adds a string object to a multi-valued property.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    add_string(property_uri: string | null, value: string | null): void
+    add_string(property_uri: string, value: string): void
     /**
      * Adds a resource object to a multi-valued property. This function
      * produces similar RDF to tracker_resource_add_relation(), although
@@ -397,49 +397,49 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    add_uri(property_uri: string | null, value: string | null): void
+    add_uri(property_uri: string, value: string): void
     /**
      * Returns the first boolean object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first boolean object
      */
-    get_first_boolean(property_uri: string | null): boolean
+    get_first_boolean(property_uri: string): boolean
     /**
      * Returns the first double object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first double object
      */
-    get_first_double(property_uri: string | null): number
+    get_first_double(property_uri: string): number
     /**
      * Returns the first integer object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first integer object
      */
-    get_first_int(property_uri: string | null): number
+    get_first_int(property_uri: string): number
     /**
      * Returns the first integer object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first integer object
      */
-    get_first_int64(property_uri: string | null): number
+    get_first_int64(property_uri: string): number
     /**
      * Returns the first resource object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first resource object
      */
-    get_first_relation(property_uri: string | null): Resource
+    get_first_relation(property_uri: string): Resource
     /**
      * Returns the first string object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first string object
      */
-    get_first_string(property_uri: string | null): string | null
+    get_first_string(property_uri: string): string
     /**
      * Returns the first resource object previously assigned to a property.
      * @param property_uri a string identifying the property to look up
      * @returns the first resource object as an URI.
      */
-    get_first_uri(property_uri: string | null): string | null
+    get_first_uri(property_uri: string): string
     /**
      * Returns the identifier of a resource.
      * 
@@ -447,14 +447,14 @@ export interface Resource {
      * SPARQL blank node identifier, such as "_:123".
      * @returns a string owned by the resource
      */
-    get_identifier(): string | null
+    get_identifier(): string
     /**
      * Returns the list of all known values of the given property.
      * @param property_uri a string identifying the property to look up
      * @returns a #GList of #GValue instances, which must be freed by the caller.
      */
-    get_values(property_uri: string | null): any[]
-    identifier_compare_func(identifier: string | null): number
+    get_values(property_uri: string): any[]
+    identifier_compare_func(identifier: string): number
     /**
      * Serialize all the information in `resource` as a JSON-LD document.
      * 
@@ -501,13 +501,13 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    set_boolean(property_uri: string | null, value: boolean): void
+    set_boolean(property_uri: string, value: boolean): void
     /**
      * Sets a single-valued double object.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    set_double(property_uri: string | null, value: number): void
+    set_double(property_uri: string, value: number): void
     /**
      * State that the only value for the given property is 'value'. Any existing
      * values for 'property' will be removed.
@@ -522,7 +522,7 @@ export interface Resource {
      * @param property_uri a string identifying the property to set
      * @param value an initialised #GValue
      */
-    set_gvalue(property_uri: string | null, value: any): void
+    set_gvalue(property_uri: string, value: any): void
     /**
      * Changes the identifier of a #TrackerResource. The identifier should be a
      * URI or compact URI, but this is not necessarily enforced. Invalid
@@ -539,13 +539,13 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    set_int(property_uri: string | null, value: number): void
+    set_int(property_uri: string, value: number): void
     /**
      * Sets a single-valued integer object.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    set_int64(property_uri: string | null, value: number): void
+    set_int64(property_uri: string, value: number): void
     /**
      * Sets a single-valued resource object as a #TrackerResource. This
      * function produces similar RDF to tracker_resource_set_uri(),
@@ -554,13 +554,13 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param resource the property object
      */
-    set_relation(property_uri: string | null, resource: Resource): void
+    set_relation(property_uri: string, resource: Resource): void
     /**
      * Sets a single-valued string object.
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    set_string(property_uri: string | null, value: string | null): void
+    set_string(property_uri: string, value: string): void
     /**
      * Sets a single-valued resource object as a string URI. This function
      * produces similar RDF to tracker_resource_set_relation(), although
@@ -568,7 +568,7 @@ export interface Resource {
      * @param property_uri a string identifying the property to modify
      * @param value the property object
      */
-    set_uri(property_uri: string | null, value: string | null): void
+    set_uri(property_uri: string, value: string): void
 
     // Class property signals of Tracker-2.0.Tracker.Resource
 
@@ -602,14 +602,14 @@ export class Resource extends GObject.Object {
      * @param identifier A string containing a URI
      * @returns a newly created #TrackerResource. Free with g_object_unref() when done
      */
-    constructor(identifier: string | null) 
+    constructor(identifier: string) 
     /**
      * Creates a TrackerResource instance.
      * @constructor 
      * @param identifier A string containing a URI
      * @returns a newly created #TrackerResource. Free with g_object_unref() when done
      */
-    static new(identifier: string | null): Resource
+    static new(identifier: string): Resource
     _init(config?: Resource.ConstructorProperties): void
 }
 
@@ -641,29 +641,29 @@ export interface SparqlBuilder {
     insert_close(): void
     delete_open(graph: string | null): void
     delete_close(): void
-    graph_open(graph: string | null): void
+    graph_open(graph: string): void
     graph_close(): void
     where_open(): void
     where_close(): void
-    subject_variable(var_name: string | null): void
-    object_variable(var_name: string | null): void
-    subject_iri(iri: string | null): void
-    subject(s: string | null): void
-    predicate_iri(iri: string | null): void
-    predicate(s: string | null): void
-    object_iri(iri: string | null): void
-    object(s: string | null): void
-    object_string(literal: string | null): void
-    object_unvalidated(value: string | null): void
+    subject_variable(var_name: string): void
+    object_variable(var_name: string): void
+    subject_iri(iri: string): void
+    subject(s: string): void
+    predicate_iri(iri: string): void
+    predicate(s: string): void
+    object_iri(iri: string): void
+    object(s: string): void
+    object_string(literal: string): void
+    object_unvalidated(value: string): void
     object_boolean(literal: boolean): void
     object_int64(literal: number): void
     object_date(literal: number): /* literal */ number
     object_double(literal: number): void
     object_blank_open(): void
     object_blank_close(): void
-    prepend(raw: string | null): void
-    append(raw: string | null): void
-    get_result(): string | null
+    prepend(raw: string): void
+    append(raw: string): void
+    get_result(): string
     get_length(): number
     get_state(): any
 
@@ -714,8 +714,8 @@ export interface SparqlConnection {
 
     // Owm methods of Tracker-2.0.Tracker.SparqlConnection
 
-    query(sparql: string | null, cancellable: Gio.Cancellable | null): any
-    query_async(sparql: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    query(sparql: string, cancellable: Gio.Cancellable | null): any
+    query_async(sparql: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of query_async
 
@@ -728,10 +728,10 @@ export interface SparqlConnection {
      * @param _callback_ 
      * @returns A Promise of the result of {@link query_async}
      */
-    query_async(sparql: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<any>
+    query_async(sparql: string, cancellable: Gio.Cancellable | null): globalThis.Promise<any>
     query_finish(_res_: Gio.AsyncResult): any
-    update(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null): void
-    update_async(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    update(sparql: string, priority: number, cancellable: Gio.Cancellable | null): void
+    update_async(sparql: string, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of update_async
 
@@ -745,7 +745,7 @@ export interface SparqlConnection {
      * @param _callback_ 
      * @returns A Promise of the result of {@link update_async}
      */
-    update_async(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
+    update_async(sparql: string, priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     update_finish(_res_: Gio.AsyncResult): void
     update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
@@ -763,8 +763,8 @@ export interface SparqlConnection {
      */
     update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<any[] | null>
     update_array_finish(_res_: Gio.AsyncResult): any[] | null
-    update_blank(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null): GLib.Variant | null
-    update_blank_async(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable | null): GLib.Variant | null
+    update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of update_blank_async
 
@@ -778,7 +778,7 @@ export interface SparqlConnection {
      * @param _callback_ 
      * @returns A Promise of the result of {@link update_blank_async}
      */
-    update_blank_async(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>
+    update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Variant | null>
     update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant | null
     load(file: Gio.File, cancellable: Gio.Cancellable | null): void
     load_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -812,20 +812,20 @@ export interface SparqlConnection {
     statistics_async(cancellable: Gio.Cancellable | null): globalThis.Promise<any | null>
     statistics_finish(_res_: Gio.AsyncResult): any | null
     get_namespace_manager(): NamespaceManager | null
-    query_statement(sparql: string | null, cancellable: Gio.Cancellable | null): any | null
+    query_statement(sparql: string, cancellable: Gio.Cancellable | null): any | null
 
     // Own virtual methods of Tracker-2.0.Tracker.SparqlConnection
 
-    vfunc_query(sparql: string | null, cancellable: Gio.Cancellable | null): any
-    vfunc_query_async(sparql: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_query(sparql: string, cancellable: Gio.Cancellable | null): any
+    vfunc_query_async(sparql: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_query_finish(_res_: Gio.AsyncResult): any
-    vfunc_update(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null): void
-    vfunc_update_async(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_update(sparql: string, priority: number, cancellable: Gio.Cancellable | null): void
+    vfunc_update_async(sparql: string, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_update_finish(_res_: Gio.AsyncResult): void
     vfunc_update_array_async(sparql: string[], priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_update_array_finish(_res_: Gio.AsyncResult): any[] | null
-    vfunc_update_blank(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null): GLib.Variant | null
-    vfunc_update_blank_async(sparql: string | null, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_update_blank(sparql: string, priority: number, cancellable: Gio.Cancellable | null): GLib.Variant | null
+    vfunc_update_blank_async(sparql: string, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_update_blank_finish(_res_: Gio.AsyncResult): GLib.Variant | null
     vfunc_load(file: Gio.File, cancellable: Gio.Cancellable | null): void
     vfunc_load_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -834,7 +834,7 @@ export interface SparqlConnection {
     vfunc_statistics_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_statistics_finish(_res_: Gio.AsyncResult): any | null
     vfunc_get_namespace_manager(): NamespaceManager | null
-    vfunc_query_statement(sparql: string | null, cancellable: Gio.Cancellable | null): any | null
+    vfunc_query_statement(sparql: string, cancellable: Gio.Cancellable | null): any | null
 
     // Class property signals of Tracker-2.0.Tracker.SparqlConnection
 
@@ -858,7 +858,7 @@ export class SparqlConnection extends GObject.Object {
     static get_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<SparqlConnection> | null): void
     static get_finish(_res_: Gio.AsyncResult): any
     static get(cancellable: Gio.Cancellable | null): any
-    static remote_new(uri_base: string | null): any
+    static remote_new(uri_base: string): any
     static local_new(flags: any, store: Gio.File, journal: Gio.File | null, ontology: Gio.File | null, cancellable: Gio.Cancellable | null): any
     static local_new_async(flags: any, store: Gio.File, journal: Gio.File | null, ontology: Gio.File | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<SparqlConnection> | null): void
     static local_new_finish(_res_: Gio.AsyncResult): any
@@ -985,10 +985,10 @@ export interface SparqlStatement {
 
     // Owm methods of Tracker-2.0.Tracker.SparqlStatement
 
-    bind_int(name: string | null, value: number): void
-    bind_boolean(name: string | null, value: boolean): void
-    bind_string(name: string | null, value: string | null): void
-    bind_double(name: string | null, value: number): void
+    bind_int(name: string, value: number): void
+    bind_boolean(name: string, value: boolean): void
+    bind_string(name: string, value: string): void
+    bind_double(name: string, value: number): void
     execute(cancellable: Gio.Cancellable | null): any
     execute_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
@@ -1004,17 +1004,17 @@ export interface SparqlStatement {
      */
     execute_async(cancellable: Gio.Cancellable | null): globalThis.Promise<any>
     execute_finish(_res_: Gio.AsyncResult): any
-    get_sparql(): string | null
-    set_sparql(value: string | null): void
+    get_sparql(): string
+    set_sparql(value: string): void
     get_connection(): any
     set_connection(value: any): void
 
     // Own virtual methods of Tracker-2.0.Tracker.SparqlStatement
 
-    vfunc_bind_int(name: string | null, value: number): void
-    vfunc_bind_boolean(name: string | null, value: boolean): void
-    vfunc_bind_string(name: string | null, value: string | null): void
-    vfunc_bind_double(name: string | null, value: number): void
+    vfunc_bind_int(name: string, value: number): void
+    vfunc_bind_boolean(name: string, value: boolean): void
+    vfunc_bind_string(name: string, value: string): void
+    vfunc_bind_double(name: string, value: number): void
     vfunc_execute(cancellable: Gio.Cancellable | null): any
     vfunc_execute_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_execute_finish(_res_: Gio.AsyncResult): any
@@ -1109,7 +1109,7 @@ export interface NotifierEvent {
      * are explicitly marked with the tracker:notify property in their ontology.
      * @returns the RDF type of the element
      */
-    get_type(): string | null
+    get_type(): string
     /**
      * Returns the Uniform Resource Name of the element if the
      * notifier has the flag %TRACKER_NOTIFIER_FLAG_QUERY_URN enabled.
@@ -1118,7 +1118,7 @@ export interface NotifierEvent {
      * notified upon, typically of the form "urn:uuid:...".
      * @returns The element URN
      */
-    get_urn(): string | null
+    get_urn(): string
 }
 
 export class NotifierEvent {
@@ -1166,16 +1166,16 @@ export interface SparqlConnectionClass {
 
     // Own fields of Tracker-2.0.Tracker.SparqlConnectionClass
 
-    query: (self: any, sparql: string | null, cancellable: Gio.Cancellable | null) => any
-    query_async: (self: any, sparql: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    query: (self: any, sparql: string, cancellable: Gio.Cancellable | null) => any
+    query_async: (self: any, sparql: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     query_finish: (self: any, _res_: Gio.AsyncResult) => any
-    update: (self: any, sparql: string | null, priority: number, cancellable: Gio.Cancellable | null) => void
-    update_async: (self: any, sparql: string | null, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    update: (self: any, sparql: string, priority: number, cancellable: Gio.Cancellable | null) => void
+    update_async: (self: any, sparql: string, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     update_finish: (self: any, _res_: Gio.AsyncResult) => void
     update_array_async: (self: any, sparql: string[], priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     update_array_finish: (self: any, _res_: Gio.AsyncResult) => any[] | null
-    update_blank: (self: any, sparql: string | null, priority: number, cancellable: Gio.Cancellable | null) => GLib.Variant | null
-    update_blank_async: (self: any, sparql: string | null, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    update_blank: (self: any, sparql: string, priority: number, cancellable: Gio.Cancellable | null) => GLib.Variant | null
+    update_blank_async: (self: any, sparql: string, priority: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     update_blank_finish: (self: any, _res_: Gio.AsyncResult) => GLib.Variant | null
     load: (self: any, file: Gio.File, cancellable: Gio.Cancellable | null) => void
     load_async: (self: any, file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
@@ -1184,7 +1184,7 @@ export interface SparqlConnectionClass {
     statistics_async: (self: any, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     statistics_finish: (self: any, _res_: Gio.AsyncResult) => any | null
     get_namespace_manager: (self: any) => NamespaceManager | null
-    query_statement: (self: any, sparql: string | null, cancellable: Gio.Cancellable | null) => any | null
+    query_statement: (self: any, sparql: string, cancellable: Gio.Cancellable | null) => any | null
 }
 
 export abstract class SparqlConnectionClass {
@@ -1243,10 +1243,10 @@ export interface SparqlStatementClass {
 
     // Own fields of Tracker-2.0.Tracker.SparqlStatementClass
 
-    bind_int: (self: any, name: string | null, value: number) => void
-    bind_boolean: (self: any, name: string | null, value: boolean) => void
-    bind_string: (self: any, name: string | null, value: string | null) => void
-    bind_double: (self: any, name: string | null, value: number) => void
+    bind_int: (self: any, name: string, value: number) => void
+    bind_boolean: (self: any, name: string, value: boolean) => void
+    bind_string: (self: any, name: string, value: string) => void
+    bind_double: (self: any, name: string, value: number) => void
     execute: (self: any, cancellable: Gio.Cancellable | null) => any
     execute_async: (self: any, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     execute_finish: (self: any, _res_: Gio.AsyncResult) => any

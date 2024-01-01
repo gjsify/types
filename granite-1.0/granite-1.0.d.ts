@@ -84,52 +84,52 @@ enum SettingsColorScheme {
     DARK,
     LIGHT,
 }
-const StyleClassBADGE: string | null
-const StyleClassCATEGORY_EXPANDER: string | null
-const StyleClassCONTENT_VIEW: string | null
-const StyleClassCONTENT_VIEW_WINDOW: string | null
-const StyleClassCOMPOSITED: string | null
-const StyleClassDECORATED_WINDOW: string | null
-const StyleClassH1_TEXT: string | null
-const StyleClassH2_TEXT: string | null
-const StyleClassH3_TEXT: string | null
-const StyleClassHELP_BUTTON: string | null
-const StyleClassOVERLAY_BAR: string | null
-const StyleClassPOPOVER: string | null
-const StyleClassPOPOVER_BG: string | null
-const StyleClassSOURCE_LIST: string | null
-const StyleClassTHIN_PANE_SEPARATOR: string | null
-const StyleClassTITLE_TEXT: string | null
-const STYLE_CLASS_ACCENT: string | null
-const STYLE_CLASS_AVATAR: string | null
-const STYLE_CLASS_BACK_BUTTON: string | null
-const STYLE_CLASS_BADGE: string | null
-const STYLE_CLASS_CARD: string | null
-const STYLE_CLASS_CATEGORY_EXPANDER: string | null
-const STYLE_CLASS_CHECKERBOARD: string | null
-const STYLE_CLASS_COLOR_BUTTON: string | null
-const STYLE_CLASS_DEFAULT_DECORATION: string | null
-const STYLE_CLASS_H1_LABEL: string | null
-const STYLE_CLASS_H2_LABEL: string | null
-const STYLE_CLASS_H3_LABEL: string | null
-const STYLE_CLASS_H4_LABEL: string | null
-const STYLE_CLASS_KEYCAP: string | null
-const STYLE_CLASS_MODE_SWITCH: string | null
-const STYLE_CLASS_OVERLAY_BAR: string | null
-const STYLE_CLASS_PRIMARY_LABEL: string | null
-const STYLE_CLASS_ROUNDED: string | null
-const STYLE_CLASS_SEEKBAR: string | null
-const STYLE_CLASS_SMALL_LABEL: string | null
-const STYLE_CLASS_SOURCE_LIST: string | null
-const STYLE_CLASS_STORAGEBAR: string | null
-const STYLE_CLASS_TERMINAL: string | null
-const STYLE_CLASS_WELCOME: string | null
-const STYLE_CLASS_WARMTH: string | null
-const STYLE_CLASS_TEMPERATURE: string | null
+const StyleClassBADGE: string
+const StyleClassCATEGORY_EXPANDER: string
+const StyleClassCONTENT_VIEW: string
+const StyleClassCONTENT_VIEW_WINDOW: string
+const StyleClassCOMPOSITED: string
+const StyleClassDECORATED_WINDOW: string
+const StyleClassH1_TEXT: string
+const StyleClassH2_TEXT: string
+const StyleClassH3_TEXT: string
+const StyleClassHELP_BUTTON: string
+const StyleClassOVERLAY_BAR: string
+const StyleClassPOPOVER: string
+const StyleClassPOPOVER_BG: string
+const StyleClassSOURCE_LIST: string
+const StyleClassTHIN_PANE_SEPARATOR: string
+const StyleClassTITLE_TEXT: string
+const STYLE_CLASS_ACCENT: string
+const STYLE_CLASS_AVATAR: string
+const STYLE_CLASS_BACK_BUTTON: string
+const STYLE_CLASS_BADGE: string
+const STYLE_CLASS_CARD: string
+const STYLE_CLASS_CATEGORY_EXPANDER: string
+const STYLE_CLASS_CHECKERBOARD: string
+const STYLE_CLASS_COLOR_BUTTON: string
+const STYLE_CLASS_DEFAULT_DECORATION: string
+const STYLE_CLASS_H1_LABEL: string
+const STYLE_CLASS_H2_LABEL: string
+const STYLE_CLASS_H3_LABEL: string
+const STYLE_CLASS_H4_LABEL: string
+const STYLE_CLASS_KEYCAP: string
+const STYLE_CLASS_MODE_SWITCH: string
+const STYLE_CLASS_OVERLAY_BAR: string
+const STYLE_CLASS_PRIMARY_LABEL: string
+const STYLE_CLASS_ROUNDED: string
+const STYLE_CLASS_SEEKBAR: string
+const STYLE_CLASS_SMALL_LABEL: string
+const STYLE_CLASS_SOURCE_LIST: string
+const STYLE_CLASS_STORAGEBAR: string
+const STYLE_CLASS_TERMINAL: string
+const STYLE_CLASS_WELCOME: string
+const STYLE_CLASS_WARMTH: string
+const STYLE_CLASS_TEMPERATURE: string
 const TRANSITION_DURATION_CLOSE: number
 const TRANSITION_DURATION_IN_PLACE: number
 const TRANSITION_DURATION_OPEN: number
-const TOOLTIP_SECONDARY_TEXT_MARKUP: string | null
+const TOOLTIP_SECONDARY_TEXT_MARKUP: string
 function date_time_get_default_time_format(is_12h: boolean, with_second: boolean): string | null
 function date_time_get_relative_datetime(date_time: GLib.DateTime): string | null
 function date_time_is_same_day(day1: GLib.DateTime, day2: GLib.DateTime): boolean
@@ -144,9 +144,9 @@ function services_application_set_progress_finish(_res_: Gio.AsyncResult): boole
 function services_application_set_progress_visible<Z = unknown>(visible: boolean, _callback_: Gio.AsyncReadyCallback<Z> | null): void
 function services_application_set_progress_visible_finish(_res_: Gio.AsyncResult): boolean
 function widgets_utils_set_color_primary(window: Gtk.Widget, color: Gdk.RGBA, priority: number): Gtk.CssProvider | null
-function widgets_utils_set_theming(widget: Gtk.Widget, stylesheet: string | null, class_name: string | null, priority: number): Gtk.CssProvider | null
-function widgets_utils_set_theming_for_screen(screen: Gdk.Screen, stylesheet: string | null, priority: number): Gtk.CssProvider | null
-function widgets_utils_get_css_provider(stylesheet: string | null): Gtk.CssProvider | null
+function widgets_utils_set_theming(widget: Gtk.Widget, stylesheet: string, class_name: string | null, priority: number): Gtk.CssProvider | null
+function widgets_utils_set_theming_for_screen(screen: Gdk.Screen, stylesheet: string, priority: number): Gtk.CssProvider | null
+function widgets_utils_get_css_provider(stylesheet: string): Gtk.CssProvider | null
 function widgets_utils_apply_text_style_to_label(text_style: TextStyle, label: Gtk.Label): void
 function widgets_utils_get_default_close_button_position(): [ /* returnType */ boolean, /* position */ CloseButtonPosition ]
 function widgets_utils_get_button_layout_schema(): string | null
@@ -221,12 +221,12 @@ interface ServicesSettingsSerializable extends GObject.Object {
     // Owm methods of Granite-1.0.Granite.ServicesSettingsSerializable
 
     settings_serialize(): string | null
-    settings_deserialize(s: string | null): void
+    settings_deserialize(s: string): void
 
     // Own virtual methods of Granite-1.0.Granite.ServicesSettingsSerializable
 
     vfunc_settings_serialize(): string | null
-    vfunc_settings_deserialize(s: string | null): void
+    vfunc_settings_deserialize(s: string): void
 
     // Class property signals of Granite-1.0.Granite.ServicesSettingsSerializable
 
@@ -615,7 +615,7 @@ class DrawingColor extends GObject.Object {
     static new(R: number, G: number, B: number, A: number): DrawingColor
     static from_gdk(color: Gdk.Color): DrawingColor
     static from_rgba(color: Gdk.RGBA): DrawingColor
-    static from_string(color: string | null): DrawingColor
+    static from_string(color: string): DrawingColor
     static from_int(color: number): DrawingColor
     _init(config?: DrawingColor.ConstructorProperties): void
     static alpha_from_int(color: number): number
@@ -708,7 +708,7 @@ class ServicesContractorProxy extends GObject.Object {
     _init(config?: ServicesContractorProxy.ConstructorProperties): void
     static get_instance(): any
     static get_all_contracts(): Gee.List
-    static get_contracts_by_mime(mime_type: string | null): Gee.List
+    static get_contracts_by_mime(mime_type: string): Gee.List
     static get_contracts_by_mimelist(mime_types: string[]): Gee.List
     static get_contracts_for_file(file: Gio.File): Gee.List
     static get_contracts_for_files(files: Gio.File[]): Gee.List
@@ -728,7 +728,7 @@ interface ServicesIconFactory {
     // Owm methods of Granite-1.0.Granite.ServicesIconFactory
 
     load_symbolic_icon_from_gicon(style: Gtk.StyleContext, gicon: Gio.Icon, size: number): GdkPixbuf.Pixbuf | null
-    load_symbolic_icon(style: Gtk.StyleContext, iconname: string | null, size: number): GdkPixbuf.Pixbuf | null
+    load_symbolic_icon(style: Gtk.StyleContext, iconname: string, size: number): GdkPixbuf.Pixbuf | null
 
     // Class property signals of Granite-1.0.Granite.ServicesIconFactory
 
@@ -788,8 +788,8 @@ class ServicesLogger extends GObject.Object {
     _init(config?: ServicesLogger.ConstructorProperties): void
     static get_DisplayLevel(): any
     static set_DisplayLevel(value: any): void
-    static initialize(app_name: string | null): void
-    static notification(msg: string | null): void
+    static initialize(app_name: string): void
+    static notification(msg: string): void
 }
 
 module ServicesPaths {
@@ -842,7 +842,7 @@ class ServicesPaths extends GObject.Object {
     static set_user_data_folder(value: Gio.File): void
     static get_user_cache_folder(): Gio.File
     static set_user_cache_folder(value: Gio.File): void
-    static initialize(app_name: string | null, data_folder_path: string | null): void
+    static initialize(app_name: string, data_folder_path: string): void
     static ensure_directory_exists(dir: Gio.File): boolean
 }
 
@@ -878,11 +878,11 @@ interface ServicesSettings {
     // Owm methods of Granite-1.0.Granite.ServicesSettings
 
     get_schema(): Gio.Settings
-    verify(key: string | null): void
+    verify(key: string): void
 
     // Own virtual methods of Granite-1.0.Granite.ServicesSettings
 
-    vfunc_verify(key: string | null): void
+    vfunc_verify(key: string): void
 
     // Own signals of Granite-1.0.Granite.ServicesSettings
 
@@ -929,21 +929,21 @@ module ServicesSimpleCommand {
      * Signal callback interface for `output-changed`
      */
     interface OutputChangedSignalCallback {
-        ($obj: ServicesSimpleCommand, text: string | null): void
+        ($obj: ServicesSimpleCommand, text: string): void
     }
 
     /**
      * Signal callback interface for `standard-changed`
      */
     interface StandardChangedSignalCallback {
-        ($obj: ServicesSimpleCommand, text: string | null): void
+        ($obj: ServicesSimpleCommand, text: string): void
     }
 
     /**
      * Signal callback interface for `error-changed`
      */
     interface ErrorChangedSignalCallback {
-        ($obj: ServicesSimpleCommand, text: string | null): void
+        ($obj: ServicesSimpleCommand, text: string): void
     }
 
 
@@ -973,13 +973,13 @@ interface ServicesSimpleCommand {
     emit(sigName: "done", exit: number, ...args: any[]): void
     connect(sigName: "output-changed", callback: ServicesSimpleCommand.OutputChangedSignalCallback): number
     connect_after(sigName: "output-changed", callback: ServicesSimpleCommand.OutputChangedSignalCallback): number
-    emit(sigName: "output-changed", text: string | null, ...args: any[]): void
+    emit(sigName: "output-changed", text: string, ...args: any[]): void
     connect(sigName: "standard-changed", callback: ServicesSimpleCommand.StandardChangedSignalCallback): number
     connect_after(sigName: "standard-changed", callback: ServicesSimpleCommand.StandardChangedSignalCallback): number
-    emit(sigName: "standard-changed", text: string | null, ...args: any[]): void
+    emit(sigName: "standard-changed", text: string, ...args: any[]): void
     connect(sigName: "error-changed", callback: ServicesSimpleCommand.ErrorChangedSignalCallback): number
     connect_after(sigName: "error-changed", callback: ServicesSimpleCommand.ErrorChangedSignalCallback): number
-    emit(sigName: "error-changed", text: string | null, ...args: any[]): void
+    emit(sigName: "error-changed", text: string, ...args: any[]): void
 
     // Class property signals of Granite-1.0.Granite.ServicesSimpleCommand
 
@@ -999,8 +999,8 @@ class ServicesSimpleCommand extends GObject.Object {
     // Constructors of Granite-1.0.Granite.ServicesSimpleCommand
 
     constructor(config?: ServicesSimpleCommand.ConstructorProperties) 
-    constructor(dir: string | null, command: string | null) 
-    static new(dir: string | null, command: string | null): ServicesSimpleCommand
+    constructor(dir: string, command: string) 
+    static new(dir: string, command: string): ServicesSimpleCommand
     _init(config?: ServicesSimpleCommand.ConstructorProperties): void
 }
 
@@ -1036,11 +1036,11 @@ class ServicesSystem extends GObject.Object {
     constructor() 
     static new(): ServicesSystem
     _init(config?: ServicesSystem.ConstructorProperties): void
-    static open_uri(uri: string | null): void
+    static open_uri(uri: string): void
     static open(file: Gio.File): void
     static open_files(files: Gio.File[]): void
     static launch(app: Gio.File): void
-    static execute_command(command: string | null): boolean
+    static execute_command(command: string): boolean
     static launch_with_files(app: Gio.File | null, files: Gio.File[]): void
     static history_is_enabled(): boolean
 }
@@ -1082,12 +1082,12 @@ interface WidgetsAlertView {
 
     // Owm methods of Granite-1.0.Granite.WidgetsAlertView
 
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_description(): string | null
-    set_description(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
+    get_description(): string
+    set_description(value: string): void
     get_icon_name(): string | null
-    set_icon_name(value: string | null): void
+    set_icon_name(value: string): void
     show_action(label: string | null): void
     hide_action(): void
 
@@ -1104,7 +1104,7 @@ interface WidgetsAlertView {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1118,7 +1118,7 @@ interface WidgetsAlertView {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1129,7 +1129,7 @@ interface WidgetsAlertView {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Granite-1.0.Granite.WidgetsAlertView
 
@@ -1305,8 +1305,8 @@ class WidgetsAlertView extends Gtk.Grid {
     // Constructors of Granite-1.0.Granite.WidgetsAlertView
 
     constructor(config?: WidgetsAlertView.ConstructorProperties) 
-    constructor(title: string | null, description: string | null, icon_name: string | null) 
-    static new(title: string | null, description: string | null, icon_name: string | null): WidgetsAlertView
+    constructor(title: string, description: string, icon_name: string) 
+    static new(title: string, description: string, icon_name: string): WidgetsAlertView
 
     // Overloads of new
 
@@ -1357,7 +1357,7 @@ interface WidgetsAvatar {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1371,7 +1371,7 @@ interface WidgetsAvatar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1382,7 +1382,7 @@ interface WidgetsAvatar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsAvatar
 
@@ -1549,7 +1549,7 @@ class WidgetsAvatar extends Gtk.EventBox {
      */
     static new(): Gtk.EventBox
     static from_pixbuf(pixbuf: GdkPixbuf.Pixbuf): WidgetsAvatar
-    static from_file(filepath: string | null, pixel_size: number): WidgetsAvatar
+    static from_file(filepath: string, pixel_size: number): WidgetsAvatar
     static with_default_icon(pixel_size: number): WidgetsAvatar
     _init(config?: WidgetsAvatar.ConstructorProperties): void
 }
@@ -1575,8 +1575,8 @@ interface WidgetsCellRendererBadge {
 
     // Owm methods of Granite-1.0.Granite.WidgetsCellRendererBadge
 
-    get_text(): string | null
-    set_text(value: string | null): void
+    get_text(): string
+    set_text(value: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsCellRendererBadge
 
@@ -1796,7 +1796,7 @@ interface WidgetsCollapsiblePaned {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1810,7 +1810,7 @@ interface WidgetsCollapsiblePaned {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1821,7 +1821,7 @@ interface WidgetsCollapsiblePaned {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsCollapsiblePaned
 
@@ -2046,7 +2046,7 @@ interface WidgetsCompositedWindow extends Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2060,7 +2060,7 @@ interface WidgetsCompositedWindow extends Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2071,7 +2071,7 @@ interface WidgetsCompositedWindow extends Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsCompositedWindow
 
@@ -2388,7 +2388,7 @@ interface WidgetsDatePicker extends Gtk.Buildable {
 
     // Owm methods of Granite-1.0.Granite.WidgetsDatePicker
 
-    get_format(): string | null
+    get_format(): string
     get_date(): GLib.DateTime
     set_date(value: GLib.DateTime): void
     position_dropdown(): /* rect */ Gdk.Rectangle
@@ -2697,7 +2697,7 @@ class WidgetsDatePicker extends Gtk.Entry {
     // Constructors of Granite-1.0.Granite.WidgetsDatePicker
 
     constructor(config?: WidgetsDatePicker.ConstructorProperties) 
-    static with_format(format: string | null): WidgetsDatePicker
+    static with_format(format: string): WidgetsDatePicker
     constructor() 
     static new(): WidgetsDatePicker
 
@@ -2778,15 +2778,15 @@ interface WidgetsTab {
 
     // Owm methods of Granite-1.0.Granite.WidgetsTab
 
-    get_label(): string | null
-    set_label(value: string | null): void
-    set_tooltip(value: string | null): void
+    get_label(): string
+    set_label(value: string): void
+    set_tooltip(value: string): void
     get_pinned(): boolean
     set_pinned(value: boolean): void
     get_pinnable(): boolean
     set_pinnable(value: boolean): void
-    get_restore_data(): string | null
-    set_restore_data(value: string | null): void
+    get_restore_data(): string
+    set_restore_data(value: string): void
     get_close_tab_label(): AccelLabel | null
     get_duplicate_tab_label(): AccelLabel | null
     get_new_window_label(): AccelLabel | null
@@ -2815,7 +2815,7 @@ interface WidgetsTab {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2829,7 +2829,7 @@ interface WidgetsTab {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2840,7 +2840,7 @@ interface WidgetsTab {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsTab
 
@@ -3096,7 +3096,7 @@ module WidgetsDynamicNotebook {
      * Signal callback interface for `tab-restored`
      */
     interface TabRestoredSignalCallback {
-        ($obj: WidgetsDynamicNotebook, label: string | null, data: string | null, icon: Gio.Icon | null): void
+        ($obj: WidgetsDynamicNotebook, label: string, data: string, icon: Gio.Icon | null): void
     }
 
     /**
@@ -3219,15 +3219,15 @@ interface WidgetsDynamicNotebook {
     set_allow_pinning(value: boolean): void
     get_force_left(): boolean
     set_force_left(value: boolean): void
-    get_add_button_tooltip(): string | null
-    set_add_button_tooltip(value: string | null): void
+    get_add_button_tooltip(): string
+    set_add_button_tooltip(value: string): void
     get_new_tab_label(): AccelLabel
     get_restore_tab_label(): AccelLabel
     get_current(): WidgetsTab
     set_current(value: WidgetsTab): void
     get_tabs(): WidgetsTab[]
-    get_group_name(): string | null
-    set_group_name(value: string | null): void
+    get_group_name(): string
+    set_group_name(value: string): void
     get_tab_bar_behavior(): WidgetsDynamicNotebookTabBarBehavior
     set_tab_bar_behavior(value: WidgetsDynamicNotebookTabBarBehavior): void
     get_menu(): Gtk.Menu
@@ -3255,7 +3255,7 @@ interface WidgetsDynamicNotebook {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3269,7 +3269,7 @@ interface WidgetsDynamicNotebook {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3280,7 +3280,7 @@ interface WidgetsDynamicNotebook {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Granite-1.0.Granite.WidgetsDynamicNotebook
 
@@ -3304,7 +3304,7 @@ interface WidgetsDynamicNotebook {
     emit(sigName: "tab-duplicated", duplicated_tab: WidgetsTab, ...args: any[]): void
     connect(sigName: "tab-restored", callback: WidgetsDynamicNotebook.TabRestoredSignalCallback): number
     connect_after(sigName: "tab-restored", callback: WidgetsDynamicNotebook.TabRestoredSignalCallback): number
-    emit(sigName: "tab-restored", label: string | null, data: string | null, icon: Gio.Icon | null, ...args: any[]): void
+    emit(sigName: "tab-restored", label: string, data: string, icon: Gio.Icon | null, ...args: any[]): void
     connect(sigName: "new-tab-requested", callback: WidgetsDynamicNotebook.NewTabRequestedSignalCallback): number
     connect_after(sigName: "new-tab-requested", callback: WidgetsDynamicNotebook.NewTabRequestedSignalCallback): number
     emit(sigName: "new-tab-requested", ...args: any[]): void
@@ -3585,8 +3585,8 @@ interface WidgetsModeButton {
     set_selected(value: number): void
     get_n_items(): number
     append_pixbuf(pixbuf: GdkPixbuf.Pixbuf): number
-    append_text(text: string | null): number
-    append_icon(icon_name: string | null, size: Gtk.IconSize): number
+    append_text(text: string): number
+    append_icon(icon_name: string, size: Gtk.IconSize): number
     append(w: Gtk.Widget): number
     set_active(new_active_index: number): void
     set_item_visible(index: number, val: boolean): void
@@ -3622,7 +3622,7 @@ interface WidgetsModeButton {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3636,7 +3636,7 @@ interface WidgetsModeButton {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3647,7 +3647,7 @@ interface WidgetsModeButton {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Granite-1.0.Granite.WidgetsModeButton
 
@@ -3864,10 +3864,10 @@ interface WidgetsOverlayBar {
     // Owm methods of Granite-1.0.Granite.WidgetsOverlayBar
 
     get_overlay(): Gtk.Overlay | null
-    get_status(): string | null
-    set_status(value: string | null): void
-    get_label(): string | null
-    set_label(value: string | null): void
+    get_status(): string
+    set_status(value: string): void
+    get_label(): string
+    set_label(value: string): void
     get_active(): boolean
     set_active(value: boolean): void
 
@@ -3884,7 +3884,7 @@ interface WidgetsOverlayBar {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3898,7 +3898,7 @@ interface WidgetsOverlayBar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3909,7 +3909,7 @@ interface WidgetsOverlayBar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsOverlayBar
 
@@ -4166,7 +4166,7 @@ interface WidgetsSourceList {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4180,7 +4180,7 @@ interface WidgetsSourceList {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4191,7 +4191,7 @@ interface WidgetsSourceList {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Granite-1.0.Granite.WidgetsSourceList
 
@@ -4433,7 +4433,7 @@ module WidgetsSourceListItem {
      * Signal callback interface for `edited`
      */
     interface EditedSignalCallback {
-        ($obj: WidgetsSourceListItem, new_name: string | null): void
+        ($obj: WidgetsSourceListItem, new_name: string): void
     }
 
     /**
@@ -4493,14 +4493,14 @@ interface WidgetsSourceListItem {
     // Owm methods of Granite-1.0.Granite.WidgetsSourceListItem
 
     get_parent(): WidgetsSourceListExpandableItem
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_tooltip(): string | null
     set_tooltip(value: string | null): void
     get_markup(): string | null
     set_markup(value: string | null): void
-    get_badge(): string | null
-    set_badge(value: string | null): void
+    get_badge(): string
+    set_badge(value: string): void
     get_editable(): boolean
     set_editable(value: boolean): void
     get_visible(): boolean
@@ -4511,13 +4511,13 @@ interface WidgetsSourceListItem {
     set_icon(value: Gio.Icon): void
     get_activatable(): Gio.Icon
     set_activatable(value: Gio.Icon): void
-    get_activatable_tooltip(): string | null
-    set_activatable_tooltip(value: string | null): void
+    get_activatable_tooltip(): string
+    set_activatable_tooltip(value: string): void
     get_context_menu(): Gtk.Menu | null
 
     // Own virtual methods of Granite-1.0.Granite.WidgetsSourceListItem
 
-    vfunc_edited(new_name: string | null): void
+    vfunc_edited(new_name: string): void
     vfunc_action_activated(): void
     vfunc_activated(): void
     vfunc_get_context_menu(): Gtk.Menu | null
@@ -4526,7 +4526,7 @@ interface WidgetsSourceListItem {
 
     connect(sigName: "edited", callback: WidgetsSourceListItem.EditedSignalCallback): number
     connect_after(sigName: "edited", callback: WidgetsSourceListItem.EditedSignalCallback): number
-    emit(sigName: "edited", new_name: string | null, ...args: any[]): void
+    emit(sigName: "edited", new_name: string, ...args: any[]): void
     connect(sigName: "action-activated", callback: WidgetsSourceListItem.ActionActivatedSignalCallback): number
     connect_after(sigName: "action-activated", callback: WidgetsSourceListItem.ActionActivatedSignalCallback): number
     emit(sigName: "action-activated", ...args: any[]): void
@@ -4585,8 +4585,8 @@ class WidgetsSourceListItem extends GObject.Object {
     // Constructors of Granite-1.0.Granite.WidgetsSourceListItem
 
     constructor(config?: WidgetsSourceListItem.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): WidgetsSourceListItem
+    constructor(name: string) 
+    static new(name: string): WidgetsSourceListItem
     _init(config?: WidgetsSourceListItem.ConstructorProperties): void
 }
 
@@ -4734,12 +4734,12 @@ class WidgetsSourceListExpandableItem extends WidgetsSourceListItem {
     // Constructors of Granite-1.0.Granite.WidgetsSourceListExpandableItem
 
     constructor(config?: WidgetsSourceListExpandableItem.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): WidgetsSourceListExpandableItem
+    constructor(name: string) 
+    static new(name: string): WidgetsSourceListExpandableItem
 
     // Overloads of new
 
-    static new(name: string | null): WidgetsSourceListItem
+    static new(name: string): WidgetsSourceListItem
     _init(config?: WidgetsSourceListExpandableItem.ConstructorProperties): void
 }
 
@@ -4793,7 +4793,7 @@ interface WidgetsStorageBar {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4807,7 +4807,7 @@ interface WidgetsStorageBar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4818,7 +4818,7 @@ interface WidgetsStorageBar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsStorageBar
 
@@ -5038,8 +5038,8 @@ interface WidgetsTimePicker {
 
     // Owm methods of Granite-1.0.Granite.WidgetsTimePicker
 
-    get_format_12(): string | null
-    get_format_24(): string | null
+    get_format_12(): string
+    get_format_24(): string
     get_time(): GLib.DateTime
     set_time(value: GLib.DateTime): void
     position_dropdown(): [ /* x */ number, /* y */ number ]
@@ -5351,7 +5351,7 @@ class WidgetsTimePicker extends Gtk.Entry {
     // Constructors of Granite-1.0.Granite.WidgetsTimePicker
 
     constructor(config?: WidgetsTimePicker.ConstructorProperties) 
-    static with_format(format_12: string | null, format_24: string | null): WidgetsTimePicker
+    static with_format(format_12: string, format_24: string): WidgetsTimePicker
     constructor() 
     static new(): WidgetsTimePicker
 
@@ -5408,8 +5408,8 @@ interface WidgetsToast {
 
     // Owm methods of Granite-1.0.Granite.WidgetsToast
 
-    get_title(): string | null
-    set_title(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
     set_default_action(label: string | null): void
     send_notification(): void
 
@@ -5426,7 +5426,7 @@ interface WidgetsToast {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5440,7 +5440,7 @@ interface WidgetsToast {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5451,7 +5451,7 @@ interface WidgetsToast {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Granite-1.0.Granite.WidgetsToast
 
@@ -5621,8 +5621,8 @@ class WidgetsToast extends Gtk.Revealer {
     // Constructors of Granite-1.0.Granite.WidgetsToast
 
     constructor(config?: WidgetsToast.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): WidgetsToast
+    constructor(title: string) 
+    static new(title: string): WidgetsToast
 
     // Overloads of new
 
@@ -5660,10 +5660,10 @@ interface WidgetsWelcomeButton {
 
     // Owm methods of Granite-1.0.Granite.WidgetsWelcomeButton
 
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_description(): string | null
-    set_description(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
+    get_description(): string
+    set_description(value: string): void
     get_icon(): Gtk.Image | null
     set_icon(value: Gtk.Image | null): void
 
@@ -5679,7 +5679,7 @@ interface WidgetsWelcomeButton {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5691,7 +5691,7 @@ interface WidgetsWelcomeButton {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5705,7 +5705,7 @@ interface WidgetsWelcomeButton {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.WidgetsWelcomeButton
 
@@ -5887,8 +5887,8 @@ class WidgetsWelcomeButton extends Gtk.Button {
     // Constructors of Granite-1.0.Granite.WidgetsWelcomeButton
 
     constructor(config?: WidgetsWelcomeButton.ConstructorProperties) 
-    constructor(image: Gtk.Image | null, option_text: string | null, description_text: string | null) 
-    static new(image: Gtk.Image | null, option_text: string | null, description_text: string | null): WidgetsWelcomeButton
+    constructor(image: Gtk.Image | null, option_text: string, description_text: string) 
+    static new(image: Gtk.Image | null, option_text: string, description_text: string): WidgetsWelcomeButton
 
     // Overloads of new
 
@@ -5940,16 +5940,16 @@ interface WidgetsWelcome {
 
     // Owm methods of Granite-1.0.Granite.WidgetsWelcome
 
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_subtitle(): string | null
-    set_subtitle(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
+    get_subtitle(): string
+    set_subtitle(value: string): void
     set_item_visible(index: number, val: boolean): void
     remove_item(index: number): void
     set_item_sensitivity(index: number, val: boolean): void
-    append(icon_name: string | null, option_text: string | null, description_text: string | null): number
-    append_with_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null, option_text: string | null, description_text: string | null): number
-    append_with_image(image: Gtk.Image | null, option_text: string | null, description_text: string | null): number
+    append(icon_name: string, option_text: string, description_text: string): number
+    append_with_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null, option_text: string, description_text: string): number
+    append_with_image(image: Gtk.Image | null, option_text: string, description_text: string): number
     get_button_from_index(index: number): WidgetsWelcomeButton | null
 
     // Conflicting methods
@@ -5965,7 +5965,7 @@ interface WidgetsWelcome {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5979,7 +5979,7 @@ interface WidgetsWelcome {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5990,7 +5990,7 @@ interface WidgetsWelcome {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Granite-1.0.Granite.WidgetsWelcome
 
@@ -6154,8 +6154,8 @@ class WidgetsWelcome extends Gtk.EventBox {
     // Constructors of Granite-1.0.Granite.WidgetsWelcome
 
     constructor(config?: WidgetsWelcome.ConstructorProperties) 
-    constructor(title_text: string | null, subtitle_text: string | null) 
-    static new(title_text: string | null, subtitle_text: string | null): WidgetsWelcome
+    constructor(title_text: string, subtitle_text: string) 
+    static new(title_text: string, subtitle_text: string): WidgetsWelcome
 
     // Overloads of new
 
@@ -6414,12 +6414,12 @@ interface SettingsPage {
     set_status_type(value: SettingsPageStatusType): void
     get_display_widget(): Gtk.Widget | null
     get_header(): string | null
-    get_status(): string | null
-    set_status(value: string | null): void
+    get_status(): string
+    set_status(value: string): void
     get_icon_name(): string | null
     set_icon_name(value: string | null): void
-    get_title(): string | null
-    set_title(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
 
     // Conflicting methods
 
@@ -6434,7 +6434,7 @@ interface SettingsPage {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6448,7 +6448,7 @@ interface SettingsPage {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6459,7 +6459,7 @@ interface SettingsPage {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.SettingsPage
 
@@ -6720,12 +6720,20 @@ interface SimpleSettingsPage {
     get_content_area(): Gtk.Grid
     get_status_switch(): Gtk.Switch | null
     get_activatable(): boolean
-    get_description(): string | null
-    set_description(value: string | null): void
+    get_description(): string
+    set_description(value: string): void
+    get_icon_name(): string
+
+    // Overloads of get_icon_name
+
     get_icon_name(): string | null
+    set_icon_name(value: string): void
+
+    // Overloads of set_icon_name
+
     set_icon_name(value: string | null): void
-    get_title(): string | null
-    set_title(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
 
     // Conflicting methods
 
@@ -6740,7 +6748,7 @@ interface SimpleSettingsPage {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6754,7 +6762,7 @@ interface SimpleSettingsPage {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6765,7 +6773,7 @@ interface SimpleSettingsPage {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.SimpleSettingsPage
 
@@ -7021,12 +7029,12 @@ interface AccelLabel {
 
     // Owm methods of Granite-1.0.Granite.AccelLabel
 
-    get_action_name(): string | null
-    set_action_name(value: string | null): void
+    get_action_name(): string
+    set_action_name(value: string): void
     get_accel_string(): string | null
     set_accel_string(value: string | null): void
-    get_label(): string | null
-    set_label(value: string | null): void
+    get_label(): string
+    set_label(value: string): void
 
     // Conflicting methods
 
@@ -7041,7 +7049,7 @@ interface AccelLabel {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7055,7 +7063,7 @@ interface AccelLabel {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7066,7 +7074,7 @@ interface AccelLabel {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.AccelLabel
 
@@ -7236,8 +7244,8 @@ class AccelLabel extends Gtk.Grid {
     // Constructors of Granite-1.0.Granite.AccelLabel
 
     constructor(config?: AccelLabel.ConstructorProperties) 
-    constructor(label: string | null, accel_string: string | null) 
-    static new(label: string | null, accel_string: string | null): AccelLabel
+    constructor(label: string, accel_string: string | null) 
+    static new(label: string, accel_string: string | null): AccelLabel
 
     // Overloads of new
 
@@ -7247,7 +7255,7 @@ class AccelLabel extends Gtk.Grid {
      * @returns the new #GtkGrid
      */
     static new(): Gtk.Grid
-    static from_action_name(label: string | null, action_name: string | null): AccelLabel
+    static from_action_name(label: string, action_name: string): AccelLabel
     _init(config?: AccelLabel.ConstructorProperties): void
 }
 
@@ -7304,7 +7312,7 @@ interface AsyncImage {
      */
     set_from_gicon_async(icon: Gio.Icon, size: number, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     set_from_gicon_finish(_res_: Gio.AsyncResult): void
-    set_from_icon_name_async(icon_name: string | null, icon_size: Gtk.IconSize, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    set_from_icon_name_async(icon_name: string, icon_size: Gtk.IconSize, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of set_from_icon_name_async
 
@@ -7318,7 +7326,7 @@ interface AsyncImage {
      * @param _callback_ 
      * @returns A Promise of the result of {@link set_from_icon_name_async}
      */
-    set_from_icon_name_async(icon_name: string | null, icon_size: Gtk.IconSize, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
+    set_from_icon_name_async(icon_name: string, icon_size: Gtk.IconSize, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     set_from_icon_name_finish(_res_: Gio.AsyncResult): void
     set_from_file_async(file: Gio.File, width: number, height: number, preserve_aspect_ratio: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
@@ -7549,7 +7557,7 @@ class AsyncImage extends Gtk.Image {
      */
     static new(): Gtk.Image
     static from_gicon_async(icon: Gio.Icon, size: number, load_on_realize: boolean, auto_size_request: boolean): AsyncImage
-    static from_icon_name_async(icon_name: string | null, icon_size: Gtk.IconSize, load_on_realize: boolean, auto_size_request: boolean): AsyncImage
+    static from_icon_name_async(icon_name: string, icon_size: Gtk.IconSize, load_on_realize: boolean, auto_size_request: boolean): AsyncImage
     _init(config?: AsyncImage.ConstructorProperties): void
 }
 
@@ -7603,7 +7611,7 @@ interface Dialog {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7617,7 +7625,7 @@ interface Dialog {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7628,7 +7636,7 @@ interface Dialog {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.Dialog
 
@@ -8137,8 +8145,8 @@ class HeaderLabel extends Gtk.Label {
     // Constructors of Granite-1.0.Granite.HeaderLabel
 
     constructor(config?: HeaderLabel.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): HeaderLabel
+    constructor(label: string) 
+    static new(label: string): HeaderLabel
 
     // Overloads of new
 
@@ -8205,7 +8213,7 @@ interface HyperTextView {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8219,7 +8227,7 @@ interface HyperTextView {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8230,7 +8238,7 @@ interface HyperTextView {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.HyperTextView
 
@@ -8509,10 +8517,10 @@ interface MessageDialog {
 
     // Owm methods of Granite-1.0.Granite.MessageDialog
 
-    get_primary_text(): string | null
-    set_primary_text(value: string | null): void
-    get_secondary_text(): string | null
-    set_secondary_text(value: string | null): void
+    get_primary_text(): string
+    set_primary_text(value: string): void
+    get_secondary_text(): string
+    set_secondary_text(value: string): void
     get_image_icon(): Gio.Icon
     set_image_icon(value: Gio.Icon): void
     get_badge_icon(): Gio.Icon
@@ -8520,7 +8528,7 @@ interface MessageDialog {
     get_primary_label(): Gtk.Label
     get_secondary_label(): Gtk.Label
     get_custom_bin(): Gtk.Bin
-    show_error_details(error_message: string | null): void
+    show_error_details(error_message: string): void
 
     // Conflicting methods
 
@@ -8557,7 +8565,7 @@ interface MessageDialog {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8571,7 +8579,7 @@ interface MessageDialog {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8582,7 +8590,7 @@ interface MessageDialog {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.MessageDialog
 
@@ -8854,8 +8862,8 @@ class MessageDialog extends Dialog {
     // Constructors of Granite-1.0.Granite.MessageDialog
 
     constructor(config?: MessageDialog.ConstructorProperties) 
-    constructor(primary_text: string | null, secondary_text: string | null, image_icon: Gio.Icon, buttons: Gtk.ButtonsType) 
-    static new(primary_text: string | null, secondary_text: string | null, image_icon: Gio.Icon, buttons: Gtk.ButtonsType): MessageDialog
+    constructor(primary_text: string, secondary_text: string, image_icon: Gio.Icon, buttons: Gtk.ButtonsType) 
+    static new(primary_text: string, secondary_text: string, image_icon: Gio.Icon, buttons: Gtk.ButtonsType): MessageDialog
 
     // Overloads of new
 
@@ -8895,7 +8903,7 @@ class MessageDialog extends Dialog {
      * @returns a new #GtkWindow.
      */
     static new(type: Gtk.WindowType): Gtk.Window
-    static with_image_from_icon_name(primary_text: string | null, secondary_text: string | null, image_icon_name: string | null, buttons: Gtk.ButtonsType): MessageDialog
+    static with_image_from_icon_name(primary_text: string, secondary_text: string, image_icon_name: string, buttons: Gtk.ButtonsType): MessageDialog
     _init(config?: MessageDialog.ConstructorProperties): void
 }
 
@@ -8948,16 +8956,16 @@ interface ModeSwitch {
     set_active(value: boolean): void
     get_primary_icon_gicon(): Gio.Icon
     set_primary_icon_gicon(value: Gio.Icon): void
-    get_primary_icon_name(): string | null
-    set_primary_icon_name(value: string | null): void
-    get_primary_icon_tooltip_text(): string | null
-    set_primary_icon_tooltip_text(value: string | null): void
+    get_primary_icon_name(): string
+    set_primary_icon_name(value: string): void
+    get_primary_icon_tooltip_text(): string
+    set_primary_icon_tooltip_text(value: string): void
     get_secondary_icon_gicon(): Gio.Icon
     set_secondary_icon_gicon(value: Gio.Icon): void
-    get_secondary_icon_name(): string | null
-    set_secondary_icon_name(value: string | null): void
-    get_secondary_icon_tooltip_text(): string | null
-    set_secondary_icon_tooltip_text(value: string | null): void
+    get_secondary_icon_name(): string
+    set_secondary_icon_name(value: string): void
+    get_secondary_icon_tooltip_text(): string
+    set_secondary_icon_tooltip_text(value: string): void
 
     // Conflicting methods
 
@@ -8972,7 +8980,7 @@ interface ModeSwitch {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8986,7 +8994,7 @@ interface ModeSwitch {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8997,7 +9005,7 @@ interface ModeSwitch {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.ModeSwitch
 
@@ -9190,7 +9198,7 @@ class ModeSwitch extends Gtk.Grid {
      * @returns the new #GtkGrid
      */
     static new(): Gtk.Grid
-    static from_icon_name(primary_icon_name: string | null, secondary_icon_name: string | null): ModeSwitch
+    static from_icon_name(primary_icon_name: string, secondary_icon_name: string): ModeSwitch
     _init(config?: ModeSwitch.ConstructorProperties): void
 }
 
@@ -9265,7 +9273,7 @@ interface SeekBar {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9279,7 +9287,7 @@ interface SeekBar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9290,7 +9298,7 @@ interface SeekBar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.SeekBar
 
@@ -9532,7 +9540,7 @@ interface SettingsSidebar {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9546,7 +9554,7 @@ interface SettingsSidebar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9557,7 +9565,7 @@ interface SettingsSidebar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.SettingsSidebar
 
@@ -9848,8 +9856,8 @@ interface SwitchModelButton {
 
     // Owm methods of Granite-1.0.Granite.SwitchModelButton
 
-    get_text(): string | null
-    set_text(value: string | null): void
+    get_text(): string
+    set_text(value: string): void
     get_description(): string | null
     set_description(value: string | null): void
 
@@ -9865,7 +9873,7 @@ interface SwitchModelButton {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9877,7 +9885,7 @@ interface SwitchModelButton {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9891,7 +9899,7 @@ interface SwitchModelButton {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Granite-1.0.Granite.SwitchModelButton
 
@@ -10079,8 +10087,8 @@ class SwitchModelButton extends Gtk.ToggleButton {
     // Constructors of Granite-1.0.Granite.SwitchModelButton
 
     constructor(config?: SwitchModelButton.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): SwitchModelButton
+    constructor(text: string) 
+    static new(text: string): SwitchModelButton
 
     // Overloads of new
 
@@ -10585,7 +10593,7 @@ interface ServicesSettingsClass {
 
     // Own fields of Granite-1.0.Granite.ServicesSettingsClass
 
-    verify: (self: any, key: string | null) => void
+    verify: (self: any, key: string) => void
 }
 
 abstract class ServicesSettingsClass {
@@ -10668,7 +10676,7 @@ interface ServicesSettingsSerializableIface {
     // Own fields of Granite-1.0.Granite.ServicesSettingsSerializableIface
 
     settings_serialize: (self: any) => string | null
-    settings_deserialize: (self: any, s: string | null) => void
+    settings_deserialize: (self: any, s: string) => void
 }
 
 abstract class ServicesSettingsSerializableIface {
@@ -10935,7 +10943,7 @@ interface WidgetsSourceListItemClass {
     // Own fields of Granite-1.0.Granite.WidgetsSourceListItemClass
 
     get_context_menu: (self: WidgetsSourceListItem) => Gtk.Menu | null
-    edited: (self: WidgetsSourceListItem, new_name: string | null) => void
+    edited: (self: WidgetsSourceListItem, new_name: string) => void
     action_activated: (self: WidgetsSourceListItem) => void
     activated: (self: WidgetsSourceListItem) => void
 }

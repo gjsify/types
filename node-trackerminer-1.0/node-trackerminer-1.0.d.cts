@@ -119,25 +119,25 @@ export enum DirectoryFlags {
  * The name of the D-Bus interface to use for all data miners that
  * inter-operate with Tracker.
  */
-export const MINER_DBUS_INTERFACE: string | null
+export const MINER_DBUS_INTERFACE: string
 /**
  * D-Bus name prefix to use for all data miners. This allows custom
  * miners to be written using `TRACKER_MINER_DBUS_NAME_PREFIX` + "Files" for
  * example and would show up on D-Bus under
  * &quot;org.freedesktop.Tracker1.Miner.Files&quot;.
  */
-export const MINER_DBUS_NAME_PREFIX: string | null
+export const MINER_DBUS_NAME_PREFIX: string
 /**
  * D-Bus path prefix to use for all data miners. This allows custom
  * miners to be written using `TRACKER_MINER_DBUS_PATH_PREFIX` + "Files" for
  * example and would show up on D-Bus under
  * &quot;/org/freedesktop/Tracker1/Miner/Files&quot;.
  */
-export const MINER_DBUS_PATH_PREFIX: string | null
+export const MINER_DBUS_PATH_PREFIX: string
 /**
  * Used as the domain for any #GErrors reported by `TrackerMiner` objects.
  */
-export const MINER_ERROR_DOMAIN: string | null
+export const MINER_ERROR_DOMAIN: string
 export module DataProvider {
 
     // Constructor properties interface
@@ -155,8 +155,8 @@ export interface DataProvider {
 
     // Owm methods of TrackerMiner-1.0.TrackerMiner.DataProvider
 
-    // Has conflict: begin(url: Gio.File, attributes: string | null, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
-    // Has conflict: beginAsync(url: Gio.File, attributes: string | null, flags: DirectoryFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
+    // Has conflict: beginAsync(url: Gio.File, attributes: string, flags: DirectoryFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: beginFinish(result: Gio.AsyncResult): Enumerator
     // Has conflict: end(enumerator: Enumerator, cancellable: Gio.Cancellable | null): boolean
     // Has conflict: endAsync(enumerator: Enumerator, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
@@ -185,7 +185,7 @@ export interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @returns a #TrackerEnumerator or %NULL on failure. This must be freed with g_object_unref().
      */
-    begin(url: Gio.File, attributes: string | null, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
+    begin(url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null): Enumerator
     /**
      * Precisely the same operation as tracker_data_provider_begin()
      * is performing, but asynchronously.
@@ -215,7 +215,7 @@ export interface DataProvider {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    beginAsync(url: Gio.File, attributes: string | null, flags: DirectoryFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    beginAsync(url: Gio.File, attributes: string, flags: DirectoryFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the asynchronous operation started with
      * tracker_data_provider_begin_async().
@@ -476,7 +476,7 @@ export interface Decorator extends Gio.Initable {
      * so it's clear WHO has extracted this extended metadata.
      * @returns a const gchar* or #NULL if an error happened.
      */
-    getDataSource(): string | null
+    getDataSource(): string
     /**
      * Get the number of items left in the queue to be processed. This
      * indicates content that may already exist in Tracker but is waiting
@@ -519,7 +519,7 @@ export interface Decorator extends Gio.Initable {
      * standard time it would take to index content.
      * @param rdfTypes a string array of rdf types
      */
-    setPriorityRdfTypes(rdfTypes: string | null): void
+    setPriorityRdfTypes(rdfTypes: string): void
 
     // Own virtual methods of TrackerMiner-1.0.TrackerMiner.Decorator
 
@@ -809,7 +809,7 @@ export interface IndexingTree {
      * @param filter filter type
      * @param globString glob-style string for the filter
      */
-    addFilter(filter: FilterType, globString: string | null): void
+    addFilter(filter: FilterType, globString: string): void
     /**
      * Clears all filters of a given type.
      * @param type filter type to clear
@@ -1138,12 +1138,12 @@ export interface Miner extends Gio.Initable {
      * Gets the DBus name registered by `miner`
      * @returns a constant string which should not be modified by the caller.
      */
-    getDbusFullName(): string | null
+    getDbusFullName(): string
     /**
      * Gets the DBus path registered by `miner`
      * @returns a constant string which should not be modified by the caller.
      */
-    getDbusFullPath(): string | null
+    getDbusFullPath(): string
     /**
      * Returns the number of pause reasons holding `miner` from
      * indexing contents.
@@ -1168,7 +1168,7 @@ export interface Miner extends Gio.Initable {
      * @param reason reason to pause
      * @returns The pause cookie ID.
      */
-    pause(reason: string | null): number
+    pause(reason: string): number
     /**
      * Asks the miner to resume processing. The cookie must be something
      * returned by tracker_miner_pause(). The miner won't actually resume
@@ -1195,7 +1195,7 @@ export interface Miner extends Gio.Initable {
      */
     ignoreNextUpdate(urls: string[]): void
     paused(): void
-    progress(status: string | null, progress: number): void
+    progress(status: string, progress: number): void
     resumed(): void
     started(): void
     stopped(): void
@@ -1895,8 +1895,8 @@ export interface DataProviderIface {
      * @field 
      */
     gIface: GObject.TypeInterface
-    begin: (dataProvider: DataProvider, url: Gio.File, attributes: string | null, flags: DirectoryFlags, cancellable: Gio.Cancellable | null) => Enumerator
-    beginAsync: (dataProvider: DataProvider, url: Gio.File, attributes: string | null, flags: DirectoryFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    begin: (dataProvider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, cancellable: Gio.Cancellable | null) => Enumerator
+    beginAsync: (dataProvider: DataProvider, url: Gio.File, attributes: string, flags: DirectoryFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     beginFinish: (dataProvider: DataProvider, result: Gio.AsyncResult) => Enumerator
     end: (dataProvider: DataProvider, enumerator: Enumerator, cancellable: Gio.Cancellable | null) => boolean
     endAsync: (dataProvider: DataProvider, enumerator: Enumerator, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
@@ -1986,7 +1986,7 @@ export interface DecoratorInfo {
      * ¹: http://en.wikipedia.org/wiki/MIME
      * @returns the MIME type for #TrackerDecoratorInfo on success or #NULL on error.
      */
-    getMimetype(): string | null
+    getMimetype(): string
     /**
      * A #TrackerSparqlBuilder allows the caller to extract the final
      * SPARQL used to insert the extracted metadata into the database for
@@ -2013,13 +2013,13 @@ export interface DecoratorInfo {
      * with a resource in the database. For example, 'file:///tmp/foo.txt'.
      * @returns the URL for #TrackerDecoratorInfo on success or #NULL on error.
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * A URN is a Uniform Resource Name and should be a unique identifier
      * for a resource in the database.
      * @returns the URN for #TrackerDecoratorInfo on success or #NULL on error.
      */
-    getUrn(): string | null
+    getUrn(): string
     /**
      * Increases the reference count of `info` by 1.
      * @returns the same @info passed in, or %NULL on error.
@@ -2108,7 +2108,7 @@ export interface MinerClass {
     stopped: (miner: Miner) => void
     paused: (miner: Miner) => void
     resumed: (miner: Miner) => void
-    progress: (miner: Miner, status: string | null, progress: number) => void
+    progress: (miner: Miner, status: string, progress: number) => void
     ignoreNextUpdate: (miner: Miner, urls: string[]) => void
     /**
      * Reserved for future API improvements.

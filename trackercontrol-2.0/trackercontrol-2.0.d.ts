@@ -115,13 +115,13 @@ interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns A string which should not be freed or %NULL if none is specified.
      */
-    get_description(miner: string | null): string | null
+    get_description(miner: string): string
     /**
      * Returns a translated display name for `miner`.
      * @param miner miner reference
      * @returns A string which should not be freed or %NULL.
      */
-    get_display_name(miner: string | null): string | null
+    get_display_name(miner: string): string
     /**
      * Returns a list of references for all active miners. Active miners
      * are miners which are running within a process.
@@ -135,7 +135,7 @@ interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns %TRUE if the status could be retrieved successfully, otherwise %FALSE
      */
-    get_status(miner: string | null): [ /* returnType */ boolean, /* status */ string | null, /* progress */ number, /* remaining_time */ number ]
+    get_status(miner: string): [ /* returnType */ boolean, /* status */ string, /* progress */ number, /* remaining_time */ number ]
     /**
      * Tells the filesystem miner to start indexing the `file`.
      * 
@@ -237,7 +237,7 @@ interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns %TRUE if the @miner is active, otherwise %FALSE.
      */
-    is_active(miner: string | null): boolean
+    is_active(miner: string): boolean
     /**
      * This function either returns %FALSE if the miner is not paused,
      * or returns %TRUE and fills in `applications` and `reasons` with
@@ -247,7 +247,7 @@ interface MinerManager extends Gio.Initable {
      * @param miner miner reference
      * @returns %TRUE if @miner is paused, otherwise %FALSE.
      */
-    is_paused(miner: string | null): [ /* returnType */ boolean, /* applications */ string[], /* reasons */ string[] ]
+    is_paused(miner: string): [ /* returnType */ boolean, /* applications */ string[], /* reasons */ string[] ]
     /**
      * Asks `miner` to pause. a miner could be paused by
      * several reasons, and its activity won't be resumed
@@ -256,7 +256,7 @@ interface MinerManager extends Gio.Initable {
      * @param reason reason to pause
      * @returns %TRUE if the miner was paused successfully, otherwise %FALSE.
      */
-    pause(miner: string | null, reason: string | null): [ /* returnType */ boolean, /* cookie */ number ]
+    pause(miner: string, reason: string): [ /* returnType */ boolean, /* cookie */ number ]
     /**
      * This function operates exactly the same way as
      * tracker_miner_manager_pause() with the exception that if the calling
@@ -271,7 +271,7 @@ interface MinerManager extends Gio.Initable {
      * @param reason reason to pause
      * @returns %TRUE if the miner was paused successfully, otherwise %FALSE.
      */
-    pause_for_process(miner: string | null, reason: string | null): [ /* returnType */ boolean, /* cookie */ number ]
+    pause_for_process(miner: string, reason: string): [ /* returnType */ boolean, /* cookie */ number ]
     /**
      * Tells the filesystem miner to reindex any file with a mimetype in
      * the `mimetypes` list.
@@ -288,15 +288,15 @@ interface MinerManager extends Gio.Initable {
      * @param cookie pause cookie
      * @returns %TRUE if the miner was successfully resumed, otherwise %FALSE.
      */
-    resume(miner: string | null, cookie: number): boolean
+    resume(miner: string, cookie: number): boolean
 
     // Own virtual methods of TrackerControl-2.0.TrackerControl.MinerManager
 
-    vfunc_miner_activated(miner_name: string | null): void
-    vfunc_miner_deactivated(miner_name: string | null): void
-    vfunc_miner_paused(miner_name: string | null): void
-    vfunc_miner_progress(miner_name: string | null, status: string | null, progress: number): void
-    vfunc_miner_resumed(miner_name: string | null): void
+    vfunc_miner_activated(miner_name: string): void
+    vfunc_miner_deactivated(miner_name: string): void
+    vfunc_miner_paused(miner_name: string): void
+    vfunc_miner_progress(miner_name: string, status: string, progress: number): void
+    vfunc_miner_resumed(miner_name: string): void
 
     // Own signals of TrackerControl-2.0.TrackerControl.MinerManager
 
@@ -376,11 +376,11 @@ interface MinerManagerClass {
     // Own fields of TrackerControl-2.0.TrackerControl.MinerManagerClass
 
     parent_class: GObject.ObjectClass
-    miner_progress: (manager: MinerManager, miner_name: string | null, status: string | null, progress: number) => void
-    miner_paused: (manager: MinerManager, miner_name: string | null) => void
-    miner_resumed: (manager: MinerManager, miner_name: string | null) => void
-    miner_activated: (manager: MinerManager, miner_name: string | null) => void
-    miner_deactivated: (manager: MinerManager, miner_name: string | null) => void
+    miner_progress: (manager: MinerManager, miner_name: string, status: string, progress: number) => void
+    miner_paused: (manager: MinerManager, miner_name: string) => void
+    miner_resumed: (manager: MinerManager, miner_name: string) => void
+    miner_activated: (manager: MinerManager, miner_name: string) => void
+    miner_deactivated: (manager: MinerManager, miner_name: string) => void
 }
 
 abstract class MinerManagerClass {

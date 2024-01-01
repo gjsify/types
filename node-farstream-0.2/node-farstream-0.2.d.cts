@@ -271,7 +271,7 @@ export enum StreamDirection {
 /**
  * A format that can be used in printf like format strings to format a FsCodec
  */
-export const CODEC_FORMAT: string | null
+export const CODEC_FORMAT: string
 /**
  * If the id of a #FsCodec is #FS_CODEC_ID_ANY, then it will be replaced
  * with a dynamic payload type at runtime
@@ -286,7 +286,7 @@ export const CODEC_ID_DISABLE: number
  * A format that can be used in printf like format strings to format a
  * FsRtpHeaderExtension
  */
-export const RTP_HEADER_EXTENSION_FORMAT: string | null
+export const RTP_HEADER_EXTENSION_FORMAT: string
 /**
  * Copies a GList of #FsCandidate and its contents
  * @param candidateList A GList of #FsCandidate
@@ -333,14 +333,14 @@ export function codecListCopy(codecList: Codec[]): Codec[]
  * @param filename Name of the #GKeyFile to read the codecs parameters from
  * @returns  The #GList of #FsCodec or %NULL if the keyfile was empty or an error occured.
  */
-export function codecListFromKeyfile(filename: string | null): Codec[]
+export function codecListFromKeyfile(filename: string): Codec[]
 export function errorQuark(): GLib.Quark
 /**
  * Gives a user-printable string representing the media type
  * @param mediaType A media type
  * @returns a static string representing the media type
  */
-export function mediaTypeToString(mediaType: MediaType): string | null
+export function mediaTypeToString(mediaType: MediaType): string
 /**
  * Parses a "farstream-farstream" message and checks if it matches
  * the `object` parameters.
@@ -348,7 +348,7 @@ export function mediaTypeToString(mediaType: MediaType): string | null
  * @param message a #GstMessage to parse
  * @returns %TRUE if the message matches the object and is valid.
  */
-export function parseError(object: GObject.Object, message: Gst.Message): [ /* returnType */ boolean, /* error */ Error, /* errorMsg */ string | null ]
+export function parseError(object: GObject.Object, message: Gst.Message): [ /* returnType */ boolean, /* error */ Error, /* errorMsg */ string ]
 /**
  * Does a deep copy of a #GList of #FsRtpHeaderExtension
  * @param extensions    a #GList of #FsRtpHeaderExtension
@@ -388,7 +388,7 @@ export function rtpHeaderExtensionListCopy(extensions: RtpHeaderExtension[]): Rt
  * @param mediaType The media type for which to get header extensions
  * @returns a #GList of #FsRtpHeaderExtension that must be freed with fs_rtp_header_extension_list_destroy()
  */
-export function rtpHeaderExtensionListFromKeyfile(filename: string | null, mediaType: MediaType): RtpHeaderExtension[]
+export function rtpHeaderExtensionListFromKeyfile(filename: string, mediaType: MediaType): RtpHeaderExtension[]
 /**
  * These default codec preferences should work with the elements that are
  * available in the main GStreamer element repositories.
@@ -458,7 +458,7 @@ export interface Conference extends Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    getProperty(name: string | null): /* value */ any
+    getProperty(name: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -509,7 +509,7 @@ export interface Conference extends Gst.ChildProxy {
      * @param name name of the property to set
      * @param value new #GValue for the property
      */
-    setProperty(name: string | null, value: any): void
+    setProperty(name: string, value: any): void
 
     // Overloads of setProperty
 
@@ -677,7 +677,7 @@ export interface ElementAddedNotifier {
      * @param filename The name of the keyfile to use
      * @returns %TRUE if the file was successfully loaded, %FALSE otherwise
      */
-    setPropertiesFromFile(filename: string | null): boolean
+    setPropertiesFromFile(filename: string): boolean
     /**
      * Using a #GKeyFile where the groups are the element's type or name
      * and the key=value are the property and its value, this function
@@ -874,7 +874,7 @@ export class Plugin extends GObject.TypeModule {
      * @param typeSuffix Get list of plugins with this type suffix
      * @returns a newly allocated NULL terminated array of strings or %NULL if no strings were found. It should be freed with g_strfreev().
      */
-    static listAvailable(typeSuffix: string | null): string[]
+    static listAvailable(typeSuffix: string): string[]
 }
 
 export module Session {
@@ -1048,8 +1048,8 @@ export interface Session {
      * @param errorNo The number of the error of type #FsError
      * @param errorMsg Error message
      */
-    emitError(errorNo: number, errorMsg: string | null): void
-    // Has conflict: getStreamTransmitterType(transmitter: string | null): GObject.GType
+    emitError(errorNo: number, errorMsg: string): void
+    // Has conflict: getStreamTransmitterType(transmitter: string): GObject.GType
     // Has conflict: listTransmitters(): string[]
     // Has conflict: newStream(participant: Participant, direction: StreamDirection): Stream
     /**
@@ -1106,7 +1106,7 @@ export interface Session {
      * @param transmitter The name of the transmitter
      * @returns The #GType of the stream transmitter
      */
-    getStreamTransmitterType(transmitter: string | null): GObject.GType
+    getStreamTransmitterType(transmitter: string): GObject.GType
     /**
      * Get the list of all available transmitters for this session.
      * @virtual 
@@ -1424,7 +1424,7 @@ export interface Stream {
      * @param errorNo The number of the error
      * @param errorMsg Error message to be displayed to user
      */
-    emitError(errorNo: number, errorMsg: string | null): void
+    emitError(errorNo: number, errorMsg: string): void
     /**
      * Emits the #FsStream::src-pad-added" signal, it should only be
      * called by subclasses.
@@ -1477,7 +1477,7 @@ export interface Stream {
     parseRecvCodecsChanged(message: Gst.Message): [ /* returnType */ boolean, /* codecs */ Codec[] ]
     // Has conflict: setDecryptionParameters(parameters: Gst.Structure): boolean
     // Has conflict: setRemoteCodecs(remoteCodecs: Codec[]): boolean
-    // Has conflict: setTransmitter(transmitter: string | null, streamTransmitterParameters: GObject.Parameter[] | null): boolean
+    // Has conflict: setTransmitter(transmitter: string, streamTransmitterParameters: GObject.Parameter[] | null): boolean
     /**
      * Set the transmitter to use for this stream. This function will only succeed
      * once.
@@ -1491,7 +1491,7 @@ export interface Stream {
      * @param streamTransmitterParameters    A #GHashTable of string->GValue containing the parameters.
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
-    setTransmitterHt(transmitter: string | null, streamTransmitterParameters: GLib.HashTable | null): boolean
+    setTransmitterHt(transmitter: string, streamTransmitterParameters: GLib.HashTable | null): boolean
 
     // Own virtual methods of Farstream-0.2.Farstream.Stream
 
@@ -1562,7 +1562,7 @@ export interface Stream {
      * @param streamTransmitterParameters    an array of n_parameters #GParameter struct that will be passed   to the newly-create #FsStreamTransmitter
      * @returns %TRUE if the transmitter could be set, %FALSE otherwise
      */
-    setTransmitter(transmitter: string | null, streamTransmitterParameters: GObject.Parameter[] | null): boolean
+    setTransmitter(transmitter: string, streamTransmitterParameters: GObject.Parameter[] | null): boolean
 
     // Own signals of Farstream-0.2.Farstream.Stream
 
@@ -1739,7 +1739,7 @@ export interface StreamTransmitter {
      * @param errorNo The number of the error
      * @param errorMsg Error message (for the programmer)
      */
-    emitError(errorNo: number, errorMsg: string | null): void
+    emitError(errorNo: number, errorMsg: string): void
     // Has conflict: forceRemoteCandidates(remoteCandidates: Candidate[]): boolean
     // Has conflict: gatherLocalCandidates(): boolean
     // Has conflict: stop(): void
@@ -1939,7 +1939,7 @@ export interface Transmitter {
      * @param errorNo The number of the error
      * @param errorMsg Error message to be displayed to user
      */
-    emitError(errorNo: number, errorMsg: string | null): void
+    emitError(errorNo: number, errorMsg: string): void
     // Has conflict: getStreamTransmitterType(): GObject.GType
     // Has conflict: newStreamTransmitter(participant: Participant, nParameters: number, parameters: GObject.Parameter): StreamTransmitter
 
@@ -2034,7 +2034,7 @@ export class Transmitter extends GObject.Object {
      * @param tos The Type of Service of the socket, max is 255
      * @returns a newly-created #FsTransmitter of the requested type    (or NULL if there is an error)
      */
-    constructor(type: string | null, components: number, tos: number) 
+    constructor(type: string, components: number, tos: number) 
     /**
      * This function creates a new transmitter of the requested type.
      * It will load the appropriate plugin as required.
@@ -2044,7 +2044,7 @@ export class Transmitter extends GObject.Object {
      * @param tos The Type of Service of the socket, max is 255
      * @returns a newly-created #FsTransmitter of the requested type    (or NULL if there is an error)
      */
-    static new(type: string | null, components: number, tos: number): Transmitter
+    static new(type: string, components: number, tos: number): Transmitter
     _init(config?: Transmitter.ConstructorProperties): void
     /**
      * Get the list of all available transmitters
@@ -2153,7 +2153,7 @@ export class Candidate {
      * @param port the UDP/TCP port
      * @returns a newly-allocated #FsCandidate
      */
-    constructor(foundation: string | null, componentId: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number) 
+    constructor(foundation: string, componentId: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number) 
     /**
      * Allocates a new #FsCandidate, the rest of the fields can be optionally
      * filled manually. See also fs_candidate_new_full()
@@ -2166,7 +2166,7 @@ export class Candidate {
      * @param port the UDP/TCP port
      * @returns a newly-allocated #FsCandidate
      */
-    static new(foundation: string | null, componentId: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number): Candidate
+    static new(foundation: string, componentId: number, type: CandidateType, proto: NetworkProtocol, ip: string | null, port: number): Candidate
     /**
      * Allocates a new #FsCandidate, filling all the fields. See also
      * fs_candidate_new()
@@ -2185,7 +2185,7 @@ export class Candidate {
      * @param ttl The TTL used when sending Multicast packet (0 = auto)
      * @returns a newly-allocated #FsCandidate
      */
-    static newFull(foundation: string | null, componentId: number, ip: string | null, port: number, baseIp: string | null, basePort: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: string | null, password: string | null, ttl: number): Candidate
+    static newFull(foundation: string, componentId: number, ip: string | null, port: number, baseIp: string | null, basePort: number, proto: NetworkProtocol, priority: number, type: CandidateType, username: string | null, password: string | null, ttl: number): Candidate
 }
 
 export interface Codec {
@@ -2244,13 +2244,13 @@ export interface Codec {
      * @param subtype The subtype of the feedback parameter
      * @param extraParams The extra_params of the feeback parameter
      */
-    addFeedbackParameter(type: string | null, subtype: string | null, extraParams: string | null): void
+    addFeedbackParameter(type: string, subtype: string, extraParams: string): void
     /**
      * This function adds an new optional parameter to a #FsCodec
      * @param name The name of the optional parameter
      * @param value The extra_params of the optional parameter
      */
-    addOptionalParameter(name: string | null, value: string | null): void
+    addOptionalParameter(name: string, value: string): void
     /**
      * Compare two codecs, it will declare two codecs to be identical even
      * if their optional parameters are in a different order. %NULL encoding names
@@ -2280,7 +2280,7 @@ export interface Codec {
      * @param value The value of the parameter to search for or %NULL for any value
      * @returns the #FsCodecParameter from the #FsCodec or %NULL
      */
-    getOptionalParameter(name: string | null, value: string | null): CodecParameter
+    getOptionalParameter(name: string, value: string | null): CodecParameter
     /**
      * Removes an optional parameter from a codec.
      * 
@@ -2323,7 +2323,7 @@ export class Codec {
      * @param clockRate The clock rate this codec encodes at, if applicable
      * @returns A newly allocated #FsCodec
      */
-    constructor(id: number, encodingName: string | null, mediaType: MediaType, clockRate: number) 
+    constructor(id: number, encodingName: string, mediaType: MediaType, clockRate: number) 
     /**
      * Allocates and initializes a #FsCodec structure
      * @constructor 
@@ -2333,7 +2333,7 @@ export class Codec {
      * @param clockRate The clock rate this codec encodes at, if applicable
      * @returns A newly allocated #FsCodec
      */
-    static new(id: number, encodingName: string | null, mediaType: MediaType, clockRate: number): Codec
+    static new(id: number, encodingName: string, mediaType: MediaType, clockRate: number): Codec
 }
 
 export interface CodecParameter {
@@ -2583,7 +2583,7 @@ export class RtpHeaderExtension {
      * @param uri The URI that defines this extension
      * @returns a new #FsRtpHeaderExtension
      */
-    constructor(id: number, direction: StreamDirection, uri: string | null) 
+    constructor(id: number, direction: StreamDirection, uri: string) 
     /**
      * Creates a new #FsRtpHeaderExtension
      * @constructor 
@@ -2592,7 +2592,7 @@ export class RtpHeaderExtension {
      * @param uri The URI that defines this extension
      * @returns a new #FsRtpHeaderExtension
      */
-    static new(id: number, direction: StreamDirection, uri: string | null): RtpHeaderExtension
+    static new(id: number, direction: StreamDirection, uri: string): RtpHeaderExtension
 }
 
 export interface SessionClass {
@@ -2610,7 +2610,7 @@ export interface SessionClass {
     setSendCodec: (session: Session, sendCodec: Codec) => boolean
     setCodecPreferences: (session: Session, codecPreferences: Codec[] | null) => boolean
     listTransmitters: (session: Session) => string[]
-    getStreamTransmitterType: (session: Session, transmitter: string | null) => GObject.GType
+    getStreamTransmitterType: (session: Session, transmitter: string) => GObject.GType
     codecsNeedResend: (session: Session, oldCodecs: Codec[] | null, newCodecs: Codec[] | null) => Codec[]
     setAllowedCaps: (session: Session, sinkCaps: Gst.Caps | null, srcCaps: Gst.Caps | null) => boolean
     setEncryptionParameters: (session: Session, parameters: Gst.Structure | null) => boolean
@@ -2650,7 +2650,7 @@ export interface StreamClass {
     forceRemoteCandidates: (stream: Stream, remoteCandidates: Candidate[]) => boolean
     setRemoteCodecs: (stream: Stream, remoteCodecs: Codec[]) => boolean
     addId: (stream: Stream, id: number) => void
-    setTransmitter: (stream: Stream, transmitter: string | null, streamTransmitterParameters: GObject.Parameter[] | null) => boolean
+    setTransmitter: (stream: Stream, transmitter: string, streamTransmitterParameters: GObject.Parameter[] | null) => boolean
     setDecryptionParameters: (stream: Stream, parameters: Gst.Structure) => boolean
 }
 

@@ -125,10 +125,10 @@ enum StreamDirection {
     RECV,
     BOTH,
 }
-const CODEC_FORMAT: string | null
+const CODEC_FORMAT: string
 const CODEC_ID_ANY: number
 const CODEC_ID_DISABLE: number
-const RTP_HEADER_EXTENSION_FORMAT: string | null
+const RTP_HEADER_EXTENSION_FORMAT: string
 /**
  * Copies a GList of #FsCandidate and its contents
  * @param candidateList A GList of #FsCandidate

@@ -47,8 +47,8 @@ export enum AuthFlags {
     DEFAULT,
     PASSWORD_TEXT_NEEDED,
 }
-export const SERVICE_TYPE_HTTP: string | null
-export const SERVICE_TYPE_HTTPS: string | null
+export const SERVICE_TYPE_HTTP: string
+export const SERVICE_TYPE_HTTPS: string
 export const TLS_SECONDS_PER_DAY: number
 export const TLS_SECONDS_PER_HOUR: number
 export const TLS_SECONDS_PER_MINUTE: number

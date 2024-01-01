@@ -731,10 +731,10 @@ export const ICALPROPERTY_FIRST_ENUM: number
 export const ICALPROPERTY_LAST_ENUM: number
 export const MAJOR_VERSION: number
 export const MINOR_VERSION: number
-export const PACKAGE: string | null
+export const PACKAGE: string
 export const PATCH_VERSION: number
-export const VERSION: string | null
-export const ZONES_TAB_SYSTEM_FILENAME: string | null
+export const VERSION: string
+export const ZONES_TAB_SYSTEM_FILENAME: string
 /**
  * }
  * ```
@@ -744,7 +744,7 @@ export function decode_base64(dest: string | null, src: string | null, size: num
 export function decode_quoted_printable(dest: string | null, src: string | null, size: number): string | null
 export function free_zone_directory(): void
 export function get_unknown_token_handling_setting(): _unknown_token_handling
-export function get_zone_directory(): string | null
+export function get_zone_directory(): string
 export function icalarray_append(array: array, element: any | null): void
 export function icalarray_element_at(array: array, position: number): any | null
 /**
@@ -768,7 +768,7 @@ export function icalarray_remove_element_at(array: array, position: number): voi
 export function icalarray_sort(array: array, compare: any | null): void
 export function icalattach_get_data(attach: attach): number
 export function icalattach_get_is_url(attach: attach): number
-export function icalattach_get_url(attach: attach): string | null
+export function icalattach_get_url(attach: attach): string
 export function icalattach_ref(attach: attach): void
 export function icalattach_unref(attach: attach): void
 export function icalcomponent_add_component(parent: component, child: component): void
@@ -783,62 +783,62 @@ export function icalcomponent_count_properties(component: component, kind: prope
 export function icalcomponent_foreach_recurrence(comp: component, start: any | null, end: any | null, callback: any | null, callback_data: any | null): void
 export function icalcomponent_foreach_tzid(comp: component, callback: any | null, callback_data: any | null): void
 export function icalcomponent_free(component: component): void
-export function icalcomponent_get_comment(comp: component): string | null
-export function icalcomponent_get_description(comp: component): string | null
+export function icalcomponent_get_comment(comp: component): string
+export function icalcomponent_get_description(comp: component): string
 export function icalcomponent_get_dtend(comp: component): any | null
 export function icalcomponent_get_dtstamp(comp: component): any | null
 export function icalcomponent_get_dtstart(comp: component): any | null
 export function icalcomponent_get_due(comp: component): any | null
 export function icalcomponent_get_duration(comp: component): any | null
-export function icalcomponent_get_location(comp: component): string | null
+export function icalcomponent_get_location(comp: component): string
 export function icalcomponent_get_method(comp: component): property_method
 export function icalcomponent_get_recurrenceid(comp: component): any | null
-export function icalcomponent_get_relcalid(comp: component): string | null
+export function icalcomponent_get_relcalid(comp: component): string
 export function icalcomponent_get_sequence(comp: component): number
 export function icalcomponent_get_span(comp: component): any | null
 export function icalcomponent_get_status(comp: component): any | null
-export function icalcomponent_get_summary(comp: component): string | null
-export function icalcomponent_get_uid(comp: component): string | null
+export function icalcomponent_get_summary(comp: component): string
+export function icalcomponent_get_uid(comp: component): string
 export function icalcomponent_is_valid(component: component): number
 export function icalcomponent_isa(component: component): component_kind
 export function icalcomponent_isa_component(component: any | null): number
 export function icalcomponent_kind_is_valid(kind: component_kind): number
-export function icalcomponent_kind_to_string(kind: component_kind): string | null
+export function icalcomponent_kind_to_string(kind: component_kind): string
 export function icalcomponent_merge_component(comp: component, comp_to_merge: component): void
 export function icalcomponent_normalize(comp: component): void
 export function icalcomponent_remove_component(parent: component, child: component): void
 export function icalcomponent_remove_property(component: component, property: property): void
-export function icalcomponent_set_comment(comp: component, v: string | null): void
-export function icalcomponent_set_description(comp: component, v: string | null): void
+export function icalcomponent_set_comment(comp: component, v: string): void
+export function icalcomponent_set_description(comp: component, v: string): void
 export function icalcomponent_set_dtend(comp: component, v: any | null): void
 export function icalcomponent_set_dtstamp(comp: component, v: any | null): void
 export function icalcomponent_set_dtstart(comp: component, v: any | null): void
 export function icalcomponent_set_due(comp: component, v: any | null): void
 export function icalcomponent_set_duration(comp: component, v: any | null): void
-export function icalcomponent_set_location(comp: component, v: string | null): void
+export function icalcomponent_set_location(comp: component, v: string): void
 export function icalcomponent_set_method(comp: component, method: property_method): void
 export function icalcomponent_set_parent(component: component, parent: component): void
 export function icalcomponent_set_recurrenceid(comp: component, v: any | null): void
-export function icalcomponent_set_relcalid(comp: component, v: string | null): void
+export function icalcomponent_set_relcalid(comp: component, v: string): void
 export function icalcomponent_set_sequence(comp: component, v: number): void
 export function icalcomponent_set_status(comp: component, v: any | null): void
-export function icalcomponent_set_summary(comp: component, v: string | null): void
-export function icalcomponent_set_uid(comp: component, v: string | null): void
-export function icalcomponent_string_to_kind(string: string | null): component_kind
+export function icalcomponent_set_summary(comp: component, v: string): void
+export function icalcomponent_set_uid(comp: component, v: string): void
+export function icalcomponent_string_to_kind(string: string): component_kind
 export function icalcomponent_strip_errors(component: component): void
 export function icaldurationtype_as_ical_string(d: any | null): string | null
 export function icaldurationtype_as_ical_string_r(d: any | null): string | null
 export function icaldurationtype_as_int(duration: any | null): number
 export function icaldurationtype_bad_duration(): any | null
 export function icaldurationtype_from_int(t: number): any | null
-export function icaldurationtype_from_string(dur: string | null): any | null
+export function icaldurationtype_from_string(dur: string): any | null
 export function icaldurationtype_is_bad_duration(d: any | null): number
 export function icaldurationtype_is_null_duration(d: any | null): number
 export function icaldurationtype_null_duration(): any | null
 export function icalenum_num_to_reqstat(major: number, minor: number): requeststatus
 export function icalenum_reqstat_code(stat: requeststatus): string | null
 export function icalenum_reqstat_code_r(stat: requeststatus): string | null
-export function icalenum_reqstat_desc(stat: requeststatus): string | null
+export function icalenum_reqstat_desc(stat: requeststatus): string
 export function icalenum_reqstat_major(stat: requeststatus): number
 export function icalenum_reqstat_minor(stat: requeststatus): number
 export function icalerrno_return(): errorenum
@@ -848,28 +848,28 @@ export function icalerrno_return(): errorenum
  */
 export function icalerror_clear_errno(): void
 export function icalerror_crash_here(): void
-export function icalerror_error_from_string(str: string | null): errorenum
+export function icalerror_error_from_string(str: string): errorenum
 export function icalerror_get_error_state(error: errorenum): errorstate
 export function icalerror_get_errors_are_fatal(): number
-export function icalerror_perror(): string | null
-export function icalerror_restore(error: string | null, es: errorstate): void
+export function icalerror_perror(): string
+export function icalerror_restore(error: string, es: errorstate): void
 export function icalerror_set_errno(x: errorenum): void
 export function icalerror_set_error_state(error: errorenum, state: errorstate): void
 export function icalerror_set_errors_are_fatal(fatal: number): void
 export function icalerror_stop_here(): void
-export function icalerror_strerror(e: errorenum): string | null
-export function icalerror_supress(error: string | null): errorstate
+export function icalerror_strerror(e: errorenum): string
+export function icalerror_supress(error: string): errorstate
 export function icallangbind_access_array(array: number, index: number): number
 export function icallangbind_free_array(array: number): void
 export function icallangbind_new_array(size: number): number
-export function icallangbind_property_eval_string(prop: property, sep: string | null): string | null
-export function icallangbind_property_eval_string_r(prop: property, sep: string | null): string | null
-export function icallangbind_quote_as_ical(str: string | null): string | null
-export function icallangbind_quote_as_ical_r(str: string | null): string | null
-export function icallangbind_string_to_open_flag(str: string | null): number
+export function icallangbind_property_eval_string(prop: property, sep: string): string
+export function icallangbind_property_eval_string_r(prop: property, sep: string): string | null
+export function icallangbind_quote_as_ical(str: string): string
+export function icallangbind_quote_as_ical_r(str: string): string | null
+export function icallangbind_string_to_open_flag(str: string): number
 export function icalmemory_add_tmp_buffer(buf: any | null): void
 export function icalmemory_append_char(buf: string | null, pos: string | null, buf_size: number, ch: number): void
-export function icalmemory_append_string(buf: string | null, pos: string | null, buf_size: number, string: string | null): void
+export function icalmemory_append_string(buf: string | null, pos: string | null, buf_size: number, string: string): void
 export function icalmemory_free_buffer(buf: any | null): void
 /**
  * ```
@@ -877,9 +877,9 @@ export function icalmemory_free_buffer(buf: any | null): void
 export function icalmemory_free_ring(): void
 export function icalmemory_new_buffer(size: number): any | null
 export function icalmemory_resize_buffer(buf: any | null, size: number): any | null
-export function icalmemory_strdup(s: string | null): string | null
+export function icalmemory_strdup(s: string): string | null
 export function icalmemory_tmp_buffer(size: number): any | null
-export function icalmemory_tmp_copy(str: string | null): string | null
+export function icalmemory_tmp_copy(str: string): string | null
 /**
  * `par` Usage
  * ```c
@@ -897,42 +897,42 @@ export function icalmemory_tmp_copy(str: string | null): string | null
  */
 export function icalparameter_as_ical_string(parameter: parameter): string | null
 export function icalparameter_as_ical_string_r(parameter: parameter): string | null
-export function icalparameter_enum_to_string(e: number): string | null
+export function icalparameter_enum_to_string(e: number): string
 export function icalparameter_free(parameter: parameter): void
 export function icalparameter_get_actionparam(value: parameter): parameter_action
-export function icalparameter_get_altrep(value: parameter): string | null
-export function icalparameter_get_charset(value: parameter): string | null
-export function icalparameter_get_cn(value: parameter): string | null
+export function icalparameter_get_altrep(value: parameter): string
+export function icalparameter_get_charset(value: parameter): string
+export function icalparameter_get_cn(value: parameter): string
 export function icalparameter_get_cutype(value: parameter): parameter_cutype
-export function icalparameter_get_delegatedfrom(value: parameter): string | null
-export function icalparameter_get_delegatedto(value: parameter): string | null
-export function icalparameter_get_dir(value: parameter): string | null
+export function icalparameter_get_delegatedfrom(value: parameter): string
+export function icalparameter_get_delegatedto(value: parameter): string
+export function icalparameter_get_dir(value: parameter): string
 export function icalparameter_get_display(value: parameter): parameter_display
-export function icalparameter_get_email(value: parameter): string | null
+export function icalparameter_get_email(value: parameter): string
 export function icalparameter_get_enable(value: parameter): parameter_enable
 export function icalparameter_get_encoding(value: parameter): parameter_encoding
 export function icalparameter_get_fbtype(value: parameter): parameter_fbtype
 export function icalparameter_get_feature(value: parameter): parameter_feature
-export function icalparameter_get_filename(value: parameter): string | null
-export function icalparameter_get_fmttype(value: parameter): string | null
-export function icalparameter_get_iana(value: parameter): string | null
-export function icalparameter_get_iana_name(param: parameter): string | null
-export function icalparameter_get_iana_value(param: parameter): string | null
-export function icalparameter_get_id(value: parameter): string | null
-export function icalparameter_get_label(value: parameter): string | null
-export function icalparameter_get_language(value: parameter): string | null
-export function icalparameter_get_latency(value: parameter): string | null
+export function icalparameter_get_filename(value: parameter): string
+export function icalparameter_get_fmttype(value: parameter): string
+export function icalparameter_get_iana(value: parameter): string
+export function icalparameter_get_iana_name(param: parameter): string
+export function icalparameter_get_iana_value(param: parameter): string
+export function icalparameter_get_id(value: parameter): string
+export function icalparameter_get_label(value: parameter): string
+export function icalparameter_get_language(value: parameter): string
+export function icalparameter_get_latency(value: parameter): string
 export function icalparameter_get_local(value: parameter): parameter_local
-export function icalparameter_get_localize(value: parameter): string | null
-export function icalparameter_get_managedid(value: parameter): string | null
-export function icalparameter_get_member(value: parameter): string | null
-export function icalparameter_get_modified(value: parameter): string | null
-export function icalparameter_get_options(value: parameter): string | null
+export function icalparameter_get_localize(value: parameter): string
+export function icalparameter_get_managedid(value: parameter): string
+export function icalparameter_get_member(value: parameter): string
+export function icalparameter_get_modified(value: parameter): string
+export function icalparameter_get_options(value: parameter): string
 export function icalparameter_get_partstat(value: parameter): parameter_partstat
 export function icalparameter_get_patchaction(value: parameter): parameter_patchaction
-export function icalparameter_get_publiccomment(value: parameter): string | null
+export function icalparameter_get_publiccomment(value: parameter): string
 export function icalparameter_get_range(value: parameter): parameter_range
-export function icalparameter_get_reason(value: parameter): string | null
+export function icalparameter_get_reason(value: parameter): string
 export function icalparameter_get_related(value: parameter): parameter_related
 export function icalparameter_get_reltype(value: parameter): parameter_reltype
 export function icalparameter_get_required(value: parameter): parameter_required
@@ -941,58 +941,58 @@ export function icalparameter_get_role(value: parameter): parameter_role
 export function icalparameter_get_rsvp(value: parameter): parameter_rsvp
 export function icalparameter_get_scheduleagent(value: parameter): parameter_scheduleagent
 export function icalparameter_get_scheduleforcesend(value: parameter): parameter_scheduleforcesend
-export function icalparameter_get_schedulestatus(value: parameter): string | null
-export function icalparameter_get_sentby(value: parameter): string | null
-export function icalparameter_get_size(value: parameter): string | null
+export function icalparameter_get_schedulestatus(value: parameter): string
+export function icalparameter_get_sentby(value: parameter): string
+export function icalparameter_get_size(value: parameter): string
 export function icalparameter_get_stayinformed(value: parameter): parameter_stayinformed
 export function icalparameter_get_substate(value: parameter): parameter_substate
-export function icalparameter_get_tzid(value: parameter): string | null
+export function icalparameter_get_tzid(value: parameter): string
 export function icalparameter_get_value(value: parameter): parameter_value
-export function icalparameter_get_x(value: parameter): string | null
+export function icalparameter_get_x(value: parameter): string
 export function icalparameter_get_xliccomparetype(value: parameter): parameter_xliccomparetype
 export function icalparameter_get_xlicerrortype(value: parameter): parameter_xlicerrortype
-export function icalparameter_get_xname(param: parameter): string | null
-export function icalparameter_get_xvalue(param: parameter): string | null
+export function icalparameter_get_xname(param: parameter): string
+export function icalparameter_get_xvalue(param: parameter): string
 export function icalparameter_has_same_name(param1: parameter, param2: parameter): number
 export function icalparameter_isa(parameter: parameter): parameter_kind
 export function icalparameter_isa_parameter(param: any | null): number
 export function icalparameter_kind_is_valid(kind: parameter_kind): number
-export function icalparameter_kind_to_string(kind: parameter_kind): string | null
+export function icalparameter_kind_to_string(kind: parameter_kind): string
 export function icalparameter_set_actionparam(value: parameter, v: parameter_action): void
-export function icalparameter_set_altrep(value: parameter, v: string | null): void
-export function icalparameter_set_charset(value: parameter, v: string | null): void
-export function icalparameter_set_cn(value: parameter, v: string | null): void
+export function icalparameter_set_altrep(value: parameter, v: string): void
+export function icalparameter_set_charset(value: parameter, v: string): void
+export function icalparameter_set_cn(value: parameter, v: string): void
 export function icalparameter_set_cutype(value: parameter, v: parameter_cutype): void
-export function icalparameter_set_delegatedfrom(value: parameter, v: string | null): void
-export function icalparameter_set_delegatedto(value: parameter, v: string | null): void
-export function icalparameter_set_dir(value: parameter, v: string | null): void
+export function icalparameter_set_delegatedfrom(value: parameter, v: string): void
+export function icalparameter_set_delegatedto(value: parameter, v: string): void
+export function icalparameter_set_dir(value: parameter, v: string): void
 export function icalparameter_set_display(value: parameter, v: parameter_display): void
-export function icalparameter_set_email(value: parameter, v: string | null): void
+export function icalparameter_set_email(value: parameter, v: string): void
 export function icalparameter_set_enable(value: parameter, v: parameter_enable): void
 export function icalparameter_set_encoding(value: parameter, v: parameter_encoding): void
 export function icalparameter_set_fbtype(value: parameter, v: parameter_fbtype): void
 export function icalparameter_set_feature(value: parameter, v: parameter_feature): void
-export function icalparameter_set_filename(value: parameter, v: string | null): void
-export function icalparameter_set_fmttype(value: parameter, v: string | null): void
-export function icalparameter_set_iana(value: parameter, v: string | null): void
-export function icalparameter_set_iana_name(param: parameter, v: string | null): void
-export function icalparameter_set_iana_value(param: parameter, v: string | null): void
-export function icalparameter_set_id(value: parameter, v: string | null): void
-export function icalparameter_set_label(value: parameter, v: string | null): void
-export function icalparameter_set_language(value: parameter, v: string | null): void
-export function icalparameter_set_latency(value: parameter, v: string | null): void
+export function icalparameter_set_filename(value: parameter, v: string): void
+export function icalparameter_set_fmttype(value: parameter, v: string): void
+export function icalparameter_set_iana(value: parameter, v: string): void
+export function icalparameter_set_iana_name(param: parameter, v: string): void
+export function icalparameter_set_iana_value(param: parameter, v: string): void
+export function icalparameter_set_id(value: parameter, v: string): void
+export function icalparameter_set_label(value: parameter, v: string): void
+export function icalparameter_set_language(value: parameter, v: string): void
+export function icalparameter_set_latency(value: parameter, v: string): void
 export function icalparameter_set_local(value: parameter, v: parameter_local): void
-export function icalparameter_set_localize(value: parameter, v: string | null): void
-export function icalparameter_set_managedid(value: parameter, v: string | null): void
-export function icalparameter_set_member(value: parameter, v: string | null): void
-export function icalparameter_set_modified(value: parameter, v: string | null): void
-export function icalparameter_set_options(value: parameter, v: string | null): void
+export function icalparameter_set_localize(value: parameter, v: string): void
+export function icalparameter_set_managedid(value: parameter, v: string): void
+export function icalparameter_set_member(value: parameter, v: string): void
+export function icalparameter_set_modified(value: parameter, v: string): void
+export function icalparameter_set_options(value: parameter, v: string): void
 export function icalparameter_set_parent(param: parameter, property: property): void
 export function icalparameter_set_partstat(value: parameter, v: parameter_partstat): void
 export function icalparameter_set_patchaction(value: parameter, v: parameter_patchaction): void
-export function icalparameter_set_publiccomment(value: parameter, v: string | null): void
+export function icalparameter_set_publiccomment(value: parameter, v: string): void
 export function icalparameter_set_range(value: parameter, v: parameter_range): void
-export function icalparameter_set_reason(value: parameter, v: string | null): void
+export function icalparameter_set_reason(value: parameter, v: string): void
 export function icalparameter_set_related(value: parameter, v: parameter_related): void
 export function icalparameter_set_reltype(value: parameter, v: parameter_reltype): void
 export function icalparameter_set_required(value: parameter, v: parameter_required): void
@@ -1001,20 +1001,20 @@ export function icalparameter_set_role(value: parameter, v: parameter_role): voi
 export function icalparameter_set_rsvp(value: parameter, v: parameter_rsvp): void
 export function icalparameter_set_scheduleagent(value: parameter, v: parameter_scheduleagent): void
 export function icalparameter_set_scheduleforcesend(value: parameter, v: parameter_scheduleforcesend): void
-export function icalparameter_set_schedulestatus(value: parameter, v: string | null): void
-export function icalparameter_set_sentby(value: parameter, v: string | null): void
-export function icalparameter_set_size(value: parameter, v: string | null): void
+export function icalparameter_set_schedulestatus(value: parameter, v: string): void
+export function icalparameter_set_sentby(value: parameter, v: string): void
+export function icalparameter_set_size(value: parameter, v: string): void
 export function icalparameter_set_stayinformed(value: parameter, v: parameter_stayinformed): void
 export function icalparameter_set_substate(value: parameter, v: parameter_substate): void
-export function icalparameter_set_tzid(value: parameter, v: string | null): void
+export function icalparameter_set_tzid(value: parameter, v: string): void
 export function icalparameter_set_value(value: parameter, v: parameter_value): void
-export function icalparameter_set_x(value: parameter, v: string | null): void
+export function icalparameter_set_x(value: parameter, v: string): void
 export function icalparameter_set_xliccomparetype(value: parameter, v: parameter_xliccomparetype): void
 export function icalparameter_set_xlicerrortype(value: parameter, v: parameter_xlicerrortype): void
-export function icalparameter_set_xname(param: parameter, v: string | null): void
-export function icalparameter_set_xvalue(param: parameter, v: string | null): void
-export function icalparameter_string_to_enum(str: string | null): number
-export function icalparameter_string_to_kind(string: string | null): parameter_kind
+export function icalparameter_set_xname(param: parameter, v: string): void
+export function icalparameter_set_xvalue(param: parameter, v: string): void
+export function icalparameter_string_to_enum(str: string): number
+export function icalparameter_string_to_kind(string: string): parameter_kind
 export function icalparameter_value_to_value_kind(value: parameter_value): value_kind
 export function icalparser_free(parser: parser): void
 export function icalparser_get_ctrl(): any | null
@@ -1022,53 +1022,53 @@ export function icalparser_get_state(parser: parser): parser_state
 export function icalparser_set_ctrl(ctrl: any | null): void
 export function icalparser_set_gen_data(parser: parser, data: any | null): void
 export function icalparser_string_line_generator(out: string | null, buf_size: number, d: any | null): string | null
-export function icalperiodtype_as_ical_string(p: any | null): string | null
+export function icalperiodtype_as_ical_string(p: any | null): string
 export function icalperiodtype_as_ical_string_r(p: any | null): string | null
-export function icalperiodtype_from_string(str: string | null): any | null
+export function icalperiodtype_from_string(str: string): any | null
 export function icalperiodtype_is_null_period(p: any | null): number
 export function icalperiodtype_is_valid_period(p: any | null): number
 export function icalperiodtype_null_period(): any | null
 export function icalproperty_add_parameter(prop: property, parameter: parameter): void
-export function icalproperty_as_ical_string(prop: property): string | null
+export function icalproperty_as_ical_string(prop: property): string
 export function icalproperty_as_ical_string_r(prop: property): string | null
 export function icalproperty_count_parameters(prop: property): number
 export function icalproperty_enum_belongs_to_property(kind: property_kind, e: number): number
-export function icalproperty_enum_to_string(e: number): string | null
+export function icalproperty_enum_to_string(e: number): string
 export function icalproperty_enum_to_string_r(e: number): string | null
 export function icalproperty_free(prop: property): void
-export function icalproperty_get_acceptresponse(prop: property): string | null
+export function icalproperty_get_acceptresponse(prop: property): string
 export function icalproperty_get_acknowledged(prop: property): any | null
 export function icalproperty_get_action(prop: property): any | null
-export function icalproperty_get_allowconflict(prop: property): string | null
-export function icalproperty_get_attendee(prop: property): string | null
+export function icalproperty_get_allowconflict(prop: property): string
+export function icalproperty_get_attendee(prop: property): string
 export function icalproperty_get_busytype(prop: property): any | null
-export function icalproperty_get_calid(prop: property): string | null
-export function icalproperty_get_calmaster(prop: property): string | null
-export function icalproperty_get_calscale(prop: property): string | null
-export function icalproperty_get_capversion(prop: property): string | null
-export function icalproperty_get_carid(prop: property): string | null
+export function icalproperty_get_calid(prop: property): string
+export function icalproperty_get_calmaster(prop: property): string
+export function icalproperty_get_calscale(prop: property): string
+export function icalproperty_get_capversion(prop: property): string
+export function icalproperty_get_carid(prop: property): string
 export function icalproperty_get_carlevel(prop: property): any | null
-export function icalproperty_get_categories(prop: property): string | null
+export function icalproperty_get_categories(prop: property): string
 export function icalproperty_get_class(prop: property): any | null
 export function icalproperty_get_cmd(prop: property): any | null
-export function icalproperty_get_color(prop: property): string | null
-export function icalproperty_get_comment(prop: property): string | null
+export function icalproperty_get_color(prop: property): string
+export function icalproperty_get_comment(prop: property): string
 export function icalproperty_get_completed(prop: property): any | null
-export function icalproperty_get_components(prop: property): string | null
-export function icalproperty_get_conference(prop: property): string | null
-export function icalproperty_get_contact(prop: property): string | null
+export function icalproperty_get_components(prop: property): string
+export function icalproperty_get_conference(prop: property): string
+export function icalproperty_get_contact(prop: property): string
 export function icalproperty_get_created(prop: property): any | null
-export function icalproperty_get_csid(prop: property): string | null
+export function icalproperty_get_csid(prop: property): string
 export function icalproperty_get_datemax(prop: property): any | null
 export function icalproperty_get_datemin(prop: property): any | null
 export function icalproperty_get_datetime_with_component(prop: property, comp: component): any | null
-export function icalproperty_get_decreed(prop: property): string | null
-export function icalproperty_get_defaultcharset(prop: property): string | null
-export function icalproperty_get_defaultlocale(prop: property): string | null
-export function icalproperty_get_defaulttzid(prop: property): string | null
-export function icalproperty_get_defaultvcars(prop: property): string | null
-export function icalproperty_get_deny(prop: property): string | null
-export function icalproperty_get_description(prop: property): string | null
+export function icalproperty_get_decreed(prop: property): string
+export function icalproperty_get_defaultcharset(prop: property): string
+export function icalproperty_get_defaultlocale(prop: property): string
+export function icalproperty_get_defaulttzid(prop: property): string
+export function icalproperty_get_defaultvcars(prop: property): string
+export function icalproperty_get_deny(prop: property): string
+export function icalproperty_get_description(prop: property): string
 export function icalproperty_get_dtend(prop: property): any | null
 export function icalproperty_get_dtstamp(prop: property): any | null
 export function icalproperty_get_dtstart(prop: property): any | null
@@ -1080,141 +1080,141 @@ export function icalproperty_get_expand(prop: property): number
 export function icalproperty_get_exrule(prop: property): any | null
 export function icalproperty_get_freebusy(prop: property): any | null
 export function icalproperty_get_geo(prop: property): any | null
-export function icalproperty_get_grant(prop: property): string | null
-export function icalproperty_get_itipversion(prop: property): string | null
+export function icalproperty_get_grant(prop: property): string
+export function icalproperty_get_itipversion(prop: property): string
 export function icalproperty_get_lastmodified(prop: property): any | null
-export function icalproperty_get_location(prop: property): string | null
+export function icalproperty_get_location(prop: property): string
 export function icalproperty_get_maxcomponentsize(prop: property): number
 export function icalproperty_get_maxdate(prop: property): any | null
 export function icalproperty_get_maxresults(prop: property): number
 export function icalproperty_get_maxresultssize(prop: property): number
 export function icalproperty_get_method(prop: property): any | null
 export function icalproperty_get_mindate(prop: property): any | null
-export function icalproperty_get_multipart(prop: property): string | null
-export function icalproperty_get_name(prop: property): string | null
-export function icalproperty_get_organizer(prop: property): string | null
-export function icalproperty_get_owner(prop: property): string | null
-export function icalproperty_get_parameter_as_string(prop: property, name: string | null): string | null
-export function icalproperty_get_parameter_as_string_r(prop: property, name: string | null): string | null
-export function icalproperty_get_patchdelete(prop: property): string | null
+export function icalproperty_get_multipart(prop: property): string
+export function icalproperty_get_name(prop: property): string
+export function icalproperty_get_organizer(prop: property): string
+export function icalproperty_get_owner(prop: property): string
+export function icalproperty_get_parameter_as_string(prop: property, name: string): string
+export function icalproperty_get_parameter_as_string_r(prop: property, name: string): string | null
+export function icalproperty_get_patchdelete(prop: property): string
 export function icalproperty_get_patchorder(prop: property): number
-export function icalproperty_get_patchparameter(prop: property): string | null
-export function icalproperty_get_patchtarget(prop: property): string | null
-export function icalproperty_get_patchversion(prop: property): string | null
+export function icalproperty_get_patchparameter(prop: property): string
+export function icalproperty_get_patchtarget(prop: property): string
+export function icalproperty_get_patchversion(prop: property): string
 export function icalproperty_get_percentcomplete(prop: property): number
-export function icalproperty_get_permission(prop: property): string | null
+export function icalproperty_get_permission(prop: property): string
 export function icalproperty_get_pollcompletion(prop: property): any | null
 export function icalproperty_get_pollitemid(prop: property): number
 export function icalproperty_get_pollmode(prop: property): any | null
-export function icalproperty_get_pollproperties(prop: property): string | null
+export function icalproperty_get_pollproperties(prop: property): string
 export function icalproperty_get_pollwinner(prop: property): number
 export function icalproperty_get_priority(prop: property): number
-export function icalproperty_get_prodid(prop: property): string | null
-export function icalproperty_get_property_name(prop: property): string | null
+export function icalproperty_get_prodid(prop: property): string
+export function icalproperty_get_property_name(prop: property): string
 export function icalproperty_get_property_name_r(prop: property): string | null
-export function icalproperty_get_query(prop: property): string | null
-export function icalproperty_get_queryid(prop: property): string | null
+export function icalproperty_get_query(prop: property): string
+export function icalproperty_get_queryid(prop: property): string
 export function icalproperty_get_querylevel(prop: property): any | null
-export function icalproperty_get_queryname(prop: property): string | null
+export function icalproperty_get_queryname(prop: property): string
 export function icalproperty_get_rdate(prop: property): any | null
-export function icalproperty_get_recuraccepted(prop: property): string | null
-export function icalproperty_get_recurexpand(prop: property): string | null
-export function icalproperty_get_recurlimit(prop: property): string | null
+export function icalproperty_get_recuraccepted(prop: property): string
+export function icalproperty_get_recurexpand(prop: property): string
+export function icalproperty_get_recurlimit(prop: property): string
 export function icalproperty_get_recurrenceid(prop: property): any | null
 export function icalproperty_get_refreshinterval(prop: property): any | null
-export function icalproperty_get_relatedto(prop: property): string | null
-export function icalproperty_get_relcalid(prop: property): string | null
+export function icalproperty_get_relatedto(prop: property): string
+export function icalproperty_get_relcalid(prop: property): string
 export function icalproperty_get_repeat(prop: property): number
-export function icalproperty_get_replyurl(prop: property): string | null
+export function icalproperty_get_replyurl(prop: property): string
 export function icalproperty_get_requeststatus(prop: property): any | null
-export function icalproperty_get_resources(prop: property): string | null
+export function icalproperty_get_resources(prop: property): string
 export function icalproperty_get_response(prop: property): number
-export function icalproperty_get_restriction(prop: property): string | null
+export function icalproperty_get_restriction(prop: property): string
 export function icalproperty_get_rrule(prop: property): any | null
-export function icalproperty_get_scope(prop: property): string | null
+export function icalproperty_get_scope(prop: property): string
 export function icalproperty_get_sequence(prop: property): number
-export function icalproperty_get_source(prop: property): string | null
+export function icalproperty_get_source(prop: property): string
 export function icalproperty_get_status(prop: property): any | null
-export function icalproperty_get_storesexpanded(prop: property): string | null
-export function icalproperty_get_summary(prop: property): string | null
-export function icalproperty_get_target(prop: property): string | null
+export function icalproperty_get_storesexpanded(prop: property): string
+export function icalproperty_get_summary(prop: property): string
+export function icalproperty_get_target(prop: property): string
 export function icalproperty_get_taskmode(prop: property): any | null
 export function icalproperty_get_transp(prop: property): any | null
 export function icalproperty_get_trigger(prop: property): any | null
-export function icalproperty_get_tzid(prop: property): string | null
-export function icalproperty_get_tzidaliasof(prop: property): string | null
-export function icalproperty_get_tzname(prop: property): string | null
+export function icalproperty_get_tzid(prop: property): string
+export function icalproperty_get_tzidaliasof(prop: property): string
+export function icalproperty_get_tzname(prop: property): string
 export function icalproperty_get_tzoffsetfrom(prop: property): number
 export function icalproperty_get_tzoffsetto(prop: property): number
 export function icalproperty_get_tzuntil(prop: property): any | null
-export function icalproperty_get_tzurl(prop: property): string | null
-export function icalproperty_get_uid(prop: property): string | null
-export function icalproperty_get_url(prop: property): string | null
-export function icalproperty_get_value_as_string(prop: property): string | null
+export function icalproperty_get_tzurl(prop: property): string
+export function icalproperty_get_uid(prop: property): string
+export function icalproperty_get_url(prop: property): string
+export function icalproperty_get_value_as_string(prop: property): string
 export function icalproperty_get_value_as_string_r(prop: property): string | null
-export function icalproperty_get_version(prop: property): string | null
-export function icalproperty_get_voter(prop: property): string | null
-export function icalproperty_get_x(prop: property): string | null
-export function icalproperty_get_x_name(prop: property): string | null
+export function icalproperty_get_version(prop: property): string
+export function icalproperty_get_voter(prop: property): string
+export function icalproperty_get_x(prop: property): string
+export function icalproperty_get_x_name(prop: property): string
 export function icalproperty_get_xlicclass(prop: property): any | null
-export function icalproperty_get_xlicclustercount(prop: property): string | null
-export function icalproperty_get_xlicerror(prop: property): string | null
-export function icalproperty_get_xlicmimecharset(prop: property): string | null
-export function icalproperty_get_xlicmimecid(prop: property): string | null
-export function icalproperty_get_xlicmimecontenttype(prop: property): string | null
-export function icalproperty_get_xlicmimeencoding(prop: property): string | null
-export function icalproperty_get_xlicmimefilename(prop: property): string | null
-export function icalproperty_get_xlicmimeoptinfo(prop: property): string | null
+export function icalproperty_get_xlicclustercount(prop: property): string
+export function icalproperty_get_xlicerror(prop: property): string
+export function icalproperty_get_xlicmimecharset(prop: property): string
+export function icalproperty_get_xlicmimecid(prop: property): string
+export function icalproperty_get_xlicmimecontenttype(prop: property): string
+export function icalproperty_get_xlicmimeencoding(prop: property): string
+export function icalproperty_get_xlicmimefilename(prop: property): string
+export function icalproperty_get_xlicmimeoptinfo(prop: property): string
 export function icalproperty_isa(property: property): property_kind
 export function icalproperty_isa_property(property: any | null): number
-export function icalproperty_kind_and_string_to_enum(kind: number, str: string | null): number
+export function icalproperty_kind_and_string_to_enum(kind: number, str: string): number
 export function icalproperty_kind_is_valid(kind: property_kind): number
-export function icalproperty_kind_to_string(kind: property_kind): string | null
+export function icalproperty_kind_to_string(kind: property_kind): string
 export function icalproperty_kind_to_value_kind(kind: property_kind): value_kind
-export function icalproperty_method_to_string(method: property_method): string | null
+export function icalproperty_method_to_string(method: property_method): string
 export function icalproperty_normalize(prop: property): void
 export function icalproperty_recurrence_is_excluded(comp: component, dtstart: any | null, recurtime: any | null): number
 export function icalproperty_remove_parameter_by_kind(prop: property, kind: parameter_kind): void
-export function icalproperty_remove_parameter_by_name(prop: property, name: string | null): void
+export function icalproperty_remove_parameter_by_name(prop: property, name: string): void
 /**
  * parameters
  * @param prop 
  * @param param 
  */
 export function icalproperty_remove_parameter_by_ref(prop: property, param: parameter): void
-export function icalproperty_set_acceptresponse(prop: property, v: string | null): void
+export function icalproperty_set_acceptresponse(prop: property, v: string): void
 export function icalproperty_set_acknowledged(prop: property, v: any | null): void
 export function icalproperty_set_action(prop: property, v: any | null): void
-export function icalproperty_set_allowconflict(prop: property, v: string | null): void
+export function icalproperty_set_allowconflict(prop: property, v: string): void
 export function icalproperty_set_attach(prop: property, v: attach): void
-export function icalproperty_set_attendee(prop: property, v: string | null): void
+export function icalproperty_set_attendee(prop: property, v: string): void
 export function icalproperty_set_busytype(prop: property, v: any | null): void
-export function icalproperty_set_calid(prop: property, v: string | null): void
-export function icalproperty_set_calmaster(prop: property, v: string | null): void
-export function icalproperty_set_calscale(prop: property, v: string | null): void
-export function icalproperty_set_capversion(prop: property, v: string | null): void
-export function icalproperty_set_carid(prop: property, v: string | null): void
+export function icalproperty_set_calid(prop: property, v: string): void
+export function icalproperty_set_calmaster(prop: property, v: string): void
+export function icalproperty_set_calscale(prop: property, v: string): void
+export function icalproperty_set_capversion(prop: property, v: string): void
+export function icalproperty_set_carid(prop: property, v: string): void
 export function icalproperty_set_carlevel(prop: property, v: any | null): void
-export function icalproperty_set_categories(prop: property, v: string | null): void
+export function icalproperty_set_categories(prop: property, v: string): void
 export function icalproperty_set_class(prop: property, v: any | null): void
 export function icalproperty_set_cmd(prop: property, v: any | null): void
-export function icalproperty_set_color(prop: property, v: string | null): void
-export function icalproperty_set_comment(prop: property, v: string | null): void
+export function icalproperty_set_color(prop: property, v: string): void
+export function icalproperty_set_comment(prop: property, v: string): void
 export function icalproperty_set_completed(prop: property, v: any | null): void
-export function icalproperty_set_components(prop: property, v: string | null): void
-export function icalproperty_set_conference(prop: property, v: string | null): void
-export function icalproperty_set_contact(prop: property, v: string | null): void
+export function icalproperty_set_components(prop: property, v: string): void
+export function icalproperty_set_conference(prop: property, v: string): void
+export function icalproperty_set_contact(prop: property, v: string): void
 export function icalproperty_set_created(prop: property, v: any | null): void
-export function icalproperty_set_csid(prop: property, v: string | null): void
+export function icalproperty_set_csid(prop: property, v: string): void
 export function icalproperty_set_datemax(prop: property, v: any | null): void
 export function icalproperty_set_datemin(prop: property, v: any | null): void
-export function icalproperty_set_decreed(prop: property, v: string | null): void
-export function icalproperty_set_defaultcharset(prop: property, v: string | null): void
-export function icalproperty_set_defaultlocale(prop: property, v: string | null): void
-export function icalproperty_set_defaulttzid(prop: property, v: string | null): void
-export function icalproperty_set_defaultvcars(prop: property, v: string | null): void
-export function icalproperty_set_deny(prop: property, v: string | null): void
-export function icalproperty_set_description(prop: property, v: string | null): void
+export function icalproperty_set_decreed(prop: property, v: string): void
+export function icalproperty_set_defaultcharset(prop: property, v: string): void
+export function icalproperty_set_defaultlocale(prop: property, v: string): void
+export function icalproperty_set_defaulttzid(prop: property, v: string): void
+export function icalproperty_set_defaultvcars(prop: property, v: string): void
+export function icalproperty_set_deny(prop: property, v: string): void
+export function icalproperty_set_description(prop: property, v: string): void
 export function icalproperty_set_dtend(prop: property, v: any | null): void
 export function icalproperty_set_dtstamp(prop: property, v: any | null): void
 export function icalproperty_set_dtstart(prop: property, v: any | null): void
@@ -1226,123 +1226,123 @@ export function icalproperty_set_expand(prop: property, v: number): void
 export function icalproperty_set_exrule(prop: property, v: any | null): void
 export function icalproperty_set_freebusy(prop: property, v: any | null): void
 export function icalproperty_set_geo(prop: property, v: any | null): void
-export function icalproperty_set_grant(prop: property, v: string | null): void
+export function icalproperty_set_grant(prop: property, v: string): void
 export function icalproperty_set_image(prop: property, v: attach): void
-export function icalproperty_set_itipversion(prop: property, v: string | null): void
+export function icalproperty_set_itipversion(prop: property, v: string): void
 export function icalproperty_set_lastmodified(prop: property, v: any | null): void
-export function icalproperty_set_location(prop: property, v: string | null): void
+export function icalproperty_set_location(prop: property, v: string): void
 export function icalproperty_set_maxcomponentsize(prop: property, v: number): void
 export function icalproperty_set_maxdate(prop: property, v: any | null): void
 export function icalproperty_set_maxresults(prop: property, v: number): void
 export function icalproperty_set_maxresultssize(prop: property, v: number): void
 export function icalproperty_set_method(prop: property, v: any | null): void
 export function icalproperty_set_mindate(prop: property, v: any | null): void
-export function icalproperty_set_multipart(prop: property, v: string | null): void
-export function icalproperty_set_name(prop: property, v: string | null): void
-export function icalproperty_set_organizer(prop: property, v: string | null): void
-export function icalproperty_set_owner(prop: property, v: string | null): void
+export function icalproperty_set_multipart(prop: property, v: string): void
+export function icalproperty_set_name(prop: property, v: string): void
+export function icalproperty_set_organizer(prop: property, v: string): void
+export function icalproperty_set_owner(prop: property, v: string): void
 export function icalproperty_set_parameter(prop: property, parameter: parameter): void
-export function icalproperty_set_parameter_from_string(prop: property, name: string | null, value: string | null): void
+export function icalproperty_set_parameter_from_string(prop: property, name: string, value: string): void
 export function icalproperty_set_parent(property: property, component: component): void
-export function icalproperty_set_patchdelete(prop: property, v: string | null): void
+export function icalproperty_set_patchdelete(prop: property, v: string): void
 export function icalproperty_set_patchorder(prop: property, v: number): void
-export function icalproperty_set_patchparameter(prop: property, v: string | null): void
-export function icalproperty_set_patchtarget(prop: property, v: string | null): void
-export function icalproperty_set_patchversion(prop: property, v: string | null): void
+export function icalproperty_set_patchparameter(prop: property, v: string): void
+export function icalproperty_set_patchtarget(prop: property, v: string): void
+export function icalproperty_set_patchversion(prop: property, v: string): void
 export function icalproperty_set_percentcomplete(prop: property, v: number): void
-export function icalproperty_set_permission(prop: property, v: string | null): void
+export function icalproperty_set_permission(prop: property, v: string): void
 export function icalproperty_set_pollcompletion(prop: property, v: any | null): void
 export function icalproperty_set_pollitemid(prop: property, v: number): void
 export function icalproperty_set_pollmode(prop: property, v: any | null): void
-export function icalproperty_set_pollproperties(prop: property, v: string | null): void
+export function icalproperty_set_pollproperties(prop: property, v: string): void
 export function icalproperty_set_pollwinner(prop: property, v: number): void
 export function icalproperty_set_priority(prop: property, v: number): void
-export function icalproperty_set_prodid(prop: property, v: string | null): void
-export function icalproperty_set_query(prop: property, v: string | null): void
-export function icalproperty_set_queryid(prop: property, v: string | null): void
+export function icalproperty_set_prodid(prop: property, v: string): void
+export function icalproperty_set_query(prop: property, v: string): void
+export function icalproperty_set_queryid(prop: property, v: string): void
 export function icalproperty_set_querylevel(prop: property, v: any | null): void
-export function icalproperty_set_queryname(prop: property, v: string | null): void
+export function icalproperty_set_queryname(prop: property, v: string): void
 export function icalproperty_set_rdate(prop: property, v: any | null): void
-export function icalproperty_set_recuraccepted(prop: property, v: string | null): void
-export function icalproperty_set_recurexpand(prop: property, v: string | null): void
-export function icalproperty_set_recurlimit(prop: property, v: string | null): void
+export function icalproperty_set_recuraccepted(prop: property, v: string): void
+export function icalproperty_set_recurexpand(prop: property, v: string): void
+export function icalproperty_set_recurlimit(prop: property, v: string): void
 export function icalproperty_set_recurrenceid(prop: property, v: any | null): void
 export function icalproperty_set_refreshinterval(prop: property, v: any | null): void
-export function icalproperty_set_relatedto(prop: property, v: string | null): void
-export function icalproperty_set_relcalid(prop: property, v: string | null): void
+export function icalproperty_set_relatedto(prop: property, v: string): void
+export function icalproperty_set_relcalid(prop: property, v: string): void
 export function icalproperty_set_repeat(prop: property, v: number): void
-export function icalproperty_set_replyurl(prop: property, v: string | null): void
+export function icalproperty_set_replyurl(prop: property, v: string): void
 export function icalproperty_set_requeststatus(prop: property, v: any | null): void
-export function icalproperty_set_resources(prop: property, v: string | null): void
+export function icalproperty_set_resources(prop: property, v: string): void
 export function icalproperty_set_response(prop: property, v: number): void
-export function icalproperty_set_restriction(prop: property, v: string | null): void
+export function icalproperty_set_restriction(prop: property, v: string): void
 export function icalproperty_set_rrule(prop: property, v: any | null): void
-export function icalproperty_set_scope(prop: property, v: string | null): void
+export function icalproperty_set_scope(prop: property, v: string): void
 export function icalproperty_set_sequence(prop: property, v: number): void
-export function icalproperty_set_source(prop: property, v: string | null): void
+export function icalproperty_set_source(prop: property, v: string): void
 export function icalproperty_set_status(prop: property, v: any | null): void
-export function icalproperty_set_storesexpanded(prop: property, v: string | null): void
-export function icalproperty_set_summary(prop: property, v: string | null): void
-export function icalproperty_set_target(prop: property, v: string | null): void
+export function icalproperty_set_storesexpanded(prop: property, v: string): void
+export function icalproperty_set_summary(prop: property, v: string): void
+export function icalproperty_set_target(prop: property, v: string): void
 export function icalproperty_set_taskmode(prop: property, v: any | null): void
 export function icalproperty_set_transp(prop: property, v: any | null): void
 export function icalproperty_set_trigger(prop: property, v: any | null): void
-export function icalproperty_set_tzid(prop: property, v: string | null): void
-export function icalproperty_set_tzidaliasof(prop: property, v: string | null): void
-export function icalproperty_set_tzname(prop: property, v: string | null): void
+export function icalproperty_set_tzid(prop: property, v: string): void
+export function icalproperty_set_tzidaliasof(prop: property, v: string): void
+export function icalproperty_set_tzname(prop: property, v: string): void
 export function icalproperty_set_tzoffsetfrom(prop: property, v: number): void
 export function icalproperty_set_tzoffsetto(prop: property, v: number): void
 export function icalproperty_set_tzuntil(prop: property, v: any | null): void
-export function icalproperty_set_tzurl(prop: property, v: string | null): void
-export function icalproperty_set_uid(prop: property, v: string | null): void
-export function icalproperty_set_url(prop: property, v: string | null): void
+export function icalproperty_set_tzurl(prop: property, v: string): void
+export function icalproperty_set_uid(prop: property, v: string): void
+export function icalproperty_set_url(prop: property, v: string): void
 export function icalproperty_set_value(prop: property, value: value): void
-export function icalproperty_set_value_from_string(prop: property, value: string | null, kind: string | null): void
-export function icalproperty_set_version(prop: property, v: string | null): void
-export function icalproperty_set_voter(prop: property, v: string | null): void
-export function icalproperty_set_x(prop: property, v: string | null): void
-export function icalproperty_set_x_name(prop: property, name: string | null): void
+export function icalproperty_set_value_from_string(prop: property, value: string, kind: string): void
+export function icalproperty_set_version(prop: property, v: string): void
+export function icalproperty_set_voter(prop: property, v: string): void
+export function icalproperty_set_x(prop: property, v: string): void
+export function icalproperty_set_x_name(prop: property, name: string): void
 export function icalproperty_set_xlicclass(prop: property, v: any | null): void
-export function icalproperty_set_xlicclustercount(prop: property, v: string | null): void
-export function icalproperty_set_xlicerror(prop: property, v: string | null): void
-export function icalproperty_set_xlicmimecharset(prop: property, v: string | null): void
-export function icalproperty_set_xlicmimecid(prop: property, v: string | null): void
-export function icalproperty_set_xlicmimecontenttype(prop: property, v: string | null): void
-export function icalproperty_set_xlicmimeencoding(prop: property, v: string | null): void
-export function icalproperty_set_xlicmimefilename(prop: property, v: string | null): void
-export function icalproperty_set_xlicmimeoptinfo(prop: property, v: string | null): void
-export function icalproperty_status_to_string(arg0: property_status): string | null
-export function icalproperty_string_to_kind(string: string | null): property_kind
-export function icalproperty_string_to_method(str: string | null): property_method
-export function icalproperty_string_to_status(string: string | null): property_status
+export function icalproperty_set_xlicclustercount(prop: property, v: string): void
+export function icalproperty_set_xlicerror(prop: property, v: string): void
+export function icalproperty_set_xlicmimecharset(prop: property, v: string): void
+export function icalproperty_set_xlicmimecid(prop: property, v: string): void
+export function icalproperty_set_xlicmimecontenttype(prop: property, v: string): void
+export function icalproperty_set_xlicmimeencoding(prop: property, v: string): void
+export function icalproperty_set_xlicmimefilename(prop: property, v: string): void
+export function icalproperty_set_xlicmimeoptinfo(prop: property, v: string): void
+export function icalproperty_status_to_string(arg0: property_status): string
+export function icalproperty_string_to_kind(string: string): property_kind
+export function icalproperty_string_to_method(str: string): property_method
+export function icalproperty_string_to_status(string: string): property_status
 export function icalproperty_value_kind_to_kind(kind: value_kind): property_kind
-export function icalrecur_expand_recurrence(rule: string | null, start: number, count: number, array: number): number
-export function icalrecur_freq_to_string(kind: recurrencetype_frequency): string | null
+export function icalrecur_expand_recurrence(rule: string, start: number, count: number, array: number): number
+export function icalrecur_freq_to_string(kind: recurrencetype_frequency): string
 export function icalrecur_iterator_free(arg0: recur_iterator): void
 export function icalrecur_iterator_next(arg0: recur_iterator): any | null
 export function icalrecur_iterator_set_start(impl: recur_iterator, start: any | null): number
-export function icalrecur_skip_to_string(kind: recurrencetype_skip): string | null
-export function icalrecur_string_to_freq(str: string | null): recurrencetype_frequency
-export function icalrecur_string_to_skip(str: string | null): recurrencetype_skip
-export function icalrecur_string_to_weekday(str: string | null): recurrencetype_weekday
-export function icalrecur_weekday_to_string(kind: recurrencetype_weekday): string | null
+export function icalrecur_skip_to_string(kind: recurrencetype_skip): string
+export function icalrecur_string_to_freq(str: string): recurrencetype_frequency
+export function icalrecur_string_to_skip(str: string): recurrencetype_skip
+export function icalrecur_string_to_weekday(str: string): recurrencetype_weekday
+export function icalrecur_weekday_to_string(kind: recurrencetype_weekday): string
 export function icalrecurrencetype_as_string(recur: any | null): string | null
 export function icalrecurrencetype_as_string_r(recur: any | null): string | null
 export function icalrecurrencetype_clear(r: any | null): void
 export function icalrecurrencetype_day_day_of_week(day: number): any | null
 export function icalrecurrencetype_day_position(day: number): number
-export function icalrecurrencetype_from_string(str: string | null): any | null
+export function icalrecurrencetype_from_string(str: string): any | null
 export function icalrecurrencetype_month_is_leap(month: number): number
 export function icalrecurrencetype_month_month(month: number): number
 export function icalrecurrencetype_rscale_is_supported(): number
-export function icalreqstattype_as_string(arg0: any | null): string | null
+export function icalreqstattype_as_string(arg0: any | null): string
 export function icalreqstattype_as_string_r(arg0: any | null): string | null
-export function icalreqstattype_from_string(str: string | null): any | null
+export function icalreqstattype_from_string(str: string): any | null
 export function icalrestriction_check(comp: component): number
 export function icalrestriction_compare(restr: restriction_kind, count: number): number
 export function icaltime_add(t: any | null, d: any | null): any | null
 export function icaltime_adjust(tt: any | null, days: number, hours: number, minutes: number, seconds: number): void
-export function icaltime_as_ical_string(tt: any | null): string | null
+export function icaltime_as_ical_string(tt: any | null): string
 export function icaltime_as_ical_string_r(tt: any | null): string | null
 export function icaltime_as_timet(arg0: any | null): number
 export function icaltime_as_timet_with_zone(tt: any | null, zone: timezone): number
@@ -1417,10 +1417,10 @@ export function icaltime_from_day_of_year(doy: number, year: number): any | null
  * ```
  * @param str 
  */
-export function icaltime_from_string(str: string | null): any | null
+export function icaltime_from_string(str: string): any | null
 export function icaltime_from_timet_with_zone(tm: number, is_date: number, zone: timezone): any | null
 export function icaltime_get_timezone(t: any | null): timezone
-export function icaltime_get_tzid(t: any | null): string | null
+export function icaltime_get_tzid(t: any | null): string
 export function icaltime_is_date(t: any | null): number
 export function icaltime_is_leap_year(year: number): number
 export function icaltime_is_null_time(t: any | null): number
@@ -1445,38 +1445,38 @@ export function icaltimezone_expand_vtimezone(comp: component, end_year: number,
 export function icaltimezone_free(zone: timezone, free_struct: number): void
 export function icaltimezone_free_builtin_timezones(): void
 export function icaltimezone_get_builtin_tzdata(): number
-export function icaltimezone_get_display_name(zone: timezone): string | null
+export function icaltimezone_get_display_name(zone: timezone): string
 export function icaltimezone_get_latitude(zone: timezone): number
-export function icaltimezone_get_location(zone: timezone): string | null
+export function icaltimezone_get_location(zone: timezone): string
 export function icaltimezone_get_location_from_vtimezone(component: component): string | null
 export function icaltimezone_get_longitude(zone: timezone): number
-export function icaltimezone_get_tzid(zone: timezone): string | null
-export function icaltimezone_get_tznames(zone: timezone): string | null
+export function icaltimezone_get_tzid(zone: timezone): string
+export function icaltimezone_get_tznames(zone: timezone): string
 export function icaltimezone_get_tznames_from_vtimezone(component: component): string | null
 export function icaltimezone_get_utc_offset(zone: timezone, tt: any | null, is_daylight: number): number
 export function icaltimezone_get_utc_offset_of_utc_time(zone: timezone, tt: any | null, is_daylight: number): number
 export function icaltimezone_release_zone_tab(): void
 export function icaltimezone_set_builtin_tzdata(set: number): void
 export function icaltimezone_set_component(zone: timezone, comp: component): number
-export function icaltimezone_set_tzid_prefix(new_prefix: string | null): void
+export function icaltimezone_set_tzid_prefix(new_prefix: string): void
 export function icaltimezone_truncate_vtimezone(vtz: component, start: timetype, end: timetype, ms_compatible: number): void
-export function icaltimezone_tzid_prefix(): string | null
+export function icaltimezone_tzid_prefix(): string
 export function icaltriggertype_from_int(reltime: number): any | null
-export function icaltriggertype_from_string(str: string | null): any | null
+export function icaltriggertype_from_string(str: string): any | null
 export function icaltriggertype_is_bad_trigger(tr: any | null): number
 export function icaltriggertype_is_null_trigger(tr: any | null): number
-export function icaltzutil_get_zone_directory(): string | null
-export function icalvalue_as_ical_string(value: value): string | null
+export function icaltzutil_get_zone_directory(): string
+export function icalvalue_as_ical_string(value: value): string
 export function icalvalue_as_ical_string_r(value: value): string | null
 export function icalvalue_compare(a: value, b: value): parameter_xliccomparetype
-export function icalvalue_decode_ical_string(szText: string | null, szDecText: string | null, nMaxBufferLen: number): number
-export function icalvalue_encode_ical_string(szText: string | null, szEncText: string | null, MaxBufferLen: number): number
+export function icalvalue_decode_ical_string(szText: string, szDecText: string | null, nMaxBufferLen: number): number
+export function icalvalue_encode_ical_string(szText: string, szEncText: string | null, MaxBufferLen: number): number
 export function icalvalue_free(value: value): void
 export function icalvalue_get_action(value: value): any | null
-export function icalvalue_get_binary(value: value): string | null
+export function icalvalue_get_binary(value: value): string
 export function icalvalue_get_boolean(value: value): number
 export function icalvalue_get_busytype(value: value): any | null
-export function icalvalue_get_caladdress(value: value): string | null
+export function icalvalue_get_caladdress(value: value): string
 export function icalvalue_get_carlevel(value: value): any | null
 export function icalvalue_get_class(value: value): any | null
 export function icalvalue_get_cmd(value: value): any | null
@@ -1492,32 +1492,32 @@ export function icalvalue_get_method(value: value): any | null
 export function icalvalue_get_period(value: value): any | null
 export function icalvalue_get_pollcompletion(value: value): any | null
 export function icalvalue_get_pollmode(value: value): any | null
-export function icalvalue_get_query(value: value): string | null
+export function icalvalue_get_query(value: value): string
 export function icalvalue_get_querylevel(value: value): any | null
 export function icalvalue_get_recur(value: value): any | null
 export function icalvalue_get_requeststatus(value: value): any | null
 export function icalvalue_get_status(value: value): any | null
-export function icalvalue_get_string(value: value): string | null
+export function icalvalue_get_string(value: value): string
 export function icalvalue_get_taskmode(value: value): any | null
-export function icalvalue_get_text(value: value): string | null
+export function icalvalue_get_text(value: value): string
 export function icalvalue_get_transp(value: value): any | null
 export function icalvalue_get_trigger(value: value): any | null
-export function icalvalue_get_uri(value: value): string | null
+export function icalvalue_get_uri(value: value): string
 export function icalvalue_get_utcoffset(value: value): number
-export function icalvalue_get_x(value: value): string | null
+export function icalvalue_get_x(value: value): string
 export function icalvalue_get_xlicclass(value: value): any | null
 export function icalvalue_is_valid(value: value): number
 export function icalvalue_isa(value: value): value_kind
 export function icalvalue_isa_value(arg0: any | null): number
 export function icalvalue_kind_is_valid(kind: value_kind): number
-export function icalvalue_kind_to_string(kind: value_kind): string | null
+export function icalvalue_kind_to_string(kind: value_kind): string
 export function icalvalue_reset_kind(value: value): void
 export function icalvalue_set_action(value: value, v: any | null): void
 export function icalvalue_set_attach(value: value, attach: attach): void
-export function icalvalue_set_binary(value: value, v: string | null): void
+export function icalvalue_set_binary(value: value, v: string): void
 export function icalvalue_set_boolean(value: value, v: number): void
 export function icalvalue_set_busytype(value: value, v: any | null): void
-export function icalvalue_set_caladdress(value: value, v: string | null): void
+export function icalvalue_set_caladdress(value: value, v: string): void
 export function icalvalue_set_carlevel(value: value, v: any | null): void
 export function icalvalue_set_class(value: value, v: any | null): void
 export function icalvalue_set_cmd(value: value, v: any | null): void
@@ -1534,21 +1534,21 @@ export function icalvalue_set_parent(value: value, property: property): void
 export function icalvalue_set_period(value: value, v: any | null): void
 export function icalvalue_set_pollcompletion(value: value, v: any | null): void
 export function icalvalue_set_pollmode(value: value, v: any | null): void
-export function icalvalue_set_query(value: value, v: string | null): void
+export function icalvalue_set_query(value: value, v: string): void
 export function icalvalue_set_querylevel(value: value, v: any | null): void
 export function icalvalue_set_recur(value: value, v: any | null): void
 export function icalvalue_set_requeststatus(value: value, v: any | null): void
 export function icalvalue_set_status(value: value, v: any | null): void
-export function icalvalue_set_string(value: value, v: string | null): void
+export function icalvalue_set_string(value: value, v: string): void
 export function icalvalue_set_taskmode(value: value, v: any | null): void
-export function icalvalue_set_text(value: value, v: string | null): void
+export function icalvalue_set_text(value: value, v: string): void
 export function icalvalue_set_transp(value: value, v: any | null): void
 export function icalvalue_set_trigger(value: value, v: any | null): void
-export function icalvalue_set_uri(value: value, v: string | null): void
+export function icalvalue_set_uri(value: value, v: string): void
 export function icalvalue_set_utcoffset(value: value, v: number): void
-export function icalvalue_set_x(value: value, v: string | null): void
+export function icalvalue_set_x(value: value, v: string): void
 export function icalvalue_set_xlicclass(value: value, v: any | null): void
-export function icalvalue_string_to_kind(str: string | null): value_kind
+export function icalvalue_string_to_kind(str: string): value_kind
 export function print_date_to_string(str: string | null, data: any | null): void
 export function print_datetime_to_string(str: string | null, data: any | null): void
 export function pvl_clear(arg0: pvl_list): void
@@ -1563,13 +1563,13 @@ export function pvl_remove(arg0: pvl_list, arg1: pvl_elem): any | null
 export function pvl_shift(l: pvl_list): any | null
 export function pvl_unshift(l: pvl_list, d: any | null): void
 export function set_unknown_token_handling_setting(newSetting: _unknown_token_handling): void
-export function set_zone_directory(path: string | null): void
-export function sspm_encoding_string(type: any | null): string | null
+export function set_zone_directory(path: string): void
+export function sspm_encoding_string(type: any | null): string
 export function sspm_free_parts(parts: any | null, max_parts: number): void
-export function sspm_major_type_string(type: any | null): string | null
-export function sspm_minor_type_string(type: any | null): string | null
+export function sspm_major_type_string(type: any | null): string
+export function sspm_minor_type_string(type: any | null): string
 export function sspm_parse_mime(parts: any | null, max_parts: number, actions: any | null, get_string: any | null, get_string_data: any | null, first_header: any | null): number
-export function sspm_write_mime(parts: any | null, num_parts: number, output_string: string | null, header: string | null): number
+export function sspm_write_mime(parts: any | null, num_parts: number, output_string: string | null, header: string): number
 export interface icalattach_free_fn_t {
     (data: string | null): void
 }
@@ -1814,8 +1814,8 @@ export interface reqstattype {
     // Own fields of ICal-3.0.ICal.reqstattype
 
     code: requeststatus
-    desc: string | null
-    debug: string | null
+    desc: string
+    debug: string
 }
 
 export class reqstattype {
@@ -1832,7 +1832,7 @@ export interface sspm_action_map {
     major: any
     minor: any
     new_part: () => any
-    add_line: (part: any, header: any, line: string | null, size: number) => void
+    add_line: (part: any, header: any, line: string, size: number) => void
     end_part: (part: any) => any
     free_part: (part: any) => void
 }
@@ -1938,14 +1938,14 @@ export interface timezonephase {
 
     // Own fields of ICal-3.0.ICal.timezonephase
 
-    tzname: string | null
+    tzname: string
     is_stdandard: number
     dtstart: any
     offsetto: number
     tzoffsetfrom: number
-    comment: string | null
+    comment: string
     rdate: any
-    rrule: string | null
+    rrule: string
 }
 
 export class timezonephase {
@@ -1959,9 +1959,9 @@ export interface timezonetype {
 
     // Own fields of ICal-3.0.ICal.timezonetype
 
-    tzid: string | null
+    tzid: string
     last_mod: any
-    tzurl: string | null
+    tzurl: string
     phases: any
 }
 

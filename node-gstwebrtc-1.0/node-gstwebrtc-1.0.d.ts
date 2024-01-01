@@ -468,7 +468,7 @@ enum WebRTCStatsType {
     CERTIFICATE,
 }
 function webrtcErrorQuark(): GLib.Quark
-function webrtcSdpTypeToString(type: WebRTCSDPType): string | null
+function webrtcSdpTypeToString(type: WebRTCSDPType): string
 /**
  * Callback function to be triggered on discovery of a new candidate
  * @callback 
@@ -477,7 +477,7 @@ function webrtcSdpTypeToString(type: WebRTCSDPType): string | null
  * @param candidate The discovered candidate
  */
 interface WebRTCICEOnCandidateFunc {
-    (ice: WebRTCICE, streamId: number, candidate: string | null): void
+    (ice: WebRTCICE, streamId: number, candidate: string): void
 }
 module WebRTCDTLSTransport {
 
@@ -912,9 +912,9 @@ interface WebRTCICE {
 
     // Owm methods of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
-    // Has conflict: addCandidate(stream: WebRTCICEStream, candidate: string | null, promise: Gst.Promise | null): void
+    // Has conflict: addCandidate(stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null): void
     // Has conflict: addStream(sessionId: number): WebRTCICEStream | null
-    // Has conflict: addTurnServer(uri: string | null): boolean
+    // Has conflict: addTurnServer(uri: string): boolean
     // Has conflict: findTransport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null
     // Has conflict: gatherCandidates(stream: WebRTCICEStream): boolean
     // Has conflict: getHttpProxy(): string | null
@@ -925,11 +925,11 @@ interface WebRTCICE {
     // Has conflict: getStunServer(): string | null
     // Has conflict: getTurnServer(): string | null
     // Has conflict: setForceRelay(forceRelay: boolean): void
-    // Has conflict: setHttpProxy(uri: string | null): void
+    // Has conflict: setHttpProxy(uri: string): void
     // Has conflict: setIsController(controller: boolean): void
-    // Has conflict: setLocalCredentials(stream: WebRTCICEStream, ufrag: string | null, pwd: string | null): boolean
+    // Has conflict: setLocalCredentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean
     // Has conflict: setOnIceCandidate(func: WebRTCICEOnCandidateFunc): void
-    // Has conflict: setRemoteCredentials(stream: WebRTCICEStream, ufrag: string | null, pwd: string | null): boolean
+    // Has conflict: setRemoteCredentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean
     // Has conflict: setStunServer(uri: string | null): void
     // Has conflict: setTos(stream: WebRTCICEStream, tos: number): void
     // Has conflict: setTurnServer(uri: string | null): void
@@ -973,9 +973,9 @@ interface WebRTCICE {
 
     // Own virtual methods of GstWebRTC-1.0.GstWebRTC.WebRTCICE
 
-    addCandidate(stream: WebRTCICEStream, candidate: string | null, promise: Gst.Promise | null): void
+    addCandidate(stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null): void
     addStream(sessionId: number): WebRTCICEStream | null
-    addTurnServer(uri: string | null): boolean
+    addTurnServer(uri: string): boolean
     findTransport(stream: WebRTCICEStream, component: WebRTCICEComponent): WebRTCICETransport | null
     gatherCandidates(stream: WebRTCICEStream): boolean
     /**
@@ -996,11 +996,11 @@ interface WebRTCICE {
      * @virtual 
      * @param uri URI of the HTTP proxy of the form   http://[username:password`]`hostname[:port]
      */
-    setHttpProxy(uri: string | null): void
+    setHttpProxy(uri: string): void
     setIsController(controller: boolean): void
-    setLocalCredentials(stream: WebRTCICEStream, ufrag: string | null, pwd: string | null): boolean
+    setLocalCredentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean
     setOnIceCandidate(func: WebRTCICEOnCandidateFunc): void
-    setRemoteCredentials(stream: WebRTCICEStream, ufrag: string | null, pwd: string | null): boolean
+    setRemoteCredentials(stream: WebRTCICEStream, ufrag: string, pwd: string): boolean
     setStunServer(uri: string | null): void
     setTos(stream: WebRTCICEStream, tos: number): void
     setTurnServer(uri: string | null): void
@@ -1189,7 +1189,7 @@ interface WebRTCICETransport {
 
     connectionStateChange(newState: WebRTCICEConnectionState): void
     gatheringStateChange(newState: WebRTCICEGatheringState): void
-    newCandidate(streamId: number, component: WebRTCICEComponent, attr: string | null): void
+    newCandidate(streamId: number, component: WebRTCICEComponent, attr: string): void
     selectedPairChange(): void
 
     // Conflicting methods
@@ -1785,9 +1785,9 @@ interface WebRTCICECandidateStats {
     ipaddr: string | null
     port: number
     streamId: number
-    type: string | null
-    proto: string | null
-    relayProto: string | null
+    type: string
+    proto: string
+    relayProto: string
     prio: number
     url: string | null
     gstReserved: any[]
@@ -1816,10 +1816,10 @@ interface WebRTCICEClass {
     addStream: (ice: WebRTCICE, sessionId: number) => WebRTCICEStream | null
     findTransport: (ice: WebRTCICE, stream: WebRTCICEStream, component: WebRTCICEComponent) => WebRTCICETransport | null
     gatherCandidates: (ice: WebRTCICE, stream: WebRTCICEStream) => boolean
-    addCandidate: (ice: WebRTCICE, stream: WebRTCICEStream, candidate: string | null, promise: Gst.Promise | null) => void
-    setLocalCredentials: (ice: WebRTCICE, stream: WebRTCICEStream, ufrag: string | null, pwd: string | null) => boolean
-    setRemoteCredentials: (ice: WebRTCICE, stream: WebRTCICEStream, ufrag: string | null, pwd: string | null) => boolean
-    addTurnServer: (ice: WebRTCICE, uri: string | null) => boolean
+    addCandidate: (ice: WebRTCICE, stream: WebRTCICEStream, candidate: string, promise: Gst.Promise | null) => void
+    setLocalCredentials: (ice: WebRTCICE, stream: WebRTCICEStream, ufrag: string, pwd: string) => boolean
+    setRemoteCredentials: (ice: WebRTCICE, stream: WebRTCICEStream, ufrag: string, pwd: string) => boolean
+    addTurnServer: (ice: WebRTCICE, uri: string) => boolean
     setIsController: (ice: WebRTCICE, controller: boolean) => void
     getIsController: (ice: WebRTCICE) => boolean
     setForceRelay: (ice: WebRTCICE, forceRelay: boolean) => void
@@ -1827,7 +1827,7 @@ interface WebRTCICEClass {
     getStunServer: (ice: WebRTCICE) => string | null
     setTurnServer: (ice: WebRTCICE, uri: string | null) => void
     getTurnServer: (ice: WebRTCICE) => string | null
-    setHttpProxy: (ice: WebRTCICE, uri: string | null) => void
+    setHttpProxy: (ice: WebRTCICE, uri: string) => void
     getHttpProxy: (ice: WebRTCICE) => string | null
     setTos: (ice: WebRTCICE, stream: WebRTCICEStream, tos: number) => void
     setOnIceCandidate: (ice: WebRTCICE, func: WebRTCICEOnCandidateFunc) => void

@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-rygelrenderergst-2.6",
-    "version": "2.6.0-3.2.6",
+    "version": "2.6.0-3.2.7",
     "description": "Node.js TypeScript type definitions for RygelRendererGst-2.6, generated from library version 2.6.0",
     "type": "module",
     "module": "node-rygelrenderergst-2.6.js",

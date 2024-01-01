@@ -407,7 +407,7 @@ export function errorQuark(): GLib.Quark
  * Returns the canonical name for the arch of the current machine.
  * @returns an arch string
  */
-export function getDefaultArch(): string | null
+export function getDefaultArch(): string
 /**
  * Returns the canonical names for the arches that are supported (i.e. can run)
  * on the current machine, in order of priority (default is first).
@@ -427,7 +427,7 @@ export function portalErrorQuark(): GLib.Quark
  * @param kind a #FlatpakTransactionOperationType
  * @returns a string representing @kind
  */
-export function transactionOperationTypeToString(kind: TransactionOperationType): string | null
+export function transactionOperationTypeToString(kind: TransactionOperationType): string
 /**
  * The progress callback is called repeatedly during long-running operations
  * such as installations or updates, and can be used to update progress information
@@ -440,7 +440,7 @@ export function transactionOperationTypeToString(kind: TransactionOperationType)
  * @param estimating whether `progress` is just an estimate
  */
 export interface ProgressCallback {
-    (status: string | null, progress: number, estimating: boolean): void
+    (status: string, progress: number, estimating: boolean): void
 }
 export module BundleRef {
 
@@ -666,7 +666,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a #GBytes containing the flatpak metadata file,   or %NULL if an error occurred
      */
-    fetchRemoteMetadataSync(remoteName: string | null, ref: Ref, cancellable: Gio.Cancellable | null): any
+    fetchRemoteMetadataSync(remoteName: string, ref: Ref, cancellable: Gio.Cancellable | null): any
     /**
      * Gets the current remote branch of a ref in the remote.
      * @param remoteName the name of the remote
@@ -677,7 +677,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a #FlatpakRemoteRef instance, or %NULL
      */
-    fetchRemoteRefSync(remoteName: string | null, kind: RefKind, name: string | null, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): RemoteRef
+    fetchRemoteRefSync(remoteName: string, kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): RemoteRef
     /**
      * Gets the current remote branch of a ref in the remote.
      * @param remoteName the name of the remote
@@ -689,7 +689,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a #FlatpakRemoteRef instance, or %NULL
      */
-    fetchRemoteRefSyncFull(remoteName: string | null, kind: RefKind, name: string | null, arch: string | null, branch: string | null, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef
+    fetchRemoteRefSyncFull(remoteName: string, kind: RefKind, name: string, arch: string | null, branch: string | null, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef
     /**
      * Gets information about the maximum amount of data that needs to be transferred
      * to pull the ref from a remote repository, and about the amount of
@@ -706,7 +706,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE, unless an error occurred
      */
-    fetchRemoteSizeSync(remoteName: string | null, ref: Ref, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* downloadSize */ number, /* installedSize */ number ]
+    fetchRemoteSizeSync(remoteName: string, ref: Ref, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* downloadSize */ number, /* installedSize */ number ]
     /**
      * Get a global configuration option for the installation, see
      * flatpak_installation_set_config_sync() for supported keys.
@@ -714,7 +714,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns The (newly allocated) value, or %NULL on error (%G_KEY_FILE_ERROR_KEY_NOT_FOUND error if key is not set)
      */
-    getConfig(key: string | null, cancellable: Gio.Cancellable | null): string | null
+    getConfig(key: string, cancellable: Gio.Cancellable | null): string | null
     /**
      * Get the last build of reference `name` that was installed with
      * flatpak_installation_install(), or %NULL if the reference has
@@ -723,7 +723,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns an #FlatpakInstalledRef
      */
-    getCurrentInstalledApp(name: string | null, cancellable: Gio.Cancellable | null): InstalledRef
+    getCurrentInstalledApp(name: string, cancellable: Gio.Cancellable | null): InstalledRef
     /**
      * Get the default languages used by the installation to decide which
      * subpaths to install of locale extensions. This list may also be used
@@ -749,7 +749,7 @@ export interface Installation {
      * does not have a display name.
      * @returns a string with the installation's display name
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Returns the ID of the installation for `self`.
      * 
@@ -757,7 +757,7 @@ export interface Installation {
      * The ID for the user installation is "user".
      * @returns a string with the installation's ID
      */
-    getId(): string | null
+    getId(): string
     /**
      * Returns information about an installed ref, such as the available builds,
      * its size, location, etc.
@@ -768,7 +768,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns an #FlatpakInstalledRef, or %NULL if an error occurred
      */
-    getInstalledRef(kind: RefKind, name: string | null, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef
+    getInstalledRef(kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef
     /**
      * Returns whether the installation is for a user-specific location.
      * @returns %TRUE if @self is a per-user installation
@@ -804,7 +804,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a #FlatpakRemote instance, or %NULL with @error   set
      */
-    getRemoteByName(name: string | null, cancellable: Gio.Cancellable | null): Remote
+    getRemoteByName(name: string, cancellable: Gio.Cancellable | null): Remote
     /**
      * Returns the type of storage of the installation for `self`.
      * @returns a #FlatpakStorageType
@@ -832,7 +832,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns The ref for the newly installed app or %NULL on failure
      */
-    install(remoteName: string | null, kind: RefKind, name: string | null, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef
+    install(remoteName: string, kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef
     /**
      * This is an old deprecated function, you should use
      * #FlatpakTransaction and flatpak_transaction_add_install_bundle()
@@ -869,7 +869,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns The ref for the newly installed app or %NULL on failure
      */
-    installFull(flags: InstallFlags, remoteName: string | null, kind: RefKind, name: string | null, arch: string | null, branch: string | null, subpaths: string[] | null, cancellable: Gio.Cancellable | null): InstalledRef
+    installFull(flags: InstallFlags, remoteName: string, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, cancellable: Gio.Cancellable | null): InstalledRef
     /**
      * This is an old deprecated function, you should use
      * #FlatpakTransaction and flatpak_transaction_add_install_flatpakref()
@@ -900,7 +900,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE, unless an error occurred
      */
-    launch(name: string | null, arch: string | null, branch: string | null, commit: string | null, cancellable: Gio.Cancellable | null): boolean
+    launch(name: string, arch: string | null, branch: string | null, commit: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Launch an installed application.
      * 
@@ -921,7 +921,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE, unless an error occurred
      */
-    launchFull(flags: LaunchFlags, name: string | null, arch: string | null, branch: string | null, commit: string | null, instanceOut: Instance | null, cancellable: Gio.Cancellable | null): boolean
+    launchFull(flags: LaunchFlags, name: string, arch: string | null, branch: string | null, commit: string | null, instanceOut: Instance | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Lists the installed references.
      * @param cancellable a #GCancellable
@@ -967,14 +967,14 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a GPtrArray of   #FlatpakRelatedRef instances
      */
-    listInstalledRelatedRefsSync(remoteName: string | null, ref: string | null, cancellable: Gio.Cancellable | null): RelatedRef[]
+    listInstalledRelatedRefsSync(remoteName: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[]
     /**
      * Lists all the applications and runtimes in a remote.
      * @param remoteOrUri the name or URI of the remote
      * @param cancellable a #GCancellable
      * @returns a GPtrArray of   #FlatpakRemoteRef instances
      */
-    listRemoteRefsSync(remoteOrUri: string | null, cancellable: Gio.Cancellable | null): RemoteRef[]
+    listRemoteRefsSync(remoteOrUri: string, cancellable: Gio.Cancellable | null): RemoteRef[]
     /**
      * Lists all the applications and runtimes in a remote.
      * @param remoteOrUri the name or URI of the remote
@@ -982,7 +982,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a GPtrArray of   #FlatpakRemoteRef instances
      */
-    listRemoteRefsSyncFull(remoteOrUri: string | null, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef[]
+    listRemoteRefsSyncFull(remoteOrUri: string, flags: QueryFlags, cancellable: Gio.Cancellable | null): RemoteRef[]
     /**
      * Lists all the available refs on `remote_name` that are related to
      * `ref,` and the subpaths to use. These are things that are
@@ -1003,7 +1003,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns a GPtrArray of   #FlatpakRelatedRef instances
      */
-    listRemoteRelatedRefsSync(remoteName: string | null, ref: string | null, cancellable: Gio.Cancellable | null): RelatedRef[]
+    listRemoteRelatedRefsSync(remoteName: string, ref: string, cancellable: Gio.Cancellable | null): RelatedRef[]
     /**
      * Lists the static remotes, in priority (highest first) order. For same
      * priority, an earlier added remote comes before a later added one.
@@ -1038,7 +1038,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns the contents of the overrides files,    or %NULL if an error occurred
      */
-    loadAppOverrides(appId: string | null, cancellable: Gio.Cancellable | null): string | null
+    loadAppOverrides(appId: string, cancellable: Gio.Cancellable | null): string | null
     /**
      * Saves changes in the `remote` object.
      * @param remote the modified #FlatpakRemote
@@ -1068,14 +1068,14 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success
      */
-    removeLocalRefSync(remoteName: string | null, ref: string | null, cancellable: Gio.Cancellable | null): boolean
+    removeLocalRefSync(remoteName: string, ref: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes the remote with the given name from the installation.
      * @param name the name of the remote to remove
      * @param cancellable a #GCancellable
      * @returns %TRUE if the remote has been removed successfully
      */
-    removeRemote(name: string | null, cancellable: Gio.Cancellable | null): boolean
+    removeRemote(name: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Run the trigger commands to update the files exported by the apps in
      * `self`. Should be used after one or more app install, upgrade or
@@ -1097,7 +1097,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE if the option was set correctly
      */
-    setConfigSync(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): boolean
+    setConfigSync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * This method can be used to prevent interactive authorization dialogs to appear
      * for operations on `self`. This is useful for background operations that are not
@@ -1120,7 +1120,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success
      */
-    uninstall(kind: RefKind, name: string | null, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): boolean
+    uninstall(kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * This is an old deprecated function, you should use
      * #FlatpakTransaction and flatpak_transaction_add_uninstall()
@@ -1135,7 +1135,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success
      */
-    uninstallFull(flags: UninstallFlags, kind: RefKind, name: string | null, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): boolean
+    uninstallFull(flags: UninstallFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * This is an old deprecated function, you should use
      * #FlatpakTransaction and flatpak_transaction_add_update()
@@ -1156,7 +1156,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns The ref for the newly updated app or %NULL on failure
      */
-    update(flags: UpdateFlags, kind: RefKind, name: string | null, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef
+    update(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, cancellable: Gio.Cancellable | null): InstalledRef
     /**
      * Updates the local copy of appstream for `remote_name` for the specified `arch`.
      * @param remoteName the name of the remote
@@ -1165,7 +1165,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success, or %FALSE on error
      */
-    updateAppstreamFullSync(remoteName: string | null, arch: string | null, outChanged: boolean | null, cancellable: Gio.Cancellable | null): boolean
+    updateAppstreamFullSync(remoteName: string, arch: string | null, outChanged: boolean | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Updates the local copy of appstream for `remote_name` for the specified `arch`.
      * If you need progress feedback, use flatpak_installation_update_appstream_full_sync().
@@ -1175,7 +1175,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success, or %FALSE on error
      */
-    updateAppstreamSync(remoteName: string | null, arch: string | null, outChanged: boolean | null, cancellable: Gio.Cancellable | null): boolean
+    updateAppstreamSync(remoteName: string, arch: string | null, outChanged: boolean | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * This is an old deprecated function, you should use
      * #FlatpakTransaction and flatpak_transaction_add_update()
@@ -1197,7 +1197,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns The ref for the newly updated app or %NULL on failure
      */
-    updateFull(flags: UpdateFlags, kind: RefKind, name: string | null, arch: string | null, branch: string | null, subpaths: string[] | null, cancellable: Gio.Cancellable | null): InstalledRef
+    updateFull(flags: UpdateFlags, kind: RefKind, name: string, arch: string | null, branch: string | null, subpaths: string[] | null, cancellable: Gio.Cancellable | null): InstalledRef
     /**
      * Updates the local configuration of a remote repository by fetching
      * the related information from the summary file in the remote OSTree
@@ -1206,7 +1206,7 @@ export interface Installation {
      * @param cancellable a #GCancellable
      * @returns %TRUE if the remote has been updated successfully
      */
-    updateRemoteSync(name: string | null, cancellable: Gio.Cancellable | null): boolean
+    updateRemoteSync(name: string, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of Flatpak-1.0.Flatpak.Installation
 
@@ -1336,43 +1336,43 @@ export interface InstalledRef {
      * Returns the license field from the appdata.
      * @returns the license or %NULL
      */
-    getAppdataLicense(): string | null
+    getAppdataLicense(): string
     /**
      * Returns the name field from the appdata.
      * 
      * The returned string is localized.
      * @returns the name or %NULL
      */
-    getAppdataName(): string | null
+    getAppdataName(): string
     /**
      * Returns the summary field from the appdata.
      * 
      * The returned string is localized.
      * @returns the summary or %NULL
      */
-    getAppdataSummary(): string | null
+    getAppdataSummary(): string
     /**
      * Returns the default version field from the appdata.
      * @returns the version or %NULL
      */
-    getAppdataVersion(): string | null
+    getAppdataVersion(): string
     /**
      * Gets the deploy dir of the ref.
      * @returns the deploy dir
      */
-    getDeployDir(): string | null
+    getDeployDir(): string
     /**
      * Returns the end-of-life reason string, or %NULL if the
      * ref is not end-of-lifed.
      * @returns the end-of-life reason or %NULL
      */
-    getEol(): string | null
+    getEol(): string
     /**
      * Returns the end-of-life rebased ref, or %NULL if the
      * ref is not end-of-lifed.
      * @returns the end-of-life rebased ref or %NULL
      */
-    getEolRebase(): string | null
+    getEolRebase(): string
     /**
      * Returns the installed size of the ref.
      * @returns the installed size
@@ -1392,7 +1392,7 @@ export interface InstalledRef {
      * Gets the origin of the ref.
      * @returns the origin
      */
-    getOrigin(): string | null
+    getOrigin(): string
     /**
      * Returns the subpaths that are installed, or %NULL if all files installed.
      * @returns A strv, or %NULL
@@ -1565,17 +1565,17 @@ export interface Instance {
      * Note that this may return %NULL for sandboxes that don't have an application.
      * @returns the application ID
      */
-    getApp(): string | null
+    getApp(): string
     /**
      * Gets the architecture of the application running in the instance.
      * @returns the architecture
      */
-    getArch(): string | null
+    getArch(): string
     /**
      * Gets the branch of the application running in the instance.
      * @returns the architecture
      */
-    getBranch(): string | null
+    getBranch(): string
     /**
      * Gets the PID of the application process in the sandbox.
      * 
@@ -1590,13 +1590,13 @@ export interface Instance {
      * Gets the commit of the application running in the instance.
      * @returns the commit
      */
-    getCommit(): string | null
+    getCommit(): string
     /**
      * Gets the instance ID. The ID is used by Flatpak for bookkeeping
      * purposes and has no further relevance.
      * @returns the instance ID
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets a keyfile that holds information about the running sandbox.
      * 
@@ -1619,12 +1619,12 @@ export interface Instance {
      * Gets the ref of the runtime used in the instance.
      * @returns the runtime ref
      */
-    getRuntime(): string | null
+    getRuntime(): string
     /**
      * Gets the commit of the runtime used in the instance.
      * @returns the runtime commit
      */
-    getRuntimeCommit(): string | null
+    getRuntimeCommit(): string
     /**
      * Finds out if the sandbox represented by `self` is still running.
      * @returns %TRUE if the sandbox is still running
@@ -1709,22 +1709,22 @@ export interface Ref {
      * Gets the arch or the ref.
      * @returns the arch
      */
-    getArch(): string | null
+    getArch(): string
     /**
      * Gets the branch of the ref.
      * @returns the branch
      */
-    getBranch(): string | null
+    getBranch(): string
     /**
      * Gets the collection ID of the ref.
      * @returns the collection ID
      */
-    getCollectionId(): string | null
+    getCollectionId(): string
     /**
      * Gets the commit of the ref.
      * @returns the commit
      */
-    getCommit(): string | null
+    getCommit(): string
     /**
      * Gets the kind of artifact that this ref refers to.
      * @returns the kind of artifact
@@ -1734,7 +1734,7 @@ export interface Ref {
      * Gets the name of the ref.
      * @returns the name
      */
-    getName(): string | null
+    getName(): string
 
     // Class property signals of Flatpak-1.0.Flatpak.Ref
 
@@ -1797,7 +1797,7 @@ export class Ref extends GObject.Object {
      * @param ref A string ref name, such as "app/org.test.App/x86_64/master"
      * @returns an #FlatpakRef, or %NULL
      */
-    static parse(ref: string | null): Ref
+    static parse(ref: string): Ref
 }
 
 export module RelatedRef {
@@ -2039,7 +2039,7 @@ export interface Remote {
      * Returns the name of the remote repository.
      * @returns the name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns whether this remote should be used to find dependencies.
      * @returns whether the remote is marked as "don't use for dependencies"
@@ -2087,7 +2087,7 @@ export interface Remote {
      * effect.
      * @param comment The new comment
      */
-    setComment(comment: string | null): void
+    setComment(comment: string): void
     /**
      * Sets the default branch configured for this remote.
      * 
@@ -2096,7 +2096,7 @@ export interface Remote {
      * effect.
      * @param defaultBranch The new default_branch
      */
-    setDefaultBranch(defaultBranch: string | null): void
+    setDefaultBranch(defaultBranch: string): void
     /**
      * Sets the description of this remote.
      * 
@@ -2105,7 +2105,7 @@ export interface Remote {
      * effect.
      * @param description The new description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Sets the disabled config of this remote. See flatpak_remote_get_disabled().
      * 
@@ -2123,7 +2123,7 @@ export interface Remote {
      * effect.
      * @param filterPath The pathname of the new filter file
      */
-    setFilter(filterPath: string | null): void
+    setFilter(filterPath: string): void
     /**
      * Sets the trusted gpg key for this remote.
      * 
@@ -2150,7 +2150,7 @@ export interface Remote {
      * effect.
      * @param homepage The new homepage
      */
-    setHomepage(homepage: string | null): void
+    setHomepage(homepage: string): void
     /**
      * Sets the homepage of this remote.
      * 
@@ -2159,7 +2159,7 @@ export interface Remote {
      * effect.
      * @param icon The new homepage
      */
-    setIcon(icon: string | null): void
+    setIcon(icon: string): void
     /**
      * Sets the main ref of this remote. The main ref is the ref that an origin
      * remote is created for.
@@ -2169,7 +2169,7 @@ export interface Remote {
      * effect.
      * @param mainRef The new main ref
      */
-    setMainRef(mainRef: string | null): void
+    setMainRef(mainRef: string): void
     /**
      * Sets the nodeps config of this remote. See flatpak_remote_get_nodeps().
      * 
@@ -2205,7 +2205,7 @@ export interface Remote {
      * effect.
      * @param title The new title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets the repository URL of this remote.
      * 
@@ -2214,7 +2214,7 @@ export interface Remote {
      * effect.
      * @param url The new url
      */
-    setUrl(url: string | null): void
+    setUrl(url: string): void
 
     // Class property signals of Flatpak-1.0.Flatpak.Remote
 
@@ -2260,7 +2260,7 @@ export class Remote extends GObject.Object {
      * @param name a name
      * @returns a new #FlatpakRemote
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Returns a new remote object which can be used to configure a new remote.
      * 
@@ -2271,7 +2271,7 @@ export class Remote extends GObject.Object {
      * @param name a name
      * @returns a new #FlatpakRemote
      */
-    static new(name: string | null): Remote
+    static new(name: string): Remote
     /**
      * Returns a new pre-filled remote object which can be used to configure a new remote.
      * The fields in the remote are filled in according to the values in the
@@ -2285,7 +2285,7 @@ export class Remote extends GObject.Object {
      * @param data The content of a flatpakrepo file
      * @returns a new #FlatpakRemote, or %NULL on error
      */
-    static newFromFile(name: string | null, data: any): Remote
+    static newFromFile(name: string, data: any): Remote
     _init(config?: Remote.ConstructorProperties): void
 }
 
@@ -2335,13 +2335,13 @@ export interface RemoteRef {
      * ref is not end-of-lifed.
      * @returns the end-of-life reason or %NULL
      */
-    getEol(): string | null
+    getEol(): string
     /**
      * Returns the end-of-life rebased ref, or %NULL if the
      * ref is not end-of-lifed.
      * @returns the end-of-life rebased ref or %NULL
      */
-    getEolRebase(): string | null
+    getEolRebase(): string
     /**
      * Returns the installed size of the ref.
      * @returns the installed size
@@ -2356,7 +2356,7 @@ export interface RemoteRef {
      * Gets the remote name of the ref.
      * @returns the remote name
      */
-    getRemoteName(): string | null
+    getRemoteName(): string
 
     // Class property signals of Flatpak-1.0.Flatpak.RemoteRef
 
@@ -2603,7 +2603,7 @@ export interface Transaction extends Gio.Initable {
      * @param subpaths subpaths to install, or the  empty list or %NULL to pull all subpaths
      * @returns %TRUE on success; %FALSE with @error set on failure.
      */
-    addInstall(remote: string | null, ref: string | null, subpaths: string[] | null): boolean
+    addInstall(remote: string, ref: string, subpaths: string[] | null): boolean
     /**
      * Adds installing the given bundle to this transaction.
      * @param file a #GFile that is an flatpak bundle
@@ -2630,7 +2630,7 @@ export interface Transaction extends Gio.Initable {
      * @param previousIds Previous ids to add to the     given ref. These should simply be the ids, not the full ref names (e.g. org.foo.Bar,     not org.foo.Bar/x86_64/master).
      * @returns %TRUE on success; %FALSE with @error set on failure.
      */
-    addRebase(remote: string | null, ref: string | null, subpaths: string | null, previousIds: string[] | null): boolean
+    addRebase(remote: string, ref: string, subpaths: string | null, previousIds: string[] | null): boolean
     /**
      * Adds an extra local ostree repo as source for installation. This is
      * equivalent to using the sideload-repos directories (see flatpak(1)), but can
@@ -2638,13 +2638,13 @@ export interface Transaction extends Gio.Initable {
      * those directories.
      * @param path a path to a local flatpak repository
      */
-    addSideloadRepo(path: string | null): void
+    addSideloadRepo(path: string): void
     /**
      * Adds uninstalling the given ref to this transaction.
      * @param ref the ref
      * @returns %TRUE on success; %FALSE with @error set on failure.
      */
-    addUninstall(ref: string | null): boolean
+    addUninstall(ref: string): boolean
     /**
      * Adds updating the given ref to this transaction.
      * @param ref the ref
@@ -2652,7 +2652,7 @@ export interface Transaction extends Gio.Initable {
      * @param commit the commit to update to, or %NULL to use the latest
      * @returns %TRUE on success; %FALSE with @error set on failure.
      */
-    addUpdate(ref: string | null, subpaths: string[] | null, commit: string | null): boolean
+    addUpdate(ref: string, subpaths: string[] | null, commit: string | null): boolean
     /**
      * Finishes (or aborts) an ongoing basic auth request.
      * @param id The webflow id, as passed into the webflow-start signal
@@ -2660,7 +2660,7 @@ export interface Transaction extends Gio.Initable {
      * @param password The password
      * @param options Extra a{sv] variant with options (or %NULL), currently unused.
      */
-    completeBasicAuth(id: number, user: string | null, password: string | null, options: GLib.Variant): void
+    completeBasicAuth(id: number, user: string, password: string, options: GLib.Variant): void
     /**
      * Gets the current operation.
      * @returns the current #FlatpakTransactionOperation
@@ -2693,7 +2693,7 @@ export interface Transaction extends Gio.Initable {
      * flatpak_transaction_get_parent_window().
      * @returns a window name, or %NULL
      */
-    getParentWindow(): string | null
+    getParentWindow(): string
     /**
      * Returns whether the transaction contains any non-skipped operations.
      * @returns %TRUE if the transaction is empty
@@ -2704,7 +2704,7 @@ export interface Transaction extends Gio.Initable {
      * Sets the architecture to default to where it is unspecified.
      * @param arch the arch to make default
      */
-    setDefaultArch(arch: string | null): void
+    setDefaultArch(arch: string): void
     /**
      * Sets whether the transaction should ignore runtime dependencies
      * when resolving operations for applications.
@@ -2772,7 +2772,7 @@ export interface Transaction extends Gio.Initable {
      * using the export call of the xdg-foreign-unstable wayland extension.
      * @param parentWindow whether to avoid pulls
      */
-    setParentWindow(parentWindow: string | null): void
+    setParentWindow(parentWindow: string): void
     /**
      * Sets whether the transaction should uninstall first if a
      * ref is already installed.
@@ -2782,14 +2782,14 @@ export interface Transaction extends Gio.Initable {
 
     // Own virtual methods of Flatpak-1.0.Flatpak.Transaction
 
-    addNewRemote(reason: TransactionRemoteReason, fromId: string | null, remoteName: string | null, url: string | null): boolean
-    basicAuthStart(remote: string | null, realm: string | null, options: GLib.Variant, id: number): boolean
-    chooseRemoteForRef(forRef: string | null, runtimeRef: string | null, remotes: string | null): number
-    endOfLifed(ref: string | null, reason: string | null, rebase: string | null): void
-    endOfLifedWithRebase(remote: string | null, ref: string | null, reason: string | null, rebasedToRef: string | null, previousIds: string | null): boolean
-    installAuthenticator(remote: string | null, authenticatorRef: string | null): void
+    addNewRemote(reason: TransactionRemoteReason, fromId: string, remoteName: string, url: string): boolean
+    basicAuthStart(remote: string, realm: string, options: GLib.Variant, id: number): boolean
+    chooseRemoteForRef(forRef: string, runtimeRef: string, remotes: string): number
+    endOfLifed(ref: string, reason: string, rebase: string): void
+    endOfLifedWithRebase(remote: string, ref: string, reason: string, rebasedToRef: string, previousIds: string): boolean
+    installAuthenticator(remote: string, authenticatorRef: string): void
     newOperation(operation: TransactionOperation, progress: TransactionProgress): void
-    operationDone(operation: TransactionOperation, commit: string | null, details: TransactionResult): void
+    operationDone(operation: TransactionOperation, commit: string, details: TransactionResult): void
     operationError(operation: TransactionOperation, error: GLib.Error, detail: TransactionErrorDetails): boolean
     ready(): boolean
     /**
@@ -2811,7 +2811,7 @@ export interface Transaction extends Gio.Initable {
      */
     run(cancellable: Gio.Cancellable | null): boolean
     webflowDone(options: GLib.Variant, id: number): void
-    webflowStart(remote: string | null, url: string | null, options: GLib.Variant, id: number): boolean
+    webflowStart(remote: string, url: string, options: GLib.Variant, id: number): boolean
 
     // Own signals of Flatpak-1.0.Flatpak.Transaction
 
@@ -2949,7 +2949,7 @@ export interface TransactionOperation {
      * i.e. when #FlatpakTransaction::ready is emitted.
      * @returns the commit ID
      */
-    getCommit(): string | null
+    getCommit(): string
     /**
      * Gets the maximum download size for the operation.
      * 
@@ -3020,7 +3020,7 @@ export interface TransactionOperation {
      * Gets the ref that the operation applies to.
      * @returns the ref
      */
-    getRef(): string | null
+    getRef(): string
     /**
      * Gets the operations which caused this operation to be added to the
      * transaction. In the case of a runtime, it's the apps whose runtime it is (and
@@ -3042,7 +3042,7 @@ export interface TransactionOperation {
      * Gets the remote that the operation applies to.
      * @returns the remote
      */
-    getRemote(): string | null
+    getRemote(): string
 
     // Class property signals of Flatpak-1.0.Flatpak.TransactionOperation
 
@@ -3282,18 +3282,18 @@ export interface TransactionClass {
 
     parentClass: GObject.ObjectClass
     newOperation: (transaction: Transaction, operation: TransactionOperation, progress: TransactionProgress) => void
-    operationDone: (transaction: Transaction, operation: TransactionOperation, commit: string | null, details: TransactionResult) => void
+    operationDone: (transaction: Transaction, operation: TransactionOperation, commit: string, details: TransactionResult) => void
     operationError: (transaction: Transaction, operation: TransactionOperation, error: GLib.Error, detail: TransactionErrorDetails) => boolean
-    chooseRemoteForRef: (transaction: Transaction, forRef: string | null, runtimeRef: string | null, remotes: string | null) => number
-    endOfLifed: (transaction: Transaction, ref: string | null, reason: string | null, rebase: string | null) => void
+    chooseRemoteForRef: (transaction: Transaction, forRef: string, runtimeRef: string, remotes: string) => number
+    endOfLifed: (transaction: Transaction, ref: string, reason: string, rebase: string) => void
     ready: (transaction: Transaction) => boolean
-    addNewRemote: (transaction: Transaction, reason: TransactionRemoteReason, fromId: string | null, remoteName: string | null, url: string | null) => boolean
+    addNewRemote: (transaction: Transaction, reason: TransactionRemoteReason, fromId: string, remoteName: string, url: string) => boolean
     run: (transaction: Transaction, cancellable: Gio.Cancellable | null) => boolean
-    endOfLifedWithRebase: (transaction: Transaction, remote: string | null, ref: string | null, reason: string | null, rebasedToRef: string | null, previousIds: string | null) => boolean
-    webflowStart: (transaction: Transaction, remote: string | null, url: string | null, options: GLib.Variant, id: number) => boolean
+    endOfLifedWithRebase: (transaction: Transaction, remote: string, ref: string, reason: string, rebasedToRef: string, previousIds: string) => boolean
+    webflowStart: (transaction: Transaction, remote: string, url: string, options: GLib.Variant, id: number) => boolean
     webflowDone: (transaction: Transaction, options: GLib.Variant, id: number) => void
-    basicAuthStart: (transaction: Transaction, remote: string | null, realm: string | null, options: GLib.Variant, id: number) => boolean
-    installAuthenticator: (transaction: Transaction, remote: string | null, authenticatorRef: string | null) => void
+    basicAuthStart: (transaction: Transaction, remote: string, realm: string, options: GLib.Variant, id: number) => boolean
+    installAuthenticator: (transaction: Transaction, remote: string, authenticatorRef: string) => void
     padding: any[]
 }
 

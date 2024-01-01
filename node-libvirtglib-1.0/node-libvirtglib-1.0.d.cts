@@ -25,7 +25,7 @@ import type GObject from '@girs/node-gobject-2.0';
  * @param message error message
  * @returns a new #GError
  */
-export function errorNewLiteral(domain: GLib.Quark, code: number, message: string | null): GLib.Error
+export function errorNewLiteral(domain: GLib.Quark, code: number, message: string): GLib.Error
 /**
  * Registers a libvirt event loop implementation that is backed
  * by the default <code>GMain</code> context. If invoked more
@@ -86,5 +86,5 @@ export function initCheck(argv: string[] | null): [ /* returnType */ boolean, /*
  * @param code error code
  * @param message error message
  */
-export function setErrorLiteral(error: GLib.Error, domain: GLib.Quark, code: number, message: string | null): void
+export function setErrorLiteral(error: GLib.Error, domain: GLib.Quark, code: number, message: string): void
 // END

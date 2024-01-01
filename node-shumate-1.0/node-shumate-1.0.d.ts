@@ -147,39 +147,39 @@ const MAJOR_VERSION: number
 /**
  * Maps for Free Relief
  */
-const MAP_SOURCE_MFF_RELIEF: string | null
+const MAP_SOURCE_MFF_RELIEF: string
 /**
  * OpenStreetMap Cycle Map
  */
-const MAP_SOURCE_OSM_CYCLE_MAP: string | null
+const MAP_SOURCE_OSM_CYCLE_MAP: string
 /**
  * OpenStreetMap Mapnik
  */
-const MAP_SOURCE_OSM_MAPNIK: string | null
+const MAP_SOURCE_OSM_MAPNIK: string
 /**
  * OpenStreetMap Transport Map
  */
-const MAP_SOURCE_OSM_TRANSPORT_MAP: string | null
+const MAP_SOURCE_OSM_TRANSPORT_MAP: string
 /**
  * OpenWeatherMap clouds layer
  */
-const MAP_SOURCE_OWM_CLOUDS: string | null
+const MAP_SOURCE_OWM_CLOUDS: string
 /**
  * OpenWeatherMap precipitation
  */
-const MAP_SOURCE_OWM_PRECIPITATION: string | null
+const MAP_SOURCE_OWM_PRECIPITATION: string
 /**
  * OpenWeatherMap sea level pressure
  */
-const MAP_SOURCE_OWM_PRESSURE: string | null
+const MAP_SOURCE_OWM_PRESSURE: string
 /**
  * OpenWeatherMap temperature
  */
-const MAP_SOURCE_OWM_TEMPERATURE: string | null
+const MAP_SOURCE_OWM_TEMPERATURE: string
 /**
  * OpenWeatherMap wind
  */
-const MAP_SOURCE_OWM_WIND: string | null
+const MAP_SOURCE_OWM_WIND: string
 /**
  * The maximal possible latitude value.
  */
@@ -211,7 +211,7 @@ function fileCacheErrorQuark(): GLib.Quark
  * This API is not thread-safe and should only be called from the main thread.
  * @returns the user agent
  */
-function getUserAgent(): string | null
+function getUserAgent(): string
 /**
  * Sets the user agent that libshumate uses for all requests.
  * 
@@ -949,7 +949,7 @@ interface DataSourceRequest {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets the latest error from the request.
      * @returns The latest error, if any.
@@ -1133,13 +1133,13 @@ interface FileCache {
      * Gets the directory where the cache database is stored.
      * @returns the directory
      */
-    getCacheDir(): string | null
+    getCacheDir(): string
     /**
      * Gets the key used to store and retrieve tiles from the cache. Different keys
      * can be used to store multiple tilesets in the same cache directory.
      * @returns the cache key
      */
-    getCacheKey(): string | null
+    getCacheKey(): string
     /**
      * Gets the cache size limit in bytes.
      * @returns size limit
@@ -1277,7 +1277,7 @@ class FileCache extends GObject.Object {
      * @param cacheDir the directory where the cache is created. When cache_dir == NULL, a cache in ~/.cache/shumate is used.
      * @returns a constructed #ShumateFileCache
      */
-    static newFull(sizeLimit: number, cacheKey: string | null, cacheDir: string | null): FileCache
+    static newFull(sizeLimit: number, cacheKey: string, cacheDir: string | null): FileCache
     _init(config?: FileCache.ConstructorProperties): void
 }
 
@@ -1574,7 +1574,7 @@ interface License extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * Gets the additional license text.
      * @returns the additional license text
      */
-    getExtraText(): string | null
+    getExtraText(): string
     /**
      * Get the license's text horizontal alignment.
      * @returns the license's text horizontal alignment.
@@ -1587,7 +1587,7 @@ interface License extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget {
      * map's licence when displayed. Use "\n" to separate the lines.
      * @param text the additional license text
      */
-    setExtraText(text: string | null): void
+    setExtraText(text: string): void
     /**
      * Set the license's text horizontal alignment.
      * @param xalign The license's text horizontal alignment
@@ -2638,7 +2638,7 @@ interface MapSource {
      * Gets map source's id.
      * @returns the map source's id.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the latitude corresponding to this y position in the map source's
      * projection.
@@ -2651,12 +2651,12 @@ interface MapSource {
      * Gets map source's license.
      * @returns the map source's license.
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets map source's license URI.
      * @returns the map source's license URI.
      */
-    getLicenseUri(): string | null
+    getLicenseUri(): string
     /**
      * Gets the longitude corresponding to this x position in the map source's
      * projection.
@@ -2687,7 +2687,7 @@ interface MapSource {
      * Gets map source's name.
      * @returns the map source's name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets map source's projection.
      * @returns the map source's projection.
@@ -2734,17 +2734,17 @@ interface MapSource {
      * Sets the map source's id.
      * @param id an id
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Sets the map source's license.
      * @param license the licence
      */
-    setLicense(license: string | null): void
+    setLicense(license: string): void
     /**
      * Sets the map source's license URI.
      * @param licenseUri the licence URI
      */
-    setLicenseUri(licenseUri: string | null): void
+    setLicenseUri(licenseUri: string): void
     /**
      * Sets the map source's maximum zoom level.
      * @param zoomLevel the maximum zoom level
@@ -2759,7 +2759,7 @@ interface MapSource {
      * Sets the map source's name.
      * @param name a name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the map source's projection.
      * @param projection a #ShumateMapProjection
@@ -2893,7 +2893,7 @@ interface MapSourceRegistry extends Gio.ListModel {
      * @param id the id of the #ShumateMapSource
      * @returns the #ShumateMapSource or %NULL if no map source has been found
      */
-    getById(id: string | null): MapSource | null
+    getById(id: string): MapSource | null
     /**
      * Populates the #ShumateMapSourceRegistry with a default set of sources.
      */
@@ -2903,7 +2903,7 @@ interface MapSourceRegistry extends Gio.ListModel {
      * If the source doesn't exist in the registry, this function does nothing.
      * @param id a #ShumateMapSource id
      */
-    remove(id: string | null): void
+    remove(id: string): void
 
     // Class property signals of Shumate-1.0.Shumate.MapSourceRegistry
 
@@ -4520,7 +4520,7 @@ class RasterRenderer extends MapSource {
      * @param urlTemplate a URL template to fetch tiles from
      * @returns a newly constructed [class@RasterRenderer]
      */
-    static newFromUrl(urlTemplate: string | null): RasterRenderer
+    static newFromUrl(urlTemplate: string): RasterRenderer
     /**
      * Creates a new [class`RasterRenderer]` with the given details and a data
      * source.
@@ -4536,7 +4536,7 @@ class RasterRenderer extends MapSource {
      * @param dataSource a [class`DataSource]` to provide tile image data
      * @returns a newly constructed [class@RasterRenderer]
      */
-    static newFull(id: string | null, name: string | null, license: string | null, licenseUri: string | null, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, dataSource: DataSource): RasterRenderer
+    static newFull(id: string, name: string, license: string, licenseUri: string, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, dataSource: DataSource): RasterRenderer
     /**
      * Creates a new [class`RasterRenderer]` with the given details and a data
      * source.
@@ -4552,7 +4552,7 @@ class RasterRenderer extends MapSource {
      * @param urlTemplate a URL template to fetch tiles from
      * @returns a newly constructed [class@RasterRenderer]
      */
-    static newFullFromUrl(id: string | null, name: string | null, license: string | null, licenseUri: string | null, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, urlTemplate: string | null): RasterRenderer
+    static newFullFromUrl(id: string, name: string, license: string, licenseUri: string, minZoom: number, maxZoom: number, tileSize: number, projection: MapProjection, urlTemplate: string): RasterRenderer
     _init(config?: RasterRenderer.ConstructorProperties): void
 }
 
@@ -5266,7 +5266,7 @@ interface SymbolEvent extends Location {
      * formatted as a string here for futureproofing.
      * @returns the feature ID
      */
-    getFeatureId(): string | null
+    getFeatureId(): string
     /**
      * Gets a list of the keys of the source feature's tags.
      * @returns a list of the tag keys
@@ -5281,13 +5281,13 @@ interface SymbolEvent extends Location {
      * data source layer.
      * @returns the layer name
      */
-    getLayer(): string | null
+    getLayer(): string
     /**
      * Gets the name of the source layer the clicked feature is in,
      * as named in the vector tile schema.
      * @returns the layer name
      */
-    getSourceLayer(): string | null
+    getSourceLayer(): string
     /**
      * Gets a tag from the source feature.
      * 
@@ -5297,7 +5297,7 @@ interface SymbolEvent extends Location {
      * @param tagName the tag to get
      * @returns the tag value, formatted as a string
      */
-    getTag(tagName: string | null): string | null
+    getTag(tagName: string): string
 
     // Class property signals of Shumate-1.0.Shumate.SymbolEvent
 
@@ -5448,7 +5448,7 @@ interface Tile {
 
     // Owm methods of Shumate-1.0.Shumate.Tile
 
-    getEtag(): string | null
+    getEtag(): string
     /**
      * Checks whether the tile should fade in.
      * @returns the return value determines whether the tile should fade in when loading.
@@ -5490,7 +5490,7 @@ interface Tile {
      * @returns the tile's zoom level
      */
     getZoomLevel(): number
-    setEtag(etag: string | null): void
+    setEtag(etag: string): void
     /**
      * Sets the flag determining whether the tile should fade in when loading
      * @param fadeIn determines whether the tile should fade in when loading
@@ -5721,7 +5721,7 @@ class TileDownloader extends DataSource {
      * @param urlTemplate a URL template to fetch tiles from
      * @returns a newly constructed [class@TileDownloader]
      */
-    constructor(urlTemplate: string | null) 
+    constructor(urlTemplate: string) 
     /**
      * Creates a new [class`TileDownloader]` that fetches tiles from an API and
      * caches them on disk.
@@ -5731,7 +5731,7 @@ class TileDownloader extends DataSource {
      * @param urlTemplate a URL template to fetch tiles from
      * @returns a newly constructed [class@TileDownloader]
      */
-    static new(urlTemplate: string | null): TileDownloader
+    static new(urlTemplate: string): TileDownloader
     _init(config?: TileDownloader.ConstructorProperties): void
 }
 
@@ -5779,7 +5779,7 @@ interface VectorRenderer extends Gio.Initable {
      * @param spritesJson a JSON string
      * @returns whether the sprite sheet was loaded successfully
      */
-    setSpriteSheetData(spritesPixbuf: GdkPixbuf.Pixbuf, spritesJson: string | null): boolean
+    setSpriteSheetData(spritesPixbuf: GdkPixbuf.Pixbuf, spritesJson: string): boolean
 
     // Class property signals of Shumate-1.0.Shumate.VectorRenderer
 
@@ -5868,7 +5868,7 @@ class VectorRenderer extends MapSource {
      * @param styleJson a vector style
      * @returns a newly constructed [class@VectorRenderer], or %NULL if @error is set
      */
-    constructor(id: string | null, styleJson: string | null) 
+    constructor(id: string, styleJson: string) 
     /**
      * Creates a new [class`VectorRenderer]` from the given JSON style.
      * 
@@ -5883,7 +5883,7 @@ class VectorRenderer extends MapSource {
      * @param styleJson a vector style
      * @returns a newly constructed [class@VectorRenderer], or %NULL if @error is set
      */
-    static new(id: string | null, styleJson: string | null): VectorRenderer
+    static new(id: string, styleJson: string): VectorRenderer
     _init(config?: VectorRenderer.ConstructorProperties): void
     /**
      * Checks whether libshumate was compiled with vector tile support. If it was

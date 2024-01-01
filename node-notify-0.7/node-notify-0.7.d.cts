@@ -87,7 +87,7 @@ export const VERSION_MINOR: number
  * Gets the application name registered.
  * @returns The registered application name, passed to [func@init].
  */
-export function getAppName(): string | null
+export function getAppName(): string
 /**
  * Queries the server capabilities.
  * 
@@ -104,7 +104,7 @@ export function getServerCaps(): string[]
  * that it is compliant with.
  * @returns %TRUE if successful, and the variables passed will be set, %FALSE   on error. The returned strings must be freed with g_free
  */
-export function getServerInfo(): [ /* returnType */ boolean, /* retName */ string | null, /* retVendor */ string | null, /* retVersion */ string | null, /* retSpecVersion */ string | null ]
+export function getServerInfo(): [ /* returnType */ boolean, /* retName */ string, /* retVendor */ string, /* retVersion */ string, /* retSpecVersion */ string ]
 /**
  * Initialized libnotify. This must be called before any other functions.
  * 
@@ -124,7 +124,7 @@ export function isInitted(): boolean
  * Sets the application name.
  * @param appName The name of the application
  */
-export function setAppName(appName: string | null): void
+export function setAppName(appName: string): void
 /**
  * Uninitializes libnotify.
  * 
@@ -226,7 +226,7 @@ export interface Notification {
      * @param label The human-readable action label.
      * @param callback The action's callback function.
      */
-    addAction(action: string | null, label: string | null, callback: ActionCallback): void
+    addAction(action: string, label: string, callback: ActionCallback): void
     /**
      * Clears all actions from the notification.
      */
@@ -275,7 +275,7 @@ export interface Notification {
      * a certain way.
      * @param category The category.
      */
-    setCategory(category: string | null): void
+    setCategory(category: string): void
     /**
      * Sets a hint for `key` with value `value`.
      * 
@@ -285,13 +285,13 @@ export interface Notification {
      * @param key the hint key
      * @param value the hint value
      */
-    setHint(key: string | null, value: GLib.Variant | null): void
+    setHint(key: string, value: GLib.Variant | null): void
     /**
      * Sets a hint with a byte value.
      * @param key The hint.
      * @param value The hint's value.
      */
-    setHintByte(key: string | null, value: number): void
+    setHintByte(key: string, value: number): void
     /**
      * Sets a hint with a byte array value.
      * 
@@ -299,31 +299,31 @@ export interface Notification {
      * @param key The hint.
      * @param value The hint's value.
      */
-    setHintByteArray(key: string | null, value: number[]): void
+    setHintByteArray(key: string, value: number[]): void
     /**
      * Sets a hint with a double value.
      * @param key The hint.
      * @param value The hint's value.
      */
-    setHintDouble(key: string | null, value: number): void
+    setHintDouble(key: string, value: number): void
     /**
      * Sets a hint with a 32-bit integer value.
      * @param key The hint.
      * @param value The hint's value.
      */
-    setHintInt32(key: string | null, value: number): void
+    setHintInt32(key: string, value: number): void
     /**
      * Sets a hint with a string value.
      * @param key The hint.
      * @param value The hint's value.
      */
-    setHintString(key: string | null, value: string | null): void
+    setHintString(key: string, value: string): void
     /**
      * Sets a hint with an unsigned 32-bit integer value.
      * @param key The hint.
      * @param value The hint's value.
      */
-    setHintUint32(key: string | null, value: number): void
+    setHintUint32(key: string, value: number): void
     /**
      * Sets the icon in the notification from a #GdkPixbuf.
      * @param icon The icon.
@@ -364,7 +364,7 @@ export interface Notification {
      * @param icon The optional icon theme icon name or filename.
      * @returns %TRUE, unless an invalid parameter was passed.
      */
-    update(summary: string | null, body: string | null, icon: string | null): boolean
+    update(summary: string, body: string | null, icon: string | null): boolean
 
     // Own virtual methods of Notify-0.7.Notify.Notification
 
@@ -453,7 +453,7 @@ export class Notification extends GObject.Object {
      * @param icon The optional icon theme icon name or filename.
      * @returns The new #NotifyNotification.
      */
-    constructor(summary: string | null, body: string | null, icon: string | null) 
+    constructor(summary: string, body: string | null, icon: string | null) 
     /**
      * Creates a new #NotifyNotification.
      * 
@@ -464,7 +464,7 @@ export class Notification extends GObject.Object {
      * @param icon The optional icon theme icon name or filename.
      * @returns The new #NotifyNotification.
      */
-    static new(summary: string | null, body: string | null, icon: string | null): Notification
+    static new(summary: string, body: string | null, icon: string | null): Notification
     _init(config?: Notification.ConstructorProperties): void
 }
 

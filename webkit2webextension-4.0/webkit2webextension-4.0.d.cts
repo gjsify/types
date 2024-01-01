@@ -513,7 +513,7 @@ export interface DOMEventTarget {
      * @param use_capture A #gboolean
      * @returns a #gboolean
      */
-    add_event_listener(event_name: string | null, handler: GObject.TClosure, use_capture: boolean): boolean
+    add_event_listener(event_name: string, handler: GObject.TClosure, use_capture: boolean): boolean
     dispatch_event(event: DOMEvent): boolean
     /**
      * Version of webkit_dom_event_target_remove_event_listener() using a closure
@@ -523,13 +523,13 @@ export interface DOMEventTarget {
      * @param use_capture A #gboolean
      * @returns a #gboolean
      */
-    remove_event_listener(event_name: string | null, handler: GObject.TClosure, use_capture: boolean): boolean
+    remove_event_listener(event_name: string, handler: GObject.TClosure, use_capture: boolean): boolean
 
     // Own virtual methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMEventTarget
 
-    vfunc_add_event_listener(event_name: string | null, handler: GObject.TClosure, use_capture: boolean): boolean
+    vfunc_add_event_listener(event_name: string, handler: GObject.TClosure, use_capture: boolean): boolean
     vfunc_dispatch_event(event: DOMEvent): boolean
-    vfunc_remove_event_listener(event_name: string | null, handler: GObject.TClosure, use_capture: boolean): boolean
+    vfunc_remove_event_listener(event_name: string, handler: GObject.TClosure, use_capture: boolean): boolean
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMEventTarget
 
@@ -605,11 +605,11 @@ export interface DOMXPathNSResolver {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMXPathNSResolver
 
-    lookup_namespace_uri(prefix: string | null): string | null
+    lookup_namespace_uri(prefix: string): string | null
 
     // Own virtual methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMXPathNSResolver
 
-    vfunc_lookup_namespace_uri(prefix: string | null): string | null
+    vfunc_lookup_namespace_uri(prefix: string): string | null
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMXPathNSResolver
 
@@ -942,7 +942,7 @@ export class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param target a #GVariant to use as the action target
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static new_from_gaction(action: Gio.Action, label: string | null, target: GLib.Variant | null): ContextMenuItem
+    static new_from_gaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem for the given stock action.
      * 
@@ -969,7 +969,7 @@ export class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param label a custom label text to use instead of the predefined one
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static new_from_stock_action_with_label(action: ContextMenuAction, label: string | null): ContextMenuItem
+    static new_from_stock_action_with_label(action: ContextMenuAction, label: string): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem representing a separator.
      * @constructor 
@@ -983,7 +983,7 @@ export class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param submenu a #WebKitContextMenu to set
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static new_with_submenu(label: string | null, submenu: ContextMenu): ContextMenuItem
+    static new_with_submenu(label: string, submenu: ContextMenu): ContextMenuItem
     _init(config?: ContextMenuItem.ConstructorProperties): void
 }
 
@@ -1028,7 +1028,7 @@ export interface DOMAttr extends DOMEventTarget {
     get_prefix(): string | null
     get_specified(): boolean
     get_value(): string | null
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMAttr
 
@@ -1186,7 +1186,7 @@ export interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     get_data(): string | null
 
     // Overloads of get_data
@@ -1196,7 +1196,7 @@ export interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1211,8 +1211,8 @@ export interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
-    set_data(value: string | null): void
+    set_data(key: string, data: any | null): void
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -1230,7 +1230,7 @@ export interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCDATASection
 
@@ -1340,7 +1340,7 @@ export interface DOMCSSRule {
     get_parent_rule(): DOMCSSRule
     get_parent_style_sheet(): DOMCSSStyleSheet
     get_rule_type(): number
-    set_css_text(value: string | null): void
+    set_css_text(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCSSRule
 
@@ -1462,14 +1462,14 @@ export interface DOMCSSStyleDeclaration {
     get_css_text(): string | null
     get_length(): number
     get_parent_rule(): DOMCSSRule
-    get_property_priority(propertyName: string | null): string | null
-    get_property_shorthand(propertyName: string | null): string | null
-    get_property_value(propertyName: string | null): string | null
-    is_property_implicit(propertyName: string | null): boolean
+    get_property_priority(propertyName: string): string | null
+    get_property_shorthand(propertyName: string): string | null
+    get_property_value(propertyName: string): string | null
+    is_property_implicit(propertyName: string): boolean
     item(index: number): string | null
-    remove_property(propertyName: string | null): string | null
-    set_css_text(value: string | null): void
-    set_property(propertyName: string | null, value: string | null, priority: string | null): void
+    remove_property(propertyName: string): string | null
+    set_css_text(value: string): void
+    set_property(propertyName: string, value: string, priority: string): void
 
     // Overloads of set_property
 
@@ -1478,7 +1478,7 @@ export interface DOMCSSStyleDeclaration {
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCSSStyleDeclaration
 
@@ -1538,12 +1538,12 @@ export interface DOMCSSStyleSheet {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCSSStyleSheet
 
-    add_rule(selector: string | null, style: string | null, index: number): number
+    add_rule(selector: string, style: string, index: number): number
     delete_rule(index: number): void
     get_css_rules(): DOMCSSRuleList
     get_owner_rule(): DOMCSSRule
     get_rules(): DOMCSSRuleList
-    insert_rule(rule: string | null, index: number): number
+    insert_rule(rule: string, index: number): number
     remove_rule(index: number): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCSSStyleSheet
@@ -1631,7 +1631,7 @@ export interface DOMCSSValue {
 
     get_css_text(): string | null
     get_css_value_type(): number
-    set_css_text(value: string | null): void
+    set_css_text(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCSSValue
 
@@ -1689,7 +1689,7 @@ export interface DOMCharacterData extends DOMEventTarget {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCharacterData
 
-    append_data(data: string | null): void
+    append_data(data: string): void
     delete_data(offset: number, length: number): void
     get_data(): string | null
 
@@ -1700,11 +1700,11 @@ export interface DOMCharacterData extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     get_length(): number
-    insert_data(offset: number, data: string | null): void
-    replace_data(offset: number, length: number, data: string | null): void
-    set_data(value: string | null): void
+    insert_data(offset: number, data: string): void
+    replace_data(offset: number, length: number, data: string): void
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -1722,7 +1722,7 @@ export interface DOMCharacterData extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     substring_data(offset: number, length: number): string | null
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMCharacterData
@@ -1979,14 +1979,14 @@ export interface DOMComment extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -2004,7 +2004,7 @@ export interface DOMComment extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -2019,7 +2019,7 @@ export interface DOMComment extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMComment
 
@@ -2107,11 +2107,11 @@ export interface DOMDOMImplementation {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDOMImplementation
 
-    create_css_style_sheet(title: string | null, media: string | null): DOMCSSStyleSheet
-    create_document(namespaceURI: string | null, qualifiedName: string | null, doctype: DOMDocumentType | null): DOMDocument
-    create_document_type(qualifiedName: string | null, publicId: string | null, systemId: string | null): DOMDocumentType
-    create_html_document(title: string | null): DOMHTMLDocument
-    has_feature(feature: string | null, version: string | null): boolean
+    create_css_style_sheet(title: string, media: string): DOMCSSStyleSheet
+    create_document(namespaceURI: string | null, qualifiedName: string, doctype: DOMDocumentType | null): DOMDocument
+    create_document_type(qualifiedName: string, publicId: string, systemId: string): DOMDocumentType
+    create_html_document(title: string): DOMHTMLDocument
+    has_feature(feature: string, version: string): boolean
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDOMImplementation
 
@@ -2198,7 +2198,7 @@ export interface DOMDOMSelection {
     get_range_at(index: number): DOMRange
     get_range_count(): number
     get_selection_type(): string | null
-    modify(alter: string | null, direction: string | null, granularity: string | null): void
+    modify(alter: string, direction: string, granularity: string): void
     remove_all_ranges(): void
     select_all_children(node: DOMNode): void
     set_base_and_extent(baseNode: DOMNode, baseOffset: number, extentNode: DOMNode, extentOffset: number): void
@@ -2287,13 +2287,13 @@ export interface DOMDOMTokenList {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDOMTokenList
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
     get_length(): number
     get_value(): string | null
     item(index: number): string | null
-    replace(token: string | null, newToken: string | null): void
-    set_value(value: string | null): void
-    toggle(token: string | null, force: boolean): boolean
+    replace(token: string, newToken: string): void
+    set_value(value: string): void
+    toggle(token: string, force: boolean): boolean
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDOMTokenList
 
@@ -2396,12 +2396,12 @@ export interface DOMDOMWindow extends DOMEventTarget {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDOMWindow
 
-    alert(message: string | null): void
+    alert(message: string): void
     blur(): void
     capture_events(): void
     close(): void
-    confirm(message: string | null): boolean
-    find(string: string | null, caseSensitive: boolean, backwards: boolean, wrap: boolean, wholeWord: boolean, searchInFrames: boolean, showDialog: boolean): boolean
+    confirm(message: string): boolean
+    find(string: string, caseSensitive: boolean, backwards: boolean, wrap: boolean, wholeWord: boolean, searchInFrames: boolean, showDialog: boolean): boolean
     focus(): void
     get_closed(): boolean
     get_computed_style(element: DOMElement, pseudoElement: string | null): DOMCSSStyleDeclaration
@@ -2436,17 +2436,17 @@ export interface DOMDOMWindow extends DOMEventTarget {
     move_by(x: number, y: number): void
     move_to(x: number, y: number): void
     print(): void
-    prompt(message: string | null, defaultValue: string | null): string | null
+    prompt(message: string, defaultValue: string): string | null
     release_events(): void
     resize_by(x: number, y: number): void
     resize_to(width: number, height: number): void
     scroll_by(x: number, y: number): void
     scroll_to(x: number, y: number): void
-    set_default_status(value: string | null): void
-    set_name(value: string | null): void
-    set_status(value: string | null): void
+    set_default_status(value: string): void
+    set_name(value: string): void
+    set_status(value: string): void
     stop(): void
-    webkit_message_handlers_post_message(handler: string | null, message: string | null): boolean
+    webkit_message_handlers_post_message(handler: string, message: string): boolean
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDOMWindow
 
@@ -2675,31 +2675,31 @@ export interface DOMDocument extends DOMEventTarget {
 
     adopt_node(source: DOMNode): DOMNode
     caret_range_from_point(x: number, y: number): DOMRange
-    create_attribute(name: string | null): DOMAttr
-    create_attribute_ns(namespaceURI: string | null, qualifiedName: string | null): DOMAttr
-    create_cdata_section(data: string | null): DOMCDATASection
-    create_comment(data: string | null): DOMComment
+    create_attribute(name: string): DOMAttr
+    create_attribute_ns(namespaceURI: string | null, qualifiedName: string): DOMAttr
+    create_cdata_section(data: string): DOMCDATASection
+    create_comment(data: string): DOMComment
     create_css_style_declaration(): DOMCSSStyleDeclaration
     create_document_fragment(): DOMDocumentFragment
-    create_element(tagName: string | null): DOMElement
-    create_element_ns(namespaceURI: string | null, qualifiedName: string | null): DOMElement
+    create_element(tagName: string): DOMElement
+    create_element_ns(namespaceURI: string | null, qualifiedName: string): DOMElement
     /**
      * This function has been removed from the DOM spec and it just returns %NULL.
      * @param name A #gchar
      * @returns A #WebKitDOMEntityReference
      */
     create_entity_reference(name: string | null): DOMEntityReference
-    create_event(eventType: string | null): DOMEvent
-    create_expression(expression: string | null, resolver: DOMXPathNSResolver): DOMXPathExpression
+    create_event(eventType: string): DOMEvent
+    create_expression(expression: string, resolver: DOMXPathNSResolver): DOMXPathExpression
     create_node_iterator(root: DOMNode, whatToShow: number, filter: DOMNodeFilter | null, expandEntityReferences: boolean): DOMNodeIterator
     create_ns_resolver(nodeResolver: DOMNode): DOMXPathNSResolver
-    create_processing_instruction(target: string | null, data: string | null): DOMProcessingInstruction
+    create_processing_instruction(target: string, data: string): DOMProcessingInstruction
     create_range(): DOMRange
-    create_text_node(data: string | null): DOMText
+    create_text_node(data: string): DOMText
     create_tree_walker(root: DOMNode, whatToShow: number, filter: DOMNodeFilter | null, expandEntityReferences: boolean): DOMTreeWalker
     element_from_point(x: number, y: number): DOMElement
-    evaluate(expression: string | null, contextNode: DOMNode, resolver: DOMXPathNSResolver | null, type: number, inResult: DOMXPathResult | null): DOMXPathResult
-    exec_command(command: string | null, userInterface: boolean, value: string | null): boolean
+    evaluate(expression: string, contextNode: DOMNode, resolver: DOMXPathNSResolver | null, type: number, inResult: DOMXPathResult | null): DOMXPathResult
+    exec_command(command: string, userInterface: boolean, value: string): boolean
     exit_pointer_lock(): void
     get_active_element(): DOMElement
     get_anchors(): DOMHTMLCollection
@@ -2721,14 +2721,14 @@ export interface DOMDocument extends DOMEventTarget {
     get_document_element(): DOMElement
     get_document_uri(): string | null
     get_domain(): string | null
-    get_element_by_id(elementId: string | null): DOMElement
-    get_elements_by_class_name(class_name: string | null): DOMNodeList
-    get_elements_by_class_name_as_html_collection(classNames: string | null): DOMHTMLCollection
-    get_elements_by_name(elementName: string | null): DOMNodeList
-    get_elements_by_tag_name(tag_name: string | null): DOMNodeList
-    get_elements_by_tag_name_as_html_collection(tagname: string | null): DOMHTMLCollection
-    get_elements_by_tag_name_ns(namespace_uri: string | null, tag_name: string | null): DOMNodeList
-    get_elements_by_tag_name_ns_as_html_collection(namespaceURI: string | null, localName: string | null): DOMHTMLCollection
+    get_element_by_id(elementId: string): DOMElement
+    get_elements_by_class_name(class_name: string): DOMNodeList
+    get_elements_by_class_name_as_html_collection(classNames: string): DOMHTMLCollection
+    get_elements_by_name(elementName: string): DOMNodeList
+    get_elements_by_tag_name(tag_name: string): DOMNodeList
+    get_elements_by_tag_name_as_html_collection(tagname: string): DOMHTMLCollection
+    get_elements_by_tag_name_ns(namespace_uri: string, tag_name: string): DOMNodeList
+    get_elements_by_tag_name_ns_as_html_collection(namespaceURI: string, localName: string): DOMHTMLCollection
     get_embeds(): DOMHTMLCollection
     get_first_element_child(): DOMElement
     get_forms(): DOMHTMLCollection
@@ -2772,27 +2772,27 @@ export interface DOMDocument extends DOMEventTarget {
     get_xml_version(): string | null
     has_focus(): boolean
     import_node(importedNode: DOMNode, deep: boolean): DOMNode
-    query_command_enabled(command: string | null): boolean
-    query_command_indeterm(command: string | null): boolean
-    query_command_state(command: string | null): boolean
-    query_command_supported(command: string | null): boolean
-    query_command_value(command: string | null): string | null
-    query_selector(selectors: string | null): DOMElement
-    query_selector_all(selectors: string | null): DOMNodeList
+    query_command_enabled(command: string): boolean
+    query_command_indeterm(command: string): boolean
+    query_command_state(command: string): boolean
+    query_command_supported(command: string): boolean
+    query_command_value(command: string): string | null
+    query_selector(selectors: string): DOMElement
+    query_selector_all(selectors: string): DOMNodeList
     set_body(value: DOMHTMLElement): void
-    set_charset(value: string | null): void
-    set_cookie(value: string | null): void
-    set_design_mode(value: string | null): void
-    set_dir(value: string | null): void
-    set_document_uri(value: string | null): void
+    set_charset(value: string): void
+    set_cookie(value: string): void
+    set_design_mode(value: string): void
+    set_dir(value: string): void
+    set_document_uri(value: string): void
     /**
      * This function has been removed and does nothing.
      * @param value A #gchar
      */
-    set_selected_stylesheet_set(value: string | null): void
-    set_title(value: string | null): void
+    set_selected_stylesheet_set(value: string): void
+    set_title(value: string): void
     set_xml_standalone(value: boolean): void
-    set_xml_version(value: string | null): void
+    set_xml_version(value: string): void
     webkit_cancel_fullscreen(): void
     webkit_exit_fullscreen(): void
 
@@ -3041,11 +3041,11 @@ export interface DOMDocumentFragment extends DOMEventTarget {
 
     get_child_element_count(): number
     get_children(): DOMHTMLCollection
-    get_element_by_id(elementId: string | null): DOMElement
+    get_element_by_id(elementId: string): DOMElement
     get_first_element_child(): DOMElement
     get_last_element_child(): DOMElement
-    query_selector(selectors: string | null): DOMElement
-    query_selector_all(selectors: string | null): DOMNodeList
+    query_selector(selectors: string): DOMElement
+    query_selector_all(selectors: string): DOMNodeList
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMDocumentFragment
 
@@ -3331,12 +3331,12 @@ export interface DOMElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMElement
 
     blur(): void
-    closest(selectors: string | null): DOMElement
+    closest(selectors: string): DOMElement
     focus(): void
-    get_attribute(name: string | null): string | null
-    get_attribute_node(name: string | null): DOMAttr
-    get_attribute_node_ns(namespaceURI: string | null, localName: string | null): DOMAttr
-    get_attribute_ns(namespaceURI: string | null, localName: string | null): string | null
+    get_attribute(name: string): string | null
+    get_attribute_node(name: string): DOMAttr
+    get_attribute_node_ns(namespaceURI: string, localName: string): DOMAttr
+    get_attribute_ns(namespaceURI: string, localName: string): string | null
     get_attributes(): DOMNamedNodeMap
     /**
      * Returns a #WebKitDOMClientRect representing the size and position of `self`
@@ -3358,12 +3358,12 @@ export interface DOMElement extends DOMEventTarget {
     get_client_rects(): DOMClientRectList
     get_client_top(): number
     get_client_width(): number
-    get_elements_by_class_name(class_name: string | null): DOMNodeList
-    get_elements_by_class_name_as_html_collection(name: string | null): DOMHTMLCollection
-    get_elements_by_tag_name(tag_name: string | null): DOMNodeList
-    get_elements_by_tag_name_as_html_collection(name: string | null): DOMHTMLCollection
-    get_elements_by_tag_name_ns(namespace_uri: string | null, tag_name: string | null): DOMNodeList
-    get_elements_by_tag_name_ns_as_html_collection(namespaceURI: string | null, localName: string | null): DOMHTMLCollection
+    get_elements_by_class_name(class_name: string): DOMNodeList
+    get_elements_by_class_name_as_html_collection(name: string): DOMHTMLCollection
+    get_elements_by_tag_name(tag_name: string): DOMNodeList
+    get_elements_by_tag_name_as_html_collection(name: string): DOMHTMLCollection
+    get_elements_by_tag_name_ns(namespace_uri: string, tag_name: string): DOMNodeList
+    get_elements_by_tag_name_ns_as_html_collection(namespaceURI: string, localName: string): DOMHTMLCollection
     get_first_element_child(): DOMElement
     get_id(): string | null
     get_inner_html(): string | null
@@ -3390,8 +3390,8 @@ export interface DOMElement extends DOMEventTarget {
      * @returns %NULL
      */
     get_webkit_region_overset(): string | null
-    has_attribute(name: string | null): boolean
-    has_attribute_ns(namespaceURI: string | null, localName: string | null): boolean
+    has_attribute(name: string): boolean
+    has_attribute_ns(namespaceURI: string, localName: string): boolean
     has_attributes(): boolean
     /**
      * Get whether the element is an HTML input element that has been filled automatically.
@@ -3415,33 +3415,33 @@ export interface DOMElement extends DOMEventTarget {
      * element this function does nothing.
      * @param value the text to set
      */
-    html_input_element_set_editing_value(value: string | null): void
-    insert_adjacent_element(where: string | null, element: DOMElement): DOMElement
-    insert_adjacent_html(where: string | null, html: string | null): void
-    insert_adjacent_text(where: string | null, text: string | null): void
-    matches(selectors: string | null): boolean
-    query_selector(selectors: string | null): DOMElement
-    query_selector_all(selectors: string | null): DOMNodeList
+    html_input_element_set_editing_value(value: string): void
+    insert_adjacent_element(where: string, element: DOMElement): DOMElement
+    insert_adjacent_html(where: string, html: string): void
+    insert_adjacent_text(where: string, text: string): void
+    matches(selectors: string): boolean
+    query_selector(selectors: string): DOMElement
+    query_selector_all(selectors: string): DOMNodeList
     remove(): void
-    remove_attribute(name: string | null): void
+    remove_attribute(name: string): void
     remove_attribute_node(oldAttr: DOMAttr): DOMAttr
-    remove_attribute_ns(namespaceURI: string | null, localName: string | null): void
+    remove_attribute_ns(namespaceURI: string, localName: string): void
     request_pointer_lock(): void
     scroll_by_lines(lines: number): void
     scroll_by_pages(pages: number): void
     scroll_into_view(alignWithTop: boolean): void
     scroll_into_view_if_needed(centerIfNeeded: boolean): void
-    set_attribute(name: string | null, value: string | null): void
+    set_attribute(name: string, value: string): void
     set_attribute_node(newAttr: DOMAttr): DOMAttr
     set_attribute_node_ns(newAttr: DOMAttr): DOMAttr
-    set_attribute_ns(namespaceURI: string | null, qualifiedName: string | null, value: string | null): void
-    set_class_name(value: string | null): void
-    set_id(value: string | null): void
-    set_inner_html(value: string | null): void
-    set_outer_html(value: string | null): void
+    set_attribute_ns(namespaceURI: string | null, qualifiedName: string, value: string): void
+    set_class_name(value: string): void
+    set_id(value: string): void
+    set_inner_html(value: string): void
+    set_outer_html(value: string): void
     set_scroll_left(value: number): void
     set_scroll_top(value: number): void
-    webkit_matches_selector(selectors: string | null): boolean
+    webkit_matches_selector(selectors: string): boolean
     webkit_request_fullscreen(): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMElement
@@ -3731,7 +3731,7 @@ export interface DOMEvent {
     get_src_element(): DOMEventTarget
     get_target(): DOMEventTarget
     get_time_stamp(): number
-    init_event(eventTypeArg: string | null, canBubbleArg: boolean, cancelableArg: boolean): void
+    init_event(eventTypeArg: string, canBubbleArg: boolean, cancelableArg: boolean): void
     prevent_default(): void
     set_cancel_bubble(value: boolean): void
     set_return_value(value: boolean): void
@@ -3972,24 +3972,24 @@ export interface DOMHTMLAnchorElement extends DOMEventTarget {
     get_target(): string | null
     get_text(): string | null
     get_type_attr(): string | null
-    set_charset(value: string | null): void
-    set_coords(value: string | null): void
-    set_hash(value: string | null): void
-    set_host(value: string | null): void
-    set_hostname(value: string | null): void
-    set_href(value: string | null): void
-    set_hreflang(value: string | null): void
-    set_name(value: string | null): void
-    set_pathname(value: string | null): void
-    set_port(value: string | null): void
-    set_protocol(value: string | null): void
-    set_rel(value: string | null): void
-    set_rev(value: string | null): void
-    set_search(value: string | null): void
-    set_shape(value: string | null): void
-    set_target(value: string | null): void
-    set_text(value: string | null): void
-    set_type_attr(value: string | null): void
+    set_charset(value: string): void
+    set_coords(value: string): void
+    set_hash(value: string): void
+    set_host(value: string): void
+    set_hostname(value: string): void
+    set_href(value: string): void
+    set_hreflang(value: string): void
+    set_name(value: string): void
+    set_pathname(value: string): void
+    set_port(value: string): void
+    set_protocol(value: string): void
+    set_rel(value: string): void
+    set_rev(value: string): void
+    set_search(value: string): void
+    set_shape(value: string): void
+    set_target(value: string): void
+    set_text(value: string): void
+    set_type_attr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLAnchorElement
 
@@ -4301,17 +4301,17 @@ export interface DOMHTMLAppletElement extends DOMEventTarget {
     get_object(): string | null
     get_vspace(): number
     get_width(): string | null
-    set_align(value: string | null): void
-    set_alt(value: string | null): void
-    set_archive(value: string | null): void
-    set_code(value: string | null): void
-    set_code_base(value: string | null): void
-    set_height(value: string | null): void
+    set_align(value: string): void
+    set_alt(value: string): void
+    set_archive(value: string): void
+    set_code(value: string): void
+    set_code_base(value: string): void
+    set_height(value: string): void
     set_hspace(value: number): void
-    set_name(value: string | null): void
-    set_object(value: string | null): void
+    set_name(value: string): void
+    set_object(value: string): void
     set_vspace(value: number): void
-    set_width(value: string | null): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLAppletElement
 
@@ -4608,19 +4608,19 @@ export interface DOMHTMLAreaElement extends DOMEventTarget {
     get_search(): string | null
     get_shape(): string | null
     get_target(): string | null
-    set_alt(value: string | null): void
-    set_coords(value: string | null): void
-    set_hash(value: string | null): void
-    set_host(value: string | null): void
-    set_hostname(value: string | null): void
-    set_href(value: string | null): void
+    set_alt(value: string): void
+    set_coords(value: string): void
+    set_hash(value: string): void
+    set_host(value: string): void
+    set_hostname(value: string): void
+    set_href(value: string): void
     set_no_href(value: boolean): void
-    set_pathname(value: string | null): void
-    set_port(value: string | null): void
-    set_protocol(value: string | null): void
-    set_search(value: string | null): void
-    set_shape(value: string | null): void
-    set_target(value: string | null): void
+    set_pathname(value: string): void
+    set_port(value: string): void
+    set_protocol(value: string): void
+    set_search(value: string): void
+    set_shape(value: string): void
+    set_target(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLAreaElement
 
@@ -4885,7 +4885,7 @@ export interface DOMHTMLBRElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLBRElement
 
     get_clear(): string | null
-    set_clear(value: string | null): void
+    set_clear(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLBRElement
 
@@ -5117,8 +5117,8 @@ export interface DOMHTMLBaseElement extends DOMEventTarget {
 
     get_href(): string | null
     get_target(): string | null
-    set_href(value: string | null): void
-    set_target(value: string | null): void
+    set_href(value: string): void
+    set_target(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLBaseElement
 
@@ -5360,12 +5360,12 @@ export interface DOMHTMLBaseFontElement extends DOMEventTarget {
      * This function has been removed from the DOM spec and it does nothing.
      * @param value A #gchar
      */
-    set_color(value: string | null): void
+    set_color(value: string): void
     /**
      * This function has been removed from the DOM spec and it does nothing.
      * @param value A #gchar
      */
-    set_face(value: string | null): void
+    set_face(value: string): void
     /**
      * This function has been removed from the DOM spec and it does nothing.
      * @param value A #glong
@@ -5617,12 +5617,12 @@ export interface DOMHTMLBodyElement extends DOMEventTarget {
     get_link(): string | null
     get_text(): string | null
     get_v_link(): string | null
-    set_a_link(value: string | null): void
-    set_background(value: string | null): void
-    set_bg_color(value: string | null): void
-    set_link(value: string | null): void
-    set_text(value: string | null): void
-    set_v_link(value: string | null): void
+    set_a_link(value: string): void
+    set_background(value: string): void
+    set_bg_color(value: string): void
+    set_link(value: string): void
+    set_text(value: string): void
+    set_v_link(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLBodyElement
 
@@ -5884,10 +5884,10 @@ export interface DOMHTMLButtonElement extends DOMEventTarget {
     get_value(): string | null
     get_will_validate(): boolean
     set_autofocus(value: boolean): void
-    set_button_type(value: string | null): void
+    set_button_type(value: string): void
     set_disabled(value: boolean): void
-    set_name(value: string | null): void
-    set_value(value: string | null): void
+    set_name(value: string): void
+    set_value(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLButtonElement
 
@@ -6367,7 +6367,7 @@ export interface DOMHTMLCollection {
 
     get_length(): number
     item(index: number): DOMNode
-    named_item(name: string | null): DOMNode
+    named_item(name: string): DOMNode
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLCollection
 
@@ -6880,7 +6880,7 @@ export interface DOMHTMLDivElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLDivElement
 
     get_align(): string | null
-    set_align(value: string | null): void
+    set_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLDivElement
 
@@ -7147,13 +7147,13 @@ export interface DOMHTMLDocument extends DOMEventTarget {
     get_vlink_color(): string | null
     get_width(): number
     release_events(): void
-    set_alink_color(value: string | null): void
-    set_bg_color(value: string | null): void
-    set_design_mode(value: string | null): void
-    set_dir(value: string | null): void
-    set_fg_color(value: string | null): void
-    set_link_color(value: string | null): void
-    set_vlink_color(value: string | null): void
+    set_alink_color(value: string): void
+    set_bg_color(value: string): void
+    set_design_mode(value: string): void
+    set_dir(value: string): void
+    set_fg_color(value: string): void
+    set_link_color(value: string): void
+    set_vlink_color(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLDocument
 
@@ -7471,21 +7471,21 @@ export interface DOMHTMLElement extends DOMEventTarget {
     get_title(): string | null
     get_translate(): boolean
     get_webkitdropzone(): string | null
-    set_access_key(value: string | null): void
-    set_content_editable(value: string | null): void
-    set_dir(value: string | null): void
+    set_access_key(value: string): void
+    set_content_editable(value: string): void
+    set_dir(value: string): void
     set_draggable(value: boolean): void
     set_hidden(value: boolean): void
-    set_inner_html(contents: string | null): void
-    set_inner_text(value: string | null): void
-    set_lang(value: string | null): void
-    set_outer_html(contents: string | null): void
-    set_outer_text(value: string | null): void
+    set_inner_html(contents: string): void
+    set_inner_text(value: string): void
+    set_lang(value: string): void
+    set_outer_html(contents: string): void
+    set_outer_text(value: string): void
     set_spellcheck(value: boolean): void
     set_tab_index(value: number): void
-    set_title(value: string | null): void
+    set_title(value: string): void
     set_translate(value: boolean): void
-    set_webkitdropzone(value: string | null): void
+    set_webkitdropzone(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLElement
 
@@ -7726,11 +7726,11 @@ export interface DOMHTMLEmbedElement extends DOMEventTarget {
     get_src(): string | null
     get_type_attr(): string | null
     get_width(): number
-    set_align(value: string | null): void
+    set_align(value: string): void
     set_height(value: number): void
-    set_name(value: string | null): void
-    set_src(value: string | null): void
-    set_type_attr(value: string | null): void
+    set_name(value: string): void
+    set_src(value: string): void
+    set_type_attr(value: string): void
     set_width(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLEmbedElement
@@ -8205,9 +8205,9 @@ export interface DOMHTMLFontElement extends DOMEventTarget {
     get_color(): string | null
     get_face(): string | null
     get_size(): string | null
-    set_color(value: string | null): void
-    set_face(value: string | null): void
-    set_size(value: string | null): void
+    set_color(value: string): void
+    set_face(value: string): void
+    set_size(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLFontElement
 
@@ -8467,13 +8467,13 @@ export interface DOMHTMLFormElement extends DOMEventTarget {
     get_name(): string | null
     get_target(): string | null
     reset(): void
-    set_accept_charset(value: string | null): void
-    set_action(value: string | null): void
-    set_encoding(value: string | null): void
-    set_enctype(value: string | null): void
-    set_method(value: string | null): void
-    set_name(value: string | null): void
-    set_target(value: string | null): void
+    set_accept_charset(value: string): void
+    set_action(value: string): void
+    set_encoding(value: string): void
+    set_enctype(value: string): void
+    set_method(value: string): void
+    set_name(value: string): void
+    set_target(value: string): void
     submit(): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLFormElement
@@ -8768,14 +8768,14 @@ export interface DOMHTMLFrameElement extends DOMEventTarget {
     get_scrolling(): string | null
     get_src(): string | null
     get_width(): number
-    set_frame_border(value: string | null): void
-    set_long_desc(value: string | null): void
-    set_margin_height(value: string | null): void
-    set_margin_width(value: string | null): void
-    set_name(value: string | null): void
+    set_frame_border(value: string): void
+    set_long_desc(value: string): void
+    set_margin_height(value: string): void
+    set_margin_width(value: string): void
+    set_name(value: string): void
     set_no_resize(value: boolean): void
-    set_scrolling(value: string | null): void
-    set_src(value: string | null): void
+    set_scrolling(value: string): void
+    set_src(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLFrameElement
 
@@ -9040,8 +9040,8 @@ export interface DOMHTMLFrameSetElement extends DOMEventTarget {
 
     get_cols(): string | null
     get_rows(): string | null
-    set_cols(value: string | null): void
-    set_rows(value: string | null): void
+    set_cols(value: string): void
+    set_rows(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLFrameSetElement
 
@@ -9284,10 +9284,10 @@ export interface DOMHTMLHRElement extends DOMEventTarget {
     get_no_shade(): boolean
     get_size(): string | null
     get_width(): string | null
-    set_align(value: string | null): void
+    set_align(value: string): void
     set_no_shade(value: boolean): void
-    set_size(value: string | null): void
-    set_width(value: string | null): void
+    set_size(value: string): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHRElement
 
@@ -9525,7 +9525,7 @@ export interface DOMHTMLHeadElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHeadElement
 
     get_profile(): string | null
-    set_profile(value: string | null): void
+    set_profile(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHeadElement
 
@@ -9754,7 +9754,7 @@ export interface DOMHTMLHeadingElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHeadingElement
 
     get_align(): string | null
-    set_align(value: string | null): void
+    set_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHeadingElement
 
@@ -9983,7 +9983,7 @@ export interface DOMHTMLHtmlElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHtmlElement
 
     get_version(): string | null
-    set_version(value: string | null): void
+    set_version(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLHtmlElement
 
@@ -10253,16 +10253,16 @@ export interface DOMHTMLIFrameElement extends DOMEventTarget {
     get_scrolling(): string | null
     get_src(): string | null
     get_width(): string | null
-    set_align(value: string | null): void
-    set_frame_border(value: string | null): void
-    set_height(value: string | null): void
-    set_long_desc(value: string | null): void
-    set_margin_height(value: string | null): void
-    set_margin_width(value: string | null): void
-    set_name(value: string | null): void
-    set_scrolling(value: string | null): void
-    set_src(value: string | null): void
-    set_width(value: string | null): void
+    set_align(value: string): void
+    set_frame_border(value: string): void
+    set_height(value: string): void
+    set_long_desc(value: string): void
+    set_margin_height(value: string): void
+    set_margin_width(value: string): void
+    set_name(value: string): void
+    set_scrolling(value: string): void
+    set_src(value: string): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLIFrameElement
 
@@ -10578,17 +10578,17 @@ export interface DOMHTMLImageElement extends DOMEventTarget {
     get_width(): number
     get_x(): number
     get_y(): number
-    set_align(value: string | null): void
-    set_alt(value: string | null): void
-    set_border(value: string | null): void
+    set_align(value: string): void
+    set_alt(value: string): void
+    set_border(value: string): void
     set_height(value: number): void
     set_hspace(value: number): void
     set_is_map(value: boolean): void
-    set_long_desc(value: string | null): void
-    set_lowsrc(value: string | null): void
-    set_name(value: string | null): void
-    set_src(value: string | null): void
-    set_use_map(value: string | null): void
+    set_long_desc(value: string): void
+    set_lowsrc(value: string): void
+    set_name(value: string): void
+    set_src(value: string): void
+    set_use_map(value: string): void
     set_vspace(value: number): void
     set_width(value: number): void
 
@@ -10951,29 +10951,29 @@ export interface DOMHTMLInputElement extends DOMEventTarget {
     get_will_validate(): boolean
     is_edited(): boolean
     select(): void
-    set_accept(value: string | null): void
-    set_align(value: string | null): void
-    set_alt(value: string | null): void
+    set_accept(value: string): void
+    set_align(value: string): void
+    set_alt(value: string): void
     set_auto_filled(value: boolean): void
     set_autofocus(value: boolean): void
-    set_capture_type(value: string | null): void
+    set_capture_type(value: string): void
     set_checked(value: boolean): void
     set_default_checked(value: boolean): void
-    set_default_value(value: string | null): void
+    set_default_value(value: string): void
     set_disabled(value: boolean): void
-    set_editing_value(value: string | null): void
+    set_editing_value(value: string): void
     set_files(value: DOMFileList): void
     set_height(value: number): void
     set_indeterminate(value: boolean): void
-    set_input_type(value: string | null): void
+    set_input_type(value: string): void
     set_max_length(value: number): void
     set_multiple(value: boolean): void
-    set_name(value: string | null): void
+    set_name(value: string): void
     set_read_only(value: boolean): void
     set_size(value: number): void
-    set_src(value: string | null): void
-    set_use_map(value: string | null): void
-    set_value(value: string | null): void
+    set_src(value: string): void
+    set_use_map(value: string): void
+    set_value(value: string): void
     set_width(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLInputElement
@@ -11275,7 +11275,7 @@ export interface DOMHTMLLIElement extends DOMEventTarget {
 
     get_type_attr(): string | null
     get_value(): number
-    set_type_attr(value: string | null): void
+    set_type_attr(value: string): void
     set_value(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLLIElement
@@ -11512,7 +11512,7 @@ export interface DOMHTMLLabelElement extends DOMEventTarget {
 
     get_form(): DOMHTMLFormElement
     get_html_for(): string | null
-    set_html_for(value: string | null): void
+    set_html_for(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLLabelElement
 
@@ -11746,7 +11746,7 @@ export interface DOMHTMLLegendElement extends DOMEventTarget {
 
     get_align(): string | null
     get_form(): DOMHTMLFormElement
-    set_align(value: string | null): void
+    set_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLLegendElement
 
@@ -12006,16 +12006,16 @@ export interface DOMHTMLLinkElement extends DOMEventTarget {
     get_sizes(): DOMDOMTokenList
     get_target(): string | null
     get_type_attr(): string | null
-    set_charset(value: string | null): void
+    set_charset(value: string): void
     set_disabled(value: boolean): void
-    set_href(value: string | null): void
-    set_hreflang(value: string | null): void
-    set_media(value: string | null): void
-    set_rel(value: string | null): void
-    set_rev(value: string | null): void
-    set_sizes(value: string | null): void
-    set_target(value: string | null): void
-    set_type_attr(value: string | null): void
+    set_href(value: string): void
+    set_hreflang(value: string): void
+    set_media(value: string): void
+    set_rel(value: string): void
+    set_rev(value: string): void
+    set_sizes(value: string): void
+    set_target(value: string): void
+    set_type_attr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLLinkElement
 
@@ -12276,7 +12276,7 @@ export interface DOMHTMLMapElement extends DOMEventTarget {
 
     get_areas(): DOMHTMLCollection
     get_name(): string | null
-    set_name(value: string | null): void
+    set_name(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLMapElement
 
@@ -12966,10 +12966,10 @@ export interface DOMHTMLMetaElement extends DOMEventTarget {
     get_http_equiv(): string | null
     get_name(): string | null
     get_scheme(): string | null
-    set_content(value: string | null): void
-    set_http_equiv(value: string | null): void
-    set_name(value: string | null): void
-    set_scheme(value: string | null): void
+    set_content(value: string): void
+    set_http_equiv(value: string): void
+    set_name(value: string): void
+    set_scheme(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLMetaElement
 
@@ -13212,8 +13212,8 @@ export interface DOMHTMLModElement extends DOMEventTarget {
 
     get_cite(): string | null
     get_date_time(): string | null
-    set_cite(value: string | null): void
-    set_date_time(value: string | null): void
+    set_cite(value: string): void
+    set_date_time(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLModElement
 
@@ -13453,7 +13453,7 @@ export interface DOMHTMLOListElement extends DOMEventTarget {
     get_type_attr(): string | null
     set_compact(value: boolean): void
     set_start(value: number): void
-    set_type_attr(value: string | null): void
+    set_type_attr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLOListElement
 
@@ -13742,7 +13742,7 @@ export interface DOMHTMLObjectElement extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     get_declare(): boolean
     get_form(): DOMHTMLFormElement
     get_height(): string | null
@@ -13753,13 +13753,13 @@ export interface DOMHTMLObjectElement extends DOMEventTarget {
     get_use_map(): string | null
     get_vspace(): number
     get_width(): string | null
-    set_align(value: string | null): void
-    set_archive(value: string | null): void
-    set_border(value: string | null): void
-    set_code(value: string | null): void
-    set_code_base(value: string | null): void
-    set_code_type(value: string | null): void
-    set_data(value: string | null): void
+    set_align(value: string): void
+    set_archive(value: string): void
+    set_border(value: string): void
+    set_code(value: string): void
+    set_code_base(value: string): void
+    set_code_type(value: string): void
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -13777,16 +13777,16 @@ export interface DOMHTMLObjectElement extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     set_declare(value: boolean): void
-    set_height(value: string | null): void
+    set_height(value: string): void
     set_hspace(value: number): void
-    set_name(value: string | null): void
-    set_standby(value: string | null): void
-    set_type_attr(value: string | null): void
-    set_use_map(value: string | null): void
+    set_name(value: string): void
+    set_standby(value: string): void
+    set_type_attr(value: string): void
+    set_use_map(value: string): void
     set_vspace(value: number): void
-    set_width(value: string | null): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLObjectElement
 
@@ -14070,7 +14070,7 @@ export interface DOMHTMLOptGroupElement extends DOMEventTarget {
     get_disabled(): boolean
     get_label(): string | null
     set_disabled(value: boolean): void
-    set_label(value: string | null): void
+    set_label(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLOptGroupElement
 
@@ -14324,9 +14324,9 @@ export interface DOMHTMLOptionElement extends DOMEventTarget {
     get_value(): string | null
     set_default_selected(value: boolean): void
     set_disabled(value: boolean): void
-    set_label(value: string | null): void
+    set_label(value: string): void
     set_selected(value: boolean): void
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLOptionElement
 
@@ -14580,7 +14580,7 @@ export interface DOMHTMLOptionsCollection {
 
     get_length(): number
     get_selected_index(): number
-    named_item(name: string | null): DOMNode
+    named_item(name: string): DOMNode
     set_selected_index(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLOptionsCollection
@@ -14639,7 +14639,7 @@ export interface DOMHTMLParagraphElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLParagraphElement
 
     get_align(): string | null
-    set_align(value: string | null): void
+    set_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLParagraphElement
 
@@ -14879,10 +14879,10 @@ export interface DOMHTMLParamElement extends DOMEventTarget {
     get_type_attr(): string | null
     get_value(): string | null
     get_value_type(): string | null
-    set_name(value: string | null): void
-    set_type_attr(value: string | null): void
-    set_value(value: string | null): void
-    set_value_type(value: string | null): void
+    set_name(value: string): void
+    set_type_attr(value: string): void
+    set_value(value: string): void
+    set_value_type(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLParamElement
 
@@ -15356,7 +15356,7 @@ export interface DOMHTMLQuoteElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLQuoteElement
 
     get_cite(): string | null
-    set_cite(value: string | null): void
+    set_cite(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLQuoteElement
 
@@ -15605,13 +15605,13 @@ export interface DOMHTMLScriptElement extends DOMEventTarget {
     get_src(): string | null
     get_text(): string | null
     get_type_attr(): string | null
-    set_charset(value: string | null): void
+    set_charset(value: string): void
     set_defer(value: boolean): void
-    set_event(value: string | null): void
-    set_html_for(value: string | null): void
-    set_src(value: string | null): void
-    set_text(value: string | null): void
-    set_type_attr(value: string | null): void
+    set_event(value: string): void
+    set_html_for(value: string): void
+    set_src(value: string): void
+    set_text(value: string): void
+    set_type_attr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLScriptElement
 
@@ -15892,7 +15892,7 @@ export interface DOMHTMLSelectElement extends DOMEventTarget {
     get_value(): string | null
     get_will_validate(): boolean
     item(index: number): DOMNode
-    named_item(name: string | null): DOMNode
+    named_item(name: string): DOMNode
     remove(index: number): void
 
     // Overloads of remove
@@ -15902,10 +15902,10 @@ export interface DOMHTMLSelectElement extends DOMEventTarget {
     set_disabled(value: boolean): void
     set_length(value: number): void
     set_multiple(value: boolean): void
-    set_name(value: string | null): void
+    set_name(value: string): void
     set_selected_index(value: number): void
     set_size(value: number): void
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLSelectElement
 
@@ -16176,8 +16176,8 @@ export interface DOMHTMLStyleElement extends DOMEventTarget {
     get_sheet(): DOMStyleSheet
     get_type_attr(): string | null
     set_disabled(value: boolean): void
-    set_media(value: string | null): void
-    set_type_attr(value: string | null): void
+    set_media(value: string): void
+    set_type_attr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLStyleElement
 
@@ -16415,7 +16415,7 @@ export interface DOMHTMLTableCaptionElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableCaptionElement
 
     get_align(): string | null
-    set_align(value: string | null): void
+    set_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableCaptionElement
 
@@ -16698,20 +16698,20 @@ export interface DOMHTMLTableCellElement extends DOMEventTarget {
     get_scope(): string | null
     get_v_align(): string | null
     get_width(): string | null
-    set_abbr(value: string | null): void
-    set_align(value: string | null): void
-    set_axis(value: string | null): void
-    set_bg_color(value: string | null): void
-    set_ch(value: string | null): void
-    set_ch_off(value: string | null): void
+    set_abbr(value: string): void
+    set_align(value: string): void
+    set_axis(value: string): void
+    set_bg_color(value: string): void
+    set_ch(value: string): void
+    set_ch_off(value: string): void
     set_col_span(value: number): void
-    set_headers(value: string | null): void
-    set_height(value: string | null): void
+    set_headers(value: string): void
+    set_height(value: string): void
     set_no_wrap(value: boolean): void
     set_row_span(value: number): void
-    set_scope(value: string | null): void
-    set_v_align(value: string | null): void
-    set_width(value: string | null): void
+    set_scope(value: string): void
+    set_v_align(value: string): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableCellElement
 
@@ -17001,12 +17001,12 @@ export interface DOMHTMLTableColElement extends DOMEventTarget {
     get_span(): number
     get_v_align(): string | null
     get_width(): string | null
-    set_align(value: string | null): void
-    set_ch(value: string | null): void
-    set_ch_off(value: string | null): void
+    set_align(value: string): void
+    set_ch(value: string): void
+    set_ch_off(value: string): void
     set_span(value: number): void
-    set_v_align(value: string | null): void
-    set_width(value: string | null): void
+    set_v_align(value: string): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableColElement
 
@@ -17298,17 +17298,17 @@ export interface DOMHTMLTableElement extends DOMEventTarget {
     get_t_head(): DOMHTMLTableSectionElement
     get_width(): string | null
     insert_row(index: number): DOMHTMLElement
-    set_align(value: string | null): void
-    set_bg_color(value: string | null): void
-    set_border(value: string | null): void
+    set_align(value: string): void
+    set_bg_color(value: string): void
+    set_border(value: string): void
     set_caption(value: DOMHTMLTableCaptionElement): void
-    set_cell_padding(value: string | null): void
-    set_cell_spacing(value: string | null): void
-    set_rules(value: string | null): void
-    set_summary(value: string | null): void
+    set_cell_padding(value: string): void
+    set_cell_spacing(value: string): void
+    set_rules(value: string): void
+    set_summary(value: string): void
     set_t_foot(value: DOMHTMLTableSectionElement): void
     set_t_head(value: DOMHTMLTableSectionElement): void
-    set_width(value: string | null): void
+    set_width(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableElement
 
@@ -17601,11 +17601,11 @@ export interface DOMHTMLTableRowElement extends DOMEventTarget {
     get_section_row_index(): number
     get_v_align(): string | null
     insert_cell(index: number): DOMHTMLElement
-    set_align(value: string | null): void
-    set_bg_color(value: string | null): void
-    set_ch(value: string | null): void
-    set_ch_off(value: string | null): void
-    set_v_align(value: string | null): void
+    set_align(value: string): void
+    set_bg_color(value: string): void
+    set_ch(value: string): void
+    set_ch_off(value: string): void
+    set_v_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableRowElement
 
@@ -17872,10 +17872,10 @@ export interface DOMHTMLTableSectionElement extends DOMEventTarget {
     get_rows(): DOMHTMLCollection
     get_v_align(): string | null
     insert_row(index: number): DOMHTMLElement
-    set_align(value: string | null): void
-    set_ch(value: string | null): void
-    set_ch_off(value: string | null): void
-    set_v_align(value: string | null): void
+    set_align(value: string): void
+    set_ch(value: string): void
+    set_ch_off(value: string): void
+    set_v_align(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTableSectionElement
 
@@ -18162,15 +18162,15 @@ export interface DOMHTMLTextAreaElement extends DOMEventTarget {
     select(): void
     set_autofocus(value: boolean): void
     set_cols(value: number): void
-    set_default_value(value: string | null): void
+    set_default_value(value: string): void
     set_disabled(value: boolean): void
-    set_name(value: string | null): void
+    set_name(value: string): void
     set_read_only(value: boolean): void
     set_rows(value: number): void
     set_selection_end(value: number): void
-    set_selection_range(start: number, end: number, direction: string | null): void
+    set_selection_range(start: number, end: number, direction: string): void
     set_selection_start(value: number): void
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTextAreaElement
 
@@ -18435,7 +18435,7 @@ export interface DOMHTMLTitleElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTitleElement
 
     get_text(): string | null
-    set_text(value: string | null): void
+    set_text(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLTitleElement
 
@@ -18668,7 +18668,7 @@ export interface DOMHTMLUListElement extends DOMEventTarget {
     get_compact(): boolean
     get_type_attr(): string | null
     set_compact(value: boolean): void
-    set_type_attr(value: string | null): void
+    set_type_attr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMHTMLUListElement
 
@@ -18914,9 +18914,9 @@ export interface DOMKeyboardEvent {
     get_key_identifier(): string | null
     get_key_location(): number
     get_meta_key(): boolean
-    get_modifier_state(keyIdentifierArg: string | null): boolean
+    get_modifier_state(keyIdentifierArg: string): boolean
     get_shift_key(): boolean
-    init_keyboard_event(type: string | null, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string | null, location: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean): void
+    init_keyboard_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string, location: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMKeyboardEvent
 
@@ -19045,12 +19045,12 @@ export interface DOMMediaList {
 
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMMediaList
 
-    append_medium(newMedium: string | null): void
-    delete_medium(oldMedium: string | null): void
+    append_medium(newMedium: string): void
+    delete_medium(oldMedium: string): void
     get_length(): number
     get_media_text(): string | null
     item(index: number): string | null
-    set_media_text(value: string | null): void
+    set_media_text(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMMediaList
 
@@ -19147,7 +19147,7 @@ export interface DOMMouseEvent {
     get_to_element(): DOMNode
     get_x(): number
     get_y(): number
-    init_mouse_event(type: string | null, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number, screenX: number, screenY: number, clientX: number, clientY: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: DOMEventTarget): void
+    init_mouse_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number, screenX: number, screenY: number, clientX: number, clientY: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: DOMEventTarget): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMMouseEvent
 
@@ -19297,11 +19297,11 @@ export interface DOMNamedNodeMap {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMNamedNodeMap
 
     get_length(): number
-    get_named_item(name: string | null): DOMNode
-    get_named_item_ns(namespaceURI: string | null, localName: string | null): DOMNode
+    get_named_item(name: string): DOMNode
+    get_named_item_ns(namespaceURI: string, localName: string): DOMNode
     item(index: number): DOMNode
-    remove_named_item(name: string | null): DOMNode
-    remove_named_item_ns(namespaceURI: string | null, localName: string | null): DOMNode
+    remove_named_item(name: string): DOMNode
+    remove_named_item_ns(namespaceURI: string, localName: string): DOMNode
     set_named_item(node: DOMNode): DOMNode
     set_named_item_ns(node: DOMNode): DOMNode
 
@@ -19408,18 +19408,18 @@ export interface DOMNode extends DOMEventTarget {
     get_text_content(): string | null
     has_child_nodes(): boolean
     insert_before(newChild: DOMNode, refChild: DOMNode | null): DOMNode
-    is_default_namespace(namespaceURI: string | null): boolean
+    is_default_namespace(namespaceURI: string): boolean
     is_equal_node(other: DOMNode): boolean
     is_same_node(other: DOMNode): boolean
-    is_supported(feature: string | null, version: string | null): boolean
-    lookup_namespace_uri(prefix: string | null): string | null
-    lookup_prefix(namespaceURI: string | null): string | null
+    is_supported(feature: string, version: string): boolean
+    lookup_namespace_uri(prefix: string): string | null
+    lookup_prefix(namespaceURI: string): string | null
     normalize(): void
     remove_child(oldChild: DOMNode): DOMNode
     replace_child(newChild: DOMNode, oldChild: DOMNode): DOMNode
-    set_node_value(value: string | null): void
-    set_prefix(value: string | null): void
-    set_text_content(value: string | null): void
+    set_node_value(value: string): void
+    set_prefix(value: string): void
+    set_text_content(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMNode
 
@@ -19707,14 +19707,14 @@ export interface DOMProcessingInstruction extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -19732,7 +19732,7 @@ export interface DOMProcessingInstruction extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -19747,7 +19747,7 @@ export interface DOMProcessingInstruction extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMProcessingInstruction
 
@@ -19862,10 +19862,10 @@ export interface DOMRange {
     compare_boundary_points(how: number, sourceRange: DOMRange): number
     compare_node(refNode: DOMNode): number
     compare_point(refNode: DOMNode, offset: number): number
-    create_contextual_fragment(html: string | null): DOMDocumentFragment
+    create_contextual_fragment(html: string): DOMDocumentFragment
     delete_contents(): void
     detach(): void
-    expand(unit: string | null): void
+    expand(unit: string): void
     extract_contents(): DOMDocumentFragment
     get_collapsed(): boolean
     get_common_ancestor_container(): DOMNode
@@ -20094,7 +20094,7 @@ export interface DOMText extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMText
 
     get_whole_text(): string | null
-    replace_whole_text(content: string | null): DOMText
+    replace_whole_text(content: string): DOMText
     split_text(offset: number): DOMText
 
     // Conflicting methods
@@ -20108,14 +20108,14 @@ export interface DOMText extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -20133,7 +20133,7 @@ export interface DOMText extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -20148,7 +20148,7 @@ export interface DOMText extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMText
 
@@ -20344,7 +20344,7 @@ export interface DOMUIEvent {
     get_page_x(): number
     get_page_y(): number
     get_view(): DOMDOMWindow
-    init_ui_event(type: string | null, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number): void
+    init_ui_event(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMUIEvent
 
@@ -20778,7 +20778,7 @@ export interface Frame {
      * Gets the current active URI of `frame`.
      * @returns the current active URI of @frame or %NULL if nothing has been    loaded yet.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Gets whether `frame` is the main frame of a #WebKitWebPage
      * @returns %TRUE if @frame is a main frame or %FALSE otherwise
@@ -20992,27 +20992,27 @@ export interface HitTestResult {
      * Gets the value of the #WebKitHitTestResult:image-uri property.
      * @returns the URI of the image element in the coordinates of the Hit Test,    or %NULL if there isn't an image element in @hit_test_result context
      */
-    get_image_uri(): string | null
+    get_image_uri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-label property.
      * @returns the label of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a label
      */
-    get_link_label(): string | null
+    get_link_label(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-title property.
      * @returns the title of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a title
      */
-    get_link_title(): string | null
+    get_link_title(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-uri property.
      * @returns the URI of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context
      */
-    get_link_uri(): string | null
+    get_link_uri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:media-uri property.
      * @returns the URI of the media element in the coordinates of the Hit Test,    or %NULL if there isn't a media element in @hit_test_result context
      */
-    get_media_uri(): string | null
+    get_media_uri(): string
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.HitTestResult
 
@@ -21108,7 +21108,7 @@ export interface ScriptWorld {
      * Get the name of a #WebKitScriptWorld.
      * @returns the name of @world
      */
-    get_name(): string | null
+    get_name(): string
 
     // Own signals of WebKit2WebExtension-4.0.WebKit2WebExtension.ScriptWorld
 
@@ -21170,7 +21170,7 @@ export class ScriptWorld extends GObject.Object {
      * @param name a name for the script world
      * @returns a new isolated #WebKitScriptWorld
      */
-    static new_with_name(name: string | null): ScriptWorld
+    static new_with_name(name: string): ScriptWorld
     _init(config?: ScriptWorld.ConstructorProperties): void
     /**
      * Get the default #WebKitScriptWorld. This is the normal script world
@@ -21223,17 +21223,17 @@ export interface URIRequest {
      * Get the HTTP method of the #WebKitURIRequest.
      * @returns the HTTP method of the #WebKitURIRequest or %NULL if @request is not    an HTTP request.
      */
-    get_http_method(): string | null
+    get_http_method(): string
     /**
      * Obtains the request URI.
      * @returns request URI, as a string.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Set the URI of `request`
      * @param uri an URI
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.URIRequest
 
@@ -21270,14 +21270,14 @@ export class URIRequest extends GObject.Object {
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    constructor(uri: string | null) 
+    constructor(uri: string) 
     /**
      * Creates a new #WebKitURIRequest for the given URI.
      * @constructor 
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    static new(uri: string | null): URIRequest
+    static new(uri: string): URIRequest
     _init(config?: URIRequest.ConstructorProperties): void
 }
 
@@ -21362,7 +21362,7 @@ export interface URIResponse {
      * Gets the MIME type of the response.
      * @returns MIME type, as a string.
      */
-    get_mime_type(): string | null
+    get_mime_type(): string
     /**
      * Get the status code of the #WebKitURIResponse.
      * 
@@ -21381,12 +21381,12 @@ export interface URIResponse {
      * present.
      * @returns the suggested filename or %NULL if    the 'Content-Disposition' HTTP header is not present.
      */
-    get_suggested_filename(): string | null
+    get_suggested_filename(): string
     /**
      * Gets the URI which resulted in the response.
      * @returns response URI, as a string.
      */
-    get_uri(): string | null
+    get_uri(): string
 
     // Class property signals of WebKit2WebExtension-4.0.WebKit2WebExtension.URIResponse
 
@@ -21504,7 +21504,7 @@ export interface UserMessage {
      * Get the `message` name.
      * @returns the message name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the `message` parameters.
      * @returns the message parameters
@@ -21565,7 +21565,7 @@ export class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    constructor(name: string | null, parameters: GLib.Variant | null) 
+    constructor(name: string, parameters: GLib.Variant | null) 
     /**
      * Create a new #WebKitUserMessage with `name`.
      * @constructor 
@@ -21573,7 +21573,7 @@ export class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    static new(name: string | null, parameters: GLib.Variant | null): UserMessage
+    static new(name: string, parameters: GLib.Variant | null): UserMessage
     /**
      * Create a new #WebKitUserMessage including also a list of UNIX file descriptors to be sent.
      * @constructor 
@@ -21582,7 +21582,7 @@ export class UserMessage extends GObject.InitiallyUnowned {
      * @param fd_list the message file descriptors
      * @returns the newly created #WebKitUserMessage object.
      */
-    static new_with_fd_list(name: string | null, parameters: GLib.Variant | null, fd_list: Gio.UnixFDList | null): UserMessage
+    static new_with_fd_list(name: string, parameters: GLib.Variant | null, fd_list: Gio.UnixFDList | null): UserMessage
     _init(config?: UserMessage.ConstructorProperties): void
     /**
      * Gets the quark for the domain of user message errors.
@@ -21904,7 +21904,7 @@ export class WebFormManager extends GObject.Object {
      * @param element a #JSCValue
      * @param value the text to set
      */
-    static input_element_auto_fill(element: JavaScriptCore.Value, value: string | null): void
+    static input_element_auto_fill(element: JavaScriptCore.Value, value: string): void
     /**
      * Get whether `element` is an HTML input element that has been filled automatically.
      * @param element a #JSCValue
@@ -22129,7 +22129,7 @@ export interface WebPage {
      * signal of `web_page`.
      * @returns the current active URI of @web_view or %NULL if nothing has been    loaded yet.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
      * 
@@ -22235,12 +22235,12 @@ export interface ConsoleMessage {
      * Gets the source identifier of a #WebKitConsoleMessage
      * @returns the source identifier of @console_message
      */
-    get_source_id(): string | null
+    get_source_id(): string
     /**
      * Gets the text message of a #WebKitConsoleMessage
      * @returns the text message of @console_message
      */
-    get_text(): string | null
+    get_text(): string
 }
 
 export class ConsoleMessage {
@@ -22612,8 +22612,8 @@ export interface DOMEventTargetIface {
 
     gIface: GObject.TypeInterface
     dispatch_event: (target: DOMEventTarget, event: DOMEvent) => boolean
-    add_event_listener: (target: DOMEventTarget, event_name: string | null, handler: GObject.TClosure, use_capture: boolean) => boolean
-    remove_event_listener: (target: DOMEventTarget, event_name: string | null, handler: GObject.TClosure, use_capture: boolean) => boolean
+    add_event_listener: (target: DOMEventTarget, event_name: string, handler: GObject.TClosure, use_capture: boolean) => boolean
+    remove_event_listener: (target: DOMEventTarget, event_name: string, handler: GObject.TClosure, use_capture: boolean) => boolean
 }
 
 export abstract class DOMEventTargetIface {
@@ -23721,7 +23721,7 @@ export interface DOMXPathNSResolverIface {
     // Own fields of WebKit2WebExtension-4.0.WebKit2WebExtension.DOMXPathNSResolverIface
 
     gIface: GObject.TypeInterface
-    lookup_namespace_uri: (resolver: DOMXPathNSResolver, prefix: string | null) => string | null
+    lookup_namespace_uri: (resolver: DOMXPathNSResolver, prefix: string) => string | null
 }
 
 export abstract class DOMXPathNSResolverIface {

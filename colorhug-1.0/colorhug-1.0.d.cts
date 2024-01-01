@@ -1256,19 +1256,19 @@ export const CMD_WRITE_FLASH: number
  * ColorHugALS    |      ×       |      ×
  */
 export const CMD_WRITE_SRAM: number
-export const DEVICE_GUID_COLORHUG: string | null
-export const DEVICE_GUID_COLORHUG2: string | null
-export const DEVICE_GUID_COLORHUG_ALS: string | null
-export const DEVICE_GUID_COLORHUG_PLUS: string | null
+export const DEVICE_GUID_COLORHUG: string
+export const DEVICE_GUID_COLORHUG2: string
+export const DEVICE_GUID_COLORHUG_ALS: string
+export const DEVICE_GUID_COLORHUG_PLUS: string
 export const DEVICE_USB_TIMEOUT: number
 export const EEPROM_ADDR_RUNCODE: number
 export const EEPROM_ADDR_RUNCODE_ALS: number
 export const EP0_TRANSFER_SIZE: number
 export const EP0_TRANSFER_SIZE_V2: number
-export const FIRMWARE_ID_TOKEN1: string | null
-export const FIRMWARE_ID_TOKEN2: string | null
-export const FIRMWARE_ID_TOKEN_ALS: string | null
-export const FIRMWARE_ID_TOKEN_PLUS: string | null
+export const FIRMWARE_ID_TOKEN1: string
+export const FIRMWARE_ID_TOKEN2: string
+export const FIRMWARE_ID_TOKEN_ALS: string
+export const FIRMWARE_ID_TOKEN_PLUS: string
 export const FLASH_ERASE_BLOCK_SIZE: number
 export const FLASH_RECONNECT_TIMEOUT: number
 export const FLASH_TRANSFER_BLOCK_SIZE: number
@@ -1297,9 +1297,9 @@ export const USB_PID_FIRMWARE_PLUS: number
 export const USB_PID_LEGACY: number
 export const USB_VID: number
 export const USB_VID_LEGACY: number
-export const WRITE_EEPROM_MAGIC: string | null
-export function color_select_to_string(color_select: ColorSelect): string | null
-export function command_to_string(cmd: Cmd): string | null
+export const WRITE_EEPROM_MAGIC: string
+export function color_select_to_string(color_select: ColorSelect): string
+export function command_to_string(cmd: Cmd): string
 /**
  * Checks the firmware is suitable for the ColorHug device that is attached.
  * @param device 
@@ -1347,7 +1347,7 @@ export function device_get_error(device: GUsb.Device, cancellable: Gio.Cancellab
  * @param device A #GUsbDevice
  * @returns the GUID address, or %NULL for error
  */
-export function device_get_guid(device: GUsb.Device): string | null
+export function device_get_guid(device: GUsb.Device): string
 /**
  * Gets the illuminants from the device.
  * @param device A #GUsbDevice
@@ -1431,7 +1431,7 @@ export function device_load_sram(device: GUsb.Device, cancellable: Gio.Cancellab
  * @returns A #ChDeviceMode
  */
 export function device_mode_from_firmware(data: number, data_len: number): DeviceMode
-export function device_mode_to_string(device_mode: DeviceMode): string | null
+export function device_mode_to_string(device_mode: DeviceMode): string
 export function device_open(device: GUsb.Device): boolean
 /**
  * Opens the device ready for use.
@@ -1607,16 +1607,16 @@ export function device_write_command_finish(device: GUsb.Device, res: Gio.AsyncR
  * @returns %TRUE for success
  */
 export function device_write_sram(device: GUsb.Device, addr: number, data: GLib.Bytes, cancellable: Gio.Cancellable | null): boolean
-export function measure_mode_to_string(measure_mode: MeasureMode): string | null
-export function multiplier_to_string(multiplier: FreqScale): string | null
+export function measure_mode_to_string(measure_mode: MeasureMode): string
+export function multiplier_to_string(multiplier: FreqScale): string
 /**
  * Parses a SHA1 hash from a string value.
  * @param value A string representation of the SHA1 hash
  * @param sha1 A %ChSha1
  * @returns %TRUE for success
  */
-export function sha1_parse(value: string | null, sha1: Sha1): boolean
-export function strerror(error_enum: Error): string | null
+export function sha1_parse(value: string, sha1: Sha1): boolean
+export function strerror(error_enum: Error): string
 export module DeviceQueue {
 
     // Signal callback interfaces
@@ -1953,7 +1953,7 @@ export interface DeviceQueue {
      * @param types The types the matrix supports
      * @param description The description of the calibration
      */
-    set_calibration(device: GUsb.Device, calibration_index: number, calibration: Colord.Mat3x3, types: number, description: string | null): void
+    set_calibration(device: GUsb.Device, calibration_index: number, calibration: Colord.Mat3x3, types: number, description: string): void
     set_calibration_ccmx(device: GUsb.Device, calibration_index: number, ccmx: Colord.It8): boolean
     /**
      * Sets the calibration map.
@@ -2048,7 +2048,7 @@ export interface DeviceQueue {
      * @param device A #GUsbDevice
      * @param email An email address
      */
-    set_owner_email(device: GUsb.Device, email: string | null): void
+    set_owner_email(device: GUsb.Device, email: string): void
     /**
      * Sets the owner name.
      * 
@@ -2056,7 +2056,7 @@ export interface DeviceQueue {
      * @param device A #GUsbDevice
      * @param name The owner name
      */
-    set_owner_name(device: GUsb.Device, name: string | null): void
+    set_owner_name(device: GUsb.Device, name: string): void
     /**
      * Sets the PCB board errata.
      * 
@@ -2165,7 +2165,7 @@ export interface DeviceQueue {
      * @param device A #GUsbDevice
      * @param magic The magic sekret string
      */
-    write_eeprom(device: GUsb.Device, magic: string | null): void
+    write_eeprom(device: GUsb.Device, magic: string): void
     /**
      * Writes new firmware to the device.
      * 
@@ -2198,7 +2198,7 @@ export interface DeviceQueue {
 
     // Own virtual methods of ColorHug-1.0.ColorHug.DeviceQueue
 
-    vfunc_device_failed(device: GUsb.Device, error_message: string | null): void
+    vfunc_device_failed(device: GUsb.Device, error_message: string): void
     vfunc_progress_changed(percentage: number): void
 
     // Own signals of ColorHug-1.0.ColorHug.DeviceQueue
@@ -2238,7 +2238,7 @@ export interface DeviceQueueClass {
     // Own fields of ColorHug-1.0.ColorHug.DeviceQueueClass
 
     parent_class: GObject.ObjectClass
-    device_failed: (device_queue: DeviceQueue, device: GUsb.Device, error_message: string | null) => void
+    device_failed: (device_queue: DeviceQueue, device: GUsb.Device, error_message: string) => void
     progress_changed: (device_queue: DeviceQueue, percentage: number) => void
 }
 
@@ -2278,7 +2278,7 @@ export class Sha1 {
      * @param sha1 A %ChSha1
      * @returns %TRUE for success
      */
-    static parse(value: string | null, sha1: Sha1): boolean
+    static parse(value: string, sha1: Sha1): boolean
 }
 
     export type Cmd = number

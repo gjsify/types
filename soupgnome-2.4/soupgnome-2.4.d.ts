@@ -19,7 +19,7 @@ import type GLib from '@girs/glib-2.0';
 
 export namespace SoupGNOME {
 
-const COOKIE_JAR_SQLITE_FILENAME: string | null
+const COOKIE_JAR_SQLITE_FILENAME: string
 function gnome_features_2_26_get_type(): GObject.GType
 module CookieJarSqlite {
 
@@ -63,8 +63,8 @@ class CookieJarSqlite extends Soup.CookieJarDB {
     // Constructors of SoupGNOME-2.4.SoupGNOME.CookieJarSqlite
 
     constructor(config?: CookieJarSqlite.ConstructorProperties) 
-    constructor(filename: string | null, read_only: boolean) 
-    static new(filename: string | null, read_only: boolean): CookieJarSqlite
+    constructor(filename: string, read_only: boolean) 
+    static new(filename: string, read_only: boolean): CookieJarSqlite
 
     // Overloads of new
 
@@ -82,7 +82,7 @@ class CookieJarSqlite extends Soup.CookieJarDB {
      * @param read_only %TRUE if `filename` is read-only
      * @returns the new #SoupCookieJar
      */
-    static new(filename: string | null, read_only: boolean): Soup.CookieJarDB
+    static new(filename: string, read_only: boolean): Soup.CookieJarDB
     /**
      * Creates a new #SoupCookieJar. The base #SoupCookieJar class does
      * not support persistent storage of cookies; use a subclass for that.

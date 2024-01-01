@@ -40,12 +40,12 @@ export enum Error {
  * Binary icon data in PNG format for the application this sound event
  * is triggered by.
  */
-export const ATTR_APPLICATION_ICON: string | null
+export const ATTR_APPLICATION_ICON: string
 /**
  * An icon name for the application this sound event is triggered by,
  * as defined in the XDG icon naming specification.
  */
-export const ATTR_APPLICATION_ICON_NAME: string | null
+export const ATTR_APPLICATION_ICON_NAME: string
 /**
  * An identifier for the program this sound event was triggered
  * by. (e.g. "org.gnu.emacs").
@@ -54,12 +54,12 @@ export const ATTR_APPLICATION_ICON_NAME: string | null
  * > the #GApplication:application-id if you are using #GApplication, so you
  * > normally do not need to supply this yourself.
  */
-export const ATTR_APPLICATION_ID: string | null
+export const ATTR_APPLICATION_ID: string
 /**
  * The locale string the application that is triggering this sound
  * event is running in. A POSIX locale string such as de_DE`euro`.
  */
-export const ATTR_APPLICATION_LANGUAGE: string | null
+export const ATTR_APPLICATION_LANGUAGE: string
 /**
  * The name of the application this sound event was triggered by as
  * human readable string. (e.g. "GNU Emacs") Localized if possible and
@@ -69,28 +69,28 @@ export const ATTR_APPLICATION_LANGUAGE: string | null
  * > it has previously been set with g_set_application_name(), so you normally
  * > do not need to supply this yourself.
  */
-export const ATTR_APPLICATION_NAME: string | null
+export const ATTR_APPLICATION_NAME: string
 /**
  * The path to the process binary of the process that is triggering this sound event.
  */
-export const ATTR_APPLICATION_PROCESS_BINARY: string | null
+export const ATTR_APPLICATION_PROCESS_BINARY: string
 /**
  * The host name of the host the process that is triggering this sound event runs on.
  */
-export const ATTR_APPLICATION_PROCESS_HOST: string | null
+export const ATTR_APPLICATION_PROCESS_HOST: string
 /**
  * The unix PID of the process that is triggering this sound event, formatted as string.
  */
-export const ATTR_APPLICATION_PROCESS_ID: string | null
+export const ATTR_APPLICATION_PROCESS_ID: string
 /**
  * The user that owns the process that is triggering this sound event.
  */
-export const ATTR_APPLICATION_PROCESS_USER: string | null
+export const ATTR_APPLICATION_PROCESS_USER: string
 /**
  * A version number for the program this sound event was triggered
  * by. (e.g. "22.2")
  */
-export const ATTR_APPLICATION_VERSION: string | null
+export const ATTR_APPLICATION_VERSION: string
 /**
  * A special attribute that can be used to control the automatic sound
  * caching of sounds in the sound server. One of "permanent",
@@ -110,7 +110,7 @@ export const ATTR_APPLICATION_VERSION: string | null
  * If the list of attributes is handed on to the sound server this
  * attribute is stripped from it.
  */
-export const ATTR_CANBERRA_CACHE_CONTROL: string | null
+export const ATTR_CANBERRA_CACHE_CONTROL: string
 /**
  * A special attribute that can be used to control whether any sounds
  * are played at all. If this attribute is "1" or unset sounds are
@@ -121,7 +121,7 @@ export const ATTR_CANBERRA_CACHE_CONTROL: string | null
  * If the list of attributes is handed on to the sound server this
  * attribute is stripped from it.
  */
-export const ATTR_CANBERRA_ENABLE: string | null
+export const ATTR_CANBERRA_ENABLE: string
 /**
  * A special attribute that can be used to control on which channel a
  * sound is played. The value should be one of mono, front-left,
@@ -135,7 +135,7 @@ export const ATTR_CANBERRA_ENABLE: string | null
  * If the list of attributes is handed on to the sound server this
  * attribute is stripped from it.
  */
-export const ATTR_CANBERRA_FORCE_CHANNEL: string | null
+export const ATTR_CANBERRA_FORCE_CHANNEL: string
 /**
  * A special attribute that can be used to control the volume this
  * sound event is played in if the backend supports it. A floating
@@ -145,7 +145,7 @@ export const ATTR_CANBERRA_FORCE_CHANNEL: string | null
  * If the list of attributes is handed on to the sound server this
  * attribute is stripped from it.
  */
-export const ATTR_CANBERRA_VOLUME: string | null
+export const ATTR_CANBERRA_VOLUME: string
 /**
  * A special attribute that can be used to control the XDG sound theme that
  * is used for this sample.
@@ -153,7 +153,7 @@ export const ATTR_CANBERRA_VOLUME: string | null
  * If the list of attributes is handed on to the sound server this
  * attribute is stripped from it.
  */
-export const ATTR_CANBERRA_XDG_THEME_NAME: string | null
+export const ATTR_CANBERRA_XDG_THEME_NAME: string
 /**
  * A special attribute that can be used to control the XDG sound theme
  * output profile that is used for this sample.
@@ -161,78 +161,78 @@ export const ATTR_CANBERRA_XDG_THEME_NAME: string | null
  * If the list of attributes is handed on to the sound server this
  * attribute is stripped from it.
  */
-export const ATTR_CANBERRA_XDG_THEME_OUTPUT_PROFILE: string | null
+export const ATTR_CANBERRA_XDG_THEME_OUTPUT_PROFILE: string
 /**
  * A descriptive string for the sound event. Localized if possible and applicable.
  */
-export const ATTR_EVENT_DESCRIPTION: string | null
+export const ATTR_EVENT_DESCRIPTION: string
 /**
  * A textual id for an event sound, as mandated by the XDG sound naming specification.
  */
-export const ATTR_EVENT_ID: string | null
+export const ATTR_EVENT_ID: string
 /**
  * If this sound event was triggered by a mouse input event, the
  * number of the mouse button that triggered it, formatted as string. 1
  * for left mouse button, 3 for right, 2 for middle.
  */
-export const ATTR_EVENT_MOUSE_BUTTON: string | null
+export const ATTR_EVENT_MOUSE_BUTTON: string
 /**
  * If this sound event was triggered by a mouse input event, the X
  * position of the mouse cursor as fractional value between 0 and 1,
  * formatted as string, 0 reflecting the left side of the screen, 1
  * the right side.
  */
-export const ATTR_EVENT_MOUSE_HPOS: string | null
+export const ATTR_EVENT_MOUSE_HPOS: string
 /**
  * If this sound event was triggered by a mouse input event, the Y
  * position of the mouse cursor as fractional value between 0 and 1,
  * formatted as string, 0 reflecting the top end of the screen, 1
  * the bottom end.
  */
-export const ATTR_EVENT_MOUSE_VPOS: string | null
+export const ATTR_EVENT_MOUSE_VPOS: string
 /**
  * If this sound event was triggered by a mouse input event, the X
  * position of the mouse cursor on the screen, formatted as string.
  */
-export const ATTR_EVENT_MOUSE_X: string | null
+export const ATTR_EVENT_MOUSE_X: string
 /**
  * If this sound event was triggered by a mouse input event, the Y
  * position of the mouse cursor on the screen, formatted as string.
  */
-export const ATTR_EVENT_MOUSE_Y: string | null
+export const ATTR_EVENT_MOUSE_Y: string
 /**
  * The artist of this media. Localized if possible and applicable.
  */
-export const ATTR_MEDIA_ARTIST: string | null
+export const ATTR_MEDIA_ARTIST: string
 /**
  * The file name this media was or can be loaded from.
  */
-export const ATTR_MEDIA_FILENAME: string | null
+export const ATTR_MEDIA_FILENAME: string
 /**
  * An icon for this media in binary PNG format.
  */
-export const ATTR_MEDIA_ICON: string | null
+export const ATTR_MEDIA_ICON: string
 /**
  * An icon name as defined in the XDG icon naming specifcation.
  */
-export const ATTR_MEDIA_ICON_NAME: string | null
+export const ATTR_MEDIA_ICON_NAME: string
 /**
  * The language this media is in, in some standard POSIX locale string, such as "de_DE".
  */
-export const ATTR_MEDIA_LANGUAGE: string | null
+export const ATTR_MEDIA_LANGUAGE: string
 /**
  * A name describing the media being played. Localized if possible and applicable.
  */
-export const ATTR_MEDIA_NAME: string | null
+export const ATTR_MEDIA_NAME: string
 /**
  * The "role" this media is played in. For event sounds the string
  * "event". For other cases strings like "music", "video", "game", ...
  */
-export const ATTR_MEDIA_ROLE: string | null
+export const ATTR_MEDIA_ROLE: string
 /**
  * A (song) title describing the media being played. Localized if possible and applicable.
  */
-export const ATTR_MEDIA_TITLE: string | null
+export const ATTR_MEDIA_TITLE: string
 /**
  * If this sound event was triggered by a window on the screen and the
  * windowing system supports multiple desktops, a comma seperated list
@@ -240,87 +240,87 @@ export const ATTR_MEDIA_TITLE: string | null
  * attribute is an empty string, it is visible on all desktops
  * (i.e. 'sticky'). The first desktop is 0. (e.g. "0,2,3")
  */
-export const ATTR_WINDOW_DESKTOP: string | null
+export const ATTR_WINDOW_DESKTOP: string
 /**
  * If this sound event was triggered by a window on the screen, the
  * pixel height of the window.
  */
-export const ATTR_WINDOW_HEIGHT: string | null
+export const ATTR_WINDOW_HEIGHT: string
 /**
  * If this sound event was triggered by a window on the screen, the X
  * position of the center of the window as fractional value between 0
  * and 1, formatted as string, 0 reflecting the left side of the
  * screen, 1 the right side.
  */
-export const ATTR_WINDOW_HPOS: string | null
+export const ATTR_WINDOW_HPOS: string
 /**
  * If this sound event was triggered by a window on the screen, binary
  * icon data in PNG format for this window.
  */
-export const ATTR_WINDOW_ICON: string | null
+export const ATTR_WINDOW_ICON: string
 /**
  * If this sound event was triggered by a window on the screen, an
  * icon name for this window, as defined in the XDG icon naming
  * specification.
  */
-export const ATTR_WINDOW_ICON_NAME: string | null
+export const ATTR_WINDOW_ICON_NAME: string
 /**
  * If this sound event was triggered by a window on the screen, some
  * identification string for this window, so that the sound system can
  * recognize specific windows.
  */
-export const ATTR_WINDOW_ID: string | null
+export const ATTR_WINDOW_ID: string
 /**
  * If this sound event was triggered by a window on the screen, the
  * name of this window as human readable string.
  */
-export const ATTR_WINDOW_NAME: string | null
+export const ATTR_WINDOW_NAME: string
 /**
  * If this sound event was triggered by a window on the screen, the Y
  * position of the center of the window as fractional value between 0
  * and 1, formatted as string, 0 reflecting the top side of the
  * screen, 1 the bottom side.
  */
-export const ATTR_WINDOW_VPOS: string | null
+export const ATTR_WINDOW_VPOS: string
 /**
  * If this sound event was triggered by a window on the screen, the
  * pixel width of the window.
  */
-export const ATTR_WINDOW_WIDTH: string | null
+export const ATTR_WINDOW_WIDTH: string
 /**
  * If this sound event was triggered by a window on the screen, the X
  * position of the window measured from the top left corner of the
  * screen to the top left corner of the window.
  */
-export const ATTR_WINDOW_X: string | null
+export const ATTR_WINDOW_X: string
 /**
  * If this sound event was triggered by a window on the screen and the
  * windowing system is X11, the X display name of the window (e.g. ":0").
  */
-export const ATTR_WINDOW_X11_DISPLAY: string | null
+export const ATTR_WINDOW_X11_DISPLAY: string
 /**
  * If this sound event was triggered by a window on the screen and the
  * windowing system is X11, the X monitor id of the window formatted as
  * string (e.g. "0").
  */
-export const ATTR_WINDOW_X11_MONITOR: string | null
+export const ATTR_WINDOW_X11_MONITOR: string
 /**
  * If this sound event was triggered by a window on the screen and the
  * windowing system is X11, the X screen id of the window formatted as
  * string (e.g. "0").
  */
-export const ATTR_WINDOW_X11_SCREEN: string | null
+export const ATTR_WINDOW_X11_SCREEN: string
 /**
  * If this sound event was triggered by a window on the screen and the
  * windowing system is X11, the XID of the window formatted as string.
  */
-export const ATTR_WINDOW_X11_XID: string | null
+export const ATTR_WINDOW_X11_XID: string
 /**
  * If this sound event was triggered by a window on the screen, the y
  * position of the window measured from the top left corner of the
  * screen to the top left corner of the window.
  */
-export const ATTR_WINDOW_Y: string | null
+export const ATTR_WINDOW_Y: string
 export function errorQuark(): GLib.Quark
 export module Context {
 
@@ -419,7 +419,7 @@ export interface Context extends Gio.Initable {
      * @param driver libcanberra driver to use
      * @returns %TRUE if the libcanberra driver was set successfully
      */
-    setDriver(driver: string | null): boolean
+    setDriver(driver: string): boolean
 
     // Class property signals of GSound-1.0.GSound.Context
 

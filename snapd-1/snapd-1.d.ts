@@ -598,7 +598,7 @@ function error_quark(): GLib.Quark
  * @param cancellable a #GCancellable or %NULL.
  * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
  */
-function login_async<Z = unknown>(username: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
+function login_async<Z = unknown>(username: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<Z> | null): void
 
 // Overloads of login_async
 
@@ -613,7 +613,7 @@ function login_async<Z = unknown>(username: string | null, password: string | nu
  * @param cancellable a #GCancellable or %NULL.
  * @returns A Promise of: a #SnapdAuthData or %NULL on error.
  */
-function login_async<Z = unknown>(username: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthData>
+function login_async<Z = unknown>(username: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthData>
 /**
  * Complete login started with snapd_login_async().
  * See snapd_login_sync() for more information.
@@ -630,7 +630,7 @@ function login_finish(result: Gio.AsyncResult): AuthData
  * @param cancellable a #GCancellable or %NULL.
  * @returns a #SnapdAuthData or %NULL on error.
  */
-function login_sync(username: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null): AuthData
+function login_sync(username: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): AuthData
 /**
  * Signature for callback function used in
  * snapd_client_connect_interface_sync(),
@@ -704,17 +704,17 @@ interface Alias {
      * Get the command this alias runs.
      * @returns a command.
      */
-    get_command(): string | null
+    get_command(): string
     /**
      * Get the name of this alias.
      * @returns an alias name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the snap this alias is for.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
     /**
      * Get the status of this alias.
      * @returns a #SnapdAliasStatus.
@@ -841,12 +841,12 @@ interface App {
      * Get the name of this app.
      * @returns a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the snap this app is associated with.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
 
     // Class property signals of Snapd-1.Snapd.App
 
@@ -930,7 +930,7 @@ interface Assertion {
      * @param name name of the header.
      * @returns header value or %NULL if undefined.
      */
-    get_header(name: string | null): string | null
+    get_header(name: string): string | null
     /**
      * Get the headers provided by this assertion.
      * @returns array of header names.
@@ -976,14 +976,14 @@ class Assertion extends GObject.Object {
      * @param content the text content of the assertion.
      * @returns a new #SnapdAssertion
      */
-    constructor(content: string | null) 
+    constructor(content: string) 
     /**
      * Create a new assertion.
      * @constructor 
      * @param content the text content of the assertion.
      * @returns a new #SnapdAssertion
      */
-    static new(content: string | null): Assertion
+    static new(content: string): Assertion
     _init(config?: Assertion.ConstructorProperties): void
 }
 
@@ -1019,7 +1019,7 @@ interface AuthData {
      * Get the Macaroon that this authorization uses.
      * @returns the serialized Macaroon used to authorize access to snapd.
      */
-    get_macaroon(): string | null
+    get_macaroon(): string
 
     // Class property signals of Snapd-1.Snapd.AuthData
 
@@ -1058,7 +1058,7 @@ class AuthData extends GObject.Object {
      * @param discharges serialized discharges.
      * @returns a new #SnapdAuthData
      */
-    constructor(macaroon: string | null, discharges: string[]) 
+    constructor(macaroon: string, discharges: string[]) 
     /**
      * Create some authorization data.
      * @constructor 
@@ -1066,7 +1066,7 @@ class AuthData extends GObject.Object {
      * @param discharges serialized discharges.
      * @returns a new #SnapdAuthData
      */
-    static new(macaroon: string | null, discharges: string[]): AuthData
+    static new(macaroon: string, discharges: string[]): AuthData
     _init(config?: AuthData.ConstructorProperties): void
 }
 
@@ -1120,12 +1120,12 @@ interface Change {
      * Get the unique ID for this change.
      * @returns an ID.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the kind of change this is.
      * @returns the kind of change.
      */
-    get_kind(): string | null
+    get_kind(): string
     /**
      * Get if this change is completed.
      * @returns %TRUE if this change is complete.
@@ -1145,12 +1145,12 @@ interface Change {
      * Get the status of the change.
      * @returns a status string.
      */
-    get_status(): string | null
+    get_status(): string
     /**
      * Get a human readable description of the change.
      * @returns a string describing the change.
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Get the tasks that are in this change.
      * @returns an array of #SnapdTask.
@@ -1258,7 +1258,7 @@ interface Channel {
      * Get the epoch used on this channel, e.g. "1".
      * @returns an epoch.
      */
-    get_epoch(): string | null
+    get_epoch(): string
     /**
      * Get the name of this channel, e.g. "stable".
      * 
@@ -1275,7 +1275,7 @@ interface Channel {
      * `latest/stable/red-button` (red button feature branch)
      * @returns a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the date this revision was released into the channel or %NULL if unknown.
      * @returns a #GDateTime.
@@ -1286,12 +1286,12 @@ interface Channel {
      * See also snapd_channel_get_version().
      * @returns a revision string.
      */
-    get_revision(): string | null
+    get_revision(): string
     /**
      * Get the risk this channel is on, one of `stable`, `candidate`, `beta` or `edge`.
      * @returns a risk name.
      */
-    get_risk(): string | null
+    get_risk(): string
     /**
      * Get the download size of this snap.
      * @returns a byte count.
@@ -1301,13 +1301,13 @@ interface Channel {
      * Get the track this channel is on.
      * @returns a track name.
      */
-    get_track(): string | null
+    get_track(): string
     /**
      * Get the version for this snap. The format of the string is undefined.
      * See also snapd_channel_get_revision().
      * @returns a version string.
      */
-    get_version(): string | null
+    get_version(): string
 
     // Class property signals of Snapd-1.Snapd.Channel
 
@@ -1380,7 +1380,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    abort_change_async(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    abort_change_async(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of abort_change_async
 
@@ -1393,7 +1393,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdChange or %NULL on error.
      */
-    abort_change_async(id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Change>
+    abort_change_async(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Change>
     /**
      * Complete request started with snapd_client_abort_change_async().
      * See snapd_client_abort_change_sync() for more information.
@@ -1407,7 +1407,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdChange or %NULL on error.
      */
-    abort_change_sync(id: string | null, cancellable: Gio.Cancellable | null): Change
+    abort_change_sync(id: string, cancellable: Gio.Cancellable | null): Change
     /**
      * Asynchronously add an assertion.
      * See snapd_client_add_assertions_sync() for more information.
@@ -1453,7 +1453,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    alias_async(snap: string | null, app: string | null, alias: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    alias_async(snap: string, app: string, alias: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of alias_async
 
@@ -1469,7 +1469,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    alias_async(snap: string | null, app: string | null, alias: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    alias_async(snap: string, app: string, alias: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_alias_async().
      * See snapd_client_alias_sync() for more information.
@@ -1485,7 +1485,7 @@ interface Client {
      * @param progress_callback function to callback with progress.
      * @param cancellable a #GCancellable or %NULL.
      */
-    alias_sync(snap: string | null, app: string | null, alias: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    alias_sync(snap: string, app: string, alias: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously buy a snap from the store.
      * See snapd_client_buy_sync() for more information.
@@ -1495,7 +1495,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    buy_async(id: string | null, amount: number, currency: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    buy_async(id: string, amount: number, currency: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of buy_async
 
@@ -1510,7 +1510,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    buy_async(id: string | null, amount: number, currency: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    buy_async(id: string, amount: number, currency: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_buy_async().
      * See snapd_client_buy_sync() for more information.
@@ -1527,7 +1527,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    buy_sync(id: string | null, amount: number, currency: string | null, cancellable: Gio.Cancellable | null): boolean
+    buy_sync(id: string, amount: number, currency: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously check if able to buy snaps.
      * See snapd_client_check_buy_sync() for more information.
@@ -1595,7 +1595,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    connect_interface_async(plug_snap: string | null, plug_name: string | null, slot_snap: string | null, slot_name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    connect_interface_async(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of connect_interface_async
 
@@ -1612,7 +1612,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    connect_interface_async(plug_snap: string | null, plug_name: string | null, slot_snap: string | null, slot_name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    connect_interface_async(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_connect_interface_async().
      * See snapd_client_connect_interface_sync() for more information.
@@ -1631,7 +1631,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    connect_interface_sync(plug_snap: string | null, plug_name: string | null, slot_snap: string | null, slot_name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    connect_interface_sync(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * This method is no longer required and does nothing, snapd-glib now connects on demand.
      * @param cancellable a #GCancellable or %NULL
@@ -1646,7 +1646,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    create_user_async(email: string | null, flags: CreateUserFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    create_user_async(email: string, flags: CreateUserFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of create_user_async
 
@@ -1660,7 +1660,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdUserInformation or %NULL on error.
      */
-    create_user_async(email: string | null, flags: CreateUserFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<UserInformation>
+    create_user_async(email: string, flags: CreateUserFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<UserInformation>
     /**
      * Complete request started with snapd_client_create_user_async().
      * See snapd_client_create_user_sync() for more information.
@@ -1675,7 +1675,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdUserInformation or %NULL on error.
      */
-    create_user_sync(email: string | null, flags: CreateUserFlags, cancellable: Gio.Cancellable | null): UserInformation
+    create_user_sync(email: string, flags: CreateUserFlags, cancellable: Gio.Cancellable | null): UserInformation
     /**
      * Asynchronously create local user accounts using the system-user assertions that are valid for this device.
      * See snapd_client_create_users_sync() for more information.
@@ -1717,7 +1717,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    disable_aliases_async(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    disable_aliases_async(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of disable_aliases_async
 
@@ -1732,7 +1732,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    disable_aliases_async(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    disable_aliases_async(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_disable_aliases_async().
      * See snapd_client_disable_aliases_sync() for more information.
@@ -1748,7 +1748,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    disable_aliases_sync(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    disable_aliases_sync(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously disable an installed snap.
      * See snapd_client_disable_sync() for more information.
@@ -1757,7 +1757,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    disable_async(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    disable_async(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of disable_async
 
@@ -1771,7 +1771,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    disable_async(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    disable_async(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_disable_async().
      * See snapd_client_disable_sync() for more information.
@@ -1786,7 +1786,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    disable_sync(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    disable_sync(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously disconnect two interfaces.
      * See snapd_client_disconnect_interface_sync() for more information.
@@ -1798,7 +1798,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    disconnect_interface_async(plug_snap: string | null, plug_name: string | null, slot_snap: string | null, slot_name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    disconnect_interface_async(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of disconnect_interface_async
 
@@ -1815,7 +1815,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    disconnect_interface_async(plug_snap: string | null, plug_name: string | null, slot_snap: string | null, slot_name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    disconnect_interface_async(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_disconnect_interface_async().
      * See snapd_client_disconnect_interface_sync() for more information.
@@ -1833,7 +1833,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    disconnect_interface_sync(plug_snap: string | null, plug_name: string | null, slot_snap: string | null, slot_name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    disconnect_interface_sync(plug_snap: string, plug_name: string, slot_snap: string, slot_name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously download a snap.
      * See snapd_client_download_sync() for more information.
@@ -1843,7 +1843,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    download_async(name: string | null, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    download_async(name: string, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of download_async
 
@@ -1858,7 +1858,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: the snap contents or %NULL on error.
      */
-    download_async(name: string | null, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
+    download_async(name: string, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Complete request started with snapd_client_download_async().
      * See snapd_client_download_sync() for more information.
@@ -1874,7 +1874,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns the snap contents or %NULL on error.
      */
-    download_sync(name: string | null, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null): GLib.Bytes
+    download_sync(name: string, channel: string | null, revision: string | null, cancellable: Gio.Cancellable | null): GLib.Bytes
     /**
      * Asynchronously change the state of aliases.
      * See snapd_client_enable_aliases_sync() for more information.
@@ -1884,7 +1884,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    enable_aliases_async(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    enable_aliases_async(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of enable_aliases_async
 
@@ -1899,7 +1899,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    enable_aliases_async(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    enable_aliases_async(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_enable_aliases_async().
      * See snapd_client_enable_aliases_sync() for more information.
@@ -1915,7 +1915,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    enable_aliases_sync(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    enable_aliases_sync(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously enable an installed snap.
      * See snapd_client_enable_sync() for more information.
@@ -1924,7 +1924,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    enable_async(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    enable_async(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of enable_async
 
@@ -1938,7 +1938,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    enable_async(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    enable_async(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_enable_async().
      * See snapd_client_enable_sync() for more information.
@@ -1953,7 +1953,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    enable_sync(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    enable_sync(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously find snaps in the store.
      * See snapd_client_find_sync() for more information.
@@ -1962,7 +1962,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    find_async(flags: FindFlags, query: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    find_async(flags: FindFlags, query: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of find_async
 
@@ -1976,14 +1976,14 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: an array of #SnapdSnap or %NULL on error.
      */
-    find_async(flags: FindFlags, query: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise</* suggested_currency */ string | null>
+    find_async(flags: FindFlags, query: string, cancellable: Gio.Cancellable | null): globalThis.Promise</* suggested_currency */ string>
     /**
      * Complete request started with snapd_client_find_async().
      * See snapd_client_find_sync() for more information.
      * @param result a #GAsyncResult.
      * @returns an array of #SnapdSnap or %NULL on error.
      */
-    find_finish(result: Gio.AsyncResult): [ /* returnType */ Snap[], /* suggested_currency */ string | null ]
+    find_finish(result: Gio.AsyncResult): [ /* returnType */ Snap[], /* suggested_currency */ string ]
     /**
      * Asynchronously find snaps in store that are newer revisions than locally installed versions.
      * See snapd_client_find_refreshable_sync() for more information.
@@ -2040,14 +2040,14 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: an array of #SnapdSnap or %NULL on error.
      */
-    find_section_async(flags: FindFlags, section: string | null, query: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise</* suggested_currency */ string | null>
+    find_section_async(flags: FindFlags, section: string | null, query: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise</* suggested_currency */ string>
     /**
      * Complete request started with snapd_client_find_async().
      * See snapd_client_find_sync() for more information.
      * @param result a #GAsyncResult.
      * @returns an array of #SnapdSnap or %NULL on error.
      */
-    find_section_finish(result: Gio.AsyncResult): [ /* returnType */ Snap[], /* suggested_currency */ string | null ]
+    find_section_finish(result: Gio.AsyncResult): [ /* returnType */ Snap[], /* suggested_currency */ string ]
     /**
      * Find snaps in the store.
      * @param flags a set of #SnapdFindFlags to control how the find is performed.
@@ -2056,7 +2056,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns an array of #SnapdSnap or %NULL on error.
      */
-    find_section_sync(flags: FindFlags, section: string | null, query: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ Snap[], /* suggested_currency */ string | null ]
+    find_section_sync(flags: FindFlags, section: string | null, query: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ Snap[], /* suggested_currency */ string ]
     /**
      * Find snaps in the store.
      * @param flags a set of #SnapdFindFlags to control how the find is performed.
@@ -2064,7 +2064,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns an array of #SnapdSnap or %NULL on error.
      */
-    find_sync(flags: FindFlags, query: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ Snap[], /* suggested_currency */ string | null ]
+    find_sync(flags: FindFlags, query: string, cancellable: Gio.Cancellable | null): [ /* returnType */ Snap[], /* suggested_currency */ string ]
     /**
      * Asynchronously get the available aliases.
      * See snapd_client_get_aliases_sync() for more information.
@@ -2182,7 +2182,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    get_assertions_async(type: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_assertions_async(type: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_assertions_async
 
@@ -2195,7 +2195,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: an array of assertions or %NULL on error.
      */
-    get_assertions_async(type: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>
+    get_assertions_async(type: string, cancellable: Gio.Cancellable | null): globalThis.Promise<string[]>
     /**
      * Complete request started with snapd_client_get_assertions_async().
      * See snapd_client_get_assertions_sync() for more information.
@@ -2209,7 +2209,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns an array of assertions or %NULL on error.
      */
-    get_assertions_sync(type: string | null, cancellable: Gio.Cancellable | null): string[]
+    get_assertions_sync(type: string, cancellable: Gio.Cancellable | null): string[]
     /**
      * Get the authorization data that is used for requests.
      * @returns a #SnapdAuthData or %NULL.
@@ -2222,7 +2222,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    get_change_async(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_change_async(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_change_async
 
@@ -2235,7 +2235,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdChange or %NULL on error.
      */
-    get_change_async(id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Change>
+    get_change_async(id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Change>
     /**
      * Complete request started with snapd_client_get_change_async().
      * See snapd_client_get_change_sync() for more information.
@@ -2249,7 +2249,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdChange or %NULL on error.
      */
-    get_change_sync(id: string | null, cancellable: Gio.Cancellable | null): Change
+    get_change_sync(id: string, cancellable: Gio.Cancellable | null): Change
     /**
      * Asynchronously get changes that have occurred / are occurring on the snap daemon.
      * See snapd_client_get_changes_sync() for more information.
@@ -2368,7 +2368,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    get_icon_async(name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_icon_async(name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_icon_async
 
@@ -2381,7 +2381,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdIcon or %NULL on error.
      */
-    get_icon_async(name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Icon>
+    get_icon_async(name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Icon>
     /**
      * Complete request started with snapd_client_get_icon_async().
      * See snapd_client_get_icon_sync() for more information.
@@ -2395,7 +2395,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdIcon or %NULL on error.
      */
-    get_icon_sync(name: string | null, cancellable: Gio.Cancellable | null): Icon
+    get_icon_sync(name: string, cancellable: Gio.Cancellable | null): Icon
     /**
      * Asynchronously get the installed snap interfaces.
      * See snapd_client_get_interfaces2_sync() for more information.
@@ -2511,7 +2511,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    get_snap_async(name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_snap_async(name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_snap_async
 
@@ -2524,7 +2524,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdSnap or %NULL on error.
      */
-    get_snap_async(name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Snap>
+    get_snap_async(name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Snap>
     /**
      * Asynchronously get configuration for a snap.
      * See snapd_client_get_snap_conf_sync() for more information.
@@ -2533,7 +2533,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    get_snap_conf_async(name: string | null, keys: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_snap_conf_async(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_snap_conf_async
 
@@ -2547,7 +2547,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a table of configuration values or %NULL on error.
      */
-    get_snap_conf_async(name: string | null, keys: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>
+    get_snap_conf_async(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.HashTable>
     /**
      * Complete request started with snapd_client_get_snap_conf_async().
      * See snapd_client_get_snap_conf_sync() for more information.
@@ -2562,7 +2562,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a table of configuration values or %NULL on error.
      */
-    get_snap_conf_sync(name: string | null, keys: string[] | null, cancellable: Gio.Cancellable | null): GLib.HashTable
+    get_snap_conf_sync(name: string, keys: string[] | null, cancellable: Gio.Cancellable | null): GLib.HashTable
     /**
      * Complete request started with snapd_client_get_snap_async().
      * See snapd_client_get_snap_sync() for more information.
@@ -2576,7 +2576,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdSnap or %NULL on error.
      */
-    get_snap_sync(name: string | null, cancellable: Gio.Cancellable | null): Snap
+    get_snap_sync(name: string, cancellable: Gio.Cancellable | null): Snap
     /**
      * Asynchronously get information on installed snaps.
      * See snapd_client_get_snaps_sync() for more information.
@@ -2624,7 +2624,7 @@ interface Client {
      * Get the unix socket path to connect to snapd with.
      * @returns socket path.
      */
-    get_socket_path(): string | null
+    get_socket_path(): string
     /**
      * Request system information asynchronously from snapd.
      * See snapd_client_get_system_information_sync() for more information.
@@ -2706,7 +2706,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    install2_async(flags: InstallFlags, name: string | null, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    install2_async(flags: InstallFlags, name: string, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of install2_async
 
@@ -2723,7 +2723,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    install2_async(flags: InstallFlags, name: string | null, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    install2_async(flags: InstallFlags, name: string, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_install2_async().
      * See snapd_client_install2_sync() for more information.
@@ -2741,7 +2741,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    install2_sync(flags: InstallFlags, name: string | null, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    install2_sync(flags: InstallFlags, name: string, channel: string | null, revision: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously install a snap from the store.
      * See snapd_client_install_sync() for more information.
@@ -2751,7 +2751,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    install_async(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    install_async(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of install_async
 
@@ -2766,7 +2766,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    install_async(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    install_async(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_install_async().
      * See snapd_client_install_sync() for more information.
@@ -2839,7 +2839,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    install_sync(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    install_sync(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously get information on all installed snaps.
      * See snapd_client_list_sync() for more information.
@@ -2873,7 +2873,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    list_one_async(name: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    list_one_async(name: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of list_one_async
 
@@ -2886,7 +2886,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdSnap or %NULL on error.
      */
-    list_one_async(name: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Snap>
+    list_one_async(name: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Snap>
     /**
      * Complete request started with snapd_client_list_one_async().
      * See snapd_client_list_one_sync() for more information.
@@ -2900,7 +2900,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdSnap or %NULL on error.
      */
-    list_one_sync(name: string | null, cancellable: Gio.Cancellable | null): Snap
+    list_one_sync(name: string, cancellable: Gio.Cancellable | null): Snap
     /**
      * Get information on all installed snaps.
      * @param cancellable a #GCancellable or %NULL.
@@ -2916,7 +2916,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    login2_async(email: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    login2_async(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of login2_async
 
@@ -2931,7 +2931,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdUserInformation or %NULL on error.
      */
-    login2_async(email: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<UserInformation>
+    login2_async(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<UserInformation>
     /**
      * Complete request started with snapd_client_login2_async().
      * See snapd_client_login2_sync() for more information.
@@ -2947,7 +2947,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdUserInformation or %NULL on error.
      */
-    login2_sync(email: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null): UserInformation
+    login2_sync(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): UserInformation
     /**
      * Asynchronously get authorization to install/remove snaps.
      * See snapd_client_login_sync() for more information.
@@ -2957,7 +2957,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    login_async(email: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    login_async(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of login_async
 
@@ -2972,7 +2972,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: a #SnapdAuthData or %NULL on error.
      */
-    login_async(email: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthData>
+    login_async(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<AuthData>
     /**
      * Complete request started with snapd_client_login_async().
      * See snapd_client_login_sync() for more information.
@@ -2988,7 +2988,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns a #SnapdAuthData or %NULL on error.
      */
-    login_sync(email: string | null, password: string | null, otp: string | null, cancellable: Gio.Cancellable | null): AuthData
+    login_sync(email: string, password: string, otp: string | null, cancellable: Gio.Cancellable | null): AuthData
     /**
      * Asynchronously log out from the snap store.
      * See snapd_client_logout_sync() for more information.
@@ -3032,7 +3032,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    prefer_async(snap: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    prefer_async(snap: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of prefer_async
 
@@ -3046,7 +3046,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    prefer_async(snap: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    prefer_async(snap: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_prefer_async().
      * See snapd_client_prefer_sync() for more information.
@@ -3060,7 +3060,7 @@ interface Client {
      * @param progress_callback function to callback with progress.
      * @param cancellable a #GCancellable or %NULL.
      */
-    prefer_sync(snap: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    prefer_sync(snap: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously ensure all snaps are updated to their latest versions.
      * See snapd_client_refresh_all_sync() for more information.
@@ -3105,7 +3105,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    refresh_async(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    refresh_async(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of refresh_async
 
@@ -3120,7 +3120,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    refresh_async(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    refresh_async(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_refresh_async().
      * See snapd_client_refresh_sync() for more information.
@@ -3136,7 +3136,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    refresh_sync(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    refresh_sync(name: string, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously uninstall a snap.
      * See snapd_client_remove2_sync() for more information.
@@ -3146,7 +3146,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    remove2_async(flags: RemoveFlags, name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    remove2_async(flags: RemoveFlags, name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of remove2_async
 
@@ -3161,7 +3161,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    remove2_async(flags: RemoveFlags, name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    remove2_async(flags: RemoveFlags, name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_remove2_async().
      * See snapd_client_remove2_sync() for more information.
@@ -3177,7 +3177,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    remove2_sync(flags: RemoveFlags, name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    remove2_sync(flags: RemoveFlags, name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously uninstall a snap.
      * See snapd_client_remove_sync() for more information.
@@ -3186,7 +3186,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    remove_async(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    remove_async(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of remove_async
 
@@ -3200,7 +3200,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    remove_async(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    remove_async(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_remove_async().
      * See snapd_client_remove_sync() for more information.
@@ -3215,7 +3215,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    remove_sync(name: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    remove_sync(name: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously change the state of aliases.
      * See snapd_client_reset_aliases_sync() for more information.
@@ -3225,7 +3225,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    reset_aliases_async(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    reset_aliases_async(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of reset_aliases_async
 
@@ -3240,7 +3240,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    reset_aliases_async(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    reset_aliases_async(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_reset_aliases_async().
      * See snapd_client_reset_aliases_sync() for more information.
@@ -3256,7 +3256,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    reset_aliases_sync(snap: string | null, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    reset_aliases_sync(snap: string, aliases: string[], progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously run a snapctl command.
      * See snapd_client_run_snapctl_sync() for more information.
@@ -3265,7 +3265,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    run_snapctl_async(context_id: string | null, args: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    run_snapctl_async(context_id: string, args: string[], cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of run_snapctl_async
 
@@ -3279,14 +3279,14 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    run_snapctl_async(context_id: string | null, args: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* stdout_output */ string | null, /* stderr_output */ string | null ]>
+    run_snapctl_async(context_id: string, args: string[], cancellable: Gio.Cancellable | null): globalThis.Promise<[ /* stdout_output */ string, /* stderr_output */ string ]>
     /**
      * Complete request started with snapd_client_run_snapctl_async().
      * See snapd_client_run_snapctl_sync() for more information.
      * @param result a #GAsyncResult.
      * @returns %TRUE on success or %FALSE on error.
      */
-    run_snapctl_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_output */ string | null, /* stderr_output */ string | null ]
+    run_snapctl_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* stdout_output */ string, /* stderr_output */ string ]
     /**
      * Run a snapctl command.
      * @param context_id context for this call.
@@ -3294,7 +3294,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    run_snapctl_sync(context_id: string | null, args: string[], cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* stdout_output */ string[], /* stderr_output */ string[] ]
+    run_snapctl_sync(context_id: string, args: string[], cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* stdout_output */ string[], /* stderr_output */ string[] ]
     /**
      * Set whether snapd operations are allowed to interact with the user.
      * This affects operations that use polkit authorisation.
@@ -3320,7 +3320,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    set_snap_conf_async(name: string | null, key_values: GLib.HashTable, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    set_snap_conf_async(name: string, key_values: GLib.HashTable, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of set_snap_conf_async
 
@@ -3334,7 +3334,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE if configuration successfully applied.
      */
-    set_snap_conf_async(name: string | null, key_values: GLib.HashTable, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    set_snap_conf_async(name: string, key_values: GLib.HashTable, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_set_snap_conf_async().
      * See snapd_client_set_snap_conf_sync() for more information.
@@ -3349,7 +3349,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE if configuration successfully applied.
      */
-    set_snap_conf_sync(name: string | null, key_values: GLib.HashTable, cancellable: Gio.Cancellable | null): boolean
+    set_snap_conf_sync(name: string, key_values: GLib.HashTable, cancellable: Gio.Cancellable | null): boolean
     /**
      * Set the Unix socket path to connect to snapd with.
      * Defaults to the system socket.
@@ -3371,7 +3371,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    switch_async(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    switch_async(name: string, channel: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of switch_async
 
@@ -3386,7 +3386,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    switch_async(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    switch_async(name: string, channel: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_switch_async().
      * See snapd_client_switch_sync() for more information.
@@ -3402,7 +3402,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    switch_sync(name: string | null, channel: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    switch_sync(name: string, channel: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously try a snap.
      * See snapd_client_try_sync() for more information.
@@ -3411,7 +3411,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied.
      */
-    try_async(path: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    try_async(path: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of try_async
 
@@ -3425,7 +3425,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns A Promise of: %TRUE on success or %FALSE on error.
      */
-    try_async(path: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    try_async(path: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Complete request started with snapd_client_try_async().
      * See snapd_client_try_sync() for more information.
@@ -3440,7 +3440,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL.
      * @returns %TRUE on success or %FALSE on error.
      */
-    try_sync(path: string | null, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
+    try_sync(path: string, progress_callback: ProgressCallback | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously remove an alias from an app.
      * See snapd_client_unalias_sync() for more information.
@@ -3576,7 +3576,7 @@ interface Connection {
      * Get the interface this connections uses.
      * @returns an interface name.
      */
-    get_interface(): string | null
+    get_interface(): string
     /**
      * Get if this connection was made manually.
      * @returns %TRUE if connection was made manually.
@@ -3586,7 +3586,7 @@ interface Connection {
      * Get the name of this connection (i.e. a slot or plug name).
      * @returns a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the plug this connection is made with.
      * @returns a reference to a plug.
@@ -3597,7 +3597,7 @@ interface Connection {
      * @param name an attribute name.
      * @returns an attribute value or %NULL if not set.
      */
-    get_plug_attribute(name: string | null): GLib.Variant | null
+    get_plug_attribute(name: string): GLib.Variant | null
     /**
      * Get the names of the attributes the connected plug has.
      * @returns a string array of attribute names. Free with g_strfreev().
@@ -3613,7 +3613,7 @@ interface Connection {
      * @param name an attribute name.
      * @returns an attribute value or %NULL if not set.
      */
-    get_slot_attribute(name: string | null): GLib.Variant | null
+    get_slot_attribute(name: string): GLib.Variant | null
     /**
      * Get the names of the attributes the connected slot has.
      * @returns a string array of attribute names. Free with g_strfreev().
@@ -3623,19 +3623,19 @@ interface Connection {
      * Get the snap this connection is on.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
     /**
      * Check if the connected plug has an attribute.
      * @param name an attribute name.
      * @returns %TRUE if this attribute exists.
      */
-    has_plug_attribute(name: string | null): boolean
+    has_plug_attribute(name: string): boolean
     /**
      * Check if the connected slot has an attribute.
      * @param name an attribute name.
      * @returns %TRUE if this attribute exists.
      */
-    has_slot_attribute(name: string | null): boolean
+    has_slot_attribute(name: string): boolean
 
     // Class property signals of Snapd-1.Snapd.Connection
 
@@ -3727,12 +3727,12 @@ interface Icon {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Get the mime-type for this icon, e.g. "image/png".
      * @returns a MIME type.
      */
-    get_mime_type(): string | null
+    get_mime_type(): string
 
     // Class property signals of Snapd-1.Snapd.Icon
 
@@ -3800,12 +3800,12 @@ interface Interface {
      * Get the documentation URL of this interface.
      * @returns a URL.
      */
-    get_doc_url(): string | null
+    get_doc_url(): string
     /**
      * Get the name of this interface.
      * @returns a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the plugs matching this interface type.
      * @returns an array of #SnapdPlug.
@@ -3820,7 +3820,7 @@ interface Interface {
      * Get the summary of this interface.
      * @returns a summary.
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Make a label for this interface suitable for a user interface.
      * @returns a newly allocated label string.
@@ -3899,7 +3899,7 @@ interface Maintenance {
      * Get the user readable message associate with the maintenance state.
      * @returns message text.
      */
-    get_message(): string | null
+    get_message(): string
 
     // Class property signals of Snapd-1.Snapd.Maintenance
 
@@ -3974,7 +3974,7 @@ interface MarkdownNode {
      * %SNAPD_MARKDOWN_NODE_TYPE_TEXT.
      * @returns a UTF-8 string or %NULL if none in this node.
      */
-    get_text(): string | null
+    get_text(): string
 
     // Class property signals of Snapd-1.Snapd.MarkdownNode
 
@@ -4034,7 +4034,7 @@ interface MarkdownParser {
      * @param text text to parse.
      * @returns Text split into blocks.
      */
-    parse(text: string | null): MarkdownNode[]
+    parse(text: string): MarkdownNode[]
     /**
      * Consecutive paragraph whitespace (space, tabs, newlines) is automatically
      * combined into a single space character. This renders the paragraphs in the
@@ -4120,12 +4120,12 @@ interface Media {
      * Get the type for this media, e.g. "icon" or "screenshot".
      * @returns a type name
      */
-    get_media_type(): string | null
+    get_media_type(): string
     /**
      * Get the URL for this media, e.g. "http://example.com/media.png"
      * @returns a URL
      */
-    get_url(): string | null
+    get_url(): string
     /**
      * Get the width of the media in pixels or 0 if unknown.
      * @returns a width
@@ -4205,7 +4205,7 @@ interface Plug {
      * @param name an attribute name.
      * @returns an attribute value or %NULL if not set.
      */
-    get_attribute(name: string | null): GLib.Variant | null
+    get_attribute(name: string): GLib.Variant | null
     /**
      * Get the names of the attributes this plug has.
      * @returns a string array of attribute names. Free with g_strfreev().
@@ -4225,28 +4225,28 @@ interface Plug {
      * Get the name of the interface this plug provides.
      * @returns an interface name.
      */
-    get_interface(): string | null
+    get_interface(): string
     /**
      * Get a human readable label for this plug.
      * @returns a label.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Get the name of this plug.
      * @returns a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the snap this plug is on.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
     /**
      * Check if this plug has an attribute.
      * @param name an attribute name.
      * @returns %TRUE if this attribute exists.
      */
-    has_attribute(name: string | null): boolean
+    has_attribute(name: string): boolean
 
     // Class property signals of Snapd-1.Snapd.Plug
 
@@ -4318,12 +4318,12 @@ interface PlugRef {
      * Get the name of the plug.
      * @returns a name.
      */
-    get_plug(): string | null
+    get_plug(): string
     /**
      * Get the snap this plug is on.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
 
     // Class property signals of Snapd-1.Snapd.PlugRef
 
@@ -4388,7 +4388,7 @@ interface Price {
      * Get the currency this price is in, e.g. "NZD".
      * @returns an ISO 4217 currency code.
      */
-    get_currency(): string | null
+    get_currency(): string
 
     // Class property signals of Snapd-1.Snapd.Price
 
@@ -4455,7 +4455,7 @@ interface Screenshot {
      * Get the URL for this screenshot, e.g. "http://example.com/screenshot.png"
      * @returns a URL
      */
-    get_url(): string | null
+    get_url(): string
     /**
      * Get the width of the screenshot in pixels or 0 if unknown.
      * @returns a width
@@ -4532,7 +4532,7 @@ interface Slot {
      * @param name an attribute name.
      * @returns an attribute value or %NULL if not set.
      */
-    get_attribute(name: string | null): GLib.Variant | null
+    get_attribute(name: string): GLib.Variant | null
     /**
      * Get the names of the attributes this slot has.
      * @returns a string array of attribute names. Free with g_strfreev().
@@ -4552,28 +4552,28 @@ interface Slot {
      * Get the name of the interface this slot accepts.
      * @returns an interface name.
      */
-    get_interface(): string | null
+    get_interface(): string
     /**
      * Get a human readable label for this slot.
      * @returns a label.
      */
-    get_label(): string | null
+    get_label(): string
     /**
      * Get the name of this slot.
      * @returns a name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the snap this slot is on.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
     /**
      * Check if this slot has an attribute.
      * @param name an attribute name.
      * @returns %TRUE if this attribute exists.
      */
-    has_attribute(name: string | null): boolean
+    has_attribute(name: string): boolean
 
     // Class property signals of Snapd-1.Snapd.Slot
 
@@ -4645,12 +4645,12 @@ interface SlotRef {
      * Get the name of the slot.
      * @returns a name.
      */
-    get_slot(): string | null
+    get_slot(): string
     /**
      * Get the snap this slot is on.
      * @returns a snap name.
      */
-    get_snap(): string | null
+    get_snap(): string
 
     // Class property signals of Snapd-1.Snapd.SlotRef
 
@@ -4819,7 +4819,7 @@ interface Snap {
      * Get the channel this snap is from, e.g. "stable".
      * @returns a channel name.
      */
-    get_channel(): string | null
+    get_channel(): string
     /**
      * Gets the available channels for this snap.
      * @returns an array of #SnapdChannel.
@@ -4839,18 +4839,18 @@ interface Snap {
      * Get the means of contacting the snap developer, e.g. "mailto:developer`example`.com".
      * @returns a contact URL.
      */
-    get_contact(): string | null
+    get_contact(): string
     /**
      * Get a multi-line description of this snap. The description is formatted using
      * a subset of Markdown. To parse this use a #SnapdMarkdownParser.
      * @returns description text.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Get the developer who created this snap.
      * @returns a developer name.
      */
-    get_developer(): string | null
+    get_developer(): string
     /**
      * Get if this snap is running in developer mode.
      * @returns %TRUE if this snap is running in devmode.
@@ -4866,12 +4866,12 @@ interface Snap {
      * from snapd directly.
      * @returns a URL or path.
      */
-    get_icon(): string | null
+    get_icon(): string
     /**
      * Gets the unique ID for this snap.
      * @returns an ID.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Get the date this snap was installed or %NULL if unknown.
      * @returns a #GDateTime or %NULL.
@@ -4908,7 +4908,7 @@ interface Snap {
      * installing / removing.
      * @returns a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the prices that this snap can be purchased at.
      * @returns an array of #SnapdPrice.
@@ -4923,17 +4923,17 @@ interface Snap {
      * Get the display name of the publisher who created this snap.
      * @returns a publisher display name.
      */
-    get_publisher_display_name(): string | null
+    get_publisher_display_name(): string
     /**
      * Get the ID of the publisher who created this snap.
      * @returns a publisher ID.
      */
-    get_publisher_id(): string | null
+    get_publisher_id(): string
     /**
      * Get the username of the publisher who created this snap.
      * @returns a publisher username.
      */
-    get_publisher_username(): string | null
+    get_publisher_username(): string
     /**
      * Get the validation for the snap publisher, e.g. %SNAPD_PUBLISHER_VALIDATION_VERIFIED
      * @returns a #SnapdPublisherValidation.
@@ -4944,7 +4944,7 @@ interface Snap {
      * See also snapd_snap_get_version().
      * @returns a revision string.
      */
-    get_revision(): string | null
+    get_revision(): string
     /**
      * Get the screenshots that are available for this snap.
      * @returns an array of #SnapdScreenshot.
@@ -4964,7 +4964,7 @@ interface Snap {
      * Get a single line summary for this snap, e.g. "Best app ever!".
      * @returns a summary string.
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Get the title for this snap. If not available use the snap name instead.
      * @returns a title or %NULL.
@@ -4974,7 +4974,7 @@ interface Snap {
      * Get the channel that updates will be installed from, e.g. "stable".
      * @returns a channel name.
      */
-    get_tracking_channel(): string | null
+    get_tracking_channel(): string
     /**
      * Get the tracks that are available.
      * @returns an ordered array of track names.
@@ -4991,19 +4991,19 @@ interface Snap {
      * See also snapd_snap_get_revision().
      * @returns a version string.
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Get the website of the snap developer, e.g. "http://example.com".
      * @returns a website URL.
      */
-    get_website(): string | null
+    get_website(): string
     /**
      * Finds the available channel that best matches the given name.
      * If none matches %NULL is returned.
      * @param name a channel name.
      * @returns an #SnapdChannel or %NULL.
      */
-    match_channel(name: string | null): Channel | null
+    match_channel(name: string): Channel | null
 
     // Class property signals of Snapd-1.Snapd.Snap
 
@@ -5229,12 +5229,12 @@ interface SystemInformation {
      * Get the directory snap binaries are stored, e.g. "/snap/bin".
      * @returns a directory.
      */
-    get_binaries_directory(): string | null
+    get_binaries_directory(): string
     /**
      * Gets the unique build ID for the snap build, e.g. "efdd0b5e69b0742fa5e5bad0771df4d1df2459d1"
      * @returns a build ID.
      */
-    get_build_id(): string | null
+    get_build_id(): string
     /**
      * Get the level of confinement the system supports, e.g. %SNAPD_SYSTEM_CONFINEMENT_STRICT.
      * @returns a #SnapdSystemConfinement.
@@ -5244,7 +5244,7 @@ interface SystemInformation {
      * Get the version of the kernel snapd is running on, e.g. "4.10.0-15-generic".
      * @returns a version string.
      */
-    get_kernel_version(): string | null
+    get_kernel_version(): string
     /**
      * Get if snapd is running on a managed system.
      * @returns %TRUE if running on a managed system.
@@ -5254,7 +5254,7 @@ interface SystemInformation {
      * Get the directory snaps are mounted, e.g. "/snap".
      * @returns a directory.
      */
-    get_mount_directory(): string | null
+    get_mount_directory(): string
     /**
      * Get if this system is a classic system.
      * @returns %TRUE if running on a classic system.
@@ -5264,12 +5264,12 @@ interface SystemInformation {
      * Get the operating system ID, e.g. "ubuntu".
      * @returns an operating system ID.
      */
-    get_os_id(): string | null
+    get_os_id(): string
     /**
      * Get the operating system version, e.g. "16.04".
      * @returns a version string.
      */
-    get_os_version(): string | null
+    get_os_version(): string
     /**
      * Get the time refreshes will be applied at, or %NULL if they are applied immediately.
      * @returns a #GDateTime.
@@ -5306,7 +5306,7 @@ interface SystemInformation {
      * Get the series of snapd running, e.g. "16".
      * @returns a series string.
      */
-    get_series(): string | null
+    get_series(): string
     /**
      * Get the store being used by snapd, e.g. "Ubuntu"
      * @returns a store id or %NULL.
@@ -5316,7 +5316,7 @@ interface SystemInformation {
      * Get the version of snapd running, e.g. "2.11+ppa174-1".
      * @returns a version string.
      */
-    get_version(): string | null
+    get_version(): string
 
     // Class property signals of Snapd-1.Snapd.SystemInformation
 
@@ -5450,12 +5450,12 @@ interface Task {
      * Get the unique ID for this task.
      * @returns an ID.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the kind of task this is.
      * @returns the kind of task.
      */
-    get_kind(): string | null
+    get_kind(): string
     /**
      * Get the the number of items completed in this task.
      * @returns a count.
@@ -5465,7 +5465,7 @@ interface Task {
      * Get the the label associated with the progress.
      * @returns a label string.
      */
-    get_progress_label(): string | null
+    get_progress_label(): string
     /**
      * Get the the total number of items to be completed in this task.
      * @returns a count.
@@ -5490,12 +5490,12 @@ interface Task {
      * Get the status of the task.
      * @returns a status string.
      */
-    get_status(): string | null
+    get_status(): string
     /**
      * Get a human readable description of the task.
      * @returns a string describing the task.
      */
-    get_summary(): string | null
+    get_summary(): string
 
     // Class property signals of Snapd-1.Snapd.Task
 
@@ -5594,7 +5594,7 @@ interface UserInformation {
      * Get the email address for this account.
      * @returns a email address.
      */
-    get_email(): string | null
+    get_email(): string
     /**
      * Get the id for this account.
      * @returns a user id.
@@ -5609,7 +5609,7 @@ interface UserInformation {
      * Get the local username for this account.
      * @returns a username.
      */
-    get_username(): string | null
+    get_username(): string
 
     // Class property signals of Snapd-1.Snapd.UserInformation
 

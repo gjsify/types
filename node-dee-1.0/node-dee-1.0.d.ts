@@ -93,15 +93,15 @@ enum TermMatchFlag {
      */
     PREFIX,
 }
-const PEER_DBUS_IFACE: string | null
+const PEER_DBUS_IFACE: string
 /**
  * String constant defining the name of the DBus Model interface.
  */
-const SEQUENCE_MODEL_DBUS_IFACE: string | null
+const SEQUENCE_MODEL_DBUS_IFACE: string
 /**
  * String constant defining the name of the DBus Model interface.
  */
-const SHARED_MODEL_DBUS_IFACE: string | null
+const SHARED_MODEL_DBUS_IFACE: string
 /**
  * Create a new #DeeFilter with the given parameters. This call will zero
  * the `out_filter` struct.
@@ -143,7 +143,7 @@ function filterNewForAnyColumn(column: number, value: GLib.Variant): /* outFilte
  * @param column The index of a column containing the string key to match
  * @param key 
  */
-function filterNewForKeyColumn(column: number, key: string | null): /* outFilter */ Filter
+function filterNewForKeyColumn(column: number, key: string): /* outFilter */ Filter
 /**
  * Create a #DeeFilter that only includes rows from the original model
  * which match a regular expression on some string column. A #DeeFilterModel
@@ -225,7 +225,7 @@ function serializableParseExternal(data: GLib.Variant): GObject.Object
  * @returns The collation key. Free with g_free() when done                           using it.
  */
 interface CollatorFunc {
-    (input: string | null): string | null
+    (input: string): string | null
 }
 /**
  * Compares `row1` and `row2`. Mainly used with dee_model_insert_sorted() and
@@ -295,7 +295,7 @@ interface FilterMapNotify {
  * @returns %FALSE if iteration should stop, %TRUE if it should continue
  */
 interface IndexIterFunc {
-    (key: string | null, rows: ResultSet): boolean
+    (key: string, rows: ResultSet): boolean
 }
 /**
  * Extracts a string from a row in a model.
@@ -407,11 +407,11 @@ interface Model {
      */
     findRowSortedWithSizes(rowSpec: GLib.Variant[], cmpFunc: CompareRowSizedFunc): [ /* returnType */ ModelIter, /* outWasFound */ boolean ]
     // Has conflict: getBool(iter: ModelIter, column: number): boolean
-    // Has conflict: getColumnIndex(columnName: string | null): number
+    // Has conflict: getColumnIndex(columnName: string): number
     // Has conflict: getColumnNames(): string[]
-    // Has conflict: getColumnSchema(column: number): string | null
+    // Has conflict: getColumnSchema(column: number): string
     // Has conflict: getDouble(iter: ModelIter, column: number): number
-    // Has conflict: getFieldSchema(fieldName: string | null): [ /* returnType */ string | null, /* outColumn */ number ]
+    // Has conflict: getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     // Has conflict: getFirstIter(): ModelIter
     // Has conflict: getInt32(iter: ModelIter, column: number): number
     // Has conflict: getInt64(iter: ModelIter, column: number): number
@@ -422,13 +422,13 @@ interface Model {
     // Has conflict: getPosition(iter: ModelIter): number
     // Has conflict: getRow(iter: ModelIter): [ /* returnType */ GLib.Variant[], /* outRowMembers */ GLib.Variant[] ]
     // Has conflict: getSchema(): string[]
-    // Has conflict: getString(iter: ModelIter, column: number): string | null
+    // Has conflict: getString(iter: ModelIter, column: number): string
     // Has conflict: getTag(iter: ModelIter, tag: ModelTag): any | null
     // Has conflict: getUchar(iter: ModelIter, column: number): number
     // Has conflict: getUint32(iter: ModelIter, column: number): number
     // Has conflict: getUint64(iter: ModelIter, column: number): number
     // Has conflict: getValue(iter: ModelIter, column: number): GLib.Variant
-    // Has conflict: getValueByName(iter: ModelIter, columnName: string | null): GLib.Variant
+    // Has conflict: getValueByName(iter: ModelIter, columnName: string): GLib.Variant
     // Has conflict: getVardictSchema(column: number): GLib.HashTable
     // Has conflict: insertRow(pos: number, rowMembers: GLib.Variant[]): ModelIter
     // Has conflict: insertRowBefore(iter: ModelIter, rowMembers: GLib.Variant[]): ModelIter
@@ -533,7 +533,7 @@ interface Model {
      * @param columnName the column name to retrieve the index of
      * @returns 0-based index of the column or -1 if column with this name               wasn't found
      */
-    getColumnIndex(columnName: string | null): number
+    getColumnIndex(columnName: string): number
     /**
      * Get a %NULL-terminated array of column names for the columns of `self`.
      * These names can be used in calls to dee_model_build_named_row().
@@ -547,7 +547,7 @@ interface Model {
      * @param column the column to get retrieve the #GVariant type string of
      * @returns the #GVariant signature of the column at index @column
      */
-    getColumnSchema(column: number): string | null
+    getColumnSchema(column: number): string
     getDouble(iter: ModelIter, column: number): number
     /**
      * Get the #GVariant signature of field previously registered with
@@ -556,7 +556,7 @@ interface Model {
      * @param fieldName name of vardict field to get schema of
      * @returns the #GVariant signature for the field, or %NULL if given field               wasn't registered with dee_model_register_vardict_schema().
      */
-    getFieldSchema(fieldName: string | null): [ /* returnType */ string | null, /* outColumn */ number ]
+    getFieldSchema(fieldName: string): [ /* returnType */ string, /* outColumn */ number ]
     /**
      * Retrieves a #DeeModelIter representing the first row in `self`.
      * @virtual 
@@ -614,7 +614,7 @@ interface Model {
      * @returns           A %NULL-terminated array of #GVariant type strings. The length of          the returned array is written to @num_columns. The returned array          should not be freed or modified. It is owned by the model.
      */
     getSchema(): string[]
-    getString(iter: ModelIter, column: number): string | null
+    getString(iter: ModelIter, column: number): string
     /**
      * Look up a tag value for a given row in a model. This method is guaranteed
      * to be O(1).
@@ -628,7 +628,7 @@ interface Model {
     getUint32(iter: ModelIter, column: number): number
     getUint64(iter: ModelIter, column: number): number
     getValue(iter: ModelIter, column: number): GLib.Variant
-    getValueByName(iter: ModelIter, columnName: string | null): GLib.Variant
+    getValueByName(iter: ModelIter, columnName: string): GLib.Variant
     /**
      * Get a schema for variant dictionary column previously registered using
      * dee_model_register_vardict_schema().
@@ -874,8 +874,8 @@ interface ResourceManager {
 
     // Owm methods of Dee-1.0.Dee.ResourceManager
 
-    // Has conflict: load(resourceName: string | null): GObject.Object
-    // Has conflict: store(resource: Serializable, resourceName: string | null): boolean
+    // Has conflict: load(resourceName: string): GObject.Object
+    // Has conflict: store(resource: Serializable, resourceName: string): boolean
 
     // Own virtual methods of Dee-1.0.Dee.ResourceManager
 
@@ -895,7 +895,7 @@ interface ResourceManager {
      * @param resourceName The name of the resource to retrieve
      * @returns A newly allocated #GObject in case of success               and %NULL otherwise. In case of a runtime error the @error               pointer will be set.
      */
-    load(resourceName: string | null): GObject.Object
+    load(resourceName: string): GObject.Object
     /**
      * Store a resource under a given name. The resource manager must guarantee
      * that the stored data survives system reboots and that you can recreate a
@@ -910,7 +910,7 @@ interface ResourceManager {
      * @param resourceName The name to store the resource under. Will overwrite any                 existing resource with the same name
      * @returns %TRUE on success and %FALSE otherwise. In case of a runtime               error the @error pointer will point to a #GError in the               #DeeResourceError domain.
      */
-    store(resource: Serializable, resourceName: string | null): boolean
+    store(resource: Serializable, resourceName: string): boolean
 
     // Class property signals of Dee-1.0.Dee.ResourceManager
 
@@ -1171,10 +1171,10 @@ interface Analyzer {
     // Owm methods of Dee-1.0.Dee.Analyzer
 
     // Has conflict: addTermFilter(filterFunc: TermFilterFunc): void
-    // Has conflict: analyze(data: string | null, termsOut: TermList | null, colkeysOut: TermList | null): void
-    // Has conflict: collateCmp(key1: string | null, key2: string | null): number
-    // Has conflict: collateKey(data: string | null): string | null
-    // Has conflict: tokenize(data: string | null, termsOut: TermList): void
+    // Has conflict: analyze(data: string, termsOut: TermList | null, colkeysOut: TermList | null): void
+    // Has conflict: collateCmp(key1: string, key2: string): number
+    // Has conflict: collateKey(data: string): string | null
+    // Has conflict: tokenize(data: string, termsOut: TermList): void
 
     // Own virtual methods of Dee-1.0.Dee.Analyzer
 
@@ -1204,7 +1204,7 @@ interface Analyzer {
      * @param termsOut A #DeeTermList to place the generated terms in.                           If %NULL to terms are generated
      * @param colkeysOut A #DeeTermList to place generated collation keys in.                             If %NULL no collation keys are generated
      */
-    analyze(data: string | null, termsOut: TermList | null, colkeysOut: TermList | null): void
+    analyze(data: string, termsOut: TermList | null, colkeysOut: TermList | null): void
     /**
      * Compare collation keys generated by dee_analyzer_collate_key() with similar
      * semantics as strcmp(). See also dee_analyzer_collate_cmp_func() if you
@@ -1216,7 +1216,7 @@ interface Analyzer {
      * @param key2 The second collation key to compare
      * @returns -1, 0 or 1, if @key1 is &lt;, == or &gt; than @key2.
      */
-    collateCmp(key1: string | null, key2: string | null): number
+    collateCmp(key1: string, key2: string): number
     /**
      * Generate a collation key for a set of input data (usually a UTF-8 string
      * passed through tokenization and term filters of the analyzer).
@@ -1226,7 +1226,7 @@ interface Analyzer {
      * @param data The input data to generate a collation key for
      * @returns A newly allocated collation key. Use dee_analyzer_collate_cmp() or          dee_analyzer_collate_cmp_func() to compare collation keys. Free          with g_free().
      */
-    collateKey(data: string | null): string | null
+    collateKey(data: string): string | null
     /**
      * Tokenize some input data (which is normally, but not necessarily,
      * a UTF-8 string).
@@ -1238,7 +1238,7 @@ interface Analyzer {
      * @param data The input data to analyze
      * @param termsOut A #DeeTermList to place the generated tokens in.
      */
-    tokenize(data: string | null, termsOut: TermList): void
+    tokenize(data: string, termsOut: TermList): void
 
     // Class property signals of Dee-1.0.Dee.Analyzer
 
@@ -1280,7 +1280,7 @@ class Analyzer extends GObject.Object {
      * @param analyzer The #DeeAnalyzer to use for the comparison
      * @returns -1, 0 or 1, if @key1 is &lt;, == or &gt; than @key2.
      */
-    static collateCmpFunc(key1: string | null, key2: string | null, analyzer: any | null): number
+    static collateCmpFunc(key1: string, key2: string, analyzer: any | null): number
 }
 
 module Client {
@@ -1355,7 +1355,7 @@ class Client extends Peer {
      * @param swarmName Name of swarm to join.
      * @returns A newly constructed #DeeClient.
      */
-    constructor(swarmName: string | null) 
+    constructor(swarmName: string) 
     /**
      * Creates a new instance of #DeeClient and tries to connect to #DeeServer
      * created using dee_server_new(). The #DeePeer:swarm-leader property will
@@ -1364,7 +1364,7 @@ class Client extends Peer {
      * @param swarmName Name of swarm to join.
      * @returns A newly constructed #DeeClient.
      */
-    static new(swarmName: string | null): Client
+    static new(swarmName: string): Client
 
     // Overloads of new
 
@@ -1375,7 +1375,7 @@ class Client extends Peer {
      * @param swarmName The name of the swarm to join.              Fx &quot;org.example.DataProviders&quot;
      * @returns A newly constructed #DeePeer.               Free with g_object_unref().
      */
-    static new(swarmName: string | null): Peer
+    static new(swarmName: string): Peer
     /**
      * Creates a new instance of #DeeClient and tries to connect to `bus_address`.
      * The #DeePeer:swarm-leader property will be set once the client connects.
@@ -1384,7 +1384,7 @@ class Client extends Peer {
      * @param busAddress D-Bus address to use when connecting to the server.
      * @returns A newly constructed #DeeClient.
      */
-    static newForAddress(swarmName: string | null, busAddress: string | null): Client
+    static newForAddress(swarmName: string, busAddress: string): Client
     _init(config?: Client.ConstructorProperties): void
 }
 
@@ -1426,12 +1426,12 @@ interface FileResourceManager extends ResourceManager {
      * search paths in the order they where added.
      * @param path The path to add to the set of searched paths
      */
-    addSearchPath(path: string | null): void
+    addSearchPath(path: string): void
     /**
      * Helper method to access the :primary-path property.
      * @returns The value of the :primary-path property
      */
-    getPrimaryPath(): string | null
+    getPrimaryPath(): string
 
     // Class property signals of Dee-1.0.Dee.FileResourceManager
 
@@ -1475,7 +1475,7 @@ class FileResourceManager extends GObject.Object {
      * @param primaryPath The primary path used to store and load resources.                If you pass %NULL the manager will use a default path.
      * @returns A newly allocated #DeeFileResourceManager.               Free with g_object_unref().
      */
-    constructor(primaryPath: string | null) 
+    constructor(primaryPath: string) 
     /**
      * Create a new #DeeFileResourceManager with its primary store- and load
      * path set to `primary_path`.
@@ -1489,7 +1489,7 @@ class FileResourceManager extends GObject.Object {
      * @param primaryPath The primary path used to store and load resources.                If you pass %NULL the manager will use a default path.
      * @returns A newly allocated #DeeFileResourceManager.               Free with g_object_unref().
      */
-    static new(primaryPath: string | null): FileResourceManager
+    static new(primaryPath: string): FileResourceManager
     _init(config?: FileResourceManager.ConstructorProperties): void
 }
 
@@ -1809,7 +1809,7 @@ interface Index {
 
     // Owm methods of Dee-1.0.Dee.Index
 
-    // Has conflict: foreach(startTerm: string | null, func: IndexIterFunc): void
+    // Has conflict: foreach(startTerm: string, func: IndexIterFunc): void
     /**
      * Get the analyzer being used to analyze terms extracted with the
      * #DeeModelReader used by this index.
@@ -1822,7 +1822,7 @@ interface Index {
      */
     getModel(): Model
     // Has conflict: getNRows(): number
-    // Has conflict: getNRowsForTerm(term: string | null): number
+    // Has conflict: getNRowsForTerm(term: string): number
     // Has conflict: getNTerms(): number
     /**
      * Get the reader being used to extract terms from rows in the model
@@ -1830,7 +1830,7 @@ interface Index {
      */
     getReader(): ModelReader
     // Has conflict: getSupportedTermMatchFlags(): number
-    // Has conflict: lookup(term: string | null, flags: TermMatchFlag): ResultSet
+    // Has conflict: lookup(term: string, flags: TermMatchFlag): ResultSet
     /**
      * Convenience function in for cases where you have a priori guarantee that
      * a dee_index_lookup() call will return exactly 0 or 1 row. If the lookup
@@ -1842,7 +1842,7 @@ interface Index {
      * @param term The exact term to match
      * @returns A #DeeModelIter pointing to the matching               row or %NULL in case no rows matches @term
      */
-    lookupOne(term: string | null): ModelIter
+    lookupOne(term: string): ModelIter
 
     // Own virtual methods of Dee-1.0.Dee.Index
 
@@ -1854,7 +1854,7 @@ interface Index {
      * @param startTerm The term to start from or %NULL to iterate over all terms
      * @param func Called for each term in the index
      */
-    foreach(startTerm: string | null, func: IndexIterFunc): void
+    foreach(startTerm: string, func: IndexIterFunc): void
     /**
      * Get the number of indexed rows. A row is only indexed if it has at least one
      * term associated with it. If the analyzer has returned 0 terms then the row
@@ -1869,7 +1869,7 @@ interface Index {
      * @param term The term to look for
      * @returns The number of rows in the index registered for the given term
      */
-    getNRowsForTerm(term: string | null): number
+    getNRowsForTerm(term: string): number
     /**
      * Get the number of terms in the index
      * @virtual 
@@ -1882,7 +1882,7 @@ interface Index {
      * @returns A bit mask of the acceptedd #DeeTermMatchFlag<!-- -->s
      */
     getSupportedTermMatchFlags(): number
-    lookup(term: string | null, flags: TermMatchFlag): ResultSet
+    lookup(term: string, flags: TermMatchFlag): ResultSet
 
     // Class property signals of Dee-1.0.Dee.Index
 
@@ -1988,13 +1988,13 @@ interface Peer {
     // Owm methods of Dee-1.0.Dee.Peer
 
     // Has conflict: getConnections(): Gio.DBusConnection[]
-    // Has conflict: getSwarmLeader(): string | null
+    // Has conflict: getSwarmLeader(): string
     /**
      * Gets the unique name for this swarm. The swarm leader is the Peer owning
      * this name on the session bus.
      * @returns The swarm name
      */
-    getSwarmName(): string | null
+    getSwarmName(): string
     // Has conflict: isSwarmLeader(): boolean
     /**
      * Gets the value of the :swarm-owner property.
@@ -2022,7 +2022,7 @@ interface Peer {
      * @virtual 
      * @returns Unique DBus address of the current swarm leader,    possibly %NULL if the leader has not been detected yet
      */
-    getSwarmLeader(): string | null
+    getSwarmLeader(): string
     isSwarmLeader(): boolean
     /**
      * Gets list of all peers currently in this swarm.
@@ -2030,8 +2030,8 @@ interface Peer {
      * @returns List of peers (free using g_strfreev()).
      */
     listPeers(): string[]
-    peerFound(name: string | null): void
-    peerLost(name: string | null): void
+    peerFound(name: string): void
+    peerLost(name: string): void
 
     // Own signals of Dee-1.0.Dee.Peer
 
@@ -2107,7 +2107,7 @@ class Peer extends GObject.Object {
      * @param swarmName The name of the swarm to join.              Fx &quot;org.example.DataProviders&quot;
      * @returns A newly constructed #DeePeer.               Free with g_object_unref().
      */
-    constructor(swarmName: string | null) 
+    constructor(swarmName: string) 
     /**
      * Create a new #DeePeer. The peer will immediately connect to the swarm
      * and start the peer discovery.
@@ -2115,7 +2115,7 @@ class Peer extends GObject.Object {
      * @param swarmName The name of the swarm to join.              Fx &quot;org.example.DataProviders&quot;
      * @returns A newly constructed #DeePeer.               Free with g_object_unref().
      */
-    static new(swarmName: string | null): Peer
+    static new(swarmName: string): Peer
     _init(config?: Peer.ConstructorProperties): void
 }
 
@@ -2369,7 +2369,7 @@ interface Server {
      * Gets a D-Bus address string that can be used by clients to connect to server.
      * @returns A D-Bus address string. Do not free.
      */
-    getClientAddress(): string | null
+    getClientAddress(): string
 
     // Class property signals of Dee-1.0.Dee.Server
 
@@ -2438,7 +2438,7 @@ class Server extends Peer {
      * @param swarmName Name of swarm to join.
      * @returns A newly constructed #DeeServer.
      */
-    constructor(swarmName: string | null) 
+    constructor(swarmName: string) 
     /**
      * Creates a new instance of #DeeServer and tries to bind
      * to #DeeServer:bus-address. The #DeePeer:swarm-leader property will be set
@@ -2457,7 +2457,7 @@ class Server extends Peer {
      * @param swarmName Name of swarm to join.
      * @returns A newly constructed #DeeServer.
      */
-    static new(swarmName: string | null): Server
+    static new(swarmName: string): Server
 
     // Overloads of new
 
@@ -2468,7 +2468,7 @@ class Server extends Peer {
      * @param swarmName The name of the swarm to join.              Fx &quot;org.example.DataProviders&quot;
      * @returns A newly constructed #DeePeer.               Free with g_object_unref().
      */
-    static new(swarmName: string | null): Peer
+    static new(swarmName: string): Peer
     /**
      * Creates a new instance of #DeeServer and tries to bind to `bus_address`.
      * The #DeePeer:swarm-leader property will be set when the binding succeeds.
@@ -2490,7 +2490,7 @@ class Server extends Peer {
      * @param busAddress D-Bus address to use for the connection.
      * @returns A newly constructed #DeeServer.
      */
-    static newForAddress(swarmName: string | null, busAddress: string | null): Server
+    static newForAddress(swarmName: string, busAddress: string): Server
     _init(config?: Server.ConstructorProperties): void
     /**
      * Helper method which creates bus address string for the given name, which
@@ -2499,7 +2499,7 @@ class Server extends Peer {
      * @param includeUsername Include current user name as part of the bus address.
      * @returns Newly allocated string with bus address.                                Use g_free() to free.
      */
-    static busAddressForName(name: string | null, includeUsername: boolean): string | null
+    static busAddressForName(name: string, includeUsername: boolean): string | null
 }
 
 module SharedModel {
@@ -2640,7 +2640,7 @@ interface SharedModel extends Model, Serializable {
      * #DeePeer defined in the #DeeSharedModel:peer property.
      * @returns The name of the swarm this model synchrnonizes with
      */
-    getSwarmName(): string | null
+    getSwarmName(): string
     /**
      * Check if the model is the swarm leader. This is a convenience function for
      * accessing the #DeeSharedModel:peer property and checking if it's the swarm
@@ -2757,7 +2757,7 @@ class SharedModel extends ProxyModel {
      * @param name A well known name to publish this model under. Models sharing this name        will synchronize with each other
      * @returns a new #DeeSharedModel
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Create a new empty shared model without any column schema associated.
      * The column schema will be set in one of two ways: firstly you may set it
@@ -2773,7 +2773,7 @@ class SharedModel extends ProxyModel {
      * @param name A well known name to publish this model under. Models sharing this name        will synchronize with each other
      * @returns a new #DeeSharedModel
      */
-    static new(name: string | null): SharedModel
+    static new(name: string): SharedModel
     /**
      * Create a new empty shared model without any column schema associated.
      * The column schema will be set in one of two ways: firstly you may set it
@@ -2800,7 +2800,7 @@ class SharedModel extends ProxyModel {
      * @param backEnd The #DeeModel that will actually store            the model data. Ownership of the ref to `back_end` is transfered to            the shared model.
      * @returns a new #DeeSharedModel
      */
-    static newWithBackEnd(name: string | null, backEnd: Model): SharedModel
+    static newWithBackEnd(name: string, backEnd: Model): SharedModel
     _init(config?: SharedModel.ConstructorProperties): void
 }
 
@@ -2821,10 +2821,10 @@ interface TermList {
 
     // Owm methods of Dee-1.0.Dee.TermList
 
-    // Has conflict: addTerm(term: string | null): TermList
+    // Has conflict: addTerm(term: string): TermList
     // Has conflict: clear(): TermList
     // Has conflict: clone(): TermList
-    // Has conflict: getTerm(n: number): string | null
+    // Has conflict: getTerm(n: number): string
     // Has conflict: numTerms(): number
 
     // Own virtual methods of Dee-1.0.Dee.TermList
@@ -2837,7 +2837,7 @@ interface TermList {
      * @param term The term to add
      * @returns Always returns @self
      */
-    addTerm(term: string | null): TermList
+    addTerm(term: string): TermList
     /**
      * Remove all terms from a term list making it ready for reuse. Note that
      * term list implementations will often have optimized memory allocation
@@ -2875,7 +2875,7 @@ interface TermList {
      * @param n The (zero based) offset into the term list
      * @returns The @n<!-- -->th string held in the term list
      */
-    getTerm(n: number): string | null
+    getTerm(n: number): string
     numTerms(): number
 
     // Class property signals of Dee-1.0.Dee.TermList
@@ -3128,11 +3128,11 @@ interface AnalyzerClass {
 
     // Own fields of Dee-1.0.Dee.AnalyzerClass
 
-    analyze: (self: Analyzer, data: string | null, termsOut: TermList | null, colkeysOut: TermList | null) => void
-    tokenize: (self: Analyzer, data: string | null, termsOut: TermList) => void
+    analyze: (self: Analyzer, data: string, termsOut: TermList | null, colkeysOut: TermList | null) => void
+    tokenize: (self: Analyzer, data: string, termsOut: TermList) => void
     addTermFilter: (self: Analyzer, filterFunc: TermFilterFunc) => void
-    collateKey: (self: Analyzer, data: string | null) => string | null
-    collateCmp: (self: Analyzer, key1: string | null, key2: string | null) => number
+    collateKey: (self: Analyzer, data: string) => string | null
+    collateCmp: (self: Analyzer, key1: string, key2: string) => number
 }
 
 abstract class AnalyzerClass {
@@ -3291,7 +3291,7 @@ class Filter {
      * @param column The index of a column containing the string key to match
      * @param key 
      */
-    static newForKeyColumn(column: number, key: string | null): /* outFilter */ Filter
+    static newForKeyColumn(column: number, key: string): /* outFilter */ Filter
     /**
      * Create a #DeeFilter that only includes rows from the original model
      * which match a regular expression on some string column. A #DeeFilterModel
@@ -3378,7 +3378,7 @@ interface ICUTermFilter {
      * @param text The text to apply the filter on
      * @returns A newly allocated string. Free with g_free().
      */
-    apply(text: string | null): string | null
+    apply(text: string): string | null
     /**
      * Free all resources allocated by a #DeeICUTermFilter.
      */
@@ -3397,11 +3397,11 @@ interface IndexClass {
     // Own fields of Dee-1.0.Dee.IndexClass
 
     parentClass: GObject.ObjectClass
-    lookup: (self: Index, term: string | null, flags: TermMatchFlag) => ResultSet
-    foreach: (self: Index, startTerm: string | null, func: IndexIterFunc) => void
+    lookup: (self: Index, term: string, flags: TermMatchFlag) => ResultSet
+    foreach: (self: Index, startTerm: string, func: IndexIterFunc) => void
     getNTerms: (self: Index) => number
     getNRows: (self: Index) => number
-    getNRowsForTerm: (self: Index, term: string | null) => number
+    getNRowsForTerm: (self: Index, term: string) => number
     getSupportedTermMatchFlags: (self: Index) => number
 }
 
@@ -3436,9 +3436,9 @@ interface ModelIface {
     rowChanged: (self: Model, iter: ModelIter) => void
     setSchemaFull: (self: Model, columnSchemas: string[]) => void
     getSchema: (self: Model) => string[]
-    getColumnSchema: (self: Model, column: number) => string | null
-    getFieldSchema: (self: Model, fieldName: string | null) => [ /* returnType */ string | null, /* outColumn */ number ]
-    getColumnIndex: (self: Model, columnName: string | null) => number
+    getColumnSchema: (self: Model, column: number) => string
+    getFieldSchema: (self: Model, fieldName: string) => [ /* returnType */ string, /* outColumn */ number ]
+    getColumnIndex: (self: Model, columnName: string) => number
     setColumnNamesFull: (self: Model, columnNames: string[]) => void
     getColumnNames: (self: Model) => string[]
     registerVardictSchema: (self: Model, numColumn: number, schemas: GLib.HashTable) => void
@@ -3456,7 +3456,7 @@ interface ModelIface {
     setValue: (self: Model, iter: ModelIter, column: number, value: GLib.Variant) => void
     setRow: (self: Model, iter: ModelIter, rowMembers: GLib.Variant[]) => void
     getValue: (self: Model, iter: ModelIter, column: number) => GLib.Variant
-    getValueByName: (self: Model, iter: ModelIter, columnName: string | null) => GLib.Variant
+    getValueByName: (self: Model, iter: ModelIter, columnName: string) => GLib.Variant
     getFirstIter: (self: Model) => ModelIter
     getLastIter: (self: Model) => ModelIter
     getIterAtRow: (self: Model, row: number) => ModelIter
@@ -3467,7 +3467,7 @@ interface ModelIface {
     getInt64: (self: Model, iter: ModelIter, column: number) => number
     getUint64: (self: Model, iter: ModelIter, column: number) => number
     getDouble: (self: Model, iter: ModelIter, column: number) => number
-    getString: (self: Model, iter: ModelIter, column: number) => string | null
+    getString: (self: Model, iter: ModelIter, column: number) => string
     next: (self: Model, iter: ModelIter) => ModelIter
     prev: (self: Model, iter: ModelIter) => ModelIter
     isFirst: (self: Model, iter: ModelIter) => boolean
@@ -3596,11 +3596,11 @@ interface PeerClass {
 
     // Own fields of Dee-1.0.Dee.PeerClass
 
-    peerFound: (self: Peer, name: string | null) => void
-    peerLost: (self: Peer, name: string | null) => void
+    peerFound: (self: Peer, name: string) => void
+    peerLost: (self: Peer, name: string) => void
     connectionAcquired: (self: Peer, connection: Gio.DBusConnection) => void
     connectionClosed: (self: Peer, connection: Gio.DBusConnection) => void
-    getSwarmLeader: (self: Peer) => string | null
+    getSwarmLeader: (self: Peer) => string
     isSwarmLeader: (self: Peer) => boolean
     getConnections: (self: Peer) => Gio.DBusConnection[]
     listPeers: (self: Peer) => string[]
@@ -3656,8 +3656,8 @@ interface ResourceManagerIface {
     // Own fields of Dee-1.0.Dee.ResourceManagerIface
 
     gIface: GObject.TypeInterface
-    store: (self: ResourceManager, resource: Serializable, resourceName: string | null) => boolean
-    load: (self: ResourceManager, resourceName: string | null) => GObject.Object
+    store: (self: ResourceManager, resource: Serializable, resourceName: string) => boolean
+    load: (self: ResourceManager, resourceName: string) => GObject.Object
 }
 
 abstract class ResourceManagerIface {
@@ -3810,8 +3810,8 @@ interface TermListClass {
     // Own fields of Dee-1.0.Dee.TermListClass
 
     parentClass: GObject.ObjectClass
-    getTerm: (self: TermList, n: number) => string | null
-    addTerm: (self: TermList, term: string | null) => TermList
+    getTerm: (self: TermList, n: number) => string
+    addTerm: (self: TermList, term: string) => TermList
     numTerms: (self: TermList) => number
     clear: (self: TermList) => TermList
     clone: (self: TermList) => TermList

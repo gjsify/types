@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-spiceclientgtk-3.0)
 
 
-Node.js TypeScript type definitions for SpiceClientGtk-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+Node.js TypeScript type definitions for SpiceClientGtk-3.0, generated from library version 3.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 A Gtk client and libraries for SPICE remote desktop servers.
 

@@ -12,6 +12,15 @@ import type GLib from '@girs/glib-2.0';
 
 declare global {
 
+    interface ImportMeta {
+        /**
+         * The absolute file: or resource: URL of the module.
+         *
+         * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/doc/ESModules.md#importmetaurl
+         */
+        readonly url: string;
+    }
+
     // Timers
     // See https://gitlab.gnome.org/GNOME/gjs/-/blob/master/modules/esm/_timers.js
 

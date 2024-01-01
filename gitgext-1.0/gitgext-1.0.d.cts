@@ -45,7 +45,7 @@ export interface MessageCallback {
     (message: Message): void
 }
 export interface RefNameEditingDone {
-    (new_name: string | null, cancelled: boolean): void
+    (new_name: string, cancelled: boolean): void
 }
 export module Action {
 
@@ -116,12 +116,12 @@ export interface Activity extends GObject.Object, UIElement {
 
     // Owm methods of GitgExt-1.0.GitgExt.Activity
 
-    is_default_for(action: string | null): boolean
+    is_default_for(action: string): boolean
     on_key_pressed(event: Gdk.EventKey): boolean
 
     // Own virtual methods of GitgExt-1.0.GitgExt.Activity
 
-    vfunc_is_default_for(action: string | null): boolean
+    vfunc_is_default_for(action: string): boolean
     vfunc_on_key_pressed(event: Gdk.EventKey): boolean
 
     // Class property signals of GitgExt-1.0.GitgExt.Activity
@@ -206,8 +206,8 @@ export interface Application extends GObject.Object {
     // Owm methods of GitgExt-1.0.GitgExt.Application
 
     get_verified_committer(): Ggit.Signature | null
-    get_activity_by_id(id: string | null): Activity | null
-    set_activity_by_id(id: string | null): Activity | null
+    get_activity_by_id(id: string): Activity | null
+    set_activity_by_id(id: string): Activity | null
     user_query(query: UserQuery): void
     user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
@@ -223,7 +223,7 @@ export interface Application extends GObject.Object {
      */
     user_query_async(query: UserQuery): globalThis.Promise<Gtk.ResponseType>
     user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType
-    show_infobar(primary_msg: string | null, secondary_msg: string | null, type: Gtk.MessageType): void
+    show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void
     open_new(repository: Ggit.Repository, hint: string | null): Application
     open_repository(path: Gio.File): void
     get_repository(): Gitg.Repository | null
@@ -239,12 +239,12 @@ export interface Application extends GObject.Object {
     // Own virtual methods of GitgExt-1.0.GitgExt.Application
 
     vfunc_get_verified_committer(): Ggit.Signature | null
-    vfunc_get_activity_by_id(id: string | null): Activity | null
-    vfunc_set_activity_by_id(id: string | null): Activity | null
+    vfunc_get_activity_by_id(id: string): Activity | null
+    vfunc_set_activity_by_id(id: string): Activity | null
     vfunc_user_query(query: UserQuery): void
     vfunc_user_query_async(query: UserQuery, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_user_query_finish(_res_: Gio.AsyncResult): Gtk.ResponseType
-    vfunc_show_infobar(primary_msg: string | null, secondary_msg: string | null, type: Gtk.MessageType): void
+    vfunc_show_infobar(primary_msg: string, secondary_msg: string, type: Gtk.MessageType): void
     vfunc_open_new(repository: Ggit.Repository, hint: string | null): Application
     vfunc_open_repository(path: Gio.File): void
     vfunc_get_repository(): Gitg.Repository | null
@@ -920,11 +920,11 @@ export interface RemoteLookup extends GObject.Object {
 
     // Owm methods of GitgExt-1.0.GitgExt.RemoteLookup
 
-    lookup(name: string | null): Gitg.Remote | null
+    lookup(name: string): Gitg.Remote | null
 
     // Own virtual methods of GitgExt-1.0.GitgExt.RemoteLookup
 
-    vfunc_lookup(name: string | null): Gitg.Remote | null
+    vfunc_lookup(name: string): Gitg.Remote | null
 
     // Class property signals of GitgExt-1.0.GitgExt.RemoteLookup
 
@@ -981,7 +981,7 @@ export interface Searchable extends GObject.Object, Activity {
     // Owm methods of GitgExt-1.0.GitgExt.Searchable
 
     get_search_text(): string | null
-    set_search_text(value: string | null): void
+    set_search_text(value: string): void
     get_search_visible(): boolean
     set_search_visible(value: boolean): void
     get_search_available(): boolean
@@ -990,7 +990,7 @@ export interface Searchable extends GObject.Object, Activity {
     // Own virtual methods of GitgExt-1.0.GitgExt.Searchable
 
     vfunc_get_search_text(): string | null
-    vfunc_set_search_text(value: string | null): void
+    vfunc_set_search_text(value: string): void
     vfunc_get_search_visible(): boolean
     vfunc_set_search_visible(value: boolean): void
     vfunc_get_search_available(): boolean
@@ -1310,7 +1310,7 @@ export interface MessageBus {
     lookup(id: MessageId): GObject.GType
     register(message_type: GObject.GType, id: MessageId): void
     unregister(id: MessageId): void
-    unregister_all(object_path: string | null): void
+    unregister_all(object_path: string): void
     is_registered(id: MessageId): boolean
     connect(id: MessageId, callback: MessageCallback): number
     disconnect(id: number): void
@@ -1387,10 +1387,10 @@ export interface MessageId {
     hash(): number
     equal(other: MessageId): boolean
     copy(): MessageId
-    get_object_path(): string | null
-    set_object_path(value: string | null): void
-    get_method(): string | null
-    set_method(value: string | null): void
+    get_object_path(): string
+    set_object_path(value: string): void
+    get_method(): string
+    set_method(value: string): void
     get_id(): string | null
 
     // Class property signals of GitgExt-1.0.GitgExt.MessageId
@@ -1420,10 +1420,10 @@ export class MessageId extends GObject.Object {
     // Constructors of GitgExt-1.0.GitgExt.MessageId
 
     constructor(config?: MessageId.ConstructorProperties) 
-    constructor(object_path: string | null, method: string | null) 
-    static new(object_path: string | null, method: string | null): MessageId
+    constructor(object_path: string, method: string) 
+    static new(object_path: string, method: string): MessageId
     _init(config?: MessageId.ConstructorProperties): void
-    static valid_object_path(path: string | null): boolean
+    static valid_object_path(path: string): boolean
 }
 
 export module Message {
@@ -1447,7 +1447,7 @@ export interface Message {
 
     // Owm methods of GitgExt-1.0.GitgExt.Message
 
-    has(propname: string | null): boolean
+    has(propname: string): boolean
     get_id(): MessageId
     set_id(value: MessageId): void
 
@@ -1473,8 +1473,8 @@ export class Message extends GObject.Object {
 
     constructor(config?: Message.ConstructorProperties) 
     _init(config?: Message.ConstructorProperties): void
-    static type_has(type: GObject.GType, propname: string | null): boolean
-    static type_check(type: GObject.GType, propname: string | null, value_type: GObject.GType): boolean
+    static type_has(type: GObject.GType, propname: string): boolean
+    static type_check(type: GObject.GType, propname: string, value_type: GObject.GType): boolean
 }
 
 export interface UI {
@@ -1530,8 +1530,8 @@ export class UserQueryResponse extends GObject.Object {
     // Constructors of GitgExt-1.0.GitgExt.UserQueryResponse
 
     constructor(config?: UserQueryResponse.ConstructorProperties) 
-    constructor(text: string | null, response_type: Gtk.ResponseType) 
-    static new(text: string | null, response_type: Gtk.ResponseType): UserQueryResponse
+    constructor(text: string, response_type: Gtk.ResponseType) 
+    static new(text: string, response_type: Gtk.ResponseType): UserQueryResponse
     _init(config?: UserQueryResponse.ConstructorProperties): void
 }
 
@@ -1598,10 +1598,10 @@ export interface UserQuery {
 
     get_responses(): UserQueryResponse[]
     set_responses(value: UserQueryResponse[]): void
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_message(): string | null
-    set_message(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
+    get_message(): string
+    set_message(value: string): void
     get_message_type(): Gtk.MessageType
     set_message_type(value: Gtk.MessageType): void
     get_default_response(): Gtk.ResponseType
@@ -1825,7 +1825,7 @@ export interface ActivityIface {
 
     // Own fields of GitgExt-1.0.GitgExt.ActivityIface
 
-    is_default_for: (self: Activity, action: string | null) => boolean
+    is_default_for: (self: Activity, action: string) => boolean
     on_key_pressed: (self: Activity, event: Gdk.EventKey) => boolean
 }
 
@@ -1841,12 +1841,12 @@ export interface ApplicationIface {
     // Own fields of GitgExt-1.0.GitgExt.ApplicationIface
 
     get_verified_committer: (self: Application) => Ggit.Signature | null
-    get_activity_by_id: (self: Application, id: string | null) => Activity | null
-    set_activity_by_id: (self: Application, id: string | null) => Activity | null
+    get_activity_by_id: (self: Application, id: string) => Activity | null
+    set_activity_by_id: (self: Application, id: string) => Activity | null
     user_query: (self: Application, query: UserQuery) => void
     user_query_async: (self: Application, query: UserQuery, _callback_: Gio.AsyncReadyCallback | null) => void
     user_query_finish: (self: Application, _res_: Gio.AsyncResult) => Gtk.ResponseType
-    show_infobar: (self: Application, primary_msg: string | null, secondary_msg: string | null, type: Gtk.MessageType) => void
+    show_infobar: (self: Application, primary_msg: string, secondary_msg: string, type: Gtk.MessageType) => void
     open_new: (self: Application, repository: Ggit.Repository, hint: string | null) => Application
     open_repository: (self: Application, path: Gio.File) => void
     get_repository: (self: Application) => Gitg.Repository | null
@@ -2018,7 +2018,7 @@ export interface RemoteLookupIface {
 
     // Own fields of GitgExt-1.0.GitgExt.RemoteLookupIface
 
-    lookup: (self: RemoteLookup, name: string | null) => Gitg.Remote | null
+    lookup: (self: RemoteLookup, name: string) => Gitg.Remote | null
 }
 
 export abstract class RemoteLookupIface {
@@ -2033,7 +2033,7 @@ export interface SearchableIface {
     // Own fields of GitgExt-1.0.GitgExt.SearchableIface
 
     get_search_text: (self: Searchable) => string | null
-    set_search_text: (self: Searchable, value: string | null) => void
+    set_search_text: (self: Searchable, value: string) => void
     get_search_visible: (self: Searchable) => boolean
     set_search_visible: (self: Searchable, value: boolean) => void
     get_search_available: (self: Searchable) => boolean

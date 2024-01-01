@@ -303,10 +303,10 @@ export enum OCMFlags {
      */
     CHANGE_METADATA,
 }
-export const DIDL_LITE_WRITER_NAMESPACE_DC: string | null
-export const DIDL_LITE_WRITER_NAMESPACE_DLNA: string | null
-export const DIDL_LITE_WRITER_NAMESPACE_PV: string | null
-export const DIDL_LITE_WRITER_NAMESPACE_UPNP: string | null
+export const DIDL_LITE_WRITER_NAMESPACE_DC: string
+export const DIDL_LITE_WRITER_NAMESPACE_DLNA: string
+export const DIDL_LITE_WRITER_NAMESPACE_PV: string
+export const DIDL_LITE_WRITER_NAMESPACE_UPNP: string
 /**
  * Get the representation of DateTime as an ISO8601 string.
  * 
@@ -344,7 +344,7 @@ export interface CDSLastChangeParser {
      * @param lastChange XML string to parse
      * @returns  List of #GUPnPCDSLastChangeEntry<!-- -->s
      */
-    parse(lastChange: string | null): CDSLastChangeEntry[]
+    parse(lastChange: string): CDSLastChangeEntry[]
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.CDSLastChangeParser
 
@@ -459,24 +459,24 @@ export interface DIDLLiteContainer {
      * Add a new create class to the `container`. includeDerived defaults to "0".
      * @param createClass The createClass to add.
      */
-    addCreateClass(createClass: string | null): void
+    addCreateClass(createClass: string): void
     /**
      * Add a new create class to the `container`.
      * @param createClass The createClass to add.
      * @param includeDerived Whether object with dervied classes may be created in this container or not.
      */
-    addCreateClassFull(createClass: string | null, includeDerived: boolean): void
+    addCreateClassFull(createClass: string, includeDerived: boolean): void
     /**
      * Add a new search class to the `container`.
      * @param searchClass The searchClass to add.
      */
-    addSearchClass(searchClass: string | null): void
+    addSearchClass(searchClass: string): void
     /**
      * Add a new search class to the `container`.
      * @param searchClass The searchClass to add.
      * @param includeDerived includeDerived attribute of the DIDL
      */
-    addSearchClassFull(searchClass: string | null, includeDerived: boolean): void
+    addSearchClassFull(searchClass: string, includeDerived: boolean): void
     /**
      * Get whether the container update ID of the `container` is set.
      * @returns %TRUE if update ID is set, otherwise %FALSE
@@ -777,12 +777,12 @@ export interface DIDLLiteContributor {
      * Get the name of the `contributor`.
      * @returns The name of the @contributor or %NULL.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the role of the `contributor`.
      * @returns The role of the @contributor, or %NULL.
      */
-    getRole(): string | null
+    getRole(): string
     /**
      * Get the pointer to relevant node in XML document.
      * @returns The pointer to relevant node in XML document.
@@ -792,12 +792,12 @@ export interface DIDLLiteContributor {
      * Set the name of the `contributor` to `name`.
      * @param name The name of the contributor
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Set the role of the `contributor` to `role`.
      * @param role The role of the `contributor`
      */
-    setRole(role: string | null): void
+    setRole(role: string): void
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.DIDLLiteContributor
 
@@ -901,12 +901,12 @@ export interface DIDLLiteCreateClass {
      * Get the content of the `create_class`.
      * @returns The Content of the @create_class, or %NULL.
      */
-    getContent(): string | null
+    getContent(): string
     /**
      * Get the friendly name of the `create_class`.
      * @returns The FriendlyName of the @create_class, or %NULL.
      */
-    getFriendlyName(): string | null
+    getFriendlyName(): string
     /**
      * Checks whether `create_class` can be derived.
      * @returns #TRUE if @create_class can be derived.
@@ -921,12 +921,12 @@ export interface DIDLLiteCreateClass {
      * Set the content of the `create_class`.
      * @param content The content
      */
-    setContent(content: string | null): void
+    setContent(content: string): void
     /**
      * Set the friendly name of the `create_class`.
      * @param friendlyName The friendly name
      */
-    setFriendlyName(friendlyName: string | null): void
+    setFriendlyName(friendlyName: string): void
     /**
      * (Un)set the derivability of create_class.
      * @param includeDerived the derivability
@@ -1048,22 +1048,22 @@ export interface DIDLLiteDescriptor {
      * Get the content of the `descriptor`.
      * @returns The content of the @descriptor or %NULL.
      */
-    getContent(): string | null
+    getContent(): string
     /**
      * Get the ID of the `descriptor`.
      * @returns The ID string or %NULL.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Get the metadata type of the `descriptor`.
      * @returns The type as string or %NULL.
      */
-    getMetadataType(): string | null
+    getMetadataType(): string
     /**
      * Get the name space associated with the `descriptor`.
      * @returns The name space or %NULL.
      */
-    getNameSpace(): string | null
+    getNameSpace(): string
     /**
      * Get the pointer to desc node in XML document.
      * @returns The pointer to desc node in XML document.
@@ -1073,22 +1073,22 @@ export interface DIDLLiteDescriptor {
      * Set the content of the `descriptor`.
      * @param content The content as string
      */
-    setContent(content: string | null): void
+    setContent(content: string): void
     /**
      * Set the ID of the `descriptor`.
      * @param id The ID as string
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Set the metadata type of the `descriptor`.
      * @param type The metadata type as string
      */
-    setMetadataType(type: string | null): void
+    setMetadataType(type: string): void
     /**
      * Set the name space associated with the `descriptor`.
      * @param nameSpace The name space URI as string
      */
-    setNameSpace(nameSpace: string | null): void
+    setNameSpace(nameSpace: string): void
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.DIDLLiteDescriptor
 
@@ -1189,13 +1189,13 @@ export interface DIDLLiteItem {
      * Get the ref ID of the `item`.
      * @returns The ref ID of the @item, or %NULL.
      */
-    getRefId(): string | null
+    getRefId(): string
     setLifetime(lifetime: number): void
     /**
      * Set the ref ID of the `item`.
      * @param refId The ref ID
      */
-    setRefId(refId: string | null): void
+    setRefId(refId: string): void
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.DIDLLiteItem
 
@@ -1594,12 +1594,12 @@ export interface DIDLLiteObject {
      * Get the album of the `object`.
      * @returns The album of the @object, or %NULL.
      */
-    getAlbum(): string | null
+    getAlbum(): string
     /**
      * Get the URI to album art of the `object`.
      * @returns The URI to album art of the @object, or %NULL.
      */
-    getAlbumArt(): string | null
+    getAlbumArt(): string
     /**
      * Creates a string representation of the DIDL-Lite XML fragment related to the
      * object album.
@@ -1611,7 +1611,7 @@ export interface DIDLLiteObject {
      * of the artist if available.
      * @returns The artist of the @object, or %NULL.
      */
-    getArtist(): string | null
+    getArtist(): string
     /**
      * Get the artists of the `object`.
      * @returns The list of artists belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
@@ -1627,7 +1627,7 @@ export interface DIDLLiteObject {
      * Get the author of the `object`.
      * @returns The author of the @object, or %NULL.
      */
-    getAuthor(): string | null
+    getAuthor(): string
     /**
      * Get the authors of the `object`.
      * @returns The list of authors belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
@@ -1646,12 +1646,12 @@ export interface DIDLLiteObject {
      * @param lenient Enable lenient mode
      * @returns The resource belonging to @object that is comaptible with any of the protocols specified in @sink_protocol_info, or %NULL. Unref after usage.
      */
-    getCompatResource(sinkProtocolInfo: string | null, lenient: boolean): DIDLLiteResource
+    getCompatResource(sinkProtocolInfo: string, lenient: boolean): DIDLLiteResource
     /**
      * Get the creator of the `object`.
      * @returns The creator of the @object, or %NULL.
      */
-    getCreator(): string | null
+    getCreator(): string
     /**
      * Get the creators of the `object`.
      * @returns The list of creators belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
@@ -1661,7 +1661,7 @@ export interface DIDLLiteObject {
      * Get the date of the `object`.
      * @returns The date of the @object, or %NULL.
      */
-    getDate(): string | null
+    getDate(): string
     /**
      * Creates a string representation of the DIDL-Lite XML fragment related to the
      * object date.
@@ -1678,7 +1678,7 @@ export interface DIDLLiteObject {
      * Get the description of the `object`.
      * @returns The description of the @object, or %NULL.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Get the descriptors of the `object`.
      * @returns The list of descriptors belonging to @object, or %NULL. #g_list_free the returned list after usage and unref each object in it.
@@ -1699,23 +1699,23 @@ export interface DIDLLiteObject {
      * Get the genre of the `object`.
      * @returns The genre of the @object, or %NULL.
      */
-    getGenre(): string | null
+    getGenre(): string
     /**
      * Get the ID of the `object`.
      * @returns The ID of the @object, or %NULL.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Get the ID of the parent of the `object`.
      * @returns The ID of parent of the @object, or %NULL.
      */
-    getParentId(): string | null
+    getParentId(): string
     /**
      * Use this function to retreive property nodes by name.
      * @param name name of the properties
      * @returns The list of property nodes by the name @property_name belonging to @object, or %NULL. #g_list_free the returned list after usage but do not modify the contents.
      */
-    getProperties(name: string | null): libxml2.Node[]
+    getProperties(name: string): libxml2.Node[]
     /**
      * Get the pointer to the PV metadata namespace registered with the XML
      * document containing this object.
@@ -1736,7 +1736,7 @@ export interface DIDLLiteObject {
      * Get the title of the `object`.
      * @returns The title of the @object, or %NULL.
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Creates a string representation of the DIDL-Lite XML fragment related to the
      * object title.
@@ -1763,7 +1763,7 @@ export interface DIDLLiteObject {
      * Get the UPnP class of the `object`.
      * @returns The class of @object, or %NULL.
      */
-    getUpnpClass(): string | null
+    getUpnpClass(): string
     /**
      * Creates a string representation of the DIDL-Lite XML fragment related to the
      * object UPnP class.
@@ -1779,7 +1779,7 @@ export interface DIDLLiteObject {
      * Get the write status of the `object`.
      * @returns The write status of the @object, or %NULL.
      */
-    getWriteStatus(): string | null
+    getWriteStatus(): string
     /**
      * Get the pointer to object node in XML document.
      * @returns The pointer to object node in XML document.
@@ -1799,37 +1799,37 @@ export interface DIDLLiteObject {
      * Set the album of the `object` to `album`.
      * @param album The album string
      */
-    setAlbum(album: string | null): void
+    setAlbum(album: string): void
     /**
      * Set the URI to album art of the `object` to `album_art`.
      * @param albumArt The URI of album art
      */
-    setAlbumArt(albumArt: string | null): void
+    setAlbumArt(albumArt: string): void
     /**
      * Set the Artist of the `object` to `artist`.
      * @param artist The Artist
      */
-    setArtist(artist: string | null): void
+    setArtist(artist: string): void
     /**
      * Set the Author of the `object` to `author`.
      * @param author The Author
      */
-    setAuthor(author: string | null): void
+    setAuthor(author: string): void
     /**
      * Set the creator of the `object` to `creator`.
      * @param creator The creator
      */
-    setCreator(creator: string | null): void
+    setCreator(creator: string): void
     /**
      * Set the date of the `object` to `date`.
      * @param date The date string
      */
-    setDate(date: string | null): void
+    setDate(date: string): void
     /**
      * Set the description of the `object` to `description`.
      * @param description The description string
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Set the 'dlna:dlnaManaged' attribute of the `object` to `dlna_managed`.
      * @param dlnaManaged The #GUPnPOCMFlags.
@@ -1839,17 +1839,17 @@ export interface DIDLLiteObject {
      * Set the genre of the `object` to `genre`.
      * @param genre The Genre
      */
-    setGenre(genre: string | null): void
+    setGenre(genre: string): void
     /**
      * Set the ID of the `object` to `id`.
      * @param id The ID
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Set the ID of the parent of the `object` to `parent_id`.
      * @param parentId The parent ID
      */
-    setParentId(parentId: string | null): void
+    setParentId(parentId: string): void
     /**
      * Set the restricted status of `object` to `restricted`.
      * @param restricted The restricted status
@@ -1859,7 +1859,7 @@ export interface DIDLLiteObject {
      * Set the title of the `object` to `title`.
      * @param title The title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Set the original track number of the `object` to `track_number`.
      * @param trackNumber The original track number
@@ -1874,12 +1874,12 @@ export interface DIDLLiteObject {
      * Set the UPnP class of the `object` to `upnp_class`.
      * @param upnpClass The UPnP class as string.
      */
-    setUpnpClass(upnpClass: string | null): void
+    setUpnpClass(upnpClass: string): void
     /**
      * Set the write status of the `object` to `write_status`.
      * @param writeStatus The write status string
      */
-    setWriteStatus(writeStatus: string | null): void
+    setWriteStatus(writeStatus: string): void
     /**
      * Unset the artists properties of the `object`.
      */
@@ -2083,7 +2083,7 @@ export interface DIDLLiteParser {
      * @param didl The DIDL-Lite XML string to be parsed
      * @returns TRUE on success.
      */
-    parseDidl(didl: string | null): boolean
+    parseDidl(didl: string): boolean
 
     // Own virtual methods of GUPnPAV-1.0.GUPnPAV.DIDLLiteParser
 
@@ -2375,12 +2375,12 @@ export interface DIDLLiteResource {
      * Get the import URI associated with the `resource`.
      * @returns The import URI or %NULL.
      */
-    getImportUri(): string | null
+    getImportUri(): string
     /**
      * Get the protection system used by the `resource`.
      * @returns The protection system in use by the @resource or %NULL.
      */
-    getProtection(): string | null
+    getProtection(): string
     /**
      * Get the protocol info associated with the `resource`.
      * @returns The protocol info associated with the @resource or %NULL. The returned object must not be unrefed.
@@ -2407,8 +2407,8 @@ export interface DIDLLiteResource {
      * @returns The size (in bytes) of the @resource or -1.
      */
     getSize64(): number
-    getSubtitleFileType(): string | null
-    getSubtitleFileUri(): string | null
+    getSubtitleFileType(): string
+    getSubtitleFileUri(): string
     /**
      * Get the total track count of this resource.
      * @returns The total track count of the @resource.
@@ -2480,13 +2480,13 @@ export interface DIDLLiteResource {
      * Set the import URI associated with the `resource`.
      * @param importUri The URI as string
      */
-    setImportUri(importUri: string | null): void
+    setImportUri(importUri: string): void
     /**
      * Set the protection system used by the `resource`. Passing a negative number
      * will unset this property.
      * @param protection The protection system identifier as string
      */
-    setProtection(protection: string | null): void
+    setProtection(protection: string): void
     /**
      * Set the protocol info associated with the `resource`.
      * @param info The protocol string
@@ -2538,7 +2538,7 @@ export interface DIDLLiteResource {
      * Set the URI associated with the `resource`.
      * @param uri The URI as string
      */
-    setUri(uri: string | null): void
+    setUri(uri: string): void
     /**
      * Set the width of this image/video resource. Setting both width and height to
      * a negative number will unset the resolution property.
@@ -2760,12 +2760,12 @@ export interface DIDLLiteWriter {
      * specification for details on this string.
      * @param filter A filter string
      */
-    filter(filter: string | null): void
+    filter(filter: string): void
     /**
      * Get the language the DIDL-Lite fragment is in.
      * @returns The language of the @writer, or %NULL.
      */
-    getLanguage(): string | null
+    getLanguage(): string
     /**
      * Creates a string representation of the DIDL-Lite XML document.
      * @returns The DIDL-Lite XML string, or %NULL. #g_free after usage.
@@ -2882,17 +2882,17 @@ export interface Feature {
      * Get the name of the `feature`.
      * @returns The name of the @feature.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the object IDs related to the `feature`.
      * @returns The object IDs related to the @feature.
      */
-    getObjectIds(): string | null
+    getObjectIds(): string
     /**
      * Get the version of the `feature`.
      * @returns The version of the @feature.
      */
-    getVersion(): string | null
+    getVersion(): string
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.Feature
 
@@ -2959,7 +2959,7 @@ export interface FeatureListParser {
      * @param text The feature list string to be parsed
      * @returns The list of features or %NULL if an error occured.
      */
-    parseText(text: string | null): Feature[] | null
+    parseText(text: string): Feature[] | null
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.FeatureListParser
 
@@ -3095,7 +3095,7 @@ export interface MediaCollection {
     // Owm methods of GUPnPAV-1.0.GUPnPAV.MediaCollection
 
     addItem(): DIDLLiteItem
-    getAuthor(): string | null
+    getAuthor(): string
     getItems(): DIDLLiteItem[]
     getMutable(): boolean
     getString(): string | null
@@ -3104,12 +3104,12 @@ export interface MediaCollection {
      * Set the author of the media collection
      * @param author New author of this media collection.
      */
-    setAuthor(author: string | null): void
+    setAuthor(author: string): void
     /**
      * Set the title of a #GUPnPMediaCollection.
      * @param title New Title of this collection;
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Class property signals of GUPnPAV-1.0.GUPnPAV.MediaCollection
 
@@ -3173,7 +3173,7 @@ export class MediaCollection extends GObject.Object {
      * @param data XML string.
      * @returns A new #GUPnPMediaCollection.
      */
-    static newFromString(data: string | null): MediaCollection
+    static newFromString(data: string): MediaCollection
     _init(config?: MediaCollection.ConstructorProperties): void
 }
 
@@ -3332,27 +3332,27 @@ export interface ProtocolInfo {
      * Set the DLNA profile of this info.
      * @param profile The DLNA profile string
      */
-    setDlnaProfile(profile: string | null): void
+    setDlnaProfile(profile: string): void
     /**
      * Set the MIME-type of this info.
      * @param mimeType The MIME-type string
      */
-    setMimeType(mimeType: string | null): void
+    setMimeType(mimeType: string): void
     /**
      * Set the network this info is associated with.
      * @param network The network string
      */
-    setNetwork(network: string | null): void
+    setNetwork(network: string): void
     /**
      * Set the allowed play speeds on this info in the form of array of strings.
      * @param speeds The allowed play speeds
      */
-    setPlaySpeeds(speeds: string | null): void
+    setPlaySpeeds(speeds: string): void
     /**
      * Set the protocol of this info.
      * @param protocol The protocol string
      */
-    setProtocol(protocol: string | null): void
+    setProtocol(protocol: string): void
     /**
      * Provides the string representation of `info`.
      * @returns String representation of @info. #g_free after usage.
@@ -3432,7 +3432,7 @@ export class ProtocolInfo extends GObject.Object {
      * @param protocolInfo The protocol info string
      * @returns A new #GUPnPProtocolInfo object. Unref after usage.
      */
-    static newFromString(protocolInfo: string | null): ProtocolInfo
+    static newFromString(protocolInfo: string): ProtocolInfo
     _init(config?: ProtocolInfo.ConstructorProperties): void
 }
 
@@ -3501,7 +3501,7 @@ export interface SearchCriteriaParser {
      * @param text The search criteria string to be parsed
      * @returns TRUE on success.
      */
-    parseText(text: string | null): boolean
+    parseText(text: string): boolean
 
     // Own virtual methods of GUPnPAV-1.0.GUPnPAV.SearchCriteriaParser
 
@@ -3509,7 +3509,7 @@ export interface SearchCriteriaParser {
     conjunction(): void
     disjunction(): void
     endParens(): void
-    expression(property: string | null, op: SearchCriteriaOp, value: string | null): boolean
+    expression(property: string, op: SearchCriteriaOp, value: string): boolean
 
     // Own signals of GUPnPAV-1.0.GUPnPAV.SearchCriteriaParser
 
@@ -3579,7 +3579,7 @@ export interface CDSLastChangeEntry {
      * %GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED.
      * @returns The upnp class of the object of this entry.
      */
-    getClass(): string | null
+    getClass(): string
     /**
      * Get the type of the last change entry as defined in
      * #GUPnPCDSLastChangeEvent.
@@ -3590,14 +3590,14 @@ export interface CDSLastChangeEntry {
      * Get the ID of the object in this change entry.
      * @returns The id of the object of this entry.
      */
-    getObjectId(): string | null
+    getObjectId(): string
     /**
      * Get the parent object id of the object in this change entry. This is only
      * valid if gupnp_cds_last_change_entry_get_event() returns
      * %GUPNP_CDS_LAST_CHANGE_EVENT_OBJECT_ADDED.
      * @returns The id of the object's parent of this entry.
      */
-    getParentId(): string | null
+    getParentId(): string
     /**
      * Get the update id of the last change entry.
      * @returns update id of the entry or 0 if the entry is not valid.
@@ -3863,7 +3863,7 @@ export interface SearchCriteriaParserClass {
     endParens: (parser: SearchCriteriaParser) => void
     conjunction: (parser: SearchCriteriaParser) => void
     disjunction: (parser: SearchCriteriaParser) => void
-    expression: (parser: SearchCriteriaParser, property: string | null, op: SearchCriteriaOp, value: string | null) => boolean
+    expression: (parser: SearchCriteriaParser, property: string, op: SearchCriteriaOp, value: string) => boolean
 }
 
 export abstract class SearchCriteriaParserClass {

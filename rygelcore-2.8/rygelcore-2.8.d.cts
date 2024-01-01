@@ -118,12 +118,12 @@ export interface DBusAclProvider extends GObject.Object {
 
     // Owm methods of RygelCore-2.8.RygelCore.DBusAclProvider
 
-    is_allowed(device: GLib.HashTable, service: GLib.HashTable, path: string | null, address: string | null, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    is_allowed(device: GLib.HashTable, service: GLib.HashTable, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     is_allowed_finish(_res_: Gio.AsyncResult): boolean
 
     // Own virtual methods of RygelCore-2.8.RygelCore.DBusAclProvider
 
-    vfunc_is_allowed(device: GLib.HashTable, service: GLib.HashTable, path: string | null, address: string | null, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_is_allowed(device: GLib.HashTable, service: GLib.HashTable, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_is_allowed_finish(_res_: Gio.AsyncResult): boolean
 
     // Class property signals of RygelCore-2.8.RygelCore.DBusAclProvider
@@ -162,14 +162,14 @@ export module Configuration {
      * Signal callback interface for `section-changed`
      */
     export interface SectionChangedSignalCallback {
-        ($obj: Configuration, section: string | null, entry: SectionEntry): void
+        ($obj: Configuration, section: string, entry: SectionEntry): void
     }
 
     /**
      * Signal callback interface for `setting-changed`
      */
     export interface SettingChangedSignalCallback {
-        ($obj: Configuration, section: string | null, key: string | null): void
+        ($obj: Configuration, section: string, key: string): void
     }
 
 
@@ -197,14 +197,14 @@ export interface Configuration extends GObject.Object {
     get_video_upload_folder(): string | null
     get_music_upload_folder(): string | null
     get_picture_upload_folder(): string | null
-    get_enabled(section: string | null): boolean
-    get_title(section: string | null): string | null
-    get_string(section: string | null, key: string | null): string | null
-    get_string_list(section: string | null, key: string | null): Gee.ArrayList
-    get_string_list_with_default(section: string | null, key: string | null, _default_: Gee.ArrayList): Gee.ArrayList
-    get_int(section: string | null, key: string | null, min: number, max: number): number
-    get_int_list(section: string | null, key: string | null): Gee.ArrayList
-    get_bool(section: string | null, key: string | null): boolean
+    get_enabled(section: string): boolean
+    get_title(section: string): string | null
+    get_string(section: string, key: string): string | null
+    get_string_list(section: string, key: string): Gee.ArrayList
+    get_string_list_with_default(section: string, key: string, _default_: Gee.ArrayList): Gee.ArrayList
+    get_int(section: string, key: string, min: number, max: number): number
+    get_int_list(section: string, key: string): Gee.ArrayList
+    get_bool(section: string, key: string): boolean
 
     // Own virtual methods of RygelCore-2.8.RygelCore.Configuration
 
@@ -221,13 +221,13 @@ export interface Configuration extends GObject.Object {
     vfunc_get_video_upload_folder(): string | null
     vfunc_get_music_upload_folder(): string | null
     vfunc_get_picture_upload_folder(): string | null
-    vfunc_get_enabled(section: string | null): boolean
-    vfunc_get_title(section: string | null): string | null
-    vfunc_get_string(section: string | null, key: string | null): string | null
-    vfunc_get_string_list(section: string | null, key: string | null): Gee.ArrayList
-    vfunc_get_int(section: string | null, key: string | null, min: number, max: number): number
-    vfunc_get_int_list(section: string | null, key: string | null): Gee.ArrayList
-    vfunc_get_bool(section: string | null, key: string | null): boolean
+    vfunc_get_enabled(section: string): boolean
+    vfunc_get_title(section: string): string | null
+    vfunc_get_string(section: string, key: string): string | null
+    vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_int(section: string, key: string, min: number, max: number): number
+    vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_bool(section: string, key: string): boolean
 
     // Own signals of RygelCore-2.8.RygelCore.Configuration
 
@@ -236,10 +236,10 @@ export interface Configuration extends GObject.Object {
     emit(sigName: "configuration-changed", entry: ConfigurationEntry, ...args: any[]): void
     connect(sigName: "section-changed", callback: Configuration.SectionChangedSignalCallback): number
     connect_after(sigName: "section-changed", callback: Configuration.SectionChangedSignalCallback): number
-    emit(sigName: "section-changed", section: string | null, entry: SectionEntry, ...args: any[]): void
+    emit(sigName: "section-changed", section: string, entry: SectionEntry, ...args: any[]): void
     connect(sigName: "setting-changed", callback: Configuration.SettingChangedSignalCallback): number
     connect_after(sigName: "setting-changed", callback: Configuration.SettingChangedSignalCallback): number
-    emit(sigName: "setting-changed", section: string | null, key: string | null, ...args: any[]): void
+    emit(sigName: "setting-changed", section: string, key: string, ...args: any[]): void
 
     // Class property signals of RygelCore-2.8.RygelCore.Configuration
 
@@ -511,24 +511,24 @@ export interface DescriptionFile {
 
     // Owm methods of RygelCore-2.8.RygelCore.DescriptionFile
 
-    set_device_type(device_type: string | null): void
-    set_model_description(model_description: string | null): void
-    set_model_name(model_name: string | null): void
-    set_model_number(model_number: string | null): void
-    set_friendly_name(friendly_name: string | null): void
+    set_device_type(device_type: string): void
+    set_model_description(model_description: string): void
+    set_model_name(model_name: string): void
+    set_model_number(model_number: string): void
+    set_friendly_name(friendly_name: string): void
     get_friendly_name(): string | null
-    set_udn(udn: string | null): void
+    set_udn(udn: string): void
     get_udn(): string | null
-    set_serial_number(serial: string | null): void
+    set_serial_number(serial: string): void
     set_dlna_caps(capabilities: PluginCapabilities): void
     clear_service_list(): void
-    add_dlna_doc_element(dlnadoc_xpath: string | null, dlnadoc_non_xpath: string | null, dev_cap: string | null): void
-    remove_dlna_doc_element(dlnadoc_xpath: string | null): void
-    add_service(device_name: string | null, resource_info: ResourceInfo): void
+    add_dlna_doc_element(dlnadoc_xpath: string, dlnadoc_non_xpath: string, dev_cap: string): void
+    remove_dlna_doc_element(dlnadoc_xpath: string): void
+    add_service(device_name: string, resource_info: ResourceInfo): void
     clear_icon_list(): void
-    add_icon(device_name: string | null, icon_info: IconInfo, url: string | null): void
-    modify_service_type(old_type: string | null, new_type: string | null): void
-    save(path: string | null): void
+    add_icon(device_name: string, icon_info: IconInfo, url: string): void
+    modify_service_type(old_type: string, new_type: string): void
+    save(path: string): void
 
     // Class property signals of RygelCore-2.8.RygelCore.DescriptionFile
 
@@ -548,8 +548,8 @@ export class DescriptionFile extends GObject.Object {
     // Constructors of RygelCore-2.8.RygelCore.DescriptionFile
 
     constructor(config?: DescriptionFile.ConstructorProperties) 
-    constructor(template_file: string | null) 
-    static new(template_file: string | null): DescriptionFile
+    constructor(template_file: string) 
+    static new(template_file: string): DescriptionFile
     static from_xml_document(doc: GUPnP.XMLDoc): DescriptionFile
     _init(config?: DescriptionFile.ConstructorProperties): void
 }
@@ -571,8 +571,8 @@ export class DLNAProfile {
 
     // Constructors of RygelCore-2.8.RygelCore.DLNAProfile
 
-    constructor(name: string | null, mime: string | null) 
-    static new(name: string | null, mime: string | null): DLNAProfile
+    constructor(name: string, mime: string) 
+    static new(name: string, mime: string): DLNAProfile
     static compare_by_name(a: DLNAProfile, b: DLNAProfile): number
 }
 
@@ -722,8 +722,8 @@ export class RootDevice extends GUPnP.RootDevice {
     // Constructors of RygelCore-2.8.RygelCore.RootDevice
 
     constructor(config?: RootDevice.ConstructorProperties) 
-    constructor(context: GUPnP.Context, plugin: Plugin, description_doc: GUPnP.XMLDoc, description_path: string | null, description_dir: string | null) 
-    static new(context: GUPnP.Context, plugin: Plugin, description_doc: GUPnP.XMLDoc, description_path: string | null, description_dir: string | null): RootDevice
+    constructor(context: GUPnP.Context, plugin: Plugin, description_doc: GUPnP.XMLDoc, description_path: string, description_dir: string) 
+    static new(context: GUPnP.Context, plugin: Plugin, description_doc: GUPnP.XMLDoc, description_path: string, description_dir: string): RootDevice
 
     // Overloads of new
 
@@ -736,7 +736,7 @@ export class RootDevice extends GUPnP.RootDevice {
      * @param description_folder Path to directory where description documents are provided.
      * @returns A new @GUPnPRootDevice object.
      */
-    static new(context: GUPnP.Context, description_path: string | null, description_folder: string | null): GUPnP.RootDevice
+    static new(context: GUPnP.Context, description_path: string, description_folder: string): GUPnP.RootDevice
     _init(config?: RootDevice.ConstructorProperties): void
 }
 
@@ -883,9 +883,9 @@ export interface PluginLoader {
 
     // Owm methods of RygelCore-2.8.RygelCore.PluginLoader
 
-    plugin_disabled(name: string | null): boolean
+    plugin_disabled(name: string): boolean
     add_plugin(plugin: Plugin): void
-    get_plugin_by_name(name: string | null): Plugin | null
+    get_plugin_by_name(name: string): Plugin | null
     list_plugins(): Gee.Collection
 
     // Own signals of RygelCore-2.8.RygelCore.PluginLoader
@@ -947,8 +947,8 @@ export interface RecursiveModuleLoader {
     load_modules_sync(cancellable: Gio.Cancellable | null): void
     load_module_from_file(file: Gio.File): boolean
     load_module_from_info(info: PluginInformation): boolean
-    get_base_path(): string | null
-    set_base_path(value: string | null): void
+    get_base_path(): string
+    set_base_path(value: string): void
 
     // Own virtual methods of RygelCore-2.8.RygelCore.RecursiveModuleLoader
 
@@ -1026,14 +1026,14 @@ export interface Plugin {
 
     add_resource(resource_info: ResourceInfo): void
     add_icon(icon_info: IconInfo): void
-    apply_hacks(device: RootDevice, description_path: string | null): void
+    apply_hacks(device: RootDevice, description_path: string): void
     get_capabilities(): PluginCapabilities
     set_capabilities(value: PluginCapabilities): void
-    get_name(): string | null
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_description(): string | null
-    get_desc_path(): string | null
+    get_name(): string
+    get_title(): string
+    set_title(value: string): void
+    get_description(): string
+    get_desc_path(): string
     get_active(): boolean
     set_active(value: boolean): void
     get_resource_infos(): Gee.ArrayList
@@ -1042,7 +1042,7 @@ export interface Plugin {
 
     // Own virtual methods of RygelCore-2.8.RygelCore.Plugin
 
-    vfunc_apply_hacks(device: RootDevice, description_path: string | null): void
+    vfunc_apply_hacks(device: RootDevice, description_path: string): void
 
     // Class property signals of RygelCore-2.8.RygelCore.Plugin
 
@@ -1089,8 +1089,8 @@ export class Plugin extends GUPnP.ResourceFactory {
     // Constructors of RygelCore-2.8.RygelCore.Plugin
 
     constructor(config?: Plugin.ConstructorProperties) 
-    constructor(desc_path: string | null, name: string | null, title: string | null, description: string | null, capabilities: PluginCapabilities) 
-    static new(desc_path: string | null, name: string | null, title: string | null, description: string | null, capabilities: PluginCapabilities): Plugin
+    constructor(desc_path: string, name: string, title: string | null, description: string | null, capabilities: PluginCapabilities) 
+    static new(desc_path: string, name: string, title: string | null, description: string | null, capabilities: PluginCapabilities): Plugin
 
     // Overloads of new
 
@@ -1122,8 +1122,8 @@ export class ResourceInfo {
 
     // Constructors of RygelCore-2.8.RygelCore.ResourceInfo
 
-    constructor(upnp_id: string | null, upnp_type: string | null, description_path: string | null, type: GObject.GType) 
-    static new(upnp_id: string | null, upnp_type: string | null, description_path: string | null, type: GObject.GType): ResourceInfo
+    constructor(upnp_id: string, upnp_type: string, description_path: string, type: GObject.GType) 
+    static new(upnp_id: string, upnp_type: string, description_path: string, type: GObject.GType): ResourceInfo
 }
 
 export module MediaDevice {
@@ -1151,12 +1151,12 @@ export interface MediaDevice {
 
     // Owm methods of RygelCore-2.8.RygelCore.MediaDevice
 
-    add_interface(iface: string | null): void
-    remove_interface(iface: string | null): void
+    add_interface(iface: string): void
+    remove_interface(iface: string): void
     get_interfaces(): string[]
     get_plugin(): Plugin
     set_plugin(value: Plugin): void
-    get_title(): string | null
+    get_title(): string
     get_capabilities(): PluginCapabilities
 
     // Class property signals of RygelCore-2.8.RygelCore.MediaDevice
@@ -1215,13 +1215,13 @@ export interface BaseConfiguration extends Configuration {
     get_video_upload_folder(): string | null
     get_music_upload_folder(): string | null
     get_picture_upload_folder(): string | null
-    get_enabled(section: string | null): boolean
-    get_title(section: string | null): string | null
-    get_string(section: string | null, key: string | null): string | null
-    get_string_list(section: string | null, key: string | null): Gee.ArrayList
-    get_int(section: string | null, key: string | null, min: number, max: number): number
-    get_int_list(section: string | null, key: string | null): Gee.ArrayList
-    get_bool(section: string | null, key: string | null): boolean
+    get_enabled(section: string): boolean
+    get_title(section: string): string | null
+    get_string(section: string, key: string): string | null
+    get_string_list(section: string, key: string): Gee.ArrayList
+    get_int(section: string, key: string, min: number, max: number): number
+    get_int_list(section: string, key: string): Gee.ArrayList
+    get_bool(section: string, key: string): boolean
 
     // Own virtual methods of RygelCore-2.8.RygelCore.BaseConfiguration
 
@@ -1238,13 +1238,13 @@ export interface BaseConfiguration extends Configuration {
     vfunc_get_video_upload_folder(): string | null
     vfunc_get_music_upload_folder(): string | null
     vfunc_get_picture_upload_folder(): string | null
-    vfunc_get_enabled(section: string | null): boolean
-    vfunc_get_title(section: string | null): string | null
-    vfunc_get_string(section: string | null, key: string | null): string | null
-    vfunc_get_string_list(section: string | null, key: string | null): Gee.ArrayList
-    vfunc_get_int(section: string | null, key: string | null, min: number, max: number): number
-    vfunc_get_int_list(section: string | null, key: string | null): Gee.ArrayList
-    vfunc_get_bool(section: string | null, key: string | null): boolean
+    vfunc_get_enabled(section: string): boolean
+    vfunc_get_title(section: string): string | null
+    vfunc_get_string(section: string, key: string): string | null
+    vfunc_get_string_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_int(section: string, key: string, min: number, max: number): number
+    vfunc_get_int_list(section: string, key: string): Gee.ArrayList
+    vfunc_get_bool(section: string, key: string): boolean
 
     // Class property signals of RygelCore-2.8.RygelCore.BaseConfiguration
 
@@ -1380,9 +1380,9 @@ export class UserConfig extends GObject.Object {
     // Constructors of RygelCore-2.8.RygelCore.UserConfig
 
     constructor(config?: UserConfig.ConstructorProperties) 
-    constructor(local_path: string | null) 
-    static new(local_path: string | null): UserConfig
-    static with_paths(local_path: string | null, system_path: string | null): UserConfig
+    constructor(local_path: string) 
+    static new(local_path: string): UserConfig
+    static with_paths(local_path: string, system_path: string): UserConfig
     _init(config?: UserConfig.ConstructorProperties): void
     static get_default(): UserConfig
 }
@@ -1419,8 +1419,8 @@ export interface V1Hacks {
     // Owm methods of RygelCore-2.8.RygelCore.V1Hacks
 
     apply_on_device(device: RootDevice, template_path: string | null): void
-    get_device_type(): string | null
-    set_device_type(value: string | null): void
+    get_device_type(): string
+    set_device_type(value: string): void
     get_service_types(): string[]
 
     // Class property signals of RygelCore-2.8.RygelCore.V1Hacks
@@ -1447,8 +1447,8 @@ export class V1Hacks extends GObject.Object {
     // Constructors of RygelCore-2.8.RygelCore.V1Hacks
 
     constructor(config?: V1Hacks.ConstructorProperties) 
-    constructor(device_type: string | null, service_types: string[]) 
-    static new(device_type: string | null, service_types: string[]): V1Hacks
+    constructor(device_type: string, service_types: string[]) 
+    static new(device_type: string, service_types: string[]): V1Hacks
     _init(config?: V1Hacks.ConstructorProperties): void
 }
 
@@ -1474,8 +1474,8 @@ export class IconInfo {
 
     // Constructors of RygelCore-2.8.RygelCore.IconInfo
 
-    constructor(mime_type: string | null, file_extension: string | null) 
-    static new(mime_type: string | null, file_extension: string | null): IconInfo
+    constructor(mime_type: string, file_extension: string) 
+    static new(mime_type: string, file_extension: string): IconInfo
 }
 
 export interface XMLUtils {
@@ -1495,7 +1495,7 @@ export class XMLUtils {
 
     constructor() 
     static new(): XMLUtils
-    static get_namespace(root: any | null, href: string | null, prefix: string | null): any | null
+    static get_namespace(root: any | null, href: string, prefix: string): any | null
 }
 
 export interface XMLUtilsIterator {
@@ -1573,8 +1573,8 @@ export interface PluginInformation {
 
     // Owm methods of RygelCore-2.8.RygelCore.PluginInformation
 
-    get_module_path(): string | null
-    get_name(): string | null
+    get_module_path(): string
+    get_name(): string
     get_conflicts(): any
     get_module_loaded(): boolean
     set_module_loaded(value: boolean): void
@@ -1888,7 +1888,7 @@ export interface PluginClass {
 
     // Own fields of RygelCore-2.8.RygelCore.PluginClass
 
-    apply_hacks: (self: Plugin, device: RootDevice, description_path: string | null) => void
+    apply_hacks: (self: Plugin, device: RootDevice, description_path: string) => void
 }
 
 export abstract class PluginClass {
@@ -1965,13 +1965,13 @@ export interface BaseConfigurationClass {
     get_video_upload_folder: (self: BaseConfiguration) => string | null
     get_music_upload_folder: (self: BaseConfiguration) => string | null
     get_picture_upload_folder: (self: BaseConfiguration) => string | null
-    get_enabled: (self: BaseConfiguration, section: string | null) => boolean
-    get_title: (self: BaseConfiguration, section: string | null) => string | null
-    get_string: (self: BaseConfiguration, section: string | null, key: string | null) => string | null
-    get_string_list: (self: BaseConfiguration, section: string | null, key: string | null) => Gee.ArrayList
-    get_int: (self: BaseConfiguration, section: string | null, key: string | null, min: number, max: number) => number
-    get_int_list: (self: BaseConfiguration, section: string | null, key: string | null) => Gee.ArrayList
-    get_bool: (self: BaseConfiguration, section: string | null, key: string | null) => boolean
+    get_enabled: (self: BaseConfiguration, section: string) => boolean
+    get_title: (self: BaseConfiguration, section: string) => string | null
+    get_string: (self: BaseConfiguration, section: string, key: string) => string | null
+    get_string_list: (self: BaseConfiguration, section: string, key: string) => Gee.ArrayList
+    get_int: (self: BaseConfiguration, section: string, key: string, min: number, max: number) => number
+    get_int_list: (self: BaseConfiguration, section: string, key: string) => Gee.ArrayList
+    get_bool: (self: BaseConfiguration, section: string, key: string) => boolean
 }
 
 export abstract class BaseConfigurationClass {
@@ -2209,7 +2209,7 @@ export interface DBusAclProviderIface {
 
     // Own fields of RygelCore-2.8.RygelCore.DBusAclProviderIface
 
-    is_allowed: (self: DBusAclProvider, device: GLib.HashTable, service: GLib.HashTable, path: string | null, address: string | null, agent: string | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    is_allowed: (self: DBusAclProvider, device: GLib.HashTable, service: GLib.HashTable, path: string, address: string, agent: string | null, _callback_: Gio.AsyncReadyCallback | null) => void
     is_allowed_finish: (self: DBusAclProvider, _res_: Gio.AsyncResult) => boolean
 }
 
@@ -2237,13 +2237,13 @@ export interface ConfigurationIface {
     get_video_upload_folder: (self: Configuration) => string | null
     get_music_upload_folder: (self: Configuration) => string | null
     get_picture_upload_folder: (self: Configuration) => string | null
-    get_enabled: (self: Configuration, section: string | null) => boolean
-    get_title: (self: Configuration, section: string | null) => string | null
-    get_string: (self: Configuration, section: string | null, key: string | null) => string | null
-    get_string_list: (self: Configuration, section: string | null, key: string | null) => Gee.ArrayList
-    get_int: (self: Configuration, section: string | null, key: string | null, min: number, max: number) => number
-    get_int_list: (self: Configuration, section: string | null, key: string | null) => Gee.ArrayList
-    get_bool: (self: Configuration, section: string | null, key: string | null) => boolean
+    get_enabled: (self: Configuration, section: string) => boolean
+    get_title: (self: Configuration, section: string) => string | null
+    get_string: (self: Configuration, section: string, key: string) => string | null
+    get_string_list: (self: Configuration, section: string, key: string) => Gee.ArrayList
+    get_int: (self: Configuration, section: string, key: string, min: number, max: number) => number
+    get_int_list: (self: Configuration, section: string, key: string) => Gee.ArrayList
+    get_bool: (self: Configuration, section: string, key: string) => boolean
 }
 
 export abstract class ConfigurationIface {

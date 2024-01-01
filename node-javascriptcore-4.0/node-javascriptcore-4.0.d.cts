@@ -188,25 +188,25 @@ export const MINOR_VERSION: number
  * Option type: %JSC_OPTION_BOOLEAN
  * Default value: %TRUE.
  */
-export const OPTIONS_USE_DFG: string | null
+export const OPTIONS_USE_DFG: string
 /**
  * Allows the FTL JIT to be used if %TRUE.
  * Option type: %JSC_OPTION_BOOLEAN
  * Default value: %TRUE.
  */
-export const OPTIONS_USE_FTL: string | null
+export const OPTIONS_USE_FTL: string
 /**
  * Allows the executable pages to be allocated for JIT and thunks if %TRUE.
  * Option type: %JSC_OPTION_BOOLEAN
  * Default value: %TRUE.
  */
-export const OPTIONS_USE_JIT: string | null
+export const OPTIONS_USE_JIT: string
 /**
  * Allows the LLINT to be used if %TRUE.
  * Option type: %JSC_OPTION_BOOLEAN
  * Default value: %TRUE.
  */
-export const OPTIONS_USE_LLINT: string | null
+export const OPTIONS_USE_LLINT: string
 /**
  * Returns the major version number of the JavaScriptCore library.
  * (e.g. in JavaScriptCore version 1.8.3 this is 1.)
@@ -251,19 +251,19 @@ export function optionsForeach(function_: OptionsFunc): void
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetBoolean(option: string | null): [ /* returnType */ boolean, /* value */ boolean ]
+export function optionsGetBoolean(option: string): [ /* returnType */ boolean, /* value */ boolean ]
 /**
  * Get `option` as a #gdouble value.
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetDouble(option: string | null): [ /* returnType */ boolean, /* value */ number ]
+export function optionsGetDouble(option: string): [ /* returnType */ boolean, /* value */ number ]
 /**
  * Get `option` as a #gint value.
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetInt(option: string | null): [ /* returnType */ boolean, /* value */ number ]
+export function optionsGetInt(option: string): [ /* returnType */ boolean, /* value */ number ]
 /**
  * Create a #GOptionGroup to handle JSCOptions as command line arguments.
  * The options will be exposed as command line arguments with the form
@@ -283,46 +283,46 @@ export function optionsGetOptionGroup(): GLib.OptionGroup
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetRangeString(option: string | null): [ /* returnType */ boolean, /* value */ string | null ]
+export function optionsGetRangeString(option: string): [ /* returnType */ boolean, /* value */ string | null ]
 /**
  * Get `option` as a #gsize value.
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetSize(option: string | null): [ /* returnType */ boolean, /* value */ number ]
+export function optionsGetSize(option: string): [ /* returnType */ boolean, /* value */ number ]
 /**
  * Get `option` as a string.
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetString(option: string | null): [ /* returnType */ boolean, /* value */ string | null ]
+export function optionsGetString(option: string): [ /* returnType */ boolean, /* value */ string | null ]
 /**
  * Get `option` as a #guint value.
  * @param option the option identifier
  * @returns %TRUE if @value has been set or %FALSE if the option doesn't exist
  */
-export function optionsGetUint(option: string | null): [ /* returnType */ boolean, /* value */ number ]
+export function optionsGetUint(option: string): [ /* returnType */ boolean, /* value */ number ]
 /**
  * Set `option` as a #gboolean value.
  * @param option the option identifier
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetBoolean(option: string | null, value: boolean): boolean
+export function optionsSetBoolean(option: string, value: boolean): boolean
 /**
  * Set `option` as a #gdouble value.
  * @param option the option identifier
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetDouble(option: string | null, value: number): boolean
+export function optionsSetDouble(option: string, value: number): boolean
 /**
  * Set `option` as a #gint value.
  * @param option the option identifier
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetInt(option: string | null, value: number): boolean
+export function optionsSetInt(option: string, value: number): boolean
 /**
  * Set `option` as a range string. The string must be in the
  * format <emphasis>[!]&lt;low&gt;[:&lt;high&gt;]</emphasis> where low and high are #guint values.
@@ -332,28 +332,28 @@ export function optionsSetInt(option: string | null, value: number): boolean
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetRangeString(option: string | null, value: string | null): boolean
+export function optionsSetRangeString(option: string, value: string): boolean
 /**
  * Set `option` as a #gsize value.
  * @param option the option identifier
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetSize(option: string | null, value: number): boolean
+export function optionsSetSize(option: string, value: number): boolean
 /**
  * Set `option` as a string.
  * @param option the option identifier
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetString(option: string | null, value: string | null): boolean
+export function optionsSetString(option: string, value: string): boolean
 /**
  * Set `option` as a #guint value.
  * @param option the option identifier
  * @param value the value to set
  * @returns %TRUE if option was correctly set or %FALSE otherwise.
  */
-export function optionsSetUint(option: string | null, value: number): boolean
+export function optionsSetUint(option: string, value: number): boolean
 /**
  * The type of delete_property in #JSCClassVTable. This is only required when you need to handle
  * external properties not added to the prototype.
@@ -365,7 +365,7 @@ export function optionsSetUint(option: string | null, value: number): boolean
  * @returns %TRUE if handled or %FALSE to to forward the request to the parent class or prototype chain.
  */
 export interface ClassDeletePropertyFunction {
-    (jscClass: Class, context: Context, instance: any | null, name: string | null): boolean
+    (jscClass: Class, context: Context, instance: any | null, name: string): boolean
 }
 /**
  * The type of enumerate_properties in #JSCClassVTable. This is only required when you need to handle
@@ -390,7 +390,7 @@ export interface ClassEnumeratePropertiesFunction {
  * @returns a #JSCValue or %NULL to forward the request to    the parent class or prototype chain
  */
 export interface ClassGetPropertyFunction {
-    (jscClass: Class, context: Context, instance: any | null, name: string | null): Value | null
+    (jscClass: Class, context: Context, instance: any | null, name: string): Value | null
 }
 /**
  * The type of has_property in #JSCClassVTable. This is only required when you need to handle
@@ -403,7 +403,7 @@ export interface ClassGetPropertyFunction {
  * @returns %TRUE if @instance has a property with @name or %FALSE to forward the request    to the parent class or prototype chain.
  */
 export interface ClassHasPropertyFunction {
-    (jscClass: Class, context: Context, instance: any | null, name: string | null): boolean
+    (jscClass: Class, context: Context, instance: any | null, name: string): boolean
 }
 /**
  * The type of set_property in #JSCClassVTable. This is only required when you need to handle
@@ -417,7 +417,7 @@ export interface ClassHasPropertyFunction {
  * @returns %TRUE if handled or %FALSE to forward the request to the parent class or prototype chain.
  */
 export interface ClassSetPropertyFunction {
-    (jscClass: Class, context: Context, instance: any | null, name: string | null, value: Value): boolean
+    (jscClass: Class, context: Context, instance: any | null, name: string, value: Value): boolean
 }
 /**
  * Function used to handle JavaScript exceptions in a #JSCContext.
@@ -439,7 +439,7 @@ export interface ExceptionHandler {
  * @returns %TRUE to stop the iteration, or %FALSE otherwise
  */
 export interface OptionsFunc {
-    (option: string | null, type: OptionType, description: string | null): boolean
+    (option: string, type: OptionType, description: string | null): boolean
 }
 export module Class {
 
@@ -535,7 +535,7 @@ export interface Class {
      * @param callback a #GCallback to be called to invoke method `name` of `jsc_class`
      * @param returnType the #GType of the method return value, or %G_TYPE_NONE if the method is void.
      */
-    addMethodVariadic(name: string | null, callback: GObject.Callback, returnType: GObject.GType): void
+    addMethodVariadic(name: string, callback: GObject.Callback, returnType: GObject.GType): void
     /**
      * Add method with `name` to `jsc_class`. When the method is called by JavaScript or jsc_value_object_invoke_method(),
      * `callback` is called receiving the class instance as first parameter, followed by the method parameters and then
@@ -551,7 +551,7 @@ export interface Class {
      * @param returnType the #GType of the method return value, or %G_TYPE_NONE if the method is void.
      * @param parameterTypes a list of #GType<!-- -->s, one for each parameter, or %NULL
      */
-    addMethod(name: string | null, callback: GObject.Callback, returnType: GObject.GType, parameterTypes: GObject.GType[] | null): void
+    addMethod(name: string, callback: GObject.Callback, returnType: GObject.GType, parameterTypes: GObject.GType[] | null): void
     /**
      * Add a property with `name` to `jsc_class`. When the property value needs to be getted, `getter` is called
      * receiving the the class instance as first parameter and `user_data` as last parameter. When the property
@@ -568,12 +568,12 @@ export interface Class {
      * @param getter a #GCallback to be called to get the property value
      * @param setter a #GCallback to be called to set the property value
      */
-    addProperty(name: string | null, propertyType: GObject.GType, getter: GObject.Callback | null, setter: GObject.Callback | null): void
+    addProperty(name: string, propertyType: GObject.GType, getter: GObject.Callback | null, setter: GObject.Callback | null): void
     /**
      * Get the class name of `jsc_class`
      * @returns the name of @jsc_class
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the parent class of `jsc_class`
      * @returns the parent class of @jsc_class
@@ -670,7 +670,7 @@ export interface Context {
      * @param lineNumber the starting line number
      * @returns a #JSCCheckSyntaxResult
      */
-    checkSyntax(code: string | null, length: number, mode: CheckSyntaxMode, uri: string | null, lineNumber: number): [ /* returnType */ CheckSyntaxResult, /* exception */ Exception ]
+    checkSyntax(code: string, length: number, mode: CheckSyntaxMode, uri: string, lineNumber: number): [ /* returnType */ CheckSyntaxResult, /* exception */ Exception ]
     /**
      * Clear the uncaught exception in `context` if any.
      */
@@ -681,7 +681,7 @@ export interface Context {
      * @param length length of `code,` or -1 if `code` is a nul-terminated string
      * @returns a #JSCValue representing the last value generated by the script.
      */
-    evaluate(code: string | null, length: number): Value
+    evaluate(code: string, length: number): Value
     /**
      * Evaluate `code` and create an new object where symbols defined in `code` will be added as properties,
      * instead of being added to `context` global object. The new object is returned as `object` parameter.
@@ -696,7 +696,7 @@ export interface Context {
      * @param lineNumber the starting line number
      * @returns a #JSCValue representing the last value generated by the script.
      */
-    evaluateInObject(code: string | null, length: number, objectInstance: any | null, objectClass: Class | null, uri: string | null, lineNumber: number): [ /* returnType */ Value, /* object */ Value ]
+    evaluateInObject(code: string, length: number, objectInstance: any | null, objectClass: Class | null, uri: string, lineNumber: number): [ /* returnType */ Value, /* object */ Value ]
     /**
      * Evaluate `code` in `context` using `uri` as the source URI. The `line_number` is the starting line number
      * in `uri;` the value is one-based so the first line is 1. `uri` and `line_number` will be shown in exceptions and
@@ -707,7 +707,7 @@ export interface Context {
      * @param lineNumber the starting line number
      * @returns a #JSCValue representing the last value generated by the script.
      */
-    evaluateWithSourceUri(code: string | null, length: number, uri: string | null, lineNumber: number): Value
+    evaluateWithSourceUri(code: string, length: number, uri: string, lineNumber: number): Value
     /**
      * Get the last unhandled exception thrown in `context` by API functions calls.
      * @returns a #JSCException or %NULL if there isn't any    unhandled exception in the #JSCContext.
@@ -723,7 +723,7 @@ export interface Context {
      * @param name the value name
      * @returns a #JSCValue
      */
-    getValue(name: string | null): Value
+    getValue(name: string): Value
     /**
      * Get the #JSCVirtualMachine where `context` was created.
      * @returns the #JSCVirtualMachine where the #JSCContext was created.
@@ -759,19 +759,19 @@ export interface Context {
      * @param destroyNotify a destroy notifier for class instances
      * @returns a #JSCClass
      */
-    registerClass(name: string | null, parentClass: Class | null, vtable: ClassVTable | null, destroyNotify: GLib.DestroyNotify | null): Class
+    registerClass(name: string, parentClass: Class | null, vtable: ClassVTable | null, destroyNotify: GLib.DestroyNotify | null): Class
     /**
      * Set a property of `context` global object with `name` and `value`.
      * @param name the value name
      * @param value a #JSCValue
      */
-    setValue(name: string | null, value: Value): void
+    setValue(name: string, value: Value): void
     /**
      * Throw an exception to `context` using the given error message. The created #JSCException
      * can be retrieved with jsc_context_get_exception().
      * @param errorMessage an error message
      */
-    throw(errorMessage: string | null): void
+    throw(errorMessage: string): void
     /**
      * Throw `exception` to `context`.
      * @param exception a #JSCException
@@ -783,7 +783,7 @@ export interface Context {
      * @param errorName the error name
      * @param errorMessage an error message
      */
-    throwWithName(errorName: string | null, errorMessage: string | null): void
+    throwWithName(errorName: string, errorMessage: string): void
 
     // Class property signals of JavaScriptCore-4.0.JavaScriptCore.Context
 
@@ -897,12 +897,12 @@ export interface Exception {
      * Get the error message of `exception`.
      * @returns the @exception error message.
      */
-    getMessage(): string | null
+    getMessage(): string
     /**
      * Get the error name of `exception`
      * @returns the @exception error name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the source URI of `exception`.
      * @returns the the source URI of @exception, or %NULL.
@@ -955,7 +955,7 @@ export class Exception extends GObject.Object {
      * @param message the error message
      * @returns a new #JSCException.
      */
-    constructor(context: Context, message: string | null) 
+    constructor(context: Context, message: string) 
     /**
      * Create a new #JSCException in `context` with `message`.
      * @constructor 
@@ -963,7 +963,7 @@ export class Exception extends GObject.Object {
      * @param message the error message
      * @returns a new #JSCException.
      */
-    static new(context: Context, message: string | null): Exception
+    static new(context: Context, message: string): Exception
     /**
      * Create a new #JSCException in `context` with `name` and `message`.
      * @constructor 
@@ -972,7 +972,7 @@ export class Exception extends GObject.Object {
      * @param message the error message
      * @returns a new #JSCException.
      */
-    static newWithName(context: Context, name: string | null, message: string | null): Exception
+    static newWithName(context: Context, name: string, message: string): Exception
     _init(config?: Exception.ConstructorProperties): void
 }
 
@@ -1155,7 +1155,7 @@ export interface Value {
      * @param getter a #GCallback to be called to get the property value
      * @param setter a #GCallback to be called to set the property value
      */
-    objectDefinePropertyAccessor(propertyName: string | null, flags: ValuePropertyFlags, propertyType: GObject.GType, getter: GObject.Callback | null, setter: GObject.Callback | null): void
+    objectDefinePropertyAccessor(propertyName: string, flags: ValuePropertyFlags, propertyType: GObject.GType, getter: GObject.Callback | null, setter: GObject.Callback | null): void
     /**
      * Define or modify a property with `property_name` in object referenced by `value`. This is equivalent to
      * JavaScript <function>Object.defineProperty()</function> when used with a data descriptor.
@@ -1163,14 +1163,14 @@ export interface Value {
      * @param flags #JSCValuePropertyFlags
      * @param propertyValue the default property value
      */
-    objectDefinePropertyData(propertyName: string | null, flags: ValuePropertyFlags, propertyValue: Value | null): void
+    objectDefinePropertyData(propertyName: string, flags: ValuePropertyFlags, propertyValue: Value | null): void
     /**
      * Try to delete property with `name` from `value`. This function will return %FALSE if
      * the property was defined without %JSC_VALUE_PROPERTY_CONFIGURABLE flag.
      * @param name the property name
      * @returns %TRUE if the property was deleted, or %FALSE otherwise.
      */
-    objectDeleteProperty(name: string | null): boolean
+    objectDeleteProperty(name: string): boolean
     /**
      * Get the list of property names of `value`. Only properties defined with %JSC_VALUE_PROPERTY_ENUMERABLE
      * flag will be collected.
@@ -1182,7 +1182,7 @@ export interface Value {
      * @param name the property name
      * @returns the property #JSCValue.
      */
-    objectGetProperty(name: string | null): Value
+    objectGetProperty(name: string): Value
     /**
      * Get property at `index` from `value`.
      * @param index the property index
@@ -1194,7 +1194,7 @@ export interface Value {
      * @param name the property name
      * @returns %TRUE if @value has a property with @name, or %FALSE otherwise
      */
-    objectHasProperty(name: string | null): boolean
+    objectHasProperty(name: string): boolean
     /**
      * Invoke method with `name` on object referenced by `value,` passing the given `parameters`. If
      * `n_parameters` is 0 no parameters will be passed to the method.
@@ -1208,19 +1208,19 @@ export interface Value {
      * @param parameters the #JSCValue<!-- -->s to pass as parameters to the method, or %NULL
      * @returns a #JSCValue with the return value of the method.
      */
-    objectInvokeMethod(name: string | null, parameters: Value[] | null): Value
+    objectInvokeMethod(name: string, parameters: Value[] | null): Value
     /**
      * Get whether the value referenced by `value` is an instance of class `name`.
      * @param name a class name
      * @returns whether the value is an object instance of class @name.
      */
-    objectIsInstanceOf(name: string | null): boolean
+    objectIsInstanceOf(name: string): boolean
     /**
      * Set `property` with `name` on `value`.
      * @param name the property name
      * @param property the #JSCValue to set
      */
-    objectSetProperty(name: string | null, property: Value): void
+    objectSetProperty(name: string, property: Value): void
     /**
      * Set `property` at `index` on `value`.
      * @param index the property index
@@ -1421,7 +1421,7 @@ export class Value extends GObject.Object {
      * @param json the JSON string to be parsed
      * @returns a #JSCValue.
      */
-    static newFromJson(context: Context, json: string | null): Value
+    static newFromJson(context: Context, json: string): Value
     /**
      * Create a function in `context`. If `name` is %NULL an anonymous function will be created.
      * When the function is called by JavaScript or jsc_value_function_call(), `callback` is called

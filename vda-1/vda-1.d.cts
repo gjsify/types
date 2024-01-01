@@ -214,13 +214,13 @@ export interface MetaNamedObject extends GObject.Object, MetaObject {
 
     // Owm methods of Vda-1.Vda.MetaNamedObject
 
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
 
     // Own virtual methods of Vda-1.Vda.MetaNamedObject
 
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
 
     // Class property signals of Vda-1.Vda.MetaNamedObject
 
@@ -268,12 +268,12 @@ export interface ColumnModel extends GObject.Object {
 
     // Owm methods of Vda-1.Vda.ColumnModel
 
-    get_name(): string | null
+    get_name(): string
     get_data_type(): GObject.GType
 
     // Own virtual methods of Vda-1.Vda.ColumnModel
 
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     vfunc_get_data_type(): GObject.GType
 
     // Class property signals of Vda-1.Vda.ColumnModel
@@ -332,7 +332,7 @@ export module Connection {
      * Signal callback interface for `canceled`
      */
     export interface CanceledSignalCallback {
-        ($obj: Connection, message: string | null): void
+        ($obj: Connection, message: string): void
     }
 
     /**
@@ -378,19 +378,19 @@ export interface Connection extends GObject.Object {
     close_finish(_res_: Gio.AsyncResult): void
     open(_callback_?: Gio.AsyncReadyCallback<this> | null): void
     open_finish(_res_: Gio.AsyncResult): ConnectionStatus
-    open_from_string(cnc_string: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    open_from_string(cnc_string: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus
-    parse_string(sql: string | null): Query
-    parse_string_prepared(name: string | null, sql: string | null): PreparedQuery | null
-    get_prepared_query(name: string | null): PreparedQuery | null
+    parse_string(sql: string): Query
+    parse_string_prepared(name: string | null, sql: string): PreparedQuery | null
+    get_prepared_query(name: string): PreparedQuery | null
     query_from_command(cmd: SqlCommand, name?: string | null): PreparedQuery | null
     value_to_quoted_string(v: SqlValue): string | null
-    locale(category: string | null): string | null
+    locale(category: string): string | null
     get_status(): ConnectionStatus
     get_parameters(): ConnectionParameters
     set_parameters(value: ConnectionParameters): void
     get_is_opened(): boolean
-    get_connection_string(): string | null
+    get_connection_string(): string
 
     // Own virtual methods of Vda-1.Vda.Connection
 
@@ -398,19 +398,19 @@ export interface Connection extends GObject.Object {
     vfunc_close_finish(_res_: Gio.AsyncResult): void
     vfunc_open(_callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_open_finish(_res_: Gio.AsyncResult): ConnectionStatus
-    vfunc_open_from_string(cnc_string: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_open_from_string(cnc_string: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_open_from_string_finish(_res_: Gio.AsyncResult): ConnectionStatus
-    vfunc_parse_string(sql: string | null): Query
-    vfunc_parse_string_prepared(name: string | null, sql: string | null): PreparedQuery | null
-    vfunc_get_prepared_query(name: string | null): PreparedQuery | null
+    vfunc_parse_string(sql: string): Query
+    vfunc_parse_string_prepared(name: string | null, sql: string): PreparedQuery | null
+    vfunc_get_prepared_query(name: string): PreparedQuery | null
     vfunc_query_from_command(cmd: SqlCommand, name?: string | null): PreparedQuery | null
     vfunc_value_to_quoted_string(v: SqlValue): string | null
-    vfunc_locale(category: string | null): string | null
+    vfunc_locale(category: string): string | null
     vfunc_get_status(): ConnectionStatus
     vfunc_get_parameters(): ConnectionParameters
     vfunc_set_parameters(value: ConnectionParameters): void
     vfunc_get_is_opened(): boolean
-    vfunc_get_connection_string(): string | null
+    vfunc_get_connection_string(): string
 
     // Own signals of Vda-1.Vda.Connection
 
@@ -425,7 +425,7 @@ export interface Connection extends GObject.Object {
     emit(sigName: "closing", ...args: any[]): void
     connect(sigName: "canceled", callback: Connection.CanceledSignalCallback): number
     connect_after(sigName: "canceled", callback: Connection.CanceledSignalCallback): number
-    emit(sigName: "canceled", message: string | null, ...args: any[]): void
+    emit(sigName: "canceled", message: string, ...args: any[]): void
     connect(sigName: "timeout", callback: Connection.TimeoutSignalCallback): number
     connect_after(sigName: "timeout", callback: Connection.TimeoutSignalCallback): number
     emit(sigName: "timeout", ...args: any[]): void
@@ -522,12 +522,12 @@ export interface ConnectionRolebased extends GObject.Object {
     // Owm methods of Vda-1.Vda.ConnectionRolebased
 
     current_role(): Role | null
-    create_role(name: string | null, params: Parameters): Role | null
+    create_role(name: string, params: Parameters): Role | null
 
     // Own virtual methods of Vda-1.Vda.ConnectionRolebased
 
     vfunc_current_role(): Role | null
-    vfunc_create_role(name: string | null, params: Parameters): Role | null
+    vfunc_create_role(name: string, params: Parameters): Role | null
 
     // Class property signals of Vda-1.Vda.ConnectionRolebased
 
@@ -652,8 +652,8 @@ export interface DataObject extends GObject.Object {
     update_from_row(table: TableModel, nrow: number): void
     get_database_connection(): Connection
     set_database_connection(value: Connection): void
-    get_database_table_name(): string | null
-    set_database_table_name(value: string | null): void
+    get_database_table_name(): string
+    set_database_table_name(value: string): void
     get_cancellable(): Gio.Cancellable
     set_cancellable(value: Gio.Cancellable): void
 
@@ -682,8 +682,8 @@ export interface DataObject extends GObject.Object {
     vfunc_update_from_row(table: TableModel, nrow: number): void
     vfunc_get_database_connection(): Connection
     vfunc_set_database_connection(value: Connection): void
-    vfunc_get_database_table_name(): string | null
-    vfunc_set_database_table_name(value: string | null): void
+    vfunc_get_database_table_name(): string
+    vfunc_set_database_table_name(value: string): void
     vfunc_get_cancellable(): Gio.Cancellable
     vfunc_set_cancellable(value: Gio.Cancellable): void
 
@@ -758,10 +758,10 @@ export interface DataCollection extends GObject.Object {
     get_objects_finish(_res_: Gio.AsyncResult): TableModel
     get_database_connection(): Connection
     set_database_connection(value: Connection): void
-    get_parent_property(): string | null
+    get_parent_property(): string
     get_parent(): DataObject
     get_object_type(): GObject.GType
-    get_ref_field(): string | null
+    get_ref_field(): string
     get_cancellable(): Gio.Cancellable
     set_cancellable(value: Gio.Cancellable): void
 
@@ -771,10 +771,10 @@ export interface DataCollection extends GObject.Object {
     vfunc_get_objects_finish(_res_: Gio.AsyncResult): TableModel
     vfunc_get_database_connection(): Connection
     vfunc_set_database_connection(value: Connection): void
-    vfunc_get_parent_property(): string | null
+    vfunc_get_parent_property(): string
     vfunc_get_parent(): DataObject
     vfunc_get_object_type(): GObject.GType
-    vfunc_get_ref_field(): string | null
+    vfunc_get_ref_field(): string
     vfunc_get_cancellable(): Gio.Cancellable
     vfunc_set_cancellable(value: Gio.Cancellable): void
 
@@ -992,12 +992,12 @@ export interface PreparedQuery extends GObject.Object, Query {
 
     // Owm methods of Vda-1.Vda.PreparedQuery
 
-    get_name(): string | null
+    get_name(): string
     get_parameters(): SqlParameters
 
     // Own virtual methods of Vda-1.Vda.PreparedQuery
 
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     vfunc_get_parameters(): SqlParameters
 
     // Class property signals of Vda-1.Vda.PreparedQuery
@@ -1209,21 +1209,21 @@ export interface RowModel extends GObject.Object, Gio.ListModel {
 
     // Owm methods of Vda-1.Vda.RowModel
 
-    get_column(name: string | null): ColumnModel | null
+    get_column(name: string): ColumnModel | null
     get_column_at(col: number): ColumnModel | null
-    get_value(name: string | null): SqlValue | null
+    get_value(name: string): SqlValue | null
     get_value_at(col: number): SqlValue | null
-    get_string(name: string | null): string | null
+    get_string(name: string): string | null
     get_string_at(col: number): string | null
     get_n_columns(): number
 
     // Own virtual methods of Vda-1.Vda.RowModel
 
-    vfunc_get_column(name: string | null): ColumnModel | null
+    vfunc_get_column(name: string): ColumnModel | null
     vfunc_get_column_at(col: number): ColumnModel | null
-    vfunc_get_value(name: string | null): SqlValue | null
+    vfunc_get_value(name: string): SqlValue | null
     vfunc_get_value_at(col: number): SqlValue | null
-    vfunc_get_string(name: string | null): string | null
+    vfunc_get_string(name: string): string | null
     vfunc_get_string_at(col: number): string | null
     vfunc_get_n_columns(): number
 
@@ -1407,13 +1407,13 @@ export interface SqlCommandDelete extends GObject.Object, SqlCommandTableRelated
 
     stringify(): string | null
     to_query(name?: string | null): Query
-    parse(sql: string | null): void
+    parse(sql: string): void
 
     // Own virtual methods of Vda-1.Vda.SqlCommandDelete
 
     vfunc_stringify(): string | null
     vfunc_to_query(name?: string | null): Query
-    vfunc_parse(sql: string | null): void
+    vfunc_parse(sql: string): void
 
     // Class property signals of Vda-1.Vda.SqlCommandDelete
 
@@ -1466,13 +1466,13 @@ export interface SqlCommandInsert extends GObject.Object, SqlCommandTableRelated
 
     stringify(): string | null
     to_query(name?: string | null): Query
-    parse(sql: string | null): void
+    parse(sql: string): void
 
     // Own virtual methods of Vda-1.Vda.SqlCommandInsert
 
     vfunc_stringify(): string | null
     vfunc_to_query(name?: string | null): Query
-    vfunc_parse(sql: string | null): void
+    vfunc_parse(sql: string): void
 
     // Class property signals of Vda-1.Vda.SqlCommandInsert
 
@@ -1531,21 +1531,21 @@ export interface SqlCommandModification extends GObject.Object {
 
     // Owm methods of Vda-1.Vda.SqlCommandModification
 
-    add_field_value(name: string | null, val?: any | null): void
-    add_field(name: string | null): void
+    add_field_value(name: string, val?: any | null): void
+    add_field(name: string): void
     add_value(val?: any | null): void
-    add_field_parameter_value(field: string | null, par: string | null, gtype: GObject.GType): void
-    add_parameter(par: string | null, gtype: GObject.GType): void
+    add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void
+    add_parameter(par: string, gtype: GObject.GType): void
     get_fields(): HashModel
     get_values(): HashModel
 
     // Own virtual methods of Vda-1.Vda.SqlCommandModification
 
-    vfunc_add_field_value(name: string | null, val?: any | null): void
-    vfunc_add_field(name: string | null): void
+    vfunc_add_field_value(name: string, val?: any | null): void
+    vfunc_add_field(name: string): void
     vfunc_add_value(val?: any | null): void
-    vfunc_add_field_parameter_value(field: string | null, par: string | null, gtype: GObject.GType): void
-    vfunc_add_parameter(par: string | null, gtype: GObject.GType): void
+    vfunc_add_field_parameter_value(field: string, par: string, gtype: GObject.GType): void
+    vfunc_add_parameter(par: string, gtype: GObject.GType): void
     vfunc_get_fields(): HashModel
     vfunc_get_values(): HashModel
 
@@ -1644,25 +1644,25 @@ export interface SqlCommandSelect extends GObject.Object, SqlCommandConditional,
 
     // Owm methods of Vda-1.Vda.SqlCommandSelect
 
-    add_field(field: string | null, table_ref?: string | null, alias?: string | null): void
-    add_table(name: string | null, allias?: string | null): void
+    add_field(field: string, table_ref?: string | null, alias?: string | null): void
+    add_table(name: string, allias?: string | null): void
     add_value_field(val: any, allias?: string | null): void
-    add_math_exp_field(exp: string | null, allias?: string | null): void
+    add_math_exp_field(exp: string, allias?: string | null): void
     stringify(): string | null
     to_query(name?: string | null): PreparedQuery
-    parse(sql: string | null): void
+    parse(sql: string): void
     get_fields(): HashModel
     get_tables(): HashModel
 
     // Own virtual methods of Vda-1.Vda.SqlCommandSelect
 
-    vfunc_add_field(field: string | null, table_ref?: string | null, alias?: string | null): void
-    vfunc_add_table(name: string | null, allias?: string | null): void
+    vfunc_add_field(field: string, table_ref?: string | null, alias?: string | null): void
+    vfunc_add_table(name: string, allias?: string | null): void
     vfunc_add_value_field(val: any, allias?: string | null): void
-    vfunc_add_math_exp_field(exp: string | null, allias?: string | null): void
+    vfunc_add_math_exp_field(exp: string, allias?: string | null): void
     vfunc_stringify(): string | null
     vfunc_to_query(name?: string | null): PreparedQuery
-    vfunc_parse(sql: string | null): void
+    vfunc_parse(sql: string): void
     vfunc_get_fields(): HashModel
     vfunc_get_tables(): HashModel
 
@@ -1725,17 +1725,17 @@ export interface SqlCommandTableRelated extends GObject.Object {
 
     // Owm methods of Vda-1.Vda.SqlCommandTableRelated
 
-    get_table(): string | null
-    set_table(value: string | null): void
-    get_allias(): string | null
-    set_allias(value: string | null): void
+    get_table(): string
+    set_table(value: string): void
+    get_allias(): string
+    set_allias(value: string): void
 
     // Own virtual methods of Vda-1.Vda.SqlCommandTableRelated
 
-    vfunc_get_table(): string | null
-    vfunc_set_table(value: string | null): void
-    vfunc_get_allias(): string | null
-    vfunc_set_allias(value: string | null): void
+    vfunc_get_table(): string
+    vfunc_set_table(value: string): void
+    vfunc_get_allias(): string
+    vfunc_set_allias(value: string): void
 
     // Class property signals of Vda-1.Vda.SqlCommandTableRelated
 
@@ -1779,13 +1779,13 @@ export interface SqlCommandUpdate extends GObject.Object, SqlCommandTableRelated
 
     stringify(): string | null
     to_query(name?: string | null): Query
-    parse(sql: string | null): void
+    parse(sql: string): void
 
     // Own virtual methods of Vda-1.Vda.SqlCommandUpdate
 
     vfunc_stringify(): string | null
     vfunc_to_query(name?: string | null): Query
-    vfunc_parse(sql: string | null): void
+    vfunc_parse(sql: string): void
 
     // Class property signals of Vda-1.Vda.SqlCommandUpdate
 
@@ -1845,14 +1845,14 @@ export interface SqlExpression extends GObject.Object, Gio.ListModel {
     add_expression(exp: SqlExpression): void
     remove_expression(exp: SqlExpression): void
     to_string(): string | null
-    add_math_expression(str: string | null, cnc: Connection, params?: SqlParameters | null): void
+    add_math_expression(str: string, cnc: Connection, params?: SqlParameters | null): void
 
     // Own virtual methods of Vda-1.Vda.SqlExpression
 
     vfunc_add_expression(exp: SqlExpression): void
     vfunc_remove_expression(exp: SqlExpression): void
     vfunc_to_string(): string | null
-    vfunc_add_math_expression(str: string | null, cnc: Connection, params?: SqlParameters | null): void
+    vfunc_add_math_expression(str: string, cnc: Connection, params?: SqlParameters | null): void
 
     // Class property signals of Vda-1.Vda.SqlExpression
 
@@ -1873,7 +1873,7 @@ export class SqlExpression {
 
     constructor(config?: SqlExpression.ConstructorProperties) 
     _init(config?: SqlExpression.ConstructorProperties): void
-    static parse(str: string | null, cnc: Connection, params?: SqlParameters | null): SqlExpression
+    static parse(str: string, cnc: Connection, params?: SqlParameters | null): SqlExpression
 }
 
 export module SqlExpressionField {
@@ -1903,19 +1903,19 @@ export interface SqlExpressionField extends GObject.Object, SqlExpression {
 
     // Owm methods of Vda-1.Vda.SqlExpressionField
 
-    get_table_ref(): string | null
-    set_table_ref(value: string | null): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_table_ref(): string
+    set_table_ref(value: string): void
+    get_name(): string
+    set_name(value: string): void
     get_allias(): string | null
     set_allias(value?: string | null): void
 
     // Own virtual methods of Vda-1.Vda.SqlExpressionField
 
-    vfunc_get_table_ref(): string | null
-    vfunc_set_table_ref(value: string | null): void
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_table_ref(): string
+    vfunc_set_table_ref(value: string): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_allias(): string | null
     vfunc_set_allias(value?: string | null): void
 
@@ -1967,9 +1967,9 @@ export interface SqlExpressionOperator extends GObject.Object, SqlExpression {
 
     // Owm methods of Vda-1.Vda.SqlExpressionOperator
 
-    create_field_expression(name: string | null): SqlExpressionField
+    create_field_expression(name: string): SqlExpressionField
     create_value_expression(val: any | null, cnc: Connection): SqlExpressionValue
-    create_parameter_expression(name: string | null, gtype: GObject.GType): SqlExpressionValueParameter
+    create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter
     add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator
     add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator
     add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator
@@ -2006,9 +2006,9 @@ export interface SqlExpressionOperator extends GObject.Object, SqlExpression {
 
     // Own virtual methods of Vda-1.Vda.SqlExpressionOperator
 
-    vfunc_create_field_expression(name: string | null): SqlExpressionField
+    vfunc_create_field_expression(name: string): SqlExpressionField
     vfunc_create_value_expression(val: any | null, cnc: Connection): SqlExpressionValue
-    vfunc_create_parameter_expression(name: string | null, gtype: GObject.GType): SqlExpressionValueParameter
+    vfunc_create_parameter_expression(name: string, gtype: GObject.GType): SqlExpressionValueParameter
     vfunc_add_and_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator
     vfunc_add_or_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator
     vfunc_add_eq_operator(exp1: SqlExpression, exp2: SqlExpression): SqlExpressionOperator
@@ -3910,7 +3910,7 @@ export interface SqlExpressionValue extends GObject.Object, SqlExpression {
 
     // Owm methods of Vda-1.Vda.SqlExpressionValue
 
-    set_math_expression_value(str: string | null, params?: SqlParameters | null): void
+    set_math_expression_value(str: string, params?: SqlParameters | null): void
     get_connection(): Connection | null
     set_connection(value?: Connection | null): void
     get_value(): SqlValue
@@ -3918,7 +3918,7 @@ export interface SqlExpressionValue extends GObject.Object, SqlExpression {
 
     // Own virtual methods of Vda-1.Vda.SqlExpressionValue
 
-    vfunc_set_math_expression_value(str: string | null, params?: SqlParameters | null): void
+    vfunc_set_math_expression_value(str: string, params?: SqlParameters | null): void
     vfunc_get_connection(): Connection | null
     vfunc_set_connection(value?: Connection | null): void
     vfunc_get_value(): SqlValue
@@ -3976,21 +3976,21 @@ export interface SqlExpressionValueParameter extends GObject.Object, SqlExpressi
 
     // Owm methods of Vda-1.Vda.SqlExpressionValueParameter
 
-    parse(str: string | null): void
+    parse(str: string): void
     get_parameters(): SqlParameters
     set_parameters(value: SqlParameters): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_gtype(): GObject.GType
     set_gtype(value: GObject.GType): void
 
     // Own virtual methods of Vda-1.Vda.SqlExpressionValueParameter
 
-    vfunc_parse(str: string | null): void
+    vfunc_parse(str: string): void
     vfunc_get_parameters(): SqlParameters
     vfunc_set_parameters(value: SqlParameters): void
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_gtype(): GObject.GType
     vfunc_set_gtype(value: GObject.GType): void
 
@@ -4028,7 +4028,7 @@ export class SqlExpressionValueParameter {
 
     constructor(config?: SqlExpressionValueParameter.ConstructorProperties) 
     _init(config?: SqlExpressionValueParameter.ConstructorProperties): void
-    static gtype_from_string(str: string | null): GObject.GType
+    static gtype_from_string(str: string): GObject.GType
 }
 
 export module SqlParameters {
@@ -4044,19 +4044,19 @@ export interface SqlParameters extends GObject.Object {
 
     // Owm methods of Vda-1.Vda.SqlParameters
 
-    set_value(name: string | null, val: any): void
-    get_value(name: string | null): any | null
-    set_sql_value(name: string | null, val: SqlValue): void
-    get_sql_value(name: string | null): SqlValue
-    has_param(name: string | null): boolean
+    set_value(name: string, val: any): void
+    get_value(name: string): any | null
+    set_sql_value(name: string, val: SqlValue): void
+    get_sql_value(name: string): SqlValue
+    has_param(name: string): boolean
 
     // Own virtual methods of Vda-1.Vda.SqlParameters
 
-    vfunc_set_value(name: string | null, val: any): void
-    vfunc_get_value(name: string | null): any | null
-    vfunc_set_sql_value(name: string | null, val: SqlValue): void
-    vfunc_get_sql_value(name: string | null): SqlValue
-    vfunc_has_param(name: string | null): boolean
+    vfunc_set_value(name: string, val: any): void
+    vfunc_get_value(name: string): any | null
+    vfunc_set_sql_value(name: string, val: SqlValue): void
+    vfunc_get_sql_value(name: string): SqlValue
+    vfunc_has_param(name: string): boolean
 
     // Class property signals of Vda-1.Vda.SqlParameters
 
@@ -4092,11 +4092,11 @@ export interface SqlParser extends GObject.Object {
 
     // Owm methods of Vda-1.Vda.SqlParser
 
-    parse(str: string | null, cnc: Connection): SqlCommandParametrized
+    parse(str: string, cnc: Connection): SqlCommandParametrized
 
     // Own virtual methods of Vda-1.Vda.SqlParser
 
-    vfunc_parse(str: string | null, cnc: Connection): SqlCommandParametrized
+    vfunc_parse(str: string, cnc: Connection): SqlCommandParametrized
 
     // Class property signals of Vda-1.Vda.SqlParser
 
@@ -4142,15 +4142,15 @@ export interface SqlTableReference extends GObject.Object {
 
     // Owm methods of Vda-1.Vda.SqlTableReference
 
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_allias(): string | null
     set_allias(value?: string | null): void
 
     // Own virtual methods of Vda-1.Vda.SqlTableReference
 
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_allias(): string | null
     vfunc_set_allias(value?: string | null): void
 
@@ -4238,25 +4238,25 @@ export interface SqlValue extends GObject.Object, Stringifiable {
 
     // Owm methods of Vda-1.Vda.SqlValue
 
-    parse(str: string | null): boolean
+    parse(str: string): boolean
     from_value(val: any): boolean
     cast(type: GObject.GType): SqlValue | null
     is_compatible(type: GObject.GType): boolean
     to_gvalue(): /* result */ any
     to_string_quoted(): string | null
     to_sql_expression(): string | null
-    get_name(): string | null
+    get_name(): string
 
     // Own virtual methods of Vda-1.Vda.SqlValue
 
-    vfunc_parse(str: string | null): boolean
+    vfunc_parse(str: string): boolean
     vfunc_from_value(val: any): boolean
     vfunc_cast(type: GObject.GType): SqlValue | null
     vfunc_is_compatible(type: GObject.GType): boolean
     vfunc_to_gvalue(): /* result */ any
     vfunc_to_string_quoted(): string | null
     vfunc_to_sql_expression(): string | null
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
 
     // Class property signals of Vda-1.Vda.SqlValue
 
@@ -4994,7 +4994,7 @@ export interface SqlValueNumeric extends GObject.Object, SqlValue {
 
     set_precision(p: number): void
     get_precision(): number
-    format(str: string | null): string | null
+    format(str: string): string | null
     get_double(): number
     set_double(v: number): void
     get_real(): number
@@ -5006,7 +5006,7 @@ export interface SqlValueNumeric extends GObject.Object, SqlValue {
 
     vfunc_set_precision(p: number): void
     vfunc_get_precision(): number
-    vfunc_format(str: string | null): string | null
+    vfunc_format(str: string): string | null
     vfunc_get_double(): number
     vfunc_set_double(v: number): void
     vfunc_get_real(): number
@@ -6075,10 +6075,10 @@ export interface ConnectionParameter {
 
     // Owm methods of Vda-1.Vda.ConnectionParameter
 
-    get_name(): string | null
-    set_name(value: string | null): void
-    get_value(): string | null
-    set_value(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
+    get_value(): string
+    set_value(value: string): void
 
     // Class property signals of Vda-1.Vda.ConnectionParameter
 
@@ -6342,13 +6342,13 @@ export interface ConnectionParameters {
 
     // Owm methods of Vda-1.Vda.ConnectionParameters
 
-    parse(cnstring: string | null): void
+    parse(cnstring: string): void
     to_string(): string | null
-    has_param(name: string | null): boolean
+    has_param(name: string): boolean
 
     // Own virtual methods of Vda-1.Vda.ConnectionParameters
 
-    vfunc_parse(cnstring: string | null): void
+    vfunc_parse(cnstring: string): void
 
     // Class property signals of Vda-1.Vda.ConnectionParameters
 
@@ -6404,8 +6404,8 @@ export class ConnectionParameters extends Gee.HashMap {
     // Constructors of Vda-1.Vda.ConnectionParameters
 
     constructor(config?: ConnectionParameters.ConstructorProperties) 
-    constructor(cnc_str: string | null) 
-    static new(cnc_str: string | null): ConnectionParameters
+    constructor(cnc_str: string) 
+    static new(cnc_str: string): ConnectionParameters
 
     // Overloads of new
 
@@ -14105,8 +14105,8 @@ export interface InvalidQuery extends Query {
 
     // Owm methods of Vda-1.Vda.InvalidQuery
 
-    get_message(): string | null
-    set_message(value: string | null): void
+    get_message(): string
+    set_message(value: string): void
 
     // Class property signals of Vda-1.Vda.InvalidQuery
 
@@ -14135,8 +14135,8 @@ export class InvalidQuery extends GObject.Object {
     // Constructors of Vda-1.Vda.InvalidQuery
 
     constructor(config?: InvalidQuery.ConstructorProperties) 
-    constructor(msg: string | null) 
-    static new(msg: string | null): InvalidQuery
+    constructor(msg: string) 
+    static new(msg: string): InvalidQuery
     _init(config?: InvalidQuery.ConstructorProperties): void
 }
 
@@ -14184,12 +14184,12 @@ export class InvalidPreparedQuery extends InvalidQuery {
     // Constructors of Vda-1.Vda.InvalidPreparedQuery
 
     constructor(config?: InvalidPreparedQuery.ConstructorProperties) 
-    constructor(msg: string | null) 
-    static new(msg: string | null): InvalidPreparedQuery
+    constructor(msg: string) 
+    static new(msg: string): InvalidPreparedQuery
 
     // Overloads of new
 
-    static new(msg: string | null): InvalidQuery
+    static new(msg: string): InvalidQuery
     _init(config?: InvalidPreparedQuery.ConstructorProperties): void
 }
 
@@ -14214,8 +14214,8 @@ export interface InvalidResult extends Result {
 
     // Owm methods of Vda-1.Vda.InvalidResult
 
-    get_message(): string | null
-    set_message(value: string | null): void
+    get_message(): string
+    set_message(value: string): void
 
     // Class property signals of Vda-1.Vda.InvalidResult
 
@@ -14238,8 +14238,8 @@ export class InvalidResult extends GObject.Object {
     // Constructors of Vda-1.Vda.InvalidResult
 
     constructor(config?: InvalidResult.ConstructorProperties) 
-    constructor(msg: string | null) 
-    static new(msg: string | null): InvalidResult
+    constructor(msg: string) 
+    static new(msg: string): InvalidResult
     _init(config?: InvalidResult.ConstructorProperties): void
 }
 
@@ -14413,7 +14413,7 @@ export interface Value extends Stringifiable, SqlValue {
     from_value(val: any): boolean
     cast(type: GObject.GType): SqlValue | null
     is_compatible(type: GObject.GType): boolean
-    parse(str: string | null): boolean
+    parse(str: string): boolean
     to_gvalue(): /* result */ any
     to_string(): string | null
     to_string_quoted(): string | null
@@ -14425,7 +14425,7 @@ export interface Value extends Stringifiable, SqlValue {
     vfunc_from_value(val: any): boolean
     vfunc_cast(type: GObject.GType): SqlValue | null
     vfunc_is_compatible(type: GObject.GType): boolean
-    vfunc_parse(str: string | null): boolean
+    vfunc_parse(str: string): boolean
     vfunc_to_gvalue(): /* result */ any
     vfunc_to_string(): string | null
     vfunc_to_string_quoted(): string | null
@@ -15269,11 +15269,11 @@ export interface ValueNumeric extends SqlValueNumeric {
 
     // Owm methods of Vda-1.Vda.ValueNumeric
 
-    format(str: string | null): string | null
+    format(str: string): string | null
 
     // Own virtual methods of Vda-1.Vda.ValueNumeric
 
-    vfunc_format(str: string | null): string | null
+    vfunc_format(str: string): string | null
 
     // Class property signals of Vda-1.Vda.ValueNumeric
 
@@ -16006,7 +16006,7 @@ export interface ConnectionParametersClass {
 
     // Own fields of Vda-1.Vda.ConnectionParametersClass
 
-    parse: (cnstring: string | null) => void
+    parse: (cnstring: string) => void
 }
 
 export abstract class ConnectionParametersClass {
@@ -17318,7 +17318,7 @@ export interface ValueClass {
     from_value: (val: any) => boolean
     cast: (type: GObject.GType) => SqlValue | null
     is_compatible: (type: GObject.GType) => boolean
-    parse: (str: string | null) => boolean
+    parse: (str: string) => boolean
     to_gvalue: () => /* result */ any
     to_string: () => string | null
     to_string_quoted: () => string | null
@@ -17726,7 +17726,7 @@ export interface ValueNumericClass {
 
     // Own fields of Vda-1.Vda.ValueNumericClass
 
-    format: (str: string | null) => string | null
+    format: (str: string) => string | null
 }
 
 export abstract class ValueNumericClass {
@@ -17971,8 +17971,8 @@ export interface MetaNamedObjectIface {
 
     // Own fields of Vda-1.Vda.MetaNamedObjectIface
 
-    get_name: () => string | null
-    set_name: (value: string | null) => void
+    get_name: () => string
+    set_name: (value: string) => void
 }
 
 export abstract class MetaNamedObjectIface {
@@ -17986,7 +17986,7 @@ export interface ColumnModelIface {
 
     // Own fields of Vda-1.Vda.ColumnModelIface
 
-    get_name: () => string | null
+    get_name: () => string
     get_data_type: () => GObject.GType
 }
 
@@ -18005,19 +18005,19 @@ export interface ConnectionIface {
     close_finish: (_res_: Gio.AsyncResult) => void
     open: (_callback_?: Gio.AsyncReadyCallback | null) => void
     open_finish: (_res_: Gio.AsyncResult) => ConnectionStatus
-    open_from_string: (cnc_string: string | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    open_from_string: (cnc_string: string, _callback_?: Gio.AsyncReadyCallback | null) => void
     open_from_string_finish: (_res_: Gio.AsyncResult) => ConnectionStatus
-    parse_string: (sql: string | null) => Query
-    parse_string_prepared: (name: string | null, sql: string | null) => PreparedQuery | null
-    get_prepared_query: (name: string | null) => PreparedQuery | null
+    parse_string: (sql: string) => Query
+    parse_string_prepared: (name: string | null, sql: string) => PreparedQuery | null
+    get_prepared_query: (name: string) => PreparedQuery | null
     query_from_command: (cmd: SqlCommand, name?: string | null) => PreparedQuery | null
     value_to_quoted_string: (v: SqlValue) => string | null
-    locale: (category: string | null) => string | null
+    locale: (category: string) => string | null
     get_status: () => ConnectionStatus
     get_parameters: () => ConnectionParameters
     set_parameters: (value: ConnectionParameters) => void
     get_is_opened: () => boolean
-    get_connection_string: () => string | null
+    get_connection_string: () => string
 }
 
 export abstract class ConnectionIface {
@@ -18047,7 +18047,7 @@ export interface ConnectionRolebasedIface {
     // Own fields of Vda-1.Vda.ConnectionRolebasedIface
 
     current_role: () => Role | null
-    create_role: (name: string | null, params: Parameters) => Role | null
+    create_role: (name: string, params: Parameters) => Role | null
 }
 
 export abstract class ConnectionRolebasedIface {
@@ -18103,8 +18103,8 @@ export interface DataObjectIface {
     update_from_row: (table: TableModel, nrow: number) => void
     get_database_connection: () => Connection
     set_database_connection: (value: Connection) => void
-    get_database_table_name: () => string | null
-    set_database_table_name: (value: string | null) => void
+    get_database_table_name: () => string
+    set_database_table_name: (value: string) => void
     get_cancellable: () => Gio.Cancellable
     set_cancellable: (value: Gio.Cancellable) => void
 }
@@ -18124,10 +18124,10 @@ export interface DataCollectionIface {
     get_objects_finish: (_res_: Gio.AsyncResult) => TableModel
     get_database_connection: () => Connection
     set_database_connection: (value: Connection) => void
-    get_parent_property: () => string | null
+    get_parent_property: () => string
     get_parent: () => DataObject
     get_object_type: () => GObject.GType
-    get_ref_field: () => string | null
+    get_ref_field: () => string
     get_cancellable: () => Gio.Cancellable
     set_cancellable: (value: Gio.Cancellable) => void
 }
@@ -18188,7 +18188,7 @@ export interface PreparedQueryIface {
 
     // Own fields of Vda-1.Vda.PreparedQueryIface
 
-    get_name: () => string | null
+    get_name: () => string
     get_parameters: () => SqlParameters
 }
 
@@ -18255,11 +18255,11 @@ export interface RowModelIface {
 
     // Own fields of Vda-1.Vda.RowModelIface
 
-    get_column: (name: string | null) => ColumnModel | null
+    get_column: (name: string) => ColumnModel | null
     get_column_at: (col: number) => ColumnModel | null
-    get_value: (name: string | null) => SqlValue | null
+    get_value: (name: string) => SqlValue | null
     get_value_at: (col: number) => SqlValue | null
-    get_string: (name: string | null) => string | null
+    get_string: (name: string) => string | null
     get_string_at: (col: number) => string | null
     get_n_columns: () => number
 }
@@ -18319,7 +18319,7 @@ export interface SqlCommandDeleteIface {
 
     stringify: () => string | null
     to_query: (name?: string | null) => Query
-    parse: (sql: string | null) => void
+    parse: (sql: string) => void
 }
 
 export abstract class SqlCommandDeleteIface {
@@ -18335,7 +18335,7 @@ export interface SqlCommandInsertIface {
 
     stringify: () => string | null
     to_query: (name?: string | null) => Query
-    parse: (sql: string | null) => void
+    parse: (sql: string) => void
 }
 
 export abstract class SqlCommandInsertIface {
@@ -18349,11 +18349,11 @@ export interface SqlCommandModificationIface {
 
     // Own fields of Vda-1.Vda.SqlCommandModificationIface
 
-    add_field_value: (name: string | null, val?: any | null) => void
-    add_field: (name: string | null) => void
+    add_field_value: (name: string, val?: any | null) => void
+    add_field: (name: string) => void
     add_value: (val?: any | null) => void
-    add_field_parameter_value: (field: string | null, par: string | null, gtype: GObject.GType) => void
-    add_parameter: (par: string | null, gtype: GObject.GType) => void
+    add_field_parameter_value: (field: string, par: string, gtype: GObject.GType) => void
+    add_parameter: (par: string, gtype: GObject.GType) => void
     get_fields: () => HashModel
     get_values: () => HashModel
 }
@@ -18383,13 +18383,13 @@ export interface SqlCommandSelectIface {
 
     // Own fields of Vda-1.Vda.SqlCommandSelectIface
 
-    add_field: (field: string | null, table_ref?: string | null, alias?: string | null) => void
-    add_table: (name: string | null, allias?: string | null) => void
+    add_field: (field: string, table_ref?: string | null, alias?: string | null) => void
+    add_table: (name: string, allias?: string | null) => void
     add_value_field: (val: any, allias?: string | null) => void
-    add_math_exp_field: (exp: string | null, allias?: string | null) => void
+    add_math_exp_field: (exp: string, allias?: string | null) => void
     stringify: () => string | null
     to_query: (name?: string | null) => PreparedQuery
-    parse: (sql: string | null) => void
+    parse: (sql: string) => void
     get_fields: () => HashModel
     get_tables: () => HashModel
 }
@@ -18405,10 +18405,10 @@ export interface SqlCommandTableRelatedIface {
 
     // Own fields of Vda-1.Vda.SqlCommandTableRelatedIface
 
-    get_table: () => string | null
-    set_table: (value: string | null) => void
-    get_allias: () => string | null
-    set_allias: (value: string | null) => void
+    get_table: () => string
+    set_table: (value: string) => void
+    get_allias: () => string
+    set_allias: (value: string) => void
 }
 
 export abstract class SqlCommandTableRelatedIface {
@@ -18424,7 +18424,7 @@ export interface SqlCommandUpdateIface {
 
     stringify: () => string | null
     to_query: (name?: string | null) => Query
-    parse: (sql: string | null) => void
+    parse: (sql: string) => void
 }
 
 export abstract class SqlCommandUpdateIface {
@@ -18441,7 +18441,7 @@ export interface SqlExpressionIface {
     add_expression: (exp: SqlExpression) => void
     remove_expression: (exp: SqlExpression) => void
     to_string: () => string | null
-    add_math_expression: (str: string | null, cnc: Connection, params?: SqlParameters | null) => void
+    add_math_expression: (str: string, cnc: Connection, params?: SqlParameters | null) => void
 }
 
 export abstract class SqlExpressionIface {
@@ -18455,10 +18455,10 @@ export interface SqlExpressionFieldIface {
 
     // Own fields of Vda-1.Vda.SqlExpressionFieldIface
 
-    get_table_ref: () => string | null
-    set_table_ref: (value: string | null) => void
-    get_name: () => string | null
-    set_name: (value: string | null) => void
+    get_table_ref: () => string
+    set_table_ref: (value: string) => void
+    get_name: () => string
+    set_name: (value: string) => void
     get_allias: () => string | null
     set_allias: (value?: string | null) => void
 }
@@ -18474,9 +18474,9 @@ export interface SqlExpressionOperatorIface {
 
     // Own fields of Vda-1.Vda.SqlExpressionOperatorIface
 
-    create_field_expression: (name: string | null) => SqlExpressionField
+    create_field_expression: (name: string) => SqlExpressionField
     create_value_expression: (val: any | null, cnc: Connection) => SqlExpressionValue
-    create_parameter_expression: (name: string | null, gtype: GObject.GType) => SqlExpressionValueParameter
+    create_parameter_expression: (name: string, gtype: GObject.GType) => SqlExpressionValueParameter
     add_and_operator: (exp1: SqlExpression, exp2: SqlExpression) => SqlExpressionOperator
     add_or_operator: (exp1: SqlExpression, exp2: SqlExpression) => SqlExpressionOperator
     add_eq_operator: (exp1: SqlExpression, exp2: SqlExpression) => SqlExpressionOperator
@@ -19043,7 +19043,7 @@ export interface SqlExpressionValueIface {
 
     // Own fields of Vda-1.Vda.SqlExpressionValueIface
 
-    set_math_expression_value: (str: string | null, params?: SqlParameters | null) => void
+    set_math_expression_value: (str: string, params?: SqlParameters | null) => void
     get_connection: () => Connection | null
     set_connection: (value?: Connection | null) => void
     get_value: () => SqlValue
@@ -19061,11 +19061,11 @@ export interface SqlExpressionValueParameterIface {
 
     // Own fields of Vda-1.Vda.SqlExpressionValueParameterIface
 
-    parse: (str: string | null) => void
+    parse: (str: string) => void
     get_parameters: () => SqlParameters
     set_parameters: (value: SqlParameters) => void
-    get_name: () => string | null
-    set_name: (value: string | null) => void
+    get_name: () => string
+    set_name: (value: string) => void
     get_gtype: () => GObject.GType
     set_gtype: (value: GObject.GType) => void
 }
@@ -19081,11 +19081,11 @@ export interface SqlParametersIface {
 
     // Own fields of Vda-1.Vda.SqlParametersIface
 
-    set_value: (name: string | null, val: any) => void
-    get_value: (name: string | null) => any | null
-    set_sql_value: (name: string | null, val: SqlValue) => void
-    get_sql_value: (name: string | null) => SqlValue
-    has_param: (name: string | null) => boolean
+    set_value: (name: string, val: any) => void
+    get_value: (name: string) => any | null
+    set_sql_value: (name: string, val: SqlValue) => void
+    get_sql_value: (name: string) => SqlValue
+    has_param: (name: string) => boolean
 }
 
 export abstract class SqlParametersIface {
@@ -19099,7 +19099,7 @@ export interface SqlParserIface {
 
     // Own fields of Vda-1.Vda.SqlParserIface
 
-    parse: (str: string | null, cnc: Connection) => SqlCommandParametrized
+    parse: (str: string, cnc: Connection) => SqlCommandParametrized
 }
 
 export abstract class SqlParserIface {
@@ -19113,8 +19113,8 @@ export interface SqlTableReferenceIface {
 
     // Own fields of Vda-1.Vda.SqlTableReferenceIface
 
-    get_name: () => string | null
-    set_name: (value: string | null) => void
+    get_name: () => string
+    set_name: (value: string) => void
     get_allias: () => string | null
     set_allias: (value?: string | null) => void
 }
@@ -19144,14 +19144,14 @@ export interface SqlValueIface {
 
     // Own fields of Vda-1.Vda.SqlValueIface
 
-    parse: (str: string | null) => boolean
+    parse: (str: string) => boolean
     from_value: (val: any) => boolean
     cast: (type: GObject.GType) => SqlValue | null
     is_compatible: (type: GObject.GType) => boolean
     to_gvalue: () => /* result */ any
     to_string_quoted: () => string | null
     to_sql_expression: () => string | null
-    get_name: () => string | null
+    get_name: () => string
 }
 
 export abstract class SqlValueIface {
@@ -19365,7 +19365,7 @@ export interface SqlValueNumericIface {
 
     set_precision: (p: number) => void
     get_precision: () => number
-    format: (str: string | null) => string | null
+    format: (str: string) => string | null
     get_double: () => number
     set_double: (v: number) => void
     get_real: () => number

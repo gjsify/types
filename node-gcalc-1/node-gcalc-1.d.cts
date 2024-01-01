@@ -482,8 +482,8 @@ export interface Function extends GObject.Object, Expression {
     // Has conflict: evaluate(): Expression
     // Has conflict: verifyParams(): boolean
     // Has conflict: getParamTypes(): ExpressionContainer
-    // Has conflict: getName(): string | null
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: getName(): string
+    // Has conflict: setName(value: string): void
     // Has conflict: getNParams(): number
     // Has conflict: setNParams(value: number): void
     // Has conflict: getClosed(): boolean
@@ -494,8 +494,8 @@ export interface Function extends GObject.Object, Expression {
     evaluate(): Expression
     verifyParams(): boolean
     getParamTypes(): ExpressionContainer
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getNParams(): number
     setNParams(value: number): void
     getClosed(): boolean
@@ -576,11 +576,11 @@ export interface ErrorResult extends GObject.Object, Result {
 
     // Owm methods of GCalc-1.GCalc.ErrorResult
 
-    // Has conflict: getMessage(): string | null
+    // Has conflict: getMessage(): string
 
     // Own virtual methods of GCalc-1.GCalc.ErrorResult
 
-    getMessage(): string | null
+    getMessage(): string
 
     // Class property signals of GCalc-1.GCalc.ErrorResult
 
@@ -839,13 +839,13 @@ export interface MathEquationManager extends GObject.Object {
 
     // Owm methods of GCalc-1.GCalc.MathEquationManager
 
-    // Has conflict: findVariable(name: string | null): Variable
+    // Has conflict: findVariable(name: string): Variable
     // Has conflict: getEquations(): ExpressionContainer
     // Has conflict: getFunctions(): ExpressionContainer
 
     // Own virtual methods of GCalc-1.GCalc.MathEquationManager
 
-    findVariable(name: string | null): Variable
+    findVariable(name: string): Variable
     getEquations(): ExpressionContainer
     getFunctions(): ExpressionContainer
 
@@ -1286,13 +1286,13 @@ export interface Solver extends GObject.Object {
 
     // Owm methods of GCalc-1.GCalc.Solver
 
-    // Has conflict: solve(str: string | null): Result
+    // Has conflict: solve(str: string): Result
     // Has conflict: getEquationManager(): MathEquationManager
     // Has conflict: setEquationManager(value: MathEquationManager): void
 
     // Own virtual methods of GCalc-1.GCalc.Solver
 
-    solve(str: string | null): Result
+    solve(str: string): Result
     getEquationManager(): MathEquationManager
     setEquationManager(value: MathEquationManager): void
 
@@ -1418,8 +1418,8 @@ export interface Variable extends GObject.Object, Expression {
     // Owm methods of GCalc-1.GCalc.Variable
 
     // Has conflict: evaluate(): Expression
-    // Has conflict: getName(): string | null
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: getName(): string
+    // Has conflict: setName(value: string): void
     // Has conflict: getValue(): Constant
     // Has conflict: setValue(value: Constant): void
     // Has conflict: getBind(): Variable
@@ -1429,8 +1429,8 @@ export interface Variable extends GObject.Object, Expression {
     // Own virtual methods of GCalc-1.GCalc.Variable
 
     evaluate(): Expression
-    getName(): string | null
-    setName(value: string | null): void
+    getName(): string
+    setName(value: string): void
     getValue(): Constant
     setValue(value: Constant): void
     getBind(): Variable
@@ -1538,7 +1538,7 @@ export interface ExpressionContainer extends Gio.ListModel {
     remove(item: any): boolean
     getObject(position: number): GObject.Object | null
     find(exp: Expression): Expression | null
-    findNamed(name: string | null): Expression | null
+    findNamed(name: string): Expression | null
     getParent(): Expression
     setParent(value: Expression): void
 
@@ -1879,7 +1879,7 @@ export interface ExpressionHashMap {
     // Overloads of remove
 
     remove(key: any): [ /* returnType */ boolean, /* value */ any ]
-    findNamed(name: string | null): Expression
+    findNamed(name: string): Expression
     getParent(): Expression
     setParent(value: Expression): void
 
@@ -3650,8 +3650,8 @@ export class GErrorResult extends GObject.Object {
     // Constructors of GCalc-1.GCalc.GErrorResult
 
     constructor(config?: GErrorResult.ConstructorProperties) 
-    constructor(msg: string | null) 
-    static new(msg: string | null): GErrorResult
+    constructor(msg: string) 
+    static new(msg: string): GErrorResult
     _init(config?: GErrorResult.ConstructorProperties): void
 }
 
@@ -3756,7 +3756,7 @@ export class GFunction extends GExpression {
     // Constructors of GCalc-1.GCalc.GFunction
 
     constructor(config?: GFunction.ConstructorProperties) 
-    static withName(name: string | null, nparams: number): GFunction
+    static withName(name: string, nparams: number): GFunction
     constructor() 
     static new(): GFunction
 
@@ -4086,7 +4086,7 @@ export interface GParser {
 
     // Owm methods of GCalc-1.GCalc.GParser
 
-    parse(str: string | null, eqman: MathEquationManager): void
+    parse(str: string, eqman: MathEquationManager): void
     readToken(): GParserTokenType
     tokenToString(): string | null
 
@@ -4711,8 +4711,8 @@ export class GVariable extends GExpression {
     // Constructors of GCalc-1.GCalc.GVariable
 
     constructor(config?: GVariable.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): GVariable
+    constructor(name: string) 
+    static new(name: string): GVariable
 
     // Overloads of new
 
@@ -5716,8 +5716,8 @@ export interface FunctionIface {
     evaluate: (self: Function) => Expression
     verifyParams: (self: Function) => boolean
     getParamTypes: (self: Function) => ExpressionContainer
-    getName: (self: Function) => string | null
-    setName: (self: Function, value: string | null) => void
+    getName: (self: Function) => string
+    setName: (self: Function, value: string) => void
     getNParams: (self: Function) => number
     setNParams: (self: Function, value: number) => void
     getClosed: (self: Function) => boolean
@@ -5736,7 +5736,7 @@ export interface ErrorResultIface {
     // Own fields of GCalc-1.GCalc.ErrorResultIface
 
     parentIface: GObject.TypeInterface
-    getMessage: (self: ErrorResult) => string | null
+    getMessage: (self: ErrorResult) => string
 }
 
 export abstract class ErrorResultIface {
@@ -5800,7 +5800,7 @@ export interface MathEquationManagerIface {
     // Own fields of GCalc-1.GCalc.MathEquationManagerIface
 
     parentIface: GObject.TypeInterface
-    findVariable: (self: MathEquationManager, name: string | null) => Variable
+    findVariable: (self: MathEquationManager, name: string) => Variable
     getEquations: (self: MathEquationManager) => ExpressionContainer
     getFunctions: (self: MathEquationManager) => ExpressionContainer
 }
@@ -5918,7 +5918,7 @@ export interface SolverIface {
     // Own fields of GCalc-1.GCalc.SolverIface
 
     parentIface: GObject.TypeInterface
-    solve: (self: Solver, str: string | null) => Result
+    solve: (self: Solver, str: string) => Result
     getEquationManager: (self: Solver) => MathEquationManager
     setEquationManager: (self: Solver, value: MathEquationManager) => void
 }
@@ -5952,8 +5952,8 @@ export interface VariableIface {
 
     parentIface: GObject.TypeInterface
     evaluate: (self: Variable) => Expression
-    getName: (self: Variable) => string | null
-    setName: (self: Variable, value: string | null) => void
+    getName: (self: Variable) => string
+    setName: (self: Variable, value: string) => void
     getValue: (self: Variable) => Constant
     setValue: (self: Variable, value: Constant) => void
     getBind: (self: Variable) => Variable

@@ -158,7 +158,7 @@ class PersonaStore extends Folks.PersonaStore {
     static new(s: EDataServer.Source): PersonaStore
     static withSourceRegistry(r: EDataServer.SourceRegistry, s: EDataServer.Source): PersonaStore
     _init(config?: PersonaStore.ConstructorProperties): void
-    static createAddressBook(id: string | null, callback: Gio.AsyncReadyCallback | null): void
+    static createAddressBook(id: string, callback: Gio.AsyncReadyCallback | null): void
     static createAddressBookFinish(res: Gio.AsyncResult): void
     static removeAddressBook(store: PersonaStore, callback: Gio.AsyncReadyCallback | null): void
     static removeAddressBookFinish(res: Gio.AsyncResult): void
@@ -197,7 +197,7 @@ interface Persona extends Folks.AntiLinkable, Folks.AvatarDetails, Folks.Birthda
     changeInGooglePersonalGroup(inPersonal: boolean, callback: Gio.AsyncReadyCallback | null): void
     changeInGooglePersonalGroupFinish(res: Gio.AsyncResult): void
     getContact(): EBookContacts.Contact
-    getContactId(): string | null
+    getContactId(): string
     getSystemGroups(): Gee.Set | null
     setSystemGroups(value: Gee.Set | null): void
     getInGooglePersonalGroup(): boolean

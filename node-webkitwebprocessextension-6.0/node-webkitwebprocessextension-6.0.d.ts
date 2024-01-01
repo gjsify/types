@@ -590,7 +590,7 @@ class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param target a #GVariant to use as the action target
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newFromGaction(action: Gio.Action, label: string | null, target: GLib.Variant | null): ContextMenuItem
+    static newFromGaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem for the given stock action.
      * 
@@ -617,7 +617,7 @@ class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param label a custom label text to use instead of the predefined one
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newFromStockActionWithLabel(action: ContextMenuAction, label: string | null): ContextMenuItem
+    static newFromStockActionWithLabel(action: ContextMenuAction, label: string): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem representing a separator.
      * @constructor 
@@ -631,7 +631,7 @@ class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param submenu a #WebKitContextMenu to set
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newWithSubmenu(label: string | null, submenu: ContextMenu): ContextMenuItem
+    static newWithSubmenu(label: string, submenu: ContextMenu): ContextMenuItem
     _init(config?: ContextMenuItem.ConstructorProperties): void
 }
 
@@ -675,7 +675,7 @@ interface Frame {
      * Gets the current active URI of `frame`.
      * @returns the current active URI of @frame or %NULL if nothing has been    loaded yet.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Gets whether `frame` is the main frame of a #WebKitWebPage
      * @returns %TRUE if @frame is a main frame or %FALSE otherwise
@@ -841,27 +841,27 @@ interface HitTestResult {
      * Gets the value of the #WebKitHitTestResult:image-uri property.
      * @returns the URI of the image element in the coordinates of the Hit Test,    or %NULL if there isn't an image element in @hit_test_result context
      */
-    getImageUri(): string | null
+    getImageUri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-label property.
      * @returns the label of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a label
      */
-    getLinkLabel(): string | null
+    getLinkLabel(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-title property.
      * @returns the title of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a title
      */
-    getLinkTitle(): string | null
+    getLinkTitle(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-uri property.
      * @returns the URI of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context
      */
-    getLinkUri(): string | null
+    getLinkUri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:media-uri property.
      * @returns the URI of the media element in the coordinates of the Hit Test,    or %NULL if there isn't a media element in @hit_test_result context
      */
-    getMediaUri(): string | null
+    getMediaUri(): string
 
     // Class property signals of WebKitWebProcessExtension-6.0.WebKitWebProcessExtension.HitTestResult
 
@@ -974,7 +974,7 @@ interface ScriptWorld {
      * Get the name of a #WebKitScriptWorld.
      * @returns the name of @world
      */
-    getName(): string | null
+    getName(): string
 
     // Own signals of WebKitWebProcessExtension-6.0.WebKitWebProcessExtension.ScriptWorld
 
@@ -1044,7 +1044,7 @@ class ScriptWorld extends GObject.Object {
      * @param name a name for the script world
      * @returns a new isolated #WebKitScriptWorld
      */
-    static newWithName(name: string | null): ScriptWorld
+    static newWithName(name: string): ScriptWorld
     _init(config?: ScriptWorld.ConstructorProperties): void
     /**
      * Get the default #WebKitScriptWorld. This is the normal script world
@@ -1093,17 +1093,17 @@ interface URIRequest {
      * Get the HTTP method of the #WebKitURIRequest.
      * @returns the HTTP method of the #WebKitURIRequest or %NULL if @request is not    an HTTP request.
      */
-    getHttpMethod(): string | null
+    getHttpMethod(): string
     /**
      * Obtains the request URI.
      * @returns request URI, as a string.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Set the URI of `request`
      * @param uri an URI
      */
-    setUri(uri: string | null): void
+    setUri(uri: string): void
 
     // Class property signals of WebKitWebProcessExtension-6.0.WebKitWebProcessExtension.URIRequest
 
@@ -1148,14 +1148,14 @@ class URIRequest extends GObject.Object {
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    constructor(uri: string | null) 
+    constructor(uri: string) 
     /**
      * Creates a new #WebKitURIRequest for the given URI.
      * @constructor 
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    static new(uri: string | null): URIRequest
+    static new(uri: string): URIRequest
     _init(config?: URIRequest.ConstructorProperties): void
 }
 
@@ -1216,7 +1216,7 @@ interface URIResponse {
      * Gets the MIME type of the response.
      * @returns MIME type, as a string.
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Get the status code of the #WebKitURIResponse.
      * 
@@ -1235,12 +1235,12 @@ interface URIResponse {
      * present.
      * @returns the suggested filename or %NULL if    the 'Content-Disposition' HTTP header is not present.
      */
-    getSuggestedFilename(): string | null
+    getSuggestedFilename(): string
     /**
      * Gets the URI which resulted in the response.
      * @returns response URI, as a string.
      */
-    getUri(): string | null
+    getUri(): string
 
     // Class property signals of WebKitWebProcessExtension-6.0.WebKitWebProcessExtension.URIResponse
 
@@ -1364,7 +1364,7 @@ interface UserMessage {
      * Get the `message` name.
      * @returns the message name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the `message` parameters.
      * @returns the message parameters
@@ -1437,7 +1437,7 @@ class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    constructor(name: string | null, parameters: GLib.Variant | null) 
+    constructor(name: string, parameters: GLib.Variant | null) 
     /**
      * Create a new #WebKitUserMessage with `name`.
      * @constructor 
@@ -1445,7 +1445,7 @@ class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    static new(name: string | null, parameters: GLib.Variant | null): UserMessage
+    static new(name: string, parameters: GLib.Variant | null): UserMessage
     /**
      * Create a new #WebKitUserMessage including also a list of UNIX file descriptors to be sent.
      * @constructor 
@@ -1454,7 +1454,7 @@ class UserMessage extends GObject.InitiallyUnowned {
      * @param fdList the message file descriptors
      * @returns the newly created #WebKitUserMessage object.
      */
-    static newWithFdList(name: string | null, parameters: GLib.Variant | null, fdList: Gio.UnixFDList | null): UserMessage
+    static newWithFdList(name: string, parameters: GLib.Variant | null, fdList: Gio.UnixFDList | null): UserMessage
     _init(config?: UserMessage.ConstructorProperties): void
     /**
      * Gets the quark for the domain of user message errors.
@@ -1636,7 +1636,7 @@ class WebFormManager extends GObject.Object {
      * @param element a #JSCValue
      * @param value the text to set
      */
-    static inputElementAutoFill(element: JavaScriptCore.Value, value: string | null): void
+    static inputElementAutoFill(element: JavaScriptCore.Value, value: string): void
     /**
      * Get whether `element` is an HTML input element that has been filled automatically.
      * @param element a #JSCValue
@@ -1725,7 +1725,7 @@ interface WebHitTestResult {
      * Obtains the URI associated with the image element at the hit test position.
      * @returns the URI of the image element, or %NULL if the hit test does not cover an image element.
      */
-    getImageUri(): string | null
+    getImageUri(): string
     /**
      * Get the #JSCValue for the DOM node in `world` at the coordinates of the Hit Test.
      * @param world a #WebKitScriptWorld, or %NULL to use the default
@@ -1736,22 +1736,22 @@ interface WebHitTestResult {
      * Obtains the label associated with the link element at the hit test position.
      * @returns the label of the link element, or %NULL if the hit test does not cover a link element    or the link element does not have a label.
      */
-    getLinkLabel(): string | null
+    getLinkLabel(): string
     /**
      * Obtains the title associated with the link element at the hit test position.
      * @returns the title of the link element, or %NULL if the hit test does not cover a link element    or the link element does not have a title.
      */
-    getLinkTitle(): string | null
+    getLinkTitle(): string
     /**
      * Obtains the URI associated with the link element at the hit test position.
      * @returns the URI of the link element, or %NULL if the hit test does not cover a link element.
      */
-    getLinkUri(): string | null
+    getLinkUri(): string
     /**
      * Obtains the URI associated with the media element at the hit test position.
      * @returns the URI of the media element, or %NULL if the hit test does not cover a media element.
      */
-    getMediaUri(): string | null
+    getMediaUri(): string
 
     // Class property signals of WebKitWebProcessExtension-6.0.WebKitWebProcessExtension.WebHitTestResult
 
@@ -1867,7 +1867,7 @@ interface WebPage {
      * signal of `web_page`.
      * @returns the current active URI of @web_view or %NULL if nothing has been    loaded yet.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
      * 

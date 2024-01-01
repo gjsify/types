@@ -20,12 +20,12 @@ import type GLib from '@girs/glib-2.0';
 import type GModule from '@girs/gmodule-2.0';
 import type GstGL from '@girs/gstgl-1.0';
 
-export const GL_DISPLAY_EGL_NAME: string | null
+export const GL_DISPLAY_EGL_NAME: string
 /**
  * The name of the GL Memory EGL allocator
  */
-export const GL_MEMORY_EGL_ALLOCATOR_NAME: string | null
-export function egl_get_error_string(err: number): string | null
+export const GL_MEMORY_EGL_ALLOCATOR_NAME: string
+export function egl_get_error_string(err: number): string
 /**
  * Creates an EGL image that imports the dmabuf FD. The dmabuf data
  * is passed as RGBA data. Shaders later take this "RGBA" data and

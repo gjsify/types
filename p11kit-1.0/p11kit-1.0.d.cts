@@ -55,8 +55,8 @@ export enum UriType {
     OBJECT_ON_TOKEN_AND_MODULE,
     ANY,
 }
-export const PIN_FALLBACK: string | null
-export const URI_SCHEME: string | null
+export const PIN_FALLBACK: string
+export const URI_SCHEME: string
 export const URI_SCHEME_LEN: number
 /**
  * In PKCS\#11 structures many strings are encoded in a strange way. The string
@@ -103,7 +103,7 @@ export function space_strlen(string: number, max_length: number): number
  * @param code The error code
  * @returns The message for the error code. This string is owned by the p11-kit library.
  */
-export function uri_message(code: number): string | null
+export function uri_message(code: number): string
 /**
  * Parse a PKCS\#11 URI string.
  * 
@@ -121,7 +121,7 @@ export function uri_message(code: number): string | null
  * @param uri The blank URI to parse the values into
  * @returns %P11_KIT_URI_OK if the URI was parsed successfully. %P11_KIT_URI_BAD_SCHEME if this was not a PKCS\#11 URI. %P11_KIT_URI_BAD_SYNTAX if the URI syntax was bad. %P11_KIT_URI_NO_MEMORY if memory allocation failed. %P11_KIT_URI_BAD_VERSION if a version number was bad. %P11_KIT_URI_BAD_ENCODING if the URI encoding was invalid.
  */
-export function uri_parse(string: string | null, uri_type: UriType, uri: Uri): number
+export function uri_parse(string: string, uri_type: UriType, uri: Uri): number
 /**
  * A function called to free or cleanup `data`.
  * @callback 
@@ -208,15 +208,15 @@ export interface Uri {
      * lookup a PIN for logging into a PKCS\#11 token.
      * @returns The pin-source or %NULL if not present.
      */
-    get_pin_source(): string | null
-    get_pinfile(): string | null
+    get_pin_source(): string
+    get_pinfile(): string
     /**
      * Set the 'pin-source' part of the URI. This is used by some applications to
      * lookup a PIN for logging into a PKCS\#11 token.
      * @param pin_source The new pin-source
      */
-    set_pin_source(pin_source: string | null): void
-    set_pinfile(pinfile: string | null): void
+    set_pin_source(pin_source: string): void
+    set_pinfile(pinfile: string): void
     /**
      * Set the unrecognized flag on this URI.
      * 
@@ -249,7 +249,7 @@ export class Uri {
      * @param code The error code
      * @returns The message for the error code. This string is owned by the p11-kit library.
      */
-    static message(code: number): string | null
+    static message(code: number): string
     /**
      * Parse a PKCS\#11 URI string.
      * 
@@ -267,7 +267,7 @@ export class Uri {
      * @param uri The blank URI to parse the values into
      * @returns %P11_KIT_URI_OK if the URI was parsed successfully. %P11_KIT_URI_BAD_SCHEME if this was not a PKCS\#11 URI. %P11_KIT_URI_BAD_SYNTAX if the URI syntax was bad. %P11_KIT_URI_NO_MEMORY if memory allocation failed. %P11_KIT_URI_BAD_VERSION if a version number was bad. %P11_KIT_URI_BAD_ENCODING if the URI encoding was invalid.
      */
-    static parse(string: string | null, uri_type: UriType, uri: Uri): number
+    static parse(string: string, uri_type: UriType, uri: Uri): number
 }
 
 /**

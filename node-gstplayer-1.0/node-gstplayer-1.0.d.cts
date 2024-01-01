@@ -78,20 +78,20 @@ export enum PlayerState {
  * @param type a #GstPlayerColorBalanceType
  * @returns a string with the name of the color   balance type.
  */
-export function playerColorBalanceTypeGetName(type: PlayerColorBalanceType): string | null
+export function playerColorBalanceTypeGetName(type: PlayerColorBalanceType): string
 /**
  * Gets a string representing the given error.
  * @param error a #GstPlayerError
  * @returns a string with the given error.
  */
-export function playerErrorGetName(error: PlayerError): string | null
+export function playerErrorGetName(error: PlayerError): string
 export function playerErrorQuark(): GLib.Quark
 /**
  * Gets a string representing the given state.
  * @param state a #GstPlayerState
  * @returns a string with the name of the state.
  */
-export function playerStateGetName(state: PlayerState): string | null
+export function playerStateGetName(state: PlayerState): string
 export interface PlayerSignalDispatcherFunc {
     (data: any | null): void
 }
@@ -988,7 +988,7 @@ export interface PlayerMediaInfo {
     getSubtitleStreams(): PlayerSubtitleInfo[]
     getTags(): Gst.TagList | null
     getTitle(): string | null
-    getUri(): string | null
+    getUri(): string
     getVideoStreams(): PlayerVideoInfo[]
     isLive(): boolean
     isSeekable(): boolean
@@ -1058,7 +1058,7 @@ export interface PlayerStreamInfo {
      * of the given `info` (ex: "audio", "video", "subtitle")
      * @returns a human readable name
      */
-    getStreamType(): string | null
+    getStreamType(): string
     getTags(): Gst.TagList | null
 
     // Class property signals of GstPlayer-1.0.GstPlayer.PlayerStreamInfo

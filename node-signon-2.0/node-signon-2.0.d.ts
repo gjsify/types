@@ -221,39 +221,39 @@ enum IdentityType {
 /**
  * Caption for the UI dialog.
  */
-const SESSION_DATA_CAPTION: string | null
+const SESSION_DATA_CAPTION: string
 /**
  * Proxy.
  */
-const SESSION_DATA_PROXY: string | null
+const SESSION_DATA_PROXY: string
 /**
  * Realm.
  */
-const SESSION_DATA_REALM: string | null
+const SESSION_DATA_REALM: string
 /**
  * Requests the signon plugin to obtain a new token (boolean).
  */
-const SESSION_DATA_RENEW_TOKEN: string | null
+const SESSION_DATA_RENEW_TOKEN: string
 /**
  * Secret.
  */
-const SESSION_DATA_SECRET: string | null
+const SESSION_DATA_SECRET: string
 /**
  * Network timeout, in milliseconds (uint32).
  */
-const SESSION_DATA_TIMEOUT: string | null
+const SESSION_DATA_TIMEOUT: string
 /**
  * Policy for the signon process.
  */
-const SESSION_DATA_UI_POLICY: string | null
+const SESSION_DATA_UI_POLICY: string
 /**
  * Username.
  */
-const SESSION_DATA_USERNAME: string | null
+const SESSION_DATA_USERNAME: string
 /**
  * Platform-specific window id (for dialog transiency) - uint32.
  */
-const SESSION_DATA_WINDOW_ID: string | null
+const SESSION_DATA_WINDOW_ID: string
 function errorQuark(): GLib.Quark
 module AuthService {
 
@@ -278,7 +278,7 @@ interface AuthService {
      * @param cancellable a #GCancellable or %NULL
      * @param callback a callback to execute upon completion
      */
-    getMechanisms(method: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getMechanisms(method: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous request to signon_auth_service_get_mechanisms().
      * @param result a #GAsyncResult
@@ -292,7 +292,7 @@ interface AuthService {
      * @param cancellable a #GCancellable or %NULL
      * @returns A list of available mechanisms.
      */
-    getMechanismsSync(method: string | null, cancellable: Gio.Cancellable | null): string[]
+    getMechanismsSync(method: string, cancellable: Gio.Cancellable | null): string[]
     /**
      * Lists all the available methods.
      * @param cancellable a #GCancellable or %NULL
@@ -391,7 +391,7 @@ interface AuthSession {
      * Get the current authentication method.
      * @returns the authentication method being used, or %NULL on failure.
      */
-    getMethod(): string | null
+    getMethod(): string
     /**
      * Performs one step of the authentication process. If the #SignonAuthSession
      * object is bound to an existing identity, the identity properties such as
@@ -404,7 +404,7 @@ interface AuthSession {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback a callback which will be called when the authentication reply is available.
      */
-    process(sessionData: GLib.Variant, mechanism: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    process(sessionData: GLib.Variant, mechanism: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_auth_session_process() operation.
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_auth_session_process().
@@ -456,7 +456,7 @@ class AuthSession extends GObject.Object {
      * @param methodName the name of the authentication method to be used.
      * @returns a new #SignonAuthSession.
      */
-    constructor(id: number, methodName: string | null) 
+    constructor(id: number, methodName: string) 
     /**
      * Creates a new #SignonAuthSession, which can be used to authenticate using
      * the specified method.
@@ -465,7 +465,7 @@ class AuthSession extends GObject.Object {
      * @param methodName the name of the authentication method to be used.
      * @returns a new #SignonAuthSession.
      */
-    static new(id: number, methodName: string | null): AuthSession
+    static new(id: number, methodName: string): AuthSession
     _init(config?: AuthSession.ConstructorProperties): void
 }
 
@@ -506,7 +506,7 @@ interface Identity {
      * @param method method.
      * @returns a new #SignonAuthSession.
      */
-    createSession(method: string | null): AuthSession
+    createSession(method: string): AuthSession
     /**
      * Get the id of the `identity`.
      * @returns the id of the #SignonIdentity, or 0 if the identity has not being registered.
@@ -564,7 +564,7 @@ interface Identity {
      * @param cancellable optional #GCancellable object, %NULL to ignore.
      * @param callback a callback which will be called when the verification is done.
      */
-    verifySecret(secret: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    verifySecret(secret: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Collect the result of the signon_identity_verify_secret() operation.
      * @param res A #GAsyncResult obtained from the #GAsyncReadyCallback passed to signon_identity_verify_secret().
@@ -699,7 +699,7 @@ interface IdentityInfo {
      * @param systemContext the system context to add.
      * @param applicationContext the application context to add.
      */
-    addAccessControl(systemContext: string | null, applicationContext: string | null): void
+    addAccessControl(systemContext: string, applicationContext: string): void
     /**
      * Get a newly-allocated copy of `info`.
      * @returns a copy of the given #SignonIdentityInfo, or %NULL on failure.
@@ -718,7 +718,7 @@ interface IdentityInfo {
      * Get the display name of `info`.
      * @returns the display name for the identity.
      */
-    getCaption(): string | null
+    getCaption(): string
     /**
      * Get the numeric ID of `info`.
      * @returns the numeric ID of the identity.
@@ -748,13 +748,13 @@ interface IdentityInfo {
      * Get the username of `info`.
      * @returns the username, or %NULL.
      */
-    getUsername(): string | null
+    getUsername(): string
     /**
      * Remove `method` from the list of allowed authentication methods. If all
      * methods are removed, then all methods are allowed.
      * @param method an authentication method.
      */
-    removeMethod(method: string | null): void
+    removeMethod(method: string): void
     /**
      * Specifies the ACL for this identity. The actual meaning of the ACL depends
      * on the security framework used by signond.
@@ -765,7 +765,7 @@ interface IdentityInfo {
      * Sets the caption (display name) for the identity.
      * @param caption the caption.
      */
-    setCaption(caption: string | null): void
+    setCaption(caption: string): void
     /**
      * Specifies the type of this identity.
      * @param type the type of the identity.
@@ -778,7 +778,7 @@ interface IdentityInfo {
      * @param method an authentication method.
      * @param mechanisms a %NULL-termianted list of mechanisms.
      */
-    setMethod(method: string | null, mechanisms: string[]): void
+    setMethod(method: string, mechanisms: string[]): void
     /**
      * Specify what realms this identity can be used in.
      * @param realms a %NULL-terminated list of realms.
@@ -790,12 +790,12 @@ interface IdentityInfo {
      * @param secret the secret.
      * @param storeSecret whether signond should store the secret in its DB.
      */
-    setSecret(secret: string | null, storeSecret: boolean): void
+    setSecret(secret: string, storeSecret: boolean): void
     /**
      * Sets the username for the identity.
      * @param username the username.
      */
-    setUsername(username: string | null): void
+    setUsername(username: string): void
 }
 
 /**
@@ -841,22 +841,22 @@ interface SecurityContext {
      * Get the application context of `ctx`.
      * @returns the application context.
      */
-    getApplicationContext(): string | null
+    getApplicationContext(): string
     /**
      * Get the system context of `ctx`.
      * @returns the system context.
      */
-    getSystemContext(): string | null
+    getSystemContext(): string
     /**
      * Sets the application context.
      * @param applicationContext the application context.
      */
-    setApplicationContext(applicationContext: string | null): void
+    setApplicationContext(applicationContext: string): void
     /**
      * Sets the system context.
      * @param systemContext the system context.
      */
-    setSystemContext(systemContext: string | null): void
+    setSystemContext(systemContext: string): void
 }
 
 /**
@@ -890,7 +890,7 @@ class SecurityContext {
      * @param applicationContext application security context
      * @returns a new #SignonSecurityContext item.
      */
-    static newFromValues(systemContext: string | null, applicationContext: string | null): SecurityContext
+    static newFromValues(systemContext: string, applicationContext: string): SecurityContext
 }
 
 }

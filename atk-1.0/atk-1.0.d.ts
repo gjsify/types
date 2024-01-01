@@ -1513,35 +1513,35 @@ function get_root(): Object
  * Gets name string for the GUI toolkit implementing ATK for this application.
  * @returns name string for the GUI toolkit implementing ATK for this application
  */
-function get_toolkit_name(): string | null
+function get_toolkit_name(): string
 /**
  * Gets version string for the GUI toolkit implementing ATK for this application.
  * @returns version string for the GUI toolkit implementing ATK for this application
  */
-function get_toolkit_version(): string | null
+function get_toolkit_version(): string
 /**
  * Gets the current version for ATK.
  * @returns version string for ATK
  */
-function get_version(): string | null
+function get_version(): string
 /**
  * Get the #AtkRelationType type corresponding to a relation name.
  * @param name a string which is the (non-localized) name of an ATK relation type.
  * @returns the #AtkRelationType enumerated type corresponding to the specified name,          or #ATK_RELATION_NULL if no matching relation type is found.
  */
-function relation_type_for_name(name: string | null): RelationType
+function relation_type_for_name(name: string): RelationType
 /**
  * Gets the description string describing the #AtkRelationType `type`.
  * @param type The #AtkRelationType whose name is required
  * @returns the string describing the AtkRelationType
  */
-function relation_type_get_name(type: RelationType): string | null
+function relation_type_get_name(type: RelationType): string
 /**
  * Associate `name` with a new #AtkRelationType
  * @param name a name string
  * @returns an #AtkRelationType associated with @name
  */
-function relation_type_register(name: string | null): RelationType
+function relation_type_register(name: string): RelationType
 /**
  * Removes the specified focus tracker from the list of functions
  * to be called when any object receives focus.
@@ -1576,56 +1576,56 @@ function remove_key_event_listener(listener_id: number): void
  * @param name a string which is the (non-localized) name of an ATK role.
  * @returns the #AtkRole enumerated type corresponding to the specified name,          or #ATK_ROLE_INVALID if no matching role is found.
  */
-function role_for_name(name: string | null): Role
+function role_for_name(name: string): Role
 /**
  * Gets the localized description string describing the #AtkRole `role`.
  * @param role The #AtkRole whose localized name is required
  * @returns the localized string describing the AtkRole
  */
-function role_get_localized_name(role: Role): string | null
+function role_get_localized_name(role: Role): string
 /**
  * Gets the description string describing the #AtkRole `role`.
  * @param role The #AtkRole whose name is required
  * @returns the string describing the AtkRole
  */
-function role_get_name(role: Role): string | null
+function role_get_name(role: Role): string
 /**
  * Registers the role specified by `name`. `name` must be a meaningful
  * name. So it should not be empty, or consisting on whitespaces.
  * @param name a character string describing the new role.
  * @returns an #AtkRole for the new role if added properly. ATK_ROLE_INVALID in case of error.
  */
-function role_register(name: string | null): Role
+function role_register(name: string): Role
 /**
  * Gets the #AtkStateType corresponding to the description string `name`.
  * @param name a character string state name
  * @returns an #AtkStateType corresponding to @name
  */
-function state_type_for_name(name: string | null): StateType
+function state_type_for_name(name: string): StateType
 /**
  * Gets the description string describing the #AtkStateType `type`.
  * @param type The #AtkStateType whose name is required
  * @returns the string describing the AtkStateType
  */
-function state_type_get_name(type: StateType): string | null
+function state_type_get_name(type: StateType): string
 /**
  * Register a new object state.
  * @param name a character string describing the new state.
  * @returns an #AtkState value for the new state.
  */
-function state_type_register(name: string | null): StateType
+function state_type_register(name: string): StateType
 /**
  * Get the #AtkTextAttribute type corresponding to a text attribute name.
  * @param name a string which is the (non-localized) name of an ATK text attribute.
  * @returns the #AtkTextAttribute enumerated type corresponding to the specified          name, or #ATK_TEXT_ATTRIBUTE_INVALID if no matching text attribute          is found.
  */
-function text_attribute_for_name(name: string | null): TextAttribute
+function text_attribute_for_name(name: string): TextAttribute
 /**
  * Gets the name corresponding to the #AtkTextAttribute
  * @param attr The #AtkTextAttribute whose name is required
  * @returns a string containing the name; this string should not be freed
  */
-function text_attribute_get_name(attr: TextAttribute): string | null
+function text_attribute_get_name(attr: TextAttribute): string
 /**
  * Gets the value for the index of the #AtkTextAttribute
  * @param attr The #AtkTextAttribute for which a value is required
@@ -1638,7 +1638,7 @@ function text_attribute_get_value(attr: TextAttribute, index_: number): string |
  * @param name a name string
  * @returns an #AtkTextAttribute associated with @name
  */
-function text_attribute_register(name: string | null): TextAttribute
+function text_attribute_register(name: string): TextAttribute
 /**
  * Frees the memory associated with an array of AtkTextRange. It is assumed
  * that the array was returned by the function atk_text_get_bounded_ranges
@@ -1651,13 +1651,13 @@ function text_free_ranges(ranges: TextRange[]): void
  * @param value_type The #AtkValueType whose localized name is required
  * @returns the localized string describing the #AtkValueType
  */
-function value_type_get_localized_name(value_type: ValueType): string | null
+function value_type_get_localized_name(value_type: ValueType): string
 /**
  * Gets the description string describing the #AtkValueType `value_type`.
  * @param value_type The #AtkValueType whose name is required
  * @returns the string describing the #AtkValueType
  */
-function value_type_get_name(value_type: ValueType): string | null
+function value_type_get_name(value_type: ValueType): string
 /**
  * A function which is called when an object emits a matching event,
  * as used in #atk_add_focus_tracker.
@@ -1816,7 +1816,7 @@ interface Action {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
 
     // Own virtual methods of Atk-1.0.Atk.Action
 
@@ -1904,7 +1904,7 @@ interface Action {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
 
     // Class property signals of Atk-1.0.Atk.Action
 
@@ -2330,7 +2330,7 @@ interface Document {
      * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
      * @returns a string value associated with the named    attribute for this document, or %NULL if a value for    @attribute_name has not been specified for this document.
      */
-    get_attribute_value(attribute_name: string | null): string | null
+    get_attribute_value(attribute_name: string): string | null
     /**
      * Gets an AtkAttributeSet which describes document-wide
      *          attributes as name-value pairs.
@@ -2353,7 +2353,7 @@ interface Document {
      * Gets a string indicating the document type.
      * @returns a string indicating the document type
      */
-    get_document_type(): string | null
+    get_document_type(): string
     /**
      * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
      *          of the content of this document instance.  Individual
@@ -2362,7 +2362,7 @@ interface Document {
      *          atk_image_get_image_locale.
      * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of the document content as a whole, or NULL if          the document content does not specify a locale.
      */
-    get_locale(): string | null
+    get_locale(): string
     /**
      * Retrieves the total number of pages inside `document`.
      * @returns total page count of @document, or -1 if not implemented,   not know by the implementor or irrelevant.
@@ -2374,7 +2374,7 @@ interface Document {
      * @param attribute_value a string value to be associated with `attribute_name`.
      * @returns %TRUE if @attribute_value is successfully associated   with @attribute_name for this @document, and %FALSE if if the   document does not allow the attribute to be modified
      */
-    set_attribute_value(attribute_name: string | null, attribute_value: string | null): boolean
+    set_attribute_value(attribute_name: string, attribute_value: string): boolean
 
     // Own virtual methods of Atk-1.0.Atk.Document
 
@@ -2398,7 +2398,7 @@ interface Document {
      * @param attribute_name a character string representing the name of the attribute   whose value is being queried.
      * @returns a string value associated with the named    attribute for this document, or %NULL if a value for    @attribute_name has not been specified for this document.
      */
-    vfunc_get_document_attribute_value(attribute_name: string | null): string | null
+    vfunc_get_document_attribute_value(attribute_name: string): string | null
     /**
      * Gets an AtkAttributeSet which describes document-wide
      *          attributes as name-value pairs.
@@ -2415,13 +2415,13 @@ interface Document {
      * @virtual 
      * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of the document content as a whole, or NULL if          the document content does not specify a locale.
      */
-    vfunc_get_document_locale(): string | null
+    vfunc_get_document_locale(): string
     /**
      * Gets a string indicating the document type.
      * @virtual 
      * @returns a string indicating the document type
      */
-    vfunc_get_document_type(): string | null
+    vfunc_get_document_type(): string
     /**
      * Retrieves the total number of pages inside `document`.
      * @virtual 
@@ -2435,7 +2435,7 @@ interface Document {
      * @param attribute_value a string value to be associated with `attribute_name`.
      * @returns %TRUE if @attribute_value is successfully associated   with @attribute_name for this @document, and %FALSE if if the   document does not allow the attribute to be modified
      */
-    vfunc_set_document_attribute(attribute_name: string | null, attribute_value: string | null): boolean
+    vfunc_set_document_attribute(attribute_name: string, attribute_value: string): boolean
 
     // Own signals of Atk-1.0.Atk.Document
 
@@ -2525,7 +2525,7 @@ interface EditableText {
      * @param length the length of text to insert, in bytes
      * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
-    insert_text(string: string | null, length: number, position: number): void
+    insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
      * @param position position to paste
@@ -2546,7 +2546,7 @@ interface EditableText {
      * Set text contents of `text`.
      * @param string string to set for text contents of `text`
      */
-    set_text_contents(string: string | null): void
+    set_text_contents(string: string): void
 
     // Own virtual methods of Atk-1.0.Atk.EditableText
 
@@ -2580,7 +2580,7 @@ interface EditableText {
      * @param length the length of text to insert, in bytes
      * @param position The caller initializes this to the position at which to insert the text. After the call it points at the position after the newly inserted text.
      */
-    vfunc_insert_text(string: string | null, length: number, position: number): void
+    vfunc_insert_text(string: string, length: number, position: number): void
     /**
      * Paste text from clipboard to specified `position`.
      * @virtual 
@@ -2604,7 +2604,7 @@ interface EditableText {
      * @virtual 
      * @param string string to set for text contents of `text`
      */
-    vfunc_set_text_contents(string: string | null): void
+    vfunc_set_text_contents(string: string): void
 
     // Class property signals of Atk-1.0.Atk.EditableText
 
@@ -2824,7 +2824,7 @@ interface Image {
      * Get a textual description of this image.
      * @returns a string representing the image description
      */
-    get_image_description(): string | null
+    get_image_description(): string
     /**
      * Retrieves the locale identifier associated to the #AtkImage.
      * @returns a string corresponding to the POSIX   `LC_MESSAGES` locale used by the image description, or   %NULL if the image does not specify a locale.
@@ -2853,7 +2853,7 @@ interface Image {
      * @param description a string description to set for `image`
      * @returns boolean TRUE, or FALSE if operation could not be completed.
      */
-    set_image_description(description: string | null): boolean
+    set_image_description(description: string): boolean
 
     // Own virtual methods of Atk-1.0.Atk.Image
 
@@ -2862,7 +2862,7 @@ interface Image {
      * @virtual 
      * @returns a string representing the image description
      */
-    vfunc_get_image_description(): string | null
+    vfunc_get_image_description(): string
     /**
      * Retrieves the locale identifier associated to the #AtkImage.
      * @virtual 
@@ -2895,7 +2895,7 @@ interface Image {
      * @param description a string description to set for `image`
      * @returns boolean TRUE, or FALSE if operation could not be completed.
      */
-    vfunc_set_image_description(description: string | null): boolean
+    vfunc_set_image_description(description: string): boolean
 
     // Class property signals of Atk-1.0.Atk.Image
 
@@ -3181,7 +3181,7 @@ interface StreamableContent {
      * @param i a gint representing the position of the mime type starting from 0
      * @returns a gchar* representing the specified mime type; the caller should not free the character string.
      */
-    get_mime_type(i: number): string | null
+    get_mime_type(i: number): string
     /**
      * Gets the number of mime types supported by this object.
      * @returns a gint which is the number of mime types supported by the object.
@@ -3192,7 +3192,7 @@ interface StreamableContent {
      * @param mime_type a gchar* representing the mime type
      * @returns A #GIOChannel which contains the content in the specified mime type.
      */
-    get_stream(mime_type: string | null): GLib.IOChannel
+    get_stream(mime_type: string): GLib.IOChannel
     /**
      * Get a string representing a URI in IETF standard format
      * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
@@ -3205,7 +3205,7 @@ interface StreamableContent {
      * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
      * @returns Returns a string representing a URI, or %NULL if no corresponding URI can be constructed.
      */
-    get_uri(mime_type: string | null): string | null
+    get_uri(mime_type: string): string | null
 
     // Own virtual methods of Atk-1.0.Atk.StreamableContent
 
@@ -3216,7 +3216,7 @@ interface StreamableContent {
      * @param i a gint representing the position of the mime type starting from 0
      * @returns a gchar* representing the specified mime type; the caller should not free the character string.
      */
-    vfunc_get_mime_type(i: number): string | null
+    vfunc_get_mime_type(i: number): string
     /**
      * Gets the number of mime types supported by this object.
      * @virtual 
@@ -3229,7 +3229,7 @@ interface StreamableContent {
      * @param mime_type a gchar* representing the mime type
      * @returns A #GIOChannel which contains the content in the specified mime type.
      */
-    vfunc_get_stream(mime_type: string | null): GLib.IOChannel
+    vfunc_get_stream(mime_type: string): GLib.IOChannel
     /**
      * Get a string representing a URI in IETF standard format
      * (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
@@ -3243,7 +3243,7 @@ interface StreamableContent {
      * @param mime_type a gchar* representing the mime type, or NULL to request a URI for the default mime type.
      * @returns Returns a string representing a URI, or %NULL if no corresponding URI can be constructed.
      */
-    vfunc_get_uri(mime_type: string | null): string | null
+    vfunc_get_uri(mime_type: string): string | null
 
     // Class property signals of Atk-1.0.Atk.StreamableContent
 
@@ -3380,7 +3380,7 @@ interface Table {
      * @param column a #gint representing a column in `table`
      * @returns a gchar* representing the column description, or %NULL if value does not implement this interface.
      */
-    get_column_description(column: number): string | null
+    get_column_description(column: number): string
     /**
      * Gets the number of columns occupied by the accessible object
      * at the specified `row` and `column` in the `table`.
@@ -3510,7 +3510,7 @@ interface Table {
      * @param column a #gint representing a column in `table`
      * @param description a #gchar representing the description text to set for the specified `column` of the `table`
      */
-    set_column_description(column: number, description: string | null): void
+    set_column_description(column: number, description: string): void
     /**
      * Sets the specified column header to `header`.
      * @param column a #gint representing a column in `table`
@@ -3522,7 +3522,7 @@ interface Table {
      * @param row a #gint representing a row in `table`
      * @param description a #gchar representing the description text to set for the specified `row` of `table`
      */
-    set_row_description(row: number, description: string | null): void
+    set_row_description(row: number, description: string): void
     /**
      * Sets the specified row header to `header`.
      * @param row a #gint representing a row in `table`
@@ -3573,7 +3573,7 @@ interface Table {
      * @param column a #gint representing a column in `table`
      * @returns a gchar* representing the column description, or %NULL if value does not implement this interface.
      */
-    vfunc_get_column_description(column: number): string | null
+    vfunc_get_column_description(column: number): string
     /**
      * Gets the number of columns occupied by the accessible object
      * at the specified `row` and `column` in the `table`.
@@ -3727,7 +3727,7 @@ interface Table {
      * @param column a #gint representing a column in `table`
      * @param description a #gchar representing the description text to set for the specified `column` of the `table`
      */
-    vfunc_set_column_description(column: number, description: string | null): void
+    vfunc_set_column_description(column: number, description: string): void
     /**
      * Sets the specified column header to `header`.
      * @virtual 
@@ -3741,7 +3741,7 @@ interface Table {
      * @param row a #gint representing a row in `table`
      * @param description a #gchar representing the description text to set for the specified `row` of `table`
      */
-    vfunc_set_row_description(row: number, description: string | null): void
+    vfunc_set_row_description(row: number, description: string): void
     /**
      * Sets the specified row header to `header`.
      * @virtual 
@@ -4708,7 +4708,7 @@ interface Value {
      * `obj`. `text` is a newly created string, that must be freed by the
      * caller. Can be NULL if no descriptor is available.
      */
-    get_value_and_text(): [ /* value */ number, /* text */ string | null ]
+    get_value_and_text(): [ /* value */ number, /* text */ string ]
     /**
      * Sets the value of this object.
      * @param value a #GValue which is the desired new accessible value.
@@ -4786,7 +4786,7 @@ interface Value {
      * caller. Can be NULL if no descriptor is available.
      * @virtual 
      */
-    vfunc_get_value_and_text(): [ /* value */ number, /* text */ string | null ]
+    vfunc_get_value_and_text(): [ /* value */ number, /* text */ string ]
     /**
      * Sets the value of this object.
      * @virtual 
@@ -5603,7 +5603,7 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -5627,14 +5627,14 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @param i the action index corresponding to the action to be performed
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    set_description(i: number, desc: string | null): boolean
+    set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -5642,7 +5642,7 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Gets the position of `component` in the form of
      * a point specifying `component'`s top-left corner.
@@ -5683,7 +5683,7 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -5709,7 +5709,7 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -5717,7 +5717,7 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    vfunc_set_description(i: number, desc: string | null): boolean
+    vfunc_set_description(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -5726,7 +5726,7 @@ interface NoOpObject extends Action, Component, Document, EditableText, Hypertex
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
     /**
      * Gets the position of `component` in the form of
      * a point specifying `component'`s top-left corner.
@@ -6133,7 +6133,7 @@ interface Object {
      * Gets the accessible id of the accessible.
      * @returns a character string representing the accessible id of the object, or NULL if no such string was set.
      */
-    get_accessible_id(): string | null
+    get_accessible_id(): string
     /**
      * Get a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of
      * name-value pairs. As such these attributes may be considered weakly-typed properties or annotations,
@@ -6146,7 +6146,7 @@ interface Object {
      * Gets the accessible description of the accessible.
      * @returns a character string representing the accessible description of the accessible.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the 0-based index of this accessible in its parent; returns -1 if the
      * accessible does not have an accessible parent.
@@ -6173,13 +6173,13 @@ interface Object {
      * Gets the accessible name of the accessible.
      * @returns a character string representing the accessible name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
      * of `accessible`.
      * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of @accessible.
      */
-    get_object_locale(): string | null
+    get_object_locale(): string
     /**
      * Gets the accessible parent of the accessible. By default this is
      * the one assigned with atk_object_set_parent(), but it is assumed
@@ -6264,7 +6264,7 @@ interface Object {
      * reading, or for automatic regression testing.
      * @param name a character string to be set as the accessible id
      */
-    set_accessible_id(name: string | null): void
+    set_accessible_id(name: string): void
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -6272,7 +6272,7 @@ interface Object {
      * the name to a empty value you can use "".
      * @param description a character string to be set as the accessible description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the accessible name of the accessible. You can't set the name
      * to NULL. This is reserved for the initial value. In this aspect
@@ -6280,7 +6280,7 @@ interface Object {
      * a empty value you can use "".
      * @param name a character string to be set as the accessible name
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
      * @param parent an #AtkObject to be set as the accessible parent
@@ -6311,7 +6311,7 @@ interface Object {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    vfunc_get_description(): string | null
+    vfunc_get_description(): string
     /**
      * Gets the 0-based index of this accessible in its parent; returns -1 if the
      * accessible does not have an accessible parent.
@@ -6338,14 +6338,14 @@ interface Object {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     /**
      * Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
      * of `accessible`.
      * @virtual 
      * @returns a UTF-8 string indicating the POSIX-style LC_MESSAGES          locale of @accessible.
      */
-    vfunc_get_object_locale(): string | null
+    vfunc_get_object_locale(): string
     /**
      * Gets the accessible parent of the accessible. By default this is
      * the one assigned with atk_object_set_parent(), but it is assumed
@@ -6402,7 +6402,7 @@ interface Object {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    vfunc_set_description(description: string | null): void
+    vfunc_set_description(description: string): void
     /**
      * Sets the accessible name of the accessible. You can't set the name
      * to NULL. This is reserved for the initial value. In this aspect
@@ -6411,7 +6411,7 @@ interface Object {
      * @virtual 
      * @param name a character string to be set as the accessible name
      */
-    vfunc_set_name(name: string | null): void
+    vfunc_set_name(name: string): void
     /**
      * Sets the accessible parent of the accessible. `parent` can be NULL.
      * @virtual 
@@ -6424,7 +6424,7 @@ interface Object {
      * @param role an #AtkRole to be set as the role
      */
     vfunc_set_role(role: Role): void
-    vfunc_state_change(name: string | null, state_set: boolean): void
+    vfunc_state_change(name: string, state_set: boolean): void
     vfunc_visible_data_changed(): void
 
     // Own signals of Atk-1.0.Atk.Object
@@ -7094,7 +7094,7 @@ interface Socket extends Component {
      * as needed.
      * @param plug_id the ID of an #AtkPlug
      */
-    embed(plug_id: string | null): void
+    embed(plug_id: string): void
     /**
      * Determines whether or not the socket has an embedded plug.
      * @returns TRUE if a plug is embedded in the socket
@@ -7117,7 +7117,7 @@ interface Socket extends Component {
      * @virtual 
      * @param plug_id the ID of an #AtkPlug
      */
-    vfunc_embed(plug_id: string | null): void
+    vfunc_embed(plug_id: string): void
 
     // Class property signals of Atk-1.0.Atk.Socket
 
@@ -7415,7 +7415,7 @@ interface ActionIface {
     get_description: (action: Action, i: number) => string | null
     get_name: (action: Action, i: number) => string | null
     get_keybinding: (action: Action, i: number) => string | null
-    set_description: (action: Action, i: number, desc: string | null) => boolean
+    set_description: (action: Action, i: number, desc: string) => boolean
     get_localized_name: (action: Action, i: number) => string | null
 }
 
@@ -7521,12 +7521,12 @@ interface DocumentIface {
     // Own fields of Atk-1.0.Atk.DocumentIface
 
     parent: GObject.TypeInterface
-    get_document_type: (document: Document) => string | null
+    get_document_type: (document: Document) => string
     get_document: (document: Document) => any | null
-    get_document_locale: (document: Document) => string | null
+    get_document_locale: (document: Document) => string
     get_document_attributes: (document: Document) => AttributeSet
-    get_document_attribute_value: (document: Document, attribute_name: string | null) => string | null
-    set_document_attribute: (document: Document, attribute_name: string | null, attribute_value: string | null) => boolean
+    get_document_attribute_value: (document: Document, attribute_name: string) => string | null
+    set_document_attribute: (document: Document, attribute_name: string, attribute_value: string) => boolean
     get_current_page_number: (document: Document) => number
     get_page_count: (document: Document) => number
 }
@@ -7544,8 +7544,8 @@ interface EditableTextIface {
 
     parent_interface: GObject.TypeInterface
     set_run_attributes: (text: EditableText, attrib_set: AttributeSet, start_offset: number, end_offset: number) => boolean
-    set_text_contents: (text: EditableText, string: string | null) => void
-    insert_text: (text: EditableText, string: string | null, length: number, position: number) => void
+    set_text_contents: (text: EditableText, string: string) => void
+    insert_text: (text: EditableText, string: string, length: number, position: number) => void
     copy_text: (text: EditableText, start_pos: number, end_pos: number) => void
     cut_text: (text: EditableText, start_pos: number, end_pos: number) => void
     delete_text: (text: EditableText, start_pos: number, end_pos: number) => void
@@ -7638,9 +7638,9 @@ interface ImageIface {
 
     parent: GObject.TypeInterface
     get_image_position: (image: Image, coord_type: CoordType) => [ /* x */ number, /* y */ number ]
-    get_image_description: (image: Image) => string | null
+    get_image_description: (image: Image) => string
     get_image_size: (image: Image) => [ /* width */ number, /* height */ number ]
-    set_image_description: (image: Image, description: string | null) => boolean
+    set_image_description: (image: Image, description: string) => boolean
     get_image_locale: (image: Image) => string | null
 }
 
@@ -7785,8 +7785,8 @@ interface ObjectClass {
     // Own fields of Atk-1.0.Atk.ObjectClass
 
     parent: GObject.ObjectClass
-    get_name: (accessible: Object) => string | null
-    get_description: (accessible: Object) => string | null
+    get_name: (accessible: Object) => string
+    get_description: (accessible: Object) => string
     get_parent: (accessible: Object) => Object
     get_n_children: (accessible: Object) => number
     get_index_in_parent: (accessible: Object) => number
@@ -7795,8 +7795,8 @@ interface ObjectClass {
     get_layer: (accessible: Object) => Layer
     get_mdi_zorder: (accessible: Object) => number
     ref_state_set: (accessible: Object) => StateSet
-    set_name: (accessible: Object, name: string | null) => void
-    set_description: (accessible: Object, description: string | null) => void
+    set_name: (accessible: Object, name: string) => void
+    set_description: (accessible: Object, description: string) => void
     set_parent: (accessible: Object, parent: Object) => void
     set_role: (accessible: Object, role: Role) => void
     remove_property_change_handler: (accessible: Object, handler_id: number) => void
@@ -7804,11 +7804,11 @@ interface ObjectClass {
     children_changed: (accessible: Object, change_index: number, changed_child: any | null) => void
     focus_event: (accessible: Object, focus_in: boolean) => void
     property_change: (accessible: Object, values: PropertyValues) => void
-    state_change: (accessible: Object, name: string | null, state_set: boolean) => void
+    state_change: (accessible: Object, name: string, state_set: boolean) => void
     visible_data_changed: (accessible: Object) => void
     active_descendant_changed: (accessible: Object, child: any | null) => void
     get_attributes: (accessible: Object) => AttributeSet
-    get_object_locale: (accessible: Object) => string | null
+    get_object_locale: (accessible: Object) => string
     pad1: Function
 }
 
@@ -7860,7 +7860,7 @@ interface PropertyValues {
      * The name of the ATK property which has changed.
      * @field 
      */
-    property_name: string | null
+    property_name: string
     /**
      * NULL. This field is not used anymore.
      * @field 
@@ -7903,7 +7903,7 @@ interface Range {
      * Returns the human readable description of `range`
      * @returns the human-readable description of @range
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Returns the lower limit of `range`
      * @returns the lower limit of @range
@@ -7942,7 +7942,7 @@ class Range {
      * @param description human readable description of this range.
      * @returns a new #AtkRange
      */
-    constructor(lower_limit: number, upper_limit: number, description: string | null) 
+    constructor(lower_limit: number, upper_limit: number, description: string) 
     /**
      * Creates a new #AtkRange.
      * @constructor 
@@ -7951,7 +7951,7 @@ class Range {
      * @param description human readable description of this range.
      * @returns a new #AtkRange
      */
-    static new(lower_limit: number, upper_limit: number, description: string | null): Range
+    static new(lower_limit: number, upper_limit: number, description: string): Range
 }
 
 interface Rectangle {
@@ -8063,7 +8063,7 @@ interface SocketClass {
     // Own fields of Atk-1.0.Atk.SocketClass
 
     parent_class: ObjectClass
-    embed: (obj: Socket, plug_id: string | null) => void
+    embed: (obj: Socket, plug_id: string) => void
 }
 
 abstract class SocketClass {
@@ -8093,9 +8093,9 @@ interface StreamableContentIface {
 
     parent: GObject.TypeInterface
     get_n_mime_types: (streamable: StreamableContent) => number
-    get_mime_type: (streamable: StreamableContent, i: number) => string | null
-    get_stream: (streamable: StreamableContent, mime_type: string | null) => GLib.IOChannel
-    get_uri: (streamable: StreamableContent, mime_type: string | null) => string | null
+    get_mime_type: (streamable: StreamableContent, i: number) => string
+    get_stream: (streamable: StreamableContent, mime_type: string) => GLib.IOChannel
+    get_uri: (streamable: StreamableContent, mime_type: string) => string | null
     pad1: Function
     pad2: Function
     pad3: Function
@@ -8146,15 +8146,15 @@ interface TableIface {
     get_column_extent_at: (table: Table, row: number, column: number) => number
     get_row_extent_at: (table: Table, row: number, column: number) => number
     get_caption: (table: Table) => Object | null
-    get_column_description: (table: Table, column: number) => string | null
+    get_column_description: (table: Table, column: number) => string
     get_column_header: (table: Table, column: number) => Object | null
     get_row_description: (table: Table, row: number) => string | null
     get_row_header: (table: Table, row: number) => Object | null
     get_summary: (table: Table) => Object
     set_caption: (table: Table, caption: Object) => void
-    set_column_description: (table: Table, column: number, description: string | null) => void
+    set_column_description: (table: Table, column: number, description: string) => void
     set_column_header: (table: Table, column: number, header: Object) => void
-    set_row_description: (table: Table, row: number, description: string | null) => void
+    set_row_description: (table: Table, row: number, description: string) => void
     set_row_header: (table: Table, row: number, header: Object) => void
     set_summary: (table: Table, accessible: Object) => void
     get_selected_columns: (table: Table, selected: number) => number
@@ -8303,8 +8303,8 @@ interface UtilClass {
     parent: GObject.ObjectClass
     remove_global_event_listener: (listener_id: number) => void
     remove_key_event_listener: (listener_id: number) => void
-    get_toolkit_name: () => string | null
-    get_toolkit_version: () => string | null
+    get_toolkit_name: () => string
+    get_toolkit_version: () => string
 }
 
 abstract class UtilClass {
@@ -8324,7 +8324,7 @@ interface ValueIface {
     get_minimum_value: (obj: Value) => /* value */ any
     set_current_value: (obj: Value, value: any) => boolean
     get_minimum_increment: (obj: Value) => /* value */ any
-    get_value_and_text: (obj: Value) => [ /* value */ number, /* text */ string | null ]
+    get_value_and_text: (obj: Value) => [ /* value */ number, /* text */ string ]
     get_range: (obj: Value) => Range | null
     get_increment: (obj: Value) => number
     get_sub_ranges: (obj: Value) => Range[]

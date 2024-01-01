@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/goa-1.0)
 
 
-GJS TypeScript type definitions for Goa-1.0, generated from library version 3.49.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+GJS TypeScript type definitions for Goa-1.0, generated from library version 3.49.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 A centralized service that allows a set of online accounts to be configured for use with core GNOME applications. In UX terms, GOA provides a static list of online accounts that can be setup by users (through the Online Accounts panel in System Settings). These accounts can then be used by core GNOME applications.
 

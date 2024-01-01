@@ -52,7 +52,7 @@ export const VERSION_MINOR: number
  * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
  * for snapshot version.
  */
-export const VERSION_TAG: string | null
+export const VERSION_TAG: string
 export module AndNode {
 
     // Constructor properties interface
@@ -512,8 +512,8 @@ export class FunctionNode extends Node {
     // Constructors of Gandiva-1.0.Gandiva.FunctionNode
 
     constructor(config?: FunctionNode.ConstructorProperties) 
-    constructor(name: string | null, parameters: Node[], return_type: Arrow.DataType) 
-    static new(name: string | null, parameters: Node[], return_type: Arrow.DataType): FunctionNode
+    constructor(name: string, parameters: Node[], return_type: Arrow.DataType) 
+    static new(name: string, parameters: Node[], return_type: Arrow.DataType): FunctionNode
     _init(config?: FunctionNode.ConstructorProperties): void
 }
 
@@ -614,8 +614,8 @@ export class FunctionSignature extends GObject.Object {
     // Constructors of Gandiva-1.0.Gandiva.FunctionSignature
 
     constructor(config?: FunctionSignature.ConstructorProperties) 
-    constructor(base_name: string | null, parameter_types: Arrow.DataType[], return_type: Arrow.DataType) 
-    static new(base_name: string | null, parameter_types: Arrow.DataType[], return_type: Arrow.DataType): FunctionSignature
+    constructor(base_name: string, parameter_types: Arrow.DataType[], return_type: Arrow.DataType) 
+    static new(base_name: string, parameter_types: Arrow.DataType[], return_type: Arrow.DataType): FunctionSignature
     _init(config?: FunctionSignature.ConstructorProperties): void
 }
 
@@ -1199,7 +1199,7 @@ export interface StringLiteralNode {
 
     // Owm methods of Gandiva-1.0.Gandiva.StringLiteralNode
 
-    get_value(): string | null
+    get_value(): string
 
     // Class property signals of Gandiva-1.0.Gandiva.StringLiteralNode
 
@@ -1225,8 +1225,8 @@ export class StringLiteralNode extends LiteralNode {
     // Constructors of Gandiva-1.0.Gandiva.StringLiteralNode
 
     constructor(config?: StringLiteralNode.ConstructorProperties) 
-    constructor(value: string | null) 
-    static new(value: string | null): StringLiteralNode
+    constructor(value: string) 
+    static new(value: string): StringLiteralNode
     _init(config?: StringLiteralNode.ConstructorProperties): void
 }
 

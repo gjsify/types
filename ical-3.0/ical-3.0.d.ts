@@ -733,10 +733,10 @@ const ICALPROPERTY_FIRST_ENUM: number
 const ICALPROPERTY_LAST_ENUM: number
 const MAJOR_VERSION: number
 const MINOR_VERSION: number
-const PACKAGE: string | null
+const PACKAGE: string
 const PATCH_VERSION: number
-const VERSION: string | null
-const ZONES_TAB_SYSTEM_FILENAME: string | null
+const VERSION: string
+const ZONES_TAB_SYSTEM_FILENAME: string
 /**
  * }
  * ```
@@ -746,7 +746,7 @@ function decode_base64(dest: string | null, src: string | null, size: number): s
 function decode_quoted_printable(dest: string | null, src: string | null, size: number): string | null
 function free_zone_directory(): void
 function get_unknown_token_handling_setting(): _unknown_token_handling
-function get_zone_directory(): string | null
+function get_zone_directory(): string
 function icalarray_append(array: array, element: any | null): void
 function icalarray_element_at(array: array, position: number): any | null
 /**
@@ -770,7 +770,7 @@ function icalarray_remove_element_at(array: array, position: number): void
 function icalarray_sort(array: array, compare: any | null): void
 function icalattach_get_data(attach: attach): number
 function icalattach_get_is_url(attach: attach): number
-function icalattach_get_url(attach: attach): string | null
+function icalattach_get_url(attach: attach): string
 function icalattach_ref(attach: attach): void
 function icalattach_unref(attach: attach): void
 function icalcomponent_add_component(parent: component, child: component): void
@@ -785,62 +785,62 @@ function icalcomponent_count_properties(component: component, kind: property_kin
 function icalcomponent_foreach_recurrence(comp: component, start: any | null, end: any | null, callback: any | null, callback_data: any | null): void
 function icalcomponent_foreach_tzid(comp: component, callback: any | null, callback_data: any | null): void
 function icalcomponent_free(component: component): void
-function icalcomponent_get_comment(comp: component): string | null
-function icalcomponent_get_description(comp: component): string | null
+function icalcomponent_get_comment(comp: component): string
+function icalcomponent_get_description(comp: component): string
 function icalcomponent_get_dtend(comp: component): any | null
 function icalcomponent_get_dtstamp(comp: component): any | null
 function icalcomponent_get_dtstart(comp: component): any | null
 function icalcomponent_get_due(comp: component): any | null
 function icalcomponent_get_duration(comp: component): any | null
-function icalcomponent_get_location(comp: component): string | null
+function icalcomponent_get_location(comp: component): string
 function icalcomponent_get_method(comp: component): property_method
 function icalcomponent_get_recurrenceid(comp: component): any | null
-function icalcomponent_get_relcalid(comp: component): string | null
+function icalcomponent_get_relcalid(comp: component): string
 function icalcomponent_get_sequence(comp: component): number
 function icalcomponent_get_span(comp: component): any | null
 function icalcomponent_get_status(comp: component): any | null
-function icalcomponent_get_summary(comp: component): string | null
-function icalcomponent_get_uid(comp: component): string | null
+function icalcomponent_get_summary(comp: component): string
+function icalcomponent_get_uid(comp: component): string
 function icalcomponent_is_valid(component: component): number
 function icalcomponent_isa(component: component): component_kind
 function icalcomponent_isa_component(component: any | null): number
 function icalcomponent_kind_is_valid(kind: component_kind): number
-function icalcomponent_kind_to_string(kind: component_kind): string | null
+function icalcomponent_kind_to_string(kind: component_kind): string
 function icalcomponent_merge_component(comp: component, comp_to_merge: component): void
 function icalcomponent_normalize(comp: component): void
 function icalcomponent_remove_component(parent: component, child: component): void
 function icalcomponent_remove_property(component: component, property: property): void
-function icalcomponent_set_comment(comp: component, v: string | null): void
-function icalcomponent_set_description(comp: component, v: string | null): void
+function icalcomponent_set_comment(comp: component, v: string): void
+function icalcomponent_set_description(comp: component, v: string): void
 function icalcomponent_set_dtend(comp: component, v: any | null): void
 function icalcomponent_set_dtstamp(comp: component, v: any | null): void
 function icalcomponent_set_dtstart(comp: component, v: any | null): void
 function icalcomponent_set_due(comp: component, v: any | null): void
 function icalcomponent_set_duration(comp: component, v: any | null): void
-function icalcomponent_set_location(comp: component, v: string | null): void
+function icalcomponent_set_location(comp: component, v: string): void
 function icalcomponent_set_method(comp: component, method: property_method): void
 function icalcomponent_set_parent(component: component, parent: component): void
 function icalcomponent_set_recurrenceid(comp: component, v: any | null): void
-function icalcomponent_set_relcalid(comp: component, v: string | null): void
+function icalcomponent_set_relcalid(comp: component, v: string): void
 function icalcomponent_set_sequence(comp: component, v: number): void
 function icalcomponent_set_status(comp: component, v: any | null): void
-function icalcomponent_set_summary(comp: component, v: string | null): void
-function icalcomponent_set_uid(comp: component, v: string | null): void
-function icalcomponent_string_to_kind(string: string | null): component_kind
+function icalcomponent_set_summary(comp: component, v: string): void
+function icalcomponent_set_uid(comp: component, v: string): void
+function icalcomponent_string_to_kind(string: string): component_kind
 function icalcomponent_strip_errors(component: component): void
 function icaldurationtype_as_ical_string(d: any | null): string | null
 function icaldurationtype_as_ical_string_r(d: any | null): string | null
 function icaldurationtype_as_int(duration: any | null): number
 function icaldurationtype_bad_duration(): any | null
 function icaldurationtype_from_int(t: number): any | null
-function icaldurationtype_from_string(dur: string | null): any | null
+function icaldurationtype_from_string(dur: string): any | null
 function icaldurationtype_is_bad_duration(d: any | null): number
 function icaldurationtype_is_null_duration(d: any | null): number
 function icaldurationtype_null_duration(): any | null
 function icalenum_num_to_reqstat(major: number, minor: number): requeststatus
 function icalenum_reqstat_code(stat: requeststatus): string | null
 function icalenum_reqstat_code_r(stat: requeststatus): string | null
-function icalenum_reqstat_desc(stat: requeststatus): string | null
+function icalenum_reqstat_desc(stat: requeststatus): string
 function icalenum_reqstat_major(stat: requeststatus): number
 function icalenum_reqstat_minor(stat: requeststatus): number
 function icalerrno_return(): errorenum
@@ -850,28 +850,28 @@ function icalerrno_return(): errorenum
  */
 function icalerror_clear_errno(): void
 function icalerror_crash_here(): void
-function icalerror_error_from_string(str: string | null): errorenum
+function icalerror_error_from_string(str: string): errorenum
 function icalerror_get_error_state(error: errorenum): errorstate
 function icalerror_get_errors_are_fatal(): number
-function icalerror_perror(): string | null
-function icalerror_restore(error: string | null, es: errorstate): void
+function icalerror_perror(): string
+function icalerror_restore(error: string, es: errorstate): void
 function icalerror_set_errno(x: errorenum): void
 function icalerror_set_error_state(error: errorenum, state: errorstate): void
 function icalerror_set_errors_are_fatal(fatal: number): void
 function icalerror_stop_here(): void
-function icalerror_strerror(e: errorenum): string | null
-function icalerror_supress(error: string | null): errorstate
+function icalerror_strerror(e: errorenum): string
+function icalerror_supress(error: string): errorstate
 function icallangbind_access_array(array: number, index: number): number
 function icallangbind_free_array(array: number): void
 function icallangbind_new_array(size: number): number
-function icallangbind_property_eval_string(prop: property, sep: string | null): string | null
-function icallangbind_property_eval_string_r(prop: property, sep: string | null): string | null
-function icallangbind_quote_as_ical(str: string | null): string | null
-function icallangbind_quote_as_ical_r(str: string | null): string | null
-function icallangbind_string_to_open_flag(str: string | null): number
+function icallangbind_property_eval_string(prop: property, sep: string): string
+function icallangbind_property_eval_string_r(prop: property, sep: string): string | null
+function icallangbind_quote_as_ical(str: string): string
+function icallangbind_quote_as_ical_r(str: string): string | null
+function icallangbind_string_to_open_flag(str: string): number
 function icalmemory_add_tmp_buffer(buf: any | null): void
 function icalmemory_append_char(buf: string | null, pos: string | null, buf_size: number, ch: number): void
-function icalmemory_append_string(buf: string | null, pos: string | null, buf_size: number, string: string | null): void
+function icalmemory_append_string(buf: string | null, pos: string | null, buf_size: number, string: string): void
 function icalmemory_free_buffer(buf: any | null): void
 /**
  * ```
@@ -879,9 +879,9 @@ function icalmemory_free_buffer(buf: any | null): void
 function icalmemory_free_ring(): void
 function icalmemory_new_buffer(size: number): any | null
 function icalmemory_resize_buffer(buf: any | null, size: number): any | null
-function icalmemory_strdup(s: string | null): string | null
+function icalmemory_strdup(s: string): string | null
 function icalmemory_tmp_buffer(size: number): any | null
-function icalmemory_tmp_copy(str: string | null): string | null
+function icalmemory_tmp_copy(str: string): string | null
 /**
  * `par` Usage
  * ```c
@@ -899,42 +899,42 @@ function icalmemory_tmp_copy(str: string | null): string | null
  */
 function icalparameter_as_ical_string(parameter: parameter): string | null
 function icalparameter_as_ical_string_r(parameter: parameter): string | null
-function icalparameter_enum_to_string(e: number): string | null
+function icalparameter_enum_to_string(e: number): string
 function icalparameter_free(parameter: parameter): void
 function icalparameter_get_actionparam(value: parameter): parameter_action
-function icalparameter_get_altrep(value: parameter): string | null
-function icalparameter_get_charset(value: parameter): string | null
-function icalparameter_get_cn(value: parameter): string | null
+function icalparameter_get_altrep(value: parameter): string
+function icalparameter_get_charset(value: parameter): string
+function icalparameter_get_cn(value: parameter): string
 function icalparameter_get_cutype(value: parameter): parameter_cutype
-function icalparameter_get_delegatedfrom(value: parameter): string | null
-function icalparameter_get_delegatedto(value: parameter): string | null
-function icalparameter_get_dir(value: parameter): string | null
+function icalparameter_get_delegatedfrom(value: parameter): string
+function icalparameter_get_delegatedto(value: parameter): string
+function icalparameter_get_dir(value: parameter): string
 function icalparameter_get_display(value: parameter): parameter_display
-function icalparameter_get_email(value: parameter): string | null
+function icalparameter_get_email(value: parameter): string
 function icalparameter_get_enable(value: parameter): parameter_enable
 function icalparameter_get_encoding(value: parameter): parameter_encoding
 function icalparameter_get_fbtype(value: parameter): parameter_fbtype
 function icalparameter_get_feature(value: parameter): parameter_feature
-function icalparameter_get_filename(value: parameter): string | null
-function icalparameter_get_fmttype(value: parameter): string | null
-function icalparameter_get_iana(value: parameter): string | null
-function icalparameter_get_iana_name(param: parameter): string | null
-function icalparameter_get_iana_value(param: parameter): string | null
-function icalparameter_get_id(value: parameter): string | null
-function icalparameter_get_label(value: parameter): string | null
-function icalparameter_get_language(value: parameter): string | null
-function icalparameter_get_latency(value: parameter): string | null
+function icalparameter_get_filename(value: parameter): string
+function icalparameter_get_fmttype(value: parameter): string
+function icalparameter_get_iana(value: parameter): string
+function icalparameter_get_iana_name(param: parameter): string
+function icalparameter_get_iana_value(param: parameter): string
+function icalparameter_get_id(value: parameter): string
+function icalparameter_get_label(value: parameter): string
+function icalparameter_get_language(value: parameter): string
+function icalparameter_get_latency(value: parameter): string
 function icalparameter_get_local(value: parameter): parameter_local
-function icalparameter_get_localize(value: parameter): string | null
-function icalparameter_get_managedid(value: parameter): string | null
-function icalparameter_get_member(value: parameter): string | null
-function icalparameter_get_modified(value: parameter): string | null
-function icalparameter_get_options(value: parameter): string | null
+function icalparameter_get_localize(value: parameter): string
+function icalparameter_get_managedid(value: parameter): string
+function icalparameter_get_member(value: parameter): string
+function icalparameter_get_modified(value: parameter): string
+function icalparameter_get_options(value: parameter): string
 function icalparameter_get_partstat(value: parameter): parameter_partstat
 function icalparameter_get_patchaction(value: parameter): parameter_patchaction
-function icalparameter_get_publiccomment(value: parameter): string | null
+function icalparameter_get_publiccomment(value: parameter): string
 function icalparameter_get_range(value: parameter): parameter_range
-function icalparameter_get_reason(value: parameter): string | null
+function icalparameter_get_reason(value: parameter): string
 function icalparameter_get_related(value: parameter): parameter_related
 function icalparameter_get_reltype(value: parameter): parameter_reltype
 function icalparameter_get_required(value: parameter): parameter_required
@@ -943,58 +943,58 @@ function icalparameter_get_role(value: parameter): parameter_role
 function icalparameter_get_rsvp(value: parameter): parameter_rsvp
 function icalparameter_get_scheduleagent(value: parameter): parameter_scheduleagent
 function icalparameter_get_scheduleforcesend(value: parameter): parameter_scheduleforcesend
-function icalparameter_get_schedulestatus(value: parameter): string | null
-function icalparameter_get_sentby(value: parameter): string | null
-function icalparameter_get_size(value: parameter): string | null
+function icalparameter_get_schedulestatus(value: parameter): string
+function icalparameter_get_sentby(value: parameter): string
+function icalparameter_get_size(value: parameter): string
 function icalparameter_get_stayinformed(value: parameter): parameter_stayinformed
 function icalparameter_get_substate(value: parameter): parameter_substate
-function icalparameter_get_tzid(value: parameter): string | null
+function icalparameter_get_tzid(value: parameter): string
 function icalparameter_get_value(value: parameter): parameter_value
-function icalparameter_get_x(value: parameter): string | null
+function icalparameter_get_x(value: parameter): string
 function icalparameter_get_xliccomparetype(value: parameter): parameter_xliccomparetype
 function icalparameter_get_xlicerrortype(value: parameter): parameter_xlicerrortype
-function icalparameter_get_xname(param: parameter): string | null
-function icalparameter_get_xvalue(param: parameter): string | null
+function icalparameter_get_xname(param: parameter): string
+function icalparameter_get_xvalue(param: parameter): string
 function icalparameter_has_same_name(param1: parameter, param2: parameter): number
 function icalparameter_isa(parameter: parameter): parameter_kind
 function icalparameter_isa_parameter(param: any | null): number
 function icalparameter_kind_is_valid(kind: parameter_kind): number
-function icalparameter_kind_to_string(kind: parameter_kind): string | null
+function icalparameter_kind_to_string(kind: parameter_kind): string
 function icalparameter_set_actionparam(value: parameter, v: parameter_action): void
-function icalparameter_set_altrep(value: parameter, v: string | null): void
-function icalparameter_set_charset(value: parameter, v: string | null): void
-function icalparameter_set_cn(value: parameter, v: string | null): void
+function icalparameter_set_altrep(value: parameter, v: string): void
+function icalparameter_set_charset(value: parameter, v: string): void
+function icalparameter_set_cn(value: parameter, v: string): void
 function icalparameter_set_cutype(value: parameter, v: parameter_cutype): void
-function icalparameter_set_delegatedfrom(value: parameter, v: string | null): void
-function icalparameter_set_delegatedto(value: parameter, v: string | null): void
-function icalparameter_set_dir(value: parameter, v: string | null): void
+function icalparameter_set_delegatedfrom(value: parameter, v: string): void
+function icalparameter_set_delegatedto(value: parameter, v: string): void
+function icalparameter_set_dir(value: parameter, v: string): void
 function icalparameter_set_display(value: parameter, v: parameter_display): void
-function icalparameter_set_email(value: parameter, v: string | null): void
+function icalparameter_set_email(value: parameter, v: string): void
 function icalparameter_set_enable(value: parameter, v: parameter_enable): void
 function icalparameter_set_encoding(value: parameter, v: parameter_encoding): void
 function icalparameter_set_fbtype(value: parameter, v: parameter_fbtype): void
 function icalparameter_set_feature(value: parameter, v: parameter_feature): void
-function icalparameter_set_filename(value: parameter, v: string | null): void
-function icalparameter_set_fmttype(value: parameter, v: string | null): void
-function icalparameter_set_iana(value: parameter, v: string | null): void
-function icalparameter_set_iana_name(param: parameter, v: string | null): void
-function icalparameter_set_iana_value(param: parameter, v: string | null): void
-function icalparameter_set_id(value: parameter, v: string | null): void
-function icalparameter_set_label(value: parameter, v: string | null): void
-function icalparameter_set_language(value: parameter, v: string | null): void
-function icalparameter_set_latency(value: parameter, v: string | null): void
+function icalparameter_set_filename(value: parameter, v: string): void
+function icalparameter_set_fmttype(value: parameter, v: string): void
+function icalparameter_set_iana(value: parameter, v: string): void
+function icalparameter_set_iana_name(param: parameter, v: string): void
+function icalparameter_set_iana_value(param: parameter, v: string): void
+function icalparameter_set_id(value: parameter, v: string): void
+function icalparameter_set_label(value: parameter, v: string): void
+function icalparameter_set_language(value: parameter, v: string): void
+function icalparameter_set_latency(value: parameter, v: string): void
 function icalparameter_set_local(value: parameter, v: parameter_local): void
-function icalparameter_set_localize(value: parameter, v: string | null): void
-function icalparameter_set_managedid(value: parameter, v: string | null): void
-function icalparameter_set_member(value: parameter, v: string | null): void
-function icalparameter_set_modified(value: parameter, v: string | null): void
-function icalparameter_set_options(value: parameter, v: string | null): void
+function icalparameter_set_localize(value: parameter, v: string): void
+function icalparameter_set_managedid(value: parameter, v: string): void
+function icalparameter_set_member(value: parameter, v: string): void
+function icalparameter_set_modified(value: parameter, v: string): void
+function icalparameter_set_options(value: parameter, v: string): void
 function icalparameter_set_parent(param: parameter, property: property): void
 function icalparameter_set_partstat(value: parameter, v: parameter_partstat): void
 function icalparameter_set_patchaction(value: parameter, v: parameter_patchaction): void
-function icalparameter_set_publiccomment(value: parameter, v: string | null): void
+function icalparameter_set_publiccomment(value: parameter, v: string): void
 function icalparameter_set_range(value: parameter, v: parameter_range): void
-function icalparameter_set_reason(value: parameter, v: string | null): void
+function icalparameter_set_reason(value: parameter, v: string): void
 function icalparameter_set_related(value: parameter, v: parameter_related): void
 function icalparameter_set_reltype(value: parameter, v: parameter_reltype): void
 function icalparameter_set_required(value: parameter, v: parameter_required): void
@@ -1003,20 +1003,20 @@ function icalparameter_set_role(value: parameter, v: parameter_role): void
 function icalparameter_set_rsvp(value: parameter, v: parameter_rsvp): void
 function icalparameter_set_scheduleagent(value: parameter, v: parameter_scheduleagent): void
 function icalparameter_set_scheduleforcesend(value: parameter, v: parameter_scheduleforcesend): void
-function icalparameter_set_schedulestatus(value: parameter, v: string | null): void
-function icalparameter_set_sentby(value: parameter, v: string | null): void
-function icalparameter_set_size(value: parameter, v: string | null): void
+function icalparameter_set_schedulestatus(value: parameter, v: string): void
+function icalparameter_set_sentby(value: parameter, v: string): void
+function icalparameter_set_size(value: parameter, v: string): void
 function icalparameter_set_stayinformed(value: parameter, v: parameter_stayinformed): void
 function icalparameter_set_substate(value: parameter, v: parameter_substate): void
-function icalparameter_set_tzid(value: parameter, v: string | null): void
+function icalparameter_set_tzid(value: parameter, v: string): void
 function icalparameter_set_value(value: parameter, v: parameter_value): void
-function icalparameter_set_x(value: parameter, v: string | null): void
+function icalparameter_set_x(value: parameter, v: string): void
 function icalparameter_set_xliccomparetype(value: parameter, v: parameter_xliccomparetype): void
 function icalparameter_set_xlicerrortype(value: parameter, v: parameter_xlicerrortype): void
-function icalparameter_set_xname(param: parameter, v: string | null): void
-function icalparameter_set_xvalue(param: parameter, v: string | null): void
-function icalparameter_string_to_enum(str: string | null): number
-function icalparameter_string_to_kind(string: string | null): parameter_kind
+function icalparameter_set_xname(param: parameter, v: string): void
+function icalparameter_set_xvalue(param: parameter, v: string): void
+function icalparameter_string_to_enum(str: string): number
+function icalparameter_string_to_kind(string: string): parameter_kind
 function icalparameter_value_to_value_kind(value: parameter_value): value_kind
 function icalparser_free(parser: parser): void
 function icalparser_get_ctrl(): any | null
@@ -1024,53 +1024,53 @@ function icalparser_get_state(parser: parser): parser_state
 function icalparser_set_ctrl(ctrl: any | null): void
 function icalparser_set_gen_data(parser: parser, data: any | null): void
 function icalparser_string_line_generator(out: string | null, buf_size: number, d: any | null): string | null
-function icalperiodtype_as_ical_string(p: any | null): string | null
+function icalperiodtype_as_ical_string(p: any | null): string
 function icalperiodtype_as_ical_string_r(p: any | null): string | null
-function icalperiodtype_from_string(str: string | null): any | null
+function icalperiodtype_from_string(str: string): any | null
 function icalperiodtype_is_null_period(p: any | null): number
 function icalperiodtype_is_valid_period(p: any | null): number
 function icalperiodtype_null_period(): any | null
 function icalproperty_add_parameter(prop: property, parameter: parameter): void
-function icalproperty_as_ical_string(prop: property): string | null
+function icalproperty_as_ical_string(prop: property): string
 function icalproperty_as_ical_string_r(prop: property): string | null
 function icalproperty_count_parameters(prop: property): number
 function icalproperty_enum_belongs_to_property(kind: property_kind, e: number): number
-function icalproperty_enum_to_string(e: number): string | null
+function icalproperty_enum_to_string(e: number): string
 function icalproperty_enum_to_string_r(e: number): string | null
 function icalproperty_free(prop: property): void
-function icalproperty_get_acceptresponse(prop: property): string | null
+function icalproperty_get_acceptresponse(prop: property): string
 function icalproperty_get_acknowledged(prop: property): any | null
 function icalproperty_get_action(prop: property): any | null
-function icalproperty_get_allowconflict(prop: property): string | null
-function icalproperty_get_attendee(prop: property): string | null
+function icalproperty_get_allowconflict(prop: property): string
+function icalproperty_get_attendee(prop: property): string
 function icalproperty_get_busytype(prop: property): any | null
-function icalproperty_get_calid(prop: property): string | null
-function icalproperty_get_calmaster(prop: property): string | null
-function icalproperty_get_calscale(prop: property): string | null
-function icalproperty_get_capversion(prop: property): string | null
-function icalproperty_get_carid(prop: property): string | null
+function icalproperty_get_calid(prop: property): string
+function icalproperty_get_calmaster(prop: property): string
+function icalproperty_get_calscale(prop: property): string
+function icalproperty_get_capversion(prop: property): string
+function icalproperty_get_carid(prop: property): string
 function icalproperty_get_carlevel(prop: property): any | null
-function icalproperty_get_categories(prop: property): string | null
+function icalproperty_get_categories(prop: property): string
 function icalproperty_get_class(prop: property): any | null
 function icalproperty_get_cmd(prop: property): any | null
-function icalproperty_get_color(prop: property): string | null
-function icalproperty_get_comment(prop: property): string | null
+function icalproperty_get_color(prop: property): string
+function icalproperty_get_comment(prop: property): string
 function icalproperty_get_completed(prop: property): any | null
-function icalproperty_get_components(prop: property): string | null
-function icalproperty_get_conference(prop: property): string | null
-function icalproperty_get_contact(prop: property): string | null
+function icalproperty_get_components(prop: property): string
+function icalproperty_get_conference(prop: property): string
+function icalproperty_get_contact(prop: property): string
 function icalproperty_get_created(prop: property): any | null
-function icalproperty_get_csid(prop: property): string | null
+function icalproperty_get_csid(prop: property): string
 function icalproperty_get_datemax(prop: property): any | null
 function icalproperty_get_datemin(prop: property): any | null
 function icalproperty_get_datetime_with_component(prop: property, comp: component): any | null
-function icalproperty_get_decreed(prop: property): string | null
-function icalproperty_get_defaultcharset(prop: property): string | null
-function icalproperty_get_defaultlocale(prop: property): string | null
-function icalproperty_get_defaulttzid(prop: property): string | null
-function icalproperty_get_defaultvcars(prop: property): string | null
-function icalproperty_get_deny(prop: property): string | null
-function icalproperty_get_description(prop: property): string | null
+function icalproperty_get_decreed(prop: property): string
+function icalproperty_get_defaultcharset(prop: property): string
+function icalproperty_get_defaultlocale(prop: property): string
+function icalproperty_get_defaulttzid(prop: property): string
+function icalproperty_get_defaultvcars(prop: property): string
+function icalproperty_get_deny(prop: property): string
+function icalproperty_get_description(prop: property): string
 function icalproperty_get_dtend(prop: property): any | null
 function icalproperty_get_dtstamp(prop: property): any | null
 function icalproperty_get_dtstart(prop: property): any | null
@@ -1082,141 +1082,141 @@ function icalproperty_get_expand(prop: property): number
 function icalproperty_get_exrule(prop: property): any | null
 function icalproperty_get_freebusy(prop: property): any | null
 function icalproperty_get_geo(prop: property): any | null
-function icalproperty_get_grant(prop: property): string | null
-function icalproperty_get_itipversion(prop: property): string | null
+function icalproperty_get_grant(prop: property): string
+function icalproperty_get_itipversion(prop: property): string
 function icalproperty_get_lastmodified(prop: property): any | null
-function icalproperty_get_location(prop: property): string | null
+function icalproperty_get_location(prop: property): string
 function icalproperty_get_maxcomponentsize(prop: property): number
 function icalproperty_get_maxdate(prop: property): any | null
 function icalproperty_get_maxresults(prop: property): number
 function icalproperty_get_maxresultssize(prop: property): number
 function icalproperty_get_method(prop: property): any | null
 function icalproperty_get_mindate(prop: property): any | null
-function icalproperty_get_multipart(prop: property): string | null
-function icalproperty_get_name(prop: property): string | null
-function icalproperty_get_organizer(prop: property): string | null
-function icalproperty_get_owner(prop: property): string | null
-function icalproperty_get_parameter_as_string(prop: property, name: string | null): string | null
-function icalproperty_get_parameter_as_string_r(prop: property, name: string | null): string | null
-function icalproperty_get_patchdelete(prop: property): string | null
+function icalproperty_get_multipart(prop: property): string
+function icalproperty_get_name(prop: property): string
+function icalproperty_get_organizer(prop: property): string
+function icalproperty_get_owner(prop: property): string
+function icalproperty_get_parameter_as_string(prop: property, name: string): string
+function icalproperty_get_parameter_as_string_r(prop: property, name: string): string | null
+function icalproperty_get_patchdelete(prop: property): string
 function icalproperty_get_patchorder(prop: property): number
-function icalproperty_get_patchparameter(prop: property): string | null
-function icalproperty_get_patchtarget(prop: property): string | null
-function icalproperty_get_patchversion(prop: property): string | null
+function icalproperty_get_patchparameter(prop: property): string
+function icalproperty_get_patchtarget(prop: property): string
+function icalproperty_get_patchversion(prop: property): string
 function icalproperty_get_percentcomplete(prop: property): number
-function icalproperty_get_permission(prop: property): string | null
+function icalproperty_get_permission(prop: property): string
 function icalproperty_get_pollcompletion(prop: property): any | null
 function icalproperty_get_pollitemid(prop: property): number
 function icalproperty_get_pollmode(prop: property): any | null
-function icalproperty_get_pollproperties(prop: property): string | null
+function icalproperty_get_pollproperties(prop: property): string
 function icalproperty_get_pollwinner(prop: property): number
 function icalproperty_get_priority(prop: property): number
-function icalproperty_get_prodid(prop: property): string | null
-function icalproperty_get_property_name(prop: property): string | null
+function icalproperty_get_prodid(prop: property): string
+function icalproperty_get_property_name(prop: property): string
 function icalproperty_get_property_name_r(prop: property): string | null
-function icalproperty_get_query(prop: property): string | null
-function icalproperty_get_queryid(prop: property): string | null
+function icalproperty_get_query(prop: property): string
+function icalproperty_get_queryid(prop: property): string
 function icalproperty_get_querylevel(prop: property): any | null
-function icalproperty_get_queryname(prop: property): string | null
+function icalproperty_get_queryname(prop: property): string
 function icalproperty_get_rdate(prop: property): any | null
-function icalproperty_get_recuraccepted(prop: property): string | null
-function icalproperty_get_recurexpand(prop: property): string | null
-function icalproperty_get_recurlimit(prop: property): string | null
+function icalproperty_get_recuraccepted(prop: property): string
+function icalproperty_get_recurexpand(prop: property): string
+function icalproperty_get_recurlimit(prop: property): string
 function icalproperty_get_recurrenceid(prop: property): any | null
 function icalproperty_get_refreshinterval(prop: property): any | null
-function icalproperty_get_relatedto(prop: property): string | null
-function icalproperty_get_relcalid(prop: property): string | null
+function icalproperty_get_relatedto(prop: property): string
+function icalproperty_get_relcalid(prop: property): string
 function icalproperty_get_repeat(prop: property): number
-function icalproperty_get_replyurl(prop: property): string | null
+function icalproperty_get_replyurl(prop: property): string
 function icalproperty_get_requeststatus(prop: property): any | null
-function icalproperty_get_resources(prop: property): string | null
+function icalproperty_get_resources(prop: property): string
 function icalproperty_get_response(prop: property): number
-function icalproperty_get_restriction(prop: property): string | null
+function icalproperty_get_restriction(prop: property): string
 function icalproperty_get_rrule(prop: property): any | null
-function icalproperty_get_scope(prop: property): string | null
+function icalproperty_get_scope(prop: property): string
 function icalproperty_get_sequence(prop: property): number
-function icalproperty_get_source(prop: property): string | null
+function icalproperty_get_source(prop: property): string
 function icalproperty_get_status(prop: property): any | null
-function icalproperty_get_storesexpanded(prop: property): string | null
-function icalproperty_get_summary(prop: property): string | null
-function icalproperty_get_target(prop: property): string | null
+function icalproperty_get_storesexpanded(prop: property): string
+function icalproperty_get_summary(prop: property): string
+function icalproperty_get_target(prop: property): string
 function icalproperty_get_taskmode(prop: property): any | null
 function icalproperty_get_transp(prop: property): any | null
 function icalproperty_get_trigger(prop: property): any | null
-function icalproperty_get_tzid(prop: property): string | null
-function icalproperty_get_tzidaliasof(prop: property): string | null
-function icalproperty_get_tzname(prop: property): string | null
+function icalproperty_get_tzid(prop: property): string
+function icalproperty_get_tzidaliasof(prop: property): string
+function icalproperty_get_tzname(prop: property): string
 function icalproperty_get_tzoffsetfrom(prop: property): number
 function icalproperty_get_tzoffsetto(prop: property): number
 function icalproperty_get_tzuntil(prop: property): any | null
-function icalproperty_get_tzurl(prop: property): string | null
-function icalproperty_get_uid(prop: property): string | null
-function icalproperty_get_url(prop: property): string | null
-function icalproperty_get_value_as_string(prop: property): string | null
+function icalproperty_get_tzurl(prop: property): string
+function icalproperty_get_uid(prop: property): string
+function icalproperty_get_url(prop: property): string
+function icalproperty_get_value_as_string(prop: property): string
 function icalproperty_get_value_as_string_r(prop: property): string | null
-function icalproperty_get_version(prop: property): string | null
-function icalproperty_get_voter(prop: property): string | null
-function icalproperty_get_x(prop: property): string | null
-function icalproperty_get_x_name(prop: property): string | null
+function icalproperty_get_version(prop: property): string
+function icalproperty_get_voter(prop: property): string
+function icalproperty_get_x(prop: property): string
+function icalproperty_get_x_name(prop: property): string
 function icalproperty_get_xlicclass(prop: property): any | null
-function icalproperty_get_xlicclustercount(prop: property): string | null
-function icalproperty_get_xlicerror(prop: property): string | null
-function icalproperty_get_xlicmimecharset(prop: property): string | null
-function icalproperty_get_xlicmimecid(prop: property): string | null
-function icalproperty_get_xlicmimecontenttype(prop: property): string | null
-function icalproperty_get_xlicmimeencoding(prop: property): string | null
-function icalproperty_get_xlicmimefilename(prop: property): string | null
-function icalproperty_get_xlicmimeoptinfo(prop: property): string | null
+function icalproperty_get_xlicclustercount(prop: property): string
+function icalproperty_get_xlicerror(prop: property): string
+function icalproperty_get_xlicmimecharset(prop: property): string
+function icalproperty_get_xlicmimecid(prop: property): string
+function icalproperty_get_xlicmimecontenttype(prop: property): string
+function icalproperty_get_xlicmimeencoding(prop: property): string
+function icalproperty_get_xlicmimefilename(prop: property): string
+function icalproperty_get_xlicmimeoptinfo(prop: property): string
 function icalproperty_isa(property: property): property_kind
 function icalproperty_isa_property(property: any | null): number
-function icalproperty_kind_and_string_to_enum(kind: number, str: string | null): number
+function icalproperty_kind_and_string_to_enum(kind: number, str: string): number
 function icalproperty_kind_is_valid(kind: property_kind): number
-function icalproperty_kind_to_string(kind: property_kind): string | null
+function icalproperty_kind_to_string(kind: property_kind): string
 function icalproperty_kind_to_value_kind(kind: property_kind): value_kind
-function icalproperty_method_to_string(method: property_method): string | null
+function icalproperty_method_to_string(method: property_method): string
 function icalproperty_normalize(prop: property): void
 function icalproperty_recurrence_is_excluded(comp: component, dtstart: any | null, recurtime: any | null): number
 function icalproperty_remove_parameter_by_kind(prop: property, kind: parameter_kind): void
-function icalproperty_remove_parameter_by_name(prop: property, name: string | null): void
+function icalproperty_remove_parameter_by_name(prop: property, name: string): void
 /**
  * parameters
  * @param prop 
  * @param param 
  */
 function icalproperty_remove_parameter_by_ref(prop: property, param: parameter): void
-function icalproperty_set_acceptresponse(prop: property, v: string | null): void
+function icalproperty_set_acceptresponse(prop: property, v: string): void
 function icalproperty_set_acknowledged(prop: property, v: any | null): void
 function icalproperty_set_action(prop: property, v: any | null): void
-function icalproperty_set_allowconflict(prop: property, v: string | null): void
+function icalproperty_set_allowconflict(prop: property, v: string): void
 function icalproperty_set_attach(prop: property, v: attach): void
-function icalproperty_set_attendee(prop: property, v: string | null): void
+function icalproperty_set_attendee(prop: property, v: string): void
 function icalproperty_set_busytype(prop: property, v: any | null): void
-function icalproperty_set_calid(prop: property, v: string | null): void
-function icalproperty_set_calmaster(prop: property, v: string | null): void
-function icalproperty_set_calscale(prop: property, v: string | null): void
-function icalproperty_set_capversion(prop: property, v: string | null): void
-function icalproperty_set_carid(prop: property, v: string | null): void
+function icalproperty_set_calid(prop: property, v: string): void
+function icalproperty_set_calmaster(prop: property, v: string): void
+function icalproperty_set_calscale(prop: property, v: string): void
+function icalproperty_set_capversion(prop: property, v: string): void
+function icalproperty_set_carid(prop: property, v: string): void
 function icalproperty_set_carlevel(prop: property, v: any | null): void
-function icalproperty_set_categories(prop: property, v: string | null): void
+function icalproperty_set_categories(prop: property, v: string): void
 function icalproperty_set_class(prop: property, v: any | null): void
 function icalproperty_set_cmd(prop: property, v: any | null): void
-function icalproperty_set_color(prop: property, v: string | null): void
-function icalproperty_set_comment(prop: property, v: string | null): void
+function icalproperty_set_color(prop: property, v: string): void
+function icalproperty_set_comment(prop: property, v: string): void
 function icalproperty_set_completed(prop: property, v: any | null): void
-function icalproperty_set_components(prop: property, v: string | null): void
-function icalproperty_set_conference(prop: property, v: string | null): void
-function icalproperty_set_contact(prop: property, v: string | null): void
+function icalproperty_set_components(prop: property, v: string): void
+function icalproperty_set_conference(prop: property, v: string): void
+function icalproperty_set_contact(prop: property, v: string): void
 function icalproperty_set_created(prop: property, v: any | null): void
-function icalproperty_set_csid(prop: property, v: string | null): void
+function icalproperty_set_csid(prop: property, v: string): void
 function icalproperty_set_datemax(prop: property, v: any | null): void
 function icalproperty_set_datemin(prop: property, v: any | null): void
-function icalproperty_set_decreed(prop: property, v: string | null): void
-function icalproperty_set_defaultcharset(prop: property, v: string | null): void
-function icalproperty_set_defaultlocale(prop: property, v: string | null): void
-function icalproperty_set_defaulttzid(prop: property, v: string | null): void
-function icalproperty_set_defaultvcars(prop: property, v: string | null): void
-function icalproperty_set_deny(prop: property, v: string | null): void
-function icalproperty_set_description(prop: property, v: string | null): void
+function icalproperty_set_decreed(prop: property, v: string): void
+function icalproperty_set_defaultcharset(prop: property, v: string): void
+function icalproperty_set_defaultlocale(prop: property, v: string): void
+function icalproperty_set_defaulttzid(prop: property, v: string): void
+function icalproperty_set_defaultvcars(prop: property, v: string): void
+function icalproperty_set_deny(prop: property, v: string): void
+function icalproperty_set_description(prop: property, v: string): void
 function icalproperty_set_dtend(prop: property, v: any | null): void
 function icalproperty_set_dtstamp(prop: property, v: any | null): void
 function icalproperty_set_dtstart(prop: property, v: any | null): void
@@ -1228,123 +1228,123 @@ function icalproperty_set_expand(prop: property, v: number): void
 function icalproperty_set_exrule(prop: property, v: any | null): void
 function icalproperty_set_freebusy(prop: property, v: any | null): void
 function icalproperty_set_geo(prop: property, v: any | null): void
-function icalproperty_set_grant(prop: property, v: string | null): void
+function icalproperty_set_grant(prop: property, v: string): void
 function icalproperty_set_image(prop: property, v: attach): void
-function icalproperty_set_itipversion(prop: property, v: string | null): void
+function icalproperty_set_itipversion(prop: property, v: string): void
 function icalproperty_set_lastmodified(prop: property, v: any | null): void
-function icalproperty_set_location(prop: property, v: string | null): void
+function icalproperty_set_location(prop: property, v: string): void
 function icalproperty_set_maxcomponentsize(prop: property, v: number): void
 function icalproperty_set_maxdate(prop: property, v: any | null): void
 function icalproperty_set_maxresults(prop: property, v: number): void
 function icalproperty_set_maxresultssize(prop: property, v: number): void
 function icalproperty_set_method(prop: property, v: any | null): void
 function icalproperty_set_mindate(prop: property, v: any | null): void
-function icalproperty_set_multipart(prop: property, v: string | null): void
-function icalproperty_set_name(prop: property, v: string | null): void
-function icalproperty_set_organizer(prop: property, v: string | null): void
-function icalproperty_set_owner(prop: property, v: string | null): void
+function icalproperty_set_multipart(prop: property, v: string): void
+function icalproperty_set_name(prop: property, v: string): void
+function icalproperty_set_organizer(prop: property, v: string): void
+function icalproperty_set_owner(prop: property, v: string): void
 function icalproperty_set_parameter(prop: property, parameter: parameter): void
-function icalproperty_set_parameter_from_string(prop: property, name: string | null, value: string | null): void
+function icalproperty_set_parameter_from_string(prop: property, name: string, value: string): void
 function icalproperty_set_parent(property: property, component: component): void
-function icalproperty_set_patchdelete(prop: property, v: string | null): void
+function icalproperty_set_patchdelete(prop: property, v: string): void
 function icalproperty_set_patchorder(prop: property, v: number): void
-function icalproperty_set_patchparameter(prop: property, v: string | null): void
-function icalproperty_set_patchtarget(prop: property, v: string | null): void
-function icalproperty_set_patchversion(prop: property, v: string | null): void
+function icalproperty_set_patchparameter(prop: property, v: string): void
+function icalproperty_set_patchtarget(prop: property, v: string): void
+function icalproperty_set_patchversion(prop: property, v: string): void
 function icalproperty_set_percentcomplete(prop: property, v: number): void
-function icalproperty_set_permission(prop: property, v: string | null): void
+function icalproperty_set_permission(prop: property, v: string): void
 function icalproperty_set_pollcompletion(prop: property, v: any | null): void
 function icalproperty_set_pollitemid(prop: property, v: number): void
 function icalproperty_set_pollmode(prop: property, v: any | null): void
-function icalproperty_set_pollproperties(prop: property, v: string | null): void
+function icalproperty_set_pollproperties(prop: property, v: string): void
 function icalproperty_set_pollwinner(prop: property, v: number): void
 function icalproperty_set_priority(prop: property, v: number): void
-function icalproperty_set_prodid(prop: property, v: string | null): void
-function icalproperty_set_query(prop: property, v: string | null): void
-function icalproperty_set_queryid(prop: property, v: string | null): void
+function icalproperty_set_prodid(prop: property, v: string): void
+function icalproperty_set_query(prop: property, v: string): void
+function icalproperty_set_queryid(prop: property, v: string): void
 function icalproperty_set_querylevel(prop: property, v: any | null): void
-function icalproperty_set_queryname(prop: property, v: string | null): void
+function icalproperty_set_queryname(prop: property, v: string): void
 function icalproperty_set_rdate(prop: property, v: any | null): void
-function icalproperty_set_recuraccepted(prop: property, v: string | null): void
-function icalproperty_set_recurexpand(prop: property, v: string | null): void
-function icalproperty_set_recurlimit(prop: property, v: string | null): void
+function icalproperty_set_recuraccepted(prop: property, v: string): void
+function icalproperty_set_recurexpand(prop: property, v: string): void
+function icalproperty_set_recurlimit(prop: property, v: string): void
 function icalproperty_set_recurrenceid(prop: property, v: any | null): void
 function icalproperty_set_refreshinterval(prop: property, v: any | null): void
-function icalproperty_set_relatedto(prop: property, v: string | null): void
-function icalproperty_set_relcalid(prop: property, v: string | null): void
+function icalproperty_set_relatedto(prop: property, v: string): void
+function icalproperty_set_relcalid(prop: property, v: string): void
 function icalproperty_set_repeat(prop: property, v: number): void
-function icalproperty_set_replyurl(prop: property, v: string | null): void
+function icalproperty_set_replyurl(prop: property, v: string): void
 function icalproperty_set_requeststatus(prop: property, v: any | null): void
-function icalproperty_set_resources(prop: property, v: string | null): void
+function icalproperty_set_resources(prop: property, v: string): void
 function icalproperty_set_response(prop: property, v: number): void
-function icalproperty_set_restriction(prop: property, v: string | null): void
+function icalproperty_set_restriction(prop: property, v: string): void
 function icalproperty_set_rrule(prop: property, v: any | null): void
-function icalproperty_set_scope(prop: property, v: string | null): void
+function icalproperty_set_scope(prop: property, v: string): void
 function icalproperty_set_sequence(prop: property, v: number): void
-function icalproperty_set_source(prop: property, v: string | null): void
+function icalproperty_set_source(prop: property, v: string): void
 function icalproperty_set_status(prop: property, v: any | null): void
-function icalproperty_set_storesexpanded(prop: property, v: string | null): void
-function icalproperty_set_summary(prop: property, v: string | null): void
-function icalproperty_set_target(prop: property, v: string | null): void
+function icalproperty_set_storesexpanded(prop: property, v: string): void
+function icalproperty_set_summary(prop: property, v: string): void
+function icalproperty_set_target(prop: property, v: string): void
 function icalproperty_set_taskmode(prop: property, v: any | null): void
 function icalproperty_set_transp(prop: property, v: any | null): void
 function icalproperty_set_trigger(prop: property, v: any | null): void
-function icalproperty_set_tzid(prop: property, v: string | null): void
-function icalproperty_set_tzidaliasof(prop: property, v: string | null): void
-function icalproperty_set_tzname(prop: property, v: string | null): void
+function icalproperty_set_tzid(prop: property, v: string): void
+function icalproperty_set_tzidaliasof(prop: property, v: string): void
+function icalproperty_set_tzname(prop: property, v: string): void
 function icalproperty_set_tzoffsetfrom(prop: property, v: number): void
 function icalproperty_set_tzoffsetto(prop: property, v: number): void
 function icalproperty_set_tzuntil(prop: property, v: any | null): void
-function icalproperty_set_tzurl(prop: property, v: string | null): void
-function icalproperty_set_uid(prop: property, v: string | null): void
-function icalproperty_set_url(prop: property, v: string | null): void
+function icalproperty_set_tzurl(prop: property, v: string): void
+function icalproperty_set_uid(prop: property, v: string): void
+function icalproperty_set_url(prop: property, v: string): void
 function icalproperty_set_value(prop: property, value: value): void
-function icalproperty_set_value_from_string(prop: property, value: string | null, kind: string | null): void
-function icalproperty_set_version(prop: property, v: string | null): void
-function icalproperty_set_voter(prop: property, v: string | null): void
-function icalproperty_set_x(prop: property, v: string | null): void
-function icalproperty_set_x_name(prop: property, name: string | null): void
+function icalproperty_set_value_from_string(prop: property, value: string, kind: string): void
+function icalproperty_set_version(prop: property, v: string): void
+function icalproperty_set_voter(prop: property, v: string): void
+function icalproperty_set_x(prop: property, v: string): void
+function icalproperty_set_x_name(prop: property, name: string): void
 function icalproperty_set_xlicclass(prop: property, v: any | null): void
-function icalproperty_set_xlicclustercount(prop: property, v: string | null): void
-function icalproperty_set_xlicerror(prop: property, v: string | null): void
-function icalproperty_set_xlicmimecharset(prop: property, v: string | null): void
-function icalproperty_set_xlicmimecid(prop: property, v: string | null): void
-function icalproperty_set_xlicmimecontenttype(prop: property, v: string | null): void
-function icalproperty_set_xlicmimeencoding(prop: property, v: string | null): void
-function icalproperty_set_xlicmimefilename(prop: property, v: string | null): void
-function icalproperty_set_xlicmimeoptinfo(prop: property, v: string | null): void
-function icalproperty_status_to_string(arg0: property_status): string | null
-function icalproperty_string_to_kind(string: string | null): property_kind
-function icalproperty_string_to_method(str: string | null): property_method
-function icalproperty_string_to_status(string: string | null): property_status
+function icalproperty_set_xlicclustercount(prop: property, v: string): void
+function icalproperty_set_xlicerror(prop: property, v: string): void
+function icalproperty_set_xlicmimecharset(prop: property, v: string): void
+function icalproperty_set_xlicmimecid(prop: property, v: string): void
+function icalproperty_set_xlicmimecontenttype(prop: property, v: string): void
+function icalproperty_set_xlicmimeencoding(prop: property, v: string): void
+function icalproperty_set_xlicmimefilename(prop: property, v: string): void
+function icalproperty_set_xlicmimeoptinfo(prop: property, v: string): void
+function icalproperty_status_to_string(arg0: property_status): string
+function icalproperty_string_to_kind(string: string): property_kind
+function icalproperty_string_to_method(str: string): property_method
+function icalproperty_string_to_status(string: string): property_status
 function icalproperty_value_kind_to_kind(kind: value_kind): property_kind
-function icalrecur_expand_recurrence(rule: string | null, start: number, count: number, array: number): number
-function icalrecur_freq_to_string(kind: recurrencetype_frequency): string | null
+function icalrecur_expand_recurrence(rule: string, start: number, count: number, array: number): number
+function icalrecur_freq_to_string(kind: recurrencetype_frequency): string
 function icalrecur_iterator_free(arg0: recur_iterator): void
 function icalrecur_iterator_next(arg0: recur_iterator): any | null
 function icalrecur_iterator_set_start(impl: recur_iterator, start: any | null): number
-function icalrecur_skip_to_string(kind: recurrencetype_skip): string | null
-function icalrecur_string_to_freq(str: string | null): recurrencetype_frequency
-function icalrecur_string_to_skip(str: string | null): recurrencetype_skip
-function icalrecur_string_to_weekday(str: string | null): recurrencetype_weekday
-function icalrecur_weekday_to_string(kind: recurrencetype_weekday): string | null
+function icalrecur_skip_to_string(kind: recurrencetype_skip): string
+function icalrecur_string_to_freq(str: string): recurrencetype_frequency
+function icalrecur_string_to_skip(str: string): recurrencetype_skip
+function icalrecur_string_to_weekday(str: string): recurrencetype_weekday
+function icalrecur_weekday_to_string(kind: recurrencetype_weekday): string
 function icalrecurrencetype_as_string(recur: any | null): string | null
 function icalrecurrencetype_as_string_r(recur: any | null): string | null
 function icalrecurrencetype_clear(r: any | null): void
 function icalrecurrencetype_day_day_of_week(day: number): any | null
 function icalrecurrencetype_day_position(day: number): number
-function icalrecurrencetype_from_string(str: string | null): any | null
+function icalrecurrencetype_from_string(str: string): any | null
 function icalrecurrencetype_month_is_leap(month: number): number
 function icalrecurrencetype_month_month(month: number): number
 function icalrecurrencetype_rscale_is_supported(): number
-function icalreqstattype_as_string(arg0: any | null): string | null
+function icalreqstattype_as_string(arg0: any | null): string
 function icalreqstattype_as_string_r(arg0: any | null): string | null
-function icalreqstattype_from_string(str: string | null): any | null
+function icalreqstattype_from_string(str: string): any | null
 function icalrestriction_check(comp: component): number
 function icalrestriction_compare(restr: restriction_kind, count: number): number
 function icaltime_add(t: any | null, d: any | null): any | null
 function icaltime_adjust(tt: any | null, days: number, hours: number, minutes: number, seconds: number): void
-function icaltime_as_ical_string(tt: any | null): string | null
+function icaltime_as_ical_string(tt: any | null): string
 function icaltime_as_ical_string_r(tt: any | null): string | null
 function icaltime_as_timet(arg0: any | null): number
 function icaltime_as_timet_with_zone(tt: any | null, zone: timezone): number
@@ -1419,10 +1419,10 @@ function icaltime_from_day_of_year(doy: number, year: number): any | null
  * ```
  * @param str 
  */
-function icaltime_from_string(str: string | null): any | null
+function icaltime_from_string(str: string): any | null
 function icaltime_from_timet_with_zone(tm: number, is_date: number, zone: timezone): any | null
 function icaltime_get_timezone(t: any | null): timezone
-function icaltime_get_tzid(t: any | null): string | null
+function icaltime_get_tzid(t: any | null): string
 function icaltime_is_date(t: any | null): number
 function icaltime_is_leap_year(year: number): number
 function icaltime_is_null_time(t: any | null): number
@@ -1447,38 +1447,38 @@ function icaltimezone_expand_vtimezone(comp: component, end_year: number, change
 function icaltimezone_free(zone: timezone, free_struct: number): void
 function icaltimezone_free_builtin_timezones(): void
 function icaltimezone_get_builtin_tzdata(): number
-function icaltimezone_get_display_name(zone: timezone): string | null
+function icaltimezone_get_display_name(zone: timezone): string
 function icaltimezone_get_latitude(zone: timezone): number
-function icaltimezone_get_location(zone: timezone): string | null
+function icaltimezone_get_location(zone: timezone): string
 function icaltimezone_get_location_from_vtimezone(component: component): string | null
 function icaltimezone_get_longitude(zone: timezone): number
-function icaltimezone_get_tzid(zone: timezone): string | null
-function icaltimezone_get_tznames(zone: timezone): string | null
+function icaltimezone_get_tzid(zone: timezone): string
+function icaltimezone_get_tznames(zone: timezone): string
 function icaltimezone_get_tznames_from_vtimezone(component: component): string | null
 function icaltimezone_get_utc_offset(zone: timezone, tt: any | null, is_daylight: number): number
 function icaltimezone_get_utc_offset_of_utc_time(zone: timezone, tt: any | null, is_daylight: number): number
 function icaltimezone_release_zone_tab(): void
 function icaltimezone_set_builtin_tzdata(set: number): void
 function icaltimezone_set_component(zone: timezone, comp: component): number
-function icaltimezone_set_tzid_prefix(new_prefix: string | null): void
+function icaltimezone_set_tzid_prefix(new_prefix: string): void
 function icaltimezone_truncate_vtimezone(vtz: component, start: timetype, end: timetype, ms_compatible: number): void
-function icaltimezone_tzid_prefix(): string | null
+function icaltimezone_tzid_prefix(): string
 function icaltriggertype_from_int(reltime: number): any | null
-function icaltriggertype_from_string(str: string | null): any | null
+function icaltriggertype_from_string(str: string): any | null
 function icaltriggertype_is_bad_trigger(tr: any | null): number
 function icaltriggertype_is_null_trigger(tr: any | null): number
-function icaltzutil_get_zone_directory(): string | null
-function icalvalue_as_ical_string(value: value): string | null
+function icaltzutil_get_zone_directory(): string
+function icalvalue_as_ical_string(value: value): string
 function icalvalue_as_ical_string_r(value: value): string | null
 function icalvalue_compare(a: value, b: value): parameter_xliccomparetype
-function icalvalue_decode_ical_string(szText: string | null, szDecText: string | null, nMaxBufferLen: number): number
-function icalvalue_encode_ical_string(szText: string | null, szEncText: string | null, MaxBufferLen: number): number
+function icalvalue_decode_ical_string(szText: string, szDecText: string | null, nMaxBufferLen: number): number
+function icalvalue_encode_ical_string(szText: string, szEncText: string | null, MaxBufferLen: number): number
 function icalvalue_free(value: value): void
 function icalvalue_get_action(value: value): any | null
-function icalvalue_get_binary(value: value): string | null
+function icalvalue_get_binary(value: value): string
 function icalvalue_get_boolean(value: value): number
 function icalvalue_get_busytype(value: value): any | null
-function icalvalue_get_caladdress(value: value): string | null
+function icalvalue_get_caladdress(value: value): string
 function icalvalue_get_carlevel(value: value): any | null
 function icalvalue_get_class(value: value): any | null
 function icalvalue_get_cmd(value: value): any | null
@@ -1494,32 +1494,32 @@ function icalvalue_get_method(value: value): any | null
 function icalvalue_get_period(value: value): any | null
 function icalvalue_get_pollcompletion(value: value): any | null
 function icalvalue_get_pollmode(value: value): any | null
-function icalvalue_get_query(value: value): string | null
+function icalvalue_get_query(value: value): string
 function icalvalue_get_querylevel(value: value): any | null
 function icalvalue_get_recur(value: value): any | null
 function icalvalue_get_requeststatus(value: value): any | null
 function icalvalue_get_status(value: value): any | null
-function icalvalue_get_string(value: value): string | null
+function icalvalue_get_string(value: value): string
 function icalvalue_get_taskmode(value: value): any | null
-function icalvalue_get_text(value: value): string | null
+function icalvalue_get_text(value: value): string
 function icalvalue_get_transp(value: value): any | null
 function icalvalue_get_trigger(value: value): any | null
-function icalvalue_get_uri(value: value): string | null
+function icalvalue_get_uri(value: value): string
 function icalvalue_get_utcoffset(value: value): number
-function icalvalue_get_x(value: value): string | null
+function icalvalue_get_x(value: value): string
 function icalvalue_get_xlicclass(value: value): any | null
 function icalvalue_is_valid(value: value): number
 function icalvalue_isa(value: value): value_kind
 function icalvalue_isa_value(arg0: any | null): number
 function icalvalue_kind_is_valid(kind: value_kind): number
-function icalvalue_kind_to_string(kind: value_kind): string | null
+function icalvalue_kind_to_string(kind: value_kind): string
 function icalvalue_reset_kind(value: value): void
 function icalvalue_set_action(value: value, v: any | null): void
 function icalvalue_set_attach(value: value, attach: attach): void
-function icalvalue_set_binary(value: value, v: string | null): void
+function icalvalue_set_binary(value: value, v: string): void
 function icalvalue_set_boolean(value: value, v: number): void
 function icalvalue_set_busytype(value: value, v: any | null): void
-function icalvalue_set_caladdress(value: value, v: string | null): void
+function icalvalue_set_caladdress(value: value, v: string): void
 function icalvalue_set_carlevel(value: value, v: any | null): void
 function icalvalue_set_class(value: value, v: any | null): void
 function icalvalue_set_cmd(value: value, v: any | null): void
@@ -1536,21 +1536,21 @@ function icalvalue_set_parent(value: value, property: property): void
 function icalvalue_set_period(value: value, v: any | null): void
 function icalvalue_set_pollcompletion(value: value, v: any | null): void
 function icalvalue_set_pollmode(value: value, v: any | null): void
-function icalvalue_set_query(value: value, v: string | null): void
+function icalvalue_set_query(value: value, v: string): void
 function icalvalue_set_querylevel(value: value, v: any | null): void
 function icalvalue_set_recur(value: value, v: any | null): void
 function icalvalue_set_requeststatus(value: value, v: any | null): void
 function icalvalue_set_status(value: value, v: any | null): void
-function icalvalue_set_string(value: value, v: string | null): void
+function icalvalue_set_string(value: value, v: string): void
 function icalvalue_set_taskmode(value: value, v: any | null): void
-function icalvalue_set_text(value: value, v: string | null): void
+function icalvalue_set_text(value: value, v: string): void
 function icalvalue_set_transp(value: value, v: any | null): void
 function icalvalue_set_trigger(value: value, v: any | null): void
-function icalvalue_set_uri(value: value, v: string | null): void
+function icalvalue_set_uri(value: value, v: string): void
 function icalvalue_set_utcoffset(value: value, v: number): void
-function icalvalue_set_x(value: value, v: string | null): void
+function icalvalue_set_x(value: value, v: string): void
 function icalvalue_set_xlicclass(value: value, v: any | null): void
-function icalvalue_string_to_kind(str: string | null): value_kind
+function icalvalue_string_to_kind(str: string): value_kind
 function print_date_to_string(str: string | null, data: any | null): void
 function print_datetime_to_string(str: string | null, data: any | null): void
 function pvl_clear(arg0: pvl_list): void
@@ -1565,13 +1565,13 @@ function pvl_remove(arg0: pvl_list, arg1: pvl_elem): any | null
 function pvl_shift(l: pvl_list): any | null
 function pvl_unshift(l: pvl_list, d: any | null): void
 function set_unknown_token_handling_setting(newSetting: _unknown_token_handling): void
-function set_zone_directory(path: string | null): void
-function sspm_encoding_string(type: any | null): string | null
+function set_zone_directory(path: string): void
+function sspm_encoding_string(type: any | null): string
 function sspm_free_parts(parts: any | null, max_parts: number): void
-function sspm_major_type_string(type: any | null): string | null
-function sspm_minor_type_string(type: any | null): string | null
+function sspm_major_type_string(type: any | null): string
+function sspm_minor_type_string(type: any | null): string
 function sspm_parse_mime(parts: any | null, max_parts: number, actions: any | null, get_string: any | null, get_string_data: any | null, first_header: any | null): number
-function sspm_write_mime(parts: any | null, num_parts: number, output_string: string | null, header: string | null): number
+function sspm_write_mime(parts: any | null, num_parts: number, output_string: string | null, header: string): number
 interface icalattach_free_fn_t {
     (data: string | null): void
 }
@@ -1816,8 +1816,8 @@ interface reqstattype {
     // Own fields of ICal-3.0.ICal.reqstattype
 
     code: requeststatus
-    desc: string | null
-    debug: string | null
+    desc: string
+    debug: string
 }
 
 class reqstattype {
@@ -1834,7 +1834,7 @@ interface sspm_action_map {
     major: any
     minor: any
     new_part: () => any
-    add_line: (part: any, header: any, line: string | null, size: number) => void
+    add_line: (part: any, header: any, line: string, size: number) => void
     end_part: (part: any) => any
     free_part: (part: any) => void
 }
@@ -1940,14 +1940,14 @@ interface timezonephase {
 
     // Own fields of ICal-3.0.ICal.timezonephase
 
-    tzname: string | null
+    tzname: string
     is_stdandard: number
     dtstart: any
     offsetto: number
     tzoffsetfrom: number
-    comment: string | null
+    comment: string
     rdate: any
-    rrule: string | null
+    rrule: string
 }
 
 class timezonephase {
@@ -1961,9 +1961,9 @@ interface timezonetype {
 
     // Own fields of ICal-3.0.ICal.timezonetype
 
-    tzid: string | null
+    tzid: string
     last_mod: any
-    tzurl: string | null
+    tzurl: string
     phases: any
 }
 

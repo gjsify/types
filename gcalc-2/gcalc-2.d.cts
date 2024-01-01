@@ -531,13 +531,13 @@ export interface MathEquationManager extends GObject.Object {
 
     // Owm methods of GCalc-2.GCalc.MathEquationManager
 
-    find_variable(name: string | null): MathVariable
+    find_variable(name: string): MathVariable
     get_equations(): ExpressionContainer
     get_functions(): ExpressionContainer
 
     // Own virtual methods of GCalc-2.GCalc.MathEquationManager
 
-    vfunc_find_variable(name: string | null): MathVariable
+    vfunc_find_variable(name: string): MathVariable
     vfunc_get_equations(): ExpressionContainer
     vfunc_get_functions(): ExpressionContainer
 
@@ -585,11 +585,11 @@ export interface MathErrorResult extends GObject.Object, MathResult {
 
     // Owm methods of GCalc-2.GCalc.MathErrorResult
 
-    get_message(): string | null
+    get_message(): string
 
     // Own virtual methods of GCalc-2.GCalc.MathErrorResult
 
-    vfunc_get_message(): string | null
+    vfunc_get_message(): string
 
     // Class property signals of GCalc-2.GCalc.MathErrorResult
 
@@ -713,8 +713,8 @@ export interface MathFunction extends GObject.Object, MathExpression {
     evaluate(): MathExpression
     verify_params(): boolean
     get_param_types(): ExpressionContainer
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_n_params(): number
     set_n_params(value: number): void
     get_closed(): boolean
@@ -725,8 +725,8 @@ export interface MathFunction extends GObject.Object, MathExpression {
     vfunc_evaluate(): MathExpression
     vfunc_verify_params(): boolean
     vfunc_get_param_types(): ExpressionContainer
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_n_params(): number
     vfunc_set_n_params(value: number): void
     vfunc_get_closed(): boolean
@@ -1274,8 +1274,8 @@ export interface MathVariable extends GObject.Object, MathExpression {
     // Owm methods of GCalc-2.GCalc.MathVariable
 
     evaluate(): MathExpression
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_value(): MathConstant
     set_value(value: MathConstant): void
     get_bind(): MathVariable
@@ -1285,8 +1285,8 @@ export interface MathVariable extends GObject.Object, MathExpression {
     // Own virtual methods of GCalc-2.GCalc.MathVariable
 
     vfunc_evaluate(): MathExpression
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_value(): MathConstant
     vfunc_set_value(value: MathConstant): void
     vfunc_get_bind(): MathVariable
@@ -1644,8 +1644,8 @@ export class ErrorResult extends GObject.Object {
     // Constructors of GCalc-2.GCalc.ErrorResult
 
     constructor(config?: ErrorResult.ConstructorProperties) 
-    constructor(msg: string | null) 
-    static new(msg: string | null): ErrorResult
+    constructor(msg: string) 
+    static new(msg: string): ErrorResult
     _init(config?: ErrorResult.ConstructorProperties): void
 }
 
@@ -1765,7 +1765,7 @@ export interface ExpressionContainer extends Gio.ListModel {
 
     get_object(position: number): GObject.Object | null
     find(exp: MathExpression): MathExpression | null
-    find_named(name: string | null): MathExpression | null
+    find_named(name: string): MathExpression | null
     get_parent(): MathExpression
     set_parent(value: MathExpression): void
 
@@ -1908,7 +1908,7 @@ export interface ExpressionHashMap {
     // Overloads of remove
 
     remove(key: any): [ /* returnType */ boolean, /* value */ any ]
-    find_named(name: string | null): MathExpression | null
+    find_named(name: string): MathExpression | null
     get_parent(): MathExpression
     set_parent(value: MathExpression): void
 
@@ -2033,7 +2033,7 @@ export class Function extends Expression {
     // Constructors of GCalc-2.GCalc.Function
 
     constructor(config?: Function.ConstructorProperties) 
-    static with_name(name: string | null, nparams: number): Function
+    static with_name(name: string, nparams: number): Function
     constructor() 
     static new(): Function
 
@@ -2837,8 +2837,8 @@ export class Parameter extends Variable {
     // Constructors of GCalc-2.GCalc.Parameter
 
     constructor(config?: Parameter.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): Parameter
+    constructor(name: string) 
+    static new(name: string): Parameter
 
     // Overloads of new
 
@@ -2859,7 +2859,7 @@ export interface Parser {
 
     // Owm methods of GCalc-2.GCalc.Parser
 
-    parse(str: string | null, eqman: MathEquationManager): void
+    parse(str: string, eqman: MathEquationManager): void
     read_token(): ParserTokenType
     token_to_string(): string | null
 
@@ -3078,8 +3078,8 @@ export interface Solver {
 
     // Owm methods of GCalc-2.GCalc.Solver
 
-    add_expression(exp: string | null): void
-    solve(str: string | null): MathResult
+    add_expression(exp: string): void
+    solve(str: string): MathResult
     get_equation_manager(): MathEquationManager
     set_equation_manager(value: MathEquationManager): void
 
@@ -4172,7 +4172,7 @@ export interface MathEquationManagerIface {
 
     // Own fields of GCalc-2.GCalc.MathEquationManagerIface
 
-    find_variable: (self: MathEquationManager, name: string | null) => MathVariable
+    find_variable: (self: MathEquationManager, name: string) => MathVariable
     get_equations: (self: MathEquationManager) => ExpressionContainer
     get_functions: (self: MathEquationManager) => ExpressionContainer
 }
@@ -4188,7 +4188,7 @@ export interface MathErrorResultIface {
 
     // Own fields of GCalc-2.GCalc.MathErrorResultIface
 
-    get_message: (self: MathErrorResult) => string | null
+    get_message: (self: MathErrorResult) => string
 }
 
 export abstract class MathErrorResultIface {
@@ -4223,8 +4223,8 @@ export interface MathFunctionIface {
     evaluate: (self: MathFunction) => MathExpression
     verify_params: (self: MathFunction) => boolean
     get_param_types: (self: MathFunction) => ExpressionContainer
-    get_name: (self: MathFunction) => string | null
-    set_name: (self: MathFunction, value: string | null) => void
+    get_name: (self: MathFunction) => string
+    set_name: (self: MathFunction, value: string) => void
     get_n_params: (self: MathFunction) => number
     set_n_params: (self: MathFunction, value: number) => void
     get_closed: (self: MathFunction) => boolean
@@ -4370,8 +4370,8 @@ export interface MathVariableIface {
     // Own fields of GCalc-2.GCalc.MathVariableIface
 
     evaluate: (self: MathVariable) => MathExpression
-    get_name: (self: MathVariable) => string | null
-    set_name: (self: MathVariable, value: string | null) => void
+    get_name: (self: MathVariable) => string
+    set_name: (self: MathVariable, value: string) => void
     get_value: (self: MathVariable) => MathConstant
     set_value: (self: MathVariable, value: MathConstant) => void
     get_bind: (self: MathVariable) => MathVariable

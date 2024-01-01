@@ -239,7 +239,7 @@ export interface Content {
      * likely that the content will be removed.
      * @param message error Message
      */
-    error(message: string | null): void
+    error(message: string): void
     /**
      * Provides a iterator that can be used to iterate through all of the src
      * pads that are are used to receive from a group of Telepathy handles.
@@ -258,14 +258,14 @@ export interface Content {
      * @param handle_count the numner of handles in `handles`
      * @param message The error message
      */
-    receiving_failed(handles: number, handle_count: number, message: string | null): void
+    receiving_failed(handles: number, handle_count: number, message: string): void
     /**
      * Informs the Connection Manager that sending has failed for this
      * content. This is a transient error and it may or not not end the Content
      * and the call.
      * @param message The error message
      */
-    sending_failed(message: string | null): void
+    sending_failed(message: string): void
 
     // Own signals of TelepathyFarstream-0.6.TelepathyFarstream.Content
 

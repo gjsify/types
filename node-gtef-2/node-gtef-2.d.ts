@@ -214,7 +214,7 @@ function menuItemGetLongDescription(menuItem: Gtk.MenuItem): string | null
  * @param item a #GtkMenuItem.
  * @param iconName an icon name.
  */
-function menuItemSetIconName(item: Gtk.MenuItem, iconName: string | null): void
+function menuItemSetIconName(item: Gtk.MenuItem, iconName: string): void
 /**
  * Sets the long description of `menu_item`. A possible use-case is to display it
  * in a #GtkStatusbar, or as a tooltip.
@@ -232,7 +232,7 @@ function menuItemSetLongDescription(menuItem: Gtk.MenuItem, longDescription: str
  * directory. See g_get_user_data_dir().
  * @param metadataPath the filename where the metadata is stored.
  */
-function metadataManagerInit(metadataPath: string | null): void
+function metadataManagerInit(metadataPath: string): void
 /**
  * This function saves synchronously metadata if they need to be saved, and
  * frees the internal data of the metadata manager.
@@ -272,7 +272,7 @@ interface ActionInfoCentralStore {
 
     // Owm methods of Gtef-2.Gtef.ActionInfoCentralStore
 
-    lookup(actionName: string | null): ActionInfo
+    lookup(actionName: string): ActionInfo
 
     // Class property signals of Gtef-2.Gtef.ActionInfoCentralStore
 
@@ -383,9 +383,9 @@ interface ActionInfoStore {
      * @param actionName an action name.
      * @returns a new #GtkMenuItem for @action_name.
      */
-    createMenuItem(actionName: string | null): Gtk.Widget
+    createMenuItem(actionName: string): Gtk.Widget
     getApplication(): Gtk.Application | null
-    lookup(actionName: string | null): ActionInfo
+    lookup(actionName: string): ActionInfo
 
     // Class property signals of Gtef-2.Gtef.ActionInfoStore
 
@@ -759,7 +759,7 @@ interface Buffer {
      * gtk_source_style_scheme_manager_get_default().
      * @param styleSchemeId the new value.
      */
-    setStyleSchemeId(styleSchemeId: string | null): void
+    setStyleSchemeId(styleSchemeId: string): void
 
     // Own virtual methods of Gtef-2.Gtef.Buffer
 
@@ -988,7 +988,7 @@ interface File {
      * released and can be used by a later untitled file.
      * @returns the @file short name.
      */
-    getShortName(): string | null
+    getShortName(): string
     /**
      * Returns whether the file has been deleted. If the
      * #GtefFile:location is %NULL, returns %FALSE.
@@ -1320,7 +1320,7 @@ interface FileMetadata {
      * @param key the name of the metadata.
      * @returns the value of the metadata, or %NULL if the metadata   doesn't exist. Free with g_free().
      */
-    get(key: string | null): string | null
+    get(key: string): string | null
     getFile(): File
     /**
      * Loads synchronously the metadata from #GtefFile:location. The loaded
@@ -1394,7 +1394,7 @@ interface FileMetadata {
      * @param key the name of the metadata.
      * @param value the value of the metadata, or %NULL to unset.
      */
-    set(key: string | null, value: string | null): void
+    set(key: string, value: string | null): void
 
     // Class property signals of Gtef-2.Gtef.FileMetadata
 
@@ -1938,12 +1938,12 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Adds a primary message.
      * @param primaryMsg a primary message.
      */
-    addPrimaryMessage(primaryMsg: string | null): void
+    addPrimaryMessage(primaryMsg: string): void
     /**
      * Adds a secondary message.
      * @param secondaryMsg a secondary message.
      */
-    addSecondaryMessage(secondaryMsg: string | null): void
+    addSecondaryMessage(secondaryMsg: string): void
 
     // Conflicting methods
 
@@ -1956,13 +1956,13 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1975,13 +1975,13 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1994,7 +1994,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2003,7 +2003,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2015,7 +2015,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2341,7 +2341,7 @@ class InfoBar extends Gtk.InfoBar {
      * @param secondaryMsg the secondary message, or %NULL.
      * @returns a new #GtefInfoBar.
      */
-    static newSimple(msgType: Gtk.MessageType, primaryMsg: string | null, secondaryMsg: string | null): InfoBar
+    static newSimple(msgType: Gtk.MessageType, primaryMsg: string, secondaryMsg: string | null): InfoBar
     _init(config?: InfoBar.ConstructorProperties): void
     /**
      * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
@@ -2503,13 +2503,13 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2522,13 +2522,13 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2541,7 +2541,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2550,7 +2550,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2562,7 +2562,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2968,13 +2968,13 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2987,13 +2987,13 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3006,7 +3006,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3015,7 +3015,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the #GdkWindow corresponding to an area of the text view;
      * possible windows include the overall widget window, child windows
@@ -3051,7 +3051,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3561,7 +3561,7 @@ interface ActionInfo {
      * Sets the action name, for example `"win.save"`.
      * @param actionName the action name.
      */
-    setActionName(actionName: string | null): void
+    setActionName(actionName: string): void
     setIconName(iconName: string | null): void
     setLabel(label: string | null): void
     setTooltip(tooltip: string | null): void
@@ -3628,28 +3628,28 @@ interface ActionInfoEntry {
      * the action name.
      * @field 
      */
-    actionName: string | null
+    actionName: string
     /**
      * the icon name, or %NULL.
      * @field 
      */
-    iconName: string | null
+    iconName: string
     /**
      * the label (i.e. a short description), or %NULL.
      * @field 
      */
-    label: string | null
+    label: string
     /**
      * the accelerator, in the format understood by gtk_accelerator_parse().
      * Or %NULL.
      * @field 
      */
-    accel: string | null
+    accel: string
     /**
      * the tooltip (i.e. a long description), or %NULL.
      * @field 
      */
-    tooltip: string | null
+    tooltip: string
 }
 
 /**
@@ -3770,12 +3770,12 @@ interface Encoding {
      * Gets the character set of the #GtefEncoding, such as "UTF-8" or "ISO-8859-1".
      * @returns the character set of the #GtefEncoding.
      */
-    getCharset(): string | null
+    getCharset(): string
     /**
      * Gets the name of the #GtefEncoding such as "Unicode" or "Western".
      * @returns the name of the #GtefEncoding.
      */
-    getName(): string | null
+    getName(): string
     isUtf8(): boolean
     /**
      * Returns the encoding name with the charset in parenthesis, for example
@@ -3800,7 +3800,7 @@ class Encoding {
      * @param charset a character set.
      * @returns the new #GtefEncoding. Free with gtef_encoding_free().
      */
-    constructor(charset: string | null) 
+    constructor(charset: string) 
     /**
      * Creates a new #GtefEncoding from a character set such as "UTF-8" or
      * "ISO-8859-1".
@@ -3808,7 +3808,7 @@ class Encoding {
      * @param charset a character set.
      * @returns the new #GtefEncoding. Free with gtef_encoding_free().
      */
-    static new(charset: string | null): Encoding
+    static new(charset: string): Encoding
     /**
      * Creates a new #GtefEncoding from the current locale, as returned by
      * g_get_charset().

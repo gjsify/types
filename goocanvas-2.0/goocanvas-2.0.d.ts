@@ -369,7 +369,7 @@ function cairo_matrix_free(matrix: cairo.Matrix): void
  * @param property_name the name of the child property to find
  * @returns the #GParamSpec of the  child property or %NULL if @class has no child property with that name.
  */
-function canvas_item_class_find_child_property(iclass: GObject.ObjectClass, property_name: string | null): GObject.ParamSpec
+function canvas_item_class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
 /**
  * This function is only intended to be used when implementing new canvas
  * items, specifically layout container items such as #GooCanvasTable.
@@ -399,7 +399,7 @@ function canvas_item_class_list_child_properties(iclass: GObject.ObjectClass): G
  * @param property_name the name of the child property to find
  * @returns The #GParamSpec of the child  property or %NULL if @class has no child property with that name.
  */
-function canvas_item_model_class_find_child_property(mclass: GObject.ObjectClass, property_name: string | null): GObject.ParamSpec
+function canvas_item_model_class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
 /**
  * This function is only intended to be used when implementing new canvas
  * item models, specifically layout container item models such as
@@ -656,7 +656,7 @@ interface CanvasItem {
      * @param property_name the name of the child property to get.
      * @param value a location to return the value.
      */
-    get_child_property(child: CanvasItem, property_name: string | null, value: any): void
+    get_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
      * Returns %TRUE if the item is static. Static items do not move or change
      * size when the canvas is scrolled or the scale changes.
@@ -848,7 +848,7 @@ interface CanvasItem {
      * @param property_name the name of the child property to set.
      * @param value the value to set the property to.
      */
-    set_child_property(child: CanvasItem, property_name: string | null, value: any): void
+    set_child_property(child: CanvasItem, property_name: string, value: any): void
     /**
      * Notifies the item that it is static. Static items do not move or change
      * size when the canvas is scrolled or the scale changes.
@@ -1317,7 +1317,7 @@ class CanvasItem extends GObject.Object {
      * @param property_name the name of the child property to find
      * @returns the #GParamSpec of the  child property or %NULL if @class has no child property with that name.
      */
-    static class_find_child_property(iclass: GObject.ObjectClass, property_name: string | null): GObject.ParamSpec
+    static class_find_child_property(iclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
      * This function is only intended to be used when implementing new canvas
      * items, specifically layout container items such as #GooCanvasTable.
@@ -1464,7 +1464,7 @@ interface CanvasItemModel {
      * @param property_name the name of the child property to get.
      * @param value a location to return the value.
      */
-    get_child_property(child: CanvasItemModel, property_name: string | null, value: any): void
+    get_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
      * Gets the number of children of the container.
      * @returns the number of children.
@@ -1553,7 +1553,7 @@ interface CanvasItemModel {
      * @param property_name the name of the child property to set.
      * @param value the value to set the property to.
      */
-    set_child_property(child: CanvasItemModel, property_name: string | null, value: any): void
+    set_child_property(child: CanvasItemModel, property_name: string, value: any): void
     /**
      * This function is only intended to be used when implementing new canvas
      * item models (specifically container models such as #GooCanvasGroupModel).
@@ -1790,7 +1790,7 @@ class CanvasItemModel extends GObject.Object {
      * @param property_name the name of the child property to find
      * @returns The #GParamSpec of the child  property or %NULL if @class has no child property with that name.
      */
-    static class_find_child_property(mclass: GObject.ObjectClass, property_name: string | null): GObject.ParamSpec
+    static class_find_child_property(mclass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
      * This function is only intended to be used when implementing new canvas
      * item models, specifically layout container item models such as
@@ -2367,7 +2367,7 @@ interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2381,7 +2381,7 @@ interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2392,7 +2392,7 @@ interface Canvas extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GooCanvas-2.0.GooCanvas.Canvas
 
@@ -2757,7 +2757,7 @@ class Canvas extends Gtk.Container {
      * @param path_data the sequence of path commands, specified as a string using the  same syntax as in the <ulink url="http://www.w3.org/Graphics/SVG/">Scalable  Vector Graphics (SVG)</ulink> path element.
      * @returns a #GArray of #GooCanvasPathCommand elements.
      */
-    static parse_path_data(path_data: string | null): CanvasPathCommand[]
+    static parse_path_data(path_data: string): CanvasPathCommand[]
 }
 
 module CanvasAccessibleFactory {
@@ -6798,7 +6798,7 @@ interface CanvasStyle {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Sets the standard cairo fill options using the given style.
      * @param cr a cairo context.
@@ -6827,7 +6827,7 @@ interface CanvasStyle {
      * @param property_name the name of the property to set
      * @param value the value
      */
-    set_property(property_name: string | null, value: any): void
+    set_property(property_name: string, value: any): void
     /**
      * Sets the standard cairo stroke options using the given style.
      * @param cr a cairo context.

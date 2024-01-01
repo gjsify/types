@@ -272,7 +272,7 @@ function menu_shell_append_edit_actions(menu_shell: Gtk.MenuShell): void
  * directory. See g_get_user_data_dir().
  * @param metadata_path the filename where the metadata is stored.
  */
-function metadata_manager_init(metadata_path: string | null): void
+function metadata_manager_init(metadata_path: string): void
 /**
  * This function saves synchronously metadata if they need to be saved, and
  * frees the internal data of the metadata manager.
@@ -296,7 +296,7 @@ function utils_create_parent_directories(file: Gio.File, cancellable: Gio.Cancel
  * @param uri the uri to decode
  * @returns %TRUE if the uri could be properly decoded, %FALSE otherwise.
  */
-function utils_decode_uri(uri: string | null): [ /* returnType */ boolean, /* scheme */ string | null, /* user */ string | null, /* host */ string | null, /* port */ string | null, /* path */ string | null ]
+function utils_decode_uri(uri: string): [ /* returnType */ boolean, /* scheme */ string, /* user */ string, /* host */ string, /* port */ string, /* path */ string ]
 /**
  * Examples:
  * - "file.pdf" returns ".pdf".
@@ -307,7 +307,7 @@ function utils_decode_uri(uri: string | null): [ /* returnType */ boolean, /* sc
  * @param filename a filename.
  * @returns the @filename's extension with the dot, in lowercase. Free with g_free().
  */
-function utils_get_file_extension(filename: string | null): string | null
+function utils_get_file_extension(filename: string): string | null
 /**
  * Returns `filename` without its extension. With the “extension” having the same
  * definition as in tepl_utils_get_file_extension(); in other words it returns
@@ -315,21 +315,21 @@ function utils_get_file_extension(filename: string | null): string | null
  * @param filename a filename.
  * @returns the @filename without its extension. Free with g_free().
  */
-function utils_get_file_shortname(filename: string | null): string | null
+function utils_get_file_shortname(filename: string): string | null
 /**
  * Replaces the home directory with a tilde, if the home directory is present in
  * the `filename`.
  * @param filename the filename.
  * @returns the new filename. Free with g_free().
  */
-function utils_replace_home_dir_with_tilde(filename: string | null): string | null
+function utils_replace_home_dir_with_tilde(filename: string): string | null
 /**
  * Like tepl_utils_str_middle_truncate() but the “…” character is at the end.
  * @param str a UTF-8 string.
  * @param truncate_length truncate the string at that length, in UTF-8 characters   (not bytes).
  * @returns the truncated string. Free with g_free().
  */
-function utils_str_end_truncate(str: string | null, truncate_length: number): string | null
+function utils_str_end_truncate(str: string, truncate_length: number): string | null
 /**
  * If `str` is longer than `truncate_length,` then this function returns `str`
  * truncated in the middle with a “…” character. Otherwise it just returns a
@@ -338,7 +338,7 @@ function utils_str_end_truncate(str: string | null, truncate_length: number): st
  * @param truncate_length truncate the string at that length, in UTF-8 characters   (not bytes).
  * @returns the truncated string. Free with g_free().
  */
-function utils_str_middle_truncate(str: string | null, truncate_length: number): string | null
+function utils_str_middle_truncate(str: string, truncate_length: number): string | null
 /**
  * Replaces all occurences of `search` by `replacement`.
  * 
@@ -354,7 +354,7 @@ function utils_str_middle_truncate(str: string | null, truncate_length: number):
  * @param replacement the replacement string
  * @returns A newly allocated string with the replacements. Free with g_free().
  */
-function utils_str_replace(string: string | null, search: string | null, replacement: string | null): string | null
+function utils_str_replace(string: string, search: string, replacement: string): string | null
 module TabGroup {
 
     // Constructor properties interface
@@ -1097,7 +1097,7 @@ interface Buffer {
      * gtk_source_style_scheme_manager_get_default().
      * @param style_scheme_id the new value.
      */
-    set_style_scheme_id(style_scheme_id: string | null): void
+    set_style_scheme_id(style_scheme_id: string): void
 
     // Own virtual methods of Tepl-4.Tepl.Buffer
 
@@ -1308,7 +1308,7 @@ interface File {
      * released and can be used by a later untitled file.
      * @returns the @file short name.
      */
-    get_short_name(): string | null
+    get_short_name(): string
     /**
      * Returns whether the file has been deleted. If the
      * #TeplFile:location is %NULL, returns %FALSE.
@@ -1653,7 +1653,7 @@ interface FileMetadata {
      * @param key the name of the metadata.
      * @returns the value of the metadata, or %NULL if the metadata   doesn't exist. Free with g_free().
      */
-    get(key: string | null): string | null
+    get(key: string): string | null
     get_file(): File
     /**
      * Loads synchronously the metadata from #TeplFile:location. The loaded
@@ -1762,7 +1762,7 @@ interface FileMetadata {
      * @param key the name of the metadata.
      * @param value the value of the metadata, or %NULL to unset.
      */
-    set(key: string | null, value: string | null): void
+    set(key: string, value: string | null): void
 
     // Class property signals of Tepl-4.Tepl.FileMetadata
 
@@ -2260,12 +2260,12 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Adds a primary message.
      * @param primary_msg a primary message.
      */
-    add_primary_message(primary_msg: string | null): void
+    add_primary_message(primary_msg: string): void
     /**
      * Adds a secondary message.
      * @param secondary_msg a secondary message.
      */
-    add_secondary_message(secondary_msg: string | null): void
+    add_secondary_message(secondary_msg: string): void
     /**
      * Sets the desired orientation (horizontal or vertical) for the action area as
      * returned by gtk_info_bar_get_action_area(). The action area is where the
@@ -2294,7 +2294,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2308,7 +2308,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2319,7 +2319,7 @@ interface InfoBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-4.Tepl.InfoBar
 
@@ -2514,7 +2514,7 @@ class InfoBar extends Gtk.InfoBar {
      * @param secondary_msg the secondary message, or %NULL.
      * @returns a new #TeplInfoBar.
      */
-    static new_simple(msg_type: Gtk.MessageType, primary_msg: string | null, secondary_msg: string | null): InfoBar
+    static new_simple(msg_type: Gtk.MessageType, primary_msg: string, secondary_msg: string | null): InfoBar
     _init(config?: InfoBar.ConstructorProperties): void
     /**
      * Utility function to create a #GtkLabel suitable for a #GtkInfoBar. The
@@ -2700,7 +2700,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2714,7 +2714,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2725,7 +2725,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable, TabGroup {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-4.Tepl.Notebook
 
@@ -3057,7 +3057,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3071,7 +3071,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3082,7 +3082,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable, TabGr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Tepl-4.Tepl.Tab
 
@@ -3352,7 +3352,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3366,7 +3366,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3377,7 +3377,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Tepl-4.Tepl.TabLabel
 
@@ -3671,7 +3671,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3685,7 +3685,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3696,7 +3696,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Tepl-4.Tepl.View
 
@@ -4099,14 +4099,14 @@ interface Encoding {
      * Gets the character set of the #TeplEncoding, such as "UTF-8" or "ISO-8859-1".
      * @returns the character set of the #TeplEncoding.
      */
-    get_charset(): string | null
+    get_charset(): string
     /**
      * Gets the name of the #TeplEncoding such as "Unicode" or "Western". If the
      * charset is unknown by #TeplEncoding, "Unknown" is returned. The return value
      * is already translated by gettext.
      * @returns the name of the #TeplEncoding.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns whether `enc` is a UTF-8 encoding.
      * 
@@ -4143,7 +4143,7 @@ class Encoding {
      * @param charset a character set.
      * @returns the new #TeplEncoding. Free with tepl_encoding_free().
      */
-    constructor(charset: string | null) 
+    constructor(charset: string) 
     /**
      * Creates a new #TeplEncoding from a character set such as "UTF-8" or
      * "ISO-8859-1".
@@ -4154,7 +4154,7 @@ class Encoding {
      * @param charset a character set.
      * @returns the new #TeplEncoding. Free with tepl_encoding_free().
      */
-    static new(charset: string | null): Encoding
+    static new(charset: string): Encoding
     /**
      * Creates a new #TeplEncoding from the current locale, as returned by
      * g_get_charset().

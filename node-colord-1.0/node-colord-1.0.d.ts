@@ -537,106 +537,106 @@ enum IccLoadFlags {
     CHARACTERIZATION,
     ALL,
 }
-const CLIENT_PROPERTY_DAEMON_VERSION: string | null
-const CLIENT_PROPERTY_SYSTEM_MODEL: string | null
-const CLIENT_PROPERTY_SYSTEM_VENDOR: string | null
-const DEVICE_METADATA_OUTPUT_EDID_MD5: string | null
-const DEVICE_METADATA_OUTPUT_PRIORITY: string | null
-const DEVICE_METADATA_OUTPUT_PRIORITY_PRIMARY: string | null
-const DEVICE_METADATA_OUTPUT_PRIORITY_SECONDARY: string | null
-const DEVICE_METADATA_OWNER_CMDLINE: string | null
-const DEVICE_METADATA_XRANDR_NAME: string | null
-const DEVICE_PROPERTY_COLORSPACE: string | null
-const DEVICE_PROPERTY_CREATED: string | null
-const DEVICE_PROPERTY_EMBEDDED: string | null
-const DEVICE_PROPERTY_ENABLED: string | null
-const DEVICE_PROPERTY_FORMAT: string | null
-const DEVICE_PROPERTY_ID: string | null
-const DEVICE_PROPERTY_KIND: string | null
-const DEVICE_PROPERTY_METADATA: string | null
-const DEVICE_PROPERTY_MODE: string | null
-const DEVICE_PROPERTY_MODEL: string | null
-const DEVICE_PROPERTY_MODIFIED: string | null
-const DEVICE_PROPERTY_OWNER: string | null
-const DEVICE_PROPERTY_PROFILES: string | null
-const DEVICE_PROPERTY_PROFILING_INHIBITORS: string | null
-const DEVICE_PROPERTY_SCOPE: string | null
-const DEVICE_PROPERTY_SEAT: string | null
-const DEVICE_PROPERTY_SERIAL: string | null
-const DEVICE_PROPERTY_VENDOR: string | null
+const CLIENT_PROPERTY_DAEMON_VERSION: string
+const CLIENT_PROPERTY_SYSTEM_MODEL: string
+const CLIENT_PROPERTY_SYSTEM_VENDOR: string
+const DEVICE_METADATA_OUTPUT_EDID_MD5: string
+const DEVICE_METADATA_OUTPUT_PRIORITY: string
+const DEVICE_METADATA_OUTPUT_PRIORITY_PRIMARY: string
+const DEVICE_METADATA_OUTPUT_PRIORITY_SECONDARY: string
+const DEVICE_METADATA_OWNER_CMDLINE: string
+const DEVICE_METADATA_XRANDR_NAME: string
+const DEVICE_PROPERTY_COLORSPACE: string
+const DEVICE_PROPERTY_CREATED: string
+const DEVICE_PROPERTY_EMBEDDED: string
+const DEVICE_PROPERTY_ENABLED: string
+const DEVICE_PROPERTY_FORMAT: string
+const DEVICE_PROPERTY_ID: string
+const DEVICE_PROPERTY_KIND: string
+const DEVICE_PROPERTY_METADATA: string
+const DEVICE_PROPERTY_MODE: string
+const DEVICE_PROPERTY_MODEL: string
+const DEVICE_PROPERTY_MODIFIED: string
+const DEVICE_PROPERTY_OWNER: string
+const DEVICE_PROPERTY_PROFILES: string
+const DEVICE_PROPERTY_PROFILING_INHIBITORS: string
+const DEVICE_PROPERTY_SCOPE: string
+const DEVICE_PROPERTY_SEAT: string
+const DEVICE_PROPERTY_SERIAL: string
+const DEVICE_PROPERTY_VENDOR: string
 const PIXEL_FORMAT_ARGB32: number
 const PIXEL_FORMAT_BGRA32: number
 const PIXEL_FORMAT_CMYK32: number
 const PIXEL_FORMAT_RGB24: number
 const PIXEL_FORMAT_RGBA32: number
 const PIXEL_FORMAT_UNKNOWN: number
-const PROFILE_METADATA_ACCURACY_DE76_AVG: string | null
-const PROFILE_METADATA_ACCURACY_DE76_MAX: string | null
-const PROFILE_METADATA_ACCURACY_DE76_RMS: string | null
-const PROFILE_METADATA_CMF_BINARY: string | null
-const PROFILE_METADATA_CMF_PRODUCT: string | null
-const PROFILE_METADATA_CMF_VERSION: string | null
-const PROFILE_METADATA_CONNECTION_TYPE: string | null
-const PROFILE_METADATA_CONNECTION_TYPE_DISPLAYPORT: string | null
-const PROFILE_METADATA_CONNECTION_TYPE_DVI: string | null
-const PROFILE_METADATA_CONNECTION_TYPE_HDMI: string | null
-const PROFILE_METADATA_CONNECTION_TYPE_INTERNAL: string | null
-const PROFILE_METADATA_CONNECTION_TYPE_VGA: string | null
-const PROFILE_METADATA_DATA_SOURCE: string | null
-const PROFILE_METADATA_DATA_SOURCE_CALIB: string | null
-const PROFILE_METADATA_DATA_SOURCE_EDID: string | null
-const PROFILE_METADATA_DATA_SOURCE_STANDARD: string | null
-const PROFILE_METADATA_DATA_SOURCE_TEST: string | null
-const PROFILE_METADATA_EDID_MD5: string | null
-const PROFILE_METADATA_EDID_MNFT: string | null
-const PROFILE_METADATA_EDID_MODEL: string | null
-const PROFILE_METADATA_EDID_SERIAL: string | null
-const PROFILE_METADATA_EDID_VENDOR: string | null
-const PROFILE_METADATA_FILE_CHECKSUM: string | null
-const PROFILE_METADATA_LICENSE: string | null
-const PROFILE_METADATA_MAPPING_DEVICE_ID: string | null
-const PROFILE_METADATA_MAPPING_FORMAT: string | null
-const PROFILE_METADATA_MAPPING_QUALIFIER: string | null
-const PROFILE_METADATA_MEASUREMENT_DEVICE: string | null
-const PROFILE_METADATA_QUALITY: string | null
-const PROFILE_METADATA_QUALITY_HIGH: string | null
-const PROFILE_METADATA_QUALITY_LOW: string | null
-const PROFILE_METADATA_QUALITY_MEDIUM: string | null
-const PROFILE_METADATA_SCREEN_BRIGHTNESS: string | null
-const PROFILE_METADATA_SCREEN_SURFACE: string | null
-const PROFILE_METADATA_SCREEN_SURFACE_GLOSSY: string | null
-const PROFILE_METADATA_SCREEN_SURFACE_MATTE: string | null
-const PROFILE_METADATA_STANDARD_SPACE: string | null
-const PROFILE_PROPERTY_COLORSPACE: string | null
-const PROFILE_PROPERTY_CREATED: string | null
-const PROFILE_PROPERTY_FILENAME: string | null
-const PROFILE_PROPERTY_FORMAT: string | null
-const PROFILE_PROPERTY_HAS_VCGT: string | null
-const PROFILE_PROPERTY_ID: string | null
-const PROFILE_PROPERTY_IS_SYSTEM_WIDE: string | null
-const PROFILE_PROPERTY_KIND: string | null
-const PROFILE_PROPERTY_METADATA: string | null
-const PROFILE_PROPERTY_OWNER: string | null
-const PROFILE_PROPERTY_QUALIFIER: string | null
-const PROFILE_PROPERTY_SCOPE: string | null
-const PROFILE_PROPERTY_TITLE: string | null
-const PROFILE_PROPERTY_WARNINGS: string | null
-const SENSOR_METADATA_IMAGE_ATTACH: string | null
-const SENSOR_METADATA_IMAGE_CALIBRATE: string | null
-const SENSOR_METADATA_IMAGE_SCREEN: string | null
-const SENSOR_PROPERTY_CAPABILITIES: string | null
-const SENSOR_PROPERTY_EMBEDDED: string | null
-const SENSOR_PROPERTY_ID: string | null
-const SENSOR_PROPERTY_KIND: string | null
-const SENSOR_PROPERTY_LOCKED: string | null
-const SENSOR_PROPERTY_METADATA: string | null
-const SENSOR_PROPERTY_MODE: string | null
-const SENSOR_PROPERTY_MODEL: string | null
-const SENSOR_PROPERTY_NATIVE: string | null
-const SENSOR_PROPERTY_OPTIONS: string | null
-const SENSOR_PROPERTY_SERIAL: string | null
-const SENSOR_PROPERTY_STATE: string | null
-const SENSOR_PROPERTY_VENDOR: string | null
+const PROFILE_METADATA_ACCURACY_DE76_AVG: string
+const PROFILE_METADATA_ACCURACY_DE76_MAX: string
+const PROFILE_METADATA_ACCURACY_DE76_RMS: string
+const PROFILE_METADATA_CMF_BINARY: string
+const PROFILE_METADATA_CMF_PRODUCT: string
+const PROFILE_METADATA_CMF_VERSION: string
+const PROFILE_METADATA_CONNECTION_TYPE: string
+const PROFILE_METADATA_CONNECTION_TYPE_DISPLAYPORT: string
+const PROFILE_METADATA_CONNECTION_TYPE_DVI: string
+const PROFILE_METADATA_CONNECTION_TYPE_HDMI: string
+const PROFILE_METADATA_CONNECTION_TYPE_INTERNAL: string
+const PROFILE_METADATA_CONNECTION_TYPE_VGA: string
+const PROFILE_METADATA_DATA_SOURCE: string
+const PROFILE_METADATA_DATA_SOURCE_CALIB: string
+const PROFILE_METADATA_DATA_SOURCE_EDID: string
+const PROFILE_METADATA_DATA_SOURCE_STANDARD: string
+const PROFILE_METADATA_DATA_SOURCE_TEST: string
+const PROFILE_METADATA_EDID_MD5: string
+const PROFILE_METADATA_EDID_MNFT: string
+const PROFILE_METADATA_EDID_MODEL: string
+const PROFILE_METADATA_EDID_SERIAL: string
+const PROFILE_METADATA_EDID_VENDOR: string
+const PROFILE_METADATA_FILE_CHECKSUM: string
+const PROFILE_METADATA_LICENSE: string
+const PROFILE_METADATA_MAPPING_DEVICE_ID: string
+const PROFILE_METADATA_MAPPING_FORMAT: string
+const PROFILE_METADATA_MAPPING_QUALIFIER: string
+const PROFILE_METADATA_MEASUREMENT_DEVICE: string
+const PROFILE_METADATA_QUALITY: string
+const PROFILE_METADATA_QUALITY_HIGH: string
+const PROFILE_METADATA_QUALITY_LOW: string
+const PROFILE_METADATA_QUALITY_MEDIUM: string
+const PROFILE_METADATA_SCREEN_BRIGHTNESS: string
+const PROFILE_METADATA_SCREEN_SURFACE: string
+const PROFILE_METADATA_SCREEN_SURFACE_GLOSSY: string
+const PROFILE_METADATA_SCREEN_SURFACE_MATTE: string
+const PROFILE_METADATA_STANDARD_SPACE: string
+const PROFILE_PROPERTY_COLORSPACE: string
+const PROFILE_PROPERTY_CREATED: string
+const PROFILE_PROPERTY_FILENAME: string
+const PROFILE_PROPERTY_FORMAT: string
+const PROFILE_PROPERTY_HAS_VCGT: string
+const PROFILE_PROPERTY_ID: string
+const PROFILE_PROPERTY_IS_SYSTEM_WIDE: string
+const PROFILE_PROPERTY_KIND: string
+const PROFILE_PROPERTY_METADATA: string
+const PROFILE_PROPERTY_OWNER: string
+const PROFILE_PROPERTY_QUALIFIER: string
+const PROFILE_PROPERTY_SCOPE: string
+const PROFILE_PROPERTY_TITLE: string
+const PROFILE_PROPERTY_WARNINGS: string
+const SENSOR_METADATA_IMAGE_ATTACH: string
+const SENSOR_METADATA_IMAGE_CALIBRATE: string
+const SENSOR_METADATA_IMAGE_SCREEN: string
+const SENSOR_PROPERTY_CAPABILITIES: string
+const SENSOR_PROPERTY_EMBEDDED: string
+const SENSOR_PROPERTY_ID: string
+const SENSOR_PROPERTY_KIND: string
+const SENSOR_PROPERTY_LOCKED: string
+const SENSOR_PROPERTY_METADATA: string
+const SENSOR_PROPERTY_MODE: string
+const SENSOR_PROPERTY_MODEL: string
+const SENSOR_PROPERTY_NATIVE: string
+const SENSOR_PROPERTY_OPTIONS: string
+const SENSOR_PROPERTY_SERIAL: string
+const SENSOR_PROPERTY_STATE: string
+const SENSOR_PROPERTY_VENDOR: string
 /**
  * Get the blackbody color for a specific temperature. If the temperature
  * range is outside 1000K to 10000K then the result is clipped.
@@ -680,8 +680,8 @@ function colorRgbArrayIsMonotonic(array: ColorRGB[]): boolean
  * @returns New array
  */
 function colorRgbArrayNew(): ColorRGB[]
-function colorspaceFromString(colorspace: string | null): Colorspace
-function colorspaceToString(colorspace: Colorspace): string | null
+function colorspaceFromString(colorspace: string): Colorspace
+function colorspaceToString(colorspace: Colorspace): string
 /**
  * Clears a matrix value, setting all it's values to zero.
  * @param src the source
@@ -778,24 +778,24 @@ function mat33ToString(src: Mat3x3): string | null
  * @param vecDest the destination vector
  */
 function mat33VectorMultiply(matSrc: Mat3x3, vecSrc: Vec3, vecDest: Vec3): void
-function objectScopeFromString(objectScope: string | null): ObjectScope
-function objectScopeToString(objectScope: ObjectScope): string | null
-function pixelFormatFromString(pixelFormat: string | null): PixelFormat
-function pixelFormatToString(pixelFormat: PixelFormat): string | null
-function renderingIntentFromString(renderingIntent: string | null): RenderingIntent
-function renderingIntentToString(renderingIntent: RenderingIntent): string | null
+function objectScopeFromString(objectScope: string): ObjectScope
+function objectScopeToString(objectScope: ObjectScope): string
+function pixelFormatFromString(pixelFormat: string): PixelFormat
+function pixelFormatToString(pixelFormat: PixelFormat): string
+function renderingIntentFromString(renderingIntent: string): RenderingIntent
+function renderingIntentToString(renderingIntent: RenderingIntent): string
 /**
  * Gets the standard colorspace as a enumerated value.
  * @param standardSpace the standard colorspace, e.g. 'srgb'.
  * @returns a #CdStandardSpace
  */
-function standardSpaceFromString(standardSpace: string | null): StandardSpace
+function standardSpaceFromString(standardSpace: string): StandardSpace
 /**
  * Gets the standard colorspace as a string.
  * @param standardSpace a #CdStandardSpace
  * @returns the standard colorspace, e.g. 'srgb'.
  */
-function standardSpaceToString(standardSpace: StandardSpace): string | null
+function standardSpaceToString(standardSpace: StandardSpace): string
 module Client {
 
     // Signal callback interfaces
@@ -935,7 +935,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    createDevice(id: string | null, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createDevice(id: string, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -953,7 +953,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @returns A #CdDevice object, or %NULL for error
      */
-    createDeviceSync(id: string | null, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null): Device
+    createDeviceSync(id: string, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null): Device
     /**
      * Creates a color profile.
      * @param id identifier for the profile
@@ -962,7 +962,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    createProfile(id: string | null, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createProfile(id: string, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1005,7 +1005,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @returns A #CdProfile object, or %NULL for error
      */
-    createProfileSync(id: string | null, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null): Profile
+    createProfileSync(id: string, scope: ObjectScope, properties: GLib.HashTable | null, cancellable: Gio.Cancellable | null): Profile
     /**
      * Deletes a device.
      * @param device a #CdDevice
@@ -1058,7 +1058,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    findDevice(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    findDevice(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finds a color device that has a property value.
      * @param key the device property key
@@ -1066,7 +1066,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    findDeviceByProperty(key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    findDeviceByProperty(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1083,7 +1083,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL
      * @returns A #CdDevice object, or %NULL for error
      */
-    findDeviceByPropertySync(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): Device
+    findDeviceByPropertySync(key: string, value: string, cancellable: Gio.Cancellable | null): Device
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1099,21 +1099,21 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL
      * @returns A #CdDevice object, or %NULL for error
      */
-    findDeviceSync(id: string | null, cancellable: Gio.Cancellable | null): Device
+    findDeviceSync(id: string, cancellable: Gio.Cancellable | null): Device
     /**
      * Finds a profile by an ID.
      * @param id a profile id
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    findProfile(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    findProfile(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finds a profile by a filename.
      * @param filename a profile filename
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    findProfileByFilename(filename: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    findProfileByFilename(filename: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1129,7 +1129,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @returns A #CdProfile object, or %NULL for error
      */
-    findProfileByFilenameSync(filename: string | null, cancellable: Gio.Cancellable | null): Profile
+    findProfileByFilenameSync(filename: string, cancellable: Gio.Cancellable | null): Profile
     /**
      * Finds a color profile that has a property value.
      * @param key the profile property key
@@ -1137,7 +1137,7 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    findProfileByProperty(key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    findProfileByProperty(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1154,7 +1154,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL
      * @returns A #CdProfile object, or %NULL for error
      */
-    findProfileByPropertySync(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): Profile
+    findProfileByPropertySync(key: string, value: string, cancellable: Gio.Cancellable | null): Profile
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1170,14 +1170,14 @@ interface Client {
      * @param cancellable a #GCancellable, or %NULL
      * @returns A #CdProfile object, or %NULL for error
      */
-    findProfileSync(id: string | null, cancellable: Gio.Cancellable | null): Profile
+    findProfileSync(id: string, cancellable: Gio.Cancellable | null): Profile
     /**
      * Finds a sensor by an ID.
      * @param id a sensor id
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    findSensor(id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    findSensor(id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1193,7 +1193,7 @@ interface Client {
      * @param cancellable a #GCancellable or %NULL
      * @returns A #CdSensor object, or %NULL for error
      */
-    findSensorSync(id: string | null, cancellable: Gio.Cancellable | null): Sensor
+    findSensorSync(id: string, cancellable: Gio.Cancellable | null): Sensor
     /**
      * Gets if the client has been connected.
      * @returns %TRUE if properties are valid
@@ -1203,7 +1203,7 @@ interface Client {
      * Get colord daemon version.
      * @returns string containing the daemon version, e.g. "0.1.0"
      */
-    getDaemonVersion(): string | null
+    getDaemonVersion(): string
     /**
      * Gets an array of color devices.
      * @param cancellable a #GCancellable, or %NULL
@@ -1324,12 +1324,12 @@ interface Client {
      * Get system model.
      * @returns string containing the system model, e.g. "T61"
      */
-    getSystemModel(): string | null
+    getSystemModel(): string
     /**
      * Get system vendor.
      * @returns string containing the system vendor, e.g. "Lenovo"
      */
-    getSystemVendor(): string | null
+    getSystemVendor(): string
     /**
      * Imports a color profile into the users home directory.
      * 
@@ -1485,14 +1485,14 @@ class Client extends GObject.Object {
      * @param errorDesc 
      * @returns enumerated value
      */
-    static errorFromString(errorDesc: string | null): ClientError
+    static errorFromString(errorDesc: string): ClientError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdClientError to a string.
      * @param errorEnum 
      * @returns identifier string
      */
-    static errorToString(errorEnum: ClientError): string | null
+    static errorToString(errorEnum: ClientError): string
 }
 
 module Device {
@@ -1690,12 +1690,12 @@ interface Device {
      * Gets the device format.
      * @returns A string, or %NULL for invalid
      */
-    getFormat(): string | null
+    getFormat(): string
     /**
      * Gets the device ID.
      * @returns A string, or %NULL for invalid
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the device kind.
      * @returns A device kind, e.g. %CD_DEVICE_KIND_DISPLAY
@@ -1711,7 +1711,7 @@ interface Device {
      * @param key a key for the metadata dictionary
      * @returns the metadata value, or %NULL if not set.
      */
-    getMetadataItem(key: string | null): string | null
+    getMetadataItem(key: string): string
     /**
      * Gets the device mode.
      * @returns A colorspace, e.g. %CD_DEVICE_MODE_VIRTUAL
@@ -1721,7 +1721,7 @@ interface Device {
      * Gets the device model.
      * @returns A string, or %NULL for invalid
      */
-    getModel(): string | null
+    getModel(): string
     /**
      * Gets the device modified date.
      * @returns A value in microseconds, or 0 for invalid
@@ -1731,7 +1731,7 @@ interface Device {
      * Gets the object path for the device.
      * @returns the object path, or %NULL
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Gets the device owner.
      * @returns The UID of the user that created the device
@@ -1743,7 +1743,7 @@ interface Device {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    getProfileForQualifiers(qualifiers: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getProfileForQualifiers(qualifiers: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets the result from the asynchronous function.
      * @param res the #GAsyncResult
@@ -1759,7 +1759,7 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns a #CdProfile or %NULL
      */
-    getProfileForQualifiersSync(qualifiers: string | null, cancellable: Gio.Cancellable | null): Profile
+    getProfileForQualifiersSync(qualifiers: string, cancellable: Gio.Cancellable | null): Profile
     /**
      * Gets the property relationship to the device.
      * @param profile a #CdProfile instance
@@ -1802,17 +1802,17 @@ interface Device {
      * Gets the device seat identifier.
      * @returns A string, or %NULL for invalid
      */
-    getSeat(): string | null
+    getSeat(): string
     /**
      * Gets the device serial number.
      * @returns A string, or %NULL for invalid
      */
-    getSerial(): string | null
+    getSerial(): string
     /**
      * Gets the device vendor.
      * @returns A string, or %NULL for invalid
      */
-    getVendor(): string | null
+    getVendor(): string
     /**
      * Makes an already added profile default for a device.
      * @param profile a #CdProfile instance
@@ -1967,12 +1967,12 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns #TRUE for success, else #FALSE and @error is used
      */
-    setModelSync(value: string | null, cancellable: Gio.Cancellable | null): boolean
+    setModelSync(value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the object path of the device.
      * @param objectPath The colord object path.
      */
-    setObjectPath(objectPath: string | null): void
+    setObjectPath(objectPath: string): void
     /**
      * Sets a property on the device.
      * @param key a property key
@@ -1980,7 +1980,7 @@ interface Device {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    setProperty(key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setProperty(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of setProperty
 
@@ -2006,7 +2006,7 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns %TRUE for success, else %FALSE.
      */
-    setPropertySync(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): boolean
+    setPropertySync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the device serial number.
      * 
@@ -2016,7 +2016,7 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns #TRUE for success, else #FALSE and @error is used
      */
-    setSerialSync(value: string | null, cancellable: Gio.Cancellable | null): boolean
+    setSerialSync(value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the device vendor.
      * 
@@ -2026,7 +2026,7 @@ interface Device {
      * @param cancellable a #GCancellable or %NULL
      * @returns #TRUE for success, else #FALSE and @error is used
      */
-    setVendorSync(value: string | null, cancellable: Gio.Cancellable | null): boolean
+    setVendorSync(value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Converts the device to a string description.
      * @returns text representation of #CdDevice
@@ -2177,27 +2177,27 @@ class Device extends GObject.Object {
      * @param objectPath The colord object path.
      * @returns a new device object.
      */
-    static newWithObjectPath(objectPath: string | null): Device
+    static newWithObjectPath(objectPath: string): Device
     _init(config?: Device.ConstructorProperties): void
     /**
      * Converts a string to a #CdDeviceError.
      * @param errorDesc 
      * @returns enumerated value
      */
-    static errorFromString(errorDesc: string | null): DeviceError
+    static errorFromString(errorDesc: string): DeviceError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdDeviceError to a string.
      * @param errorEnum 
      * @returns identifier string
      */
-    static errorToString(errorEnum: DeviceError): string | null
+    static errorToString(errorEnum: DeviceError): string
     /**
      * Converts a string to a #CdDeviceKind.
      * @param kind 
      * @returns enumerated value
      */
-    static kindFromString(kind: string | null): DeviceKind
+    static kindFromString(kind: string): DeviceKind
     /**
      * Gets the most suitable profile kind for a device kind.
      * @param deviceKind A #CdDeviceKind
@@ -2209,11 +2209,11 @@ class Device extends GObject.Object {
      * @param kindEnum 
      * @returns identifier string
      */
-    static kindToString(kindEnum: DeviceKind): string | null
-    static modeFromString(deviceMode: string | null): DeviceMode
-    static modeToString(deviceMode: DeviceMode): string | null
-    static relationFromString(deviceRelation: string | null): DeviceRelation
-    static relationToString(deviceRelation: DeviceRelation): string | null
+    static kindToString(kindEnum: DeviceKind): string
+    static modeFromString(deviceMode: string): DeviceMode
+    static modeToString(deviceMode: DeviceMode): string
+    static relationFromString(deviceRelation: string): DeviceRelation
+    static relationToString(deviceRelation: DeviceRelation): string
 }
 
 module Edid {
@@ -2246,12 +2246,12 @@ interface Edid {
      * Gets the EDID MD5 checksum.
      * @returns string value
      */
-    getChecksum(): string | null
+    getChecksum(): string
     /**
      * Gets the EDID EISA ID.
      * @returns string value
      */
-    getEisaId(): string | null
+    getEisaId(): string
     /**
      * Gets the native panel gamma.
      * @returns floating point value
@@ -2271,12 +2271,12 @@ interface Edid {
      * Gets the EDID monitor name.
      * @returns string value
      */
-    getMonitorName(): string | null
+    getMonitorName(): string
     /**
      * Gets the EDID PNP ID.
      * @returns string value
      */
-    getPnpId(): string | null
+    getPnpId(): string
     /**
      * Gets the red primary.
      * @returns %TRUE for success
@@ -2286,12 +2286,12 @@ interface Edid {
      * Gets the EDID serial number.
      * @returns string value
      */
-    getSerialNumber(): string | null
+    getSerialNumber(): string
     /**
      * Gets the EDID vendor name.
      * @returns string value
      */
-    getVendorName(): string | null
+    getVendorName(): string
     /**
      * Gets the whitepoint.
      * @returns #CdColorYxy chromaticity
@@ -2402,7 +2402,7 @@ interface Icc {
      * @param key the metadata key
      * @param value the UTF-8 metadata value
      */
-    addMetadata(key: string | null, value: string | null): void
+    addMetadata(key: string, value: string): void
     /**
      * Creates a default sRGB ICC profile.
      * @returns %TRUE for success
@@ -2450,7 +2450,7 @@ interface Icc {
      * %CD_ICC_LOAD_FLAGS_CHARACTERIZATION flag.
      * @returns TI3 string data
      */
-    getCharacterizationData(): string | null
+    getCharacterizationData(): string
     /**
      * Gets the profile checksum if one exists.
      * This will either be the embedded profile ID, or the file checksum if
@@ -2458,7 +2458,7 @@ interface Icc {
      * and the %CD_ICC_LOAD_FLAGS_FALLBACK_MD5 flag is used.
      * @returns An embedded MD5 checksum, or %NULL for not set
      */
-    getChecksum(): string | null
+    getChecksum(): string
     /**
      * Gets the profile colorspace
      * @returns The profile colorspace, e.g. %CD_COLORSPACE_RGB
@@ -2477,7 +2477,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @returns The text as a UTF-8 string, or %NULL of the locale is invalid               or the tag does not exist.
      */
-    getCopyright(locale: string | null): string | null
+    getCopyright(locale: string): string
     /**
      * Gets the ICC creation date and time.
      * @returns A #GDateTime object, or %NULL for not set
@@ -2490,12 +2490,12 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @returns The text as a UTF-8 string, or %NULL of the locale is invalid               or the tag does not exist.
      */
-    getDescription(locale: string | null): string | null
+    getDescription(locale: string): string
     /**
      * Gets the filename of the ICC data, if one exists.
      * @returns A filename, or %NULL
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the profile green chromaticity value.
      * This function will only return results if the profile was loaded with the
@@ -2521,7 +2521,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @returns The text as a UTF-8 string, or %NULL of the locale is invalid               or the tag does not exist.
      */
-    getManufacturer(locale: string | null): string | null
+    getManufacturer(locale: string): string
     /**
      * Gets all the metadata from the ICC profile.
      * @returns The profile metadata
@@ -2532,7 +2532,7 @@ interface Icc {
      * @param key the dictionary key
      * @returns The dictionary data, or %NULL if the key does not exist.
      */
-    getMetadataItem(key: string | null): string | null
+    getMetadataItem(key: string): string
     /**
      * Gets the profile model.
      * If the translated text is not available in the selected locale then the
@@ -2540,7 +2540,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @returns The text as a UTF-8 string, or %NULL of the locale is invalid               or the tag does not exist.
      */
-    getModel(locale: string | null): string | null
+    getModel(locale: string): string
     /**
      * Gets any named colors in the profile.
      * This function will only return results if the profile was loaded with the
@@ -2572,7 +2572,7 @@ interface Icc {
      * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
      * @returns the data for the tag
      */
-    getTagData(tag: string | null): any
+    getTagData(tag: string): any
     /**
      * Returns the internal tag table. Most users do not need to do this.
      * @returns the tag tables as an array of strings
@@ -2650,7 +2650,7 @@ interface Icc {
      * Removes an item of metadata.
      * @param key the metadata key
      */
-    removeMetadata(key: string | null): void
+    removeMetadata(key: string): void
     /**
      * Saves an ICC profile to an allocated memory location.
      * 
@@ -2679,7 +2679,7 @@ interface Icc {
      * Sets the characterization data used to build the profile.
      * @param data TI3 string data, or %NULL
      */
-    setCharacterizationData(data: string | null): void
+    setCharacterizationData(data: string): void
     /**
      * Sets the colorspace kind.
      * @param colorspace the profile colorspace, e.g. %CD_COLORSPACE_RGB
@@ -2690,7 +2690,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @param value New UTF-8 string value
      */
-    setCopyright(locale: string | null, value: string | null): void
+    setCopyright(locale: string, value: string | null): void
     /**
      * Sets the profile copyrights for specific locales.
      * @param values New translated values, with the key being the locale.
@@ -2706,7 +2706,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @param value New UTF-8 string value
      */
-    setDescription(locale: string | null, value: string | null): void
+    setDescription(locale: string, value: string | null): void
     /**
      * Sets the profile descriptions for specific locales.
      * @param values New translated values, with the key being the locale.
@@ -2717,7 +2717,7 @@ interface Icc {
      * using cd_icc_load_fd() from a disk cache.
      * @param filename a filename, or %NULL
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sets the profile kind.
      * @param kind the profile kind, e.g. %CD_PROFILE_KIND_DISPLAY_DEVICE
@@ -2728,7 +2728,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @param value New UTF-8 string value
      */
-    setManufacturer(locale: string | null, value: string | null): void
+    setManufacturer(locale: string, value: string | null): void
     /**
      * Sets the profile manufacturers for specific locales.
      * @param values New translated values, with the key being the locale.
@@ -2739,7 +2739,7 @@ interface Icc {
      * @param locale A locale, e.g. "en_GB.UTF-8" or %NULL for the profile default
      * @param value New UTF-8 string value
      */
-    setModel(locale: string | null, value: string | null): void
+    setModel(locale: string, value: string | null): void
     /**
      * Sets the profile models for specific locales.
      * @param values New translated values, with the key being the locale.
@@ -2751,7 +2751,7 @@ interface Icc {
      * @param tag a 4 bytes tag description, e.g. "cprt" or "vcgt"
      * @param data a variable sized data entry
      */
-    setTagData(tag: string | null, data: any): boolean
+    setTagData(tag: string, data: any): boolean
     /**
      * Sets the Video Card Gamma Table from the profile.
      * 
@@ -2937,7 +2937,7 @@ interface It8 {
      * Sets any extra options that have to be set in the CCMX file
      * @param option A IT8 option, e.g. "TYPE_LCD"
      */
-    addOption(option: string | null): void
+    addOption(option: string): void
     /**
      * Adds a spectrum to the spectral array.
      * @param spectrum the spectral data
@@ -2967,7 +2967,7 @@ interface It8 {
      * Gets the instrument the file was created by.
      * @returns The instrument, or %NULL if unset
      */
-    getInstrument(): string | null
+    getInstrument(): string
     /**
      * Gets the kind of IT8 file.
      * @returns a #CdIt8Kind, e.g %CD_IT8_KIND_TI3.
@@ -2987,12 +2987,12 @@ interface It8 {
      * Gets the file orginator.
      * @returns The originator, or %NULL if unset
      */
-    getOriginator(): string | null
+    getOriginator(): string
     /**
      * Gets the reference the file was created against.
      * @returns The reference, or %NULL if unset
      */
-    getReference(): string | null
+    getReference(): string
     /**
      * Gets if the data is spectral or XYZ.
      * @returns %TRUE if the data is in spectral bands.
@@ -3008,12 +3008,12 @@ interface It8 {
      * @param id the spectrum ID value
      * @returns spectrum, or %NULL
      */
-    getSpectrumById(id: string | null): Spectrum
+    getSpectrumById(id: string): Spectrum
     /**
      * Gets the file title.
      * @returns The title, or %NULL if unset
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets the XYZ value for a specific RGB value.
      * @param r the red value
@@ -3028,7 +3028,7 @@ interface It8 {
      * @param option a option, e.g. "TYPE_CRT"
      * @returns %TRUE if the option is set
      */
-    hasOption(option: string | null): boolean
+    hasOption(option: string): boolean
     /**
      * Loads a it8 file from data.
      * @param data text data
@@ -3064,7 +3064,7 @@ interface It8 {
      * Sets the measuring instrument that created the .it8 file
      * @param instrument the instruemnt name, e.g. "huey"
      */
-    setInstrument(instrument: string | null): void
+    setInstrument(instrument: string): void
     /**
      * Set the kind of IT8 file.
      * @param kind a #CdIt8Kind, e.g %CD_IT8_KIND_TI3.
@@ -3084,12 +3084,12 @@ interface It8 {
      * Sets the program name that created the .it8 file
      * @param originator the program name, e.g. "gcm-calibrate"
      */
-    setOriginator(originator: string | null): void
+    setOriginator(originator: string): void
     /**
      * Sets the reference that as used to create the .it8 reference
      * @param reference the instruemnt name, e.g. "colormunki"
      */
-    setReference(reference: string | null): void
+    setReference(reference: string): void
     /**
      * Sets if spectral data should be written to the .it8 file.
      * @param spectral If the data is spectral
@@ -3104,7 +3104,7 @@ interface It8 {
      * Sets the display name for the file.
      * @param title the title name, e.g. "Factory calibration"
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Class property signals of Colord-1.0.Colord.It8
 
@@ -3337,12 +3337,12 @@ interface Profile {
      * Gets the profile filename.
      * @returns A string, or %NULL for invalid
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the profile format.
      * @returns A string, or %NULL for invalid
      */
-    getFormat(): string | null
+    getFormat(): string
     /**
      * Returns if the profile has a VCGT table.
      * @returns %TRUE if VCGT is valid.
@@ -3352,7 +3352,7 @@ interface Profile {
      * Gets the profile ID.
      * @returns A string, or %NULL for invalid
      */
-    getId(): string | null
+    getId(): string
     /**
      * Returns if the profile is installed system wide and available for all
      * users.
@@ -3374,12 +3374,12 @@ interface Profile {
      * @param key a key for the metadata dictionary
      * @returns the metadata value, or %NULL if not set.
      */
-    getMetadataItem(key: string | null): string | null
+    getMetadataItem(key: string): string
     /**
      * Gets the object path for the profile.
      * @returns the object path, or %NULL
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Gets the profile owner.
      * @returns The UID of the user that created the device
@@ -3389,7 +3389,7 @@ interface Profile {
      * Gets the profile qualifier.
      * @returns A string, or %NULL for invalid
      */
-    getQualifier(): string | null
+    getQualifier(): string
     /**
      * Gets the profile scope.
      * @returns A #CdObjectScope, e.g. %CD_OBJECT_SCOPE_UNKNOWN
@@ -3399,7 +3399,7 @@ interface Profile {
      * Gets the profile title.
      * @returns A string, or %NULL for invalid
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets the profile warnings as a string array.
      * @returns Any profile warnings, e.g. "vcgt-non-monotonic"
@@ -3442,7 +3442,7 @@ interface Profile {
      * Sets the object path of the profile.
      * @param objectPath The colord object path.
      */
-    setObjectPath(objectPath: string | null): void
+    setObjectPath(objectPath: string): void
     /**
      * Deletes a color device.
      * @param key a key name
@@ -3450,7 +3450,7 @@ interface Profile {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    setProperty(key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setProperty(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of setProperty
 
@@ -3476,7 +3476,7 @@ interface Profile {
      * @param cancellable a #GCancellable or %NULL
      * @returns %TRUE for success, else %FALSE.
      */
-    setPropertySync(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): boolean
+    setPropertySync(key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Converts the profile to a string description.
      * @returns text representation of #CdProfile
@@ -3612,47 +3612,47 @@ class Profile extends GObject.Object {
      * @param objectPath The colord object path.
      * @returns a new profile object.
      */
-    static newWithObjectPath(objectPath: string | null): Profile
+    static newWithObjectPath(objectPath: string): Profile
     _init(config?: Profile.ConstructorProperties): void
     /**
      * Converts a string to a #CdProfileError.
      * @param errorDesc 
      * @returns enumerated value
      */
-    static errorFromString(errorDesc: string | null): ProfileError
+    static errorFromString(errorDesc: string): ProfileError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdProfileError to a string.
      * @param errorEnum 
      * @returns identifier string
      */
-    static errorToString(errorEnum: ProfileError): string | null
-    static kindFromString(profileKind: string | null): ProfileKind
-    static kindToString(profileKind: ProfileKind): string | null
+    static errorToString(errorEnum: ProfileError): string
+    static kindFromString(profileKind: string): ProfileKind
+    static kindToString(profileKind: ProfileKind): string
     /**
      * Converts a string to a #CdProfileQuality.
      * @param quality 
      * @returns enumerated value
      */
-    static qualityFromString(quality: string | null): ProfileQuality
+    static qualityFromString(quality: string): ProfileQuality
     /**
      * Converts a #CdProfileQuality to a string.
      * @param qualityEnum 
      * @returns identifier string
      */
-    static qualityToString(qualityEnum: ProfileQuality): string | null
+    static qualityToString(qualityEnum: ProfileQuality): string
     /**
      * Converts a string to a #CdProfileWarning.
      * @param type 
      * @returns enumerated value
      */
-    static warningFromString(type: string | null): ProfileWarning
+    static warningFromString(type: string): ProfileWarning
     /**
      * Converts a #CdProfileWarning to a string.
      * @param kindEnum 
      * @returns identifier string
      */
-    static warningToString(kindEnum: ProfileWarning): string | null
+    static warningToString(kindEnum: ProfileWarning): string
 }
 
 module Sensor {
@@ -3787,7 +3787,7 @@ interface Sensor {
      * Gets the object ID for the sensor.
      * @returns the object ID, or %NULL
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the sensor kind.
      * @returns A #CdSensorKind, e.g. %CD_SENSOR_KIND_HUEY
@@ -3808,7 +3808,7 @@ interface Sensor {
      * @param key a key for the metadata dictionary
      * @returns the metadata value, or %NULL if not set.
      */
-    getMetadataItem(key: string | null): string | null
+    getMetadataItem(key: string): string
     /**
      * Gets the sensor operating mode.
      * @returns A #CdSensorCap, e.g. %CD_SENSOR_CAP_AMBIENT
@@ -3818,7 +3818,7 @@ interface Sensor {
      * Gets the sensor model.
      * @returns A string, or %NULL for invalid
      */
-    getModel(): string | null
+    getModel(): string
     /**
      * Returns if the sensor has a native driver.
      * @returns %TRUE if VCGT is valid.
@@ -3828,13 +3828,13 @@ interface Sensor {
      * Gets the object path for the sensor.
      * @returns the object path, or %NULL
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Gets a specific sensor option.
      * @param key a key to search for.
      * @returns A const string, or %NULL of not found.
      */
-    getOption(key: string | null): string | null
+    getOption(key: string): string
     /**
      * Gets any sensor options.
      * @returns A               refcounted #GHashTable of (string, GVariant).
@@ -3867,7 +3867,7 @@ interface Sensor {
      * Gets the sensor serial number.
      * @returns A string, or %NULL for invalid
      */
-    getSerial(): string | null
+    getSerial(): string
     /**
      * Gets a color spectrum from a sensor
      * @param cap a #CdSensorCap
@@ -3900,7 +3900,7 @@ interface Sensor {
      * Gets the sensor vendor.
      * @returns A string, or %NULL for invalid
      */
-    getVendor(): string | null
+    getVendor(): string
     /**
      * Returns the sensor metadata for a specific key.
      * @param cap a specified capability, e.g. %CD_SENSOR_CAP_LCD
@@ -3932,7 +3932,7 @@ interface Sensor {
      * Sets the object path of the sensor.
      * @param objectPath The colord object path.
      */
-    setObjectPath(objectPath: string | null): void
+    setObjectPath(objectPath: string): void
     /**
      * Sets options on the sensor device.
      * @param values the options
@@ -4093,57 +4093,57 @@ class Sensor extends GObject.Object {
      * @param objectPath The colord object path.
      * @returns a new sensor object.
      */
-    static newWithObjectPath(objectPath: string | null): Sensor
+    static newWithObjectPath(objectPath: string): Sensor
     _init(config?: Sensor.ConstructorProperties): void
     /**
      * Gets the sensor capability as a enumerated value.
      * @param sensorCap the sensor capability, e.g. 'projector'.
      * @returns a #CdSensorCap
      */
-    static capFromString(sensorCap: string | null): SensorCap
+    static capFromString(sensorCap: string): SensorCap
     /**
      * Gets the sensor capability as a string.
      * @param sensorCap a #CdSensorCap
      * @returns the sensor capability, e.g. 'projector'.
      */
-    static capToString(sensorCap: SensorCap): string | null
+    static capToString(sensorCap: SensorCap): string
     /**
      * Converts a string to a #CdSensorError.
      * @param errorDesc 
      * @returns enumerated value
      */
-    static errorFromString(errorDesc: string | null): SensorError
+    static errorFromString(errorDesc: string): SensorError
     static errorQuark(): GLib.Quark
     /**
      * Converts a #CdSensorError to a string.
      * @param errorEnum 
      * @returns identifier string
      */
-    static errorToString(errorEnum: SensorError): string | null
+    static errorToString(errorEnum: SensorError): string
     /**
      * Gets the sensor kind as a enumerated value.
      * @param sensorKind the sensor kind, e.g. 'huey'.
      * @returns a #CdSensorKind
      */
-    static kindFromString(sensorKind: string | null): SensorKind
+    static kindFromString(sensorKind: string): SensorKind
     /**
      * Gets the sensor kind as a string.
      * @param sensorKind a #CdSensorKind
      * @returns the sensor kind, e.g. 'huey'.
      */
-    static kindToString(sensorKind: SensorKind): string | null
+    static kindToString(sensorKind: SensorKind): string
     /**
      * Gets the sensor stateability as a enumerated value.
      * @param sensorState the sensor stateability, e.g. 'measuring'.
      * @returns a #CdSensorState
      */
-    static stateFromString(sensorState: string | null): SensorState
+    static stateFromString(sensorState: string): SensorState
     /**
      * Gets the sensor stateability as a string.
      * @param sensorState a #CdSensorState
      * @returns the sensor stateability, e.g. 'measuring'.
      */
-    static stateToString(sensorState: SensorState): string | null
+    static stateToString(sensorState: SensorState): string
 }
 
 interface ClientClass {
@@ -4334,13 +4334,13 @@ interface ColorSwatch {
      * Deallocates a color swatch.
      */
     free(): void
-    getName(): string | null
+    getName(): string
     getValue(): ColorLab
     /**
      * Initialises a swatch name.
      * @param name component name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Initialises a swatch value.
      * @param value component value
@@ -4706,7 +4706,7 @@ interface Spectrum {
      * Gets the spectral data.
      * @returns the textual ID of the sample
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the normalization value of the spectral data.
      * NOTE: This affects every value in the spectrum.
@@ -4836,7 +4836,7 @@ interface Spectrum {
      * Sets a spectrum id.
      * @param id component id
      */
-    setId(id: string | null): void
+    setId(id: string): void
     /**
      * Set the normalization value of the spectrum.
      * NOTE: This affects every value in the spectrum.

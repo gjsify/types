@@ -198,7 +198,7 @@ export class App extends AppStreamGlib.App {
      * @param id The ID for the package, or %NULL
      * @returns a #AsbApp
      */
-    constructor(pkg: Package, id: string | null) 
+    constructor(pkg: Package, id: string) 
     /**
      * Creates a new application object.
      * @constructor 
@@ -206,7 +206,7 @@ export class App extends AppStreamGlib.App {
      * @param id The ID for the package, or %NULL
      * @returns a #AsbApp
      */
-    static new(pkg: Package, id: string | null): App
+    static new(pkg: Package, id: string): App
 
     // Overloads of new
 
@@ -251,7 +251,7 @@ export interface Context {
      * @param filename package filename
      * @returns %TRUE for success, %FALSE otherwise
      */
-    addFilename(filename: string | null): boolean
+    addFilename(filename: string): boolean
     /**
      * Adds a package to the list of packages to be processed
      * @param pkg A #AsbPackage
@@ -262,13 +262,13 @@ export interface Context {
      * @param pkgname a package name
      * @returns a #AsbPackage, or %NULL for not found.
      */
-    findByPkgname(pkgname: string | null): Package
+    findByPkgname(pkgname: string): Package
     /**
      * This function used to find an application in the cache, and now does nothing.
      * @param filename cache-id
      * @returns always %FALSE
      */
-    findInCache(filename: string | null): boolean
+    findInCache(filename: string): boolean
     /**
      * Gets the target metadata API version.
      * @returns floating point
@@ -278,7 +278,7 @@ export interface Context {
      * Gets the screenshot directory to use
      * @returns directory
      */
-    getCacheDir(): string | null
+    getCacheDir(): string
     /**
      * Gets one specific build flag.
      * @param flag A #AsbContextFlags
@@ -304,7 +304,7 @@ export interface Context {
      * Gets the temporary directory to use
      * @returns directory
      */
-    getTempDir(): string | null
+    getTempDir(): string
     /**
      * Processes all the packages that have been added to the context.
      * @returns %TRUE for success, %FALSE otherwise
@@ -319,12 +319,12 @@ export interface Context {
      * Sets the basename for the two metadata files.
      * @param basename AppStream file basename, e.g. "appstream"
      */
-    setBasename(basename: string | null): void
+    setBasename(basename: string): void
     /**
      * Sets the cache directory to use when building metadata.
      * @param cacheDir directory
      */
-    setCacheDir(cacheDir: string | null): void
+    setCacheDir(cacheDir: string): void
     /**
      * Sets flags to be used when building the metadata.
      * @param flags #AsbContextFlags, e.g. %ASB_CONTEXT_FLAG_NO_NETWORK
@@ -334,12 +334,12 @@ export interface Context {
      * Sets the icons directory to use when building metadata.
      * @param iconsDir directory
      */
-    setIconsDir(iconsDir: string | null): void
+    setIconsDir(iconsDir: string): void
     /**
      * Sets the log directory to use when building metadata.
      * @param logDir directory
      */
-    setLogDir(logDir: string | null): void
+    setLogDir(logDir: string): void
     /**
      * Sets the maximum number of threads to use when processing packages.
      * This function now has no affect as only one thread is ever used.
@@ -356,23 +356,23 @@ export interface Context {
      * This function now has no affect as no cache ID is available.
      * @param oldMetadata filename, or %NULL
      */
-    setOldMetadata(oldMetadata: string | null): void
+    setOldMetadata(oldMetadata: string): void
     /**
      * Sets the origin for the two metadata files.
      * @param origin AppStream origin, e.g. "fedora-21"
      */
-    setOrigin(origin: string | null): void
+    setOrigin(origin: string): void
     /**
      * Sets the output directory to use when building metadata.
      * @param outputDir directory
      */
-    setOutputDir(outputDir: string | null): void
-    setScreenshotDir(screenshotDir: string | null): void
+    setOutputDir(outputDir: string): void
+    setScreenshotDir(screenshotDir: string): void
     /**
      * Sets the temporary directory to use when building metadata.
      * @param tempDir directory
      */
-    setTempDir(tempDir: string | null): void
+    setTempDir(tempDir: string): void
     /**
      * Sets up the context ready for use.
      * @returns %TRUE for success, %FALSE otherwise
@@ -443,13 +443,13 @@ export interface Package {
      * Add a package dependancy.
      * @param dep package dep
      */
-    addDep(dep: string | null): void
+    addDep(dep: string): void
     /**
      * Adds a (downstream) release to a package.
      * @param version a package version
      * @param release a package release
      */
-    addRelease(version: string | null, release: AppStreamGlib.Release): void
+    addRelease(version: string, release: AppStreamGlib.Release): void
     /**
      * Deallocates previously ensured data.
      * @param flags #AsbPackageEnsureFlags
@@ -458,23 +458,23 @@ export interface Package {
     // Has conflict: close(): boolean
     // Has conflict: compare(pkg2: Package): number
     // Has conflict: ensure(flags: PackageEnsureFlags): boolean
-    // Has conflict: explode(dir: string | null, glob: string[]): boolean
+    // Has conflict: explode(dir: string, glob: string[]): boolean
     /**
      * Gets the package architecture
      * @returns utf8 string
      */
-    getArch(): string | null
+    getArch(): string
     /**
      * Gets the package basename.
      * @returns utf8 string
      */
-    getBasename(): string | null
+    getBasename(): string
     /**
      * Gets a config attribute from a package.
      * @param key utf8 string
      * @returns utf8 string
      */
-    getConfig(key: string | null): string | null
+    getConfig(key: string): string
     /**
      * Get the package dependancy list.
      * @returns deplist
@@ -494,7 +494,7 @@ export interface Package {
      * Gets the package EVR.
      * @returns utf8 string
      */
-    getEvr(): string | null
+    getEvr(): string
     /**
      * Gets the package filelist.
      * @returns filelist
@@ -504,7 +504,7 @@ export interface Package {
      * Gets the filename of the package.
      * @returns utf8 filename
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the kind of the package.
      * @returns a #AsbPackageKind
@@ -514,33 +514,33 @@ export interface Package {
      * Gets the package license.
      * @returns utf8 string
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets the package name
      * @returns utf8 string
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the package NEVR.
      * @returns utf8 string
      */
-    getNevr(): string | null
+    getNevr(): string
     /**
      * Gets the package NEVRA.
      * @returns utf8 string
      */
-    getNevra(): string | null
+    getNevra(): string
     /**
      * Gets the release for a specific version.
      * @param version package version
      * @returns an #AsRelease, or %NULL for not found
      */
-    getRelease(version: string | null): AppStreamGlib.Release
+    getRelease(version: string): AppStreamGlib.Release
     /**
      * Gets the package release string
      * @returns utf8 string
      */
-    getReleaseStr(): string | null
+    getReleaseStr(): string
     /**
      * Gets the releases of the package.
      * @returns the release data
@@ -550,27 +550,27 @@ export interface Package {
      * Gets the package source nevra.
      * @returns utf8 string
      */
-    getSource(): string | null
+    getSource(): string
     /**
      * Gets the package source name.
      * @returns utf8 string
      */
-    getSourcePkgname(): string | null
+    getSourcePkgname(): string
     /**
      * Gets the package homepage URL
      * @returns utf8 string
      */
-    getUrl(): string | null
+    getUrl(): string
     /**
      * Gets the package version control system.
      * @returns utf8 string
      */
-    getVcs(): string | null
+    getVcs(): string
     /**
      * Gets the package version
      * @returns utf8 string
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Flushes the log queue.
      * @returns %TRUE for success, %FALSE otherwise
@@ -580,18 +580,18 @@ export interface Package {
      * Starts the log timer.
      */
     logStart(): void
-    // Has conflict: open(filename: string | null): boolean
+    // Has conflict: open(filename: string): boolean
     /**
      * Sets the package architecture.
      * @param arch package architecture
      */
-    setArch(arch: string | null): void
+    setArch(arch: string): void
     /**
      * Sets a config attribute on a package.
      * @param key utf8 string
      * @param value utf8 string
      */
-    setConfig(key: string | null, value: string | null): void
+    setConfig(key: string, value: string): void
     /**
      * Enables or disables the package.
      * @param enabled boolean
@@ -611,7 +611,7 @@ export interface Package {
      * Sets the package filename.
      * @param filename package filename
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sets the package kind.
      * @param kind A #AsbPackageKind
@@ -621,44 +621,44 @@ export interface Package {
      * Sets the package license.
      * @param license license string
      */
-    setLicense(license: string | null): void
+    setLicense(license: string): void
     /**
      * Sets the package name.
      * @param name package name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the package release.
      * @param release package release
      */
-    setRelease(release: string | null): void
+    setRelease(release: string): void
     /**
      * Sets the package source name, which is usually the parent of a set of
      * subpackages.
      * @param source source string, e.g. the srpm nevra
      */
-    setSource(source: string | null): void
+    setSource(source: string): void
     /**
      * Sets the package source name, which is usually the parent of a set of
      * subpackages.
      * @param sourcePkgname source string, e.g. the srpm name
      */
-    setSourcePkgname(sourcePkgname: string | null): void
+    setSourcePkgname(sourcePkgname: string): void
     /**
      * Sets the package URL.
      * @param url homepage URL
      */
-    setUrl(url: string | null): void
+    setUrl(url: string): void
     /**
      * Sets the package version control system.
      * @param vcs vcs string
      */
-    setVcs(vcs: string | null): void
+    setVcs(vcs: string): void
     /**
      * Sets the package version.
      * @param version package version
      */
-    setVersion(version: string | null): void
+    setVersion(version: string): void
 
     // Own virtual methods of AppStreamBuilder-1.0.AppStreamBuilder.Package
 
@@ -689,7 +689,7 @@ export interface Package {
      * @param glob the glob list, or %NULL
      * @returns %TRUE for success, %FALSE otherwise
      */
-    explode(dir: string | null, glob: string[]): boolean
+    explode(dir: string, glob: string[]): boolean
     /**
      * Opens a package and parses the contents.
      * As little i/o should be done at this point, and implementations
@@ -698,7 +698,7 @@ export interface Package {
      * @param filename package filename
      * @returns %TRUE for success, %FALSE otherwise
      */
-    open(filename: string | null): boolean
+    open(filename: string): boolean
 
     // Class property signals of AppStreamBuilder-1.0.AppStreamBuilder.Package
 
@@ -851,9 +851,9 @@ export interface PackageClass {
     // Own fields of AppStreamBuilder-1.0.AppStreamBuilder.PackageClass
 
     parentClass: GObject.ObjectClass
-    open: (pkg: Package, filename: string | null) => boolean
+    open: (pkg: Package, filename: string) => boolean
     ensure: (pkg: Package, flags: PackageEnsureFlags) => boolean
-    explode: (pkg: Package, dir: string | null, glob: string[]) => boolean
+    explode: (pkg: Package, dir: string, glob: string[]) => boolean
     compare: (pkg1: Package, pkg2: Package) => number
     close: (pkg: Package) => boolean
 }

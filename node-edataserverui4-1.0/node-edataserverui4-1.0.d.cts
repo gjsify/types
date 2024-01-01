@@ -89,7 +89,7 @@ export function trustPromptDescribeCertificateErrors(flags: Gio.TlsCertificateFl
  * @param cancellable a #GCancellable, or %NULL
  * @param callback a callback to call, when the prompt (an `source` save) is done
  */
-export function trustPromptRunForSource(parent: Gtk.Window, source: EDataServer.Source, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null, allowSourceSave: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+export function trustPromptRunForSource(parent: Gtk.Window, source: EDataServer.Source, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null, allowSourceSave: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Finishes the operation started with e_trust_prompt_run_for_source().
  * The `response` will contain a code of the user's choice.
@@ -124,7 +124,7 @@ export function trustPromptRunForSourceFinish(source: EDataServer.Source, result
  * @param errorText an optional error text to show in the dialog; can be %NULL
  * @returns A code of the user's choice. The #E_TRUST_PROMPT_RESPONSE_UNKNOWN    is returned, when the user cancelled the trust prompt dialog.
  */
-export function trustPromptRunModal(parent: Gtk.Window, sourceExtension: string | null, sourceDisplayName: string | null, host: string | null, certificatePem: string | null, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null): EDataServer.TrustPromptResponse
+export function trustPromptRunModal(parent: Gtk.Window, sourceExtension: string | null, sourceDisplayName: string | null, host: string, certificatePem: string, certificateErrors: Gio.TlsCertificateFlags, errorText: string | null): EDataServer.TrustPromptResponse
 export interface CredentialsPrompterLoopPromptFunc {
     (prompter: CredentialsPrompter, source: EDataServer.Source, credentials: EDataServer.NamedParameters, cancellable: Gio.Cancellable | null): boolean
 }
@@ -943,7 +943,7 @@ export interface CredentialsPrompterImpl {
      * @param promptId a prompt ID to cancel
      */
     cancelPrompt(promptId: any | null): void
-    processPrompt(promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string | null, credentials: EDataServer.NamedParameters): void
+    processPrompt(promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string, credentials: EDataServer.NamedParameters): void
     promptFinished(promptId: any | null, credentials: EDataServer.NamedParameters): void
 
     // Own signals of EDataServerUI4-1.0.EDataServerUI4.CredentialsPrompterImpl
@@ -1511,7 +1511,7 @@ export interface WebDAVDiscoverContent extends Gtk.Accessible, Gtk.Buildable, Gt
      * or even a %NULL.
      * @returns currently set base URL for the @content.
      */
-    getBaseUrl(): string | null
+    getBaseUrl(): string
     getMultiselect(): boolean
     /**
      * Returns information about selected source at index `index`. The function can be called
@@ -1567,7 +1567,7 @@ export interface WebDAVDiscoverContent extends Gtk.Accessible, Gtk.Buildable, Gt
      * or even a %NULL.
      * @param baseUrl a base URL
      */
-    setBaseUrl(baseUrl: string | null): void
+    setBaseUrl(baseUrl: string): void
     /**
      * Sets whether the WebDAV discovery content allows multiselect.
      * @param multiselect whether multiselect is allowed
@@ -2356,7 +2356,7 @@ export class WebDAVDiscoverDialog extends Gtk.Dialog {
      * @param supportsFilter a bit-or of #EWebDAVDiscoverSupports, a filter to limit what source    types will be shown in the dialog content; use %E_WEBDAV_DISCOVER_SUPPORTS_NONE    to show all
      * @returns a newly created #GtkDialog, which should be freed with g_object_unref(), when no longer needed.
      */
-    constructor(parent: Gtk.Window, title: string | null, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number) 
+    constructor(parent: Gtk.Window, title: string, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number) 
     /**
      * Creates a new #GtkDialog which has as its content a WebDAV discovery widget,
      * created with e_webdav_discover_content_new(). This dialog can be shown to a user
@@ -2371,7 +2371,7 @@ export class WebDAVDiscoverDialog extends Gtk.Dialog {
      * @param supportsFilter a bit-or of #EWebDAVDiscoverSupports, a filter to limit what source    types will be shown in the dialog content; use %E_WEBDAV_DISCOVER_SUPPORTS_NONE    to show all
      * @returns a newly created #GtkDialog, which should be freed with g_object_unref(), when no longer needed.
      */
-    static new(parent: Gtk.Window, title: string | null, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number): WebDAVDiscoverDialog
+    static new(parent: Gtk.Window, title: string, credentialsPrompter: CredentialsPrompter, source: EDataServer.Source, baseUrl: string | null, supportsFilter: number): WebDAVDiscoverDialog
 
     // Overloads of new
 
@@ -2456,8 +2456,8 @@ export interface CredentialsPrompterImplClass {
     // Own fields of EDataServerUI4-1.0.EDataServerUI4.CredentialsPrompterImplClass
 
     parentClass: EDataServer.ExtensionClass
-    authenticationMethods: string | null
-    processPrompt: (prompterImpl: CredentialsPrompterImpl, promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string | null, credentials: EDataServer.NamedParameters) => void
+    authenticationMethods: string
+    processPrompt: (prompterImpl: CredentialsPrompterImpl, promptId: any | null, authSource: EDataServer.Source, credSource: EDataServer.Source, errorText: string, credentials: EDataServer.NamedParameters) => void
     cancelPrompt: (prompterImpl: CredentialsPrompterImpl, promptId: any | null) => void
     promptFinished: (prompterImpl: CredentialsPrompterImpl, promptId: any | null, credentials: EDataServer.NamedParameters) => void
 }

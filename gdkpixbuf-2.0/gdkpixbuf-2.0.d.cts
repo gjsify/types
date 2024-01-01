@@ -204,7 +204,7 @@ export const PIXBUF_MINOR: number
  * This is the version being compiled against; contrast with
  * `gdk_pixbuf_version`.
  */
-export const PIXBUF_VERSION: string | null
+export const PIXBUF_VERSION: string
 export function pixbuf_error_quark(): GLib.Quark
 /**
  * A function of this type is responsible for freeing the pixel array
@@ -316,7 +316,7 @@ export interface PixbufModuleSaveFunc {
  * @returns `TRUE` if the option is supported
  */
 export interface PixbufModuleSaveOptionSupportedFunc {
-    (option_key: string | null): boolean
+    (option_key: string): boolean
 }
 /**
  * Defines the type of the function that gets called once the size
@@ -731,7 +731,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param key a nul-terminated string.
      * @returns the value associated with `key`
      */
-    get_option(key: string | null): string | null
+    get_option(key: string): string | null
     /**
      * Returns a `GHashTable` with a list of all the options that may have been
      * attached to the `pixbuf` when it was loaded, or that may have been
@@ -800,7 +800,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param key a nul-terminated string representing the key to remove.
      * @returns `TRUE` if an option was removed, `FALSE` if not.
      */
-    remove_option(key: string | null): boolean
+    remove_option(key: string): boolean
     /**
      * Rotates a pixbuf by a multiple of 90 degrees, and returns the
      * result in a new pixbuf.
@@ -842,7 +842,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param option_values values for named options
      * @returns whether an error was set
      */
-    save_to_bufferv(type: string | null, option_keys: string[] | null, option_values: string[] | null): [ /* returnType */ boolean, /* buffer */ Uint8Array ]
+    save_to_bufferv(type: string, option_keys: string[] | null, option_values: string[] | null): [ /* returnType */ boolean, /* buffer */ Uint8Array ]
     /**
      * Vector version of `gdk_pixbuf_save_to_callback()`.
      * 
@@ -858,7 +858,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param option_values values for named options
      * @returns whether an error was set
      */
-    save_to_callbackv(save_func: PixbufSaveFunc, type: string | null, option_keys: string[] | null, option_values: string[] | null): boolean
+    save_to_callbackv(save_func: PixbufSaveFunc, type: string, option_keys: string[] | null, option_values: string[] | null): boolean
     /**
      * Saves `pixbuf` to an output stream.
      * 
@@ -873,7 +873,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param cancellable optional `GCancellable` object, `NULL` to ignore
      * @returns `TRUE` if the pixbuf was saved successfully, `FALSE` if an   error was set.
      */
-    save_to_streamv(stream: Gio.OutputStream, type: string | null, option_keys: string[] | null, option_values: string[] | null, cancellable: Gio.Cancellable | null): boolean
+    save_to_streamv(stream: Gio.OutputStream, type: string, option_keys: string[] | null, option_values: string[] | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Saves `pixbuf` to an output stream asynchronously.
      * 
@@ -891,7 +891,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param cancellable optional `GCancellable` object, `NULL` to ignore
      * @param callback a `GAsyncReadyCallback` to call when the pixbuf is saved
      */
-    save_to_streamv_async(stream: Gio.OutputStream, type: string | null, option_keys: string[] | null, option_values: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    save_to_streamv_async(stream: Gio.OutputStream, type: string, option_keys: string[] | null, option_values: string[] | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Vector version of `gdk_pixbuf_save()`.
      * 
@@ -906,7 +906,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param option_values values for named options
      * @returns whether an error was set
      */
-    savev(filename: string, type: string | null, option_keys: string[] | null, option_values: string[] | null): boolean
+    savev(filename: string, type: string, option_keys: string[] | null, option_values: string[] | null): boolean
     /**
      * Creates a transformation of the source image `src` by scaling by
      * `scale_x` and `scale_y` then translating by `offset_x` and `offset_y,`
@@ -967,7 +967,7 @@ export interface Pixbuf extends Gio.Icon, Gio.LoadableIcon {
      * @param value a nul-terminated string.
      * @returns `TRUE` on success
      */
-    set_option(key: string | null, value: string | null): boolean
+    set_option(key: string, value: string): boolean
 
     // Class property signals of GdkPixbuf-2.0.GdkPixbuf.Pixbuf
 
@@ -1350,7 +1350,7 @@ export class Pixbuf extends GObject.Object {
      * @param resource_path the path of the resource file
      * @returns A newly-created pixbuf
      */
-    static new_from_resource(resource_path: string | null): Pixbuf
+    static new_from_resource(resource_path: string): Pixbuf
     /**
      * Creates a new pixbuf by loading an image from an resource.
      * 
@@ -1372,7 +1372,7 @@ export class Pixbuf extends GObject.Object {
      * @param preserve_aspect_ratio `TRUE` to preserve the image's aspect ratio
      * @returns A newly-created pixbuf
      */
-    static new_from_resource_at_scale(resource_path: string | null, width: number, height: number, preserve_aspect_ratio: boolean): Pixbuf
+    static new_from_resource_at_scale(resource_path: string, width: number, height: number, preserve_aspect_ratio: boolean): Pixbuf
     /**
      * Creates a new pixbuf by loading an image from an input stream.
      * 
@@ -1536,7 +1536,7 @@ export class Pixbuf extends GObject.Object {
      * provided modules.
      * @param path Path to directory where the `loaders.cache` is installed
      */
-    static init_modules(path: string | null): boolean
+    static init_modules(path: string): boolean
     /**
      * Finishes an asynchronous pixbuf save operation started with
      * gdk_pixbuf_save_to_stream_async().
@@ -1766,7 +1766,7 @@ export class PixbufAnimation extends GObject.Object {
      * @param resource_path the path of the resource file
      * @returns A newly-created animation
      */
-    static new_from_resource(resource_path: string | null): PixbufAnimation
+    static new_from_resource(resource_path: string): PixbufAnimation
     /**
      * Creates a new animation by loading it from an input stream.
      * 
@@ -2244,7 +2244,7 @@ export class PixbufLoader extends GObject.Object {
      * @param mime_type the mime type to be loaded
      * @returns A newly-created pixbuf loader.
      */
-    static new_with_mime_type(mime_type: string | null): PixbufLoader
+    static new_with_mime_type(mime_type: string): PixbufLoader
     /**
      * Creates a new pixbuf loader object that always attempts to parse
      * image data as if it were an image of type `image_type,` instead of
@@ -2264,7 +2264,7 @@ export class PixbufLoader extends GObject.Object {
      * @param image_type name of the image format to be loaded with the image
      * @returns A newly-created pixbuf loader.
      */
-    static new_with_type(image_type: string | null): PixbufLoader
+    static new_with_type(image_type: string): PixbufLoader
     _init(config?: PixbufLoader.ConstructorProperties): void
 }
 
@@ -2589,7 +2589,7 @@ export interface PixbufFormat {
      * @param option_key the name of an option
      * @returns `TRUE` if the specified option is supported
      */
-    is_save_option_supported(option_key: string | null): boolean
+    is_save_option_supported(option_key: string): boolean
     /**
      * Returns whether this image format is scalable.
      * 

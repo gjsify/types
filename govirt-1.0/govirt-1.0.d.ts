@@ -113,7 +113,7 @@ interface Proxy {
      * @param vm_name name of the virtual machine to lookup
      * @returns a #OvirtVm whose name is @name or NULL
      */
-    lookup_vm(vm_name: string | null): Vm
+    lookup_vm(vm_name: string): Vm
 
     // Class property signals of GoVirt-1.0.GoVirt.Proxy
 
@@ -163,8 +163,8 @@ class Proxy extends Rest.Proxy {
     // Constructors of GoVirt-1.0.GoVirt.Proxy
 
     constructor(config?: Proxy.ConstructorProperties) 
-    constructor(uri: string | null) 
-    static new(uri: string | null): Proxy
+    constructor(uri: string) 
+    static new(uri: string): Proxy
 
     // Overloads of new
 
@@ -180,7 +180,7 @@ class Proxy extends Rest.Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Rest.Proxy
+    static new(url_format: string, binding_required: boolean): Rest.Proxy
     _init(config?: Proxy.ConstructorProperties): void
 }
 

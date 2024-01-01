@@ -217,7 +217,7 @@ interface Pixdata {
      * @param dumpType the kind of C source to be generated
      * @returns a newly-allocated string buffer containing   the C source form of `pixdata`.
      */
-    toCsource(name: string | null, dumpType: PixdataDumpType): GLib.String
+    toCsource(name: string, dumpType: PixdataDumpType): GLib.String
 }
 
 /**

@@ -56,11 +56,11 @@ enum NonstreamAudioSubsongMode {
 /**
  * The name of the template for the sink pad.
  */
-const NONSTREAM_AUDIO_DECODER_SINK_NAME: string | null
+const NONSTREAM_AUDIO_DECODER_SINK_NAME: string
 /**
  * The name of the template for the source pad.
  */
-const NONSTREAM_AUDIO_DECODER_SRC_NAME: string | null
+const NONSTREAM_AUDIO_DECODER_SRC_NAME: string
 module NonstreamAudioDecoder {
 
     // Constructor properties interface

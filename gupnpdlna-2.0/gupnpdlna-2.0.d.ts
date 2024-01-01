@@ -223,8 +223,8 @@ interface Information {
      * @returns A #GUPnPDLNAImageInformation object or %NULL.
      */
     get_image_information(): ImageInformation
-    get_profile_name(): string | null
-    get_uri(): string | null
+    get_profile_name(): string
+    get_uri(): string
     /**
      * Get an container information of media file if applicable (e.g. for
      * video files).
@@ -255,7 +255,7 @@ interface Information {
      * @returns A #GUPnPDLNAImageInformation object or %NULL.
      */
     vfunc_get_image_information(): ImageInformation
-    vfunc_get_profile_name(): string | null
+    vfunc_get_profile_name(): string
     /**
      * Get an container information of media file if applicable (e.g. for
      * video files).
@@ -344,14 +344,14 @@ interface MetadataExtractor {
      * @param timeout_in_ms Timeout in miliseconds.
      * @returns %TRUE if @uri was successfully queued, %FALSE otherwise.
      */
-    extract_async(uri: string | null, timeout_in_ms: number): boolean
+    extract_async(uri: string, timeout_in_ms: number): boolean
     /**
      * Discovers synchronously metadata of given `uri`.
      * @param uri URI to gather metadata for
      * @param timeout_in_ms Timeout in miliseconds.
      * @returns A #GUPnPDLNAInformation object if discovery succeeded, otherwise %NULL.
      */
-    extract_sync(uri: string | null, timeout_in_ms: number): Information
+    extract_sync(uri: string, timeout_in_ms: number): Information
 
     // Own virtual methods of GUPnPDLNA-2.0.GUPnPDLNA.MetadataExtractor
 
@@ -363,7 +363,7 @@ interface MetadataExtractor {
      * @param timeout_in_ms Timeout in miliseconds.
      * @returns %TRUE if @uri was successfully queued, %FALSE otherwise.
      */
-    vfunc_extract_async(uri: string | null, timeout_in_ms: number): boolean
+    vfunc_extract_async(uri: string, timeout_in_ms: number): boolean
     /**
      * Discovers synchronously metadata of given `uri`.
      * @virtual 
@@ -371,7 +371,7 @@ interface MetadataExtractor {
      * @param timeout_in_ms Timeout in miliseconds.
      * @returns A #GUPnPDLNAInformation object if discovery succeeded, otherwise %NULL.
      */
-    vfunc_extract_sync(uri: string | null, timeout_in_ms: number): Information
+    vfunc_extract_sync(uri: string, timeout_in_ms: number): Information
 
     // Own signals of GUPnPDLNA-2.0.GUPnPDLNA.MetadataExtractor
 
@@ -479,8 +479,8 @@ interface Profile {
      * @returns Image restrictions. Do not modify.
      */
     get_image_restrictions(): Restriction[]
-    get_mime(): string | null
-    get_name(): string | null
+    get_mime(): string
+    get_name(): string
     /**
      * Gets a list of video restrictions.
      * @returns Video restrictions. Do not modify.
@@ -613,7 +613,7 @@ interface ProfileGuesser {
      * @param name The name of the DLNA profile to be retrieved.
      * @returns A #GUPnPDLNAProfile object on success, %NULL otherwise.
      */
-    get_profile(name: string | null): Profile
+    get_profile(name: string): Profile
     get_relaxed_mode(): boolean
     /**
      * Asynchronously guesses DLNA profile for given `uri`. When guessing
@@ -622,7 +622,7 @@ interface ProfileGuesser {
      * @param timeout_in_ms Timeout of guessing in miliseconds.
      * @returns %TRUE if @uri was successfully queued, %FALSE otherwise.
      */
-    guess_profile_async(uri: string | null, timeout_in_ms: number): boolean
+    guess_profile_async(uri: string, timeout_in_ms: number): boolean
     /**
      * Guesses the profile which fits to passed `info`.
      * @param info The #GUPnPDLNAInformation object.
@@ -635,7 +635,7 @@ interface ProfileGuesser {
      * @param timeout_in_ms Timeout of guessing in miliseconds.
      * @returns DLNA profile if any had matched, %NULL otherwise.
      */
-    guess_profile_sync(uri: string | null, timeout_in_ms: number): [ /* returnType */ Profile, /* dlna_info */ Information ]
+    guess_profile_sync(uri: string, timeout_in_ms: number): [ /* returnType */ Profile, /* dlna_info */ Information ]
     /**
      * Gets a list of the all DLNA profiles supported by `guesser`.
      * @returns A #GList of #GUPnPDLNAProfile on success, %NULL otherwise.
@@ -919,7 +919,7 @@ interface InformationClass {
     get_container_information: (info: Information) => ContainerInformation
     get_image_information: (info: Information) => ImageInformation
     get_video_information: (info: Information) => VideoInformation
-    get_profile_name: (info: Information) => string | null
+    get_profile_name: (info: Information) => string
     /**
      * Padding. Ignore it.
      * @field 
@@ -990,8 +990,8 @@ interface MetadataExtractorClass {
      * @field 
      */
     parent_class: GObject.ObjectClass
-    extract_async: (extractor: MetadataExtractor, uri: string | null, timeout_in_ms: number) => boolean
-    extract_sync: (extractor: MetadataExtractor, uri: string | null, timeout_in_ms: number) => Information
+    extract_async: (extractor: MetadataExtractor, uri: string, timeout_in_ms: number) => boolean
+    extract_sync: (extractor: MetadataExtractor, uri: string, timeout_in_ms: number) => Information
     /**
      * Padding. Ignore it.
      * @field 
@@ -1061,7 +1061,7 @@ interface Restriction {
      * Gets `restriction'`s MIME type.
      * @returns MIME type. Do not modify.
      */
-    get_mime(): string | null
+    get_mime(): string
     is_empty(): boolean
     /**
      * Creates a string representation of `restriction`.

@@ -86,18 +86,18 @@ export interface SearchableContainer extends MediaContainer {
 
     // Owm methods of RygelServer-2.8.RygelServer.SearchableContainer
 
-    search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     search_finish(_res_: Gio.AsyncResult): [ /* returnType */ MediaObjects | null, /* total_matches */ number ]
-    simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    simple_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     simple_search_finish(_res_: Gio.AsyncResult): [ /* returnType */ MediaObjects | null, /* total_matches */ number ]
-    find_object(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     find_object_finish(_res_: Gio.AsyncResult): MediaObject | null
     get_search_classes(): Gee.ArrayList
     set_search_classes(value: Gee.ArrayList): void
 
     // Own virtual methods of RygelServer-2.8.RygelServer.SearchableContainer
 
-    vfunc_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_search(expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_search_finish(_res_: Gio.AsyncResult): [ /* returnType */ MediaObjects | null, /* total_matches */ number ]
     vfunc_get_search_classes(): Gee.ArrayList
     vfunc_set_search_classes(value: Gee.ArrayList): void
@@ -182,7 +182,7 @@ export interface TrackableContainer extends MediaContainer {
     remove_child_tracked(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void
     remove_child_tracked_finish(_res_: Gio.AsyncResult): void
     get_service_reset_token(): string | null
-    set_service_reset_token(token: string | null): void
+    set_service_reset_token(token: string): void
     get_system_update_id(): number
 
     // Own virtual methods of RygelServer-2.8.RygelServer.TrackableContainer
@@ -192,7 +192,7 @@ export interface TrackableContainer extends MediaContainer {
     vfunc_remove_child(object: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_remove_child_finish(_res_: Gio.AsyncResult): void
     vfunc_get_service_reset_token(): string | null
-    vfunc_set_service_reset_token(token: string | null): void
+    vfunc_set_service_reset_token(token: string): void
     vfunc_get_system_update_id(): number
 
     // Own signals of RygelServer-2.8.RygelServer.TrackableContainer
@@ -396,16 +396,16 @@ export interface WritableContainer extends MediaContainer {
 
     // Owm methods of RygelServer-2.8.RygelServer.WritableContainer
 
-    can_create(upnp_class: string | null): boolean
+    can_create(upnp_class: string): boolean
     add_item(item: MediaFileItem, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     add_item_finish(_res_: Gio.AsyncResult): void
     add_container(container: MediaContainer, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     add_container_finish(_res_: Gio.AsyncResult): void
     add_reference(object: MediaObject, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     add_reference_finish(_res_: Gio.AsyncResult): string | null
-    remove_item(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    remove_item(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     remove_item_finish(_res_: Gio.AsyncResult): void
-    remove_container(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    remove_container(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     remove_container_finish(_res_: Gio.AsyncResult): void
     get_create_classes(): Gee.ArrayList
     set_create_classes(value: Gee.ArrayList): void
@@ -418,9 +418,9 @@ export interface WritableContainer extends MediaContainer {
     vfunc_add_container_finish(_res_: Gio.AsyncResult): void
     vfunc_add_reference(object: MediaObject, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_add_reference_finish(_res_: Gio.AsyncResult): string | null
-    vfunc_remove_item(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_remove_item(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_remove_item_finish(_res_: Gio.AsyncResult): void
-    vfunc_remove_container(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_remove_container(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_remove_container_finish(_res_: Gio.AsyncResult): void
     vfunc_get_create_classes(): Gee.ArrayList
     vfunc_set_create_classes(value: Gee.ArrayList): void
@@ -674,8 +674,8 @@ export interface AudioItem {
     set_bits_per_sample(value: number): void
     get_channels(): number
     set_channels(value: number): void
-    get_album(): string | null
-    set_album(value: string | null): void
+    get_album(): string
+    set_album(value: string): void
 
     // Class property signals of RygelServer-2.8.RygelServer.AudioItem
 
@@ -767,8 +767,8 @@ export class AudioItem extends MediaFileItem {
     // Constructors of RygelServer-2.8.RygelServer.AudioItem
 
     constructor(config?: AudioItem.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null) 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): AudioItem
+    constructor(id: string, parent: MediaContainer, title: string, upnp_class: string) 
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): AudioItem
     _init(config?: AudioItem.ConstructorProperties): void
 }
 
@@ -867,8 +867,8 @@ export class ImageItem extends MediaFileItem {
     // Constructors of RygelServer-2.8.RygelServer.ImageItem
 
     constructor(config?: ImageItem.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null) 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): ImageItem
+    constructor(id: string, parent: MediaContainer, title: string, upnp_class: string) 
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): ImageItem
     _init(config?: ImageItem.ConstructorProperties): void
 }
 
@@ -901,7 +901,7 @@ export interface MediaArtStore {
     // Owm methods of RygelServer-2.8.RygelServer.MediaArtStore
 
     lookup_media_art(item: MusicItem): Thumbnail | null
-    add(item: MusicItem, file: Gio.File, data: Uint8Array, mime: string | null): void
+    add(item: MusicItem, file: Gio.File, data: Uint8Array, mime: string): void
     search_media_art_for_file(item: MusicItem, file: Gio.File): void
 
     // Class property signals of RygelServer-2.8.RygelServer.MediaArtStore
@@ -944,7 +944,7 @@ export interface MediaObjects {
 
     // Owm methods of RygelServer-2.8.RygelServer.MediaObjects
 
-    sort_by_criteria(sort_criteria: string | null): void
+    sort_by_criteria(sort_criteria: string): void
 
     // Conflicting methods
 
@@ -1193,12 +1193,12 @@ export class MusicItem extends AudioItem {
     // Constructors of RygelServer-2.8.RygelServer.MusicItem
 
     constructor(config?: MusicItem.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null) 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): MusicItem
+    constructor(id: string, parent: MediaContainer, title: string, upnp_class: string) 
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): MusicItem
 
     // Overloads of new
 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): AudioItem
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): AudioItem
     _init(config?: MusicItem.ConstructorProperties): void
 }
 
@@ -1285,12 +1285,12 @@ export class PhotoItem extends ImageItem {
     // Constructors of RygelServer-2.8.RygelServer.PhotoItem
 
     constructor(config?: PhotoItem.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null) 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): PhotoItem
+    constructor(id: string, parent: MediaContainer, title: string, upnp_class: string) 
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): PhotoItem
 
     // Overloads of new
 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): ImageItem
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): ImageItem
     _init(config?: PhotoItem.ConstructorProperties): void
 }
 
@@ -1337,7 +1337,7 @@ export interface SimpleContainer extends SearchableContainer {
     add_child_container(child: MediaContainer): void
     remove_child(child: MediaObject): void
     clear(): void
-    is_child_id_unique(child_id: string | null): boolean
+    is_child_id_unique(child_id: string): boolean
 
     // Class property signals of RygelServer-2.8.RygelServer.SimpleContainer
 
@@ -1414,9 +1414,9 @@ export class SimpleContainer extends MediaContainer {
     // Constructors of RygelServer-2.8.RygelServer.SimpleContainer
 
     constructor(config?: SimpleContainer.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer | null, title: string | null) 
-    static new(id: string | null, parent: MediaContainer | null, title: string | null): SimpleContainer
-    static root(title: string | null): SimpleContainer
+    constructor(id: string, parent: MediaContainer | null, title: string) 
+    static new(id: string, parent: MediaContainer | null, title: string): SimpleContainer
+    static root(title: string): SimpleContainer
     _init(config?: SimpleContainer.ConstructorProperties): void
 }
 
@@ -1433,11 +1433,11 @@ export interface Subtitle {
 
     // Owm methods of RygelServer-2.8.RygelServer.Subtitle
 
-    get_resource(protocol: string | null, index: number): MediaResource
+    get_resource(protocol: string, index: number): MediaResource
 
     // Own virtual methods of RygelServer-2.8.RygelServer.Subtitle
 
-    vfunc_get_resource(protocol: string | null, index: number): MediaResource
+    vfunc_get_resource(protocol: string, index: number): MediaResource
 }
 
 export class Subtitle {
@@ -1448,8 +1448,8 @@ export class Subtitle {
 
     // Constructors of RygelServer-2.8.RygelServer.Subtitle
 
-    constructor(mime_type: string | null, caption_type: string | null, file_extension: string | null) 
-    static new(mime_type: string | null, caption_type: string | null, file_extension: string | null): Subtitle
+    constructor(mime_type: string, caption_type: string, file_extension: string) 
+    static new(mime_type: string, caption_type: string, file_extension: string): Subtitle
 }
 
 export interface Thumbnail {
@@ -1460,11 +1460,11 @@ export interface Thumbnail {
 
     // Owm methods of RygelServer-2.8.RygelServer.Thumbnail
 
-    get_resource(protocol: string | null, index: number): MediaResource
+    get_resource(protocol: string, index: number): MediaResource
 
     // Own virtual methods of RygelServer-2.8.RygelServer.Thumbnail
 
-    vfunc_get_resource(protocol: string | null, index: number): MediaResource
+    vfunc_get_resource(protocol: string, index: number): MediaResource
 }
 
 export class Thumbnail extends RygelCore.IconInfo {
@@ -1475,12 +1475,12 @@ export class Thumbnail extends RygelCore.IconInfo {
 
     // Constructors of RygelServer-2.8.RygelServer.Thumbnail
 
-    constructor(mime_type: string | null, dlna_profile: string | null, file_extension: string | null) 
-    static new(mime_type: string | null, dlna_profile: string | null, file_extension: string | null): Thumbnail
+    constructor(mime_type: string, dlna_profile: string, file_extension: string) 
+    static new(mime_type: string, dlna_profile: string, file_extension: string): Thumbnail
 
     // Overloads of new
 
-    static new(mime_type: string | null, file_extension: string | null): RygelCore.IconInfo
+    static new(mime_type: string, file_extension: string): RygelCore.IconInfo
 }
 
 export module VideoItem {
@@ -1507,8 +1507,8 @@ export interface VideoItem extends VisualItem {
     // Owm methods of RygelServer-2.8.RygelServer.VideoItem
 
     add_subtitle_resources(http_server: HTTPServer): void
-    get_author(): string | null
-    set_author(value: string | null): void
+    get_author(): string
+    set_author(value: string): void
     get_subtitles(): Gee.ArrayList
     set_subtitles(value: Gee.ArrayList): void
 
@@ -1624,12 +1624,12 @@ export class VideoItem extends AudioItem {
     // Constructors of RygelServer-2.8.RygelServer.VideoItem
 
     constructor(config?: VideoItem.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null) 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): VideoItem
+    constructor(id: string, parent: MediaContainer, title: string, upnp_class: string) 
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): VideoItem
 
     // Overloads of new
 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): AudioItem
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): AudioItem
     _init(config?: VideoItem.ConstructorProperties): void
 }
 
@@ -1693,9 +1693,9 @@ export interface MediaContainer {
 
     // Owm methods of RygelServer-2.8.RygelServer.MediaContainer
 
-    get_children(offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    get_children(offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null
-    find_object(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     find_object_finish(_res_: Gio.AsyncResult): MediaObject | null
     updated(object: MediaObject | null, event_type: ObjectEventType, sub_tree_update: boolean): void
     get_child_count(): number
@@ -1705,14 +1705,14 @@ export interface MediaContainer {
     get_all_child_count(): number
     get_create_mode_enabled(): boolean
     set_create_mode_enabled(value: boolean): void
-    get_sort_criteria(): string | null
-    set_sort_criteria(value: string | null): void
+    get_sort_criteria(): string
+    set_sort_criteria(value: string): void
 
     // Own virtual methods of RygelServer-2.8.RygelServer.MediaContainer
 
-    vfunc_get_children(offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_get_children(offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_get_children_finish(_res_: Gio.AsyncResult): MediaObjects | null
-    vfunc_find_object(id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_find_object(id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_find_object_finish(_res_: Gio.AsyncResult): MediaObject | null
 
     // Own signals of RygelServer-2.8.RygelServer.MediaContainer
@@ -1821,8 +1821,8 @@ export interface MediaItem {
 
     // Owm methods of RygelServer-2.8.RygelServer.MediaItem
 
-    get_description(): string | null
-    set_description(value: string | null): void
+    get_description(): string
+    set_description(value: string): void
 
     // Class property signals of RygelServer-2.8.RygelServer.MediaItem
 
@@ -1927,14 +1927,14 @@ export interface MediaFileItem {
 
     get_primary_resource(): MediaResource
     get_extension(): string | null
-    ext_from_mime_type(mime_type: string | null): string | null
+    ext_from_mime_type(mime_type: string): string | null
     add_engine_resources(_callback_: Gio.AsyncReadyCallback<this> | null): void
     add_engine_resources_finish(_res_: Gio.AsyncResult): void
     add_additional_resources(server: HTTPServer): void
-    get_mime_type(): string | null
-    set_mime_type(value: string | null): void
-    get_dlna_profile(): string | null
-    set_dlna_profile(value: string | null): void
+    get_mime_type(): string
+    set_mime_type(value: string): void
+    get_dlna_profile(): string
+    set_dlna_profile(value: string): void
     get_size(): number
     set_size(value: number): void
     get_place_holder(): boolean
@@ -2082,53 +2082,53 @@ export interface MediaObject {
 
     get_uris(): Gee.List
     get_primary_uri(): string | null
-    add_uri(uri: string | null): void
+    add_uri(uri: string): void
     get_writable(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_writable_finish(_res_: Gio.AsyncResult): Gio.File | null
     get_writables(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_writables_finish(_res_: Gio.AsyncResult): Gee.ArrayList
     get_resource_list(): Gee.List
-    get_resource_by_name(resource_name: string | null): MediaResource | null
+    get_resource_by_name(resource_name: string): MediaResource | null
     serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null
     serialize_resource_list(didl_object: GUPnPAV.DIDLLiteObject, http_server: HTTPServer): void
     create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null
     apply_didl_lite(didl_object: GUPnPAV.DIDLLiteObject): void
-    compare_by_property(media_object: MediaObject, property: string | null): number
-    compare_string_props(prop1: string | null, prop2: string | null): number
+    compare_by_property(media_object: MediaObject, property: string): number
+    compare_string_props(prop1: string, prop2: string): number
     compare_int_props(prop1: number, prop2: number): number
-    get_id(): string | null
-    set_id(value: string | null): void
-    get_ref_id(): string | null
-    set_ref_id(value: string | null): void
-    get_upnp_class(): string | null
-    set_upnp_class(value: string | null): void
-    get_date(): string | null
-    set_date(value: string | null): void
-    get_creator(): string | null
-    set_creator(value: string | null): void
+    get_id(): string
+    set_id(value: string): void
+    get_ref_id(): string
+    set_ref_id(value: string): void
+    get_upnp_class(): string
+    set_upnp_class(value: string): void
+    get_date(): string
+    set_date(value: string): void
+    get_creator(): string
+    set_creator(value: string): void
     get_modified(): number
     set_modified(value: number): void
     get_object_update_id(): number
     set_object_update_id(value: number): void
-    get_artist(): string | null
-    set_artist(value: string | null): void
-    get_genre(): string | null
-    set_genre(value: string | null): void
+    get_artist(): string
+    set_artist(value: string): void
+    get_genre(): string
+    set_genre(value: string): void
     get_parent(): MediaContainer
     set_parent(value: MediaContainer): void
     get_parent_ref(): MediaContainer
     set_parent_ref(value: MediaContainer): void
-    get_title(): string | null
-    set_title(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
     get_ocm_flags(): GUPnPAV.OCMFlags
 
     // Own virtual methods of RygelServer-2.8.RygelServer.MediaObject
 
-    vfunc_add_uri(uri: string | null): void
+    vfunc_add_uri(uri: string): void
     vfunc_serialize(serializer: Serializer, http_server: HTTPServer): GUPnPAV.DIDLLiteObject | null
     vfunc_create_stream_source_for_resource(request: HTTPRequest, resource: MediaResource): DataSource | null
     vfunc_apply_didl_lite(didl_object: GUPnPAV.DIDLLiteObject): void
-    vfunc_compare_by_property(media_object: MediaObject, property: string | null): number
+    vfunc_compare_by_property(media_object: MediaObject, property: string): number
     vfunc_get_ocm_flags(): GUPnPAV.OCMFlags
 
     // Class property signals of RygelServer-2.8.RygelServer.MediaObject
@@ -2292,19 +2292,19 @@ export interface MediaResource {
     is_link_protection_enabled(): boolean
     is_dlna_content(): boolean
     get_default_transfer_mode(): string | null
-    supports_transfer_mode(transfer_mode: string | null): boolean
+    supports_transfer_mode(transfer_mode: string): boolean
     is_streamable(): boolean
     is_cleartext_range_support_enabled(): boolean
     supports_playspeed(): boolean
     is_dlna_protocol_flag_set(flags: number): boolean
     is_dlna_operation_mode_set(flags: number): boolean
     to_string(): string | null
-    get_uri(): string | null
-    set_uri(value: string | null): void
-    get_import_uri(): string | null
-    set_import_uri(value: string | null): void
-    get_extension(): string | null
-    set_extension(value: string | null): void
+    get_uri(): string
+    set_uri(value: string): void
+    get_import_uri(): string
+    set_import_uri(value: string): void
+    get_extension(): string
+    set_extension(value: string): void
     get_size(): number
     set_size(value: number): void
     get_cleartext_size(): number
@@ -2325,14 +2325,14 @@ export interface MediaResource {
     set_audio_channels(value: number): void
     get_sample_freq(): number
     set_sample_freq(value: number): void
-    get_protocol(): string | null
-    set_protocol(value: string | null): void
-    get_mime_type(): string | null
-    set_mime_type(value: string | null): void
-    get_dlna_profile(): string | null
-    set_dlna_profile(value: string | null): void
-    get_network(): string | null
-    set_network(value: string | null): void
+    get_protocol(): string
+    set_protocol(value: string): void
+    get_mime_type(): string
+    set_mime_type(value: string): void
+    get_dlna_profile(): string
+    set_dlna_profile(value: string): void
+    get_network(): string
+    set_network(value: string): void
     get_dlna_conversion(): GUPnPAV.DLNAConversion
     set_dlna_conversion(value: GUPnPAV.DLNAConversion): void
     get_dlna_flags(): GUPnPAV.DLNAFlags
@@ -2418,10 +2418,10 @@ export class MediaResource extends GObject.Object {
     // Constructors of RygelServer-2.8.RygelServer.MediaResource
 
     constructor(config?: MediaResource.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): MediaResource
-    static from_resource(name: string | null, that: MediaResource): MediaResource
-    static from_didl_lite_resource(name: string | null, didl_resource: GUPnPAV.DIDLLiteResource): MediaResource
+    constructor(name: string) 
+    static new(name: string): MediaResource
+    static from_resource(name: string, that: MediaResource): MediaResource
+    static from_didl_lite_resource(name: string, didl_resource: GUPnPAV.DIDLLiteResource): MediaResource
     _init(config?: MediaResource.ConstructorProperties): void
 }
 
@@ -2459,7 +2459,7 @@ export interface MediaServerPlugin {
     // Owm methods of RygelServer-2.8.RygelServer.MediaServerPlugin
 
     get_root_container(): MediaContainer
-    get_search_caps(): string | null
+    get_search_caps(): string
     get_upload_profiles(): RygelCore.DLNAProfile[]
     set_upload_profiles(value: RygelCore.DLNAProfile[]): void
     get_supported_profiles(): RygelCore.DLNAProfile[]
@@ -2467,7 +2467,7 @@ export interface MediaServerPlugin {
 
     // Own virtual methods of RygelServer-2.8.RygelServer.MediaServerPlugin
 
-    vfunc_get_search_caps(): string | null
+    vfunc_get_search_caps(): string
 
     // Class property signals of RygelServer-2.8.RygelServer.MediaServerPlugin
 
@@ -2611,8 +2611,8 @@ export class MediaServer extends RygelCore.MediaDevice {
     // Constructors of RygelServer-2.8.RygelServer.MediaServer
 
     constructor(config?: MediaServer.ConstructorProperties) 
-    constructor(title: string | null, root_container: MediaContainer, capabilities: RygelCore.PluginCapabilities) 
-    static new(title: string | null, root_container: MediaContainer, capabilities: RygelCore.PluginCapabilities): MediaServer
+    constructor(title: string, root_container: MediaContainer, capabilities: RygelCore.PluginCapabilities) 
+    static new(title: string, root_container: MediaContainer, capabilities: RygelCore.PluginCapabilities): MediaServer
     _init(config?: MediaServer.ConstructorProperties): void
 }
 
@@ -2624,7 +2624,7 @@ export module MediaEngine {
      * Signal callback interface for `resource-changed`
      */
     export interface ResourceChangedSignalCallback {
-        ($obj: MediaEngine, media_object_uri: string | null): void
+        ($obj: MediaEngine, media_object_uri: string): void
     }
 
 
@@ -2643,7 +2643,7 @@ export interface MediaEngine {
     get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null
     create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: GLib.HashTable): DataSource | null
-    create_data_source_for_uri(uri: string | null): DataSource | null
+    create_data_source_for_uri(uri: string): DataSource | null
     get_internal_protocol_schemes(): string[]
 
     // Own virtual methods of RygelServer-2.8.RygelServer.MediaEngine
@@ -2652,14 +2652,14 @@ export interface MediaEngine {
     vfunc_get_resources_for_item(item: MediaObject, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_get_resources_for_item_finish(_res_: Gio.AsyncResult): Gee.List | null
     vfunc_create_data_source_for_resource(item: MediaObject, resource: MediaResource, replacements: GLib.HashTable): DataSource | null
-    vfunc_create_data_source_for_uri(uri: string | null): DataSource | null
+    vfunc_create_data_source_for_uri(uri: string): DataSource | null
     vfunc_get_internal_protocol_schemes(): string[]
 
     // Own signals of RygelServer-2.8.RygelServer.MediaEngine
 
     connect(sigName: "resource-changed", callback: MediaEngine.ResourceChangedSignalCallback): number
     connect_after(sigName: "resource-changed", callback: MediaEngine.ResourceChangedSignalCallback): number
-    emit(sigName: "resource-changed", media_object_uri: string | null, ...args: any[]): void
+    emit(sigName: "resource-changed", media_object_uri: string, ...args: any[]): void
 
     // Class property signals of RygelServer-2.8.RygelServer.MediaEngine
 
@@ -2799,8 +2799,8 @@ export class PlaylistItem extends MediaFileItem {
     // Constructors of RygelServer-2.8.RygelServer.PlaylistItem
 
     constructor(config?: PlaylistItem.ConstructorProperties) 
-    constructor(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null) 
-    static new(id: string | null, parent: MediaContainer, title: string | null, upnp_class: string | null): PlaylistItem
+    constructor(id: string, parent: MediaContainer, title: string, upnp_class: string) 
+    static new(id: string, parent: MediaContainer, title: string, upnp_class: string): PlaylistItem
     _init(config?: PlaylistItem.ConstructorProperties): void
 }
 
@@ -3056,7 +3056,7 @@ export interface HTTPGetHandler {
 
     add_response_headers(request: HTTPGet): void
     get_default_transfer_mode(): string | null
-    supports_transfer_mode(mode: string | null): boolean
+    supports_transfer_mode(mode: string): boolean
     get_resource_size(): number
     get_resource_duration(): number
     supports_byte_seek(): boolean
@@ -3070,7 +3070,7 @@ export interface HTTPGetHandler {
 
     vfunc_add_response_headers(request: HTTPGet): void
     vfunc_get_default_transfer_mode(): string | null
-    vfunc_supports_transfer_mode(mode: string | null): boolean
+    vfunc_supports_transfer_mode(mode: string): boolean
     vfunc_get_resource_size(): number
     vfunc_get_resource_duration(): number
     vfunc_supports_byte_seek(): boolean
@@ -3188,8 +3188,8 @@ export interface HTTPItemURI {
     // Owm methods of RygelServer-2.8.RygelServer.HTTPItemURI
 
     to_string(): string | null
-    get_item_id(): string | null
-    set_item_id(value: string | null): void
+    get_item_id(): string
+    set_item_id(value: string): void
     get_thumbnail_index(): number
     set_thumbnail_index(value: number): void
     get_subtitle_index(): number
@@ -3199,7 +3199,7 @@ export interface HTTPItemURI {
     get_http_server(): HTTPServer
     set_http_server(value: HTTPServer): void
     get_extension(): string | null
-    set_extension(value: string | null): void
+    set_extension(value: string): void
 
     // Class property signals of RygelServer-2.8.RygelServer.HTTPItemURI
 
@@ -3239,7 +3239,7 @@ export class HTTPItemURI extends GObject.Object {
     constructor(config?: HTTPItemURI.ConstructorProperties) 
     constructor(object: MediaObject, http_server: HTTPServer, thumbnail_index: number, subtitle_index: number, resource_name: string | null) 
     static new(object: MediaObject, http_server: HTTPServer, thumbnail_index: number, subtitle_index: number, resource_name: string | null): HTTPItemURI
-    static from_string(uri: string | null, http_server: HTTPServer): HTTPItemURI
+    static from_string(uri: string, http_server: HTTPServer): HTTPItemURI
     _init(config?: HTTPItemURI.ConstructorProperties): void
 }
 
@@ -3448,14 +3448,14 @@ export interface HTTPServer extends RygelCore.StateMachine {
     // Owm methods of RygelServer-2.8.RygelServer.HTTPServer
 
     set_resource_delivery_options(res: MediaResource): void
-    need_proxy(uri: string | null): boolean
+    need_proxy(uri: string): boolean
     get_protocol(): string | null
     get_protocol_info(): Gee.ArrayList
     get_replacements(): GLib.HashTable
     is_local(): boolean
-    get_path_root(): string | null
-    get_server_name(): string | null
-    set_server_name(value: string | null): void
+    get_path_root(): string
+    get_server_name(): string
+    set_server_name(value: string): void
 
     // Own virtual methods of RygelServer-2.8.RygelServer.HTTPServer
 
@@ -3489,8 +3489,8 @@ export class HTTPServer extends GObject.Object {
     // Constructors of RygelServer-2.8.RygelServer.HTTPServer
 
     constructor(config?: HTTPServer.ConstructorProperties) 
-    constructor(content_dir: ContentDirectory, name: string | null) 
-    static new(content_dir: ContentDirectory, name: string | null): HTTPServer
+    constructor(content_dir: ContentDirectory, name: string) 
+    static new(content_dir: ContentDirectory, name: string): HTTPServer
     _init(config?: HTTPServer.ConstructorProperties): void
 }
 
@@ -3674,7 +3674,7 @@ export interface Serializer {
 
     add_item(): GUPnPAV.DIDLLiteItem | null
     add_container(): GUPnPAV.DIDLLiteContainer | null
-    filter(filter_string: string | null): void
+    filter(filter_string: string): void
     get_string(): string | null
 
     // Class property signals of RygelServer-2.8.RygelServer.Serializer
@@ -3731,7 +3731,7 @@ export class PlaySpeed {
 
     constructor(numerator: number, denominator: number) 
     static new(numerator: number, denominator: number): PlaySpeed
-    static from_string(speed: string | null): PlaySpeed
+    static from_string(speed: string): PlaySpeed
 }
 
 export module PlaySpeedRequest {
@@ -3781,7 +3781,7 @@ export class PlaySpeedRequest extends GObject.Object {
     constructor(config?: PlaySpeedRequest.ConstructorProperties) 
     constructor(numerator: number, denominator: number) 
     static new(numerator: number, denominator: number): PlaySpeedRequest
-    static from_string(speed: string | null): PlaySpeedRequest
+    static from_string(speed: string): PlaySpeedRequest
     _init(config?: PlaySpeedRequest.ConstructorProperties): void
     static supported(request: HTTPGet): boolean
 }
@@ -3826,7 +3826,7 @@ export class PlaySpeedResponse extends HTTPResponseElement {
     constructor(numerator: number, denominator: number, framerate: number) 
     static new(numerator: number, denominator: number, framerate: number): PlaySpeedResponse
     static from_speed(speed: PlaySpeed, framerate: number): PlaySpeedResponse
-    static from_string(speed: string | null, framerate: number): PlaySpeedResponse
+    static from_string(speed: string, framerate: number): PlaySpeedResponse
     _init(config?: PlaySpeedResponse.ConstructorProperties): void
 }
 
@@ -4300,7 +4300,7 @@ export interface SubtitleClass {
 
     // Own fields of RygelServer-2.8.RygelServer.SubtitleClass
 
-    get_resource: (self: Subtitle, protocol: string | null, index: number) => MediaResource
+    get_resource: (self: Subtitle, protocol: string, index: number) => MediaResource
 }
 
 export abstract class SubtitleClass {
@@ -4324,7 +4324,7 @@ export interface ThumbnailClass {
 
     // Own fields of RygelServer-2.8.RygelServer.ThumbnailClass
 
-    get_resource: (self: Thumbnail, protocol: string | null, index: number) => MediaResource
+    get_resource: (self: Thumbnail, protocol: string, index: number) => MediaResource
 }
 
 export abstract class ThumbnailClass {
@@ -4372,9 +4372,9 @@ export interface MediaContainerClass {
 
     // Own fields of RygelServer-2.8.RygelServer.MediaContainerClass
 
-    get_children: (self: MediaContainer, offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    get_children: (self: MediaContainer, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     get_children_finish: (self: MediaContainer, _res_: Gio.AsyncResult) => MediaObjects | null
-    find_object: (self: MediaContainer, id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    find_object: (self: MediaContainer, id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     find_object_finish: (self: MediaContainer, _res_: Gio.AsyncResult) => MediaObject | null
 }
 
@@ -4447,11 +4447,11 @@ export interface MediaObjectClass {
 
     // Own fields of RygelServer-2.8.RygelServer.MediaObjectClass
 
-    add_uri: (self: MediaObject, uri: string | null) => void
+    add_uri: (self: MediaObject, uri: string) => void
     serialize: (self: MediaObject, serializer: Serializer, http_server: HTTPServer) => GUPnPAV.DIDLLiteObject | null
     create_stream_source_for_resource: (self: MediaObject, request: HTTPRequest, resource: MediaResource) => DataSource | null
     apply_didl_lite: (self: MediaObject, didl_object: GUPnPAV.DIDLLiteObject) => void
-    compare_by_property: (self: MediaObject, media_object: MediaObject, property: string | null) => number
+    compare_by_property: (self: MediaObject, media_object: MediaObject, property: string) => number
 }
 
 export abstract class MediaObjectClass {
@@ -4564,7 +4564,7 @@ export interface MediaEngineClass {
     get_resources_for_item: (self: MediaEngine, item: MediaObject, _callback_: Gio.AsyncReadyCallback | null) => void
     get_resources_for_item_finish: (self: MediaEngine, _res_: Gio.AsyncResult) => Gee.List | null
     create_data_source_for_resource: (self: MediaEngine, item: MediaObject, resource: MediaResource, replacements: GLib.HashTable) => DataSource | null
-    create_data_source_for_uri: (self: MediaEngine, uri: string | null) => DataSource | null
+    create_data_source_for_uri: (self: MediaEngine, uri: string) => DataSource | null
     get_internal_protocol_schemes: (self: MediaEngine) => string[]
 }
 
@@ -4691,7 +4691,7 @@ export interface HTTPGetHandlerClass {
 
     add_response_headers: (self: HTTPGetHandler, request: HTTPGet) => void
     get_default_transfer_mode: (self: HTTPGetHandler) => string | null
-    supports_transfer_mode: (self: HTTPGetHandler, mode: string | null) => boolean
+    supports_transfer_mode: (self: HTTPGetHandler, mode: string) => boolean
     get_resource_size: (self: HTTPGetHandler) => number
     get_resource_duration: (self: HTTPGetHandler) => number
     supports_byte_seek: (self: HTTPGetHandler) => boolean
@@ -5062,7 +5062,7 @@ export interface SearchableContainerIface {
 
     // Own fields of RygelServer-2.8.RygelServer.SearchableContainerIface
 
-    search: (self: SearchableContainer, expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    search: (self: SearchableContainer, expression: SearchExpression | null, offset: number, max_count: number, sort_criteria: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     search_finish: (self: SearchableContainer, _res_: Gio.AsyncResult) => [ /* returnType */ MediaObjects | null, /* total_matches */ number ]
     get_search_classes: (self: SearchableContainer) => Gee.ArrayList
     set_search_classes: (self: SearchableContainer, value: Gee.ArrayList) => void
@@ -5084,7 +5084,7 @@ export interface TrackableContainerIface {
     remove_child: (self: TrackableContainer, object: MediaObject, _callback_: Gio.AsyncReadyCallback | null) => void
     remove_child_finish: (self: TrackableContainer, _res_: Gio.AsyncResult) => void
     get_service_reset_token: (self: TrackableContainer) => string | null
-    set_service_reset_token: (self: TrackableContainer, token: string | null) => void
+    set_service_reset_token: (self: TrackableContainer, token: string) => void
     get_system_update_id: (self: TrackableContainer) => number
 }
 
@@ -5136,9 +5136,9 @@ export interface WritableContainerIface {
     add_container_finish: (self: WritableContainer, _res_: Gio.AsyncResult) => void
     add_reference: (self: WritableContainer, object: MediaObject, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     add_reference_finish: (self: WritableContainer, _res_: Gio.AsyncResult) => string | null
-    remove_item: (self: WritableContainer, id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    remove_item: (self: WritableContainer, id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     remove_item_finish: (self: WritableContainer, _res_: Gio.AsyncResult) => void
-    remove_container: (self: WritableContainer, id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    remove_container: (self: WritableContainer, id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     remove_container_finish: (self: WritableContainer, _res_: Gio.AsyncResult) => void
     get_create_classes: (self: WritableContainer) => Gee.ArrayList
     set_create_classes: (self: WritableContainer, value: Gee.ArrayList) => void

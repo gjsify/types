@@ -525,7 +525,7 @@ export function util_get_debug(): boolean
  * Gets the version string
  * @returns Spice-GTK version as a const string.
  */
-export function util_get_version_string(): string | null
+export function util_get_version_string(): string
 /**
  * Enable or disable Spice-GTK debugging messages.
  * @param enabled %TRUE or %FALSE
@@ -871,13 +871,13 @@ export class Channel extends GObject.Object {
      * @param str a string representation of the channel-type property
      * @returns the channel-type property value for a @str channel
      */
-    static string_to_type(str: string | null): number
+    static string_to_type(str: string): number
     /**
      * Convert a channel-type property value to a string.
      * @param type a channel-type property value
      * @returns string representation of @type.
      */
-    static type_to_string(type: number): string | null
+    static type_to_string(type: number): string
 }
 
 export module CursorChannel {
@@ -4269,16 +4269,16 @@ export interface URI {
 
     // Owm methods of SpiceClientGLib-2.0.SpiceClientGLib.URI
 
-    get_hostname(): string | null
-    get_password(): string | null
+    get_hostname(): string
+    get_password(): string
     get_port(): number
-    get_scheme(): string | null
-    get_user(): string | null
-    set_hostname(hostname: string | null): void
-    set_password(password: string | null): void
+    get_scheme(): string
+    get_user(): string
+    set_hostname(hostname: string): void
+    set_password(password: string): void
     set_port(port: number): void
-    set_scheme(scheme: string | null): void
-    set_user(user: string | null): void
+    set_scheme(scheme: string): void
+    set_user(user: string): void
     to_string(): string | null
 
     // Class property signals of SpiceClientGLib-2.0.SpiceClientGLib.URI

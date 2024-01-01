@@ -120,7 +120,7 @@ export function finalize(): void
  * webkit_web_context_set_sandbox_enabled() on the default #WebKitWebContext.
  */
 export function init(): void
-export function linkTypeToString(linkType: LinkType): string | null
+export function linkTypeToString(linkType: LinkType): string
 export module AssistantView {
 
     // Signal callback interfaces
@@ -162,7 +162,7 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param str the search query.
      * @returns %TRUE if @str was found, %FALSE otherwise.
      */
-    search(str: string | null): boolean
+    search(str: string): boolean
     /**
      * Open `link` in the assistant view, if %NULL the view will be blanked.
      * @param link a #DhLink to set or %NULL.
@@ -181,13 +181,13 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -200,13 +200,13 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -219,7 +219,7 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -228,7 +228,7 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Gets the #WebKitSettings currently applied to `web_view`.
      * 
@@ -279,7 +279,7 @@ export interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -732,11 +732,11 @@ export interface Book {
      * with the title.
      * @returns the book ID.
      */
-    getId(): string | null
+    getId(): string
     getIndexFile(): Gio.File
-    getLanguage(): string | null
+    getLanguage(): string
     getLinks(): Link[]
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets the general structure of the book, as a tree. The tree contains only
      * #DhLink's of type %DH_LINK_TYPE_BOOK or %DH_LINK_TYPE_PAGE. The other
@@ -1226,7 +1226,7 @@ export interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrol
      * an anchor).
      * @param uri the URI to select.
      */
-    selectUri(uri: string | null): void
+    selectUri(uri: string): void
 
     // Conflicting methods
 
@@ -1239,13 +1239,13 @@ export interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrol
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1258,13 +1258,13 @@ export interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrol
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1277,7 +1277,7 @@ export interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrol
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1286,7 +1286,7 @@ export interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrol
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1298,7 +1298,7 @@ export interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrol
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1726,7 +1726,7 @@ export interface Completion {
      * After adding all the strings you need to call dh_completion_sort().
      * @param str a string.
      */
-    addString(str: string | null): void
+    addString(str: string): void
     /**
      * This function does the equivalent of:
      * 1. Searches the data structure of `completion` to find all strings that have
@@ -1740,7 +1740,7 @@ export interface Completion {
      * @param prefix the string to complete.
      * @returns the completed prefix, or %NULL if a longer prefix has not been found. Free with g_free() when no longer needed.
      */
-    complete(prefix: string | null): string | null
+    complete(prefix: string): string | null
     /**
      * Sorts all the strings. It is required to call this function after adding
      * strings with dh_completion_add_string().
@@ -1781,7 +1781,7 @@ export class Completion extends GObject.Object {
      * @param prefix the string to complete.
      * @returns the completed prefix, or %NULL if a longer prefix has not been found. Free with g_free() when no longer needed.
      */
-    static aggregateComplete(completionObjects: Completion[] | null, prefix: string | null): string | null
+    static aggregateComplete(completionObjects: Completion[] | null, prefix: string): string | null
 }
 
 export module KeywordModel {
@@ -1826,7 +1826,7 @@ export interface KeywordModel extends Gtk.TreeModel {
      * @param profile a #DhProfile, or %NULL for the default profile.
      * @returns the #DhLink that matches exactly @search_string, or %NULL if no such #DhLink was found within the maximum number of matches.
      */
-    filter(searchString: string | null, currentBookId: string | null, profile: Profile | null): Link | null
+    filter(searchString: string, currentBookId: string | null, profile: Profile | null): Link | null
 
     // Class property signals of Devhelp-3.0.Devhelp.KeywordModel
 
@@ -1916,13 +1916,13 @@ export interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1935,13 +1935,13 @@ export interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1954,7 +1954,7 @@ export interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1963,7 +1963,7 @@ export interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1975,7 +1975,7 @@ export interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2482,13 +2482,13 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2501,13 +2501,13 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2520,7 +2520,7 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2529,7 +2529,7 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2541,7 +2541,7 @@ export interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2947,7 +2947,7 @@ export interface Settings {
      * property.
      * @returns the value of the #DhSettings:fixed-font property.
      */
-    getFixedFont(): string | null
+    getFixedFont(): string
     getGroupBooksByLanguage(): boolean
     /**
      * If #DhSettings:use-system-fonts is %TRUE, returns the system fonts. Otherwise
@@ -2962,7 +2962,7 @@ export interface Settings {
      * property.
      * @returns the value of the #DhSettings:variable-font property.
      */
-    getVariableFont(): string | null
+    getVariableFont(): string
     /**
      * Returns whether `book` is enabled according to the "books-disabled" #GSettings
      * key. If the `book` ID is present in "books-disabled", this function returns
@@ -2982,7 +2982,7 @@ export interface Settings {
      * Sets the #DhSettings:fixed-font property.
      * @param fixedFont the new value.
      */
-    setFixedFont(fixedFont: string | null): void
+    setFixedFont(fixedFont: string): void
     /**
      * Sets the #DhSettings:group-books-by-language property.
      * @param groupBooksByLanguage the new value.
@@ -2997,7 +2997,7 @@ export interface Settings {
      * Sets the #DhSettings:variable-font property.
      * @param variableFont the new value.
      */
-    setVariableFont(variableFont: string | null): void
+    setVariableFont(variableFont: string): void
     /**
      * Stops the effect of dh_settings_freeze_books_disabled_changed(), and emits
      * the #DhSettings::books-disabled-changed signal.
@@ -3107,7 +3107,7 @@ export interface SettingsBuilder {
      * used.
      * @param contentsPath the path for the "contents" schema.
      */
-    setContentsPath(contentsPath: string | null): void
+    setContentsPath(contentsPath: string): void
     /**
      * Sets the path for the "fonts" schema.
      * 
@@ -3115,7 +3115,7 @@ export interface SettingsBuilder {
      * used.
      * @param fontsPath the path for the "fonts" schema.
      */
-    setFontsPath(fontsPath: string | null): void
+    setFontsPath(fontsPath: string): void
 
     // Class property signals of Devhelp-3.0.Devhelp.SettingsBuilder
 
@@ -3202,12 +3202,12 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Calls dh_book_tree_select_uri().
      * @param uri the URI to select.
      */
-    selectUri(uri: string | null): void
+    selectUri(uri: string): void
     /**
      * Gives the focus to the search entry.
      */
     setSearchFocus(): void
-    setSearchString(str: string | null): void
+    setSearchString(str: string): void
 
     // Conflicting methods
 
@@ -3220,13 +3220,13 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3239,13 +3239,13 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3258,7 +3258,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3267,7 +3267,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3279,7 +3279,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3652,13 +3652,13 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3671,13 +3671,13 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3690,7 +3690,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3699,7 +3699,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3711,7 +3711,7 @@ export interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4071,13 +4071,13 @@ export interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4090,13 +4090,13 @@ export interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4109,7 +4109,7 @@ export interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4118,7 +4118,7 @@ export interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4130,7 +4130,7 @@ export interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4496,7 +4496,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * (translated).
      * @returns the title of @view, suitable for a tab label or window title.
      */
-    getDevhelpTitle(): string | null
+    getDevhelpTitle(): string
     getProfile(): Profile
     /**
      * Reset the text size to the normal size.
@@ -4540,13 +4540,13 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -4559,13 +4559,13 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -4578,7 +4578,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -4587,7 +4587,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Gets the #WebKitSettings currently applied to `web_view`.
      * 
@@ -4638,7 +4638,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4669,7 +4669,7 @@ export interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
 
     // Own virtual methods of Devhelp-3.0.Devhelp.WebView
 
-    openNewTab(uri: string | null): void
+    openNewTab(uri: string): void
 
     // Own signals of Devhelp-3.0.Devhelp.WebView
 
@@ -5255,7 +5255,7 @@ export interface Link {
      * @param pageId a page ID, i.e. the filename without its extension.
      * @returns whether @link belongs to @page_id.
      */
-    belongsToPage(pageId: string | null): boolean
+    belongsToPage(pageId: string): boolean
     /**
      * Compares the links `a` and `b`. This function is used to determine in which
      * order the links should be displayed.
@@ -5263,18 +5263,18 @@ export interface Link {
      * @returns an integer less than zero if @a should appear before @b; zero if there are no preferences; an integer greater than zero if @b should appear before @a.
      */
     compare(b: Link): number
-    getBookId(): string | null
-    getBookTitle(): string | null
+    getBookId(): string
+    getBookTitle(): string
     getFlags(): LinkFlags
     getLinkType(): LinkType
-    getName(): string | null
+    getName(): string
     /**
      * Gets the `link` URI, by concateneting the book base path with the `link`
      * relative URL.
      * @returns the @link URI, or %NULL if getting the URI failed. Free with g_free() when no longer needed.
      */
     getUri(): string | null
-    matchRelativeUrl(relativeUrl: string | null): boolean
+    matchRelativeUrl(relativeUrl: string): boolean
     /**
      * Increases the reference count of `link`.
      * 
@@ -5303,9 +5303,9 @@ export class Link {
 
     // Constructors of Devhelp-3.0.Devhelp.Link
 
-    constructor(type: LinkType, bookLink: Link, name: string | null, relativeUrl: string | null) 
-    static new(type: LinkType, bookLink: Link, name: string | null, relativeUrl: string | null): Link
-    static newBook(basePath: string | null, bookId: string | null, bookTitle: string | null, relativeUrl: string | null): Link
+    constructor(type: LinkType, bookLink: Link, name: string, relativeUrl: string) 
+    static new(type: LinkType, bookLink: Link, name: string, relativeUrl: string): Link
+    static newBook(basePath: string, bookId: string, bookTitle: string, relativeUrl: string): Link
 }
 
 export interface NotebookClass {
@@ -5531,7 +5531,7 @@ export interface WebViewClass {
     // Own fields of Devhelp-3.0.Devhelp.WebViewClass
 
     parentClass: WebKit2.WebViewClass
-    openNewTab: (view: WebView, uri: string | null) => void
+    openNewTab: (view: WebView, uri: string) => void
     padding: any[]
 }
 

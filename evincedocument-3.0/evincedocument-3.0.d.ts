@@ -233,8 +233,8 @@ enum FindOptions {
  * (e.g. in version 3.1.4 this is 3).
  */
 const MAJOR_VERSION: number
-function backends_manager_get_document(mime_type: string | null): Document
-function backends_manager_get_document_module_name(document: Document): string | null
+function backends_manager_get_document(mime_type: string): Document
+function backends_manager_get_document_module_name(document: Document): string
 function document_error_quark(): GLib.Quark
 /**
  * Compresses the file at `uri`.
@@ -251,7 +251,7 @@ function document_error_quark(): GLib.Quark
  * @param type the compression type
  * @returns a newly allocated string URI, or %NULL on error
  */
-function file_compress(uri: string | null, type: CompressionType): string | null
+function file_compress(uri: string, type: CompressionType): string | null
 /**
  * Performs a g_file_copy_attributes() with %G_FILE_COPY_ALL_METADATA
  * from `from` to `to`.
@@ -259,8 +259,8 @@ function file_compress(uri: string | null, type: CompressionType): string | null
  * @param to the target URI
  * @returns %TRUE if the attributes were copied successfully, %FALSE otherwise.
  */
-function file_copy_metadata(from: string | null, to: string | null): boolean
-function file_get_mime_type(uri: string | null, fast: boolean): string | null
+function file_copy_metadata(from: string, to: string): boolean
+function file_get_mime_type(uri: string, fast: boolean): string | null
 function file_get_mime_type_from_fd(fd: number): string | null
 function file_is_temp(file: Gio.File): boolean
 /**
@@ -277,8 +277,8 @@ function file_is_temp(file: Gio.File): boolean
  * @param type the compression type
  * @returns a newly allocated string URI, or %NULL on error
  */
-function file_uncompress(uri: string | null, type: CompressionType): string | null
-function get_locale_dir(): string | null
+function file_uncompress(uri: string, type: CompressionType): string | null
+function get_locale_dir(): string
 /**
  * Initializes the evince document library, and binds the evince
  * gettext domain.
@@ -293,20 +293,20 @@ function init(): boolean
  * @param tmpl a template string; must end in 'XXXXXX'
  * @returns a newly allocated string with the temp directory name, or %NULL   on error with @error filled in
  */
-function mkdtemp(tmpl: string | null): string | null
+function mkdtemp(tmpl: string): string | null
 /**
  * Creates a temp file in the evince temp directory.
  * @param tmpl a template string; must contain 'XXXXXX', but not necessarily as a suffix
  * @param file_name a location to store the filename of the temp file
  * @returns a file descriptor to the newly created temp file name, or %-1   on error with @error filled in
  */
-function mkstemp(tmpl: string | null, file_name: string | null): number
+function mkstemp(tmpl: string, file_name: string | null): number
 /**
  * Creates a temp #GFile in the evince temp directory. See ev_mkstemp() for more information.
  * @param tmpl a template string; must contain 'XXXXXX', but not necessarily as a suffix
  * @returns a newly allocated #GFile for the newly created temp file name, or %NULL   on error with @error filled in
  */
-function mkstemp_file(tmpl: string | null): Gio.File
+function mkstemp_file(tmpl: string): Gio.File
 function rect_cmp(a: Rectangle, b: Rectangle): number
 /**
  * Checks whether evince should use the portal.
@@ -318,16 +318,16 @@ function should_use_portal(): boolean
  */
 function shutdown(): void
 function tmp_file_unlink(file: Gio.File): void
-function tmp_filename_unlink(filename: string | null): void
-function tmp_uri_unlink(uri: string | null): void
+function tmp_filename_unlink(filename: string): void
+function tmp_uri_unlink(uri: string): void
 /**
  * Performs a g_file_copy() from `from` to `to`.
  * @param from the source URI
  * @param to the target URI
  * @returns %TRUE on success, or %FALSE on error with @error filled in
  */
-function xfer_uri_simple(from: string | null, to: string | null): boolean
-function xmp_parse(xmp: string | null, size: number, info: DocumentInfo): boolean
+function xfer_uri_simple(from: string, to: string): boolean
+function xmp_parse(xmp: string, size: number, info: DocumentInfo): boolean
 module AnnotationMarkup {
 
     // Constructor properties interface
@@ -365,12 +365,12 @@ interface AnnotationMarkup extends Annotation {
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.AnnotationMarkup
 
-    get_label(): string | null
+    get_label(): string
     get_opacity(): number
     get_popup_is_open(): boolean
     get_rectangle(ev_rect: Rectangle): void
     set_has_popup(has_popup: boolean): boolean
-    set_label(label: string | null): boolean
+    set_label(label: string): boolean
     set_opacity(opacity: number): boolean
     set_popup_is_open(is_open: boolean): boolean
     set_rectangle(ev_rect: Rectangle): boolean
@@ -599,16 +599,16 @@ interface DocumentFind {
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.DocumentFind
 
-    find_text(page: Page, text: string | null, case_sensitive: boolean): Rectangle[]
-    find_text_extended(page: Page, text: string | null, options: FindOptions): FindRectangle[]
-    find_text_with_options(page: Page, text: string | null, options: FindOptions): Rectangle[]
+    find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[]
+    find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[]
+    find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[]
     get_supported_options(): FindOptions
 
     // Own virtual methods of EvinceDocument-3.0.EvinceDocument.DocumentFind
 
-    vfunc_find_text(page: Page, text: string | null, case_sensitive: boolean): Rectangle[]
-    vfunc_find_text_extended(page: Page, text: string | null, options: FindOptions): FindRectangle[]
-    vfunc_find_text_with_options(page: Page, text: string | null, options: FindOptions): Rectangle[]
+    vfunc_find_text(page: Page, text: string, case_sensitive: boolean): Rectangle[]
+    vfunc_find_text_extended(page: Page, text: string, options: FindOptions): FindRectangle[]
+    vfunc_find_text_with_options(page: Page, text: string, options: FindOptions): Rectangle[]
     vfunc_get_supported_options(): FindOptions
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.DocumentFind
@@ -646,14 +646,14 @@ interface DocumentFonts {
     // Owm methods of EvinceDocument-3.0.EvinceDocument.DocumentFonts
 
     fill_model(model: Gtk.TreeModel): void
-    get_fonts_summary(): string | null
+    get_fonts_summary(): string
     get_progress(): number
     scan(n_pages: number): boolean
 
     // Own virtual methods of EvinceDocument-3.0.EvinceDocument.DocumentFonts
 
     vfunc_fill_model(model: Gtk.TreeModel): void
-    vfunc_get_fonts_summary(): string | null
+    vfunc_get_fonts_summary(): string
     vfunc_get_progress(): number
     vfunc_scan(n_pages: number): boolean
 
@@ -699,11 +699,11 @@ interface DocumentForms {
     form_field_choice_get_text(field: FormField): string | null
     form_field_choice_is_item_selected(field: FormField, index: number): boolean
     form_field_choice_select_item(field: FormField, index: number): void
-    form_field_choice_set_text(field: FormField, text: string | null): void
+    form_field_choice_set_text(field: FormField, text: string): void
     form_field_choice_toggle_item(field: FormField, index: number): void
     form_field_choice_unselect_all(field: FormField): void
     form_field_text_get_text(field: FormField): string | null
-    form_field_text_set_text(field: FormField, text: string | null): void
+    form_field_text_set_text(field: FormField, text: string): void
     get_form_fields(page: Page): MappingList
     reset_form(action: LinkAction): void
 
@@ -717,11 +717,11 @@ interface DocumentForms {
     vfunc_form_field_choice_get_text(field: FormField): string | null
     vfunc_form_field_choice_is_item_selected(field: FormField, index: number): boolean
     vfunc_form_field_choice_select_item(field: FormField, index: number): void
-    vfunc_form_field_choice_set_text(field: FormField, text: string | null): void
+    vfunc_form_field_choice_set_text(field: FormField, text: string): void
     vfunc_form_field_choice_toggle_item(field: FormField, index: number): void
     vfunc_form_field_choice_unselect_all(field: FormField): void
     vfunc_form_field_text_get_text(field: FormField): string | null
-    vfunc_form_field_text_set_text(field: FormField, text: string | null): void
+    vfunc_form_field_text_set_text(field: FormField, text: string): void
     vfunc_get_form_fields(page: Page): MappingList
     vfunc_reset_form(action: LinkAction): void
 
@@ -849,8 +849,8 @@ interface DocumentLinks {
 
     // Owm methods of EvinceDocument-3.0.EvinceDocument.DocumentLinks
 
-    find_link_dest(link_name: string | null): LinkDest
-    find_link_page(link_name: string | null): number
+    find_link_dest(link_name: string): LinkDest
+    find_link_page(link_name: string): number
     get_dest_page(dest: LinkDest): number
     get_dest_page_label(dest: LinkDest): string | null
     get_link_page(link: Link): number
@@ -861,8 +861,8 @@ interface DocumentLinks {
 
     // Own virtual methods of EvinceDocument-3.0.EvinceDocument.DocumentLinks
 
-    vfunc_find_link_dest(link_name: string | null): LinkDest
-    vfunc_find_link_page(link_name: string | null): number
+    vfunc_find_link_dest(link_name: string): LinkDest
+    vfunc_find_link_page(link_name: string): number
     vfunc_get_links(page: Page): MappingList
     vfunc_get_links_model(): Gtk.TreeModel
     vfunc_has_document_links(): boolean
@@ -982,12 +982,12 @@ interface DocumentSecurity {
     // Owm methods of EvinceDocument-3.0.EvinceDocument.DocumentSecurity
 
     has_document_security(): boolean
-    set_password(password: string | null): void
+    set_password(password: string): void
 
     // Own virtual methods of EvinceDocument-3.0.EvinceDocument.DocumentSecurity
 
     vfunc_has_document_security(): boolean
-    vfunc_set_password(password: string | null): void
+    vfunc_set_password(password: string): void
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.DocumentSecurity
 
@@ -1279,19 +1279,19 @@ interface Annotation {
      * alternate description of the annotation's content for non-text annotations
      * @returns a string with the contents of the annotation or %NULL if @annot has no contents.
      */
-    get_contents(): string | null
+    get_contents(): string
     /**
      * Get the last modification date of `annot`.
      * @returns A string containing the last modification date.
      */
-    get_modified(): string | null
+    get_modified(): string
     /**
      * Get the name of `annot`. The name of the annotation is a string
      * that uniquely indenftifies `annot` amongs all the annotations
      * in the same page.
      * @returns the string with the annotation's name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the page where `annot` appears.
      * @returns the #EvPage where @annot appears
@@ -1328,7 +1328,7 @@ interface Annotation {
      * @param contents 
      * @returns %TRUE if the contents have been changed, %FALSE otherwise.
      */
-    set_contents(contents: string | null): boolean
+    set_contents(contents: string): boolean
     /**
      * Set the last modification date of `annot` to `modified`. To
      * set the last modification date using a #time_t, use
@@ -1338,7 +1338,7 @@ interface Annotation {
      * @param modified string with the last modification date.
      * @returns %TRUE if the last modification date has been updated, %FALSE otherwise.
      */
-    set_modified(modified: string | null): boolean
+    set_modified(modified: string): boolean
     /**
      * Set the last modification date of `annot` to `utime`.  You can
      * monitor changes to the last modification date by connecting to the
@@ -1364,7 +1364,7 @@ interface Annotation {
      * @param name 
      * @returns %TRUE when the name has been changed, %FALSE otherwise.
      */
-    set_name(name: string | null): boolean
+    set_name(name: string): boolean
     /**
      * Set the color of the annotation to `rgba`.
      * @param rgba a #GdkRGBA
@@ -1728,10 +1728,10 @@ interface Attachment {
     // Owm methods of EvinceDocument-3.0.EvinceDocument.Attachment
 
     get_creation_date(): GLib.Time
-    get_description(): string | null
-    get_mime_type(): string | null
+    get_description(): string
+    get_mime_type(): string
     get_modification_date(): GLib.Time
-    get_name(): string | null
+    get_name(): string
     open(screen: Gdk.Screen, timestamp: number): boolean
     save(file: Gio.File): boolean
 
@@ -1771,8 +1771,8 @@ class Attachment extends GObject.Object {
     // Constructors of EvinceDocument-3.0.EvinceDocument.Attachment
 
     constructor(config?: Attachment.ConstructorProperties) 
-    constructor(name: string | null, description: string | null, mtime: GLib.Time, ctime: GLib.Time, size: number, data: any | null) 
-    static new(name: string | null, description: string | null, mtime: GLib.Time, ctime: GLib.Time, size: number, data: any | null): Attachment
+    constructor(name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: number, data: any | null) 
+    static new(name: string, description: string, mtime: GLib.Time, ctime: GLib.Time, size: number, data: any | null): Attachment
     _init(config?: Attachment.ConstructorProperties): void
     static error_quark(): GLib.Quark
 }
@@ -1804,7 +1804,7 @@ interface Document {
     // Owm methods of EvinceDocument-3.0.EvinceDocument.Document
 
     check_dimensions(): boolean
-    find_page_by_label(page_label: string | null, page_index: number): boolean
+    find_page_by_label(page_label: string, page_index: number): boolean
     get_backend_info(info: DocumentBackendInfo): boolean
     /**
      * Returns the #EvDocumentInfo for the document.
@@ -1822,8 +1822,8 @@ interface Document {
     get_size(): number
     get_thumbnail(rc: RenderContext): GdkPixbuf.Pixbuf
     get_thumbnail_surface(rc: RenderContext): cairo.Surface
-    get_title(): string | null
-    get_uri(): string | null
+    get_title(): string
+    get_uri(): string
     has_synctex(): boolean
     has_text_page_labels(): boolean
     is_page_size_uniform(): boolean
@@ -1840,7 +1840,7 @@ interface Document {
      * @param uri the document's URI
      * @returns %TRUE on success, or %FALSE on failure.
      */
-    load(uri: string | null): boolean
+    load(uri: string): boolean
     /**
      * Synchronously loads the document from `fd,` which must refer to
      * a regular file.
@@ -1869,7 +1869,7 @@ interface Document {
      * @param flags flags from #EvDocumentLoadFlags
      * @returns %TRUE on success, or %FALSE on failure.
      */
-    load_full(uri: string | null, flags: DocumentLoadFlags): boolean
+    load_full(uri: string, flags: DocumentLoadFlags): boolean
     /**
      * Synchronously loads the document from `file`.
      * See ev_document_load() for more information.
@@ -1894,7 +1894,7 @@ interface Document {
      * @param uri the target URI
      * @returns %TRUE on success, or %FALSE on error with @error filled in
      */
-    save(uri: string | null): boolean
+    save(uri: string): boolean
     /**
      * Set the `document` modification state as `modified`.
      * @param modified a boolean value to set the document as modified or not.
@@ -1940,7 +1940,7 @@ interface Document {
      * @param uri the document's URI
      * @returns %TRUE on success, or %FALSE on failure.
      */
-    vfunc_load(uri: string | null): boolean
+    vfunc_load(uri: string): boolean
     /**
      * Synchronously loads the document from `fd,` which must refer to
      * a regular file.
@@ -1984,7 +1984,7 @@ interface Document {
      * @param uri the target URI
      * @returns %TRUE on success, or %FALSE on error with @error filled in
      */
-    vfunc_save(uri: string | null): boolean
+    vfunc_save(uri: string): boolean
     vfunc_support_synctex(): boolean
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.Document
@@ -2034,7 +2034,7 @@ class Document extends GObject.Object {
      * @param uri an URI
      * @returns a new #EvDocument, or %NULL
      */
-    static factory_get_document(uri: string | null): Document
+    static factory_get_document(uri: string): Document
     /**
      * Synchronously creates a #EvDocument for the document from `fd` using the backend
      * for loading documents of type `mime_type;` or, if the backend does not support
@@ -2055,7 +2055,7 @@ class Document extends GObject.Object {
      * @param cancellable a #GCancellable, or %NULL
      * @returns a new #EvDocument, or %NULL
      */
-    static factory_get_document_for_fd(fd: number, mime_type: string | null, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document
+    static factory_get_document_for_fd(fd: number, mime_type: string, flags: DocumentLoadFlags, cancellable: Gio.Cancellable | null): Document
     /**
      * Synchronously creates a #EvDocument for the document at `file;` or, if no
      * backend handling the document's type is found, or an error occurred on
@@ -2095,7 +2095,7 @@ class Document extends GObject.Object {
      * @param flags flags from #EvDocumentLoadFlags
      * @returns a new #EvDocument, or %NULL
      */
-    static factory_get_document_full(uri: string | null, flags: DocumentLoadFlags): Document
+    static factory_get_document_full(uri: string, flags: DocumentLoadFlags): Document
     static fc_mutex_lock(): void
     static fc_mutex_trylock(): boolean
     static fc_mutex_unlock(): void
@@ -2368,8 +2368,8 @@ interface Image {
     get_id(): number
     get_page(): number
     get_pixbuf(): GdkPixbuf.Pixbuf
-    get_tmp_uri(): string | null
-    save_tmp(pixbuf: GdkPixbuf.Pixbuf): string | null
+    get_tmp_uri(): string
+    save_tmp(pixbuf: GdkPixbuf.Pixbuf): string
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.Image
 
@@ -2463,7 +2463,7 @@ interface Link {
     // Owm methods of EvinceDocument-3.0.EvinceDocument.Link
 
     get_action(): LinkAction
-    get_title(): string | null
+    get_title(): string
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.Link
 
@@ -2489,8 +2489,8 @@ class Link extends GObject.Object {
     // Constructors of EvinceDocument-3.0.EvinceDocument.Link
 
     constructor(config?: Link.ConstructorProperties) 
-    constructor(title: string | null, action: LinkAction) 
-    static new(title: string | null, action: LinkAction): Link
+    constructor(title: string, action: LinkAction) 
+    static new(title: string, action: LinkAction): Link
     _init(config?: Link.ConstructorProperties): void
 }
 
@@ -2554,14 +2554,14 @@ interface LinkAction {
     get_action_type(): LinkActionType
     get_dest(): LinkDest
     get_exclude_reset_fields(): boolean
-    get_filename(): string | null
+    get_filename(): string
     get_hide_list(): Layer[]
-    get_name(): string | null
-    get_params(): string | null
+    get_name(): string
+    get_params(): string
     get_reset_fields(): string[]
     get_show_list(): Layer[]
     get_toggle_list(): Layer[]
-    get_uri(): string | null
+    get_uri(): string
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.LinkAction
 
@@ -2615,11 +2615,11 @@ class LinkAction extends GObject.Object {
 
     constructor(config?: LinkAction.ConstructorProperties) 
     static new_dest(dest: LinkDest): LinkAction
-    static new_external_uri(uri: string | null): LinkAction
-    static new_launch(filename: string | null, params: string | null): LinkAction
+    static new_external_uri(uri: string): LinkAction
+    static new_launch(filename: string, params: string): LinkAction
     static new_layers_state(show_list: Layer[], hide_list: Layer[], toggle_list: Layer[]): LinkAction
-    static new_named(name: string | null): LinkAction
-    static new_remote(dest: LinkDest, filename: string | null): LinkAction
+    static new_named(name: string): LinkAction
+    static new_remote(dest: LinkDest, filename: string): LinkAction
     static new_reset_form(fields: string[], exclude_fields: boolean): LinkAction
     _init(config?: LinkAction.ConstructorProperties): void
 }
@@ -2674,9 +2674,9 @@ interface LinkDest {
     get_bottom(): number
     get_dest_type(): LinkDestType
     get_left(change_left: boolean): number
-    get_named_dest(): string | null
+    get_named_dest(): string
     get_page(): number
-    get_page_label(): string | null
+    get_page_label(): string
     get_right(): number
     get_top(change_top: boolean): number
     get_zoom(change_zoom: boolean): number
@@ -2733,9 +2733,9 @@ class LinkDest extends GObject.Object {
     static new_fith(page: number, top: number, change_top: boolean): LinkDest
     static new_fitr(page: number, left: number, bottom: number, right: number, top: number): LinkDest
     static new_fitv(page: number, left: number, change_left: boolean): LinkDest
-    static new_named(named_dest: string | null): LinkDest
+    static new_named(named_dest: string): LinkDest
     static new_page(page: number): LinkDest
-    static new_page_label(page_label: string | null): LinkDest
+    static new_page_label(page_label: string): LinkDest
     static new_xyz(page: number, left: number, top: number, zoom: number, change_left: boolean, change_top: boolean, change_zoom: boolean): LinkDest
     _init(config?: LinkDest.ConstructorProperties): void
 }
@@ -2760,7 +2760,7 @@ interface Media {
 
     get_page_index(): number
     get_show_controls(): boolean
-    get_uri(): string | null
+    get_uri(): string
     set_show_controls(show_controls: boolean): void
 
     // Class property signals of EvinceDocument-3.0.EvinceDocument.Media
@@ -2781,7 +2781,7 @@ class Media extends GObject.Object {
     // Constructors of EvinceDocument-3.0.EvinceDocument.Media
 
     constructor(config?: Media.ConstructorProperties) 
-    static new_for_uri(page: Page, uri: string | null): Media
+    static new_for_uri(page: Page, uri: string): Media
     _init(config?: Media.ConstructorProperties): void
 }
 
@@ -3083,8 +3083,8 @@ interface DocumentBackendInfo {
 
     // Own fields of EvinceDocument-3.0.EvinceDocument.DocumentBackendInfo
 
-    name: string | null
-    version: string | null
+    name: string
+    version: string
 }
 
 class DocumentBackendInfo {
@@ -3099,8 +3099,8 @@ interface DocumentClass {
     // Own fields of EvinceDocument-3.0.EvinceDocument.DocumentClass
 
     base_class: GObject.ObjectClass
-    load: (document: Document, uri: string | null) => boolean
-    save: (document: Document, uri: string | null) => boolean
+    load: (document: Document, uri: string) => boolean
+    save: (document: Document, uri: string) => boolean
     get_n_pages: (document: Document) => number
     get_page: (document: Document, index: number) => Page
     get_page_size: (document: Document, page_index: Page) => [ /* width */ number, /* height */ number ]
@@ -3128,10 +3128,10 @@ interface DocumentFindInterface {
     // Own fields of EvinceDocument-3.0.EvinceDocument.DocumentFindInterface
 
     base_iface: GObject.TypeInterface
-    find_text: (document_find: DocumentFind, page: Page, text: string | null, case_sensitive: boolean) => Rectangle[]
-    find_text_with_options: (document_find: DocumentFind, page: Page, text: string | null, options: FindOptions) => Rectangle[]
+    find_text: (document_find: DocumentFind, page: Page, text: string, case_sensitive: boolean) => Rectangle[]
+    find_text_with_options: (document_find: DocumentFind, page: Page, text: string, options: FindOptions) => Rectangle[]
     get_supported_options: (document_find: DocumentFind) => FindOptions
-    find_text_extended: (document_find: DocumentFind, page: Page, text: string | null, options: FindOptions) => FindRectangle[]
+    find_text_extended: (document_find: DocumentFind, page: Page, text: string, options: FindOptions) => FindRectangle[]
 }
 
 abstract class DocumentFindInterface {
@@ -3149,7 +3149,7 @@ interface DocumentFontsInterface {
     scan: (document_fonts: DocumentFonts, n_pages: number) => boolean
     get_progress: (document_fonts: DocumentFonts) => number
     fill_model: (document_fonts: DocumentFonts, model: Gtk.TreeModel) => void
-    get_fonts_summary: (document_fonts: DocumentFonts) => string | null
+    get_fonts_summary: (document_fonts: DocumentFonts) => string
 }
 
 abstract class DocumentFontsInterface {
@@ -3167,7 +3167,7 @@ interface DocumentFormsInterface {
     get_form_fields: (document_forms: DocumentForms, page: Page) => MappingList
     document_is_modified: (document_forms: DocumentForms) => boolean
     form_field_text_get_text: (document_forms: DocumentForms, field: FormField) => string | null
-    form_field_text_set_text: (document_forms: DocumentForms, field: FormField, text: string | null) => void
+    form_field_text_set_text: (document_forms: DocumentForms, field: FormField, text: string) => void
     form_field_button_get_state: (document_forms: DocumentForms, field: FormField) => boolean
     form_field_button_set_state: (document_forms: DocumentForms, field: FormField, state: boolean) => void
     form_field_choice_get_item: (document_forms: DocumentForms, field: FormField, index: number) => string | null
@@ -3176,7 +3176,7 @@ interface DocumentFormsInterface {
     form_field_choice_select_item: (document_forms: DocumentForms, field: FormField, index: number) => void
     form_field_choice_toggle_item: (document_forms: DocumentForms, field: FormField, index: number) => void
     form_field_choice_unselect_all: (document_forms: DocumentForms, field: FormField) => void
-    form_field_choice_set_text: (document_forms: DocumentForms, field: FormField, text: string | null) => void
+    form_field_choice_set_text: (document_forms: DocumentForms, field: FormField, text: string) => void
     form_field_choice_get_text: (document_forms: DocumentForms, field: FormField) => string | null
     reset_form: (document_forms: DocumentForms, action: LinkAction) => void
 }
@@ -3239,7 +3239,7 @@ interface DocumentInfo {
     free(): void
     get_created_datetime(): GLib.DateTime | null
     get_modified_datetime(): GLib.DateTime | null
-    set_from_xmp(xmp: string | null, size: number): boolean
+    set_from_xmp(xmp: string, size: number): boolean
     take_created_datetime(datetime: GLib.DateTime): void
     take_modified_datetime(datetime: GLib.DateTime): void
 }
@@ -3315,8 +3315,8 @@ interface DocumentLinksInterface {
     has_document_links: (document_links: DocumentLinks) => boolean
     get_links_model: (document_links: DocumentLinks) => Gtk.TreeModel
     get_links: (document_links: DocumentLinks, page: Page) => MappingList
-    find_link_dest: (document_links: DocumentLinks, link_name: string | null) => LinkDest
-    find_link_page: (document_links: DocumentLinks, link_name: string | null) => number
+    find_link_dest: (document_links: DocumentLinks, link_name: string) => LinkDest
+    find_link_page: (document_links: DocumentLinks, link_name: string) => number
 }
 
 abstract class DocumentLinksInterface {
@@ -3372,7 +3372,7 @@ interface DocumentSecurityInterface {
 
     base_iface: GObject.TypeInterface
     has_document_security: (document_security: DocumentSecurity) => boolean
-    set_password: (document_security: DocumentSecurity, password: string | null) => void
+    set_password: (document_security: DocumentSecurity, password: string) => void
 }
 
 abstract class DocumentSecurityInterface {
@@ -3421,7 +3421,7 @@ interface FileExporterContext {
     // Own fields of EvinceDocument-3.0.EvinceDocument.FileExporterContext
 
     format: FileExporterFormat
-    filename: string | null
+    filename: string
     first_page: number
     last_page: number
     paper_width: number
@@ -3841,8 +3841,8 @@ class SourceLink {
 
     // Constructors of EvinceDocument-3.0.EvinceDocument.SourceLink
 
-    constructor(filename: string | null, line: number, col: number) 
-    static new(filename: string | null, line: number, col: number): SourceLink
+    constructor(filename: string, line: number, col: number) 
+    static new(filename: string, line: number, col: number): SourceLink
 }
 
 interface TransitionEffectClass {
@@ -3863,8 +3863,8 @@ interface TypeInfo {
 
     // Own fields of EvinceDocument-3.0.EvinceDocument.TypeInfo
 
-    desc: string | null
-    mime_types: string | null
+    desc: string
+    mime_types: string
 }
 
 class TypeInfo {

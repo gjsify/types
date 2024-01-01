@@ -1355,7 +1355,7 @@ function descriptor_from_custom_with_extension(tag: number, tag_extension: numbe
  * @param name the network name to set
  * @returns the #GstMpegtsDescriptor or %NULL on fail
  */
-function descriptor_from_dvb_network_name(name: string | null): Descriptor
+function descriptor_from_dvb_network_name(name: string): Descriptor
 /**
  * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
  * The data field of the #GstMpegtsDescriptor will be allocated,
@@ -1366,21 +1366,21 @@ function descriptor_from_dvb_network_name(name: string | null): Descriptor
  * @returns the #GstMpegtsDescriptor or %NULL on fail
  */
 function descriptor_from_dvb_service(service_type: DVBServiceType, service_name: string | null, service_provider: string | null): Descriptor
-function descriptor_from_dvb_subtitling(lang: string | null, type: number, composition: number, ancillary: number): Descriptor
+function descriptor_from_dvb_subtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
 /**
  * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
  * a single language
  * @param language ISO-639-2 language 3-char code
  * @returns #GstMpegtsDescriptor, %NULL on failure
  */
-function descriptor_from_iso_639_language(language: string | null): Descriptor
+function descriptor_from_iso_639_language(language: string): Descriptor
 /**
  * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
  * @param format_identifier a 4 character format identifier string
  * @param additional_info pointer to optional additional info
  * @returns #GstMpegtsDescriptor, %NULL on failure
  */
-function descriptor_from_registration(format_identifier: string | null, additional_info: Uint8Array | null): Descriptor
+function descriptor_from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor
 function descriptor_parse_audio_preselection_dump(source: AudioPreselectionDescriptor): void
 function descriptor_parse_audio_preselection_free(source: AudioPreselectionDescriptor): void
 function dvb_component_descriptor_free(source: ComponentDescriptor): void
@@ -1952,7 +1952,7 @@ interface AtscStringSegment {
 
     // Owm methods of GstMpegts-1.0.GstMpegts.AtscStringSegment
 
-    get_string(): string | null
+    get_string(): string
     set_string(string: string | null, compression_type: number, mode: number): boolean
 }
 
@@ -2506,7 +2506,7 @@ interface Descriptor {
      * Extracts the bouquet name from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
-    parse_dvb_bouquet_name(): [ /* returnType */ boolean, /* bouquet_name */ string | null ]
+    parse_dvb_bouquet_name(): [ /* returnType */ boolean, /* bouquet_name */ string ]
     /**
      * Extracts ca id's from `descriptor`.
      * @returns %TRUE if the parsing happened correctly, else %FALSE.
@@ -2591,7 +2591,7 @@ interface Descriptor {
      * Extracts the dvb service information from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
-    parse_dvb_service(): [ /* returnType */ boolean, /* service_type */ DVBServiceType, /* service_name */ string | null, /* provider_name */ string | null ]
+    parse_dvb_service(): [ /* returnType */ boolean, /* service_type */ DVBServiceType, /* service_name */ string, /* provider_name */ string ]
     /**
      * Parses out a list of services from the `descriptor:`
      * @returns %TRUE if the parsing happened correctly, else %FALSE.
@@ -2601,7 +2601,7 @@ interface Descriptor {
      * Extracts the DVB short event information from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
-    parse_dvb_short_event(): [ /* returnType */ boolean, /* language_code */ string | null, /* event_name */ string | null, /* text */ string | null ]
+    parse_dvb_short_event(): [ /* returnType */ boolean, /* language_code */ string, /* event_name */ string, /* text */ string ]
     /**
      * Extracts the component tag from `descriptor`.
      * @returns %TRUE if the parsing happened correctly, else %FALSE.
@@ -2632,7 +2632,7 @@ interface Descriptor {
      * @param idx The id of the teletext to get
      * @returns FALSE on out-of-bounds and errors
      */
-    parse_dvb_teletext_idx(idx: number): [ /* returnType */ boolean, /* language_code */ string | null, /* teletext_type */ DVBTeletextType, /* magazine_number */ number, /* page_number */ number ]
+    parse_dvb_teletext_idx(idx: number): [ /* returnType */ boolean, /* language_code */ string, /* teletext_type */ DVBTeletextType, /* magazine_number */ number, /* page_number */ number ]
     /**
      * Find the number of teletext entries in `descriptor`
      * @returns Number of teletext entries
@@ -2734,7 +2734,7 @@ class Descriptor {
      * @param name the network name to set
      * @returns the #GstMpegtsDescriptor or %NULL on fail
      */
-    static from_dvb_network_name(name: string | null): Descriptor
+    static from_dvb_network_name(name: string): Descriptor
     /**
      * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
      * The data field of the #GstMpegtsDescriptor will be allocated,
@@ -2745,21 +2745,21 @@ class Descriptor {
      * @returns the #GstMpegtsDescriptor or %NULL on fail
      */
     static from_dvb_service(service_type: DVBServiceType, service_name: string | null, service_provider: string | null): Descriptor
-    static from_dvb_subtitling(lang: string | null, type: number, composition: number, ancillary: number): Descriptor
+    static from_dvb_subtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
     /**
      * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
      * a single language
      * @param language ISO-639-2 language 3-char code
      * @returns #GstMpegtsDescriptor, %NULL on failure
      */
-    static from_iso_639_language(language: string | null): Descriptor
+    static from_iso_639_language(language: string): Descriptor
     /**
      * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
      * @param format_identifier a 4 character format identifier string
      * @param additional_info pointer to optional additional info
      * @returns #GstMpegtsDescriptor, %NULL on failure
      */
-    static from_registration(format_identifier: string | null, additional_info: Uint8Array | null): Descriptor
+    static from_registration(format_identifier: string, additional_info: Uint8Array | null): Descriptor
     static parse_audio_preselection_dump(source: AudioPreselectionDescriptor): void
     static parse_audio_preselection_free(source: AudioPreselectionDescriptor): void
 }

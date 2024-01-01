@@ -131,223 +131,223 @@ enum ZipCompressionMethod {
 /**
  * (Integer) Count of bytes in the document.
  */
-const META_NAME_BYTE_COUNT: string | null
+const META_NAME_BYTE_COUNT: string
 /**
  * (Unsigned Integer) Identifier representing the case-sensitiveness.
  * <note>of what ?? why is it an integer ??</note>
  */
-const META_NAME_CASE_SENSITIVE: string | null
+const META_NAME_CASE_SENSITIVE: string
 /**
  * (String) Category of the document. <note>example???</note>
  */
-const META_NAME_CATEGORY: string | null
+const META_NAME_CATEGORY: string
 /**
  * (Integer) Count of cells in the spread-sheet document, if appropriate.
  */
-const META_NAME_CELL_COUNT: string | null
+const META_NAME_CELL_COUNT: string
 /**
  * (Integer) Count of characters in the document.
  * 
  * TODO See how to sync this with ODF's document-statistic
  */
-const META_NAME_CHARACTER_COUNT: string | null
+const META_NAME_CHARACTER_COUNT: string
 /**
  * (UnsignedShort) The MS codepage to encode strings for metadata
  * 1.14.0	Clarified that this is unique from _NAME_CODEPAGE in msole
  */
-const META_NAME_CODEPAGE: string | null
+const META_NAME_CODEPAGE: string
 /**
  * (String) Name of the company/organization that the "CREATOR" entity is
  * associated with.
  * 
  * 1.14.1	Moved from "gsf:company" to "dc:publisher".
  */
-const META_NAME_COMPANY: string | null
+const META_NAME_COMPANY: string
 /**
  * (String) An entity primarily responsible for making the content of the
  * resource typically a person, organization, or service.
  * 
  * 1.14.0	Moved from "gsf" to "dc".
  */
-const META_NAME_CREATOR: string | null
+const META_NAME_CREATOR: string
 /**
  * (Date as ISO String) A date associated with an event in the life cycle of
  * the resource (creation/publication date).
  * Moved from gsf:date-created to meta:creation-date. This way can be used correctly
  * by OpenDocument and Gnumeric.
  */
-const META_NAME_DATE_CREATED: string | null
+const META_NAME_DATE_CREATED: string
 /**
  * (GsfTimestamp) The last time this document was saved.
  * 
  * 1.14.0	Moved from dc:date-modified to dc:date.
  */
-const META_NAME_DATE_MODIFIED: string | null
+const META_NAME_DATE_MODIFIED: string
 /**
  * (String) An account of the content of the resource.
  */
-const META_NAME_DESCRIPTION: string | null
+const META_NAME_DESCRIPTION: string
 /**
  * (None) Reserved name (PID) for Dictionary
  */
-const META_NAME_DICTIONARY: string | null
+const META_NAME_DICTIONARY: string
 /**
  * (Vector of strings) Names of the 'interesting' parts of the document.  In
  * spreadsheets this is a list of the sheet names, and the named expressions.
  * From MSOLE
  */
-const META_NAME_DOCUMENT_PARTS: string | null
+const META_NAME_DOCUMENT_PARTS: string
 /**
  * (Date as ISO String) The total-time taken until the last modification.
  * Moved from "gsf" to "meta". This way can be used correctly by OpenDocument
  * and Gnumeric.
  */
-const META_NAME_EDITING_DURATION: string | null
+const META_NAME_EDITING_DURATION: string
 /**
  * (String) The application that generated this document. AbiWord, Gnumeric,
  * etc...
  * 
  * 1.14.0 Moved from "gsf" to "meta".
  */
-const META_NAME_GENERATOR: string | null
+const META_NAME_GENERATOR: string
 /**
  * (Vector of string value pairs stored in alternating elements) Store the
  * counts of objects in the document as names 'worksheet' and count '4'
  * From MSOLE
  */
-const META_NAME_HEADING_PAIRS: string | null
+const META_NAME_HEADING_PAIRS: string
 /**
  * (Integer) Count of hidden-slides in the presentation document.
  */
-const META_NAME_HIDDEN_SLIDE_COUNT: string | null
+const META_NAME_HIDDEN_SLIDE_COUNT: string
 /**
  * (Integer) Count of images in the document, if appropriate.
  */
-const META_NAME_IMAGE_COUNT: string | null
+const META_NAME_IMAGE_COUNT: string
 /**
  * (String) Specifies the name of the person who created the document
  * initially.
  * 1.14.0 Moved from "gsf" to "meta".
  */
-const META_NAME_INITIAL_CREATOR: string | null
+const META_NAME_INITIAL_CREATOR: string
 /**
  * (String) Searchable, indexable keywords. Similar to PDF keywords or HTML's
  * meta block.
  */
-const META_NAME_KEYWORD: string | null
+const META_NAME_KEYWORD: string
 /**
  * (GsfDocPropVector of String) Searchable, indexable keywords. Similar to PDF
  * keywords or HTML's meta block.
  */
-const META_NAME_KEYWORDS: string | null
+const META_NAME_KEYWORDS: string
 /**
  * (String) The locale language of the intellectual content of the resource
  * 	(basically xx_YY form for us).
  * 1.14.0	Clarified that this is unique from _NAME_CODEPAGE in msole
  */
-const META_NAME_LANGUAGE: string | null
+const META_NAME_LANGUAGE: string
 /**
  * (GSF_META_NAME_HEADING_PAIRS) The last time this document was printed.
  * 
  * 1.14.0	Moved from "gsf" to "dc".
  * 1.14.1	Moved back to "gsf" from "dc".
  */
-const META_NAME_LAST_PRINTED: string | null
+const META_NAME_LAST_PRINTED: string
 /**
  * (String) The entity that made the last change to the document, typically a
  * person, organization, or service.
  */
-const META_NAME_LAST_SAVED_BY: string | null
+const META_NAME_LAST_SAVED_BY: string
 /**
  * (Integer) Count of liness in the document.
  */
-const META_NAME_LINE_COUNT: string | null
+const META_NAME_LINE_COUNT: string
 /**
  * (Boolean) ???????
  */
-const META_NAME_LINKS_DIRTY: string | null
+const META_NAME_LINKS_DIRTY: string
 /**
  * (Unsigned Integer) Identifier representing the default system locale.
  */
-const META_NAME_LOCALE_SYSTEM_DEFAULT: string | null
+const META_NAME_LOCALE_SYSTEM_DEFAULT: string
 /**
  * (String) Name of the manager of "CREATOR" entity.
  */
-const META_NAME_MANAGER: string | null
+const META_NAME_MANAGER: string
 /**
  * (Integer) Count of "multi-media" clips in the document.
  */
-const META_NAME_MM_CLIP_COUNT: string | null
+const META_NAME_MM_CLIP_COUNT: string
 /**
  * (Unknown) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_17: string | null
+const META_NAME_MSOLE_UNKNOWN_17: string
 /**
  * (Unknown) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_18: string | null
+const META_NAME_MSOLE_UNKNOWN_18: string
 /**
  * (Boolean) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_19: string | null
+const META_NAME_MSOLE_UNKNOWN_19: string
 /**
  * (Unknown) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_20: string | null
+const META_NAME_MSOLE_UNKNOWN_20: string
 /**
  * (Unknown) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_21: string | null
+const META_NAME_MSOLE_UNKNOWN_21: string
 /**
  * (Boolean) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_22: string | null
+const META_NAME_MSOLE_UNKNOWN_22: string
 /**
  * (i4) User-defined name
  */
-const META_NAME_MSOLE_UNKNOWN_23: string | null
+const META_NAME_MSOLE_UNKNOWN_23: string
 /**
  * (Integer) Count of "notes" in the document.
  */
-const META_NAME_NOTE_COUNT: string | null
+const META_NAME_NOTE_COUNT: string
 /**
  * (Integer) Count of objects (OLE and other graphics) in the document, if
  * appropriate.
  */
-const META_NAME_OBJECT_COUNT: string | null
+const META_NAME_OBJECT_COUNT: string
 /**
  * (Integer) Count of pages in the document, if appropriate.
  */
-const META_NAME_PAGE_COUNT: string | null
+const META_NAME_PAGE_COUNT: string
 /**
  * (Integer) Count of paragraphs in the document, if appropriate.
  */
-const META_NAME_PARAGRAPH_COUNT: string | null
+const META_NAME_PARAGRAPH_COUNT: string
 /**
  * (String) Type of presentation, like "On-screen Show", "SlideView" etc.
  */
-const META_NAME_PRESENTATION_FORMAT: string | null
+const META_NAME_PRESENTATION_FORMAT: string
 /**
  * (String) Specifies the name of the last person who printed the document.
  * 
  * 1.14.0	Moved from "gsf" to "meta".
  */
-const META_NAME_PRINTED_BY: string | null
+const META_NAME_PRINTED_BY: string
 /**
  * (GsfTimestamp) Specifies the date and time when the document was last
  * printed.
  */
-const META_NAME_PRINT_DATE: string | null
+const META_NAME_PRINT_DATE: string
 /**
  * (Integer) Count of revision on the document, if appropriate.
  * Moved from gsf:revision-count to meta:editing-cycles. This way can be used
  * correctly by OpenDocument and Gnumeric.
  */
-const META_NAME_REVISION_COUNT: string | null
+const META_NAME_REVISION_COUNT: string
 /**
  * (Boolean) ?????
  */
-const META_NAME_SCALE: string | null
+const META_NAME_SCALE: string
 /**
  * (Integer) Level of security.
  * 
@@ -364,43 +364,43 @@ const META_NAME_SCALE: string | null
  * <row><entry>Locked for annotations</entry><entry>4</entry></row>
  * </tbody></tgroup></informaltable>
  */
-const META_NAME_SECURITY: string | null
+const META_NAME_SECURITY: string
 /**
  * (Integer) Count of slides in the presentation document.
  */
-const META_NAME_SLIDE_COUNT: string | null
+const META_NAME_SLIDE_COUNT: string
 /**
  * (Integer) Count of pages in the document, if appropriate.
  */
-const META_NAME_SPREADSHEET_COUNT: string | null
+const META_NAME_SPREADSHEET_COUNT: string
 /**
  * (String) The topic of the content of the resource,
  * <emphasis>typically</emphasis> including keywords.
  */
-const META_NAME_SUBJECT: string | null
+const META_NAME_SUBJECT: string
 /**
  * (Integer) Count of tables in the document, if appropriate.
  */
-const META_NAME_TABLE_COUNT: string | null
+const META_NAME_TABLE_COUNT: string
 /**
  * (String) The template file that is been used to generate this document.
  * 
  * 1.14.0 Moved from "gsf" to "meta"
  */
-const META_NAME_TEMPLATE: string | null
+const META_NAME_TEMPLATE: string
 /**
  * (GsfClipData) Thumbnail data of the document, typically a
  * preview image of the document.
  */
-const META_NAME_THUMBNAIL: string | null
+const META_NAME_THUMBNAIL: string
 /**
  * (String) A formal name given to the resource.
  */
-const META_NAME_TITLE: string | null
+const META_NAME_TITLE: string
 /**
  * (Integer) Count of words in the document.
  */
-const META_NAME_WORD_COUNT: string | null
+const META_NAME_WORD_COUNT: string
 /**
  * Decodes a chunk of base64 encoded data from `data` back into `data`.
  * @param data data stream
@@ -449,7 +449,7 @@ function base64EncodeSimple(data: number[], len: number): number
  * @returns the number of bytes encoded
  */
 function base64EncodeStep(in_: number[], len: number, breakLines: boolean, out: number[], state: number, save: number): [ /* returnType */ number, /* state */ number, /* save */ number ]
-function debugFlag(flag: string | null): boolean
+function debugFlag(flag: string): boolean
 /**
  * A debugging utility to dump the content of `meta` via g_print
  * @param meta #GsfDocMetaData
@@ -462,7 +462,7 @@ function errorQuark(): GLib.Quark
  * @param path A filename or file path.
  * @returns A pointer to the extension part of the filename, or a pointer to the end of the string if the filename does not have an extension.
  */
-function extensionPointer(path: string | null): string | null
+function extensionPointer(path: string): string
 /**
  * A utility wrapper to make sure filenames are valid utf8.
  * Caller must g_free the result.
@@ -470,7 +470,7 @@ function extensionPointer(path: string | null): string | null
  * @param quoted if %TRUE, the resulting utf8 file name will be quoted    (unless it is invalid).
  * @returns @filename using utf-8 encoding for display
  */
-function filenameToUtf8(filename: string | null, quoted: boolean): string | null
+function filenameToUtf8(filename: string, quoted: boolean): string | null
 /**
  * Initializes the GSF library
  */
@@ -526,7 +526,7 @@ function msoleIconvWinCodepage(): number
  * @returns A GByteArray that the caller is responsible for freeing
  */
 function msoleInflate(input: Input, offset: gsf_off_t): number[]
-function msoleLanguageForLid(lid: number): string | null
+function msoleLanguageForLid(lid: number): string
 function msoleLidForLanguage(lang: string | null): number
 function msoleLidToCodepage(lid: number): number
 function msoleLidToCodepageStr(lid: number): string | null
@@ -540,7 +540,7 @@ function odfGetVersion(): number
  * Gives the ODF version used by libgsf when writing Open Document files.
  * @returns the ODF version as a string: "1.2".
  */
-function odfGetVersionString(): string | null
+function odfGetVersionString(): string
 function openPkgErrorId(): number
 /**
  * New in 1.14.9
@@ -559,7 +559,7 @@ function openPkgOpenRel(opkg: Input, rel: OpenPkgRel): Input
  * @param id target id
  * @returns A new GsfInput or %NULL, and sets @err if possible.
  */
-function openPkgOpenRelById(opkg: Input, id: string | null): Input
+function openPkgOpenRelById(opkg: Input, id: string): Input
 /**
  * New in 1.14.9
  * 
@@ -568,7 +568,7 @@ function openPkgOpenRelById(opkg: Input, id: string | null): Input
  * @param type target type
  * @returns A new GsfInput or %NULL, and sets @err if possible.
  */
-function openPkgOpenRelByType(opkg: Input, type: string | null): Input
+function openPkgOpenRelByType(opkg: Input, type: string): Input
 /**
  * Convenience function to parse a related part.
  * @param xin #GsfXMLIn
@@ -577,8 +577,8 @@ function openPkgOpenRelByType(opkg: Input, type: string | null): Input
  * @param ns #GsfXMLInNS
  * @returns %NULL on success or a #GError on failure.
  */
-function openPkgParseRelById(xin: XMLIn, id: string | null, dtd: XMLInNode, ns: XMLInNS): GLib.Error
-function propertySettingsFind(name: string | null, params: GObject.Parameter[]): GObject.Parameter
+function openPkgParseRelById(xin: XMLIn, id: string, dtd: XMLInNode, ns: XMLInNS): GLib.Error
+function propertySettingsFind(name: string, params: GObject.Parameter[]): GObject.Parameter
 function propertySettingsFree(params: GObject.Parameter[]): void
 /**
  * De-intializes the GSF library
@@ -631,7 +631,7 @@ function xmlDocFormatDump(output: Output, cur: libxml2.Doc, encoding: string | n
  * @param str Value string
  * @returns True when parsing of @str as a value of type @t was succesfull; false otherwise.
  */
-function xmlGvalueFromStr(res: any, t: GObject.GType, str: string | null): boolean
+function xmlGvalueFromStr(res: any, t: GObject.GType, str: string): boolean
 function xmlProbe(input: Input, func: XMLProbeFunc): boolean
 interface OpenPkgIter {
     (opkg: Input, rel: OpenPkgRel): void
@@ -855,7 +855,7 @@ interface DocMetaData {
      * @param value #GValue
      */
     insert(name: string | null, value: any): void
-    lookup(name: string | null): DocProp | null
+    lookup(name: string): DocProp | null
     /**
      * Extend `xin` so that it can parse a subtree in OpenDoc metadata format
      * @param doc #GsfXMLInDoc
@@ -880,9 +880,9 @@ interface DocMetaData {
      * remove it and its value from the collection
      * @param name the non-null string name of the property
      */
-    remove(name: string | null): void
+    remove(name: string): void
     size(): number
-    steal(name: string | null): DocProp | null
+    steal(name: string): DocProp | null
     store(prop: DocProp): void
     writeToMsole(out: Output, docNotComponent: boolean): boolean
     writeToOdf(output: XMLOut): boolean
@@ -1039,7 +1039,7 @@ interface Infile {
      * @param name target name
      * @returns a newly created child which must be unrefed.
      */
-    childByName(name: string | null): Input
+    childByName(name: string): Input
     // Has conflict: nameByIndex(i: number): string | null
     // Has conflict: numChildren(): number
 
@@ -1323,8 +1323,8 @@ class InfileStdio extends Infile {
     // Constructors of Gsf-1.Gsf.InfileStdio
 
     constructor(config?: InfileStdio.ConstructorProperties) 
-    constructor(root: string | null) 
-    static new(root: string | null): InfileStdio
+    constructor(root: string) 
+    static new(root: string): InfileStdio
     _init(config?: InfileStdio.ConstructorProperties): void
 }
 
@@ -1623,7 +1623,7 @@ interface Input {
      * @param filename the (fs-sys encoded) filename
      * @returns %TRUE if the assignment was ok.
      */
-    setNameFromFilename(filename: string | null): boolean
+    setNameFromFilename(filename: string): boolean
     setSize(size: gsf_off_t): boolean
     /**
      * UNIMPLEMENTED BY ANY BACKEND
@@ -1635,7 +1635,7 @@ interface Input {
      * @param name name.
      * @returns A related #GsfInput
      */
-    sibling(name: string | null): Input
+    sibling(name: string): Input
     tell(): gsf_off_t
     /**
      * This functions takes ownership of the incoming reference and yields a
@@ -1663,7 +1663,7 @@ interface Input {
      * @param name name.
      * @returns A related #GsfInput
      */
-    openSibling(name: string | null): Input
+    openSibling(name: string): Input
     /**
      * Move the current location in the input stream.
      * @virtual 
@@ -1721,7 +1721,7 @@ class Input extends GObject.Object {
     // Constructors of Gsf-1.Gsf.Input
 
     constructor(config?: Input.ConstructorProperties) 
-    static mmapNew(filename: string | null): Input
+    static mmapNew(filename: string): Input
     _init(config?: Input.ConstructorProperties): void
     static errorId(): GLib.Quark
 }
@@ -1887,8 +1887,8 @@ class InputGio extends Input {
     constructor(config?: InputGio.ConstructorProperties) 
     constructor(file: Gio.File) 
     static new(file: Gio.File): InputGio
-    static newForPath(path: string | null): InputGio
-    static newForUri(uri: string | null): InputGio
+    static newForPath(path: string): InputGio
+    static newForUri(uri: string): InputGio
     _init(config?: InputGio.ConstructorProperties): void
 }
 
@@ -1973,8 +1973,8 @@ class InputHTTP extends Input {
     // Constructors of Gsf-1.Gsf.InputHTTP
 
     constructor(config?: InputHTTP.ConstructorProperties) 
-    constructor(url: string | null) 
-    static new(url: string | null): InputHTTP
+    constructor(url: string) 
+    static new(url: string): InputHTTP
     _init(config?: InputHTTP.ConstructorProperties): void
 }
 
@@ -2198,8 +2198,8 @@ class InputStdio extends Input {
     // Constructors of Gsf-1.Gsf.InputStdio
 
     constructor(config?: InputStdio.ConstructorProperties) 
-    constructor(filename: string | null) 
-    static new(filename: string | null): InputStdio
+    constructor(filename: string) 
+    static new(filename: string): InputStdio
     /**
      * Assumes ownership of `file` when succeeding.  If `keep_open` is true,
      * ownership reverts to caller when the #GsfInput is closed.
@@ -2209,7 +2209,7 @@ class InputStdio extends Input {
      * @param keepOpen Should `file` be closed when the wrapper is closed
      * @returns a new #GsfInput wrapper for @file.  Note that if the file is not 	seekable, this function will make a local copy of the entire file.
      */
-    static newFILE(filename: string | null, file: any | null, keepOpen: boolean): InputStdio
+    static newFILE(filename: string, file: any | null, keepOpen: boolean): InputStdio
     _init(config?: InputStdio.ConstructorProperties): void
 }
 
@@ -2399,7 +2399,7 @@ interface Outfile {
 
     // Owm methods of Gsf-1.Gsf.Outfile
 
-    newChild(name: string | null, isDir: boolean): Output
+    newChild(name: string, isDir: boolean): Output
     /**
      * A convenience wrapper to create a child in `dir` of `content_type` then create
      * a `type` relation to `parent`
@@ -2409,7 +2409,7 @@ interface Outfile {
      * @param type target type
      * @returns the new part.
      */
-    openPkgAddRel(name: string | null, contentType: string | null, parent: Outfile, type: string | null): Output
+    openPkgAddRel(name: string, contentType: string, parent: Outfile, type: string): Output
 
     // Class property signals of Gsf-1.Gsf.Outfile
 
@@ -2611,15 +2611,15 @@ interface OutfileOpenPkg {
      * @param contentType target content
      * @returns The id of the relation.  The string is managed by the parent and should not be changed or freed by the caller.
      */
-    addExternRel(target: string | null, contentType: string | null): string | null
+    addExternRel(target: string, contentType: string): string
     /**
      * Create a relationship between `child` and `parent` of `type`.
      * @param parent #GsfOutfileOpenPkg
      * @param type target type
      * @returns the relID which the caller does not own 	but will live as long as @parent.
      */
-    relate(parent: OutfileOpenPkg, type: string | null): string | null
-    setContentType(contentType: string | null): void
+    relate(parent: OutfileOpenPkg, type: string): string
+    setContentType(contentType: string): void
     /**
      * Assigns a GsfOutput (`sink)` to store the package into.
      * @param sink #GsfOutput
@@ -2751,8 +2751,8 @@ class OutfileStdio extends Outfile {
     // Constructors of Gsf-1.Gsf.OutfileStdio
 
     constructor(config?: OutfileStdio.ConstructorProperties) 
-    constructor(root: string | null) 
-    static new(root: string | null): OutfileStdio
+    constructor(root: string) 
+    static new(root: string): OutfileStdio
     _init(config?: OutfileStdio.ConstructorProperties): void
 }
 
@@ -2943,7 +2943,7 @@ interface Output {
      * @param line Nul terminated string to write
      * @returns %TRUE if successful, %FALSE if not
      */
-    puts(line: string | null): boolean
+    puts(line: string): boolean
     // Has conflict: seek(offset: gsf_off_t, whence: GLib.SeekType): boolean
     /**
      * <note>This is a utility routine that should only be used by derived
@@ -3169,7 +3169,7 @@ interface OutputCsv {
     // Owm methods of Gsf-1.Gsf.OutputCsv
 
     writeEol(): boolean
-    writeField(field: string | null, len: number): boolean
+    writeField(field: string, len: number): boolean
 
     // Class property signals of Gsf-1.Gsf.OutputCsv
 
@@ -3369,8 +3369,8 @@ class OutputGio extends Output {
     constructor(config?: OutputGio.ConstructorProperties) 
     constructor(file: Gio.File) 
     static new(file: Gio.File): OutputGio
-    static newForPath(path: string | null): OutputGio
-    static newForUri(uri: string | null): OutputGio
+    static newForPath(path: string): OutputGio
+    static newForUri(uri: string): OutputGio
     _init(config?: OutputGio.ConstructorProperties): void
 }
 
@@ -3536,7 +3536,7 @@ class OutputIconv extends Output {
      * @param src The source character set.
      * @returns a new GsfOutput object or %NULL.
      */
-    constructor(sink: Output, dst: string | null, src: string | null) 
+    constructor(sink: Output, dst: string, src: string) 
     /**
      * Adds a reference to `sink`.
      * @constructor 
@@ -3545,7 +3545,7 @@ class OutputIconv extends Output {
      * @param src The source character set.
      * @returns a new GsfOutput object or %NULL.
      */
-    static new(sink: Output, dst: string | null, src: string | null): OutputIconv
+    static new(sink: Output, dst: string, src: string): OutputIconv
     _init(config?: OutputIconv.ConstructorProperties): void
 }
 
@@ -3667,8 +3667,8 @@ class OutputStdio extends Output {
     // Constructors of Gsf-1.Gsf.OutputStdio
 
     constructor(config?: OutputStdio.ConstructorProperties) 
-    constructor(filename: string | null) 
-    static new(filename: string | null): OutputStdio
+    constructor(filename: string) 
+    static new(filename: string): OutputStdio
     _init(config?: OutputStdio.ConstructorProperties): void
 }
 
@@ -3912,7 +3912,7 @@ interface XMLOut {
      * Closes/ends an XML element.
      * @returns the element that has been closed.
      */
-    endElement(): string | null
+    endElement(): string
     /**
      * Get the #GsfOutput we are writing to..
      * @returns #GsfInput
@@ -3923,14 +3923,14 @@ interface XMLOut {
      * Store some optional &lt;!DOCTYPE .. &gt; content
      * @param type the document type declaration
      */
-    setDocType(type: string | null): void
+    setDocType(type: string): void
     setPrettyPrint(pp: boolean): boolean
     /**
      * Convenience routine to output a simple `id` element with content `content`.
      * @param id Element name
      * @param content Content of the element
      */
-    simpleElement(id: string | null, content: string | null): void
+    simpleElement(id: string, content: string): void
     /**
      * Convenience routine to output an element `id` with float value `val` using
      * `precision` significant digits.
@@ -3938,18 +3938,18 @@ interface XMLOut {
      * @param val Element value
      * @param precision the number of significant digits to use, -1 meaning "enough".
      */
-    simpleFloatElement(id: string | null, val: number, precision: number): void
+    simpleFloatElement(id: string, val: number, precision: number): void
     /**
      * Convenience routine to output an element `id` with integer value `val`.
      * @param id Element name
      * @param val Element value
      */
-    simpleIntElement(id: string | null, val: number): void
+    simpleIntElement(id: string, val: number): void
     /**
      * Output a start element `id,` if necessary preceeded by an XML declaration.
      * @param id Element name
      */
-    startElement(id: string | null): void
+    startElement(id: string): void
 
     // Class property signals of Gsf-1.Gsf.XMLOut
 
@@ -4056,7 +4056,7 @@ interface DocProp {
      */
     free(): void
     getLink(): string | null
-    getName(): string | null
+    getName(): string
     getVal(): any
     /**
      * Sets `prop'`s link to `link`
@@ -4111,7 +4111,7 @@ interface InputClass {
     dup: (input: Input) => Input | null
     read: (input: Input, numBytes: number, optionalBuffer: number[] | null) => number[] | null
     seek: (input: Input, offset: gsf_off_t, whence: GLib.SeekType) => boolean
-    openSibling: (input: Input, name: string | null) => Input
+    openSibling: (input: Input, name: string) => Input
 }
 
 abstract class InputClass {
@@ -4137,8 +4137,8 @@ class MSOleSortingKey {
 
     // Constructors of Gsf-1.Gsf.MSOleSortingKey
 
-    constructor(name: string | null) 
-    static new(name: string | null): MSOleSortingKey
+    constructor(name: string) 
+    static new(name: string): MSOleSortingKey
 }
 
 interface ODFOutClass {
@@ -4159,8 +4159,8 @@ interface OpenPkgRel {
 
     // Owm methods of Gsf-1.Gsf.OpenPkgRel
 
-    getTarget(): string | null
-    getType(): string | null
+    getTarget(): string
+    getType(): string
     isExtern(): boolean
 }
 
@@ -4293,7 +4293,7 @@ interface Timestamp {
      * @param spec The string to parse
      * @returns %TRUE on success
      */
-    loadFromString(spec: string | null): number
+    loadFromString(spec: string): number
     setTime(t: number): void
     /**
      * Calls g_value_set_box (value, stamp);
@@ -4361,7 +4361,7 @@ interface XMLIn {
      * @param nsId the namespace id
      * @returns a pointer to @str after the namespace if successful, otherwise %NULL.
      */
-    checkNs(str: string | null, nsId: number): string | null
+    checkNs(str: string, nsId: number): string | null
     /**
      * (New in 1.14.2)
      * @returns (but does not reference) the stream being parsed.
@@ -4375,7 +4375,7 @@ interface XMLIn {
      * @param name The target node name
      * @returns %TRUE if @str == @ns_id:@name according to @state.
      */
-    namecmp(str: string | null, nsId: number, name: string | null): boolean
+    namecmp(str: string, nsId: number, name: string): boolean
     /**
      * Take the first node from `doc` as the current node and call its start handler.
      * @param doc #GsfXMLInDoc
@@ -4467,7 +4467,7 @@ interface XMLInNS {
      * URI
      * @field 
      */
-    uri: string | null
+    uri: string
     nsId: number
 }
 
@@ -4486,7 +4486,7 @@ interface XMLInNode {
      * identifier unique in the entire tree
      * @field 
      */
-    id: string | null
+    id: string
     /**
      * namespace identifier
      * @field 
@@ -4496,12 +4496,12 @@ interface XMLInNode {
      * node name
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * parent node identifier
      * @field 
      */
-    parentId: string | null
+    parentId: string
     start: (xin: XMLIn, attrs: libxml2.Char) => void
     end: (xin: XMLIn, unknown: XMLBlob) => void
     /**

@@ -299,7 +299,7 @@ const TEST_FLAGS_NONE: number
  * @param encoding the name of the legacy encoding
  * @returns %TRUE iff the legacy encoding @encoding is supported
  */
-function get_encoding_supported(encoding: string | null): boolean
+function get_encoding_supported(encoding: string): boolean
 /**
  * Gets the list of supported legacy encodings.
  * 
@@ -319,7 +319,7 @@ function get_feature_flags(): FeatureFlags
  * Gets a list of features vte was compiled with.
  * @returns a string with features
  */
-function get_features(): string | null
+function get_features(): string
 /**
  * Returns the major version of the VTE library at runtime.
  * Contrast this with %VTE_MAJOR_VERSION which represents
@@ -1853,7 +1853,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param tag the tag of the regex which should use the specified cursor
      * @param cursor_name the name of the cursor
      */
-    match_set_cursor_name(tag: number, cursor_name: string | null): void
+    match_set_cursor_name(tag: number, cursor_name: string): void
     /**
      * Sets which cursor the terminal will use if the pointer is over the pattern
      * specified by `tag`.
@@ -1880,7 +1880,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * `text` before passing it to the child (e.g. apply bracketed mode)
      * @param text a string to paste
      */
-    paste_text(text: string | null): void
+    paste_text(text: string): void
     /**
      * Creates a new #VtePty, sets the emulation property
      * from #VteTerminal:emulation, and sets the size using
@@ -2245,7 +2245,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Use %NULL to reset the set of exception characters to the default.
      * @param exceptions a string of ASCII punctuation characters, or %NULL
      */
-    set_word_char_exceptions(exceptions: string | null): void
+    set_word_char_exceptions(exceptions: string): void
     /**
      * Sets the horizontal alignment of `terminal` within its allocation.
      * 
@@ -2421,7 +2421,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
     vfunc_bell(): void
     vfunc_char_size_changed(char_width: number, char_height: number): void
     vfunc_child_exited(status: number): void
-    vfunc_commit(text: string | null, size: number): void
+    vfunc_commit(text: string, size: number): void
     vfunc_contents_changed(): void
     /**
      * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
@@ -2872,7 +2872,7 @@ interface Regex {
      * @param flags PCRE2 match flags
      * @returns the substituted string, or %NULL   if an error occurred
      */
-    substitute(subject: string | null, replacement: string | null, flags: number): string | null
+    substitute(subject: string, replacement: string, flags: number): string | null
     /**
      * Decreases the reference count of `regex` by one, and frees `regex`
      * if the refcount reaches zero.
@@ -2905,7 +2905,7 @@ class Regex {
      * @param flags PCRE2 compile flags
      * @returns a newly created #VteRegex, or %NULL with @error filled in
      */
-    static new_for_match(pattern: string | null, pattern_length: number, flags: number): Regex
+    static new_for_match(pattern: string, pattern_length: number, flags: number): Regex
     /**
      * Compiles `pattern` into a regex for use as a search regex
      * with vte_terminal_search_set_regex().
@@ -2921,7 +2921,7 @@ class Regex {
      * @param flags PCRE2 compile flags
      * @returns a newly created #VteRegex, or %NULL with @error filled in
      */
-    static new_for_search(pattern: string | null, pattern_length: number, flags: number): Regex
+    static new_for_search(pattern: string, pattern_length: number, flags: number): Regex
 }
 
 interface TerminalClass {
@@ -2938,7 +2938,7 @@ interface TerminalClass {
     selection_changed: (terminal: Terminal) => void
     contents_changed: (terminal: Terminal) => void
     cursor_moved: (terminal: Terminal) => void
-    commit: (terminal: Terminal, text: string | null, size: number) => void
+    commit: (terminal: Terminal, text: string, size: number) => void
     deiconify_window: (terminal: Terminal) => void
     iconify_window: (terminal: Terminal) => void
     raise_window: (terminal: Terminal) => void

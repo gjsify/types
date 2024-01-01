@@ -511,15 +511,15 @@ interface DOMEventTarget {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMEventTarget
 
-    // Has conflict: addEventListener(eventName: string | null, handler: GObject.TClosure, useCapture: boolean): boolean
+    // Has conflict: addEventListener(eventName: string, handler: GObject.TClosure, useCapture: boolean): boolean
     // Has conflict: dispatchEvent(event: DOMEvent): boolean
-    // Has conflict: removeEventListener(eventName: string | null, handler: GObject.TClosure, useCapture: boolean): boolean
+    // Has conflict: removeEventListener(eventName: string, handler: GObject.TClosure, useCapture: boolean): boolean
 
     // Own virtual methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMEventTarget
 
-    addEventListener(eventName: string | null, handler: GObject.TClosure, useCapture: boolean): boolean
+    addEventListener(eventName: string, handler: GObject.TClosure, useCapture: boolean): boolean
     dispatchEvent(event: DOMEvent): boolean
-    removeEventListener(eventName: string | null, handler: GObject.TClosure, useCapture: boolean): boolean
+    removeEventListener(eventName: string, handler: GObject.TClosure, useCapture: boolean): boolean
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMEventTarget
 
@@ -615,11 +615,11 @@ interface DOMXPathNSResolver {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathNSResolver
 
-    // Has conflict: lookupNamespaceUri(prefix: string | null): string | null
+    // Has conflict: lookupNamespaceUri(prefix: string): string | null
 
     // Own virtual methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathNSResolver
 
-    lookupNamespaceUri(prefix: string | null): string | null
+    lookupNamespaceUri(prefix: string): string | null
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathNSResolver
 
@@ -978,7 +978,7 @@ class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param target a #GVariant to use as the action target
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newFromGaction(action: Gio.Action, label: string | null, target: GLib.Variant | null): ContextMenuItem
+    static newFromGaction(action: Gio.Action, label: string, target: GLib.Variant | null): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem for the given stock action.
      * 
@@ -1005,7 +1005,7 @@ class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param label a custom label text to use instead of the predefined one
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newFromStockActionWithLabel(action: ContextMenuAction, label: string | null): ContextMenuItem
+    static newFromStockActionWithLabel(action: ContextMenuAction, label: string): ContextMenuItem
     /**
      * Creates a new #WebKitContextMenuItem representing a separator.
      * @constructor 
@@ -1019,7 +1019,7 @@ class ContextMenuItem extends GObject.InitiallyUnowned {
      * @param submenu a #WebKitContextMenu to set
      * @returns the newly created #WebKitContextMenuItem object.
      */
-    static newWithSubmenu(label: string | null, submenu: ContextMenu): ContextMenuItem
+    static newWithSubmenu(label: string, submenu: ContextMenu): ContextMenuItem
     _init(config?: ContextMenuItem.ConstructorProperties): void
 }
 
@@ -1062,7 +1062,7 @@ interface DOMAttr extends DOMEventTarget {
     getPrefix(): string | null
     getSpecified(): boolean
     getValue(): string | null
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMAttr
 
@@ -1273,7 +1273,7 @@ interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getData(): string | null
 
     // Overloads of getData
@@ -1283,7 +1283,7 @@ interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1298,8 +1298,8 @@ interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
-    setData(value: string | null): void
+    setData(key: string, data: any | null): void
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -1317,7 +1317,7 @@ interface DOMCDATASection extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCDATASection
 
@@ -1459,7 +1459,7 @@ interface DOMCSSRule {
     getParentRule(): DOMCSSRule
     getParentStyleSheet(): DOMCSSStyleSheet
     getRuleType(): number
-    setCssText(value: string | null): void
+    setCssText(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSRule
 
@@ -1596,14 +1596,14 @@ interface DOMCSSStyleDeclaration {
     getCssText(): string | null
     getLength(): number
     getParentRule(): DOMCSSRule
-    getPropertyPriority(propertyName: string | null): string | null
-    getPropertyShorthand(propertyName: string | null): string | null
-    getPropertyValue(propertyName: string | null): string | null
-    isPropertyImplicit(propertyName: string | null): boolean
+    getPropertyPriority(propertyName: string): string | null
+    getPropertyShorthand(propertyName: string): string | null
+    getPropertyValue(propertyName: string): string | null
+    isPropertyImplicit(propertyName: string): boolean
     item(index: number): string | null
-    removeProperty(propertyName: string | null): string | null
-    setCssText(value: string | null): void
-    setProperty(propertyName: string | null, value: string | null, priority: string | null): void
+    removeProperty(propertyName: string): string | null
+    setCssText(value: string): void
+    setProperty(propertyName: string, value: string, priority: string): void
 
     // Overloads of setProperty
 
@@ -1680,12 +1680,12 @@ interface DOMCSSStyleSheet {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSStyleSheet
 
-    addRule(selector: string | null, style: string | null, index: number): number
+    addRule(selector: string, style: string, index: number): number
     deleteRule(index: number): void
     getCssRules(): DOMCSSRuleList
     getOwnerRule(): DOMCSSRule
     getRules(): DOMCSSRuleList
-    insertRule(rule: string | null, index: number): number
+    insertRule(rule: string, index: number): number
     removeRule(index: number): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSStyleSheet
@@ -1794,7 +1794,7 @@ interface DOMCSSValue {
 
     getCssText(): string | null
     getCssValueType(): number
-    setCssText(value: string | null): void
+    setCssText(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCSSValue
 
@@ -1860,7 +1860,7 @@ interface DOMCharacterData extends DOMEventTarget {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCharacterData
 
-    appendData(data: string | null): void
+    appendData(data: string): void
     deleteData(offset: number, length: number): void
     getData(): string | null
 
@@ -1871,11 +1871,11 @@ interface DOMCharacterData extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getLength(): number
-    insertData(offset: number, data: string | null): void
-    replaceData(offset: number, length: number, data: string | null): void
-    setData(value: string | null): void
+    insertData(offset: number, data: string): void
+    replaceData(offset: number, length: number, data: string): void
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -1893,7 +1893,7 @@ interface DOMCharacterData extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     substringData(offset: number, length: number): string | null
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMCharacterData
@@ -2209,14 +2209,14 @@ interface DOMComment extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -2234,7 +2234,7 @@ interface DOMComment extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -2249,7 +2249,7 @@ interface DOMComment extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMComment
 
@@ -2374,11 +2374,11 @@ interface DOMDOMImplementation {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMImplementation
 
-    createCssStyleSheet(title: string | null, media: string | null): DOMCSSStyleSheet
-    createDocument(namespaceURI: string | null, qualifiedName: string | null, doctype: DOMDocumentType | null): DOMDocument
-    createDocumentType(qualifiedName: string | null, publicId: string | null, systemId: string | null): DOMDocumentType
-    createHtmlDocument(title: string | null): DOMHTMLDocument
-    hasFeature(feature: string | null, version: string | null): boolean
+    createCssStyleSheet(title: string, media: string): DOMCSSStyleSheet
+    createDocument(namespaceURI: string | null, qualifiedName: string, doctype: DOMDocumentType | null): DOMDocument
+    createDocumentType(qualifiedName: string, publicId: string, systemId: string): DOMDocumentType
+    createHtmlDocument(title: string): DOMHTMLDocument
+    hasFeature(feature: string, version: string): boolean
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMImplementation
 
@@ -2459,7 +2459,7 @@ interface DOMDOMSelection {
     getRangeAt(index: number): DOMRange
     getRangeCount(): number
     getSelectionType(): string | null
-    modify(alter: string | null, direction: string | null, granularity: string | null): void
+    modify(alter: string, direction: string, granularity: string): void
     removeAllRanges(): void
     selectAllChildren(node: DOMNode): void
     setBaseAndExtent(baseNode: DOMNode, baseOffset: number, extentNode: DOMNode, extentOffset: number): void
@@ -2574,13 +2574,13 @@ interface DOMDOMTokenList {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMTokenList
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
     getLength(): number
     getValue(): string | null
     item(index: number): string | null
-    replace(token: string | null, newToken: string | null): void
-    setValue(value: string | null): void
-    toggle(token: string | null, force: boolean): boolean
+    replace(token: string, newToken: string): void
+    setValue(value: string): void
+    toggle(token: string, force: boolean): boolean
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMTokenList
 
@@ -2674,12 +2674,12 @@ interface DOMDOMWindow extends DOMEventTarget {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMWindow
 
-    alert(message: string | null): void
+    alert(message: string): void
     blur(): void
     captureEvents(): void
     close(): void
-    confirm(message: string | null): boolean
-    find(string: string | null, caseSensitive: boolean, backwards: boolean, wrap: boolean, wholeWord: boolean, searchInFrames: boolean, showDialog: boolean): boolean
+    confirm(message: string): boolean
+    find(string: string, caseSensitive: boolean, backwards: boolean, wrap: boolean, wholeWord: boolean, searchInFrames: boolean, showDialog: boolean): boolean
     focus(): void
     getClosed(): boolean
     getComputedStyle(element: DOMElement, pseudoElement: string | null): DOMCSSStyleDeclaration
@@ -2714,17 +2714,17 @@ interface DOMDOMWindow extends DOMEventTarget {
     moveBy(x: number, y: number): void
     moveTo(x: number, y: number): void
     print(): void
-    prompt(message: string | null, defaultValue: string | null): string | null
+    prompt(message: string, defaultValue: string): string | null
     releaseEvents(): void
     resizeBy(x: number, y: number): void
     resizeTo(width: number, height: number): void
     scrollBy(x: number, y: number): void
     scrollTo(x: number, y: number): void
-    setDefaultStatus(value: string | null): void
-    setName(value: string | null): void
-    setStatus(value: string | null): void
+    setDefaultStatus(value: string): void
+    setName(value: string): void
+    setStatus(value: string): void
     stop(): void
-    webkitMessageHandlersPostMessage(handler: string | null, message: string | null): boolean
+    webkitMessageHandlersPostMessage(handler: string, message: string): boolean
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDOMWindow
 
@@ -2979,31 +2979,31 @@ interface DOMDocument extends DOMEventTarget {
 
     adoptNode(source: DOMNode): DOMNode
     caretRangeFromPoint(x: number, y: number): DOMRange
-    createAttribute(name: string | null): DOMAttr
-    createAttributeNs(namespaceURI: string | null, qualifiedName: string | null): DOMAttr
-    createCdataSection(data: string | null): DOMCDATASection
-    createComment(data: string | null): DOMComment
+    createAttribute(name: string): DOMAttr
+    createAttributeNs(namespaceURI: string | null, qualifiedName: string): DOMAttr
+    createCdataSection(data: string): DOMCDATASection
+    createComment(data: string): DOMComment
     createCssStyleDeclaration(): DOMCSSStyleDeclaration
     createDocumentFragment(): DOMDocumentFragment
-    createElement(tagName: string | null): DOMElement
-    createElementNs(namespaceURI: string | null, qualifiedName: string | null): DOMElement
+    createElement(tagName: string): DOMElement
+    createElementNs(namespaceURI: string | null, qualifiedName: string): DOMElement
     /**
      * This function has been removed from the DOM spec and it just returns %NULL.
      * @param name A #gchar
      * @returns A #WebKitDOMEntityReference
      */
     createEntityReference(name: string | null): DOMEntityReference
-    createEvent(eventType: string | null): DOMEvent
-    createExpression(expression: string | null, resolver: DOMXPathNSResolver): DOMXPathExpression
+    createEvent(eventType: string): DOMEvent
+    createExpression(expression: string, resolver: DOMXPathNSResolver): DOMXPathExpression
     createNodeIterator(root: DOMNode, whatToShow: number, filter: DOMNodeFilter | null, expandEntityReferences: boolean): DOMNodeIterator
     createNsResolver(nodeResolver: DOMNode): DOMXPathNSResolver
-    createProcessingInstruction(target: string | null, data: string | null): DOMProcessingInstruction
+    createProcessingInstruction(target: string, data: string): DOMProcessingInstruction
     createRange(): DOMRange
-    createTextNode(data: string | null): DOMText
+    createTextNode(data: string): DOMText
     createTreeWalker(root: DOMNode, whatToShow: number, filter: DOMNodeFilter | null, expandEntityReferences: boolean): DOMTreeWalker
     elementFromPoint(x: number, y: number): DOMElement
-    evaluate(expression: string | null, contextNode: DOMNode, resolver: DOMXPathNSResolver | null, type: number, inResult: DOMXPathResult | null): DOMXPathResult
-    execCommand(command: string | null, userInterface: boolean, value: string | null): boolean
+    evaluate(expression: string, contextNode: DOMNode, resolver: DOMXPathNSResolver | null, type: number, inResult: DOMXPathResult | null): DOMXPathResult
+    execCommand(command: string, userInterface: boolean, value: string): boolean
     exitPointerLock(): void
     getActiveElement(): DOMElement
     getAnchors(): DOMHTMLCollection
@@ -3025,14 +3025,14 @@ interface DOMDocument extends DOMEventTarget {
     getDocumentElement(): DOMElement
     getDocumentUri(): string | null
     getDomain(): string | null
-    getElementById(elementId: string | null): DOMElement
-    getElementsByClassName(className: string | null): DOMNodeList
-    getElementsByClassNameAsHtmlCollection(classNames: string | null): DOMHTMLCollection
-    getElementsByName(elementName: string | null): DOMNodeList
-    getElementsByTagName(tagName: string | null): DOMNodeList
-    getElementsByTagNameAsHtmlCollection(tagname: string | null): DOMHTMLCollection
-    getElementsByTagNameNs(namespaceUri: string | null, tagName: string | null): DOMNodeList
-    getElementsByTagNameNsAsHtmlCollection(namespaceURI: string | null, localName: string | null): DOMHTMLCollection
+    getElementById(elementId: string): DOMElement
+    getElementsByClassName(className: string): DOMNodeList
+    getElementsByClassNameAsHtmlCollection(classNames: string): DOMHTMLCollection
+    getElementsByName(elementName: string): DOMNodeList
+    getElementsByTagName(tagName: string): DOMNodeList
+    getElementsByTagNameAsHtmlCollection(tagname: string): DOMHTMLCollection
+    getElementsByTagNameNs(namespaceUri: string, tagName: string): DOMNodeList
+    getElementsByTagNameNsAsHtmlCollection(namespaceURI: string, localName: string): DOMHTMLCollection
     getEmbeds(): DOMHTMLCollection
     getFirstElementChild(): DOMElement
     getForms(): DOMHTMLCollection
@@ -3076,27 +3076,27 @@ interface DOMDocument extends DOMEventTarget {
     getXmlVersion(): string | null
     hasFocus(): boolean
     importNode(importedNode: DOMNode, deep: boolean): DOMNode
-    queryCommandEnabled(command: string | null): boolean
-    queryCommandIndeterm(command: string | null): boolean
-    queryCommandState(command: string | null): boolean
-    queryCommandSupported(command: string | null): boolean
-    queryCommandValue(command: string | null): string | null
-    querySelector(selectors: string | null): DOMElement
-    querySelectorAll(selectors: string | null): DOMNodeList
+    queryCommandEnabled(command: string): boolean
+    queryCommandIndeterm(command: string): boolean
+    queryCommandState(command: string): boolean
+    queryCommandSupported(command: string): boolean
+    queryCommandValue(command: string): string | null
+    querySelector(selectors: string): DOMElement
+    querySelectorAll(selectors: string): DOMNodeList
     setBody(value: DOMHTMLElement): void
-    setCharset(value: string | null): void
-    setCookie(value: string | null): void
-    setDesignMode(value: string | null): void
-    setDir(value: string | null): void
-    setDocumentUri(value: string | null): void
+    setCharset(value: string): void
+    setCookie(value: string): void
+    setDesignMode(value: string): void
+    setDir(value: string): void
+    setDocumentUri(value: string): void
     /**
      * This function has been removed and does nothing.
      * @param value A #gchar
      */
-    setSelectedStylesheetSet(value: string | null): void
-    setTitle(value: string | null): void
+    setSelectedStylesheetSet(value: string): void
+    setTitle(value: string): void
     setXmlStandalone(value: boolean): void
-    setXmlVersion(value: string | null): void
+    setXmlVersion(value: string): void
     webkitCancelFullscreen(): void
     webkitExitFullscreen(): void
 
@@ -3474,11 +3474,11 @@ interface DOMDocumentFragment extends DOMEventTarget {
 
     getChildElementCount(): number
     getChildren(): DOMHTMLCollection
-    getElementById(elementId: string | null): DOMElement
+    getElementById(elementId: string): DOMElement
     getFirstElementChild(): DOMElement
     getLastElementChild(): DOMElement
-    querySelector(selectors: string | null): DOMElement
-    querySelectorAll(selectors: string | null): DOMNodeList
+    querySelector(selectors: string): DOMElement
+    querySelectorAll(selectors: string): DOMNodeList
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMDocumentFragment
 
@@ -3810,12 +3810,12 @@ interface DOMElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMElement
 
     blur(): void
-    closest(selectors: string | null): DOMElement
+    closest(selectors: string): DOMElement
     focus(): void
-    getAttribute(name: string | null): string | null
-    getAttributeNode(name: string | null): DOMAttr
-    getAttributeNodeNs(namespaceURI: string | null, localName: string | null): DOMAttr
-    getAttributeNs(namespaceURI: string | null, localName: string | null): string | null
+    getAttribute(name: string): string | null
+    getAttributeNode(name: string): DOMAttr
+    getAttributeNodeNs(namespaceURI: string, localName: string): DOMAttr
+    getAttributeNs(namespaceURI: string, localName: string): string | null
     getAttributes(): DOMNamedNodeMap
     /**
      * Returns a #WebKitDOMClientRect representing the size and position of `self`
@@ -3837,12 +3837,12 @@ interface DOMElement extends DOMEventTarget {
     getClientRects(): DOMClientRectList
     getClientTop(): number
     getClientWidth(): number
-    getElementsByClassName(className: string | null): DOMNodeList
-    getElementsByClassNameAsHtmlCollection(name: string | null): DOMHTMLCollection
-    getElementsByTagName(tagName: string | null): DOMNodeList
-    getElementsByTagNameAsHtmlCollection(name: string | null): DOMHTMLCollection
-    getElementsByTagNameNs(namespaceUri: string | null, tagName: string | null): DOMNodeList
-    getElementsByTagNameNsAsHtmlCollection(namespaceURI: string | null, localName: string | null): DOMHTMLCollection
+    getElementsByClassName(className: string): DOMNodeList
+    getElementsByClassNameAsHtmlCollection(name: string): DOMHTMLCollection
+    getElementsByTagName(tagName: string): DOMNodeList
+    getElementsByTagNameAsHtmlCollection(name: string): DOMHTMLCollection
+    getElementsByTagNameNs(namespaceUri: string, tagName: string): DOMNodeList
+    getElementsByTagNameNsAsHtmlCollection(namespaceURI: string, localName: string): DOMHTMLCollection
     getFirstElementChild(): DOMElement
     getId(): string | null
     getInnerHtml(): string | null
@@ -3869,8 +3869,8 @@ interface DOMElement extends DOMEventTarget {
      * @returns %NULL
      */
     getWebkitRegionOverset(): string | null
-    hasAttribute(name: string | null): boolean
-    hasAttributeNs(namespaceURI: string | null, localName: string | null): boolean
+    hasAttribute(name: string): boolean
+    hasAttributeNs(namespaceURI: string, localName: string): boolean
     hasAttributes(): boolean
     /**
      * Get whether the element is an HTML input element that has been filled automatically.
@@ -3894,33 +3894,33 @@ interface DOMElement extends DOMEventTarget {
      * element this function does nothing.
      * @param value the text to set
      */
-    htmlInputElementSetEditingValue(value: string | null): void
-    insertAdjacentElement(where: string | null, element: DOMElement): DOMElement
-    insertAdjacentHtml(where: string | null, html: string | null): void
-    insertAdjacentText(where: string | null, text: string | null): void
-    matches(selectors: string | null): boolean
-    querySelector(selectors: string | null): DOMElement
-    querySelectorAll(selectors: string | null): DOMNodeList
+    htmlInputElementSetEditingValue(value: string): void
+    insertAdjacentElement(where: string, element: DOMElement): DOMElement
+    insertAdjacentHtml(where: string, html: string): void
+    insertAdjacentText(where: string, text: string): void
+    matches(selectors: string): boolean
+    querySelector(selectors: string): DOMElement
+    querySelectorAll(selectors: string): DOMNodeList
     remove(): void
-    removeAttribute(name: string | null): void
+    removeAttribute(name: string): void
     removeAttributeNode(oldAttr: DOMAttr): DOMAttr
-    removeAttributeNs(namespaceURI: string | null, localName: string | null): void
+    removeAttributeNs(namespaceURI: string, localName: string): void
     requestPointerLock(): void
     scrollByLines(lines: number): void
     scrollByPages(pages: number): void
     scrollIntoView(alignWithTop: boolean): void
     scrollIntoViewIfNeeded(centerIfNeeded: boolean): void
-    setAttribute(name: string | null, value: string | null): void
+    setAttribute(name: string, value: string): void
     setAttributeNode(newAttr: DOMAttr): DOMAttr
     setAttributeNodeNs(newAttr: DOMAttr): DOMAttr
-    setAttributeNs(namespaceURI: string | null, qualifiedName: string | null, value: string | null): void
-    setClassName(value: string | null): void
-    setId(value: string | null): void
-    setInnerHtml(value: string | null): void
-    setOuterHtml(value: string | null): void
+    setAttributeNs(namespaceURI: string | null, qualifiedName: string, value: string): void
+    setClassName(value: string): void
+    setId(value: string): void
+    setInnerHtml(value: string): void
+    setOuterHtml(value: string): void
     setScrollLeft(value: number): void
     setScrollTop(value: number): void
-    webkitMatchesSelector(selectors: string | null): boolean
+    webkitMatchesSelector(selectors: string): boolean
     webkitRequestFullscreen(): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMElement
@@ -4327,7 +4327,7 @@ interface DOMEvent {
     getSrcElement(): DOMEventTarget
     getTarget(): DOMEventTarget
     getTimeStamp(): number
-    initEvent(eventTypeArg: string | null, canBubbleArg: boolean, cancelableArg: boolean): void
+    initEvent(eventTypeArg: string, canBubbleArg: boolean, cancelableArg: boolean): void
     preventDefault(): void
     setCancelBubble(value: boolean): void
     setReturnValue(value: boolean): void
@@ -4606,24 +4606,24 @@ interface DOMHTMLAnchorElement extends DOMEventTarget {
     getTarget(): string | null
     getText(): string | null
     getTypeAttr(): string | null
-    setCharset(value: string | null): void
-    setCoords(value: string | null): void
-    setHash(value: string | null): void
-    setHost(value: string | null): void
-    setHostname(value: string | null): void
-    setHref(value: string | null): void
-    setHreflang(value: string | null): void
-    setName(value: string | null): void
-    setPathname(value: string | null): void
-    setPort(value: string | null): void
-    setProtocol(value: string | null): void
-    setRel(value: string | null): void
-    setRev(value: string | null): void
-    setSearch(value: string | null): void
-    setShape(value: string | null): void
-    setTarget(value: string | null): void
-    setText(value: string | null): void
-    setTypeAttr(value: string | null): void
+    setCharset(value: string): void
+    setCoords(value: string): void
+    setHash(value: string): void
+    setHost(value: string): void
+    setHostname(value: string): void
+    setHref(value: string): void
+    setHreflang(value: string): void
+    setName(value: string): void
+    setPathname(value: string): void
+    setPort(value: string): void
+    setProtocol(value: string): void
+    setRel(value: string): void
+    setRev(value: string): void
+    setSearch(value: string): void
+    setShape(value: string): void
+    setTarget(value: string): void
+    setText(value: string): void
+    setTypeAttr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLAnchorElement
 
@@ -5089,17 +5089,17 @@ interface DOMHTMLAppletElement extends DOMEventTarget {
     getObject(): string | null
     getVspace(): number
     getWidth(): string | null
-    setAlign(value: string | null): void
-    setAlt(value: string | null): void
-    setArchive(value: string | null): void
-    setCode(value: string | null): void
-    setCodeBase(value: string | null): void
-    setHeight(value: string | null): void
+    setAlign(value: string): void
+    setAlt(value: string): void
+    setArchive(value: string): void
+    setCode(value: string): void
+    setCodeBase(value: string): void
+    setHeight(value: string): void
     setHspace(value: number): void
-    setName(value: string | null): void
-    setObject(value: string | null): void
+    setName(value: string): void
+    setObject(value: string): void
     setVspace(value: number): void
-    setWidth(value: string | null): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLAppletElement
 
@@ -5536,19 +5536,19 @@ interface DOMHTMLAreaElement extends DOMEventTarget {
     getSearch(): string | null
     getShape(): string | null
     getTarget(): string | null
-    setAlt(value: string | null): void
-    setCoords(value: string | null): void
-    setHash(value: string | null): void
-    setHost(value: string | null): void
-    setHostname(value: string | null): void
-    setHref(value: string | null): void
+    setAlt(value: string): void
+    setCoords(value: string): void
+    setHash(value: string): void
+    setHost(value: string): void
+    setHostname(value: string): void
+    setHref(value: string): void
     setNoHref(value: boolean): void
-    setPathname(value: string | null): void
-    setPort(value: string | null): void
-    setProtocol(value: string | null): void
-    setSearch(value: string | null): void
-    setShape(value: string | null): void
-    setTarget(value: string | null): void
+    setPathname(value: string): void
+    setPort(value: string): void
+    setProtocol(value: string): void
+    setSearch(value: string): void
+    setShape(value: string): void
+    setTarget(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLAreaElement
 
@@ -5959,7 +5959,7 @@ interface DOMHTMLBRElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBRElement
 
     getClear(): string | null
-    setClear(value: string | null): void
+    setClear(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBRElement
 
@@ -6313,8 +6313,8 @@ interface DOMHTMLBaseElement extends DOMEventTarget {
 
     getHref(): string | null
     getTarget(): string | null
-    setHref(value: string | null): void
-    setTarget(value: string | null): void
+    setHref(value: string): void
+    setTarget(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBaseElement
 
@@ -6683,12 +6683,12 @@ interface DOMHTMLBaseFontElement extends DOMEventTarget {
      * This function has been removed from the DOM spec and it does nothing.
      * @param value A #gchar
      */
-    setColor(value: string | null): void
+    setColor(value: string): void
     /**
      * This function has been removed from the DOM spec and it does nothing.
      * @param value A #gchar
      */
-    setFace(value: string | null): void
+    setFace(value: string): void
     /**
      * This function has been removed from the DOM spec and it does nothing.
      * @param value A #glong
@@ -7054,12 +7054,12 @@ interface DOMHTMLBodyElement extends DOMEventTarget {
     getLink(): string | null
     getText(): string | null
     getVLink(): string | null
-    setALink(value: string | null): void
-    setBackground(value: string | null): void
-    setBgColor(value: string | null): void
-    setLink(value: string | null): void
-    setText(value: string | null): void
-    setVLink(value: string | null): void
+    setALink(value: string): void
+    setBackground(value: string): void
+    setBgColor(value: string): void
+    setLink(value: string): void
+    setText(value: string): void
+    setVLink(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLBodyElement
 
@@ -7452,10 +7452,10 @@ interface DOMHTMLButtonElement extends DOMEventTarget {
     getValue(): string | null
     getWillValidate(): boolean
     setAutofocus(value: boolean): void
-    setButtonType(value: string | null): void
+    setButtonType(value: string): void
     setDisabled(value: boolean): void
-    setName(value: string | null): void
-    setValue(value: string | null): void
+    setName(value: string): void
+    setValue(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLButtonElement
 
@@ -8193,7 +8193,7 @@ interface DOMHTMLCollection {
 
     getLength(): number
     item(index: number): DOMNode
-    namedItem(name: string | null): DOMNode
+    namedItem(name: string): DOMNode
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLCollection
 
@@ -8956,7 +8956,7 @@ interface DOMHTMLDivElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLDivElement
 
     getAlign(): string | null
-    setAlign(value: string | null): void
+    setAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLDivElement
 
@@ -9335,13 +9335,13 @@ interface DOMHTMLDocument extends DOMEventTarget {
     getVlinkColor(): string | null
     getWidth(): number
     releaseEvents(): void
-    setAlinkColor(value: string | null): void
-    setBgColor(value: string | null): void
-    setDesignMode(value: string | null): void
-    setDir(value: string | null): void
-    setFgColor(value: string | null): void
-    setLinkColor(value: string | null): void
-    setVlinkColor(value: string | null): void
+    setAlinkColor(value: string): void
+    setBgColor(value: string): void
+    setDesignMode(value: string): void
+    setDir(value: string): void
+    setFgColor(value: string): void
+    setLinkColor(value: string): void
+    setVlinkColor(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLDocument
 
@@ -9794,21 +9794,21 @@ interface DOMHTMLElement extends DOMEventTarget {
     getTitle(): string | null
     getTranslate(): boolean
     getWebkitdropzone(): string | null
-    setAccessKey(value: string | null): void
-    setContentEditable(value: string | null): void
-    setDir(value: string | null): void
+    setAccessKey(value: string): void
+    setContentEditable(value: string): void
+    setDir(value: string): void
     setDraggable(value: boolean): void
     setHidden(value: boolean): void
-    setInnerHtml(contents: string | null): void
-    setInnerText(value: string | null): void
-    setLang(value: string | null): void
-    setOuterHtml(contents: string | null): void
-    setOuterText(value: string | null): void
+    setInnerHtml(contents: string): void
+    setInnerText(value: string): void
+    setLang(value: string): void
+    setOuterHtml(contents: string): void
+    setOuterText(value: string): void
     setSpellcheck(value: boolean): void
     setTabIndex(value: number): void
-    setTitle(value: string | null): void
+    setTitle(value: string): void
     setTranslate(value: boolean): void
-    setWebkitdropzone(value: string | null): void
+    setWebkitdropzone(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLElement
 
@@ -10169,11 +10169,11 @@ interface DOMHTMLEmbedElement extends DOMEventTarget {
     getSrc(): string | null
     getTypeAttr(): string | null
     getWidth(): number
-    setAlign(value: string | null): void
+    setAlign(value: string): void
     setHeight(value: number): void
-    setName(value: string | null): void
-    setSrc(value: string | null): void
-    setTypeAttr(value: string | null): void
+    setName(value: string): void
+    setSrc(value: string): void
+    setTypeAttr(value: string): void
     setWidth(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLEmbedElement
@@ -10902,9 +10902,9 @@ interface DOMHTMLFontElement extends DOMEventTarget {
     getColor(): string | null
     getFace(): string | null
     getSize(): string | null
-    setColor(value: string | null): void
-    setFace(value: string | null): void
-    setSize(value: string | null): void
+    setColor(value: string): void
+    setFace(value: string): void
+    setSize(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFontElement
 
@@ -11288,13 +11288,13 @@ interface DOMHTMLFormElement extends DOMEventTarget {
     getName(): string | null
     getTarget(): string | null
     reset(): void
-    setAcceptCharset(value: string | null): void
-    setAction(value: string | null): void
-    setEncoding(value: string | null): void
-    setEnctype(value: string | null): void
-    setMethod(value: string | null): void
-    setName(value: string | null): void
-    setTarget(value: string | null): void
+    setAcceptCharset(value: string): void
+    setAction(value: string): void
+    setEncoding(value: string): void
+    setEnctype(value: string): void
+    setMethod(value: string): void
+    setName(value: string): void
+    setTarget(value: string): void
     submit(): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFormElement
@@ -11715,14 +11715,14 @@ interface DOMHTMLFrameElement extends DOMEventTarget {
     getScrolling(): string | null
     getSrc(): string | null
     getWidth(): number
-    setFrameBorder(value: string | null): void
-    setLongDesc(value: string | null): void
-    setMarginHeight(value: string | null): void
-    setMarginWidth(value: string | null): void
-    setName(value: string | null): void
+    setFrameBorder(value: string): void
+    setLongDesc(value: string): void
+    setMarginHeight(value: string): void
+    setMarginWidth(value: string): void
+    setName(value: string): void
     setNoResize(value: boolean): void
-    setScrolling(value: string | null): void
-    setSrc(value: string | null): void
+    setScrolling(value: string): void
+    setSrc(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFrameElement
 
@@ -12131,8 +12131,8 @@ interface DOMHTMLFrameSetElement extends DOMEventTarget {
 
     getCols(): string | null
     getRows(): string | null
-    setCols(value: string | null): void
-    setRows(value: string | null): void
+    setCols(value: string): void
+    setRows(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLFrameSetElement
 
@@ -12497,10 +12497,10 @@ interface DOMHTMLHRElement extends DOMEventTarget {
     getNoShade(): boolean
     getSize(): string | null
     getWidth(): string | null
-    setAlign(value: string | null): void
+    setAlign(value: string): void
     setNoShade(value: boolean): void
-    setSize(value: string | null): void
-    setWidth(value: string | null): void
+    setSize(value: string): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHRElement
 
@@ -12866,7 +12866,7 @@ interface DOMHTMLHeadElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHeadElement
 
     getProfile(): string | null
-    setProfile(value: string | null): void
+    setProfile(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHeadElement
 
@@ -13217,7 +13217,7 @@ interface DOMHTMLHeadingElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHeadingElement
 
     getAlign(): string | null
-    setAlign(value: string | null): void
+    setAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHeadingElement
 
@@ -13568,7 +13568,7 @@ interface DOMHTMLHtmlElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHtmlElement
 
     getVersion(): string | null
-    setVersion(value: string | null): void
+    setVersion(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLHtmlElement
 
@@ -13950,16 +13950,16 @@ interface DOMHTMLIFrameElement extends DOMEventTarget {
     getScrolling(): string | null
     getSrc(): string | null
     getWidth(): string | null
-    setAlign(value: string | null): void
-    setFrameBorder(value: string | null): void
-    setHeight(value: string | null): void
-    setLongDesc(value: string | null): void
-    setMarginHeight(value: string | null): void
-    setMarginWidth(value: string | null): void
-    setName(value: string | null): void
-    setScrolling(value: string | null): void
-    setSrc(value: string | null): void
-    setWidth(value: string | null): void
+    setAlign(value: string): void
+    setFrameBorder(value: string): void
+    setHeight(value: string): void
+    setLongDesc(value: string): void
+    setMarginHeight(value: string): void
+    setMarginWidth(value: string): void
+    setName(value: string): void
+    setScrolling(value: string): void
+    setSrc(value: string): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLIFrameElement
 
@@ -14411,17 +14411,17 @@ interface DOMHTMLImageElement extends DOMEventTarget {
     getWidth(): number
     getX(): number
     getY(): number
-    setAlign(value: string | null): void
-    setAlt(value: string | null): void
-    setBorder(value: string | null): void
+    setAlign(value: string): void
+    setAlt(value: string): void
+    setBorder(value: string): void
     setHeight(value: number): void
     setHspace(value: number): void
     setIsMap(value: boolean): void
-    setLongDesc(value: string | null): void
-    setLowsrc(value: string | null): void
-    setName(value: string | null): void
-    setSrc(value: string | null): void
-    setUseMap(value: string | null): void
+    setLongDesc(value: string): void
+    setLowsrc(value: string): void
+    setName(value: string): void
+    setSrc(value: string): void
+    setUseMap(value: string): void
     setVspace(value: number): void
     setWidth(value: number): void
 
@@ -14929,29 +14929,29 @@ interface DOMHTMLInputElement extends DOMEventTarget {
     getWillValidate(): boolean
     isEdited(): boolean
     select(): void
-    setAccept(value: string | null): void
-    setAlign(value: string | null): void
-    setAlt(value: string | null): void
+    setAccept(value: string): void
+    setAlign(value: string): void
+    setAlt(value: string): void
     setAutoFilled(value: boolean): void
     setAutofocus(value: boolean): void
-    setCaptureType(value: string | null): void
+    setCaptureType(value: string): void
     setChecked(value: boolean): void
     setDefaultChecked(value: boolean): void
-    setDefaultValue(value: string | null): void
+    setDefaultValue(value: string): void
     setDisabled(value: boolean): void
-    setEditingValue(value: string | null): void
+    setEditingValue(value: string): void
     setFiles(value: DOMFileList): void
     setHeight(value: number): void
     setIndeterminate(value: boolean): void
-    setInputType(value: string | null): void
+    setInputType(value: string): void
     setMaxLength(value: number): void
     setMultiple(value: boolean): void
-    setName(value: string | null): void
+    setName(value: string): void
     setReadOnly(value: boolean): void
     setSize(value: number): void
-    setSrc(value: string | null): void
-    setUseMap(value: string | null): void
-    setValue(value: string | null): void
+    setSrc(value: string): void
+    setUseMap(value: string): void
+    setValue(value: string): void
     setWidth(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLInputElement
@@ -15421,7 +15421,7 @@ interface DOMHTMLLIElement extends DOMEventTarget {
 
     getTypeAttr(): string | null
     getValue(): number
-    setTypeAttr(value: string | null): void
+    setTypeAttr(value: string): void
     setValue(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLIElement
@@ -15780,7 +15780,7 @@ interface DOMHTMLLabelElement extends DOMEventTarget {
 
     getForm(): DOMHTMLFormElement
     getHtmlFor(): string | null
-    setHtmlFor(value: string | null): void
+    setHtmlFor(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLabelElement
 
@@ -16138,7 +16138,7 @@ interface DOMHTMLLegendElement extends DOMEventTarget {
 
     getAlign(): string | null
     getForm(): DOMHTMLFormElement
-    setAlign(value: string | null): void
+    setAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLegendElement
 
@@ -16522,16 +16522,16 @@ interface DOMHTMLLinkElement extends DOMEventTarget {
     getSizes(): DOMDOMTokenList
     getTarget(): string | null
     getTypeAttr(): string | null
-    setCharset(value: string | null): void
+    setCharset(value: string): void
     setDisabled(value: boolean): void
-    setHref(value: string | null): void
-    setHreflang(value: string | null): void
-    setMedia(value: string | null): void
-    setRel(value: string | null): void
-    setRev(value: string | null): void
-    setSizes(value: string | null): void
-    setTarget(value: string | null): void
-    setTypeAttr(value: string | null): void
+    setHref(value: string): void
+    setHreflang(value: string): void
+    setMedia(value: string): void
+    setRel(value: string): void
+    setRev(value: string): void
+    setSizes(value: string): void
+    setTarget(value: string): void
+    setTypeAttr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLLinkElement
 
@@ -16934,7 +16934,7 @@ interface DOMHTMLMapElement extends DOMEventTarget {
 
     getAreas(): DOMHTMLCollection
     getName(): string | null
-    setName(value: string | null): void
+    setName(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLMapElement
 
@@ -17991,10 +17991,10 @@ interface DOMHTMLMetaElement extends DOMEventTarget {
     getHttpEquiv(): string | null
     getName(): string | null
     getScheme(): string | null
-    setContent(value: string | null): void
-    setHttpEquiv(value: string | null): void
-    setName(value: string | null): void
-    setScheme(value: string | null): void
+    setContent(value: string): void
+    setHttpEquiv(value: string): void
+    setName(value: string): void
+    setScheme(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLMetaElement
 
@@ -18363,8 +18363,8 @@ interface DOMHTMLModElement extends DOMEventTarget {
 
     getCite(): string | null
     getDateTime(): string | null
-    setCite(value: string | null): void
-    setDateTime(value: string | null): void
+    setCite(value: string): void
+    setDateTime(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLModElement
 
@@ -18728,7 +18728,7 @@ interface DOMHTMLOListElement extends DOMEventTarget {
     getTypeAttr(): string | null
     setCompact(value: boolean): void
     setStart(value: number): void
-    setTypeAttr(value: string | null): void
+    setTypeAttr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOListElement
 
@@ -19136,7 +19136,7 @@ interface DOMHTMLObjectElement extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getDeclare(): boolean
     getForm(): DOMHTMLFormElement
     getHeight(): string | null
@@ -19147,13 +19147,13 @@ interface DOMHTMLObjectElement extends DOMEventTarget {
     getUseMap(): string | null
     getVspace(): number
     getWidth(): string | null
-    setAlign(value: string | null): void
-    setArchive(value: string | null): void
-    setBorder(value: string | null): void
-    setCode(value: string | null): void
-    setCodeBase(value: string | null): void
-    setCodeType(value: string | null): void
-    setData(value: string | null): void
+    setAlign(value: string): void
+    setArchive(value: string): void
+    setBorder(value: string): void
+    setCode(value: string): void
+    setCodeBase(value: string): void
+    setCodeType(value: string): void
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -19171,16 +19171,16 @@ interface DOMHTMLObjectElement extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     setDeclare(value: boolean): void
-    setHeight(value: string | null): void
+    setHeight(value: string): void
     setHspace(value: number): void
-    setName(value: string | null): void
-    setStandby(value: string | null): void
-    setTypeAttr(value: string | null): void
-    setUseMap(value: string | null): void
+    setName(value: string): void
+    setStandby(value: string): void
+    setTypeAttr(value: string): void
+    setUseMap(value: string): void
     setVspace(value: number): void
-    setWidth(value: string | null): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLObjectElement
 
@@ -19620,7 +19620,7 @@ interface DOMHTMLOptGroupElement extends DOMEventTarget {
     getDisabled(): boolean
     getLabel(): string | null
     setDisabled(value: boolean): void
-    setLabel(value: string | null): void
+    setLabel(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptGroupElement
 
@@ -19996,9 +19996,9 @@ interface DOMHTMLOptionElement extends DOMEventTarget {
     getValue(): string | null
     setDefaultSelected(value: boolean): void
     setDisabled(value: boolean): void
-    setLabel(value: string | null): void
+    setLabel(value: string): void
     setSelected(value: boolean): void
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionElement
 
@@ -20386,7 +20386,7 @@ interface DOMHTMLOptionsCollection {
 
     getLength(): number
     getSelectedIndex(): number
-    namedItem(name: string | null): DOMNode
+    namedItem(name: string): DOMNode
     setSelectedIndex(value: number): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLOptionsCollection
@@ -20453,7 +20453,7 @@ interface DOMHTMLParagraphElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLParagraphElement
 
     getAlign(): string | null
-    setAlign(value: string | null): void
+    setAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLParagraphElement
 
@@ -20813,10 +20813,10 @@ interface DOMHTMLParamElement extends DOMEventTarget {
     getTypeAttr(): string | null
     getValue(): string | null
     getValueType(): string | null
-    setName(value: string | null): void
-    setTypeAttr(value: string | null): void
-    setValue(value: string | null): void
-    setValueType(value: string | null): void
+    setName(value: string): void
+    setTypeAttr(value: string): void
+    setValue(value: string): void
+    setValueType(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLParamElement
 
@@ -21542,7 +21542,7 @@ interface DOMHTMLQuoteElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLQuoteElement
 
     getCite(): string | null
-    setCite(value: string | null): void
+    setCite(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLQuoteElement
 
@@ -21911,13 +21911,13 @@ interface DOMHTMLScriptElement extends DOMEventTarget {
     getSrc(): string | null
     getText(): string | null
     getTypeAttr(): string | null
-    setCharset(value: string | null): void
+    setCharset(value: string): void
     setDefer(value: boolean): void
-    setEvent(value: string | null): void
-    setHtmlFor(value: string | null): void
-    setSrc(value: string | null): void
-    setText(value: string | null): void
-    setTypeAttr(value: string | null): void
+    setEvent(value: string): void
+    setHtmlFor(value: string): void
+    setSrc(value: string): void
+    setText(value: string): void
+    setTypeAttr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLScriptElement
 
@@ -22329,7 +22329,7 @@ interface DOMHTMLSelectElement extends DOMEventTarget {
     getValue(): string | null
     getWillValidate(): boolean
     item(index: number): DOMNode
-    namedItem(name: string | null): DOMNode
+    namedItem(name: string): DOMNode
     remove(index: number): void
 
     // Overloads of remove
@@ -22339,10 +22339,10 @@ interface DOMHTMLSelectElement extends DOMEventTarget {
     setDisabled(value: boolean): void
     setLength(value: number): void
     setMultiple(value: boolean): void
-    setName(value: string | null): void
+    setName(value: string): void
     setSelectedIndex(value: number): void
     setSize(value: number): void
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLSelectElement
 
@@ -22757,8 +22757,8 @@ interface DOMHTMLStyleElement extends DOMEventTarget {
     getSheet(): DOMStyleSheet
     getTypeAttr(): string | null
     setDisabled(value: boolean): void
-    setMedia(value: string | null): void
-    setTypeAttr(value: string | null): void
+    setMedia(value: string): void
+    setTypeAttr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLStyleElement
 
@@ -23124,7 +23124,7 @@ interface DOMHTMLTableCaptionElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableCaptionElement
 
     getAlign(): string | null
-    setAlign(value: string | null): void
+    setAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableCaptionElement
 
@@ -23516,20 +23516,20 @@ interface DOMHTMLTableCellElement extends DOMEventTarget {
     getScope(): string | null
     getVAlign(): string | null
     getWidth(): string | null
-    setAbbr(value: string | null): void
-    setAlign(value: string | null): void
-    setAxis(value: string | null): void
-    setBgColor(value: string | null): void
-    setCh(value: string | null): void
-    setChOff(value: string | null): void
+    setAbbr(value: string): void
+    setAlign(value: string): void
+    setAxis(value: string): void
+    setBgColor(value: string): void
+    setCh(value: string): void
+    setChOff(value: string): void
     setColSpan(value: number): void
-    setHeaders(value: string | null): void
-    setHeight(value: string | null): void
+    setHeaders(value: string): void
+    setHeight(value: string): void
     setNoWrap(value: boolean): void
     setRowSpan(value: number): void
-    setScope(value: string | null): void
-    setVAlign(value: string | null): void
-    setWidth(value: string | null): void
+    setScope(value: string): void
+    setVAlign(value: string): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableCellElement
 
@@ -23965,12 +23965,12 @@ interface DOMHTMLTableColElement extends DOMEventTarget {
     getSpan(): number
     getVAlign(): string | null
     getWidth(): string | null
-    setAlign(value: string | null): void
-    setCh(value: string | null): void
-    setChOff(value: string | null): void
+    setAlign(value: string): void
+    setCh(value: string): void
+    setChOff(value: string): void
     setSpan(value: number): void
-    setVAlign(value: string | null): void
-    setWidth(value: string | null): void
+    setVAlign(value: string): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableColElement
 
@@ -24385,17 +24385,17 @@ interface DOMHTMLTableElement extends DOMEventTarget {
     getTHead(): DOMHTMLTableSectionElement
     getWidth(): string | null
     insertRow(index: number): DOMHTMLElement
-    setAlign(value: string | null): void
-    setBgColor(value: string | null): void
-    setBorder(value: string | null): void
+    setAlign(value: string): void
+    setBgColor(value: string): void
+    setBorder(value: string): void
     setCaption(value: DOMHTMLTableCaptionElement): void
-    setCellPadding(value: string | null): void
-    setCellSpacing(value: string | null): void
-    setRules(value: string | null): void
-    setSummary(value: string | null): void
+    setCellPadding(value: string): void
+    setCellSpacing(value: string): void
+    setRules(value: string): void
+    setSummary(value: string): void
     setTFoot(value: DOMHTMLTableSectionElement): void
     setTHead(value: DOMHTMLTableSectionElement): void
-    setWidth(value: string | null): void
+    setWidth(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableElement
 
@@ -24826,11 +24826,11 @@ interface DOMHTMLTableRowElement extends DOMEventTarget {
     getSectionRowIndex(): number
     getVAlign(): string | null
     insertCell(index: number): DOMHTMLElement
-    setAlign(value: string | null): void
-    setBgColor(value: string | null): void
-    setCh(value: string | null): void
-    setChOff(value: string | null): void
-    setVAlign(value: string | null): void
+    setAlign(value: string): void
+    setBgColor(value: string): void
+    setCh(value: string): void
+    setChOff(value: string): void
+    setVAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableRowElement
 
@@ -25229,10 +25229,10 @@ interface DOMHTMLTableSectionElement extends DOMEventTarget {
     getRows(): DOMHTMLCollection
     getVAlign(): string | null
     insertRow(index: number): DOMHTMLElement
-    setAlign(value: string | null): void
-    setCh(value: string | null): void
-    setChOff(value: string | null): void
-    setVAlign(value: string | null): void
+    setAlign(value: string): void
+    setCh(value: string): void
+    setChOff(value: string): void
+    setVAlign(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTableSectionElement
 
@@ -25640,15 +25640,15 @@ interface DOMHTMLTextAreaElement extends DOMEventTarget {
     select(): void
     setAutofocus(value: boolean): void
     setCols(value: number): void
-    setDefaultValue(value: string | null): void
+    setDefaultValue(value: string): void
     setDisabled(value: boolean): void
-    setName(value: string | null): void
+    setName(value: string): void
     setReadOnly(value: boolean): void
     setRows(value: number): void
     setSelectionEnd(value: number): void
-    setSelectionRange(start: number, end: number, direction: string | null): void
+    setSelectionRange(start: number, end: number, direction: string): void
     setSelectionStart(value: number): void
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTextAreaElement
 
@@ -26059,7 +26059,7 @@ interface DOMHTMLTitleElement extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTitleElement
 
     getText(): string | null
-    setText(value: string | null): void
+    setText(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLTitleElement
 
@@ -26414,7 +26414,7 @@ interface DOMHTMLUListElement extends DOMEventTarget {
     getCompact(): boolean
     getTypeAttr(): string | null
     setCompact(value: boolean): void
-    setTypeAttr(value: string | null): void
+    setTypeAttr(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMHTMLUListElement
 
@@ -26777,9 +26777,9 @@ interface DOMKeyboardEvent {
     getKeyIdentifier(): string | null
     getKeyLocation(): number
     getMetaKey(): boolean
-    getModifierState(keyIdentifierArg: string | null): boolean
+    getModifierState(keyIdentifierArg: string): boolean
     getShiftKey(): boolean
-    initKeyboardEvent(type: string | null, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string | null, location: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean): void
+    initKeyboardEvent(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, keyIdentifier: string, location: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, altGraphKey: boolean): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMKeyboardEvent
 
@@ -26960,12 +26960,12 @@ interface DOMMediaList {
 
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMediaList
 
-    appendMedium(newMedium: string | null): void
-    deleteMedium(oldMedium: string | null): void
+    appendMedium(newMedium: string): void
+    deleteMedium(oldMedium: string): void
     getLength(): number
     getMediaText(): string | null
     item(index: number): string | null
-    setMediaText(value: string | null): void
+    setMediaText(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMediaList
 
@@ -27057,7 +27057,7 @@ interface DOMMouseEvent {
     getToElement(): DOMNode
     getX(): number
     getY(): number
-    initMouseEvent(type: string | null, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number, screenX: number, screenY: number, clientX: number, clientY: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: DOMEventTarget): void
+    initMouseEvent(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number, screenX: number, screenY: number, clientX: number, clientY: number, ctrlKey: boolean, altKey: boolean, shiftKey: boolean, metaKey: boolean, button: number, relatedTarget: DOMEventTarget): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMMouseEvent
 
@@ -27279,11 +27279,11 @@ interface DOMNamedNodeMap {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNamedNodeMap
 
     getLength(): number
-    getNamedItem(name: string | null): DOMNode
-    getNamedItemNs(namespaceURI: string | null, localName: string | null): DOMNode
+    getNamedItem(name: string): DOMNode
+    getNamedItemNs(namespaceURI: string, localName: string): DOMNode
     item(index: number): DOMNode
-    removeNamedItem(name: string | null): DOMNode
-    removeNamedItemNs(namespaceURI: string | null, localName: string | null): DOMNode
+    removeNamedItem(name: string): DOMNode
+    removeNamedItemNs(namespaceURI: string, localName: string): DOMNode
     setNamedItem(node: DOMNode): DOMNode
     setNamedItemNs(node: DOMNode): DOMNode
 
@@ -27381,18 +27381,18 @@ interface DOMNode extends DOMEventTarget {
     getTextContent(): string | null
     hasChildNodes(): boolean
     insertBefore(newChild: DOMNode, refChild: DOMNode | null): DOMNode
-    isDefaultNamespace(namespaceURI: string | null): boolean
+    isDefaultNamespace(namespaceURI: string): boolean
     isEqualNode(other: DOMNode): boolean
     isSameNode(other: DOMNode): boolean
-    isSupported(feature: string | null, version: string | null): boolean
-    lookupNamespaceUri(prefix: string | null): string | null
-    lookupPrefix(namespaceURI: string | null): string | null
+    isSupported(feature: string, version: string): boolean
+    lookupNamespaceUri(prefix: string): string | null
+    lookupPrefix(namespaceURI: string): string | null
     normalize(): void
     removeChild(oldChild: DOMNode): DOMNode
     replaceChild(newChild: DOMNode, oldChild: DOMNode): DOMNode
-    setNodeValue(value: string | null): void
-    setPrefix(value: string | null): void
-    setTextContent(value: string | null): void
+    setNodeValue(value: string): void
+    setPrefix(value: string): void
+    setTextContent(value: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMNode
 
@@ -27729,14 +27729,14 @@ interface DOMProcessingInstruction extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -27754,7 +27754,7 @@ interface DOMProcessingInstruction extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -27769,7 +27769,7 @@ interface DOMProcessingInstruction extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMProcessingInstruction
 
@@ -27917,10 +27917,10 @@ interface DOMRange {
     compareBoundaryPoints(how: number, sourceRange: DOMRange): number
     compareNode(refNode: DOMNode): number
     comparePoint(refNode: DOMNode, offset: number): number
-    createContextualFragment(html: string | null): DOMDocumentFragment
+    createContextualFragment(html: string): DOMDocumentFragment
     deleteContents(): void
     detach(): void
-    expand(unit: string | null): void
+    expand(unit: string): void
     extractContents(): DOMDocumentFragment
     getCollapsed(): boolean
     getCommonAncestorContainer(): DOMNode
@@ -28188,7 +28188,7 @@ interface DOMText extends DOMEventTarget {
     // Owm methods of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMText
 
     getWholeText(): string | null
-    replaceWholeText(content: string | null): DOMText
+    replaceWholeText(content: string): DOMText
     splitText(offset: number): DOMText
 
     // Conflicting methods
@@ -28202,14 +28202,14 @@ interface DOMText extends DOMEventTarget {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
-    setData(value: string | null): void
+    getData(key: string): any | null
+    setData(value: string): void
 
     // Overloads of setData
 
@@ -28227,7 +28227,7 @@ interface DOMText extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -28242,7 +28242,7 @@ interface DOMText extends DOMEventTarget {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMText
 
@@ -28478,7 +28478,7 @@ interface DOMUIEvent {
     getPageX(): number
     getPageY(): number
     getView(): DOMDOMWindow
-    initUiEvent(type: string | null, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number): void
+    initUiEvent(type: string, canBubble: boolean, cancelable: boolean, view: DOMDOMWindow, detail: number): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMUIEvent
 
@@ -29048,7 +29048,7 @@ interface Frame {
      * Gets the current active URI of `frame`.
      * @returns the current active URI of @frame or %NULL if nothing has been    loaded yet.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Gets whether `frame` is the main frame of a #WebKitWebPage
      * @returns %TRUE if @frame is a main frame or %FALSE otherwise
@@ -29219,27 +29219,27 @@ interface HitTestResult {
      * Gets the value of the #WebKitHitTestResult:image-uri property.
      * @returns the URI of the image element in the coordinates of the Hit Test,    or %NULL if there isn't an image element in @hit_test_result context
      */
-    getImageUri(): string | null
+    getImageUri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-label property.
      * @returns the label of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a label
      */
-    getLinkLabel(): string | null
+    getLinkLabel(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-title property.
      * @returns the title of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context or the    link element doesn't have a title
      */
-    getLinkTitle(): string | null
+    getLinkTitle(): string
     /**
      * Gets the value of the #WebKitHitTestResult:link-uri property.
      * @returns the URI of the link element in the coordinates of the Hit Test,    or %NULL if there isn't a link element in @hit_test_result context
      */
-    getLinkUri(): string | null
+    getLinkUri(): string
     /**
      * Gets the value of the #WebKitHitTestResult:media-uri property.
      * @returns the URI of the media element in the coordinates of the Hit Test,    or %NULL if there isn't a media element in @hit_test_result context
      */
-    getMediaUri(): string | null
+    getMediaUri(): string
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.HitTestResult
 
@@ -29357,7 +29357,7 @@ interface ScriptWorld {
      * Get the name of a #WebKitScriptWorld.
      * @returns the name of @world
      */
-    getName(): string | null
+    getName(): string
 
     // Own signals of WebKit2WebExtension-4.1.WebKit2WebExtension.ScriptWorld
 
@@ -29427,7 +29427,7 @@ class ScriptWorld extends GObject.Object {
      * @param name a name for the script world
      * @returns a new isolated #WebKitScriptWorld
      */
-    static newWithName(name: string | null): ScriptWorld
+    static newWithName(name: string): ScriptWorld
     _init(config?: ScriptWorld.ConstructorProperties): void
     /**
      * Get the default #WebKitScriptWorld. This is the normal script world
@@ -29481,17 +29481,17 @@ interface URIRequest {
      * Get the HTTP method of the #WebKitURIRequest.
      * @returns the HTTP method of the #WebKitURIRequest or %NULL if @request is not    an HTTP request.
      */
-    getHttpMethod(): string | null
+    getHttpMethod(): string
     /**
      * Obtains the request URI.
      * @returns request URI, as a string.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Set the URI of `request`
      * @param uri an URI
      */
-    setUri(uri: string | null): void
+    setUri(uri: string): void
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.URIRequest
 
@@ -29536,14 +29536,14 @@ class URIRequest extends GObject.Object {
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    constructor(uri: string | null) 
+    constructor(uri: string) 
     /**
      * Creates a new #WebKitURIRequest for the given URI.
      * @constructor 
      * @param uri an URI
      * @returns a new #WebKitURIRequest
      */
-    static new(uri: string | null): URIRequest
+    static new(uri: string): URIRequest
     _init(config?: URIRequest.ConstructorProperties): void
 }
 
@@ -29609,7 +29609,7 @@ interface URIResponse {
      * Gets the MIME type of the response.
      * @returns MIME type, as a string.
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Get the status code of the #WebKitURIResponse.
      * 
@@ -29628,12 +29628,12 @@ interface URIResponse {
      * present.
      * @returns the suggested filename or %NULL if    the 'Content-Disposition' HTTP header is not present.
      */
-    getSuggestedFilename(): string | null
+    getSuggestedFilename(): string
     /**
      * Gets the URI which resulted in the response.
      * @returns response URI, as a string.
      */
-    getUri(): string | null
+    getUri(): string
 
     // Class property signals of WebKit2WebExtension-4.1.WebKit2WebExtension.URIResponse
 
@@ -29762,7 +29762,7 @@ interface UserMessage {
      * Get the `message` name.
      * @returns the message name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the `message` parameters.
      * @returns the message parameters
@@ -29835,7 +29835,7 @@ class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    constructor(name: string | null, parameters: GLib.Variant | null) 
+    constructor(name: string, parameters: GLib.Variant | null) 
     /**
      * Create a new #WebKitUserMessage with `name`.
      * @constructor 
@@ -29843,7 +29843,7 @@ class UserMessage extends GObject.InitiallyUnowned {
      * @param parameters the message parameters as a #GVariant, or %NULL
      * @returns the newly created #WebKitUserMessage object.
      */
-    static new(name: string | null, parameters: GLib.Variant | null): UserMessage
+    static new(name: string, parameters: GLib.Variant | null): UserMessage
     /**
      * Create a new #WebKitUserMessage including also a list of UNIX file descriptors to be sent.
      * @constructor 
@@ -29852,7 +29852,7 @@ class UserMessage extends GObject.InitiallyUnowned {
      * @param fdList the message file descriptors
      * @returns the newly created #WebKitUserMessage object.
      */
-    static newWithFdList(name: string | null, parameters: GLib.Variant | null, fdList: Gio.UnixFDList | null): UserMessage
+    static newWithFdList(name: string, parameters: GLib.Variant | null, fdList: Gio.UnixFDList | null): UserMessage
     _init(config?: UserMessage.ConstructorProperties): void
     /**
      * Gets the quark for the domain of user message errors.
@@ -30216,7 +30216,7 @@ class WebFormManager extends GObject.Object {
      * @param element a #JSCValue
      * @param value the text to set
      */
-    static inputElementAutoFill(element: JavaScriptCore.Value, value: string | null): void
+    static inputElementAutoFill(element: JavaScriptCore.Value, value: string): void
     /**
      * Get whether `element` is an HTML input element that has been filled automatically.
      * @param element a #JSCValue
@@ -30463,7 +30463,7 @@ interface WebPage {
      * signal of `web_page`.
      * @returns the current active URI of @web_view or %NULL if nothing has been    loaded yet.
      */
-    getUri(): string | null
+    getUri(): string
     /**
      * Send `message` to the #WebKitWebView corresponding to `web_page`. If `message` is floating, it's consumed.
      * 
@@ -30593,12 +30593,12 @@ interface ConsoleMessage {
      * Gets the source identifier of a #WebKitConsoleMessage
      * @returns the source identifier of @console_message
      */
-    getSourceId(): string | null
+    getSourceId(): string
     /**
      * Gets the text message of a #WebKitConsoleMessage
      * @returns the text message of @console_message
      */
-    getText(): string | null
+    getText(): string
 }
 
 class ConsoleMessage {
@@ -30970,8 +30970,8 @@ interface DOMEventTargetIface {
 
     gIface: GObject.TypeInterface
     dispatchEvent: (target: DOMEventTarget, event: DOMEvent) => boolean
-    addEventListener: (target: DOMEventTarget, eventName: string | null, handler: GObject.TClosure, useCapture: boolean) => boolean
-    removeEventListener: (target: DOMEventTarget, eventName: string | null, handler: GObject.TClosure, useCapture: boolean) => boolean
+    addEventListener: (target: DOMEventTarget, eventName: string, handler: GObject.TClosure, useCapture: boolean) => boolean
+    removeEventListener: (target: DOMEventTarget, eventName: string, handler: GObject.TClosure, useCapture: boolean) => boolean
 }
 
 abstract class DOMEventTargetIface {
@@ -32079,7 +32079,7 @@ interface DOMXPathNSResolverIface {
     // Own fields of WebKit2WebExtension-4.1.WebKit2WebExtension.DOMXPathNSResolverIface
 
     gIface: GObject.TypeInterface
-    lookupNamespaceUri: (resolver: DOMXPathNSResolver, prefix: string | null) => string | null
+    lookupNamespaceUri: (resolver: DOMXPathNSResolver, prefix: string) => string | null
 }
 
 abstract class DOMXPathNSResolverIface {

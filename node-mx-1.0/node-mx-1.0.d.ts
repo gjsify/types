@@ -264,10 +264,10 @@ const VERSION_HEX: number
  * The full version of the Mx library, in string form (suited for
  * string concatenation)
  */
-const VERSION_S: string | null
+const VERSION_S: string
 function actorBoxClampToPixels(box: Clutter.ActorBox): void
 function allocateAlignFill(child: Clutter.Actor, childbox: Clutter.ActorBox, xAlignment: Align, yAlignment: Align, xFill: boolean, yFill: boolean): void
-function borderImageSetFromString(value: any, str: string | null, filename: string | null): void
+function borderImageSetFromString(value: any, str: string, filename: string): void
 /**
  * Transforms a focus direction to a focus hint. This is a convenience
  * function for actors that implement the #MxFocusable interface, to
@@ -285,7 +285,7 @@ function borderImageSetFromString(value: any, str: string | null, filename: stri
  * @returns A #MxFocusHint
  */
 function focusHintFromDirection(direction: FocusDirection): FocusHint
-function fontWeightSetFromString(value: any, str: string | null): void
+function fontWeightSetFromString(value: any, str: string): void
 function imageErrorQuark(): GLib.Quark
 /**
  * Initializes internationalization support for Mx. If MxApplication is
@@ -316,7 +316,7 @@ interface ActionCallbackFunc {
  * @param text text from the clipboard
  */
 interface ClipboardCallbackFunc {
-    (clipboard: Clipboard, text: string | null): void
+    (clipboard: Clipboard, text: string): void
 }
 module Draggable {
 
@@ -1791,20 +1791,20 @@ interface Stylable {
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Query `stylable` for the default value of property `property_name` and
      * fill `value_out` with the result.
      * @param propertyName name of the property to query
      * @returns %TRUE if property @property_name exists and the default value has been returned.
      */
-    getDefaultValue(propertyName: string | null): [ /* returnType */ boolean, /* valueOut */ any ]
+    getDefaultValue(propertyName: string): [ /* returnType */ boolean, /* valueOut */ any ]
     /**
      * Retrieves the value of `property_name` for `stylable,` and puts it
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -1830,36 +1830,36 @@ interface Stylable {
      */
     getProperty<T = unknown>(propertyName: string): T
     // Has conflict: getStyle(): Style
-    // Has conflict: getStyleClass(): string | null
-    // Has conflict: getStylePseudoClass(): string | null
+    // Has conflict: getStyleClass(): string
+    // Has conflict: getStylePseudoClass(): string
     /**
      * Retrieves all the #GParamSpec<!-- -->s installed by `stylable`.
      * @returns an array of #GParamSpec<!-- -->s. Free it with  g_free() when done.
      */
     listProperties(): GObject.ParamSpec[]
     // Has conflict: setStyle(style: Style): void
-    // Has conflict: setStyleClass(styleClass: string | null): void
-    // Has conflict: setStylePseudoClass(pseudoClass: string | null): void
+    // Has conflict: setStyleClass(styleClass: string): void
+    // Has conflict: setStylePseudoClass(pseudoClass: string): void
     // Has conflict: styleChanged(flags: StyleChangedFlags): void
     /**
      * Add a pseudo-class name to the list of pseudo classes, contained in the
      * #MxStylable:style-pseudo-class property.
      * @param newClass A pseudo-class name to add
      */
-    stylePseudoClassAdd(newClass: string | null): void
+    stylePseudoClassAdd(newClass: string): void
     /**
      * Check if the given pseudo-class name is contained in the list of
      * set pseudo classes on this #MxStylable object.
      * @param pseudoClass A pseudo-class name
      * @returns %TRUE if the given pseudo-class is set, %FALSE otherwise
      */
-    stylePseudoClassContains(pseudoClass: string | null): boolean
+    stylePseudoClassContains(pseudoClass: string): boolean
     /**
      * Remove the specified pseudo class name from the list of pseudo classes
      * contained in the #MxStylable:style-pseudo-class property.
      * @param removeClass A pseudo class name to remove
      */
-    stylePseudoClassRemove(removeClass: string | null): void
+    stylePseudoClassRemove(removeClass: string): void
 
     // Own virtual methods of Mx-1.0.Mx.Stylable
 
@@ -1875,14 +1875,14 @@ interface Stylable {
      * @virtual 
      * @returns the class name string. The string is owned by the #MxWidget and should not be modified or freed.
      */
-    getStyleClass(): string | null
+    getStyleClass(): string
     /**
      * Get the current style pseudo class. This can contain multiple pseudo class
      * names, separated by ':'.
      * @virtual 
      * @returns the pseudo class string. The string is owned by the #MxWidget and should not be modified or freed.
      */
-    getStylePseudoClass(): string | null
+    getStylePseudoClass(): string
     /**
      * Sets `style` as the new #MxStyle to be used by `stylable`.
      * 
@@ -1899,14 +1899,14 @@ interface Stylable {
      * @virtual 
      * @param styleClass a new style class string
      */
-    setStyleClass(styleClass: string | null): void
+    setStyleClass(styleClass: string): void
     /**
      * Set the style pseudo class. The string can contain multiple pseudo class
      * names, separated by ':'.
      * @virtual 
      * @param pseudoClass a new pseudo class string
      */
-    setStylePseudoClass(pseudoClass: string | null): void
+    setStylePseudoClass(pseudoClass: string): void
     /**
      * Emit the "style-changed" signal on `stylable` to notify it that one or more
      * of the style properties has changed.
@@ -2061,17 +2061,17 @@ interface Action extends Gio.Action {
      * Get the display name of the action
      * @returns display-name of the action, owned by MxAction
      */
-    getDisplayName(): string | null
+    getDisplayName(): string
     /**
      * Get the icon of the action
      * @returns icon of the action, owned by MxAction
      */
-    getIcon(): string | null
+    getIcon(): string
     /**
      * Get the name of the action
      * @returns name of the action, owned by MxAction
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2080,7 +2080,7 @@ interface Action extends Gio.Action {
      * @virtual 
      * @returns the name of the action
      */
-    getName(): string | null
+    getName(): string
     /**
      * Set the value of the active property
      * @param active the value to set
@@ -2090,17 +2090,17 @@ interface Action extends Gio.Action {
      * Set the name of the action to display to the user
      * @param name new display name to set
      */
-    setDisplayName(name: string | null): void
+    setDisplayName(name: string): void
     /**
      * The icon to be used in a visual representation of an action.
      * @param name new icon to set
      */
-    setIcon(name: string | null): void
+    setIcon(name: string): void
     /**
      * Set the name of the action
      * @param name new name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of Mx-1.0.Mx.Action
 
@@ -2208,7 +2208,7 @@ class Action extends GObject.InitiallyUnowned {
      * @param activatedCb callback to connect to the activated signal
      * @returns a newly allocated #MxAction
      */
-    static newFull(name: string | null, displayName: string | null, activatedCb: ActionCallbackFunc | null): Action
+    static newFull(name: string, displayName: string, activatedCb: ActionCallbackFunc | null): Action
     /**
      * Creates a new stateful action.
      * 
@@ -2220,7 +2220,7 @@ class Action extends GObject.InitiallyUnowned {
      * @param state the initial state of the action
      * @returns a new #MxAction
      */
-    static newStateful(name: string | null, parameterType: GLib.VariantType | null, state: GLib.Variant): Action
+    static newStateful(name: string, parameterType: GLib.VariantType | null, state: GLib.Variant): Action
     /**
      * Creates a new action with a parameter.
      * 
@@ -2230,7 +2230,7 @@ class Action extends GObject.InitiallyUnowned {
      * @param parameterType the type of parameter to the activate function
      * @returns a new #MxAction
      */
-    static newWithParameter(name: string | null, parameterType?: GLib.VariantType | null): Action
+    static newWithParameter(name: string, parameterType?: GLib.VariantType | null): Action
     _init(config?: Action.ConstructorProperties): void
 }
 
@@ -2876,14 +2876,14 @@ interface Application {
      * Run the named action for the application.
      * @param name name of the action to invoke
      */
-    invokeAction(name: string | null): void
+    invokeAction(name: string): void
     /**
      * Run the named action for the application, passing `variant` as the parameter
      * for the action.
      * @param name name of the action to invoke
      * @param variant parameter for the action
      */
-    invokeActionWithParameter(name: string | null, variant: GLib.Variant): void
+    invokeActionWithParameter(name: string, variant: GLib.Variant): void
     /**
      * Query whether #MxApplication is running. This will also return #TRUE if the
      * given #MxApplication is single instance and there is an instance already
@@ -2900,7 +2900,7 @@ interface Application {
      * Remove the action with the specified name from the application.
      * @param name name of the action to remove
      */
-    removeAction(name: string | null): void
+    removeAction(name: string): void
     /**
      * Remove the specified window from the application. This will cause the window
      * to be unreferenced and destroyed unless another reference is held on it.
@@ -2983,7 +2983,7 @@ class Application extends GObject.Object {
      * @param flags Application flags.
      * @returns the #MxApplication singleton.
      */
-    constructor(argv: string[] | null, name: string | null, flags: ApplicationFlags) 
+    constructor(argv: string[] | null, name: string, flags: ApplicationFlags) 
     /**
      * Intialises everything needed to operate Clutter and use #MxApplication.
      * See clutter_init().
@@ -2993,7 +2993,7 @@ class Application extends GObject.Object {
      * @param flags Application flags.
      * @returns the #MxApplication singleton.
      */
-    static new(argv: string[] | null, name: string | null, flags: ApplicationFlags): Application
+    static new(argv: string[] | null, name: string, flags: ApplicationFlags): Application
     _init(config?: Application.ConstructorProperties): void
 }
 
@@ -3113,7 +3113,7 @@ interface Bin extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Containe
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -3165,14 +3165,14 @@ interface Bin extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Containe
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -3892,7 +3892,7 @@ interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -3944,14 +3944,14 @@ interface BoxLayout extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -4694,12 +4694,12 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * @param name the name of the action to retrieve
      * @returns a #ClutterAction for the given   name, or %NULL. The returned #ClutterAction is owned by the   actor and it should not be unreferenced directly
      */
-    getAction(name: string | null): Clutter.Action
+    getAction(name: string): Clutter.Action
     /**
      * Get the icon-name being used on the button.
      * @returns the icon-name. This must not be freed by the application. %NULL if no icon has been set
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Retrieves the icon's relative position to the text.
      * @returns A #MxPosition
@@ -4724,7 +4724,7 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * Get the text displayed on the button
      * @returns the text for the button. This must not be freed by the application
      */
-    getLabel(): string | null
+    getLabel(): string
     /**
      * Retrieves the visibility of the text associated with the button's action.
      * @returns %TRUE if the text is visible, %FALSE otherwise
@@ -4775,7 +4775,7 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * Sets the text displayed on the button
      * @param text text to set the label to
      */
-    setLabel(text: string | null): void
+    setLabel(text: string): void
     /**
      * Sets the visibility of the text associated with the button's action.
      * @param visible %TRUE if the text should be visible
@@ -4795,7 +4795,7 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -4847,14 +4847,14 @@ interface Button extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -5490,7 +5490,7 @@ class Button extends Bin {
      * @param text text to set the label to
      * @returns a new #MxButton
      */
-    static newWithLabel(text: string | null): Button
+    static newWithLabel(text: string): Button
     _init(config?: Button.ConstructorProperties): void
 }
 
@@ -5646,7 +5646,7 @@ interface Clipboard {
      * Sets text as the current contents of the clipboard.
      * @param text text to copy to the clipboard
      */
-    setText(text: string | null): void
+    setText(text: string): void
 
     // Class property signals of Mx-1.0.Mx.Clipboard
 
@@ -5715,17 +5715,17 @@ interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * Append an item to the combo box list
      * @param text name of the item
      */
-    appendText(text: string | null): void
+    appendText(text: string): void
     /**
      * Get the name of the icon displayed in the combo box
      * @returns the text string of the name of the displayed icon, owned by the combo box, or %NULL if there is no active icon.
      */
-    getActiveIconName(): string | null
+    getActiveIconName(): string
     /**
      * Get the text displayed in the combo box
      * @returns the text string, owned by the combo box
      */
-    getActiveText(): string | null
+    getActiveText(): string
     /**
      * Get the index of the last item selected
      * @returns gint
@@ -5736,19 +5736,19 @@ interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param position zero indexed position to insert the item at
      * @param text name of the item
      */
-    insertText(position: number, text: string | null): void
+    insertText(position: number, text: string): void
     /**
      * Insert an item with text and an icon into the combo box list.
      * @param position zero indexed position to insert the item at
      * @param text name of the item
      * @param icon name of an icon from the icon theme
      */
-    insertTextWithIcon(position: number, text: string | null, icon: string | null): void
+    insertTextWithIcon(position: number, text: string, icon: string): void
     /**
      * Prepend an item to the combo box list
      * @param text name of the item
      */
-    prependText(text: string | null): void
+    prependText(text: string): void
     /**
      * Remove all the items of `box`
      */
@@ -5767,7 +5767,7 @@ interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * Set the text displayed in the combo box
      * @param text text to display
      */
-    setActiveText(text: string | null): void
+    setActiveText(text: string): void
     /**
      * Set the current combo box text from the item at `index` in the list.
      * @param index the index of the list item to set
@@ -5781,7 +5781,7 @@ interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -5833,14 +5833,14 @@ interface ComboBox extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -6457,7 +6457,7 @@ interface DeformBowTie extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -6509,14 +6509,14 @@ interface DeformBowTie extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -7142,7 +7142,7 @@ interface DeformPageTurn extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -7194,14 +7194,14 @@ interface DeformPageTurn extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -7855,7 +7855,7 @@ interface DeformTexture extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -7907,14 +7907,14 @@ interface DeformTexture extends Atk.ImplementorIface, Clutter.Animatable, Clutte
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -8536,7 +8536,7 @@ interface DeformWaves extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -8588,14 +8588,14 @@ interface DeformWaves extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -9269,7 +9269,7 @@ interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -9321,14 +9321,14 @@ interface Dialog extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -9963,13 +9963,13 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * Gets the text that is displayed when the entry is empty and unfocused
      * @returns the current value of the hint property. This string is owned by the #MxEntry and should not be freed or modified.
      */
-    getHintText(): string | null
+    getHintText(): string
     /**
      * Get the suffix appended to the filename to use for the highlighted version
      * of the icon.
      * @returns the highlight filename suffix. This string is owned by the #MxEntry and should not be freed or modified.
      */
-    getIconHighlightSuffix(): string | null
+    getIconHighlightSuffix(): string
     /**
      * Gets the character to display instead of the text.
      * @returns a character, or 0 if input should not be hidden.
@@ -9979,14 +9979,14 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * Get the text displayed on the entry
      * @returns the text for the entry. This must not be freed by the application
      */
-    getText(): string | null
+    getText(): string
     /**
      * Sets the text to display when the entry is empty and unfocused. When the
      * entry is displaying the hint, it has a pseudo class of "indeterminate".
      * A value of NULL unsets the hint.
      * @param text text to set as the entry hint
      */
-    setHintText(text: string | null): void
+    setHintText(text: string): void
     /**
      * Sets the suffix appended to the filename to use for the highlighted version
      * of the icon. e.g. if you have set your primay icon to "primary-icon.png" 
@@ -9994,7 +9994,7 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * "primary-icon-highlight.png"
      * @param suffix the suffix to append to the filename for the highlight version
      */
-    setIconHighlightSuffix(suffix: string | null): void
+    setIconHighlightSuffix(suffix: string): void
     /**
      * Sets the character to display instead of the text. Use 0 to display
      * the actual text.
@@ -10005,19 +10005,19 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * Set the primary icon of the entry to the given filename
      * @param filename filename of an icon
      */
-    setPrimaryIconFromFile(filename: string | null): void
-    setPrimaryIconTooltipText(text: string | null): void
+    setPrimaryIconFromFile(filename: string): void
+    setPrimaryIconTooltipText(text: string): void
     /**
      * Set the primary icon of the entry to the given filename
      * @param filename filename of an icon
      */
-    setSecondaryIconFromFile(filename: string | null): void
-    setSecondaryIconTooltipText(text: string | null): void
+    setSecondaryIconFromFile(filename: string): void
+    setSecondaryIconTooltipText(text: string): void
     /**
      * Sets the text displayed on the entry
      * @param text text to set the entry to
      */
-    setText(text: string | null): void
+    setText(text: string): void
 
     // Conflicting methods
 
@@ -10026,7 +10026,7 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -10078,14 +10078,14 @@ interface Entry extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -10702,7 +10702,7 @@ class Entry extends Widget {
      * @param text text to set the entry to
      * @returns a new #MxEntry
      */
-    static newWithText(text: string | null): Entry
+    static newWithText(text: string): Entry
     _init(config?: Entry.ConstructorProperties): void
 }
 
@@ -10760,7 +10760,7 @@ interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * Sets the text displayed as the title of the expander
      * @param label string to set as the expander label
      */
-    setLabel(label: string | null): void
+    setLabel(label: string): void
 
     // Conflicting methods
 
@@ -10769,7 +10769,7 @@ interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -10821,14 +10821,14 @@ interface Expander extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -11646,7 +11646,7 @@ interface FloatingWidget extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -11698,14 +11698,14 @@ interface FloatingWidget extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -12393,7 +12393,7 @@ interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -12445,14 +12445,14 @@ interface Frame extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -13092,7 +13092,7 @@ interface Grid extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -13144,14 +13144,14 @@ interface Grid extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -13781,9 +13781,9 @@ interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
 
     // Owm methods of Mx-1.0.Mx.Icon
 
-    getIconName(): string | null
+    getIconName(): string
     getIconSize(): number
-    setIconName(iconName: string | null): void
+    setIconName(iconName: string): void
     setIconSize(size: number): void
 
     // Conflicting methods
@@ -13793,7 +13793,7 @@ interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -13845,14 +13845,14 @@ interface Icon extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -14459,22 +14459,22 @@ interface IconTheme {
      * Get the value of the #MxIconTheme:theme-name property.
      * @returns the current value of the "theme-name" property.
      */
-    getThemeName(): string | null
-    hasIcon(iconName: string | null): boolean
+    getThemeName(): string
+    hasIcon(iconName: string): boolean
     /**
      * If the icon is available, returns a #CoglHandle of the icon.
      * @param iconName The name of the icon
      * @param size The desired size of the icon
      * @returns a #CoglHandle of the icon, or %NULL.
      */
-    lookup(iconName: string | null, size: number): Cogl.Handle
+    lookup(iconName: string, size: number): Cogl.Handle
     /**
      * If the icon is available, returns a #ClutterTexture of the icon.
      * @param iconName The name of the icon
      * @param size The desired size of the icon
      * @returns a #ClutterTexture of the icon, or %NULL.
      */
-    lookupTexture(iconName: string | null, size: number): Clutter.Texture
+    lookupTexture(iconName: string, size: number): Clutter.Texture
     /**
      * Sets the directories the #MxIconTheme will search in to find icons.
      * By default, it will look in the default system and local icon
@@ -14492,7 +14492,7 @@ interface IconTheme {
      * icon theme, this function can be called with a %NULL `theme_name` argument.
      * @param themeName the name of an icon theme to load, or %NULL
      */
-    setThemeName(themeName: string | null): void
+    setThemeName(themeName: string): void
 
     // Class property signals of Mx-1.0.Mx.IconTheme
 
@@ -14705,7 +14705,7 @@ interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param filename Filename to read the file from
      * @returns #TRUE if the image was successfully updated
      */
-    setFromFile(filename: string | null): boolean
+    setFromFile(filename: string): boolean
     /**
      * Set the image data from an image file, and scale the image during loading.
      * In case of failure, #FALSE is returned and `error` is set. The aspect ratio
@@ -14715,7 +14715,7 @@ interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param height Height to scale the image to, or -1
      * @returns #TRUE if the image was successfully updated
      */
-    setFromFileAtSize(filename: string | null, width: number, height: number): boolean
+    setFromFileAtSize(filename: string, width: number, height: number): boolean
     /**
      * Set the MxImage:image-rotation property.
      * @param rotation Rotation angle in degrees
@@ -14770,7 +14770,7 @@ interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -14822,14 +14822,14 @@ interface Image extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -15475,7 +15475,7 @@ interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param attribute Name of the attribute
      * @param column Column number
      */
-    addAttribute(attribute: string | null, column: number): void
+    addAttribute(attribute: string, column: number): void
     /**
      * Freeze the view. This means that the view will not act on changes to the
      * model until it is thawed. Call #mx_item_view_thaw to thaw the view
@@ -15525,7 +15525,7 @@ interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -15577,14 +15577,14 @@ interface ItemView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -16372,7 +16372,7 @@ interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -16424,14 +16424,14 @@ interface KineticScrollView extends Atk.ImplementorIface, Clutter.Animatable, Cl
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -17140,7 +17140,7 @@ interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * Get the text displayed on the label
      * @returns the text for the label. This must not be freed by the application
      */
-    getText(): string | null
+    getText(): string
     /**
      * Determines whether the text of the label is being treated as Pango markup.
      * @returns %TRUE if the text of the label is treated as Pango markup, %FALSE otherwise.
@@ -17187,7 +17187,7 @@ interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * Sets the text displayed on the label
      * @param text text to set the label to
      */
-    setText(text: string | null): void
+    setText(text: string): void
     /**
      * Sets whether the text of the label should be treated as Pango markup.
      * @param useMarkup %TRUE to use Pango markup, %FALSE otherwise
@@ -17225,7 +17225,7 @@ interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -17277,14 +17277,14 @@ interface Label extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -17878,7 +17878,7 @@ class Label extends Widget {
      * @param text text to set the label to
      * @returns a new #MxLabel
      */
-    static newWithText(text: string | null): Label
+    static newWithText(text: string): Label
     _init(config?: Label.ConstructorProperties): void
 }
 
@@ -17914,7 +17914,7 @@ interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param attribute Name of the attribute
      * @param column Column number
      */
-    addAttribute(attribute: string | null, column: number): void
+    addAttribute(attribute: string, column: number): void
     /**
      * Freeze the view. This means that the view will not act on changes to the
      * model until it is thawed. Call #mx_list_view_thaw to thaw the view.
@@ -17964,7 +17964,7 @@ interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -18016,14 +18016,14 @@ interface ListView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Adds a #ClutterActor to `container`. This function will emit the
      * "actor-added" signal. The actor should be parented to
@@ -18741,7 +18741,7 @@ interface Menu extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -18793,14 +18793,14 @@ interface Menu extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contain
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -19418,7 +19418,7 @@ interface Notebook extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -19470,14 +19470,14 @@ interface Notebook extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -20831,11 +20831,11 @@ interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * @returns MxEntry *
      */
     getEntry(): Entry
-    getLabel(level: number): string | null
+    getLabel(level: number): string
     getLevel(): number
-    getText(): string | null
+    getText(): string
     pop(): number
-    push(name: string | null): number
+    push(name: string): number
     /**
      * Set theh value of the #MxPathBar:clear-on-change property
      * @param clearOnChange the new value of the property
@@ -20851,12 +20851,12 @@ interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * @param level A #gint
      * @param label A #gchar
      */
-    setLabel(level: number, label: string | null): void
+    setLabel(level: number, label: string): void
     /**
      * Set the text in the editable area of the #MxPathBar
      * @param text string to set the editable text to.
      */
-    setText(text: string | null): void
+    setText(text: string): void
 
     // Conflicting methods
 
@@ -20865,7 +20865,7 @@ interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -20917,14 +20917,14 @@ interface PathBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -21535,7 +21535,7 @@ interface ProgressBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -21587,14 +21587,14 @@ interface ProgressBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -22223,7 +22223,7 @@ interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -22275,14 +22275,14 @@ interface ScrollBar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Co
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -22944,7 +22944,7 @@ interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.C
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -22996,14 +22996,14 @@ interface ScrollView extends Atk.ImplementorIface, Clutter.Animatable, Clutter.C
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -23726,7 +23726,7 @@ interface Slider extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -23778,14 +23778,14 @@ interface Slider extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -24407,7 +24407,7 @@ interface Spinner extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -24459,14 +24459,14 @@ interface Spinner extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -25141,7 +25141,7 @@ interface Stack extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -25193,14 +25193,14 @@ interface Stack extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -25915,7 +25915,7 @@ interface Style {
      * @param filename filename of the style sheet to load
      * @returns TRUE if the style information was loaded successfully. Returns FALSE on error.
      */
-    loadFromFile(filename: string | null): boolean
+    loadFromFile(filename: string): boolean
 
     // Own virtual methods of Mx-1.0.Mx.Style
 
@@ -26197,7 +26197,7 @@ interface Table extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -26249,14 +26249,14 @@ interface Table extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Contai
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -26980,7 +26980,7 @@ interface TextureCache {
      * @param uri A URI or path to an image file
      * @returns %TRUE if the image exists, %FALSE otherwise
      */
-    contains(uri: string | null): boolean
+    contains(uri: string): boolean
     /**
      * Checks whether there are any textures associated with the given URI by
      * the given identifier.
@@ -26988,14 +26988,14 @@ interface TextureCache {
      * @param ident A unique identifier
      * @returns %TRUE if the data exists, %FALSE otherwise
      */
-    containsMeta(uri: string | null, ident: any): boolean
+    containsMeta(uri: string, ident: any): boolean
     /**
      * This is a wrapper around mx_texture_cache_get_texture() which returns
      * a ClutterActor.
      * @param uri A URI or path to a image file
      * @returns a newly created ClutterTexture
      */
-    getActor(uri: string | null): Clutter.Actor
+    getActor(uri: string): Clutter.Actor
     /**
      * Create a #CoglHandle representing a texture of the specified image. Adds
      * the image to the cache if the image had not been previously loaded.
@@ -27004,7 +27004,7 @@ interface TextureCache {
      * @param uri A URI or path to an image file
      * @returns a #CoglHandle to the cached texture
      */
-    getCoglTexture(uri: string | null): Cogl.Handle
+    getCoglTexture(uri: string): Cogl.Handle
     /**
      * Retrieves the #CoglHandle of the previously added image associated
      * with the given unique identifier.
@@ -27014,7 +27014,7 @@ interface TextureCache {
      * @param ident A unique identifier
      * @returns A #CoglHandle to a texture, with an added reference. %NULL if no image was found.
      */
-    getMetaCoglTexture(uri: string | null, ident: any): Cogl.Handle
+    getMetaCoglTexture(uri: string, ident: any): Cogl.Handle
     /**
      * Create a new ClutterTexture using the previously added image associated
      * with the given unique identifier.
@@ -27024,7 +27024,7 @@ interface TextureCache {
      * @param ident A unique identifier
      * @returns A newly allocated #ClutterTexture, or %NULL if no image was found
      */
-    getMetaTexture(uri: string | null, ident: any): Clutter.Texture
+    getMetaTexture(uri: string, ident: any): Clutter.Texture
     /**
      * Returns the number of items in the texture cache
      * @returns the current size of the cache
@@ -27038,7 +27038,7 @@ interface TextureCache {
      * @param uri A URI or path to a image file
      * @returns a newly created ClutterTexture
      */
-    getTexture(uri: string | null): Clutter.Texture
+    getTexture(uri: string): Clutter.Texture
     /**
      * Inserts a texture into the texture cache. This can be useful if you
      * want to cache a texture from a custom or unhandled URI type, or you
@@ -27049,7 +27049,7 @@ interface TextureCache {
      * @param uri A URI or local file path
      * @param texture A #CoglHandle to a texture
      */
-    insert(uri: string | null, texture: Cogl.Handle): void
+    insert(uri: string, texture: Cogl.Handle): void
     /**
      * Inserts a texture that's associated with a URI into the cache.
      * If the metadata already exists for this URI, it will be replaced.
@@ -27061,13 +27061,13 @@ interface TextureCache {
      * @param texture A #CoglHandle to a texture
      * @param destroyFunc An optional destruction function for `ident`
      */
-    insertMeta(uri: string | null, ident: any, texture: Cogl.Handle, destroyFunc: GLib.DestroyNotify): void
-    loadCache(filename: string | null): void
+    insertMeta(uri: string, ident: any, texture: Cogl.Handle, destroyFunc: GLib.DestroyNotify): void
+    loadCache(filename: string): void
 
     // Own virtual methods of Mx-1.0.Mx.TextureCache
 
     errorLoading(error: GLib.Error): void
-    loaded(uri: string | null, texture: Clutter.Texture): void
+    loaded(uri: string, texture: Clutter.Texture): void
 
     // Class property signals of Mx-1.0.Mx.TextureCache
 
@@ -27786,7 +27786,7 @@ interface Toggle extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -27838,14 +27838,14 @@ interface Toggle extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -28461,7 +28461,7 @@ interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -28513,14 +28513,14 @@ interface Toolbar extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -29143,7 +29143,7 @@ interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * Get the text displayed on the tooltip
      * @returns the text for the tooltip. This must not be freed by the application
      */
-    getText(): string | null
+    getText(): string
     /**
      * Retrieve the area on the stage that the tooltip currently applies to
      * @returns the #ClutterGeometry, owned by the tooltip which must not be freed by the application.
@@ -29172,7 +29172,7 @@ interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * Sets the text displayed on the tooltip
      * @param text text to set the label to
      */
-    setText(text: string | null): void
+    setText(text: string): void
     /**
      * Set the area on the stage that the tooltip applies to.
      * @param area A #ClutterGeometry
@@ -29212,7 +29212,7 @@ interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -29264,14 +29264,14 @@ interface Tooltip extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Cont
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -29883,7 +29883,7 @@ interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -29935,14 +29935,14 @@ interface Viewport extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Con
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Lowers `actor` to `sibling` level, in the depth ordering.
      * 
@@ -30634,7 +30634,7 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * Get the current tooltip string
      * @returns The current tooltip string, owned by the #MxWidget
      */
-    getTooltipText(): string | null
+    getTooltipText(): string
     /**
      * Hide the tooltip for `widget`
      */
@@ -30674,7 +30674,7 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * %FALSE.
      * @param text text to set as the tooltip
      */
-    setTooltipText(text: string | null): void
+    setTooltipText(text: string): void
     /**
      * Show the tooltip for `widget`
      */
@@ -30687,7 +30687,7 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * into `value`.
      * @param propertyName the name of the property
      */
-    getProperty(propertyName: string | null): /* value */ any
+    getProperty(propertyName: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -30739,14 +30739,14 @@ interface Widget extends Atk.ImplementorIface, Clutter.Animatable, Clutter.Conta
      * @param propertyName the name of the property to find
      * @returns a #GParamSpec for the given property, or %NULL if no property with that name was found
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Finds the #GParamSpec for `property_name`
      * @virtual 
      * @param propertyName the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    findProperty(propertyName: string | null): GObject.ParamSpec
+    findProperty(propertyName: string): GObject.ParamSpec
     /**
      * Puts `self` below `above`.
      * 
@@ -31399,7 +31399,7 @@ interface Window {
      * set, or the icon was set with mx_window_set_icon_from_cogl_texture().
      * @returns The window icon name, or %NULL
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Determines if the window is in small-screen mode.
      * See mx_window_set_small_screen().
@@ -31410,7 +31410,7 @@ interface Window {
      * Retrieves the title used for the window.
      * @returns The title used for the window
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Retrieves the toolbar associated with the window.
      * @returns A #MxToolbar
@@ -31488,7 +31488,7 @@ interface Window {
      * window-system specific.
      * @param title A string to use for the window title name
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets the toolbar associated with the window.
      * @param toolbar 
@@ -31809,7 +31809,7 @@ class BorderImage {
 
     // Constructors of Mx-1.0.Mx.BorderImage
 
-    static setFromString(value: any, str: string | null, filename: string | null): void
+    static setFromString(value: any, str: string, filename: string): void
 }
 
 interface BoxLayoutChildClass {
@@ -32850,10 +32850,10 @@ interface StylableIface {
 
     getStyle: (stylable: Stylable) => Style
     setStyle: (stylable: Stylable, style: Style) => void
-    getStyleClass: (stylable: Stylable) => string | null
-    setStyleClass: (stylable: Stylable, styleClass: string | null) => void
-    getStylePseudoClass: (stylable: Stylable) => string | null
-    setStylePseudoClass: (stylable: Stylable, pseudoClass: string | null) => void
+    getStyleClass: (stylable: Stylable) => string
+    setStyleClass: (stylable: Stylable, styleClass: string) => void
+    getStylePseudoClass: (stylable: Stylable) => string
+    setStylePseudoClass: (stylable: Stylable, pseudoClass: string) => void
     styleChanged: (stylable: Stylable, flags: StyleChangedFlags) => void
 }
 
@@ -32971,7 +32971,7 @@ interface TextureCacheClass {
     // Own fields of Mx-1.0.Mx.TextureCacheClass
 
     parentClass: GObject.ObjectClass
-    loaded: (self: TextureCache, uri: string | null, texture: Clutter.Texture) => void
+    loaded: (self: TextureCache, uri: string, texture: Clutter.Texture) => void
     errorLoading: (self: TextureCache, error: GLib.Error) => void
 }
 

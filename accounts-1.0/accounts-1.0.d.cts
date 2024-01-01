@@ -77,9 +77,9 @@ export enum SettingSource {
      */
     PROFILE,
 }
-export const MANAGER_INTERFACE: string | null
-export const MANAGER_OBJECT_PATH: string | null
-export const MANAGER_SERVICE_NAME: string | null
+export const MANAGER_INTERFACE: string
+export const MANAGER_OBJECT_PATH: string
+export const MANAGER_SERVICE_NAME: string
 export function accounts_error_quark(): GLib.Quark
 export function errors_quark(): GLib.Quark
 /**
@@ -108,7 +108,7 @@ export function service_type_list_free(list: ServiceType[]): void
  * @param key the name of the key whose value has changed.
  */
 export interface AccountNotifyCb {
-    (account: Account, key: string | null): void
+    (account: Account, key: string): void
 }
 /**
  * This callback is invoked when storing the account settings is completed. If
@@ -212,7 +212,7 @@ export interface Account extends Gio.Initable {
      * Get the display name of `account`.
      * @returns the display name.
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets whether the selected service is enabled for `account`.
      * @returns %TRUE if the selected service for @account is enabled, %FALSE otherwise.
@@ -227,7 +227,7 @@ export interface Account extends Gio.Initable {
      * Get the name of the provider of `account`.
      * @returns the name of the provider.
      */
-    get_provider_name(): string | null
+    get_provider_name(): string
     /**
      * Gets the selected #AgService for `account`.
      * @returns the selected service, or %NULL if no service is selected.
@@ -246,13 +246,13 @@ export interface Account extends Gio.Initable {
      * @param value an initialized #GValue to receive the setting's value.
      * @returns one of #AgSettingSource: %AG_SETTING_SOURCE_NONE if the setting is not present, %AG_SETTING_SOURCE_ACCOUNT if the setting comes from the account configuration, or %AG_SETTING_SOURCE_PROFILE if the value comes as predefined in the profile.
      */
-    get_value(key: string | null, value: any): [ /* returnType */ SettingSource, /* value */ any ]
+    get_value(key: string, value: any): [ /* returnType */ SettingSource, /* value */ any ]
     /**
      * Gets the value of the configuration setting `key`.
      * @param key the name of the setting to retrieve.
      * @returns a #GVariant holding the setting value, or %NULL. The returned #GVariant is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call g_variant_ref() on it.
      */
-    get_variant(key: string | null): [ /* returnType */ GLib.Variant, /* source */ SettingSource ]
+    get_variant(key: string): [ /* returnType */ GLib.Variant, /* source */ SettingSource ]
     /**
      * Gets a list of services that are enabled for `account`.
      * @returns a #GList of #AgService items representing all the services which are enabled. Must be free'd with ag_service_list_free().
@@ -269,7 +269,7 @@ export interface Account extends Gio.Initable {
      * @param service_type the service type which all the returned services should provide.
      * @returns a #GList of #AgService items representing all the services supported by this account which provide @service_type. Must be free'd with ag_service_list_free().
      */
-    list_services_by_type(service_type: string | null): Service[]
+    list_services_by_type(service_type: string): Service[]
     /**
      * Removes the notification callback identified by `watch`.
      * @param watch the watch to remove.
@@ -289,7 +289,7 @@ export interface Account extends Gio.Initable {
      * Changes the display name for `account` to `display_name`.
      * @param display_name the display name to set.
      */
-    set_display_name(display_name: string | null): void
+    set_display_name(display_name: string): void
     /**
      * Sets the "enabled" flag on the selected service for `account`.
      * @param enabled whether `account` should be enabled.
@@ -301,7 +301,7 @@ export interface Account extends Gio.Initable {
      * @param key the name of the setting to change.
      * @param value a #GValue holding the new setting's value.
      */
-    set_value(key: string | null, value: any | null): void
+    set_value(key: string, value: any | null): void
     /**
      * Sets the value of the configuration setting `key` to the value `value`.
      * If `value` has a floating reference, the `account` will take ownership
@@ -310,7 +310,7 @@ export interface Account extends Gio.Initable {
      * @param key the name of the setting to change.
      * @param value a #GVariant holding the new setting's value.
      */
-    set_variant(key: string | null, value: GLib.Variant | null): void
+    set_variant(key: string, value: GLib.Variant | null): void
     /**
      * Initializes `iter` to iterate over the account settings. If `key_prefix` is
      * not %NULL, only keys whose names start with `key_prefix` will be iterated
@@ -325,7 +325,7 @@ export interface Account extends Gio.Initable {
      * @param key the name of the key or prefix of the keys to be signed.
      * @param token a signing token (%NULL-terminated string) for creating the signature. The application must possess (request) the token.
      */
-    sign(key: string | null, token: string | null): void
+    sign(key: string, token: string): void
     /**
      * Commit the changed account settings to the account database, and invoke
      * `callback` when the operation has been completed.
@@ -368,7 +368,7 @@ export interface Account extends Gio.Initable {
      * @param service_type the name of the service type to check for
      * @returns %TRUE if @account supports the service type @service_type, %FALSE otherwise.
      */
-    supports_service(service_type: string | null): boolean
+    supports_service(service_type: string): boolean
     /**
      * Verify if the key is signed and the signature matches the value
      * and provides the aegis token which was used for signing the `key`.
@@ -376,7 +376,7 @@ export interface Account extends Gio.Initable {
      * @param token location to receive the pointer to aegis token.
      * @returns %TRUE if the key is signed and the signature matches the value, %FALSE otherwise.
      */
-    verify(key: string | null, token: string | null): boolean
+    verify(key: string, token: string): boolean
     /**
      * Verify if the `key` is signed with any of the tokens from the `tokens`
      * and the signature is valid.
@@ -384,7 +384,7 @@ export interface Account extends Gio.Initable {
      * @param tokens array of aegis tokens.
      * @returns %TRUE if the key is signed with any of the given tokens and the signature is valid, %FALSE otherwise.
      */
-    verify_with_tokens(key: string | null, tokens: string | null): boolean
+    verify_with_tokens(key: string, tokens: string): boolean
     /**
      * Installs a watch on all the keys under `key_prefix:` `callback` will be
      * invoked whenever the value of any of these keys changes (or a key is
@@ -393,7 +393,7 @@ export interface Account extends Gio.Initable {
      * @param callback a #AgAccountNotifyCb callback to be called.
      * @returns a #AgAccountWatch, which can then be used to remove this watch.
      */
-    watch_dir(key_prefix: string | null, callback: AccountNotifyCb): AccountWatch
+    watch_dir(key_prefix: string, callback: AccountNotifyCb): AccountWatch
     /**
      * Installs a watch on `key:` `callback` will be invoked whenever the value of
      * `key` changes (or the key is removed).
@@ -401,7 +401,7 @@ export interface Account extends Gio.Initable {
      * @param callback a #AgAccountNotifyCb callback to be called.
      * @returns a #AgAccountWatch, which can then be used to remove this watch.
      */
-    watch_key(key: string | null, callback: AccountNotifyCb): AccountWatch
+    watch_key(key: string, callback: AccountNotifyCb): AccountWatch
 
     // Own signals of Accounts-1.0.Accounts.Account
 
@@ -567,20 +567,20 @@ export interface AccountService {
      * @param value an initialized #GValue to receive the setting's value.
      * @returns one of <type>#AgSettingSource</type>: %AG_SETTING_SOURCE_NONE if the setting is not present, %AG_SETTING_SOURCE_ACCOUNT if the setting comes from the account configuration, or %AG_SETTING_SOURCE_PROFILE if the value comes as predefined in the profile.
      */
-    get_value(key: string | null, value: any): [ /* returnType */ SettingSource, /* value */ any ]
+    get_value(key: string, value: any): [ /* returnType */ SettingSource, /* value */ any ]
     /**
      * Gets the value of the configuration setting `key`.
      * @param key the name of the setting to retrieve.
      * @returns a #GVariant holding the setting value, or %NULL. The returned #GVariant is owned by the account, and no guarantees are made about its lifetime. If the client wishes to keep it, it should call g_variant_ref() on it.
      */
-    get_variant(key: string | null): [ /* returnType */ GLib.Variant, /* source */ SettingSource ]
+    get_variant(key: string): [ /* returnType */ GLib.Variant, /* source */ SettingSource ]
     /**
      * Sets the value of the configuration setting `key` to the value `value`.
      * If `value` is %NULL, then the setting is unset.
      * @param key the name of the setting to change.
      * @param value a #GValue holding the new setting's value.
      */
-    set_value(key: string | null, value: any | null): void
+    set_value(key: string, value: any | null): void
     /**
      * Sets the value of the configuration setting `key` to the value `value`.
      * If `value` has a floating reference, the `account` will take ownership
@@ -589,7 +589,7 @@ export interface AccountService {
      * @param key the name of the setting to change.
      * @param value a #GVariant holding the new setting's value.
      */
-    set_variant(key: string | null, value: GLib.Variant | null): void
+    set_variant(key: string, value: GLib.Variant | null): void
     /**
      * Initializes `iter` to iterate over the account settings. If `key_prefix` is
      * not %NULL, only keys whose names start with `key_prefix` will be iterated
@@ -666,7 +666,7 @@ export class AccountService extends GObject.Object {
      * @param iter an initialized #AgAccountSettingIter structure.
      * @returns %TRUE if @key and @value have been set, %FALSE if we there are no more account settings to iterate over.
      */
-    static settings_iter_next(iter: AccountSettingIter): [ /* returnType */ boolean, /* key */ string | null, /* value */ any ]
+    static settings_iter_next(iter: AccountSettingIter): [ /* returnType */ boolean, /* key */ string, /* value */ any ]
 }
 
 export module Manager {
@@ -819,7 +819,7 @@ export interface Manager extends Gio.Initable {
      * @param provider_name name of the provider of the account.
      * @returns a new #AgAccount, or %NULL.
      */
-    create_account(provider_name: string | null): Account
+    create_account(provider_name: string): Account
     /**
      * Get whether the library will abort when a timeout error occurs.
      * @returns %TRUE is the library will abort when a timeout error occurs, %FALSE otherwise.
@@ -853,7 +853,7 @@ export interface Manager extends Gio.Initable {
      * @param application_name the name of an application to search for
      * @returns a new #AgApplication if one was found, %NULL otherwise
      */
-    get_application(application_name: string | null): Application
+    get_application(application_name: string): Application
     /**
      * Get the timeout of database operations for `manager,` in milliseconds.
      * @returns the timeout (in milliseconds) for database operations.
@@ -879,18 +879,18 @@ export interface Manager extends Gio.Initable {
      * @param provider_name the name of the provider.
      * @returns an #AgProvider, which must be free'd with ag_provider_unref() when no longer required.
      */
-    get_provider(provider_name: string | null): Provider
+    get_provider(provider_name: string): Provider
     /**
      * Loads the service identified by `service_name`.
      * @param service_name the name of the service.
      * @returns an #AgService, which must be free'd with ag_service_unref() when no longer required.
      */
-    get_service(service_name: string | null): Service
+    get_service(service_name: string): Service
     /**
      * Get the service type for `manager`.
      * @returns the name of the service type for the supplied @manager.
      */
-    get_service_type(): string | null
+    get_service_type(): string
     /**
      * Lists the accounts. If the #AgManager is created with a specified
      * #AgManager:service-type, it will return only the accounts supporting this
@@ -909,7 +909,7 @@ export interface Manager extends Gio.Initable {
      * @param service_type the name of the service type to check for.
      * @returns a #GList of #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
      */
-    list_by_service_type(service_type: string | null): AccountId[]
+    list_by_service_type(service_type: string): AccountId[]
     /**
      * Lists the enabled accounts.
      * @returns a #GList of the enabled #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
@@ -920,7 +920,7 @@ export interface Manager extends Gio.Initable {
      * @param service_type the name of the service type to check for.
      * @returns a #GList of the enabled #AgAccountId representing the accounts. Must be free'd with ag_manager_list_free() when no longer required.
      */
-    list_enabled_by_service_type(service_type: string | null): AccountId[]
+    list_enabled_by_service_type(service_type: string): AccountId[]
     /**
      * Gets a list of all the installed providers.
      * @returns a list of #AgProvider, which must be then free'd with ag_provider_list_free().
@@ -944,7 +944,7 @@ export interface Manager extends Gio.Initable {
      * @param service_type the type of the service.
      * @returns a list of #AgService, which must be free'd with ag_service_list_free() when no longer required.
      */
-    list_services_by_type(service_type: string | null): Service[]
+    list_services_by_type(service_type: string): Service[]
     /**
      * Instantiates the object representing the account identified by
      * `account_id`.
@@ -957,7 +957,7 @@ export interface Manager extends Gio.Initable {
      * @param service_type the name of the service type.
      * @returns an #AgServiceType, which must be free'd with ag_service_type_unref() when no longer required.
      */
-    load_service_type(service_type: string | null): ServiceType
+    load_service_type(service_type: string): ServiceType
     /**
      * Tells libaccounts whether it should make the client application abort when
      * a timeout error occurs. The default is %FALSE.
@@ -1045,7 +1045,7 @@ export class Manager extends GObject.Object {
      * @param service_type the name of a service type
      * @returns an #AgManager instance with the specified service type.
      */
-    static new_for_service_type(service_type: string | null): Manager
+    static new_for_service_type(service_type: string): Manager
     _init(config?: Manager.ConstructorProperties): void
     /**
      * Frees the memory taken by a #GList of #AgAccountId allocated by #AgManager,
@@ -1133,13 +1133,13 @@ export interface AccountSettingIter {
      * initialized with ag_account_settings_iter_init().
      * @returns %TRUE if @key and @value have been set, %FALSE if we there are no more account settings to iterate over.
      */
-    get_next(): [ /* returnType */ boolean, /* key */ string | null, /* value */ GLib.Variant ]
+    get_next(): [ /* returnType */ boolean, /* key */ string, /* value */ GLib.Variant ]
     /**
      * Iterates over the account keys. `iter` must be an iterator previously
      * initialized with ag_account_settings_iter_init().
      * @returns %TRUE if @key and @value have been set, %FALSE if we there are no more account settings to iterate over.
      */
-    next(): [ /* returnType */ boolean, /* key */ string | null, /* value */ any ]
+    next(): [ /* returnType */ boolean, /* key */ string, /* value */ any ]
 }
 
 /**
@@ -1176,7 +1176,7 @@ export interface Application {
      * Get the description of the #AgApplication.
      * @returns the description of @self.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Get the #GDesktopAppInfo of the application.
      * @returns the #GDesktopAppInfo for @self, or %NULL if failed.
@@ -1186,19 +1186,19 @@ export interface Application {
      * Get the translation domain of the #AgApplication.
      * @returns the translation domain.
      */
-    get_i18n_domain(): string | null
+    get_i18n_domain(): string
     /**
      * Get the name of the #AgApplication.
      * @returns the name of @self.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the description from the application XML file, for the specified
      * service; if not found, get the service-type description instead.
      * @param service an #AgService.
      * @returns usage description of the service.
      */
-    get_service_usage(service: Service): string | null
+    get_service_usage(service: Service): string
     /**
      * Increment the reference count of `self`.
      * @returns @self.
@@ -1241,12 +1241,12 @@ export interface AuthData {
      * Gets the authentication mechanism.
      * @returns the authentication mechanism.
      */
-    get_mechanism(): string | null
+    get_mechanism(): string
     /**
      * Gets the authentication method.
      * @returns the authentication method.
      */
-    get_method(): string | null
+    get_method(): string
     /**
      * Gets the authentication parameters.
      * @returns a #GHashTable containing all the authentication parameters.
@@ -1319,18 +1319,18 @@ export interface Provider {
      * Get the description of the #AgProvider.
      * @returns the description of @provider, or %NULL upon failure.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Get the display name of the #AgProvider.
      * @returns the display name of @provider.
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Get a regular expression matching all domains where this provider's accounts
      * can be used.
      * @returns a regular expression matching the domain names.
      */
-    get_domains_regex(): string | null
+    get_domains_regex(): string
     /**
      * Gets the contents of the XML provider file.  The buffer returned in `contents`
      * should not be modified or freed, and is guaranteed to be valid as long as
@@ -1338,22 +1338,22 @@ export interface Provider {
      * If some error occurs, `contents` is set to %NULL.
      * @param contents location to receive the pointer to the file contents.
      */
-    get_file_contents(contents: string | null): void
+    get_file_contents(contents: string): void
     /**
      * Get the translation domain of the #AgProvider.
      * @returns the translation domain.
      */
-    get_i18n_domain(): string | null
+    get_i18n_domain(): string
     /**
      * Get the icon name of the #AgProvider.
      * @returns the icon_name.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Get the name of the #AgProvider.
      * @returns the name of @provider.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the name of the account plugin which manages all accounts created from
      * this #AgProvider.
@@ -1361,7 +1361,7 @@ export interface Provider {
      * XML files, especially when the same plugin can work for different providers.
      * @returns the plugin name for @provider, or %NULL if a plugin name is not defined.
      */
-    get_plugin_name(): string | null
+    get_plugin_name(): string
     /**
      * Tell whether the provider doesn't support creating more than one account.
      * Note that libaccounts itself does not enforce preventing the creation of
@@ -1378,7 +1378,7 @@ export interface Provider {
      * @param domain a domain name.
      * @returns %TRUE if the given domain is supported, %FALSE otherwise.
      */
-    match_domain(domain: string | null): boolean
+    match_domain(domain: string): boolean
     /**
      * Adds a reference to `provider`.
      * @returns @provider.
@@ -1417,12 +1417,12 @@ export interface Service {
      * Gets the description of the #AgService.
      * @returns the description of @service, or %NULL upon failure.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the display name of the #AgService.
      * @returns the display name of @service.
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets the contents of the XML service file.  The buffer returned in `contents`
      * should not be modified or freed, and is guaranteed to be valid as long as
@@ -1432,32 +1432,32 @@ export interface Service {
      * @param contents location to receive the pointer to the file contents.
      * @param data_offset pointer to receive the offset of the type data.
      */
-    get_file_contents(contents: string | null, data_offset: number): void
+    get_file_contents(contents: string, data_offset: number): void
     /**
      * Gets the translation domain of the #AgService.
      * @returns the name of the translation catalog.
      */
-    get_i18n_domain(): string | null
+    get_i18n_domain(): string
     /**
      * Gets the icon name of the #AgService.
      * @returns the name of the icon of @service.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the name of the #AgService.
      * @returns the name of @service.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the provider name of the #AgService.
      * @returns the name of the provider of @service.
      */
-    get_provider(): string | null
+    get_provider(): string
     /**
      * Gets the service type of the #AgService.
      * @returns the type of @service.
      */
-    get_service_type(): string | null
+    get_service_type(): string
     /**
      * Get list of tags specified for the #AgService. If the service has not
      * defined tags, tags from the service type will be returned.
@@ -1469,7 +1469,7 @@ export interface Service {
      * @param tag tag to check for.
      * @returns TRUE if #AgService has the tag, FALSE otherwise
      */
-    has_tag(tag: string | null): boolean
+    has_tag(tag: string): boolean
     /**
      * Adds a reference to `service`.
      * @returns @service.
@@ -1508,12 +1508,12 @@ export interface ServiceType {
      * Get the description of the #AgServiceType.
      * @returns the description of @service_type, or %NULL upon failure.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Get the display name of the #AgServiceType.
      * @returns the display name of @service_type.
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Gets the contents of the XML service type file.  The buffer returned in
      * `contents` should not be modified or freed, and is guaranteed to be valid as
@@ -1522,22 +1522,22 @@ export interface ServiceType {
      * @param contents location to receive the pointer to the file contents.
      * @param len location to receive the length of the file, in bytes.
      */
-    get_file_contents(contents: string | null, len: number): void
+    get_file_contents(contents: string, len: number): void
     /**
      * Get the translation domain of the #AgServiceType.
      * @returns the translation domain.
      */
-    get_i18n_domain(): string | null
+    get_i18n_domain(): string
     /**
      * Get the icon name of the #AgServiceType.
      * @returns the name of the icon of @service_type.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Get the name of the #AgServiceType.
      * @returns the name of @service_type.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get list of tags specified for the #AgServiceType.
      * @returns #GList of tags for @service_type. The list must be freed with g_list_free(). Entries are owned by the #AgServiceType type and must not be free'd.
@@ -1548,7 +1548,7 @@ export interface ServiceType {
      * @param tag the tag to check for.
      * @returns TRUE if the #AgServiceType has the tag, FALSE otherwise
      */
-    has_tag(tag: string | null): boolean
+    has_tag(tag: string): boolean
     /**
      * Adds a reference to `service_type`.
      * @returns @service_type.

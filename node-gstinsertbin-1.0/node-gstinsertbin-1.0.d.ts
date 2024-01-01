@@ -165,7 +165,7 @@ interface InsertBin extends Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    getProperty(name: string | null): /* value */ any
+    getProperty(name: string): /* value */ any
 
     // Overloads of getProperty
 
@@ -216,7 +216,7 @@ interface InsertBin extends Gst.ChildProxy {
      * @param name name of the property to set
      * @param value new #GValue for the property
      */
-    setProperty(name: string | null, value: any): void
+    setProperty(name: string, value: any): void
 
     // Overloads of setProperty
 

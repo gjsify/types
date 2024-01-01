@@ -1980,7 +1980,7 @@ const BUTTON_SECONDARY: number
  * Cogl (internal GL abstraction utility library) backend. Can be "gl" or
  * "gles" currently
  */
-const COGL: string | null
+const COGL: string
 /**
  * Default value for "now".
  */
@@ -1998,7 +1998,7 @@ const EVENT_STOP: boolean
 /**
  * GL Windowing system used
  */
-const FLAVOUR: string | null
+const FLAVOUR: string
 const KEY_0: number
 const KEY_1: number
 const KEY_2: number
@@ -4289,7 +4289,7 @@ const PRIORITY_REDRAW: number
 /**
  * The default GObject type for the Clutter stage.
  */
-const STAGE_TYPE: string | null
+const STAGE_TYPE: string
 const VIRTUAL_INPUT_DEVICE_MAX_TOUCH_SLOTS: number
 /**
  * Allocates a new #ClutterActorBox.
@@ -4370,7 +4370,7 @@ function color_from_pixel(pixel: number): /* color */ Color
  * @param str a string specifying a color
  * @returns %TRUE if parsing succeeded, and %FALSE otherwise
  */
-function color_from_string(str: string | null): [ /* returnType */ boolean, /* color */ Color ]
+function color_from_string(str: string): [ /* returnType */ boolean, /* color */ Color ]
 /**
  * Retrieves a static color for the given `color` name
  * 
@@ -4386,7 +4386,7 @@ function color_get_static(color: StaticColor): Color
  * @param property_name a property name.
  * @returns The #GParamSpec for the property or %NULL   if no such property exist.
  */
-function container_class_find_child_property(klass: GObject.ObjectClass, property_name: string | null): GObject.ParamSpec
+function container_class_find_child_property(klass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
 /**
  * Returns an array of #GParamSpec for all child properties.
  * @param klass a #GObjectClass implementing the #ClutterContainer interface.
@@ -4501,7 +4501,7 @@ function get_font_map(): Pango.FontMap
  * @param gobject a #GObject
  * @returns the script id, or %NULL if @object was not defined inside   a UI definition file. The returned string is owned by the object and   should never be modified or freed.
  */
-function get_script_id(gobject: GObject.Object): string | null
+function get_script_id(gobject: GObject.Object): string
 function image_error_quark(): GLib.Quark
 /**
  * Converts `keyval` from a Clutter key symbol to the corresponding
@@ -4758,7 +4758,7 @@ function units_from_pt(pt: number): /* units */ Units
  * @param str the string to convert
  * @returns %TRUE if the string was successfully parsed,   and %FALSE otherwise
  */
-function units_from_string(str: string | null): [ /* returnType */ boolean, /* units */ Units ]
+function units_from_string(str: string): [ /* returnType */ boolean, /* units */ Units ]
 /**
  * Retrieves a pointer to the #ClutterPaintNode contained inside
  * the passed #GValue, and if not %NULL it will increase the
@@ -4889,7 +4889,7 @@ interface ActorCreateChildFunc {
  * @returns the function should return %TRUE if the key   binding has been handled, and return %FALSE otherwise
  */
 interface BindingActionFunc {
-    (gobject: GObject.Object, action_name: string | null, key_val: number, modifiers: ModifierType): boolean
+    (gobject: GObject.Object, action_name: string, key_val: number, modifiers: ModifierType): boolean
 }
 /**
  * Generic callback
@@ -4954,7 +4954,7 @@ interface ProgressFunc {
  * @param flags signal connection flags
  */
 interface ScriptConnectFunc {
-    (script: Script, object: GObject.Object, signal_name: string | null, handler_name: string | null, connect_object: GObject.Object, flags: GObject.ConnectFlags): void
+    (script: Script, object: GObject.Object, signal_name: string, handler_name: string, connect_object: GObject.Object, flags: GObject.ConnectFlags): void
 }
 /**
  * A function for defining a custom progress.
@@ -4985,7 +4985,7 @@ interface Animatable {
      * @param property_name the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    find_property(property_name: string | null): GObject.ParamSpec
+    find_property(property_name: string): GObject.ParamSpec
     /**
      * Get animated actor.
      * @returns a #ClutterActor
@@ -4996,7 +4996,7 @@ interface Animatable {
      * @param property_name the name of the animatable property to retrieve
      * @param value a #GValue initialized to the type of the property to retrieve
      */
-    get_initial_state(property_name: string | null, value: any): void
+    get_initial_state(property_name: string, value: any): void
     /**
      * Asks a #ClutterAnimatable implementation to interpolate a
      * a named property between the initial and final values of
@@ -5012,13 +5012,13 @@ interface Animatable {
      * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
      */
-    interpolate_value(property_name: string | null, interval: Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
+    interpolate_value(property_name: string, interval: Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
      * @param property_name the name of the animatable property to set
      * @param value the value of the animatable property to set
      */
-    set_final_state(property_name: string | null, value: any): void
+    set_final_state(property_name: string, value: any): void
 
     // Own virtual methods of Clutter-10.Clutter.Animatable
 
@@ -5028,7 +5028,7 @@ interface Animatable {
      * @param property_name the name of the animatable property to find
      * @returns The #GParamSpec for the given property   or %NULL
      */
-    vfunc_find_property(property_name: string | null): GObject.ParamSpec
+    vfunc_find_property(property_name: string): GObject.ParamSpec
     /**
      * Get animated actor.
      * @virtual 
@@ -5041,7 +5041,7 @@ interface Animatable {
      * @param property_name the name of the animatable property to retrieve
      * @param value a #GValue initialized to the type of the property to retrieve
      */
-    vfunc_get_initial_state(property_name: string | null, value: any): void
+    vfunc_get_initial_state(property_name: string, value: any): void
     /**
      * Asks a #ClutterAnimatable implementation to interpolate a
      * a named property between the initial and final values of
@@ -5058,14 +5058,14 @@ interface Animatable {
      * @param progress the progress to use to interpolate between the   initial and final values of the `interval`
      * @returns %TRUE if the interpolation was successful,   and %FALSE otherwise
      */
-    vfunc_interpolate_value(property_name: string | null, interval: Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
+    vfunc_interpolate_value(property_name: string, interval: Interval, progress: number): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Sets the current state of `property_name` to `value`
      * @virtual 
      * @param property_name the name of the animatable property to set
      * @param value the value of the animatable property to set
      */
-    vfunc_set_final_state(property_name: string | null, value: any): void
+    vfunc_set_final_state(property_name: string, value: any): void
 
     // Class property signals of Clutter-10.Clutter.Animatable
 
@@ -5149,7 +5149,7 @@ interface Container {
      * @param property the name of the property to set.
      * @param value the value.
      */
-    child_get_property(child: Actor, property: string | null, value: any): void
+    child_get_property(child: Actor, property: string, value: any): void
     /**
      * Calls the #ClutterContainerIface.child_notify() virtual function
      * of #ClutterContainer. The default implementation will emit the
@@ -5164,7 +5164,7 @@ interface Container {
      * @param property the name of the property to set.
      * @param value the value.
      */
-    child_set_property(child: Actor, property: string | null, value: any): void
+    child_set_property(child: Actor, property: string, value: any): void
     /**
      * Creates the #ClutterChildMeta wrapping `actor` inside the
      * `container,` if the #ClutterContainerIface::child_meta_type
@@ -5196,7 +5196,7 @@ interface Container {
      * @param child_name the name of the requested child.
      * @returns The child actor with the requested name,   or %NULL if no actor with that name was found.
      */
-    find_child_by_name(child_name: string | null): Actor
+    find_child_by_name(child_name: string): Actor
     /**
      * Retrieves the #ClutterChildMeta which contains the data about the
      * `container` specific state for `actor`.
@@ -5334,7 +5334,7 @@ class Container extends GObject.Object {
      * @param property_name a property name.
      * @returns The #GParamSpec for the property or %NULL   if no such property exist.
      */
-    static class_find_child_property(klass: GObject.ObjectClass, property_name: string | null): GObject.ParamSpec
+    static class_find_child_property(klass: GObject.ObjectClass, property_name: string): GObject.ParamSpec
     /**
      * Returns an array of #GParamSpec for all child properties.
      * @param klass a #GObjectClass implementing the #ClutterContainer interface.
@@ -5480,7 +5480,7 @@ interface Scriptable {
      * Retrieves the id of `scriptable` set using clutter_scriptable_set_id().
      * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
@@ -5490,7 +5490,7 @@ interface Scriptable {
      * @param node the JSON node to be parsed
      * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
      */
-    parse_custom_node(script: Script, value: any, name: string | null, node: Json.Node): boolean
+    parse_custom_node(script: Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
@@ -5498,7 +5498,7 @@ interface Scriptable {
      * @param name the name of the property
      * @param value the value of the property
      */
-    set_custom_property(script: Script, name: string | null, value: any): void
+    set_custom_property(script: Script, name: string, value: any): void
     /**
      * Sets `id_` as the unique Clutter script it for this instance of
      * #ClutterScriptableIface.
@@ -5508,7 +5508,7 @@ interface Scriptable {
      * definition language parsed by #ClutterScript.
      * @param id_ the #ClutterScript id of the object
      */
-    set_id(id_: string | null): void
+    set_id(id_: string): void
 
     // Own virtual methods of Clutter-10.Clutter.Scriptable
 
@@ -5517,7 +5517,7 @@ interface Scriptable {
      * @virtual 
      * @returns the id of the object. The returned string is owned by   the scriptable object and should never be modified of freed
      */
-    vfunc_get_id(): string | null
+    vfunc_get_id(): string
     /**
      * Parses the passed JSON node. The implementation must set the type
      * of the passed #GValue pointer using g_value_init().
@@ -5528,7 +5528,7 @@ interface Scriptable {
      * @param node the JSON node to be parsed
      * @returns %TRUE if the node was successfully parsed, %FALSE otherwise.
      */
-    vfunc_parse_custom_node(script: Script, value: any, name: string | null, node: Json.Node): boolean
+    vfunc_parse_custom_node(script: Script, value: any, name: string, node: Json.Node): boolean
     /**
      * Overrides the common properties setting. The underlying virtual
      * function should be used when implementing custom properties.
@@ -5537,7 +5537,7 @@ interface Scriptable {
      * @param name the name of the property
      * @param value the value of the property
      */
-    vfunc_set_custom_property(script: Script, name: string | null, value: any): void
+    vfunc_set_custom_property(script: Script, name: string, value: any): void
     /**
      * Sets `id_` as the unique Clutter script it for this instance of
      * #ClutterScriptableIface.
@@ -5548,7 +5548,7 @@ interface Scriptable {
      * @virtual 
      * @param id_ the #ClutterScript id of the object
      */
-    vfunc_set_id(id_: string | null): void
+    vfunc_set_id(id_: string): void
 
     // Class property signals of Clutter-10.Clutter.Scriptable
 
@@ -7593,7 +7593,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param action a #ClutterAction
      */
     add_action(action: Action): void
-    add_action_full(name: string | null, phase: EventPhase, action: Action): void
+    add_action_full(name: string, phase: EventPhase, action: Action): void
     /**
      * A convenience function for setting the name of a #ClutterAction
      * while adding it to the list of actions applied to `self`
@@ -7609,7 +7609,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name to set on the action
      * @param action a #ClutterAction
      */
-    add_action_with_name(name: string | null, action: Action): void
+    add_action_with_name(name: string, action: Action): void
     /**
      * Adds `child` to the children of `self`.
      * 
@@ -7649,7 +7649,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name to set on the constraint
      * @param constraint a #ClutterConstraint
      */
-    add_constraint_with_name(name: string | null, constraint: Constraint): void
+    add_constraint_with_name(name: string, constraint: Constraint): void
     /**
      * Adds `effect` to the list of #ClutterEffect<!-- -->s applied to `self`
      * 
@@ -7674,7 +7674,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name to set on the effect
      * @param effect a #ClutterEffect
      */
-    add_effect_with_name(name: string | null, effect: Effect): void
+    add_effect_with_name(name: string, effect: Effect): void
     /**
      * Adds a `transition` to the #ClutterActor's list of animations.
      * 
@@ -7690,7 +7690,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name of the transition to add
      * @param transition the #ClutterTransition to add
      */
-    add_transition(name: string | null, transition: Transition): void
+    add_transition(name: string, transition: Transition): void
     /**
      * Assigns the size of a #ClutterActor from the given `box`.
      * 
@@ -7987,7 +7987,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name of the action to retrieve
      * @returns a #ClutterAction for the given   name, or %NULL. The returned #ClutterAction is owned by the   actor and it should not be unreferenced directly
      */
-    get_action(name: string | null): Action | null
+    get_action(name: string): Action | null
     /**
      * Retrieves the list of actions applied to `self`
      * @returns a copy   of the list of #ClutterAction<!-- -->s. The contents of the list are   owned by the #ClutterActor. Use g_list_free() to free the resources   allocated by the returned #GList
@@ -8043,7 +8043,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name of the constraint to retrieve
      * @returns a #ClutterConstraint for the given   name, or %NULL. The returned #ClutterConstraint is owned by the   actor and it should not be unreferenced directly
      */
-    get_constraint(name: string | null): Constraint | null
+    get_constraint(name: string): Constraint | null
     /**
      * Retrieves the list of constraints applied to `self`
      * @returns a copy   of the list of #ClutterConstraint<!-- -->s. The contents of the list are   owned by the #ClutterActor. Use g_list_free() to free the resources   allocated by the returned #GList
@@ -8123,7 +8123,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name of the effect to retrieve
      * @returns a #ClutterEffect for the given   name, or %NULL. The returned #ClutterEffect is owned by the   actor and it should not be unreferenced directly
      */
-    get_effect(name: string | null): Effect | null
+    get_effect(name: string): Effect | null
     /**
      * Retrieves the #ClutterEffect<!-- -->s applied on `self,` if any
      * @returns a list   of #ClutterEffect<!-- -->s, or %NULL. The elements of the returned   list are owned by Clutter and they should not be freed. You should   free the returned list using g_list_free() when done
@@ -8559,7 +8559,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * @param name the name of the transition
      * @returns a #ClutterTransition, or %NULL if   none was found to match the passed name; the returned instance is owned   by Clutter and it should not be freed
      */
-    get_transition(name: string | null): Transition | null
+    get_transition(name: string): Transition | null
     /**
      * Retrieves the translation set using clutter_actor_set_translation().
      */
@@ -8995,7 +8995,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * of actions applied to `self`
      * @param name the name of the action to remove
      */
-    remove_action_by_name(name: string | null): void
+    remove_action_by_name(name: string): void
     /**
      * Removes all children of `self`.
      * 
@@ -9040,7 +9040,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * of constraints applied to `self`
      * @param name the name of the constraint to remove
      */
-    remove_constraint_by_name(name: string | null): void
+    remove_constraint_by_name(name: string): void
     /**
      * Removes `effect` from the list of effects applied to `self`
      * 
@@ -9053,7 +9053,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * of effects applied to `self`
      * @param name the name of the effect to remove
      */
-    remove_effect_by_name(name: string | null): void
+    remove_effect_by_name(name: string): void
     /**
      * Removes the transition stored inside a #ClutterActor using `name`
      * identifier.
@@ -9064,7 +9064,7 @@ interface Actor extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * was added to the #ClutterActor.
      * @param name the name of the transition to remove
      */
-    remove_transition(name: string | null): void
+    remove_transition(name: string): void
     /**
      * Replaces `old_child` with `new_child` in the list of children of `self`.
      * @param old_child the child of `self` to replace
@@ -10323,7 +10323,7 @@ interface ActorMeta {
      * Retrieves the name set using clutter_actor_meta_set_name()
      * @returns the name of the #ClutterActorMeta   instance, or %NULL if none was set. The returned string is owned   by the #ClutterActorMeta instance and it should not be modified   or freed
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Sets whether `meta` should be enabled or not
      * @param is_enabled whether `meta` is enabled
@@ -10335,7 +10335,7 @@ interface ActorMeta {
      * The name can be used to identify the #ClutterActorMeta instance
      * @param name the name of `meta`
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
 
     // Own virtual methods of Clutter-10.Clutter.ActorMeta
 
@@ -11089,7 +11089,7 @@ interface BindingPool {
      * Blocks all the actions with name `action_name` inside `pool`.
      * @param action_name an action name
      */
-    block_action(action_name: string | null): void
+    block_action(action_name: string): void
     /**
      * Retrieves the name of the action matching the given key symbol
      * and modifiers bitmask.
@@ -11097,7 +11097,7 @@ interface BindingPool {
      * @param modifiers a bitmask for the modifiers
      * @returns the name of the action, if found, or %NULL. The   returned string is owned by the binding pool and should never   be modified or freed
      */
-    find_action(key_val: number, modifiers: ModifierType): string | null
+    find_action(key_val: number, modifiers: ModifierType): string
     /**
      * Installs a new action inside a #ClutterBindingPool. The action
      * is bound to `key_val` and `modifiers`.
@@ -11115,7 +11115,7 @@ interface BindingPool {
      * @param modifiers bitmask of modifiers
      * @param callback function to be called   when the action is activated
      */
-    install_action(action_name: string | null, key_val: number, modifiers: ModifierType, callback: BindingActionFunc): void
+    install_action(action_name: string, key_val: number, modifiers: ModifierType, callback: BindingActionFunc): void
     /**
      * A #GClosure variant of clutter_binding_pool_install_action().
      * 
@@ -11135,7 +11135,7 @@ interface BindingPool {
      * @param modifiers bitmask of modifiers
      * @param closure a #GClosure
      */
-    install_closure(action_name: string | null, key_val: number, modifiers: ModifierType, closure: GObject.TClosure): void
+    install_closure(action_name: string, key_val: number, modifiers: ModifierType, closure: GObject.TClosure): void
     /**
      * Allows overriding the action for `key_val` and `modifiers` inside a
      * #ClutterBindingPool. See clutter_binding_pool_install_action().
@@ -11181,7 +11181,7 @@ interface BindingPool {
      * an action previously blocked with clutter_binding_pool_block_action().
      * @param action_name an action name
      */
-    unblock_action(action_name: string | null): void
+    unblock_action(action_name: string): void
 
     // Class property signals of Clutter-10.Clutter.BindingPool
 
@@ -11218,7 +11218,7 @@ class BindingPool extends GObject.Object {
      * @param name the name of the binding pool
      * @returns the newly created binding pool with the given   name. Use g_object_unref() when done.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Creates a new #ClutterBindingPool that can be used to store
      * key bindings for an actor. The `name` must be a unique identifier
@@ -11228,14 +11228,14 @@ class BindingPool extends GObject.Object {
      * @param name the name of the binding pool
      * @returns the newly created binding pool with the given   name. Use g_object_unref() when done.
      */
-    static new(name: string | null): BindingPool
+    static new(name: string): BindingPool
     _init(config?: BindingPool.ConstructorProperties): void
     /**
      * Finds the #ClutterBindingPool with `name`.
      * @param name the name of the binding pool to find
      * @returns a pointer to the #ClutterBindingPool, or %NULL
      */
-    static find(name: string | null): BindingPool
+    static find(name: string): BindingPool
     /**
      * Retrieves the #ClutterBindingPool for the given #GObject class
      * and, eventually, creates it. This function is a wrapper around
@@ -14208,7 +14208,7 @@ interface Image extends Content {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Clutter-10.Clutter.Image
 
@@ -14395,8 +14395,8 @@ interface InputDevice {
      * Retrieves the name of the `device`
      * @returns the name of the device, or %NULL. The returned string   is owned by the #ClutterInputDevice and should never be modified   or freed
      */
-    get_device_name(): string | null
-    get_device_node(): string | null
+    get_device_name(): string
+    get_device_node(): string
     /**
      * Retrieves the type of `device`
      * @returns the type of the device
@@ -14419,7 +14419,7 @@ interface InputDevice {
      * Gets the product ID of this device.
      * @returns the product ID
      */
-    get_product_id(): string | null
+    get_product_id(): string
     /**
      * Returns the seat the device belongs to
      * @returns the device seat
@@ -14429,7 +14429,7 @@ interface InputDevice {
      * Gets the vendor ID of this device.
      * @returns the vendor ID
      */
-    get_vendor_id(): string | null
+    get_vendor_id(): string
     is_grouped(other_device: InputDevice): boolean
     is_mode_switch_button(group: number, button: number): boolean
 
@@ -14616,16 +14616,16 @@ interface InputFocus {
     set_content_purpose(purpose: InputContentPurpose): void
     set_cursor_location(rect: Graphene.Rect): void
     set_input_panel_state(state: InputPanelState): void
-    set_surrounding(text: string | null, cursor: number, anchor: number): void
+    set_surrounding(text: string, cursor: number, anchor: number): void
 
     // Own virtual methods of Clutter-10.Clutter.InputFocus
 
-    vfunc_commit_text(text: string | null): void
+    vfunc_commit_text(text: string): void
     vfunc_delete_surrounding(offset: number, len: number): void
     vfunc_focus_in(input_method: InputMethod): void
     vfunc_focus_out(): void
     vfunc_request_surrounding(): void
-    vfunc_set_preedit_text(preedit: string | null, cursor: number): void
+    vfunc_set_preedit_text(preedit: string, cursor: number): void
 
     // Class property signals of Clutter-10.Clutter.InputFocus
 
@@ -14721,7 +14721,7 @@ interface InputMethod {
 
     // Owm methods of Clutter-10.Clutter.InputMethod
 
-    commit(text: string | null): void
+    commit(text: string): void
     delete_surrounding(offset: number, len: number): void
     focus_in(focus: InputFocus): void
     focus_out(): void
@@ -14744,7 +14744,7 @@ interface InputMethod {
     vfunc_focus_out(): void
     vfunc_reset(): void
     vfunc_set_cursor_location(rect: Graphene.Rect): void
-    vfunc_set_surrounding(text: string | null, cursor: number, anchor: number): void
+    vfunc_set_surrounding(text: string, cursor: number, anchor: number): void
     vfunc_update_content_hints(hint: InputContentHintFlags): void
     vfunc_update_content_purpose(purpose: InputContentPurpose): void
 
@@ -15129,14 +15129,14 @@ class KeyframeTransition extends PropertyTransition {
      * @param property_name the property to animate
      * @returns the newly allocated   #ClutterKeyframeTransition instance. Use g_object_unref() when   done to free its resources.
      */
-    constructor(property_name: string | null) 
+    constructor(property_name: string) 
     /**
      * Creates a new #ClutterKeyframeTransition for `property_name`.
      * @constructor 
      * @param property_name the property to animate
      * @returns the newly allocated   #ClutterKeyframeTransition instance. Use g_object_unref() when   done to free its resources.
      */
-    static new(property_name: string | null): KeyframeTransition
+    static new(property_name: string): KeyframeTransition
 
     // Overloads of new
 
@@ -15308,7 +15308,7 @@ interface LayoutManager {
      * @param property_name the name of the property to get
      * @param value a #GValue with the value of the property to get
      */
-    child_get_property(container: Container, actor: Actor, property_name: string | null, value: any): void
+    child_get_property(container: Container, actor: Actor, property_name: string, value: any): void
     /**
      * Sets a property on the #ClutterLayoutMeta created by `manager` and
      * attached to a child of `container`
@@ -15317,14 +15317,14 @@ interface LayoutManager {
      * @param property_name the name of the property to set
      * @param value a #GValue with the value of the property to set
      */
-    child_set_property(container: Container, actor: Actor, property_name: string | null, value: any): void
+    child_set_property(container: Container, actor: Actor, property_name: string, value: any): void
     /**
      * Retrieves the #GParamSpec for the layout property `name` inside
      * the #ClutterLayoutMeta sub-class used by `manager`
      * @param name the name of the property
      * @returns a #GParamSpec describing the property,   or %NULL if no property with that name exists. The returned   #GParamSpec is owned by the layout manager and should not be   modified or freed
      */
-    find_child_property(name: string | null): GObject.ParamSpec
+    find_child_property(name: string): GObject.ParamSpec
     /**
      * Retrieves the #ClutterLayoutMeta that the layout `manager` associated
      * to the `actor` child of `container,` eventually by creating one if the
@@ -15864,7 +15864,7 @@ interface PaintNode {
      * static string, use clutter_paint_node_set_static_name() instead.
      * @param name a string annotating the `node`
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Releases a reference on `node`.
      */
@@ -16319,7 +16319,7 @@ interface Path {
      * @param str a string describing the new nodes
      * @returns %TRUE is the path description was valid or %FALSE otherwise.
      */
-    add_string(str: string | null): boolean
+    add_string(str: string): boolean
     /**
      * Removes all nodes from the path.
      */
@@ -16394,7 +16394,7 @@ interface Path {
      * @param str a string describing the path
      * @returns %TRUE is the path was valid, %FALSE otherwise.
      */
-    set_description(str: string | null): boolean
+    set_description(str: string): boolean
     /**
      * Add the nodes of the ClutterPath to the path in the Cairo context.
      * @param cr a Cairo context
@@ -16450,7 +16450,7 @@ class Path extends GObject.InitiallyUnowned {
      * @param desc a string describing the path
      * @returns the newly created #ClutterPath
      */
-    static new_with_description(desc: string | null): Path
+    static new_with_description(desc: string): Path
     _init(config?: Path.ConstructorProperties): void
 }
 
@@ -16666,7 +16666,7 @@ interface PropertyTransition extends Scriptable {
      * property.
      * @returns the name of the property being animated, or %NULL if   none is set. The returned string is owned by the @transition and   it should not be freed.
      */
-    get_property_name(): string | null
+    get_property_name(): string
     /**
      * Sets the #ClutterPropertyTransition:property-name property of `transition`.
      * @param property_name a property name
@@ -17003,13 +17003,13 @@ interface Script {
      * @param name the name of the object to retrieve
      * @returns the named object, or %NULL if no object   with the given name was available
      */
-    get_object(name: string | null): GObject.Object
+    get_object(name: string): GObject.Object
     /**
      * Retrieves the translation domain set using
      * clutter_script_set_translation_domain().
      * @returns the translation domain, if any is set,   or %NULL
      */
-    get_translation_domain(): string | null
+    get_translation_domain(): string
     /**
      * Looks up a type by name, using the virtual function that
      * #ClutterScript has for that purpose. This function should
@@ -17017,7 +17017,7 @@ interface Script {
      * @param type_name name of the type to look up
      * @returns the type for the requested type name, or   %G_TYPE_INVALID if not corresponding type was found.
      */
-    get_type_from_name(type_name: string | null): GObject.GType
+    get_type_from_name(type_name: string): GObject.GType
     /**
      * Retrieves all the objects created by `script`.
      * 
@@ -17033,28 +17033,28 @@ interface Script {
      * @param length the length of the buffer, or -1 if `data` is a NUL-terminated   buffer
      * @returns on error, zero is returned and @error is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with clutter_script_unmerge_objects().
      */
-    load_from_data(data: string | null, length: number): number
+    load_from_data(data: string, length: number): number
     /**
      * Loads the definitions from `filename` into `script` and merges with
      * the currently loaded ones, if any.
      * @param filename the full path to the definition file
      * @returns on error, zero is returned and @error is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with clutter_script_unmerge_objects().
      */
-    load_from_file(filename: string | null): number
+    load_from_file(filename: string): number
     /**
      * Loads the definitions from a resource file into `script` and merges with
      * the currently loaded ones, if any.
      * @param resource_path the resource path of the file to parse
      * @returns on error, zero is returned and @error is set   accordingly. On success, the merge id for the UI definitions is   returned. You can use the merge id with clutter_script_unmerge_objects().
      */
-    load_from_resource(resource_path: string | null): number
+    load_from_resource(resource_path: string): number
     /**
      * Looks up `filename` inside the search paths of `script`. If `filename`
      * is found, its full path will be returned .
      * @param filename the name of the file to lookup
      * @returns the full path of @filename or %NULL if no path was   found.
      */
-    lookup_filename(filename: string | null): string | null
+    lookup_filename(filename: string): string | null
     /**
      * Sets the translation domain for `script`.
      * @param domain the translation domain, or %NULL
@@ -17076,7 +17076,7 @@ interface Script {
      * @param type_name name of the type to look up
      * @returns the type for the requested type name, or   %G_TYPE_INVALID if not corresponding type was found.
      */
-    vfunc_get_type_from_name(type_name: string | null): GObject.GType
+    vfunc_get_type_from_name(type_name: string): GObject.GType
 
     // Class property signals of Clutter-10.Clutter.Script
 
@@ -18137,7 +18137,7 @@ interface ShaderEffect {
      * @param source the source of a GLSL shader
      * @returns %TRUE if the source was set
      */
-    set_shader_source(source: string | null): boolean
+    set_shader_source(source: string): boolean
     /**
      * Sets `value` as the payload for the uniform `name` inside the shader
      * effect
@@ -18152,7 +18152,7 @@ interface ShaderEffect {
      * @param name the name of the uniform to set
      * @param value a #GValue with the value of the uniform to set
      */
-    set_uniform_value(name: string | null, value: any): void
+    set_uniform_value(name: string, value: any): void
 
     // Own virtual methods of Clutter-10.Clutter.ShaderEffect
 
@@ -18620,7 +18620,7 @@ interface Stage extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * Gets the stage title.
      * @returns pointer to the title string for the stage. The returned string is owned by the actor and should not be modified or freed.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Grabs input onto a certain actor. Events will be propagated as
      * usual inside its hierarchy.
@@ -18678,7 +18678,7 @@ interface Stage extends Atk.ImplementorIface, Animatable, Container, Scriptable 
      * Sets the stage title.
      * @param title A utf8 string for the stage windows title.
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     update_device(device: InputDevice, sequence: EventSequence, point: Graphene.Point, time: number, new_actor: Actor, region: cairo.Region, emit_crossing: boolean): void
 
     // Own virtual methods of Clutter-10.Clutter.Stage
@@ -20088,7 +20088,7 @@ interface Text extends Atk.ImplementorIface, Animatable, Container, Scriptable {
      * Retrieves the font name as set by clutter_text_set_font_name().
      * @returns a string containing the font name. The returned   string is owned by the #ClutterText actor and should not be   modified or freed
      */
-    get_font_name(): string | null
+    get_font_name(): string
     get_input_hints(): InputContentHintFlags
     get_input_purpose(): InputContentPurpose
     /**
@@ -20186,7 +20186,7 @@ interface Text extends Atk.ImplementorIface, Animatable, Container, Scriptable {
      * an empty string, and not %NULL.
      * @returns the contents of the actor. The returned   string is owned by the #ClutterText actor and should never be modified   or freed
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Retrieves whether the contents of the #ClutterText actor should be
      * parsed for the Pango text markup.
@@ -20204,7 +20204,7 @@ interface Text extends Atk.ImplementorIface, Animatable, Container, Scriptable {
      * @param text the text to be inserted
      * @param position the position of the insertion, or -1
      */
-    insert_text(text: string | null, position: number): void
+    insert_text(text: string, position: number): void
     /**
      * Inserts `wc` at the current cursor position of a
      * #ClutterText actor.
@@ -20875,7 +20875,7 @@ class Text extends Actor {
      * @param color the color to be used to render `text`
      * @returns the newly created #ClutterText actor
      */
-    static new_full(font_name: string | null, text: string | null, color: Color): Text
+    static new_full(font_name: string, text: string, color: Color): Text
     /**
      * Creates a new entry with the specified text buffer.
      * @constructor 
@@ -20894,7 +20894,7 @@ class Text extends Actor {
      * @param text the contents of the actor
      * @returns the newly created #ClutterText actor
      */
-    static new_with_text(font_name: string | null, text: string | null): Text
+    static new_with_text(font_name: string | null, text: string): Text
     _init(config?: Text.ConstructorProperties): void
 }
 
@@ -20988,7 +20988,7 @@ interface TextBuffer {
      * @param chars text that was inserted
      * @param n_chars number of characters inserted
      */
-    emit_inserted_text(position: number, chars: string | null, n_chars: number): void
+    emit_inserted_text(position: number, chars: string, n_chars: number): void
     /**
      * Retrieves the length in bytes of the buffer.
      * See clutter_text_buffer_get_length().
@@ -21013,7 +21013,7 @@ interface TextBuffer {
      * unless this object emits a signal, or is finalized.
      * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the buffer and must not be freed, modified or      stored.
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Inserts `n_chars` characters of `chars` into the contents of the
      * buffer, at position `position`.
@@ -21029,7 +21029,7 @@ interface TextBuffer {
      * @param n_chars the length of the text in characters, or -1
      * @returns The number of characters actually inserted.
      */
-    insert_text(position: number, chars: string | null, n_chars: number): number
+    insert_text(position: number, chars: string, n_chars: number): number
     /**
      * Sets the maximum allowed length of the contents of the buffer. If
      * the current contents are longer than the given length, then they
@@ -21047,7 +21047,7 @@ interface TextBuffer {
      * @param chars the new text
      * @param n_chars the number of characters in `text,` or -1
      */
-    set_text(chars: string | null, n_chars: number): void
+    set_text(chars: string, n_chars: number): void
 
     // Own virtual methods of Clutter-10.Clutter.TextBuffer
 
@@ -21073,7 +21073,7 @@ interface TextBuffer {
      * @returns The number of characters in the buffer.
      */
     vfunc_get_length(): number
-    vfunc_get_text(n_bytes: number): string | null
+    vfunc_get_text(n_bytes: number): string
     /**
      * Inserts `n_chars` characters of `chars` into the contents of the
      * buffer, at position `position`.
@@ -21090,8 +21090,8 @@ interface TextBuffer {
      * @param n_chars the length of the text in characters, or -1
      * @returns The number of characters actually inserted.
      */
-    vfunc_insert_text(position: number, chars: string | null, n_chars: number): number
-    vfunc_inserted_text(position: number, chars: string | null, n_chars: number): void
+    vfunc_insert_text(position: number, chars: string, n_chars: number): number
+    vfunc_inserted_text(position: number, chars: string, n_chars: number): void
 
     // Own signals of Clutter-10.Clutter.TextBuffer
 
@@ -21522,7 +21522,7 @@ interface Timeline extends Scriptable {
      * @param marker_name the unique name for this marker
      * @param progress the normalized value of the position of the martke
      */
-    add_marker(marker_name: string | null, progress: number): void
+    add_marker(marker_name: string, progress: number): void
     /**
      * Adds a named marker that will be hit when the timeline has been
      * running for `msecs` milliseconds.
@@ -21539,7 +21539,7 @@ interface Timeline extends Scriptable {
      * @param marker_name the unique name for this marker
      * @param msecs position of the marker in milliseconds
      */
-    add_marker_at_time(marker_name: string | null, msecs: number): void
+    add_marker_at_time(marker_name: string, msecs: number): void
     /**
      * Advance timeline to the requested point. The point is given as a
      * time in milliseconds since the timeline started.
@@ -21559,7 +21559,7 @@ interface Timeline extends Scriptable {
      * `marker_name`.
      * @param marker_name the name of the marker
      */
-    advance_to_marker(marker_name: string | null): void
+    advance_to_marker(marker_name: string): void
     /**
      * Get the actor the timeline is associated with.
      * @returns the associated #ClutterActor
@@ -21656,7 +21656,7 @@ interface Timeline extends Scriptable {
      * @param marker_name the name of the marker
      * @returns %TRUE if the marker was found
      */
-    has_marker(marker_name: string | null): boolean
+    has_marker(marker_name: string): boolean
     /**
      * Queries state of a #ClutterTimeline.
      * @returns %TRUE if timeline is currently playing
@@ -21678,7 +21678,7 @@ interface Timeline extends Scriptable {
      * Removes `marker_name,` if found, from `timeline`.
      * @param marker_name the name of the marker to remove
      */
-    remove_marker(marker_name: string | null): void
+    remove_marker(marker_name: string): void
     /**
      * Rewinds #ClutterTimeline to the first frame if its direction is
      * %CLUTTER_TIMELINE_FORWARD and the last frame if it is
@@ -21819,7 +21819,7 @@ interface Timeline extends Scriptable {
     // Own virtual methods of Clutter-10.Clutter.Timeline
 
     vfunc_completed(): void
-    vfunc_marker_reached(marker_name: string | null, msecs: number): void
+    vfunc_marker_reached(marker_name: string, msecs: number): void
     vfunc_new_frame(msecs: number): void
     vfunc_paused(): void
     vfunc_started(): void
@@ -22913,10 +22913,10 @@ interface AnimatableInterface {
 
     // Own fields of Clutter-10.Clutter.AnimatableInterface
 
-    find_property: (animatable: Animatable, property_name: string | null) => GObject.ParamSpec
-    get_initial_state: (animatable: Animatable, property_name: string | null, value: any) => void
-    set_final_state: (animatable: Animatable, property_name: string | null, value: any) => void
-    interpolate_value: (animatable: Animatable, property_name: string | null, interval: Interval, progress: number) => [ /* returnType */ boolean, /* value */ any ]
+    find_property: (animatable: Animatable, property_name: string) => GObject.ParamSpec
+    get_initial_state: (animatable: Animatable, property_name: string, value: any) => void
+    set_final_state: (animatable: Animatable, property_name: string, value: any) => void
+    interpolate_value: (animatable: Animatable, property_name: string, interval: Interval, progress: number) => [ /* returnType */ boolean, /* value */ any ]
     get_actor: (animatable: Animatable) => Actor
 }
 
@@ -23514,7 +23514,7 @@ class Color {
      * @param str a string specifying a color
      * @returns %TRUE if parsing succeeded, and %FALSE otherwise
      */
-    static from_string(str: string | null): [ /* returnType */ boolean, /* color */ Color ]
+    static from_string(str: string): [ /* returnType */ boolean, /* color */ Color ]
     /**
      * Retrieves a static color for the given `color` name
      * 
@@ -24079,8 +24079,8 @@ interface InputFocusClass {
     focus_out: (focus: InputFocus) => void
     request_surrounding: (focus: InputFocus) => void
     delete_surrounding: (focus: InputFocus, offset: number, len: number) => void
-    commit_text: (focus: InputFocus, text: string | null) => void
-    set_preedit_text: (focus: InputFocus, preedit: string | null, cursor: number) => void
+    commit_text: (focus: InputFocus, text: string) => void
+    set_preedit_text: (focus: InputFocus, preedit: string, cursor: number) => void
 }
 
 abstract class InputFocusClass {
@@ -24099,7 +24099,7 @@ interface InputMethodClass {
     focus_out: (im: InputMethod) => void
     reset: (im: InputMethod) => void
     set_cursor_location: (im: InputMethod, rect: Graphene.Rect) => void
-    set_surrounding: (im: InputMethod, text: string | null, cursor: number, anchor: number) => void
+    set_surrounding: (im: InputMethod, text: string, cursor: number, anchor: number) => void
     update_content_hints: (im: InputMethod, hint: InputContentHintFlags) => void
     update_content_purpose: (im: InputMethod, purpose: InputContentPurpose) => void
     filter_key_event: (im: InputMethod, key: Event) => boolean
@@ -25205,7 +25205,7 @@ interface ScriptClass {
 
     // Own fields of Clutter-10.Clutter.ScriptClass
 
-    get_type_from_name: (script: Script, type_name: string | null) => GObject.GType
+    get_type_from_name: (script: Script, type_name: string) => GObject.GType
 }
 
 /**
@@ -25233,10 +25233,10 @@ interface ScriptableIface {
 
     // Own fields of Clutter-10.Clutter.ScriptableIface
 
-    set_id: (scriptable: Scriptable, id_: string | null) => void
-    get_id: (scriptable: Scriptable) => string | null
-    parse_custom_node: (scriptable: Scriptable, script: Script, value: any, name: string | null, node: Json.Node) => boolean
-    set_custom_property: (scriptable: Scriptable, script: Script, name: string | null, value: any) => void
+    set_id: (scriptable: Scriptable, id_: string) => void
+    get_id: (scriptable: Scriptable) => string
+    parse_custom_node: (scriptable: Scriptable, script: Script, value: any, name: string, node: Json.Node) => boolean
+    set_custom_property: (scriptable: Scriptable, script: Script, name: string, value: any) => void
 }
 
 /**
@@ -25569,11 +25569,11 @@ interface TextBufferClass {
 
     // Own fields of Clutter-10.Clutter.TextBufferClass
 
-    inserted_text: (buffer: TextBuffer, position: number, chars: string | null, n_chars: number) => void
+    inserted_text: (buffer: TextBuffer, position: number, chars: string, n_chars: number) => void
     deleted_text: (buffer: TextBuffer, position: number, n_chars: number) => void
-    get_text: (buffer: TextBuffer, n_bytes: number) => string | null
+    get_text: (buffer: TextBuffer, n_bytes: number) => string
     get_length: (buffer: TextBuffer) => number
-    insert_text: (buffer: TextBuffer, position: number, chars: string | null, n_chars: number) => number
+    insert_text: (buffer: TextBuffer, position: number, chars: string, n_chars: number) => number
     delete_text: (buffer: TextBuffer, position: number, n_chars: number) => number
 }
 
@@ -25682,7 +25682,7 @@ interface TimelineClass {
     completed: (timeline: Timeline) => void
     paused: (timeline: Timeline) => void
     new_frame: (timeline: Timeline, msecs: number) => void
-    marker_reached: (timeline: Timeline, marker_name: string | null, msecs: number) => void
+    marker_reached: (timeline: Timeline, marker_name: string, msecs: number) => void
     stopped: (timeline: Timeline, is_finished: boolean) => void
 }
 
@@ -26224,7 +26224,7 @@ class Units {
      * @param str the string to convert
      * @returns %TRUE if the string was successfully parsed,   and %FALSE otherwise
      */
-    static from_string(str: string | null): [ /* returnType */ boolean, /* units */ Units ]
+    static from_string(str: string): [ /* returnType */ boolean, /* units */ Units ]
 }
 
 interface VirtualInputDeviceClass {

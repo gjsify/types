@@ -173,7 +173,7 @@ export function utilGetVersion(): number
  * string format
  * @returns the version string
  */
-export function utilGetVersionString(): string | null
+export function utilGetVersionString(): string
 /**
  * Control whether the VNC code emits verbose debug
  * messages on stderr
@@ -881,7 +881,7 @@ export interface Connection {
      * been emitted
      * @returns the remote display name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get a specification of the current pixel format
      * @returns the current pixel format
@@ -980,7 +980,7 @@ export interface Connection {
      * @param port the service name or port number
      * @returns TRUE if a connection was opened, FALSE if already open
      */
-    openHost(host: string | null, port: string | null): boolean
+    openHost(host: string, port: string): boolean
     /**
      * Send a pointer event to the server, reflecting either movement
      * of the pointer, or a change in state of its buttons, or both.
@@ -1044,7 +1044,7 @@ export interface Connection {
      * @param data the value associated with the credential
      * @returns TRUE if the connection is ok, FALSE if it has an error
      */
-    setCredential(type: number, data: string | null): boolean
+    setCredential(type: number, data: string): boolean
     /**
      * Inform the server of the list of encodings that it is
      * allowed to send. This should be done before requesting
@@ -1091,15 +1091,15 @@ export interface Connection {
     vncAuthChooseSubtype(type: number, subtypes: GObject.ValueArray): void
     vncAuthChooseType(types: GObject.ValueArray): void
     vncAuthCredential(creds: GObject.ValueArray): void
-    vncAuthFailure(reason: string | null): void
+    vncAuthFailure(reason: string): void
     vncAuthUnsupported(authType: number): void
     vncBell(): void
     vncConnected(): void
     vncCursorChanged(cursor: Cursor): void
-    vncDesktopRename(name: string | null): void
+    vncDesktopRename(name: string): void
     vncDesktopResize(width: number, height: number): void
     vncDisconnected(): void
-    vncError(message: string | null): void
+    vncError(message: string): void
     vncFramebufferUpdate(x: number, y: number, width: number, height: number): void
     vncInitialized(): void
     vncLedState(): void
@@ -1306,7 +1306,7 @@ export interface Cursor {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Get the height of the cursor bitmap
      * @returns the height of the bitmap
@@ -1691,7 +1691,7 @@ export interface ConnectionClass {
     vncFramebufferUpdate: (conn: Connection, x: number, y: number, width: number, height: number) => void
     vncDesktopResize: (conn: Connection, width: number, height: number) => void
     vncPixelFormatChanged: (conn: Connection, format: PixelFormat) => void
-    vncAuthFailure: (conn: Connection, reason: string | null) => void
+    vncAuthFailure: (conn: Connection, reason: string) => void
     vncAuthUnsupported: (conn: Connection, authType: number) => void
     vncAuthCredential: (conn: Connection, creds: GObject.ValueArray) => void
     vncAuthChooseType: (conn: Connection, types: GObject.ValueArray) => void
@@ -1700,10 +1700,10 @@ export interface ConnectionClass {
     vncInitialized: (conn: Connection) => void
     vncDisconnected: (conn: Connection) => void
     vncLedState: (conn: Connection) => void
-    vncError: (conn: Connection, message: string | null) => void
+    vncError: (conn: Connection, message: string) => void
     vncPowerControlInitialized: (conn: Connection) => void
     vncPowerControlFailed: (conn: Connection) => void
-    vncDesktopRename: (conn: Connection, name: string | null) => void
+    vncDesktopRename: (conn: Connection, name: string) => void
     vncReserved: any[]
 }
 

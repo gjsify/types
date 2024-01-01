@@ -35,23 +35,23 @@ export namespace Gepub {
 /**
  * The book author.
  */
-const META_AUTHOR: string | null
+const META_AUTHOR: string
 /**
  * The book description.
  */
-const META_DESC: string | null
+const META_DESC: string
 /**
  * The book id.
  */
-const META_ID: string | null
+const META_ID: string
 /**
  * The book lang.
  */
-const META_LANG: string | null
+const META_LANG: string
 /**
  * The book title.
  */
-const META_TITLE: string | null
+const META_TITLE: string
 module Doc {
 
     // Constructor properties interface
@@ -80,18 +80,18 @@ interface Doc extends Gio.Initable {
 
     getCover(): string | null
     getCurrent(): any
-    getCurrentId(): string | null
+    getCurrentId(): string
     getCurrentMime(): string | null
     getCurrentPath(): string | null
     getCurrentWithEpubUris(): any
-    getMetadata(mdata: string | null): string | null
+    getMetadata(mdata: string): string | null
     getNPages(): number
     getPage(): number
-    getResource(path: string | null): any
-    getResourceById(id: string | null): any
-    getResourceMime(path: string | null): string | null
-    getResourceMimeById(id: string | null): string | null
-    getResourcePath(id: string | null): string | null
+    getResource(path: string): any
+    getResourceById(id: string): any
+    getResourceMime(path: string): string | null
+    getResourceMimeById(id: string): string | null
+    getResourcePath(id: string): string | null
     goNext(): boolean
     goPrev(): boolean
     /**
@@ -139,8 +139,8 @@ class Doc extends GObject.Object {
     // Constructors of Gepub-0.5.Gepub.Doc
 
     constructor(config?: Doc.ConstructorProperties) 
-    constructor(path: string | null) 
-    static new(path: string | null): Doc
+    constructor(path: string) 
+    static new(path: string): Doc
     _init(config?: Doc.ConstructorProperties): void
 }
 
@@ -189,13 +189,13 @@ interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -208,13 +208,13 @@ interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -227,7 +227,7 @@ interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -236,7 +236,7 @@ interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Gets the #WebKitSettings currently applied to `web_view`.
      * 
@@ -287,7 +287,7 @@ interface Widget extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 

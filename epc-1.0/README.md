@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/epc-1.0)
 
 
-GJS TypeScript type definitions for Epc-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+GJS TypeScript type definitions for Epc-1.0, generated from library version 1.0.0 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 The Easy Publish and Consume library (libepc) provides an easy method to publish data using HTTPS, announce that information via DNS-SD, find that information and finally consume it.
 

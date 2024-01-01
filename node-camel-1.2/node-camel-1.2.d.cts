@@ -1193,7 +1193,7 @@ export const BLOCK_SIZE_BITS: number
  * Name of the photo-filename property which can be stored
  * on a #CamelCipherCertInfo.
  */
-export const CIPHER_CERT_INFO_PROPERTY_PHOTO_FILENAME: string | null
+export const CIPHER_CERT_INFO_PROPERTY_PHOTO_FILENAME: string
 /**
  * A string containing a list of email addresses of all signers
  * including their alternative emails. Use camel_address_unformat()
@@ -1201,15 +1201,15 @@ export const CIPHER_CERT_INFO_PROPERTY_PHOTO_FILENAME: string | null
  * only on the first signer of the first validity, even the addresses
  * can belong to a different signer.
  */
-export const CIPHER_CERT_INFO_PROPERTY_SIGNERS_ALT_EMAILS: string | null
-export const DB_FILE: string | null
+export const CIPHER_CERT_INFO_PROPERTY_SIGNERS_ALT_EMAILS: string
+export const DB_FILE: string
 export const DB_FREE_CACHE_SIZE: number
-export const DB_IN_MEMORY_DB: string | null
-export const DB_IN_MEMORY_TABLE: string | null
+export const DB_IN_MEMORY_DB: string
+export const DB_IN_MEMORY_TABLE: string
 export const DB_IN_MEMORY_TABLE_LIMIT: number
 export const DB_SLEEP_INTERVAL: number
-export const DEBUG_IMAP: string | null
-export const DEBUG_IMAP_FOLDER: string | null
+export const DEBUG_IMAP: string
+export const DEBUG_IMAP_FOLDER: string
 export const DOT_LOCK_REFRESH: number
 export const EAI_ADDRFAMILY: number
 export const EAI_AGAIN: number
@@ -1227,7 +1227,7 @@ export const EAI_SYSTEM: number
  * This environment variable configures where the camel
  * provider modules are loaded from.
  */
-export const EDS_CAMEL_PROVIDER_DIR: string | null
+export const EDS_CAMEL_PROVIDER_DIR: string
 /**
  * The folder type bitshift value.
  */
@@ -1262,22 +1262,22 @@ export const NI_NOFQDN: number
 export const NI_NUMERICHOST: number
 export const NI_NUMERICSERV: number
 export const O_BINARY: number
-export const RECIPIENT_TYPE_BCC: string | null
-export const RECIPIENT_TYPE_CC: string | null
-export const RECIPIENT_TYPE_RESENT_BCC: string | null
-export const RECIPIENT_TYPE_RESENT_CC: string | null
-export const RECIPIENT_TYPE_RESENT_TO: string | null
-export const RECIPIENT_TYPE_TO: string | null
+export const RECIPIENT_TYPE_BCC: string
+export const RECIPIENT_TYPE_CC: string
+export const RECIPIENT_TYPE_RESENT_BCC: string
+export const RECIPIENT_TYPE_RESENT_CC: string
+export const RECIPIENT_TYPE_RESENT_TO: string
+export const RECIPIENT_TYPE_TO: string
 /**
  * Can be used with camel_session_addressbook_contains_sync() as the book UID,
  * meaning to check in all configured address books.
  */
-export const SESSION_BOOK_UID_ANY: string | null
+export const SESSION_BOOK_UID_ANY: string
 /**
  * Can be used with camel_session_addressbook_contains_sync() as the book UID,
  * meaning to check in all address books enabled for auto-completion.
  */
-export const SESSION_BOOK_UID_COMPLETION: string | null
+export const SESSION_BOOK_UID_COMPLETION: string
 /**
  * The folder store info type bitshift value.
  */
@@ -1287,11 +1287,11 @@ export const STORE_INFO_FOLDER_TYPE_BIT: number
  */
 export const STORE_INFO_FOLDER_TYPE_MASK: number
 export const STORE_INFO_FOLDER_UNKNOWN: number
-export const STORE_SETUP_ARCHIVE_FOLDER: string | null
-export const STORE_SETUP_DRAFTS_FOLDER: string | null
-export const STORE_SETUP_SENT_FOLDER: string | null
-export const STORE_SETUP_TEMPLATES_FOLDER: string | null
-export const UNMATCHED_NAME: string | null
+export const STORE_SETUP_ARCHIVE_FOLDER: string
+export const STORE_SETUP_DRAFTS_FOLDER: string
+export const STORE_SETUP_SENT_FOLDER: string
+export const STORE_SETUP_TEMPLATES_FOLDER: string
+export const UNMATCHED_NAME: string
 export const URL_HIDE_ALL: number
 export const URL_PART_AUTH: number
 export const URL_PART_HIDDEN: number
@@ -1304,8 +1304,8 @@ export const URL_PART_PORT: number
 export const URL_PART_USER: number
 export const UTILS_MAX_USER_HEADERS: number
 export const UUDECODE_STATE_MASK: number
-export const VJUNK_NAME: string | null
-export const VTRASH_NAME: string | null
+export const VJUNK_NAME: string
+export const VTRASH_NAME: string
 /**
  * Thread safe variant of g_object_bind_property(). See its documentation
  * for more information on arguments and return value.
@@ -1315,7 +1315,7 @@ export const VTRASH_NAME: string | null
  * @param targetProperty the property on `target` to bind
  * @param flags flags to pass to #GBinding
  */
-export function bindingBindProperty(source: GObject.Object, sourceProperty: string | null, target: GObject.Object, targetProperty: string | null, flags: GObject.BindingFlags): GObject.Binding
+export function bindingBindProperty(source: GObject.Object, sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags): GObject.Binding
 /**
  * Thread safe variant of g_object_bind_property_with_closures(). See its
  * documentation for more information on arguments and return value.
@@ -1328,14 +1328,14 @@ export function bindingBindProperty(source: GObject.Object, sourceProperty: stri
  * @param transformFrom a #GClosure wrapping the transformation function   from the `target` to the `source,` or %NULL to use the default
  * @returns the #GBinding instance representing the   binding between the two #GObject instances. The binding is released   whenever the #GBinding reference count reaches zero.
  */
-export function bindingBindPropertyFull(source: GObject.Object, sourceProperty: string | null, target: GObject.Object, targetProperty: string | null, flags: GObject.BindingFlags, transformTo: GObject.TClosure, transformFrom: GObject.TClosure): GObject.Binding
+export function bindingBindPropertyFull(source: GObject.Object, sourceProperty: string, target: GObject.Object, targetProperty: string, flags: GObject.BindingFlags, transformTo: GObject.TClosure, transformFrom: GObject.TClosure): GObject.Binding
 /**
  * Finds the minimum charset for this string NULL means US-ASCII.
  * @param in_ input text
  * @returns the minimum charset or NULL for US_ASCII.
  */
 export function charsetBest(in_: number[]): string | null
-export function charsetIsoToWindows(isocharset: string | null): string | null
+export function charsetIsoToWindows(isocharset: string): string
 export function cipherCanLoadPhotos(): boolean
 /**
  * Writes a part to a stream in a canonicalised format, suitable for signing/encrypting.
@@ -1354,7 +1354,7 @@ export function cipherCanonicalToStream(part: MimePart, flags: number, ostream: 
  * @param name a property name
  * @returns Value of a named property of the @cert_info,    or %NULL when no such property exists. The returned value is owned by    the @cert_info and is valid until the @cert_info is freed.
  */
-export function cipherCertinfoGetProperty(certInfo: CipherCertInfo, name: string | null): any | null
+export function cipherCertinfoGetProperty(certInfo: CipherCertInfo, name: string): any | null
 /**
  * Sets a named property `name` value `value` for the given `cert_info`.
  * If the `value` is %NULL, then the property is removed. With a non-%NULL
@@ -1364,10 +1364,10 @@ export function cipherCertinfoGetProperty(certInfo: CipherCertInfo, name: string
  * @param value a property value, or %NULL
  * @param valueClone a clone function for the `value`
  */
-export function cipherCertinfoSetProperty(certInfo: CipherCertInfo, name: string | null, value: any | null, valueClone: CipherCloneFunc | null): void
-export function contentDispositionDecode(in_: string | null): ContentDisposition
-export function contentTransferEncodingDecode(in_: string | null): string | null
-export function contentTypeDecode(in_: string | null): ContentType
+export function cipherCertinfoSetProperty(certInfo: CipherCertInfo, name: string, value: any | null, valueClone: CipherCloneFunc | null): void
+export function contentDispositionDecode(in_: string): ContentDisposition
+export function contentTransferEncodingDecode(in_: string): string | null
+export function contentTypeDecode(in_: string): ContentType
 /**
  * Check to see if a debug mode is activated.  `mode` takes one of two forms,
  * a fully qualified 'module:target', or a wildcard 'module' name.  It
@@ -1376,7 +1376,7 @@ export function contentTypeDecode(in_: string | null): ContentType
  * @param mode string name of the mode to check for
  * @returns Whether the debug @mode is activated
  */
-export function debug(mode: string | null): boolean
+export function debug(mode: string): boolean
 /**
  * Demangles `bt,` possibly got from camel_debug_get_raw_backtrace(), by
  * replacing addresses with actual function calls and eventually line numbers, if
@@ -1467,7 +1467,7 @@ export function debugRefUnrefPushBacktraceForObject(object: any | null): void
  * @param mode string name of the mode to start the debug for
  * @returns %TRUE if mode is set, and in which case, you must call camel_debug_end() when finished any screen output.
  */
-export function debugStart(mode: string | null): boolean
+export function debugStart(mode: string): boolean
 /**
  * Convert `in` from text/plain into text/enriched or text/richtext
  * based on `flags`.
@@ -1475,7 +1475,7 @@ export function debugStart(mode: string | null): boolean
  * @param flags flags specifying filter behaviour
  * @returns a newly allocated string containing the enriched or richtext version of @in.
  */
-export function enrichedToHtml(in_: string | null, flags: MimeFilterEnrichedFlags): string | null
+export function enrichedToHtml(in_: string, flags: MimeFilterEnrichedFlags): string | null
 export function errorQuark(): GLib.Quark
 /**
  * Retrieve a gint32.
@@ -1551,7 +1551,7 @@ export function fileUtilEncodeFixedInt32(out: any | null, value: number): number
  * @param len total-len of str to store
  * @returns 0 on success, -1 on error.
  */
-export function fileUtilEncodeFixedString(out: any | null, str: string | null, len: number): number
+export function fileUtilEncodeFixedString(out: any | null, str: string, len: number): number
 /**
  * Encode a gint64 type.
  * @param out file to output to
@@ -1579,7 +1579,7 @@ export function fileUtilEncodeOffT(out: any | null, value: number): number
  * @param str value to output
  * @returns 0 on success, -1 on error.
  */
-export function fileUtilEncodeString(out: any | null, str: string | null): number
+export function fileUtilEncodeString(out: any | null, str: string): number
 /**
  * Encode a time_t value to the file.
  * @param out file to output to
@@ -1600,7 +1600,7 @@ export function fileUtilEncodeUint32(out: any | null, value: number): number
  * @param name string to 'flattened' into a safe filename
  * @returns a safe filename string.
  */
-export function fileUtilSafeFilename(name: string | null): string | null
+export function fileUtilSafeFilename(name: string): string | null
 /**
  * Builds a pathname where the basename is of the form ".#" + the
  * basename of `filename,` for instance used in a two-stage commit file
@@ -1608,7 +1608,7 @@ export function fileUtilSafeFilename(name: string | null): string | null
  * @param filename a pathname
  * @returns The new pathname.  It must be free'd with g_free().
  */
-export function fileUtilSavename(filename: string | null): string | null
+export function fileUtilSavename(filename: string): string | null
 export function folderErrorQuark(): GLib.Quark
 /**
  * This takes an array of folders and attaches them together according
@@ -1624,7 +1624,7 @@ export function folderErrorQuark(): GLib.Quark
  * @param shortNames %TRUE if the (short) name of a folder is the part after the last `separator` in the full name. %FALSE if it is the full name.
  * @returns the top level of the tree of linked folder info.
  */
-export function folderInfoBuild(folders: FolderInfo[], namespace: string | null, separator: number, shortNames: boolean): FolderInfo
+export function folderInfoBuild(folders: FolderInfo[], namespace: string, separator: number, shortNames: boolean): FolderInfo
 /**
  * Frees a structure returned with camel_getaddrinfo(). It does
  * nothing when the `host` is %NULL.
@@ -1639,9 +1639,9 @@ export function freeaddrinfo(host: any | null): void
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns a newly allocated #addrinfo. Free it    with camel_freeaddrinfo() when done with it.
  */
-export function getaddrinfo(name: string | null, service: string | null, hints: any | null, cancellable: Gio.Cancellable | null): any | null
-export function headerAddressDecode(in_: string | null, charset: string | null): HeaderAddress
-export function headerAddressFold(in_: string | null, headerlen: number): string | null
+export function getaddrinfo(name: string, service: string, hints: any | null, cancellable: Gio.Cancellable | null): any | null
+export function headerAddressDecode(in_: string, charset: string): HeaderAddress
+export function headerAddressFold(in_: string, headerlen: number): string | null
 /**
  * TODO: Document me.
  * @param addrlistp a NULL-terminated list of #CamelHeaderAddress objects
@@ -1674,7 +1674,7 @@ export function headerAddressListFormat(addrlist: HeaderAddress[]): string | nul
  * @param in_ input string
  * @returns the extracted content-id
  */
-export function headerContentidDecode(in_: string | null): string | null
+export function headerContentidDecode(in_: string): string | null
 /**
  * Decodes the rfc822 date string and saves the GMT offset into
  * `tz_offset` if non-NULL.
@@ -1682,21 +1682,21 @@ export function headerContentidDecode(in_: string | null): string | null
  * @param tzOffset timezone offset
  * @returns the time_t representation of the date string specified by @str or (time_t) 0 on error. If @tz_offset is non-NULL, the value of the timezone offset will be stored.
  */
-export function headerDecodeDate(str: string | null, tzOffset: number): number
+export function headerDecodeDate(str: string, tzOffset: number): number
 /**
  * Extracts an integer token from `in` and updates the pointer to point
  * to after the end of the integer token (sort of like strtol).
  * @param in_ pointer to input string
  * @returns the gint value
  */
-export function headerDecodeInt(in_: string | null): number
+export function headerDecodeInt(in_: string): number
 /**
  * Decodes rfc2047 encoded-word tokens
  * @param in_ input header value string
  * @param defaultCharset default charset to use if improperly encoded
  * @returns a string containing the UTF-8 version of the decoded header value
  */
-export function headerDecodeString(in_: string | null, defaultCharset: string | null): string | null
+export function headerDecodeString(in_: string, defaultCharset: string): string | null
 /**
  * Encodes a 'phrase' header according to the rules in rfc2047.
  * @param in_ header to encode
@@ -1709,7 +1709,7 @@ export function headerEncodePhrase(in_: number): string | null
  * @returns the rfc2047 encoded header
  */
 export function headerEncodeString(in_: number): string | null
-export function headerFold(in_: string | null, headerlen: number): string | null
+export function headerFold(in_: string, headerlen: number): string | null
 /**
  * Decodes a header which contains rfc2047 encoded-word tokens that
  * may or may not be within a comment.
@@ -1717,7 +1717,7 @@ export function headerFold(in_: string | null, headerlen: number): string | null
  * @param defaultCharset default charset to use if improperly encoded
  * @returns a string containing the UTF-8 version of the decoded header value
  */
-export function headerFormatCtext(in_: string | null, defaultCharset: string | null): string | null
+export function headerFormatCtext(in_: string, defaultCharset: string): string | null
 /**
  * Allocates a string buffer containing the rfc822 formatted date
  * string represented by `time` and `tz_offset`.
@@ -1726,15 +1726,15 @@ export function headerFormatCtext(in_: string | null, defaultCharset: string | n
  * @returns a valid string representation of the date.
  */
 export function headerFormatDate(date: number, tzOffset: number): string | null
-export function headerLocationDecode(in_: string | null): string | null
-export function headerMailboxDecode(in_: string | null, charset: string | null): HeaderAddress
-export function headerMimeDecode(in_: string | null, maj: number, min: number): void
+export function headerLocationDecode(in_: string): string | null
+export function headerMailboxDecode(in_: string, charset: string): HeaderAddress
+export function headerMimeDecode(in_: string, maj: number, min: number): void
 /**
  * Extract a message-id token from `in`.
  * @param in_ input string
  * @returns the msg-id
  */
-export function headerMsgidDecode(in_: string | null): string | null
+export function headerMsgidDecode(in_: string): string | null
 /**
  * Either the `domain` is used, or the user's local hostname,
  * in case it's %NULL or empty.
@@ -1742,14 +1742,14 @@ export function headerMsgidDecode(in_: string | null): string | null
  * @returns Unique message ID.
  */
 export function headerMsgidGenerate(domain: string | null): string | null
-export function headerNewsgroupsDecode(in_: string | null): string[]
+export function headerNewsgroupsDecode(in_: string): string[]
 /**
  * Searches `params` for a param named `name` and gets the value.
  * @param params parameters
  * @param name name of param to find
  * @returns the value of the @name param
  */
-export function headerParam(params: any | null, name: string | null): string | null
+export function headerParam(params: any | null, name: string): string | null
 export function headerParamListDecode(in_: string | null): any | null
 export function headerParamListFormat(params: any | null): string | null
 export function headerParamListFormatAppend(out: GLib.String, params: any | null): void
@@ -1763,7 +1763,7 @@ export function headerParamListFree(params: any | null): void
  * @param in_ References header value
  * @returns a list of references decoedd from @in
  */
-export function headerReferencesDecode(in_: string | null): string[]
+export function headerReferencesDecode(in_: string): string[]
 /**
  * Set a parameter in the list.
  * @param paramsp poinetr to a list of params
@@ -1771,15 +1771,15 @@ export function headerReferencesDecode(in_: string | null): string[]
  * @param value value to set
  * @returns the set param
  */
-export function headerSetParam(paramsp: any | null, name: string | null, value: string | null): any | null
+export function headerSetParam(paramsp: any | null, name: string, value: string): any | null
 /**
  * Gets the first token in the string according to the rules of
  * rfc0822.
  * @param in_ input string
  * @returns a new string containing the first token in @in
  */
-export function headerTokenDecode(in_: string | null): string | null
-export function headerUnfold(in_: string | null): string | null
+export function headerTokenDecode(in_: string): string | null
+export function headerUnfold(in_: string): string | null
 /**
  * Searches for a mailing list information among known headers and returns
  * a newly allocated string with its value.
@@ -1803,12 +1803,12 @@ export function hostIdnaToAscii(host: string | null): string | null
  * @param hostname a host name
  * @returns %TRUE, when the @hostname should be converted to an ASCII equivalent,    %FALSE, when it can be shown as is.
  */
-export function hostnameUtilsRequiresAscii(hostname: string | null): boolean
-export function iconvCharsetLanguage(charset: string | null): string | null
-export function iconvCharsetName(charset: string | null): string | null
-export function iconvLocaleCharset(): string | null
-export function iconvLocaleLanguage(): string | null
-export function init(certdbDir: string | null, nssInit: boolean): number
+export function hostnameUtilsRequiresAscii(hostname: string): boolean
+export function iconvCharsetLanguage(charset: string): string
+export function iconvCharsetName(charset: string): string
+export function iconvLocaleCharset(): string
+export function iconvLocaleLanguage(): string
+export function init(certdbDir: string, nssInit: boolean): number
 /**
  * Converts the calendar time representation `tt` to a broken-down
  * time representation, stored in `tm,` and provides the offset in
@@ -1827,7 +1827,7 @@ export function localtimeWithOffset(tt: number, tm: any | null, offset: number):
  * @param path a path to lock
  * @returns -1 on error, sets @ex appropriately.
  */
-export function lockDot(path: string | null): number
+export function lockDot(path: string): number
 /**
  * Create a lock using fcntl(2).
  * 
@@ -1862,8 +1862,8 @@ export function lockFlock(fd: number, type: LockType): number
  * @param type Type of lock, CAMEL_LOCK_READ or CAMEL_LOCK_WRITE.
  * @returns -1 on error, @ex will describe the locking system that failed.
  */
-export function lockFolder(path: string | null, fd: number, type: LockType): number
-export function lockHelperLock(path: string | null): number
+export function lockFolder(path: string, fd: number, type: LockType): number
+export function lockHelperLock(path: string): number
 export function lockHelperUnlock(lockid: number): number
 /**
  * Like mktime(3), but assumes UTC instead of local timezone.
@@ -1880,7 +1880,7 @@ export function mktimeUtc(tm: any | null): number
  * @param dest destination file
  * @returns Returns -1 on error or 0 on success.
  */
-export function movemail(source: string | null, dest: string | null): number
+export function movemail(source: string, dest: string): number
 /**
  * Prints information about currently stored pointers
  * in the pointer tracker. This is called automatically
@@ -1902,7 +1902,7 @@ export function pointerTrackerDump(): void
  * @param ptr pointer to add to the pointer tracker
  * @param info info to print in tracker summary
  */
-export function pointerTrackerTrackWithInfo(ptr: any | null, info: string | null): void
+export function pointerTrackerTrackWithInfo(ptr: any | null, info: string): void
 /**
  * Removes pointer from the pointer tracker. It's an error to try
  * to remove pointer which was not added to the tracker by
@@ -1922,7 +1922,7 @@ export function pointerTrackerUntrack(ptr: any | null): void
  * @param protocol a #CamelProvider protocol name
  * @returns a #CamelProvider for @protocol, or %NULL on error
  */
-export function providerGet(protocol: string | null): Provider
+export function providerGet(protocol: string): Provider
 /**
  * Initialize the Camel provider system by reading in the .urls
  * files in the provider directory and creating a hash table mapping
@@ -1953,7 +1953,7 @@ export function providerList(load: boolean): Provider[]
  * @param path the path to a shared library
  * @returns %TRUE on success, %FALSE on failure
  */
-export function providerLoad(path: string | null): boolean
+export function providerLoad(path: string): boolean
 export function providerModuleInit(): void
 /**
  * Add `string` to the pool.
@@ -2047,10 +2047,10 @@ export function quotedEncodeStep(in_: number[], out: number[], save: number[]): 
  * @returns number of bytes read or -1 on fail. On failure, errno will be set appropriately.
  */
 export function read(fd: number, buf: string | null, n: number, cancellable: Gio.Cancellable | null): number
-export function searchCamelHeaderSoundex(header: string | null, match: string | null): boolean
+export function searchCamelHeaderSoundex(header: string, match: string): boolean
 export function searchGetAllHeadersDecoded(message: MimeMessage): string | null
-export function searchGetDefaultCharsetFromHeaders(headers: NameValueArray): string | null
-export function searchGetDefaultCharsetFromMessage(message: MimeMessage): string | null
+export function searchGetDefaultCharsetFromHeaders(headers: NameValueArray): string
+export function searchGetDefaultCharsetFromMessage(message: MimeMessage): string
 /**
  * Decodes `header_value,` if needed, either from an address header
  * or the Subject header. Other `header_name` headers are returned
@@ -2060,10 +2060,10 @@ export function searchGetDefaultCharsetFromMessage(message: MimeMessage): string
  * @param defaultCharset the default charset to use for the decode, or %NULL
  * @returns decoded header value, suitable for text comparison.    Free the returned pointer with g_free() when done with it.
  */
-export function searchGetHeaderDecoded(headerName: string | null, headerValue: string | null, defaultCharset: string | null): string | null
+export function searchGetHeaderDecoded(headerName: string, headerValue: string, defaultCharset: string | null): string | null
 export function searchGetHeadersDecoded(headers: NameValueArray, defaultCharset: string | null): string | null
-export function searchHeaderIsAddress(headerName: string | null): boolean
-export function searchHeaderMatch(value: string | null, match: string | null, how: _search_match_t, type: _search_t, defaultCharset: string | null): boolean
+export function searchHeaderIsAddress(headerName: string): boolean
+export function searchHeaderMatch(value: string, match: string, how: _search_match_t, type: _search_t, defaultCharset: string): boolean
 export function searchWordsFree(words: any | null): void
 export function searchWordsSimple(words: any | null): any | null
 export function searchWordsSplit(in_: number): any | null
@@ -2076,14 +2076,14 @@ export function storeErrorQuark(): GLib.Quark
  * @param info a #CamelStoreInfo
  * @returns the last segment of the path string from @info
  */
-export function storeInfoName(summary: StoreSummary, info: StoreInfo): string | null
+export function storeInfoName(summary: StoreSummary, info: StoreInfo): string
 /**
  * Returns the path string from `info`.
  * @param summary a #CamelStoreSummary
  * @param info a #CamelStoreInfo
  * @returns the path string from @info
  */
-export function storeInfoPath(summary: StoreSummary, info: StoreInfo): string | null
+export function storeInfoPath(summary: StoreSummary, info: StoreInfo): string
 /**
  * Set a specific string on the `info`.
  * @param summary a #CamelStoreSummary object
@@ -2091,20 +2091,20 @@ export function storeInfoPath(summary: StoreSummary, info: StoreInfo): string | 
  * @param type specific string being set
  * @param value string value to set
  */
-export function storeInfoSetString(summary: StoreSummary, info: StoreInfo, type: number, value: string | null): void
+export function storeInfoSetString(summary: StoreSummary, info: StoreInfo, type: number, value: string): void
 export function strcaseEqual(a: any | null, b: any | null): number
 export function strcaseHash(v: any | null): number
-export function strdown(str: string | null): string | null
+export function strdown(str: string | null): string
 export function stringIsAllAscii(str: string | null): boolean
-export function strstrcase(haystack: string | null, needle: string | null): string | null
-export function systemFlag(name: string | null): MessageFlags
+export function strstrcase(haystack: string, needle: string): string | null
+export function systemFlag(name: string): MessageFlags
 /**
  * Find the state of the flag `name` in `flags`.
  * @param flags bitwise system flags
  * @param name name of the flag to check for
  * @returns %TRUE if the named flag is set or %FALSE otherwise
  */
-export function systemFlagGet(flags: MessageFlags, name: string | null): boolean
+export function systemFlagGet(flags: MessageFlags, name: string): boolean
 /**
  * Convert `in` from plain text into HTML.
  * @param in_ input text
@@ -2112,7 +2112,7 @@ export function systemFlagGet(flags: MessageFlags, name: string | null): boolean
  * @param color color to use when syntax highlighting
  * @returns a newly allocated string containing the HTMLified version of @in
  */
-export function textToHtml(in_: string | null, flags: MimeFilterToHTMLFlags, color: number): string | null
+export function textToHtml(in_: string, flags: MimeFilterToHTMLFlags, color: number): string | null
 /**
  * Applies the given time `value` in unit `unit` to the `src_time`.
  * Use negative value to subtract it. The time part is rounded
@@ -2123,15 +2123,15 @@ export function textToHtml(in_: string | null, flags: MimeFilterToHTMLFlags, col
  * @returns @src_time modified by the given parameters as date, with    the time part being beginning of the day.
  */
 export function timeValueApply(srcTime: number, unit: TimeUnit, value: number): number
-export function transferEncodingFromString(string: string | null): TransferEncoding
-export function transferEncodingToString(encoding: TransferEncoding): string | null
+export function transferEncodingFromString(string: string): TransferEncoding
+export function transferEncodingToString(encoding: TransferEncoding): string
 /**
  * Convert a ucs2 string into a UTF-8 one. The ucs2 string is treated
  * as network byte ordered, and terminated with a 16-bit %NULL.
  * @param ptr a ucs2 string to convert
  * @returns The converted string. Free it with g_free(),    when no longer needed.
  */
-export function ucs2Utf8(ptr: string | null): string | null
+export function ucs2Utf8(ptr: string): string | null
 /**
  * Frees the array of UIDs.
  * @param uids an array returned from camel_uid_cache_get_new_uids()
@@ -2143,7 +2143,7 @@ export function uidCacheFreeUids(uids: string[]): void
  * The function does nothing, when dot locking had not been compiled.
  * @param path a path to unlock
  */
-export function unlockDot(path: string | null): void
+export function unlockDot(path: string): void
 /**
  * Unlock an fcntl lock.
  * 
@@ -2163,9 +2163,9 @@ export function unlockFlock(fd: number): void
  * @param path Filename of folder.
  * @param fd Open descrptor on which locks were placed.
  */
-export function unlockFolder(path: string | null, fd: number): void
-export function urlAddrspecEnd(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-export function urlAddrspecStart(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
+export function unlockFolder(path: string, fd: number): void
+export function urlAddrspecEnd(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+export function urlAddrspecStart(in_: string, pos: string, inend: string, match: UrlMatch): boolean
 /**
  * &percnt;-decodes the passed-in URL *in place*. The decoded version is
  * never longer than the encoded version, so there does not need to
@@ -2173,7 +2173,7 @@ export function urlAddrspecStart(in_: string | null, pos: string | null, inend: 
  * @param part a URL part
  */
 export function urlDecode(part: string | null): void
-export function urlDecodePath(path: string | null): string | null
+export function urlDecodePath(path: string): string | null
 /**
  * This &percnt;-encodes the given URL part and returns the escaped version
  * in allocated memory, which the caller must free when it is done.
@@ -2181,12 +2181,12 @@ export function urlDecodePath(path: string | null): string | null
  * @param escapeExtra additional characters beyond " \"%#<>{}|\^[]`" to escape (or %NULL)
  * @returns the encoded string
  */
-export function urlEncode(part: string | null, escapeExtra: string | null): string | null
-export function urlFileEnd(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-export function urlFileStart(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-export function urlWebEnd(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-export function urlWebStart(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-export function ustrstrcase(haystack: string | null, needle: string | null): string | null
+export function urlEncode(part: string, escapeExtra: string | null): string | null
+export function urlFileEnd(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+export function urlFileStart(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+export function urlWebEnd(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+export function urlWebStart(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+export function ustrstrcase(haystack: string, needle: string): string
 /**
  * Convert a modified UTF-7 string to UTF-8.  If the UTF-7 string
  * contains 8 bit characters, they are treated as iso-8859-1.
@@ -2195,7 +2195,7 @@ export function ustrstrcase(haystack: string | null, needle: string | null): str
  * @param ptr a UTF-7 string to convert
  * @returns The converted string. Free it with g_free(),    when no longer needed.
  */
-export function utf7Utf8(ptr: string | null): string | null
+export function utf7Utf8(ptr: string): string | null
 /**
  * Get a Unicode character from a UTF-8 stream.  `ptr` will be advanced
  * to the next character position.  Invalid utf8 characters will be
@@ -2221,7 +2221,7 @@ export function utf8GetcLimit(ptr: number, end: number): [ /* returnType */ numb
  * @param text a text to make valid
  * @returns Valid UTF-8 string, with replaced incorrect letters.    Free it with g_free(), when no longer needed.
  */
-export function utf8MakeValid(text: string | null): string | null
+export function utf8MakeValid(text: string): string | null
 /**
  * Ensures the returned text will be valid UTF-8 string, with incorrect letters
  * changed to question marks.
@@ -2229,7 +2229,7 @@ export function utf8MakeValid(text: string | null): string | null
  * @param textLen length of the `text,` or -1 if NUL-terminated
  * @returns Valid UTF-8 string, with replaced incorrect letters.    Free it with g_free(), when no longer needed.
  */
-export function utf8MakeValidLen(text: string | null, textLen: number): string | null
+export function utf8MakeValidLen(text: string, textLen: number): string | null
 /**
  * Output a 32 bit unicode character as UTF-8 octets.  At most 4 octets will
  * be written to `ptr`. The `ptr` will be advanced to the next character position.
@@ -2243,7 +2243,7 @@ export function utf8Putc(ptr: number, c: number): /* ptr */ number
  * @param ptr a UTF-8 string to convert
  * @returns The converted string. Free it with g_free(),    when no longer needed.
  */
-export function utf8Ucs2(ptr: string | null): string | null
+export function utf8Ucs2(ptr: string): string | null
 /**
  * Convert a UTF-8 string to a modified UTF-7 format.
  * 
@@ -2251,7 +2251,7 @@ export function utf8Ucs2(ptr: string | null): string | null
  * @param ptr a UTF-8 string to convert
  * @returns The converted string. Free it with g_free(),    when no longer needed.
  */
-export function utf8Utf7(ptr: string | null): string | null
+export function utf8Utf7(ptr: string): string | null
 /**
  * Reads a numeric data from the `bdata_ptr` and moves the `bdata_ptr`
  * after that number. If the number cannot be read, then the `default_value`
@@ -2271,7 +2271,7 @@ export function utilBdataGetNumber(bdataPtr: string | null, defaultValue: number
  * @param defaultValue a value to return, when no data can be read
  * @returns Newly allocated string, which was read, or    dupped the @default_value, if the @bdata_ptr doesn't point to a string.    Free returned pointer with g_free() when done with it.
  */
-export function utilBdataGetString(bdataPtr: string | null, defaultValue: string | null): string | null
+export function utilBdataGetString(bdataPtr: string | null, defaultValue: string): string | null
 /**
  * Puts the number `value` at the end of the `bdata_str`. In case the `bdata_str`
  * is not empty a space is added before the numeric `value`. The stored value
@@ -2289,7 +2289,7 @@ export function utilBdataPutNumber(bdataStr: GLib.String, value: number): void
  * @param bdataStr a #GString to store a backend specific data (bdata)
  * @param value a value to store
  */
-export function utilBdataPutString(bdataStr: GLib.String, value: string | null): void
+export function utilBdataPutString(bdataStr: GLib.String, value: string): void
 /**
  * Decode the values previously encoded by camel_util_encode_user_header_setting().
  * The `out_header_name` points to the `setting_value,` thus it's valid as long
@@ -2303,7 +2303,7 @@ export function utilBdataPutString(bdataStr: GLib.String, value: string | null):
  * be used as the display name.
  * @param settingValue the value to decode
  */
-export function utilDecodeUserHeaderSetting(settingValue: string | null): [ /* outDisplayName */ string | null, /* outHeaderName */ string | null ]
+export function utilDecodeUserHeaderSetting(settingValue: string): [ /* outDisplayName */ string | null, /* outHeaderName */ string ]
 /**
  * Encode the optional `display_name` and the `header_name` to a value suitable
  * for GSettings schema org.gnome.evolution-data-server and key camel-message-info-user-headers.
@@ -2313,7 +2313,7 @@ export function utilDecodeUserHeaderSetting(settingValue: string | null): [ /* o
  * @param headerName the header name
  * @returns a newly allocated string with encoded @display_name    and @header_name
  */
-export function utilEncodeUserHeaderSetting(displayName: string | null, headerName: string | null): string | null
+export function utilEncodeUserHeaderSetting(displayName: string | null, headerName: string): string | null
 /**
  * Fill `info` 's user-headers with the user-defined headers from
  * the `headers` array.
@@ -2339,7 +2339,7 @@ export function utilFillMessageInfoUserHeaders(info: MessageInfo, headers: NameV
  * @param withModulesDir whether to add also the modules directory
  * @returns a %GPtrArray    with paths to use, including the @main_path. Free it with    g_ptr_array_unref(), when no longer needed.
  */
-export function utilGetDirectoryVariants(mainPath: string | null, replacePrefix: string | null, withModulesDir: boolean): string[]
+export function utilGetDirectoryVariants(mainPath: string, replacePrefix: string, withModulesDir: boolean): string[]
 /**
  * Checks whether the domain in the `email_address` requires
  * conversion to ASCII and if it does it also converts it.
@@ -2409,7 +2409,7 @@ export function uuencodeStep(in_: number[], out: number[], uubuf: number[], save
  * @param cancellable optional #GCancellable object, or %NULL
  * @returns number of bytes written or -1 on fail. On failure, errno will be set appropriately.
  */
-export function write(fd: number, buf: string | null, n: number, cancellable: Gio.Cancellable | null): number
+export function write(fd: number, buf: string, n: number, cancellable: Gio.Cancellable | null): number
 /**
  * Performs a 'decode step' on a chunk of yEncoded data of length
  * `inlen` pointed to by `in` and writes to `out`. Assumes the =ybegin
@@ -2491,16 +2491,16 @@ export interface DBSelectCB {
  * @returns %TRUE, to delete the file, %FALSE to keep in in the cache
  */
 export interface DataCacheRemoveFunc {
-    (cdc: DataCache, filename: string | null): boolean
+    (cdc: DataCache, filename: string): boolean
 }
 export interface FilterPlaySoundFunc {
-    (driver: FilterDriver, filename: string | null): void
+    (driver: FilterDriver, filename: string): void
 }
 export interface FilterShellFunc {
     (driver: FilterDriver, argc: number, argv: string | null): void
 }
 export interface FilterStatusFunc {
-    (driver: FilterDriver, status: any | null, pc: number, desc: string | null): void
+    (driver: FilterDriver, status: any | null, pc: number, desc: string): void
 }
 export interface FilterSystemBeepFunc {
     (driver: FilterDriver): void
@@ -2526,7 +2526,7 @@ export interface ForeachPartFunc {
     (message: MimeMessage, part: MimePart, parentPart: MimePart | null): boolean
 }
 export interface IndexNorm {
-    (index: Index, word: string | null): string | null
+    (index: Index, word: string): string | null
 }
 /**
  * This is the callback signature for camel_message_content_info_traverse().
@@ -2559,10 +2559,10 @@ export interface SessionCallback {
     (session: Session, cancellable: Gio.Cancellable | null): void
 }
 export interface TextIndexFunc {
-    (idx: TextIndex, word: string | null, buffer: string | null): void
+    (idx: TextIndex, word: string, buffer: string | null): void
 }
 export interface UrlScanFunc {
-    (in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
+    (in_: string, pos: string, inend: string, match: UrlMatch): boolean
 }
 export module JunkFilter {
 
@@ -3230,7 +3230,7 @@ export interface NetworkSettings extends Settings {
      * Returns the host name used to authenticate to a network service.
      * @returns the host name of a network service
      */
-    getHost(): string | null
+    getHost(): string
     /**
      * Returns the port number used to authenticate to a network service.
      * @returns the port number of a network service
@@ -3246,7 +3246,7 @@ export interface NetworkSettings extends Settings {
      * Returns the user name used to authenticate to a network service.
      * @returns the user name of a network service
      */
-    getUser(): string | null
+    getUser(): string
     /**
      * Sets the mechanism name used to authenticate to a network service.
      * Often this refers to a SASL mechanism such as "LOGIN" or "GSSAPI".
@@ -3373,7 +3373,7 @@ export interface Subscribable extends Store {
 
     // Owm methods of Camel-1.2.Camel.Subscribable
 
-    // Has conflict: folderIsSubscribed(folderName: string | null): boolean
+    // Has conflict: folderIsSubscribed(folderName: string): boolean
     // Has conflict: folderSubscribed(folderInfo: FolderInfo): void
     // Has conflict: folderUnsubscribed(folderInfo: FolderInfo): void
     /**
@@ -3387,14 +3387,14 @@ export interface Subscribable extends Store {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    subscribeFolder(folderName: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    subscribeFolder(folderName: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_subscribable_subscribe_folder().
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
     subscribeFolderFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: subscribeFolderSync(folderName: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: subscribeFolderSync(folderName: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously unsubscribes from the folder described by `folder_name`.
      * 
@@ -3406,14 +3406,14 @@ export interface Subscribable extends Store {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    unsubscribeFolder(folderName: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    unsubscribeFolder(folderName: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_subscribable_unsubscribe_folder().
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
     unsubscribeFolderFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: unsubscribeFolderSync(folderName: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: unsubscribeFolderSync(folderName: string, cancellable: Gio.Cancellable | null): boolean
 
     // Own virtual methods of Camel-1.2.Camel.Subscribable
 
@@ -3423,7 +3423,7 @@ export interface Subscribable extends Store {
      * @param folderName full path of the folder
      * @returns %TRUE if the folder has been subscribed to or %FALSE otherwise
      */
-    folderIsSubscribed(folderName: string | null): boolean
+    folderIsSubscribed(folderName: string): boolean
     /**
      * Emits the #CamelSubscribable::folder-subscribed signal from an idle source
      * on the main loop.  The idle source's priority is #G_PRIORITY_HIGH_IDLE.
@@ -3449,7 +3449,7 @@ export interface Subscribable extends Store {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    subscribeFolderSync(folderName: string | null, cancellable: Gio.Cancellable | null): boolean
+    subscribeFolderSync(folderName: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Unsubscribes from the folder described by `folder_name`.
      * @virtual 
@@ -3457,7 +3457,7 @@ export interface Subscribable extends Store {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    unsubscribeFolderSync(folderName: string | null, cancellable: Gio.Cancellable | null): boolean
+    unsubscribeFolderSync(folderName: string, cancellable: Gio.Cancellable | null): boolean
 
     // Own signals of Camel-1.2.Camel.Subscribable
 
@@ -3631,7 +3631,7 @@ export interface Address {
      * @returns the number of addresses copied
      */
     copy(source: Address): number
-    // Has conflict: decode(raw: string | null): number
+    // Has conflict: decode(raw: string): number
     // Has conflict: encode(): string | null
     // Has conflict: format(): string | null
     // Has conflict: length(): number
@@ -3641,7 +3641,7 @@ export interface Address {
      */
     newClone(): Address
     // Has conflict: remove(index: number): void
-    // Has conflict: unformat(raw: string | null): number
+    // Has conflict: unformat(raw: string): number
 
     // Own virtual methods of Camel-1.2.Camel.Address
 
@@ -3659,7 +3659,7 @@ export interface Address {
      * @param raw raw address description
      * @returns the number of addresses parsed or -1 on fail
      */
-    decode(raw: string | null): number
+    decode(raw: string): number
     /**
      * Encode an address in a format suitable for a raw header.
      * @virtual 
@@ -3691,7 +3691,7 @@ export interface Address {
      * @param raw raw address description
      * @returns the number of addresses parsed or -1 on fail
      */
-    unformat(raw: string | null): number
+    unformat(raw: string): number
 
     // Class property signals of Camel-1.2.Camel.Address
 
@@ -3781,7 +3781,7 @@ export interface BlockFile {
      * @param path path with filename to rename to
      * @returns 0 on success, -1 on error; errno is set on failure
      */
-    rename(path: string | null): number
+    rename(path: string): number
     /**
      * Sets a new block cache limit for `bs`.
      * @param blockCacheLimit a new block cache limit to set
@@ -3857,7 +3857,7 @@ export class BlockFile extends GObject.Object {
      * @param blockSize block size, currently ignored
      * @returns The new block file, or %NULL if it could not be created.
      */
-    constructor(path: string | null, flags: number, version: string | null, blockSize: number) 
+    constructor(path: string, flags: number, version: string, blockSize: number) 
     /**
      * Allocate a new block file, stored at `path`.  `version` contains an 8 character
      * version string which must match the head of the file, or the file will be
@@ -3871,7 +3871,7 @@ export class BlockFile extends GObject.Object {
      * @param blockSize block size, currently ignored
      * @returns The new block file, or %NULL if it could not be created.
      */
-    static new(path: string | null, flags: number, version: string | null, blockSize: number): BlockFile
+    static new(path: string, flags: number, version: string, blockSize: number): BlockFile
     _init(config?: BlockFile.ConstructorProperties): void
 }
 
@@ -3898,7 +3898,7 @@ export interface CertDB {
     // Owm methods of Camel-1.2.Camel.CertDB
 
     clear(): void
-    getHost(hostname: string | null, fingerprint: string | null): Cert | null
+    getHost(hostname: string, fingerprint: string): Cert | null
     /**
      * Gathers a list of known certificates. Each certificate in the returned #GSList
      * is referenced, thus unref it with camel_cert_unref() when done with it, the same
@@ -3919,10 +3919,10 @@ export interface CertDB {
      * @param hostname a host name of a certificate
      * @param fingerprint a fingerprint of a certificate
      */
-    removeHost(hostname: string | null, fingerprint: string | null): void
+    removeHost(hostname: string, fingerprint: string): void
     save(): number
     setDefault(): void
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     touch(): void
 
     // Own virtual methods of Camel-1.2.Camel.CertDB
@@ -4038,8 +4038,8 @@ export interface CipherContext {
     encryptFinish(result: Gio.AsyncResult): boolean
     // Has conflict: encryptSync(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
     getSession(): Session | null
-    // Has conflict: hashToId(hash: CipherHash): string | null
-    // Has conflict: idToHash(id: string | null): CipherHash
+    // Has conflict: hashToId(hash: CipherHash): string
+    // Has conflict: idToHash(id: string): CipherHash
     /**
      * Asynchronously converts the (unsigned) part `ipart` into a new
      * self-contained MIME part `opart`.  This may be a multipart/signed part,
@@ -4055,14 +4055,14 @@ export interface CipherContext {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    sign(userid: string | null, hash: CipherHash, ipart: MimePart, opart: MimePart, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sign(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_cipher_context_sign().
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
     signFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: signSync(userid: string | null, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: signSync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously verifies the signature.
      * 
@@ -4107,8 +4107,8 @@ export interface CipherContext {
      * @returns %TRUE on success, %FALSE on error
      */
     encryptSync(userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
-    hashToId(hash: CipherHash): string | null
-    idToHash(id: string | null): CipherHash
+    hashToId(hash: CipherHash): string
+    idToHash(id: string): CipherHash
     /**
      * Converts the (unsigned) part `ipart` into a new self-contained MIME
      * part `opart`.  This may be a multipart/signed part, or a simple part
@@ -4121,7 +4121,7 @@ export interface CipherContext {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    signSync(userid: string | null, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
+    signSync(userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null): boolean
     /**
      * Verifies the signature.
      * @virtual 
@@ -4207,7 +4207,7 @@ export interface DB {
      * @param query an SQL (SQLite) statement
      * @returns 0 on success, -1 on error
      */
-    addToTransaction(query: string | null): number
+    addToTransaction(query: string): number
     /**
      * Begins transaction. End it with camel_db_end_transaction() or camel_db_abort_transaction().
      * @returns 0 on success, -1 on error
@@ -4219,57 +4219,57 @@ export interface DB {
      * @param folderName full name of the folder
      * @returns 0 on success, -1 on error
      */
-    clearFolderSummary(folderName: string | null): number
+    clearFolderSummary(folderName: string): number
     /**
      * Executes an SQLite command.
      * @param stmt an SQL (SQLite) statement to execute
      * @returns 0 on success, -1 on error
      */
-    command(stmt: string | null): number
+    command(stmt: string): number
     /**
      * Counts how many deleted messages is stored in the given table.
      * @param tableName name of the table
      * @returns 0 on success, -1 on error
      */
-    countDeletedMessageInfo(tableName: string | null): [ /* returnType */ number, /* count */ number ]
+    countDeletedMessageInfo(tableName: string): [ /* returnType */ number, /* count */ number ]
     /**
      * Counts how many junk messages is stored in the given table.
      * @param tableName name of the table
      * @returns 0 on success, -1 on error
      */
-    countJunkMessageInfo(tableName: string | null): [ /* returnType */ number, /* count */ number ]
-    countJunkNotDeletedMessageInfo(tableName: string | null, count: number): number
+    countJunkMessageInfo(tableName: string): [ /* returnType */ number, /* count */ number ]
+    countJunkNotDeletedMessageInfo(tableName: string, count: number): number
     /**
      * Executes a COUNT() query (like "SELECT COUNT(*) FROM table") and provides
      * the result of it as an unsigned 32-bit integer.
      * @param query a COUNT() query
      * @returns 0 on success, -1 on error
      */
-    countMessageInfo(query: string | null): [ /* returnType */ number, /* count */ number ]
+    countMessageInfo(query: string): [ /* returnType */ number, /* count */ number ]
     /**
      * Counts how many messages is stored in the given table.
      * @param tableName name of the table
      * @returns 0 on success, -1 on error
      */
-    countTotalMessageInfo(tableName: string | null): [ /* returnType */ number, /* count */ number ]
+    countTotalMessageInfo(tableName: string): [ /* returnType */ number, /* count */ number ]
     /**
      * Counts how many unread messages is stored in the given table.
      * @param tableName name of the table
      * @returns 0 on success, -1 on error
      */
-    countUnreadMessageInfo(tableName: string | null): [ /* returnType */ number, /* count */ number ]
+    countUnreadMessageInfo(tableName: string): [ /* returnType */ number, /* count */ number ]
     /**
      * Counts how many visible (not deleted and not junk) messages is stored in the given table.
      * @param tableName name of the table
      * @returns 0 on success, -1 on error
      */
-    countVisibleMessageInfo(tableName: string | null): [ /* returnType */ number, /* count */ number ]
+    countVisibleMessageInfo(tableName: string): [ /* returnType */ number, /* count */ number ]
     /**
      * Counts how many visible (not deleted and not junk) and unread messages is stored in the given table.
      * @param tableName name of the table
      * @returns 0 on success, -1 on error
      */
-    countVisibleUnreadMessageInfo(tableName: string | null): [ /* returnType */ number, /* count */ number ]
+    countVisibleUnreadMessageInfo(tableName: string): [ /* returnType */ number, /* count */ number ]
     /**
      * Creates a 'folders' table, if it doesn't exist yet.
      * @returns 0 on success, -1 on error
@@ -4281,7 +4281,7 @@ export interface DB {
      * @param folderName full name of the folder
      * @returns 0 on success, -1 on error
      */
-    deleteFolder(folderName: string | null): number
+    deleteFolder(folderName: string): number
     /**
      * Deletes single mesage info in the given folder with
      * the given UID.
@@ -4289,14 +4289,14 @@ export interface DB {
      * @param uid a message info UID to delete
      * @returns 0 on success, -1 on error
      */
-    deleteUid(folderName: string | null, uid: string | null): number
+    deleteUid(folderName: string, uid: string): number
     /**
      * Deletes a list of message UIDs as one transaction.
      * @param folderName full name of the folder
      * @param uids A #GList of uids
      * @returns 0 on success, -1 on error
      */
-    deleteUids(folderName: string | null, uids: string[]): number
+    deleteUids(folderName: string, uids: string[]): number
     /**
      * Ends an ongoing transaction by committing the changes.
      * @returns 0 on success, -1 on error
@@ -4308,10 +4308,10 @@ export interface DB {
      * @param folderName full name of the folder
      * @returns 0 on success, -1 on error
      */
-    flushInMemoryTransactions(folderName: string | null): number
-    getFilename(): string | null
-    getFolderDeletedUids(folderName: string | null): string[] | null
-    getFolderJunkUids(folderName: string | null): string[] | null
+    flushInMemoryTransactions(folderName: string): number
+    getFilename(): string
+    getFolderDeletedUids(folderName: string): string[] | null
+    getFolderJunkUids(folderName: string): string[] | null
     /**
      * Fills hash with uid->GUINT_TO_POINTER (flag). Use camel_pstring_free()
      * to free the keys of the `hash`.
@@ -4321,7 +4321,7 @@ export interface DB {
      * @param hash a hash table to fill
      * @returns 0 on success, -1 on error
      */
-    getFolderUids(folderName: string | null, sortBy: string | null, collate: string | null, hash: GLib.HashTable): number
+    getFolderUids(folderName: string, sortBy: string | null, collate: string | null, hash: GLib.HashTable): number
     /**
      * Runs a `cdb` maintenance, which includes vacuum, if necessary.
      * @returns Whether succeeded.
@@ -4332,13 +4332,13 @@ export interface DB {
      * @param folderName full name of the folder
      * @returns 0 on success, -1 on error
      */
-    prepareMessageInfoTable(folderName: string | null): number
+    prepareMessageInfoTable(folderName: string): number
     /**
      * reads folder information for the given folder and stores it into the `record`.
      * @param folderName full name of the folder
      * @returns 0 on success, -1 on error
      */
-    readFolderInfoRecord(folderName: string | null): [ /* returnType */ number, /* record */ FIRecord ]
+    readFolderInfoRecord(folderName: string): [ /* returnType */ number, /* record */ FIRecord ]
     /**
      * Selects single message info for the given `uid` in folder `folder_name` and calls
      * the `callback` for it.
@@ -4347,35 +4347,35 @@ export interface DB {
      * @param callback callback to call for the found row
      * @returns 0 on success, -1 on error
      */
-    readMessageInfoRecordWithUid(folderName: string | null, uid: string | null, callback: DBSelectCB): number
+    readMessageInfoRecordWithUid(folderName: string, uid: string, callback: DBSelectCB): number
     /**
      * Reads all mesasge info records for the given folder and calls `callback` for them.
      * @param folderName full name of the folder
      * @param callback callback to call for each found row
      * @returns 0 on success, -1 on error
      */
-    readMessageInfoRecords(folderName: string | null, callback: DBSelectCB): number
+    readMessageInfoRecords(folderName: string, callback: DBSelectCB): number
     /**
      * Renames tables for the `old_folder_name` to be used with `new_folder_name`.
      * @param oldFolderName full name of the existing folder
      * @param newFolderName full name of the folder to rename it to
      * @returns 0 on success, -1 on error
      */
-    renameFolder(oldFolderName: string | null, newFolderName: string | null): number
+    renameFolder(oldFolderName: string, newFolderName: string): number
     /**
      * Sets a version number for the given folder.
      * @param folderName full name of the folder
      * @param resetVersion version number to set
      * @returns 0 on success, -1 on error
      */
-    resetFolderVersion(folderName: string | null, resetVersion: number): number
+    resetFolderVersion(folderName: string, resetVersion: number): number
     /**
      * Executes a SELECT staement and calls the `callback` for each selected row.
      * @param stmt a SELECT statment to execute
      * @param callback a callback to call for each row
      * @returns 0 on success, -1 on error
      */
-    select(stmt: string | null, callback: DBSelectCB): number
+    select(stmt: string, callback: DBSelectCB): number
     /**
      * Defines a collation `collate,` which can be used in SQL (SQLite)
      * statement as a collation function. The `func` is called when
@@ -4384,7 +4384,7 @@ export interface DB {
      * @param collate collation name
      * @param func a #CamelDBCollate collation function
      */
-    setCollate(col: string | null, collate: string | null, func: DBCollate): number
+    setCollate(col: string, collate: string, func: DBCollate): number
     /**
      * Creates an in-memory table for a batch transactions. Use camel_db_flush_in_memory_transactions()
      * to commit the changes and free the in-memory table.
@@ -4409,7 +4409,7 @@ export interface DB {
      * @param record a #CamelMIRecord
      * @returns 0 on success, -1 on error
      */
-    writeMessageInfoRecord(folderName: string | null, record: MIRecord): number
+    writeMessageInfoRecord(folderName: string, record: MIRecord): number
 
     // Class property signals of Camel-1.2.Camel.DB
 
@@ -4435,8 +4435,8 @@ export class DB extends GObject.Object {
     // Constructors of Camel-1.2.Camel.DB
 
     constructor(config?: DB.ConstructorProperties) 
-    constructor(filename: string | null) 
-    static new(filename: string | null): DB
+    constructor(filename: string) 
+    static new(filename: string): DB
     _init(config?: DB.ConstructorProperties): void
     /**
      * Frees the `record` and all of its associated data.
@@ -4461,7 +4461,7 @@ export class DB extends GObject.Object {
      * @param colNames column names to traverse
      */
     static getColumnIdent(hash: GLib.HashTable, index: number, colNames: string[]): [ /* returnType */ DBKnownColumnNames, /* hash */ GLib.HashTable ]
-    static getColumnName(rawName: string | null): string | null
+    static getColumnName(rawName: string): string | null
     /**
      * Instructs sqlite to release its memory, if possible. This can be avoided
      * when CAMEL_SQLITE_FREE_CACHE environment variable is set.
@@ -4472,7 +4472,7 @@ export class DB extends GObject.Object {
      * @param string a string to "sqlize"
      * @returns A newly allocated sqlized @string. The returned    value should be freed with camel_db_sqlize_string(), when no longer needed.
      */
-    static sqlizeString(string: string | null): string | null
+    static sqlizeString(string: string): string | null
 }
 
 export module DataCache {
@@ -4518,19 +4518,19 @@ export interface DataCache {
      * @param key Key of item to add.
      * @returns a #GIOStream for the new cache item, or %NULL on error
      */
-    add(path: string | null, key: string | null): Gio.IOStream
+    add(path: string, key: string): Gio.IOStream
     /**
      * Clear cache's content in `path`.
      * @param path Path to the (sub) cache the item exists in.
      */
-    clear(path: string | null): void
+    clear(path: string): void
     /**
      * Traverses the `cdc` sub-cache identified by `path` and calls `func` for each found file.
      * If the `func` returns %TRUE, then the file is removed, if %FALSE, it's kept in the cache.
      * @param path Path to the (sub) cache the items exist in
      * @param func a callback to call for each found file in the cache
      */
-    foreachRemove(path: string | null, func: DataCacheRemoveFunc): void
+    foreachRemove(path: string, func: DataCacheRemoveFunc): void
     /**
      * Lookup an item in the cache.  If the item exists, a #GIOStream is returned
      * for the item.  The stream may be shared by multiple callers, so ensure the
@@ -4542,7 +4542,7 @@ export interface DataCache {
      * @param key Key for the cache item.
      * @returns a #GIOStream for the requested cache item, or %NULL on error
      */
-    get(path: string | null, key: string | null): Gio.IOStream
+    get(path: string, key: string): Gio.IOStream
     /**
      * Gets whether expire of cache data is enabled.
      * 
@@ -4559,19 +4559,19 @@ export interface DataCache {
      * @param key Key for the cache item.
      * @returns The filename for a cache item
      */
-    getFilename(path: string | null, key: string | null): string | null
+    getFilename(path: string, key: string): string | null
     /**
      * Returns the path to the data cache.
      * @returns the path to the data cache
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Remove/expire a cache item.
      * @param path Path to the (sub) cache the item exists in.
      * @param key Key for the cache item.
      * @returns 0 on success, -1 on error
      */
-    remove(path: string | null, key: string | null): number
+    remove(path: string, key: string): number
     /**
      * Set the cache expiration policy for access times.
      * 
@@ -4612,7 +4612,7 @@ export interface DataCache {
      * Sets the path to the data cache.
      * @param path path to the data cache
      */
-    setPath(path: string | null): void
+    setPath(path: string): void
 
     // Class property signals of Camel-1.2.Camel.DataCache
 
@@ -4654,14 +4654,14 @@ export class DataCache extends GObject.Object {
      * @param path Base path of cache, subdirectories will be created here.
      * @returns A new cache object, or %NULL if the base path cannot    be written to.
      */
-    constructor(path: string | null) 
+    constructor(path: string) 
     /**
      * Create a new data cache.
      * @constructor 
      * @param path Base path of cache, subdirectories will be created here.
      * @returns A new cache object, or %NULL if the base path cannot    be written to.
      */
-    static new(path: string | null): DataCache
+    static new(path: string): DataCache
     _init(config?: DataCache.ConstructorProperties): void
 }
 
@@ -4808,7 +4808,7 @@ export interface DataWrapper {
      * @param encoding an encoding to set
      */
     setEncoding(encoding: TransferEncoding): void
-    // Has conflict: setMimeType(mimeType: string | null): void
+    // Has conflict: setMimeType(mimeType: string): void
     // Has conflict: setMimeTypeField(mimeType: ContentType | null): void
     /**
      * Sets whether the `data_wrapper` is "offline". It applies only to this
@@ -4933,7 +4933,7 @@ export interface DataWrapper {
      * @virtual 
      * @param mimeType a MIME type
      */
-    setMimeType(mimeType: string | null): void
+    setMimeType(mimeType: string): void
     /**
      * This sets the data wrapper's MIME type. It adds its own reference
      * to `mime_type,` if not %NULL.
@@ -5047,7 +5047,7 @@ export interface FilterDriver {
      * @param match a code (#CamelSExp) to execute to check whether the rule can be applied
      * @param action an action code (#CamelSExp) to execute, when the `match` evaluates to %TRUE
      */
-    addRule(name: string | null, match: string | null, action: string | null): void
+    addRule(name: string, match: string, action: string): void
     /**
      * Filters a folder based on rules defined in the FilterDriver
      * object.
@@ -5068,7 +5068,7 @@ export interface FilterDriver {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns -1 if errors were encountered during filtering, otherwise returns 0.
      */
-    filterMbox(mbox: string | null, originalSourceUrl: string | null, cancellable: Gio.Cancellable | null): number
+    filterMbox(mbox: string, originalSourceUrl: string | null, cancellable: Gio.Cancellable | null): number
     /**
      * Filters a message based on rules defined in the FilterDriver
      * object. If the source folder (`source)` and the uid (`uid)` are
@@ -5094,7 +5094,7 @@ export interface FilterDriver {
      * @param name rule name
      * @returns Whether the rule had been found and removed.
      */
-    removeRuleByName(name: string | null): boolean
+    removeRuleByName(name: string): boolean
     /**
      * Sets a default folder for the driver. The function adds
      * its own reference for the folder.
@@ -5460,8 +5460,8 @@ export interface Folder {
     appendMessageFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* appendedUid */ string | null ]
     // Has conflict: appendMessageSync(message: MimeMessage, info: MessageInfo | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* appendedUid */ string | null ]
     // Has conflict: changed(changes: FolderChangeInfo): void
-    // Has conflict: cmpUids(uid1: string | null, uid2: string | null): number
-    // Has conflict: countByExpression(expression: string | null, cancellable: Gio.Cancellable | null): number
+    // Has conflict: cmpUids(uid1: string, uid2: string): number
+    // Has conflict: countByExpression(expression: string, cancellable: Gio.Cancellable | null): number
     // Has conflict: delete(): void
     /**
      * Thread-safe variation of camel_folder_get_description().
@@ -5527,23 +5527,23 @@ export interface Folder {
      * Returns a description of the folder suitable for displaying to the user.
      * @returns a description of the folder
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns the display name for the folder.  The fully qualified name
      * can be obtained with camel_folder_get_full_name().
      * @returns the display name of the folder
      */
-    getDisplayName(): string | null
-    // Has conflict: getFilename(uid: string | null): string | null
+    getDisplayName(): string
+    // Has conflict: getFilename(uid: string): string | null
     getFlags(): number
     getFolderSummary(): FolderSummary
     getFrozenCount(): number
-    // Has conflict: getFullDisplayName(): string | null
+    // Has conflict: getFullDisplayName(): string
     /**
      * Returns the fully qualified name of the folder.
      * @returns the fully qualified name of the folder
      */
-    getFullName(): string | null
+    getFullName(): string
     getMarkSeen(): ThreeState
     getMarkSeenTimeout(): number
     /**
@@ -5556,8 +5556,8 @@ export interface Folder {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    getMessage(messageUid: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
-    // Has conflict: getMessageCached(messageUid: string | null, cancellable: Gio.Cancellable | null): MimeMessage | null
+    getMessage(messageUid: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: getMessageCached(messageUid: string, cancellable: Gio.Cancellable | null): MimeMessage | null
     // Has conflict: getMessageCount(): number
     /**
      * Finishes the operation started with camel_folder_get_message().
@@ -5565,11 +5565,11 @@ export interface Folder {
      * @returns a #CamelMimeMessage corresponding to the requested UID
      */
     getMessageFinish(result: Gio.AsyncResult): MimeMessage
-    // Has conflict: getMessageFlags(uid: string | null): number
-    // Has conflict: getMessageInfo(uid: string | null): MessageInfo | null
-    // Has conflict: getMessageSync(messageUid: string | null, cancellable: Gio.Cancellable | null): MimeMessage
-    // Has conflict: getMessageUserFlag(uid: string | null, name: string | null): boolean
-    // Has conflict: getMessageUserTag(uid: string | null, name: string | null): string | null
+    // Has conflict: getMessageFlags(uid: string): number
+    // Has conflict: getMessageInfo(uid: string): MessageInfo | null
+    // Has conflict: getMessageSync(messageUid: string, cancellable: Gio.Cancellable | null): MimeMessage
+    // Has conflict: getMessageUserFlag(uid: string, name: string): boolean
+    // Has conflict: getMessageUserTag(uid: string, name: string): string
     getParentStore(): any | null
     // Has conflict: getPermanentFlags(): number
     /**
@@ -5647,20 +5647,20 @@ export interface Folder {
      */
     refreshInfoFinish(result: Gio.AsyncResult): boolean
     // Has conflict: refreshInfoSync(cancellable: Gio.Cancellable | null): boolean
-    // Has conflict: rename(newName: string | null): void
-    // Has conflict: searchByExpression(expression: string | null, cancellable: Gio.Cancellable | null): string[]
-    // Has conflict: searchByUids(expression: string | null, uids: string[], cancellable: Gio.Cancellable | null): string[]
+    // Has conflict: rename(newName: string): void
+    // Has conflict: searchByExpression(expression: string, cancellable: Gio.Cancellable | null): string[]
+    // Has conflict: searchByUids(expression: string, uids: string[], cancellable: Gio.Cancellable | null): string[]
     // Has conflict: searchFree(result: string[]): void
     /**
      * Sets a description of the folder suitable for displaying to the user.
      * @param description a description of the folder
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Sets the display name for the folder.
      * @param displayName a display name for the folder
      */
-    setDisplayName(displayName: string | null): void
+    setDisplayName(displayName: string): void
     /**
      * Sets folder flags (bit-or of #CamelFolderFlags) for the `folder`.
      * @param folderFlags flags (bit-or of #CamelFolderFlags) to set
@@ -5670,7 +5670,7 @@ export interface Folder {
      * Sets the fully qualified name of the folder.
      * @param fullName a fully qualified name for the folder
      */
-    setFullName(fullName: string | null): void
+    setFullName(fullName: string): void
     /**
      * Sets whether folder locking (camel_folder_lock() and camel_folder_unlock())
      * should be used. When set to %FALSE, the two functions do nothing and simply
@@ -5692,9 +5692,9 @@ export interface Folder {
      * @param timeout a timeout in milliseconds
      */
     setMarkSeenTimeout(timeout: number): void
-    // Has conflict: setMessageFlags(uid: string | null, mask: number, set: number): boolean
-    // Has conflict: setMessageUserFlag(uid: string | null, name: string | null, value: boolean): void
-    // Has conflict: setMessageUserTag(uid: string | null, name: string | null, value: string | null): void
+    // Has conflict: setMessageFlags(uid: string, mask: number, set: number): boolean
+    // Has conflict: setMessageUserFlag(uid: string, name: string, value: boolean): void
+    // Has conflict: setMessageUserTag(uid: string, name: string, value: string): void
     // Has conflict: sortUids(uids: string[]): void
     /**
      * Synchronizes any changes that have been made to `folder` to its backing
@@ -5727,14 +5727,14 @@ export interface Folder {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    synchronizeMessage(messageUid: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    synchronizeMessage(messageUid: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_folder_synchronize_message().
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
     synchronizeMessageFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: synchronizeMessageSync(messageUid: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: synchronizeMessageSync(messageUid: string, cancellable: Gio.Cancellable | null): boolean
     // Has conflict: synchronizeSync(expunge: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets a #CamelFolderSummary of the folder. It consumes the `summary`.
@@ -5802,7 +5802,7 @@ export interface Folder {
      * @param uid1 The first uid.
      * @param uid2 the second uid.
      */
-    cmpUids(uid1: string | null, uid2: string | null): number
+    cmpUids(uid1: string, uid2: string): number
     /**
      * Searches the folder for count of messages matching the given search expression.
      * @virtual 
@@ -5810,7 +5810,7 @@ export interface Folder {
      * @param cancellable a #GCancellable
      * @returns an interger
      */
-    countByExpression(expression: string | null, cancellable: Gio.Cancellable | null): number
+    countByExpression(expression: string, cancellable: Gio.Cancellable | null): number
     delete(): void
     deleted(): void
     /**
@@ -5840,14 +5840,14 @@ export interface Folder {
      * @virtual 
      */
     freeze(): void
-    getFilename(uid: string | null): string | null
+    getFilename(uid: string): string | null
     /**
      * Similar to the camel_folder_get_full_name(), only returning
      * full path to the `folder` suitable for the display to a user.
      * @virtual 
      * @returns full path to the @folder suitable for the display to a user
      */
-    getFullDisplayName(): string | null
+    getFullDisplayName(): string
     /**
      * Gets the message corresponding to `message_uid` from the `folder` cache,
      * if available locally. This should not do any network I/O, only check
@@ -5861,16 +5861,16 @@ export interface Folder {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns a cached #CamelMimeMessage corresponding    to the requested UID
      */
-    getMessageCached(messageUid: string | null, cancellable: Gio.Cancellable | null): MimeMessage | null
+    getMessageCached(messageUid: string, cancellable: Gio.Cancellable | null): MimeMessage | null
     getMessageCount(): number
-    getMessageFlags(uid: string | null): number
+    getMessageFlags(uid: string): number
     /**
      * Retrieve the #CamelMessageInfo for the specified `uid`.
      * @virtual 
      * @param uid the uid of a message
      * @returns The summary information for the   indicated message, or %NULL if the uid does not exist. Free the returned   object with g_object_unref(), when done with it.
      */
-    getMessageInfo(uid: string | null): MessageInfo | null
+    getMessageInfo(uid: string): MessageInfo | null
     /**
      * Gets the message corresponding to `message_uid` from `folder`.
      * @virtual 
@@ -5878,9 +5878,9 @@ export interface Folder {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns a #CamelMimeMessage corresponding to the requested UID
      */
-    getMessageSync(messageUid: string | null, cancellable: Gio.Cancellable | null): MimeMessage
-    getMessageUserFlag(uid: string | null, name: string | null): boolean
-    getMessageUserTag(uid: string | null, name: string | null): string | null
+    getMessageSync(messageUid: string, cancellable: Gio.Cancellable | null): MimeMessage
+    getMessageUserFlag(uid: string, name: string): boolean
+    getMessageUserTag(uid: string, name: string): string
     getPermanentFlags(): number
     /**
      * Gets a list of known quotas for `folder`.  Free the returned
@@ -5955,8 +5955,8 @@ export interface Folder {
      * @virtual 
      * @param newName new name for the folder
      */
-    rename(newName: string | null): void
-    renamed(oldName: string | null): void
+    rename(newName: string): void
+    renamed(oldName: string): void
     /**
      * Searches the folder for messages matching the given search expression.
      * @virtual 
@@ -5964,7 +5964,7 @@ export interface Folder {
      * @param cancellable a #GCancellable
      * @returns a #GPtrArray of uids of matching messages. The caller must free the list and each of the elements when it is done.
      */
-    searchByExpression(expression: string | null, cancellable: Gio.Cancellable | null): string[]
+    searchByExpression(expression: string, cancellable: Gio.Cancellable | null): string[]
     /**
      * Search a subset of uid's for an expression match.
      * @virtual 
@@ -5973,7 +5973,7 @@ export interface Folder {
      * @param cancellable a #GCancellable
      * @returns a #GPtrArray of uids of matching messages. The caller must free the list and each of the elements when it is done.
      */
-    searchByUids(expression: string | null, uids: string[], cancellable: Gio.Cancellable | null): string[]
+    searchByUids(expression: string, uids: string[], cancellable: Gio.Cancellable | null): string[]
     /**
      * Free the result of a search as gotten by camel_folder_search_by_expression()
      * or camel_folder_search_by_uids().
@@ -5994,9 +5994,9 @@ export interface Folder {
      * @param set the flags to ser, also bit-or of #CamelMessageFlags
      * @returns %TRUE if the flags were changed or %FALSE otherwise
      */
-    setMessageFlags(uid: string | null, mask: number, set: number): boolean
-    setMessageUserFlag(uid: string | null, name: string | null, value: boolean): void
-    setMessageUserTag(uid: string | null, name: string | null, value: string | null): void
+    setMessageFlags(uid: string, mask: number, set: number): boolean
+    setMessageUserFlag(uid: string, name: string, value: boolean): void
+    setMessageUserTag(uid: string, name: string, value: string): void
     /**
      * Sorts the array of UIDs.
      * @virtual 
@@ -6012,7 +6012,7 @@ export interface Folder {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    synchronizeMessageSync(messageUid: string | null, cancellable: Gio.Cancellable | null): boolean
+    synchronizeMessageSync(messageUid: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronizes any changes that have been made to `folder` to its
      * backing store, optionally expunging deleted messages as well.
@@ -6151,7 +6151,7 @@ export interface FolderSearch {
      * @param cancellable a #GCancellable
      * @returns Number of messages that match the query.
      */
-    count(expr: string | null, cancellable: Gio.Cancellable | null): number
+    count(expr: string, cancellable: Gio.Cancellable | null): number
     /**
      * Frees result of camel_folder_search_search() call.
      * @param result a result to free
@@ -6171,7 +6171,7 @@ export interface FolderSearch {
      * @param cancellable a #GCancellable
      * @returns a #GPtrArray with matching UIDs,    or %NULL on error. Use camel_folder_search_free_result() to free it when    no longer needed.
      */
-    search(expr: string | null, uids: string[], cancellable: Gio.Cancellable | null): string[]
+    search(expr: string, uids: string[], cancellable: Gio.Cancellable | null): string[]
     /**
      * Set the index representing the contents of all messages
      * in this folder.  If this is not set, then the folder implementation
@@ -6284,7 +6284,7 @@ export class FolderSearch extends GObject.Object {
      * @param needsDecode whether the `message_id` requires camel_header_msgid_decode() first
      * @returns hash of the @message_id, or 0 on any error.
      */
-    static utilHashMessageId(messageId: string | null, needsDecode: boolean): number
+    static utilHashMessageId(messageId: string, needsDecode: boolean): number
     /**
      * Implementation of 'make-time' function, which expects one argument,
      * a string or an integer, to be converted into time_t.
@@ -6379,7 +6379,7 @@ export interface FolderSummary {
      * @param uid a uid
      * @returns if the uid is present in the summary or not  (%TRUE or %FALSE)
      */
-    checkUid(uid: string | null): boolean
+    checkUid(uid: string): boolean
     /**
      * Empty the summary contents.
      * @returns whether succeeded
@@ -6398,7 +6398,7 @@ export interface FolderSummary {
      * @param uid a uid
      * @returns the summary item, or %NULL if the uid @uid is not available See camel_folder_summary_get_info_flags().
      */
-    get(uid: string | null): MessageInfo | null
+    get(uid: string): MessageInfo | null
     /**
      * Obtain a copy of the summary array.  This is done atomically,
      * so cannot contain empty entries.
@@ -6433,7 +6433,7 @@ export interface FolderSummary {
      * @param uid a uid
      * @returns the flags currently stored for message info with UID @uid,          or (~0) on error
      */
-    getInfoFlags(uid: string | null): number
+    getInfoFlags(uid: string): number
     getJunkCount(): number
     getJunkNotDeletedCount(): number
     getNextUid(): number
@@ -6449,7 +6449,7 @@ export interface FolderSummary {
      * @param folderName a folder name corresponding to `summary`
      * @returns whether succeeded
      */
-    headerLoad(store: any | null, folderName: string | null): boolean
+    headerLoad(store: any | null, folderName: string): boolean
     /**
      * Saves summary header information into the disk. The function does
      * nothing, if the summary doesn't support save to disk.
@@ -6502,7 +6502,7 @@ export interface FolderSummary {
      */
     nextUid(): number
     // Has conflict: nextUidString(): string | null
-    peekLoaded(uid: string | null): MessageInfo | null
+    peekLoaded(uid: string): MessageInfo | null
     // Has conflict: prepareFetchAll(): void
     /**
      * Remove a specific `info` record from the summary.
@@ -6515,7 +6515,7 @@ export interface FolderSummary {
      * @param uid a uid
      * @returns Whether the @uid was found and removed from the @summary.
      */
-    removeUid(uid: string | null): boolean
+    removeUid(uid: string): boolean
     /**
      * Remove a specific info record from the summary, by `uid`.
      * @param uids a GList of uids
@@ -6584,7 +6584,7 @@ export interface FolderSummary {
      * @param uid a uid
      * @returns the summary item, or %NULL if the uid @uid is not available See camel_folder_summary_get_info_flags().
      */
-    messageInfoFromUid(uid: string | null): MessageInfo | null
+    messageInfoFromUid(uid: string): MessageInfo | null
     /**
      * Create a new info record from a header.
      * @virtual 
@@ -6783,7 +6783,7 @@ export interface GpgContext {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    getPublicKeyInfoSync(keyid: string | null, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outInfos */ GpgKeyInfo[] ]
+    getPublicKeyInfoSync(keyid: string, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outInfos */ GpgKeyInfo[] ]
     /**
      * Returns a public key with `keyid`.
      * 
@@ -6798,7 +6798,7 @@ export interface GpgContext {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    getPublicKeySync(keyid: string | null, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outData */ number, /* outDataSize */ number ]
+    getPublicKeySync(keyid: string, flags: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outData */ number, /* outDataSize */ number ]
     /**
      * Checks whether there exists a public key with `keyid`.
      * 
@@ -6807,7 +6807,7 @@ export interface GpgContext {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether the key could be found
      */
-    hasPublicKeySync(keyid: string | null, cancellable: Gio.Cancellable | null): boolean
+    hasPublicKeySync(keyid: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Imports a (public) key provided in a binary form stored in the `data`
      * of size `data_size`.
@@ -6833,7 +6833,7 @@ export interface GpgContext {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns whether succeeded
      */
-    setKeyTrustSync(keyid: string | null, trust: GpgTrust, cancellable: Gio.Cancellable | null): boolean
+    setKeyTrustSync(keyid: string, trust: GpgTrust, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the `locate_keys` on the gpg context which is used to instruct
      * gpg to locate keys using Web Key Directory (WKD) lookup when encrypting
@@ -6930,7 +6930,7 @@ export interface HTMLParser {
 
     // Owm methods of Camel-1.2.Camel.HTMLParser
 
-    attr(name: string | null): string | null
+    attr(name: string): string
     /**
      * Provides parsed array of values and attributes. Both arrays are
      * owned by the `hp`.
@@ -6938,8 +6938,8 @@ export interface HTMLParser {
      * @returns a #GPtrArray of parsed attributes
      */
     attrList(values: string[] | null): [ /* returnType */ string[], /* values */ string[] | null ]
-    left(lenp: number): string | null
-    setData(start: string | null, len: number, last: number): void
+    left(lenp: number): string
+    setData(start: string, len: number, last: number): void
 
     // Overloads of setData
 
@@ -6957,9 +6957,9 @@ export interface HTMLParser {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
-    step(datap: string | null, lenp: number): HTMLParserState
-    tag(): string | null
+    setData(key: string, data: any | null): void
+    step(datap: string, lenp: number): HTMLParserState
+    tag(): string
 
     // Class property signals of Camel-1.2.Camel.HTMLParser
 
@@ -7028,15 +7028,15 @@ export interface Index {
 
     // Owm methods of Camel-1.2.Camel.Index
 
-    // Has conflict: addName(name: string | null): IndexName | null
+    // Has conflict: addName(name: string): IndexName | null
     // Has conflict: compress(): number
-    construct(path: string | null, flags: number): void
+    construct(path: string, flags: number): void
     // Has conflict: delete(): number
-    // Has conflict: deleteName(name: string | null): void
-    // Has conflict: find(word: string | null): IndexCursor | null
-    // Has conflict: findName(name: string | null): IndexCursor | null
-    // Has conflict: hasName(name: string | null): number
-    // Has conflict: rename(path: string | null): number
+    // Has conflict: deleteName(name: string): void
+    // Has conflict: find(word: string): IndexCursor | null
+    // Has conflict: findName(name: string): IndexCursor | null
+    // Has conflict: hasName(name: string): number
+    // Has conflict: rename(path: string): number
     setNormalize(func: IndexNorm): void
     // Has conflict: sync(): number
     // Has conflict: words(): IndexCursor | null
@@ -7044,7 +7044,7 @@ export interface Index {
 
     // Own virtual methods of Camel-1.2.Camel.Index
 
-    addName(name: string | null): IndexName | null
+    addName(name: string): IndexName | null
     compress(): number
     delete(): number
     /**
@@ -7052,11 +7052,11 @@ export interface Index {
      * @virtual 
      * @param name a name to delete
      */
-    deleteName(name: string | null): void
-    find(word: string | null): IndexCursor | null
-    findName(name: string | null): IndexCursor | null
-    hasName(name: string | null): number
-    rename(path: string | null): number
+    deleteName(name: string): void
+    find(word: string): IndexCursor | null
+    findName(name: string): IndexCursor | null
+    hasName(name: string): number
+    rename(path: string): number
     sync(): number
     words(): IndexCursor | null
     writeName(idn: IndexName): number
@@ -7111,11 +7111,11 @@ export interface IndexCursor {
 
     // Owm methods of Camel-1.2.Camel.IndexCursor
 
-    // Has conflict: next(): string | null
+    // Has conflict: next(): string
 
     // Own virtual methods of Camel-1.2.Camel.IndexCursor
 
-    next(): string | null
+    next(): string
 
     // Class property signals of Camel-1.2.Camel.IndexCursor
 
@@ -7170,13 +7170,13 @@ export interface IndexName {
 
     // Owm methods of Camel-1.2.Camel.IndexName
 
-    // Has conflict: addBuffer(buffer: string | null, len: number): number
-    // Has conflict: addWord(word: string | null): void
+    // Has conflict: addBuffer(buffer: string, len: number): number
+    // Has conflict: addWord(word: string): void
 
     // Own virtual methods of Camel-1.2.Camel.IndexName
 
-    addBuffer(buffer: string | null, len: number): number
-    addWord(word: string | null): void
+    addBuffer(buffer: string, len: number): number
+    addWord(word: string): void
 
     // Class property signals of Camel-1.2.Camel.IndexName
 
@@ -7233,7 +7233,7 @@ export interface InternetAddress {
      * @param address routing address associated with the new address
      * @returns the index of added entry
      */
-    add(name: string | null, address: string | null): number
+    add(name: string, address: string): number
     /**
      * Ensures that all email address' domains will be ASCII encoded,
      * which means that any non-ASCII letters will be properly encoded.
@@ -7245,13 +7245,13 @@ export interface InternetAddress {
      * @param address address to lookup
      * @returns the index of the address, or -1 if not found
      */
-    findAddress(address: string | null): [ /* returnType */ number, /* namep */ string | null ]
+    findAddress(address: string): [ /* returnType */ number, /* namep */ string | null ]
     /**
      * Find address by real name.
      * @param name name to lookup
      * @returns the index of the address matching the name, or -1 if no match was found
      */
-    findName(name: string | null): [ /* returnType */ number, /* addressp */ string | null ]
+    findName(name: string): [ /* returnType */ number, /* addressp */ string | null ]
     /**
      * Get the address at `index`.
      * @param index address's array index
@@ -7324,14 +7324,14 @@ export class InternetAddress extends Address {
      * @param addr the routing address
      * @returns the encoded address
      */
-    static encodeAddress(len: number | null, name: string | null, addr: string | null): string | null
+    static encodeAddress(len: number | null, name: string, addr: string): string | null
     /**
      * Function to format a single address, suitable for display.
      * @param name a name, quotes may be stripped from it
      * @param addr an rfc822 routing address
      * @returns a nicely formatted string containing the rfc822 address
      */
-    static formatAddress(name: string | null, addr: string | null): string | null
+    static formatAddress(name: string, addr: string): string | null
 }
 
 export module KeyFile {
@@ -7365,7 +7365,7 @@ export interface KeyFile {
      * @returns -1 on io error.
      */
     read(start: _block_t, records: _key_t[] | null): number
-    rename(path: string | null): number
+    rename(path: string): number
     /**
      * Write a new list of records to the key file.
      * @param parent a #camel_block_t
@@ -7406,7 +7406,7 @@ export class KeyFile extends GObject.Object {
      * @param version Version string (header) of file.  Currently written but not checked.
      * @returns A new key file, or %NULL if the file could not    be opened/created/initialised.
      */
-    constructor(path: string | null, flags: number, version: string | null) 
+    constructor(path: string, flags: number, version: string) 
     /**
      * Create a new key file.  A linked list of record blocks.
      * @constructor 
@@ -7415,7 +7415,7 @@ export class KeyFile extends GObject.Object {
      * @param version Version string (header) of file.  Currently written but not checked.
      * @returns A new key file, or %NULL if the file could not    be opened/created/initialised.
      */
-    static new(path: string | null, flags: number, version: string | null): KeyFile
+    static new(path: string, flags: number, version: string): KeyFile
     _init(config?: KeyFile.ConstructorProperties): void
 }
 
@@ -7441,7 +7441,7 @@ export interface KeyTable {
 
     // Owm methods of Camel-1.2.Camel.KeyTable
 
-    add(key: string | null, data: _block_t, flags: number): _key_t
+    add(key: string, data: _block_t, flags: number): _key_t
     lookup(keyid: _key_t, key: string | null, flags: number): _block_t
     next(next: _key_t, keyp: string | null, flagsp: number, datap: _block_t): _key_t
     setData(keyid: _key_t, data: _block_t): boolean
@@ -7462,7 +7462,7 @@ export interface KeyTable {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     setFlags(keyid: _key_t, flags: number, set: number): boolean
     sync(): number
 
@@ -7554,7 +7554,7 @@ export interface LocalSettings {
      * Returns the file path to the root of the local mail store.
      * @returns the file path to the local store
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Sets whether to apply filters in all folders.
      * @param filterAll whether to apply filters in all folders
@@ -7581,7 +7581,7 @@ export interface LocalSettings {
      * of the #CamelLocalSettings:path property.
      * @param path the file path to the local store
      */
-    setPath(path: string | null): void
+    setPath(path: string): void
 
     // Class property signals of Camel-1.2.Camel.LocalSettings
 
@@ -7672,14 +7672,14 @@ export interface Medium {
 
     // Owm methods of Camel-1.2.Camel.Medium
 
-    // Has conflict: addHeader(name: string | null, value: string | null): void
+    // Has conflict: addHeader(name: string, value: string): void
     // Has conflict: dupHeaders(): NameValueArray
     // Has conflict: getContent(): DataWrapper | null
-    // Has conflict: getHeader(name: string | null): string | null
+    // Has conflict: getHeader(name: string): string | null
     // Has conflict: getHeaders(): NameValueArray
-    // Has conflict: removeHeader(name: string | null): void
+    // Has conflict: removeHeader(name: string): void
     // Has conflict: setContent(content: DataWrapper | null): void
-    // Has conflict: setHeader(name: string | null, value: string | null): void
+    // Has conflict: setHeader(name: string, value: string | null): void
 
     // Own virtual methods of Camel-1.2.Camel.Medium
 
@@ -7689,7 +7689,7 @@ export interface Medium {
      * @param name name of the header
      * @param value value of the header
      */
-    addHeader(name: string | null, value: string | null): void
+    addHeader(name: string, value: string): void
     /**
      * Gets an array of all header name/value pairs. The values will be
      * decoded to UTF-8 for any headers that are recognized by Camel.
@@ -7716,7 +7716,7 @@ export interface Medium {
      * @param name the name of the header
      * @returns the value of the named header, or %NULL
      */
-    getHeader(name: string | null): string | null
+    getHeader(name: string): string | null
     /**
      * Gets an array of all header name/value pairs. The values will be
      * decoded to UTF-8 for any headers that are recognized by Camel.
@@ -7731,7 +7731,7 @@ export interface Medium {
      * @virtual 
      * @param name the name of the header
      */
-    removeHeader(name: string | null): void
+    removeHeader(name: string): void
     /**
      * Sets the content of `medium` to be `content`.
      * @virtual 
@@ -7746,7 +7746,7 @@ export interface Medium {
      * @param name name of the header
      * @param value value of the header
      */
-    setHeader(name: string | null, value: string | null): void
+    setHeader(name: string, value: string | null): void
 
     // Class property signals of Camel-1.2.Camel.Medium
 
@@ -8030,9 +8030,9 @@ export interface MessageInfo {
      */
     dupReferences(): number[] | null
     // Has conflict: dupUserFlags(): NamedFlags | null
-    dupUserHeader(name: string | null): string | null
+    dupUserHeader(name: string): string | null
     dupUserHeaders(): NameValueArray | null
-    dupUserTag(name: string | null): string | null
+    dupUserTag(name: string): string | null
     // Has conflict: dupUserTags(): NameValueArray | null
     /**
      * Freezes all the notifications until the camel_message_info_thaw_notifications() is called.
@@ -8040,7 +8040,7 @@ export interface MessageInfo {
      */
     freezeNotifications(): void
     getAbortNotifications(): boolean
-    // Has conflict: getCc(): string | null
+    // Has conflict: getCc(): string
     // Has conflict: getDateReceived(): number
     // Has conflict: getDateSent(): number
     getDirty(): boolean
@@ -8064,26 +8064,26 @@ export interface MessageInfo {
      * @returns Stamp of the 'folder-flagged' flag.
      */
     getFolderFlaggedStamp(): number
-    // Has conflict: getFrom(): string | null
+    // Has conflict: getFrom(): string
     // Has conflict: getHeaders(): NameValueArray | null
     // Has conflict: getMessageId(): number
-    // Has conflict: getMlist(): string | null
+    // Has conflict: getMlist(): string
     getNotificationsFrozen(): boolean
     // Has conflict: getPreview(): string | null
     // Has conflict: getReferences(): number[] | null
     // Has conflict: getSize(): number
-    // Has conflict: getSubject(): string | null
-    // Has conflict: getTo(): string | null
+    // Has conflict: getSubject(): string
+    // Has conflict: getTo(): string
     /**
      * Get the UID of the #mi.
      * @returns The UID of the @mi.
      */
-    getUid(): string | null
-    // Has conflict: getUserFlag(name: string | null): boolean
+    getUid(): string
+    // Has conflict: getUserFlag(name: string): boolean
     // Has conflict: getUserFlags(): NamedFlags | null
-    // Has conflict: getUserHeader(name: string | null): string | null
+    // Has conflict: getUserHeader(name: string): string | null
     // Has conflict: getUserHeaders(): NameValueArray | null
-    // Has conflict: getUserTag(name: string | null): string | null
+    // Has conflict: getUserTag(name: string): string | null
     // Has conflict: getUserTags(): NameValueArray | null
     // Has conflict: load(record: MIRecord, bdataPtr: string | null): boolean
     /**
@@ -8091,7 +8091,7 @@ export interface MessageInfo {
      * This is good for thread safety, though the UID should not change once set.
      * @returns A newly references string in the string pool, the #mi UID.   Free it with camel_pstring_free() when no longer needed.
      */
-    pooldupUid(): string | null
+    pooldupUid(): string
     /**
      * Acquires a property lock, which is used to ensure thread safety
      * when properties are changing. Release the lock with
@@ -8154,10 +8154,10 @@ export interface MessageInfo {
      * @param uid a UID to set
      * @returns Whether the UID changed.
      */
-    setUid(uid: string | null): boolean
-    // Has conflict: setUserFlag(name: string | null, state: boolean): boolean
-    // Has conflict: setUserHeader(name: string | null, value: string | null): boolean
-    // Has conflict: setUserTag(name: string | null, value: string | null): boolean
+    setUid(uid: string): boolean
+    // Has conflict: setUserFlag(name: string, state: boolean): boolean
+    // Has conflict: setUserHeader(name: string, value: string | null): boolean
+    // Has conflict: setUserTag(name: string, value: string | null): boolean
     // Has conflict: takeHeaders(headers: NameValueArray | null): boolean
     // Has conflict: takeReferences(references: number[] | null): boolean
     // Has conflict: takeUserFlags(userFlags: NamedFlags | null): boolean
@@ -8183,11 +8183,11 @@ export interface MessageInfo {
     clone(assignSummary: FolderSummary | null): MessageInfo
     dupUserFlags(): NamedFlags | null
     dupUserTags(): NameValueArray | null
-    getCc(): string | null
+    getCc(): string
     getDateReceived(): number
     getDateSent(): number
     getFlags(): number
-    getFrom(): string | null
+    getFrom(): string
     getHeaders(): NameValueArray | null
     /**
      * Encoded Message-ID of the associated message as a guint64 number,
@@ -8196,7 +8196,7 @@ export interface MessageInfo {
      * @returns Partial MD5 hash of the Message-ID header of the associated message.
      */
     getMessageId(): number
-    getMlist(): string | null
+    getMlist(): string
     getPreview(): string | null
     /**
      * Gets encoded In-Reply-To and References headers of the associated
@@ -8207,13 +8207,13 @@ export interface MessageInfo {
      */
     getReferences(): number[] | null
     getSize(): number
-    getSubject(): string | null
-    getTo(): string | null
-    getUserFlag(name: string | null): boolean
+    getSubject(): string
+    getTo(): string
+    getUserFlag(name: string): boolean
     getUserFlags(): NamedFlags | null
-    getUserHeader(name: string | null): string | null
+    getUserHeader(name: string): string | null
     getUserHeaders(): NameValueArray | null
-    getUserTag(name: string | null): string | null
+    getUserTag(name: string): string | null
     getUserTags(): NameValueArray | null
     /**
      * Load content of `mi` from the data stored in `record`. The `bdata_ptr` points
@@ -8412,7 +8412,7 @@ export interface MessageInfo {
      * @param state state to set for the flag
      * @returns Whether the message info changed.
      */
-    setUserFlag(name: string | null, state: boolean): boolean
+    setUserFlag(name: string, state: boolean): boolean
     /**
      * Set `value` for a single user-defined message header of the associated message.
      * When the `value` is %NULL, the header `name` is removed from the user-defined
@@ -8425,7 +8425,7 @@ export interface MessageInfo {
      * @param value header value, or %NULL
      * @returns Whether the value changed.
      */
-    setUserHeader(name: string | null, value: string | null): boolean
+    setUserHeader(name: string, value: string | null): boolean
     /**
      * Set user tag `name` to `value,` or remove it, if `value` is %NULL.
      * 
@@ -8437,7 +8437,7 @@ export interface MessageInfo {
      * @param value user tag value, or %NULL to remove the user tag
      * @returns Whether the @mi changed.
      */
-    setUserTag(name: string | null, value: string | null): boolean
+    setUserTag(name: string, value: string | null): boolean
     /**
      * Takes headers of the associated message.
      * 
@@ -9050,7 +9050,7 @@ export interface MimeFilterBestenc {
      * Gets the best charset that can be used to contain this content.
      * @returns the name of the best charset to use to encode the input text filtered by @filter
      */
-    getBestCharset(): string | null
+    getBestCharset(): string
     /**
      * Get the best encoding, given specific constraints, that can be used to
      * encode a stream of bytes.
@@ -9319,7 +9319,7 @@ export class MimeFilterCharset extends MimeFilter {
      * @param toCharset charset to convert to
      * @returns a new #CamelMimeFilterCharset object
      */
-    constructor(fromCharset: string | null, toCharset: string | null) 
+    constructor(fromCharset: string, toCharset: string) 
     /**
      * Create a new #CamelMimeFilterCharset object to convert text from
      * `from_charset` to `to_charset`.
@@ -9328,7 +9328,7 @@ export class MimeFilterCharset extends MimeFilter {
      * @param toCharset charset to convert to
      * @returns a new #CamelMimeFilterCharset object
      */
-    static new(fromCharset: string | null, toCharset: string | null): MimeFilterCharset
+    static new(fromCharset: string, toCharset: string): MimeFilterCharset
 
     // Overloads of new
 
@@ -9976,7 +9976,7 @@ export interface MimeFilterWindows {
      * equivalent).
      * @returns the name of the actual charset
      */
-    realCharset(): string | null
+    realCharset(): string
 
     // Class property signals of Camel-1.2.Camel.MimeFilterWindows
 
@@ -10009,7 +10009,7 @@ export class MimeFilterWindows extends MimeFilter {
      * @param claimedCharset ISO charset name
      * @returns a new #CamelMimeFilter object
      */
-    constructor(claimedCharset: string | null) 
+    constructor(claimedCharset: string) 
     /**
      * Create a new #CamelMimeFilterWindows object that will analyse
      * whether or not the text is really encoded in `claimed_charset`.
@@ -10017,7 +10017,7 @@ export class MimeFilterWindows extends MimeFilter {
      * @param claimedCharset ISO charset name
      * @returns a new #CamelMimeFilter object
      */
-    static new(claimedCharset: string | null): MimeFilterWindows
+    static new(claimedCharset: string): MimeFilterWindows
 
     // Overloads of new
 
@@ -10194,13 +10194,13 @@ export interface MimeMessage {
      * @param contentId content-id to search for
      * @returns the MIME part with the requested id, or %NULL if not found
      */
-    getPartByContentId(contentId: string | null): MimePart | null
+    getPartByContentId(contentId: string): MimePart | null
     /**
      * Get the message recipients of a specified type.
      * @param type recipient type
      * @returns the requested recipients
      */
-    getRecipients(type: string | null): InternetAddress | null
+    getRecipients(type: string): InternetAddress | null
     /**
      * Get the Reply-To of a message.
      * @returns the Reply-To address of the message
@@ -10265,7 +10265,7 @@ export interface MimeMessage {
      * @param type recipient type (one of #CAMEL_RECIPIENT_TYPE_TO, #CAMEL_RECIPIENT_TYPE_CC, or #CAMEL_RECIPIENT_TYPE_BCC)
      * @param recipients a #CamelInternetAddress with the recipient addresses set or %NULL   to remove the already defined one
      */
-    setRecipients(type: string | null, recipients: InternetAddress | null): void
+    setRecipients(type: string, recipients: InternetAddress | null): void
     /**
      * Set the Reply-To of a message.
      * @param replyTo a #CamelInternetAddress object
@@ -10467,7 +10467,7 @@ export interface MimeParser {
      * @param offset Pointer that can receive the offset of the header in the stream from the start of parsing.
      * @returns The header value, or %NULL if the header is not defined.
      */
-    header(name: string | null, offset: number): string | null
+    header(name: string, offset: number): string | null
     /**
      * Convenience function creates a #GMemoryInputStream from `bytes` and hands
      * it off to camel_mime_parser_init_with_input_stream().
@@ -10518,7 +10518,7 @@ export interface MimeParser {
      * @param newstate New state
      * @param boundary Boundary marker for state.
      */
-    pushState(newstate: MimeParserState, boundary: string | null): void
+    pushState(newstate: MimeParserState, boundary: string): void
     /**
      * Read at most `len` bytes from the internal mime parser buffer.
      * 
@@ -10847,7 +10847,7 @@ export interface MimePart {
      * Set a description on the MIME part.
      * @param description description of the MIME part
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Set a disposition on the MIME part.
      * @param disposition disposition of the MIME part
@@ -10972,19 +10972,19 @@ export interface Multipart {
 
     // Has conflict: addPart(part: MimePart): void
     // Has conflict: constructFromParser(parser: MimeParser): number
-    // Has conflict: getBoundary(): string | null
+    // Has conflict: getBoundary(): string
     // Has conflict: getNumber(): number
     // Has conflict: getPart(index: number): MimePart | null
     /**
      * Returns the postface text for `multipart`.
      * @returns the postface text
      */
-    getPostface(): string | null
+    getPostface(): string
     /**
      * Returns the preface text for `multipart`.
      * @returns the preface text
      */
-    getPreface(): string | null
+    getPreface(): string
     // Has conflict: setBoundary(boundary: string | null): void
     /**
      * Set the postface text for this multipart.  Will be written out after
@@ -10994,14 +10994,14 @@ export interface Multipart {
      * Generally postface texts should not be sent with multipart messages.
      * @param postface multipat postface
      */
-    setPostface(postface: string | null): void
+    setPostface(postface: string): void
     /**
      * Set the preface text for this multipart.  Will be written out infront
      * of the multipart.  This text should only include US-ASCII strings, and
      * be relatively short, and will be ignored by any MIME mail client.
      * @param preface the multipart preface
      */
-    setPreface(preface: string | null): void
+    setPreface(preface: string): void
 
     // Own virtual methods of Camel-1.2.Camel.Multipart
 
@@ -11018,7 +11018,7 @@ export interface Multipart {
      * @returns 0 on success or -1 on fail
      */
     constructFromParser(parser: MimeParser): number
-    getBoundary(): string | null
+    getBoundary(): string
     getNumber(): number
     getPart(index: number): MimePart | null
     /**
@@ -11322,14 +11322,14 @@ export interface NNTPAddress {
      * @param name a new NNTP address to add
      * @returns Index of added entry, or existing matching entry.
      */
-    add(name: string | null): number
+    add(name: string): number
     /**
      * Get the address at `index`.
      * @param index address's array index
      * @param namep Holder for the returned address, or NULL, if not required.
      * @returns TRUE if such an address exists, or FALSE otherwise.
      */
-    get(index: number, namep: string | null): boolean
+    get(index: number, namep: string): boolean
 
     // Class property signals of Camel-1.2.Camel.NNTPAddress
 
@@ -11488,14 +11488,14 @@ export interface Object {
      * and camel_object_state_read() to save and restore object state.
      * @returns the name of the persistent property file
      */
-    getStateFilename(): string | null
+    getStateFilename(): string
     /**
      * Sets the name of the file in which persistent property values for
      * `object` are stored.  The file is used by camel_object_state_write()
      * and camel_object_state_read() to save and restore object state.
      * @param stateFilename path to a local file
      */
-    setStateFilename(stateFilename: string | null): void
+    setStateFilename(stateFilename: string): void
     // Has conflict: stateRead(): number
     // Has conflict: stateWrite(): number
 
@@ -12300,7 +12300,7 @@ export interface Operation {
 
     // Own virtual methods of Camel-1.2.Camel.Operation
 
-    status(what: string | null, pc: number): void
+    status(what: string, pc: number): void
 
     // Own signals of Camel-1.2.Camel.Operation
 
@@ -12615,9 +12615,9 @@ export interface PartitionTable {
 
     // Owm methods of Camel-1.2.Camel.PartitionTable
 
-    add(key: string | null, keyid: _key_t): number
-    lookup(key: string | null): _key_t
-    remove(key: string | null): boolean
+    add(key: string, keyid: _key_t): number
+    lookup(key: string): _key_t
+    remove(key: string): boolean
     sync(): number
 
     // Class property signals of Camel-1.2.Camel.PartitionTable
@@ -12672,7 +12672,7 @@ export interface SExp {
      * @param name a variable name
      * @param value a variable value, as a #CamelSExpTerm
      */
-    addVariable(scope: number, name: string | null, value: SExpTerm): void
+    addVariable(scope: number, name: string, value: SExpTerm): void
     error(): string | null
     evaluateOccurTimes(start: number, end: number): boolean
     /**
@@ -12685,14 +12685,14 @@ export interface SExp {
      * @param text a text buffer to scan
      * @param len the length of the text buffer
      */
-    inputText(text: string | null, len: number): void
+    inputText(text: string, len: number): void
     parse(): number
     /**
      * Revoes a symbol from a scope.
      * @param scope a scope
      * @param name a symbol name
      */
-    removeSymbol(scope: number, name: string | null): void
+    removeSymbol(scope: number, name: string): void
     /**
      * Frees the `result` and its internal data. Does nothing,
      * when the `result` is %NULL.
@@ -12752,14 +12752,14 @@ export class SExp extends GObject.Object {
      * @param string Destination #GString
      * @param vString String expression.
      */
-    static encodeString(string: GLib.String, vString: string | null): void
+    static encodeString(string: GLib.String, vString: string): void
     /**
      * Converts a search expression to an SQL 'WHERE' part statement,
      * without the 'WHERE' keyword.
      * @param sexp a search expression to convert
      * @returns a newly allocated string, an SQL    'WHERE' part statement, or %NULL, when could not convert it. Free it with    g_free(), when done with it.
      */
-    static toSqlSexp(sexp: string | null): string | null
+    static toSqlSexp(sexp: string): string | null
 }
 
 export module SMIMEContext {
@@ -12785,7 +12785,7 @@ export interface SMIMEContext {
     // Owm methods of Camel-1.2.Camel.SMIMEContext
 
     describePart(part: any | null): number
-    setEncryptKey(use: boolean, key: string | null): void
+    setEncryptKey(use: boolean, key: string): void
     setSignMode(type: SMIMESign): void
 
     // Class property signals of Camel-1.2.Camel.SMIMEContext
@@ -12904,7 +12904,7 @@ export interface Sasl {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    challengeBase64(token: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    challengeBase64(token: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_sasl_challenge_base64().
      * @param result a #GAsyncResult
@@ -12918,7 +12918,7 @@ export interface Sasl {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns the base64-encoded response
      */
-    challengeBase64Sync(token: string | null, cancellable: Gio.Cancellable | null): string | null
+    challengeBase64Sync(token: string, cancellable: Gio.Cancellable | null): string | null
     /**
      * Finishes the operation started with camel_sasl_challenge().  Free the
      * returned #GByteArray with g_byte_array_free().
@@ -12928,9 +12928,9 @@ export interface Sasl {
     challengeFinish(result: Gio.AsyncResult): number[] | null
     // Has conflict: challengeSync(token: number[] | null, cancellable: Gio.Cancellable | null): number[] | null
     getAuthenticated(): boolean
-    getMechanism(): string | null
+    getMechanism(): string
     getService(): Service
-    getServiceName(): string | null
+    getServiceName(): string
     setAuthenticated(authenticated: boolean): void
     /**
      * Asynchronously determine whether `sasl` can be used for password-less
@@ -13013,10 +13013,10 @@ export class Sasl extends GObject.Object {
     // Constructors of Camel-1.2.Camel.Sasl
 
     constructor(config?: Sasl.ConstructorProperties) 
-    constructor(serviceName: string | null, mechanism: string | null, service: Service) 
-    static new(serviceName: string | null, mechanism: string | null, service: Service): Sasl
+    constructor(serviceName: string, mechanism: string, service: Service) 
+    static new(serviceName: string, mechanism: string, service: Service): Sasl
     _init(config?: Sasl.ConstructorProperties): void
-    static authtype(mechanism: string | null): ServiceAuthType | null
+    static authtype(mechanism: string): ServiceAuthType | null
     static authtypeList(includePlain: boolean): ServiceAuthType[]
     /**
      * Checks whether exists a #CamelSasl method for the `mechanism` and
@@ -13099,7 +13099,7 @@ export class SaslAnonymous extends Sasl {
      * @param traceInfo trace info
      * @returns a new #CamelSasl object
      */
-    constructor(type: SaslAnonTraceType, traceInfo: string | null) 
+    constructor(type: SaslAnonTraceType, traceInfo: string) 
     /**
      * Create a new #CamelSaslAnonymous object.
      * @constructor 
@@ -13107,11 +13107,11 @@ export class SaslAnonymous extends Sasl {
      * @param traceInfo trace info
      * @returns a new #CamelSasl object
      */
-    static new(type: SaslAnonTraceType, traceInfo: string | null): SaslAnonymous
+    static new(type: SaslAnonTraceType, traceInfo: string): SaslAnonymous
 
     // Overloads of new
 
-    static new(serviceName: string | null, mechanism: string | null, service: Service): Sasl
+    static new(serviceName: string, mechanism: string, service: Service): Sasl
     _init(config?: SaslAnonymous.ConstructorProperties): void
 }
 
@@ -14023,7 +14023,7 @@ export interface Service extends Gio.Initable {
      * when attempting to authenticate.
      * @returns the password for @service
      */
-    getPassword(): string | null
+    getPassword(): string
     /**
      * Gets the #CamelProvider associated with the service.
      * @returns the #CamelProvider
@@ -14033,7 +14033,7 @@ export interface Service extends Gio.Initable {
      * Gets the unique identifier string associated with the service.
      * @returns the UID string
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Returns the base directory under which to store cache data
      * for `service`.  The directory is formed by appending the directory
@@ -14041,7 +14041,7 @@ export interface Service extends Gio.Initable {
      * #CamelService:uid value.
      * @returns the base cache directory for @service
      */
-    getUserCacheDir(): string | null
+    getUserCacheDir(): string
     /**
      * Returns the base directory under which to store user-specific data
      * for `service`.  The directory is formed by appending the directory
@@ -14049,7 +14049,7 @@ export interface Service extends Gio.Initable {
      * #CamelService:uid value.
      * @returns the base directory for @service
      */
-    getUserDataDir(): string | null
+    getUserDataDir(): string
     /**
      * Performs any necessary file migrations for `service`.  This should be
      * called after installing or configuring the `service'`s #CamelSettings,
@@ -14137,7 +14137,7 @@ export interface Service extends Gio.Initable {
      * SASL mechanisms use this when attempting to authenticate.
      * @param password the password for `service`
      */
-    setPassword(password: string | null): void
+    setPassword(password: string): void
     /**
      * Sets the #GProxyResolver for `service`.  If an application needs to
      * override this, it should do so prior to calling functions on `service`
@@ -14357,8 +14357,8 @@ export interface Session {
 
     // Owm methods of Camel-1.2.Camel.Session
 
-    // Has conflict: addService(uid: string | null, protocol: string | null, type: ProviderType): Service
-    // Has conflict: addressbookContainsSync(bookUid: string | null, emailAddress: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: addService(uid: string, protocol: string, type: ProviderType): Service
+    // Has conflict: addressbookContainsSync(bookUid: string, emailAddress: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously authenticates `service,` which may involve repeated calls
      * to camel_service_authenticate() or camel_service_authenticate_sync().
@@ -14386,7 +14386,7 @@ export interface Session {
      */
     authenticateFinish(result: Gio.AsyncResult): boolean
     // Has conflict: authenticateSync(service: Service, mechanism: string | null, cancellable: Gio.Cancellable | null): boolean
-    // Has conflict: forgetPassword(service: Service, item: string | null): boolean
+    // Has conflict: forgetPassword(service: Service, item: string): boolean
     /**
      * Asynchronously forwards `message` in `folder` to the email address(s)
      * given by `address`.
@@ -14401,7 +14401,7 @@ export interface Session {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    forwardTo(folder: Folder, message: MimeMessage, address: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    forwardTo(folder: Folder, message: MimeMessage, address: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_session_forward_to().
      * 
@@ -14410,8 +14410,8 @@ export interface Session {
      * @returns %TRUE on success, %FALSE on failure
      */
     forwardToFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: forwardToSync(folder: Folder, message: MimeMessage, address: string | null, cancellable: Gio.Cancellable | null): boolean
-    // Has conflict: getFilterDriver(type: string | null, forFolder: Folder | null): FilterDriver
+    // Has conflict: forwardToSync(folder: Folder, message: MimeMessage, address: string, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: getFilterDriver(type: string, forFolder: Folder | null): FilterDriver
     /**
      * Returns the #CamelJunkFilter instance used to classify messages as
      * junk or not junk during filtering.
@@ -14425,18 +14425,18 @@ export interface Session {
     getJunkHeaders(): GLib.HashTable
     // Has conflict: getOauth2AccessTokenSync(service: Service, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     getOnline(): boolean
-    // Has conflict: getPassword(service: Service, prompt: string | null, item: string | null, flags: number): string | null
+    // Has conflict: getPassword(service: Service, prompt: string, item: string, flags: number): string | null
     // Has conflict: getRecipientCertificatesSync(flags: number, recipients: string[], cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCertificates */ string[] ]
     /**
      * Returns the base directory under which to store user-specific mail cache.
      * @returns the base directory for mail cache
      */
-    getUserCacheDir(): string | null
+    getUserCacheDir(): string
     /**
      * Returns the base directory under which to store user-specific mail data.
      * @returns the base directory for mail data
      */
-    getUserDataDir(): string | null
+    getUserDataDir(): string
     /**
      * Adds a function to be called whenever there are no higher priority events
      * pending.  If `function` returns %FALSE it is automatically removed from the
@@ -14471,7 +14471,7 @@ export interface Session {
      * @returns an unsorted list of #CamelService objects
      */
     listServices(): Service[]
-    // Has conflict: lookupAddressbook(name: string | null): boolean
+    // Has conflict: lookupAddressbook(name: string): boolean
     /**
      * Returns the #GMainContext on which event sources for `session` are to
      * be attached.
@@ -14496,7 +14496,7 @@ export interface Session {
      * @param uid a unique identifier string
      * @returns a #CamelService instance, or %NULL
      */
-    refService(uid: string | null): Service | null
+    refService(uid: string): Service | null
     /**
      * Looks up a #CamelService by trying to match its #CamelURL against the
      * given `url` and then checking that the object is of the desired `type`.
@@ -14565,9 +14565,9 @@ export interface Session {
      * @param description human readable description of the job, shown to a user
      * @param callback a #CamelSessionCallback
      */
-    submitJob(description: string | null, callback: SessionCallback): void
+    submitJob(description: string, callback: SessionCallback): void
     // Has conflict: trustPrompt(service: Service, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): CertTrust
-    // Has conflict: userAlert(service: Service, type: SessionAlertType, message: string | null): void
+    // Has conflict: userAlert(service: Service, type: SessionAlertType, message: string): void
 
     // Own virtual methods of Camel-1.2.Camel.Session
 
@@ -14593,7 +14593,7 @@ export interface Session {
      * @param type the service type
      * @returns a #CamelService instance, or %NULL on error
      */
-    addService(uid: string | null, protocol: string | null, type: ProviderType): Service
+    addService(uid: string, protocol: string, type: ProviderType): Service
     /**
      * Look up in an address book `book_uid` for an address `email_address`
      * and returns whether any such contact exists.
@@ -14610,7 +14610,7 @@ export interface Session {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE, when the @email_address could be found in the @book_uid
      */
-    addressbookContainsSync(bookUid: string | null, emailAddress: string | null, cancellable: Gio.Cancellable | null): boolean
+    addressbookContainsSync(bookUid: string, emailAddress: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Authenticates `service,` which may involve repeated calls to
      * camel_service_authenticate() or camel_service_authenticate_sync().
@@ -14641,7 +14641,7 @@ export interface Session {
      * @param item an identifier, unique within this service, for the information
      * @returns %TRUE on success, %FALSE on failure
      */
-    forgetPassword(service: Service, item: string | null): boolean
+    forgetPassword(service: Service, item: string): boolean
     /**
      * Forwards `message` in `folder` to the email address(es) given by `address`.
      * 
@@ -14653,7 +14653,7 @@ export interface Session {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on failure
      */
-    forwardToSync(folder: Folder, message: MimeMessage, address: string | null, cancellable: Gio.Cancellable | null): boolean
+    forwardToSync(folder: Folder, message: MimeMessage, address: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * The optional `for_folder` can be used to determine which filters
      * to add and which not.
@@ -14662,7 +14662,7 @@ export interface Session {
      * @param forFolder an optional #CamelFolder, for which the filter driver will run, or %NULL
      * @returns a filter driver, loaded with applicable rules
      */
-    getFilterDriver(type: string | null, forFolder: Folder | null): FilterDriver
+    getFilterDriver(type: string, forFolder: Folder | null): FilterDriver
     /**
      * Obtains the OAuth 2.0 access token for `service` along with its expiry
      * in seconds from the current time (or 0 if unknown).
@@ -14699,7 +14699,7 @@ export interface Session {
      * @param flags %CAMEL_SESSION_PASSWORD_REPROMPT, the prompt should force a reprompt %CAMEL_SESSION_PASSWORD_SECRET, whether the password is secret %CAMEL_SESSION_PASSWORD_STATIC, the password is remembered externally
      * @returns the authentication information or %NULL on error
      */
-    getPassword(service: Service, prompt: string | null, item: string | null, flags: number): string | null
+    getPassword(service: Service, prompt: string, item: string, flags: number): string | null
     /**
      * Searches for S/MIME certificates or PGP keys for the given `recipients,`
      * which are returned as base64 encoded strings in `out_certificates`.
@@ -14734,7 +14734,7 @@ export interface Session {
      * @param name a name/address to lookup for
      * @returns whether found the @name in any address book.
      */
-    lookupAddressbook(name: string | null): boolean
+    lookupAddressbook(name: string): boolean
     /**
      * Removes a #CamelService previously added by camel_session_add_service().
      * @virtual 
@@ -14768,7 +14768,7 @@ export interface Session {
      * @param type a #CamelSessionAlertType
      * @param message the message for the user
      */
-    userAlert(service: Service, type: SessionAlertType, message: string | null): void
+    userAlert(service: Service, type: SessionAlertType, message: string): void
 
     // Own signals of Camel-1.2.Camel.Session
 
@@ -15004,7 +15004,7 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    createFolder(parentName: string | null, folderName: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    createFolder(parentName: string | null, folderName: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_store_create_folder().
      * The returned #CamelFolderInfo struct should be freed with
@@ -15013,7 +15013,7 @@ export interface Store extends Gio.Initable {
      * @returns info about the created folder, or %NULL on error
      */
     createFolderFinish(result: Gio.AsyncResult): FolderInfo | null
-    // Has conflict: createFolderSync(parentName: string | null, folderName: string | null, cancellable: Gio.Cancellable | null): FolderInfo | null
+    // Has conflict: createFolderSync(parentName: string | null, folderName: string, cancellable: Gio.Cancellable | null): FolderInfo | null
     /**
      * Deletes local data for the given `folder_name`. The folder should
      * be part of the opened folders.
@@ -15023,7 +15023,7 @@ export interface Store extends Gio.Initable {
      * if you want to do that instead.
      * @param folderName a folder full name to delete from the cache
      */
-    deleteCachedFolder(folderName: string | null): void
+    deleteCachedFolder(folderName: string): void
     /**
      * Asynchronously deletes the folder described by `folder_name`.  The
      * folder must be empty.
@@ -15035,14 +15035,14 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    deleteFolder(folderName: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteFolder(folderName: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_store_delete_folder().
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
     deleteFolderFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: deleteFolderSync(folderName: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: deleteFolderSync(folderName: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Returns a #GPtrArray of all the opened folders for the `store`. The caller owns
      * both the array and the folder references, so to free the array use:
@@ -15060,7 +15060,7 @@ export interface Store extends Gio.Initable {
     // Has conflict: folderDeleted(folderInfo: FolderInfo): void
     // Has conflict: folderInfoStale(): void
     // Has conflict: folderOpened(folder: Folder): void
-    // Has conflict: folderRenamed(oldName: string | null, folderInfo: FolderInfo): void
+    // Has conflict: folderRenamed(oldName: string, folderInfo: FolderInfo): void
     // Has conflict: getCanAutoSaveChanges(): boolean
     getDb(): DB
     getFlags(): number
@@ -15075,7 +15075,7 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    getFolder(folderName: string | null, flags: StoreGetFolderFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getFolder(folderName: string, flags: StoreGetFolderFlags, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_store_get_folder().
      * @param result a #GAsyncResult
@@ -15106,7 +15106,7 @@ export interface Store extends Gio.Initable {
      */
     getFolderInfoFinish(result: Gio.AsyncResult): FolderInfo | null
     // Has conflict: getFolderInfoSync(top: string | null, flags: StoreGetFolderInfoFlags, cancellable: Gio.Cancellable | null): FolderInfo | null
-    // Has conflict: getFolderSync(folderName: string | null, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null
+    // Has conflict: getFolderSync(folderName: string, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null
     getFoldersBag(): ObjectBag
     /**
      * Asynchronously gets the folder in `store` into which new mail is delivered.
@@ -15204,14 +15204,14 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    renameFolder(oldName: string | null, newName: string | null, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    renameFolder(oldName: string, newName: string, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the operation started with camel_store_rename_folder().
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on error
      */
     renameFolderFinish(result: Gio.AsyncResult): boolean
-    // Has conflict: renameFolderSync(oldName: string | null, newName: string | null, cancellable: Gio.Cancellable | null): boolean
+    // Has conflict: renameFolderSync(oldName: string, newName: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets flags for the `store,` a bit-or of #CamelStoreFlags.
      * @param flags bit-or of #CamelStoreFlags
@@ -15265,7 +15265,7 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns info about the created folder, or %NULL on error
      */
-    createFolderSync(parentName: string | null, folderName: string | null, cancellable: Gio.Cancellable | null): FolderInfo | null
+    createFolderSync(parentName: string | null, folderName: string, cancellable: Gio.Cancellable | null): FolderInfo | null
     /**
      * Deletes the folder described by `folder_name`.  The folder must be empty.
      * @virtual 
@@ -15273,7 +15273,7 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on failure
      */
-    deleteFolderSync(folderName: string | null, cancellable: Gio.Cancellable | null): boolean
+    deleteFolderSync(folderName: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Emits the #CamelStore::folder-created signal from an idle source on
      * the main loop.  The idle source's priority is #G_PRIORITY_HIGH_IDLE.
@@ -15321,7 +15321,7 @@ export interface Store extends Gio.Initable {
      * @param oldName the old name of the folder
      * @param folderInfo information about the renamed folder
      */
-    folderRenamed(oldName: string | null, folderInfo: FolderInfo): void
+    folderRenamed(oldName: string, folderInfo: FolderInfo): void
     /**
      * Returns whether there can be done automatic save of folder changes.
      * Default is TRUE. The descendants can overwrite it with CamelStoreClass::get_can_auto_save_changes().
@@ -15366,7 +15366,7 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns the requested #CamelFolder object, or %NULL on error
      */
-    getFolderSync(folderName: string | null, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null
+    getFolderSync(folderName: string, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null): Folder | null
     /**
      * Gets the folder in `store` into which new mail is delivered.
      * @virtual 
@@ -15416,7 +15416,7 @@ export interface Store extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    renameFolderSync(oldName: string | null, newName: string | null, cancellable: Gio.Cancellable | null): boolean
+    renameFolderSync(oldName: string, newName: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Synchronizes any changes that have been made to `store` and its folders
      * with the real store.
@@ -16009,7 +16009,7 @@ export interface StoreSummary {
      * @param path item path
      * @returns the newly added record or %NULL if the @path already exists
      */
-    addFromPath(path: string | null): StoreInfo | null
+    addFromPath(path: string): StoreInfo | null
     /**
      * Obtain a copy of the summary array.  This is done atomically,
      * so cannot contain empty entries.
@@ -16033,7 +16033,7 @@ export interface StoreSummary {
      * @param folderSummary a #CamelFolderSummary object
      * @returns Whether successfully connect callbacks for count change notifications.
      */
-    connectFolderSummary(path: string | null, folderSummary: FolderSummary): boolean
+    connectFolderSummary(path: string, folderSummary: FolderSummary): boolean
     /**
      * Get the number of summary items stored in this summary.
      * @returns the number of items gint he summary.
@@ -16071,7 +16071,7 @@ export interface StoreSummary {
      * Remove a specific info record from the summary, by `path`.
      * @param path item path
      */
-    removePath(path: string | null): void
+    removePath(path: string): void
     /**
      * Writes the summary to disk.  The summary is only written if changes
      * have occurred.
@@ -16082,7 +16082,7 @@ export interface StoreSummary {
      * Set the filename where the summary will be loaded to/saved from.
      * @param filename a filename
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sorts the array of the folders using the `compare_func`.
      * @param compareFunc a compare function
@@ -16098,9 +16098,9 @@ export interface StoreSummary {
 
     storeInfoFree(info: StoreInfo): void
     storeInfoLoad(file: any | null): StoreInfo
-    storeInfoNew(path: string | null): StoreInfo
+    storeInfoNew(path: string): StoreInfo
     storeInfoSave(file: any | null, info: StoreInfo): number
-    storeInfoSetValue(info: StoreInfo, type: number, value: string | null): void
+    storeInfoSetValue(info: StoreInfo, type: number, value: string): void
     summaryHeaderLoad(file: any | null): number
     summaryHeaderSave(file: any | null): number
 
@@ -16198,7 +16198,7 @@ export interface Stream extends Gio.Seekable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns the number of characters written or -1 on error.
      */
-    writeString(string: string | null, cancellable: Gio.Cancellable | null): number
+    writeString(string: string, cancellable: Gio.Cancellable | null): number
     /**
      * Write all of a stream (until eos) into another stream, in a
      * blocking fashion.
@@ -16612,7 +16612,7 @@ export class StreamFs extends Stream {
      * @param mode a file mode
      * @returns the new stream, or %NULL on error
      */
-    static newWithName(name: string | null, flags: number, mode: number): StreamFs
+    static newWithName(name: string, flags: number, mode: number): StreamFs
     _init(config?: StreamFs.ConstructorProperties): void
 }
 
@@ -16840,7 +16840,7 @@ export interface StreamProcess extends Gio.Seekable {
 
     // Owm methods of Camel-1.2.Camel.StreamProcess
 
-    connect(command: string | null, env: string | null): number
+    connect(command: string, env: string): number
 
     // Class property signals of Camel-1.2.Camel.StreamProcess
 
@@ -16946,12 +16946,12 @@ export class TextIndex extends Index {
     // Constructors of Camel-1.2.Camel.TextIndex
 
     constructor(config?: TextIndex.ConstructorProperties) 
-    constructor(path: string | null, flags: number) 
-    static new(path: string | null, flags: number): TextIndex
+    constructor(path: string, flags: number) 
+    static new(path: string, flags: number): TextIndex
     _init(config?: TextIndex.ConstructorProperties): void
-    static check(path: string | null): number
-    static remove(old: string | null): number
-    static rename(old: string | null, new_: string | null): number
+    static check(path: string): number
+    static remove(old: string): number
+    static rename(old: string, new_: string): number
 }
 
 export module TextIndexCursor {
@@ -17596,7 +17596,7 @@ export class VTrashFolder extends VeeFolder {
 
     // Overloads of new
 
-    static new(parentStore: Store, full: string | null, flags: number): VeeFolder
+    static new(parentStore: Store, full: string, flags: number): VeeFolder
     _init(config?: VTrashFolder.ConstructorProperties): void
 }
 
@@ -17633,7 +17633,7 @@ export interface VeeDataCache {
      * @param folder a #CamelFolder to which the `orig_message_uid` belongs
      * @param origMessageUid a message UID from the `folder` to check
      */
-    containsMessageInfoData(folder: Folder, origMessageUid: string | null): boolean
+    containsMessageInfoData(folder: Folder, origMessageUid: string): boolean
     /**
      * Calls the `func` for each message info data from the given `fromfolder`
      * @param fromfolder a #CamelFolder
@@ -17649,8 +17649,8 @@ export interface VeeDataCache {
      * @param origMessageUid a message UID from the `folder` to return
      * @returns a referenced #CamelVeeMessageInfoData; unref it    with g_object_unref(), when no longer needed.
      */
-    getMessageInfoData(folder: Folder, origMessageUid: string | null): VeeMessageInfoData
-    getMessageInfoDataByVuid(veeMessageUid: string | null): VeeMessageInfoData | null
+    getMessageInfoData(folder: Folder, origMessageUid: string): VeeMessageInfoData
+    getMessageInfoDataByVuid(veeMessageUid: string): VeeMessageInfoData | null
     /**
      * Returns a #CamelVeeSubfolderData for the given `folder`.
      * @param folder a #CamelFolder for which to return subfolder data
@@ -17749,7 +17749,7 @@ export interface VeeFolder {
      */
     construct(flags: number): void
     getAutoUpdate(): boolean
-    getExpression(): string | null
+    getExpression(): string
     getFlags(): number
     /**
      * Find the real folder (and message info UID) for the given `vinfo`.
@@ -17759,7 +17759,7 @@ export interface VeeFolder {
      * @returns a real (not virtual) #CamelFolder, which the @vinfo is for.
      */
     getLocation(vinfo: VeeMessageInfo): [ /* returnType */ Folder, /* realuid */ string | null ]
-    getVeeUidFolder(veeMessageUid: string | null): Folder | null
+    getVeeUidFolder(veeMessageUid: string): Folder | null
     /**
      * The next `subfolder-'`s 'changed' event will be silently ignored. This
      * is usually used in virtual folders when the change was done in them,
@@ -17811,7 +17811,7 @@ export interface VeeFolder {
      * @param autoUpdate a value to set
      */
     setAutoUpdate(autoUpdate: boolean): void
-    // Has conflict: setExpression(expression: string | null): void
+    // Has conflict: setExpression(expression: string): void
     /**
      * Set the whole list of folder sources on a vee folder.
      * @param folders a #GList of #CamelFolder to add
@@ -17848,7 +17848,7 @@ export interface VeeFolder {
      * @virtual 
      * @param expression an SExp expression to set
      */
-    setExpression(expression: string | null): void
+    setExpression(expression: string): void
 
     // Class property signals of Camel-1.2.Camel.VeeFolder
 
@@ -17914,8 +17914,8 @@ export class VeeFolder extends Folder {
     // Constructors of Camel-1.2.Camel.VeeFolder
 
     constructor(config?: VeeFolder.ConstructorProperties) 
-    constructor(parentStore: Store, full: string | null, flags: number) 
-    static new(parentStore: Store, full: string | null, flags: number): VeeFolder
+    constructor(parentStore: Store, full: string, flags: number) 
+    static new(parentStore: Store, full: string, flags: number): VeeFolder
     _init(config?: VeeFolder.ConstructorProperties): void
 }
 
@@ -18090,7 +18090,7 @@ export class VeeMessageInfo extends MessageInfo {
      * @param vuid what UID to set on the resulting message info
      * @returns a newly created #CamelVeeMessageInfo   which references @orig_mi. Free with g_object_unref() when done   with it.
      */
-    constructor(summary: FolderSummary, originalSummary: FolderSummary, vuid: string | null) 
+    constructor(summary: FolderSummary, originalSummary: FolderSummary, vuid: string) 
     /**
      * Creates a new instance of #CamelVeeMessageInfo which references
      * a message from the `original_summary` internally.
@@ -18103,7 +18103,7 @@ export class VeeMessageInfo extends MessageInfo {
      * @param vuid what UID to set on the resulting message info
      * @returns a newly created #CamelVeeMessageInfo   which references @orig_mi. Free with g_object_unref() when done   with it.
      */
-    static new(summary: FolderSummary, originalSummary: FolderSummary, vuid: string | null): VeeMessageInfo
+    static new(summary: FolderSummary, originalSummary: FolderSummary, vuid: string): VeeMessageInfo
 
     // Overloads of new
 
@@ -18134,9 +18134,9 @@ export interface VeeMessageInfoData {
 
     // Owm methods of Camel-1.2.Camel.VeeMessageInfoData
 
-    getOrigMessageUid(): string | null
+    getOrigMessageUid(): string
     getSubfolderData(): VeeSubfolderData
-    getVeeMessageUid(): string | null
+    getVeeMessageUid(): string
 
     // Class property signals of Camel-1.2.Camel.VeeMessageInfoData
 
@@ -18167,8 +18167,8 @@ export class VeeMessageInfoData extends GObject.Object {
     // Constructors of Camel-1.2.Camel.VeeMessageInfoData
 
     constructor(config?: VeeMessageInfoData.ConstructorProperties) 
-    constructor(subfolderData: VeeSubfolderData, origMessageUid: string | null) 
-    static new(subfolderData: VeeSubfolderData, origMessageUid: string | null): VeeMessageInfoData
+    constructor(subfolderData: VeeSubfolderData, origMessageUid: string) 
+    static new(subfolderData: VeeSubfolderData, origMessageUid: string): VeeMessageInfoData
     _init(config?: VeeMessageInfoData.ConstructorProperties): void
 }
 
@@ -18624,7 +18624,7 @@ export interface VeeSubfolderData {
     // Owm methods of Camel-1.2.Camel.VeeSubfolderData
 
     getFolder(): Folder
-    getFolderId(): string | null
+    getFolderId(): string
 
     // Class property signals of Camel-1.2.Camel.VeeSubfolderData
 
@@ -18730,7 +18730,7 @@ export interface VeeSummary {
      * @param vuid a virtual message info UID to remove
      * @param subfolder a #CamelFolder to which `vuid` belongs
      */
-    remove(vuid: string | null, subfolder: Folder): void
+    remove(vuid: string, subfolder: Folder): void
 
     // Overloads of remove
 
@@ -18746,7 +18746,7 @@ export interface VeeSummary {
      * on `summary` as well.
      * @param uid a message UID to update flags for
      */
-    replaceFlags(uid: string | null): void
+    replaceFlags(uid: string): void
 
     // Overloads of replaceFlags
 
@@ -18841,9 +18841,9 @@ export interface AddressClass {
 
     parentClass: GObject.ObjectClass
     length: (addr: Address) => number
-    decode: (addr: Address, raw: string | null) => number
+    decode: (addr: Address, raw: string) => number
     encode: (addr: Address) => string | null
-    unformat: (addr: Address, raw: string | null) => number
+    unformat: (addr: Address, raw: string) => number
     format: (addr: Address) => string | null
     cat: (dest: Address, source: Address) => number
     remove: (addr: Address, index: number) => void
@@ -19015,7 +19015,7 @@ export interface Charset {
 
     // Owm methods of Camel-1.2.Camel.Charset
 
-    bestName(): string | null
+    bestName(): string
     init(): void
     /**
      * Processes more input text with the `cc`.
@@ -19038,7 +19038,7 @@ export class Charset {
      * @returns the minimum charset or NULL for US_ASCII.
      */
     static best(in_: number[]): string | null
-    static isoToWindows(isocharset: string | null): string | null
+    static isoToWindows(isocharset: string): string
 }
 
 export interface CipherCertInfo {
@@ -19082,12 +19082,12 @@ export interface CipherContextClass {
     // Own fields of Camel-1.2.Camel.CipherContextClass
 
     parentClass: GObject.ObjectClass
-    signProtocol: string | null
-    encryptProtocol: string | null
-    keyProtocol: string | null
-    idToHash: (context: CipherContext, id: string | null) => CipherHash
-    hashToId: (context: CipherContext, hash: CipherHash) => string | null
-    signSync: (context: CipherContext, userid: string | null, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null) => boolean
+    signProtocol: string
+    encryptProtocol: string
+    keyProtocol: string
+    idToHash: (context: CipherContext, id: string) => CipherHash
+    hashToId: (context: CipherContext, hash: CipherHash) => string
+    signSync: (context: CipherContext, userid: string, hash: CipherHash, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null) => boolean
     verifySync: (context: CipherContext, ipart: MimePart, cancellable: Gio.Cancellable | null) => CipherValidity
     encryptSync: (context: CipherContext, userid: string | null, recipients: string[], ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null) => boolean
     decryptSync: (context: CipherContext, ipart: MimePart, opart: MimePart, cancellable: Gio.Cancellable | null) => CipherValidity
@@ -19128,7 +19128,7 @@ export interface CipherValidity {
      * @param email an e-mail address to add
      * @returns Index of the added certinfo; -1 on error
      */
-    addCertinfo(mode: CipherValidityMode, name: string | null, email: string | null): number
+    addCertinfo(mode: CipherValidityMode, name: string, email: string): number
     /**
      * Add a cert info to the signer or encrypter info, with extended data set.
      * @param mode a #CamelCipherValidityMode, where to add the additional certificate information
@@ -19138,7 +19138,7 @@ export interface CipherValidity {
      * @param certDataClone a copy function for `cert_data,` to copy the data; required, when `cert_data` is not %NULL
      * @returns Index of the added certinfo; -1 on error
      */
-    addCertinfoEx(mode: CipherValidityMode, name: string | null, email: string | null, certData: any | null, certDataClone: CipherCloneFunc | null): number
+    addCertinfoEx(mode: CipherValidityMode, name: string, email: string, certData: any | null, certDataClone: CipherCloneFunc | null): number
     clear(): void
     clone(): CipherValidity
     /**
@@ -19155,8 +19155,8 @@ export interface CipherValidity {
      * @param name a property name
      * @returns Value of a named property of a #CamelCipherCertInfo, or %NULL when no such    property exists. The returned value is owned by the associated #CamelCipherCertInfo    and is valid until the cert info is freed.
      */
-    getCertinfoProperty(mode: CipherValidityMode, infoIndex: number, name: string | null): any | null
-    getDescription(): string | null
+    getCertinfoProperty(mode: CipherValidityMode, infoIndex: number, name: string): any | null
+    getDescription(): string
     getValid(): boolean
     init(): void
     /**
@@ -19170,8 +19170,8 @@ export interface CipherValidity {
      * @param value a property value, or %NULL
      * @param valueClone a clone function for the `value`
      */
-    setCertinfoProperty(mode: CipherValidityMode, infoIndex: number, name: string | null, value: any | null, valueClone: CipherCloneFunc | null): void
-    setDescription(description: string | null): void
+    setCertinfoProperty(mode: CipherValidityMode, infoIndex: number, name: string, value: any | null, valueClone: CipherCloneFunc | null): void
+    setDescription(description: string): void
     setValid(valid: boolean): void
 }
 
@@ -19214,7 +19214,7 @@ export class ContentDisposition {
 
     constructor() 
     static new(): ContentDisposition
-    static decode(in_: string | null): ContentDisposition
+    static decode(in_: string): ContentDisposition
 }
 
 export interface ContentType {
@@ -19237,14 +19237,14 @@ export interface ContentType {
      * @param subtype A subtype to check against, or "*" to match any subtype.
      * @returns %TRUE if the content type @ct is of type @type/@subtype or %FALSE otherwise
      */
-    is(type: string | null, subtype: string | null): boolean
+    is(type: string, subtype: string): boolean
     /**
      * Searches the params on s #CamelContentType for a param named `name`
      * and gets the value.
      * @param name name of param to find
      * @returns the value of the @name param
      */
-    param(name: string | null): string | null
+    param(name: string): string
     /**
      * Refs the content type.
      */
@@ -19254,7 +19254,7 @@ export interface ContentType {
      * @param name name of param to set
      * @param value value of param to set
      */
-    setParam(name: string | null, value: string | null): void
+    setParam(name: string, value: string): void
     simple(): string | null
     /**
      * Unrefs, and potentially frees, the content type.
@@ -19277,7 +19277,7 @@ export class ContentType {
      * @param subtype the subtype
      * @returns the new #CamelContentType
      */
-    constructor(type: string | null, subtype: string | null) 
+    constructor(type: string, subtype: string) 
     /**
      * Create a new #CamelContentType.
      * @constructor 
@@ -19285,8 +19285,8 @@ export class ContentType {
      * @param subtype the subtype
      * @returns the new #CamelContentType
      */
-    static new(type: string | null, subtype: string | null): ContentType
-    static decode(in_: string | null): ContentType
+    static new(type: string, subtype: string): ContentType
+    static decode(in_: string): ContentType
 }
 
 export interface DBClass {
@@ -19339,7 +19339,7 @@ export interface DataWrapperClass {
     // Own fields of Camel-1.2.Camel.DataWrapperClass
 
     parentClass: GObject.ObjectClass
-    setMimeType: (dataWrapper: DataWrapper, mimeType: string | null) => void
+    setMimeType: (dataWrapper: DataWrapper, mimeType: string) => void
     getMimeType: (dataWrapper: DataWrapper) => string | null
     getMimeTypeField: (dataWrapper: DataWrapper) => ContentType | null
     setMimeTypeField: (dataWrapper: DataWrapper, mimeType: ContentType | null) => void
@@ -19537,7 +19537,7 @@ export interface FolderChangeInfo {
      * Add a source uid for generating a changeset.
      * @param uid a uid
      */
-    addSource(uid: string | null): void
+    addSource(uid: string): void
     /**
      * Add a list of source uid's for generating a changeset.
      * @param list a list of uids
@@ -19547,12 +19547,12 @@ export interface FolderChangeInfo {
      * Add a new uid to the changeinfo.
      * @param uid a uid
      */
-    addUid(uid: string | null): void
+    addUid(uid: string): void
     /**
      * Add a uid from the updated list, used to generate a changeset diff.
      * @param uid a uid
      */
-    addUpdate(uid: string | null): void
+    addUpdate(uid: string): void
     /**
      * Add a list of uid's from the updated list.
      * @param list a list of uids
@@ -19573,7 +19573,7 @@ export interface FolderChangeInfo {
      * Add a uid to the changed uid list.
      * @param uid a uid
      */
-    changeUid(uid: string | null): void
+    changeUid(uid: string): void
     /**
      * Gets whether or not there have been any changes.
      * @returns %TRUE if the changeset contains any changes or %FALSE otherwise
@@ -19623,12 +19623,12 @@ export interface FolderChangeInfo {
      * filtering
      * @param uid a uid
      */
-    recentUid(uid: string | null): void
+    recentUid(uid: string): void
     /**
      * Add a uid to the removed uid list.
      * @param uid a uid
      */
-    removeUid(uid: string | null): void
+    removeUid(uid: string): void
 }
 
 export class FolderChangeInfo {
@@ -19676,47 +19676,47 @@ export interface FolderClass {
     parentClass: ObjectClass
     getMessageCount: (folder: Folder) => number
     getPermanentFlags: (folder: Folder) => number
-    getMessageFlags: (folder: Folder, uid: string | null) => number
-    setMessageFlags: (folder: Folder, uid: string | null, mask: number, set: number) => boolean
-    getMessageUserFlag: (folder: Folder, uid: string | null, name: string | null) => boolean
-    setMessageUserFlag: (folder: Folder, uid: string | null, name: string | null, value: boolean) => void
-    getMessageUserTag: (folder: Folder, uid: string | null, name: string | null) => string | null
-    setMessageUserTag: (folder: Folder, uid: string | null, name: string | null, value: string | null) => void
+    getMessageFlags: (folder: Folder, uid: string) => number
+    setMessageFlags: (folder: Folder, uid: string, mask: number, set: number) => boolean
+    getMessageUserFlag: (folder: Folder, uid: string, name: string) => boolean
+    setMessageUserFlag: (folder: Folder, uid: string, name: string, value: boolean) => void
+    getMessageUserTag: (folder: Folder, uid: string, name: string) => string
+    setMessageUserTag: (folder: Folder, uid: string, name: string, value: string) => void
     getUids: (folder: Folder) => string[]
     freeUids: (folder: Folder, array: string[]) => void
-    cmpUids: (folder: Folder, uid1: string | null, uid2: string | null) => number
+    cmpUids: (folder: Folder, uid1: string, uid2: string) => number
     sortUids: (folder: Folder, uids: string[]) => void
     getSummary: (folder: Folder) => string[]
     freeSummary: (folder: Folder, array: MessageInfo[]) => void
     hasSearchCapability: (folder: Folder) => boolean
-    searchByExpression: (folder: Folder, expression: string | null, cancellable: Gio.Cancellable | null) => string[]
-    searchByUids: (folder: Folder, expression: string | null, uids: string[], cancellable: Gio.Cancellable | null) => string[]
+    searchByExpression: (folder: Folder, expression: string, cancellable: Gio.Cancellable | null) => string[]
+    searchByUids: (folder: Folder, expression: string, uids: string[], cancellable: Gio.Cancellable | null) => string[]
     searchFree: (folder: Folder, result: string[]) => void
-    getMessageInfo: (folder: Folder, uid: string | null) => MessageInfo | null
+    getMessageInfo: (folder: Folder, uid: string) => MessageInfo | null
     delete_: (folder: Folder) => void
-    rename: (folder: Folder, newName: string | null) => void
+    rename: (folder: Folder, newName: string) => void
     freeze: (folder: Folder) => void
     thaw: (folder: Folder) => void
     isFrozen: (folder: Folder) => boolean
-    countByExpression: (folder: Folder, expression: string | null, cancellable: Gio.Cancellable | null) => number
+    countByExpression: (folder: Folder, expression: string, cancellable: Gio.Cancellable | null) => number
     getUncachedUids: (folder: Folder, uids: string[]) => string[]
-    getFilename: (folder: Folder, uid: string | null) => string | null
-    getMessageCached: (folder: Folder, messageUid: string | null, cancellable: Gio.Cancellable | null) => MimeMessage | null
+    getFilename: (folder: Folder, uid: string) => string | null
+    getMessageCached: (folder: Folder, messageUid: string, cancellable: Gio.Cancellable | null) => MimeMessage | null
     appendMessageSync: (folder: Folder, message: MimeMessage, info: MessageInfo | null, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* appendedUid */ string | null ]
     expungeSync: (folder: Folder, cancellable: Gio.Cancellable | null) => boolean
-    getMessageSync: (folder: Folder, messageUid: string | null, cancellable: Gio.Cancellable | null) => MimeMessage
+    getMessageSync: (folder: Folder, messageUid: string, cancellable: Gio.Cancellable | null) => MimeMessage
     getQuotaInfoSync: (folder: Folder, cancellable: Gio.Cancellable | null) => FolderQuotaInfo
     purgeMessageCacheSync: (folder: Folder, startUid: string | null, endUid: string | null, cancellable: Gio.Cancellable | null) => boolean
     refreshInfoSync: (folder: Folder, cancellable: Gio.Cancellable | null) => boolean
     synchronizeSync: (folder: Folder, expunge: boolean, cancellable: Gio.Cancellable | null) => boolean
-    synchronizeMessageSync: (folder: Folder, messageUid: string | null, cancellable: Gio.Cancellable | null) => boolean
+    synchronizeMessageSync: (folder: Folder, messageUid: string, cancellable: Gio.Cancellable | null) => boolean
     transferMessagesToSync: (source: Folder, messageUids: string[], destination: Folder, deleteOriginals: boolean, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* transferredUids */ string[] | null ]
     prepareContentRefresh: (folder: Folder) => void
-    getFullDisplayName: (folder: Folder) => string | null
+    getFullDisplayName: (folder: Folder) => string
     reservedMethods: any[]
     changed: (folder: Folder, changes: FolderChangeInfo) => void
     deleted: (folder: Folder) => void
-    renamed: (folder: Folder, oldName: string | null) => void
+    renamed: (folder: Folder, oldName: string) => void
     reservedSignals: any[]
 }
 
@@ -19789,7 +19789,7 @@ export class FolderInfo {
      * @param shortNames %TRUE if the (short) name of a folder is the part after the last `separator` in the full name. %FALSE if it is the full name.
      * @returns the top level of the tree of linked folder info.
      */
-    static build(folders: FolderInfo[], namespace: string | null, separator: number, shortNames: boolean): FolderInfo
+    static build(folders: FolderInfo[], namespace: string, separator: number, shortNames: boolean): FolderInfo
 }
 
 export interface FolderPrivate {
@@ -19847,8 +19847,8 @@ export class FolderQuotaInfo {
 
     // Constructors of Camel-1.2.Camel.FolderQuotaInfo
 
-    constructor(name: string | null, used: number, total: number) 
-    static new(name: string | null, used: number, total: number): FolderQuotaInfo
+    constructor(name: string, used: number, total: number) 
+    static new(name: string, used: number, total: number): FolderQuotaInfo
 }
 
 export interface FolderSearchClass {
@@ -19882,14 +19882,14 @@ export interface FolderSummaryClass {
 
     parentClass: GObject.ObjectClass
     messageInfoType: GObject.GType
-    collate: string | null
-    sortBy: string | null
+    collate: string
+    sortBy: string
     summaryHeaderLoad: (summary: FolderSummary, fir: any | null) => boolean
     summaryHeaderSave: (summary: FolderSummary) => any | null
     messageInfoNewFromHeaders: (summary: FolderSummary, headers: NameValueArray) => MessageInfo
     messageInfoNewFromParser: (summary: FolderSummary, parser: MimeParser) => MessageInfo
     messageInfoNewFromMessage: (summary: FolderSummary, message: MimeMessage) => MessageInfo
-    messageInfoFromUid: (summary: FolderSummary, uid: string | null) => MessageInfo | null
+    messageInfoFromUid: (summary: FolderSummary, uid: string) => MessageInfo | null
     nextUidString: (summary: FolderSummary) => string | null
     prepareFetchAll: (summary: FolderSummary) => void
     reserved: any[]
@@ -20051,12 +20051,12 @@ export interface GpgKeyInfo {
      * Gets the key fingerprint.
      * @returns key fingerprint
      */
-    getFingerprint(): string | null
+    getFingerprint(): string
     /**
      * Gets the key ID.
      * @returns key ID
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the key trust level, as one of #CamelGpgTrust.
      * @returns key trust level
@@ -20118,13 +20118,13 @@ export interface HeaderAddress {
 
     addMember(member: HeaderAddress): void
     ref(): HeaderAddress
-    setAddr(addr: string | null): void
+    setAddr(addr: string): void
     /**
      * TODO: Document me.
      * @param group a NULL-terminated list of #CamelHeaderAddress
      */
     setMembers(group: HeaderAddress[]): void
-    setName(name: string | null): void
+    setName(name: string): void
     unref(): void
 }
 
@@ -20138,10 +20138,10 @@ export class HeaderAddress {
 
     constructor() 
     static new(): HeaderAddress
-    static newGroup(name: string | null): HeaderAddress
-    static newName(name: string | null, addr: string | null): HeaderAddress
-    static decode(in_: string | null, charset: string | null): HeaderAddress
-    static fold(in_: string | null, headerlen: number): string | null
+    static newGroup(name: string): HeaderAddress
+    static newName(name: string, addr: string): HeaderAddress
+    static decode(in_: string, charset: string): HeaderAddress
+    static fold(in_: string, headerlen: number): string | null
     /**
      * TODO: Document me.
      * @param addrlistp a NULL-terminated list of #CamelHeaderAddress objects
@@ -20206,13 +20206,13 @@ export interface IndexClass {
     sync: (index: Index) => number
     compress: (index: Index) => number
     delete_: (index: Index) => number
-    rename: (index: Index, path: string | null) => number
-    hasName: (index: Index, name: string | null) => number
-    addName: (index: Index, name: string | null) => IndexName | null
+    rename: (index: Index, path: string) => number
+    hasName: (index: Index, name: string) => number
+    addName: (index: Index, name: string) => IndexName | null
     writeName: (index: Index, idn: IndexName) => number
-    findName: (index: Index, name: string | null) => IndexCursor | null
-    deleteName: (index: Index, name: string | null) => void
-    find: (index: Index, word: string | null) => IndexCursor | null
+    findName: (index: Index, name: string) => IndexCursor | null
+    deleteName: (index: Index, name: string) => void
+    find: (index: Index, word: string) => IndexCursor | null
     words: (index: Index) => IndexCursor | null
 }
 
@@ -20228,7 +20228,7 @@ export interface IndexCursorClass {
     // Own fields of Camel-1.2.Camel.IndexCursorClass
 
     parent: GObject.ObjectClass
-    next: (idc: IndexCursor) => string | null
+    next: (idc: IndexCursor) => string
     reserved: any[]
 }
 
@@ -20254,8 +20254,8 @@ export interface IndexNameClass {
     // Own fields of Camel-1.2.Camel.IndexNameClass
 
     parent: GObject.ObjectClass
-    addWord: (name: IndexName, word: string | null) => void
-    addBuffer: (name: IndexName, buffer: string | null, len: number) => number
+    addWord: (name: IndexName, word: string) => void
+    addBuffer: (name: IndexName, buffer: string, len: number) => number
 }
 
 export abstract class IndexNameClass {
@@ -20438,7 +20438,7 @@ export interface MIRecord {
      * Message UID
      * @field 
      */
-    uid: string | null
+    uid: string
     /**
      * Camel Message info flags
      * @field 
@@ -20503,27 +20503,27 @@ export interface MIRecord {
      * subject of the mail
      * @field 
      */
-    subject: string | null
+    subject: string
     /**
      * sender
      * @field 
      */
-    from: string | null
+    from: string
     /**
      * recipient
      * @field 
      */
-    to: string | null
+    to: string
     /**
      * CC members
      * @field 
      */
-    cc: string | null
+    cc: string
     /**
      * message list headers
      * @field 
      */
-    mlist: string | null
+    mlist: string
     /**
      * followup flag / also can be queried to see for followup or not
      * @field 
@@ -20592,10 +20592,10 @@ export interface MediumClass {
     // Own fields of Camel-1.2.Camel.MediumClass
 
     parentClass: DataWrapperClass
-    addHeader: (medium: Medium, name: string | null, value: string | null) => void
-    setHeader: (medium: Medium, name: string | null, value: string | null) => void
-    removeHeader: (medium: Medium, name: string | null) => void
-    getHeader: (medium: Medium, name: string | null) => string | null
+    addHeader: (medium: Medium, name: string, value: string) => void
+    setHeader: (medium: Medium, name: string, value: string | null) => void
+    removeHeader: (medium: Medium, name: string) => void
+    getHeader: (medium: Medium, name: string) => string | null
     dupHeaders: (medium: Medium) => NameValueArray
     getHeaders: (medium: Medium) => NameValueArray
     getContent: (medium: Medium) => DataWrapper | null
@@ -20731,25 +20731,25 @@ export interface MessageInfoClass {
     save: (mi: MessageInfo, record: MIRecord | null, bdataStr: GLib.String) => boolean
     getFlags: (mi: MessageInfo) => number
     setFlags: (mi: MessageInfo, mask: number, set: number) => boolean
-    getUserFlag: (mi: MessageInfo, name: string | null) => boolean
-    setUserFlag: (mi: MessageInfo, name: string | null, state: boolean) => boolean
+    getUserFlag: (mi: MessageInfo, name: string) => boolean
+    setUserFlag: (mi: MessageInfo, name: string, state: boolean) => boolean
     getUserFlags: (mi: MessageInfo) => NamedFlags | null
     dupUserFlags: (mi: MessageInfo) => NamedFlags | null
     takeUserFlags: (mi: MessageInfo, userFlags: NamedFlags | null) => boolean
-    getUserTag: (mi: MessageInfo, name: string | null) => string | null
-    setUserTag: (mi: MessageInfo, name: string | null, value: string | null) => boolean
+    getUserTag: (mi: MessageInfo, name: string) => string | null
+    setUserTag: (mi: MessageInfo, name: string, value: string | null) => boolean
     getUserTags: (mi: MessageInfo) => NameValueArray | null
     dupUserTags: (mi: MessageInfo) => NameValueArray | null
     takeUserTags: (mi: MessageInfo, userTags: NameValueArray | null) => boolean
-    getSubject: (mi: MessageInfo) => string | null
+    getSubject: (mi: MessageInfo) => string
     setSubject: (mi: MessageInfo, subject: string | null) => boolean
-    getFrom: (mi: MessageInfo) => string | null
+    getFrom: (mi: MessageInfo) => string
     setFrom: (mi: MessageInfo, from: string | null) => boolean
-    getTo: (mi: MessageInfo) => string | null
+    getTo: (mi: MessageInfo) => string
     setTo: (mi: MessageInfo, to: string | null) => boolean
-    getCc: (mi: MessageInfo) => string | null
+    getCc: (mi: MessageInfo) => string
     setCc: (mi: MessageInfo, cc: string | null) => boolean
-    getMlist: (mi: MessageInfo) => string | null
+    getMlist: (mi: MessageInfo) => string
     setMlist: (mi: MessageInfo, mlist: string | null) => boolean
     getSize: (mi: MessageInfo) => number
     setSize: (mi: MessageInfo, size: number) => boolean
@@ -20763,8 +20763,8 @@ export interface MessageInfoClass {
     takeReferences: (mi: MessageInfo, references: number[] | null) => boolean
     getHeaders: (mi: MessageInfo) => NameValueArray | null
     takeHeaders: (mi: MessageInfo, headers: NameValueArray | null) => boolean
-    getUserHeader: (mi: MessageInfo, name: string | null) => string | null
-    setUserHeader: (mi: MessageInfo, name: string | null, value: string | null) => boolean
+    getUserHeader: (mi: MessageInfo, name: string) => string | null
+    setUserHeader: (mi: MessageInfo, name: string, value: string | null) => boolean
     getUserHeaders: (mi: MessageInfo) => NameValueArray | null
     takeUserHeaders: (mi: MessageInfo, headers: NameValueArray | null) => boolean
     getPreview: (mi: MessageInfo) => string | null
@@ -21332,7 +21332,7 @@ export interface MultipartClass {
     addPart: (multipart: Multipart, part: MimePart) => void
     getPart: (multipart: Multipart, index: number) => MimePart | null
     getNumber: (multipart: Multipart) => number
-    getBoundary: (multipart: Multipart) => string | null
+    getBoundary: (multipart: Multipart) => string
     setBoundary: (multipart: Multipart, boundary: string | null) => void
     constructFromParser: (multipart: Multipart, parser: MimeParser) => number
     reserved: any[]
@@ -21442,7 +21442,7 @@ export interface NameValueArray {
      * @param name a name
      * @param value a value
      */
-    append(name: string | null, value: string | null): void
+    append(name: string, value: string): void
     /**
      * Removes all elements of the `array`.
      */
@@ -21489,7 +21489,7 @@ export interface NameValueArray {
      * @param name a name
      * @returns Value of the first element named @name, or %NULL. See: camel_name_value_array_get, camel_name_value_array_get_name
      */
-    getNamed(compareType: CompareType, name: string | null): string | null
+    getNamed(compareType: CompareType, name: string): string | null
     /**
      * Returns the value of the element at index `index`.
      * @param index an index
@@ -21512,7 +21512,7 @@ export interface NameValueArray {
      * @param allOccurrences whether to remove all occurrences of the `name`
      * @returns How many elements had been removed.
      */
-    removeNamed(compareType: CompareType, name: string | null, allOccurrences: boolean): number
+    removeNamed(compareType: CompareType, name: string, allOccurrences: boolean): number
     /**
      * Sets both the `name` and the `value` of the element at index `index`.
      * @param index an index
@@ -21520,14 +21520,14 @@ export interface NameValueArray {
      * @param value a value
      * @returns Whether the @array changed. See: camel_name_value_array_append, camel_name_value_array_set_name, camel_name_value_array_set_value
      */
-    set(index: number, name: string | null, value: string | null): boolean
+    set(index: number, name: string, value: string): boolean
     /**
      * Sets the `name` of the element at index `index`.
      * @param index an index
      * @param name a name
      * @returns Whether the @array changed. See: camel_name_value_array_set, camel_name_value_array_set_value
      */
-    setName(index: number, name: string | null): boolean
+    setName(index: number, name: string): boolean
     /**
      * Finds an element named `name` and sets its value to `value,` or appends
      * a new element, in case no such named element exists in the `array` yet.
@@ -21539,14 +21539,14 @@ export interface NameValueArray {
      * @param value a value
      * @returns Whether the @array changed. See: camel_name_value_array_append, camel_name_value_array_set
      */
-    setNamed(compareType: CompareType, name: string | null, value: string | null): boolean
+    setNamed(compareType: CompareType, name: string, value: string): boolean
     /**
      * Sets the `value` of the element at index `index`.
      * @param index an index
      * @param value a value
      * @returns Whether the @array changed. See: camel_name_value_array_set, camel_name_value_array_set_name
      */
-    setValue(index: number, value: string | null): boolean
+    setValue(index: number, value: string): boolean
 }
 
 export class NameValueArray {
@@ -21591,7 +21591,7 @@ export interface NamedFlags {
      * Removes all the elements of the array.
      */
     clear(): void
-    contains(name: string | null): boolean
+    contains(name: string): boolean
     /**
      * Creates a copy of the `named_flags` and returns it.
      * @returns A newly allocated #CamelNamedFlags.    Free it with camel_named_flags_free() when done with it.
@@ -21617,13 +21617,13 @@ export interface NamedFlags {
      * @param name name of the flag
      * @returns %TRUE the flag named @name was inserted; %FALSE otherwise.
      */
-    insert(name: string | null): boolean
+    insert(name: string): boolean
     /**
      * Removes a flag named `name` from the `named_flags`.
      * @param name name of the flag
      * @returns %TRUE when the @named_flags contained a flag named @name,    comparing case sensitively, and it was removed; %FALSE otherwise.
      */
-    remove(name: string | null): boolean
+    remove(name: string): boolean
 }
 
 export class NamedFlags {
@@ -21913,7 +21913,7 @@ export interface OperationClass {
     // Own fields of Camel-1.2.Camel.OperationClass
 
     parentClass: Gio.CancellableClass
-    status: (operation: Operation, what: string | null, pc: number) => void
+    status: (operation: Operation, what: string, pc: number) => void
     reserved: any[]
 }
 
@@ -22024,10 +22024,10 @@ export interface Provider {
 
     // Own fields of Camel-1.2.Camel.Provider
 
-    protocol: string | null
-    name: string | null
-    description: string | null
-    domain: string | null
+    protocol: string
+    name: string
+    description: string
+    domain: string
     flags: ProviderFlags
     urlFlags: ProviderURLFlags
     extraConf: ProviderConfEntry
@@ -22037,7 +22037,7 @@ export interface Provider {
     authtypes: any[]
     urlHash: GLib.HashFunc
     urlEqual: GLib.EqualFunc
-    translationDomain: string | null
+    translationDomain: string
     priv: any
 
     // Owm methods of Camel-1.2.Camel.Provider
@@ -22067,7 +22067,7 @@ export class Provider {
      * @param protocol a #CamelProvider protocol name
      * @returns a #CamelProvider for @protocol, or %NULL on error
      */
-    static get(protocol: string | null): Provider
+    static get(protocol: string): Provider
     /**
      * Initialize the Camel provider system by reading in the .urls
      * files in the provider directory and creating a hash table mapping
@@ -22098,7 +22098,7 @@ export class Provider {
      * @param path the path to a shared library
      * @returns %TRUE on success, %FALSE on failure
      */
-    static load(path: string | null): boolean
+    static load(path: string): boolean
 }
 
 export interface ProviderConfEntry {
@@ -22106,10 +22106,10 @@ export interface ProviderConfEntry {
     // Own fields of Camel-1.2.Camel.ProviderConfEntry
 
     type: ProviderConfType
-    name: string | null
-    depname: string | null
-    text: string | null
-    value: string | null
+    name: string
+    depname: string
+    text: string
+    value: string
 }
 
 export class ProviderConfEntry {
@@ -22152,7 +22152,7 @@ export interface ProviderPortEntry {
      * human description of the port
      * @field 
      */
-    desc: string | null
+    desc: string
     /**
      * a boolean whether the port is used together with TLS/SSL
      * @field 
@@ -22630,9 +22630,9 @@ export interface ServiceAuthType {
 
     // Own fields of Camel-1.2.Camel.ServiceAuthType
 
-    name: string | null
-    description: string | null
-    authproto: string | null
+    name: string
+    description: string
+    authproto: string
     needPassword: boolean
 
     // Owm methods of Camel-1.2.Camel.ServiceAuthType
@@ -22693,22 +22693,22 @@ export interface SessionClass {
     // Own fields of Camel-1.2.Camel.SessionClass
 
     parentClass: GObject.ObjectClass
-    addService: (session: Session, uid: string | null, protocol: string | null, type: ProviderType) => Service
+    addService: (session: Session, uid: string, protocol: string, type: ProviderType) => Service
     removeService: (session: Session, service: Service) => void
-    getPassword: (session: Session, service: Service, prompt: string | null, item: string | null, flags: number) => string | null
-    forgetPassword: (session: Session, service: Service, item: string | null) => boolean
+    getPassword: (session: Session, service: Service, prompt: string, item: string, flags: number) => string | null
+    forgetPassword: (session: Session, service: Service, item: string) => boolean
     trustPrompt: (session: Session, service: Service, certificate: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => CertTrust
-    getFilterDriver: (session: Session, type: string | null, forFolder: Folder | null) => FilterDriver
-    lookupAddressbook: (session: Session, name: string | null) => boolean
+    getFilterDriver: (session: Session, type: string, forFolder: Folder | null) => FilterDriver
+    lookupAddressbook: (session: Session, name: string) => boolean
     authenticateSync: (session: Session, service: Service, mechanism: string | null, cancellable: Gio.Cancellable | null) => boolean
-    forwardToSync: (session: Session, folder: Folder, message: MimeMessage, address: string | null, cancellable: Gio.Cancellable | null) => boolean
+    forwardToSync: (session: Session, folder: Folder, message: MimeMessage, address: string, cancellable: Gio.Cancellable | null) => boolean
     getOauth2AccessTokenSync: (session: Session, service: Service, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outAccessToken */ string | null, /* outExpiresIn */ number | null ]
     getRecipientCertificatesSync: (session: Session, flags: number, recipients: string[], cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outCertificates */ string[] ]
-    addressbookContainsSync: (session: Session, bookUid: string | null, emailAddress: string | null, cancellable: Gio.Cancellable | null) => boolean
+    addressbookContainsSync: (session: Session, bookUid: string, emailAddress: string, cancellable: Gio.Cancellable | null) => boolean
     reservedMethods: any[]
     jobStarted: (session: Session, cancellable: Gio.Cancellable | null) => void
     jobFinished: (session: Session, cancellable: Gio.Cancellable | null, error: GLib.Error) => void
-    userAlert: (session: Session, service: Service, type: SessionAlertType, message: string | null) => void
+    userAlert: (session: Session, service: Service, type: SessionAlertType, message: string) => void
     reservedSignals: any[]
 }
 
@@ -22776,14 +22776,14 @@ export interface StoreClass {
     hashFolderName: GLib.HashFunc
     equalFolderName: GLib.EqualFunc
     canRefreshFolder: (store: Store, info: FolderInfo) => boolean
-    getFolderSync: (store: Store, folderName: string | null, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null) => Folder | null
+    getFolderSync: (store: Store, folderName: string, flags: StoreGetFolderFlags, cancellable: Gio.Cancellable | null) => Folder | null
     getFolderInfoSync: (store: Store, top: string | null, flags: StoreGetFolderInfoFlags, cancellable: Gio.Cancellable | null) => FolderInfo | null
     getInboxFolderSync: (store: Store, cancellable: Gio.Cancellable | null) => Folder | null
     getJunkFolderSync: (store: Store, cancellable: Gio.Cancellable | null) => Folder | null
     getTrashFolderSync: (store: Store, cancellable: Gio.Cancellable | null) => Folder | null
-    createFolderSync: (store: Store, parentName: string | null, folderName: string | null, cancellable: Gio.Cancellable | null) => FolderInfo | null
-    deleteFolderSync: (store: Store, folderName: string | null, cancellable: Gio.Cancellable | null) => boolean
-    renameFolderSync: (store: Store, oldName: string | null, newName: string | null, cancellable: Gio.Cancellable | null) => boolean
+    createFolderSync: (store: Store, parentName: string | null, folderName: string, cancellable: Gio.Cancellable | null) => FolderInfo | null
+    deleteFolderSync: (store: Store, folderName: string, cancellable: Gio.Cancellable | null) => boolean
+    renameFolderSync: (store: Store, oldName: string, newName: string, cancellable: Gio.Cancellable | null) => boolean
     synchronizeSync: (store: Store, expunge: boolean, cancellable: Gio.Cancellable | null) => boolean
     initialSetupSync: (store: Store, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* outSaveSetup */ GLib.HashTable ]
     getCanAutoSaveChanges: (store: Store) => boolean
@@ -22791,7 +22791,7 @@ export interface StoreClass {
     folderCreated: (store: Store, folderInfo: FolderInfo) => void
     folderDeleted: (store: Store, folderInfo: FolderInfo) => void
     folderOpened: (store: Store, folder: Folder) => void
-    folderRenamed: (store: Store, oldName: string | null, folderInfo: FolderInfo) => void
+    folderRenamed: (store: Store, oldName: string, folderInfo: FolderInfo) => void
     folderInfoStale: (store: Store) => void
     reservedSignals: any[]
 }
@@ -22820,12 +22820,12 @@ export interface StoreInfo {
      * Returns the last segment of the path string from `info`.
      * @returns the last segment of the path string from @info
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns the path string from `info`.
      * @returns the path string from @info
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Increase the reference count of `info`.
      * @returns the @info argument
@@ -22836,7 +22836,7 @@ export interface StoreInfo {
      * @param type specific string being set
      * @param value string value to set
      */
-    setValue(type: number, value: string | null): void
+    setValue(type: number, value: string): void
     /**
      * Unref and potentially free `info,` and all associated memory.
      */
@@ -22853,14 +22853,14 @@ export class StoreInfo {
      * @param info a #CamelStoreInfo
      * @returns the last segment of the path string from @info
      */
-    static name(summary: StoreSummary, info: StoreInfo): string | null
+    static name(summary: StoreSummary, info: StoreInfo): string
     /**
      * Returns the path string from `info`.
      * @param summary a #CamelStoreSummary
      * @param info a #CamelStoreInfo
      * @returns the path string from @info
      */
-    static path(summary: StoreSummary, info: StoreInfo): string | null
+    static path(summary: StoreSummary, info: StoreInfo): string
     /**
      * Set a specific string on the `info`.
      * @param summary a #CamelStoreSummary object
@@ -22868,7 +22868,7 @@ export class StoreInfo {
      * @param type specific string being set
      * @param value string value to set
      */
-    static setString(summary: StoreSummary, info: StoreInfo, type: number, value: string | null): void
+    static setString(summary: StoreSummary, info: StoreInfo, type: number, value: string): void
 }
 
 export interface StorePrivate {
@@ -22914,11 +22914,11 @@ export interface StoreSummaryClass {
     storeInfoSize: number
     summaryHeaderLoad: (summary: StoreSummary, file: any | null) => number
     summaryHeaderSave: (summary: StoreSummary, file: any | null) => number
-    storeInfoNew: (summary: StoreSummary, path: string | null) => StoreInfo
+    storeInfoNew: (summary: StoreSummary, path: string) => StoreInfo
     storeInfoLoad: (summary: StoreSummary, file: any | null) => StoreInfo
     storeInfoSave: (summary: StoreSummary, file: any | null, info: StoreInfo) => number
     storeInfoFree: (summary: StoreSummary, info: StoreInfo) => void
-    storeInfoSetValue: (summary: StoreSummary, info: StoreInfo, type: number, value: string | null) => void
+    storeInfoSetValue: (summary: StoreSummary, info: StoreInfo, type: number, value: string) => void
     reserved: any[]
 }
 
@@ -23126,9 +23126,9 @@ export interface SubscribableInterface {
     // Own fields of Camel-1.2.Camel.SubscribableInterface
 
     parentInterface: GObject.TypeInterface
-    folderIsSubscribed: (subscribable: Subscribable, folderName: string | null) => boolean
-    subscribeFolderSync: (subscribable: Subscribable, folderName: string | null, cancellable: Gio.Cancellable | null) => boolean
-    unsubscribeFolderSync: (subscribable: Subscribable, folderName: string | null, cancellable: Gio.Cancellable | null) => boolean
+    folderIsSubscribed: (subscribable: Subscribable, folderName: string) => boolean
+    subscribeFolderSync: (subscribable: Subscribable, folderName: string, cancellable: Gio.Cancellable | null) => boolean
+    unsubscribeFolderSync: (subscribable: Subscribable, folderName: string, cancellable: Gio.Cancellable | null) => boolean
     reservedMethods: any[]
     folderSubscribed: (subscribable: Subscribable, folderInfo: FolderInfo) => void
     folderUnsubscribed: (subscribable: Subscribable, folderInfo: FolderInfo) => void
@@ -23325,7 +23325,7 @@ export interface UIDCache {
      * Marks a uid for saving.
      * @param uid a uid to save
      */
-    saveUid(uid: string | null): void
+    saveUid(uid: string): void
 }
 
 export class UIDCache {
@@ -23374,40 +23374,40 @@ export interface URL {
      * @param name name of the param
      * @returns the value of a param if found or %NULL otherwise
      */
-    getParam(name: string | null): string | null
+    getParam(name: string): string | null
     hash(): number
     /**
      * Parses `url_string` relative to `base`.
      * @param urlString the URL
      * @returns a parsed #CamelURL
      */
-    newWithBase(urlString: string | null): URL
+    newWithBase(urlString: string): URL
     /**
      * Set the authmech of a #CamelURL.
      * @param authmech authentication mechanism
      */
-    setAuthmech(authmech: string | null): void
+    setAuthmech(authmech: string): void
     /**
      * Set the fragment of a #CamelURL.
      * @param fragment url fragment
      */
-    setFragment(fragment: string | null): void
+    setFragment(fragment: string): void
     /**
      * Set the hostname of a #CamelURL.
      * @param host hostname
      */
-    setHost(host: string | null): void
+    setHost(host: string): void
     /**
      * Set a param on the #CamelURL.
      * @param name name of the param to set
      * @param value value of the param to set
      */
-    setParam(name: string | null, value: string | null): void
+    setParam(name: string, value: string): void
     /**
      * Set the path component of a #CamelURL.
      * @param path path
      */
-    setPath(path: string | null): void
+    setPath(path: string): void
     /**
      * Set the port on a #CamelURL.
      * @param port port
@@ -23417,17 +23417,17 @@ export interface URL {
      * Set the protocol of a #CamelURL.
      * @param protocol protocol schema
      */
-    setProtocol(protocol: string | null): void
+    setProtocol(protocol: string): void
     /**
      * Set the query of a #CamelURL.
      * @param query url query
      */
-    setQuery(query: string | null): void
+    setQuery(query: string): void
     /**
      * Set the user of a #CamelURL.
      * @param user username
      */
-    setUser(user: string | null): void
+    setUser(user: string): void
     /**
      * Flatten a #CamelURL into a string.
      * @param flags additional translation options
@@ -23450,16 +23450,16 @@ export class URL {
      * @param urlString a URL string
      * @returns a #CamelURL if it can be parsed, or %NULL otherwise
      */
-    constructor(urlString: string | null) 
+    constructor(urlString: string) 
     /**
      * Parses an absolute URL.
      * @constructor 
      * @param urlString a URL string
      * @returns a #CamelURL if it can be parsed, or %NULL otherwise
      */
-    static new(urlString: string | null): URL
-    static addrspecEnd(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-    static addrspecStart(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
+    static new(urlString: string): URL
+    static addrspecEnd(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+    static addrspecStart(in_: string, pos: string, inend: string, match: UrlMatch): boolean
     /**
      * &percnt;-decodes the passed-in URL *in place*. The decoded version is
      * never longer than the encoded version, so there does not need to
@@ -23467,7 +23467,7 @@ export class URL {
      * @param part a URL part
      */
     static decode(part: string | null): void
-    static decodePath(path: string | null): string | null
+    static decodePath(path: string): string | null
     /**
      * This &percnt;-encodes the given URL part and returns the escaped version
      * in allocated memory, which the caller must free when it is done.
@@ -23475,19 +23475,19 @@ export class URL {
      * @param escapeExtra additional characters beyond " \"%#<>{}|\^[]`" to escape (or %NULL)
      * @returns the encoded string
      */
-    static encode(part: string | null, escapeExtra: string | null): string | null
-    static fileEnd(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-    static fileStart(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-    static webEnd(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
-    static webStart(in_: string | null, pos: string | null, inend: string | null, match: UrlMatch): boolean
+    static encode(part: string, escapeExtra: string | null): string | null
+    static fileEnd(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+    static fileStart(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+    static webEnd(in_: string, pos: string, inend: string, match: UrlMatch): boolean
+    static webStart(in_: string, pos: string, inend: string, match: UrlMatch): boolean
 }
 
 export interface UrlMatch {
 
     // Own fields of Camel-1.2.Camel.UrlMatch
 
-    pattern: string | null
-    prefix: string | null
+    pattern: string
+    prefix: string
     umSo: number
     umEo: number
 }
@@ -23503,8 +23503,8 @@ export interface UrlPattern {
 
     // Own fields of Camel-1.2.Camel.UrlPattern
 
-    pattern: string | null
-    prefix: string | null
+    pattern: string
+    prefix: string
     start: UrlScanFunc
     end: UrlScanFunc
 }
@@ -23584,7 +23584,7 @@ export interface VeeFolderClass {
     addFolder: (vfolder: VeeFolder, subfolder: Folder, cancellable: Gio.Cancellable | null) => void
     removeFolder: (vfolder: VeeFolder, subfolder: Folder, cancellable: Gio.Cancellable | null) => void
     rebuildFolder: (vfolder: VeeFolder, subfolder: Folder, cancellable: Gio.Cancellable | null) => void
-    setExpression: (vfolder: VeeFolder, expression: string | null) => void
+    setExpression: (vfolder: VeeFolder, expression: string) => void
     folderChanged: (vfolder: VeeFolder, subfolder: Folder, changes: FolderChangeInfo) => void
     reserved: any[]
 }

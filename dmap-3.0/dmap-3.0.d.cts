@@ -226,10 +226,10 @@ export enum Type {
 export const HASH_SIZE: number
 export const STATUS_OK: number
 export function content_code_dmap_type(code: ContentCode): Type
-export function content_code_name(code: ContentCode): string | null
-export function content_code_read_from_buffer(buf: string | null): ContentCode
-export function content_code_string(code: ContentCode): string | null
-export function content_code_string_as_int32(str: string | null): number
+export function content_code_name(code: ContentCode): string
+export function content_code_read_from_buffer(buf: string): ContentCode
+export function content_code_string(code: ContentCode): string
+export function content_code_string_as_int32(str: string): number
 export function content_codes(number: number): ContentCodeDefinition
 export function hash_generate(version_major: number, url: number, hash_select: number, out: number, request_id: number): void
 export function hash_progressive_final(context: HashContext, digest: number): void
@@ -238,14 +238,14 @@ export function hash_progressive_to_string(digest: number, string: string | null
 export function hash_progressive_update(context: HashContext, buffer: number, length: number): void
 export function mdns_browser_error_quark(): GLib.Quark
 export function mdns_publisher_error_quark(): GLib.Quark
-export function mime_to_format(transcode_mimetype: string | null): string | null
+export function mime_to_format(transcode_mimetype: string): string | null
 export function structure_destroy(structure: GLib.Node): void
 export function structure_get_size(structure: GLib.Node): number
 export function structure_increase_by_predicted_size(structure: GLib.Node, size: number): void
 export function structure_print(structure: GLib.Node): void
 export function structure_serialize(structure: GLib.Node, length: number): string | null
 export interface ConnectionCallback {
-    (connection: Connection, result: boolean, reason: string | null): boolean
+    (connection: Connection, result: boolean, reason: string): boolean
 }
 export interface ResponseHandler {
     (connection: Connection, status: number, structure: GLib.Node): void
@@ -393,7 +393,7 @@ export interface Db {
      * @param path A path to an appropriate media file.
      * @returns The ID for the newly added record. See also the notes for dmap_db_add regarding reference counting.
      */
-    add_path(path: string | null): number
+    add_path(path: string): number
     /**
      * Add a record to the database and assign it the given ID.
      * @param record A database record.
@@ -402,7 +402,7 @@ export interface Db {
      */
     add_with_id(record: Record, id: number): number
     count(): number
-    lookup_id_by_location(location: string | null): number
+    lookup_id_by_location(location: string): number
 
     // Own virtual methods of DMAP-3.0.DMAP.Db
 
@@ -419,7 +419,7 @@ export interface Db {
      * @param path A path to an appropriate media file.
      * @returns The ID for the newly added record. See also the notes for dmap_db_add regarding reference counting.
      */
-    vfunc_add_path(path: string | null): number
+    vfunc_add_path(path: string): number
     /**
      * Add a record to the database and assign it the given ID.
      * @virtual 
@@ -429,7 +429,7 @@ export interface Db {
      */
     vfunc_add_with_id(record: Record, id: number): number
     vfunc_count(): number
-    vfunc_lookup_id_by_location(location: string | null): number
+    vfunc_lookup_id_by_location(location: string): number
 
     // Class property signals of DMAP-3.0.DMAP.Db
 
@@ -631,14 +631,14 @@ export interface Connection {
      * @param auth A #SoupAuth
      * @param password A password
      */
-    authenticate_message(session: Soup.Session, message: Soup.Message, auth: Soup.Auth, password: string | null): void
-    get_headers(uri: string | null): Soup.MessageHeaders
+    authenticate_message(session: Soup.Session, message: Soup.Message, auth: Soup.Auth, password: string): void
+    get_headers(uri: string): Soup.MessageHeaders
     is_connected(): boolean
     setup(): void
 
     // Own virtual methods of DMAP-3.0.DMAP.Connection
 
-    vfunc_authenticate(name: string | null): string | null
+    vfunc_authenticate(name: string): string | null
     vfunc_connected(): void
     vfunc_connecting(state: ConnectionState, progress: number): void
     vfunc_disconnected(): void
@@ -759,8 +759,8 @@ export class GstInputStream extends Gio.InputStream {
     // Constructors of DMAP-3.0.DMAP.GstInputStream
 
     constructor(config?: GstInputStream.ConstructorProperties) 
-    constructor(transcode_mimetype: string | null, src_stream: Gio.InputStream) 
-    static new(transcode_mimetype: string | null, src_stream: Gio.InputStream): GstInputStream
+    constructor(transcode_mimetype: string, src_stream: Gio.InputStream) 
+    static new(transcode_mimetype: string, src_stream: Gio.InputStream): GstInputStream
     _init(config?: GstInputStream.ConstructorProperties): void
 }
 
@@ -895,14 +895,14 @@ export interface MdnsPublisher {
 
     // Owm methods of DMAP-3.0.DMAP.MdnsPublisher
 
-    publish(name: string | null, port: number, type_of_service: string | null, password_required: boolean, txt_records: string | null): boolean
-    rename_at_port(port: number, name: string | null): boolean
+    publish(name: string, port: number, type_of_service: string, password_required: boolean, txt_records: string | null): boolean
+    rename_at_port(port: number, name: string): boolean
     withdraw(port: number): boolean
 
     // Own virtual methods of DMAP-3.0.DMAP.MdnsPublisher
 
-    vfunc_name_collision(name: string | null): void
-    vfunc_published(name: string | null): void
+    vfunc_name_collision(name: string): void
+    vfunc_published(name: string): void
 
     // Own signals of DMAP-3.0.DMAP.MdnsPublisher
 
@@ -990,20 +990,20 @@ export interface Share {
 
     // Own virtual methods of DMAP-3.0.DMAP.Share
 
-    vfunc_content_codes(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    vfunc_ctrl_int(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    vfunc_databases(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext): void
-    vfunc_databases_browse_xxx(server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext): void
-    vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext): void
+    vfunc_content_codes(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    vfunc_ctrl_int(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    vfunc_databases(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext): void
+    vfunc_databases_browse_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext): void
+    vfunc_databases_items_xxx(server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext): void
     vfunc_get_desired_port(): number
-    vfunc_get_type_of_service(): string | null
-    vfunc_login(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    vfunc_logout(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    vfunc_get_type_of_service(): string
+    vfunc_login(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    vfunc_logout(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
     vfunc_message_add_standard_headers(msg: Soup.Message): void
-    vfunc_name_collision(publisher: MdnsPublisher, name: string | null): void
-    vfunc_published(publisher: MdnsPublisher, name: string | null): void
-    vfunc_server_info(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
-    vfunc_update(server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    vfunc_name_collision(publisher: MdnsPublisher, name: string): void
+    vfunc_published(publisher: MdnsPublisher, name: string): void
+    vfunc_server_info(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
+    vfunc_update(server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext): void
 
     // Class property signals of DMAP-3.0.DMAP.Share
 
@@ -1065,7 +1065,7 @@ export interface ConnectionClass {
     get_query_metadata: (connection: Connection) => string | null
     connected: (connection: Connection) => void
     disconnected: (connection: Connection) => void
-    authenticate: (connection: Connection, name: string | null) => string | null
+    authenticate: (connection: Connection, name: string) => string | null
     connecting: (connection: Connection, state: ConnectionState, progress: number) => void
     operation_done: (connection: Connection) => void
 }
@@ -1126,8 +1126,8 @@ export interface ContentCodeDefinition {
 
     code: ContentCode
     int_code: number
-    name: string | null
-    string: string | null
+    name: string
+    string: string
     type: Type
 }
 
@@ -1161,8 +1161,8 @@ export interface DbIface {
     parent: GObject.TypeInterface
     add: (db: Db, record: Record) => number
     add_with_id: (db: Db, record: Record, id: number) => number
-    add_path: (db: Db, path: string | null) => number
-    lookup_id_by_location: (db: Db, location: string | null) => number
+    add_path: (db: Db, path: string) => number
+    lookup_id_by_location: (db: Db, location: string) => number
     count: (db: Db) => number
 }
 
@@ -1266,8 +1266,8 @@ export interface MdnsPublisherClass {
     // Own fields of DMAP-3.0.DMAP.MdnsPublisherClass
 
     parent_class: GObject.ObjectClass
-    published: (publisher: MdnsPublisher, name: string | null) => void
-    name_collision: (publisher: MdnsPublisher, name: string | null) => void
+    published: (publisher: MdnsPublisher, name: string) => void
+    name_collision: (publisher: MdnsPublisher, name: string) => void
 }
 
 export abstract class MdnsPublisherClass {
@@ -1353,20 +1353,20 @@ export interface ShareClass {
 
     parent: GObject.ObjectClass
     get_desired_port: (share: Share) => number
-    get_type_of_service: (share: Share) => string | null
+    get_type_of_service: (share: Share) => string
     message_add_standard_headers: (share: Share, msg: Soup.Message) => void
     add_entry_to_mlcl: (id: any, record: Record, mb: any) => void
-    databases_browse_xxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext) => void
-    databases_items_xxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext) => void
-    server_info: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    content_codes: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    login: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    logout: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    update: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    ctrl_int: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, ctx: Soup.ClientContext) => void
-    published: (share: Share, publisher: MdnsPublisher, name: string | null) => void
-    name_collision: (share: Share, publisher: MdnsPublisher, name: string | null) => void
-    databases: (share: Share, server: Soup.Server, message: Soup.Message, path: string | null, query: GLib.HashTable, context: Soup.ClientContext) => void
+    databases_browse_xxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    databases_items_xxx: (share: Share, server: Soup.Server, msg: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
+    server_info: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    content_codes: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    login: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    logout: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    update: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    ctrl_int: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, ctx: Soup.ClientContext) => void
+    published: (share: Share, publisher: MdnsPublisher, name: string) => void
+    name_collision: (share: Share, publisher: MdnsPublisher, name: string) => void
+    databases: (share: Share, server: Soup.Server, message: Soup.Message, path: string, query: GLib.HashTable, context: Soup.ClientContext) => void
 }
 
 export abstract class ShareClass {

@@ -51,7 +51,7 @@ export enum UDAVersion {
 /**
  * SSDP search target for finding all possible resources.
  */
-export const ALL_RESOURCES: string | null
+export const ALL_RESOURCES: string
 export function error_quark(): GLib.Quark
 export module Client {
 
@@ -351,7 +351,7 @@ export interface Client extends Gio.Initable {
      * @param ip_address The host to add to the cache
      * @param user_agent User agent ot the host to add
      */
-    add_cache_entry(ip_address: string | null, user_agent: string | null): void
+    add_cache_entry(ip_address: string, user_agent: string): void
     /**
      * Adds a header field to the messages sent by this `client`. It is intended to
      * be used by clients requiring vendor specific header fields.
@@ -360,7 +360,7 @@ export interface Client extends Gio.Initable {
      * @param name Header name
      * @param value Header value
      */
-    append_header(name: string | null, value: string | null): void
+    append_header(name: string, value: string | null): void
     /**
      * Check if the peer at `address` is reachable using this `client`.
      * @param address A #GInetSocketAddress of the target. The port part of the address may be 0
@@ -387,34 +387,34 @@ export interface Client extends Gio.Initable {
      * Get the IP address we advertise ourselves as using.
      * @returns The IP address. This string should not be freed.
      */
-    get_host_ip(): string | null
+    get_host_ip(): string
     get_index(): number
     /**
      * Get the name of the network interface associated to `client`.
      * @returns The network interface name. This string should not be freed.
      */
-    get_interface(): string | null
+    get_interface(): string
     /**
      * Get the network identifier of the client. See [property`GSSDP`.Client:network]
      * for  details.
      * @returns The network identification. This string should not be freed.
      */
-    get_network(): string | null
+    get_network(): string
     get_port(): number
-    get_server_id(): string | null
+    get_server_id(): string
     get_uda_version(): UDAVersion
     /**
      * Try to get a User-Agent for `ip_address`.
      * @param ip_address IP address to guess the user-agent for
      * @returns The User-Agent cached for this IP, %NULL if none is cached.
      */
-    guess_user_agent(ip_address: string | null): string | null
+    guess_user_agent(ip_address: string): string
     /**
      * Removes `name` from the list of headers. If there are multiple values for
      * `name,` they are all removed.
      * @param name Header name
      */
-    remove_header(name: string | null): void
+    remove_header(name: string): void
     /**
      * Will set the new boot-id for this SSDP client. Does nothing if the UDA
      * version used by the client is UDA 1.0
@@ -434,7 +434,7 @@ export interface Client extends Gio.Initable {
      * Sets the network identification of `client` to `network`.
      * @param network The string identifying the network
      */
-    set_network(network: string | null): void
+    set_network(network: string): void
     /**
      * Sets the server ID of `client` to `server_id`. This string is used as the
      * "Server:" identification header for SSDP discovery and response packets
@@ -444,7 +444,7 @@ export interface Client extends Gio.Initable {
      * defined in the UDA documents: OS/Version UPnP/Version GSSDP/Version.
      * @param server_id The server ID
      */
-    set_server_id(server_id: string | null): void
+    set_server_id(server_id: string): void
 
     // Own signals of GSSDP-1.6.GSSDP.Client
 
@@ -679,7 +679,7 @@ export interface ResourceBrowser {
      * Get the current browse target.
      * @returns The browser target.
      */
-    get_target(): string | null
+    get_target(): string
     /**
      * Begins discovery if `resource_browser` is active and no discovery is
      * performed. Otherwise does nothing.
@@ -700,12 +700,12 @@ export interface ResourceBrowser {
      * Sets the browser target of `resource_browser` to `target`.
      * @param target The browser target
      */
-    set_target(target: string | null): void
+    set_target(target: string): void
 
     // Own virtual methods of GSSDP-1.6.GSSDP.ResourceBrowser
 
-    vfunc_resource_unavailable(usn: string | null): void
-    vfunc_resource_update(usn: string | null, boot_id: number, next_boot_id: number): void
+    vfunc_resource_unavailable(usn: string): void
+    vfunc_resource_update(usn: string, boot_id: number, next_boot_id: number): void
 
     // Own signals of GSSDP-1.6.GSSDP.ResourceBrowser
 
@@ -780,7 +780,7 @@ export class ResourceBrowser extends GObject.Object {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    constructor(client: Client, target: string | null) 
+    constructor(client: Client, target: string) 
     /**
      * Create a new resource browser for `target`.
      * 
@@ -798,7 +798,7 @@ export class ResourceBrowser extends GObject.Object {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    static new(client: Client, target: string | null): ResourceBrowser
+    static new(client: Client, target: string): ResourceBrowser
     _init(config?: ResourceBrowser.ConstructorProperties): void
 }
 
@@ -894,7 +894,7 @@ export interface ResourceGroup {
      * @param locations A #GList of the resource's locations
      * @returns The ID of the added resource.
      */
-    add_resource(target: string | null, usn: string | null, locations: string[]): number
+    add_resource(target: string, usn: string, locations: string[]): number
     /**
      * Adds a resource with target `target,` USN `usn,` and location `location`
      * to `resource_group`. If the resource group is set [property`GSSDP`.ResourceGroup:available],
@@ -907,7 +907,7 @@ export interface ResourceGroup {
      * @param location The resource's location
      * @returns The ID of the added resource.
      */
-    add_resource_simple(target: string | null, usn: string | null, location: string | null): number
+    add_resource_simple(target: string, usn: string, location: string): number
     get_available(): boolean
     get_client(): Client
     get_max_age(): number
@@ -1003,8 +1003,8 @@ export interface ResourceBrowserClass {
     // Own fields of GSSDP-1.6.GSSDP.ResourceBrowserClass
 
     parent_class: GObject.ObjectClass
-    resource_update: (resource_browser: ResourceBrowser, usn: string | null, boot_id: number, next_boot_id: number) => void
-    resource_unavailable: (resource_browser: ResourceBrowser, usn: string | null) => void
+    resource_update: (resource_browser: ResourceBrowser, usn: string, boot_id: number, next_boot_id: number) => void
+    resource_unavailable: (resource_browser: ResourceBrowser, usn: string) => void
 }
 
 export abstract class ResourceBrowserClass {

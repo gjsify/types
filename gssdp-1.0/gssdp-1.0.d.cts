@@ -31,7 +31,7 @@ export enum Error {
 /**
  * SSDP search target for finding all possible resources.
  */
-export const ALL_RESOURCES: string | null
+export const ALL_RESOURCES: string
 export function error_quark(): GLib.Quark
 export module Client {
 
@@ -181,7 +181,7 @@ export interface Client extends Gio.Initable {
 
     // Owm methods of GSSDP-1.0.GSSDP.Client
 
-    add_cache_entry(ip_address: string | null, user_agent: string | null): void
+    add_cache_entry(ip_address: string, user_agent: string): void
     /**
      * Adds a header field to the message sent by this `client`. It is intended to
      * be used by clients requiring vendor specific header fields. (If there is an
@@ -189,7 +189,7 @@ export interface Client extends Gio.Initable {
      * @param name Header name
      * @param value Header value
      */
-    append_header(name: string | null, value: string | null): void
+    append_header(name: string, value: string): void
     /**
      * Removes all the headers for this `client`.
      */
@@ -199,36 +199,36 @@ export interface Client extends Gio.Initable {
      * Get the IP address we advertise ourselves as using.
      * @returns The IP address. This string should not be freed.
      */
-    get_host_ip(): string | null
+    get_host_ip(): string
     /**
      * Get the name of the network interface associated to `client`.
      * @returns The network interface name. This string should not be freed.
      */
-    get_interface(): string | null
+    get_interface(): string
     get_main_context(): GLib.MainContext
     /**
      * Get the network this client is associated with.
      * @returns The network identification. This string should not be freed.
      */
-    get_network(): string | null
-    get_server_id(): string | null
-    guess_user_agent(ip_address: string | null): string | null
+    get_network(): string
+    get_server_id(): string
+    guess_user_agent(ip_address: string): string
     /**
      * Removes `name` from the list of headers . If there are multiple values for
      * `name,` they are all removed.
      * @param name Header name
      */
-    remove_header(name: string | null): void
+    remove_header(name: string): void
     /**
      * Sets the network identification of `client` to `network`.
      * @param network The string identifying the network
      */
-    set_network(network: string | null): void
+    set_network(network: string): void
     /**
      * Sets the server ID of `client` to `server_id`.
      * @param server_id The server ID
      */
-    set_server_id(server_id: string | null): void
+    set_server_id(server_id: string): void
 
     // Own signals of GSSDP-1.0.GSSDP.Client
 
@@ -359,7 +359,7 @@ export interface ResourceBrowser {
     get_active(): boolean
     get_client(): Client
     get_mx(): number
-    get_target(): string | null
+    get_target(): string
     /**
      * Begins discovery if `resource_browser` is active and no discovery is
      * performed. Otherwise does nothing.
@@ -380,11 +380,11 @@ export interface ResourceBrowser {
      * Sets the browser target of `resource_browser` to `target`.
      * @param target The browser target
      */
-    set_target(target: string | null): void
+    set_target(target: string): void
 
     // Own virtual methods of GSSDP-1.0.GSSDP.ResourceBrowser
 
-    vfunc_resource_unavailable(usn: string | null): void
+    vfunc_resource_unavailable(usn: string): void
 
     // Own signals of GSSDP-1.0.GSSDP.ResourceBrowser
 
@@ -444,7 +444,7 @@ export class ResourceBrowser extends GObject.Object {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    constructor(client: Client, target: string | null) 
+    constructor(client: Client, target: string) 
     /**
      * `target` is a generic string the resource browser listens for on the SSDP
      * bus. There are several possible targets such as
@@ -464,7 +464,7 @@ export class ResourceBrowser extends GObject.Object {
      * @param target A SSDP search target
      * @returns A new #GSSDPResourceBrowser object.
      */
-    static new(client: Client, target: string | null): ResourceBrowser
+    static new(client: Client, target: string): ResourceBrowser
     _init(config?: ResourceBrowser.ConstructorProperties): void
 }
 
@@ -552,7 +552,7 @@ export interface ResourceGroup {
      * @param locations A #GList of the resource's locations
      * @returns The ID of the added resource.
      */
-    add_resource(target: string | null, usn: string | null, locations: string[]): number
+    add_resource(target: string, usn: string, locations: string[]): number
     /**
      * Adds a resource with target `target,` USN `usn,` and location `location`
      * to `resource_group`.
@@ -561,7 +561,7 @@ export interface ResourceGroup {
      * @param location The resource's location
      * @returns The ID of the added resource.
      */
-    add_resource_simple(target: string | null, usn: string | null, location: string | null): number
+    add_resource_simple(target: string, usn: string, location: string): number
     get_available(): boolean
     get_client(): Client
     get_max_age(): number
@@ -653,7 +653,7 @@ export interface ResourceBrowserClass {
     // Own fields of GSSDP-1.0.GSSDP.ResourceBrowserClass
 
     parent_class: GObject.ObjectClass
-    resource_unavailable: (resource_browser: ResourceBrowser, usn: string | null) => void
+    resource_unavailable: (resource_browser: ResourceBrowser, usn: string) => void
 }
 
 export abstract class ResourceBrowserClass {

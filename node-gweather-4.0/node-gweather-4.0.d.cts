@@ -489,22 +489,22 @@ export enum Provider {
  * @param level a #GWeatherLocationLevel
  * @returns a string
  */
-export function locationLevelToString(level: LocationLevel): string | null
-export function skyToString(sky: Sky): string | null
-export function skyToStringFull(sky: Sky, options: FormatOptions): string | null
+export function locationLevelToString(level: LocationLevel): string
+export function skyToString(sky: Sky): string
+export function skyToStringFull(sky: Sky, options: FormatOptions): string
 /**
  * Creates a human-readable, localized representation of `unit`
  * @param unit a speed unit, or %GWEATHER_SPEED_UNIT_DEFAULT
  */
-export function speedUnitToString(unit: SpeedUnit): string | null
+export function speedUnitToString(unit: SpeedUnit): string
 /**
  * Resolve `unit` into a real temperature unit, potentially considering
  * locale defaults.
  * @param unit a tempeature unit, or %GWEATHER_TEMP_UNIT_DEFAULT
  */
 export function temperatureUnitToReal(unit: TemperatureUnit): TemperatureUnit
-export function windDirectionToString(wind: WindDirection): string | null
-export function windDirectionToStringFull(wind: WindDirection, options: FormatOptions): string | null
+export function windDirectionToString(wind: WindDirection): string
+export function windDirectionToStringFull(wind: WindDirection, options: FormatOptions): string
 /**
  * A filter function for locations.
  * @callback 
@@ -593,7 +593,7 @@ export interface Info {
      * of the application fetching the weather.
      * @returns the application ID
      */
-    getApplicationId(): string | null
+    getApplicationId(): string
     /**
      * Some weather services require the application showing the
      * data to include an attribution text, possibly including links
@@ -601,13 +601,13 @@ export interface Info {
      * This must be shown prominently toghether with the data.
      * @returns the required attribution text, in Pango          markup form, or %NULL if not required
      */
-    getAttribution(): string | null
+    getAttribution(): string
     getConditions(): string | null
     /**
      * Get the contact information of the application fetching the weather.
      * @returns the contact information
      */
-    getContactInfo(): string | null
+    getContactInfo(): string
     getDew(): string | null
     /**
      * Gets the bitmask of enabled #GWeatherProvider weather
@@ -616,14 +616,14 @@ export interface Info {
     getEnabledProviders(): Provider
     getForecastList(): Info[]
     getHumidity(): string | null
-    getIconName(): string | null
+    getIconName(): string
     getLocation(): Location
     getLocationName(): string | null
     getPressure(): string | null
     getSky(): string | null
     getSunrise(): string | null
     getSunset(): string | null
-    getSymbolicIconName(): string | null
+    getSymbolicIconName(): string
     getTemp(): string | null
     getTempMax(): string | null
     getTempMin(): string | null
@@ -672,7 +672,7 @@ export interface Info {
      * will be automatically filled in.
      * @param applicationId the application ID to set
      */
-    setApplicationId(applicationId: string | null): void
+    setApplicationId(applicationId: string): void
     /**
      * Sets the contact information for the application fetching the
      * weather. It is a requirement for using any of the online
@@ -685,7 +685,7 @@ export interface Info {
      * URLs which require creating accounts.
      * @param contactInfo the contact information for the application
      */
-    setContactInfo(contactInfo: string | null): void
+    setContactInfo(contactInfo: string): void
     /**
      * Sets the enabled providers for fetching the weather. Note
      * that it is up to the application developer to make sure that
@@ -875,7 +875,7 @@ export interface Location {
      * @param countryCode a country code
      * @returns a country level #GWeatherLocation, or %NULL.
      */
-    findByCountryCode(countryCode: string | null): Location
+    findByCountryCode(countryCode: string): Location
     /**
      * Retrieves the weather station identifier by `station_code`.
      * 
@@ -887,7 +887,7 @@ export interface Location {
      * @param stationCode a 4 letter METAR code
      * @returns a weather station level location   for the given station code, or `NULL` if none exists in the database
      */
-    findByStationCode(stationCode: string | null): Location | null
+    findByStationCode(stationCode: string): Location | null
     /**
      * Finds the nearest city to the passed latitude and
      * longitude, among the descendants of `loc`.
@@ -1124,7 +1124,7 @@ export class Location extends GObject.Object {
      * @param longitude the longitude of the location
      * @returns the newly created detached location
      */
-    static newDetached(name: string | null, icao: string | null, latitude: number, longitude: number): Location
+    static newDetached(name: string, icao: string | null, latitude: number, longitude: number): Location
     _init(config?: Location.ConstructorProperties): void
     /**
      * Fetches the location from `result`.
@@ -1163,8 +1163,8 @@ export interface Conditions {
 
     // Owm methods of GWeather-4.0.GWeather.Conditions
 
-    toString(): string | null
-    toStringFull(options: FormatOptions): string | null
+    toString(): string
+    toStringFull(options: FormatOptions): string
 }
 
 /**

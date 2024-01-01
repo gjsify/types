@@ -139,7 +139,7 @@ function commandsSaveDocumentFinish(document: Document, result: Gio.AsyncResult)
  * @param line line number.
  * @param function_ name of the function that is calling gedit_debug().
  */
-function debug(section: DebugSection, file: string | null, line: number, function_: string | null): void
+function debug(section: DebugSection, file: string, line: number, function_: string): void
 /**
  * Initializes the debugging subsystem of gedit.
  * 
@@ -181,7 +181,7 @@ function debugInit(): void
  * @param function_ name of the function that is calling gedit_debug_plugin_message().
  * @param message a message.
  */
-function debugPluginMessage(file: string | null, line: number, function_: string | null, message: string | null): void
+function debugPluginMessage(file: string, line: number, function_: string, message: string): void
 function utilsBasenameForDisplay(location: Gio.File): string | null
 /**
  * Create a list of valid uri's from a uri-list drop.
@@ -189,7 +189,7 @@ function utilsBasenameForDisplay(location: Gio.File): string | null
  * @returns a string array which will hold the uris or           %NULL if there were no valid uris. g_strfreev should be used when           the string array is no longer used
  */
 function utilsDropGetUris(selectionData: Gtk.SelectionData): string[]
-function utilsGetCompressionTypeFromContentType(contentType: string | null): GtkSource.CompressionType
+function utilsGetCompressionTypeFromContentType(contentType: string): GtkSource.CompressionType
 function utilsIsValidLocation(location: Gio.File): boolean
 /**
  * Returns a string suitable to be displayed in the UI indicating
@@ -201,7 +201,7 @@ function utilsIsValidLocation(location: Gio.File): boolean
  */
 function utilsLocationGetDirnameForDisplay(location: Gio.File): string | null
 function utilsMenuPositionUnderTreeView(treeView: Gtk.TreeView, rect: Gdk.Rectangle): boolean
-function utilsNewlineTypeToString(newlineType: GtkSource.NewlineType): string | null
+function utilsNewlineTypeToString(newlineType: GtkSource.NewlineType): string
 /**
  * This function sets up name and description
  * for a specified gtk widget.
@@ -209,10 +209,10 @@ function utilsNewlineTypeToString(newlineType: GtkSource.NewlineType): string | 
  * @param name Atk name string
  * @param description Atk description string
  */
-function utilsSetAtkNameDescription(widget: Gtk.Widget, name: string | null, description: string | null): void
+function utilsSetAtkNameDescription(widget: Gtk.Widget, name: string, description: string): void
 function utilsSetDirectSaveFilename(context: Gdk.DragContext): string | null
 interface MessageBusForeach {
-    (objectPath: string | null, method: string | null): void
+    (objectPath: string, method: string): void
 }
 /**
  * Callback signature used for connecting callback functions to be called
@@ -263,7 +263,7 @@ interface AppActivatable {
      * @param extensionPoint the extension point section of the menu to get.
      * @returns a #GeditMenuExtension for the specific section or %NULL if not found.
      */
-    extendMenu(extensionPoint: string | null): MenuExtension
+    extendMenu(extensionPoint: string): MenuExtension
 
     // Own virtual methods of Gedit-3.0.Gedit.AppActivatable
 
@@ -518,15 +518,15 @@ interface App extends Gio.ActionGroup, Gio.ActionMap {
      */
     getViews(): View[]
     // Has conflict: processWindowEvent(window: Window, event: Gdk.Event): boolean
-    // Has conflict: setWindowTitle(window: Window, title: string | null): void
-    // Has conflict: showHelp(parent: Gtk.Window, name: string | null, linkId: string | null): boolean
+    // Has conflict: setWindowTitle(window: Window, title: string): void
+    // Has conflict: showHelp(parent: Gtk.Window, name: string, linkId: string): boolean
 
     // Own virtual methods of Gedit-3.0.Gedit.App
 
-    helpLinkId(name: string | null, linkId: string | null): string | null
+    helpLinkId(name: string, linkId: string): string | null
     processWindowEvent(window: Window, event: Gdk.Event): boolean
-    setWindowTitle(window: Window, title: string | null): void
-    showHelp(parent: Gtk.Window, name: string | null, linkId: string | null): boolean
+    setWindowTitle(window: Window, title: string): void
+    showHelp(parent: Gtk.Window, name: string, linkId: string): boolean
 
     // Class property signals of Gedit-3.0.Gedit.App
 
@@ -728,7 +728,7 @@ interface Document {
      * @param key name of the key
      * @returns the value assigned to @key. Free with g_free().
      */
-    getMetadata(key: string | null): string | null
+    getMetadata(key: string): string | null
     /**
      * Note: this never returns %NULL.
      */
@@ -982,13 +982,13 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1001,13 +1001,13 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1020,7 +1020,7 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1029,7 +1029,7 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1053,7 +1053,7 @@ interface EncodingsComboBox extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cel
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1525,18 +1525,18 @@ interface Message {
      * Get the message method.
      * @returns the message method
      */
-    getMethod(): string | null
+    getMethod(): string
     /**
      * Get the message object path.
      * @returns the message object path
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Check if a message has a certain property.
      * @param propname the property name
      * @returns %TRUE if message has @propname, %FALSE otherwise
      */
-    has(propname: string | null): boolean
+    has(propname: string): boolean
 
     // Class property signals of Gedit-3.0.Gedit.Message
 
@@ -1579,8 +1579,8 @@ class Message extends GObject.Object {
      * @returns %TRUE if @object_path is a valid object path
      */
     static isValidObjectPath(objectPath: string | null): boolean
-    static typeCheck(gtype: GObject.GType, propname: string | null, valueType: GObject.GType): boolean
-    static typeHas(gtype: GObject.GType, propname: string | null): boolean
+    static typeCheck(gtype: GObject.GType, propname: string, valueType: GObject.GType): boolean
+    static typeHas(gtype: GObject.GType, propname: string): boolean
     /**
      * Get the string identifier for `method` at `object_path`.
      * @param objectPath the object path
@@ -1649,7 +1649,7 @@ interface MessageBus {
      * @param method the method
      * @param callback the callback to block
      */
-    blockByFunc(objectPath: string | null, method: string | null, callback: MessageCallback): void
+    blockByFunc(objectPath: string, method: string, callback: MessageCallback): void
     /**
      * Connect a callback handler to be evoked when message `method` at `object_path`
      * is sent over the bus.
@@ -1658,7 +1658,7 @@ interface MessageBus {
      * @param callback function to be called when message `method` at `object_path` is sent
      * @returns the callback identifier
      */
-    connect(objectPath: string | null, method: string | null, callback: MessageCallback): number
+    connect(objectPath: string, method: string, callback: MessageCallback): number
     /**
      * Disconnects a previously connected message callback.
      * @param id the callback id as returned by gedit_message_bus_connect()
@@ -1672,7 +1672,7 @@ interface MessageBus {
      * @param method the method
      * @param callback the connected callback
      */
-    disconnectByFunc(objectPath: string | null, method: string | null, callback: MessageCallback): void
+    disconnectByFunc(objectPath: string, method: string, callback: MessageCallback): void
     /**
      * Calls `func` for each message type registered on the bus
      * @param func the callback function
@@ -1685,7 +1685,7 @@ interface MessageBus {
      * @param method the method
      * @returns %TRUE if the @method at @object_path is a registered message               type on the bus
      */
-    isRegistered(objectPath: string | null, method: string | null): boolean
+    isRegistered(objectPath: string, method: string): boolean
     /**
      * Get the registered #GeditMessageType for `method` at `object_path`. The
      * returned #GeditMessageType is owned by the bus and should not be unreffed.
@@ -1693,7 +1693,7 @@ interface MessageBus {
      * @param method the method
      * @returns the registered #GeditMessageType or %NULL if no message type               is registered for @method at @object_path
      */
-    lookup(objectPath: string | null, method: string | null): GObject.GType
+    lookup(objectPath: string, method: string): GObject.GType
     /**
      * Register a message on the bus. A message must be registered on the bus before
      * it can be send. This function registers the type for `method` at
@@ -1704,7 +1704,7 @@ interface MessageBus {
      * @param objectPath the object path
      * @param method the method to register
      */
-    register(messageType: GObject.GType, objectPath: string | null, method: string | null): void
+    register(messageType: GObject.GType, objectPath: string, method: string): void
     /**
      * This sends the provided `message` asynchronously over the bus. To send
      * a message synchronously, use gedit_message_bus_send_message_sync(). The
@@ -1732,7 +1732,7 @@ interface MessageBus {
      * @param method the method
      * @param callback the callback to block
      */
-    unblockByFunc(objectPath: string | null, method: string | null, callback: MessageCallback): void
+    unblockByFunc(objectPath: string, method: string, callback: MessageCallback): void
     /**
      * Unregisters a previously registered message type. This is especially useful
      * for plugins which should unregister message types when they are deactivated.
@@ -1741,7 +1741,7 @@ interface MessageBus {
      * @param objectPath the object path
      * @param method the method
      */
-    unregister(objectPath: string | null, method: string | null): void
+    unregister(objectPath: string, method: string): void
     /**
      * Unregisters all message types for `object_path`. This is especially useful for
      * plugins which should unregister message types when they are deactivated.
@@ -1750,13 +1750,13 @@ interface MessageBus {
      * unregistered message types.
      * @param objectPath the object path
      */
-    unregisterAll(objectPath: string | null): void
+    unregisterAll(objectPath: string): void
 
     // Own virtual methods of Gedit-3.0.Gedit.MessageBus
 
     dispatch(message: Message): void
-    registered(objectPath: string | null, method: string | null): void
-    unregistered(objectPath: string | null, method: string | null): void
+    registered(objectPath: string, method: string): void
+    unregistered(objectPath: string, method: string): void
 
     // Own signals of Gedit-3.0.Gedit.MessageBus
 
@@ -1860,13 +1860,13 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1879,13 +1879,13 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1898,7 +1898,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1907,7 +1907,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Forces the removal of a message from a statusbar’s stack.
      * The exact `context_id` and `message_id` must be specified.
@@ -1957,7 +1957,7 @@ interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable 
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2366,13 +2366,13 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2385,13 +2385,13 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2404,7 +2404,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2413,7 +2413,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2425,7 +2425,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2786,13 +2786,13 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2805,13 +2805,13 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2824,7 +2824,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2833,7 +2833,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Retrieves the #GdkWindow corresponding to an area of the text view;
      * possible windows include the overall widget window, child windows
@@ -2869,7 +2869,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3576,13 +3576,13 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3595,13 +3595,13 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3614,7 +3614,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3623,7 +3623,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -3659,7 +3659,7 @@ interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.ActionMap, G
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -4161,9 +4161,9 @@ interface AppClass {
     // Own fields of Gedit-3.0.Gedit.AppClass
 
     parentClass: Gtk.ApplicationClass
-    showHelp: (app: App, parent: Gtk.Window, name: string | null, linkId: string | null) => boolean
-    helpLinkId: (app: App, name: string | null, linkId: string | null) => string | null
-    setWindowTitle: (app: App, window: Window, title: string | null) => void
+    showHelp: (app: App, parent: Gtk.Window, name: string, linkId: string) => boolean
+    helpLinkId: (app: App, name: string, linkId: string) => string | null
+    setWindowTitle: (app: App, window: Window, title: string) => void
     processWindowEvent: (app: App, window: Window, event: Gdk.Event) => boolean
 }
 
@@ -4225,8 +4225,8 @@ interface MessageBusClass {
 
     parentClass: GObject.ObjectClass
     dispatch: (bus: MessageBus, message: Message) => void
-    registered: (bus: MessageBus, objectPath: string | null, method: string | null) => void
-    unregistered: (bus: MessageBus, objectPath: string | null, method: string | null) => void
+    registered: (bus: MessageBus, objectPath: string, method: string) => void
+    unregistered: (bus: MessageBus, objectPath: string, method: string) => void
 }
 
 abstract class MessageBusClass {

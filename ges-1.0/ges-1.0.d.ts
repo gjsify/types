@@ -874,45 +874,45 @@ const FRAME_NUMBER_NONE: number
 /**
  * The description of the object, to be used in various contexts (string).
  */
-const META_DESCRIPTION: string | null
+const META_DESCRIPTION: string
 /**
  * The file extension of files produced by a #GESFormatter (string).
  */
-const META_FORMATTER_EXTENSION: string | null
+const META_FORMATTER_EXTENSION: string
 /**
  * The mimetype used for the file produced by a #GESFormatter (string).
  */
-const META_FORMATTER_MIMETYPE: string | null
+const META_FORMATTER_MIMETYPE: string
 /**
  * The name of a formatter, used as the #GESAsset:id for #GESFormatter
  * assets (string).
  */
-const META_FORMATTER_NAME: string | null
+const META_FORMATTER_NAME: string
 /**
  * The rank of a #GESFormatter (a #GstRank).
  */
-const META_FORMATTER_RANK: string | null
+const META_FORMATTER_RANK: string
 /**
  * The version of a #GESFormatter (double).
  */
-const META_FORMATTER_VERSION: string | null
+const META_FORMATTER_VERSION: string
 /**
  * The version of the format in which a project is serialized (string).
  */
-const META_FORMAT_VERSION: string | null
+const META_FORMAT_VERSION: string
 /**
  * The ARGB color of a #GESMarker (an AARRGGBB hex as a uint).
  */
-const META_MARKER_COLOR: string | null
+const META_MARKER_COLOR: string
 /**
  * The volume for a #GESTrack or a #GESLayer (float).
  */
-const META_VOLUME: string | null
+const META_VOLUME: string
 /**
  * The default volume for a #GESTrack or a #GESLayer as a float.
  */
 const META_VOLUME_DEFAULT: number
-const MULTI_FILE_URI_PREFIX: string | null
+const MULTI_FILE_URI_PREFIX: string
 const PADDING: number
 const PADDING_LARGE: number
 /**
@@ -923,7 +923,7 @@ const VERSION_MAJOR: number
 const VERSION_MICRO: number
 const VERSION_MINOR: number
 const VERSION_NANO: number
-function add_missing_uri_relocation_uri(uri: string | null, recurse: boolean): boolean
+function add_missing_uri_relocation_uri(uri: string, recurse: boolean): boolean
 /**
  * Clean up any resources created by GES in ges_init().
  * 
@@ -935,13 +935,13 @@ function add_missing_uri_relocation_uri(uri: string | null, recurse: boolean): b
  * After this call GES should not be used until another ges_init() call.
  */
 function deinit(): void
-function edge_name(edge: Edge): string | null
+function edge_name(edge: Edge): string
 /**
  * Return a string representation of `mode`.
  * @param mode a #GESEditMode
  * @returns a string representation of @mode.
  */
-function edit_mode_name(mode: EditMode): string | null
+function edit_mode_name(mode: EditMode): string
 /**
  * Get the best formatter for `uri`. It tries to find a formatter
  * compatible with `uri` extension, if none is found, it returns the default
@@ -949,7 +949,7 @@ function edit_mode_name(mode: EditMode): string | null
  * @param uri 
  * @returns The #GESAsset for the best formatter to save to @uri
  */
-function find_formatter_for_uri(uri: string | null): Asset
+function find_formatter_for_uri(uri: string): Asset
 /**
  * Initialize the GStreamer Editing Service. Call this before any usage of
  * GES. You should take care of initilizing GStreamer before calling this
@@ -998,7 +998,7 @@ function list_assets(filter: GObject.GType): Asset[]
 function play_sink_convert_frame(playsink: Gst.Element, caps: Gst.Caps): Gst.Sample | null
 function pspec_equal(key_spec_1: any | null, key_spec_2: any | null): boolean
 function pspec_hash(key_spec: any | null): number
-function track_type_name(type: TrackType): string | null
+function track_type_name(type: TrackType): string
 function validate_register_action_types(): boolean
 /**
  * Gets the version number of the GStreamer Editing Services library.
@@ -1058,7 +1058,7 @@ interface CreateTrackElementsFunc {
  * @param id The ID to check
  */
 interface ExtractableCheckId {
-    (type: GObject.GType, id: string | null): string | null
+    (type: GObject.GType, id: string): string | null
 }
 /**
  * A function that will be called when the nleobject of a corresponding
@@ -1076,7 +1076,7 @@ interface FillTrackElementFunc {
     (clip: Clip, track_element: TrackElement, nleobj: Gst.Element): boolean
 }
 interface FormatterCanLoadURIMethod {
-    (dummy_instance: Formatter, uri: string | null): boolean
+    (dummy_instance: Formatter, uri: string): boolean
 }
 /**
  * Virtual method for loading a timeline from a given URI.
@@ -1089,7 +1089,7 @@ interface FormatterCanLoadURIMethod {
  * @returns TRUE if the timeline data was successfully loaded from the URI, else FALSE.
  */
 interface FormatterLoadFromURIMethod {
-    (formatter: Formatter, timeline: Timeline, uri: string | null): boolean
+    (formatter: Formatter, timeline: Timeline, uri: string): boolean
 }
 /**
  * Virtual method for saving a timeline to a uri.
@@ -1103,7 +1103,7 @@ interface FormatterLoadFromURIMethod {
  * @returns TRUE if the timeline data was successfully saved to the URI else FALSE.
  */
 interface FormatterSaveToURIMethod {
-    (formatter: Formatter, timeline: Timeline, uri: string | null, overwrite: boolean): boolean
+    (formatter: Formatter, timeline: Timeline, uri: string, overwrite: boolean): boolean
 }
 /**
  * A method to be called on all of a meta container's fields.
@@ -1113,7 +1113,7 @@ interface FormatterSaveToURIMethod {
  * @param value The set value under `key`
  */
 interface MetaForeachFunc {
-    (container: MetaContainer, key: string | null, value: any): void
+    (container: MetaContainer, key: string, value: any): void
 }
 module Extractable {
 
@@ -1248,7 +1248,7 @@ interface MetaContainer {
      * @param str A string to deserialize and add to `container`
      * @returns %TRUE if the fields in @str was successfully deserialized and added to @container.
      */
-    add_metas_from_string(str: string | null): boolean
+    add_metas_from_string(str: string): boolean
     /**
      * Checks whether the specified field has been registered as static, and
      * gets the registered type and flags of the field, as used in
@@ -1257,7 +1257,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to check
      * @returns %TRUE if the @meta_item field has been registered on @container.
      */
-    check_meta_registered(meta_item: string | null): [ /* returnType */ boolean, /* flags */ MetaFlag, /* type */ GObject.GType ]
+    check_meta_registered(meta_item: string): [ /* returnType */ boolean, /* flags */ MetaFlag, /* type */ GObject.GType ]
     /**
      * Calls the given function on each of the meta container's set metadata
      * fields.
@@ -1271,7 +1271,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the boolean value under @meta_item was copied to @dest.
      */
-    get_boolean(meta_item: string | null): [ /* returnType */ boolean, /* dest */ boolean ]
+    get_boolean(meta_item: string): [ /* returnType */ boolean, /* dest */ boolean ]
     /**
      * Gets the current date value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1279,7 +1279,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the date value under @meta_item was copied to @dest.
      */
-    get_date(meta_item: string | null): [ /* returnType */ boolean, /* dest */ GLib.Date ]
+    get_date(meta_item: string): [ /* returnType */ boolean, /* dest */ GLib.Date ]
     /**
      * Gets the current date time value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1287,7 +1287,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the date time value under @meta_item was copied to @dest.
      */
-    get_date_time(meta_item: string | null): [ /* returnType */ boolean, /* dest */ Gst.DateTime ]
+    get_date_time(meta_item: string): [ /* returnType */ boolean, /* dest */ Gst.DateTime ]
     /**
      * Gets the current double value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1295,7 +1295,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the double value under @meta_item was copied to @dest.
      */
-    get_double(meta_item: string | null): [ /* returnType */ boolean, /* dest */ number ]
+    get_double(meta_item: string): [ /* returnType */ boolean, /* dest */ number ]
     /**
      * Gets the current float value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1303,7 +1303,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the float value under @meta_item was copied to @dest.
      */
-    get_float(meta_item: string | null): [ /* returnType */ boolean, /* dest */ number ]
+    get_float(meta_item: string): [ /* returnType */ boolean, /* dest */ number ]
     /**
      * Gets the current int value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1311,7 +1311,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the int value under @meta_item was copied to @dest.
      */
-    get_int(meta_item: string | null): [ /* returnType */ boolean, /* dest */ number ]
+    get_int(meta_item: string): [ /* returnType */ boolean, /* dest */ number ]
     /**
      * Gets the current int64 value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1319,7 +1319,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the int64 value under @meta_item was copied to @dest.
      */
-    get_int64(meta_item: string | null): [ /* returnType */ boolean, /* dest */ number ]
+    get_int64(meta_item: string): [ /* returnType */ boolean, /* dest */ number ]
     /**
      * Gets the current marker list value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1327,13 +1327,13 @@ interface MetaContainer {
      * @param key The key for the `container` field to get
      * @returns A copy of the marker list value under @key, or %NULL if it could not be fetched.
      */
-    get_marker_list(key: string | null): MarkerList | null
+    get_marker_list(key: string): MarkerList | null
     /**
      * Gets the current value of the specified field of the meta container.
      * @param key The key for the `container` field to get
      * @returns The value under @key, or %NULL if @container does not have the field set.
      */
-    get_meta(key: string | null): any | null
+    get_meta(key: string): any | null
     /**
      * Gets the current string value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1341,7 +1341,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns The string value under @meta_item, or %NULL if it could not be fetched.
      */
-    get_string(meta_item: string | null): string | null
+    get_string(meta_item: string): string | null
     /**
      * Gets the current uint value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1349,7 +1349,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the uint value under @meta_item was copied to @dest.
      */
-    get_uint(meta_item: string | null): [ /* returnType */ boolean, /* dest */ number ]
+    get_uint(meta_item: string): [ /* returnType */ boolean, /* dest */ number ]
     /**
      * Gets the current uint64 value of the specified field of the meta
      * container. If the field does not have a set value, or it is of the
@@ -1357,7 +1357,7 @@ interface MetaContainer {
      * @param meta_item The key for the `container` field to get
      * @returns %TRUE if the uint64 value under @meta_item was copied to @dest.
      */
-    get_uint64(meta_item: string | null): [ /* returnType */ boolean, /* dest */ number ]
+    get_uint64(meta_item: string): [ /* returnType */ boolean, /* dest */ number ]
     /**
      * Serializes the set metadata fields of the meta container to a string.
      * @returns A serialized @container.
@@ -1374,7 +1374,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @value types, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta(flags: MetaFlag, meta_item: string | null, value: any): boolean
+    register_meta(flags: MetaFlag, meta_item: string, value: any): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given boolean value, and registers the field to only hold a boolean
@@ -1386,7 +1386,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold boolean typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_boolean(flags: MetaFlag, meta_item: string | null, value: boolean): boolean
+    register_meta_boolean(flags: MetaFlag, meta_item: string, value: boolean): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given date value, and registers the field to only hold a date
@@ -1398,7 +1398,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_date(flags: MetaFlag, meta_item: string | null, value: GLib.Date): boolean
+    register_meta_date(flags: MetaFlag, meta_item: string, value: GLib.Date): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given date time value, and registers the field to only hold a date time
@@ -1410,7 +1410,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold date time typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_date_time(flags: MetaFlag, meta_item: string | null, value: Gst.DateTime): boolean
+    register_meta_date_time(flags: MetaFlag, meta_item: string, value: Gst.DateTime): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given double value, and registers the field to only hold a double
@@ -1422,7 +1422,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold double typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_double(flags: MetaFlag, meta_item: string | null, value: number): boolean
+    register_meta_double(flags: MetaFlag, meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given float value, and registers the field to only hold a float
@@ -1434,7 +1434,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold float typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_float(flags: MetaFlag, meta_item: string | null, value: number): boolean
+    register_meta_float(flags: MetaFlag, meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given int value, and registers the field to only hold an int
@@ -1446,7 +1446,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_int(flags: MetaFlag, meta_item: string | null, value: number): boolean
+    register_meta_int(flags: MetaFlag, meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given int64 value, and registers the field to only hold an int64
@@ -1458,7 +1458,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold int64 typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_int64(flags: MetaFlag, meta_item: string | null, value: number): boolean
+    register_meta_int64(flags: MetaFlag, meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given string value, and registers the field to only hold a string
@@ -1470,7 +1470,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold string typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_string(flags: MetaFlag, meta_item: string | null, value: string | null): boolean
+    register_meta_string(flags: MetaFlag, meta_item: string, value: string): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given uint value, and registers the field to only hold a uint
@@ -1482,7 +1482,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_uint(flags: MetaFlag, meta_item: string | null, value: number): boolean
+    register_meta_uint(flags: MetaFlag, meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given uint64 value, and registers the field to only hold a uint64
@@ -1494,7 +1494,7 @@ interface MetaContainer {
      * @param value The value to set for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold uint64 typed values, with the given @flags, and the field was successfully set to @value.
      */
-    register_meta_uint64(flags: MetaFlag, meta_item: string | null, value: number): boolean
+    register_meta_uint64(flags: MetaFlag, meta_item: string, value: number): boolean
     /**
      * Registers a static metadata field on the container to only hold the
      * specified type. After calling this, setting a value under this field
@@ -1514,7 +1514,7 @@ interface MetaContainer {
      * @param type The required value type for the registered field
      * @returns %TRUE if the @meta_item field was successfully registered on @container to only hold @type values, with the given @flags.
      */
-    register_static_meta(flags: MetaFlag, meta_item: string | null, type: GObject.GType): boolean
+    register_static_meta(flags: MetaFlag, meta_item: string, type: GObject.GType): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given boolean value.
@@ -1522,7 +1522,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_boolean(meta_item: string | null, value: boolean): boolean
+    set_boolean(meta_item: string, value: boolean): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given date value.
@@ -1530,7 +1530,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_date(meta_item: string | null, value: GLib.Date): boolean
+    set_date(meta_item: string, value: GLib.Date): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given date time value.
@@ -1538,7 +1538,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_date_time(meta_item: string | null, value: Gst.DateTime): boolean
+    set_date_time(meta_item: string, value: Gst.DateTime): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given double value.
@@ -1546,7 +1546,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_double(meta_item: string | null, value: number): boolean
+    set_double(meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given float value.
@@ -1554,7 +1554,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_float(meta_item: string | null, value: number): boolean
+    set_float(meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given int value.
@@ -1562,7 +1562,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_int(meta_item: string | null, value: number): boolean
+    set_int(meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given int64 value.
@@ -1570,7 +1570,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_int64(meta_item: string | null, value: number): boolean
+    set_int64(meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given marker list value.
@@ -1578,7 +1578,7 @@ interface MetaContainer {
      * @param list The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_marker_list(meta_item: string | null, list: MarkerList): boolean
+    set_marker_list(meta_item: string, list: MarkerList): boolean
     /**
      * Sets the value of the specified field of the meta container to a
      * copy of the given value. If the given `value` is %NULL, the field
@@ -1587,7 +1587,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item,` or %NULL to remove the corresponding field
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_meta(meta_item: string | null, value: any | null): boolean
+    set_meta(meta_item: string, value: any | null): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given string value.
@@ -1595,7 +1595,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_string(meta_item: string | null, value: string | null): boolean
+    set_string(meta_item: string, value: string): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given uint value.
@@ -1603,7 +1603,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_uint(meta_item: string | null, value: number): boolean
+    set_uint(meta_item: string, value: number): boolean
     /**
      * Sets the value of the specified field of the meta container to the
      * given uint64 value.
@@ -1611,7 +1611,7 @@ interface MetaContainer {
      * @param value The value to set under `meta_item`
      * @returns %TRUE if @value was set under @meta_item for @container.
      */
-    set_uint64(meta_item: string | null, value: number): boolean
+    set_uint64(meta_item: string, value: number): boolean
 
     // Own signals of GES-1.0.GES.MetaContainer
 
@@ -1798,7 +1798,7 @@ interface Asset extends MetaContainer, Gio.AsyncInitable, Gio.Initable {
      * Gets the #GESAsset:id of the asset.
      * @returns The ID of @self.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the default #GESAsset:proxy of the asset.
      * @returns The default proxy of @asset.
@@ -1859,7 +1859,7 @@ interface Asset extends MetaContainer, Gio.AsyncInitable, Gio.Initable {
      * @returns A newly created object, or %NULL if an error occurred.
      */
     vfunc_extract(): Extractable
-    vfunc_inform_proxy(proxy_id: string | null): void
+    vfunc_inform_proxy(proxy_id: string): void
     vfunc_proxied(proxy: Asset): void
     vfunc_request_id_update(proposed_new_id: string | null, error: GLib.Error): boolean
     vfunc_start_loading(): AssetLoadingReturn
@@ -2163,7 +2163,7 @@ interface AudioSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -2184,7 +2184,7 @@ interface AudioSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -2202,7 +2202,7 @@ interface AudioSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -2211,7 +2211,7 @@ interface AudioSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -2233,7 +2233,7 @@ interface AudioSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -2252,7 +2252,7 @@ interface AudioSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.AudioSource
 
@@ -2394,7 +2394,7 @@ interface AudioTestSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -2415,7 +2415,7 @@ interface AudioTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -2433,7 +2433,7 @@ interface AudioTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -2442,7 +2442,7 @@ interface AudioTestSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -2464,7 +2464,7 @@ interface AudioTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -2483,7 +2483,7 @@ interface AudioTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.AudioTestSource
 
@@ -2563,7 +2563,7 @@ interface AudioTrack extends MetaContainer, Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -2587,7 +2587,7 @@ interface AudioTrack extends MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -2608,7 +2608,7 @@ interface AudioTrack extends MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 
@@ -2839,7 +2839,7 @@ interface AudioTransition extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -2860,7 +2860,7 @@ interface AudioTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -2878,7 +2878,7 @@ interface AudioTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -2887,7 +2887,7 @@ interface AudioTransition extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -2909,7 +2909,7 @@ interface AudioTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -2928,7 +2928,7 @@ interface AudioTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.AudioTransition
 
@@ -3059,7 +3059,7 @@ interface AudioUriSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -3080,7 +3080,7 @@ interface AudioUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -3098,7 +3098,7 @@ interface AudioUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -3107,7 +3107,7 @@ interface AudioUriSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -3129,7 +3129,7 @@ interface AudioUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -3148,7 +3148,7 @@ interface AudioUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.AudioUriSource
 
@@ -3237,7 +3237,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param child_property_name The name of the child property to register as a time property
      * @returns %TRUE if the child property was found and newly registered.
      */
-    register_time_property(child_property_name: string | null): boolean
+    register_time_property(child_property_name: string): boolean
     /**
      * Set the time translation query functions for the time effect. If an
      * effect is a time effect, it will have two sets of coordinates: one
@@ -3311,7 +3311,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -3332,7 +3332,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -3350,7 +3350,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -3359,7 +3359,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -3381,7 +3381,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -3400,7 +3400,7 @@ interface BaseEffect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.BaseEffect
 
@@ -4854,7 +4854,7 @@ interface Effect extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -4875,7 +4875,7 @@ interface Effect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -4893,7 +4893,7 @@ interface Effect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -4902,7 +4902,7 @@ interface Effect extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -4924,7 +4924,7 @@ interface Effect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -4943,7 +4943,7 @@ interface Effect extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.Effect
 
@@ -5012,7 +5012,7 @@ class Effect extends BaseEffect {
      * @param bin_description The gst-launch like bin description of the effect
      * @returns a newly created #GESEffect, or %NULL if something went wrong.
      */
-    constructor(bin_description: string | null) 
+    constructor(bin_description: string) 
     /**
      * Creates a new #GESEffect from the description of the bin. It should be
      * possible to determine the type of the effect through the element
@@ -5024,7 +5024,7 @@ class Effect extends BaseEffect {
      * @param bin_description The gst-launch like bin description of the effect
      * @returns a newly created #GESEffect, or %NULL if something went wrong.
      */
-    static new(bin_description: string | null): Effect
+    static new(bin_description: string): Effect
     _init(config?: Effect.ConstructorProperties): void
     /**
      * Register an element that can change the rate at which media is playing.
@@ -5056,7 +5056,7 @@ class Effect extends BaseEffect {
      * @param property_name The name of the property that changes the rate
      * @returns %TRUE if the rate property was successfully registered. When this method returns %FALSE, a warning is emitted with more information.
      */
-    static register_rate_property(klass: Effect | Function | GObject.GType, element_name: string | null, property_name: string | null): boolean
+    static register_rate_property(klass: Effect | Function | GObject.GType, element_name: string, property_name: string): boolean
 }
 
 module EffectAsset {
@@ -5293,7 +5293,7 @@ interface Formatter extends Extractable {
      * @param uri a #gchar * pointing to a URI
      * @returns TRUE if the timeline data was successfully loaded from the URI, else FALSE.
      */
-    load_from_uri(timeline: Timeline, uri: string | null): boolean
+    load_from_uri(timeline: Timeline, uri: string): boolean
     /**
      * Save data from timeline to the given URI.
      * @param timeline a #GESTimeline
@@ -5301,11 +5301,11 @@ interface Formatter extends Extractable {
      * @param overwrite %TRUE to overwrite file if it exists
      * @returns TRUE if the timeline data was successfully saved to the URI else FALSE.
      */
-    save_to_uri(timeline: Timeline, uri: string | null, overwrite: boolean): boolean
+    save_to_uri(timeline: Timeline, uri: string, overwrite: boolean): boolean
 
     // Own virtual methods of GES-1.0.GES.Formatter
 
-    vfunc_can_load_uri(uri: string | null): boolean
+    vfunc_can_load_uri(uri: string): boolean
     /**
      * Load data from the given URI into timeline.
      * @virtual 
@@ -5313,7 +5313,7 @@ interface Formatter extends Extractable {
      * @param uri a #gchar * pointing to a URI
      * @returns TRUE if the timeline data was successfully loaded from the URI, else FALSE.
      */
-    vfunc_load_from_uri(timeline: Timeline, uri: string | null): boolean
+    vfunc_load_from_uri(timeline: Timeline, uri: string): boolean
     /**
      * Save data from timeline to the given URI.
      * @virtual 
@@ -5322,7 +5322,7 @@ interface Formatter extends Extractable {
      * @param overwrite %TRUE to overwrite file if it exists
      * @returns TRUE if the timeline data was successfully saved to the URI else FALSE.
      */
-    vfunc_save_to_uri(timeline: Timeline, uri: string | null, overwrite: boolean): boolean
+    vfunc_save_to_uri(timeline: Timeline, uri: string, overwrite: boolean): boolean
 
     // Class property signals of GES-1.0.GES.Formatter
 
@@ -5353,21 +5353,21 @@ class Formatter extends GObject.InitiallyUnowned {
      * @param uri a #gchar * pointing to the URI
      * @returns TRUE if there is a #GESFormatter that can support the given uri or FALSE if not.
      */
-    static can_load_uri(uri: string | null): boolean
+    static can_load_uri(uri: string): boolean
     /**
      * Returns TRUE if there is a #GESFormatter available which can save a
      * #GESTimeline to the given URI.
      * @param uri a #gchar * pointing to a URI
      * @returns TRUE if the given @uri is supported, else FALSE.
      */
-    static can_save_uri(uri: string | null): boolean
+    static can_save_uri(uri: string): boolean
     /**
      * Get the default #GESAsset to use as formatter. It will return
      * the asset for the #GESFormatter that has the highest `rank`
      * @returns The #GESAsset for the formatter with highest @rank
      */
     static get_default(): Asset
-    static register_metas(klass: Formatter | Function | GObject.GType, name: string | null, description: string | null, extensions: string | null, caps: string | null, version: number, rank: Gst.Rank): void
+    static register_metas(klass: Formatter | Function | GObject.GType, name: string, description: string, extensions: string, caps: string, version: number, rank: Gst.Rank): void
 }
 
 module Group {
@@ -5635,7 +5635,7 @@ interface ImageSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -5656,7 +5656,7 @@ interface ImageSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -5674,7 +5674,7 @@ interface ImageSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -5683,7 +5683,7 @@ interface ImageSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -5705,7 +5705,7 @@ interface ImageSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -5724,7 +5724,7 @@ interface ImageSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.ImageSource
 
@@ -6355,7 +6355,7 @@ interface MultiFileSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -6376,7 +6376,7 @@ interface MultiFileSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -6394,7 +6394,7 @@ interface MultiFileSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -6403,7 +6403,7 @@ interface MultiFileSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -6425,7 +6425,7 @@ interface MultiFileSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -6444,7 +6444,7 @@ interface MultiFileSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.MultiFileSource
 
@@ -6563,7 +6563,7 @@ interface Operation extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -6584,7 +6584,7 @@ interface Operation extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -6602,7 +6602,7 @@ interface Operation extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -6611,7 +6611,7 @@ interface Operation extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -6633,7 +6633,7 @@ interface Operation extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -6652,7 +6652,7 @@ interface Operation extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.Operation
 
@@ -7021,7 +7021,7 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * @param location The path to save the thumbnail to
      * @returns %TRUE if @self's current image preview was successfully saved to @location using the given @format, @height and @width.
      */
-    save_thumbnail(width: number, height: number, format: string | null, location: string | null): boolean
+    save_thumbnail(width: number, height: number, format: string, location: string): boolean
     /**
      * Sets the #GESPipeline:mode of the pipeline.
      * 
@@ -7047,7 +7047,7 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * @param profile The encoding to use for rendering the #GESPipeline:timeline
      * @returns %TRUE if the settings were successfully set on @pipeline.
      */
-    set_render_settings(output_uri: string | null, profile: GstPbutils.EncodingProfile): boolean
+    set_render_settings(output_uri: string, profile: GstPbutils.EncodingProfile): boolean
     /**
      * Takes the given timeline and sets it as the #GESPipeline:timeline for
      * the pipeline.
@@ -7067,7 +7067,7 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -7091,7 +7091,7 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -7112,7 +7112,7 @@ interface Pipeline extends Gst.ChildProxy, GstVideo.VideoOverlay {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 
@@ -7421,7 +7421,7 @@ interface Project extends MetaContainer, Gio.AsyncInitable, Gio.Initable {
      * @returns The newly created #GESAsset or %NULL.
      */
     create_asset_sync(id: string | null, extractable_type: GObject.GType): Asset | null
-    get_asset(id: string | null, extractable_type: GObject.GType): Asset | null
+    get_asset(id: string, extractable_type: GObject.GType): Asset | null
     /**
      * Get the assets that are being loaded
      * @returns A set of loading asset that will be added to @project. Note that those Asset are *not* loaded yet, and thus can not be used
@@ -7468,7 +7468,7 @@ interface Project extends MetaContainer, Gio.AsyncInitable, Gio.Initable {
      * @param overwrite %TRUE to overwrite file if it exists
      * @returns %TRUE if the project could be save, %FALSE otherwize
      */
-    save(timeline: Timeline, uri: string | null, formatter_asset: Asset | null, overwrite: boolean): boolean
+    save(timeline: Timeline, uri: string, formatter_asset: Asset | null, overwrite: boolean): boolean
 
     // Own virtual methods of GES-1.0.GES.Project
 
@@ -7667,7 +7667,7 @@ interface Source extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -7688,7 +7688,7 @@ interface Source extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -7706,7 +7706,7 @@ interface Source extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -7715,7 +7715,7 @@ interface Source extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -7737,7 +7737,7 @@ interface Source extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -7756,7 +7756,7 @@ interface Source extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Own virtual methods of GES-1.0.GES.Source
 
@@ -8272,7 +8272,7 @@ interface TextOverlay extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -8293,7 +8293,7 @@ interface TextOverlay extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -8311,7 +8311,7 @@ interface TextOverlay extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -8320,7 +8320,7 @@ interface TextOverlay extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -8342,7 +8342,7 @@ interface TextOverlay extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -8361,7 +8361,7 @@ interface TextOverlay extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.TextOverlay
 
@@ -8944,7 +8944,7 @@ interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * @param name The name of the element to find
      * @returns The timeline element in @timeline with the given @name, or %NULL if it was not found.
      */
-    get_element(name: string | null): TimelineElement | null
+    get_element(name: string): TimelineElement | null
     /**
      * This method allows you to convert a timeline #GstClockTime into its
      * corresponding #GESFrameNumber in the timeline's output.
@@ -9011,7 +9011,7 @@ interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * @param uri The URI to load from
      * @returns %TRUE if the timeline was loaded successfully from @uri.
      */
-    load_from_uri(uri: string | null): boolean
+    load_from_uri(uri: string): boolean
     /**
      * Moves a layer within the timeline to the index given by
      * `new_layer_priority`.
@@ -9066,7 +9066,7 @@ interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * @param overwrite %TRUE to overwrite file if it exists
      * @returns %TRUE if @timeline was successfully saved to @uri.
      */
-    save_to_uri(uri: string | null, formatter_asset: Asset | null, overwrite: boolean): boolean
+    save_to_uri(uri: string, formatter_asset: Asset | null, overwrite: boolean): boolean
     /**
      * Sets #GESTimeline:auto-transition for the timeline. This will also set
      * the corresponding #GESLayer:auto-transition for all of the timeline's
@@ -9096,7 +9096,7 @@ interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -9120,7 +9120,7 @@ interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -9141,7 +9141,7 @@ interface Timeline extends Extractable, MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 
@@ -9397,7 +9397,7 @@ class Timeline extends Gst.Bin {
      * @param uri The URI to load from
      * @returns A new timeline if the uri was loaded successfully, or %NULL if the uri could not be loaded.
      */
-    static new_from_uri(uri: string | null): Timeline
+    static new_from_uri(uri: string): Timeline
     _init(config?: Timeline.ConstructorProperties): void
 }
 
@@ -9761,7 +9761,7 @@ interface TimelineElement extends Extractable, MetaContainer {
      * @param property_name The name of the child property to get
      * @returns %TRUE if the property was found and copied to @value.
      */
-    get_child_property(property_name: string | null): [ /* returnType */ boolean, /* value */ any ]
+    get_child_property(property_name: string): [ /* returnType */ boolean, /* value */ any ]
     /**
      * Gets the property of a child of the element. Specifically, the property
      * corresponding to the `pspec` used in
@@ -9864,7 +9864,7 @@ interface TimelineElement extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Paste an element inside the same timeline and layer as `self`. `self`
      * **must** be the return of ges_timeline_element_copy() with `deep=TRUE`,
@@ -9938,7 +9938,7 @@ interface TimelineElement extends Extractable, MetaContainer {
      * @param value The value to set the property to
      * @returns %TRUE if the property was found and set.
      */
-    set_child_property(property_name: string | null, value: any): boolean
+    set_child_property(property_name: string, value: any): boolean
     /**
      * Sets the property of a child of the element. Specifically, the property
      * corresponding to the `pspec` used in
@@ -9966,7 +9966,7 @@ interface TimelineElement extends Extractable, MetaContainer {
      * @param value The value to set the property to
      * @returns %TRUE if the property was found and set.
      */
-    set_child_property_full(property_name: string | null, value: any): boolean
+    set_child_property_full(property_name: string, value: any): boolean
     /**
      * Sets #GESTimelineElement:duration for the element.
      * 
@@ -10136,7 +10136,7 @@ interface TimelineElement extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Edits the start time of an element within its timeline in ripple mode.
      * See ges_timeline_element_edit() with #GES_EDIT_MODE_RIPPLE and
@@ -10806,7 +10806,7 @@ interface TitleSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -10827,7 +10827,7 @@ interface TitleSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -10845,7 +10845,7 @@ interface TitleSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -10854,7 +10854,7 @@ interface TitleSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -10876,7 +10876,7 @@ interface TitleSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -10895,7 +10895,7 @@ interface TitleSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.TitleSource
 
@@ -11282,7 +11282,7 @@ interface Track extends MetaContainer, Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -11306,7 +11306,7 @@ interface Track extends MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -11327,7 +11327,7 @@ interface Track extends MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 
@@ -11814,7 +11814,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * in-point and out-point times, a new interpolated value will be placed.
      * @param property_name The name of the child property to clamp the control source of
      */
-    clamp_control_source(property_name: string | null): void
+    clamp_control_source(property_name: string): void
     /**
      * Edits the element within its track.
      * @param layers A whitelist of layers where the edit can be performed, %NULL allows all layers in the timeline
@@ -11864,7 +11864,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param property_name The name of the child property to return the control binding of
      * @returns The control binding that was created for the specified child property of @object, or %NULL if @property_name does not correspond to any control binding.
      */
-    get_control_binding(property_name: string | null): Gst.ControlBinding | null
+    get_control_binding(property_name: string): Gst.ControlBinding | null
     /**
      * Get the #GstElement that the track element's underlying nleobject
      * controls.
@@ -11927,7 +11927,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -11948,7 +11948,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Removes the #GstControlBinding that was created for the specified child
      * property of the track element using
@@ -11958,7 +11958,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param property_name The name of the child property to remove the control binding from
      * @returns %TRUE if the control binding was removed from the specified child property of @object, or %FALSE if an error occurred.
      */
-    remove_control_binding(property_name: string | null): boolean
+    remove_control_binding(property_name: string): boolean
     /**
      * Sets #GESTrackElement:active for the element.
      * @param active Whether `object` should be active in its track
@@ -11986,7 +11986,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param binding_type The type of binding to create ("direct" or "direct-absolute")
      * @returns %TRUE if the specified child property could be bound to @source, or %FALSE if an error occurred.
      */
-    set_control_source(source: Gst.ControlSource, property_name: string | null, binding_type: string | null): boolean
+    set_control_source(source: Gst.ControlSource, property_name: string, binding_type: string): boolean
     /**
      * Sets #GESTrackElement:has-internal-source for the element. If this is
      * set to %FALSE, this method will also set the
@@ -12021,7 +12021,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -12043,7 +12043,7 @@ interface TrackElement extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Own signals of GES-1.0.GES.TrackElement
 
@@ -12276,7 +12276,7 @@ interface Transition extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -12297,7 +12297,7 @@ interface Transition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -12315,7 +12315,7 @@ interface Transition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -12324,7 +12324,7 @@ interface Transition extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -12346,7 +12346,7 @@ interface Transition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -12365,7 +12365,7 @@ interface Transition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.Transition
 
@@ -12589,7 +12589,7 @@ interface UriClip extends Extractable, MetaContainer {
      * Get the location of the resource.
      * @returns The location of the resource.
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Lets you know if the audio track of `self` is muted or not.
      * @returns %TRUE if the audio track of @self is muted, %FALSE otherwise.
@@ -12667,7 +12667,7 @@ class UriClip extends SourceClip {
      * @param uri the URI the source should control
      * @returns The newly created #GESUriClip, or %NULL if there was an error.
      */
-    constructor(uri: string | null) 
+    constructor(uri: string) 
     /**
      * Creates a new #GESUriClip for the provided `uri`.
      * 
@@ -12679,7 +12679,7 @@ class UriClip extends SourceClip {
      * @param uri the URI the source should control
      * @returns The newly created #GESUriClip, or %NULL if there was an error.
      */
-    static new(uri: string | null): UriClip
+    static new(uri: string): UriClip
     _init(config?: UriClip.ConstructorProperties): void
 }
 
@@ -12826,7 +12826,7 @@ class UriClipAsset extends SourceClipAsset {
      * @param cancellable optional %GCancellable object, %NULL to ignore.
      * @param callback a #GAsyncReadyCallback to call when the initialization is finished
      */
-    static new(uri: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UriClipAsset> | null): void
+    static new(uri: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<UriClipAsset> | null): void
     /**
      * Finalize the request of an async #GESUriClipAsset
      * @param res The #GAsyncResult from which to get the newly created #GESUriClipAsset
@@ -12839,7 +12839,7 @@ class UriClipAsset extends SourceClipAsset {
      * @param uri The URI of the file for which to create a #GESUriClipAsset. You can also use multi file uris for #GESMultiFileSource.
      * @returns A reference to the requested asset or %NULL if an error happened
      */
-    static request_sync(uri: string | null): UriClipAsset
+    static request_sync(uri: string): UriClipAsset
     /**
      * Sets the timeout of #GESUriClipAsset loading
      * @param timeout The timeout to set
@@ -12874,7 +12874,7 @@ interface UriSourceAsset extends MetaContainer, Gio.AsyncInitable, Gio.Initable 
      * @returns a #GESUriClipAsset
      */
     get_stream_info(): GstPbutils.DiscovererStreamInfo
-    get_stream_uri(): string | null
+    get_stream_uri(): string
     /**
      * Check if `asset` contains a single image
      * @returns %TRUE if the video stream corresponds to an image (i.e. only contains one frame)
@@ -12996,7 +12996,7 @@ interface VideoSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -13017,7 +13017,7 @@ interface VideoSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13035,7 +13035,7 @@ interface VideoSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -13044,7 +13044,7 @@ interface VideoSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -13066,7 +13066,7 @@ interface VideoSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13085,7 +13085,7 @@ interface VideoSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.VideoSource
 
@@ -13207,7 +13207,7 @@ interface VideoTestSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -13228,7 +13228,7 @@ interface VideoTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13246,7 +13246,7 @@ interface VideoTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -13255,7 +13255,7 @@ interface VideoTestSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -13277,7 +13277,7 @@ interface VideoTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13296,7 +13296,7 @@ interface VideoTestSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.VideoTestSource
 
@@ -13376,7 +13376,7 @@ interface VideoTrack extends MetaContainer, Gst.ChildProxy {
      * You are responsible for freeing it by calling g_value_unset()
      * @param name name of the property
      */
-    get_property(name: string | null): /* value */ any
+    get_property(name: string): /* value */ any
 
     // Overloads of get_property
 
@@ -13400,7 +13400,7 @@ interface VideoTrack extends MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Gets a property of an object.
      * 
@@ -13421,7 +13421,7 @@ interface VideoTrack extends MetaContainer, Gst.ChildProxy {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
+    get_property(property_name: string, value: any): void
     /**
      * Increases the reference count of `object`.
      * 
@@ -13717,7 +13717,7 @@ interface VideoTransition extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -13738,7 +13738,7 @@ interface VideoTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13756,7 +13756,7 @@ interface VideoTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -13765,7 +13765,7 @@ interface VideoTransition extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -13787,7 +13787,7 @@ interface VideoTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13806,7 +13806,7 @@ interface VideoTransition extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.VideoTransition
 
@@ -13936,7 +13936,7 @@ interface VideoUriSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of lookup_child
 
@@ -13957,7 +13957,7 @@ interface VideoUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -13975,7 +13975,7 @@ interface VideoUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up which `element` and `pspec` would be effected by the given `name`. If various
      * contained elements have this property name you will get the first one, unless you
@@ -13984,7 +13984,7 @@ interface VideoUriSource extends Extractable, MetaContainer {
      * @param prop_name Name of the property to look up. You can specify the name of the     class as such: "ClassName::property-name", to guarantee that you get the     proper GParamSpec in case various GstElement-s contain the same property     name. If you don't do so, you will get the first element found, having     this property and the and the corresponding GParamSpec.
      * @returns TRUE if @element and @pspec could be found. FALSE otherwise. In that case the values for @pspec and @element are not modified. Unref @element after usage.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 
     // Overloads of vfunc_lookup_child
 
@@ -14006,7 +14006,7 @@ interface VideoUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     /**
      * Looks up a child property of the element.
      * 
@@ -14025,7 +14025,7 @@ interface VideoUriSource extends Extractable, MetaContainer {
      * @param prop_name The name of a child property
      * @returns %TRUE if a child corresponding to the property was found, in which case @child and @pspec are set.
      */
-    vfunc_lookup_child(prop_name: string | null): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    vfunc_lookup_child(prop_name: string): [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
 
     // Class property signals of GES-1.0.GES.VideoUriSource
 
@@ -14126,7 +14126,7 @@ interface AssetClass {
     parent: GObject.ObjectClass
     start_loading: (self: Asset) => AssetLoadingReturn
     extract: (self: Asset) => Extractable
-    inform_proxy: (self: Asset, proxy_id: string | null) => void
+    inform_proxy: (self: Asset, proxy_id: string) => void
     proxied: (self: Asset, proxy: Asset) => void
     request_id_update: (self: Asset, proposed_new_id: string | null, error: GLib.Error) => boolean
     _ges_reserved: any[]
@@ -14556,7 +14556,7 @@ abstract class EffectClass {
      * @param property_name The name of the property that changes the rate
      * @returns %TRUE if the rate property was successfully registered. When this method returns %FALSE, a warning is emitted with more information.
      */
-    static register_rate_property(klass: Effect | Function | GObject.GType, element_name: string | null, property_name: string | null): boolean
+    static register_rate_property(klass: Effect | Function | GObject.GType, element_name: string, property_name: string): boolean
 }
 
 interface EffectClipClass {
@@ -14626,7 +14626,7 @@ interface ExtractableInterface {
     set_asset: (self: Extractable, asset: Asset) => void
     set_asset_full: (self: Extractable, asset: Asset) => boolean
     get_id: (self: Extractable) => string | null
-    get_real_extractable_type: (wanted_type: GObject.GType, id: string | null) => GObject.GType
+    get_real_extractable_type: (wanted_type: GObject.GType, id: string) => GObject.GType
     register_metas: (self: ExtractableInterface, klass: GObject.ObjectClass, asset: Asset) => boolean
     _ges_reserved: any[]
 }
@@ -14676,7 +14676,7 @@ abstract class FormatterClass {
 
     // Owm static methods of GES-1.0.GES.FormatterClass
 
-    static register_metas(klass: Formatter | Function | GObject.GType, name: string | null, description: string | null, extensions: string | null, caps: string | null, version: number, rank: Gst.Rank): void
+    static register_metas(klass: Formatter | Function | GObject.GType, name: string, description: string, extensions: string, caps: string, version: number, rank: Gst.Rank): void
 }
 
 interface FormatterPrivate {
@@ -15140,7 +15140,7 @@ interface TimelineElementClass {
     roll_end: (self: TimelineElement, end: number) => boolean
     trim: (self: TimelineElement, start: number) => boolean
     deep_copy: (self: TimelineElement, copy: TimelineElement) => void
-    lookup_child: (self: TimelineElement, prop_name: string | null) => [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
+    lookup_child: (self: TimelineElement, prop_name: string) => [ /* returnType */ boolean, /* child */ GObject.Object, /* pspec */ GObject.ParamSpec ]
     get_track_types: (self: TimelineElement) => TrackType
     set_child_property: (self: TimelineElement, child: GObject.Object, pspec: GObject.ParamSpec, value: any) => void
     get_layer_priority: (self: TimelineElement) => number
@@ -15274,12 +15274,12 @@ interface TrackElementClass {
 
     // Own fields of GES-1.0.GES.TrackElementClass
 
-    nleobject_factorytype: string | null
+    nleobject_factorytype: string
     create_gnl_object: (object: TrackElement) => Gst.Element
     create_element: (object: TrackElement) => Gst.Element
     active_changed: (object: TrackElement, active: boolean) => void
     changed: (object: TrackElement) => void
-    lookup_child: (object: TrackElement, prop_name: string | null) => [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
+    lookup_child: (object: TrackElement, prop_name: string) => [ /* returnType */ boolean, /* element */ Gst.Element, /* pspec */ GObject.ParamSpec ]
 }
 
 abstract class TrackElementClass {

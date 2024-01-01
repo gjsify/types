@@ -227,7 +227,7 @@ function show_error_underline(cr: cairo.Context, x: number, y: number, width: nu
  * @param text the UTF-8 text that `glyph_item` refers to
  * @param glyph_item a `PangoGlyphItem`
  */
-function show_glyph_item(cr: cairo.Context, text: string | null, glyph_item: Pango.GlyphItem): void
+function show_glyph_item(cr: cairo.Context, text: string, glyph_item: Pango.GlyphItem): void
 /**
  * Draws the glyphs in `glyphs` in the specified cairo context.
  * 

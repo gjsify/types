@@ -27,7 +27,7 @@ export namespace LibvirtGLib {
  * @param message error message
  * @returns a new #GError
  */
-function errorNewLiteral(domain: GLib.Quark, code: number, message: string | null): GLib.Error
+function errorNewLiteral(domain: GLib.Quark, code: number, message: string): GLib.Error
 /**
  * Registers a libvirt event loop implementation that is backed
  * by the default <code>GMain</code> context. If invoked more
@@ -88,7 +88,7 @@ function initCheck(argv: string[] | null): [ /* returnType */ boolean, /* argv *
  * @param code error code
  * @param message error message
  */
-function setErrorLiteral(error: GLib.Error, domain: GLib.Quark, code: number, message: string | null): void
+function setErrorLiteral(error: GLib.Error, domain: GLib.Quark, code: number, message: string): void
 }
 
 export default LibvirtGLib;

@@ -405,21 +405,21 @@ const CANDIDATE_MAX_TURN_SERVERS: number
  * @param transport a #NiceCandidateTransport
  * @returns a static string with the candidate transport
  */
-function candidateTransportToString(transport: CandidateTransport): string | null
+function candidateTransportToString(transport: CandidateTransport): string
 /**
  * Useful for debugging functions, just returns a static string with the
  * candidate type.
  * @param type a #NiceCandidateType
  * @returns a static string with the candidate type
  */
-function candidateTypeToString(type: CandidateType): string | null
+function candidateTypeToString(type: CandidateType): string
 /**
  * Returns a string representation of the state, generally to use in debug
  * messages.
  * @param state a #NiceComponentState
  * @returns a string representation of @state
  */
-function componentStateToString(state: ComponentState): string | null
+function componentStateToString(state: ComponentState): string
 /**
  * Disables libnice debug output to the terminal
  * @param withStun Also disable stun debugging messages
@@ -1268,7 +1268,7 @@ interface Agent {
      * @param streamId The ID of the stream to change
      * @returns The name of the stream. The name is only valid while the stream exists or until it changes through a call to nice_agent_set_stream_name().
      */
-    getStreamName(streamId: number): string | null
+    getStreamName(streamId: number): string
     /**
      * Parse an SDP string and extracts the candidate from it.
      * 
@@ -1279,7 +1279,7 @@ interface Agent {
      * @param sdp The remote SDP to parse
      * @returns The parsed candidate or %NULL if there was an error.
      */
-    parseRemoteCandidateSdp(streamId: number, sdp: string | null): Candidate
+    parseRemoteCandidateSdp(streamId: number, sdp: string): Candidate
     /**
      * Parse an SDP string and extracts candidates and credentials from it and sets
      * them on the agent.
@@ -1291,7 +1291,7 @@ interface Agent {
      * @param sdp The remote SDP to parse
      * @returns The number of candidates added, negative on errors
      */
-    parseRemoteSdp(sdp: string | null): number
+    parseRemoteSdp(sdp: string): number
     /**
      * Parse an SDP string representing a single stream and extracts candidates
      * and credentials from it.
@@ -1305,7 +1305,7 @@ interface Agent {
      * @param pwd Pointer to store the ice password if non %NULL. Must be freed with g_free() after use
      * @returns A #GSList of candidates parsed from the SDP, or %NULL in case of errors
      */
-    parseRemoteStreamSdp(streamId: number, sdp: string | null, ufrag: string | null, pwd: string | null): Candidate[]
+    parseRemoteStreamSdp(streamId: number, sdp: string, ufrag: string | null, pwd: string | null): Candidate[]
     /**
      * Notifies the agent that the remote peer has concluded candidate gathering and
      * thus no more remote candidates are expected to arrive for `stream_id`.
@@ -1472,7 +1472,7 @@ interface Agent {
      * @param buf The buffer of data to send
      * @returns The number of bytes sent, or negative error code
      */
-    send(streamId: number, componentId: number, len: number, buf: string | null): number
+    send(streamId: number, componentId: number, len: number, buf: string): number
     /**
      * Sends multiple messages on the socket identified by the given
      * stream/component pair. Transmission is non-blocking, so a
@@ -1523,7 +1523,7 @@ interface Agent {
      * @param pwd nul-terminated string containing an ICE password    (length must be between 4 and 256 chars)
      * @returns %TRUE on success, %FALSE on error.
      */
-    setLocalCredentials(streamId: number, ufrag: string | null, pwd: string | null): boolean
+    setLocalCredentials(streamId: number, ufrag: string, pwd: string): boolean
     /**
      * Sets a preferred port range for allocating host candidates.
      * <para>
@@ -1552,7 +1552,7 @@ interface Agent {
      * @param type The type of relay to use
      * @returns %TRUE if the TURN settings were accepted. %FALSE if the address was invalid.
      */
-    setRelayInfo(streamId: number, componentId: number, serverIp: string | null, serverPort: number, username: string | null, password: string | null, type: RelayType): boolean
+    setRelayInfo(streamId: number, componentId: number, serverIp: string, serverPort: number, username: string, password: string, type: RelayType): boolean
     /**
      * Sets, adds or updates the remote candidates for a component of a stream.
      * 
@@ -1599,7 +1599,7 @@ interface Agent {
      * @param pwd nul-terminated string containing an ICE password    (length must be between 4 and 256 chars)
      * @returns %TRUE on success, %FALSE on error.
      */
-    setRemoteCredentials(streamId: number, ufrag: string | null, pwd: string | null): boolean
+    setRemoteCredentials(streamId: number, ufrag: string, pwd: string): boolean
     /**
      * Sets the selected candidate pair for media transmission
      * for a given stream's component. Calling this function will
@@ -1612,7 +1612,7 @@ interface Agent {
      * @param rfoundation The remote foundation of the candidate to use
      * @returns %TRUE on success, %FALSE if the candidate pair cannot be found
      */
-    setSelectedPair(streamId: number, componentId: number, lfoundation: string | null, rfoundation: string | null): boolean
+    setSelectedPair(streamId: number, componentId: number, lfoundation: string, rfoundation: string): boolean
     /**
      * Sets the selected remote candidate for media transmission
      * for a given stream's component. This is used to force the selection of
@@ -1647,7 +1647,7 @@ interface Agent {
      *    </note>
      * @param software The value of the SOFTWARE attribute to add.
      */
-    setSoftware(software: string | null): void
+    setSoftware(software: string): void
     /**
      * This function will assign a media type to a stream. The only values
      * that can be used to produce a valid SDP are: "audio", "video",
@@ -1663,7 +1663,7 @@ interface Agent {
      * @param name The new name of the stream or %NULL
      * @returns %TRUE if the name has been set. %FALSE in case of error (invalid stream or duplicate name).
      */
-    setStreamName(streamId: number, name: string | null): boolean
+    setStreamName(streamId: number, name: string): boolean
     /**
      * Sets the IP_TOS and/or IPV6_TCLASS field on the stream's sockets' options
      * @param streamId The ID of the stream
@@ -2113,7 +2113,7 @@ interface PseudoTcpSocket {
      * @param len The length of `buffer`
      * @returns %TRUE if the packet was processed successfully, %FALSE otherwise
      */
-    notifyPacket(buffer: string | null, len: number): boolean
+    notifyPacket(buffer: string, len: number): boolean
     /**
      * Receive data from the socket.
      * 
@@ -2146,7 +2146,7 @@ interface PseudoTcpSocket {
      * @param len The length of `buffer`
      * @returns The number of bytes sent or -1 in case of error <para> See also: pseudo_tcp_socket_get_error() </para>
      */
-    send(buffer: string | null, len: number): number
+    send(buffer: string, len: number): number
     /**
      * Sets the current monotonic time to be used by the TCP socket when calculating
      * timeouts and expiry times. If this function is not called, or is called with
@@ -2343,7 +2343,7 @@ interface Address {
      * @param str The string to set
      * @returns %TRUE if success, %FALSE on error
      */
-    setFromString(str: string | null): boolean
+    setFromString(str: string): boolean
     /**
      * Set `addr` to an IPv4 address using the data from `addr_ipv4`
      * 
@@ -2522,14 +2522,14 @@ class Candidate {
      * @param transport a #NiceCandidateTransport
      * @returns a static string with the candidate transport
      */
-    static transportToString(transport: CandidateTransport): string | null
+    static transportToString(transport: CandidateTransport): string
     /**
      * Useful for debugging functions, just returns a static string with the
      * candidate type.
      * @param type a #NiceCandidateType
      * @returns a static string with the candidate type
      */
-    static typeToString(type: CandidateType): string | null
+    static typeToString(type: CandidateType): string
 }
 
 interface InputMessage {
@@ -2638,7 +2638,7 @@ interface PseudoTcpCallbacks {
     pseudoTcpReadable: (tcp: PseudoTcpSocket, data: any) => void
     pseudoTcpWritable: (tcp: PseudoTcpSocket, data: any) => void
     pseudoTcpClosed: (tcp: PseudoTcpSocket, error: number, data: any) => void
-    writePacket: (tcp: PseudoTcpSocket, buffer: string | null, len: number, data: any) => PseudoTcpWriteResult
+    writePacket: (tcp: PseudoTcpSocket, buffer: string, len: number, data: any) => PseudoTcpWriteResult
 }
 
 /**

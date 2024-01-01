@@ -70,7 +70,7 @@ function x11GetServerTime(surface: X11Surface): number
  * @param atomName a string
  * @returns a X atom for a `GdkDisplay`
  */
-function x11GetXatomByNameForDisplay(display: X11Display, atomName: string | null): xlib.Atom
+function x11GetXatomByNameForDisplay(display: X11Display, atomName: string): xlib.Atom
 /**
  * Returns the name of an X atom for its display. This
  * function is meant mainly for debugging, so for convenience, unlike
@@ -80,7 +80,7 @@ function x11GetXatomByNameForDisplay(display: X11Display, atomName: string | nul
  * @param xatom an X atom
  * @returns name of the X atom; this string is owned by GDK,   so it shouldn’t be modified or freed.
  */
-function x11GetXatomNameForDisplay(display: X11Display, xatom: xlib.Atom): string | null
+function x11GetXatomNameForDisplay(display: X11Display, xatom: xlib.Atom): string
 /**
  * Find the `GdkDisplay` corresponding to `xdisplay,` if any exists.
  * @param xdisplay a pointer to an X Display
@@ -479,6 +479,15 @@ interface X11Display {
      * Gets the startup notification ID for a display.
      * @returns the startup notification ID for @display
      */
+    getStartupNotificationId(): string
+
+    // Overloads of getStartupNotificationId
+
+    /**
+     * Gets the startup notification ID for a Wayland display, or %NULL
+     * if no ID has been defined.
+     * @returns the startup notification ID for @display
+     */
     getStartupNotificationId(): string | null
     /**
      * Returns the timestamp of the last user interaction on
@@ -553,7 +562,7 @@ interface X11Display {
      * gdk_display_notify_startup_complete()).
      * @param startupId the startup notification ID (must be valid utf8)
      */
-    setStartupNotificationId(startupId: string | null): void
+    setStartupNotificationId(startupId: string): void
     /**
      * Forces a specific window scale for all windows on this display,
      * instead of using the default or user configured scale. This
@@ -571,7 +580,7 @@ interface X11Display {
      * @param str a nul-terminated string
      * @returns 0 upon success, non-zero upon failure
      */
-    stringToCompoundText(str: string | null): [ /* returnType */ number, /* encoding */ string | null, /* format */ number, /* ctext */ number[] ]
+    stringToCompoundText(str: string): [ /* returnType */ number, /* encoding */ string, /* format */ number, /* ctext */ number[] ]
     /**
      * Convert a text string from the encoding as it is stored
      * in a property into an array of strings in the encoding of
@@ -584,7 +593,7 @@ interface X11Display {
      * @param list location to store an  array of strings in   the encoding of the current locale. This array should be   freed using gdk_x11_free_text_list().
      * @returns the number of strings stored in list, or 0,   if the conversion failed
      */
-    textPropertyToTextList(encoding: string | null, format: number, text: number, length: number, list: string | null): number
+    textPropertyToTextList(encoding: string, format: number, text: number, length: number, list: string | null): number
     /**
      * Ungrab `display` after it has been grabbed with
      * gdk_x11_display_grab().
@@ -595,7 +604,7 @@ interface X11Display {
      * @param str a UTF-8 string
      * @returns %TRUE if the conversion succeeded, otherwise %FALSE
      */
-    utf8ToCompoundText(str: string | null): [ /* returnType */ boolean, /* encoding */ string | null, /* format */ number, /* ctext */ number[] ]
+    utf8ToCompoundText(str: string): [ /* returnType */ boolean, /* encoding */ string, /* format */ number, /* ctext */ number[] ]
 
     // Own signals of GdkX11-4.0.GdkX11.X11Display
 
@@ -661,7 +670,7 @@ class X11Display extends Gdk.Display {
      * @param display a `GdkDisplay`
      * @param programClass a string
      */
-    static setProgramClass(display: Gdk.Display, programClass: string | null): void
+    static setProgramClass(display: Gdk.Display, programClass: string): void
 }
 
 module X11Drag {
@@ -986,7 +995,7 @@ interface X11Screen {
      * Returns the name of the window manager for `screen`.
      * @returns the name of the window manager screen @screen, or "unknown" if the window manager is unknown. The string is owned by GDK and should not be freed.
      */
-    getWindowManagerName(): string | null
+    getWindowManagerName(): string
     /**
      * Returns the screen of a `GdkX11Screen`.
      * @returns an Xlib Screen*
@@ -1008,7 +1017,7 @@ interface X11Screen {
      * @param propertyName name of the WM property
      * @returns %TRUE if the window manager supports @property
      */
-    supportsNetWmHint(propertyName: string | null): boolean
+    supportsNetWmHint(propertyName: string): boolean
 
     // Own signals of GdkX11-4.0.GdkX11.X11Screen
 
@@ -1131,7 +1140,7 @@ interface X11Surface {
      * to create toplevel surfaces.
      * @param variant the theme variant to export
      */
-    setThemeVariant(variant: string | null): void
+    setThemeVariant(variant: string): void
     /**
      * Sets a hint on `surface` that it needs user attention.
      * See the ICCCM for details.
@@ -1161,7 +1170,7 @@ interface X11Surface {
      * @param name Property name, will be interned as an X atom
      * @param value Property value, or %NULL to delete
      */
-    setUtf8Property(name: string | null, value: string | null): void
+    setUtf8Property(name: string, value: string | null): void
 
     // Class property signals of GdkX11-4.0.GdkX11.X11Surface
 

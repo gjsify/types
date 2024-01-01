@@ -106,15 +106,15 @@ export enum LoginMode {
     HIDE_DSN_SELECTION_MODE,
     HIDE_DIRECT_CONNECTION_MODE,
 }
-export const ATTRIBUTE_PLUGIN: string | null
-export const COLOR_NORMAL_DEFAULT: string | null
-export const COLOR_NORMAL_INVALID: string | null
-export const COLOR_NORMAL_MODIF: string | null
-export const COLOR_NORMAL_NULL: string | null
-export const COLOR_PRELIGHT_DEFAULT: string | null
-export const COLOR_PRELIGHT_INVALID: string | null
-export const COLOR_PRELIGHT_MODIF: string | null
-export const COLOR_PRELIGHT_NULL: string | null
+export const ATTRIBUTE_PLUGIN: string
+export const COLOR_NORMAL_DEFAULT: string
+export const COLOR_NORMAL_INVALID: string
+export const COLOR_NORMAL_MODIF: string
+export const COLOR_NORMAL_NULL: string
+export const COLOR_PRELIGHT_DEFAULT: string
+export const COLOR_PRELIGHT_INVALID: string
+export const COLOR_PRELIGHT_MODIF: string
+export const COLOR_PRELIGHT_NULL: string
 export const COLOR_UNKNOWN_MASK: number
 export const HIG_FORM_HBORDER: number
 export const HIG_FORM_HSPACE: number
@@ -1089,7 +1089,7 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param placeholder_id the name of the requested place holder
      * @returns a pointer to the requested place holder, or %NULL if not found
      */
-    get_place_holder(placeholder_id: string | null): Gtk.Widget
+    get_place_holder(placeholder_id: string): Gtk.Widget
     /**
      * Tells if the form has had at least on entry changed since `form` was created or
      * gdaui_basic_form_set_as_reference() has been called.
@@ -1130,7 +1130,7 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param file_name XML file name to use
      * @param form_name the name of the form to use, in `file_name`
      */
-    set_layout_from_file(file_name: string | null, form_name: string | null): void
+    set_layout_from_file(file_name: string, form_name: string): void
     /**
      * Defines the color to be used when `form` displays an invalid value. Any value not
      * between 0. and 1. will result in the default hard coded values to be used (grayish).
@@ -1158,7 +1158,7 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1172,7 +1172,7 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1183,7 +1183,7 @@ export interface BasicForm extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdaui-6.0.Gdaui.BasicForm
 
@@ -1508,7 +1508,7 @@ export interface Cloud extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1522,7 +1522,7 @@ export interface Cloud extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1533,7 +1533,7 @@ export interface Cloud extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdaui-6.0.Gdaui.Cloud
 
@@ -1816,7 +1816,7 @@ export interface Combo extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Conflicting methods
 
@@ -1857,7 +1857,7 @@ export interface Combo extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1869,7 +1869,7 @@ export interface Combo extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1883,7 +1883,7 @@ export interface Combo extends Atk.ImplementorIface, DataSelector, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.Combo
 
@@ -2165,7 +2165,7 @@ export interface DataCellRendererBin {
 
     // Own virtual methods of Gdaui-6.0.Gdaui.DataCellRendererBin
 
-    vfunc_changed(path: string | null, new_value: any): void
+    vfunc_changed(path: string, new_value: any): void
 
     // Own signals of Gdaui-6.0.Gdaui.DataCellRendererBin
 
@@ -2377,7 +2377,7 @@ export interface DataCellRendererBoolean {
 
     // Own virtual methods of Gdaui-6.0.Gdaui.DataCellRendererBoolean
 
-    vfunc_changed(path: string | null, new_value: any): void
+    vfunc_changed(path: string, new_value: any): void
 
     // Own signals of Gdaui-6.0.Gdaui.DataCellRendererBoolean
 
@@ -2902,7 +2902,7 @@ export interface DataCellRendererInfo {
 
     // Own virtual methods of Gdaui-6.0.Gdaui.DataCellRendererInfo
 
-    vfunc_status_changed(path: string | null, requested_action: Gda.ValueAttribute): void
+    vfunc_status_changed(path: string, requested_action: Gda.ValueAttribute): void
 
     // Own signals of Gdaui-6.0.Gdaui.DataCellRendererInfo
 
@@ -3071,7 +3071,7 @@ export interface DataCellRendererTextual {
 
     // Own virtual methods of Gdaui-6.0.Gdaui.DataCellRendererTextual
 
-    vfunc_changed(path: string | null, new_value: any): void
+    vfunc_changed(path: string, new_value: any): void
 
     // Own signals of Gdaui-6.0.Gdaui.DataCellRendererTextual
 
@@ -3318,7 +3318,7 @@ export class DataCellRendererTextual extends Gtk.CellRendererText {
      * @param options options as a string
      * @returns the new cell renderer
      */
-    constructor(dh: Gda.DataHandler | null, type: GObject.GType, options: string | null) 
+    constructor(dh: Gda.DataHandler | null, type: GObject.GType, options: string) 
     /**
      * Creates a new #GdauiDataCellRendererTextual. Adjust how text is drawn using
      * object properties. Object properties can be
@@ -3333,7 +3333,7 @@ export class DataCellRendererTextual extends Gtk.CellRendererText {
      * @param options options as a string
      * @returns the new cell renderer
      */
-    static new(dh: Gda.DataHandler | null, type: GObject.GType, options: string | null): DataCellRendererTextual
+    static new(dh: Gda.DataHandler | null, type: GObject.GType, options: string): DataCellRendererTextual
 
     // Overloads of new
 
@@ -3390,7 +3390,7 @@ export interface DataFilter extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3404,7 +3404,7 @@ export interface DataFilter extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3415,7 +3415,7 @@ export interface DataFilter extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.DataFilter
 
@@ -3713,7 +3713,7 @@ export interface DataProxyInfo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -3725,7 +3725,7 @@ export interface DataProxyInfo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3739,7 +3739,7 @@ export interface DataProxyInfo extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Alters the view of `toolbar` to display either icons only, text only, or both.
      * @param style the new style for `toolbar`.
@@ -4098,6 +4098,18 @@ export interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @returns a new string, or %NULL
      */
     get_text(): string | null
+
+    // Overloads of get_text
+
+    /**
+     * Retrieves the contents of the entry widget.
+     * See also gtk_editable_get_chars().
+     * 
+     * This is equivalent to getting `entry'`s #GtkEntryBuffer and calling
+     * gtk_entry_buffer_get_text() on it.
+     * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the widget and must not be freed, modified or      stored.
+     */
+    get_text(): string
     /**
      * Sets the maximum allowed length of the contents of the widget.
      * If the current contents are longer than the given length, then they will be truncated to fit.
@@ -4112,13 +4124,13 @@ export interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * text entry, will not be modifiable, and won't be part of the returned text
      * @param prefix a prefix string
      */
-    set_prefix(prefix: string | null): void
+    set_prefix(prefix: string): void
     /**
      * Sets `suffix` as a suffix string of `entry:` that string will always be displayed in the
      * text entry, will not be modifiable, and won't be part of the returned text
      * @param suffix a suffix string
      */
-    set_suffix(suffix: string | null): void
+    set_suffix(suffix: string): void
     /**
      * Sets `text` into `entry`.
      * 
@@ -4130,6 +4142,17 @@ export interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @param text the text to set into `entry,` or %NULL
      */
     set_text(text: string | null): void
+
+    // Overloads of set_text
+
+    /**
+     * Sets the text in the widget to the given
+     * value, replacing the current contents.
+     * 
+     * See gtk_entry_buffer_set_text().
+     * @param text the new text
+     */
+    set_text(text: string): void
     /**
      * Sets `entry'`s width in characters, without taking into account
      * any prefix or suffix (which will automatically be handled). If you want to take
@@ -4156,7 +4179,7 @@ export interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @param virt_pos the position where `text` is to be inserted
      * @param offset an offset to add to positions using `virt_pos` as reference to call gtk_editable_*()
      */
-    vfunc_assume_insert(text: string | null, text_length: number, virt_pos: number, offset: number): void
+    vfunc_assume_insert(text: string, text_length: number, virt_pos: number, offset: number): void
     /**
      * If defined, sould return a text suitable to display EMPTY value, it will be called when
      * entry was set to NULL and is becomming not NULL
@@ -4517,7 +4540,7 @@ export interface EntryBin extends Atk.ImplementorIface, DataEntry, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4529,7 +4552,7 @@ export interface EntryBin extends Atk.ImplementorIface, DataEntry, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4543,7 +4566,7 @@ export interface EntryBin extends Atk.ImplementorIface, DataEntry, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryBin
 
@@ -4767,7 +4790,7 @@ export interface EntryBoolean extends Atk.ImplementorIface, DataEntry, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4779,7 +4802,7 @@ export interface EntryBoolean extends Atk.ImplementorIface, DataEntry, Gtk.Build
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4793,7 +4816,7 @@ export interface EntryBoolean extends Atk.ImplementorIface, DataEntry, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryBoolean
 
@@ -5076,7 +5099,7 @@ export interface EntryCombo extends Atk.ImplementorIface, DataEntry, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5088,7 +5111,7 @@ export interface EntryCombo extends Atk.ImplementorIface, DataEntry, Gtk.Buildab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5102,7 +5125,7 @@ export interface EntryCombo extends Atk.ImplementorIface, DataEntry, Gtk.Buildab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryCombo
 
@@ -5346,7 +5369,7 @@ export interface EntryCommonTime extends Atk.ImplementorIface, DataEntry, Gtk.Bu
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5358,7 +5381,7 @@ export interface EntryCommonTime extends Atk.ImplementorIface, DataEntry, Gtk.Bu
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5372,7 +5395,7 @@ export interface EntryCommonTime extends Atk.ImplementorIface, DataEntry, Gtk.Bu
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryCommonTime
 
@@ -5575,7 +5598,7 @@ export interface EntryDate extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5587,7 +5610,7 @@ export interface EntryDate extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5601,7 +5624,7 @@ export interface EntryDate extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryDate
 
@@ -5829,7 +5852,7 @@ export interface EntryNone extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -5841,7 +5864,7 @@ export interface EntryNone extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5855,7 +5878,7 @@ export interface EntryNone extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryNone
 
@@ -6089,7 +6112,7 @@ export interface EntryNumber extends Atk.ImplementorIface, DataEntry, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6101,7 +6124,7 @@ export interface EntryNumber extends Atk.ImplementorIface, DataEntry, Gtk.Builda
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6115,7 +6138,7 @@ export interface EntryNumber extends Atk.ImplementorIface, DataEntry, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryNumber
 
@@ -6378,7 +6401,7 @@ export interface EntryShell extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6392,7 +6415,7 @@ export interface EntryShell extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6403,7 +6426,7 @@ export interface EntryShell extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryShell
 
@@ -6611,7 +6634,7 @@ export interface EntryString extends Atk.ImplementorIface, DataEntry, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6623,7 +6646,7 @@ export interface EntryString extends Atk.ImplementorIface, DataEntry, Gtk.Builda
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6637,7 +6660,7 @@ export interface EntryString extends Atk.ImplementorIface, DataEntry, Gtk.Builda
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryString
 
@@ -6872,7 +6895,7 @@ export interface EntryTime extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -6884,7 +6907,7 @@ export interface EntryTime extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6898,7 +6921,7 @@ export interface EntryTime extends Atk.ImplementorIface, DataEntry, Gtk.Buildabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryTime
 
@@ -7126,7 +7149,7 @@ export interface EntryTimestamp extends Atk.ImplementorIface, DataEntry, Gtk.Bui
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7138,7 +7161,7 @@ export interface EntryTimestamp extends Atk.ImplementorIface, DataEntry, Gtk.Bui
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7152,7 +7175,7 @@ export interface EntryTimestamp extends Atk.ImplementorIface, DataEntry, Gtk.Bui
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.EntryTimestamp
 
@@ -7402,7 +7425,7 @@ export interface EntryWrapper extends Atk.ImplementorIface, DataEntry, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7414,7 +7437,7 @@ export interface EntryWrapper extends Atk.ImplementorIface, DataEntry, Gtk.Build
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7428,7 +7451,7 @@ export interface EntryWrapper extends Atk.ImplementorIface, DataEntry, Gtk.Build
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdaui-6.0.Gdaui.EntryWrapper
 
@@ -7647,7 +7670,7 @@ export interface Form extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7659,7 +7682,7 @@ export interface Form extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7673,7 +7696,7 @@ export interface Form extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.Form
 
@@ -7902,12 +7925,69 @@ export interface FormattedEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @returns a new string, or %NULL
      */
     get_text(): string | null
+
+    // Overloads of get_text
+
+    /**
+     * Get a new string containing the contents of the widget as a string without the
+     * prefix and/or suffix and/or format if they have been specified. This method differs
+     * from calling gtk_entry_get_text() since the latest will return the complete text
+     * in `entry` including prefix and/or suffix and/or format.
+     * 
+     * Note: %NULL may be returned if this method is called while the widget is working on some
+     * internal modifications, or if gdaui_entry_set_text() was called with a %NULL
+     * as its `text` argument.
+     * @returns a new string, or %NULL
+     */
+    get_text(): string | null
+    /**
+     * Retrieves the contents of the entry widget.
+     * See also gtk_editable_get_chars().
+     * 
+     * This is equivalent to getting `entry'`s #GtkEntryBuffer and calling
+     * gtk_entry_buffer_get_text() on it.
+     * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the widget and must not be freed, modified or      stored.
+     */
+    get_text(): string
     /**
      * Specifies that `entry` should call `insert_func` when the user wants to insert a char
      * which is anot allowed, to perform other actions
      * @param insert_func a #GdauiFormattedEntryInsertFunc, or %NULL
      */
     set_insert_func(insert_func: FormattedEntryInsertFunc | null): void
+
+    // Conflicting methods
+
+    /**
+     * Sets `text` into `entry`.
+     * 
+     * As a side effect, if `text` is %NULL, then the entry will
+     * be completely empty, whereas if `text` is the empty string (""), then
+     * `entry` will display the prefix and/or suffix and/or format string if they have
+     * been set. Except this case, calling this method is similar to calling
+     * gtk_entry_set_text()
+     * @param text the text to set into `entry,` or %NULL
+     */
+    set_text(text: string | null): void
+
+    // Overloads of set_text
+
+    /**
+     * Sets the text in the widget to the given
+     * value, replacing the current contents.
+     * 
+     * See gtk_entry_buffer_set_text().
+     * @param text the new text
+     */
+    set_text(text: string): void
+    /**
+     * Sets the text in the widget to the given
+     * value, replacing the current contents.
+     * 
+     * See gtk_entry_buffer_set_text().
+     * @param text the new text
+     */
+    set_text(text: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.FormattedEntry
 
@@ -8247,7 +8327,7 @@ export class FormattedEntry extends Entry {
      * @param mask a mask string, or %NULL
      * @returns the newly created #GdauiFormattedEntry widget.
      */
-    constructor(format: string | null, mask: string | null) 
+    constructor(format: string, mask: string | null) 
     /**
      * Creates a new #GdauiFormattedEntry widget.
      * 
@@ -8283,7 +8363,7 @@ export class FormattedEntry extends Entry {
      * @param mask a mask string, or %NULL
      * @returns the newly created #GdauiFormattedEntry widget.
      */
-    static new(format: string | null, mask: string | null): FormattedEntry
+    static new(format: string, mask: string | null): FormattedEntry
 
     // Overloads of new
 
@@ -8351,7 +8431,7 @@ export interface Grid extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -8363,7 +8443,7 @@ export interface Grid extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8377,7 +8457,7 @@ export interface Grid extends Atk.ImplementorIface, DataProxy, DataSelector, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.Grid
 
@@ -8657,7 +8737,7 @@ export interface Login extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8671,7 +8751,7 @@ export interface Login extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8682,7 +8762,7 @@ export interface Login extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientab
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdaui-6.0.Gdaui.Login
 
@@ -8922,6 +9002,72 @@ export interface NumericEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.C
     // Owm methods of Gdaui-6.0.Gdaui.NumericEntry
 
     get_value(): any
+
+    // Conflicting methods
+
+    /**
+     * Get a new string containing the contents of the widget as a string without the
+     * prefix and/or suffix and/or format if they have been specified. This method differs
+     * from calling gtk_entry_get_text() since the latest will return the complete text
+     * in `entry` including prefix and/or suffix and/or format.
+     * 
+     * Note: %NULL may be returned if this method is called while the widget is working on some
+     * internal modifications, or if gdaui_entry_set_text() was called with a %NULL
+     * as its `text` argument.
+     * @returns a new string, or %NULL
+     */
+    get_text(): string | null
+
+    // Overloads of get_text
+
+    /**
+     * Retrieves the contents of the entry widget.
+     * See also gtk_editable_get_chars().
+     * 
+     * This is equivalent to getting `entry'`s #GtkEntryBuffer and calling
+     * gtk_entry_buffer_get_text() on it.
+     * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the widget and must not be freed, modified or      stored.
+     */
+    get_text(): string
+    /**
+     * Retrieves the contents of the entry widget.
+     * See also gtk_editable_get_chars().
+     * 
+     * This is equivalent to getting `entry'`s #GtkEntryBuffer and calling
+     * gtk_entry_buffer_get_text() on it.
+     * @returns a pointer to the contents of the widget as a      string. This string points to internally allocated      storage in the widget and must not be freed, modified or      stored.
+     */
+    get_text(): string
+    /**
+     * Sets `text` into `entry`.
+     * 
+     * As a side effect, if `text` is %NULL, then the entry will
+     * be completely empty, whereas if `text` is the empty string (""), then
+     * `entry` will display the prefix and/or suffix and/or format string if they have
+     * been set. Except this case, calling this method is similar to calling
+     * gtk_entry_set_text()
+     * @param text the text to set into `entry,` or %NULL
+     */
+    set_text(text: string | null): void
+
+    // Overloads of set_text
+
+    /**
+     * Sets the text in the widget to the given
+     * value, replacing the current contents.
+     * 
+     * See gtk_entry_buffer_set_text().
+     * @param text the new text
+     */
+    set_text(text: string): void
+    /**
+     * Sets the text in the widget to the given
+     * value, replacing the current contents.
+     * 
+     * See gtk_entry_buffer_set_text().
+     * @param text the new text
+     */
+    set_text(text: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.NumericEntry
 
@@ -9291,7 +9437,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
      * Get the selected provider.
      * @returns the selected provider, or %NULL if no provider is selected
      */
-    get_provider(): string | null
+    get_provider(): string
     /**
      * Get the selected provider as a #GdaServerProvider object
      * @returns a #GdaServerProvider or %NULL if an error occurred
@@ -9334,7 +9480,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -9349,7 +9495,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Queries the #GdaDataModel from which the data displayed by the widget implementing `iface`
      * are. Beware that the returned data model may be different than the one used when the
@@ -9387,7 +9533,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9399,7 +9545,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9413,7 +9559,7 @@ export interface ProviderSelector extends Atk.ImplementorIface, DataSelector, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.ProviderSelector
 
@@ -9667,7 +9813,7 @@ export interface RawForm extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -9679,7 +9825,7 @@ export interface RawForm extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9693,7 +9839,7 @@ export interface RawForm extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Get the #GdaDataModelIter object represented the current selected row in `iface`. This
      * function may return either %NULL or an invalid iterator (see gda_data_model_iter_is_valid()) if
@@ -9988,7 +10134,7 @@ export interface RawGrid extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * @param file_name XML file name to use
      * @param grid_name the name of the grid to use, in `file_name`
      */
-    set_layout_from_file(file_name: string | null, grid_name: string | null): void
+    set_layout_from_file(file_name: string, grid_name: string): void
     /**
      * Sets the size of each chunk of data to display: the maximum number of rows which
      * can be displayed at a time. See gdaui_grid_set_sample_size() and gda_data_proxy_set_sample_size()
@@ -10009,7 +10155,7 @@ export interface RawGrid extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -10021,7 +10167,7 @@ export interface RawGrid extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10035,7 +10181,7 @@ export interface RawGrid extends Atk.ImplementorIface, DataProxy, DataSelector, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Queries the #GdaDataModel from which the data displayed by the widget implementing `iface`
      * are. Beware that the returned data model may be different than the one used when the
@@ -10429,7 +10575,7 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param markup the text to set in `editor,` using the markup syntax (must be valid UTF-8)
      * @param length length of text in bytes.
      */
-    set_contents(markup: string | null, length: number): void
+    set_contents(markup: string, length: number): void
     /**
      * Set `editor'`s editability
      * @param editable whether it's editable
@@ -10449,7 +10595,7 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10463,7 +10609,7 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10474,7 +10620,7 @@ export interface RtEditor extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdaui-6.0.Gdaui.RtEditor
 
@@ -10727,7 +10873,7 @@ export interface ServerOperation extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -10741,7 +10887,7 @@ export interface ServerOperation extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -10752,7 +10898,7 @@ export interface ServerOperation extends Atk.ImplementorIface, Gtk.Buildable, Gt
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdaui-6.0.Gdaui.ServerOperation
 
@@ -11142,11 +11288,11 @@ export interface TreeStore extends Gtk.TreeDragDest, Gtk.TreeDragSource, Gtk.Tre
 
     // Own virtual methods of Gdaui-6.0.Gdaui.TreeStore
 
-    vfunc_drag_can_drag(path: string | null): boolean
-    vfunc_drag_can_drop(path: string | null, selection_data: Gtk.SelectionData): boolean
-    vfunc_drag_delete(path: string | null): boolean
-    vfunc_drag_drop(path: string | null, selection_data: Gtk.SelectionData): boolean
-    vfunc_drag_get(path: string | null, selection_data: Gtk.SelectionData): boolean
+    vfunc_drag_can_drag(path: string): boolean
+    vfunc_drag_can_drop(path: string, selection_data: Gtk.SelectionData): boolean
+    vfunc_drag_delete(path: string): boolean
+    vfunc_drag_drop(path: string, selection_data: Gtk.SelectionData): boolean
+    vfunc_drag_get(path: string, selection_data: Gtk.SelectionData): boolean
 
     // Own signals of Gdaui-6.0.Gdaui.TreeStore
 
@@ -11197,7 +11343,7 @@ export class TreeStore extends GObject.Object {
      * @param attribute_names an array of `n_columns` strings to specify the attribute name                   to map each column on
      * @returns the new object, or %NULL if an inconsistency exists in the parameters
      */
-    static newv(tree: Gda.Tree, n_columns: number, types: GObject.GType, attribute_names: string | null): Gtk.TreeModel
+    static newv(tree: Gda.Tree, n_columns: number, types: GObject.GType, attribute_names: string): Gtk.TreeModel
 
     // Overloads of newv
 
@@ -11267,7 +11413,7 @@ export interface DataCellRendererBinClass {
     // Own fields of Gdaui-6.0.Gdaui.DataCellRendererBinClass
 
     parent_class: Gtk.CellRendererPixbufClass
-    changed: (cell_renderer: DataCellRendererBin, path: string | null, new_value: any) => void
+    changed: (cell_renderer: DataCellRendererBin, path: string, new_value: any) => void
 }
 
 export abstract class DataCellRendererBinClass {
@@ -11282,7 +11428,7 @@ export interface DataCellRendererBooleanClass {
     // Own fields of Gdaui-6.0.Gdaui.DataCellRendererBooleanClass
 
     parent_class: Gtk.CellRendererToggleClass
-    changed: (cell_renderer: DataCellRendererBoolean, path: string | null, new_value: any) => void
+    changed: (cell_renderer: DataCellRendererBoolean, path: string, new_value: any) => void
 }
 
 export abstract class DataCellRendererBooleanClass {
@@ -11311,7 +11457,7 @@ export interface DataCellRendererInfoClass {
     // Own fields of Gdaui-6.0.Gdaui.DataCellRendererInfoClass
 
     parent_class: Gtk.CellRendererClass
-    status_changed: (cell_renderer_info: DataCellRendererInfo, path: string | null, requested_action: Gda.ValueAttribute) => void
+    status_changed: (cell_renderer_info: DataCellRendererInfo, path: string, requested_action: Gda.ValueAttribute) => void
 }
 
 export abstract class DataCellRendererInfoClass {
@@ -11326,7 +11472,7 @@ export interface DataCellRendererTextualClass {
     // Own fields of Gdaui-6.0.Gdaui.DataCellRendererTextualClass
 
     parent_class: Gtk.CellRendererTextClass
-    changed: (cell_renderer_textual: DataCellRendererTextual, path: string | null, new_value: any) => void
+    changed: (cell_renderer_textual: DataCellRendererTextual, path: string, new_value: any) => void
 }
 
 export abstract class DataCellRendererTextualClass {
@@ -11493,7 +11639,7 @@ export interface EntryClass {
 
     parent_class: Gtk.EntryClass
     get_empty_text: (entry: Entry) => string | null
-    assume_insert: (entry: Entry, text: string | null, text_length: number, virt_pos: number, offset: number) => void
+    assume_insert: (entry: Entry, text: string, text_length: number, virt_pos: number, offset: number) => void
     assume_delete: (entry: Entry, virt_start_pos: number, virt_end_pos: number, offset: number) => void
 }
 
@@ -12031,11 +12177,11 @@ export interface TreeStoreClass {
     // Own fields of Gdaui-6.0.Gdaui.TreeStoreClass
 
     parent_class: GObject.ObjectClass
-    drag_can_drag: (store: TreeStore, path: string | null) => boolean
-    drag_get: (store: TreeStore, path: string | null, selection_data: Gtk.SelectionData) => boolean
-    drag_can_drop: (store: TreeStore, path: string | null, selection_data: Gtk.SelectionData) => boolean
-    drag_drop: (store: TreeStore, path: string | null, selection_data: Gtk.SelectionData) => boolean
-    drag_delete: (store: TreeStore, path: string | null) => boolean
+    drag_can_drag: (store: TreeStore, path: string) => boolean
+    drag_get: (store: TreeStore, path: string, selection_data: Gtk.SelectionData) => boolean
+    drag_can_drop: (store: TreeStore, path: string, selection_data: Gtk.SelectionData) => boolean
+    drag_drop: (store: TreeStore, path: string, selection_data: Gtk.SelectionData) => boolean
+    drag_delete: (store: TreeStore, path: string) => boolean
     padding: any[]
 }
 

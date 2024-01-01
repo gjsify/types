@@ -175,26 +175,26 @@ export function class_to_type(class_: number): Type
  * @param alias Remote device's name
  * @returns %TRUE on success, %FALSE on error.
  */
-export function send_to_address(address: string | null, alias: string | null): boolean
+export function send_to_address(address: string, alias: string): boolean
 /**
  * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
  * The returned string is already translated with gettext().
  * @param type a #BluetoothType
  * @returns a string.
  */
-export function type_to_string(type: number): string | null
+export function type_to_string(type: number): string
 /**
  * Returns a string representing a human-readable (but not usable for display to users) version of the `uuid`. Do not free the return value.
  * @param uuid a string representing a Bluetooth UUID
  * @returns a string.
  */
-export function uuid_to_string(uuid: string | null): string | null
+export function uuid_to_string(uuid: string): string
 /**
  * Returns whether the string is a valid Bluetooth address. This does not contact the device in any way.
  * @param bdaddr a string representing a Bluetooth address
  * @returns %TRUE if the address is valid, %FALSE if not.
  */
-export function verify_address(bdaddr: string | null): boolean
+export function verify_address(bdaddr: string): boolean
 export module Client {
 
     // Signal callback interfaces
@@ -322,7 +322,7 @@ export interface Client {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the connection is complete
      */
-    connect_service(path: string | null, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    connect_service(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes the connection operation. See bluetooth_client_connect_service().
      * @param res a #GAsyncResult
@@ -463,7 +463,7 @@ export interface Device {
     // Owm methods of GnomeBluetooth-3.0.GnomeBluetooth.Device
 
     dump(): void
-    get_object_path(): string | null
+    get_object_path(): string
     to_string(): string | null
 
     // Class property signals of GnomeBluetooth-3.0.GnomeBluetooth.Device

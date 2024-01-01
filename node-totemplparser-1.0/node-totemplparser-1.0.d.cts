@@ -85,38 +85,38 @@ export enum ParserType {
      */
     IRIVER_PLA,
 }
-export const PARSER_CONTENT_RATING_CLEAN: string | null
-export const PARSER_CONTENT_RATING_EXPLICIT: string | null
-export const PARSER_CONTENT_RATING_UNRATED: string | null
+export const PARSER_CONTENT_RATING_CLEAN: string
+export const PARSER_CONTENT_RATING_EXPLICIT: string
+export const PARSER_CONTENT_RATING_UNRATED: string
 /**
  * Metadata field for an entry's abstract text.
  */
-export const PARSER_FIELD_ABSTRACT: string | null
+export const PARSER_FIELD_ABSTRACT: string
 /**
  * Metadata field for an entry's album.
  */
-export const PARSER_FIELD_ALBUM: string | null
+export const PARSER_FIELD_ALBUM: string
 /**
  * Metadata field for an entry's default audio-track selection. The default
  * track is defined as NULL. Note that the value is sent as a string.
  */
-export const PARSER_FIELD_AUDIO_TRACK: string | null
+export const PARSER_FIELD_AUDIO_TRACK: string
 /**
  * Metadata field for an entry's author/composer/director.
  */
-export const PARSER_FIELD_AUTHOR: string | null
+export const PARSER_FIELD_AUTHOR: string
 /**
  * Metadata field for an entry's "autoplay" flag, which is %TRUE if the entry should play automatically.
  */
-export const PARSER_FIELD_AUTOPLAY: string | null
+export const PARSER_FIELD_AUTOPLAY: string
 /**
  * Metadata field for an entry's base path.
  */
-export const PARSER_FIELD_BASE: string | null
+export const PARSER_FIELD_BASE: string
 /**
  * Metadata field for an entry's contact details for the webmaster.
  */
-export const PARSER_FIELD_CONTACT: string | null
+export const PARSER_FIELD_CONTACT: string
 /**
  * Metadata field for an entry's content rating. It is
  * %TOTEM_PL_PARSER_CONTENT_RATING_CLEAN for clean content,
@@ -124,113 +124,113 @@ export const PARSER_FIELD_CONTACT: string | null
  * %TOTEM_PL_PARSER_CONTENT_RATING_UNRATED for content which is not
  * rated.
  */
-export const PARSER_FIELD_CONTENT_RATING: string | null
+export const PARSER_FIELD_CONTENT_RATING: string
 /**
  * Metadata field for an entry's content-type (usually a mime-type coming
  * from a web server).
  */
-export const PARSER_FIELD_CONTENT_TYPE: string | null
+export const PARSER_FIELD_CONTENT_TYPE: string
 /**
  * Metadata field for an entry's copyright line.
  */
-export const PARSER_FIELD_COPYRIGHT: string | null
+export const PARSER_FIELD_COPYRIGHT: string
 /**
  * Metadata field for an entry's description.
  */
-export const PARSER_FIELD_DESCRIPTION: string | null
+export const PARSER_FIELD_DESCRIPTION: string
 /**
  * Metadata field for an entry's download URI. Only used if an alternate download
  * location is available for the entry.
  */
-export const PARSER_FIELD_DOWNLOAD_URI: string | null
+export const PARSER_FIELD_DOWNLOAD_URI: string
 /**
  * Metadata field for an entry's playback duration, which should be parsed using totem_pl_parser_parse_duration().
  */
-export const PARSER_FIELD_DURATION: string | null
+export const PARSER_FIELD_DURATION: string
 /**
  * Metadata field for an entry's playback duration, in milliseconds. It's only used when an entry's
  * duration is available in that format, so one would get either the %TOTEM_PL_PARSER_FIELD_DURATION
  * or %TOTEM_PL_PARSER_FIELD_DURATION_MS as metadata.
  */
-export const PARSER_FIELD_DURATION_MS: string | null
+export const PARSER_FIELD_DURATION_MS: string
 /**
  * Metadata field for an entry's playback end time.
  */
-export const PARSER_FIELD_ENDTIME: string | null
+export const PARSER_FIELD_ENDTIME: string
 /**
  * Metadata field for an entry's filesize in bytes. This is only advisory, and can sometimes not match the actual filesize of the stream.
  */
-export const PARSER_FIELD_FILESIZE: string | null
+export const PARSER_FIELD_FILESIZE: string
 /**
  * Metadata field for an entry's primary genre. This is a string of
  * the form 'Genre1' or 'Genre1/SubGenre1".
  */
-export const PARSER_FIELD_GENRE: string | null
+export const PARSER_FIELD_GENRE: string
 /**
  * Metadata field for an entry's full genre. This is a concatenated
  * string of the form 'Genre1/SubGenre1,Genre2/SubGenre2" etc.
  */
-export const PARSER_FIELD_GENRES: string | null
+export const PARSER_FIELD_GENRES: string
 /**
  * Metadata field for an entry's identifier. Its use is dependent on the format
  * of the playlist parsed, and its origin.
  */
-export const PARSER_FIELD_ID: string | null
+export const PARSER_FIELD_ID: string
 /**
  * Metadata field for an entry's thumbnail image URI.
  */
-export const PARSER_FIELD_IMAGE_URI: string | null
+export const PARSER_FIELD_IMAGE_URI: string
 /**
  * Metadata field used to tell the calling code that the parsing of a playlist
  * started. It is only %TRUE for the metadata passed to #TotemPlParser::playlist-started or
  * #TotemPlParser::playlist-ended signal handlers.
  */
-export const PARSER_FIELD_IS_PLAYLIST: string | null
+export const PARSER_FIELD_IS_PLAYLIST: string
 /**
  * Metadata field for an entry's audio language.
  */
-export const PARSER_FIELD_LANGUAGE: string | null
+export const PARSER_FIELD_LANGUAGE: string
 /**
  * Metadata field for an entry's "more info" URI.
  */
-export const PARSER_FIELD_MOREINFO: string | null
+export const PARSER_FIELD_MOREINFO: string
 /**
  * Metadata field for an entry's status in a playlist. This is usually
  * used when saving the state of an on-going playlist.
  */
-export const PARSER_FIELD_PLAYING: string | null
+export const PARSER_FIELD_PLAYING: string
 /**
  * Metadata field for an entry's publication date, which should be parsed using totem_pl_parser_parse_date().
  */
-export const PARSER_FIELD_PUB_DATE: string | null
+export const PARSER_FIELD_PUB_DATE: string
 /**
  * Metadata field for an entry's preferred screen size.
  */
-export const PARSER_FIELD_SCREENSIZE: string | null
+export const PARSER_FIELD_SCREENSIZE: string
 /**
  * Metadata field for an entry's playback start time, which should be parsed using totem_pl_parser_parse_duration().
  */
-export const PARSER_FIELD_STARTTIME: string | null
+export const PARSER_FIELD_STARTTIME: string
 /**
  * The URI of the entry's subtitle file.
  */
-export const PARSER_FIELD_SUBTITLE_URI: string | null
+export const PARSER_FIELD_SUBTITLE_URI: string
 /**
  * Metadata field for an entry's displayable title.
  */
-export const PARSER_FIELD_TITLE: string | null
+export const PARSER_FIELD_TITLE: string
 /**
  * Metadata field for an entry's preferred UI mode.
  */
-export const PARSER_FIELD_UI_MODE: string | null
+export const PARSER_FIELD_UI_MODE: string
 /**
  * Metadata field for an entry's URI.
  */
-export const PARSER_FIELD_URI: string | null
+export const PARSER_FIELD_URI: string
 /**
  * Metadata field for an entry's playback volume.
  */
-export const PARSER_FIELD_VOLUME: string | null
+export const PARSER_FIELD_VOLUME: string
 export const PARSER_VERSION_MAJOR: number
 export const PARSER_VERSION_MICRO: number
 export const PARSER_VERSION_MINOR: number
@@ -330,19 +330,19 @@ export interface Parser {
      * any URI of that glob is ignored during playlist parsing.
      * @param glob a glob to ignore
      */
-    addIgnoredGlob(glob: string | null): void
+    addIgnoredGlob(glob: string): void
     /**
      * Adds a mimetype to the list of mimetypes to ignore, so that
      * any URI of that mimetype is ignored during playlist parsing.
      * @param mimetype the mimetype to ignore
      */
-    addIgnoredMimetype(mimetype: string | null): void
+    addIgnoredMimetype(mimetype: string): void
     /**
      * Adds a scheme to the list of schemes to ignore, so that
      * any URI using that scheme is ignored during playlist parsing.
      * @param scheme the scheme to ignore
      */
-    addIgnoredScheme(scheme: string | null): void
+    addIgnoredScheme(scheme: string): void
     /**
      * Parses a playlist given by the absolute URI `uri`. This method is
      * synchronous, and will block on (e.g.) network requests to slow
@@ -353,7 +353,7 @@ export interface Parser {
      * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
      * @returns a #TotemPlParserResult
      */
-    parse(uri: string | null, fallback: boolean): ParserResult
+    parse(uri: string, fallback: boolean): ParserResult
     /**
      * Starts asynchronous parsing of a playlist given by the absolute URI `uri`. `parser` and `uri` are both reffed/copied
      * when this function is called, so can safely be freed after this function returns.
@@ -367,7 +367,7 @@ export interface Parser {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when parsing is finished
      */
-    parseAsync(uri: string | null, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    parseAsync(uri: string, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous playlist parsing operation started with totem_pl_parser_parse_async()
      * or totem_pl_parser_parse_with_base_async().
@@ -386,7 +386,7 @@ export interface Parser {
      * @param fallback %TRUE if the parser should add the playlist URI to the end of the playlist on parse failure
      * @returns a #TotemPlParserResult
      */
-    parseWithBase(uri: string | null, base: string | null, fallback: boolean): ParserResult
+    parseWithBase(uri: string, base: string | null, fallback: boolean): ParserResult
     /**
      * Starts asynchronous parsing of a playlist given by the absolute URI `uri,` using `base` to resolve relative paths where appropriate.
      * `parser` and `uri` are both reffed/copied when this function is called, so can safely be freed after this function returns.
@@ -401,7 +401,7 @@ export interface Parser {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when parsing is finished
      */
-    parseWithBaseAsync(uri: string | null, base: string | null, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    parseWithBaseAsync(uri: string, base: string | null, fallback: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Writes the playlist held by `parser` and `playlist` out to the path
      * pointed by `dest`. The playlist is written in the format `type` and is
@@ -426,7 +426,7 @@ export interface Parser {
      * @param type a #TotemPlParserType for the outputted playlist
      * @returns %TRUE on success
      */
-    save(playlist: Playlist, dest: Gio.File, title: string | null, type: ParserType): boolean
+    save(playlist: Playlist, dest: Gio.File, title: string, type: ParserType): boolean
     /**
      * Starts asynchronous version of totem_pl_parser_save(). For more details
      * see totem_pl_parser_save().
@@ -440,7 +440,7 @@ export interface Parser {
      * @param cancellable a #GCancellable, or %NULL
      * @param callback a #GAsyncReadyCallback to call when saving has finished
      */
-    saveAsync(playlist: Playlist, dest: Gio.File, title: string | null, type: ParserType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    saveAsync(playlist: Playlist, dest: Gio.File, title: string, type: ParserType, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous playlist saving operation started with totem_pl_parser_save_async().
      * 
@@ -453,9 +453,9 @@ export interface Parser {
 
     // Own virtual methods of TotemPlParser-1.0.TotemPlParser.Parser
 
-    entryParsed(uri: string | null, metadata: GLib.HashTable): void
-    playlistEnded(uri: string | null): void
-    playlistStarted(uri: string | null, metadata: GLib.HashTable): void
+    entryParsed(uri: string, metadata: GLib.HashTable): void
+    playlistEnded(uri: string): void
+    playlistStarted(uri: string, metadata: GLib.HashTable): void
 
     // Own signals of TotemPlParser-1.0.TotemPlParser.Parser
 
@@ -543,7 +543,7 @@ export class Parser extends GObject.Object {
      * @param debug %TRUE if debug statements should be printed
      * @returns %TRUE if @data can be parsed
      */
-    static canParseFromData(data: string | null, len: number, debug: boolean): boolean
+    static canParseFromData(data: string, len: number, debug: boolean): boolean
     /**
      * Checks if the file can be parsed. Files can be parsed if:
      * <itemizedlist>
@@ -554,7 +554,7 @@ export class Parser extends GObject.Object {
      * @param debug %TRUE if debug statements should be printed
      * @returns %TRUE if @filename can be parsed
      */
-    static canParseFromFilename(filename: string | null, debug: boolean): boolean
+    static canParseFromFilename(filename: string, debug: boolean): boolean
     /**
      * Checks if the remote URI can be parsed. Note that this does
      * not actually try to open the remote URI, or deduce its mime-type
@@ -563,7 +563,7 @@ export class Parser extends GObject.Object {
      * @param debug %TRUE if debug statements should be printed
      * @returns %TRUE if @uri could be parsed
      */
-    static canParseFromUri(uri: string | null, debug: boolean): boolean
+    static canParseFromUri(uri: string, debug: boolean): boolean
     /**
      * Parses the given date string and returns it as a <type>gint64</type>
      * denoting the date in seconds since the UNIX Epoch.
@@ -571,7 +571,7 @@ export class Parser extends GObject.Object {
      * @param debug %TRUE if debug statements should be printed
      * @returns the date in seconds, or -1 on error
      */
-    static parseDate(dateStr: string | null, debug: boolean): number
+    static parseDate(dateStr: string, debug: boolean): number
     /**
      * Parses the given duration string and returns it as a <type>gint64</type>
      * denoting the duration in seconds.
@@ -579,7 +579,7 @@ export class Parser extends GObject.Object {
      * @param debug %TRUE if debug statements should be printed
      * @returns the duration in seconds, or -1 on error
      */
-    static parseDuration(duration: string | null, debug: boolean): number
+    static parseDuration(duration: string, debug: boolean): number
 }
 
 export module Playlist {
@@ -617,7 +617,7 @@ export interface Playlist {
      * @param value an empty #GValue to set
      * @returns %TRUE if @iter contains data for @key.
      */
-    getValue(iter: PlaylistIter, key: string | null, value: any): boolean
+    getValue(iter: PlaylistIter, key: string, value: any): boolean
     /**
      * Inserts a new empty element to `playlist` at `position,` and modifies
      * `iter` so it points to it. To fill in values, you need to call
@@ -664,7 +664,7 @@ export interface Playlist {
      * @param value #GValue containing the key value
      * @returns %TRUE if the value could be stored in @playlist
      */
-    setValue(iter: PlaylistIter, key: string | null, value: any): boolean
+    setValue(iter: PlaylistIter, key: string, value: any): boolean
     /**
      * Returns the number of elements in `playlist`.
      * @returns The number of elements
@@ -723,9 +723,9 @@ export interface ParserClass {
      * @field 
      */
     parentClass: GObject.ObjectClass
-    entryParsed: (parser: Parser, uri: string | null, metadata: GLib.HashTable) => void
-    playlistStarted: (parser: Parser, uri: string | null, metadata: GLib.HashTable) => void
-    playlistEnded: (parser: Parser, uri: string | null) => void
+    entryParsed: (parser: Parser, uri: string, metadata: GLib.HashTable) => void
+    playlistStarted: (parser: Parser, uri: string, metadata: GLib.HashTable) => void
+    playlistEnded: (parser: Parser, uri: string) => void
 }
 
 /**

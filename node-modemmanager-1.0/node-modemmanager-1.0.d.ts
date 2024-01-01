@@ -1032,69 +1032,69 @@ enum OmaFeature {
  * be assigned by the device.
  */
 const TODO_3GPP_PROFILE_ID_UNKNOWN: number
-const BEARER_METHOD_CONNECT: string | null
-const BEARER_METHOD_DISCONNECT: string | null
-const BEARER_PROPERTY_BEARERTYPE: string | null
-const BEARER_PROPERTY_CONNECTED: string | null
-const BEARER_PROPERTY_CONNECTIONERROR: string | null
-const BEARER_PROPERTY_INTERFACE: string | null
-const BEARER_PROPERTY_IP4CONFIG: string | null
-const BEARER_PROPERTY_IP6CONFIG: string | null
-const BEARER_PROPERTY_IPTIMEOUT: string | null
-const BEARER_PROPERTY_MULTIPLEXED: string | null
-const BEARER_PROPERTY_PROFILEID: string | null
-const BEARER_PROPERTY_PROPERTIES: string | null
-const BEARER_PROPERTY_RELOADSTATSSUPPORTED: string | null
-const BEARER_PROPERTY_STATS: string | null
-const BEARER_PROPERTY_SUSPENDED: string | null
-const CALL_METHOD_ACCEPT: string | null
-const CALL_METHOD_DEFLECT: string | null
-const CALL_METHOD_HANGUP: string | null
-const CALL_METHOD_JOINMULTIPARTY: string | null
-const CALL_METHOD_LEAVEMULTIPARTY: string | null
-const CALL_METHOD_SENDDTMF: string | null
-const CALL_METHOD_START: string | null
-const CALL_PROPERTY_AUDIOFORMAT: string | null
-const CALL_PROPERTY_AUDIOPORT: string | null
-const CALL_PROPERTY_DIRECTION: string | null
-const CALL_PROPERTY_MULTIPARTY: string | null
-const CALL_PROPERTY_NUMBER: string | null
-const CALL_PROPERTY_STATE: string | null
-const CALL_PROPERTY_STATEREASON: string | null
-const CALL_SIGNAL_DTMFRECEIVED: string | null
-const CALL_SIGNAL_STATECHANGED: string | null
-const DBUS_ERROR_PREFIX: string | null
-const DBUS_INTERFACE: string | null
-const DBUS_INTERFACE_BEARER: string | null
-const DBUS_INTERFACE_CALL: string | null
-const DBUS_INTERFACE_MODEM: string | null
-const DBUS_INTERFACE_MODEM_FIRMWARE: string | null
-const DBUS_INTERFACE_MODEM_LOCATION: string | null
-const DBUS_INTERFACE_MODEM_MESSAGING: string | null
-const DBUS_INTERFACE_MODEM_MODEM3GPP: string | null
-const DBUS_INTERFACE_MODEM_MODEM3GPP_PROFILEMANAGER: string | null
-const DBUS_INTERFACE_MODEM_MODEM3GPP_USSD: string | null
-const DBUS_INTERFACE_MODEM_MODEMCDMA: string | null
-const DBUS_INTERFACE_MODEM_OMA: string | null
-const DBUS_INTERFACE_MODEM_SAR: string | null
-const DBUS_INTERFACE_MODEM_SIGNAL: string | null
-const DBUS_INTERFACE_MODEM_SIMPLE: string | null
-const DBUS_INTERFACE_MODEM_TIME: string | null
-const DBUS_INTERFACE_MODEM_VOICE: string | null
-const DBUS_INTERFACE_SIM: string | null
-const DBUS_INTERFACE_SMS: string | null
-const DBUS_PATH: string | null
-const DBUS_SERVICE: string | null
+const BEARER_METHOD_CONNECT: string
+const BEARER_METHOD_DISCONNECT: string
+const BEARER_PROPERTY_BEARERTYPE: string
+const BEARER_PROPERTY_CONNECTED: string
+const BEARER_PROPERTY_CONNECTIONERROR: string
+const BEARER_PROPERTY_INTERFACE: string
+const BEARER_PROPERTY_IP4CONFIG: string
+const BEARER_PROPERTY_IP6CONFIG: string
+const BEARER_PROPERTY_IPTIMEOUT: string
+const BEARER_PROPERTY_MULTIPLEXED: string
+const BEARER_PROPERTY_PROFILEID: string
+const BEARER_PROPERTY_PROPERTIES: string
+const BEARER_PROPERTY_RELOADSTATSSUPPORTED: string
+const BEARER_PROPERTY_STATS: string
+const BEARER_PROPERTY_SUSPENDED: string
+const CALL_METHOD_ACCEPT: string
+const CALL_METHOD_DEFLECT: string
+const CALL_METHOD_HANGUP: string
+const CALL_METHOD_JOINMULTIPARTY: string
+const CALL_METHOD_LEAVEMULTIPARTY: string
+const CALL_METHOD_SENDDTMF: string
+const CALL_METHOD_START: string
+const CALL_PROPERTY_AUDIOFORMAT: string
+const CALL_PROPERTY_AUDIOPORT: string
+const CALL_PROPERTY_DIRECTION: string
+const CALL_PROPERTY_MULTIPARTY: string
+const CALL_PROPERTY_NUMBER: string
+const CALL_PROPERTY_STATE: string
+const CALL_PROPERTY_STATEREASON: string
+const CALL_SIGNAL_DTMFRECEIVED: string
+const CALL_SIGNAL_STATECHANGED: string
+const DBUS_ERROR_PREFIX: string
+const DBUS_INTERFACE: string
+const DBUS_INTERFACE_BEARER: string
+const DBUS_INTERFACE_CALL: string
+const DBUS_INTERFACE_MODEM: string
+const DBUS_INTERFACE_MODEM_FIRMWARE: string
+const DBUS_INTERFACE_MODEM_LOCATION: string
+const DBUS_INTERFACE_MODEM_MESSAGING: string
+const DBUS_INTERFACE_MODEM_MODEM3GPP: string
+const DBUS_INTERFACE_MODEM_MODEM3GPP_PROFILEMANAGER: string
+const DBUS_INTERFACE_MODEM_MODEM3GPP_USSD: string
+const DBUS_INTERFACE_MODEM_MODEMCDMA: string
+const DBUS_INTERFACE_MODEM_OMA: string
+const DBUS_INTERFACE_MODEM_SAR: string
+const DBUS_INTERFACE_MODEM_SIGNAL: string
+const DBUS_INTERFACE_MODEM_SIMPLE: string
+const DBUS_INTERFACE_MODEM_TIME: string
+const DBUS_INTERFACE_MODEM_VOICE: string
+const DBUS_INTERFACE_SIM: string
+const DBUS_INTERFACE_SMS: string
+const DBUS_PATH: string
+const DBUS_SERVICE: string
 /**
  * Evaluates to the major version number of ModemManager which this source
  * is compiled against.
  */
 const MAJOR_VERSION: number
-const MANAGER_METHOD_INHIBITDEVICE: string | null
-const MANAGER_METHOD_REPORTKERNELEVENT: string | null
-const MANAGER_METHOD_SCANDEVICES: string | null
-const MANAGER_METHOD_SETLOGGING: string | null
-const MANAGER_PROPERTY_VERSION: string | null
+const MANAGER_METHOD_INHIBITDEVICE: string
+const MANAGER_METHOD_REPORTKERNELEVENT: string
+const MANAGER_METHOD_SCANDEVICES: string
+const MANAGER_METHOD_SETLOGGING: string
+const MANAGER_PROPERTY_VERSION: string
 /**
  * Evaluates to the micro version number of ModemManager which this source
  * compiled against.
@@ -1113,211 +1113,211 @@ const MODEM_CDMA_NID_UNKNOWN: number
  * Identifier for an unknown SID.
  */
 const MODEM_CDMA_SID_UNKNOWN: number
-const MODEM_FIRMWARE_METHOD_LIST: string | null
-const MODEM_FIRMWARE_METHOD_SELECT: string | null
-const MODEM_FIRMWARE_PROPERTY_UPDATESETTINGS: string | null
-const MODEM_LOCATION_METHOD_GETLOCATION: string | null
-const MODEM_LOCATION_METHOD_INJECTASSISTANCEDATA: string | null
-const MODEM_LOCATION_METHOD_SETGPSREFRESHRATE: string | null
-const MODEM_LOCATION_METHOD_SETSUPLSERVER: string | null
-const MODEM_LOCATION_METHOD_SETUP: string | null
-const MODEM_LOCATION_PROPERTY_ASSISTANCEDATASERVERS: string | null
-const MODEM_LOCATION_PROPERTY_CAPABILITIES: string | null
-const MODEM_LOCATION_PROPERTY_ENABLED: string | null
-const MODEM_LOCATION_PROPERTY_GPSREFRESHRATE: string | null
-const MODEM_LOCATION_PROPERTY_LOCATION: string | null
-const MODEM_LOCATION_PROPERTY_SIGNALSLOCATION: string | null
-const MODEM_LOCATION_PROPERTY_SUPLSERVER: string | null
-const MODEM_LOCATION_PROPERTY_SUPPORTEDASSISTANCEDATA: string | null
-const MODEM_MESSAGING_METHOD_CREATE: string | null
-const MODEM_MESSAGING_METHOD_DELETE: string | null
-const MODEM_MESSAGING_METHOD_LIST: string | null
-const MODEM_MESSAGING_PROPERTY_DEFAULTSTORAGE: string | null
-const MODEM_MESSAGING_PROPERTY_MESSAGES: string | null
-const MODEM_MESSAGING_PROPERTY_SUPPORTEDSTORAGES: string | null
-const MODEM_MESSAGING_SIGNAL_ADDED: string | null
-const MODEM_MESSAGING_SIGNAL_DELETED: string | null
-const MODEM_METHOD_COMMAND: string | null
-const MODEM_METHOD_CREATEBEARER: string | null
-const MODEM_METHOD_DELETEBEARER: string | null
-const MODEM_METHOD_ENABLE: string | null
-const MODEM_METHOD_FACTORYRESET: string | null
-const MODEM_METHOD_GETCELLINFO: string | null
-const MODEM_METHOD_LISTBEARERS: string | null
-const MODEM_METHOD_RESET: string | null
-const MODEM_METHOD_SETCURRENTBANDS: string | null
-const MODEM_METHOD_SETCURRENTCAPABILITIES: string | null
-const MODEM_METHOD_SETCURRENTMODES: string | null
-const MODEM_METHOD_SETPOWERSTATE: string | null
-const MODEM_METHOD_SETPRIMARYSIMSLOT: string | null
-const MODEM_MODEM3GPP_METHOD_DISABLEFACILITYLOCK: string | null
-const MODEM_MODEM3GPP_METHOD_REGISTER: string | null
-const MODEM_MODEM3GPP_METHOD_SCAN: string | null
-const MODEM_MODEM3GPP_METHOD_SETCARRIERLOCK: string | null
-const MODEM_MODEM3GPP_METHOD_SETEPSUEMODEOPERATION: string | null
-const MODEM_MODEM3GPP_METHOD_SETINITIALEPSBEARERSETTINGS: string | null
-const MODEM_MODEM3GPP_METHOD_SETNR5GREGISTRATIONSETTINGS: string | null
-const MODEM_MODEM3GPP_METHOD_SETPACKETSERVICESTATE: string | null
-const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_DELETE: string | null
-const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_LIST: string | null
-const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_SET: string | null
-const MODEM_MODEM3GPP_PROFILEMANAGER_PROPERTY_INDEXFIELD: string | null
-const MODEM_MODEM3GPP_PROFILEMANAGER_SIGNAL_UPDATED: string | null
-const MODEM_MODEM3GPP_PROPERTY_ENABLEDFACILITYLOCKS: string | null
-const MODEM_MODEM3GPP_PROPERTY_EPSUEMODEOPERATION: string | null
-const MODEM_MODEM3GPP_PROPERTY_IMEI: string | null
-const MODEM_MODEM3GPP_PROPERTY_INITIALEPSBEARER: string | null
-const MODEM_MODEM3GPP_PROPERTY_INITIALEPSBEARERSETTINGS: string | null
-const MODEM_MODEM3GPP_PROPERTY_NR5GREGISTRATIONSETTINGS: string | null
-const MODEM_MODEM3GPP_PROPERTY_OPERATORCODE: string | null
-const MODEM_MODEM3GPP_PROPERTY_OPERATORNAME: string | null
-const MODEM_MODEM3GPP_PROPERTY_PACKETSERVICESTATE: string | null
-const MODEM_MODEM3GPP_PROPERTY_PCO: string | null
-const MODEM_MODEM3GPP_PROPERTY_REGISTRATIONSTATE: string | null
-const MODEM_MODEM3GPP_PROPERTY_SUBSCRIPTIONSTATE: string | null
-const MODEM_MODEM3GPP_USSD_METHOD_CANCEL: string | null
-const MODEM_MODEM3GPP_USSD_METHOD_INITIATE: string | null
-const MODEM_MODEM3GPP_USSD_METHOD_RESPOND: string | null
-const MODEM_MODEM3GPP_USSD_PROPERTY_NETWORKNOTIFICATION: string | null
-const MODEM_MODEM3GPP_USSD_PROPERTY_NETWORKREQUEST: string | null
-const MODEM_MODEM3GPP_USSD_PROPERTY_STATE: string | null
-const MODEM_MODEMCDMA_METHOD_ACTIVATE: string | null
-const MODEM_MODEMCDMA_METHOD_ACTIVATEMANUAL: string | null
-const MODEM_MODEMCDMA_PROPERTY_ACTIVATIONSTATE: string | null
-const MODEM_MODEMCDMA_PROPERTY_CDMA1XREGISTRATIONSTATE: string | null
-const MODEM_MODEMCDMA_PROPERTY_ESN: string | null
-const MODEM_MODEMCDMA_PROPERTY_EVDOREGISTRATIONSTATE: string | null
-const MODEM_MODEMCDMA_PROPERTY_MEID: string | null
-const MODEM_MODEMCDMA_PROPERTY_NID: string | null
-const MODEM_MODEMCDMA_PROPERTY_SID: string | null
-const MODEM_MODEMCDMA_SIGNAL_ACTIVATIONSTATECHANGED: string | null
-const MODEM_OMA_METHOD_ACCEPTNETWORKINITIATEDSESSION: string | null
-const MODEM_OMA_METHOD_CANCELSESSION: string | null
-const MODEM_OMA_METHOD_SETUP: string | null
-const MODEM_OMA_METHOD_STARTCLIENTINITIATEDSESSION: string | null
-const MODEM_OMA_PROPERTY_FEATURES: string | null
-const MODEM_OMA_PROPERTY_PENDINGNETWORKINITIATEDSESSIONS: string | null
-const MODEM_OMA_PROPERTY_SESSIONSTATE: string | null
-const MODEM_OMA_PROPERTY_SESSIONTYPE: string | null
-const MODEM_OMA_SIGNAL_SESSIONSTATECHANGED: string | null
-const MODEM_PROPERTY_ACCESSTECHNOLOGIES: string | null
-const MODEM_PROPERTY_BEARERS: string | null
-const MODEM_PROPERTY_CARRIERCONFIGURATION: string | null
-const MODEM_PROPERTY_CARRIERCONFIGURATIONREVISION: string | null
-const MODEM_PROPERTY_CURRENTBANDS: string | null
-const MODEM_PROPERTY_CURRENTCAPABILITIES: string | null
-const MODEM_PROPERTY_CURRENTMODES: string | null
-const MODEM_PROPERTY_DEVICE: string | null
-const MODEM_PROPERTY_DEVICEIDENTIFIER: string | null
-const MODEM_PROPERTY_DRIVERS: string | null
-const MODEM_PROPERTY_EQUIPMENTIDENTIFIER: string | null
-const MODEM_PROPERTY_HARDWAREREVISION: string | null
-const MODEM_PROPERTY_MANUFACTURER: string | null
-const MODEM_PROPERTY_MAXACTIVEBEARERS: string | null
-const MODEM_PROPERTY_MAXACTIVEMULTIPLEXEDBEARERS: string | null
-const MODEM_PROPERTY_MAXBEARERS: string | null
-const MODEM_PROPERTY_MODEL: string | null
-const MODEM_PROPERTY_OWNNUMBERS: string | null
-const MODEM_PROPERTY_PLUGIN: string | null
-const MODEM_PROPERTY_PORTS: string | null
-const MODEM_PROPERTY_POWERSTATE: string | null
-const MODEM_PROPERTY_PRIMARYPORT: string | null
-const MODEM_PROPERTY_PRIMARYSIMSLOT: string | null
-const MODEM_PROPERTY_REVISION: string | null
-const MODEM_PROPERTY_SIGNALQUALITY: string | null
-const MODEM_PROPERTY_SIM: string | null
-const MODEM_PROPERTY_SIMSLOTS: string | null
-const MODEM_PROPERTY_STATE: string | null
-const MODEM_PROPERTY_STATEFAILEDREASON: string | null
-const MODEM_PROPERTY_SUPPORTEDBANDS: string | null
-const MODEM_PROPERTY_SUPPORTEDCAPABILITIES: string | null
-const MODEM_PROPERTY_SUPPORTEDIPFAMILIES: string | null
-const MODEM_PROPERTY_SUPPORTEDMODES: string | null
-const MODEM_PROPERTY_UNLOCKREQUIRED: string | null
-const MODEM_PROPERTY_UNLOCKRETRIES: string | null
-const MODEM_SAR_METHOD_ENABLE: string | null
-const MODEM_SAR_METHOD_SETPOWERLEVEL: string | null
-const MODEM_SAR_PROPERTY_POWERLEVEL: string | null
-const MODEM_SAR_PROPERTY_STATE: string | null
-const MODEM_SIGNAL_METHOD_SETUP: string | null
-const MODEM_SIGNAL_METHOD_SETUPTHRESHOLDS: string | null
-const MODEM_SIGNAL_PROPERTY_CDMA: string | null
-const MODEM_SIGNAL_PROPERTY_ERRORRATETHRESHOLD: string | null
-const MODEM_SIGNAL_PROPERTY_EVDO: string | null
-const MODEM_SIGNAL_PROPERTY_GSM: string | null
-const MODEM_SIGNAL_PROPERTY_LTE: string | null
-const MODEM_SIGNAL_PROPERTY_NR5G: string | null
-const MODEM_SIGNAL_PROPERTY_RATE: string | null
-const MODEM_SIGNAL_PROPERTY_RSSITHRESHOLD: string | null
-const MODEM_SIGNAL_PROPERTY_UMTS: string | null
-const MODEM_SIGNAL_STATECHANGED: string | null
-const MODEM_SIMPLE_METHOD_CONNECT: string | null
-const MODEM_SIMPLE_METHOD_DISCONNECT: string | null
-const MODEM_SIMPLE_METHOD_GETSTATUS: string | null
-const MODEM_TIME_METHOD_GETNETWORKTIME: string | null
-const MODEM_TIME_PROPERTY_NETWORKTIMEZONE: string | null
-const MODEM_TIME_SIGNAL_NETWORKTIMECHANGED: string | null
-const MODEM_VOICE_METHOD_CALLWAITINGQUERY: string | null
-const MODEM_VOICE_METHOD_CALLWAITINGSETUP: string | null
-const MODEM_VOICE_METHOD_CREATECALL: string | null
-const MODEM_VOICE_METHOD_DELETECALL: string | null
-const MODEM_VOICE_METHOD_HANGUPALL: string | null
-const MODEM_VOICE_METHOD_HANGUPANDACCEPT: string | null
-const MODEM_VOICE_METHOD_HOLDANDACCEPT: string | null
-const MODEM_VOICE_METHOD_LISTCALLS: string | null
-const MODEM_VOICE_METHOD_TRANSFER: string | null
-const MODEM_VOICE_PROPERTY_CALLS: string | null
-const MODEM_VOICE_PROPERTY_EMERGENCYONLY: string | null
-const MODEM_VOICE_SIGNAL_CALLADDED: string | null
-const MODEM_VOICE_SIGNAL_CALLDELETED: string | null
-const SIMPLE_PROPERTY_3GPP_OPERATOR_CODE: string | null
-const SIMPLE_PROPERTY_3GPP_OPERATOR_NAME: string | null
-const SIMPLE_PROPERTY_3GPP_REGISTRATION_STATE: string | null
-const SIMPLE_PROPERTY_3GPP_SUBSCRIPTION_STATE: string | null
-const SIMPLE_PROPERTY_ACCESS_TECHNOLOGIES: string | null
-const SIMPLE_PROPERTY_CDMA_CDMA1X_REGISTRATION_STATE: string | null
-const SIMPLE_PROPERTY_CDMA_EVDO_REGISTRATION_STATE: string | null
-const SIMPLE_PROPERTY_CDMA_NID: string | null
-const SIMPLE_PROPERTY_CDMA_SID: string | null
-const SIMPLE_PROPERTY_CURRENT_BANDS: string | null
-const SIMPLE_PROPERTY_SIGNAL_QUALITY: string | null
-const SIMPLE_PROPERTY_STATE: string | null
-const SIM_METHOD_CHANGEPIN: string | null
-const SIM_METHOD_ENABLEPIN: string | null
-const SIM_METHOD_SENDPIN: string | null
-const SIM_METHOD_SENDPUK: string | null
-const SIM_METHOD_SETPREFERREDNETWORKS: string | null
-const SIM_PROPERTY_ACTIVE: string | null
-const SIM_PROPERTY_EID: string | null
-const SIM_PROPERTY_EMERGENCYNUMBERS: string | null
-const SIM_PROPERTY_ESIMSTATUS: string | null
-const SIM_PROPERTY_GID1: string | null
-const SIM_PROPERTY_GID2: string | null
-const SIM_PROPERTY_IMSI: string | null
-const SIM_PROPERTY_OPERATORIDENTIFIER: string | null
-const SIM_PROPERTY_OPERATORNAME: string | null
-const SIM_PROPERTY_PREFERREDNETWORKS: string | null
-const SIM_PROPERTY_REMOVABILITY: string | null
-const SIM_PROPERTY_SIMIDENTIFIER: string | null
-const SIM_PROPERTY_SIMTYPE: string | null
-const SMS_METHOD_SEND: string | null
-const SMS_METHOD_STORE: string | null
-const SMS_PROPERTY_CLASS: string | null
-const SMS_PROPERTY_DATA: string | null
-const SMS_PROPERTY_DELIVERYREPORTREQUEST: string | null
-const SMS_PROPERTY_DELIVERYSTATE: string | null
-const SMS_PROPERTY_DISCHARGETIMESTAMP: string | null
-const SMS_PROPERTY_MESSAGEREFERENCE: string | null
-const SMS_PROPERTY_NUMBER: string | null
-const SMS_PROPERTY_PDUTYPE: string | null
-const SMS_PROPERTY_SERVICECATEGORY: string | null
-const SMS_PROPERTY_SMSC: string | null
-const SMS_PROPERTY_STATE: string | null
-const SMS_PROPERTY_STORAGE: string | null
-const SMS_PROPERTY_TELESERVICEID: string | null
-const SMS_PROPERTY_TEXT: string | null
-const SMS_PROPERTY_TIMESTAMP: string | null
-const SMS_PROPERTY_VALIDITY: string | null
+const MODEM_FIRMWARE_METHOD_LIST: string
+const MODEM_FIRMWARE_METHOD_SELECT: string
+const MODEM_FIRMWARE_PROPERTY_UPDATESETTINGS: string
+const MODEM_LOCATION_METHOD_GETLOCATION: string
+const MODEM_LOCATION_METHOD_INJECTASSISTANCEDATA: string
+const MODEM_LOCATION_METHOD_SETGPSREFRESHRATE: string
+const MODEM_LOCATION_METHOD_SETSUPLSERVER: string
+const MODEM_LOCATION_METHOD_SETUP: string
+const MODEM_LOCATION_PROPERTY_ASSISTANCEDATASERVERS: string
+const MODEM_LOCATION_PROPERTY_CAPABILITIES: string
+const MODEM_LOCATION_PROPERTY_ENABLED: string
+const MODEM_LOCATION_PROPERTY_GPSREFRESHRATE: string
+const MODEM_LOCATION_PROPERTY_LOCATION: string
+const MODEM_LOCATION_PROPERTY_SIGNALSLOCATION: string
+const MODEM_LOCATION_PROPERTY_SUPLSERVER: string
+const MODEM_LOCATION_PROPERTY_SUPPORTEDASSISTANCEDATA: string
+const MODEM_MESSAGING_METHOD_CREATE: string
+const MODEM_MESSAGING_METHOD_DELETE: string
+const MODEM_MESSAGING_METHOD_LIST: string
+const MODEM_MESSAGING_PROPERTY_DEFAULTSTORAGE: string
+const MODEM_MESSAGING_PROPERTY_MESSAGES: string
+const MODEM_MESSAGING_PROPERTY_SUPPORTEDSTORAGES: string
+const MODEM_MESSAGING_SIGNAL_ADDED: string
+const MODEM_MESSAGING_SIGNAL_DELETED: string
+const MODEM_METHOD_COMMAND: string
+const MODEM_METHOD_CREATEBEARER: string
+const MODEM_METHOD_DELETEBEARER: string
+const MODEM_METHOD_ENABLE: string
+const MODEM_METHOD_FACTORYRESET: string
+const MODEM_METHOD_GETCELLINFO: string
+const MODEM_METHOD_LISTBEARERS: string
+const MODEM_METHOD_RESET: string
+const MODEM_METHOD_SETCURRENTBANDS: string
+const MODEM_METHOD_SETCURRENTCAPABILITIES: string
+const MODEM_METHOD_SETCURRENTMODES: string
+const MODEM_METHOD_SETPOWERSTATE: string
+const MODEM_METHOD_SETPRIMARYSIMSLOT: string
+const MODEM_MODEM3GPP_METHOD_DISABLEFACILITYLOCK: string
+const MODEM_MODEM3GPP_METHOD_REGISTER: string
+const MODEM_MODEM3GPP_METHOD_SCAN: string
+const MODEM_MODEM3GPP_METHOD_SETCARRIERLOCK: string
+const MODEM_MODEM3GPP_METHOD_SETEPSUEMODEOPERATION: string
+const MODEM_MODEM3GPP_METHOD_SETINITIALEPSBEARERSETTINGS: string
+const MODEM_MODEM3GPP_METHOD_SETNR5GREGISTRATIONSETTINGS: string
+const MODEM_MODEM3GPP_METHOD_SETPACKETSERVICESTATE: string
+const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_DELETE: string
+const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_LIST: string
+const MODEM_MODEM3GPP_PROFILEMANAGER_METHOD_SET: string
+const MODEM_MODEM3GPP_PROFILEMANAGER_PROPERTY_INDEXFIELD: string
+const MODEM_MODEM3GPP_PROFILEMANAGER_SIGNAL_UPDATED: string
+const MODEM_MODEM3GPP_PROPERTY_ENABLEDFACILITYLOCKS: string
+const MODEM_MODEM3GPP_PROPERTY_EPSUEMODEOPERATION: string
+const MODEM_MODEM3GPP_PROPERTY_IMEI: string
+const MODEM_MODEM3GPP_PROPERTY_INITIALEPSBEARER: string
+const MODEM_MODEM3GPP_PROPERTY_INITIALEPSBEARERSETTINGS: string
+const MODEM_MODEM3GPP_PROPERTY_NR5GREGISTRATIONSETTINGS: string
+const MODEM_MODEM3GPP_PROPERTY_OPERATORCODE: string
+const MODEM_MODEM3GPP_PROPERTY_OPERATORNAME: string
+const MODEM_MODEM3GPP_PROPERTY_PACKETSERVICESTATE: string
+const MODEM_MODEM3GPP_PROPERTY_PCO: string
+const MODEM_MODEM3GPP_PROPERTY_REGISTRATIONSTATE: string
+const MODEM_MODEM3GPP_PROPERTY_SUBSCRIPTIONSTATE: string
+const MODEM_MODEM3GPP_USSD_METHOD_CANCEL: string
+const MODEM_MODEM3GPP_USSD_METHOD_INITIATE: string
+const MODEM_MODEM3GPP_USSD_METHOD_RESPOND: string
+const MODEM_MODEM3GPP_USSD_PROPERTY_NETWORKNOTIFICATION: string
+const MODEM_MODEM3GPP_USSD_PROPERTY_NETWORKREQUEST: string
+const MODEM_MODEM3GPP_USSD_PROPERTY_STATE: string
+const MODEM_MODEMCDMA_METHOD_ACTIVATE: string
+const MODEM_MODEMCDMA_METHOD_ACTIVATEMANUAL: string
+const MODEM_MODEMCDMA_PROPERTY_ACTIVATIONSTATE: string
+const MODEM_MODEMCDMA_PROPERTY_CDMA1XREGISTRATIONSTATE: string
+const MODEM_MODEMCDMA_PROPERTY_ESN: string
+const MODEM_MODEMCDMA_PROPERTY_EVDOREGISTRATIONSTATE: string
+const MODEM_MODEMCDMA_PROPERTY_MEID: string
+const MODEM_MODEMCDMA_PROPERTY_NID: string
+const MODEM_MODEMCDMA_PROPERTY_SID: string
+const MODEM_MODEMCDMA_SIGNAL_ACTIVATIONSTATECHANGED: string
+const MODEM_OMA_METHOD_ACCEPTNETWORKINITIATEDSESSION: string
+const MODEM_OMA_METHOD_CANCELSESSION: string
+const MODEM_OMA_METHOD_SETUP: string
+const MODEM_OMA_METHOD_STARTCLIENTINITIATEDSESSION: string
+const MODEM_OMA_PROPERTY_FEATURES: string
+const MODEM_OMA_PROPERTY_PENDINGNETWORKINITIATEDSESSIONS: string
+const MODEM_OMA_PROPERTY_SESSIONSTATE: string
+const MODEM_OMA_PROPERTY_SESSIONTYPE: string
+const MODEM_OMA_SIGNAL_SESSIONSTATECHANGED: string
+const MODEM_PROPERTY_ACCESSTECHNOLOGIES: string
+const MODEM_PROPERTY_BEARERS: string
+const MODEM_PROPERTY_CARRIERCONFIGURATION: string
+const MODEM_PROPERTY_CARRIERCONFIGURATIONREVISION: string
+const MODEM_PROPERTY_CURRENTBANDS: string
+const MODEM_PROPERTY_CURRENTCAPABILITIES: string
+const MODEM_PROPERTY_CURRENTMODES: string
+const MODEM_PROPERTY_DEVICE: string
+const MODEM_PROPERTY_DEVICEIDENTIFIER: string
+const MODEM_PROPERTY_DRIVERS: string
+const MODEM_PROPERTY_EQUIPMENTIDENTIFIER: string
+const MODEM_PROPERTY_HARDWAREREVISION: string
+const MODEM_PROPERTY_MANUFACTURER: string
+const MODEM_PROPERTY_MAXACTIVEBEARERS: string
+const MODEM_PROPERTY_MAXACTIVEMULTIPLEXEDBEARERS: string
+const MODEM_PROPERTY_MAXBEARERS: string
+const MODEM_PROPERTY_MODEL: string
+const MODEM_PROPERTY_OWNNUMBERS: string
+const MODEM_PROPERTY_PLUGIN: string
+const MODEM_PROPERTY_PORTS: string
+const MODEM_PROPERTY_POWERSTATE: string
+const MODEM_PROPERTY_PRIMARYPORT: string
+const MODEM_PROPERTY_PRIMARYSIMSLOT: string
+const MODEM_PROPERTY_REVISION: string
+const MODEM_PROPERTY_SIGNALQUALITY: string
+const MODEM_PROPERTY_SIM: string
+const MODEM_PROPERTY_SIMSLOTS: string
+const MODEM_PROPERTY_STATE: string
+const MODEM_PROPERTY_STATEFAILEDREASON: string
+const MODEM_PROPERTY_SUPPORTEDBANDS: string
+const MODEM_PROPERTY_SUPPORTEDCAPABILITIES: string
+const MODEM_PROPERTY_SUPPORTEDIPFAMILIES: string
+const MODEM_PROPERTY_SUPPORTEDMODES: string
+const MODEM_PROPERTY_UNLOCKREQUIRED: string
+const MODEM_PROPERTY_UNLOCKRETRIES: string
+const MODEM_SAR_METHOD_ENABLE: string
+const MODEM_SAR_METHOD_SETPOWERLEVEL: string
+const MODEM_SAR_PROPERTY_POWERLEVEL: string
+const MODEM_SAR_PROPERTY_STATE: string
+const MODEM_SIGNAL_METHOD_SETUP: string
+const MODEM_SIGNAL_METHOD_SETUPTHRESHOLDS: string
+const MODEM_SIGNAL_PROPERTY_CDMA: string
+const MODEM_SIGNAL_PROPERTY_ERRORRATETHRESHOLD: string
+const MODEM_SIGNAL_PROPERTY_EVDO: string
+const MODEM_SIGNAL_PROPERTY_GSM: string
+const MODEM_SIGNAL_PROPERTY_LTE: string
+const MODEM_SIGNAL_PROPERTY_NR5G: string
+const MODEM_SIGNAL_PROPERTY_RATE: string
+const MODEM_SIGNAL_PROPERTY_RSSITHRESHOLD: string
+const MODEM_SIGNAL_PROPERTY_UMTS: string
+const MODEM_SIGNAL_STATECHANGED: string
+const MODEM_SIMPLE_METHOD_CONNECT: string
+const MODEM_SIMPLE_METHOD_DISCONNECT: string
+const MODEM_SIMPLE_METHOD_GETSTATUS: string
+const MODEM_TIME_METHOD_GETNETWORKTIME: string
+const MODEM_TIME_PROPERTY_NETWORKTIMEZONE: string
+const MODEM_TIME_SIGNAL_NETWORKTIMECHANGED: string
+const MODEM_VOICE_METHOD_CALLWAITINGQUERY: string
+const MODEM_VOICE_METHOD_CALLWAITINGSETUP: string
+const MODEM_VOICE_METHOD_CREATECALL: string
+const MODEM_VOICE_METHOD_DELETECALL: string
+const MODEM_VOICE_METHOD_HANGUPALL: string
+const MODEM_VOICE_METHOD_HANGUPANDACCEPT: string
+const MODEM_VOICE_METHOD_HOLDANDACCEPT: string
+const MODEM_VOICE_METHOD_LISTCALLS: string
+const MODEM_VOICE_METHOD_TRANSFER: string
+const MODEM_VOICE_PROPERTY_CALLS: string
+const MODEM_VOICE_PROPERTY_EMERGENCYONLY: string
+const MODEM_VOICE_SIGNAL_CALLADDED: string
+const MODEM_VOICE_SIGNAL_CALLDELETED: string
+const SIMPLE_PROPERTY_3GPP_OPERATOR_CODE: string
+const SIMPLE_PROPERTY_3GPP_OPERATOR_NAME: string
+const SIMPLE_PROPERTY_3GPP_REGISTRATION_STATE: string
+const SIMPLE_PROPERTY_3GPP_SUBSCRIPTION_STATE: string
+const SIMPLE_PROPERTY_ACCESS_TECHNOLOGIES: string
+const SIMPLE_PROPERTY_CDMA_CDMA1X_REGISTRATION_STATE: string
+const SIMPLE_PROPERTY_CDMA_EVDO_REGISTRATION_STATE: string
+const SIMPLE_PROPERTY_CDMA_NID: string
+const SIMPLE_PROPERTY_CDMA_SID: string
+const SIMPLE_PROPERTY_CURRENT_BANDS: string
+const SIMPLE_PROPERTY_SIGNAL_QUALITY: string
+const SIMPLE_PROPERTY_STATE: string
+const SIM_METHOD_CHANGEPIN: string
+const SIM_METHOD_ENABLEPIN: string
+const SIM_METHOD_SENDPIN: string
+const SIM_METHOD_SENDPUK: string
+const SIM_METHOD_SETPREFERREDNETWORKS: string
+const SIM_PROPERTY_ACTIVE: string
+const SIM_PROPERTY_EID: string
+const SIM_PROPERTY_EMERGENCYNUMBERS: string
+const SIM_PROPERTY_ESIMSTATUS: string
+const SIM_PROPERTY_GID1: string
+const SIM_PROPERTY_GID2: string
+const SIM_PROPERTY_IMSI: string
+const SIM_PROPERTY_OPERATORIDENTIFIER: string
+const SIM_PROPERTY_OPERATORNAME: string
+const SIM_PROPERTY_PREFERREDNETWORKS: string
+const SIM_PROPERTY_REMOVABILITY: string
+const SIM_PROPERTY_SIMIDENTIFIER: string
+const SIM_PROPERTY_SIMTYPE: string
+const SMS_METHOD_SEND: string
+const SMS_METHOD_STORE: string
+const SMS_PROPERTY_CLASS: string
+const SMS_PROPERTY_DATA: string
+const SMS_PROPERTY_DELIVERYREPORTREQUEST: string
+const SMS_PROPERTY_DELIVERYSTATE: string
+const SMS_PROPERTY_DISCHARGETIMESTAMP: string
+const SMS_PROPERTY_MESSAGEREFERENCE: string
+const SMS_PROPERTY_NUMBER: string
+const SMS_PROPERTY_PDUTYPE: string
+const SMS_PROPERTY_SERVICECATEGORY: string
+const SMS_PROPERTY_SMSC: string
+const SMS_PROPERTY_STATE: string
+const SMS_PROPERTY_STORAGE: string
+const SMS_PROPERTY_TELESERVICEID: string
+const SMS_PROPERTY_TEXT: string
+const SMS_PROPERTY_TIMESTAMP: string
+const SMS_PROPERTY_VALIDITY: string
 /**
  * Identifier for reporting unknown unlock retries.
  */
@@ -1327,7 +1327,7 @@ const UNLOCK_RETRIES_UNKNOWN: number
  * @param val a MMBearerAccessTypePreference.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function bearerAccessTypePreferenceGetString(val: BearerAccessTypePreference): string | null
+function bearerAccessTypePreferenceGetString(val: BearerAccessTypePreference): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMBearerAllowedAuth in `mask`.
@@ -1354,19 +1354,19 @@ function bearerIpFamilyBuildStringFromMask(mask: BearerIpFamily): string | null
  * @param val a MMBearerIpMethod.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function bearerIpMethodGetString(val: BearerIpMethod): string | null
+function bearerIpMethodGetString(val: BearerIpMethod): string
 /**
  * Gets the nickname string for the #MMBearerMultiplexSupport specified at `val`.
  * @param val a MMBearerMultiplexSupport.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function bearerMultiplexSupportGetString(val: BearerMultiplexSupport): string | null
+function bearerMultiplexSupportGetString(val: BearerMultiplexSupport): string
 /**
  * Gets the nickname string for the #MMBearerProfileSource specified at `val`.
  * @param val a MMBearerProfileSource.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function bearerProfileSourceGetString(val: BearerProfileSource): string | null
+function bearerProfileSourceGetString(val: BearerProfileSource): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMBearerRoamingAllowance in `mask`.
@@ -1379,32 +1379,32 @@ function bearerRoamingAllowanceBuildStringFromMask(mask: BearerRoamingAllowance)
  * @param val a MMBearerType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function bearerTypeGetString(val: BearerType): string | null
+function bearerTypeGetString(val: BearerType): string
 /**
  * Gets the nickname string for the #MMCallDirection specified at `val`.
  * @param val a MMCallDirection.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function callDirectionGetString(val: CallDirection): string | null
+function callDirectionGetString(val: CallDirection): string
 /**
  * Gets the nickname string for the #MMCallState specified at `val`.
  * @param val a MMCallState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function callStateGetString(val: CallState): string | null
+function callStateGetString(val: CallState): string
 /**
  * Gets the nickname string for the #MMCallStateReason specified at `val`.
  * @param val a MMCallStateReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function callStateReasonGetString(val: CallStateReason): string | null
+function callStateReasonGetString(val: CallStateReason): string
 function cdmaActivationErrorQuark(): GLib.Quark
 /**
  * Gets the nickname string for the #MMCellType specified at `val`.
  * @param val a MMCellType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cellTypeGetString(val: CellType): string | null
+function cellTypeGetString(val: CellType): string
 function connectionErrorQuark(): GLib.Quark
 function coreErrorQuark(): GLib.Quark
 /**
@@ -1412,7 +1412,7 @@ function coreErrorQuark(): GLib.Quark
  * @param val a MMFirmwareImageType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function firmwareImageTypeGetString(val: FirmwareImageType): string | null
+function firmwareImageTypeGetString(val: FirmwareImageType): string
 /**
  * Gets a machine-readable description of the <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Bearer.top_of_page">org.freedesktop.ModemManager1.Bearer</link> D-Bus interface.
  * @returns A #GDBusInterfaceInfo. Do not free.
@@ -1667,13 +1667,13 @@ function mobileEquipmentErrorQuark(): GLib.Quark
  * @param val a MMModem3gppDrxCycle.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppDrxCycleGetString(val: Modem3gppDrxCycle): string | null
+function modem3gppDrxCycleGetString(val: Modem3gppDrxCycle): string
 /**
  * Gets the nickname string for the #MMModem3gppEpsUeModeOperation specified at `val`.
  * @param val a MMModem3gppEpsUeModeOperation.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppEpsUeModeOperationGetString(val: Modem3gppEpsUeModeOperation): string | null
+function modem3gppEpsUeModeOperationGetString(val: Modem3gppEpsUeModeOperation): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMModem3gppFacility in `mask`.
@@ -1686,37 +1686,37 @@ function modem3gppFacilityBuildStringFromMask(mask: Modem3gppFacility): string |
  * @param val a MMModem3gppMicoMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppMicoModeGetString(val: Modem3gppMicoMode): string | null
+function modem3gppMicoModeGetString(val: Modem3gppMicoMode): string
 /**
  * Gets the nickname string for the #MMModem3gppNetworkAvailability specified at `val`.
  * @param val a MMModem3gppNetworkAvailability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppNetworkAvailabilityGetString(val: Modem3gppNetworkAvailability): string | null
+function modem3gppNetworkAvailabilityGetString(val: Modem3gppNetworkAvailability): string
 /**
  * Gets the nickname string for the #MMModem3gppPacketServiceState specified at `val`.
  * @param val a MMModem3gppPacketServiceState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppPacketServiceStateGetString(val: Modem3gppPacketServiceState): string | null
+function modem3gppPacketServiceStateGetString(val: Modem3gppPacketServiceState): string
 /**
  * Gets the nickname string for the #MMModem3gppRegistrationState specified at `val`.
  * @param val a MMModem3gppRegistrationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppRegistrationStateGetString(val: Modem3gppRegistrationState): string | null
+function modem3gppRegistrationStateGetString(val: Modem3gppRegistrationState): string
 /**
  * Gets the nickname string for the #MMModem3gppSubscriptionState specified at `val`.
  * @param val a MMModem3gppSubscriptionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppSubscriptionStateGetString(val: Modem3gppSubscriptionState): string | null
+function modem3gppSubscriptionStateGetString(val: Modem3gppSubscriptionState): string
 /**
  * Gets the nickname string for the #MMModem3gppUssdSessionState specified at `val`.
  * @param val a MMModem3gppUssdSessionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modem3gppUssdSessionStateGetString(val: Modem3gppUssdSessionState): string | null
+function modem3gppUssdSessionStateGetString(val: Modem3gppUssdSessionState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMModemAccessTechnology in `mask`.
@@ -1729,7 +1729,7 @@ function modemAccessTechnologyBuildStringFromMask(mask: ModemAccessTechnology): 
  * @param val a MMModemBand.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemBandGetString(val: ModemBand): string | null
+function modemBandGetString(val: ModemBand): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMModemCapability in `mask`.
@@ -1742,25 +1742,25 @@ function modemCapabilityBuildStringFromMask(mask: ModemCapability): string | nul
  * @param val a MMModemCdmaActivationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemCdmaActivationStateGetString(val: ModemCdmaActivationState): string | null
+function modemCdmaActivationStateGetString(val: ModemCdmaActivationState): string
 /**
  * Gets the nickname string for the #MMModemCdmaRegistrationState specified at `val`.
  * @param val a MMModemCdmaRegistrationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemCdmaRegistrationStateGetString(val: ModemCdmaRegistrationState): string | null
+function modemCdmaRegistrationStateGetString(val: ModemCdmaRegistrationState): string
 /**
  * Gets the nickname string for the #MMModemCdmaRmProtocol specified at `val`.
  * @param val a MMModemCdmaRmProtocol.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemCdmaRmProtocolGetString(val: ModemCdmaRmProtocol): string | null
+function modemCdmaRmProtocolGetString(val: ModemCdmaRmProtocol): string
 /**
  * Gets the nickname string for the #MMModemContactsStorage specified at `val`.
  * @param val a MMModemContactsStorage.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemContactsStorageGetString(val: ModemContactsStorage): string | null
+function modemContactsStorageGetString(val: ModemContactsStorage): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMModemFirmwareUpdateMethod in `mask`.
@@ -1787,7 +1787,7 @@ function modemLocationSourceBuildStringFromMask(mask: ModemLocationSource): stri
  * @param val a MMModemLock.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemLockGetString(val: ModemLock): string | null
+function modemLockGetString(val: ModemLock): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMModemMode in `mask`.
@@ -1800,31 +1800,31 @@ function modemModeBuildStringFromMask(mask: ModemMode): string | null
  * @param val a MMModemPortType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemPortTypeGetString(val: ModemPortType): string | null
+function modemPortTypeGetString(val: ModemPortType): string
 /**
  * Gets the nickname string for the #MMModemPowerState specified at `val`.
  * @param val a MMModemPowerState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemPowerStateGetString(val: ModemPowerState): string | null
+function modemPowerStateGetString(val: ModemPowerState): string
 /**
  * Gets the nickname string for the #MMModemStateChangeReason specified at `val`.
  * @param val a MMModemStateChangeReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemStateChangeReasonGetString(val: ModemStateChangeReason): string | null
+function modemStateChangeReasonGetString(val: ModemStateChangeReason): string
 /**
  * Gets the nickname string for the #MMModemStateFailedReason specified at `val`.
  * @param val a MMModemStateFailedReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemStateFailedReasonGetString(val: ModemStateFailedReason): string | null
+function modemStateFailedReasonGetString(val: ModemStateFailedReason): string
 /**
  * Gets the nickname string for the #MMModemState specified at `val`.
  * @param val a MMModemState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemStateGetString(val: ModemState): string | null
+function modemStateGetString(val: ModemState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MMOmaFeature in `mask`.
@@ -1837,86 +1837,86 @@ function omaFeatureBuildStringFromMask(mask: OmaFeature): string | null
  * @param val a MMOmaSessionStateFailedReason.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function omaSessionStateFailedReasonGetString(val: OmaSessionStateFailedReason): string | null
+function omaSessionStateFailedReasonGetString(val: OmaSessionStateFailedReason): string
 /**
  * Gets the nickname string for the #MMOmaSessionState specified at `val`.
  * @param val a MMOmaSessionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function omaSessionStateGetString(val: OmaSessionState): string | null
+function omaSessionStateGetString(val: OmaSessionState): string
 /**
  * Gets the nickname string for the #MMOmaSessionType specified at `val`.
  * @param val a MMOmaSessionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function omaSessionTypeGetString(val: OmaSessionType): string | null
+function omaSessionTypeGetString(val: OmaSessionType): string
 function serialErrorQuark(): GLib.Quark
 /**
  * Gets the nickname string for the #MMServingCellType specified at `val`.
  * @param val a MMServingCellType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function servingCellTypeGetString(val: ServingCellType): string | null
+function servingCellTypeGetString(val: ServingCellType): string
 /**
  * Gets the nickname string for the #MMSimEsimStatus specified at `val`.
  * @param val a MMSimEsimStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function simEsimStatusGetString(val: SimEsimStatus): string | null
+function simEsimStatusGetString(val: SimEsimStatus): string
 /**
  * Gets the nickname string for the #MMSimRemovability specified at `val`.
  * @param val a MMSimRemovability.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function simRemovabilityGetString(val: SimRemovability): string | null
+function simRemovabilityGetString(val: SimRemovability): string
 /**
  * Gets the nickname string for the #MMSimType specified at `val`.
  * @param val a MMSimType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function simTypeGetString(val: SimType): string | null
+function simTypeGetString(val: SimType): string
 /**
  * Gets the nickname string for the #MMSmsCdmaServiceCategory specified at `val`.
  * @param val a MMSmsCdmaServiceCategory.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsCdmaServiceCategoryGetString(val: SmsCdmaServiceCategory): string | null
+function smsCdmaServiceCategoryGetString(val: SmsCdmaServiceCategory): string
 /**
  * Gets the nickname string for the #MMSmsCdmaTeleserviceId specified at `val`.
  * @param val a MMSmsCdmaTeleserviceId.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsCdmaTeleserviceIdGetString(val: SmsCdmaTeleserviceId): string | null
+function smsCdmaTeleserviceIdGetString(val: SmsCdmaTeleserviceId): string
 /**
  * Gets the nickname string for the #MMSmsDeliveryState specified at `val`.
  * @param val a MMSmsDeliveryState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsDeliveryStateGetString(val: SmsDeliveryState): string | null
+function smsDeliveryStateGetString(val: SmsDeliveryState): string
 /**
  * Gets the nickname string for the #MMSmsPduType specified at `val`.
  * @param val a MMSmsPduType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsPduTypeGetString(val: SmsPduType): string | null
+function smsPduTypeGetString(val: SmsPduType): string
 /**
  * Gets the nickname string for the #MMSmsState specified at `val`.
  * @param val a MMSmsState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsStateGetString(val: SmsState): string | null
+function smsStateGetString(val: SmsState): string
 /**
  * Gets the nickname string for the #MMSmsStorage specified at `val`.
  * @param val a MMSmsStorage.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsStorageGetString(val: SmsStorage): string | null
+function smsStorageGetString(val: SmsStorage): string
 /**
  * Gets the nickname string for the #MMSmsValidityType specified at `val`.
  * @param val a MMSmsValidityType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsValidityTypeGetString(val: SmsValidityType): string | null
+function smsValidityTypeGetString(val: SmsValidityType): string
 /**
  * Specifies the type of function passed to mm_unlock_retries_foreach().
  * @callback 
@@ -2513,7 +2513,7 @@ interface GdbusCall {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callDeflect(argNumber: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callDeflect(argNumber: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_call_call_deflect().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_deflect().
@@ -2528,7 +2528,7 @@ interface GdbusCall {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callDeflectSync(argNumber: string | null, cancellable: Gio.Cancellable | null): boolean
+    callDeflectSync(argNumber: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Hangup">Hangup()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2611,7 +2611,7 @@ interface GdbusCall {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSendDtmf(argDtmf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSendDtmf(argDtmf: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_call_call_send_dtmf().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_call_call_send_dtmf().
@@ -2626,7 +2626,7 @@ interface GdbusCall {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callSendDtmfSync(argDtmf: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSendDtmfSync(argDtmf: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Call.Start">Start()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -2704,7 +2704,7 @@ interface GdbusCall {
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Call.DtmfReceived">"DtmfReceived"</link> D-Bus signal.
      * @param argDtmf Argument to pass with the signal.
      */
-    emitDtmfReceived(argDtmf: string | null): void
+    emitDtmfReceived(argDtmf: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Call.StateChanged">"StateChanged"</link> D-Bus signal.
      * @param argOld Argument to pass with the signal.
@@ -2715,13 +2715,13 @@ interface GdbusCall {
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusCall
 
-    dtmfReceived(argDtmf: string | null): void
+    dtmfReceived(argDtmf: string): void
     handleAccept(invocation: Gio.DBusMethodInvocation): boolean
-    handleDeflect(invocation: Gio.DBusMethodInvocation, argNumber: string | null): boolean
+    handleDeflect(invocation: Gio.DBusMethodInvocation, argNumber: string): boolean
     handleHangup(invocation: Gio.DBusMethodInvocation): boolean
     handleJoinMultiparty(invocation: Gio.DBusMethodInvocation): boolean
     handleLeaveMultiparty(invocation: Gio.DBusMethodInvocation): boolean
-    handleSendDtmf(invocation: Gio.DBusMethodInvocation, argDtmf: string | null): boolean
+    handleSendDtmf(invocation: Gio.DBusMethodInvocation, argDtmf: string): boolean
     handleStart(invocation: Gio.DBusMethodInvocation): boolean
     stateChanged(argOld: number, argNew: number, argReason: number): void
 
@@ -3404,13 +3404,13 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callCommand(argCmd: string | null, argTimeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callCommand(argCmd: string, argTimeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_call_command().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_command().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCommandFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outResponse */ string | null ]
+    callCommandFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outResponse */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Command">Command()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -3420,7 +3420,7 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCommandSync(argCmd: string | null, argTimeout: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outResponse */ string | null ]
+    callCommandSync(argCmd: string, argTimeout: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outResponse */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3437,7 +3437,7 @@ interface GdbusModem {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_create_bearer().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateBearerFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPath */ string | null ]
+    callCreateBearerFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPath */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -3446,7 +3446,7 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateBearerSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPath */ string | null ]
+    callCreateBearerSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPath */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3457,7 +3457,7 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callDeleteBearer(argBearer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callDeleteBearer(argBearer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_call_delete_bearer().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_delete_bearer().
@@ -3472,7 +3472,7 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callDeleteBearerSync(argBearer: string | null, cancellable: Gio.Cancellable | null): boolean
+    callDeleteBearerSync(argBearer: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Enable">Enable()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3509,7 +3509,7 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callFactoryReset(argCode: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callFactoryReset(argCode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_call_factory_reset().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_call_factory_reset().
@@ -3524,7 +3524,7 @@ interface GdbusModem {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callFactoryResetSync(argCode: string | null, cancellable: Gio.Cancellable | null): boolean
+    callFactoryResetSync(argCode: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.GetCellInfo">GetCellInfo()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -3734,7 +3734,7 @@ interface GdbusModem {
      * @param invocation A #GDBusMethodInvocation.
      * @param response Parameter to return.
      */
-    completeCommand(invocation: Gio.DBusMethodInvocation, response: string | null): void
+    completeCommand(invocation: Gio.DBusMethodInvocation, response: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.CreateBearer">CreateBearer()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -3742,7 +3742,7 @@ interface GdbusModem {
      * @param invocation A #GDBusMethodInvocation.
      * @param path Parameter to return.
      */
-    completeCreateBearer(invocation: Gio.DBusMethodInvocation, path: string | null): void
+    completeCreateBearer(invocation: Gio.DBusMethodInvocation, path: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.DeleteBearer">DeleteBearer()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -3779,7 +3779,7 @@ interface GdbusModem {
      * @param invocation A #GDBusMethodInvocation.
      * @param bearers Parameter to return.
      */
-    completeListBearers(invocation: Gio.DBusMethodInvocation, bearers: string | null): void
+    completeListBearers(invocation: Gio.DBusMethodInvocation, bearers: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem.Reset">Reset()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -3832,11 +3832,11 @@ interface GdbusModem {
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModem
 
-    handleCommand(invocation: Gio.DBusMethodInvocation, argCmd: string | null, argTimeout: number): boolean
+    handleCommand(invocation: Gio.DBusMethodInvocation, argCmd: string, argTimeout: number): boolean
     handleCreateBearer(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
-    handleDeleteBearer(invocation: Gio.DBusMethodInvocation, argBearer: string | null): boolean
+    handleDeleteBearer(invocation: Gio.DBusMethodInvocation, argBearer: string): boolean
     handleEnable(invocation: Gio.DBusMethodInvocation, argEnable: boolean): boolean
-    handleFactoryReset(invocation: Gio.DBusMethodInvocation, argCode: string | null): boolean
+    handleFactoryReset(invocation: Gio.DBusMethodInvocation, argCode: string): boolean
     handleGetCellInfo(invocation: Gio.DBusMethodInvocation): boolean
     handleListBearers(invocation: Gio.DBusMethodInvocation): boolean
     handleReset(invocation: Gio.DBusMethodInvocation): boolean
@@ -4398,7 +4398,7 @@ interface GdbusModem3gpp {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callRegister(argOperatorId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callRegister(argOperatorId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem3gpp_call_register().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_call_register().
@@ -4413,7 +4413,7 @@ interface GdbusModem3gpp {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callRegisterSync(argOperatorId: string | null, cancellable: Gio.Cancellable | null): boolean
+    callRegisterSync(argOperatorId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp.Scan">Scan()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -4629,7 +4629,7 @@ interface GdbusModem3gpp {
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModem3gpp
 
     handleDisableFacilityLock(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
-    handleRegister(invocation: Gio.DBusMethodInvocation, argOperatorId: string | null): boolean
+    handleRegister(invocation: Gio.DBusMethodInvocation, argOperatorId: string): boolean
     handleScan(invocation: Gio.DBusMethodInvocation): boolean
     handleSetCarrierLock(invocation: Gio.DBusMethodInvocation, argData: GLib.Variant): boolean
     handleSetEpsUeModeOperation(invocation: Gio.DBusMethodInvocation, argMode: number): boolean
@@ -5144,13 +5144,13 @@ interface GdbusModem3gppUssd {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callInitiate(argCommand: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callInitiate(argCommand: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_initiate().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_initiate().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callInitiateFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outReply */ string | null ]
+    callInitiateFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outReply */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Initiate">Initiate()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -5159,7 +5159,7 @@ interface GdbusModem3gppUssd {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callInitiateSync(argCommand: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outReply */ string | null ]
+    callInitiateSync(argCommand: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outReply */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5170,13 +5170,13 @@ interface GdbusModem3gppUssd {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callRespond(argResponse: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callRespond(argResponse: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem3gpp_ussd_call_respond().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem3gpp_ussd_call_respond().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callRespondFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outReply */ string | null ]
+    callRespondFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outReply */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -5185,7 +5185,7 @@ interface GdbusModem3gppUssd {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callRespondSync(argResponse: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outReply */ string | null ]
+    callRespondSync(argResponse: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outReply */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Cancel">Cancel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5200,7 +5200,7 @@ interface GdbusModem3gppUssd {
      * @param invocation A #GDBusMethodInvocation.
      * @param reply Parameter to return.
      */
-    completeInitiate(invocation: Gio.DBusMethodInvocation, reply: string | null): void
+    completeInitiate(invocation: Gio.DBusMethodInvocation, reply: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.Respond">Respond()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5208,13 +5208,13 @@ interface GdbusModem3gppUssd {
      * @param invocation A #GDBusMethodInvocation.
      * @param reply Parameter to return.
      */
-    completeRespond(invocation: Gio.DBusMethodInvocation, reply: string | null): void
+    completeRespond(invocation: Gio.DBusMethodInvocation, reply: string): void
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModem3gppUssd
 
     handleCancel(invocation: Gio.DBusMethodInvocation): boolean
-    handleInitiate(invocation: Gio.DBusMethodInvocation, argCommand: string | null): boolean
-    handleRespond(invocation: Gio.DBusMethodInvocation, argResponse: string | null): boolean
+    handleInitiate(invocation: Gio.DBusMethodInvocation, argCommand: string): boolean
+    handleRespond(invocation: Gio.DBusMethodInvocation, argResponse: string): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModem3gppUssd
 
@@ -5431,7 +5431,7 @@ interface GdbusModemCdma {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callActivate(argCarrierCode: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callActivate(argCarrierCode: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_cdma_call_activate().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_cdma_call_activate().
@@ -5472,7 +5472,7 @@ interface GdbusModemCdma {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callActivateSync(argCarrierCode: string | null, cancellable: Gio.Cancellable | null): boolean
+    callActivateSync(argCarrierCode: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-ModemCdma.Activate">Activate()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5498,7 +5498,7 @@ interface GdbusModemCdma {
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModemCdma
 
     activationStateChanged(argActivationState: number, argActivationError: number, argStatusChanges: GLib.Variant): void
-    handleActivate(invocation: Gio.DBusMethodInvocation, argCarrierCode: string | null): boolean
+    handleActivate(invocation: Gio.DBusMethodInvocation, argCarrierCode: string): boolean
     handleActivateManual(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModemCdma
@@ -5662,7 +5662,7 @@ interface GdbusModemFirmware {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_list().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callListFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outSelected */ string | null, /* outInstalled */ GLib.Variant ]
+    callListFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outSelected */ string, /* outInstalled */ GLib.Variant ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -5670,7 +5670,7 @@ interface GdbusModemFirmware {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callListSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outSelected */ string | null, /* outInstalled */ GLib.Variant ]
+    callListSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outSelected */ string, /* outInstalled */ GLib.Variant ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -5681,7 +5681,7 @@ interface GdbusModemFirmware {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSelect(argUniqueid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSelect(argUniqueid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_firmware_call_select().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_firmware_call_select().
@@ -5696,7 +5696,7 @@ interface GdbusModemFirmware {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callSelectSync(argUniqueid: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSelectSync(argUniqueid: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.List">List()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5705,7 +5705,7 @@ interface GdbusModemFirmware {
      * @param selected Parameter to return.
      * @param installed Parameter to return.
      */
-    completeList(invocation: Gio.DBusMethodInvocation, selected: string | null, installed: GLib.Variant): void
+    completeList(invocation: Gio.DBusMethodInvocation, selected: string, installed: GLib.Variant): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Firmware.Select">Select()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5717,7 +5717,7 @@ interface GdbusModemFirmware {
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModemFirmware
 
     handleList(invocation: Gio.DBusMethodInvocation): boolean
-    handleSelect(invocation: Gio.DBusMethodInvocation, argUniqueid: string | null): boolean
+    handleSelect(invocation: Gio.DBusMethodInvocation, argUniqueid: string): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModemFirmware
 
@@ -6016,7 +6016,7 @@ interface GdbusModemLocation {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSetSuplServer(argSupl: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSetSuplServer(argSupl: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_location_call_set_supl_server().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_location_call_set_supl_server().
@@ -6031,7 +6031,7 @@ interface GdbusModemLocation {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callSetSuplServerSync(argSupl: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSetSuplServerSync(argSupl: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Location.Setup">Setup()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -6102,7 +6102,7 @@ interface GdbusModemLocation {
     handleGetLocation(invocation: Gio.DBusMethodInvocation): boolean
     handleInjectAssistanceData(invocation: Gio.DBusMethodInvocation, argData: GLib.Variant): boolean
     handleSetGpsRefreshRate(invocation: Gio.DBusMethodInvocation, argRate: number): boolean
-    handleSetSuplServer(invocation: Gio.DBusMethodInvocation, argSupl: string | null): boolean
+    handleSetSuplServer(invocation: Gio.DBusMethodInvocation, argSupl: string): boolean
     handleSetup(invocation: Gio.DBusMethodInvocation, argSources: number, argSignalLocation: boolean): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModemLocation
@@ -6327,7 +6327,7 @@ interface GdbusModemMessaging {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_create().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPath */ string | null ]
+    callCreateFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPath */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Create">Create()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -6336,7 +6336,7 @@ interface GdbusModemMessaging {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPath */ string | null ]
+    callCreateSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPath */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -6347,7 +6347,7 @@ interface GdbusModemMessaging {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callDelete(argPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callDelete(argPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_messaging_call_delete().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_messaging_call_delete().
@@ -6362,7 +6362,7 @@ interface GdbusModemMessaging {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callDeleteSync(argPath: string | null, cancellable: Gio.Cancellable | null): boolean
+    callDeleteSync(argPath: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.List">List()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -6394,7 +6394,7 @@ interface GdbusModemMessaging {
      * @param invocation A #GDBusMethodInvocation.
      * @param path Parameter to return.
      */
-    completeCreate(invocation: Gio.DBusMethodInvocation, path: string | null): void
+    completeCreate(invocation: Gio.DBusMethodInvocation, path: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Messaging.Delete">Delete()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -6409,25 +6409,25 @@ interface GdbusModemMessaging {
      * @param invocation A #GDBusMethodInvocation.
      * @param result Parameter to return.
      */
-    completeList(invocation: Gio.DBusMethodInvocation, result: string | null): void
+    completeList(invocation: Gio.DBusMethodInvocation, result: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Messaging.Added">"Added"</link> D-Bus signal.
      * @param argPath Argument to pass with the signal.
      * @param argReceived Argument to pass with the signal.
      */
-    emitAdded(argPath: string | null, argReceived: boolean): void
+    emitAdded(argPath: string, argReceived: boolean): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Messaging.Deleted">"Deleted"</link> D-Bus signal.
      * @param argPath Argument to pass with the signal.
      */
-    emitDeleted(argPath: string | null): void
+    emitDeleted(argPath: string): void
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModemMessaging
 
-    added(argPath: string | null, argReceived: boolean): void
-    deleted(argPath: string | null): void
+    added(argPath: string, argReceived: boolean): void
+    deleted(argPath: string): void
     handleCreate(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
-    handleDelete(invocation: Gio.DBusMethodInvocation, argPath: string | null): boolean
+    handleDelete(invocation: Gio.DBusMethodInvocation, argPath: string): boolean
     handleList(invocation: Gio.DBusMethodInvocation): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModemMessaging
@@ -7439,7 +7439,7 @@ interface GdbusModemSimple {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_connect().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callConnectFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outBearer */ string | null ]
+    callConnectFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outBearer */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Connect">Connect()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -7448,7 +7448,7 @@ interface GdbusModemSimple {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callConnectSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outBearer */ string | null ]
+    callConnectSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outBearer */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -7459,7 +7459,7 @@ interface GdbusModemSimple {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callDisconnect(argBearer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callDisconnect(argBearer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_simple_call_disconnect().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_simple_call_disconnect().
@@ -7474,7 +7474,7 @@ interface GdbusModemSimple {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callDisconnectSync(argBearer: string | null, cancellable: Gio.Cancellable | null): boolean
+    callDisconnectSync(argBearer: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.GetStatus">GetStatus()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -7506,7 +7506,7 @@ interface GdbusModemSimple {
      * @param invocation A #GDBusMethodInvocation.
      * @param bearer Parameter to return.
      */
-    completeConnect(invocation: Gio.DBusMethodInvocation, bearer: string | null): void
+    completeConnect(invocation: Gio.DBusMethodInvocation, bearer: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Simple.Disconnect">Disconnect()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -7526,7 +7526,7 @@ interface GdbusModemSimple {
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModemSimple
 
     handleConnect(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
-    handleDisconnect(invocation: Gio.DBusMethodInvocation, argBearer: string | null): boolean
+    handleDisconnect(invocation: Gio.DBusMethodInvocation, argBearer: string): boolean
     handleGetStatus(invocation: Gio.DBusMethodInvocation): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModemSimple
@@ -7655,7 +7655,7 @@ interface GdbusModemTime {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_time_call_get_network_time().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetNetworkTimeFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outTime */ string | null ]
+    callGetNetworkTimeFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outTime */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -7663,7 +7663,7 @@ interface GdbusModemTime {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callGetNetworkTimeSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outTime */ string | null ]
+    callGetNetworkTimeSync(cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outTime */ string ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Time.GetNetworkTime">GetNetworkTime()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -7671,17 +7671,17 @@ interface GdbusModemTime {
      * @param invocation A #GDBusMethodInvocation.
      * @param time Parameter to return.
      */
-    completeGetNetworkTime(invocation: Gio.DBusMethodInvocation, time: string | null): void
+    completeGetNetworkTime(invocation: Gio.DBusMethodInvocation, time: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Time.NetworkTimeChanged">"NetworkTimeChanged"</link> D-Bus signal.
      * @param argTime Argument to pass with the signal.
      */
-    emitNetworkTimeChanged(argTime: string | null): void
+    emitNetworkTimeChanged(argTime: string): void
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModemTime
 
     handleGetNetworkTime(invocation: Gio.DBusMethodInvocation): boolean
-    networkTimeChanged(argTime: string | null): void
+    networkTimeChanged(argTime: string): void
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusModemTime
 
@@ -7935,7 +7935,7 @@ interface GdbusModemVoice {
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_create_call().
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateCallFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPath */ string | null ]
+    callCreateCallFinish(res: Gio.AsyncResult): [ /* returnType */ boolean, /* outPath */ string ]
     /**
      * Synchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.CreateCall">CreateCall()</link> D-Bus method on `proxy`. The calling thread is blocked until a reply is received.
      * 
@@ -7944,7 +7944,7 @@ interface GdbusModemVoice {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callCreateCallSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPath */ string | null ]
+    callCreateCallSync(argProperties: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outPath */ string ]
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -7955,7 +7955,7 @@ interface GdbusModemVoice {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callDeleteCall(argPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callDeleteCall(argPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_modem_voice_call_delete_call().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_modem_voice_call_delete_call().
@@ -7970,7 +7970,7 @@ interface GdbusModemVoice {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callDeleteCallSync(argPath: string | null, cancellable: Gio.Cancellable | null): boolean
+    callDeleteCallSync(argPath: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.HangupAll">HangupAll()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8113,7 +8113,7 @@ interface GdbusModemVoice {
      * @param invocation A #GDBusMethodInvocation.
      * @param path Parameter to return.
      */
-    completeCreateCall(invocation: Gio.DBusMethodInvocation, path: string | null): void
+    completeCreateCall(invocation: Gio.DBusMethodInvocation, path: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.DeleteCall">DeleteCall()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -8149,7 +8149,7 @@ interface GdbusModemVoice {
      * @param invocation A #GDBusMethodInvocation.
      * @param result Parameter to return.
      */
-    completeListCalls(invocation: Gio.DBusMethodInvocation, result: string | null): void
+    completeListCalls(invocation: Gio.DBusMethodInvocation, result: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Modem-Voice.Transfer">Transfer()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -8161,21 +8161,21 @@ interface GdbusModemVoice {
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Voice.CallAdded">"CallAdded"</link> D-Bus signal.
      * @param argPath Argument to pass with the signal.
      */
-    emitCallAdded(argPath: string | null): void
+    emitCallAdded(argPath: string): void
     /**
      * Emits the <link linkend="gdbus-signal-org-freedesktop-ModemManager1-Modem-Voice.CallDeleted">"CallDeleted"</link> D-Bus signal.
      * @param argPath Argument to pass with the signal.
      */
-    emitCallDeleted(argPath: string | null): void
+    emitCallDeleted(argPath: string): void
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusModemVoice
 
-    callAdded(argPath: string | null): void
-    callDeleted(argPath: string | null): void
+    callAdded(argPath: string): void
+    callDeleted(argPath: string): void
     handleCallWaitingQuery(invocation: Gio.DBusMethodInvocation): boolean
     handleCallWaitingSetup(invocation: Gio.DBusMethodInvocation, argEnable: boolean): boolean
     handleCreateCall(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
-    handleDeleteCall(invocation: Gio.DBusMethodInvocation, argPath: string | null): boolean
+    handleDeleteCall(invocation: Gio.DBusMethodInvocation, argPath: string): boolean
     handleHangupAll(invocation: Gio.DBusMethodInvocation): boolean
     handleHangupAndAccept(invocation: Gio.DBusMethodInvocation): boolean
     handleHoldAndAccept(invocation: Gio.DBusMethodInvocation): boolean
@@ -8728,7 +8728,7 @@ interface GdbusOrgFreedesktopModemManager1 {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callInhibitDevice(argUid: string | null, argInhibit: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callInhibitDevice(argUid: string, argInhibit: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_inhibit_device().
@@ -8744,7 +8744,7 @@ interface GdbusOrgFreedesktopModemManager1 {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callInhibitDeviceSync(argUid: string | null, argInhibit: boolean, cancellable: Gio.Cancellable | null): boolean
+    callInhibitDeviceSync(argUid: string, argInhibit: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1.ReportKernelEvent">ReportKernelEvent()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -8805,7 +8805,7 @@ interface GdbusOrgFreedesktopModemManager1 {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSetLogging(argLevel: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSetLogging(argLevel: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_org_freedesktop_modem_manager1_call_set_logging().
@@ -8820,7 +8820,7 @@ interface GdbusOrgFreedesktopModemManager1 {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callSetLoggingSync(argLevel: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSetLoggingSync(argLevel: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-ModemManager1.InhibitDevice">InhibitDevice()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -8852,10 +8852,10 @@ interface GdbusOrgFreedesktopModemManager1 {
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusOrgFreedesktopModemManager1
 
-    handleInhibitDevice(invocation: Gio.DBusMethodInvocation, argUid: string | null, argInhibit: boolean): boolean
+    handleInhibitDevice(invocation: Gio.DBusMethodInvocation, argUid: string, argInhibit: boolean): boolean
     handleReportKernelEvent(invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant): boolean
     handleScanDevices(invocation: Gio.DBusMethodInvocation): boolean
-    handleSetLogging(invocation: Gio.DBusMethodInvocation, argLevel: string | null): boolean
+    handleSetLogging(invocation: Gio.DBusMethodInvocation, argLevel: string): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusOrgFreedesktopModemManager1
 
@@ -9154,7 +9154,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callChangePin(argOldPin: string | null, argNewPin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callChangePin(argOldPin: string, argNewPin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_sim_call_change_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_change_pin().
@@ -9170,7 +9170,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callChangePinSync(argOldPin: string | null, argNewPin: string | null, cancellable: Gio.Cancellable | null): boolean
+    callChangePinSync(argOldPin: string, argNewPin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.EnablePin">EnablePin()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9182,7 +9182,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callEnablePin(argPin: string | null, argEnabled: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callEnablePin(argPin: string, argEnabled: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_sim_call_enable_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_enable_pin().
@@ -9198,7 +9198,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callEnablePinSync(argPin: string | null, argEnabled: boolean, cancellable: Gio.Cancellable | null): boolean
+    callEnablePinSync(argPin: string, argEnabled: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPin">SendPin()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9209,7 +9209,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSendPin(argPin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSendPin(argPin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_sim_call_send_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_pin().
@@ -9224,7 +9224,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callSendPinSync(argPin: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSendPinSync(argPin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SendPuk">SendPuk()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9236,7 +9236,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSendPuk(argPuk: string | null, argPin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSendPuk(argPuk: string, argPin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_gdbus_sim_call_send_puk().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to mm_gdbus_sim_call_send_puk().
@@ -9252,7 +9252,7 @@ interface GdbusSim {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    callSendPukSync(argPuk: string | null, argPin: string | null, cancellable: Gio.Cancellable | null): boolean
+    callSendPukSync(argPuk: string, argPin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-ModemManager1-Sim.SetPreferredNetworks">SetPreferredNetworks()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
@@ -9317,10 +9317,10 @@ interface GdbusSim {
 
     // Own virtual methods of ModemManager-1.0.ModemManager.GdbusSim
 
-    handleChangePin(invocation: Gio.DBusMethodInvocation, argOldPin: string | null, argNewPin: string | null): boolean
-    handleEnablePin(invocation: Gio.DBusMethodInvocation, argPin: string | null, argEnabled: boolean): boolean
-    handleSendPin(invocation: Gio.DBusMethodInvocation, argPin: string | null): boolean
-    handleSendPuk(invocation: Gio.DBusMethodInvocation, argPuk: string | null, argPin: string | null): boolean
+    handleChangePin(invocation: Gio.DBusMethodInvocation, argOldPin: string, argNewPin: string): boolean
+    handleEnablePin(invocation: Gio.DBusMethodInvocation, argPin: string, argEnabled: boolean): boolean
+    handleSendPin(invocation: Gio.DBusMethodInvocation, argPin: string): boolean
+    handleSendPuk(invocation: Gio.DBusMethodInvocation, argPuk: string, argPin: string): boolean
     handleSetPreferredNetworks(invocation: Gio.DBusMethodInvocation, argPreferredNetworks: GLib.Variant): boolean
 
     // Own signals of ModemManager-1.0.ModemManager.GdbusSim
@@ -9913,8 +9913,8 @@ interface TODO_3gppProfile {
 
     // Owm methods of ModemManager-1.0.ModemManager.3gppProfile
 
-    consumeString(key: string | null, value: string | null): boolean
-    consumeVariant(key: string | null, value: GLib.Variant): boolean
+    consumeString(key: string, value: string): boolean
+    consumeVariant(key: string, value: GLib.Variant): boolean
     /**
      * Gets 5G network access type preference.
      * @returns a #MMBearerAccessTypePreference.
@@ -9929,7 +9929,7 @@ interface TODO_3gppProfile {
      * Gets the name of the access point.
      * @returns the access point, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getApn(): string | null
+    getApn(): string
     /**
      * Gets the APN types to use.
      * @returns a mask of #MMBearerApnType values.
@@ -9949,7 +9949,7 @@ interface TODO_3gppProfile {
      * Gets the password used to authenticate with the access point.
      * @returns the password, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getPassword(): string | null
+    getPassword(): string
     /**
      * Gets the profile id.
      * @returns the profile id..
@@ -9959,7 +9959,7 @@ interface TODO_3gppProfile {
      * Gets the name of the profile.
      * @returns the profile name, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getProfileName(): string | null
+    getProfileName(): string
     /**
      * Gets the profile source.
      * @returns a #MMBearerProfileSource.
@@ -9974,7 +9974,7 @@ interface TODO_3gppProfile {
      * Gets the username used to authenticate with the access point.
      * @returns the username, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getUser(): string | null
+    getUser(): string
     /**
      * Sets the 5G network access type preference.
      * @param accessTypePreference a #MMBearerAccessTypePreference.
@@ -9989,7 +9989,7 @@ interface TODO_3gppProfile {
      * Sets the name of the access point to use.
      * @param apn Name of the access point.
      */
-    setApn(apn: string | null): void
+    setApn(apn: string): void
     /**
      * Sets the APN types to use.
      * @param apnType a mask of #MMBearerApnType values.
@@ -10009,7 +10009,7 @@ interface TODO_3gppProfile {
      * Sets the password used to authenticate with the access point.
      * @param password the password
      */
-    setPassword(password: string | null): void
+    setPassword(password: string): void
     /**
      * Sets the profile id to use.
      * 
@@ -10021,7 +10021,7 @@ interface TODO_3gppProfile {
      * Sets the name of the profile.
      * @param profileName Name of the profile.
      */
-    setProfileName(profileName: string | null): void
+    setProfileName(profileName: string): void
     /**
      * Sets profile source.
      * @param profileSource a #MMBearerProfileSource.
@@ -10036,7 +10036,7 @@ interface TODO_3gppProfile {
      * Sets the username used to authenticate with the access point.
      * @param user the username
      */
-    setUser(user: string | null): void
+    setUser(user: string): void
 
     // Class property signals of ModemManager-1.0.ModemManager.3gppProfile
 
@@ -10204,7 +10204,7 @@ interface Bearer extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdb
      * thread.</warning>
      * @returns The name of the interface, or %NULL if it couldn't be retrieved.
      */
-    getInterface(): string | null
+    getInterface(): string
     /**
      * Gets the maximum time to wait for the bearer to retrieve a valid IP address.
      * @returns The IP timeout, or 0 if no specific one given.
@@ -10242,7 +10242,7 @@ interface Bearer extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdb
      * Gets the DBus path of the #MMBearer object.
      * @returns The DBus path of the #MMBearer object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets profile ID associated to the bearer connection, if known.
      * 
@@ -10497,7 +10497,7 @@ class Bearer extends GdbusBearerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -10538,7 +10538,7 @@ class Bearer extends GdbusBearerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -10576,7 +10576,7 @@ class Bearer extends GdbusBearerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_bearer_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -10591,7 +10591,7 @@ class Bearer extends GdbusBearerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -10608,7 +10608,7 @@ class Bearer extends GdbusBearerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -10622,7 +10622,7 @@ class Bearer extends GdbusBearerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -10650,7 +10650,7 @@ interface BearerIpConfig {
      * Gets the IP address to be used with this bearer.
      * @returns a string with the IP address, or #NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getAddress(): string | null
+    getAddress(): string
     /**
      * Gets the list of IP addresses of DNS servers to be used with this bearer.
      * @returns a %NULL-terminated array of strings. Do not free the returned value, it is owned by @self.
@@ -10660,7 +10660,7 @@ interface BearerIpConfig {
      * Gets the IP address of the gateway to be used with this bearer.
      * @returns a string with the IP address, or #NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getGateway(): string | null
+    getGateway(): string
     /**
      * Gets the IP method to be used with this bearer.
      * @returns a #MMBearerIpMethod.
@@ -10745,7 +10745,7 @@ interface BearerProperties {
      * Gets the name of the access point to use when connecting.
      * @returns the access point, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getApn(): string | null
+    getApn(): string
     /**
      * Gets the APN types to use.
      * @returns a mask of #MMBearerApnType values.
@@ -10765,12 +10765,12 @@ interface BearerProperties {
      * Gets the number to use when performing the connection.
      * @returns the number, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getNumber(): string | null
+    getNumber(): string
     /**
      * Gets the password used to authenticate with the access point.
      * @returns the password, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getPassword(): string | null
+    getPassword(): string
     /**
      * Gets the profile ID to use.
      * @returns the profile id.
@@ -10780,7 +10780,7 @@ interface BearerProperties {
      * Gets the name of the profile to use when connecting.
      * @returns the profile name, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getProfileName(): string | null
+    getProfileName(): string
     /**
      * Gets the RM protocol requested to use in the CDMA connection.
      * @returns a #MMModemCdmaRmProtocol.
@@ -10795,7 +10795,7 @@ interface BearerProperties {
      * Gets the username used to authenticate with the access point.
      * @returns the username, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getUser(): string | null
+    getUser(): string
     /**
      * Sets the 5G network access type preference.
      * @param accessTypePreference a #MMBearerAccessTypePreference value.
@@ -10816,7 +10816,7 @@ interface BearerProperties {
      * Sets the name of the access point to use when connecting.
      * @param apn Name of the access point.
      */
-    setApn(apn: string | null): void
+    setApn(apn: string): void
     /**
      * Sets the APN types to use.
      * @param apnType a mask of #MMBearerApnType values.
@@ -10836,12 +10836,12 @@ interface BearerProperties {
      * Sets the number to use when performing the connection.
      * @param number the number.
      */
-    setNumber(number: string | null): void
+    setNumber(number: string): void
     /**
      * Sets the password used to authenticate with the access point.
      * @param password the password
      */
-    setPassword(password: string | null): void
+    setPassword(password: string): void
     /**
      * Sets the profile ID to use.
      * @param profileId a profile id.
@@ -10851,7 +10851,7 @@ interface BearerProperties {
      * Sets the name of the profile to use when connecting.
      * @param profileName Name of the profile.
      */
-    setProfileName(profileName: string | null): void
+    setProfileName(profileName: string): void
     /**
      * Sets the RM protocol to use in the CDMA connection.
      * @param protocol a #MMModemCdmaRmProtocol.
@@ -10866,7 +10866,7 @@ interface BearerProperties {
      * Sets the username used to authenticate with the access point.
      * @param user the username
      */
-    setUser(user: string | null): void
+    setUser(user: string): void
 
     // Class property signals of ModemManager-1.0.ModemManager.BearerProperties
 
@@ -11085,7 +11085,7 @@ interface Call extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbus
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    deflect(number: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deflect(number: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_call_deflect().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_deflect().
@@ -11103,7 +11103,7 @@ interface Call extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbus
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    deflectSync(number: string | null, cancellable: Gio.Cancellable | null): boolean
+    deflectSync(number: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets the kernel device used for audio (if any).
      * @returns The audio port, or %NULL if call audio is not routed via the host or couldn't be retrieved.
@@ -11135,7 +11135,7 @@ interface Call extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbus
      * Gets the kernel device used for audio (if any).
      * @returns The audio port, or %NULL if call audio is not routed via the host or couldn't be retrieved.
      */
-    getAudioPort(): string | null
+    getAudioPort(): string
     /**
      * Gets the call direction.
      * @returns a #MMCallDirection.
@@ -11156,12 +11156,12 @@ interface Call extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbus
      * thread.</warning>
      * @returns The number, or %NULL if it couldn't be retrieved.
      */
-    getNumber(): string | null
+    getNumber(): string
     /**
      * Gets the DBus path of the #MMCall object.
      * @returns The DBus path of the #MMCall object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the current state of call.
      * @returns a #MMCallState.
@@ -11292,7 +11292,7 @@ interface Call extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbus
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    sendDtmf(dtmf: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sendDtmf(dtmf: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_call_send_dtmf().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_call_send_dtmf().
@@ -11310,7 +11310,7 @@ interface Call extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbus
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    sendDtmfSync(dtmf: string | null, cancellable: Gio.Cancellable | null): boolean
+    sendDtmfSync(dtmf: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously requests to queue the call.
      * 
@@ -11471,7 +11471,7 @@ class Call extends GdbusCallProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -11512,7 +11512,7 @@ class Call extends GdbusCallProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -11550,7 +11550,7 @@ class Call extends GdbusCallProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_call_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -11565,7 +11565,7 @@ class Call extends GdbusCallProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -11582,7 +11582,7 @@ class Call extends GdbusCallProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -11596,7 +11596,7 @@ class Call extends GdbusCallProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -11625,7 +11625,7 @@ interface CallAudioFormat {
      * audio.
      * @returns a string with the encoding, or #NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getEncoding(): string | null
+    getEncoding(): string
     /**
      * Gets the sampling rate of the audio format.  For example, 8000 for an 8000hz
      * sampling rate.
@@ -11637,7 +11637,7 @@ interface CallAudioFormat {
      * 16-bit little-endian audio sampling resolution.
      * @returns a string with the resolution, or #NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getResolution(): string | null
+    getResolution(): string
 
     // Class property signals of ModemManager-1.0.ModemManager.CallAudioFormat
 
@@ -11698,7 +11698,7 @@ interface CallProperties {
      * Gets the number, in UTF-8.
      * @returns the call number, or %NULL if it doesn't contain any (anonymous caller). Do not free the returned value, it is owned by @self.
      */
-    getNumber(): string | null
+    getNumber(): string
     /**
      * Gets the call state.
      * @returns the call state.
@@ -11718,7 +11718,7 @@ interface CallProperties {
      * Sets the call number.
      * @param text The number to set, in UTF-8.
      */
-    setNumber(text: string | null): void
+    setNumber(text: string): void
     /**
      * Sets the call state
      * @param state the call state
@@ -11772,7 +11772,7 @@ class CallProperties extends GObject.Object {
      */
     static new(): CallProperties
     static newFromDictionary(dictionary: GLib.Variant): CallProperties
-    static newFromString(str: string | null): CallProperties
+    static newFromString(str: string): CallProperties
     _init(config?: CallProperties.ConstructorProperties): void
 }
 
@@ -11797,22 +11797,22 @@ interface CdmaManualActivationProperties {
      * Gets the Mobile Directory Number.
      * @returns The MDN. Do not free the returned value, it is owned by @self.
      */
-    getMdn(): string | null
+    getMdn(): string
     /**
      * Gets the Mobile Indentification Number.
      * @returns The MIN. Do not free the returned value, it is owned by @self.
      */
-    getMin(): string | null
+    getMin(): string
     /**
      * Gets the MN-AAA key.
      * @returns The MN-AAA key. Do not free the returned value, it is owned by @self.
      */
-    getMnAaaKey(): string | null
+    getMnAaaKey(): string
     /**
      * Gets the MN-HA key.
      * @returns The MN-HA key. Do not free the returned value, it is owned by @self.
      */
-    getMnHaKey(): string | null
+    getMnHaKey(): string
     /**
      * Gets the Preferred Roaming List.
      * @returns The PRL. Do not free the returned value, it is owned by @self.
@@ -11832,7 +11832,7 @@ interface CdmaManualActivationProperties {
      * Gets the Service Programming Code.
      * @returns The SPC. Do not free the returned value, it is owned by @self.
      */
-    getSpc(): string | null
+    getSpc(): string
     /**
      * Gets the Preferred Roaming List.
      * @returns A #GByteArray with the PRL, or %NULL if it doesn't contain any. Do not free the returned value, it is owned by @self.
@@ -11843,25 +11843,25 @@ interface CdmaManualActivationProperties {
      * @param mdn The MDN string, maximum 15 characters.
      * @returns %TRUE if the MDN was successfully set, or %FALSE if @error is set.
      */
-    setMdn(mdn: string | null): boolean
+    setMdn(mdn: string): boolean
     /**
      * Sets the Mobile Identification Number.
      * @param min The MIN string, maximum 15 characters.
      * @returns %TRUE if the MIN was successfully set, or %FALSE if @error is set.
      */
-    setMin(min: string | null): boolean
+    setMin(min: string): boolean
     /**
      * Sets the Mobile Identification Number.
      * @param mnAaaKey The MN-AAA key string, maximum 16 characters.
      * @returns %TRUE if the MN-AAA key was successfully set, or %FALSE if @error is set.
      */
-    setMnAaaKey(mnAaaKey: string | null): boolean
+    setMnAaaKey(mnAaaKey: string): boolean
     /**
      * Sets the Mobile Identification Number.
      * @param mnHaKey The MN-HA key string, maximum 16 characters.
      * @returns %TRUE if the MN-HA key was successfully set, or %FALSE if @error is set.
      */
-    setMnHaKey(mnHaKey: string | null): boolean
+    setMnHaKey(mnHaKey: string): boolean
     /**
      * Sets the Preferred Roaming List.
      * @param prl The PRL.
@@ -11885,7 +11885,7 @@ interface CdmaManualActivationProperties {
      * @param spc The SPC string, exactly 6 digits.
      * @returns %TRUE if the SPC was successfully set, or %FALSE if @error is set.
      */
-    setSpc(spc: string | null): boolean
+    setSpc(spc: string): boolean
 
     // Class property signals of ModemManager-1.0.ModemManager.CdmaManualActivationProperties
 
@@ -12019,14 +12019,14 @@ interface CellInfoCdma {
      * Encoded in upper-case hexadecimal format without leading zeros.
      * @returns the CDMA base station id, or %NULL if not available.
      */
-    getBaseStationId(): string | null
+    getBaseStationId(): string
     /**
      * Get the CDMA network id.
      * 
      * Encoded in upper-case hexadecimal format without leading zeros.
      * @returns the CDMA network id, or %NULL if not available.
      */
-    getNid(): string | null
+    getNid(): string
     /**
      * Get the signal strength of the pilot.
      * 
@@ -12040,14 +12040,14 @@ interface CellInfoCdma {
      * Encoded in upper-case hexadecimal format without leading zeros.
      * @returns the CDMA base station PN number, or %NULL if not available.
      */
-    getRefPn(): string | null
+    getRefPn(): string
     /**
      * Get the CDMA system id.
      * 
      * Encoded in upper-case hexadecimal format without leading zeros.
      * @returns the CDMA system id, or %NULL if not available.
      */
-    getSid(): string | null
+    getSid(): string
 
     // Class property signals of ModemManager-1.0.ModemManager.CellInfoCdma
 
@@ -12108,7 +12108,7 @@ interface CellInfoGsm {
      * zeros. E.g. "3F".
      * @returns the GSM base station id, or %NULL if not available.
      */
-    getBaseStationId(): string | null
+    getBaseStationId(): string
     /**
      * Get the two- or four-byte Cell Identifier.
      * 
@@ -12116,7 +12116,7 @@ interface CellInfoGsm {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getCi(): string | null
+    getCi(): string
     /**
      * Get the two-byte Location Area Code of the base station.
      * 
@@ -12124,12 +12124,12 @@ interface CellInfoGsm {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getLac(): string | null
+    getLac(): string
     /**
      * Get the PLMN MCC/MNC.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getOperatorId(): string | null
+    getOperatorId(): string
     /**
      * Get the serving cell RX measurement.
      * @returns the rx level, or %G_MAXUINT if not available.
@@ -12204,7 +12204,7 @@ interface CellInfoLte {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getCi(): string | null
+    getCi(): string
     /**
      * Get the E-UTRA absolute RF channel number.
      * @returns the EARFCN, or %G_MAXUINT if not available.
@@ -12214,7 +12214,7 @@ interface CellInfoLte {
      * Get the PLMN MCC/MNC.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getOperatorId(): string | null
+    getOperatorId(): string
     /**
      * Get the physical cell identifier.
      * 
@@ -12222,7 +12222,7 @@ interface CellInfoLte {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getPhysicalCi(): string | null
+    getPhysicalCi(): string
     /**
      * Get the average reference signal received power in dBm.
      * @returns the RSRP, or -%G_MAXDOUBLE if not available.
@@ -12245,7 +12245,7 @@ interface CellInfoLte {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getTac(): string | null
+    getTac(): string
     /**
      * Get the timing advance.
      * @returns the timing advance, or %G_MAXUINT if not available.
@@ -12313,7 +12313,7 @@ interface CellInfoNr5g {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getCi(): string | null
+    getCi(): string
     /**
      * Get the NR absolute RF channel number.
      * @returns the NRARFCN, or %G_MAXUINT if not available.
@@ -12323,7 +12323,7 @@ interface CellInfoNr5g {
      * Get the PLMN MCC/MNC.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getOperatorId(): string | null
+    getOperatorId(): string
     /**
      * Get the physical cell identifier.
      * 
@@ -12331,7 +12331,7 @@ interface CellInfoNr5g {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getPhysicalCi(): string | null
+    getPhysicalCi(): string
     /**
      * Get the average reference signal received power in dBm.
      * @returns the RSRP, or -%G_MAXDOUBLE if not available.
@@ -12359,7 +12359,7 @@ interface CellInfoNr5g {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getTac(): string | null
+    getTac(): string
     /**
      * Get the timing advance.
      * @returns the timing advance, or %G_MAXUINT if not available.
@@ -12427,7 +12427,7 @@ interface CellInfoTdscdma {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getCi(): string | null
+    getCi(): string
     /**
      * Get the two-byte Location Area Code of the base station.
      * 
@@ -12435,12 +12435,12 @@ interface CellInfoTdscdma {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getLac(): string | null
+    getLac(): string
     /**
      * Get the PLMN MCC/MNC.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getOperatorId(): string | null
+    getOperatorId(): string
     /**
      * Get the path loss of the cell.
      * @returns the path loss, or %G_MAXUINT if not available.
@@ -12520,7 +12520,7 @@ interface CellInfoUmts {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getCi(): string | null
+    getCi(): string
     /**
      * Get the ECIO, the received energy per chip divided by the power density
      * in the band measured in dBm on the primary CPICH channel of the cell.
@@ -12549,12 +12549,12 @@ interface CellInfoUmts {
      * as specified in 3GPP TS 27.007.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getLac(): string | null
+    getLac(): string
     /**
      * Get the PLMN MCC/MNC.
      * @returns the MCCMNC, or %NULL if not available.
      */
-    getOperatorId(): string | null
+    getOperatorId(): string
     /**
      * Get the path loss of the cell.
      * @returns the path loss, or %G_MAXUINT if not available.
@@ -12631,29 +12631,29 @@ interface FirmwareProperties {
      * %MM_FIRMWARE_IMAGE_TYPE_GOBI.
      * @returns The boot version, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getGobiBootVersion(): string | null
+    getGobiBootVersion(): string
     /**
      * Gets the MODEM unique ID of a firmware image of type
      * %MM_FIRMWARE_IMAGE_TYPE_GOBI.
      * @returns The PRI unique ID, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getGobiModemUniqueId(): string | null
+    getGobiModemUniqueId(): string
     /**
      * Gets the PRI info of a firmware image of type %MM_FIRMWARE_IMAGE_TYPE_GOBI.
      * @returns The PRI info, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getGobiPriInfo(): string | null
+    getGobiPriInfo(): string
     /**
      * Gets the PRI unique ID of a firmware image of type
      * %MM_FIRMWARE_IMAGE_TYPE_GOBI.
      * @returns The PRI unique ID, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getGobiPriUniqueId(): string | null
+    getGobiPriUniqueId(): string
     /**
      * Gets the PRI version of a firmware image of type %MM_FIRMWARE_IMAGE_TYPE_GOBI.
      * @returns The PRI version, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getGobiPriVersion(): string | null
+    getGobiPriVersion(): string
     /**
      * Gets the type of the firmare image.
      * @returns A #MMFirmwareImageType specifying The type of the image.
@@ -12663,12 +12663,12 @@ interface FirmwareProperties {
      * Gets the unique ID of the firmare image.
      * @returns The ID of the image. Do not free the returned value, it is owned by @self.
      */
-    getUniqueId(): string | null
-    setGobiBootVersion(version: string | null): void
-    setGobiModemUniqueId(id: string | null): void
-    setGobiPriInfo(info: string | null): void
-    setGobiPriUniqueId(id: string | null): void
-    setGobiPriVersion(version: string | null): void
+    getUniqueId(): string
+    setGobiBootVersion(version: string): void
+    setGobiModemUniqueId(id: string): void
+    setGobiPriInfo(info: string): void
+    setGobiPriUniqueId(id: string): void
+    setGobiPriVersion(version: string): void
 
     // Class property signals of ModemManager-1.0.ModemManager.FirmwareProperties
 
@@ -12699,8 +12699,8 @@ class FirmwareProperties extends GObject.Object {
     // Constructors of ModemManager-1.0.ModemManager.FirmwareProperties
 
     constructor(config?: FirmwareProperties.ConstructorProperties) 
-    constructor(imageType: FirmwareImageType, uniqueId: string | null) 
-    static new(imageType: FirmwareImageType, uniqueId: string | null): FirmwareProperties
+    constructor(imageType: FirmwareImageType, uniqueId: string) 
+    static new(imageType: FirmwareImageType, uniqueId: string): FirmwareProperties
     static newFromDictionary(dictionary: GLib.Variant): FirmwareProperties
     _init(config?: FirmwareProperties.ConstructorProperties): void
 }
@@ -12736,7 +12736,7 @@ interface FirmwareUpdateSettings {
      * %MM_MODEM_FIRMWARE_UPDATE_METHOD_FASTBOOT.
      * @returns The AT command string, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getFastbootAt(): string | null
+    getFastbootAt(): string
     /**
      * Gets the methods to use during the firmware update operation.
      * @returns a bitmask of #MMModemFirmwareUpdateMethod values.
@@ -12746,7 +12746,7 @@ interface FirmwareUpdateSettings {
      * Gets firmware version string.
      * @returns The version string, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getVersion(): string | null
+    getVersion(): string
 
     // Class property signals of ModemManager-1.0.ModemManager.FirmwareUpdateSettings
 
@@ -12981,7 +12981,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusBearerProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusBearerProxy
 
     // Overloads of newForBusSync
 
@@ -12999,7 +12999,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Bearer.top_of_page">org.freedesktop.ModemManager1.Bearer</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -13014,7 +13014,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusBearerProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusBearerProxy
 
     // Overloads of newSync
 
@@ -13051,7 +13051,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusBearerProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Bearer.top_of_page">org.freedesktop.ModemManager1.Bearer</link>. See g_dbus_proxy_new() for more details.
@@ -13067,7 +13067,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -13108,7 +13108,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_bearer_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -13123,7 +13123,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -13140,7 +13140,7 @@ class GdbusBearerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusBearerSkeleton {
@@ -13469,7 +13469,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusCallProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusCallProxy
 
     // Overloads of newForBusSync
 
@@ -13487,7 +13487,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Call.top_of_page">org.freedesktop.ModemManager1.Call</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -13502,7 +13502,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusCallProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusCallProxy
 
     // Overloads of newSync
 
@@ -13539,7 +13539,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusCallProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Call.top_of_page">org.freedesktop.ModemManager1.Call</link>. See g_dbus_proxy_new() for more details.
@@ -13555,7 +13555,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -13596,7 +13596,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_call_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -13611,7 +13611,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -13628,7 +13628,7 @@ class GdbusCallProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusCallSkeleton {
@@ -13897,7 +13897,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModem3gppProfileManagerProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModem3gppProfileManagerProxy
 
     // Overloads of newForBusSync
 
@@ -13915,7 +13915,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -13930,7 +13930,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModem3gppProfileManagerProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModem3gppProfileManagerProxy
 
     // Overloads of newSync
 
@@ -13967,7 +13967,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModem3gppProfileManagerProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-ProfileManager.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.ProfileManager</link>. See g_dbus_proxy_new() for more details.
@@ -13983,7 +13983,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -14024,7 +14024,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem3gpp_profile_manager_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -14039,7 +14039,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -14056,7 +14056,7 @@ class GdbusModem3gppProfileManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModem3gppProfileManagerSkeleton {
@@ -14350,7 +14350,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModem3gppProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModem3gppProxy
 
     // Overloads of newForBusSync
 
@@ -14368,7 +14368,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -14383,7 +14383,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModem3gppProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModem3gppProxy
 
     // Overloads of newSync
 
@@ -14420,7 +14420,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModem3gppProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp</link>. See g_dbus_proxy_new() for more details.
@@ -14436,7 +14436,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -14477,7 +14477,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem3gpp_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -14492,7 +14492,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -14509,7 +14509,7 @@ class GdbusModem3gppProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModem3gppSkeleton {
@@ -14813,7 +14813,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModem3gppUssdProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModem3gppUssdProxy
 
     // Overloads of newForBusSync
 
@@ -14831,7 +14831,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -14846,7 +14846,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModem3gppUssdProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModem3gppUssdProxy
 
     // Overloads of newSync
 
@@ -14883,7 +14883,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModem3gppUssdProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Modem3gpp-Ussd.top_of_page">org.freedesktop.ModemManager1.Modem.Modem3gpp.Ussd</link>. See g_dbus_proxy_new() for more details.
@@ -14899,7 +14899,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -14940,7 +14940,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem3gpp_ussd_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -14955,7 +14955,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -14972,7 +14972,7 @@ class GdbusModem3gppUssdProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModem3gppUssdSkeleton {
@@ -15251,7 +15251,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemCdmaProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemCdmaProxy
 
     // Overloads of newForBusSync
 
@@ -15269,7 +15269,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-ModemCdma.top_of_page">org.freedesktop.ModemManager1.Modem.ModemCdma</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -15284,7 +15284,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemCdmaProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemCdmaProxy
 
     // Overloads of newSync
 
@@ -15321,7 +15321,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemCdmaProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-ModemCdma.top_of_page">org.freedesktop.ModemManager1.Modem.ModemCdma</link>. See g_dbus_proxy_new() for more details.
@@ -15337,7 +15337,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -15378,7 +15378,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_cdma_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -15393,7 +15393,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -15410,7 +15410,7 @@ class GdbusModemCdmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemCdmaSkeleton {
@@ -15679,7 +15679,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemFirmwareProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemFirmwareProxy
 
     // Overloads of newForBusSync
 
@@ -15697,7 +15697,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Firmware.top_of_page">org.freedesktop.ModemManager1.Modem.Firmware</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -15712,7 +15712,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemFirmwareProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemFirmwareProxy
 
     // Overloads of newSync
 
@@ -15749,7 +15749,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemFirmwareProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Firmware.top_of_page">org.freedesktop.ModemManager1.Modem.Firmware</link>. See g_dbus_proxy_new() for more details.
@@ -15765,7 +15765,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -15806,7 +15806,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_firmware_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -15821,7 +15821,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -15838,7 +15838,7 @@ class GdbusModemFirmwareProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemFirmwareSkeleton {
@@ -16112,7 +16112,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemLocationProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemLocationProxy
 
     // Overloads of newForBusSync
 
@@ -16130,7 +16130,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Location.top_of_page">org.freedesktop.ModemManager1.Modem.Location</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -16145,7 +16145,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemLocationProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemLocationProxy
 
     // Overloads of newSync
 
@@ -16182,7 +16182,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemLocationProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Location.top_of_page">org.freedesktop.ModemManager1.Modem.Location</link>. See g_dbus_proxy_new() for more details.
@@ -16198,7 +16198,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -16239,7 +16239,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_location_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -16254,7 +16254,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -16271,7 +16271,7 @@ class GdbusModemLocationProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemLocationSkeleton {
@@ -16555,7 +16555,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemMessagingProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemMessagingProxy
 
     // Overloads of newForBusSync
 
@@ -16573,7 +16573,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Messaging.top_of_page">org.freedesktop.ModemManager1.Modem.Messaging</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -16588,7 +16588,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemMessagingProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemMessagingProxy
 
     // Overloads of newSync
 
@@ -16625,7 +16625,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemMessagingProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Messaging.top_of_page">org.freedesktop.ModemManager1.Modem.Messaging</link>. See g_dbus_proxy_new() for more details.
@@ -16641,7 +16641,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -16682,7 +16682,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_messaging_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -16697,7 +16697,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -16714,7 +16714,7 @@ class GdbusModemMessagingProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemMessagingSkeleton {
@@ -16978,7 +16978,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemOmaProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemOmaProxy
 
     // Overloads of newForBusSync
 
@@ -16996,7 +16996,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Oma.top_of_page">org.freedesktop.ModemManager1.Modem.Oma</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -17011,7 +17011,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemOmaProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemOmaProxy
 
     // Overloads of newSync
 
@@ -17048,7 +17048,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemOmaProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Oma.top_of_page">org.freedesktop.ModemManager1.Modem.Oma</link>. See g_dbus_proxy_new() for more details.
@@ -17064,7 +17064,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -17105,7 +17105,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_oma_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -17120,7 +17120,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -17137,7 +17137,7 @@ class GdbusModemOmaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemOmaSkeleton {
@@ -17561,7 +17561,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemProxy
 
     // Overloads of newForBusSync
 
@@ -17579,7 +17579,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -17594,7 +17594,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemProxy
 
     // Overloads of newSync
 
@@ -17631,7 +17631,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem.top_of_page">org.freedesktop.ModemManager1.Modem</link>. See g_dbus_proxy_new() for more details.
@@ -17647,7 +17647,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -17688,7 +17688,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -17703,7 +17703,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -17720,7 +17720,7 @@ class GdbusModemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemSarProxy {
@@ -17869,7 +17869,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemSarProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemSarProxy
 
     // Overloads of newForBusSync
 
@@ -17887,7 +17887,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Sar.top_of_page">org.freedesktop.ModemManager1.Modem.Sar</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -17902,7 +17902,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemSarProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemSarProxy
 
     // Overloads of newSync
 
@@ -17939,7 +17939,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemSarProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Sar.top_of_page">org.freedesktop.ModemManager1.Modem.Sar</link>. See g_dbus_proxy_new() for more details.
@@ -17955,7 +17955,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -17996,7 +17996,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_sar_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -18011,7 +18011,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -18028,7 +18028,7 @@ class GdbusModemSarProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemSarSkeleton {
@@ -18312,7 +18312,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemSignalProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemSignalProxy
 
     // Overloads of newForBusSync
 
@@ -18330,7 +18330,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Signal.top_of_page">org.freedesktop.ModemManager1.Modem.Signal</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -18345,7 +18345,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemSignalProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemSignalProxy
 
     // Overloads of newSync
 
@@ -18382,7 +18382,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemSignalProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Signal.top_of_page">org.freedesktop.ModemManager1.Modem.Signal</link>. See g_dbus_proxy_new() for more details.
@@ -18398,7 +18398,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -18439,7 +18439,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_signal_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -18454,7 +18454,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -18471,7 +18471,7 @@ class GdbusModemSignalProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemSignalSkeleton {
@@ -18745,7 +18745,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemSimpleProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemSimpleProxy
 
     // Overloads of newForBusSync
 
@@ -18763,7 +18763,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Simple.top_of_page">org.freedesktop.ModemManager1.Modem.Simple</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -18778,7 +18778,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemSimpleProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemSimpleProxy
 
     // Overloads of newSync
 
@@ -18815,7 +18815,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemSimpleProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Simple.top_of_page">org.freedesktop.ModemManager1.Modem.Simple</link>. See g_dbus_proxy_new() for more details.
@@ -18831,7 +18831,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -18872,7 +18872,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_simple_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -18887,7 +18887,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -18904,7 +18904,7 @@ class GdbusModemSimpleProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemSimpleSkeleton {
@@ -19403,7 +19403,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemTimeProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemTimeProxy
 
     // Overloads of newForBusSync
 
@@ -19421,7 +19421,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Time.top_of_page">org.freedesktop.ModemManager1.Modem.Time</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -19436,7 +19436,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemTimeProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemTimeProxy
 
     // Overloads of newSync
 
@@ -19473,7 +19473,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemTimeProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Time.top_of_page">org.freedesktop.ModemManager1.Modem.Time</link>. See g_dbus_proxy_new() for more details.
@@ -19489,7 +19489,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -19530,7 +19530,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_time_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -19545,7 +19545,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -19562,7 +19562,7 @@ class GdbusModemTimeProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemTimeSkeleton {
@@ -19806,7 +19806,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemVoiceProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemVoiceProxy
 
     // Overloads of newForBusSync
 
@@ -19824,7 +19824,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Voice.top_of_page">org.freedesktop.ModemManager1.Modem.Voice</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -19839,7 +19839,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusModemVoiceProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusModemVoiceProxy
 
     // Overloads of newSync
 
@@ -19876,7 +19876,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusModemVoiceProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Modem-Voice.top_of_page">org.freedesktop.ModemManager1.Modem.Voice</link>. See g_dbus_proxy_new() for more details.
@@ -19892,7 +19892,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -19933,7 +19933,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_voice_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -19948,7 +19948,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -19965,7 +19965,7 @@ class GdbusModemVoiceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusModemVoiceSkeleton {
@@ -20204,7 +20204,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusObjectManagerClient
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusObjectManagerClient
 
     // Overloads of newForBusSync
 
@@ -20224,7 +20224,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     /**
      * Synchronously creates #GDBusObjectManagerClient using mm_gdbus_object_manager_client_get_proxy_type() as the #GDBusProxyTypeFunc. See g_dbus_object_manager_client_new_sync() for more details.
      * 
@@ -20239,7 +20239,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusObjectManagerClient
 
     // Overloads of newSync
 
@@ -20258,7 +20258,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     _init(config?: GdbusObjectManagerClient.ConstructorProperties): void
     /**
      * Asynchronously creates #GDBusObjectManagerClient using mm_gdbus_object_manager_client_get_proxy_type() as the #GDBusProxyTypeFunc. See g_dbus_object_manager_client_new() for more details.
@@ -20274,7 +20274,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -20295,7 +20295,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_object_manager_client_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -20310,7 +20310,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -20332,7 +20332,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy derived and #GDBusProxy derived types.
      * @param manager A #GDBusObjectManagerClient.
@@ -20341,7 +20341,7 @@ class GdbusObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param userData User data (unused).
      * @returns A #GDBusProxy derived #GType if @interface_name is not %NULL, otherwise the #GType for #MmGdbusObjectProxy.
      */
-    static getProxyType(manager: Gio.DBusObjectManagerClient, objectPath: string | null, interfaceName: string | null, userData: any | null): GObject.GType
+    static getProxyType(manager: Gio.DBusObjectManagerClient, objectPath: string, interfaceName: string | null, userData: any | null): GObject.GType
 }
 
 module GdbusObjectProxy {
@@ -20474,7 +20474,7 @@ class GdbusObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath An object path.
      * @returns The proxy object.
      */
-    constructor(connection: Gio.DBusConnection, objectPath: string | null) 
+    constructor(connection: Gio.DBusConnection, objectPath: string) 
     /**
      * Creates a new proxy object.
      * @constructor 
@@ -20482,7 +20482,7 @@ class GdbusObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath An object path.
      * @returns The proxy object.
      */
-    static new(connection: Gio.DBusConnection, objectPath: string | null): GdbusObjectProxy
+    static new(connection: Gio.DBusConnection, objectPath: string): GdbusObjectProxy
 
     // Overloads of new
 
@@ -20494,7 +20494,7 @@ class GdbusObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath the object path
      * @returns a new #GDBusObjectProxy
      */
-    static new(connection: Gio.DBusConnection, objectPath: string | null): Gio.DBusObjectProxy
+    static new(connection: Gio.DBusConnection, objectPath: string): Gio.DBusObjectProxy
     _init(config?: GdbusObjectProxy.ConstructorProperties): void
 }
 
@@ -20695,14 +20695,14 @@ class GdbusObjectSkeleton extends Gio.DBusObjectSkeleton {
      * @param objectPath An object path.
      * @returns The skeleton object.
      */
-    constructor(objectPath: string | null) 
+    constructor(objectPath: string) 
     /**
      * Creates a new skeleton object.
      * @constructor 
      * @param objectPath An object path.
      * @returns The skeleton object.
      */
-    static new(objectPath: string | null): GdbusObjectSkeleton
+    static new(objectPath: string): GdbusObjectSkeleton
 
     // Overloads of new
 
@@ -20712,7 +20712,7 @@ class GdbusObjectSkeleton extends Gio.DBusObjectSkeleton {
      * @param objectPath An object path.
      * @returns A #GDBusObjectSkeleton. Free with g_object_unref().
      */
-    static new(objectPath: string | null): Gio.DBusObjectSkeleton
+    static new(objectPath: string): Gio.DBusObjectSkeleton
     _init(config?: GdbusObjectSkeleton.ConstructorProperties): void
 }
 
@@ -20857,7 +20857,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusOrgFreedesktopModemManager1Proxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusOrgFreedesktopModemManager1Proxy
 
     // Overloads of newForBusSync
 
@@ -20875,7 +20875,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1.top_of_page">org.freedesktop.ModemManager1</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -20890,7 +20890,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusOrgFreedesktopModemManager1Proxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusOrgFreedesktopModemManager1Proxy
 
     // Overloads of newSync
 
@@ -20927,7 +20927,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusOrgFreedesktopModemManager1Proxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1.top_of_page">org.freedesktop.ModemManager1</link>. See g_dbus_proxy_new() for more details.
@@ -20943,7 +20943,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -20984,7 +20984,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_org_freedesktop_modem_manager1_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -20999,7 +20999,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -21016,7 +21016,7 @@ class GdbusOrgFreedesktopModemManager1Proxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusOrgFreedesktopModemManager1Skeleton {
@@ -21315,7 +21315,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusSimProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusSimProxy
 
     // Overloads of newForBusSync
 
@@ -21333,7 +21333,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Sim.top_of_page">org.freedesktop.ModemManager1.Sim</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -21348,7 +21348,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusSimProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusSimProxy
 
     // Overloads of newSync
 
@@ -21385,7 +21385,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusSimProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Sim.top_of_page">org.freedesktop.ModemManager1.Sim</link>. See g_dbus_proxy_new() for more details.
@@ -21401,7 +21401,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -21442,7 +21442,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_sim_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -21457,7 +21457,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -21474,7 +21474,7 @@ class GdbusSimProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusSimSkeleton {
@@ -21848,7 +21848,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusSmsProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): GdbusSmsProxy
 
     // Overloads of newForBusSync
 
@@ -21866,7 +21866,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Sms.top_of_page">org.freedesktop.ModemManager1.Sms</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -21881,7 +21881,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusSmsProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusSmsProxy
 
     // Overloads of newSync
 
@@ -21918,7 +21918,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: GdbusSmsProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-ModemManager1-Sms.top_of_page">org.freedesktop.ModemManager1.Sms</link>. See g_dbus_proxy_new() for more details.
@@ -21934,7 +21934,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -21975,7 +21975,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_sms_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -21990,7 +21990,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -22007,7 +22007,7 @@ class GdbusSmsProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 module GdbusSmsSkeleton {
@@ -22201,42 +22201,42 @@ interface KernelEventProperties {
      * Gets the action.
      * @returns The action. Do not free the returned value, it is owned by @self.
      */
-    getAction(): string | null
+    getAction(): string
     /**
      * Gets the name.
      * @returns The name. Do not free the returned value, it is owned by @self.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the subsystem.
      * @returns The subsystem. Do not free the returned value, it is owned by @self.
      */
-    getSubsystem(): string | null
+    getSubsystem(): string
     /**
      * Gets the unique ID of the physical device.
      * @returns The uid. Do not free the returned value, it is owned by @self.
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Sets the action.
      * @param action The action to set.
      */
-    setAction(action: string | null): void
+    setAction(action: string): void
     /**
      * Sets the name.
      * @param name The name to set.
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the subsystem.
      * @param subsystem The subsystem to set.
      */
-    setSubsystem(subsystem: string | null): void
+    setSubsystem(subsystem: string): void
     /**
      * Sets the unique ID of the physical device.
      * @param uid The uid to set.
      */
-    setUid(uid: string | null): void
+    setUid(uid: string): void
 
     // Class property signals of ModemManager-1.0.ModemManager.KernelEventProperties
 
@@ -22332,7 +22332,7 @@ interface Location3gpp {
      * Code. e.g. e<literal>"31026"</literal> or <literal>"310260"</literal>.
      * @returns The operator code, or %NULL if none available.
      */
-    getOperatorCode(): string | null
+    getOperatorCode(): string
     /**
      * Gets the location area code of the 3GPP network.
      * @returns the location area code, or 0 if unknown.
@@ -22459,7 +22459,7 @@ interface LocationGpsNmea {
      * @param traceType specific NMEA trace type to gather.
      * @returns the NMEA trace, or %NULL if not available. Do not free the returned value, it is owned by @self.
      */
-    getTrace(traceType: string | null): string | null
+    getTrace(traceType: string): string
     /**
      * Gets all cached traces.
      * @returns The list of traces, or %NULL if none available. The returned value should be freed with g_strfreev().
@@ -22534,7 +22534,7 @@ interface LocationGpsRaw {
      * Gets the UTC time of the location being reported.
      * @returns a string with the UTC time, or #NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    getUtcTime(): string | null
+    getUtcTime(): string
 
     // Class property signals of ModemManager-1.0.ModemManager.LocationGpsRaw
 
@@ -22596,7 +22596,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * It is safe to assume this value never changes during runtime.
      * @returns The version, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Asynchronously requests to add an inhibition on the device identified by
      * `uid`.
@@ -22621,7 +22621,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    inhibitDevice(uid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    inhibitDevice(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_manager_inhibit_device().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_inhibit_device().
@@ -22645,7 +22645,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    inhibitDeviceSync(uid: string | null, cancellable: Gio.Cancellable | null): boolean
+    inhibitDeviceSync(uid: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets the #GDBusProxy interface of the `manager`.
      * @returns The #GDBusProxy interface of @manager, or #NULL if none. Do not free the returned object, it is owned by @manager.
@@ -22728,7 +22728,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    setLogging(level: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setLogging(level: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_manager_set_logging().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_set_logging().
@@ -22745,7 +22745,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    setLoggingSync(level: string | null, cancellable: Gio.Cancellable | null): boolean
+    setLoggingSync(level: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously requests to remove an inhibition on the device identified by
      * `uid`.
@@ -22766,7 +22766,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    uninhibitDevice(uid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    uninhibitDevice(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_manager_uninhibit_device().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_manager_uninhibit_device().
@@ -22788,7 +22788,7 @@ interface Manager extends Gio.AsyncInitable, Gio.DBusObjectManager, Gio.Initable
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeeded, %FALSE if @error is set.
      */
-    uninhibitDeviceSync(uid: string | null, cancellable: Gio.Cancellable | null): boolean
+    uninhibitDeviceSync(uid: string, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of ModemManager-1.0.ModemManager.Manager
 
@@ -22918,7 +22918,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): GdbusObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): GdbusObjectManagerClient
     /**
      * Creates a new #GDBusObjectManagerClient object.
      * 
@@ -22934,7 +22934,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     _init(config?: Manager.ConstructorProperties): void
     /**
      * Asynchronously creates a #MMManager.
@@ -22970,7 +22970,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Asynchronously creates a new #GDBusObjectManagerClient object.
      * 
@@ -22988,7 +22988,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Conflicting static methods
 
@@ -23006,7 +23006,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -23028,7 +23028,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_object_manager_client_new() but takes a #GBusType instead of a
      * #GDBusConnection.
@@ -23047,7 +23047,7 @@ class Manager extends GdbusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
 }
@@ -23084,7 +23084,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    command(cmd: string | null, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    command(cmd: string, timeout: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_command().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_command().
@@ -23101,7 +23101,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * @param cancellable A #GCancellable or %NULL.
      * @returns A newly allocated string with the reply to the command, or #NULL if @error is set. The returned value should be freed with g_free().
      */
-    commandSync(cmd: string | null, timeout: number, cancellable: Gio.Cancellable | null): string | null
+    commandSync(cmd: string, timeout: number, cancellable: Gio.Cancellable | null): string | null
     /**
      * Asynchronously creates a new packet data bearer in the #MMModem.
      * 
@@ -23159,7 +23159,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    deleteBearer(bearer: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteBearer(bearer: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_delete_bearer().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_delete_bearer().
@@ -23175,7 +23175,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the bearer was deleted, %FALSE if @error is set.
      */
-    deleteBearerSync(bearer: string | null, cancellable: Gio.Cancellable | null): boolean
+    deleteBearerSync(bearer: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously tries to disable the #MMModem. When disabled, the modem enters
      * low-power state and no network-related operations are available.
@@ -23362,7 +23362,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    factoryReset(code: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    factoryReset(code: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_factory_reset().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_factory_reset().
@@ -23379,7 +23379,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the factory reset was successful, %FALSE if @error is set.
      */
-    factoryResetSync(code: string | null, cancellable: Gio.Cancellable | null): boolean
+    factoryResetSync(code: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets the current network access technology used by the #MMModem to
      * communicate with the network.
@@ -23404,7 +23404,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_carrier_configuration() if on another thread.</warning>
      * @returns The carrier configuration, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getCarrierConfiguration(): string | null
+    getCarrierConfiguration(): string
     /**
      * Gets the carrier-specific configuration revision in use, as reported by this
      * #MMModem.
@@ -23414,7 +23414,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_carrier_configuration() if on another thread.</warning>
      * @returns The carrier configuration revision, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getCarrierConfigurationRevision(): string | null
+    getCarrierConfigurationRevision(): string
     /**
      * Asynchronously requests to get info about serving and neighboring cells.
      * 
@@ -23474,7 +23474,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_device() if on another thread.</warning>
      * @returns The device, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getDevice(): string | null
+    getDevice(): string
     /**
      * Gets a best-effort device identifier based on various device information like
      * model name, firmware revision, USB/PCI/PCMCIA IDs, and other properties.
@@ -23492,7 +23492,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_device_identifier() if on another thread.</warning>
      * @returns The device identifier, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getDeviceIdentifier(): string | null
+    getDeviceIdentifier(): string
     /**
      * Gets the Operating System device drivers handling communication with the
      * modem hardware.
@@ -23514,7 +23514,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_equipment_identifier() if on another thread.</warning>
      * @returns The equipment identifier, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getEquipmentIdentifier(): string | null
+    getEquipmentIdentifier(): string
     /**
      * Gets the equipment hardware revision, as reported by this #MMModem.
      * 
@@ -23523,7 +23523,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_hardware_revision() if on another thread.</warning>
      * @returns The equipment hardware revision, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getHardwareRevision(): string | null
+    getHardwareRevision(): string
     /**
      * Gets the equipment manufacturer, as reported by this #MMModem.
      * 
@@ -23532,7 +23532,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_manufacturer() if on another thread.</warning>
      * @returns The equipment manufacturer, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getManufacturer(): string | null
+    getManufacturer(): string
     /**
      * Gets the maximum number of active packet data bearers this #MMModem supports
      * without enabling multiplexing support.
@@ -23571,7 +23571,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_model() if on another thread.</warning>
      * @returns The equipment model, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getModel(): string | null
+    getModel(): string
     /**
      * Gets the name of the plugin handling this #MMModem.
      * 
@@ -23580,7 +23580,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_plugin() if on another thread.</warning>
      * @returns The name of the plugin, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getPlugin(): string | null
+    getPlugin(): string
     /**
      * Gets the list of ports in the modem.
      * @returns %TRUE if @ports and @n_ports are set, %FALSE otherwise.
@@ -23599,7 +23599,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_primary_port() if on another thread.</warning>
      * @returns The name of the primary port. Do not free the returned value, it belongs to @self.
      */
-    getPrimaryPort(): string | null
+    getPrimaryPort(): string
     /**
      * Gets the SIM slot number of the primary active SIM.
      * @returns slot number, in the [1,N] range.
@@ -23613,7 +23613,7 @@ interface Modem extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, Gdbu
      * mm_modem_dup_revision() if on another thread.</warning>
      * @returns The equipment revision, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getRevision(): string | null
+    getRevision(): string
     /**
      * Gets the signal quality value in percent (0 - 100) of the dominant access
      * technology the #MMModem is using to communicate with the network.
@@ -24305,7 +24305,7 @@ class Modem extends GdbusModemProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -24346,7 +24346,7 @@ class Modem extends GdbusModemProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -24384,7 +24384,7 @@ class Modem extends GdbusModemProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -24399,7 +24399,7 @@ class Modem extends GdbusModemProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -24416,7 +24416,7 @@ class Modem extends GdbusModemProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -24430,7 +24430,7 @@ class Modem extends GdbusModemProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -24467,7 +24467,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    disableFacilityLock(facility: Modem3gppFacility, controlKey: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    disableFacilityLock(facility: Modem3gppFacility, controlKey: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_3gpp_disable_facility_lock().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_disable_facility_lock().
@@ -24485,7 +24485,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation was successful, %FALSE if @error is set.
      */
-    disableFacilityLockSync(facility: Modem3gppFacility, controlKey: string | null, cancellable: Gio.Cancellable | null): boolean
+    disableFacilityLockSync(facility: Modem3gppFacility, controlKey: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a copy of the <ulink url="http://en.wikipedia.org/wiki/Imei">IMEI</ulink>,
      * as reported by this #MMModem3gpp.
@@ -24541,7 +24541,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * thread.</warning>
      * @returns The IMEI, or %NULL if none available.
      */
-    getImei(): string | null
+    getImei(): string
     /**
      * Asynchronously gets the initial EPS #MMBearer object exposed by this
      * #MMModem3gpp.
@@ -24615,7 +24615,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * thread.</warning>
      * @returns The operator code, or %NULL if none available.
      */
-    getOperatorCode(): string | null
+    getOperatorCode(): string
     /**
      * Gets the name of the operator to which the mobile is
      * currently registered.
@@ -24626,7 +24626,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * thread.</warning>
      * @returns The operator name, or %NULL if none available.
      */
-    getOperatorName(): string | null
+    getOperatorName(): string
     /**
      * Get the packet domain service state.
      * @returns A #MMModem3gppPacketServiceState value, specifying the current PS attach  state.
@@ -24636,7 +24636,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Get the list of #MMPco received from the network.
      * @returns a list of #MMPco objects, or #NULL if @error is set. The returned value should be freed with g_list_free_full() using g_object_unref() as #GDestroyNotify function.
@@ -24694,7 +24694,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    register(networkId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    register(networkId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_3gpp_register().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_register().
@@ -24710,7 +24710,7 @@ interface Modem3gpp extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the modem was registered, %FALSE if @error is set.
      */
-    registerSync(networkId: string | null, cancellable: Gio.Cancellable | null): boolean
+    registerSync(networkId: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously requests to scan available 3GPP networks.
      * 
@@ -25055,7 +25055,7 @@ class Modem3gpp extends GdbusModem3gppProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -25096,7 +25096,7 @@ class Modem3gpp extends GdbusModem3gppProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -25134,7 +25134,7 @@ class Modem3gpp extends GdbusModem3gppProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem3gpp_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -25149,7 +25149,7 @@ class Modem3gpp extends GdbusModem3gppProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -25166,7 +25166,7 @@ class Modem3gpp extends GdbusModem3gppProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -25180,7 +25180,7 @@ class Modem3gpp extends GdbusModem3gppProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -25260,12 +25260,12 @@ interface Modem3gppProfileManager extends Gio.AsyncInitable, Gio.DBusInterface, 
      * operations.
      * @returns The index field, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getIndexField(): string | null
+    getIndexField(): string
     /**
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Asynchronously gets the list of available connection profiles.
      * 
@@ -25436,7 +25436,7 @@ class Modem3gppProfileManager extends GdbusModem3gppProfileManagerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -25477,7 +25477,7 @@ class Modem3gppProfileManager extends GdbusModem3gppProfileManagerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -25515,7 +25515,7 @@ class Modem3gppProfileManager extends GdbusModem3gppProfileManagerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem3gpp_profile_manager_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -25530,7 +25530,7 @@ class Modem3gppProfileManager extends GdbusModem3gppProfileManagerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -25547,7 +25547,7 @@ class Modem3gppProfileManager extends GdbusModem3gppProfileManagerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -25561,7 +25561,7 @@ class Modem3gppProfileManager extends GdbusModem3gppProfileManagerProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -25642,7 +25642,7 @@ interface Modem3gppUssd extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * mm_modem_3gpp_ussd_dup_network_notification() if on another thread.</warning>
      * @returns The network notification, or %NULL if none available.
      */
-    getNetworkNotification(): string | null
+    getNetworkNotification(): string
     /**
      * Gets any pending network-initiated request.
      * 
@@ -25652,12 +25652,12 @@ interface Modem3gppUssd extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * another thread.</warning>
      * @returns The network request, or %NULL if none available.
      */
-    getNetworkRequest(): string | null
+    getNetworkRequest(): string
     /**
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Get the state of the ongoing USSD session, if any.
      * @returns A #MMModem3gppUssdSessionState value, specifying the current state.
@@ -25682,7 +25682,7 @@ interface Modem3gppUssd extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    initiate(command: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    initiate(command: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_3gpp_ussd_initiate().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_ussd_initiate().
@@ -25703,7 +25703,7 @@ interface Modem3gppUssd extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @returns The response from the network, if any. The returned value should be freed with g_free().
      */
-    initiateSync(command: string | null, cancellable: Gio.Cancellable | null): string | null
+    initiateSync(command: string, cancellable: Gio.Cancellable | null): string | null
     /**
      * Asynchronously responds to a USSD request that is either initiated by the
      * mobile network, or that is awaiting further input after a previous call to
@@ -25720,7 +25720,7 @@ interface Modem3gppUssd extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    respond(response: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    respond(response: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_3gpp_ussd_respond().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_3gpp_ussd_respond().
@@ -25738,7 +25738,7 @@ interface Modem3gppUssd extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @returns The network reply to this response to the network-initiated USSD command. The reply may require further responses. The returned value should be freed with g_free().
      */
-    respondSync(response: string | null, cancellable: Gio.Cancellable | null): string | null
+    respondSync(response: string, cancellable: Gio.Cancellable | null): string | null
 
     // Class property signals of ModemManager-1.0.ModemManager.Modem3gppUssd
 
@@ -25847,7 +25847,7 @@ class Modem3gppUssd extends GdbusModem3gppUssdProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -25888,7 +25888,7 @@ class Modem3gppUssd extends GdbusModem3gppUssdProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -25926,7 +25926,7 @@ class Modem3gppUssd extends GdbusModem3gppUssdProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem3gpp_ussd_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -25941,7 +25941,7 @@ class Modem3gppUssd extends GdbusModem3gppUssdProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -25958,7 +25958,7 @@ class Modem3gppUssd extends GdbusModem3gppUssdProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -25972,7 +25972,7 @@ class Modem3gppUssd extends GdbusModem3gppUssdProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -26011,7 +26011,7 @@ interface ModemCdma extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    activate(carrier: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    activate(carrier: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_cdma_activate().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_cdma_activate().
@@ -26060,7 +26060,7 @@ interface ModemCdma extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the activation was successful, %FALSE if @error is set.
      */
-    activateSync(carrier: string | null, cancellable: Gio.Cancellable | null): boolean
+    activateSync(carrier: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a copy of the
      * <ulink url="http://en.wikipedia.org/wiki/Electronic_serial_number">Electronic Serial Number</ulink>,
@@ -26105,7 +26105,7 @@ interface ModemCdma extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * mm_modem_cdma_dup_esn() if on another thread.</warning>
      * @returns The ESN, or %NULL if none available.
      */
-    getEsn(): string | null
+    getEsn(): string
     /**
      * Gets the state of the registration in the EV-DO network.
      * @returns a #MMModemCdmaRegistrationState.
@@ -26121,7 +26121,7 @@ interface ModemCdma extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * mm_modem_cdma_dup_meid() if on another thread.</warning>
      * @returns The MEID, or %NULL if none available.
      */
-    getMeid(): string | null
+    getMeid(): string
     /**
      * Gets the
      * <ulink url="http://en.wikipedia.org/wiki/Network_Identification_Number">Network Identifier</ulink>
@@ -26134,7 +26134,7 @@ interface ModemCdma extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the
      * <ulink url="http://en.wikipedia.org/wiki/System_Identification_Number">System Identifier</ulink>
@@ -26271,7 +26271,7 @@ class ModemCdma extends GdbusModemCdmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -26312,7 +26312,7 @@ class ModemCdma extends GdbusModemCdmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -26350,7 +26350,7 @@ class ModemCdma extends GdbusModemCdmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_cdma_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -26365,7 +26365,7 @@ class ModemCdma extends GdbusModemCdmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -26382,7 +26382,7 @@ class ModemCdma extends GdbusModemCdmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -26396,7 +26396,7 @@ class ModemCdma extends GdbusModemCdmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -26430,7 +26430,7 @@ interface ModemFirmware extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets a #MMFirmwareUpdateSettings object specifying the expected update
      * settings.
@@ -26499,7 +26499,7 @@ interface ModemFirmware extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    select(uniqueId: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    select(uniqueId: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_firmware_select().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_firmware_select().
@@ -26518,7 +26518,7 @@ interface ModemFirmware extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the selection was successful, %FALSE if @error is set.
      */
-    selectSync(uniqueId: string | null, cancellable: Gio.Cancellable | null): boolean
+    selectSync(uniqueId: string, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of ModemManager-1.0.ModemManager.ModemFirmware
 
@@ -26617,7 +26617,7 @@ class ModemFirmware extends GdbusModemFirmwareProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -26658,7 +26658,7 @@ class ModemFirmware extends GdbusModemFirmwareProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -26696,7 +26696,7 @@ class ModemFirmware extends GdbusModemFirmwareProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_firmware_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -26711,7 +26711,7 @@ class ModemFirmware extends GdbusModemFirmwareProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -26728,7 +26728,7 @@ class ModemFirmware extends GdbusModemFirmwareProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -26742,7 +26742,7 @@ class ModemFirmware extends GdbusModemFirmwareProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -26957,7 +26957,7 @@ interface ModemLocation extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets a #MMLocation3gpp object with the current 3GPP location information.
      * 
@@ -27036,7 +27036,7 @@ interface ModemLocation extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * mm_modem_location_dup_supl_server() if on another thread.</warning>
      * @returns The SUPL server address, or %NULL if none available. Do not free the returned value, it belongs to @self.
      */
-    getSuplServer(): string | null
+    getSuplServer(): string
     /**
      * Gets a bitmask of the supported assistance data types.
      * @returns A #MMModemLocationAssistanceDataType.
@@ -27199,7 +27199,7 @@ interface ModemLocation extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    setSuplServer(supl: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    setSuplServer(supl: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_location_set_supl_server().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_location_set_supl_server().
@@ -27216,7 +27216,7 @@ interface ModemLocation extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initab
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if setting the SUPL server was successful, %FALSE if @error is set.
      */
-    setSuplServerSync(supl: string | null, cancellable: Gio.Cancellable | null): boolean
+    setSuplServerSync(supl: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously configures the location sources to use when gathering location
      * information. Also enable or disable location information gathering.
@@ -27390,7 +27390,7 @@ class ModemLocation extends GdbusModemLocationProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -27431,7 +27431,7 @@ class ModemLocation extends GdbusModemLocationProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -27469,7 +27469,7 @@ class ModemLocation extends GdbusModemLocationProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_location_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -27484,7 +27484,7 @@ class ModemLocation extends GdbusModemLocationProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -27501,7 +27501,7 @@ class ModemLocation extends GdbusModemLocationProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -27515,7 +27515,7 @@ class ModemLocation extends GdbusModemLocationProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -27584,7 +27584,7 @@ interface ModemMessaging extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Inita
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    delete(sms: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    delete(sms: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_messaging_delete().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_messaging_delete().
@@ -27600,7 +27600,7 @@ interface ModemMessaging extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Inita
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the SMS was deleted, %FALSE if @error is set.
      */
-    deleteSync(sms: string | null, cancellable: Gio.Cancellable | null): boolean
+    deleteSync(sms: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a copy of the DBus path of the #MMObject object which implements this
      * interface.
@@ -27616,7 +27616,7 @@ interface ModemMessaging extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Inita
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the list of SMS storages supported by the #MMModem.
      * @returns %TRUE if @storages and @n_storages are set, %FALSE otherwise.
@@ -27764,7 +27764,7 @@ class ModemMessaging extends GdbusModemMessagingProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -27805,7 +27805,7 @@ class ModemMessaging extends GdbusModemMessagingProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -27843,7 +27843,7 @@ class ModemMessaging extends GdbusModemMessagingProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_messaging_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -27858,7 +27858,7 @@ class ModemMessaging extends GdbusModemMessagingProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -27875,7 +27875,7 @@ class ModemMessaging extends GdbusModemMessagingProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -27889,7 +27889,7 @@ class ModemMessaging extends GdbusModemMessagingProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -27993,7 +27993,7 @@ interface ModemOma extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, G
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the list of pending network-initiated OMA sessions.
      * @returns %TRUE if @sessions and @n_sessions are set, %FALSE otherwise.
@@ -28192,7 +28192,7 @@ class ModemOma extends GdbusModemOmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -28233,7 +28233,7 @@ class ModemOma extends GdbusModemOmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -28271,7 +28271,7 @@ class ModemOma extends GdbusModemOmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_oma_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -28286,7 +28286,7 @@ class ModemOma extends GdbusModemOmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -28303,7 +28303,7 @@ class ModemOma extends GdbusModemOmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -28317,7 +28317,7 @@ class ModemOma extends GdbusModemOmaProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -28382,7 +28382,7 @@ interface ModemSar extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, G
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the index of the SAR power level mapping table.
      * @returns the index.
@@ -28522,7 +28522,7 @@ class ModemSar extends GdbusModemSarProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -28563,7 +28563,7 @@ class ModemSar extends GdbusModemSarProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -28601,7 +28601,7 @@ class ModemSar extends GdbusModemSarProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_sar_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -28616,7 +28616,7 @@ class ModemSar extends GdbusModemSarProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -28633,7 +28633,7 @@ class ModemSar extends GdbusModemSarProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -28647,7 +28647,7 @@ class ModemSar extends GdbusModemSarProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -28736,7 +28736,7 @@ interface ModemSignal extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the currently configured refresh rate.
      * @returns the refresh rate, in seconds.
@@ -29017,7 +29017,7 @@ class ModemSignal extends GdbusModemSignalProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -29058,7 +29058,7 @@ class ModemSignal extends GdbusModemSignalProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -29096,7 +29096,7 @@ class ModemSignal extends GdbusModemSignalProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_signal_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -29111,7 +29111,7 @@ class ModemSignal extends GdbusModemSignalProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -29128,7 +29128,7 @@ class ModemSignal extends GdbusModemSignalProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -29142,7 +29142,7 @@ class ModemSignal extends GdbusModemSignalProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -29238,7 +29238,7 @@ interface ModemSimple extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Asynchronously requests a compilation of the status of the modem.
      * 
@@ -29361,7 +29361,7 @@ class ModemSimple extends GdbusModemSimpleProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -29402,7 +29402,7 @@ class ModemSimple extends GdbusModemSimpleProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -29440,7 +29440,7 @@ class ModemSimple extends GdbusModemSimpleProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_simple_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -29455,7 +29455,7 @@ class ModemSimple extends GdbusModemSimpleProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -29472,7 +29472,7 @@ class ModemSimple extends GdbusModemSimpleProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -29486,7 +29486,7 @@ class ModemSimple extends GdbusModemSimpleProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -29559,7 +29559,7 @@ interface ModemTime extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, 
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the network timezone information.
      * 
@@ -29667,7 +29667,7 @@ class ModemTime extends GdbusModemTimeProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -29708,7 +29708,7 @@ class ModemTime extends GdbusModemTimeProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -29746,7 +29746,7 @@ class ModemTime extends GdbusModemTimeProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_time_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -29761,7 +29761,7 @@ class ModemTime extends GdbusModemTimeProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -29778,7 +29778,7 @@ class ModemTime extends GdbusModemTimeProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -29792,7 +29792,7 @@ class ModemTime extends GdbusModemTimeProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -29927,7 +29927,7 @@ interface ModemVoice extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable,
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    deleteCall(call: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteCall(call: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_modem_voice_delete_call().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_modem_voice_delete_call().
@@ -29943,7 +29943,7 @@ interface ModemVoice extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable,
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the CALL was deleted, %FALSE if @error is set.
      */
-    deleteCallSync(call: string | null, cancellable: Gio.Cancellable | null): boolean
+    deleteCallSync(call: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a copy of the DBus path of the #MMObject object which implements this
      * interface.
@@ -29959,7 +29959,7 @@ interface ModemVoice extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable,
      * Gets the DBus path of the #MMObject which implements this interface.
      * @returns The DBus path of the #MMObject object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Asynchronously hangs up all ongoing (active, waiting, held) calls.
      * 
@@ -30212,7 +30212,7 @@ class ModemVoice extends GdbusModemVoiceProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -30253,7 +30253,7 @@ class ModemVoice extends GdbusModemVoiceProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -30291,7 +30291,7 @@ class ModemVoice extends GdbusModemVoiceProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_modem_voice_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -30306,7 +30306,7 @@ class ModemVoice extends GdbusModemVoiceProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -30323,7 +30323,7 @@ class ModemVoice extends GdbusModemVoiceProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -30337,7 +30337,7 @@ class ModemVoice extends GdbusModemVoiceProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -30857,7 +30857,7 @@ interface Pco {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets the session ID associated with the PCO.
      * @returns the session ID.
@@ -31131,7 +31131,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    changePin(oldPin: string | null, newPin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    changePin(oldPin: string, newPin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_sim_change_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_change_pin().
@@ -31148,7 +31148,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    changePinSync(oldPin: string | null, newPin: string | null, cancellable: Gio.Cancellable | null): boolean
+    changePinSync(oldPin: string, newPin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously disables requesting the PIN code in the SIM card.
      * 
@@ -31163,7 +31163,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    disablePin(pin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    disablePin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_sim_disable_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_disable_pin().
@@ -31179,7 +31179,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    disablePinSync(pin: string | null, cancellable: Gio.Cancellable | null): boolean
+    disablePinSync(pin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Gets a copy of the Embedded UICC ID (EID) of the #MMSim object.
      * @returns The EID of the #MMSim object, or %NULL if it couldn't be retrieved. The returned value should be freed with g_free().
@@ -31240,7 +31240,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    enablePin(pin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    enablePin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_sim_enable_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_enable_pin().
@@ -31256,7 +31256,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    enablePinSync(pin: string | null, cancellable: Gio.Cancellable | null): boolean
+    enablePinSync(pin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Checks whether the #MMSim is currently active.
      * @returns %TRUE if the SIM is active, %FALSE otherwise.
@@ -31270,7 +31270,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sim_dup_eid() if on another thread.</warning>
      * @returns The EID of the #MMSim object, or %NULL if it couldn't be retrieved.
      */
-    getEid(): string | null
+    getEid(): string
     /**
      * Gets the list of emergency call numbers programmed in the SIM card.
      * 
@@ -31305,7 +31305,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sim_dup_identifier() if on another thread.</warning>
      * @returns The unique identifier of the #MMSim object, or %NULL if it couldn't be retrieved.
      */
-    getIdentifier(): string | null
+    getIdentifier(): string
     /**
      * Gets the International Mobile Subscriber Identity (IMSI) of the #MMSim
      * object.
@@ -31315,7 +31315,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sim_dup_imsi() if on another thread.</warning>
      * @returns The IMSI of the #MMSim object, or %NULL if it couldn't be retrieved.
      */
-    getImsi(): string | null
+    getImsi(): string
     /**
      * Gets the Operator Identifier of the #MMSim object.
      * 
@@ -31324,7 +31324,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sim_dup_operator_identifier() if on another thread.</warning>
      * @returns The Operator Identifier of the #MMSim object, or %NULL if it couldn't be retrieved.
      */
-    getOperatorIdentifier(): string | null
+    getOperatorIdentifier(): string
     /**
      * Gets the Operator Name of the #MMSim object.
      * 
@@ -31333,12 +31333,12 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sim_dup_operator_name() if on another thread.</warning>
      * @returns The Operator Name of the #MMSim object, or %NULL if it couldn't be retrieved.
      */
-    getOperatorName(): string | null
+    getOperatorName(): string
     /**
      * Gets the DBus path of the #MMSim object.
      * @returns The DBus path of the #MMSim object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the list of #MMSimPreferredNetwork objects exposed by this
      * #MMSim.
@@ -31369,7 +31369,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    sendPin(pin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sendPin(pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_sim_send_pin().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_send_pin().
@@ -31385,7 +31385,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    sendPinSync(pin: string | null, cancellable: Gio.Cancellable | null): boolean
+    sendPinSync(pin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously sends the PUK code to the SIM card.
      * 
@@ -31401,7 +31401,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or  %NULL.
      */
-    sendPuk(puk: string | null, pin: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    sendPuk(puk: string, pin: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mm_sim_send_puk().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to  mm_sim_send_puk().
@@ -31418,7 +31418,7 @@ interface Sim extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the operation succeeded, %FALSE if @error is set.
      */
-    sendPukSync(puk: string | null, pin: string | null, cancellable: Gio.Cancellable | null): boolean
+    sendPukSync(puk: string, pin: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously sets the preferred network list of this #MMSim.
      * 
@@ -31612,7 +31612,7 @@ class Sim extends GdbusSimProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -31653,7 +31653,7 @@ class Sim extends GdbusSimProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -31691,7 +31691,7 @@ class Sim extends GdbusSimProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_sim_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -31706,7 +31706,7 @@ class Sim extends GdbusSimProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -31723,7 +31723,7 @@ class Sim extends GdbusSimProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -31737,7 +31737,7 @@ class Sim extends GdbusSimProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -31775,7 +31775,7 @@ interface SimpleConnectProperties {
      * Gets the name of the access point to use when connecting.
      * @returns the access point, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getApn(): string | null
+    getApn(): string
     /**
      * Gets the APN types to use.
      * @returns a mask of #MMBearerApnType values.
@@ -31795,22 +31795,22 @@ interface SimpleConnectProperties {
      * Gets the number to use when performing the connection.
      * @returns the number, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getNumber(): string | null
+    getNumber(): string
     /**
      * Gets the ID of the network to which register before connecting.
      * @returns the operator ID, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getOperatorId(): string | null
+    getOperatorId(): string
     /**
      * Gets the password used to authenticate with the access point.
      * @returns the password, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getPassword(): string | null
+    getPassword(): string
     /**
      * Gets the PIN code to use when unlocking the modem.
      * @returns the PIN, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getPin(): string | null
+    getPin(): string
     /**
      * Gets the profile ID to use.
      * @returns the profile id.
@@ -31825,7 +31825,7 @@ interface SimpleConnectProperties {
      * Gets the username used to authenticate with the access point.
      * @returns the username, or #NULL if not set. Do not free the returned value, it is owned by @self.
      */
-    getUser(): string | null
+    getUser(): string
     /**
      * Sets the flag to indicate whether roaming is allowed or not in the
      * connection.
@@ -31841,7 +31841,7 @@ interface SimpleConnectProperties {
      * Sets the name of the access point to use when connecting.
      * @param apn Name of the access point.
      */
-    setApn(apn: string | null): void
+    setApn(apn: string): void
     /**
      * Sets the APN types to use.
      * @param apnType a mask of #MMBearerApnType values.
@@ -31861,22 +31861,22 @@ interface SimpleConnectProperties {
      * Sets the number to use when performing the connection.
      * @param number the number.
      */
-    setNumber(number: string | null): void
+    setNumber(number: string): void
     /**
      * Sets the ID of the network to which register before connecting.
      * @param operatorId operator ID, given as MCC/MNC.
      */
-    setOperatorId(operatorId: string | null): void
+    setOperatorId(operatorId: string): void
     /**
      * Sets the password used to authenticate with the access point.
      * @param password the password
      */
-    setPassword(password: string | null): void
+    setPassword(password: string): void
     /**
      * Sets the PIN code to use when unlocking the modem.
      * @param pin PIN code.
      */
-    setPin(pin: string | null): void
+    setPin(pin: string): void
     /**
      * Sets the profile ID to use.
      * @param profileId a profile id.
@@ -31891,7 +31891,7 @@ interface SimpleConnectProperties {
      * Sets the username used to authenticate with the access point.
      * @param user the username
      */
-    setUser(user: string | null): void
+    setUser(user: string): void
 
     // Class property signals of ModemManager-1.0.ModemManager.SimpleConnectProperties
 
@@ -31986,13 +31986,13 @@ interface SimpleStatus {
      * registered.
      * @returns the operator code, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    get3gppOperatorCode(): string | null
+    get3gppOperatorCode(): string
     /**
      * Gets the name of the operator of the 3GPP network where the modem is
      * registered.
      * @returns the operator name, or %NULL if unknown. Do not free the returned value, it is owned by @self.
      */
-    get3gppOperatorName(): string | null
+    get3gppOperatorName(): string
     /**
      * Gets the current state of the registration in the 3GPP network.
      * @returns a #MMModem3gppRegistrationState.
@@ -32215,7 +32215,7 @@ interface Sms extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Checks whether delivery report is requested for this SMS.
      * @returns %TRUE if delivery report is requested, %FALSE otherwise.
@@ -32242,7 +32242,7 @@ interface Sms extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sms_dup_discharge_timestamp() if on another thread.</warning>
      * @returns The timestamp, or %NULL if it couldn't be retrieved.
      */
-    getDischargeTimestamp(): string | null
+    getDischargeTimestamp(): string
     /**
      * Gets the message reference of the last PDU sent/received within this SMS.
      * 
@@ -32259,12 +32259,12 @@ interface Sms extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sms_dup_number() if on another thread.</warning>
      * @returns The number, or %NULL if it couldn't be retrieved.
      */
-    getNumber(): string | null
+    getNumber(): string
     /**
      * Gets the DBus path of the #MMSms object.
      * @returns The DBus path of the #MMSms object.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the PDU type on which this SMS is based.
      * @returns A #MMSmsPduType specifying the PDU type.
@@ -32283,7 +32283,7 @@ interface Sms extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sms_dup_smsc() if on another thread.</warning>
      * @returns The number of the SMSC, or %NULL if it couldn't be retrieved.
      */
-    getSmsc(): string | null
+    getSmsc(): string
     /**
      * Gets the state of this SMS.
      * @returns A #MMSmsState specifying the state.
@@ -32307,7 +32307,7 @@ interface Sms extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sms_dup_text() if on another thread.</warning>
      * @returns The message text, or %NULL if it doesn't contain any (e.g. contains data instead).
      */
-    getText(): string | null
+    getText(): string
     /**
      * Gets the time when the first PDU of the SMS message arrived the SMSC, in
      * <ulink url="http://en.wikipedia.org/wiki/ISO_8601">ISO8601</ulink>
@@ -32321,7 +32321,7 @@ interface Sms extends Gio.AsyncInitable, Gio.DBusInterface, Gio.Initable, GdbusS
      * mm_sms_dup_timestamp() if on another thread.</warning>
      * @returns The timestamp, or %NULL if it couldn't be retrieved.
      */
-    getTimestamp(): string | null
+    getTimestamp(): string
     /**
      * Gets the length of the validity period, in minutes.
      * 
@@ -32574,7 +32574,7 @@ class Sms extends GdbusSmsProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -32615,7 +32615,7 @@ class Sms extends GdbusSmsProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Creates a proxy for accessing `interface_name` on the remote object
      * at `object_path` owned by `name` at `connection` and asynchronously
@@ -32653,7 +32653,7 @@ class Sms extends GdbusSmsProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like mm_gdbus_sms_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -32668,7 +32668,7 @@ class Sms extends GdbusSmsProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -32685,7 +32685,7 @@ class Sms extends GdbusSmsProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like g_dbus_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -32699,7 +32699,7 @@ class Sms extends GdbusSmsProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     static newFinish(...args: any[]): any
     static newForBusFinish(...args: any[]): any
     static newForBusSync(...args: any[]): any
@@ -32741,7 +32741,7 @@ interface SmsProperties {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets the message data.
      * @returns A #GByteArray with the message data, or %NULL if it doesn't contain any (e.g. contains text instead). The returned value should be freed with g_byte_array_unref().
@@ -32756,7 +32756,7 @@ interface SmsProperties {
      * Gets the number to which the message is addressed.
      * @returns The number, or %NULL if it couldn't be retrieved. Do not free the returned value, it is owned by @self.
      */
-    getNumber(): string | null
+    getNumber(): string
     /**
      * Gets the CDMA message service category of the SMS.
      * @returns the CDMA service category.
@@ -32766,7 +32766,7 @@ interface SmsProperties {
      * Gets the SMS service center number.
      * @returns The number of the SMSC, or %NULL if it couldn't be retrieved. Do not free the returned value, it is owned by @self.
      */
-    getSmsc(): string | null
+    getSmsc(): string
     /**
      * Gets the CDMA teleservice ID of the SMS.
      * @returns the CDMA teleservice ID.
@@ -32776,7 +32776,7 @@ interface SmsProperties {
      * Gets the message text, in UTF-8.
      * @returns The message text, or %NULL if it doesn't contain any (e.g. contains data instead). Do not free the returned value, it is owned by @self.
      */
-    getText(): string | null
+    getText(): string
     /**
      * Gets the relative validity time of the SMS.
      * @returns the validity time or 0 if unknown.
@@ -32820,7 +32820,7 @@ interface SmsProperties {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Sets the message data.
      * @param data A #GByteArray with the data to set. This method takes a new reference  of `data`.
@@ -32835,7 +32835,7 @@ interface SmsProperties {
      * Sets the number to which the message is addressed.
      * @param number The number.
      */
-    setNumber(number: string | null): void
+    setNumber(number: string): void
     /**
      * Sets the CDMA service category of the SMS.
      * @param serviceCategory The CDMA service category.
@@ -32845,7 +32845,7 @@ interface SmsProperties {
      * Sets the SMS service center number.
      * @param smsc The SMSC number.
      */
-    setSmsc(smsc: string | null): void
+    setSmsc(smsc: string): void
     /**
      * Sets the CDMA teleservice ID of the SMS.
      * @param teleserviceId The CDMA teleservice ID.
@@ -32855,7 +32855,7 @@ interface SmsProperties {
      * Sets the message text.
      * @param text The text to set, in UTF-8.
      */
-    setText(text: string | null): void
+    setText(text: string): void
     /**
      * Sets the relative validity time of the SMS.
      * @param validity The validity of %MM_SMS_VALIDITY_TYPE_RELATIVE type.
@@ -33443,11 +33443,11 @@ interface GdbusCallIface {
      */
     parentIface: GObject.TypeInterface
     handleAccept: (object: GdbusCall, invocation: Gio.DBusMethodInvocation) => boolean
-    handleDeflect: (object: GdbusCall, invocation: Gio.DBusMethodInvocation, argNumber: string | null) => boolean
+    handleDeflect: (object: GdbusCall, invocation: Gio.DBusMethodInvocation, argNumber: string) => boolean
     handleHangup: (object: GdbusCall, invocation: Gio.DBusMethodInvocation) => boolean
     handleJoinMultiparty: (object: GdbusCall, invocation: Gio.DBusMethodInvocation) => boolean
     handleLeaveMultiparty: (object: GdbusCall, invocation: Gio.DBusMethodInvocation) => boolean
-    handleSendDtmf: (object: GdbusCall, invocation: Gio.DBusMethodInvocation, argDtmf: string | null) => boolean
+    handleSendDtmf: (object: GdbusCall, invocation: Gio.DBusMethodInvocation, argDtmf: string) => boolean
     handleStart: (object: GdbusCall, invocation: Gio.DBusMethodInvocation) => boolean
     getAudioFormat: (object: GdbusCall) => GLib.Variant | null
     getAudioPort: (object: GdbusCall) => string | null
@@ -33456,7 +33456,7 @@ interface GdbusCallIface {
     getNumber: (object: GdbusCall) => string | null
     getState: (object: GdbusCall) => number
     getStateReason: (object: GdbusCall) => number
-    dtmfReceived: (object: GdbusCall, argDtmf: string | null) => void
+    dtmfReceived: (object: GdbusCall, argDtmf: string) => void
     stateChanged: (object: GdbusCall, argOld: number, argNew: number, argReason: number) => void
 }
 
@@ -33545,7 +33545,7 @@ interface GdbusModem3gppIface {
      */
     parentIface: GObject.TypeInterface
     handleDisableFacilityLock: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
-    handleRegister: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, argOperatorId: string | null) => boolean
+    handleRegister: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, argOperatorId: string) => boolean
     handleScan: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation) => boolean
     handleSetCarrierLock: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, argData: GLib.Variant) => boolean
     handleSetEpsUeModeOperation: (object: GdbusModem3gpp, invocation: Gio.DBusMethodInvocation, argMode: number) => boolean
@@ -33742,8 +33742,8 @@ interface GdbusModem3gppUssdIface {
      */
     parentIface: GObject.TypeInterface
     handleCancel: (object: GdbusModem3gppUssd, invocation: Gio.DBusMethodInvocation) => boolean
-    handleInitiate: (object: GdbusModem3gppUssd, invocation: Gio.DBusMethodInvocation, argCommand: string | null) => boolean
-    handleRespond: (object: GdbusModem3gppUssd, invocation: Gio.DBusMethodInvocation, argResponse: string | null) => boolean
+    handleInitiate: (object: GdbusModem3gppUssd, invocation: Gio.DBusMethodInvocation, argCommand: string) => boolean
+    handleRespond: (object: GdbusModem3gppUssd, invocation: Gio.DBusMethodInvocation, argResponse: string) => boolean
     getNetworkNotification: (object: GdbusModem3gppUssd) => string | null
     getNetworkRequest: (object: GdbusModem3gppUssd) => string | null
     getState: (object: GdbusModem3gppUssd) => number
@@ -33833,7 +33833,7 @@ interface GdbusModemCdmaIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleActivate: (object: GdbusModemCdma, invocation: Gio.DBusMethodInvocation, argCarrierCode: string | null) => boolean
+    handleActivate: (object: GdbusModemCdma, invocation: Gio.DBusMethodInvocation, argCarrierCode: string) => boolean
     handleActivateManual: (object: GdbusModemCdma, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
     getActivationState: (object: GdbusModemCdma) => number
     getCdma1xRegistrationState: (object: GdbusModemCdma) => number
@@ -33930,7 +33930,7 @@ interface GdbusModemFirmwareIface {
      */
     parentIface: GObject.TypeInterface
     handleList: (object: GdbusModemFirmware, invocation: Gio.DBusMethodInvocation) => boolean
-    handleSelect: (object: GdbusModemFirmware, invocation: Gio.DBusMethodInvocation, argUniqueid: string | null) => boolean
+    handleSelect: (object: GdbusModemFirmware, invocation: Gio.DBusMethodInvocation, argUniqueid: string) => boolean
     getUpdateSettings: (object: GdbusModemFirmware) => GLib.Variant | null
 }
 
@@ -34018,11 +34018,11 @@ interface GdbusModemIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleCommand: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argCmd: string | null, argTimeout: number) => boolean
+    handleCommand: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argCmd: string, argTimeout: number) => boolean
     handleCreateBearer: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
-    handleDeleteBearer: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argBearer: string | null) => boolean
+    handleDeleteBearer: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argBearer: string) => boolean
     handleEnable: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argEnable: boolean) => boolean
-    handleFactoryReset: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argCode: string | null) => boolean
+    handleFactoryReset: (object: GdbusModem, invocation: Gio.DBusMethodInvocation, argCode: string) => boolean
     handleGetCellInfo: (object: GdbusModem, invocation: Gio.DBusMethodInvocation) => boolean
     handleListBearers: (object: GdbusModem, invocation: Gio.DBusMethodInvocation) => boolean
     handleReset: (object: GdbusModem, invocation: Gio.DBusMethodInvocation) => boolean
@@ -34092,7 +34092,7 @@ interface GdbusModemLocationIface {
     handleGetLocation: (object: GdbusModemLocation, invocation: Gio.DBusMethodInvocation) => boolean
     handleInjectAssistanceData: (object: GdbusModemLocation, invocation: Gio.DBusMethodInvocation, argData: GLib.Variant) => boolean
     handleSetGpsRefreshRate: (object: GdbusModemLocation, invocation: Gio.DBusMethodInvocation, argRate: number) => boolean
-    handleSetSuplServer: (object: GdbusModemLocation, invocation: Gio.DBusMethodInvocation, argSupl: string | null) => boolean
+    handleSetSuplServer: (object: GdbusModemLocation, invocation: Gio.DBusMethodInvocation, argSupl: string) => boolean
     handleSetup: (object: GdbusModemLocation, invocation: Gio.DBusMethodInvocation, argSources: number, argSignalLocation: boolean) => boolean
     getAssistanceDataServers: (object: GdbusModemLocation) => string[] | null
     getCapabilities: (object: GdbusModemLocation) => number
@@ -34189,13 +34189,13 @@ interface GdbusModemMessagingIface {
      */
     parentIface: GObject.TypeInterface
     handleCreate: (object: GdbusModemMessaging, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
-    handleDelete: (object: GdbusModemMessaging, invocation: Gio.DBusMethodInvocation, argPath: string | null) => boolean
+    handleDelete: (object: GdbusModemMessaging, invocation: Gio.DBusMethodInvocation, argPath: string) => boolean
     handleList: (object: GdbusModemMessaging, invocation: Gio.DBusMethodInvocation) => boolean
     getDefaultStorage: (object: GdbusModemMessaging) => number
     getMessages: (object: GdbusModemMessaging) => string[] | null
     getSupportedStorages: (object: GdbusModemMessaging) => GLib.Variant | null
-    added: (object: GdbusModemMessaging, argPath: string | null, argReceived: boolean) => void
-    deleted: (object: GdbusModemMessaging, argPath: string | null) => void
+    added: (object: GdbusModemMessaging, argPath: string, argReceived: boolean) => void
+    deleted: (object: GdbusModemMessaging, argPath: string) => void
 }
 
 /**
@@ -34597,7 +34597,7 @@ interface GdbusModemSimpleIface {
      */
     parentIface: GObject.TypeInterface
     handleConnect: (object: GdbusModemSimple, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
-    handleDisconnect: (object: GdbusModemSimple, invocation: Gio.DBusMethodInvocation, argBearer: string | null) => boolean
+    handleDisconnect: (object: GdbusModemSimple, invocation: Gio.DBusMethodInvocation, argBearer: string) => boolean
     handleGetStatus: (object: GdbusModemSimple, invocation: Gio.DBusMethodInvocation) => boolean
 }
 
@@ -34719,7 +34719,7 @@ interface GdbusModemTimeIface {
     parentIface: GObject.TypeInterface
     handleGetNetworkTime: (object: GdbusModemTime, invocation: Gio.DBusMethodInvocation) => boolean
     getNetworkTimezone: (object: GdbusModemTime) => GLib.Variant | null
-    networkTimeChanged: (object: GdbusModemTime, argTime: string | null) => void
+    networkTimeChanged: (object: GdbusModemTime, argTime: string) => void
 }
 
 /**
@@ -34809,7 +34809,7 @@ interface GdbusModemVoiceIface {
     handleCallWaitingQuery: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation) => boolean
     handleCallWaitingSetup: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation, argEnable: boolean) => boolean
     handleCreateCall: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
-    handleDeleteCall: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation, argPath: string | null) => boolean
+    handleDeleteCall: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation, argPath: string) => boolean
     handleHangupAll: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation) => boolean
     handleHangupAndAccept: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation) => boolean
     handleHoldAndAccept: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation) => boolean
@@ -34817,8 +34817,8 @@ interface GdbusModemVoiceIface {
     handleTransfer: (object: GdbusModemVoice, invocation: Gio.DBusMethodInvocation) => boolean
     getCalls: (object: GdbusModemVoice) => string[] | null
     getEmergencyOnly: (object: GdbusModemVoice) => boolean
-    callAdded: (object: GdbusModemVoice, argPath: string | null) => void
-    callDeleted: (object: GdbusModemVoice, argPath: string | null) => void
+    callAdded: (object: GdbusModemVoice, argPath: string) => void
+    callDeleted: (object: GdbusModemVoice, argPath: string) => void
 }
 
 /**
@@ -35023,10 +35023,10 @@ interface GdbusOrgFreedesktopModemManager1Iface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleInhibitDevice: (object: GdbusOrgFreedesktopModemManager1, invocation: Gio.DBusMethodInvocation, argUid: string | null, argInhibit: boolean) => boolean
+    handleInhibitDevice: (object: GdbusOrgFreedesktopModemManager1, invocation: Gio.DBusMethodInvocation, argUid: string, argInhibit: boolean) => boolean
     handleReportKernelEvent: (object: GdbusOrgFreedesktopModemManager1, invocation: Gio.DBusMethodInvocation, argProperties: GLib.Variant) => boolean
     handleScanDevices: (object: GdbusOrgFreedesktopModemManager1, invocation: Gio.DBusMethodInvocation) => boolean
-    handleSetLogging: (object: GdbusOrgFreedesktopModemManager1, invocation: Gio.DBusMethodInvocation, argLevel: string | null) => boolean
+    handleSetLogging: (object: GdbusOrgFreedesktopModemManager1, invocation: Gio.DBusMethodInvocation, argLevel: string) => boolean
     getVersion: (object: GdbusOrgFreedesktopModemManager1) => string | null
 }
 
@@ -35114,10 +35114,10 @@ interface GdbusSimIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleChangePin: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argOldPin: string | null, argNewPin: string | null) => boolean
-    handleEnablePin: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPin: string | null, argEnabled: boolean) => boolean
-    handleSendPin: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPin: string | null) => boolean
-    handleSendPuk: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPuk: string | null, argPin: string | null) => boolean
+    handleChangePin: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argOldPin: string, argNewPin: string) => boolean
+    handleEnablePin: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPin: string, argEnabled: boolean) => boolean
+    handleSendPin: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPin: string) => boolean
+    handleSendPuk: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPuk: string, argPin: string) => boolean
     handleSetPreferredNetworks: (object: GdbusSim, invocation: Gio.DBusMethodInvocation, argPreferredNetworks: GLib.Variant) => boolean
     getActive: (object: GdbusSim) => boolean
     getEid: (object: GdbusSim) => string | null
@@ -35465,17 +35465,17 @@ interface Modem3gppNetwork {
      * Get the operator code (MCCMNC) of the 3GPP network.
      * @returns The operator code, or %NULL if none available.
      */
-    getOperatorCode(): string | null
+    getOperatorCode(): string
     /**
      * Get the long operator name of the 3GPP network.
      * @returns The long operator name, or %NULL if none available.
      */
-    getOperatorLong(): string | null
+    getOperatorLong(): string
     /**
      * Get the short operator name of the 3GPP network.
      * @returns The long operator name, or %NULL if none available.
      */
-    getOperatorShort(): string | null
+    getOperatorShort(): string
 }
 
 /**
@@ -35938,7 +35938,7 @@ interface SimPreferredNetwork {
      * Get the operator code (MCCMNC) of the preferred network.
      * @returns The operator code, or %NULL if none available.
      */
-    getOperatorCode(): string | null
+    getOperatorCode(): string
     /**
      * Set the desired access technologies of this preferred network entry.
      * @param accessTechnology A #MMModemAccessTechnology mask.
@@ -35948,7 +35948,7 @@ interface SimPreferredNetwork {
      * Set the operator code (MCCMNC) of this preferred network.
      * @param operatorCode Operator code
      */
-    setOperatorCode(operatorCode: string | null): void
+    setOperatorCode(operatorCode: string): void
 }
 
 /**

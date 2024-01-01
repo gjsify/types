@@ -257,7 +257,7 @@ export enum VcsStatus {
     IGNORED,
     ALL,
 }
-export const SYSTEM_PROFILE_NAME: string | null
+export const SYSTEM_PROFILE_NAME: string
 export const VCS_DEFAULT_STATUS_CODES: number
 export function cclosure_marshal_VOID__BOXED_ENUM(closure: GObject.TClosure, return_value: any, n_param_values: number, param_values: any, invocation_hint: any | null, marshal_data: any | null): void
 export function cclosure_marshal_VOID__INT_INT_ULONG(closure: GObject.TClosure, return_value: any, n_param_values: number, param_values: any, invocation_hint: any | null, marshal_data: any | null): void
@@ -274,32 +274,32 @@ export function cclosure_marshal_VOID__STRING_POINTER(closure: GObject.TClosure,
  */
 export function check_autogen(): boolean
 export function convert_error_quark(): GLib.Quark
-export function convert_from_utf8(content: string | null, len: number, encoding: Encoding, new_len: number): string | null
-export function convert_to_utf8(content: string | null, len: number, encoding: Encoding, new_len: number): string | null
+export function convert_from_utf8(content: string, len: number, encoding: Encoding, new_len: number): string | null
+export function convert_to_utf8(content: string, len: number, encoding: Encoding, new_len: number): string | null
 export function encoding_get_current(): Encoding
-export function encoding_get_from_charset(charset: string | null): Encoding
+export function encoding_get_from_charset(charset: string): Encoding
 export function encoding_get_from_index(index: number): Encoding
 export function encoding_get_utf8(): Encoding
-export function pkg_config_get_version(package: string | null): string | null
-export function pkg_config_ignore_package(name: string | null): boolean
+export function pkg_config_get_version(package: string): string | null
+export function pkg_config_ignore_package(name: string): boolean
 export function plugin_description_parse_error_quark(): GLib.Quark
 export function plugin_manager_error_quark(): GLib.Quark
 export function profile_error_quark(): GLib.Quark
 export function res_get_data_dir(): string | null
-export function res_get_data_file(pixfile: string | null): string | null
+export function res_get_data_file(pixfile: string): string | null
 export function res_get_doc_dir(): string | null
-export function res_get_doc_file(docfile: string | null): string | null
+export function res_get_doc_file(docfile: string): string | null
 export function res_get_help_dir(): string | null
-export function res_get_help_dir_locale(locale: string | null): string | null
-export function res_get_help_file(helpfile: string | null): string | null
-export function res_get_help_file_locale(helpfile: string | null, locale: string | null): string | null
+export function res_get_help_dir_locale(locale: string): string | null
+export function res_get_help_file(helpfile: string): string | null
+export function res_get_help_file_locale(helpfile: string, locale: string): string | null
 export function res_get_pixmap_dir(): string | null
-export function res_get_pixmap_file(pixfile: string | null): string | null
-export function res_help_search(word: string | null): void
-export function res_url_show(url: string | null): void
+export function res_get_pixmap_file(pixfile: string): string | null
+export function res_help_search(word: string): void
+export function res_url_show(url: string): void
 export function shell_error_quark(): GLib.Quark
-export function util_color_from_string(val: string | null, r: number, g: number, b: number): void
-export function util_convert_to_utf8(str: string | null): string | null
+export function util_color_from_string(val: string, r: number, g: number, b: number): void
+export function util_convert_to_utf8(str: string): string | null
 /**
  * Copies `src` to `dest` and shows a dialog error in case is needed.
  * @param src the file where copy
@@ -307,20 +307,20 @@ export function util_convert_to_utf8(str: string | null): string | null
  * @param show_error %TRUE to show a dialog error
  * @returns %TRUE if there was an error copying the file.
  */
-export function util_copy_file(src: string | null, dest: string | null, show_error: boolean): boolean
-export function util_create_dir(d: string | null): boolean
-export function util_dialog_input(parent: Gtk.Window, label: string | null, default_value: string | null, value: string | null): boolean
-export function util_diff(uri: string | null, text: string | null): boolean
-export function util_escape_quotes(str: string | null): string | null
-export function util_execute_shell(dir: string | null, command: string | null): GLib.Pid
-export function util_execute_terminal_shell(dir: string | null, command: string | null): GLib.Pid
+export function util_copy_file(src: string, dest: string, show_error: boolean): boolean
+export function util_create_dir(d: string): boolean
+export function util_dialog_input(parent: Gtk.Window, label: string, default_value: string, value: string | null): boolean
+export function util_diff(uri: string, text: string): boolean
+export function util_escape_quotes(str: string): string | null
+export function util_execute_shell(dir: string, command: string): GLib.Pid
+export function util_execute_terminal_shell(dir: string, command: string): GLib.Pid
 /**
  * Create a new file corresponding to arg, unlike g_file_new_for_commandline_arg,
  * keeps symbolic links in path name.
  * @param arg URI or relative or absolute file path
  * @returns A new GFile object
  */
-export function util_file_new_for_commandline_arg(arg: string | null): Gio.File
+export function util_file_new_for_commandline_arg(arg: string): Gio.File
 export function util_get_a_tmp_file(): string | null
 /**
  * Get current working directory, unlike g_get_current_dir, keeps symbolic links
@@ -330,10 +330,10 @@ export function util_get_a_tmp_file(): string | null
 export function util_get_current_dir(): string | null
 export function util_get_file_info_mime_type(info: Gio.FileInfo): string | null
 export function util_get_file_mime_type(file: Gio.File): string | null
-export function util_get_local_path_from_uri(uri: string | null): string | null
-export function util_get_real_path(path: string | null): string | null
+export function util_get_local_path_from_uri(uri: string): string | null
+export function util_get_real_path(path: string): string | null
 export function util_get_user_mail(): string | null
-export function util_help_display(parent: Gtk.Widget, doc_id: string | null, item: string | null): void
+export function util_help_display(parent: Gtk.Widget, doc_id: string, item: string): void
 export function util_install_files(names: string): boolean
 /**
  * Return %TRUE if the file is an anjuta project file. It is implemented by
@@ -343,7 +343,7 @@ export function util_install_files(names: string): boolean
  * @param filename the file name
  * @returns %TRUE if the file is a project file, else %FALSE
  */
-export function util_is_project_file(filename: string | null): boolean
+export function util_is_project_file(filename: string): boolean
 /**
  * Return %TRUE if the file is an template project file. It is implemented by
  * checking only the file extension. So it does not check the existence
@@ -352,29 +352,29 @@ export function util_is_project_file(filename: string | null): boolean
  * @param filename the file name
  * @returns %TRUE if the file is a template file, else %FALSE
  */
-export function util_is_template_file(filename: string | null): boolean
-export function util_package_is_installed(lib: string | null, show: boolean): boolean
+export function util_is_template_file(filename: string): boolean
+export function util_package_is_installed(lib: string, show: boolean): boolean
 /**
  * Parse arguments from a string to a GList.
  * @param string arguments
  * @returns A newly allocated GList of strings.
  */
-export function util_parse_args_from_string(string: string | null): string[]
-export function util_prog_is_installed(prog: string | null, show: boolean): boolean
-export function util_replace_home_dir_with_tilde(uri: string | null): string | null
-export function util_set_anjuta_prefix(name: string | null): void
-export function util_set_user_mail(id: string | null): void
+export function util_parse_args_from_string(string: string): string[]
+export function util_prog_is_installed(prog: string, show: boolean): boolean
+export function util_replace_home_dir_with_tilde(uri: string): string | null
+export function util_set_anjuta_prefix(name: string): void
+export function util_set_user_mail(id: string): void
 /**
  * Expand environment variables $(var_name) and tilde (~) in the input string.
  * @param string input string
  * @returns a newly-allocated string that must be freed with g_free().
  */
-export function util_shell_expand(string: string | null): string | null
-export function util_str_middle_truncate(string: string | null, truncate_length: number): string | null
+export function util_shell_expand(string: string): string | null
+export function util_str_middle_truncate(string: string, truncate_length: number): string | null
 export function util_string_from_color(r: number, g: number, b: number): string | null
-export function util_string_from_type(map: UtilStringMap, type: number): string | null
-export function util_type_from_string(map: UtilStringMap, str: string | null): number
-export function util_uri_get_dirname(uri: string | null): string | null
+export function util_string_from_type(map: UtilStringMap, type: number): string
+export function util_type_from_string(map: UtilStringMap, str: string): number
+export function util_uri_get_dirname(uri: string): string | null
 /**
  * Retrieves the user's preferred shell.
  * @returns A newly allocated string that is the path to the shell.
@@ -401,13 +401,13 @@ export interface AutogenFunc {
  * @param data user data passed to the callback.
  */
 export interface AutogenOutputFunc {
-    (output: string | null, data: any | null): void
+    (output: string, data: any | null): void
 }
 export interface CompletionFilterFunc {
     (item: any | null): boolean
 }
 export interface CompletionNameFunc {
-    (item: any | null): string | null
+    (item: any | null): string
 }
 /**
  * This callback is called when new characters arrive from the launcher
@@ -418,13 +418,13 @@ export interface CompletionNameFunc {
  * @param chars Characters being outputed
  */
 export interface LauncherOutputCallback {
-    (launcher: Launcher, output_type: LauncherOutputType, chars: string | null): void
+    (launcher: Launcher, output_type: LauncherOutputType, chars: string): void
 }
 export interface PluginDescriptionLineFunc {
-    (df: PluginDescription, key: string | null, locale: string | null, value: string | null, data: any | null): void
+    (df: PluginDescription, key: string, locale: string, value: string, data: any | null): void
 }
 export interface PluginDescriptionSectionFunc {
-    (df: PluginDescription, name: string | null): void
+    (df: PluginDescription, name: string): void
 }
 /**
  * The callback to pass to anjuta_plugin_add_watch(). When a `name` value
@@ -435,7 +435,7 @@ export interface PluginDescriptionSectionFunc {
  * @param value value of value being added.
  */
 export interface PluginValueAdded {
-    (plugin: Plugin, name: string | null, value: any): void
+    (plugin: Plugin, name: string, value: any): void
 }
 /**
  * The callback to pass to anjuta_plugin_add_watch(). When the `name` value
@@ -446,10 +446,10 @@ export interface PluginValueAdded {
  * @param name name of value being added.
  */
 export interface PluginValueRemoved {
-    (plugin: Plugin, name: string | null): void
+    (plugin: Plugin, name: string): void
 }
 export interface PreferencesCallback {
-    (pr: Preferences, key: string | null, data: any | null): boolean
+    (pr: Preferences, key: string, data: any | null): boolean
 }
 export interface ProjectNodeForeachFunc {
     (node: ProjectNode): void
@@ -521,7 +521,7 @@ export interface Shell {
      * @param name Name of the value
      * @param value Value to add
      */
-    add_value(name: string | null, value: any): void
+    add_value(name: string, value: any): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -532,7 +532,7 @@ export interface Shell {
      * @param stock_id Icon stock ID. Could be null.
      * @param placement Placement of the widget in shell.
      */
-    add_widget(widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, placement: ShellPlacement): void
+    add_widget(widget: Gtk.Widget, name: string, title: string, stock_id: string, placement: ShellPlacement): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -546,7 +546,7 @@ export interface Shell {
      * @param label Label widget to use
      * @param placement Placement of the widget in shell.
      */
-    add_widget_custom(widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, label: Gtk.Widget, placement: ShellPlacement): void
+    add_widget_custom(widget: Gtk.Widget, name: string, title: string, stock_id: string, label: Gtk.Widget, placement: ShellPlacement): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -561,7 +561,7 @@ export interface Shell {
      * @param placement Placement of the widget in shell.
      * @param locked Whether to lock that widget (do not use this, it's only 			useful to some stock plugins
      */
-    add_widget_full(widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, placement: ShellPlacement, locked: boolean): void
+    add_widget_full(widget: Gtk.Widget, name: string, title: string, stock_id: string, placement: ShellPlacement, locked: boolean): void
     /**
      * Freezes addition of any UI elements (widgets) in the shell. All widget
      * additions are queued for later additions when freeze count reaches 0.
@@ -590,7 +590,7 @@ export interface Shell {
      * @param iface_name The interface implemented by the object to be found
      * @returns A plugin object implementing the primary interface or %NULL.
      */
-    get_object(iface_name: string | null): GObject.Object
+    get_object(iface_name: string): GObject.Object
     /**
      * Retrieves the #AnjutaPluginManager object associated with the shell.
      * @returns The #AnjutaPluginManager object.
@@ -622,7 +622,7 @@ export interface Shell {
      * @param name Name of the value to get
      * @param value Value to get
      */
-    get_value(name: string | null, value: any): void
+    get_value(name: string, value: any): void
     /**
      * If the widget is dockable, it hides it.
      * @param widget a #GtkWidget to hide.
@@ -637,7 +637,7 @@ export interface Shell {
      * Maximizes a widget so it will occupy all the possible space.
      * @param widget_name Name of the widget to be maximized.
      */
-    maximize_widget(widget_name: string | null): void
+    maximize_widget(widget_name: string): void
     /**
      * Make sure the widget is visible to user. If the widget is hidden, it will
      * be shown. If it is not visible to user, it will be made visible.
@@ -650,7 +650,7 @@ export interface Shell {
      * data/internal-state accordingly.
      * @param name Name of the value to remove
      */
-    remove_value(name: string | null): void
+    remove_value(name: string): void
     /**
      * Removes the widget from shell. The widget should have been added before
      * with #anjuta_shell_add_widget.
@@ -666,8 +666,8 @@ export interface Shell {
      * Increase the count of files that need to be saved
      */
     saving_push(): void
-    session_load(session_directory: string | null): void
-    session_save(session_directory: string | null): void
+    session_load(session_directory: string): void
+    session_save(session_directory: string): void
     /**
      * If the widget was hidden or iconified, it will make it visible.
      * @param widget a #GtkWidget to show.
@@ -694,7 +694,7 @@ export interface Shell {
      * @param name Name of the value
      * @param value Value to add
      */
-    vfunc_add_value(name: string | null, value: any): void
+    vfunc_add_value(name: string, value: any): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -709,7 +709,7 @@ export interface Shell {
      * @param label Label widget to use
      * @param placement Placement of the widget in shell.
      */
-    vfunc_add_widget_custom(widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, label: Gtk.Widget, placement: ShellPlacement): void
+    vfunc_add_widget_custom(widget: Gtk.Widget, name: string, title: string, stock_id: string, label: Gtk.Widget, placement: ShellPlacement): void
     /**
      * Adds `widget` in the shell. The `placement` tells where the widget should
      * appear, but generally it will be overridden by the container
@@ -725,7 +725,7 @@ export interface Shell {
      * @param placement Placement of the widget in shell.
      * @param locked Whether to lock that widget (do not use this, it's only 			useful to some stock plugins
      */
-    vfunc_add_widget_full(widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, placement: ShellPlacement, locked: boolean): void
+    vfunc_add_widget_full(widget: Gtk.Widget, name: string, title: string, stock_id: string, placement: ShellPlacement, locked: boolean): void
     /**
      * Searches the currently available plugins to find the one which
      * implements the given interface as primary interface and returns it. If
@@ -747,7 +747,7 @@ export interface Shell {
      * @param iface_name The interface implemented by the object to be found
      * @returns A plugin object implementing the primary interface or %NULL.
      */
-    vfunc_get_object(iface_name: string | null): GObject.Object
+    vfunc_get_object(iface_name: string): GObject.Object
     /**
      * Retrieves the #AnjutaPluginManager object associated with the shell.
      * @virtual 
@@ -785,7 +785,7 @@ export interface Shell {
      * @param name Name of the value to get
      * @param value Value to get
      */
-    vfunc_get_value(name: string | null, value: any): void
+    vfunc_get_value(name: string, value: any): void
     /**
      * If the widget is dockable, it hides it.
      * @virtual 
@@ -804,7 +804,7 @@ export interface Shell {
      * @virtual 
      * @param widget_name Name of the widget to be maximized.
      */
-    vfunc_maximize_widget(widget_name: string | null): void
+    vfunc_maximize_widget(widget_name: string): void
     /**
      * Make sure the widget is visible to user. If the widget is hidden, it will
      * be shown. If it is not visible to user, it will be made visible.
@@ -819,7 +819,7 @@ export interface Shell {
      * @virtual 
      * @param name Name of the value to remove
      */
-    vfunc_remove_value(name: string | null): void
+    vfunc_remove_value(name: string): void
     /**
      * Removes the widget from shell. The widget should have been added before
      * with #anjuta_shell_add_widget.
@@ -945,7 +945,7 @@ export class AsyncCommand extends Command {
      * @param command AnjutaAsyncCommand object
      * @param error_message The error message that should be used
      */
-    static set_error_message(command: Command, error_message: string | null): void
+    static set_error_message(command: Command, error_message: string): void
 }
 
 export module AsyncNotify {
@@ -1084,7 +1084,7 @@ export interface Autogen {
      * @param end_marker end marker string
      * @returns %TRUE if the file has been read without error.
      */
-    set_input_file(filename: string | null, start_marker: string | null, end_marker: string | null): boolean
+    set_input_file(filename: string, start_marker: string | null, end_marker: string | null): boolean
     /**
      * Add a new directory in the list of autogen libraries path.
      * 
@@ -1093,7 +1093,7 @@ export interface Autogen {
      * add other directories.
      * @param directory A path containing autogen library.
      */
-    set_library_path(directory: string | null): void
+    set_library_path(directory: string): void
     /**
      * Define that autogen output should be send to a function as soon as it arrives.
      * @param func Function call each time we get new data from autogen
@@ -1105,7 +1105,7 @@ export interface Autogen {
      * @param filename name of the generated file
      * @returns %TRUE if the file has been set without error.
      */
-    set_output_file(filename: string | null): boolean
+    set_output_file(filename: string): boolean
     /**
      * Write the autogen definition file. The definition file defined variables
      * those will be used, typically replaced, in the template files.
@@ -1229,7 +1229,7 @@ export class CModule extends GObject.TypeModule {
      * @param name The name of the module
      * @returns a new #AnjutaCModule object.
      */
-    constructor(path: string | null, name: string | null) 
+    constructor(path: string, name: string) 
     /**
      * Create a new #AnjutaCModule object.
      * @constructor 
@@ -1237,7 +1237,7 @@ export class CModule extends GObject.TypeModule {
      * @param name The name of the module
      * @returns a new #AnjutaCModule object.
      */
-    static new(path: string | null, name: string | null): CModule
+    static new(path: string, name: string): CModule
     _init(config?: CModule.ConstructorProperties): void
 }
 
@@ -1422,7 +1422,7 @@ export interface CellRendererDiff {
 
     // Owm methods of Anjuta-3.0.Anjuta.CellRendererDiff
 
-    set_diff(diff: string | null): void
+    set_diff(diff: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.CellRendererDiff
 
@@ -1525,7 +1525,7 @@ export interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.A
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1537,7 +1537,7 @@ export interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.A
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1551,7 +1551,7 @@ export interface CloseButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.A
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.CloseButton
 
@@ -1774,7 +1774,7 @@ export interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1788,7 +1788,7 @@ export interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1799,7 +1799,7 @@ export interface ColumnTextView extends Atk.ImplementorIface, Gtk.Buildable, Gtk
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.ColumnTextView
 
@@ -2058,7 +2058,7 @@ export interface Command {
      * of failure.
      * @param error_message Error message.
      */
-    set_error_message(error_message: string | null): void
+    set_error_message(error_message: string): void
     /**
      * Starts a command. Client code can handle data from the command by connecting
      * to the ::data-arrived signal.
@@ -2127,7 +2127,7 @@ export interface Command {
      * @virtual 
      * @param error_message Error message.
      */
-    vfunc_set_error_message(error_message: string | null): void
+    vfunc_set_error_message(error_message: string): void
     /**
      * Starts a command. Client code can handle data from the command by connecting
      * to the ::data-arrived signal.
@@ -2221,18 +2221,18 @@ export interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param entries A list of entries to add
      * @param user_data User data to pass to the entry callback
      */
-    add_action_group(group_name: string | null, entries: CommandBarEntry[], user_data: any | null): void
+    add_action_group(group_name: string, entries: CommandBarEntry[], user_data: any | null): void
     /**
      * Removes an action group from an AnjutaCommandBar.
      * @param group_name Name of the action group to remove
      */
-    remove_action_group(group_name: string | null): void
+    remove_action_group(group_name: string): void
     /**
      * Causes the actions in the given group to become visible, replacing the
      * previously visible group.
      * @param group_name The name of the action group to show
      */
-    show_action_group(group_name: string | null): void
+    show_action_group(group_name: string): void
 
     // Conflicting methods
 
@@ -2247,7 +2247,7 @@ export interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2261,7 +2261,7 @@ export interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2272,7 +2272,7 @@ export interface CommandBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.CommandBar
 
@@ -2625,7 +2625,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param user_data User data to pass to the entry callback
      * @returns %TRUE if the pane was added, or %FALSE if a pane with the same name already exists in the dock
      */
-    add_pane(pane_name: string | null, pane_label: string | null, stock_icon: string | null, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: any | null): boolean
+    add_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: any | null): boolean
     /**
      * Does the same thing as anjuta_dock_add_pane, but allows GDL dock behavior
      * flags to be specified.
@@ -2639,7 +2639,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param behavior Any combination of #GdlDockItemBehavior flags
      * @returns %TRUE if the pane was added, or %FALSE if a pane with the same name already exists in the dock
      */
-    add_pane_full(pane_name: string | null, pane_label: string | null, stock_icon: string | null, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: any | null, behavior: Gdl.DockItemBehavior): boolean
+    add_pane_full(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: any | null, behavior: Gdl.DockItemBehavior): boolean
     get_command_bar(): CommandBar | null
     /**
      * Makes the given pane invisible
@@ -2670,7 +2670,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param entries #AnjutaCommandBar entries 		 for this pane. Can be %NULL
      * @param user_data User data to pass to the entry callback
      */
-    replace_command_pane(pane_name: string | null, pane_label: string | null, stock_icon: string | null, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: any | null): void
+    replace_command_pane(pane_name: string, pane_label: string, stock_icon: string, pane: DockPane, placement: Gdl.DockPlacement, entries: CommandBarEntry[] | null, user_data: any | null): void
     /**
      * Associates an #AnjutaCommandBar with this dock. Command bars can be used to
      * provide different sets of commands based on the currently visible pane.
@@ -2778,7 +2778,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2792,7 +2792,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2803,7 +2803,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.Dock
 
@@ -3439,13 +3439,13 @@ export interface Entry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
     // Owm methods of Anjuta-3.0.Anjuta.Entry
 
     dup_text(): string | null
-    get_text(): string | null
+    get_text(): string
     is_showing_help_text(): boolean
     /**
      * Sets the text on the entry, showing the help text if the text is empty.
      * @param text The new text
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.Entry
 
@@ -3778,7 +3778,7 @@ export interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
     // Owm methods of Anjuta-3.0.Anjuta.EnvironmentEditor
 
     reset(): void
-    set_variable(variable: string | null): void
+    set_variable(variable: string): void
 
     // Conflicting methods
 
@@ -3793,7 +3793,7 @@ export interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3807,7 +3807,7 @@ export interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3818,7 +3818,7 @@ export interface EnvironmentEditor extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Anjuta-3.0.Anjuta.EnvironmentEditor
 
@@ -4007,7 +4007,7 @@ export interface FileDropEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
 
     // Owm methods of Anjuta-3.0.Anjuta.FileDropEntry
 
-    set_relative_path(path: string | null): void
+    set_relative_path(path: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.FileDropEntry
 
@@ -4344,7 +4344,7 @@ export interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
     // Owm methods of Anjuta-3.0.Anjuta.FileList
 
     clear(): void
-    set_relative_path(path: string | null): void
+    set_relative_path(path: string): void
 
     // Conflicting methods
 
@@ -4359,7 +4359,7 @@ export interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4373,7 +4373,7 @@ export interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4384,7 +4384,7 @@ export interface FileList extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.FileList
 
@@ -4596,7 +4596,7 @@ export interface LanguageProvider {
      * @param scope_context_ch language-specific context characters                    the end is marked with a '0' character
      * @returns name of the method to show a calltip for or %NULL
      */
-    get_calltip_context(itip: GObject.Object, iter: GObject.Object, scope_context_ch: string | null): string | null
+    get_calltip_context(itip: GObject.Object, iter: GObject.Object, scope_context_ch: string): string | null
     /**
      * Search for the current typed word
      * @param editor IAnjutaEditor object
@@ -4605,7 +4605,7 @@ export interface LanguageProvider {
      * @param word_characters 
      * @returns The current word (needs to be freed) or %NULL if no word was found
      */
-    get_pre_word(editor: GObject.Object, iter: GObject.Object, start_iter: GObject.Object, word_characters: string | null): string | null
+    get_pre_word(editor: GObject.Object, iter: GObject.Object, start_iter: GObject.Object, word_characters: string): string | null
     /**
      * Install the settings for AnjutaLanguageProvider
      * @param ieditor IAnjutaEditor object
@@ -4697,12 +4697,12 @@ export interface Launcher {
      * read from TTY input of the process.
      * @param input_str The string to send to PTY of the process.
      */
-    send_ptyin(input_str: string | null): void
+    send_ptyin(input_str: string): void
     /**
      * Sends a string to Standard input of the process currently being executed.
      * @param input_str The string to send to STDIN of the process.
      */
-    send_stdin(input_str: string | null): void
+    send_stdin(input_str: string): void
     /**
      * Sends a EOF to Standard input of the process currently being executed.
      */
@@ -4724,7 +4724,7 @@ export interface Launcher {
      * Sets the character set to use for Input/Output with the process.
      * @param charset Character set to use for Input/Output with the process.
      */
-    set_encoding(charset: string | null): void
+    set_encoding(charset: string): void
     /**
      * Sets if input (those given in STDIN) should enabled or disabled. By default,
      * it is disabled.
@@ -4848,7 +4848,7 @@ export interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, G
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4862,7 +4862,7 @@ export interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4873,12 +4873,12 @@ export interface PkgConfigChooser extends Atk.ImplementorIface, Gtk.Buildable, G
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Anjuta-3.0.Anjuta.PkgConfigChooser
 
-    vfunc_package_activated(package: string | null): void
-    vfunc_package_deactivated(package: string | null): void
+    vfunc_package_activated(package: string): void
+    vfunc_package_deactivated(package: string): void
 
     // Own signals of Anjuta-3.0.Anjuta.PkgConfigChooser
 
@@ -5132,8 +5132,8 @@ export interface PkgScanner {
 
     // Owm methods of Anjuta-3.0.Anjuta.PkgScanner
 
-    get_package(): string | null
-    get_version(): string | null
+    get_package(): string
+    get_version(): string
 
     // Class property signals of Anjuta-3.0.Anjuta.PkgScanner
 
@@ -5159,8 +5159,8 @@ export class PkgScanner extends AsyncCommand {
     // Constructors of Anjuta-3.0.Anjuta.PkgScanner
 
     constructor(config?: PkgScanner.ConstructorProperties) 
-    constructor(package: string | null, version: string | null) 
-    static new(package: string | null, version: string | null): PkgScanner
+    constructor(package: string, version: string) 
+    static new(package: string, version: string): PkgScanner
     _init(config?: PkgScanner.ConstructorProperties): void
 }
 
@@ -5224,7 +5224,7 @@ export interface Plugin {
      * @param removed Callback to call when the value is removed.
      * @returns Watch ID.
      */
-    add_watch(name: string | null, added: PluginValueAdded, removed: PluginValueRemoved): number
+    add_watch(name: string, added: PluginValueAdded, removed: PluginValueRemoved): number
     /**
      * Deactivates the plugin by calling deactivate() virtual method. All plugins
      * should derive their classes from this virtual class and implement this
@@ -5343,16 +5343,16 @@ export interface PluginHandle {
 
     // Owm methods of Anjuta-3.0.Anjuta.PluginHandle
 
-    get_about(): string | null
+    get_about(): string
     get_can_load(): boolean
     get_can_unload(): boolean
     get_checked(): boolean
     get_description(): PluginDescription
-    get_icon_path(): string | null
-    get_id(): string | null
-    get_language(): string | null
-    get_name(): string | null
-    get_path(): string | null
+    get_icon_path(): string
+    get_id(): string
+    get_language(): string
+    get_name(): string
+    get_path(): string
     get_resident(): boolean
     get_resolve_pass(): number
     get_user_activatable(): boolean
@@ -5431,8 +5431,8 @@ export class PluginHandle extends GObject.Object {
     // Constructors of Anjuta-3.0.Anjuta.PluginHandle
 
     constructor(config?: PluginHandle.ConstructorProperties) 
-    constructor(plugin_desc_path: string | null) 
-    static new(plugin_desc_path: string | null): PluginHandle
+    constructor(plugin_desc_path: string) 
+    static new(plugin_desc_path: string): PluginHandle
     _init(config?: PluginHandle.ConstructorProperties): void
 }
 
@@ -5501,7 +5501,7 @@ export interface PluginManager {
      * @param iface_name The interface implemented by the object to be found
      * @returns %TRUE is the plugin is currently loaded.
      */
-    is_active_plugin(iface_name: string | null): boolean
+    is_active_plugin(iface_name: string): boolean
     /**
      * Set the list of plugins loaded when there is a choice between several
      * ones without asking the user.
@@ -5517,7 +5517,7 @@ export interface PluginManager {
      * SymbolDBPlugin, it will choose SymbolDBPlugin.
      * @param remembered_plugins A list of prefered plugins
      */
-    set_remembered_plugins(remembered_plugins: string | null): void
+    set_remembered_plugins(remembered_plugins: string): void
     /**
      * Unload all plugins. Do not take care of the dependencies because all plugins
      * are unloaded anyway.
@@ -5604,7 +5604,7 @@ export interface Preferences {
 
     // Owm methods of Anjuta-3.0.Anjuta.Preferences
 
-    add_from_builder(builder: Gtk.Builder, settings: Gio.Settings, glade_widget_name: string | null, stitle: string | null, icon_filename: string | null): void
+    add_from_builder(builder: Gtk.Builder, settings: Gio.Settings, glade_widget_name: string, stitle: string, icon_filename: string): void
     is_dialog_created(): boolean
     /**
      * This will register all the properties names of the format described above
@@ -5624,8 +5624,8 @@ export interface Preferences {
      * @param key Property key
      * @returns %TRUE if sucessful.
      */
-    register_property(settings: Gio.Settings, object: Gtk.Widget, key: string | null): boolean
-    remove_page(page_name: string | null): void
+    register_property(settings: Gio.Settings, object: Gtk.Widget, key: string): boolean
+    remove_page(page_name: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.Preferences
 
@@ -5652,7 +5652,7 @@ export class Preferences extends GObject.Object {
      * @param common_schema_id Common schema id used for key starting with .
      * @returns A #AnjutaPreferences object.
      */
-    constructor(plugin_manager: PluginManager, common_schema_id: string | null) 
+    constructor(plugin_manager: PluginManager, common_schema_id: string) 
     /**
      * Creates a new #AnjutaPreferences object
      * @constructor 
@@ -5660,7 +5660,7 @@ export class Preferences extends GObject.Object {
      * @param common_schema_id Common schema id used for key starting with .
      * @returns A #AnjutaPreferences object.
      */
-    static new(plugin_manager: PluginManager, common_schema_id: string | null): Preferences
+    static new(plugin_manager: PluginManager, common_schema_id: string): Preferences
     _init(config?: Preferences.ConstructorProperties): void
 }
 
@@ -5694,12 +5694,12 @@ export interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param icon Icon file name.
      * @param page page widget.
      */
-    add_page(name: string | null, title: string | null, icon: GdkPixbuf.Pixbuf, page: Gtk.Widget): void
+    add_page(name: string, title: string, icon: GdkPixbuf.Pixbuf, page: Gtk.Widget): void
     /**
      * Removes a preferences page.
      * @param title Name of the preferences page.
      */
-    remove_page(title: string | null): void
+    remove_page(title: string): void
 
     // Conflicting methods
 
@@ -5736,7 +5736,7 @@ export interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -5750,7 +5750,7 @@ export interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -5761,7 +5761,7 @@ export interface PreferencesDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.PreferencesDialog
 
@@ -6152,7 +6152,7 @@ export interface Profile {
      * Get the profile name.
      * @returns the profile name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Check if a plugin is included in the profile plugin list.
      * @param plugin a #AnjutaPluginHandle
@@ -6249,7 +6249,7 @@ export class Profile extends GObject.Object {
      * @param plugin_manager the #AnjutaPluginManager used by this profile.
      * @returns the new #AnjutaProfile object.
      */
-    constructor(name: string | null, plugin_manager: PluginManager) 
+    constructor(name: string, plugin_manager: PluginManager) 
     /**
      * Create a new profile.
      * @constructor 
@@ -6257,7 +6257,7 @@ export class Profile extends GObject.Object {
      * @param plugin_manager the #AnjutaPluginManager used by this profile.
      * @returns the new #AnjutaProfile object.
      */
-    static new(name: string | null, plugin_manager: PluginManager): Profile
+    static new(name: string, plugin_manager: PluginManager): Profile
     _init(config?: Profile.ConstructorProperties): void
 }
 
@@ -6465,12 +6465,12 @@ export interface ProjectNode {
     get_file(): Gio.File
     get_full_type(): ProjectNodeType
     get_group_from_file(directory: Gio.File): ProjectNode
-    get_map_property(id: string | null, name: string | null): ProjectProperty
-    get_name(): string | null
+    get_map_property(id: string, name: string): ProjectProperty
+    get_name(): string
     get_node_type(): ProjectNodeType
     get_properties(): ProjectProperty[]
     get_properties_info(): ProjectPropertyInfo[]
-    get_property(id: string | null): ProjectProperty
+    get_property(id: string): ProjectProperty
 
     // Overloads of get_property
 
@@ -6494,8 +6494,8 @@ export interface ProjectNode {
      * @param property_name the name of the property to get
      * @param value return location for the property value
      */
-    get_property(property_name: string | null, value: any): void
-    get_property_info(id: string | null): ProjectPropertyInfo
+    get_property(property_name: string, value: any): void
+    get_property_info(id: string): ProjectPropertyInfo
     get_source_from_file(file: Gio.File): ProjectNode
     get_state(): ProjectNodeState
     insert_after(sibling: ProjectNode | null, node: ProjectNode): ProjectNode
@@ -6622,7 +6622,7 @@ export interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -6636,7 +6636,7 @@ export interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -6647,7 +6647,7 @@ export interface SavePrompt extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.SavePrompt
 
@@ -6990,12 +6990,12 @@ export interface Serializer {
 
     // Owm methods of Anjuta-3.0.Anjuta.Serializer
 
-    read_float(name: string | null, value: number): boolean
-    read_int(name: string | null, value: number): boolean
-    read_string(name: string | null, value: string | null, replace: boolean): boolean
-    write_float(name: string | null, value: number): boolean
-    write_int(name: string | null, value: number): boolean
-    write_string(name: string | null, value: string | null): boolean
+    read_float(name: string, value: number): boolean
+    read_int(name: string, value: number): boolean
+    read_string(name: string, value: string | null, replace: boolean): boolean
+    write_float(name: string, value: number): boolean
+    write_int(name: string, value: number): boolean
+    write_string(name: string, value: string): boolean
 
     // Class property signals of Anjuta-3.0.Anjuta.Serializer
 
@@ -7021,8 +7021,8 @@ export class Serializer extends GObject.Object {
     // Constructors of Anjuta-3.0.Anjuta.Serializer
 
     constructor(config?: Serializer.ConstructorProperties) 
-    constructor(filepath: string | null, mode: SerializerMode) 
-    static new(filepath: string | null, mode: SerializerMode): Serializer
+    constructor(filepath: string, mode: SerializerMode) 
+    static new(filepath: string, mode: SerializerMode): Serializer
     _init(config?: Serializer.ConstructorProperties): void
 }
 
@@ -7052,7 +7052,7 @@ export interface Session {
      * Clears the given section in session object.
      * @param section Section to clear.
      */
-    clear_section(section: string | null): void
+    clear_section(section: string): void
     /**
      * Return a GFile corresponding to the URI and and optional fragment,
      * normally read from a session key.
@@ -7065,21 +7065,21 @@ export interface Session {
      * @param fragment fragment part of the URI if existing, can be %NULL
      * @returns A new GFile that has to be freed with g_object_unref().
      */
-    get_file_from_relative_uri(uri: string | null, fragment: string | null): Gio.File
+    get_file_from_relative_uri(uri: string, fragment: string | null): Gio.File
     /**
      * Get a float `value` of `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @returns Key value
      */
-    get_float(section: string | null, key: string | null): number
+    get_float(section: string, key: string): number
     /**
      * Get an integer `value` of `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @returns Key value
      */
-    get_int(section: string | null, key: string | null): number
+    get_int(section: string, key: string): number
     /**
      * Return an URI relative to the session directory file with an optional
      * fragment.
@@ -7089,12 +7089,12 @@ export interface Session {
      * @param fragment an optional fragment
      * @returns A string that has to be freed with g_free().
      */
-    get_relative_uri_from_file(file: Gio.File, fragment: string | null): string | null
+    get_relative_uri_from_file(file: Gio.File, fragment: string): string | null
     /**
      * Returns the directory corresponding to this session object.
      * @returns session directory
      */
-    get_session_directory(): string | null
+    get_session_directory(): string
     /**
      * Gets the session filename corresponding to this session object.
      * @returns session (absolute) filename
@@ -7106,28 +7106,28 @@ export interface Session {
      * @param key Key name.
      * @returns Key value
      */
-    get_string(section: string | null, key: string | null): string | null
+    get_string(section: string, key: string): string | null
     /**
      * Set a float `value` to `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @param value Key value
      */
-    set_float(section: string | null, key: string | null, value: number): void
+    set_float(section: string, key: string, value: number): void
     /**
      * Set an integer `value` to `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @param value Key value
      */
-    set_int(section: string | null, key: string | null, value: number): void
+    set_int(section: string, key: string, value: number): void
     /**
      * Set a string `value` to `key` in given `section`.
      * @param section Section.
      * @param key Key name.
      * @param value Key value
      */
-    set_string(section: string | null, key: string | null, value: string | null): void
+    set_string(section: string, key: string, value: string): void
     /**
      * Synchronizes session object with session file
      */
@@ -7159,7 +7159,7 @@ export class Session extends GObject.Object {
      * @param session_directory Directory where session is loaded from/saved to.
      * @returns an #AnjutaSession Object
      */
-    constructor(session_directory: string | null) 
+    constructor(session_directory: string) 
     /**
      * Created a new session object. `session_directory` is the directory
      * where session information will be stored or loaded in case of existing
@@ -7168,7 +7168,7 @@ export class Session extends GObject.Object {
      * @param session_directory Directory where session is loaded from/saved to.
      * @returns an #AnjutaSession Object
      */
-    static new(session_directory: string | null): Session
+    static new(session_directory: string): Session
     _init(config?: Session.ConstructorProperties): void
 }
 
@@ -7207,12 +7207,12 @@ export interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
     disable_splash(disable_splash: boolean): void
     pop(): void
     progress_add_ticks(ticks: number): void
-    progress_increment_ticks(ticks: number, text: string | null): void
-    progress_pulse(text: string | null): void
+    progress_increment_ticks(ticks: number, text: string): void
+    progress_pulse(text: string): void
     progress_reset(): void
-    progress_tick(icon: GdkPixbuf.Pixbuf, text: string | null): void
-    set_splash(splash_file: string | null, splash_progress_position: number): void
-    set_title(title: string | null): void
+    progress_tick(icon: GdkPixbuf.Pixbuf, text: string): void
+    set_splash(splash_file: string, splash_progress_position: number): void
+    set_title(title: string): void
     set_title_window(window: Gtk.Widget): void
 
     // Conflicting methods
@@ -7228,7 +7228,7 @@ export interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7242,7 +7242,7 @@ export interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7253,7 +7253,7 @@ export interface Status extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Anjuta-3.0.Anjuta.Status
 
@@ -7523,7 +7523,7 @@ export interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7537,7 +7537,7 @@ export interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7548,7 +7548,7 @@ export interface Tabber extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.Tabber
 
@@ -7835,7 +7835,7 @@ export interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      */
     set_active(is_active: boolean): void
     set_active_iter(iter: Gtk.TreeIter): void
-    set_invalid_text(str: string | null): void
+    set_invalid_text(str: string): void
     set_model(model: Gtk.TreeModel): void
     set_valid_function(func: Gtk.TreeModelFilterVisibleFunc): void
 
@@ -7851,7 +7851,7 @@ export interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7863,7 +7863,7 @@ export interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7877,7 +7877,7 @@ export interface TreeComboBox extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Anjuta-3.0.Anjuta.TreeComboBox
 
@@ -8120,14 +8120,14 @@ export interface UI extends Gtk.Buildable {
      * @param action_group Action group.
      * @param action_name Action name.
      */
-    activate_action_by_group(action_group: Gtk.ActionGroup, action_name: string | null): void
+    activate_action_by_group(action_group: Gtk.ActionGroup, action_name: string): void
     /**
      * Activates the action represented by `action_path`. The path is in the form
      * "ActionGroupName/ActionName". Note that it will only work if the group has
      * been added using methods in #AnjutaUI.
      * @param action_path Path of the action in the form "GroupName/ActionName"
      */
-    activate_action_by_path(action_path: string | null): void
+    activate_action_by_path(action_path: string): void
     /**
      * This is similar to anjuta_ui_add_action_group_entries(), except that
      * it adds #GtkActionGroup object `action_group` directly. All actions in this
@@ -8138,7 +8138,7 @@ export interface UI extends Gtk.Buildable {
      * @param action_group #GtkActionGroup object to add.
      * @param can_customize 
      */
-    add_action_group(action_group_name: string | null, action_group_label: string | null, action_group: Gtk.ActionGroup, can_customize: boolean): void
+    add_action_group(action_group_name: string, action_group_label: string, action_group: Gtk.ActionGroup, can_customize: boolean): void
     /**
      * #GtkAction objects are created from the #GtkActionEntry structures and
      * added to the UI Manager. "activate" signal of #GtkAction is connected for
@@ -8158,7 +8158,7 @@ export interface UI extends Gtk.Buildable {
      * @param user_data User data to pass to action objects. This is the data that will come as user_data in "activate" signal of the actions.
      * @returns A #GtkActionGroup object holding all the action objects.
      */
-    add_action_group_entries(action_group_name: string | null, action_group_label: string | null, entries: Gtk.ActionEntry[], translation_domain: string | null, can_customize: boolean, user_data: any | null): Gtk.ActionGroup
+    add_action_group_entries(action_group_name: string, action_group_label: string, entries: Gtk.ActionEntry[], translation_domain: string, can_customize: boolean, user_data: any | null): Gtk.ActionGroup
     /**
      * This is similar to anjuta_ui_add_action_group_entries(), except that
      * it adds #GtkToggleAction objects after creating them from the `entries`.
@@ -8170,7 +8170,7 @@ export interface UI extends Gtk.Buildable {
      * @param user_data User data to pass to action objects. This is the data that will come as user_data in "activate" signal of the actions.
      * @returns A #GtkActionGroup object holding all the action objects.
      */
-    add_toggle_action_group_entries(action_group_name: string | null, action_group_label: string | null, entries: Gtk.ToggleActionEntry[], translation_domain: string | null, can_customize: boolean, user_data: any | null): Gtk.ActionGroup
+    add_toggle_action_group_entries(action_group_name: string, action_group_label: string, entries: Gtk.ToggleActionEntry[], translation_domain: string, can_customize: boolean, user_data: any | null): Gtk.ActionGroup
     /**
      * Dumps the current UI XML tree in STDOUT. Useful for debugging.
      */
@@ -8194,7 +8194,7 @@ export interface UI extends Gtk.Buildable {
      * @param action_name Action name.
      * @returns A #GtkAction object
      */
-    get_action(action_group_name: string | null, action_name: string | null): Gtk.Action
+    get_action(action_group_name: string, action_name: string): Gtk.Action
 
     // Overloads of get_action
 
@@ -8204,7 +8204,7 @@ export interface UI extends Gtk.Buildable {
      * @param path a path
      * @returns the action whose proxy widget is found by following the path,     or %NULL if no widget was found.
      */
-    get_action(path: string | null): Gtk.Action
+    get_action(path: string): Gtk.Action
     /**
      * This returns the IconFactory object. All icons should be registered using
      * this icon factory. Read the documentation for #GtkIconFactory on how to
@@ -8220,7 +8220,7 @@ export interface UI extends Gtk.Buildable {
      * @param ui_filename UI file to merge into UI manager.
      * @returns Integer merge ID
      */
-    merge(ui_filename: string | null): number
+    merge(ui_filename: string): number
     /**
      * Removes a previous added action group. All actions in this group are
      * also unregistered from UI manager.
@@ -8281,8 +8281,8 @@ export class UI extends Gtk.UIManager {
      */
     static new(): Gtk.UIManager
     _init(config?: UI.ConstructorProperties): void
-    static load_accels(filename: string | null): void
-    static save_accels(filename: string | null): void
+    static load_accels(filename: string): void
+    static save_accels(filename: string): void
 }
 
 export module VcsStatusTreeView {
@@ -8358,7 +8358,7 @@ export interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -8372,7 +8372,7 @@ export interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -8383,7 +8383,7 @@ export interface VcsStatusTreeView extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Anjuta-3.0.Anjuta.VcsStatusTreeView
 
@@ -8802,18 +8802,18 @@ export interface CommandBarEntry {
      * The name of the action for this entry
      * @field 
      */
-    action_name: string | null
+    action_name: string
     /**
      * The display label for this entry
      * @field 
      */
-    label: string | null
-    tooltip: string | null
+    label: string
+    tooltip: string
     /**
      * The stock icon to display for this entry
      * @field 
      */
-    stock_icon: string | null
+    stock_icon: string
     /**
      * Function to call when this entry's action is activated
      * @field 
@@ -8854,7 +8854,7 @@ export interface CommandClass {
     notify_data_arrived: (self: Command) => void
     notify_complete: (self: Command, return_code: number) => void
     notify_progress: (self: Command, progress: number) => void
-    set_error_message: (self: Command, error_message: string | null) => void
+    set_error_message: (self: Command, error_message: string) => void
     get_error_message: (self: Command) => string | null
     start_automatic_monitor: (self: Command) => boolean
     stop_automatic_monitor: (self: Command) => void
@@ -9010,8 +9010,8 @@ export interface Encoding {
      * This function is used by language bindings.
      */
     free(): void
-    get_charset(): string | null
-    get_name(): string | null
+    get_charset(): string
+    get_name(): string
     to_string(): string | null
 }
 
@@ -9024,7 +9024,7 @@ export class Encoding {
     // Constructors of Anjuta-3.0.Anjuta.Encoding
 
     static get_current(): Encoding
-    static get_from_charset(charset: string | null): Encoding
+    static get_from_charset(charset: string): Encoding
     static get_from_index(index: number): Encoding
     static get_utf8(): Encoding
 }
@@ -9216,8 +9216,8 @@ export interface PkgConfigChooserClass {
     // Own fields of Anjuta-3.0.Anjuta.PkgConfigChooserClass
 
     parent_class: Gtk.TreeViewClass
-    package_activated: (self: PkgConfigChooser, package: string | null) => void
-    package_deactivated: (self: PkgConfigChooser, package: string | null) => void
+    package_activated: (self: PkgConfigChooser, package: string) => void
+    package_deactivated: (self: PkgConfigChooser, package: string) => void
 }
 
 export abstract class PkgConfigChooserClass {
@@ -9295,7 +9295,7 @@ export interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    get_boolean(section: string | null, keyname: string | null, val: boolean): boolean
+    get_boolean(section: string, keyname: string, val: boolean): boolean
     /**
      * Returns the value of key as integer in the given section.
      * @param section Section name.
@@ -9303,7 +9303,7 @@ export interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    get_integer(section: string | null, keyname: string | null, val: number): boolean
+    get_integer(section: string, keyname: string, val: number): boolean
     /**
      * Returns the value of key in the given section in current locale.
      * @param section Section name.
@@ -9311,7 +9311,7 @@ export interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    get_locale_string(section: string | null, keyname: string | null, val: string | null): boolean
+    get_locale_string(section: string, keyname: string, val: string | null): boolean
     /**
      * Retrieves the value of a key (in the given section) for the given locale.
      * The value returned in `val` must be freed after use.
@@ -9320,7 +9320,7 @@ export interface PluginDescription {
      * @param locale The locale for which the value is to be retrieved.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    get_raw(section_name: string | null, keyname: string | null, locale: string | null): [ /* returnType */ boolean, /* val */ string | null ]
+    get_raw(section_name: string, keyname: string, locale: string): [ /* returnType */ boolean, /* val */ string ]
     /**
      * Returns the value of key in the given section.
      * @param section Section name.
@@ -9328,7 +9328,7 @@ export interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns %TRUE if sucessful, otherwise %FALSE.
      */
-    get_string(section: string | null, keyname: string | null, val: string | null): boolean
+    get_string(section: string, keyname: string, val: string | null): boolean
     /**
      * Override the value of a key in the description. This can be removed using
      * the function anjuta_plugin_description_remove().
@@ -9337,14 +9337,14 @@ export interface PluginDescription {
      * @param val Pointer to value to store retured value.
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    override(section_name: string | null, keyname: string | null, val: string | null): boolean
+    override(section_name: string, keyname: string, val: string): boolean
     /**
      * Remove a key from the description.
      * @param section_name Section name.
      * @param keyname Key name.
      * @returns TRUE if sucessful, otherwise FALSE.
      */
-    remove(section_name: string | null, keyname: string | null): boolean
+    remove(section_name: string, keyname: string): boolean
     /**
      * Converts the description detains into string format, usually for
      * saving it in a file.
@@ -9361,8 +9361,8 @@ export class PluginDescription {
 
     // Constructors of Anjuta-3.0.Anjuta.PluginDescription
 
-    constructor(filename: string | null) 
-    static new(filename: string | null): PluginDescription
+    constructor(filename: string) 
+    static new(filename: string): PluginDescription
     /**
      * Parses the given plugin description data (usally read from the plugin
      * description file and creates an instance of #AnjutaPluginDescription.
@@ -9566,7 +9566,7 @@ export interface ProjectNodeInfo {
 
     copy(): ProjectNodeInfo
     free(): void
-    mime(): string | null
+    mime(): string
 }
 
 export class ProjectNodeInfo {
@@ -9577,8 +9577,8 @@ export class ProjectNodeInfo {
 
     // Constructors of Anjuta-3.0.Anjuta.ProjectNodeInfo
 
-    constructor(type: ProjectNodeType, name: string | null, mime_type: string | null) 
-    static new(type: ProjectNodeType, name: string | null, mime_type: string | null): ProjectNodeInfo
+    constructor(type: ProjectNodeType, name: string, mime_type: string) 
+    static new(type: ProjectNodeType, name: string, mime_type: string): ProjectNodeInfo
 }
 
 export interface ProjectProperty {
@@ -9604,8 +9604,8 @@ export class ProjectProperty {
 
     // Constructors of Anjuta-3.0.Anjuta.ProjectProperty
 
-    constructor(value: string | null, name: string | null, user_data: any | null) 
-    static new(value: string | null, name: string | null, user_data: any | null): ProjectProperty
+    constructor(value: string, name: string | null, user_data: any | null) 
+    static new(value: string, name: string | null, user_data: any | null): ProjectProperty
 }
 
 export interface ProjectPropertyInfo {
@@ -9634,8 +9634,8 @@ export class ProjectPropertyInfo {
 
     // Constructors of Anjuta-3.0.Anjuta.ProjectPropertyInfo
 
-    constructor(id: string | null, name: string | null, type: ProjectValueType, flags: ProjectPropertyFlags, description: string | null, default_value: ProjectProperty, user_data: any | null) 
-    static new(id: string | null, name: string | null, type: ProjectValueType, flags: ProjectPropertyFlags, description: string | null, default_value: ProjectProperty, user_data: any | null): ProjectPropertyInfo
+    constructor(id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, default_value: ProjectProperty, user_data: any | null) 
+    static new(id: string, name: string, type: ProjectValueType, flags: ProjectPropertyFlags, description: string, default_value: ProjectProperty, user_data: any | null): ProjectPropertyInfo
 }
 
 export interface Property {
@@ -9735,21 +9735,21 @@ export interface ShellIface {
     get_preferences: (shell: Shell) => Preferences
     get_plugin_manager: (shell: Shell) => PluginManager
     get_profile_manager: (shell: Shell) => ProfileManager
-    add_widget_full: (shell: Shell, widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, placement: ShellPlacement, locked: boolean) => void
-    add_widget_custom: (shell: Shell, widget: Gtk.Widget, name: string | null, title: string | null, stock_id: string | null, label: Gtk.Widget, placement: ShellPlacement) => void
+    add_widget_full: (shell: Shell, widget: Gtk.Widget, name: string, title: string, stock_id: string, placement: ShellPlacement, locked: boolean) => void
+    add_widget_custom: (shell: Shell, widget: Gtk.Widget, name: string, title: string, stock_id: string, label: Gtk.Widget, placement: ShellPlacement) => void
     remove_widget: (shell: Shell, widget: Gtk.Widget) => void
     present_widget: (shell: Shell, widget: Gtk.Widget) => void
     iconify_dockable_widget: (shell: Shell, widget: Gtk.Widget) => void
     hide_dockable_widget: (shell: Shell, widget: Gtk.Widget) => void
     show_dockable_widget: (shell: Shell, widget: Gtk.Widget) => void
-    maximize_widget: (shell: Shell, widget_name: string | null) => void
+    maximize_widget: (shell: Shell, widget_name: string) => void
     unmaximize: (shell: Shell) => void
-    add_value: (shell: Shell, name: string | null, value: any) => void
-    get_value: (shell: Shell, name: string | null, value: any) => void
-    remove_value: (shell: Shell, name: string | null) => void
+    add_value: (shell: Shell, name: string, value: any) => void
+    get_value: (shell: Shell, name: string, value: any) => void
+    remove_value: (shell: Shell, name: string) => void
     saving_push: (shell: Shell) => void
     saving_pop: (shell: Shell) => void
-    get_object: (shell: Shell, iface_name: string | null) => GObject.Object
+    get_object: (shell: Shell, iface_name: string) => GObject.Object
 }
 
 export abstract class ShellIface {
@@ -9835,13 +9835,13 @@ export interface Token {
     evaluate_name(): string | null
     get_flags(): number
     get_length(): number
-    get_string(): string | null
+    get_string(): string
     get_type(): number
     is_empty(): boolean
     remove_item(): void
     set_flags(flags: number): void
     set_length(length: number): void
-    set_string(value: string | null, length: number): void
+    set_string(value: string, length: number): void
     set_type(type: number): void
 }
 

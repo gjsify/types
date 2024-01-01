@@ -110,7 +110,7 @@ export function check_drop_buffers(): void
  * @param buffer_out compare the result with this buffer
  * @param caps_out the #GstCaps expected of the srcpad of the element
  */
-export function check_element_push_buffer(element_name: string | null, buffer_in: Gst.Buffer, caps_in: Gst.Caps, buffer_out: Gst.Buffer, caps_out: Gst.Caps): void
+export function check_element_push_buffer(element_name: string, buffer_in: Gst.Buffer, caps_in: Gst.Caps, buffer_out: Gst.Buffer, caps_out: Gst.Caps): void
 /**
  * Create an element using the factory providing the `element_name` and push the
  * buffers in `buffer_in` to this element. The element should create the buffers
@@ -127,7 +127,7 @@ export function check_element_push_buffer(element_name: string | null, buffer_in
  * @param caps_out the #GstCaps expected of the srcpad of the element
  * @param last_flow_return the last buffer push needs to give this GstFlowReturn
  */
-export function check_element_push_buffer_list(element_name: string | null, buffer_in: Gst.Buffer[], caps_in: Gst.Caps, buffer_out: Gst.Buffer[], caps_out: Gst.Caps, last_flow_return: Gst.FlowReturn): void
+export function check_element_push_buffer_list(element_name: string, buffer_in: Gst.Buffer[], caps_in: Gst.Caps, buffer_out: Gst.Buffer[], caps_out: Gst.Caps, last_flow_return: Gst.FlowReturn): void
 export function check_init(argc: number, argv: string | null): void
 export function check_message_error(message: Gst.Message, type: Gst.MessageType, domain: GLib.Quark, code: number): void
 /**
@@ -148,7 +148,7 @@ export function check_remove_log_filter(filter: CheckLogFilter): void
  * @param factory factory
  * @returns a new element
  */
-export function check_setup_element(factory: string | null): Gst.Element
+export function check_setup_element(factory: string): Gst.Element
 /**
  * Push stream-start, caps and segment event, which consist of the minimum
  * required events to allow streaming. Caps is optional to allow raw src
@@ -170,7 +170,7 @@ export function check_setup_events(srcpad: Gst.Pad, element: Gst.Element, caps: 
  * @param format The #GstFormat of the default segment to send
  * @param stream_id A unique identifier for the stream
  */
-export function check_setup_events_with_stream_id(srcpad: Gst.Pad, element: Gst.Element, caps: Gst.Caps | null, format: Gst.Format, stream_id: string | null): void
+export function check_setup_events_with_stream_id(srcpad: Gst.Pad, element: Gst.Element, caps: Gst.Caps | null, format: Gst.Format, stream_id: string): void
 /**
  * Does the same as #gst_check_setup_sink_pad_by_name with the <emphasis> name </emphasis> parameter equal to "src".
  * @param element element to setup pad on
@@ -187,8 +187,8 @@ export function check_setup_sink_pad(element: Gst.Element, tmpl: Gst.StaticPadTe
  * @param name Name of the `element` src pad that will be linked to the sink pad that will be setup
  * @returns a new pad that can be used to check the output of @element
  */
-export function check_setup_sink_pad_by_name(element: Gst.Element, tmpl: Gst.StaticPadTemplate, name: string | null): Gst.Pad
-export function check_setup_sink_pad_by_name_from_template(element: Gst.Element, tmpl: Gst.PadTemplate, name: string | null): Gst.Pad
+export function check_setup_sink_pad_by_name(element: Gst.Element, tmpl: Gst.StaticPadTemplate, name: string): Gst.Pad
+export function check_setup_sink_pad_by_name_from_template(element: Gst.Element, tmpl: Gst.PadTemplate, name: string): Gst.Pad
 export function check_setup_sink_pad_from_template(element: Gst.Element, tmpl: Gst.PadTemplate): Gst.Pad
 /**
  * Does the same as #gst_check_setup_src_pad_by_name with the <emphasis> name </emphasis> parameter equal to "sink".
@@ -238,11 +238,11 @@ export function check_setup_src_pad(element: Gst.Element, tmpl: Gst.StaticPadTem
  * @param name Name of the `element` sink pad that will be linked to the src pad that will be setup
  * @returns A new pad that can be used to inject data on @element
  */
-export function check_setup_src_pad_by_name(element: Gst.Element, tmpl: Gst.StaticPadTemplate, name: string | null): Gst.Pad
-export function check_setup_src_pad_by_name_from_template(element: Gst.Element, tmpl: Gst.PadTemplate, name: string | null): Gst.Pad
+export function check_setup_src_pad_by_name(element: Gst.Element, tmpl: Gst.StaticPadTemplate, name: string): Gst.Pad
+export function check_setup_src_pad_by_name_from_template(element: Gst.Element, tmpl: Gst.PadTemplate, name: string): Gst.Pad
 export function check_setup_src_pad_from_template(element: Gst.Element, tmpl: Gst.PadTemplate): Gst.Pad
 export function check_teardown_element(element: Gst.Element): void
-export function check_teardown_pad_by_name(element: Gst.Element, name: string | null): void
+export function check_teardown_pad_by_name(element: Gst.Element, name: string): void
 export function check_teardown_sink_pad(element: Gst.Element): void
 export function check_teardown_src_pad(element: Gst.Element): void
 /**
@@ -280,7 +280,7 @@ export function harness_stress_thread_stop(t: HarnessThread): number
  * @returns %TRUE if message should be discarded by GstCheck.
  */
 export interface CheckLogFilterFunc {
-    (log_domain: string | null, log_level: GLib.LogLevelFlags, message: string | null): boolean
+    (log_domain: string, log_level: GLib.LogLevelFlags, message: string): boolean
 }
 export interface HarnessPrepareBufferFunc {
     (h: Harness, data: any | null): Gst.Buffer
@@ -731,7 +731,7 @@ export interface CheckABIStruct {
      * The name of the structure
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * The current size of a structure
      * @field 
@@ -825,7 +825,7 @@ export interface Harness {
      * @param mask a #GstPadProbeType (see gst_pad_add_probe)
      * @param callback a #GstPadProbeCallback (see gst_pad_add_probe)
      */
-    add_probe(element_name: string | null, pad_name: string | null, mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): void
+    add_probe(element_name: string, pad_name: string, mask: Gst.PadProbeType, callback: Gst.PadProbeCallback): void
     /**
      * Add api with params as one of the supported metadata API to propose when
      * receiving an allocation query.
@@ -842,7 +842,7 @@ export interface Harness {
      * MT safe.
      * @param sink_element_name a #gchar with the name of a #GstElement
      */
-    add_sink(sink_element_name: string | null): void
+    add_sink(sink_element_name: string): void
     /**
      * Similar to gst_harness_add_src, this allows you to send the data coming out
      * of your harnessed #GstElement to a sink-element, allowing to test different
@@ -864,7 +864,7 @@ export interface Harness {
      * MT safe.
      * @param launchline a #gchar with the name of a #GstElement
      */
-    add_sink_parse(launchline: string | null): void
+    add_sink_parse(launchline: string): void
     /**
      * Similar to gst_harness_add_src_harness, this is a convenience to
      * directly create a src-harness using the `src_element_name` name specified.
@@ -873,7 +873,7 @@ export interface Harness {
      * @param src_element_name a #gchar with the name of a #GstElement
      * @param has_clock_wait a #gboolean specifying if the #GstElement uses gst_clock_wait_id internally.
      */
-    add_src(src_element_name: string | null, has_clock_wait: boolean): void
+    add_src(src_element_name: string, has_clock_wait: boolean): void
     /**
      * A src-harness is a great way of providing the #GstHarness with data.
      * By adding a src-type #GstElement, it is then easy to use functions like
@@ -901,7 +901,7 @@ export interface Harness {
      * @param launchline a #gchar describing a gst-launch type line
      * @param has_clock_wait a #gboolean specifying if the #GstElement uses gst_clock_wait_id internally.
      */
-    add_src_parse(launchline: string | null, has_clock_wait: boolean): void
+    add_src_parse(launchline: string, has_clock_wait: boolean): void
     /**
      * The number of #GstBuffers currently in the #GstHarness sinkpad #GAsyncQueue
      * 
@@ -961,7 +961,7 @@ export interface Harness {
      * MT safe.
      * @param filename a #gchar with a the name of a file
      */
-    dump_to_file(filename: string | null): void
+    dump_to_file(filename: string): void
     /**
      * The number of #GstEvents currently in the #GstHarness sinkpad #GAsyncQueue
      * 
@@ -988,7 +988,7 @@ export interface Harness {
      * @param element_name a #gchar with a #GstElementFactory name
      * @returns a #GstElement or %NULL if not found
      */
-    find_element(element_name: string | null): Gst.Element | null
+    find_element(element_name: string): Gst.Element | null
     /**
      * Gets the `allocator` and its `params` that has been decided to use after an
      * allocation query.
@@ -1143,7 +1143,7 @@ export interface Harness {
      * @param in_ a `gchar` describing a #GstCaps to set on the harness srcpad
      * @param out a `gchar` describing a #GstCaps to set on the harness sinkpad
      */
-    set_caps_str(in_: string | null, out: string | null): void
+    set_caps_str(in_: string, out: string): void
     /**
      * When set to %TRUE, instead of placing the buffers arriving from the harnessed
      * #GstElement inside the sinkpads #GAsyncQueue, they are instead unreffed.
@@ -1199,7 +1199,7 @@ export interface Harness {
      * MT safe.
      * @param str a `gchar` describing a #GstCaps to set on the harness sinkpad
      */
-    set_sink_caps_str(str: string | null): void
+    set_sink_caps_str(str: string): void
     /**
      * Sets the `GstHarness` srcpad caps. This must be done before any buffers
      * can legally be pushed from the harness to the element.
@@ -1215,7 +1215,7 @@ export interface Harness {
      * MT safe.
      * @param str a `gchar` describing a #GstCaps to set on the harness srcpad
      */
-    set_src_caps_str(str: string | null): void
+    set_src_caps_str(str: string): void
     /**
      * Advance the #GstTestClock to a specific time.
      * 

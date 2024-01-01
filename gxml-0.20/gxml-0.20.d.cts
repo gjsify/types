@@ -236,7 +236,7 @@ export interface Collection extends GObject.Object {
     get_nodes_index(): GLib.Queue
     get_element(): DomElement
     set_element(value: DomElement): void
-    get_items_name(): string | null
+    get_items_name(): string
     get_items_type(): GObject.GType
     set_items_type(value: GObject.GType): void
     search(): void
@@ -253,7 +253,7 @@ export interface Collection extends GObject.Object {
     vfunc_get_nodes_index(): GLib.Queue
     vfunc_get_element(): DomElement
     vfunc_set_element(value: DomElement): void
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
     vfunc_get_items_type(): GObject.GType
     vfunc_set_items_type(value: GObject.GType): void
     vfunc_search(): void
@@ -488,18 +488,18 @@ export interface Map extends GObject.Object, Collection, Gee.Traversable, Gee.It
 
     // Owm methods of GXml-0.20.GXml.Map
 
-    get_attribute_key(): string | null
-    set_attribute_key(value: string | null): void
-    item(key: string | null): DomElement | null
-    has_key(key: string | null): boolean
+    get_attribute_key(): string
+    set_attribute_key(value: string): void
+    item(key: string): DomElement | null
+    has_key(key: string): boolean
     get_keys_set(): Gee.Set
 
     // Own virtual methods of GXml-0.20.GXml.Map
 
-    vfunc_get_attribute_key(): string | null
-    vfunc_set_attribute_key(value: string | null): void
-    vfunc_item(key: string | null): DomElement | null
-    vfunc_has_key(key: string | null): boolean
+    vfunc_get_attribute_key(): string
+    vfunc_set_attribute_key(value: string): void
+    vfunc_item(key: string): DomElement | null
+    vfunc_has_key(key: string): boolean
     vfunc_get_keys_set(): Gee.Set
 
     // Class property signals of GXml-0.20.GXml.Map
@@ -693,27 +693,27 @@ export interface PairedMap extends GObject.Object, Collection, Gee.Traversable, 
 
     // Owm methods of GXml-0.20.GXml.PairedMap
 
-    get_attribute_primary_key(): string | null
-    set_attribute_primary_key(value: string | null): void
-    get_attribute_secondary_key(): string | null
-    set_attribute_secondary_key(value: string | null): void
+    get_attribute_primary_key(): string
+    set_attribute_primary_key(value: string): void
+    get_attribute_secondary_key(): string
+    set_attribute_secondary_key(value: string): void
     get_primary_keys_set(): Gee.Set
-    item(primary_key: string | null, secondary_key: string | null): DomElement | null
-    has_primary_key(key: string | null): boolean
-    has_secondary_key(pkey: string | null, key: string | null): boolean
-    secondary_keys_set(pkey: string | null): Gee.Set
+    item(primary_key: string, secondary_key: string): DomElement | null
+    has_primary_key(key: string): boolean
+    has_secondary_key(pkey: string, key: string): boolean
+    secondary_keys_set(pkey: string): Gee.Set
 
     // Own virtual methods of GXml-0.20.GXml.PairedMap
 
-    vfunc_get_attribute_primary_key(): string | null
-    vfunc_set_attribute_primary_key(value: string | null): void
-    vfunc_get_attribute_secondary_key(): string | null
-    vfunc_set_attribute_secondary_key(value: string | null): void
+    vfunc_get_attribute_primary_key(): string
+    vfunc_set_attribute_primary_key(value: string): void
+    vfunc_get_attribute_secondary_key(): string
+    vfunc_set_attribute_secondary_key(value: string): void
     vfunc_get_primary_keys_set(): Gee.Set
-    vfunc_item(primary_key: string | null, secondary_key: string | null): DomElement | null
-    vfunc_has_primary_key(key: string | null): boolean
-    vfunc_has_secondary_key(pkey: string | null, key: string | null): boolean
-    vfunc_secondary_keys_set(pkey: string | null): Gee.Set
+    vfunc_item(primary_key: string, secondary_key: string): DomElement | null
+    vfunc_has_primary_key(key: string): boolean
+    vfunc_has_secondary_key(pkey: string, key: string): boolean
+    vfunc_secondary_keys_set(pkey: string): Gee.Set
 
     // Class property signals of GXml-0.20.GXml.PairedMap
 
@@ -915,35 +915,35 @@ export interface ThreeMap extends GObject.Object, Collection, Gee.Traversable, G
 
     // Owm methods of GXml-0.20.GXml.ThreeMap
 
-    get_attribute_primary_key(): string | null
-    set_attribute_primary_key(value: string | null): void
-    get_attribute_secondary_key(): string | null
-    set_attribute_secondary_key(value: string | null): void
-    get_attribute_third_key(): string | null
-    set_attribute_third_key(value: string | null): void
+    get_attribute_primary_key(): string
+    set_attribute_primary_key(value: string): void
+    get_attribute_secondary_key(): string
+    set_attribute_secondary_key(value: string): void
+    get_attribute_third_key(): string
+    set_attribute_third_key(value: string): void
     get_primary_keys_set(): Gee.Set
-    item(primary_key: string | null, secondary_key: string | null, third_key: string | null): DomElement | null
-    has_primary_key(key: string | null): boolean
-    has_secondary_key(pkey: string | null, key: string | null): boolean
-    has_third_key(pkey: string | null, skey: string | null, key: string | null): boolean
-    secondary_keys_set(pkey: string | null): Gee.Set
-    third_keys_set(pkey: string | null, skey: string | null): Gee.Set
+    item(primary_key: string, secondary_key: string, third_key: string): DomElement | null
+    has_primary_key(key: string): boolean
+    has_secondary_key(pkey: string, key: string): boolean
+    has_third_key(pkey: string, skey: string, key: string): boolean
+    secondary_keys_set(pkey: string): Gee.Set
+    third_keys_set(pkey: string, skey: string): Gee.Set
 
     // Own virtual methods of GXml-0.20.GXml.ThreeMap
 
-    vfunc_get_attribute_primary_key(): string | null
-    vfunc_set_attribute_primary_key(value: string | null): void
-    vfunc_get_attribute_secondary_key(): string | null
-    vfunc_set_attribute_secondary_key(value: string | null): void
-    vfunc_get_attribute_third_key(): string | null
-    vfunc_set_attribute_third_key(value: string | null): void
+    vfunc_get_attribute_primary_key(): string
+    vfunc_set_attribute_primary_key(value: string): void
+    vfunc_get_attribute_secondary_key(): string
+    vfunc_set_attribute_secondary_key(value: string): void
+    vfunc_get_attribute_third_key(): string
+    vfunc_set_attribute_third_key(value: string): void
     vfunc_get_primary_keys_set(): Gee.Set
-    vfunc_item(primary_key: string | null, secondary_key: string | null, third_key: string | null): DomElement | null
-    vfunc_has_primary_key(key: string | null): boolean
-    vfunc_has_secondary_key(pkey: string | null, key: string | null): boolean
-    vfunc_has_third_key(pkey: string | null, skey: string | null, key: string | null): boolean
-    vfunc_secondary_keys_set(pkey: string | null): Gee.Set
-    vfunc_third_keys_set(pkey: string | null, skey: string | null): Gee.Set
+    vfunc_item(primary_key: string, secondary_key: string, third_key: string): DomElement | null
+    vfunc_has_primary_key(key: string): boolean
+    vfunc_has_secondary_key(pkey: string, key: string): boolean
+    vfunc_has_third_key(pkey: string, skey: string, key: string): boolean
+    vfunc_secondary_keys_set(pkey: string): Gee.Set
+    vfunc_third_keys_set(pkey: string, skey: string): Gee.Set
 
     // Class property signals of GXml-0.20.GXml.ThreeMap
 
@@ -1076,7 +1076,7 @@ export interface DomAttr extends GObject.Object {
     get_local_name(): string | null
     get_name(): string | null
     get_value(): string | null
-    set_value(value: string | null): void
+    set_value(value: string): void
     get_specified(): boolean
 
     // Own virtual methods of GXml-0.20.GXml.DomAttr
@@ -1086,7 +1086,7 @@ export interface DomAttr extends GObject.Object {
     vfunc_get_local_name(): string | null
     vfunc_get_name(): string | null
     vfunc_get_value(): string | null
-    vfunc_set_value(value: string | null): void
+    vfunc_set_value(value: string): void
     vfunc_get_specified(): boolean
 
     // Class property signals of GXml-0.20.GXml.DomAttr
@@ -1155,8 +1155,8 @@ export interface DomCharacterData extends GObject.Object, DomNode, DomNonDocumen
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -1174,24 +1174,24 @@ export interface DomCharacterData extends GObject.Object, DomNode, DomNonDocumen
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     get_length(): number
     substring_data(offset: number, count: number): string | null
-    append_data(data: string | null): void
-    insert_data(offset: number, data: string | null): void
+    append_data(data: string): void
+    insert_data(offset: number, data: string): void
     delete_data(offset: number, count: number): void
-    replace_data(offset: number, count: number, data: string | null): void
+    replace_data(offset: number, count: number, data: string): void
 
     // Own virtual methods of GXml-0.20.GXml.DomCharacterData
 
     vfunc_get_data(): string | null
-    vfunc_set_data(value: string | null): void
+    vfunc_set_data(value: string): void
     vfunc_get_length(): number
     vfunc_substring_data(offset: number, count: number): string | null
-    vfunc_append_data(data: string | null): void
-    vfunc_insert_data(offset: number, data: string | null): void
+    vfunc_append_data(data: string): void
+    vfunc_insert_data(offset: number, data: string): void
     vfunc_delete_data(offset: number, count: number): void
-    vfunc_replace_data(offset: number, count: number, data: string | null): void
+    vfunc_replace_data(offset: number, count: number, data: string): void
 
     // Class property signals of GXml-0.20.GXml.DomCharacterData
 
@@ -1289,14 +1289,14 @@ export interface DomText extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -1314,7 +1314,7 @@ export interface DomText extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1329,7 +1329,7 @@ export interface DomText extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Own virtual methods of GXml-0.20.GXml.DomText
 
@@ -1435,14 +1435,14 @@ export interface DomProcessingInstruction extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -1460,7 +1460,7 @@ export interface DomProcessingInstruction extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1475,7 +1475,7 @@ export interface DomProcessingInstruction extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Own virtual methods of GXml-0.20.GXml.DomProcessingInstruction
 
@@ -1575,14 +1575,14 @@ export interface DomComment extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -1600,7 +1600,7 @@ export interface DomComment extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -1615,7 +1615,7 @@ export interface DomComment extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.DomComment
 
@@ -1699,11 +1699,11 @@ export interface DomNonElementParentNode extends GObject.Object {
 
     // Owm methods of GXml-0.20.GXml.DomNonElementParentNode
 
-    get_element_by_id(element_id: string | null): DomElement | null
+    get_element_by_id(element_id: string): DomElement | null
 
     // Own virtual methods of GXml-0.20.GXml.DomNonElementParentNode
 
-    vfunc_get_element_by_id(element_id: string | null): DomElement | null
+    vfunc_get_element_by_id(element_id: string): DomElement | null
 
     // Class property signals of GXml-0.20.GXml.DomNonElementParentNode
 
@@ -1753,9 +1753,9 @@ export interface DomParentNode extends GObject.Object {
     get_first_element_child(): DomElement | null
     get_last_element_child(): DomElement | null
     get_child_element_count(): number
-    query_selector(selectors: string | null): DomElement | null
-    query_selector_all(selectors: string | null): DomNodeList
-    get_elements_by_property_value(property: string | null, value: string | null): DomElementList
+    query_selector(selectors: string): DomElement | null
+    query_selector_all(selectors: string): DomNodeList
+    get_elements_by_property_value(property: string, value: string): DomElementList
 
     // Own virtual methods of GXml-0.20.GXml.DomParentNode
 
@@ -1763,9 +1763,9 @@ export interface DomParentNode extends GObject.Object {
     vfunc_get_first_element_child(): DomElement | null
     vfunc_get_last_element_child(): DomElement | null
     vfunc_get_child_element_count(): number
-    vfunc_query_selector(selectors: string | null): DomElement | null
-    vfunc_query_selector_all(selectors: string | null): DomNodeList
-    vfunc_get_elements_by_property_value(property: string | null, value: string | null): DomElementList
+    vfunc_query_selector(selectors: string): DomElement | null
+    vfunc_query_selector_all(selectors: string): DomNodeList
+    vfunc_get_elements_by_property_value(property: string, value: string): DomElementList
 
     // Class property signals of GXml-0.20.GXml.DomParentNode
 
@@ -2020,7 +2020,7 @@ export interface DomHTMLCollection extends GObject.Object, Gee.BidirList {
     to_array(): any[]
     get_length(): number
     item(index: number): DomElement | null
-    named_item(name: string | null): DomElement | null
+    named_item(name: string): DomElement | null
 
     // Conflicting methods
 
@@ -2059,7 +2059,7 @@ export interface DomHTMLCollection extends GObject.Object, Gee.BidirList {
     vfunc_to_array(): any[]
     vfunc_get_length(): number
     vfunc_item(index: number): DomElement | null
-    vfunc_named_item(name: string | null): DomElement | null
+    vfunc_named_item(name: string): DomElement | null
 
     // Class property signals of GXml-0.20.GXml.DomHTMLCollection
 
@@ -2300,22 +2300,22 @@ export interface DomNamedNodeMap extends GObject.Object, Gee.Map {
 
     get_length(): number
     item(index: number): DomNode | null
-    get_named_item(name: string | null): DomNode | null
+    get_named_item(name: string): DomNode | null
     set_named_item(node: DomNode): DomNode | null
-    remove_named_item(name: string | null): DomNode | null
-    remove_named_item_ns(namespace_uri: string | null, localName: string | null): DomNode | null
-    get_named_item_ns(namespace_uri: string | null, local_name: string | null): DomNode | null
+    remove_named_item(name: string): DomNode | null
+    remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null
+    get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null
     set_named_item_ns(node: DomNode): DomNode | null
 
     // Own virtual methods of GXml-0.20.GXml.DomNamedNodeMap
 
     vfunc_get_length(): number
     vfunc_item(index: number): DomNode | null
-    vfunc_get_named_item(name: string | null): DomNode | null
+    vfunc_get_named_item(name: string): DomNode | null
     vfunc_set_named_item(node: DomNode): DomNode | null
-    vfunc_remove_named_item(name: string | null): DomNode | null
-    vfunc_remove_named_item_ns(namespace_uri: string | null, localName: string | null): DomNode | null
-    vfunc_get_named_item_ns(namespace_uri: string | null, local_name: string | null): DomNode | null
+    vfunc_remove_named_item(name: string): DomNode | null
+    vfunc_remove_named_item_ns(namespace_uri: string, localName: string): DomNode | null
+    vfunc_get_named_item_ns(namespace_uri: string, local_name: string): DomNode | null
     vfunc_set_named_item_ns(node: DomNode): DomNode | null
 
     // Class property signals of GXml-0.20.GXml.DomNamedNodeMap
@@ -2384,7 +2384,7 @@ export interface DomTokenList extends GObject.Object, Gee.BidirList {
 
     get_length(): number
     item(index: number): string | null
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -2399,7 +2399,7 @@ export interface DomTokenList extends GObject.Object, Gee.BidirList {
     // Overloads of remove
 
     remove(item: any): boolean
-    toggle(token: string | null, force: boolean, _auto_: boolean): boolean
+    toggle(token: string, force: boolean, _auto_: boolean): boolean
     to_string(): string | null
 
     // Conflicting methods
@@ -2433,7 +2433,7 @@ export interface DomTokenList extends GObject.Object, Gee.BidirList {
 
     vfunc_get_length(): number
     vfunc_item(index: number): string | null
-    vfunc_contains(token: string | null): boolean
+    vfunc_contains(token: string): boolean
 
     // Overloads of vfunc_contains
 
@@ -2448,7 +2448,7 @@ export interface DomTokenList extends GObject.Object, Gee.BidirList {
     // Overloads of vfunc_remove
 
     vfunc_remove(item: any): boolean
-    vfunc_toggle(token: string | null, force: boolean, _auto_: boolean): boolean
+    vfunc_toggle(token: string, force: boolean, _auto_: boolean): boolean
     vfunc_to_string(): string | null
 
     // Class property signals of GXml-0.20.GXml.DomTokenList
@@ -2520,11 +2520,11 @@ export interface DomSettableTokenList extends GObject.Object, DomTokenList {
     // Owm methods of GXml-0.20.GXml.DomSettableTokenList
 
     get_value(): string | null
-    set_value(value: string | null): void
+    set_value(value: string): void
 
     // Conflicting methods
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -2554,7 +2554,7 @@ export interface DomSettableTokenList extends GObject.Object, DomTokenList {
 
     get_read_only_view(): Gee.Collection
     get_read_only_view(): Gee.Collection
-    vfunc_contains(token: string | null): boolean
+    vfunc_contains(token: string): boolean
 
     // Overloads of vfunc_contains
 
@@ -2588,7 +2588,7 @@ export interface DomSettableTokenList extends GObject.Object, DomTokenList {
     // Own virtual methods of GXml-0.20.GXml.DomSettableTokenList
 
     vfunc_get_value(): string | null
-    vfunc_set_value(value: string | null): void
+    vfunc_set_value(value: string): void
 
     // Class property signals of GXml-0.20.GXml.DomSettableTokenList
 
@@ -2666,26 +2666,26 @@ export interface DomDocument extends GObject.Object, DomNode, DomParentNode, Dom
     // Owm methods of GXml-0.20.GXml.DomDocument
 
     get_implementation(): DomImplementation
-    get_url(): string | null
-    get_document_uri(): string | null
-    get_origin(): string | null
-    get_compat_mode(): string | null
-    get_character_set(): string | null
-    get_content_type(): string | null
+    get_url(): string
+    get_document_uri(): string
+    get_origin(): string
+    get_compat_mode(): string
+    get_character_set(): string
+    get_content_type(): string
     get_doctype(): DomDocumentType | null
     get_document_element(): DomElement | null
-    get_elements_by_tag_name(local_name: string | null): DomHTMLCollection
-    get_elements_by_tag_name_ns(namespace: string | null, local_name: string | null): DomHTMLCollection
-    get_elements_by_class_name(classNames: string | null): DomHTMLCollection
-    create_element(local_name: string | null): DomElement
-    create_element_ns(namespace: string | null, qualified_name: string | null): DomElement
+    get_elements_by_tag_name(local_name: string): DomHTMLCollection
+    get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection
+    get_elements_by_class_name(classNames: string): DomHTMLCollection
+    create_element(local_name: string): DomElement
+    create_element_ns(namespace: string | null, qualified_name: string): DomElement
     create_document_fragment(): DomDocumentFragment
-    create_text_node(data: string | null): DomText
-    create_comment(data: string | null): DomComment
-    create_processing_instruction(target: string | null, data: string | null): DomProcessingInstruction
+    create_text_node(data: string): DomText
+    create_comment(data: string): DomComment
+    create_processing_instruction(target: string, data: string): DomProcessingInstruction
     import_node(node: DomNode, deep: boolean): DomNode
     adopt_node(node: DomNode): DomNode
-    create_event(interface: string | null): DomEvent
+    create_event(interface: string): DomEvent
     create_range(): DomRange
     create_node_iterator(root: DomNode, whatToShow: number): DomNodeIterator
     create_tree_walker(root: DomNode, what_to_show: number): DomTreeWalker
@@ -2767,8 +2767,8 @@ export interface DomDocument extends GObject.Object, DomNode, DomParentNode, Dom
      */
     read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_file_finish(_res_: Gio.AsyncResult): void
-    read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    read_from_string_async(str: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of read_from_string_async
 
@@ -2781,7 +2781,7 @@ export interface DomDocument extends GObject.Object, DomNode, DomParentNode, Dom
      * @param _callback_ 
      * @returns A Promise of the result of {@link read_from_string_async}
      */
-    read_from_string_async(str: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
+    read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_string_finish(_res_: Gio.AsyncResult): void
     read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void
     read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -2805,26 +2805,26 @@ export interface DomDocument extends GObject.Object, DomNode, DomParentNode, Dom
     // Own virtual methods of GXml-0.20.GXml.DomDocument
 
     vfunc_get_implementation(): DomImplementation
-    vfunc_get_url(): string | null
-    vfunc_get_document_uri(): string | null
-    vfunc_get_origin(): string | null
-    vfunc_get_compat_mode(): string | null
-    vfunc_get_character_set(): string | null
-    vfunc_get_content_type(): string | null
+    vfunc_get_url(): string
+    vfunc_get_document_uri(): string
+    vfunc_get_origin(): string
+    vfunc_get_compat_mode(): string
+    vfunc_get_character_set(): string
+    vfunc_get_content_type(): string
     vfunc_get_doctype(): DomDocumentType | null
     vfunc_get_document_element(): DomElement | null
-    vfunc_get_elements_by_tag_name(local_name: string | null): DomHTMLCollection
-    vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string | null): DomHTMLCollection
-    vfunc_get_elements_by_class_name(classNames: string | null): DomHTMLCollection
-    vfunc_create_element(local_name: string | null): DomElement
-    vfunc_create_element_ns(namespace: string | null, qualified_name: string | null): DomElement
+    vfunc_get_elements_by_tag_name(local_name: string): DomHTMLCollection
+    vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection
+    vfunc_get_elements_by_class_name(classNames: string): DomHTMLCollection
+    vfunc_create_element(local_name: string): DomElement
+    vfunc_create_element_ns(namespace: string | null, qualified_name: string): DomElement
     vfunc_create_document_fragment(): DomDocumentFragment
-    vfunc_create_text_node(data: string | null): DomText
-    vfunc_create_comment(data: string | null): DomComment
-    vfunc_create_processing_instruction(target: string | null, data: string | null): DomProcessingInstruction
+    vfunc_create_text_node(data: string): DomText
+    vfunc_create_comment(data: string): DomComment
+    vfunc_create_processing_instruction(target: string, data: string): DomProcessingInstruction
     vfunc_import_node(node: DomNode, deep: boolean): DomNode
     vfunc_adopt_node(node: DomNode): DomNode
-    vfunc_create_event(interface: string | null): DomEvent
+    vfunc_create_event(interface: string): DomEvent
     vfunc_create_range(): DomRange
     vfunc_create_node_iterator(root: DomNode, whatToShow: number): DomNodeIterator
     vfunc_create_tree_walker(root: DomNode, what_to_show: number): DomTreeWalker
@@ -2843,8 +2843,8 @@ export interface DomDocument extends GObject.Object, DomNode, DomParentNode, Dom
     vfunc_read_from_file(file: Gio.File, cancellable: Gio.Cancellable | null): void
     vfunc_read_from_file_async(file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_from_file_finish(_res_: Gio.AsyncResult): void
-    vfunc_read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    vfunc_read_from_string_async(str: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_from_string_finish(_res_: Gio.AsyncResult): void
     vfunc_read_from_stream(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): void
     vfunc_read_from_stream_async(stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -3074,16 +3074,16 @@ export interface DomImplementation extends GObject.Object {
 
     // Owm methods of GXml-0.20.GXml.DomImplementation
 
-    create_document_type(qualified_name: string | null, public_id: string | null, system_id: string | null): DomDocumentType
+    create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType
     create_document(nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null): DomXMLDocument
-    create_html_document(title: string | null): DomDocument
+    create_html_document(title: string): DomDocument
     has_feature(): boolean
 
     // Own virtual methods of GXml-0.20.GXml.DomImplementation
 
-    vfunc_create_document_type(qualified_name: string | null, public_id: string | null, system_id: string | null): DomDocumentType
+    vfunc_create_document_type(qualified_name: string, public_id: string, system_id: string): DomDocumentType
     vfunc_create_document(nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null): DomXMLDocument
-    vfunc_create_html_document(title: string | null): DomDocument
+    vfunc_create_html_document(title: string): DomDocument
     vfunc_has_feature(): boolean
 
     // Class property signals of GXml-0.20.GXml.DomImplementation
@@ -3211,15 +3211,15 @@ export interface DomDocumentType extends GObject.Object, DomNode, DomChildNode {
 
     // Owm methods of GXml-0.20.GXml.DomDocumentType
 
-    get_name(): string | null
-    get_public_id(): string | null
-    get_system_id(): string | null
+    get_name(): string
+    get_public_id(): string
+    get_system_id(): string
 
     // Own virtual methods of GXml-0.20.GXml.DomDocumentType
 
-    vfunc_get_name(): string | null
-    vfunc_get_public_id(): string | null
-    vfunc_get_system_id(): string | null
+    vfunc_get_name(): string
+    vfunc_get_public_id(): string
+    vfunc_get_system_id(): string
 
     // Class property signals of GXml-0.20.GXml.DomDocumentType
 
@@ -3303,22 +3303,22 @@ export interface DomHtmlDocument extends GObject.Object, DomDocument {
 
     // Owm methods of GXml-0.20.GXml.DomHtmlDocument
 
-    read_from_string(str: string | null): void
+    read_from_string(str: string): void
 
     // Overloads of read_from_string
 
-    read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    read_from_string_tolerant(str: string | null): void
+    read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    read_from_string_tolerant(str: string): void
     to_html(): string | null
 
     // Own virtual methods of GXml-0.20.GXml.DomHtmlDocument
 
-    vfunc_read_from_string(str: string | null): void
+    vfunc_read_from_string(str: string): void
 
     // Overloads of vfunc_read_from_string
 
-    vfunc_read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    vfunc_read_from_string_tolerant(str: string | null): void
+    vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    vfunc_read_from_string_tolerant(str: string): void
     vfunc_to_html(): string | null
 
     // Class property signals of GXml-0.20.GXml.DomHtmlDocument
@@ -3465,20 +3465,20 @@ export interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNo
     set_class_name(value: string | null): void
     get_class_list(): DomTokenList
     get_attributes(): DomNamedNodeMap
-    get_attribute(name: string | null): string | null
-    get_attribute_ns(namespace: string | null, local_name: string | null): string | null
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute_ns(namespace: string | null, name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute_ns(namespace: string | null, local_name: string | null): void
-    has_attribute(name: string | null): boolean
-    has_attribute_ns(namespace: string | null, local_name: string | null): boolean
-    get_elements_by_tag_name(local_name: string | null): DomHTMLCollection
-    get_elements_by_tag_name_ns(namespace: string | null, local_name: string | null): DomHTMLCollection
-    get_elements_by_class_name(class_names: string | null): DomHTMLCollection
-    matches(selectors: string | null): boolean
-    read_from_uri(uri: string | null): void
-    read_from_uri_async(uri: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    get_attribute(name: string): string | null
+    get_attribute_ns(namespace: string | null, local_name: string): string | null
+    set_attribute(name: string, value: string): void
+    set_attribute_ns(namespace: string | null, name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute_ns(namespace: string | null, local_name: string): void
+    has_attribute(name: string): boolean
+    has_attribute_ns(namespace: string | null, local_name: string): boolean
+    get_elements_by_tag_name(local_name: string): DomHTMLCollection
+    get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection
+    get_elements_by_class_name(class_names: string): DomHTMLCollection
+    matches(selectors: string): boolean
+    read_from_uri(uri: string): void
+    read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of read_from_uri_async
 
@@ -3491,7 +3491,7 @@ export interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNo
      * @param _callback_ 
      * @returns A Promise of the result of {@link read_from_uri_async}
      */
-    read_from_uri_async(uri: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
+    read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_uri_finish(_res_: Gio.AsyncResult): void
     read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void
     read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -3525,8 +3525,8 @@ export interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNo
      */
     read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_stream_finish(_res_: Gio.AsyncResult): void
-    read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    read_from_string_async(str: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of read_from_string_async
 
@@ -3539,7 +3539,7 @@ export interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNo
      * @param _callback_ 
      * @returns A Promise of the result of {@link read_from_string_async}
      */
-    read_from_string_async(str: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
+    read_from_string_async(str: string, cancellable: Gio.Cancellable | null): globalThis.Promise<void>
     read_from_string_finish(_res_: Gio.AsyncResult): void
     write_string(cancellable: Gio.Cancellable | null): string | null
     write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -3616,20 +3616,20 @@ export interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNo
     vfunc_set_class_name(value: string | null): void
     vfunc_get_class_list(): DomTokenList
     vfunc_get_attributes(): DomNamedNodeMap
-    vfunc_get_attribute(name: string | null): string | null
-    vfunc_get_attribute_ns(namespace: string | null, local_name: string | null): string | null
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute_ns(namespace: string | null, name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute_ns(namespace: string | null, local_name: string | null): void
-    vfunc_has_attribute(name: string | null): boolean
-    vfunc_has_attribute_ns(namespace: string | null, local_name: string | null): boolean
-    vfunc_get_elements_by_tag_name(local_name: string | null): DomHTMLCollection
-    vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string | null): DomHTMLCollection
-    vfunc_get_elements_by_class_name(class_names: string | null): DomHTMLCollection
-    vfunc_matches(selectors: string | null): boolean
-    vfunc_read_from_uri(uri: string | null): void
-    vfunc_read_from_uri_async(uri: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_get_attribute(name: string): string | null
+    vfunc_get_attribute_ns(namespace: string | null, local_name: string): string | null
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute_ns(namespace: string | null, name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute_ns(namespace: string | null, local_name: string): void
+    vfunc_has_attribute(name: string): boolean
+    vfunc_has_attribute_ns(namespace: string | null, local_name: string): boolean
+    vfunc_get_elements_by_tag_name(local_name: string): DomHTMLCollection
+    vfunc_get_elements_by_tag_name_ns(namespace: string | null, local_name: string): DomHTMLCollection
+    vfunc_get_elements_by_class_name(class_names: string): DomHTMLCollection
+    vfunc_matches(selectors: string): boolean
+    vfunc_read_from_uri(uri: string): void
+    vfunc_read_from_uri_async(uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_from_uri_finish(_res_: Gio.AsyncResult): void
     vfunc_read_from_file(f: Gio.File, cancellable: Gio.Cancellable | null): void
     vfunc_read_from_file_async(f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -3637,8 +3637,8 @@ export interface DomElement extends GObject.Object, DomNode, DomChildNode, DomNo
     vfunc_read_from_stream(istream: Gio.InputStream, cancellable: Gio.Cancellable | null): void
     vfunc_read_from_stream_async(istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_from_stream_finish(_res_: Gio.AsyncResult): void
-    vfunc_read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    vfunc_read_from_string_async(str: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    vfunc_read_from_string_async(str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_from_string_finish(_res_: Gio.AsyncResult): void
     vfunc_write_string(cancellable: Gio.Cancellable | null): string | null
     vfunc_write_string_async(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -3768,14 +3768,14 @@ export interface DomEventTarget extends GObject.Object {
 
     // Owm methods of GXml-0.20.GXml.DomEventTarget
 
-    add_event_listener(type: string | null, callback: DomEventListener | null, capture: boolean): void
-    remove_event_listener(type: string | null, callback: DomEventListener | null, capture: boolean): void
+    add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void
+    remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void
     dispatch_event(event: DomEvent): boolean
 
     // Own virtual methods of GXml-0.20.GXml.DomEventTarget
 
-    vfunc_add_event_listener(type: string | null, callback: DomEventListener | null, capture: boolean): void
-    vfunc_remove_event_listener(type: string | null, callback: DomEventListener | null, capture: boolean): void
+    vfunc_add_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void
+    vfunc_remove_event_listener(type: string, callback: DomEventListener | null, capture: boolean): void
     vfunc_dispatch_event(event: DomEvent): boolean
 
     // Class property signals of GXml-0.20.GXml.DomEventTarget
@@ -3870,7 +3870,7 @@ export interface DomEvent extends GObject.Object {
 
     // Owm methods of GXml-0.20.GXml.DomEvent
 
-    get_etype(): string | null
+    get_etype(): string
     get_event_target(): DomEventTarget | null
     get_current_target(): DomEventTarget | null
     get_bubbles(): boolean
@@ -3882,11 +3882,11 @@ export interface DomEvent extends GObject.Object {
     stop_propagation(): void
     stop_immediate_propagation(): void
     prevent_default(): void
-    init_event(type: string | null, bubbles: boolean, cancelable: boolean): void
+    init_event(type: string, bubbles: boolean, cancelable: boolean): void
 
     // Own virtual methods of GXml-0.20.GXml.DomEvent
 
-    vfunc_get_etype(): string | null
+    vfunc_get_etype(): string
     vfunc_get_event_target(): DomEventTarget | null
     vfunc_get_current_target(): DomEventTarget | null
     vfunc_get_bubbles(): boolean
@@ -3898,7 +3898,7 @@ export interface DomEvent extends GObject.Object {
     vfunc_stop_propagation(): void
     vfunc_stop_immediate_propagation(): void
     vfunc_prevent_default(): void
-    vfunc_init_event(type: string | null, bubbles: boolean, cancelable: boolean): void
+    vfunc_init_event(type: string, bubbles: boolean, cancelable: boolean): void
 
     // Class property signals of GXml-0.20.GXml.DomEvent
 
@@ -3966,12 +3966,12 @@ export interface DomCustomEvent extends GObject.Object, DomEvent {
     // Owm methods of GXml-0.20.GXml.DomCustomEvent
 
     get_detail(): /* result */ any
-    init_custom_event(type: string | null, bubbles: boolean, cancelable: boolean, detail: any): void
+    init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: any): void
 
     // Own virtual methods of GXml-0.20.GXml.DomCustomEvent
 
     vfunc_get_detail(): /* result */ any
-    vfunc_init_custom_event(type: string | null, bubbles: boolean, cancelable: boolean, detail: any): void
+    vfunc_init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: any): void
 
     // Class property signals of GXml-0.20.GXml.DomCustomEvent
 
@@ -4107,7 +4107,7 @@ export interface DomMutationRecord extends GObject.Object {
 
     // Owm methods of GXml-0.20.GXml.DomMutationRecord
 
-    get_mtype(): string | null
+    get_mtype(): string
     get_target(): DomNode
     get_added_nodes(): DomNodeList
     set_added_nodes(value: DomNodeList): void
@@ -4121,7 +4121,7 @@ export interface DomMutationRecord extends GObject.Object {
 
     // Own virtual methods of GXml-0.20.GXml.DomMutationRecord
 
-    vfunc_get_mtype(): string | null
+    vfunc_get_mtype(): string
     vfunc_get_target(): DomNode
     vfunc_get_added_nodes(): DomNodeList
     vfunc_set_added_nodes(value: DomNodeList): void
@@ -4721,12 +4721,20 @@ export interface IXsdSimpleType extends GObject.Object, DomElement, IXsdBaseType
 
     // Owm methods of GXml-0.20.GXml.IXsdSimpleType
 
-    get_final(): string | null
-    set_final(value: string | null): void
+    get_final(): string
+    set_final(value: string): void
+    get_id(): string
+
+    // Overloads of get_id
+
     get_id(): string | null
+    set_id(value: string): void
+
+    // Overloads of set_id
+
     set_id(value: string | null): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_annotation(): IXsdAnnotation
     set_annotation(value: IXsdAnnotation): void
     get_list(): IXsdTypeList
@@ -4738,12 +4746,20 @@ export interface IXsdSimpleType extends GObject.Object, DomElement, IXsdBaseType
 
     // Own virtual methods of GXml-0.20.GXml.IXsdSimpleType
 
-    vfunc_get_final(): string | null
-    vfunc_set_final(value: string | null): void
+    vfunc_get_final(): string
+    vfunc_set_final(value: string): void
+    vfunc_get_id(): string
+
+    // Overloads of vfunc_get_id
+
     vfunc_get_id(): string | null
+    vfunc_set_id(value: string): void
+
+    // Overloads of vfunc_set_id
+
     vfunc_set_id(value: string | null): void
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_annotation(): IXsdAnnotation
     vfunc_set_annotation(value: IXsdAnnotation): void
     vfunc_get_list(): IXsdTypeList
@@ -4941,10 +4957,10 @@ export interface IXsdTypeRestriction extends GObject.Object, IXsdTypeDef {
 
     // Owm methods of GXml-0.20.GXml.IXsdTypeRestriction
 
-    get_base(): string | null
-    set_base(value: string | null): void
-    get_id(): string | null
-    set_id(value: string | null): void
+    get_base(): string
+    set_base(value: string): void
+    get_id(): string
+    set_id(value: string): void
     get_simple_type(): IXsdSimpleType
     set_simple_type(value: IXsdSimpleType): void
     get_enumerations(): IXsdListTypeRestrictionEnumerations
@@ -4954,10 +4970,10 @@ export interface IXsdTypeRestriction extends GObject.Object, IXsdTypeDef {
 
     // Own virtual methods of GXml-0.20.GXml.IXsdTypeRestriction
 
-    vfunc_get_base(): string | null
-    vfunc_set_base(value: string | null): void
-    vfunc_get_id(): string | null
-    vfunc_set_id(value: string | null): void
+    vfunc_get_base(): string
+    vfunc_set_base(value: string): void
+    vfunc_get_id(): string
+    vfunc_set_id(value: string): void
     vfunc_get_simple_type(): IXsdSimpleType
     vfunc_set_simple_type(value: IXsdSimpleType): void
     vfunc_get_enumerations(): IXsdListTypeRestrictionEnumerations
@@ -5456,17 +5472,17 @@ export interface IXsdTypeRestrictionEnumeration extends GObject.Object, IXsdType
 
     // Owm methods of GXml-0.20.GXml.IXsdTypeRestrictionEnumeration
 
-    get_id(): string | null
-    set_id(value: string | null): void
-    get_value(): string | null
-    set_value(value: string | null): void
+    get_id(): string
+    set_id(value: string): void
+    get_value(): string
+    set_value(value: string): void
 
     // Own virtual methods of GXml-0.20.GXml.IXsdTypeRestrictionEnumeration
 
-    vfunc_get_id(): string | null
-    vfunc_set_id(value: string | null): void
-    vfunc_get_value(): string | null
-    vfunc_set_value(value: string | null): void
+    vfunc_get_id(): string
+    vfunc_set_id(value: string): void
+    vfunc_get_value(): string
+    vfunc_set_value(value: string): void
 
     // Class property signals of GXml-0.20.GXml.IXsdTypeRestrictionEnumeration
 
@@ -5525,19 +5541,19 @@ export interface IXsdTypeRestrictionWhiteSpace extends GObject.Object, IXsdTypeR
 
     get_fixed(): boolean
     set_fixed(value: boolean): void
-    get_id(): string | null
-    set_id(value: string | null): void
-    get_value(): string | null
-    set_value(value: string | null): void
+    get_id(): string
+    set_id(value: string): void
+    get_value(): string
+    set_value(value: string): void
 
     // Own virtual methods of GXml-0.20.GXml.IXsdTypeRestrictionWhiteSpace
 
     vfunc_get_fixed(): boolean
     vfunc_set_fixed(value: boolean): void
-    vfunc_get_id(): string | null
-    vfunc_set_id(value: string | null): void
-    vfunc_get_value(): string | null
-    vfunc_set_value(value: string | null): void
+    vfunc_get_id(): string
+    vfunc_set_id(value: string): void
+    vfunc_get_value(): string
+    vfunc_set_value(value: string): void
 
     // Class property signals of GXml-0.20.GXml.IXsdTypeRestrictionWhiteSpace
 
@@ -5720,14 +5736,14 @@ export interface IXsdComplexType extends GObject.Object, DomElement, IXsdBaseTyp
 
     get_abstract(): boolean
     set_abstract(value: boolean): void
-    get_block(): string | null
-    set_block(value: string | null): void
-    get_final(): string | null
-    set_final(value: string | null): void
+    get_block(): string
+    set_block(value: string): void
+    get_final(): string
+    set_final(value: string): void
     get_mixed(): boolean
     set_mixed(value: boolean): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_default_attributes_apply(): boolean
     set_default_attributes_apply(value: boolean): void
     get_content_type(): IXsdBaseContent
@@ -5739,14 +5755,14 @@ export interface IXsdComplexType extends GObject.Object, DomElement, IXsdBaseTyp
 
     vfunc_get_abstract(): boolean
     vfunc_set_abstract(value: boolean): void
-    vfunc_get_block(): string | null
-    vfunc_set_block(value: string | null): void
-    vfunc_get_final(): string | null
-    vfunc_set_final(value: string | null): void
+    vfunc_get_block(): string
+    vfunc_set_block(value: string): void
+    vfunc_get_final(): string
+    vfunc_set_final(value: string): void
     vfunc_get_mixed(): boolean
     vfunc_set_mixed(value: boolean): void
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_default_attributes_apply(): boolean
     vfunc_set_default_attributes_apply(value: boolean): void
     vfunc_get_content_type(): IXsdBaseContent
@@ -5907,13 +5923,13 @@ export interface IXsdExtension extends GObject.Object, DomElement {
 
     // Owm methods of GXml-0.20.GXml.IXsdExtension
 
-    get_base(): string | null
-    set_base(value: string | null): void
+    get_base(): string
+    set_base(value: string): void
 
     // Own virtual methods of GXml-0.20.GXml.IXsdExtension
 
-    vfunc_get_base(): string | null
-    vfunc_set_base(value: string | null): void
+    vfunc_get_base(): string
+    vfunc_set_base(value: string): void
 
     // Class property signals of GXml-0.20.GXml.IXsdExtension
 
@@ -6087,34 +6103,34 @@ export interface IXsdElement extends GObject.Object, DomElement {
 
     get_abstract(): boolean
     set_abstract(value: boolean): void
-    get_block(): string | null
-    set_block(value: string | null): void
-    get_default(): string | null
-    set_default(value: string | null): void
-    get_final(): string | null
-    set_final(value: string | null): void
-    get_fixed(): string | null
-    set_fixed(value: string | null): void
-    get_form(): string | null
-    set_form(value: string | null): void
+    get_block(): string
+    set_block(value: string): void
+    get_default(): string
+    set_default(value: string): void
+    get_final(): string
+    set_final(value: string): void
+    get_fixed(): string
+    set_fixed(value: string): void
+    get_form(): string
+    set_form(value: string): void
     get_id(): string | null
     set_id(value: string | null): void
-    get_maxOccurs(): string | null
-    set_maxOccurs(value: string | null): void
-    get_minOccurs(): string | null
-    set_minOccurs(value: string | null): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_maxOccurs(): string
+    set_maxOccurs(value: string): void
+    get_minOccurs(): string
+    set_minOccurs(value: string): void
+    get_name(): string
+    set_name(value: string): void
     get_nillable(): boolean
     set_nillable(value: boolean): void
-    get_ref(): string | null
-    set_ref(value: string | null): void
+    get_ref(): string
+    set_ref(value: string): void
     get_substitution_group(): DomTokenList
     set_substitution_group(value: DomTokenList): void
-    get_target_namespace(): string | null
-    set_target_namespace(value: string | null): void
-    get_object_type(): string | null
-    set_object_type(value: string | null): void
+    get_target_namespace(): string
+    set_target_namespace(value: string): void
+    get_object_type(): string
+    set_object_type(value: string): void
     get_anotation(): IXsdAnnotation
     set_anotation(value: IXsdAnnotation): void
     get_simple_type(): IXsdSimpleType
@@ -6126,34 +6142,34 @@ export interface IXsdElement extends GObject.Object, DomElement {
 
     vfunc_get_abstract(): boolean
     vfunc_set_abstract(value: boolean): void
-    vfunc_get_block(): string | null
-    vfunc_set_block(value: string | null): void
-    vfunc_get_default(): string | null
-    vfunc_set_default(value: string | null): void
-    vfunc_get_final(): string | null
-    vfunc_set_final(value: string | null): void
-    vfunc_get_fixed(): string | null
-    vfunc_set_fixed(value: string | null): void
-    vfunc_get_form(): string | null
-    vfunc_set_form(value: string | null): void
+    vfunc_get_block(): string
+    vfunc_set_block(value: string): void
+    vfunc_get_default(): string
+    vfunc_set_default(value: string): void
+    vfunc_get_final(): string
+    vfunc_set_final(value: string): void
+    vfunc_get_fixed(): string
+    vfunc_set_fixed(value: string): void
+    vfunc_get_form(): string
+    vfunc_set_form(value: string): void
     vfunc_get_id(): string | null
     vfunc_set_id(value: string | null): void
-    vfunc_get_maxOccurs(): string | null
-    vfunc_set_maxOccurs(value: string | null): void
-    vfunc_get_minOccurs(): string | null
-    vfunc_set_minOccurs(value: string | null): void
-    vfunc_get_name(): string | null
-    vfunc_set_name(value: string | null): void
+    vfunc_get_maxOccurs(): string
+    vfunc_set_maxOccurs(value: string): void
+    vfunc_get_minOccurs(): string
+    vfunc_set_minOccurs(value: string): void
+    vfunc_get_name(): string
+    vfunc_set_name(value: string): void
     vfunc_get_nillable(): boolean
     vfunc_set_nillable(value: boolean): void
-    vfunc_get_ref(): string | null
-    vfunc_set_ref(value: string | null): void
+    vfunc_get_ref(): string
+    vfunc_set_ref(value: string): void
     vfunc_get_substitution_group(): DomTokenList
     vfunc_set_substitution_group(value: DomTokenList): void
-    vfunc_get_target_namespace(): string | null
-    vfunc_set_target_namespace(value: string | null): void
-    vfunc_get_object_type(): string | null
-    vfunc_set_object_type(value: string | null): void
+    vfunc_get_target_namespace(): string
+    vfunc_set_target_namespace(value: string): void
+    vfunc_get_object_type(): string
+    vfunc_set_object_type(value: string): void
     vfunc_get_anotation(): IXsdAnnotation
     vfunc_set_anotation(value: IXsdAnnotation): void
     vfunc_get_simple_type(): IXsdSimpleType
@@ -6659,7 +6675,7 @@ export interface IXsdList extends GObject.Object, Collection {
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
+    get_items_name(): string
     set_items_name(value: GObject.GType): void
     get_length(): number
     get_item(index: number): DomElement | null
@@ -6677,7 +6693,7 @@ export interface IXsdList extends GObject.Object, Collection {
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
     vfunc_set_items_name(value: GObject.GType): void
     vfunc_get_length(): number
     vfunc_get_item(index: number): DomElement | null
@@ -6743,14 +6759,14 @@ export interface IXsdListElements extends GObject.Object, IXsdList {
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListElements
 
@@ -6810,14 +6826,14 @@ export interface IXsdListSimpleTypes extends GObject.Object, IXsdList {
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListSimpleTypes
 
@@ -6877,14 +6893,14 @@ export interface IXsdListComplexTypes extends GObject.Object, IXsdList {
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListComplexTypes
 
@@ -6944,14 +6960,14 @@ export interface IXsdListAttributes extends GObject.Object, IXsdList {
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListAttributes
 
@@ -7011,14 +7027,14 @@ export interface IXsdListAttributesGroup extends GObject.Object, IXsdList {
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListAttributesGroup
 
@@ -7078,14 +7094,14 @@ export interface IXsdListTypeRestrictionEnumerations extends GObject.Object, IXs
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListTypeRestrictionEnumerations
 
@@ -7145,14 +7161,14 @@ export interface IXsdListTypeRestrictionWhiteSpaces extends GObject.Object, IXsd
 
     // Overloads of get_items_name
 
-    get_items_name(): string | null
-    get_items_name(): string | null
+    get_items_name(): string
+    get_items_name(): string
     vfunc_get_items_name(): GObject.GType
 
     // Overloads of vfunc_get_items_name
 
-    vfunc_get_items_name(): string | null
-    vfunc_get_items_name(): string | null
+    vfunc_get_items_name(): string
+    vfunc_get_items_name(): string
 
     // Class property signals of GXml-0.20.GXml.IXsdListTypeRestrictionWhiteSpaces
 
@@ -7204,50 +7220,50 @@ export interface Object extends GObject.Object, DomNode, DomElement {
     // Owm methods of GXml-0.20.GXml.Object
 
     get_properties_list(): GObject.ParamSpec[]
-    find_property_name(nick: string | null): GObject.ParamSpec | null
-    find_object_property_name(pname: string | null): GObject.ParamSpec | null
+    find_property_name(nick: string): GObject.ParamSpec | null
+    find_object_property_name(pname: string): GObject.ParamSpec | null
     get_property_element_list(): GObject.ParamSpec[]
     get_property_string(prop: GObject.ParamSpec): string | null
-    get_attribute(name: string | null): string | null
-    find_property(name: string | null): Property | null
-    set_attribute(name: string | null, val: string | null): boolean
+    get_attribute(name: string): string | null
+    find_property(name: string): Property | null
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    get_child(name: string | null): DomElement | null
-    find_elements(name: string | null): DomElementList
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    get_child(name: string): DomElement | null
+    find_elements(name: string): DomElementList
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    set_instance_property(name: string | null): boolean
-    clean_property_elements(name: string | null): void
+    remove_attribute(name: string): void
+    set_instance_property(name: string): boolean
+    clean_property_elements(name: string): void
 
     // Own virtual methods of GXml-0.20.GXml.Object
 
     vfunc_get_properties_list(): GObject.ParamSpec[]
-    vfunc_find_property_name(nick: string | null): GObject.ParamSpec | null
-    vfunc_find_object_property_name(pname: string | null): GObject.ParamSpec | null
+    vfunc_find_property_name(nick: string): GObject.ParamSpec | null
+    vfunc_find_object_property_name(pname: string): GObject.ParamSpec | null
     vfunc_get_property_element_list(): GObject.ParamSpec[]
     vfunc_get_property_string(prop: GObject.ParamSpec): string | null
-    vfunc_get_attribute(name: string | null): string | null
-    vfunc_find_property(name: string | null): Property | null
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    vfunc_get_attribute(name: string): string | null
+    vfunc_find_property(name: string): Property | null
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_get_child(name: string | null): DomElement | null
-    vfunc_find_elements(name: string | null): DomElementList
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_get_child(name: string): DomElement | null
+    vfunc_find_elements(name: string): DomElementList
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_set_instance_property(name: string | null): boolean
-    vfunc_clean_property_elements(name: string | null): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_set_instance_property(name: string): boolean
+    vfunc_clean_property_elements(name: string): void
 
     // Class property signals of GXml-0.20.GXml.Object
 
@@ -7460,8 +7476,8 @@ export interface Parser extends GObject.Object {
      */
     read_stream_async(stream: Gio.InputStream): globalThis.Promise<void>
     read_stream_finish(_res_: Gio.AsyncResult): void
-    read_string(str: string | null): void
-    read_string_async(str: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    read_string(str: string): void
+    read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of read_string_async
 
@@ -7473,7 +7489,7 @@ export interface Parser extends GObject.Object {
      * @param _callback_ 
      * @returns A Promise of the result of {@link read_string_async}
      */
-    read_string_async(str: string | null): globalThis.Promise<void>
+    read_string_async(str: string): globalThis.Promise<void>
     read_string_finish(_res_: Gio.AsyncResult): void
     create_stream(): Gio.InputStream
     create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -7509,7 +7525,7 @@ export interface Parser extends GObject.Object {
     read_element_property(parent: DomNode): [ /* returnType */ boolean, /* element */ DomNode ]
     add_element_collection(parent: DomNode): [ /* returnType */ boolean, /* element */ DomNode ]
     read_child_nodes_stream(istream: Gio.InputStream): void
-    read_child_nodes_string(str: string | null): void
+    read_child_nodes_string(str: string): void
     read_unparsed(): string | null
     move_next_node(): boolean
     current_is_empty_element(): boolean
@@ -7544,8 +7560,8 @@ export interface Parser extends GObject.Object {
     vfunc_read_stream(stream: Gio.InputStream): void
     vfunc_read_stream_async(stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_stream_finish(_res_: Gio.AsyncResult): void
-    vfunc_read_string(str: string | null): void
-    vfunc_read_string_async(str: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_read_string(str: string): void
+    vfunc_read_string_async(str: string, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_read_string_finish(_res_: Gio.AsyncResult): void
     vfunc_create_stream(): Gio.InputStream
     vfunc_create_stream_async(_callback_: Gio.AsyncReadyCallback<this> | null): void
@@ -7558,7 +7574,7 @@ export interface Parser extends GObject.Object {
     vfunc_read_element_property(parent: DomNode): [ /* returnType */ boolean, /* element */ DomNode ]
     vfunc_add_element_collection(parent: DomNode): [ /* returnType */ boolean, /* element */ DomNode ]
     vfunc_read_child_nodes_stream(istream: Gio.InputStream): void
-    vfunc_read_child_nodes_string(str: string | null): void
+    vfunc_read_child_nodes_string(str: string): void
     vfunc_read_unparsed(): string | null
     vfunc_move_next_node(): boolean
     vfunc_current_is_empty_element(): boolean
@@ -7672,11 +7688,11 @@ export interface XPathContext extends GObject.Object {
 
     // Owm methods of GXml-0.20.GXml.XPathContext
 
-    evaluate(expression: string | null, resolver: Gee.Map | null): XPathObject
+    evaluate(expression: string, resolver: Gee.Map | null): XPathObject
 
     // Own virtual methods of GXml-0.20.GXml.XPathContext
 
-    vfunc_evaluate(expression: string | null, resolver: Gee.Map | null): XPathObject
+    vfunc_evaluate(expression: string, resolver: Gee.Map | null): XPathObject
 
     // Class property signals of GXml-0.20.GXml.XPathContext
 
@@ -7726,7 +7742,7 @@ export interface XPathObject extends GObject.Object {
 
     get_object_type(): XPathObjectType
     get_boolean_value(): boolean
-    get_string_value(): string | null
+    get_string_value(): string
     get_number_value(): number
     get_nodeset(): DomHTMLCollection
 
@@ -7734,7 +7750,7 @@ export interface XPathObject extends GObject.Object {
 
     vfunc_get_object_type(): XPathObjectType
     vfunc_get_boolean_value(): boolean
-    vfunc_get_string_value(): string | null
+    vfunc_get_string_value(): string
     vfunc_get_number_value(): number
     vfunc_get_nodeset(): DomHTMLCollection
 
@@ -7881,14 +7897,14 @@ export class Attr extends Node {
     // Constructors of GXml-0.20.GXml.Attr
 
     constructor(config?: Attr.ConstructorProperties) 
-    constructor(element: DomElement, name: string | null, val: string | null) 
-    static new(element: DomElement, name: string | null, val: string | null): Attr
+    constructor(element: DomElement, name: string, val: string) 
+    static new(element: DomElement, name: string, val: string): Attr
 
     // Overloads of new
 
     static new(): Node
-    static namespace(element: DomElement, namespace_uri: string | null, prefix: string | null, name: string | null, val: string | null): Attr
-    static reference(element: DomElement, name: string | null): Attr
+    static namespace(element: DomElement, namespace_uri: string, prefix: string | null, name: string, val: string): Attr
+    static reference(element: DomElement, name: string): Attr
     _init(config?: Attr.ConstructorProperties): void
 }
 
@@ -7985,10 +8001,10 @@ export interface CssSelector {
 
     get_selector_type(): CssSelectorType
     set_selector_type(value: CssSelectorType): void
-    get_name(): string | null
-    set_name(value: string | null): void
-    get_value(): string | null
-    set_value(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
+    get_value(): string
+    set_value(value: string): void
     get_combiner(): CssCombiner
     set_combiner(value: CssCombiner): void
 
@@ -8022,9 +8038,9 @@ export class CssSelector extends GObject.Object {
     // Constructors of GXml-0.20.GXml.CssSelector
 
     constructor(config?: CssSelector.ConstructorProperties) 
-    constructor(t: CssSelectorType, name: string | null) 
-    static new(t: CssSelectorType, name: string | null): CssSelector
-    static with_value(t: CssSelectorType, name: string | null, value: string | null): CssSelector
+    constructor(t: CssSelectorType, name: string) 
+    static new(t: CssSelectorType, name: string): CssSelector
+    static with_value(t: CssSelectorType, name: string, value: string): CssSelector
     _init(config?: CssSelector.ConstructorProperties): void
 }
 
@@ -8058,7 +8074,7 @@ export interface CssElementSelector {
     get_prefix(): string | null
     set_prefix(value: string | null): void
     get_local_name(): string | null
-    set_local_name(value: string | null): void
+    set_local_name(value: string): void
 
     // Class property signals of GXml-0.20.GXml.CssElementSelector
 
@@ -8099,12 +8115,12 @@ export class CssElementSelector extends CssSelector {
     // Constructors of GXml-0.20.GXml.CssElementSelector
 
     constructor(config?: CssElementSelector.ConstructorProperties) 
-    constructor(prefix: string | null, local_name: string | null) 
-    static new(prefix: string | null, local_name: string | null): CssElementSelector
+    constructor(prefix: string | null, local_name: string) 
+    static new(prefix: string | null, local_name: string): CssElementSelector
 
     // Overloads of new
 
-    static new(t: CssSelectorType, name: string | null): CssSelector
+    static new(t: CssSelectorType, name: string): CssSelector
     _init(config?: CssElementSelector.ConstructorProperties): void
 }
 
@@ -8135,8 +8151,8 @@ export interface CssAttributeSelector {
 
     get_prefix(): string | null
     set_prefix(value: string | null): void
-    get_local_name(): string | null
-    set_local_name(value: string | null): void
+    get_local_name(): string
+    set_local_name(value: string): void
 
     // Class property signals of GXml-0.20.GXml.CssAttributeSelector
 
@@ -8174,12 +8190,12 @@ export class CssAttributeSelector extends CssSelector {
     // Constructors of GXml-0.20.GXml.CssAttributeSelector
 
     constructor(config?: CssAttributeSelector.ConstructorProperties) 
-    constructor(prefix: string | null, local_name: string | null) 
-    static new(prefix: string | null, local_name: string | null): CssAttributeSelector
+    constructor(prefix: string | null, local_name: string) 
+    static new(prefix: string | null, local_name: string): CssAttributeSelector
 
     // Overloads of new
 
-    static new(t: CssSelectorType, name: string | null): CssSelector
+    static new(t: CssSelectorType, name: string): CssSelector
     _init(config?: CssAttributeSelector.ConstructorProperties): void
 }
 
@@ -8240,7 +8256,7 @@ export class CssNotSelector extends CssSelector {
 
     // Overloads of new
 
-    static new(t: CssSelectorType, name: string | null): CssSelector
+    static new(t: CssSelectorType, name: string): CssSelector
     _init(config?: CssNotSelector.ConstructorProperties): void
 }
 
@@ -8261,7 +8277,7 @@ export interface CssSelectorParser {
 
     // Owm methods of GXml-0.20.GXml.CssSelectorParser
 
-    parse(selectors: string | null): void
+    parse(selectors: string): void
     get_selectors(): Gee.List
     match(element: DomElement): boolean
     query_selector_all(element: DomElement): DomNodeList
@@ -8420,11 +8436,11 @@ export class Document extends Node {
     // Overloads of new
 
     static new(): Node
-    static from_path(path: string | null): Document
-    static from_uri(uri: string | null): Document
+    static from_path(path: string): Document
+    static from_uri(uri: string): Document
     static from_file(file: Gio.File): Document
     static from_stream(stream: Gio.InputStream): Document
-    static from_string(str: string | null): Document
+    static from_string(str: string): Document
     _init(config?: Document.ConstructorProperties): void
 }
 
@@ -8545,14 +8561,14 @@ export class DocumentType extends Node {
     // Constructors of GXml-0.20.GXml.DocumentType
 
     constructor(config?: DocumentType.ConstructorProperties) 
-    constructor(doc: DomDocument, name: string | null, public_id: string | null, system_id: string | null) 
-    static new(doc: DomDocument, name: string | null, public_id: string | null, system_id: string | null): DocumentType
+    constructor(doc: DomDocument, name: string, public_id: string | null, system_id: string | null) 
+    static new(doc: DomDocument, name: string, public_id: string | null, system_id: string | null): DocumentType
 
     // Overloads of new
 
     static new(): Node
-    static with_name(doc: DomDocument, name: string | null): DocumentType
-    static with_ids(doc: DomDocument, name: string | null, public_id: string | null, system_id: string | null): DocumentType
+    static with_name(doc: DomDocument, name: string): DocumentType
+    static with_ids(doc: DomDocument, name: string, public_id: string, system_id: string): DocumentType
     _init(config?: DocumentType.ConstructorProperties): void
 }
 
@@ -9100,7 +9116,7 @@ export interface DomErrorName {
     // Owm methods of GXml-0.20.GXml.DomErrorName
 
     get_name(error_code: number): string | null
-    get_code(error_name: string | null): number
+    get_code(error_name: string): number
 
     // Class property signals of GXml-0.20.GXml.DomErrorName
 
@@ -9161,14 +9177,14 @@ export interface Element extends DomChildNode, DomNonDocumentTypeChildNode, DomP
 
     lookup_prefix(nspace: string | null): string | null
     lookup_namespace_uri(prefix: string | null): string | null
-    initialize(local_name: string | null): void
-    initialize_document(doc: DomDocument, local_name: string | null): void
-    initialize_with_namespace(namespace_uri: string | null, prefix: string | null, local_name: string | null): void
-    initialize_document_with_namespace(doc: DomDocument, namespace_uri: string | null, prefix: string | null, local_name: string | null): void
+    initialize(local_name: string): void
+    initialize_document(doc: DomDocument, local_name: string): void
+    initialize_with_namespace(namespace_uri: string | null, prefix: string | null, local_name: string): void
+    initialize_document_with_namespace(doc: DomDocument, namespace_uri: string | null, prefix: string | null, local_name: string): void
     get_parse_children(): boolean
     set_parse_children(value: boolean): void
-    get_unparsed(): string | null
-    set_unparsed(value: string | null): void
+    get_unparsed(): string
+    set_unparsed(value: string): void
     read_unparsed(): void
     get_read_buffer(): Gio.MemoryOutputStream
     set_read_buffer(value: Gio.MemoryOutputStream): void
@@ -9190,30 +9206,30 @@ export interface Element extends DomChildNode, DomNonDocumentTypeChildNode, DomP
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.Element
 
@@ -9349,7 +9365,7 @@ export interface ElementAttributes extends DomNamedNodeMap {
 
     // Owm methods of GXml-0.20.GXml.ElementAttributes
 
-    add_reference(name: string | null): void
+    add_reference(name: string): void
 
     // Class property signals of GXml-0.20.GXml.ElementAttributes
 
@@ -9437,7 +9453,7 @@ export class Enumeration {
     static get_nick(enumeration: GObject.GType, val: number): string | null
     static get_nick_camelcase(enumeration: GObject.GType, val: number): string | null
     static get_string(enumeration: GObject.GType, val: number, use_nick: boolean, camelcase: boolean): string | null
-    static parse(enumeration: GObject.GType, val: string | null): GObject.EnumValue | null
+    static parse(enumeration: GObject.GType, val: string): GObject.EnumValue | null
     static to_array(enumeration: GObject.GType): GObject.EnumValue[]
     static parse_integer(enumeration: GObject.GType, val: number): GObject.EnumValue | null
     static to_string_array(enumeration: GObject.GType): string[]
@@ -9539,7 +9555,7 @@ export interface CustomEvent {
     // Owm methods of GXml-0.20.GXml.CustomEvent
 
     get_detail(): /* result */ any
-    init_custom_event(type: string | null, bubbles: boolean, cancelable: boolean, detail: any | null): void
+    init_custom_event(type: string, bubbles: boolean, cancelable: boolean, detail: any | null): void
 
     // Class property signals of GXml-0.20.GXml.CustomEvent
 
@@ -9589,9 +9605,9 @@ export interface HashMap extends Map {
 
     // Owm methods of GXml-0.20.GXml.HashMap
 
-    initialize_element_with_key(element: Element, items_type: GObject.GType, attribute_key: string | null): void
-    initialize_with_key(items_type: GObject.GType, attribute_key: string | null): void
-    get(key: string | null): DomElement | null
+    initialize_element_with_key(element: Element, items_type: GObject.GType, attribute_key: string): void
+    initialize_with_key(items_type: GObject.GType, attribute_key: string): void
+    get(key: string): DomElement | null
     get_keys(): string[]
 
     // Class property signals of GXml-0.20.GXml.HashMap
@@ -9654,11 +9670,11 @@ export interface HashPairedMap extends PairedMap {
 
     // Owm methods of GXml-0.20.GXml.HashPairedMap
 
-    initialize_element_with_keys(element: Element, items_type: GObject.GType, attribute_primary_key: string | null, attribute_secondary_key: string | null): void
-    initialize_with_keys(items_type: GObject.GType, attribute_primary_key: string | null, attribute_secondary_key: string | null): void
-    get(primary_key: string | null, secondary_key: string | null): DomElement | null
+    initialize_element_with_keys(element: Element, items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string): void
+    initialize_with_keys(items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string): void
+    get(primary_key: string, secondary_key: string): DomElement | null
     get_primary_keys(): string[]
-    get_secondary_keys(pkey: string | null): string[]
+    get_secondary_keys(pkey: string): string[]
 
     // Class property signals of GXml-0.20.GXml.HashPairedMap
 
@@ -9724,12 +9740,12 @@ export interface HashThreeMap extends ThreeMap {
 
     // Owm methods of GXml-0.20.GXml.HashThreeMap
 
-    initialize_element_with_keys(element: Element, items_type: GObject.GType, attribute_primary_key: string | null, attribute_secondary_key: string | null, attribute_third_key: string | null): void
-    initialize_with_keys(items_type: GObject.GType, attribute_primary_key: string | null, attribute_secondary_key: string | null, attribute_third_key: string | null): void
-    get(primary_key: string | null, secondary_key: string | null, third_key: string | null): DomElement | null
+    initialize_element_with_keys(element: Element, items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string, attribute_third_key: string): void
+    initialize_with_keys(items_type: GObject.GType, attribute_primary_key: string, attribute_secondary_key: string, attribute_third_key: string): void
+    get(primary_key: string, secondary_key: string, third_key: string): DomElement | null
     get_primary_keys(): string[]
-    get_secondary_keys(pkey: string | null): string[]
-    get_third_keys(pkey: string | null, skey: string | null): string[]
+    get_secondary_keys(pkey: string): string[]
+    get_third_keys(pkey: string, skey: string): string[]
 
     // Class property signals of GXml-0.20.GXml.HashThreeMap
 
@@ -9983,30 +9999,30 @@ export interface HtmlElement {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.HtmlElement
 
@@ -10450,7 +10466,7 @@ export class String extends BaseProperty {
     // Constructors of GXml-0.20.GXml.String
 
     constructor(config?: String.ConstructorProperties) 
-    static with_string(str: string | null): String
+    static with_string(str: string): String
     constructor() 
     static new(): String
     _init(config?: String.ConstructorProperties): void
@@ -10479,7 +10495,7 @@ export interface ArrayString {
     initialize_strings(strs: string[]): void
     is_valid_value(): boolean
     select(index: number): void
-    search(str: string | null): boolean
+    search(str: string): boolean
 
     // Class property signals of GXml-0.20.GXml.ArrayString
 
@@ -10537,8 +10553,8 @@ export interface XsdArrayString {
 
     // Owm methods of GXml-0.20.GXml.XsdArrayString
 
-    get_simple_type(): string | null
-    set_simple_type(value: string | null): void
+    get_simple_type(): string
+    set_simple_type(value: string): void
     get_source(): Gio.File
     set_source(value: Gio.File): void
     load(): void
@@ -10942,8 +10958,8 @@ export interface DateTime {
 
     // Owm methods of GXml-0.20.GXml.DateTime
 
-    get_format(): string | null
-    set_format(value: string | null): void
+    get_format(): string
+    set_format(value: string): void
     get_datetime(): GLib.DateTime
     set_datetime(dt: GLib.DateTime): void
 
@@ -11056,7 +11072,7 @@ export interface SettableTokenList extends DomSettableTokenList {
 
     // Conflicting methods
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -11103,7 +11119,7 @@ export interface SettableTokenList extends DomSettableTokenList {
     get_read_only_view(): Gee.Collection
     get_read_only_view(): Gee.Collection
     get_read_only_view(): Gee.Collection
-    vfunc_contains(token: string | null): boolean
+    vfunc_contains(token: string): boolean
 
     // Overloads of vfunc_contains
 
@@ -11244,8 +11260,8 @@ export class StringRef extends GObject.Object {
     // Constructors of GXml-0.20.GXml.StringRef
 
     constructor(config?: StringRef.ConstructorProperties) 
-    constructor(obj: Object, name: string | null) 
-    static new(obj: Object, name: string | null): StringRef
+    constructor(obj: Object, name: string) 
+    static new(obj: Object, name: string): StringRef
     _init(config?: StringRef.ConstructorProperties): void
 }
 
@@ -11271,14 +11287,14 @@ export interface CharacterData extends DomNonDocumentTypeChildNode, DomChildNode
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -11296,7 +11312,7 @@ export interface CharacterData extends DomNonDocumentTypeChildNode, DomChildNode
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -11311,7 +11327,7 @@ export interface CharacterData extends DomNonDocumentTypeChildNode, DomChildNode
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.CharacterData
 
@@ -11410,14 +11426,14 @@ export interface Text extends DomText {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -11435,7 +11451,7 @@ export interface Text extends DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -11450,7 +11466,7 @@ export interface Text extends DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.Text
 
@@ -11518,8 +11534,8 @@ export class Text extends CharacterData {
     // Constructors of GXml-0.20.GXml.Text
 
     constructor(config?: Text.ConstructorProperties) 
-    constructor(doc: DomDocument, data: string | null) 
-    static new(doc: DomDocument, data: string | null): Text
+    constructor(doc: DomDocument, data: string) 
+    static new(doc: DomDocument, data: string): Text
 
     // Overloads of new
 
@@ -11550,14 +11566,14 @@ export interface ProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -11575,7 +11591,7 @@ export interface ProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -11590,7 +11606,7 @@ export interface ProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.ProcessingInstruction
 
@@ -11661,8 +11677,8 @@ export class ProcessingInstruction extends CharacterData {
     // Constructors of GXml-0.20.GXml.ProcessingInstruction
 
     constructor(config?: ProcessingInstruction.ConstructorProperties) 
-    constructor(doc: DomDocument, target: string | null, data: string | null) 
-    static new(doc: DomDocument, target: string | null, data: string | null): ProcessingInstruction
+    constructor(doc: DomDocument, target: string, data: string) 
+    static new(doc: DomDocument, target: string, data: string): ProcessingInstruction
 
     // Overloads of new
 
@@ -11693,14 +11709,14 @@ export interface Comment extends DomComment {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -11718,7 +11734,7 @@ export interface Comment extends DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -11733,7 +11749,7 @@ export interface Comment extends DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.Comment
 
@@ -11801,8 +11817,8 @@ export class Comment extends CharacterData {
     // Constructors of GXml-0.20.GXml.Comment
 
     constructor(config?: Comment.ConstructorProperties) 
-    constructor(doc: DomDocument, data: string | null) 
-    static new(doc: DomDocument, data: string | null): Comment
+    constructor(doc: DomDocument, data: string) 
+    static new(doc: DomDocument, data: string): Comment
 
     // Overloads of new
 
@@ -11838,7 +11854,7 @@ export interface TokenList extends DomTokenList {
 
     // Conflicting methods
 
-    contains(token: string | null): boolean
+    contains(token: string): boolean
 
     // Overloads of contains
 
@@ -11885,7 +11901,7 @@ export interface TokenList extends DomTokenList {
     get_read_only_view(): Gee.Collection
     get_read_only_view(): Gee.Collection
     get_read_only_view(): Gee.Collection
-    vfunc_contains(token: string | null): boolean
+    vfunc_contains(token: string): boolean
 
     // Overloads of vfunc_contains
 
@@ -12125,7 +12141,7 @@ export interface XCharacterData extends DomCharacterData {
     // Owm methods of GXml-0.20.GXml.XCharacterData
 
     get_str(): string | null
-    set_str(value: string | null): void
+    set_str(value: string): void
 
     // Conflicting methods
 
@@ -12138,14 +12154,14 @@ export interface XCharacterData extends DomCharacterData {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -12163,7 +12179,7 @@ export interface XCharacterData extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -12178,7 +12194,7 @@ export interface XCharacterData extends DomCharacterData {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.XCharacterData
 
@@ -12422,14 +12438,14 @@ export interface XComment extends DomComment {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -12447,7 +12463,7 @@ export interface XComment extends DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -12462,7 +12478,7 @@ export interface XComment extends DomComment {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.XComment
 
@@ -12623,8 +12639,8 @@ export interface XDocument extends DomParentNode, DomNonElementParentNode, DomDo
     get_file(): Gio.File
     set_file(value: Gio.File): void
     get_root(): DomNode
-    create_pi(target: string | null, data: string | null): DomNode
-    create_text(text: string | null): DomNode
+    create_pi(target: string, data: string): DomNode
+    create_text(text: string): DomNode
     libxml_to_string(): string | null
     save(cancellable: Gio.Cancellable | null): boolean
     save_as(f: Gio.File, cancellable: Gio.Cancellable | null): boolean
@@ -12771,10 +12787,10 @@ export class XDocument extends XNode {
     constructor(config?: XDocument.ConstructorProperties) 
     constructor() 
     static new(): XDocument
-    static from_path(path: string | null, options: number): XDocument
-    static from_uri(uri: string | null, options: number): XDocument
+    static from_path(path: string, options: number): XDocument
+    static from_uri(uri: string, options: number): XDocument
     static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XDocument
-    static from_string(str: string | null, options: number): XDocument
+    static from_string(str: string, options: number): XDocument
     static from_stream(istream: Gio.InputStream): XDocument
     static from_doc(doc: libxml2.Doc): XDocument
     _init(config?: XDocument.ConstructorProperties): void
@@ -12801,15 +12817,15 @@ export interface XElement extends DomParentNode, DomElement, XPathContext {
 
     // Owm methods of GXml-0.20.GXml.XElement
 
-    set_attr(aname: string | null, avalue: string | null): void
-    get_attr(name: string | null): DomNode | null
-    set_ns_attr(ns: string | null, aname: string | null, value: string | null): void
-    get_ns_attr(name: string | null, uri: string | null): DomNode | null
+    set_attr(aname: string, avalue: string): void
+    get_attr(name: string): DomNode | null
+    set_ns_attr(ns: string, aname: string, value: string): void
+    get_ns_attr(name: string, uri: string): DomNode | null
     normalize(): void
     get_content(): string | null
-    set_content(value: string | null): void
-    remove_attr(name: string | null): void
-    remove_ns_attr(name: string | null, uri: string | null): void
+    set_content(value: string): void
+    remove_attr(name: string): void
+    remove_ns_attr(name: string, uri: string): void
 
     // Class property signals of GXml-0.20.GXml.XElement
 
@@ -13134,18 +13150,18 @@ export interface XHtmlDocument extends DomHtmlDocument {
 
     // Conflicting methods
 
-    read_from_string(str: string | null): void
+    read_from_string(str: string): void
 
     // Overloads of read_from_string
 
-    read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    vfunc_read_from_string(str: string | null): void
+    read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    vfunc_read_from_string(str: string): void
 
     // Overloads of vfunc_read_from_string
 
-    vfunc_read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
-    vfunc_read_from_string(str: string | null, cancellable: Gio.Cancellable | null): void
+    vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void
+    vfunc_read_from_string(str: string, cancellable: Gio.Cancellable | null): void
 
     // Class property signals of GXml-0.20.GXml.XHtmlDocument
 
@@ -13282,28 +13298,28 @@ export class XHtmlDocument extends XDocument {
     // Constructors of GXml-0.20.GXml.XHtmlDocument
 
     constructor(config?: XHtmlDocument.ConstructorProperties) 
-    static from_path(path: string | null, options: number): XHtmlDocument
+    static from_path(path: string, options: number): XHtmlDocument
 
     // Overloads of from_path
 
-    static from_path(path: string | null, options: number): XDocument
-    static from_uri(uri: string | null, options: number): XHtmlDocument
+    static from_path(path: string, options: number): XDocument
+    static from_uri(uri: string, options: number): XHtmlDocument
 
     // Overloads of from_uri
 
-    static from_uri(uri: string | null, options: number): XDocument
+    static from_uri(uri: string, options: number): XDocument
     static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XHtmlDocument
 
     // Overloads of from_file
 
     static from_file(file: Gio.File, options: number, cancel: Gio.Cancellable | null): XDocument
-    static from_string(html: string | null, options: number): XHtmlDocument
+    static from_string(html: string, options: number): XHtmlDocument
 
     // Overloads of from_string
 
-    static from_string(str: string | null, options: number): XDocument
-    static from_string_context(html: string | null, options: number): XHtmlDocument
-    static from_string_doc(html: string | null, options: number): XHtmlDocument
+    static from_string(str: string, options: number): XDocument
+    static from_string_context(html: string, options: number): XHtmlDocument
+    static from_string_doc(html: string, options: number): XHtmlDocument
     constructor() 
     static new(): XHtmlDocument
 
@@ -13530,7 +13546,7 @@ export interface XNode extends DomEventTarget, DomNode {
 
     // Owm methods of GXml-0.20.GXml.XNode
 
-    set_namespace(uri: string | null, prefix: string | null): boolean
+    set_namespace(uri: string, prefix: string | null): boolean
     get_attrs(): Gee.Map
     get_children_nodes(): Gee.BidirList
     get_document(): DomDocument
@@ -13538,14 +13554,14 @@ export interface XNode extends DomEventTarget, DomNode {
     get_type_node(): NodeType
     get_name(): string | null
     get_value(): string | null
-    set_value(value: string | null): void
+    set_value(value: string): void
     to_string(): string | null
     get_internal_node(): any | null
     clone_node(deep: boolean): DomNode
 
     // Own virtual methods of GXml-0.20.GXml.XNode
 
-    vfunc_set_namespace(uri: string | null, prefix: string | null): boolean
+    vfunc_set_namespace(uri: string, prefix: string | null): boolean
     vfunc_get_attrs(): Gee.Map
     vfunc_get_children_nodes(): Gee.BidirList
     vfunc_get_document(): DomDocument
@@ -13553,7 +13569,7 @@ export interface XNode extends DomEventTarget, DomNode {
     vfunc_get_type_node(): NodeType
     vfunc_get_name(): string | null
     vfunc_get_value(): string | null
-    vfunc_set_value(value: string | null): void
+    vfunc_set_value(value: string): void
     vfunc_to_string(): string | null
 
     // Class property signals of GXml-0.20.GXml.XNode
@@ -13736,12 +13752,12 @@ export interface XProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
-    set_data(value: string | null): void
+    set_data(value: string): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -13756,7 +13772,7 @@ export interface XProcessingInstruction extends DomProcessingInstruction {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.XProcessingInstruction
 
@@ -13902,30 +13918,30 @@ export interface XsdSchema {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdSchema
 
@@ -14004,10 +14020,10 @@ export interface XsdSimpleType {
 
     // Owm methods of GXml-0.20.GXml.XsdSimpleType
 
-    get_final(): string | null
-    set_final(value: string | null): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_final(): string
+    set_final(value: string): void
+    get_name(): string
+    set_name(value: string): void
     get_annotation(): XsdAnnotation
     set_annotation(value: XsdAnnotation): void
     get_list(): XsdTypeList
@@ -14019,30 +14035,30 @@ export interface XsdSimpleType {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdSimpleType
 
@@ -14125,30 +14141,30 @@ export interface XsdTypeDefinition {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeDefinition
 
@@ -14203,30 +14219,30 @@ export interface XsdTypeList {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeList
 
@@ -14282,30 +14298,30 @@ export interface XsdTypeUnion {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeUnion
 
@@ -14379,8 +14395,8 @@ export interface XsdTypeRestriction {
 
     // Owm methods of GXml-0.20.GXml.XsdTypeRestriction
 
-    get_base(): string | null
-    set_base(value: string | null): void
+    get_base(): string
+    set_base(value: string): void
     get_simple_type(): XsdSimpleType
     set_simple_type(value: XsdSimpleType): void
     get_enumerations(): XsdListTypeRestrictionEnumerations
@@ -14390,30 +14406,30 @@ export interface XsdTypeRestriction {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestriction
 
@@ -14494,30 +14510,30 @@ export interface XsdTypeRestrictionDef {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionDef
 
@@ -14572,30 +14588,30 @@ export interface XsdTypeRestrictionMinExclusive {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionMinExclusive
 
@@ -14651,30 +14667,30 @@ export interface XsdTypeRestrictionMinInclusive {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionMinInclusive
 
@@ -14730,30 +14746,30 @@ export interface XsdTypeRestrictionMaxExclusive {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionMaxExclusive
 
@@ -14809,30 +14825,30 @@ export interface XsdTypeRestrictionMaxInclusive {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionMaxInclusive
 
@@ -14888,30 +14904,30 @@ export interface XsdTypeRestrictionTotalDigits {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionTotalDigits
 
@@ -14967,30 +14983,30 @@ export interface XsdTypeRestrictionFractionDigits {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionFractionDigits
 
@@ -15046,30 +15062,30 @@ export interface XsdTypeRestrictionLength {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionLength
 
@@ -15125,30 +15141,30 @@ export interface XsdTypeRestrictionMinLength {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionMinLength
 
@@ -15204,30 +15220,30 @@ export interface XsdTypeRestrictionMaxLength {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionMaxLength
 
@@ -15291,35 +15307,35 @@ export interface XsdTypeRestrictionEnumeration {
 
     // Owm methods of GXml-0.20.GXml.XsdTypeRestrictionEnumeration
 
-    get_value(): string | null
-    set_value(value: string | null): void
+    get_value(): string
+    set_value(value: string): void
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionEnumeration
 
@@ -15390,35 +15406,35 @@ export interface XsdTypeRestrictionWhiteSpace {
 
     get_fixed(): XsdTypeRestrictionWhiteSpaceFixed
     set_fixed(value: XsdTypeRestrictionWhiteSpaceFixed): void
-    get_value(): string | null
-    set_value(value: string | null): void
+    get_value(): string
+    set_value(value: string): void
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionWhiteSpace
 
@@ -15521,30 +15537,30 @@ export interface XsdTypeRestrictionPattern {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionPattern
 
@@ -15600,30 +15616,30 @@ export interface XsdTypeRestrictionAssertion {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionAssertion
 
@@ -15679,30 +15695,30 @@ export interface XsdTypeRestrictionExplicitTimezone {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdTypeRestrictionExplicitTimezone
 
@@ -15793,14 +15809,14 @@ export interface XsdComplexType {
 
     get_abstract(): boolean
     set_abstract(value: boolean): void
-    get_block(): string | null
-    set_block(value: string | null): void
-    get_final(): string | null
-    set_final(value: string | null): void
+    get_block(): string
+    set_block(value: string): void
+    get_final(): string
+    set_final(value: string): void
     get_mixed(): boolean
     set_mixed(value: boolean): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_default_attributes_apply(): boolean
     set_default_attributes_apply(value: boolean): void
     get_content_type(): XsdBaseContent
@@ -15810,30 +15826,30 @@ export interface XsdComplexType {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdComplexType
 
@@ -15924,35 +15940,35 @@ export interface XsdExtension {
 
     // Owm methods of GXml-0.20.GXml.XsdExtension
 
-    get_base(): string | null
-    set_base(value: string | null): void
+    get_base(): string
+    set_base(value: string): void
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdExtension
 
@@ -16063,32 +16079,32 @@ export interface XsdElement {
 
     get_abstract(): boolean
     set_abstract(value: boolean): void
-    get_block(): string | null
-    set_block(value: string | null): void
-    get_default(): string | null
-    set_default(value: string | null): void
-    get_final(): string | null
-    set_final(value: string | null): void
-    get_fixed(): string | null
-    set_fixed(value: string | null): void
-    get_form(): string | null
-    set_form(value: string | null): void
-    get_max_occurs(): string | null
-    set_max_occurs(value: string | null): void
-    get_min_occurs(): string | null
-    set_min_occurs(value: string | null): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_block(): string
+    set_block(value: string): void
+    get_default(): string
+    set_default(value: string): void
+    get_final(): string
+    set_final(value: string): void
+    get_fixed(): string
+    set_fixed(value: string): void
+    get_form(): string
+    set_form(value: string): void
+    get_max_occurs(): string
+    set_max_occurs(value: string): void
+    get_min_occurs(): string
+    set_min_occurs(value: string): void
+    get_name(): string
+    set_name(value: string): void
     get_nillable(): boolean
     set_nillable(value: boolean): void
-    get_ref(): string | null
-    set_ref(value: string | null): void
+    get_ref(): string
+    set_ref(value: string): void
     get_substitution_group(): DomTokenList
     set_substitution_group(value: DomTokenList): void
-    get_target_namespace(): string | null
-    set_target_namespace(value: string | null): void
-    get_object_type(): string | null
-    set_object_type(value: string | null): void
+    get_target_namespace(): string
+    set_target_namespace(value: string): void
+    get_object_type(): string
+    set_object_type(value: string): void
     get_anotation(): XsdAnnotation
     set_anotation(value: XsdAnnotation): void
     get_simple_type(): XsdSimpleType
@@ -16098,30 +16114,30 @@ export interface XsdElement {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdElement
 
@@ -16224,30 +16240,30 @@ export interface XsdAnnotation {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdAnnotation
 
@@ -16312,30 +16328,30 @@ export interface XsdBaseType {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdBaseType
 
@@ -16403,30 +16419,30 @@ export interface XsdBaseContent {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdBaseContent
 
@@ -16481,30 +16497,30 @@ export interface XsdSimpleContent {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdSimpleContent
 
@@ -16560,30 +16576,30 @@ export interface XsdComplexContent {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdComplexContent
 
@@ -16639,30 +16655,30 @@ export interface XsdOpenContent {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdOpenContent
 
@@ -16731,30 +16747,30 @@ export interface XsdBaseAttribute {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdBaseAttribute
 
@@ -16809,30 +16825,30 @@ export interface XsdAttribute {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdAttribute
 
@@ -16888,30 +16904,30 @@ export interface XsdAttributeGroup {
 
     // Conflicting methods
 
-    set_attribute(name: string | null, value: string | null): void
-    set_attribute(name: string | null, val: string | null): boolean
+    set_attribute(name: string, value: string): void
+    set_attribute(name: string, val: string): boolean
 
     // Overloads of set_attribute
 
-    set_attribute(name: string | null, value: string | null): void
-    remove_attribute(name: string | null): void
-    remove_attribute(name: string | null): boolean
+    set_attribute(name: string, value: string): void
+    remove_attribute(name: string): void
+    remove_attribute(name: string): boolean
 
     // Overloads of remove_attribute
 
-    remove_attribute(name: string | null): void
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_set_attribute(name: string | null, val: string | null): boolean
+    remove_attribute(name: string): void
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_set_attribute(name: string, val: string): boolean
 
     // Overloads of vfunc_set_attribute
 
-    vfunc_set_attribute(name: string | null, value: string | null): void
-    vfunc_remove_attribute(name: string | null): void
-    vfunc_remove_attribute(name: string | null): boolean
+    vfunc_set_attribute(name: string, value: string): void
+    vfunc_remove_attribute(name: string): void
+    vfunc_remove_attribute(name: string): boolean
 
     // Overloads of vfunc_remove_attribute
 
-    vfunc_remove_attribute(name: string | null): void
+    vfunc_remove_attribute(name: string): void
 
     // Class property signals of GXml-0.20.GXml.XsdAttributeGroup
 
@@ -17237,14 +17253,14 @@ export interface XText extends DomText {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
-    set_data(value: string | null): void
+    get_data(key: string): any | null
+    set_data(value: string): void
 
     // Overloads of set_data
 
@@ -17262,7 +17278,7 @@ export interface XText extends DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -17277,7 +17293,7 @@ export interface XText extends DomText {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of GXml-0.20.GXml.XText
 
@@ -18738,7 +18754,7 @@ export interface XNodeClass {
 
     // Own fields of GXml-0.20.GXml.XNodeClass
 
-    set_namespace: (self: XNode, uri: string | null, prefix: string | null) => boolean
+    set_namespace: (self: XNode, uri: string, prefix: string | null) => boolean
     to_string: (self: XNode) => string | null
 }
 
@@ -19633,7 +19649,7 @@ export interface CollectionIface {
     get_nodes_index: (self: Collection) => GLib.Queue
     get_element: (self: Collection) => DomElement
     set_element: (self: Collection, value: DomElement) => void
-    get_items_name: (self: Collection) => string | null
+    get_items_name: (self: Collection) => string
     get_items_type: (self: Collection) => GObject.GType
     set_items_type: (self: Collection, value: GObject.GType) => void
     get_length: (self: Collection) => number
@@ -19674,10 +19690,10 @@ export interface MapIface {
 
     // Own fields of GXml-0.20.GXml.MapIface
 
-    item: (self: Map, key: string | null) => DomElement | null
-    has_key: (self: Map, key: string | null) => boolean
-    get_attribute_key: (self: Map) => string | null
-    set_attribute_key: (self: Map, value: string | null) => void
+    item: (self: Map, key: string) => DomElement | null
+    has_key: (self: Map, key: string) => boolean
+    get_attribute_key: (self: Map) => string
+    set_attribute_key: (self: Map, value: string) => void
     get_keys_set: (self: Map) => Gee.Set
 }
 
@@ -19707,14 +19723,14 @@ export interface PairedMapIface {
 
     // Own fields of GXml-0.20.GXml.PairedMapIface
 
-    item: (self: PairedMap, primary_key: string | null, secondary_key: string | null) => DomElement | null
-    has_primary_key: (self: PairedMap, key: string | null) => boolean
-    has_secondary_key: (self: PairedMap, pkey: string | null, key: string | null) => boolean
-    secondary_keys_set: (self: PairedMap, pkey: string | null) => Gee.Set
-    get_attribute_primary_key: (self: PairedMap) => string | null
-    set_attribute_primary_key: (self: PairedMap, value: string | null) => void
-    get_attribute_secondary_key: (self: PairedMap) => string | null
-    set_attribute_secondary_key: (self: PairedMap, value: string | null) => void
+    item: (self: PairedMap, primary_key: string, secondary_key: string) => DomElement | null
+    has_primary_key: (self: PairedMap, key: string) => boolean
+    has_secondary_key: (self: PairedMap, pkey: string, key: string) => boolean
+    secondary_keys_set: (self: PairedMap, pkey: string) => Gee.Set
+    get_attribute_primary_key: (self: PairedMap) => string
+    set_attribute_primary_key: (self: PairedMap, value: string) => void
+    get_attribute_secondary_key: (self: PairedMap) => string
+    set_attribute_secondary_key: (self: PairedMap, value: string) => void
     get_primary_keys_set: (self: PairedMap) => Gee.Set
 }
 
@@ -19745,18 +19761,18 @@ export interface ThreeMapIface {
 
     // Own fields of GXml-0.20.GXml.ThreeMapIface
 
-    item: (self: ThreeMap, primary_key: string | null, secondary_key: string | null, third_key: string | null) => DomElement | null
-    has_primary_key: (self: ThreeMap, key: string | null) => boolean
-    has_secondary_key: (self: ThreeMap, pkey: string | null, key: string | null) => boolean
-    has_third_key: (self: ThreeMap, pkey: string | null, skey: string | null, key: string | null) => boolean
-    secondary_keys_set: (self: ThreeMap, pkey: string | null) => Gee.Set
-    third_keys_set: (self: ThreeMap, pkey: string | null, skey: string | null) => Gee.Set
-    get_attribute_primary_key: (self: ThreeMap) => string | null
-    set_attribute_primary_key: (self: ThreeMap, value: string | null) => void
-    get_attribute_secondary_key: (self: ThreeMap) => string | null
-    set_attribute_secondary_key: (self: ThreeMap, value: string | null) => void
-    get_attribute_third_key: (self: ThreeMap) => string | null
-    set_attribute_third_key: (self: ThreeMap, value: string | null) => void
+    item: (self: ThreeMap, primary_key: string, secondary_key: string, third_key: string) => DomElement | null
+    has_primary_key: (self: ThreeMap, key: string) => boolean
+    has_secondary_key: (self: ThreeMap, pkey: string, key: string) => boolean
+    has_third_key: (self: ThreeMap, pkey: string, skey: string, key: string) => boolean
+    secondary_keys_set: (self: ThreeMap, pkey: string) => Gee.Set
+    third_keys_set: (self: ThreeMap, pkey: string, skey: string) => Gee.Set
+    get_attribute_primary_key: (self: ThreeMap) => string
+    set_attribute_primary_key: (self: ThreeMap, value: string) => void
+    get_attribute_secondary_key: (self: ThreeMap) => string
+    set_attribute_secondary_key: (self: ThreeMap, value: string) => void
+    get_attribute_third_key: (self: ThreeMap) => string
+    set_attribute_third_key: (self: ThreeMap, value: string) => void
     get_primary_keys_set: (self: ThreeMap) => Gee.Set
 }
 
@@ -19790,7 +19806,7 @@ export interface DomAttrIface {
     get_local_name: (self: DomAttr) => string | null
     get_name: (self: DomAttr) => string | null
     get_value: (self: DomAttr) => string | null
-    set_value: (self: DomAttr, value: string | null) => void
+    set_value: (self: DomAttr, value: string) => void
     get_specified: (self: DomAttr) => boolean
 }
 
@@ -19806,12 +19822,12 @@ export interface DomCharacterDataIface {
     // Own fields of GXml-0.20.GXml.DomCharacterDataIface
 
     substring_data: (self: DomCharacterData, offset: number, count: number) => string | null
-    append_data: (self: DomCharacterData, data: string | null) => void
-    insert_data: (self: DomCharacterData, offset: number, data: string | null) => void
+    append_data: (self: DomCharacterData, data: string) => void
+    insert_data: (self: DomCharacterData, offset: number, data: string) => void
     delete_data: (self: DomCharacterData, offset: number, count: number) => void
-    replace_data: (self: DomCharacterData, offset: number, count: number, data: string | null) => void
+    replace_data: (self: DomCharacterData, offset: number, count: number, data: string) => void
     get_data: (self: DomCharacterData) => string | null
-    set_data: (self: DomCharacterData, value: string | null) => void
+    set_data: (self: DomCharacterData, value: string) => void
     get_length: (self: DomCharacterData) => number
 }
 
@@ -19865,7 +19881,7 @@ export interface DomNonElementParentNodeIface {
 
     // Own fields of GXml-0.20.GXml.DomNonElementParentNodeIface
 
-    get_element_by_id: (self: DomNonElementParentNode, element_id: string | null) => DomElement | null
+    get_element_by_id: (self: DomNonElementParentNode, element_id: string) => DomElement | null
 }
 
 export abstract class DomNonElementParentNodeIface {
@@ -19879,9 +19895,9 @@ export interface DomParentNodeIface {
 
     // Own fields of GXml-0.20.GXml.DomParentNodeIface
 
-    query_selector: (self: DomParentNode, selectors: string | null) => DomElement | null
-    query_selector_all: (self: DomParentNode, selectors: string | null) => DomNodeList
-    get_elements_by_property_value: (self: DomParentNode, property: string | null, value: string | null) => DomElementList
+    query_selector: (self: DomParentNode, selectors: string) => DomElement | null
+    query_selector_all: (self: DomParentNode, selectors: string) => DomNodeList
+    get_elements_by_property_value: (self: DomParentNode, property: string, value: string) => DomElementList
     get_children: (self: DomParentNode) => DomHTMLCollection
     get_first_element_child: (self: DomParentNode) => DomElement | null
     get_last_element_child: (self: DomParentNode) => DomElement | null
@@ -19946,7 +19962,7 @@ export interface DomHTMLCollectionIface {
     get_element: (self: DomHTMLCollection, index: number) => DomElement | null
     to_array: () => [ /* returnType */ DomElement[], /* result_length1 */ number ]
     item: (self: DomHTMLCollection, index: number) => DomElement | null
-    named_item: (self: DomHTMLCollection, name: string | null) => DomElement | null
+    named_item: (self: DomHTMLCollection, name: string) => DomElement | null
     get_length: (self: DomHTMLCollection) => number
 }
 
@@ -20005,11 +20021,11 @@ export interface DomNamedNodeMapIface {
     // Own fields of GXml-0.20.GXml.DomNamedNodeMapIface
 
     item: (self: DomNamedNodeMap, index: number) => DomNode | null
-    get_named_item: (self: DomNamedNodeMap, name: string | null) => DomNode | null
+    get_named_item: (self: DomNamedNodeMap, name: string) => DomNode | null
     set_named_item: (self: DomNamedNodeMap, node: DomNode) => DomNode | null
-    remove_named_item: (self: DomNamedNodeMap, name: string | null) => DomNode | null
-    remove_named_item_ns: (self: DomNamedNodeMap, namespace_uri: string | null, localName: string | null) => DomNode | null
-    get_named_item_ns: (self: DomNamedNodeMap, namespace_uri: string | null, local_name: string | null) => DomNode | null
+    remove_named_item: (self: DomNamedNodeMap, name: string) => DomNode | null
+    remove_named_item_ns: (self: DomNamedNodeMap, namespace_uri: string, localName: string) => DomNode | null
+    get_named_item_ns: (self: DomNamedNodeMap, namespace_uri: string, local_name: string) => DomNode | null
     set_named_item_ns: (self: DomNamedNodeMap, node: DomNode) => DomNode | null
     get_length: (self: DomNamedNodeMap) => number
 }
@@ -20026,10 +20042,10 @@ export interface DomTokenListIface {
     // Own fields of GXml-0.20.GXml.DomTokenListIface
 
     item: (self: DomTokenList, index: number) => string | null
-    contains: (self: DomTokenList, token: string | null) => boolean
+    contains: (self: DomTokenList, token: string) => boolean
     add: (self: DomTokenList, tokens: string[]) => void
     remove: (self: DomTokenList, tokens: string[]) => void
-    toggle: (self: DomTokenList, token: string | null, force: boolean, _auto_: boolean) => boolean
+    toggle: (self: DomTokenList, token: string, force: boolean, _auto_: boolean) => boolean
     to_string: (self: DomTokenList) => string | null
     get_length: (self: DomTokenList) => number
 }
@@ -20046,7 +20062,7 @@ export interface DomSettableTokenListIface {
     // Own fields of GXml-0.20.GXml.DomSettableTokenListIface
 
     get_value: (self: DomSettableTokenList) => string | null
-    set_value: (self: DomSettableTokenList, value: string | null) => void
+    set_value: (self: DomSettableTokenList, value: string) => void
 }
 
 export abstract class DomSettableTokenListIface {
@@ -20060,18 +20076,18 @@ export interface DomDocumentIface {
 
     // Own fields of GXml-0.20.GXml.DomDocumentIface
 
-    get_elements_by_tag_name: (self: DomDocument, local_name: string | null) => DomHTMLCollection
-    get_elements_by_tag_name_ns: (self: DomDocument, namespace: string | null, local_name: string | null) => DomHTMLCollection
-    get_elements_by_class_name: (self: DomDocument, classNames: string | null) => DomHTMLCollection
-    create_element: (self: DomDocument, local_name: string | null) => DomElement
-    create_element_ns: (self: DomDocument, namespace: string | null, qualified_name: string | null) => DomElement
+    get_elements_by_tag_name: (self: DomDocument, local_name: string) => DomHTMLCollection
+    get_elements_by_tag_name_ns: (self: DomDocument, namespace: string | null, local_name: string) => DomHTMLCollection
+    get_elements_by_class_name: (self: DomDocument, classNames: string) => DomHTMLCollection
+    create_element: (self: DomDocument, local_name: string) => DomElement
+    create_element_ns: (self: DomDocument, namespace: string | null, qualified_name: string) => DomElement
     create_document_fragment: (self: DomDocument) => DomDocumentFragment
-    create_text_node: (self: DomDocument, data: string | null) => DomText
-    create_comment: (self: DomDocument, data: string | null) => DomComment
-    create_processing_instruction: (self: DomDocument, target: string | null, data: string | null) => DomProcessingInstruction
+    create_text_node: (self: DomDocument, data: string) => DomText
+    create_comment: (self: DomDocument, data: string) => DomComment
+    create_processing_instruction: (self: DomDocument, target: string, data: string) => DomProcessingInstruction
     import_node: (self: DomDocument, node: DomNode, deep: boolean) => DomNode
     adopt_node: (self: DomDocument, node: DomNode) => DomNode
-    create_event: (self: DomDocument, interface: string | null) => DomEvent
+    create_event: (self: DomDocument, interface: string) => DomEvent
     create_range: (self: DomDocument) => DomRange
     create_node_iterator: (self: DomDocument, root: DomNode, whatToShow: number) => DomNodeIterator
     create_tree_walker: (self: DomDocument, root: DomNode, what_to_show: number) => DomTreeWalker
@@ -20090,8 +20106,8 @@ export interface DomDocumentIface {
     read_from_file: (self: DomDocument, file: Gio.File, cancellable: Gio.Cancellable | null) => void
     read_from_file_async: (self: DomDocument, file: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     read_from_file_finish: (self: DomDocument, _res_: Gio.AsyncResult) => void
-    read_from_string: (self: DomDocument, str: string | null, cancellable: Gio.Cancellable | null) => void
-    read_from_string_async: (self: DomDocument, str: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    read_from_string: (self: DomDocument, str: string, cancellable: Gio.Cancellable | null) => void
+    read_from_string_async: (self: DomDocument, str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     read_from_string_finish: (self: DomDocument, _res_: Gio.AsyncResult) => void
     read_from_stream: (self: DomDocument, stream: Gio.InputStream, cancellable: Gio.Cancellable | null) => void
     read_from_stream_async: (self: DomDocument, stream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
@@ -20099,12 +20115,12 @@ export interface DomDocumentIface {
     get_xml_parser: (self: DomDocument) => Parser
     set_xml_parser: (self: DomDocument, parser: Parser) => void
     get_implementation: (self: DomDocument) => DomImplementation
-    get_url: (self: DomDocument) => string | null
-    get_document_uri: (self: DomDocument) => string | null
-    get_origin: (self: DomDocument) => string | null
-    get_compat_mode: (self: DomDocument) => string | null
-    get_character_set: (self: DomDocument) => string | null
-    get_content_type: (self: DomDocument) => string | null
+    get_url: (self: DomDocument) => string
+    get_document_uri: (self: DomDocument) => string
+    get_origin: (self: DomDocument) => string
+    get_compat_mode: (self: DomDocument) => string
+    get_character_set: (self: DomDocument) => string
+    get_content_type: (self: DomDocument) => string
     get_doctype: (self: DomDocument) => DomDocumentType | null
     get_document_element: (self: DomDocument) => DomElement | null
 }
@@ -20130,9 +20146,9 @@ export interface DomImplementationIface {
 
     // Own fields of GXml-0.20.GXml.DomImplementationIface
 
-    create_document_type: (self: DomImplementation, qualified_name: string | null, public_id: string | null, system_id: string | null) => DomDocumentType
+    create_document_type: (self: DomImplementation, qualified_name: string, public_id: string, system_id: string) => DomDocumentType
     create_document: (self: DomImplementation, nspace: string | null, qualified_name: string | null, doctype: DomDocumentType | null) => DomXMLDocument
-    create_html_document: (self: DomImplementation, title: string | null) => DomDocument
+    create_html_document: (self: DomImplementation, title: string) => DomDocument
     has_feature: (self: DomImplementation) => boolean
 }
 
@@ -20157,9 +20173,9 @@ export interface DomDocumentTypeIface {
 
     // Own fields of GXml-0.20.GXml.DomDocumentTypeIface
 
-    get_name: (self: DomDocumentType) => string | null
-    get_public_id: (self: DomDocumentType) => string | null
-    get_system_id: (self: DomDocumentType) => string | null
+    get_name: (self: DomDocumentType) => string
+    get_public_id: (self: DomDocumentType) => string
+    get_system_id: (self: DomDocumentType) => string
 }
 
 export abstract class DomDocumentTypeIface {
@@ -20173,8 +20189,8 @@ export interface DomHtmlDocumentIface {
 
     // Own fields of GXml-0.20.GXml.DomHtmlDocumentIface
 
-    read_from_string: (self: DomHtmlDocument, str: string | null) => void
-    read_from_string_tolerant: (self: DomHtmlDocument, str: string | null) => void
+    read_from_string: (self: DomHtmlDocument, str: string) => void
+    read_from_string_tolerant: (self: DomHtmlDocument, str: string) => void
     to_html: (self: DomHtmlDocument) => string | null
 }
 
@@ -20189,20 +20205,20 @@ export interface DomElementIface {
 
     // Own fields of GXml-0.20.GXml.DomElementIface
 
-    get_attribute: (self: DomElement, name: string | null) => string | null
-    get_attribute_ns: (self: DomElement, namespace: string | null, local_name: string | null) => string | null
-    set_attribute: (self: DomElement, name: string | null, value: string | null) => void
-    set_attribute_ns: (self: DomElement, namespace: string | null, name: string | null, value: string | null) => void
-    remove_attribute: (self: DomElement, name: string | null) => void
-    remove_attribute_ns: (self: DomElement, namespace: string | null, local_name: string | null) => void
-    has_attribute: (self: DomElement, name: string | null) => boolean
-    has_attribute_ns: (self: DomElement, namespace: string | null, local_name: string | null) => boolean
-    get_elements_by_tag_name: (self: DomElement, local_name: string | null) => DomHTMLCollection
-    get_elements_by_tag_name_ns: (self: DomElement, namespace: string | null, local_name: string | null) => DomHTMLCollection
-    get_elements_by_class_name: (self: DomElement, class_names: string | null) => DomHTMLCollection
-    matches: (self: DomElement, selectors: string | null) => boolean
-    read_from_uri: (self: DomElement, uri: string | null) => void
-    read_from_uri_async: (self: DomElement, uri: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    get_attribute: (self: DomElement, name: string) => string | null
+    get_attribute_ns: (self: DomElement, namespace: string | null, local_name: string) => string | null
+    set_attribute: (self: DomElement, name: string, value: string) => void
+    set_attribute_ns: (self: DomElement, namespace: string | null, name: string, value: string) => void
+    remove_attribute: (self: DomElement, name: string) => void
+    remove_attribute_ns: (self: DomElement, namespace: string | null, local_name: string) => void
+    has_attribute: (self: DomElement, name: string) => boolean
+    has_attribute_ns: (self: DomElement, namespace: string | null, local_name: string) => boolean
+    get_elements_by_tag_name: (self: DomElement, local_name: string) => DomHTMLCollection
+    get_elements_by_tag_name_ns: (self: DomElement, namespace: string | null, local_name: string) => DomHTMLCollection
+    get_elements_by_class_name: (self: DomElement, class_names: string) => DomHTMLCollection
+    matches: (self: DomElement, selectors: string) => boolean
+    read_from_uri: (self: DomElement, uri: string) => void
+    read_from_uri_async: (self: DomElement, uri: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     read_from_uri_finish: (self: DomElement, _res_: Gio.AsyncResult) => void
     read_from_file: (self: DomElement, f: Gio.File, cancellable: Gio.Cancellable | null) => void
     read_from_file_async: (self: DomElement, f: Gio.File, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
@@ -20210,8 +20226,8 @@ export interface DomElementIface {
     read_from_stream: (self: DomElement, istream: Gio.InputStream, cancellable: Gio.Cancellable | null) => void
     read_from_stream_async: (self: DomElement, istream: Gio.InputStream, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     read_from_stream_finish: (self: DomElement, _res_: Gio.AsyncResult) => void
-    read_from_string: (self: DomElement, str: string | null, cancellable: Gio.Cancellable | null) => void
-    read_from_string_async: (self: DomElement, str: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    read_from_string: (self: DomElement, str: string, cancellable: Gio.Cancellable | null) => void
+    read_from_string_async: (self: DomElement, str: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     read_from_string_finish: (self: DomElement, _res_: Gio.AsyncResult) => void
     write_string: (self: DomElement, cancellable: Gio.Cancellable | null) => string | null
     write_string_async: (self: DomElement, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
@@ -20248,8 +20264,8 @@ export interface DomEventTargetIface {
 
     // Own fields of GXml-0.20.GXml.DomEventTargetIface
 
-    add_event_listener: (self: DomEventTarget, type: string | null, callback: DomEventListener | null, capture: boolean) => void
-    remove_event_listener: (self: DomEventTarget, type: string | null, callback: DomEventListener | null, capture: boolean) => void
+    add_event_listener: (self: DomEventTarget, type: string, callback: DomEventListener | null, capture: boolean) => void
+    remove_event_listener: (self: DomEventTarget, type: string, callback: DomEventListener | null, capture: boolean) => void
     dispatch_event: (self: DomEventTarget, event: DomEvent) => boolean
 }
 
@@ -20281,8 +20297,8 @@ export interface DomEventIface {
     stop_propagation: (self: DomEvent) => void
     stop_immediate_propagation: (self: DomEvent) => void
     prevent_default: (self: DomEvent) => void
-    init_event: (self: DomEvent, type: string | null, bubbles: boolean, cancelable: boolean) => void
-    get_etype: (self: DomEvent) => string | null
+    init_event: (self: DomEvent, type: string, bubbles: boolean, cancelable: boolean) => void
+    get_etype: (self: DomEvent) => string
     get_event_target: (self: DomEvent) => DomEventTarget | null
     get_current_target: (self: DomEvent) => DomEventTarget | null
     get_bubbles: (self: DomEvent) => boolean
@@ -20304,7 +20320,7 @@ export interface DomCustomEventIface {
 
     // Own fields of GXml-0.20.GXml.DomCustomEventIface
 
-    init_custom_event: (self: DomCustomEvent, type: string | null, bubbles: boolean, cancelable: boolean, detail: any) => void
+    init_custom_event: (self: DomCustomEvent, type: string, bubbles: boolean, cancelable: boolean, detail: any) => void
     get_detail: (self: DomCustomEvent) => /* result */ any
 }
 
@@ -20335,7 +20351,7 @@ export interface DomMutationRecordIface {
 
     // Own fields of GXml-0.20.GXml.DomMutationRecordIface
 
-    get_mtype: (self: DomMutationRecord) => string | null
+    get_mtype: (self: DomMutationRecord) => string
     get_target: (self: DomMutationRecord) => DomNode
     get_added_nodes: (self: DomMutationRecord) => DomNodeList
     set_added_nodes: (self: DomMutationRecord, value: DomNodeList) => void
@@ -20474,12 +20490,12 @@ export interface IXsdSimpleTypeIface {
 
     // Own fields of GXml-0.20.GXml.IXsdSimpleTypeIface
 
-    get_final: (self: IXsdSimpleType) => string | null
-    set_final: (self: IXsdSimpleType, value: string | null) => void
-    get_id: (self: IXsdSimpleType) => string | null
-    set_id: (self: IXsdSimpleType, value: string | null) => void
-    get_name: (self: IXsdSimpleType) => string | null
-    set_name: (self: IXsdSimpleType, value: string | null) => void
+    get_final: (self: IXsdSimpleType) => string
+    set_final: (self: IXsdSimpleType, value: string) => void
+    get_id: (self: IXsdSimpleType) => string
+    set_id: (self: IXsdSimpleType, value: string) => void
+    get_name: (self: IXsdSimpleType) => string
+    set_name: (self: IXsdSimpleType, value: string) => void
     get_annotation: (self: IXsdSimpleType) => IXsdAnnotation
     set_annotation: (self: IXsdSimpleType, value: IXsdAnnotation) => void
     get_list: (self: IXsdSimpleType) => IXsdTypeList
@@ -20511,10 +20527,10 @@ export interface IXsdTypeRestrictionIface {
 
     // Own fields of GXml-0.20.GXml.IXsdTypeRestrictionIface
 
-    get_base: (self: IXsdTypeRestriction) => string | null
-    set_base: (self: IXsdTypeRestriction, value: string | null) => void
-    get_id: (self: IXsdTypeRestriction) => string | null
-    set_id: (self: IXsdTypeRestriction, value: string | null) => void
+    get_base: (self: IXsdTypeRestriction) => string
+    set_base: (self: IXsdTypeRestriction, value: string) => void
+    get_id: (self: IXsdTypeRestriction) => string
+    set_id: (self: IXsdTypeRestriction, value: string) => void
     get_simple_type: (self: IXsdTypeRestriction) => IXsdSimpleType
     set_simple_type: (self: IXsdTypeRestriction, value: IXsdSimpleType) => void
     get_enumerations: (self: IXsdTypeRestriction) => IXsdListTypeRestrictionEnumerations
@@ -20659,10 +20675,10 @@ export interface IXsdTypeRestrictionEnumerationIface {
 
     // Own fields of GXml-0.20.GXml.IXsdTypeRestrictionEnumerationIface
 
-    get_id: (self: IXsdTypeRestrictionEnumeration) => string | null
-    set_id: (self: IXsdTypeRestrictionEnumeration, value: string | null) => void
-    get_value: (self: IXsdTypeRestrictionEnumeration) => string | null
-    set_value: (self: IXsdTypeRestrictionEnumeration, value: string | null) => void
+    get_id: (self: IXsdTypeRestrictionEnumeration) => string
+    set_id: (self: IXsdTypeRestrictionEnumeration, value: string) => void
+    get_value: (self: IXsdTypeRestrictionEnumeration) => string
+    set_value: (self: IXsdTypeRestrictionEnumeration, value: string) => void
 }
 
 export abstract class IXsdTypeRestrictionEnumerationIface {
@@ -20678,10 +20694,10 @@ export interface IXsdTypeRestrictionWhiteSpaceIface {
 
     get_fixed: (self: IXsdTypeRestrictionWhiteSpace) => boolean
     set_fixed: (self: IXsdTypeRestrictionWhiteSpace, value: boolean) => void
-    get_id: (self: IXsdTypeRestrictionWhiteSpace) => string | null
-    set_id: (self: IXsdTypeRestrictionWhiteSpace, value: string | null) => void
-    get_value: (self: IXsdTypeRestrictionWhiteSpace) => string | null
-    set_value: (self: IXsdTypeRestrictionWhiteSpace, value: string | null) => void
+    get_id: (self: IXsdTypeRestrictionWhiteSpace) => string
+    set_id: (self: IXsdTypeRestrictionWhiteSpace, value: string) => void
+    get_value: (self: IXsdTypeRestrictionWhiteSpace) => string
+    set_value: (self: IXsdTypeRestrictionWhiteSpace, value: string) => void
 }
 
 export abstract class IXsdTypeRestrictionWhiteSpaceIface {
@@ -20727,14 +20743,14 @@ export interface IXsdComplexTypeIface {
 
     get_abstract: (self: IXsdComplexType) => boolean
     set_abstract: (self: IXsdComplexType, value: boolean) => void
-    get_block: (self: IXsdComplexType) => string | null
-    set_block: (self: IXsdComplexType, value: string | null) => void
-    get_final: (self: IXsdComplexType) => string | null
-    set_final: (self: IXsdComplexType, value: string | null) => void
+    get_block: (self: IXsdComplexType) => string
+    set_block: (self: IXsdComplexType, value: string) => void
+    get_final: (self: IXsdComplexType) => string
+    set_final: (self: IXsdComplexType, value: string) => void
     get_mixed: (self: IXsdComplexType) => boolean
     set_mixed: (self: IXsdComplexType, value: boolean) => void
-    get_name: (self: IXsdComplexType) => string | null
-    set_name: (self: IXsdComplexType, value: string | null) => void
+    get_name: (self: IXsdComplexType) => string
+    set_name: (self: IXsdComplexType, value: string) => void
     get_default_attributes_apply: (self: IXsdComplexType) => boolean
     set_default_attributes_apply: (self: IXsdComplexType, value: boolean) => void
     get_content_type: (self: IXsdComplexType) => IXsdBaseContent
@@ -20754,8 +20770,8 @@ export interface IXsdExtensionIface {
 
     // Own fields of GXml-0.20.GXml.IXsdExtensionIface
 
-    get_base: (self: IXsdExtension) => string | null
-    set_base: (self: IXsdExtension, value: string | null) => void
+    get_base: (self: IXsdExtension) => string
+    set_base: (self: IXsdExtension, value: string) => void
 }
 
 export abstract class IXsdExtensionIface {
@@ -20771,34 +20787,34 @@ export interface IXsdElementIface {
 
     get_abstract: (self: IXsdElement) => boolean
     set_abstract: (self: IXsdElement, value: boolean) => void
-    get_block: (self: IXsdElement) => string | null
-    set_block: (self: IXsdElement, value: string | null) => void
-    get_default: (self: IXsdElement) => string | null
-    set_default: (self: IXsdElement, value: string | null) => void
-    get_final: (self: IXsdElement) => string | null
-    set_final: (self: IXsdElement, value: string | null) => void
-    get_fixed: (self: IXsdElement) => string | null
-    set_fixed: (self: IXsdElement, value: string | null) => void
-    get_form: (self: IXsdElement) => string | null
-    set_form: (self: IXsdElement, value: string | null) => void
+    get_block: (self: IXsdElement) => string
+    set_block: (self: IXsdElement, value: string) => void
+    get_default: (self: IXsdElement) => string
+    set_default: (self: IXsdElement, value: string) => void
+    get_final: (self: IXsdElement) => string
+    set_final: (self: IXsdElement, value: string) => void
+    get_fixed: (self: IXsdElement) => string
+    set_fixed: (self: IXsdElement, value: string) => void
+    get_form: (self: IXsdElement) => string
+    set_form: (self: IXsdElement, value: string) => void
     get_id: (self: IXsdElement) => string | null
     set_id: (self: IXsdElement, value: string | null) => void
-    get_maxOccurs: (self: IXsdElement) => string | null
-    set_maxOccurs: (self: IXsdElement, value: string | null) => void
-    get_minOccurs: (self: IXsdElement) => string | null
-    set_minOccurs: (self: IXsdElement, value: string | null) => void
-    get_name: (self: IXsdElement) => string | null
-    set_name: (self: IXsdElement, value: string | null) => void
+    get_maxOccurs: (self: IXsdElement) => string
+    set_maxOccurs: (self: IXsdElement, value: string) => void
+    get_minOccurs: (self: IXsdElement) => string
+    set_minOccurs: (self: IXsdElement, value: string) => void
+    get_name: (self: IXsdElement) => string
+    set_name: (self: IXsdElement, value: string) => void
     get_nillable: (self: IXsdElement) => boolean
     set_nillable: (self: IXsdElement, value: boolean) => void
-    get_ref: (self: IXsdElement) => string | null
-    set_ref: (self: IXsdElement, value: string | null) => void
+    get_ref: (self: IXsdElement) => string
+    set_ref: (self: IXsdElement, value: string) => void
     get_substitution_group: (self: IXsdElement) => DomTokenList
     set_substitution_group: (self: IXsdElement, value: DomTokenList) => void
-    get_target_namespace: (self: IXsdElement) => string | null
-    set_target_namespace: (self: IXsdElement, value: string | null) => void
-    get_object_type: (self: IXsdElement) => string | null
-    set_object_type: (self: IXsdElement, value: string | null) => void
+    get_target_namespace: (self: IXsdElement) => string
+    set_target_namespace: (self: IXsdElement, value: string) => void
+    get_object_type: (self: IXsdElement) => string
+    set_object_type: (self: IXsdElement, value: string) => void
     get_anotation: (self: IXsdElement) => IXsdAnnotation
     set_anotation: (self: IXsdElement, value: IXsdAnnotation) => void
     get_simple_type: (self: IXsdElement) => IXsdSimpleType
@@ -21003,18 +21019,18 @@ export interface ObjectIface {
     // Own fields of GXml-0.20.GXml.ObjectIface
 
     get_properties_list: (self: Object) => GObject.ParamSpec[]
-    find_property_name: (self: Object, nick: string | null) => GObject.ParamSpec | null
-    find_object_property_name: (self: Object, pname: string | null) => GObject.ParamSpec | null
+    find_property_name: (self: Object, nick: string) => GObject.ParamSpec | null
+    find_object_property_name: (self: Object, pname: string) => GObject.ParamSpec | null
     get_property_element_list: (self: Object) => GObject.ParamSpec[]
     get_property_string: (self: Object, prop: GObject.ParamSpec) => string | null
-    get_attribute: (self: Object, name: string | null) => string | null
-    find_property: (self: Object, name: string | null) => Property | null
-    set_attribute: (self: Object, name: string | null, val: string | null) => boolean
-    get_child: (self: Object, name: string | null) => DomElement | null
-    find_elements: (self: Object, name: string | null) => DomElementList
-    remove_attribute: (self: Object, name: string | null) => boolean
-    set_instance_property: (self: Object, name: string | null) => boolean
-    clean_property_elements: (self: Object, name: string | null) => void
+    get_attribute: (self: Object, name: string) => string | null
+    find_property: (self: Object, name: string) => Property | null
+    set_attribute: (self: Object, name: string, val: string) => boolean
+    get_child: (self: Object, name: string) => DomElement | null
+    find_elements: (self: Object, name: string) => DomElementList
+    remove_attribute: (self: Object, name: string) => boolean
+    set_instance_property: (self: Object, name: string) => boolean
+    clean_property_elements: (self: Object, name: string) => void
 }
 
 export abstract class ObjectIface {
@@ -21043,8 +21059,8 @@ export interface ParserIface {
     read_stream: (self: Parser, stream: Gio.InputStream) => void
     read_stream_async: (self: Parser, stream: Gio.InputStream, _callback_: Gio.AsyncReadyCallback | null) => void
     read_stream_finish: (self: Parser, _res_: Gio.AsyncResult) => void
-    read_string: (self: Parser, str: string | null) => void
-    read_string_async: (self: Parser, str: string | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    read_string: (self: Parser, str: string) => void
+    read_string_async: (self: Parser, str: string, _callback_: Gio.AsyncReadyCallback | null) => void
     read_string_finish: (self: Parser, _res_: Gio.AsyncResult) => void
     create_stream: (self: Parser) => Gio.InputStream
     create_stream_async: (self: Parser, _callback_: Gio.AsyncReadyCallback | null) => void
@@ -21057,7 +21073,7 @@ export interface ParserIface {
     read_element_property: (self: Parser, parent: DomNode) => [ /* returnType */ boolean, /* element */ DomNode ]
     add_element_collection: (self: Parser, parent: DomNode) => [ /* returnType */ boolean, /* element */ DomNode ]
     read_child_nodes_stream: (self: Parser, istream: Gio.InputStream) => void
-    read_child_nodes_string: (self: Parser, str: string | null) => void
+    read_child_nodes_string: (self: Parser, str: string) => void
     read_unparsed: (self: Parser) => string | null
     move_next_node: (self: Parser) => boolean
     current_is_empty_element: (self: Parser) => boolean
@@ -21103,7 +21119,7 @@ export interface XPathContextIface {
 
     // Own fields of GXml-0.20.GXml.XPathContextIface
 
-    evaluate: (self: XPathContext, expression: string | null, resolver: Gee.Map | null) => XPathObject
+    evaluate: (self: XPathContext, expression: string, resolver: Gee.Map | null) => XPathObject
 }
 
 export abstract class XPathContextIface {
@@ -21119,7 +21135,7 @@ export interface XPathObjectIface {
 
     get_object_type: (self: XPathObject) => XPathObjectType
     get_boolean_value: (self: XPathObject) => boolean
-    get_string_value: (self: XPathObject) => string | null
+    get_string_value: (self: XPathObject) => string
     get_number_value: (self: XPathObject) => number
     get_nodeset: (self: XPathObject) => DomHTMLCollection
 }

@@ -314,11 +314,11 @@ export enum UiPolicy {
 /**
  * A prefix for dbus timeout keys. Should be used only when defining new keys.
  */
-export const CONFIG_DBUS_TIMEOUTS: string | null
+export const CONFIG_DBUS_TIMEOUTS: string
 /**
  * A prefix for general keys. Should be used only when defining new keys.
  */
-export const CONFIG_GENERAL: string | null
+export const CONFIG_GENERAL: string
 /**
  * Converts the GVariant to GError.
  * @param var_ instance of #GVariant
@@ -346,7 +346,7 @@ export function generate_nonce(): string | null
  * @param domain a domain name
  * @returns the result
  */
-export function is_host_in_domain(host: string | null, domain: string | null): boolean
+export function is_host_in_domain(host: string, domain: string): boolean
 /**
  * Create a #GIOStream from two file descriptors
  * @param in_fd a UNIX file descriptor
@@ -374,14 +374,14 @@ export function sequence_to_array(seq: GLib.Sequence): string[]
  * @param dirname directory to wipe
  * @returns %TRUE if wiping and removal was successful.
  */
-export function wipe_directory(dirname: string | null): boolean
+export function wipe_directory(dirname: string): boolean
 /**
  * This function securely wipes the contents of the file, by overwriting it with
  * 0's, then 1's, then random data. The file is then removed.
  * @param filename filename to wipe
  * @returns TRUE if wiping and removal was successful.
  */
-export function wipe_file(filename: string | null): boolean
+export function wipe_file(filename: string): boolean
 export module Plugin {
 
     // Signal callback interfaces
@@ -497,7 +497,7 @@ export interface Plugin {
      * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
      * @param mechanism mechanism to use for the authentication
      */
-    request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string | null): void
+    request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::response
      * signal. This method should not be used otherwise.
@@ -516,7 +516,7 @@ export interface Plugin {
      * @param state the new state
      * @param message the message
      */
-    status_changed(state: PluginState, message: string | null): void
+    status_changed(state: PluginState, message: string): void
     /**
      * Plugin implementations should use this to issue #GSignondPlugin::store
      * signal. This method should not be used otherwise.
@@ -566,7 +566,7 @@ export interface Plugin {
      * @param identity_method_cache data from persistent storage, saved previously via #GSignondPlugin::store signal
      * @param mechanism mechanism to use for the authentication
      */
-    vfunc_request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string | null): void
+    vfunc_request_initial(session_data: SessionData, identity_method_cache: Dictionary, mechanism: string): void
     /**
      * This method provides the plugin with the results of UI interaction
      * after the plugin has asked for it via #GSignondPlugin::user-action-required signal.
@@ -713,7 +713,7 @@ export interface AccessControlManager {
      * @param peer_service g_dbus_method_invocation_get_sender() of the peer connection, if not using peer-to-peer dbus, NULL otherwise
      * @param peer_app_ctx application context of the peer connection.
      */
-    security_context_of_peer(peer_ctx: SecurityContext, peer_fd: number, peer_service: string | null, peer_app_ctx: string | null): void
+    security_context_of_peer(peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string): void
 
     // Own virtual methods of GSignond-1.0.GSignond.AccessControlManager
 
@@ -782,7 +782,7 @@ export interface AccessControlManager {
      * @param peer_service g_dbus_method_invocation_get_sender() of the peer connection, if not using peer-to-peer dbus, NULL otherwise
      * @param peer_app_ctx application context of the peer connection.
      */
-    vfunc_security_context_of_peer(peer_ctx: SecurityContext, peer_fd: number, peer_service: string | null, peer_app_ctx: string | null): void
+    vfunc_security_context_of_peer(peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string): void
 
     // Class property signals of GSignond-1.0.GSignond.AccessControlManager
 
@@ -827,25 +827,25 @@ export interface Config {
      * @param key the key name
      * @returns the value corresponding to the key as an integer. If the key does not exist or cannot be converted to the integer, 0 is returned.
      */
-    get_integer(key: string | null): number
+    get_integer(key: string): number
     /**
      * Get a string configuration value.
      * @param key the key name
      * @returns the value corresponding to the key as string. If the key does not exist, %NULL is returned.
      */
-    get_string(key: string | null): string | null
+    get_string(key: string): string | null
     /**
      * Sets the configuration value to the provided integer.
      * @param key the key name
      * @param value the value
      */
-    set_integer(key: string | null, value: number): void
+    set_integer(key: string, value: number): void
     /**
      * Sets the configuration value to the provided string.
      * @param key the key name
      * @param value the value
      */
-    set_string(key: string | null, value: string | null): void
+    set_string(key: string, value: string): void
 
     // Class property signals of GSignond-1.0.GSignond.Config
 
@@ -929,7 +929,7 @@ export interface Credentials {
      * @param password the password.
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    set_data(id: number, username: string | null, password: string | null): boolean
+    set_data(id: number, username: string, password: string): boolean
 
     // Overloads of set_data
 
@@ -947,7 +947,7 @@ export interface Credentials {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Sets the identity id of the #GSignondCredentials object
      * @param id the id.
@@ -1026,7 +1026,7 @@ export interface Dictionary {
      * @param key key to check
      * @returns %TRUE if found, %FALSE otherwise.
      */
-    contains(key: string | null): boolean
+    contains(key: string): boolean
     /**
      * Creates a copy of the dictionary.
      * @returns #GSignondDictionary object containing the same keys and values than @other.
@@ -1041,31 +1041,31 @@ export interface Dictionary {
      * @param key the key to look up in the dictionary
      * @returns the value; %NULL is returned in case of failure (for example if the entry corresponding to the supplied key doesn't exist).
      */
-    get(key: string | null): GLib.Variant | null
+    get(key: string): GLib.Variant | null
     /**
      * Retrieves a gboolean value.
      * @param key key to look up
      * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
      */
-    get_boolean(key: string | null): [ /* returnType */ boolean, /* value */ boolean ]
+    get_boolean(key: string): [ /* returnType */ boolean, /* value */ boolean ]
     /**
      * Retrieves a int32 value.
      * @param key key to look up
      * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
      */
-    get_int32(key: string | null): [ /* returnType */ boolean, /* value */ number ]
+    get_int32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a int64 value.
      * @param key key to look up
      * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
      */
-    get_int64(key: string | null): [ /* returnType */ boolean, /* value */ number ]
+    get_int64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a string value.
      * @param key key to look up
      * @returns the value if it was retrieved successfully, %NULL otherwise.
      */
-    get_string(key: string | null): string | null
+    get_string(key: string): string | null
     /**
      * Get the #GHashTable associated to the #GSignondDictionary.
      * 
@@ -1078,19 +1078,19 @@ export interface Dictionary {
      * @param key key to look up
      * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
      */
-    get_uint32(key: string | null): [ /* returnType */ boolean, /* value */ number ]
+    get_uint32(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Retrieves a uint64 value.
      * @param key key to look up
      * @returns %TRUE if the value was retrieved successfully, %FALSE otherwise.
      */
-    get_uint64(key: string | null): [ /* returnType */ boolean, /* value */ number ]
+    get_uint64(key: string): [ /* returnType */ boolean, /* value */ number ]
     /**
      * Removes key-value pair in the dictionary as per key.
      * @param key key which needs to be removed from the dictionary
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    remove(key: string | null): boolean
+    remove(key: string): boolean
     /**
      * Adds or replaces key-value pair in the dictionary. This allows to set a value
      * of an arbitrary type: it first needs to be converted to a #GVariant. For most
@@ -1099,49 +1099,49 @@ export interface Dictionary {
      * @param value value to be set
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    set(key: string | null, value: GLib.Variant): boolean
+    set(key: string, value: GLib.Variant): boolean
     /**
      * Sets or replaces a gboolean value in the dictionary.
      * @param key key to set
      * @param value value to set
      * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
      */
-    set_boolean(key: string | null, value: boolean): boolean
+    set_boolean(key: string, value: boolean): boolean
     /**
      * Sets or replaces a int32 value in the dictionary.
      * @param key key to set
      * @param value value to set
      * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
      */
-    set_int32(key: string | null, value: number): boolean
+    set_int32(key: string, value: number): boolean
     /**
      * Sets or replaces a int64 value in the dictionary.
      * @param key key to set
      * @param value value to set
      * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
      */
-    set_int64(key: string | null, value: number): boolean
+    set_int64(key: string, value: number): boolean
     /**
      * Sets or replaces a string value in the dictionary.
      * @param key key to set
      * @param value value to set
      * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
      */
-    set_string(key: string | null, value: string | null): boolean
+    set_string(key: string, value: string): boolean
     /**
      * Sets or replaces a uint32 value in the dictionary.
      * @param key key to set
      * @param value value to set
      * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
      */
-    set_uint32(key: string | null, value: number): boolean
+    set_uint32(key: string, value: number): boolean
     /**
      * Sets or replaces a uint64 value in the dictionary.
      * @param key key to set
      * @param value value to set
      * @returns %TRUE if the value was set or replaced successfully, %FALSE otherwise.
      */
-    set_uint64(key: string | null, value: number): boolean
+    set_uint64(key: string, value: number): boolean
     /**
      * Converts the #GSignondDictionary to a #GVariant. The result can be serialized
      * or put into another #GSignondDictionary using gsignond_dictionary_set().
@@ -1233,7 +1233,7 @@ export interface Extension {
      * returns "default".
      * @returns name of the extension.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Factory method to get a singleton secret storage object. See
      * #GSignondSecretStorage for the description of the default implementation.
@@ -1264,7 +1264,7 @@ export interface Extension {
      * @returns access control manager object instance.
      */
     vfunc_get_access_control_manager(config: Config): AccessControlManager
-    vfunc_get_extension_name(): string | null
+    vfunc_get_extension_name(): string
     vfunc_get_extension_version(): number
     /**
      * Factory method to get a singleton secret storage object. See
@@ -1566,12 +1566,12 @@ export interface SessionData {
      * Caption tells the user which application/credentials/provider is requestion
      * authentication.
      */
-    get_caption(): string | null
+    get_caption(): string
     /**
      * A getter for a network proxy setting associated with the authentication session.
      * If this property is not set, the default system proxy settings should be used.
      */
-    get_network_proxy(): string | null
+    get_network_proxy(): string
     /**
      * A getter for a network timeout setting associated with the authentication session.
      * This can be used to change the default timeout in case of unresponsive servers.
@@ -1581,7 +1581,7 @@ export interface SessionData {
     /**
      * A getter for a realm associated with the authentication session.
      */
-    get_realm(): string | null
+    get_realm(): string
     /**
      * A getter for a renew token property associated with the authentication session.
      * This property tells the plugin to discard any cached tokens and start
@@ -1592,7 +1592,7 @@ export interface SessionData {
     /**
      * A getter for a secret (e.g. a password) associated with the authentication session.
      */
-    get_secret(): string | null
+    get_secret(): string
     /**
      * A getter for UI policy setting associated with the authentication session.
      * The UI policy indicates how the authentication plugin should interact with the user.
@@ -1602,7 +1602,7 @@ export interface SessionData {
     /**
      * A getter for a username associated with the authentication session.
      */
-    get_username(): string | null
+    get_username(): string
     /**
      * A getter for a window id setting associated with the authentication session.
      * This can be used to embed the user interaction window produced by the authentication
@@ -1621,13 +1621,13 @@ export interface SessionData {
      * authentication.
      * @param caption a caption to set
      */
-    set_caption(caption: string | null): void
+    set_caption(caption: string): void
     /**
      * A setter for a network proxy setting associated with the authentication session.
      * If this property is not set, the default system proxy settings should be used.
      * @param network_proxy network proxy to use
      */
-    set_network_proxy(network_proxy: string | null): void
+    set_network_proxy(network_proxy: string): void
     /**
      * A setter for a network timeout setting associated with the authentication session.
      * This can be used to change the default timeout in case of unresponsive servers.
@@ -1638,7 +1638,7 @@ export interface SessionData {
      * A setter for a realm associated with the authentication session.
      * @param realm a realm to set
      */
-    set_realm(realm: string | null): void
+    set_realm(realm: string): void
     /**
      * A setter for a renew token property associated with the authentication session.
      * This property tells the plugin to discard any cached tokens and start
@@ -1650,7 +1650,7 @@ export interface SessionData {
      * A setter for a secret (e.g. a password) associated with the authentication session.
      * @param secret a secret to set
      */
-    set_secret(secret: string | null): void
+    set_secret(secret: string): void
     /**
      * A getter for UI policy setting associated with the authentication session.
      * The UI policy indicates how the authentication plugin should interact with the user.
@@ -1661,7 +1661,7 @@ export interface SessionData {
      * A setter for a username associated with the authentication session.
      * @param username username to set
      */
-    set_username(username: string | null): void
+    set_username(username: string): void
     /**
      * A setter for a window id setting associated with the authentication session.
      * This can be used to embed the user interaction window produced by the authentication
@@ -1869,18 +1869,18 @@ export interface SignonuiData {
      * A setter for the user's response to a captcha query.
      * @param response the string entered by the user in response to a captcha query.
      */
-    set_captcha_response(response: string | null): void
+    set_captcha_response(response: string): void
     /**
      * A setter for the captcha URL.
      * @param url the URL to the captcha image to be verified by user
      */
-    set_captcha_url(url: string | null): void
+    set_captcha_url(url: string): void
     /**
      * A setter for the caption string. Caption tells the user which
      * application/credentials/provider is requestion authentication.
      * @param caption the caption string
      */
-    set_caption(caption: string | null): void
+    set_caption(caption: string): void
     /**
      * A setter for the confirm mode. In confirm mode the user is asked to enter
      * an old password (which is compared to the supplied password), and a new password twice
@@ -1895,34 +1895,34 @@ export interface SignonuiData {
      * This is used by redirection-based authentication, such as OAuth.
      * @param url the final url
      */
-    set_final_url(url: string | null): void
+    set_final_url(url: string): void
     /**
      * A setter for the forgot password string, which is shown to the user as a link to
      * reset the password or remind him of the password.
      * @param forgot the forgot password string
      */
-    set_forgot_password(forgot: string | null): void
+    set_forgot_password(forgot: string): void
     /**
      * A setter for the forgot password URL, where the user can reset or request a
      * reminder of the password.
      * @param url the forgot password URL
      */
-    set_forgot_password_url(url: string | null): void
+    set_forgot_password_url(url: string): void
     /**
      * A setter for the message which is show to the user in the signon UI dialog.
      * @param message the message
      */
-    set_message(message: string | null): void
+    set_message(message: string): void
     /**
      * A setter for the URL that should be opened by signon UI.
      * @param url the url to open
      */
-    set_open_url(url: string | null): void
+    set_open_url(url: string): void
     /**
      * A setter for the password string.
      * @param password the password string
      */
-    set_password(password: string | null): void
+    set_password(password: string): void
     /**
      * A setter for the UI interaction error. Signon UI sets this to `SIGNONUI_ERROR_NONE` if
      * there were no errors.
@@ -1951,18 +1951,18 @@ export interface SignonuiData {
      * can be refreshed or updated.
      * @param id request id
      */
-    set_request_id(id: string | null): void
+    set_request_id(id: string): void
     /**
      * A setter for the test reply values. It's used only by the signon ui
      * implementations to test themselves.
      * @param reply test reply values
      */
-    set_test_reply(reply: string | null): void
+    set_test_reply(reply: string): void
     /**
      * A setter for the UI dialog title.
      * @param title the title
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * A getter for the response URL. If the final URL was set in the request to the
      * signon UI, and the signon UI
@@ -1970,12 +1970,12 @@ export interface SignonuiData {
      * this property. This is used by redirection-based authentication such as OAauth.
      * @param response the response URL
      */
-    set_url_response(response: string | null): void
+    set_url_response(response: string): void
     /**
      * A setter for the username string.
      * @param username the username string
      */
-    set_username(username: string | null): void
+    set_username(username: string): void
 
     // Class property signals of GSignond-1.0.GSignond.SignonuiData
 
@@ -2098,7 +2098,7 @@ export interface StorageManager {
      * secret database.
      * @returns The path of the storage mount point.
      */
-    mount_filesystem(): string | null
+    mount_filesystem(): string
     /**
      * Checks if the storage has been initialized.
      * @returns %TRUE if the storage has been initialized, %FALSE otherwise.
@@ -2143,7 +2143,7 @@ export interface StorageManager {
      * @virtual 
      * @returns The path of the storage mount point.
      */
-    vfunc_mount_filesystem(): string | null
+    vfunc_mount_filesystem(): string
     /**
      * Checks if the storage has been initialized.
      * @virtual 
@@ -2191,7 +2191,7 @@ export interface AccessControlManagerClass {
      * @field 
      */
     parent_class: GObject.ObjectClass
-    security_context_of_peer: (self: AccessControlManager, peer_ctx: SecurityContext, peer_fd: number, peer_service: string | null, peer_app_ctx: string | null) => void
+    security_context_of_peer: (self: AccessControlManager, peer_ctx: SecurityContext, peer_fd: number, peer_service: string, peer_app_ctx: string) => void
     peer_is_allowed_to_use_identity: (self: AccessControlManager, peer_ctx: SecurityContext, owner_ctx: SecurityContext, identity_acl: SecurityContext[]) => boolean
     peer_is_owner_of_identity: (self: AccessControlManager, peer_ctx: SecurityContext, owner_ctx: SecurityContext) => boolean
     acl_is_valid: (self: AccessControlManager, peer_ctx: SecurityContext, identity_acl: SecurityContext[]) => boolean
@@ -2274,7 +2274,7 @@ export interface ExtensionClass {
      * @field 
      */
     parent_class: GObject.ObjectClass
-    get_extension_name: (self: Extension) => string | null
+    get_extension_name: (self: Extension) => string
     get_extension_version: (self: Extension) => number
     get_storage_manager: (self: Extension, config: Config) => StorageManager
     get_secret_storage: (self: Extension, config: Config) => SecretStorage
@@ -2302,7 +2302,7 @@ export interface PluginInterface {
      */
     parent: GObject.TypeInterface
     cancel: (self: Plugin) => void
-    request_initial: (self: Plugin, session_data: SessionData, identity_method_cache: Dictionary, mechanism: string | null) => void
+    request_initial: (self: Plugin, session_data: SessionData, identity_method_cache: Dictionary, mechanism: string) => void
     request: (self: Plugin, session_data: SessionData) => void
     user_action_finished: (self: Plugin, ui_data: SignonuiData) => void
     refresh: (self: Plugin, ui_data: SignonuiData) => void
@@ -2399,13 +2399,13 @@ export interface SecurityContext {
      * the #GSignondSecurityContext.
      * @returns application context.
      */
-    get_application_context(): string | null
+    get_application_context(): string
     /**
      * Get the system context partof the
      * #GSignondSecurityContext.
      * @returns system context.
      */
-    get_system_context(): string | null
+    get_system_context(): string
     /**
      * Compare two #GSignondSecurityContext items match.
      * @param ctx2 second item to compare.
@@ -2417,13 +2417,13 @@ export interface SecurityContext {
      * the #GSignondSecurityContext.
      * @param application_context application security context.
      */
-    set_application_context(application_context: string | null): void
+    set_application_context(application_context: string): void
     /**
      * Sets the system context part of the
      * #GSignondSecurityContext.
      * @param system_context system security context.
      */
-    set_system_context(system_context: string | null): void
+    set_system_context(system_context: string): void
     /**
      * Build a GVariant of type "(ss)" from a #GSignondSecurityContext item.
      * @returns GVariant construct of a #GSignondSecurityContext.
@@ -2458,7 +2458,7 @@ export class SecurityContext {
      * @param application_context application security context
      * @returns allocated #GSignondSecurityContext.
      */
-    static new_from_values(system_context: string | null, application_context: string | null): SecurityContext
+    static new_from_values(system_context: string, application_context: string): SecurityContext
     /**
      * Builds a #GSignondSecurityContext item from a GVariant of type "(ss)".
      * @param variant GVariant item with a #GSignondSecurityContext construct.
@@ -2503,7 +2503,7 @@ export interface StorageManagerClass {
     initialize_storage: (self: StorageManager) => boolean
     delete_storage: (self: StorageManager) => boolean
     storage_is_initialized: (self: StorageManager) => boolean
-    mount_filesystem: (self: StorageManager) => string | null
+    mount_filesystem: (self: StorageManager) => string
     unmount_filesystem: (self: StorageManager) => boolean
     filesystem_is_mounted: (self: StorageManager) => boolean
 }

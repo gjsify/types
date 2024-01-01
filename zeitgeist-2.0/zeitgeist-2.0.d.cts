@@ -80,108 +80,108 @@ export enum DataModelError {
     NULL_EVENT,
     TOO_MANY_RESULTS,
 }
-export const DataSourcesSIG_DATASOURCES: string | null
+export const DataSourcesSIG_DATASOURCES: string
 export const TimestampSECOND: number
 export const TimestampMINUTE: number
 export const TimestampHOUR: number
 export const TimestampDAY: number
 export const TimestampWEEK: number
 export const TimestampYEAR: number
-export const NCALALARM: string | null
-export const NCALATTACHMENT: string | null
-export const NCALCALENDAR: string | null
-export const NCALCALENDAR_DATA_OBJECT: string | null
-export const NCALEVENT: string | null
-export const NCALFREEBUSY: string | null
-export const NCALJOURNAL: string | null
-export const NCALTIMEZONE: string | null
-export const NCALTODO: string | null
-export const NCOCONTACT: string | null
-export const NCOCONTACT_GROUP: string | null
-export const NCOCONTACT_LIST: string | null
-export const NCOCONTACT_LIST_DATA_OBJECT: string | null
-export const NCOORGANIZATION_CONTACT: string | null
-export const NCOPERSON_CONTACT: string | null
-export const NFOAPPLICATION: string | null
-export const NFOARCHIVE: string | null
-export const NFOARCHIVE_ITEM: string | null
-export const NFOATTACHMENT: string | null
-export const NFOAUDIO: string | null
-export const NFOBOOKMARK: string | null
-export const NFOBOOKMARK_FOLDER: string | null
-export const NFOCURSOR: string | null
-export const NFODATA_CONTAINER: string | null
-export const NFODELETED_RESOURCE: string | null
-export const NFODOCUMENT: string | null
-export const NFOEMBEDDED_FILE_DATA_OBJECT: string | null
-export const NFOEXECUTABLE: string | null
-export const NFOFILESYSTEM: string | null
-export const NFOFILESYSTEM_IMAGE: string | null
-export const NFOFILE_DATA_OBJECT: string | null
-export const NFOFOLDER: string | null
-export const NFOFONT: string | null
-export const NFOHARD_DISK_PARTITION: string | null
-export const NFOHTML_DOCUMENT: string | null
-export const NFOICON: string | null
-export const NFOIMAGE: string | null
-export const NFOMEDIA: string | null
-export const NFOMEDIA_LIST: string | null
-export const NFOMEDIA_STREAM: string | null
-export const NFOMIND_MAP: string | null
-export const NFOOPERATING_SYSTEM: string | null
-export const NFOPAGINATED_TEXT_DOCUMENT: string | null
-export const NFOPLAIN_TEXT_DOCUMENT: string | null
-export const NFOPRESENTATION: string | null
-export const NFORASTER_IMAGE: string | null
-export const NFOREMOTE_DATA_OBJECT: string | null
-export const NFOREMOTE_PORT_ADDRESS: string | null
-export const NFOSOFTWARE: string | null
-export const NFOSOFTWARE_ITEM: string | null
-export const NFOSOFTWARE_SERVICE: string | null
-export const NFOSOURCE_CODE: string | null
-export const NFOSPREADSHEET: string | null
-export const NFOTEXT_DOCUMENT: string | null
-export const NFOTRASH: string | null
-export const NFOVECTOR_IMAGE: string | null
-export const NFOVIDEO: string | null
-export const NFOVISUAL: string | null
-export const NFOWEBSITE: string | null
-export const NFOWEB_DATA_OBJECT: string | null
-export const NIEDATA_OBJECT: string | null
-export const NIEINFORMATION_ELEMENT: string | null
-export const NMMMOVIE: string | null
-export const NMMMUSIC_ALBUM: string | null
-export const NMMMUSIC_PIECE: string | null
-export const NMMTVSERIES: string | null
-export const NMMTVSHOW: string | null
-export const NMOEMAIL: string | null
-export const NMOIMMESSAGE: string | null
-export const NMOMAILBOX: string | null
-export const NMOMAILBOX_DATA_OBJECT: string | null
-export const NMOMESSAGE: string | null
-export const NMOMIME_ENTITY: string | null
-export const ZGACCEPT_EVENT: string | null
-export const ZGACCESS_EVENT: string | null
-export const ZGAPPLICATION_ACTION: string | null
-export const ZGCREATE_EVENT: string | null
-export const ZGDELETE_EVENT: string | null
-export const ZGDENY_EVENT: string | null
-export const ZGEVENT_INTERPRETATION: string | null
-export const ZGEVENT_MANIFESTATION: string | null
-export const ZGEXPIRE_EVENT: string | null
-export const ZGHEURISTIC_ACTIVITY: string | null
-export const ZGLEAVE_EVENT: string | null
-export const ZGMODIFY_EVENT: string | null
-export const ZGMOVE_EVENT: string | null
-export const ZGRECEIVE_EVENT: string | null
-export const ZGSCHEDULED_ACTIVITY: string | null
-export const ZGSEND_EVENT: string | null
-export const ZGSYSTEM_NOTIFICATION: string | null
-export const ZGUSER_ACTIVITY: string | null
-export const ZGWORLD_ACTIVITY: string | null
-export const UtilsENGINE_DBUS_NAME: string | null
-export const UtilsENGINE_DBUS_PATH: string | null
-export const UtilsSIG_EVENT: string | null
+export const NCALALARM: string
+export const NCALATTACHMENT: string
+export const NCALCALENDAR: string
+export const NCALCALENDAR_DATA_OBJECT: string
+export const NCALEVENT: string
+export const NCALFREEBUSY: string
+export const NCALJOURNAL: string
+export const NCALTIMEZONE: string
+export const NCALTODO: string
+export const NCOCONTACT: string
+export const NCOCONTACT_GROUP: string
+export const NCOCONTACT_LIST: string
+export const NCOCONTACT_LIST_DATA_OBJECT: string
+export const NCOORGANIZATION_CONTACT: string
+export const NCOPERSON_CONTACT: string
+export const NFOAPPLICATION: string
+export const NFOARCHIVE: string
+export const NFOARCHIVE_ITEM: string
+export const NFOATTACHMENT: string
+export const NFOAUDIO: string
+export const NFOBOOKMARK: string
+export const NFOBOOKMARK_FOLDER: string
+export const NFOCURSOR: string
+export const NFODATA_CONTAINER: string
+export const NFODELETED_RESOURCE: string
+export const NFODOCUMENT: string
+export const NFOEMBEDDED_FILE_DATA_OBJECT: string
+export const NFOEXECUTABLE: string
+export const NFOFILESYSTEM: string
+export const NFOFILESYSTEM_IMAGE: string
+export const NFOFILE_DATA_OBJECT: string
+export const NFOFOLDER: string
+export const NFOFONT: string
+export const NFOHARD_DISK_PARTITION: string
+export const NFOHTML_DOCUMENT: string
+export const NFOICON: string
+export const NFOIMAGE: string
+export const NFOMEDIA: string
+export const NFOMEDIA_LIST: string
+export const NFOMEDIA_STREAM: string
+export const NFOMIND_MAP: string
+export const NFOOPERATING_SYSTEM: string
+export const NFOPAGINATED_TEXT_DOCUMENT: string
+export const NFOPLAIN_TEXT_DOCUMENT: string
+export const NFOPRESENTATION: string
+export const NFORASTER_IMAGE: string
+export const NFOREMOTE_DATA_OBJECT: string
+export const NFOREMOTE_PORT_ADDRESS: string
+export const NFOSOFTWARE: string
+export const NFOSOFTWARE_ITEM: string
+export const NFOSOFTWARE_SERVICE: string
+export const NFOSOURCE_CODE: string
+export const NFOSPREADSHEET: string
+export const NFOTEXT_DOCUMENT: string
+export const NFOTRASH: string
+export const NFOVECTOR_IMAGE: string
+export const NFOVIDEO: string
+export const NFOVISUAL: string
+export const NFOWEBSITE: string
+export const NFOWEB_DATA_OBJECT: string
+export const NIEDATA_OBJECT: string
+export const NIEINFORMATION_ELEMENT: string
+export const NMMMOVIE: string
+export const NMMMUSIC_ALBUM: string
+export const NMMMUSIC_PIECE: string
+export const NMMTVSERIES: string
+export const NMMTVSHOW: string
+export const NMOEMAIL: string
+export const NMOIMMESSAGE: string
+export const NMOMAILBOX: string
+export const NMOMAILBOX_DATA_OBJECT: string
+export const NMOMESSAGE: string
+export const NMOMIME_ENTITY: string
+export const ZGACCEPT_EVENT: string
+export const ZGACCESS_EVENT: string
+export const ZGAPPLICATION_ACTION: string
+export const ZGCREATE_EVENT: string
+export const ZGDELETE_EVENT: string
+export const ZGDENY_EVENT: string
+export const ZGEVENT_INTERPRETATION: string
+export const ZGEVENT_MANIFESTATION: string
+export const ZGEXPIRE_EVENT: string
+export const ZGHEURISTIC_ACTIVITY: string
+export const ZGLEAVE_EVENT: string
+export const ZGMODIFY_EVENT: string
+export const ZGMOVE_EVENT: string
+export const ZGRECEIVE_EVENT: string
+export const ZGSCHEDULED_ACTIVITY: string
+export const ZGSEND_EVENT: string
+export const ZGSYSTEM_NOTIFICATION: string
+export const ZGUSER_ACTIVITY: string
+export const ZGWORLD_ACTIVITY: string
+export const UtilsENGINE_DBUS_NAME: string
+export const UtilsENGINE_DBUS_PATH: string
+export const UtilsSIG_EVENT: string
 export const UtilsMAX_DBUS_RESULT_SIZE: number
 export const UtilsCACHE_SIZE: number
 export function data_sources_from_variant(sources_variant: GLib.Variant): DataSource[]
@@ -192,27 +192,27 @@ export function events_to_variant_with_limit(events: Event[], limit: number): GL
 export function timestamp_from_timeval(timeval: GLib.TimeVal): number
 export function timestamp_to_timeval(timestamp: number): /* result */ GLib.TimeVal
 export function timestamp_from_now(): number
-export function timestamp_from_iso8601(datetime: string | null): number
+export function timestamp_from_iso8601(datetime: string): number
 export function timestamp_to_iso8601(timestamp: number): string | null
 export function timestamp_from_date(date: GLib.Date): number
 export function timestamp_from_dmy(day: GLib.DateDay, month: GLib.DateMonth, year: GLib.DateYear): number
 export function timestamp_to_date(timestamp: number): /* result */ GLib.Date
 export function timestamp_next_midnight(timestamp: number): number
 export function timestamp_prev_midnight(timestamp: number): number
-export function symbol_get_display_name(symbol_uri: string | null): string | null
-export function symbol_get_description(symbol_uri: string | null): string | null
-export function symbol_get_all_parents(symbol_uri: string | null): string[]
-export function symbol_get_all_children(symbol_uri: string | null): string[]
-export function symbol_get_children(symbol_uri: string | null): string[]
-export function symbol_get_parents(symbol_uri: string | null): string[]
+export function symbol_get_display_name(symbol_uri: string): string
+export function symbol_get_description(symbol_uri: string): string
+export function symbol_get_all_parents(symbol_uri: string): string[]
+export function symbol_get_all_children(symbol_uri: string): string[]
+export function symbol_get_children(symbol_uri: string): string[]
+export function symbol_get_parents(symbol_uri: string): string[]
 export function symbol_is_a(symbol_uri: string | null, parent_uri: string | null): boolean
-export function utils_get_data_path(): string | null
+export function utils_get_data_path(): string
 export function utils_get_default_data_path(): string | null
-export function utils_get_database_file_path(): string | null
-export function utils_set_database_file_path(path: string | null): void
-export function utils_get_database_file_backup_path(): string | null
+export function utils_get_database_file_path(): string
+export function utils_set_database_file_path(path: string): void
+export function utils_get_database_file_backup_path(): string
 export function utils_get_database_file_retire_name(): string | null
-export function utils_get_local_extensions_path(): string | null
+export function utils_get_local_extensions_path(): string
 export function utils_using_in_memory_database(): boolean
 export function utils_backup_database(): void
 export function utils_parse_negation(val: string | null): [ /* returnType */ boolean, /* val */ string | null ]
@@ -221,11 +221,11 @@ export function utils_parse_wildcard(val: string | null): [ /* returnType */ boo
 export function utils_is_empty_string(s: string | null): boolean
 export function utils_log_may_read_directly(): boolean
 export function result_type_is_sort_order_asc(result_type: ResultType): boolean
-export function register_mimetype(mimetype: string | null, interpretation_uri: string | null): void
-export function register_mimetype_regex(mimetype_regex: string | null, interpretation_uri: string | null): void
+export function register_mimetype(mimetype: string, interpretation_uri: string): void
+export function register_mimetype_regex(mimetype_regex: string, interpretation_uri: string): void
 export function interpretation_for_mimetype(mimetype: string | null): string | null
-export function register_uri_scheme(uri_scheme: string | null, manifestation_type: string | null): void
-export function manifestation_for_uri(uri: string | null): string | null
+export function register_uri_scheme(uri_scheme: string, manifestation_type: string): void
+export function manifestation_for_uri(uri: string): string | null
 export module RemoteRegistry {
 
     // Signal callback interfaces
@@ -241,7 +241,7 @@ export module RemoteRegistry {
      * Signal callback interface for `data-source-enabled`
      */
     export interface DataSourceEnabledSignalCallback {
-        ($obj: RemoteRegistry, unique_id: string | null, enabled: boolean): void
+        ($obj: RemoteRegistry, unique_id: string, enabled: boolean): void
     }
 
     /**
@@ -265,22 +265,22 @@ export interface RemoteRegistry extends GObject.Object {
 
     get_data_sources(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant
-    register_data_source(unique_id: string | null, name: string | null, description: string | null, event_templates: GLib.Variant, cancellable: Gio.Cancellable | null, sender: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: Gio.Cancellable | null, sender: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     register_data_source_finish(_res_: Gio.AsyncResult): boolean
-    set_data_source_enabled(unique_id: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     set_data_source_enabled_finish(_res_: Gio.AsyncResult): void
-    get_data_source_from_id(unique_id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    get_data_source_from_id(unique_id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant
 
     // Own virtual methods of Zeitgeist-2.0.Zeitgeist.RemoteRegistry
 
     vfunc_get_data_sources(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_get_data_sources_finish(_res_: Gio.AsyncResult): GLib.Variant
-    vfunc_register_data_source(unique_id: string | null, name: string | null, description: string | null, event_templates: GLib.Variant, cancellable: Gio.Cancellable | null, sender: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_register_data_source(unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: Gio.Cancellable | null, sender: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_register_data_source_finish(_res_: Gio.AsyncResult): boolean
-    vfunc_set_data_source_enabled(unique_id: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_set_data_source_enabled_finish(_res_: Gio.AsyncResult): void
-    vfunc_get_data_source_from_id(unique_id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_get_data_source_from_id(unique_id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_get_data_source_from_id_finish(_res_: Gio.AsyncResult): GLib.Variant
 
     // Own signals of Zeitgeist-2.0.Zeitgeist.RemoteRegistry
@@ -290,7 +290,7 @@ export interface RemoteRegistry extends GObject.Object {
     emit(sigName: "data-source-disconnected", data_source: GLib.Variant, ...args: any[]): void
     connect(sigName: "data-source-enabled", callback: RemoteRegistry.DataSourceEnabledSignalCallback): number
     connect_after(sigName: "data-source-enabled", callback: RemoteRegistry.DataSourceEnabledSignalCallback): number
-    emit(sigName: "data-source-enabled", unique_id: string | null, enabled: boolean, ...args: any[]): void
+    emit(sigName: "data-source-enabled", unique_id: string, enabled: boolean, ...args: any[]): void
     connect(sigName: "data-source-registered", callback: RemoteRegistry.DataSourceRegisteredSignalCallback): number
     connect_after(sigName: "data-source-registered", callback: RemoteRegistry.DataSourceRegisteredSignalCallback): number
     emit(sigName: "data-source-registered", data_source: GLib.Variant, ...args: any[]): void
@@ -455,16 +455,16 @@ export interface RemoteSimpleIndexer extends GObject.Object {
 
     // Owm methods of Zeitgeist-2.0.Zeitgeist.RemoteSimpleIndexer
 
-    search(query_string: string | null, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     search_finish(_res_: Gio.AsyncResult): [ /* events */ GLib.Variant, /* matches */ number ]
-    search_with_relevancies(query_string: string | null, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     search_with_relevancies_finish(_res_: Gio.AsyncResult): [ /* events */ GLib.Variant, /* relevancies */ number[], /* matches */ number ]
 
     // Own virtual methods of Zeitgeist-2.0.Zeitgeist.RemoteSimpleIndexer
 
-    vfunc_search(query_string: string | null, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_search(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_search_finish(_res_: Gio.AsyncResult): [ /* events */ GLib.Variant, /* matches */ number ]
-    vfunc_search_with_relevancies(query_string: string | null, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_search_with_relevancies(query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     vfunc_search_with_relevancies_finish(_res_: Gio.AsyncResult): [ /* events */ GLib.Variant, /* relevancies */ number[], /* matches */ number ]
 
     // Class property signals of Zeitgeist-2.0.Zeitgeist.RemoteSimpleIndexer
@@ -552,7 +552,7 @@ export module ConnmanManagerDBus {
      * Signal callback interface for `state-changed`
      */
     export interface StateChangedSignalCallback {
-        ($obj: ConnmanManagerDBus, state: string | null): void
+        ($obj: ConnmanManagerDBus, state: string): void
     }
 
 
@@ -577,7 +577,7 @@ export interface ConnmanManagerDBus extends GObject.Object {
 
     connect(sigName: "state-changed", callback: ConnmanManagerDBus.StateChangedSignalCallback): number
     connect_after(sigName: "state-changed", callback: ConnmanManagerDBus.StateChangedSignalCallback): number
-    emit(sigName: "state-changed", state: string | null, ...args: any[]): void
+    emit(sigName: "state-changed", state: string, ...args: any[]): void
 
     // Class property signals of Zeitgeist-2.0.Zeitgeist.ConnmanManagerDBus
 
@@ -666,7 +666,7 @@ export module DataSourceRegistry {
      * Signal callback interface for `source-enabled`
      */
     export interface SourceEnabledSignalCallback {
-        ($obj: DataSourceRegistry, unique_id: string | null, enabled: boolean): void
+        ($obj: DataSourceRegistry, unique_id: string, enabled: boolean): void
     }
 
     /**
@@ -690,11 +690,11 @@ export interface DataSourceRegistry {
 
     get_data_sources(cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_data_sources_finish(_res_: Gio.AsyncResult): DataSource[]
-    get_data_source_from_id(unique_id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    get_data_source_from_id(unique_id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     get_data_source_from_id_finish(_res_: Gio.AsyncResult): DataSource
     register_data_source(data_source: DataSource, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     register_data_source_finish(_res_: Gio.AsyncResult): boolean
-    set_data_source_enabled(unique_id: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    set_data_source_enabled(unique_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     set_data_source_enabled_finish(_res_: Gio.AsyncResult): void
 
     // Own signals of Zeitgeist-2.0.Zeitgeist.DataSourceRegistry
@@ -704,7 +704,7 @@ export interface DataSourceRegistry {
     emit(sigName: "source-disconnected", data_source: DataSource, ...args: any[]): void
     connect(sigName: "source-enabled", callback: DataSourceRegistry.SourceEnabledSignalCallback): number
     connect_after(sigName: "source-enabled", callback: DataSourceRegistry.SourceEnabledSignalCallback): number
-    emit(sigName: "source-enabled", unique_id: string | null, enabled: boolean, ...args: any[]): void
+    emit(sigName: "source-enabled", unique_id: string, enabled: boolean, ...args: any[]): void
     connect(sigName: "source-registered", callback: DataSourceRegistry.SourceRegisteredSignalCallback): number
     connect_after(sigName: "source-registered", callback: DataSourceRegistry.SourceRegisteredSignalCallback): number
     emit(sigName: "source-registered", data_source: DataSource, ...args: any[]): void
@@ -751,9 +751,9 @@ export interface Index {
 
     // Owm methods of Zeitgeist-2.0.Zeitgeist.Index
 
-    search(query: string | null, time_range: TimeRange, event_templates: Event[], offset: number, num_events: number, result_type: ResultType, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    search(query: string, time_range: TimeRange, event_templates: Event[], offset: number, num_events: number, result_type: ResultType, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     search_finish(_res_: Gio.AsyncResult): ResultSet
-    search_with_relevancies(query: string | null, time_range: TimeRange, event_templates: Event[], storage_state: StorageState, offset: number, num_events: number, result_type: ResultType, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    search_with_relevancies(query: string, time_range: TimeRange, event_templates: Event[], storage_state: StorageState, offset: number, num_events: number, result_type: ResultType, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     search_with_relevancies_finish(_res_: Gio.AsyncResult): [ /* returnType */ ResultSet, /* relevancies */ number[] ]
 
     // Class property signals of Zeitgeist-2.0.Zeitgeist.Index
@@ -1072,12 +1072,12 @@ export interface DataSource {
     // Owm methods of Zeitgeist-2.0.Zeitgeist.DataSource
 
     to_variant(): GLib.Variant
-    get_unique_id(): string | null
-    set_unique_id(value: string | null): void
-    get_name(): string | null
-    set_name(value: string | null): void
-    get_description(): string | null
-    set_description(value: string | null): void
+    get_unique_id(): string
+    set_unique_id(value: string): void
+    get_name(): string
+    set_name(value: string): void
+    get_description(): string
+    set_description(value: string): void
     get_event_templates(): Event[] | null
     set_event_templates(value: Event[] | null): void
     get_enabled(): boolean
@@ -1128,7 +1128,7 @@ export class DataSource extends GObject.Object {
     constructor(config?: DataSource.ConstructorProperties) 
     constructor() 
     static new(): DataSource
-    static full(unique_id: string | null, name: string | null, description: string | null, templates: Event[] | null): DataSource
+    static full(unique_id: string, name: string, description: string, templates: Event[] | null): DataSource
     static from_variant(variant: GLib.Variant, reset_running: boolean): DataSource
     _init(config?: DataSource.ConstructorProperties): void
 }
@@ -1683,11 +1683,11 @@ export interface RemoteRegistryIface {
 
     get_data_sources: (self: RemoteRegistry, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     get_data_sources_finish: (self: RemoteRegistry, _res_: Gio.AsyncResult) => GLib.Variant
-    register_data_source: (self: RemoteRegistry, unique_id: string | null, name: string | null, description: string | null, event_templates: GLib.Variant, cancellable: Gio.Cancellable | null, sender: string | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    register_data_source: (self: RemoteRegistry, unique_id: string, name: string, description: string, event_templates: GLib.Variant, cancellable: Gio.Cancellable | null, sender: string | null, _callback_: Gio.AsyncReadyCallback | null) => void
     register_data_source_finish: (self: RemoteRegistry, _res_: Gio.AsyncResult) => boolean
-    set_data_source_enabled: (self: RemoteRegistry, unique_id: string | null, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    set_data_source_enabled: (self: RemoteRegistry, unique_id: string, enabled: boolean, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     set_data_source_enabled_finish: (self: RemoteRegistry, _res_: Gio.AsyncResult) => void
-    get_data_source_from_id: (self: RemoteRegistry, unique_id: string | null, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    get_data_source_from_id: (self: RemoteRegistry, unique_id: string, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     get_data_source_from_id_finish: (self: RemoteRegistry, _res_: Gio.AsyncResult) => GLib.Variant
 }
 
@@ -1753,9 +1753,9 @@ export interface RemoteSimpleIndexerIface {
 
     // Own fields of Zeitgeist-2.0.Zeitgeist.RemoteSimpleIndexerIface
 
-    search: (self: RemoteSimpleIndexer, query_string: string | null, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    search: (self: RemoteSimpleIndexer, query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     search_finish: (self: RemoteSimpleIndexer, _res_: Gio.AsyncResult) => [ /* events */ GLib.Variant, /* matches */ number ]
-    search_with_relevancies: (self: RemoteSimpleIndexer, query_string: string | null, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
+    search_with_relevancies: (self: RemoteSimpleIndexer, query_string: string, time_range: GLib.Variant, filter_templates: GLib.Variant, storage_state: number, offset: number, count: number, result_type: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback | null) => void
     search_with_relevancies_finish: (self: RemoteSimpleIndexer, _res_: Gio.AsyncResult) => [ /* events */ GLib.Variant, /* relevancies */ number[], /* matches */ number ]
 }
 

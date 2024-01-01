@@ -118,11 +118,11 @@ export const MINOR_VERSION: number
  * Template-GLib version, encoded as a string, useful for printing and
  * concatenation.
  */
-export const VERSION_S: string | null
+export const VERSION_S: string
 export function errorQuark(): GLib.Quark
-export function exprFromString(str: string | null): Expr
+export function exprFromString(str: string): Expr
 export interface ScopeResolver {
-    (scope: Scope, name: string | null, symbol: Symbol): boolean
+    (scope: Scope, name: string, symbol: Symbol): boolean
 }
 export module Template {
 
@@ -178,9 +178,9 @@ export interface Template {
     getLocator(): TemplateLocator
     parse(stream: Gio.InputStream, cancellable: Gio.Cancellable | null): boolean
     parseFile(file: Gio.File, cancellable: Gio.Cancellable | null): boolean
-    parsePath(path: string | null, cancellable: Gio.Cancellable | null): boolean
-    parseResource(path: string | null, cancellable: Gio.Cancellable | null): boolean
-    parseString(input: string | null): boolean
+    parsePath(path: string, cancellable: Gio.Cancellable | null): boolean
+    parseResource(path: string, cancellable: Gio.Cancellable | null): boolean
+    parseString(input: string): boolean
     setLocator(locator: TemplateLocator): void
 
     // Class property signals of Template-1.0.Template.Template
@@ -256,14 +256,14 @@ export interface TemplateLocator {
 
     // Owm methods of Template-1.0.Template.TemplateLocator
 
-    appendSearchPath(path: string | null): void
+    appendSearchPath(path: string): void
     /**
      * Gets the current search path used by the template locator.
      * @returns A %NULL-terminated array of strings.
      */
     getSearchPath(): string[]
-    // Has conflict: locate(path: string | null): Gio.InputStream
-    prependSearchPath(path: string | null): void
+    // Has conflict: locate(path: string): Gio.InputStream
+    prependSearchPath(path: string): void
 
     // Own virtual methods of Template-1.0.Template.TemplateLocator
 
@@ -274,7 +274,7 @@ export interface TemplateLocator {
      * @param path a relative path to the file
      * @returns A #GInputStream or %NULL and @error is set.
      */
-    locate(path: string | null): Gio.InputStream
+    locate(path: string): Gio.InputStream
 
     // Class property signals of Template-1.0.Template.TemplateLocator
 
@@ -326,13 +326,13 @@ export interface Scope {
      * @param name 
      * @returns a string or %NULL
      */
-    dupString(name: string | null): string | null
+    dupString(name: string): string | null
     /**
      * If the symbol could not be found, it will be allocated.
      * @param name 
      * @returns A #TmplSymbol.
      */
-    get(name: string | null): Symbol
+    get(name: string): Symbol
     /**
      * Gets the names of all symbols within the scope.
      * @param recursive if the parent scopes should be included
@@ -350,7 +350,7 @@ export interface Scope {
      * @param name 
      * @returns A #TmplSymbol or %NULL.
      */
-    peek(name: string | null): Symbol | null
+    peek(name: string): Symbol | null
     ref(): Scope
     /**
      * Imports `namespace_` into `self` so it can be used by expressions.
@@ -358,7 +358,7 @@ export interface Scope {
      * @param version the version of `namespace_` to import
      * @returns %TRUE if successful; otherwise %FALSE
      */
-    require(namespace: string | null, version: string | null): boolean
+    require(namespace: string, version: string | null): boolean
     /**
      * If the symbol already exists, it will be overwritten.
      * 
@@ -366,45 +366,45 @@ export interface Scope {
      * @param name the name of the symbol
      * @param symbol An #TmplSymbol or %NULL.
      */
-    set(name: string | null, symbol: Symbol | null): void
+    set(name: string, symbol: Symbol | null): void
     /**
      * Sets the value of the symbol named `name` to a gboolean value of `value`.
      * @param name a name for the symbol
      * @param value a #gboolean
      */
-    setBoolean(name: string | null, value: boolean): void
+    setBoolean(name: string, value: boolean): void
     /**
      * Sets the value of the symbol named `name` to a gdouble value of `value`.
      * @param name a name for the symbol
      * @param value a #gdouble
      */
-    setDouble(name: string | null, value: number): void
-    setNull(name: string | null): void
+    setDouble(name: string, value: number): void
+    setNull(name: string): void
     /**
      * Sets the value of the symbol named `name` to the object `value`.
      * @param name a name for the symbol
      * @param value a #GObject or %NULL.
      */
-    setObject(name: string | null, value: GObject.Object | null): void
+    setObject(name: string, value: GObject.Object | null): void
     setResolver(resolver: ScopeResolver): void
     /**
      * Sets the value of the symbol named `name` to a string matching `value`.
      * @param name a name for the symbol
      * @param value A string or %NULL.
      */
-    setString(name: string | null, value: string | null): void
+    setString(name: string, value: string | null): void
     /**
      * Sets the value of the symbol named `name` to the strv `value`.
      * @param name a name for the symbol
      * @param value the value to set it to, or %NULL
      */
-    setStrv(name: string | null, value: string[] | null): void
+    setStrv(name: string, value: string[] | null): void
     /**
      * Sets the contents of the symbol named `name` to the value `value`.
      * @param name a name for the symbol
      * @param value A #GValue or %NULL
      */
-    setValue(name: string | null, value: any | null): void
+    setValue(name: string, value: any | null): void
     /**
      * Sets the value of the symbol named `name` to the variant `value`.
      * 
@@ -412,7 +412,7 @@ export interface Scope {
      * @param name a name for the symbol
      * @param value the variant to set it to, or %NULL
      */
-    setVariant(name: string | null, value: GLib.Variant | null): void
+    setVariant(name: string, value: GLib.Variant | null): void
     /**
      * Sets the symbol named `name` to `symbol` in `scope`.
      * 
@@ -421,7 +421,7 @@ export interface Scope {
      * @param name The name of the symbol
      * @param symbol A #TmplSymbol or %NULL
      */
-    take(name: string | null, symbol: Symbol | null): void
+    take(name: string, symbol: Symbol | null): void
     unref(): void
 }
 
@@ -458,7 +458,7 @@ export interface Symbol {
      * @param vObject a #GObject or %NULL.
      */
     assignObject(vObject: GObject.Object | null): void
-    assignString(vString: string | null): void
+    assignString(vString: string): void
     /**
      * Sets the value to the strv `strv`.
      * @param strv the value to set, or %NULL
@@ -512,7 +512,7 @@ export interface TemplateLocatorClass {
     // Own fields of Template-1.0.Template.TemplateLocatorClass
 
     parentInstance: GObject.ObjectClass
-    locate: (self: TemplateLocator, path: string | null) => Gio.InputStream
+    locate: (self: TemplateLocator, path: string) => Gio.InputStream
 }
 
 export abstract class TemplateLocatorClass {
@@ -528,10 +528,10 @@ export interface Expr {
 
     eval(scope: Scope, returnValue: any): boolean
     newAnonCall(params: Expr): Expr
-    newGetattr(attr: string | null): Expr
-    newGiCall(name: string | null, params: Expr): Expr
+    newGetattr(attr: string): Expr
+    newGiCall(name: string, params: Expr): Expr
     newInvertBoolean(): Expr
-    newSetattr(attr: string | null, right: Expr): Expr
+    newSetattr(attr: string, right: Expr): Expr
     ref(): Expr
     unref(): void
 }
@@ -551,7 +551,7 @@ export class Expr {
     static newNop(): Expr
     static newNull(): Expr
     static newNumber(value: number): Expr
-    static newRequire(typelib: string | null, version: string | null): Expr
+    static newRequire(typelib: string, version: string): Expr
     static newSimple(type: ExprType, left: Expr, right: Expr): Expr
     /**
      * Creates a new statement list for which the last item will be
@@ -561,11 +561,11 @@ export class Expr {
      * @returns a new #TmplExpr
      */
     static newStmtList(stmts: Expr[]): Expr
-    static newString(value: string | null, length: number): Expr
-    static newSymbolAssign(symbol: string | null, right: Expr): Expr
-    static newSymbolRef(symbol: string | null): Expr
-    static newUserFnCall(name: string | null, param: Expr): Expr
-    static fromString(str: string | null): Expr
+    static newString(value: string, length: number): Expr
+    static newSymbolAssign(symbol: string, right: Expr): Expr
+    static newSymbolRef(symbol: string): Expr
+    static newUserFnCall(name: string, param: Expr): Expr
+    static fromString(str: string): Expr
 }
 
 // END

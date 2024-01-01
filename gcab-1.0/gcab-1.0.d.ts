@@ -313,7 +313,7 @@ interface File {
      * Get the file name within the cabinet.
      * @returns the cabinet file name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the file size.
      * @returns the cabinet file size
@@ -389,7 +389,7 @@ class File extends GObject.Object {
      * @param bytes a #GBytes to be added to the cabinet
      * @returns a new #GCabFile
      */
-    static new_with_bytes(name: string | null, bytes: GLib.Bytes): File
+    static new_with_bytes(name: string, bytes: GLib.Bytes): File
     /**
      * Create a #GCabFile from a given #GFile, to be added to a
      * #GCabCabinet for archive creation.
@@ -398,7 +398,7 @@ class File extends GObject.Object {
      * @param file a #GFile to be added to the cabinet
      * @returns a new #GCabFile
      */
-    static new_with_file(name: string | null, file: Gio.File): File
+    static new_with_file(name: string, file: Gio.File): File
     _init(config?: File.ConstructorProperties): void
 }
 
@@ -444,7 +444,7 @@ interface Folder {
      * @param name a file name
      * @returns A #GCabFile, or %NULL if not found
      */
-    get_file_by_name(name: string | null): File
+    get_file_by_name(name: string): File
     /**
      * Get the list of #GCabFile files contained in the `cabfolder`.
      * @returns list of files

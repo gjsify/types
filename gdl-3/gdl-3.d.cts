@@ -242,8 +242,8 @@ export enum DockParamFlags {
      */
     AFTER,
 }
-export const DOCK_MASTER_PROPERTY: string | null
-export const DOCK_NAME_PROPERTY: string | null
+export const DOCK_MASTER_PROPERTY: string
+export const DOCK_NAME_PROPERTY: string
 /**
  * Minimum shift count to be used for user defined flags, to be stored in
  * #GdlDockObject.flags.
@@ -356,7 +356,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param name An item name
      * @returns A #GdlDockItem widget or %NULL
      */
-    get_item_by_name(name: string | null): DockItem
+    get_item_by_name(name: string): DockItem
     /**
      * Returns a list of all item bound to the master of the dock, not only
      * the children of this particular dock widget.
@@ -369,7 +369,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param name An item name
      * @returns A #GdlDockPlaceholder object or %NULL
      */
-    get_placeholder_by_name(name: string | null): DockPlaceholder
+    get_placeholder_by_name(name: string): DockPlaceholder
     /**
      * Get the first child of the #GdlDockObject.
      * @returns A #GdlDockObject or %NULL.
@@ -501,7 +501,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -515,7 +515,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -526,7 +526,7 @@ export interface Dock extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdl-3.Gdl.Dock
 
@@ -816,7 +816,7 @@ export interface DockBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -830,7 +830,7 @@ export interface DockBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -841,7 +841,7 @@ export interface DockBar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.DockBar
 
@@ -1429,7 +1429,7 @@ export interface DockItem extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1443,7 +1443,7 @@ export interface DockItem extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1454,7 +1454,7 @@ export interface DockItem extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdl-3.Gdl.DockItem
 
@@ -1678,7 +1678,7 @@ export class DockItem extends DockObject {
      * @param behavior General behavior for the dock item (i.e. whether it can            float, if it's locked, etc.), as specified by            #GdlDockItemBehavior flags.
      * @returns The newly created dock item grip widget.
      */
-    constructor(name: string | null, long_name: string | null, behavior: DockItemBehavior) 
+    constructor(name: string, long_name: string, behavior: DockItemBehavior) 
     /**
      * Creates a new dock item widget.
      * @constructor 
@@ -1687,7 +1687,7 @@ export class DockItem extends DockObject {
      * @param behavior General behavior for the dock item (i.e. whether it can            float, if it's locked, etc.), as specified by            #GdlDockItemBehavior flags.
      * @returns The newly created dock item grip widget.
      */
-    static new(name: string | null, long_name: string | null, behavior: DockItemBehavior): DockItem
+    static new(name: string, long_name: string, behavior: DockItemBehavior): DockItem
     /**
      * Creates a new dock item grip widget with a given pixbuf icon.
      * @constructor 
@@ -1697,7 +1697,7 @@ export class DockItem extends DockObject {
      * @param behavior General behavior for the dock item (i.e. whether it can            float, if it's locked, etc.), as specified by            #GdlDockItemBehavior flags.
      * @returns The newly created dock item grip widget.
      */
-    static new_with_pixbuf_icon(name: string | null, long_name: string | null, pixbuf_icon: GdkPixbuf.Pixbuf, behavior: DockItemBehavior): DockItem
+    static new_with_pixbuf_icon(name: string, long_name: string, pixbuf_icon: GdkPixbuf.Pixbuf, behavior: DockItemBehavior): DockItem
     /**
      * Creates a new dock item grip widget with a given stock id.
      * @constructor 
@@ -1707,7 +1707,7 @@ export class DockItem extends DockObject {
      * @param behavior General behavior for the dock item (i.e. whether it can            float, if it's locked, etc.), as specified by            #GdlDockItemBehavior flags.
      * @returns The newly created dock item grip widget.
      */
-    static new_with_stock(name: string | null, long_name: string | null, stock_id: string | null, behavior: DockItemBehavior): DockItem
+    static new_with_stock(name: string, long_name: string, stock_id: string, behavior: DockItemBehavior): DockItem
     _init(config?: DockItem.ConstructorProperties): void
     /**
      * Define in the corresponding kind of dock item has a grip. Even if an item
@@ -1949,7 +1949,7 @@ export interface DockItemGrip extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1963,7 +1963,7 @@ export interface DockItemGrip extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1974,7 +1974,7 @@ export interface DockItemGrip extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.DockItemGrip
 
@@ -2179,7 +2179,7 @@ export interface DockLayout {
      * This will set #GdlDockLayout:dirty to %TRUE.
      * @param name The name of the layout to delete.
      */
-    delete_layout(name: string | null): void
+    delete_layout(name: string): void
     /**
      * Get the list of layout names including or not the default layout.
      * @param include_default %TRUE to include the default layout.
@@ -2202,7 +2202,7 @@ export interface DockLayout {
      * @param filename The name of the file to load.
      * @returns %TRUE if @layout successfully loaded else %FALSE
      */
-    load_from_file(filename: string | null): boolean
+    load_from_file(filename: string): boolean
     /**
      * Loads the layout with the given name from the memory.
      * This will set #GdlDockLayout:dirty to %TRUE.
@@ -2226,7 +2226,7 @@ export interface DockLayout {
      * @param filename Name of the file we want to save in layout
      * @returns %TRUE if @layout successfuly save to the file, otherwise %FALSE.
      */
-    save_to_file(filename: string | null): boolean
+    save_to_file(filename: string): boolean
     /**
      * Attach the `layout` to the `master` and delete the reference to
      * the master that the layout attached previously. Instead of setting `master`
@@ -2373,7 +2373,7 @@ export interface DockMaster {
      * @param nick_name the name of the dock widget.
      * @returns A #GdlDockObject named @nick_name or %NULL if it does not exist.
      */
-    get_object(nick_name: string | null): DockObject | null
+    get_object(nick_name: string): DockObject | null
     /**
      * Remove one dock widget from the master.
      * @param object a #GdlDockObject
@@ -2574,7 +2574,7 @@ export interface DockNotebook extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2588,7 +2588,7 @@ export interface DockNotebook extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2599,7 +2599,7 @@ export interface DockNotebook extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.DockNotebook
 
@@ -2811,7 +2811,7 @@ export class DockNotebook extends DockItem {
      * @param behavior General behavior for the dock item (i.e. whether it can            float, if it's locked, etc.), as specified by            #GdlDockItemBehavior flags.
      * @returns The newly created dock item grip widget.
      */
-    static new(name: string | null, long_name: string | null, behavior: DockItemBehavior): DockItem
+    static new(name: string, long_name: string, behavior: DockItemBehavior): DockItem
     _init(config?: DockNotebook.ConstructorProperties): void
 }
 
@@ -2981,7 +2981,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * which can be displayed in the user interface.
      * @returns the name of the object.
      */
-    get_long_name(): string | null
+    get_long_name(): string
     /**
      * Retrieves the master of the object.
      * @returns a #GdlDockMaster object
@@ -2991,7 +2991,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * Retrieves the name of the object. This name is used to identify the object.
      * @returns the name of the object.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns a parent #GdlDockObject if it exists.
      * @returns a #GdlDockObject or %NULL if such object does not exist.
@@ -3006,7 +3006,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * Retrieves the a stock id used as the object icon.
      * @returns A stock id corresponding to the object icon.
      */
-    get_stock_id(): string | null
+    get_stock_id(): string
     /**
      * Get the top level #GdlDock widget of `object` or %NULL if cannot be found.
      * @returns A #GdlDock or %NULL.
@@ -3110,7 +3110,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * which can be displayed in the user interface.
      * @param name a name for the object
      */
-    set_long_name(name: string | null): void
+    set_long_name(name: string): void
     /**
      * A #GdlDockObject is managed by default by the dock master, use this function
      * to make it a manual object if you want to manage the destruction of the
@@ -3121,7 +3121,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * Set the name of the object used to identify it.
      * @param name a name for the object
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Set a icon for a dock object using a #GdkPixbuf.
      * @param icon a icon or %NULL
@@ -3131,7 +3131,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * Set an icon for the dock object using a stock id.
      * @param stock_id a stock id
      */
-    set_stock_id(stock_id: string | null): void
+    set_stock_id(stock_id: string): void
     /**
      * Thaws a dock object frozen with gdl_dock_object_freeze().
      * Any pending reduce calls are made, maybe leading to the destruction of
@@ -3156,7 +3156,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3170,7 +3170,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3181,7 +3181,7 @@ export interface DockObject extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdl-3.Gdl.DockObject
 
@@ -3420,7 +3420,7 @@ export class DockObject extends Gtk.Container {
      * @param type The type for which to find the nickname
      * @returns If the object has a nickname, then it is returned.   Otherwise, the type name.
      */
-    static nick_from_type(type: GObject.GType): string | null
+    static nick_from_type(type: GObject.GType): string
     /**
      * Assigns an object type to a given nickname.  If the nickname already exists,
      * then it reassigns it to a new object type.
@@ -3428,13 +3428,13 @@ export class DockObject extends Gtk.Container {
      * @param type The object type
      * @returns If the nick was previously assigned, the old type is returned. Otherwise, %G_TYPE_NONE.
      */
-    static set_type_for_nick(nick: string | null, type: GObject.GType): GObject.GType
+    static set_type_for_nick(nick: string, type: GObject.GType): GObject.GType
     /**
      * Finds the object type assigned to a given nickname.
      * @param nick The nickname for the object type
      * @returns If the nickname has previously been assigned, then the corresponding object type is returned.  Otherwise, %G_TYPE_NONE.
      */
-    static type_from_nick(nick: string | null): GObject.GType
+    static type_from_nick(nick: string): GObject.GType
 }
 
 export module DockPaned {
@@ -3580,7 +3580,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3594,7 +3594,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3605,7 +3605,7 @@ export interface DockPaned extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.DockPaned
 
@@ -3819,7 +3819,7 @@ export class DockPaned extends DockItem {
      * @param behavior General behavior for the dock item (i.e. whether it can            float, if it's locked, etc.), as specified by            #GdlDockItemBehavior flags.
      * @returns The newly created dock item grip widget.
      */
-    static new(name: string | null, long_name: string | null, behavior: DockItemBehavior): DockItem
+    static new(name: string, long_name: string, behavior: DockItemBehavior): DockItem
     _init(config?: DockPaned.ConstructorProperties): void
 }
 
@@ -3980,7 +3980,7 @@ export interface DockPlaceholder extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3994,7 +3994,7 @@ export interface DockPlaceholder extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4005,7 +4005,7 @@ export interface DockPlaceholder extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.DockPlaceholder
 
@@ -4198,7 +4198,7 @@ export class DockPlaceholder extends DockObject {
      * @param sticky %TRUE if the placeholder move with the `object`
      * @returns The newly created placeholder.
      */
-    constructor(name: string | null, object: DockObject, position: DockPlacement, sticky: boolean) 
+    constructor(name: string, object: DockObject, position: DockPlacement, sticky: boolean) 
     /**
      * Creates a new dock placeholder at `object` place. This is a kind of marker
      * allowing you to dock new items later at this place. It is not completely
@@ -4210,7 +4210,7 @@ export class DockPlaceholder extends DockObject {
      * @param sticky %TRUE if the placeholder move with the `object`
      * @returns The newly created placeholder.
      */
-    static new(name: string | null, object: DockObject, position: DockPlacement, sticky: boolean): DockPlaceholder
+    static new(name: string, object: DockObject, position: DockPlacement, sticky: boolean): DockPlaceholder
     _init(config?: DockPlaceholder.ConstructorProperties): void
 }
 
@@ -4284,7 +4284,7 @@ export interface DockTablabel extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4298,7 +4298,7 @@ export interface DockTablabel extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4309,7 +4309,7 @@ export interface DockTablabel extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gdl-3.Gdl.DockTablabel
 
@@ -4542,7 +4542,7 @@ export interface PreviewWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4556,7 +4556,7 @@ export interface PreviewWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4567,7 +4567,7 @@ export interface PreviewWindow extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.PreviewWindow
 
@@ -4913,7 +4913,7 @@ export interface Switcher extends Atk.ImplementorIface, Gtk.Buildable {
      * @param position The position at which to create the page
      * @returns The index (starting from 0) of the appended page in the notebook, or -1 if function fails
      */
-    insert_page(page: Gtk.Widget, tab_widget: Gtk.Widget, label: string | null, tooltips: string | null, stock_id: string | null, pixbuf_icon: GdkPixbuf.Pixbuf, position: number): number
+    insert_page(page: Gtk.Widget, tab_widget: Gtk.Widget, label: string, tooltips: string, stock_id: string, pixbuf_icon: GdkPixbuf.Pixbuf, position: number): number
 
     // Overloads of insert_page
 
@@ -4939,7 +4939,7 @@ export interface Switcher extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4953,7 +4953,7 @@ export interface Switcher extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4964,7 +4964,7 @@ export interface Switcher extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gdl-3.Gdl.Switcher
 

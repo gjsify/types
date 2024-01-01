@@ -92,21 +92,21 @@ enum VulkanFormatFlags {
     LE,
     COMPLEX,
 }
-const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string | null
-const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string | null
-const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string | null
-const VULKAN_DEVICE_CONTEXT_TYPE_STR: string | null
-const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string | null
-const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string | null
-const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string | null
+const CAPS_FEATURE_MEMORY_VULKAN_BUFFER: string
+const CAPS_FEATURE_MEMORY_VULKAN_IMAGE: string
+const VULKAN_BUFFER_MEMORY_ALLOCATOR_NAME: string
+const VULKAN_DEVICE_CONTEXT_TYPE_STR: string
+const VULKAN_DISPLAY_CONTEXT_TYPE_STR: string
+const VULKAN_IMAGE_MEMORY_ALLOCATOR_NAME: string
+const VULKAN_INSTANCE_CONTEXT_TYPE_STR: string
 const VULKAN_MAX_COMPONENTS: number
-const VULKAN_MEMORY_ALLOCATOR_NAME: string | null
+const VULKAN_MEMORY_ALLOCATOR_NAME: string
 /**
  * The printf format specifier for raw Vulkan non dispatchable handles.
  */
-const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string | null
-const VULKAN_QUEUE_CONTEXT_TYPE_STR: string | null
-const VULKAN_SWAPPER_VIDEO_FORMATS: string | null
+const VULKAN_NON_DISPATCHABLE_HANDLE_FORMAT: string
+const VULKAN_QUEUE_CONTEXT_TYPE_STR: string
+const VULKAN_SWAPPER_VIDEO_FORMATS: string
 function context_get_vulkan_device(context: Gst.Context, device: VulkanDevice): boolean
 function context_get_vulkan_display(context: Gst.Context, display: VulkanDisplay): boolean
 function context_get_vulkan_instance(context: Gst.Context, instance: VulkanInstance): boolean
@@ -163,7 +163,7 @@ function vulkan_buffer_memory_init_once(): void
  */
 function vulkan_buffer_memory_wrapped(device: VulkanDevice, buffer: Vulkan.Buffer, usage: Vulkan.BufferUsageFlags, user_data: any | null, notify: GLib.DestroyNotify | null): Gst.Memory
 function vulkan_create_shader(device: VulkanDevice, code: string | null, size: number): VulkanHandle
-function vulkan_display_type_to_extension_string(type: VulkanDisplayType): string | null
+function vulkan_display_type_to_extension_string(type: VulkanDisplayType): string
 /**
  * Perform the steps necessary for retrieving a #GstVulkanInstance and
  * (optionally) an #GstVulkanDisplay from the surrounding elements or from
@@ -187,7 +187,7 @@ function vulkan_get_or_create_image_view(image: VulkanImageMemory): VulkanImageV
  * @param element a #GstElement
  * @param context_type the context type to query for
  */
-function vulkan_global_context_query(element: Gst.Element, context_type: string | null): void
+function vulkan_global_context_query(element: Gst.Element, context_type: string): void
 function vulkan_handle_context_query(element: Gst.Element, query: Gst.Query, display: VulkanDisplay | null, instance: VulkanInstance | null, device: VulkanDevice | null): boolean
 /**
  * Helper function for implementing #GstElementClass.set_context() in
@@ -226,7 +226,7 @@ function vulkan_image_memory_wrapped(device: VulkanDevice, image: Vulkan.Image, 
  * @param element a #GstElement
  * @param context_type the context type to query for
  */
-function vulkan_local_context_query(element: Gst.Element, context_type: string | null): Gst.Query
+function vulkan_local_context_query(element: Gst.Element, context_type: string): Gst.Query
 /**
  * Allocated a new #GstVulkanMemory.
  * @param device a #GstVulkanDevice
@@ -758,7 +758,7 @@ interface VulkanDevice {
      * @param name name of the function to retrieve
      * @returns the function pointer for @name or %NULL
      */
-    get_proc_address(name: string | null): any | null
+    get_proc_address(name: string): any | null
     get_queue(queue_family: number, queue_i: number): VulkanQueue
     /**
      * Attempts to create the internal #VkDevice object.
@@ -1452,7 +1452,7 @@ interface VulkanInstance {
      * @param name name of the function to retrieve
      * @returns the function pointer for @name or %NULL
      */
-    get_proc_address(name: string | null): any | null
+    get_proc_address(name: string): any | null
     open(): boolean
 
     // Conflicting methods
@@ -1727,7 +1727,7 @@ class VulkanPhysicalDevice extends Gst.Object {
     constructor(instance: VulkanInstance, device_index: number) 
     static new(instance: VulkanInstance, device_index: number): VulkanPhysicalDevice
     _init(config?: VulkanPhysicalDevice.ConstructorProperties): void
-    static type_to_string(type: Vulkan.PhysicalDeviceType): string | null
+    static type_to_string(type: Vulkan.PhysicalDeviceType): string
 }
 
 module VulkanQueue {
@@ -2322,8 +2322,8 @@ interface VulkanWindow {
      * @param height the new height
      */
     resize(width: number, height: number): void
-    send_key_event(event_type: string | null, key_str: string | null): void
-    send_mouse_event(event_type: string | null, button: number, posx: number, posy: number): void
+    send_key_event(event_type: string, key_str: string): void
+    send_mouse_event(event_type: string, button: number, posx: number, posy: number): void
     set_window_handle(handle: never): void
 
     // Conflicting methods
@@ -2824,7 +2824,7 @@ interface VulkanFormatInfo {
      * name of this format
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * how raw data is interpreted and scaled
      * `n_components;` number of components in this format

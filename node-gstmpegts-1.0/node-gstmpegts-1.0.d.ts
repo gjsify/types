@@ -1355,7 +1355,7 @@ function descriptorFromCustomWithExtension(tag: number, tagExtension: number, da
  * @param name the network name to set
  * @returns the #GstMpegtsDescriptor or %NULL on fail
  */
-function descriptorFromDvbNetworkName(name: string | null): Descriptor
+function descriptorFromDvbNetworkName(name: string): Descriptor
 /**
  * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
  * The data field of the #GstMpegtsDescriptor will be allocated,
@@ -1366,21 +1366,21 @@ function descriptorFromDvbNetworkName(name: string | null): Descriptor
  * @returns the #GstMpegtsDescriptor or %NULL on fail
  */
 function descriptorFromDvbService(serviceType: DVBServiceType, serviceName: string | null, serviceProvider: string | null): Descriptor
-function descriptorFromDvbSubtitling(lang: string | null, type: number, composition: number, ancillary: number): Descriptor
+function descriptorFromDvbSubtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
 /**
  * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
  * a single language
  * @param language ISO-639-2 language 3-char code
  * @returns #GstMpegtsDescriptor, %NULL on failure
  */
-function descriptorFromIso639Language(language: string | null): Descriptor
+function descriptorFromIso639Language(language: string): Descriptor
 /**
  * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
  * @param formatIdentifier a 4 character format identifier string
  * @param additionalInfo pointer to optional additional info
  * @returns #GstMpegtsDescriptor, %NULL on failure
  */
-function descriptorFromRegistration(formatIdentifier: string | null, additionalInfo: number[] | null): Descriptor
+function descriptorFromRegistration(formatIdentifier: string, additionalInfo: number[] | null): Descriptor
 function descriptorParseAudioPreselectionDump(source: AudioPreselectionDescriptor): void
 function descriptorParseAudioPreselectionFree(source: AudioPreselectionDescriptor): void
 function dvbComponentDescriptorFree(source: ComponentDescriptor): void
@@ -1952,7 +1952,7 @@ interface AtscStringSegment {
 
     // Owm methods of GstMpegts-1.0.GstMpegts.AtscStringSegment
 
-    getString(): string | null
+    getString(): string
     setString(string: string | null, compressionType: number, mode: number): boolean
 }
 
@@ -2506,7 +2506,7 @@ interface Descriptor {
      * Extracts the bouquet name from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
-    parseDvbBouquetName(): [ /* returnType */ boolean, /* bouquetName */ string | null ]
+    parseDvbBouquetName(): [ /* returnType */ boolean, /* bouquetName */ string ]
     /**
      * Extracts ca id's from `descriptor`.
      * @returns %TRUE if the parsing happened correctly, else %FALSE.
@@ -2591,7 +2591,7 @@ interface Descriptor {
      * Extracts the dvb service information from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
-    parseDvbService(): [ /* returnType */ boolean, /* serviceType */ DVBServiceType, /* serviceName */ string | null, /* providerName */ string | null ]
+    parseDvbService(): [ /* returnType */ boolean, /* serviceType */ DVBServiceType, /* serviceName */ string, /* providerName */ string ]
     /**
      * Parses out a list of services from the `descriptor:`
      * @returns %TRUE if the parsing happened correctly, else %FALSE.
@@ -2601,7 +2601,7 @@ interface Descriptor {
      * Extracts the DVB short event information from `descriptor`.
      * @returns %TRUE if parsing succeeded, else %FALSE.
      */
-    parseDvbShortEvent(): [ /* returnType */ boolean, /* languageCode */ string | null, /* eventName */ string | null, /* text */ string | null ]
+    parseDvbShortEvent(): [ /* returnType */ boolean, /* languageCode */ string, /* eventName */ string, /* text */ string ]
     /**
      * Extracts the component tag from `descriptor`.
      * @returns %TRUE if the parsing happened correctly, else %FALSE.
@@ -2632,7 +2632,7 @@ interface Descriptor {
      * @param idx The id of the teletext to get
      * @returns FALSE on out-of-bounds and errors
      */
-    parseDvbTeletextIdx(idx: number): [ /* returnType */ boolean, /* languageCode */ string | null, /* teletextType */ DVBTeletextType, /* magazineNumber */ number, /* pageNumber */ number ]
+    parseDvbTeletextIdx(idx: number): [ /* returnType */ boolean, /* languageCode */ string, /* teletextType */ DVBTeletextType, /* magazineNumber */ number, /* pageNumber */ number ]
     /**
      * Find the number of teletext entries in `descriptor`
      * @returns Number of teletext entries
@@ -2734,7 +2734,7 @@ class Descriptor {
      * @param name the network name to set
      * @returns the #GstMpegtsDescriptor or %NULL on fail
      */
-    static fromDvbNetworkName(name: string | null): Descriptor
+    static fromDvbNetworkName(name: string): Descriptor
     /**
      * Fills a #GstMpegtsDescriptor to be a %GST_MTS_DESC_DVB_SERVICE.
      * The data field of the #GstMpegtsDescriptor will be allocated,
@@ -2745,21 +2745,21 @@ class Descriptor {
      * @returns the #GstMpegtsDescriptor or %NULL on fail
      */
     static fromDvbService(serviceType: DVBServiceType, serviceName: string | null, serviceProvider: string | null): Descriptor
-    static fromDvbSubtitling(lang: string | null, type: number, composition: number, ancillary: number): Descriptor
+    static fromDvbSubtitling(lang: string, type: number, composition: number, ancillary: number): Descriptor
     /**
      * Creates a %GST_MTS_DESC_ISO_639_LANGUAGE #GstMpegtsDescriptor with
      * a single language
      * @param language ISO-639-2 language 3-char code
      * @returns #GstMpegtsDescriptor, %NULL on failure
      */
-    static fromIso639Language(language: string | null): Descriptor
+    static fromIso639Language(language: string): Descriptor
     /**
      * Creates a %GST_MTS_DESC_REGISTRATION #GstMpegtsDescriptor
      * @param formatIdentifier a 4 character format identifier string
      * @param additionalInfo pointer to optional additional info
      * @returns #GstMpegtsDescriptor, %NULL on failure
      */
-    static fromRegistration(formatIdentifier: string | null, additionalInfo: number[] | null): Descriptor
+    static fromRegistration(formatIdentifier: string, additionalInfo: number[] | null): Descriptor
     static parseAudioPreselectionDump(source: AudioPreselectionDescriptor): void
     static parseAudioPreselectionFree(source: AudioPreselectionDescriptor): void
 }

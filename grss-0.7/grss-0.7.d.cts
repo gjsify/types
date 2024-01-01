@@ -153,7 +153,7 @@ export interface FeedChannel {
      * Retrieves category of the `channel`.
      * @returns category of the feed, or %NULL.
      */
-    get_category(): string | null
+    get_category(): string
     /**
      * Retrieves reference to the contributors of the `channel`.
      * @returns list of contributors to the channel, or %NULL.
@@ -170,12 +170,12 @@ export interface FeedChannel {
      * Retrieves indications about the copyright.
      * @returns copyright of the @channel, or %NULL.
      */
-    get_copyright(): string | null
+    get_copyright(): string
     /**
      * Retrieves the description of `channel`.
      * @returns description of the feed, or %NULL.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Retrieves reference to the editor or the `channel`.
      * @returns #GrssPerson, or %NULL.
@@ -185,12 +185,12 @@ export interface FeedChannel {
      * Retrieves the file format of `channel`.
      * @returns file format of channel.
      */
-    get_format(): string | null
+    get_format(): string
     /**
      * Retrieves information about the feed's software generator.
      * @returns generator of @channel, or %NULL.
      */
-    get_generator(): string | null
+    get_generator(): string
     /**
      * GZIP compression of the channel is either on or off.
      * @returns %TRUE if @channel has GZIP compression on.
@@ -200,23 +200,23 @@ export interface FeedChannel {
      * Retrieves the homepage of the site for which `channel` is the feed.
      * @returns reference homepage of the feed, or %NULL.
      */
-    get_homepage(): string | null
+    get_homepage(): string
     /**
      * Retrieves URL of the favicon of the channel (and/or the website for which
      * this is the feed).
      * @returns URL of the favicon, or %NULL.
      */
-    get_icon(): string | null
+    get_icon(): string
     /**
      * Retrieves the URL of the image assigned to the channel.
      * @returns URL of the image, or %NULL.
      */
-    get_image(): string | null
+    get_image(): string
     /**
      * Retrieves the language of the `channel`.
      * @returns string rappresenting the language of channel, or %NULL.
      */
-    get_language(): string | null
+    get_language(): string
     /**
      * Retrieves the publishing time of `channel`.
      * @returns time of feed's publish.
@@ -239,12 +239,12 @@ export interface FeedChannel {
      * Retrieves URL where to fetch the `channel`.
      * @returns URL of the channel.
      */
-    get_source(): string | null
+    get_source(): string
     /**
      * Retrieves title of the `channel`.
      * @returns title of the feed, or %NULL.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Retrieves the update interval for the feed. Pay attention to the fact the
      * value can be unset, and the function returns 0: in this case the caller
@@ -262,7 +262,7 @@ export interface FeedChannel {
      * Retrieves reference to the webmaster of the feed.
      * @returns webmaster of @channel, or %NULL.
      */
-    get_webmaster(): string | null
+    get_webmaster(): string
     /**
      * To set the category of the `channel`.
      * @param category category of the feed.
@@ -403,7 +403,7 @@ export class FeedChannel extends GObject.Object {
      * @param path path of the file to parse.
      * @returns a #GrssFeedChannel, or %NULL if the file in @path is not a valid document.
      */
-    static new_from_file(path: string | null): FeedChannel
+    static new_from_file(path: string): FeedChannel
     /**
      * Allocates a new #GrssFeedChannel and init it with contents found in specified
      * memory block.
@@ -411,7 +411,7 @@ export class FeedChannel extends GObject.Object {
      * @param data string to parse.
      * @returns a #GrssFeedChannel, or %NULL if an error occurs.
      */
-    static new_from_memory(data: string | null): FeedChannel
+    static new_from_memory(data: string): FeedChannel
     /**
      * Allocates a new #GrssFeedChannel and init it with contents found in specified
      * XML document.
@@ -481,7 +481,7 @@ export interface FeedEnclosure {
      * Retrieves the format of the enclosed file.
      * @returns type of @enclosure.
      */
-    get_format(): string | null
+    get_format(): string
     /**
      * Retrieves the size of the embedded file.
      * @returns size of the @enclosure, in bytes.
@@ -491,7 +491,7 @@ export interface FeedEnclosure {
      * Retrieves the URL of the `enclosure`.
      * @returns the URL where the enclosure may be found.
      */
-    get_url(): string | null
+    get_url(): string
     /**
      * To set the type of the external file.
      * @param type type of content.
@@ -677,7 +677,7 @@ export interface FeedItem {
      * Retrieves the URL where to catch comments to the `item`.
      * @returns URL to parse to read comments for @item, or %NULL.
      */
-    get_comments_url(): string | null
+    get_comments_url(): string
     /**
      * Retrieves contributors for `item`.
      * @returns list of          contributors to the item.
@@ -687,12 +687,12 @@ export interface FeedItem {
      * Retrieves copyright reference for the `item`.
      * @returns copyright mark, or %NULL.
      */
-    get_copyright(): string | null
+    get_copyright(): string
     /**
      * Retrieves the description of the `item`.
      * @returns description of @item.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Retrieves the list of enclosures added with grss_feed_item_add_enclosure().
      * @returns a list of #GrssFeedEnclosure. This is a direct reference to the internal list, do not free or modify it.
@@ -710,7 +710,7 @@ export interface FeedItem {
      * IDs.
      * @returns ID of the item.
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Retrieves the feed from which the item belongs.
      * @returns the parent feed, as set in grss_feed_item_new().
@@ -728,22 +728,22 @@ export interface FeedItem {
      * @param realsource will be assigned to the URL of the real source, or %NULL.
      * @param title will be assigned to the title of the real source, or %NULL.
      */
-    get_real_source(realsource: string | null, title: string | null): void
+    get_real_source(realsource: string, title: string): void
     /**
      * Retrieves indication about posts related to `item`.
      * @returns related posts, or %NULL.
      */
-    get_related(): string | null
+    get_related(): string
     /**
      * Retrieves the URL where the `item` can be found.
      * @returns URL of the item, or %NULL.
      */
-    get_source(): string | null
+    get_source(): string
     /**
      * Retrieves the title assigned to `item`.
      * @returns title of the element.
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * To assign an author to the `item`.
      * @param author a #GrssPerson.
@@ -978,7 +978,7 @@ export interface FeedsGroup {
      * @param uri URI of the file to write.
      * @returns %TRUE if the file is created correctly, or %FALSE if an error occours and @error is set.
      */
-    export_file(channels: FeedChannel[], format: string | null, uri: string | null): boolean
+    export_file(channels: FeedChannel[], format: string, uri: string): boolean
     /**
      * Returns the list of supported file formats.
      * @returns a list of constant strings with names of supported formats. The list must be freed when no longer used
@@ -989,7 +989,7 @@ export interface FeedsGroup {
      * @param path path of the file to parse.
      * @returns a list of #GrssFeedChannels, or NULL if an error occours and @error is set.
      */
-    parse_file(path: string | null): FeedChannel[]
+    parse_file(path: string): FeedChannel[]
 
     // Class property signals of Grss-0.7.Grss.FeedsGroup
 
@@ -1226,7 +1226,7 @@ export interface FeedsPublisher {
      * @param uri URI of the file to write. The full path must exists.
      * @returns %TRUE if the file is successfully written, %FALSE otherwise.
      */
-    publish_file(channel: FeedChannel, items: FeedItem[], uri: string | null): boolean
+    publish_file(channel: FeedChannel, items: FeedItem[], uri: string): boolean
     /**
      * If the local web server has been executed (with
      * grss_feeds_publisher_hub_switch()) this function exposes the given `channel`
@@ -1236,7 +1236,7 @@ export interface FeedsPublisher {
      * @param id name used in the external URL of the feed.
      * @returns %TRUE if the file is successfully written, %FALSE otherwise.
      */
-    publish_web(channel: FeedChannel, items: FeedItem[], id: string | null): boolean
+    publish_web(channel: FeedChannel, items: FeedItem[], id: string): boolean
 
     // Own virtual methods of Grss-0.7.Grss.FeedsPublisher
 
@@ -1328,7 +1328,7 @@ export interface FeedsStore {
      * @param id unique ID to look for.
      * @returns %TRUE if the specified item exists, %FALSE otherwise.
      */
-    has_item(channel: FeedChannel, id: string | null): boolean
+    has_item(channel: FeedChannel, id: string): boolean
     /**
      * This is to permit the `store` to auto-update itself: it creates an internal
      * #GrssFeedsPool and listens for his signals, so to implement the whole loop
@@ -1368,7 +1368,7 @@ export interface FeedsStore {
      * @param id unique ID to look for.
      * @returns %TRUE if the specified item exists, %FALSE otherwise.
      */
-    vfunc_has_item(channel: FeedChannel, id: string | null): boolean
+    vfunc_has_item(channel: FeedChannel, id: string): boolean
 
     // Class property signals of Grss-0.7.Grss.FeedsStore
 
@@ -1763,7 +1763,7 @@ export interface FeedsStoreClass {
     parent: GObject.ObjectClass
     get_channels: (store: FeedsStore) => FeedChannel[]
     get_items_by_channel: (store: FeedsStore, channel: FeedChannel) => FeedItem[]
-    has_item: (store: FeedsStore, channel: FeedChannel, id: string | null) => boolean
+    has_item: (store: FeedsStore, channel: FeedChannel, id: string) => boolean
     add_item_in_channel: (store: FeedsStore, channel: FeedChannel, item: FeedItem) => void
 }
 
@@ -1813,9 +1813,9 @@ export interface Person {
 
     // Owm methods of Grss-0.7.Grss.Person
 
-    get_email(): string | null
-    get_name(): string | null
-    get_uri(): string | null
+    get_email(): string
+    get_name(): string
+    get_uri(): string
     /**
      * Atomically increments the reference count of `person` by one.
      * @returns the #GrssPerson with the reference count increased
@@ -1851,7 +1851,7 @@ export class Person {
      * @param uri the homepage (uri) of the person, or %NULL
      * @returns a new #GrssPerson, or %NULL
      */
-    constructor(name: string | null, email: string | null, uri: string | null) 
+    constructor(name: string, email: string | null, uri: string | null) 
     /**
      * Creates a new #GrssPerson.
      * @constructor 
@@ -1860,7 +1860,7 @@ export class Person {
      * @param uri the homepage (uri) of the person, or %NULL
      * @returns a new #GrssPerson, or %NULL
      */
-    static new(name: string | null, email: string | null, uri: string | null): Person
+    static new(name: string, email: string | null, uri: string | null): Person
 }
 
 /**

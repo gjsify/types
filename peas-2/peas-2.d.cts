@@ -222,7 +222,7 @@ export interface Engine extends Gio.ListModel {
      * @param module_dir the plugin module directory.
      * @param data_dir the plugin data directory.
      */
-    add_search_path(module_dir: string | null, data_dir: string | null): void
+    add_search_path(module_dir: string, data_dir: string | null): void
     /**
      * If the plugin identified by `info` implements the `extension_type,`
      * then this function will return a new instance of this implementation.
@@ -265,7 +265,7 @@ export interface Engine extends Gio.ListModel {
      *   however a warning has been added to help applications transition.
      * @param loader_name The name of the loader to enable.
      */
-    enable_loader(loader_name: string | null): void
+    enable_loader(loader_name: string): void
     /**
      * Triggers garbage collection on all the loaders currently owned by the
      * #PeasEngine.
@@ -281,7 +281,7 @@ export interface Engine extends Gio.ListModel {
      * @param plugin_name A plugin name.
      * @returns the #PeasPluginInfo corresponding with   a given plugin module name.
      */
-    get_plugin_info(plugin_name: string | null): PluginInfo
+    get_plugin_info(plugin_name: string): PluginInfo
     /**
      * Loads the plugin corresponding to `info` if it's not currently loaded.
      * 
@@ -895,7 +895,7 @@ export interface PluginInfo {
      * The relevant key in the plugin info file is "Copyright".
      * @returns the plugin's copyright information.
      */
-    get_copyright(): string | null
+    get_copyright(): string
     /**
      * Gets the data dir of the plugin.
      * 
@@ -905,7 +905,7 @@ export interface PluginInfo {
      * file was found.
      * @returns the plugin's data dir.
      */
-    get_data_dir(): string | null
+    get_data_dir(): string
     /**
      * Gets the dependencies of the plugin.
      * 
@@ -927,7 +927,7 @@ export interface PluginInfo {
      * The relevant key in the plugin info file is "Description".
      * @returns the plugin's description.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets external data specified for the plugin.
      * 
@@ -940,7 +940,7 @@ export interface PluginInfo {
      * @param key The key to lookup.
      * @returns the external data, or %NULL if the external data could not be found.
      */
-    get_external_data(key: string | null): string | null
+    get_external_data(key: string): string | null
     /**
      * Gets the help URI of the plugin.
      * 
@@ -953,7 +953,7 @@ export interface PluginInfo {
      * "Help-Windows" and "Help-MacOS-X".
      * @returns the plugin's help URI.
      */
-    get_help_uri(): string | null
+    get_help_uri(): string
     /**
      * Gets the icon name of the plugin.
      * 
@@ -963,7 +963,7 @@ export interface PluginInfo {
      * The relevant key in the plugin info file is "Icon".
      * @returns the plugin's icon name.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets the module directory.
      * 
@@ -972,7 +972,7 @@ export interface PluginInfo {
      * [class`Engine]`.
      * @returns the module directory.
      */
-    get_module_dir(): string | null
+    get_module_dir(): string
     /**
      * Gets the module name.
      * 
@@ -983,7 +983,7 @@ export interface PluginInfo {
      * The relevant key in the plugin info file is "Module".
      * @returns the module name.
      */
-    get_module_name(): string | null
+    get_module_name(): string
     /**
      * Gets the name of the plugin.
      * 
@@ -992,7 +992,7 @@ export interface PluginInfo {
      * The relevant key in the plugin info file is "Name".
      * @returns the plugin's name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Creates a new #GResource for the given `filename`
      * located in the module directory. If `filename` is %NULL
@@ -1015,20 +1015,20 @@ export interface PluginInfo {
      * The relevant key in the plugin info file is "Version".
      * @returns the plugin's version.
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Gets the website of the plugin.
      * 
      * The relevant key in the plugin info file is "Website".
      * @returns the plugin's associated website.
      */
-    get_website(): string | null
+    get_website(): string
     /**
      * Check if the plugin depends on another plugin.
      * @param module_name The name of the plugin to check.
      * @returns whether the plugin depends on the plugin @module_name.
      */
-    has_dependency(module_name: string | null): boolean
+    has_dependency(module_name: string): boolean
     /**
      * Check if the plugin is available.
      * 

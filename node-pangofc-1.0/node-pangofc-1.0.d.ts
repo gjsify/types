@@ -35,7 +35,7 @@ export namespace PangoFc {
  * This is equivalent to FC_FONT_FEATURES in versions of
  * fontconfig that have that.
  */
-const FONT_FEATURES: string | null
+const FONT_FEATURES: string
 /**
  * Fontconfig property that Pango reads from font
  * patterns to populate list of OpenType font variations
@@ -48,7 +48,7 @@ const FONT_FEATURES: string | null
  * This is equivalent to FC_FONT_VARIATIONS in versions of
  * fontconfig that have that.
  */
-const FONT_VARIATIONS: string | null
+const FONT_VARIATIONS: string
 /**
  * Fontconfig property that Pango sets on any
  * fontconfig pattern it passes to fontconfig
@@ -60,7 +60,7 @@ const FONT_VARIATIONS: string | null
  * rules to choose different fonts for horizontal and vertical
  * writing directions.
  */
-const GRAVITY: string | null
+const GRAVITY: string
 /**
  * Fontconfig property that Pango sets on any
  * fontconfig pattern it passes to fontconfig.
@@ -73,7 +73,7 @@ const GRAVITY: string | null
  * This is equivalent to FC_PRGNAME in versions of
  * fontconfig that have that.
  */
-const PRGNAME: string | null
+const PRGNAME: string
 /**
  * Fontconfig property that Pango sets on any
  * fontconfig pattern it passes to fontconfig.
@@ -84,7 +84,7 @@ const PRGNAME: string | null
  * pango versions (or only pango-using applications, or only
  * non-pango-using applications).
  */
-const VERSION: string | null
+const VERSION: string
 /**
  * Function type for doing final config tweaking on prepared `FcPattern`s.
  * @callback 

@@ -19,7 +19,7 @@ import type GLib from '@girs/glib-2.0';
 import type Rest from '@girs/rest-1.0';
 
 export interface YoutubeProxyUploadCallback {
-    (proxy: YoutubeProxy, payload: string | null, total: number, uploaded: number, error: GLib.Error, weak_object: GObject.Object): void
+    (proxy: YoutubeProxy, payload: string, total: number, uploaded: number, error: GLib.Error, weak_object: GObject.Object): void
 }
 export module FlickrProxy {
 
@@ -54,22 +54,22 @@ export interface FlickrProxy {
 
     // Owm methods of RestExtras-1.0.RestExtras.FlickrProxy
 
-    build_login_url(frob: string | null, perms: string | null): string | null
+    build_login_url(frob: string, perms: string): string | null
     /**
      * Get the API key.
      * @returns the API key. This string is owned by #FlickrProxy and should not be freed.
      */
-    get_api_key(): string | null
+    get_api_key(): string
     /**
      * Get the shared secret for authentication.
      * @returns the shared secret. This string is owned by #FlickrProxy and should not be freed.
      */
-    get_shared_secret(): string | null
+    get_shared_secret(): string
     /**
      * Get the current token.
      * @returns the token, or %NULL if there is no token yet.  This string is owned by #FlickrProxy and should not be freed.
      */
-    get_token(): string | null
+    get_token(): string
     /**
      * Create a new #RestProxyCall that can be used for uploading.
      * 
@@ -90,12 +90,12 @@ export interface FlickrProxy {
      * @param filename the file to upload
      * @returns a new #FlickrProxyCall
      */
-    new_upload_for_file(filename: string | null): FlickrProxyCall
+    new_upload_for_file(filename: string): FlickrProxyCall
     /**
      * Set the token.
      * @param token the access token
      */
-    set_token(token: string | null): void
+    set_token(token: string): void
     sign(params: GLib.HashTable): string | null
 
     // Class property signals of RestExtras-1.0.RestExtras.FlickrProxy
@@ -149,8 +149,8 @@ export class FlickrProxy extends Rest.Proxy {
     // Constructors of RestExtras-1.0.RestExtras.FlickrProxy
 
     constructor(config?: FlickrProxy.ConstructorProperties) 
-    constructor(api_key: string | null, shared_secret: string | null) 
-    static new(api_key: string | null, shared_secret: string | null): FlickrProxy
+    constructor(api_key: string, shared_secret: string) 
+    static new(api_key: string, shared_secret: string): FlickrProxy
 
     // Overloads of new
 
@@ -166,8 +166,8 @@ export class FlickrProxy extends Rest.Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Rest.Proxy
-    static new_with_token(api_key: string | null, shared_secret: string | null, token: string | null): FlickrProxy
+    static new(url_format: string, binding_required: boolean): Rest.Proxy
+    static new_with_token(api_key: string, shared_secret: string, token: string): FlickrProxy
     _init(config?: FlickrProxy.ConstructorProperties): void
     /**
      * Examines the Flickr response and if it not a successful reply, set `error` and
@@ -265,27 +265,27 @@ export interface LastfmProxy {
 
     // Owm methods of RestExtras-1.0.RestExtras.LastfmProxy
 
-    build_login_url(token: string | null): string | null
+    build_login_url(token: string): string | null
     /**
      * Get the API key.
      * @returns the API key. This string is owned by #LastfmProxy and should not be freed.
      */
-    get_api_key(): string | null
+    get_api_key(): string
     /**
      * Get the secret for authentication.
      * @returns the secret. This string is owned by #LastfmProxy and should not be freed.
      */
-    get_secret(): string | null
+    get_secret(): string
     /**
      * Get the current session key.
      * @returns the session key, or %NULL if there is no session key yet.  This string is owned by #LastfmProxy and should not be freed.
      */
-    get_session_key(): string | null
+    get_session_key(): string
     /**
      * Set the session key.
      * @param session_key the access session_key
      */
-    set_session_key(session_key: string | null): void
+    set_session_key(session_key: string): void
     sign(params: GLib.HashTable): string | null
 
     // Class property signals of RestExtras-1.0.RestExtras.LastfmProxy
@@ -339,8 +339,8 @@ export class LastfmProxy extends Rest.Proxy {
     // Constructors of RestExtras-1.0.RestExtras.LastfmProxy
 
     constructor(config?: LastfmProxy.ConstructorProperties) 
-    constructor(api_key: string | null, secret: string | null) 
-    static new(api_key: string | null, secret: string | null): LastfmProxy
+    constructor(api_key: string, secret: string) 
+    static new(api_key: string, secret: string): LastfmProxy
 
     // Overloads of new
 
@@ -356,8 +356,8 @@ export class LastfmProxy extends Rest.Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Rest.Proxy
-    static new_with_session(api_key: string | null, secret: string | null, session_key: string | null): LastfmProxy
+    static new(url_format: string, binding_required: boolean): Rest.Proxy
+    static new_with_session(api_key: string, secret: string, session_key: string): LastfmProxy
     _init(config?: LastfmProxy.ConstructorProperties): void
     /**
      * Examines the Lastfm response and if it not a successful reply, set `error` and
@@ -442,7 +442,7 @@ export interface YoutubeProxy {
 
     // Owm methods of RestExtras-1.0.RestExtras.YoutubeProxy
 
-    set_user_auth(user_auth: string | null): void
+    set_user_auth(user_auth: string): void
     /**
      * Upload a file.
      * @param filename filename
@@ -452,7 +452,7 @@ export interface YoutubeProxy {
      * @param weak_object an object instance used to tie the life cycle of the proxy to
      * @returns %TRUE, or %FALSE if the file could not be opened
      */
-    upload_async(filename: string | null, fields: GLib.HashTable, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean
+    upload_async(filename: string, fields: GLib.HashTable, incomplete: boolean, callback: YoutubeProxyUploadCallback, weak_object: GObject.Object): boolean
 
     // Class property signals of RestExtras-1.0.RestExtras.YoutubeProxy
 
@@ -502,8 +502,8 @@ export class YoutubeProxy extends Rest.Proxy {
     // Constructors of RestExtras-1.0.RestExtras.YoutubeProxy
 
     constructor(config?: YoutubeProxy.ConstructorProperties) 
-    constructor(developer_key: string | null) 
-    static new(developer_key: string | null): YoutubeProxy
+    constructor(developer_key: string) 
+    static new(developer_key: string): YoutubeProxy
 
     // Overloads of new
 
@@ -519,8 +519,8 @@ export class YoutubeProxy extends Rest.Proxy {
      * @param binding_required whether the URL needs to be bound before calling
      * @returns A new #RestProxy.
      */
-    static new(url_format: string | null, binding_required: boolean): Rest.Proxy
-    static new_with_auth(developer_key: string | null, user_auth: string | null): YoutubeProxy
+    static new(url_format: string, binding_required: boolean): Rest.Proxy
+    static new_with_auth(developer_key: string, user_auth: string): YoutubeProxy
     _init(config?: YoutubeProxy.ConstructorProperties): void
 }
 

@@ -520,27 +520,27 @@ export enum GLSLProfile {
  * An option that can be activated on bufferpools to request OpenGL
  * synchronization metadata on buffers from the pool.
  */
-export const BUFFER_POOL_OPTION_GL_SYNC_META: string | null
+export const BUFFER_POOL_OPTION_GL_SYNC_META: string
 /**
  * String used for %GST_GL_TEXTURE_TARGET_2D as a #GstBufferPool pool option
  */
-export const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D: string | null
+export const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_2D: string
 /**
  * String used for %GST_GL_TEXTURE_TARGET_EXTERNAL_OES as a #GstBufferPool pool option
  */
-export const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES: string | null
+export const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_EXTERNAL_OES: string
 /**
  * String used for %GST_GL_TEXTURE_TARGET_RECTANGLE as a #GstBufferPool pool option
  */
-export const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE: string | null
+export const BUFFER_POOL_OPTION_GL_TEXTURE_TARGET_RECTANGLE: string
 /**
  * Name of the caps feature indicating the use of GL buffers
  */
-export const CAPS_FEATURE_MEMORY_GL_BUFFER: string | null
+export const CAPS_FEATURE_MEMORY_GL_BUFFER: string
 /**
  * Name of the caps feature for indicating the use of #GstGLMemory
  */
-export const CAPS_FEATURE_MEMORY_GL_MEMORY: string | null
+export const CAPS_FEATURE_MEMORY_GL_MEMORY: string
 /**
  * GL Allocation flag indicating that the implementation should allocate the
  * necessary resources.
@@ -570,77 +570,77 @@ export const GL_ALLOCATION_PARAMS_ALLOC_FLAG_WRAP_SYSMEM: number
 /**
  * The name for %GST_GL_API_GLES1 used in various places
  */
-export const GL_API_GLES1_NAME: string | null
+export const GL_API_GLES1_NAME: string
 /**
  * The name for %GST_GL_API_GLES2 used in various places
  */
-export const GL_API_GLES2_NAME: string | null
+export const GL_API_GLES2_NAME: string
 /**
  * The name for %GST_GL_API_OPENGL3 used in various places
  */
-export const GL_API_OPENGL3_NAME: string | null
+export const GL_API_OPENGL3_NAME: string
 /**
  * The name for %GST_GL_API_OPENGL used in various places
  */
-export const GL_API_OPENGL_NAME: string | null
+export const GL_API_OPENGL_NAME: string
 /**
  * The name of the GL buffer allocator
  */
-export const GL_BASE_MEMORY_ALLOCATOR_NAME: string | null
+export const GL_BASE_MEMORY_ALLOCATOR_NAME: string
 /**
  * The name of the GL buffer allocator
  */
-export const GL_BUFFER_ALLOCATOR_NAME: string | null
+export const GL_BUFFER_ALLOCATOR_NAME: string
 /**
  * The currently supported formats that can be converted
  */
-export const GL_COLOR_CONVERT_FORMATS: string | null
+export const GL_COLOR_CONVERT_FORMATS: string
 /**
  * The currently supported #GstCaps that can be converted
  */
-export const GL_COLOR_CONVERT_VIDEO_CAPS: string | null
+export const GL_COLOR_CONVERT_VIDEO_CAPS: string
 /**
  * The canonical name of a #GstStructure that contains a configuration for a
  * #GstGLContext.
  */
-export const GL_CONFIG_STRUCTURE_NAME: string | null
-export const GL_CONTEXT_TYPE_CGL: string | null
-export const GL_CONTEXT_TYPE_EAGL: string | null
-export const GL_CONTEXT_TYPE_EGL: string | null
-export const GL_CONTEXT_TYPE_GLX: string | null
-export const GL_CONTEXT_TYPE_WGL: string | null
+export const GL_CONFIG_STRUCTURE_NAME: string
+export const GL_CONTEXT_TYPE_CGL: string
+export const GL_CONTEXT_TYPE_EAGL: string
+export const GL_CONTEXT_TYPE_EGL: string
+export const GL_CONTEXT_TYPE_GLX: string
+export const GL_CONTEXT_TYPE_WGL: string
 /**
  * The name used in #GstContext queries for requesting a #GstGLDisplay
  */
-export const GL_DISPLAY_CONTEXT_TYPE: string | null
+export const GL_DISPLAY_CONTEXT_TYPE: string
 /**
  * The name of the GL memory allocator
  */
-export const GL_MEMORY_ALLOCATOR_NAME: string | null
+export const GL_MEMORY_ALLOCATOR_NAME: string
 /**
  * The name of the GL Memory PBO allocator
  */
-export const GL_MEMORY_PBO_ALLOCATOR_NAME: string | null
+export const GL_MEMORY_PBO_ALLOCATOR_NAME: string
 /**
  * List of video formats that are supported by #GstGLMemory
  */
-export const GL_MEMORY_VIDEO_FORMATS_STR: string | null
+export const GL_MEMORY_VIDEO_FORMATS_STR: string
 /**
  * The name of the GL renderbuffer allocator
  */
-export const GL_RENDERBUFFER_ALLOCATOR_NAME: string | null
+export const GL_RENDERBUFFER_ALLOCATOR_NAME: string
 /**
  * String used for %GST_GL_TEXTURE_TARGET_2D in things like caps values
  */
-export const GL_TEXTURE_TARGET_2D_STR: string | null
+export const GL_TEXTURE_TARGET_2D_STR: string
 /**
  * String used for %GST_GL_TEXTURE_TARGET_EXTERNAL_OES in things like caps values
  */
-export const GL_TEXTURE_TARGET_EXTERNAL_OES_STR: string | null
+export const GL_TEXTURE_TARGET_EXTERNAL_OES_STR: string
 /**
  * String used for %GST_GL_TEXTURE_TARGET_RECTANGLE in things like caps values
  */
-export const GL_TEXTURE_TARGET_RECTANGLE_STR: string | null
+export const GL_TEXTURE_TARGET_RECTANGLE_STR: string
 /**
  * Flag indicating that we should map the GL object instead of to system memory.
  * 
@@ -665,7 +665,7 @@ export function contextGetGlDisplay(context: Gst.Context): [ /* returnType */ bo
  * @param display resulting #GstGLDisplay
  */
 export function contextSetGlDisplay(context: Gst.Context, display: GLDisplay | null): void
-export function glApiFromString(apiS: string | null): GLAPI
+export function glApiFromString(apiS: string): GLAPI
 export function glApiToString(api: GLAPI): string | null
 export function glBaseMemoryAlloc(allocator: GLBaseMemoryAllocator, params: GLAllocationParams): GLBaseMemory | null
 export function glBaseMemoryErrorQuark(): GLib.Quark
@@ -679,7 +679,7 @@ export function glBaseMemoryInitOnce(): void
  * multiple times.  This must be called before any other #GstGLBuffer operation.
  */
 export function glBufferInitOnce(): void
-export function glCheckExtension(name: string | null, ext: string | null): boolean
+export function glCheckExtension(name: string, ext: string): boolean
 export function glConfigCaveatToString(caveat: GLConfigCaveat): string | null
 export function glConfigSurfaceTypeToString(surfaceType: GLConfigSurfaceType): string | null
 export function glContextErrorQuark(): GLib.Quark
@@ -760,7 +760,7 @@ export function glMemoryPboInitOnce(): void
  * @param b another 2-dimensional 4x4 array of #gfloat
  */
 export function glMultiplyMatrix4(a: number[], b: number[]): /* result */ number[]
-export function glPlatformFromString(platformS: string | null): GLPlatform
+export function glPlatformFromString(platformS: string): GLPlatform
 export function glPlatformToString(platform: GLPlatform): string | null
 /**
  * Performs a GST_QUERY_CONTEXT query of type "gst.gl.local_context" on all
@@ -789,7 +789,7 @@ export function glStereoDownmixModeGetType(): GObject.GType
 export function glSyncMetaApiGetType(): GObject.GType
 export function glSyncMetaGetInfo(): Gst.MetaInfo
 export function glTextureTargetFromGl(target: number): GLTextureTarget
-export function glTextureTargetFromString(str: string | null): GLTextureTarget
+export function glTextureTargetFromString(str: string): GLTextureTarget
 export function glTextureTargetToBufferPoolOption(target: GLTextureTarget): string | null
 export function glTextureTargetToGl(target: GLTextureTarget): number
 export function glTextureTargetToString(target: GLTextureTarget): string | null
@@ -811,7 +811,7 @@ export function glValueSetTextureTargetFromMask(value: any, targetMask: GLTextur
 export function glVersionToGlslVersion(glApi: GLAPI, maj: number, min: number): GLSLVersion
 export function glWindowErrorQuark(): GLib.Quark
 export function glslErrorQuark(): GLib.Quark
-export function glslProfileFromString(string: string | null): GLSLProfile
+export function glslProfileFromString(string: string): GLSLProfile
 export function glslProfileToString(profile: GLSLProfile): string | null
 /**
  * Note: this function first searches the first 1 kilobytes for a `#version`
@@ -819,15 +819,15 @@ export function glslProfileToString(profile: GLSLProfile): string | null
  * @param s string to search for a valid `#version` string
  * @returns TRUE if a valid `#version` string was found, FALSE otherwise
  */
-export function glslStringGetVersionProfile(s: string | null): [ /* returnType */ boolean, /* version */ GLSLVersion, /* profile */ GLSLProfile ]
-export function glslVersionFromString(string: string | null): GLSLVersion
+export function glslStringGetVersionProfile(s: string): [ /* returnType */ boolean, /* version */ GLSLVersion, /* profile */ GLSLProfile ]
+export function glslVersionFromString(string: string): GLSLVersion
 /**
  * Note: this function expects either a `#version` GLSL preprocesser directive
  * or a valid GLSL version and/or profile.
  * @param string a valid GLSL `#version` string
  * @returns TRUE if a valid `#version` string was found, FALSE otherwise
  */
-export function glslVersionProfileFromString(string: string | null): [ /* returnType */ boolean, /* versionRet */ GLSLVersion, /* profileRet */ GLSLProfile ]
+export function glslVersionProfileFromString(string: string): [ /* returnType */ boolean, /* versionRet */ GLSLVersion, /* profileRet */ GLSLProfile ]
 export function glslVersionProfileToString(version: GLSLVersion, profile: GLSLProfile): string | null
 export function glslVersionToString(version: GLSLVersion): string | null
 export function isGlBaseMemory(mem: Gst.Memory): boolean
@@ -2153,7 +2153,7 @@ export interface GLContext {
      * @returns whether @context and @other_context are able to share OpenGL      resources.
      */
     canShare(otherContext: GLContext): boolean
-    // Has conflict: checkFeature(feature: string | null): boolean
+    // Has conflict: checkFeature(feature: string): boolean
     /**
      * Must be called with `context` current.
      * @param fboTarget the GL value of the framebuffer target, GL_FRAMEBUFFER,              GL_READ_FRAMEBUFFER, GL_DRAW_FRAMEBUFFER
@@ -2245,7 +2245,7 @@ export interface GLContext {
      * @param name an opengl function name
      * @returns a function pointer or %NULL
      */
-    getProcAddress(name: string | null): any | null
+    getProcAddress(name: string): any | null
     getThread(): GLib.Thread | null
     getWindow(): GLWindow | null
     isShared(): boolean
@@ -2334,7 +2334,7 @@ export interface GLContext {
      * @param feature a platform specific feature
      * @returns Whether @feature is supported by @context
      */
-    checkFeature(feature: string | null): boolean
+    checkFeature(feature: string): boolean
     chooseFormat(): boolean
     createContext(glApi: GLAPI, otherContext: GLContext): boolean
     destroyContext(): void
@@ -2488,7 +2488,7 @@ export class GLContext extends Gst.Object {
      * @param name then function to get the address of
      * @returns an address pointing to @name or %NULL
      */
-    static defaultGetProcAddress(glApi: GLAPI, name: string | null): any | null
+    static defaultGetProcAddress(glApi: GLAPI, name: string): any | null
     /**
      * See also gst_gl_context_activate().
      * @returns the #GstGLContext active in the current thread or %NULL
@@ -2512,7 +2512,7 @@ export class GLContext extends Gst.Object {
      * @param name the name of the function to retrieve
      * @returns a function pointer for @name, or %NULL
      */
-    static getProcAddressWithPlatform(contextType: GLPlatform, glApi: GLAPI, name: string | null): any | null
+    static getProcAddressWithPlatform(contextType: GLPlatform, glApi: GLAPI, name: string): any | null
 }
 
 export module GLDisplay {
@@ -3975,7 +3975,7 @@ export class GLSLStage extends Gst.Object {
     static new(context: GLContext, type: number): GLSLStage
     static newDefaultFragment(context: GLContext): GLSLStage
     static newDefaultVertex(context: GLContext): GLSLStage
-    static newWithString(context: GLContext, type: number, version: GLSLVersion, profile: GLSLProfile, str: string | null): GLSLStage
+    static newWithString(context: GLContext, type: number, version: GLSLVersion, profile: GLSLProfile, str: string): GLSLStage
     static newWithStrings(context: GLContext, type: number, version: GLSLVersion, profile: GLSLProfile, str: string[]): GLSLStage
     _init(config?: GLSLStage.ConstructorProperties): void
 }
@@ -4027,14 +4027,14 @@ export interface GLShader {
      * @param index attribute index to set
      * @param name name of the attribute
      */
-    bindAttributeLocation(index: number, name: string | null): void
+    bindAttributeLocation(index: number, name: string): void
     /**
      * Bind attribute `name` to the specified location `index` using
      * `glBindFragDataLocation()`.
      * @param index attribute index to set
      * @param name name of the attribute
      */
-    bindFragDataLocation(index: number, name: string | null): void
+    bindFragDataLocation(index: number, name: string): void
     /**
      * Compiles `stage` and attaches it to `shader`.
      * 
@@ -4059,7 +4059,7 @@ export interface GLShader {
      * @param stage a #GstGLSLStage to attach
      */
     detachUnlocked(stage: GLSLStage): void
-    getAttributeLocation(name: string | null): number
+    getAttributeLocation(name: string): number
     getProgramHandle(): number
     /**
      * Note: must be called in the GL thread
@@ -4090,51 +4090,51 @@ export interface GLShader {
      * @param name name of the uniform
      * @param value value to set
      */
-    setUniform1f(name: string | null, value: number): void
+    setUniform1f(name: string, value: number): void
     /**
      * Perform `glUniform1fv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform1fv(name: string | null, value: number[]): void
+    setUniform1fv(name: string, value: number[]): void
     /**
      * Perform `glUniform1i()` for `name` on `shader`
      * @param name name of the uniform
      * @param value value to set
      */
-    setUniform1i(name: string | null, value: number): void
+    setUniform1i(name: string, value: number): void
     /**
      * Perform `glUniform1iv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform1iv(name: string | null, value: number[]): void
+    setUniform1iv(name: string, value: number[]): void
     /**
      * Perform `glUniform2f()` for `name` on `shader`
      * @param name name of the uniform
      * @param v0 first value to set
      * @param v1 second value to set
      */
-    setUniform2f(name: string | null, v0: number, v1: number): void
+    setUniform2f(name: string, v0: number, v1: number): void
     /**
      * Perform `glUniform2fv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform2fv(name: string | null, value: number[]): void
+    setUniform2fv(name: string, value: number[]): void
     /**
      * Perform `glUniform2i()` for `name` on `shader`
      * @param name name of the uniform
      * @param v0 first value to set
      * @param v1 second value to set
      */
-    setUniform2i(name: string | null, v0: number, v1: number): void
+    setUniform2i(name: string, v0: number, v1: number): void
     /**
      * Perform `glUniform2iv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform2iv(name: string | null, value: number[]): void
+    setUniform2iv(name: string, value: number[]): void
     /**
      * Perform `glUniform3f()` for `name` on `shader`
      * @param name name of the uniform
@@ -4142,13 +4142,13 @@ export interface GLShader {
      * @param v1 second value to set
      * @param v2 third value to set
      */
-    setUniform3f(name: string | null, v0: number, v1: number, v2: number): void
+    setUniform3f(name: string, v0: number, v1: number, v2: number): void
     /**
      * Perform `glUniform3fv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform3fv(name: string | null, value: number[]): void
+    setUniform3fv(name: string, value: number[]): void
     /**
      * Perform `glUniform3i()` for `name` on `shader`
      * @param name name of the uniform
@@ -4156,13 +4156,13 @@ export interface GLShader {
      * @param v1 second value to set
      * @param v2 third value to set
      */
-    setUniform3i(name: string | null, v0: number, v1: number, v2: number): void
+    setUniform3i(name: string, v0: number, v1: number, v2: number): void
     /**
      * Perform `glUniform3iv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform3iv(name: string | null, value: number[]): void
+    setUniform3iv(name: string, value: number[]): void
     /**
      * Perform `glUniform4f()` for `name` on `shader`
      * @param name name of the uniform
@@ -4171,13 +4171,13 @@ export interface GLShader {
      * @param v2 third value to set
      * @param v3 fourth value to set
      */
-    setUniform4f(name: string | null, v0: number, v1: number, v2: number, v3: number): void
+    setUniform4f(name: string, v0: number, v1: number, v2: number, v3: number): void
     /**
      * Perform `glUniform4fv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform4fv(name: string | null, value: number[]): void
+    setUniform4fv(name: string, value: number[]): void
     /**
      * Perform `glUniform4i()` for `name` on `shader`
      * @param name name of the uniform
@@ -4186,13 +4186,13 @@ export interface GLShader {
      * @param v2 third value to set
      * @param v3 fourth value to set
      */
-    setUniform4i(name: string | null, v0: number, v1: number, v2: number, v3: number): void
+    setUniform4i(name: string, v0: number, v1: number, v2: number, v3: number): void
     /**
      * Perform `glUniform4iv()` for `name` on `shader`
      * @param name name of the uniform
      * @param value values to set
      */
-    setUniform4iv(name: string | null, value: number[]): void
+    setUniform4iv(name: string, value: number[]): void
     /**
      * Perform `glUniformMatrix2fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4200,7 +4200,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value matrix to set
      */
-    setUniformMatrix2fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix2fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix2x3fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4208,7 +4208,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix2x3fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix2x3fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix2x4fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4216,7 +4216,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix2x4fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix2x4fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix3fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4224,7 +4224,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix3fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix3fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix3x2fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4232,7 +4232,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix3x2fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix3x2fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix3x4fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4240,7 +4240,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix3x4fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix3x4fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix4fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4248,7 +4248,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix4fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix4fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix4x2fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4256,7 +4256,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix4x2fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix4x2fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Perform `glUniformMatrix4x3fv()` for `name` on `shader`
      * @param name name of the uniform
@@ -4264,7 +4264,7 @@ export interface GLShader {
      * @param transpose transpose the matrix
      * @param value values to set
      */
-    setUniformMatrix4x3fv(name: string | null, count: number, transpose: boolean, value: number): void
+    setUniformMatrix4x3fv(name: string, count: number, transpose: boolean, value: number): void
     /**
      * Mark's `shader` as being used for the next GL draw command.
      * 
@@ -4375,7 +4375,7 @@ export class GLShader extends Gst.Object {
      * @param profile a #GstGLSLProfile
      * @returns a shader string defining the precision of float types based on      @context, @version and @profile
      */
-    static stringGetHighestPrecision(context: GLContext, version: GLSLVersion, profile: GLSLProfile): string | null
+    static stringGetHighestPrecision(context: GLContext, version: GLSLVersion, profile: GLSLProfile): string
 }
 
 export module GLUpload {
@@ -4728,10 +4728,10 @@ export interface GLWindow {
      */
     resize(width: number, height: number): void
     // Has conflict: run(): void
-    sendKeyEvent(eventType: string | null, keyStr: string | null): void
+    sendKeyEvent(eventType: string, keyStr: string): void
     // Has conflict: sendMessage(callback: GLWindowCB): void
     // Has conflict: sendMessageAsync(callback: GLWindowCB): void
-    sendMouseEvent(eventType: string | null, button: number, posx: number, posy: number): void
+    sendMouseEvent(eventType: string, button: number, posx: number, posy: number): void
     /**
      * Notify a `window` about a scroll event. A scroll signal holding the event
      * coordinates will be emitted.
@@ -5478,13 +5478,13 @@ export interface GLContextClass {
     getGlContext: (context: GLContext) => never
     getGlApi: (context: GLContext) => GLAPI
     getGlPlatform: (context: GLContext) => GLPlatform
-    getProcAddress: (glApi: GLAPI, name: string | null) => any
+    getProcAddress: (glApi: GLAPI, name: string) => any
     activate: (context: GLContext, activate: boolean) => boolean
     chooseFormat: (context: GLContext) => boolean
     createContext: (context: GLContext, glApi: GLAPI, otherContext: GLContext) => boolean
     destroyContext: (context: GLContext) => void
     swapBuffers: (context: GLContext) => void
-    checkFeature: (context: GLContext, feature: string | null) => boolean
+    checkFeature: (context: GLContext, feature: string) => boolean
     getGlPlatformVersion: (context: GLContext) => [ /* major */ number, /* minor */ number ]
     getConfig: (context: GLContext) => Gst.Structure | null
     requestConfig: (context: GLContext, glConfig: Gst.Structure | null) => boolean

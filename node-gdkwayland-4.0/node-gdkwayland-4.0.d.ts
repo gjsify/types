@@ -39,7 +39,7 @@ export namespace GdkWayland {
  * @param handle the handle
  */
 interface WaylandToplevelExported {
-    (toplevel: WaylandToplevel, handle: string | null): void
+    (toplevel: WaylandToplevel, handle: string): void
 }
 module WaylandDevice {
 
@@ -227,13 +227,13 @@ interface WaylandDisplay {
      * @param global global interface to query in the registry
      * @returns %TRUE if the global is offered by the compositor
      */
-    queryRegistry(global: string | null): boolean
+    queryRegistry(global: string): boolean
     /**
      * Sets the cursor theme for the given `display`.
      * @param name the new cursor theme
      * @param size the size to use for cursors
      */
-    setCursorTheme(name: string | null, size: number): void
+    setCursorTheme(name: string, size: number): void
     /**
      * Sets the startup notification ID for a display.
      * 
@@ -246,7 +246,7 @@ interface WaylandDisplay {
      * [method`Gdk`.Display.notify_startup_complete]).
      * @param startupId the startup notification ID (must be valid utf8)
      */
-    setStartupNotificationId(startupId: string | null): void
+    setStartupNotificationId(startupId: string): void
 
     // Class property signals of GdkWayland-4.0.GdkWayland.WaylandDisplay
 
@@ -748,7 +748,7 @@ interface WaylandToplevel extends Gdk.Toplevel {
      * and thus may require changes in the future.
      * @param handle the handle to drop
      */
-    dropExportedHandle(handle: string | null): void
+    dropExportedHandle(handle: string): void
     /**
      * Asynchronously obtains a handle for a surface that can be passed
      * to other processes.
@@ -781,7 +781,7 @@ interface WaylandToplevel extends Gdk.Toplevel {
      * Sets the application id on a `GdkToplevel`.
      * @param applicationId the application id for the `toplevel`
      */
-    setApplicationId(applicationId: string | null): void
+    setApplicationId(applicationId: string): void
     /**
      * Marks `toplevel` as transient for the surface to which the given
      * `parent_handle_str` refers.
@@ -794,7 +794,7 @@ interface WaylandToplevel extends Gdk.Toplevel {
      * @param parentHandleStr an exported handle for a surface
      * @returns %TRUE if the surface has been marked as transient,   %FALSE if an error occurred.
      */
-    setTransientForExported(parentHandleStr: string | null): boolean
+    setTransientForExported(parentHandleStr: string): boolean
     /**
      * Destroys the handle that was obtained with
      * gdk_wayland_toplevel_export_handle().

@@ -122,7 +122,7 @@ function finalize(): void
  * webkit_web_context_set_sandbox_enabled() on the default #WebKitWebContext.
  */
 function init(): void
-function link_type_to_string(link_type: LinkType): string | null
+function link_type_to_string(link_type: LinkType): string
 module AssistantView {
 
     // Signal callback interfaces
@@ -160,7 +160,7 @@ interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param str the search query.
      * @returns %TRUE if @str was found, %FALSE otherwise.
      */
-    search(str: string | null): boolean
+    search(str: string): boolean
     /**
      * Open `link` in the assistant view, if %NULL the view will be blanked.
      * @param link a #DhLink to set or %NULL.
@@ -220,7 +220,7 @@ interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -234,7 +234,7 @@ interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -245,7 +245,7 @@ interface AssistantView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Devhelp-3.0.Devhelp.AssistantView
 
@@ -527,11 +527,11 @@ interface Book {
      * with the title.
      * @returns the book ID.
      */
-    get_id(): string | null
+    get_id(): string
     get_index_file(): Gio.File
-    get_language(): string | null
+    get_language(): string
     get_links(): Link[]
-    get_title(): string | null
+    get_title(): string
     /**
      * Gets the general structure of the book, as a tree. The tree contains only
      * #DhLink's of type %DH_LINK_TYPE_BOOK or %DH_LINK_TYPE_PAGE. The other
@@ -986,7 +986,7 @@ interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * an anchor).
      * @param uri the URI to select.
      */
-    select_uri(uri: string | null): void
+    select_uri(uri: string): void
 
     // Conflicting methods
 
@@ -1001,7 +1001,7 @@ interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1015,7 +1015,7 @@ interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1026,7 +1026,7 @@ interface BookTree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Devhelp-3.0.Devhelp.BookTree
 
@@ -1285,7 +1285,7 @@ interface Completion {
      * After adding all the strings you need to call dh_completion_sort().
      * @param str a string.
      */
-    add_string(str: string | null): void
+    add_string(str: string): void
     /**
      * This function does the equivalent of:
      * 1. Searches the data structure of `completion` to find all strings that have
@@ -1299,7 +1299,7 @@ interface Completion {
      * @param prefix the string to complete.
      * @returns the completed prefix, or %NULL if a longer prefix has not been found. Free with g_free() when no longer needed.
      */
-    complete(prefix: string | null): string | null
+    complete(prefix: string): string | null
     /**
      * Sorts all the strings. It is required to call this function after adding
      * strings with dh_completion_add_string().
@@ -1334,7 +1334,7 @@ class Completion extends GObject.Object {
      * @param prefix the string to complete.
      * @returns the completed prefix, or %NULL if a longer prefix has not been found. Free with g_free() when no longer needed.
      */
-    static aggregate_complete(completion_objects: Completion[] | null, prefix: string | null): string | null
+    static aggregate_complete(completion_objects: Completion[] | null, prefix: string): string | null
 }
 
 module KeywordModel {
@@ -1375,7 +1375,7 @@ interface KeywordModel extends Gtk.TreeModel {
      * @param profile a #DhProfile, or %NULL for the default profile.
      * @returns the #DhLink that matches exactly @search_string, or %NULL if no such #DhLink was found within the maximum number of matches.
      */
-    filter(search_string: string | null, current_book_id: string | null, profile: Profile | null): Link | null
+    filter(search_string: string, current_book_id: string | null, profile: Profile | null): Link | null
 
     // Class property signals of Devhelp-3.0.Devhelp.KeywordModel
 
@@ -1460,7 +1460,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1474,7 +1474,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1485,7 +1485,7 @@ interface Notebook extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Devhelp-3.0.Devhelp.Notebook
 
@@ -1840,7 +1840,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1854,7 +1854,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1865,7 +1865,7 @@ interface SearchBar extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Devhelp-3.0.Devhelp.SearchBar
 
@@ -2187,7 +2187,7 @@ interface Settings {
      * property.
      * @returns the value of the #DhSettings:fixed-font property.
      */
-    get_fixed_font(): string | null
+    get_fixed_font(): string
     get_group_books_by_language(): boolean
     /**
      * If #DhSettings:use-system-fonts is %TRUE, returns the system fonts. Otherwise
@@ -2202,7 +2202,7 @@ interface Settings {
      * property.
      * @returns the value of the #DhSettings:variable-font property.
      */
-    get_variable_font(): string | null
+    get_variable_font(): string
     /**
      * Returns whether `book` is enabled according to the "books-disabled" #GSettings
      * key. If the `book` ID is present in "books-disabled", this function returns
@@ -2222,7 +2222,7 @@ interface Settings {
      * Sets the #DhSettings:fixed-font property.
      * @param fixed_font the new value.
      */
-    set_fixed_font(fixed_font: string | null): void
+    set_fixed_font(fixed_font: string): void
     /**
      * Sets the #DhSettings:group-books-by-language property.
      * @param group_books_by_language the new value.
@@ -2237,7 +2237,7 @@ interface Settings {
      * Sets the #DhSettings:variable-font property.
      * @param variable_font the new value.
      */
-    set_variable_font(variable_font: string | null): void
+    set_variable_font(variable_font: string): void
     /**
      * Stops the effect of dh_settings_freeze_books_disabled_changed(), and emits
      * the #DhSettings::books-disabled-changed signal.
@@ -2325,7 +2325,7 @@ interface SettingsBuilder {
      * used.
      * @param contents_path the path for the "contents" schema.
      */
-    set_contents_path(contents_path: string | null): void
+    set_contents_path(contents_path: string): void
     /**
      * Sets the path for the "fonts" schema.
      * 
@@ -2333,7 +2333,7 @@ interface SettingsBuilder {
      * used.
      * @param fonts_path the path for the "fonts" schema.
      */
-    set_fonts_path(fonts_path: string | null): void
+    set_fonts_path(fonts_path: string): void
 
     // Class property signals of Devhelp-3.0.Devhelp.SettingsBuilder
 
@@ -2413,12 +2413,12 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Calls dh_book_tree_select_uri().
      * @param uri the URI to select.
      */
-    select_uri(uri: string | null): void
+    select_uri(uri: string): void
     /**
      * Gives the focus to the search entry.
      */
     set_search_focus(): void
-    set_search_string(str: string | null): void
+    set_search_string(str: string): void
 
     // Conflicting methods
 
@@ -2433,7 +2433,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2447,7 +2447,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2458,7 +2458,7 @@ interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Devhelp-3.0.Devhelp.Sidebar
 
@@ -2709,7 +2709,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2723,7 +2723,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2734,7 +2734,7 @@ interface Tab extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Devhelp-3.0.Devhelp.Tab
 
@@ -2964,7 +2964,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2978,7 +2978,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2989,7 +2989,7 @@ interface TabLabel extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Devhelp-3.0.Devhelp.TabLabel
 
@@ -3223,7 +3223,7 @@ interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * (translated).
      * @returns the title of @view, suitable for a tab label or window title.
      */
-    get_devhelp_title(): string | null
+    get_devhelp_title(): string
     get_profile(): Profile
     /**
      * Reset the text size to the normal size.
@@ -3308,7 +3308,7 @@ interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3322,7 +3322,7 @@ interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3333,11 +3333,11 @@ interface WebView extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Devhelp-3.0.Devhelp.WebView
 
-    vfunc_open_new_tab(uri: string | null): void
+    vfunc_open_new_tab(uri: string): void
 
     // Own signals of Devhelp-3.0.Devhelp.WebView
 
@@ -3781,7 +3781,7 @@ interface Link {
      * @param page_id a page ID, i.e. the filename without its extension.
      * @returns whether @link belongs to @page_id.
      */
-    belongs_to_page(page_id: string | null): boolean
+    belongs_to_page(page_id: string): boolean
     /**
      * Compares the links `a` and `b`. This function is used to determine in which
      * order the links should be displayed.
@@ -3789,18 +3789,18 @@ interface Link {
      * @returns an integer less than zero if @a should appear before @b; zero if there are no preferences; an integer greater than zero if @b should appear before @a.
      */
     compare(b: Link): number
-    get_book_id(): string | null
-    get_book_title(): string | null
+    get_book_id(): string
+    get_book_title(): string
     get_flags(): LinkFlags
     get_link_type(): LinkType
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the `link` URI, by concateneting the book base path with the `link`
      * relative URL.
      * @returns the @link URI, or %NULL if getting the URI failed. Free with g_free() when no longer needed.
      */
     get_uri(): string | null
-    match_relative_url(relative_url: string | null): boolean
+    match_relative_url(relative_url: string): boolean
     /**
      * Increases the reference count of `link`.
      * 
@@ -3829,9 +3829,9 @@ class Link {
 
     // Constructors of Devhelp-3.0.Devhelp.Link
 
-    constructor(type: LinkType, book_link: Link, name: string | null, relative_url: string | null) 
-    static new(type: LinkType, book_link: Link, name: string | null, relative_url: string | null): Link
-    static new_book(base_path: string | null, book_id: string | null, book_title: string | null, relative_url: string | null): Link
+    constructor(type: LinkType, book_link: Link, name: string, relative_url: string) 
+    static new(type: LinkType, book_link: Link, name: string, relative_url: string): Link
+    static new_book(base_path: string, book_id: string, book_title: string, relative_url: string): Link
 }
 
 interface NotebookClass {
@@ -4057,7 +4057,7 @@ interface WebViewClass {
     // Own fields of Devhelp-3.0.Devhelp.WebViewClass
 
     parent_class: WebKit2.WebViewClass
-    open_new_tab: (view: WebView, uri: string | null) => void
+    open_new_tab: (view: WebView, uri: string) => void
     padding: any[]
 }
 

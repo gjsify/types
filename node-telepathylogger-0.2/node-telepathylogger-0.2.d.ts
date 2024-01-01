@@ -95,7 +95,7 @@ interface CallEvent {
 
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.CallEvent
 
-    getDetailedEndReason(): string | null
+    getDetailedEndReason(): string
     getDuration(): GLib.TimeSpan
     getEndActor(): Entity
     getEndReason(): TelepathyGLib.CallStateChangeReason
@@ -238,10 +238,10 @@ interface Entity {
 
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.Entity
 
-    getAlias(): string | null
-    getAvatarToken(): string | null
+    getAlias(): string
+    getAvatarToken(): string
     getEntityType(): EntityType
-    getIdentifier(): string | null
+    getIdentifier(): string
 
     // Class property signals of TelepathyLogger-0.2.TelepathyLogger.Entity
 
@@ -291,9 +291,9 @@ class Entity extends GObject.Object {
     // Constructors of TelepathyLogger-0.2.TelepathyLogger.Entity
 
     constructor(config?: Entity.ConstructorProperties) 
-    constructor(id: string | null, type: EntityType, alias: string | null, avatarToken: string | null) 
-    static new(id: string | null, type: EntityType, alias: string | null, avatarToken: string | null): Entity
-    static newFromRoomId(roomId: string | null): Entity
+    constructor(id: string, type: EntityType, alias: string, avatarToken: string) 
+    static new(id: string, type: EntityType, alias: string, avatarToken: string): Entity
+    static newFromRoomId(roomId: string): Entity
     static newFromTpContact(contact: TelepathyGLib.Contact, type: EntityType): Entity
     _init(config?: Entity.ConstructorProperties): void
 }
@@ -344,7 +344,7 @@ interface Event {
      * <!-- no more to say -->
      * @returns the path as the #TplEvent:account property
      */
-    getAccountPath(): string | null
+    getAccountPath(): string
     getReceiver(): Entity
     getSender(): Entity
     getTimestamp(): number
@@ -513,7 +513,7 @@ interface LogManager {
      * @param typeMask event type filter see #TplEventTypeMask
      * @param callback a callback to call when the request is satisfied
      */
-    searchAsync(text: string | null, typeMask: number, callback: Gio.AsyncReadyCallback | null): void
+    searchAsync(text: string, typeMask: number, callback: Gio.AsyncReadyCallback | null): void
     searchFinish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* hits */ LogSearchHit[] ]
     /**
      * Create a #TplLogWalker to traverse all the events exchanged with `target`.
@@ -688,11 +688,11 @@ interface TextEvent {
     // Owm methods of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 
     getEditTimestamp(): number
-    getMessage(): string | null
-    getMessageToken(): string | null
+    getMessage(): string
+    getMessageToken(): string
     getMessageType(): TelepathyGLib.ChannelTextMessageType
     getSupersedes(): TextEvent[]
-    getSupersedesToken(): string | null
+    getSupersedesToken(): string
 
     // Class property signals of TelepathyLogger-0.2.TelepathyLogger.TextEvent
 

@@ -49,7 +49,7 @@ enum ContactStoreState {
 }
 function osmFinalize(): void
 function osmInit(): void
-function osmParse(content: string | null, length: number): OSMObject
+function osmParse(content: string, length: number): OSMObject
 interface ContactGeocodeCallback {
     (contact: Contact): void
 }
@@ -193,7 +193,7 @@ interface ContactStore {
      * Load contacts from available backends.
      */
     load(): void
-    lookup(id: string | null, callback: ContactStoreLookupCallback): void
+    lookup(id: string, callback: ContactStoreLookupCallback): void
 
     // Class property signals of GnomeMaps-1.0.GnomeMaps.ContactStore
 
@@ -603,8 +603,8 @@ class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
     // Constructors of GnomeMaps-1.0.GnomeMaps.OSMOAuthProxyCall
 
     constructor(config?: OSMOAuthProxyCall.ConstructorProperties) 
-    constructor(proxy: Rest.OAuthProxy, content: string | null) 
-    static new(proxy: Rest.OAuthProxy, content: string | null): OSMOAuthProxyCall
+    constructor(proxy: Rest.OAuthProxy, content: string) 
+    static new(proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall
     _init(config?: OSMOAuthProxyCall.ConstructorProperties): void
 }
 
@@ -656,10 +656,10 @@ interface OSMObject {
 
     // Owm methods of GnomeMaps-1.0.GnomeMaps.OSMObject
 
-    deleteTag(key: string | null): void
-    getTag(key: string | null): string | null
+    deleteTag(key: string): void
+    getTag(key: string): string
     serialize(): string | null
-    setTag(key: string | null, value: string | null): void
+    setTag(key: string, value: string): void
 
     // Class property signals of GnomeMaps-1.0.GnomeMaps.OSMObject
 
@@ -725,7 +725,7 @@ interface OSMRelation {
 
     // Owm methods of GnomeMaps-1.0.GnomeMaps.OSMRelation
 
-    addMember(role: string | null, type: number, ref: number): void
+    addMember(role: string, type: number, ref: number): void
 
     // Class property signals of GnomeMaps-1.0.GnomeMaps.OSMRelation
 
@@ -988,7 +988,7 @@ interface OSMObjectClass {
     // Own fields of GnomeMaps-1.0.GnomeMaps.OSMObjectClass
 
     parentClass: GObject.ObjectClass
-    getXmlTagName: () => string | null
+    getXmlTagName: () => string
 }
 
 abstract class OSMObjectClass {

@@ -3549,19 +3549,19 @@ enum SubscriberReadyStatusFlag {
      */
     SIM_REMOVABLE,
 }
-const DBUS_ERROR_PREFIX: string | null
+const DBUS_ERROR_PREFIX: string
 /**
  * Symbol defining the #MbimDevice:device-consecutive-timeouts property.
  */
-const DEVICE_CONSECUTIVE_TIMEOUTS: string | null
+const DEVICE_CONSECUTIVE_TIMEOUTS: string
 /**
  * Symbol defining the #MbimDevice:device-file property.
  */
-const DEVICE_FILE: string | null
+const DEVICE_FILE: string
 /**
  * Symbol defining the #MbimDevice:device-in-session property.
  */
-const DEVICE_IN_SESSION: string | null
+const DEVICE_IN_SESSION: string
 /**
  * Symbol defining the maximum supported session id.
  */
@@ -3573,19 +3573,19 @@ const DEVICE_SESSION_ID_MIN: number
 /**
  * Symbol defining the #MbimDevice::device-error signal.
  */
-const DEVICE_SIGNAL_ERROR: string | null
+const DEVICE_SIGNAL_ERROR: string
 /**
  * Symbol defining the #MbimDevice::device-indicate-status signal.
  */
-const DEVICE_SIGNAL_INDICATE_STATUS: string | null
+const DEVICE_SIGNAL_INDICATE_STATUS: string
 /**
  * Symbol defining the #MbimDevice::device-removed signal.
  */
-const DEVICE_SIGNAL_REMOVED: string | null
+const DEVICE_SIGNAL_REMOVED: string
 /**
  * Symbol defining the #MbimDevice:device-transaction-id property.
  */
-const DEVICE_TRANSACTION_ID: string | null
+const DEVICE_TRANSACTION_ID: string
 /**
  * Evaluates to the major version number of libmbim-glib which this source
  * is compiled against.
@@ -3604,33 +3604,33 @@ const MINOR_VERSION: number
 /**
  * Symbol defining the #MbimProxy:mbim-proxy-n-clients property.
  */
-const PROXY_N_CLIENTS: string | null
+const PROXY_N_CLIENTS: string
 /**
  * Symbol defining the #MbimProxy:mbim-proxy-n-devices property.
  */
-const PROXY_N_DEVICES: string | null
+const PROXY_N_DEVICES: string
 /**
  * Symbol defining the default abstract socket name where the #MbimProxy will listen.
  */
-const PROXY_SOCKET_PATH: string | null
+const PROXY_SOCKET_PATH: string
 /**
  * Gets the nickname string for the #MbimAccessMediaType specified at `val`.
  * @param val a MbimAccessMediaType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function accessMediaTypeGetString(val: AccessMediaType): string | null
+function accessMediaTypeGetString(val: AccessMediaType): string
 /**
  * Gets the nickname string for the #MbimActivationCommand specified at `val`.
  * @param val a MbimActivationCommand.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function activationCommandGetString(val: ActivationCommand): string | null
+function activationCommandGetString(val: ActivationCommand): string
 /**
  * Gets the nickname string for the #MbimActivationState specified at `val`.
  * @param val a MbimActivationState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function activationStateGetString(val: ActivationState): string | null
+function activationStateGetString(val: ActivationState): string
 /**
  * Frees the memory allocated for the array of #MbimAtdsProvider structs.
  * @param array a #NULL terminated array of #MbimAtdsProvider structs.
@@ -3641,37 +3641,37 @@ function atdsProviderArrayFree(array: AtdsProviderArray): void
  * @param val a MbimAtdsProviderPlmnMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function atdsProviderPlmnModeGetString(val: AtdsProviderPlmnMode): string | null
+function atdsProviderPlmnModeGetString(val: AtdsProviderPlmnMode): string
 /**
  * Gets the nickname string for the #MbimAtdsRatMode specified at `val`.
  * @param val a MbimAtdsRatMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function atdsRatModeGetString(val: AtdsRatMode): string | null
+function atdsRatModeGetString(val: AtdsRatMode): string
 /**
  * Gets the nickname string for the #MbimAuthProtocol specified at `val`.
  * @param val a MbimAuthProtocol.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function authProtocolGetString(val: AuthProtocol): string | null
+function authProtocolGetString(val: AuthProtocol): string
 /**
  * Gets the nickname string for the #MbimCarrierLockCause specified at `val`.
  * @param val a MbimCarrierLockCause.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function carrierLockCauseGetString(val: CarrierLockCause): string | null
+function carrierLockCauseGetString(val: CarrierLockCause): string
 /**
  * Gets the nickname string for the #MbimCarrierLockModemState specified at `val`.
  * @param val a MbimCarrierLockModemState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function carrierLockModemStateGetString(val: CarrierLockModemState): string | null
+function carrierLockModemStateGetString(val: CarrierLockModemState): string
 /**
  * Gets the nickname string for the #MbimCarrierLockStatus specified at `val`.
  * @param val a MbimCarrierLockStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function carrierLockStatusGetString(val: CarrierLockStatus): string | null
+function carrierLockStatusGetString(val: CarrierLockStatus): string
 /**
  * Frees the memory allocated for the array of #MbimCellInfoCdma structs.
  * @param array a #NULL terminated array of #MbimCellInfoCdma structs.
@@ -3719,19 +3719,19 @@ function cellularClassBuildStringFromMask(mask: CellularClass): string | null
  * @param val a MbimCidAtds.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidAtdsGetString(val: CidAtds): string | null
+function cidAtdsGetString(val: CidAtds): string
 /**
  * Gets the nickname string for the #MbimCidAuth specified at `val`.
  * @param val a MbimCidAuth.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidAuthGetString(val: CidAuth): string | null
+function cidAuthGetString(val: CidAuth): string
 /**
  * Gets the nickname string for the #MbimCidBasicConnect specified at `val`.
  * @param val a MbimCidBasicConnect.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidBasicConnectGetString(val: CidBasicConnect): string | null
+function cidBasicConnectGetString(val: CidBasicConnect): string
 /**
  * Checks whether the given command allows notifying.
  * @param service a #MbimService.
@@ -3758,7 +3758,7 @@ function cidCanSet(service: Service, cid: number): boolean
  * @param val a MbimCidDss.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidDssGetString(val: CidDss): string | null
+function cidDssGetString(val: CidDss): string
 /**
  * Gets a printable string for the command specified by the `service` and the
  * `cid`.
@@ -3766,175 +3766,175 @@ function cidDssGetString(val: CidDss): string | null
  * @param cid a command ID.
  * @returns a constant string.
  */
-function cidGetPrintable(service: Service, cid: number): string | null
+function cidGetPrintable(service: Service, cid: number): string
 /**
  * Gets the nickname string for the #MbimCidGoogle specified at `val`.
  * @param val a MbimCidGoogle.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidGoogleGetString(val: CidGoogle): string | null
+function cidGoogleGetString(val: CidGoogle): string
 /**
  * Gets the nickname string for the #MbimCidIntelFirmwareUpdate specified at `val`.
  * @param val a MbimCidIntelFirmwareUpdate.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidIntelFirmwareUpdateGetString(val: CidIntelFirmwareUpdate): string | null
+function cidIntelFirmwareUpdateGetString(val: CidIntelFirmwareUpdate): string
 /**
  * Gets the nickname string for the #MbimCidIntelMutualAuthentication specified at `val`.
  * @param val a MbimCidIntelMutualAuthentication.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidIntelMutualAuthenticationGetString(val: CidIntelMutualAuthentication): string | null
+function cidIntelMutualAuthenticationGetString(val: CidIntelMutualAuthentication): string
 /**
  * Gets the nickname string for the #MbimCidIntelThermalRf specified at `val`.
  * @param val a MbimCidIntelThermalRf.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidIntelThermalRfGetString(val: CidIntelThermalRf): string | null
+function cidIntelThermalRfGetString(val: CidIntelThermalRf): string
 /**
  * Gets the nickname string for the #MbimCidIntelTools specified at `val`.
  * @param val a MbimCidIntelTools.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidIntelToolsGetString(val: CidIntelTools): string | null
+function cidIntelToolsGetString(val: CidIntelTools): string
 /**
  * Gets the nickname string for the #MbimCidMsBasicConnectExtensions specified at `val`.
  * @param val a MbimCidMsBasicConnectExtensions.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidMsBasicConnectExtensionsGetString(val: CidMsBasicConnectExtensions): string | null
+function cidMsBasicConnectExtensionsGetString(val: CidMsBasicConnectExtensions): string
 /**
  * Gets the nickname string for the #MbimCidMsFirmwareId specified at `val`.
  * @param val a MbimCidMsFirmwareId.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidMsFirmwareIdGetString(val: CidMsFirmwareId): string | null
+function cidMsFirmwareIdGetString(val: CidMsFirmwareId): string
 /**
  * Gets the nickname string for the #MbimCidMsHostShutdown specified at `val`.
  * @param val a MbimCidMsHostShutdown.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidMsHostShutdownGetString(val: CidMsHostShutdown): string | null
+function cidMsHostShutdownGetString(val: CidMsHostShutdown): string
 /**
  * Gets the nickname string for the #MbimCidMsSar specified at `val`.
  * @param val a MbimCidMsSar.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidMsSarGetString(val: CidMsSar): string | null
+function cidMsSarGetString(val: CidMsSar): string
 /**
  * Gets the nickname string for the #MbimCidMsUiccLowLevelAccess specified at `val`.
  * @param val a MbimCidMsUiccLowLevelAccess.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidMsUiccLowLevelAccessGetString(val: CidMsUiccLowLevelAccess): string | null
+function cidMsUiccLowLevelAccessGetString(val: CidMsUiccLowLevelAccess): string
 /**
  * Gets the nickname string for the #MbimCidMsVoiceExtensions specified at `val`.
  * @param val a MbimCidMsVoiceExtensions.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidMsVoiceExtensionsGetString(val: CidMsVoiceExtensions): string | null
+function cidMsVoiceExtensionsGetString(val: CidMsVoiceExtensions): string
 /**
  * Gets the nickname string for the #MbimCidPhonebook specified at `val`.
  * @param val a MbimCidPhonebook.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidPhonebookGetString(val: CidPhonebook): string | null
+function cidPhonebookGetString(val: CidPhonebook): string
 /**
  * Gets the nickname string for the #MbimCidProxyControl specified at `val`.
  * @param val a MbimCidProxyControl.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidProxyControlGetString(val: CidProxyControl): string | null
+function cidProxyControlGetString(val: CidProxyControl): string
 /**
  * Gets the nickname string for the #MbimCidQdu specified at `val`.
  * @param val a MbimCidQdu.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidQduGetString(val: CidQdu): string | null
+function cidQduGetString(val: CidQdu): string
 /**
  * Gets the nickname string for the #MbimCidQmi specified at `val`.
  * @param val a MbimCidQmi.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidQmiGetString(val: CidQmi): string | null
+function cidQmiGetString(val: CidQmi): string
 /**
  * Gets the nickname string for the #MbimCidQuectel specified at `val`.
  * @param val a MbimCidQuectel.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidQuectelGetString(val: CidQuectel): string | null
+function cidQuectelGetString(val: CidQuectel): string
 /**
  * Gets the nickname string for the #MbimCidSms specified at `val`.
  * @param val a MbimCidSms.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidSmsGetString(val: CidSms): string | null
+function cidSmsGetString(val: CidSms): string
 /**
  * Gets the nickname string for the #MbimCidStk specified at `val`.
  * @param val a MbimCidStk.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidStkGetString(val: CidStk): string | null
+function cidStkGetString(val: CidStk): string
 /**
  * Gets the nickname string for the #MbimCidUssd specified at `val`.
  * @param val a MbimCidUssd.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function cidUssdGetString(val: CidUssd): string | null
+function cidUssdGetString(val: CidUssd): string
 /**
  * Gets the nickname string for the #MbimCompression specified at `val`.
  * @param val a MbimCompression.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function compressionGetString(val: Compression): string | null
+function compressionGetString(val: Compression): string
 /**
  * Gets the nickname string for the #MbimContextIpType specified at `val`.
  * @param val a MbimContextIpType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextIpTypeGetString(val: ContextIpType): string | null
+function contextIpTypeGetString(val: ContextIpType): string
 /**
  * Gets the nickname string for the #MbimContextMediaType specified at `val`.
  * @param val a MbimContextMediaType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextMediaTypeGetString(val: ContextMediaType): string | null
+function contextMediaTypeGetString(val: ContextMediaType): string
 /**
  * Gets the nickname string for the #MbimContextOperation specified at `val`.
  * @param val a MbimContextOperation.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextOperationGetString(val: ContextOperation): string | null
+function contextOperationGetString(val: ContextOperation): string
 /**
  * Gets the nickname string for the #MbimContextRoamingControl specified at `val`.
  * @param val a MbimContextRoamingControl.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextRoamingControlGetString(val: ContextRoamingControl): string | null
+function contextRoamingControlGetString(val: ContextRoamingControl): string
 /**
  * Gets the nickname string for the #MbimContextSource specified at `val`.
  * @param val a MbimContextSource.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextSourceGetString(val: ContextSource): string | null
+function contextSourceGetString(val: ContextSource): string
 /**
  * Gets the nickname string for the #MbimContextState specified at `val`.
  * @param val a MbimContextState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextStateGetString(val: ContextState): string | null
+function contextStateGetString(val: ContextState): string
 /**
  * Gets the nickname string for the #MbimContextType specified at `val`.
  * @param val a MbimContextType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function contextTypeGetString(val: ContextType): string | null
+function contextTypeGetString(val: ContextType): string
 /**
  * Gets the nickname string for the #MbimCoreError specified at `val`.
  * @param val a MbimCoreError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function coreErrorGetString(val: CoreError): string | null
+function coreErrorGetString(val: CoreError): string
 function coreErrorQuark(): GLib.Quark
 /**
  * Builds a string containing a comma-separated list of nicknames for
@@ -3969,7 +3969,7 @@ function dataSubclassBuildStringFromMask(mask: DataSubclass): string | null
  * @param val a MbimDefaultPduActivationHint.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function defaultPduActivationHintGetString(val: DefaultPduActivationHint): string | null
+function defaultPduActivationHintGetString(val: DefaultPduActivationHint): string
 /**
  * Frees the memory allocated for the array of #MbimDeviceServiceElement structs.
  * @param array a #NULL terminated array of #MbimDeviceServiceElement structs.
@@ -3980,25 +3980,25 @@ function deviceServiceElementArrayFree(array: DeviceServiceElementArray): void
  * @param val a MbimDeviceType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function deviceTypeGetString(val: DeviceType): string | null
+function deviceTypeGetString(val: DeviceType): string
 /**
  * Gets the nickname string for the #MbimDrxCycle specified at `val`.
  * @param val a MbimDrxCycle.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function drxCycleGetString(val: DrxCycle): string | null
+function drxCycleGetString(val: DrxCycle): string
 /**
  * Gets the nickname string for the #MbimDssLinkState specified at `val`.
  * @param val a MbimDssLinkState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function dssLinkStateGetString(val: DssLinkState): string | null
+function dssLinkStateGetString(val: DssLinkState): string
 /**
  * Gets the nickname string for the #MbimEmergencyModeState specified at `val`.
  * @param val a MbimEmergencyModeState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function emergencyModeStateGetString(val: EmergencyModeState): string | null
+function emergencyModeStateGetString(val: EmergencyModeState): string
 /**
  * Frees the memory allocated for the array of #MbimEventEntry structs.
  * @param array a #NULL terminated array of #MbimEventEntry structs.
@@ -4016,7 +4016,7 @@ function frequencyRangeBuildStringFromMask(mask: FrequencyRange): string | null
  * @param val a MbimIntelBootMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function intelBootModeGetString(val: IntelBootMode): string | null
+function intelBootModeGetString(val: IntelBootMode): string
 /**
  * Frees the memory allocated for the array of #MbimIntelRfimFrequencyValue structs.
  * @param array a #NULL terminated array of #MbimIntelRfimFrequencyValue structs.
@@ -4027,7 +4027,7 @@ function intelRfimFrequencyValueArrayFree(array: IntelRfimFrequencyValueArray): 
  * @param val a MbimIntelServingCellInfo.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function intelServingCellInfoGetString(val: IntelServingCellInfo): string | null
+function intelServingCellInfoGetString(val: IntelServingCellInfo): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MbimIPConfigurationAvailableFlag in `mask`.
@@ -4050,7 +4050,7 @@ function ipv6ElementArrayFree(array: IPv6ElementArray): void
  * @param val a MbimLadnInfo.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function ladnInfoGetString(val: LadnInfo): string | null
+function ladnInfoGetString(val: LadnInfo): string
 /**
  * Frees the memory allocated for the array of #MbimLteAttachConfiguration structs.
  * @param array a #NULL terminated array of #MbimLteAttachConfiguration structs.
@@ -4061,19 +4061,19 @@ function lteAttachConfigurationArrayFree(array: LteAttachConfigurationArray): vo
  * @param val a MbimLteAttachContextOperation.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function lteAttachContextOperationGetString(val: LteAttachContextOperation): string | null
+function lteAttachContextOperationGetString(val: LteAttachContextOperation): string
 /**
  * Gets the nickname string for the #MbimLteAttachContextRoamingControl specified at `val`.
  * @param val a MbimLteAttachContextRoamingControl.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function lteAttachContextRoamingControlGetString(val: LteAttachContextRoamingControl): string | null
+function lteAttachContextRoamingControlGetString(val: LteAttachContextRoamingControl): string
 /**
  * Gets the nickname string for the #MbimLteAttachState specified at `val`.
  * @param val a MbimLteAttachState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function lteAttachStateGetString(val: LteAttachState): string | null
+function lteAttachStateGetString(val: LteAttachState): string
 /**
  * Frees the memory allocated for the #MbimLteAttachStatus.
  * @param var_ a #MbimLteAttachStatus.
@@ -4084,37 +4084,37 @@ function lteAttachStatusFree(var_: DeprecatedLteAttachStatus): void
  * @param val a MbimMessageCommandType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function messageCommandTypeGetString(val: MessageCommandType): string | null
+function messageCommandTypeGetString(val: MessageCommandType): string
 /**
  * Gets the nickname string for the #MbimMessageType specified at `val`.
  * @param val a MbimMessageType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function messageTypeGetString(val: MessageType): string | null
+function messageTypeGetString(val: MessageType): string
 /**
  * Gets the nickname string for the #MbimMicoMode specified at `val`.
  * @param val a MbimMicoMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function micoModeGetString(val: MicoMode): string | null
+function micoModeGetString(val: MicoMode): string
 /**
  * Gets the nickname string for the #MbimModemConfigurationStatus specified at `val`.
  * @param val a MbimModemConfigurationStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function modemConfigurationStatusGetString(val: ModemConfigurationStatus): string | null
+function modemConfigurationStatusGetString(val: ModemConfigurationStatus): string
 /**
  * Gets the nickname string for the #MbimNetworkIdleHintState specified at `val`.
  * @param val a MbimNetworkIdleHintState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function networkIdleHintStateGetString(val: NetworkIdleHintState): string | null
+function networkIdleHintStateGetString(val: NetworkIdleHintState): string
 /**
  * Gets the nickname string for the #MbimNwError specified at `val`.
  * @param val a MbimNwError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function nwErrorGetString(val: NwError): string | null
+function nwErrorGetString(val: NwError): string
 /**
  * Frees the memory allocated for the array of #MbimPacketFilter structs.
  * @param array a #NULL terminated array of #MbimPacketFilter structs.
@@ -4130,19 +4130,19 @@ function packetFilterV3ArrayFree(array: PacketFilterV3Array): void
  * @param val a MbimPacketServiceAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function packetServiceActionGetString(val: PacketServiceAction): string | null
+function packetServiceActionGetString(val: PacketServiceAction): string
 /**
  * Gets the nickname string for the #MbimPacketServiceState specified at `val`.
  * @param val a MbimPacketServiceState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function packetServiceStateGetString(val: PacketServiceState): string | null
+function packetServiceStateGetString(val: PacketServiceState): string
 /**
  * Gets the nickname string for the #MbimPcoType specified at `val`.
  * @param val a MbimPcoType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function pcoTypeGetString(val: PcoType): string | null
+function pcoTypeGetString(val: PcoType): string
 /**
  * Frees the memory allocated for the array of #MbimPhonebookEntry structs.
  * @param array a #NULL terminated array of #MbimPhonebookEntry structs.
@@ -4153,55 +4153,55 @@ function phonebookEntryArrayFree(array: PhonebookEntryArray): void
  * @param val a MbimPhonebookFlag.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function phonebookFlagGetString(val: PhonebookFlag): string | null
+function phonebookFlagGetString(val: PhonebookFlag): string
 /**
  * Gets the nickname string for the #MbimPhonebookState specified at `val`.
  * @param val a MbimPhonebookState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function phonebookStateGetString(val: PhonebookState): string | null
+function phonebookStateGetString(val: PhonebookState): string
 /**
  * Gets the nickname string for the #MbimPhonebookWriteFlag specified at `val`.
  * @param val a MbimPhonebookWriteFlag.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function phonebookWriteFlagGetString(val: PhonebookWriteFlag): string | null
+function phonebookWriteFlagGetString(val: PhonebookWriteFlag): string
 /**
  * Gets the nickname string for the #MbimPinFormat specified at `val`.
  * @param val a MbimPinFormat.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function pinFormatGetString(val: PinFormat): string | null
+function pinFormatGetString(val: PinFormat): string
 /**
  * Gets the nickname string for the #MbimPinMode specified at `val`.
  * @param val a MbimPinMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function pinModeGetString(val: PinMode): string | null
+function pinModeGetString(val: PinMode): string
 /**
  * Gets the nickname string for the #MbimPinOperation specified at `val`.
  * @param val a MbimPinOperation.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function pinOperationGetString(val: PinOperation): string | null
+function pinOperationGetString(val: PinOperation): string
 /**
  * Gets the nickname string for the #MbimPinState specified at `val`.
  * @param val a MbimPinState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function pinStateGetString(val: PinState): string | null
+function pinStateGetString(val: PinState): string
 /**
  * Gets the nickname string for the #MbimPinType specified at `val`.
  * @param val a MbimPinType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function pinTypeGetString(val: PinType): string | null
+function pinTypeGetString(val: PinType): string
 /**
  * Gets the nickname string for the #MbimProtocolError specified at `val`.
  * @param val a MbimProtocolError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function protocolErrorGetString(val: ProtocolError): string | null
+function protocolErrorGetString(val: ProtocolError): string
 function protocolErrorQuark(): GLib.Quark
 /**
  * Frees the memory allocated for the array of #MbimProvider structs.
@@ -4230,55 +4230,55 @@ function provisionedContextElementV2ArrayFree(array: ProvisionedContextElementV2
  * @param val a MbimQduFileType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduFileTypeGetString(val: QduFileType): string | null
+function qduFileTypeGetString(val: QduFileType): string
 /**
  * Gets the nickname string for the #MbimQduQuectelRebootType specified at `val`.
  * @param val a MbimQduQuectelRebootType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduQuectelRebootTypeGetString(val: QduQuectelRebootType): string | null
+function qduQuectelRebootTypeGetString(val: QduQuectelRebootType): string
 /**
  * Gets the nickname string for the #MbimQduQuectelVersionType specified at `val`.
  * @param val a MbimQduQuectelVersionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduQuectelVersionTypeGetString(val: QduQuectelVersionType): string | null
+function qduQuectelVersionTypeGetString(val: QduQuectelVersionType): string
 /**
  * Gets the nickname string for the #MbimQduSessionAction specified at `val`.
  * @param val a MbimQduSessionAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduSessionActionGetString(val: QduSessionAction): string | null
+function qduSessionActionGetString(val: QduSessionAction): string
 /**
  * Gets the nickname string for the #MbimQduSessionResult specified at `val`.
  * @param val a MbimQduSessionResult.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduSessionResultGetString(val: QduSessionResult): string | null
+function qduSessionResultGetString(val: QduSessionResult): string
 /**
  * Gets the nickname string for the #MbimQduSessionStatus specified at `val`.
  * @param val a MbimQduSessionStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduSessionStatusGetString(val: QduSessionStatus): string | null
+function qduSessionStatusGetString(val: QduSessionStatus): string
 /**
  * Gets the nickname string for the #MbimQduSessionType specified at `val`.
  * @param val a MbimQduSessionType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function qduSessionTypeGetString(val: QduSessionType): string | null
+function qduSessionTypeGetString(val: QduSessionType): string
 /**
  * Gets the nickname string for the #MbimQuectelRadioSwitchState specified at `val`.
  * @param val a MbimQuectelRadioSwitchState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function quectelRadioSwitchStateGetString(val: QuectelRadioSwitchState): string | null
+function quectelRadioSwitchStateGetString(val: QuectelRadioSwitchState): string
 /**
  * Gets the nickname string for the #MbimRadioSwitchState specified at `val`.
  * @param val a MbimRadioSwitchState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function radioSwitchStateGetString(val: RadioSwitchState): string | null
+function radioSwitchStateGetString(val: RadioSwitchState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MbimReadyInfoFlag in `mask`.
@@ -4291,26 +4291,26 @@ function readyInfoFlagBuildStringFromMask(mask: ReadyInfoFlag): string | null
  * @param val a MbimRegisterAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function registerActionGetString(val: RegisterAction): string | null
+function registerActionGetString(val: RegisterAction): string
 /**
  * Register a custom service
  * @param uuid MbimUuid structure corresponding to service
  * @param nickname a printable name for service
  * @returns TRUE if service has been registered, FALSE otherwise.
  */
-function registerCustomService(uuid: Uuid, nickname: string | null): number
+function registerCustomService(uuid: Uuid, nickname: string): number
 /**
  * Gets the nickname string for the #MbimRegisterMode specified at `val`.
  * @param val a MbimRegisterMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function registerModeGetString(val: RegisterMode): string | null
+function registerModeGetString(val: RegisterMode): string
 /**
  * Gets the nickname string for the #MbimRegisterState specified at `val`.
  * @param val a MbimRegisterState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function registerStateGetString(val: RegisterState): string | null
+function registerStateGetString(val: RegisterState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MbimRegistrationFlag in `mask`.
@@ -4328,7 +4328,7 @@ function rsrpSnrInfoArrayFree(array: RsrpSnrInfoArray): void
  * @param val a MbimSarBackoffState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function sarBackoffStateGetString(val: SarBackoffState): string | null
+function sarBackoffStateGetString(val: SarBackoffState): string
 /**
  * Frees the memory allocated for the array of #MbimSarConfigState structs.
  * @param array a #NULL terminated array of #MbimSarConfigState structs.
@@ -4339,19 +4339,19 @@ function sarConfigStateArrayFree(array: SarConfigStateArray): void
  * @param val a MbimSarControlMode.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function sarControlModeGetString(val: SarControlMode): string | null
+function sarControlModeGetString(val: SarControlMode): string
 /**
  * Gets the nickname string for the #MbimSarWifiHardwareState specified at `val`.
  * @param val a MbimSarWifiHardwareState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function sarWifiHardwareStateGetString(val: SarWifiHardwareState): string | null
+function sarWifiHardwareStateGetString(val: SarWifiHardwareState): string
 /**
  * Gets the nickname string for the #MbimService specified at `val`.
  * @param val a MbimService.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function serviceGetString(val: Service): string | null
+function serviceGetString(val: Service): string
 /**
  * Checks whether `id` is a custom or standard service.
  * @param id ID of the service
@@ -4366,7 +4366,7 @@ function serviceIdIsCustom(id: number): boolean
  * @param service a MbimService or custom service.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function serviceLookupName(service: number): string | null
+function serviceLookupName(service: number): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MbimSimClass in `mask`.
@@ -4391,13 +4391,13 @@ function smsCapsBuildStringFromMask(mask: SmsCaps): string | null
  * @param val a MbimSmsCdmaEncoding.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsCdmaEncodingGetString(val: SmsCdmaEncoding): string | null
+function smsCdmaEncodingGetString(val: SmsCdmaEncoding): string
 /**
  * Gets the nickname string for the #MbimSmsCdmaLang specified at `val`.
  * @param val a MbimSmsCdmaLang.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsCdmaLangGetString(val: SmsCdmaLang): string | null
+function smsCdmaLangGetString(val: SmsCdmaLang): string
 /**
  * Frees the memory allocated for the array of #MbimSmsCdmaReadRecord structs.
  * @param array a #NULL terminated array of #MbimSmsCdmaReadRecord structs.
@@ -4408,13 +4408,13 @@ function smsCdmaReadRecordArrayFree(array: SmsCdmaReadRecordArray): void
  * @param val a MbimSmsFlag.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsFlagGetString(val: SmsFlag): string | null
+function smsFlagGetString(val: SmsFlag): string
 /**
  * Gets the nickname string for the #MbimSmsFormat specified at `val`.
  * @param val a MbimSmsFormat.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsFormatGetString(val: SmsFormat): string | null
+function smsFormatGetString(val: SmsFormat): string
 /**
  * Frees the memory allocated for the array of #MbimSmsPduReadRecord structs.
  * @param array a #NULL terminated array of #MbimSmsPduReadRecord structs.
@@ -4432,44 +4432,44 @@ function smsStatusFlagBuildStringFromMask(mask: SmsStatusFlag): string | null
  * @param val a MbimSmsStatusFlag.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsStatusFlagGetString(val: SmsStatusFlag): string | null
+function smsStatusFlagGetString(val: SmsStatusFlag): string
 /**
  * Gets the nickname string for the #MbimSmsStatus specified at `val`.
  * @param val a MbimSmsStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsStatusGetString(val: SmsStatus): string | null
+function smsStatusGetString(val: SmsStatus): string
 /**
  * Gets the nickname string for the #MbimSmsStorageState specified at `val`.
  * @param val a MbimSmsStorageState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function smsStorageStateGetString(val: SmsStorageState): string | null
+function smsStorageStateGetString(val: SmsStorageState): string
 /**
  * Gets the nickname string for the #MbimStatusError specified at `val`.
  * @param val a MbimStatusError.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function statusErrorGetString(val: StatusError): string | null
+function statusErrorGetString(val: StatusError): string
 function statusErrorQuark(): GLib.Quark
 /**
  * Gets the nickname string for the #MbimStkPacProfile specified at `val`.
  * @param val a MbimStkPacProfile.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function stkPacProfileGetString(val: StkPacProfile): string | null
+function stkPacProfileGetString(val: StkPacProfile): string
 /**
  * Gets the nickname string for the #MbimStkPacType specified at `val`.
  * @param val a MbimStkPacType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function stkPacTypeGetString(val: StkPacType): string | null
+function stkPacTypeGetString(val: StkPacType): string
 /**
  * Gets the nickname string for the #MbimSubscriberReadyState specified at `val`.
  * @param val a MbimSubscriberReadyState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function subscriberReadyStateGetString(val: SubscriberReadyState): string | null
+function subscriberReadyStateGetString(val: SubscriberReadyState): string
 /**
  * Builds a string containing a comma-separated list of nicknames for
  * each #MbimSubscriberReadyStatusFlag in `mask`.
@@ -4487,25 +4487,25 @@ function terminalCapabilityInfoArrayFree(array: TerminalCapabilityInfoArray): vo
  * @param val a MbimTlvType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function tlvTypeGetString(val: TlvType): string | null
+function tlvTypeGetString(val: TlvType): string
 /**
  * Gets the nickname string for the #MbimTraceCommand specified at `val`.
  * @param val a MbimTraceCommand.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function traceCommandGetString(val: TraceCommand): string | null
+function traceCommandGetString(val: TraceCommand): string
 /**
  * Gets the nickname string for the #MbimTransmissionNotificationStatus specified at `val`.
  * @param val a MbimTransmissionNotificationStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function transmissionNotificationStatusGetString(val: TransmissionNotificationStatus): string | null
+function transmissionNotificationStatusGetString(val: TransmissionNotificationStatus): string
 /**
  * Gets the nickname string for the #MbimTransmissionState specified at `val`.
  * @param val a MbimTransmissionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function transmissionStateGetString(val: TransmissionState): string | null
+function transmissionStateGetString(val: TransmissionState): string
 /**
  * Frees the memory allocated for the array of #MbimUiccApplication structs.
  * @param array a #NULL terminated array of #MbimUiccApplication structs.
@@ -4516,55 +4516,55 @@ function uiccApplicationArrayFree(array: UiccApplicationArray): void
  * @param val a MbimUiccApplicationType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccApplicationTypeGetString(val: UiccApplicationType): string | null
+function uiccApplicationTypeGetString(val: UiccApplicationType): string
 /**
  * Gets the nickname string for the #MbimUiccClassByteType specified at `val`.
  * @param val a MbimUiccClassByteType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccClassByteTypeGetString(val: UiccClassByteType): string | null
+function uiccClassByteTypeGetString(val: UiccClassByteType): string
 /**
  * Gets the nickname string for the #MbimUiccFileAccessibility specified at `val`.
  * @param val a MbimUiccFileAccessibility.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccFileAccessibilityGetString(val: UiccFileAccessibility): string | null
+function uiccFileAccessibilityGetString(val: UiccFileAccessibility): string
 /**
  * Gets the nickname string for the #MbimUiccFileStructure specified at `val`.
  * @param val a MbimUiccFileStructure.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccFileStructureGetString(val: UiccFileStructure): string | null
+function uiccFileStructureGetString(val: UiccFileStructure): string
 /**
  * Gets the nickname string for the #MbimUiccFileType specified at `val`.
  * @param val a MbimUiccFileType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccFileTypeGetString(val: UiccFileType): string | null
+function uiccFileTypeGetString(val: UiccFileType): string
 /**
  * Gets the nickname string for the #MbimUiccPassThroughAction specified at `val`.
  * @param val a MbimUiccPassThroughAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccPassThroughActionGetString(val: UiccPassThroughAction): string | null
+function uiccPassThroughActionGetString(val: UiccPassThroughAction): string
 /**
  * Gets the nickname string for the #MbimUiccPassThroughStatus specified at `val`.
  * @param val a MbimUiccPassThroughStatus.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccPassThroughStatusGetString(val: UiccPassThroughStatus): string | null
+function uiccPassThroughStatusGetString(val: UiccPassThroughStatus): string
 /**
  * Gets the nickname string for the #MbimUiccSecureMessaging specified at `val`.
  * @param val a MbimUiccSecureMessaging.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccSecureMessagingGetString(val: UiccSecureMessaging): string | null
+function uiccSecureMessagingGetString(val: UiccSecureMessaging): string
 /**
  * Gets the nickname string for the #MbimUiccSlotState specified at `val`.
  * @param val a MbimUiccSlotState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function uiccSlotStateGetString(val: UiccSlotState): string | null
+function uiccSlotStateGetString(val: UiccSlotState): string
 /**
  * Unregister a custom service.
  * @param id ID of the service to unregister.MbimUuid structure corresponding to service
@@ -4576,19 +4576,19 @@ function unregisterCustomService(id: number): boolean
  * @param val a MbimUssdAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function ussdActionGetString(val: UssdAction): string | null
+function ussdActionGetString(val: UssdAction): string
 /**
  * Gets the nickname string for the #MbimUssdResponse specified at `val`.
  * @param val a MbimUssdResponse.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function ussdResponseGetString(val: UssdResponse): string | null
+function ussdResponseGetString(val: UssdResponse): string
 /**
  * Gets the nickname string for the #MbimUssdSessionState specified at `val`.
  * @param val a MbimUssdSessionState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function ussdSessionStateGetString(val: UssdSessionState): string | null
+function ussdSessionStateGetString(val: UssdSessionState): string
 /**
  * Checks whether personal info should be hidden when traces are enabled.
  * @returns %TRUE to show personal info in trace, %FALSE otherwise.
@@ -4624,7 +4624,7 @@ function uuidFromContextType(contextType: ContextType): Uuid
  * @param uuid pointer to the target #MbimUuid.
  * @returns %TRUE if @uuid was correctly set, %FALSE otherwise.
  */
-function uuidFromPrintable(str: string | null, uuid: Uuid): boolean
+function uuidFromPrintable(str: string, uuid: Uuid): boolean
 /**
  * Get the UUID corresponding to `service`.
  * 
@@ -4639,25 +4639,25 @@ function uuidFromService(service: Service): Uuid
  * @param val a MbimVisibleProvidersAction.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function visibleProvidersActionGetString(val: VisibleProvidersAction): string | null
+function visibleProvidersActionGetString(val: VisibleProvidersAction): string
 /**
  * Gets the nickname string for the #MbimVoiceCallState specified at `val`.
  * @param val a MbimVoiceCallState.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function voiceCallStateGetString(val: VoiceCallState): string | null
+function voiceCallStateGetString(val: VoiceCallState): string
 /**
  * Gets the nickname string for the #MbimVoiceClass specified at `val`.
  * @param val a MbimVoiceClass.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function voiceClassGetString(val: VoiceClass): string | null
+function voiceClassGetString(val: VoiceClass): string
 /**
  * Gets the nickname string for the #MbimWakeType specified at `val`.
  * @param val a MbimWakeType.
  * @returns a string with the nickname, or %NULL if not found. Do not free the returned value.
  */
-function wakeTypeGetString(val: WakeType): string | null
+function wakeTypeGetString(val: WakeType): string
 module Device {
 
     // Signal callback interfaces
@@ -4732,7 +4732,7 @@ interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    addLink(sessionId: number, baseIfname: string | null, ifnamePrefix: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    addLink(sessionId: number, baseIfname: string, ifnamePrefix: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_add_link().
      * @param res a #GAsyncResult.
@@ -4811,7 +4811,7 @@ interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    deleteAllLinks(baseIfname: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteAllLinks(baseIfname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_delete_all_links().
      * @param res a #GAsyncResult.
@@ -4831,7 +4831,7 @@ interface Device extends Gio.AsyncInitable {
      * @param cancellable a #GCancellable, or %NULL.
      * @param callback a #GAsyncReadyCallback to call when the operation is finished.
      */
-    deleteLink(ifname: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    deleteLink(ifname: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with mbim_device_delete_link().
      * @param res a #GAsyncResult.
@@ -4864,12 +4864,12 @@ interface Device extends Gio.AsyncInitable {
      * Get the system path of the underlying MBIM device.
      * @returns the system path of the device.
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Get the system path of the underlying MBIM device in UTF-8.
      * @returns UTF-8 encoded system path of the device.
      */
-    getPathDisplay(): string | null
+    getPathDisplay(): string
     /**
      * Acquire the transaction ID of this #MbimDevice without
      * incrementing the internal transaction ID.
@@ -4887,7 +4887,7 @@ interface Device extends Gio.AsyncInitable {
      * @param baseIfname the base interface.
      * @returns %TRUE if successful, %FALSE if @error is set.
      */
-    listLinks(baseIfname: string | null): [ /* returnType */ boolean, /* outLinks */ string[] ]
+    listLinks(baseIfname: string): [ /* returnType */ boolean, /* outLinks */ string[] ]
     /**
      * Asynchronously opens a #MbimDevice for I/O.
      * 
@@ -6272,7 +6272,7 @@ interface Message {
      * Parses and returns parameters of the 'Register State' response command in the 'ATDS' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    atdsRegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag ]
+    atdsRegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag ]
     /**
      * Parses and returns parameters of the 'Signal' response command in the 'ATDS' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6378,7 +6378,7 @@ interface Message {
      * Parses and returns parameters of the 'Device Caps' response command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    deviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSimClass */ SimClass, /* outDataClass */ DataClass, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outMaxSessions */ number, /* outCustomDataClass */ string | null, /* outDeviceId */ string | null, /* outFirmwareInfo */ string | null, /* outHardwareInfo */ string | null ]
+    deviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSimClass */ SimClass, /* outDataClass */ DataClass, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outMaxSessions */ number, /* outCustomDataClass */ string, /* outDeviceId */ string, /* outFirmwareInfo */ string, /* outHardwareInfo */ string ]
     /**
      * Parses and returns parameters of the 'Device Service Subscribe List' response command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6448,7 +6448,7 @@ interface Message {
      * @param headersOnly %TRUE if only basic headers should be printed.
      * @returns a newly allocated string, which should be freed with g_free().
      */
-    getPrintable(linePrefix: string | null, headersOnly: boolean): string | null
+    getPrintable(linePrefix: string, headersOnly: boolean): string | null
     /**
      * Gets a printable string with the contents of the whole MBIM message.
      * 
@@ -6471,7 +6471,7 @@ interface Message {
      * @param headersOnly %TRUE if only basic headers should be printed.
      * @returns a newly allocated string which should be freed with g_free(), or #NULL if @error is set.
      */
-    getPrintableFull(mbimexVersionMajor: number, mbimexVersionMinor: number, linePrefix: string | null, headersOnly: boolean): string | null
+    getPrintableFull(mbimexVersionMajor: number, mbimexVersionMinor: number, linePrefix: string, headersOnly: boolean): string | null
     /**
      * Gets the whole raw data buffer of the #MbimMessage.
      * @returns The raw data buffer, or #NULL if @error is set.
@@ -6561,7 +6561,7 @@ interface Message {
      * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsDeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSmsClass */ SimClass, /* outDataClass */ DataClass, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outMaxSessions */ number, /* outCustomDataClass */ string | null, /* outDeviceId */ string | null, /* outFirmwareInfo */ string | null, /* outHardwareInfo */ string | null, /* outExecutorIndex */ number ]
+    msBasicConnectExtensionsDeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSmsClass */ SimClass, /* outDataClass */ DataClass, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outMaxSessions */ number, /* outCustomDataClass */ string, /* outDeviceId */ string, /* outFirmwareInfo */ string, /* outHardwareInfo */ string, /* outExecutorIndex */ number ]
     /**
      * Parses and returns parameters of the 'Device Reset' response command in the 'Ms Basic Connect Extensions' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6596,12 +6596,12 @@ interface Message {
      * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsLteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outIpType */ ContextIpType, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
+    msBasicConnectExtensionsLteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsLteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outIpType */ ContextIpType, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
+    msBasicConnectExtensionsLteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Lte Attach Status' notification command in the 'Ms Basic Connect Extensions' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6661,27 +6661,27 @@ interface Message {
      * Parses and returns parameters of the 'Device Caps' response command in the 'Ms Basic Connect Extensions V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsV3DeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSimClass */ SimClass, /* outDataClass */ DataClassV3, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outDataSubclass */ DataSubclass, /* outMaxSessions */ number, /* outExecutorIndex */ number, /* outWcdmaBandClass */ number, /* outLteBandClassCount */ number, /* outLteBandClass */ number | null, /* outNrBandClassCount */ number, /* outNrBandClass */ number | null, /* outCustomDataClass */ string | null, /* outDeviceId */ string | null, /* outFirmwareInfo */ string | null, /* outHardwareInfo */ string | null ]
+    msBasicConnectExtensionsV3DeviceCapsResponseParse(): [ /* returnType */ boolean, /* outDeviceType */ DeviceType, /* outCellularClass */ CellularClass, /* outVoiceClass */ VoiceClass, /* outSimClass */ SimClass, /* outDataClass */ DataClassV3, /* outSmsCaps */ SmsCaps, /* outControlCaps */ CtrlCaps, /* outDataSubclass */ DataSubclass, /* outMaxSessions */ number, /* outExecutorIndex */ number, /* outWcdmaBandClass */ number, /* outLteBandClassCount */ number, /* outLteBandClass */ number | null, /* outNrBandClassCount */ number, /* outNrBandClass */ number | null, /* outCustomDataClass */ string, /* outDeviceId */ string, /* outFirmwareInfo */ string, /* outHardwareInfo */ string ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' notification command in the 'Ms Basic Connect Extensions V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsV3LteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outNwError */ NwError, /* outIpType */ ContextIpType, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
+    msBasicConnectExtensionsV3LteAttachInfoNotificationParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outNwError */ NwError, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Lte Attach Info' response command in the 'Ms Basic Connect Extensions V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsV3LteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outNwError */ NwError, /* outIpType */ ContextIpType, /* outAccessString */ string | null, /* outUserName */ string | null, /* outPassword */ string | null, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
+    msBasicConnectExtensionsV3LteAttachInfoResponseParse(): [ /* returnType */ boolean, /* outLteAttachState */ LteAttachState, /* outNwError */ NwError, /* outIpType */ ContextIpType, /* outAccessString */ string, /* outUserName */ string, /* outPassword */ string, /* outCompression */ Compression, /* outAuthProtocol */ AuthProtocol ]
     /**
      * Parses and returns parameters of the 'Modem Configuration' notification command in the 'Ms Basic Connect Extensions V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsV3ModemConfigurationNotificationParse(): [ /* returnType */ boolean, /* outModemConfigurationStatus */ ModemConfigurationStatus, /* outConfigurationName */ string | null, /* outUnnamedIes */ Tlv[] ]
+    msBasicConnectExtensionsV3ModemConfigurationNotificationParse(): [ /* returnType */ boolean, /* outModemConfigurationStatus */ ModemConfigurationStatus, /* outConfigurationName */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Modem Configuration' response command in the 'Ms Basic Connect Extensions V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectExtensionsV3ModemConfigurationResponseParse(): [ /* returnType */ boolean, /* outConfigurationStatus */ ModemConfigurationStatus, /* outConfigurationName */ string | null, /* outUnnamedIes */ Tlv[] ]
+    msBasicConnectExtensionsV3ModemConfigurationResponseParse(): [ /* returnType */ boolean, /* outConfigurationStatus */ ModemConfigurationStatus, /* outConfigurationName */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Registration Parameters' response command in the 'Ms Basic Connect Extensions V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6706,12 +6706,12 @@ interface Message {
      * Parses and returns parameters of the 'Register State' notification command in the 'Ms Basic Connect V2' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectV2RegisterStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag, /* outPreferredDataClasses */ DataClass ]
+    msBasicConnectV2RegisterStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag, /* outPreferredDataClasses */ DataClass ]
     /**
      * Parses and returns parameters of the 'Register State' response command in the 'Ms Basic Connect V2' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectV2RegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag, /* outPreferredDataClasses */ DataClass ]
+    msBasicConnectV2RegisterStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag, /* outPreferredDataClasses */ DataClass ]
     /**
      * Parses and returns parameters of the 'Signal State' notification command in the 'Ms Basic Connect V2' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6726,12 +6726,12 @@ interface Message {
      * Parses and returns parameters of the 'Connect' notification command in the 'Ms Basic Connect V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectV3ConnectNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number, /* outMediaPreference */ AccessMediaType, /* outAccessString */ string | null, /* outUnnamedIes */ Tlv[] ]
+    msBasicConnectV3ConnectNotificationParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number, /* outMediaPreference */ AccessMediaType, /* outAccessString */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'Connect' response command in the 'Ms Basic Connect V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectV3ConnectResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number, /* outMediaPreference */ AccessMediaType, /* outAccessString */ string | null, /* outUnnamedIes */ Tlv[] ]
+    msBasicConnectV3ConnectResponseParse(): [ /* returnType */ boolean, /* outSessionId */ number, /* outActivationState */ ActivationState, /* outVoiceCallState */ VoiceCallState, /* outIpType */ ContextIpType, /* outContextType */ Uuid, /* outNwError */ number, /* outMediaPreference */ AccessMediaType, /* outAccessString */ string, /* outUnnamedIes */ Tlv[] ]
     /**
      * Parses and returns parameters of the 'IP Packet Filters' response command in the 'Ms Basic Connect V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6751,12 +6751,12 @@ interface Message {
      * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Ms Basic Connect V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectV3SubscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outFlags */ SubscriberReadyStatusFlag, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
+    msBasicConnectV3SubscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outFlags */ SubscriberReadyStatusFlag, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Ms Basic Connect V3' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    msBasicConnectV3SubscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outFlags */ SubscriberReadyStatusFlag, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
+    msBasicConnectV3SubscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outFlags */ SubscriberReadyStatusFlag, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Parses and returns parameters of the 'Get' response command in the 'MS Firmware ID' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -6962,7 +6962,7 @@ interface Message {
      * Parses and returns parameters of the 'Quectel Read Version' response command in the 'QDU' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    qduQuectelReadVersionResponseParse(): [ /* returnType */ boolean, /* outVersionId */ number, /* outVersion */ string | null ]
+    qduQuectelReadVersionResponseParse(): [ /* returnType */ boolean, /* outVersionId */ number, /* outVersion */ string ]
     /**
      * Parses and returns parameters of the 'Quectel Reboot' response command in the 'QDU' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -7007,12 +7007,12 @@ interface Message {
      * Parses and returns parameters of the 'Register State' notification command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    registerStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag ]
+    registerStateNotificationParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag ]
     /**
      * Parses and returns parameters of the 'Register State' response command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    registerStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string | null, /* outProviderName */ string | null, /* outRoamingText */ string | null, /* outRegistrationFlag */ RegistrationFlag ]
+    registerStateResponseParse(): [ /* returnType */ boolean, /* outNwError */ NwError, /* outRegisterState */ RegisterState, /* outRegisterMode */ RegisterMode, /* outAvailableDataClasses */ DataClass, /* outCurrentCellularClass */ CellularClass, /* outProviderId */ string, /* outProviderName */ string, /* outRoamingText */ string, /* outRegistrationFlag */ RegistrationFlag ]
     /**
      * Gets the result of the operation from the response message, which
      * can be either a %MBIM_MESSAGE_TYPE_FUNCTION_ERROR message or a message of the
@@ -7045,7 +7045,7 @@ interface Message {
      * Parses and returns parameters of the 'Configuration' response command in the 'SMS' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    smsConfigurationResponseParse(): [ /* returnType */ boolean, /* outSmsStorageState */ SmsStorageState, /* outFormat */ SmsFormat, /* outMaxMessages */ number, /* outCdmaShortMessageSize */ number, /* outScAddress */ string | null ]
+    smsConfigurationResponseParse(): [ /* returnType */ boolean, /* outSmsStorageState */ SmsStorageState, /* outFormat */ SmsFormat, /* outMaxMessages */ number, /* outCdmaShortMessageSize */ number, /* outScAddress */ string ]
     /**
      * Parses and returns parameters of the 'Delete' response command in the 'SMS' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
@@ -7100,12 +7100,12 @@ interface Message {
      * Parses and returns parameters of the 'Subscriber Ready Status' notification command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    subscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
+    subscriberReadyStatusNotificationParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Parses and returns parameters of the 'Subscriber Ready Status' response command in the 'Basic Connect' service.
      * @returns %TRUE if the message was correctly parsed, %FALSE if @error is set.
      */
-    subscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outSubscriberId */ string | null, /* outSimIccId */ string | null, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
+    subscriberReadyStatusResponseParse(): [ /* returnType */ boolean, /* outReadyState */ SubscriberReadyState, /* outSubscriberId */ string, /* outSimIccId */ string, /* outReadyInfo */ ReadyInfoFlag, /* outTelephoneNumbersCount */ number, /* outTelephoneNumbers */ string[] ]
     /**
      * Atomically decrements the reference count of `self` by one.
      * If the reference count drops to 0, `self` is completely disposed.
@@ -7208,7 +7208,7 @@ class Message {
      * @param networkName the 'NetworkName' field, given as a string.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static authAkapQueryNew(rand: number[], autn: number[], networkName: string | null): Message
+    static authAkapQueryNew(rand: number[], autn: number[], networkName: string): Message
     /**
      * Create a new request for the 'Sim' query command in the 'Auth' service.
      * @constructor 
@@ -7273,7 +7273,7 @@ class Message {
      * @param contextType the 'ContextType' field, given as a #MbimUuid.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static connectSetNew(sessionId: number, activationCommand: ActivationCommand, accessString: string | null, userName: string | null, password: string | null, compression: Compression, authProtocol: AuthProtocol, ipType: ContextIpType, contextType: Uuid): Message
+    static connectSetNew(sessionId: number, activationCommand: ActivationCommand, accessString: string, userName: string, password: string, compression: Compression, authProtocol: AuthProtocol, ipType: ContextIpType, contextType: Uuid): Message
     /**
      * Create a new request for the 'Device Caps' query command in the 'Basic Connect' service.
      * @constructor 
@@ -7563,7 +7563,7 @@ class Message {
      * @param authProtocol the 'AuthProtocol' field, given as a #MbimAuthProtocol.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static msBasicConnectExtensionsProvisionedContextsSetNew(operation: ContextOperation, contextType: Uuid, ipType: ContextIpType, state: ContextState, roaming: ContextRoamingControl, mediaType: ContextMediaType, source: ContextSource, accessString: string | null, userName: string | null, password: string | null, compression: Compression, authProtocol: AuthProtocol): Message
+    static msBasicConnectExtensionsProvisionedContextsSetNew(operation: ContextOperation, contextType: Uuid, ipType: ContextIpType, state: ContextState, roaming: ContextRoamingControl, mediaType: ContextMediaType, source: ContextSource, accessString: string, userName: string, password: string, compression: Compression, authProtocol: AuthProtocol): Message
     /**
      * Create a new request for the 'Slot Info Status' query command in the 'Ms Basic Connect Extensions' service.
      * @constructor 
@@ -7650,7 +7650,7 @@ class Message {
      * @param unnamedIes the 'UnnamedIes' field, given as a list of # items.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static msBasicConnectV3ConnectSetNew(sessionId: number, activationCommand: ActivationCommand, compression: Compression, authProtocol: AuthProtocol, ipType: ContextIpType, contextType: Uuid, mediaPreference: AccessMediaType, accessString: string | null, userName: string | null, password: string | null, unnamedIes: Tlv[]): Message
+    static msBasicConnectV3ConnectSetNew(sessionId: number, activationCommand: ActivationCommand, compression: Compression, authProtocol: AuthProtocol, ipType: ContextIpType, contextType: Uuid, mediaPreference: AccessMediaType, accessString: string, userName: string, password: string, unnamedIes: Tlv[]): Message
     /**
      * Create a new request for the 'IP Packet Filters' query command in the 'Ms Basic Connect V3' service.
      * @constructor 
@@ -7771,7 +7771,7 @@ class Message {
      * @param data the 'Data' field, given as an array of #guint8 values.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static msUiccLowLevelAccessReadBinaryQueryNew(version: number, applicationId: number[], filePath: number[], readOffset: number, readSize: number, localPin: string | null, data: number[]): Message
+    static msUiccLowLevelAccessReadBinaryQueryNew(version: number, applicationId: number[], filePath: number[], readOffset: number, readSize: number, localPin: string, data: number[]): Message
     /**
      * Create a new request for the 'Read Record' query command in the 'MS UICC Low Level Access' service.
      * @constructor 
@@ -7783,7 +7783,7 @@ class Message {
      * @param data the 'Data' field, given as an array of #guint8 values.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static msUiccLowLevelAccessReadRecordQueryNew(version: number, applicationId: number[], filePath: number[], recordNumber: number, localPin: string | null, data: number[]): Message
+    static msUiccLowLevelAccessReadRecordQueryNew(version: number, applicationId: number[], filePath: number[], recordNumber: number, localPin: string, data: number[]): Message
     /**
      * Create a new request for the 'Reset' query command in the 'MS UICC Low Level Access' service.
      * @constructor 
@@ -7928,7 +7928,7 @@ class Message {
      * @param name the 'Name' field, given as a string.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static phonebookWriteSetNew(saveFlag: PhonebookWriteFlag, saveIndex: number, number: string | null, name: string | null): Message
+    static phonebookWriteSetNew(saveFlag: PhonebookWriteFlag, saveIndex: number, number: string, name: string): Message
     /**
      * Create a new request for the 'Pin List' query command in the 'Basic Connect' service.
      * @constructor 
@@ -7950,7 +7950,7 @@ class Message {
      * @param newPin the 'NewPin' field, given as a string.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static pinSetNew(pinType: PinType, pinOperation: PinOperation, pin: string | null, newPin: string | null): Message
+    static pinSetNew(pinType: PinType, pinOperation: PinOperation, pin: string, newPin: string): Message
     /**
      * Create a new request for the 'Preferred Providers' query command in the 'Basic Connect' service.
      * @constructor 
@@ -7984,7 +7984,7 @@ class Message {
      * @param providerId the 'ProviderId' field, given as a string.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static provisionedContextsSetNew(contextId: number, contextType: Uuid, accessString: string | null, userName: string | null, password: string | null, compression: Compression, authProtocol: AuthProtocol, providerId: string | null): Message
+    static provisionedContextsSetNew(contextId: number, contextType: Uuid, accessString: string, userName: string, password: string, compression: Compression, authProtocol: AuthProtocol, providerId: string): Message
     /**
      * Create a new request for the 'Configuration' set command in the 'Proxy Control' service.
      * @constructor 
@@ -7992,7 +7992,7 @@ class Message {
      * @param timeout the 'Timeout' field, given as a #guint32.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static proxyControlConfigurationSetNew(devicePath: string | null, timeout: number): Message
+    static proxyControlConfigurationSetNew(devicePath: string, timeout: number): Message
     /**
      * Create a new request for the 'File Open' query command in the 'QDU' service.
      * @constructor 
@@ -8089,7 +8089,7 @@ class Message {
      * @param dataClass the 'DataClass' field, given as a #MbimDataClass.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static registerStateSetNew(providerId: string | null, registerAction: RegisterAction, dataClass: DataClass): Message
+    static registerStateSetNew(providerId: string, registerAction: RegisterAction, dataClass: DataClass): Message
     /**
      * Create a new request for the 'Service Activation' set command in the 'Basic Connect' service.
      * @constructor 
@@ -8125,7 +8125,7 @@ class Message {
      * @param scAddress the 'ScAddress' field, given as a string.
      * @returns a newly allocated #MbimMessage, which should be freed with mbim_message_unref().
      */
-    static smsConfigurationSetNew(format: SmsFormat, scAddress: string | null): Message
+    static smsConfigurationSetNew(format: SmsFormat, scAddress: string): Message
     /**
      * Create a new request for the 'Delete' set command in the 'SMS' service.
      * @constructor 
@@ -9149,7 +9149,7 @@ class Tlv {
      * @param str a string.
      * @returns a newly created #MbimTlv which should be freed with mbim_tlv_unref(), or %NULL if @error is set.
      */
-    static stringNew(str: string | null): Tlv
+    static stringNew(str: string): Tlv
 }
 
 interface UiccApplication {
@@ -9274,7 +9274,7 @@ class Uuid {
      * @param uuid pointer to the target #MbimUuid.
      * @returns %TRUE if @uuid was correctly set, %FALSE otherwise.
      */
-    static fromPrintable(str: string | null, uuid: Uuid): boolean
+    static fromPrintable(str: string, uuid: Uuid): boolean
     /**
      * Get the UUID corresponding to `service`.
      * 

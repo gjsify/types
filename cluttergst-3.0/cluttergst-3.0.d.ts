@@ -86,7 +86,7 @@ const VERSION_HEX: number
 /**
  * ClutterGst full version, encoded as a string.
  */
-const VERSION_S: string | null
+const VERSION_S: string
 /**
  * Creates a new #ClutterGstVideoSink initialized with Clutter's Cogl context.
  * @returns the newly created #ClutterGstVideoSink.
@@ -116,7 +116,7 @@ function init(argv: string[] | null): [ /* returnType */ Clutter.InitError, /* a
  * @param translation_domain a translation domain to use for translating    the <option>--help</option> output for the options in `entries`    with gettext(), or %NULL
  * @returns %CLUTTER_INIT_SUCCESS on success, a negative integer   on failure.
  */
-function init_with_args(argv: string[] | null, parameter_string: string | null, entries: GLib.OptionEntry, translation_domain: string | null): [ /* returnType */ Clutter.InitError, /* argv */ string[] | null ]
+function init_with_args(argv: string[] | null, parameter_string: string, entries: GLib.OptionEntry, translation_domain: string): [ /* returnType */ Clutter.InitError, /* argv */ string[] | null ]
 module Player {
 
     // Signal callback interfaces
@@ -543,7 +543,7 @@ interface Camera extends Player {
      * @param cur_value Pointer to store the current value of `property`
      * @returns %TRUE if successful, %FALSE otherwise
      */
-    get_color_balance_property(property: string | null, cur_value: number): boolean
+    get_color_balance_property(property: string, cur_value: number): boolean
     /**
      * Retrieve the minimum, maximum and default values for the color balance property `property,`
      * 
@@ -556,7 +556,7 @@ interface Camera extends Player {
      * @param default_value Pointer to store the default value of `property,` or %NULL
      * @returns %TRUE if successful, %FALSE otherwise
      */
-    get_color_balance_property_range(property: string | null, min_value: number, max_value: number, default_value: number): boolean
+    get_color_balance_property_range(property: string, min_value: number, max_value: number, default_value: number): boolean
     get_contrast(cur_value: number): boolean
     get_contrast_range(min_value: number, max_value: number, default_value: number): boolean
     /**
@@ -624,7 +624,7 @@ interface Camera extends Player {
      * @param value The value to set
      * @returns %TRUE if successful, %FALSE otherwise
      */
-    set_color_balance_property(property: string | null, value: number): boolean
+    set_color_balance_property(property: string, value: number): boolean
     set_contrast(value: number): boolean
     /**
      * Set the filter element to be used.
@@ -853,12 +853,12 @@ interface CameraDevice {
      * Retrieve the name of the `device`.
      * @returns the device name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Retrieve the node (location) of the `device`.
      * @returns the device node.
      */
-    get_node(): string | null
+    get_node(): string
     /**
      * Retrieve the supported resolutions of the `device`.
      * @returns an array of #ClutterGstVideoResolution with the                                supported resolutions.
@@ -1563,7 +1563,7 @@ interface Playback extends Player {
      * Sets the source of `self` using a file path.
      * @param filename A filename
      */
-    set_filename(filename: string | null): void
+    set_filename(filename: string): void
     /**
      * Sets the playback progress of `self`. The `progress` is
      * a normalized value between 0.0 (begin) and 1.0 (end).
@@ -1589,7 +1589,7 @@ interface Playback extends Player {
      * 
      * @param font_name a font name, or %NULL to set the default font name
      */
-    set_subtitle_font_name(font_name: string | null): void
+    set_subtitle_font_name(font_name: string): void
     /**
      * Set the subtitles track to play. `index_` is the index of the stream
      * in the list returned by clutter_gst_playback_get_subtitle_tracks().
@@ -1602,12 +1602,12 @@ interface Playback extends Player {
      * Sets the location of a subtitle file to display while playing `self`.
      * @param uri the URI of a subtitle file
      */
-    set_subtitle_uri(uri: string | null): void
+    set_subtitle_uri(uri: string): void
     /**
      * Sets the URI of `self` to `uri`.
      * @param uri the URI of the media stream
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
     /**
      * Sets the user agent to use when streaming.
      * 
@@ -1616,7 +1616,7 @@ interface Playback extends Player {
      * requires a special user agent you want to impersonate.
      * @param user_agent the user agent
      */
-    set_user_agent(user_agent: string | null): void
+    set_user_agent(user_agent: string): void
 
     // Own virtual methods of ClutterGst-3.0.ClutterGst.Playback
 
@@ -1803,7 +1803,7 @@ interface VideoSink extends GstVideo.ColorBalance, GstVideo.Navigation {
      * @param timestamp the time the control-change should be read from
      * @returns the GValue of the property at the given time, or %NULL if the property isn't controlled.
      */
-    get_value(property_name: string | null, timestamp: Gst.ClockTime): any | null
+    get_value(property_name: string, timestamp: Gst.ClockTime): any | null
     /**
      * Increases the reference count of `object`.
      * 

@@ -82,7 +82,7 @@ const VERSION_HEX: number
 /**
  * ClutterGst full version, encoded as a string.
  */
-const VERSION_S: string | null
+const VERSION_S: string
 /**
  * Utility function to initialize both Clutter and GStreamer.
  * 
@@ -107,7 +107,7 @@ function init(argv?: string[] | null): [ /* returnType */ Clutter.InitError, /* 
  * @param translationDomain a translation domain to use for translating the <option>--help</option> output for the options in `entries` with gettext(), or %NULL
  * @returns %CLUTTER_INIT_SUCCESS on success, a negative integer on failure.
  */
-function initWithArgs(argv: string[] | null, parameterString: string | null, entries: GLib.OptionEntry, translationDomain: string | null): [ /* returnType */ Clutter.InitError, /* argv */ string[] | null ]
+function initWithArgs(argv: string[] | null, parameterString: string, entries: GLib.OptionEntry, translationDomain: string): [ /* returnType */ Clutter.InitError, /* argv */ string[] | null ]
 /**
  * Adds the #ClutterGstPlayer properties to a class and surchages the
  * set/get_property of #GObjectClass. You should call this
@@ -206,7 +206,7 @@ interface Player extends Clutter.Media {
     // Has conflict: setBufferingMode(mode: BufferingMode): void
     // Has conflict: setSeekFlags(flags: SeekFlags): void
     // Has conflict: setSubtitleTrack(index: number): void
-    // Has conflict: setUserAgent(userAgent: string | null): void
+    // Has conflict: setUserAgent(userAgent: string): void
 
     // Own virtual methods of ClutterGst-1.0.ClutterGst.Player
 
@@ -304,7 +304,7 @@ interface Player extends Clutter.Media {
      * @virtual 
      * @param userAgent the user agent
      */
-    setUserAgent(userAgent: string | null): void
+    setUserAgent(userAgent: string): void
 
     // Own signals of ClutterGst-1.0.ClutterGst.Player
 
@@ -817,7 +817,7 @@ interface VideoTexture extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * requires a special user agent you want to impersonate.
      * @param userAgent the user agent
      */
-    setUserAgent(userAgent: string | null): void
+    setUserAgent(userAgent: string): void
 
     // Overloads of setUserAgent
 
@@ -830,7 +830,7 @@ interface VideoTexture extends Atk.ImplementorIface, Clutter.Animatable, Clutter
      * @virtual 
      * @param userAgent the user agent
      */
-    setUserAgent(userAgent: string | null): void
+    setUserAgent(userAgent: string): void
 
     // Conflicting methods
 
@@ -1527,7 +1527,7 @@ interface PlayerIface {
 
     getPipeline: (player: Player) => Gst.Element
     getUserAgent: (player: Player) => string | null
-    setUserAgent: (player: Player, userAgent: string | null) => void
+    setUserAgent: (player: Player, userAgent: string) => void
     getSeekFlags: (player: Player) => SeekFlags
     setSeekFlags: (player: Player, flags: SeekFlags) => void
     getBufferingMode: (player: Player) => BufferingMode

@@ -173,7 +173,7 @@ interface Engine extends Gio.ListModel {
      * @param moduleDir the plugin module directory.
      * @param dataDir the plugin data directory.
      */
-    addSearchPath(moduleDir: string | null, dataDir: string | null): void
+    addSearchPath(moduleDir: string, dataDir: string | null): void
     /**
      * If the plugin identified by `info` implements the `extension_type,`
      * then this function will return a new instance of this implementation.
@@ -216,7 +216,7 @@ interface Engine extends Gio.ListModel {
      *   however a warning has been added to help applications transition.
      * @param loaderName The name of the loader to enable.
      */
-    enableLoader(loaderName: string | null): void
+    enableLoader(loaderName: string): void
     /**
      * Triggers garbage collection on all the loaders currently owned by the
      * #PeasEngine.
@@ -232,7 +232,7 @@ interface Engine extends Gio.ListModel {
      * @param pluginName A plugin name.
      * @returns the #PeasPluginInfo corresponding with   a given plugin module name.
      */
-    getPluginInfo(pluginName: string | null): PluginInfo
+    getPluginInfo(pluginName: string): PluginInfo
     /**
      * Loads the plugin corresponding to `info` if it's not currently loaded.
      * 
@@ -872,7 +872,7 @@ interface PluginInfo {
      * The relevant key in the plugin info file is "Copyright".
      * @returns the plugin's copyright information.
      */
-    getCopyright(): string | null
+    getCopyright(): string
     /**
      * Gets the data dir of the plugin.
      * 
@@ -882,7 +882,7 @@ interface PluginInfo {
      * file was found.
      * @returns the plugin's data dir.
      */
-    getDataDir(): string | null
+    getDataDir(): string
     /**
      * Gets the dependencies of the plugin.
      * 
@@ -904,7 +904,7 @@ interface PluginInfo {
      * The relevant key in the plugin info file is "Description".
      * @returns the plugin's description.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets external data specified for the plugin.
      * 
@@ -917,7 +917,7 @@ interface PluginInfo {
      * @param key The key to lookup.
      * @returns the external data, or %NULL if the external data could not be found.
      */
-    getExternalData(key: string | null): string | null
+    getExternalData(key: string): string | null
     /**
      * Gets the help URI of the plugin.
      * 
@@ -930,7 +930,7 @@ interface PluginInfo {
      * "Help-Windows" and "Help-MacOS-X".
      * @returns the plugin's help URI.
      */
-    getHelpUri(): string | null
+    getHelpUri(): string
     /**
      * Gets the icon name of the plugin.
      * 
@@ -940,7 +940,7 @@ interface PluginInfo {
      * The relevant key in the plugin info file is "Icon".
      * @returns the plugin's icon name.
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Gets the module directory.
      * 
@@ -949,7 +949,7 @@ interface PluginInfo {
      * [class`Engine]`.
      * @returns the module directory.
      */
-    getModuleDir(): string | null
+    getModuleDir(): string
     /**
      * Gets the module name.
      * 
@@ -960,7 +960,7 @@ interface PluginInfo {
      * The relevant key in the plugin info file is "Module".
      * @returns the module name.
      */
-    getModuleName(): string | null
+    getModuleName(): string
     /**
      * Gets the name of the plugin.
      * 
@@ -969,7 +969,7 @@ interface PluginInfo {
      * The relevant key in the plugin info file is "Name".
      * @returns the plugin's name.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Creates a new #GResource for the given `filename`
      * located in the module directory. If `filename` is %NULL
@@ -992,20 +992,20 @@ interface PluginInfo {
      * The relevant key in the plugin info file is "Version".
      * @returns the plugin's version.
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Gets the website of the plugin.
      * 
      * The relevant key in the plugin info file is "Website".
      * @returns the plugin's associated website.
      */
-    getWebsite(): string | null
+    getWebsite(): string
     /**
      * Check if the plugin depends on another plugin.
      * @param moduleName The name of the plugin to check.
      * @returns whether the plugin depends on the plugin @module_name.
      */
-    hasDependency(moduleName: string | null): boolean
+    hasDependency(moduleName: string): boolean
     /**
      * Check if the plugin is available.
      * 

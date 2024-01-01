@@ -299,7 +299,7 @@ const TEST_FLAGS_NONE: number
  * @param encoding the name of the legacy encoding
  * @returns %TRUE iff the legacy encoding @encoding is supported
  */
-function getEncodingSupported(encoding: string | null): boolean
+function getEncodingSupported(encoding: string): boolean
 /**
  * Gets the list of supported legacy encodings.
  * 
@@ -319,7 +319,7 @@ function getFeatureFlags(): FeatureFlags
  * Gets a list of features vte was compiled with.
  * @returns a string with features
  */
-function getFeatures(): string | null
+function getFeatures(): string
 /**
  * Returns the major version of the VTE library at runtime.
  * Contrast this with %VTE_MAJOR_VERSION which represents
@@ -1560,7 +1560,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param tag the tag of the regex which should use the specified cursor
      * @param cursorName the name of the cursor
      */
-    matchSetCursorName(tag: number, cursorName: string | null): void
+    matchSetCursorName(tag: number, cursorName: string): void
     /**
      * Sets which cursor the terminal will use if the pointer is over the pattern
      * specified by `tag`.
@@ -1582,7 +1582,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * `text` before passing it to the child (e.g. apply bracketed mode)
      * @param text a string to paste
      */
-    pasteText(text: string | null): void
+    pasteText(text: string): void
     /**
      * Creates a new #VtePty, sets the emulation property
      * from #VteTerminal:emulation, and sets the size using
@@ -1947,7 +1947,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Use %NULL to reset the set of exception characters to the default.
      * @param exceptions a string of ASCII punctuation characters, or %NULL
      */
-    setWordCharExceptions(exceptions: string | null): void
+    setWordCharExceptions(exceptions: string): void
     /**
      * Sets the horizontal alignment of `terminal` within its allocation.
      * 
@@ -2125,7 +2125,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2138,7 +2138,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -2148,7 +2148,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2161,7 +2161,7 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2170,20 +2170,20 @@ interface Terminal extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Own virtual methods of Vte-2.91.Vte.Terminal
 
     bell(): void
     charSizeChanged(charWidth: number, charHeight: number): void
     childExited(status: number): void
-    commit(text: string | null, size: number): void
+    commit(text: string, size: number): void
     contentsChanged(): void
     /**
      * Places the selected text in the terminal in the #GDK_SELECTION_CLIPBOARD
@@ -2864,7 +2864,7 @@ interface Regex {
      * @param flags PCRE2 match flags
      * @returns the substituted string, or %NULL   if an error occurred
      */
-    substitute(subject: string | null, replacement: string | null, flags: number): string | null
+    substitute(subject: string, replacement: string, flags: number): string | null
     /**
      * Decreases the reference count of `regex` by one, and frees `regex`
      * if the refcount reaches zero.
@@ -2897,7 +2897,7 @@ class Regex {
      * @param flags PCRE2 compile flags
      * @returns a newly created #VteRegex, or %NULL with @error filled in
      */
-    static newForMatch(pattern: string | null, patternLength: number, flags: number): Regex
+    static newForMatch(pattern: string, patternLength: number, flags: number): Regex
     /**
      * Compiles `pattern` into a regex for use as a search regex
      * with vte_terminal_search_set_regex().
@@ -2913,7 +2913,7 @@ class Regex {
      * @param flags PCRE2 compile flags
      * @returns a newly created #VteRegex, or %NULL with @error filled in
      */
-    static newForSearch(pattern: string | null, patternLength: number, flags: number): Regex
+    static newForSearch(pattern: string, patternLength: number, flags: number): Regex
 }
 
 interface TerminalClass {
@@ -2930,7 +2930,7 @@ interface TerminalClass {
     selectionChanged: (terminal: Terminal) => void
     contentsChanged: (terminal: Terminal) => void
     cursorMoved: (terminal: Terminal) => void
-    commit: (terminal: Terminal, text: string | null, size: number) => void
+    commit: (terminal: Terminal, text: string, size: number) => void
     deiconifyWindow: (terminal: Terminal) => void
     iconifyWindow: (terminal: Terminal) => void
     raiseWindow: (terminal: Terminal) => void

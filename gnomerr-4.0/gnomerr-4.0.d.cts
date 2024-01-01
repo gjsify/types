@@ -58,7 +58,7 @@ export enum Rotation {
     REFLECT_X,
     REFLECT_Y,
 }
-export const CONNECTOR_TYPE_PANEL: string | null
+export const CONNECTOR_TYPE_PANEL: string
 /**
  * Returns the error domain used by the GnomeRR API.
  * @returns the GnomeRR error domain
@@ -136,7 +136,7 @@ export interface OutputInfo {
     // Owm methods of GnomeRR-4.0.GnomeRR.OutputInfo
 
     get_aspect_ratio(): number
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Get the geometry for the monitor connected to the specified output.
      * 
@@ -147,16 +147,16 @@ export interface OutputInfo {
      * Retrieves the output name.
      * @returns the output name
      */
-    get_name(): string | null
+    get_name(): string
     get_preferred_height(): number
     get_preferred_width(): number
     get_primary(): boolean
-    get_product(): string | null
+    get_product(): string
     get_refresh_rate(): number
     get_rotation(): Rotation
-    get_serial(): string | null
+    get_serial(): string
     get_underscanning(): boolean
-    get_vendor(): string | null
+    get_vendor(): string
     is_active(): boolean
     is_connected(): boolean
     is_primary_tile(): boolean
@@ -276,7 +276,7 @@ export interface Screen extends Gio.AsyncInitable, Gio.Initable {
      * @param name 
      * @returns the output identified by @name
      */
-    get_output_by_name(name: string | null): Output
+    get_output_by_name(name: string): Output
     /**
      * Get the ranges of the screen
      */
@@ -488,13 +488,13 @@ export interface Output {
      * Retrieves the display name of the given output.
      * @returns the display name
      */
-    get_display_name(): string | null
+    get_display_name(): string
     get_edid_data(size: number): number
     get_id(): number
     /**
      * Retrieves the model identifiers from the EDID of the given output.
      */
-    get_ids_from_edid(): [ /* vendor */ string | null, /* product */ string | null, /* serial */ string | null ]
+    get_ids_from_edid(): [ /* vendor */ string, /* product */ string, /* serial */ string ]
     /**
      * Checks whether the given output is the primary output.
      * @returns `TRUE` if the output is the primary one
@@ -511,7 +511,7 @@ export interface Output {
      * Retrieves the name of the given output.
      * @returns the name of the output
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Retrieves the physical size of the given output.
      */

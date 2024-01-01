@@ -47,7 +47,7 @@ export enum ContactStoreState {
 }
 export function osm_finalize(): void
 export function osm_init(): void
-export function osm_parse(content: string | null, length: number): OSMObject
+export function osm_parse(content: string, length: number): OSMObject
 export interface ContactGeocodeCallback {
     (contact: Contact): void
 }
@@ -179,7 +179,7 @@ export interface ContactStore {
      * Load contacts from available backends.
      */
     load(): void
-    lookup(id: string | null, callback: ContactStoreLookupCallback): void
+    lookup(id: string, callback: ContactStoreLookupCallback): void
 
     // Class property signals of GnomeMaps-1.0.GnomeMaps.ContactStore
 
@@ -514,8 +514,8 @@ export class OSMOAuthProxyCall extends Rest.OAuthProxyCall {
     // Constructors of GnomeMaps-1.0.GnomeMaps.OSMOAuthProxyCall
 
     constructor(config?: OSMOAuthProxyCall.ConstructorProperties) 
-    constructor(proxy: Rest.OAuthProxy, content: string | null) 
-    static new(proxy: Rest.OAuthProxy, content: string | null): OSMOAuthProxyCall
+    constructor(proxy: Rest.OAuthProxy, content: string) 
+    static new(proxy: Rest.OAuthProxy, content: string): OSMOAuthProxyCall
     _init(config?: OSMOAuthProxyCall.ConstructorProperties): void
 }
 
@@ -566,10 +566,10 @@ export interface OSMObject {
 
     // Owm methods of GnomeMaps-1.0.GnomeMaps.OSMObject
 
-    delete_tag(key: string | null): void
-    get_tag(key: string | null): string | null
+    delete_tag(key: string): void
+    get_tag(key: string): string
     serialize(): string | null
-    set_tag(key: string | null, value: string | null): void
+    set_tag(key: string, value: string): void
 
     // Class property signals of GnomeMaps-1.0.GnomeMaps.OSMObject
 
@@ -619,7 +619,7 @@ export interface OSMRelation {
 
     // Owm methods of GnomeMaps-1.0.GnomeMaps.OSMRelation
 
-    add_member(role: string | null, type: number, ref: number): void
+    add_member(role: string, type: number, ref: number): void
 
     // Class property signals of GnomeMaps-1.0.GnomeMaps.OSMRelation
 
@@ -854,7 +854,7 @@ export interface OSMObjectClass {
     // Own fields of GnomeMaps-1.0.GnomeMaps.OSMObjectClass
 
     parent_class: GObject.ObjectClass
-    get_xml_tag_name: () => string | null
+    get_xml_tag_name: () => string
 }
 
 export abstract class OSMObjectClass {

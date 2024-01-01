@@ -361,7 +361,7 @@ function encoding_get_default_candidates(): Encoding[]
  * @param charset a character set.
  * @returns the corresponding #GtkSourceEncoding, or %NULL if not found.
  */
-function encoding_get_from_charset(charset: string | null): Encoding | null
+function encoding_get_from_charset(charset: string): Encoding | null
 function encoding_get_utf8(): Encoding
 function file_loader_error_quark(): GLib.Quark
 function file_saver_error_quark(): GLib.Quark
@@ -458,7 +458,7 @@ function scheduler_remove(handler_id: number): void
  * @param text the text to escape.
  * @returns the escaped @text.
  */
-function utils_escape_search_text(text: string | null): string | null
+function utils_escape_search_text(text: string): string | null
 /**
  * Use this function before [method`SearchSettings`.set_search_text], to
  * unescape the following sequences of characters: `\n`, `\r`, `\t` and `\\`.
@@ -471,7 +471,7 @@ function utils_escape_search_text(text: string | null): string | null
  * @param text the text to unescape.
  * @returns the unescaped @text.
  */
-function utils_unescape_search_text(text: string | null): string | null
+function utils_unescape_search_text(text: string): string | null
 /**
  * This function is called incrementally to process additional background work.
  * A deadline is provided which can be checked using [func`GLib`.get_monotonic_time] so
@@ -1360,7 +1360,7 @@ interface Buffer {
      * @param where location to place the mark.
      * @returns a new [class@Mark], owned by the buffer.
      */
-    create_source_mark(name: string | null, category: string | null, where: Gtk.TextIter): Mark
+    create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark
     /**
      * Forces buffer to analyze and highlight the given area synchronously.
      * 
@@ -1453,7 +1453,7 @@ interface Buffer {
      * @param context_class the context class.
      * @returns whether we found a context class toggle before @iter
      */
-    iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Moves forward to the next toggle (on or off) of the context class.
      * 
@@ -1467,7 +1467,7 @@ interface Buffer {
      * @param context_class the context class.
      * @returns whether we found a context class toggle after @iter
      */
-    iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
+    iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): [ /* returnType */ boolean, /* iter */ Gtk.TextIter ]
     /**
      * Check if the class `context_class` is set on `iter`.
      * 
@@ -1476,7 +1476,7 @@ interface Buffer {
      * @param context_class class to search for.
      * @returns whether @iter has the context class.
      */
-    iter_has_context_class(iter: Gtk.TextIter, context_class: string | null): boolean
+    iter_has_context_class(iter: Gtk.TextIter, context_class: string): boolean
     /**
      * Joins the lines of text between the specified iterators.
      * @param start a #GtkTextIter.
@@ -2022,7 +2022,7 @@ class Completion extends GObject.Object {
      * @param casefold_query the typed-text used to highlight `haystack`
      * @returns a #PangoAttrList or %NULL
      */
-    static fuzzy_highlight(haystack: string | null, casefold_query: string | null): Pango.AttrList | null
+    static fuzzy_highlight(haystack: string, casefold_query: string): Pango.AttrList | null
     /**
      * This helper function can do a fuzzy match for you giving a haystack and
      * casefolded needle.
@@ -2036,7 +2036,7 @@ class Completion extends GObject.Object {
      * @param casefold_needle A g_utf8_casefold() version of the needle.
      * @returns %TRUE if @haystack matched @casefold_needle, otherwise %FALSE.
      */
-    static fuzzy_match(haystack: string | null, casefold_needle: string | null): [ /* returnType */ boolean, /* priority */ number ]
+    static fuzzy_match(haystack: string | null, casefold_needle: string): [ /* returnType */ boolean, /* priority */ number ]
 }
 
 module CompletionCell {
@@ -2075,15 +2075,15 @@ interface CompletionCell extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      */
     get_widget(): Gtk.Widget | null
     set_gicon(gicon: Gio.Icon): void
-    set_icon_name(icon_name: string | null): void
-    set_markup(markup: string | null): void
+    set_icon_name(icon_name: string): void
+    set_markup(markup: string): void
     set_paintable(paintable: Gdk.Paintable): void
     /**
      * Sets the text for the column cell. Use %NULL to unset.
      * @param text the text to set or %NULL
      */
     set_text(text: string | null): void
-    set_text_with_attributes(text: string | null, attrs: Pango.AttrList): void
+    set_text_with_attributes(text: string, attrs: Pango.AttrList): void
     set_widget(child: Gtk.Widget): void
 
     // Class property signals of GtkSource-5.GtkSource.CompletionCell
@@ -3476,7 +3476,7 @@ interface GutterLines {
      * @param line a line number starting from zero
      * @param name a class name
      */
-    add_class(line: number, name: string | null): void
+    add_class(line: number, name: string): void
     /**
      * Adds the class denoted by `qname` to `line`.
      * 
@@ -3543,7 +3543,7 @@ interface GutterLines {
      * @param name a class name that may be converted, to a #GQuark
      * @returns %TRUE if @line contains @name
      */
-    has_class(line: number, name: string | null): boolean
+    has_class(line: number, name: string): boolean
     /**
      * Checks to see if [method`GutterLines`.add_qclass] was called with
      * the quark denoted by `qname` for `line`.
@@ -3581,7 +3581,7 @@ interface GutterLines {
      * @param line a line number starting from zero
      * @param name a class name
      */
-    remove_class(line: number, name: string | null): void
+    remove_class(line: number, name: string): void
     /**
      * Reverses a call to [method`GutterLines`.add_qclass] by removing
      * the [alias`GLib`.Quark] matching `qname`.
@@ -4157,7 +4157,7 @@ interface GutterRendererPixbuf extends Gtk.Accessible, Gtk.Buildable, Gtk.Constr
      * @returns a #GIcon
      */
     get_gicon(): Gio.Icon
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets a [iface`Gdk`.Paintable] that was set with
      * [method`GutterRendererPixbuf`.set_paintable]
@@ -4443,7 +4443,7 @@ interface GutterRendererText extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * #GtkSourceGutterRendererText.
      * @param text the text to measure.
      */
-    measure(text: string | null): [ /* width */ number, /* height */ number ]
+    measure(text: string): [ /* width */ number, /* height */ number ]
 
     // Overloads of measure
 
@@ -4465,9 +4465,9 @@ interface GutterRendererText extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * #GtkSourceGutterRendererText.
      * @param markup the pango markup to measure.
      */
-    measure_markup(markup: string | null): [ /* width */ number, /* height */ number ]
-    set_markup(markup: string | null, length: number): void
-    set_text(text: string | null, length: number): void
+    measure_markup(markup: string): [ /* width */ number, /* height */ number ]
+    set_markup(markup: string, length: number): void
+    set_text(text: string, length: number): void
 
     // Conflicting methods
 
@@ -5055,8 +5055,8 @@ interface Language {
      * and should not be freed or modified.
      * @returns the ID of @language.
      */
-    get_id(): string | null
-    get_metadata(name: string | null): string | null
+    get_id(): string
+    get_metadata(name: string): string | null
     /**
      * Returns the mime types associated to this language.
      * 
@@ -5073,7 +5073,7 @@ interface Language {
      * or modified.
      * @returns the name of @language.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns the localized section of the language.
      * 
@@ -5083,14 +5083,14 @@ interface Language {
      * or modified.
      * @returns the section of @language.
      */
-    get_section(): string | null
+    get_section(): string
     /**
      * Returns the ID of the style to use if the specified `style_id`
      * is not present in the current style scheme.
      * @param style_id a style ID.
      * @returns the ID of the style to use if the specified @style_id is not present in the current style scheme or %NULL if the style has no fallback defined. The returned string is owned by the @language and must not be modified.
      */
-    get_style_fallback(style_id: string | null): string | null
+    get_style_fallback(style_id: string): string | null
     /**
      * Returns the ids of the styles defined by this `language`.
      * @returns  a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
@@ -5101,7 +5101,7 @@ interface Language {
      * @param style_id a style ID.
      * @returns the name of the style with ID @style_id defined by this @language or %NULL if the style has no name or there is no style with ID @style_id defined by this @language. The returned string is owned by the @language and must not be modified.
      */
-    get_style_name(style_id: string | null): string | null
+    get_style_name(style_id: string): string | null
 
     // Class property signals of GtkSource-5.GtkSource.Language
 
@@ -5178,14 +5178,14 @@ interface LanguageManager {
      * See [method`LanguageManager`.set_search_path] for details.
      * @param path a directory or a filename.
      */
-    append_search_path(path: string | null): void
+    append_search_path(path: string): void
     /**
      * Gets the [class`Language]` identified by the given `id` in the language
      * manager.
      * @param id a language id.
      * @returns a #GtkSourceLanguage, or %NULL if there is no language identified by the given @id. Return value is owned by @lm and should not be freed.
      */
-    get_language(id: string | null): Language | null
+    get_language(id: string): Language | null
     /**
      * Returns the ids of the available languages.
      * @returns  a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
@@ -5246,7 +5246,7 @@ interface LanguageManager {
      * See [method`LanguageManager`.set_search_path] for details.
      * @param path a directory or a filename.
      */
-    prepend_search_path(path: string | null): void
+    prepend_search_path(path: string): void
     /**
      * Sets the list of directories where the `lm` looks for
      * language files.
@@ -5743,7 +5743,7 @@ interface Mark {
      * Returns the mark category.
      * @returns the category of the #GtkSourceMark.
      */
-    get_category(): string | null
+    get_category(): string
     /**
      * Returns the next `GtkSourceMark` in the buffer or %NULL if the mark
      * was not added to a buffer.
@@ -5823,7 +5823,7 @@ class Mark extends Gtk.TextMark {
      * @param category is used to classify marks according to common characteristics   (e.g. all the marks representing a bookmark could belong to the "bookmark"   category, or all the marks representing a compilation error could belong   to "error" category).
      * @returns a new #GtkSourceMark that can be added using [method@Gtk.TextBuffer.add_mark].
      */
-    constructor(name: string | null, category: string | null) 
+    constructor(name: string | null, category: string) 
     /**
      * Creates a text mark.
      * 
@@ -5837,7 +5837,7 @@ class Mark extends Gtk.TextMark {
      * @param category is used to classify marks according to common characteristics   (e.g. all the marks representing a bookmark could belong to the "bookmark"   category, or all the marks representing a compilation error could belong   to "error" category).
      * @returns a new #GtkSourceMark that can be added using [method@Gtk.TextBuffer.add_mark].
      */
-    static new(name: string | null, category: string | null): Mark
+    static new(name: string | null, category: string): Mark
 
     // Overloads of new
 
@@ -5956,7 +5956,7 @@ interface MarkAttributes {
      * Note that the icon name can be %NULL if it wasn't set earlier.
      * @returns An icon name. The string belongs to @attributes and should not be freed.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets a [class`GdkPixbuf`.Pixbuf] to be used as a base for rendered icon.
      * 
@@ -6009,7 +6009,7 @@ interface MarkAttributes {
      * Sets a name of an icon to be used as a base for rendered icon.
      * @param icon_name name of an icon to be used.
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * Sets a pixbuf to be used as a base for rendered icon.
      * @param pixbuf a #GdkPixbuf to be used.
@@ -6775,7 +6775,7 @@ interface PrintCompositor {
      * [method`PrintCompositor`.paginate] function.
      * @param font_name the name of the default font for the body text.
      */
-    set_body_font_name(font_name: string | null): void
+    set_body_font_name(font_name: string): void
     /**
      * Sets the bottom margin used by `compositor`.
      * @param margin the new bottom margin in units of `unit`.
@@ -7487,7 +7487,7 @@ interface SearchContext {
      * @param replace_length the length of `replace` in bytes, or -1.
      * @returns whether the match has been replaced.
      */
-    replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string | null, replace_length: number): boolean
+    replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean
     /**
      * Replaces all search matches by another text.
      * 
@@ -7500,7 +7500,7 @@ interface SearchContext {
      * @param replace_length the length of `replace` in bytes, or -1.
      * @returns the number of replaced matches.
      */
-    replace_all(replace: string | null, replace_length: number): number
+    replace_all(replace: string, replace_length: number): number
     /**
      * Enables or disables the search occurrences highlighting.
      * @param highlight the setting.
@@ -7934,7 +7934,7 @@ interface Snippet {
     /**
      * Gets the description for the snippet.
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the current focus for the snippet.
      * 
@@ -7949,7 +7949,7 @@ interface Snippet {
      * source language [property`Language:`id] property.
      * @returns the language identifier
      */
-    get_language_id(): string | null
+    get_language_id(): string
     /**
      * Gets the number of chunks in the snippet.
      * 
@@ -7960,7 +7960,7 @@ interface Snippet {
     /**
      * Gets the name for the snippet.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the chunk at `nth`.
      * @param nth the nth chunk to get
@@ -7979,24 +7979,24 @@ interface Snippet {
      * Sets the description for the snippet.
      * @param description the snippet description
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the language identifier for the snippet.
      * 
      * This should match the [property`Language:`id] identifier.
      * @param language_id the language identifier for the snippet
      */
-    set_language_id(language_id: string | null): void
+    set_language_id(language_id: string): void
     /**
      * Sets the name for the snippet.
      * @param name the snippet name
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the trigger for the snippet.
      * @param trigger the trigger word
      */
-    set_trigger(trigger: string | null): void
+    set_trigger(trigger: string): void
 
     // Class property signals of GtkSource-5.GtkSource.Snippet
 
@@ -8072,7 +8072,7 @@ class Snippet extends GObject.Object {
      * @param text the formatted snippet text to parse
      * @returns the newly parsed #GtkSourceSnippet, or %NULL upon   failure and @error is set.
      */
-    static new_parsed(text: string | null): Snippet
+    static new_parsed(text: string): Snippet
     _init(config?: Snippet.ConstructorProperties): void
 }
 
@@ -8154,14 +8154,14 @@ interface SnippetChunk {
      * returned.
      * @returns the text of the chunk
      */
-    get_text(): string | null
+    get_text(): string
     /**
      * Gets the [property`SnippetChunk:`text-set] property.
      * 
      * This is typically set when the user has edited a snippet chunk.
      */
     get_text_set(): boolean
-    get_tooltip_text(): string | null
+    get_tooltip_text(): string
     set_context(context: SnippetContext): void
     /**
      * Sets the [property`SnippetChunk:`focus-position] property.
@@ -8185,7 +8185,7 @@ interface SnippetChunk {
      * are updated.
      * @param spec the new specification for the chunk
      */
-    set_spec(spec: string | null): void
+    set_spec(spec: string): void
     /**
      * Sets the text for the snippet chunk.
      * 
@@ -8194,7 +8194,7 @@ interface SnippetChunk {
      * specification.
      * @param text the text of the property
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
     /**
      * Sets the [property`SnippetChunk:`text-set] property.
      * 
@@ -8203,7 +8203,7 @@ interface SnippetChunk {
      * @param text_set the property value
      */
     set_text_set(text_set: boolean): void
-    set_tooltip_text(tooltip_text: string | null): void
+    set_tooltip_text(tooltip_text: string): void
 
     // Class property signals of GtkSource-5.GtkSource.SnippetChunk
 
@@ -8292,13 +8292,13 @@ interface SnippetContext {
      * Removes all variables from the context.
      */
     clear_variables(): void
-    expand(input: string | null): string | null
+    expand(input: string): string | null
     /**
      * Gets the current value for a variable named `key`.
      * @param key the name of the variable
      * @returns the value for the variable, or %NULL
      */
-    get_variable(key: string | null): string | null
+    get_variable(key: string): string | null
     /**
      * Sets a constatnt within the context.
      * 
@@ -8309,8 +8309,8 @@ interface SnippetContext {
      * @param key the constant name
      * @param value the value of the constant
      */
-    set_constant(key: string | null, value: string | null): void
-    set_line_prefix(line_prefix: string | null): void
+    set_constant(key: string, value: string): void
+    set_line_prefix(line_prefix: string): void
     set_tab_width(tab_width: number): void
     set_use_spaces(use_spaces: boolean): void
     /**
@@ -8321,7 +8321,7 @@ interface SnippetContext {
      * @param key the variable name
      * @param value the value for the variable
      */
-    set_variable(key: string | null, value: string | null): void
+    set_variable(key: string, value: string): void
 
     // Own signals of GtkSource-5.GtkSource.SnippetContext
 
@@ -8430,7 +8430,7 @@ interface SnippetManager {
      * @param trigger the trigger for the snippet
      * @returns a #GtkSourceSnippet or %NULL if no   matching snippet was found.
      */
-    get_snippet(group: string | null, language_id: string | null, trigger: string | null): Snippet | null
+    get_snippet(group: string | null, language_id: string | null, trigger: string): Snippet | null
     /**
      * Gets a [iface`Gio`.ListModel] of all snippets.
      * 
@@ -8600,7 +8600,7 @@ interface SpaceDrawer {
      * @param key the `settings` key to bind.
      * @param flags flags for the binding.
      */
-    bind_matrix_setting(settings: Gio.Settings, key: string | null, flags: Gio.SettingsBindFlags): void
+    bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void
     get_enable_matrix(): boolean
     /**
      * Gets the value of the [property`SpaceDrawer:`matrix] property, as a [struct`GLib`.Variant].
@@ -8977,15 +8977,15 @@ interface StyleScheme {
     get_authors(): string[] | null
     get_description(): string | null
     get_filename(): string | null
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets a metadata property from the style scheme.
      * @param name metadata property name.
      * @returns value of property @name stored in   the metadata of @scheme or %NULL if @scheme does not contain the   specified metadata property.
      */
-    get_metadata(name: string | null): string | null
-    get_name(): string | null
-    get_style(style_id: string | null): Style | null
+    get_metadata(name: string): string | null
+    get_name(): string
+    get_style(style_id: string): Style | null
 
     // Class property signals of GtkSource-5.GtkSource.StyleScheme
 
@@ -9429,7 +9429,7 @@ interface StyleSchemeManager {
      * See [method`StyleSchemeManager`.set_search_path] for details.
      * @param path a directory or a filename.
      */
-    append_search_path(path: string | null): void
+    append_search_path(path: string): void
     /**
      * Mark any currently cached information about the available style schems
      * as invalid.
@@ -9442,7 +9442,7 @@ interface StyleSchemeManager {
      * @param scheme_id style scheme id to find.
      * @returns a #GtkSourceStyleScheme object.   The returned value is owned by @manager and must not be unref'ed.
      */
-    get_scheme(scheme_id: string | null): StyleScheme | null
+    get_scheme(scheme_id: string): StyleScheme | null
     /**
      * Returns the ids of the available style schemes.
      * @returns  a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
@@ -9462,7 +9462,7 @@ interface StyleSchemeManager {
      * See [method`StyleSchemeManager`.set_search_path] for details.
      * @param path a directory or a filename.
      */
-    prepend_search_path(path: string | null): void
+    prepend_search_path(path: string): void
     /**
      * Sets the list of directories where the `manager` looks for
      * style scheme files.
@@ -10557,7 +10557,7 @@ interface View extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.
      * @param priority place where priority of the category will be stored.
      * @returns #GtkSourceMarkAttributes for the @category. The object belongs to @view, so it must not be unreffed.
      */
-    get_mark_attributes(category: string | null, priority: number): MarkAttributes
+    get_mark_attributes(category: string, priority: number): MarkAttributes
     /**
      * Gets the position of the right margin in the given `view`.
      * @returns the position of the right margin.
@@ -10717,7 +10717,7 @@ interface View extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget, Gtk.
      * @param attributes mark attributes.
      * @param priority priority of the category.
      */
-    set_mark_attributes(category: string | null, attributes: MarkAttributes, priority: number): void
+    set_mark_attributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
      * @param pos the width in characters where to position the right margin.
@@ -11237,17 +11237,17 @@ interface VimIMContext {
      * [signal`VimIMContext:`:execute-command] signal.
      * @param command the command text
      */
-    execute_command(command: string | null): void
+    execute_command(command: string): void
     /**
      * Gets the current command-bar text as it is entered by the user.
      * @returns A string containing the command-bar text
      */
-    get_command_bar_text(): string | null
+    get_command_bar_text(): string
     /**
      * Gets the current command text as it is entered by the user.
      * @returns A string containing the command text
      */
-    get_command_text(): string | null
+    get_command_text(): string
 
     // Own signals of GtkSource-5.GtkSource.VimIMContext
 
@@ -11490,12 +11490,12 @@ interface Encoding {
      * "ISO-8859-1".
      * @returns the character set of the #GtkSourceEncoding.
      */
-    get_charset(): string | null
+    get_charset(): string
     /**
      * Gets the name of the #GtkSourceEncoding such as "Unicode" or "Western".
      * @returns the name of the #GtkSourceEncoding.
      */
-    get_name(): string | null
+    get_name(): string
     to_string(): string | null
 }
 
@@ -11544,7 +11544,7 @@ class Encoding {
      * @param charset a character set.
      * @returns the corresponding #GtkSourceEncoding, or %NULL if not found.
      */
-    static get_from_charset(charset: string | null): Encoding | null
+    static get_from_charset(charset: string): Encoding | null
     static get_utf8(): Encoding
 }
 

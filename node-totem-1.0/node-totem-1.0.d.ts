@@ -158,7 +158,7 @@ enum RemoteSetting {
 /**
  * The GSettings schema under which all Totem settings are stored.
  */
-const GSETTINGS_SCHEMA: string | null
+const GSETTINGS_SCHEMA: string
 /**
  * Return a %NULL-terminated array of paths to directories which can contain Totem plugins. This respects the GSettings disable_user_plugins setting.
  * @returns a %NULL-terminated array of paths to plugin directories
@@ -173,7 +173,7 @@ function getPluginPaths(): string[]
  * @param packType A #GtkPackType to tell us where to include the button
  * @returns the button passed as input
  */
-function interfaceCreateHeaderButton(header: Gtk.Widget, button: Gtk.Widget, iconName: string | null, packType: Gtk.PackType): Gtk.Widget
+function interfaceCreateHeaderButton(header: Gtk.Widget, button: Gtk.Widget, iconName: string, packType: Gtk.PackType): Gtk.Widget
 /**
  * Display a modal error dialogue with `title` as its primary error text, and `reason`
  * as its secondary text.
@@ -181,7 +181,7 @@ function interfaceCreateHeaderButton(header: Gtk.Widget, button: Gtk.Widget, ico
  * @param reason the error reason (secondary text)
  * @param parent the error dialogue's parent #GtkWindow
  */
-function interfaceError(title: string | null, reason: string | null, parent: Gtk.Window): void
+function interfaceError(title: string, reason: string, parent: Gtk.Window): void
 /**
  * Display a modal error dialogue like totem_interface_error() which blocks until the user has
  * dismissed it.
@@ -189,7 +189,7 @@ function interfaceError(title: string | null, reason: string | null, parent: Gtk
  * @param reason the error reason (secondary text)
  * @param parent the error dialogue's parent #GtkWindow
  */
-function interfaceErrorBlocking(title: string | null, reason: string | null, parent: Gtk.Window): void
+function interfaceErrorBlocking(title: string, reason: string, parent: Gtk.Window): void
 /**
  * Display a modal error dialogue like totem_interface_error(),
  * but add a button which will open `uri` in a browser window.
@@ -199,8 +199,8 @@ function interfaceErrorBlocking(title: string | null, reason: string | null, par
  * @param label a label for the URI's button, or %NULL to use `uri` as the label
  * @param parent the error dialogue's parent #GtkWindow
  */
-function interfaceErrorWithLink(title: string | null, reason: string | null, uri: string | null, label: string | null, parent: Gtk.Window): void
-function interfaceGetFullPath(name: string | null): string | null
+function interfaceErrorWithLink(title: string, reason: string, uri: string, label: string, parent: Gtk.Window): void
+function interfaceGetFullPath(name: string): string | null
 /**
  * Load a #GtkBuilder UI file with the given name and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
  * @param name the #GtkBuilder UI file to load
@@ -209,13 +209,13 @@ function interfaceGetFullPath(name: string | null): string | null
  * @param userData the user data to pass to gtk_builder_connect_signals(), or %NULL
  * @returns the loaded #GtkBuilder object, or %NULL
  */
-function interfaceLoad(name: string | null, fatal: boolean, parent: Gtk.Window | null, userData: any | null): Gtk.Builder
+function interfaceLoad(name: string, fatal: boolean, parent: Gtk.Window | null, userData: any | null): Gtk.Builder
 /**
  * Load the image called `name` in the directory given by totem_interface_get_full_path() into a #GdkPixbuf.
  * @param name the image file name
  * @returns the loaded pixbuf, or %NULL
  */
-function interfaceLoadPixbuf(name: string | null): GdkPixbuf.Pixbuf
+function interfaceLoadPixbuf(name: string): GdkPixbuf.Pixbuf
 /**
  * Load a #GtkBuilder UI file from the given path and return the #GtkBuilder instance for it. If loading the file fails, an error dialogue is shown.
  * @param filename the #GtkBuilder UI file path to load
@@ -224,7 +224,7 @@ function interfaceLoadPixbuf(name: string | null): GdkPixbuf.Pixbuf
  * @param userData the user data to pass to gtk_builder_connect_signals(), or %NULL
  * @returns the loaded #GtkBuilder object, or %NULL
  */
-function interfaceLoadWithFullPath(filename: string | null, fatal: boolean, parent: Gtk.Window | null, userData: any | null): Gtk.Builder
+function interfaceLoadWithFullPath(filename: string, fatal: boolean, parent: Gtk.Window | null, userData: any | null): Gtk.Builder
 /**
  * Finds the specified `file` by looking in the plugin paths
  * listed by totem_get_plugin_paths() and then in the system
@@ -236,7 +236,7 @@ function interfaceLoadWithFullPath(filename: string | null, fatal: boolean, pare
  * @param file the file to find
  * @returns a newly-allocated absolute path for the file, or %NULL
  */
-function pluginFindFile(pluginName: string | null, file: string | null): string | null
+function pluginFindFile(pluginName: string, file: string): string | null
 /**
  * Loads an interface file (GtkBuilder UI file) for a plugin, given its filename and
  * assuming it's installed in the plugin's data directory.
@@ -249,7 +249,7 @@ function pluginFindFile(pluginName: string | null, file: string | null): string 
  * @param userData a pointer to be passed to each signal handler in the interface when they're called
  * @returns the #GtkBuilder instance for the interface
  */
-function pluginLoadInterface(pluginName: string | null, name: string | null, fatal: boolean, parent: Gtk.Window | null, userData: any | null): Gtk.Builder
+function pluginLoadInterface(pluginName: string, name: string, fatal: boolean, parent: Gtk.Window | null, userData: any | null): Gtk.Builder
 function remoteCommandQuark(): GLib.Quark
 function remoteSettingQuark(): GLib.Quark
 module Object {
@@ -356,13 +356,13 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param displayName the display name of the URI
      * @param play whether to play the added item
      */
-    addToPlaylist(uri: string | null, displayName: string | null, play: boolean): void
+    addToPlaylist(uri: string, displayName: string, play: boolean): void
     /**
      * Adds a local media file to the main view.
      * @param file a #GFile representing a media
      * @param title a title for the media, or %NULL
      */
-    addToView(file: Gio.File, title: string | null): void
+    addToView(file: Gio.File, title: string): void
     /**
      * Returns true if totem_object_seek_next() would have an effect.
      */
@@ -381,7 +381,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * will not have the associated action removed.
      * @param id the ID for the menu section to empty
      */
-    emptyMenuSection(id: string | null): void
+    emptyMenuSection(id: string): void
     /**
      * Closes Totem.
      */
@@ -407,7 +407,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param id the ID for the menu section to look up
      * @returns a #GMenu or %NULL on failure
      */
-    getMenuSection(id: string | null): Gio.Menu | null
+    getMenuSection(id: string): Gio.Menu | null
     /**
      * Returns the length of the current playlist.
      * @returns the playlist length
@@ -495,7 +495,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param cmd a #TotemRemoteCommand
      * @param url an MRL to play, or %NULL
      */
-    remoteCommand(cmd: RemoteCommand, url: string | null): void
+    remoteCommand(cmd: RemoteCommand, url: string): void
     /**
      * Returns the value of `setting` for this instance of Totem.
      * @param setting a #TotemRemoteSetting
@@ -538,7 +538,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * playlist entry.
      * @param subtitleUri the URI of the subtitle file to add
      */
-    setCurrentSubtitle(subtitleUri: string | null): void
+    setCurrentSubtitle(subtitleUri: string): void
     /**
      * Sets the playback rate, with `1.0` being the normal playback rate.
      * @param rate the new absolute playback rate
@@ -556,7 +556,7 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
      * @param title the error dialog title
      * @param reason the error dialog text
      */
-    showError(title: string | null, reason: string | null): void
+    showError(title: string, reason: string): void
     /**
      * Stops playback, and sets the playlist back at the start.
      */
@@ -565,11 +565,11 @@ interface Object extends Gio.ActionGroup, Gio.ActionMap {
     // Own virtual methods of Totem-1.0.Totem.Object
 
     fileClosed(): void
-    fileHasPlayed(mrl: string | null): void
-    fileOpened(mrl: string | null): void
-    getTextSubtitle(mrl: string | null): string | null
-    getUserAgent(mrl: string | null): string | null
-    metadataUpdated(artist: string | null, title: string | null, album: string | null, trackNum: number): void
+    fileHasPlayed(mrl: string): void
+    fileOpened(mrl: string): void
+    getTextSubtitle(mrl: string): string | null
+    getUserAgent(mrl: string): string | null
+    metadataUpdated(artist: string, title: string, album: string, trackNum: number): void
 
     // Own signals of Totem-1.0.Totem.Object
 
@@ -764,12 +764,12 @@ interface ObjectClass {
     // Own fields of Totem-1.0.Totem.ObjectClass
 
     parentClass: Gtk.ApplicationClass
-    fileOpened: (totem: Object, mrl: string | null) => void
+    fileOpened: (totem: Object, mrl: string) => void
     fileClosed: (totem: Object) => void
-    fileHasPlayed: (totem: Object, mrl: string | null) => void
-    metadataUpdated: (totem: Object, artist: string | null, title: string | null, album: string | null, trackNum: number) => void
-    getUserAgent: (totem: Object, mrl: string | null) => string | null
-    getTextSubtitle: (totem: Object, mrl: string | null) => string | null
+    fileHasPlayed: (totem: Object, mrl: string) => void
+    metadataUpdated: (totem: Object, artist: string, title: string, album: string, trackNum: number) => void
+    getUserAgent: (totem: Object, mrl: string) => string | null
+    getTextSubtitle: (totem: Object, mrl: string) => string | null
 }
 
 abstract class ObjectClass {

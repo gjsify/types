@@ -331,61 +331,61 @@ export enum ReminderWatcherDescribeFlags {
 /**
  * An email address preferred for e-mail reminders by the calendar.
  */
-export const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string | null
+export const BACKEND_PROPERTY_ALARM_EMAIL_ADDRESS: string
 /**
  * An email address associated with the calendar.
  */
-export const BACKEND_PROPERTY_CAL_EMAIL_ADDRESS: string | null
+export const BACKEND_PROPERTY_CAL_EMAIL_ADDRESS: string
 /**
  * A default object for the calendar. Calendars use VEVENT, memo lists VJOURNAL
  * and task lists VTODO, which can have prefilled values by the backend.
  */
-export const BACKEND_PROPERTY_DEFAULT_OBJECT: string | null
+export const BACKEND_PROPERTY_DEFAULT_OBJECT: string
 /**
  * The current overall revision string, this can be used as
  * a quick check to see if data has changed at all since the
  * last time the calendar revision was observed.
  */
-export const BACKEND_PROPERTY_REVISION: string | null
+export const BACKEND_PROPERTY_REVISION: string
 /**
  * Extension property for alarm components so that we can reference them by UID.
  */
-export const EVOLUTION_ALARM_UID_PROPERTY: string | null
+export const EVOLUTION_ALARM_UID_PROPERTY: string
 /**
  * The X parameter name being used to store the enddate in RRULE and EXRULE properties.
  */
-export const EVOLUTION_ENDDATE_PARAMETER: string | null
+export const EVOLUTION_ENDDATE_PARAMETER: string
 export const LIBICAL_GLIB_UNSTABLE_API: number
 /**
  * Flag indicating that the backend supports alarm description
  */
-export const STATIC_CAPABILITY_ALARM_DESCRIPTION: string | null
+export const STATIC_CAPABILITY_ALARM_DESCRIPTION: string
 /**
  * Let the client know that it should store All Day event times as time
  * with a time zone, rather than as a date.
  */
-export const STATIC_CAPABILITY_ALL_DAY_EVENT_AS_TIME: string | null
+export const STATIC_CAPABILITY_ALL_DAY_EVENT_AS_TIME: string
 /**
  * Flag indicating that the backend supports bulk additions.
  */
-export const STATIC_CAPABILITY_BULK_ADDS: string | null
+export const STATIC_CAPABILITY_BULK_ADDS: string
 /**
  * Flag indicating that the backend supports bulk modifications.
  */
-export const STATIC_CAPABILITY_BULK_MODIFIES: string | null
+export const STATIC_CAPABILITY_BULK_MODIFIES: string
 /**
  * Flag indicating that the backend supports bulk removals.
  */
-export const STATIC_CAPABILITY_BULK_REMOVES: string | null
+export const STATIC_CAPABILITY_BULK_REMOVES: string
 /**
  * When the capability is set, the client supports storing color
  * for individual components.
  */
-export const STATIC_CAPABILITY_COMPONENT_COLOR: string | null
-export const STATIC_CAPABILITY_CREATE_MESSAGES: string | null
-export const STATIC_CAPABILITY_DELEGATE_SUPPORTED: string | null
-export const STATIC_CAPABILITY_DELEGATE_TO_MANY: string | null
-export const STATIC_CAPABILITY_HAS_UNACCEPTED_MEETING: string | null
+export const STATIC_CAPABILITY_COMPONENT_COLOR: string
+export const STATIC_CAPABILITY_CREATE_MESSAGES: string
+export const STATIC_CAPABILITY_DELEGATE_SUPPORTED: string
+export const STATIC_CAPABILITY_DELEGATE_TO_MANY: string
+export const STATIC_CAPABILITY_HAS_UNACCEPTED_MEETING: string
 /**
  * Set, when the backend supports %E_CAL_STATIC_CAPABILITY_SAVE_SCHEDULES and
  * it can suppress iTip message on component removal. The capability should
@@ -394,80 +394,80 @@ export const STATIC_CAPABILITY_HAS_UNACCEPTED_MEETING: string | null
  * The backend checks %E_CAL_OPERATION_FLAG_DISABLE_ITIP_MESSAGE flag when these
  * capabilities are present and sends or does not send iTip message accordingly.
  */
-export const STATIC_CAPABILITY_ITIP_SUPPRESS_ON_REMOVE_SUPPORTED: string | null
+export const STATIC_CAPABILITY_ITIP_SUPPRESS_ON_REMOVE_SUPPORTED: string
 /**
  * Flag indicating that the backend does not support alarm after start the event
  */
-export const STATIC_CAPABILITY_NO_ALARM_AFTER_START: string | null
-export const STATIC_CAPABILITY_NO_ALARM_REPEAT: string | null
-export const STATIC_CAPABILITY_NO_AUDIO_ALARMS: string | null
-export const STATIC_CAPABILITY_NO_CONV_TO_ASSIGN_TASK: string | null
-export const STATIC_CAPABILITY_NO_CONV_TO_RECUR: string | null
-export const STATIC_CAPABILITY_NO_DISPLAY_ALARMS: string | null
-export const STATIC_CAPABILITY_NO_EMAIL_ALARMS: string | null
-export const STATIC_CAPABILITY_NO_GEN_OPTIONS: string | null
-export const STATIC_CAPABILITY_NO_MEMO_START_DATE: string | null
-export const STATIC_CAPABILITY_NO_ORGANIZER: string | null
-export const STATIC_CAPABILITY_NO_PROCEDURE_ALARMS: string | null
-export const STATIC_CAPABILITY_NO_TASK_ASSIGNMENT: string | null
-export const STATIC_CAPABILITY_NO_THISANDFUTURE: string | null
-export const STATIC_CAPABILITY_NO_THISANDPRIOR: string | null
-export const STATIC_CAPABILITY_NO_TRANSPARENCY: string | null
-export const STATIC_CAPABILITY_ONE_ALARM_ONLY: string | null
-export const STATIC_CAPABILITY_ORGANIZER_MUST_ACCEPT: string | null
-export const STATIC_CAPABILITY_ORGANIZER_MUST_ATTEND: string | null
-export const STATIC_CAPABILITY_ORGANIZER_NOT_EMAIL_ADDRESS: string | null
-export const STATIC_CAPABILITY_RECURRENCES_NO_MASTER: string | null
-export const STATIC_CAPABILITY_REFRESH_SUPPORTED: string | null
-export const STATIC_CAPABILITY_REMOVE_ALARMS: string | null
+export const STATIC_CAPABILITY_NO_ALARM_AFTER_START: string
+export const STATIC_CAPABILITY_NO_ALARM_REPEAT: string
+export const STATIC_CAPABILITY_NO_AUDIO_ALARMS: string
+export const STATIC_CAPABILITY_NO_CONV_TO_ASSIGN_TASK: string
+export const STATIC_CAPABILITY_NO_CONV_TO_RECUR: string
+export const STATIC_CAPABILITY_NO_DISPLAY_ALARMS: string
+export const STATIC_CAPABILITY_NO_EMAIL_ALARMS: string
+export const STATIC_CAPABILITY_NO_GEN_OPTIONS: string
+export const STATIC_CAPABILITY_NO_MEMO_START_DATE: string
+export const STATIC_CAPABILITY_NO_ORGANIZER: string
+export const STATIC_CAPABILITY_NO_PROCEDURE_ALARMS: string
+export const STATIC_CAPABILITY_NO_TASK_ASSIGNMENT: string
+export const STATIC_CAPABILITY_NO_THISANDFUTURE: string
+export const STATIC_CAPABILITY_NO_THISANDPRIOR: string
+export const STATIC_CAPABILITY_NO_TRANSPARENCY: string
+export const STATIC_CAPABILITY_ONE_ALARM_ONLY: string
+export const STATIC_CAPABILITY_ORGANIZER_MUST_ACCEPT: string
+export const STATIC_CAPABILITY_ORGANIZER_MUST_ATTEND: string
+export const STATIC_CAPABILITY_ORGANIZER_NOT_EMAIL_ADDRESS: string
+export const STATIC_CAPABILITY_RECURRENCES_NO_MASTER: string
+export const STATIC_CAPABILITY_REFRESH_SUPPORTED: string
+export const STATIC_CAPABILITY_REMOVE_ALARMS: string
 /**
  * FIXME: Document me.
  */
-export const STATIC_CAPABILITY_REMOVE_ONLY_THIS: string | null
-export const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string | null
+export const STATIC_CAPABILITY_REMOVE_ONLY_THIS: string
+export const STATIC_CAPABILITY_REQ_SEND_OPTIONS: string
 /**
  * Set, when the backend supports retract. That's a way to ask for a meeting
  * deletion with a comment, which is stored in a component as
  * X-EVOLUTION-RETRACT-COMMENT property.
  */
-export const STATIC_CAPABILITY_RETRACT_SUPPORTED: string | null
-export const STATIC_CAPABILITY_SAVE_SCHEDULES: string | null
+export const STATIC_CAPABILITY_RETRACT_SUPPORTED: string
+export const STATIC_CAPABILITY_SAVE_SCHEDULES: string
 /**
  * When the capability is set, the backend handles only simple memos,
  * which means it stores only memo description. The summary can be changed
  * by the backend, if needed.
  */
-export const STATIC_CAPABILITY_SIMPLE_MEMO: string | null
+export const STATIC_CAPABILITY_SIMPLE_MEMO: string
 /**
  * Similar to the %E_CAL_STATIC_CAPABILITY_SIMPLE_MEMO, except the backend stores
  * the description and the summary separately.
  */
-export const STATIC_CAPABILITY_SIMPLE_MEMO_WITH_SUMMARY: string | null
+export const STATIC_CAPABILITY_SIMPLE_MEMO_WITH_SUMMARY: string
 /**
  * When the capability is set, the client can store and provide recurring
  * tasks, otherwise it cannot.
  */
-export const STATIC_CAPABILITY_TASK_CAN_RECUR: string | null
+export const STATIC_CAPABILITY_TASK_CAN_RECUR: string
 /**
  * Let the client know that the Task Start date, Due date and Completed date
  * can be entered only as dates. When the capability is not set, then these
  * can be date and time.
  */
-export const STATIC_CAPABILITY_TASK_DATE_ONLY: string | null
+export const STATIC_CAPABILITY_TASK_DATE_ONLY: string
 /**
  * Set, when the backend supports ESTIMATED-DURATION property for tasks.
  */
-export const STATIC_CAPABILITY_TASK_ESTIMATED_DURATION: string | null
+export const STATIC_CAPABILITY_TASK_ESTIMATED_DURATION: string
 /**
  * When the capability is set, the backend handles task recurrence
  * completion on its own. This does not imply E_CAL_STATIC_CAPABILITY_TASK_CAN_RECUR.
  */
-export const STATIC_CAPABILITY_TASK_HANDLE_RECUR: string | null
+export const STATIC_CAPABILITY_TASK_HANDLE_RECUR: string
 /**
  * When the capability is set, the client cannot store reminders
  * on tasks, otherwise it can.
  */
-export const STATIC_CAPABILITY_TASK_NO_ALARM: string | null
+export const STATIC_CAPABILITY_TASK_NO_ALARM: string
 /**
  * Creates an ISO 8601 UTC representation from a time value.
  * @param t A time value.
@@ -480,7 +480,7 @@ export function isodateFromTimeT(t: number): string | null
  * @param tzid a timezone ID
  * @returns The matching TZID, or %NULL if none found or for UTC
  */
-export function matchTzid(tzid: string | null): string | null
+export function matchTzid(tzid: string): string | null
 /**
  * Describes some simple types of recurrences in a human-readable and localized way.
  * The `flags` influence the output format and what to do when the `icalcomp`
@@ -557,7 +557,7 @@ export function recurEnsureEndDates(comp: Component, refresh: boolean, tzCb: Rec
  * @returns %TRUE if successful (when all instances had been returned), %FALSE otherwise.
  */
 export function recurGenerateInstancesSync(icalcomp: ICalGLib.Component, intervalStart: ICalGLib.Time, intervalEnd: ICalGLib.Time, defaultTimezone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): boolean
-export function recurGetLocalizedNth(nth: number): string | null
+export function recurGetLocalizedNth(nth: number): string
 export function recurObtainEnddate(ir: ICalGLib.Recurrence, prop: ICalGLib.Property, zone: ICalGLib.Timezone, convertEndDate: boolean): number
 /**
  * Fetches the system timezone location string.
@@ -696,7 +696,7 @@ export function timeDaysInMonth(year: number, month: number): number
  * @param str Date/time value in ISO 8601 format.
  * @returns Time_t corresponding to the specified ISO string. Note that we only allow UTC times at present.
  */
-export function timeFromIsodate(str: string | null): number
+export function timeFromIsodate(str: string): number
 /**
  * Returns whether the specified year is a leap year. Year is the normal year,
  * e.g. 2001.
@@ -784,7 +784,7 @@ export function utilClampVtimezoneByComponent(vtimezone: ICalGLib.Component, com
  * @param xName name of the X property
  * @returns Newly allocated value of the first @x_name    X property in @icalcomp, or %NULL, if not found.
  */
-export function utilComponentDupXProperty(icalcomp: ICalGLib.Component, xName: string | null): string | null
+export function utilComponentDupXProperty(icalcomp: ICalGLib.Component, xName: string): string | null
 /**
  * Searches properties of kind `prop_kind` in the `icalcomp` and returns
  * one, which is usable for the `locale`. When `locale` is %NULL,
@@ -808,7 +808,7 @@ export function utilComponentFindPropertyForLocale(icalcomp: ICalGLib.Component,
  * @param xName name of the X property
  * @returns the first X ICalProperty named    @x_name, or %NULL, when none found.
  */
-export function utilComponentFindXProperty(icalcomp: ICalGLib.Component, xName: string | null): ICalGLib.Property | null
+export function utilComponentFindXProperty(icalcomp: ICalGLib.Component, xName: string): ICalGLib.Property | null
 export function utilComponentGetRecuridAsString(icalcomp: ICalGLib.Component): string | null
 /**
  * Checks whether an #ICalComponent has any alarm.
@@ -861,7 +861,7 @@ export function utilComponentHasRrules(icalcomp: ICalGLib.Component): boolean
  * @param xName name of the X property
  * @returns whether the @icalcomp contains X property named @x_name
  */
-export function utilComponentHasXProperty(icalcomp: ICalGLib.Component, xName: string | null): boolean
+export function utilComponentHasXProperty(icalcomp: ICalGLib.Component, xName: string): boolean
 /**
  * Checks whether an #ICalComponent is an instance of a recurring appointment.
  * @param icalcomp An #ICalComponent.
@@ -882,7 +882,7 @@ export function utilComponentRemovePropertyByKind(icalcomp: ICalGLib.Component, 
  * @param xName name of the X property
  * @returns %TRUE, when any such had been found and removed, %FALSE otherwise.
  */
-export function utilComponentRemoveXProperty(icalcomp: ICalGLib.Component, xName: string | null): boolean
+export function utilComponentRemoveXProperty(icalcomp: ICalGLib.Component, xName: string): boolean
 /**
  * Sets a value of the first X property named `x_name` in `icalcomp,`
  * if any such already exists, or adds a new property with this name
@@ -892,7 +892,7 @@ export function utilComponentRemoveXProperty(icalcomp: ICalGLib.Component, xName
  * @param xName name of the X property
  * @param value a value to set, or %NULL
  */
-export function utilComponentSetXProperty(icalcomp: ICalGLib.Component, xName: string | null, value: string | null): void
+export function utilComponentSetXProperty(icalcomp: ICalGLib.Component, xName: string, value: string | null): void
 /**
  * Encodes the #EConflictResolution into the bit-or of #ECalOperationFlags.
  * The returned value can be bit-or-ed with other #ECalOperationFlags values.
@@ -1002,7 +1002,7 @@ export function utilGenerateAlarmsForList(comps: Component[], start: number, end
  * @param cancellable 
  * @returns a list of all the alarms found    for the given component in the given time range.
  */
-export function utilGenerateAlarmsForUidSync(client: any | null, uid: string | null, start: number, end: number, omit: ComponentAlarmAction, resolveTzid: RecurResolveTimezoneCb, defaultTimezone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): ComponentAlarms | null
+export function utilGenerateAlarmsForUidSync(client: any | null, uid: string, start: number, end: number, omit: ComponentAlarmAction, resolveTzid: RecurResolveTimezoneCb, defaultTimezone: ICalGLib.Timezone, cancellable: Gio.Cancellable | null): ComponentAlarms | null
 /**
  * Returns an attendee email, without the "mailto:" prefix, if
  * the `attendee` has it set. The email can be read from an "EMAIL"
@@ -1027,7 +1027,7 @@ export function utilGetComponentOccurTimes(comp: Component, tzCb: RecurResolveTi
  * @param registry an #ESourceRegistry
  * @returns %TRUE if @out_name and/or @out_address were set
  */
-export function utilGetDefaultNameAndAddress(registry: EDataServer.SourceRegistry): [ /* returnType */ boolean, /* outName */ string | null, /* outAddress */ string | null ]
+export function utilGetDefaultNameAndAddress(registry: EDataServer.SourceRegistry): [ /* returnType */ boolean, /* outName */ string, /* outAddress */ string ]
 /**
  * Returns an organizer email, without the "mailto:" prefix, if
  * the `organizer` has it set. The email can be read from an "EMAIL"
@@ -1179,7 +1179,7 @@ export function utilOperationFlagsToConflictResolution(flags: number): EDataServ
  * @param filename Name of the file to be parsed.
  * @returns a newly created #ICalComponent, or %NULL,    if the file doesn't contain a valid iCalendar object.
  */
-export function utilParseIcsFile(filename: string | null): ICalGLib.Component | null
+export function utilParseIcsFile(filename: string): ICalGLib.Component | null
 /**
  * Parses an iCalendar string and returns a new #ICalComponent representing
  * that string. Note that this function deals with multiple VCALENDAR's in the
@@ -1190,20 +1190,20 @@ export function utilParseIcsFile(filename: string | null): ICalGLib.Component | 
  * @param string iCalendar string to be parsed.
  * @returns a newly created #ICalComponent, or %NULL,    if the string isn't a valid iCalendar string.
  */
-export function utilParseIcsString(string: string | null): ICalGLib.Component | null
+export function utilParseIcsString(string: string): ICalGLib.Component | null
 /**
  * Converts a translated priority string to an iCalendar priority value.
  * @param string A string representing the PRIORITY value.
  * @returns the priority (0-9) or -1 if the priority string is not valid.
  */
-export function utilPriorityFromString(string: string | null): number
+export function utilPriorityFromString(string: string): number
 /**
  * Converts an iCalendar PRIORITY value to a translated string. Any unknown
  * priority value (i.e. not 0-9) will be returned as "" (undefined).
  * @param priority Priority value.
  * @returns a string representing the PRIORITY value. This value is a constant, so it should never be freed.
  */
-export function utilPriorityToString(priority: number): string | null
+export function utilPriorityToString(priority: number): string
 /**
  * Returns, whether the `prop` has a parameter of `param_kind`.
  * @param prop an #ICalProperty
@@ -1245,7 +1245,7 @@ export function utilSecondsToString(seconds: number): string | null
  * @param when a time, in UTC, when to set the acknowledged property, or 0 for the current time
  * @returns Whether succeeded.
  */
-export function utilSetAlarmAcknowledged(component: Component, auid: string | null, when: number): boolean
+export function utilSetAlarmAcknowledged(component: Component, auid: string, when: number): boolean
 /**
  * Splits a recurring `icalcomp` into two at time `rid`. The returned #ICalComponent
  * is modified `icalcomp` which contains recurrences beginning at `rid,` inclusive.
@@ -1289,7 +1289,7 @@ export function utilSplitAtInstanceEx(icalcomp: ICalGLib.Component, rid: ICalGLi
  * @param address an address with or without "mailto:" prefix
  * @returns the @address without the "mailto:" prefix
  */
-export function utilStripMailto(address: string | null): string | null
+export function utilStripMailto(address: string | null): string
 /**
  * Converts a struct tm into an #ICalTime. Free the returned object
  * with g_object_unref(), when no longer needed.
@@ -1354,7 +1354,7 @@ export interface RecurInstanceCb {
  * @returns an #ICalTimezone object for @tzid,    or %NULL, on error or if not found.
  */
 export interface RecurResolveTimezoneCb {
-    (tzid: string | null, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
+    (tzid: string, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
 }
 /**
  * Function called for each non-empty category from e_cal_util_foreach_category().
@@ -1416,7 +1416,7 @@ export interface TimezoneCache {
      * @param tzid the TZID of a timezone
      * @returns an #ICalTimezone, or %NULL
      */
-    getTimezone(tzid: string | null): ICalGLib.Timezone | null
+    getTimezone(tzid: string): ICalGLib.Timezone | null
     /**
      * Returns a list of #ICalTimezone instances that were explicitly added to
      * the `cache` through e_timezone_cache_add_timezone().  In particular, any
@@ -1643,7 +1643,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    discardAlarm(uid: string | null, rid: string | null, auid: string | null, opflags: OperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    discardAlarm(uid: string, rid: string | null, auid: string, opflags: OperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_discard_alarm().
      * @param result a #GAsyncResult
@@ -1659,7 +1659,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    discardAlarmSync(uid: string | null, rid: string | null, auid: string | null, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean
+    discardAlarmSync(uid: string, rid: string | null, auid: string, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Does a combination of e_cal_client_get_object_list() and
      * e_cal_recur_generate_instances_sync(). Unlike
@@ -1721,7 +1721,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param cb Callback for each generated instance
      */
-    generateInstancesForUidSync(uid: string | null, start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void
+    generateInstancesForUidSync(uid: string, start: number, end: number, cancellable: Gio.Cancellable | null, cb: RecurInstanceCb): void
     /**
      * Does a combination of e_cal_client_get_object_list() and
      * e_cal_recur_generate_instances_sync().
@@ -1744,7 +1744,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getAttachmentUris(uid: string | null, rid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getAttachmentUris(uid: string, rid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_attachment_uris() and
      * sets `out_attachment_uris` to uris for component's attachments.
@@ -1761,7 +1761,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getAttachmentUrisSync(uid: string | null, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAttachmentUris */ string[] ]
+    getAttachmentUrisSync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outAttachmentUris */ string[] ]
     /**
      * Gets a calendar component as an iCalendar string, with a toplevel
      * VCALENDAR component and all VTIMEZONEs needed for the component.
@@ -1843,7 +1843,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * operations.
      * @returns The URL where the attachments are serialized in the local filesystem.
      */
-    getLocalAttachmentStore(): string | null
+    getLocalAttachmentStore(): string
     /**
      * Queries a calendar for a calendar component object based on its unique
      * identifier. The call is finished by e_cal_client_get_object_finish()
@@ -1857,7 +1857,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObject(uid: string | null, rid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObject(uid: string, rid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_object() and
      * sets `out_icalcomp` to queried component. This function always returns
@@ -1880,7 +1880,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObjectList(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObjectList(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Gets a list of objects from the calendar that match the query specified
      * by the `sexp` argument, returning matching objects as a list of #ECalComponent-s.
@@ -1890,7 +1890,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObjectListAsComps(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObjectListAsComps(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_object_list_as_comps() and
      * sets `out_ecalcomps` to a matching list of #ECalComponent-s.
@@ -1908,7 +1908,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getObjectListAsCompsSync(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outEcalcomps */ Component[] ]
+    getObjectListAsCompsSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outEcalcomps */ Component[] ]
     /**
      * Finishes previous call of e_cal_client_get_object_list() and
      * sets `out_icalcomps` to a matching list of #ICalComponent-s.
@@ -1926,7 +1926,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getObjectListSync(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outIcalcomps */ ICalGLib.Component[] ]
+    getObjectListSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outIcalcomps */ ICalGLib.Component[] ]
     /**
      * Queries a calendar for a calendar component object based
      * on its unique identifier. This function always returns
@@ -1942,7 +1942,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getObjectSync(uid: string | null, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outIcalcomp */ ICalGLib.Component ]
+    getObjectSync(uid: string, rid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outIcalcomp */ ICalGLib.Component ]
     /**
      * Queries a calendar for all calendar components with the given unique
      * ID. This will return any recurring event and all its detached recurrences.
@@ -1953,7 +1953,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getObjectsForUid(uid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getObjectsForUid(uid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_objects_for_uid() and
      * sets `out_ecalcomps` to a list of #ECalComponent<!-- -->s corresponding to
@@ -1972,7 +1972,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getObjectsForUidSync(uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outEcalcomps */ Component[] ]
+    getObjectsForUidSync(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outEcalcomps */ Component[] ]
     /**
      * Gets the source type of the calendar client.
      * @returns an #ECalClientSourceType value corresponding to the source type of the calendar client.
@@ -1986,7 +1986,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getTimezone(tzid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getTimezone(tzid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of getTimezone
 
@@ -1997,7 +1997,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param tzid the TZID of a timezone
      * @returns an #ICalTimezone, or %NULL
      */
-    getTimezone(tzid: string | null): ICalGLib.Timezone | null
+    getTimezone(tzid: string): ICalGLib.Timezone | null
     /**
      * Finishes previous call of e_cal_client_get_timezone() and
      * sets `out_zone` to a retrieved timezone object from the calendar backend.
@@ -2013,7 +2013,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getTimezoneSync(tzid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outZone */ ICalGLib.Timezone ]
+    getTimezoneSync(tzid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outZone */ ICalGLib.Timezone ]
     /**
      * Query `client` with `sexp,` creating an #ECalClientView.
      * The call is finished by e_cal_client_get_view_finish()
@@ -2022,7 +2022,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    getView(sexp: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getView(sexp: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_get_view().
      * If successful, then the `out_view` is set to newly allocated #ECalClientView,
@@ -2039,7 +2039,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    getViewSync(sexp: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outView */ ClientView ]
+    getViewSync(sexp: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outView */ ClientView ]
     /**
      * Requests the calendar backend to modify an existing object. If the object
      * does not exist on the calendar, an error will be returned.
@@ -2163,7 +2163,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @param callback callback to call when a result is ready
      */
-    removeObject(uid: string | null, rid: string | null, mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    removeObject(uid: string, rid: string | null, mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes previous call of e_cal_client_remove_object().
      * @param result a #GAsyncResult
@@ -2183,7 +2183,7 @@ export interface Client extends TimezoneCache, Gio.AsyncInitable, Gio.Initable {
      * @param cancellable a #GCancellable; can be %NULL
      * @returns %TRUE if successful, %FALSE otherwise.
      */
-    removeObjectSync(uid: string | null, rid: string | null, mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean
+    removeObjectSync(uid: string, rid: string | null, mod: ObjModType, opflags: OperationFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * This function allows the removal of instances of recurrent appointments.
      * #ECalComponentId objects can identify specific instances (if rid is not
@@ -2448,7 +2448,7 @@ export class Client extends EDataServer.Client {
      * @param code an #ECalClientError error code
      * @returns Localized human readable description of the given error code
      */
-    static errorToString(code: ClientError): string | null
+    static errorToString(code: ClientError): string
 
     // Overloads of errorToString
 
@@ -2457,7 +2457,7 @@ export class Client extends EDataServer.Client {
      * @param code an #EClientError error code
      * @returns Localized human readable description of the given error code
      */
-    static errorToString(code: EDataServer.ClientError): string | null
+    static errorToString(code: EDataServer.ClientError): string
     /**
      * An implementation of the #ECalRecurResolveTimezoneCb callback which clients
      * can use. Calls e_cal_client_get_timezone_sync().
@@ -2468,7 +2468,7 @@ export class Client extends EDataServer.Client {
      * @param cancellable an optional #GCancellable to use, or %NULL
      * @returns A timezone object, or %NULL on failure    or when not found.
      */
-    static tzlookupCb(tzid: string | null, ecalclient: Client, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
+    static tzlookupCb(tzid: string, ecalclient: Client, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
     /**
      * An implementation of the #ECalRecurResolveTimezoneCb callback which
      * backends can use. Searches for the timezone in an %ICalComponent
@@ -2480,7 +2480,7 @@ export class Client extends EDataServer.Client {
      * @param cancellable an optional #GCancellable to use, or %NULL
      * @returns A timezone object, or %NULL, if    not found inside @lookup_data 's #ICalComponent.
      */
-    static tzlookupIcalcompCb(tzid: string | null, lookupData: ClientTzlookupICalCompData, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
+    static tzlookupIcalcompCb(tzid: string, lookupData: ClientTzlookupICalCompData, cancellable: Gio.Cancellable | null): ICalGLib.Timezone | null
 }
 
 export module ClientView {
@@ -2574,7 +2574,7 @@ export interface ClientView extends Gio.Initable {
      * Returns the object path used to create the D-Bus proxy.
      * @returns the object path
      */
-    getObjectPath(): string | null
+    getObjectPath(): string
     /**
      * Retunrs: Whether view is running. Not running views are ignoring
      * all events sent from the server.
@@ -2619,7 +2619,7 @@ export interface ClientView extends Gio.Initable {
     // Own virtual methods of ECal-2.0.ECal.ClientView
 
     complete(error: GLib.Error): void
-    progress(percent: number, message: string | null): void
+    progress(percent: number, message: string): void
 
     // Own signals of ECal-2.0.ECal.ClientView
 
@@ -2795,7 +2795,7 @@ export interface Component {
      * @param auid Unique identifier for the sought alarm subcomponent.
      * @returns the alarm subcomponent that corresponds    to the specified @auid, or %NULL if no alarm exists with that UID
      */
-    getAlarm(auid: string | null): ComponentAlarm | null
+    getAlarm(auid: string): ComponentAlarm | null
     /**
      * Builds a list of the unique identifiers of the alarm subcomponents inside a
      * calendar component. Free the returned #GSList with
@@ -3058,7 +3058,7 @@ export interface Component {
      * Queries the unique identifier of a calendar component object.
      * @returns the UID string
      */
-    getUid(): string | null
+    getUid(): string
     /**
      * Queries the uniform resource locator property of a calendar component object.
      * Free the returned URL with g_free(), when no longer needed.
@@ -3146,7 +3146,7 @@ export interface Component {
      * function.
      * @param auid UID of the alarm to remove.
      */
-    removeAlarm(auid: string | null): void
+    removeAlarm(auid: string): void
     /**
      * Remove all alarms from the calendar component
      */
@@ -3165,7 +3165,7 @@ export interface Component {
      * Sets the list of categories for a calendar component.
      * @param categories Comma-separated list of categories.
      */
-    setCategories(categories: string | null): void
+    setCategories(categories: string): void
     /**
      * Sets the list of categories of a calendar component object.
      * @param categList List of strings, one for each category.
@@ -3348,7 +3348,7 @@ export interface Component {
      * Sets the unique identifier string of a calendar component object.
      * @param uid Unique identifier.
      */
-    setUid(uid: string | null): void
+    setUid(uid: string): void
     /**
      * Sets the uniform resource locator property of a calendar component object.
      * A %NULL or an empty string removes the property.
@@ -3419,7 +3419,7 @@ export class Component extends GObject.Object {
      * @param calobj A string representation of an iCalendar component.
      * @returns A calendar component representing    the given iCalendar string on success, %NULL if there was an error.
      */
-    static newFromString(calobj: string | null): Component
+    static newFromString(calobj: string): Component
     /**
      * Creates a new #ECalComponent of type `vtype`.
      * @constructor 
@@ -3592,7 +3592,7 @@ export interface ReminderWatcher {
     dupSnoozed(): ReminderData[] | null
     getRegistry(): EDataServer.SourceRegistry
     getTimersEnabled(): boolean
-    refOpenedClient(sourceUid: string | null): Client | null
+    refOpenedClient(sourceUid: string): Client | null
     /**
      * Sets the default zone for the `watcher`. This is used when calculating
      * trigger times for floating component times. When the `zone` is %NULL,
@@ -3804,7 +3804,7 @@ export interface ClientViewClass {
 
     // Own fields of ECal-2.0.ECal.ClientViewClass
 
-    progress: (clientView: ClientView, percent: number, message: string | null) => void
+    progress: (clientView: ClientView, percent: number, message: string) => void
     complete: (clientView: ClientView, error: GLib.Error) => void
 }
 
@@ -4023,7 +4023,7 @@ export interface ComponentAlarmInstance {
     getOccurStart(): number
     getRid(): string | null
     getTime(): number
-    getUid(): string | null
+    getUid(): string
     /**
      * Sets `component` as the component associated with the `instance`.
      * It can be %NULL to unset it.
@@ -4054,7 +4054,7 @@ export interface ComponentAlarmInstance {
      * Set the alarm UID.
      * @param uid alarm UID to set
      */
-    setUid(uid: string | null): void
+    setUid(uid: string): void
 }
 
 /**
@@ -4080,7 +4080,7 @@ export class ComponentAlarmInstance {
      * @param occurEnd actual event occurrence end to which this instance corresponds
      * @returns a newly allocated #ECalComponentAlarmInstance
      */
-    constructor(uid: string | null, instanceTime: number, occurStart: number, occurEnd: number) 
+    constructor(uid: string, instanceTime: number, occurStart: number, occurEnd: number) 
     /**
      * Creates a new #ECalComponentAlarmInstance structure, filled with the given values.
      * Free the instance with e_cal_component_alarm_instance_free(), when no longer needed.
@@ -4091,7 +4091,7 @@ export class ComponentAlarmInstance {
      * @param occurEnd actual event occurrence end to which this instance corresponds
      * @returns a newly allocated #ECalComponentAlarmInstance
      */
-    static new(uid: string | null, instanceTime: number, occurStart: number, occurEnd: number): ComponentAlarmInstance
+    static new(uid: string, instanceTime: number, occurStart: number, occurEnd: number): ComponentAlarmInstance
 }
 
 export interface ComponentAlarmRepeat {
@@ -4696,7 +4696,7 @@ export interface ComponentId {
      */
     equal(id2: ComponentId): boolean
     getRid(): string | null
-    getUid(): string | null
+    getUid(): string
     /**
      * Generates a hash value for `id`.
      * @returns a hash value for @id
@@ -4713,7 +4713,7 @@ export interface ComponentId {
      * Sets the UID part of the `id`.
      * @param uid the UID to set
      */
-    setUid(uid: string | null): void
+    setUid(uid: string): void
 }
 
 /**
@@ -4738,7 +4738,7 @@ export class ComponentId {
      * @param rid an optional recurrence ID string
      * @returns an #ECalComponentId
      */
-    constructor(uid: string | null, rid: string | null) 
+    constructor(uid: string, rid: string | null) 
     /**
      * Creates a new #ECalComponentId from `uid` and `rid,` which should be
      * freed with e_cal_component_id_free().
@@ -4747,7 +4747,7 @@ export class ComponentId {
      * @param rid an optional recurrence ID string
      * @returns an #ECalComponentId
      */
-    static new(uid: string | null, rid: string | null): ComponentId
+    static new(uid: string, rid: string | null): ComponentId
     /**
      * Creates a new #ECalComponentId from `uid` and `rid,` which should be
      * freed with e_cal_component_id_free(). The function assumes ownership
@@ -5284,9 +5284,9 @@ export interface ComponentText {
      * @param property an #ICalProperty
      */
     fillProperty(property: ICalGLib.Property): void
-    getAltrep(): string | null
-    getLanguage(): string | null
-    getValue(): string | null
+    getAltrep(): string
+    getLanguage(): string
+    getValue(): string
     /**
      * Set the `altrep` as the alternate representation URI of the `text`.
      * @param altrep alternate representation URI to set
@@ -5370,7 +5370,7 @@ export interface ReminderData {
     free(): void
     getComponent(): Component
     getInstance(): ComponentAlarmInstance
-    getSourceUid(): string | null
+    getSourceUid(): string
     /**
      * Set an #ECalComponent `component` as associated with this `rd`.
      * The `rd` creates a copy of the `component`.
@@ -5387,7 +5387,7 @@ export interface ReminderData {
      * Set an #ESource UID for `rd`.
      * @param sourceUid an #ESource UID
      */
-    setSourceUid(sourceUid: string | null): void
+    setSourceUid(sourceUid: string): void
 }
 
 /**
@@ -5402,8 +5402,8 @@ export class ReminderData {
 
     // Constructors of ECal-2.0.ECal.ReminderData
 
-    constructor(sourceUid: string | null, component: Component, instance: ComponentAlarmInstance) 
-    static new(sourceUid: string | null, component: Component, instance: ComponentAlarmInstance): ReminderData
+    constructor(sourceUid: string, component: Component, instance: ComponentAlarmInstance) 
+    static new(sourceUid: string, component: Component, instance: ComponentAlarmInstance): ReminderData
 }
 
 export interface ReminderWatcherClass {

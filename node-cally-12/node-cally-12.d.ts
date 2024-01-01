@@ -91,7 +91,7 @@ interface Actor extends Atk.Action, Atk.Component {
      * @param callback the callback of the action
      * @returns added action id, or -1 if failure
      */
-    addAction(actionName: string | null, actionDescription: string | null, actionKeybinding: string | null, callback: ActionCallback): number
+    addAction(actionName: string, actionDescription: string, actionKeybinding: string, callback: ActionCallback): number
     /**
      * Removes a action, using the `action_id` returned by [method`Actor`.add_action]
      * @param actionId the action id
@@ -104,7 +104,7 @@ interface Actor extends Atk.Action, Atk.Component {
      * @param actionName the name of the action to remove
      * @returns %TRUE if the operation was successful, %FALSE otherwise
      */
-    removeActionByName(actionName: string | null): boolean
+    removeActionByName(actionName: string): boolean
 
     // Conflicting methods
 
@@ -120,7 +120,7 @@ interface Actor extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -146,7 +146,7 @@ interface Actor extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -154,7 +154,7 @@ interface Actor extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -163,7 +163,7 @@ interface Actor extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 
@@ -342,7 +342,7 @@ interface Clone extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -368,7 +368,7 @@ interface Clone extends Atk.Action, Atk.Component {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -376,7 +376,7 @@ interface Clone extends Atk.Action, Atk.Component {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -385,7 +385,7 @@ interface Clone extends Atk.Action, Atk.Component {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 
@@ -709,7 +709,7 @@ interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -735,7 +735,7 @@ interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -743,7 +743,7 @@ interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -752,7 +752,7 @@ interface Stage extends Atk.Action, Atk.Component, Atk.Window {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 
@@ -938,7 +938,7 @@ interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
      * @virtual 
      * @returns a character string representing the accessible description of the accessible.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns a non-localized string naming the specified action of the
      * object. This name is generally not descriptive of the end result
@@ -964,7 +964,7 @@ interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
      * @virtual 
      * @returns a character string representing the accessible name of the object.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets a description of the specified action of the object.
      * @virtual 
@@ -972,7 +972,7 @@ interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
      * @param desc the description to be assigned to this action
      * @returns a gboolean representing if the description was successfully set;
      */
-    setDescription(i: number, desc: string | null): boolean
+    setDescription(i: number, desc: string): boolean
     /**
      * Sets the accessible description of the accessible. You can't set
      * the description to NULL. This is reserved for the initial value. In
@@ -981,7 +981,7 @@ interface Text extends Atk.Action, Atk.Component, Atk.EditableText, Atk.Text {
      * @virtual 
      * @param description a character string to be set as the accessible description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Gets the layer of the component.
      * @virtual 

@@ -29,26 +29,26 @@ const RECONVERT_DISABLE: number
 const UTF8_ENCODING: number
 function commitPrediction(arg0: anthy_context_t, arg1: number): number
 function commitSegment(arg0: anthy_context_t, arg1: number, arg2: number): number
-function confOverride(arg0: string | null, arg1: string | null): void
+function confOverride(arg0: string, arg1: string): void
 function contextSetEncoding(ac: anthy_context_t, encoding: number): number
 function getPrediction(arg0: anthy_context_t, arg1: number, arg2: string | null, arg3: number): number
 function getPredictionStat(arg0: anthy_context_t, arg1: any): number
 function getSegment(arg0: anthy_context_t, arg1: number, arg2: number, arg3: string | null, arg4: number): number
 function getSegmentStat(arg0: anthy_context_t, arg1: number, arg2: any): number
 function getStat(arg0: anthy_context_t, arg1: any): number
-function getVersionString(): string | null
+function getVersionString(): string
 function init(): number
 function printContext(arg0: anthy_context_t): void
 function quit(): void
 function releaseContext(arg0: anthy_context_t): void
 function resetContext(arg0: anthy_context_t): void
 function resizeSegment(arg0: anthy_context_t, arg1: number, arg2: number): void
-function setPersonality(arg0: string | null): number
-function setPredictionString(arg0: anthy_context_t, arg1: string | null): number
+function setPersonality(arg0: string): number
+function setPredictionString(arg0: anthy_context_t, arg1: string): number
 function setReconversionMode(ac: anthy_context_t, mode: number): number
-function setString(arg0: anthy_context_t, arg1: string | null): number
+function setString(arg0: anthy_context_t, arg1: string): number
 interface logger {
-    (level: number, arg1: string | null): void
+    (level: number, arg1: string): void
 }
 module GContext {
 
@@ -87,7 +87,7 @@ interface GContext {
      * Set a personal dictionary.
      * @param dictName a Dictionary name
      */
-    doSetPersonality(dictName: string | null): number
+    doSetPersonality(dictName: string): number
     /**
      * The number of the candidates
      * @param nthSeg 
@@ -136,12 +136,12 @@ interface GContext {
      * Set a prediction string.
      * @param string A prediction string
      */
-    setPredictionString(string: string | null): number
+    setPredictionString(string: string): number
     /**
      * Set a conversion string.
      * @param string A conversion string
      */
-    setString(string: string | null): number
+    setString(string: string): number
 
     // Class property signals of Anthy-9000.Anthy.GContext
 

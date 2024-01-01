@@ -27,26 +27,26 @@ export const RECONVERT_DISABLE: number
 export const UTF8_ENCODING: number
 export function commit_prediction(arg0: anthy_context_t, arg1: number): number
 export function commit_segment(arg0: anthy_context_t, arg1: number, arg2: number): number
-export function conf_override(arg0: string | null, arg1: string | null): void
+export function conf_override(arg0: string, arg1: string): void
 export function context_set_encoding(ac: anthy_context_t, encoding: number): number
 export function get_prediction(arg0: anthy_context_t, arg1: number, arg2: string | null, arg3: number): number
 export function get_prediction_stat(arg0: anthy_context_t, arg1: any): number
 export function get_segment(arg0: anthy_context_t, arg1: number, arg2: number, arg3: string | null, arg4: number): number
 export function get_segment_stat(arg0: anthy_context_t, arg1: number, arg2: any): number
 export function get_stat(arg0: anthy_context_t, arg1: any): number
-export function get_version_string(): string | null
+export function get_version_string(): string
 export function init(): number
 export function print_context(arg0: anthy_context_t): void
 export function quit(): void
 export function release_context(arg0: anthy_context_t): void
 export function reset_context(arg0: anthy_context_t): void
 export function resize_segment(arg0: anthy_context_t, arg1: number, arg2: number): void
-export function set_personality(arg0: string | null): number
-export function set_prediction_string(arg0: anthy_context_t, arg1: string | null): number
+export function set_personality(arg0: string): number
+export function set_prediction_string(arg0: anthy_context_t, arg1: string): number
 export function set_reconversion_mode(ac: anthy_context_t, mode: number): number
-export function set_string(arg0: anthy_context_t, arg1: string | null): number
+export function set_string(arg0: anthy_context_t, arg1: string): number
 export interface logger {
-    (level: number, arg1: string | null): void
+    (level: number, arg1: string): void
 }
 export module GContext {
 
@@ -81,7 +81,7 @@ export interface GContext {
      * Set a personal dictionary.
      * @param dict_name a Dictionary name
      */
-    do_set_personality(dict_name: string | null): number
+    do_set_personality(dict_name: string): number
     /**
      * The number of the candidates
      * @param nth_seg 
@@ -130,12 +130,12 @@ export interface GContext {
      * Set a prediction string.
      * @param string A prediction string
      */
-    set_prediction_string(string: string | null): number
+    set_prediction_string(string: string): number
     /**
      * Set a conversion string.
      * @param string A conversion string
      */
-    set_string(string: string | null): number
+    set_string(string: string): number
 
     // Class property signals of Anthy-9000.Anthy.GContext
 

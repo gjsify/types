@@ -414,7 +414,7 @@ function encoding_get_default_candidates(): Encoding[]
  * @param charset a character set.
  * @returns the corresponding #GtkSourceEncoding, or %NULL if not found.
  */
-function encoding_get_from_charset(charset: string | null): Encoding | null
+function encoding_get_from_charset(charset: string): Encoding | null
 function encoding_get_utf8(): Encoding
 function file_loader_error_quark(): GLib.Quark
 function file_saver_error_quark(): GLib.Quark
@@ -438,7 +438,7 @@ function file_saver_error_quark(): GLib.Quark
  * @param text the text to escape.
  * @returns the escaped @text.
  */
-function utils_escape_search_text(text: string | null): string | null
+function utils_escape_search_text(text: string): string | null
 /**
  * Use this function before gtk_source_search_settings_set_search_text(), to
  * unescape the following sequences of characters: `\n`, `\r`, `\t` and `\\`.
@@ -451,7 +451,7 @@ function utils_escape_search_text(text: string | null): string | null
  * @param text the text to unescape.
  * @returns the unescaped @text.
  */
-function utils_unescape_search_text(text: string | null): string | null
+function utils_unescape_search_text(text: string): string | null
 module CompletionProposal {
 
     // Signal callback interfaces
@@ -1405,7 +1405,7 @@ interface Buffer {
      * @param where location to place the mark.
      * @returns a new #GtkSourceMark, owned by the buffer.
      */
-    create_source_mark(name: string | null, category: string | null, where: Gtk.TextIter): Mark
+    create_source_mark(name: string | null, category: string, where: Gtk.TextIter): Mark
     /**
      * Marks the end of a not undoable action on the buffer.  When the
      * last not undoable block is closed through the call to this
@@ -1511,7 +1511,7 @@ interface Buffer {
      * @param context_class the context class.
      * @returns whether we found a context class toggle before @iter
      */
-    iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): boolean
+    iter_backward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean
     /**
      * Moves forward to the next toggle (on or off) of the context class. If no
      * matching context class toggles are found, returns %FALSE, otherwise %TRUE.
@@ -1524,7 +1524,7 @@ interface Buffer {
      * @param context_class the context class.
      * @returns whether we found a context class toggle after @iter
      */
-    iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string | null): boolean
+    iter_forward_to_context_class_toggle(iter: Gtk.TextIter, context_class: string): boolean
     /**
      * Check if the class `context_class` is set on `iter`.
      * 
@@ -1533,7 +1533,7 @@ interface Buffer {
      * @param context_class class to search for.
      * @returns whether @iter has the context class.
      */
-    iter_has_context_class(iter: Gtk.TextIter, context_class: string | null): boolean
+    iter_has_context_class(iter: Gtk.TextIter, context_class: string): boolean
     /**
      * Joins the lines of text between the specified iterators.
      * @param start a #GtkTextIter.
@@ -2424,7 +2424,7 @@ interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2438,7 +2438,7 @@ interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2449,7 +2449,7 @@ interface CompletionInfo extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GtkSource-3.0.GtkSource.CompletionInfo
 
@@ -2884,7 +2884,7 @@ class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    constructor(label: string | null, text: string | null, icon: GdkPixbuf.Pixbuf | null, info: string | null) 
+    constructor(label: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null) 
     /**
      * Create a new #GtkSourceCompletionItem with label `label,` icon `icon` and
      * extra information `info`. Both `icon` and `info` can be %NULL in which case
@@ -2896,7 +2896,7 @@ class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    static new(label: string | null, text: string | null, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
+    static new(label: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
     /**
      * Creates a new #GtkSourceCompletionItem from a stock item. If `label` is %NULL,
      * the stock label will be used.
@@ -2907,7 +2907,7 @@ class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    static new_from_stock(label: string | null, text: string | null, stock: string | null, info: string | null): CompletionItem
+    static new_from_stock(label: string | null, text: string, stock: string, info: string | null): CompletionItem
     /**
      * Create a new #GtkSourceCompletionItem with markup label `markup,` icon
      * `icon` and extra information `info`. Both `icon` and `info` can be %NULL in
@@ -2919,7 +2919,7 @@ class CompletionItem extends GObject.Object {
      * @param info The item extra information.
      * @returns a new #GtkSourceCompletionItem.
      */
-    static new_with_markup(markup: string | null, text: string | null, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
+    static new_with_markup(markup: string, text: string, icon: GdkPixbuf.Pixbuf | null, info: string | null): CompletionItem
     _init(config?: CompletionItem.ConstructorProperties): void
     /**
      * Creates a new #GtkSourceCompletionItem. The desired properties need to be set
@@ -4345,13 +4345,13 @@ interface GutterRendererPixbuf {
      * @returns a #GIcon
      */
     get_gicon(): Gio.Icon
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Get the pixbuf of the renderer.
      * @returns a #GdkPixbuf
      */
     get_pixbuf(): GdkPixbuf.Pixbuf
-    get_stock_id(): string | null
+    get_stock_id(): string
     set_gicon(icon: Gio.Icon | null): void
     set_icon_name(icon_name: string | null): void
     set_pixbuf(pixbuf: GdkPixbuf.Pixbuf | null): void
@@ -4463,15 +4463,15 @@ interface GutterRendererText {
      * #GtkSourceGutterRendererText.
      * @param text the text to measure.
      */
-    measure(text: string | null): [ /* width */ number, /* height */ number ]
+    measure(text: string): [ /* width */ number, /* height */ number ]
     /**
      * Measures the pango markup provided using the pango layout used by the
      * #GtkSourceGutterRendererText.
      * @param markup the pango markup to measure.
      */
-    measure_markup(markup: string | null): [ /* width */ number, /* height */ number ]
-    set_markup(markup: string | null, length: number): void
-    set_text(text: string | null, length: number): void
+    measure_markup(markup: string): [ /* width */ number, /* height */ number ]
+    set_markup(markup: string, length: number): void
+    set_text(text: string, length: number): void
 
     // Class property signals of GtkSource-3.0.GtkSource.GutterRendererText
 
@@ -4588,8 +4588,8 @@ interface Language {
      * or modified.
      * @returns the ID of @language.
      */
-    get_id(): string | null
-    get_metadata(name: string | null): string | null
+    get_id(): string
+    get_metadata(name: string): string | null
     /**
      * Returns the mime types associated to this language. This is just
      * an utility wrapper around gtk_source_language_get_metadata() to
@@ -4604,7 +4604,7 @@ interface Language {
      * or modified.
      * @returns the name of @language.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Returns the localized section of the language.
      * Each language belong to a section (ex. HTML belogs to the
@@ -4613,14 +4613,14 @@ interface Language {
      * or modified.
      * @returns the section of @language.
      */
-    get_section(): string | null
+    get_section(): string
     /**
      * Returns the ID of the style to use if the specified `style_id`
      * is not present in the current style scheme.
      * @param style_id a style ID.
      * @returns the ID of the style to use if the specified @style_id is not present in the current style scheme or %NULL if the style has no fallback defined. The returned string is owned by the @language and must not be modified.
      */
-    get_style_fallback(style_id: string | null): string | null
+    get_style_fallback(style_id: string): string | null
     /**
      * Returns the ids of the styles defined by this `language`.
      * @returns  a newly-allocated %NULL terminated array containing ids of the styles defined by this @language or %NULL if no style is defined. The returned array must be freed with g_strfreev().
@@ -4631,7 +4631,7 @@ interface Language {
      * @param style_id a style ID.
      * @returns the name of the style with ID @style_id defined by this @language or %NULL if the style has no name or there is no style with ID @style_id defined by this @language. The returned string is owned by the @language and must not be modified.
      */
-    get_style_name(style_id: string | null): string | null
+    get_style_name(style_id: string): string | null
 
     // Class property signals of GtkSource-3.0.GtkSource.Language
 
@@ -4702,7 +4702,7 @@ interface LanguageManager {
      * @param id a language id.
      * @returns a #GtkSourceLanguage, or %NULL if there is no language identified by the given @id. Return value is owned by @lm and should not be freed.
      */
-    get_language(id: string | null): Language | null
+    get_language(id: string): Language | null
     /**
      * Returns the ids of the available languages.
      * @returns  a %NULL-terminated array of strings containing the ids of the available languages or %NULL if no language is available. The array is sorted alphabetically according to the language name. The array is owned by @lm and must not be modified.
@@ -4897,7 +4897,7 @@ interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4911,7 +4911,7 @@ interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4922,7 +4922,7 @@ interface Map extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GtkSource-3.0.GtkSource.Map
 
@@ -5254,7 +5254,7 @@ interface Mark {
      * Returns the mark category.
      * @returns the category of the #GtkSourceMark.
      */
-    get_category(): string | null
+    get_category(): string
     /**
      * Returns the next #GtkSourceMark in the buffer or %NULL if the mark
      * was not added to a buffer. If there is no next mark, %NULL will be returned.
@@ -5272,7 +5272,7 @@ interface Mark {
      * @param category a string specifying the mark category, or %NULL.
      * @returns the previous #GtkSourceMark, or %NULL.
      */
-    prev(category: string | null): Mark | null
+    prev(category: string): Mark | null
 
     // Class property signals of GtkSource-3.0.GtkSource.Mark
 
@@ -5312,7 +5312,7 @@ class Mark extends Gtk.TextMark {
      * @param category is used to classify marks according to common characteristics (e.g. all the marks representing a bookmark could belong to the "bookmark" category, or all the marks representing a compilation error could belong to "error" category).
      * @returns a new #GtkSourceMark that can be added using gtk_text_buffer_add_mark().
      */
-    constructor(name: string | null, category: string | null) 
+    constructor(name: string, category: string) 
     /**
      * Creates a text mark. Add it to a buffer using gtk_text_buffer_add_mark().
      * If name is NULL, the mark is anonymous; otherwise, the mark can be retrieved
@@ -5324,7 +5324,7 @@ class Mark extends Gtk.TextMark {
      * @param category is used to classify marks according to common characteristics (e.g. all the marks representing a bookmark could belong to the "bookmark" category, or all the marks representing a compilation error could belong to "error" category).
      * @returns a new #GtkSourceMark that can be added using gtk_text_buffer_add_mark().
      */
-    static new(name: string | null, category: string | null): Mark
+    static new(name: string, category: string): Mark
 
     // Overloads of new
 
@@ -5455,7 +5455,7 @@ interface MarkAttributes {
      * icon name can be %NULL if it wasn't set earlier.
      * @returns An icon name. The string belongs to @attributes and should not be freed.
      */
-    get_icon_name(): string | null
+    get_icon_name(): string
     /**
      * Gets a #GdkPixbuf to be used as a base for rendered icon. Note that the
      * pixbuf can be %NULL if it wasn't set earlier.
@@ -5467,7 +5467,7 @@ interface MarkAttributes {
      * be %NULL if it wasn't set earlier.
      * @returns Stock id. Returned string is owned by @attributes and shouldn't be freed.
      */
-    get_stock_id(): string | null
+    get_stock_id(): string
     /**
      * Queries for a tooltip by emitting
      * a #GtkSourceMarkAttributes::query-tooltip-markup signal. The tooltip may contain
@@ -5509,7 +5509,7 @@ interface MarkAttributes {
      * Sets a name of an icon to be used as a base for rendered icon.
      * @param icon_name name of an icon to be used.
      */
-    set_icon_name(icon_name: string | null): void
+    set_icon_name(icon_name: string): void
     /**
      * Sets a pixbuf to be used as a base for rendered icon.
      * @param pixbuf a #GdkPixbuf to be used.
@@ -5519,7 +5519,7 @@ interface MarkAttributes {
      * Sets stock id to be used as a base for rendered icon.
      * @param stock_id a stock id.
      */
-    set_stock_id(stock_id: string | null): void
+    set_stock_id(stock_id: string): void
 
     // Own signals of GtkSource-3.0.GtkSource.MarkAttributes
 
@@ -6227,7 +6227,7 @@ interface PrintCompositor {
      * gtk_source_print_compositor_paginate() function.
      * @param font_name the name of the default font for the body text.
      */
-    set_body_font_name(font_name: string | null): void
+    set_body_font_name(font_name: string): void
     /**
      * Sets the bottom margin used by `compositor`.
      * @param margin the new bottom margin in units of `unit`.
@@ -6899,7 +6899,7 @@ interface SearchContext {
      * @param replace_length the length of `replace` in bytes, or -1.
      * @returns whether the match has been replaced.
      */
-    replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string | null, replace_length: number): boolean
+    replace(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean
     /**
      * Replaces a search match by another text. If `match_start` and `match_end`
      * doesn't correspond to a search match, %FALSE is returned.
@@ -6916,7 +6916,7 @@ interface SearchContext {
      * @param replace_length the length of `replace` in bytes, or -1.
      * @returns whether the match has been replaced.
      */
-    replace2(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string | null, replace_length: number): boolean
+    replace2(match_start: Gtk.TextIter, match_end: Gtk.TextIter, replace: string, replace_length: number): boolean
     /**
      * Replaces all search matches by another text. It is a synchronous function, so
      * it can block the user interface.
@@ -6928,7 +6928,7 @@ interface SearchContext {
      * @param replace_length the length of `replace` in bytes, or -1.
      * @returns the number of replaced matches.
      */
-    replace_all(replace: string | null, replace_length: number): number
+    replace_all(replace: string, replace_length: number): number
     /**
      * Enables or disables the search occurrences highlighting.
      * @param highlight the setting.
@@ -7329,7 +7329,7 @@ interface SpaceDrawer {
      * @param key the `settings` key to bind.
      * @param flags flags for the binding.
      */
-    bind_matrix_setting(settings: Gio.Settings, key: string | null, flags: Gio.SettingsBindFlags): void
+    bind_matrix_setting(settings: Gio.Settings, key: string, flags: Gio.SettingsBindFlags): void
     get_enable_matrix(): boolean
     /**
      * Gets the value of the #GtkSourceSpaceDrawer:matrix property, as a #GVariant.
@@ -7644,9 +7644,9 @@ interface StyleScheme {
     get_authors(): string[] | null
     get_description(): string | null
     get_filename(): string | null
-    get_id(): string | null
-    get_name(): string | null
-    get_style(style_id: string | null): Style | null
+    get_id(): string
+    get_name(): string
+    get_style(style_id: string): Style | null
 
     // Class property signals of GtkSource-3.0.GtkSource.StyleScheme
 
@@ -7708,7 +7708,7 @@ interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Actionable,
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -7720,7 +7720,7 @@ interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Actionable,
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7734,7 +7734,7 @@ interface StyleSchemeChooserButton extends Atk.ImplementorIface, Gtk.Actionable,
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GtkSource-3.0.GtkSource.StyleSchemeChooserButton
 
@@ -7965,7 +7965,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -7979,7 +7979,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -7990,7 +7990,7 @@ interface StyleSchemeChooserWidget extends Atk.ImplementorIface, Gtk.Buildable, 
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GtkSource-3.0.GtkSource.StyleSchemeChooserWidget
 
@@ -8190,7 +8190,7 @@ interface StyleSchemeManager {
      * See gtk_source_style_scheme_manager_set_search_path() for details.
      * @param path a directory or a filename.
      */
-    append_search_path(path: string | null): void
+    append_search_path(path: string): void
     /**
      * Mark any currently cached information about the available style scehems
      * as invalid. All the available style schemes will be reloaded next time
@@ -8202,7 +8202,7 @@ interface StyleSchemeManager {
      * @param scheme_id style scheme id to find.
      * @returns a #GtkSourceStyleScheme object. Returned value is owned by @manager and must not be unref'ed.
      */
-    get_scheme(scheme_id: string | null): StyleScheme
+    get_scheme(scheme_id: string): StyleScheme
     /**
      * Returns the ids of the available style schemes.
      * @returns  a %NULL-terminated array of strings containing the ids of the available style schemes or %NULL if no style scheme is available. The array is sorted alphabetically according to the scheme name. The array is owned by the @manager and must not be modified.
@@ -8220,7 +8220,7 @@ interface StyleSchemeManager {
      * See gtk_source_style_scheme_manager_set_search_path() for details.
      * @param path a directory or a filename.
      */
-    prepend_search_path(path: string | null): void
+    prepend_search_path(path: string): void
     /**
      * Sets the list of directories where the `manager` looks for
      * style scheme files.
@@ -8993,7 +8993,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param priority place where priority of the category will be stored.
      * @returns #GtkSourceMarkAttributes for the @category. The object belongs to @view, so it must not be unreffed.
      */
-    get_mark_attributes(category: string | null, priority: number): MarkAttributes
+    get_mark_attributes(category: string, priority: number): MarkAttributes
     /**
      * Gets the position of the right margin in the given `view`.
      * @returns the position of the right margin.
@@ -9131,7 +9131,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param attributes mark attributes.
      * @param priority priority of the category.
      */
-    set_mark_attributes(category: string | null, attributes: MarkAttributes, priority: number): void
+    set_mark_attributes(category: string, attributes: MarkAttributes, priority: number): void
     /**
      * Sets the position of the right margin in the given `view`.
      * @param pos the width in characters where to position the right margin.
@@ -9216,7 +9216,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -9230,7 +9230,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -9241,7 +9241,7 @@ interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GtkSource-3.0.GtkSource.View
 
@@ -9848,12 +9848,12 @@ interface Encoding {
      * "ISO-8859-1".
      * @returns the character set of the #GtkSourceEncoding.
      */
-    get_charset(): string | null
+    get_charset(): string
     /**
      * Gets the name of the #GtkSourceEncoding such as "Unicode" or "Western".
      * @returns the name of the #GtkSourceEncoding.
      */
-    get_name(): string | null
+    get_name(): string
     to_string(): string | null
 }
 
@@ -9891,7 +9891,7 @@ class Encoding {
      * @param charset a character set.
      * @returns the corresponding #GtkSourceEncoding, or %NULL if not found.
      */
-    static get_from_charset(charset: string | null): Encoding | null
+    static get_from_charset(charset: string): Encoding | null
     static get_utf8(): Encoding
 }
 

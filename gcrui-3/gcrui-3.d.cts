@@ -663,7 +663,7 @@ export interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -677,7 +677,7 @@ export interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -688,7 +688,7 @@ export interface CertificateWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.CertificateWidget
 
@@ -1071,7 +1071,7 @@ export interface ComboSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1083,7 +1083,7 @@ export interface ComboSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1097,7 +1097,7 @@ export interface ComboSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.ComboSelector
 
@@ -1399,7 +1399,7 @@ export class FailureRenderer extends GObject.Object {
      * @param label the label for the failure
      * @returns the new renderer
      */
-    static new_unsupported(label: string | null): Renderer
+    static new_unsupported(label: string): Renderer
 }
 
 export module ImportButton {
@@ -1454,7 +1454,7 @@ export interface ImportButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1466,7 +1466,7 @@ export interface ImportButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1480,7 +1480,7 @@ export interface ImportButton extends Atk.ImplementorIface, Gtk.Actionable, Gtk.
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of GcrUi-3.GcrUi.ImportButton
 
@@ -1847,7 +1847,7 @@ export interface KeyWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1861,7 +1861,7 @@ export interface KeyWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1872,7 +1872,7 @@ export interface KeyWidget extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.KeyWidget
 
@@ -2111,7 +2111,7 @@ export interface ListSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2125,7 +2125,7 @@ export interface ListSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2136,7 +2136,7 @@ export interface ListSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.ListSelector
 
@@ -2472,7 +2472,7 @@ export interface PromptDialog extends Atk.ImplementorIface, Gcr.Prompt, Gtk.Buil
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2486,7 +2486,7 @@ export interface PromptDialog extends Atk.ImplementorIface, Gcr.Prompt, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2497,7 +2497,7 @@ export interface PromptDialog extends Atk.ImplementorIface, Gcr.Prompt, Gtk.Buil
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.PromptDialog
 
@@ -2954,7 +2954,7 @@ export interface TreeSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2968,7 +2968,7 @@ export interface TreeSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2979,7 +2979,7 @@ export interface TreeSelector extends Atk.ImplementorIface, Gtk.Buildable, Gtk.S
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.TreeSelector
 
@@ -3232,21 +3232,21 @@ export interface UnlockOptionsWidget extends Atk.ImplementorIface, Gtk.Buildable
      * Get the currently selected option, like %GCR_UNLOCK_OPTION_ALWAYS.
      * @returns The currently selected option name.
      */
-    get_choice(): string | null
+    get_choice(): string
     /**
      * Get the label for one of the options. Use an option name like
      * %GCR_UNLOCK_OPTION_ALWAYS.
      * @param option The option name
      * @returns The current label for the option.
      */
-    get_label(option: string | null): string | null
+    get_label(option: string): string
     /**
      * Get the sensitivity state for one of the options. Use an option name like
      * %GCR_UNLOCK_OPTION_ALWAYS.
      * @param option The option name
      * @returns Whether the option is sensitive or not.
      */
-    get_sensitive(option: string | null): boolean
+    get_sensitive(option: string): boolean
 
     // Overloads of get_sensitive
 
@@ -3271,14 +3271,14 @@ export interface UnlockOptionsWidget extends Atk.ImplementorIface, Gtk.Buildable
      * %GCR_UNLOCK_OPTION_ALWAYS.
      * @param option The option name
      */
-    set_choice(option: string | null): void
+    set_choice(option: string): void
     /**
      * Set the label for one of the options. Use an option name like
      * %GCR_UNLOCK_OPTION_ALWAYS.
      * @param option The option name
      * @param text The new label
      */
-    set_label(option: string | null, text: string | null): void
+    set_label(option: string, text: string): void
     /**
      * Set the sensitivity state for one of the options. Use an option name like
      * %GCR_UNLOCK_OPTION_ALWAYS. The reason will be displayed as a tooltip.
@@ -3286,7 +3286,7 @@ export interface UnlockOptionsWidget extends Atk.ImplementorIface, Gtk.Buildable
      * @param sensitive The sensitivity state.
      * @param reason A user displayable string which contains the reason for the sensitivity.
      */
-    set_sensitive(option: string | null, sensitive: boolean, reason: string | null): void
+    set_sensitive(option: string, sensitive: boolean, reason: string): void
 
     // Overloads of set_sensitive
 
@@ -3318,7 +3318,7 @@ export interface UnlockOptionsWidget extends Atk.ImplementorIface, Gtk.Buildable
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3332,7 +3332,7 @@ export interface UnlockOptionsWidget extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3343,7 +3343,7 @@ export interface UnlockOptionsWidget extends Atk.ImplementorIface, Gtk.Buildable
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GcrUi-3.GcrUi.UnlockOptionsWidget
 
@@ -3598,7 +3598,7 @@ export interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * overridden by the parsed data.
      * @returns the display name
      */
-    get_display_name(): string | null
+    get_display_name(): string
     /**
      * Get the parser used to parse loaded data into viewable items.
      * @returns the parser
@@ -3642,14 +3642,14 @@ export interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * overridden by the parsed data.
      * @param display_name the display name
      */
-    set_display_name(display_name: string | null): void
+    set_display_name(display_name: string): void
     /**
      * Show an error on the viewer widget. This is displayed on a info bar near
      * the edge of the widget.
      * @param message descriptive error message
      * @param error detailed error
      */
-    show_error(message: string | null, error: GLib.Error | null): void
+    show_error(message: string, error: GLib.Error | null): void
 
     // Conflicting methods
 
@@ -3664,7 +3664,7 @@ export interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3678,7 +3678,7 @@ export interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3689,7 +3689,7 @@ export interface ViewerWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.O
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of GcrUi-3.GcrUi.ViewerWidget
 

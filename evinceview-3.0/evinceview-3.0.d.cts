@@ -77,26 +77,26 @@ export enum JobPageDataFlags {
     MEDIA,
     ALL,
 }
-export const STOCK_ANNOT_SQUIGGLY: string | null
-export const STOCK_ANNOT_TEXT: string | null
-export const STOCK_ATTACHMENT: string | null
-export const STOCK_CLOSE: string | null
-export const STOCK_FIND_UNSUPPORTED: string | null
-export const STOCK_INVERTED_COLORS: string | null
-export const STOCK_OUTLINE: string | null
-export const STOCK_RESIZE_SE: string | null
-export const STOCK_RESIZE_SW: string | null
-export const STOCK_ROTATE_LEFT: string | null
-export const STOCK_ROTATE_RIGHT: string | null
-export const STOCK_RUN_PRESENTATION: string | null
-export const STOCK_SEND_TO: string | null
-export const STOCK_VIEW_CONTINUOUS: string | null
-export const STOCK_VIEW_DUAL: string | null
-export const STOCK_VIEW_SIDEBAR: string | null
-export const STOCK_VISIBLE: string | null
-export const STOCK_ZOOM: string | null
-export const STOCK_ZOOM_PAGE: string | null
-export const STOCK_ZOOM_WIDTH: string | null
+export const STOCK_ANNOT_SQUIGGLY: string
+export const STOCK_ANNOT_TEXT: string
+export const STOCK_ATTACHMENT: string
+export const STOCK_CLOSE: string
+export const STOCK_FIND_UNSUPPORTED: string
+export const STOCK_INVERTED_COLORS: string
+export const STOCK_OUTLINE: string
+export const STOCK_RESIZE_SE: string
+export const STOCK_RESIZE_SW: string
+export const STOCK_ROTATE_LEFT: string
+export const STOCK_ROTATE_RIGHT: string
+export const STOCK_RUN_PRESENTATION: string
+export const STOCK_SEND_TO: string
+export const STOCK_VIEW_CONTINUOUS: string
+export const STOCK_VIEW_DUAL: string
+export const STOCK_VIEW_SIDEBAR: string
+export const STOCK_VISIBLE: string
+export const STOCK_ZOOM: string
+export const STOCK_ZOOM_PAGE: string
+export const STOCK_ZOOM_WIDTH: string
 /**
  * Creates a new icon factory, adding the base stock icons to it.
  */
@@ -206,7 +206,7 @@ export interface DocumentModel {
     set_max_scale(max_scale: number): void
     set_min_scale(min_scale: number): void
     set_page(page: number): void
-    set_page_by_label(page_label: string | null): void
+    set_page_by_label(page_label: string): void
     /**
      * Sets the document model's page layout to `layout`.
      * @param layout a #EvPageLayout
@@ -581,8 +581,8 @@ export class JobFind extends Job {
     // Constructors of EvinceView-3.0.EvinceView.JobFind
 
     constructor(config?: JobFind.ConstructorProperties) 
-    constructor(document: EvinceDocument.Document, start_page: number, n_pages: number, text: string | null, case_sensitive: boolean) 
-    static new(document: EvinceDocument.Document, start_page: number, n_pages: number, text: string | null, case_sensitive: boolean): JobFind
+    constructor(document: EvinceDocument.Document, start_page: number, n_pages: number, text: string, case_sensitive: boolean) 
+    static new(document: EvinceDocument.Document, start_page: number, n_pages: number, text: string, case_sensitive: boolean): JobFind
     _init(config?: JobFind.ConstructorProperties): void
 }
 
@@ -750,8 +750,8 @@ export interface JobLoad {
 
     // Owm methods of EvinceView-3.0.EvinceView.JobLoad
 
-    set_password(password: string | null): void
-    set_uri(uri: string | null): void
+    set_password(password: string): void
+    set_uri(uri: string): void
 
     // Class property signals of EvinceView-3.0.EvinceView.JobLoad
 
@@ -771,8 +771,8 @@ export class JobLoad extends Job {
     // Constructors of EvinceView-3.0.EvinceView.JobLoad
 
     constructor(config?: JobLoad.ConstructorProperties) 
-    constructor(uri: string | null) 
-    static new(uri: string | null): JobLoad
+    constructor(uri: string) 
+    static new(uri: string): JobLoad
     _init(config?: JobLoad.ConstructorProperties): void
 }
 
@@ -805,8 +805,8 @@ export interface JobLoadFd {
      */
     set_fd(fd: number): boolean
     set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void
-    set_mime_type(mime_type: string | null): void
-    set_password(password: string | null): void
+    set_mime_type(mime_type: string): void
+    set_password(password: string): void
     /**
      * Sets `fd` as the file descriptor in `job`.
      * Note that `job` takes ownership of `fd;` you must not do anything
@@ -847,7 +847,7 @@ export class JobLoadFd extends Job {
      * @param flags flags from #EvDocumentLoadFlags
      * @returns the new #EvJobLoadFd, or %NULL
      */
-    constructor(fd: number, mime_type: string | null, flags: EvinceDocument.DocumentLoadFlags) 
+    constructor(fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags) 
     /**
      * Creates a new #EvJobLoadFd for `fd`. If duplicating `fd` fails,
      * returns %NULL with `error` filled in.
@@ -857,8 +857,8 @@ export class JobLoadFd extends Job {
      * @param flags flags from #EvDocumentLoadFlags
      * @returns the new #EvJobLoadFd, or %NULL
      */
-    static new(fd: number, mime_type: string | null, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
-    static new_take(fd: number, mime_type: string | null, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
+    static new(fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
+    static new_take(fd: number, mime_type: string, flags: EvinceDocument.DocumentLoadFlags): JobLoadFd
     _init(config?: JobLoadFd.ConstructorProperties): void
 }
 
@@ -884,7 +884,7 @@ export interface JobLoadGFile {
 
     set_gfile(gfile: Gio.File): void
     set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void
-    set_password(password: string | null): void
+    set_password(password: string): void
 
     // Class property signals of EvinceView-3.0.EvinceView.JobLoadGFile
 
@@ -934,8 +934,8 @@ export interface JobLoadStream {
     // Owm methods of EvinceView-3.0.EvinceView.JobLoadStream
 
     set_load_flags(flags: EvinceDocument.DocumentLoadFlags): void
-    set_mime_type(mime_type: string | null): void
-    set_password(password: string | null): void
+    set_mime_type(mime_type: string): void
+    set_password(password: string): void
     set_stream(stream: Gio.InputStream): void
 
     // Class property signals of EvinceView-3.0.EvinceView.JobLoadStream
@@ -1153,8 +1153,8 @@ export class JobSave extends Job {
     // Constructors of EvinceView-3.0.EvinceView.JobSave
 
     constructor(config?: JobSave.ConstructorProperties) 
-    constructor(document: EvinceDocument.Document, uri: string | null, document_uri: string | null) 
-    static new(document: EvinceDocument.Document, uri: string | null, document_uri: string | null): JobSave
+    constructor(document: EvinceDocument.Document, uri: string, document_uri: string) 
+    static new(document: EvinceDocument.Document, uri: string, document_uri: string): JobSave
     _init(config?: JobSave.ConstructorProperties): void
 }
 
@@ -1264,15 +1264,15 @@ export interface PrintOperation {
     get_default_page_setup(): Gtk.PageSetup
     get_embed_page_setup(): boolean
     get_error(): void
-    get_job_name(): string | null
+    get_job_name(): string
     get_print_settings(): Gtk.PrintSettings
     get_progress(): number
-    get_status(): string | null
+    get_status(): string
     run(parent: Gtk.Window): void
     set_current_page(current_page: number): void
     set_default_page_setup(page_setup: Gtk.PageSetup): void
     set_embed_page_setup(embed: boolean): void
-    set_job_name(job_name: string | null): void
+    set_job_name(job_name: string): void
     set_print_settings(print_settings: Gtk.PrintSettings): void
 
     // Own signals of EvinceView-3.0.EvinceView.PrintOperation
@@ -1538,7 +1538,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1552,7 +1552,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1563,7 +1563,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of EvinceView-3.0.EvinceView.View
 

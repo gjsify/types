@@ -190,48 +190,48 @@ export enum RTSPTransportMode {
  * Used with gst_rtsp_address_pool_add_range() to bind to all
  * IPv4 addresses
  */
-export const RTSP_ADDRESS_POOL_ANY_IPV4: string | null
+export const RTSP_ADDRESS_POOL_ANY_IPV4: string
 /**
  * Used with gst_rtsp_address_pool_add_range() to bind to all
  * IPv6 addresses
  */
-export const RTSP_ADDRESS_POOL_ANY_IPV6: string | null
+export const RTSP_ADDRESS_POOL_ANY_IPV6: string
 /**
  * Check a new connection
  */
-export const RTSP_AUTH_CHECK_CONNECT: string | null
+export const RTSP_AUTH_CHECK_CONNECT: string
 /**
  * Check if access is allowed to a factory.
  * When access is not allowed an 404 Not Found is sent in the response.
  */
-export const RTSP_AUTH_CHECK_MEDIA_FACTORY_ACCESS: string | null
+export const RTSP_AUTH_CHECK_MEDIA_FACTORY_ACCESS: string
 /**
  * Check if media can be constructed from a media factory
  * A response should be sent on error.
  */
-export const RTSP_AUTH_CHECK_MEDIA_FACTORY_CONSTRUCT: string | null
+export const RTSP_AUTH_CHECK_MEDIA_FACTORY_CONSTRUCT: string
 /**
  * Check if the client can specify TTL, destination and
  * port pair in multicast. No response is sent when the check returns
  * %FALSE.
  */
-export const RTSP_AUTH_CHECK_TRANSPORT_CLIENT_SETTINGS: string | null
+export const RTSP_AUTH_CHECK_TRANSPORT_CLIENT_SETTINGS: string
 /**
  * Check the URL and methods
  */
-export const RTSP_AUTH_CHECK_URL: string | null
-export const RTSP_ONVIF_BACKCHANNEL_REQUIREMENT: string | null
-export const RTSP_ONVIF_REPLAY_REQUIREMENT: string | null
+export const RTSP_AUTH_CHECK_URL: string
+export const RTSP_ONVIF_BACKCHANNEL_REQUIREMENT: string
+export const RTSP_ONVIF_REPLAY_REQUIREMENT: string
 /**
  * G_TYPE_BOOLEAN, %TRUE if the media can be accessed, %FALSE will
  * return a 404 Not Found error when trying to access the media.
  */
-export const RTSP_PERM_MEDIA_FACTORY_ACCESS: string | null
+export const RTSP_PERM_MEDIA_FACTORY_ACCESS: string
 /**
  * G_TYPE_BOOLEAN, %TRUE if the media can be constructed, %FALSE will
  * return a 404 Not Found error when trying to access the media.
  */
-export const RTSP_PERM_MEDIA_FACTORY_CONSTRUCT: string | null
+export const RTSP_PERM_MEDIA_FACTORY_CONSTRUCT: string
 /**
  * G_TYPE_STRING, the role to use when dealing with media factories
  * 
@@ -239,12 +239,12 @@ export const RTSP_PERM_MEDIA_FACTORY_CONSTRUCT: string | null
  * role of the media factory. It will then retrieve the #GstRTSPPermissions of
  * the media factory and retrieve the role with the same name.
  */
-export const RTSP_TOKEN_MEDIA_FACTORY_ROLE: string | null
+export const RTSP_TOKEN_MEDIA_FACTORY_ROLE: string
 /**
  * G_TYPE_BOOLEAN, %TRUE if the client can specify TTL, destination and
  *     port pair in multicast.
  */
-export const RTSP_TOKEN_TRANSPORT_CLIENT_SETTINGS: string | null
+export const RTSP_TOKEN_TRANSPORT_CLIENT_SETTINGS: string
 export function rtsp_context_get_type(): GObject.GType
 /**
  * Get parameters (not implemented yet)
@@ -519,7 +519,7 @@ export interface RTSPAddressPool {
      * @param ttl a TTL or 0 for unicast addresses
      * @returns %TRUE if the addresses could be added.
      */
-    add_range(min_address: string | null, max_address: string | null, min_port: number, max_port: number, ttl: number): boolean
+    add_range(min_address: string, max_address: string, min_port: number, max_port: number, ttl: number): boolean
     /**
      * Clear all addresses in `pool`. There should be no outstanding
      * allocations.
@@ -547,7 +547,7 @@ export interface RTSPAddressPool {
      * @param ttl The requested ttl
      * @returns #GST_RTSP_ADDRESS_POOL_OK if an address was reserved. The address is returned in @address and should be freed with gst_rtsp_address_free after use.
      */
-    reserve_address(ip_address: string | null, port: number, n_ports: number, ttl: number): [ /* returnType */ RTSPAddressPoolResult, /* address */ RTSPAddress ]
+    reserve_address(ip_address: string, port: number, n_ports: number, ttl: number): [ /* returnType */ RTSPAddressPoolResult, /* address */ RTSPAddress ]
 
     // Class property signals of GstRtspServer-1.0.GstRtspServer.RTSPAddressPool
 
@@ -619,7 +619,7 @@ export interface RTSPAuth {
      * @param basic the basic token
      * @param token authorisation token
      */
-    add_basic(basic: string | null, token: RTSPToken): void
+    add_basic(basic: string, token: RTSPToken): void
     /**
      * Add a digest `user` and `pass` for the default authentication algorithm that
      * enables the client with privileges listed in `token`.
@@ -627,7 +627,7 @@ export interface RTSPAuth {
      * @param pass the digest password
      * @param token authorisation token
      */
-    add_digest(user: string | null, pass: string | null, token: RTSPToken): void
+    add_digest(user: string, pass: string, token: RTSPToken): void
     /**
      * Get the default token for `auth`. This token will be used for unauthenticated
      * users.
@@ -671,12 +671,12 @@ export interface RTSPAuth {
      * Removes `basic` authentication token.
      * @param basic the basic token
      */
-    remove_basic(basic: string | null): void
+    remove_basic(basic: string): void
     /**
      * Removes a digest user.
      * @param user the digest user name
      */
-    remove_digest(user: string | null): void
+    remove_digest(user: string): void
     /**
      * Set the default #GstRTSPToken to `token` in `auth`. The default token will
      * be used for unauthenticated users.
@@ -718,7 +718,7 @@ export interface RTSPAuth {
 
     vfunc_accept_certificate(connection: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags): boolean
     vfunc_authenticate(ctx: RTSPContext): boolean
-    vfunc_check(ctx: RTSPContext, check: string | null): boolean
+    vfunc_check(ctx: RTSPContext, check: string): boolean
     vfunc_generate_authenticate_header(ctx: RTSPContext): void
 
     // Own signals of GstRtspServer-1.0.GstRtspServer.RTSPAuth
@@ -767,14 +767,14 @@ export class RTSPAuth extends GObject.Object {
      * @param check the item to check
      * @returns FALSE if check failed.
      */
-    static check(check: string | null): boolean
+    static check(check: string): boolean
     /**
      * Construct a Basic authorisation token from `user` and `pass`.
      * @param user a userid
      * @param pass a password
      * @returns the base64 encoding of the string @user:@pass. g_free() after usage.
      */
-    static make_basic(user: string | null, pass: string | null): string | null
+    static make_basic(user: string, pass: string): string | null
 }
 
 export module RTSPClient {
@@ -1487,7 +1487,7 @@ export interface RTSPMedia {
      * @param control the control of the stream
      * @returns the #GstRTSPStream with control uri @control or %NULL when a stream with that control did not exist.
      */
-    find_stream(control: string | null): RTSPStream | null
+    find_stream(control: string): RTSPStream | null
     /**
      * Get the #GstRTSPAddressPool used as the address pool of `media`.
      * @returns the #GstRTSPAddressPool of @media. g_object_unref() after usage.
@@ -2388,7 +2388,7 @@ export interface RTSPMediaFactory {
      * etc.. Each of the payloaders will result in a stream.
      * @param launch the launch description
      */
-    set_launch(launch: string | null): void
+    set_launch(launch: string): void
     /**
      * Set the maximum time-to-live value of outgoing multicast packets.
      * @param ttl the new multicast ttl value
@@ -2620,7 +2620,7 @@ export interface RTSPMediaFactoryURI {
      * Set the URI of the resource that will be streamed by this factory.
      * @param uri the uri the stream
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
 
     // Class property signals of GstRtspServer-1.0.GstRtspServer.RTSPMediaFactoryURI
 
@@ -2747,7 +2747,7 @@ export interface RTSPMountPoints {
      * @param path a mount point
      * @param factory a #GstRTSPMediaFactory
      */
-    add_factory(path: string | null, factory: RTSPMediaFactory): void
+    add_factory(path: string, factory: RTSPMediaFactory): void
     /**
      * Make a path string from `url`.
      * @param url a #GstRTSPUrl
@@ -2762,12 +2762,12 @@ export interface RTSPMountPoints {
      * @param path a mount point
      * @returns the #GstRTSPMediaFactory for @path. g_object_unref() after usage.
      */
-    match(path: string | null): [ /* returnType */ RTSPMediaFactory, /* matched */ number ]
+    match(path: string): [ /* returnType */ RTSPMediaFactory, /* matched */ number ]
     /**
      * Remove the #GstRTSPMediaFactory associated with `path` in `mounts`.
      * @param path a mount point
      */
-    remove_factory(path: string | null): void
+    remove_factory(path: string): void
 
     // Own virtual methods of GstRtspServer-1.0.GstRtspServer.RTSPMountPoints
 
@@ -3378,7 +3378,7 @@ export interface RTSPServer {
      * This function must be called before the server is bound.
      * @param address the address
      */
-    set_address(address: string | null): void
+    set_address(address: string): void
     /**
      * configure `auth` to be used as the authentication manager of `server`.
      * @param auth a #GstRTSPAuth
@@ -3415,7 +3415,7 @@ export interface RTSPServer {
      * This function must be called before the server is bound.
      * @param service the service
      */
-    set_service(service: string | null): void
+    set_service(service: string): void
     /**
      * configure `pool` to be used as the session pool of `server`.
      * @param pool a #GstRTSPSessionPool
@@ -3437,7 +3437,7 @@ export interface RTSPServer {
      * @param initial_buffer any initial data that was already read from the socket
      * @returns TRUE if all was ok, FALSE if an error occurred.
      */
-    transfer_connection(socket: Gio.Socket, ip: string | null, port: number, initial_buffer: string | null): boolean
+    transfer_connection(socket: Gio.Socket, ip: string, port: number, initial_buffer: string | null): boolean
 
     // Own virtual methods of GstRtspServer-1.0.GstRtspServer.RTSPServer
 
@@ -3563,7 +3563,7 @@ export interface RTSPSession {
      * @param path the path for the media
      * @returns the configuration for @path in @sess, should be unreferenced when no longer needed.
      */
-    dup_media(path: string | null): [ /* returnType */ RTSPSessionMedia | null, /* matched */ number ]
+    dup_media(path: string): [ /* returnType */ RTSPSessionMedia | null, /* matched */ number ]
     /**
      * Call `func` for each media in `sess`. The result value of `func` determines
      * what happens to the media. `func` will be called with `sess`
@@ -3594,7 +3594,7 @@ export interface RTSPSession {
      * @param path the path for the media
      * @returns the configuration for @path in @sess.
      */
-    get_media(path: string | null): [ /* returnType */ RTSPSessionMedia | null, /* matched */ number ]
+    get_media(path: string): [ /* returnType */ RTSPSessionMedia | null, /* matched */ number ]
     /**
      * Get the sessionid of `session`.
      * @returns the sessionid of @session. The value remains valid as long as @session is alive.
@@ -3626,7 +3626,7 @@ export interface RTSPSession {
      * @param media a #GstRTSPMedia
      * @returns a new @GstRTSPSessionMedia object.
      */
-    manage_media(path: string | null, media: RTSPMedia): RTSPSessionMedia
+    manage_media(path: string, media: RTSPMedia): RTSPSessionMedia
     /**
      * Get the amount of milliseconds till the session will expire.
      * @param now the current system time
@@ -3702,14 +3702,14 @@ export class RTSPSession extends GObject.Object {
      * @param sessionid a session id
      * @returns a new #GstRTSPSession
      */
-    constructor(sessionid: string | null) 
+    constructor(sessionid: string) 
     /**
      * Create a new #GstRTSPSession instance with `sessionid`.
      * @constructor 
      * @param sessionid a session id
      * @returns a new #GstRTSPSession
      */
-    static new(sessionid: string | null): RTSPSession
+    static new(sessionid: string): RTSPSession
     _init(config?: RTSPSession.ConstructorProperties): void
 }
 
@@ -3774,7 +3774,7 @@ export interface RTSPSessionMedia {
      * @param path a path
      * @returns %TRUE when @path matches the path of @media.
      */
-    matches(path: string | null): [ /* returnType */ boolean, /* matched */ number ]
+    matches(path: string): [ /* returnType */ boolean, /* matched */ number ]
     /**
      * Set the RTSP state of `media` to `state`.
      * @param state a #GstRTSPState
@@ -3826,7 +3826,7 @@ export class RTSPSessionMedia extends GObject.Object {
      * @param media the #GstRTSPMedia
      * @returns a new #GstRTSPSessionMedia.
      */
-    constructor(path: string | null, media: RTSPMedia) 
+    constructor(path: string, media: RTSPMedia) 
     /**
      * Create a new #GstRTSPSessionMedia that manages the streams
      * in `media` for `path`. `media` should be prepared.
@@ -3837,7 +3837,7 @@ export class RTSPSessionMedia extends GObject.Object {
      * @param media the #GstRTSPMedia
      * @returns a new #GstRTSPSessionMedia.
      */
-    static new(path: string | null, media: RTSPMedia): RTSPSessionMedia
+    static new(path: string, media: RTSPMedia): RTSPSessionMedia
     _init(config?: RTSPSessionMedia.ConstructorProperties): void
 }
 
@@ -3920,7 +3920,7 @@ export interface RTSPSessionPool {
      * @param sessionid the session id
      * @returns the #GstRTSPSession with @sessionid or %NULL when the session did not exist. g_object_unref() after usage.
      */
-    find(sessionid: string | null): RTSPSession | null
+    find(sessionid: string): RTSPSession | null
     /**
      * Get the maximum allowed number of sessions in `pool`. 0 means an unlimited
      * amount of sessions.
@@ -4060,7 +4060,7 @@ export interface RTSPStream {
      * @param family socket family
      * @returns %TRUE if @destination can be addedd and handled by @stream.
      */
-    add_multicast_client_address(destination: string | null, rtp_port: number, rtcp_port: number, family: Gio.SocketFamily): boolean
+    add_multicast_client_address(destination: string, rtp_port: number, rtcp_port: number, family: Gio.SocketFamily): boolean
     /**
      * Add the transport in `trans` to `stream`. The media of `stream` will
      * then also be send to the values configured in `trans`. Adding the
@@ -4260,7 +4260,7 @@ export interface RTSPStream {
      * Parse and handle a KeyMgmt header.
      * @param keymgmt a keymgmt header
      */
-    handle_keymgmt(keymgmt: string | null): boolean
+    handle_keymgmt(keymgmt: string): boolean
     /**
      * Check if `stream` has the control string `control`.
      * @param control a control string
@@ -4399,7 +4399,7 @@ export interface RTSPStream {
      * @param ttl a TTL
      * @returns the #GstRTSPAddress of @stream or %NULL when the address could not be reserved. gst_rtsp_address_free() after usage.
      */
-    reserve_address(address: string | null, port: number, n_ports: number, ttl: number): RTSPAddress | null
+    reserve_address(address: string, port: number, n_ports: number, ttl: number): RTSPAddress | null
     /**
      * Checks whether the individual `stream` is seekable.
      * @returns %TRUE if @stream is seekable, else %FALSE.
@@ -5003,7 +5003,7 @@ export interface RTSPAuthClass {
 
     parent_class: GObject.ObjectClass
     authenticate: (auth: RTSPAuth, ctx: RTSPContext) => boolean
-    check: (auth: RTSPAuth, ctx: RTSPContext, check: string | null) => boolean
+    check: (auth: RTSPAuth, ctx: RTSPContext, check: string) => boolean
     generate_authenticate_header: (auth: RTSPAuth, ctx: RTSPContext) => void
     accept_certificate: (auth: RTSPAuth, connection: Gio.TlsConnection, peer_cert: Gio.TlsCertificate, errors: Gio.TlsCertificateFlags) => boolean
 }
@@ -5430,13 +5430,13 @@ export interface RTSPPermissions {
      * @param permission the permission
      * @param allowed whether the role has this permission or not
      */
-    add_permission_for_role(role: string | null, permission: string | null, allowed: boolean): void
+    add_permission_for_role(role: string, permission: string, allowed: boolean): void
     /**
      * Add a new `role` to `permissions` without any permissions. You can add
      * permissions for the role with gst_rtsp_permissions_add_permission_for_role().
      * @param role a role
      */
-    add_role(role: string | null): void
+    add_role(role: string): void
     /**
      * Add a new role to `permissions` based on `structure,` for example
      * given a role named `tester`, which should be granted a permission named
@@ -5453,19 +5453,19 @@ export interface RTSPPermissions {
      * @param role a role
      * @returns the structure with permissions for @role. It remains valid for as long as @permissions is valid.
      */
-    get_role(role: string | null): Gst.Structure
+    get_role(role: string): Gst.Structure
     /**
      * Check if `role` in `permissions` is given permission for `permission`.
      * @param role a role
      * @param permission a permission
      * @returns %TRUE if @role is allowed @permission.
      */
-    is_allowed(role: string | null, permission: string | null): boolean
+    is_allowed(role: string, permission: string): boolean
     /**
      * Remove all permissions for `role` in `permissions`.
      * @param role a role
      */
-    remove_role(role: string | null): void
+    remove_role(role: string): void
 }
 
 /**
@@ -5763,7 +5763,7 @@ export interface RTSPToken {
      * @param field a field name
      * @returns the string value of @field in @token or %NULL when @field is not defined in @token. The string becomes invalid when you free @token.
      */
-    get_string(field: string | null): string | null
+    get_string(field: string): string | null
     /**
      * Access the structure of the token.
      * @returns The structure of the token. The structure is still owned by the token, which means that you should not free it and that the pointer becomes invalid when you free the token. MT safe.
@@ -5774,19 +5774,19 @@ export interface RTSPToken {
      * @param field a field name
      * @returns %TRUE if @token has a boolean field named @field set to %TRUE.
      */
-    is_allowed(field: string | null): boolean
+    is_allowed(field: string): boolean
     /**
      * Sets a boolean value on `token`.
      * @param field field to set
      * @param bool_value boolean value to set
      */
-    set_bool(field: string | null, bool_value: boolean): void
+    set_bool(field: string, bool_value: boolean): void
     /**
      * Sets a string value on `token`.
      * @param field field to set
      * @param string_value string value to set
      */
-    set_string(field: string | null, string_value: string | null): void
+    set_string(field: string, string_value: string): void
     /**
      * Get a writable version of the structure.
      * @returns The structure of the token. The structure is still owned by the token, which means that you should not free it and that the pointer becomes invalid when you free the token. This function ensures that @token is writable, and if so, will never return %NULL. MT safe.
@@ -5826,7 +5826,7 @@ export interface SDPInfo {
     // Own fields of GstRtspServer-1.0.GstRtspServer.SDPInfo
 
     is_ipv6: boolean
-    server_ip: string | null
+    server_ip: string
 }
 
 export class SDPInfo {

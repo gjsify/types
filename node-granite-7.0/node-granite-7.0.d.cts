@@ -43,55 +43,55 @@ export enum SettingsColorScheme {
     DARK,
     LIGHT,
 }
-export const SettingsUriLOCATION: string | null
-export const SettingsUriONLINE_ACCOUNTS: string | null
-export const SettingsUriNETWORK: string | null
-export const SettingsUriPERMISSIONS: string | null
-export const SettingsUriNOTIFICATIONS: string | null
-export const SettingsUriSOUND_INPUT: string | null
-export const SettingsUriSHORTCUTS: string | null
-export const STYLE_CLASS_ACCENT: string | null
-export const STYLE_CLASS_BACK_BUTTON: string | null
-export const STYLE_CLASS_BACKGROUND: string | null
-export const STYLE_CLASS_BADGE: string | null
-export const STYLE_CLASS_CARD: string | null
-export const STYLE_CLASS_CHECKERBOARD: string | null
-export const STYLE_CLASS_CIRCULAR: string | null
-export const STYLE_CLASS_COLOR_BUTTON: string | null
-export const STYLE_CLASS_DEFAULT_DECORATION: string | null
-export const STYLE_CLASS_DESTRUCTIVE_ACTION: string | null
-export const STYLE_CLASS_DIALOG_CONTENT_AREA: string | null
-export const STYLE_CLASS_FRAME: string | null
-export const STYLE_CLASS_H1_LABEL: string | null
-export const STYLE_CLASS_H2_LABEL: string | null
-export const STYLE_CLASS_H3_LABEL: string | null
-export const STYLE_CLASS_H4_LABEL: string | null
-export const STYLE_CLASS_KEYCAP: string | null
-export const STYLE_CLASS_LARGE_ICONS: string | null
-export const STYLE_CLASS_MODE_SWITCH: string | null
-export const STYLE_CLASS_OSD: string | null
-export const STYLE_CLASS_ROUNDED: string | null
-export const STYLE_CLASS_SIDEBAR: string | null
-export const STYLE_CLASS_SMALL_LABEL: string | null
-export const STYLE_CLASS_TERMINAL: string | null
-export const STYLE_CLASS_TITLE_LABEL: string | null
-export const STYLE_CLASS_WARMTH: string | null
-export const STYLE_CLASS_TEMPERATURE: string | null
-export const STYLE_CLASS_LINKED: string | null
-export const STYLE_CLASS_MENU: string | null
-export const STYLE_CLASS_MENUITEM: string | null
-export const STYLE_CLASS_DIM_LABEL: string | null
-export const STYLE_CLASS_ERROR: string | null
-export const STYLE_CLASS_FLAT: string | null
-export const STYLE_CLASS_MESSAGE_DIALOG: string | null
-export const STYLE_CLASS_RICH_LIST: string | null
-export const STYLE_CLASS_SUGGESTED_ACTION: string | null
-export const STYLE_CLASS_VIEW: string | null
-export const STYLE_CLASS_WARNING: string | null
+export const SettingsUriLOCATION: string
+export const SettingsUriONLINE_ACCOUNTS: string
+export const SettingsUriNETWORK: string
+export const SettingsUriPERMISSIONS: string
+export const SettingsUriNOTIFICATIONS: string
+export const SettingsUriSOUND_INPUT: string
+export const SettingsUriSHORTCUTS: string
+export const STYLE_CLASS_ACCENT: string
+export const STYLE_CLASS_BACK_BUTTON: string
+export const STYLE_CLASS_BACKGROUND: string
+export const STYLE_CLASS_BADGE: string
+export const STYLE_CLASS_CARD: string
+export const STYLE_CLASS_CHECKERBOARD: string
+export const STYLE_CLASS_CIRCULAR: string
+export const STYLE_CLASS_COLOR_BUTTON: string
+export const STYLE_CLASS_DEFAULT_DECORATION: string
+export const STYLE_CLASS_DESTRUCTIVE_ACTION: string
+export const STYLE_CLASS_DIALOG_CONTENT_AREA: string
+export const STYLE_CLASS_FRAME: string
+export const STYLE_CLASS_H1_LABEL: string
+export const STYLE_CLASS_H2_LABEL: string
+export const STYLE_CLASS_H3_LABEL: string
+export const STYLE_CLASS_H4_LABEL: string
+export const STYLE_CLASS_KEYCAP: string
+export const STYLE_CLASS_LARGE_ICONS: string
+export const STYLE_CLASS_MODE_SWITCH: string
+export const STYLE_CLASS_OSD: string
+export const STYLE_CLASS_ROUNDED: string
+export const STYLE_CLASS_SIDEBAR: string
+export const STYLE_CLASS_SMALL_LABEL: string
+export const STYLE_CLASS_TERMINAL: string
+export const STYLE_CLASS_TITLE_LABEL: string
+export const STYLE_CLASS_WARMTH: string
+export const STYLE_CLASS_TEMPERATURE: string
+export const STYLE_CLASS_LINKED: string
+export const STYLE_CLASS_MENU: string
+export const STYLE_CLASS_MENUITEM: string
+export const STYLE_CLASS_DIM_LABEL: string
+export const STYLE_CLASS_ERROR: string
+export const STYLE_CLASS_FLAT: string
+export const STYLE_CLASS_MESSAGE_DIALOG: string
+export const STYLE_CLASS_RICH_LIST: string
+export const STYLE_CLASS_SUGGESTED_ACTION: string
+export const STYLE_CLASS_VIEW: string
+export const STYLE_CLASS_WARNING: string
 export const TRANSITION_DURATION_CLOSE: number
 export const TRANSITION_DURATION_IN_PLACE: number
 export const TRANSITION_DURATION_OPEN: number
-export const TOOLTIP_SECONDARY_TEXT_MARKUP: string | null
+export const TOOLTIP_SECONDARY_TEXT_MARKUP: string
 export function dateTimeGetDefaultTimeFormat(is12h: boolean, withSecond: boolean): string | null
 export function dateTimeGetRelativeDatetime(dateTime: GLib.DateTime): string | null
 export function dateTimeIsSameDay(day1: GLib.DateTime, day2: GLib.DateTime): boolean
@@ -186,12 +186,12 @@ export interface ServicesSettingsSerializable extends GObject.Object {
     // Owm methods of Granite-7.0.Granite.ServicesSettingsSerializable
 
     // Has conflict: settingsSerialize(): string | null
-    // Has conflict: settingsDeserialize(s: string | null): void
+    // Has conflict: settingsDeserialize(s: string): void
 
     // Own virtual methods of Granite-7.0.Granite.ServicesSettingsSerializable
 
     settingsSerialize(): string | null
-    settingsDeserialize(s: string | null): void
+    settingsDeserialize(s: string): void
 
     // Class property signals of Granite-7.0.Granite.ServicesSettingsSerializable
 
@@ -287,7 +287,7 @@ export class ServicesContractorProxy extends GObject.Object {
     _init(config?: ServicesContractorProxy.ConstructorProperties): void
     static getInstance(): any
     static getAllContracts(): Gee.List
-    static getContractsByMime(mimeType: string | null): Gee.List
+    static getContractsByMime(mimeType: string): Gee.List
     static getContractsByMimelist(mimeTypes: string[]): Gee.List
     static getContractsForFile(file: Gio.File): Gee.List
     static getContractsForFiles(files: Gio.File[]): Gee.List
@@ -383,12 +383,12 @@ export interface SettingsPage {
     setStatusType(value: SettingsPageStatusType): void
     getDisplayWidget(): Gtk.Widget | null
     getHeader(): string | null
-    getStatus(): string | null
-    setStatus(value: string | null): void
+    getStatus(): string
+    setStatus(value: string): void
     getIconName(): string | null
     setIconName(value: string | null): void
-    getTitle(): string | null
-    setTitle(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
     getChild(): Gtk.Widget
     setChild(value: Gtk.Widget): void
 
@@ -672,8 +672,8 @@ export interface SimpleSettingsPage {
     getContentArea(): Gtk.Grid
     getStatusSwitch(): Gtk.Switch | null
     getActivatable(): boolean
-    getDescription(): string | null
-    setDescription(value: string | null): void
+    getDescription(): string
+    setDescription(value: string): void
 
     // Class property signals of Granite-7.0.Granite.SimpleSettingsPage
 
@@ -972,12 +972,12 @@ export interface AccelLabel {
 
     // Owm methods of Granite-7.0.Granite.AccelLabel
 
-    getActionName(): string | null
-    setActionName(value: string | null): void
+    getActionName(): string
+    setActionName(value: string): void
     getAccelString(): string | null
     setAccelString(value: string | null): void
-    getLabel(): string | null
-    setLabel(value: string | null): void
+    getLabel(): string
+    setLabel(value: string): void
 
     // Class property signals of Granite-7.0.Granite.AccelLabel
 
@@ -1208,8 +1208,8 @@ export class AccelLabel extends Gtk.Box {
     // Constructors of Granite-7.0.Granite.AccelLabel
 
     constructor(config?: AccelLabel.ConstructorProperties) 
-    constructor(label: string | null, accelString: string | null) 
-    static new(label: string | null, accelString: string | null): AccelLabel
+    constructor(label: string, accelString: string | null) 
+    static new(label: string, accelString: string | null): AccelLabel
 
     // Overloads of new
 
@@ -1221,7 +1221,7 @@ export class AccelLabel extends Gtk.Box {
      * @returns a new `GtkBox`.
      */
     static new(orientation: Gtk.Orientation, spacing: number): Gtk.Box
-    static fromActionName(label: string | null, actionName: string | null): AccelLabel
+    static fromActionName(label: string, actionName: string): AccelLabel
     _init(config?: AccelLabel.ConstructorProperties): void
 }
 
@@ -1249,7 +1249,7 @@ export interface DatePicker extends Gtk.Buildable {
 
     // Owm methods of Granite-7.0.Granite.DatePicker
 
-    getFormat(): string | null
+    getFormat(): string
     getDate(): GLib.DateTime
     setDate(value: GLib.DateTime): void
 
@@ -1695,7 +1695,7 @@ export class DatePicker extends Gtk.Entry {
     // Constructors of Granite-7.0.Granite.DatePicker
 
     constructor(config?: DatePicker.ConstructorProperties) 
-    static withFormat(format: string | null): DatePicker
+    static withFormat(format: string): DatePicker
     constructor() 
     static new(): DatePicker
 
@@ -2229,8 +2229,8 @@ export interface HeaderLabel {
 
     // Owm methods of Granite-7.0.Granite.HeaderLabel
 
-    getLabel(): string | null
-    setLabel(value: string | null): void
+    getLabel(): string
+    setLabel(value: string): void
     getSecondaryText(): string | null
     setSecondaryText(value: string | null): void
 
@@ -2438,8 +2438,8 @@ export class HeaderLabel extends Gtk.Widget {
     // Constructors of Granite-7.0.Granite.HeaderLabel
 
     constructor(config?: HeaderLabel.ConstructorProperties) 
-    constructor(label: string | null) 
-    static new(label: string | null): HeaderLabel
+    constructor(label: string) 
+    static new(label: string): HeaderLabel
     _init(config?: HeaderLabel.ConstructorProperties): void
 }
 
@@ -2820,10 +2820,10 @@ export interface MessageDialog {
 
     // Owm methods of Granite-7.0.Granite.MessageDialog
 
-    getPrimaryText(): string | null
-    setPrimaryText(value: string | null): void
-    getSecondaryText(): string | null
-    setSecondaryText(value: string | null): void
+    getPrimaryText(): string
+    setPrimaryText(value: string): void
+    getSecondaryText(): string
+    setSecondaryText(value: string): void
     getImageIcon(): Gio.Icon
     setImageIcon(value: Gio.Icon): void
     getBadgeIcon(): Gio.Icon
@@ -2831,7 +2831,7 @@ export interface MessageDialog {
     getPrimaryLabel(): Gtk.Label
     getSecondaryLabel(): Gtk.Label
     getCustomBin(): Gtk.Box
-    showErrorDetails(errorMessage: string | null): void
+    showErrorDetails(errorMessage: string): void
 
     // Conflicting methods
 
@@ -3331,8 +3331,8 @@ export class MessageDialog extends Dialog {
     // Constructors of Granite-7.0.Granite.MessageDialog
 
     constructor(config?: MessageDialog.ConstructorProperties) 
-    constructor(primaryText: string | null, secondaryText: string | null, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType) 
-    static new(primaryText: string | null, secondaryText: string | null, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType): MessageDialog
+    constructor(primaryText: string, secondaryText: string, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType) 
+    static new(primaryText: string, secondaryText: string, imageIcon: Gio.Icon, buttons: Gtk.ButtonsType): MessageDialog
 
     // Overloads of new
 
@@ -3347,7 +3347,7 @@ export class MessageDialog extends Dialog {
      * @returns the new dialog as a `GtkWidget`
      */
     static new(): Gtk.Dialog
-    static withImageFromIconName(primaryText: string | null, secondaryText: string | null, imageIconName: string | null, buttons: Gtk.ButtonsType): MessageDialog
+    static withImageFromIconName(primaryText: string, secondaryText: string, imageIconName: string, buttons: Gtk.ButtonsType): MessageDialog
     _init(config?: MessageDialog.ConstructorProperties): void
 }
 
@@ -3393,16 +3393,16 @@ export interface ModeSwitch {
     setActive(value: boolean): void
     getPrimaryIconGicon(): Gio.Icon
     setPrimaryIconGicon(value: Gio.Icon): void
-    getPrimaryIconName(): string | null
-    setPrimaryIconName(value: string | null): void
-    getPrimaryIconTooltipText(): string | null
-    setPrimaryIconTooltipText(value: string | null): void
+    getPrimaryIconName(): string
+    setPrimaryIconName(value: string): void
+    getPrimaryIconTooltipText(): string
+    setPrimaryIconTooltipText(value: string): void
     getSecondaryIconGicon(): Gio.Icon
     setSecondaryIconGicon(value: Gio.Icon): void
-    getSecondaryIconName(): string | null
-    setSecondaryIconName(value: string | null): void
-    getSecondaryIconTooltipText(): string | null
-    setSecondaryIconTooltipText(value: string | null): void
+    getSecondaryIconName(): string
+    setSecondaryIconName(value: string): void
+    getSecondaryIconTooltipText(): string
+    setSecondaryIconTooltipText(value: string): void
 
     // Class property signals of Granite-7.0.Granite.ModeSwitch
 
@@ -3666,7 +3666,7 @@ export class ModeSwitch extends Gtk.Box {
      * @returns a new `GtkBox`.
      */
     static new(orientation: Gtk.Orientation, spacing: number): Gtk.Box
-    static fromIconName(primaryIconName: string | null, secondaryIconName: string | null): ModeSwitch
+    static fromIconName(primaryIconName: string, secondaryIconName: string): ModeSwitch
     _init(config?: ModeSwitch.ConstructorProperties): void
 }
 
@@ -3697,8 +3697,8 @@ export interface OverlayBar {
     // Owm methods of Granite-7.0.Granite.OverlayBar
 
     getOverlay(): Gtk.Overlay | null
-    getLabel(): string | null
-    setLabel(value: string | null): void
+    getLabel(): string
+    setLabel(value: string): void
     getActive(): boolean
     setActive(value: boolean): void
 
@@ -3942,13 +3942,13 @@ export interface Placeholder {
 
     // Owm methods of Granite-7.0.Granite.Placeholder
 
-    getTitle(): string | null
-    setTitle(value: string | null): void
-    getDescription(): string | null
-    setDescription(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
+    getDescription(): string
+    setDescription(value: string): void
     getIcon(): Gio.Icon
     setIcon(value: Gio.Icon): void
-    appendButton(icon: Gio.Icon, label: string | null, description: string | null): Gtk.Button
+    appendButton(icon: Gio.Icon, label: string, description: string): Gtk.Button
 
     // Class property signals of Granite-7.0.Granite.Placeholder
 
@@ -4159,8 +4159,8 @@ export class Placeholder extends Gtk.Widget {
     // Constructors of Granite-7.0.Granite.Placeholder
 
     constructor(config?: Placeholder.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): Placeholder
+    constructor(title: string) 
+    static new(title: string): Placeholder
     _init(config?: Placeholder.ConstructorProperties): void
 }
 
@@ -4482,8 +4482,8 @@ export interface SwitchModelButton {
 
     // Owm methods of Granite-7.0.Granite.SwitchModelButton
 
-    getText(): string | null
-    setText(value: string | null): void
+    getText(): string
+    setText(value: string): void
     getDescription(): string | null
     setDescription(value: string | null): void
 
@@ -4774,8 +4774,8 @@ export class SwitchModelButton extends Gtk.ToggleButton {
     // Constructors of Granite-7.0.Granite.SwitchModelButton
 
     constructor(config?: SwitchModelButton.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): SwitchModelButton
+    constructor(text: string) 
+    static new(text: string): SwitchModelButton
 
     // Overloads of new
 
@@ -4826,8 +4826,8 @@ export interface TimePicker {
 
     // Owm methods of Granite-7.0.Granite.TimePicker
 
-    getFormat12(): string | null
-    getFormat24(): string | null
+    getFormat12(): string
+    getFormat24(): string
     getTime(): GLib.DateTime
     setTime(value: GLib.DateTime): void
 
@@ -5286,7 +5286,7 @@ export class TimePicker extends Gtk.Entry {
     // Constructors of Granite-7.0.Granite.TimePicker
 
     constructor(config?: TimePicker.ConstructorProperties) 
-    static withFormat(format12: string | null, format24: string | null): TimePicker
+    static withFormat(format12: string, format24: string): TimePicker
     constructor() 
     static new(): TimePicker
 
@@ -5340,8 +5340,8 @@ export interface Toast {
 
     // Owm methods of Granite-7.0.Granite.Toast
 
-    getTitle(): string | null
-    setTitle(value: string | null): void
+    getTitle(): string
+    setTitle(value: string): void
     setDefaultAction(label: string | null): void
     sendNotification(): void
 
@@ -5557,8 +5557,8 @@ export class Toast extends Gtk.Widget {
     // Constructors of Granite-7.0.Granite.Toast
 
     constructor(config?: Toast.ConstructorProperties) 
-    constructor(title: string | null) 
-    static new(title: string | null): Toast
+    constructor(title: string) 
+    static new(title: string): Toast
     _init(config?: Toast.ConstructorProperties): void
 }
 
@@ -6120,7 +6120,7 @@ export interface ServicesSettingsSerializableIface {
     // Own fields of Granite-7.0.Granite.ServicesSettingsSerializableIface
 
     settingsSerialize: (self: any) => string | null
-    settingsDeserialize: (self: any, s: string | null) => void
+    settingsDeserialize: (self: any, s: string) => void
 }
 
 export abstract class ServicesSettingsSerializableIface {

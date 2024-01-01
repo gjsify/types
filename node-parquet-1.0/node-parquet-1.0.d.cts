@@ -33,7 +33,7 @@ export const VERSION_MINOR: number
  * The version tag. Normally, it's an empty string. It's "SNAPSHOT"
  * for snapshot version.
  */
-export const VERSION_TAG: string | null
+export const VERSION_TAG: string
 export module ArrowFileReader {
 
     // Constructor properties interface
@@ -97,7 +97,7 @@ export class ArrowFileReader extends GObject.Object {
 
     constructor(config?: ArrowFileReader.ConstructorProperties) 
     static newArrow(source: Arrow.SeekableInputStream): ArrowFileReader
-    static newPath(path: string | null): ArrowFileReader
+    static newPath(path: string): ArrowFileReader
     _init(config?: ArrowFileReader.ConstructorProperties): void
 }
 
@@ -160,7 +160,7 @@ export class ArrowFileWriter extends GObject.Object {
 
     constructor(config?: ArrowFileWriter.ConstructorProperties) 
     static newArrow(schema: Arrow.Schema, sink: Arrow.OutputStream, writerProperties: WriterProperties | null): ArrowFileWriter
-    static newPath(schema: Arrow.Schema, path: string | null, writerProperties: WriterProperties | null): ArrowFileWriter
+    static newPath(schema: Arrow.Schema, path: string, writerProperties: WriterProperties | null): ArrowFileWriter
     _init(config?: ArrowFileWriter.ConstructorProperties): void
 }
 
@@ -188,11 +188,11 @@ export interface WriterProperties {
     disableDictionary(path: string | null): void
     enableDictionary(path: string | null): void
     getBatchSize(): number
-    getCompressionPath(path: string | null): Arrow.CompressionType
+    getCompressionPath(path: string): Arrow.CompressionType
     getDataPageSize(): number
     getDictionaryPageSizeLimit(): number
     getMaxRowGroupLength(): number
-    isDictionaryEnabled(path: string | null): boolean
+    isDictionaryEnabled(path: string): boolean
     setBatchSize(batchSize: number): void
     setCompression(compressionType: Arrow.CompressionType, path: string | null): void
     setDataPageSize(dataPageSize: number): void

@@ -1067,7 +1067,7 @@ function blend_string_error_quark(): number
  * @param ext list of extensions
  * @returns %TRUE if the extension occurs in the list, %FALSE otherwise.
  */
-function check_extension(name: string | null, ext: string | null): Bool
+function check_extension(name: string, ext: string): Bool
 /**
  * Clears all the auxiliary buffers identified in the `buffers` mask, and if
  * that includes the color buffer then the specified `color` is used.
@@ -1160,7 +1160,7 @@ function clip_stack_restore(): void
  * cogl_clip_stack_restore().
  */
 function clip_stack_save(): void
-function clutter_check_extension_CLUTTER(name: string | null, ext: string | null): Bool
+function clutter_check_extension_CLUTTER(name: string, ext: string): Bool
 function clutter_winsys_has_feature_CLUTTER(feature: WinsysFeature): Bool
 /**
  * Compares two #CoglColor<!-- -->s and checks if they are the same.
@@ -1489,7 +1489,7 @@ function program_attach_shader(program_handle: Handle, shader_handle: Handle): v
  * @param uniform_name the name of a uniform.
  * @returns the offset of a uniform in a specified program.   This uniform can be set using cogl_program_uniform_1f() when the   program is in use.
  */
-function program_get_uniform_location(handle: Handle, uniform_name: string | null): number
+function program_get_uniform_location(handle: Handle, uniform_name: string): number
 /**
  * Links a program making it ready for use. Note that calling this
  * function is optional. If it is not called the program will
@@ -1906,7 +1906,7 @@ function shader_ref(handle: Handle): Handle
  * @param shader #CoglHandle for a shader.
  * @param source Shader source.
  */
-function shader_source(shader: Handle, source: string | null): void
+function shader_source(shader: Handle, source: string): void
 /**
  * Removes a reference to a shader. If it was the last reference the
  * shader object will be destroyed.
@@ -1978,7 +1978,7 @@ function translate(x: number, y: number, z: number): void
  * @param stride This specifies the number of bytes from the start of one attribute   value to the start of the next value (for the same attribute). So, for   example, with a position interleved with color like this:   XYRGBAXYRGBAXYRGBA, then if each letter represents a byte, the   stride for both attributes is 6. The special value 0 means the   values are stored sequentially in memory.
  * @param pointer This addresses the first attribute in the vertex array. This   must remain valid until you either call cogl_vertex_buffer_submit() or   issue a draw call.
  */
-function vertex_buffer_add(handle: Handle, attribute_name: string | null, n_components: number, type: AttributeType, normalized: Bool, stride: number, pointer: any | null): void
+function vertex_buffer_add(handle: Handle, attribute_name: string, n_components: number, type: AttributeType, normalized: Bool, stride: number, pointer: any | null): void
 /**
  * Deletes an attribute from a buffer. You will need to call
  * cogl_vertex_buffer_submit() or issue a draw call to commit this
@@ -1986,7 +1986,7 @@ function vertex_buffer_add(handle: Handle, attribute_name: string | null, n_comp
  * @param handle A vertex buffer handle
  * @param attribute_name The name of a previously added attribute
  */
-function vertex_buffer_delete(handle: Handle, attribute_name: string | null): void
+function vertex_buffer_delete(handle: Handle, attribute_name: string): void
 /**
  * Disables a previosuly added attribute.
  * 
@@ -1999,7 +1999,7 @@ function vertex_buffer_delete(handle: Handle, attribute_name: string | null): vo
  * @param handle A vertex buffer handle
  * @param attribute_name The name of the attribute you want to disable
  */
-function vertex_buffer_disable(handle: Handle, attribute_name: string | null): void
+function vertex_buffer_disable(handle: Handle, attribute_name: string): void
 /**
  * Allows you to draw geometry using all or a subset of the
  * vertices in a vertex buffer.
@@ -2039,7 +2039,7 @@ function vertex_buffer_draw_elements(handle: Handle, mode: VerticesMode, indices
  * @param handle A vertex buffer handle
  * @param attribute_name The name of the attribute you want to enable
  */
-function vertex_buffer_enable(handle: Handle, attribute_name: string | null): void
+function vertex_buffer_enable(handle: Handle, attribute_name: string): void
 /**
  * Retrieves the number of vertices that `handle` represents
  * @param handle A vertex buffer handle
@@ -2179,7 +2179,7 @@ interface Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Queries the GL handles for a GPU side texture through its #CoglTexture.
      * 
@@ -2326,14 +2326,14 @@ class Bitmap {
      * @param filename the file to load.
      * @returns a #CoglBitmap to the new loaded               image data, or %NULL if loading the image failed.
      */
-    static new_from_file(filename: string | null): Bitmap
+    static new_from_file(filename: string): Bitmap
     /**
      * Parses an image file enough to extract the width and height
      * of the bitmap.
      * @param filename the file to check
      * @returns %TRUE if the image was successfully parsed
      */
-    static get_size_from_file(filename: string | null): [ /* returnType */ Bool, /* width */ number, /* height */ number ]
+    static get_size_from_file(filename: string): [ /* returnType */ Bool, /* width */ number, /* height */ number ]
 }
 
 interface Fixed {
@@ -2905,7 +2905,7 @@ interface Material {
      * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, %FALSE is returned and @error is set accordingly (if   present).
      */
-    set_blend(blend_string: string | null): Bool
+    set_blend(blend_string: string): Bool
     /**
      * When blending is setup to reference a CONSTANT blend factor then
      * blending will depend on the constant set with this function.
@@ -3057,7 +3057,7 @@ interface Material {
      * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, %FALSE is returned and @error is set
      */
-    set_layer_combine(layer_index: number, blend_string: string | null): Bool
+    set_layer_combine(layer_index: number, blend_string: string): Bool
     /**
      * When you are using the 'CONSTANT' color source in a layer combine
      * description then you can use this function to define its value.

@@ -569,7 +569,7 @@ function callable_info_get_n_args(info: CallableInfo): number
  * @param name a freeform string naming an attribute
  * @returns The value of the attribute, or %NULL if no such attribute exists
  */
-function callable_info_get_return_attribute(info: CallableInfo, name: string | null): string | null
+function callable_info_get_return_attribute(info: CallableInfo, name: string): string
 /**
  * Obtain the return type of a callable item as a #GITypeInfo.
  * @param info a #GICallableInfo
@@ -660,7 +660,7 @@ function constant_info_get_type(info: ConstantInfo): TypeInfo
  * @param info a #GIEnumInfo
  * @returns the string form of the error domain associated with this enum, or %NULL.
  */
-function enum_info_get_error_domain(info: EnumInfo): string | null
+function enum_info_get_error_domain(info: EnumInfo): string
 /**
  * Obtain an enum type method at index `n`.
  * @param info a #GIEnumInfo
@@ -747,7 +747,7 @@ function function_info_get_property(info: FunctionInfo): PropertyInfo
  * @param info a #GIFunctionInfo
  * @returns the symbol
  */
-function function_info_get_symbol(info: FunctionInfo): string | null
+function function_info_get_symbol(info: FunctionInfo): string
 /**
  * Obtain the virtual function associated with this #GIFunctionInfo.
  * Only #GIFunctionInfo with the flag %GI_FUNCTION_WRAPS_VFUNC has
@@ -788,7 +788,7 @@ function info_new(type: InfoType, container: BaseInfo, typelib: Typelib, offset:
  * @param type the info type
  * @returns the string
  */
-function info_type_to_string(type: InfoType): string | null
+function info_type_to_string(type: InfoType): string
 /**
  * Obtain a method of the interface type given a `name`. %NULL will be
  * returned if there's no method available with that name.
@@ -796,14 +796,14 @@ function info_type_to_string(type: InfoType): string | null
  * @param name name of method to obtain
  * @returns the #GIFunctionInfo or %NULL if none found. Free the struct by calling g_base_info_unref() when done.
  */
-function interface_info_find_method(info: InterfaceInfo, name: string | null): FunctionInfo
+function interface_info_find_method(info: InterfaceInfo, name: string): FunctionInfo
 /**
  * TODO
  * @param info a #GIInterfaceInfo
  * @param name Name of signal
  * @returns Info for the signal with name @name in @info, or %NULL on failure.
  */
-function interface_info_find_signal(info: InterfaceInfo, name: string | null): SignalInfo
+function interface_info_find_signal(info: InterfaceInfo, name: string): SignalInfo
 /**
  * Locate a virtual function slot with name `name`. See the documentation
  * for g_object_info_find_vfunc() for more information on virtuals.
@@ -811,7 +811,7 @@ function interface_info_find_signal(info: InterfaceInfo, name: string | null): S
  * @param name The name of a virtual function to find.
  * @returns the #GIVFuncInfo, or %NULL. Free it with g_base_info_unref() when done.
  */
-function interface_info_find_vfunc(info: InterfaceInfo, name: string | null): VFuncInfo
+function interface_info_find_vfunc(info: InterfaceInfo, name: string): VFuncInfo
 /**
  * Obtain an interface type constant at index `n`.
  * @param info a #GIInterfaceInfo
@@ -910,7 +910,7 @@ function invoke_error_quark(): GLib.Quark
  * @param name name of method to obtain
  * @returns the #GIFunctionInfo. Free the struct by calling g_base_info_unref() when done.
  */
-function object_info_find_method(info: ObjectInfo, name: string | null): FunctionInfo | null
+function object_info_find_method(info: ObjectInfo, name: string): FunctionInfo | null
 /**
  * Obtain a method of the object given a `name,` searching both the
  * object `info` and any interfaces it implements.  %NULL will be
@@ -922,14 +922,14 @@ function object_info_find_method(info: ObjectInfo, name: string | null): Functio
  * @param name name of method to obtain
  * @returns the #GIFunctionInfo. Free the struct by calling g_base_info_unref() when done.
  */
-function object_info_find_method_using_interfaces(info: ObjectInfo, name: string | null): [ /* returnType */ FunctionInfo | null, /* implementor */ ObjectInfo ]
+function object_info_find_method_using_interfaces(info: ObjectInfo, name: string): [ /* returnType */ FunctionInfo | null, /* implementor */ ObjectInfo ]
 /**
  * TODO
  * @param info a #GIObjectInfo
  * @param name Name of signal
  * @returns Info for the signal with name @name in @info, or %NULL on failure.
  */
-function object_info_find_signal(info: ObjectInfo, name: string | null): SignalInfo | null
+function object_info_find_signal(info: ObjectInfo, name: string): SignalInfo | null
 /**
  * Locate a virtual function slot with name `name`. Note that the namespace
  * for virtuals is distinct from that of methods; there may or may not be
@@ -942,7 +942,7 @@ function object_info_find_signal(info: ObjectInfo, name: string | null): SignalI
  * @param name The name of a virtual function to find.
  * @returns the #GIVFuncInfo, or %NULL. Free it with g_base_info_unref() when done.
  */
-function object_info_find_vfunc(info: ObjectInfo, name: string | null): VFuncInfo | null
+function object_info_find_vfunc(info: ObjectInfo, name: string): VFuncInfo | null
 /**
  * Locate a virtual function slot with name `name,` searching both the object
  * `info` and any interfaces it implements.  Note that the namespace for
@@ -957,7 +957,7 @@ function object_info_find_vfunc(info: ObjectInfo, name: string | null): VFuncInf
  * @param name name of vfunc to obtain
  * @returns the #GIVFuncInfo. Free the struct by calling g_base_info_unref() when done.
  */
-function object_info_find_vfunc_using_interfaces(info: ObjectInfo, name: string | null): [ /* returnType */ VFuncInfo | null, /* implementor */ ObjectInfo ]
+function object_info_find_vfunc_using_interfaces(info: ObjectInfo, name: string): [ /* returnType */ VFuncInfo | null, /* implementor */ ObjectInfo ]
 /**
  * Obtain if the object type is an abstract type, eg if it cannot be
  * instantiated
@@ -1111,13 +1111,13 @@ function object_info_get_signal(info: ObjectInfo, n: number): SignalInfo
  * @param info a #GIObjectInfo
  * @returns the type init function
  */
-function object_info_get_type_init(info: ObjectInfo): string | null
+function object_info_get_type_init(info: ObjectInfo): string
 /**
  * Obtain the name of the objects class/type.
  * @param info a #GIObjectInfo
  * @returns name of the objects type
  */
-function object_info_get_type_name(info: ObjectInfo): string | null
+function object_info_get_type_name(info: ObjectInfo): string
 /**
  * Obtain the symbol name of the function that should be called to unref this
  * object type. It's mainly used fundamental types. The type signature for
@@ -1188,14 +1188,14 @@ function registered_type_info_get_g_type(info: RegisteredTypeInfo): GObject.GTyp
  * @param info a #GIRegisteredTypeInfo
  * @returns the symbol name of the type init function, suitable for passing into g_module_symbol().
  */
-function registered_type_info_get_type_init(info: RegisteredTypeInfo): string | null
+function registered_type_info_get_type_init(info: RegisteredTypeInfo): string
 /**
  * Obtain the type name of the struct within the GObject type system.
  * This type can be passed to g_type_name() to get a #GType.
  * @param info a #GIRegisteredTypeInfo
  * @returns the type name
  */
-function registered_type_info_get_type_name(info: RegisteredTypeInfo): string | null
+function registered_type_info_get_type_name(info: RegisteredTypeInfo): string
 /**
  * Obtain the class closure for this signal if one is set. The class
  * closure is a virtual function on the type that the signal belongs to.
@@ -1224,14 +1224,14 @@ function signal_info_true_stops_emit(info: SignalInfo): boolean
  * @param name a field name
  * @returns the #GIFieldInfo or %NULL if not found, free it with g_base_info_unref() when done.
  */
-function struct_info_find_field(info: StructInfo, name: string | null): FieldInfo
+function struct_info_find_field(info: StructInfo, name: string): FieldInfo
 /**
  * Obtain the type information for method named `name`.
  * @param info a #GIStructInfo
  * @param name a method name
  * @returns the #GIFunctionInfo, free it with g_base_info_unref() when done.
  */
-function struct_info_find_method(info: StructInfo, name: string | null): FunctionInfo
+function struct_info_find_method(info: StructInfo, name: string): FunctionInfo
 /**
  * Obtain the required alignment of the structure.
  * @param info a #GIStructInfo
@@ -1440,14 +1440,14 @@ function type_tag_hash_pointer_from_argument(storage_type: TypeTag, arg: Argumen
  * @param type the type_tag
  * @returns the string
  */
-function type_tag_to_string(type: TypeTag): string | null
+function type_tag_to_string(type: TypeTag): string
 /**
  * Obtain the type information for method named `name`.
  * @param info a #GIUnionInfo
  * @param name a method name
  * @returns the #GIFunctionInfo, free it with g_base_info_unref() when done.
  */
-function union_info_find_method(info: UnionInfo, name: string | null): FunctionInfo
+function union_info_find_method(info: UnionInfo, name: string): FunctionInfo
 /**
  * Obtain the required alignment of the union.
  * @param info a #GIUnionInfo
@@ -1589,7 +1589,7 @@ interface Repository {
      * @param namespace_ GI namespace, e.g. "Gtk"
      * @returns the array of versions.
      */
-    enumerate_versions(namespace_: string | null): string[]
+    enumerate_versions(namespace_: string): string[]
     /**
      * Searches for the enum type corresponding to the given #GError
      * domain. Before calling this function for a particular namespace,
@@ -1619,7 +1619,7 @@ interface Repository {
      * @param name Entry name to find
      * @returns #GIBaseInfo representing metadata about @name, or %NULL
      */
-    find_by_name(namespace_: string | null, name: string | null): BaseInfo
+    find_by_name(namespace_: string, name: string): BaseInfo
     /**
      * This function returns the "C prefix", or the C level namespace
      * associated with the given introspection namespace.  Each C symbol
@@ -1630,7 +1630,7 @@ interface Repository {
      * @param namespace_ Namespace to inspect
      * @returns C namespace prefix, or %NULL if none associated
      */
-    get_c_prefix(namespace_: string | null): string | null
+    get_c_prefix(namespace_: string): string
     /**
      * Retrieves all (transitive) versioned dependencies for
      * `namespace_`.
@@ -1645,7 +1645,7 @@ interface Repository {
      * @param namespace_ Namespace of interest
      * @returns all versioned   dependencies
      */
-    get_dependencies(namespace_: string | null): string[]
+    get_dependencies(namespace_: string): string[]
     /**
      * Return an array of the immediate versioned dependencies for `namespace_`.
      * Returned strings are of the form `namespace-version`.
@@ -1658,7 +1658,7 @@ interface Repository {
      * @param namespace_ Namespace of interest
      * @returns Zero-terminated string array of immediate versioned   dependencies
      */
-    get_immediate_dependencies(namespace_: string | null): string[]
+    get_immediate_dependencies(namespace_: string): string[]
     /**
      * This function returns a particular metadata entry in the
      * given namespace `namespace_`.  The namespace must have
@@ -1669,7 +1669,7 @@ interface Repository {
      * @param index 0-based offset into namespace metadata for entry
      * @returns #GIBaseInfo containing metadata
      */
-    get_info(namespace_: string | null, index: number): BaseInfo
+    get_info(namespace_: string, index: number): BaseInfo
     /**
      * Return the list of currently loaded namespaces.
      * @returns List of namespaces
@@ -1682,7 +1682,7 @@ interface Repository {
      * @param namespace_ Namespace to inspect
      * @returns number of metadata entries
      */
-    get_n_infos(namespace_: string | null): number
+    get_n_infos(namespace_: string): number
     /**
      * Look up the implemented interfaces for `gtype`.  This function
      * cannot fail per se; but for a totally "unknown" #GType, it may
@@ -1709,7 +1709,7 @@ interface Repository {
      * @param namespace_ Namespace to inspect
      * @returns Comma-separated list of paths to shared libraries,   or %NULL if none are associated
      */
-    get_shared_library(namespace_: string | null): string | null
+    get_shared_library(namespace_: string): string | null
     /**
      * If namespace `namespace_` is loaded, return the full path to the
      * .typelib file it was loaded from.  If the typelib for
@@ -1718,7 +1718,7 @@ interface Repository {
      * @param namespace_ GI namespace to use, e.g. "Gtk"
      * @returns Filesystem path (or $lt;builtin$gt;) if successful, %NULL if namespace is not loaded
      */
-    get_typelib_path(namespace_: string | null): string | null
+    get_typelib_path(namespace_: string): string
     /**
      * This function returns the loaded version associated with the given
      * namespace `namespace_`.
@@ -1728,7 +1728,7 @@ interface Repository {
      * @param namespace_ Namespace to inspect
      * @returns Loaded version
      */
-    get_version(namespace_: string | null): string | null
+    get_version(namespace_: string): string
     /**
      * Check whether a particular namespace (and optionally, a specific
      * version thereof) is currently loaded.  This function is likely to
@@ -1740,13 +1740,13 @@ interface Repository {
      * @param version Required version, may be %NULL for latest
      * @returns %TRUE if namespace-version is loaded, %FALSE otherwise
      */
-    is_registered(namespace_: string | null, version: string | null): boolean
+    is_registered(namespace_: string, version: string | null): boolean
     /**
      * TODO
      * @param typelib TODO
      * @param flags TODO
      */
-    load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string | null
+    load_typelib(typelib: Typelib, flags: RepositoryLoadFlags): string
     /**
      * Force the namespace `namespace_` to be loaded if it isn't already.
      * If `namespace_` is not loaded, this function will search for a
@@ -1758,7 +1758,7 @@ interface Repository {
      * @param flags Set of %GIRepositoryLoadFlags, may be 0
      * @returns a pointer to the #GITypelib if successful, %NULL otherwise
      */
-    require(namespace_: string | null, version: string | null, flags: RepositoryLoadFlags): Typelib
+    require(namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib
     /**
      * Force the namespace `namespace_` to be loaded if it isn't already.
      * If `namespace_` is not loaded, this function will search for a
@@ -1771,7 +1771,7 @@ interface Repository {
      * @param flags Set of %GIRepositoryLoadFlags, may be 0
      * @returns a pointer to the #GITypelib if successful, %NULL otherwise
      */
-    require_private(typelib_dir: string | null, namespace_: string | null, version: string | null, flags: RepositoryLoadFlags): Typelib
+    require_private(typelib_dir: string, namespace_: string, version: string | null, flags: RepositoryLoadFlags): Typelib
 
     // Class property signals of GIRepository-2.0.GIRepository.Repository
 
@@ -1808,7 +1808,7 @@ class Repository extends GObject.Object {
 
     constructor(config?: Repository.ConstructorProperties) 
     _init(config?: Repository.ConstructorProperties): void
-    static dump(arg: string | null): boolean
+    static dump(arg: string): boolean
     static error_quark(): GLib.Quark
     /**
      * Returns the singleton process-global default #GIRepository. It is
@@ -1838,7 +1838,7 @@ class Repository extends GObject.Object {
      * @returns #GSList of strings
      */
     static get_search_path(): string[]
-    static prepend_library_path(directory: string | null): void
+    static prepend_library_path(directory: string): void
     /**
      * Prepends `directory` to the typelib search path.
      * 
@@ -1882,7 +1882,7 @@ interface BaseInfo {
      * @param name a freeform string naming an attribute
      * @returns The value of the attribute, or %NULL if no such attribute exists
      */
-    get_attribute(name: string | null): string | null
+    get_attribute(name: string): string
     /**
      * Obtain the container of the `info`. The container is the parent
      * GIBaseInfo. For instance, the parent of a #GIFunctionInfo is an
@@ -1896,12 +1896,12 @@ interface BaseInfo {
      * the name of the function.
      * @returns the name of @info or %NULL if it lacks a name.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Obtain the namespace of `info`.
      * @returns the namespace
      */
-    get_namespace(): string | null
+    get_namespace(): string
     /**
      * Obtain the info type of the GIBaseInfo.
      * @returns the info type of @info
@@ -2030,8 +2030,8 @@ interface Typelib {
     // Owm methods of GIRepository-2.0.GIRepository.Typelib
 
     free(): void
-    get_namespace(): string | null
-    symbol(symbol_name: string | null, symbol: any | null): boolean
+    get_namespace(): string
+    symbol(symbol_name: string, symbol: any | null): boolean
 }
 
 /**

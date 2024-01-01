@@ -501,7 +501,7 @@ export interface Embed extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -515,7 +515,7 @@ export interface Embed extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -526,7 +526,7 @@ export interface Embed extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GtkClutter-1.0.GtkClutter.Embed
 
@@ -720,7 +720,7 @@ export interface Texture extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param icon_size the icon size or -1
      * @returns %TRUE on success, %FALSE on failure
      */
-    set_from_icon_name(widget: Gtk.Widget | null, icon_name: string | null, icon_size: Gtk.IconSize): boolean
+    set_from_icon_name(widget: Gtk.Widget | null, icon_name: string, icon_size: Gtk.IconSize): boolean
     /**
      * Sets the contents of `texture` with a copy of `pixbuf`.
      * @param pixbuf a #GdkPixbuf
@@ -735,7 +735,7 @@ export interface Texture extends Atk.ImplementorIface, Clutter.Animatable, Clutt
      * @param icon_size the size of the icon, or -1
      * @returns %TRUE on success, %FALSE on failure.
      */
-    set_from_stock(widget: Gtk.Widget, stock_id: string | null, icon_size: Gtk.IconSize): boolean
+    set_from_stock(widget: Gtk.Widget, stock_id: string, icon_size: Gtk.IconSize): boolean
 
     // Class property signals of GtkClutter-1.0.GtkClutter.Texture
 
@@ -1114,7 +1114,7 @@ export interface Window extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1128,7 +1128,7 @@ export interface Window extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1139,7 +1139,7 @@ export interface Window extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GtkClutter-1.0.GtkClutter.Window
 

@@ -3655,7 +3655,7 @@ export function cairoSetSourceRgba(cr: cairo.Context, rgba: RGBA): void
  * @param cancellable optional `GCancellable` object
  * @param callback callback to call when the operation is done
  */
-export function contentDeserializeAsync(stream: Gio.InputStream, mimeType: string | null, type: GObject.GType, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+export function contentDeserializeAsync(stream: Gio.InputStream, mimeType: string, type: GObject.GType, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Finishes a content deserialization operation.
  * @param result the `GAsyncResult`
@@ -3674,21 +3674,21 @@ export function contentDeserializeFinish(result: Gio.AsyncResult): [ /* returnTy
  * @param string the string to parse
  * @returns the content formats if @string is valid
  */
-export function contentFormatsParse(string: string | null): ContentFormats | null
+export function contentFormatsParse(string: string): ContentFormats | null
 /**
  * Registers a function to deserialize object of a given type.
  * @param mimeType the mime type which the function can deserialize from
  * @param type the type of objects that the function creates
  * @param deserialize the callback
  */
-export function contentRegisterDeserializer(mimeType: string | null, type: GObject.GType, deserialize: ContentDeserializeFunc): void
+export function contentRegisterDeserializer(mimeType: string, type: GObject.GType, deserialize: ContentDeserializeFunc): void
 /**
  * Registers a function to serialize objects of a given type.
  * @param type the type of objects that the function can serialize
  * @param mimeType the mime type to serialize to
  * @param serialize the callback
  */
-export function contentRegisterSerializer(type: GObject.GType, mimeType: string | null, serialize: ContentSerializeFunc): void
+export function contentRegisterSerializer(type: GObject.GType, mimeType: string, serialize: ContentSerializeFunc): void
 /**
  * Serialize content and write it to the given output stream, asynchronously.
  * 
@@ -3704,7 +3704,7 @@ export function contentRegisterSerializer(type: GObject.GType, mimeType: string 
  * @param cancellable optional `GCancellable` object
  * @param callback callback to call when the operation is done
  */
-export function contentSerializeAsync(stream: Gio.OutputStream, mimeType: string | null, value: any, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+export function contentSerializeAsync(stream: Gio.OutputStream, mimeType: string, value: any, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 /**
  * Finishes a content serialization operation.
  * @param result the `GAsyncResult`
@@ -3765,7 +3765,7 @@ export function glErrorQuark(): GLib.Quark
  * @param string string of a potential mime type
  * @returns An interned string for the canonicalized   mime type or %NULL if the string wasn't a valid mime type
  */
-export function internMimeType(string: string | null): string | null
+export function internMimeType(string: string): string | null
 /**
  * Obtains the upper- and lower-case versions of the keyval `symbol`.
  * 
@@ -3782,7 +3782,7 @@ export function keyvalConvertCase(symbol: number): [ /* lower */ number, /* uppe
  * @param keyvalName a key name
  * @returns the corresponding key value, or %GDK_KEY_VoidSymbol   if the key name is not a valid key
  */
-export function keyvalFromName(keyvalName: string | null): number
+export function keyvalFromName(keyvalName: string): number
 /**
  * Returns %TRUE if the given key value is in lower case.
  * @param keyval a key value.
@@ -3902,7 +3902,7 @@ export function pixbufGetFromTexture(texture: Texture): GdkPixbuf.Pixbuf | null
  * in order to take effect.
  * @param backends a comma-separated list of backends
  */
-export function setAllowedBackends(backends: string | null): void
+export function setAllowedBackends(backends: string): void
 export function textureErrorQuark(): GLib.Quark
 export function toplevelSizeGetType(): GObject.GType
 /**
@@ -4936,7 +4936,7 @@ export interface Toplevel extends Surface {
      * low-level function.
      * @param startupId a string with startup-notification identifier
      */
-    setStartupId(startupId: string | null): void
+    setStartupId(startupId: string): void
     /**
      * Sets the title of a toplevel surface.
      * 
@@ -4944,7 +4944,7 @@ export interface Toplevel extends Surface {
      * in lists of windows, etc.
      * @param title title of `surface`
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets a transient-for parent.
      * 
@@ -5465,7 +5465,7 @@ export interface Clipboard {
      * @param result a `GAsyncResult`
      * @returns a `GInputStream`
      */
-    readFinish(result: Gio.AsyncResult): [ /* returnType */ Gio.InputStream | null, /* outMimeType */ string | null ]
+    readFinish(result: Gio.AsyncResult): [ /* returnType */ Gio.InputStream | null, /* outMimeType */ string ]
     /**
      * Asynchronously request the `clipboard` contents converted to a string.
      * 
@@ -5697,7 +5697,7 @@ export interface ContentDeserializer extends Gio.AsyncResult {
      * Gets the mime type to deserialize from.
      * @returns the mime type for the current operation
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Gets the I/O priority for the current operation.
      * 
@@ -5833,7 +5833,7 @@ export interface ContentProvider {
     // Has conflict: getValue(): [ /* returnType */ boolean, /* value */ any ]
     // Has conflict: refFormats(): ContentFormats
     // Has conflict: refStorableFormats(): ContentFormats
-    // Has conflict: writeMimeTypeAsync(mimeType: string | null, stream: Gio.OutputStream, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    // Has conflict: writeMimeTypeAsync(mimeType: string, stream: Gio.OutputStream, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: writeMimeTypeFinish(result: Gio.AsyncResult): boolean
 
     // Own virtual methods of Gdk-4.0.Gdk.ContentProvider
@@ -5894,7 +5894,7 @@ export interface ContentProvider {
      * @param cancellable optional `GCancellable` object, %NULL to ignore.
      * @param callback callback to call when the request is satisfied
      */
-    writeMimeTypeAsync(mimeType: string | null, stream: Gio.OutputStream, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    writeMimeTypeAsync(mimeType: string, stream: Gio.OutputStream, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an asynchronous write operation.
      * 
@@ -5967,7 +5967,7 @@ export class ContentProvider extends GObject.Object {
      * @param bytes a `GBytes` with the data for `mime_type`
      * @returns a new `GdkContentProvider`
      */
-    static newForBytes(mimeType: string | null, bytes: any): ContentProvider
+    static newForBytes(mimeType: string, bytes: any): ContentProvider
     /**
      * Create a content provider that provides the given `value`.
      * @constructor 
@@ -6032,7 +6032,7 @@ export interface ContentSerializer extends Gio.AsyncResult {
      * Gets the mime type to serialize to.
      * @returns the mime type for the current operation
      */
-    getMimeType(): string | null
+    getMimeType(): string
     /**
      * Gets the output stream for the current operation.
      * 
@@ -6389,7 +6389,7 @@ export class Cursor extends GObject.Object {
      * @param fallback %NULL or the `GdkCursor` to fall back to when   this one cannot be supported
      * @returns a new `GdkCursor`, or %NULL if there is no   cursor with the given name
      */
-    static newFromName(name: string | null, fallback: Cursor | null): Cursor
+    static newFromName(name: string, fallback: Cursor | null): Cursor
     /**
      * Creates a new cursor from a `GdkTexture`.
      * @constructor 
@@ -6644,7 +6644,7 @@ export interface Device {
      * The name of the device, suitable for showing in a user interface.
      * @returns a name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves whether the Num Lock modifier of the keyboard is locked.
      * 
@@ -7148,7 +7148,7 @@ export interface Display {
      * Gets the name of the display.
      * @returns a string representing the display name. This string is owned   by GDK and should not be modified or freed.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the clipboard used for the primary selection.
      * 
@@ -7164,7 +7164,7 @@ export interface Display {
      * @param value location to store the value of the setting
      * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise
      */
-    getSetting(name: string | null, value: any): boolean
+    getSetting(name: string, value: any): boolean
     /**
      * Gets the startup notification ID for a Wayland display, or %NULL
      * if no ID has been defined.
@@ -7254,7 +7254,7 @@ export interface Display {
      * is called to disable that feature.
      * @param startupId a startup-notification identifier, for which   notification process should be completed
      */
-    notifyStartupComplete(startupId: string | null): void
+    notifyStartupComplete(startupId: string): void
     /**
      * Checks that OpenGL is available for `self` and ensures that it is
      * properly initialized.
@@ -8170,7 +8170,7 @@ export interface Drop {
      * @param result a `GAsyncResult`
      * @returns the `GInputStream`
      */
-    readFinish(result: Gio.AsyncResult): [ /* returnType */ Gio.InputStream | null, /* outMimeType */ string | null ]
+    readFinish(result: Gio.AsyncResult): [ /* returnType */ Gio.InputStream | null, /* outMimeType */ string ]
     /**
      * Asynchronously request the drag operation's contents converted
      * to the given `type`.
@@ -11088,7 +11088,7 @@ export class Texture extends GObject.Object {
      * @param resourcePath the path of the resource file
      * @returns A newly-created `GdkTexture`
      */
-    static newFromResource(resourcePath: string | null): Texture
+    static newFromResource(resourcePath: string): Texture
     _init(config?: Texture.ConstructorProperties): void
 }
 
@@ -11257,7 +11257,7 @@ export interface ContentFormats {
      * @param mimeType the mime type to search for
      * @returns %TRUE if the mime_type was found
      */
-    containMimeType(mimeType: string | null): boolean
+    containMimeType(mimeType: string): boolean
     /**
      * Gets the `GType`s included in `formats`.
      * 
@@ -11444,7 +11444,7 @@ export class ContentFormats {
      * @param string the string to parse
      * @returns the content formats if @string is valid
      */
-    static parse(string: string | null): ContentFormats | null
+    static parse(string: string): ContentFormats | null
 }
 
 export interface ContentFormatsBuilder {
@@ -11466,7 +11466,7 @@ export interface ContentFormatsBuilder {
      * Appends `mime_type` to `builder` if it has not already been added.
      * @param mimeType a mime type
      */
-    addMimeType(mimeType: string | null): void
+    addMimeType(mimeType: string): void
     /**
      * Acquires a reference on the given `builder`.
      * 
@@ -11535,7 +11535,7 @@ export interface ContentProviderClass {
     detachClipboard: (provider: ContentProvider, clipboard: Clipboard) => void
     refFormats: (provider: ContentProvider) => ContentFormats
     refStorableFormats: (provider: ContentProvider) => ContentFormats
-    writeMimeTypeAsync: (provider: ContentProvider, mimeType: string | null, stream: Gio.OutputStream, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    writeMimeTypeAsync: (provider: ContentProvider, mimeType: string, stream: Gio.OutputStream, ioPriority: number, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     writeMimeTypeFinish: (provider: ContentProvider, result: Gio.AsyncResult) => boolean
     getValue: (provider: ContentProvider) => [ /* returnType */ boolean, /* value */ any ]
 }
@@ -12174,7 +12174,7 @@ export interface RGBA {
      * @param spec the string specifying the color
      * @returns %TRUE if the parsing succeeded
      */
-    parse(spec: string | null): boolean
+    parse(spec: string): boolean
     /**
      * Returns a textual specification of `rgba` in the form
      * `rgb(r,g,b)` or `rgba(r,g,b,a)`, where “r”, “g”, “b” and

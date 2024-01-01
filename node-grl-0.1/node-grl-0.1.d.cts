@@ -121,27 +121,27 @@ export enum SupportedOps {
     MEDIA_FROM_URI,
     NOTIFY_CHANGE,
 }
-export const CONFIG_KEY_APIKEY: string | null
-export const CONFIG_KEY_APIKEY_BLOB: string | null
-export const CONFIG_KEY_APISECRET: string | null
-export const CONFIG_KEY_APITOKEN: string | null
-export const CONFIG_KEY_PASSWORD: string | null
-export const CONFIG_KEY_PLUGIN: string | null
-export const CONFIG_KEY_SOURCE: string | null
-export const CONFIG_KEY_USERNAME: string | null
-export const KEYID_FORMAT: string | null
-export const MEDIA_PLUGIN_AUTHOR: string | null
-export const MEDIA_PLUGIN_DESCRIPTION: string | null
-export const MEDIA_PLUGIN_LICENSE: string | null
-export const MEDIA_PLUGIN_NAME: string | null
-export const MEDIA_PLUGIN_SITE: string | null
-export const MEDIA_PLUGIN_VERSION: string | null
+export const CONFIG_KEY_APIKEY: string
+export const CONFIG_KEY_APIKEY_BLOB: string
+export const CONFIG_KEY_APISECRET: string
+export const CONFIG_KEY_APITOKEN: string
+export const CONFIG_KEY_PASSWORD: string
+export const CONFIG_KEY_PLUGIN: string
+export const CONFIG_KEY_SOURCE: string
+export const CONFIG_KEY_USERNAME: string
+export const KEYID_FORMAT: string
+export const MEDIA_PLUGIN_AUTHOR: string
+export const MEDIA_PLUGIN_DESCRIPTION: string
+export const MEDIA_PLUGIN_LICENSE: string
+export const MEDIA_PLUGIN_NAME: string
+export const MEDIA_PLUGIN_SITE: string
+export const MEDIA_PLUGIN_VERSION: string
 export const METADATA_KEY_CHILDCOUNT_UNKNOWN: number
 export const PADDING: number
 export const PADDING_SMALL: number
-export const PLUGIN_LIST_VAR: string | null
-export const PLUGIN_PATH_VAR: string | null
-export const PLUGIN_RANKS_VAR: string | null
+export const PLUGIN_LIST_VAR: string
+export const PLUGIN_PATH_VAR: string
+export const PLUGIN_RANKS_VAR: string
 export const SOURCE_REMAINING_UNKNOWN: number
 /**
  * Initializes the Grilo library

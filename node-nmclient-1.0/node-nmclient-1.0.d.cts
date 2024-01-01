@@ -574,154 +574,154 @@ export enum SecretAgentGetSecretsFlags {
      */
     USER_REQUESTED,
 }
-export const ACCESS_POINT_BSSID: string | null
-export const ACCESS_POINT_FLAGS: string | null
-export const ACCESS_POINT_FREQUENCY: string | null
-export const ACCESS_POINT_HW_ADDRESS: string | null
-export const ACCESS_POINT_LAST_SEEN: string | null
-export const ACCESS_POINT_MAX_BITRATE: string | null
-export const ACCESS_POINT_MODE: string | null
-export const ACCESS_POINT_RSN_FLAGS: string | null
-export const ACCESS_POINT_SSID: string | null
-export const ACCESS_POINT_STRENGTH: string | null
-export const ACCESS_POINT_WPA_FLAGS: string | null
-export const ACTIVE_CONNECTION_CONNECTION: string | null
-export const ACTIVE_CONNECTION_DEFAULT: string | null
-export const ACTIVE_CONNECTION_DEFAULT6: string | null
-export const ACTIVE_CONNECTION_DEVICES: string | null
-export const ACTIVE_CONNECTION_DHCP4_CONFIG: string | null
-export const ACTIVE_CONNECTION_DHCP6_CONFIG: string | null
-export const ACTIVE_CONNECTION_ID: string | null
-export const ACTIVE_CONNECTION_IP4_CONFIG: string | null
-export const ACTIVE_CONNECTION_IP6_CONFIG: string | null
-export const ACTIVE_CONNECTION_MASTER: string | null
-export const ACTIVE_CONNECTION_SPECIFIC_OBJECT: string | null
-export const ACTIVE_CONNECTION_STATE: string | null
-export const ACTIVE_CONNECTION_TYPE: string | null
-export const ACTIVE_CONNECTION_UUID: string | null
-export const ACTIVE_CONNECTION_VPN: string | null
-export const CLIENT_ACTIVATING_CONNECTION: string | null
-export const CLIENT_ACTIVE_CONNECTIONS: string | null
-export const CLIENT_ALL_DEVICES: string | null
-export const CLIENT_CONNECTIVITY: string | null
-export const CLIENT_DEVICES: string | null
-export const CLIENT_MANAGER_RUNNING: string | null
-export const CLIENT_NETWORKING_ENABLED: string | null
-export const CLIENT_PRIMARY_CONNECTION: string | null
-export const CLIENT_STARTUP: string | null
-export const CLIENT_STATE: string | null
-export const CLIENT_VERSION: string | null
-export const CLIENT_WIMAX_ENABLED: string | null
-export const CLIENT_WIMAX_HARDWARE_ENABLED: string | null
-export const CLIENT_WIRELESS_ENABLED: string | null
-export const CLIENT_WIRELESS_HARDWARE_ENABLED: string | null
-export const CLIENT_WWAN_ENABLED: string | null
-export const CLIENT_WWAN_HARDWARE_ENABLED: string | null
-export const DEVICE_ACTIVE_CONNECTION: string | null
-export const DEVICE_ADSL_CARRIER: string | null
-export const DEVICE_AUTOCONNECT: string | null
-export const DEVICE_AVAILABLE_CONNECTIONS: string | null
-export const DEVICE_BOND_CARRIER: string | null
-export const DEVICE_BOND_HW_ADDRESS: string | null
-export const DEVICE_BOND_SLAVES: string | null
-export const DEVICE_BRIDGE_CARRIER: string | null
-export const DEVICE_BRIDGE_HW_ADDRESS: string | null
-export const DEVICE_BRIDGE_SLAVES: string | null
-export const DEVICE_BT_CAPABILITIES: string | null
-export const DEVICE_BT_HW_ADDRESS: string | null
-export const DEVICE_BT_NAME: string | null
-export const DEVICE_CAPABILITIES: string | null
-export const DEVICE_DEVICE_TYPE: string | null
-export const DEVICE_DHCP4_CONFIG: string | null
-export const DEVICE_DHCP6_CONFIG: string | null
-export const DEVICE_DRIVER: string | null
-export const DEVICE_DRIVER_VERSION: string | null
-export const DEVICE_ETHERNET_CARRIER: string | null
-export const DEVICE_ETHERNET_HW_ADDRESS: string | null
-export const DEVICE_ETHERNET_PERMANENT_HW_ADDRESS: string | null
-export const DEVICE_ETHERNET_SPEED: string | null
-export const DEVICE_FIRMWARE_MISSING: string | null
-export const DEVICE_FIRMWARE_VERSION: string | null
-export const DEVICE_GENERIC_HW_ADDRESS: string | null
-export const DEVICE_GENERIC_TYPE_DESCRIPTION: string | null
-export const DEVICE_INFINIBAND_CARRIER: string | null
-export const DEVICE_INFINIBAND_HW_ADDRESS: string | null
-export const DEVICE_INTERFACE: string | null
-export const DEVICE_IP4_CONFIG: string | null
-export const DEVICE_IP6_CONFIG: string | null
-export const DEVICE_IP_INTERFACE: string | null
-export const DEVICE_MANAGED: string | null
-export const DEVICE_MODEM_CURRENT_CAPABILITIES: string | null
-export const DEVICE_MODEM_MODEM_CAPABILITIES: string | null
-export const DEVICE_MTU: string | null
-export const DEVICE_OLPC_MESH_ACTIVE_CHANNEL: string | null
-export const DEVICE_OLPC_MESH_COMPANION: string | null
-export const DEVICE_OLPC_MESH_HW_ADDRESS: string | null
-export const DEVICE_PHYSICAL_PORT_ID: string | null
-export const DEVICE_PRODUCT: string | null
-export const DEVICE_REAL: string | null
-export const DEVICE_STATE: string | null
-export const DEVICE_STATE_REASON: string | null
-export const DEVICE_TEAM_CARRIER: string | null
-export const DEVICE_TEAM_HW_ADDRESS: string | null
-export const DEVICE_TEAM_SLAVES: string | null
-export const DEVICE_UDI: string | null
-export const DEVICE_VENDOR: string | null
-export const DEVICE_VLAN_CARRIER: string | null
-export const DEVICE_VLAN_HW_ADDRESS: string | null
-export const DEVICE_VLAN_PARENT: string | null
-export const DEVICE_VLAN_VLAN_ID: string | null
-export const DEVICE_WIFI_ACCESS_POINTS: string | null
-export const DEVICE_WIFI_ACTIVE_ACCESS_POINT: string | null
-export const DEVICE_WIFI_BITRATE: string | null
-export const DEVICE_WIFI_CAPABILITIES: string | null
-export const DEVICE_WIFI_HW_ADDRESS: string | null
-export const DEVICE_WIFI_MODE: string | null
-export const DEVICE_WIFI_PERMANENT_HW_ADDRESS: string | null
-export const DEVICE_WIMAX_ACTIVE_NSP: string | null
-export const DEVICE_WIMAX_BSID: string | null
-export const DEVICE_WIMAX_CENTER_FREQUENCY: string | null
-export const DEVICE_WIMAX_CINR: string | null
-export const DEVICE_WIMAX_HW_ADDRESS: string | null
-export const DEVICE_WIMAX_NSPS: string | null
-export const DEVICE_WIMAX_RSSI: string | null
-export const DEVICE_WIMAX_TX_POWER: string | null
-export const DHCP4_CONFIG_OPTIONS: string | null
-export const DHCP6_CONFIG_OPTIONS: string | null
-export const IP4_CONFIG_ADDRESSES: string | null
-export const IP4_CONFIG_DOMAINS: string | null
-export const IP4_CONFIG_GATEWAY: string | null
-export const IP4_CONFIG_NAMESERVERS: string | null
-export const IP4_CONFIG_ROUTES: string | null
-export const IP4_CONFIG_SEARCHES: string | null
-export const IP4_CONFIG_WINS_SERVERS: string | null
-export const IP6_CONFIG_ADDRESSES: string | null
-export const IP6_CONFIG_DOMAINS: string | null
-export const IP6_CONFIG_GATEWAY: string | null
-export const IP6_CONFIG_NAMESERVERS: string | null
-export const IP6_CONFIG_ROUTES: string | null
-export const IP6_CONFIG_SEARCHES: string | null
-export const OBJECT_DBUS_CONNECTION: string | null
-export const OBJECT_DBUS_PATH: string | null
-export const REMOTE_CONNECTION_REMOVED: string | null
-export const REMOTE_CONNECTION_UNSAVED: string | null
-export const REMOTE_CONNECTION_UPDATED: string | null
-export const REMOTE_SETTINGS_BUS: string | null
-export const REMOTE_SETTINGS_CAN_MODIFY: string | null
-export const REMOTE_SETTINGS_CONNECTIONS_READ: string | null
-export const REMOTE_SETTINGS_HOSTNAME: string | null
-export const REMOTE_SETTINGS_NEW_CONNECTION: string | null
-export const REMOTE_SETTINGS_SERVICE_RUNNING: string | null
-export const SECRET_AGENT_AUTO_REGISTER: string | null
-export const SECRET_AGENT_CAPABILITIES: string | null
-export const SECRET_AGENT_IDENTIFIER: string | null
-export const SECRET_AGENT_REGISTERED: string | null
-export const SECRET_AGENT_REGISTRATION_RESULT: string | null
-export const VPN_CONNECTION_BANNER: string | null
-export const VPN_CONNECTION_VPN_STATE: string | null
-export const WIMAX_NSP_NAME: string | null
-export const WIMAX_NSP_NETWORK_TYPE: string | null
-export const WIMAX_NSP_SIGNAL_QUALITY: string | null
+export const ACCESS_POINT_BSSID: string
+export const ACCESS_POINT_FLAGS: string
+export const ACCESS_POINT_FREQUENCY: string
+export const ACCESS_POINT_HW_ADDRESS: string
+export const ACCESS_POINT_LAST_SEEN: string
+export const ACCESS_POINT_MAX_BITRATE: string
+export const ACCESS_POINT_MODE: string
+export const ACCESS_POINT_RSN_FLAGS: string
+export const ACCESS_POINT_SSID: string
+export const ACCESS_POINT_STRENGTH: string
+export const ACCESS_POINT_WPA_FLAGS: string
+export const ACTIVE_CONNECTION_CONNECTION: string
+export const ACTIVE_CONNECTION_DEFAULT: string
+export const ACTIVE_CONNECTION_DEFAULT6: string
+export const ACTIVE_CONNECTION_DEVICES: string
+export const ACTIVE_CONNECTION_DHCP4_CONFIG: string
+export const ACTIVE_CONNECTION_DHCP6_CONFIG: string
+export const ACTIVE_CONNECTION_ID: string
+export const ACTIVE_CONNECTION_IP4_CONFIG: string
+export const ACTIVE_CONNECTION_IP6_CONFIG: string
+export const ACTIVE_CONNECTION_MASTER: string
+export const ACTIVE_CONNECTION_SPECIFIC_OBJECT: string
+export const ACTIVE_CONNECTION_STATE: string
+export const ACTIVE_CONNECTION_TYPE: string
+export const ACTIVE_CONNECTION_UUID: string
+export const ACTIVE_CONNECTION_VPN: string
+export const CLIENT_ACTIVATING_CONNECTION: string
+export const CLIENT_ACTIVE_CONNECTIONS: string
+export const CLIENT_ALL_DEVICES: string
+export const CLIENT_CONNECTIVITY: string
+export const CLIENT_DEVICES: string
+export const CLIENT_MANAGER_RUNNING: string
+export const CLIENT_NETWORKING_ENABLED: string
+export const CLIENT_PRIMARY_CONNECTION: string
+export const CLIENT_STARTUP: string
+export const CLIENT_STATE: string
+export const CLIENT_VERSION: string
+export const CLIENT_WIMAX_ENABLED: string
+export const CLIENT_WIMAX_HARDWARE_ENABLED: string
+export const CLIENT_WIRELESS_ENABLED: string
+export const CLIENT_WIRELESS_HARDWARE_ENABLED: string
+export const CLIENT_WWAN_ENABLED: string
+export const CLIENT_WWAN_HARDWARE_ENABLED: string
+export const DEVICE_ACTIVE_CONNECTION: string
+export const DEVICE_ADSL_CARRIER: string
+export const DEVICE_AUTOCONNECT: string
+export const DEVICE_AVAILABLE_CONNECTIONS: string
+export const DEVICE_BOND_CARRIER: string
+export const DEVICE_BOND_HW_ADDRESS: string
+export const DEVICE_BOND_SLAVES: string
+export const DEVICE_BRIDGE_CARRIER: string
+export const DEVICE_BRIDGE_HW_ADDRESS: string
+export const DEVICE_BRIDGE_SLAVES: string
+export const DEVICE_BT_CAPABILITIES: string
+export const DEVICE_BT_HW_ADDRESS: string
+export const DEVICE_BT_NAME: string
+export const DEVICE_CAPABILITIES: string
+export const DEVICE_DEVICE_TYPE: string
+export const DEVICE_DHCP4_CONFIG: string
+export const DEVICE_DHCP6_CONFIG: string
+export const DEVICE_DRIVER: string
+export const DEVICE_DRIVER_VERSION: string
+export const DEVICE_ETHERNET_CARRIER: string
+export const DEVICE_ETHERNET_HW_ADDRESS: string
+export const DEVICE_ETHERNET_PERMANENT_HW_ADDRESS: string
+export const DEVICE_ETHERNET_SPEED: string
+export const DEVICE_FIRMWARE_MISSING: string
+export const DEVICE_FIRMWARE_VERSION: string
+export const DEVICE_GENERIC_HW_ADDRESS: string
+export const DEVICE_GENERIC_TYPE_DESCRIPTION: string
+export const DEVICE_INFINIBAND_CARRIER: string
+export const DEVICE_INFINIBAND_HW_ADDRESS: string
+export const DEVICE_INTERFACE: string
+export const DEVICE_IP4_CONFIG: string
+export const DEVICE_IP6_CONFIG: string
+export const DEVICE_IP_INTERFACE: string
+export const DEVICE_MANAGED: string
+export const DEVICE_MODEM_CURRENT_CAPABILITIES: string
+export const DEVICE_MODEM_MODEM_CAPABILITIES: string
+export const DEVICE_MTU: string
+export const DEVICE_OLPC_MESH_ACTIVE_CHANNEL: string
+export const DEVICE_OLPC_MESH_COMPANION: string
+export const DEVICE_OLPC_MESH_HW_ADDRESS: string
+export const DEVICE_PHYSICAL_PORT_ID: string
+export const DEVICE_PRODUCT: string
+export const DEVICE_REAL: string
+export const DEVICE_STATE: string
+export const DEVICE_STATE_REASON: string
+export const DEVICE_TEAM_CARRIER: string
+export const DEVICE_TEAM_HW_ADDRESS: string
+export const DEVICE_TEAM_SLAVES: string
+export const DEVICE_UDI: string
+export const DEVICE_VENDOR: string
+export const DEVICE_VLAN_CARRIER: string
+export const DEVICE_VLAN_HW_ADDRESS: string
+export const DEVICE_VLAN_PARENT: string
+export const DEVICE_VLAN_VLAN_ID: string
+export const DEVICE_WIFI_ACCESS_POINTS: string
+export const DEVICE_WIFI_ACTIVE_ACCESS_POINT: string
+export const DEVICE_WIFI_BITRATE: string
+export const DEVICE_WIFI_CAPABILITIES: string
+export const DEVICE_WIFI_HW_ADDRESS: string
+export const DEVICE_WIFI_MODE: string
+export const DEVICE_WIFI_PERMANENT_HW_ADDRESS: string
+export const DEVICE_WIMAX_ACTIVE_NSP: string
+export const DEVICE_WIMAX_BSID: string
+export const DEVICE_WIMAX_CENTER_FREQUENCY: string
+export const DEVICE_WIMAX_CINR: string
+export const DEVICE_WIMAX_HW_ADDRESS: string
+export const DEVICE_WIMAX_NSPS: string
+export const DEVICE_WIMAX_RSSI: string
+export const DEVICE_WIMAX_TX_POWER: string
+export const DHCP4_CONFIG_OPTIONS: string
+export const DHCP6_CONFIG_OPTIONS: string
+export const IP4_CONFIG_ADDRESSES: string
+export const IP4_CONFIG_DOMAINS: string
+export const IP4_CONFIG_GATEWAY: string
+export const IP4_CONFIG_NAMESERVERS: string
+export const IP4_CONFIG_ROUTES: string
+export const IP4_CONFIG_SEARCHES: string
+export const IP4_CONFIG_WINS_SERVERS: string
+export const IP6_CONFIG_ADDRESSES: string
+export const IP6_CONFIG_DOMAINS: string
+export const IP6_CONFIG_GATEWAY: string
+export const IP6_CONFIG_NAMESERVERS: string
+export const IP6_CONFIG_ROUTES: string
+export const IP6_CONFIG_SEARCHES: string
+export const OBJECT_DBUS_CONNECTION: string
+export const OBJECT_DBUS_PATH: string
+export const REMOTE_CONNECTION_REMOVED: string
+export const REMOTE_CONNECTION_UNSAVED: string
+export const REMOTE_CONNECTION_UPDATED: string
+export const REMOTE_SETTINGS_BUS: string
+export const REMOTE_SETTINGS_CAN_MODIFY: string
+export const REMOTE_SETTINGS_CONNECTIONS_READ: string
+export const REMOTE_SETTINGS_HOSTNAME: string
+export const REMOTE_SETTINGS_NEW_CONNECTION: string
+export const REMOTE_SETTINGS_SERVICE_RUNNING: string
+export const SECRET_AGENT_AUTO_REGISTER: string
+export const SECRET_AGENT_CAPABILITIES: string
+export const SECRET_AGENT_IDENTIFIER: string
+export const SECRET_AGENT_REGISTERED: string
+export const SECRET_AGENT_REGISTRATION_RESULT: string
+export const VPN_CONNECTION_BANNER: string
+export const VPN_CONNECTION_VPN_STATE: string
+export const WIMAX_NSP_NAME: string
+export const WIMAX_NSP_NETWORK_TYPE: string
+export const WIMAX_NSP_SIGNAL_QUALITY: string
 /**
  * Registers an error quark for #NMClient if necessary.
  * @returns the error quark used for #NMClient errors.
@@ -817,7 +817,7 @@ export interface ClientActivateFn {
     (client: Client, activeConnection: ActiveConnection, error: GLib.Error): void
 }
 export interface ClientAddActivateFn {
-    (client: Client, connection: ActiveConnection, newConnectionPath: string | null, error: GLib.Error): void
+    (client: Client, connection: ActiveConnection, newConnectionPath: string, error: GLib.Error): void
 }
 export interface DeviceCallbackFn {
     (device: Device, error: GLib.Error): void
@@ -1016,7 +1016,7 @@ export interface AccessPoint extends Gio.AsyncInitable, Gio.Initable {
      * Gets the Basic Service Set ID (BSSID) of the Wi-Fi access point.
      * @returns the BSSID of the access point. This is an internal string and must not be modified or freed.
      */
-    getBssid(): string | null
+    getBssid(): string
     /**
      * Gets the flags of the access point.
      * @returns the flags
@@ -1031,7 +1031,7 @@ export interface AccessPoint extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the access point.
      * @returns the hardware address of the access point. This is the internal string used by the access point and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Returns the timestamp (in CLOCK_BOOTTIME seconds) for the last time the
      * access point was found in scan results.  A value of -1 means the access
@@ -1162,7 +1162,7 @@ export class AccessPoint extends Object {
      * @param path the DBusobject path of the access point
      * @returns a new access point
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMAccessPoint.
      * @constructor 
@@ -1170,7 +1170,7 @@ export class AccessPoint extends Object {
      * @param path the DBusobject path of the access point
      * @returns a new access point
      */
-    static new(connection: DBusGLib.Connection, path: string | null): AccessPoint
+    static new(connection: DBusGLib.Connection, path: string): AccessPoint
     _init(config?: AccessPoint.ConstructorProperties): void
 }
 
@@ -1258,7 +1258,7 @@ export interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
      * #NMRemoteConnection object that describes the connection.
      * @returns the object path of the #NMConnection which this #NMActiveConnection is an active instance of.  This is the internal string used by the connection, and must not be modified.
      */
-    getConnection(): string | null
+    getConnection(): string
 
     // Overloads of getConnection
 
@@ -1271,7 +1271,7 @@ export interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
      * Gets the #NMConnection's type.
      * @returns the type of the #NMConnection that backs the #NMActiveConnection. This is the internal string used by the connection, and must not be modified.
      */
-    getConnectionType(): string | null
+    getConnectionType(): string
     /**
      * Whether the active connection is the default IPv4 one (that is, is used for
      * the default IPv4 route and DNS information).
@@ -1305,7 +1305,7 @@ export interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
      * Gets the #NMConnection's ID.
      * @returns the ID of the #NMConnection that backs the #NMActiveConnection. This is the internal string used by the connection, and must not be modified.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the current #NMIP4Config associated with the #NMActiveConnection.
      * @returns the #NMIP4Config, or %NULL if the   connection is not in the %NM_ACTIVE_CONNECTION_STATE_ACTIVATED   state.
@@ -1320,12 +1320,12 @@ export interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
      * Gets the path to the master #NMDevice of the connection.
      * @returns the path of the master #NMDevice of the #NMActiveConnection. This is the internal string used by the connection, and must not be modified.
      */
-    getMaster(): string | null
+    getMaster(): string
     /**
      * Gets the "specific object" used at the activation.
      * @returns the specific object's DBus path. This is the internal string used by the connection, and must not be modified.
      */
-    getSpecificObject(): string | null
+    getSpecificObject(): string
     /**
      * Gets the active connection's state.
      * @returns the state
@@ -1335,7 +1335,7 @@ export interface ActiveConnection extends Gio.AsyncInitable, Gio.Initable {
      * Gets the #NMConnection's UUID.
      * @returns the UUID of the #NMConnection that backs the #NMActiveConnection. This is the internal string used by the connection, and must not be modified.
      */
-    getUuid(): string | null
+    getUuid(): string
     /**
      * Whether the active connection is a VPN connection.
      * @returns %TRUE if the active connection is a VPN connection
@@ -1453,7 +1453,7 @@ export class ActiveConnection extends Object {
      * @param path the DBus object path of the device
      * @returns a new active connection
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMActiveConnection.
      * @constructor 
@@ -1461,7 +1461,7 @@ export class ActiveConnection extends Object {
      * @param path the DBus object path of the device
      * @returns a new active connection
      */
-    static new(connection: DBusGLib.Connection, path: string | null): ActiveConnection
+    static new(connection: DBusGLib.Connection, path: string): ActiveConnection
     _init(config?: ActiveConnection.ConstructorProperties): void
 }
 
@@ -1721,13 +1721,13 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param iface the interface name to search for
      * @returns the #NMDevice for the given @iface or %NULL if none is found.
      */
-    getDeviceByIface(iface: string | null): Device
+    getDeviceByIface(iface: string): Device
     /**
      * Gets a #NMDevice from a #NMClient.
      * @param objectPath the object path to search for
      * @returns the #NMDevice for the given @object_path or %NULL if none is found.
      */
-    getDeviceByPath(objectPath: string | null): Device
+    getDeviceByPath(objectPath: string): Device
     /**
      * Gets all the known network devices.  Use nm_device_get_type() or the
      * <literal>NM_IS_DEVICE_XXXX</literal> functions to determine what kind of
@@ -1785,7 +1785,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * Gets NetworkManager version.
      * @returns string with the version
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Whether networking is enabled or disabled.
      * @returns %TRUE if networking is enabled, %FALSE if networking is disabled
@@ -2085,7 +2085,7 @@ export interface DHCP4Config extends Gio.AsyncInitable, Gio.Initable {
      * @param option the option to retrieve
      * @returns the configuration option's value. This is the internal string used by the configuration, and must not be modified.
      */
-    getOneOption(option: string | null): string | null
+    getOneOption(option: string): string
     /**
      * Gets all the options contained in the configuration.
      * @returns the #GHashTable containing strings for keys and values. This is the internal copy used by the configuration, and must not be modified.
@@ -2133,7 +2133,7 @@ export class DHCP4Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new configuration
      */
-    constructor(connection: DBusGLib.Connection, objectPath: string | null) 
+    constructor(connection: DBusGLib.Connection, objectPath: string) 
     /**
      * Creates a new #NMDHCP4Config.
      * @constructor 
@@ -2141,7 +2141,7 @@ export class DHCP4Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new configuration
      */
-    static new(connection: DBusGLib.Connection, objectPath: string | null): DHCP4Config
+    static new(connection: DBusGLib.Connection, objectPath: string): DHCP4Config
     _init(config?: DHCP4Config.ConstructorProperties): void
 }
 
@@ -2175,7 +2175,7 @@ export interface DHCP6Config extends Gio.AsyncInitable, Gio.Initable {
      * @param option the option to retrieve
      * @returns the configuration option's value. This is the internal string used by the configuration, and must not be modified.
      */
-    getOneOption(option: string | null): string | null
+    getOneOption(option: string): string
     /**
      * Gets all the options contained in the configuration.
      * @returns the #GHashTable containing strings for keys and values. This is the internal copy used by the configuration, and must not be modified.
@@ -2223,7 +2223,7 @@ export class DHCP6Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new configuration
      */
-    constructor(connection: DBusGLib.Connection, objectPath: string | null) 
+    constructor(connection: DBusGLib.Connection, objectPath: string) 
     /**
      * Creates a new #NMDHCP6Config.
      * @constructor 
@@ -2231,7 +2231,7 @@ export class DHCP6Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new configuration
      */
-    static new(connection: DBusGLib.Connection, objectPath: string | null): DHCP6Config
+    static new(connection: DBusGLib.Connection, objectPath: string): DHCP6Config
     _init(config?: DHCP6Config.ConstructorProperties): void
 }
 
@@ -2438,7 +2438,7 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * Gets a description of `device,` based on its vendor and product names.
      * @returns a description of @device. If either the vendor or the   product name is unknown, this returns the interface name.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Returns the numeric type of the #NMDevice, ie Ethernet, Wi-Fi, etc.
      * @returns the device type
@@ -2466,12 +2466,12 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * Gets the driver of the #NMDevice.
      * @returns the driver of the device. This is the internal string used by the device, and must not be modified.
      */
-    getDriver(): string | null
+    getDriver(): string
     /**
      * Gets the driver version of the #NMDevice.
      * @returns the version of the device driver. This is the internal string used by the device, and must not be modified.
      */
-    getDriverVersion(): string | null
+    getDriverVersion(): string
     /**
      * Indicates that firmware required for the device's operation is likely
      * to be missing.
@@ -2482,13 +2482,13 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * Gets the firmware version of the #NMDevice.
      * @returns the firmware version of the device. This is the internal string used by the device, and must not be modified.
      */
-    getFirmwareVersion(): string | null
-    // Has conflict: getHwAddress(): string | null
+    getFirmwareVersion(): string
+    // Has conflict: getHwAddress(): string
     /**
      * Gets the interface name of the #NMDevice.
      * @returns the interface of the device. This is the internal string used by the device, and must not be modified.
      */
-    getIface(): string | null
+    getIface(): string
     /**
      * Gets the current #NMIP4Config associated with the #NMDevice.
      * 
@@ -2512,7 +2512,7 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * when the device is in the ACTIVATED state.
      * @returns the IP traffic interface of the device. This is the internal string used by the device, and must not be modified.
      */
-    getIpIface(): string | null
+    getIpIface(): string
     /**
      * Whether the #NMDevice is managed by NetworkManager.
      * @returns %TRUE if the device is managed by NetworkManager
@@ -2530,12 +2530,12 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * ports on a single physical port. (Eg, NPAR / SR-IOV.)
      * @returns the physical port ID of the device, or %NULL if the port   ID is unknown. This is the internal string used by the device and   must not be modified.
      */
-    getPhysicalPortId(): string | null
+    getPhysicalPortId(): string
     /**
      * Gets the product string of the #NMDevice.
      * @returns the product name of the device. This is the internal string used by the device, and must not be modified.
      */
-    getProduct(): string | null
+    getProduct(): string
     // Has conflict: getSettingType(): GObject.GType
     /**
      * Gets the current #NMDevice state.
@@ -2548,17 +2548,17 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * @returns the current device state
      */
     getStateReason(): [ /* returnType */ NetworkManager.DeviceState, /* reason */ NetworkManager.DeviceStateReason ]
-    // Has conflict: getTypeDescription(): string | null
+    // Has conflict: getTypeDescription(): string
     /**
      * Gets the Unique Device Identifier of the #NMDevice.
      * @returns the Unique Device Identifier of the device.  This identifier may be used to gather more information about the device from various operating system services like udev or sysfs.
      */
-    getUdi(): string | null
+    getUdi(): string
     /**
      * Gets the vendor string of the #NMDevice.
      * @returns the vendor name of the device. This is the internal string used by the device, and must not be modified.
      */
-    getVendor(): string | null
+    getVendor(): string
     isReal(): boolean
     /**
      * Whether the device is a software device.
@@ -2600,7 +2600,7 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the (primary) #NMSetting subtype associated with connections
      * that can be used on `device`.
@@ -2614,7 +2614,7 @@ export interface Device extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the type description of the device. This is the internal string used by the device, and must not be modified.
      */
-    getTypeDescription(): string | null
+    getTypeDescription(): string
     stateChanged(newState: NetworkManager.DeviceState, oldState: NetworkManager.DeviceState, reason: NetworkManager.DeviceStateReason): void
 
     // Own signals of NMClient-1.0.NMClient.Device
@@ -2776,7 +2776,7 @@ export class Device extends Object {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDevice.
      * @constructor 
@@ -2784,7 +2784,7 @@ export class Device extends Object {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): Device
+    static new(connection: DBusGLib.Connection, path: string): Device
     _init(config?: Device.ConstructorProperties): void
     /**
      * Generates a list of short-ish unique presentation names for the
@@ -2992,7 +2992,7 @@ export class DeviceAdsl extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceAdsl.
      * @constructor 
@@ -3000,7 +3000,7 @@ export class DeviceAdsl extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceAdsl
+    static new(connection: DBusGLib.Connection, path: string): DeviceAdsl
     _init(config?: DeviceAdsl.ConstructorProperties): void
 }
 
@@ -3046,7 +3046,7 @@ export interface DeviceBond extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceBond
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -3055,7 +3055,7 @@ export interface DeviceBond extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the devices currently enslaved to `device`.
      * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
@@ -3238,7 +3238,7 @@ export class DeviceBond extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceBond.
      * @constructor 
@@ -3246,7 +3246,7 @@ export class DeviceBond extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceBond
+    static new(connection: DBusGLib.Connection, path: string): DeviceBond
     _init(config?: DeviceBond.ConstructorProperties): void
 }
 
@@ -3292,7 +3292,7 @@ export interface DeviceBridge extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceBridge
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -3301,7 +3301,7 @@ export interface DeviceBridge extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the devices currently enslaved to `device`.
      * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
@@ -3484,7 +3484,7 @@ export class DeviceBridge extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceBridge.
      * @constructor 
@@ -3492,7 +3492,7 @@ export class DeviceBridge extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceBridge
+    static new(connection: DBusGLib.Connection, path: string): DeviceBridge
     _init(config?: DeviceBridge.ConstructorProperties): void
 }
 
@@ -3546,7 +3546,7 @@ export interface DeviceBt extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceBt
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -3555,12 +3555,12 @@ export interface DeviceBt extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the name of the #NMDeviceBt.
      * @returns the name of the device
      */
-    getName(): string | null
+    getName(): string
 
     // Class property signals of NMClient-1.0.NMClient.DeviceBt
 
@@ -3738,7 +3738,7 @@ export class DeviceBt extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceBt.
      * @constructor 
@@ -3746,7 +3746,7 @@ export class DeviceBt extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceBt
+    static new(connection: DBusGLib.Connection, path: string): DeviceBt
     _init(config?: DeviceBt.ConstructorProperties): void
 }
 
@@ -3796,7 +3796,7 @@ export interface DeviceEthernet extends Gio.AsyncInitable, Gio.Initable {
      * Gets the active hardware (MAC) address of the #NMDeviceEthernet
      * @returns the active hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -3805,12 +3805,12 @@ export interface DeviceEthernet extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the permanent hardware (MAC) address of the #NMDeviceEthernet
      * @returns the permanent hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getPermanentHwAddress(): string | null
+    getPermanentHwAddress(): string
     /**
      * Gets the speed of the #NMDeviceEthernet in Mbit/s.
      * @returns the speed of the device in Mbit/s
@@ -3998,7 +3998,7 @@ export class DeviceEthernet extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceEthernet.
      * @constructor 
@@ -4006,7 +4006,7 @@ export class DeviceEthernet extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceEthernet
+    static new(connection: DBusGLib.Connection, path: string): DeviceEthernet
     _init(config?: DeviceEthernet.ConstructorProperties): void
 }
 
@@ -4044,7 +4044,7 @@ export interface DeviceGeneric extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware address of the #NMDeviceGeneric
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -4053,7 +4053,7 @@ export interface DeviceGeneric extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Class property signals of NMClient-1.0.NMClient.DeviceGeneric
 
@@ -4226,7 +4226,7 @@ export class DeviceGeneric extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceGeneric.
      * @constructor 
@@ -4234,7 +4234,7 @@ export class DeviceGeneric extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceGeneric
+    static new(connection: DBusGLib.Connection, path: string): DeviceGeneric
     _init(config?: DeviceGeneric.ConstructorProperties): void
 }
 
@@ -4276,7 +4276,7 @@ export interface DeviceInfiniband extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceInfiniband
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -4285,7 +4285,7 @@ export interface DeviceInfiniband extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Class property signals of NMClient-1.0.NMClient.DeviceInfiniband
 
@@ -4458,7 +4458,7 @@ export class DeviceInfiniband extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceInfiniband.
      * @constructor 
@@ -4466,7 +4466,7 @@ export class DeviceInfiniband extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceInfiniband
+    static new(connection: DBusGLib.Connection, path: string): DeviceInfiniband
     _init(config?: DeviceInfiniband.ConstructorProperties): void
 }
 
@@ -4732,7 +4732,7 @@ export interface DeviceOlpcMesh extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceOlpcMesh
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -4741,7 +4741,7 @@ export interface DeviceOlpcMesh extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Class property signals of NMClient-1.0.NMClient.DeviceOlpcMesh
 
@@ -4919,7 +4919,7 @@ export class DeviceOlpcMesh extends Device {
      * @param path the DBus object path of the device
      * @returns a new OlpcMesh device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceOlpcMesh.
      * @constructor 
@@ -4927,7 +4927,7 @@ export class DeviceOlpcMesh extends Device {
      * @param path the DBus object path of the device
      * @returns a new OlpcMesh device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceOlpcMesh
+    static new(connection: DBusGLib.Connection, path: string): DeviceOlpcMesh
     _init(config?: DeviceOlpcMesh.ConstructorProperties): void
 }
 
@@ -4973,7 +4973,7 @@ export interface DeviceTeam extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceTeam
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -4982,7 +4982,7 @@ export interface DeviceTeam extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the devices currently enslaved to `device`.
      * @returns the #GPtrArray containing #NMDevices that are slaves of @device. This is the internal copy used by the device, and must not be modified.
@@ -5165,7 +5165,7 @@ export class DeviceTeam extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceTeam.
      * @constructor 
@@ -5173,7 +5173,7 @@ export class DeviceTeam extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceTeam
+    static new(connection: DBusGLib.Connection, path: string): DeviceTeam
     _init(config?: DeviceTeam.ConstructorProperties): void
 }
 
@@ -5219,7 +5219,7 @@ export interface DeviceVlan extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceVlan
      * @returns the hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -5228,7 +5228,7 @@ export interface DeviceVlan extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     getParent(): Device
     getVlanId(): number
 
@@ -5408,7 +5408,7 @@ export class DeviceVlan extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceVlan.
      * @constructor 
@@ -5416,7 +5416,7 @@ export class DeviceVlan extends Device {
      * @param path the DBus object path of the device
      * @returns a new device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceVlan
+    static new(connection: DBusGLib.Connection, path: string): DeviceVlan
     _init(config?: DeviceVlan.ConstructorProperties): void
 }
 
@@ -5491,7 +5491,7 @@ export interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
      * @param path the object path of the access point
      * @returns the access point or %NULL if none is found.
      */
-    getAccessPointByPath(path: string | null): AccessPoint
+    getAccessPointByPath(path: string): AccessPoint
     /**
      * Gets all the scanned access points of the #NMDeviceWifi.
      * @returns a #GPtrArray containing all the scanned #NMAccessPoints. The returned array is owned by the client and should not be modified.
@@ -5524,7 +5524,7 @@ export interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
      * Gets the actual hardware (MAC) address of the #NMDeviceWifi
      * @returns the actual hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -5533,7 +5533,7 @@ export interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets the #NMDeviceWifi mode.
      * @returns the mode
@@ -5543,7 +5543,7 @@ export interface DeviceWifi extends Gio.AsyncInitable, Gio.Initable {
      * Gets the permanent hardware (MAC) address of the #NMDeviceWifi
      * @returns the permanent hardware address. This is the internal string used by the device, and must not be modified.
      */
-    getPermanentHwAddress(): string | null
+    getPermanentHwAddress(): string
     /**
      * Request NM to scan for access points on the #NMDeviceWifi. This function only
      * instructs NM to perform scanning. Use nm_device_wifi_get_access_points()
@@ -5766,7 +5766,7 @@ export class DeviceWifi extends Device {
      * @param path the DBus object path of the device
      * @returns a new Wi-Fi device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceWifi.
      * @constructor 
@@ -5774,7 +5774,7 @@ export class DeviceWifi extends Device {
      * @param path the DBus object path of the device
      * @returns a new Wi-Fi device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceWifi
+    static new(connection: DBusGLib.Connection, path: string): DeviceWifi
     _init(config?: DeviceWifi.ConstructorProperties): void
 }
 
@@ -5867,7 +5867,7 @@ export interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
      * Gets the ID of the serving Base Station when the device is connected.
      * @returns the ID of the serving Base Station, or %NULL
      */
-    getBsid(): string | null
+    getBsid(): string
     /**
      * Gets the center frequency (in KHz) of the radio channel the device is using
      * to communicate with the network when connected.  Has no meaning when the
@@ -5886,7 +5886,7 @@ export interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
      * Gets the hardware (MAC) address of the #NMDeviceWimax
      * @returns the hardware address. This is the internal string used by the          device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
 
     // Overloads of getHwAddress
 
@@ -5895,13 +5895,13 @@ export interface DeviceWimax extends Gio.AsyncInitable, Gio.Initable {
      * @virtual 
      * @returns the current MAC of the device, or %NULL. This is the internal string used by the device, and must not be modified.
      */
-    getHwAddress(): string | null
+    getHwAddress(): string
     /**
      * Gets a #NMWimaxNsp by path.
      * @param path the object path of the NSP
      * @returns the access point or %NULL if none is found.
      */
-    getNspByPath(path: string | null): WimaxNsp
+    getNspByPath(path: string): WimaxNsp
     /**
      * Gets all the scanned NSPs of the #NMDeviceWimax.
      * @returns a #GPtrArray containing          all the scanned #NMWimaxNsps. The returned array is owned by the client and should not be modified.
@@ -6142,7 +6142,7 @@ export class DeviceWimax extends Device {
      * @param path the D-Bus object path of the WiMAX device
      * @returns a new WiMAX device
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMDeviceWimax.
      * @constructor 
@@ -6150,7 +6150,7 @@ export class DeviceWimax extends Device {
      * @param path the D-Bus object path of the WiMAX device
      * @returns a new WiMAX device
      */
-    static new(connection: DBusGLib.Connection, path: string | null): DeviceWimax
+    static new(connection: DBusGLib.Connection, path: string): DeviceWimax
     _init(config?: DeviceWimax.ConstructorProperties): void
 }
 
@@ -6217,7 +6217,7 @@ export interface IP4Config extends Gio.AsyncInitable, Gio.Initable {
      * Gets the IP4 gateway address.
      * @returns the IP4 address of the gateway.
      */
-    getGateway(): string | null
+    getGateway(): string
     /**
      * Gets the domain name servers (DNS).
      * @returns the #GArray containing #guint32s. This is the internal copy used by the configuration and must not be modified.
@@ -6310,7 +6310,7 @@ export class IP4Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new IP4 configuration
      */
-    constructor(connection: DBusGLib.Connection, objectPath: string | null) 
+    constructor(connection: DBusGLib.Connection, objectPath: string) 
     /**
      * Creates a new #NMIP4Config.
      * @constructor 
@@ -6318,7 +6318,7 @@ export class IP4Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new IP4 configuration
      */
-    static new(connection: DBusGLib.Connection, objectPath: string | null): IP4Config
+    static new(connection: DBusGLib.Connection, objectPath: string): IP4Config
     _init(config?: IP4Config.ConstructorProperties): void
 }
 
@@ -6386,7 +6386,7 @@ export interface IP6Config extends Gio.AsyncInitable, Gio.Initable {
      * Gets the IP6 gateway.
      * @returns the IPv6 gateway of the configuration.
      */
-    getGateway(): string | null
+    getGateway(): string
     /**
      * Gets the domain name server at index `idx` in the configuration.
      * @param idx index of the nameserver to return
@@ -6475,7 +6475,7 @@ export class IP6Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new IP6 configuration
      */
-    constructor(connection: DBusGLib.Connection, objectPath: string | null) 
+    constructor(connection: DBusGLib.Connection, objectPath: string) 
     /**
      * Creates a new #NMIP6Config.
      * @constructor 
@@ -6483,7 +6483,7 @@ export class IP6Config extends Object {
      * @param objectPath the DBus object path of the device
      * @returns a new IP6 configuration
      */
-    static new(connection: DBusGLib.Connection, objectPath: string | null): IP6Config
+    static new(connection: DBusGLib.Connection, objectPath: string): IP6Config
     _init(config?: IP6Config.ConstructorProperties): void
 }
 
@@ -6532,7 +6532,7 @@ export interface Object extends Gio.AsyncInitable, Gio.Initable {
      * Gets the DBus path of the #NMObject.
      * @returns the object's path. This is the internal string used by the device, and must not be modified.
      */
-    getPath(): string | null
+    getPath(): string
 
     // Own virtual methods of NMClient-1.0.NMClient.Object
 
@@ -6657,7 +6657,7 @@ export interface RemoteConnection extends Gio.AsyncInitable, Gio.Initable {
      * @param settingName the #NMSetting object name to get secrets for
      * @param callback a function to be called when the update completes; must not be %NULL
      */
-    getSecrets(settingName: string | null, callback: RemoteConnectionGetSecretsFunc): void
+    getSecrets(settingName: string, callback: RemoteConnectionGetSecretsFunc): void
     getUnsaved(): boolean
     /**
      * Saves the connection to disk if the connection has changes that have not yet
@@ -6735,7 +6735,7 @@ export class RemoteConnection extends NetworkManager.Connection {
      * @param path the D-Bus path of the connection as exported by the settings service
      * @returns the new remote connection object on success, or %NULL on failure
      */
-    constructor(bus: DBusGLib.Connection, path: string | null) 
+    constructor(bus: DBusGLib.Connection, path: string) 
     /**
      * Creates a new object representing the remote connection.
      * @constructor 
@@ -6743,7 +6743,7 @@ export class RemoteConnection extends NetworkManager.Connection {
      * @param path the D-Bus path of the connection as exported by the settings service
      * @returns the new remote connection object on success, or %NULL on failure
      */
-    static new(bus: DBusGLib.Connection, path: string | null): RemoteConnection
+    static new(bus: DBusGLib.Connection, path: string): RemoteConnection
 
     // Overloads of new
 
@@ -6837,19 +6837,19 @@ export interface RemoteSettings extends Gio.AsyncInitable, Gio.Initable {
      * @param id the id of the remote connection
      * @returns the remote connection object on success, or %NULL if no  matching object was found.
      */
-    getConnectionById(id: string | null): RemoteConnection
+    getConnectionById(id: string): RemoteConnection
     /**
      * Returns the %NMRemoteConnection representing the connection at `path`.
      * @param path the D-Bus object path of the remote connection
      * @returns the remote connection object on success, or %NULL if the object was  not known
      */
-    getConnectionByPath(path: string | null): RemoteConnection
+    getConnectionByPath(path: string): RemoteConnection
     /**
      * Returns the %NMRemoteConnection identified by `uuid`.
      * @param uuid the UUID of the remote connection
      * @returns the remote connection object on success, or %NULL if the object was  not known
      */
-    getConnectionByUuid(uuid: string | null): RemoteConnection
+    getConnectionByUuid(uuid: string): RemoteConnection
     listConnections(): RemoteConnection[]
     /**
      * Requests that the remote settings service load or reload the given files,
@@ -6881,7 +6881,7 @@ export interface RemoteSettings extends Gio.AsyncInitable, Gio.Initable {
      * @param callback callback to be called when the hostname operation completes
      * @returns %TRUE if the request was successful, %FALSE if it failed
      */
-    saveHostname(hostname: string | null, callback: RemoteSettingsSaveHostnameFunc | null): boolean
+    saveHostname(hostname: string, callback: RemoteSettingsSaveHostnameFunc | null): boolean
 
     // Own virtual methods of NMClient-1.0.NMClient.RemoteSettings
 
@@ -7070,7 +7070,7 @@ export interface SecretAgent {
 
     // Has conflict: deleteSecrets(connection: NetworkManager.Connection, callback: SecretAgentDeleteSecretsFunc): void
     getRegistered(): boolean
-    // Has conflict: getSecrets(connection: NetworkManager.Connection, settingName: string | null, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc): void
+    // Has conflict: getSecrets(connection: NetworkManager.Connection, settingName: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc): void
     /**
      * Registers the #NMSecretAgent with the NetworkManager secret manager,
      * indicating to NetworkManager that the agent is able to provide and save
@@ -7091,7 +7091,7 @@ export interface SecretAgent {
 
     // Own virtual methods of NMClient-1.0.NMClient.SecretAgent
 
-    cancelGetSecrets(connectionPath: string | null, settingName: string | null): void
+    cancelGetSecrets(connectionPath: string, settingName: string): void
     /**
      * Asynchronously ask the agent to delete all saved secrets belonging to
      * `connection`.
@@ -7100,7 +7100,7 @@ export interface SecretAgent {
      * @param connectionPath 
      * @param callback a callback, to be invoked when the operation is done
      */
-    deleteSecrets(connection: NetworkManager.Connection, connectionPath: string | null, callback: SecretAgentDeleteSecretsFunc): void
+    deleteSecrets(connection: NetworkManager.Connection, connectionPath: string, callback: SecretAgentDeleteSecretsFunc): void
     /**
      * Asynchronously retrieve secrets belonging to `connection` for the
      * setting `setting_name`.  `flags` indicate specific behavior that the secret
@@ -7115,7 +7115,7 @@ export interface SecretAgent {
      * @param flags flags that modify the behavior of the request
      * @param callback a callback, to be invoked when the operation is done
      */
-    getSecrets(connection: NetworkManager.Connection, connectionPath: string | null, settingName: string | null, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc): void
+    getSecrets(connection: NetworkManager.Connection, connectionPath: string, settingName: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc): void
     registrationResult(error: GLib.Error): void
     /**
      * Asynchronously ensure that all secrets inside `connection`
@@ -7125,7 +7125,7 @@ export interface SecretAgent {
      * @param connectionPath 
      * @param callback a callback, to be invoked when the operation is done
      */
-    saveSecrets(connection: NetworkManager.Connection, connectionPath: string | null, callback: SecretAgentSaveSecretsFunc): void
+    saveSecrets(connection: NetworkManager.Connection, connectionPath: string, callback: SecretAgentSaveSecretsFunc): void
 
     // Own signals of NMClient-1.0.NMClient.SecretAgent
 
@@ -7225,7 +7225,7 @@ export interface VPNConnection extends Gio.AsyncInitable, Gio.Initable {
      * Gets the VPN login banner of the active #NMVPNConnection.
      * @returns the VPN login banner of the VPN connection. This is the internal string used by the connection, and must not be modified.
      */
-    getBanner(): string | null
+    getBanner(): string
     /**
      * Gets the current #NMVPNConnection state.
      * @returns the VPN state of the active VPN connection.
@@ -7240,7 +7240,7 @@ export interface VPNConnection extends Gio.AsyncInitable, Gio.Initable {
      * #NMRemoteConnection object that describes the connection.
      * @returns the object path of the #NMConnection which this #NMActiveConnection is an active instance of.  This is the internal string used by the connection, and must not be modified.
      */
-    getConnection(): string | null
+    getConnection(): string
 
     // Overloads of getConnection
 
@@ -7388,7 +7388,7 @@ export class VPNConnection extends ActiveConnection {
      * @param path the DBus object path of the new connection
      * @returns a new connection object
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMVPNConnection.
      * @constructor 
@@ -7396,7 +7396,7 @@ export class VPNConnection extends ActiveConnection {
      * @param path the DBus object path of the new connection
      * @returns a new connection object
      */
-    static new(connection: DBusGLib.Connection, path: string | null): VPNConnection
+    static new(connection: DBusGLib.Connection, path: string): VPNConnection
     _init(config?: VPNConnection.ConstructorProperties): void
 }
 
@@ -7453,7 +7453,7 @@ export interface WimaxNsp extends Gio.AsyncInitable, Gio.Initable {
      * Gets the name of the wimax NSP
      * @returns the name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the network type of the wimax NSP.
      * @returns the network type
@@ -7516,7 +7516,7 @@ export class WimaxNsp extends Object {
      * @param path the D-Bus object path of the WiMAX NSP
      * @returns a new WiMAX NSP
      */
-    constructor(connection: DBusGLib.Connection, path: string | null) 
+    constructor(connection: DBusGLib.Connection, path: string) 
     /**
      * Creates a new #NMWimaxNsp.
      * @constructor 
@@ -7524,7 +7524,7 @@ export class WimaxNsp extends Object {
      * @param path the D-Bus object path of the WiMAX NSP
      * @returns a new WiMAX NSP
      */
-    static new(connection: DBusGLib.Connection, path: string | null): WimaxNsp
+    static new(connection: DBusGLib.Connection, path: string): WimaxNsp
     _init(config?: WimaxNsp.ConstructorProperties): void
 }
 
@@ -7664,8 +7664,8 @@ export interface DeviceClass {
     parent: ObjectClass
     stateChanged: (device: Device, newState: NetworkManager.DeviceState, oldState: NetworkManager.DeviceState, reason: NetworkManager.DeviceStateReason) => void
     connectionCompatible: (device: Device, connection: NetworkManager.Connection) => boolean
-    getTypeDescription: (device: Device) => string | null
-    getHwAddress: (device: Device) => string | null
+    getTypeDescription: (device: Device) => string
+    getHwAddress: (device: Device) => string
     getSettingType: (device: Device) => GObject.GType
 }
 
@@ -7886,10 +7886,10 @@ export interface SecretAgentClass {
     // Own fields of NMClient-1.0.NMClient.SecretAgentClass
 
     parent: GObject.ObjectClass
-    getSecrets: (self: SecretAgent, connection: NetworkManager.Connection, connectionPath: string | null, settingName: string | null, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc) => void
-    cancelGetSecrets: (self: SecretAgent, connectionPath: string | null, settingName: string | null) => void
-    saveSecrets: (self: SecretAgent, connection: NetworkManager.Connection, connectionPath: string | null, callback: SecretAgentSaveSecretsFunc) => void
-    deleteSecrets: (self: SecretAgent, connection: NetworkManager.Connection, connectionPath: string | null, callback: SecretAgentDeleteSecretsFunc) => void
+    getSecrets: (self: SecretAgent, connection: NetworkManager.Connection, connectionPath: string, settingName: string, hints: string[], flags: SecretAgentGetSecretsFlags, callback: SecretAgentGetSecretsFunc) => void
+    cancelGetSecrets: (self: SecretAgent, connectionPath: string, settingName: string) => void
+    saveSecrets: (self: SecretAgent, connection: NetworkManager.Connection, connectionPath: string, callback: SecretAgentSaveSecretsFunc) => void
+    deleteSecrets: (self: SecretAgent, connection: NetworkManager.Connection, connectionPath: string, callback: SecretAgentDeleteSecretsFunc) => void
     registrationResult: (agent: SecretAgent, error: GLib.Error) => void
 }
 

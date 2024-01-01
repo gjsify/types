@@ -4622,7 +4622,7 @@ function add_option_entries_libgtk_only(group: GLib.OptionGroup): void
  * @param only_if_exists if %TRUE, GDK is allowed to not create a new atom, but   just return %GDK_NONE if the requested atom doesn’t already   exists. Currently, the flag is ignored, since checking the   existance of an atom is as expensive as creating it.
  * @returns the atom corresponding to @atom_name.
  */
-function atom_intern(atom_name: string | null, only_if_exists: boolean): Atom
+function atom_intern(atom_name: string, only_if_exists: boolean): Atom
 /**
  * Finds or creates an atom corresponding to a given string.
  * 
@@ -4637,7 +4637,7 @@ function atom_intern(atom_name: string | null, only_if_exists: boolean): Atom
  * @param atom_name a static string
  * @returns the atom corresponding to @atom_name
  */
-function atom_intern_static_string(atom_name: string | null): Atom
+function atom_intern_static_string(atom_name: string): Atom
 /**
  * Emits a short beep on the default display.
  */
@@ -4785,7 +4785,7 @@ function cairo_surface_create_from_pixbuf(pixbuf: GdkPixbuf.Pixbuf, scale: numbe
  * @param spec the string specifying the color
  * @returns %TRUE if the parsing succeeded
  */
-function color_parse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+function color_parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
 /**
  * Disables multidevice support in GDK. This call must happen prior
  * to gdk_display_open(), gtk_init(), gtk_init_with_args() or
@@ -5106,7 +5106,7 @@ function get_display_arg_name(): string | null
  * with g_get_prgname()) with the first character converted to uppercase.
  * @returns the program class.
  */
-function get_program_class(): string | null
+function get_program_class(): string
 /**
  * Gets whether event debugging output is enabled.
  * @returns %TRUE if event debugging output is enabled.
@@ -5174,7 +5174,7 @@ function keyval_convert_case(symbol: number): [ /* lower */ number, /* upper */ 
  * @param keyval_name a key name
  * @returns the corresponding key value, or %GDK_KEY_VoidSymbol     if the key name is not a valid key
  */
-function keyval_from_name(keyval_name: string | null): number
+function keyval_from_name(keyval_name: string): number
 /**
  * Returns %TRUE if the given key value is in lower case.
  * @param keyval a key value.
@@ -5248,7 +5248,7 @@ function notify_startup_complete(): void
  * disable that feature.
  * @param startup_id a startup-notification identifier, for which     notification process should be completed
  */
-function notify_startup_complete_with_id(startup_id: string | null): void
+function notify_startup_complete_with_id(startup_id: string): void
 /**
  * Gets the window that `window` is embedded in.
  * @param window a #GdkWindow
@@ -5588,7 +5588,7 @@ function selection_send_notify_for_display(display: Display, requestor: Window, 
  * in order to take effect.
  * @param backends a comma-separated list of backends
  */
-function set_allowed_backends(backends: string | null): void
+function set_allowed_backends(backends: string): void
 /**
  * Set the double click time for the default display. See
  * gdk_display_set_double_click_time().
@@ -5607,7 +5607,7 @@ function set_double_click_time(msec: number): void
  * line option.
  * @param program_class a string.
  */
-function set_program_class(program_class: string | null): void
+function set_program_class(program_class: string): void
 /**
  * Sets whether a trace of received events is output.
  * Note that GTK+ must be compiled with debugging (that is,
@@ -5623,7 +5623,7 @@ function set_show_events(show_events: boolean): void
  * @param value location to store the value of the setting.
  * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
  */
-function setting_get(name: string | null, value: any): boolean
+function setting_get(name: string, value: any): boolean
 function synthesize_window_state(window: Window, unset_flags: WindowState, set_flags: WindowState): void
 /**
  * Retrieves a pixel from `window` to force the windowing
@@ -5836,7 +5836,7 @@ function unicode_to_keyval(wc: number): number
  * @param str a UTF-8 string
  * @returns the newly-allocated string, or %NULL if the          conversion failed. (It should not fail for any properly          formed UTF-8 string unless system limits like memory or          file descriptors are exceeded.)
  */
-function utf8_to_string_target(str: string | null): string | null
+function utf8_to_string_target(str: string): string | null
 /**
  * Specifies the type of function passed to gdk_event_handler_set() to
  * handle all GDK events.
@@ -6365,7 +6365,7 @@ class Cursor extends GObject.Object {
      * @param name the name of the cursor
      * @returns a new #GdkCursor, or %NULL if there is no   cursor with the given name
      */
-    static new_from_name(display: Display, name: string | null): Cursor
+    static new_from_name(display: Display, name: string): Cursor
     /**
      * Creates a new cursor from a pixbuf.
      * 
@@ -6695,7 +6695,7 @@ interface Device {
      * Determines the name of the device.
      * @returns a name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the current location of `device`. As a slave device
      * coordinates are those of its master pointer, This function
@@ -7444,7 +7444,7 @@ interface Display {
      * Gets the name of the display.
      * @returns a string representing the display name. This string is owned by GDK and should not be modified or freed.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the current location of the pointer and the current modifier
      * mask for a given display.
@@ -7511,7 +7511,7 @@ interface Display {
      * disable that feature.
      * @param startup_id a startup-notification identifier, for which     notification process should be completed
      */
-    notify_startup_complete(startup_id: string | null): void
+    notify_startup_complete(startup_id: string): void
     /**
      * Gets a copy of the first #GdkEvent in the `display’`s event queue, without
      * removing the event from the queue.  (Note that this function will
@@ -7722,7 +7722,7 @@ class Display extends GObject.Object {
      * @param display_name the name of the display to open
      * @returns a #GdkDisplay, or %NULL if the     display could not be opened
      */
-    static open(display_name: string | null): Display | null
+    static open(display_name: string): Display | null
     /**
      * Opens the default display specified by command line arguments or
      * environment variables, sets it as the default display, and returns
@@ -7782,7 +7782,7 @@ interface DisplayManager {
      * @param name the name of the display to open
      * @returns a #GdkDisplay, or %NULL if the     display could not be opened
      */
-    open_display(name: string | null): Display | null
+    open_display(name: string): Display | null
     /**
      * Sets `display` as the default display.
      * @param display a #GdkDisplay
@@ -9323,7 +9323,7 @@ interface Screen {
      * @param value location to store the value of the setting
      * @returns %TRUE if the setting existed and a value was stored   in @value, %FALSE otherwise.
      */
-    get_setting(name: string | null, value: any): boolean
+    get_setting(name: string, value: any): boolean
     /**
      * Get the system’s default visual for `screen`.
      * This is the visual for the root window of the display.
@@ -11358,7 +11358,7 @@ interface Window {
      * non-interchangeable kind of window.
      * @param role a string indicating its role
      */
-    set_role(role: string | null): void
+    set_role(role: string): void
     /**
      * Newer GTK+ windows using client-side decorations use extra geometry
      * around their frames for effects like shadows and invisible borders.
@@ -11411,7 +11411,7 @@ interface Window {
      * instead of this low-level function.
      * @param startup_id a string with startup-notification identifier
      */
-    set_startup_id(startup_id: string | null): void
+    set_startup_id(startup_id: string): void
     /**
      * Used to set the bit gravity of the given window to static, and flag
      * it so all children get static subwindow gravity. This is used if you
@@ -11437,7 +11437,7 @@ interface Window {
      * user-readable strings in GDK/GTK+). `title` may not be %NULL.
      * @param title title of `window`
      */
-    set_title(title: string | null): void
+    set_title(title: string): void
     /**
      * Indicates to the window manager that `window` is a transient dialog
      * associated with the application window `parent`. This allows the
@@ -11742,7 +11742,7 @@ class Atom {
      * @param only_if_exists if %TRUE, GDK is allowed to not create a new atom, but   just return %GDK_NONE if the requested atom doesn’t already   exists. Currently, the flag is ignored, since checking the   existance of an atom is as expensive as creating it.
      * @returns the atom corresponding to @atom_name.
      */
-    static intern(atom_name: string | null, only_if_exists: boolean): Atom
+    static intern(atom_name: string, only_if_exists: boolean): Atom
     /**
      * Finds or creates an atom corresponding to a given string.
      * 
@@ -11757,7 +11757,7 @@ class Atom {
      * @param atom_name a static string
      * @returns the atom corresponding to @atom_name
      */
-    static intern_static_string(atom_name: string | null): Atom
+    static intern_static_string(atom_name: string): Atom
 }
 
 interface Color {
@@ -11851,7 +11851,7 @@ class Color {
      * @param spec the string specifying the color
      * @returns %TRUE if the parsing succeeded
      */
-    static parse(spec: string | null): [ /* returnType */ boolean, /* color */ Color ]
+    static parse(spec: string): [ /* returnType */ boolean, /* color */ Color ]
 }
 
 interface DevicePadInterface {
@@ -13822,7 +13822,7 @@ interface RGBA {
      * @param spec the string specifying the color
      * @returns %TRUE if the parsing succeeded
      */
-    parse(spec: string | null): boolean
+    parse(spec: string): boolean
     /**
      * Returns a textual specification of `rgba` in the form
      * `rgb(r,g,b)` or

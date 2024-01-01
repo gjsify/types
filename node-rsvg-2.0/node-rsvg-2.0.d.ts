@@ -169,7 +169,7 @@ const MINOR_VERSION: number
  * your program), or for programs not written in C, use
  * `rsvg_version` instead.
  */
-const VERSION: string | null
+const VERSION: string
 /**
  * This function does nothing.
  */
@@ -190,7 +190,7 @@ function init(): void
  * @param filename A file name
  * @returns A pixbuf, or %NULL on error.
  */
-function pixbufFromFile(filename: string | null): GdkPixbuf.Pixbuf | null
+function pixbufFromFile(filename: string): GdkPixbuf.Pixbuf | null
 /**
  * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is uniformly
  * scaled so that the it fits into a rectangle of size `max_width * max_height`. The
@@ -201,7 +201,7 @@ function pixbufFromFile(filename: string | null): GdkPixbuf.Pixbuf | null
  * @param maxHeight The requested max height
  * @returns A pixbuf, or %NULL on error.
  */
-function pixbufFromFileAtMaxSize(filename: string | null, maxWidth: number, maxHeight: number): GdkPixbuf.Pixbuf | null
+function pixbufFromFileAtMaxSize(filename: string, maxWidth: number, maxHeight: number): GdkPixbuf.Pixbuf | null
 /**
  * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is scaled
  * from the size indicated to the new size indicated by `width` and `height`.  If
@@ -213,7 +213,7 @@ function pixbufFromFileAtMaxSize(filename: string | null, maxWidth: number, maxH
  * @param height The new height, or -1
  * @returns A pixbuf, or %NULL on error.
  */
-function pixbufFromFileAtSize(filename: string | null, width: number, height: number): GdkPixbuf.Pixbuf | null
+function pixbufFromFileAtSize(filename: string, width: number, height: number): GdkPixbuf.Pixbuf | null
 /**
  * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is scaled
  * from the size indicated by the file by a factor of `x_zoom` and `y_zoom`.  The
@@ -224,7 +224,7 @@ function pixbufFromFileAtSize(filename: string | null, width: number, height: nu
  * @param yZoom The vertical zoom factor
  * @returns A pixbuf, or %NULL on error.
  */
-function pixbufFromFileAtZoom(filename: string | null, xZoom: number, yZoom: number): GdkPixbuf.Pixbuf | null
+function pixbufFromFileAtZoom(filename: string, xZoom: number, yZoom: number): GdkPixbuf.Pixbuf | null
 /**
  * Loads a new `GdkPixbuf` from `filename` and returns it.  This pixbuf is scaled
  * from the size indicated by the file by a factor of `x_zoom` and `y_zoom`. If the
@@ -238,7 +238,7 @@ function pixbufFromFileAtZoom(filename: string | null, xZoom: number, yZoom: num
  * @param maxHeight The requested max height
  * @returns A pixbuf, or %NULL on error.
  */
-function pixbufFromFileAtZoomWithMax(filename: string | null, xZoom: number, yZoom: number, maxWidth: number, maxHeight: number): GdkPixbuf.Pixbuf | null
+function pixbufFromFileAtZoomWithMax(filename: string, xZoom: number, yZoom: number, maxWidth: number, maxHeight: number): GdkPixbuf.Pixbuf | null
 /**
  * Do not use this function.  Create an [class`Rsvg`.Handle] and call
  * [method`Rsvg`.Handle.set_dpi] on it instead.
@@ -377,7 +377,7 @@ interface Handle {
      * Gets the base uri for this [class`Rsvg`.Handle].
      * @returns the base uri, possibly null
      */
-    getBaseUri(): string | null
+    getBaseUri(): string
     getDesc(): string | null
     /**
      * Get the SVG's size. Do not call from within the size_func callback, because
@@ -620,7 +620,7 @@ interface Handle {
      * @param id An element's id within the SVG, starting with "#" (a single hash character), for example, `#layer1`.  This notation corresponds to a URL's fragment ID.
      * @returns `TRUE` if @id exists in the SVG document, `FALSE` otherwise.
      */
-    hasSub(id: string | null): boolean
+    hasSub(id: string): boolean
     /**
      * Do not call this function.  This is intended for librsvg's internal
      * test suite only.
@@ -821,7 +821,7 @@ interface Handle {
      * [method`Rsvg`.Handle.read_stream_sync] have been called.
      * @param baseUri The base uri
      */
-    setBaseUri(baseUri: string | null): void
+    setBaseUri(baseUri: string): void
     /**
      * Sets the DPI at which the `handle` will be rendered. Common values are
      * 75, 90, and 300 DPI.
@@ -1199,7 +1199,7 @@ class Handle extends GObject.Object {
      * @param filename The file name to load, or a URI.
      * @returns A [class@Rsvg.Handle] or `NULL` if an error occurs.
      */
-    static newFromFile(filename: string | null): Handle
+    static newFromFile(filename: string): Handle
     /**
      * Creates a new [class`Rsvg`.Handle] for `file`.
      * 

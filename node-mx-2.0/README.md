@@ -5,7 +5,7 @@
 ![downloads/week](https://img.shields.io/npm/dw/@girs/node-mx-2.0)
 
 
-Node.js TypeScript type definitions for Mx-2.0, generated from library version 1.99.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.6.
+Node.js TypeScript type definitions for Mx-2.0, generated from library version 1.99.4 using [ts-for-gir](https://github.com/gjsify/ts-for-gir) v3.2.7.
 
 
 ## Install

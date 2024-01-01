@@ -80,7 +80,7 @@ function busGet(busType: Gio.BusType): Future
  * @param timeoutMsec 
  * @returns a #DexFuture that resolves to a #GVariant   or rejects with error.
  */
-function dbusConnectionCall(connection: Gio.DBusConnection, busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number): Future
+function dbusConnectionCall(connection: Gio.DBusConnection, busName: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number): Future
 /**
  * Wrapper for g_dbus_connection_call_with_unix_fd_list().
  * @param connection 
@@ -95,7 +95,7 @@ function dbusConnectionCall(connection: Gio.DBusConnection, busName: string | nu
  * @param fdList a #GUnixFDList
  * @returns a #DexFutureSet that resolves to a #GVariant.   The #DexFuture containing the resulting #GUnixFDList can be retrieved   with dex_future_set_get_future_at() with an index of 1.
  */
-function dbusConnectionCallWithUnixFdList(connection: Gio.DBusConnection, busName: string | null, objectPath: string | null, interfaceName: string | null, methodName: string | null, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number, fdList: Gio.UnixFDList | null): Future
+function dbusConnectionCallWithUnixFdList(connection: Gio.DBusConnection, busName: string, objectPath: string, interfaceName: string, methodName: string, parameters: GLib.Variant, replyType: GLib.VariantType, flags: Gio.DBusCallFlags, timeoutMsec: number, fdList: Gio.UnixFDList | null): Future
 /**
  * Wrapper for g_dbus_connection_send_message_with_reply().
  * @param connection a #GDBusConnection
@@ -116,7 +116,7 @@ function errorQuark(): GLib.Quark
  * @returns a #DexFuture
  */
 function fileCopy(source: Gio.File, destination: Gio.File, flags: Gio.FileCopyFlags, ioPriority: number): Future
-function fileEnumerateChildren(file: Gio.File, attributes: string | null, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
+function fileEnumerateChildren(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
 function fileEnumeratorNextFiles(fileEnumerator: Gio.FileEnumerator, numFiles: number, ioPriority: number): Future
 function fileLoadContentsBytes(file: Gio.File): Future
 /**
@@ -127,7 +127,7 @@ function fileLoadContentsBytes(file: Gio.File): Future
  * @returns a #DexFuture
  */
 function fileMakeDirectory(file: Gio.File, ioPriority: number): Future
-function fileQueryInfo(file: Gio.File, attributes: string | null, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
+function fileQueryInfo(file: Gio.File, attributes: string, flags: Gio.FileQueryInfoFlags, ioPriority: number): Future
 /**
  * Asynchronously opens a file for reading.
  * @param file a #GFile
@@ -135,7 +135,7 @@ function fileQueryInfo(file: Gio.File, attributes: string | null, flags: Gio.Fil
  * @returns a #DexFuture
  */
 function fileRead(file: Gio.File, ioPriority: number): Future
-function fileReplace(file: Gio.File, etag: string | null, makeBackup: boolean, flags: Gio.FileCreateFlags, ioPriority: number): Future
+function fileReplace(file: Gio.File, etag: string, makeBackup: boolean, flags: Gio.FileCreateFlags, ioPriority: number): Future
 function getMinStackSize(): number
 function getPageSize(): number
 function init(): void
@@ -148,7 +148,7 @@ function outputStreamClose(self: Gio.OutputStream, ioPriority: number): Future
 function outputStreamSplice(output: Gio.OutputStream, input: Gio.InputStream, flags: Gio.OutputStreamSpliceFlags, ioPriority: number): Future
 function outputStreamWrite(self: Gio.OutputStream, buffer: any | null, count: number, ioPriority: number): Future
 function outputStreamWriteBytes(self: Gio.OutputStream, bytes: any, ioPriority: number): Future
-function resolverLookupByName(resolver: Gio.Resolver, address: string | null): Future
+function resolverLookupByName(resolver: Gio.Resolver, address: string): Future
 function socketClientConnect(socketClient: Gio.SocketClient, socketConnectable: Gio.SocketConnectable): Future
 function socketListenerAccept(listener: Gio.SocketListener): Future
 /**
@@ -313,14 +313,14 @@ interface AsyncResult extends Gio.AsyncResult {
      * @returns a #DexFuture or %NULL
      */
     dupFuture(): Future | null
-    getName(): string | null
+    getName(): string
     propagateBoolean(): boolean
     propagateDouble(): number
     propagateInt(): number
     propagatePointer(): any | null
-    setName(name: string | null): void
+    setName(name: string): void
     setPriority(priority: number): void
-    setStaticName(name: string | null): void
+    setStaticName(name: string): void
 
     // Class property signals of Dex-1.Dex.AsyncResult
 
@@ -635,7 +635,7 @@ interface Future {
      * be no observer interested in the futures completion or rejection.
      */
     disown(): void
-    getName(): string | null
+    getName(): string
     getStatus(): FutureStatus
     getValue(): any
 }
@@ -798,7 +798,7 @@ class Future extends Object {
      * @param string the resolved value for the future
      * @returns a resolved #DexFuture
      */
-    static newForString(string: string | null): Future
+    static newForString(string: string): Future
     /**
      * Creates a new #DexFuture and resolves it with `v_uint`.
      * @constructor 

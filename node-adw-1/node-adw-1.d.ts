@@ -619,7 +619,7 @@ const MINOR_VERSION: number
  * Adwaita version, encoded as a string, useful for printing and
  * concatenation.
  */
-const VERSION_S: string | null
+const VERSION_S: string
 /**
  * Parses a condition from a string.
  * 
@@ -679,7 +679,7 @@ const VERSION_S: string | null
  * @param str the string specifying the condition
  * @returns the parsed condition
  */
-function breakpointConditionParse(str: string | null): BreakpointCondition
+function breakpointConditionParse(str: string): BreakpointCondition
 /**
  * Computes easing with `easing` for `value`.
  * 
@@ -1736,7 +1736,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * @param licenseType the type of license
      * @param license custom license information
      */
-    addLegalSection(title: string | null, copyright: string | null, licenseType: Gtk.License, license: string | null): void
+    addLegalSection(title: string, copyright: string | null, licenseType: Gtk.License, license: string | null): void
     /**
      * Adds an extra link to the Details page.
      * 
@@ -1748,17 +1748,17 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * @param title the link title
      * @param url the link URL
      */
-    addLink(title: string | null, url: string | null): void
+    addLink(title: string, url: string): void
     /**
      * Gets the name of the application icon for `self`.
      * @returns the application icon name
      */
-    getApplicationIcon(): string | null
+    getApplicationIcon(): string
     /**
      * Gets the application name for `self`.
      * @returns the application name
      */
-    getApplicationName(): string | null
+    getApplicationName(): string
     /**
      * Gets the list of artists of the application.
      * @returns The list of artists
@@ -1768,22 +1768,22 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Gets the comments about the application.
      * @returns the comments
      */
-    getComments(): string | null
+    getComments(): string
     /**
      * Gets the copyright information for `self`.
      * @returns the copyright information
      */
-    getCopyright(): string | null
+    getCopyright(): string
     /**
      * Gets the debug information for `self`.
      * @returns the debug information
      */
-    getDebugInfo(): string | null
+    getDebugInfo(): string
     /**
      * Gets the debug information filename for `self`.
      * @returns the debug information filename
      */
-    getDebugInfoFilename(): string | null
+    getDebugInfoFilename(): string
     /**
      * Gets the list of designers of the application.
      * @returns The list of designers
@@ -1793,7 +1793,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Gets the developer name for `self`.
      * @returns the developer_name
      */
-    getDeveloperName(): string | null
+    getDeveloperName(): string
     /**
      * Gets the list of developers of the application.
      * @returns The list of developers
@@ -1808,12 +1808,12 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Gets the issue tracker URL for `self`.
      * @returns the issue tracker URL
      */
-    getIssueUrl(): string | null
+    getIssueUrl(): string
     /**
      * Gets the license for `self`.
      * @returns the license
      */
-    getLicense(): string | null
+    getLicense(): string
     /**
      * Gets the license type for `self`.
      * @returns the license type
@@ -1823,46 +1823,46 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Gets the release notes for `self`.
      * @returns the release notes
      */
-    getReleaseNotes(): string | null
+    getReleaseNotes(): string
     /**
      * Gets the version described by the application's release notes.
      * @returns the release notes version
      */
-    getReleaseNotesVersion(): string | null
+    getReleaseNotesVersion(): string
     /**
      * Gets the URL of the support page for `self`.
      * @returns the support page URL
      */
-    getSupportUrl(): string | null
+    getSupportUrl(): string
     /**
      * Gets the translator credits string.
      * @returns The translator credits string
      */
-    getTranslatorCredits(): string | null
+    getTranslatorCredits(): string
     /**
      * Gets the version for `self`.
      * @returns the version
      */
-    getVersion(): string | null
+    getVersion(): string
     /**
      * Gets the application website URL for `self`.
      * @returns the website URL
      */
-    getWebsite(): string | null
+    getWebsite(): string
     /**
      * Sets the name of the application icon for `self`.
      * 
      * The icon is displayed at the top of the main page.
      * @param applicationIcon the application icon name
      */
-    setApplicationIcon(applicationIcon: string | null): void
+    setApplicationIcon(applicationIcon: string): void
     /**
      * Sets the application name for `self`.
      * 
      * The name is displayed at the top of the main page.
      * @param applicationName the application name
      */
-    setApplicationName(applicationName: string | null): void
+    setApplicationName(applicationName: string): void
     /**
      * Sets the list of artists of the application.
      * 
@@ -1891,7 +1891,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * detailed. It can also contain links and Pango markup.
      * @param comments the comments
      */
-    setComments(comments: string | null): void
+    setComments(comments: string): void
     /**
      * Sets the copyright information for `self`.
      * 
@@ -1905,7 +1905,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * information for the application dependencies or other components.
      * @param copyright the copyright information
      */
-    setCopyright(copyright: string | null): void
+    setCopyright(copyright: string): void
     /**
      * Sets the debug information for `self`.
      * 
@@ -1920,7 +1920,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Debug information cannot contain markup or links.
      * @param debugInfo the debug information
      */
-    setDebugInfo(debugInfo: string | null): void
+    setDebugInfo(debugInfo: string): void
     /**
      * Sets the debug information filename for `self`.
      * 
@@ -1930,7 +1930,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * See [property`AboutWindow:`debug-info].
      * @param filename the debug info filename
      */
-    setDebugInfoFilename(filename: string | null): void
+    setDebugInfoFilename(filename: string): void
     /**
      * Sets the list of designers of the application.
      * 
@@ -1961,7 +1961,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Credits page, with [property`AboutWindow:`developers] and related properties.
      * @param developerName the developer name
      */
-    setDeveloperName(developerName: string | null): void
+    setDeveloperName(developerName: string): void
     /**
      * Sets the list of developers of the application.
      * 
@@ -2006,7 +2006,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * The issue tracker link is displayed on the main page.
      * @param issueUrl the issue tracker URL
      */
-    setIssueUrl(issueUrl: string | null): void
+    setIssueUrl(issueUrl: string): void
     /**
      * Sets the license for `self`.
      * 
@@ -2025,7 +2025,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * for the application dependencies or other components.
      * @param license the license
      */
-    setLicense(license: string | null): void
+    setLicense(license: string): void
     /**
      * Sets the license for `self` from a list of known licenses.
      * 
@@ -2073,7 +2073,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * as the version; otherwise, [property`AboutWindow:`version] is used.
      * @param releaseNotes the release notes
      */
-    setReleaseNotes(releaseNotes: string | null): void
+    setReleaseNotes(releaseNotes: string): void
     /**
      * Sets the version described by the application's release notes.
      * 
@@ -2089,14 +2089,14 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * See [property`AboutWindow:`release-notes].
      * @param version the release notes version
      */
-    setReleaseNotesVersion(version: string | null): void
+    setReleaseNotesVersion(version: string): void
     /**
      * Sets the URL of the support page for `self`.
      * 
      * The support page link is displayed on the main page.
      * @param supportUrl the support page URL
      */
-    setSupportUrl(supportUrl: string | null): void
+    setSupportUrl(supportUrl: string): void
     /**
      * Sets the translator credits string.
      * 
@@ -2118,7 +2118,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * * [method`AboutWindow`.add_acknowledgement_section]
      * @param translatorCredits the translator credits
      */
-    setTranslatorCredits(translatorCredits: string | null): void
+    setTranslatorCredits(translatorCredits: string): void
     /**
      * Sets the version for `self`.
      * 
@@ -2128,7 +2128,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * also be displayed above the release notes on the What's New page.
      * @param version the version
      */
-    setVersion(version: string | null): void
+    setVersion(version: string): void
     /**
      * Sets the application website URL for `self`.
      * 
@@ -2138,7 +2138,7 @@ interface AboutWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Applications can add other links below, see [method`AboutWindow`.add_link].
      * @param website the website URL
      */
-    setWebsite(website: string | null): void
+    setWebsite(website: string): void
 
     // Conflicting methods
 
@@ -2898,7 +2898,7 @@ class AboutWindow extends Window {
      * @param releaseNotesVersion The version to retrieve release notes for
      * @returns the newly created `AdwAboutWindow`
      */
-    static newFromAppdata(resourcePath: string | null, releaseNotesVersion: string | null): AboutWindow
+    static newFromAppdata(resourcePath: string, releaseNotesVersion: string | null): AboutWindow
     _init(config?: AboutWindow.ConstructorProperties): void
 }
 
@@ -3092,7 +3092,7 @@ interface ActionRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.C
      * [property`PreferencesRow:`use-markup] is set to `FALSE`.
      * @param subtitle the subtitle
      */
-    setSubtitle(subtitle: string | null): void
+    setSubtitle(subtitle: string): void
     /**
      * Sets the number of lines at the end of which the subtitle label will be
      * ellipsized.
@@ -4174,7 +4174,7 @@ interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.Accessib
      * @param actionName the name of the action to activate
      * @param parameter parameters to the activation
      */
-    activateAction(actionName: string | null, parameter: GLib.Variant | null): void
+    activateAction(actionName: string, parameter: GLib.Variant | null): void
     /**
      * Looks up the action in the action groups associated with
      * `widget` and its ancestors, and activates it.
@@ -4190,7 +4190,7 @@ interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.Accessib
      * @param args parameters to use
      * @returns %TRUE if the action was activated, %FALSE if the   action does not exist.
      */
-    activateAction(name: string | null, args: GLib.Variant | null): boolean
+    activateAction(name: string, args: GLib.Variant | null): boolean
     /**
      * Realizes a `GtkNative`.
      * 
@@ -4308,8 +4308,8 @@ interface ApplicationWindow extends Gio.ActionGroup, Gio.ActionMap, Gtk.Accessib
 
     // Overloads of getId
 
-    getId(): string | null
-    getId(): string | null
+    getId(): string
+    getId(): string
 
     // Class property signals of Adw-1.Adw.ApplicationWindow
 
@@ -5259,7 +5259,7 @@ interface Banner extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.Cons
      * Gets the title for `self`.
      * @returns the title for @self
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets whether to use Pango markup for the banner title.
      * @returns whether to use markup
@@ -5286,7 +5286,7 @@ interface Banner extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk.Cons
      * See also: [property`Banner:`use-markup].
      * @param title the title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets whether to use Pango markup for the banner title.
      * 
@@ -5563,14 +5563,14 @@ class Banner extends Gtk.Widget {
      * @param title the banner title
      * @returns the newly created `AdwBanner`
      */
-    constructor(title: string | null) 
+    constructor(title: string) 
     /**
      * Creates a new `AdwBanner`.
      * @constructor 
      * @param title the banner title
      * @returns the newly created `AdwBanner`
      */
-    static new(title: string | null): Banner
+    static new(title: string): Banner
     _init(config?: Banner.ConstructorProperties): void
 }
 
@@ -5936,7 +5936,7 @@ interface Breakpoint extends Gtk.Buildable {
      * @param property the target property
      * @param value the value to set
      */
-    addSetter(object: GObject.Object, property: string | null, value: any): void
+    addSetter(object: GObject.Object, property: string, value: any): void
     /**
      * Adds `n_setters` setters to `self`.
      * 
@@ -6544,12 +6544,12 @@ interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * Gets the name of the displayed icon.
      * @returns the icon name
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Gets the displayed label.
      * @returns the label
      */
-    getLabel(): string | null
+    getLabel(): string
     /**
      * Gets whether an underline in the text indicates a mnemonic.
      * @returns whether an underline in the text indicates a mnemonic
@@ -6570,12 +6570,12 @@ interface ButtonContent extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * If empty, the icon is not shown.
      * @param iconName the new icon name
      */
-    setIconName(iconName: string | null): void
+    setIconName(iconName: string): void
     /**
      * Sets the displayed label.
      * @param label the new label
      */
-    setLabel(label: string | null): void
+    setLabel(label: string): void
     /**
      * Sets whether an underline in the text indicates a mnemonic.
      * 
@@ -10499,12 +10499,12 @@ interface EnumListItem {
      * Gets the enum value name.
      * @returns the enum value name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the enum value nick.
      * @returns the enum value nick
      */
-    getNick(): string | null
+    getNick(): string
     /**
      * Gets the enum value.
      * @returns the enum value
@@ -10792,7 +10792,7 @@ interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk
      * Gets the subtitle for `self`.
      * @returns the subtitle for @self
      */
-    getSubtitle(): string | null
+    getSubtitle(): string
     /**
      * Gets the number of lines at the end of which the subtitle label will be
      * ellipsized.
@@ -10833,7 +10833,7 @@ interface ExpanderRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk
      * [property`PreferencesRow:`use-markup] is set to `FALSE`.
      * @param subtitle the subtitle
      */
-    setSubtitle(subtitle: string | null): void
+    setSubtitle(subtitle: string): void
     /**
      * Sets the number of lines at the end of which the subtitle label will be
      * ellipsized.
@@ -12911,7 +12911,7 @@ interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * @param name the name of the child to find
      * @returns the requested child of @self
      */
-    getChildByName(name: string | null): Gtk.Widget | null
+    getChildByName(name: string): Gtk.Widget | null
     /**
      * Gets the child transition spring parameters for `self`.
      * @returns the child transition parameters
@@ -13123,7 +13123,7 @@ interface Leaflet extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.Constrai
      * See [property`Leaflet:`visible-child].
      * @param name the name of a child
      */
-    setVisibleChildName(name: string | null): void
+    setVisibleChildName(name: string): void
 
     // Class property signals of Adw-1.Adw.Leaflet
 
@@ -13722,7 +13722,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param id the response ID
      * @param label the response label
      */
-    addResponse(id: string | null, label: string | null): void
+    addResponse(id: string, label: string): void
     /**
      * This function shows `self` to the user.
      * 
@@ -13736,12 +13736,12 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param result a `GAsyncResult`
      * @returns the ID of the response that was selected, or   [property@MessageDialog:close-response] if the call was cancelled.
      */
-    chooseFinish(result: Gio.AsyncResult): string | null
+    chooseFinish(result: Gio.AsyncResult): string
     /**
      * Gets the body text of `self`.
      * @returns the body of @self.
      */
-    getBody(): string | null
+    getBody(): string
     /**
      * Gets whether the body text of `self` includes Pango markup.
      * @returns whether @self uses markup for body text
@@ -13751,7 +13751,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * Gets the ID of the close response of `self`.
      * @returns the close response ID
      */
-    getCloseResponse(): string | null
+    getCloseResponse(): string
     /**
      * Gets the ID of the default response of `self`.
      * @returns the default response ID
@@ -13779,7 +13779,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param response a response ID
      * @returns the appearance of @response
      */
-    getResponseAppearance(response: string | null): ResponseAppearance
+    getResponseAppearance(response: string): ResponseAppearance
     /**
      * Gets whether `response` is enabled.
      * 
@@ -13787,7 +13787,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param response a response ID
      * @returns whether @response is enabled
      */
-    getResponseEnabled(response: string | null): boolean
+    getResponseEnabled(response: string): boolean
     /**
      * Gets the label of `response`.
      * 
@@ -13795,19 +13795,19 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param response a response ID
      * @returns the label of @response
      */
-    getResponseLabel(response: string | null): string | null
+    getResponseLabel(response: string): string
     /**
      * Gets whether `self` has a response with the ID `response`.
      * @param response response ID
      * @returns whether @self has a response with the ID @response.
      */
-    hasResponse(response: string | null): boolean
-    // Has conflict: response(response: string | null): void
+    hasResponse(response: string): boolean
+    // Has conflict: response(response: string): void
     /**
      * Sets the body text of `self`.
      * @param body the body of `self`
      */
-    setBody(body: string | null): void
+    setBody(body: string): void
     /**
      * Sets whether the body text of `self` includes Pango markup.
      * 
@@ -13826,7 +13826,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * The default close response is `close`.
      * @param response the close response ID
      */
-    setCloseResponse(response: string | null): void
+    setCloseResponse(response: string): void
     /**
      * Sets the ID of the default response of `self`.
      * 
@@ -13877,7 +13877,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param response a response ID
      * @param appearance appearance for `response`
      */
-    setResponseAppearance(response: string | null, appearance: ResponseAppearance): void
+    setResponseAppearance(response: string, appearance: ResponseAppearance): void
     /**
      * Sets whether `response` is enabled.
      * 
@@ -13892,7 +13892,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param response a response ID
      * @param enabled whether to enable `response`
      */
-    setResponseEnabled(response: string | null, enabled: boolean): void
+    setResponseEnabled(response: string, enabled: boolean): void
     /**
      * Sets the label of `response` to `label`.
      * 
@@ -13901,7 +13901,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @param response a response ID
      * @param label the label of `response`
      */
-    setResponseLabel(response: string | null, label: string | null): void
+    setResponseLabel(response: string, label: string): void
 
     // Conflicting methods
 
@@ -14022,7 +14022,7 @@ interface MessageDialog extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTar
      * @virtual 
      * @param response response ID
      */
-    response(response: string | null): void
+    response(response: string): void
 
     // Own signals of Adw-1.Adw.MessageDialog
 
@@ -14739,7 +14739,7 @@ interface NavigationPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      * Gets the title of `self`.
      * @returns the title of @self
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Sets whether `self` can be popped from navigation stack.
      * 
@@ -14780,7 +14780,7 @@ interface NavigationPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTa
      * the tooltip on the next page's back button, as well as by screen reader.
      * @param title the title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Own virtual methods of Adw-1.Adw.NavigationPage
 
@@ -15087,7 +15087,7 @@ class NavigationPage extends Gtk.Widget {
      * @param title the page title
      * @returns the new created `AdwNavigationPage`
      */
-    constructor(child: Gtk.Widget, title: string | null) 
+    constructor(child: Gtk.Widget, title: string) 
     /**
      * Creates a new `AdwNavigationPage`.
      * @constructor 
@@ -15095,7 +15095,7 @@ class NavigationPage extends Gtk.Widget {
      * @param title the page title
      * @returns the new created `AdwNavigationPage`
      */
-    static new(child: Gtk.Widget, title: string | null): NavigationPage
+    static new(child: Gtk.Widget, title: string): NavigationPage
     /**
      * Creates a new `AdwNavigationPage` with provided tag.
      * @constructor 
@@ -15104,7 +15104,7 @@ class NavigationPage extends Gtk.Widget {
      * @param tag the page tag
      * @returns the new created `AdwNavigationPage`
      */
-    static newWithTag(child: Gtk.Widget, title: string | null, tag: string | null): NavigationPage
+    static newWithTag(child: Gtk.Widget, title: string, tag: string): NavigationPage
     _init(config?: NavigationPage.ConstructorProperties): void
 }
 
@@ -15877,7 +15877,7 @@ interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      * @param tag a page tag
      * @returns the page with the given tag
      */
-    findPage(tag: string | null): NavigationPage | null
+    findPage(tag: string): NavigationPage | null
     /**
      * Gets whether `self` animates page transitions.
      * @returns whether to animate page transitions
@@ -15958,7 +15958,7 @@ interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      * @param tag a page tag
      * @returns `TRUE` if any pages have been popped
      */
-    popToTag(tag: string | null): boolean
+    popToTag(tag: string): boolean
     /**
      * Pushes `page` onto the navigation stack.
      * 
@@ -15982,7 +15982,7 @@ interface NavigationView extends Swipeable, Gtk.Accessible, Gtk.Buildable, Gtk.C
      * See [method`NavigationView`.push] and [property`NavigationPage:`tag].
      * @param tag the page tag
      */
-    pushByTag(tag: string | null): void
+    pushByTag(tag: string): void
     /**
      * Removes `page` from `self`.
      * 
@@ -17729,7 +17729,7 @@ interface PreferencesGroup extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * Gets the title of `self`.
      * @returns the title of @self
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Removes a child from `self`.
      * @param child the child to remove
@@ -17753,7 +17753,7 @@ interface PreferencesGroup extends Gtk.Accessible, Gtk.Buildable, Gtk.Constraint
      * Sets the title for `self`.
      * @param title the title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Class property signals of Adw-1.Adw.PreferencesGroup
 
@@ -18091,7 +18091,7 @@ interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      * Gets the description of `self`.
      * @returns the description of @self.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the icon name for `self`.
      * @returns the icon name for @self
@@ -18102,11 +18102,21 @@ interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      * @returns the name of @self
      */
     getName(): string | null
+
+    // Overloads of getName
+
+    /**
+     * Retrieves the name of a widget.
+     * 
+     * See [method`Gtk`.Widget.set_name] for the significance of widget names.
+     * @returns name of the widget. This string is owned by GTK and   should not be modified or freed
+     */
+    getName(): string
     /**
      * Gets the title of `self`.
      * @returns the title of @self.
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets whether an embedded underline in the title indicates a mnemonic.
      * @returns whether an embedded underline in the title indicates a mnemonic
@@ -18127,7 +18137,7 @@ interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      * The description is displayed at the top of the page.
      * @param description the description
      */
-    setDescription(description: string | null): void
+    setDescription(description: string): void
     /**
      * Sets the icon name for `self`.
      * @param iconName the icon name
@@ -18138,11 +18148,29 @@ interface PreferencesPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintT
      * @param name the name
      */
     setName(name: string | null): void
+
+    // Overloads of setName
+
+    /**
+     * Sets a widgets name.
+     * 
+     * Setting a name allows you to refer to the widget from a
+     * CSS file. You can apply a style to widgets with a particular name
+     * in the CSS file. See the documentation for the CSS syntax (on the
+     * same page as the docs for [class`Gtk`.StyleContext].
+     * 
+     * Note that the CSS syntax has certain special characters to delimit
+     * and represent elements in a selector (period, #, >, *...), so using
+     * these will make your widget impossible to match by name. Any combination
+     * of alphanumeric symbols, dashes and underscores will suffice.
+     * @param name name for the widget
+     */
+    setName(name: string): void
     /**
      * Sets the title of `self`.
      * @param title the title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets whether an embedded underline in the title indicates a mnemonic.
      * @param useUnderline `TRUE` if underlines in the text indicate mnemonics
@@ -18481,7 +18509,7 @@ interface PreferencesRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, 
      * Gets the title of the preference represented by `self`.
      * @returns the title
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets whether the user can copy the title from the label
      * @returns whether the user can copy the title from the label
@@ -18504,7 +18532,7 @@ interface PreferencesRow extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, 
      * [property`PreferencesRow:`use-markup] is set to `FALSE`.
      * @param title the title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets whether the user can copy the title from the label
      * 
@@ -19002,7 +19030,7 @@ interface PreferencesWindow extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * See [property`ViewStack:`visible-child].
      * @param name the name of the page to make visible
      */
-    setVisiblePageName(name: string | null): void
+    setVisiblePageName(name: string): void
 
     // Conflicting methods
 
@@ -19606,7 +19634,7 @@ class PropertyAnimationTarget extends AnimationTarget {
      * @param propertyName the name of the property on `object` to animate
      * @returns the newly created `AdwPropertyAnimationTarget`
      */
-    constructor(object: GObject.Object, propertyName: string | null) 
+    constructor(object: GObject.Object, propertyName: string) 
     /**
      * Creates a new `AdwPropertyAnimationTarget` for the `property_name` property on
      * `object`.
@@ -19615,7 +19643,7 @@ class PropertyAnimationTarget extends AnimationTarget {
      * @param propertyName the name of the property on `object` to animate
      * @returns the newly created `AdwPropertyAnimationTarget`
      */
-    static new(object: GObject.Object, propertyName: string | null): PropertyAnimationTarget
+    static new(object: GObject.Object, propertyName: string): PropertyAnimationTarget
     /**
      * Creates a new `AdwPropertyAnimationTarget` for the `pspec` property on
      * `object`.
@@ -20611,7 +20639,7 @@ interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk
      * Gets the tooltip of the dropdown button of `self`.
      * @returns the dropdown tooltip of @self
      */
-    getDropdownTooltip(): string | null
+    getDropdownTooltip(): string
     /**
      * Gets the name of the icon used to automatically populate the button.
      * @returns the icon name
@@ -20701,7 +20729,7 @@ interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk
      * The tooltip can be marked up with the Pango text markup language.
      * @param tooltip the dropdown tooltip of `self`
      */
-    setDropdownTooltip(tooltip: string | null): void
+    setDropdownTooltip(tooltip: string): void
     /**
      * Sets the name of the icon used to automatically populate the button.
      * 
@@ -20709,7 +20737,7 @@ interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk
      * [property`SplitButton:`child] to `NULL`.
      * @param iconName the icon name to set
      */
-    setIconName(iconName: string | null): void
+    setIconName(iconName: string): void
     /**
      * Sets the label for `self`.
      * 
@@ -20717,7 +20745,7 @@ interface SplitButton extends Gtk.Accessible, Gtk.Actionable, Gtk.Buildable, Gtk
      * [property`SplitButton:`child] to `NULL`.
      * @param label the label to set
      */
-    setLabel(label: string | null): void
+    setLabel(label: string): void
     /**
      * Sets the menu model from which the popup will be created.
      * 
@@ -22312,7 +22340,7 @@ interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
      * Gets the title for `self`.
      * @returns the title
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Sets the child widget of `self`.
      * @param child the child widget
@@ -22345,7 +22373,7 @@ interface StatusPage extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget
      * The title is displayed below the icon. It is not parsed as Pango markup.
      * @param title the title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Class property signals of Adw-1.Adw.StatusPage
 
@@ -25580,7 +25608,7 @@ interface TabPage extends Gtk.Accessible {
      * Gets the tooltip of the indicator icon of `self`.
      * @returns the indicator tooltip of @self
      */
-    getIndicatorTooltip(): string | null
+    getIndicatorTooltip(): string
     /**
      * Gets the search keyword of `self`.
      * @returns the search keyword of @self
@@ -25634,7 +25662,7 @@ interface TabPage extends Gtk.Accessible {
      * Gets the title of `self`.
      * @returns the title of @self
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets the tooltip of `self`.
      * @returns the tooltip of @self
@@ -25701,7 +25729,7 @@ interface TabPage extends Gtk.Accessible {
      * See [property`TabPage:`indicator-icon].
      * @param tooltip the indicator tooltip of `self`
      */
-    setIndicatorTooltip(tooltip: string | null): void
+    setIndicatorTooltip(tooltip: string): void
     /**
      * Sets the search keyword for `self`.
      * 
@@ -25711,7 +25739,7 @@ interface TabPage extends Gtk.Accessible {
      * Keywords allow to include e.g. page URLs into tab search in a web browser.
      * @param keyword the search keyword
      */
-    setKeyword(keyword: string | null): void
+    setKeyword(keyword: string): void
     /**
      * Sets whether to enable live thumbnail for `self`.
      * 
@@ -25790,7 +25818,7 @@ interface TabPage extends Gtk.Accessible {
      * Sets the title of `self`.
      * @param title the title of `self`
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets the tooltip of `self`.
      * 
@@ -25800,7 +25828,7 @@ interface TabPage extends Gtk.Accessible {
      * [property`TabPage:`title] as a tooltip instead.
      * @param tooltip the tooltip of `self`
      */
-    setTooltip(tooltip: string | null): void
+    setTooltip(tooltip: string): void
 
     // Class property signals of Adw-1.Adw.TabPage
 
@@ -27416,7 +27444,7 @@ interface Toast {
      * If [property`Toast:`custom-title] is set, it will be used instead.
      * @param title a title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Whether to use Pango markup for the toast title.
      * 
@@ -27636,7 +27664,7 @@ class Toast extends GObject.Object {
      * @param title the title to be displayed
      * @returns the new created `AdwToast`
      */
-    constructor(title: string | null) 
+    constructor(title: string) 
     /**
      * Creates a new `AdwToast`.
      * 
@@ -27647,7 +27675,7 @@ class Toast extends GObject.Object {
      * @param title the title to be displayed
      * @returns the new created `AdwToast`
      */
-    static new(title: string | null): Toast
+    static new(title: string): Toast
     _init(config?: Toast.ConstructorProperties): void
 }
 
@@ -28856,7 +28884,7 @@ interface ViewStack extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      * @param title a human-readable title for `child`
      * @returns the `AdwViewStackPage` for @child
      */
-    addTitled(child: Gtk.Widget, name: string | null, title: string | null): ViewStackPage
+    addTitled(child: Gtk.Widget, name: string | null, title: string): ViewStackPage
     /**
      * Adds a child to `self`.
      * 
@@ -28868,13 +28896,13 @@ interface ViewStack extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      * @param iconName an icon name for `child`
      * @returns the `AdwViewStackPage` for @child
      */
-    addTitledWithIcon(child: Gtk.Widget, name: string | null, title: string | null, iconName: string | null): ViewStackPage
+    addTitledWithIcon(child: Gtk.Widget, name: string | null, title: string, iconName: string): ViewStackPage
     /**
      * Finds the child with `name` in `self`.
      * @param name the name of the child to find
      * @returns the requested child
      */
-    getChildByName(name: string | null): Gtk.Widget | null
+    getChildByName(name: string): Gtk.Widget | null
     /**
      * Gets whether `self` is horizontally homogeneous.
      * @returns whether @self is horizontally homogeneous
@@ -28948,7 +28976,7 @@ interface ViewStack extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarget 
      * See [property`ViewStack:`visible-child].
      * @param name the name of the child
      */
-    setVisibleChildName(name: string | null): void
+    setVisibleChildName(name: string): void
 
     // Class property signals of Adw-1.Adw.ViewStack
 
@@ -30399,12 +30427,12 @@ interface ViewSwitcherTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * Gets the subtitle of `self`.
      * @returns the subtitle
      */
-    getSubtitle(): string | null
+    getSubtitle(): string
     /**
      * Gets the title of `self`.
      * @returns the title
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Gets whether the title of `self` is currently visible.
      * 
@@ -30429,7 +30457,7 @@ interface ViewSwitcherTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * The subtitle should give the user additional details.
      * @param subtitle a subtitle
      */
-    setSubtitle(subtitle: string | null): void
+    setSubtitle(subtitle: string): void
     /**
      * Sets the title of `self`.
      * 
@@ -30437,7 +30465,7 @@ interface ViewSwitcherTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.Constrain
      * generally does not use the application name.
      * @param title a title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
     /**
      * Sets whether `self'`s view switcher is enabled.
      * 
@@ -31398,19 +31426,19 @@ interface WindowTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * Gets the subtitle of `self`.
      * @returns the subtitle
      */
-    getSubtitle(): string | null
+    getSubtitle(): string
     /**
      * Gets the title of `self`.
      * @returns the title
      */
-    getTitle(): string | null
+    getTitle(): string
     /**
      * Sets the subtitle of `self`.
      * 
      * The subtitle should give the user additional details.
      * @param subtitle a subtitle
      */
-    setSubtitle(subtitle: string | null): void
+    setSubtitle(subtitle: string): void
     /**
      * Sets the title of `self`.
      * 
@@ -31418,7 +31446,7 @@ interface WindowTitle extends Gtk.Accessible, Gtk.Buildable, Gtk.ConstraintTarge
      * generally does not use the application name.
      * @param title a title
      */
-    setTitle(title: string | null): void
+    setTitle(title: string): void
 
     // Class property signals of Adw-1.Adw.WindowTitle
 
@@ -31652,7 +31680,7 @@ class WindowTitle extends Gtk.Widget {
      * @param subtitle a subtitle
      * @returns the newly created `AdwWindowTitle`
      */
-    constructor(title: string | null, subtitle: string | null) 
+    constructor(title: string, subtitle: string) 
     /**
      * Creates a new `AdwWindowTitle`.
      * @constructor 
@@ -31660,7 +31688,7 @@ class WindowTitle extends Gtk.Widget {
      * @param subtitle a subtitle
      * @returns the newly created `AdwWindowTitle`
      */
-    static new(title: string | null, subtitle: string | null): WindowTitle
+    static new(title: string, subtitle: string): WindowTitle
     _init(config?: WindowTitle.ConstructorProperties): void
 }
 
@@ -31950,7 +31978,7 @@ class BreakpointCondition {
      * @param str the string specifying the condition
      * @returns the parsed condition
      */
-    static parse(str: string | null): BreakpointCondition
+    static parse(str: string): BreakpointCondition
 }
 
 interface ButtonContentClass {
@@ -32204,7 +32232,7 @@ interface MessageDialogClass {
     // Own fields of Adw-1.Adw.MessageDialogClass
 
     parentClass: Gtk.WindowClass
-    response: (self: MessageDialog, response: string | null) => void
+    response: (self: MessageDialog, response: string) => void
 }
 
 abstract class MessageDialogClass {

@@ -148,17 +148,17 @@ interface AliasDetails extends GObject.Object {
 
     // Owm methods of Folks-0.6.Folks.AliasDetails
 
-    change_alias(alias: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_alias_finish(_res_: Gio.AsyncResult): void
-    get_alias(): string | null
-    set_alias(value: string | null): void
+    get_alias(): string
+    set_alias(value: string): void
 
     // Own virtual methods of Folks-0.6.Folks.AliasDetails
 
-    vfunc_change_alias(alias: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_change_alias(alias: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_alias_finish(_res_: Gio.AsyncResult): void
-    vfunc_get_alias(): string | null
-    vfunc_set_alias(value: string | null): void
+    vfunc_get_alias(): string
+    vfunc_set_alias(value: string): void
 
     // Class property signals of Folks-0.6.Folks.AliasDetails
 
@@ -478,18 +478,18 @@ interface ExtendedInfo extends GObject.Object {
 
     // Owm methods of Folks-0.6.Folks.ExtendedInfo
 
-    get_extended_field(name: string | null): ExtendedFieldDetails | null
-    change_extended_field(name: string | null, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    get_extended_field(name: string): ExtendedFieldDetails | null
+    change_extended_field(name: string, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_extended_field_finish(_res_: Gio.AsyncResult): void
-    remove_extended_field(name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     remove_extended_field_finish(_res_: Gio.AsyncResult): void
 
     // Own virtual methods of Folks-0.6.Folks.ExtendedInfo
 
-    vfunc_get_extended_field(name: string | null): ExtendedFieldDetails | null
-    vfunc_change_extended_field(name: string | null, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_get_extended_field(name: string): ExtendedFieldDetails | null
+    vfunc_change_extended_field(name: string, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_extended_field_finish(_res_: Gio.AsyncResult): void
-    vfunc_remove_extended_field(name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_remove_extended_field(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_remove_extended_field_finish(_res_: Gio.AsyncResult): void
 
     // Class property signals of Folks-0.6.Folks.ExtendedInfo
@@ -637,7 +637,7 @@ module GroupDetails {
      * Signal callback interface for `group-changed`
      */
     interface GroupChangedSignalCallback {
-        ($obj: GroupDetails, group: string | null, is_member: boolean): void
+        ($obj: GroupDetails, group: string, is_member: boolean): void
     }
 
 
@@ -660,7 +660,7 @@ interface GroupDetails extends GObject.Object {
 
     // Owm methods of Folks-0.6.Folks.GroupDetails
 
-    change_group(group: string | null, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_group_finish(_res_: Gio.AsyncResult): void
     change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_groups_finish(_res_: Gio.AsyncResult): void
@@ -669,7 +669,7 @@ interface GroupDetails extends GObject.Object {
 
     // Own virtual methods of Folks-0.6.Folks.GroupDetails
 
-    vfunc_change_group(group: string | null, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_change_group(group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_group_finish(_res_: Gio.AsyncResult): void
     vfunc_change_groups(groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_groups_finish(_res_: Gio.AsyncResult): void
@@ -680,7 +680,7 @@ interface GroupDetails extends GObject.Object {
 
     connect(sigName: "group-changed", callback: GroupDetails.GroupChangedSignalCallback): number
     connect_after(sigName: "group-changed", callback: GroupDetails.GroupChangedSignalCallback): number
-    emit(sigName: "group-changed", group: string | null, is_member: boolean, ...args: any[]): void
+    emit(sigName: "group-changed", group: string, is_member: boolean, ...args: any[]): void
 
     // Class property signals of Folks-0.6.Folks.GroupDetails
 
@@ -763,7 +763,7 @@ class ImDetails {
 
     constructor(config?: ImDetails.ConstructorProperties) 
     _init(config?: ImDetails.ConstructorProperties): void
-    static normalise_im_address(im_address: string | null, protocol: string | null): string | null
+    static normalise_im_address(im_address: string, protocol: string): string | null
 }
 
 module InteractionDetails {
@@ -982,31 +982,31 @@ interface NameDetails extends GObject.Object {
 
     change_structured_name(name?: StructuredName | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_structured_name_finish(_res_: Gio.AsyncResult): void
-    change_full_name(full_name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_full_name_finish(_res_: Gio.AsyncResult): void
-    change_nickname(nickname: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     change_nickname_finish(_res_: Gio.AsyncResult): void
     get_structured_name(): StructuredName | null
     set_structured_name(value?: StructuredName | null): void
-    get_full_name(): string | null
-    set_full_name(value: string | null): void
-    get_nickname(): string | null
-    set_nickname(value: string | null): void
+    get_full_name(): string
+    set_full_name(value: string): void
+    get_nickname(): string
+    set_nickname(value: string): void
 
     // Own virtual methods of Folks-0.6.Folks.NameDetails
 
     vfunc_change_structured_name(name?: StructuredName | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_structured_name_finish(_res_: Gio.AsyncResult): void
-    vfunc_change_full_name(full_name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_change_full_name(full_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_full_name_finish(_res_: Gio.AsyncResult): void
-    vfunc_change_nickname(nickname: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_change_nickname(nickname: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_change_nickname_finish(_res_: Gio.AsyncResult): void
     vfunc_get_structured_name(): StructuredName | null
     vfunc_set_structured_name(value?: StructuredName | null): void
-    vfunc_get_full_name(): string | null
-    vfunc_set_full_name(value: string | null): void
-    vfunc_get_nickname(): string | null
-    vfunc_set_nickname(value: string | null): void
+    vfunc_get_full_name(): string
+    vfunc_set_full_name(value: string): void
+    vfunc_get_nickname(): string
+    vfunc_set_nickname(value: string): void
 
     // Class property signals of Folks-0.6.Folks.NameDetails
 
@@ -1251,23 +1251,23 @@ interface PresenceDetails extends GObject.Object {
     is_online(): boolean
     get_presence_type(): PresenceType
     set_presence_type(value: PresenceType): void
-    get_presence_message(): string | null
-    set_presence_message(value: string | null): void
+    get_presence_message(): string
+    set_presence_message(value: string): void
     get_client_types(): string[]
     set_client_types(value: string[]): void
-    get_presence_status(): string | null
-    set_presence_status(value: string | null): void
+    get_presence_status(): string
+    set_presence_status(value: string): void
 
     // Own virtual methods of Folks-0.6.Folks.PresenceDetails
 
     vfunc_get_presence_type(): PresenceType
     vfunc_set_presence_type(value: PresenceType): void
-    vfunc_get_presence_message(): string | null
-    vfunc_set_presence_message(value: string | null): void
+    vfunc_get_presence_message(): string
+    vfunc_set_presence_message(value: string): void
     vfunc_get_client_types(): string[]
     vfunc_set_client_types(value: string[]): void
-    vfunc_get_presence_status(): string | null
-    vfunc_set_presence_status(value: string | null): void
+    vfunc_get_presence_status(): string
+    vfunc_set_presence_status(value: string): void
 
     // Class property signals of Folks-0.6.Folks.PresenceDetails
 
@@ -1300,7 +1300,7 @@ class PresenceDetails {
 
     constructor(config?: PresenceDetails.ConstructorProperties) 
     _init(config?: PresenceDetails.ConstructorProperties): void
-    static get_default_message_from_type(type: PresenceType): string | null
+    static get_default_message_from_type(type: PresenceType): string
     static typecmp(type_a: PresenceType, type_b: PresenceType): number
 }
 
@@ -1516,11 +1516,11 @@ interface AbstractFieldDetails {
 
     // Owm methods of Folks-0.6.Folks.AbstractFieldDetails
 
-    get_parameter_values(parameter_name: string | null): Gee.Collection | null
-    add_parameter(parameter_name: string | null, parameter_value: string | null): void
-    set_parameter(parameter_name: string | null, parameter_value: string | null): void
+    get_parameter_values(parameter_name: string): Gee.Collection | null
+    add_parameter(parameter_name: string, parameter_value: string): void
+    set_parameter(parameter_name: string, parameter_value: string): void
     extend_parameters(additional: Gee.MultiMap): void
-    remove_parameter_all(parameter_name: string | null): void
+    remove_parameter_all(parameter_name: string): void
     equal(that: AbstractFieldDetails): boolean
     parameters_equal(that: AbstractFieldDetails): boolean
     values_equal(that: AbstractFieldDetails): boolean
@@ -1528,8 +1528,8 @@ interface AbstractFieldDetails {
     get_value(): any | null
     set_value(value?: any | null): void
     get_value_type(): GObject.GType
-    get_id(): string | null
-    set_id(value: string | null): void
+    get_id(): string
+    set_id(value: string): void
     get_parameters(): Gee.MultiMap
     set_parameters(value: Gee.MultiMap): void
 
@@ -1541,8 +1541,8 @@ interface AbstractFieldDetails {
     vfunc_hash(): number
     vfunc_get_value(): any | null
     vfunc_set_value(value?: any | null): void
-    vfunc_get_id(): string | null
-    vfunc_set_id(value: string | null): void
+    vfunc_get_id(): string
+    vfunc_set_id(value: string): void
     vfunc_get_parameters(): Gee.MultiMap
     vfunc_set_parameters(value: Gee.MultiMap): void
 
@@ -1603,13 +1603,13 @@ interface AvatarCache {
 
     // Owm methods of Folks-0.6.Folks.AvatarCache
 
-    load_avatar(id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    load_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     load_avatar_finish(_res_: Gio.AsyncResult): Gio.LoadableIcon | null
-    store_avatar(id: string | null, avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    store_avatar(id: string, avatar: Gio.LoadableIcon, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     store_avatar_finish(_res_: Gio.AsyncResult): string | null
-    remove_avatar(id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    remove_avatar(id: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     remove_avatar_finish(_res_: Gio.AsyncResult): void
-    build_uri_for_avatar(id: string | null): string | null
+    build_uri_for_avatar(id: string): string | null
 
     // Class property signals of Folks-0.6.Folks.AvatarCache
 
@@ -1679,11 +1679,11 @@ interface BackendStore {
     load_backends(_callback_?: Gio.AsyncReadyCallback<this> | null): void
     load_backends_finish(_res_: Gio.AsyncResult): void
     add_backend(backend: Backend): void
-    dup_backend_by_name(name: string | null): Backend | null
+    dup_backend_by_name(name: string): Backend | null
     list_backends(): Gee.Collection
-    enable_backend(name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    enable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     enable_backend_finish(_res_: Gio.AsyncResult): void
-    disable_backend(name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    disable_backend(name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     disable_backend_finish(_res_: Gio.AsyncResult): void
     get_enabled_backends(): Gee.Map
     get_is_prepared(): boolean
@@ -1771,7 +1771,7 @@ interface Backend {
     unprepare_finish(_res_: Gio.AsyncResult): void
     get_is_prepared(): boolean
     get_is_quiescent(): boolean
-    get_name(): string | null
+    get_name(): string
     get_persona_stores(): Gee.Map
 
     // Own virtual methods of Folks-0.6.Folks.Backend
@@ -1785,7 +1785,7 @@ interface Backend {
     vfunc_unprepare_finish(_res_: Gio.AsyncResult): void
     vfunc_get_is_prepared(): boolean
     vfunc_get_is_quiescent(): boolean
-    vfunc_get_name(): string | null
+    vfunc_get_name(): string
     vfunc_get_persona_stores(): Gee.Map
 
     // Own signals of Folks-0.6.Folks.Backend
@@ -1960,8 +1960,8 @@ class EmailFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.EmailFieldDetails
 
     constructor(config?: EmailFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): EmailFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): EmailFieldDetails
     _init(config?: EmailFieldDetails.ConstructorProperties): void
 }
 
@@ -2015,8 +2015,8 @@ class ExtendedFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.ExtendedFieldDetails
 
     constructor(config?: ExtendedFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): ExtendedFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): ExtendedFieldDetails
     _init(config?: ExtendedFieldDetails.ConstructorProperties): void
 }
 
@@ -2070,8 +2070,8 @@ class ImFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.ImFieldDetails
 
     constructor(config?: ImFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): ImFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): ImFieldDetails
     _init(config?: ImFieldDetails.ConstructorProperties): void
 }
 
@@ -2141,9 +2141,9 @@ interface IndividualAggregator {
     link_personas_finish(_res_: Gio.AsyncResult): void
     unlink_individual(individual: Individual, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     unlink_individual_finish(_res_: Gio.AsyncResult): void
-    ensure_individual_property_writeable(individual: Individual, property_name: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    ensure_individual_property_writeable(individual: Individual, property_name: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     ensure_individual_property_writeable_finish(_res_: Gio.AsyncResult): Persona
-    look_up_individual(id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    look_up_individual(id: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     look_up_individual_finish(_res_: Gio.AsyncResult): Individual | null
     get_is_prepared(): boolean
     get_is_quiescent(): boolean
@@ -2259,8 +2259,8 @@ interface Individual extends AliasDetails, AvatarDetails, BirthdayDetails, Email
     has_anti_link_with_individual(i: Individual): boolean
     get_trust_level(): TrustLevel
     get_is_user(): boolean
-    get_id(): string | null
-    get_display_name(): string | null
+    get_id(): string
+    get_display_name(): string
     get_personas(): Gee.Set
     set_personas(value: Gee.Set): void
 
@@ -2477,17 +2477,17 @@ interface StructuredName {
     is_empty(): boolean
     equal(other: StructuredName): boolean
     to_string(): string | null
-    to_string_with_format(name_fmt: string | null): string | null
-    get_family_name(): string | null
-    set_family_name(value: string | null): void
-    get_given_name(): string | null
-    set_given_name(value: string | null): void
-    get_additional_names(): string | null
-    set_additional_names(value: string | null): void
-    get_prefixes(): string | null
-    set_prefixes(value: string | null): void
-    get_suffixes(): string | null
-    set_suffixes(value: string | null): void
+    to_string_with_format(name_fmt: string): string | null
+    get_family_name(): string
+    set_family_name(value: string): void
+    get_given_name(): string
+    set_given_name(value: string): void
+    get_additional_names(): string
+    set_additional_names(value: string): void
+    get_prefixes(): string
+    set_prefixes(value: string): void
+    get_suffixes(): string
+    set_suffixes(value: string): void
 
     // Class property signals of Folks-0.6.Folks.StructuredName
 
@@ -2549,8 +2549,8 @@ interface NoteFieldDetails {
 
     // Owm methods of Folks-0.6.Folks.NoteFieldDetails
 
-    get_uid(): string | null
-    set_uid(value: string | null): void
+    get_uid(): string
+    set_uid(value: string): void
 
     // Class property signals of Folks-0.6.Folks.NoteFieldDetails
 
@@ -2594,8 +2594,8 @@ class NoteFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.NoteFieldDetails
 
     constructor(config?: NoteFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null, uid?: string | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null, uid?: string | null): NoteFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null, uid?: string | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null, uid?: string | null): NoteFieldDetails
     _init(config?: NoteFieldDetails.ConstructorProperties): void
 }
 
@@ -2646,8 +2646,8 @@ interface ObjectCache {
     store_objects_finish(_res_: Gio.AsyncResult): void
     clear_cache(_callback_?: Gio.AsyncReadyCallback<this> | null): void
     clear_cache_finish(_res_: Gio.AsyncResult): void
-    get_type_id(): string | null
-    get_id(): string | null
+    get_type_id(): string
+    get_id(): string
 
     // Own virtual methods of Folks-0.6.Folks.ObjectCache
 
@@ -2776,9 +2776,9 @@ interface PersonaStore {
     add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona | null
     remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     remove_persona_finish(_res_: Gio.AsyncResult): void
-    get_type_id(): string | null
-    get_display_name(): string | null
-    get_id(): string | null
+    get_type_id(): string
+    get_display_name(): string
+    get_id(): string
     get_personas(): Gee.Map
     get_can_add_personas(): MaybeBool
     get_can_alias_personas(): MaybeBool
@@ -2804,7 +2804,7 @@ interface PersonaStore {
     vfunc_add_persona_from_details_finish(_res_: Gio.AsyncResult): Persona | null
     vfunc_remove_persona(persona: Persona, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_remove_persona_finish(_res_: Gio.AsyncResult): void
-    vfunc_get_type_id(): string | null
+    vfunc_get_type_id(): string
     vfunc_get_personas(): Gee.Map
     vfunc_get_can_add_personas(): MaybeBool
     vfunc_get_can_alias_personas(): MaybeBool
@@ -2929,10 +2929,10 @@ interface Persona {
 
     // Owm methods of Folks-0.6.Folks.Persona
 
-    linkable_property_to_links(prop_name: string | null, callback: any): void
-    get_iid(): string | null
-    get_uid(): string | null
-    get_display_id(): string | null
+    linkable_property_to_links(prop_name: string, callback: any): void
+    get_iid(): string
+    get_uid(): string
+    get_display_id(): string
     get_is_user(): boolean
     get_store(): PersonaStore
     get_individual(): Individual | null
@@ -2941,7 +2941,7 @@ interface Persona {
 
     // Own virtual methods of Folks-0.6.Folks.Persona
 
-    vfunc_linkable_property_to_links(prop_name: string | null, callback: any): void
+    vfunc_linkable_property_to_links(prop_name: string, callback: any): void
     vfunc_get_linkable_properties(): string[]
     vfunc_get_writeable_properties(): string[]
 
@@ -2988,8 +2988,8 @@ class Persona extends GObject.Object {
 
     constructor(config?: Persona.ConstructorProperties) 
     _init(config?: Persona.ConstructorProperties): void
-    static build_uid(backend_name: string | null, persona_store_id: string | null, persona_id: string | null): string | null
-    static split_uid(uid: string | null): [ /* backend_name */ string | null, /* persona_store_id */ string | null, /* persona_id */ string | null ]
+    static build_uid(backend_name: string, persona_store_id: string, persona_id: string): string | null
+    static split_uid(uid: string): [ /* backend_name */ string | null, /* persona_store_id */ string | null, /* persona_id */ string | null ]
 }
 
 module PhoneFieldDetails {
@@ -3046,8 +3046,8 @@ class PhoneFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.PhoneFieldDetails
 
     constructor(config?: PhoneFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): PhoneFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): PhoneFieldDetails
     _init(config?: PhoneFieldDetails.ConstructorProperties): void
 }
 
@@ -3097,24 +3097,24 @@ interface PostalAddress {
     is_empty(): boolean
     equal(with_: PostalAddress): boolean
     to_string(): string | null
-    get_po_box(): string | null
-    set_po_box(value: string | null): void
-    get_extension(): string | null
-    set_extension(value: string | null): void
-    get_street(): string | null
-    set_street(value: string | null): void
-    get_locality(): string | null
-    set_locality(value: string | null): void
-    get_region(): string | null
-    set_region(value: string | null): void
-    get_postal_code(): string | null
-    set_postal_code(value: string | null): void
-    get_country(): string | null
-    set_country(value: string | null): void
-    get_address_format(): string | null
-    set_address_format(value: string | null): void
-    get_uid(): string | null
-    set_uid(value: string | null): void
+    get_po_box(): string
+    set_po_box(value: string): void
+    get_extension(): string
+    set_extension(value: string): void
+    get_street(): string
+    set_street(value: string): void
+    get_locality(): string
+    set_locality(value: string): void
+    get_region(): string
+    set_region(value: string): void
+    get_postal_code(): string
+    set_postal_code(value: string): void
+    get_country(): string
+    set_country(value: string): void
+    get_address_format(): string
+    set_address_format(value: string): void
+    get_uid(): string
+    set_uid(value: string): void
 
     // Class property signals of Folks-0.6.Folks.PostalAddress
 
@@ -3349,14 +3349,14 @@ interface Role {
 
     is_empty(): boolean
     to_string(): string | null
-    get_organisation_name(): string | null
-    set_organisation_name(value: string | null): void
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_role(): string | null
-    set_role(value: string | null): void
-    get_uid(): string | null
-    set_uid(value: string | null): void
+    get_organisation_name(): string
+    set_organisation_name(value: string): void
+    get_title(): string
+    set_title(value: string): void
+    get_role(): string
+    set_role(value: string): void
+    get_uid(): string
+    set_uid(value: string): void
 
     // Class property signals of Folks-0.6.Folks.Role
 
@@ -3571,8 +3571,8 @@ interface SimpleQuery {
 
     // Owm methods of Folks-0.6.Folks.SimpleQuery
 
-    get_query_string(): string | null
-    set_query_string(value: string | null): void
+    get_query_string(): string
+    set_query_string(value: string): void
     get_query_locale(): string | null
     set_query_locale(value?: string | null): void
 
@@ -3603,8 +3603,8 @@ class SimpleQuery extends Query {
     // Constructors of Folks-0.6.Folks.SimpleQuery
 
     constructor(config?: SimpleQuery.ConstructorProperties) 
-    constructor(query_string: string | null, match_fields: string[]) 
-    static new(query_string: string | null, match_fields: string[]): SimpleQuery
+    constructor(query_string: string, match_fields: string[]) 
+    static new(query_string: string, match_fields: string[]): SimpleQuery
     _init(config?: SimpleQuery.ConstructorProperties): void
 }
 
@@ -3658,8 +3658,8 @@ class UrlFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.UrlFieldDetails
 
     constructor(config?: UrlFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): UrlFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): UrlFieldDetails
     _init(config?: UrlFieldDetails.ConstructorProperties): void
 }
 
@@ -3751,8 +3751,8 @@ class WebServiceFieldDetails extends AbstractFieldDetails {
     // Constructors of Folks-0.6.Folks.WebServiceFieldDetails
 
     constructor(config?: WebServiceFieldDetails.ConstructorProperties) 
-    constructor(value: string | null, parameters?: Gee.MultiMap | null) 
-    static new(value: string | null, parameters?: Gee.MultiMap | null): WebServiceFieldDetails
+    constructor(value: string, parameters?: Gee.MultiMap | null) 
+    static new(value: string, parameters?: Gee.MultiMap | null): WebServiceFieldDetails
     _init(config?: WebServiceFieldDetails.ConstructorProperties): void
 }
 
@@ -4095,7 +4095,7 @@ interface PersonaClass {
 
     // Own fields of Folks-0.6.Folks.PersonaClass
 
-    linkable_property_to_links: (prop_name: string | null, callback: any) => void
+    linkable_property_to_links: (prop_name: string, callback: any) => void
 }
 
 abstract class PersonaClass {
@@ -4363,10 +4363,10 @@ interface AliasDetailsIface {
 
     // Own fields of Folks-0.6.Folks.AliasDetailsIface
 
-    change_alias: (alias: string | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    change_alias: (alias: string, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_alias_finish: (_res_: Gio.AsyncResult) => void
-    get_alias: () => string | null
-    set_alias: (value: string | null) => void
+    get_alias: () => string
+    set_alias: (value: string) => void
 }
 
 abstract class AliasDetailsIface {
@@ -4452,10 +4452,10 @@ interface ExtendedInfoIface {
 
     // Own fields of Folks-0.6.Folks.ExtendedInfoIface
 
-    get_extended_field: (name: string | null) => ExtendedFieldDetails | null
-    change_extended_field: (name: string | null, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback | null) => void
+    get_extended_field: (name: string) => ExtendedFieldDetails | null
+    change_extended_field: (name: string, value: ExtendedFieldDetails, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_extended_field_finish: (_res_: Gio.AsyncResult) => void
-    remove_extended_field: (name: string | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    remove_extended_field: (name: string, _callback_?: Gio.AsyncReadyCallback | null) => void
     remove_extended_field_finish: (_res_: Gio.AsyncResult) => void
 }
 
@@ -4504,7 +4504,7 @@ interface GroupDetailsIface {
 
     // Own fields of Folks-0.6.Folks.GroupDetailsIface
 
-    change_group: (group: string | null, is_member: boolean, _callback_?: Gio.AsyncReadyCallback | null) => void
+    change_group: (group: string, is_member: boolean, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_group_finish: (_res_: Gio.AsyncResult) => void
     change_groups: (groups: Gee.Set, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_groups_finish: (_res_: Gio.AsyncResult) => void
@@ -4593,16 +4593,16 @@ interface NameDetailsIface {
 
     change_structured_name: (name?: StructuredName | null, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_structured_name_finish: (_res_: Gio.AsyncResult) => void
-    change_full_name: (full_name: string | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    change_full_name: (full_name: string, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_full_name_finish: (_res_: Gio.AsyncResult) => void
-    change_nickname: (nickname: string | null, _callback_?: Gio.AsyncReadyCallback | null) => void
+    change_nickname: (nickname: string, _callback_?: Gio.AsyncReadyCallback | null) => void
     change_nickname_finish: (_res_: Gio.AsyncResult) => void
     get_structured_name: () => StructuredName | null
     set_structured_name: (value?: StructuredName | null) => void
-    get_full_name: () => string | null
-    set_full_name: (value: string | null) => void
-    get_nickname: () => string | null
-    set_nickname: (value: string | null) => void
+    get_full_name: () => string
+    set_full_name: (value: string) => void
+    get_nickname: () => string
+    set_nickname: (value: string) => void
 }
 
 abstract class NameDetailsIface {
@@ -4669,12 +4669,12 @@ interface PresenceDetailsIface {
 
     get_presence_type: () => PresenceType
     set_presence_type: (value: PresenceType) => void
-    get_presence_message: () => string | null
-    set_presence_message: (value: string | null) => void
+    get_presence_message: () => string
+    set_presence_message: (value: string) => void
     get_client_types: () => string[]
     set_client_types: (value: string[]) => void
-    get_presence_status: () => string | null
-    set_presence_status: (value: string | null) => void
+    get_presence_status: () => string
+    set_presence_status: (value: string) => void
 }
 
 abstract class PresenceDetailsIface {

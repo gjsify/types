@@ -6007,7 +6007,7 @@ export interface Session {
      * @param acltype 
      * @returns the returned string, or NULL on error
      */
-    acl_get_file(path: string, acltype: string | null): string | null
+    acl_get_file(path: string, acltype: string): string | null
     /**
      * set the POSIX ACL attached to a file
      * 
@@ -6048,7 +6048,7 @@ export interface Session {
      * @param acl 
      * @returns true on success, false on error
      */
-    acl_set_file(path: string, acltype: string | null, acl: string | null): boolean
+    acl_set_file(path: string, acltype: string, acl: string): boolean
     /**
      * add a CD-ROM disk image to examine
      * 
@@ -6059,7 +6059,7 @@ export interface Session {
      * @param filename 
      * @returns true on success, false on error
      */
-    add_cdrom(filename: string | null): boolean
+    add_cdrom(filename: string): boolean
     /**
      * add the disk(s) from a named libvirt domain
      * 
@@ -6141,7 +6141,7 @@ export interface Session {
      * @param optargs a GuestfsAddDomain containing optional arguments
      * @returns the returned value, or -1 on error
      */
-    add_domain(dom: string | null, optargs: AddDomain | null): number
+    add_domain(dom: string, optargs: AddDomain | null): number
     /**
      * add an image to examine or modify
      * 
@@ -6374,7 +6374,7 @@ export interface Session {
      * @param optargs a GuestfsAddDrive containing optional arguments
      * @returns true on success, false on error
      */
-    add_drive(filename: string | null, optargs: AddDrive | null): boolean
+    add_drive(filename: string, optargs: AddDrive | null): boolean
     /**
      * add a drive in snapshot mode (read-only)
      * 
@@ -6385,7 +6385,7 @@ export interface Session {
      * @param filename 
      * @returns true on success, false on error
      */
-    add_drive_ro(filename: string | null): boolean
+    add_drive_ro(filename: string): boolean
     /**
      * add a drive read-only specifying the QEMU block emulation to use
      * 
@@ -6395,7 +6395,7 @@ export interface Session {
      * @param iface 
      * @returns true on success, false on error
      */
-    add_drive_ro_with_if(filename: string | null, iface: string | null): boolean
+    add_drive_ro_with_if(filename: string, iface: string): boolean
     /**
      * add a temporary scratch drive
      * 
@@ -6420,7 +6420,7 @@ export interface Session {
      * @param iface 
      * @returns true on success, false on error
      */
-    add_drive_with_if(filename: string | null, iface: string | null): boolean
+    add_drive_with_if(filename: string, iface: string): boolean
     /**
      * add the disk(s) from a libvirt domain
      * 
@@ -6469,7 +6469,7 @@ export interface Session {
      * @param augpath 
      * @returns true on success, false on error
      */
-    aug_clear(augpath: string | null): boolean
+    aug_clear(augpath: string): boolean
     /**
      * close the current Augeas handle
      * 
@@ -6495,7 +6495,7 @@ export interface Session {
      * @param val 
      * @returns a IntBool object, or NULL on error
      */
-    aug_defnode(name: string | null, expr: string | null, val: string | null): IntBool
+    aug_defnode(name: string, expr: string, val: string): IntBool
     /**
      * define an Augeas variable
      * 
@@ -6508,7 +6508,7 @@ export interface Session {
      * @param expr 
      * @returns the returned value, or -1 on error
      */
-    aug_defvar(name: string | null, expr: string | null): number
+    aug_defvar(name: string, expr: string | null): number
     /**
      * look up the value of an Augeas path
      * 
@@ -6517,7 +6517,7 @@ export interface Session {
      * @param augpath 
      * @returns the returned string, or NULL on error
      */
-    aug_get(augpath: string | null): string | null
+    aug_get(augpath: string): string | null
     /**
      * create a new Augeas handle
      * 
@@ -6578,7 +6578,7 @@ export interface Session {
      * @param before 
      * @returns true on success, false on error
      */
-    aug_insert(augpath: string | null, label: string | null, before: boolean): boolean
+    aug_insert(augpath: string, label: string, before: boolean): boolean
     /**
      * return the label from an Augeas path expression
      * 
@@ -6588,7 +6588,7 @@ export interface Session {
      * @param augpath 
      * @returns the returned string, or NULL on error
      */
-    aug_label(augpath: string | null): string | null
+    aug_label(augpath: string): string | null
     /**
      * load files into the tree
      * 
@@ -6606,7 +6606,7 @@ export interface Session {
      * @param augpath 
      * @returns an array of returned strings, or NULL on error
      */
-    aug_ls(augpath: string | null): string[]
+    aug_ls(augpath: string): string[]
     /**
      * return Augeas nodes which match augpath
      * 
@@ -6616,7 +6616,7 @@ export interface Session {
      * @param augpath 
      * @returns an array of returned strings, or NULL on error
      */
-    aug_match(augpath: string | null): string[]
+    aug_match(augpath: string): string[]
     /**
      * move Augeas node
      * 
@@ -6626,7 +6626,7 @@ export interface Session {
      * @param dest 
      * @returns true on success, false on error
      */
-    aug_mv(src: string | null, dest: string | null): boolean
+    aug_mv(src: string, dest: string): boolean
     /**
      * remove an Augeas path
      * 
@@ -6636,7 +6636,7 @@ export interface Session {
      * @param augpath 
      * @returns the returned value, or -1 on error
      */
-    aug_rm(augpath: string | null): number
+    aug_rm(augpath: string): number
     /**
      * write all pending Augeas changes to disk
      * 
@@ -6660,7 +6660,7 @@ export interface Session {
      * @param val 
      * @returns true on success, false on error
      */
-    aug_set(augpath: string | null, val: string | null): boolean
+    aug_set(augpath: string, val: string): boolean
     /**
      * set multiple Augeas nodes
      * 
@@ -6676,7 +6676,7 @@ export interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    aug_setm(base: string | null, sub: string | null, val: string | null): number
+    aug_setm(base: string, sub: string | null, val: string): number
     /**
      * add/remove an Augeas lens transformation
      * 
@@ -6690,7 +6690,7 @@ export interface Session {
      * @param optargs a GuestfsAugTransform containing optional arguments
      * @returns true on success, false on error
      */
-    aug_transform(lens: string | null, file: string | null, optargs: AugTransform | null): boolean
+    aug_transform(lens: string, file: string, optargs: AugTransform | null): boolean
     /**
      * test availability of some parts of the API
      * 
@@ -7153,7 +7153,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    btrfs_qgroup_assign(src: string | null, dst: string | null, path: string): boolean
+    btrfs_qgroup_assign(src: string, dst: string, path: string): boolean
     /**
      * create a subvolume quota group
      * 
@@ -7165,7 +7165,7 @@ export interface Session {
      * @param subvolume 
      * @returns true on success, false on error
      */
-    btrfs_qgroup_create(qgroupid: string | null, subvolume: string): boolean
+    btrfs_qgroup_create(qgroupid: string, subvolume: string): boolean
     /**
      * destroy a subvolume quota group
      * 
@@ -7177,7 +7177,7 @@ export interface Session {
      * @param subvolume 
      * @returns true on success, false on error
      */
-    btrfs_qgroup_destroy(qgroupid: string | null, subvolume: string): boolean
+    btrfs_qgroup_destroy(qgroupid: string, subvolume: string): boolean
     /**
      * limit the size of a subvolume
      * 
@@ -7202,7 +7202,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    btrfs_qgroup_remove(src: string | null, dst: string | null, path: string): boolean
+    btrfs_qgroup_remove(src: string, dst: string, path: string): boolean
     /**
      * show subvolume quota groups
      * 
@@ -7501,7 +7501,7 @@ export interface Session {
      * @param device 
      * @returns the returned string, or NULL on error
      */
-    canonical_device_name(device: string | null): string | null
+    canonical_device_name(device: string): string | null
     /**
      * get the Linux capabilities attached to a file
      * 
@@ -7529,7 +7529,7 @@ export interface Session {
      * @param cap 
      * @returns true on success, false on error
      */
-    cap_set_file(path: string, cap: string | null): boolean
+    cap_set_file(path: string, cap: string): boolean
     /**
      * return true path on case-insensitive filesystem
      * 
@@ -7633,7 +7633,7 @@ export interface Session {
      * @param path 
      * @returns the returned string, or NULL on error
      */
-    checksum(csumtype: string | null, path: string): string | null
+    checksum(csumtype: string, path: string): string | null
     /**
      * compute MD5, SHAx or CRC checksum of the contents of a device
      * 
@@ -7644,7 +7644,7 @@ export interface Session {
      * @param device 
      * @returns the returned string, or NULL on error
      */
-    checksum_device(csumtype: string | null, device: string): string | null
+    checksum_device(csumtype: string, device: string): string | null
     /**
      * compute MD5, SHAx or CRC checksum of files in a directory
      * 
@@ -7663,7 +7663,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    checksums_out(csumtype: string | null, directory: string, sumsfile: string, cancellable: Gio.Cancellable | null): boolean
+    checksums_out(csumtype: string, directory: string, sumsfile: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * change file mode
      * 
@@ -7707,7 +7707,7 @@ export interface Session {
      * @param name 
      * @returns the returned value, or -1 on error
      */
-    clear_backend_setting(name: string | null): number
+    clear_backend_setting(name: string): number
     /**
      * Close a libguestfs session.
      * @returns true on success, false on error
@@ -7770,7 +7770,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    compress_device_out(ctype: string | null, device: string, zdevice: string, optargs: CompressDeviceOut | null, cancellable: Gio.Cancellable | null): boolean
+    compress_device_out(ctype: string, device: string, zdevice: string, optargs: CompressDeviceOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * output compressed file
      * 
@@ -7792,7 +7792,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    compress_out(ctype: string | null, file: string, zfile: string, optargs: CompressOut | null, cancellable: Gio.Cancellable | null): boolean
+    compress_out(ctype: string, file: string, zfile: string, optargs: CompressOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * add hypervisor parameters
      * 
@@ -7808,7 +7808,7 @@ export interface Session {
      * @param hvvalue 
      * @returns true on success, false on error
      */
-    config(hvparam: string | null, hvvalue: string | null): boolean
+    config(hvparam: string, hvvalue: string | null): boolean
     /**
      * copy the attributes of a path (file/directory) to another
      * 
@@ -7927,7 +7927,7 @@ export interface Session {
      * @param remotedir 
      * @returns true on success, false on error
      */
-    copy_in(localpath: string | null, remotedir: string): boolean
+    copy_in(localpath: string, remotedir: string): boolean
     /**
      * copy remote files or directories out of an image
      * 
@@ -7944,7 +7944,7 @@ export interface Session {
      * @param localdir 
      * @returns true on success, false on error
      */
-    copy_out(remotepath: string, localdir: string | null): boolean
+    copy_out(remotepath: string, localdir: string): boolean
     /**
      * copy size bytes from source to destination using dd
      * 
@@ -8017,7 +8017,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    cpio_out(directory: string | null, cpiofile: string, optargs: CpioOut | null, cancellable: Gio.Cancellable | null): boolean
+    cpio_out(directory: string, cpiofile: string, optargs: CpioOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * copy from source to destination using dd
      * 
@@ -8046,7 +8046,7 @@ export interface Session {
      * @param extraargs an array of strings
      * @returns the returned string, or NULL on error
      */
-    debug(subcmd: string | null, extraargs: string[]): string | null
+    debug(subcmd: string, extraargs: string[]): string | null
     /**
      * debug the drives (internal use only)
      * 
@@ -8069,7 +8069,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    debug_upload(filename: string, tmpname: string | null, mode: number, cancellable: Gio.Cancellable | null): boolean
+    debug_upload(filename: string, tmpname: string, mode: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * convert device to index
      * 
@@ -8150,7 +8150,7 @@ export interface Session {
      * @param optargs a GuestfsDiskCreate containing optional arguments
      * @returns true on success, false on error
      */
-    disk_create(filename: string | null, format: string | null, size: number, optargs: DiskCreate | null): boolean
+    disk_create(filename: string, format: string, size: number, optargs: DiskCreate | null): boolean
     /**
      * detect the disk format of a disk image
      * 
@@ -8165,7 +8165,7 @@ export interface Session {
      * @param filename 
      * @returns the returned string, or NULL on error
      */
-    disk_format(filename: string | null): string | null
+    disk_format(filename: string): string | null
     /**
      * return whether disk has a backing file
      * 
@@ -8176,7 +8176,7 @@ export interface Session {
      * @param filename 
      * @returns the returned value, or -1 on error
      */
-    disk_has_backing_file(filename: string | null): number
+    disk_has_backing_file(filename: string): number
     /**
      * return virtual size of a disk
      * 
@@ -8188,7 +8188,7 @@ export interface Session {
      * @param filename 
      * @returns the returned value, or -1 on error
      */
-    disk_virtual_size(filename: string | null): number
+    disk_virtual_size(filename: string): number
     /**
      * return kernel messages
      * 
@@ -8375,7 +8375,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    egrep(regex: string | null, path: string): string[]
+    egrep(regex: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -8385,7 +8385,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    egrepi(regex: string | null, path: string): string[]
+    egrepi(regex: string, path: string): string[]
     /**
      * test if two files have equal contents
      * 
@@ -8504,7 +8504,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    fgrep(pattern: string | null, path: string): string[]
+    fgrep(pattern: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -8514,7 +8514,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    fgrepi(pattern: string | null, path: string): string[]
+    fgrepi(pattern: string, path: string): string[]
     /**
      * determine file type
      * 
@@ -8659,7 +8659,7 @@ export interface Session {
      * @param filesystem 
      * @returns the returned value, or -1 on error
      */
-    filesystem_available(filesystem: string | null): number
+    filesystem_available(filesystem: string): number
     /**
      * walk through the filesystem content
      * 
@@ -8799,7 +8799,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    fill_pattern(pattern: string | null, len: number, path: string): boolean
+    fill_pattern(pattern: string, len: number, path: string): boolean
     /**
      * find all files and directories
      * 
@@ -8883,7 +8883,7 @@ export interface Session {
      * @param label 
      * @returns the returned string, or NULL on error
      */
-    findfs_label(label: string | null): string | null
+    findfs_label(label: string): string | null
     /**
      * find a filesystem by UUID
      * 
@@ -8894,7 +8894,7 @@ export interface Session {
      * @param uuid 
      * @returns the returned string, or NULL on error
      */
-    findfs_uuid(uuid: string | null): string | null
+    findfs_uuid(uuid: string): string | null
     /**
      * run the filesystem checker
      * 
@@ -8919,7 +8919,7 @@ export interface Session {
      * @param device 
      * @returns the returned value, or -1 on error
      */
-    fsck(fstype: string | null, device: string): number
+    fsck(fstype: string, device: string): number
     /**
      * trim free space in a filesystem
      * 
@@ -8960,7 +8960,7 @@ export interface Session {
      * If `NULL` then no options are added.
      * @returns the returned string. Note that NULL does not indicate error
      */
-    get_append(): string | null
+    get_append(): string
     /**
      * get the backend
      * 
@@ -9002,7 +9002,7 @@ export interface Session {
      * @param name 
      * @returns the returned string, or NULL on error
      */
-    get_backend_setting(name: string | null): string | null
+    get_backend_setting(name: string): string | null
     /**
      * get per-backend settings
      * 
@@ -9149,7 +9149,7 @@ export interface Session {
      * Get the handle identifier. See guestfs_session_set_identifier().
      * @returns the returned string, or NULL on error
      */
-    get_identifier(): string | null
+    get_identifier(): string
     /**
      * challenge of i'th requested credential
      * 
@@ -9233,7 +9233,7 @@ export interface Session {
      * the default path.
      * @returns the returned string, or NULL on error
      */
-    get_path(): string | null
+    get_path(): string
     /**
      * get process group flag
      * 
@@ -9257,7 +9257,7 @@ export interface Session {
      * Get the program name. See guestfs_session_set_program().
      * @returns the returned string, or NULL on error
      */
-    get_program(): string | null
+    get_program(): string
     /**
      * get the hypervisor binary (usually qemu)
      * 
@@ -9267,7 +9267,7 @@ export interface Session {
      * the default qemu binary name.
      * @returns the returned string, or NULL on error
      */
-    get_qemu(): string | null
+    get_qemu(): string
     /**
      * get recovery process enabled flag
      * 
@@ -9385,7 +9385,7 @@ export interface Session {
      * @param name 
      * @returns an array of binary data, or NULL on error
      */
-    getxattr(path: string, name: string | null): Uint8Array
+    getxattr(path: string, name: string): Uint8Array
     /**
      * list extended attributes of a file or directory
      * 
@@ -9451,7 +9451,7 @@ export interface Session {
      * @param optargs a GuestfsGrep containing optional arguments
      * @returns an array of returned strings, or NULL on error
      */
-    grep(regex: string | null, path: string, optargs: Grep | null): string[]
+    grep(regex: string, path: string, optargs: Grep | null): string[]
     /**
      * return lines matching a pattern
      * 
@@ -9461,7 +9461,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    grepi(regex: string | null, path: string): string[]
+    grepi(regex: string, path: string): string[]
     /**
      * install GRUB 1
      * 
@@ -9572,7 +9572,7 @@ export interface Session {
      * @param name 
      * @returns the returned value, or -1 on error
      */
-    hivex_node_add_child(parent: number, name: string | null): number
+    hivex_node_add_child(parent: number, name: string): number
     /**
      * return list of nodes which are subkeys of node
      * 
@@ -9613,7 +9613,7 @@ export interface Session {
      * @param name 
      * @returns the returned value, or -1 on error
      */
-    hivex_node_get_child(nodeh: number, name: string | null): number
+    hivex_node_get_child(nodeh: number, name: string): number
     /**
      * return the named value
      * 
@@ -9628,7 +9628,7 @@ export interface Session {
      * @param key 
      * @returns the returned value, or -1 on error
      */
-    hivex_node_get_value(nodeh: number, key: string | null): number
+    hivex_node_get_value(nodeh: number, key: string): number
     /**
      * return the name of the node
      * 
@@ -9671,7 +9671,7 @@ export interface Session {
      * @param val an array of binary data
      * @returns true on success, false on error
      */
-    hivex_node_set_value(nodeh: number, key: string | null, t: number, val: Uint8Array): boolean
+    hivex_node_set_value(nodeh: number, key: string, t: number, val: Uint8Array): boolean
     /**
      * return list of values attached to node
      * 
@@ -9808,7 +9808,7 @@ export interface Session {
      * @param filename 
      * @returns an array of binary data, or NULL on error
      */
-    initrd_cat(initrdpath: string, filename: string | null): Uint8Array
+    initrd_cat(initrdpath: string, filename: string): Uint8Array
     /**
      * list files in an initrd
      * 
@@ -10759,7 +10759,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    internal_test(str: string | null, optstr: string | null, strlist: string[], b: boolean, integer: number, integer64: number, filein: string, fileout: string, bufferin: Uint8Array, optargs: InternalTest | null, cancellable: Gio.Cancellable | null): boolean
+    internal_test(str: string, optstr: string | null, strlist: string[], b: boolean, integer: number, integer64: number, filein: string, fileout: string, bufferin: Uint8Array, optargs: InternalTest | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * internal test function - do not use
      * 
@@ -10820,7 +10820,7 @@ export interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    internal_test_rbool(val: string | null): number
+    internal_test_rbool(val: string): number
     /**
      * internal test function - do not use
      * 
@@ -10847,7 +10847,7 @@ export interface Session {
      * @param val 
      * @returns an array of binary data, or NULL on error
      */
-    internal_test_rbufferout(val: string | null): Uint8Array
+    internal_test_rbufferout(val: string): Uint8Array
     /**
      * internal test function - do not use
      * 
@@ -10874,7 +10874,7 @@ export interface Session {
      * @param val 
      * @returns the returned string. Note that NULL does not indicate error
      */
-    internal_test_rconstoptstring(val: string | null): string | null
+    internal_test_rconstoptstring(val: string): string
     /**
      * internal test function - do not use
      * 
@@ -10887,7 +10887,7 @@ export interface Session {
      * You probably don't want to call this function.
      * @returns the returned string. Note that NULL does not indicate error
      */
-    internal_test_rconstoptstringerr(): string | null
+    internal_test_rconstoptstringerr(): string
     /**
      * internal test function - do not use
      * 
@@ -10901,7 +10901,7 @@ export interface Session {
      * @param val 
      * @returns the returned string, or NULL on error
      */
-    internal_test_rconststring(val: string | null): string | null
+    internal_test_rconststring(val: string): string
     /**
      * internal test function - do not use
      * 
@@ -10914,7 +10914,7 @@ export interface Session {
      * You probably don't want to call this function.
      * @returns the returned string, or NULL on error
      */
-    internal_test_rconststringerr(): string | null
+    internal_test_rconststringerr(): string
     /**
      * internal test function - do not use
      * 
@@ -10928,7 +10928,7 @@ export interface Session {
      * @param val 
      * @returns a GHashTable of results, or NULL on error
      */
-    internal_test_rhashtable(val: string | null): GLib.HashTable
+    internal_test_rhashtable(val: string): GLib.HashTable
     /**
      * internal test function - do not use
      * 
@@ -10955,7 +10955,7 @@ export interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    internal_test_rint(val: string | null): number
+    internal_test_rint(val: string): number
     /**
      * internal test function - do not use
      * 
@@ -10969,7 +10969,7 @@ export interface Session {
      * @param val 
      * @returns the returned value, or -1 on error
      */
-    internal_test_rint64(val: string | null): number
+    internal_test_rint64(val: string): number
     /**
      * internal test function - do not use
      * 
@@ -11009,7 +11009,7 @@ export interface Session {
      * @param val 
      * @returns the returned string, or NULL on error
      */
-    internal_test_rstring(val: string | null): string | null
+    internal_test_rstring(val: string): string | null
     /**
      * internal test function - do not use
      * 
@@ -11036,7 +11036,7 @@ export interface Session {
      * @param val 
      * @returns an array of returned strings, or NULL on error
      */
-    internal_test_rstringlist(val: string | null): string[]
+    internal_test_rstringlist(val: string): string[]
     /**
      * internal test function - do not use
      * 
@@ -11063,7 +11063,7 @@ export interface Session {
      * @param val 
      * @returns a PV object, or NULL on error
      */
-    internal_test_rstruct(val: string | null): PV
+    internal_test_rstruct(val: string): PV
     /**
      * internal test function - do not use
      * 
@@ -11090,7 +11090,7 @@ export interface Session {
      * @param val 
      * @returns an array of PV objects, or NULL on error
      */
-    internal_test_rstructlist(val: string | null): PV[]
+    internal_test_rstructlist(val: string): PV[]
     /**
      * internal test function - do not use
      * 
@@ -11117,7 +11117,7 @@ export interface Session {
      * @param filename 
      * @returns true on success, false on error
      */
-    internal_test_set_output(filename: string | null): boolean
+    internal_test_set_output(filename: string): boolean
     /**
      * test if block device
      * 
@@ -11532,7 +11532,7 @@ export interface Session {
      * @param diskgroup 
      * @returns an array of returned strings, or NULL on error
      */
-    ldmtool_diskgroup_disks(diskgroup: string | null): string[]
+    ldmtool_diskgroup_disks(diskgroup: string): string[]
     /**
      * return the name of a Windows dynamic disk group
      * 
@@ -11545,7 +11545,7 @@ export interface Session {
      * @param diskgroup 
      * @returns the returned string, or NULL on error
      */
-    ldmtool_diskgroup_name(diskgroup: string | null): string | null
+    ldmtool_diskgroup_name(diskgroup: string): string | null
     /**
      * return the volumes in a Windows dynamic disk group
      * 
@@ -11558,7 +11558,7 @@ export interface Session {
      * @param diskgroup 
      * @returns an array of returned strings, or NULL on error
      */
-    ldmtool_diskgroup_volumes(diskgroup: string | null): string[]
+    ldmtool_diskgroup_volumes(diskgroup: string): string[]
     /**
      * remove all Windows dynamic disk volumes
      * 
@@ -11616,7 +11616,7 @@ export interface Session {
      * @param volume 
      * @returns the returned string, or NULL on error
      */
-    ldmtool_volume_hint(diskgroup: string | null, volume: string | null): string | null
+    ldmtool_volume_hint(diskgroup: string, volume: string): string | null
     /**
      * return the partitions in a Windows dynamic disk volume
      * 
@@ -11629,7 +11629,7 @@ export interface Session {
      * @param volume 
      * @returns an array of returned strings, or NULL on error
      */
-    ldmtool_volume_partitions(diskgroup: string | null, volume: string | null): string[]
+    ldmtool_volume_partitions(diskgroup: string, volume: string): string[]
     /**
      * return the type of a Windows dynamic disk volume
      * 
@@ -11645,7 +11645,7 @@ export interface Session {
      * @param volume 
      * @returns the returned string, or NULL on error
      */
-    ldmtool_volume_type(diskgroup: string | null, volume: string | null): string | null
+    ldmtool_volume_type(diskgroup: string, volume: string): string | null
     /**
      * get a single extended attribute
      * 
@@ -11672,7 +11672,7 @@ export interface Session {
      * @param name 
      * @returns an array of binary data, or NULL on error
      */
-    lgetxattr(path: string, name: string | null): Uint8Array
+    lgetxattr(path: string, name: string): Uint8Array
     /**
      * list extended attributes of a file or directory
      * 
@@ -11847,7 +11847,7 @@ export interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    ln(target: string | null, linkname: string): boolean
+    ln(target: string, linkname: string): boolean
     /**
      * create a hard link
      * 
@@ -11857,7 +11857,7 @@ export interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    ln_f(target: string | null, linkname: string): boolean
+    ln_f(target: string, linkname: string): boolean
     /**
      * create a symbolic link
      * 
@@ -11866,7 +11866,7 @@ export interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    ln_s(target: string | null, linkname: string): boolean
+    ln_s(target: string, linkname: string): boolean
     /**
      * create a symbolic link
      * 
@@ -11876,7 +11876,7 @@ export interface Session {
      * @param linkname 
      * @returns true on success, false on error
      */
-    ln_sf(target: string | null, linkname: string): boolean
+    ln_sf(target: string, linkname: string): boolean
     /**
      * remove extended attribute of a file or directory
      * 
@@ -11889,7 +11889,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    lremovexattr(xattr: string | null, path: string): boolean
+    lremovexattr(xattr: string, path: string): boolean
     /**
      * list the files in a directory
      * 
@@ -11929,7 +11929,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    lsetxattr(xattr: string | null, val: string | null, vallen: number, path: string): boolean
+    lsetxattr(xattr: string, val: string, vallen: number, path: string): boolean
     /**
      * get file information for a symbolic link
      * 
@@ -12015,7 +12015,7 @@ export interface Session {
      * @param keyslot 
      * @returns true on success, false on error
      */
-    luks_add_key(device: string, key: string | null, newkey: string | null, keyslot: number): boolean
+    luks_add_key(device: string, key: string, newkey: string, keyslot: number): boolean
     /**
      * close a LUKS device
      * 
@@ -12044,7 +12044,7 @@ export interface Session {
      * @param keyslot 
      * @returns true on success, false on error
      */
-    luks_format(device: string, key: string | null, keyslot: number): boolean
+    luks_format(device: string, key: string, keyslot: number): boolean
     /**
      * format a block device as a LUKS encrypted device
      * 
@@ -12059,7 +12059,7 @@ export interface Session {
      * @param cipher 
      * @returns true on success, false on error
      */
-    luks_format_cipher(device: string, key: string | null, keyslot: number, cipher: string | null): boolean
+    luks_format_cipher(device: string, key: string, keyslot: number, cipher: string): boolean
     /**
      * remove a key from a LUKS encrypted device
      * 
@@ -12073,7 +12073,7 @@ export interface Session {
      * @param keyslot 
      * @returns true on success, false on error
      */
-    luks_kill_slot(device: string, key: string | null, keyslot: number): boolean
+    luks_kill_slot(device: string, key: string, keyslot: number): boolean
     /**
      * open a LUKS-encrypted block device
      * 
@@ -12102,7 +12102,7 @@ export interface Session {
      * @param mapname 
      * @returns true on success, false on error
      */
-    luks_open(device: string, key: string | null, mapname: string | null): boolean
+    luks_open(device: string, key: string, mapname: string): boolean
     /**
      * open a LUKS-encrypted block device read-only
      * 
@@ -12116,7 +12116,7 @@ export interface Session {
      * @param mapname 
      * @returns true on success, false on error
      */
-    luks_open_ro(device: string, key: string | null, mapname: string | null): boolean
+    luks_open_ro(device: string, key: string, mapname: string): boolean
     /**
      * create an LVM logical volume
      * 
@@ -12130,7 +12130,7 @@ export interface Session {
      * @param mbytes 
      * @returns true on success, false on error
      */
-    lvcreate(logvol: string | null, volgroup: string | null, mbytes: number): boolean
+    lvcreate(logvol: string, volgroup: string, mbytes: number): boolean
     /**
      * create an LVM logical volume in % remaining free space
      * 
@@ -12146,7 +12146,7 @@ export interface Session {
      * @param percent 
      * @returns true on success, false on error
      */
-    lvcreate_free(logvol: string | null, volgroup: string | null, percent: number): boolean
+    lvcreate_free(logvol: string, volgroup: string, percent: number): boolean
     /**
      * get canonical name of an LV
      * 
@@ -12162,7 +12162,7 @@ export interface Session {
      * @param lvname 
      * @returns the returned string, or NULL on error
      */
-    lvm_canonical_lv_name(lvname: string | null): string | null
+    lvm_canonical_lv_name(lvname: string): string | null
     /**
      * clear LVM device filter
      * 
@@ -12253,7 +12253,7 @@ export interface Session {
      * @param newlogvol 
      * @returns true on success, false on error
      */
-    lvrename(logvol: string | null, newlogvol: string | null): boolean
+    lvrename(logvol: string, newlogvol: string): boolean
     /**
      * resize an LVM logical volume
      * 
@@ -12414,7 +12414,7 @@ export interface Session {
      * @param optargs a GuestfsMDCreate containing optional arguments
      * @returns true on success, false on error
      */
-    md_create(name: string | null, devices: string[], optargs: MDCreate | null): boolean
+    md_create(name: string, devices: string[], optargs: MDCreate | null): boolean
     /**
      * obtain metadata for an MD device
      * 
@@ -12575,7 +12575,7 @@ export interface Session {
      * @param journal 
      * @returns true on success, false on error
      */
-    mke2fs_J(fstype: string | null, blocksize: number, device: string, journal: string): boolean
+    mke2fs_J(fstype: string, blocksize: number, device: string, journal: string): boolean
     /**
      * make ext2/3/4 filesystem with external journal
      * 
@@ -12589,7 +12589,7 @@ export interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    mke2fs_JL(fstype: string | null, blocksize: number, device: string, label: string | null): boolean
+    mke2fs_JL(fstype: string, blocksize: number, device: string, label: string): boolean
     /**
      * make ext2/3/4 filesystem with external journal
      * 
@@ -12606,7 +12606,7 @@ export interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    mke2fs_JU(fstype: string | null, blocksize: number, device: string, uuid: string | null): boolean
+    mke2fs_JU(fstype: string, blocksize: number, device: string, uuid: string): boolean
     /**
      * make ext2/3/4 external journal
      * 
@@ -12628,7 +12628,7 @@ export interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mke2journal_L(blocksize: number, label: string | null, device: string): boolean
+    mke2journal_L(blocksize: number, label: string, device: string): boolean
     /**
      * make ext2/3/4 external journal with UUID
      * 
@@ -12641,7 +12641,7 @@ export interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mke2journal_U(blocksize: number, uuid: string | null, device: string): boolean
+    mke2journal_U(blocksize: number, uuid: string, device: string): boolean
     /**
      * make FIFO (named pipe)
      * 
@@ -12700,7 +12700,7 @@ export interface Session {
      * @param optargs a GuestfsMkfs containing optional arguments
      * @returns true on success, false on error
      */
-    mkfs(fstype: string | null, device: string, optargs: Mkfs | null): boolean
+    mkfs(fstype: string, device: string, optargs: Mkfs | null): boolean
     /**
      * make a filesystem with block size
      * 
@@ -12716,7 +12716,7 @@ export interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mkfs_b(fstype: string | null, blocksize: number, device: string): boolean
+    mkfs_b(fstype: string, blocksize: number, device: string): boolean
     /**
      * create a btrfs filesystem
      * 
@@ -12798,7 +12798,7 @@ export interface Session {
      * @param exemptpath 
      * @returns true on success, false on error
      */
-    mkmountpoint(exemptpath: string | null): boolean
+    mkmountpoint(exemptpath: string): boolean
     /**
      * make block, character or FIFO devices
      * 
@@ -12922,7 +12922,7 @@ export interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mkswap_L(label: string | null, device: string): boolean
+    mkswap_L(label: string, device: string): boolean
     /**
      * create a swap partition with an explicit UUID
      * 
@@ -12934,7 +12934,7 @@ export interface Session {
      * @param device 
      * @returns true on success, false on error
      */
-    mkswap_U(uuid: string | null, device: string): boolean
+    mkswap_U(uuid: string, device: string): boolean
     /**
      * create a swap file
      * 
@@ -12981,7 +12981,7 @@ export interface Session {
      * @param modulename 
      * @returns true on success, false on error
      */
-    modprobe(modulename: string | null): boolean
+    modprobe(modulename: string): boolean
     /**
      * mount a guest disk at a position in the filesystem
      * 
@@ -13009,7 +13009,7 @@ export interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mount(mountable: string, mountpoint: string | null): boolean
+    mount(mountable: string, mountpoint: string): boolean
     /**
      * mount 9p filesystem
      * 
@@ -13024,7 +13024,7 @@ export interface Session {
      * @param optargs a GuestfsMount9P containing optional arguments
      * @returns true on success, false on error
      */
-    mount_9p(mounttag: string | null, mountpoint: string | null, optargs: Mount9P | null): boolean
+    mount_9p(mounttag: string, mountpoint: string, optargs: Mount9P | null): boolean
     /**
      * mount on the local filesystem
      * 
@@ -13055,7 +13055,7 @@ export interface Session {
      * @param optargs a GuestfsMountLocal containing optional arguments
      * @returns true on success, false on error
      */
-    mount_local(localmountpoint: string | null, optargs: MountLocal | null): boolean
+    mount_local(localmountpoint: string, optargs: MountLocal | null): boolean
     /**
      * run main loop of mount on the local filesystem
      * 
@@ -13102,7 +13102,7 @@ export interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mount_options(options: string | null, mountable: string, mountpoint: string | null): boolean
+    mount_options(options: string, mountable: string, mountpoint: string): boolean
     /**
      * mount a guest disk, read-only
      * 
@@ -13112,7 +13112,7 @@ export interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mount_ro(mountable: string, mountpoint: string | null): boolean
+    mount_ro(mountable: string, mountpoint: string): boolean
     /**
      * mount a guest disk with mount options and vfstype
      * 
@@ -13125,7 +13125,7 @@ export interface Session {
      * @param mountpoint 
      * @returns true on success, false on error
      */
-    mount_vfs(options: string | null, vfstype: string | null, mountable: string, mountpoint: string | null): boolean
+    mount_vfs(options: string, vfstype: string, mountable: string, mountpoint: string): boolean
     /**
      * extract the device part of a mountable
      * 
@@ -13396,7 +13396,7 @@ export interface Session {
      * @param endsect 
      * @returns true on success, false on error
      */
-    part_add(device: string, prlogex: string | null, startsect: number, endsect: number): boolean
+    part_add(device: string, prlogex: string, startsect: number, endsect: number): boolean
     /**
      * delete a partition
      * 
@@ -13422,7 +13422,7 @@ export interface Session {
      * @param parttype 
      * @returns true on success, false on error
      */
-    part_disk(device: string, parttype: string | null): boolean
+    part_disk(device: string, parttype: string): boolean
     /**
      * move backup GPT header to the end of the disk
      * 
@@ -13603,7 +13603,7 @@ export interface Session {
      * @param parttype 
      * @returns true on success, false on error
      */
-    part_init(device: string, parttype: string | null): boolean
+    part_init(device: string, parttype: string): boolean
     /**
      * list partitions on a device
      * 
@@ -13675,7 +13675,7 @@ export interface Session {
      * @param guid 
      * @returns true on success, false on error
      */
-    part_set_disk_guid(device: string, guid: string | null): boolean
+    part_set_disk_guid(device: string, guid: string): boolean
     /**
      * set the GUID of a GPT-partitioned disk to random value
      * 
@@ -13723,7 +13723,7 @@ export interface Session {
      * @param guid 
      * @returns true on success, false on error
      */
-    part_set_gpt_guid(device: string, partnum: number, guid: string | null): boolean
+    part_set_gpt_guid(device: string, partnum: number, guid: string): boolean
     /**
      * set the type GUID of a GPT partition
      * 
@@ -13744,7 +13744,7 @@ export interface Session {
      * @param guid 
      * @returns true on success, false on error
      */
-    part_set_gpt_type(device: string, partnum: number, guid: string | null): boolean
+    part_set_gpt_type(device: string, partnum: number, guid: string): boolean
     /**
      * set the MBR type byte (ID byte) of a partition
      * 
@@ -13775,7 +13775,7 @@ export interface Session {
      * @param name 
      * @returns true on success, false on error
      */
-    part_set_name(device: string, partnum: number, name: string | null): boolean
+    part_set_name(device: string, partnum: number, name: string): boolean
     /**
      * convert partition name to device name
      * 
@@ -14131,7 +14131,7 @@ export interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    remove_drive(label: string | null): boolean
+    remove_drive(label: string): boolean
     /**
      * remove extended attribute of a file or directory
      * 
@@ -14145,7 +14145,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    removexattr(xattr: string | null, path: string): boolean
+    removexattr(xattr: string, path: string): boolean
     /**
      * rename a file on the same filesystem
      * 
@@ -14246,7 +14246,7 @@ export interface Session {
      * @param exemptpath 
      * @returns true on success, false on error
      */
-    rmmountpoint(exemptpath: string | null): boolean
+    rmmountpoint(exemptpath: string): boolean
     /**
      * synchronize the contents of two directories
      * 
@@ -14302,7 +14302,7 @@ export interface Session {
      * @param optargs a GuestfsRsyncIn containing optional arguments
      * @returns true on success, false on error
      */
-    rsync_in(remote: string | null, dest: string, optargs: RsyncIn | null): boolean
+    rsync_in(remote: string, dest: string, optargs: RsyncIn | null): boolean
     /**
      * synchronize filesystem with host or remote filesystem
      * 
@@ -14338,7 +14338,7 @@ export interface Session {
      * @param optargs a GuestfsRsyncOut containing optional arguments
      * @returns true on success, false on error
      */
-    rsync_out(src: string, remote: string | null, optargs: RsyncOut | null): boolean
+    rsync_out(src: string, remote: string, optargs: RsyncOut | null): boolean
     /**
      * scrub (securely wipe) a device
      * 
@@ -14413,7 +14413,7 @@ export interface Session {
      * @param optargs a GuestfsSelinuxRelabel containing optional arguments
      * @returns true on success, false on error
      */
-    selinux_relabel(specfile: string | null, path: string, optargs: SelinuxRelabel | null): boolean
+    selinux_relabel(specfile: string, path: string, optargs: SelinuxRelabel | null): boolean
     /**
      * add options to kernel command line
      * 
@@ -14439,7 +14439,7 @@ export interface Session {
      * @param backend 
      * @returns true on success, false on error
      */
-    set_attach_method(backend: string | null): boolean
+    set_attach_method(backend: string): boolean
     /**
      * set autosync mode
      * 
@@ -14465,7 +14465,7 @@ export interface Session {
      * @param backend 
      * @returns true on success, false on error
      */
-    set_backend(backend: string | null): boolean
+    set_backend(backend: string): boolean
     /**
      * set a single per-backend settings string
      * 
@@ -14478,7 +14478,7 @@ export interface Session {
      * @param val 
      * @returns true on success, false on error
      */
-    set_backend_setting(name: string | null, val: string | null): boolean
+    set_backend_setting(name: string, val: string): boolean
     /**
      * replace per-backend settings strings
      * 
@@ -14558,7 +14558,7 @@ export interface Session {
      * @param optargs a GuestfsSetE2attrs containing optional arguments
      * @returns true on success, false on error
      */
-    set_e2attrs(file: string, attrs: string | null, optargs: SetE2attrs | null): boolean
+    set_e2attrs(file: string, attrs: string, optargs: SetE2attrs | null): boolean
     /**
      * set ext2 file generation of a file
      * 
@@ -14583,7 +14583,7 @@ export interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    set_e2label(device: string, label: string | null): boolean
+    set_e2label(device: string, label: string): boolean
     /**
      * set the ext2/3/4 filesystem UUID
      * 
@@ -14597,7 +14597,7 @@ export interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    set_e2uuid(device: string, uuid: string | null): boolean
+    set_e2uuid(device: string, uuid: string): boolean
     /**
      * set the hypervisor binary
      * 
@@ -14621,7 +14621,7 @@ export interface Session {
      * @param hv 
      * @returns true on success, false on error
      */
-    set_hv(hv: string | null): boolean
+    set_hv(hv: string): boolean
     /**
      * set the handle identifier
      * 
@@ -14652,7 +14652,7 @@ export interface Session {
      * @param identifier 
      * @returns true on success, false on error
      */
-    set_identifier(identifier: string | null): boolean
+    set_identifier(identifier: string): boolean
     /**
      * set filesystem label
      * 
@@ -14689,7 +14689,7 @@ export interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    set_label(mountable: string, label: string | null): boolean
+    set_label(mountable: string, label: string): boolean
     /**
      * pass requested credential back to libvirt
      * 
@@ -14801,7 +14801,7 @@ export interface Session {
      * @param program 
      * @returns true on success, false on error
      */
-    set_program(program: string | null): boolean
+    set_program(program: string): boolean
     /**
      * set the hypervisor binary (usually qemu)
      * 
@@ -14917,7 +14917,7 @@ export interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    set_uuid(device: string, uuid: string | null): boolean
+    set_uuid(device: string, uuid: string): boolean
     /**
      * set a random UUID for the filesystem
      * 
@@ -14960,7 +14960,7 @@ export interface Session {
      * @param context 
      * @returns true on success, false on error
      */
-    setcon(context: string | null): boolean
+    setcon(context: string): boolean
     /**
      * set extended attribute of a file or directory
      * 
@@ -14977,7 +14977,7 @@ export interface Session {
      * @param path 
      * @returns true on success, false on error
      */
-    setxattr(xattr: string | null, val: string | null, vallen: number, path: string): boolean
+    setxattr(xattr: string, val: string, vallen: number, path: string): boolean
     /**
      * create partitions on a block device
      * 
@@ -15044,7 +15044,7 @@ export interface Session {
      * @param line 
      * @returns true on success, false on error
      */
-    sfdisk_N(device: string, partnum: number, cyls: number, heads: number, sectors: number, line: string | null): boolean
+    sfdisk_N(device: string, partnum: number, cyls: number, heads: number, sectors: number, line: string): boolean
     /**
      * display the disk geometry from the partition table
      * 
@@ -15096,7 +15096,7 @@ export interface Session {
      * @param command 
      * @returns the returned string, or NULL on error
      */
-    sh(command: string | null): string | null
+    sh(command: string): string | null
     /**
      * run a command via the shell returning lines
      * 
@@ -15107,7 +15107,7 @@ export interface Session {
      * @param command 
      * @returns an array of returned strings, or NULL on error
      */
-    sh_lines(command: string | null): string[]
+    sh_lines(command: string): string[]
     /**
      * shutdown the hypervisor
      * 
@@ -15216,7 +15216,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    strings_e(encoding: string | null, path: string): string[]
+    strings_e(encoding: string, path: string): string[]
     /**
      * disable swap on device
      * 
@@ -15242,7 +15242,7 @@ export interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    swapoff_label(label: string | null): boolean
+    swapoff_label(label: string): boolean
     /**
      * disable swap on swap partition by UUID
      * 
@@ -15254,7 +15254,7 @@ export interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    swapoff_uuid(uuid: string | null): boolean
+    swapoff_uuid(uuid: string): boolean
     /**
      * enable swap on device
      * 
@@ -15289,7 +15289,7 @@ export interface Session {
      * @param label 
      * @returns true on success, false on error
      */
-    swapon_label(label: string | null): boolean
+    swapon_label(label: string): boolean
     /**
      * enable swap on swap partition by UUID
      * 
@@ -15301,7 +15301,7 @@ export interface Session {
      * @param uuid 
      * @returns true on success, false on error
      */
-    swapon_uuid(uuid: string | null): boolean
+    swapon_uuid(uuid: string): boolean
     /**
      * sync disks, writes are flushed through to the disk image
      * 
@@ -15435,7 +15435,7 @@ export interface Session {
      * @param cancellable A GCancellable object
      * @returns true on success, false on error
      */
-    tar_out(directory: string | null, tarfile: string, optargs: TarOut | null, cancellable: Gio.Cancellable | null): boolean
+    tar_out(directory: string, tarfile: string, optargs: TarOut | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * unpack compressed tarball to directory
      * 
@@ -15884,7 +15884,7 @@ export interface Session {
      * @param vg 
      * @returns true on success, false on error
      */
-    vgchange_uuid(vg: string | null): boolean
+    vgchange_uuid(vg: string): boolean
     /**
      * generate new random UUIDs for all volume groups
      * 
@@ -15907,7 +15907,7 @@ export interface Session {
      * @param physvols an array of strings
      * @returns true on success, false on error
      */
-    vgcreate(volgroup: string | null, physvols: string[]): boolean
+    vgcreate(volgroup: string, physvols: string[]): boolean
     /**
      * get the LV UUIDs of all LVs in the volume group
      * 
@@ -15922,7 +15922,7 @@ export interface Session {
      * @param vgname 
      * @returns an array of returned strings, or NULL on error
      */
-    vglvuuids(vgname: string | null): string[]
+    vglvuuids(vgname: string): string[]
     /**
      * get volume group metadata
      * 
@@ -15937,7 +15937,7 @@ export interface Session {
      * @param vgname 
      * @returns an array of binary data, or NULL on error
      */
-    vgmeta(vgname: string | null): Uint8Array
+    vgmeta(vgname: string): Uint8Array
     /**
      * get the PV UUIDs containing the volume group
      * 
@@ -15952,7 +15952,7 @@ export interface Session {
      * @param vgname 
      * @returns an array of returned strings, or NULL on error
      */
-    vgpvuuids(vgname: string | null): string[]
+    vgpvuuids(vgname: string): string[]
     /**
      * remove an LVM volume group
      * 
@@ -15966,7 +15966,7 @@ export interface Session {
      * @param vgname 
      * @returns true on success, false on error
      */
-    vgremove(vgname: string | null): boolean
+    vgremove(vgname: string): boolean
     /**
      * rename an LVM volume group
      * 
@@ -15975,7 +15975,7 @@ export interface Session {
      * @param newvolgroup 
      * @returns true on success, false on error
      */
-    vgrename(volgroup: string | null, newvolgroup: string | null): boolean
+    vgrename(volgroup: string, newvolgroup: string): boolean
     /**
      * list the LVM volume groups (VGs)
      * 
@@ -16018,7 +16018,7 @@ export interface Session {
      * @param vgname 
      * @returns the returned string, or NULL on error
      */
-    vguuid(vgname: string | null): string | null
+    vguuid(vgname: string): string | null
     /**
      * wait until the hypervisor launches (no op)
      * 
@@ -16121,7 +16121,7 @@ export interface Session {
      * @param size 
      * @returns true on success, false on error
      */
-    write_file(path: string, content: string | null, size: number): boolean
+    write_file(path: string, content: string, size: number): boolean
     /**
      * change parameters of an XFS filesystem
      * 
@@ -16261,7 +16261,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zegrep(regex: string | null, path: string): string[]
+    zegrep(regex: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -16271,7 +16271,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zegrepi(regex: string | null, path: string): string[]
+    zegrepi(regex: string, path: string): string[]
     /**
      * write zeroes to the device
      * 
@@ -16347,7 +16347,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zfgrep(pattern: string | null, path: string): string[]
+    zfgrep(pattern: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -16357,7 +16357,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zfgrepi(pattern: string | null, path: string): string[]
+    zfgrepi(pattern: string, path: string): string[]
     /**
      * determine file type inside a compressed file
      * 
@@ -16371,7 +16371,7 @@ export interface Session {
      * @param path 
      * @returns the returned string, or NULL on error
      */
-    zfile(meth: string | null, path: string): string | null
+    zfile(meth: string, path: string): string | null
     /**
      * return lines matching a pattern
      * 
@@ -16380,7 +16380,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zgrep(regex: string | null, path: string): string[]
+    zgrep(regex: string, path: string): string[]
     /**
      * return lines matching a pattern
      * 
@@ -16390,7 +16390,7 @@ export interface Session {
      * @param path 
      * @returns an array of returned strings, or NULL on error
      */
-    zgrepi(regex: string | null, path: string): string[]
+    zgrepi(regex: string, path: string): string[]
 
     // Own signals of Guestfs-1.0.Guestfs.Session
 

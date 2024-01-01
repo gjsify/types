@@ -70,9 +70,9 @@ enum MobileFamily {
      */
     CDMA,
 }
-const BAR_CODE_SIZE: string | null
-const BAR_CODE_TEXT: string | null
-const BAR_CODE_WIDGET_CONNECTION: string | null
+const BAR_CODE_SIZE: string
+const BAR_CODE_TEXT: string
+const BAR_CODE_WIDGET_CONNECTION: string
 /**
  * Evaluates to the major version number of NetworkManager which this source
  * is compiled against.
@@ -93,7 +93,7 @@ const MINOR_VERSION: number
  * @param mccmnc input MCCMNC string.
  * @returns %TRUE if correctly split and @mcc and @mnc are set; %FALSE otherwise.
  */
-function mobile_providers_split_3gpp_mcc_mnc(mccmnc: string | null): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
+function mobile_providers_split_3gpp_mcc_mnc(mccmnc: string): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
 /**
  * Returns secret flags corresponding to the selected password storage menu
  * in the attached icon
@@ -114,7 +114,7 @@ function utils_menu_to_secret_flags(passwd_entry: Gtk.Widget): NM.SettingSecretF
  * @param with_not_required whether to include "Not required" menu item
  * @param ask_mode %TRUE if the entry is shown in ASK mode. That means,   while prompting for a password, contrary to being inside the   editor mode.   If %TRUE, the entry should be sensivive on selected "always-ask"   icon (this is e.f. for nm-applet asking for password), otherwise   not.   If %FALSE, it shall not be possible to select a different storage,   because we only prompt for a password, we cannot change the password   location.
  */
-function utils_setup_password_storage(passwd_entry: Gtk.Widget, initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string | null, with_not_required: boolean, ask_mode: boolean): void
+function utils_setup_password_storage(passwd_entry: Gtk.Widget, initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string, with_not_required: boolean, ask_mode: boolean): void
 /**
  * Updates secret flags in the password storage popup menu and also
  * in the `setting` (if `setting` and `password_flags_name` are not NULL).
@@ -123,7 +123,7 @@ function utils_setup_password_storage(passwd_entry: Gtk.Widget, initial_flags: N
  * @param setting #NMSetting containing the password, or NULL
  * @param password_flags_name name of the secret flags (like psk-flags), or NULL
  */
-function utils_update_password_storage(passwd_entry: Gtk.Widget, secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string | null): void
+function utils_update_password_storage(passwd_entry: Gtk.Widget, secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string): void
 interface MobileWizardCallback {
     (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void
 }
@@ -159,7 +159,7 @@ interface BarCode {
      * Regenerates the QR code for a different text.
      * @param text new bar code text
      */
-    set_text(text: string | null): void
+    set_text(text: string): void
 
     // Class property signals of NMA-1.0.NMA.BarCode
 
@@ -185,8 +185,8 @@ class BarCode extends GObject.Object {
     // Constructors of NMA-1.0.NMA.BarCode
 
     constructor(config?: BarCode.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): BarCode
+    constructor(text: string) 
+    static new(text: string): BarCode
     _init(config?: BarCode.ConstructorProperties): void
 }
 
@@ -222,7 +222,7 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -236,7 +236,7 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -247,7 +247,7 @@ interface BarCodeWidget extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orienta
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of NMA-1.0.NMA.BarCodeWidget
 
@@ -490,7 +490,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Obtains the password or a PIN that was be required to access the certificate.
      * @returns the certificate PIN or password
      */
-    get_cert_password(): string | null
+    get_cert_password(): string
     /**
      * Returns secret flags corresponding to the certificate password
      * if one is present. The chooser would typically call into
@@ -513,7 +513,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Obtains the password or a PIN that was be required to access the key.
      * @returns the key PIN or password
      */
-    get_key_password(): string | null
+    get_key_password(): string
     /**
      * Returns secret flags corresponding to the key password
      * if one is present. The chooser would typically call into
@@ -532,33 +532,33 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param value the path or URI of a certificate
      * @param scheme the scheme of the certificate path
      */
-    set_cert(value: string | null, scheme: NM.Setting8021xCKScheme): void
+    set_cert(value: string, scheme: NM.Setting8021xCKScheme): void
     /**
      * Sets the password or a PIN that might be required to access the certificate.
      * @param password the certificate PIN or password
      */
-    set_cert_password(password: string | null): void
+    set_cert_password(password: string): void
     /**
      * Sets the certificate URI for the chooser button.
      * @param uri the path or URI of a certificate
      */
-    set_cert_uri(uri: string | null): void
+    set_cert_uri(uri: string): void
     /**
      * Sets the key location for the chooser button.
      * @param value the path or URI of a key
      * @param scheme the scheme of the key path
      */
-    set_key(value: string | null, scheme: NM.Setting8021xCKScheme): void
+    set_key(value: string, scheme: NM.Setting8021xCKScheme): void
     /**
      * Sets the password or a PIN that might be required to access the key.
      * @param password the key PIN or password
      */
-    set_key_password(password: string | null): void
+    set_key_password(password: string): void
     /**
      * Sets the key URI for the chooser button.
      * @param uri the URI of a key
      */
-    set_key_uri(uri: string | null): void
+    set_key_uri(uri: string): void
     /**
      * This method basically calls nma_utils_setup_password_storage()
      * on the certificate password entry, in case one is present.
@@ -568,7 +568,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param with_not_required whether to include "Not required" menu item
      * @param ask_mode %TRUE if the entry is shown in ASK mode
      */
-    setup_cert_password_storage(initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string | null, with_not_required: boolean, ask_mode: boolean): void
+    setup_cert_password_storage(initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string, with_not_required: boolean, ask_mode: boolean): void
     /**
      * This method basically calls nma_utils_setup_password_storage()
      * on the key password entry, in case one is present.
@@ -578,7 +578,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param with_not_required whether to include "Not required" menu item
      * @param ask_mode %TRUE if the entry is shown in ASK mode
      */
-    setup_key_password_storage(initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string | null, with_not_required: boolean, ask_mode: boolean): void
+    setup_key_password_storage(initial_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string, with_not_required: boolean, ask_mode: boolean): void
     /**
      * This method basically calls nma_utils_update_password_storage()
      * on the certificate password entry, in case one is present.
@@ -586,7 +586,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param setting #NMSetting containing the password, or NULL
      * @param password_flags_name name of the secret flags (like psk-flags), or NULL
      */
-    update_cert_password_storage(secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string | null): void
+    update_cert_password_storage(secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string): void
     /**
      * This method basically calls nma_utils_update_password_storage()
      * on the key password entry, in case one is present.
@@ -594,7 +594,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param setting #NMSetting containing the password, or NULL
      * @param password_flags_name name of the secret flags (like psk-flags), or NULL
      */
-    update_key_password_storage(secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string | null): void
+    update_key_password_storage(secret_flags: NM.SettingSecretFlags, setting: NM.Setting, password_flags_name: string): void
     /**
      * Validates whether the chosen values make sense. The users can do further
      * validation by subscribing to the "*-changed" signals and returning an
@@ -616,7 +616,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -630,7 +630,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -641,7 +641,7 @@ interface CertChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of NMA-1.0.NMA.CertChooser
 
@@ -837,7 +837,7 @@ class CertChooser extends Gtk.Grid {
      * @param flags the flags that configure the capabilities of the button
      * @returns the certificate chooser button instance
      */
-    constructor(title: string | null, flags: CertChooserFlags) 
+    constructor(title: string, flags: CertChooserFlags) 
     /**
      * Constructs the button that is capable of selecting a certificate
      * and a key.
@@ -846,7 +846,7 @@ class CertChooser extends Gtk.Grid {
      * @param flags the flags that configure the capabilities of the button
      * @returns the certificate chooser button instance
      */
-    static new(title: string | null, flags: CertChooserFlags): CertChooser
+    static new(title: string, flags: CertChooserFlags): CertChooser
 
     // Overloads of new
 
@@ -893,9 +893,9 @@ interface MobileProvidersDatabase extends Gio.AsyncInitable, Gio.Initable {
 
     dump(): void
     get_countries(): GLib.HashTable
-    lookup_3gpp_mcc_mnc(mccmnc: string | null): MobileProvider
+    lookup_3gpp_mcc_mnc(mccmnc: string): MobileProvider
     lookup_cdma_sid(sid: number): MobileProvider
-    lookup_country(country_code: string | null): CountryInfo
+    lookup_country(country_code: string): CountryInfo
 
     // Class property signals of NMA-1.0.NMA.MobileProvidersDatabase
 
@@ -988,16 +988,16 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
     focus_password(): void
     focus_password_secondary(): void
     focus_password_ternary(): void
-    get_password(): string | null
-    get_password_secondary(): string | null
-    get_password_ternary(): string | null
+    get_password(): string
+    get_password_secondary(): string
+    get_password_ternary(): string
     run_and_block(): boolean
-    set_password(password: string | null): void
-    set_password_label(label: string | null): void
-    set_password_secondary(password_secondary: string | null): void
-    set_password_secondary_label(label: string | null): void
-    set_password_ternary(password_ternary: string | null): void
-    set_password_ternary_label(label: string | null): void
+    set_password(password: string): void
+    set_password_label(label: string): void
+    set_password_secondary(password_secondary: string): void
+    set_password_secondary_label(label: string): void
+    set_password_ternary(password_ternary: string): void
+    set_password_ternary_label(label: string): void
     set_show_password(show: boolean): void
     set_show_password_secondary(show: boolean): void
     set_show_password_ternary(show: boolean): void
@@ -1037,7 +1037,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1051,7 +1051,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1062,7 +1062,7 @@ interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of NMA-1.0.NMA.VpnPasswordDialog
 
@@ -1310,8 +1310,8 @@ class VpnPasswordDialog extends Gtk.Dialog {
     // Constructors of NMA-1.0.NMA.VpnPasswordDialog
 
     constructor(config?: VpnPasswordDialog.ConstructorProperties) 
-    constructor(title: string | null, message: string | null, password: string | null) 
-    static new(title: string | null, message: string | null, password: string | null): VpnPasswordDialog
+    constructor(title: string, message: string, password: string) 
+    static new(title: string, message: string, password: string): VpnPasswordDialog
 
     // Overloads of new
 
@@ -1414,7 +1414,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1428,7 +1428,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1439,7 +1439,7 @@ interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of NMA-1.0.NMA.WifiDialog
 
@@ -1780,7 +1780,7 @@ class WifiDialog extends Gtk.Dialog {
      * @param secrets_hints array of setting key names within the setting given in   `secrets_setting_name` which are requested or %NULL
      * @returns the dialog widget or %NULL in case of error
      */
-    static new_for_secrets(client: NM.Client, connection: NM.Connection, secrets_setting_name: string | null, secrets_hints: string | null): WifiDialog
+    static new_for_secrets(client: NM.Client, connection: NM.Connection, secrets_setting_name: string, secrets_hints: string): WifiDialog
     _init(config?: WifiDialog.ConstructorProperties): void
 }
 
@@ -1818,8 +1818,8 @@ interface CountryInfo {
 
     // Owm methods of NMA-1.0.NMA.CountryInfo
 
-    get_country_code(): string | null
-    get_country_name(): string | null
+    get_country_code(): string
+    get_country_name(): string
     get_providers(): MobileProvider[]
     ref(): CountryInfo
     unref(): void
@@ -1836,13 +1836,13 @@ interface MobileAccessMethod {
 
     // Owm methods of NMA-1.0.NMA.MobileAccessMethod
 
-    get_3gpp_apn(): string | null
+    get_3gpp_apn(): string
     get_dns(): string[]
     get_family(): MobileFamily
-    get_gateway(): string | null
-    get_name(): string | null
-    get_password(): string | null
-    get_username(): string | null
+    get_gateway(): string
+    get_name(): string
+    get_password(): string
+    get_username(): string
     ref(): MobileAccessMethod
     unref(): void
 }
@@ -1861,7 +1861,7 @@ interface MobileProvider {
     get_3gpp_mcc_mnc(): string[]
     get_cdma_sid(): number[]
     get_methods(): MobileAccessMethod[]
-    get_name(): string | null
+    get_name(): string
     ref(): MobileProvider
     unref(): void
 }

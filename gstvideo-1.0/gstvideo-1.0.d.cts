@@ -2213,7 +2213,7 @@ export enum VideoTimeCodeFlags {
      */
     INTERLACED,
 }
-export const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string | null
+export const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string
 /**
  * A bufferpool option to enable extra padding. When a bufferpool supports this
  * option, gst_buffer_pool_config_set_video_alignment() can be called.
@@ -2221,7 +2221,7 @@ export const BUFFER_POOL_OPTION_VIDEO_AFFINE_TRANSFORMATION_META: string | null
  * When this option is enabled on the bufferpool,
  * #GST_BUFFER_POOL_OPTION_VIDEO_META should also be enabled.
  */
-export const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string | null
+export const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string
 /**
  * An option that can be activated on a bufferpool to request gl texture upload
  * meta on buffers from the pool.
@@ -2229,12 +2229,12 @@ export const BUFFER_POOL_OPTION_VIDEO_ALIGNMENT: string | null
  * When this option is enabled on the bufferpool,
  * `GST_BUFFER_POOL_OPTION_VIDEO_META` should also be enabled.
  */
-export const BUFFER_POOL_OPTION_VIDEO_GL_TEXTURE_UPLOAD_META: string | null
+export const BUFFER_POOL_OPTION_VIDEO_GL_TEXTURE_UPLOAD_META: string
 /**
  * An option that can be activated on bufferpool to request video metadata
  * on buffers from the pool.
  */
-export const BUFFER_POOL_OPTION_VIDEO_META: string | null
+export const BUFFER_POOL_OPTION_VIDEO_META: string
 /**
  * Name of the caps feature indicating that the stream is interlaced.
  * 
@@ -2250,35 +2250,35 @@ export const BUFFER_POOL_OPTION_VIDEO_META: string | null
  * rate will be twice the frame rate from the caps
  * (see `GST_VIDEO_INFO_FIELD_RATE_N)`.
  */
-export const CAPS_FEATURE_FORMAT_INTERLACED: string | null
-export const CAPS_FEATURE_META_GST_VIDEO_AFFINE_TRANSFORMATION_META: string | null
-export const CAPS_FEATURE_META_GST_VIDEO_GL_TEXTURE_UPLOAD_META: string | null
-export const CAPS_FEATURE_META_GST_VIDEO_META: string | null
-export const CAPS_FEATURE_META_GST_VIDEO_OVERLAY_COMPOSITION: string | null
+export const CAPS_FEATURE_FORMAT_INTERLACED: string
+export const CAPS_FEATURE_META_GST_VIDEO_AFFINE_TRANSFORMATION_META: string
+export const CAPS_FEATURE_META_GST_VIDEO_GL_TEXTURE_UPLOAD_META: string
+export const CAPS_FEATURE_META_GST_VIDEO_META: string
+export const CAPS_FEATURE_META_GST_VIDEO_OVERLAY_COMPOSITION: string
 /**
  * This metadata stays relevant as long as video colorspace is unchanged.
  */
-export const META_TAG_VIDEO_COLORSPACE_STR: string | null
+export const META_TAG_VIDEO_COLORSPACE_STR: string
 /**
  * This metadata stays relevant as long as video orientation is unchanged.
  */
-export const META_TAG_VIDEO_ORIENTATION_STR: string | null
+export const META_TAG_VIDEO_ORIENTATION_STR: string
 /**
  * This metadata stays relevant as long as video size is unchanged.
  */
-export const META_TAG_VIDEO_SIZE_STR: string | null
+export const META_TAG_VIDEO_SIZE_STR: string
 /**
  * This metadata is relevant for video streams.
  */
-export const META_TAG_VIDEO_STR: string | null
-export const VIDEO_COLORIMETRY_BT2020: string | null
-export const VIDEO_COLORIMETRY_BT2020_10: string | null
-export const VIDEO_COLORIMETRY_BT2100_HLG: string | null
-export const VIDEO_COLORIMETRY_BT2100_PQ: string | null
-export const VIDEO_COLORIMETRY_BT601: string | null
-export const VIDEO_COLORIMETRY_BT709: string | null
-export const VIDEO_COLORIMETRY_SMPTE240M: string | null
-export const VIDEO_COLORIMETRY_SRGB: string | null
+export const META_TAG_VIDEO_STR: string
+export const VIDEO_COLORIMETRY_BT2020: string
+export const VIDEO_COLORIMETRY_BT2020_10: string
+export const VIDEO_COLORIMETRY_BT2100_HLG: string
+export const VIDEO_COLORIMETRY_BT2100_PQ: string
+export const VIDEO_COLORIMETRY_BT601: string
+export const VIDEO_COLORIMETRY_BT709: string
+export const VIDEO_COLORIMETRY_SMPTE240M: string
+export const VIDEO_COLORIMETRY_SRGB: string
 export const VIDEO_COMP_A: number
 export const VIDEO_COMP_B: number
 export const VIDEO_COMP_G: number
@@ -2292,119 +2292,119 @@ export const VIDEO_COMP_Y: number
  * #GstVideoAlphaMode, the alpha mode to use.
  * Default is #GST_VIDEO_ALPHA_MODE_COPY.
  */
-export const VIDEO_CONVERTER_OPT_ALPHA_MODE: string | null
+export const VIDEO_CONVERTER_OPT_ALPHA_MODE: string
 /**
  * #G_TYPE_DOUBLE, the alpha color value to use.
  * Default to 1.0
  */
-export const VIDEO_CONVERTER_OPT_ALPHA_VALUE: string | null
+export const VIDEO_CONVERTER_OPT_ALPHA_VALUE: string
 /**
  * #G_TYPE_BOOLEAN, whether gst_video_converter_frame() will return immediately
  * without waiting for the conversion to complete.  A subsequent
  * gst_video_converter_frame_finish() must be performed to ensure completion of the
  * conversion before subsequent use.  Default %FALSE
  */
-export const VIDEO_CONVERTER_OPT_ASYNC_TASKS: string | null
+export const VIDEO_CONVERTER_OPT_ASYNC_TASKS: string
 /**
  * #G_TYPE_UINT, the border color to use if #GST_VIDEO_CONVERTER_OPT_FILL_BORDER
  * is set to %TRUE. The color is in ARGB format.
  * Default 0xff000000
  */
-export const VIDEO_CONVERTER_OPT_BORDER_ARGB: string | null
+export const VIDEO_CONVERTER_OPT_BORDER_ARGB: string
 /**
  * #GstVideoChromaMode, set the chroma resample mode subsampled
  * formats. Default is #GST_VIDEO_CHROMA_MODE_FULL.
  */
-export const VIDEO_CONVERTER_OPT_CHROMA_MODE: string | null
+export const VIDEO_CONVERTER_OPT_CHROMA_MODE: string
 /**
  * #GstVideoChromaMethod, The resampler method to use for
  * chroma resampling. Other options for the resampler can be used, see
  * the #GstVideoResampler. Default is #GST_VIDEO_RESAMPLER_METHOD_LINEAR
  */
-export const VIDEO_CONVERTER_OPT_CHROMA_RESAMPLER_METHOD: string | null
+export const VIDEO_CONVERTER_OPT_CHROMA_RESAMPLER_METHOD: string
 /**
  * #G_TYPE_INT, height in the destination frame, default destination height
  */
-export const VIDEO_CONVERTER_OPT_DEST_HEIGHT: string | null
+export const VIDEO_CONVERTER_OPT_DEST_HEIGHT: string
 /**
  * #G_TYPE_INT, width in the destination frame, default destination width
  */
-export const VIDEO_CONVERTER_OPT_DEST_WIDTH: string | null
+export const VIDEO_CONVERTER_OPT_DEST_WIDTH: string
 /**
  * #G_TYPE_INT, x position in the destination frame, default 0
  */
-export const VIDEO_CONVERTER_OPT_DEST_X: string | null
+export const VIDEO_CONVERTER_OPT_DEST_X: string
 /**
  * #G_TYPE_INT, y position in the destination frame, default 0
  */
-export const VIDEO_CONVERTER_OPT_DEST_Y: string | null
+export const VIDEO_CONVERTER_OPT_DEST_Y: string
 /**
  * #GstVideoDitherMethod, The dither method to use when
  * changing bit depth.
  * Default is #GST_VIDEO_DITHER_BAYER.
  */
-export const VIDEO_CONVERTER_OPT_DITHER_METHOD: string | null
+export const VIDEO_CONVERTER_OPT_DITHER_METHOD: string
 /**
  * #G_TYPE_UINT, The quantization amount to dither to. Components will be
  * quantized to multiples of this value.
  * Default is 1
  */
-export const VIDEO_CONVERTER_OPT_DITHER_QUANTIZATION: string | null
+export const VIDEO_CONVERTER_OPT_DITHER_QUANTIZATION: string
 /**
  * #G_TYPE_BOOLEAN, if the destination rectangle does not fill the complete
  * destination image, render a border with
  * #GST_VIDEO_CONVERTER_OPT_BORDER_ARGB. Otherwise the unusded pixels in the
  * destination are untouched. Default %TRUE.
  */
-export const VIDEO_CONVERTER_OPT_FILL_BORDER: string | null
+export const VIDEO_CONVERTER_OPT_FILL_BORDER: string
 /**
  * #GstVideoGammaMode, set the gamma mode.
  * Default is #GST_VIDEO_GAMMA_MODE_NONE.
  */
-export const VIDEO_CONVERTER_OPT_GAMMA_MODE: string | null
+export const VIDEO_CONVERTER_OPT_GAMMA_MODE: string
 /**
  * #GstVideoMatrixMode, set the color matrix conversion mode for
  * converting between Y'PbPr and non-linear RGB (R'G'B').
  * Default is #GST_VIDEO_MATRIX_MODE_FULL.
  */
-export const VIDEO_CONVERTER_OPT_MATRIX_MODE: string | null
+export const VIDEO_CONVERTER_OPT_MATRIX_MODE: string
 /**
  * #GstVideoPrimariesMode, set the primaries conversion mode.
  * Default is #GST_VIDEO_PRIMARIES_MODE_NONE.
  */
-export const VIDEO_CONVERTER_OPT_PRIMARIES_MODE: string | null
+export const VIDEO_CONVERTER_OPT_PRIMARIES_MODE: string
 /**
  * #GstVideoResamplerMethod, The resampler method to use for
  * resampling. Other options for the resampler can be used, see
  * the #GstVideoResampler. Default is #GST_VIDEO_RESAMPLER_METHOD_CUBIC
  */
-export const VIDEO_CONVERTER_OPT_RESAMPLER_METHOD: string | null
+export const VIDEO_CONVERTER_OPT_RESAMPLER_METHOD: string
 /**
  * #G_TYPE_UINT, The number of taps for the resampler.
  * Default is 0: let the resampler choose a good value.
  */
-export const VIDEO_CONVERTER_OPT_RESAMPLER_TAPS: string | null
+export const VIDEO_CONVERTER_OPT_RESAMPLER_TAPS: string
 /**
  * #G_TYPE_INT, source height to convert, default source height
  */
-export const VIDEO_CONVERTER_OPT_SRC_HEIGHT: string | null
+export const VIDEO_CONVERTER_OPT_SRC_HEIGHT: string
 /**
  * #G_TYPE_INT, source width to convert, default source width
  */
-export const VIDEO_CONVERTER_OPT_SRC_WIDTH: string | null
+export const VIDEO_CONVERTER_OPT_SRC_WIDTH: string
 /**
  * #G_TYPE_INT, source x position to start conversion, default 0
  */
-export const VIDEO_CONVERTER_OPT_SRC_X: string | null
+export const VIDEO_CONVERTER_OPT_SRC_X: string
 /**
  * #G_TYPE_INT, source y position to start conversion, default 0
  */
-export const VIDEO_CONVERTER_OPT_SRC_Y: string | null
+export const VIDEO_CONVERTER_OPT_SRC_Y: string
 /**
  * #G_TYPE_UINT, maximum number of threads to use. Default 1, 0 for the number
  * of cores.
  */
-export const VIDEO_CONVERTER_OPT_THREADS: string | null
+export const VIDEO_CONVERTER_OPT_THREADS: string
 /**
  * Default maximum number of errors tolerated before signaling error.
  */
@@ -2412,19 +2412,19 @@ export const VIDEO_DECODER_MAX_ERRORS: number
 /**
  * The name of the templates for the sink pad.
  */
-export const VIDEO_DECODER_SINK_NAME: string | null
+export const VIDEO_DECODER_SINK_NAME: string
 /**
  * The name of the templates for the source pad.
  */
-export const VIDEO_DECODER_SRC_NAME: string | null
+export const VIDEO_DECODER_SRC_NAME: string
 /**
  * The name of the templates for the sink pad.
  */
-export const VIDEO_ENCODER_SINK_NAME: string | null
+export const VIDEO_ENCODER_SINK_NAME: string
 /**
  * The name of the templates for the source pad.
  */
-export const VIDEO_ENCODER_SRC_NAME: string | null
+export const VIDEO_ENCODER_SRC_NAME: string
 /**
  * List of all video formats, for use in template caps strings.
  * 
@@ -2442,8 +2442,8 @@ export const VIDEO_ENCODER_SRC_NAME: string | null
  *   - prefer I420 over YV12
  *   - format name
  */
-export const VIDEO_FORMATS_ALL: string | null
-export const VIDEO_FPS_RANGE: string | null
+export const VIDEO_FORMATS_ALL: string
+export const VIDEO_FPS_RANGE: string
 export const VIDEO_MAX_COMPONENTS: number
 export const VIDEO_MAX_PLANES: number
 /**
@@ -2463,7 +2463,7 @@ export const VIDEO_MAX_PLANES: number
  * Robidoux
  *  Soft             0.6796  0.1602
  */
-export const VIDEO_RESAMPLER_OPT_CUBIC_B: string | null
+export const VIDEO_RESAMPLER_OPT_CUBIC_B: string
 /**
  * G_TYPE_DOUBLE, C parameter of the cubic filter. The C
  * parameter controls the Keys alpha value. Values between 0.0 and
@@ -2471,36 +2471,36 @@ export const VIDEO_RESAMPLER_OPT_CUBIC_B: string | null
  * 
  * See #GST_VIDEO_RESAMPLER_OPT_CUBIC_B for some more common values
  */
-export const VIDEO_RESAMPLER_OPT_CUBIC_C: string | null
+export const VIDEO_RESAMPLER_OPT_CUBIC_C: string
 /**
  * G_TYPE_DOUBLE, specifies the size of filter envelope for
  * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
  * 1.0 and 5.0. 2.0 is the default.
  */
-export const VIDEO_RESAMPLER_OPT_ENVELOPE: string | null
+export const VIDEO_RESAMPLER_OPT_ENVELOPE: string
 /**
  * G_TYPE_INT, limits the maximum number of taps to use.
  * 16 is the default.
  */
-export const VIDEO_RESAMPLER_OPT_MAX_TAPS: string | null
+export const VIDEO_RESAMPLER_OPT_MAX_TAPS: string
 /**
  * G_TYPE_DOUBLE, specifies sharpening of the filter for
  * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
  * 0.0 and 1.0. 0.0 is the default.
  */
-export const VIDEO_RESAMPLER_OPT_SHARPEN: string | null
+export const VIDEO_RESAMPLER_OPT_SHARPEN: string
 /**
  * G_TYPE_DOUBLE, specifies sharpness of the filter for
  * `GST_VIDEO_RESAMPLER_METHOD_LANCZOS`. values are clamped between
  * 0.5 and 1.5. 1.0 is the default.
  */
-export const VIDEO_RESAMPLER_OPT_SHARPNESS: string | null
+export const VIDEO_RESAMPLER_OPT_SHARPNESS: string
 /**
  * #GstVideoDitherMethod, The dither method to use for propagating
  * quatization errors.
  */
-export const VIDEO_SCALER_OPT_DITHER_METHOD: string | null
-export const VIDEO_SIZE_RANGE: string | null
+export const VIDEO_SCALER_OPT_DITHER_METHOD: string
+export const VIDEO_SIZE_RANGE: string
 export const VIDEO_TILE_TYPE_MASK: number
 export const VIDEO_TILE_TYPE_SHIFT: number
 export const VIDEO_TILE_X_TILES_MASK: number
@@ -2610,7 +2610,7 @@ export function buffer_add_video_overlay_composition_meta(buf: Gst.Buffer, comp:
  * @param h height
  * @returns the #GstVideoRegionOfInterestMeta on @buffer.
  */
-export function buffer_add_video_region_of_interest_meta(buffer: Gst.Buffer, roi_type: string | null, x: number, y: number, w: number, h: number): VideoRegionOfInterestMeta
+export function buffer_add_video_region_of_interest_meta(buffer: Gst.Buffer, roi_type: string, x: number, y: number, w: number, h: number): VideoRegionOfInterestMeta
 /**
  * Attaches #GstVideoRegionOfInterestMeta metadata to `buffer` with the given
  * parameters.
@@ -2732,14 +2732,14 @@ export function navigation_event_new_command(command: NavigationCommand): Gst.Ev
  * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
  * @returns a new #GstEvent
  */
-export function navigation_event_new_key_press(key: string | null, state: NavigationModifierType): Gst.Event
+export function navigation_event_new_key_press(key: string, state: NavigationModifierType): Gst.Event
 /**
  * Create a new navigation event for the given key release.
  * @param key A string identifying the released key.
  * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
  * @returns a new #GstEvent
  */
-export function navigation_event_new_key_release(key: string | null, state: NavigationModifierType): Gst.Event
+export function navigation_event_new_key_release(key: string, state: NavigationModifierType): Gst.Event
 /**
  * Create a new navigation event for the given key mouse button press.
  * @param button The number of the pressed mouse button.
@@ -2836,7 +2836,7 @@ export function navigation_event_parse_command(event: Gst.Event): [ /* returnTyp
  * present on all other related events
  * @param event A #GstEvent to inspect.
  */
-export function navigation_event_parse_key_event(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
+export function navigation_event_parse_key_event(event: Gst.Event): [ /* returnType */ boolean, /* key */ string ]
 export function navigation_event_parse_modifier_state(event: Gst.Event, state: NavigationModifierType): boolean
 /**
  * Retrieve the details of either a #GstNavigation mouse button press event or
@@ -3072,7 +3072,7 @@ export function video_center_rect(src: VideoRectangle, dst: VideoRectangle, scal
  * @param s a chromasite string
  * @returns a #GstVideoChromaSite or %GST_VIDEO_CHROMA_SITE_UNKNOWN when @s does not contain a valid chroma description.
  */
-export function video_chroma_from_string(s: string | null): VideoChromaSite
+export function video_chroma_from_string(s: string): VideoChromaSite
 /**
  * Perform resampling of `width` chroma pixels in `lines`.
  * @param resample a #GstVideoChromaResample
@@ -3085,7 +3085,7 @@ export function video_chroma_resample(resample: VideoChromaResample, lines: any 
  * @param s a chromasite string
  * @returns a #GstVideoChromaSite or %GST_VIDEO_CHROMA_SITE_UNKNOWN when @s does not contain a valid chroma-site description.
  */
-export function video_chroma_site_from_string(s: string | null): VideoChromaSite
+export function video_chroma_site_from_string(s: string): VideoChromaSite
 /**
  * Converts `site` to its string representation.
  * @param site a #GstVideoChromaSite
@@ -3097,7 +3097,7 @@ export function video_chroma_site_to_string(site: VideoChromaSite): string | nul
  * @param site a #GstVideoChromaSite
  * @returns a string describing @site.
  */
-export function video_chroma_to_string(site: VideoChromaSite): string | null
+export function video_chroma_to_string(site: VideoChromaSite): string
 export function video_codec_alpha_meta_api_get_type(): GObject.GType
 export function video_codec_alpha_meta_get_info(): Gst.MetaInfo
 /**
@@ -3247,7 +3247,7 @@ export function video_dma_drm_fourcc_from_format(format: VideoFormat): number
  * @param format_str a drm format string
  * @returns The drm fourcc value or DRM_FORMAT_INVALID if @format_str is invalid.
  */
-export function video_dma_drm_fourcc_from_string(format_str: string | null): [ /* returnType */ number, /* modifier */ number ]
+export function video_dma_drm_fourcc_from_string(format_str: string): [ /* returnType */ number, /* modifier */ number ]
 /**
  * Converting a dma drm fourcc into the video format. If no matching
  * video format found, then GST_VIDEO_FORMAT_UNKNOWN is returned.
@@ -3354,13 +3354,13 @@ export function video_event_parse_upstream_force_key_unit(event: Gst.Event): [ /
  * @param order a field order
  * @returns the #GstVideoFieldOrder of @order or    #GST_VIDEO_FIELD_ORDER_UNKNOWN when @order is not a valid    string representation for a #GstVideoFieldOrder.
  */
-export function video_field_order_from_string(order: string | null): VideoFieldOrder
+export function video_field_order_from_string(order: string): VideoFieldOrder
 /**
  * Convert `order` to its string representation.
  * @param order a #GstVideoFieldOrder
  * @returns @order as a string.
  */
-export function video_field_order_to_string(order: VideoFieldOrder): string | null
+export function video_field_order_to_string(order: VideoFieldOrder): string
 /**
  * Converts a FOURCC value into the corresponding #GstVideoFormat.
  * If the FOURCC cannot be represented by #GstVideoFormat,
@@ -3386,7 +3386,7 @@ export function video_format_from_masks(depth: number, bpp: number, endianness: 
  * @param format a format string
  * @returns the #GstVideoFormat for @format or GST_VIDEO_FORMAT_UNKNOWN when the string is not a known format.
  */
-export function video_format_from_string(format: string | null): VideoFormat
+export function video_format_from_string(format: string): VideoFormat
 /**
  * Get the #GstVideoFormatInfo for `format`
  * @param format a #GstVideoFormat
@@ -3414,7 +3414,7 @@ export function video_format_to_fourcc(format: VideoFormat): number
  * @param format a #GstVideoFormat video format
  * @returns the name corresponding to @format
  */
-export function video_format_to_string(format: VideoFormat): string | null
+export function video_format_to_string(format: VideoFormat): string
 /**
  * Return all the raw video formats supported by GStreamer.
  * @returns an array of #GstVideoFormat
@@ -3538,13 +3538,13 @@ export function video_info_init(): /* info */ VideoInfo
  * @param mode a mode
  * @returns the #GstVideoInterlaceMode of @mode or    #GST_VIDEO_INTERLACE_MODE_PROGRESSIVE when @mode is not a valid    string representation for a #GstVideoInterlaceMode.
  */
-export function video_interlace_mode_from_string(mode: string | null): VideoInterlaceMode
+export function video_interlace_mode_from_string(mode: string): VideoInterlaceMode
 /**
  * Convert `mode` to its string representation.
  * @param mode a #GstVideoInterlaceMode
  * @returns @mode as a string.
  */
-export function video_interlace_mode_to_string(mode: VideoInterlaceMode): string | null
+export function video_interlace_mode_to_string(mode: VideoInterlaceMode): string
 /**
  * Given a frame's dimensions and pixel aspect ratio, this function will
  * calculate the frame's aspect ratio and compare it against a set of
@@ -3586,7 +3586,7 @@ export function video_make_raw_caps_with_features(formats: VideoFormat[] | null,
  * @param mastering a #GstStructure representing #GstVideoMasteringDisplayInfo
  * @returns %TRUE if @minfo was filled with @mastering
  */
-export function video_mastering_display_info_from_string(mastering: string | null): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
+export function video_mastering_display_info_from_string(mastering: string): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
 export function video_meta_api_get_type(): GObject.GType
 export function video_meta_get_info(): Gst.MetaInfo
 /**
@@ -3600,7 +3600,7 @@ export function video_multiview_get_doubled_width_modes(): any
 export function video_multiview_get_mono_modes(): any
 export function video_multiview_get_unpacked_modes(): any
 export function video_multiview_guess_half_aspect(mv_mode: VideoMultiviewMode, width: number, height: number, par_n: number, par_d: number): boolean
-export function video_multiview_mode_from_caps_string(caps_mview_mode: string | null): VideoMultiviewMode
+export function video_multiview_mode_from_caps_string(caps_mview_mode: string): VideoMultiviewMode
 /**
  * Given a #GstVideoMultiviewMode returns the multiview-mode caps string
  * for insertion into a caps structure
@@ -3983,7 +3983,7 @@ export interface Navigation {
      * @param event The event to send
      */
     send_event_simple(event: Gst.Event): void
-    send_key_event(event: string | null, key: string | null): void
+    send_key_event(event: string, key: string): void
     /**
      * Sends a mouse event to the navigation interface. Mouse event coordinates
      * are sent relative to the display space of the related output area. This is
@@ -3994,7 +3994,7 @@ export interface Navigation {
      * @param x The x coordinate of the mouse event.
      * @param y The y coordinate of the mouse event.
      */
-    send_mouse_event(event: string | null, button: number, x: number, y: number): void
+    send_mouse_event(event: string, button: number, x: number, y: number): void
     /**
      * Sends a mouse scroll event to the navigation interface. Mouse event coordinates
      * are sent relative to the display space of the related output area. This is
@@ -4091,14 +4091,14 @@ export class Navigation extends GObject.Object {
      * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      * @returns a new #GstEvent
      */
-    static event_new_key_press(key: string | null, state: NavigationModifierType): Gst.Event
+    static event_new_key_press(key: string, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key release.
      * @param key A string identifying the released key.
      * @param state a bit-mask representing the state of the modifier keys (e.g. Control, Shift and Alt).
      * @returns a new #GstEvent
      */
-    static event_new_key_release(key: string | null, state: NavigationModifierType): Gst.Event
+    static event_new_key_release(key: string, state: NavigationModifierType): Gst.Event
     /**
      * Create a new navigation event for the given key mouse button press.
      * @param button The number of the pressed mouse button.
@@ -4195,7 +4195,7 @@ export class Navigation extends GObject.Object {
      * present on all other related events
      * @param event A #GstEvent to inspect.
      */
-    static event_parse_key_event(event: Gst.Event): [ /* returnType */ boolean, /* key */ string | null ]
+    static event_parse_key_event(event: Gst.Event): [ /* returnType */ boolean, /* key */ string ]
     static event_parse_modifier_state(event: Gst.Event, state: NavigationModifierType): boolean
     /**
      * Retrieve the details of either a #GstNavigation mouse button press event or
@@ -7986,7 +7986,7 @@ export interface VideoColorimetry {
      * @param color a colorimetry string
      * @returns %TRUE if @color points to valid colorimetry info.
      */
-    from_string(color: string | null): boolean
+    from_string(color: string): boolean
     /**
      * Compare the 2 colorimetry sets for equality
      * @param other another #GstVideoColorimetry
@@ -8007,7 +8007,7 @@ export interface VideoColorimetry {
      * @param color a colorimetry string
      * @returns %TRUE if @color conveys the same colorimetry info as the color information in @info.
      */
-    matches(color: string | null): boolean
+    matches(color: string): boolean
     /**
      * Make a string representation of `cinfo`.
      * @returns a string representation of @cinfo or %NULL if all the entries of @cinfo are unknown values.
@@ -8063,7 +8063,7 @@ export interface VideoContentLightLevel {
      * @param level a content-light-level string from caps
      * @returns %TRUE if @linfo points to valid #GstVideoContentLightLevel.
      */
-    from_string(level: string | null): boolean
+    from_string(level: string): boolean
     /**
      * Initialize `linfo`
      */
@@ -8389,12 +8389,12 @@ export interface VideoFormatInfo {
      * string representation of the format
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * use readable description of the format
      * @field 
      */
-    description: string | null
+    description: string
     /**
      * #GstVideoFormatFlags
      * @field 
@@ -9125,7 +9125,7 @@ export class VideoMasteringDisplayInfo {
      * @param mastering a #GstStructure representing #GstVideoMasteringDisplayInfo
      * @returns %TRUE if @minfo was filled with @mastering
      */
-    static from_string(mastering: string | null): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
+    static from_string(mastering: string): [ /* returnType */ boolean, /* minfo */ VideoMasteringDisplayInfo ]
 }
 
 export interface VideoMasteringDisplayInfoCoordinates {
@@ -9773,7 +9773,7 @@ export interface VideoRegionOfInterestMeta {
      * @param name a name.
      * @returns a #GstStructure
      */
-    get_param(name: string | null): Gst.Structure | null
+    get_param(name: string): Gst.Structure | null
 }
 
 /**
@@ -10261,7 +10261,7 @@ export class VideoTimeCode {
      * @returns the #GstVideoTimeCode representation of @dt, or %NULL if   no valid timecode could be created.
      */
     static new_from_date_time_full(fps_n: number, fps_d: number, dt: GLib.DateTime, flags: VideoTimeCodeFlags, field_count: number): VideoTimeCode
-    static new_from_string(tc_str: string | null): VideoTimeCode
+    static new_from_string(tc_str: string): VideoTimeCode
 }
 
 export interface VideoTimeCodeConfig {
@@ -10371,7 +10371,7 @@ export class VideoTimeCodeInterval {
      * @param tc_inter_str The string that represents the #GstVideoTimeCodeInterval
      * @returns a new #GstVideoTimeCodeInterval from the given string   or %NULL if the string could not be passed.
      */
-    static new_from_string(tc_inter_str: string | null): VideoTimeCodeInterval
+    static new_from_string(tc_inter_str: string): VideoTimeCodeInterval
 }
 
 export interface VideoTimeCodeMeta {

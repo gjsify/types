@@ -1406,7 +1406,7 @@ function pixel_format_get_n_planes(format: PixelFormat): number
  * @param format a #CoglPixelFormat
  * @returns A string representation of @format.
  */
-function pixel_format_to_string(format: PixelFormat): string | null
+function pixel_format_to_string(format: PixelFormat): string
 /**
  * Attaches a shader to a program object. A program can have multiple
  * vertex or fragment shaders but only one of them may provide a
@@ -1424,7 +1424,7 @@ function program_attach_shader(program_handle: Handle, shader_handle: Handle): v
  * @param uniform_name the name of a uniform.
  * @returns the offset of a uniform in a specified program.
  */
-function program_get_uniform_location(handle: Handle, uniform_name: string | null): number
+function program_get_uniform_location(handle: Handle, uniform_name: string): number
 /**
  * Links a program making it ready for use. Note that calling this
  * function is optional. If it is not called the program will
@@ -1478,8 +1478,8 @@ function program_set_uniform_int(program: Handle, uniform_location: number, n_co
 function program_set_uniform_matrix(program: Handle, uniform_location: number, dimensions: number, transpose: boolean, value: number[]): void
 function scanout_error_quark(): GLib.Quark
 function set_tracing_disabled_on_thread(main_context: GLib.MainContext): void
-function set_tracing_enabled_on_thread(main_context: GLib.MainContext, group: string | null, filename: string | null): void
-function set_tracing_enabled_on_thread_with_fd(main_context: GLib.MainContext, group: string | null, fd: number): void
+function set_tracing_enabled_on_thread(main_context: GLib.MainContext, group: string, filename: string): void
+function set_tracing_enabled_on_thread_with_fd(main_context: GLib.MainContext, group: string, fd: number): void
 /**
  * Retrieves the type of a shader #CoglHandle
  * @param handle #CoglHandle for a shader.
@@ -1496,9 +1496,9 @@ function shader_get_type(handle: Handle): ShaderType
  * @param shader #CoglHandle for a shader.
  * @param source Shader source.
  */
-function shader_source(shader: Handle, source: string | null): void
+function shader_source(shader: Handle, source: string): void
 function texture_error_quark(): number
-function trace_describe(head: TraceHead, description: string | null): void
+function trace_describe(head: TraceHead, description: string): void
 function trace_end(head: TraceHead): void
 /**
  * A callback function to use for cogl_debug_object_foreach_type().
@@ -1614,7 +1614,7 @@ interface Texture extends Object {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Queries the GL handles for a GPU side texture through its #CoglTexture.
      * 
@@ -1744,7 +1744,7 @@ interface Texture extends Object {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Affects the internal storage format for this texture by specifying
      * whether red, green and blue color components should be stored as
@@ -1871,7 +1871,7 @@ class Bitmap extends Object {
      * @param filename the file to load.
      * @returns a #CoglBitmap to the new loaded               image data, or %NULL if loading the image failed.
      */
-    static new_from_file(filename: string | null): Bitmap
+    static new_from_file(filename: string): Bitmap
     _init(config?: Bitmap.ConstructorProperties): void
     static error_quark(): number
     /**
@@ -1880,7 +1880,7 @@ class Bitmap extends Object {
      * @param filename the file to check
      * @returns %TRUE if the image was successfully parsed
      */
-    static get_size_from_file(filename: string | null): [ /* returnType */ boolean, /* width */ number, /* height */ number ]
+    static get_size_from_file(filename: string): [ /* returnType */ boolean, /* width */ number, /* height */ number ]
 }
 
 module Context {
@@ -3451,7 +3451,7 @@ interface Pipeline {
      * @param uniform_name The name of a uniform
      * @returns A integer representing the location of the given uniform.
      */
-    get_uniform_location(uniform_name: string | null): number
+    get_uniform_location(uniform_name: string): number
     /**
      * Queries what user program has been associated with the given
      * `pipeline` using cogl_pipeline_set_user_program().
@@ -3544,7 +3544,7 @@ interface Pipeline {
      * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, %FALSE is returned and @error is set accordingly (if   present).
      */
-    set_blend(blend_string: string | null): boolean
+    set_blend(blend_string: string): boolean
     /**
      * When blending is setup to reference a CONSTANT blend factor then
      * blending will depend on the constant set with this function.
@@ -3691,7 +3691,7 @@ interface Pipeline {
      * @param blend_string A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, %FALSE is returned and @error is set
      */
-    set_layer_combine(layer_index: number, blend_string: string | null): boolean
+    set_layer_combine(layer_index: number, blend_string: string): boolean
     /**
      * When you are using the 'CONSTANT' color source in a layer combine
      * description then you can use this function to define its value.
@@ -3980,11 +3980,11 @@ interface Snippet {
 
     // Owm methods of Cogl-12.Cogl.Snippet
 
-    get_declarations(): string | null
+    get_declarations(): string
     get_hook(): SnippetHook
-    get_post(): string | null
-    get_pre(): string | null
-    get_replace(): string | null
+    get_post(): string
+    get_pre(): string
+    get_replace(): string
     /**
      * Sets a source string that will be inserted in the global scope of
      * the generated shader when this snippet is used on a pipeline. This
@@ -3996,7 +3996,7 @@ interface Snippet {
      * immutable.
      * @param declarations The new source string for the declarations section   of this snippet.
      */
-    set_declarations(declarations: string | null): void
+    set_declarations(declarations: string): void
     /**
      * Sets a source string that will be inserted after the hook point in
      * the generated shader for the pipeline that this snippet is attached
@@ -4008,7 +4008,7 @@ interface Snippet {
      * immutable.
      * @param post The new source string for the post section of this snippet.
      */
-    set_post(post: string | null): void
+    set_post(post: string): void
     /**
      * Sets a source string that will be inserted before the hook point in
      * the generated shader for the pipeline that this snippet is attached
@@ -4020,7 +4020,7 @@ interface Snippet {
      * immutable.
      * @param pre The new source string for the pre section of this snippet.
      */
-    set_pre(pre: string | null): void
+    set_pre(pre: string): void
     /**
      * Sets a source string that will be used instead of any generated
      * source code or any previous snippets for this hook point. Please
@@ -4032,7 +4032,7 @@ interface Snippet {
      * immutable.
      * @param replace The new source string for the replace section of this snippet.
      */
-    set_replace(replace: string | null): void
+    set_replace(replace: string): void
 
     // Class property signals of Cogl-12.Cogl.Snippet
 
@@ -4112,13 +4112,13 @@ interface Texture2D extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -4186,7 +4186,7 @@ interface Texture2D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -4201,7 +4201,7 @@ interface Texture2D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Cogl-12.Cogl.Texture2D
 
@@ -4277,13 +4277,13 @@ interface Texture2DSliced extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -4351,7 +4351,7 @@ interface Texture2DSliced extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -4366,7 +4366,7 @@ interface Texture2DSliced extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    set_data(key: string | null, data: any | null): void
+    set_data(key: string, data: any | null): void
 
     // Class property signals of Cogl-12.Cogl.Texture2DSliced
 
@@ -4664,7 +4664,7 @@ interface DebugObjectTypeInfo {
      * A human readable name for the type.
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * The number of objects of this type that are
      *   currently in use
@@ -4918,7 +4918,7 @@ interface TraceHead {
     // Own fields of Cogl-12.Cogl.TraceHead
 
     begin_time: number
-    name: string | null
+    name: string
     description: string | null
 }
 

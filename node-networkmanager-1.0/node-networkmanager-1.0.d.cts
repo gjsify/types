@@ -1914,44 +1914,44 @@ export enum DeviceWifiCapabilities {
      */
     FREQ_5GHZ,
 }
-export const CONNECTION_CHANGED: string | null
-export const CONNECTION_NORMALIZE_PARAM_IP6_CONFIG_METHOD: string | null
-export const CONNECTION_PATH: string | null
-export const CONNECTION_SECRETS_CLEARED: string | null
-export const CONNECTION_SECRETS_UPDATED: string | null
-export const DBUS_IFACE_SETTINGS: string | null
-export const DBUS_IFACE_SETTINGS_CONNECTION: string | null
-export const DBUS_IFACE_SETTINGS_CONNECTION_SECRETS: string | null
-export const DBUS_INTERFACE: string | null
-export const DBUS_INTERFACE_VPN: string | null
-export const DBUS_INTERFACE_VPN_CONNECTION: string | null
-export const DBUS_INVALID_VPN_CONNECTION: string | null
-export const DBUS_NO_ACTIVE_VPN_CONNECTION: string | null
-export const DBUS_NO_VPN_CONNECTIONS: string | null
-export const DBUS_PATH: string | null
-export const DBUS_PATH_AGENT_MANAGER: string | null
-export const DBUS_PATH_SECRET_AGENT: string | null
-export const DBUS_PATH_SETTINGS: string | null
-export const DBUS_PATH_SETTINGS_CONNECTION: string | null
-export const DBUS_PATH_VPN: string | null
-export const DBUS_PATH_VPN_CONNECTION: string | null
-export const DBUS_SERVICE: string | null
-export const DBUS_VPN_ALREADY_STARTED: string | null
-export const DBUS_VPN_ALREADY_STOPPED: string | null
-export const DBUS_VPN_BAD_ARGUMENTS: string | null
-export const DBUS_VPN_ERROR_PREFIX: string | null
-export const DBUS_VPN_INTERACTIVE_NOT_SUPPORTED: string | null
-export const DBUS_VPN_SIGNAL_CONNECT_FAILED: string | null
-export const DBUS_VPN_SIGNAL_IP4_CONFIG: string | null
-export const DBUS_VPN_SIGNAL_IP_CONFIG_BAD: string | null
-export const DBUS_VPN_SIGNAL_LAUNCH_FAILED: string | null
-export const DBUS_VPN_SIGNAL_LOGIN_BANNER: string | null
-export const DBUS_VPN_SIGNAL_LOGIN_FAILED: string | null
-export const DBUS_VPN_SIGNAL_STATE_CHANGE: string | null
-export const DBUS_VPN_SIGNAL_VPN_CONFIG_BAD: string | null
-export const DBUS_VPN_STARTING_IN_PROGRESS: string | null
-export const DBUS_VPN_STOPPING_IN_PROGRESS: string | null
-export const DBUS_VPN_WRONG_STATE: string | null
+export const CONNECTION_CHANGED: string
+export const CONNECTION_NORMALIZE_PARAM_IP6_CONFIG_METHOD: string
+export const CONNECTION_PATH: string
+export const CONNECTION_SECRETS_CLEARED: string
+export const CONNECTION_SECRETS_UPDATED: string
+export const DBUS_IFACE_SETTINGS: string
+export const DBUS_IFACE_SETTINGS_CONNECTION: string
+export const DBUS_IFACE_SETTINGS_CONNECTION_SECRETS: string
+export const DBUS_INTERFACE: string
+export const DBUS_INTERFACE_VPN: string
+export const DBUS_INTERFACE_VPN_CONNECTION: string
+export const DBUS_INVALID_VPN_CONNECTION: string
+export const DBUS_NO_ACTIVE_VPN_CONNECTION: string
+export const DBUS_NO_VPN_CONNECTIONS: string
+export const DBUS_PATH: string
+export const DBUS_PATH_AGENT_MANAGER: string
+export const DBUS_PATH_SECRET_AGENT: string
+export const DBUS_PATH_SETTINGS: string
+export const DBUS_PATH_SETTINGS_CONNECTION: string
+export const DBUS_PATH_VPN: string
+export const DBUS_PATH_VPN_CONNECTION: string
+export const DBUS_SERVICE: string
+export const DBUS_VPN_ALREADY_STARTED: string
+export const DBUS_VPN_ALREADY_STOPPED: string
+export const DBUS_VPN_BAD_ARGUMENTS: string
+export const DBUS_VPN_ERROR_PREFIX: string
+export const DBUS_VPN_INTERACTIVE_NOT_SUPPORTED: string
+export const DBUS_VPN_SIGNAL_CONNECT_FAILED: string
+export const DBUS_VPN_SIGNAL_IP4_CONFIG: string
+export const DBUS_VPN_SIGNAL_IP_CONFIG_BAD: string
+export const DBUS_VPN_SIGNAL_LAUNCH_FAILED: string
+export const DBUS_VPN_SIGNAL_LOGIN_BANNER: string
+export const DBUS_VPN_SIGNAL_LOGIN_FAILED: string
+export const DBUS_VPN_SIGNAL_STATE_CHANGE: string
+export const DBUS_VPN_SIGNAL_VPN_CONFIG_BAD: string
+export const DBUS_VPN_STARTING_IN_PROGRESS: string
+export const DBUS_VPN_STOPPING_IN_PROGRESS: string
+export const DBUS_VPN_WRONG_STATE: string
 /**
  * Evaluates to the major version number of NetworkManager which this source
  * is compiled against.
@@ -1967,194 +1967,194 @@ export const MICRO_VERSION: number
  * is compiled against.
  */
 export const MINOR_VERSION: number
-export const SETTING_802_1X_ALTSUBJECT_MATCHES: string | null
-export const SETTING_802_1X_ANONYMOUS_IDENTITY: string | null
-export const SETTING_802_1X_CA_CERT: string | null
-export const SETTING_802_1X_CA_PATH: string | null
-export const SETTING_802_1X_CLIENT_CERT: string | null
-export const SETTING_802_1X_EAP: string | null
-export const SETTING_802_1X_IDENTITY: string | null
-export const SETTING_802_1X_PAC_FILE: string | null
-export const SETTING_802_1X_PASSWORD: string | null
-export const SETTING_802_1X_PASSWORD_FLAGS: string | null
-export const SETTING_802_1X_PASSWORD_RAW: string | null
-export const SETTING_802_1X_PASSWORD_RAW_FLAGS: string | null
-export const SETTING_802_1X_PHASE1_FAST_PROVISIONING: string | null
-export const SETTING_802_1X_PHASE1_PEAPLABEL: string | null
-export const SETTING_802_1X_PHASE1_PEAPVER: string | null
-export const SETTING_802_1X_PHASE2_ALTSUBJECT_MATCHES: string | null
-export const SETTING_802_1X_PHASE2_AUTH: string | null
-export const SETTING_802_1X_PHASE2_AUTHEAP: string | null
-export const SETTING_802_1X_PHASE2_CA_CERT: string | null
-export const SETTING_802_1X_PHASE2_CA_PATH: string | null
-export const SETTING_802_1X_PHASE2_CLIENT_CERT: string | null
-export const SETTING_802_1X_PHASE2_PRIVATE_KEY: string | null
-export const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD: string | null
-export const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD_FLAGS: string | null
-export const SETTING_802_1X_PHASE2_SUBJECT_MATCH: string | null
-export const SETTING_802_1X_PIN: string | null
-export const SETTING_802_1X_PIN_FLAGS: string | null
-export const SETTING_802_1X_PRIVATE_KEY: string | null
-export const SETTING_802_1X_PRIVATE_KEY_PASSWORD: string | null
-export const SETTING_802_1X_PRIVATE_KEY_PASSWORD_FLAGS: string | null
-export const SETTING_802_1X_SETTING_NAME: string | null
-export const SETTING_802_1X_SUBJECT_MATCH: string | null
-export const SETTING_802_1X_SYSTEM_CA_CERTS: string | null
-export const SETTING_ADSL_ENCAPSULATION: string | null
-export const SETTING_ADSL_ENCAPSULATION_LLC: string | null
-export const SETTING_ADSL_ENCAPSULATION_VCMUX: string | null
-export const SETTING_ADSL_PASSWORD: string | null
-export const SETTING_ADSL_PASSWORD_FLAGS: string | null
-export const SETTING_ADSL_PROTOCOL: string | null
-export const SETTING_ADSL_PROTOCOL_IPOATM: string | null
-export const SETTING_ADSL_PROTOCOL_PPPOA: string | null
-export const SETTING_ADSL_PROTOCOL_PPPOE: string | null
-export const SETTING_ADSL_SETTING_NAME: string | null
-export const SETTING_ADSL_USERNAME: string | null
-export const SETTING_ADSL_VCI: string | null
-export const SETTING_ADSL_VPI: string | null
-export const SETTING_BLUETOOTH_BDADDR: string | null
-export const SETTING_BLUETOOTH_SETTING_NAME: string | null
-export const SETTING_BLUETOOTH_TYPE: string | null
+export const SETTING_802_1X_ALTSUBJECT_MATCHES: string
+export const SETTING_802_1X_ANONYMOUS_IDENTITY: string
+export const SETTING_802_1X_CA_CERT: string
+export const SETTING_802_1X_CA_PATH: string
+export const SETTING_802_1X_CLIENT_CERT: string
+export const SETTING_802_1X_EAP: string
+export const SETTING_802_1X_IDENTITY: string
+export const SETTING_802_1X_PAC_FILE: string
+export const SETTING_802_1X_PASSWORD: string
+export const SETTING_802_1X_PASSWORD_FLAGS: string
+export const SETTING_802_1X_PASSWORD_RAW: string
+export const SETTING_802_1X_PASSWORD_RAW_FLAGS: string
+export const SETTING_802_1X_PHASE1_FAST_PROVISIONING: string
+export const SETTING_802_1X_PHASE1_PEAPLABEL: string
+export const SETTING_802_1X_PHASE1_PEAPVER: string
+export const SETTING_802_1X_PHASE2_ALTSUBJECT_MATCHES: string
+export const SETTING_802_1X_PHASE2_AUTH: string
+export const SETTING_802_1X_PHASE2_AUTHEAP: string
+export const SETTING_802_1X_PHASE2_CA_CERT: string
+export const SETTING_802_1X_PHASE2_CA_PATH: string
+export const SETTING_802_1X_PHASE2_CLIENT_CERT: string
+export const SETTING_802_1X_PHASE2_PRIVATE_KEY: string
+export const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD: string
+export const SETTING_802_1X_PHASE2_PRIVATE_KEY_PASSWORD_FLAGS: string
+export const SETTING_802_1X_PHASE2_SUBJECT_MATCH: string
+export const SETTING_802_1X_PIN: string
+export const SETTING_802_1X_PIN_FLAGS: string
+export const SETTING_802_1X_PRIVATE_KEY: string
+export const SETTING_802_1X_PRIVATE_KEY_PASSWORD: string
+export const SETTING_802_1X_PRIVATE_KEY_PASSWORD_FLAGS: string
+export const SETTING_802_1X_SETTING_NAME: string
+export const SETTING_802_1X_SUBJECT_MATCH: string
+export const SETTING_802_1X_SYSTEM_CA_CERTS: string
+export const SETTING_ADSL_ENCAPSULATION: string
+export const SETTING_ADSL_ENCAPSULATION_LLC: string
+export const SETTING_ADSL_ENCAPSULATION_VCMUX: string
+export const SETTING_ADSL_PASSWORD: string
+export const SETTING_ADSL_PASSWORD_FLAGS: string
+export const SETTING_ADSL_PROTOCOL: string
+export const SETTING_ADSL_PROTOCOL_IPOATM: string
+export const SETTING_ADSL_PROTOCOL_PPPOA: string
+export const SETTING_ADSL_PROTOCOL_PPPOE: string
+export const SETTING_ADSL_SETTING_NAME: string
+export const SETTING_ADSL_USERNAME: string
+export const SETTING_ADSL_VCI: string
+export const SETTING_ADSL_VPI: string
+export const SETTING_BLUETOOTH_BDADDR: string
+export const SETTING_BLUETOOTH_SETTING_NAME: string
+export const SETTING_BLUETOOTH_TYPE: string
 /**
  * Connection type describing a connection to devices that support the Bluetooth
  * DUN profile.
  */
-export const SETTING_BLUETOOTH_TYPE_DUN: string | null
+export const SETTING_BLUETOOTH_TYPE_DUN: string
 /**
  * Connection type describing a connection to devices that support the Bluetooth
  * NAP (Network Access Point) protocol, which accepts connections via PANU.
  */
-export const SETTING_BLUETOOTH_TYPE_PANU: string | null
-export const SETTING_BOND_INTERFACE_NAME: string | null
-export const SETTING_BOND_OPTIONS: string | null
-export const SETTING_BOND_OPTION_AD_SELECT: string | null
-export const SETTING_BOND_OPTION_ARP_INTERVAL: string | null
-export const SETTING_BOND_OPTION_ARP_IP_TARGET: string | null
-export const SETTING_BOND_OPTION_ARP_VALIDATE: string | null
-export const SETTING_BOND_OPTION_DOWNDELAY: string | null
-export const SETTING_BOND_OPTION_FAIL_OVER_MAC: string | null
-export const SETTING_BOND_OPTION_LACP_RATE: string | null
-export const SETTING_BOND_OPTION_MIIMON: string | null
-export const SETTING_BOND_OPTION_MODE: string | null
-export const SETTING_BOND_OPTION_PRIMARY: string | null
-export const SETTING_BOND_OPTION_PRIMARY_RESELECT: string | null
-export const SETTING_BOND_OPTION_RESEND_IGMP: string | null
-export const SETTING_BOND_OPTION_UPDELAY: string | null
-export const SETTING_BOND_OPTION_USE_CARRIER: string | null
-export const SETTING_BOND_OPTION_XMIT_HASH_POLICY: string | null
-export const SETTING_BOND_SETTING_NAME: string | null
-export const SETTING_BRIDGE_AGEING_TIME: string | null
-export const SETTING_BRIDGE_FORWARD_DELAY: string | null
-export const SETTING_BRIDGE_HELLO_TIME: string | null
-export const SETTING_BRIDGE_INTERFACE_NAME: string | null
-export const SETTING_BRIDGE_MAC_ADDRESS: string | null
-export const SETTING_BRIDGE_MAX_AGE: string | null
-export const SETTING_BRIDGE_PORT_HAIRPIN_MODE: string | null
-export const SETTING_BRIDGE_PORT_PATH_COST: string | null
-export const SETTING_BRIDGE_PORT_PRIORITY: string | null
-export const SETTING_BRIDGE_PORT_SETTING_NAME: string | null
-export const SETTING_BRIDGE_PRIORITY: string | null
-export const SETTING_BRIDGE_SETTING_NAME: string | null
-export const SETTING_BRIDGE_STP: string | null
-export const SETTING_CDMA_NUMBER: string | null
-export const SETTING_CDMA_PASSWORD: string | null
-export const SETTING_CDMA_PASSWORD_FLAGS: string | null
-export const SETTING_CDMA_SETTING_NAME: string | null
-export const SETTING_CDMA_USERNAME: string | null
-export const SETTING_CONNECTION_AUTOCONNECT: string | null
-export const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string | null
-export const SETTING_CONNECTION_ID: string | null
-export const SETTING_CONNECTION_INTERFACE_NAME: string | null
-export const SETTING_CONNECTION_MASTER: string | null
-export const SETTING_CONNECTION_PERMISSIONS: string | null
-export const SETTING_CONNECTION_READ_ONLY: string | null
-export const SETTING_CONNECTION_SECONDARIES: string | null
-export const SETTING_CONNECTION_SETTING_NAME: string | null
-export const SETTING_CONNECTION_SLAVE_TYPE: string | null
-export const SETTING_CONNECTION_TIMESTAMP: string | null
-export const SETTING_CONNECTION_TYPE: string | null
-export const SETTING_CONNECTION_UUID: string | null
-export const SETTING_CONNECTION_ZONE: string | null
-export const SETTING_DCB_APP_FCOE_FLAGS: string | null
-export const SETTING_DCB_APP_FCOE_MODE: string | null
-export const SETTING_DCB_APP_FCOE_PRIORITY: string | null
-export const SETTING_DCB_APP_FIP_FLAGS: string | null
-export const SETTING_DCB_APP_FIP_PRIORITY: string | null
-export const SETTING_DCB_APP_ISCSI_FLAGS: string | null
-export const SETTING_DCB_APP_ISCSI_PRIORITY: string | null
+export const SETTING_BLUETOOTH_TYPE_PANU: string
+export const SETTING_BOND_INTERFACE_NAME: string
+export const SETTING_BOND_OPTIONS: string
+export const SETTING_BOND_OPTION_AD_SELECT: string
+export const SETTING_BOND_OPTION_ARP_INTERVAL: string
+export const SETTING_BOND_OPTION_ARP_IP_TARGET: string
+export const SETTING_BOND_OPTION_ARP_VALIDATE: string
+export const SETTING_BOND_OPTION_DOWNDELAY: string
+export const SETTING_BOND_OPTION_FAIL_OVER_MAC: string
+export const SETTING_BOND_OPTION_LACP_RATE: string
+export const SETTING_BOND_OPTION_MIIMON: string
+export const SETTING_BOND_OPTION_MODE: string
+export const SETTING_BOND_OPTION_PRIMARY: string
+export const SETTING_BOND_OPTION_PRIMARY_RESELECT: string
+export const SETTING_BOND_OPTION_RESEND_IGMP: string
+export const SETTING_BOND_OPTION_UPDELAY: string
+export const SETTING_BOND_OPTION_USE_CARRIER: string
+export const SETTING_BOND_OPTION_XMIT_HASH_POLICY: string
+export const SETTING_BOND_SETTING_NAME: string
+export const SETTING_BRIDGE_AGEING_TIME: string
+export const SETTING_BRIDGE_FORWARD_DELAY: string
+export const SETTING_BRIDGE_HELLO_TIME: string
+export const SETTING_BRIDGE_INTERFACE_NAME: string
+export const SETTING_BRIDGE_MAC_ADDRESS: string
+export const SETTING_BRIDGE_MAX_AGE: string
+export const SETTING_BRIDGE_PORT_HAIRPIN_MODE: string
+export const SETTING_BRIDGE_PORT_PATH_COST: string
+export const SETTING_BRIDGE_PORT_PRIORITY: string
+export const SETTING_BRIDGE_PORT_SETTING_NAME: string
+export const SETTING_BRIDGE_PRIORITY: string
+export const SETTING_BRIDGE_SETTING_NAME: string
+export const SETTING_BRIDGE_STP: string
+export const SETTING_CDMA_NUMBER: string
+export const SETTING_CDMA_PASSWORD: string
+export const SETTING_CDMA_PASSWORD_FLAGS: string
+export const SETTING_CDMA_SETTING_NAME: string
+export const SETTING_CDMA_USERNAME: string
+export const SETTING_CONNECTION_AUTOCONNECT: string
+export const SETTING_CONNECTION_GATEWAY_PING_TIMEOUT: string
+export const SETTING_CONNECTION_ID: string
+export const SETTING_CONNECTION_INTERFACE_NAME: string
+export const SETTING_CONNECTION_MASTER: string
+export const SETTING_CONNECTION_PERMISSIONS: string
+export const SETTING_CONNECTION_READ_ONLY: string
+export const SETTING_CONNECTION_SECONDARIES: string
+export const SETTING_CONNECTION_SETTING_NAME: string
+export const SETTING_CONNECTION_SLAVE_TYPE: string
+export const SETTING_CONNECTION_TIMESTAMP: string
+export const SETTING_CONNECTION_TYPE: string
+export const SETTING_CONNECTION_UUID: string
+export const SETTING_CONNECTION_ZONE: string
+export const SETTING_DCB_APP_FCOE_FLAGS: string
+export const SETTING_DCB_APP_FCOE_MODE: string
+export const SETTING_DCB_APP_FCOE_PRIORITY: string
+export const SETTING_DCB_APP_FIP_FLAGS: string
+export const SETTING_DCB_APP_FIP_PRIORITY: string
+export const SETTING_DCB_APP_ISCSI_FLAGS: string
+export const SETTING_DCB_APP_ISCSI_PRIORITY: string
 /**
  * Indicates that the FCoE controller should use "fabric" mode (default)
  */
-export const SETTING_DCB_FCOE_MODE_FABRIC: string | null
+export const SETTING_DCB_FCOE_MODE_FABRIC: string
 /**
  * Indicates that the FCoE controller should use "VN2VN" mode.
  */
-export const SETTING_DCB_FCOE_MODE_VN2VN: string | null
-export const SETTING_DCB_PRIORITY_BANDWIDTH: string | null
-export const SETTING_DCB_PRIORITY_FLOW_CONTROL: string | null
-export const SETTING_DCB_PRIORITY_FLOW_CONTROL_FLAGS: string | null
-export const SETTING_DCB_PRIORITY_GROUP_BANDWIDTH: string | null
-export const SETTING_DCB_PRIORITY_GROUP_FLAGS: string | null
-export const SETTING_DCB_PRIORITY_GROUP_ID: string | null
-export const SETTING_DCB_PRIORITY_STRICT_BANDWIDTH: string | null
-export const SETTING_DCB_PRIORITY_TRAFFIC_CLASS: string | null
-export const SETTING_DCB_SETTING_NAME: string | null
-export const SETTING_GENERIC_SETTING_NAME: string | null
-export const SETTING_GSM_ALLOWED_BANDS: string | null
-export const SETTING_GSM_APN: string | null
+export const SETTING_DCB_FCOE_MODE_VN2VN: string
+export const SETTING_DCB_PRIORITY_BANDWIDTH: string
+export const SETTING_DCB_PRIORITY_FLOW_CONTROL: string
+export const SETTING_DCB_PRIORITY_FLOW_CONTROL_FLAGS: string
+export const SETTING_DCB_PRIORITY_GROUP_BANDWIDTH: string
+export const SETTING_DCB_PRIORITY_GROUP_FLAGS: string
+export const SETTING_DCB_PRIORITY_GROUP_ID: string
+export const SETTING_DCB_PRIORITY_STRICT_BANDWIDTH: string
+export const SETTING_DCB_PRIORITY_TRAFFIC_CLASS: string
+export const SETTING_DCB_SETTING_NAME: string
+export const SETTING_GENERIC_SETTING_NAME: string
+export const SETTING_GSM_ALLOWED_BANDS: string
+export const SETTING_GSM_APN: string
 /**
  * #NM_SETTING_GSM_BANDS_MAX macro indicate the maximal value that can be used
  * as the allowed frequency bands (#NMSettingGsm:allowed-bands property).
  */
 export const SETTING_GSM_BANDS_MAX: number
-export const SETTING_GSM_HOME_ONLY: string | null
-export const SETTING_GSM_NETWORK_ID: string | null
-export const SETTING_GSM_NETWORK_TYPE: string | null
-export const SETTING_GSM_NUMBER: string | null
-export const SETTING_GSM_PASSWORD: string | null
-export const SETTING_GSM_PASSWORD_FLAGS: string | null
-export const SETTING_GSM_PIN: string | null
-export const SETTING_GSM_PIN_FLAGS: string | null
-export const SETTING_GSM_SETTING_NAME: string | null
-export const SETTING_GSM_USERNAME: string | null
-export const SETTING_INFINIBAND_MAC_ADDRESS: string | null
-export const SETTING_INFINIBAND_MTU: string | null
-export const SETTING_INFINIBAND_PARENT: string | null
-export const SETTING_INFINIBAND_P_KEY: string | null
-export const SETTING_INFINIBAND_SETTING_NAME: string | null
-export const SETTING_INFINIBAND_TRANSPORT_MODE: string | null
-export const SETTING_IP4_CONFIG_ADDRESSES: string | null
-export const SETTING_IP4_CONFIG_DHCP_CLIENT_ID: string | null
-export const SETTING_IP4_CONFIG_DHCP_HOSTNAME: string | null
-export const SETTING_IP4_CONFIG_DHCP_SEND_HOSTNAME: string | null
-export const SETTING_IP4_CONFIG_DHCP_TIMEOUT: string | null
-export const SETTING_IP4_CONFIG_DNS: string | null
-export const SETTING_IP4_CONFIG_DNS_SEARCH: string | null
-export const SETTING_IP4_CONFIG_IGNORE_AUTO_DNS: string | null
-export const SETTING_IP4_CONFIG_IGNORE_AUTO_ROUTES: string | null
-export const SETTING_IP4_CONFIG_MAY_FAIL: string | null
-export const SETTING_IP4_CONFIG_METHOD: string | null
+export const SETTING_GSM_HOME_ONLY: string
+export const SETTING_GSM_NETWORK_ID: string
+export const SETTING_GSM_NETWORK_TYPE: string
+export const SETTING_GSM_NUMBER: string
+export const SETTING_GSM_PASSWORD: string
+export const SETTING_GSM_PASSWORD_FLAGS: string
+export const SETTING_GSM_PIN: string
+export const SETTING_GSM_PIN_FLAGS: string
+export const SETTING_GSM_SETTING_NAME: string
+export const SETTING_GSM_USERNAME: string
+export const SETTING_INFINIBAND_MAC_ADDRESS: string
+export const SETTING_INFINIBAND_MTU: string
+export const SETTING_INFINIBAND_PARENT: string
+export const SETTING_INFINIBAND_P_KEY: string
+export const SETTING_INFINIBAND_SETTING_NAME: string
+export const SETTING_INFINIBAND_TRANSPORT_MODE: string
+export const SETTING_IP4_CONFIG_ADDRESSES: string
+export const SETTING_IP4_CONFIG_DHCP_CLIENT_ID: string
+export const SETTING_IP4_CONFIG_DHCP_HOSTNAME: string
+export const SETTING_IP4_CONFIG_DHCP_SEND_HOSTNAME: string
+export const SETTING_IP4_CONFIG_DHCP_TIMEOUT: string
+export const SETTING_IP4_CONFIG_DNS: string
+export const SETTING_IP4_CONFIG_DNS_SEARCH: string
+export const SETTING_IP4_CONFIG_IGNORE_AUTO_DNS: string
+export const SETTING_IP4_CONFIG_IGNORE_AUTO_ROUTES: string
+export const SETTING_IP4_CONFIG_MAY_FAIL: string
+export const SETTING_IP4_CONFIG_METHOD: string
 /**
  * IPv4 configuration should be automatically determined via a method appropriate
  * for the hardware interface, ie DHCP or PPP or some other device-specific
  * manner.
  */
-export const SETTING_IP4_CONFIG_METHOD_AUTO: string | null
+export const SETTING_IP4_CONFIG_METHOD_AUTO: string
 /**
  * This connection does not use or require IPv4 address and it should be disabled.
  */
-export const SETTING_IP4_CONFIG_METHOD_DISABLED: string | null
+export const SETTING_IP4_CONFIG_METHOD_DISABLED: string
 /**
  * IPv4 configuration should be automatically configured for link-local-only
  * operation.
  */
-export const SETTING_IP4_CONFIG_METHOD_LINK_LOCAL: string | null
+export const SETTING_IP4_CONFIG_METHOD_LINK_LOCAL: string
 /**
  * All necessary IPv4 configuration (addresses, prefix, DNS, etc) is specified
  * in the setting's properties.
  */
-export const SETTING_IP4_CONFIG_METHOD_MANUAL: string | null
+export const SETTING_IP4_CONFIG_METHOD_MANUAL: string
 /**
  * This connection specifies configuration that allows other computers to
  * connect through it to the default network (usually the Internet).  The
@@ -2163,46 +2163,46 @@ export const SETTING_IP4_CONFIG_METHOD_MANUAL: string | null
  * be started on this connection's interface to allow other devices to connect
  * through that interface to the default network.
  */
-export const SETTING_IP4_CONFIG_METHOD_SHARED: string | null
-export const SETTING_IP4_CONFIG_NEVER_DEFAULT: string | null
-export const SETTING_IP4_CONFIG_ROUTES: string | null
-export const SETTING_IP4_CONFIG_ROUTE_METRIC: string | null
-export const SETTING_IP4_CONFIG_SETTING_NAME: string | null
-export const SETTING_IP6_CONFIG_ADDRESSES: string | null
-export const SETTING_IP6_CONFIG_DHCP_HOSTNAME: string | null
-export const SETTING_IP6_CONFIG_DNS: string | null
-export const SETTING_IP6_CONFIG_DNS_SEARCH: string | null
-export const SETTING_IP6_CONFIG_IGNORE_AUTO_DNS: string | null
-export const SETTING_IP6_CONFIG_IGNORE_AUTO_ROUTES: string | null
-export const SETTING_IP6_CONFIG_IP6_PRIVACY: string | null
-export const SETTING_IP6_CONFIG_MAY_FAIL: string | null
-export const SETTING_IP6_CONFIG_METHOD: string | null
+export const SETTING_IP4_CONFIG_METHOD_SHARED: string
+export const SETTING_IP4_CONFIG_NEVER_DEFAULT: string
+export const SETTING_IP4_CONFIG_ROUTES: string
+export const SETTING_IP4_CONFIG_ROUTE_METRIC: string
+export const SETTING_IP4_CONFIG_SETTING_NAME: string
+export const SETTING_IP6_CONFIG_ADDRESSES: string
+export const SETTING_IP6_CONFIG_DHCP_HOSTNAME: string
+export const SETTING_IP6_CONFIG_DNS: string
+export const SETTING_IP6_CONFIG_DNS_SEARCH: string
+export const SETTING_IP6_CONFIG_IGNORE_AUTO_DNS: string
+export const SETTING_IP6_CONFIG_IGNORE_AUTO_ROUTES: string
+export const SETTING_IP6_CONFIG_IP6_PRIVACY: string
+export const SETTING_IP6_CONFIG_MAY_FAIL: string
+export const SETTING_IP6_CONFIG_METHOD: string
 /**
  * IPv6 configuration should be automatically determined via a method appropriate
  * for the hardware interface, ie router advertisements, DHCP, or PPP or some
  * other device-specific manner.
  */
-export const SETTING_IP6_CONFIG_METHOD_AUTO: string | null
+export const SETTING_IP6_CONFIG_METHOD_AUTO: string
 /**
  * IPv6 configuration should be automatically determined via DHCPv6 only and
  * router advertisements should be ignored.
  */
-export const SETTING_IP6_CONFIG_METHOD_DHCP: string | null
+export const SETTING_IP6_CONFIG_METHOD_DHCP: string
 /**
  * IPv6 is not required or is handled by some other mechanism, and NetworkManager
  * should not configure IPv6 for this connection.
  */
-export const SETTING_IP6_CONFIG_METHOD_IGNORE: string | null
+export const SETTING_IP6_CONFIG_METHOD_IGNORE: string
 /**
  * IPv6 configuration should be automatically configured for link-local-only
  * operation.
  */
-export const SETTING_IP6_CONFIG_METHOD_LINK_LOCAL: string | null
+export const SETTING_IP6_CONFIG_METHOD_LINK_LOCAL: string
 /**
  * All necessary IPv6 configuration (addresses, prefix, DNS, etc) is specified
  * in the setting's properties.
  */
-export const SETTING_IP6_CONFIG_METHOD_MANUAL: string | null
+export const SETTING_IP6_CONFIG_METHOD_MANUAL: string
 /**
  * This connection specifies configuration that allows other computers to
  * connect through it to the default network (usually the Internet).  The
@@ -2212,167 +2212,167 @@ export const SETTING_IP6_CONFIG_METHOD_MANUAL: string | null
  * devices to connect through that interface to the default network. (not yet
  * supported for IPv6)
  */
-export const SETTING_IP6_CONFIG_METHOD_SHARED: string | null
-export const SETTING_IP6_CONFIG_NEVER_DEFAULT: string | null
-export const SETTING_IP6_CONFIG_ROUTES: string | null
-export const SETTING_IP6_CONFIG_ROUTE_METRIC: string | null
-export const SETTING_IP6_CONFIG_SETTING_NAME: string | null
-export const SETTING_NAME: string | null
-export const SETTING_OLPC_MESH_CHANNEL: string | null
-export const SETTING_OLPC_MESH_DHCP_ANYCAST_ADDRESS: string | null
-export const SETTING_OLPC_MESH_SETTING_NAME: string | null
-export const SETTING_OLPC_MESH_SSID: string | null
+export const SETTING_IP6_CONFIG_METHOD_SHARED: string
+export const SETTING_IP6_CONFIG_NEVER_DEFAULT: string
+export const SETTING_IP6_CONFIG_ROUTES: string
+export const SETTING_IP6_CONFIG_ROUTE_METRIC: string
+export const SETTING_IP6_CONFIG_SETTING_NAME: string
+export const SETTING_NAME: string
+export const SETTING_OLPC_MESH_CHANNEL: string
+export const SETTING_OLPC_MESH_DHCP_ANYCAST_ADDRESS: string
+export const SETTING_OLPC_MESH_SETTING_NAME: string
+export const SETTING_OLPC_MESH_SSID: string
 export const SETTING_PARAM_FUZZY_IGNORE: number
 export const SETTING_PARAM_REQUIRED: number
 export const SETTING_PARAM_SECRET: number
 export const SETTING_PARAM_SERIALIZE: number
-export const SETTING_PPPOE_PASSWORD: string | null
-export const SETTING_PPPOE_PASSWORD_FLAGS: string | null
-export const SETTING_PPPOE_SERVICE: string | null
-export const SETTING_PPPOE_SETTING_NAME: string | null
-export const SETTING_PPPOE_USERNAME: string | null
-export const SETTING_PPP_BAUD: string | null
-export const SETTING_PPP_CRTSCTS: string | null
-export const SETTING_PPP_LCP_ECHO_FAILURE: string | null
-export const SETTING_PPP_LCP_ECHO_INTERVAL: string | null
-export const SETTING_PPP_MPPE_STATEFUL: string | null
-export const SETTING_PPP_MRU: string | null
-export const SETTING_PPP_MTU: string | null
-export const SETTING_PPP_NOAUTH: string | null
-export const SETTING_PPP_NOBSDCOMP: string | null
-export const SETTING_PPP_NODEFLATE: string | null
-export const SETTING_PPP_NO_VJ_COMP: string | null
-export const SETTING_PPP_REFUSE_CHAP: string | null
-export const SETTING_PPP_REFUSE_EAP: string | null
-export const SETTING_PPP_REFUSE_MSCHAP: string | null
-export const SETTING_PPP_REFUSE_MSCHAPV2: string | null
-export const SETTING_PPP_REFUSE_PAP: string | null
-export const SETTING_PPP_REQUIRE_MPPE: string | null
-export const SETTING_PPP_REQUIRE_MPPE_128: string | null
-export const SETTING_PPP_SETTING_NAME: string | null
-export const SETTING_SERIAL_BAUD: string | null
-export const SETTING_SERIAL_BITS: string | null
-export const SETTING_SERIAL_PARITY: string | null
-export const SETTING_SERIAL_SEND_DELAY: string | null
-export const SETTING_SERIAL_SETTING_NAME: string | null
-export const SETTING_SERIAL_STOPBITS: string | null
-export const SETTING_TEAM_CONFIG: string | null
-export const SETTING_TEAM_INTERFACE_NAME: string | null
-export const SETTING_TEAM_PORT_CONFIG: string | null
-export const SETTING_TEAM_PORT_SETTING_NAME: string | null
-export const SETTING_TEAM_SETTING_NAME: string | null
-export const SETTING_VLAN_EGRESS_PRIORITY_MAP: string | null
-export const SETTING_VLAN_FLAGS: string | null
-export const SETTING_VLAN_ID: string | null
-export const SETTING_VLAN_INGRESS_PRIORITY_MAP: string | null
-export const SETTING_VLAN_INTERFACE_NAME: string | null
-export const SETTING_VLAN_PARENT: string | null
-export const SETTING_VLAN_SETTING_NAME: string | null
-export const SETTING_VPN_DATA: string | null
-export const SETTING_VPN_PERSISTENT: string | null
-export const SETTING_VPN_SECRETS: string | null
-export const SETTING_VPN_SERVICE_TYPE: string | null
-export const SETTING_VPN_SETTING_NAME: string | null
-export const SETTING_VPN_USER_NAME: string | null
-export const SETTING_WIMAX_MAC_ADDRESS: string | null
-export const SETTING_WIMAX_NETWORK_NAME: string | null
-export const SETTING_WIMAX_SETTING_NAME: string | null
-export const SETTING_WIRED_AUTO_NEGOTIATE: string | null
-export const SETTING_WIRED_CLONED_MAC_ADDRESS: string | null
-export const SETTING_WIRED_DUPLEX: string | null
-export const SETTING_WIRED_MAC_ADDRESS: string | null
-export const SETTING_WIRED_MAC_ADDRESS_BLACKLIST: string | null
-export const SETTING_WIRED_MTU: string | null
-export const SETTING_WIRED_PORT: string | null
-export const SETTING_WIRED_S390_NETTYPE: string | null
-export const SETTING_WIRED_S390_OPTIONS: string | null
-export const SETTING_WIRED_S390_SUBCHANNELS: string | null
-export const SETTING_WIRED_SETTING_NAME: string | null
-export const SETTING_WIRED_SPEED: string | null
-export const SETTING_WIRELESS_BAND: string | null
-export const SETTING_WIRELESS_BSSID: string | null
-export const SETTING_WIRELESS_CHANNEL: string | null
-export const SETTING_WIRELESS_CLONED_MAC_ADDRESS: string | null
-export const SETTING_WIRELESS_HIDDEN: string | null
-export const SETTING_WIRELESS_MAC_ADDRESS: string | null
-export const SETTING_WIRELESS_MAC_ADDRESS_BLACKLIST: string | null
-export const SETTING_WIRELESS_MODE: string | null
+export const SETTING_PPPOE_PASSWORD: string
+export const SETTING_PPPOE_PASSWORD_FLAGS: string
+export const SETTING_PPPOE_SERVICE: string
+export const SETTING_PPPOE_SETTING_NAME: string
+export const SETTING_PPPOE_USERNAME: string
+export const SETTING_PPP_BAUD: string
+export const SETTING_PPP_CRTSCTS: string
+export const SETTING_PPP_LCP_ECHO_FAILURE: string
+export const SETTING_PPP_LCP_ECHO_INTERVAL: string
+export const SETTING_PPP_MPPE_STATEFUL: string
+export const SETTING_PPP_MRU: string
+export const SETTING_PPP_MTU: string
+export const SETTING_PPP_NOAUTH: string
+export const SETTING_PPP_NOBSDCOMP: string
+export const SETTING_PPP_NODEFLATE: string
+export const SETTING_PPP_NO_VJ_COMP: string
+export const SETTING_PPP_REFUSE_CHAP: string
+export const SETTING_PPP_REFUSE_EAP: string
+export const SETTING_PPP_REFUSE_MSCHAP: string
+export const SETTING_PPP_REFUSE_MSCHAPV2: string
+export const SETTING_PPP_REFUSE_PAP: string
+export const SETTING_PPP_REQUIRE_MPPE: string
+export const SETTING_PPP_REQUIRE_MPPE_128: string
+export const SETTING_PPP_SETTING_NAME: string
+export const SETTING_SERIAL_BAUD: string
+export const SETTING_SERIAL_BITS: string
+export const SETTING_SERIAL_PARITY: string
+export const SETTING_SERIAL_SEND_DELAY: string
+export const SETTING_SERIAL_SETTING_NAME: string
+export const SETTING_SERIAL_STOPBITS: string
+export const SETTING_TEAM_CONFIG: string
+export const SETTING_TEAM_INTERFACE_NAME: string
+export const SETTING_TEAM_PORT_CONFIG: string
+export const SETTING_TEAM_PORT_SETTING_NAME: string
+export const SETTING_TEAM_SETTING_NAME: string
+export const SETTING_VLAN_EGRESS_PRIORITY_MAP: string
+export const SETTING_VLAN_FLAGS: string
+export const SETTING_VLAN_ID: string
+export const SETTING_VLAN_INGRESS_PRIORITY_MAP: string
+export const SETTING_VLAN_INTERFACE_NAME: string
+export const SETTING_VLAN_PARENT: string
+export const SETTING_VLAN_SETTING_NAME: string
+export const SETTING_VPN_DATA: string
+export const SETTING_VPN_PERSISTENT: string
+export const SETTING_VPN_SECRETS: string
+export const SETTING_VPN_SERVICE_TYPE: string
+export const SETTING_VPN_SETTING_NAME: string
+export const SETTING_VPN_USER_NAME: string
+export const SETTING_WIMAX_MAC_ADDRESS: string
+export const SETTING_WIMAX_NETWORK_NAME: string
+export const SETTING_WIMAX_SETTING_NAME: string
+export const SETTING_WIRED_AUTO_NEGOTIATE: string
+export const SETTING_WIRED_CLONED_MAC_ADDRESS: string
+export const SETTING_WIRED_DUPLEX: string
+export const SETTING_WIRED_MAC_ADDRESS: string
+export const SETTING_WIRED_MAC_ADDRESS_BLACKLIST: string
+export const SETTING_WIRED_MTU: string
+export const SETTING_WIRED_PORT: string
+export const SETTING_WIRED_S390_NETTYPE: string
+export const SETTING_WIRED_S390_OPTIONS: string
+export const SETTING_WIRED_S390_SUBCHANNELS: string
+export const SETTING_WIRED_SETTING_NAME: string
+export const SETTING_WIRED_SPEED: string
+export const SETTING_WIRELESS_BAND: string
+export const SETTING_WIRELESS_BSSID: string
+export const SETTING_WIRELESS_CHANNEL: string
+export const SETTING_WIRELESS_CLONED_MAC_ADDRESS: string
+export const SETTING_WIRELESS_HIDDEN: string
+export const SETTING_WIRELESS_MAC_ADDRESS: string
+export const SETTING_WIRELESS_MAC_ADDRESS_BLACKLIST: string
+export const SETTING_WIRELESS_MODE: string
 /**
  * Indicates Ad-Hoc mode where no access point is expected to be present.
  */
-export const SETTING_WIRELESS_MODE_ADHOC: string | null
+export const SETTING_WIRELESS_MODE_ADHOC: string
 /**
  * Indicates AP/master mode where the wireless device is started as an access
  * point/hotspot.
  */
-export const SETTING_WIRELESS_MODE_AP: string | null
+export const SETTING_WIRELESS_MODE_AP: string
 /**
  * Indicates infrastructure mode where an access point is expected to be present
  * for this connection.
  */
-export const SETTING_WIRELESS_MODE_INFRA: string | null
-export const SETTING_WIRELESS_MTU: string | null
-export const SETTING_WIRELESS_POWERSAVE: string | null
-export const SETTING_WIRELESS_RATE: string | null
-export const SETTING_WIRELESS_SEC: string | null
-export const SETTING_WIRELESS_SECURITY_AUTH_ALG: string | null
-export const SETTING_WIRELESS_SECURITY_GROUP: string | null
-export const SETTING_WIRELESS_SECURITY_KEY_MGMT: string | null
-export const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD: string | null
-export const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD_FLAGS: string | null
-export const SETTING_WIRELESS_SECURITY_LEAP_USERNAME: string | null
-export const SETTING_WIRELESS_SECURITY_PAIRWISE: string | null
-export const SETTING_WIRELESS_SECURITY_PROTO: string | null
-export const SETTING_WIRELESS_SECURITY_PSK: string | null
-export const SETTING_WIRELESS_SECURITY_PSK_FLAGS: string | null
-export const SETTING_WIRELESS_SECURITY_SETTING_NAME: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_KEY0: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_KEY1: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_KEY2: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_KEY3: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_KEY_FLAGS: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_KEY_TYPE: string | null
-export const SETTING_WIRELESS_SECURITY_WEP_TX_KEYIDX: string | null
-export const SETTING_WIRELESS_SEEN_BSSIDS: string | null
-export const SETTING_WIRELESS_SETTING_NAME: string | null
-export const SETTING_WIRELESS_SSID: string | null
-export const SETTING_WIRELESS_TX_POWER: string | null
+export const SETTING_WIRELESS_MODE_INFRA: string
+export const SETTING_WIRELESS_MTU: string
+export const SETTING_WIRELESS_POWERSAVE: string
+export const SETTING_WIRELESS_RATE: string
+export const SETTING_WIRELESS_SEC: string
+export const SETTING_WIRELESS_SECURITY_AUTH_ALG: string
+export const SETTING_WIRELESS_SECURITY_GROUP: string
+export const SETTING_WIRELESS_SECURITY_KEY_MGMT: string
+export const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD: string
+export const SETTING_WIRELESS_SECURITY_LEAP_PASSWORD_FLAGS: string
+export const SETTING_WIRELESS_SECURITY_LEAP_USERNAME: string
+export const SETTING_WIRELESS_SECURITY_PAIRWISE: string
+export const SETTING_WIRELESS_SECURITY_PROTO: string
+export const SETTING_WIRELESS_SECURITY_PSK: string
+export const SETTING_WIRELESS_SECURITY_PSK_FLAGS: string
+export const SETTING_WIRELESS_SECURITY_SETTING_NAME: string
+export const SETTING_WIRELESS_SECURITY_WEP_KEY0: string
+export const SETTING_WIRELESS_SECURITY_WEP_KEY1: string
+export const SETTING_WIRELESS_SECURITY_WEP_KEY2: string
+export const SETTING_WIRELESS_SECURITY_WEP_KEY3: string
+export const SETTING_WIRELESS_SECURITY_WEP_KEY_FLAGS: string
+export const SETTING_WIRELESS_SECURITY_WEP_KEY_TYPE: string
+export const SETTING_WIRELESS_SECURITY_WEP_TX_KEYIDX: string
+export const SETTING_WIRELESS_SEEN_BSSIDS: string
+export const SETTING_WIRELESS_SETTING_NAME: string
+export const SETTING_WIRELESS_SSID: string
+export const SETTING_WIRELESS_TX_POWER: string
 /**
  * The maximum length of hardware addresses handled by NetworkManager itself,
  * nm_utils_hwaddr_len(), and nm_utils_hwaddr_aton().
  */
 export const UTILS_HWADDR_LEN_MAX: number
 export const VLAN_FLAGS_ALL: number
-export const VPN_DBUS_PLUGIN_INTERFACE: string | null
-export const VPN_DBUS_PLUGIN_PATH: string | null
-export const VPN_PLUGIN_CAN_PERSIST: string | null
-export const VPN_PLUGIN_CONFIG_BANNER: string | null
-export const VPN_PLUGIN_CONFIG_EXT_GATEWAY: string | null
-export const VPN_PLUGIN_CONFIG_HAS_IP4: string | null
-export const VPN_PLUGIN_CONFIG_HAS_IP6: string | null
-export const VPN_PLUGIN_CONFIG_MTU: string | null
-export const VPN_PLUGIN_CONFIG_TUNDEV: string | null
-export const VPN_PLUGIN_IP4_CONFIG_ADDRESS: string | null
-export const VPN_PLUGIN_IP4_CONFIG_DNS: string | null
-export const VPN_PLUGIN_IP4_CONFIG_DOMAIN: string | null
-export const VPN_PLUGIN_IP4_CONFIG_DOMAINS: string | null
-export const VPN_PLUGIN_IP4_CONFIG_INT_GATEWAY: string | null
-export const VPN_PLUGIN_IP4_CONFIG_MSS: string | null
-export const VPN_PLUGIN_IP4_CONFIG_NBNS: string | null
-export const VPN_PLUGIN_IP4_CONFIG_NEVER_DEFAULT: string | null
-export const VPN_PLUGIN_IP4_CONFIG_PREFIX: string | null
-export const VPN_PLUGIN_IP4_CONFIG_PTP: string | null
-export const VPN_PLUGIN_IP4_CONFIG_ROUTES: string | null
-export const VPN_PLUGIN_IP6_CONFIG_ADDRESS: string | null
-export const VPN_PLUGIN_IP6_CONFIG_DNS: string | null
-export const VPN_PLUGIN_IP6_CONFIG_DOMAIN: string | null
-export const VPN_PLUGIN_IP6_CONFIG_DOMAINS: string | null
-export const VPN_PLUGIN_IP6_CONFIG_INT_GATEWAY: string | null
-export const VPN_PLUGIN_IP6_CONFIG_MSS: string | null
-export const VPN_PLUGIN_IP6_CONFIG_NEVER_DEFAULT: string | null
-export const VPN_PLUGIN_IP6_CONFIG_PREFIX: string | null
-export const VPN_PLUGIN_IP6_CONFIG_PTP: string | null
-export const VPN_PLUGIN_IP6_CONFIG_ROUTES: string | null
+export const VPN_DBUS_PLUGIN_INTERFACE: string
+export const VPN_DBUS_PLUGIN_PATH: string
+export const VPN_PLUGIN_CAN_PERSIST: string
+export const VPN_PLUGIN_CONFIG_BANNER: string
+export const VPN_PLUGIN_CONFIG_EXT_GATEWAY: string
+export const VPN_PLUGIN_CONFIG_HAS_IP4: string
+export const VPN_PLUGIN_CONFIG_HAS_IP6: string
+export const VPN_PLUGIN_CONFIG_MTU: string
+export const VPN_PLUGIN_CONFIG_TUNDEV: string
+export const VPN_PLUGIN_IP4_CONFIG_ADDRESS: string
+export const VPN_PLUGIN_IP4_CONFIG_DNS: string
+export const VPN_PLUGIN_IP4_CONFIG_DOMAIN: string
+export const VPN_PLUGIN_IP4_CONFIG_DOMAINS: string
+export const VPN_PLUGIN_IP4_CONFIG_INT_GATEWAY: string
+export const VPN_PLUGIN_IP4_CONFIG_MSS: string
+export const VPN_PLUGIN_IP4_CONFIG_NBNS: string
+export const VPN_PLUGIN_IP4_CONFIG_NEVER_DEFAULT: string
+export const VPN_PLUGIN_IP4_CONFIG_PREFIX: string
+export const VPN_PLUGIN_IP4_CONFIG_PTP: string
+export const VPN_PLUGIN_IP4_CONFIG_ROUTES: string
+export const VPN_PLUGIN_IP6_CONFIG_ADDRESS: string
+export const VPN_PLUGIN_IP6_CONFIG_DNS: string
+export const VPN_PLUGIN_IP6_CONFIG_DOMAIN: string
+export const VPN_PLUGIN_IP6_CONFIG_DOMAINS: string
+export const VPN_PLUGIN_IP6_CONFIG_INT_GATEWAY: string
+export const VPN_PLUGIN_IP6_CONFIG_MSS: string
+export const VPN_PLUGIN_IP6_CONFIG_NEVER_DEFAULT: string
+export const VPN_PLUGIN_IP6_CONFIG_PREFIX: string
+export const VPN_PLUGIN_IP6_CONFIG_PTP: string
+export const VPN_PLUGIN_IP6_CONFIG_ROUTES: string
 /**
  * Registers an error quark for #NMConnection if necessary.
  * @returns the error quark used for #NMConnection errors.
@@ -2527,7 +2527,7 @@ export function utilsApModeSecurityValid(type: UtilsSecurityType, wifiCaps: Devi
  * @param finalLen an index where to cut off the returned string, or -1
  * @returns the textual form of @bytes
  */
-export function utilsBin2hexstr(bytes: string | null, len: number, finalLen: number): string | null
+export function utilsBin2hexstr(bytes: string, len: number, finalLen: number): string | null
 /**
  * Determines if a connection of type `virtual_type` can (in the
  * general case) work with connections of type `other_type`.
@@ -2563,13 +2563,13 @@ export function utilsDeinit(): void
  * @param len length of the SSID data in `ssid`
  * @returns pointer to the escaped SSID, which uses an internal static buffer and will be overwritten by subsequent calls to this function
  */
-export function utilsEscapeSsid(ssid: number, len: number): string | null
+export function utilsEscapeSsid(ssid: number, len: number): string
 /**
  * Utility function to find out if the `filename` is in PKCS#<!-- -->12 format.
  * @param filename name of the file to test
  * @returns %TRUE if the file is PKCS#<!-- -->12, %FALSE if it is not
  */
-export function utilsFileIsPkcs12(filename: string | null): boolean
+export function utilsFileIsPkcs12(filename: string): boolean
 /**
  * Searches for a `progname` file in a list of search `paths`.
  * @param progname the helper program name, like "iptables"   Must be a non-empty string, without path separator (/).
@@ -2579,7 +2579,7 @@ export function utilsFileIsPkcs12(filename: string | null): boolean
  * @param predicate if given, pass the file name to this function   for additional checks. This check is performed after the check for   `file_test_flags`. You cannot omit both `file_test_flags` and `predicate`.
  * @returns the full path to the helper, if found, or %NULL if not found.   The returned string is not owned by the caller, but later   invocations of the function might overwrite it.
  */
-export function utilsFileSearchInPaths(progname: string | null, tryFirst: string | null, paths: string | null, fileTestFlags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string | null
+export function utilsFileSearchInPaths(progname: string, tryFirst: string | null, paths: string | null, fileTestFlags: GLib.FileTest, predicate: UtilsFileSearchInPathsPredicate): string
 /**
  * Utility function to duplicate a hash table of #GValues.
  * @param hash a #GHashTable mapping string:GValue
@@ -2591,7 +2591,7 @@ export function utilsGvalueHashDup(hash: GLib.HashTable): GLib.HashTable
  * @param hex a string representing a hex byte
  * @returns a byte, or -1 if @hex doesn't represent a hex byte
  */
-export function utilsHex2byte(hex: string | null): number
+export function utilsHex2byte(hex: string): number
 /**
  * Converts a hexadecimal string `hex` into a byte-array. The returned array
  * length is `len/`2.
@@ -2599,7 +2599,7 @@ export function utilsHex2byte(hex: string | null): number
  * @param len the length of the `hex` string (it has to be even)
  * @returns a array of bytes, or %NULL on error
  */
-export function utilsHexstr2bin(hex: string | null, len: number): string | null
+export function utilsHexstr2bin(hex: string, len: number): string | null
 /**
  * Parses `asc` and converts it to binary form in a #GByteArray. See
  * nm_utils_hwaddr_aton() if you don't want a #GByteArray.
@@ -2607,7 +2607,7 @@ export function utilsHexstr2bin(hex: string | null, len: number): string | null
  * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
  * @returns a new #GByteArray, or %NULL if @asc couldn't be parsed
  */
-export function utilsHwaddrAtoba(asc: string | null, type: number): number[]
+export function utilsHwaddrAtoba(asc: string, type: number): number[]
 /**
  * Parses `asc` and converts it to binary form in `buffer`. See
  * nm_utils_hwaddr_atoba() if you'd rather have the result in a
@@ -2620,7 +2620,7 @@ export function utilsHwaddrAtoba(asc: string | null, type: number): number[]
  * @param buffer buffer to store the result into
  * @returns @buffer, or %NULL if @asc couldn't be parsed
  */
-export function utilsHwaddrAton(asc: string | null, type: number, buffer: any | null): number
+export function utilsHwaddrAton(asc: string, type: number, buffer: any | null): number
 /**
  * Parses `asc` and converts it to binary form in `buffer`.
  * Bytes in `asc` can be sepatared by colons (:), or hyphens (-), but not mixed.
@@ -2629,7 +2629,7 @@ export function utilsHwaddrAton(asc: string | null, type: number, buffer: any | 
  * @param length the expected length in bytes of the result and the size of the buffer in bytes.
  * @returns @buffer, or %NULL if @asc couldn't be parsed   or would be shorter or longer than @length.
  */
-export function utilsHwaddrAtonLen(asc: string | null, buffer: any | null, length: number): number
+export function utilsHwaddrAtonLen(asc: string, buffer: any | null, length: number): number
 /**
  * Returns the length in octets of a hardware address of type `type`.
  * @param type the type of address; either <literal>ARPHRD_ETHER</literal> or   <literal>ARPHRD_INFINIBAND</literal>
@@ -2665,14 +2665,14 @@ export function utilsHwaddrType(len: number): number
  * @param asc the ASCII representation of a hardware address
  * @returns %TRUE if @asc appears to be a valid hardware address   of some type, %FALSE if not.
  */
-export function utilsHwaddrValid(asc: string | null): boolean
+export function utilsHwaddrValid(asc: string): boolean
 /**
  * This function is a 1:1 copy of the kernel's interface validation
  * function in net/core/dev.c.
  * @param name Name of interface
  * @returns %TRUE if interface name is valid, otherwise %FALSE is returned.
  */
-export function utilsIfaceValidName(name: string | null): boolean
+export function utilsIfaceValidName(name: string): boolean
 /**
  * Initializes libnm-util; should be called when starting any program that
  * uses libnm-util.  This function can be called more than once.
@@ -2784,7 +2784,7 @@ export function utilsIsEmptySsid(ssid: number, len: number): boolean
  * @param str a string that might be a UUID
  * @returns %TRUE if @str is a UUID, %FALSE if not
  */
-export function utilsIsUuid(str: string | null): boolean
+export function utilsIsUuid(str: string): boolean
 /**
  * Encrypts the given RSA private key data with the given password (or generates
  * a password if no password was given) and converts the data to PEM format
@@ -2793,7 +2793,7 @@ export function utilsIsUuid(str: string | null): boolean
  * @param inPassword existing password to use, if any
  * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
  */
-export function utilsRsaKeyEncrypt(data: number[], inPassword: string | null): [ /* returnType */ number[], /* outPassword */ string | null ]
+export function utilsRsaKeyEncrypt(data: number[], inPassword: string | null): [ /* returnType */ number[], /* outPassword */ string ]
 /**
  * Encrypts the given RSA private key data with the given password (or generates
  * a password if no password was given) and converts the data to PEM format
@@ -2802,7 +2802,7 @@ export function utilsRsaKeyEncrypt(data: number[], inPassword: string | null): [
  * @param inPassword existing password to use, if any
  * @returns on success, PEM-formatted data suitable for writing to a PEM-formatted certificate/private key file.
  */
-export function utilsRsaKeyEncryptAes(data: number[], inPassword: string | null): [ /* returnType */ number[], /* outPassword */ string | null ]
+export function utilsRsaKeyEncryptAes(data: number[], inPassword: string | null): [ /* returnType */ number[], /* outPassword */ string ]
 /**
  * Earlier versions of the Linux kernel added a NULL byte to the end of the
  * SSID to enable easy printing of the SSID on the console or in a terminal,
@@ -2866,21 +2866,21 @@ export function utilsUuidGenerate(): string | null
  * @param s a string to use as the seed for the UUID
  * @returns a newly allocated UUID suitable for use as the #NMSettingConnection object's #NMSettingConnection:id: property
  */
-export function utilsUuidGenerateFromString(s: string | null): string | null
+export function utilsUuidGenerateFromString(s: string): string | null
 /**
  * Checks if `key` is a valid WEP key
  * @param key a string that might be a WEP key
  * @param wepType the #NMWepKeyType type of the WEP key
  * @returns %TRUE if @key is a WEP key, %FALSE if not
  */
-export function utilsWepKeyValid(key: string | null, wepType: WepKeyType): boolean
+export function utilsWepKeyValid(key: string, wepType: WepKeyType): boolean
 /**
  * Utility function to translate a Wi-Fi channel to its corresponding frequency.
  * @param channel channel
  * @param band frequency band for wireless ("a" or "bg")
  * @returns the frequency represented by the channel of the band,          or -1 when the freq is invalid, or 0 when the band          is invalid
  */
-export function utilsWifiChannelToFreq(channel: number, band: string | null): number
+export function utilsWifiChannelToFreq(channel: number, band: string): number
 /**
  * Utility function to find out next/previous Wi-Fi channel for a channel.
  * @param channel current channel
@@ -2901,24 +2901,24 @@ export function utilsWifiFreqToChannel(freq: number): number
  * @param band frequency band for wireless ("a" or "bg")
  * @returns %TRUE or %FALSE
  */
-export function utilsWifiIsChannelValid(channel: number, band: string | null): boolean
+export function utilsWifiIsChannelValid(channel: number, band: string): boolean
 /**
  * Checks if `psk` is a valid WPA PSK
  * @param psk a string that might be a WPA PSK
  * @returns %TRUE if @psk is a WPA PSK, %FALSE if not
  */
-export function utilsWpaPskValid(psk: string | null): boolean
+export function utilsWpaPskValid(psk: string): boolean
 export interface SettingClearSecretsWithFlagsFn {
-    (setting: Setting, secret: string | null, flags: SettingSecretFlags): boolean
+    (setting: Setting, secret: string, flags: SettingSecretFlags): boolean
 }
 export interface SettingValueIterFn {
-    (setting: Setting, key: string | null, value: any, flags: GObject.ParamFlags): void
+    (setting: Setting, key: string, value: any, flags: GObject.ParamFlags): void
 }
 export interface UtilsFileSearchInPathsPredicate {
-    (filename: string | null): boolean
+    (filename: string): boolean
 }
 export interface VPNIterFunc {
-    (key: string | null, value: string | null): void
+    (key: string, value: string): void
 }
 export module Connection {
 
@@ -3038,12 +3038,12 @@ export interface Connection {
      * A shortcut to return the type from the connection's #NMSettingConnection.
      * @returns the type from the connection's 'connection' setting
      */
-    getConnectionType(): string | null
+    getConnectionType(): string
     /**
      * A shortcut to return the ID from the connection's #NMSettingConnection.
      * @returns the ID from the connection's 'connection' setting
      */
-    getId(): string | null
+    getId(): string
     /**
      * Returns the interface name as stored in NMSettingConnection:interface_name.
      * If the connection contains no NMSettingConnection, it will return %NULL.
@@ -3053,12 +3053,12 @@ export interface Connection {
      * NetworkManager, this is the name of the created interface.
      * @returns Name of the kernel interface or %NULL
      */
-    getInterfaceName(): string | null
+    getInterfaceName(): string
     /**
      * Returns the connection's D-Bus path.
      * @returns the D-Bus path of the connection, previously set by a call to nm_connection_set_path().
      */
-    getPath(): string | null
+    getPath(): string
     /**
      * Gets the #NMSetting with the given #GType, if one has been previously added
      * to the #NMConnection.
@@ -3102,7 +3102,7 @@ export interface Connection {
      * @param name a setting name
      * @returns the #NMSetting, or %NULL if no setting with that name was previously added to the #NMConnection
      */
-    getSettingByName(name: string | null): Setting
+    getSettingByName(name: string): Setting
     /**
      * A shortcut to return any #NMSettingCdma the connection might contain.
      * @returns an #NMSettingCdma if the connection contains one, otherwise %NULL
@@ -3207,7 +3207,7 @@ export interface Connection {
      * A shortcut to return the UUID from the connection's #NMSettingConnection.
      * @returns the UUID from the connection's 'connection' setting
      */
-    getUuid(): string | null
+    getUuid(): string
     /**
      * Returns the name that nm_device_disambiguate_names() would
      * return for the virtual device that would be created for `connection`.
@@ -3222,7 +3222,7 @@ export interface Connection {
      * connection types, this function will return %NULL.
      * @returns Name of the kernel interface or %NULL
      */
-    getVirtualIfaceName(): string | null
+    getVirtualIfaceName(): string
     /**
      * A convenience function to check if the given `connection` is a particular
      * type (ie wired, Wi-Fi, ppp, etc). Checks the #NMSettingConnection:type
@@ -3230,7 +3230,7 @@ export interface Connection {
      * @param type a setting name to check the connection's type against (like %NM_SETTING_WIRELESS_SETTING_NAME or %NM_SETTING_WIRED_SETTING_NAME)
      * @returns %TRUE if the connection is of the given @type, %FALSE if not
      */
-    isType(type: string | null): boolean
+    isType(type: string): boolean
     /**
      * Returns the name of the first setting object in the connection which would
      * need secrets to make a successful connection.  The returned hints are only
@@ -3239,7 +3239,7 @@ export interface Connection {
      * secrets are needed.
      * @returns the setting name of the #NMSetting object which has invalid or   missing secrets
      */
-    needSecrets(): [ /* returnType */ string | null, /* hints */ string[] ]
+    needSecrets(): [ /* returnType */ string, /* hints */ string[] ]
     /**
      * Does some basic normalization and fixup of well known inconsistencies
      * and deprecated fields. If the connection was modified in any way,
@@ -3273,7 +3273,7 @@ export interface Connection {
      * property.
      * @param path the D-Bus path of the connection as given by the settings service which provides the connection
      */
-    setPath(path: string | null): void
+    setPath(path: string): void
     /**
      * Converts the #NMConnection into a #GHashTable describing the connection,
      * suitable for marshalling over D-Bus or serializing.  The hash table mapping
@@ -3296,7 +3296,7 @@ export interface Connection {
      * @param secrets a #GHashTable mapping string:#GValue of setting property names and secrets of the given `setting_name`
      * @returns %TRUE if the secrets were successfully updated, %FALSE if the update failed (tried to update secrets for a setting that doesn't exist, etc)
      */
-    updateSecrets(settingName: string | null, secrets: GLib.HashTable): boolean
+    updateSecrets(settingName: string, secrets: GLib.HashTable): boolean
     /**
      * Validates the connection and all its settings.  Each setting's properties
      * have allowed values, and some values are dependent on other values.  For
@@ -3313,7 +3313,7 @@ export interface Connection {
 
     // Own virtual methods of NetworkManager-1.0.NetworkManager.Connection
 
-    secretsUpdated(setting: string | null): void
+    secretsUpdated(setting: string): void
 
     // Own signals of NetworkManager-1.0.NetworkManager.Connection
 
@@ -3393,13 +3393,13 @@ export class Connection extends GObject.Object {
      * @param name a setting name
      * @returns the new setting object, or %NULL if the setting name was unknown
      */
-    static createSetting(name: string | null): Setting
+    static createSetting(name: string): Setting
     /**
      * Returns the #GType of the setting's class for a given setting name.
      * @param name a setting name
      * @returns the #GType of the setting's class
      */
-    static lookupSettingType(name: string | null): GObject.GType
+    static lookupSettingType(name: string): GObject.GType
     /**
      * Returns the #GType of the setting's class for a given setting error quark.
      * Useful for figuring out which setting a returned error is for.
@@ -3493,11 +3493,11 @@ export interface Setting {
      * Returns the type name of the #NMSetting object
      * @returns a string containing the type name of the #NMSetting object, like 'ppp' or 'wireless' or 'wired'.
      */
-    getName(): string | null
-    // Has conflict: getSecretFlags(secretName: string | null, outFlags: SettingSecretFlags): boolean
-    // Has conflict: getVirtualIfaceName(): string | null
+    getName(): string
+    // Has conflict: getSecretFlags(secretName: string, outFlags: SettingSecretFlags): boolean
+    // Has conflict: getVirtualIfaceName(): string
     // Has conflict: needSecrets(): string[]
-    // Has conflict: setSecretFlags(secretName: string | null, flags: SettingSecretFlags): boolean
+    // Has conflict: setSecretFlags(secretName: string, flags: SettingSecretFlags): boolean
     /**
      * Converts the #NMSetting into a #GHashTable mapping each setting property
      * name to a GValue describing that property, suitable for marshalling over
@@ -3533,14 +3533,14 @@ export interface Setting {
     // Own virtual methods of NetworkManager-1.0.NetworkManager.Setting
 
     compareProperty(other: Setting, propSpec: GObject.ParamSpec, flags: SettingCompareFlags): boolean
-    getSecretFlags(secretName: string | null, verifySecret: boolean, outFlags: SettingSecretFlags): boolean
+    getSecretFlags(secretName: string, verifySecret: boolean, outFlags: SettingSecretFlags): boolean
     /**
      * Returns the name of the virtual kernel interface which the connection
      * needs to use if specified in the settings.
      * @virtual 
      * @returns Name of the virtual interface or %NULL if the setting does not support this feature
      */
-    getVirtualIfaceName(): string | null
+    getVirtualIfaceName(): string
     /**
      * Returns an array of property names for each secret which may be required
      * to make a successful connection.  The returned hints are only intended as a
@@ -3550,8 +3550,8 @@ export interface Setting {
      * @returns a #GPtrArray containing the property names of secrets of the #NMSetting which may be required; the caller owns the array and must free it with g_ptr_array_free(), but must not free the elements.
      */
     needSecrets(): string[]
-    setSecretFlags(secretName: string | null, verifySecret: boolean, flags: SettingSecretFlags): boolean
-    updateOneSecret(key: string | null, value: any): number
+    setSecretFlags(secretName: string, verifySecret: boolean, flags: SettingSecretFlags): boolean
+    updateOneSecret(key: string, value: any): number
 
     // Class property signals of NetworkManager-1.0.NetworkManager.Setting
 
@@ -3918,7 +3918,7 @@ export interface Setting8021x {
      * @param altsubjectMatch the altSubjectName to allow for this connection
      * @returns %TRUE if the alternative subject name match was  successfully added, %FALSE if it was already allowed.
      */
-    addAltsubjectMatch(altsubjectMatch: string | null): boolean
+    addAltsubjectMatch(altsubjectMatch: string): boolean
     /**
      * Adds an allowed EAP method.  The setting is not valid until at least one
      * EAP method has been added.  See #NMSetting8021x:eap property for a list of
@@ -3926,7 +3926,7 @@ export interface Setting8021x {
      * @param eap the name of the EAP method to allow for this connection
      * @returns %TRUE if the EAP method was successfully added, %FALSE if it was  not a valid method or if it was already allowed.
      */
-    addEapMethod(eap: string | null): boolean
+    addEapMethod(eap: string): boolean
     /**
      * Adds an allowed alternate subject name match for "phase 2".  Until
      * at least one match is added, the altSubjectName of the "phase 2"
@@ -3934,7 +3934,7 @@ export interface Setting8021x {
      * @param phase2AltsubjectMatch the "phase 2" altSubjectName to allow for this connection
      * @returns %TRUE if the "phase 2" alternative subject name match was  successfully added, %FALSE if it was already allowed.
      */
-    addPhase2AltsubjectMatch(phase2AltsubjectMatch: string | null): boolean
+    addPhase2AltsubjectMatch(phase2AltsubjectMatch: string): boolean
     /**
      * Clears all altSubjectName matches.
      */
@@ -3952,7 +3952,7 @@ export interface Setting8021x {
      * @param i the zero-based index of the array of altSubjectName matches
      * @returns the altSubjectName match at index @i
      */
-    getAltsubjectMatch(i: number): string | null
+    getAltsubjectMatch(i: number): string
     /**
      * Returns the anonymous identifier used by some EAP methods (like TTLS) to
      * authenticate the user in the outer unencrypted "phase 1" authentication.  The
@@ -3960,7 +3960,7 @@ export interface Setting8021x {
      * a secure form, if applicable for that EAP method.
      * @returns the anonymous identifier
      */
-    getAnonymousIdentity(): string | null
+    getAnonymousIdentity(): string
     /**
      * Returns the CA certificate blob if the CA certificate is stored using the
      * %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme.  Not all EAP methods use a
@@ -3980,7 +3980,7 @@ export interface Setting8021x {
      * of the network cannot be confirmed by the client.
      * @returns path to the CA certificate file
      */
-    getCaCertPath(): string | null
+    getCaCertPath(): string
     /**
      * Returns the scheme used to store the CA certificate.  If the returned scheme
      * is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use nm_setting_802_1x_get_ca_cert_blob();
@@ -3996,7 +3996,7 @@ export interface Setting8021x {
      * certificates for verifying the network to client.
      * @returns the CA certificate directory path
      */
-    getCaPath(): string | null
+    getCaPath(): string
     /**
      * Client certificates are used to identify the connecting client to the network
      * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -4010,7 +4010,7 @@ export interface Setting8021x {
      * authentication method.
      * @returns path to the client certificate file
      */
-    getClientCertPath(): string | null
+    getClientCertPath(): string
     /**
      * Returns the scheme used to store the client certificate.  If the returned scheme
      * is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use nm_setting_802_1x_get_client_cert_blob();
@@ -4023,13 +4023,13 @@ export interface Setting8021x {
      * @param i the index of the EAP method name to return
      * @returns the name of the allowed EAP method at index @i
      */
-    getEapMethod(i: number): string | null
+    getEapMethod(i: number): string
     /**
      * Returns the identifier used by some EAP methods (like TLS) to
      * authenticate the user.  Often this is a username or login name.
      * @returns the user identifier
      */
-    getIdentity(): string | null
+    getIdentity(): string
     /**
      * Returns the number of entries in the
      * #NMSetting8021x:altsubject-matches property of this setting.
@@ -4055,22 +4055,22 @@ export interface Setting8021x {
      * Returns the file containing PAC credentials used by EAP-FAST method.
      * @returns the PAC file
      */
-    getPacFile(): string | null
-    getPassword(): string | null
+    getPacFile(): string
+    getPassword(): string
     getPasswordFlags(): SettingSecretFlags
     getPasswordRaw(): number[]
     getPasswordRawFlags(): SettingSecretFlags
-    getPhase1FastProvisioning(): string | null
-    getPhase1Peaplabel(): string | null
-    getPhase1Peapver(): string | null
+    getPhase1FastProvisioning(): string
+    getPhase1Peaplabel(): string
+    getPhase1Peapver(): string
     /**
      * Returns the "phase 2" altSubjectName match at index `i`.
      * @param i the zero-based index of the array of "phase 2" altSubjectName matches
      * @returns the "phase 2" altSubjectName match at index @i
      */
-    getPhase2AltsubjectMatch(i: number): string | null
-    getPhase2Auth(): string | null
-    getPhase2Autheap(): string | null
+    getPhase2AltsubjectMatch(i: number): string
+    getPhase2Auth(): string
+    getPhase2Autheap(): string
     /**
      * Returns the "phase 2" CA certificate blob if the CA certificate is stored
      * using the %NM_SETTING_802_1X_CK_SCHEME_BLOB scheme.  Not all EAP methods use
@@ -4090,7 +4090,7 @@ export interface Setting8021x {
      * of the network cannot be confirmed by the client.
      * @returns path to the "phase 2" CA certificate file
      */
-    getPhase2CaCertPath(): string | null
+    getPhase2CaCertPath(): string
     /**
      * Returns the scheme used to store the "phase 2" CA certificate.  If the
      * returned scheme is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
@@ -4107,7 +4107,7 @@ export interface Setting8021x {
      * to add more CA certificates for verifying the network to client.
      * @returns the "phase 2" CA certificate directory path
      */
-    getPhase2CaPath(): string | null
+    getPhase2CaPath(): string
     /**
      * Client certificates are used to identify the connecting client to the network
      * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -4121,7 +4121,7 @@ export interface Setting8021x {
      * authentication method.
      * @returns path to the "phase 2" client certificate file
      */
-    getPhase2ClientCertPath(): string | null
+    getPhase2ClientCertPath(): string
     /**
      * Returns the scheme used to store the "phase 2" client certificate.  If the
      * returned scheme is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
@@ -4143,7 +4143,7 @@ export interface Setting8021x {
      */
     getPhase2PrivateKeyBlob(): number[]
     getPhase2PrivateKeyFormat(): Setting8021xCKFormat
-    getPhase2PrivateKeyPassword(): string | null
+    getPhase2PrivateKeyPassword(): string
     getPhase2PrivateKeyPasswordFlags(): SettingSecretFlags
     /**
      * Private keys are used to authenticate the connecting client to the network
@@ -4151,7 +4151,7 @@ export interface Setting8021x {
      * authentication method.
      * @returns path to the "phase 2" private key file
      */
-    getPhase2PrivateKeyPath(): string | null
+    getPhase2PrivateKeyPath(): string
     /**
      * Returns the scheme used to store the "phase 2" private key.  If the returned
      * scheme is %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
@@ -4161,8 +4161,8 @@ export interface Setting8021x {
      * @returns scheme used to store the "phase 2" private key (blob or path)
      */
     getPhase2PrivateKeyScheme(): Setting8021xCKScheme
-    getPhase2SubjectMatch(): string | null
-    getPin(): string | null
+    getPhase2SubjectMatch(): string
+    getPin(): string
     getPinFlags(): SettingSecretFlags
     /**
      * Private keys are used to authenticate the connecting client to the network
@@ -4176,7 +4176,7 @@ export interface Setting8021x {
      */
     getPrivateKeyBlob(): number[]
     getPrivateKeyFormat(): Setting8021xCKFormat
-    getPrivateKeyPassword(): string | null
+    getPrivateKeyPassword(): string
     getPrivateKeyPasswordFlags(): SettingSecretFlags
     /**
      * Private keys are used to authenticate the connecting client to the network
@@ -4184,7 +4184,7 @@ export interface Setting8021x {
      * authentication method.
      * @returns path to the private key file
      */
-    getPrivateKeyPath(): string | null
+    getPrivateKeyPath(): string
     /**
      * Returns the scheme used to store the private key.  If the returned scheme is
      * %NM_SETTING_802_1X_CK_SCHEME_BLOB, use
@@ -4194,7 +4194,7 @@ export interface Setting8021x {
      * @returns scheme used to store the private key (blob or path)
      */
     getPrivateKeyScheme(): Setting8021xCKScheme
-    getSubjectMatch(): string | null
+    getSubjectMatch(): string
     /**
      * Sets the #NMSetting8021x:system-ca-certs property. The
      * #NMSetting8021x:ca-path and #NMSetting8021x:phase2-ca-path
@@ -4215,7 +4215,7 @@ export interface Setting8021x {
      * @param altsubjectMatch the altSubjectName to remove
      * @returns %TRUE if the alternative subject name match was found and removed,          %FALSE if it was not.
      */
-    removeAltsubjectMatchByValue(altsubjectMatch: string | null): boolean
+    removeAltsubjectMatchByValue(altsubjectMatch: string): boolean
     /**
      * Removes the allowed EAP method at the specified index.
      * @param i the index of the EAP method to remove
@@ -4226,7 +4226,7 @@ export interface Setting8021x {
      * @param eap the name of the EAP method to remove
      * @returns %TRUE if the EAP method was founs and removed, %FALSE if it was not.
      */
-    removeEapMethodByValue(eap: string | null): boolean
+    removeEapMethodByValue(eap: string): boolean
     /**
      * Removes the allowed "phase 2" altSubjectName at the specified index.
      * @param i the index of the "phase 2" altSubjectName match to remove
@@ -4237,7 +4237,7 @@ export interface Setting8021x {
      * @param phase2AltsubjectMatch the "phase 2" altSubjectName to remove
      * @returns %TRUE if the alternative subject name match for "phase 2" was found and removed,          %FALSE if it was not.
      */
-    removePhase2AltsubjectMatchByValue(phase2AltsubjectMatch: string | null): boolean
+    removePhase2AltsubjectMatchByValue(phase2AltsubjectMatch: string): boolean
     /**
      * Reads a certificate from disk and sets the #NMSetting8021x:ca-cert property
      * with the raw certificate data if using the %NM_SETTING_802_1X_CK_SCHEME_BLOB
@@ -4248,7 +4248,7 @@ export interface Setting8021x {
      * @param outFormat on successful return, the type of the certificate added
      * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
      */
-    setCaCert(certPath: string | null, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
+    setCaCert(certPath: string, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
     /**
      * Reads a certificate from disk and sets the #NMSetting8021x:client-cert
      * property with the raw certificate data if using the
@@ -4263,7 +4263,7 @@ export interface Setting8021x {
      * @param outFormat on successful return, the type of the certificate added
      * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
      */
-    setClientCert(certPath: string | null, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
+    setClientCert(certPath: string, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
     /**
      * Reads a certificate from disk and sets the #NMSetting8021x:phase2-ca-cert
      * property with the raw certificate data if using the
@@ -4274,7 +4274,7 @@ export interface Setting8021x {
      * @param outFormat on successful return, the type of the certificate added
      * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
      */
-    setPhase2CaCert(certPath: string | null, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
+    setPhase2CaCert(certPath: string, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
     /**
      * Reads a certificate from disk and sets the #NMSetting8021x:phase2-client-cert
      * property with the raw certificate data if using the
@@ -4289,7 +4289,7 @@ export interface Setting8021x {
      * @param outFormat on successful return, the type of the certificate added
      * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
      */
-    setPhase2ClientCert(certPath: string | null, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
+    setPhase2ClientCert(certPath: string, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
     /**
      * Private keys are used to authenticate the connecting client to the network
      * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -4318,7 +4318,7 @@ export interface Setting8021x {
      * @param outFormat on successful return, the type of the private key added
      * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
      */
-    setPhase2PrivateKey(keyPath: string | null, password: string | null, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
+    setPhase2PrivateKey(keyPath: string, password: string, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
     /**
      * Private keys are used to authenticate the connecting client to the network
      * when EAP-TLS is used as either the "phase 1" or "phase 2" 802.1x
@@ -4347,7 +4347,7 @@ export interface Setting8021x {
      * @param outFormat on successful return, the type of the private key added
      * @returns %TRUE if the operation succeeded, %FALSE if it was unsuccessful
      */
-    setPrivateKey(keyPath: string | null, password: string | null, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
+    setPrivateKey(keyPath: string, password: string, scheme: Setting8021xCKScheme, outFormat: Setting8021xCKFormat): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.Setting8021x
 
@@ -4583,11 +4583,11 @@ export interface SettingAdsl {
 
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingAdsl
 
-    getEncapsulation(): string | null
-    getPassword(): string | null
+    getEncapsulation(): string
+    getPassword(): string
     getPasswordFlags(): SettingSecretFlags
-    getProtocol(): string | null
-    getUsername(): string | null
+    getProtocol(): string
+    getUsername(): string
     getVci(): number
     getVpi(): number
 
@@ -4715,7 +4715,7 @@ export interface SettingBluetooth {
      * either DUN to a DUN-capable device or PANU to a NAP-capable device).
      * @returns the type, either %NM_SETTING_BLUETOOTH_TYPE_PANU or   %NM_SETTING_BLUETOOTH_TYPE_DUN
      */
-    getConnectionType(): string | null
+    getConnectionType(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingBluetooth
 
@@ -4810,8 +4810,8 @@ export interface SettingBond {
      * @param value value for the option
      * @returns %TRUE if the option was valid and was added to the internal option list, %FALSE if it was not.
      */
-    addOption(name: string | null, value: string | null): boolean
-    getInterfaceName(): string | null
+    addOption(name: string, value: string): boolean
+    getInterfaceName(): string
     /**
      * Returns the number of options that should be set for this bond when it
      * is activated. This can be used to retrieve each option individually
@@ -4828,15 +4828,15 @@ export interface SettingBond {
      * @param idx index of the desired option, from 0 to nm_setting_bond_get_num_options() - 1
      * @returns %TRUE on success if the index was valid and an option was found, %FALSE if the index was invalid (ie, greater than the number of options currently held by the setting)
      */
-    getOption(idx: number): [ /* returnType */ boolean, /* outName */ string | null, /* outValue */ string | null ]
+    getOption(idx: number): [ /* returnType */ boolean, /* outName */ string, /* outValue */ string ]
     /**
      * Returns the value associated with the bonding option specified by
      * `name,` if it exists.
      * @param name the option name for which to retrieve the value
      * @returns the value, or %NULL if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
      */
-    getOptionByName(name: string | null): string | null
-    getOptionDefault(name: string | null): string | null
+    getOptionByName(name: string): string
+    getOptionDefault(name: string): string
     /**
      * Returns a list of valid bond options.
      * @returns a %NULL-terminated array of strings of valid bond options.
@@ -4848,7 +4848,7 @@ export interface SettingBond {
      * @param name name of the option to remove
      * @returns %TRUE if the option was found and removed from the internal option list, %FALSE if it was not.
      */
-    removeOption(name: string | null): boolean
+    removeOption(name: string): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingBond
 
@@ -4904,7 +4904,7 @@ export class SettingBond extends Setting {
      * @param value the value of the option to validate
      * @returns %TRUE, if the @value is valid for the given name. If the @name is not a valid option, %FALSE will be returned.
      */
-    static validateOption(name: string | null, value: string | null): boolean
+    static validateOption(name: string, value: string): boolean
 }
 
 export module SettingBridge {
@@ -4994,7 +4994,7 @@ export interface SettingBridge {
     getAgeingTime(): number
     getForwardDelay(): number
     getHelloTime(): number
-    getInterfaceName(): string | null
+    getInterfaceName(): string
     getMacAddress(): number[]
     getMaxAge(): number
     getPriority(): number
@@ -5262,10 +5262,10 @@ export interface SettingCdma {
 
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingCdma
 
-    getNumber(): string | null
-    getPassword(): string | null
+    getNumber(): string
+    getPassword(): string
     getPasswordFlags(): SettingSecretFlags
-    getUsername(): string | null
+    getUsername(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingCdma
 
@@ -5538,13 +5538,13 @@ export interface SettingConnection {
      * @param detail unused at this time; must be %NULL
      * @returns %TRUE if the permission was unique and was successfully added to the list, %FALSE if @ptype or @pitem was invalid or it the permission was already present in the list
      */
-    addPermission(ptype: string | null, pitem: string | null, detail: string | null): boolean
+    addPermission(ptype: string, pitem: string, detail: string | null): boolean
     /**
      * Adds a new secondary connection UUID to the setting.
      * @param secUuid the secondary connection UUID to add
      * @returns %TRUE if the secondary connection UUID was added; %FALSE if the UUID was already present
      */
-    addSecondary(secUuid: string | null): boolean
+    addSecondary(secUuid: string): boolean
     /**
      * Returns the #NMSettingConnection:autoconnect property of the connection.
      * @returns the connection's autoconnect behavior
@@ -5554,23 +5554,23 @@ export interface SettingConnection {
      * Returns the #NMSettingConnection:type property of the connection.
      * @returns the connection type
      */
-    getConnectionType(): string | null
+    getConnectionType(): string
     getGatewayPingTimeout(): number
     /**
      * Returns the #NMSettingConnection:id property of the connection.
      * @returns the connection ID
      */
-    getId(): string | null
+    getId(): string
     /**
      * Returns the #NMSettingConnection:interface-name property of the connection.
      * @returns the connection's interface name
      */
-    getInterfaceName(): string | null
+    getInterfaceName(): string
     /**
      * Returns the #NMSettingConnection:master property of the connection.
      * @returns interface name of the master device or UUID of the master connection.
      */
-    getMaster(): string | null
+    getMaster(): string
     /**
      * Returns the number of entries in the #NMSettingConnection:permissions
      * property of this setting.
@@ -5587,18 +5587,18 @@ export interface SettingConnection {
      * @param outDetail on return, the permission detail (at this time, always %NULL)
      * @returns %TRUE if a permission was returned, %FALSE if @idx was invalid
      */
-    getPermission(idx: number, outPtype: string | null, outPitem: string | null, outDetail: string | null): boolean
+    getPermission(idx: number, outPtype: string, outPitem: string, outDetail: string): boolean
     /**
      * Returns the #NMSettingConnection:read-only property of the connection.
      * @returns %TRUE if the connection is read-only, %FALSE if it is not
      */
     getReadOnly(): boolean
-    getSecondary(idx: number): string | null
+    getSecondary(idx: number): string
     /**
      * Returns the #NMSettingConnection:slave-type property of the connection.
      * @returns the type of slave this connection is, if any
      */
-    getSlaveType(): string | null
+    getSlaveType(): string
     /**
      * Returns the #NMSettingConnection:timestamp property of the connection.
      * @returns the connection's timestamp
@@ -5608,19 +5608,19 @@ export interface SettingConnection {
      * Returns the #NMSettingConnection:uuid property of the connection.
      * @returns the connection UUID
      */
-    getUuid(): string | null
+    getUuid(): string
     /**
      * Returns the #NMSettingConnection:zone property of the connection.
      * @returns the trust level of a connection
      */
-    getZone(): string | null
-    isSlaveType(type: string | null): boolean
+    getZone(): string
+    isSlaveType(type: string): boolean
     /**
      * Checks whether the given username is allowed to view/access this connection.
      * @param uname the user name to check permissions for
      * @returns %TRUE if the requested user is allowed to view this connection, %FALSE if the given user is not allowed to view this connection
      */
-    permissionsUserAllowed(uname: string | null): boolean
+    permissionsUserAllowed(uname: string): boolean
     /**
      * Removes the permission at index `idx` from the connection.
      * @param idx the zero-based index of the permission to remove
@@ -5635,7 +5635,7 @@ export interface SettingConnection {
      * @param detail unused at this time; must be %NULL
      * @returns %TRUE if the permission was found and removed; %FALSE if it was not.
      */
-    removePermissionByValue(ptype: string | null, pitem: string | null, detail: string | null): boolean
+    removePermissionByValue(ptype: string, pitem: string, detail: string | null): boolean
     /**
      * Removes the secondary coonnection UUID at index `idx`.
      * @param idx index number of the secondary connection UUID
@@ -5646,7 +5646,7 @@ export interface SettingConnection {
      * @param secUuid the secondary connection UUID to remove
      * @returns %TRUE if the secondary connection UUID was found and removed; %FALSE if it was not.
      */
-    removeSecondaryByValue(secUuid: string | null): boolean
+    removeSecondaryByValue(secUuid: string): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingConnection
 
@@ -5883,7 +5883,7 @@ export interface SettingDcb {
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingDcb
 
     getAppFcoeFlags(): SettingDcbFlags
-    getAppFcoeMode(): string | null
+    getAppFcoeMode(): string
     getAppFcoePriority(): number
     getAppFipFlags(): SettingDcbFlags
     getAppFipPriority(): number
@@ -6259,16 +6259,16 @@ export interface SettingGsm {
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingGsm
 
     getAllowedBands(): number
-    getApn(): string | null
+    getApn(): string
     getHomeOnly(): boolean
-    getNetworkId(): string | null
+    getNetworkId(): string
     getNetworkType(): number
-    getNumber(): string | null
-    getPassword(): string | null
+    getNumber(): string
+    getPassword(): string
     getPasswordFlags(): SettingSecretFlags
-    getPin(): string | null
+    getPin(): string
     getPinFlags(): SettingSecretFlags
-    getUsername(): string | null
+    getUsername(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingGsm
 
@@ -6565,7 +6565,7 @@ export interface SettingIP4Config {
      * @param dnsSearch the search domain to add
      * @returns %TRUE if the DNS search domain was added; %FALSE if the search domain was already known
      */
-    addDnsSearch(dnsSearch: string | null): boolean
+    addDnsSearch(dnsSearch: string): boolean
     /**
      * Adds a new IPv4 route and associated information to the setting.  The
      * given route is duplicated internally and is not changed by this function.
@@ -6595,13 +6595,13 @@ export interface SettingIP4Config {
      * property.
      * @returns the configured Client ID to send to the DHCP server when requesting addresses via DHCP.
      */
-    getDhcpClientId(): string | null
+    getDhcpClientId(): string
     /**
      * Returns the value contained in the #NMSettingIP4Config:dhcp-hostname
      * property.
      * @returns the configured hostname to send to the DHCP server
      */
-    getDhcpHostname(): string | null
+    getDhcpHostname(): string
     /**
      * Returns the value contained in the #NMSettingIP4Config:dhcp-send-hostname
      * property.
@@ -6615,7 +6615,7 @@ export interface SettingIP4Config {
      */
     getDhcpTimeout(): number
     getDns(i: number): number
-    getDnsSearch(i: number): string | null
+    getDnsSearch(i: number): string
     /**
      * Returns the value contained in the #NMSettingIP4Config:ignore-auto-dns
      * property.
@@ -6634,7 +6634,7 @@ export interface SettingIP4Config {
      * @returns %TRUE if this connection doesn't require IPv4 addressing to complete for the connection to succeed.
      */
     getMayFail(): boolean
-    getMethod(): string | null
+    getMethod(): string
     /**
      * Returns the value contained in the #NMSettingIP4Config:never-default
      * property.
@@ -6684,7 +6684,7 @@ export interface SettingIP4Config {
      * @param dnsSearch the search domain to remove
      * @returns %TRUE if the DNS search domain was found and removed; %FALSE if it was not. Since 0.9.10
      */
-    removeDnsSearchByValue(dnsSearch: string | null): boolean
+    removeDnsSearchByValue(dnsSearch: string): boolean
     /**
      * Removes the route at index `i`.
      * @param i index number of the route
@@ -6969,7 +6969,7 @@ export interface SettingIP6Config {
      * @param dnsSearch the search domain to add
      * @returns %TRUE if the DNS search domain was added; %FALSE if the search domain was already known
      */
-    addDnsSearch(dnsSearch: string | null): boolean
+    addDnsSearch(dnsSearch: string): boolean
     /**
      * Adds a new IPv6 route and associated information to the setting.  The
      * given route is duplicated internally and is not changed by this function.
@@ -6999,9 +6999,9 @@ export interface SettingIP6Config {
      * property.
      * @returns the configured hostname to send to the DHCP server
      */
-    getDhcpHostname(): string | null
+    getDhcpHostname(): string
     getDns(i: number): any | null
-    getDnsSearch(i: number): string | null
+    getDnsSearch(i: number): string
     /**
      * Returns the value contained in the #NMSettingIP6Config:ignore-auto-dns
      * property.
@@ -7026,7 +7026,7 @@ export interface SettingIP6Config {
      * @returns %TRUE if this connection doesn't require IPv6 addressing to complete for the connection to succeed.
      */
     getMayFail(): boolean
-    getMethod(): string | null
+    getMethod(): string
     /**
      * Returns the value contained in the #NMSettingIP6Config:never-default
      * property.
@@ -7076,7 +7076,7 @@ export interface SettingIP6Config {
      * @param dnsSearch the search domain to remove
      * @returns %TRUE if the DNS search domain was found and removed; %FALSE if it was not. Since 0.9.10
      */
-    removeDnsSearchByValue(dnsSearch: string | null): boolean
+    removeDnsSearchByValue(dnsSearch: string): boolean
     /**
      * Removes the route at index `i`.
      * @param i index number of the route
@@ -7251,13 +7251,13 @@ export interface SettingInfiniband {
      * Returns the parent interface name for this device, if set.
      * @returns the parent interface name
      */
-    getParent(): string | null
+    getParent(): string
     /**
      * Returns the transport mode for this device. Either 'datagram' or
      * 'connected'.
      * @returns the IPoIB transport mode
      */
-    getTransportMode(): string | null
+    getTransportMode(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingInfiniband
 
@@ -7828,10 +7828,10 @@ export interface SettingPPPOE {
 
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingPPPOE
 
-    getPassword(): string | null
+    getPassword(): string
     getPasswordFlags(): SettingSecretFlags
-    getService(): string | null
-    getUsername(): string | null
+    getService(): string
+    getUsername(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingPPPOE
 
@@ -8090,8 +8090,8 @@ export interface SettingTeam {
 
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingTeam
 
-    getConfig(): string | null
-    getInterfaceName(): string | null
+    getConfig(): string
+    getInterfaceName(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingTeam
 
@@ -8185,7 +8185,7 @@ export interface SettingTeamPort {
 
     // Owm methods of NetworkManager-1.0.NetworkManager.SettingTeamPort
 
-    getConfig(): string | null
+    getConfig(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingTeamPort
 
@@ -8309,14 +8309,14 @@ export interface SettingVPN {
      * @param key a name that uniquely identifies the given value `item`
      * @param item the value to be referenced by `key`
      */
-    addDataItem(key: string | null, item: string | null): void
+    addDataItem(key: string, item: string): void
     /**
      * Establishes a relationship between `key` and `secret` internally in the
      * setting which may be retrieved later.
      * @param key a name that uniquely identifies the given secret `secret`
      * @param secret the secret to be referenced by `key`
      */
-    addSecret(key: string | null, secret: string | null): void
+    addSecret(key: string, secret: string): void
     /**
      * Iterates all data items stored in this setting.  It is safe to add, remove,
      * and modify data items inside `func,` though any additions or removals made
@@ -8337,7 +8337,7 @@ export interface SettingVPN {
      * @param key the name of the data item to retrieve
      * @returns the data item, if any
      */
-    getDataItem(key: string | null): string | null
+    getDataItem(key: string): string
     /**
      * Gets number of key/value pairs of VPN configuration data.
      * @returns the number of VPN plugin specific configuration data items
@@ -8355,28 +8355,28 @@ export interface SettingVPN {
      * @param key the name of the secret to retrieve
      * @returns the secret, if any
      */
-    getSecret(key: string | null): string | null
+    getSecret(key: string): string
     /**
      * Returns the service name of the VPN, which identifies the specific VPN
      * plugin that should be used to connect to this VPN.
      * @returns the VPN plugin's service name
      */
-    getServiceType(): string | null
-    getUserName(): string | null
+    getServiceType(): string
+    getUserName(): string
     /**
      * Deletes a key/value relationship previously established by
      * nm_setting_vpn_add_data_item().
      * @param key the name of the data item to remove
      * @returns %TRUE if the data item was found and removed from the internal list, %FALSE if it was not.
      */
-    removeDataItem(key: string | null): boolean
+    removeDataItem(key: string): boolean
     /**
      * Deletes a key/value relationship previously established by
      * nm_setting_vpn_add_secret().
      * @param key the name of the secret to remove
      * @returns %TRUE if the secret was found and removed from the internal list, %FALSE if it was not.
      */
-    removeSecret(key: string | null): boolean
+    removeSecret(key: string): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingVPN
 
@@ -8537,7 +8537,7 @@ export interface SettingVlan {
      * @param str the string which contains a priority map, like "3:7"
      * @returns %TRUE if the entry was successfully added to the list, or it overwrote the old value, %FALSE if error
      */
-    addPriorityStr(map: VlanPriorityMap, str: string | null): boolean
+    addPriorityStr(map: VlanPriorityMap, str: string): boolean
     /**
      * Clear all the entries from #NMSettingVlan:ingress_priority_map or
      * #NMSettingVlan:egress_priority_map properties.
@@ -8546,7 +8546,7 @@ export interface SettingVlan {
     clearPriorities(map: VlanPriorityMap): void
     getFlags(): number
     getId(): number
-    getInterfaceName(): string | null
+    getInterfaceName(): string
     /**
      * Returns the number of entries in the
      * #NMSettingVlan:ingress_priority_map or #NMSettingVlan:egress_priority_map
@@ -8555,7 +8555,7 @@ export interface SettingVlan {
      * @returns return the number of ingress/egress priority entries, -1 if error
      */
     getNumPriorities(map: VlanPriorityMap): number
-    getParent(): string | null
+    getParent(): string
     /**
      * Retrieve one of the entries of the #NMSettingVlan:ingress_priority_map
      * or #NMSettingVlan:egress_priority_map properties of this setting.
@@ -8590,7 +8590,7 @@ export interface SettingVlan {
      * @param str the string which contains a priority map, like "3:7"
      * @returns %TRUE if the priority mapping was found and removed; %FALSE if it was not.
      */
-    removePriorityStrByValue(map: VlanPriorityMap, str: string | null): boolean
+    removePriorityStrByValue(map: VlanPriorityMap, str: string): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingVlan
 
@@ -8696,7 +8696,7 @@ export interface SettingWimax {
      * specific WiMAX network this setting describes a connection to.
      * @returns the WiMAX NSP name
      */
-    getNetworkName(): string | null
+    getNetworkName(): string
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingWimax
 
@@ -8842,7 +8842,7 @@ export interface SettingWired {
      * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
      * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
      */
-    addMacBlacklistItem(mac: string | null): boolean
+    addMacBlacklistItem(mac: string): boolean
     /**
      * Add an option to the table.  The option is compared to an internal list
      * of allowed options.  Key names may contain only alphanumeric characters
@@ -8852,17 +8852,17 @@ export interface SettingWired {
      * @param value value for the option
      * @returns %TRUE if the option was valid and was added to the internal option list, %FALSE if it was not.
      */
-    addS390Option(key: string | null, value: string | null): boolean
+    addS390Option(key: string, value: string): boolean
     /**
      * Removes all blacklisted MAC addresses.
      */
     clearMacBlacklistItems(): void
     getAutoNegotiate(): boolean
     getClonedMacAddress(): number[]
-    getDuplex(): string | null
+    getDuplex(): string
     getMacAddress(): number[]
     getMacAddressBlacklist(): GLib.SList[]
-    getMacBlacklistItem(idx: number): string | null
+    getMacBlacklistItem(idx: number): string
     getMtu(): number
     getNumMacBlacklistItems(): number
     /**
@@ -8872,13 +8872,13 @@ export interface SettingWired {
      * @returns the number of s390-specific device options
      */
     getNumS390Options(): number
-    getPort(): string | null
+    getPort(): string
     /**
      * Returns the s390 device type this connection should apply to.  Will be one
      * of 'qeth', 'lcs', or 'ctc'.
      * @returns the s390 device type
      */
-    getS390Nettype(): string | null
+    getS390Nettype(): string
     /**
      * Given an index, return the value of the s390 option at that index.  indexes
      * are *not* guaranteed to be static across modifications to options done by
@@ -8888,14 +8888,14 @@ export interface SettingWired {
      * @param idx index of the desired option, from 0 to nm_setting_wired_get_num_s390_options() - 1
      * @returns %TRUE on success if the index was valid and an option was found, %FALSE if the index was invalid (ie, greater than the number of options currently held by the setting)
      */
-    getS390Option(idx: number): [ /* returnType */ boolean, /* outKey */ string | null, /* outValue */ string | null ]
+    getS390Option(idx: number): [ /* returnType */ boolean, /* outKey */ string, /* outValue */ string ]
     /**
      * Returns the value associated with the s390-specific option specified by
      * `key,` if it exists.
      * @param key the key for which to retrieve the value
      * @returns the value, or %NULL if the key/value pair was never added to the setting; the value is owned by the setting and must not be modified
      */
-    getS390OptionByKey(key: string | null): string | null
+    getS390OptionByKey(key: string): string
     /**
      * Return the list of s390 subchannels that identify the device that this
      * connection is applicable to.  The connection should only be used in
@@ -8919,14 +8919,14 @@ export interface SettingWired {
      * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
      * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
      */
-    removeMacBlacklistItemByValue(mac: string | null): boolean
+    removeMacBlacklistItemByValue(mac: string): boolean
     /**
      * Remove the s390-specific option referenced by `key` from the internal option
      * list.
      * @param key key name for the option to remove
      * @returns %TRUE if the option was found and removed from the internal option list, %FALSE if it was not.
      */
-    removeS390Option(key: string | null): boolean
+    removeS390Option(key: string): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingWired
 
@@ -9153,7 +9153,7 @@ export interface SettingWireless {
      * @param mac the MAC address string (hex-digits-and-colons notation) to blacklist
      * @returns %TRUE if the MAC address was added; %FALSE if the MAC address is invalid or was already present
      */
-    addMacBlacklistItem(mac: string | null): boolean
+    addMacBlacklistItem(mac: string): boolean
     /**
      * Adds a new Wi-Fi AP's BSSID to the previously seen BSSID list of the setting.
      * NetworkManager now tracks previously seen BSSIDs internally so this function
@@ -9162,7 +9162,7 @@ export interface SettingWireless {
      * @param bssid the new BSSID to add to the list
      * @returns %TRUE if @bssid was already known, %FALSE if not
      */
-    addSeenBssid(bssid: string | null): boolean
+    addSeenBssid(bssid: string): boolean
     /**
      * Given a #NMSettingWireless and an optional #NMSettingWirelessSecurity,
      * determine if the configuration given by the settings is compatible with
@@ -9182,22 +9182,22 @@ export interface SettingWireless {
      * Removes all blacklisted MAC addresses.
      */
     clearMacBlacklistItems(): void
-    getBand(): string | null
+    getBand(): string
     getBssid(): number[]
     getChannel(): number
     getClonedMacAddress(): number[]
     getHidden(): boolean
     getMacAddress(): number[]
     getMacAddressBlacklist(): GLib.SList[]
-    getMacBlacklistItem(idx: number): string | null
-    getMode(): string | null
+    getMacBlacklistItem(idx: number): string
+    getMode(): string
     getMtu(): number
     getNumMacBlacklistItems(): number
     getNumSeenBssids(): number
     getPowersave(): number
     getRate(): number
-    getSecurity(): string | null
-    getSeenBssid(i: number): string | null
+    getSecurity(): string
+    getSeenBssid(i: number): string
     getSsid(): number[]
     getTxPower(): number
     /**
@@ -9210,7 +9210,7 @@ export interface SettingWireless {
      * @param mac the MAC address string (hex-digits-and-colons notation) to remove from the blacklist
      * @returns %TRUE if the MAC address was found and removed; %FALSE if it was not.
      */
-    removeMacBlacklistItemByValue(mac: string | null): boolean
+    removeMacBlacklistItemByValue(mac: string): boolean
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingWireless
 
@@ -9505,7 +9505,7 @@ export interface SettingWirelessSecurity {
      * @param group the encryption algorithm to add, one of "wep40", "wep104", "tkip", or "ccmp"
      * @returns %TRUE if the algorithm was added to the list, %FALSE if it was already in the list
      */
-    addGroup(group: string | null): boolean
+    addGroup(group: string): boolean
     /**
      * Adds an encryption algorithm to the list of allowed pairwise encryption
      * algorithms.  If the list is not empty, then only access points that support
@@ -9514,7 +9514,7 @@ export interface SettingWirelessSecurity {
      * @param pairwise the encryption algorithm to add, one of "tkip" or "ccmp"
      * @returns %TRUE if the algorithm was added to the list, %FALSE if it was already in the list
      */
-    addPairwise(pairwise: string | null): boolean
+    addPairwise(pairwise: string): boolean
     /**
      * Adds a Wi-Fi security protocol (one of "wpa" or "rsn") to the allowed list;
      * only protocols in this list will be used when finding and connecting to
@@ -9525,7 +9525,7 @@ export interface SettingWirelessSecurity {
      * @param proto the protocol to add, one of "wpa" or "rsn"
      * @returns %TRUE if the protocol was new and was added to the allowed protocol list, or %FALSE if it was already in the list
      */
-    addProto(proto: string | null): boolean
+    addProto(proto: string): boolean
     /**
      * Removes all algorithms from the allowed list.  If there are no algorithms
      * specified then all groupwise encryption algorithms are allowed.
@@ -9541,18 +9541,18 @@ export interface SettingWirelessSecurity {
      * specified then all protocols are allowed.
      */
     clearProtos(): void
-    getAuthAlg(): string | null
+    getAuthAlg(): string
     /**
      * Returns the allowed groupwise encryption algorithm from allowed algorithm
      * list.
      * @param i index of an item in the allowed groupwise encryption algorithm list
      * @returns the groupwise encryption algorithm at index @i
      */
-    getGroup(i: number): string | null
-    getKeyMgmt(): string | null
-    getLeapPassword(): string | null
+    getGroup(i: number): string
+    getKeyMgmt(): string
+    getLeapPassword(): string
     getLeapPasswordFlags(): SettingSecretFlags
-    getLeapUsername(): string | null
+    getLeapUsername(): string
     getNumGroups(): number
     getNumPairwise(): number
     getNumProtos(): number
@@ -9562,11 +9562,11 @@ export interface SettingWirelessSecurity {
      * @param i index of an item in the allowed pairwise encryption algorithm list
      * @returns the pairwise encryption algorithm at index @i
      */
-    getPairwise(i: number): string | null
-    getProto(i: number): string | null
-    getPsk(): string | null
+    getPairwise(i: number): string
+    getProto(i: number): string
+    getPsk(): string
     getPskFlags(): SettingSecretFlags
-    getWepKey(idx: number): string | null
+    getWepKey(idx: number): string
     getWepKeyFlags(): SettingSecretFlags
     getWepKeyType(): WepKeyType
     getWepTxKeyidx(): number
@@ -9582,7 +9582,7 @@ export interface SettingWirelessSecurity {
      * @param group the encryption algorithm to remove, one of "wep40", "wep104", "tkip", or "ccmp"
      * @returns %TRUE if the algorithm was found and removed; %FALSE if it was not.
      */
-    removeGroupByValue(group: string | null): boolean
+    removeGroupByValue(group: string): boolean
     /**
      * Removes an encryption algorithm from the allowed pairwise encryption
      * algorithm list.
@@ -9595,7 +9595,7 @@ export interface SettingWirelessSecurity {
      * @param pairwise the encryption algorithm to remove, one of "tkip" or "ccmp"
      * @returns %TRUE if the encryption algorithm was found and removed; %FALSE if it was not.
      */
-    removePairwiseByValue(pairwise: string | null): boolean
+    removePairwiseByValue(pairwise: string): boolean
     /**
      * Removes a protocol from the allowed protocol list.
      * @param i index of the protocol to remove
@@ -9606,13 +9606,13 @@ export interface SettingWirelessSecurity {
      * @param proto the protocol to remove, one of "wpa" or "rsn"
      * @returns %TRUE if the protocol was found and removed; %FALSE if it was not.
      */
-    removeProtoByValue(proto: string | null): boolean
+    removeProtoByValue(proto: string): boolean
     /**
      * Sets a WEP key in the given index.
      * @param idx the index of the key (0..3 inclusive)
      * @param key the WEP key as a string, in either hexadecimal, ASCII, or passphrase form as determiend by the value of the #NMSettingWirelessSecurity:wep-key-type property.
      */
-    setWepKey(idx: number, key: string | null): void
+    setWepKey(idx: number, key: string): void
 
     // Class property signals of NetworkManager-1.0.NetworkManager.SettingWirelessSecurity
 
@@ -9733,7 +9733,7 @@ export interface ConnectionClass {
     // Own fields of NetworkManager-1.0.NetworkManager.ConnectionClass
 
     parent: GObject.ObjectClass
-    secretsUpdated: (connection: Connection, setting: string | null) => void
+    secretsUpdated: (connection: Connection, setting: string) => void
 }
 
 export abstract class ConnectionClass {
@@ -10184,11 +10184,11 @@ export interface SettingClass {
 
     parent: GObject.ObjectClass
     needSecrets: (setting: Setting) => string[]
-    updateOneSecret: (setting: Setting, key: string | null, value: any) => number
-    getSecretFlags: (setting: Setting, secretName: string | null, verifySecret: boolean, outFlags: SettingSecretFlags) => boolean
-    setSecretFlags: (setting: Setting, secretName: string | null, verifySecret: boolean, flags: SettingSecretFlags) => boolean
+    updateOneSecret: (setting: Setting, key: string, value: any) => number
+    getSecretFlags: (setting: Setting, secretName: string, verifySecret: boolean, outFlags: SettingSecretFlags) => boolean
+    setSecretFlags: (setting: Setting, secretName: string, verifySecret: boolean, flags: SettingSecretFlags) => boolean
     compareProperty: (setting: Setting, other: Setting, propSpec: GObject.ParamSpec, flags: SettingCompareFlags) => boolean
-    getVirtualIfaceName: (setting: Setting) => string | null
+    getVirtualIfaceName: (setting: Setting) => string
 }
 
 export abstract class SettingClass {

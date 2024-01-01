@@ -1,6 +1,6 @@
 {
     "name": "@girs/gsound-1.0",
-    "version": "1.0.0-3.2.6",
+    "version": "1.0.0-3.2.7",
     "description": "GJS TypeScript type definitions for GSound-1.0, generated from library version 1.0.0",
     "type": "module",
     "module": "gsound-1.0.js",

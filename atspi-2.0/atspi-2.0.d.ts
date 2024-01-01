@@ -1821,36 +1821,36 @@ const COMPONENTLAYER_COUNT: number
  * One higher than the highest valid value of #AtspiCoordType.
  */
 const COORD_TYPE_COUNT: number
-const DBUS_INTERFACE_ACCESSIBLE: string | null
-const DBUS_INTERFACE_ACTION: string | null
-const DBUS_INTERFACE_APPLICATION: string | null
-const DBUS_INTERFACE_CACHE: string | null
-const DBUS_INTERFACE_COLLECTION: string | null
-const DBUS_INTERFACE_COMPONENT: string | null
-const DBUS_INTERFACE_DEC: string | null
-const DBUS_INTERFACE_DEVICE_EVENT_LISTENER: string | null
-const DBUS_INTERFACE_DOCUMENT: string | null
-const DBUS_INTERFACE_EDITABLE_TEXT: string | null
-const DBUS_INTERFACE_EVENT_KEYBOARD: string | null
-const DBUS_INTERFACE_EVENT_MOUSE: string | null
-const DBUS_INTERFACE_EVENT_OBJECT: string | null
-const DBUS_INTERFACE_EVENT_SCREEN_READER: string | null
-const DBUS_INTERFACE_HYPERLINK: string | null
-const DBUS_INTERFACE_HYPERTEXT: string | null
-const DBUS_INTERFACE_IMAGE: string | null
-const DBUS_INTERFACE_REGISTRY: string | null
-const DBUS_INTERFACE_SELECTION: string | null
-const DBUS_INTERFACE_SOCKET: string | null
-const DBUS_INTERFACE_TABLE: string | null
-const DBUS_INTERFACE_TABLE_CELL: string | null
-const DBUS_INTERFACE_TEXT: string | null
-const DBUS_INTERFACE_VALUE: string | null
-const DBUS_NAME_REGISTRY: string | null
-const DBUS_PATH_DEC: string | null
-const DBUS_PATH_NULL: string | null
-const DBUS_PATH_REGISTRY: string | null
-const DBUS_PATH_ROOT: string | null
-const DBUS_PATH_SCREEN_READER: string | null
+const DBUS_INTERFACE_ACCESSIBLE: string
+const DBUS_INTERFACE_ACTION: string
+const DBUS_INTERFACE_APPLICATION: string
+const DBUS_INTERFACE_CACHE: string
+const DBUS_INTERFACE_COLLECTION: string
+const DBUS_INTERFACE_COMPONENT: string
+const DBUS_INTERFACE_DEC: string
+const DBUS_INTERFACE_DEVICE_EVENT_LISTENER: string
+const DBUS_INTERFACE_DOCUMENT: string
+const DBUS_INTERFACE_EDITABLE_TEXT: string
+const DBUS_INTERFACE_EVENT_KEYBOARD: string
+const DBUS_INTERFACE_EVENT_MOUSE: string
+const DBUS_INTERFACE_EVENT_OBJECT: string
+const DBUS_INTERFACE_EVENT_SCREEN_READER: string
+const DBUS_INTERFACE_HYPERLINK: string
+const DBUS_INTERFACE_HYPERTEXT: string
+const DBUS_INTERFACE_IMAGE: string
+const DBUS_INTERFACE_REGISTRY: string
+const DBUS_INTERFACE_SELECTION: string
+const DBUS_INTERFACE_SOCKET: string
+const DBUS_INTERFACE_TABLE: string
+const DBUS_INTERFACE_TABLE_CELL: string
+const DBUS_INTERFACE_TEXT: string
+const DBUS_INTERFACE_VALUE: string
+const DBUS_NAME_REGISTRY: string
+const DBUS_PATH_DEC: string
+const DBUS_PATH_NULL: string
+const DBUS_PATH_REGISTRY: string
+const DBUS_PATH_ROOT: string
+const DBUS_PATH_SCREEN_READER: string
 /**
  * One higher than the highest valid value of #AtspiEventType.
  */
@@ -1962,7 +1962,7 @@ function generate_keyboard_event(keyval: number, keystring: string | null, synth
  * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
  * @returns %TRUE if successful, otherwise %FALSE.
  */
-function generate_mouse_event(x: number, y: number, name: string | null): boolean
+function generate_mouse_event(x: number, y: number, name: string): boolean
 /**
  * Like atspi_generate_mouse_event, but asynchronous.
  * @param x a #glong indicating the screen x coordinate of the mouse event.
@@ -1970,7 +1970,7 @@ function generate_mouse_event(x: number, y: number, name: string | null): boolea
  * @param name a string indicating which mouse event to be synthesized        (e.g. "b1p", "b1c", "b2r", "rel", "abs").
  * @param callback a callback to be called when a reply is received. May be NULL.
  */
-function generate_mouse_event_async(x: number, y: number, name: string | null, callback: GenerateMouseEventCB | null): void
+function generate_mouse_event_async(x: number, y: number, name: string, callback: GenerateMouseEventCB | null): void
 /**
  * Gets the virtual desktop indicated by index `i`.
  * NOTE: currently multiple virtual desktops are not implemented;
@@ -2128,7 +2128,7 @@ interface GenerateMouseEventCB {
  * @param keystring the text corresponding to the keypress.
  */
 interface KeyCallback {
-    (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string | null): void
+    (device: Device, pressed: boolean, keycode: number, keysym: number, modifiers: number, keystring: string): void
 }
 module Action {
 
@@ -2478,7 +2478,7 @@ interface Document {
      * @param attribute a string indicating the name of a specific attribute.
      * @returns a string corresponding to the value of the specified attribute, or an empty string if the attribute is unspecified for the object.
      */
-    get_document_attribute_value(attribute: string | null): string | null
+    get_document_attribute_value(attribute: string): string | null
     /**
      * Gets all constant attributes for the document as a whole. For attributes
      * that change within the document content, see `atspi_text_get_attribute_run` instead.
@@ -2575,7 +2575,7 @@ interface EditableText {
      * @param length the number of characters of text to insert, in bytes. If the byte count of text is less than or equal to length, the entire contents of text will be inserted.
      * @returns #TRUE if the operation was successful, otherwise #FALSE.
      */
-    insert_text(position: number, text: string | null, length: number): boolean
+    insert_text(position: number, text: string, length: number): boolean
     /**
      * Inserts text from the system clipboard into an #AtspiEditableText object.
      * As with all character offsets, the specified `position` may not be the
@@ -2590,7 +2590,7 @@ interface EditableText {
      * @param new_contents a character string, encoded in UTF-8, which is to      become the new text contents of the #AtspiEditableText object.
      * @returns #TRUE if the operation was successful, otherwise #FALSE.
      */
-    set_text_contents(new_contents: string | null): boolean
+    set_text_contents(new_contents: string): boolean
 
     // Class property signals of Atspi-2.0.Atspi.EditableText
 
@@ -3233,7 +3233,7 @@ interface Text {
      * @param attribute_name The attribute to query.
      * @returns the value of a given attribute at the given offset, or %NULL if not present.
      */
-    get_text_attribute_value(offset: number, attribute_name: string | null): string | null
+    get_text_attribute_value(offset: number, attribute_name: string): string | null
     /**
      * Gets the attributes applied to a range of text from an #AtspiText
      * object. The text attributes correspond to CSS attributes
@@ -3714,7 +3714,7 @@ interface Accessible extends Action, Collection, Component, Document, EditableTe
      * @returns a UTF-8 string indicating the name of the #AtspiAccessible object or NULL on exception.
      */
     get_name(): string | null
-    get_object_locale(): string | null
+    get_object_locale(): string
     /**
      * Gets an #AtspiAccessible object's parent container.
      * @returns a pointer to the          #AtspiAccessible object which contains the given          #AtspiAccessible instance, or NULL if the @obj has no          parent container.
@@ -4305,7 +4305,7 @@ interface EventListener {
      * @param event_type a string specifying the event type for which this             listener is to be deregistered.
      * @returns #TRUE if successful, otherwise #FALSE.
      */
-    deregister(event_type: string | null): boolean
+    deregister(event_type: string): boolean
     /**
      * Adds an in-process callback function to an existing #AtspiEventListener.
      * 
@@ -4393,14 +4393,14 @@ interface EventListener {
      * @param event_type a character string indicating the type of events for which            notification is requested.  Format is            EventClass:major_type:minor_type:detail            where all subfields other than EventClass are optional.            EventClasses include "object", "window", "mouse",            and toolkit events (e.g. "Gtk", "AWT").            Examples: "focus:", "Gtk:GtkWidget:button_press_event".
      * @returns #TRUE if successful, otherwise #FALSE.
      */
-    register(event_type: string | null): boolean
+    register(event_type: string): boolean
     /**
      * Adds an in-process callback function to an existing #AtspiEventListener.
      * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format and legal event types.
      * @param properties a list of             properties that should be sent along with the event. The             properties are valued for the duration of the event callback.             TODO: Document.
      * @returns #TRUE if successful, otherwise #FALSE.
      */
-    register_full(event_type: string | null, properties: string[] | null): boolean
+    register_full(event_type: string, properties: string[] | null): boolean
     /**
      * Adds an in-process callback function to an existing #AtspiEventListener.
      * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format and legal event types.
@@ -4408,7 +4408,7 @@ interface EventListener {
      * @param app the application whose events should be reported, or      %null for all applications.
      * @returns #TRUE if successful, otherwise #FALSE.
      */
-    register_with_app(event_type: string | null, properties: string[] | null, app: Accessible | null): boolean
+    register_with_app(event_type: string, properties: string[] | null, app: Accessible | null): boolean
 
     // Class property signals of Atspi-2.0.Atspi.EventListener
 
@@ -4460,16 +4460,16 @@ class EventListener extends GObject.Object {
      * @param event_type a string specifying the event type for which this             listener is to be deregistered.
      * @returns #TRUE if successful, otherwise #FALSE.
      */
-    static deregister_from_callback(callback: EventListenerCB, event_type: string | null): boolean
+    static deregister_from_callback(callback: EventListenerCB, event_type: string): boolean
     /**
      * Registers an #AtspiEventListenerCB against an `event_type`.
      * @param callback the #AtspiEventListenerCB to be registered against an event type.
      * @param event_type a character string indicating the type of events for which            notification is requested.  See #atspi_event_listener_register for a description of the format.
      * @returns #TRUE if successfull, otherwise #FALSE.
      */
-    static register_from_callback(callback: EventListenerCB, event_type: string | null): boolean
-    static register_from_callback_full(event_type: string | null, properties: string[]): boolean
-    static register_from_callback_with_app(event_type: string | null, properties: string[], app: Accessible | null): boolean
+    static register_from_callback(callback: EventListenerCB, event_type: string): boolean
+    static register_from_callback_full(event_type: string, properties: string[]): boolean
+    static register_from_callback_with_app(event_type: string, properties: string[], app: Accessible | null): boolean
 }
 
 module Hyperlink {
@@ -4823,7 +4823,7 @@ interface StateSet {
      * @param name a string corresponding to a state name.
      * @param enabled if #TRUE, `name` should be enabled in the `set` in question;          otherwise, it should be disabled.
      */
-    set_by_name(name: string | null, enabled: boolean): void
+    set_by_name(name: string, enabled: boolean): void
 
     // Class property signals of Atspi-2.0.Atspi.StateSet
 

@@ -353,7 +353,7 @@ enum VideoFilter {
  * @param logLevel the log level, either from #GLogLevelFlags or a user-defined level
  * @param message the message to log
  */
-function gLog(sender: Core, logDomain: string | null, logLevel: GLib.LogLevelFlags, message: string | null): void
+function gLog(sender: Core, logDomain: string | null, logLevel: GLib.LogLevelFlags, message: string): void
 function gtkGetResource(): Gio.Resource
 function joypadIdFromButtonCode(buttonCode: number): JoypadId
 function joypadIdToButtonCode(joypadId: JoypadId): number
@@ -376,7 +376,7 @@ function pixbufSetAspectRatio(pixbuf: GdkPixbuf.Pixbuf, aspectRatio: number): vo
  * @param filter a filter name
  * @returns a #RetroVideoFilter
  */
-function videoFilterFromString(filter: string | null): VideoFilter
+function videoFilterFromString(filter: string): VideoFilter
 module Controller {
 
     // Constructor properties interface
@@ -662,12 +662,12 @@ interface Core {
      * @returns whether the state of @self can be accessed
      */
     getCanAccessState(): boolean
-    getContentDirectory(): string | null
+    getContentDirectory(): string
     /**
      * Gets the filename of the core.
      * @returns the filename of the core
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets the FPS rate for the core's video output.
      * @returns the FPS rate for the core's video output
@@ -700,7 +700,7 @@ interface Core {
      * @param key the key of the option
      * @returns the option
      */
-    getOption(key: string | null): Option
+    getOption(key: string): Option
     getRunahead(): number
     /**
      * Gets the save directory of the core.
@@ -708,7 +708,7 @@ interface Core {
      * The core will save some data here.
      * @returns the save directory of the core
      */
-    getSaveDirectory(): string | null
+    getSaveDirectory(): string
     /**
      * Gets the state of `self`.
      * @returns a #GBytes, or %NULL
@@ -726,13 +726,13 @@ interface Core {
      * configuration files.
      * @returns the system directory of the core
      */
-    getSystemDirectory(): string | null
+    getSystemDirectory(): string
     /**
      * Gets whether the core has an option for the given key.
      * @param key the key of the option
      * @returns whether the core has an option for the given key
      */
-    hasOption(key: string | null): boolean
+    hasOption(key: string): boolean
     /**
      * Creates a new #RetroControllerIterator which can be used to iterate through
      * the controllers plugged into `self`.
@@ -753,7 +753,7 @@ interface Core {
      * Iterate `self` for a frame.
      */
     run(): void
-    setContentDirectory(contentDirectory: string | null): void
+    setContentDirectory(contentDirectory: string): void
     /**
      * Plugs `controller` into the specified port number of `self`.
      * @param port the port number
@@ -800,7 +800,7 @@ interface Core {
      * The core will save some data here.
      * @param saveDirectory the save directory
      */
-    setSaveDirectory(saveDirectory: string | null): void
+    setSaveDirectory(saveDirectory: string): void
     /**
      * Sets the state of the `self`.
      * @param bytes a #GBytes
@@ -813,7 +813,7 @@ interface Core {
      * configuration files.
      * @param systemDirectory the system directory
      */
-    setSystemDirectory(systemDirectory: string | null): void
+    setSystemDirectory(systemDirectory: string): void
 
     // Own signals of Retro-0.14.Retro.Core
 
@@ -928,14 +928,14 @@ class Core extends GObject.Object {
      * @param filename the filename of a Libretro core
      * @returns a new #RetroCore
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new #RetroCore.
      * @constructor 
      * @param filename the filename of a Libretro core
      * @returns a new #RetroCore
      */
-    static new(filename: string | null): Core
+    static new(filename: string): Core
     _init(config?: Core.ConstructorProperties): void
 }
 
@@ -961,25 +961,25 @@ interface CoreDescriptor {
      * @param firmware a firmware name
      * @returns a string or %NULL, free it with g_free()
      */
-    getFirmwareMd5(firmware: string | null): string | null
+    getFirmwareMd5(firmware: string): string | null
     /**
      * Gets the demanded path to the firmware file, or %NULL.
      * @param firmware a firmware name
      * @returns a string or %NULL, free it with g_free()
      */
-    getFirmwarePath(firmware: string | null): string | null
+    getFirmwarePath(firmware: string): string | null
     /**
      * Gets the SHA512 fingerprint of the firmware file, or %NULL.
      * @param firmware a firmware name
      * @returns a string or %NULL, free it with g_free()
      */
-    getFirmwareSha512(firmware: string | null): string | null
+    getFirmwareSha512(firmware: string): string | null
     /**
      * Gets the list of firmwares used by the core for this platform.
      * @param platform a platform name
      * @returns a %NULL-terminated string array or %NULL, the array should be freed with g_strfreev()
      */
-    getFirmwares(platform: string | null): string[]
+    getFirmwares(platform: string): string[]
     /**
      * Gets the icon, or %NULL if it doesn't exist.
      * @returns a #GIcon or %NULL
@@ -1000,7 +1000,7 @@ interface CoreDescriptor {
      * @param firmware a firmware name
      * @returns whether the firmware is mandatory for the core to function
      */
-    getIsFirmwareMandatory(firmware: string | null): boolean
+    getIsFirmwareMandatory(firmware: string): boolean
     /**
      * Gets whether the core is a game, and hence can't load games.
      * @returns whether the core is a game
@@ -1011,7 +1011,7 @@ interface CoreDescriptor {
      * @param platform a platform name
      * @returns a %NULL-terminated string array or %NULL, the array should be freed with g_strfreev()
      */
-    getMimeType(platform: string | null): string[]
+    getMimeType(platform: string): string[]
     /**
      * Gets the module file name, or %NULL if it doesn't exist.
      * @returns a string or %NULL, free it with g_free()
@@ -1033,7 +1033,7 @@ interface CoreDescriptor {
      * @param mimeTypes the MIME types
      * @returns whether the platform supports all of the given MIME types
      */
-    getPlatformSupportsMimeTypes(platform: string | null, mimeTypes: string[]): boolean
+    getPlatformSupportsMimeTypes(platform: string, mimeTypes: string[]): boolean
     /**
      * Gets the URI of the file of `self`.
      * @returns the URI of the file of @self, free it with g_free()
@@ -1044,19 +1044,19 @@ interface CoreDescriptor {
      * @param firmware a firmware name
      * @returns whether the firmware declares its MD5 fingerprint
      */
-    hasFirmwareMd5(firmware: string | null): boolean
+    hasFirmwareMd5(firmware: string): boolean
     /**
      * Gets whether the firmware declares its SHA512 fingerprint.
      * @param firmware a firmware name
      * @returns whether the firmware declares its SHA512 fingerprint
      */
-    hasFirmwareSha512(firmware: string | null): boolean
+    hasFirmwareSha512(firmware: string): boolean
     /**
      * Gets whether the platform has associated firmwares.
      * @param platform a platform name
      * @returns whether the platform has associated firmwares
      */
-    hasFirmwares(platform: string | null): boolean
+    hasFirmwares(platform: string): boolean
     /**
      * Gets whether the core has an icon.
      * @returns whether the core has an icon
@@ -1067,7 +1067,7 @@ interface CoreDescriptor {
      * @param platform a platform name
      * @returns whether the core descriptor declares the given platform
      */
-    hasPlatform(platform: string | null): boolean
+    hasPlatform(platform: string): boolean
 
     // Class property signals of Retro-0.14.Retro.CoreDescriptor
 
@@ -1099,14 +1099,14 @@ class CoreDescriptor extends GObject.Object {
      * @param filename the file name of the core descriptor
      * @returns a new #RetroCoreDescriptor
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new #RetroCoreDescriptor.
      * @constructor 
      * @param filename the file name of the core descriptor
      * @returns a new #RetroCoreDescriptor
      */
-    static new(filename: string | null): CoreDescriptor
+    static new(filename: string): CoreDescriptor
     _init(config?: CoreDescriptor.ConstructorProperties): void
 }
 
@@ -1238,13 +1238,13 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1257,13 +1257,13 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1276,7 +1276,7 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1285,7 +1285,7 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1297,7 +1297,7 @@ interface CoreView extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1954,17 +1954,17 @@ interface Option {
      * Gets the description of `self`.
      * @returns the description of @self
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the key of `self`.
      * @returns the key of @self
      */
-    getKey(): string | null
+    getKey(): string
     /**
      * Gets the value of `self`.
      * @returns the value of @self
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Gets the value of `self`.
      * @returns the value of @self
@@ -1975,7 +1975,7 @@ interface Option {
      * `self`.
      * @param value the value
      */
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Own signals of Retro-0.14.Retro.Option
 

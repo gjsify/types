@@ -188,14 +188,14 @@ export enum StartupFlags {
     DISABLE_GALLERY,
     SINGLE_WINDOW,
 }
-export const FILE_FORMAT_JPEG: string | null
+export const FILE_FORMAT_JPEG: string
 export const IMAGE_DATA_ALL: number
 export const LIST_STORE_THUMB_SIZE: number
 export const SCROLL_VIEW_MAX_ZOOM_FACTOR: number
 export const SCROLL_VIEW_MIN_ZOOM_FACTOR: number
-export const THUMBNAIL_ORIGINAL_HEIGHT: string | null
-export const THUMBNAIL_ORIGINAL_WIDTH: string | null
-export function debug(section: Debug, file: string | null, line: number, function_: string | null): void
+export const THUMBNAIL_ORIGINAL_HEIGHT: string
+export const THUMBNAIL_ORIGINAL_WIDTH: string
+export function debug(section: Debug, file: string, line: number, function_: string): void
 export function debug_init(): void
 /**
  * Takes a date string formatted after Exif specifications and generates a
@@ -203,7 +203,7 @@ export function debug_init(): void
  * @param date a date string following Exif specifications
  * @returns a newly allocated date string formatted according to the current locale.
  */
-export function exif_util_format_date(date: string | null): string | null
+export function exif_util_format_date(date: string): string | null
 export function image_error_quark(): GLib.Quark
 export function marshal_VOID__INT_INT(closure: GObject.TClosure, return_value: any, n_param_values: number, param_values: any, invocation_hint: any | null, marshal_data: any | null): void
 /**
@@ -593,7 +593,7 @@ export interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -607,7 +607,7 @@ export interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -618,7 +618,7 @@ export interface DetailsDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Eog-3.0.Eog.DetailsDialog
 
@@ -971,7 +971,7 @@ export interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Fi
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -985,7 +985,7 @@ export interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Fi
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -996,7 +996,7 @@ export interface FileChooser extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Fi
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Eog-3.0.Eog.FileChooser
 
@@ -1398,8 +1398,8 @@ export interface Image {
      */
     get_autorotate_transform(): Transform
     get_bytes(): number
-    get_caption(): string | null
-    get_collate_key(): string | null
+    get_caption(): string
+    get_collate_key(): string
     /**
      * Gets the #GFile associated with `img`
      * @returns a #GFile
@@ -1517,14 +1517,14 @@ export class Image extends GObject.Object {
     // Constructors of Eog-3.0.Eog.Image
 
     constructor(config?: Image.ConstructorProperties) 
-    static new_file(file: Gio.File, caption: string | null): Image
+    static new_file(file: Gio.File, caption: string): Image
     _init(config?: Image.ConstructorProperties): void
     /**
      * Gets the list of supported mimetypes
      * @returns a #GList of supported mimetypes
      */
     static get_supported_mime_types(): string[]
-    static is_supported_mime_type(mime_type: string | null): boolean
+    static is_supported_mime_type(mime_type: string): boolean
 }
 
 export module ImageSaveInfo {
@@ -1570,7 +1570,7 @@ export class ImageSaveInfo extends GObject.Object {
     constructor(config?: ImageSaveInfo.ConstructorProperties) 
     static new_from_file(file: Gio.File, format: GdkPixbuf.PixbufFormat): ImageSaveInfo
     static new_from_image(image: Image): ImageSaveInfo
-    static new_from_uri(uri: string | null, format: GdkPixbuf.PixbufFormat): ImageSaveInfo
+    static new_from_uri(uri: string, format: GdkPixbuf.PixbufFormat): ImageSaveInfo
     _init(config?: ImageSaveInfo.ConstructorProperties): void
 }
 
@@ -1714,7 +1714,7 @@ export class JobCopy extends Job {
      * @param destination destination path for the copy
      * @returns A #EogJob.
      */
-    constructor(images: Image[], destination: string | null) 
+    constructor(images: Image[], destination: string) 
     /**
      * Creates a new #EogJob.
      * @constructor 
@@ -1722,7 +1722,7 @@ export class JobCopy extends Job {
      * @param destination destination path for the copy
      * @returns A #EogJob.
      */
-    static new(images: Image[], destination: string | null): JobCopy
+    static new(images: Image[], destination: string): JobCopy
     _init(config?: JobCopy.ConstructorProperties): void
 }
 
@@ -2261,7 +2261,7 @@ export interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2275,7 +2275,7 @@ export interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2286,7 +2286,7 @@ export interface RemotePresenter extends Atk.ImplementorIface, Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Eog-3.0.Eog.RemotePresenter
 
@@ -2550,7 +2550,7 @@ export class RemotePresenter extends Gtk.Window {
      * @param previous_image_action 
      * @returns a new #EogRemotePresenter
      */
-    constructor(parent: Gtk.Window, thumbview: ThumbView, next_image_action: string | null, previous_image_action: string | null) 
+    constructor(parent: Gtk.Window, thumbview: ThumbView, next_image_action: string, previous_image_action: string) 
     /**
      * If %parent implements #GActionMap its actions will be automatically
      * inserted in the "win" namespace.
@@ -2561,7 +2561,7 @@ export class RemotePresenter extends Gtk.Window {
      * @param previous_image_action 
      * @returns a new #EogRemotePresenter
      */
-    static new(parent: Gtk.Window, thumbview: ThumbView, next_image_action: string | null, previous_image_action: string | null): RemotePresenter
+    static new(parent: Gtk.Window, thumbview: ThumbView, next_image_action: string, previous_image_action: string): RemotePresenter
 
     // Overloads of new
 
@@ -2861,7 +2861,7 @@ export interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2875,7 +2875,7 @@ export interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2886,7 +2886,7 @@ export interface ScrollView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scr
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Eog-3.0.Eog.ScrollView
 
@@ -3146,7 +3146,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
 
     // Owm methods of Eog-3.0.Eog.Sidebar
 
-    add_page(title: string | null, main_widget: Gtk.Widget): void
+    add_page(title: string, main_widget: Gtk.Widget): void
     get_n_pages(): number
     get_page_nr(): number
     is_empty(): boolean
@@ -3167,7 +3167,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3181,7 +3181,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3192,7 +3192,7 @@ export interface Sidebar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orient
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Eog-3.0.Eog.Sidebar
 
@@ -3453,7 +3453,7 @@ export interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3467,7 +3467,7 @@ export interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3478,7 +3478,7 @@ export interface Statusbar extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orie
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Eog-3.0.Eog.Statusbar
 
@@ -3725,7 +3725,7 @@ export interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3739,7 +3739,7 @@ export interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3750,7 +3750,7 @@ export interface ThumbNav extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orien
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Eog-3.0.Eog.ThumbNav
 
@@ -4045,7 +4045,7 @@ export interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cell
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4059,7 +4059,7 @@ export interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cell
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4070,7 +4070,7 @@ export interface ThumbView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Cell
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Eog-3.0.Eog.ThumbView
 
@@ -4437,10 +4437,10 @@ export class URIConverter extends GObject.Object {
     // Constructors of Eog-3.0.Eog.URIConverter
 
     constructor(config?: URIConverter.ConstructorProperties) 
-    constructor(base_file: Gio.File, img_format: GdkPixbuf.PixbufFormat, format_string: string | null) 
-    static new(base_file: Gio.File, img_format: GdkPixbuf.PixbufFormat, format_string: string | null): URIConverter
+    constructor(base_file: Gio.File, img_format: GdkPixbuf.PixbufFormat, format_string: string) 
+    static new(base_file: Gio.File, img_format: GdkPixbuf.PixbufFormat, format_string: string): URIConverter
     _init(config?: URIConverter.ConstructorProperties): void
-    static preview(format_str: string | null, img: Image, format: GdkPixbuf.PixbufFormat, counter: number, n_images: number, convert_spaces: boolean, space_char: string): string | null
+    static preview(format_str: string, img: Image, format: GdkPixbuf.PixbufFormat, counter: number, n_images: number, convert_spaces: boolean, space_char: string): string | null
 }
 
 export module Window {
@@ -4541,7 +4541,7 @@ export interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Actio
     // Owm methods of Eog-3.0.Eog.Window
 
     close(): void
-    get_gear_menu_section(id: string | null): Gio.Menu
+    get_gear_menu_section(id: string): Gio.Menu
     /**
      * Gets the image currently displayed in `window` or %NULL if
      * no image is being displayed.
@@ -4647,7 +4647,7 @@ export interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Actio
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4661,7 +4661,7 @@ export interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Actio
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4672,7 +4672,7 @@ export interface Window extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Actio
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Eog-3.0.Eog.Window
 

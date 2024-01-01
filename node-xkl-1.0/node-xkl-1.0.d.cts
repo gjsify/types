@@ -87,14 +87,14 @@ export const MAX_CI_SHORT_DESC_LENGTH: number
  * @param code ISO 3166 Alpha 2 code: 2 chars, uppercase (US, RU, FR, ...)
  * @returns localized country name (USA, Russia, France, ... translated)
  */
-export function getCountryName(code: string | null): string | null
+export function getCountryName(code: string): string
 /**
  * Get localized language name, from ISO code
  * @param code ISO 639 2B or 2T code: 3 chars, lowercase (eng, rus, fra, ...)
  * @returns localized country name (English, Russiam, French, ... translated)
  */
-export function getLanguageName(code: string | null): string | null
-export function getLastError(): string | null
+export function getLanguageName(code: string): string
+export function getLastError(): string
 /**
  * Restores XKB from the property saved by xkl_backup_names_prop
  * @param engine the engine
@@ -152,9 +152,9 @@ export interface ConfigItem {
 
     // Owm methods of Xkl-1.0.Xkl.ConfigItem
 
-    getDescription(): string | null
-    getName(): string | null
-    getShortDescription(): string | null
+    getDescription(): string
+    getName(): string
+    getShortDescription(): string
     /**
      * Change the `description` field of a XklConfigItem. This is mostly useful for
      * language bindings, in C you can manipulate the member directly.
@@ -290,7 +290,7 @@ export interface ConfigRec {
      * you can manipulate the `model` record member directly.
      * @param newModel new keyboard name.
      */
-    setModel(newModel: string | null): void
+    setModel(newModel: string): void
     /**
      * Sets a new option list.
      * 
@@ -361,7 +361,7 @@ export class ConfigRec extends GObject.Object {
      * @param binary flag indicating whether the output file should be binary
      * @returns TRUE on success
      */
-    static writeToFile(engine: Engine, fileName: string | null, data: ConfigRec, binary: boolean): boolean
+    static writeToFile(engine: Engine, fileName: string, data: ConfigRec, binary: boolean): boolean
 }
 
 export module ConfigRegistry {
@@ -409,7 +409,7 @@ export interface ConfigRegistry {
      * @param item pointer to a XklConfigItem containing the name of the keyboard option. On successfull return, the descriptions are filled.
      * @returns TRUE if appropriate element was found and loaded
      */
-    findOption(optionGroupName: string | null, item: ConfigItem): boolean
+    findOption(optionGroupName: string, item: ConfigItem): boolean
     /**
      * Loads a keyboard option group information from the XML configuration
      * registry.
@@ -424,7 +424,7 @@ export interface ConfigRegistry {
      * @param item pointer to a XklConfigItem containing the name of the keyboard layout variant. On successfull return, the descriptions are filled.
      * @returns TRUE if appropriate element was found and loaded
      */
-    findVariant(layoutName: string | null, item: ConfigItem): boolean
+    findVariant(layoutName: string, item: ConfigItem): boolean
     /**
      * Enumerates countries for which layouts are available,
      * from the XML configuration registry
@@ -437,7 +437,7 @@ export interface ConfigRegistry {
      * @param countryCode country ISO code for which variants will be listed
      * @param func callback to call for every country variant
      */
-    foreachCountryVariant(countryCode: string | null, func: TwoConfigItemsProcessFunc): void
+    foreachCountryVariant(countryCode: string, func: TwoConfigItemsProcessFunc): void
     /**
      * Enumerates languages for which layouts are available,
      * from the XML configuration registry
@@ -450,7 +450,7 @@ export interface ConfigRegistry {
      * @param languageCode language ISO code for which variants will be listed
      * @param func callback to call for every country variant
      */
-    foreachLanguageVariant(languageCode: string | null, func: TwoConfigItemsProcessFunc): void
+    foreachLanguageVariant(languageCode: string, func: TwoConfigItemsProcessFunc): void
     /**
      * Enumerates keyboard layouts from the XML configuration registry
      * @param func callback to call for every layout
@@ -461,7 +461,7 @@ export interface ConfigRegistry {
      * @param layoutName layout name for which variants will be listed
      * @param func callback to call for every layout variant
      */
-    foreachLayoutVariant(layoutName: string | null, func: ConfigItemProcessFunc): void
+    foreachLayoutVariant(layoutName: string, func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard models from the XML configuration registry
      * @param func callback to call for every model
@@ -472,7 +472,7 @@ export interface ConfigRegistry {
      * @param optionGroupName option group name for which variants will be listed
      * @param func callback to call for every option
      */
-    foreachOption(optionGroupName: string | null, func: ConfigItemProcessFunc): void
+    foreachOption(optionGroupName: string, func: ConfigItemProcessFunc): void
     /**
      * Enumerates keyboard option groups from the XML configuration registry
      * @param func callback to call for every option group
@@ -494,7 +494,7 @@ export interface ConfigRegistry {
      * @param pattern pattern to search for (NULL means "all")
      * @param func callback to call for every matching layout/variant
      */
-    searchByPattern(pattern: string | null, func: TwoConfigItemsProcessFunc): void
+    searchByPattern(pattern: string, func: TwoConfigItemsProcessFunc): void
 
     // Class property signals of Xkl-1.0.Xkl.ConfigRegistry
 
@@ -624,7 +624,7 @@ export interface Engine {
      * What kind of backend is used
      * @returns some string id of the backend
      */
-    getBackendName(): string | null
+    getBackendName(): string
     getCurrentState(): State
     getCurrentWindow(): xlib.Window
     getCurrentWindowGroup(): number

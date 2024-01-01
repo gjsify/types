@@ -58,7 +58,7 @@ export function x11_cursor_get_xcursor(cursor: Gdk.Cursor): xlib.Cursor
  * @param display a #GdkDisplay
  * @returns the startup notification ID for @display
  */
-export function x11_display_get_startup_notification_id(display: Gdk.Display): string | null
+export function x11_display_get_startup_notification_id(display: Gdk.Display): string
 /**
  * Returns the timestamp of the last user interaction on
  * `display`. The timestamp is taken from events caused
@@ -92,8 +92,8 @@ export function x11_display_grab(display: Gdk.Display): void
  * @param theme the name of the cursor theme to use, or %NULL to unset         a previously set value
  * @param size the cursor size to use, or 0 to keep the previous size
  */
-export function x11_display_set_cursor_theme(display: Gdk.Display, theme: string | null, size: number): void
-export function x11_display_string_to_compound_text(display: Gdk.Display, str: string | null, encoding: Gdk.Atom, format: number, ctext: number, length: number): number
+export function x11_display_set_cursor_theme(display: Gdk.Display, theme: string, size: number): void
+export function x11_display_string_to_compound_text(display: Gdk.Display, str: string, encoding: Gdk.Atom, format: number, ctext: number, length: number): number
 export function x11_display_text_property_to_text_list(display: Gdk.Display, encoding: Gdk.Atom, format: number, text: number, length: number, list: string | null): number
 /**
  * Ungrab `display` after it has been grabbed with
@@ -101,14 +101,14 @@ export function x11_display_text_property_to_text_list(display: Gdk.Display, enc
  * @param display a #GdkDisplay
  */
 export function x11_display_ungrab(display: Gdk.Display): void
-export function x11_display_utf8_to_compound_text(display: Gdk.Display, str: string | null, encoding: Gdk.Atom, format: number, ctext: number, length: number): boolean
+export function x11_display_utf8_to_compound_text(display: Gdk.Display, str: string, encoding: Gdk.Atom, format: number, ctext: number, length: number): boolean
 /**
  * Returns the X resource (window or pixmap) belonging to a #GdkDrawable.
  * @param drawable a #GdkDrawable.
  * @returns the ID of @drawable's X resource.
  */
 export function x11_drawable_get_xid(drawable: Gdk.Drawable): xlib.XID
-export function x11_font_get_name(font: Gdk.Font): string | null
+export function x11_font_get_name(font: Gdk.Font): string
 export function x11_font_get_xfont(font: Gdk.Font): any | null
 export function x11_free_compound_text(ctext: number): void
 export function x11_free_text_list(list: string | null): void
@@ -131,7 +131,7 @@ export function x11_get_server_time(window: Gdk.Window): number
  * @param atom_name a string
  * @returns a X atom for GDK's default display.
  */
-export function x11_get_xatom_by_name(atom_name: string | null): xlib.Atom
+export function x11_get_xatom_by_name(atom_name: string): xlib.Atom
 /**
  * Returns the X atom for a #GdkDisplay corresponding to `atom_name`.
  * This function caches the result, so if called repeatedly it is much
@@ -140,7 +140,7 @@ export function x11_get_xatom_by_name(atom_name: string | null): xlib.Atom
  * @param atom_name a string
  * @returns a X atom for a #GdkDisplay
  */
-export function x11_get_xatom_by_name_for_display(display: Gdk.Display, atom_name: string | null): xlib.Atom
+export function x11_get_xatom_by_name_for_display(display: Gdk.Display, atom_name: string): xlib.Atom
 /**
  * Returns the name of an X atom for GDK's default display. This
  * function is meant mainly for debugging, so for convenience, unlike
@@ -150,7 +150,7 @@ export function x11_get_xatom_by_name_for_display(display: Gdk.Display, atom_nam
  * @param xatom an X atom for GDK's default display
  * @returns name of the X atom; this string is owned by GTK+,   so it shouldn't be modifed or freed.
  */
-export function x11_get_xatom_name(xatom: xlib.Atom): string | null
+export function x11_get_xatom_name(xatom: xlib.Atom): string
 /**
  * Returns the name of an X atom for its display. This
  * function is meant mainly for debugging, so for convenience, unlike
@@ -160,7 +160,7 @@ export function x11_get_xatom_name(xatom: xlib.Atom): string | null
  * @param xatom an X atom
  * @returns name of the X atom; this string is owned by GDK,   so it shouldn't be modifed or freed.
  */
-export function x11_get_xatom_name_for_display(display: Gdk.Display, xatom: xlib.Atom): string | null
+export function x11_get_xatom_name_for_display(display: Gdk.Display, xatom: xlib.Atom): string
 /**
  * Call gdk_x11_display_grab() on the default display.
  * To ungrab the server again, use gdk_x11_ungrab_server().
@@ -184,7 +184,7 @@ export function x11_screen_get_monitor_output(screen: Gdk.Screen, monitor_num: n
  * @returns the position of @screen among the screens of   its display.
  */
 export function x11_screen_get_screen_number(screen: Gdk.Screen): number
-export function x11_screen_get_window_manager_name(screen: Gdk.Screen): string | null
+export function x11_screen_get_window_manager_name(screen: Gdk.Screen): string
 /**
  * Returns the screen of a #GdkScreen.
  * @param screen a #GdkScreen.
@@ -208,7 +208,7 @@ export function x11_screen_supports_net_wm_hint(screen: Gdk.Screen, property: Gd
  * session management and the Inter-Client Communication Conventions Manual
  * @param sm_client_id the client id assigned by the session manager when the    connection was opened, or %NULL to remove the property.
  */
-export function x11_set_sm_client_id(sm_client_id: string | null): void
+export function x11_set_sm_client_id(sm_client_id: string): void
 /**
  * Ungrab the default display after it has been grabbed with
  * gdk_x11_grab_server().

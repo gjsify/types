@@ -109,7 +109,7 @@ export interface Device {
      * Gets the device's name.
      * @returns the name of @self, do not modify it or free it
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets whether the device has the given input. If the input is present it means
      * that the device can send events for it regardless of whether the device is
@@ -134,7 +134,7 @@ export interface Device {
      * Saves `mapping_string` as the user mapping for `self`.
      * @param mappingString the mapping string
      */
-    saveUserMapping(mappingString: string | null): void
+    saveUserMapping(mappingString: string): void
 
     // Own signals of Manette-0.2.Manette.Device
 

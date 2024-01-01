@@ -144,10 +144,10 @@ export enum AudioFieldFlag {
     SIGNED,
 }
 export const AUDIO_DEF_RATE: number
-export const AUDIO_FLOAT_PAD_TEMPLATE_CAPS: string | null
-export const AUDIO_FLOAT_STANDARD_PAD_TEMPLATE_CAPS: string | null
-export const AUDIO_INT_PAD_TEMPLATE_CAPS: string | null
-export const AUDIO_INT_STANDARD_PAD_TEMPLATE_CAPS: string | null
+export const AUDIO_FLOAT_PAD_TEMPLATE_CAPS: string
+export const AUDIO_FLOAT_STANDARD_PAD_TEMPLATE_CAPS: string
+export const AUDIO_INT_PAD_TEMPLATE_CAPS: string
+export const AUDIO_INT_STANDARD_PAD_TEMPLATE_CAPS: string
 /**
  * This functions checks if the given channel positions are valid. Channel
  * positions are valid if:

@@ -71,7 +71,7 @@ interface ChannelMap {
 
     can_balance(): boolean
     can_fade(): boolean
-    get_mapping(): string | null
+    get_mapping(): string
     get_num_channels(): number
     get_volume(): number
 
@@ -157,16 +157,16 @@ interface MixerCard {
      */
     change_profile(profile: string | null): boolean
     get_gicon(): Gio.Icon
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_id(): number
     get_index(): number
-    get_name(): string | null
+    get_name(): string
     get_ports(): MixerCardPort[]
     get_profiles(): MixerCardProfile[]
-    set_icon_name(name: string | null): boolean
-    set_name(name: string | null): boolean
+    set_icon_name(name: string): boolean
+    set_name(name: string): boolean
     set_ports(ports: MixerCardPort[]): boolean
-    set_profile(profile: string | null): boolean
+    set_profile(profile: string): boolean
     set_profiles(profiles: MixerCardProfile[]): boolean
 
     // Class property signals of Gvc-1.0.Gvc.MixerCard
@@ -459,8 +459,8 @@ class MixerControl extends GObject.Object {
     // Constructors of Gvc-1.0.Gvc.MixerControl
 
     constructor(config?: MixerControl.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): MixerControl
+    constructor(name: string) 
+    static new(name: string): MixerControl
     _init(config?: MixerControl.ConstructorProperties): void
 }
 
@@ -1030,50 +1030,50 @@ interface MixerStream {
     // Owm methods of Gvc-1.0.Gvc.MixerStream
 
     change_is_muted(is_muted: boolean): boolean
-    change_port(port: string | null): boolean
-    get_application_id(): string | null
+    change_port(port: string): boolean
+    get_application_id(): string
     get_base_volume(): number
     get_can_decibel(): boolean
     get_card_index(): number
     get_channel_map(): ChannelMap
     get_decibel(): number
-    get_description(): string | null
-    get_form_factor(): string | null
+    get_description(): string
+    get_form_factor(): string
     get_gicon(): Gio.Icon
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_id(): number
     get_index(): number
     get_is_muted(): boolean
-    get_name(): string | null
+    get_name(): string
     get_port(): MixerStreamPort
     get_ports(): MixerStreamPort[]
     get_state(): MixerStreamState
-    get_sysfs_path(): string | null
+    get_sysfs_path(): string
     get_volume(): number
     is_running(): boolean
     push_volume(): boolean
-    set_application_id(application_id: string | null): boolean
+    set_application_id(application_id: string): boolean
     set_base_volume(base_volume: number): boolean
     set_can_decibel(can_decibel: boolean): boolean
     set_card_index(card_index: number): boolean
     set_decibel(db: number): boolean
-    set_description(description: string | null): boolean
-    set_form_factor(form_factor: string | null): boolean
-    set_icon_name(name: string | null): boolean
+    set_description(description: string): boolean
+    set_form_factor(form_factor: string): boolean
+    set_icon_name(name: string): boolean
     set_is_event_stream(is_event_stream: boolean): boolean
     set_is_muted(is_muted: boolean): boolean
     set_is_virtual(is_event_stream: boolean): boolean
-    set_name(name: string | null): boolean
-    set_port(port: string | null): boolean
+    set_name(name: string): boolean
+    set_port(port: string): boolean
     set_ports(ports: MixerStreamPort[]): boolean
     set_state(state: MixerStreamState): boolean
-    set_sysfs_path(sysfs_path: string | null): boolean
+    set_sysfs_path(sysfs_path: string): boolean
     set_volume(volume: number): boolean
 
     // Own virtual methods of Gvc-1.0.Gvc.MixerStream
 
     vfunc_change_is_muted(is_muted: boolean): boolean
-    vfunc_change_port(port: string | null): boolean
+    vfunc_change_port(port: string): boolean
     vfunc_push_volume(operation: any | null): boolean
 
     // Class property signals of Gvc-1.0.Gvc.MixerStream
@@ -1202,20 +1202,20 @@ interface MixerUIDevice {
 
     // Owm methods of Gvc-1.0.Gvc.MixerUIDevice
 
-    get_active_profile(): string | null
-    get_best_profile(selected: string | null, current: string | null): string | null
-    get_description(): string | null
+    get_active_profile(): string
+    get_best_profile(selected: string | null, current: string): string
+    get_description(): string
     get_gicon(): Gio.Icon
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_id(): number
-    get_matching_profile(profile: string | null): string | null
-    get_origin(): string | null
-    get_port(): string | null
+    get_matching_profile(profile: string): string
+    get_origin(): string
+    get_port(): string
     get_profiles(): MixerCardProfile[]
     get_stream_id(): number
     get_supported_profiles(): MixerCardProfile[]
-    get_top_priority_profile(): string | null
-    get_user_preferred_profile(): string | null
+    get_top_priority_profile(): string
+    get_user_preferred_profile(): string
     has_ports(): boolean
     invalidate_stream(): void
     is_output(): boolean
@@ -1241,7 +1241,7 @@ interface MixerUIDevice {
      * @param in_profiles a list of GvcMixerCardProfile
      */
     set_profiles(in_profiles: MixerCardProfile[]): void
-    set_user_preferred_profile(profile: string | null): void
+    set_user_preferred_profile(profile: string): void
     should_profiles_be_hidden(): boolean
 
     // Class property signals of Gvc-1.0.Gvc.MixerUIDevice
@@ -1547,7 +1547,7 @@ interface MixerStreamClass {
     parent_class: GObject.ObjectClass
     push_volume: (stream: MixerStream, operation: any | null) => boolean
     change_is_muted: (stream: MixerStream, is_muted: boolean) => boolean
-    change_port: (stream: MixerStream, port: string | null) => boolean
+    change_port: (stream: MixerStream, port: string) => boolean
 }
 
 abstract class MixerStreamClass {

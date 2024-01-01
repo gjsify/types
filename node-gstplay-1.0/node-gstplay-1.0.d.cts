@@ -147,15 +147,15 @@ export enum PlayState {
  * @param type a #GstPlayColorBalanceType
  * @returns a string with the name of the color   balance type.
  */
-export function playColorBalanceTypeGetName(type: PlayColorBalanceType): string | null
+export function playColorBalanceTypeGetName(type: PlayColorBalanceType): string
 /**
  * Gets a string representing the given error.
  * @param error a #GstPlayError
  * @returns a string with the given error.
  */
-export function playErrorGetName(error: PlayError): string | null
+export function playErrorGetName(error: PlayError): string
 export function playErrorQuark(): GLib.Quark
-export function playMessageGetName(messageType: PlayMessage): string | null
+export function playMessageGetName(messageType: PlayMessage): string
 /**
  * Parse the given buffering-percent `msg` and extract the corresponding value
  * @param msg A #GstMessage
@@ -216,7 +216,7 @@ export function playMessageParseWarning(msg: Gst.Message): [ /* error */ GLib.Er
  * @param state a #GstPlayState
  * @returns a string with the name of the state.
  */
-export function playStateGetName(state: PlayState): string | null
+export function playStateGetName(state: PlayState): string
 export module PlayVideoRenderer {
 
     // Constructor properties interface
@@ -838,7 +838,7 @@ export interface PlayMediaInfo {
     getSubtitleStreams(): PlaySubtitleInfo[]
     getTags(): Gst.TagList | null
     getTitle(): string | null
-    getUri(): string | null
+    getUri(): string
     getVideoStreams(): PlayVideoInfo[]
     isLive(): boolean
     isSeekable(): boolean
@@ -1161,7 +1161,7 @@ export interface PlayStreamInfo {
      * of the given `info` (ex: "audio", "video", "subtitle")
      * @returns a human readable name
      */
-    getStreamType(): string | null
+    getStreamType(): string
     getTags(): Gst.TagList | null
 
     // Class property signals of GstPlay-1.0.GstPlay.PlayStreamInfo

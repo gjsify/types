@@ -70,11 +70,11 @@ export enum MediaMode {
 /**
  * The filename suffix for photos saved by Cheese.
  */
-export const PHOTO_NAME_SUFFIX: string | null
+export const PHOTO_NAME_SUFFIX: string
 /**
  * The filename suffix for videos saved by Cheese.
  */
-export const VIDEO_NAME_SUFFIX: string | null
+export const VIDEO_NAME_SUFFIX: string
 export module Camera {
 
     // Signal callback interfaces
@@ -177,7 +177,7 @@ export interface Camera {
      * @param property name of the balance property
      * @returns %TRUE if the operation was successful, %FALSE otherwise
      */
-    get_balance_property_range(property: string | null): [ /* returnType */ boolean, /* min */ number, /* max */ number, /* def */ number ]
+    get_balance_property_range(property: string): [ /* returnType */ boolean, /* min */ number, /* max */ number, /* def */ number ]
     /**
      * Get the list of #CheeseCameraDevice objects, representing active video
      * capture devices on the system.
@@ -216,7 +216,7 @@ export interface Camera {
      * @param property name of the balance property
      * @param value value to be set
      */
-    set_balance_property(property: string | null, value: number): void
+    set_balance_property(property: string, value: number): void
     /**
      * Set the active video capture device of the `camera`.
      * @param device the device object
@@ -419,12 +419,12 @@ export interface CameraDevice extends Gio.Initable {
      * suitable for display to a user.
      * @returns the human-readable name of the video capture device
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get path for the device, as reported by udev.
      * @returns the path of the video capture device
      */
-    get_path(): string | null
+    get_path(): string
     /**
      * Get the source GStreamer element for the `device`.
      * @returns the source GStreamer element
@@ -668,12 +668,12 @@ export interface Effect {
      * Get the human-readable name of the `effect`.
      * @returns the human-readable name of the effect.
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get the Gstreamer pipeline description of the `effect`.
      * @returns the Gstreamer pipeline description of the effect.
      */
-    get_pipeline_desc(): string | null
+    get_pipeline_desc(): string
     /**
      * Get whether the `effect` is connected to a video stream, for previews.
      * @returns %TRUE if the preview is connected, %FALSE otherwise.
@@ -718,7 +718,7 @@ export class Effect extends GObject.Object {
      * @param pipeline_desc GStreamer pipeline of the new effect
      * @returns a new #CheeseEffect
      */
-    constructor(name: string | null, pipeline_desc: string | null) 
+    constructor(name: string, pipeline_desc: string) 
     /**
      * Create a new #CheeseEffect.
      * @constructor 
@@ -726,7 +726,7 @@ export class Effect extends GObject.Object {
      * @param pipeline_desc GStreamer pipeline of the new effect
      * @returns a new #CheeseEffect
      */
-    static new(name: string | null, pipeline_desc: string | null): Effect
+    static new(name: string, pipeline_desc: string): Effect
     _init(config?: Effect.ConstructorProperties): void
     /**
      * Load effects from standard directories, including the user's data directory.

@@ -49,113 +49,113 @@ export enum TextDirection {
 /**
  * String to access property #DbusmenuClient:dbus-name
  */
-export const CLIENT_PROP_DBUS_NAME: string | null
+export const CLIENT_PROP_DBUS_NAME: string
 /**
  * String to access property #DbusmenuClient:dbus-object
  */
-export const CLIENT_PROP_DBUS_OBJECT: string | null
+export const CLIENT_PROP_DBUS_OBJECT: string
 /**
  * String to access property #DbusmenuClient:group-events
  */
-export const CLIENT_PROP_GROUP_EVENTS: string | null
+export const CLIENT_PROP_GROUP_EVENTS: string
 /**
  * String to access property #DbusmenuClient:status
  */
-export const CLIENT_PROP_STATUS: string | null
+export const CLIENT_PROP_STATUS: string
 /**
  * String to access property #DbusmenuClient:text-direction
  */
-export const CLIENT_PROP_TEXT_DIRECTION: string | null
+export const CLIENT_PROP_TEXT_DIRECTION: string
 /**
  * String to attach to signal #DbusmenuClient::event-result
  */
-export const CLIENT_SIGNAL_EVENT_RESULT: string | null
+export const CLIENT_SIGNAL_EVENT_RESULT: string
 /**
  * String to attach to signal #DbusmenuClient::icon-theme-dirs-changed
  */
-export const CLIENT_SIGNAL_ICON_THEME_DIRS_CHANGED: string | null
+export const CLIENT_SIGNAL_ICON_THEME_DIRS_CHANGED: string
 /**
  * String to attach to signal #DbusmenuClient::item-activate
  */
-export const CLIENT_SIGNAL_ITEM_ACTIVATE: string | null
+export const CLIENT_SIGNAL_ITEM_ACTIVATE: string
 /**
  * String to attach to signal #DbusmenuClient::layout-updated
  */
-export const CLIENT_SIGNAL_LAYOUT_UPDATED: string | null
+export const CLIENT_SIGNAL_LAYOUT_UPDATED: string
 /**
  * String to attach to signal #DbusmenuClient::new-menuitem
  */
-export const CLIENT_SIGNAL_NEW_MENUITEM: string | null
+export const CLIENT_SIGNAL_NEW_MENUITEM: string
 /**
  * String to attach to signal #DbusmenuClient::root-changed
  */
-export const CLIENT_SIGNAL_ROOT_CHANGED: string | null
+export const CLIENT_SIGNAL_ROOT_CHANGED: string
 /**
  * Used to set the 'type' property on a menu item to create
  * a standard menu item.
  */
-export const CLIENT_TYPES_DEFAULT: string | null
+export const CLIENT_TYPES_DEFAULT: string
 /**
  * Used to set the 'type' property on a menu item to create
  * an image menu item.  Deprecated as standard menu items now
  * support images as well.
  */
-export const CLIENT_TYPES_IMAGE: string | null
+export const CLIENT_TYPES_IMAGE: string
 /**
  * Used to set the 'type' property on a menu item to create
  * a separator menu item.
  */
-export const CLIENT_TYPES_SEPARATOR: string | null
+export const CLIENT_TYPES_SEPARATOR: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_CHILD_DISPLAY to have the
  * subitems displayed as a submenu.
  */
-export const MENUITEM_CHILD_DISPLAY_SUBMENU: string | null
+export const MENUITEM_CHILD_DISPLAY_SUBMENU: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
  * item displayed in a way that conveys it's giving an alert
  * to the user.
  */
-export const MENUITEM_DISPOSITION_ALERT: string | null
+export const MENUITEM_DISPOSITION_ALERT: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
  * item displayed in a way that conveys it's giving additional
  * information to the user.
  */
-export const MENUITEM_DISPOSITION_INFORMATIVE: string | null
+export const MENUITEM_DISPOSITION_INFORMATIVE: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
  * item displayed in the normal manner.  Default value.
  */
-export const MENUITEM_DISPOSITION_NORMAL: string | null
+export const MENUITEM_DISPOSITION_NORMAL: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_DISPOSITION to have a menu
  * item displayed in a way that conveys it's giving a warning
  * to the user.
  */
-export const MENUITEM_DISPOSITION_WARNING: string | null
+export const MENUITEM_DISPOSITION_WARNING: string
 /**
  * String for the event identifier when a menu item is clicked
  * on by the user.
  */
-export const MENUITEM_EVENT_ACTIVATED: string | null
+export const MENUITEM_EVENT_ACTIVATED: string
 /**
  * String for the event identifier when a menu is closed and
  * displayed to the user.  Only valid for items that contain
  * submenus.
  */
-export const MENUITEM_EVENT_CLOSED: string | null
+export const MENUITEM_EVENT_CLOSED: string
 /**
  * String for the event identifier when a menu is opened and
  * displayed to the user.  Only valid for items that contain
  * submenus.
  */
-export const MENUITEM_EVENT_OPENED: string | null
+export const MENUITEM_EVENT_OPENED: string
 /**
  * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_STATE so that the menu's
  * toggle item is undecided.
  */
-export const MENUITEM_ICON_NAME_BLANK: string | null
+export const MENUITEM_ICON_NAME_BLANK: string
 /**
  * #DbusmenuMenuitem property used to provide a textual description of any
  * information that the icon may convey. The contents of this property are
@@ -164,23 +164,23 @@ export const MENUITEM_ICON_NAME_BLANK: string | null
  * this property is set, Orca will use this property instead of the label
  * property.
  */
-export const MENUITEM_PROP_ACCESSIBLE_DESC: string | null
+export const MENUITEM_PROP_ACCESSIBLE_DESC: string
 /**
  * #DbusmenuMenuitem property that tells how the children of this menuitem
  * should be displayed.  Most likely this will be unset or of the value
  * #DBUSMENU_MENUITEM_CHILD_DISPLAY_SUBMENU.  Type: #G_VARIANT_TYPE_STRING
  */
-export const MENUITEM_PROP_CHILD_DISPLAY: string | null
+export const MENUITEM_PROP_CHILD_DISPLAY: string
 /**
  * #DbusmenuMenuitem property to tell what type of information that the
  * menu item is displaying to the user.  Type: #G_VARIANT_TYPE_STRING
  */
-export const MENUITEM_PROP_DISPOSITION: string | null
+export const MENUITEM_PROP_DISPOSITION: string
 /**
  * #DbusmenuMenuitem property used to represent whether the menuitem
  * is clickable or not.  Type: #G_VARIANT_TYPE_BOOLEAN.
  */
-export const MENUITEM_PROP_ENABLED: string | null
+export const MENUITEM_PROP_ENABLED: string
 /**
  * #DbusmenuMenuitem property that is the raw data of a custom icon
  * used in the application.  Type: #G_VARIANT_TYPE_VARIANT
@@ -188,16 +188,16 @@ export const MENUITEM_PROP_ENABLED: string | null
  * It is recommended that this is not set directly but instead the
  * libdbusmenu-gtk library is used with the function dbusmenu_menuitem_property_set_image()
  */
-export const MENUITEM_PROP_ICON_DATA: string | null
+export const MENUITEM_PROP_ICON_DATA: string
 /**
  * #DbusmenuMenuitem property that is the name of the icon under the
  * Freedesktop.org icon naming spec.  Type: #G_VARIANT_TYPE_STRING
  */
-export const MENUITEM_PROP_ICON_NAME: string | null
+export const MENUITEM_PROP_ICON_NAME: string
 /**
  * #DbusmenuMenuitem property used for the text on the menu item.
  */
-export const MENUITEM_PROP_LABEL: string | null
+export const MENUITEM_PROP_LABEL: string
 /**
  * #DbusmenuMenuitem property that is the entries that represent a shortcut
  * to activate the menuitem.  It is an array of arrays of strings.
@@ -205,95 +205,95 @@ export const MENUITEM_PROP_LABEL: string | null
  * It is recommended that this is not set directly but instead the
  * libdbusmenu-gtk library is used with the function dbusmenu_menuitem_property_set_shortcut()
  */
-export const MENUITEM_PROP_SHORTCUT: string | null
+export const MENUITEM_PROP_SHORTCUT: string
 /**
  * #DbusmenuMenuitem property that says what state a toggle entry should
  * be shown as the menu.  Should be either #DBUSMENU_MENUITEM_TOGGLE_STATE_UNCHECKED
  * #DBUSMENU_MENUITEM_TOGGLE_STATE_CHECKED or #DBUSMENU_MENUITEM_TOGGLE_STATUE_UNKNOWN.
  */
-export const MENUITEM_PROP_TOGGLE_STATE: string | null
+export const MENUITEM_PROP_TOGGLE_STATE: string
 /**
  * #DbusmenuMenuitem property that says what type of toggle entry should
  * be shown in the menu.  Should be either #DBUSMENU_MENUITEM_TOGGLE_CHECK
  * or #DBUSMENU_MENUITEM_TOGGLE_RADIO.  Type: #G_VARIANT_TYPE_STRING
  */
-export const MENUITEM_PROP_TOGGLE_TYPE: string | null
+export const MENUITEM_PROP_TOGGLE_TYPE: string
 /**
  * #DbusmenuMenuitem property used to represent what type of menuitem
  * this object represents.  Type: #G_VARIANT_TYPE_STRING.
  */
-export const MENUITEM_PROP_TYPE: string | null
+export const MENUITEM_PROP_TYPE: string
 /**
  * #DbusmenuMenuitem property used to represent whether the menuitem
  * should be shown or not.  Type: #G_VARIANT_TYPE_BOOLEAN.
  */
-export const MENUITEM_PROP_VISIBLE: string | null
+export const MENUITEM_PROP_VISIBLE: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
  * alternate key.
  */
-export const MENUITEM_SHORTCUT_ALT: string | null
+export const MENUITEM_SHORTCUT_ALT: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
  * control key.
  */
-export const MENUITEM_SHORTCUT_CONTROL: string | null
+export const MENUITEM_SHORTCUT_CONTROL: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
  * shift key.
  */
-export const MENUITEM_SHORTCUT_SHIFT: string | null
+export const MENUITEM_SHORTCUT_SHIFT: string
 /**
  * Used in #DBUSMENU_MENUITEM_PROP_SHORTCUT to represent the
  * super key.
  */
-export const MENUITEM_SHORTCUT_SUPER: string | null
+export const MENUITEM_SHORTCUT_SUPER: string
 /**
  * String to attach to signal #DbusmenuServer::about-to-show
  */
-export const MENUITEM_SIGNAL_ABOUT_TO_SHOW: string | null
+export const MENUITEM_SIGNAL_ABOUT_TO_SHOW: string
 /**
  * String to attach to signal #DbusmenuServer::child-added
  */
-export const MENUITEM_SIGNAL_CHILD_ADDED: string | null
+export const MENUITEM_SIGNAL_CHILD_ADDED: string
 /**
  * String to attach to signal #DbusmenuServer::child-moved
  */
-export const MENUITEM_SIGNAL_CHILD_MOVED: string | null
+export const MENUITEM_SIGNAL_CHILD_MOVED: string
 /**
  * String to attach to signal #DbusmenuServer::child-removed
  */
-export const MENUITEM_SIGNAL_CHILD_REMOVED: string | null
+export const MENUITEM_SIGNAL_CHILD_REMOVED: string
 /**
  * String to attach to signal #DbusmenuServer::event
  */
-export const MENUITEM_SIGNAL_EVENT: string | null
+export const MENUITEM_SIGNAL_EVENT: string
 /**
  * String to attach to signal #DbusmenuServer::item-activated
  */
-export const MENUITEM_SIGNAL_ITEM_ACTIVATED: string | null
+export const MENUITEM_SIGNAL_ITEM_ACTIVATED: string
 /**
  * String to attach to signal #DbusmenuServer::property-changed
  */
-export const MENUITEM_SIGNAL_PROPERTY_CHANGED: string | null
+export const MENUITEM_SIGNAL_PROPERTY_CHANGED: string
 /**
  * String to attach to signal #DbusmenuServer::realized
  */
-export const MENUITEM_SIGNAL_REALIZED: string | null
+export const MENUITEM_SIGNAL_REALIZED: string
 /**
  * String to attach to signal #DbusmenuServer::show-to-user
  */
-export const MENUITEM_SIGNAL_SHOW_TO_USER: string | null
+export const MENUITEM_SIGNAL_SHOW_TO_USER: string
 /**
  * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_TYPE to be a standard
  * check mark item.
  */
-export const MENUITEM_TOGGLE_CHECK: string | null
+export const MENUITEM_TOGGLE_CHECK: string
 /**
  * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_TYPE to be a standard
  * radio item.
  */
-export const MENUITEM_TOGGLE_RADIO: string | null
+export const MENUITEM_TOGGLE_RADIO: string
 /**
  * Used to set #DBUSMENU_MENUITEM_PROP_TOGGLE_STATE so that the menu's
  * toggle item is filled.
@@ -312,39 +312,39 @@ export const MENUITEM_TOGGLE_STATE_UNKNOWN: number
 /**
  * String to access property #DbusmenuServer:dbus-object
  */
-export const SERVER_PROP_DBUS_OBJECT: string | null
+export const SERVER_PROP_DBUS_OBJECT: string
 /**
  * String to access property #DbusmenuServer:root-node
  */
-export const SERVER_PROP_ROOT_NODE: string | null
+export const SERVER_PROP_ROOT_NODE: string
 /**
  * String to access property #DbusmenuServer:status
  */
-export const SERVER_PROP_STATUS: string | null
+export const SERVER_PROP_STATUS: string
 /**
  * String to access property #DbusmenuServer:text-direction
  */
-export const SERVER_PROP_TEXT_DIRECTION: string | null
+export const SERVER_PROP_TEXT_DIRECTION: string
 /**
  * String to access property #DbusmenuServer:version
  */
-export const SERVER_PROP_VERSION: string | null
+export const SERVER_PROP_VERSION: string
 /**
  * String to attach to signal #DbusmenuServer::item-property-updated
  */
-export const SERVER_SIGNAL_ID_PROP_UPDATE: string | null
+export const SERVER_SIGNAL_ID_PROP_UPDATE: string
 /**
  * String to attach to signal #DbusmenuServer::item-updated
  */
-export const SERVER_SIGNAL_ID_UPDATE: string | null
+export const SERVER_SIGNAL_ID_UPDATE: string
 /**
  * String to attach to signal #DbusmenuServer::item-activation-requested
  */
-export const SERVER_SIGNAL_ITEM_ACTIVATION: string | null
+export const SERVER_SIGNAL_ITEM_ACTIVATION: string
 /**
  * String to attach to signal #DbusmenuServer::layout-updated
  */
-export const SERVER_SIGNAL_LAYOUT_UPDATED: string | null
+export const SERVER_SIGNAL_LAYOUT_UPDATED: string
 /**
  * The type handler is called when a dbusmenu item is created
  * 	with a matching type as setup in #dbusmenu_client_add_type_handler
@@ -465,7 +465,7 @@ export interface Client {
      * @param newfunc The function that will be executed with those new     items when they come in.
      * @returns If registering the new type was successful.
      */
-    addTypeHandler(type: string | null, newfunc: ClientTypeHandler): boolean
+    addTypeHandler(type: string, newfunc: ClientTypeHandler): boolean
     /**
      * This function connects into the type handling of the #DbusmenuClient.
      * Every new menuitem that comes in immediately gets asked for its
@@ -481,7 +481,7 @@ export interface Client {
      * @param newfunc The function that will be executed with those new     items when they come in.
      * @returns If registering the new type was successful.
      */
-    addTypeHandlerFull(type: string | null, newfunc: ClientTypeHandler): boolean
+    addTypeHandlerFull(type: string, newfunc: ClientTypeHandler): boolean
     /**
      * Gets the stored and exported icon paths from the client.
      * @returns A NULL-terminated list of icon paths with   memory managed by the client.  Duplicate if you want   to keep them.
@@ -605,7 +605,7 @@ export class Client extends GObject.Object {
      * @param object The object on the server to monitor
      * @returns A brand new #DbusmenuClient
      */
-    constructor(name: string | null, object: string | null) 
+    constructor(name: string, object: string) 
     /**
      * This function creates a new client that connects to a specific
      * server on DBus.  That server is at a specific location sharing
@@ -617,7 +617,7 @@ export class Client extends GObject.Object {
      * @param object The object on the server to monitor
      * @returns A brand new #DbusmenuClient
      */
-    static new(name: string | null, object: string | null): Client
+    static new(name: string, object: string): Client
     _init(config?: Client.ConstructorProperties): void
 }
 
@@ -823,7 +823,7 @@ export interface Menuitem {
      * @returns #TRUE if this is a root node
      */
     getRoot(): boolean
-    // Has conflict: handleEvent(name: string | null, variant: GLib.Variant, timestamp: number): void
+    // Has conflict: handleEvent(name: string, variant: GLib.Variant, timestamp: number): void
     /**
      * This function takes the properties of a #DbusmenuMenuitem
      * and puts them into a #GHashTable that is referenced by the
@@ -848,7 +848,7 @@ export interface Menuitem {
      * @param property The property to look for.
      * @returns A boolean checking to see if the property is available
      */
-    propertyExist(property: string | null): boolean
+    propertyExist(property: string): boolean
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
@@ -856,14 +856,14 @@ export interface Menuitem {
      * @param property The property to grab.
      * @returns A string with the value of the property 	that shouldn't be free'd.  Or #NULL if the property 	is not set or is not a string.
      */
-    propertyGet(property: string | null): string | null
+    propertyGet(property: string): string
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  Returns #FALSE if the property doesn't exist.
      * @param property The property to grab.
      * @returns The value of the property or #FALSE.
      */
-    propertyGetBool(property: string | null): boolean
+    propertyGetBool(property: string): boolean
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
@@ -871,14 +871,14 @@ export interface Menuitem {
      * @param property The property to grab.
      * @returns A byte array with the 	value of the property that shouldn't be free'd.  Or #NULL if the property 	is not set or is not a byte array.
      */
-    propertyGetByteArray(property: string | null): number[]
+    propertyGetByteArray(property: string): number[]
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  Returns zero if the property doesn't exist.
      * @param property The property to grab.
      * @returns The value of the property or zero.
      */
-    propertyGetInt(property: string | null): number
+    propertyGetInt(property: string): number
     /**
      * Look up a property on `mi` and return the value of it if
      * it exits.  #NULL will be returned if the property doesn't
@@ -886,12 +886,12 @@ export interface Menuitem {
      * @param property The property to grab.
      * @returns A GVariant for the property.
      */
-    propertyGetVariant(property: string | null): GLib.Variant
+    propertyGetVariant(property: string): GLib.Variant
     /**
      * Removes a property from the menuitem.
      * @param property The property to look for.
      */
-    propertyRemove(property: string | null): void
+    propertyRemove(property: string): void
     /**
      * Takes the pair of `property` and `value` and places them as a
      * property on `mi`.  If a property already exists by that name,
@@ -903,7 +903,7 @@ export interface Menuitem {
      * @param value The value of the property.
      * @returns A boolean representing if the property value was set.
      */
-    propertySet(property: string | null, value: string | null): boolean
+    propertySet(property: string, value: string): boolean
     /**
      * Takes a boolean `value` and sets it on `property` as a
      * property on `mi`.  If a property already exists by that name,
@@ -915,7 +915,7 @@ export interface Menuitem {
      * @param value The value of the property.
      * @returns A boolean representing if the property value was set.
      */
-    propertySetBool(property: string | null, value: boolean): boolean
+    propertySetBool(property: string, value: boolean): boolean
     /**
      * Takes a byte array `value` and sets it on `property` as a
      * property on `mi`.  If a property already exists by that name,
@@ -928,7 +928,7 @@ export interface Menuitem {
      * @param nelements The number of elements in the byte array.
      * @returns A boolean representing if the property value was set.
      */
-    propertySetByteArray(property: string | null, value: number, nelements: number): boolean
+    propertySetByteArray(property: string, value: number, nelements: number): boolean
     /**
      * Takes a boolean `value` and sets it on `property` as a
      * property on `mi`.  If a property already exists by that name,
@@ -940,7 +940,7 @@ export interface Menuitem {
      * @param value The value of the property.
      * @returns A boolean representing if the property value was set.
      */
-    propertySetInt(property: string | null, value: number): boolean
+    propertySetInt(property: string, value: number): boolean
     /**
      * Takes the pair of `property` and `value` and places them as a
      * property on `mi`.  If a property already exists by that name,
@@ -952,7 +952,7 @@ export interface Menuitem {
      * @param value The value of the property.
      * @returns A boolean representing if the property value was set.
      */
-    propertySetVariant(property: string | null, value: GLib.Variant): boolean
+    propertySetVariant(property: string, value: GLib.Variant): boolean
     /**
      * This function is used to send the even that the submenu
      * of this item is about to be shown.  Callers to this event
@@ -1020,7 +1020,7 @@ export interface Menuitem {
      * @param variant A value that could be set for the event
      * @param timestamp The timestamp of when the event happened
      */
-    handleEvent(name: string | null, variant: GLib.Variant, timestamp: number): void
+    handleEvent(name: string, variant: GLib.Variant, timestamp: number): void
     showToUser(timestamp: number, cbData: any | null): void
 
     // Own signals of Dbusmenu-0.4.Dbusmenu.Menuitem
@@ -1406,7 +1406,7 @@ export class Server extends GObject.Object {
      * @constructor 
      * @param object The object name to show for this menu structure 		on DBus.  May be NULL.
      */
-    constructor(object: string | null) 
+    constructor(object: string) 
     /**
      * Creates a new #DbusmenuServer object with a specific object
      * 	path on DBus.  If `object` is set to NULL the default object
@@ -1416,7 +1416,7 @@ export class Server extends GObject.Object {
      * @constructor 
      * @param object The object name to show for this menu structure 		on DBus.  May be NULL.
      */
-    static new(object: string | null): Server
+    static new(object: string): Server
     _init(config?: Server.ConstructorProperties): void
 }
 
@@ -1480,10 +1480,10 @@ export interface MenuitemClass {
     childRemoved: (child: Menuitem) => void
     childMoved: (child: Menuitem, newpos: number, oldpos: number) => void
     realized: () => void
-    handleEvent: (mi: Menuitem, name: string | null, variant: GLib.Variant, timestamp: number) => void
+    handleEvent: (mi: Menuitem, name: string, variant: GLib.Variant, timestamp: number) => void
     showToUser: (mi: Menuitem, timestamp: number, cbData: any | null) => void
     aboutToShow: () => boolean
-    event: (name: string | null, value: GLib.Variant, timestamp: number) => void
+    event: (name: string, value: GLib.Variant, timestamp: number) => void
     reserved1: () => void
     reserved2: () => void
     reserved3: () => void

@@ -592,9 +592,9 @@ export enum TrustFlags {
      */
     METADATA,
 }
-export const DBUS_INTERFACE: string | null
-export const DBUS_PATH: string | null
-export const DBUS_SERVICE: string | null
+export const DBUS_INTERFACE: string
+export const DBUS_PATH: string
+export const DBUS_SERVICE: string
 export const DEVICE_FLAG_ADD_COUNTERPART_GUIDS: number
 export const DEVICE_FLAG_ANOTHER_WRITE_REQUIRED: number
 export const DEVICE_FLAG_BACKUP_BEFORE_INSTALL: number
@@ -638,7 +638,7 @@ export const DEVICE_FLAG_USE_RUNTIME_VERSION: number
 export const DEVICE_FLAG_VERSION_CHECK_REQUIRED: number
 export const DEVICE_FLAG_WAIT_FOR_REPLUG: number
 export const DEVICE_FLAG_WILL_DISAPPEAR: number
-export const DEVICE_ID_ANY: string | null
+export const DEVICE_ID_ANY: string
 export const PLUGIN_FLAG_CAPSULES_UNSUPPORTED: number
 export const PLUGIN_FLAG_CLEAR_UPDATABLE: number
 export const PLUGIN_FLAG_DISABLED: number
@@ -658,90 +658,90 @@ export const RELEASE_FLAG_IS_UPGRADE: number
 export const RELEASE_FLAG_NONE: number
 export const RELEASE_FLAG_TRUSTED_METADATA: number
 export const RELEASE_FLAG_TRUSTED_PAYLOAD: number
-export const RESULT_KEY_APPSTREAM_ID: string | null
-export const RESULT_KEY_BRANCH: string | null
-export const RESULT_KEY_CATEGORIES: string | null
-export const RESULT_KEY_CHECKSUM: string | null
-export const RESULT_KEY_CREATED: string | null
-export const RESULT_KEY_DESCRIPTION: string | null
-export const RESULT_KEY_DETACH_CAPTION: string | null
-export const RESULT_KEY_DETACH_IMAGE: string | null
-export const RESULT_KEY_DETAILS_URL: string | null
-export const RESULT_KEY_DEVICE_ID: string | null
-export const RESULT_KEY_FILENAME: string | null
-export const RESULT_KEY_FLAGS: string | null
-export const RESULT_KEY_FLASHES_LEFT: string | null
-export const RESULT_KEY_GUID: string | null
-export const RESULT_KEY_HOMEPAGE: string | null
-export const RESULT_KEY_HSI_LEVEL: string | null
-export const RESULT_KEY_HSI_RESULT: string | null
-export const RESULT_KEY_ICON: string | null
-export const RESULT_KEY_INSTALL_DURATION: string | null
-export const RESULT_KEY_INSTANCE_IDS: string | null
-export const RESULT_KEY_ISSUES: string | null
-export const RESULT_KEY_LICENSE: string | null
-export const RESULT_KEY_LOCATIONS: string | null
-export const RESULT_KEY_METADATA: string | null
-export const RESULT_KEY_MODIFIED: string | null
-export const RESULT_KEY_NAME: string | null
-export const RESULT_KEY_NAME_VARIANT_SUFFIX: string | null
-export const RESULT_KEY_PARENT_DEVICE_ID: string | null
-export const RESULT_KEY_PLUGIN: string | null
-export const RESULT_KEY_PROTOCOL: string | null
-export const RESULT_KEY_RELEASE: string | null
-export const RESULT_KEY_REMOTE_ID: string | null
-export const RESULT_KEY_SERIAL: string | null
-export const RESULT_KEY_SIZE: string | null
-export const RESULT_KEY_SOURCE_URL: string | null
-export const RESULT_KEY_STATUS: string | null
-export const RESULT_KEY_SUMMARY: string | null
-export const RESULT_KEY_TRUST_FLAGS: string | null
-export const RESULT_KEY_UPDATE_ERROR: string | null
-export const RESULT_KEY_UPDATE_IMAGE: string | null
-export const RESULT_KEY_UPDATE_MESSAGE: string | null
-export const RESULT_KEY_UPDATE_STATE: string | null
-export const RESULT_KEY_URGENCY: string | null
-export const RESULT_KEY_URI: string | null
-export const RESULT_KEY_VENDOR: string | null
-export const RESULT_KEY_VENDOR_ID: string | null
-export const RESULT_KEY_VERSION: string | null
-export const RESULT_KEY_VERSION_BOOTLOADER: string | null
-export const RESULT_KEY_VERSION_BOOTLOADER_RAW: string | null
-export const RESULT_KEY_VERSION_FORMAT: string | null
-export const RESULT_KEY_VERSION_LOWEST: string | null
-export const RESULT_KEY_VERSION_LOWEST_RAW: string | null
-export const RESULT_KEY_VERSION_RAW: string | null
-export const SECURITY_ATTR_ID_ACPI_DMAR: string | null
-export const SECURITY_ATTR_ID_ENCRYPTED_RAM: string | null
-export const SECURITY_ATTR_ID_FWUPD_ATTESTATION: string | null
-export const SECURITY_ATTR_ID_FWUPD_PLUGINS: string | null
-export const SECURITY_ATTR_ID_FWUPD_UPDATES: string | null
-export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_ACM: string | null
-export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_ENABLED: string | null
-export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_OTP: string | null
-export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_POLICY: string | null
-export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_VERIFIED: string | null
-export const SECURITY_ATTR_ID_INTEL_CET_ACTIVE: string | null
-export const SECURITY_ATTR_ID_INTEL_CET_ENABLED: string | null
-export const SECURITY_ATTR_ID_INTEL_DCI_ENABLED: string | null
-export const SECURITY_ATTR_ID_INTEL_DCI_LOCKED: string | null
-export const SECURITY_ATTR_ID_INTEL_SMAP: string | null
-export const SECURITY_ATTR_ID_IOMMU: string | null
-export const SECURITY_ATTR_ID_KERNEL_LOCKDOWN: string | null
-export const SECURITY_ATTR_ID_KERNEL_SWAP: string | null
-export const SECURITY_ATTR_ID_KERNEL_TAINTED: string | null
-export const SECURITY_ATTR_ID_MEI_MANUFACTURING_MODE: string | null
-export const SECURITY_ATTR_ID_MEI_OVERRIDE_STRAP: string | null
-export const SECURITY_ATTR_ID_MEI_VERSION: string | null
-export const SECURITY_ATTR_ID_SPI_BIOSWE: string | null
-export const SECURITY_ATTR_ID_SPI_BLE: string | null
-export const SECURITY_ATTR_ID_SPI_SMM_BWP: string | null
-export const SECURITY_ATTR_ID_SUSPEND_TO_IDLE: string | null
-export const SECURITY_ATTR_ID_SUSPEND_TO_RAM: string | null
-export const SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0: string | null
-export const SECURITY_ATTR_ID_TPM_VERSION_20: string | null
-export const SECURITY_ATTR_ID_UEFI_PK: string | null
-export const SECURITY_ATTR_ID_UEFI_SECUREBOOT: string | null
+export const RESULT_KEY_APPSTREAM_ID: string
+export const RESULT_KEY_BRANCH: string
+export const RESULT_KEY_CATEGORIES: string
+export const RESULT_KEY_CHECKSUM: string
+export const RESULT_KEY_CREATED: string
+export const RESULT_KEY_DESCRIPTION: string
+export const RESULT_KEY_DETACH_CAPTION: string
+export const RESULT_KEY_DETACH_IMAGE: string
+export const RESULT_KEY_DETAILS_URL: string
+export const RESULT_KEY_DEVICE_ID: string
+export const RESULT_KEY_FILENAME: string
+export const RESULT_KEY_FLAGS: string
+export const RESULT_KEY_FLASHES_LEFT: string
+export const RESULT_KEY_GUID: string
+export const RESULT_KEY_HOMEPAGE: string
+export const RESULT_KEY_HSI_LEVEL: string
+export const RESULT_KEY_HSI_RESULT: string
+export const RESULT_KEY_ICON: string
+export const RESULT_KEY_INSTALL_DURATION: string
+export const RESULT_KEY_INSTANCE_IDS: string
+export const RESULT_KEY_ISSUES: string
+export const RESULT_KEY_LICENSE: string
+export const RESULT_KEY_LOCATIONS: string
+export const RESULT_KEY_METADATA: string
+export const RESULT_KEY_MODIFIED: string
+export const RESULT_KEY_NAME: string
+export const RESULT_KEY_NAME_VARIANT_SUFFIX: string
+export const RESULT_KEY_PARENT_DEVICE_ID: string
+export const RESULT_KEY_PLUGIN: string
+export const RESULT_KEY_PROTOCOL: string
+export const RESULT_KEY_RELEASE: string
+export const RESULT_KEY_REMOTE_ID: string
+export const RESULT_KEY_SERIAL: string
+export const RESULT_KEY_SIZE: string
+export const RESULT_KEY_SOURCE_URL: string
+export const RESULT_KEY_STATUS: string
+export const RESULT_KEY_SUMMARY: string
+export const RESULT_KEY_TRUST_FLAGS: string
+export const RESULT_KEY_UPDATE_ERROR: string
+export const RESULT_KEY_UPDATE_IMAGE: string
+export const RESULT_KEY_UPDATE_MESSAGE: string
+export const RESULT_KEY_UPDATE_STATE: string
+export const RESULT_KEY_URGENCY: string
+export const RESULT_KEY_URI: string
+export const RESULT_KEY_VENDOR: string
+export const RESULT_KEY_VENDOR_ID: string
+export const RESULT_KEY_VERSION: string
+export const RESULT_KEY_VERSION_BOOTLOADER: string
+export const RESULT_KEY_VERSION_BOOTLOADER_RAW: string
+export const RESULT_KEY_VERSION_FORMAT: string
+export const RESULT_KEY_VERSION_LOWEST: string
+export const RESULT_KEY_VERSION_LOWEST_RAW: string
+export const RESULT_KEY_VERSION_RAW: string
+export const SECURITY_ATTR_ID_ACPI_DMAR: string
+export const SECURITY_ATTR_ID_ENCRYPTED_RAM: string
+export const SECURITY_ATTR_ID_FWUPD_ATTESTATION: string
+export const SECURITY_ATTR_ID_FWUPD_PLUGINS: string
+export const SECURITY_ATTR_ID_FWUPD_UPDATES: string
+export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_ACM: string
+export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_ENABLED: string
+export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_OTP: string
+export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_POLICY: string
+export const SECURITY_ATTR_ID_INTEL_BOOTGUARD_VERIFIED: string
+export const SECURITY_ATTR_ID_INTEL_CET_ACTIVE: string
+export const SECURITY_ATTR_ID_INTEL_CET_ENABLED: string
+export const SECURITY_ATTR_ID_INTEL_DCI_ENABLED: string
+export const SECURITY_ATTR_ID_INTEL_DCI_LOCKED: string
+export const SECURITY_ATTR_ID_INTEL_SMAP: string
+export const SECURITY_ATTR_ID_IOMMU: string
+export const SECURITY_ATTR_ID_KERNEL_LOCKDOWN: string
+export const SECURITY_ATTR_ID_KERNEL_SWAP: string
+export const SECURITY_ATTR_ID_KERNEL_TAINTED: string
+export const SECURITY_ATTR_ID_MEI_MANUFACTURING_MODE: string
+export const SECURITY_ATTR_ID_MEI_OVERRIDE_STRAP: string
+export const SECURITY_ATTR_ID_MEI_VERSION: string
+export const SECURITY_ATTR_ID_SPI_BIOSWE: string
+export const SECURITY_ATTR_ID_SPI_BLE: string
+export const SECURITY_ATTR_ID_SPI_SMM_BWP: string
+export const SECURITY_ATTR_ID_SUSPEND_TO_IDLE: string
+export const SECURITY_ATTR_ID_SUSPEND_TO_RAM: string
+export const SECURITY_ATTR_ID_TPM_RECONSTRUCTION_PCR0: string
+export const SECURITY_ATTR_ID_TPM_VERSION_20: string
+export const SECURITY_ATTR_ID_UEFI_PK: string
+export const SECURITY_ATTR_ID_UEFI_SECUREBOOT: string
 /**
  * Builds a JSON report for the list of devices. No filtering is done on the
  * `devices` array, and it is expected that the caller will filter to something
@@ -757,7 +757,7 @@ export function build_history_report_json(devices: Device[]): string | null
  * @param salt The salt, or %NULL for none
  * @returns the SHA256 machine hash, or %NULL if the ID is not present
  */
-export function build_machine_id(salt: string | null): string | null
+export function build_machine_id(salt: string): string | null
 /**
  * Builds a user-agent to use for the download.
  * 
@@ -776,57 +776,57 @@ export function build_machine_id(salt: string | null): string | null
  * @param package_version client program version, e.g. "3.28.1"
  * @returns a string, e.g. `foo/0.1 (Linux i386 4.14.5; en; Fedora 27) fwupd/1.0.3`
  */
-export function build_user_agent(package_name: string | null, package_version: string | null): string | null
+export function build_user_agent(package_name: string, package_version: string): string | null
 /**
  * Formats a checksum for display.
  * @param checksum A checksum
  * @returns text, or %NULL for invalid
  */
-export function checksum_format_for_display(checksum: string | null): string | null
+export function checksum_format_for_display(checksum: string): string | null
 /**
  * Gets a the best possible checksum kind.
  * @param checksums checksums
  * @returns a checksum from the array, or %NULL if nothing was suitable
  */
-export function checksum_get_best(checksums: string[]): string | null
+export function checksum_get_best(checksums: string[]): string
 /**
  * Gets a specific checksum kind.
  * @param checksums checksums
  * @param kind a #GChecksumType, e.g. %G_CHECKSUM_SHA512
  * @returns a checksum from the array, or %NULL if not found
  */
-export function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType): string | null
+export function checksum_get_by_kind(checksums: string[], kind: GLib.ChecksumType): string
 /**
  * Guesses the checksum kind based on the length of the hash.
  * @param checksum A checksum
  * @returns a #GChecksumType, e.g. %G_CHECKSUM_SHA1
  */
-export function checksum_guess_kind(checksum: string | null): GLib.ChecksumType
+export function checksum_guess_kind(checksum: string): GLib.ChecksumType
 /**
  * Converts a string to a #FwupdError.
  * @param error A string, e.g. `org.freedesktop.fwupd.VersionNewer`
  * @returns enumerated value
  */
-export function error_from_string(error: string | null): Error
+export function error_from_string(error: string): Error
 export function error_quark(): GLib.Quark
 /**
  * Converts a #FwupdError to a string.
  * @param error A #FwupdError, e.g. %FWUPD_ERROR_VERSION_NEWER
  * @returns identifier string
  */
-export function error_to_string(error: Error): string | null
+export function error_to_string(error: Error): string
 /**
  * Converts a string to a #FwupdFeatureFlags.
  * @param feature_flag A string, e.g. `detach-action`
  * @returns enumerated value
  */
-export function feature_flag_from_string(feature_flag: string | null): FeatureFlags
+export function feature_flag_from_string(feature_flag: string): FeatureFlags
 /**
  * Converts a #FwupdFeatureFlags to a string.
  * @param feature_flag A #FwupdFeatureFlags, e.g. %FWUPD_FEATURE_FLAG_DETACH_ACTION
  * @returns identifier string
  */
-export function feature_flag_to_string(feature_flag: FeatureFlags): string | null
+export function feature_flag_to_string(feature_flag: FeatureFlags): string
 /**
  * Loads information from the system os-release file.
  * @returns keys from os-release
@@ -867,13 +867,13 @@ export function guid_hash_data(data: number, datasz: number, flags: GuidFlags): 
  * @param str A source string to use as a key
  * @returns A new GUID, or %NULL if the string was invalid
  */
-export function guid_hash_string(str: string | null): string | null
+export function guid_hash_string(str: string): string | null
 /**
  * Checks the string is a valid GUID.
  * @param guid string to check, e.g. `00112233-4455-6677-8899-aabbccddeeff`
  * @returns %TRUE if @guid was a valid GUID, %FALSE otherwise
  */
-export function guid_is_valid(guid: string | null): boolean
+export function guid_is_valid(guid: string): boolean
 /**
  * Returns a text GUID of mixed or BE endian for a packed buffer.
  * @param guid a #fwupd_guid_t to read
@@ -886,61 +886,61 @@ export function guid_to_string(guid: number, flags: GuidFlags): string | null
  * @param keyring_kind a string, e.g. `gpg`
  * @returns a #FwupdKeyringKind, e.g. %FWUPD_KEYRING_KIND_GPG
  */
-export function keyring_kind_from_string(keyring_kind: string | null): KeyringKind
+export function keyring_kind_from_string(keyring_kind: string): KeyringKind
 /**
  * Converts an enumerated type to a printable string.
  * @param keyring_kind a #FwupdKeyringKind, e.g. %FWUPD_KEYRING_KIND_GPG
  * @returns a string, e.g. `gpg`
  */
-export function keyring_kind_to_string(keyring_kind: KeyringKind): string | null
+export function keyring_kind_to_string(keyring_kind: KeyringKind): string
 /**
  * Converts a string to a #FwupdStatus.
  * @param status A string, e.g. `decompressing`
  * @returns enumerated value
  */
-export function status_from_string(status: string | null): Status
+export function status_from_string(status: string): Status
 /**
  * Converts a #FwupdStatus to a string.
  * @param status A #FwupdStatus, e.g. %FWUPD_STATUS_DECOMPRESSING
  * @returns identifier string
  */
-export function status_to_string(status: Status): string | null
+export function status_to_string(status: Status): string
 /**
  * Converts a string to a #FwupdTrustFlags.
  * @param trust_flag A string, e.g. `payload`
  * @returns enumerated value
  */
-export function trust_flag_from_string(trust_flag: string | null): TrustFlags
+export function trust_flag_from_string(trust_flag: string): TrustFlags
 /**
  * Converts a #FwupdTrustFlags to a string.
  * @param trust_flag A #FwupdTrustFlags, e.g. %FWUPD_TRUST_FLAG_PAYLOAD
  * @returns identifier string
  */
-export function trust_flag_to_string(trust_flag: TrustFlags): string | null
+export function trust_flag_to_string(trust_flag: TrustFlags): string
 /**
  * Converts a string to a #FwupdUpdateState.
  * @param update_state A string, e.g. `pending`
  * @returns enumerated value
  */
-export function update_state_from_string(update_state: string | null): UpdateState
+export function update_state_from_string(update_state: string): UpdateState
 /**
  * Converts a #FwupdUpdateState to a string.
  * @param update_state A #FwupdUpdateState, e.g. %FWUPD_UPDATE_STATE_PENDING
  * @returns identifier string
  */
-export function update_state_to_string(update_state: UpdateState): string | null
+export function update_state_to_string(update_state: UpdateState): string
 /**
  * Converts text to a display version type.
  * @param str A string, e.g. `quad`
  * @returns A #FwupdVersionFormat, e.g. %FWUPD_VERSION_FORMAT_TRIPLET
  */
-export function version_format_from_string(str: string | null): VersionFormat
+export function version_format_from_string(str: string): VersionFormat
 /**
  * Converts a display version type to text.
  * @param kind A #FwupdVersionFormat, e.g. %FWUPD_VERSION_FORMAT_TRIPLET
  * @returns A string, e.g. `quad`, or %NULL if not known
  */
-export function version_format_to_string(kind: VersionFormat): string | null
+export function version_format_to_string(kind: VersionFormat): string
 export module Client {
 
     // Signal callback interfaces
@@ -1073,7 +1073,7 @@ export interface Client {
      * @param device_id a device
      * @returns %TRUE for success
      */
-    activate(cancellable: Gio.Cancellable | null, device_id: string | null): boolean
+    activate(cancellable: Gio.Cancellable | null, device_id: string): boolean
     /**
      * Activates up a device, which normally means the device switches to a new
      * firmware version. This should only be called when data loss cannot occur.
@@ -1081,7 +1081,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    activate_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    activate_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of activate_async
 
@@ -1094,7 +1094,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    activate_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    activate_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_activate_async().
      * @param res the #GAsyncResult
@@ -1107,14 +1107,14 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    clear_results(device_id: string | null, cancellable: Gio.Cancellable | null): boolean
+    clear_results(device_id: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Clears the results for a specific device.
      * @param device_id a device
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    clear_results_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    clear_results_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of clear_results_async
 
@@ -1126,7 +1126,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    clear_results_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    clear_results_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_clear_results_async().
      * @param res the #GAsyncResult
@@ -1180,7 +1180,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns downloaded data, or %NULL for error
      */
-    download_bytes(url: string | null, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): GLib.Bytes
+    download_bytes(url: string, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): GLib.Bytes
     /**
      * Downloads data from a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
@@ -1196,7 +1196,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    download_bytes_async(url: string | null, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    download_bytes_async(url: string, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of download_bytes_async
 
@@ -1217,7 +1217,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: downloaded data, or %NULL for error
      */
-    download_bytes_async(url: string | null, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
+    download_bytes_async(url: string, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Gets the result of fwupd_client_download_bytes_async().
      * @param res the #GAsyncResult
@@ -1233,7 +1233,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE if the file was written, or %NULL for error
      */
-    download_file(url: string | null, file: Gio.File, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): boolean
+    download_file(url: string, file: Gio.File, flags: ClientDownloadFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets up the client networking support ready for use. Most other download and
      * upload methods call this automatically, and do you only need to call this if
@@ -1320,14 +1320,14 @@ export interface Client {
      * Gets the daemon version number.
      * @returns a string, or %NULL for unknown.
      */
-    get_daemon_version(): string | null
+    get_daemon_version(): string
     /**
      * Gets details about a specific firmware file.
      * @param filename the firmware filename, e.g. `firmware.cab`
      * @param cancellable the #GCancellable, or %NULL
      * @returns an array of results
      */
-    get_details(filename: string | null, cancellable: Gio.Cancellable | null): Device[]
+    get_details(filename: string, cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets details about a specific firmware file.
      * @param bytes the firmware blob, e.g. the contents of `firmware.cab`
@@ -1366,7 +1366,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns a #FwupdDevice or %NULL
      */
-    get_device_by_id(device_id: string | null, cancellable: Gio.Cancellable | null): Device
+    get_device_by_id(device_id: string, cancellable: Gio.Cancellable | null): Device
     /**
      * Gets a device by it's device ID.
      * 
@@ -1376,7 +1376,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_device_by_id_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_device_by_id_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_device_by_id_async
 
@@ -1391,7 +1391,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: a #FwupdDevice, or %NULL for failure
      */
-    get_device_by_id_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>
+    get_device_by_id_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>
     /**
      * Gets the result of fwupd_client_get_device_by_id_async().
      * @param res the #GAsyncResult
@@ -1434,7 +1434,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns devices or %NULL
      */
-    get_devices_by_guid(guid: string | null, cancellable: Gio.Cancellable | null): Device[]
+    get_devices_by_guid(guid: string, cancellable: Gio.Cancellable | null): Device[]
     /**
      * Gets any devices that provide a specific GUID. An error is returned if no
      * devices contains this GUID.
@@ -1445,7 +1445,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_devices_by_guid_async(guid: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_devices_by_guid_async(guid: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_devices_by_guid_async
 
@@ -1461,7 +1461,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: results
      */
-    get_devices_by_guid_async(guid: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
+    get_devices_by_guid_async(guid: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_devices_by_guid_async().
      * @param res the #GAsyncResult
@@ -1480,7 +1480,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns results
      */
-    get_downgrades(device_id: string | null, cancellable: Gio.Cancellable | null): Release[]
+    get_downgrades(device_id: string, cancellable: Gio.Cancellable | null): Release[]
     /**
      * Gets all the downgrades for a specific device.
      * 
@@ -1490,7 +1490,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_downgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_downgrades_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_downgrades_async
 
@@ -1505,7 +1505,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: results
      */
-    get_downgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
+    get_downgrades_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_downgrades_async().
      * @param res the #GAsyncResult
@@ -1551,12 +1551,12 @@ export interface Client {
      * Gets the string that represents the host machine ID
      * @returns a string, or %NULL for unknown.
      */
-    get_host_machine_id(): string | null
+    get_host_machine_id(): string
     /**
      * Gets the string that represents the host running fwupd
      * @returns a string, or %NULL for unknown.
      */
-    get_host_product(): string | null
+    get_host_product(): string
     /**
      * Gets all the host security attributes from the daemon.
      * @param cancellable the #GCancellable, or %NULL
@@ -1596,7 +1596,7 @@ export interface Client {
      * Gets the string that represents the host machine ID
      * @returns a string, or %NULL for unknown.
      */
-    get_host_security_id(): string | null
+    get_host_security_id(): string
     /**
      * Gets the internal #GMainContext to use for synchronous methods.
      * By default the value is set a new #GMainContext.
@@ -1649,7 +1649,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns results
      */
-    get_releases(device_id: string | null, cancellable: Gio.Cancellable | null): Release[]
+    get_releases(device_id: string, cancellable: Gio.Cancellable | null): Release[]
     /**
      * Gets all the releases for a specific device
      * 
@@ -1659,7 +1659,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_releases_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_releases_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_releases_async
 
@@ -1674,7 +1674,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: results
      */
-    get_releases_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
+    get_releases_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_releases_async().
      * @param res the #GAsyncResult
@@ -1687,14 +1687,14 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns a #FwupdRemote, or %NULL if not found
      */
-    get_remote_by_id(remote_id: string | null, cancellable: Gio.Cancellable | null): Remote
+    get_remote_by_id(remote_id: string, cancellable: Gio.Cancellable | null): Remote
     /**
      * Gets a specific remote that has been configured for the system.
      * @param remote_id the remote ID, e.g. `lvfs-testing`
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_remote_by_id_async(remote_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_remote_by_id_async(remote_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_remote_by_id_async
 
@@ -1706,7 +1706,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: a #FwupdRemote, or %NULL if not found
      */
-    get_remote_by_id_async(remote_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Remote>
+    get_remote_by_id_async(remote_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Remote>
     /**
      * Gets the result of fwupd_client_get_remote_by_id_async().
      * @param res the #GAsyncResult
@@ -1789,7 +1789,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns a #FwupdDevice, or %NULL for failure
      */
-    get_results(device_id: string | null, cancellable: Gio.Cancellable | null): Device
+    get_results(device_id: string, cancellable: Gio.Cancellable | null): Device
     /**
      * Gets the results of a previous firmware update for a specific device.
      * 
@@ -1799,7 +1799,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_results_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_results_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_results_async
 
@@ -1814,7 +1814,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: a #FwupdDevice, or %NULL for failure
      */
-    get_results_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>
+    get_results_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Device>
     /**
      * Gets the result of fwupd_client_get_results_async().
      * @param res the #GAsyncResult
@@ -1837,7 +1837,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns results
      */
-    get_upgrades(device_id: string | null, cancellable: Gio.Cancellable | null): Release[]
+    get_upgrades(device_id: string, cancellable: Gio.Cancellable | null): Release[]
     /**
      * Gets all the upgrades for a specific device.
      * 
@@ -1847,7 +1847,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    get_upgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    get_upgrades_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of get_upgrades_async
 
@@ -1862,7 +1862,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: results
      */
-    get_upgrades_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
+    get_upgrades_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Release[]>
     /**
      * Gets the result of fwupd_client_get_upgrades_async().
      * @param res the #GAsyncResult
@@ -1875,7 +1875,7 @@ export interface Client {
      * version of fwupd somewhere in the provided string.
      * @returns a string, or %NULL for unknown.
      */
-    get_user_agent(): string | null
+    get_user_agent(): string
     /**
      * Install a file onto a specific device.
      * @param device_id the device ID
@@ -1884,7 +1884,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    install(device_id: string | null, filename: string | null, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
+    install(device_id: string, filename: string, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Install firmware onto a specific device.
      * 
@@ -1897,7 +1897,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    install_async(device_id: string | null, filename: string | null, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    install_async(device_id: string, filename: string, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of install_async
 
@@ -1915,7 +1915,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    install_async(device_id: string | null, filename: string | null, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    install_async(device_id: string, filename: string, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Install firmware onto a specific device.
      * @param device_id the device ID
@@ -1924,7 +1924,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    install_bytes(device_id: string | null, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
+    install_bytes(device_id: string, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): boolean
     /**
      * Install firmware onto a specific device.
      * 
@@ -1937,7 +1937,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    install_bytes_async(device_id: string | null, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    install_bytes_async(device_id: string, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of install_bytes_async
 
@@ -1955,7 +1955,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    install_bytes_async(device_id: string | null, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    install_bytes_async(device_id: string, bytes: GLib.Bytes, install_flags: InstallFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_install_bytes_async().
      * @param res the #GAsyncResult
@@ -2046,7 +2046,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    modify_config(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): boolean
+    modify_config(key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Modifies a daemon config option.
      * The daemon will only respond to this request with proper permissions
@@ -2055,7 +2055,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    modify_config_async(key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    modify_config_async(key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of modify_config_async
 
@@ -2069,7 +2069,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    modify_config_async(key: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    modify_config_async(key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_modify_config_async().
      * @param res the #GAsyncResult
@@ -2087,7 +2087,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    modify_device(device_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null): boolean
+    modify_device(device_id: string, key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Modifies a device in a specific way. Not all properties on the #FwupdDevice
      * are settable by the client, and some may have other restrictions on `value`.
@@ -2097,7 +2097,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    modify_device_async(device_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    modify_device_async(device_id: string, key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of modify_device_async
 
@@ -2112,7 +2112,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    modify_device_async(device_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    modify_device_async(device_id: string, key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_modify_device_async().
      * @param res the #GAsyncResult
@@ -2129,7 +2129,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    modify_remote(remote_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null): boolean
+    modify_remote(remote_id: string, key: string, value: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Modifies a system remote in a specific way.
      * @param remote_id the remote ID, e.g. `lvfs-testing`
@@ -2138,7 +2138,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    modify_remote_async(remote_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    modify_remote_async(remote_id: string, key: string, value: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of modify_remote_async
 
@@ -2152,7 +2152,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    modify_remote_async(remote_id: string | null, key: string | null, value: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    modify_remote_async(remote_id: string, key: string, value: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_modify_remote_async().
      * @param res the #GAsyncResult
@@ -2206,7 +2206,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns a signature, or %NULL for failure
      */
-    self_sign(value: string | null, flags: SelfSignFlags, cancellable: Gio.Cancellable | null): string | null
+    self_sign(value: string, flags: SelfSignFlags, cancellable: Gio.Cancellable | null): string | null
     /**
      * Signs the data using the client self-signed certificate.
      * 
@@ -2217,7 +2217,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    self_sign_async(value: string | null, flags: SelfSignFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    self_sign_async(value: string, flags: SelfSignFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of self_sign_async
 
@@ -2233,7 +2233,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: a signature, or %NULL for failure
      */
-    self_sign_async(value: string | null, flags: SelfSignFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
+    self_sign_async(value: string, flags: SelfSignFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<string | null>
     /**
      * Gets the result of fwupd_client_self_sign_async().
      * @param res the #GAsyncResult
@@ -2354,7 +2354,7 @@ export interface Client {
      * should contain the runtime version of fwupd somewhere in the provided string.
      * @param user_agent the user agent ID, e.g. `gnome-software/3.34.1`
      */
-    set_user_agent(user_agent: string | null): void
+    set_user_agent(user_agent: string): void
     /**
      * Builds a user-agent to use for the download.
      * 
@@ -2368,21 +2368,21 @@ export interface Client {
      * @param package_name client program name, e.g. "gnome-software"
      * @param package_version client program version, e.g. "3.28.1"
      */
-    set_user_agent_for_package(package_name: string | null, package_version: string | null): void
+    set_user_agent_for_package(package_name: string, package_version: string): void
     /**
      * Unlocks a specific device so firmware can be read or wrote.
      * @param device_id the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    unlock(device_id: string | null, cancellable: Gio.Cancellable | null): boolean
+    unlock(device_id: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Unlocks a specific device so firmware can be read or wrote.
      * @param device_id the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    unlock_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    unlock_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of unlock_async
 
@@ -2394,7 +2394,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    unlock_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    unlock_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_unlock_async().
      * @param res the #GAsyncResult
@@ -2414,7 +2414,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    update_metadata(remote_id: string | null, metadata_fn: string | null, signature_fn: string | null, cancellable: Gio.Cancellable | null): boolean
+    update_metadata(remote_id: string, metadata_fn: string, signature_fn: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Updates the metadata. This allows a session process to download the metadata
      * and metadata signing file to be passed into the daemon to be checked and
@@ -2428,7 +2428,7 @@ export interface Client {
      * @param cancellable #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    update_metadata_bytes(remote_id: string | null, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null): boolean
+    update_metadata_bytes(remote_id: string, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null): boolean
     /**
      * Updates the metadata. This allows a session process to download the metadata
      * and metadata signing file to be passed into the daemon to be checked and
@@ -2446,7 +2446,7 @@ export interface Client {
      * @param cancellable #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    update_metadata_bytes_async(remote_id: string | null, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    update_metadata_bytes_async(remote_id: string, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of update_metadata_bytes_async
 
@@ -2469,7 +2469,7 @@ export interface Client {
      * @param cancellable #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    update_metadata_bytes_async(remote_id: string | null, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    update_metadata_bytes_async(remote_id: string, metadata: GLib.Bytes, signature: GLib.Bytes, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_update_metadata_bytes_async().
      * @param res the #GAsyncResult
@@ -2486,7 +2486,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns response data, or %NULL for error
      */
-    upload_bytes(url: string | null, payload: string | null, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null): GLib.Bytes
+    upload_bytes(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null): GLib.Bytes
     /**
      * Uploads data to a remote server. The fwupd_client_set_user_agent() function
      * should be called before this method is used.
@@ -2504,7 +2504,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    upload_bytes_async(url: string | null, payload: string | null, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    upload_bytes_async(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of upload_bytes_async
 
@@ -2527,7 +2527,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: response data, or %NULL for error
      */
-    upload_bytes_async(url: string | null, payload: string | null, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
+    upload_bytes_async(url: string, payload: string, signature: string | null, flags: ClientUploadFlags, cancellable: Gio.Cancellable | null): globalThis.Promise<GLib.Bytes>
     /**
      * Gets the result of fwupd_client_upload_bytes_async().
      * @param res the #GAsyncResult
@@ -2540,14 +2540,14 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for verification success
      */
-    verify(device_id: string | null, cancellable: Gio.Cancellable | null): boolean
+    verify(device_id: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Verify a specific device.
      * @param device_id the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    verify_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    verify_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of verify_async
 
@@ -2559,7 +2559,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    verify_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    verify_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_verify_async().
      * @param res the #GAsyncResult
@@ -2572,14 +2572,14 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for verification success
      */
-    verify_update(device_id: string | null, cancellable: Gio.Cancellable | null): boolean
+    verify_update(device_id: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Update the verification record for a specific device.
      * @param device_id the device ID
      * @param cancellable the #GCancellable, or %NULL
      * @param callback the function to run on completion
      */
-    verify_update_async(device_id: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    verify_update_async(device_id: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of verify_update_async
 
@@ -2591,7 +2591,7 @@ export interface Client {
      * @param cancellable the #GCancellable, or %NULL
      * @returns A Promise of: %TRUE for success
      */
-    verify_update_async(device_id: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    verify_update_async(device_id: string, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Gets the result of fwupd_client_verify_update_async().
      * @param res the #GAsyncResult
@@ -2728,7 +2728,7 @@ export interface Device {
      * Sets the device checksum.
      * @param checksum the device checksum
      */
-    add_checksum(checksum: string | null): void
+    add_checksum(checksum: string): void
     /**
      * Adds a child device. An child device is logically linked to the primary
      * device in some way.
@@ -2747,17 +2747,17 @@ export interface Device {
      * Adds the GUID if it does not already exist.
      * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
      */
-    add_guid(guid: string | null): void
+    add_guid(guid: string): void
     /**
      * Adds the icon name if it does not already exist.
      * @param icon the name, e.g. `input-mouse` or `/usr/share/icons/foo.png`
      */
-    add_icon(icon: string | null): void
+    add_icon(icon: string): void
     /**
      * Adds the InstanceID if it does not already exist.
      * @param instance_id the GUID, e.g. `PCI\VEN_10EC&DEV_525A`
      */
-    add_instance_id(instance_id: string | null): void
+    add_instance_id(instance_id: string): void
     /**
      * Adds a release for this device.
      * @param release a #FwupdRelease
@@ -2767,7 +2767,7 @@ export interface Device {
      * Adds a device vendor ID.
      * @param vendor_id the ID, e.g. 'USB:0x1234'
      */
-    add_vendor_id(vendor_id: string | null): void
+    add_vendor_id(vendor_id: string): void
     /**
      * Comparison function for comparing two FwupdDevice objects.
      * @param device2 a #FwupdDevice
@@ -2778,7 +2778,7 @@ export interface Device {
      * Gets the current device branch.
      * @returns the device branch, or %NULL if unset
      */
-    get_branch(): string | null
+    get_branch(): string
     /**
      * Gets the device checksums.
      * @returns the checksums, which may be empty
@@ -2798,7 +2798,7 @@ export interface Device {
      * Gets the device description in AppStream markup format.
      * @returns the device description, or %NULL if unset
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the device flags.
      * @returns the device flags, or 0 if unset
@@ -2813,7 +2813,7 @@ export interface Device {
      * Gets the default GUID.
      * @returns the GUID, or %NULL if unset
      */
-    get_guid_default(): string | null
+    get_guid_default(): string
     /**
      * Gets the GUIDs.
      * @returns the GUIDs
@@ -2831,7 +2831,7 @@ export interface Device {
      * Gets the ID.
      * @returns the ID, or %NULL if unset
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the time estimate for firmware installation (in seconds)
      * @returns the estimated time to flash this device (or 0 if unset)
@@ -2851,7 +2851,7 @@ export interface Device {
      * Gets the device name.
      * @returns the device name, or %NULL if unset
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the parent.
      * @returns the parent device, or %NULL if unset
@@ -2861,17 +2861,17 @@ export interface Device {
      * Gets the ID.
      * @returns the parent ID, or %NULL if unset
      */
-    get_parent_id(): string | null
+    get_parent_id(): string
     /**
      * Gets the plugin that created the device.
      * @returns the plugin name, or %NULL if unset
      */
-    get_plugin(): string | null
+    get_plugin(): string
     /**
      * Gets the protocol that the device uses for updating.
      * @returns the protocol name, or %NULL if unset
      */
-    get_protocol(): string | null
+    get_protocol(): string
     /**
      * Gets the default release for this device.
      * @returns the #FwupdRelease, or %NULL if not set
@@ -2886,7 +2886,7 @@ export interface Device {
      * Gets the serial number for the device.
      * @returns a string value, or %NULL if never set.
      */
-    get_serial(): string | null
+    get_serial(): string
     /**
      * Returns what the device is currently doing.
      * @returns the status value, e.g. %FWUPD_STATUS_DEVICE_WRITE
@@ -2896,22 +2896,22 @@ export interface Device {
      * Gets the device summary.
      * @returns the device summary, or %NULL if unset
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Gets the update error.
      * @returns the update error, or %NULL if unset
      */
-    get_update_error(): string | null
+    get_update_error(): string
     /**
      * Gets the update image.
      * @returns the update image URL, or %NULL if unset
      */
-    get_update_image(): string | null
+    get_update_image(): string
     /**
      * Gets the update message.
      * @returns the update message, or %NULL if unset
      */
-    get_update_message(): string | null
+    get_update_message(): string
     /**
      * Gets the update state.
      * @returns the update state, or %FWUPD_UPDATE_STATE_UNKNOWN if unset
@@ -2921,12 +2921,12 @@ export interface Device {
      * Gets the device vendor.
      * @returns the device vendor, or %NULL if unset
      */
-    get_vendor(): string | null
+    get_vendor(): string
     /**
      * Gets the combined device vendor ID.
      * @returns the device vendor, e.g. 'USB:0x1234|PCI:0x5678', or %NULL if unset
      */
-    get_vendor_id(): string | null
+    get_vendor_id(): string
     /**
      * Gets the device vendor ID.
      * @returns the device vendor ID
@@ -2936,12 +2936,12 @@ export interface Device {
      * Gets the device version.
      * @returns the device version, or %NULL if unset
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Gets the version of the bootloader.
      * @returns the device version_bootloader, or %NULL if unset
      */
-    get_version_bootloader(): string | null
+    get_version_bootloader(): string
     /**
      * Gets the bootloader version of firmware the device will accept in raw format.
      * @returns integer version number, or %0 if unset
@@ -2956,7 +2956,7 @@ export interface Device {
      * Gets the lowest version of firmware the device will accept.
      * @returns the device version_lowest, or %NULL if unset
      */
-    get_version_lowest(): string | null
+    get_version_lowest(): string
     /**
      * Gets the lowest version of firmware the device will accept in raw format.
      * @returns integer version number, or %0 if unset
@@ -2978,19 +2978,19 @@ export interface Device {
      * @param guid the GUID, e.g. `2082b5e0-7a64-478a-b1b2-e3404fab6dad`
      * @returns %TRUE if the GUID is found
      */
-    has_guid(guid: string | null): boolean
+    has_guid(guid: string): boolean
     /**
      * Finds out if the device has this specific InstanceID.
      * @param instance_id the InstanceID, e.g. `PCI\VEN_10EC&DEV_525A`
      * @returns %TRUE if the InstanceID is found
      */
-    has_instance_id(instance_id: string | null): boolean
+    has_instance_id(instance_id: string): boolean
     /**
      * Finds out if the device has this specific vendor ID.
      * @param vendor_id the ID, e.g. 'USB:0x1234'
      * @returns %TRUE if the ID is found
      */
-    has_vendor_id(vendor_id: string | null): boolean
+    has_vendor_id(vendor_id: string): boolean
     /**
      * Copy all properties from the donor object if they have not already been set.
      * @param donor Another #FwupdDevice
@@ -3005,7 +3005,7 @@ export interface Device {
      * Sets the current device branch.
      * @param branch the device one line branch
      */
-    set_branch(branch: string | null): void
+    set_branch(branch: string): void
     /**
      * Sets when the device was created.
      * @param created the UNIX time
@@ -3015,7 +3015,7 @@ export interface Device {
      * Sets the device description.
      * @param description the description in AppStream markup format
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the device flags.
      * @param flags the device flags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
@@ -3030,7 +3030,7 @@ export interface Device {
      * Sets the ID.
      * @param id the device ID, e.g. `USB:foo`
      */
-    set_id(id: string | null): void
+    set_id(id: string): void
     /**
      * Sets the time estimate for firmware installation (in seconds)
      * @param duration The amount of time
@@ -3045,7 +3045,7 @@ export interface Device {
      * Sets the device name.
      * @param name the device name, e.g. `ColorHug2`
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the parent. Only used internally.
      * @param parent another #FwupdDevice, or %NULL
@@ -3055,22 +3055,22 @@ export interface Device {
      * Sets the parent ID.
      * @param parent_id the device ID, e.g. `USB:foo`
      */
-    set_parent_id(parent_id: string | null): void
+    set_parent_id(parent_id: string): void
     /**
      * Sets the plugin that created the device.
      * @param plugin the plugin name, e.g. `colorhug`
      */
-    set_plugin(plugin: string | null): void
+    set_plugin(plugin: string): void
     /**
      * Sets the protocol that is used to update the device.
      * @param protocol the protocol name, e.g. `com.hughski.colorhug`
      */
-    set_protocol(protocol: string | null): void
+    set_protocol(protocol: string): void
     /**
      * Sets the serial number for the device.
      * @param serial the device serial number
      */
-    set_serial(serial: string | null): void
+    set_serial(serial: string): void
     /**
      * Sets what the device is currently doing.
      * @param status the status value, e.g. %FWUPD_STATUS_DEVICE_WRITE
@@ -3080,22 +3080,22 @@ export interface Device {
      * Sets the device summary.
      * @param summary the device one line summary
      */
-    set_summary(summary: string | null): void
+    set_summary(summary: string): void
     /**
      * Sets the update error.
      * @param update_error the update error string
      */
-    set_update_error(update_error: string | null): void
+    set_update_error(update_error: string): void
     /**
      * Sets the update image.
      * @param update_image the update image URL
      */
-    set_update_image(update_image: string | null): void
+    set_update_image(update_image: string): void
     /**
      * Sets the update message.
      * @param update_message the update message string
      */
-    set_update_message(update_message: string | null): void
+    set_update_message(update_message: string): void
     /**
      * Sets the update state.
      * @param update_state the state, e.g. %FWUPD_UPDATE_STATE_PENDING
@@ -3105,22 +3105,22 @@ export interface Device {
      * Sets the device vendor.
      * @param vendor the description
      */
-    set_vendor(vendor: string | null): void
+    set_vendor(vendor: string): void
     /**
      * Sets the device vendor ID.
      * @param vendor_id the ID, e.g. 'USB:0x1234' or 'USB:0x1234|PCI:0x5678'
      */
-    set_vendor_id(vendor_id: string | null): void
+    set_vendor_id(vendor_id: string): void
     /**
      * Sets the device version.
      * @param version the device version, e.g. `1.2.3`
      */
-    set_version(version: string | null): void
+    set_version(version: string): void
     /**
      * Sets the bootloader version.
      * @param version_bootloader the description
      */
-    set_version_bootloader(version_bootloader: string | null): void
+    set_version_bootloader(version_bootloader: string): void
     /**
      * Sets the raw bootloader version number from the hardware before converted to a string.
      * @param version_bootloader_raw the raw hardware version
@@ -3135,7 +3135,7 @@ export interface Device {
      * Sets the lowest version of firmware the device will accept.
      * @param version_lowest the description
      */
-    set_version_lowest(version_lowest: string | null): void
+    set_version_lowest(version_lowest: string): void
     /**
      * Sets the raw lowest version number from the hardware before converted to a string.
      * @param version_lowest_raw the raw hardware version
@@ -3229,13 +3229,13 @@ export class Device extends GObject.Object {
      * @param device_flag A string, e.g. `require-ac`
      * @returns enumerated value
      */
-    static flag_from_string(device_flag: string | null): DeviceFlags
+    static flag_from_string(device_flag: string): DeviceFlags
     /**
      * Converts a #FwupdDeviceFlags to a string.
      * @param device_flag A #FwupdDeviceFlags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
      * @returns identifier string
      */
-    static flag_to_string(device_flag: DeviceFlags): string | null
+    static flag_to_string(device_flag: DeviceFlags): string
     /**
      * Creates a new device using packed data.
      * @param value a #GVariant
@@ -3249,7 +3249,7 @@ export class Device extends GObject.Object {
      * @param device_id string to check, e.g. `d3fae86d95e5d56626129d00e332c4b8dac95442`
      * @returns %TRUE if @guid was a fwupd device ID, %FALSE otherwise
      */
-    static id_is_valid(device_id: string | null): boolean
+    static id_is_valid(device_id: string): boolean
 }
 
 export module Plugin {
@@ -3293,7 +3293,7 @@ export interface Plugin {
      * Gets the plugin name.
      * @returns the plugin name, or %NULL if unset
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Finds if the plugin has a specific plugin flag.
      * @param flag the #FwupdPluginFlags
@@ -3314,7 +3314,7 @@ export interface Plugin {
      * Sets the plugin name.
      * @param name the plugin name, e.g. `bios`
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Builds a text representation of the object.
      * @returns text, or %NULL for invalid
@@ -3374,13 +3374,13 @@ export class Plugin extends GObject.Object {
      * @param plugin_flag A string, e.g. `require-ac`
      * @returns enumerated value
      */
-    static flag_from_string(plugin_flag: string | null): PluginFlags
+    static flag_from_string(plugin_flag: string): PluginFlags
     /**
      * Converts a #FwupdDeviceFlags to a string.
      * @param plugin_flag A #FwupdPluginFlags, e.g. %FWUPD_DEVICE_FLAG_REQUIRE_AC
      * @returns identifier string
      */
-    static flag_to_string(plugin_flag: PluginFlags): string | null
+    static flag_to_string(plugin_flag: PluginFlags): string
     /**
      * Creates a new plugin using packed data.
      * @param value a #GVariant
@@ -3410,12 +3410,12 @@ export interface Release {
      * Adds the update category.
      * @param category the update category, e.g. `X-EmbeddedController`
      */
-    add_category(category: string | null): void
+    add_category(category: string): void
     /**
      * Sets the update checksum.
      * @param checksum the update checksum
      */
-    add_checksum(checksum: string | null): void
+    add_checksum(checksum: string): void
     /**
      * Adds a specific release flag to the release.
      * @param flag the #FwupdReleaseFlags
@@ -3425,12 +3425,12 @@ export interface Release {
      * Adds an resolved issue to this release.
      * @param issue the update issue, e.g. `CVE-2019-12345`
      */
-    add_issue(issue: string | null): void
+    add_issue(issue: string): void
     /**
      * Adds an update URI, i.e. where you can download the firmware from.
      * @param location the update URI
      */
-    add_location(location: string | null): void
+    add_location(location: string): void
     /**
      * Sets multiple release metadata items.
      * @param hash the key-values
@@ -3441,17 +3441,17 @@ export interface Release {
      * @param key the key
      * @param value the value
      */
-    add_metadata_item(key: string | null, value: string | null): void
+    add_metadata_item(key: string, value: string): void
     /**
      * Gets the AppStream ID.
      * @returns the AppStream ID, or %NULL if unset
      */
-    get_appstream_id(): string | null
+    get_appstream_id(): string
     /**
      * Gets the update branch.
      * @returns the alternate branch, or %NULL if unset
      */
-    get_branch(): string | null
+    get_branch(): string
     /**
      * Gets the release categories.
      * @returns the categories, which may be empty
@@ -3471,27 +3471,27 @@ export interface Release {
      * Gets the update description in AppStream markup format.
      * @returns the update description, or %NULL if unset
      */
-    get_description(): string | null
+    get_description(): string
     /**
      * Gets the optional text caption used to manually detach the device.
      * @returns the string caption, or %NULL if unset
      */
-    get_detach_caption(): string | null
+    get_detach_caption(): string
     /**
      * Gets the optional image used to manually detach the device.
      * @returns the URI, or %NULL if unset
      */
-    get_detach_image(): string | null
+    get_detach_image(): string
     /**
      * Gets the URL for the online update notes.
      * @returns the update URL, or %NULL if unset
      */
-    get_details_url(): string | null
+    get_details_url(): string
     /**
      * Gets the update filename.
      * @returns the update filename, or %NULL if unset
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Gets the release flags.
      * @returns the release flags, or 0 if unset
@@ -3501,7 +3501,7 @@ export interface Release {
      * Gets the update homepage.
      * @returns the update homepage, or %NULL if unset
      */
-    get_homepage(): string | null
+    get_homepage(): string
     /**
      * Gets the time estimate for firmware installation (in seconds)
      * @returns the estimated time to flash this release (or 0 if unset)
@@ -3516,7 +3516,7 @@ export interface Release {
      * Gets the update license.
      * @returns the update license, or %NULL if unset
      */
-    get_license(): string | null
+    get_license(): string
     /**
      * Gets the update URI, i.e. where you can download the firmware from.
      * 
@@ -3535,27 +3535,27 @@ export interface Release {
      * @param key the key
      * @returns the value, or %NULL if unset
      */
-    get_metadata_item(key: string | null): string | null
+    get_metadata_item(key: string): string
     /**
      * Gets the update name.
      * @returns the update name, or %NULL if unset
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the update variant suffix.
      * @returns the update variant, or %NULL if unset
      */
-    get_name_variant_suffix(): string | null
+    get_name_variant_suffix(): string
     /**
      * Gets the update protocol.
      * @returns the update protocol, or %NULL if unset
      */
-    get_protocol(): string | null
+    get_protocol(): string
     /**
      * Gets the remote ID that can be used for downloading.
      * @returns the ID, or %NULL if unset
      */
-    get_remote_id(): string | null
+    get_remote_id(): string
     /**
      * Gets the update size.
      * @returns the update size in bytes, or 0 if unset
@@ -3565,12 +3565,12 @@ export interface Release {
      * Gets the URL of the source code used to build this release.
      * @returns the update source_url, or %NULL if unset
      */
-    get_source_url(): string | null
+    get_source_url(): string
     /**
      * Gets the update summary.
      * @returns the update summary, or %NULL if unset
      */
-    get_summary(): string | null
+    get_summary(): string
     /**
      * Gets the trust level of the release.
      * @returns the trust bitfield, e.g. #FWUPD_TRUST_FLAG_PAYLOAD
@@ -3580,12 +3580,12 @@ export interface Release {
      * Gets the update image.
      * @returns the update image URL, or %NULL if unset
      */
-    get_update_image(): string | null
+    get_update_image(): string
     /**
      * Gets the update message.
      * @returns the update message, or %NULL if unset
      */
-    get_update_message(): string | null
+    get_update_message(): string
     /**
      * Gets the release urgency.
      * @returns the release urgency, or 0 if unset
@@ -3595,29 +3595,29 @@ export interface Release {
      * Gets the default update URI.
      * @returns the update URI, or %NULL if unset
      */
-    get_uri(): string | null
+    get_uri(): string
     /**
      * Gets the update vendor.
      * @returns the update vendor, or %NULL if unset
      */
-    get_vendor(): string | null
+    get_vendor(): string
     /**
      * Gets the update version.
      * @returns the update version, or %NULL if unset
      */
-    get_version(): string | null
+    get_version(): string
     /**
      * Finds out if the release has the update category.
      * @param category the update category, e.g. `X-EmbeddedController`
      * @returns %TRUE if the release matches
      */
-    has_category(category: string | null): boolean
+    has_category(category: string): boolean
     /**
      * Finds out if the release has the update checksum.
      * @param checksum the update checksum
      * @returns %TRUE if the release matches
      */
-    has_checksum(checksum: string | null): boolean
+    has_checksum(checksum: string): boolean
     /**
      * Finds if the release has a specific release flag.
      * @param flag the #FwupdReleaseFlags
@@ -3633,12 +3633,12 @@ export interface Release {
      * Sets the AppStream ID.
      * @param appstream_id the AppStream component ID, e.g. `org.hughski.ColorHug2.firmware`
      */
-    set_appstream_id(appstream_id: string | null): void
+    set_appstream_id(appstream_id: string): void
     /**
      * Sets the alternate branch.
      * @param branch the update one line branch
      */
-    set_branch(branch: string | null): void
+    set_branch(branch: string): void
     /**
      * Sets when the update was created.
      * @param created UTC timestamp in UNIX format
@@ -3648,27 +3648,27 @@ export interface Release {
      * Sets the update description.
      * @param description the update description in AppStream markup format
      */
-    set_description(description: string | null): void
+    set_description(description: string): void
     /**
      * Sets the optional text caption used to manually detach the device.
      * @param detach_caption string caption
      */
-    set_detach_caption(detach_caption: string | null): void
+    set_detach_caption(detach_caption: string): void
     /**
      * Sets the optional image used to manually detach the device.
      * @param detach_image a fully qualified URI
      */
-    set_detach_image(detach_image: string | null): void
+    set_detach_image(detach_image: string): void
     /**
      * Sets the URL for the online update notes.
      * @param details_url the URL
      */
-    set_details_url(details_url: string | null): void
+    set_details_url(details_url: string): void
     /**
      * Sets the update filename.
      * @param filename the update filename on disk
      */
-    set_filename(filename: string | null): void
+    set_filename(filename: string): void
     /**
      * Sets the release flags.
      * @param flags the release flags, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
@@ -3678,7 +3678,7 @@ export interface Release {
      * Sets the update homepage.
      * @param homepage the description
      */
-    set_homepage(homepage: string | null): void
+    set_homepage(homepage: string): void
     /**
      * Sets the time estimate for firmware installation (in seconds)
      * @param duration The amount of time
@@ -3688,27 +3688,27 @@ export interface Release {
      * Sets the update license.
      * @param license the description
      */
-    set_license(license: string | null): void
+    set_license(license: string): void
     /**
      * Sets the update name.
      * @param name the description
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the update variant suffix.
      * @param name_variant_suffix the description
      */
-    set_name_variant_suffix(name_variant_suffix: string | null): void
+    set_name_variant_suffix(name_variant_suffix: string): void
     /**
      * Sets the update protocol.
      * @param protocol the update protocol, e.g. `org.usb.dfu`
      */
-    set_protocol(protocol: string | null): void
+    set_protocol(protocol: string): void
     /**
      * Sets the remote ID that can be used for downloading.
      * @param remote_id the release ID, e.g. `USB:foo`
      */
-    set_remote_id(remote_id: string | null): void
+    set_remote_id(remote_id: string): void
     /**
      * Sets the update size.
      * @param size the update size in bytes
@@ -3718,12 +3718,12 @@ export interface Release {
      * Sets the URL of the source code used to build this release.
      * @param source_url the URL
      */
-    set_source_url(source_url: string | null): void
+    set_source_url(source_url: string): void
     /**
      * Sets the update summary.
      * @param summary the update one line summary
      */
-    set_summary(summary: string | null): void
+    set_summary(summary: string): void
     /**
      * Sets the trust level of the release.
      * @param trust_flags the bitfield, e.g. #FWUPD_TRUST_FLAG_PAYLOAD
@@ -3733,12 +3733,12 @@ export interface Release {
      * Sets the update image.
      * @param update_image the update image URL
      */
-    set_update_image(update_image: string | null): void
+    set_update_image(update_image: string): void
     /**
      * Sets the update message.
      * @param update_message the update message string
      */
-    set_update_message(update_message: string | null): void
+    set_update_message(update_message: string): void
     /**
      * Sets the release urgency.
      * @param urgency the release urgency, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
@@ -3748,17 +3748,17 @@ export interface Release {
      * Sets the update URI, i.e. where you can download the firmware from.
      * @param uri the update URI
      */
-    set_uri(uri: string | null): void
+    set_uri(uri: string): void
     /**
      * Sets the update vendor.
      * @param vendor the vendor name, e.g. `Hughski Limited`
      */
-    set_vendor(vendor: string | null): void
+    set_vendor(vendor: string): void
     /**
      * Sets the update version.
      * @param version the update version, e.g. `1.2.4`
      */
-    set_version(version: string | null): void
+    set_version(version: string): void
     /**
      * Builds a text representation of the object.
      * @returns text, or %NULL for invalid
@@ -3812,13 +3812,13 @@ export class Release extends GObject.Object {
      * @param release_flag A string, e.g. `trusted-payload`
      * @returns enumerated value
      */
-    static flag_from_string(release_flag: string | null): ReleaseFlags
+    static flag_from_string(release_flag: string): ReleaseFlags
     /**
      * Converts a #FwupdReleaseFlags to a string.
      * @param release_flag A #FwupdReleaseFlags, e.g. %FWUPD_RELEASE_FLAG_TRUSTED_PAYLOAD
      * @returns identifier string
      */
-    static flag_to_string(release_flag: ReleaseFlags): string | null
+    static flag_to_string(release_flag: ReleaseFlags): string
     /**
      * Creates a new release using packed data.
      * @param value a #GVariant
@@ -3830,13 +3830,13 @@ export class Release extends GObject.Object {
      * @param release_urgency A string, e.g. `low`
      * @returns enumerated value
      */
-    static urgency_from_string(release_urgency: string | null): ReleaseUrgency
+    static urgency_from_string(release_urgency: string): ReleaseUrgency
     /**
      * Converts an enumerated value to a string.
      * @param release_urgency A #FwupdReleaseUrgency, e.g. %FWUPD_RELEASE_URGENCY_HIGH
      * @returns identifier string
      */
-    static urgency_to_string(release_urgency: ReleaseUrgency): string | null
+    static urgency_to_string(release_urgency: ReleaseUrgency): string
 }
 
 export module Remote {
@@ -3936,7 +3936,7 @@ export interface Remote {
      * @param url the URL to use
      * @returns a URI, or %NULL for error
      */
-    build_firmware_uri(url: string | null): string | null
+    build_firmware_uri(url: string): string | null
     /**
      * Gets the age of the remote in seconds.
      * @returns a age, or %G_MAXUINT64 for unavailable
@@ -3946,7 +3946,7 @@ export interface Remote {
      * Gets the remote agreement in AppStream markup format
      * @returns a string, or %NULL if unset
      */
-    get_agreement(): string | null
+    get_agreement(): string
     /**
      * Gets if firmware from the remote should be checked against the list
      * of a approved checksums.
@@ -3967,7 +3967,7 @@ export interface Remote {
      * Gets the remote checksum.
      * @returns a string, or %NULL if unset
      */
-    get_checksum(): string | null
+    get_checksum(): string
     /**
      * Gets if the remote is enabled and should be used.
      * @returns a #TRUE if the remote is enabled
@@ -3977,27 +3977,27 @@ export interface Remote {
      * Gets the path and filename that the remote is using for a cache.
      * @returns a string, or %NULL for unset
      */
-    get_filename_cache(): string | null
+    get_filename_cache(): string
     /**
      * Gets the path and filename that the remote is using for a signature cache.
      * @returns a string, or %NULL for unset
      */
-    get_filename_cache_sig(): string | null
+    get_filename_cache_sig(): string
     /**
      * Gets the path and filename of the remote itself, typically a `.conf` file.
      * @returns a string, or %NULL for unset
      */
-    get_filename_source(): string | null
+    get_filename_source(): string
     /**
      * Gets the base URI for firmware.
      * @returns a URI, or %NULL for unset.
      */
-    get_firmware_base_uri(): string | null
+    get_firmware_base_uri(): string
     /**
      * Gets the remote ID, e.g. `lvfs-testing`.
      * @returns a string, or %NULL if unset
      */
-    get_id(): string | null
+    get_id(): string
     /**
      * Gets the keyring kind of the remote.
      * @returns a #FwupdKeyringKind, e.g. #FWUPD_KEYRING_KIND_GPG
@@ -4012,12 +4012,12 @@ export interface Remote {
      * Gets the URI for the remote metadata.
      * @returns a URI, or %NULL for invalid.
      */
-    get_metadata_uri(): string | null
+    get_metadata_uri(): string
     /**
      * Gets the URI for the remote metadata signature.
      * @returns a URI, or %NULL for invalid.
      */
-    get_metadata_uri_sig(): string | null
+    get_metadata_uri_sig(): string
     /**
      * Gets the list of remotes this plugin should be ordered after.
      * @returns an array
@@ -4032,7 +4032,7 @@ export interface Remote {
      * Gets the password configured for the remote.
      * @returns a string, or %NULL for unset
      */
-    get_password(): string | null
+    get_password(): string
     /**
      * Gets the priority of the remote, where bigger numbers are better.
      * @returns a priority, or 0 for the default value
@@ -4042,27 +4042,27 @@ export interface Remote {
      * Gets the base directory for storing remote metadata
      * @returns a string, or %NULL if unset
      */
-    get_remotes_dir(): string | null
+    get_remotes_dir(): string
     /**
      * Gets the URI for the remote reporting.
      * @returns a URI, or %NULL for invalid.
      */
-    get_report_uri(): string | null
+    get_report_uri(): string
     /**
      * Gets the URI for the security report.
      * @returns a URI, or %NULL for invalid.
      */
-    get_security_report_uri(): string | null
+    get_security_report_uri(): string
     /**
      * Gets the remote title, e.g. `Linux Vendor Firmware Service`.
      * @returns a string, or %NULL if unset
      */
-    get_title(): string | null
+    get_title(): string
     /**
      * Gets the username configured for the remote.
      * @returns a string, or %NULL for unset
      */
-    get_username(): string | null
+    get_username(): string
     /**
      * Sets up the remote ready for use. Most other methods call this
      * for you, and do you only need to call this if you are just watching
@@ -4071,13 +4071,13 @@ export interface Remote {
      * @param cancellable the #GCancellable, or %NULL
      * @returns %TRUE for success
      */
-    load_from_filename(filename: string | null, cancellable: Gio.Cancellable | null): boolean
+    load_from_filename(filename: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Parses the signature, updating the metadata URI as appropriate.
      * @param filename A filename
      * @returns %TRUE for success
      */
-    load_signature(filename: string | null): boolean
+    load_signature(filename: string): boolean
     /**
      * Parses the signature, updating the metadata URI as appropriate.
      * 
@@ -4091,7 +4091,7 @@ export interface Remote {
      * Sets the remote agreement in AppStream markup format
      * @param agreement Agreement markup
      */
-    set_agreement(agreement: string | null): void
+    set_agreement(agreement: string): void
     /**
      * Sets the keyring kind
      * @param keyring_kind #FwupdKeyringKind e.g. #FWUPD_KEYRING_KIND_PKCS7
@@ -4111,7 +4111,7 @@ export interface Remote {
      * Sets the directory to store remote data
      * @param directory Remotes directory
      */
-    set_remotes_dir(directory: string | null): void
+    set_remotes_dir(directory: string): void
     /**
      * Creates a GVariant from the remote data.
      * @returns the GVariant, or %NULL for error
@@ -4181,13 +4181,13 @@ export class Remote extends GObject.Object {
      * @param kind a string, e.g. `download`
      * @returns a #FwupdRemoteKind, e.g. %FWUPD_REMOTE_KIND_DOWNLOAD
      */
-    static kind_from_string(kind: string | null): RemoteKind
+    static kind_from_string(kind: string): RemoteKind
     /**
      * Converts an enumerated type to a printable string.
      * @param kind a #FwupdRemoteKind, e.g. %FWUPD_REMOTE_KIND_DOWNLOAD
      * @returns a string, e.g. `download`
      */
-    static kind_to_string(kind: RemoteKind): string | null
+    static kind_to_string(kind: RemoteKind): string
 }
 
 export module SecurityAttr {
@@ -4217,18 +4217,18 @@ export interface SecurityAttr {
      * @param key metadata key
      * @param value metadata value
      */
-    add_metadata(key: string | null, value: string | null): void
+    add_metadata(key: string, value: string | null): void
     /**
      * Adds an attribute appstream_id to obsolete. The obsoleted attribute will not
      * contribute to the calculated HSI value or be visible in command line tools.
      * @param appstream_id the appstream_id or plugin name
      */
-    add_obsolete(appstream_id: string | null): void
+    add_obsolete(appstream_id: string): void
     /**
      * Gets the AppStream ID.
      * @returns the AppStream ID, or %NULL if unset
      */
-    get_appstream_id(): string | null
+    get_appstream_id(): string
     /**
      * Gets the self flags.
      * @returns the self flags, or 0 if unset
@@ -4244,12 +4244,12 @@ export interface SecurityAttr {
      * @param key metadata key
      * @returns the metadata value, or %NULL if unfound
      */
-    get_metadata(key: string | null): string | null
+    get_metadata(key: string): string | null
     /**
      * Gets the attribute name.
      * @returns the attribute name, or %NULL if unset
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets the list of attribute obsoletes. The obsoleted attributes will not
      * contribute to the calculated HSI value or be visible in command line tools.
@@ -4260,7 +4260,7 @@ export interface SecurityAttr {
      * Gets the plugin that created the attribute.
      * @returns the plugin name, or %NULL if unset
      */
-    get_plugin(): string | null
+    get_plugin(): string
     /**
      * Gets the optional HSI result.
      * @returns the #FwupdSecurityAttrResult, e.g %FWUPD_SECURITY_ATTR_LEVEL_LOCKED
@@ -4270,7 +4270,7 @@ export interface SecurityAttr {
      * Gets the attribute URL.
      * @returns the attribute result, or %NULL if unset
      */
-    get_url(): string | null
+    get_url(): string
     /**
      * Finds if the self has a specific self flag.
      * @param flag the #FwupdSecurityAttrFlags
@@ -4282,12 +4282,12 @@ export interface SecurityAttr {
      * @param appstream_id the attribute appstream_id
      * @returns %TRUE if the self matches
      */
-    has_obsolete(appstream_id: string | null): boolean
+    has_obsolete(appstream_id: string): boolean
     /**
      * Sets the AppStream ID.
      * @param appstream_id the AppStream component ID, e.g. `com.intel.BiosGuard`
      */
-    set_appstream_id(appstream_id: string | null): void
+    set_appstream_id(appstream_id: string): void
     /**
      * Sets the self flags.
      * @param flags the self flags, e.g. %FWUPD_SECURITY_ATTR_FLAG_OBSOLETED
@@ -4303,12 +4303,12 @@ export interface SecurityAttr {
      * Sets the attribute name.
      * @param name the attribute name
      */
-    set_name(name: string | null): void
+    set_name(name: string): void
     /**
      * Sets the plugin that created the attribute.
      * @param plugin the plugin name
      */
-    set_plugin(plugin: string | null): void
+    set_plugin(plugin: string): void
     /**
      * Sets the optional HSI result. This is required because some attributes may
      * be a "success" when something is `locked` or may be "failed" if `found`.
@@ -4319,7 +4319,7 @@ export interface SecurityAttr {
      * Sets the attribute result.
      * @param url the attribute URL
      */
-    set_url(url: string | null): void
+    set_url(url: string): void
     /**
      * Builds a text representation of the object.
      * @returns text, or %NULL for invalid
@@ -4375,13 +4375,13 @@ export class SecurityAttr extends GObject.Object {
      * @param flag A #FwupdSecurityAttrFlags, e.g. %FWUPD_SECURITY_ATTR_FLAG_SUCCESS
      * @returns string, or %NULL
      */
-    static flag_to_string(flag: SecurityAttrFlags): string | null
+    static flag_to_string(flag: SecurityAttrFlags): string
     /**
      * Returns the string suffix for the flag.
      * @param flag A #FwupdSecurityAttrFlags, e.g. %FWUPD_SECURITY_ATTR_FLAG_RUNTIME_UPDATES
      * @returns string, or %NULL
      */
-    static flag_to_suffix(flag: SecurityAttrFlags): string | null
+    static flag_to_suffix(flag: SecurityAttrFlags): string
     /**
      * Creates a new self using packed data.
      * @param value a #GVariant
@@ -4393,7 +4393,7 @@ export class SecurityAttr extends GObject.Object {
      * @param result A #FwupdSecurityAttrResult, e.g. %FWUPD_SECURITY_ATTR_RESULT_ENABLED
      * @returns string, or %NULL
      */
-    static result_to_string(result: SecurityAttrResult): string | null
+    static result_to_string(result: SecurityAttrResult): string
 }
 
 export interface ClientClass {

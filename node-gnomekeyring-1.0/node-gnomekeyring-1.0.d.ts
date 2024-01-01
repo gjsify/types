@@ -146,7 +146,7 @@ const ITEM_TYPE_MASK: number
  * A keyring only stored in memory.
  * </para>
  */
-const SESSION: string | null
+const SESSION: string
 /**
  * Copy an access control list.
  * @param list A list of        #GnomeKeyringAccessControl pointers.
@@ -164,14 +164,14 @@ function aclFree(acl: AccessControl[]): void
  * @param name The name of the new attribute
  * @param value The value to store in `attributes`
  */
-function attributeListAppendString(attributes: AttributeList, name: string | null, value: string | null): void
+function attributeListAppendString(attributes: AttributeList, name: string, value: string): void
 /**
  * Store a key-value-pair with an unsigned 32bit number value in `attributes`.
  * @param attributes A #GnomeKeyringAttributeList
  * @param name The name of the new attribute
  * @param value The value to store in `attributes`
  */
-function attributeListAppendUint32(attributes: AttributeList, name: string | null, value: number): void
+function attributeListAppendUint32(attributes: AttributeList, name: string, value: number): void
 /**
  * Copy a list of item attributes.
  * @param attributes A #GnomeKeyringAttributeList to copy.
@@ -217,7 +217,7 @@ function cancelRequest(request: any): void
  * @param password The new keyring password, or %NULL to prompt the            user for it.
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function changePasswordSync(keyring: string | null, original: string | null, password: string | null): Result
+function changePasswordSync(keyring: string, original: string | null, password: string | null): Result
 /**
  * Create a new keyring with the specified name. In most cases %NULL will be
  * passed in as the `password,` which will prompt the user to enter a password
@@ -228,9 +228,9 @@ function changePasswordSync(keyring: string | null, original: string | null, pas
  * @param password The password for the new keyring. If %NULL user            will be prompted.
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function createSync(keyringName: string | null, password: string | null): Result
+function createSync(keyringName: string, password: string | null): Result
 function daemonPrepareEnvironmentSync(): Result
-function daemonSetDisplaySync(display: string | null): Result
+function daemonSetDisplaySync(display: string): Result
 /**
  * Delete `keyring`. Once a keyring is deleted there is no mechanism for
  * recovery of its contents.
@@ -239,7 +239,7 @@ function daemonSetDisplaySync(display: string | null): Result
  * @param keyring The name of the keyring to delete. Cannot be %NULL
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function deleteSync(keyring: string | null): Result
+function deleteSync(keyring: string): Result
 /**
  * Searches through all keyrings for items that match the `attributes` and `type`.
  * The matches are for exact equality.
@@ -343,13 +343,13 @@ function itemAcSetAccessType(ac: AccessControl, value: AccessType): void
  * @param ac A #GnomeKeyringAccessControl pointer.
  * @param value The new application display name.
  */
-function itemAcSetDisplayName(ac: AccessControl, value: string | null): void
+function itemAcSetDisplayName(ac: AccessControl, value: string): void
 /**
  * Set the access control application's full path name.
  * @param ac A #GnomeKeyringAccessControl pointer
  * @param value The new application full path.
  */
-function itemAcSetPathName(ac: AccessControl, value: string | null): void
+function itemAcSetPathName(ac: AccessControl, value: string): void
 /**
  * Create a new item in a keyring.
  * 
@@ -372,7 +372,7 @@ function itemAcSetPathName(ac: AccessControl, value: string | null): void
  * @param updateIfExists If true, then another item matching the type, and attributes  will be updated instead of creating a new item.
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function itemCreateSync(keyring: string | null, type: ItemType, displayName: string | null, attributes: AttributeList, secret: string | null, updateIfExists: boolean): [ /* returnType */ Result, /* itemId */ number ]
+function itemCreateSync(keyring: string | null, type: ItemType, displayName: string, attributes: AttributeList, secret: string, updateIfExists: boolean): [ /* returnType */ Result, /* itemId */ number ]
 /**
  * Delete an item in a keyring.
  * 
@@ -442,7 +442,7 @@ function itemGetInfoSync(keyring: string | null, id: number): [ /* returnType */
  * @param rights The type of rights to grant.
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function itemGrantAccessRightsSync(keyring: string | null, displayName: string | null, fullPath: string | null, id: number, rights: AccessType): Result
+function itemGrantAccessRightsSync(keyring: string | null, displayName: string, fullPath: string, id: number, rights: AccessType): Result
 function itemSetAclSync(keyring: string | null, id: number, acl: AccessControl[]): Result
 /**
  * Set all the attributes for an item. This will replace any previous attributes
@@ -530,7 +530,7 @@ function networkPasswordListFree(list: NetworkPasswordData[]): void
  * @param res A #GnomeKeyringResult
  * @returns a string suitable for display to the user for a given #GnomeKeyringResult, or an empty string if the message wouldn't make sense to a user.
  */
-function resultToMessage(res: Result): string | null
+function resultToMessage(res: Result): string
 /**
  * Change the default keyring.
  * 
@@ -538,7 +538,7 @@ function resultToMessage(res: Result): string | null
  * @param keyring The keyring to make default
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function setDefaultKeyringSync(keyring: string | null): Result
+function setDefaultKeyringSync(keyring: string): Result
 /**
  * Set flags and info for `keyring`. The only fields in `info` that are used
  * are lock_on_idle and lock_timeout.
@@ -569,7 +569,7 @@ function setInfoSync(keyring: string | null, info: Info): Result
  * @param password The password to store, must not be %NULL.
  * @returns %GNOME_KEYRING_RESULT_OK if the operation was succcessful or an error result otherwise.
  */
-function setNetworkPasswordSync(keyring: string | null, user: string | null, domain: string | null, server: string | null, object: string | null, protocol: string | null, authtype: string | null, port: number, password: string | null): [ /* returnType */ Result, /* itemId */ number ]
+function setNetworkPasswordSync(keyring: string | null, user: string | null, domain: string | null, server: string | null, object: string | null, protocol: string | null, authtype: string | null, port: number, password: string): [ /* returnType */ Result, /* itemId */ number ]
 /**
  * Free a list of string pointers.
  * @param strings A %GList of string pointers.
@@ -715,7 +715,7 @@ interface Attribute {
      * you should just use attribute->value.string.
      * @returns The value.string pointer of @attribute. This is not a copy, do not free.
      */
-    getString(): string | null
+    getString(): string
     /**
      * Return the uint32 value. It is an error to call this method if
      * `attribute`.type is not #GNOME_KEYRING_ATTRIBUTE_TYPE_UINT32. This method is
@@ -746,14 +746,14 @@ class Attribute {
      * @param name The name of the new attribute
      * @param value The value to store in `attributes`
      */
-    static listAppendString(attributes: AttributeList, name: string | null, value: string | null): void
+    static listAppendString(attributes: AttributeList, name: string, value: string): void
     /**
      * Store a key-value-pair with an unsigned 32bit number value in `attributes`.
      * @param attributes A #GnomeKeyringAttributeList
      * @param name The name of the new attribute
      * @param value The value to store in `attributes`
      */
-    static listAppendUint32(attributes: AttributeList, name: string | null, value: number): void
+    static listAppendUint32(attributes: AttributeList, name: string, value: number): void
     /**
      * Copy a list of item attributes.
      * @param attributes A #GnomeKeyringAttributeList to copy.
@@ -952,12 +952,12 @@ interface ItemInfo {
      * Set the display name on an item info.
      * @param value The new display name.
      */
-    setDisplayName(value: string | null): void
+    setDisplayName(value: string): void
     /**
      * Set the secret on an item info.
      * @param value The new item secret
      */
-    setSecret(value: string | null): void
+    setSecret(value: string): void
     /**
      * Set the type on an item info.
      * @param type The new item type
@@ -1107,7 +1107,7 @@ interface PasswordSchemaAttribute {
      * the attribute name
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * the attribute data type
      * @field 

@@ -307,9 +307,9 @@ export enum SysrootUpgraderPullFlags {
     NONE,
     ALLOW_OLDER,
 }
-export const COMMIT_GVARIANT_STRING: string | null
-export const DIRMETA_GVARIANT_STRING: string | null
-export const FILEMETA_GVARIANT_STRING: string | null
+export const COMMIT_GVARIANT_STRING: string
+export const DIRMETA_GVARIANT_STRING: string
+export const FILEMETA_GVARIANT_STRING: string
 /**
  * Maximum permitted size in bytes of metadata objects.  This is an
  * arbitrary number, but really, no one should be putting humongous
@@ -333,18 +333,18 @@ export const SHA256_DIGEST_LEN: number
  * Length of a sha256 digest when expressed as a hexadecimal string
  */
 export const SHA256_STRING_LEN: number
-export const SUMMARY_GVARIANT_STRING: string | null
-export const SUMMARY_SIG_GVARIANT_STRING: string | null
+export const SUMMARY_GVARIANT_STRING: string
+export const SUMMARY_SIG_GVARIANT_STRING: string
 /**
  * The mtime used for stored files.  This was originally 0, changed to 1 for
  * a few releases, then was reverted due to regressions it introduced from
  * users who had been using zero before.
  */
 export const TIMESTAMP: number
-export const TREE_GVARIANT_STRING: string | null
+export const TREE_GVARIANT_STRING: string
 export const WITH_AUTOCLEANUPS: number
 export function checksum_b64_from_bytes(csum: Uint8Array): string | null
-export function checksum_b64_to_bytes(checksum: string | null): Uint8Array
+export function checksum_b64_to_bytes(checksum: string): Uint8Array
 export function checksum_bytes_peek(bytes: GLib.Variant): Uint8Array
 /**
  * Like ostree_checksum_bytes_peek(), but also throws `error`.
@@ -393,9 +393,9 @@ export function checksum_from_bytes_v(csum_v: GLib.Variant): string | null
  * @param checksum a SHA256 string
  * @param buf Output buffer with at least 32 bytes of space
  */
-export function checksum_inplace_to_bytes(checksum: string | null, buf: number): void
-export function checksum_to_bytes(checksum: string | null): Uint8Array
-export function checksum_to_bytes_v(checksum: string | null): GLib.Variant
+export function checksum_inplace_to_bytes(checksum: string, buf: number): void
+export function checksum_to_bytes(checksum: string): Uint8Array
+export function checksum_to_bytes_v(checksum: string): GLib.Variant
 export function cmd__private__(): CmdPrivateVTable
 /**
  * Compare two binary checksums, using memcmp().
@@ -423,7 +423,7 @@ export function content_file_parse(compressed: boolean, content_path: Gio.File, 
  * @param trusted If %TRUE, assume the content has been validated
  * @param cancellable Cancellable
  */
-export function content_file_parse_at(compressed: boolean, parent_dfd: number, path: string | null, trusted: boolean, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_file_info */ Gio.FileInfo, /* out_xattrs */ GLib.Variant ]
+export function content_file_parse_at(compressed: boolean, parent_dfd: number, path: string, trusted: boolean, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_file_info */ Gio.FileInfo, /* out_xattrs */ GLib.Variant ]
 /**
  * The reverse of ostree_raw_file_to_content_stream(); this function
  * converts an object content stream back into components.
@@ -466,25 +466,25 @@ export function metadata_variant_type(objtype: ObjectType): GLib.VariantType
  * Reverse ostree_object_to_string().
  * @param str An ASCII checksum
  */
-export function object_from_string(str: string | null): [ /* out_checksum */ string | null, /* out_objtype */ ObjectType ]
+export function object_from_string(str: string): [ /* out_checksum */ string | null, /* out_objtype */ ObjectType ]
 /**
  * Reverse ostree_object_name_serialize().  Note that `out_checksum` is
  * only valid for the lifetime of `variant,` and must not be freed.
  * @param variant A #GVariant of type (su)
  */
-export function object_name_deserialize(variant: GLib.Variant): [ /* out_checksum */ string | null, /* out_objtype */ ObjectType ]
-export function object_name_serialize(checksum: string | null, objtype: ObjectType): GLib.Variant
-export function object_to_string(checksum: string | null, objtype: ObjectType): string | null
+export function object_name_deserialize(variant: GLib.Variant): [ /* out_checksum */ string, /* out_objtype */ ObjectType ]
+export function object_name_serialize(checksum: string, objtype: ObjectType): GLib.Variant
+export function object_to_string(checksum: string, objtype: ObjectType): string | null
 /**
  * The reverse of ostree_object_type_to_string().
  * @param str A stringified version of #OstreeObjectType
  */
-export function object_type_from_string(str: string | null): ObjectType
+export function object_type_from_string(str: string): ObjectType
 /**
  * Serialize `objtype` to a string; this is used for file extensions.
  * @param objtype an #OstreeObjectType
  */
-export function object_type_to_string(objtype: ObjectType): string | null
+export function object_type_to_string(objtype: ObjectType): string
 /**
  * Split a refspec like "gnome-ostree:gnome-ostree/buildmaster" into
  * two parts; `out_remote` will be set to "gnome-ostree", and `out_ref`
@@ -493,7 +493,7 @@ export function object_type_to_string(objtype: ObjectType): string | null
  * If `refspec` refers to a local ref, `out_remote` will be %NULL.
  * @param refspec A "refspec" string
  */
-export function parse_refspec(refspec: string | null): [ /* returnType */ boolean, /* out_remote */ string | null, /* out_ref */ string | null ]
+export function parse_refspec(refspec: string): [ /* returnType */ boolean, /* out_remote */ string, /* out_ref */ string ]
 /**
  * Convert from a "bare" file representation into an
  * OSTREE_OBJECT_TYPE_FILE stream suitable for ostree pull.
@@ -519,9 +519,9 @@ export function repo_commit_traverse_iter_cleanup(p: any | null): void
  * @param sha256 SHA256 hex string
  * @returns %TRUE if @sha256 is a valid checksum string, %FALSE otherwise
  */
-export function validate_checksum_string(sha256: string | null): boolean
-export function validate_rev(rev: string | null): boolean
-export function validate_structureof_checksum_string(checksum: string | null): boolean
+export function validate_checksum_string(sha256: string): boolean
+export function validate_rev(rev: string): boolean
+export function validate_structureof_checksum_string(checksum: string): boolean
 /**
  * Use this to validate the basic structure of `commit,` independent of
  * any other objects it references.
@@ -546,10 +546,10 @@ export function validate_structureof_dirtree(dirtree: GLib.Variant): boolean
 export function validate_structureof_file_mode(mode: number): boolean
 export function validate_structureof_objtype(objtype: number): boolean
 export interface RepoCommitFilter {
-    (repo: Repo, path: string | null, file_info: Gio.FileInfo): RepoCommitFilterResult
+    (repo: Repo, path: string, file_info: Gio.FileInfo): RepoCommitFilterResult
 }
 export interface RepoCommitModifierXattrCallback {
-    (repo: Repo, path: string | null, file_info: Gio.FileInfo): GLib.Variant
+    (repo: Repo, path: string, file_info: Gio.FileInfo): GLib.Variant
 }
 export module AsyncProgress {
 
@@ -581,11 +581,11 @@ export interface AsyncProgress {
      */
     finish(): void
     get_status(): string | null
-    get_uint(key: string | null): number
-    get_uint64(key: string | null): number
-    set_status(status: string | null): void
-    set_uint(key: string | null, value: number): void
-    set_uint64(key: string | null, value: number): void
+    get_uint(key: string): number
+    get_uint64(key: string): number
+    set_status(status: string): void
+    set_uint(key: string, value: number): void
+    set_uint64(key: string, value: number): void
 
     // Own virtual methods of OSTree-1.0.OSTree.AsyncProgress
 
@@ -635,7 +635,7 @@ export interface BootconfigParser {
     // Owm methods of OSTree-1.0.OSTree.BootconfigParser
 
     clone(): BootconfigParser
-    get(key: string | null): string | null
+    get(key: string): string
     parse(path: Gio.File, cancellable: Gio.Cancellable | null): boolean
     /**
      * Initialize a bootconfig from the given file.
@@ -643,10 +643,10 @@ export interface BootconfigParser {
      * @param path File path
      * @param cancellable Cancellable
      */
-    parse_at(dfd: number, path: string | null, cancellable: Gio.Cancellable | null): boolean
-    set(key: string | null, value: string | null): void
+    parse_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean
+    set(key: string, value: string): void
     write(output: Gio.File, cancellable: Gio.Cancellable | null): boolean
-    write_at(dfd: number, path: string | null, cancellable: Gio.Cancellable | null): boolean
+    write_at(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean
 
     // Class property signals of OSTree-1.0.OSTree.BootconfigParser
 
@@ -742,9 +742,9 @@ export interface Deployment {
     clone(): Deployment
     equal(bp: Deployment): boolean
     get_bootconfig(): BootconfigParser
-    get_bootcsum(): string | null
+    get_bootcsum(): string
     get_bootserial(): number
-    get_csum(): string | null
+    get_csum(): string
     get_deployserial(): number
     get_index(): number
     get_origin(): GLib.KeyFile
@@ -755,7 +755,7 @@ export interface Deployment {
      * @returns Path to deployment root directory, relative to sysroot
      */
     get_origin_relpath(): string | null
-    get_osname(): string | null
+    get_osname(): string
     get_unlocked(): DeploymentUnlockedState
     set_bootconfig(bootconfig: BootconfigParser): void
     set_bootserial(index: number): void
@@ -780,11 +780,11 @@ export class Deployment extends GObject.Object {
     // Constructors of OSTree-1.0.OSTree.Deployment
 
     constructor(config?: Deployment.ConstructorProperties) 
-    constructor(index: number, osname: string | null, csum: string | null, deployserial: number, bootcsum: string | null, bootserial: number) 
-    static new(index: number, osname: string | null, csum: string | null, deployserial: number, bootcsum: string | null, bootserial: number): Deployment
+    constructor(index: number, osname: string, csum: string, deployserial: number, bootcsum: string, bootserial: number) 
+    static new(index: number, osname: string, csum: string, deployserial: number, bootcsum: string, bootserial: number): Deployment
     _init(config?: Deployment.ConstructorProperties): void
     static hash(v: any | null): number
-    static unlocked_state_to_string(state: DeploymentUnlockedState): string | null
+    static unlocked_state_to_string(state: DeploymentUnlockedState): string
 }
 
 export module GpgVerifyResult {
@@ -878,7 +878,7 @@ export interface GpgVerifyResult extends Gio.Initable {
      * @param key_id a GPG key ID or fingerprint
      * @returns %TRUE on success, %FALSE on failure
      */
-    lookup(key_id: string | null): [ /* returnType */ boolean, /* out_signature_index */ number ]
+    lookup(key_id: string): [ /* returnType */ boolean, /* out_signature_index */ number ]
     /**
      * Checks if the result contains at least one signature from the
      * trusted keyring.  You can call this function immediately after
@@ -935,22 +935,22 @@ export interface MutableTree {
 
     // Owm methods of OSTree-1.0.OSTree.MutableTree
 
-    ensure_dir(name: string | null, out_subdir: MutableTree): boolean
+    ensure_dir(name: string, out_subdir: MutableTree): boolean
     /**
      * Create all parent trees necessary for the given `split_path` to
      * exist.
      * @param split_path File path components
      * @param metadata_checksum SHA256 checksum for metadata
      */
-    ensure_parent_dirs(split_path: string[], metadata_checksum: string | null): [ /* returnType */ boolean, /* out_parent */ MutableTree ]
-    get_contents_checksum(): string | null
+    ensure_parent_dirs(split_path: string[], metadata_checksum: string): [ /* returnType */ boolean, /* out_parent */ MutableTree ]
+    get_contents_checksum(): string
     get_files(): GLib.HashTable
-    get_metadata_checksum(): string | null
+    get_metadata_checksum(): string
     get_subdirs(): GLib.HashTable
-    lookup(name: string | null, out_file_checksum: string | null, out_subdir: MutableTree): boolean
-    replace_file(name: string | null, checksum: string | null): boolean
-    set_contents_checksum(checksum: string | null): void
-    set_metadata_checksum(checksum: string | null): void
+    lookup(name: string, out_file_checksum: string | null, out_subdir: MutableTree): boolean
+    replace_file(name: string, checksum: string): boolean
+    set_contents_checksum(checksum: string): void
+    set_metadata_checksum(checksum: string): void
     /**
      * Traverse `start` number of elements starting from `split_path;` the
      * child will be returned in `out_subdir`.
@@ -1039,7 +1039,7 @@ export interface Repo {
      * @param signature_bytes Signature data
      * @param cancellable A #GCancellable
      */
-    append_gpg_signature(commit_checksum: string | null, signature_bytes: GLib.Bytes, cancellable: Gio.Cancellable | null): boolean
+    append_gpg_signature(commit_checksum: string, signature_bytes: GLib.Bytes, cancellable: Gio.Cancellable | null): boolean
     /**
      * Similar to ostree_repo_checkout_tree(), but uses directory-relative
      * paths for the destination, uses a new `OstreeRepoCheckoutAtOptions`,
@@ -1058,7 +1058,7 @@ export interface Repo {
      * @param commit Checksum for commit
      * @param cancellable Cancellable
      */
-    checkout_at(options: RepoCheckoutAtOptions | null, destination_dfd: number, destination_path: string | null, commit: string | null, cancellable: Gio.Cancellable | null): boolean
+    checkout_at(options: RepoCheckoutAtOptions | null, destination_dfd: number, destination_path: string, commit: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Call this after finishing a succession of checkout operations; it
      * will delete any currently-unused uncompressed objects from the
@@ -1108,7 +1108,7 @@ export interface Repo {
      * @param sha256 Checksum
      * @param cancellable Cancellable
      */
-    delete_object(objtype: ObjectType, sha256: string | null, cancellable: Gio.Cancellable | null): boolean
+    delete_object(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): boolean
     get_config(): GLib.KeyFile
     /**
      * In some cases it's useful for applications to access the repository
@@ -1141,7 +1141,7 @@ export interface Repo {
      * @param default_value Value returned if `option_name` is not present
      * @returns %TRUE on success, otherwise %FALSE with @error set
      */
-    get_remote_boolean_option(remote_name: string | null, option_name: string | null, default_value: boolean): [ /* returnType */ boolean, /* out_value */ boolean ]
+    get_remote_boolean_option(remote_name: string, option_name: string, default_value: boolean): [ /* returnType */ boolean, /* out_value */ boolean ]
     /**
      * OSTree remotes are represented by keyfile groups, formatted like:
      * `[remote "remotename"]`. This function returns a value named `option_name`
@@ -1151,7 +1151,7 @@ export interface Repo {
      * @param option_name Option
      * @returns %TRUE on success, otherwise %FALSE with @error set
      */
-    get_remote_list_option(remote_name: string | null, option_name: string | null): [ /* returnType */ boolean, /* out_value */ string[] ]
+    get_remote_list_option(remote_name: string, option_name: string): [ /* returnType */ boolean, /* out_value */ string[] ]
     /**
      * OSTree remotes are represented by keyfile groups, formatted like:
      * `[remote "remotename"]`. This function returns a value named `option_name`
@@ -1162,7 +1162,7 @@ export interface Repo {
      * @param default_value Value returned if `option_name` is not present
      * @returns %TRUE on success, otherwise %FALSE with @error set
      */
-    get_remote_option(remote_name: string | null, option_name: string | null, default_value: string | null): [ /* returnType */ boolean, /* out_value */ string | null ]
+    get_remote_option(remote_name: string, option_name: string, default_value: string | null): [ /* returnType */ boolean, /* out_value */ string | null ]
     /**
      * Verify `signatures` for `data` using GPG keys in the keyring for
      * `remote_name,` and return an #OstreeGpgVerifyResult.
@@ -1186,7 +1186,7 @@ export interface Repo {
      * @param cancellable Cancellable
      * @returns %FALSE if an unexpected error occurred, %TRUE otherwise
      */
-    has_object(objtype: ObjectType, checksum: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_have_object */ boolean ]
+    has_object(objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_have_object */ boolean ]
     /**
      * Copy object named by `objtype` and `checksum` into `self` from the
      * source repository `source`.  If both repositories are of the same
@@ -1199,7 +1199,7 @@ export interface Repo {
      * @param checksum checksum
      * @param cancellable Cancellable
      */
-    import_object_from(source: Repo, objtype: ObjectType, checksum: string | null, cancellable: Gio.Cancellable | null): boolean
+    import_object_from(source: Repo, objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Copy object named by `objtype` and `checksum` into `self` from the
      * source repository `source`.  If both repositories are of the same
@@ -1213,7 +1213,7 @@ export interface Repo {
      * @param trusted If %TRUE, assume the source repo is valid and trusted
      * @param cancellable Cancellable
      */
-    import_object_from_with_trust(source: Repo, objtype: ObjectType, checksum: string | null, trusted: boolean, cancellable: Gio.Cancellable | null): boolean
+    import_object_from_with_trust(source: Repo, objtype: ObjectType, checksum: string, trusted: boolean, cancellable: Gio.Cancellable | null): boolean
     is_system(): boolean
     /**
      * Returns whether the repository is writable by the current user.
@@ -1229,7 +1229,7 @@ export interface Repo {
      * @param cancellable Cancellable
      * @returns %TRUE on success, %FALSE on error, and @error will be set
      */
-    list_commit_objects_starting_with(start: string | null, out_commits: GLib.HashTable, cancellable: Gio.Cancellable | null): boolean
+    list_commit_objects_starting_with(start: string, out_commits: GLib.HashTable, cancellable: Gio.Cancellable | null): boolean
     /**
      * This function synchronously enumerates all objects in the
      * repository, returning data in `out_objects`.  `out_objects`
@@ -1272,14 +1272,14 @@ export interface Repo {
      * means that only a sub-path of the commit is available.
      * @param checksum Commit checksum
      */
-    load_commit(checksum: string | null): [ /* returnType */ boolean, /* out_commit */ GLib.Variant, /* out_state */ RepoCommitState ]
+    load_commit(checksum: string): [ /* returnType */ boolean, /* out_commit */ GLib.Variant, /* out_state */ RepoCommitState ]
     /**
      * Load content object, decomposing it into three parts: the actual
      * content (for regular files), the metadata, and extended attributes.
      * @param checksum ASCII SHA256 checksum
      * @param cancellable Cancellable
      */
-    load_file(checksum: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_file_info */ Gio.FileInfo, /* out_xattrs */ GLib.Variant ]
+    load_file(checksum: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_file_info */ Gio.FileInfo, /* out_xattrs */ GLib.Variant ]
     /**
      * Load object as a stream; useful when copying objects between
      * repositories.
@@ -1287,14 +1287,14 @@ export interface Repo {
      * @param checksum ASCII SHA256 checksum
      * @param cancellable Cancellable
      */
-    load_object_stream(objtype: ObjectType, checksum: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_size */ number ]
+    load_object_stream(objtype: ObjectType, checksum: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_input */ Gio.InputStream, /* out_size */ number ]
     /**
      * Load the metadata object `sha2`56 of type `objtype,` storing the
      * result in `out_variant`.
      * @param objtype Expected object type
      * @param sha256 Checksum string
      */
-    load_variant(objtype: ObjectType, sha256: string | null): [ /* returnType */ boolean, /* out_variant */ GLib.Variant ]
+    load_variant(objtype: ObjectType, sha256: string): [ /* returnType */ boolean, /* out_variant */ GLib.Variant ]
     /**
      * Attempt to load the metadata object `sha2`56 of type `objtype` if it
      * exists, storing the result in `out_variant`.  If it doesn't exist,
@@ -1302,7 +1302,7 @@ export interface Repo {
      * @param objtype Object type
      * @param sha256 ASCII checksum
      */
-    load_variant_if_exists(objtype: ObjectType, sha256: string | null): [ /* returnType */ boolean, /* out_variant */ GLib.Variant ]
+    load_variant_if_exists(objtype: ObjectType, sha256: string): [ /* returnType */ boolean, /* out_variant */ GLib.Variant ]
     open(cancellable: Gio.Cancellable | null): boolean
     /**
      * Starts or resumes a transaction. In order to write to a repo, you
@@ -1365,7 +1365,7 @@ export interface Repo {
      * @param progress Progress
      * @param cancellable Cancellable
      */
-    pull(remote_name: string | null, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean
+    pull(remote_name: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * This is similar to ostree_repo_pull(), but only fetches a single
      * subpath.
@@ -1376,7 +1376,7 @@ export interface Repo {
      * @param progress Progress
      * @param cancellable Cancellable
      */
-    pull_one_dir(remote_name: string | null, dir_to_pull: string | null, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean
+    pull_one_dir(remote_name: string, dir_to_pull: string, refs_to_fetch: string[] | null, flags: RepoPullFlags, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Like ostree_repo_pull(), but supports an extensible set of flags.
      * The following are currently defined:
@@ -1398,7 +1398,7 @@ export interface Repo {
      * @param progress Progress
      * @param cancellable Cancellable
      */
-    pull_with_options(remote_name_or_baseurl: string | null, options: GLib.Variant, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean
+    pull_with_options(remote_name_or_baseurl: string, options: GLib.Variant, progress: AsyncProgress | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Return the size in bytes of object with checksum `sha2`56, after any
      * compression has been applied.
@@ -1406,13 +1406,13 @@ export interface Repo {
      * @param sha256 Checksum
      * @param cancellable Cancellable
      */
-    query_object_storage_size(objtype: ObjectType, sha256: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_size */ number ]
+    query_object_storage_size(objtype: ObjectType, sha256: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_size */ number ]
     /**
      * Load the content for `rev` into `out_root`.
      * @param ref Ref or ASCII checksum
      * @param cancellable Cancellable
      */
-    read_commit(ref: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_root */ Gio.File, /* out_commit */ string | null ]
+    read_commit(ref: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_root */ Gio.File, /* out_commit */ string | null ]
     /**
      * OSTree commits can have arbitrary metadata associated; this
      * function retrieves them.  If none exists, `out_metadata` will be set
@@ -1420,7 +1420,7 @@ export interface Repo {
      * @param checksum ASCII SHA256 commit checksum
      * @param cancellable Cancellable
      */
-    read_commit_detached_metadata(checksum: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_metadata */ GLib.Variant ]
+    read_commit_detached_metadata(checksum: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_metadata */ GLib.Variant ]
     /**
      * An OSTree repository can contain a high level "summary" file that
      * describes the available branches and other metadata.
@@ -1444,7 +1444,7 @@ export interface Repo {
      * @param options GVariant of type a{sv}
      * @param cancellable Cancellable
      */
-    remote_add(name: string | null, url: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
+    remote_add(name: string, url: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * A combined function handling the equivalent of
      * ostree_repo_remote_add(), ostree_repo_remote_delete(), with more
@@ -1456,14 +1456,14 @@ export interface Repo {
      * @param options GVariant of type a{sv}
      * @param cancellable Cancellable
      */
-    remote_change(sysroot: Gio.File | null, changeop: RepoRemoteChange, name: string | null, url: string | null, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
+    remote_change(sysroot: Gio.File | null, changeop: RepoRemoteChange, name: string, url: string, options: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Delete the remote named `name`.  It is an error if the provided
      * remote does not exist.
      * @param name Name of remote
      * @param cancellable Cancellable
      */
-    remote_delete(name: string | null, cancellable: Gio.Cancellable | null): boolean
+    remote_delete(name: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Tries to fetch the summary file and any GPG signatures on the summary file
      * over HTTP, and returns the binary data in `out_summary` and `out_signatures`
@@ -1481,7 +1481,7 @@ export interface Repo {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success, %FALSE on failure
      */
-    remote_fetch_summary(name: string | null, out_summary: GLib.Bytes | null, out_signatures: GLib.Bytes | null, cancellable: Gio.Cancellable | null): boolean
+    remote_fetch_summary(name: string, out_summary: GLib.Bytes | null, out_signatures: GLib.Bytes | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Like ostree_repo_remote_fetch_summary(), but supports an extensible set of flags.
      * The following are currently defined:
@@ -1494,7 +1494,7 @@ export interface Repo {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success, %FALSE on failure
      */
-    remote_fetch_summary_with_options(name: string | null, options: GLib.Variant | null, out_summary: GLib.Bytes | null, out_signatures: GLib.Bytes | null, cancellable: Gio.Cancellable | null): boolean
+    remote_fetch_summary_with_options(name: string, options: GLib.Variant | null, out_summary: GLib.Bytes | null, out_signatures: GLib.Bytes | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Return whether GPG verification is enabled for the remote named `name`
      * through `out_gpg_verify`.  It is an error if the provided remote does
@@ -1502,7 +1502,7 @@ export interface Repo {
      * @param name Name of remote
      * @returns %TRUE on success, %FALSE on failure
      */
-    remote_get_gpg_verify(name: string | null): [ /* returnType */ boolean, /* out_gpg_verify */ boolean ]
+    remote_get_gpg_verify(name: string): [ /* returnType */ boolean, /* out_gpg_verify */ boolean ]
     /**
      * Return whether GPG verification of the summary is enabled for the remote
      * named `name` through `out_gpg_verify_summary`.  It is an error if the provided
@@ -1510,14 +1510,14 @@ export interface Repo {
      * @param name Name of remote
      * @returns %TRUE on success, %FALSE on failure
      */
-    remote_get_gpg_verify_summary(name: string | null): [ /* returnType */ boolean, /* out_gpg_verify_summary */ boolean ]
+    remote_get_gpg_verify_summary(name: string): [ /* returnType */ boolean, /* out_gpg_verify_summary */ boolean ]
     /**
      * Return the URL of the remote named `name` through `out_url`.  It is an
      * error if the provided remote does not exist.
      * @param name Name of remote
      * @returns %TRUE on success, %FALSE on failure
      */
-    remote_get_url(name: string | null): [ /* returnType */ boolean, /* out_url */ string | null ]
+    remote_get_url(name: string): [ /* returnType */ boolean, /* out_url */ string ]
     /**
      * Imports one or more GPG keys from the open `source_stream,` or from the
      * user's personal keyring if `source_stream` is %NULL.  The `key_ids` array
@@ -1533,14 +1533,14 @@ export interface Repo {
      * @param cancellable a #GCancellable
      * @returns %TRUE on success, %FALSE on failure
      */
-    remote_gpg_import(name: string | null, source_stream: Gio.InputStream | null, key_ids: string[] | null, out_imported: number | null, cancellable: Gio.Cancellable | null): boolean
+    remote_gpg_import(name: string, source_stream: Gio.InputStream | null, key_ids: string[] | null, out_imported: number | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * List available remote names in an #OstreeRepo.  Remote names are sorted
      * alphabetically.  If no remotes are available the function returns %NULL.
      * @returns a %NULL-terminated          array of remote names
      */
     remote_list(): string[]
-    remote_list_refs(remote_name: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_all_refs */ GLib.HashTable ]
+    remote_list_refs(remote_name: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_all_refs */ GLib.HashTable ]
     /**
      * Look up the given refspec, returning the checksum it references in
      * the parameter `out_rev`. Will fall back on remote directory if cannot
@@ -1548,7 +1548,7 @@ export interface Repo {
      * @param refspec A refspec
      * @param allow_noent Do not throw an error if refspec does not exist
      */
-    resolve_rev(refspec: string | null, allow_noent: boolean): [ /* returnType */ boolean, /* out_rev */ string | null ]
+    resolve_rev(refspec: string, allow_noent: boolean): [ /* returnType */ boolean, /* out_rev */ string | null ]
     /**
      * Look up the given refspec, returning the checksum it references in
      * the parameter `out_rev`. Differently from ostree_repo_resolve_rev(),
@@ -1558,7 +1558,7 @@ export interface Repo {
      * @param allow_noent Do not throw an error if refspec does not exist
      * @param flags Options controlling behavior
      */
-    resolve_rev_ext(refspec: string | null, allow_noent: boolean, flags: RepoResolveRevExtFlags): [ /* returnType */ boolean, /* out_rev */ string | null ]
+    resolve_rev_ext(refspec: string, allow_noent: boolean, flags: RepoResolveRevExtFlags): [ /* returnType */ boolean, /* out_rev */ string | null ]
     /**
      * When ostree builds a mutable tree from directory like in
      * ostree_repo_write_directory_to_mtree(), it has to scan all files that you
@@ -1582,7 +1582,7 @@ export interface Repo {
      * @param path subpath in `dfd`
      * @param cancellable a #GCancellable
      */
-    set_cache_dir(dfd: number, path: string | null, cancellable: Gio.Cancellable | null): boolean
+    set_cache_dir(dfd: number, path: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Disable requests to fsync() to stable storage during commits.  This
      * option should only be used by build system tools which are creating
@@ -1600,7 +1600,7 @@ export interface Repo {
      * @param checksum The checksum to point it to, or %NULL to unset
      * @param cancellable GCancellable
      */
-    set_ref_immediate(remote: string | null, ref: string | null, checksum: string | null, cancellable: Gio.Cancellable | null): boolean
+    set_ref_immediate(remote: string | null, ref: string, checksum: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Add a GPG signature to a commit.
      * @param commit_checksum SHA256 of given commit to sign
@@ -1608,7 +1608,7 @@ export interface Repo {
      * @param homedir GPG home directory, or %NULL
      * @param cancellable A #GCancellable
      */
-    sign_commit(commit_checksum: string | null, key_id: string | null, homedir: string | null, cancellable: Gio.Cancellable | null): boolean
+    sign_commit(commit_checksum: string, key_id: string, homedir: string | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * This function is deprecated, sign the summary file instead.
      * Add a GPG signature to a static delta.
@@ -1618,7 +1618,7 @@ export interface Repo {
      * @param homedir 
      * @param cancellable 
      */
-    sign_delta(from_commit: string | null, to_commit: string | null, key_id: string | null, homedir: string | null, cancellable: Gio.Cancellable | null): boolean
+    sign_delta(from_commit: string, to_commit: string, key_id: string, homedir: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Given a directory representing an already-downloaded static delta
      * on disk, apply it, generating a new commit.  The directory must be
@@ -1654,7 +1654,7 @@ export interface Repo {
      * @param params Parameters, see below
      * @param cancellable Cancellable
      */
-    static_delta_generate(opt: StaticDeltaGenerateOpt, from: string | null, to: string | null, metadata: GLib.Variant | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
+    static_delta_generate(opt: StaticDeltaGenerateOpt, from: string, to: string, metadata: GLib.Variant | null, params: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * If `checksum` is not %NULL, then record it as the target of ref named
      * `ref;` if `remote` is provided, the ref will appear to originate from that
@@ -1671,7 +1671,7 @@ export interface Repo {
      * @param ref The ref to write
      * @param checksum The checksum to point it to
      */
-    transaction_set_ref(remote: string | null, ref: string | null, checksum: string | null): void
+    transaction_set_ref(remote: string | null, ref: string, checksum: string): void
     /**
      * Like ostree_repo_transaction_set_ref(), but takes concatenated
      * `refspec` format as input instead of separate remote and name
@@ -1679,7 +1679,7 @@ export interface Repo {
      * @param refspec The refspec to write
      * @param checksum The checksum to point it to
      */
-    transaction_set_refspec(refspec: string | null, checksum: string | null): void
+    transaction_set_refspec(refspec: string, checksum: string): void
     /**
      * Create a new set `out_reachable` containing all objects reachable
      * from `commit_checksum,` traversing `maxdepth` parent commits.
@@ -1687,7 +1687,7 @@ export interface Repo {
      * @param maxdepth Traverse this many parent commits, -1 for unlimited
      * @param cancellable Cancellable
      */
-    traverse_commit(commit_checksum: string | null, maxdepth: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_reachable */ GLib.HashTable ]
+    traverse_commit(commit_checksum: string, maxdepth: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_reachable */ GLib.HashTable ]
     /**
      * Check for a valid GPG signature on commit named by the ASCII
      * checksum `commit_checksum`.
@@ -1697,7 +1697,7 @@ export interface Repo {
      * @param cancellable Cancellable
      * @returns %TRUE if there was a GPG signature from a trusted keyring, otherwise %FALSE
      */
-    verify_commit(commit_checksum: string | null, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): boolean
+    verify_commit(commit_checksum: string, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Read GPG signature(s) on the commit named by the ASCII checksum
      * `commit_checksum` and return detailed results.
@@ -1707,7 +1707,7 @@ export interface Repo {
      * @param cancellable Cancellable
      * @returns an #OstreeGpgVerifyResult, or %NULL on error
      */
-    verify_commit_ext(commit_checksum: string | null, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult
+    verify_commit_ext(commit_checksum: string, keyringdir: Gio.File | null, extra_keyring: Gio.File | null, cancellable: Gio.Cancellable | null): GpgVerifyResult
     /**
      * Verify `signatures` for `summary` data using GPG keys in the keyring for
      * `remote_name,` and return an #OstreeGpgVerifyResult.
@@ -1717,7 +1717,7 @@ export interface Repo {
      * @param cancellable Cancellable
      * @returns an #OstreeGpgVerifyResult, or %NULL on error
      */
-    verify_summary(remote_name: string | null, summary: GLib.Bytes, signatures: GLib.Bytes, cancellable: Gio.Cancellable | null): GpgVerifyResult
+    verify_summary(remote_name: string, summary: GLib.Bytes, signatures: GLib.Bytes, cancellable: Gio.Cancellable | null): GpgVerifyResult
     /**
      * Import an archive file `archive` into the repository, and write its
      * file structure to `mtree`.
@@ -1747,7 +1747,7 @@ export interface Repo {
      * @param metadata Metadata to associate with commit in with format "a{sv}", or %NULL to delete
      * @param cancellable Cancellable
      */
-    write_commit_detached_metadata(checksum: string | null, metadata: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
+    write_commit_detached_metadata(checksum: string, metadata: GLib.Variant | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Write a commit metadata object, referencing `root_contents_checksum`
      * and `root_metadata_checksum`.
@@ -1818,7 +1818,7 @@ export interface Repo {
      * @param length Length of `object_input`
      * @param cancellable Cancellable
      */
-    write_content_trusted(checksum: string | null, object_input: Gio.InputStream, length: number, cancellable: Gio.Cancellable | null): boolean
+    write_content_trusted(checksum: string, object_input: Gio.InputStream, length: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Store as objects all contents of the directory referred to by `dfd`
      * and `path` all children into the repository `self,` overlaying the
@@ -1829,7 +1829,7 @@ export interface Repo {
      * @param modifier Optional modifier
      * @param cancellable Cancellable
      */
-    write_dfd_to_mtree(dfd: number, path: string | null, mtree: MutableTree, modifier: RepoCommitModifier | null, cancellable: Gio.Cancellable | null): boolean
+    write_dfd_to_mtree(dfd: number, path: string, mtree: MutableTree, modifier: RepoCommitModifier | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Store objects for `dir` and all children into the repository `self,`
      * overlaying the resulting filesystem hierarchy into `mtree`.
@@ -1886,7 +1886,7 @@ export interface Repo {
      * @param length Length, may be 0 for unknown
      * @param cancellable Cancellable
      */
-    write_metadata_stream_trusted(objtype: ObjectType, checksum: string | null, object_input: Gio.InputStream, length: number, cancellable: Gio.Cancellable | null): boolean
+    write_metadata_stream_trusted(objtype: ObjectType, checksum: string, object_input: Gio.InputStream, length: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Store the metadata object `variant;` the provided `checksum` is
      * trusted.
@@ -1895,7 +1895,7 @@ export interface Repo {
      * @param variant Metadata object
      * @param cancellable Cancellable
      */
-    write_metadata_trusted(objtype: ObjectType, checksum: string | null, variant: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    write_metadata_trusted(objtype: ObjectType, checksum: string, variant: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Write all metadata objects for `mtree` to repo; the resulting
      * `out_file` points to the %OSTREE_OBJECT_TYPE_DIR_TREE object that
@@ -1960,7 +1960,7 @@ export class Repo extends GObject.Object {
      */
     static new_for_sysroot_path(repo_path: Gio.File, sysroot_path: Gio.File): Repo
     _init(config?: Repo.ConstructorProperties): void
-    static mode_from_string(mode: string | null, out_mode: RepoMode): boolean
+    static mode_from_string(mode: string, out_mode: RepoMode): boolean
     /**
      * Convenient "changed" callback for use with
      * ostree_async_progress_new_and_connect() when pulling from a remote
@@ -2000,17 +2000,17 @@ export interface RepoFile extends Gio.File {
     // Owm methods of OSTree-1.0.OSTree.RepoFile
 
     ensure_resolved(): boolean
-    get_checksum(): string | null
+    get_checksum(): string
     get_repo(): Repo
     get_root(): RepoFile
     get_xattrs(out_xattrs: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
-    tree_find_child(name: string | null, is_dir: boolean, out_container: GLib.Variant): number
+    tree_find_child(name: string, is_dir: boolean, out_container: GLib.Variant): number
     tree_get_contents(): GLib.Variant
-    tree_get_contents_checksum(): string | null
+    tree_get_contents_checksum(): string
     tree_get_metadata(): GLib.Variant
-    tree_get_metadata_checksum(): string | null
-    tree_query_child(n: number, attributes: string | null, flags: Gio.FileQueryInfoFlags, out_info: Gio.FileInfo, cancellable: Gio.Cancellable | null): boolean
-    tree_set_metadata(checksum: string | null, metadata: GLib.Variant): void
+    tree_get_metadata_checksum(): string
+    tree_query_child(n: number, attributes: string, flags: Gio.FileQueryInfoFlags, out_info: Gio.FileInfo, cancellable: Gio.Cancellable | null): boolean
+    tree_set_metadata(checksum: string, metadata: GLib.Variant): void
 
     // Class property signals of OSTree-1.0.OSTree.RepoFile
 
@@ -2054,7 +2054,7 @@ export interface SePolicy extends Gio.Initable {
 
     // Owm methods of OSTree-1.0.OSTree.SePolicy
 
-    get_csum(): string | null
+    get_csum(): string
     /**
      * Store in `out_label` the security context for the given `relpath` and
      * mode `unix_mode`.  If the policy does not specify a label, %NULL
@@ -2063,8 +2063,8 @@ export interface SePolicy extends Gio.Initable {
      * @param unix_mode Unix mode
      * @param cancellable Cancellable
      */
-    get_label(relpath: string | null, unix_mode: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_label */ string | null ]
-    get_name(): string | null
+    get_label(relpath: string, unix_mode: number, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_label */ string ]
+    get_name(): string
     get_path(): Gio.File
     /**
      * Reset the security context of `target` based on the SELinux policy.
@@ -2074,8 +2074,8 @@ export interface SePolicy extends Gio.Initable {
      * @param flags Flags controlling behavior
      * @param cancellable Cancellable
      */
-    restorecon(path: string | null, info: Gio.FileInfo | null, target: Gio.File, flags: SePolicyRestoreconFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_label */ string | null ]
-    setfscreatecon(path: string | null, mode: number): boolean
+    restorecon(path: string, info: Gio.FileInfo | null, target: Gio.File, flags: SePolicyRestoreconFlags, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_label */ string ]
+    setfscreatecon(path: string, mode: number): boolean
 
     // Class property signals of OSTree-1.0.OSTree.SePolicy
 
@@ -2145,7 +2145,7 @@ export interface Sysroot {
      * @param override_kernel_argv Use these as kernel arguments; if %NULL, inherit options from provided_merge_deployment
      * @param cancellable Cancellable
      */
-    deploy_tree(osname: string | null, revision: string | null, origin: GLib.KeyFile | null, provided_merge_deployment: Deployment | null, override_kernel_argv: string[] | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_deployment */ Deployment ]
+    deploy_tree(osname: string | null, revision: string, origin: GLib.KeyFile | null, provided_merge_deployment: Deployment | null, override_kernel_argv: string[] | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_new_deployment */ Deployment ]
     /**
      * Entirely replace the kernel arguments of `deployment` with the
      * values in `new_kargs`.
@@ -2221,7 +2221,7 @@ export interface Sysroot {
      * @param osname Name group of operating system checkouts
      * @param cancellable Cancellable
      */
-    init_osname(osname: string | null, cancellable: Gio.Cancellable | null): boolean
+    init_osname(osname: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Load deployment list, bootversion, and subbootversion from the
      * rootfs `self`.
@@ -2260,7 +2260,7 @@ export interface Sysroot {
      * @param result Result
      */
     lock_finish(result: Gio.AsyncResult): boolean
-    origin_new_from_refspec(refspec: string | null): GLib.KeyFile
+    origin_new_from_refspec(refspec: string): GLib.KeyFile
     /**
      * Like ostree_sysroot_cleanup() in that it cleans up incomplete deployments
      * and old boot versions, but does NOT prune the repository.
@@ -2414,7 +2414,7 @@ export interface SysrootUpgrader extends Gio.Initable {
      * @param out_changed 
      * @param cancellable 
      */
-    pull_one_dir(dir_to_pull: string | null, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress, out_changed: boolean, cancellable: Gio.Cancellable | null): boolean
+    pull_one_dir(dir_to_pull: string, flags: RepoPullFlags, upgrader_flags: SysrootUpgraderPullFlags, progress: AsyncProgress, out_changed: boolean, cancellable: Gio.Cancellable | null): boolean
     /**
      * Replace the origin with `origin`.
      * @param origin The new origin
@@ -2462,7 +2462,7 @@ export class SysrootUpgrader extends GObject.Object {
      * @param from_rev From revision
      * @param to_rev To revision
      */
-    static check_timestamps(repo: Repo, from_rev: string | null, to_rev: string | null): boolean
+    static check_timestamps(repo: Repo, from_rev: string, to_rev: string): boolean
 }
 
 export interface AsyncProgressClass {
@@ -2506,7 +2506,7 @@ export interface BootloaderInterface {
 
     g_iface: GObject.TypeInterface
     query: (bootloader: Bootloader, out_is_active: boolean, cancellable: Gio.Cancellable) => boolean
-    get_name: (self: Bootloader) => string | null
+    get_name: (self: Bootloader) => string
     write_config: (self: Bootloader, bootversion: number, cancellable: Gio.Cancellable) => boolean
     is_atomic: (self: Bootloader) => boolean
 }
@@ -2567,9 +2567,9 @@ export interface CmdPrivateVTable {
     // Own fields of OSTree-1.0.OSTree.CmdPrivateVTable
 
     ostree_generate_grub2_config: (sysroot: Sysroot, bootversion: number, target_fd: number, cancellable: Gio.Cancellable) => boolean
-    ostree_static_delta_dump: (repo: Repo, delta_id: string | null, cancellable: Gio.Cancellable) => boolean
-    ostree_static_delta_query_exists: (repo: Repo, delta_id: string | null, out_exists: boolean, cancellable: Gio.Cancellable) => boolean
-    ostree_static_delta_delete: (repo: Repo, delta_id: string | null, cancellable: Gio.Cancellable) => boolean
+    ostree_static_delta_dump: (repo: Repo, delta_id: string, cancellable: Gio.Cancellable) => boolean
+    ostree_static_delta_query_exists: (repo: Repo, delta_id: string, out_exists: boolean, cancellable: Gio.Cancellable) => boolean
+    ostree_static_delta_delete: (repo: Repo, delta_id: string, cancellable: Gio.Cancellable) => boolean
 }
 
 export class CmdPrivateVTable {
@@ -2744,7 +2744,7 @@ export interface RepoCheckoutAtOptions {
     process_whiteouts: boolean
     no_copy_fallback: boolean
     unused_bools: boolean[]
-    subpath: string | null
+    subpath: string
     devino_to_csum_cache: RepoDevInoCache
     unused_ints: number[]
     unused_ptrs: any[]
@@ -2776,7 +2776,7 @@ export interface RepoCheckoutOptions {
     process_whiteouts: number
     no_copy_fallback: number
     reserved: number
-    subpath: string | null
+    subpath: string
     devino_to_csum_cache: RepoDevInoCache
     unused_uints: number[]
     unused_ptrs: any[]

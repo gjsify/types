@@ -804,11 +804,11 @@ const BINARY_AGE: number
 /**
  * Standard attachment disposition.
  */
-const DISPOSITION_ATTACHMENT: string | null
+const DISPOSITION_ATTACHMENT: string
 /**
  * Standard inline disposition.
  */
-const DISPOSITION_INLINE: string | null
+const DISPOSITION_INLINE: string
 /**
  * A bit flag for g_mime_filter_enriched_new() which signifies that
  * the filter should expect Rich Text (aka RTF).
@@ -937,7 +937,7 @@ const YENCODE_STATE_INIT: number
  * @param inlen input buffer length
  * @returns the charset name best suited for the input text or %NULL if it is ascii-safe.
  */
-function charsetBest(inbuf: string | null, inlen: number): string | null
+function charsetBest(inbuf: string, inlen: number): string | null
 /**
  * Attempts to find a canonical charset name for `charset`.
  * 
@@ -948,20 +948,20 @@ function charsetBest(inbuf: string | null, inlen: number): string | null
  * @param charset charset name
  * @returns a canonical charset name for @charset.
  */
-function charsetCanonName(charset: string | null): string | null
+function charsetCanonName(charset: string): string
 /**
  * Attempts to find an iconv-friendly charset name for `charset`.
  * @param charset charset name
  * @returns an iconv-friendly charset name for @charset.
  */
-function charsetIconvName(charset: string | null): string | null
+function charsetIconvName(charset: string): string
 /**
  * Maps the ISO-8859-# charset to the equivalent Windows-CP125#
  * charset.
  * @param isocharset ISO-8859-# charset
  * @returns equivalent Windows charset.
  */
-function charsetIsoToWindows(isocharset: string | null): string | null
+function charsetIsoToWindows(isocharset: string): string
 /**
  * Attempts to find a specific language code that is specific to
  * `charset`. Currently only handles CJK and Russian/Ukranian
@@ -969,7 +969,7 @@ function charsetIsoToWindows(isocharset: string | null): string | null
  * @param charset charset name
  * @returns a language code that is specific to @charset, or %NULL on fail.
  */
-function charsetLanguage(charset: string | null): string | null
+function charsetLanguage(charset: string): string | null
 /**
  * Gets the user's locale charset (or iso-8859-1 by default).
  * 
@@ -977,7 +977,7 @@ function charsetLanguage(charset: string | null): string | null
  * instead.
  * @returns the user's locale charset (or iso-8859-1 by default).
  */
-function charsetLocaleName(): string | null
+function charsetLocaleName(): string
 /**
  * Initializes character set maps.
  * 
@@ -996,7 +996,7 @@ function charsetMapShutdown(): void
  * @param charset charset name
  * @returns an iconv-friendly charset name for @charset.
  */
-function charsetName(charset: string | null): string | null
+function charsetName(charset: string): string
 /**
  * Checks that the GMime library version meets the requirements of the
  * required version.
@@ -1012,13 +1012,13 @@ function checkVersion(major: number, minor: number, micro: number): boolean
  * @param str a string representing a Content-Transfer-Encoding value
  * @returns the #GMimeContentEncoding specified by @str or #GMIME_CONTENT_ENCODING_DEFAULT on error.
  */
-function contentEncodingFromString(str: string | null): ContentEncoding
+function contentEncodingFromString(str: string): ContentEncoding
 /**
  * Gets the string value of the content encoding.
  * @param encoding a #GMimeContentEncoding
  * @returns the encoding type as a string or %NULL on error. Available values for the encoding are: #GMIME_CONTENT_ENCODING_DEFAULT, #GMIME_CONTENT_ENCODING_7BIT, #GMIME_CONTENT_ENCODING_8BIT, #GMIME_CONTENT_ENCODING_BINARY, #GMIME_CONTENT_ENCODING_BASE64, #GMIME_CONTENT_ENCODING_QUOTEDPRINTABLE and #GMIME_CONTENT_ENCODING_UUENCODE.
  */
-function contentEncodingToString(encoding: ContentEncoding): string | null
+function contentEncodingToString(encoding: ContentEncoding): string
 /**
  * Decodes a chunk of base64 encoded data.
  * @param inbuf input buffer
@@ -1137,7 +1137,7 @@ function formatOptionsGetDefault(): FormatOptions
  * @param str string in locale charset
  * @returns a new string buffer containing @str converted to UTF-8.
  */
-function iconvLocaleToUtf8(str: string | null): string | null
+function iconvLocaleToUtf8(str: string): string | null
 /**
  * Allocates a new string buffer containing the first `n` bytes of
  * `str` converted to UTF-8.
@@ -1145,14 +1145,14 @@ function iconvLocaleToUtf8(str: string | null): string | null
  * @param n number of bytes to convert
  * @returns a new string buffer containing the first @n bytes of @str converted to UTF-8.
  */
-function iconvLocaleToUtf8Length(str: string | null, n: number): string | null
+function iconvLocaleToUtf8Length(str: string, n: number): string | null
 /**
  * Allocates a new string buffer containing `str` converted to the
  * user's locale charset.
  * @param str string in UTF-8 charset
  * @returns a new string buffer containing @str converted to the user's locale charset.
  */
-function iconvUtf8ToLocale(str: string | null): string | null
+function iconvUtf8ToLocale(str: string): string | null
 /**
  * Allocates a new string buffer containing the first `n` bytes of
  * `str` converted to the user's locale charset.
@@ -1160,7 +1160,7 @@ function iconvUtf8ToLocale(str: string | null): string | null
  * @param n number of bytes to convert
  * @returns a new string buffer containing the first @n bytes of @str converted to the user's locale charset.
  */
-function iconvUtf8ToLocaleLength(str: string | null, n: number): string | null
+function iconvUtf8ToLocaleLength(str: string, n: number): string | null
 /**
  * Initializes GMime.
  */
@@ -1169,7 +1169,7 @@ function init(): void
  * Gets the user's locale charset (or iso-8859-1 by default).
  * @returns the user's locale charset (or iso-8859-1 by default).
  */
-function localeCharset(): string | null
+function localeCharset(): string
 /**
  * Gets the user's locale language code (or %NULL by default).
  * @returns the user's locale language code (or %NULL by default).
@@ -1187,7 +1187,7 @@ function parserOptionsGetDefault(): ParserOptions
  * @param text string containing a list of msg-ids
  * @returns a new #GMimeReferences containing the parsed message ids.
  */
-function referencesParse(options: ParserOptions | null, text: string | null): References
+function referencesParse(options: ParserOptions | null, text: string): References
 /**
  * Frees internally allocated tables created in g_mime_init().
  */
@@ -1215,33 +1215,33 @@ function utilsDecode8bit(options: ParserOptions | null, text: number[]): string 
  * @param messageId string containing a message-id
  * @returns the addr-spec portion of the msg-id.
  */
-function utilsDecodeMessageId(messageId: string | null): string | null
+function utilsDecodeMessageId(messageId: string): string | null
 /**
  * Generates a unique Message-Id.
  * @param fqdn Fully qualified domain name
  * @returns a unique string in an addr-spec format suitable for use as a Message-Id.
  */
-function utilsGenerateMessageId(fqdn: string | null): string | null
+function utilsGenerateMessageId(fqdn: string): string | null
 /**
  * Parses the rfc822 date string.
  * @param str input date string
  * @returns the #GDateTime representation of the date string specified by @str or %NULL on error.
  */
-function utilsHeaderDecodeDate(str: string | null): GLib.DateTime | null
+function utilsHeaderDecodeDate(str: string): GLib.DateTime | null
 /**
  * Decodes an rfc2047 encoded 'phrase' header.
  * @param options a #GMimeParserOptions or %NULL
  * @param phrase header to decode
  * @returns a newly allocated UTF-8 string representing the the decoded header.
  */
-function utilsHeaderDecodePhrase(options: ParserOptions | null, phrase: string | null): string | null
+function utilsHeaderDecodePhrase(options: ParserOptions | null, phrase: string): string | null
 /**
  * Decodes an rfc2047 encoded 'text' header.
  * @param options a #GMimeParserOptions or %NULL
  * @param text header text to decode
  * @returns a newly allocated UTF-8 string representing the the decoded header.
  */
-function utilsHeaderDecodeText(options: ParserOptions | null, text: string | null): string | null
+function utilsHeaderDecodeText(options: ParserOptions | null, text: string): string | null
 /**
  * Encodes a 'phrase' header according to the rules in rfc2047.
  * @param options a #GMimeFormatOptions or %NULL
@@ -1249,7 +1249,7 @@ function utilsHeaderDecodeText(options: ParserOptions | null, text: string | nul
  * @param charset the charset to use or %NULL to use the default
  * @returns the encoded 'phrase'. Useful for encoding internet addresses.
  */
-function utilsHeaderEncodePhrase(options: FormatOptions | null, phrase: string | null, charset: string | null): string | null
+function utilsHeaderEncodePhrase(options: FormatOptions | null, phrase: string, charset: string | null): string | null
 /**
  * Encodes a 'text' header according to the rules in rfc2047.
  * @param options a #GMimeFormatOptions or %NULL
@@ -1257,7 +1257,7 @@ function utilsHeaderEncodePhrase(options: FormatOptions | null, phrase: string |
  * @param charset the charset to use or %NULL to use the default
  * @returns the encoded header. Useful for encoding headers like "Subject".
  */
-function utilsHeaderEncodeText(options: FormatOptions | null, text: string | null, charset: string | null): string | null
+function utilsHeaderEncodeText(options: FormatOptions | null, text: string, charset: string | null): string | null
 /**
  * Allocates a string buffer containing the rfc822 formatted date
  * string represented by `date`.
@@ -1270,13 +1270,13 @@ function utilsHeaderFormatDate(date: GLib.DateTime): string | null
  * @param value raw header value
  * @returns an allocated string containing the unfolded header value.
  */
-function utilsHeaderUnfold(value: string | null): string | null
+function utilsHeaderUnfold(value: string): string | null
 /**
  * Quotes `string` as needed according to the rules in rfc2822.
  * @param str input string
  * @returns an allocated string containing the escaped and quoted (if needed to be) input string. The decision to quote the string is based on whether or not the input string contains any 'specials' as defined by rfc2822.
  */
-function utilsQuoteString(str: string | null): string | null
+function utilsQuoteString(str: string): string | null
 /**
  * Folds a structured header according to the rules in rfc822.
  * @param options a #GMimeParserOptions or %NULL
@@ -1284,7 +1284,7 @@ function utilsQuoteString(str: string | null): string | null
  * @param header header field and value string
  * @returns an allocated string containing the folded header.
  */
-function utilsStructuredHeaderFold(options: ParserOptions | null, format: FormatOptions | null, header: string | null): string | null
+function utilsStructuredHeaderFold(options: ParserOptions | null, format: FormatOptions | null, header: string): string | null
 /**
  * Determines if `text` contains 8bit characters within the first `len`
  * bytes.
@@ -1304,7 +1304,7 @@ function utilsUnquoteString(str: string | null): void
  * @param header header field and value string
  * @returns an allocated string containing the folded header.
  */
-function utilsUnstructuredHeaderFold(options: ParserOptions | null, format: FormatOptions | null, header: string | null): string | null
+function utilsUnstructuredHeaderFold(options: ParserOptions | null, format: FormatOptions | null, header: string): string | null
 /**
  * Performs a 'decode step' on a chunk of yEncoded data of length
  * `inlen` pointed to by `inbuf` and writes to `outbuf`. Assumes the =ybegin
@@ -1371,7 +1371,7 @@ function yencodeStep(inbuf: number, inlen: number, outbuf: number, state: number
  * @returns the encoded and formatted raw header value.
  */
 interface HeaderRawValueFormatter {
-    (header: Header, options: FormatOptions, value: string | null, charset: string | null): string | null
+    (header: Header, options: FormatOptions, value: string, charset: string): string | null
 }
 /**
  * The function signature for a callback to g_mime_message_foreach()
@@ -1393,7 +1393,7 @@ interface ObjectForeachFunc {
  * @param offset The header field offset.
  */
 interface ParserHeaderRegexFunc {
-    (parser: Parser, header: string | null, value: string | null, offset: number): void
+    (parser: Parser, header: string, value: string, offset: number): void
 }
 /**
  * The function signature for a callback to g_mime_parser_options_set_warning_callback().
@@ -1403,7 +1403,7 @@ interface ParserHeaderRegexFunc {
  * @param item a NUL-terminated string containing the value causing the issue, may be %NULL
  */
 interface ParserWarningFunc {
-    (offset: number, errcode: ParserWarning, item: string | null): void
+    (offset: number, errcode: ParserWarning, item: string): void
 }
 /**
  * A password request callback allowing a #GMimeCryptoContext to
@@ -1417,7 +1417,7 @@ interface ParserWarningFunc {
  * @returns %TRUE on success or %FALSE on error.
  */
 interface PasswordRequestFunc {
-    (ctx: CryptoContext, userId: string | null, prompt: string | null, reprompt: boolean, response: Stream): boolean
+    (ctx: CryptoContext, userId: string, prompt: string, reprompt: boolean, response: Stream): boolean
 }
 module ApplicationPkcs7Mime {
 
@@ -1466,7 +1466,7 @@ interface ApplicationPkcs7Mime {
      * @param result the decryption result
      * @returns the decrypted MIME part on success or %NULL on fail. If the decryption fails, an exception will be set on @err to provide information as to why the failure occurred.
      */
-    decrypt(flags: DecryptFlags, sessionKey: string | null, result: DecryptResult): Object | null
+    decrypt(flags: DecryptFlags, sessionKey: string, result: DecryptResult): Object | null
     /**
      * Gets the smime-type value of the Content-Type header.
      * @returns the smime-type value.
@@ -1563,7 +1563,7 @@ class ApplicationPkcs7Mime extends Part {
      * @param userid the user id to sign with
      * @returns a new #GMimeApplicationPkcs7Mime object on success or %NULL on fail. If signing fails, an exception will be set on @err to provide information as to why the failure occurred.
      */
-    static sign(entity: Object, userid: string | null): ApplicationPkcs7Mime | null
+    static sign(entity: Object, userid: string): ApplicationPkcs7Mime | null
 }
 
 module AutocryptHeader {
@@ -1638,7 +1638,7 @@ interface AutocryptHeader {
      * Gets the internal address of the Autocrypt header as a C string, or %NULL if not set.
      * @returns the address associated with the Autocrypt header
      */
-    getAddressAsString(): string | null
+    getAddressAsString(): string
     /**
      * Gets the effective date of the Autocrypt header, or %NULL if not set.
      * @returns the effective date associated with the Autocrypt header
@@ -1672,7 +1672,7 @@ interface AutocryptHeader {
      * Set the address associated with the autocrypt_header.
      * @param address a %NULL-terminated string that is a raw e-mail address
      */
-    setAddressFromString(address: string | null): void
+    setAddressFromString(address: string): void
     /**
      * Set the effective date associated with the Autocrypt header.
      * @param effectiveDate a #GDateTime object
@@ -1757,7 +1757,7 @@ class AutocryptHeader extends GObject.Object {
      * @param string The raw string value of an Autocrypt header
      * @returns a new #GMimeAutocryptHeader object, or %NULL on error.
      */
-    static newFromString(string: string | null): AutocryptHeader
+    static newFromString(string: string): AutocryptHeader
     _init(config?: AutocryptHeader.ConstructorProperties): void
 }
 
@@ -1974,7 +1974,7 @@ interface Certificate {
      * address will be returned.
      * @returns the relevant e-mail address, or %NULL if unspecified.
      */
-    getEmail(): string | null
+    getEmail(): string
     /**
      * Get the expiration date of the certificate's key. A value of %0 means the certificate never expires.
      * @returns the expiration date of the certificate's key or %-1 if unknown.
@@ -1991,7 +1991,7 @@ interface Certificate {
      * Get the certificate's key fingerprint.
      * @returns the certificate's key fingerprint or %NULL if unspecified.
      */
-    getFingerprint(): string | null
+    getFingerprint(): string
     /**
      * Get the validity of the certificate's identity information.  This
      * validity applies to the name, email, and user_id fields associated
@@ -2003,17 +2003,17 @@ interface Certificate {
      * Get the certificate's issuer name.
      * @returns the certificate's issuer name or %NULL if unspecified.
      */
-    getIssuerName(): string | null
+    getIssuerName(): string
     /**
      * Get the certificate's issuer serial.
      * @returns the certificate's issuer serial or %NULL if unspecified.
      */
-    getIssuerSerial(): string | null
+    getIssuerSerial(): string
     /**
      * Get the certificate's key id.
      * @returns the certificate's key id or %NULL if unspecified.
      */
-    getKeyId(): string | null
+    getKeyId(): string
     /**
      * Get the name associated with the certificate.  For email
      * certificates, this is usually the name of the person who controls
@@ -2024,7 +2024,7 @@ interface Certificate {
      * will be returned.
      * @returns the the relevant name or %NULL if unspecified.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the public-key algorithm used by the certificate.
      * @returns the public-key algorithm used by the certificate or #GMIME_PUBKEY_ALGO_DEFAULT if unspecified.
@@ -2043,7 +2043,7 @@ interface Certificate {
      * User ID will be returned.
      * @returns the relevant User ID or %NULL if unspecified.
      */
-    getUserId(): string | null
+    getUserId(): string
     /**
      * Set the creation date of the certificate's key.
      * @param created creation date
@@ -2059,7 +2059,7 @@ interface Certificate {
      * certificate. (e.g. "jane\`example`.org")
      * @param email certificate's email
      */
-    setEmail(email: string | null): void
+    setEmail(email: string): void
     /**
      * Set the expiration date of the certificate's key. A value of %0 means the certificate never expires.
      * @param expires expiration date
@@ -2069,7 +2069,7 @@ interface Certificate {
      * Set the certificate's key fingerprint.
      * @param fingerprint fingerprint string
      */
-    setFingerprint(fingerprint: string | null): void
+    setFingerprint(fingerprint: string): void
     /**
      * Set the validity associated with the certificate's name, email, and user_id.
      * @param validity a #GMimeValidity representing the validity of the certificate's identity information.
@@ -2079,24 +2079,24 @@ interface Certificate {
      * Set the certificate's issuer name.
      * @param issuerName certificate's issuer name
      */
-    setIssuerName(issuerName: string | null): void
+    setIssuerName(issuerName: string): void
     /**
      * Set the certificate's issuer serial.
      * @param issuerSerial certificate's issuer serial
      */
-    setIssuerSerial(issuerSerial: string | null): void
+    setIssuerSerial(issuerSerial: string): void
     /**
      * Set the certificate's key id.
      * @param keyId key id
      */
-    setKeyId(keyId: string | null): void
+    setKeyId(keyId: string): void
     /**
      * Set the name associated with the certificate.  For email
      * certificates, this is usually the name of the person who controls
      * the certificate (encoded in UTF-8). (e.g. "Jane Doe")
      * @param name certificate's name
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Set the public-key algorithm used by the certificate.
      * @param algo a #GMimePubKeyAlgo
@@ -2113,7 +2113,7 @@ interface Certificate {
      * &lt;jane\`example`.org&gt;")
      * @param userId the full User ID for a certificate
      */
-    setUserId(userId: string | null): void
+    setUserId(userId: string): void
 
     // Class property signals of GMime-3.0.GMime.Certificate
 
@@ -2338,13 +2338,13 @@ interface ContentDisposition {
      * Gets the disposition or %NULL on fail.
      * @returns the disposition string which is probably one of #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE.
      */
-    getDisposition(): string | null
+    getDisposition(): string
     /**
      * Gets the parameter value specified by `name` if it's available.
      * @param name parameter name
      * @returns the value of the requested parameter or %NULL if the parameter is not set. If the parameter is set, the returned string will be in UTF-8.
      */
-    getParameter(name: string | null): string | null
+    getParameter(name: string): string
     /**
      * Gets the Content-Disposition parameter list.
      * @returns the Content-Disposition's parameter list.
@@ -2362,7 +2362,7 @@ interface ContentDisposition {
      * part should be displayed by the MUA.
      * @param value disposition value
      */
-    setDisposition(value: string | null): void
+    setDisposition(value: string): void
     /**
      * Sets a parameter on the Content-Disposition.
      * 
@@ -2371,7 +2371,7 @@ interface ContentDisposition {
      * @param name parameter name
      * @param value parameter value
      */
-    setParameter(name: string | null, value: string | null): void
+    setParameter(name: string, value: string): void
 
     // Class property signals of GMime-3.0.GMime.ContentDisposition
 
@@ -2420,7 +2420,7 @@ class ContentDisposition extends GObject.Object {
      * @param str Content-Disposition field value
      * @returns a new #GMimeContentDisposition object.
      */
-    static parse(options: ParserOptions | null, str: string | null): ContentDisposition
+    static parse(options: ParserOptions | null, str: string): ContentDisposition
 }
 
 module ContentType {
@@ -2473,12 +2473,12 @@ interface ContentType {
      * Gets the Content-Type's media sub-type.
      * @returns the Content-Type's media sub-type.
      */
-    getMediaSubtype(): string | null
+    getMediaSubtype(): string
     /**
      * Gets the Content-Type's media type.
      * @returns the Content-Type's media type.
      */
-    getMediaType(): string | null
+    getMediaType(): string
     /**
      * Allocates a string buffer containing the type and subtype defined
      * by the `content_type`.
@@ -2490,7 +2490,7 @@ interface ContentType {
      * @param name parameter name (aka attribute)
      * @returns the value of the requested parameter or %NULL if the parameter is not set. If the parameter is set, the returned string will be in UTF-8.
      */
-    getParameter(name: string | null): string | null
+    getParameter(name: string): string
     /**
      * Gets the Content-Type's parameter list.
      * @returns the Content-Type's parameter list.
@@ -2503,17 +2503,17 @@ interface ContentType {
      * @param subtype MIME subtype to compare against
      * @returns %TRUE if the MIME types match or %FALSE otherwise. You may use "*" in place of @type and/or @subtype as a wilcard.
      */
-    isType(type: string | null, subtype: string | null): boolean
+    isType(type: string, subtype: string): boolean
     /**
      * Sets the Content-Type's media subtype.
      * @param subtype media subtype
      */
-    setMediaSubtype(subtype: string | null): void
+    setMediaSubtype(subtype: string): void
     /**
      * Sets the Content-Type's media type.
      * @param type media type
      */
-    setMediaType(type: string | null): void
+    setMediaType(type: string): void
     /**
      * Sets a parameter on the Content-Type.
      * 
@@ -2522,7 +2522,7 @@ interface ContentType {
      * @param name parameter name (aka attribute)
      * @param value parameter value
      */
-    setParameter(name: string | null, value: string | null): void
+    setParameter(name: string, value: string): void
 
     // Class property signals of GMime-3.0.GMime.ContentType
 
@@ -2559,7 +2559,7 @@ class ContentType extends GObject.Object {
      * @param subtype the MIME subtype or %NULL for the default value
      * @returns a new #GMimeContentType object.
      */
-    constructor(type: string | null, subtype: string | null) 
+    constructor(type: string, subtype: string) 
     /**
      * Creates a Content-Type object with type `type` and subtype `subtype`.
      * @constructor 
@@ -2567,7 +2567,7 @@ class ContentType extends GObject.Object {
      * @param subtype the MIME subtype or %NULL for the default value
      * @returns a new #GMimeContentType object.
      */
-    static new(type: string | null, subtype: string | null): ContentType
+    static new(type: string, subtype: string): ContentType
     _init(config?: ContentType.ConstructorProperties): void
     /**
      * Parses the input string into a #GMimeContentType object.
@@ -2575,7 +2575,7 @@ class ContentType extends GObject.Object {
      * @param str input string containing a content-type (and params)
      * @returns a new #GMimeContentType object.
      */
-    static parse(options: ParserOptions | null, str: string | null): ContentType
+    static parse(options: ParserOptions | null, str: string): ContentType
 }
 
 module CryptoContext {
@@ -2609,15 +2609,15 @@ interface CryptoContext {
     // Owm methods of GMime-3.0.GMime.CryptoContext
 
     // Has conflict: decrypt(flags: DecryptFlags, sessionKey: string | null, istream: Stream, ostream: Stream): DecryptResult
-    // Has conflict: digestId(name: string | null): DigestAlgo
+    // Has conflict: digestId(name: string): DigestAlgo
     // Has conflict: digestName(digest: DigestAlgo): string | null
     // Has conflict: encrypt(sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream): number
-    // Has conflict: exportKeys(keys: string | null, ostream: Stream): number
+    // Has conflict: exportKeys(keys: string, ostream: Stream): number
     // Has conflict: getEncryptionProtocol(): string | null
     // Has conflict: getKeyExchangeProtocol(): string | null
     // Has conflict: getSignatureProtocol(): string | null
     // Has conflict: importKeys(istream: Stream): number
-    // Has conflict: sign(detach: boolean, userid: string | null, istream: Stream, ostream: Stream): number
+    // Has conflict: sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     // Has conflict: verify(flags: VerifyFlags, istream: Stream, sigstream: Stream | null, ostream: Stream | null): SignatureList | null
 
     // Own virtual methods of GMime-3.0.GMime.CryptoContext
@@ -2656,7 +2656,7 @@ interface CryptoContext {
      * @param name digest name
      * @returns the equivalent digest id or #GMIME_DIGEST_ALGO_DEFAULT on fail.
      */
-    digestId(name: string | null): DigestAlgo
+    digestId(name: string): DigestAlgo
     /**
      * Gets the digest name based on the digest id `digest`.
      * @virtual 
@@ -2688,7 +2688,7 @@ interface CryptoContext {
      * @param ostream output stream
      * @returns %0 on success or %-1 on fail.
      */
-    exportKeys(keys: string | null, ostream: Stream): number
+    exportKeys(keys: string, ostream: Stream): number
     /**
      * Gets the encryption protocol for the crypto context.
      * @virtual 
@@ -2724,7 +2724,7 @@ interface CryptoContext {
      * @param ostream output stream
      * @returns the #GMimeDigestAlgo used on success or %-1 on fail.
      */
-    sign(detach: boolean, userid: string | null, istream: Stream, ostream: Stream): number
+    sign(detach: boolean, userid: string, istream: Stream, ostream: Stream): number
     /**
      * Verifies the signature. If `istream` is a clearsigned stream, you
      * should pass %NULL as the `sigstream` parameter and may wish to
@@ -2774,14 +2774,14 @@ class CryptoContext extends GObject.Object {
      * @param protocol the crypto protocol
      * @returns a newly allocated #GMimeCryptoContext.
      */
-    constructor(protocol: string | null) 
+    constructor(protocol: string) 
     /**
      * Creates a new crypto context for the specified `protocol`.
      * @constructor 
      * @param protocol the crypto protocol
      * @returns a newly allocated #GMimeCryptoContext.
      */
-    static new(protocol: string | null): CryptoContext
+    static new(protocol: string): CryptoContext
     _init(config?: CryptoContext.ConstructorProperties): void
 }
 
@@ -3467,7 +3467,7 @@ class FilterCharset extends Filter {
      * @param toCharset charset to convert to
      * @returns a new charset filter or %NULL if the charset conversion is not possible.
      */
-    constructor(fromCharset: string | null, toCharset: string | null) 
+    constructor(fromCharset: string, toCharset: string) 
     /**
      * Creates a new #GMimeFilterCharset filter.
      * @constructor 
@@ -3475,7 +3475,7 @@ class FilterCharset extends Filter {
      * @param toCharset charset to convert to
      * @returns a new charset filter or %NULL if the charset conversion is not possible.
      */
-    static new(fromCharset: string | null, toCharset: string | null): FilterCharset
+    static new(fromCharset: string, toCharset: string): FilterCharset
     _init(config?: FilterCharset.ConstructorProperties): void
 }
 
@@ -3864,22 +3864,22 @@ interface FilterGZip {
      * Gets the comment that was either previously set or retrieved when decoding a gzip stream.
      * @returns a string containing the comment.
      */
-    getComment(): string | null
+    getComment(): string
     /**
      * Gets the filename that was either previously set or retrieved when decoding a gzip stream.
      * @returns a string containing th ename of the file.
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Sets the comment that should be used when generating the gzip header.
      * @param comment The comment
      */
-    setComment(comment: string | null): void
+    setComment(comment: string): void
     /**
      * Sets the filename that should be used when generating the gzip header.
      * @param filename The name of the file
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
 
     // Class property signals of GMime-3.0.GMime.FilterGZip
 
@@ -4376,7 +4376,7 @@ interface FilterWindows {
      * Figures out the real charset that the text is encoded in based on whether or not Windows-CP125# characters were found.
      * @returns a const string pointer to the claimed charset if filtered text stream was found not to contain any Windows-CP125# characters or the proper Windows-CP125# charset.
      */
-    realCharset(): string | null
+    realCharset(): string
 
     // Class property signals of GMime-3.0.GMime.FilterWindows
 
@@ -4416,7 +4416,7 @@ class FilterWindows extends Filter {
      * @param claimedCharset charset that a text stream claims to be
      * @returns a new windows filter.
      */
-    constructor(claimedCharset: string | null) 
+    constructor(claimedCharset: string) 
     /**
      * Creates a new GMimeFilterWindows filter. When a stream of text has
      * been filtered, it can be determined whether or not said text stream
@@ -4425,7 +4425,7 @@ class FilterWindows extends Filter {
      * @param claimedCharset charset that a text stream claims to be
      * @returns a new windows filter.
      */
-    static new(claimedCharset: string | null): FilterWindows
+    static new(claimedCharset: string): FilterWindows
     _init(config?: FilterWindows.ConstructorProperties): void
 }
 
@@ -4609,7 +4609,7 @@ class GpgContext extends CryptoContext {
      * @param protocol the crypto protocol
      * @returns a newly allocated #GMimeCryptoContext.
      */
-    static new(protocol: string | null): CryptoContext
+    static new(protocol: string): CryptoContext
     _init(config?: GpgContext.ConstructorProperties): void
 }
 
@@ -4638,7 +4638,7 @@ interface Header {
      * @param charset a charset (note: unused)
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatAddrlist(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatAddrlist(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
@@ -4647,7 +4647,7 @@ interface Header {
      * @param charset a charset (note: unused)
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatContentDisposition(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatContentDisposition(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
@@ -4656,7 +4656,7 @@ interface Header {
      * @param charset a charset (note: unused)
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatContentType(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatContentType(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
@@ -4665,7 +4665,7 @@ interface Header {
      * @param charset a charset to use when encoding the `value`
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatDefault(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatDefault(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
@@ -4674,7 +4674,7 @@ interface Header {
      * @param charset a charset (note: unused)
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatMessageId(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatMessageId(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
@@ -4683,7 +4683,7 @@ interface Header {
      * @param charset a charset (note: unused)
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatReceived(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatReceived(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Parses the `value` and then re-formats it to conform to the formatting options,
      * folding the value if necessary.
@@ -4692,12 +4692,12 @@ interface Header {
      * @param charset a charset (note: unused)
      * @returns a newly allocated string containing the reformatted value.
      */
-    formatReferences(options: FormatOptions | null, value: string | null, charset: string | null): string | null
+    formatReferences(options: FormatOptions | null, value: string, charset: string): string | null
     /**
      * Gets the header's name.
      * @returns the header name or %NULL if invalid.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the header's stream offset if known.
      * @returns the header offset or %-1 if unknown.
@@ -4711,29 +4711,29 @@ interface Header {
      * name, such as: "Subject : this is the subject\r\n".
      * @returns the raw header name.
      */
-    getRawName(): string | null
+    getRawName(): string
     /**
      * Gets the header's raw (folded) value.
      * @returns the header value or %NULL if invalid.
      */
-    getRawValue(): string | null
+    getRawValue(): string
     /**
      * Gets the header's unfolded value.
      * @returns the header's decoded value or %NULL if invalid.
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Sets the header's raw value.
      * @param rawValue the raw value
      */
-    setRawValue(rawValue: string | null): void
+    setRawValue(rawValue: string): void
     /**
      * Sets the header's decoded value.
      * @param options a #GMimeFormatOptions or %NULL
      * @param value the new header value
      * @param charset a charset
      */
-    setValue(options: FormatOptions | null, value: string | null, charset: string | null): void
+    setValue(options: FormatOptions | null, value: string, charset: string): void
     /**
      * Write the header to the specified stream.
      * @param options a #GMimeFormatOptions or %NULL
@@ -4802,7 +4802,7 @@ interface HeaderList {
      * @param value header value
      * @param charset a charset
      */
-    append(name: string | null, value: string | null, charset: string | null): void
+    append(name: string, value: string, charset: string): void
     /**
      * Removes all of the headers from the #GMimeHeaderList.
      */
@@ -4812,7 +4812,7 @@ interface HeaderList {
      * @param name header name
      * @returns %TRUE if the specified header exists or %FALSE otherwise.
      */
-    contains(name: string | null): boolean
+    contains(name: string): boolean
     /**
      * Gets the number of headers contained within the header list.
      * @returns the number of headers in the header list.
@@ -4823,7 +4823,7 @@ interface HeaderList {
      * @param name header name
      * @returns a #GMimeHeader for the specified @name.
      */
-    getHeader(name: string | null): Header
+    getHeader(name: string): Header
     /**
      * Gets the header at the specified `index` within the list.
      * @param index the 0-based index of the header
@@ -4838,13 +4838,13 @@ interface HeaderList {
      * @param value header value
      * @param charset a charset
      */
-    prepend(name: string | null, value: string | null, charset: string | null): void
+    prepend(name: string, value: string, charset: string): void
     /**
      * Remove the first instance of the specified header.
      * @param name header name
      * @returns %TRUE if the header was successfully removed or %FALSE if the specified header could not be found.
      */
-    remove(name: string | null): boolean
+    remove(name: string): boolean
     /**
      * Removes the header at the specified `index` from `headers`.
      * @param index the 0-based index of the header to remove
@@ -4863,7 +4863,7 @@ interface HeaderList {
      * @param value header value
      * @param charset a charset
      */
-    set(name: string | null, value: string | null, charset: string | null): void
+    set(name: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the raw rfc822 headers
      * contained in `headers`.
@@ -4980,7 +4980,7 @@ interface InternetAddress {
      * Note: The `name` string should be in UTF-8.
      * @param name the display name for the address group or mailbox
      */
-    setName(name: string | null): void
+    setName(name: string): void
     // Has conflict: toString(options: FormatOptions | null, encode: boolean): string | null
 
     // Own virtual methods of GMime-3.0.GMime.InternetAddress
@@ -5101,7 +5101,7 @@ class InternetAddressGroup extends InternetAddress {
      * @param name group name
      * @returns a new #InternetAddressGroup object. Note: The @name string should be in UTF-8.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Creates a new #InternetAddressGroup object with the specified
      * `name`.
@@ -5109,7 +5109,7 @@ class InternetAddressGroup extends InternetAddress {
      * @param name group name
      * @returns a new #InternetAddressGroup object. Note: The @name string should be in UTF-8.
      */
-    static new(name: string | null): InternetAddressGroup
+    static new(name: string): InternetAddressGroup
     _init(config?: InternetAddressGroup.ConstructorProperties): void
 }
 
@@ -5277,7 +5277,7 @@ class InternetAddressList extends GObject.Object {
      * @param str a string containing internet addresses
      * @returns a #InternetAddressList or %NULL if the input string does not contain any addresses.
      */
-    static parse(options: ParserOptions | null, str: string | null): InternetAddressList | null
+    static parse(options: ParserOptions | null, str: string): InternetAddressList | null
 }
 
 module InternetAddressMailbox {
@@ -5324,17 +5324,17 @@ interface InternetAddressMailbox {
      * Gets the addr-spec of the internet address mailbox.
      * @returns the addr-spec string.
      */
-    getAddr(): string | null
+    getAddr(): string
     /**
      * Gets the IDN ascii-encoded addr-spec.
      * @returns the encoded addr-spec string.
      */
-    getIdnAddr(): string | null
+    getIdnAddr(): string
     /**
      * Set the mailbox address.
      * @param addr contact's email address
      */
-    setAddr(addr: string | null): void
+    setAddr(addr: string): void
 
     // Class property signals of GMime-3.0.GMime.InternetAddressMailbox
 
@@ -5372,7 +5372,7 @@ class InternetAddressMailbox extends InternetAddress {
      * @param addr person's address
      * @returns a new #InternetAddressMailbox object. Note: The @name string should be in UTF-8.
      */
-    constructor(name: string | null, addr: string | null) 
+    constructor(name: string, addr: string) 
     /**
      * Creates a new #InternetAddress object with the specified `name` and
      * `addr`.
@@ -5381,7 +5381,7 @@ class InternetAddressMailbox extends InternetAddress {
      * @param addr person's address
      * @returns a new #InternetAddressMailbox object. Note: The @name string should be in UTF-8.
      */
-    static new(name: string | null, addr: string | null): InternetAddressMailbox
+    static new(name: string, addr: string): InternetAddressMailbox
     _init(config?: InternetAddressMailbox.ConstructorProperties): void
 }
 
@@ -5443,7 +5443,7 @@ interface Message {
      * @param name The name of the mailbox (or %NULL)
      * @param addr The address of the mailbox
      */
-    addMailbox(type: AddressType, name: string | null, addr: string | null): void
+    addMailbox(type: AddressType, name: string, addr: string): void
     /**
      * Recursively calls `callback` on each of the mime parts in the mime message.
      * @param callback function to call on each of the mime parts   contained by the mime message
@@ -5482,7 +5482,7 @@ interface Message {
      * @param sessionKey session key to use or %NULL
      * @returns a new #GMimeAutocryptHeaderList object, or %NULL on error.
      */
-    getAutocryptGossipHeaders(now: GLib.DateTime, flags: DecryptFlags, sessionKey: string | null): AutocryptHeaderList | null
+    getAutocryptGossipHeaders(now: GLib.DateTime, flags: DecryptFlags, sessionKey: string): AutocryptHeaderList | null
     /**
      * Creates a new #GMimeAutocryptHeaderList of relevant headers of the
      * given type based on the recipient(s) of an e-mail message.
@@ -5631,7 +5631,7 @@ interface Message {
      * Set the Message-Id on a message.
      * @param messageId message-id (addr-spec portion)
      */
-    setMessageId(messageId: string | null): void
+    setMessageId(messageId: string): void
     /**
      * Set the root-level MIME part of the message.
      * @param mimePart The root-level MIME Part
@@ -5644,7 +5644,7 @@ interface Message {
      * @param subject Subject string
      * @param charset The charset to use for encoding the subject or %NULL to use the default
      */
-    setSubject(subject: string | null, charset: string | null): void
+    setSubject(subject: string, charset: string): void
 
     // Class property signals of GMime-3.0.GMime.Message
 
@@ -5790,7 +5790,7 @@ class MessagePart extends Object {
      * @param subtype message subtype or %NULL for "rfc822"
      * @returns an empty MIME message part object with a default content-type of message/@subtype.
      */
-    constructor(subtype: string | null) 
+    constructor(subtype: string) 
     /**
      * Creates a new MIME message part object with a default content-type
      * of message/`subtype`.
@@ -5798,7 +5798,7 @@ class MessagePart extends Object {
      * @param subtype message subtype or %NULL for "rfc822"
      * @returns an empty MIME message part object with a default content-type of message/@subtype.
      */
-    static new(subtype: string | null): MessagePart
+    static new(subtype: string): MessagePart
 
     // Overloads of new
 
@@ -5824,7 +5824,7 @@ class MessagePart extends Object {
      * @param message message
      * @returns a MIME message part object with a default content-type of message/@subtype containing @message.
      */
-    static newWithMessage(subtype: string | null, message: Message): MessagePart
+    static newWithMessage(subtype: string, message: Message): MessagePart
     _init(config?: MessagePart.ConstructorProperties): void
 }
 
@@ -5872,7 +5872,7 @@ interface MessagePartial {
      * Gets the message/partial id parameter value.
      * @returns the message/partial id or %NULL on fail.
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets the message/partial part number.
      * @returns the message/partial part number or %-1 on fail.
@@ -5921,7 +5921,7 @@ class MessagePartial extends Part {
      * @param total total number of message/partial parts
      * @returns an empty MIME message/partial object.
      */
-    constructor(id: string | null, number: number, total: number) 
+    constructor(id: string, number: number, total: number) 
     /**
      * Creates a new MIME message/partial object.
      * @constructor 
@@ -5930,7 +5930,7 @@ class MessagePartial extends Part {
      * @param total total number of message/partial parts
      * @returns an empty MIME message/partial object.
      */
-    static new(id: string | null, number: number, total: number): MessagePartial
+    static new(id: string, number: number, total: number): MessagePartial
 
     // Overloads of new
 
@@ -6019,26 +6019,26 @@ interface Multipart {
      * @param callback function to call for each of `multipart'`s   subparts.
      */
     foreach(callback: ObjectForeachFunc): void
-    // Has conflict: getBoundary(): string | null
+    // Has conflict: getBoundary(): string
     // Has conflict: getCount(): number
     /**
      * Gets the epilogue on the multipart.
      * @returns a pointer to the epilogue string on the multipart.
      */
-    getEpilogue(): string | null
+    getEpilogue(): string
     // Has conflict: getPart(index: number): Object
     /**
      * Gets the prologue on the multipart.
      * @returns a pointer to the prologue string on the multipart.
      */
-    getPrologue(): string | null
+    getPrologue(): string
     /**
      * Gets the mime part with the content-id `content_id` from the
      * multipart `multipart`.
      * @param contentId the content id of the part to look for
      * @returns the #GMimeObject whose content-id matches the search string, or %NULL if a match cannot be found.
      */
-    getSubpartFromContentId(contentId: string | null): Object
+    getSubpartFromContentId(contentId: string): Object
     // Has conflict: indexOf(part: Object): number
     // Has conflict: insert(index: number, part: Object): void
     // Has conflict: remove(part: Object): boolean
@@ -6051,17 +6051,17 @@ interface Multipart {
      * @returns the part that was replaced or %NULL if the part was not contained within the multipart.
      */
     replace(index: number, replacement: Object): Object
-    // Has conflict: setBoundary(boundary: string | null): void
+    // Has conflict: setBoundary(boundary: string): void
     /**
      * Sets the epilogue on the multipart.
      * @param epilogue epilogue
      */
-    setEpilogue(epilogue: string | null): void
+    setEpilogue(epilogue: string): void
     /**
      * Sets the prologue on the multipart.
      * @param prologue prologue
      */
-    setPrologue(prologue: string | null): void
+    setPrologue(prologue: string): void
 
     // Own virtual methods of GMime-3.0.GMime.Multipart
 
@@ -6090,7 +6090,7 @@ interface Multipart {
      * @virtual 
      * @returns the boundary on the multipart.
      */
-    getBoundary(): string | null
+    getBoundary(): string
     /**
      * Gets the number of parts contained within `multipart`.
      * @virtual 
@@ -6138,7 +6138,7 @@ interface Multipart {
      * @virtual 
      * @param boundary boundary or %NULL to autogenerate one
      */
-    setBoundary(boundary: string | null): void
+    setBoundary(boundary: string): void
 
     // Class property signals of GMime-3.0.GMime.Multipart
 
@@ -6206,7 +6206,7 @@ class Multipart extends Object {
      * @param subtype content-type subtype
      * @returns an empty MIME multipart object with a content-type of multipart/@subtype.
      */
-    static newWithSubtype(subtype: string | null): Multipart
+    static newWithSubtype(subtype: string): Multipart
     _init(config?: Multipart.ConstructorProperties): void
 }
 
@@ -6252,7 +6252,7 @@ interface MultipartEncrypted {
      * @param sessionKey session key to use or %NULL
      * @returns the decrypted MIME part on success or %NULL on fail. If the decryption fails, an exception will be set on @err to provide information as to why the failure occurred.
      */
-    decrypt(flags: DecryptFlags, sessionKey: string | null): [ /* returnType */ Object | null, /* result */ DecryptResult ]
+    decrypt(flags: DecryptFlags, sessionKey: string): [ /* returnType */ Object | null, /* result */ DecryptResult ]
 
     // Class property signals of GMime-3.0.GMime.MultipartEncrypted
 
@@ -6441,7 +6441,7 @@ class MultipartSigned extends Multipart {
      * @param userid user id to sign with
      * @returns a new #GMimeMultipartSigned object on success or %NULL on fail. If signing fails, an exception will be set on @err to provide information as to why the failure occurred.
      */
-    static sign(ctx: CryptoContext, entity: Object, userid: string | null): MultipartSigned | null
+    static sign(ctx: CryptoContext, entity: Object, userid: string): MultipartSigned | null
 }
 
 module Object {
@@ -6495,7 +6495,7 @@ interface Object {
      * @param value header value
      * @param charset a charset
      */
-    appendHeader(header: string | null, value: string | null, charset: string | null): void
+    appendHeader(header: string, value: string, charset: string): void
     // Has conflict: encode(constraint: EncodingConstraint): void
     /**
      * Gets the #GMimeContentDisposition for the specified MIME object.
@@ -6508,12 +6508,12 @@ interface Object {
      * @param name parameter name
      * @returns the value of the requested content-disposition param or %NULL if the param doesn't exist. If the param is set, the returned string will be in UTF-8.
      */
-    getContentDispositionParameter(name: string | null): string | null
+    getContentDispositionParameter(name: string): string
     /**
      * Gets the Content-Id of the MIME object or NULL if one is not set.
      * @returns a const pointer to the Content-Id header.
      */
-    getContentId(): string | null
+    getContentId(): string
     /**
      * Gets the #GMimeContentType object for the given MIME object or
      * %NULL on fail.
@@ -6526,18 +6526,18 @@ interface Object {
      * @param name param name
      * @returns the value of the requested content-type param or %NULL if the param doesn't exist. If the param is set, the returned string will be in UTF-8.
      */
-    getContentTypeParameter(name: string | null): string | null
+    getContentTypeParameter(name: string): string
     /**
      * Gets the MIME object's disposition if set or %NULL otherwise.
      * @returns the disposition string which is probably one of #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE.
      */
-    getDisposition(): string | null
+    getDisposition(): string
     /**
      * Gets the value of the first header with the specified name.
      * @param header header name
      * @returns the value of the requested header if it exists or %NULL otherwise.
      */
-    getHeader(header: string | null): string | null
+    getHeader(header: string): string
     /**
      * Get the header list for `object`.
      * @returns the #GMimeHeaderList for @object. Do not free this pointer when you are done with it.
@@ -6550,13 +6550,13 @@ interface Object {
      * @param value header value
      * @param charset a charset
      */
-    prependHeader(header: string | null, value: string | null, charset: string | null): void
+    prependHeader(header: string, value: string, charset: string): void
     /**
      * Removed the specified header if it exists.
      * @param header header name
      * @returns %TRUE if the header was removed or %FALSE if it could not be found.
      */
-    removeHeader(header: string | null): boolean
+    removeHeader(header: string): boolean
     /**
      * Set the content disposition for the specified mime part and then
      * serializes it to the Content-Disposition header field.
@@ -6571,12 +6571,12 @@ interface Object {
      * @param name parameter name
      * @param value parameter value
      */
-    setContentDispositionParameter(name: string | null, value: string | null): void
+    setContentDispositionParameter(name: string, value: string): void
     /**
      * Sets the Content-Id of the MIME object.
      * @param contentId content-id (addr-spec portion)
      */
-    setContentId(contentId: string | null): void
+    setContentId(contentId: string): void
     // Has conflict: setContentType(contentType: ContentType): void
     /**
      * Sets the content-type param `name` to the value `value`.
@@ -6586,7 +6586,7 @@ interface Object {
      * @param name param name
      * @param value param value
      */
-    setContentTypeParameter(name: string | null, value: string | null): void
+    setContentTypeParameter(name: string, value: string): void
     /**
      * Sets the disposition to `disposition` which may be one of
      * #GMIME_DISPOSITION_ATTACHMENT or #GMIME_DISPOSITION_INLINE or, by
@@ -6594,14 +6594,14 @@ interface Object {
      * part should be displayed by the MUA.
      * @param disposition disposition ("attachment" or "inline")
      */
-    setDisposition(disposition: string | null): void
+    setDisposition(disposition: string): void
     /**
      * Sets a header to the specified value.
      * @param header header name
      * @param value header value
      * @param charset a charset
      */
-    setHeader(header: string | null, value: string | null, charset: string | null): void
+    setHeader(header: string, value: string, charset: string): void
     /**
      * Allocates a string buffer containing the contents of `object`.
      * @param options a #GMimeFormatOptions or %NULL
@@ -6717,7 +6717,7 @@ class Object extends GObject.Object {
      * @param subtype mime subtype
      * @returns an appropriate #GMimeObject registered to handle mime-types of @type/@subtype.
      */
-    static newType(options: ParserOptions | null, type: string | null, subtype: string | null): Object
+    static newType(options: ParserOptions | null, type: string, subtype: string): Object
     _init(config?: Object.ConstructorProperties): void
     /**
      * Registers the object type `object_type` for use with the
@@ -6729,7 +6729,7 @@ class Object extends GObject.Object {
      * @param subtype mime subtype
      * @param objectType object type
      */
-    static registerType(type: string | null, subtype: string | null, objectType: GObject.GType): void
+    static registerType(type: string, subtype: string, objectType: GObject.GType): void
     static typeRegistryInit(): void
     static typeRegistryShutdown(): void
 }
@@ -6784,7 +6784,7 @@ interface Param {
      * Gets the charset used for encoding the parameter.
      * @returns the charset used for encoding the parameter.
      */
-    getCharset(): string | null
+    getCharset(): string
     /**
      * Gets the encoding method used for encoding the parameter.
      * @returns the encoding method used for encoding the parameter.
@@ -6794,22 +6794,22 @@ interface Param {
      * Gets the language specifier used for encoding the parameter.
      * @returns the language specifier used for encoding the parameter.
      */
-    getLang(): string | null
+    getLang(): string
     /**
      * Gets the name of the parameter.
      * @returns the name of the parameter.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the value of the parameter.
      * @returns the value of the parameter.
      */
-    getValue(): string | null
+    getValue(): string
     /**
      * Sets the parameter charset used for encoding the value.
      * @param charset the charset or %NULL to use the default
      */
-    setCharset(charset: string | null): void
+    setCharset(charset: string): void
     /**
      * Sets the encoding method used for encoding the value.
      * @param method a #GMimeParamEncodingMethod
@@ -6819,12 +6819,12 @@ interface Param {
      * Sets the parameter language specifier used for encoding the value.
      * @param lang the language specifier
      */
-    setLang(lang: string | null): void
+    setLang(lang: string): void
     /**
      * Sets the parameter value to `value`.
      * @param value the new parameter value
      */
-    setValue(value: string | null): void
+    setValue(value: string): void
 
     // Class property signals of GMime-3.0.GMime.Param
 
@@ -6890,7 +6890,7 @@ interface ParamList {
      * @param name the name of the parameter
      * @returns the requested #GMimeParam.
      */
-    getParameter(name: string | null): Param
+    getParameter(name: string): Param
     /**
      * Gets the #GMimeParam at the specified `index`.
      * @param index the index of the requested parameter
@@ -6907,7 +6907,7 @@ interface ParamList {
      * @param name the name of the parameter
      * @returns %TRUE if the specified parameter was removed or %FALSE otherwise.
      */
-    remove(name: string | null): boolean
+    remove(name: string): boolean
     /**
      * Removes a #GMimeParam from the #GMimeParamList at the specified index.
      * @param index index of the param to remove
@@ -6919,7 +6919,7 @@ interface ParamList {
      * @param name The name of the parameter
      * @param value The parameter value
      */
-    setParameter(name: string | null, value: string | null): void
+    setParameter(name: string, value: string): void
 
     // Class property signals of GMime-3.0.GMime.ParamList
 
@@ -6968,7 +6968,7 @@ class ParamList extends GObject.Object {
      * @param str a string to parse
      * @returns a new #GMimeParamList.
      */
-    static parse(options: ParserOptions, str: string | null): ParamList
+    static parse(options: ParserOptions, str: string): ParamList
 }
 
 module Parser {
@@ -7241,7 +7241,7 @@ interface Part {
      * part if it exists or %NULL otherwise.
      * @returns the content description for the specified mime part.
      */
-    getContentDescription(): string | null
+    getContentDescription(): string
     /**
      * Gets the content encoding of the mime part.
      * @returns the content encoding for the specified mime part.
@@ -7252,25 +7252,25 @@ interface Part {
      * %NULL otherwise.
      * @returns the content id for the specified mime part.
      */
-    getContentId(): string | null
+    getContentId(): string
     /**
      * Gets the value of the Content-Location header if it exists, or
      * %NULL otherwise.
      * @returns the content location for the specified mime part.
      */
-    getContentLocation(): string | null
+    getContentLocation(): string
     /**
      * Gets the md5sum contained in the Content-Md5 header of the
      * specified mime part if it exists, or %NULL otherwise.
      * @returns the content md5 for the specified mime part.
      */
-    getContentMd5(): string | null
+    getContentMd5(): string
     /**
      * Gets the filename of the specificed mime part, or %NULL if the
      * `mime_part` does not have the filename or name parameter set.
      * @returns the filename of the specified @mime_part or %NULL if neither of the parameters is set. If a file name is set, the returned string will be in UTF-8.
      */
-    getFilename(): string | null
+    getFilename(): string
     /**
      * Gets whether or not (and what type) of OpenPGP data is contained
      * within the #GMimePart.
@@ -7307,7 +7307,7 @@ interface Part {
      * @param userid the key id (or email address) to use for signing
      * @returns %TRUE on success or %FALSE on error.
      */
-    openpgpSign(userid: string | null): boolean
+    openpgpSign(userid: string): boolean
     /**
      * Verifies the OpenPGP signature of the `mime_part` and then replaces the content
      * with the original, raw, content.
@@ -7320,7 +7320,7 @@ interface Part {
      * Set the content description for the specified mime part.
      * @param description content description
      */
-    setContentDescription(description: string | null): void
+    setContentDescription(description: string): void
     /**
      * Set the content encoding for the specified mime part.
      * @param encoding a #GMimeContentEncoding
@@ -7330,17 +7330,17 @@ interface Part {
      * Set the content id for the specified mime part.
      * @param contentId content id
      */
-    setContentId(contentId: string | null): void
+    setContentId(contentId: string): void
     /**
      * Set the content location for the specified mime part.
      * @param contentLocation content location
      */
-    setContentLocation(contentLocation: string | null): void
+    setContentLocation(contentLocation: string): void
     /**
      * Set the content md5 for the specified mime part.
      * @param contentMd5 content md5 or %NULL to generate the md5 digest.
      */
-    setContentMd5(contentMd5: string | null): void
+    setContentMd5(contentMd5: string): void
     /**
      * Sets the "filename" parameter on the Content-Disposition and also sets the
      * "name" parameter on the Content-Type.
@@ -7348,7 +7348,7 @@ interface Part {
      * Note: The `filename` string should be in UTF-8.
      * @param filename the file name
      */
-    setFilename(filename: string | null): void
+    setFilename(filename: string): void
     /**
      * Sets whether or not (and what type) of OpenPGP data is contained
      * within the #GMimePart.
@@ -7436,7 +7436,7 @@ class Part extends Object {
      * @param subtype content-subtype string
      * @returns an empty MIME Part object with the specified content-type.
      */
-    static newWithType(type: string | null, subtype: string | null): Part
+    static newWithType(type: string, subtype: string): Part
     _init(config?: Part.ConstructorProperties): void
 }
 
@@ -7504,7 +7504,7 @@ class Pkcs7Context extends CryptoContext {
      * @param protocol the crypto protocol
      * @returns a newly allocated #GMimeCryptoContext.
      */
-    static new(protocol: string | null): CryptoContext
+    static new(protocol: string): CryptoContext
     _init(config?: Pkcs7Context.ConstructorProperties): void
 }
 
@@ -7839,7 +7839,7 @@ interface Stream {
      * @param str string to write
      * @returns the number of bytes written or %-1 on fail.
      */
-    writeString(str: string | null): number
+    writeString(str: string): number
     /**
      * Attempts to write the source stream to the destination stream.
      * @param dest destination stream
@@ -8266,7 +8266,7 @@ class StreamFile extends Stream {
      * @param mode as in fopen(3)
      * @returns a stream using for reading and/or writing to the specified file path or %NULL on error.
      */
-    static open(path: string | null, mode: string | null): Stream
+    static open(path: string, mode: string): Stream
 }
 
 module StreamFilter {
@@ -8489,7 +8489,7 @@ class StreamFs extends Stream {
      * @param mode as in open(2)
      * @returns a stream using for reading and/or writing to the specified file path or %NULL on error.
      */
-    static open(path: string | null, flags: number, mode: number): Stream
+    static open(path: string, flags: number, mode: number): Stream
 }
 
 module StreamGIO {
@@ -9068,7 +9068,7 @@ interface TextPart {
      * Gets the value of the charset parameter on the Content-Type header.
      * @returns the value of the charset parameter or %NULL if unavailable.
      */
-    getCharset(): string | null
+    getCharset(): string
     /**
      * Gets the text content of the `mime_part` as a string.
      * @returns a newly allocated string containing the utf-8 encoded text content.
@@ -9078,12 +9078,12 @@ interface TextPart {
      * Sets the charset parameter on the Content-Type header to the specified value.
      * @param charset the name of the charset
      */
-    setCharset(charset: string | null): void
+    setCharset(charset: string): void
     /**
      * Sets the specified text as the content and updates the charset parameter on the Content-Type header.
      * @param text the text in utf-8
      */
-    setText(text: string | null): void
+    setText(text: string): void
 
     // Class property signals of GMime-3.0.GMime.TextPart
 
@@ -9157,7 +9157,7 @@ class TextPart extends Part {
      * @param subtype textual subtype string
      * @returns an empty text MIME part object with the specified subtype.
      */
-    static newWithSubtype(subtype: string | null): TextPart
+    static newWithSubtype(subtype: string): TextPart
     _init(config?: TextPart.ConstructorProperties): void
 }
 
@@ -9260,7 +9260,7 @@ interface Charset {
      * @param len length of `text`
      * @returns %TRUE if it is safe to encode @text into @charset or %FALSE otherwise.
      */
-    canEncode(charset: string | null, text: string | null, len: number): boolean
+    canEncode(charset: string, text: string, len: number): boolean
     /**
      * Initializes a charset mask structure.
      */
@@ -9273,7 +9273,7 @@ interface Charset {
      * @param inbuf input text buffer (must be in UTF-8)
      * @param inlen input buffer length
      */
-    step(inbuf: string | null, inlen: number): void
+    step(inbuf: string, inlen: number): void
 }
 
 /**
@@ -9290,7 +9290,7 @@ class Charset {
      * @param inlen input buffer length
      * @returns the charset name best suited for the input text or %NULL if it is ascii-safe.
      */
-    static best(inbuf: string | null, inlen: number): string | null
+    static best(inbuf: string, inlen: number): string | null
     /**
      * Attempts to find a canonical charset name for `charset`.
      * 
@@ -9301,20 +9301,20 @@ class Charset {
      * @param charset charset name
      * @returns a canonical charset name for @charset.
      */
-    static canonName(charset: string | null): string | null
+    static canonName(charset: string): string
     /**
      * Attempts to find an iconv-friendly charset name for `charset`.
      * @param charset charset name
      * @returns an iconv-friendly charset name for @charset.
      */
-    static iconvName(charset: string | null): string | null
+    static iconvName(charset: string): string
     /**
      * Maps the ISO-8859-# charset to the equivalent Windows-CP125#
      * charset.
      * @param isocharset ISO-8859-# charset
      * @returns equivalent Windows charset.
      */
-    static isoToWindows(isocharset: string | null): string | null
+    static isoToWindows(isocharset: string): string
     /**
      * Attempts to find a specific language code that is specific to
      * `charset`. Currently only handles CJK and Russian/Ukranian
@@ -9322,7 +9322,7 @@ class Charset {
      * @param charset charset name
      * @returns a language code that is specific to @charset, or %NULL on fail.
      */
-    static language(charset: string | null): string | null
+    static language(charset: string): string | null
     /**
      * Gets the user's locale charset (or iso-8859-1 by default).
      * 
@@ -9330,7 +9330,7 @@ class Charset {
      * instead.
      * @returns the user's locale charset (or iso-8859-1 by default).
      */
-    static localeName(): string | null
+    static localeName(): string
     /**
      * Initializes character set maps.
      * 
@@ -9349,7 +9349,7 @@ class Charset {
      * @param charset charset name
      * @returns an iconv-friendly charset name for @charset.
      */
-    static name(charset: string | null): string | null
+    static name(charset: string): string
 }
 
 interface ContentDispositionClass {
@@ -9385,17 +9385,17 @@ interface CryptoContextClass {
     // Own fields of GMime-3.0.GMime.CryptoContextClass
 
     parentClass: GObject.ObjectClass
-    digestId: (ctx: CryptoContext, name: string | null) => DigestAlgo
+    digestId: (ctx: CryptoContext, name: string) => DigestAlgo
     digestName: (ctx: CryptoContext, digest: DigestAlgo) => string | null
     getSignatureProtocol: (ctx: CryptoContext) => string | null
     getEncryptionProtocol: (ctx: CryptoContext) => string | null
     getKeyExchangeProtocol: (ctx: CryptoContext) => string | null
-    sign: (ctx: CryptoContext, detach: boolean, userid: string | null, istream: Stream, ostream: Stream) => number
+    sign: (ctx: CryptoContext, detach: boolean, userid: string, istream: Stream, ostream: Stream) => number
     verify: (ctx: CryptoContext, flags: VerifyFlags, istream: Stream, sigstream: Stream | null, ostream: Stream | null) => SignatureList | null
     encrypt: (ctx: CryptoContext, sign: boolean, userid: string | null, flags: EncryptFlags, recipients: string[], istream: Stream, ostream: Stream) => number
     decrypt: (ctx: CryptoContext, flags: DecryptFlags, sessionKey: string | null, istream: Stream, ostream: Stream) => DecryptResult
     importKeys: (ctx: CryptoContext, istream: Stream) => number
-    exportKeys: (ctx: CryptoContext, keys: string | null, ostream: Stream) => number
+    exportKeys: (ctx: CryptoContext, keys: string, ostream: Stream) => number
 }
 
 abstract class CryptoContextClass {
@@ -9474,7 +9474,7 @@ interface Encoding {
      * @param outbuf an output buffer
      * @returns the number of bytes written to @outbuf.
      */
-    flush(inbuf: string | null, inlen: number, outbuf: string | null): number
+    flush(inbuf: string, inlen: number, outbuf: string | null): number
     /**
      * Initializes a #GMimeEncoding state machine for decoding from
      * `encoding`.
@@ -9510,7 +9510,7 @@ interface Encoding {
      * @param outbuf an output buffer
      * @returns the number of bytes written to @outbuf.
      */
-    step(inbuf: string | null, inlen: number, outbuf: string | null): number
+    step(inbuf: string, inlen: number, outbuf: string | null): number
 }
 
 /**
@@ -9871,7 +9871,7 @@ interface FormatOptions {
      * Adds the given header to the list of headers that should be hidden.
      * @param header a header name
      */
-    addHiddenHeader(header: string | null): void
+    addHiddenHeader(header: string): void
     /**
      * Clears the list of headers that should be hidden.
      */
@@ -9896,7 +9896,7 @@ interface FormatOptions {
      * Gets a string representing the currently set new-line format.
      * @returns a new-line character sequence.
      */
-    getNewline(): string | null
+    getNewline(): string
     /**
      * Gets the new-line format to use when writing out messages and headers.
      * @returns the new-line format that is currently set.
@@ -9913,12 +9913,12 @@ interface FormatOptions {
      * @param header the name of a header
      * @returns %TRUE if the header should be hidden or %FALSE otherwise.
      */
-    isHiddenHeader(header: string | null): boolean
+    isHiddenHeader(header: string): boolean
     /**
      * Removes the given header from the list of headers that should be hidden.
      * @param header a header name
      */
-    removeHiddenHeader(header: string | null): void
+    removeHiddenHeader(header: string): void
     /**
      * Sets the new-line format that should be used when writing headers and messages.
      * @param newline a #GMimeNewLineFormat
@@ -10116,8 +10116,8 @@ interface MultipartClass {
     contains: (multipart: Multipart, part: Object) => boolean
     indexOf: (multipart: Multipart, part: Object) => number
     getCount: (multipart: Multipart) => number
-    setBoundary: (multipart: Multipart, boundary: string | null) => void
-    getBoundary: (multipart: Multipart) => string | null
+    setBoundary: (multipart: Multipart, boundary: string) => void
+    getBoundary: (multipart: Multipart) => string
 }
 
 abstract class MultipartClass {
@@ -10185,7 +10185,7 @@ interface OpenPGPMarker {
      * The OpenPGP marker.
      * @field 
      */
-    marker: string | null
+    marker: string
     /**
      * The length of the OpenPGP marker.
      * @field 
@@ -10355,7 +10355,7 @@ interface ParserOptions {
      * and end with iso-8859-1.
      * @param charsets a %NULL-terminated list of charsets or %NULL for the default list
      */
-    setFallbackCharsets(charsets: string | null): void
+    setFallbackCharsets(charsets: string): void
     /**
      * Sets the compliance mode that should be used when parsing Content-Type and
      * Content-Disposition parameters.
@@ -10477,7 +10477,7 @@ interface PartIter {
      * @param path a string representing the path to jump to
      * @returns %TRUE if the #GMimeObject specified by @path exists or %FALSE otherwise.
      */
-    jumpTo(path: string | null): boolean
+    jumpTo(path: string): boolean
     /**
      * Advances to the next part in the MIME structure used to initialize
      * `iter`.
@@ -10563,7 +10563,7 @@ interface References {
      * Appends a reference to msgid to the list of references.
      * @param msgid a message-id string
      */
-    append(msgid: string | null): void
+    append(msgid: string): void
     /**
      * Clears the #GMimeReferences list.
      */
@@ -10582,7 +10582,7 @@ interface References {
      * @param index the index of the message id
      * @returns the Message-Id reference from the #GMimeReferences.
      */
-    getMessageId(index: number): string | null
+    getMessageId(index: number): string
     /**
      * Gets the length of the #GMimeReferences list.
      * @returns the number of message ids in the list.
@@ -10593,7 +10593,7 @@ interface References {
      * @param index the index of the message id
      * @param msgid the message id
      */
-    setMessageId(index: number, msgid: string | null): void
+    setMessageId(index: number, msgid: string): void
 }
 
 /**
@@ -10628,7 +10628,7 @@ class References {
      * @param text string containing a list of msg-ids
      * @returns a new #GMimeReferences containing the parsed message ids.
      */
-    static parse(options: ParserOptions | null, text: string | null): References
+    static parse(options: ParserOptions | null, text: string): References
 }
 
 interface SignatureClass {

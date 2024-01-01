@@ -156,7 +156,7 @@ export interface Document {
     // Has conflict: getModified(): boolean
     // Has conflict: getMtime(mtime: GLib.TimeVal): boolean
     // Has conflict: getReadOnly(): boolean
-    // Has conflict: getTitle(): string | null
+    // Has conflict: getTitle(): string
     // Has conflict: isUntitled(): boolean
     // Has conflict: saveAsAsync(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     // Has conflict: saveAsFinish(result: Gio.AsyncResult): boolean
@@ -169,7 +169,7 @@ export interface Document {
     getModified(): boolean
     getMtime(mtime: GLib.TimeVal): boolean
     getReadOnly(): boolean
-    getTitle(): string | null
+    getTitle(): string
     isUntitled(): boolean
     saveAsAsync(toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     saveAsFinish(result: Gio.AsyncResult): boolean
@@ -243,7 +243,7 @@ export interface EditorViewAddin {
 
     // Own virtual methods of Builder-1.0.Builder.EditorViewAddin
 
-    languageChanged(languageId: string | null): void
+    languageChanged(languageId: string): void
     load(view: EditorView): void
     unload(view: EditorView): void
 
@@ -291,8 +291,8 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
 
     // Owm methods of Builder-1.0.Builder.Application
 
-    getArgv0(): string | null
-    getKeybindingsMode(): string | null
+    getArgv0(): string
+    getKeybindingsMode(): string
     getStartedAt(): GLib.DateTime
     /**
      * Asynchronously requests a #GDBusProxy to a service provided in a worker
@@ -308,7 +308,7 @@ export interface Application extends Gio.ActionGroup, Gio.ActionMap {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback or %NULL.
      */
-    getWorkerAsync(pluginName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    getWorkerAsync(pluginName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Completes an asynchronous request to get a proxy to a worker process.
      * @param result A #GAsyncResult
@@ -455,13 +455,13 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -474,13 +474,13 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -493,7 +493,7 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -502,7 +502,7 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -514,7 +514,7 @@ export interface EditorView extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Ori
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -890,7 +890,7 @@ export class MenuExtension extends GObject.Object {
     constructor(config?: MenuExtension.ConstructorProperties) 
     constructor(menu: Gio.Menu) 
     static new(menu: Gio.Menu): MenuExtension
-    static newForSection(menu: Gio.Menu, section: string | null): MenuExtension
+    static newForSection(menu: Gio.Menu, section: string): MenuExtension
     _init(config?: MenuExtension.ConstructorProperties): void
 }
 
@@ -1016,13 +1016,13 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1035,13 +1035,13 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1054,7 +1054,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1063,7 +1063,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1075,7 +1075,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1106,7 +1106,7 @@ export interface Tree extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Scrollabl
 
     // Own virtual methods of Builder-1.0.Builder.Tree
 
-    action(actionGroup: string | null, actionName: string | null, param: string | null): void
+    action(actionGroup: string, actionName: string, param: string): void
     populatePopup(widget: Gtk.Widget): void
 
     // Own signals of Builder-1.0.Builder.Tree
@@ -1747,7 +1747,7 @@ export interface TreeNode {
     /**
      * Fetches the icon-name of the icon to display, or NULL for no icon.
      */
-    getIconName(): string | null
+    getIconName(): string
     /**
      * Gets a #GObject for the node, if one was set.
      * @returns A #GObject or %NULL.
@@ -1764,7 +1764,7 @@ export interface TreeNode {
      * @returns A #GtkTreePath if successful; otherwise %NULL.
      */
     getPath(): Gtk.TreePath | null
-    getText(): string | null
+    getText(): string
     /**
      * Fetches the #GbTree instance that owns the node.
      * @returns A #GbTree.
@@ -1802,7 +1802,7 @@ export interface TreeNode {
      * cell of the GbTree.
      * @param iconName The icon name.
      */
-    setIconName(iconName: string | null): void
+    setIconName(iconName: string): void
     /**
      * An optional object to associate with the node. This is handy to save needing
      * to subclass the #GbTreeNode class.
@@ -1814,7 +1814,7 @@ export interface TreeNode {
      * cell of the GbTree.
      * @param text The node text.
      */
-    setText(text: string | null): void
+    setText(text: string): void
     setUseDimLabel(useDimLabel: boolean): void
     setUseMarkup(useMarkup: boolean): void
     showPopover(popover: Gtk.Popover): void
@@ -1937,8 +1937,8 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
     // Has conflict: getDocument(): Document
     getMenu(): Gio.Menu
     // Has conflict: getModified(): boolean
-    // Has conflict: getSpecialTitle(): string | null
-    // Has conflict: getTitle(): string | null
+    // Has conflict: getSpecialTitle(): string
+    // Has conflict: getTitle(): string
     // Has conflict: navigateTo(location: Ide.SourceLocation): void
     // Has conflict: setBackForwardList(backForwardList: Ide.BackForwardList): void
     // Has conflict: setSplitView(splitView: boolean): void
@@ -1954,13 +1954,13 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1973,13 +1973,13 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1992,7 +1992,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2001,7 +2001,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2013,7 +2013,7 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2070,8 +2070,8 @@ export interface View extends Atk.ImplementorIface, Gtk.Buildable, Gtk.Orientabl
      */
     getDocument(): Document
     getModified(): boolean
-    getSpecialTitle(): string | null
-    getTitle(): string | null
+    getSpecialTitle(): string
+    getTitle(): string
     navigateTo(location: Ide.SourceLocation): void
     setBackForwardList(backForwardList: Ide.BackForwardList): void
     /**
@@ -2410,13 +2410,13 @@ export interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2429,13 +2429,13 @@ export interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2448,7 +2448,7 @@ export interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2457,7 +2457,7 @@ export interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2469,7 +2469,7 @@ export interface ViewGrid extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2818,13 +2818,13 @@ export interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -2837,13 +2837,13 @@ export interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -2856,7 +2856,7 @@ export interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -2865,7 +2865,7 @@ export interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -2877,7 +2877,7 @@ export interface ViewStack extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3232,7 +3232,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
     getViewGrid(): Gtk.Widget
     getWorkspace(): Gtk.Widget
     open(file: Gio.File): void
-    openUriList(uriList: string | null): void
+    openUriList(uriList: string): void
     openWithEditor(file: Gio.File): void
     revealFile(file: Gio.File): void
     /**
@@ -3252,13 +3252,13 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -3271,13 +3271,13 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -3290,7 +3290,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -3299,7 +3299,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Activates the targets associated with the mnemonic.
      * @param keyval the mnemonic
@@ -3335,7 +3335,7 @@ export interface Workbench extends Atk.ImplementorIface, Gio.ActionGroup, Gio.Ac
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -3837,7 +3837,7 @@ export interface DocumentInterface {
     getModified: (document: Document) => boolean
     getMtime: (document: Document, mtime: GLib.TimeVal) => boolean
     getReadOnly: (document: Document) => boolean
-    getTitle: (document: Document) => string | null
+    getTitle: (document: Document) => string
     isUntitled: (document: Document) => boolean
     saveAsync: (document: Document, toplevel: Gtk.Widget, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     saveFinish: (document: Document, result: Gio.AsyncResult) => boolean
@@ -3859,7 +3859,7 @@ export interface EditorViewAddinInterface {
     parent: GObject.TypeInterface
     load: (self: EditorViewAddin, view: EditorView) => void
     unload: (self: EditorViewAddin, view: EditorView) => void
-    languageChanged: (self: EditorViewAddin, languageId: string | null) => void
+    languageChanged: (self: EditorViewAddin, languageId: string) => void
 }
 
 export abstract class EditorViewAddinInterface {
@@ -3923,7 +3923,7 @@ export interface TreeClass {
     // Own fields of Builder-1.0.Builder.TreeClass
 
     parentClass: Gtk.TreeViewClass
-    action: (self: Tree, actionGroup: string | null, actionName: string | null, param: string | null) => void
+    action: (self: Tree, actionGroup: string, actionName: string, param: string) => void
     populatePopup: (self: Tree, widget: Gtk.Widget) => void
 }
 
@@ -3957,8 +3957,8 @@ export interface ViewClass {
     getCanSplit: (self: View) => boolean
     getDocument: (self: View) => Document
     getModified: (self: View) => boolean
-    getTitle: (self: View) => string | null
-    getSpecialTitle: (self: View) => string | null
+    getTitle: (self: View) => string
+    getSpecialTitle: (self: View) => string
     createSplit: (self: View) => View
     setSplitView: (self: View, splitView: boolean) => void
     setBackForwardList: (self: View, backForwardList: Ide.BackForwardList) => void

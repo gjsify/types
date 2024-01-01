@@ -707,7 +707,7 @@ export interface Block {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callFormat(argType: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callFormat(argType: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_block_call_format().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_block_call_format().
@@ -723,7 +723,7 @@ export interface Block {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callFormatSync(argType: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callFormatSync(argType: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Block.GetSecretConfiguration">GetSecretConfiguration()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -992,7 +992,7 @@ export interface Block {
     // Own virtual methods of UDisks-2.0.UDisks.Block
 
     handleAddConfigurationItem(invocation: Gio.DBusMethodInvocation, argItem: GLib.Variant, argOptions: GLib.Variant): boolean
-    handleFormat(invocation: Gio.DBusMethodInvocation, argType: string | null, argOptions: GLib.Variant): boolean
+    handleFormat(invocation: Gio.DBusMethodInvocation, argType: string, argOptions: GLib.Variant): boolean
     handleGetSecretConfiguration(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
     handleOpenForBackup(invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList, argOptions: GLib.Variant): boolean
     handleOpenForBenchmark(invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList, argOptions: GLib.Variant): boolean
@@ -2473,7 +2473,7 @@ export interface DriveAta {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSmartSelftestStart(argType: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSmartSelftestStart(argType: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_drive_ata_call_smart_selftest_start().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_drive_ata_call_smart_selftest_start().
@@ -2489,7 +2489,7 @@ export interface DriveAta {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callSmartSelftestStartSync(argType: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callSmartSelftestStartSync(argType: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Drive-Ata.SmartSetEnabled">SmartSetEnabled()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -2618,7 +2618,7 @@ export interface DriveAta {
     handleSecurityEraseUnit(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
     handleSmartGetAttributes(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
     handleSmartSelftestAbort(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
-    handleSmartSelftestStart(invocation: Gio.DBusMethodInvocation, argType: string | null, argOptions: GLib.Variant): boolean
+    handleSmartSelftestStart(invocation: Gio.DBusMethodInvocation, argType: string, argOptions: GLib.Variant): boolean
     handleSmartSetEnabled(invocation: Gio.DBusMethodInvocation, argValue: boolean, argOptions: GLib.Variant): boolean
     handleSmartUpdate(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
 
@@ -2907,7 +2907,7 @@ export interface Encrypted {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callChangePassphrase(argPassphrase: string | null, argNewPassphrase: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callChangePassphrase(argPassphrase: string, argNewPassphrase: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_encrypted_call_change_passphrase().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_change_passphrase().
@@ -2924,7 +2924,7 @@ export interface Encrypted {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callChangePassphraseSync(argPassphrase: string | null, argNewPassphrase: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callChangePassphraseSync(argPassphrase: string, argNewPassphrase: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.Lock">Lock()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -2962,7 +2962,7 @@ export interface Encrypted {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callUnlock(argPassphrase: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callUnlock(argPassphrase: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_encrypted_call_unlock().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_encrypted_call_unlock().
@@ -2978,7 +2978,7 @@ export interface Encrypted {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callUnlockSync(argPassphrase: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCleartextDevice */ string | null ]
+    callUnlockSync(argPassphrase: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCleartextDevice */ string | null ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Encrypted.ChangePassphrase">ChangePassphrase()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -3000,13 +3000,13 @@ export interface Encrypted {
      * @param invocation A #GDBusMethodInvocation.
      * @param cleartextDevice Parameter to return.
      */
-    completeUnlock(invocation: Gio.DBusMethodInvocation, cleartextDevice: string | null): void
+    completeUnlock(invocation: Gio.DBusMethodInvocation, cleartextDevice: string): void
 
     // Own virtual methods of UDisks-2.0.UDisks.Encrypted
 
-    handleChangePassphrase(invocation: Gio.DBusMethodInvocation, argPassphrase: string | null, argNewPassphrase: string | null, argOptions: GLib.Variant): boolean
+    handleChangePassphrase(invocation: Gio.DBusMethodInvocation, argPassphrase: string, argNewPassphrase: string, argOptions: GLib.Variant): boolean
     handleLock(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
-    handleUnlock(invocation: Gio.DBusMethodInvocation, argPassphrase: string | null, argOptions: GLib.Variant): boolean
+    handleUnlock(invocation: Gio.DBusMethodInvocation, argPassphrase: string, argOptions: GLib.Variant): boolean
 
     // Own signals of UDisks-2.0.UDisks.Encrypted
 
@@ -3168,7 +3168,7 @@ export interface Filesystem {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSetLabel(argLabel: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSetLabel(argLabel: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_filesystem_call_set_label().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_filesystem_call_set_label().
@@ -3184,7 +3184,7 @@ export interface Filesystem {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callSetLabelSync(argLabel: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callSetLabelSync(argLabel: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.Unmount">Unmount()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -3218,7 +3218,7 @@ export interface Filesystem {
      * @param invocation A #GDBusMethodInvocation.
      * @param mountPath Parameter to return.
      */
-    completeMount(invocation: Gio.DBusMethodInvocation, mountPath: string | null): void
+    completeMount(invocation: Gio.DBusMethodInvocation, mountPath: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Filesystem.SetLabel">SetLabel()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -3237,7 +3237,7 @@ export interface Filesystem {
     // Own virtual methods of UDisks-2.0.UDisks.Filesystem
 
     handleMount(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
-    handleSetLabel(invocation: Gio.DBusMethodInvocation, argLabel: string | null, argOptions: GLib.Variant): boolean
+    handleSetLabel(invocation: Gio.DBusMethodInvocation, argLabel: string, argOptions: GLib.Variant): boolean
     handleUnmount(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
 
     // Own signals of UDisks-2.0.UDisks.Filesystem
@@ -3502,11 +3502,11 @@ export interface Job {
      * @param argSuccess Argument to pass with the signal.
      * @param argMessage Argument to pass with the signal.
      */
-    emitCompleted(argSuccess: boolean, argMessage: string | null): void
+    emitCompleted(argSuccess: boolean, argMessage: string): void
 
     // Own virtual methods of UDisks-2.0.UDisks.Job
 
-    completed(argSuccess: boolean, argMessage: string | null): void
+    completed(argSuccess: boolean, argMessage: string): void
     handleCancel(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
 
     // Own signals of UDisks-2.0.UDisks.Job
@@ -4098,7 +4098,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callAddDevice(argDevice: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callAddDevice(argDevice: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_mdraid_call_add_device().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_add_device().
@@ -4114,7 +4114,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callAddDeviceSync(argDevice: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callAddDeviceSync(argDevice: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Delete">Delete()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4152,7 +4152,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callRemoveDevice(argDevice: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callRemoveDevice(argDevice: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_mdraid_call_remove_device().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_remove_device().
@@ -4168,7 +4168,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callRemoveDeviceSync(argDevice: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callRemoveDeviceSync(argDevice: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.RequestSyncAction">RequestSyncAction()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4180,7 +4180,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callRequestSyncAction(argSyncAction: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callRequestSyncAction(argSyncAction: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_mdraid_call_request_sync_action().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_request_sync_action().
@@ -4196,7 +4196,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callRequestSyncActionSync(argSyncAction: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callRequestSyncActionSync(argSyncAction: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.SetBitmapLocation">SetBitmapLocation()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4208,7 +4208,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSetBitmapLocation(argValue: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSetBitmapLocation(argValue: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_mdraid_call_set_bitmap_location().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_mdraid_call_set_bitmap_location().
@@ -4224,7 +4224,7 @@ export interface MDRaid {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callSetBitmapLocationSync(argValue: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callSetBitmapLocationSync(argValue: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-MDRaid.Start">Start()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -4329,11 +4329,11 @@ export interface MDRaid {
 
     // Own virtual methods of UDisks-2.0.UDisks.MDRaid
 
-    handleAddDevice(invocation: Gio.DBusMethodInvocation, argDevice: string | null, argOptions: GLib.Variant): boolean
+    handleAddDevice(invocation: Gio.DBusMethodInvocation, argDevice: string, argOptions: GLib.Variant): boolean
     handleDelete(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
-    handleRemoveDevice(invocation: Gio.DBusMethodInvocation, argDevice: string | null, argOptions: GLib.Variant): boolean
-    handleRequestSyncAction(invocation: Gio.DBusMethodInvocation, argSyncAction: string | null, argOptions: GLib.Variant): boolean
-    handleSetBitmapLocation(invocation: Gio.DBusMethodInvocation, argValue: string | null, argOptions: GLib.Variant): boolean
+    handleRemoveDevice(invocation: Gio.DBusMethodInvocation, argDevice: string, argOptions: GLib.Variant): boolean
+    handleRequestSyncAction(invocation: Gio.DBusMethodInvocation, argSyncAction: string, argOptions: GLib.Variant): boolean
+    handleSetBitmapLocation(invocation: Gio.DBusMethodInvocation, argValue: string, argOptions: GLib.Variant): boolean
     handleStart(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
     handleStop(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
 
@@ -4632,7 +4632,7 @@ export interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callMdraidCreate(argBlocks: string | null, argLevel: string | null, argName: string | null, argChunk: number, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callMdraidCreate(argBlocks: string, argLevel: string, argName: string, argChunk: number, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_manager_call_mdraid_create().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_manager_call_mdraid_create().
@@ -4651,7 +4651,7 @@ export interface Manager {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callMdraidCreateSync(argBlocks: string | null, argLevel: string | null, argName: string | null, argChunk: number, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outResultingArray */ string | null ]
+    callMdraidCreateSync(argBlocks: string, argLevel: string, argName: string, argChunk: number, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outResultingArray */ string | null ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.EnableModules">EnableModules()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -4667,7 +4667,7 @@ export interface Manager {
      * @param fdList A #GUnixFDList or %NULL.
      * @param resultingDevice Parameter to return.
      */
-    completeLoopSetup(invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList | null, resultingDevice: string | null): void
+    completeLoopSetup(invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList | null, resultingDevice: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Manager.MDRaidCreate">MDRaidCreate()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -4675,13 +4675,13 @@ export interface Manager {
      * @param invocation A #GDBusMethodInvocation.
      * @param resultingArray Parameter to return.
      */
-    completeMdraidCreate(invocation: Gio.DBusMethodInvocation, resultingArray: string | null): void
+    completeMdraidCreate(invocation: Gio.DBusMethodInvocation, resultingArray: string): void
 
     // Own virtual methods of UDisks-2.0.UDisks.Manager
 
     handleEnableModules(invocation: Gio.DBusMethodInvocation, argEnable: boolean): boolean
     handleLoopSetup(invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList, argFd: GLib.Variant, argOptions: GLib.Variant): boolean
-    handleMdraidCreate(invocation: Gio.DBusMethodInvocation, argBlocks: string | null, argLevel: string | null, argName: string | null, argChunk: number, argOptions: GLib.Variant): boolean
+    handleMdraidCreate(invocation: Gio.DBusMethodInvocation, argBlocks: string, argLevel: string, argName: string, argChunk: number, argOptions: GLib.Variant): boolean
 
     // Own signals of UDisks-2.0.UDisks.Manager
 
@@ -5307,7 +5307,7 @@ export interface Partition {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSetName(argName: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSetName(argName: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_partition_call_set_name().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_name().
@@ -5323,7 +5323,7 @@ export interface Partition {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callSetNameSync(argName: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callSetNameSync(argName: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.SetType">SetType()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -5335,7 +5335,7 @@ export interface Partition {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callSetType(argType: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callSetType(argType: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_partition_call_set_type().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_call_set_type().
@@ -5351,7 +5351,7 @@ export interface Partition {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callSetTypeSync(argType: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
+    callSetTypeSync(argType: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): boolean
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-Partition.Delete">Delete()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5385,8 +5385,8 @@ export interface Partition {
 
     handleDelete(invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant): boolean
     handleSetFlags(invocation: Gio.DBusMethodInvocation, argFlags: number, argOptions: GLib.Variant): boolean
-    handleSetName(invocation: Gio.DBusMethodInvocation, argName: string | null, argOptions: GLib.Variant): boolean
-    handleSetType(invocation: Gio.DBusMethodInvocation, argType: string | null, argOptions: GLib.Variant): boolean
+    handleSetName(invocation: Gio.DBusMethodInvocation, argName: string, argOptions: GLib.Variant): boolean
+    handleSetType(invocation: Gio.DBusMethodInvocation, argType: string, argOptions: GLib.Variant): boolean
 
     // Own signals of UDisks-2.0.UDisks.Partition
 
@@ -5568,7 +5568,7 @@ export interface PartitionTable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callCreatePartition(argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callCreatePartition(argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Asynchronously invokes the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method on `proxy`.
      * When the operation is finished, `callback` will be invoked in the <link linkend="g-main-context-push-thread-default">thread-default main loop</link> of the thread you are calling this method from.
@@ -5585,7 +5585,7 @@ export interface PartitionTable {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
      */
-    callCreatePartitionAndFormat(argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant, argFormatType: string | null, argFormatOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    callCreatePartitionAndFormat(argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant, argFormatType: string, argFormatOptions: GLib.Variant, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes an operation started with udisks_partition_table_call_create_partition_and_format().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_table_call_create_partition_and_format().
@@ -5606,7 +5606,7 @@ export interface PartitionTable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callCreatePartitionAndFormatSync(argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant, argFormatType: string | null, argFormatOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCreatedPartition */ string | null ]
+    callCreatePartitionAndFormatSync(argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant, argFormatType: string, argFormatOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCreatedPartition */ string | null ]
     /**
      * Finishes an operation started with udisks_partition_table_call_create_partition().
      * @param res The #GAsyncResult obtained from the #GAsyncReadyCallback passed to udisks_partition_table_call_create_partition().
@@ -5625,7 +5625,7 @@ export interface PartitionTable {
      * @param cancellable A #GCancellable or %NULL.
      * @returns %TRUE if the call succeded, %FALSE if @error is set.
      */
-    callCreatePartitionSync(argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCreatedPartition */ string | null ]
+    callCreatePartitionSync(argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* outCreatedPartition */ string | null ]
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartition">CreatePartition()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5633,7 +5633,7 @@ export interface PartitionTable {
      * @param invocation A #GDBusMethodInvocation.
      * @param createdPartition Parameter to return.
      */
-    completeCreatePartition(invocation: Gio.DBusMethodInvocation, createdPartition: string | null): void
+    completeCreatePartition(invocation: Gio.DBusMethodInvocation, createdPartition: string): void
     /**
      * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-org-freedesktop-UDisks2-PartitionTable.CreatePartitionAndFormat">CreatePartitionAndFormat()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
      * 
@@ -5641,12 +5641,12 @@ export interface PartitionTable {
      * @param invocation A #GDBusMethodInvocation.
      * @param createdPartition Parameter to return.
      */
-    completeCreatePartitionAndFormat(invocation: Gio.DBusMethodInvocation, createdPartition: string | null): void
+    completeCreatePartitionAndFormat(invocation: Gio.DBusMethodInvocation, createdPartition: string): void
 
     // Own virtual methods of UDisks-2.0.UDisks.PartitionTable
 
-    handleCreatePartition(invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant): boolean
-    handleCreatePartitionAndFormat(invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant, argFormatType: string | null, argFormatOptions: GLib.Variant): boolean
+    handleCreatePartition(invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant): boolean
+    handleCreatePartitionAndFormat(invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant, argFormatType: string, argFormatOptions: GLib.Variant): boolean
 
     // Own signals of UDisks-2.0.UDisks.PartitionTable
 
@@ -6149,7 +6149,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): BlockProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): BlockProxy
 
     // Overloads of newForBusSync
 
@@ -6167,7 +6167,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -6182,7 +6182,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): BlockProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): BlockProxy
 
     // Overloads of newSync
 
@@ -6219,7 +6219,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: BlockProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Block.top_of_page">org.freedesktop.UDisks2.Block</link>. See g_dbus_proxy_new() for more details.
@@ -6235,7 +6235,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -6276,7 +6276,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_block_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -6291,7 +6291,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -6308,7 +6308,7 @@ export class BlockProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module BlockSkeleton {
@@ -6595,7 +6595,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param label The label.
      * @returns A list of #UDisksBlock instances. The   returned list should be freed with g_list_free() after each   element has been freed with g_object_unref().
      */
-    getBlockForLabel(label: string | null): Block[]
+    getBlockForLabel(label: string): Block[]
     /**
      * Gets the RAID device (e.g. <filename>/dev/md0</filename>) for `raid`.
      * 
@@ -6617,7 +6617,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param uuid The uuid.
      * @returns A list of #UDisksBlock instances. The   returned list should be freed with g_list_free() after each   element has been freed with g_object_unref().
      */
-    getBlockForUuid(uuid: string | null): Block[]
+    getBlockForUuid(uuid: string): Block[]
     /**
      * If `block` is an unlocked encrypted device, gets the cleartext device.
      * @param block A #UDisksBlock.
@@ -6635,7 +6635,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * present in an user interface. The returned strings are localized.
      * @param drive A #UDisksDrive.
      */
-    getDriveInfo(drive: Drive): [ /* outName */ string | null, /* outDescription */ string | null, /* outDriveIcon */ Gio.Icon, /* outMediaDescription */ string | null, /* outMediaIcon */ Gio.Icon ]
+    getDriveInfo(drive: Drive): [ /* outName */ string, /* outDescription */ string, /* outDriveIcon */ Gio.Icon, /* outMediaDescription */ string, /* outMediaIcon */ Gio.Icon ]
     /**
      * Gets all siblings for `drive`.
      * @param drive A #UDisksDrive.
@@ -6650,7 +6650,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param longString Whether to produce a long string.
      * @returns A string that should be freed with g_free().
      */
-    getIdForDisplay(usage: string | null, type: string | null, version: string | null, longString: boolean): string | null
+    getIdForDisplay(usage: string, type: string, version: string, longString: boolean): string | null
     /**
      * Gets a human-readable and localized text string describing the
      * operation of `job`.
@@ -6695,7 +6695,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param mediaCompat An array of media types.
      * @returns A string that should be freed with g_free() or %NULL if unknown.
      */
-    getMediaCompatForDisplay(mediaCompat: string | null): string | null
+    getMediaCompatForDisplay(mediaCompat: string): string | null
     /**
      * Gets the physical block devices that are part of `raid`.
      * @param raid A #UDisksMDRaid.
@@ -6707,7 +6707,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param objectPath Object path.
      * @returns A #UDisksObject corresponding to @object_path or %NULL if not found. The returned object must be freed with g_object_unref().
      */
-    getObject(objectPath: string | null): Object
+    getObject(objectPath: string): Object
     /**
      * Gets information about a #UDisksObject instance that is suitable to
      * present in an user interface. Information is returned in the
@@ -6743,19 +6743,19 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param partitionTableSubtype A partition table type e.g. 'dos' or 'gpt'.
      * @returns A description of @partition_table_type and @partition_table_subtype or %NULL.
      */
-    getPartitionTableSubtypeForDisplay(partitionTableType: string | null, partitionTableSubtype: string | null): string | null
+    getPartitionTableSubtypeForDisplay(partitionTableType: string, partitionTableSubtype: string): string
     /**
      * Gets all known subtypes for `partition_table_type`.
      * @param partitionTableType A partition table type e.g. 'dos' or 'gpt'.
      * @returns A %NULL-terminated array of strings. Only the container should be freed with g_free().
      */
-    getPartitionTableSubtypes(partitionTableType: string | null): string[]
+    getPartitionTableSubtypes(partitionTableType: string): string[]
     /**
      * Gets a human readable localized string for `partition_table_type`.
      * @param partitionTableType A partition table type e.g. 'dos' or 'gpt'.
      * @returns A description of @partition_table_type or %NULL.
      */
-    getPartitionTableTypeForDisplay(partitionTableType: string | null): string | null
+    getPartitionTableTypeForDisplay(partitionTableType: string): string
     /**
      * Like udisks_client_get_partition_type_for_display() but also takes
      * the partition table subtype into account, if available. This is
@@ -6766,21 +6766,21 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param partitionType A partition type.
      * @returns A description of @partition_type or %NULL if unknown.
      */
-    getPartitionTypeAndSubtypeForDisplay(partitionTableType: string | null, partitionTableSubtype: string | null, partitionType: string | null): string | null
+    getPartitionTypeAndSubtypeForDisplay(partitionTableType: string, partitionTableSubtype: string, partitionType: string): string
     /**
      * Gets a human readable localized string for `partiton_table_type` and `partition_type`.
      * @param partitionTableType A partitioning type e.g. 'dos' or 'gpt'.
      * @param partitionType A partition type.
      * @returns A description of @partition_type or %NULL if unknown.
      */
-    getPartitionTypeForDisplay(partitionTableType: string | null, partitionType: string | null): string | null
+    getPartitionTypeForDisplay(partitionTableType: string, partitionType: string): string
     /**
      * Gets information about all known partition types for `partition_table_type` and `partition_table_subtype`.
      * @param partitionTableType A partition table type e.g. 'dos' or 'gpt'.
      * @param partitionTableSubtype A partition table subtype or %NULL to get all known types.
      * @returns A list of   #UDisksPartitionTypeInfo instances. The returned list should be freed   with g_list_free() after freeing each element with udisks_partition_type_info_free().
      */
-    getPartitionTypeInfos(partitionTableType: string | null, partitionTableSubtype: string | null): PartitionTypeInfo[]
+    getPartitionTypeInfos(partitionTableType: string, partitionTableSubtype: string | null): PartitionTypeInfo[]
     /**
      * Gets all partitions of `table`.
      * @param table A #UDisksPartitionTable.
@@ -6803,7 +6803,7 @@ export interface Client extends Gio.AsyncInitable, Gio.Initable {
      * @param objectPath Object path.
      * @returns A #UDisksObject corresponding to @object_path or %NULL if not found.
      */
-    peekObject(objectPath: string | null): Object
+    peekObject(objectPath: string): Object
     /**
      * Queues up a #UDisksClient::changed signal and rate-limit it. See
      * the documentation for the #UDisksClient::changed property for more
@@ -7158,7 +7158,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DriveAtaProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): DriveAtaProxy
 
     // Overloads of newForBusSync
 
@@ -7176,7 +7176,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive-Ata.top_of_page">org.freedesktop.UDisks2.Drive.Ata</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -7191,7 +7191,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DriveAtaProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): DriveAtaProxy
 
     // Overloads of newSync
 
@@ -7228,7 +7228,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: DriveAtaProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive-Ata.top_of_page">org.freedesktop.UDisks2.Drive.Ata</link>. See g_dbus_proxy_new() for more details.
@@ -7244,7 +7244,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -7285,7 +7285,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_drive_ata_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -7300,7 +7300,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -7317,7 +7317,7 @@ export class DriveAtaProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module DriveAtaSkeleton {
@@ -7816,7 +7816,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DriveProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): DriveProxy
 
     // Overloads of newForBusSync
 
@@ -7834,7 +7834,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive.top_of_page">org.freedesktop.UDisks2.Drive</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -7849,7 +7849,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): DriveProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): DriveProxy
 
     // Overloads of newSync
 
@@ -7886,7 +7886,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: DriveProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Drive.top_of_page">org.freedesktop.UDisks2.Drive</link>. See g_dbus_proxy_new() for more details.
@@ -7902,7 +7902,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -7943,7 +7943,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_drive_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -7958,7 +7958,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -7975,7 +7975,7 @@ export class DriveProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module DriveSkeleton {
@@ -8354,7 +8354,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): EncryptedProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): EncryptedProxy
 
     // Overloads of newForBusSync
 
@@ -8372,7 +8372,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Encrypted.top_of_page">org.freedesktop.UDisks2.Encrypted</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -8387,7 +8387,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): EncryptedProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): EncryptedProxy
 
     // Overloads of newSync
 
@@ -8424,7 +8424,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: EncryptedProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Encrypted.top_of_page">org.freedesktop.UDisks2.Encrypted</link>. See g_dbus_proxy_new() for more details.
@@ -8440,7 +8440,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -8481,7 +8481,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_encrypted_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -8496,7 +8496,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -8513,7 +8513,7 @@ export class EncryptedProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module EncryptedSkeleton {
@@ -8752,7 +8752,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): FilesystemProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): FilesystemProxy
 
     // Overloads of newForBusSync
 
@@ -8770,7 +8770,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Filesystem.top_of_page">org.freedesktop.UDisks2.Filesystem</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -8785,7 +8785,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): FilesystemProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): FilesystemProxy
 
     // Overloads of newSync
 
@@ -8822,7 +8822,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: FilesystemProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Filesystem.top_of_page">org.freedesktop.UDisks2.Filesystem</link>. See g_dbus_proxy_new() for more details.
@@ -8838,7 +8838,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -8879,7 +8879,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_filesystem_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -8894,7 +8894,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -8911,7 +8911,7 @@ export class FilesystemProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module FilesystemSkeleton {
@@ -9195,7 +9195,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): JobProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): JobProxy
 
     // Overloads of newForBusSync
 
@@ -9213,7 +9213,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Job.top_of_page">org.freedesktop.UDisks2.Job</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -9228,7 +9228,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): JobProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): JobProxy
 
     // Overloads of newSync
 
@@ -9265,7 +9265,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: JobProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Job.top_of_page">org.freedesktop.UDisks2.Job</link>. See g_dbus_proxy_new() for more details.
@@ -9281,7 +9281,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -9322,7 +9322,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_job_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -9337,7 +9337,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -9354,7 +9354,7 @@ export class JobProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module JobSkeleton {
@@ -9648,7 +9648,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): LoopProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): LoopProxy
 
     // Overloads of newForBusSync
 
@@ -9666,7 +9666,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Loop.top_of_page">org.freedesktop.UDisks2.Loop</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -9681,7 +9681,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): LoopProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): LoopProxy
 
     // Overloads of newSync
 
@@ -9718,7 +9718,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: LoopProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Loop.top_of_page">org.freedesktop.UDisks2.Loop</link>. See g_dbus_proxy_new() for more details.
@@ -9734,7 +9734,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -9775,7 +9775,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_loop_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -9790,7 +9790,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -9807,7 +9807,7 @@ export class LoopProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module LoopSkeleton {
@@ -10126,7 +10126,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MDRaidProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): MDRaidProxy
 
     // Overloads of newForBusSync
 
@@ -10144,7 +10144,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-MDRaid.top_of_page">org.freedesktop.UDisks2.MDRaid</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -10159,7 +10159,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): MDRaidProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): MDRaidProxy
 
     // Overloads of newSync
 
@@ -10196,7 +10196,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: MDRaidProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-MDRaid.top_of_page">org.freedesktop.UDisks2.MDRaid</link>. See g_dbus_proxy_new() for more details.
@@ -10212,7 +10212,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -10253,7 +10253,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_mdraid_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -10268,7 +10268,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -10285,7 +10285,7 @@ export class MDRaidProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module MDRaidSkeleton {
@@ -10599,7 +10599,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ManagerProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ManagerProxy
 
     // Overloads of newForBusSync
 
@@ -10617,7 +10617,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager.top_of_page">org.freedesktop.UDisks2.Manager</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -10632,7 +10632,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ManagerProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ManagerProxy
 
     // Overloads of newSync
 
@@ -10669,7 +10669,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: ManagerProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Manager.top_of_page">org.freedesktop.UDisks2.Manager</link>. See g_dbus_proxy_new() for more details.
@@ -10685,7 +10685,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -10726,7 +10726,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_manager_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -10741,7 +10741,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -10758,7 +10758,7 @@ export class ManagerProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module ManagerSkeleton {
@@ -10882,7 +10882,7 @@ export interface ObjectInfo {
      * Gets the description.
      * @returns The value or %NULL. Do not free or unref, the value belongs to @info.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Gets the icon.
      * @returns The value or %NULL. Do not free or unref, the value belongs to @info.
@@ -10897,7 +10897,7 @@ export interface ObjectInfo {
      * Gets the media description.
      * @returns The value or %NULL. Do not free or unref, the value belongs to @info.
      */
-    getMediaDescription(): string | null
+    getMediaDescription(): string
     /**
      * Gets the media icon.
      * @returns The value or %NULL. Do not free or unref, the value belongs to @info.
@@ -10912,7 +10912,7 @@ export interface ObjectInfo {
      * Gets the name.
      * @returns The value or %NULL. Do not free or unref, the value belongs to @info.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the #UDisksObject that `info` is for
      * @returns The object - do not free or unref, the reference belongs to @info.
@@ -10922,13 +10922,13 @@ export interface ObjectInfo {
      * Gets a one-line description.
      * @returns The value or %NULL. Do not free or unref, the value belongs to @info.
      */
-    getOneLiner(): string | null
+    getOneLiner(): string
     /**
      * Gets the sort-key for `info`. This can be used with g_strcmp0() to
      * sort objects.
      * @returns The sort key or %NULL. Do not free or unref, the value belongs to @info.
      */
-    getSortKey(): string | null
+    getSortKey(): string
 
     // Class property signals of UDisks-2.0.UDisks.ObjectInfo
 
@@ -11116,7 +11116,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ObjectManagerClient
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): ObjectManagerClient
 
     // Overloads of newForBusSync
 
@@ -11136,7 +11136,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     /**
      * Synchronously creates #GDBusObjectManagerClient using udisks_object_manager_client_get_proxy_type() as the #GDBusProxyTypeFunc. See g_dbus_object_manager_client_new_sync() for more details.
      * 
@@ -11151,7 +11151,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed object manager client or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): ObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): ObjectManagerClient
 
     // Overloads of newSync
 
@@ -11170,7 +11170,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @returns A   #GDBusObjectManagerClient object or %NULL if @error is set. Free   with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null): Gio.DBusObjectManagerClient
     _init(config?: ObjectManagerClient.ConstructorProperties): void
     /**
      * Asynchronously creates #GDBusObjectManagerClient using udisks_object_manager_client_get_proxy_type() as the #GDBusProxyTypeFunc. See g_dbus_object_manager_client_new() for more details.
@@ -11186,7 +11186,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -11207,7 +11207,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_object_manager_client_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -11222,7 +11222,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -11244,7 +11244,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param cancellable A #GCancellable or %NULL
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string | null, objectPath: string | null, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusObjectManagerClientFlags, name: string, objectPath: string, getProxyTypeFunc: Gio.DBusProxyTypeFunc | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * A #GDBusProxyTypeFunc that maps `interface_name` to the generated #GDBusObjectProxy<!-- -->- and #GDBusProxy<!-- -->-derived types.
      * @param manager A #GDBusObjectManagerClient.
@@ -11253,7 +11253,7 @@ export class ObjectManagerClient extends Gio.DBusObjectManagerClient {
      * @param userData User data (unused).
      * @returns A #GDBusProxy<!-- -->-derived #GType if @interface_name is not %NULL, otherwise the #GType for #UDisksObjectProxy.
      */
-    static getProxyType(manager: Gio.DBusObjectManagerClient, objectPath: string | null, interfaceName: string | null, userData: any | null): GObject.GType
+    static getProxyType(manager: Gio.DBusObjectManagerClient, objectPath: string, interfaceName: string | null, userData: any | null): GObject.GType
 }
 
 export module ObjectProxy {
@@ -11376,7 +11376,7 @@ export class ObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath An object path.
      * @returns The proxy object.
      */
-    constructor(connection: Gio.DBusConnection, objectPath: string | null) 
+    constructor(connection: Gio.DBusConnection, objectPath: string) 
     /**
      * Creates a new proxy object.
      * @constructor 
@@ -11384,7 +11384,7 @@ export class ObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath An object path.
      * @returns The proxy object.
      */
-    static new(connection: Gio.DBusConnection, objectPath: string | null): ObjectProxy
+    static new(connection: Gio.DBusConnection, objectPath: string): ObjectProxy
 
     // Overloads of new
 
@@ -11396,7 +11396,7 @@ export class ObjectProxy extends Gio.DBusObjectProxy {
      * @param objectPath the object path
      * @returns a new #GDBusObjectProxy
      */
-    static new(connection: Gio.DBusConnection, objectPath: string | null): Gio.DBusObjectProxy
+    static new(connection: Gio.DBusConnection, objectPath: string): Gio.DBusObjectProxy
     _init(config?: ObjectProxy.ConstructorProperties): void
 }
 
@@ -11577,14 +11577,14 @@ export class ObjectSkeleton extends Gio.DBusObjectSkeleton {
      * @param objectPath An object path.
      * @returns The skeleton object.
      */
-    constructor(objectPath: string | null) 
+    constructor(objectPath: string) 
     /**
      * Creates a new skeleton object.
      * @constructor 
      * @param objectPath An object path.
      * @returns The skeleton object.
      */
-    static new(objectPath: string | null): ObjectSkeleton
+    static new(objectPath: string): ObjectSkeleton
 
     // Overloads of new
 
@@ -11594,7 +11594,7 @@ export class ObjectSkeleton extends Gio.DBusObjectSkeleton {
      * @param objectPath An object path.
      * @returns A #GDBusObjectSkeleton. Free with g_object_unref().
      */
-    static new(objectPath: string | null): Gio.DBusObjectSkeleton
+    static new(objectPath: string): Gio.DBusObjectSkeleton
     _init(config?: ObjectSkeleton.ConstructorProperties): void
 }
 
@@ -11784,7 +11784,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PartitionProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): PartitionProxy
 
     // Overloads of newForBusSync
 
@@ -11802,7 +11802,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Partition.top_of_page">org.freedesktop.UDisks2.Partition</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -11817,7 +11817,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PartitionProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): PartitionProxy
 
     // Overloads of newSync
 
@@ -11854,7 +11854,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: PartitionProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Partition.top_of_page">org.freedesktop.UDisks2.Partition</link>. See g_dbus_proxy_new() for more details.
@@ -11870,7 +11870,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -11911,7 +11911,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_partition_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -11926,7 +11926,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -11943,7 +11943,7 @@ export class PartitionProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module PartitionSkeleton {
@@ -12227,7 +12227,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PartitionTableProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): PartitionTableProxy
 
     // Overloads of newForBusSync
 
@@ -12245,7 +12245,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-PartitionTable.top_of_page">org.freedesktop.UDisks2.PartitionTable</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -12260,7 +12260,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): PartitionTableProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): PartitionTableProxy
 
     // Overloads of newSync
 
@@ -12297,7 +12297,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: PartitionTableProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-PartitionTable.top_of_page">org.freedesktop.UDisks2.PartitionTable</link>. See g_dbus_proxy_new() for more details.
@@ -12313,7 +12313,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -12354,7 +12354,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_partition_table_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -12369,7 +12369,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -12386,7 +12386,7 @@ export class PartitionTableProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module PartitionTableSkeleton {
@@ -12625,7 +12625,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): SwapspaceProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null): SwapspaceProxy
 
     // Overloads of newForBusSync
 
@@ -12643,7 +12643,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newForBusSync(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     /**
      * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Swapspace.top_of_page">org.freedesktop.UDisks2.Swapspace</link>. See g_dbus_proxy_new_sync() for more details.
      * 
@@ -12658,7 +12658,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns The constructed proxy object or %NULL if @error is set.
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null): SwapspaceProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null): SwapspaceProxy
 
     // Overloads of newSync
 
@@ -12695,7 +12695,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @returns A #GDBusProxy or %NULL if error is set.    Free with g_object_unref().
      */
-    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null): Gio.DBusProxy
+    static newSync(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null): Gio.DBusProxy
     _init(config?: SwapspaceProxy.ConstructorProperties): void
     /**
      * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-org-freedesktop-UDisks2-Swapspace.top_of_page">org.freedesktop.UDisks2.Swapspace</link>. See g_dbus_proxy_new() for more details.
@@ -12711,7 +12711,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of new
 
@@ -12752,7 +12752,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static new(connection: Gio.DBusConnection, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Like udisks_swapspace_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
      * 
@@ -12767,7 +12767,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback A #GAsyncReadyCallback to call when the request is satisfied.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string | null, objectPath: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, name: string, objectPath: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 
     // Overloads of newForBus
 
@@ -12784,7 +12784,7 @@ export class SwapspaceProxy extends Gio.DBusProxy {
      * @param cancellable A #GCancellable or %NULL.
      * @param callback Callback function to invoke when the proxy is ready.
      */
-    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string | null, objectPath: string | null, interfaceName: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    static newForBus(busType: Gio.BusType, flags: Gio.DBusProxyFlags, info: Gio.DBusInterfaceInfo | null, name: string, objectPath: string, interfaceName: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
 }
 
 export module SwapspaceSkeleton {
@@ -12892,7 +12892,7 @@ export interface BlockIface {
      */
     parentIface: GObject.TypeInterface
     handleAddConfigurationItem: (object: Block, invocation: Gio.DBusMethodInvocation, argItem: GLib.Variant, argOptions: GLib.Variant) => boolean
-    handleFormat: (object: Block, invocation: Gio.DBusMethodInvocation, argType: string | null, argOptions: GLib.Variant) => boolean
+    handleFormat: (object: Block, invocation: Gio.DBusMethodInvocation, argType: string, argOptions: GLib.Variant) => boolean
     handleGetSecretConfiguration: (object: Block, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleOpenForBackup: (object: Block, invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList, argOptions: GLib.Variant) => boolean
     handleOpenForBenchmark: (object: Block, invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList, argOptions: GLib.Variant) => boolean
@@ -12901,29 +12901,29 @@ export interface BlockIface {
     handleRescan: (object: Block, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleUpdateConfigurationItem: (object: Block, invocation: Gio.DBusMethodInvocation, argOldItem: GLib.Variant, argNewItem: GLib.Variant, argOptions: GLib.Variant) => boolean
     getConfiguration: (object: Block) => GLib.Variant
-    getCryptoBackingDevice: (object: Block) => string | null
-    getDevice: (object: Block) => string | null
+    getCryptoBackingDevice: (object: Block) => string
+    getDevice: (object: Block) => string
     getDeviceNumber: (object: Block) => number
-    getDrive: (object: Block) => string | null
+    getDrive: (object: Block) => string
     getHintAuto: (object: Block) => boolean
-    getHintIconName: (object: Block) => string | null
+    getHintIconName: (object: Block) => string
     getHintIgnore: (object: Block) => boolean
-    getHintName: (object: Block) => string | null
+    getHintName: (object: Block) => string
     getHintPartitionable: (object: Block) => boolean
     getHintSystem: (object: Block) => boolean
-    getIdLabel: (object: Block) => string | null
-    getIdType: (object: Block) => string | null
-    getIdUsage: (object: Block) => string | null
-    getIdUuid: (object: Block) => string | null
-    getIdVersion: (object: Block) => string | null
-    getPreferredDevice: (object: Block) => string | null
+    getIdLabel: (object: Block) => string
+    getIdType: (object: Block) => string
+    getIdUsage: (object: Block) => string
+    getIdUuid: (object: Block) => string
+    getIdVersion: (object: Block) => string
+    getPreferredDevice: (object: Block) => string
     getReadOnly: (object: Block) => boolean
     getSize: (object: Block) => number
     getSymlinks: (object: Block) => string[]
-    getHintSymbolicIconName: (object: Block) => string | null
-    getId: (object: Block) => string | null
-    getMdraid: (object: Block) => string | null
-    getMdraidMember: (object: Block) => string | null
+    getHintSymbolicIconName: (object: Block) => string
+    getId: (object: Block) => string
+    getMdraid: (object: Block) => string
+    getMdraidMember: (object: Block) => string
 }
 
 /**
@@ -13016,7 +13016,7 @@ export interface DriveAtaIface {
     handleSecurityEraseUnit: (object: DriveAta, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleSmartGetAttributes: (object: DriveAta, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleSmartSelftestAbort: (object: DriveAta, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
-    handleSmartSelftestStart: (object: DriveAta, invocation: Gio.DBusMethodInvocation, argType: string | null, argOptions: GLib.Variant) => boolean
+    handleSmartSelftestStart: (object: DriveAta, invocation: Gio.DBusMethodInvocation, argType: string, argOptions: GLib.Variant) => boolean
     handleSmartUpdate: (object: DriveAta, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     getAamEnabled: (object: DriveAta) => boolean
     getAamSupported: (object: DriveAta) => boolean
@@ -13035,7 +13035,7 @@ export interface DriveAtaIface {
     getSmartNumBadSectors: (object: DriveAta) => number
     getSmartPowerOnSeconds: (object: DriveAta) => number
     getSmartSelftestPercentRemaining: (object: DriveAta) => number
-    getSmartSelftestStatus: (object: DriveAta) => string | null
+    getSmartSelftestStatus: (object: DriveAta) => string
     getSmartSupported: (object: DriveAta) => boolean
     getSmartTemperature: (object: DriveAta) => number
     getSmartUpdated: (object: DriveAta) => number
@@ -13133,15 +13133,15 @@ export interface DriveIface {
     handleEject: (object: Drive, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleSetConfiguration: (object: Drive, invocation: Gio.DBusMethodInvocation, argValue: GLib.Variant, argOptions: GLib.Variant) => boolean
     getConfiguration: (object: Drive) => GLib.Variant
-    getConnectionBus: (object: Drive) => string | null
+    getConnectionBus: (object: Drive) => string
     getEjectable: (object: Drive) => boolean
-    getId: (object: Drive) => string | null
-    getMedia: (object: Drive) => string | null
+    getId: (object: Drive) => string
+    getMedia: (object: Drive) => string
     getMediaAvailable: (object: Drive) => boolean
     getMediaChangeDetected: (object: Drive) => boolean
     getMediaCompatibility: (object: Drive) => string[]
     getMediaRemovable: (object: Drive) => boolean
-    getModel: (object: Drive) => string | null
+    getModel: (object: Drive) => string
     getOptical: (object: Drive) => boolean
     getOpticalBlank: (object: Drive) => boolean
     getOpticalNumAudioTracks: (object: Drive) => number
@@ -13149,19 +13149,19 @@ export interface DriveIface {
     getOpticalNumSessions: (object: Drive) => number
     getOpticalNumTracks: (object: Drive) => number
     getRemovable: (object: Drive) => boolean
-    getRevision: (object: Drive) => string | null
+    getRevision: (object: Drive) => string
     getRotationRate: (object: Drive) => number
-    getSeat: (object: Drive) => string | null
-    getSerial: (object: Drive) => string | null
+    getSeat: (object: Drive) => string
+    getSerial: (object: Drive) => string
     getSize: (object: Drive) => number
-    getSortKey: (object: Drive) => string | null
+    getSortKey: (object: Drive) => string
     getTimeDetected: (object: Drive) => number
     getTimeMediaDetected: (object: Drive) => number
-    getVendor: (object: Drive) => string | null
-    getWwn: (object: Drive) => string | null
+    getVendor: (object: Drive) => string
+    getWwn: (object: Drive) => string
     handlePowerOff: (object: Drive, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     getCanPowerOff: (object: Drive) => boolean
-    getSiblingId: (object: Drive) => string | null
+    getSiblingId: (object: Drive) => string
 }
 
 /**
@@ -13248,9 +13248,9 @@ export interface EncryptedIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleChangePassphrase: (object: Encrypted, invocation: Gio.DBusMethodInvocation, argPassphrase: string | null, argNewPassphrase: string | null, argOptions: GLib.Variant) => boolean
+    handleChangePassphrase: (object: Encrypted, invocation: Gio.DBusMethodInvocation, argPassphrase: string, argNewPassphrase: string, argOptions: GLib.Variant) => boolean
     handleLock: (object: Encrypted, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
-    handleUnlock: (object: Encrypted, invocation: Gio.DBusMethodInvocation, argPassphrase: string | null, argOptions: GLib.Variant) => boolean
+    handleUnlock: (object: Encrypted, invocation: Gio.DBusMethodInvocation, argPassphrase: string, argOptions: GLib.Variant) => boolean
     getChildConfiguration: (object: Encrypted) => GLib.Variant
 }
 
@@ -13339,7 +13339,7 @@ export interface FilesystemIface {
      */
     parentIface: GObject.TypeInterface
     handleMount: (object: Filesystem, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
-    handleSetLabel: (object: Filesystem, invocation: Gio.DBusMethodInvocation, argLabel: string | null, argOptions: GLib.Variant) => boolean
+    handleSetLabel: (object: Filesystem, invocation: Gio.DBusMethodInvocation, argLabel: string, argOptions: GLib.Variant) => boolean
     handleUnmount: (object: Filesystem, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     getMountPoints: (object: Filesystem) => string[]
 }
@@ -13432,12 +13432,12 @@ export interface JobIface {
     getCancelable: (object: Job) => boolean
     getExpectedEndTime: (object: Job) => number
     getObjects: (object: Job) => string[]
-    getOperation: (object: Job) => string | null
+    getOperation: (object: Job) => string
     getProgress: (object: Job) => number
     getProgressValid: (object: Job) => boolean
     getStartTime: (object: Job) => number
     getStartedByUid: (object: Job) => number
-    completed: (object: Job, argSuccess: boolean, argMessage: string | null) => void
+    completed: (object: Job, argSuccess: boolean, argMessage: string) => void
     getBytes: (object: Job) => number
     getRate: (object: Job) => number
 }
@@ -13529,7 +13529,7 @@ export interface LoopIface {
     handleDelete: (object: Loop, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleSetAutoclear: (object: Loop, invocation: Gio.DBusMethodInvocation, argValue: boolean, argOptions: GLib.Variant) => boolean
     getAutoclear: (object: Loop) => boolean
-    getBackingFile: (object: Loop) => string | null
+    getBackingFile: (object: Loop) => string
     getSetupByUid: (object: Loop) => number
 }
 
@@ -13617,28 +13617,28 @@ export interface MDRaidIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleAddDevice: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argDevice: string | null, argOptions: GLib.Variant) => boolean
+    handleAddDevice: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argDevice: string, argOptions: GLib.Variant) => boolean
     handleDelete: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
-    handleRemoveDevice: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argDevice: string | null, argOptions: GLib.Variant) => boolean
-    handleRequestSyncAction: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argSyncAction: string | null, argOptions: GLib.Variant) => boolean
-    handleSetBitmapLocation: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argValue: string | null, argOptions: GLib.Variant) => boolean
+    handleRemoveDevice: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argDevice: string, argOptions: GLib.Variant) => boolean
+    handleRequestSyncAction: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argSyncAction: string, argOptions: GLib.Variant) => boolean
+    handleSetBitmapLocation: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argValue: string, argOptions: GLib.Variant) => boolean
     handleStart: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleStop: (object: MDRaid, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     getActiveDevices: (object: MDRaid) => GLib.Variant
-    getBitmapLocation: (object: MDRaid) => string | null
+    getBitmapLocation: (object: MDRaid) => string
     getChildConfiguration: (object: MDRaid) => GLib.Variant
     getChunkSize: (object: MDRaid) => number
     getDegraded: (object: MDRaid) => number
-    getLevel: (object: MDRaid) => string | null
-    getName: (object: MDRaid) => string | null
+    getLevel: (object: MDRaid) => string
+    getName: (object: MDRaid) => string
     getNumDevices: (object: MDRaid) => number
     getRunning: (object: MDRaid) => boolean
     getSize: (object: MDRaid) => number
-    getSyncAction: (object: MDRaid) => string | null
+    getSyncAction: (object: MDRaid) => string
     getSyncCompleted: (object: MDRaid) => number
     getSyncRate: (object: MDRaid) => number
     getSyncRemainingTime: (object: MDRaid) => number
-    getUuid: (object: MDRaid) => string | null
+    getUuid: (object: MDRaid) => string
 }
 
 /**
@@ -13728,8 +13728,8 @@ export interface ManagerIface {
     handleEnableModules: (object: Manager, invocation: Gio.DBusMethodInvocation, argEnable: boolean) => boolean
     handleLoopSetup: (object: Manager, invocation: Gio.DBusMethodInvocation, fdList: Gio.UnixFDList, argFd: GLib.Variant, argOptions: GLib.Variant) => boolean
     getSupportedFilesystems: (object: Manager) => string[]
-    getVersion: (object: Manager) => string | null
-    handleMdraidCreate: (object: Manager, invocation: Gio.DBusMethodInvocation, argBlocks: string | null, argLevel: string | null, argName: string | null, argChunk: number, argOptions: GLib.Variant) => boolean
+    getVersion: (object: Manager) => string
+    handleMdraidCreate: (object: Manager, invocation: Gio.DBusMethodInvocation, argBlocks: string, argLevel: string, argName: string, argChunk: number, argOptions: GLib.Variant) => boolean
 }
 
 /**
@@ -13936,18 +13936,18 @@ export interface PartitionIface {
     parentIface: GObject.TypeInterface
     handleDelete: (object: Partition, invocation: Gio.DBusMethodInvocation, argOptions: GLib.Variant) => boolean
     handleSetFlags: (object: Partition, invocation: Gio.DBusMethodInvocation, argFlags: number, argOptions: GLib.Variant) => boolean
-    handleSetName: (object: Partition, invocation: Gio.DBusMethodInvocation, argName: string | null, argOptions: GLib.Variant) => boolean
-    handleSetType: (object: Partition, invocation: Gio.DBusMethodInvocation, argType: string | null, argOptions: GLib.Variant) => boolean
+    handleSetName: (object: Partition, invocation: Gio.DBusMethodInvocation, argName: string, argOptions: GLib.Variant) => boolean
+    handleSetType: (object: Partition, invocation: Gio.DBusMethodInvocation, argType: string, argOptions: GLib.Variant) => boolean
     getFlags: (object: Partition) => number
     getIsContained: (object: Partition) => boolean
     getIsContainer: (object: Partition) => boolean
-    getName: (object: Partition) => string | null
+    getName: (object: Partition) => string
     getNumber: (object: Partition) => number
     getOffset: (object: Partition) => number
     getSize: (object: Partition) => number
-    getTable: (object: Partition) => string | null
-    getType: (object: Partition) => string | null
-    getUuid: (object: Partition) => string | null
+    getTable: (object: Partition) => string
+    getType: (object: Partition) => string
+    getUuid: (object: Partition) => string
 }
 
 /**
@@ -14034,9 +14034,9 @@ export interface PartitionTableIface {
      * @field 
      */
     parentIface: GObject.TypeInterface
-    handleCreatePartition: (object: PartitionTable, invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant) => boolean
-    handleCreatePartitionAndFormat: (object: PartitionTable, invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string | null, argName: string | null, argOptions: GLib.Variant, argFormatType: string | null, argFormatOptions: GLib.Variant) => boolean
-    getType: (object: PartitionTable) => string | null
+    handleCreatePartition: (object: PartitionTable, invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant) => boolean
+    handleCreatePartitionAndFormat: (object: PartitionTable, invocation: Gio.DBusMethodInvocation, argOffset: number, argSize: number, argType: string, argName: string, argOptions: GLib.Variant, argFormatType: string, argFormatOptions: GLib.Variant) => boolean
+    getType: (object: PartitionTable) => string
 }
 
 /**
@@ -14122,17 +14122,17 @@ export interface PartitionTypeInfo {
      * A partition table type e.g. 'dos' or 'gpt'
      * @field 
      */
-    tableType: string | null
+    tableType: string
     /**
      * A partition table sub-type.
      * @field 
      */
-    tableSubtype: string | null
+    tableSubtype: string
     /**
      * A partition type.
      * @field 
      */
-    type: string | null
+    type: string
     /**
      * Flags from the #UDisksPartitionTypeInfoFlags enumeration.
      * @field 

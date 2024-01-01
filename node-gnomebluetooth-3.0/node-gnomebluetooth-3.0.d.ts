@@ -177,26 +177,26 @@ function classToType(class_: number): Type
  * @param alias Remote device's name
  * @returns %TRUE on success, %FALSE on error.
  */
-function sendToAddress(address: string | null, alias: string | null): boolean
+function sendToAddress(address: string, alias: string): boolean
 /**
  * Returns a human-readable string representation of `type` usable for display to users. Do not free the return value.
  * The returned string is already translated with gettext().
  * @param type a #BluetoothType
  * @returns a string.
  */
-function typeToString(type: number): string | null
+function typeToString(type: number): string
 /**
  * Returns a string representing a human-readable (but not usable for display to users) version of the `uuid`. Do not free the return value.
  * @param uuid a string representing a Bluetooth UUID
  * @returns a string.
  */
-function uuidToString(uuid: string | null): string | null
+function uuidToString(uuid: string): string
 /**
  * Returns whether the string is a valid Bluetooth address. This does not contact the device in any way.
  * @param bdaddr a string representing a Bluetooth address
  * @returns %TRUE if the address is valid, %FALSE if not.
  */
-function verifyAddress(bdaddr: string | null): boolean
+function verifyAddress(bdaddr: string): boolean
 module Client {
 
     // Signal callback interfaces
@@ -288,7 +288,7 @@ interface Client {
      * @param cancellable optional #GCancellable object, %NULL to ignore
      * @param callback a #GAsyncReadyCallback to call when the connection is complete
      */
-    connectService(path: string | null, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
+    connectService(path: string, connect: boolean, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null): void
     /**
      * Finishes the connection operation. See bluetooth_client_connect_service().
      * @param res a #GAsyncResult
@@ -446,7 +446,7 @@ interface Device {
     // Owm methods of GnomeBluetooth-3.0.GnomeBluetooth.Device
 
     dump(): void
-    getObjectPath(): string | null
+    getObjectPath(): string
     toString(): string | null
 
     // Class property signals of GnomeBluetooth-3.0.GnomeBluetooth.Device

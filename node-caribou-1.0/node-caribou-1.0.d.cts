@@ -335,7 +335,7 @@ export module DisplayAdapter {
      * Signal callback interface for `group-changed`
      */
     export interface GroupChangedSignalCallback {
-        (gid: number, group: string | null, variant: string | null): void
+        (gid: number, group: string, variant: string): void
     }
 
     /**
@@ -402,7 +402,7 @@ export interface DisplayAdapter {
     on(sigName: "group-changed", callback: DisplayAdapter.GroupChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "group-changed", callback: DisplayAdapter.GroupChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
     off(sigName: "group-changed", callback: DisplayAdapter.GroupChangedSignalCallback): NodeJS.EventEmitter
-    emit(sigName: "group-changed", group: string | null, variant: string | null, ...args: any[]): void
+    emit(sigName: "group-changed", group: string, variant: string, ...args: any[]): void
     connect(sigName: "config-changed", callback: DisplayAdapter.ConfigChangedSignalCallback): number
     on(sigName: "config-changed", callback: DisplayAdapter.ConfigChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
     once(sigName: "config-changed", callback: DisplayAdapter.ConfigChangedSignalCallback, after?: boolean): NodeJS.EventEmitter
@@ -549,14 +549,14 @@ export module KeyboardModel {
      * Signal callback interface for `group-added`
      */
     export interface GroupAddedSignalCallback {
-        (name: string | null): void
+        (name: string): void
     }
 
     /**
      * Signal callback interface for `group-removed`
      */
     export interface GroupRemovedSignalCallback {
-        (name: string | null): void
+        (name: string): void
     }
 
 
@@ -585,10 +585,10 @@ export interface KeyboardModel extends IKeyboardObject {
     // Owm methods of Caribou-1.0.Caribou.KeyboardModel
 
     getGroups(): string[]
-    getGroup(groupName: string | null): GroupModel
-    getActiveGroup(): string | null
-    getKeyboardType(): string | null
-    getKeyboardFile(): string | null
+    getGroup(groupName: string): GroupModel
+    getActiveGroup(): string
+    getKeyboardType(): string
+    getKeyboardFile(): string
 
     // Own signals of Caribou-1.0.Caribou.KeyboardModel
 
@@ -668,8 +668,8 @@ export interface KeyboardService {
     // Has conflict: setEntryLocation(x: number, y: number, w: number, h: number): void
     // Has conflict: show(timestamp: number): void
     // Has conflict: hide(timestamp: number): void
-    registerKeyboard(name: string | null): void
-    // Has conflict: nameLost(name: string | null): void
+    registerKeyboard(name: string): void
+    // Has conflict: nameLost(name: string): void
 
     // Own virtual methods of Caribou-1.0.Caribou.KeyboardService
 
@@ -677,7 +677,7 @@ export interface KeyboardService {
     setEntryLocation(x: number, y: number, w: number, h: number): void
     show(timestamp: number): void
     hide(timestamp: number): void
-    nameLost(name: string | null): void
+    nameLost(name: string): void
 
     // Class property signals of Caribou-1.0.Caribou.KeyboardService
 
@@ -734,8 +734,8 @@ export interface GroupModel extends IKeyboardObject {
     // Owm methods of Caribou-1.0.Caribou.GroupModel
 
     getLevels(): string[]
-    getLevel(levelName: string | null): LevelModel
-    getActiveLevel(): string | null
+    getLevel(levelName: string): LevelModel
+    getActiveLevel(): string
 
     // Class property signals of Caribou-1.0.Caribou.GroupModel
 
@@ -766,10 +766,10 @@ export class GroupModel extends GObject.Object {
     // Constructors of Caribou-1.0.Caribou.GroupModel
 
     constructor(config?: GroupModel.ConstructorProperties) 
-    constructor(group: string | null, variant: string | null) 
-    static new(group: string | null, variant: string | null): GroupModel
+    constructor(group: string, variant: string) 
+    static new(group: string, variant: string): GroupModel
     _init(config?: GroupModel.ConstructorProperties): void
-    static createGroupName(group: string | null, variant: string | null): string | null
+    static createGroupName(group: string, variant: string): string | null
 }
 
 export module LevelModel {
@@ -780,7 +780,7 @@ export module LevelModel {
      * Signal callback interface for `level-toggled`
      */
     export interface LevelToggledSignalCallback {
-        (newLevel: string | null): void
+        (newLevel: string): void
     }
 
 
@@ -805,7 +805,7 @@ export interface LevelModel extends IKeyboardObject {
     // Owm methods of Caribou-1.0.Caribou.LevelModel
 
     getRows(): RowModel[]
-    getMode(): string | null
+    getMode(): string
 
     // Conflicting methods
 
@@ -859,8 +859,8 @@ export class LevelModel extends ScannableGroup {
     // Constructors of Caribou-1.0.Caribou.LevelModel
 
     constructor(config?: LevelModel.ConstructorProperties) 
-    constructor(mode: string | null) 
-    static new(mode: string | null): LevelModel
+    constructor(mode: string) 
+    static new(mode: string): LevelModel
     _init(config?: LevelModel.ConstructorProperties): void
 }
 
@@ -1002,22 +1002,22 @@ export interface KeyModel extends IScannableItem, IKeyboardObject {
     release(): void
     getExtendedKeys(): KeyModel[]
     activate(): void
-    getAlign(): string | null
-    setAlign(value: string | null): void
+    getAlign(): string
+    setAlign(value: string): void
     getWidth(): number
     setWidth(value: number): void
-    getToggle(): string | null
-    setToggle(value: string | null): void
+    getToggle(): string
+    setToggle(value: string): void
     getRepeatable(): boolean
     setRepeatable(value: boolean): void
     getIsModifier(): boolean
     setIsModifier(value: boolean): void
     getShowSubkeys(): boolean
-    getName(): string | null
+    getName(): string
     getKeyval(): number
     getText(): string | null
-    getLabel(): string | null
-    setLabel(value: string | null): void
+    getLabel(): string
+    setLabel(value: string): void
 
     // Own signals of Caribou-1.0.Caribou.KeyModel
 
@@ -1116,8 +1116,8 @@ export class KeyModel extends GObject.Object {
     // Constructors of Caribou-1.0.Caribou.KeyModel
 
     constructor(config?: KeyModel.ConstructorProperties) 
-    constructor(name: string | null, text?: string | null) 
-    static new(name: string | null, text?: string | null): KeyModel
+    constructor(name: string, text?: string | null) 
+    static new(name: string, text?: string | null): KeyModel
     _init(config?: KeyModel.ConstructorProperties): void
 }
 
@@ -1244,10 +1244,10 @@ export interface Scanner {
     setScanEnabled(value: boolean): void
     getStepTime(): number
     setStepTime(value: number): void
-    getSwitchDevice(): string | null
-    setSwitchDevice(value: string | null): void
-    getKeyboardKey(): string | null
-    setKeyboardKey(value: string | null): void
+    getSwitchDevice(): string
+    setSwitchDevice(value: string): void
+    getKeyboardKey(): string
+    setKeyboardKey(value: string): void
     getMouseButton(): number
     setMouseButton(value: number): void
     getScanCycles(): number
@@ -1502,7 +1502,7 @@ export interface KeyboardServiceClass {
     setEntryLocation: (x: number, y: number, w: number, h: number) => void
     show: (timestamp: number) => void
     hide: (timestamp: number) => void
-    nameLost: (name: string | null) => void
+    nameLost: (name: string) => void
 }
 
 export abstract class KeyboardServiceClass {

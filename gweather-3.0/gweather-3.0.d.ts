@@ -513,14 +513,14 @@ function location_get_world(): Location | null
  * @param level a #GWeatherLocationLevel
  * @returns a string
  */
-function location_level_to_string(level: LocationLevel): string | null
-function sky_to_string(sky: Sky): string | null
-function sky_to_string_full(sky: Sky, options: FormatOptions): string | null
+function location_level_to_string(level: LocationLevel): string
+function sky_to_string(sky: Sky): string
+function sky_to_string_full(sky: Sky, options: FormatOptions): string
 /**
  * Creates a human-readable, localized representation of `unit`
  * @param unit a speed unit, or %GWEATHER_SPEED_UNIT_DEFAULT
  */
-function speed_unit_to_string(unit: SpeedUnit): string | null
+function speed_unit_to_string(unit: SpeedUnit): string
 /**
  * Resolve `unit` into a real temperature unit, potentially considering
  * locale defaults.
@@ -534,14 +534,14 @@ function temperature_unit_to_real(unit: TemperatureUnit): TemperatureUnit
  * @param tzid A timezone identifier, like "America/New_York" or "Europe/London"
  * @returns A #GWeatherTimezone.
  */
-function timezone_get_by_tzid(tzid: string | null): Timezone
+function timezone_get_by_tzid(tzid: string): Timezone
 /**
  * Gets the UTC timezone.
  * @returns a #GWeatherTimezone for UTC, or %NULL on error.
  */
 function timezone_get_utc(): Timezone
-function wind_direction_to_string(wind: WindDirection): string | null
-function wind_direction_to_string_full(wind: WindDirection, options: FormatOptions): string | null
+function wind_direction_to_string(wind: WindDirection): string
+function wind_direction_to_string_full(wind: WindDirection, options: FormatOptions): string
 interface FilterFunc {
     (location: Location): boolean
 }
@@ -595,7 +595,7 @@ interface Info {
      * of the application fetching the weather.
      * @returns the application ID
      */
-    get_application_id(): string | null
+    get_application_id(): string
     /**
      * Some weather services require the application showing the
      * data to include an attribution text, possibly including links
@@ -603,13 +603,13 @@ interface Info {
      * This must be shown prominently toghether with the data.
      * @returns the required attribution text, in Pango          markup form, or %NULL if not required
      */
-    get_attribution(): string | null
+    get_attribution(): string
     get_conditions(): string | null
     /**
      * Get the contact information of the application fetching the weather.
      * @returns the contact information
      */
-    get_contact_info(): string | null
+    get_contact_info(): string
     get_dew(): string | null
     /**
      * Gets the bitmask of enabled #GWeatherProvider weather
@@ -618,7 +618,7 @@ interface Info {
     get_enabled_providers(): Provider
     get_forecast_list(): Info[]
     get_humidity(): string | null
-    get_icon_name(): string | null
+    get_icon_name(): string
     get_location(): Location
     get_location_name(): string | null
     get_pressure(): string | null
@@ -626,7 +626,7 @@ interface Info {
     get_sky(): string | null
     get_sunrise(): string | null
     get_sunset(): string | null
-    get_symbolic_icon_name(): string | null
+    get_symbolic_icon_name(): string
     get_temp(): string | null
     get_temp_max(): string | null
     get_temp_min(): string | null
@@ -675,7 +675,7 @@ interface Info {
      * will be automatically filled in.
      * @param application_id the application ID to set
      */
-    set_application_id(application_id: string | null): void
+    set_application_id(application_id: string): void
     /**
      * Sets the contact information for the application fetching the
      * weather. It is a requirement for using any of the online
@@ -688,7 +688,7 @@ interface Info {
      * URLs which require creating accounts.
      * @param contact_info the contact information for the application
      */
-    set_contact_info(contact_info: string | null): void
+    set_contact_info(contact_info: string): void
     /**
      * Sets the enabled providers for fetching the weather. Note
      * that it is up to the application developer to make sure that
@@ -849,7 +849,7 @@ interface LocationEntry extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdi
      * @param code the METAR station code
      * @returns %TRUE if @entry's location could be set to a matching city, %FALSE otherwise.
      */
-    set_city(city_name: string | null, code: string | null): boolean
+    set_city(city_name: string | null, code: string): boolean
     /**
      * Sets `entry'`s location to `loc,` and updates the text of the
      * entry accordingly.
@@ -1254,7 +1254,7 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -1266,7 +1266,7 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1280,7 +1280,7 @@ interface TimezoneMenu extends Atk.ImplementorIface, Gtk.Buildable, Gtk.CellEdit
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of GWeather-3.0.GWeather.TimezoneMenu
 
@@ -1543,8 +1543,8 @@ interface Conditions {
 
     // Owm methods of GWeather-3.0.GWeather.Conditions
 
-    to_string(): string | null
-    to_string_full(options: FormatOptions): string | null
+    to_string(): string
+    to_string_full(options: FormatOptions): string
 }
 
 /**
@@ -1628,7 +1628,7 @@ interface Location {
      * @param country_code a country code
      * @returns a country level #GWeatherLocation, or %NULL.
      */
-    find_by_country_code(country_code: string | null): Location
+    find_by_country_code(country_code: string): Location
     /**
      * Retrieves the weather station identifier by `station_code`.
      * Note that multiple instances of the same weather station can exist
@@ -1641,7 +1641,7 @@ interface Location {
      * @param station_code a 4 letter METAR code
      * @returns a weather station level #GWeatherLocation for @station_code,          or %NULL if none exists in the database.
      */
-    find_by_station_code(station_code: string | null): Location
+    find_by_station_code(station_code: string): Location
     /**
      * Finds the nearest city to the passed latitude and
      * longitude, among the descendants of `loc`.
@@ -1730,7 +1730,7 @@ interface Location {
      * Gets `loc'`s English name.
      * @returns @loc's English name
      */
-    get_english_name(): string | null
+    get_english_name(): string
     /**
      * Gets `loc'`s english "sort name", which is the english name after having
      * g_utf8_normalize() (with %G_NORMALIZE_ALL) and g_utf8_casefold()
@@ -1738,7 +1738,7 @@ interface Location {
      * user input against a location name.
      * @returns @loc's English name for sorting
      */
-    get_english_sort_name(): string | null
+    get_english_sort_name(): string
     /**
      * Gets `loc'`s level, from %GWEATHER_LOCATION_WORLD, to
      * %GWEATHER_LOCATION_WEATHER_STATION.
@@ -1749,7 +1749,7 @@ interface Location {
      * Gets `loc'`s name, localized into the current language.
      * @returns @loc's name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets `loc'`s parent location.
      * 
@@ -1764,7 +1764,7 @@ interface Location {
      * user input against a location name.
      * @returns @loc's sort name
      */
-    get_sort_name(): string | null
+    get_sort_name(): string
     /**
      * Gets the timezone associated with `loc,` if known.
      * 
@@ -1860,7 +1860,7 @@ class Location {
      * @param latitude the latitude of the location
      * @param longitude the longitude of the location
      */
-    static new_detached(name: string | null, icao: string | null, latitude: number, longitude: number): Location
+    static new_detached(name: string, icao: string | null, latitude: number, longitude: number): Location
     static detect_nearest_city_finish(result: Gio.AsyncResult): Location
     /**
      * Obtains the shared #GWeatherLocation of type %GWEATHER_LOCATION_WORLD,
@@ -1917,7 +1917,7 @@ interface Timezone {
      * country is obvious).
      * @returns @zone's name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Gets `zone'`s standard offset from UTC, in minutes. Eg, a value of
      * 120 would indicate "GMT+2".
@@ -1928,7 +1928,7 @@ interface Timezone {
      * Gets `zone'`s tzdata identifier, eg "America/New_York".
      * @returns @zone's tzid
      */
-    get_tzid(): string | null
+    get_tzid(): string
     /**
      * Checks if `zone` observes daylight/summer time for part of the year.
      * @returns %TRUE if @zone observes daylight/summer time.
@@ -1969,7 +1969,7 @@ class Timezone {
      * @param tzid A timezone identifier, like "America/New_York" or "Europe/London"
      * @returns A #GWeatherTimezone.
      */
-    static get_by_tzid(tzid: string | null): Timezone
+    static get_by_tzid(tzid: string): Timezone
     /**
      * Gets the UTC timezone.
      * @returns a #GWeatherTimezone for UTC, or %NULL on error.

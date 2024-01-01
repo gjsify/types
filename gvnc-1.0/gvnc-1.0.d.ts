@@ -175,7 +175,7 @@ function util_get_version(): number
  * string format
  * @returns the version string
  */
-function util_get_version_string(): string | null
+function util_get_version_string(): string
 /**
  * Control whether the VNC code emits verbose debug
  * messages on stderr
@@ -902,7 +902,7 @@ interface Connection {
      * been emitted
      * @returns the remote display name
      */
-    get_name(): string | null
+    get_name(): string
     /**
      * Get a specification of the current pixel format
      * @returns the current pixel format
@@ -1001,7 +1001,7 @@ interface Connection {
      * @param port the service name or port number
      * @returns TRUE if a connection was opened, FALSE if already open
      */
-    open_host(host: string | null, port: string | null): boolean
+    open_host(host: string, port: string): boolean
     /**
      * Send a pointer event to the server, reflecting either movement
      * of the pointer, or a change in state of its buttons, or both.
@@ -1065,7 +1065,7 @@ interface Connection {
      * @param data the value associated with the credential
      * @returns TRUE if the connection is ok, FALSE if it has an error
      */
-    set_credential(type: number, data: string | null): boolean
+    set_credential(type: number, data: string): boolean
     /**
      * Inform the server of the list of encodings that it is
      * allowed to send. This should be done before requesting
@@ -1112,15 +1112,15 @@ interface Connection {
     vfunc_vnc_auth_choose_subtype(type: number, subtypes: GObject.ValueArray): void
     vfunc_vnc_auth_choose_type(types: GObject.ValueArray): void
     vfunc_vnc_auth_credential(creds: GObject.ValueArray): void
-    vfunc_vnc_auth_failure(reason: string | null): void
+    vfunc_vnc_auth_failure(reason: string): void
     vfunc_vnc_auth_unsupported(authType: number): void
     vfunc_vnc_bell(): void
     vfunc_vnc_connected(): void
     vfunc_vnc_cursor_changed(cursor: Cursor): void
-    vfunc_vnc_desktop_rename(name: string | null): void
+    vfunc_vnc_desktop_rename(name: string): void
     vfunc_vnc_desktop_resize(width: number, height: number): void
     vfunc_vnc_disconnected(): void
-    vfunc_vnc_error(message: string | null): void
+    vfunc_vnc_error(message: string): void
     vfunc_vnc_framebuffer_update(x: number, y: number, width: number, height: number): void
     vfunc_vnc_initialized(): void
     vfunc_vnc_led_state(): void
@@ -1278,7 +1278,7 @@ interface Cursor {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
     /**
      * Get the height of the cursor bitmap
      * @returns the height of the bitmap
@@ -1647,7 +1647,7 @@ interface ConnectionClass {
     vnc_framebuffer_update: (conn: Connection, x: number, y: number, width: number, height: number) => void
     vnc_desktop_resize: (conn: Connection, width: number, height: number) => void
     vnc_pixel_format_changed: (conn: Connection, format: PixelFormat) => void
-    vnc_auth_failure: (conn: Connection, reason: string | null) => void
+    vnc_auth_failure: (conn: Connection, reason: string) => void
     vnc_auth_unsupported: (conn: Connection, authType: number) => void
     vnc_auth_credential: (conn: Connection, creds: GObject.ValueArray) => void
     vnc_auth_choose_type: (conn: Connection, types: GObject.ValueArray) => void
@@ -1656,10 +1656,10 @@ interface ConnectionClass {
     vnc_initialized: (conn: Connection) => void
     vnc_disconnected: (conn: Connection) => void
     vnc_led_state: (conn: Connection) => void
-    vnc_error: (conn: Connection, message: string | null) => void
+    vnc_error: (conn: Connection, message: string) => void
     vnc_power_control_initialized: (conn: Connection) => void
     vnc_power_control_failed: (conn: Connection) => void
-    vnc_desktop_rename: (conn: Connection, name: string | null) => void
+    vnc_desktop_rename: (conn: Connection, name: string) => void
     _vnc_reserved: any[]
 }
 

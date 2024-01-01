@@ -138,12 +138,12 @@ export function sourceErrorQuark(): GLib.Quark
  * @param errorCode a libusb error code
  * @returns String, or %NULL
  */
-export function strerror(errorCode: number): string | null
+export function strerror(errorCode: number): string
 /**
  * Gets the GUsb installed runtime version.
  * @returns a version number, e.g. "0.3.1"
  */
-export function versionString(): string | null
+export function versionString(): string
 export module BosDescriptor {
 
     // Constructor properties interface
@@ -269,7 +269,7 @@ export interface Context extends Gio.Initable {
      * @param platformId a platform id, e.g. "usb:00:03:03:02"
      * @returns a new #GUsbDevice, or %NULL if not found.
      */
-    findByPlatformId(platformId: string | null): Device
+    findByPlatformId(platformId: string): Device
     /**
      * Finds a device based on its bus and address values.
      * @param vid a vendor ID
@@ -312,7 +312,7 @@ export interface Context extends Gio.Initable {
      * @param tag a string tag, e.g. `runtime-reload`, or %NULL
      * @returns %TRUE on success
      */
-    loadWithTag(jsonObject: Json.Object, tag: string | null): boolean
+    loadWithTag(jsonObject: Json.Object, tag: string): boolean
     /**
      * Saves the context to an existing JSON builder.
      * @param jsonBuilder a #JsonBuilder
@@ -325,7 +325,7 @@ export interface Context extends Gio.Initable {
      * @param tag a string tag, e.g. `runtime-reload`, or %NULL
      * @returns %TRUE on success
      */
-    saveWithTag(jsonBuilder: Json.Builder, tag: string | null): boolean
+    saveWithTag(jsonBuilder: Json.Builder, tag: string): boolean
     /**
      * Sets the debug flags which control what is logged to the console.
      * 
@@ -476,7 +476,7 @@ export interface Device extends Gio.Initable {
      * the same physical device.
      * @param tag a tag, for example `bootloader` or `runtime-reload`
      */
-    addTag(tag: string | null): void
+    addTag(tag: string): void
     /**
      * Perform a USB bulk transfer.
      * 
@@ -694,7 +694,7 @@ export interface Device extends Gio.Initable {
      * Gets the product ID for the device as a string.
      * @returns an string ID, or %NULL if not available.
      */
-    getPidAsStr(): string | null
+    getPidAsStr(): string
     /**
      * Gets the platform identifier for the device.
      * 
@@ -702,7 +702,7 @@ export interface Device extends Gio.Initable {
      * be different.
      * @returns The platform ID, e.g. "usb:02:00:03:01"
      */
-    getPlatformId(): string | null
+    getPlatformId(): string
     /**
      * Gets the USB port number for the device.
      * @returns The 8-bit port number
@@ -770,13 +770,13 @@ export interface Device extends Gio.Initable {
      * Gets the vendor ID for the device as a string.
      * @returns an string ID, or %NULL if not available.
      */
-    getVidAsStr(): string | null
+    getVidAsStr(): string
     /**
      * Checks if a tag has been used to identify the specific device.
      * @param tag a tag, for example `bootloader` or `runtime-reload`
      * @returns %TRUE on success
      */
-    hasTag(tag: string | null): boolean
+    hasTag(tag: string): boolean
     /**
      * Perform a USB interrupt transfer.
      * 
@@ -830,7 +830,7 @@ export interface Device extends Gio.Initable {
      * Removes a tag, which is included in the JSON log to identify the specific device.
      * @param tag a tag, for example `bootloader` or `runtime-reload`
      */
-    removeTag(tag: string | null): void
+    removeTag(tag: string): void
     /**
      * Perform a USB port reset to reinitialize a device.
      * 
@@ -927,7 +927,7 @@ export interface DeviceEvent {
      * Gets the event ID.
      * @returns string, or %NULL
      */
-    getId(): string | null
+    getId(): string
     /**
      * Gets any return code from the event.
      * @returns a `enum libusb_error`

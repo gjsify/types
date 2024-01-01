@@ -1404,7 +1404,7 @@ export function pixelFormatGetNPlanes(format: PixelFormat): number
  * @param format a #CoglPixelFormat
  * @returns A string representation of @format.
  */
-export function pixelFormatToString(format: PixelFormat): string | null
+export function pixelFormatToString(format: PixelFormat): string
 /**
  * Attaches a shader to a program object. A program can have multiple
  * vertex or fragment shaders but only one of them may provide a
@@ -1422,7 +1422,7 @@ export function programAttachShader(programHandle: Handle, shaderHandle: Handle)
  * @param uniformName the name of a uniform.
  * @returns the offset of a uniform in a specified program.
  */
-export function programGetUniformLocation(handle: Handle, uniformName: string | null): number
+export function programGetUniformLocation(handle: Handle, uniformName: string): number
 /**
  * Links a program making it ready for use. Note that calling this
  * function is optional. If it is not called the program will
@@ -1476,8 +1476,8 @@ export function programSetUniformInt(program: Handle, uniformLocation: number, n
 export function programSetUniformMatrix(program: Handle, uniformLocation: number, dimensions: number, transpose: boolean, value: number[]): void
 export function scanoutErrorQuark(): GLib.Quark
 export function setTracingDisabledOnThread(mainContext: GLib.MainContext): void
-export function setTracingEnabledOnThread(mainContext: GLib.MainContext, group: string | null, filename: string | null): void
-export function setTracingEnabledOnThreadWithFd(mainContext: GLib.MainContext, group: string | null, fd: number): void
+export function setTracingEnabledOnThread(mainContext: GLib.MainContext, group: string, filename: string): void
+export function setTracingEnabledOnThreadWithFd(mainContext: GLib.MainContext, group: string, fd: number): void
 /**
  * Retrieves the type of a shader #CoglHandle
  * @param handle #CoglHandle for a shader.
@@ -1494,9 +1494,9 @@ export function shaderGetType(handle: Handle): ShaderType
  * @param shader #CoglHandle for a shader.
  * @param source Shader source.
  */
-export function shaderSource(shader: Handle, source: string | null): void
+export function shaderSource(shader: Handle, source: string): void
 export function textureErrorQuark(): number
-export function traceDescribe(head: TraceHead, description: string | null): void
+export function traceDescribe(head: TraceHead, description: string): void
 export function traceEnd(head: TraceHead): void
 /**
  * A callback function to use for cogl_debug_object_foreach_type().
@@ -1616,7 +1616,7 @@ export interface Texture extends Object {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Queries the GL handles for a GPU side texture through its #CoglTexture.
      * 
@@ -1746,7 +1746,7 @@ export interface Texture extends Object {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Affects the internal storage format for this texture by specifying
      * whether red, green and blue color components should be stored as
@@ -1889,7 +1889,7 @@ export class Bitmap extends Object {
      * @param filename the file to load.
      * @returns a #CoglBitmap to the new loaded               image data, or %NULL if loading the image failed.
      */
-    static newFromFile(filename: string | null): Bitmap
+    static newFromFile(filename: string): Bitmap
     _init(config?: Bitmap.ConstructorProperties): void
     static errorQuark(): number
     /**
@@ -1898,7 +1898,7 @@ export class Bitmap extends Object {
      * @param filename the file to check
      * @returns %TRUE if the image was successfully parsed
      */
-    static getSizeFromFile(filename: string | null): [ /* returnType */ boolean, /* width */ number, /* height */ number ]
+    static getSizeFromFile(filename: string): [ /* returnType */ boolean, /* width */ number, /* height */ number ]
 }
 
 export module Context {
@@ -3425,7 +3425,7 @@ export interface Pipeline {
      * @param uniformName The name of a uniform
      * @returns A integer representing the location of the given uniform.
      */
-    getUniformLocation(uniformName: string | null): number
+    getUniformLocation(uniformName: string): number
     /**
      * Queries what user program has been associated with the given
      * `pipeline` using cogl_pipeline_set_user_program().
@@ -3518,7 +3518,7 @@ export interface Pipeline {
      * @param blendString A <link linkend="cogl-Blend-Strings">Cogl blend string</link>   describing the desired blend function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described blending is supported by the underlying driver/hardware. If   there was an error, %FALSE is returned and @error is set accordingly (if   present).
      */
-    setBlend(blendString: string | null): boolean
+    setBlend(blendString: string): boolean
     /**
      * When blending is setup to reference a CONSTANT blend factor then
      * blending will depend on the constant set with this function.
@@ -3665,7 +3665,7 @@ export interface Pipeline {
      * @param blendString A <link linkend="cogl-Blend-Strings">Cogl blend string</link>    describing the desired texture combine function.
      * @returns %TRUE if the blend string was successfully parsed, and the   described texture combining is supported by the underlying driver and   or hardware. On failure, %FALSE is returned and @error is set
      */
-    setLayerCombine(layerIndex: number, blendString: string | null): boolean
+    setLayerCombine(layerIndex: number, blendString: string): boolean
     /**
      * When you are using the 'CONSTANT' color source in a layer combine
      * description then you can use this function to define its value.
@@ -3964,11 +3964,11 @@ export interface Snippet {
 
     // Owm methods of Cogl-12.Cogl.Snippet
 
-    getDeclarations(): string | null
+    getDeclarations(): string
     getHook(): SnippetHook
-    getPost(): string | null
-    getPre(): string | null
-    getReplace(): string | null
+    getPost(): string
+    getPre(): string
+    getReplace(): string
     /**
      * Sets a source string that will be inserted in the global scope of
      * the generated shader when this snippet is used on a pipeline. This
@@ -3980,7 +3980,7 @@ export interface Snippet {
      * immutable.
      * @param declarations The new source string for the declarations section   of this snippet.
      */
-    setDeclarations(declarations: string | null): void
+    setDeclarations(declarations: string): void
     /**
      * Sets a source string that will be inserted after the hook point in
      * the generated shader for the pipeline that this snippet is attached
@@ -3992,7 +3992,7 @@ export interface Snippet {
      * immutable.
      * @param post The new source string for the post section of this snippet.
      */
-    setPost(post: string | null): void
+    setPost(post: string): void
     /**
      * Sets a source string that will be inserted before the hook point in
      * the generated shader for the pipeline that this snippet is attached
@@ -4004,7 +4004,7 @@ export interface Snippet {
      * immutable.
      * @param pre The new source string for the pre section of this snippet.
      */
-    setPre(pre: string | null): void
+    setPre(pre: string): void
     /**
      * Sets a source string that will be used instead of any generated
      * source code or any previous snippets for this hook point. Please
@@ -4016,7 +4016,7 @@ export interface Snippet {
      * immutable.
      * @param replace The new source string for the replace section of this snippet.
      */
-    setReplace(replace: string | null): void
+    setReplace(replace: string): void
 
     // Class property signals of Cogl-12.Cogl.Snippet
 
@@ -4106,13 +4106,13 @@ export interface Texture2D extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -4180,7 +4180,7 @@ export interface Texture2D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -4195,7 +4195,7 @@ export interface Texture2D extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of Cogl-12.Cogl.Texture2D
 
@@ -4281,13 +4281,13 @@ export interface Texture2DSliced extends Texture {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * Gets a named field from the objects table of associations (see g_object_set_data()).
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     /**
      * `texture` a #CoglTexture.
      * Sets all the pixels for a given mipmap `level` by copying the pixel
@@ -4355,7 +4355,7 @@ export interface Texture2DSliced extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
     /**
      * Each object carries around a table of associations from
      * strings to pointers.  This function lets you set an association.
@@ -4370,7 +4370,7 @@ export interface Texture2DSliced extends Texture {
      * @param key name of the key
      * @param data data to associate with that key
      */
-    setData(key: string | null, data: any | null): void
+    setData(key: string, data: any | null): void
 
     // Class property signals of Cogl-12.Cogl.Texture2DSliced
 
@@ -4674,7 +4674,7 @@ export interface DebugObjectTypeInfo {
      * A human readable name for the type.
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * The number of objects of this type that are
      *   currently in use
@@ -4928,7 +4928,7 @@ export interface TraceHead {
     // Own fields of Cogl-12.Cogl.TraceHead
 
     beginTime: number
-    name: string | null
+    name: string
     description: string | null
 }
 

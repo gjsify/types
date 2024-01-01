@@ -146,12 +146,12 @@ enum AggregatorScopeMergeMode {
     OWNER_SCOPE,
 }
 const SCOPE_API_VERSION: number
-function category_renderer_from_string(renderer_name: string | null): CategoryRenderer
-function category_renderer_to_string(val: CategoryRenderer): string | null
-function category_content_type_from_string(content_type: string | null): CategoryContentType
-function category_content_type_to_string(val: CategoryContentType): string | null
-function filter_renderer_to_string(renderer: FilterRenderer): string | null
-function filter_renderer_from_string(renderer_name: string | null): FilterRenderer
+function category_renderer_from_string(renderer_name: string): CategoryRenderer
+function category_renderer_to_string(val: CategoryRenderer): string
+function category_content_type_from_string(content_type: string): CategoryContentType
+function category_content_type_to_string(val: CategoryContentType): string
+function filter_renderer_to_string(renderer: FilterRenderer): string
+function filter_renderer_from_string(renderer_name: string): FilterRenderer
 function scope_module_get_version(): number
 function scope_module_load_scopes(): AbstractScope[]
 function object_unref(object?: any | null): void
@@ -169,7 +169,7 @@ module AppInfoManager {
      * Signal callback interface for `changed`
      */
     interface ChangedSignalCallback {
-        ($obj: AppInfoManager, id: string | null, new_appinfo?: Gio.AppInfo | null): void
+        ($obj: AppInfoManager, id: string, new_appinfo?: Gio.AppInfo | null): void
     }
 
 
@@ -184,11 +184,11 @@ interface AppInfoManager {
 
     // Owm methods of Unity-7.0.Unity.AppInfoManager
 
-    lookup(id: string | null): Gio.AppInfo | null
-    get_categories(id: string | null): string[] | null
-    get_keywords(id: string | null): string[] | null
-    get_path(id: string | null): string | null
-    lookup_async(id: string | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    lookup(id: string): Gio.AppInfo | null
+    get_categories(id: string): string[] | null
+    get_keywords(id: string): string[] | null
+    get_path(id: string): string | null
+    lookup_async(id: string, _callback_?: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of lookup_async
 
@@ -200,7 +200,7 @@ interface AppInfoManager {
      * @param _callback_ 
      * @returns A Promise of the result of {@link lookup_async}
      */
-    lookup_async(id: string | null): globalThis.Promise<Gio.AppInfo | null>
+    lookup_async(id: string): globalThis.Promise<Gio.AppInfo | null>
     lookup_finish(_res_: Gio.AsyncResult): Gio.AppInfo | null
     clear(): void
 
@@ -208,7 +208,7 @@ interface AppInfoManager {
 
     connect(sigName: "changed", callback: AppInfoManager.ChangedSignalCallback): number
     connect_after(sigName: "changed", callback: AppInfoManager.ChangedSignalCallback): number
-    emit(sigName: "changed", id: string | null, new_appinfo?: Gio.AppInfo | null, ...args: any[]): void
+    emit(sigName: "changed", id: string, new_appinfo?: Gio.AppInfo | null, ...args: any[]): void
 
     // Class property signals of Unity-7.0.Unity.AppInfoManager
 
@@ -266,8 +266,8 @@ interface AnnotatedIcon {
     to_string(): string | null
     get_icon(): Gio.Icon
     set_icon(value: Gio.Icon): void
-    get_ribbon(): string | null
-    set_ribbon(value: string | null): void
+    get_ribbon(): string
+    set_ribbon(value: string): void
     get_category(): CategoryType
     set_category(value: CategoryType): void
     get_size_hint(): IconSizeHint
@@ -398,8 +398,8 @@ interface LauncherEntry extends Dee.Serializable {
 
     // Owm methods of Unity-7.0.Unity.LauncherEntry
 
-    get_app_uri(): string | null
-    set_app_uri(value: string | null): void
+    get_app_uri(): string
+    set_app_uri(value: string): void
     get_count(): number
     set_count(value: number): void
     get_count_visible(): boolean
@@ -453,9 +453,9 @@ class LauncherEntry extends GObject.Object {
 
     constructor(config?: LauncherEntry.ConstructorProperties) 
     _init(config?: LauncherEntry.ConstructorProperties): void
-    static get_for_app_uri(app_uri: string | null): LauncherEntry
-    static get_for_desktop_id(desktop_id: string | null): LauncherEntry
-    static get_for_desktop_file(desktop_file: string | null): LauncherEntry
+    static get_for_app_uri(app_uri: string): LauncherEntry
+    static get_for_desktop_id(desktop_id: string): LauncherEntry
+    static get_for_desktop_file(desktop_file: string): LauncherEntry
 }
 
 module LauncherFavorites {
@@ -482,8 +482,8 @@ interface LauncherFavorites {
     // Owm methods of Unity-7.0.Unity.LauncherFavorites
 
     has_app_info(appinfo: Gio.AppInfo): boolean
-    has_app_id(app_id: string | null): boolean
-    lookup(app_id: string | null): Gio.AppInfo | null
+    has_app_id(app_id: string): boolean
+    lookup(app_id: string): Gio.AppInfo | null
     enumerate_ids(): string[]
     enumerate_app_infos(): Gio.AppInfo[]
 
@@ -574,8 +574,8 @@ interface ProgressSourceProvider {
 
     // Owm methods of Unity-7.0.Unity.ProgressSourceProvider
 
-    get_dbus_name(): string | null
-    get_dbus_path(): string | null
+    get_dbus_name(): string
+    get_dbus_path(): string
 
     // Class property signals of Unity-7.0.Unity.ProgressSourceProvider
 
@@ -601,8 +601,8 @@ class ProgressSourceProvider extends MetadataProvider {
     // Constructors of Unity-7.0.Unity.ProgressSourceProvider
 
     constructor(config?: ProgressSourceProvider.ConstructorProperties) 
-    constructor(dbus_name: string | null, dbus_path: string | null) 
-    static new(dbus_name: string | null, dbus_path: string | null): ProgressSourceProvider
+    constructor(dbus_name: string, dbus_path: string) 
+    static new(dbus_name: string, dbus_path: string): ProgressSourceProvider
     _init(config?: ProgressSourceProvider.ConstructorProperties): void
 }
 
@@ -647,15 +647,15 @@ interface Category {
     // Owm methods of Unity-7.0.Unity.Category
 
     add_metadata_provider(provider: MetadataProvider): void
-    get_id(): string | null
-    get_name(): string | null
+    get_id(): string
+    get_name(): string
     get_icon_hint(): Gio.Icon | null
     get_default_renderer(): CategoryRenderer
     get_content_type(): CategoryContentType
     set_content_type(value: CategoryContentType): void
-    get_renderer_hint(): string | null
-    set_renderer_hint(value: string | null): void
-    get_renderer(): string | null
+    get_renderer_hint(): string
+    set_renderer_hint(value: string): void
+    get_renderer(): string
 
     // Class property signals of Unity-7.0.Unity.Category
 
@@ -696,8 +696,8 @@ class Category extends GObject.Object {
     // Constructors of Unity-7.0.Unity.Category
 
     constructor(config?: Category.ConstructorProperties) 
-    constructor(id: string | null, name: string | null, icon_hint: Gio.Icon, renderer: CategoryRenderer) 
-    static new(id: string | null, name: string | null, icon_hint: Gio.Icon, renderer: CategoryRenderer): Category
+    constructor(id: string, name: string, icon_hint: Gio.Icon, renderer: CategoryRenderer) 
+    static new(id: string, name: string, icon_hint: Gio.Icon, renderer: CategoryRenderer): Category
     _init(config?: Category.ConstructorProperties): void
 }
 
@@ -748,8 +748,8 @@ interface Filter extends Dee.Serializable {
 
     // Owm methods of Unity-7.0.Unity.Filter
 
-    get_id(): string | null
-    get_display_name(): string | null
+    get_id(): string
+    get_display_name(): string
     get_icon_hint(): Gio.Icon | null
     get_renderer(): FilterRenderer
     get_visible(): boolean
@@ -836,8 +836,8 @@ interface FilterOption {
 
     // Owm methods of Unity-7.0.Unity.FilterOption
 
-    get_id(): string | null
-    get_display_name(): string | null
+    get_id(): string
+    get_display_name(): string
     get_icon_hint(): Gio.Icon
     get_active(): boolean
     set_active(value: boolean): void
@@ -872,8 +872,8 @@ class FilterOption extends GObject.Object {
     // Constructors of Unity-7.0.Unity.FilterOption
 
     constructor(config?: FilterOption.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, active: boolean) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, active: boolean): FilterOption
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, active: boolean) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, active: boolean): FilterOption
     _init(config?: FilterOption.ConstructorProperties): void
 }
 
@@ -908,9 +908,9 @@ interface OptionsFilter {
 
     // Owm methods of Unity-7.0.Unity.OptionsFilter
 
-    add_option(id: string | null, display_name: string | null, icon_hint?: Gio.Icon | null): FilterOption
-    get_option(id: string | null): FilterOption | null
-    remove_option(id: string | null): boolean
+    add_option(id: string, display_name: string, icon_hint?: Gio.Icon | null): FilterOption
+    get_option(id: string): FilterOption | null
+    remove_option(id: string): boolean
     get_sort_type(): OptionsFilterSortType
     set_sort_type(value: OptionsFilterSortType): void
     get_show_all_button(): boolean
@@ -1026,8 +1026,8 @@ class RadioOptionFilter extends OptionsFilter {
     // Constructors of Unity-7.0.Unity.RadioOptionFilter
 
     constructor(config?: RadioOptionFilter.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean): RadioOptionFilter
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): RadioOptionFilter
 
     // Overloads of new
 
@@ -1091,8 +1091,8 @@ class CheckOptionFilter extends OptionsFilter {
     // Constructors of Unity-7.0.Unity.CheckOptionFilter
 
     constructor(config?: CheckOptionFilter.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean): CheckOptionFilter
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): CheckOptionFilter
 
     // Overloads of new
 
@@ -1156,8 +1156,8 @@ class CheckOptionFilterCompact extends OptionsFilter {
     // Constructors of Unity-7.0.Unity.CheckOptionFilterCompact
 
     constructor(config?: CheckOptionFilterCompact.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean): CheckOptionFilterCompact
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): CheckOptionFilterCompact
 
     // Overloads of new
 
@@ -1230,8 +1230,8 @@ class RatingsFilter extends Filter {
     // Constructors of Unity-7.0.Unity.RatingsFilter
 
     constructor(config?: RatingsFilter.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean): RatingsFilter
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): RatingsFilter
     _init(config?: RatingsFilter.ConstructorProperties): void
 }
 
@@ -1296,8 +1296,8 @@ class MultiRangeFilter extends OptionsFilter {
     // Constructors of Unity-7.0.Unity.MultiRangeFilter
 
     constructor(config?: MultiRangeFilter.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, collapsed: boolean): MultiRangeFilter
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, collapsed: boolean): MultiRangeFilter
 
     // Overloads of new
 
@@ -1437,11 +1437,11 @@ interface DeprecatedScopeSearch {
 
     // Owm methods of Unity-7.0.Unity.DeprecatedScopeSearch
 
-    set_reply_hint(key: string | null, variant: GLib.Variant): void
-    get_filter(filter_id: string | null): Filter | null
+    set_reply_hint(key: string, variant: GLib.Variant): void
+    get_filter(filter_id: string): Filter | null
     equals(other: DeprecatedScopeSearch): boolean
-    get_channel_id(): string | null
-    get_search_string(): string | null
+    get_channel_id(): string
+    get_search_string(): string
     get_search_type(): SearchType
     get_hints(): GLib.HashTable
     get_results_model(): Dee.SerializableModel
@@ -1500,7 +1500,7 @@ module AggregatedScopeSearch {
      * Signal callback interface for `transaction-complete`
      */
     interface TransactionCompleteSignalCallback {
-        ($obj: AggregatedScopeSearch, origin_scope_id: string | null): void
+        ($obj: AggregatedScopeSearch, origin_scope_id: string): void
     }
 
     /**
@@ -1522,9 +1522,9 @@ interface AggregatedScopeSearch {
 
     // Owm methods of Unity-7.0.Unity.AggregatedScopeSearch
 
-    search_scope(scope_id: string | null, search_string: string | null, search_type: SearchType, hints?: GLib.HashTable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    search_scope(scope_id: string, search_string: string, search_type: SearchType, hints?: GLib.HashTable | null, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     search_scope_finish(_res_: Gio.AsyncResult): GLib.HashTable
-    push_results(scope_id: string | null, results_model: Dee.SerializableModel, category_ids: string[], _callback_?: Gio.AsyncReadyCallback<this> | null): void
+    push_results(scope_id: string, results_model: Dee.SerializableModel, category_ids: string[], _callback_?: Gio.AsyncReadyCallback<this> | null): void
     push_results_finish(_res_: Gio.AsyncResult): void
     push_filter_settings(filters: FilterSet): void
 
@@ -1532,7 +1532,7 @@ interface AggregatedScopeSearch {
 
     connect(sigName: "transaction-complete", callback: AggregatedScopeSearch.TransactionCompleteSignalCallback): number
     connect_after(sigName: "transaction-complete", callback: AggregatedScopeSearch.TransactionCompleteSignalCallback): number
-    emit(sigName: "transaction-complete", origin_scope_id: string | null, ...args: any[]): void
+    emit(sigName: "transaction-complete", origin_scope_id: string, ...args: any[]): void
     connect(sigName: "category-order-changed", callback: AggregatedScopeSearch.CategoryOrderChangedSignalCallback): number
     connect_after(sigName: "category-order-changed", callback: AggregatedScopeSearch.CategoryOrderChangedSignalCallback): number
     emit(sigName: "category-order-changed", category_indices: number[], ...args: any[]): void
@@ -1573,8 +1573,8 @@ class AggregatedScopeSearch extends DeprecatedScopeSearch {
     // Constructors of Unity-7.0.Unity.AggregatedScopeSearch
 
     constructor(config?: AggregatedScopeSearch.ConstructorProperties) 
-    constructor(owner: AggregatorScope, channel_id: string | null, hints: GLib.HashTable, results_model: Dee.SerializableModel) 
-    static new(owner: AggregatorScope, channel_id: string | null, hints: GLib.HashTable, results_model: Dee.SerializableModel): AggregatedScopeSearch
+    constructor(owner: AggregatorScope, channel_id: string, hints: GLib.HashTable, results_model: Dee.SerializableModel) 
+    static new(owner: AggregatorScope, channel_id: string, hints: GLib.HashTable, results_model: Dee.SerializableModel): AggregatedScopeSearch
     _init(config?: AggregatedScopeSearch.ConstructorProperties): void
 }
 
@@ -1613,14 +1613,14 @@ interface Preview extends Dee.Serializable {
 
     add_action(action: PreviewAction): void
     add_info(info_hint: InfoHint): void
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_subtitle(): string | null
-    set_subtitle(value: string | null): void
-    get_description_markup(): string | null
-    set_description_markup(value: string | null): void
-    get_image_source_uri(): string | null
-    set_image_source_uri(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
+    get_subtitle(): string
+    set_subtitle(value: string): void
+    get_description_markup(): string
+    set_description_markup(value: string): void
+    get_image_source_uri(): string
+    set_image_source_uri(value: string): void
     get_image(): Gio.Icon | null
     set_image(value?: Gio.Icon | null): void
 
@@ -1668,7 +1668,7 @@ module PreviewAction {
      * Signal callback interface for `activated`
      */
     interface ActivatedSignalCallback {
-        ($obj: PreviewAction, uri: string | null): ActivationResponse
+        ($obj: PreviewAction, uri: string): ActivationResponse
     }
 
 
@@ -1708,10 +1708,10 @@ interface PreviewAction extends Dee.Serializable {
 
     // Owm methods of Unity-7.0.Unity.PreviewAction
 
-    get_id(): string | null
-    get_display_name(): string | null
-    get_extra_text(): string | null
-    set_extra_text(value: string | null): void
+    get_id(): string
+    get_display_name(): string
+    get_extra_text(): string
+    set_extra_text(value: string): void
     get_icon_hint(): Gio.Icon | null
     get_layout_hint(): LayoutHint
     get_hints(): GLib.HashTable | null
@@ -1720,7 +1720,7 @@ interface PreviewAction extends Dee.Serializable {
 
     connect(sigName: "activated", callback: PreviewAction.ActivatedSignalCallback): number
     connect_after(sigName: "activated", callback: PreviewAction.ActivatedSignalCallback): number
-    emit(sigName: "activated", uri: string | null, ...args: any[]): void
+    emit(sigName: "activated", uri: string, ...args: any[]): void
 
     // Class property signals of Unity-7.0.Unity.PreviewAction
 
@@ -1758,10 +1758,10 @@ class PreviewAction extends GObject.Object {
     // Constructors of Unity-7.0.Unity.PreviewAction
 
     constructor(config?: PreviewAction.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint?: Gio.Icon | null) 
-    static new(id: string | null, display_name: string | null, icon_hint?: Gio.Icon | null): PreviewAction
-    static with_layout_hint(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, layout: LayoutHint): PreviewAction
-    static with_uri(uri: string | null, display_name: string | null, icon_hint?: Gio.Icon | null): PreviewAction
+    constructor(id: string, display_name: string, icon_hint?: Gio.Icon | null) 
+    static new(id: string, display_name: string, icon_hint?: Gio.Icon | null): PreviewAction
+    static with_layout_hint(id: string, display_name: string, icon_hint: Gio.Icon | null, layout: LayoutHint): PreviewAction
+    static with_uri(uri: string, display_name: string, icon_hint?: Gio.Icon | null): PreviewAction
     _init(config?: PreviewAction.ConstructorProperties): void
 }
 
@@ -1796,8 +1796,8 @@ interface InfoHint {
 
     // Owm methods of Unity-7.0.Unity.InfoHint
 
-    get_id(): string | null
-    get_display_name(): string | null
+    get_id(): string
+    get_display_name(): string
     get_icon_hint(): Gio.Icon | null
     get_data(): GLib.Variant
 
@@ -1808,7 +1808,7 @@ interface InfoHint {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    get_data(key: string | null): any | null
+    get_data(key: string): any | null
 
     // Class property signals of Unity-7.0.Unity.InfoHint
 
@@ -1840,9 +1840,9 @@ class InfoHint extends GObject.InitiallyUnowned {
     // Constructors of Unity-7.0.Unity.InfoHint
 
     constructor(config?: InfoHint.ConstructorProperties) 
-    constructor(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, data: string | null) 
-    static new(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, data: string | null): InfoHint
-    static with_variant(id: string | null, display_name: string | null, icon_hint: Gio.Icon | null, data: GLib.Variant): InfoHint
+    constructor(id: string, display_name: string, icon_hint: Gio.Icon | null, data: string) 
+    static new(id: string, display_name: string, icon_hint: Gio.Icon | null, data: string): InfoHint
+    static with_variant(id: string, display_name: string, icon_hint: Gio.Icon | null, data: GLib.Variant): InfoHint
     _init(config?: InfoHint.ConstructorProperties): void
 }
 
@@ -1890,8 +1890,8 @@ class GenericPreview extends Preview {
     // Constructors of Unity-7.0.Unity.GenericPreview
 
     constructor(config?: GenericPreview.ConstructorProperties) 
-    constructor(title: string | null, description: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, description: string | null, image?: Gio.Icon | null): GenericPreview
+    constructor(title: string, description: string, image?: Gio.Icon | null) 
+    static new(title: string, description: string, image?: Gio.Icon | null): GenericPreview
     _init(config?: GenericPreview.ConstructorProperties): void
 }
 
@@ -1929,12 +1929,12 @@ interface ApplicationPreview {
     set_rating(rating: number, num_ratings: number): void
     get_app_icon(): Gio.Icon
     set_app_icon(value: Gio.Icon): void
-    get_license(): string | null
-    set_license(value: string | null): void
-    get_copyright(): string | null
-    set_copyright(value: string | null): void
-    get_last_update(): string | null
-    set_last_update(value: string | null): void
+    get_license(): string
+    set_license(value: string): void
+    get_copyright(): string
+    set_copyright(value: string): void
+    get_last_update(): string
+    set_last_update(value: string): void
 
     // Class property signals of Unity-7.0.Unity.ApplicationPreview
 
@@ -1981,8 +1981,8 @@ class ApplicationPreview extends Preview {
     // Constructors of Unity-7.0.Unity.ApplicationPreview
 
     constructor(config?: ApplicationPreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, description: string | null, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, description: string | null, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null): ApplicationPreview
+    constructor(title: string, subtitle: string, description: string, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, description: string, icon?: Gio.Icon | null, screenshot?: Gio.Icon | null): ApplicationPreview
     _init(config?: ApplicationPreview.ConstructorProperties): void
 }
 
@@ -2034,8 +2034,8 @@ class MusicPreview extends Preview {
     // Constructors of Unity-7.0.Unity.MusicPreview
 
     constructor(config?: MusicPreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, image?: Gio.Icon | null): MusicPreview
+    constructor(title: string, subtitle: string, image?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, image?: Gio.Icon | null): MusicPreview
     _init(config?: MusicPreview.ConstructorProperties): void
 }
 
@@ -2078,16 +2078,16 @@ interface PaymentPreview {
 
     // Owm methods of Unity-7.0.Unity.PaymentPreview
 
-    get_header(): string | null
-    set_header(value: string | null): void
-    get_email(): string | null
-    set_email(value: string | null): void
-    get_payment_method(): string | null
-    set_payment_method(value: string | null): void
-    get_purchase_prize(): string | null
-    set_purchase_prize(value: string | null): void
-    get_purchase_type(): string | null
-    set_purchase_type(value: string | null): void
+    get_header(): string
+    set_header(value: string): void
+    get_email(): string
+    set_email(value: string): void
+    get_payment_method(): string
+    set_payment_method(value: string): void
+    get_purchase_prize(): string
+    set_purchase_prize(value: string): void
+    get_purchase_type(): string
+    set_purchase_type(value: string): void
     get_preview_type(): PaymentPreviewType
     set_preview_type(value: PaymentPreviewType): void
 
@@ -2142,12 +2142,12 @@ class PaymentPreview extends Preview {
     // Constructors of Unity-7.0.Unity.PaymentPreview
 
     constructor(config?: PaymentPreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, image?: Gio.Icon | null): PaymentPreview
-    static for_type(title: string | null, subtitle: string | null, image: Gio.Icon | null, type: PaymentPreviewType): PaymentPreview
-    static for_application(title: string | null, subtitle: string | null, image?: Gio.Icon | null): PaymentPreview
-    static for_music(title: string | null, subtitle: string | null, image?: Gio.Icon | null): PaymentPreview
-    static for_error(title: string | null, subtitle: string | null, image?: Gio.Icon | null): PaymentPreview
+    constructor(title: string, subtitle: string, image?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview
+    static for_type(title: string, subtitle: string, image: Gio.Icon | null, type: PaymentPreviewType): PaymentPreview
+    static for_application(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview
+    static for_music(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview
+    static for_error(title: string, subtitle: string, image?: Gio.Icon | null): PaymentPreview
     _init(config?: PaymentPreview.ConstructorProperties): void
 }
 
@@ -2173,8 +2173,8 @@ interface MoviePreview {
     // Owm methods of Unity-7.0.Unity.MoviePreview
 
     set_rating(rating: number, num_ratings: number): void
-    get_year(): string | null
-    set_year(value: string | null): void
+    get_year(): string
+    set_year(value: string): void
 
     // Class property signals of Unity-7.0.Unity.MoviePreview
 
@@ -2212,8 +2212,8 @@ class MoviePreview extends Preview {
     // Constructors of Unity-7.0.Unity.MoviePreview
 
     constructor(config?: MoviePreview.ConstructorProperties) 
-    constructor(title: string | null, subtitle: string | null, description: string | null, image?: Gio.Icon | null) 
-    static new(title: string | null, subtitle: string | null, description: string | null, image?: Gio.Icon | null): MoviePreview
+    constructor(title: string, subtitle: string, description: string, image?: Gio.Icon | null) 
+    static new(title: string, subtitle: string, description: string, image?: Gio.Icon | null): MoviePreview
     _init(config?: MoviePreview.ConstructorProperties): void
 }
 
@@ -2245,10 +2245,10 @@ interface SocialPreview {
     add_comment(comment: SocialPreviewComment): void
     get_avatar(): Gio.Icon
     set_avatar(value: Gio.Icon): void
-    get_content(): string | null
-    set_content(value: string | null): void
-    get_sender(): string | null
-    set_sender(value: string | null): void
+    get_content(): string
+    set_content(value: string): void
+    get_sender(): string
+    set_sender(value: string): void
 
     // Class property signals of Unity-7.0.Unity.SocialPreview
 
@@ -2292,8 +2292,8 @@ class SocialPreview extends Preview {
     // Constructors of Unity-7.0.Unity.SocialPreview
 
     constructor(config?: SocialPreview.ConstructorProperties) 
-    constructor(sender: string | null, subtitle: string | null, content: string | null, avatar?: Gio.Icon | null) 
-    static new(sender: string | null, subtitle: string | null, content: string | null, avatar?: Gio.Icon | null): SocialPreview
+    constructor(sender: string, subtitle: string, content: string, avatar?: Gio.Icon | null) 
+    static new(sender: string, subtitle: string, content: string, avatar?: Gio.Icon | null): SocialPreview
     _init(config?: SocialPreview.ConstructorProperties): void
 }
 
@@ -2324,10 +2324,10 @@ interface SocialPreviewComment {
 
     // Owm methods of Unity-7.0.Unity.SocialPreviewComment
 
-    get_id(): string | null
-    get_name(): string | null
-    get_text(): string | null
-    get_time(): string | null
+    get_id(): string
+    get_name(): string
+    get_text(): string
+    get_time(): string
 
     // Class property signals of Unity-7.0.Unity.SocialPreviewComment
 
@@ -2359,8 +2359,8 @@ class SocialPreviewComment extends GObject.InitiallyUnowned {
     // Constructors of Unity-7.0.Unity.SocialPreviewComment
 
     constructor(config?: SocialPreviewComment.ConstructorProperties) 
-    constructor(id: string | null, name: string | null, text: string | null, time: string | null) 
-    static new(id: string | null, name: string | null, text: string | null, time: string | null): SocialPreviewComment
+    constructor(id: string, name: string, text: string, time: string) 
+    static new(id: string, name: string, text: string, time: string): SocialPreviewComment
     _init(config?: SocialPreviewComment.ConstructorProperties): void
 }
 
@@ -2390,8 +2390,8 @@ interface ActivationResponse {
     // Owm methods of Unity-7.0.Unity.ActivationResponse
 
     get_handled(): HandledType
-    get_goto_uri(): string | null
-    set_goto_uri(value: string | null): void
+    get_goto_uri(): string
+    set_goto_uri(value: string): void
 
     // Class property signals of Unity-7.0.Unity.ActivationResponse
 
@@ -2417,9 +2417,9 @@ class ActivationResponse extends GObject.Object {
     // Constructors of Unity-7.0.Unity.ActivationResponse
 
     constructor(config?: ActivationResponse.ConstructorProperties) 
-    constructor(handled: HandledType, goto_uri: string | null) 
-    static new(handled: HandledType, goto_uri: string | null): ActivationResponse
-    static with_search(search_string: string | null, filter_set?: FilterSet | null, search_metadata?: SearchMetadata | null): ActivationResponse
+    constructor(handled: HandledType, goto_uri: string) 
+    static new(handled: HandledType, goto_uri: string): ActivationResponse
+    static with_search(search_string: string, filter_set?: FilterSet | null, search_metadata?: SearchMetadata | null): ActivationResponse
     static with_preview(preview: Preview): ActivationResponse
     _init(config?: ActivationResponse.ConstructorProperties): void
 }
@@ -2461,10 +2461,10 @@ interface AggregatorActivation {
 
     // Owm methods of Unity-7.0.Unity.AggregatorActivation
 
-    get_channel_id(): string | null
-    set_channel_id(value: string | null): void
-    get_scope_id(): string | null
-    set_scope_id(value: string | null): void
+    get_channel_id(): string
+    set_channel_id(value: string): void
+    get_scope_id(): string
+    set_scope_id(value: string): void
     get_action_type(): number
     set_action_type(value: number): void
     get_scope_result(): ScopeResult | null
@@ -2504,8 +2504,8 @@ class AggregatorActivation extends GObject.Object {
     // Constructors of Unity-7.0.Unity.AggregatorActivation
 
     constructor(config?: AggregatorActivation.ConstructorProperties) 
-    constructor(channel_id: string | null, scope_id: string | null, action_type: number, result?: ScopeResult | null) 
-    static new(channel_id: string | null, scope_id: string | null, action_type: number, result?: ScopeResult | null): AggregatorActivation
+    constructor(channel_id: string, scope_id: string, action_type: number, result?: ScopeResult | null) 
+    static new(channel_id: string, scope_id: string, action_type: number, result?: ScopeResult | null): AggregatorActivation
     _init(config?: AggregatorActivation.ConstructorProperties): void
 }
 
@@ -2523,13 +2523,13 @@ interface FilterSet {
     // Owm methods of Unity-7.0.Unity.FilterSet
 
     add(filter: Filter): void
-    get_filter_by_id(filter_id: string | null): Filter | null
+    get_filter_by_id(filter_id: string): Filter | null
     get_filters(): Filter[]
 
     // Own virtual methods of Unity-7.0.Unity.FilterSet
 
     vfunc_add(filter: Filter): void
-    vfunc_get_filter_by_id(filter_id: string | null): Filter | null
+    vfunc_get_filter_by_id(filter_id: string): Filter | null
     vfunc_get_filters(): Filter[]
 
     // Class property signals of Unity-7.0.Unity.FilterSet
@@ -2612,12 +2612,12 @@ interface Schema {
 
     // Owm methods of Unity-7.0.Unity.Schema
 
-    add_field(name: string | null, schema: string | null, type: SchemaFieldType): void
+    add_field(name: string, schema: string, type: SchemaFieldType): void
     get_fields(): SchemaFieldInfo[]
 
     // Own virtual methods of Unity-7.0.Unity.Schema
 
-    vfunc_add_field(name: string | null, schema: string | null, type: SchemaFieldType): void
+    vfunc_add_field(name: string, schema: string, type: SchemaFieldType): void
     vfunc_get_fields(): SchemaFieldInfo[]
 
     // Class property signals of Unity-7.0.Unity.Schema
@@ -3009,7 +3009,7 @@ interface AbstractScope {
     get_group_name(): string | null
     get_unique_name(): string | null
     activate(result: ScopeResult, metadata: SearchMetadata, action_id?: string | null): ActivationResponse | null
-    normalize_search_query(search_query: string | null): string | null
+    normalize_search_query(search_query: string): string | null
     results_invalidated(search_type: SearchType): void
 
     // Own virtual methods of Unity-7.0.Unity.AbstractScope
@@ -3023,7 +3023,7 @@ interface AbstractScope {
     vfunc_get_group_name(): string | null
     vfunc_get_unique_name(): string | null
     vfunc_activate(result: ScopeResult, metadata: SearchMetadata, action_id?: string | null): ActivationResponse | null
-    vfunc_normalize_search_query(search_query: string | null): string | null
+    vfunc_normalize_search_query(search_query: string): string | null
 
     // Own signals of Unity-7.0.Unity.AbstractScope
 
@@ -3164,15 +3164,15 @@ interface DeprecatedScopeBase {
 
     export(): void
     unexport(): void
-    get_id(): string | null
-    get_dbus_path(): string | null
+    get_id(): string
+    get_dbus_path(): string
     get_search_in_global(): boolean
     set_search_in_global(value: boolean): void
     get_visible(): boolean
     set_visible(value: boolean): void
     get_is_master(): boolean
-    get_search_hint(): string | null
-    set_search_hint(value: string | null): void
+    get_search_hint(): string
+    set_search_hint(value: string): void
     get_sources(): OptionsFilter
     get_categories(): CategorySet
     set_categories(value: CategorySet): void
@@ -3246,14 +3246,14 @@ module DeprecatedScope {
      * Signal callback interface for `activate-uri`
      */
     interface ActivateUriSignalCallback {
-        ($obj: DeprecatedScope, uri: string | null): ActivationResponse | null
+        ($obj: DeprecatedScope, uri: string): ActivationResponse | null
     }
 
     /**
      * Signal callback interface for `preview-uri`
      */
     interface PreviewUriSignalCallback {
-        ($obj: DeprecatedScope, uri: string | null): Preview | null
+        ($obj: DeprecatedScope, uri: string): Preview | null
     }
 
     /**
@@ -3299,10 +3299,10 @@ interface DeprecatedScope {
 
     connect(sigName: "activate-uri", callback: DeprecatedScope.ActivateUriSignalCallback): number
     connect_after(sigName: "activate-uri", callback: DeprecatedScope.ActivateUriSignalCallback): number
-    emit(sigName: "activate-uri", uri: string | null, ...args: any[]): void
+    emit(sigName: "activate-uri", uri: string, ...args: any[]): void
     connect(sigName: "preview-uri", callback: DeprecatedScope.PreviewUriSignalCallback): number
     connect_after(sigName: "preview-uri", callback: DeprecatedScope.PreviewUriSignalCallback): number
-    emit(sigName: "preview-uri", uri: string | null, ...args: any[]): void
+    emit(sigName: "preview-uri", uri: string, ...args: any[]): void
     connect(sigName: "generate-search-key", callback: DeprecatedScope.GenerateSearchKeySignalCallback): number
     connect_after(sigName: "generate-search-key", callback: DeprecatedScope.GenerateSearchKeySignalCallback): number
     emit(sigName: "generate-search-key", search: DeprecatedScopeSearch, ...args: any[]): void
@@ -3358,8 +3358,8 @@ class DeprecatedScope extends DeprecatedScopeBase {
     // Constructors of Unity-7.0.Unity.DeprecatedScope
 
     constructor(config?: DeprecatedScope.ConstructorProperties) 
-    constructor(dbus_path_: string | null, id_: string | null) 
-    static new(dbus_path_: string | null, id_: string | null): DeprecatedScope
+    constructor(dbus_path_: string, id_: string) 
+    static new(dbus_path_: string, id_: string): DeprecatedScope
     _init(config?: DeprecatedScope.ConstructorProperties): void
 }
 
@@ -3394,9 +3394,9 @@ interface AggregatorScope {
 
     // Owm methods of Unity-7.0.Unity.AggregatorScope
 
-    category_index_for_scope_id(scope_id: string | null): number
-    add_sorter(category_index: number, field: string | null, flags: AggregatorScopeSortFlags): void
-    add_constraint(category_index: number, field: string | null): void
+    category_index_for_scope_id(scope_id: string): number
+    add_sorter(category_index: number, field: string, flags: AggregatorScopeSortFlags): void
+    add_constraint(category_index: number, field: string): void
     search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     search_finish(_res_: Gio.AsyncResult): void
     activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this> | null): void
@@ -3410,7 +3410,7 @@ interface AggregatorScope {
 
     // Own virtual methods of Unity-7.0.Unity.AggregatorScope
 
-    vfunc_category_index_for_scope_id(scope_id: string | null): number
+    vfunc_category_index_for_scope_id(scope_id: string): number
     vfunc_search(scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback<this> | null): void
     vfunc_search_finish(_res_: Gio.AsyncResult): void
     vfunc_activate(activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback<this> | null): void
@@ -3499,8 +3499,8 @@ interface MasterScope {
 
     // Owm methods of Unity-7.0.Unity.MasterScope
 
-    get_no_content_hint(): string | null
-    set_no_content_hint(value: string | null): void
+    get_no_content_hint(): string
+    set_no_content_hint(value: string): void
 
     // Class property signals of Unity-7.0.Unity.MasterScope
 
@@ -3562,8 +3562,8 @@ class MasterScope extends AggregatorScope {
     // Constructors of Unity-7.0.Unity.MasterScope
 
     constructor(config?: MasterScope.ConstructorProperties) 
-    constructor(dbus_path_: string | null, id_: string | null) 
-    static new(dbus_path_: string | null, id_: string | null): MasterScope
+    constructor(dbus_path_: string, id_: string) 
+    static new(dbus_path_: string, id_: string): MasterScope
     _init(config?: MasterScope.ConstructorProperties): void
 }
 
@@ -3619,12 +3619,24 @@ interface SimpleScope {
     set_category_set(value: CategorySet): void
     get_schema(): Schema
     set_schema(value: Schema): void
+    get_search_hint(): string
+
+    // Overloads of get_search_hint
+
     get_search_hint(): string | null
-    set_search_hint(value: string | null): void
+    set_search_hint(value: string): void
+    get_group_name(): string
+
+    // Overloads of get_group_name
+
     get_group_name(): string | null
-    set_group_name(value: string | null): void
+    set_group_name(value: string): void
+    get_unique_name(): string
+
+    // Overloads of get_unique_name
+
     get_unique_name(): string | null
-    set_unique_name(value: string | null): void
+    set_unique_name(value: string): void
 
     // Class property signals of Unity-7.0.Unity.SimpleScope
 
@@ -3680,15 +3692,15 @@ interface ScopeLoader {
 
     // Owm methods of Unity-7.0.Unity.ScopeLoader
 
-    get_scopes(module_name: string | null, module_type?: string | null): AbstractScope[]
+    get_scopes(module_name: string, module_type?: string | null): AbstractScope[]
     export_scopes(scopes: AbstractScope[]): void
-    load_group(group_name: string | null): void
-    load_scope(scope_id: string | null): void
-    load_module(module: string | null, module_type?: string | null): void
+    load_group(group_name: string): void
+    load_scope(scope_id: string): void
+    load_module(module: string, module_type?: string | null): void
 
     // Own virtual methods of Unity-7.0.Unity.ScopeLoader
 
-    vfunc_get_scopes(module_name: string | null, module_type?: string | null): AbstractScope[]
+    vfunc_get_scopes(module_name: string, module_type?: string | null): AbstractScope[]
     vfunc_export_scopes(scopes: AbstractScope[]): void
 
     // Class property signals of Unity-7.0.Unity.ScopeLoader
@@ -3755,16 +3767,16 @@ interface TrackMetadata {
 
     // Owm methods of Unity-7.0.Unity.TrackMetadata
 
-    get_uri(): string | null
-    set_uri(value: string | null): void
+    get_uri(): string
+    set_uri(value: string): void
     get_track_no(): number
     set_track_no(value: number): void
-    get_artist(): string | null
-    set_artist(value: string | null): void
-    get_title(): string | null
-    set_title(value: string | null): void
-    get_album(): string | null
-    set_album(value: string | null): void
+    get_artist(): string
+    set_artist(value: string): void
+    get_title(): string
+    set_title(value: string): void
+    get_album(): string
+    set_album(value: string): void
     get_length(): number
     set_length(value: number): void
     get_art_location(): Gio.File
@@ -3816,7 +3828,7 @@ class TrackMetadata extends GObject.Object {
     constructor(config?: TrackMetadata.ConstructorProperties) 
     constructor() 
     static new(): TrackMetadata
-    static full(uri: string | null, track_no: number, title: string | null, artist: string | null, album: string | null, length: number): TrackMetadata
+    static full(uri: string, track_no: number, title: string, artist: string, album: string, length: number): TrackMetadata
     _init(config?: TrackMetadata.ConstructorProperties): void
 }
 
@@ -3857,9 +3869,9 @@ interface Playlist {
 
     // Owm methods of Unity-7.0.Unity.Playlist
 
-    get_id(): string | null
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_id(): string
+    get_name(): string
+    set_name(value: string): void
     get_icon(): Gio.Icon
     set_icon(value: Gio.Icon): void
     get_creation_date(): GLib.DateTime
@@ -3905,8 +3917,8 @@ class Playlist extends GObject.Object {
     // Constructors of Unity-7.0.Unity.Playlist
 
     constructor(config?: Playlist.ConstructorProperties) 
-    constructor(id: string | null) 
-    static new(id: string | null): Playlist
+    constructor(id: string) 
+    static new(id: string): Playlist
     _init(config?: Playlist.ConstructorProperties): void
 }
 
@@ -4022,13 +4034,13 @@ interface MusicPlayer {
     add_playlist(p: Playlist): boolean
     remove_playlist(p: Playlist): boolean
     get_playlists(): Playlist[]
-    edit_playlist_name(id: string | null, name: string | null): void
+    edit_playlist_name(id: string, name: string): void
     get_app_info(): Gio.AppInfo
-    get_desktop_file_name(): string | null
+    get_desktop_file_name(): string
     get_is_blacklisted(): boolean
     set_is_blacklisted(value: boolean): void
-    get_title(): string | null
-    set_title(value: string | null): void
+    get_title(): string
+    set_title(value: string): void
     get_can_go_next(): boolean
     set_can_go_next(value: boolean): void
     get_can_go_previous(): boolean
@@ -4123,8 +4135,8 @@ class MusicPlayer extends GObject.Object {
     // Constructors of Unity-7.0.Unity.MusicPlayer
 
     constructor(config?: MusicPlayer.ConstructorProperties) 
-    constructor(desktop: string | null) 
-    static new(desktop: string | null): MusicPlayer
+    constructor(desktop: string) 
+    static new(desktop: string): MusicPlayer
     _init(config?: MusicPlayer.ConstructorProperties): void
 }
 
@@ -4766,7 +4778,7 @@ interface FilterSetClass {
     // Own fields of Unity-7.0.Unity.FilterSetClass
 
     add: (self: FilterSet, filter: Filter) => void
-    get_filter_by_id: (self: FilterSet, filter_id: string | null) => Filter | null
+    get_filter_by_id: (self: FilterSet, filter_id: string) => Filter | null
     get_filters: (self: FilterSet) => Filter[]
 }
 
@@ -4816,7 +4828,7 @@ interface SchemaClass {
 
     // Own fields of Unity-7.0.Unity.SchemaClass
 
-    add_field: (self: Schema, name: string | null, schema: string | null, type: SchemaFieldType) => void
+    add_field: (self: Schema, name: string, schema: string, type: SchemaFieldType) => void
     get_fields: (self: Schema) => SchemaFieldInfo[]
 }
 
@@ -5033,7 +5045,7 @@ interface AbstractScopeClass {
     get_group_name: (self: AbstractScope) => string | null
     get_unique_name: (self: AbstractScope) => string | null
     activate: (self: AbstractScope, result: ScopeResult, metadata: SearchMetadata, action_id?: string | null) => ActivationResponse | null
-    normalize_search_query: (self: AbstractScope, search_query: string | null) => string | null
+    normalize_search_query: (self: AbstractScope, search_query: string) => string | null
 }
 
 abstract class AbstractScopeClass {
@@ -5128,7 +5140,7 @@ interface AggregatorScopeClass {
 
     // Own fields of Unity-7.0.Unity.AggregatorScopeClass
 
-    category_index_for_scope_id: (self: AggregatorScope, scope_id: string | null) => number
+    category_index_for_scope_id: (self: AggregatorScope, scope_id: string) => number
     search: (self: AggregatorScope, scope_search: AggregatedScopeSearch, _callback_?: Gio.AsyncReadyCallback | null) => void
     search_finish: (self: AggregatorScope, _res_: Gio.AsyncResult) => void
     activate: (self: AggregatorScope, activation: AggregatorActivation, _callback_?: Gio.AsyncReadyCallback | null) => void
@@ -5196,7 +5208,7 @@ interface ScopeLoaderClass {
 
     // Own fields of Unity-7.0.Unity.ScopeLoaderClass
 
-    get_scopes: (self: ScopeLoader, module_name: string | null, module_type?: string | null) => AbstractScope[]
+    get_scopes: (self: ScopeLoader, module_name: string, module_type?: string | null) => AbstractScope[]
     export_scopes: (self: ScopeLoader, scopes: AbstractScope[]) => void
 }
 
@@ -5300,7 +5312,7 @@ class ScopeResult {
 
     // Constructors of Unity-7.0.Unity.ScopeResult
 
-    static create(uri: string | null, icon_hint: string | null, category: number, result_type: ResultType, mimetype: string | null, title: string | null, comment: string | null, dnd_uri: string | null, metadata: GLib.HashTable): ScopeResult | null
+    static create(uri: string, icon_hint: string | null, category: number, result_type: ResultType, mimetype: string, title: string, comment: string, dnd_uri: string, metadata: GLib.HashTable): ScopeResult | null
     static create_from_variant(variant: GLib.Variant): ScopeResult | null
 }
 
@@ -5328,7 +5340,7 @@ class SearchContext {
 
     // Constructors of Unity-7.0.Unity.SearchContext
 
-    static create(search_query: string | null, search_type: SearchType, filter_state: FilterSet | null, metadata: GLib.HashTable | null, result_set: ResultSet, cancellable?: Cancellable | null): SearchContext | null
+    static create(search_query: string, search_type: SearchType, filter_state: FilterSet | null, metadata: GLib.HashTable | null, result_set: ResultSet, cancellable?: Cancellable | null): SearchContext | null
 }
 
 interface PlaylistDetails {

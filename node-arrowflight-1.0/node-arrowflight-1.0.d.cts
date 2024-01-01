@@ -228,8 +228,8 @@ export class CommandDescriptor extends Descriptor {
     // Constructors of ArrowFlight-1.0.ArrowFlight.CommandDescriptor
 
     constructor(config?: CommandDescriptor.ConstructorProperties) 
-    constructor(command: string | null) 
-    static new(command: string | null): CommandDescriptor
+    constructor(command: string) 
+    static new(command: string): CommandDescriptor
     _init(config?: CommandDescriptor.ConstructorProperties): void
 }
 
@@ -592,8 +592,8 @@ export class Location extends GObject.Object {
     // Constructors of ArrowFlight-1.0.ArrowFlight.Location
 
     constructor(config?: Location.ConstructorProperties) 
-    constructor(uri: string | null) 
-    static new(uri: string | null): Location
+    constructor(uri: string) 
+    static new(uri: string): Location
     _init(config?: Location.ConstructorProperties): void
 }
 
@@ -998,7 +998,7 @@ export interface StreamChunk {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getMetadata(): Arrow.Buffer | null
 
     // Class property signals of ArrowFlight-1.0.ArrowFlight.StreamChunk

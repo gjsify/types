@@ -1,6 +1,6 @@
 {
     "name": "@girs/node-folksdummy-0.6",
-    "version": "0.6.0-3.2.6",
+    "version": "0.6.0-3.2.7",
     "description": "Node.js TypeScript type definitions for FolksDummy-0.6, generated from library version 0.6.0",
     "type": "module",
     "module": "node-folksdummy-0.6.js",

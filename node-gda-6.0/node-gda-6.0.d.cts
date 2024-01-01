@@ -1207,34 +1207,34 @@ export enum ValueAttribute {
 /**
  * The corresponding attribute specifies if the object it refers to is auto incremented (value has a G_TYPE_BOOLEAN type).
  */
-export const ATTRIBUTE_AUTO_INCREMENT: string | null
+export const ATTRIBUTE_AUTO_INCREMENT: string
 /**
  * The corresponding attribute is the description of the object it refers to (value has a G_TYPE_STRING type).
  */
-export const ATTRIBUTE_DESCRIPTION: string | null
+export const ATTRIBUTE_DESCRIPTION: string
 /**
  * The corresponding attribute specifies if the object it refers to has its value to default (value has a G_TYPE_BOOLEAN type).
  */
-export const ATTRIBUTE_IS_DEFAULT: string | null
+export const ATTRIBUTE_IS_DEFAULT: string
 /**
  * The corresponding attribute is the name of the object it refers to (value has a G_TYPE_STRING type).
  */
-export const ATTRIBUTE_NAME: string | null
+export const ATTRIBUTE_NAME: string
 /**
  * The corresponding attribute is the number of significant digits of the object it refers to (value has a G_TYPE_INT type).
  */
-export const ATTRIBUTE_NUMERIC_PRECISION: string | null
+export const ATTRIBUTE_NUMERIC_PRECISION: string
 /**
  * The corresponding attribute is the number of significant digits to the right of the decimal point of the object it refers to (value has a G_TYPE_INT type).
  */
-export const ATTRIBUTE_NUMERIC_SCALE: string | null
+export const ATTRIBUTE_NUMERIC_SCALE: string
 /**
  * This attribute, if %TRUE specifies that a tree node may or may not have any children nodes (value has a G_TYPE_BOOLEAN type).
  */
-export const ATTRIBUTE_TREE_NODE_UNKNOWN_CHILDREN: string | null
-export const EXTRA_AUTO_INCREMENT: string | null
-export const SQLSTATE_GENERAL_ERROR: string | null
-export const SQLSTATE_NO_ERROR: string | null
+export const ATTRIBUTE_TREE_NODE_UNKNOWN_CHILDREN: string
+export const EXTRA_AUTO_INCREMENT: string
+export const SQLSTATE_GENERAL_ERROR: string
+export const SQLSTATE_NO_ERROR: string
 export const TIMEZONE_INVALID: number
 /**
  * Does the opposite of gda_text_to_alphanum(), in the same string
@@ -1242,7 +1242,7 @@ export const TIMEZONE_INVALID: number
  * @returns @text if conversion succeeded or %NULL if an error occurred
  */
 export function alphanumToText(text: string | null): string | null
-export function columnAttributesFromString(str: string | null): ColumnAttributes
+export function columnAttributesFromString(str: string): ColumnAttributes
 export function columnAttributesItems(resultLength1: number): ColumnAttributes
 export function columnAttributesToString(self: ColumnAttributes): string | null
 /**
@@ -1255,7 +1255,7 @@ export function columnAttributesToString(self: ColumnAttributes): string | null
  * @param end ending position within `sql` of the "token" to complete
  * @returns a new array of strings, or %NULL (use g_strfreev() to free the returned array)
  */
-export function completionListGet(cnc: Connection, sql: string | null, start: number, end: number): string[] | null
+export function completionListGet(cnc: Connection, sql: string, start: number, end: number): string[] | null
 /**
  * Creates an INSERT, an UPDATE and a DELETE statement from a SELECT statement
  * using the database metadata available in `cnc'`s meta store. Each statements are computed only if
@@ -1316,14 +1316,14 @@ export function ddlModifiableErrorQuark(): GLib.Quark
  * @param string string to escape
  * @returns a new string
  */
-export function defaultEscapeString(string: string | null): string | null
+export function defaultEscapeString(string: string): string | null
 /**
  * Do the reverse of gda_default_escape_string(): transforms any "''" into "'", any
  * "\\" into "\" and any "\'" into "'".
  * @param string string to unescape
  * @returns a new unescaped string, or %NULL in an error was found in @string
  */
-export function defaultUnescapeString(string: string | null): string | null
+export function defaultUnescapeString(string: string): string | null
 /**
  * Extract the DSN, username and password from `string`. in `string,` the various parts are strings
  * which are expected to be encoded using an RFC 1738 compliant encoding. If they are specified,
@@ -1335,11 +1335,11 @@ export function defaultUnescapeString(string: string | null): string | null
  * @param outUsername a place to store the new string containing the &lt;username&gt; part
  * @param outPassword a place to store the new string containing the &lt;password&gt; part
  */
-export function dsnSplit(string: string | null, outDsn: string | null, outUsername: string | null, outPassword: string | null): void
-export function foreignKeyMatchFromString(str: string | null): ForeignKeyMatch
+export function dsnSplit(string: string, outDsn: string | null, outUsername: string | null, outPassword: string | null): void
+export function foreignKeyMatchFromString(str: string): ForeignKeyMatch
 export function foreignKeyMatchItems(resultLength1: number): ForeignKeyMatch
 export function foreignKeyMatchToString(self: ForeignKeyMatch): string | null
-export function foreignKeyRuleFromString(str: string | null): ForeignKeyRule
+export function foreignKeyRuleFromString(str: string): ForeignKeyRule
 export function foreignKeyRuleItems(resultLength1: number): ForeignKeyRule
 export function foreignKeyRuleToString(self: ForeignKeyRule): string | null
 /**
@@ -1368,7 +1368,7 @@ export function foreignKeyRuleToString(self: ForeignKeyRule): string | null
  * @param str the name of a #GType, as returned by gda_g_type_to_string().
  * @returns the #GType represented by the given @str, or #G_TYPE_INVALID if not found
  */
-export function gTypeFromString(str: string | null): GObject.GType
+export function gTypeFromString(str: string): GObject.GType
 /**
  * Converts a GType to its string representation (use gda_g_type_from_string() for the
  * operation in the other direction).
@@ -1379,7 +1379,7 @@ export function gTypeFromString(str: string | null): GObject.GType
  * @param type Type to convert from.
  * @returns the GDA's string representing the given #GType or the name returned by #g_type_name.
  */
-export function gTypeToString(type: GObject.GType): string | null
+export function gTypeToString(type: GObject.GType): string
 /**
  * Does the same as strcmp(`id1`, `id2`), but handles the case where id1 and/or id2 are enclosed in double quotes.
  * can also be used in hash tables as a #GEqualFunc.
@@ -1387,13 +1387,13 @@ export function gTypeToString(type: GObject.GType): string | null
  * @param id2 an identifier string
  * @returns %TRUE if @id1 and @id2 are equal.
  */
-export function identifierEqual(id1: string | null, id2: string | null): boolean
+export function identifierEqual(id1: string, id2: string): boolean
 /**
  * computes a hash string from `id,` to be used in hash tables as a #GHashFunc
  * @param id an identifier string
  * @returns a new hash
  */
-export function identifierHash(id: string | null): number
+export function identifierHash(id: string): number
 /**
  * Disables GDA logs.
  */
@@ -1414,8 +1414,8 @@ export function logIsEnabled(): boolean
  * @param sep spcifies the expected separator character bewteen year, month and day (for example '-')
  * @returns %TRUE if @value has been sucessfuly parsed as a valid date (see g_date_valid()).
  */
-export function parseFormattedDate(gdate: GLib.Date, value: string | null, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean
-export function parseFormattedTime(value: string | null, sep: number): Time
+export function parseFormattedDate(gdate: GLib.Date, value: string, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): boolean
+export function parseFormattedTime(value: string, sep: number): Time
 /**
  * This function is similar to g_date_time_new_from_iso8601() (with `first` being `G_DATE_YEAR,` `second` being `G_DATE_MONTH,`
  * `third` being `G_DATE_DAY` and `sep` being '-') but allows one to specify the expected date format.
@@ -1426,7 +1426,7 @@ export function parseFormattedTime(value: string | null, sep: number): Time
  * @param sep specifies the expected separator character between year, month and day (for example '-')
  * @returns a new #GDateTime if @value has been successfully parsed as a valid date (see g_date_valid()).
  */
-export function parseFormattedTimestamp(value: string | null, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): GLib.DateTime | null
+export function parseFormattedTimestamp(value: string, first: GLib.DateDMY, second: GLib.DateDMY, third: GLib.DateDMY, sep: number): GLib.DateTime | null
 /**
  * Extracts date parts from `value,` and sets `gdate'`s contents
  * 
@@ -1437,7 +1437,7 @@ export function parseFormattedTimestamp(value: string | null, first: GLib.DateDM
  * @param value a string
  * @returns %TRUE if @value has been sucessfuly parsed as a valid date (see g_date_valid()).
  */
-export function parseIso8601Date(gdate: GLib.Date, value: string | null): boolean
+export function parseIso8601Date(gdate: GLib.Date, value: string): boolean
 /**
  * Extracts time parts from `value,` and sets `timegda'`s contents
  * 
@@ -1446,7 +1446,7 @@ export function parseIso8601Date(gdate: GLib.Date, value: string | null): boolea
  * @param value a string
  * @returns a new parsed #GdaTime
  */
-export function parseIso8601Time(value: string | null): Time
+export function parseIso8601Time(value: string): Time
 export function providerMetaErrorQuark(): GLib.Quark
 /**
  * Modifies `sqlst` to take into account any parameter which might be %NULL: if `sqlst` contains the
@@ -1514,7 +1514,7 @@ export function rfc1738Decode(string: string | null): boolean
  * @param string a string to encode
  * @returns a new string or %NULL
  */
-export function rfc1738Encode(string: string | null): string | null
+export function rfc1738Encode(string: string): string | null
 /**
  * Creates a new #GdaStatement, selecting the same data as `stmt,` but which always returns an
  * empty (no row) data model. This is use dy database providers' implementations.
@@ -1531,7 +1531,7 @@ export function sqlErrorQuark(): GLib.Quark
  * For other uses, see gda_sql_identifier_quote().
  * @param str an SQL identifier
  */
-export function sqlIdentifierForceQuotes(str: string | null): string | null
+export function sqlIdentifierForceQuotes(str: string): string | null
 /**
  * Prepares `str` to be compared:
  * <itemizedlist>
@@ -1731,7 +1731,7 @@ export function sqlIdentifierPrepareForCompare(str: string | null): string | nul
  * @param forceQuotes set to %TRUE to force the returned string to be quoted
  * @returns the representation of @id ready to be used in SQL statement, as a new string,          or %NULL if @id is in a wrong format
  */
-export function sqlIdentifierQuote(id: string | null, cnc: Connection | null, prov: ServerProvider | null, metaStoreConvention: boolean, forceQuotes: boolean): string | null
+export function sqlIdentifierQuote(id: string, cnc: Connection | null, prov: ServerProvider | null, metaStoreConvention: boolean, forceQuotes: boolean): string | null
 /**
  * Splits `id` into an array of it sub parts. `id'`s format has to be "&lt;part&gt;[.&lt;part&gt;[...]]" where
  * each part is either a text surrounded by double quotes which can contain upper and lower cases or
@@ -1741,39 +1741,39 @@ export function sqlIdentifierQuote(id: string | null, cnc: Connection | null, pr
  * @param id an SQL identifier
  * @returns a new %NULL-terminated array of strings, or NULL (use g_strfreev() to free the returned array)
  */
-export function sqlIdentifierSplit(id: string | null): string[] | null
+export function sqlIdentifierSplit(id: string): string[] | null
 /**
  * Returns #GdaSqlOperatorType that correspond with the string `op`.
  * @param op a #GdaSqlOperation structure
  * @returns #GdaSqlOperatorType
  */
-export function sqlOperationOperatorFromString(op: string | null): SqlOperatorType
+export function sqlOperationOperatorFromString(op: string): SqlOperatorType
 /**
  * Returns a constant string representing a operator name. You don't need to free
  * the returned string.
  * @param op a #GdaSqlOperation structure
  * @returns a string with the operator's name or NULL in case @op is invalid.
  */
-export function sqlOperationOperatorToString(op: SqlOperatorType): string | null
+export function sqlOperationOperatorToString(op: SqlOperatorType): string
 /**
  * Creates a new string representing the join type.
  * @param type a #GdaSqlSelectJoinType structure to be copied
  * @returns a string representing the Join type.
  */
-export function sqlSelectJoinTypeToString(type: SqlSelectJoinType): string | null
+export function sqlSelectJoinTypeToString(type: SqlSelectJoinType): string
 export function sqlStatementGetContentsInfos(type: SqlStatementType): SqlStatementContentsInfo
 /**
  * Converts a string to a #GdaSqlStatementType value, see also gda_sql_statement_type_to_string()
  * @param type a string representing a #GdaSqlStatementType type
  * @returns a #GdaSqlStatementType value
  */
-export function sqlStatementStringToType(type: string | null): SqlStatementType
+export function sqlStatementStringToType(type: string): SqlStatementType
 /**
  * Converts a #GdaSqlStatementType to a string, see also gda_sql_statement_string_to_type()
  * @param type a #GdaSqlStatementType value
  * @returns a constant string
  */
-export function sqlStatementTypeToString(type: SqlStatementType): string | null
+export function sqlStatementTypeToString(type: SqlStatementType): string
 /**
  * Simplified version of gda_value_stringify().
  * @param value a #GValue pointer
@@ -1795,7 +1795,7 @@ export function stringToBinary(str: string | null): Binary
  * @param str a string to convert
  * @returns a new #gdaBlob if no error were found in @str, or NULL otherwise
  */
-export function stringToBlob(str: string | null): Blob
+export function stringToBlob(str: string): Blob
 /**
  * The "encoding" consists in replacing non
  * alphanumeric character with the string "__gdaXX" where XX is the hex. representation
@@ -1803,7 +1803,7 @@ export function stringToBlob(str: string | null): Blob
  * @param text the text to convert
  * @returns a new string
  */
-export function textToAlphanum(text: string | null): string | null
+export function textToAlphanum(text: string): string | null
 /**
  * Check the column types of a GdaDataModel.
  * @param model a #GdaDataModel object
@@ -1832,7 +1832,7 @@ export function utilityDataModelDumpDataToXml(model: DataModel, parent: libxml2.
  * @param fieldName field name
  * @returns The field's description, or NULL if description is not set
  */
-export function utilityDataModelFindColumnDescription(model: DataSelect, fieldName: string | null): string | null
+export function utilityDataModelFindColumnDescription(model: DataSelect, fieldName: string): string | null
 /**
  * Note: this method may set the "source" custom string property
  * @param holder a #GdaHolder
@@ -1929,7 +1929,7 @@ export function valueNewBlob(val: number, size: number): any
  * @param filename name of the file to manipulate
  * @returns the newly created #GValue. Free-function: gda_value_free
  */
-export function valueNewBlobFromFile(filename: string | null): any
+export function valueNewBlobFromFile(filename: string): any
 /**
  * Makes a new #GValue of type #G_TYPE_DATE_TIME with value `val`
  * (of type time_t). The returned timestamp's value is relative to the current
@@ -1961,7 +1961,7 @@ export function valueNewDefault(defaultVal: string | null): any
  * @param type the new value type.
  * @returns the newly created #GValue or %NULL if the string representation cannot be converted to the specified @type. Free-function: gda_value_free
  */
-export function valueNewFromString(asString: string | null, type: GObject.GType): any
+export function valueNewFromString(asString: string, type: GObject.GType): any
 /**
  * Creates a GValue from an XML representation of it. That XML
  * node corresponds to the following string representation:
@@ -2032,7 +2032,7 @@ export function valueSetBlob(value: any, blob: Blob): void
  * @param type the type of the value
  * @returns %TRUE if the value has been converted to @type from its string representation; it not means that the value is converted successfully, just that the transformation is available. %FALSE otherwise.
  */
-export function valueSetFromString(value: any, asString: string | null, type: GObject.GType): boolean
+export function valueSetFromString(value: any, asString: string, type: GObject.GType): boolean
 /**
  * Sets the value of a #GValue from another #GValue. This
  * is different from #gda_value_copy, which creates a new #GValue.
@@ -2144,7 +2144,7 @@ export interface SqlForeachFunc {
     (part: SqlAnyPart, data: any | null): boolean
 }
 export interface SqlReservedKeywordsFunc {
-    (word: string | null): boolean
+    (word: string): boolean
 }
 export interface TreeManagerNodeFunc {
     (manager: TreeManager, parent: TreeNode | null, name: string | null): TreeNode
@@ -2251,7 +2251,7 @@ export interface ColumnModel {
     // Has conflict: getAttributes(): ColumnAttributes
     // Has conflict: getDataType(): GObject.GType
     // Has conflict: getIndex(): number
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
     // Has conflict: getValue(): any
     // Has conflict: setAttributes(value: ColumnAttributes): void
     // Has conflict: setForeignKey(value: ForeignKey): void
@@ -2262,7 +2262,7 @@ export interface ColumnModel {
     getAttributes(): ColumnAttributes
     getDataType(): GObject.GType
     getIndex(): number
-    getName(): string | null
+    getName(): string
     getValue(): any
     setAttributes(value: ColumnAttributes): void
     setForeignKey(value: ForeignKey): void
@@ -2475,13 +2475,13 @@ export interface CreateDatabaseBuilder extends QueryBuilder {
 
     // Owm methods of Gda-6.0.Gda.CreateDatabaseBuilder
 
-    // Has conflict: getDatabaseName(): string | null
-    // Has conflict: setDatabaseName(value: string | null): void
+    // Has conflict: getDatabaseName(): string
+    // Has conflict: setDatabaseName(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.CreateDatabaseBuilder
 
-    getDatabaseName(): string | null
-    setDatabaseName(value: string | null): void
+    getDatabaseName(): string
+    setDatabaseName(value: string): void
 
     // Class property signals of Gda-6.0.Gda.CreateDatabaseBuilder
 
@@ -2556,17 +2556,17 @@ export interface CreateTableBuilder extends QueryBuilder {
 
     // Owm methods of Gda-6.0.Gda.CreateTableBuilder
 
-    // Has conflict: getTableName(): string | null
+    // Has conflict: getTableName(): string
     // Has conflict: setColumns(value: Gio.ListModel): void
     // Has conflict: setContraints(value: Gio.ListModel): void
-    // Has conflict: setTableName(value: string | null): void
+    // Has conflict: setTableName(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.CreateTableBuilder
 
-    getTableName(): string | null
+    getTableName(): string
     setColumns(value: Gio.ListModel): void
     setContraints(value: Gio.ListModel): void
-    setTableName(value: string | null): void
+    setTableName(value: string): void
 
     // Class property signals of Gda-6.0.Gda.CreateTableBuilder
 
@@ -2643,7 +2643,7 @@ export interface DataHandler {
     // Owm methods of Gda-6.0.Gda.DataHandler
 
     // Has conflict: acceptsGType(type: GObject.GType): boolean
-    // Has conflict: getDescr(): string | null
+    // Has conflict: getDescr(): string
     // Has conflict: getSaneInitValue(type: GObject.GType): any | null
     // Has conflict: getSqlFromValue(value: any | null): string | null
     // Has conflict: getStrFromValue(value: any | null): string | null
@@ -2664,7 +2664,7 @@ export interface DataHandler {
      * @virtual 
      * @returns the description
      */
-    getDescr(): string | null
+    getDescr(): string
     /**
      * Creates a new GValue which holds a sane initial value to be used if no value is specifically
      * provided. For example for a simple string, this would return a new value containing the "" string.
@@ -2980,7 +2980,7 @@ export interface DataModel {
      * @param options list of options for the export
      * @returns TRUE if no error occurred
      */
-    exportToFile(format: DataModelIOFormat, file: string | null, cols: number[] | null, rows: number[] | null, options: Set): boolean
+    exportToFile(format: DataModelIOFormat, file: string, cols: number[] | null, rows: number[] | null, options: Set): boolean
     /**
      * Exports data contained in `model` to a string; the format is specified using the `format` argument, see the
      * gda_data_model_export_to_file() documentation for more information about the `options` argument (except for the
@@ -3025,9 +3025,9 @@ export interface DataModel {
      * @param name a column name
      * @returns the column index, or -1 if no column named @name was found
      */
-    getColumnIndex(name: string | null): number
-    getColumnName(col: number): string | null
-    getColumnTitle(col: number): string | null
+    getColumnIndex(name: string): number
+    getColumnName(col: number): string
+    getColumnTitle(col: number): string
     /**
      * Get the global data model exception(s) that occurred when using `model`.
      * This is useful for example for the LDAP related
@@ -3110,7 +3110,7 @@ export interface DataModel {
      * @param options list of options for the export
      * @returns TRUE if no error occurred
      */
-    importFromFile(file: string | null, colsTrans: GLib.HashTable | null, options: Set): boolean
+    importFromFile(file: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Copy the contents of the `from` data model to the `to` data model. The copy stops as soon as an error
      * orrurs.
@@ -3146,7 +3146,7 @@ export interface DataModel {
      * @param options list of options for the export
      * @returns TRUE if no error occurred.
      */
-    importFromString(string: string | null, colsTrans: GLib.HashTable | null, options: Set): boolean
+    importFromString(string: string, colsTrans: GLib.HashTable | null, options: Set): boolean
     /**
      * Method reserved to #GdaDataModelIter implementations, should not be called directly.
      * @param iter a #GdaDataModelIter iterating in `model`
@@ -3216,13 +3216,13 @@ export interface DataModel {
      * @param col column number
      * @param name name for the given column.
      */
-    setColumnName(col: number, name: string | null): void
+    setColumnName(col: number, name: string): void
     /**
      * Sets the `title` of the given `col` in `model`.
      * @param col column number
      * @param title title for the given column.
      */
-    setColumnTitle(col: number, title: string | null): void
+    setColumnTitle(col: number, title: string): void
     /**
      * Modifies a value in `model,` at (`col,` `row)`.
      * 
@@ -3473,13 +3473,13 @@ export interface DropDatabaseBuilder extends QueryBuilder {
 
     // Owm methods of Gda-6.0.Gda.DropDatabaseBuilder
 
-    // Has conflict: getDatabaseName(): string | null
-    // Has conflict: setDatabaseName(value: string | null): void
+    // Has conflict: getDatabaseName(): string
+    // Has conflict: setDatabaseName(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.DropDatabaseBuilder
 
-    getDatabaseName(): string | null
-    setDatabaseName(value: string | null): void
+    getDatabaseName(): string
+    setDatabaseName(value: string): void
 
     // Class property signals of Gda-6.0.Gda.DropDatabaseBuilder
 
@@ -3553,16 +3553,16 @@ export interface DropTableBuilder extends QueryBuilder {
     // Owm methods of Gda-6.0.Gda.DropTableBuilder
 
     // Has conflict: getCascade(): boolean
-    // Has conflict: getTableName(): string | null
+    // Has conflict: getTableName(): string
     // Has conflict: setCascade(value: boolean): void
-    // Has conflict: setTableName(value: string | null): void
+    // Has conflict: setTableName(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.DropTableBuilder
 
     getCascade(): boolean
-    getTableName(): string | null
+    getTableName(): string
     setCascade(value: boolean): void
-    setTableName(value: string | null): void
+    setTableName(value: string): void
 
     // Class property signals of Gda-6.0.Gda.DropTableBuilder
 
@@ -3653,14 +3653,14 @@ export interface ForeignKey {
     equal(fkey: ForeignKey): boolean
     // Has conflict: getDeleteRule(): ForeignKeyRule
     // Has conflict: getMatch(): ForeignKeyMatch
-    // Has conflict: getName(): string | null
-    // Has conflict: getRefname(): string | null
+    // Has conflict: getName(): string
+    // Has conflict: getRefname(): string
     // Has conflict: getUpdateRule(): ForeignKeyRule
     // Has conflict: setDeleteRule(value: ForeignKeyRule): void
     // Has conflict: setMatch(value: ForeignKeyMatch): void
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: setName(value: string): void
     // Has conflict: setRefcol(value: Gio.ListModel): void
-    // Has conflict: setRefname(value: string | null): void
+    // Has conflict: setRefname(value: string): void
     // Has conflict: setReftable(value: TableModel): void
     // Has conflict: setUpdateRule(value: ForeignKeyRule): void
     toString(): string | null
@@ -3669,14 +3669,14 @@ export interface ForeignKey {
 
     getDeleteRule(): ForeignKeyRule
     getMatch(): ForeignKeyMatch
-    getName(): string | null
-    getRefname(): string | null
+    getName(): string
+    getRefname(): string
     getUpdateRule(): ForeignKeyRule
     setDeleteRule(value: ForeignKeyRule): void
     setMatch(value: ForeignKeyMatch): void
-    setName(value: string | null): void
+    setName(value: string): void
     setRefcol(value: Gio.ListModel): void
-    setRefname(value: string | null): void
+    setRefname(value: string): void
     setReftable(value: TableModel): void
     setUpdateRule(value: ForeignKeyRule): void
 
@@ -3965,16 +3965,16 @@ export interface MetaColumn {
     // Owm methods of Gda-6.0.Gda.MetaColumn
 
     // Has conflict: getColumnType(): GObject.GType
-    // Has conflict: getColumnTypeName(): string | null
-    // Has conflict: getName(): string | null
-    // Has conflict: setName(value: string | null): void
+    // Has conflict: getColumnTypeName(): string
+    // Has conflict: getName(): string
+    // Has conflict: setName(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.MetaColumn
 
     getColumnType(): GObject.GType
-    getColumnTypeName(): string | null
-    getName(): string | null
-    setName(value: string | null): void
+    getColumnTypeName(): string
+    getName(): string
+    setName(value: string): void
 
     // Class property signals of Gda-6.0.Gda.MetaColumn
 
@@ -4045,21 +4045,21 @@ export interface MetaTable {
 
     // Owm methods of Gda-6.0.Gda.MetaTable
 
-    // Has conflict: getCatalog(): string | null
-    // Has conflict: getName(): string | null
-    // Has conflict: getSchema(): string | null
-    // Has conflict: setCatalog(value: string | null): void
-    // Has conflict: setName(value: string | null): void
-    // Has conflict: setSchema(value: string | null): void
+    // Has conflict: getCatalog(): string
+    // Has conflict: getName(): string
+    // Has conflict: getSchema(): string
+    // Has conflict: setCatalog(value: string): void
+    // Has conflict: setName(value: string): void
+    // Has conflict: setSchema(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.MetaTable
 
-    getCatalog(): string | null
-    getName(): string | null
-    getSchema(): string | null
-    setCatalog(value: string | null): void
-    setName(value: string | null): void
-    setSchema(value: string | null): void
+    getCatalog(): string
+    getName(): string
+    getSchema(): string
+    setCatalog(value: string): void
+    setName(value: string): void
+    setSchema(value: string): void
 
     // Class property signals of Gda-6.0.Gda.MetaTable
 
@@ -4134,13 +4134,13 @@ export interface Parameters extends Gio.ListModel {
 
     // Owm methods of Gda-6.0.Gda.Parameters
 
-    // Has conflict: getValue(name: string | null): any
-    // Has conflict: setValue(name: string | null, val: any): void
+    // Has conflict: getValue(name: string): any
+    // Has conflict: setValue(name: string, val: any): void
 
     // Own virtual methods of Gda-6.0.Gda.Parameters
 
-    getValue(name: string | null): any
-    setValue(name: string | null, val: any): void
+    getValue(name: string): any
+    setValue(name: string, val: any): void
 
     // Class property signals of Gda-6.0.Gda.Parameters
 
@@ -4188,15 +4188,15 @@ export interface PreparedQuery extends Query {
 
     // Owm methods of Gda-6.0.Gda.PreparedQuery
 
-    // Has conflict: getName(): string | null
+    // Has conflict: getName(): string
 
     // Own virtual methods of Gda-6.0.Gda.PreparedQuery
 
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
-    getName(): string | null
+    getName(): string
 
     // Class property signals of Gda-6.0.Gda.PreparedQuery
 
@@ -4262,49 +4262,49 @@ export interface Provider {
 
     // Owm methods of Gda-6.0.Gda.Provider
 
-    // Has conflict: addSavepoint(cnc: Connection, name: string | null): boolean
-    // Has conflict: beginTransaction(cnc: Connection, name: string | null, level: TransactionIsolation): boolean
+    // Has conflict: addSavepoint(cnc: Connection, name: string): boolean
+    // Has conflict: beginTransaction(cnc: Connection, name: string, level: TransactionIsolation): boolean
     // Has conflict: closeConnection(cnc: Connection): boolean
-    // Has conflict: commitTransaction(cnc: Connection, name: string | null): boolean
+    // Has conflict: commitTransaction(cnc: Connection, name: string): boolean
     // Has conflict: createConnection(): Connection
     // Has conflict: createOperation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation
     // Has conflict: createParser(cnc: Connection): SqlParser
-    // Has conflict: deleteSavepoint(cnc: Connection, name: string | null): boolean
-    // Has conflict: escapeString(cnc: Connection, str: string | null): string | null
-    // Has conflict: getDataHandler(cnc: Connection, gType: GObject.GType, dbmsType: string | null): DataHandler
-    // Has conflict: getDefDbmsType(cnc: Connection, gType: GObject.GType): string | null
+    // Has conflict: deleteSavepoint(cnc: Connection, name: string): boolean
+    // Has conflict: escapeString(cnc: Connection, str: string): string | null
+    // Has conflict: getDataHandler(cnc: Connection, gType: GObject.GType, dbmsType: string): DataHandler
+    // Has conflict: getDefDbmsType(cnc: Connection, gType: GObject.GType): string
     // Has conflict: getLastInserted(cnc: Connection): Set
-    // Has conflict: getName(): string | null
-    // Has conflict: getServerVersion(cnc: Connection): string | null
-    // Has conflict: getVersion(): string | null
-    // Has conflict: identifierQuote(cnc: Connection | null, id: string | null, forMetaStore: boolean, forceQuotes: boolean): string | null
+    // Has conflict: getName(): string
+    // Has conflict: getServerVersion(cnc: Connection): string
+    // Has conflict: getVersion(): string
+    // Has conflict: identifierQuote(cnc: Connection | null, id: string, forMetaStore: boolean, forceQuotes: boolean): string | null
     // Has conflict: openConnection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean
     // Has conflict: performOperation(cnc: Connection, op: ServerOperation): boolean
     // Has conflict: prepareConnection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean
     // Has conflict: renderOperation(cnc: Connection, op: ServerOperation): string | null
-    // Has conflict: rollbackSavepoint(cnc: Connection, name: string | null): boolean
-    // Has conflict: rollbackTransaction(cnc: Connection, name: string | null): boolean
+    // Has conflict: rollbackSavepoint(cnc: Connection, name: string): boolean
+    // Has conflict: rollbackTransaction(cnc: Connection, name: string): boolean
     // Has conflict: statementExecute(cnc: Connection, stmt: Statement, params: Set, modelUsage: StatementModelUsage, colTypes: GObject.GType, lastInsertedRow: Set): GObject.Object
     // Has conflict: statementPrepare(cnc: Connection, stmt: Statement): boolean
     // Has conflict: statementRewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement
     // Has conflict: statementToSql(cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag): [ /* returnType */ string | null, /* paramsUsed */ Holder[] | null ]
     // Has conflict: supportsFeature(cnc: Connection, feature: ConnectionFeature): boolean
     // Has conflict: supportsOperation(cnc: Connection, type: ServerOperationType, options: Set): boolean
-    // Has conflict: unescapeString(cnc: Connection, str: string | null): string | null
+    // Has conflict: unescapeString(cnc: Connection, str: string): string | null
 
     // Own virtual methods of Gda-6.0.Gda.Provider
 
-    addSavepoint(cnc: Connection, name: string | null): boolean
-    beginTransaction(cnc: Connection, name: string | null, level: TransactionIsolation): boolean
+    addSavepoint(cnc: Connection, name: string): boolean
+    beginTransaction(cnc: Connection, name: string, level: TransactionIsolation): boolean
     closeConnection(cnc: Connection): boolean
-    commitTransaction(cnc: Connection, name: string | null): boolean
+    commitTransaction(cnc: Connection, name: string): boolean
     createConnection(): Connection
     createOperation(cnc: Connection, type: ServerOperationType, options: Set): ServerOperation
     createParser(cnc: Connection): SqlParser
-    deleteSavepoint(cnc: Connection, name: string | null): boolean
-    escapeString(cnc: Connection, str: string | null): string | null
-    getDataHandler(cnc: Connection, gType: GObject.GType, dbmsType: string | null): DataHandler
-    getDefDbmsType(cnc: Connection, gType: GObject.GType): string | null
+    deleteSavepoint(cnc: Connection, name: string): boolean
+    escapeString(cnc: Connection, str: string): string | null
+    getDataHandler(cnc: Connection, gType: GObject.GType, dbmsType: string): DataHandler
+    getDefDbmsType(cnc: Connection, gType: GObject.GType): string
     /**
      * This command should be called inmediately called after a INSERT SQL command
      * @virtual 
@@ -4312,23 +4312,23 @@ export interface Provider {
      * @returns a #GdaSet with all data of the last inserted row
      */
     getLastInserted(cnc: Connection): Set
-    getName(): string | null
-    getServerVersion(cnc: Connection): string | null
-    getVersion(): string | null
-    identifierQuote(cnc: Connection | null, id: string | null, forMetaStore: boolean, forceQuotes: boolean): string | null
+    getName(): string
+    getServerVersion(cnc: Connection): string
+    getVersion(): string
+    identifierQuote(cnc: Connection | null, id: string, forMetaStore: boolean, forceQuotes: boolean): string | null
     openConnection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean
     performOperation(cnc: Connection, op: ServerOperation): boolean
     prepareConnection(cnc: Connection, params: QuarkList, auth: QuarkList): boolean
     renderOperation(cnc: Connection, op: ServerOperation): string | null
-    rollbackSavepoint(cnc: Connection, name: string | null): boolean
-    rollbackTransaction(cnc: Connection, name: string | null): boolean
+    rollbackSavepoint(cnc: Connection, name: string): boolean
+    rollbackTransaction(cnc: Connection, name: string): boolean
     statementExecute(cnc: Connection, stmt: Statement, params: Set, modelUsage: StatementModelUsage, colTypes: GObject.GType, lastInsertedRow: Set): GObject.Object
     statementPrepare(cnc: Connection, stmt: Statement): boolean
     statementRewrite(cnc: Connection, stmt: Statement, params: Set): SqlStatement
     statementToSql(cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag): [ /* returnType */ string | null, /* paramsUsed */ Holder[] | null ]
     supportsFeature(cnc: Connection, feature: ConnectionFeature): boolean
     supportsOperation(cnc: Connection, type: ServerOperationType, options: Set): boolean
-    unescapeString(cnc: Connection, str: string | null): string | null
+    unescapeString(cnc: Connection, str: string): string | null
 
     // Class property signals of Gda-6.0.Gda.Provider
 
@@ -4380,27 +4380,27 @@ export interface ProviderMeta {
     // Owm methods of Gda-6.0.Gda.ProviderMeta
 
     // Has conflict: btypes(): DataModel
-    // Has conflict: characterSet(chsetCatalog: string | null, chsetSchema: string | null, chsetNameN: string | null): Row
+    // Has conflict: characterSet(chsetCatalog: string, chsetSchema: string, chsetNameN: string): Row
     // Has conflict: characterSets(): DataModel
-    // Has conflict: checkColumn(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null): Row
+    // Has conflict: checkColumn(tableCatalog: string, tableSchema: string, tableName: string, constraintName: string): Row
     // Has conflict: checkColumns(): DataModel
-    // Has conflict: collation(collationCatalog: string | null, collationSchema: string | null, collationNameN: string | null): Row
+    // Has conflict: collation(collationCatalog: string, collationSchema: string, collationNameN: string): Row
     // Has conflict: collations(): DataModel
     // Has conflict: columns(): DataModel
-    // Has conflict: constraintRef(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null): Row
-    // Has conflict: constraintTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintNameN: string | null): Row
+    // Has conflict: constraintRef(tableCatalog: string, tableSchema: string, tableName: string, constraintName: string): Row
+    // Has conflict: constraintTable(tableCatalog: string, tableSchema: string, tableName: string, constraintNameN: string): Row
     // Has conflict: constraintsRef(): DataModel
-    // Has conflict: constraintsRefTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
-    // Has conflict: constraintsTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
+    // Has conflict: constraintsRefTable(tableCatalog: string, tableSchema: string, tableName: string): DataModel
+    // Has conflict: constraintsTable(tableCatalog: string, tableSchema: string, tableName: string): DataModel
     // Has conflict: constraintsTables(): DataModel
-    // Has conflict: domain(domainCatalog: string | null, domainSchema: string | null): Row
-    // Has conflict: domainConstraint(domainCatalog: string | null, domainSchema: string | null, domainName: string | null, contraintName: string | null): Row
-    // Has conflict: domainConstraints(domainCatalog: string | null, domainSchema: string | null, domainName: string | null): DataModel
+    // Has conflict: domain(domainCatalog: string, domainSchema: string): Row
+    // Has conflict: domainConstraint(domainCatalog: string, domainSchema: string, domainName: string, contraintName: string): Row
+    // Has conflict: domainConstraints(domainCatalog: string, domainSchema: string, domainName: string): DataModel
     // Has conflict: domains(): DataModel
     // Has conflict: domainsConstraints(): DataModel
-    // Has conflict: elementType(specificName: string | null): Row
+    // Has conflict: elementType(specificName: string): Row
     // Has conflict: elementTypes(): DataModel
-    // Has conflict: enumType(udtCatalog: string | null, udtSchema: string | null, udtName: string | null): Row
+    // Has conflict: enumType(udtCatalog: string, udtSchema: string, udtName: string): Row
     // Has conflict: enumsType(): DataModel
     /**
      * SQL is specific for current provider.
@@ -4408,101 +4408,101 @@ export interface ProviderMeta {
      * @param params a #GdaSet with all paramaters to use in query
      * @returns a new #GdaDataModel with as a result of the query
      */
-    executeQuery(sql: string | null, params: Set | null): DataModel | null
+    executeQuery(sql: string, params: Set | null): DataModel | null
     /**
      * SQL is specific for current provider.
      * @param sql a string with the SQL to execute on provider
      * @param params 
      * @returns a new #GdaDataModel with as a result of the query
      */
-    executeQueryRow(sql: string | null, params: Set): Row | null
+    executeQueryRow(sql: string, params: Set): Row | null
     getConnection(): Connection
-    // Has conflict: indexCol(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, indexName: string | null): Row
+    // Has conflict: indexCol(tableCatalog: string, tableSchema: string, tableName: string, indexName: string): Row
     // Has conflict: indexCols(): DataModel
-    // Has conflict: indexTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, indexNameN: string | null): Row
-    // Has conflict: indexesTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
+    // Has conflict: indexTable(tableCatalog: string, tableSchema: string, tableName: string, indexNameN: string): Row
+    // Has conflict: indexesTable(tableCatalog: string, tableSchema: string, tableName: string): DataModel
     // Has conflict: indexesTables(): DataModel
-    // Has conflict: keyColumn(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null): Row
+    // Has conflict: keyColumn(tableCatalog: string, tableSchema: string, tableName: string, constraintName: string): Row
     // Has conflict: keyColumns(): DataModel
-    // Has conflict: routine(routineCatalog: string | null, routineSchema: string | null, routineNameN: string | null): Row
-    // Has conflict: routineCol(routCatalog: string | null, routSchema: string | null, routName: string | null): Row
-    // Has conflict: routinePars(routCatalog: string | null, routSchema: string | null, routName: string | null): Row
+    // Has conflict: routine(routineCatalog: string, routineSchema: string, routineNameN: string): Row
+    // Has conflict: routineCol(routCatalog: string, routSchema: string, routName: string): Row
+    // Has conflict: routinePars(routCatalog: string, routSchema: string, routName: string): Row
     // Has conflict: routines(): DataModel
     // Has conflict: routinesCol(): DataModel
     // Has conflict: routinesPars(): DataModel
-    // Has conflict: schemata(catalogName: string | null, schemaNameN: string | null): Row
+    // Has conflict: schemata(catalogName: string, schemaNameN: string): Row
     // Has conflict: schematas(): DataModel
-    // Has conflict: table(tableCatalog: string | null, tableSchema: string | null, tableNameN: string | null): Row
-    // Has conflict: tableColumn(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, columnName: string | null): Row
-    // Has conflict: tableColumns(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
+    // Has conflict: table(tableCatalog: string, tableSchema: string, tableNameN: string): Row
+    // Has conflict: tableColumn(tableCatalog: string, tableSchema: string, tableName: string, columnName: string): Row
+    // Has conflict: tableColumns(tableCatalog: string, tableSchema: string, tableName: string): DataModel
     // Has conflict: tables(): DataModel
     // Has conflict: tablesColumns(): DataModel
-    // Has conflict: trigger(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): Row
+    // Has conflict: trigger(tableCatalog: string, tableSchema: string, tableName: string): Row
     // Has conflict: triggers(): DataModel
-    // Has conflict: udt(udtCatalog: string | null, udtSchema: string | null): Row
-    // Has conflict: udtCol(udtCatalog: string | null, udtSchema: string | null, udtName: string | null): Row
+    // Has conflict: udt(udtCatalog: string, udtSchema: string): Row
+    // Has conflict: udtCol(udtCatalog: string, udtSchema: string, udtName: string): Row
     // Has conflict: udtCols(): DataModel
     // Has conflict: udts(): DataModel
-    // Has conflict: view(viewCatalog: string | null, viewSchema: string | null, viewNameN: string | null): Row
-    // Has conflict: viewColumn(viewCatalog: string | null, viewSchema: string | null, viewName: string | null, columnName: string | null): Row
-    // Has conflict: viewColumns(viewCatalog: string | null, viewSchema: string | null, viewName: string | null): DataModel
+    // Has conflict: view(viewCatalog: string, viewSchema: string, viewNameN: string): Row
+    // Has conflict: viewColumn(viewCatalog: string, viewSchema: string, viewName: string, columnName: string): Row
+    // Has conflict: viewColumns(viewCatalog: string, viewSchema: string, viewName: string): DataModel
     // Has conflict: views(): DataModel
     // Has conflict: viewsColumns(): DataModel
 
     // Own virtual methods of Gda-6.0.Gda.ProviderMeta
 
     btypes(): DataModel
-    characterSet(chsetCatalog: string | null, chsetSchema: string | null, chsetNameN: string | null): Row
+    characterSet(chsetCatalog: string, chsetSchema: string, chsetNameN: string): Row
     characterSets(): DataModel
-    checkColumn(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null): Row
+    checkColumn(tableCatalog: string, tableSchema: string, tableName: string, constraintName: string): Row
     checkColumns(): DataModel
-    collation(collationCatalog: string | null, collationSchema: string | null, collationNameN: string | null): Row
+    collation(collationCatalog: string, collationSchema: string, collationNameN: string): Row
     collations(): DataModel
     columns(): DataModel
-    constraintRef(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null): Row
-    constraintTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintNameN: string | null): Row
+    constraintRef(tableCatalog: string, tableSchema: string, tableName: string, constraintName: string): Row
+    constraintTable(tableCatalog: string, tableSchema: string, tableName: string, constraintNameN: string): Row
     constraintsRef(): DataModel
-    constraintsRefTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
-    constraintsTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
+    constraintsRefTable(tableCatalog: string, tableSchema: string, tableName: string): DataModel
+    constraintsTable(tableCatalog: string, tableSchema: string, tableName: string): DataModel
     constraintsTables(): DataModel
-    domain(domainCatalog: string | null, domainSchema: string | null): Row
-    domainConstraint(domainCatalog: string | null, domainSchema: string | null, domainName: string | null, constraintName: string | null): Row
-    domainConstraints(domainCatalog: string | null, domainSchema: string | null, domainName: string | null): DataModel
+    domain(domainCatalog: string, domainSchema: string): Row
+    domainConstraint(domainCatalog: string, domainSchema: string, domainName: string, constraintName: string): Row
+    domainConstraints(domainCatalog: string, domainSchema: string, domainName: string): DataModel
     domains(): DataModel
     domainsConstraints(): DataModel
-    elementType(specificName: string | null): Row
+    elementType(specificName: string): Row
     elementTypes(): DataModel
-    enumType(udtCatalog: string | null, udtSchema: string | null, udtName: string | null): Row
+    enumType(udtCatalog: string, udtSchema: string, udtName: string): Row
     enumsType(): DataModel
-    indexCol(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, indexName: string | null): Row
+    indexCol(tableCatalog: string, tableSchema: string, tableName: string, indexName: string): Row
     indexCols(): DataModel
-    indexTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, indexNameN: string | null): Row
-    indexesTable(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
+    indexTable(tableCatalog: string, tableSchema: string, tableName: string, indexNameN: string): Row
+    indexesTable(tableCatalog: string, tableSchema: string, tableName: string): DataModel
     indexesTables(): DataModel
-    keyColumn(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null): Row
+    keyColumn(tableCatalog: string, tableSchema: string, tableName: string, constraintName: string): Row
     keyColumns(): DataModel
-    routine(routineCatalog: string | null, routineSchema: string | null, routineNameN: string | null): Row
-    routineCol(routCatalog: string | null, routSchema: string | null, routName: string | null): Row
-    routinePars(routCatalog: string | null, routSchema: string | null, routName: string | null): Row
+    routine(routineCatalog: string, routineSchema: string, routineNameN: string): Row
+    routineCol(routCatalog: string, routSchema: string, routName: string): Row
+    routinePars(routCatalog: string, routSchema: string, routName: string): Row
     routines(): DataModel
     routinesCol(): DataModel
     routinesPars(): DataModel
-    schemata(catalogName: string | null, schemaNameN: string | null): Row
+    schemata(catalogName: string, schemaNameN: string): Row
     schematas(): DataModel
-    table(tableCatalog: string | null, tableSchema: string | null, tableNameN: string | null): Row
-    tableColumn(tableCatalog: string | null, tableSchema: string | null, tableName: string | null, columnName: string | null): Row
-    tableColumns(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): DataModel
+    table(tableCatalog: string, tableSchema: string, tableNameN: string): Row
+    tableColumn(tableCatalog: string, tableSchema: string, tableName: string, columnName: string): Row
+    tableColumns(tableCatalog: string, tableSchema: string, tableName: string): DataModel
     tables(): DataModel
     tablesColumns(): DataModel
-    trigger(tableCatalog: string | null, tableSchema: string | null, tableName: string | null): Row
+    trigger(tableCatalog: string, tableSchema: string, tableName: string): Row
     triggers(): DataModel
-    udt(udtCatalog: string | null, udtSchema: string | null): Row
-    udtCol(udtCatalog: string | null, udtSchema: string | null, udtName: string | null): Row
+    udt(udtCatalog: string, udtSchema: string): Row
+    udtCol(udtCatalog: string, udtSchema: string, udtName: string): Row
     udtCols(): DataModel
     udts(): DataModel
-    view(viewCatalog: string | null, viewSchema: string | null, viewNameN: string | null): Row
-    viewColumn(viewCatalog: string | null, viewSchema: string | null, viewName: string | null, columnName: string | null): Row
-    viewColumns(viewCatalog: string | null, viewSchema: string | null, viewName: string | null): DataModel
+    view(viewCatalog: string, viewSchema: string, viewNameN: string): Row
+    viewColumn(viewCatalog: string, viewSchema: string, viewName: string, columnName: string): Row
+    viewColumns(viewCatalog: string, viewSchema: string, viewName: string): DataModel
     views(): DataModel
     viewsColumns(): DataModel
 
@@ -4562,16 +4562,16 @@ export interface Query {
     // Has conflict: cancel(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
     // Has conflict: cancelFinish(res: Gio.AsyncResult): void
     // Has conflict: execute(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
-    // Has conflict: getName(): string | null
-    // Has conflict: getSql(): string | null
+    // Has conflict: getName(): string
+    // Has conflict: getSql(): string
 
     // Own virtual methods of Gda-6.0.Gda.Query
 
     cancel(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
     cancelFinish(res: Gio.AsyncResult): void
     execute(callback: Gio.AsyncReadyCallback | null, userData: any | null): void
-    getName(): string | null
-    getSql(): string | null
+    getName(): string
+    getSql(): string
 
     // Class property signals of Gda-6.0.Gda.Query
 
@@ -4640,29 +4640,29 @@ export interface QueryBuilder {
 
     // Owm methods of Gda-6.0.Gda.QueryBuilder
 
-    // Has conflict: addSavepoint(name: string | null): boolean
-    // Has conflict: beginTransaction(name: string | null): boolean
-    // Has conflict: commitTransaction(name: string | null): boolean
-    // Has conflict: deleteSavepoint(name: string | null): boolean
-    // Has conflict: getName(): string | null
-    // Has conflict: getSql(): string | null
-    // Has conflict: rollbackSavepoint(name: string | null): boolean
-    // Has conflict: rollbackTransaction(name: string | null): boolean
-    // Has conflict: setName(value: string | null): void
-    // Has conflict: setSql(value: string | null): void
+    // Has conflict: addSavepoint(name: string): boolean
+    // Has conflict: beginTransaction(name: string): boolean
+    // Has conflict: commitTransaction(name: string): boolean
+    // Has conflict: deleteSavepoint(name: string): boolean
+    // Has conflict: getName(): string
+    // Has conflict: getSql(): string
+    // Has conflict: rollbackSavepoint(name: string): boolean
+    // Has conflict: rollbackTransaction(name: string): boolean
+    // Has conflict: setName(value: string): void
+    // Has conflict: setSql(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.QueryBuilder
 
-    addSavepoint(name: string | null): boolean
-    beginTransaction(name: string | null): boolean
-    commitTransaction(name: string | null): boolean
-    deleteSavepoint(name: string | null): boolean
-    getName(): string | null
-    getSql(): string | null
-    rollbackSavepoint(name: string | null): boolean
-    rollbackTransaction(name: string | null): boolean
-    setName(value: string | null): void
-    setSql(value: string | null): void
+    addSavepoint(name: string): boolean
+    beginTransaction(name: string): boolean
+    commitTransaction(name: string): boolean
+    deleteSavepoint(name: string): boolean
+    getName(): string
+    getSql(): string
+    rollbackSavepoint(name: string): boolean
+    rollbackTransaction(name: string): boolean
+    setName(value: string): void
+    setSql(value: string): void
 
     // Class property signals of Gda-6.0.Gda.QueryBuilder
 
@@ -4724,12 +4724,12 @@ export interface ReadonlyTableModel extends MetaTable, TableModel {
 
     // Owm methods of Gda-6.0.Gda.ReadonlyTableModel
 
-    // Has conflict: getValue(row: number, column: string | null, result: any): void
+    // Has conflict: getValue(row: number, column: string, result: any): void
     // Has conflict: getValueAt(row: number, column: number, result: any): void
 
     // Own virtual methods of Gda-6.0.Gda.ReadonlyTableModel
 
-    getValue(row: number, column: string | null, result: any): void
+    getValue(row: number, column: string, result: any): void
     getValueAt(row: number, column: number, result: any): void
 
     // Class property signals of Gda-6.0.Gda.ReadonlyTableModel
@@ -4807,13 +4807,13 @@ export interface ReferencedColumn {
 
     // Owm methods of Gda-6.0.Gda.ReferencedColumn
 
-    // Has conflict: getName(): string | null
-    // Has conflict: setTableName(value: string | null): void
+    // Has conflict: getName(): string
+    // Has conflict: setTableName(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.ReferencedColumn
 
-    getName(): string | null
-    setTableName(value: string | null): void
+    getName(): string
+    setTableName(value: string): void
 
     // Class property signals of Gda-6.0.Gda.ReferencedColumn
 
@@ -5034,13 +5034,13 @@ export interface TableConstraint {
 
     // Owm methods of Gda-6.0.Gda.TableConstraint
 
-    // Has conflict: getDefinition(): string | null
-    // Has conflict: setDefinition(value: string | null): void
+    // Has conflict: getDefinition(): string
+    // Has conflict: setDefinition(value: string): void
 
     // Own virtual methods of Gda-6.0.Gda.TableConstraint
 
-    getDefinition(): string | null
-    setDefinition(value: string | null): void
+    getDefinition(): string
+    setDefinition(value: string): void
 
     // Class property signals of Gda-6.0.Gda.TableConstraint
 
@@ -5149,13 +5149,13 @@ export interface WritableTableModel extends MetaTable, ReadonlyTableModel, Table
     // Owm methods of Gda-6.0.Gda.WritableTableModel
 
     // Has conflict: insertRow(newRow: RowModel): void
-    // Has conflict: setValue(row: number, column: string | null, value: any): void
+    // Has conflict: setValue(row: number, column: string, value: any): void
     // Has conflict: setValueAt(row: number, column: number, value: any): void
 
     // Own virtual methods of Gda-6.0.Gda.WritableTableModel
 
     insertRow(newRow: RowModel): void
-    setValue(row: number, column: string | null, value: any): void
+    setValue(row: number, column: string, value: any): void
     setValueAt(row: number, column: number, value: any): void
 
     // Class property signals of Gda-6.0.Gda.WritableTableModel
@@ -5481,11 +5481,11 @@ export interface Column {
      */
     getAllowNull(): boolean
     getAutoIncrement(): boolean
-    getDbmsType(): string | null
+    getDbmsType(): string
     getDefaultValue(): any | null
-    getDescription(): string | null
+    getDescription(): string
     getGType(): GObject.GType
-    getName(): string | null
+    getName(): string
     getPosition(): number
     /**
      * Sets the 'allow null' flag of the given column.
@@ -5501,7 +5501,7 @@ export interface Column {
      * Defines `column'`s database type
      * @param dbmsType a string
      */
-    setDbmsType(dbmsType: string | null): void
+    setDbmsType(dbmsType: string): void
     /**
      * Sets `column'`s default #GValue.
      * @param defaultValue default #GValue for the column
@@ -5511,7 +5511,7 @@ export interface Column {
      * Sets the column's description
      * @param descr description.
      */
-    setDescription(descr: string | null): void
+    setDescription(descr: string): void
     /**
      * Sets the type of `column` to `type`.
      * @param type the new type of `column`.
@@ -5521,7 +5521,7 @@ export interface Column {
      * Sets the name of `column` to `name`.
      * @param name the new name of `column`.
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the position of the column refer to in the containing
      * data model.
@@ -5532,7 +5532,7 @@ export interface Column {
     // Own virtual methods of Gda-6.0.Gda.Column
 
     gTypeChanged(oldType: GObject.GType, newType: GObject.GType): void
-    nameChanged(oldName: string | null): void
+    nameChanged(oldName: string): void
 
     // Own signals of Gda-6.0.Gda.Column
 
@@ -5745,7 +5745,7 @@ export class Config extends GObject.Object {
      * @param dsnName the name of a DSN, in the "[&lt;username&gt;[:&lt;password&gt;]`]`&lt;DSN&gt;" format
      * @returns TRUE if an authentication is needed
      */
-    static dsnNeedsAuthentication(dsnName: string | null): boolean
+    static dsnNeedsAuthentication(dsnName: string): boolean
     static errorQuark(): GLib.Quark
     /**
      * Get a pointer to the global (unique) #GdaConfig object. This functions increments
@@ -5762,7 +5762,7 @@ export class Config extends GObject.Object {
      * @param dsnName the name of the DSN to look for
      * @returns a pointer to read-only #GdaDsnInfo structure, or %NULL if not found
      */
-    static getDsnInfo(dsnName: string | null): DsnInfo
+    static getDsnInfo(dsnName: string): DsnInfo
     /**
      * Get a pointer to a read-only #GdaDsnInfo at the `index` position
      * @param index an index
@@ -5774,7 +5774,7 @@ export class Config extends GObject.Object {
      * @param dsnName a DSN
      * @returns the index or -1 if not found
      */
-    static getDsnInfoIndex(dsnName: string | null): number
+    static getDsnInfoIndex(dsnName: string): number
     /**
      * Get the number of defined DSN
      * @returns the number of defined DSN
@@ -5789,13 +5789,13 @@ export class Config extends GObject.Object {
      * @param providerName a database provider
      * @returns a pointer to the #GdaServerProvider, or %NULL if an error occurred
      */
-    static getProvider(providerName: string | null): ServerProvider
+    static getProvider(providerName: string): ServerProvider
     /**
      * Get some information about the a database provider (adapter) named
      * @param providerName a database provider
      * @returns a pointer to read-only #GdaProviderInfo structure, or %NULL if not found
      */
-    static getProviderInfo(providerName: string | null): ProviderInfo
+    static getProviderInfo(providerName: string): ProviderInfo
     /**
      * Get a #GdaDataModel representing all the configured DSN, and keeping itself up to date with
      * the changes in the declared DSN.
@@ -5832,7 +5832,7 @@ export class Config extends GObject.Object {
      * @param dsnName the name of the DSN to remove
      * @returns TRUE if no error occurred
      */
-    static removeDsn(dsnName: string | null): boolean
+    static removeDsn(dsnName: string): boolean
 }
 
 export module Connection {
@@ -6103,7 +6103,7 @@ export interface Connection extends Lockable {
      * @param conditionValue the `condition_column_type'`s GType
      * @returns TRUE if no error occurred, FALSE otherwise
      */
-    deleteRowFromTable(table: string | null, conditionColumnName: string | null, conditionValue: any): boolean
+    deleteRowFromTable(table: string, conditionColumnName: string, conditionValue: any): boolean
     /**
      * Delete the SAVEPOINT named `name` when not used anymore.
      * @param name name of the savepoint to delete
@@ -6116,18 +6116,18 @@ export interface Connection extends Lockable {
      * @param sql a query statement that must not begin with "SELECT"
      * @returns the number of rows affected or -1, or -2
      */
-    executeNonSelectCommand(sql: string | null): number
+    executeNonSelectCommand(sql: string): number
     /**
      * Execute a SQL SELECT command over an opened connection.
      * @param sql a query statement that must begin with "SELECT"
      * @returns a new #GdaDataModel if successful, %NULL otherwise
      */
-    executeSelectCommand(sql: string | null): DataModel
+    executeSelectCommand(sql: string): DataModel
     /**
      * Gets the user name used to open this connection.
      * @returns the user name.
      */
-    getAuthentication(): string | null
+    getAuthentication(): string
     /**
      * Gets the connection string used to open this connection.
      * 
@@ -6136,13 +6136,13 @@ export interface Connection extends Lockable {
      * to open a connection on the underlying data source.
      * @returns the connection string used when opening the connection.
      */
-    getCncString(): string | null
+    getCncString(): string
     /**
      * This function allows you to determine the actual format for the date values.
      * @returns %TRUE if no error occurred
      */
     getDateFormat(): [ /* returnType */ boolean, /* outFirst */ GLib.DateDMY | null, /* outSecond */ GLib.DateDMY | null, /* outThird */ GLib.DateDMY | null, /* outSep */ string | null ]
-    getDsn(): string | null
+    getDsn(): string
     /**
      * Retrieves a list of the last errors occurred during the connection. The returned list is
      * chronologically ordered such as that the most recent event is the #GdaConnectionEvent of the first node.
@@ -6195,7 +6195,7 @@ export interface Connection extends Lockable {
      * Gets the name (identifier) of the database provider used by `cnc`
      * @returns a non modifiable string
      */
-    getProviderName(): string | null
+    getProviderName(): string
     /**
      * Get the current status of `cnc`. Note that this function needs to lock the connection (see #GdaLockable)
      * to obtain the result.
@@ -6222,7 +6222,7 @@ export interface Connection extends Lockable {
      * @param values a list of values (as #GValue)
      * @returns TRUE if no error occurred, FALSE otherwise
      */
-    insertRowIntoTableV(table: string | null, colNames: string[], values: any[]): boolean
+    insertRowIntoTableV(table: string, colNames: string[], values: any[]): boolean
     /**
      * Internal function to be called by database providers to force a transaction status
      * change.
@@ -6249,7 +6249,7 @@ export interface Connection extends Lockable {
      * @param parentTrans name of the parent transaction, or %NULL
      * @param svpName savepoint's name, or %NULL
      */
-    internalSavepointAdded(parentTrans: string | null, svpName: string | null): void
+    internalSavepointAdded(parentTrans: string | null, svpName: string): void
     /**
      * Internal functions to be called by database providers when a savepoint has been removed
      * to keep track of the transaction status of the connection
@@ -6318,7 +6318,7 @@ export interface Connection extends Lockable {
      * @param transName transaction's name, or %NULL
      * @param isolLevel isolation level.
      */
-    internalTransactionStarted(parentTrans: string | null, transName: string | null, isolLevel: TransactionIsolation): void
+    internalTransactionStarted(parentTrans: string | null, transName: string, isolLevel: TransactionIsolation): void
     /**
      * Checks whether a connection is open or not.
      * @returns %TRUE if the connection is open, %FALSE if it's not.
@@ -6352,13 +6352,13 @@ export interface Connection extends Lockable {
      * @param path a complete path to a node (starting with "/")
      * @returns a new string, or %NULL if the value is undefined or if the @path is not defined or @path does not hold any value, or if the value held is not a string or a valid SQL identifier.
      */
-    operationGetSqlIdentifierAtPath(op: ServerOperation, path: string | null): string | null
+    operationGetSqlIdentifierAtPath(op: ServerOperation, path: string): string | null
     /**
      * This function helps to parse a SQL string which uses parameters and store them at `params`.
      * @param sql an SQL command to parse, not %NULL
      * @returns a #GdaStatement representing the SQL command, or %NULL if an error occurred
      */
-    parseSqlString(sql: string | null): [ /* returnType */ Statement, /* params */ Set | null ]
+    parseSqlString(sql: string): [ /* returnType */ Statement, /* params */ Set | null ]
     /**
      * Performs the operation described by `op` (which should have been created using
      * gda_connection_create_operation()). It is a wrapper around the gda_server_provider_perform_operation()
@@ -6401,14 +6401,14 @@ export interface Connection extends Lockable {
      * @param arguments_ list of arguments as #GdaServerOperationPrepareCreateTableArg containing column's name, column's #GType and a #GdaServerOperationCreateTableFlag flag
      * @returns a #GdaServerOperation if no errors; NULL and set @error otherwise
      */
-    prepareOperationCreateTable(tableName: string | null, arguments_: ServerOperationCreateTableArg[]): ServerOperation | null
+    prepareOperationCreateTable(tableName: string, arguments_: ServerOperationCreateTableArg[]): ServerOperation | null
     /**
      * This is just a convenient function to create a #GdaServerOperation to drop a
      * table in an opened connection.
      * @param tableName name of the table to drop
      * @returns a new #GdaServerOperation or %NULL if couldn't create the opereration.
      */
-    prepareOperationDropTable(tableName: string | null): ServerOperation | null
+    prepareOperationDropTable(tableName: string): ServerOperation | null
     /**
      * Use this method to get a correctly quoted (if necessary) SQL identifier which can be used
      * in SQL statements, from `id`. If `id` is already correctly quoted for `cnc,` then a copy of `id`
@@ -6428,7 +6428,7 @@ export interface Connection extends Lockable {
      * @param id an SQL identifier
      * @returns a new string, to free with g_free() once not needed anymore
      */
-    quoteSqlIdentifier(id: string | null): string | null
+    quoteSqlIdentifier(id: string): string | null
     /**
      * Executes the statement upon which `rstmt` is built. Note that as several statements can actually be executed by this
      * method, it is recommended to be within a transaction.
@@ -6683,7 +6683,7 @@ export interface Connection extends Lockable {
      * @param values a list of values (as #GValue)
      * @returns TRUE if no error occurred, FALSE otherwise
      */
-    updateRowInTableV(table: string | null, conditionColumnName: string | null, conditionValue: any, colNames: string[], values: any[]): boolean
+    updateRowInTableV(table: string, conditionColumnName: string, conditionValue: any, colNames: string[], values: any[]): boolean
     /**
      * Produces a fully quoted and escaped string from a GValue
      * @param from #GValue to convert from
@@ -6855,7 +6855,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection or %NULL if there was an error.
      */
-    static newFromDsnName(dsnName: string | null, authString: string | null, options: ConnectionOptions): Connection
+    static newFromDsnName(dsnName: string, authString: string | null, options: ConnectionOptions): Connection
     /**
      * Opens a connection given a provider ID and a connection string. This
      * allows applications to open connections without having to create
@@ -6903,7 +6903,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection or %NULL if there was an error.
      */
-    static newFromString(providerName: string | null, cncString: string | null, authString: string | null, options: ConnectionOptions): Connection
+    static newFromString(providerName: string | null, cncString: string, authString: string | null, options: ConnectionOptions): Connection
     _init(config?: Connection.ConstructorProperties): void
     static errorQuark(): GLib.Quark
     /**
@@ -6930,7 +6930,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection if connection opening was successful or %NULL if there was an error.
      */
-    static openFromDsnName(dsnName: string | null, authString: string | null, options: ConnectionOptions): Connection
+    static openFromDsnName(dsnName: string, authString: string | null, options: ConnectionOptions): Connection
     /**
      * This function creates a connection and opens it, using a connection string. If opening fails, then no connection is created.
      * See gda_connection_new_from_string() for more information.
@@ -6940,7 +6940,7 @@ export class Connection extends GObject.Object {
      * @param options options for the connection (see #GdaConnectionOptions).
      * @returns a new #GdaConnection if connection opening was successful or %NULL if there was an error.
      */
-    static openFromString(providerName: string | null, cncString: string | null, authString: string | null, options: ConnectionOptions): Connection
+    static openFromString(providerName: string | null, cncString: string, authString: string | null, options: ConnectionOptions): Connection
     /**
      * Opens an SQLite connection even if the SQLite provider is not installed,
      * to be used by database providers which need a temporary database to store
@@ -6950,7 +6950,7 @@ export class Connection extends GObject.Object {
      * @param autoUnlink if %TRUE, then the database file will be removed afterwards
      * @returns a new #GdaConnection, or %NULL if an error occurred
      */
-    static openSqlite(directory: string | null, filename: string | null, autoUnlink: boolean): Connection
+    static openSqlite(directory: string | null, filename: string, autoUnlink: boolean): Connection
     /**
      * Extract the provider, connection parameters, username and password from `string`.
      * in `string,` the various parts are strings
@@ -6978,7 +6978,7 @@ export class Connection extends GObject.Object {
      * out_password: "pass"]]></programlisting>
      * @param string a string in the "[&lt;provider&gt;://][&lt;username&gt;[:&lt;password&gt;]`]`&lt;connection_params&gt;" form
      */
-    static stringSplit(string: string | null): [ /* outCncParams */ string | null, /* outProvider */ string | null, /* outUsername */ string | null, /* outPassword */ string | null ]
+    static stringSplit(string: string): [ /* outCncParams */ string | null, /* outProvider */ string | null, /* outUsername */ string | null, /* outPassword */ string | null ]
 }
 
 export module ConnectionEvent {
@@ -7013,7 +7013,7 @@ export interface ConnectionEvent {
      * the the description is the SQL of the command.
      * @returns @event's description.
      */
-    getDescription(): string | null
+    getDescription(): string
     /**
      * Get `event'`s severity (from a simple notice to a fatal event)
      * @returns the event type
@@ -7024,14 +7024,14 @@ export interface ConnectionEvent {
      * @returns the #GdaConnectionEventCode event's code
      */
     getGdaCode(): ConnectionEventCode
-    getSource(): string | null
+    getSource(): string
     /**
      * Get the SQLSTATE value of `event`. Even though the SQLSTATE values are specified by ANSI SQL and ODBC,
      * consult each DBMS for the possible values. However, the "00000" (success) value means that there is no error,
      * and the "HY000" (general error) value means an error but no better error code available.
      * @returns @event's SQL state.
      */
-    getSqlstate(): string | null
+    getSqlstate(): string
     /**
      * Sets `event'`s code: the code is specific to the provider being used.
      * If you want to have a common understanding of the event codes, use
@@ -7065,14 +7065,14 @@ export interface ConnectionEvent {
      * Sets `event'`s `source;` this function should not be called directly
      * @param source a source.
      */
-    setSource(source: string | null): void
+    setSource(source: string): void
     /**
      * Changes the SQLSTATE code of `event,` this function should not be called directly
      * 
      * Sets `event'`s SQL state.
      * @param sqlstate SQL state.
      */
-    setSqlstate(sqlstate: string | null): void
+    setSqlstate(sqlstate: string): void
 
     // Class property signals of Gda-6.0.Gda.ConnectionEvent
 
@@ -7137,12 +7137,12 @@ export interface ConnectionModelParams {
 
     // Owm methods of Gda-6.0.Gda.ConnectionModelParams
 
-    getCncString(): string | null
-    getPasword(): string | null
-    getUser(): string | null
-    setCncString(value: string | null): void
-    setPasword(value: string | null): void
-    setUser(value: string | null): void
+    getCncString(): string
+    getPasword(): string
+    getUser(): string
+    setCncString(value: string): void
+    setPasword(value: string): void
+    setUser(value: string): void
 
     // Class property signals of Gda-6.0.Gda.ConnectionModelParams
 
@@ -7580,7 +7580,7 @@ export class DataModelDir extends GObject.Object {
      * @param basedir a directory
      * @returns a new #GdaDataModel
      */
-    static new(basedir: string | null): DataModel
+    static new(basedir: string): DataModel
 }
 
 export module DataModelImport {
@@ -7750,7 +7750,7 @@ export class DataModelImport extends GObject.Object {
      * @param options importing options
      * @returns a pointer to the newly created #GdaDataModel.
      */
-    static newFile(filename: string | null, randomAccess: boolean, options: Set | null): DataModel
+    static newFile(filename: string, randomAccess: boolean, options: Set | null): DataModel
     /**
      * Creates a new #GdaDataModel object which contains the data stored in the `data` string.
      * 
@@ -7761,7 +7761,7 @@ export class DataModelImport extends GObject.Object {
      * @param options importing options, see gda_data_model_import_new_file() for more information
      * @returns a pointer to the newly created #GdaDataModel.
      */
-    static newMem(data: string | null, randomAccess: boolean, options: Set | null): DataModel
+    static newMem(data: string, randomAccess: boolean, options: Set | null): DataModel
     /**
      * Creates a new #GdaDataModel and loads the data in `node`. The resulting data model
      * can be accessed in a random way.
@@ -7933,7 +7933,7 @@ export interface DataModelIter {
      * @param fieldName the requested column name
      * @returns the #GValue, or %NULL
      */
-    getValueForField(fieldName: string | null): any | null
+    getValueForField(fieldName: string): any | null
     /**
      * Declare all the parameters in `iter` invalid, without modifying the
      * #GdaDataModel `iter` is for or changing the row it represents. This method
@@ -8183,7 +8183,7 @@ export class DataModelSelect extends GObject.Object {
     constructor(config?: DataModelSelect.ConstructorProperties) 
     constructor(cnc: Connection, stm: Statement, params: Set | null) 
     static new(cnc: Connection, stm: Statement, params: Set | null): DataModelSelect
-    static newFromString(cnc: Connection, sql: string | null): DataModelSelect
+    static newFromString(cnc: Connection, sql: string): DataModelSelect
     _init(config?: DataModelSelect.ConstructorProperties): void
 }
 
@@ -8233,7 +8233,7 @@ export interface DataPivot extends DataModel {
      * @param alias the field alias, or %NULL
      * @returns %TRUE if no error occurred
      */
-    addData(aggregateType: DataPivotAggregate, field: string | null, alias: string | null): boolean
+    addData(aggregateType: DataPivotAggregate, field: string, alias: string | null): boolean
     /**
      * Specifies that `field` has to be included in the analysis.
      * `field` is a field specification with the following accepted syntaxes:
@@ -8254,7 +8254,7 @@ export interface DataPivot extends DataModel {
      * @param alias the field alias, or %NULL
      * @returns %TRUE if no error occurred
      */
-    addField(fieldType: DataPivotFieldType, field: string | null, alias: string | null): boolean
+    addField(fieldType: DataPivotFieldType, field: string, alias: string | null): boolean
     /**
      * Acutally populates `pivot` by analysing the data from the provided data model.
      * @returns %TRUE if no error occurred.
@@ -8449,7 +8449,7 @@ export interface DataProxy extends DataModel {
      * Get the current filter expression used by `proxy`.
      * @returns the current filter expression or %NULL if no filter has been set
      */
-    getFilterExpr(): string | null
+    getFilterExpr(): string
     /**
      * Get the total number of filtered rows in `proxy` if a filter has been applied. As new rows
      * (rows added to the proxy and not yet added to the proxied data model) and rows to remove
@@ -8882,7 +8882,7 @@ export interface DataSelect extends DataModel {
      * @param sql an SQL text
      * @returns TRUE if no error occurred.
      */
-    setModificationStatementSql(sql: string | null): boolean
+    setModificationStatementSql(sql: string): boolean
     /**
      * Offers the same features as gda_data_select_set_row_selection_condition_sql() but using a #GdaSqlExpr
      * structure instead of an SQL syntax.
@@ -8907,7 +8907,7 @@ export interface DataSelect extends DataModel {
      * @param sqlWhere an SQL condition (without the WHERE keyword)
      * @returns TRUE if no error occurred
      */
-    setRowSelectionConditionSql(sqlWhere: string | null): boolean
+    setRowSelectionConditionSql(sqlWhere: string): boolean
 
     // Own virtual methods of Gda-6.0.Gda.DataSelect
 
@@ -9113,7 +9113,7 @@ export interface DbBase {
      * Returns current catalog name. The returned string should not be freed.
      * @returns Current catalog or %NULL
      */
-    getCatalog(): string | null
+    getCatalog(): string
     /**
      * This method returns a full name in the format catalog.schema.name.
      * If schema is %NULL but catalog and name are not, then only name is
@@ -9121,27 +9121,27 @@ export interface DbBase {
      * schema.name. If all three components are not set, then %NULL is returned.
      * @returns Full name of the database object or %NULL.
      */
-    getFullName(): string | null
+    getFullName(): string
     /**
      * Returns current object name. The returned string should not be freed.
      * @returns Current object name or %NULL
      */
-    getName(): string | null
+    getName(): string
     /**
      * Returns current schema name. The returned string should not be freed.
      * @returns Current scheme or %NULL
      */
-    getSchema(): string | null
+    getSchema(): string
     /**
      * Set catalog name
      * @param catalog Catalog name as a string
      */
-    setCatalog(catalog: string | null): void
+    setCatalog(catalog: string): void
     /**
      * Set object name. If `name` is %NULL the function just returns.
      * @param name Object name as a string
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets database object names. `catalog` and `schema` can be %NULL but
      * `name` always should be a valid, not %NULL string. The `name` must be
@@ -9151,12 +9151,12 @@ export interface DbBase {
      * @param schema a schema name associated with the table
      * @param name a table name associated with the table
      */
-    setNames(catalog: string | null, schema: string | null, name: string | null): void
+    setNames(catalog: string | null, schema: string | null, name: string): void
     /**
      * Set object schema. If `schema` is %NULL the function just returns.
      * @param schema Schema name as a string
      */
-    setSchema(schema: string | null): void
+    setSchema(schema: string): void
 
     // Class property signals of Gda-6.0.Gda.DbBase
 
@@ -9310,7 +9310,7 @@ export interface DbCatalog {
      * before parsing it.
      * @param xmlfile xml file to parse
      */
-    parseFileFromPath(xmlfile: string | null): boolean
+    parseFileFromPath(xmlfile: string): boolean
     /**
      * After population `self` with all data this method may be
      * called to trigger code and modify user database. This is the main
@@ -9345,7 +9345,7 @@ export interface DbCatalog {
      * @param path path to xml file to save #GdaDbCatalog
      * @returns %TRUE is no error, %FALSE otherwise.
      */
-    writeToPath(path: string | null): boolean
+    writeToPath(path: string): boolean
 
     // Class property signals of Gda-6.0.Gda.DbCatalog
 
@@ -9400,7 +9400,7 @@ export class DbCatalog extends GObject.Object {
      * @param xmlfile xml file to validate
      * @returns %TRUE if @xmlfile is valid, %FALSE otherwise
      */
-    static validateFileFromPath(xmlfile: string | null): boolean
+    static validateFileFromPath(xmlfile: string): boolean
 }
 
 export module DbColumn {
@@ -9458,22 +9458,22 @@ export interface DbColumn extends DbBuildable, DdlModifiable {
      * Returns value of the check field.
      * @returns Column check string
      */
-    getCheck(): string | null
+    getCheck(): string
     /**
      * Get value for column comment.
      * @returns Column comment as a string. %NULL is returned if comment is not set.
      */
-    getComment(): string | null
+    getComment(): string
     /**
      * Returns column type as a string derivied from #GType
      * @returns column type as a string or %NULL
      */
-    getCtype(): string | null
+    getCtype(): string
     /**
      * Returns default value for the column. Can be %NULL if the default value hasn't been set.
      * @returns Default value for the column as a string.
      */
-    getDefault(): string | null
+    getDefault(): string
     /**
      * Return of column type as #GType
      */
@@ -9482,7 +9482,7 @@ export interface DbColumn extends DbBuildable, DdlModifiable {
      * Returns name of the column
      * @returns Column name as a string or %NULL.
      */
-    getName(): string | null
+    getName(): string
     /**
      * Specify if the column's value can be NULL.
      * @returns %TRUE if value can be %NULL, %FALSE otherwise.
@@ -9528,18 +9528,18 @@ export interface DbColumn extends DbBuildable, DdlModifiable {
      * Sets check string to the column.
      * @param value value to set
      */
-    setCheck(value: string | null): void
+    setCheck(value: string): void
     /**
      * Set value for column comment.
      * @param comnt comment to set
      */
-    setComment(comnt: string | null): void
-    setDefault(value: string | null): void
+    setComment(comnt: string): void
+    setDefault(value: string): void
     /**
      * Set column name.
      * @param name name as a string
      */
-    setName(name: string | null): void
+    setName(name: string): void
     setNnul(nnul: boolean): void
     /**
      * If `pkey` is %TRUE, the given column will be marked with PRIMERY KEY flag
@@ -9677,16 +9677,16 @@ export interface DbFkey extends DbBuildable {
     // Owm methods of Gda-6.0.Gda.DbFkey
 
     getFieldName(): string[]
-    getOndelete(): string | null
+    getOndelete(): string
     /**
      * The default value is %NO_ACTION
      * @returns ON DELETE action as a #GdaDbFkeyReferenceAction.
      */
     getOndeleteId(): DbFkeyReferenceAction
-    getOnupdate(): string | null
+    getOnupdate(): string
     getOnupdateId(): DbFkeyReferenceAction
     getRefField(): string[]
-    getRefTable(): string | null
+    getRefTable(): string
     /**
      * Prepare `op` object for execution by populating with information stored in `self`.
      * @param op a #GdaServerOperation to populate
@@ -9699,7 +9699,7 @@ export interface DbFkey extends DbBuildable {
      * @param field Field name as a string
      * @param reffield A reference field name as a string
      */
-    setField(field: string | null, reffield: string | null): void
+    setField(field: string, reffield: string): void
     /**
      * Set action for ON_DELETE
      * @param id #GdaDbFkeyReferenceAction action to set
@@ -9714,7 +9714,7 @@ export interface DbFkey extends DbBuildable {
      * Set reference table
      * @param rtable reference table name
      */
-    setRefTable(rtable: string | null): void
+    setRefTable(rtable: string): void
 
     // Class property signals of Gda-6.0.Gda.DbFkey
 
@@ -9792,7 +9792,7 @@ export interface DbIndex extends DdlModifiable {
      */
     getFields(): DbIndexField[] | null
     getUnique(): boolean
-    removeField(name: string | null): void
+    removeField(name: string): void
     /**
      * If `val` is %TRUE a "UNIQUE" will be added to the INDEX CREATE command, e.g.
      * CREATE UNIQUE INDEX ...
@@ -9865,14 +9865,14 @@ export interface DbIndexField {
 
     // Owm methods of Gda-6.0.Gda.DbIndexField
 
-    getCollate(): string | null
+    getCollate(): string
     /**
      * Returns an active column that was asigned to #GdaDbIndexField instance
      * @returns A #GdaDbColumn where index should be added
      */
     getColumn(): DbColumn
     getSortOrder(): DbIndexSortOrder
-    getSortOrderStr(): string | null
+    getSortOrderStr(): string
     /**
      * Unfortunately, collate can vary from provider to provider. This method accepts collate name as a
      * string but user should provide valid values. For instance, SQLite3 accepts only "BINARY",
@@ -9880,7 +9880,7 @@ export interface DbIndexField {
      * e.g. function.
      * @param collate collate to set
      */
-    setCollate(collate: string | null): void
+    setCollate(collate: string): void
     /**
      * Only full name will be extracted from `column`. The `column` instance should be freed using
      * g_object_unref(). The instance `self` take a copy of the `column` object by increasing its
@@ -9968,7 +9968,7 @@ export interface DbTable extends DbBuildable, DdlModifiable {
      * a list of constraints to the sql string.
      * @param constr a constraint string to append
      */
-    appendConstraint(constr: string | null): void
+    appendConstraint(constr: string): void
     /**
      * Append `fkey` to the internal list of columns
      * @param fkey fkry to add
@@ -10097,7 +10097,7 @@ export interface DbView extends DbBuildable, DdlModifiable {
 
     // Owm methods of Gda-6.0.Gda.DbView
 
-    getDefstring(): string | null
+    getDefstring(): string
     getIfnoexist(): boolean
     getIstemp(): boolean
     getReplace(): boolean
@@ -10108,7 +10108,7 @@ export interface DbView extends DbBuildable, DdlModifiable {
      * @returns %TRUE if succeeded and %FALSE otherwise.
      */
     prepareCreate(op: ServerOperation): boolean
-    setDefstring(str: string | null): void
+    setDefstring(str: string): void
     setIfnoexist(noexist: boolean): void
     setIstemp(temp: boolean): void
     setReplace(replace: boolean): void
@@ -10753,7 +10753,7 @@ export interface Holder extends Lockable {
      * Get the ID of `holder`. The ID can be set using `holder'`s "id" property
      * @returns the ID (don't modify the string).
      */
-    getId(): string | null
+    getId(): string
     /**
      * Get wether the holder can be NULL or not
      * @returns TRUE if the holder cannot be NULL
@@ -10868,7 +10868,7 @@ export interface Holder extends Lockable {
      * @param value a value to set the holder to, as a string
      * @returns TRUE if value has been set
      */
-    setValueStr(dh: DataHandler, value: string | null): boolean
+    setValueStr(dh: DataHandler, value: string): boolean
     /**
      * Set `holder'`s value to its default value.
      * @returns TRUE if @holder has got a default value
@@ -11044,7 +11044,7 @@ export class Holder extends GObject.Object {
      * @param id an identifiation
      * @returns a new #GdaHolder object
      */
-    constructor(type: GObject.GType, id: string | null) 
+    constructor(type: GObject.GType, id: string) 
     /**
      * Creates a new holder of type `type`
      * @constructor 
@@ -11052,7 +11052,7 @@ export class Holder extends GObject.Object {
      * @param id an identifiation
      * @returns a new #GdaHolder object
      */
-    static new(type: GObject.GType, id: string | null): Holder
+    static new(type: GObject.GType, id: string): Holder
     _init(config?: Holder.ConstructorProperties): void
     static errorQuark(): GLib.Quark
 }
@@ -11121,7 +11121,7 @@ export interface MetaStore {
      * @param tableName the name of a table present in `store`
      * @returns a new #GdaDataModel
      */
-    createModifyDataModel(tableName: string | null): DataModel
+    createModifyDataModel(tableName: string): DataModel
     createStruct(features: MetaStructFeature): MetaStruct
     /**
      * Defines a new declared foreign key into `store`. If another declared foreign key is already defined
@@ -11153,7 +11153,7 @@ export interface MetaStore {
      * @param refColnames an array of column names from the referenced table
      * @returns %TRUE if no error occurred
      */
-    declareForeignKey(mstruct: MetaStruct | null, fkName: string | null, catalog: string | null, schema: string | null, table: string | null, refCatalog: string | null, refSchema: string | null, refTable: string | null, colnames: string[], refColnames: string[]): boolean
+    declareForeignKey(mstruct: MetaStruct | null, fkName: string, catalog: string | null, schema: string | null, table: string, refCatalog: string | null, refSchema: string | null, refTable: string, colnames: string[], refColnames: string[]): boolean
     /**
      * Extracts some data stored in `store` using a custom SELECT query. If the `select_sql` filter involves
      * SQL identifiers (such as table or column names), then the values should have been adapted using
@@ -11166,7 +11166,7 @@ export interface MetaStore {
      * @param vars a hash table with all variables names as keys and GValue* as value, representing values for all the variables mentioned in `select_sql`. If there is no variable then this part can be omitted.
      * @returns a new #GdaDataModel, or %NULL if an error occurred
      */
-    extract(selectSql: string | null, vars: GLib.HashTable | null): DataModel
+    extract(selectSql: string, vars: GLib.HashTable | null): DataModel
     /**
      * The #GdaMetaStore object maintains a list of (name,value) attributes (attributes names starting with a '_'
      * character are for internal use only and cannot be altered). This method and the gda_meta_store_set_attribute_value()
@@ -11180,7 +11180,7 @@ export interface MetaStore {
      * @param attName name of the attribute to get
      * @returns TRUE if no error occurred
      */
-    getAttributeValue(attName: string | null): [ /* returnType */ boolean, /* attValue */ string | null ]
+    getAttributeValue(attName: string): [ /* returnType */ boolean, /* attValue */ string | null ]
     /**
      * Get a pointer to the #GdaConnection object internally used by `store` to store
      * its contents.
@@ -11206,7 +11206,7 @@ export interface MetaStore {
      * @param values values
      * @returns %TRUE if no error occurred
      */
-    modify(tableName: string | null, newData: DataModel | null, condition: string | null, valueNames: string[], values: any[]): boolean
+    modify(tableName: string, newData: DataModel | null, condition: string | null, valueNames: string[], values: any[]): boolean
     /**
      * Propagates an update to `store,` the update's contents is represented by `new_data,` this function is
      * primarily reserved to database providers.
@@ -11266,7 +11266,7 @@ export interface MetaStore {
      * @param xmlDescription an XML description of the table or view to add to `store`
      * @returns TRUE if the new object has successfully been added
      */
-    schemaAddCustomObject(xmlDescription: string | null): boolean
+    schemaAddCustomObject(xmlDescription: string): boolean
     /**
      * Get an ordered list of the tables `store` knows about. The tables are ordered in a way that tables dependencies
      * are respected: if table B has a foreign key on table A, then table A will be listed before table B in the returned
@@ -11282,7 +11282,7 @@ export interface MetaStore {
      * @param tableName the name of the table for which all the dependencies must be listed
      * @returns a new list of tables names (as gchar*), the list must be freed when no longer needed, but the strings present in the list must not be modified.
      */
-    schemaGetDependTables(tableName: string | null): string[]
+    schemaGetDependTables(tableName: string): string[]
     /**
      * Creates a new #GdaMetaStruct object representing `store'`s internal database structure.
      * @returns a new #GdaMetaStruct object, or %NULL if an error occurred
@@ -11293,7 +11293,7 @@ export interface MetaStore {
      * @param objName name of the custom object to remove
      * @returns TRUE if the custom object has successfully been removed
      */
-    schemaRemoveCustomObject(objName: string | null): boolean
+    schemaRemoveCustomObject(objName: string): boolean
     /**
      * Set the value of the attribute named `att_name` to `att_value;` see gda_meta_store_get_attribute_value() for
      * more information.
@@ -11301,7 +11301,7 @@ export interface MetaStore {
      * @param attValue value of the attribute to set, or %NULL to unset the attribute
      * @returns TRUE if no error occurred
      */
-    setAttributeValue(attName: string | null, attValue: string | null): boolean
+    setAttributeValue(attName: string, attValue: string | null): boolean
     /**
      * Specifies how `store` must handle SQL identifiers it has to store. This method is mainly used by
      * database providers.
@@ -11339,7 +11339,7 @@ export interface MetaStore {
      * @param refTable the name of the referenced table
      * @returns %TRUE if no error occurred
      */
-    undeclareForeignKey(mstruct: MetaStruct | null, fkName: string | null, catalog: string | null, schema: string | null, table: string | null, refCatalog: string | null, refSchema: string | null, refTable: string | null): boolean
+    undeclareForeignKey(mstruct: MetaStruct | null, fkName: string, catalog: string | null, schema: string | null, table: string, refCatalog: string | null, refSchema: string | null, refTable: string): boolean
 
     // Own virtual methods of Gda-6.0.Gda.MetaStore
 
@@ -11429,7 +11429,7 @@ export class MetaStore extends GObject.Object {
      * @param fileName a file name
      * @returns the newly created object, or %NULL if an error occurred
      */
-    static newWithFile(fileName: string | null): MetaStore
+    static newWithFile(fileName: string): MetaStore
     _init(config?: MetaStore.ConstructorProperties): void
     static errorQuark(): GLib.Quark
     /**
@@ -11443,7 +11443,7 @@ export class MetaStore extends GObject.Object {
      * @param cnc a #GdaConnection
      * @returns a new string, to free with g_free() once not needed anymore
      */
-    static sqlIdentifierQuote(id: string | null, cnc: Connection): string | null
+    static sqlIdentifierQuote(id: string, cnc: Connection): string | null
 }
 
 export module MetaStruct {
@@ -11579,7 +11579,7 @@ export interface MetaStruct {
      * @param xmlSpecFile the specifications as the name of an XML file
      * @returns TRUE if no error has occurred
      */
-    loadFromXmlFile(catalog: string | null, schema: string | null, xmlSpecFile: string | null): boolean
+    loadFromXmlFile(catalog: string | null, schema: string | null, xmlSpecFile: string): boolean
     /**
      * Reorders the list of database objects within `mstruct` in a way specified by `sort_type`.
      * @param sortType the kind of sorting requested
@@ -11702,7 +11702,7 @@ export interface PStmt {
      * Set SQL code used for this prepared statement, mem freed by GdaPStmt
      * @param sql 
      */
-    setSql(sql: string | null): void
+    setSql(sql: string): void
     /**
      * Set the list of #GdaColumn objects which data models created from this
      * prepared statement can copy. The list is stolen, so you should not
@@ -12024,27 +12024,27 @@ export interface ServerOperation {
 
     // Owm methods of Gda-6.0.Gda.ServerOperation
 
-    addItemToSequence(seqPath: string | null): number
-    delItemFromSequence(itemPath: string | null): boolean
+    addItemToSequence(seqPath: string): number
+    delItemFromSequence(itemPath: string): boolean
     /**
      * Get the complete path to the parent of the node defined by `path`
      * @param path a complete path to a node (starting with "/")
      * @returns a new string or %NULL if the node does not have any parent or does not exist.
      */
-    getNodeParent(path: string | null): string | null
+    getNodeParent(path: string): string | null
     /**
      * Get the last part of `path`
      * @param path a complete path to a node (starting with "/")
      * @returns a new string, or %NULL if an error occurred
      */
-    getNodePathPortion(path: string | null): string | null
+    getNodePathPortion(path: string): string | null
     /**
      * Convenience function to get the type of a node.
      * @param path a complete path to a node (starting with "/")
      * @param status a place to store the status of the node, or %NULL
      * @returns the type of node, or GDA_SERVER_OPERATION_NODE_UNKNOWN if the node was not found
      */
-    getNodeType(path: string | null, status: ServerOperationNodeStatus | null): ServerOperationNodeType
+    getNodeType(path: string, status: ServerOperationNodeStatus | null): ServerOperationNodeType
     /**
      * Get the type of operation `op` is for
      * @returns a #GdaServerOperationType enum
@@ -12061,18 +12061,18 @@ export interface ServerOperation {
      * @param path a complete path to a sequence node (starting with "/")
      * @returns a array of strings containing the complete paths of the nodes contained at @path (free with g_strfreev())
      */
-    getSequenceItemNames(path: string | null): string[]
-    getSequenceMaxSize(path: string | null): number
-    getSequenceMinSize(path: string | null): number
-    getSequenceName(path: string | null): string | null
-    getSequenceSize(path: string | null): number
-    getSqlIdentifierAtPath(path: string | null): string | null
+    getSequenceItemNames(path: string): string[]
+    getSequenceMaxSize(path: string): number
+    getSequenceMinSize(path: string): number
+    getSequenceName(path: string): string
+    getSequenceSize(path: string): number
+    getSqlIdentifierAtPath(path: string): string | null
     /**
      * Get the value for the node at the `path` path
      * @param path a complete path to a node (starting with "/")
      * @returns a constant #GValue if a value has been defined, or %NULL if the value is undefined or if the @path is not defined or @path does not hold any value.
      */
-    getValueAt(path: string | null): any | null
+    getValueAt(path: string): any | null
     /**
      * Tells if all the required values in `op` have been defined.
      * 
@@ -12156,12 +12156,12 @@ export interface ServerOperation {
      * @param path a complete path to a node (starting with "/")
      * @returns %TRUE if no error occurred
      */
-    setValueAt(value: string | null, path: string | null): boolean
+    setValueAt(value: string | null, path: string): boolean
 
     // Own virtual methods of Gda-6.0.Gda.ServerOperation
 
-    seqItemAdded(seqPath: string | null, itemIndex: number): void
-    seqItemRemove(seqPath: string | null, itemIndex: number): void
+    seqItemAdded(seqPath: string, itemIndex: number): void
+    seqItemRemove(seqPath: string, itemIndex: number): void
 
     // Own signals of Gda-6.0.Gda.ServerOperation
 
@@ -12239,7 +12239,7 @@ export class ServerOperation extends GObject.Object {
      * @param xmlFile a file which has the specifications for the GdaServerOperation object to create
      * @returns a new #GdaServerOperation object
      */
-    constructor(opType: ServerOperationType, xmlFile: string | null) 
+    constructor(opType: ServerOperationType, xmlFile: string) 
     /**
      * IMPORTANT NOTE: Using this funtion is not the recommended way of creating a #GdaServerOperation object, the
      * correct way is to use gda_server_provider_create_operation(); this method is reserved for the database provider's
@@ -12254,7 +12254,7 @@ export class ServerOperation extends GObject.Object {
      * @param xmlFile a file which has the specifications for the GdaServerOperation object to create
      * @returns a new #GdaServerOperation object
      */
-    static new(opType: ServerOperationType, xmlFile: string | null): ServerOperation
+    static new(opType: ServerOperationType, xmlFile: string): ServerOperation
     _init(config?: ServerOperation.ConstructorProperties): void
     static errorQuark(): GLib.Quark
     /**
@@ -12262,7 +12262,7 @@ export class ServerOperation extends GObject.Object {
      * @param type a #GdaServerOperationType value
      * @returns a non %NULL string (do not free or modify)
      */
-    static opTypeToString(type: ServerOperationType): string | null
+    static opTypeToString(type: ServerOperationType): string
     /**
      * Creates a new #GdaServerOperation object which contains the specifications required
      * to create a database. Once these specifications are provided, use
@@ -12274,7 +12274,7 @@ export class ServerOperation extends GObject.Object {
      * @param dbName the name of the database to create, or %NULL
      * @returns new #GdaServerOperation object, or %NULL if the provider does not support database creation
      */
-    static prepareCreateDatabase(provider: string | null, dbName: string | null): ServerOperation | null
+    static prepareCreateDatabase(provider: string, dbName: string | null): ServerOperation | null
     /**
      * Creates a new #GdaServerOperation object which contains the specifications required
      * to drop a database. Once these specifications provided, use
@@ -12286,13 +12286,13 @@ export class ServerOperation extends GObject.Object {
      * @param dbName the name of the database to drop, or %NULL
      * @returns new #GdaServerOperation object, or %NULL if the provider does not support database destruction
      */
-    static prepareDropDatabase(provider: string | null, dbName: string | null): ServerOperation | null
+    static prepareDropDatabase(provider: string, dbName: string | null): ServerOperation | null
     /**
      * Performs the reverse of gda_server_operation_op_type_to_string()
      * @param str a string
      * @returns the #GdaServerOperationType represented by @str, or #G_MAXINT if @str is not a valid representation of a #GdaServerOperationType
      */
-    static stringToOpType(str: string | null): ServerOperationType
+    static stringToOpType(str: string): ServerOperationType
 }
 
 export module ServerProvider {
@@ -12346,7 +12346,7 @@ export interface ServerProvider extends Lockable {
      * @param str a string to escape
      * @returns a new string suitable to use in SQL statements
      */
-    escapeString(cnc: Connection | null, str: string | null): string | null
+    escapeString(cnc: Connection | null, str: string): string | null
     /**
      * Find a #GdaDataHandler object to manipulate data of type `for_type`.
      * 
@@ -12355,7 +12355,7 @@ export interface ServerProvider extends Lockable {
      * @param forType a DBMS type definition
      * @returns a #GdaDataHandler, or %NULL if the provider does not know about the @for_type type
      */
-    getDataHandlerDbms(cnc: Connection | null, forType: string | null): DataHandler
+    getDataHandlerDbms(cnc: Connection | null, forType: string): DataHandler
     /**
      * Find a #GdaDataHandler object to manipulate data of type `for_type`. The returned object must not be modified.
      * @param cnc a #GdaConnection object, or %NULL
@@ -12378,19 +12378,19 @@ export interface ServerProvider extends Lockable {
      * Get the name (identifier) of the provider
      * @returns a string containing the provider's name
      */
-    getName(): string | null
+    getName(): string
     /**
      * Get the version of the database to which the connection is opened.
      * @param cnc a #GdaConnection object
      * @returns a (read only) string, or %NULL if an error occurred
      */
-    getServerVersion(cnc: Connection): string | null
+    getServerVersion(cnc: Connection): string
     /**
      * Get the version of the provider.
      * @returns a string containing the version identification.
      */
-    getVersion(): string | null
-    handlerDeclare(dh: DataHandler, cnc: Connection, gType: GObject.GType, dbmsType: string | null): void
+    getVersion(): string
+    handlerDeclare(dh: DataHandler, cnc: Connection, gType: GObject.GType, dbmsType: string): void
     /**
      * Reserved to database provider's implementations: get the #GdaDataHandler associated to `prov`
      * for connection `cnc`. You probably want to use gda_server_provider_get_data_handler_g_type().
@@ -12461,7 +12461,7 @@ export interface ServerProvider extends Lockable {
      * @param dbmsType place to get the actual database type used if the conversion succeeded, or %NULL
      * @returns a new #GValue, or %NULL
      */
-    stringToValue(cnc: Connection | null, string: string | null, preferredType: GObject.GType, dbmsType: string | null): any
+    stringToValue(cnc: Connection | null, string: string, preferredType: GObject.GType, dbmsType: string | null): any
     /**
      * Tests if a feature is supported
      * @param cnc a #GdaConnection object, or %NULL
@@ -12484,7 +12484,7 @@ export interface ServerProvider extends Lockable {
      * @param str a string to escape
      * @returns a new string
      */
-    unescapeString(cnc: Connection | null, str: string | null): string | null
+    unescapeString(cnc: Connection | null, str: string): string | null
     /**
      * Produces a fully quoted and escaped string from a GValue
      * @param cnc a #GdaConnection object, or %NULL
@@ -12536,7 +12536,7 @@ export class ServerProvider extends GObject.Object {
      * @param resource the name of the resource to load
      * @returns a new string containing the resource's contents, or %NULL if not found or if an error occurred
      */
-    static loadResourceContents(provName: string | null, resource: string | null): string | null
+    static loadResourceContents(provName: string, resource: string): string | null
     /**
      * Upon creation, used by provider's implementors to set the implementation functions. Passing %NULL
      * as the `functions_set` has no effect.
@@ -12676,13 +12676,13 @@ export interface Set {
      * @param holderId the ID of the requested value holder
      * @returns the requested #GdaHolder or %NULL
      */
-    getHolder(holderId: string | null): Holder
+    getHolder(holderId: string): Holder
     /**
      * Get the value of the #GdaHolder which ID is `holder_id`
      * @param holderId the ID of the holder to set the value
      * @returns the requested GValue, or %NULL (see gda_holder_get_value())
      */
-    getHolderValue(holderId: string | null): any | null
+    getHolderValue(holderId: string): any | null
     getHolders(): Holder[]
     /**
      * Finds a #GdaSetNode holding information for `holder,` don't modify the returned structure
@@ -12747,7 +12747,7 @@ export interface Set {
 
     // Own virtual methods of Gda-6.0.Gda.Set
 
-    holderAttrChanged(holder: Holder, attrName: string | null, attrValue: any): void
+    holderAttrChanged(holder: Holder, attrName: string, attrValue: any): void
     holderChanged(holder: Holder): void
     holderTypeSet(holder: Holder): void
     publicDataChanged(): void
@@ -12875,7 +12875,7 @@ export class Set extends GObject.Object {
      * @param xmlSpec a string
      * @returns a new object, or %NULL if an error occurred
      */
-    static newFromSpecString(xmlSpec: string | null): Set
+    static newFromSpecString(xmlSpec: string): Set
     /**
      * Creates a new #GdaSet like gda_set_new(), but does not allow modifications to any of the #GdaHolder
      * object in `holders`. This function is used for Libgda's database providers' implementation.
@@ -12975,7 +12975,7 @@ export interface SqlBuilder {
      * @param tableName a table name, or %NULL
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    addFieldId(fieldName: string | null, tableName: string | null): SqlBuilderId
+    addFieldId(fieldName: string, tableName: string | null): SqlBuilderId
     /**
      * Valid only for: INSERT, UPDATE statements.
      * 
@@ -12984,7 +12984,7 @@ export interface SqlBuilder {
      * @param fieldName a field name
      * @param value value to set the field to, or %NULL or a GDA_TYPE_NULL value to represent an SQL NULL
      */
-    addFieldValueAsGvalue(fieldName: string | null, value: any | null): void
+    addFieldValueAsGvalue(fieldName: string, value: any | null): void
     /**
      * Valid only for: INSERT, UPDATE, SELECT statements
      * <itemizedlist>
@@ -13010,7 +13010,7 @@ export interface SqlBuilder {
      * @param args an array of IDs representing the function's arguments
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    addFunction(funcName: string | null, args: SqlBuilderId[]): SqlBuilderId
+    addFunction(funcName: string, args: SqlBuilderId[]): SqlBuilderId
     /**
      * Defines an expression representing an identifier in `builder,`
      * which may be reused to build other parts of a statement,
@@ -13036,7 +13036,7 @@ export interface SqlBuilder {
      * @param str a string
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    addId(str: string | null): SqlBuilderId
+    addId(str: string): SqlBuilderId
     /**
      * Defines a parameter in `builder` which may be reused to build other parts of a statement.
      * 
@@ -13056,7 +13056,7 @@ export interface SqlBuilder {
      * @param nullok TRUE if the parameter can be set to %NULL
      * @returns the ID of the new expression, or %0 if there was an error
      */
-    addParam(paramName: string | null, type: GObject.GType, nullok: boolean): SqlBuilderId
+    addParam(paramName: string, type: GObject.GType, nullok: boolean): SqlBuilderId
     /**
      * Adds an expression which is a subselect.
      * @param sqlst a pointer to a #GdaSqlStatement, which has to be a SELECT or compound SELECT. This will be copied.
@@ -13117,7 +13117,7 @@ export interface SqlBuilder {
      * @param joinId the ID of the join to modify (not %0)
      * @param fieldName the name of the field to use in the join condition (not %NULL)
      */
-    joinAddField(joinId: SqlBuilderId, fieldName: string | null): void
+    joinAddField(joinId: SqlBuilderId, fieldName: string): void
     /**
      * Valid only for: SELECT statements.
      * 
@@ -13129,14 +13129,14 @@ export interface SqlBuilder {
      * @param alias an alias (eg. for the "AS" clause), or %NULL
      * @returns the ID of the added field, or %0 if there was an error
      */
-    selectAddField(fieldName: string | null, tableName: string | null, alias: string | null): SqlBuilderId
+    selectAddField(fieldName: string, tableName: string | null, alias: string | null): SqlBuilderId
     /**
      * Adds a new target to a SELECT statement
      * @param tableName the name of the target table
      * @param alias the alias to give to the target, or %NULL
      * @returns the ID of the new target, or %0 if there was an error
      */
-    selectAddTarget(tableName: string | null, alias: string | null): SqlBuilderId
+    selectAddTarget(tableName: string, alias: string | null): SqlBuilderId
     /**
      * Adds a new target to a SELECT statement. If there already exists a target representing
      * the same table and the same alias (or with the same absence of alias) then the same target
@@ -13210,7 +13210,7 @@ export interface SqlBuilder {
      * Sets the name of the table on which the built statement operates.
      * @param tableName a table name
      */
-    setTable(tableName: string | null): void
+    setTable(tableName: string): void
     /**
      * Valid only for: UPDATE, DELETE, SELECT statements
      * 
@@ -13304,7 +13304,7 @@ export interface SqlParser extends Lockable {
      * @param filename name of the file to parse
      * @returns a new #GdaBatch object, or %NULL if an error occurred
      */
-    parseFileAsBatch(filename: string | null): Batch | null
+    parseFileAsBatch(filename: string): Batch | null
     /**
      * Parses `sql` and creates a #GdaStatement statement from the first SQL statement contained in `sql:` if `sql`
      * contains more than one statement, then the remaining part of the string is not parsed at all, and `remain` (if
@@ -13315,7 +13315,7 @@ export interface SqlParser extends Lockable {
      * @param sql the SQL string to parse
      * @returns a new #GdaStatement object, or %NULL if an error occurred
      */
-    parseString(sql: string | null): [ /* returnType */ Statement | null, /* remain */ string | null ]
+    parseString(sql: string): [ /* returnType */ Statement | null, /* remain */ string | null ]
     /**
      * Parse `sql` and creates a #GdaBatch object which contains all the #GdaStatement objects created while parsing (one object
      * per SQL statement). Empty statements (composed of spaces only) do not appear in the resulting object.
@@ -13331,7 +13331,7 @@ export interface SqlParser extends Lockable {
      * @param sql the SQL string to parse
      * @returns a new #GdaBatch object, or %NULL if an error occurred
      */
-    parseStringAsBatch(sql: string | null): [ /* returnType */ Batch | null, /* remain */ string | null ]
+    parseStringAsBatch(sql: string): [ /* returnType */ Batch | null, /* remain */ string | null ]
     setOverflowError(): void
     setSyntaxError(): void
 
@@ -13606,10 +13606,10 @@ export interface TransactionStatus {
 
     // Owm methods of Gda-6.0.Gda.TransactionStatus
 
-    addEventSql(sql: string | null, connEvent: ConnectionEvent): TransactionStatusEvent
+    addEventSql(sql: string, connEvent: ConnectionEvent): TransactionStatusEvent
     addEventSub(subTrans: TransactionStatus): TransactionStatusEvent
-    addEventSvp(svpName: string | null): TransactionStatusEvent
-    find(str: string | null, destev: TransactionStatusEvent): TransactionStatus | null
+    addEventSvp(svpName: string): TransactionStatusEvent
+    find(str: string, destev: TransactionStatusEvent): TransactionStatus | null
     /**
      * Find a pointer to the "current" _unnamed_ transaction, which is the last
      * transaction if there are several nested transactions
@@ -13654,7 +13654,7 @@ export class TransactionStatus extends GObject.Object {
      * @param name name for the transaction
      * @returns the newly created object.
      */
-    constructor(name: string | null) 
+    constructor(name: string) 
     /**
      * Creates a new #GdaTransactionStatus object, which allows a fine-tune and
      * full control of transactions to be used with providers.
@@ -13662,7 +13662,7 @@ export class TransactionStatus extends GObject.Object {
      * @param name name for the transaction
      * @returns the newly created object.
      */
-    static new(name: string | null): TransactionStatus
+    static new(name: string): TransactionStatus
     _init(config?: TransactionStatus.ConstructorProperties): void
 }
 
@@ -13743,7 +13743,7 @@ export interface Tree {
      * @param useNames if %TRUE, then `tree_path` will be interpreted as a unix style path, and if %FALSE,             then `tree_path` will be interpreted similarly to the #GtkTreePath's string representation.
      * @returns the requested #GdaTreeNode pointer, or %NULL if not found
      */
-    getNode(treePath: string | null, useNames: boolean): TreeNode | null
+    getNode(treePath: string, useNames: boolean): TreeNode | null
     /**
      * Get the #GdaTreeManager which created `node` in `tree`
      * @param node a #GdaTreeNode present in `tree`
@@ -13772,7 +13772,7 @@ export interface Tree {
      * @param value a #GValue, or %NULL
      * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
-    setAttribute(attribute: string | null, value: any, destroy: GLib.DestroyNotify): void
+    setAttribute(attribute: string, value: any, destroy: GLib.DestroyNotify): void
     /**
      * Requests that `tree` be populated with nodes. If an error occurs, then `tree'`s contents is left
      * unchanged, and otherwise `tree'`s previous contents is completely replaced by the new one.
@@ -13796,7 +13796,7 @@ export interface Tree {
     // Own virtual methods of Gda-6.0.Gda.Tree
 
     nodeChanged(node: TreeNode): void
-    nodeDeleted(nodePath: string | null): void
+    nodeDeleted(nodePath: string): void
     nodeHasChildToggled(node: TreeNode): void
     nodeInserted(node: TreeNode): void
 
@@ -13939,7 +13939,7 @@ export interface TreeManager {
      * @param attribute an attribute name
      * @param value the attribute's value, or %NULL
      */
-    addNewNodeAttribute(attribute: string | null, value: any | null): void
+    addNewNodeAttribute(attribute: string, value: any | null): void
     /**
      * Requests that `manager` creates a new #GdaTreeNode. The new node is not in any
      * way linked to `manager` yet, consider this method as a #GdaTreeNode factory.
@@ -14135,7 +14135,7 @@ export class TreeMgrColumns extends TreeManager {
      * @param tableName the name of the table
      * @returns a new #GdaTreeManager object
      */
-    constructor(cnc: Connection, schema: string | null, tableName: string | null) 
+    constructor(cnc: Connection, schema: string, tableName: string) 
     /**
      * Creates a new #GdaTreeManager object which will add one tree node for each
      * column in the table named `table_name` in the `schema` schema.
@@ -14145,7 +14145,7 @@ export class TreeMgrColumns extends TreeManager {
      * @param tableName the name of the table
      * @returns a new #GdaTreeManager object
      */
-    static new(cnc: Connection, schema: string | null, tableName: string | null): TreeMgrColumns
+    static new(cnc: Connection, schema: string, tableName: string): TreeMgrColumns
     _init(config?: TreeMgrColumns.ConstructorProperties): void
 }
 
@@ -14218,14 +14218,14 @@ export class TreeMgrLabel extends TreeManager {
      * @param label a label string
      * @returns a new #GdaTreeManager object
      */
-    constructor(label: string | null) 
+    constructor(label: string) 
     /**
      * Creates a new #GdaTreeManager object which will add one tree node labelled `label`
      * @constructor 
      * @param label a label string
      * @returns a new #GdaTreeManager object
      */
-    static new(label: string | null): TreeMgrLabel
+    static new(label: string): TreeMgrLabel
     _init(config?: TreeMgrLabel.ConstructorProperties): void
 }
 
@@ -14628,7 +14628,7 @@ export interface TreeNode {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @node
      */
-    fetchAttribute(attribute: string | null): any
+    fetchAttribute(attribute: string): any
     /**
      * Get the #GdaTreeNode child of `node` at position `index` (starting at 0).
      * @param index a index
@@ -14640,7 +14640,7 @@ export interface TreeNode {
      * @param name requested node's name
      * @returns the #GdaTreeNode, or %NULL if not found
      */
-    getChildName(name: string | null): TreeNode
+    getChildName(name: string): TreeNode
     /**
      * Get a list of all `node'`s children, free it with g_slist_free() after usage
      * @returns a new #GSList of #GdaTreeNode objects, or %NULL if @node does not have any child
@@ -14656,7 +14656,7 @@ export interface TreeNode {
      * @param attribute attribute name as a string
      * @returns a read-only #GValue, or %NULL if not attribute named @attribute has been set for @node
      */
-    getNodeAttribute(attribute: string | null): any
+    getNodeAttribute(attribute: string): any
     /**
      * Get the #GdaTreeNode parent of `node` in the #GdaTree node belongs to. If `node` is at the top level,
      * then this method return %NULL.
@@ -14685,14 +14685,14 @@ export interface TreeNode {
      * @param value a #GValue, or %NULL
      * @param destroy a function to be called when `attribute` is not needed anymore, or %NULL
      */
-    setNodeAttribute(attribute: string | null, value: any | null, destroy: GLib.DestroyNotify): void
+    setNodeAttribute(attribute: string, value: any | null, destroy: GLib.DestroyNotify): void
 
     // Own virtual methods of Gda-6.0.Gda.TreeNode
 
-    dumpChildren(prefix: string | null, inString: GLib.String): void
+    dumpChildren(prefix: string, inString: GLib.String): void
     dumpHeader(): string | null
     nodeChanged(node: TreeNode): void
-    nodeDeleted(relativePath: string | null): void
+    nodeDeleted(relativePath: string): void
     nodeHasChildToggled(node: TreeNode): void
     nodeInserted(node: TreeNode): void
 
@@ -14843,7 +14843,7 @@ export interface XaTransaction {
      * @param branch the branch qualifier
      * @returns %TRUE if no error occurred
      */
-    registerConnection(cnc: Connection, branch: string | null): boolean
+    registerConnection(cnc: Connection, branch: string): boolean
     /**
      * Cancels a distributed transaction (managed by `xa_trans)`.
      * @returns %TRUE if no error occurred
@@ -14898,7 +14898,7 @@ export class XaTransaction extends GObject.Object {
      * @param globalTransactionId the global transaction ID
      * @returns the newly created object.
      */
-    constructor(format: number, globalTransactionId: string | null) 
+    constructor(format: number, globalTransactionId: string) 
     /**
      * Creates a new #GdaXaTransaction object, which will control the process of
      * performing a distributed transaction across several connections.
@@ -14907,7 +14907,7 @@ export class XaTransaction extends GObject.Object {
      * @param globalTransactionId the global transaction ID
      * @returns the newly created object.
      */
-    static new(format: number, globalTransactionId: string | null): XaTransaction
+    static new(format: number, globalTransactionId: string): XaTransaction
     _init(config?: XaTransaction.ConstructorProperties): void
     static errorQuark(): GLib.Quark
     /**
@@ -14916,7 +14916,7 @@ export class XaTransaction extends GObject.Object {
      * @param str a string representation of a #GdaXaTransactionId, in the "gtrid,bqual,formatID" format
      * @returns a new #GdaXaTransactionId structure, or %NULL in @str has a wrong format Free-function: g_free
      */
-    static stringToId(str: string | null): XaTransactionId
+    static stringToId(str: string): XaTransactionId
 }
 
 export interface AfectedRowsIface {
@@ -15114,7 +15114,7 @@ export interface ColumnClass {
     // Own fields of Gda-6.0.Gda.ColumnClass
 
     parentClass: GObject.ObjectClass
-    nameChanged: (column: Column, oldName: string | null) => void
+    nameChanged: (column: Column, oldName: string) => void
     gTypeChanged: (column: Column, oldType: GObject.GType, newType: GObject.GType) => void
 }
 
@@ -15130,7 +15130,7 @@ export interface ColumnModelIface {
     // Own fields of Gda-6.0.Gda.ColumnModelIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: ColumnModel) => string | null
+    getName: (self: ColumnModel) => string
     getIndex: (self: ColumnModel) => number
     getDataType: (self: ColumnModel) => GObject.GType
     getValue: (self: ColumnModel) => any
@@ -15248,8 +15248,8 @@ export interface CreateDatabaseBuilderIface {
     // Own fields of Gda-6.0.Gda.CreateDatabaseBuilderIface
 
     parentIface: GObject.TypeInterface
-    getDatabaseName: (self: CreateDatabaseBuilder) => string | null
-    setDatabaseName: (self: CreateDatabaseBuilder, value: string | null) => void
+    getDatabaseName: (self: CreateDatabaseBuilder) => string
+    setDatabaseName: (self: CreateDatabaseBuilder, value: string) => void
 }
 
 export abstract class CreateDatabaseBuilderIface {
@@ -15264,8 +15264,8 @@ export interface CreateTableBuilderIface {
     // Own fields of Gda-6.0.Gda.CreateTableBuilderIface
 
     parentIface: GObject.TypeInterface
-    getTableName: (self: CreateTableBuilder) => string | null
-    setTableName: (self: CreateTableBuilder, value: string | null) => void
+    getTableName: (self: CreateTableBuilder) => string
+    setTableName: (self: CreateTableBuilder, value: string) => void
     setColumns: (self: CreateTableBuilder, value: Gio.ListModel) => void
     setContraints: (self: CreateTableBuilder, value: Gio.ListModel) => void
 }
@@ -15317,7 +15317,7 @@ export interface DataHandlerInterface {
     getValueFromStr: (dh: DataHandler, str: string | null, type: GObject.GType) => any
     getSaneInitValue: (dh: DataHandler, type: GObject.GType) => any | null
     acceptsGType: (dh: DataHandler, type: GObject.GType) => boolean
-    getDescr: (dh: DataHandler) => string | null
+    getDescr: (dh: DataHandler) => string
 }
 
 export abstract class DataHandlerInterface {
@@ -15696,8 +15696,8 @@ export interface DropDatabaseBuilderIface {
     // Own fields of Gda-6.0.Gda.DropDatabaseBuilderIface
 
     parentIface: GObject.TypeInterface
-    getDatabaseName: (self: DropDatabaseBuilder) => string | null
-    setDatabaseName: (self: DropDatabaseBuilder, value: string | null) => void
+    getDatabaseName: (self: DropDatabaseBuilder) => string
+    setDatabaseName: (self: DropDatabaseBuilder, value: string) => void
 }
 
 export abstract class DropDatabaseBuilderIface {
@@ -15712,8 +15712,8 @@ export interface DropTableBuilderIface {
     // Own fields of Gda-6.0.Gda.DropTableBuilderIface
 
     parentIface: GObject.TypeInterface
-    getTableName: (self: DropTableBuilder) => string | null
-    setTableName: (self: DropTableBuilder, value: string | null) => void
+    getTableName: (self: DropTableBuilder) => string
+    setTableName: (self: DropTableBuilder, value: string) => void
     getCascade: (self: DropTableBuilder) => boolean
     setCascade: (self: DropTableBuilder, value: boolean) => void
 }
@@ -15813,10 +15813,10 @@ export interface ForeignKeyIface {
     // Own fields of Gda-6.0.Gda.ForeignKeyIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: ForeignKey) => string | null
-    setName: (self: ForeignKey, value: string | null) => void
-    getRefname: (self: ForeignKey) => string | null
-    setRefname: (self: ForeignKey, value: string | null) => void
+    getName: (self: ForeignKey) => string
+    setName: (self: ForeignKey, value: string) => void
+    getRefname: (self: ForeignKey) => string
+    setRefname: (self: ForeignKey, value: string) => void
     setReftable: (self: ForeignKey, value: TableModel) => void
     setRefcol: (self: ForeignKey, value: Gio.ListModel) => void
     getMatch: (self: ForeignKey) => ForeignKeyMatch
@@ -16026,10 +16026,10 @@ export interface MetaColumnIface {
     // Own fields of Gda-6.0.Gda.MetaColumnIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: MetaColumn) => string | null
-    setName: (self: MetaColumn, value: string | null) => void
+    getName: (self: MetaColumn) => string
+    setName: (self: MetaColumn, value: string) => void
     getColumnType: (self: MetaColumn) => GObject.GType
-    getColumnTypeName: (self: MetaColumn) => string | null
+    getColumnTypeName: (self: MetaColumn) => string
 }
 
 export abstract class MetaColumnIface {
@@ -16086,7 +16086,7 @@ export interface MetaContext {
      * Get table's name to used in the context.
      * @returns A string with the table's name used in the context.
      */
-    getTable(): string | null
+    getTable(): string
     /**
      * Sets a new column/value pair to the given context `ctx`. Column, must be a column in the given table's
      * name setted by #gda_meta_context_set_table () (a table in the <link linkend="information_schema">database
@@ -16097,7 +16097,7 @@ export interface MetaContext {
      * @param value the column's value
      * @param cnc a #GdaConnection to be used when identifier are normalized, or NULL
      */
-    setColumn(column: string | null, value: any, cnc: Connection | null): void
+    setColumn(column: string, value: any, cnc: Connection | null): void
     /**
      * Set columns to use in the context. The #GHashTable use column's name as key and a #GValue as value,
      * to represent its value.
@@ -16113,7 +16113,7 @@ export interface MetaContext {
      * about database's tables.
      * @param table a string with the table's name to use in context
      */
-    setTable(table: string | null): void
+    setTable(table: string): void
     /**
      * Creates a string representation of given context.
      * @returns a new string with the representation of the context
@@ -16238,7 +16238,7 @@ export interface MetaStoreChange {
     getKeys(): GLib.HashTable
     getTableName(): string | null
     setChangeType(ctype: MetaStoreChangeType): void
-    setTableName(tableName: string | null): void
+    setTableName(tableName: string): void
 }
 
 export class MetaStoreChange {
@@ -16400,12 +16400,12 @@ export interface MetaTableIface {
     // Own fields of Gda-6.0.Gda.MetaTableIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: MetaTable) => string | null
-    setName: (self: MetaTable, value: string | null) => void
-    getSchema: (self: MetaTable) => string | null
-    setSchema: (self: MetaTable, value: string | null) => void
-    getCatalog: (self: MetaTable) => string | null
-    setCatalog: (self: MetaTable, value: string | null) => void
+    getName: (self: MetaTable) => string
+    setName: (self: MetaTable, value: string) => void
+    getSchema: (self: MetaTable) => string
+    setSchema: (self: MetaTable, value: string) => void
+    getCatalog: (self: MetaTable) => string
+    setCatalog: (self: MetaTable, value: string) => void
 }
 
 export abstract class MetaTableIface {
@@ -16486,7 +16486,7 @@ export interface Numeric {
      * Sets `numeric` with a number represented by `str,` in the C locale format (dot as a fraction separator).
      * @param str a string representing a number, in the C locale format
      */
-    setFromString(str: string | null): void
+    setFromString(str: string): void
     /**
      * Sets the precision of a #GdaNumeric.
      * @param precision a #glong
@@ -16547,8 +16547,8 @@ export interface ParametersIface {
     // Own fields of Gda-6.0.Gda.ParametersIface
 
     parentIface: GObject.TypeInterface
-    setValue: (self: Parameters, name: string | null, val: any) => void
-    getValue: (self: Parameters, name: string | null) => any
+    setValue: (self: Parameters, name: string, val: any) => void
+    getValue: (self: Parameters, name: string) => any
 }
 
 export abstract class ParametersIface {
@@ -16563,7 +16563,7 @@ export interface PreparedQueryIface {
     // Own fields of Gda-6.0.Gda.PreparedQueryIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: PreparedQuery) => string | null
+    getName: (self: PreparedQuery) => string
 }
 
 export abstract class PreparedQueryIface {
@@ -16621,32 +16621,32 @@ export interface ProviderInterface {
     // Own fields of Gda-6.0.Gda.ProviderInterface
 
     gIface: GObject.TypeInterface
-    getName: (provider: Provider) => string | null
-    getVersion: (provider: Provider) => string | null
-    getServerVersion: (provider: Provider, cnc: Connection) => string | null
+    getName: (provider: Provider) => string
+    getVersion: (provider: Provider) => string
+    getServerVersion: (provider: Provider, cnc: Connection) => string
     supportsFeature: (provider: Provider, cnc: Connection, feature: ConnectionFeature) => boolean
     createConnection: (provider: Provider) => Connection
     createParser: (provider: Provider, cnc: Connection) => SqlParser
-    getDataHandler: (provider: Provider, cnc: Connection, gType: GObject.GType, dbmsType: string | null) => DataHandler
-    getDefDbmsType: (provider: Provider, cnc: Connection, gType: GObject.GType) => string | null
+    getDataHandler: (provider: Provider, cnc: Connection, gType: GObject.GType, dbmsType: string) => DataHandler
+    getDefDbmsType: (provider: Provider, cnc: Connection, gType: GObject.GType) => string
     supportsOperation: (provider: Provider, cnc: Connection, type: ServerOperationType, options: Set) => boolean
     createOperation: (provider: Provider, cnc: Connection, type: ServerOperationType, options: Set) => ServerOperation
     renderOperation: (provider: Provider, cnc: Connection, op: ServerOperation) => string | null
     statementToSql: (provider: Provider, cnc: Connection, stmt: Statement, params: Set | null, flags: StatementSqlFlag) => [ /* returnType */ string | null, /* paramsUsed */ Holder[] | null ]
-    identifierQuote: (provider: Provider, cnc: Connection | null, id: string | null, forMetaStore: boolean, forceQuotes: boolean) => string | null
+    identifierQuote: (provider: Provider, cnc: Connection | null, id: string, forMetaStore: boolean, forceQuotes: boolean) => string | null
     statementRewrite: (provider: Provider, cnc: Connection, stmt: Statement, params: Set) => SqlStatement
     openConnection: (provider: Provider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
     prepareConnection: (provider: Provider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
     closeConnection: (provider: Provider, cnc: Connection) => boolean
-    escapeString: (provider: Provider, cnc: Connection, str: string | null) => string | null
-    unescapeString: (provider: Provider, cnc: Connection, str: string | null) => string | null
+    escapeString: (provider: Provider, cnc: Connection, str: string) => string | null
+    unescapeString: (provider: Provider, cnc: Connection, str: string) => string | null
     performOperation: (provider: Provider, cnc: Connection, op: ServerOperation) => boolean
-    beginTransaction: (provider: Provider, cnc: Connection, name: string | null, level: TransactionIsolation) => boolean
-    commitTransaction: (provider: Provider, cnc: Connection, name: string | null) => boolean
-    rollbackTransaction: (provider: Provider, cnc: Connection, name: string | null) => boolean
-    addSavepoint: (provider: Provider, cnc: Connection, name: string | null) => boolean
-    rollbackSavepoint: (provider: Provider, cnc: Connection, name: string | null) => boolean
-    deleteSavepoint: (provider: Provider, cnc: Connection, name: string | null) => boolean
+    beginTransaction: (provider: Provider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
+    commitTransaction: (provider: Provider, cnc: Connection, name: string) => boolean
+    rollbackTransaction: (provider: Provider, cnc: Connection, name: string) => boolean
+    addSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
+    rollbackSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
+    deleteSavepoint: (provider: Provider, cnc: Connection, name: string) => boolean
     statementPrepare: (provider: Provider, cnc: Connection, stmt: Statement) => boolean
     statementExecute: (provider: Provider, cnc: Connection, stmt: Statement, params: Set, modelUsage: StatementModelUsage, colTypes: GObject.GType, lastInsertedRow: Set) => GObject.Object
     getLastInserted: (provider: Provider, cnc: Connection) => Set
@@ -16667,58 +16667,58 @@ export interface ProviderMetaInterface {
     gIface: GObject.TypeInterface
     btypes: (prov: ProviderMeta) => DataModel
     udts: (prov: ProviderMeta) => DataModel
-    udt: (prov: ProviderMeta, udtCatalog: string | null, udtSchema: string | null) => Row
+    udt: (prov: ProviderMeta, udtCatalog: string, udtSchema: string) => Row
     udtCols: (prov: ProviderMeta) => DataModel
-    udtCol: (prov: ProviderMeta, udtCatalog: string | null, udtSchema: string | null, udtName: string | null) => Row
+    udtCol: (prov: ProviderMeta, udtCatalog: string, udtSchema: string, udtName: string) => Row
     enumsType: (prov: ProviderMeta) => DataModel
-    enumType: (prov: ProviderMeta, udtCatalog: string | null, udtSchema: string | null, udtName: string | null) => Row
+    enumType: (prov: ProviderMeta, udtCatalog: string, udtSchema: string, udtName: string) => Row
     domains: (prov: ProviderMeta) => DataModel
-    domain: (prov: ProviderMeta, domainCatalog: string | null, domainSchema: string | null) => Row
+    domain: (prov: ProviderMeta, domainCatalog: string, domainSchema: string) => Row
     domainsConstraints: (prov: ProviderMeta) => DataModel
-    domainConstraints: (prov: ProviderMeta, domainCatalog: string | null, domainSchema: string | null, domainName: string | null) => DataModel
-    domainConstraint: (prov: ProviderMeta, domainCatalog: string | null, domainSchema: string | null, domainName: string | null, constraintName: string | null) => Row
+    domainConstraints: (prov: ProviderMeta, domainCatalog: string, domainSchema: string, domainName: string) => DataModel
+    domainConstraint: (prov: ProviderMeta, domainCatalog: string, domainSchema: string, domainName: string, constraintName: string) => Row
     elementTypes: (prov: ProviderMeta) => DataModel
-    elementType: (prov: ProviderMeta, specificName: string | null) => Row
+    elementType: (prov: ProviderMeta, specificName: string) => Row
     collations: (prov: ProviderMeta) => DataModel
-    collation: (prov: ProviderMeta, collationCatalog: string | null, collationSchema: string | null, collationNameN: string | null) => Row
+    collation: (prov: ProviderMeta, collationCatalog: string, collationSchema: string, collationNameN: string) => Row
     characterSets: (prov: ProviderMeta) => DataModel
-    characterSet: (prov: ProviderMeta, chsetCatalog: string | null, chsetSchema: string | null, chsetNameN: string | null) => Row
+    characterSet: (prov: ProviderMeta, chsetCatalog: string, chsetSchema: string, chsetNameN: string) => Row
     schematas: (prov: ProviderMeta) => DataModel
-    schemata: (prov: ProviderMeta, catalogName: string | null, schemaNameN: string | null) => Row
+    schemata: (prov: ProviderMeta, catalogName: string, schemaNameN: string) => Row
     tablesColumns: (prov: ProviderMeta) => DataModel
     tables: (prov: ProviderMeta) => DataModel
-    table: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableNameN: string | null) => Row
+    table: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableNameN: string) => Row
     views: (prov: ProviderMeta) => DataModel
-    view: (prov: ProviderMeta, viewCatalog: string | null, viewSchema: string | null, viewNameN: string | null) => Row
+    view: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewNameN: string) => Row
     columns: (prov: ProviderMeta) => DataModel
-    tableColumns: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null) => DataModel
-    tableColumn: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, columnName: string | null) => Row
+    tableColumns: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    tableColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, columnName: string) => Row
     viewsColumns: (prov: ProviderMeta) => DataModel
-    viewColumns: (prov: ProviderMeta, viewCatalog: string | null, viewSchema: string | null, viewName: string | null) => DataModel
-    viewColumn: (prov: ProviderMeta, viewCatalog: string | null, viewSchema: string | null, viewName: string | null, columnName: string | null) => Row
+    viewColumns: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewName: string) => DataModel
+    viewColumn: (prov: ProviderMeta, viewCatalog: string, viewSchema: string, viewName: string, columnName: string) => Row
     constraintsTables: (prov: ProviderMeta) => DataModel
-    constraintsTable: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null) => DataModel
-    constraintTable: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintNameN: string | null) => Row
+    constraintsTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    constraintTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintNameN: string) => Row
     constraintsRef: (prov: ProviderMeta) => DataModel
-    constraintsRefTable: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null) => DataModel
-    constraintRef: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null) => Row
+    constraintsRefTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    constraintRef: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
     keyColumns: (prov: ProviderMeta) => DataModel
-    keyColumn: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null) => Row
+    keyColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
     checkColumns: (prov: ProviderMeta) => DataModel
-    checkColumn: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, constraintName: string | null) => Row
+    checkColumn: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, constraintName: string) => Row
     triggers: (prov: ProviderMeta) => DataModel
-    trigger: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null) => Row
+    trigger: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => Row
     routines: (prov: ProviderMeta) => DataModel
-    routine: (prov: ProviderMeta, routineCatalog: string | null, routineSchema: string | null, routineNameN: string | null) => Row
+    routine: (prov: ProviderMeta, routineCatalog: string, routineSchema: string, routineNameN: string) => Row
     routinesCol: (prov: ProviderMeta) => DataModel
-    routineCol: (prov: ProviderMeta, routCatalog: string | null, routSchema: string | null, routName: string | null) => Row
+    routineCol: (prov: ProviderMeta, routCatalog: string, routSchema: string, routName: string) => Row
     routinesPars: (prov: ProviderMeta) => DataModel
-    routinePars: (prov: ProviderMeta, routCatalog: string | null, routSchema: string | null, routName: string | null) => Row
+    routinePars: (prov: ProviderMeta, routCatalog: string, routSchema: string, routName: string) => Row
     indexesTables: (prov: ProviderMeta) => DataModel
-    indexesTable: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null) => DataModel
-    indexTable: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, indexNameN: string | null) => Row
+    indexesTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string) => DataModel
+    indexTable: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, indexNameN: string) => Row
     indexCols: (prov: ProviderMeta) => DataModel
-    indexCol: (prov: ProviderMeta, tableCatalog: string | null, tableSchema: string | null, tableName: string | null, indexName: string | null) => Row
+    indexCol: (prov: ProviderMeta, tableCatalog: string, tableSchema: string, tableName: string, indexName: string) => Row
     padding: any[]
 }
 
@@ -16756,7 +16756,7 @@ export interface QuarkList {
      * @param string a string.
      * @param cleanup whether to cleanup the previous content or not.
      */
-    addFromString(string: string | null, cleanup: boolean): void
+    addFromString(string: string, cleanup: boolean): void
     /**
      * Removes all strings in the given #GdaQuarkList.
      */
@@ -16773,7 +16773,7 @@ export interface QuarkList {
      * @param name the name of the value to search for.
      * @returns the value associated with the given key if found, or %NULL if not found.
      */
-    find(name: string | null): string | null
+    find(name: string): string
     /**
      * Calls the given function for each of the key/value pairs in `qlist`. The function is passed the key and value
      * of each pair, and the given user_data parameter. `qlist` may not be modified while iterating over it.
@@ -16793,7 +16793,7 @@ export interface QuarkList {
      * Removes an entry from the #GdaQuarkList, given its name.
      * @param name an entry name.
      */
-    remove(name: string | null): void
+    remove(name: string): void
 }
 
 export class QuarkList {
@@ -16836,7 +16836,7 @@ export class QuarkList {
      * @param string a string.
      * @returns the newly created #GdaQuarkList. Free-function: gda_quark_list_free
      */
-    static newFromString(string: string | null): QuarkList
+    static newFromString(string: string): QuarkList
 }
 
 export interface QueryBuilderIface {
@@ -16844,16 +16844,16 @@ export interface QueryBuilderIface {
     // Own fields of Gda-6.0.Gda.QueryBuilderIface
 
     parentIface: GObject.TypeInterface
-    getSql: (self: QueryBuilder) => string | null
-    setSql: (self: QueryBuilder, value: string | null) => void
-    getName: (self: QueryBuilder) => string | null
-    setName: (self: QueryBuilder, value: string | null) => void
-    addSavepoint: (self: QueryBuilder, name: string | null) => boolean
-    deleteSavepoint: (self: QueryBuilder, name: string | null) => boolean
-    rollbackSavepoint: (self: QueryBuilder, name: string | null) => boolean
-    beginTransaction: (self: QueryBuilder, name: string | null) => boolean
-    commitTransaction: (self: QueryBuilder, name: string | null) => boolean
-    rollbackTransaction: (self: QueryBuilder, name: string | null) => boolean
+    getSql: (self: QueryBuilder) => string
+    setSql: (self: QueryBuilder, value: string) => void
+    getName: (self: QueryBuilder) => string
+    setName: (self: QueryBuilder, value: string) => void
+    addSavepoint: (self: QueryBuilder, name: string) => boolean
+    deleteSavepoint: (self: QueryBuilder, name: string) => boolean
+    rollbackSavepoint: (self: QueryBuilder, name: string) => boolean
+    beginTransaction: (self: QueryBuilder, name: string) => boolean
+    commitTransaction: (self: QueryBuilder, name: string) => boolean
+    rollbackTransaction: (self: QueryBuilder, name: string) => boolean
 }
 
 export abstract class QueryBuilderIface {
@@ -16868,8 +16868,8 @@ export interface QueryIface {
     // Own fields of Gda-6.0.Gda.QueryIface
 
     parentIface: GObject.TypeInterface
-    getName: (self: Query) => string | null
-    getSql: (self: Query) => string | null
+    getName: (self: Query) => string
+    getSql: (self: Query) => string
     execute: (self: Query, callback: Gio.AsyncReadyCallback | null, userData: any | null) => void
     cancel: (self: Query, callback: Gio.AsyncReadyCallback | null, userData: any | null) => void
     cancelFinish: (self: Query, res: Gio.AsyncResult) => void
@@ -16887,7 +16887,7 @@ export interface ReadonlyTableModelIface {
     // Own fields of Gda-6.0.Gda.ReadonlyTableModelIface
 
     parentIface: GObject.TypeInterface
-    getValue: (self: ReadonlyTableModel, row: number, column: string | null, result: any) => void
+    getValue: (self: ReadonlyTableModel, row: number, column: string, result: any) => void
     getValueAt: (self: ReadonlyTableModel, row: number, column: number, result: any) => void
 }
 
@@ -16903,8 +16903,8 @@ export interface ReferencedColumnIface {
     // Own fields of Gda-6.0.Gda.ReferencedColumnIface
 
     parentIface: GObject.TypeInterface
-    setTableName: (self: ReferencedColumn, value: string | null) => void
-    getName: (self: ReferencedColumn) => string | null
+    setTableName: (self: ReferencedColumn, value: string) => void
+    getName: (self: ReferencedColumn) => string
 }
 
 export abstract class ReferencedColumnIface {
@@ -16990,8 +16990,8 @@ export interface ServerOperationClass {
     // Own fields of Gda-6.0.Gda.ServerOperationClass
 
     parentClass: GObject.ObjectClass
-    seqItemAdded: (op: ServerOperation, seqPath: string | null, itemIndex: number) => void
-    seqItemRemove: (op: ServerOperation, seqPath: string | null, itemIndex: number) => void
+    seqItemAdded: (op: ServerOperation, seqPath: string, itemIndex: number) => void
+    seqItemRemove: (op: ServerOperation, seqPath: string, itemIndex: number) => void
 }
 
 export abstract class ServerOperationClass {
@@ -17018,14 +17018,14 @@ export interface ServerOperationCreateTableArg {
      * Sets column name to be created with the new table.
      * @param name the table's column's name.
      */
-    setColumnName(name: string | null): void
+    setColumnName(name: string): void
     setColumnType(ctype: GObject.GType): void
     /**
      * You should set this if you use a #GDA_SERVER_OPERATION_CREATE_TABLE_FKEY_FLAG flag.
      * @param action action to perform on delete action of the referenced field.
      */
-    setFkeyOndelete(action: string | null): void
-    setFkeyOndupdate(action: string | null): void
+    setFkeyOndelete(action: string): void
+    setFkeyOndupdate(action: string): void
     /**
      * You should set this if you use a #GDA_SERVER_OPERATION_CREATE_TABLE_FKEY_FLAG flag.
      * @param refs list of references from local to foreign fields. This list is owned by `arg,` then you should not free it.
@@ -17035,7 +17035,7 @@ export interface ServerOperationCreateTableArg {
      * You should set this if you use a #GDA_SERVER_OPERATION_CREATE_TABLE_FKEY_FLAG flag.
      * @param name the table's name of reference.
      */
-    setFkeyTable(name: string | null): void
+    setFkeyTable(name: string): void
     /**
      * Sets flags for new column to create with the table.
      * @param flags flags to used in this argument as #GdaServerOperationCreateTableFlag
@@ -17063,8 +17063,8 @@ export interface ServerOperationCreateTableArgFKeyRefField {
     free(): void
     getLocalField(): string | null
     getReferencedField(): string | null
-    setLocalField(name: string | null): void
-    setReferencedField(name: string | null): void
+    setLocalField(name: string): void
+    setReferencedField(name: string): void
 }
 
 export class ServerOperationCreateTableArgFKeyRefField {
@@ -17108,28 +17108,28 @@ export interface ServerProviderBase {
 
     // Own fields of Gda-6.0.Gda.ServerProviderBase
 
-    getName: (provider: ServerProvider) => string | null
-    getVersion: (provider: ServerProvider) => string | null
-    getServerVersion: (provider: ServerProvider, cnc: Connection) => string | null
+    getName: (provider: ServerProvider) => string
+    getVersion: (provider: ServerProvider) => string
+    getServerVersion: (provider: ServerProvider, cnc: Connection) => string
     supportsFeature: (provider: ServerProvider, cnc: Connection, feature: ConnectionFeature) => boolean
     createWorker: (provider: ServerProvider, forCnc: boolean) => Worker
-    getDefDbmsType: (provider: ServerProvider, cnc: Connection, gType: GObject.GType) => string | null
+    getDefDbmsType: (provider: ServerProvider, cnc: Connection, gType: GObject.GType) => string
     supportsOperation: (provider: ServerProvider, cnc: Connection, type: ServerOperationType, options: Set) => boolean
     renderOperation: (provider: ServerProvider, cnc: Connection, op: ServerOperation) => string | null
-    identifierQuote: (provider: ServerProvider, cnc: Connection, id: string | null, forMetaStore: boolean, forceQuotes: boolean) => string | null
+    identifierQuote: (provider: ServerProvider, cnc: Connection, id: string, forMetaStore: boolean, forceQuotes: boolean) => string | null
     statementRewrite: (provider: ServerProvider, cnc: Connection, stmt: Statement, params: Set) => SqlStatement
     openConnection: (provider: ServerProvider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
     prepareConnection: (provider: ServerProvider, cnc: Connection, params: QuarkList, auth: QuarkList) => boolean
     closeConnection: (provider: ServerProvider, cnc: Connection) => boolean
-    escapeString: (provider: ServerProvider, cnc: Connection, str: string | null) => string | null
-    unescapeString: (provider: ServerProvider, cnc: Connection, str: string | null) => string | null
+    escapeString: (provider: ServerProvider, cnc: Connection, str: string) => string | null
+    unescapeString: (provider: ServerProvider, cnc: Connection, str: string) => string | null
     performOperation: (provider: ServerProvider, cnc: Connection, op: ServerOperation) => boolean
-    beginTransaction: (provider: ServerProvider, cnc: Connection, name: string | null, level: TransactionIsolation) => boolean
-    commitTransaction: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    rollbackTransaction: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    addSavepoint: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    rollbackSavepoint: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
-    deleteSavepoint: (provider: ServerProvider, cnc: Connection, name: string | null) => boolean
+    beginTransaction: (provider: ServerProvider, cnc: Connection, name: string, level: TransactionIsolation) => boolean
+    commitTransaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    rollbackTransaction: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    addSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    rollbackSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
+    deleteSavepoint: (provider: ServerProvider, cnc: Connection, name: string) => boolean
     statementPrepare: (provider: ServerProvider, cnc: Connection, stmt: Statement) => boolean
 }
 
@@ -17275,7 +17275,7 @@ export interface SetClass {
     validateHolderChange: (set: Set, holder: Holder, newValue: any) => GLib.Error
     validateSet: (set: Set) => GLib.Error
     holderChanged: (set: Set, holder: Holder) => void
-    holderAttrChanged: (set: Set, holder: Holder, attrName: string | null, attrValue: any) => void
+    holderAttrChanged: (set: Set, holder: Holder, attrName: string, attrValue: any) => void
     publicDataChanged: (set: Set) => void
     holderTypeSet: (set: Set, holder: Holder) => void
     sourceModelChanged: (set: Set, source: SetSource) => void
@@ -17937,14 +17937,14 @@ export class SqlOperation {
      * @param op a #GdaSqlOperation structure
      * @returns #GdaSqlOperatorType
      */
-    static operatorFromString(op: string | null): SqlOperatorType
+    static operatorFromString(op: string): SqlOperatorType
     /**
      * Returns a constant string representing a operator name. You don't need to free
      * the returned string.
      * @param op a #GdaSqlOperation structure
      * @returns a string with the operator's name or NULL in case @op is invalid.
      */
-    static operatorToString(op: SqlOperatorType): string | null
+    static operatorToString(op: SqlOperatorType): string
 }
 
 export interface SqlParamSpec {
@@ -18334,7 +18334,7 @@ export class SqlSelectJoin {
      * @param type a #GdaSqlSelectJoinType structure to be copied
      * @returns a string representing the Join type.
      */
-    static typeToString(type: SqlSelectJoinType): string | null
+    static typeToString(type: SqlSelectJoinType): string
 }
 
 export interface SqlSelectOrder {
@@ -18802,13 +18802,13 @@ export class SqlStatement {
      * @param type a string representing a #GdaSqlStatementType type
      * @returns a #GdaSqlStatementType value
      */
-    static stringToType(type: string | null): SqlStatementType
+    static stringToType(type: string): SqlStatementType
     /**
      * Converts a #GdaSqlStatementType to a string, see also gda_sql_statement_string_to_type()
      * @param type a #GdaSqlStatementType value
      * @returns a constant string
      */
-    static typeToString(type: SqlStatementType): string | null
+    static typeToString(type: SqlStatementType): string
 }
 
 export interface SqlStatementCheckValidityData {
@@ -19147,8 +19147,8 @@ export interface TableConstraintIface {
     // Own fields of Gda-6.0.Gda.TableConstraintIface
 
     parentIface: GObject.TypeInterface
-    getDefinition: (self: TableConstraint) => string | null
-    setDefinition: (self: TableConstraint, value: string | null) => void
+    getDefinition: (self: TableConstraint) => string
+    setDefinition: (self: TableConstraint, value: string) => void
 }
 
 export abstract class TableConstraintIface {
@@ -19180,12 +19180,12 @@ export interface Text {
      * Free resources on #GdaText object.
      */
     free(): void
-    getString(): string | null
+    getString(): string
     /**
      * Set string. The string is duplicated.
      * @param str a string to set from
      */
-    setString(str: string | null): void
+    setString(str: string): void
     /**
      * Takes ownership on a given string, so you don't need to free it.
      * @param str a string to take ownership on
@@ -19222,7 +19222,7 @@ export class Text {
      * @param text the text to convert
      * @returns a new string
      */
-    static toAlphanum(text: string | null): string | null
+    static toAlphanum(text: string): string | null
 }
 
 export interface Time {
@@ -19404,7 +19404,7 @@ export interface TreeClass {
     nodeChanged: (tree: Tree, node: TreeNode) => void
     nodeInserted: (tree: Tree, node: TreeNode) => void
     nodeHasChildToggled: (tree: Tree, node: TreeNode) => void
-    nodeDeleted: (tree: Tree, nodePath: string | null) => void
+    nodeDeleted: (tree: Tree, nodePath: string) => void
 }
 
 export abstract class TreeClass {
@@ -19506,9 +19506,9 @@ export interface TreeNodeClass {
     nodeChanged: (reporting: TreeNode, node: TreeNode) => void
     nodeInserted: (reporting: TreeNode, node: TreeNode) => void
     nodeHasChildToggled: (reporting: TreeNode, node: TreeNode) => void
-    nodeDeleted: (reporting: TreeNode, relativePath: string | null) => void
+    nodeDeleted: (reporting: TreeNode, relativePath: string) => void
     dumpHeader: (node: TreeNode) => string | null
-    dumpChildren: (node: TreeNode, prefix: string | null, inString: GLib.String) => void
+    dumpChildren: (node: TreeNode, prefix: string, inString: GLib.String) => void
 }
 
 export abstract class TreeNodeClass {
@@ -19711,7 +19711,7 @@ export interface WritableTableModelIface {
     // Own fields of Gda-6.0.Gda.WritableTableModelIface
 
     parentIface: GObject.TypeInterface
-    setValue: (self: WritableTableModel, row: number, column: string | null, value: any) => void
+    setValue: (self: WritableTableModel, row: number, column: string, value: any) => void
     setValueAt: (self: WritableTableModel, row: number, column: number, value: any) => void
     insertRow: (self: WritableTableModel, newRow: RowModel) => void
 }

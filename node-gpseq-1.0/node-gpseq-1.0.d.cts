@@ -1993,7 +1993,7 @@ export interface SubArray extends Gee.Traversable, Gee.Iterable {
      * @param key name of the key for that association
      * @returns the data if found,          or %NULL if no such data exists.
      */
-    getData(key: string | null): any | null
+    getData(key: string): any | null
     getSize(): number
     get(index: number): any | null
     set(index: number, item?: any | null): void
@@ -2457,7 +2457,7 @@ export interface WorkerThread {
 
     getThread(): GLib.Thread | null
     getPool(): WorkerPool
-    getName(): string | null
+    getName(): string
     getIsStarted(): boolean
     getIsTerminated(): boolean
     getIsAlive(): boolean

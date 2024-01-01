@@ -232,25 +232,25 @@ export enum SourcePermissionFlags {
      */
     REMOVABLE,
 }
-export const CACHE_COLUMN_OBJECT: string | null
-export const CACHE_COLUMN_REVISION: string | null
-export const CACHE_COLUMN_STATE: string | null
-export const CACHE_COLUMN_UID: string | null
-export const CACHE_TABLE_KEYS: string | null
-export const CACHE_TABLE_OBJECTS: string | null
+export const CACHE_COLUMN_OBJECT: string
+export const CACHE_COLUMN_REVISION: string
+export const CACHE_COLUMN_STATE: string
+export const CACHE_COLUMN_UID: string
+export const CACHE_TABLE_KEYS: string
+export const CACHE_TABLE_OBJECTS: string
 /**
  * This environment variable configures where the registry
  * server loads it's backend modules from.
  */
-export const EDS_REGISTRY_MODULES: string | null
+export const EDS_REGISTRY_MODULES: string
 /**
  * D-Bus object path of the data source server.
  */
-export const SOURCE_REGISTRY_SERVER_OBJECT_PATH: string | null
+export const SOURCE_REGISTRY_SERVER_OBJECT_PATH: string
 /**
  * D-Bus object path of the user prompter.
  */
-export const USER_PROMPTER_SERVER_OBJECT_PATH: string | null
+export const USER_PROMPTER_SERVER_OBJECT_PATH: string
 /**
  * Frees the `info` structure, previously allocated with e_cache_column_info_new()
  * or e_cache_column_info_copy().
@@ -277,7 +277,7 @@ export function sqlite3_vfs_init(): void
  * @returns %TRUE to continue, %FALSE to stop walk through.
  */
 export interface CacheForeachFunc {
-    (cache: Cache, uid: string | null, revision: string | null, object: string | null, offline_state: OfflineState, column_names: string[], column_values: string[]): boolean
+    (cache: Cache, uid: string, revision: string, object: string, offline_state: OfflineState, column_names: string[], column_values: string[]): boolean
 }
 /**
  * A callback called for each row of the `self` table when
@@ -290,7 +290,7 @@ export interface CacheForeachFunc {
  * @returns %TRUE to continue, %FALSE to stop walk through.
  */
 export interface CacheKeysForeachFunc {
-    (self: CacheKeys, key: string | null, value: string | null, ref_count: number): boolean
+    (self: CacheKeys, key: string, value: string, ref_count: number): boolean
 }
 /**
  * A callback called for each row of a SELECT statement executed
@@ -318,7 +318,7 @@ export interface CacheSelectFunc {
  * @returns %TRUE to continue, %FALSE to stop walk through.
  */
 export interface CacheUpdateFunc {
-    (cache: Cache, uid: string | null, revision: string | null, object: string | null, offline_state: OfflineState, column_names: string[], column_values: string[]): boolean
+    (cache: Cache, uid: string, revision: string, object: string, offline_state: OfflineState, column_names: string[], column_values: string[]): boolean
 }
 export module OAuth2Support {
 
@@ -353,7 +353,7 @@ export interface OAuth2Support {
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on failure
      */
-    get_access_token_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number ]
+    get_access_token_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     /**
      * Obtains the OAuth 2.0 access token for `source` along with its expiry
      * in seconds from the current time (or 0 if unknown).
@@ -364,7 +364,7 @@ export interface OAuth2Support {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on failure
      */
-    get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number ]
+    get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
 
     // Own virtual methods of EBackend-1.2.EBackend.OAuth2Support
 
@@ -390,7 +390,7 @@ export interface OAuth2Support {
      * @param result a #GAsyncResult
      * @returns %TRUE on success, %FALSE on failure
      */
-    vfunc_get_access_token_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number ]
+    vfunc_get_access_token_finish(result: Gio.AsyncResult): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     /**
      * Obtains the OAuth 2.0 access token for `source` along with its expiry
      * in seconds from the current time (or 0 if unknown).
@@ -402,7 +402,7 @@ export interface OAuth2Support {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on failure
      */
-    vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number ]
+    vfunc_get_access_token_sync(source: EDataServer.Source, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
 
     // Class property signals of EBackend-1.2.EBackend.OAuth2Support
 
@@ -467,7 +467,7 @@ export interface Backend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string | null, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes the operation started with e_backend_credentials_required().
      * 
@@ -492,7 +492,7 @@ export interface Backend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns %TRUE on success, %FALSE on error
      */
-    credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string | null, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean
+    credentials_required_sync(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null): boolean
     /**
      * Makes sure that the "online" property is updated, that is, if there
      * is any destination reachability test pending, it'll be done immediately
@@ -608,7 +608,7 @@ export interface Backend {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param who_calls an identification who calls this
      */
-    schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string | null, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, who_calls: string | null): void
+    schedule_credentials_required(reason: EDataServer.SourceCredentialsReason, certificate_pem: string, certificate_errors: Gio.TlsCertificateFlags, op_error: GLib.Error | null, cancellable: Gio.Cancellable | null, who_calls: string | null): void
     /**
      * Sets the socket endpoint for the network service to which `backend` is
      * a client.  This can be %NULL if `backend` does not use network sockets.
@@ -744,13 +744,13 @@ export interface BackendFactory {
      * each subclass.
      * @returns a hash key which uniquely identifies @factory
      */
-    get_hash_key(): string | null
+    get_hash_key(): string
     /**
      * Returns the filename of the shared library for the module used
      * to load the backends provided by `factory`.
      * @returns the filename for the module associated to the @factory
      */
-    get_module_filename(): string | null
+    get_module_filename(): string
     /**
      * Returns a new #EBackend instance for `source`.
      * @param source an #ESource
@@ -775,7 +775,7 @@ export interface BackendFactory {
      * @virtual 
      * @returns a hash key which uniquely identifies @factory
      */
-    vfunc_get_hash_key(): string | null
+    vfunc_get_hash_key(): string
     /**
      * Returns a new #EBackend instance for `source`.
      * @virtual 
@@ -870,7 +870,7 @@ export interface Cache {
      * @param deleted_flag one of #ECacheDeletedFlag enum
      * @returns Whether the object had been found.
      */
-    contains(uid: string | null, deleted_flag: CacheDeletedFlag): boolean
+    contains(uid: string, deleted_flag: CacheDeletedFlag): boolean
     /**
      * Adds every column value which is not part of the `other_columns` to it,
      * except of E_CACHE_COLUMN_UID, E_CACHE_COLUMN_REVISION, E_CACHE_COLUMN_OBJECT
@@ -882,7 +882,7 @@ export interface Cache {
      * @param other_columns an #ECacheColumnValues to fill
      */
     copy_missing_to_column_values(column_names: string[], column_values: string[], other_columns: CacheColumnValues): /* other_columns */ CacheColumnValues
-    dup_key(key: string | null): string | null
+    dup_key(key: string): string | null
     dup_revision(): string | null
     /**
      * Erases the cache and all of its content from the disk.
@@ -938,22 +938,22 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns An object with the given @uid. Free it    with g_free(), when no longer needed. Returns %NULL on error, like when    the object could not be found.
      */
-    get(uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ string | null, /* out_revision */ string | null, /* out_other_columns */ CacheColumnValues | null ]
+    get(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ string | null, /* out_revision */ string | null, /* out_other_columns */ CacheColumnValues | null ]
     get_count(deleted_flag: CacheDeletedFlag, cancellable: Gio.Cancellable | null): number
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Reads the user `key` value as an integer.
      * @param key a key name
      * @returns The user @key value or -1 on error.
      */
-    get_key_int(key: string | null): number
+    get_key_int(key: string): number
     /**
      * The same as e_cache_get(), only considers also locally deleted objects.
      * @param uid a unique identifier of an object
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns An object with the given @uid. Free it    with g_free(), when no longer needed. Returns %NULL on error, like when    the object could not be found.
      */
-    get_object_include_deleted(uid: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ string | null, /* out_revision */ string | null, /* out_other_columns */ CacheColumnValues | null ]
+    get_object_include_deleted(uid: string, cancellable: Gio.Cancellable | null): [ /* returnType */ string | null, /* out_revision */ string | null, /* out_other_columns */ CacheColumnValues | null ]
     /**
      * Gets a list of objects stored in the `cache,` optionally together with
      * their revisions. The uids are not returned in any particular order,
@@ -976,7 +976,7 @@ export interface Cache {
      * @returns A newly allocated list of all    offline changes. Free it with g_slist_free_full (slist, e_cache_offline_change_free);    when no longer needed.
      */
     get_offline_changes(cancellable: Gio.Cancellable | null): CacheOfflineChange[]
-    get_offline_state(uid: string | null, cancellable: Gio.Cancellable | null): OfflineState
+    get_offline_state(uid: string, cancellable: Gio.Cancellable | null): OfflineState
     get_sqlitedb(): any | null
     /**
      * Gets a list of unique object identifiers stored in the `cache,` optionally
@@ -1004,7 +1004,7 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    initialize_sync(filename: string | null, other_columns: CacheColumnInfo[] | null, cancellable: Gio.Cancellable | null): boolean
+    initialize_sync(filename: string, other_columns: CacheColumnInfo[] | null, cancellable: Gio.Cancellable | null): boolean
     is_revision_change_frozen(): boolean
     /**
      * Locks the `cache` thus other threads cannot use it.
@@ -1028,7 +1028,7 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    put(uid: string | null, revision: string | null, object: string | null, other_columns: CacheColumnValues | null, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
+    put(uid: string, revision: string | null, object: string, other_columns: CacheColumnValues | null, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes the object with the given `uid` from the `cache`. Based on the `offline_flag,`
      * it can remove also any information about locally made offline changes. Removing
@@ -1039,7 +1039,7 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    remove(uid: string | null, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
+    remove(uid: string, offline_flag: CacheOfflineFlag, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes all objects from the `cache` in one call.
      * @param cancellable optional #GCancellable object, or %NULL
@@ -1052,14 +1052,14 @@ export interface Cache {
      * @param value a value to set, or %NULL to delete the key
      * @returns Whether succeeded.
      */
-    set_key(key: string | null, value: string | null): boolean
+    set_key(key: string, value: string | null): boolean
     /**
      * Sets an integer `value` for the user `key`.
      * @param key a key name
      * @param value an integer value to set
      * @returns Whether succeeded.
      */
-    set_key_int(key: string | null, value: number): boolean
+    set_key_int(key: string, value: number): boolean
     /**
      * Sets an offline `state` for the object identified by `uid`.
      * @param uid a unique identifier of an object
@@ -1067,7 +1067,7 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    set_offline_state(uid: string | null, state: OfflineState, cancellable: Gio.Cancellable | null): boolean
+    set_offline_state(uid: string, state: OfflineState, cancellable: Gio.Cancellable | null): boolean
     /**
      * Sets the `revision` of the whole `cache`. This is not meant to be
      * used by the descendants, because the revision is updated automatically
@@ -1088,7 +1088,7 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    sqlite_exec(sql_stmt: string | null, cancellable: Gio.Cancellable | null): boolean
+    sqlite_exec(sql_stmt: string, cancellable: Gio.Cancellable | null): boolean
     /**
      * Runs vacuum (compacts the database file), if needed.
      * @param cancellable optional #GCancellable object, or %NULL
@@ -1103,7 +1103,7 @@ export interface Cache {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    sqlite_select(sql_stmt: string | null, func: CacheSelectFunc, cancellable: Gio.Cancellable | null): boolean
+    sqlite_select(sql_stmt: string, func: CacheSelectFunc, cancellable: Gio.Cancellable | null): boolean
     /**
      * Thaws automatic revision change for the `cache`. It's the pair
      * function of e_cache_freeze_revision_change().
@@ -1120,8 +1120,8 @@ export interface Cache {
 
     // Own virtual methods of EBackend-1.2.EBackend.Cache
 
-    vfunc_before_put(uid: string | null, revision: string | null, object: string | null, other_columns: CacheColumnValues, is_replace: boolean, cancellable: Gio.Cancellable | null): boolean
-    vfunc_before_remove(uid: string | null, cancellable: Gio.Cancellable | null): boolean
+    vfunc_before_put(uid: string, revision: string, object: string, other_columns: CacheColumnValues, is_replace: boolean, cancellable: Gio.Cancellable | null): boolean
+    vfunc_before_remove(uid: string, cancellable: Gio.Cancellable | null): boolean
     vfunc_clear_offline_changes_locked(cancellable: Gio.Cancellable | null): boolean
     /**
      * Erases the cache and all of its content from the disk.
@@ -1129,8 +1129,8 @@ export interface Cache {
      * @virtual 
      */
     vfunc_erase(): void
-    vfunc_put_locked(uid: string | null, revision: string | null, object: string | null, other_columns: CacheColumnValues, offline_state: OfflineState, is_replace: boolean, cancellable: Gio.Cancellable | null): boolean
-    vfunc_remove_locked(uid: string | null, cancellable: Gio.Cancellable | null): boolean
+    vfunc_put_locked(uid: string, revision: string, object: string, other_columns: CacheColumnValues, offline_state: OfflineState, is_replace: boolean, cancellable: Gio.Cancellable | null): boolean
+    vfunc_remove_locked(uid: string, cancellable: Gio.Cancellable | null): boolean
     vfunc_revision_changed(): void
 
     // Own signals of EBackend-1.2.EBackend.Cache
@@ -1285,7 +1285,7 @@ export interface CacheKeys {
      * Gets a key column name, with which the `self` had been created.
      * @returns a key column name
      */
-    get_key_column_name(): string | null
+    get_key_column_name(): string
     /**
      * Gets currently stored reference count for the `key`.
      * Note the reference count can be 0, which means the `key`
@@ -1294,7 +1294,7 @@ export interface CacheKeys {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    get_ref_count_sync(key: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ref_count */ number ]
+    get_ref_count_sync(key: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_ref_count */ number ]
     /**
      * Gets a stored value with given `key,` which had been previously put
      * into the `self` with e_cache_keys_put_sync().
@@ -1304,17 +1304,17 @@ export interface CacheKeys {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    get_sync(key: string | null, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ string | null ]
+    get_sync(key: string, cancellable: Gio.Cancellable | null): [ /* returnType */ boolean, /* out_value */ string | null ]
     /**
      * Gets a table name, with which the `self` had been created.
      * @returns a table name
      */
-    get_table_name(): string | null
+    get_table_name(): string
     /**
      * Get a value column name, with which the `self` had been created.
      * @returns a value column name
      */
-    get_value_column_name(): string | null
+    get_value_column_name(): string
     /**
      * Initializes table in the corresponding #ECache.
      * @param cancellable optional #GCancellable object, or %NULL
@@ -1330,7 +1330,7 @@ export interface CacheKeys {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    put_sync(key: string | null, value: string | null, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean
+    put_sync(key: string, value: string, inc_ref_counts: number, cancellable: Gio.Cancellable | null): boolean
     /**
      * Removes all stored keys from the `self`.
      * @param cancellable optional #GCancellable object, or %NULL
@@ -1349,7 +1349,7 @@ export interface CacheKeys {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Whether succeeded.
      */
-    remove_sync(key: string | null, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean
+    remove_sync(key: string, dec_ref_counts: number, cancellable: Gio.Cancellable | null): boolean
 
     // Own virtual methods of EBackend-1.2.EBackend.CacheKeys
 
@@ -1413,7 +1413,7 @@ export class CacheKeys extends GObject.Object {
      * @param value_column_name column name for the values
      * @returns a new #ECacheKeys
      */
-    constructor(cache: Cache, table_name: string | null, key_column_name: string | null, value_column_name: string | null) 
+    constructor(cache: Cache, table_name: string, key_column_name: string, value_column_name: string) 
     /**
      * Creates a new #ECacheKeys, which will operate with `table_name,`
      * using column `key_column_name` to store keys and `value_column_name`
@@ -1431,7 +1431,7 @@ export class CacheKeys extends GObject.Object {
      * @param value_column_name column name for the values
      * @returns a new #ECacheKeys
      */
-    static new(cache: Cache, table_name: string | null, key_column_name: string | null, value_column_name: string | null): CacheKeys
+    static new(cache: Cache, table_name: string, key_column_name: string, value_column_name: string): CacheKeys
     _init(config?: CacheKeys.ConstructorProperties): void
 }
 
@@ -1456,7 +1456,7 @@ export interface CacheReaper extends EDataServer.Extensible {
      * Since 3.18
      * @param name directory name
      */
-    add_private_directory(name: string | null): void
+    add_private_directory(name: string): void
     /**
      * Remove private directory named `name` from the list of private
      * directories in the `cache_reaper,` previously added with
@@ -1465,7 +1465,7 @@ export interface CacheReaper extends EDataServer.Extensible {
      * Since 3.18
      * @param name directory name
      */
-    remove_private_directory(name: string | null): void
+    remove_private_directory(name: string): void
 
     // Class property signals of EBackend-1.2.EBackend.CacheReaper
 
@@ -1687,7 +1687,7 @@ export interface CollectionBackend {
      * data sources.  See also: e_server_side_source_set_write_directory()
      * @returns the cache directory for @backend
      */
-    get_cache_dir(): string | null
+    get_cache_dir(): string
     /**
      * Checks whether the `backend` has enabled at least of the `parts`.
      * @param parts a bit-or of #ECollectionBackendParts with parts to be checked
@@ -1767,7 +1767,7 @@ export interface CollectionBackend {
      * @param resource_id a stable and unique resource ID
      * @returns a newly-created data source
      */
-    new_child(resource_id: string | null): EDataServer.Source
+    new_child(resource_id: string): EDataServer.Source
     /**
      * Returns the #GProxyResolver for `backend` (if applicable), as indicated
      * by the #ESourceAuthentication:proxy-uid of `backend'`s #EBackend:source
@@ -2217,7 +2217,7 @@ export interface DataFactory extends EDataServer.Extensible, Gio.Initable {
     // Owm methods of EBackend-1.2.EBackend.DataFactory
 
     backend_closed(backend: Backend): void
-    backend_closed_by_sender(backend: Backend, sender: string | null): void
+    backend_closed_by_sender(backend: Backend, sender: string): void
     /**
      * Returns a new and unique object path for a D-Bus interface based
      * in the data object path prefix of the `data_factory`
@@ -2270,7 +2270,7 @@ export interface DataFactory extends EDataServer.Extensible, Gio.Initable {
      * @param extension_name an extension name
      * @returns the #EBackendFactory for @hash_key,    or %NULL
      */
-    ref_backend_factory(backend_name: string | null, extension_name: string | null): BackendFactory | null
+    ref_backend_factory(backend_name: string, extension_name: string): BackendFactory | null
     /**
      * Spawns a new subprocess for a backend type and returns the object path
      * of the new subprocess to the client, in the way the client can talk
@@ -2281,12 +2281,12 @@ export interface DataFactory extends EDataServer.Extensible, Gio.Initable {
      * @param extension_name an extension name
      * @param subprocess_path a path of an executable responsible for running the subprocess
      */
-    spawn_subprocess_backend(invocation: Gio.DBusMethodInvocation, uid: string | null, extension_name: string | null, subprocess_path: string | null): void
+    spawn_subprocess_backend(invocation: Gio.DBusMethodInvocation, uid: string, extension_name: string, subprocess_path: string): void
     use_backend_per_process(): boolean
 
     // Own virtual methods of EBackend-1.2.EBackend.DataFactory
 
-    vfunc_complete_open(invocation: Gio.DBusMethodInvocation, object_path: string | null, bus_name: string | null, extension_name: string | null): void
+    vfunc_complete_open(invocation: Gio.DBusMethodInvocation, object_path: string, bus_name: string, extension_name: string): void
     /**
      * Used only when backend-per-process is off.
      * 
@@ -2369,7 +2369,7 @@ export interface FileCache {
      * @param value the object to add
      * @returns %TRUE if successful, %FALSE if @key already exists
      */
-    add_object(key: string | null, value: string | null): boolean
+    add_object(key: string, value: string): boolean
     /**
      * Clean up the cache's contents.
      * @returns %TRUE always
@@ -2383,7 +2383,7 @@ export interface FileCache {
      * Gets the name of the file where the cache is being stored.
      * @returns The name of the cache.
      */
-    get_filename(): string | null
+    get_filename(): string
     /**
      * Returns a list of keys in `cache`.  The keys are owned by `cache` and must
      * not be modified or freed.  Free the returned list with g_slist_free().
@@ -2396,7 +2396,7 @@ export interface FileCache {
      * @param key the hash key of the object to find
      * @returns the object corresponding to @key
      */
-    get_object(key: string | null): string | null
+    get_object(key: string): string | null
     /**
      * Returns a list of objects in `cache`.  The objects are owned by `cache` and
      * must not be modified or freed.  Free the returned list with g_slist_free().
@@ -2414,7 +2414,7 @@ export interface FileCache {
      * @param key the hash key of the object to remove
      * @returns %TRUE if successful, %FALSE if @key was not found
      */
-    remove_object(key: string | null): boolean
+    remove_object(key: string): boolean
     /**
      * Replaces the object corresponding to `key` with `new_value`.
      * If no such object exists in `cache,` the function returns %FALSE.
@@ -2422,7 +2422,7 @@ export interface FileCache {
      * @param new_value the new object for `key`
      * @returns %TRUE if successful, %FALSE if @key was not found
      */
-    replace_object(key: string | null, new_value: string | null): boolean
+    replace_object(key: string, new_value: string): boolean
     /**
      * Reverts the affects of e_file_cache_freeze_changes().
      * Each change to `cache` is once again written to disk.
@@ -2462,7 +2462,7 @@ export class FileCache extends GObject.Object {
      * @param filename filename where the cache is kept
      * @returns a new #EFileCache
      */
-    constructor(filename: string | null) 
+    constructor(filename: string) 
     /**
      * Creates a new #EFileCache object, which implements a cache of
      * objects.  Useful for remote backends.
@@ -2470,7 +2470,7 @@ export class FileCache extends GObject.Object {
      * @param filename filename where the cache is kept
      * @returns a new #EFileCache
      */
-    static new(filename: string | null): FileCache
+    static new(filename: string): FileCache
     _init(config?: FileCache.ConstructorProperties): void
 }
 
@@ -2558,7 +2558,7 @@ export interface ServerSideSource extends Gio.Initable, Gio.ProxyResolver {
      * it creates automatically.
      * @returns the directory where changes are written
      */
-    get_write_directory(): string | null
+    get_write_directory(): string
     /**
      * Reloads data source content from the file pointed to by the
      * #EServerSideSource:file property.
@@ -2659,7 +2659,7 @@ export interface ServerSideSource extends Gio.Initable, Gio.ProxyResolver {
      * it creates automatically.
      * @param write_directory the directory where changes are to be written
      */
-    set_write_directory(write_directory: string | null): void
+    set_write_directory(write_directory: string): void
 
     // Class property signals of EBackend-1.2.EBackend.ServerSideSource
 
@@ -2809,7 +2809,7 @@ export class ServerSideSource extends EDataServer.Source {
      * Returns the directory where user-specific data source files are stored.
      * @returns the user-specific data source directory
      */
-    static get_user_dir(): string | null
+    static get_user_dir(): string
     /**
      * Extracts a unique identity string from the base name of `file`.
      * If the base name of `file` is missing a '.source' extension, the
@@ -2967,7 +2967,7 @@ export interface SourceRegistryServer extends OAuth2Support, EDataServer.Extensi
      * @param extension_name the extension name to find
      * @returns an #ESource, or %NULL if no match was found
      */
-    find_extension(source: EDataServer.Source, extension_name: string | null): EDataServer.Source | null
+    find_extension(source: EDataServer.Source, extension_name: string): EDataServer.Source | null
     get_oauth2_services(): EDataServer.OAuth2Services
     /**
      * Returns a list of registered sources, sorted by display name.  If
@@ -3002,7 +3002,7 @@ export interface SourceRegistryServer extends OAuth2Support, EDataServer.Extensi
      * @param flags permission flags for files loaded from `path`
      * @returns %TRUE if @path was successfully opened, but this          does not imply the key files were successfully loaded
      */
-    load_directory(path: string | null, flags: SourcePermissionFlags): boolean
+    load_directory(path: string, flags: SourcePermissionFlags): boolean
     /**
      * Emits the #ESourceRegistryServer::load-error signal.
      * @param file the #GFile that failed to load
@@ -3031,7 +3031,7 @@ export interface SourceRegistryServer extends OAuth2Support, EDataServer.Extensi
      * @param flags permission flags for files loaded from `path`
      * @returns %TRUE if @path was successfully located, but this does not          imply the key files were successfully loaded
      */
-    load_resource(resource: Gio.Resource, path: string | null, flags: SourcePermissionFlags): boolean
+    load_resource(resource: Gio.Resource, path: string, flags: SourcePermissionFlags): boolean
     /**
      * Returns the #ECollectionBackend associated with `source,` or %NULL if
      * there is no #ECollectionBackend associated with `source`.
@@ -3075,7 +3075,7 @@ export interface SourceRegistryServer extends OAuth2Support, EDataServer.Extensi
      * @param extension_name an extension name
      * @returns the #EBackendFactory for @hash_key,    or %NULL
      */
-    ref_backend_factory(backend_name: string | null, extension_name: string | null): BackendFactory | null
+    ref_backend_factory(backend_name: string, extension_name: string): BackendFactory | null
     /**
      * Returns a referenced #ESourceCredentialsProvider. Unref it with
      * g_object_unref(), when no longer needed.
@@ -3098,7 +3098,7 @@ export interface SourceRegistryServer extends OAuth2Support, EDataServer.Extensi
      * @param uid a unique identifier string
      * @returns an #ESource, or %NULL if no match was found
      */
-    ref_source(uid: string | null): EDataServer.Source | null
+    ref_source(uid: string): EDataServer.Source | null
     /**
      * Removes `source` and all of its descendants from `server`.
      * @param source an #ESource
@@ -3117,7 +3117,7 @@ export interface SourceRegistryServer extends OAuth2Support, EDataServer.Extensi
     vfunc_load_error(file: Gio.File, error: GLib.Error): void
     vfunc_source_added(source: EDataServer.Source): void
     vfunc_source_removed(source: EDataServer.Source): void
-    vfunc_tweak_key_file(key_file: GLib.KeyFile, uid: string | null): boolean
+    vfunc_tweak_key_file(key_file: GLib.KeyFile, uid: string): boolean
 
     // Own signals of EBackend-1.2.EBackend.SourceRegistryServer
 
@@ -3225,7 +3225,7 @@ export interface SubprocessFactory extends Gio.Initable {
      * @param cancellable a #GCancellable
      * @returns a newly allocated string that represents the #EBackend          data D-Bus object path.
      */
-    open_backend(connection: Gio.DBusConnection, uid: string | null, backend_factory_type_name: string | null, module_filename: string | null, proxy: Gio.DBusInterfaceSkeleton, cancellable: Gio.Cancellable | null): string | null
+    open_backend(connection: Gio.DBusConnection, uid: string, backend_factory_type_name: string, module_filename: string, proxy: Gio.DBusInterfaceSkeleton, cancellable: Gio.Cancellable | null): string | null
     /**
      * Returns either a newly-created or existing #EBackend for #ESource.
      * The returned #EBackend is referenced for thread-safety and must be
@@ -3244,7 +3244,7 @@ export interface SubprocessFactory extends Gio.Initable {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns an #EBackend for @source, or %NULL
      */
-    ref_initable_backend(uid: string | null, backend_factory_type_name: string | null, module_filename: string | null, cancellable: Gio.Cancellable | null): Backend | null
+    ref_initable_backend(uid: string, backend_factory_type_name: string, module_filename: string, cancellable: Gio.Cancellable | null): Backend | null
     /**
      * Installs a toggle reference on the backend, that can receive a signal to
      * shutdown once all client connections are closed.
@@ -3323,7 +3323,7 @@ export interface UserPrompter {
      * @param cancellable optional #GCancellable object, or %NULL
      * @param callback a #GAsyncReadyCallback to call when the request is satisfied
      */
-    extension_prompt(dialog_name: string | null, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    extension_prompt(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes the operation started with e_user_prompter_extension_prompt().
      * Caller can provide `out_values` to get additional values provided by the extension.
@@ -3362,7 +3362,7 @@ export interface UserPrompter {
      * @param cancellable optional #GCancellable object, or %NULL
      * @returns Result code of the prompt, as defined by the extension, or -1 on error.
      */
-    extension_prompt_sync(dialog_name: string | null, in_parameters: EDataServer.NamedParameters | null, out_values: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): number
+    extension_prompt_sync(dialog_name: string, in_parameters: EDataServer.NamedParameters | null, out_values: EDataServer.NamedParameters | null, cancellable: Gio.Cancellable | null): number
     /**
      * Asynchronously prompt a user for a decision.
      * 
@@ -3486,7 +3486,7 @@ export interface UserPrompterServer extends EDataServer.Extensible {
      * @param dialog_name name of a dialog, which the `extensions` implement
      * @returns Whether properly registered @extension
      */
-    register(extension: EDataServer.Extension, dialog_name: string | null): boolean
+    register(extension: EDataServer.Extension, dialog_name: string): boolean
     /**
      * Finishes prompt initiated by a "prompt" signal or an extension prompt.
      * The `response` for non-extension prompts is a 0-based index of a button
@@ -3575,7 +3575,7 @@ export interface UserPrompterServerExtension {
      * @param parameters Optional extension parameters for the dialog, as passed by a caller
      * @returns Whether dialog was found and shown.
      */
-    prompt(prompt_id: number, dialog_name: string | null, parameters: EDataServer.NamedParameters | null): boolean
+    prompt(prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null): boolean
     /**
      * A conveniente wrapper function around e_user_prompter_server_response(),
      * which ends previous call of e_user_prompter_server_extension_prompt().
@@ -3610,7 +3610,7 @@ export interface UserPrompterServerExtension {
      * @param parameters Optional extension parameters for the dialog, as passed by a caller
      * @returns Whether dialog was found and shown.
      */
-    vfunc_prompt(prompt_id: number, dialog_name: string | null, parameters: EDataServer.NamedParameters | null): boolean
+    vfunc_prompt(prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null): boolean
 
     // Class property signals of EBackend-1.2.EBackend.UserPrompterServerExtension
 
@@ -3766,7 +3766,7 @@ export interface BackendFactoryClass {
 
     // Own fields of EBackend-1.2.EBackend.BackendFactoryClass
 
-    get_hash_key: (factory: BackendFactory) => string | null
+    get_hash_key: (factory: BackendFactory) => string
     new_backend: (factory: BackendFactory, source: EDataServer.Source) => Backend
     /**
      * An #EModule associated with this backend factory
@@ -3815,12 +3815,12 @@ export interface CacheClass {
 
     // Own fields of EBackend-1.2.EBackend.CacheClass
 
-    put_locked: (cache: Cache, uid: string | null, revision: string | null, object: string | null, other_columns: CacheColumnValues, offline_state: OfflineState, is_replace: boolean, cancellable: Gio.Cancellable | null) => boolean
-    remove_locked: (cache: Cache, uid: string | null, cancellable: Gio.Cancellable | null) => boolean
+    put_locked: (cache: Cache, uid: string, revision: string, object: string, other_columns: CacheColumnValues, offline_state: OfflineState, is_replace: boolean, cancellable: Gio.Cancellable | null) => boolean
+    remove_locked: (cache: Cache, uid: string, cancellable: Gio.Cancellable | null) => boolean
     clear_offline_changes_locked: (cache: Cache, cancellable: Gio.Cancellable | null) => boolean
     erase: (cache: Cache) => void
-    before_put: (cache: Cache, uid: string | null, revision: string | null, object: string | null, other_columns: CacheColumnValues, is_replace: boolean, cancellable: Gio.Cancellable | null) => boolean
-    before_remove: (cache: Cache, uid: string | null, cancellable: Gio.Cancellable | null) => boolean
+    before_put: (cache: Cache, uid: string, revision: string, object: string, other_columns: CacheColumnValues, is_replace: boolean, cancellable: Gio.Cancellable | null) => boolean
+    before_remove: (cache: Cache, uid: string, cancellable: Gio.Cancellable | null) => boolean
     revision_changed: (cache: Cache) => void
 }
 
@@ -3852,8 +3852,8 @@ export class CacheColumnInfo {
 
     // Constructors of EBackend-1.2.EBackend.CacheColumnInfo
 
-    constructor(name: string | null, type: string | null, index_name: string | null) 
-    static new(name: string | null, type: string | null, index_name: string | null): CacheColumnInfo
+    constructor(name: string, type: string, index_name: string | null) 
+    static new(name: string, type: string, index_name: string | null): CacheColumnInfo
     /**
      * Frees the `info` structure, previously allocated with e_cache_column_info_new()
      * or e_cache_column_info_copy().
@@ -3866,7 +3866,7 @@ export interface CacheColumnValues {
 
     // Owm methods of EBackend-1.2.EBackend.CacheColumnValues
 
-    contains(name: string | null): boolean
+    contains(name: string): boolean
     copy(): CacheColumnValues
     /**
      * Frees previously allocated `other_columns` with
@@ -3892,7 +3892,7 @@ export interface CacheColumnValues {
      * @param name a column name
      * @returns Stored value for the column named @name,    or %NULL, if no such column values is stored.
      */
-    lookup(name: string | null): string | null
+    lookup(name: string): string | null
     /**
      * Puts the `value` for column `name`. If contains a value for the same
      * column, then it is replaced. This creates a copy of both `name`
@@ -3900,13 +3900,13 @@ export interface CacheColumnValues {
      * @param name a column name
      * @param value a column value
      */
-    put(name: string | null, value: string | null): void
+    put(name: string, value: string | null): void
     /**
      * Removes value for the column named `name` from `other_columns`.
      * @param name a column name
      * @returns Whether such column existed and had been removed.
      */
-    remove(name: string | null): boolean
+    remove(name: string): boolean
     /**
      * Removes all values from the `other_columns,` leaving it empty.
      */
@@ -3926,7 +3926,7 @@ export interface CacheColumnValues {
      * @param name a column name
      * @param value a column value
      */
-    take_value(name: string | null, value: string | null): void
+    take_value(name: string, value: string | null): void
 }
 
 export class CacheColumnValues {
@@ -4029,7 +4029,7 @@ export class CacheOfflineChange {
      * @param state an #EOfflineState
      * @returns A new #ECacheOfflineChange. Free it with    e_cache_offline_change_free() when no longer needed.
      */
-    constructor(uid: string | null, revision: string | null, object: string | null, state: OfflineState) 
+    constructor(uid: string, revision: string | null, object: string | null, state: OfflineState) 
     /**
      * Creates a new #ECacheOfflineChange with the offline `state`
      * information for the given `uid`.
@@ -4040,7 +4040,7 @@ export class CacheOfflineChange {
      * @param state an #EOfflineState
      * @returns A new #ECacheOfflineChange. Free it with    e_cache_offline_change_free() when no longer needed.
      */
-    static new(uid: string | null, revision: string | null, object: string | null, state: OfflineState): CacheOfflineChange
+    static new(uid: string, revision: string | null, object: string | null, state: OfflineState): CacheOfflineChange
     /**
      * Frees the `change` structure, previously allocated with e_cache_offline_change_new()
      * or e_cache_offline_change_copy().
@@ -4131,8 +4131,8 @@ export interface DBusServerClass {
     // Own fields of EBackend-1.2.EBackend.DBusServerClass
 
     parent_class: GObject.ObjectClass
-    bus_name: string | null
-    module_directory: string | null
+    bus_name: string
+    module_directory: string
     bus_acquired: (server: DBusServer, connection: Gio.DBusConnection) => void
     bus_name_acquired: (server: DBusServer, connection: Gio.DBusConnection) => void
     bus_name_lost: (server: DBusServer, connection: Gio.DBusConnection) => void
@@ -4164,12 +4164,12 @@ export interface DataFactoryClass {
 
     parent_class: DBusServerClass
     backend_factory_type: GObject.GType
-    factory_object_path: string | null
-    data_object_path_prefix: string | null
-    subprocess_object_path_prefix: string | null
-    subprocess_bus_name_prefix: string | null
-    get_factory_name: (backend_factory: BackendFactory) => string | null
-    complete_open: (data_factory: DataFactory, invocation: Gio.DBusMethodInvocation, object_path: string | null, bus_name: string | null, extension_name: string | null) => void
+    factory_object_path: string
+    data_object_path_prefix: string
+    subprocess_object_path_prefix: string
+    subprocess_bus_name_prefix: string
+    get_factory_name: (backend_factory: BackendFactory) => string
+    complete_open: (data_factory: DataFactory, invocation: Gio.DBusMethodInvocation, object_path: string, bus_name: string, extension_name: string) => void
     create_backend: (data_factory: DataFactory, backend_factory: BackendFactory, source: EDataServer.Source) => Backend | null
     open_backend: (data_factory: DataFactory, backend: Backend, connection: Gio.DBusConnection, cancellable: Gio.Cancellable | null) => string | null
     reserved: any[]
@@ -4220,9 +4220,9 @@ export interface OAuth2SupportInterface {
 
     // Own fields of EBackend-1.2.EBackend.OAuth2SupportInterface
 
-    get_access_token_sync: (support: OAuth2Support, source: EDataServer.Source, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number ]
+    get_access_token_sync: (support: OAuth2Support, source: EDataServer.Source, cancellable: Gio.Cancellable | null) => [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
     get_access_token: (support: OAuth2Support, source: EDataServer.Source, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
-    get_access_token_finish: (support: OAuth2Support, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* out_access_token */ string | null, /* out_expires_in */ number ]
+    get_access_token_finish: (support: OAuth2Support, result: Gio.AsyncResult) => [ /* returnType */ boolean, /* out_access_token */ string, /* out_expires_in */ number ]
 }
 
 export abstract class OAuth2SupportInterface {
@@ -4289,7 +4289,7 @@ export interface SourceRegistryServerClass {
     files_loaded: (server: SourceRegistryServer) => void
     source_added: (server: SourceRegistryServer, source: EDataServer.Source) => void
     source_removed: (server: SourceRegistryServer, source: EDataServer.Source) => void
-    tweak_key_file: (server: SourceRegistryServer, key_file: GLib.KeyFile, uid: string | null) => boolean
+    tweak_key_file: (server: SourceRegistryServer, key_file: GLib.KeyFile, uid: string) => boolean
     reserved: any[]
 }
 
@@ -4381,7 +4381,7 @@ export interface UserPrompterServerExtensionClass {
 
     parent_class: EDataServer.ExtensionClass
     register_dialogs: (extension: EDataServer.Extension, server: any) => void
-    prompt: (extension: UserPrompterServerExtension, prompt_id: number, dialog_name: string | null, parameters: EDataServer.NamedParameters | null) => boolean
+    prompt: (extension: UserPrompterServerExtension, prompt_id: number, dialog_name: string, parameters: EDataServer.NamedParameters | null) => boolean
 }
 
 export abstract class UserPrompterServerExtensionClass {

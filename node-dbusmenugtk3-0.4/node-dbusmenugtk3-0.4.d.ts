@@ -57,7 +57,7 @@ function gtkParseMenuStructure(widget: Gtk.Widget): Dbusmenu.Menuitem
  * @param property The name of the property to look for.
  * @returns A pixbuf or #NULL to signal error.
  */
-function menuitemPropertyGetImage(menuitem: Dbusmenu.Menuitem, property: string | null): GdkPixbuf.Pixbuf
+function menuitemPropertyGetImage(menuitem: Dbusmenu.Menuitem, property: string): GdkPixbuf.Pixbuf
 /**
  * This function gets a GTK shortcut as a key and a mask
  * for use to set the accelerators.
@@ -73,7 +73,7 @@ function menuitemPropertyGetShortcut(menuitem: Dbusmenu.Menuitem): [ /* key */ n
  * @param data The image to place on the property.
  * @returns Whether the function was able to set the property 	or not.
  */
-function menuitemPropertySetImage(menuitem: Dbusmenu.Menuitem, property: string | null, data: GdkPixbuf.Pixbuf): boolean
+function menuitemPropertySetImage(menuitem: Dbusmenu.Menuitem, property: string, data: GdkPixbuf.Pixbuf): boolean
 /**
  * Takes the modifer described by `key` and `modifier` and places that into
  * the format sending across Dbus for shortcuts.
@@ -100,7 +100,7 @@ function menuitemPropertySetShortcutMenuitem(menuitem: Dbusmenu.Menuitem, gmi: G
  * @param shortcut String describing the shortcut
  * @returns Whether it was successful at setting the property.
  */
-function menuitemPropertySetShortcutString(menuitem: Dbusmenu.Menuitem, shortcut: string | null): boolean
+function menuitemPropertySetShortcutString(menuitem: Dbusmenu.Menuitem, shortcut: string): boolean
 module Client {
 
     // Constructor properties interface
@@ -233,7 +233,7 @@ class Client extends Dbusmenu.Client {
      * @param object The object on the server to monitor
      * @returns A brand new #DbusmenuClient
      */
-    static new(name: string | null, object: string | null): Dbusmenu.Client
+    static new(name: string, object: string): Dbusmenu.Client
     _init(config?: Client.ConstructorProperties): void
 }
 
@@ -284,13 +284,13 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -303,13 +303,13 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -322,7 +322,7 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -331,7 +331,7 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets an accelerator path for this menu from which accelerator paths
      * for its immediate children, its menu items, can be constructed.
@@ -423,7 +423,7 @@ interface Menu extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 

@@ -1474,7 +1474,7 @@ export enum VirtualModifier {
     MOD5_MASK,
 }
 export const CURRENT_TIME: number
-export const DEFAULT_ICON_NAME: string | null
+export const DEFAULT_ICON_NAME: string
 export const ICON_HEIGHT: number
 export const ICON_WIDTH: number
 export const MINI_ICON_HEIGHT: number
@@ -1506,7 +1506,7 @@ export function clutter_init(): void
  * @param name Human readable name of display server or window manager
  * @returns A new context instance.
  */
-export function create_context(name: string | null): Context
+export function create_context(name: string): Context
 /**
  * Disables unredirection, can be useful in situations where having
  * unredirected windows is undesirable like when recording a video.
@@ -1527,8 +1527,8 @@ export function focus_stage_window(display: Display, timestamp: number): void
  * @param type a #MetaFrameType
  * @returns the string value
  */
-export function frame_type_to_string(type: FrameType): string | null
-export function g_utf8_strndup(src: string | null, n: number): string | null
+export function frame_type_to_string(type: FrameType): string
+export function g_utf8_strndup(src: string, n: number): string | null
 export function get_clutter_debug_flags(): [ /* debug_flags */ Clutter.DebugFlag, /* draw_flags */ Clutter.DrawDebugFlag, /* pick_flags */ Clutter.PickDebugFlag ]
 export function get_debug_paint_flags(): DebugPaintFlag
 export function get_feedback_group_for_display(display: Display): Clutter.Actor
@@ -1537,7 +1537,7 @@ export function get_stage_for_display(display: Display): Clutter.Actor
 export function get_top_window_group_for_display(display: Display): Clutter.Actor
 export function get_window_actors(display: Display): Clutter.Actor[]
 export function get_window_group_for_display(display: Display): Clutter.Actor
-export function gravity_to_string(gravity: Gravity): string | null
+export function gravity_to_string(gravity: Gravity): string
 /**
  * Returns %TRUE if this instance of Mutter comes from Mutter
  * restarting itself (for example to enable/disable stereo.)
@@ -1555,11 +1555,11 @@ export function is_wayland_compositor(): boolean
  * @param handler The new handler function
  * @returns %TRUE if the binding known as @name was found, %FALSE otherwise.
  */
-export function keybindings_set_custom_handler(name: string | null, handler: KeyHandlerFunc | null): boolean
+export function keybindings_set_custom_handler(name: string, handler: KeyHandlerFunc | null): boolean
 export function pop_no_msg_prefix(): void
-export function preference_to_string(pref: Preference): string | null
+export function preference_to_string(pref: Preference): string
 export function prefs_bell_is_audible(): boolean
-export function prefs_change_workspace_name(i: number, name: string | null): void
+export function prefs_change_workspace_name(i: number, name: string): void
 export function prefs_get_action_double_click_titlebar(): GDesktopEnums.TitlebarAction
 export function prefs_get_action_middle_click_titlebar(): GDesktopEnums.TitlebarAction
 export function prefs_get_action_right_click_titlebar(): GDesktopEnums.TitlebarAction
@@ -1572,7 +1572,7 @@ export function prefs_get_center_new_windows(): boolean
 export function prefs_get_check_alive_timeout(): number
 export function prefs_get_compositing_manager(): boolean
 export function prefs_get_cursor_size(): number
-export function prefs_get_cursor_theme(): string | null
+export function prefs_get_cursor_theme(): string
 export function prefs_get_disable_workarounds(): boolean
 export function prefs_get_drag_threshold(): number
 export function prefs_get_draggable_border_width(): number
@@ -1584,8 +1584,8 @@ export function prefs_get_focus_new_windows(): GDesktopEnums.FocusNewWindows
 export function prefs_get_force_fullscreen(): boolean
 export function prefs_get_gnome_accessibility(): boolean
 export function prefs_get_gnome_animations(): boolean
-export function prefs_get_keybinding_action(name: string | null): KeyBindingAction
-export function prefs_get_keybinding_label(name: string | null): string | null
+export function prefs_get_keybinding_action(name: string): KeyBindingAction
+export function prefs_get_keybinding_label(name: string): string | null
 export function prefs_get_mouse_button_menu(): number
 export function prefs_get_mouse_button_mods(): Clutter.ModifierType
 export function prefs_get_mouse_button_resize(): number
@@ -1595,7 +1595,7 @@ export function prefs_get_show_fallback_app_menu(): boolean
 export function prefs_get_titlebar_font(): Pango.FontDescription
 export function prefs_get_visual_bell(): boolean
 export function prefs_get_visual_bell_type(): GDesktopEnums.VisualBellType
-export function prefs_get_workspace_name(i: number): string | null
+export function prefs_get_workspace_name(i: number): string
 export function prefs_get_workspaces_only_on_primary(): boolean
 export function prefs_set_force_fullscreen(whether: boolean): void
 export function prefs_set_num_workspaces(n_workspaces: number): void
@@ -1625,7 +1625,7 @@ export function remove_verbose_topic(topic: DebugTopic): void
  * @param context a #MetaContext
  */
 export function restart(message: string | null, context: Context): void
-export function topic_to_string(topic: DebugTopic): string | null
+export function topic_to_string(topic: DebugTopic): string
 export function unsigned_long_equal(v1: any | null, v2: any | null): number
 export function unsigned_long_hash(v: any | null): number
 export function x11_error_trap_pop(x11_display: X11Display): void
@@ -1920,7 +1920,7 @@ export interface Backend extends Gio.Initable {
     is_headless(): boolean
     is_rendering_hardware_accelerated(): boolean
     lock_layout_group(idx: number): void
-    set_keymap(layouts: string | null, variants: string | null, options: string | null): void
+    set_keymap(layouts: string, variants: string, options: string): void
 
     // Own signals of Meta-12.Meta.Backend
 
@@ -3098,9 +3098,9 @@ export interface Context {
      */
     restore_rlimit_nofile(): boolean
     run_main_loop(): boolean
-    set_gnome_wm_keybindings(wm_keybindings: string | null): void
+    set_gnome_wm_keybindings(wm_keybindings: string): void
     set_plugin_gtype(plugin_gtype: GObject.GType): void
-    set_plugin_name(plugin_name: string | null): void
+    set_plugin_name(plugin_name: string): void
     setup(): boolean
     start(): boolean
     terminate(): void
@@ -3489,7 +3489,7 @@ export interface Display {
      * @param handler function to run when the keybinding is invoked
      * @returns the corresponding keybinding action if the keybinding was          added successfully, otherwise %META_KEYBINDING_ACTION_NONE
      */
-    add_keybinding(name: string | null, settings: Gio.Settings, flags: KeyBindingFlags, handler: KeyHandlerFunc): number
+    add_keybinding(name: string, settings: Gio.Settings, flags: KeyBindingFlags, handler: KeyHandlerFunc): number
     /**
      * Sets the mouse-mode flag to %FALSE, which means that motion events are
      * no longer ignored in mouse or sloppy focus.
@@ -3598,7 +3598,7 @@ export interface Display {
      */
     get_tab_next(type: TabList, workspace: Workspace, window: Window | null, backward: boolean): Window
     get_workspace_manager(): WorkspaceManager
-    grab_accelerator(accelerator: string | null, flags: KeyBindingFlags): number
+    grab_accelerator(accelerator: string, flags: KeyBindingFlags): number
     /**
      * Returns %TRUE if there is an ongoing grab operation.
      * @returns Whether there is an active display grab operation.
@@ -3623,7 +3623,7 @@ export interface Display {
      * @param name name of the keybinding to remove
      * @returns %TRUE if the binding has been removed successfully,          otherwise %FALSE
      */
-    remove_keybinding(name: string | null): boolean
+    remove_keybinding(name: string): boolean
     request_pad_osd(pad: Clutter.InputDevice, edition_mode: boolean): void
     set_cursor(cursor: Cursor): void
     set_input_focus(window: Window, focus_frame: boolean, timestamp: number): void
@@ -4085,7 +4085,7 @@ export interface MonitorManager {
      * Returns whether the built-in display (i.e. a laptop panel) is turned on.
      */
     get_is_builtin_display_on(): boolean
-    get_monitor_for_connector(connector: string | null): number
+    get_monitor_for_connector(connector: string): number
     get_panel_orientation_managed(): boolean
     get_switch_config(): MonitorSwitchConfigType
     switch_config(config_type: MonitorSwitchConfigType): void
@@ -4475,7 +4475,7 @@ export interface Selection {
      * @param cancellable Cancellable
      * @param callback User callback
      */
-    transfer_async(selection_type: SelectionType, mimetype: string | null, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    transfer_async(selection_type: SelectionType, mimetype: string, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of transfer_async
 
@@ -4491,7 +4491,7 @@ export interface Selection {
      * @param cancellable Cancellable
      * @returns A Promise of: #TRUE if the transfer was successful.
      */
-    transfer_async(selection_type: SelectionType, mimetype: string | null, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
+    transfer_async(selection_type: SelectionType, mimetype: string, size: number, output: Gio.OutputStream, cancellable: Gio.Cancellable | null): globalThis.Promise<boolean>
     /**
      * Finishes the transfer of a queried mimetype.
      * @param result The async result
@@ -4579,7 +4579,7 @@ export interface SelectionSource {
      * @returns #TRUE if the source owns a selection.
      */
     is_active(): boolean
-    read_async(mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    read_async(mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of read_async
 
@@ -4591,7 +4591,7 @@ export interface SelectionSource {
      * @param cancellable 
      * @returns A Promise of: The resulting #GInputStream
      */
-    read_async(mimetype: string | null, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
+    read_async(mimetype: string, cancellable: Gio.Cancellable | null): globalThis.Promise<Gio.InputStream>
     /**
      * Finishes a read from the selection source.
      * @param result The async result
@@ -4609,7 +4609,7 @@ export interface SelectionSource {
      * @returns The supported mimetypes
      */
     vfunc_get_mimetypes(): string[]
-    vfunc_read_async(mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
+    vfunc_read_async(mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback<this> | null): void
     /**
      * Finishes a read from the selection source.
      * @virtual 
@@ -4677,8 +4677,8 @@ export class SelectionSourceMemory extends SelectionSource {
     // Constructors of Meta-12.Meta.SelectionSourceMemory
 
     constructor(config?: SelectionSourceMemory.ConstructorProperties) 
-    constructor(mimetype: string | null, content: GLib.Bytes) 
-    static new(mimetype: string | null, content: GLib.Bytes): SelectionSourceMemory
+    constructor(mimetype: string, content: GLib.Bytes) 
+    static new(mimetype: string, content: GLib.Bytes): SelectionSourceMemory
     _init(config?: SelectionSourceMemory.ConstructorProperties): void
 }
 
@@ -4713,7 +4713,7 @@ export interface ShadowFactory {
      * @param class_name name of the class of shadow to get the params for
      * @param focused whether the shadow is for a focused window
      */
-    get_params(class_name: string | null, focused: boolean): /* params */ ShadowParams
+    get_params(class_name: string, focused: boolean): /* params */ ShadowParams
     /**
      * Gets the appropriate shadow object for drawing shadows for the
      * specified window shape. The region that we are shadowing is specified
@@ -4727,7 +4727,7 @@ export interface ShadowFactory {
      * @param focused whether the shadow is for a focused window
      * @returns a newly referenced #MetaShadow; unref with  meta_shadow_unref()
      */
-    get_shadow(shape: WindowShape, width: number, height: number, class_name: string | null, focused: boolean): Shadow
+    get_shadow(shape: WindowShape, width: number, height: number, class_name: string, focused: boolean): Shadow
     /**
      * Updates the shadow parameters for a particular class of shadows
      * for either the focused or unfocused state. If the class name
@@ -4738,7 +4738,7 @@ export interface ShadowFactory {
      * @param focused whether the shadow is for a focused window
      * @param params new parameter values
      */
-    set_params(class_name: string | null, focused: boolean, params: ShadowParams): void
+    set_params(class_name: string, focused: boolean, params: ShadowParams): void
 
     // Own signals of Meta-12.Meta.ShadowFactory
 
@@ -4857,14 +4857,14 @@ export interface SoundPlayer {
      * @param description description of the played sound
      * @param cancellable cancellable for the request
      */
-    play_from_file(file: Gio.File, description: string | null, cancellable: Gio.Cancellable | null): void
+    play_from_file(file: Gio.File, description: string, cancellable: Gio.Cancellable | null): void
     /**
      * Plays a sound from the sound theme.
      * @param name sound theme name of the event
      * @param description description of the event
      * @param cancellable cancellable for the request
      */
-    play_from_theme(name: string | null, description: string | null, cancellable: Gio.Cancellable | null): void
+    play_from_theme(name: string, description: string, cancellable: Gio.Cancellable | null): void
 
     // Class property signals of Meta-12.Meta.SoundPlayer
 
@@ -5302,8 +5302,8 @@ export interface StartupSequence {
      * @returns the icon name or %NULL.
      */
     get_icon_name(): string | null
-    get_id(): string | null
-    get_name(): string | null
+    get_id(): string
+    get_name(): string
     get_timestamp(): number
     /**
      * Get the wmclass of the startup sequence.
@@ -5653,7 +5653,7 @@ export interface Window extends Gio.Initable {
      * @returns the wrapper object.
      */
     get_compositor_private(): GObject.Object
-    get_description(): string | null
+    get_description(): string
     get_display(): Display
     /**
      * Gets a region representing the outer bounds of the window's frame.
@@ -5726,7 +5726,7 @@ export interface Window extends Gio.Initable {
      * @returns the pid, or 0 if not known.
      */
     get_pid(): number
-    get_role(): string | null
+    get_role(): string
     /**
      * Gets an unique id for a sandboxed app (currently flatpaks and snaps are
      * supported).
@@ -5759,7 +5759,7 @@ export interface Window extends Gio.Initable {
      * @returns the matching tiled window or %NULL if it doesn't exist.
      */
     get_tile_match(): Window | null
-    get_title(): string | null
+    get_title(): string
     /**
      * Returns the #MetaWindow for the window that is pointed to by the
      * WM_TRANSIENT_FOR hint on this window (see XGetTransientForHint()
@@ -7341,7 +7341,7 @@ export interface Group {
     // Owm methods of Meta-12.Meta.Group
 
     get_size(): number
-    get_startup_id(): string | null
+    get_startup_id(): string
     list_windows(): Window[]
     update_layers(): void
 }
@@ -7389,7 +7389,7 @@ export interface KeyBinding {
 
     get_mask(): number
     get_modifiers(): Clutter.ModifierType
-    get_name(): string | null
+    get_name(): string
     is_builtin(): boolean
     is_reversed(): boolean
 }
@@ -7479,27 +7479,27 @@ export interface PluginInfo {
      * name of the plugin
      * @field 
      */
-    name: string | null
+    name: string
     /**
      * version of the plugin
      * @field 
      */
-    version: string | null
+    version: string
     /**
      * author of the plugin
      * @field 
      */
-    author: string | null
+    author: string
     /**
      * license of the plugin
      * @field 
      */
-    license: string | null
+    license: string
     /**
      * description of the plugin
      * @field 
      */
-    description: string | null
+    description: string
 }
 
 export class PluginInfo {
@@ -7607,7 +7607,7 @@ export interface SelectionSourceClass {
     activated: (source: SelectionSource) => void
     deactivated: (source: SelectionSource) => void
     get_mimetypes: (source: SelectionSource) => string[]
-    read_async: (source: SelectionSource, mimetype: string | null, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
+    read_async: (source: SelectionSource, mimetype: string, cancellable: Gio.Cancellable | null, callback: Gio.AsyncReadyCallback | null) => void
     read_finish: (source: SelectionSource, result: Gio.AsyncResult) => Gio.InputStream
 }
 

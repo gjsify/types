@@ -75,7 +75,7 @@ interface ChannelMap {
 
     canBalance(): boolean
     canFade(): boolean
-    getMapping(): string | null
+    getMapping(): string
     getNumChannels(): number
     getVolume(): number
 
@@ -165,16 +165,16 @@ interface MixerCard {
      */
     changeProfile(profile: string | null): boolean
     getGicon(): Gio.Icon
-    getIconName(): string | null
+    getIconName(): string
     getId(): number
     getIndex(): number
-    getName(): string | null
+    getName(): string
     getPorts(): MixerCardPort[]
     getProfiles(): MixerCardProfile[]
-    setIconName(name: string | null): boolean
-    setName(name: string | null): boolean
+    setIconName(name: string): boolean
+    setName(name: string): boolean
     setPorts(ports: MixerCardPort[]): boolean
-    setProfile(profile: string | null): boolean
+    setProfile(profile: string): boolean
     setProfiles(profiles: MixerCardProfile[]): boolean
 
     // Class property signals of Gvc-1.0.Gvc.MixerCard
@@ -526,8 +526,8 @@ class MixerControl extends GObject.Object {
     // Constructors of Gvc-1.0.Gvc.MixerControl
 
     constructor(config?: MixerControl.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): MixerControl
+    constructor(name: string) 
+    static new(name: string): MixerControl
     _init(config?: MixerControl.ConstructorProperties): void
 }
 
@@ -1315,50 +1315,50 @@ interface MixerStream {
     // Owm methods of Gvc-1.0.Gvc.MixerStream
 
     // Has conflict: changeIsMuted(isMuted: boolean): boolean
-    // Has conflict: changePort(port: string | null): boolean
-    getApplicationId(): string | null
+    // Has conflict: changePort(port: string): boolean
+    getApplicationId(): string
     getBaseVolume(): number
     getCanDecibel(): boolean
     getCardIndex(): number
     getChannelMap(): ChannelMap
     getDecibel(): number
-    getDescription(): string | null
-    getFormFactor(): string | null
+    getDescription(): string
+    getFormFactor(): string
     getGicon(): Gio.Icon
-    getIconName(): string | null
+    getIconName(): string
     getId(): number
     getIndex(): number
     getIsMuted(): boolean
-    getName(): string | null
+    getName(): string
     getPort(): MixerStreamPort
     getPorts(): MixerStreamPort[]
     getState(): MixerStreamState
-    getSysfsPath(): string | null
+    getSysfsPath(): string
     getVolume(): number
     isRunning(): boolean
     // Has conflict: pushVolume(): boolean
-    setApplicationId(applicationId: string | null): boolean
+    setApplicationId(applicationId: string): boolean
     setBaseVolume(baseVolume: number): boolean
     setCanDecibel(canDecibel: boolean): boolean
     setCardIndex(cardIndex: number): boolean
     setDecibel(db: number): boolean
-    setDescription(description: string | null): boolean
-    setFormFactor(formFactor: string | null): boolean
-    setIconName(name: string | null): boolean
+    setDescription(description: string): boolean
+    setFormFactor(formFactor: string): boolean
+    setIconName(name: string): boolean
     setIsEventStream(isEventStream: boolean): boolean
     setIsMuted(isMuted: boolean): boolean
     setIsVirtual(isEventStream: boolean): boolean
-    setName(name: string | null): boolean
-    setPort(port: string | null): boolean
+    setName(name: string): boolean
+    setPort(port: string): boolean
     setPorts(ports: MixerStreamPort[]): boolean
     setState(state: MixerStreamState): boolean
-    setSysfsPath(sysfsPath: string | null): boolean
+    setSysfsPath(sysfsPath: string): boolean
     setVolume(volume: number): boolean
 
     // Own virtual methods of Gvc-1.0.Gvc.MixerStream
 
     changeIsMuted(isMuted: boolean): boolean
-    changePort(port: string | null): boolean
+    changePort(port: string): boolean
     pushVolume(operation: any | null): boolean
 
     // Class property signals of Gvc-1.0.Gvc.MixerStream
@@ -1524,20 +1524,20 @@ interface MixerUIDevice {
 
     // Owm methods of Gvc-1.0.Gvc.MixerUIDevice
 
-    getActiveProfile(): string | null
-    getBestProfile(selected: string | null, current: string | null): string | null
-    getDescription(): string | null
+    getActiveProfile(): string
+    getBestProfile(selected: string | null, current: string): string
+    getDescription(): string
     getGicon(): Gio.Icon
-    getIconName(): string | null
+    getIconName(): string
     getId(): number
-    getMatchingProfile(profile: string | null): string | null
-    getOrigin(): string | null
-    getPort(): string | null
+    getMatchingProfile(profile: string): string
+    getOrigin(): string
+    getPort(): string
     getProfiles(): MixerCardProfile[]
     getStreamId(): number
     getSupportedProfiles(): MixerCardProfile[]
-    getTopPriorityProfile(): string | null
-    getUserPreferredProfile(): string | null
+    getTopPriorityProfile(): string
+    getUserPreferredProfile(): string
     hasPorts(): boolean
     invalidateStream(): void
     isOutput(): boolean
@@ -1563,7 +1563,7 @@ interface MixerUIDevice {
      * @param inProfiles a list of GvcMixerCardProfile
      */
     setProfiles(inProfiles: MixerCardProfile[]): void
-    setUserPreferredProfile(profile: string | null): void
+    setUserPreferredProfile(profile: string): void
     shouldProfilesBeHidden(): boolean
 
     // Class property signals of Gvc-1.0.Gvc.MixerUIDevice
@@ -1891,7 +1891,7 @@ interface MixerStreamClass {
     parentClass: GObject.ObjectClass
     pushVolume: (stream: MixerStream, operation: any | null) => boolean
     changeIsMuted: (stream: MixerStream, isMuted: boolean) => boolean
-    changePort: (stream: MixerStream, port: string | null) => boolean
+    changePort: (stream: MixerStream, port: string) => boolean
 }
 
 abstract class MixerStreamClass {

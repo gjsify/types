@@ -49,7 +49,7 @@ function languageGetAvailable(): Language[]
  * @returns the default #GspellLanguage, or %NULL if no dictionaries are available.
  */
 function languageGetDefault(): Language | null
-function languageLookup(languageCode: string | null): Language | null
+function languageLookup(languageCode: string): Language | null
 module LanguageChooser {
 
     // Constructor properties interface
@@ -91,7 +91,7 @@ interface LanguageChooser {
     // Owm methods of Gspell-1.Gspell.LanguageChooser
 
     getLanguage(): Language | null
-    getLanguageCode(): string | null
+    getLanguageCode(): string
     // Has conflict: setLanguage(language: Language | null): void
     setLanguageCode(languageCode: string | null): void
 
@@ -159,9 +159,9 @@ interface Navigator extends GObject.InitiallyUnowned {
 
     // Owm methods of Gspell-1.Gspell.Navigator
 
-    // Has conflict: change(word: string | null, changeTo: string | null): void
-    // Has conflict: changeAll(word: string | null, changeTo: string | null): void
-    // Has conflict: gotoNext(): [ /* returnType */ boolean, /* word */ string | null, /* spellChecker */ Checker ]
+    // Has conflict: change(word: string, changeTo: string): void
+    // Has conflict: changeAll(word: string, changeTo: string): void
+    // Has conflict: gotoNext(): [ /* returnType */ boolean, /* word */ string, /* spellChecker */ Checker ]
 
     // Own virtual methods of Gspell-1.Gspell.Navigator
 
@@ -176,7 +176,7 @@ interface Navigator extends GObject.InitiallyUnowned {
      * @param word the word to change.
      * @param changeTo the replacement.
      */
-    change(word: string | null, changeTo: string | null): void
+    change(word: string, changeTo: string): void
     /**
      * Changes all occurrences of `word` by `change_to` in the text.
      * 
@@ -187,14 +187,14 @@ interface Navigator extends GObject.InitiallyUnowned {
      * @param word the word to change.
      * @param changeTo the replacement.
      */
-    changeAll(word: string | null, changeTo: string | null): void
+    changeAll(word: string, changeTo: string): void
     /**
      * Goes to the next misspelled word. When called the first time, goes to the
      * first misspelled word.
      * @virtual 
      * @returns %TRUE if a next misspelled word has been found, %FALSE if the spell checking is finished or if an error occurred.
      */
-    gotoNext(): [ /* returnType */ boolean, /* word */ string | null, /* spellChecker */ Checker ]
+    gotoNext(): [ /* returnType */ boolean, /* word */ string, /* spellChecker */ Checker ]
 
     // Class property signals of Gspell-1.Gspell.Navigator
 
@@ -285,7 +285,7 @@ interface Checker {
      * @param word a word.
      * @param wordLength the byte length of `word,` or -1 if `word` is nul-terminated.
      */
-    addWordToPersonal(word: string | null, wordLength: number): void
+    addWordToPersonal(word: string, wordLength: number): void
     /**
      * Adds a word to the session dictionary. Each #GspellChecker instance has a
      * different session dictionary. The session dictionary is lost when the
@@ -296,7 +296,7 @@ interface Checker {
      * @param word a word.
      * @param wordLength the byte length of `word,` or -1 if `word` is nul-terminated.
      */
-    addWordToSession(word: string | null, wordLength: number): void
+    addWordToSession(word: string, wordLength: number): void
     /**
      * If the #GspellChecker:language is %NULL, i.e. when no dictonaries are
      * available, this function returns %TRUE to limit the damage.
@@ -304,7 +304,7 @@ interface Checker {
      * @param wordLength the byte length of `word,` or -1 if `word` is nul-terminated.
      * @returns %TRUE if @word is correctly spelled, %FALSE otherwise.
      */
-    checkWord(word: string | null, wordLength: number): boolean
+    checkWord(word: string, wordLength: number): boolean
     /**
      * Clears the session dictionary.
      */
@@ -317,7 +317,7 @@ interface Checker {
      * @param wordLength the byte length of `word,` or -1 if `word` is nul-terminated.
      * @returns the list of suggestions.
      */
-    getSuggestions(word: string | null, wordLength: number): string[]
+    getSuggestions(word: string, wordLength: number): string[]
     /**
      * Informs the spell checker that `word` is replaced/corrected by `replacement`.
      * @param word a word.
@@ -325,7 +325,7 @@ interface Checker {
      * @param replacement the replacement word.
      * @param replacementLength the byte length of `replacement,` or -1 if `replacement`   is nul-terminated.
      */
-    setCorrection(word: string | null, wordLength: number, replacement: string | null, replacementLength: number): void
+    setCorrection(word: string, wordLength: number, replacement: string, replacementLength: number): void
     /**
      * Sets the language to use for the spell checking. If `language` is %NULL, the
      * default language is picked with gspell_language_get_default().
@@ -336,8 +336,8 @@ interface Checker {
     // Own virtual methods of Gspell-1.Gspell.Checker
 
     sessionCleared(): void
-    wordAddedToPersonal(word: string | null): void
-    wordAddedToSession(word: string | null): void
+    wordAddedToPersonal(word: string): void
+    wordAddedToSession(word: string): void
 
     // Own signals of Gspell-1.Gspell.Checker
 
@@ -454,13 +454,13 @@ interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -473,13 +473,13 @@ interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -492,7 +492,7 @@ interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -501,7 +501,7 @@ interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -557,7 +557,7 @@ interface CheckerDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1326,7 +1326,7 @@ interface LanguageChooserButton extends Atk.ImplementorIface, LanguageChooser, G
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1347,7 +1347,7 @@ interface LanguageChooserButton extends Atk.ImplementorIface, LanguageChooser, G
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1360,7 +1360,7 @@ interface LanguageChooserButton extends Atk.ImplementorIface, LanguageChooser, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Gets the name of the `buildable` object.
      * 
@@ -1370,7 +1370,7 @@ interface LanguageChooserButton extends Atk.ImplementorIface, LanguageChooser, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1383,7 +1383,7 @@ interface LanguageChooserButton extends Atk.ImplementorIface, LanguageChooser, G
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1392,13 +1392,13 @@ interface LanguageChooserButton extends Atk.ImplementorIface, LanguageChooser, G
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Class property signals of Gspell-1.Gspell.LanguageChooserButton
 
@@ -1758,13 +1758,13 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageChooser, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -1777,13 +1777,13 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageChooser, G
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -1796,7 +1796,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageChooser, G
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -1805,7 +1805,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageChooser, G
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -1861,7 +1861,7 @@ interface LanguageChooserDialog extends Atk.ImplementorIface, LanguageChooser, G
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -2668,8 +2668,8 @@ interface CheckerClass {
     // Own fields of Gspell-1.Gspell.CheckerClass
 
     parentClass: GObject.ObjectClass
-    wordAddedToPersonal: (checker: Checker, word: string | null) => void
-    wordAddedToSession: (checker: Checker, word: string | null) => void
+    wordAddedToPersonal: (checker: Checker, word: string) => void
+    wordAddedToSession: (checker: Checker, word: string) => void
     sessionCleared: (checker: Checker) => void
     padding: any[]
 }
@@ -2744,14 +2744,14 @@ interface Language {
      * Used by language bindings.
      */
     free(): void
-    getCode(): string | null
+    getCode(): string
     /**
      * Returns the `language` name translated to the current locale. For example
      * "French (Belgium)" is returned if the current locale is in English and the
      * `language` code is fr_BE.
      * @returns the @language name.
      */
-    getName(): string | null
+    getName(): string
 }
 
 class Language {
@@ -2768,7 +2768,7 @@ class Language {
      * @returns the default #GspellLanguage, or %NULL if no dictionaries are available.
      */
     static getDefault(): Language | null
-    static lookup(languageCode: string | null): Language | null
+    static lookup(languageCode: string): Language | null
 }
 
 interface LanguageChooserButtonClass {
@@ -2822,9 +2822,9 @@ interface NavigatorInterface {
     // Own fields of Gspell-1.Gspell.NavigatorInterface
 
     parentInterface: GObject.TypeInterface
-    gotoNext: (navigator: Navigator) => [ /* returnType */ boolean, /* word */ string | null, /* spellChecker */ Checker ]
-    change: (navigator: Navigator, word: string | null, changeTo: string | null) => void
-    changeAll: (navigator: Navigator, word: string | null, changeTo: string | null) => void
+    gotoNext: (navigator: Navigator) => [ /* returnType */ boolean, /* word */ string, /* spellChecker */ Checker ]
+    change: (navigator: Navigator, word: string, changeTo: string) => void
+    changeAll: (navigator: Navigator, word: string, changeTo: string) => void
 }
 
 abstract class NavigatorInterface {

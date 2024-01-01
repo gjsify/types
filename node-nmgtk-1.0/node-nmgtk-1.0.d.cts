@@ -39,7 +39,7 @@ export enum MobileFamily {
  * @param mccmnc input MCCMNC string.
  * @returns %TRUE if correctly split and @mcc and @mnc are set; %FALSE otherwise.
  */
-export function mobileProvidersSplit3gppMccMnc(mccmnc: string | null): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
+export function mobileProvidersSplit3gppMccMnc(mccmnc: string): [ /* returnType */ boolean, /* mcc */ string | null, /* mnc */ string | null ]
 /**
  * Generates a list of short-ish unique presentation names for the
  * devices in `devices`.
@@ -62,13 +62,13 @@ export function utilsGetConnectionDeviceName(connection: NetworkManager.Connecti
  * @param device an #NMDevice
  * @returns a description of @device. If either the vendor or the   product name is unknown, this returns the interface name.
  */
-export function utilsGetDeviceDescription(device: NMClient.Device): string | null
+export function utilsGetDeviceDescription(device: NMClient.Device): string
 /**
  * Gets a "generic" name for the type of `device`.
  * @param device an #NMDevice
  * @returns @device's generic type name
  */
-export function utilsGetDeviceGenericTypeName(device: NMClient.Device): string | null
+export function utilsGetDeviceGenericTypeName(device: NMClient.Device): string
 /**
  * Gets a cleaned-up version of #NMDevice:product for `device`. This
  * removes strings like "Wireless LAN Adapter" that would just take up
@@ -76,13 +76,13 @@ export function utilsGetDeviceGenericTypeName(device: NMClient.Device): string |
  * @param device an #NMDevice
  * @returns a cleaned-up product string, or %NULL if the product name   is not known
  */
-export function utilsGetDeviceProduct(device: NMClient.Device): string | null
+export function utilsGetDeviceProduct(device: NMClient.Device): string
 /**
  * Gets a specific name for the type of `device`.
  * @param device an #NMDevice
  * @returns @device's generic type name
  */
-export function utilsGetDeviceTypeName(device: NMClient.Device): string | null
+export function utilsGetDeviceTypeName(device: NMClient.Device): string
 /**
  * Gets a cleaned-up version of #NMDevice:vendor for `device`. This
  * removes strings like "Inc." that would just take up unnecessary
@@ -90,7 +90,7 @@ export function utilsGetDeviceTypeName(device: NMClient.Device): string | null
  * @param device an #NMDevice
  * @returns a cleaned-up vendor string, or %NULL if the vendor is   not known
  */
-export function utilsGetDeviceVendor(device: NMClient.Device): string | null
+export function utilsGetDeviceVendor(device: NMClient.Device): string
 /**
  * Returns secret flags corresponding to the selected password storage menu
  * in the attached icon
@@ -111,7 +111,7 @@ export function utilsMenuToSecretFlags(passwdEntry: Gtk.Widget): NetworkManager.
  * @param withNotRequired whether to include "Not required" menu item
  * @param sensitiveAsk %TRUE if entry should be sensivive on selected "always-ask"   icon (this is e.f. for nm-applet asking for password)
  */
-export function utilsSetupPasswordStorage(passwdEntry: Gtk.Widget, initialFlags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, passwordFlagsName: string | null, withNotRequired: boolean, sensitiveAsk: boolean): void
+export function utilsSetupPasswordStorage(passwdEntry: Gtk.Widget, initialFlags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, passwordFlagsName: string, withNotRequired: boolean, sensitiveAsk: boolean): void
 /**
  * Updates secret flags in the password storage popup menu and also
  * in the `setting` (if `setting` and `password_flags_name` are not NULL).
@@ -120,7 +120,7 @@ export function utilsSetupPasswordStorage(passwdEntry: Gtk.Widget, initialFlags:
  * @param setting #NMSetting containing the password, or NULL
  * @param passwordFlagsName name of the secret flags (like psk-flags), or NULL
  */
-export function utilsUpdatePasswordStorage(passwdEntry: Gtk.Widget, secretFlags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, passwordFlagsName: string | null): void
+export function utilsUpdatePasswordStorage(passwdEntry: Gtk.Widget, secretFlags: NetworkManager.SettingSecretFlags, setting: NetworkManager.Setting, passwordFlagsName: string): void
 export interface MobileWizardCallback {
     (self: MobileWizard, canceled: boolean, method: MobileWizardAccessMethod): void
 }
@@ -155,9 +155,9 @@ export interface MobileProvidersDatabase extends Gio.AsyncInitable, Gio.Initable
 
     dump(): void
     getCountries(): GLib.HashTable
-    lookup3gppMccMnc(mccmnc: string | null): MobileProvider
+    lookup3gppMccMnc(mccmnc: string): MobileProvider
     lookupCdmaSid(sid: number): MobileProvider
-    lookupCountry(countryCode: string | null): CountryInfo
+    lookupCountry(countryCode: string): CountryInfo
 
     // Class property signals of NMGtk-1.0.NMGtk.MobileProvidersDatabase
 
@@ -227,16 +227,16 @@ export interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
     focusPassword(): void
     focusPasswordSecondary(): void
     focusPasswordTernary(): void
-    getPassword(): string | null
-    getPasswordSecondary(): string | null
-    getPasswordTernary(): string | null
+    getPassword(): string
+    getPasswordSecondary(): string
+    getPasswordTernary(): string
     runAndBlock(): boolean
-    setPassword(password: string | null): void
-    setPasswordLabel(label: string | null): void
-    setPasswordSecondary(passwordSecondary: string | null): void
-    setPasswordSecondaryLabel(label: string | null): void
-    setPasswordTernary(passwordTernary: string | null): void
-    setPasswordTernaryLabel(label: string | null): void
+    setPassword(password: string): void
+    setPasswordLabel(label: string): void
+    setPasswordSecondary(passwordSecondary: string): void
+    setPasswordSecondaryLabel(label: string): void
+    setPasswordTernary(passwordTernary: string): void
+    setPasswordTernaryLabel(label: string): void
     setShowPassword(show: boolean): void
     setShowPasswordSecondary(show: boolean): void
     setShowPasswordTernary(show: boolean): void
@@ -252,13 +252,13 @@ export interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -271,13 +271,13 @@ export interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -290,7 +290,7 @@ export interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -299,7 +299,7 @@ export interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -355,7 +355,7 @@ export interface VpnPasswordDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -788,8 +788,8 @@ export class VpnPasswordDialog extends Gtk.Dialog {
     // Constructors of NMGtk-1.0.NMGtk.VpnPasswordDialog
 
     constructor(config?: VpnPasswordDialog.ConstructorProperties) 
-    constructor(title: string | null, message: string | null, password: string | null) 
-    static new(title: string | null, message: string | null, password: string | null): VpnPasswordDialog
+    constructor(title: string, message: string, password: string) 
+    static new(title: string, message: string, password: string): VpnPasswordDialog
 
     // Overloads of new
 
@@ -872,13 +872,13 @@ export interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Retrieves the name of a widget. See gtk_widget_set_name() for the
      * significance of widget names.
      * @returns name of the widget. This string is owned by GTK+ and should not be modified or freed
      */
-    getName(): string | null
+    getName(): string
 
     // Overloads of getName
 
@@ -891,13 +891,13 @@ export interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @returns the name set with gtk_buildable_set_name()
      */
-    getName(): string | null
+    getName(): string
     /**
      * Sets the name of the `buildable` object.
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     /**
      * Widgets can be named, which allows you to refer to them from a
      * CSS file. You can apply a style to widgets with a particular name
@@ -910,7 +910,7 @@ export interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * of alphanumeric symbols, dashes and underscores will suffice.
      * @param name name for the widget
      */
-    setName(name: string | null): void
+    setName(name: string): void
 
     // Overloads of setName
 
@@ -919,7 +919,7 @@ export interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @virtual 
      * @param name name to set
      */
-    setName(name: string | null): void
+    setName(name: string): void
     close(): void
 
     // Overloads of close
@@ -975,7 +975,7 @@ export interface WifiDialog extends Atk.ImplementorIface, Gtk.Buildable {
      * @param child the child widget
      * @param childProperty the name of a child property installed on     the class of `container`
      */
-    childNotify(child: Gtk.Widget, childProperty: string | null): void
+    childNotify(child: Gtk.Widget, childProperty: string): void
 
     // Overloads of childNotify
 
@@ -1458,8 +1458,8 @@ export interface CountryInfo {
 
     // Owm methods of NMGtk-1.0.NMGtk.CountryInfo
 
-    getCountryCode(): string | null
-    getCountryName(): string | null
+    getCountryCode(): string
+    getCountryName(): string
     getProviders(): MobileProvider[]
     ref(): CountryInfo
     unref(): void
@@ -1476,13 +1476,13 @@ export interface MobileAccessMethod {
 
     // Owm methods of NMGtk-1.0.NMGtk.MobileAccessMethod
 
-    get3gppApn(): string | null
+    get3gppApn(): string
     getDns(): string[]
     getFamily(): MobileFamily
-    getGateway(): string | null
-    getName(): string | null
-    getPassword(): string | null
-    getUsername(): string | null
+    getGateway(): string
+    getName(): string
+    getPassword(): string
+    getUsername(): string
     ref(): MobileAccessMethod
     unref(): void
 }
@@ -1501,7 +1501,7 @@ export interface MobileProvider {
     get3gppMccMnc(): string[]
     getCdmaSid(): number[]
     getMethods(): MobileAccessMethod[]
-    getName(): string | null
+    getName(): string
     ref(): MobileProvider
     unref(): void
 }

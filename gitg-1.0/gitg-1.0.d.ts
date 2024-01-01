@@ -329,11 +329,11 @@ interface CredentialsProvider extends GObject.Object {
 
     // Owm methods of Gitg-1.0.Gitg.CredentialsProvider
 
-    credentials(url: string | null, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null
+    credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null
 
     // Own virtual methods of Gitg-1.0.Gitg.CredentialsProvider
 
-    vfunc_credentials(url: string | null, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null
+    vfunc_credentials(url: string, username_from_url: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null
 
     // Class property signals of Gitg-1.0.Gitg.CredentialsProvider
 
@@ -550,8 +550,8 @@ interface AuthenticationDialog {
 
     // Owm methods of Gitg-1.0.Gitg.AuthenticationDialog
 
-    get_username(): string | null
-    get_password(): string | null
+    get_username(): string
+    get_password(): string
     get_life_time(): AuthenticationLifeTime
 
     // Conflicting methods
@@ -589,7 +589,7 @@ interface AuthenticationDialog {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -603,7 +603,7 @@ interface AuthenticationDialog {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -614,7 +614,7 @@ interface AuthenticationDialog {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gitg-1.0.Gitg.AuthenticationDialog
 
@@ -871,8 +871,8 @@ class AuthenticationDialog extends Gtk.Dialog {
     // Constructors of Gitg-1.0.Gitg.AuthenticationDialog
 
     constructor(config?: AuthenticationDialog.ConstructorProperties) 
-    constructor(url: string | null, username: string | null, failed: boolean) 
-    static new(url: string | null, username: string | null, failed: boolean): AuthenticationDialog
+    constructor(url: string, username: string | null, failed: boolean) 
+    static new(url: string, username: string | null, failed: boolean): AuthenticationDialog
 
     // Overloads of new
 
@@ -927,7 +927,7 @@ interface AvatarCache {
 
     // Owm methods of Gitg-1.0.Gitg.AvatarCache
 
-    load(email: string | null, size: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    load(email: string, size: number, cancellable: Gio.Cancellable | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
     load_finish(_res_: Gio.AsyncResult): GdkPixbuf.Pixbuf | null
 
     // Class property signals of Gitg-1.0.Gitg.AvatarCache
@@ -1422,7 +1422,7 @@ interface CommitListView extends Gtk.Buildable {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -1436,7 +1436,7 @@ interface CommitListView extends Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -1447,7 +1447,7 @@ interface CommitListView extends Gtk.Buildable {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gitg-1.0.Gitg.CommitListView
 
@@ -1896,7 +1896,7 @@ interface CredentialsManager {
 
     // Owm methods of Gitg-1.0.Gitg.CredentialsManager
 
-    credentials(url: string | null, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null
+    credentials(url: string, username: string | null, allowed_types: Ggit.Credtype): Ggit.Cred | null
 }
 
 class CredentialsManager {
@@ -1936,8 +1936,8 @@ interface Date extends Gio.Initable {
     // Owm methods of Gitg-1.0.Gitg.Date
 
     for_display(): string | null
-    get_date_string(): string | null
-    set_date_string(value: string | null): void
+    get_date_string(): string
+    set_date_string(value: string): void
     get_date(): GLib.DateTime
 
     // Class property signals of Gitg-1.0.Gitg.Date
@@ -1964,11 +1964,11 @@ class Date extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.Date
 
     constructor(config?: Date.ConstructorProperties) 
-    constructor(date: string | null) 
-    static new(date: string | null): Date
+    constructor(date: string) 
+    static new(date: string): Date
     static for_date_time(dt: GLib.DateTime): Date
     _init(config?: Date.ConstructorProperties): void
-    static parse(date: string | null): GLib.DateTime
+    static parse(date: string): GLib.DateTime
 }
 
 module DiffStat {
@@ -2278,7 +2278,7 @@ interface DiffViewOptions {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2292,7 +2292,7 @@ interface DiffViewOptions {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2303,7 +2303,7 @@ interface DiffViewOptions {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gitg-1.0.Gitg.DiffViewOptions
 
@@ -2619,7 +2619,7 @@ interface DiffView {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -2633,7 +2633,7 @@ interface DiffView {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -2644,7 +2644,7 @@ interface DiffView {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gitg-1.0.Gitg.DiffView
 
@@ -2934,7 +2934,7 @@ class GPGUtils {
 
     constructor() 
     static new(): GPGUtils
-    static sign_commit_object(commit_content: string | null, signing_key: string | null): string | null
+    static sign_commit_object(commit_content: string, signing_key: string): string | null
 }
 
 module Hook {
@@ -2965,15 +2965,15 @@ interface Hook {
 
     // Owm methods of Gitg-1.0.Gitg.Hook
 
-    add_argument(arg: string | null): void
+    add_argument(arg: string): void
     exists_in(repository: Ggit.Repository): boolean
     run_sync(repository: Ggit.Repository): number
     run(repository: Ggit.Repository, _callback_: Gio.AsyncReadyCallback<this> | null): void
     run_finish(_res_: Gio.AsyncResult): number
     get_environment(): Gee.HashMap
     set_environment(value: Gee.HashMap): void
-    get_name(): string | null
-    set_name(value: string | null): void
+    get_name(): string
+    set_name(value: string): void
     get_working_directory(): Gio.File | null
     set_working_directory(value: Gio.File | null): void
     get_output(): string[]
@@ -3008,8 +3008,8 @@ class Hook extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.Hook
 
     constructor(config?: Hook.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): Hook
+    constructor(name: string) 
+    static new(name: string): Hook
     _init(config?: Hook.ConstructorProperties): void
 }
 
@@ -3210,7 +3210,7 @@ interface ProgressBin {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3224,7 +3224,7 @@ interface ProgressBin {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3235,7 +3235,7 @@ interface ProgressBin {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Class property signals of Gitg-1.0.Gitg.ProgressBin
 
@@ -3530,8 +3530,8 @@ class ParsedRefName extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.ParsedRefName
 
     constructor(config?: ParsedRefName.ConstructorProperties) 
-    constructor(name: string | null) 
-    static new(name: string | null): ParsedRefName
+    constructor(name: string) 
+    static new(name: string): ParsedRefName
     _init(config?: ParsedRefName.ConstructorProperties): void
 }
 
@@ -3543,7 +3543,7 @@ module Remote {
      * Signal callback interface for `tip-updated`
      */
     interface TipUpdatedSignalCallback {
-        ($obj: Remote, refname: string | null, a: Ggit.OId, b: Ggit.OId): void
+        ($obj: Remote, refname: string, a: Ggit.OId, b: Ggit.OId): void
     }
 
 
@@ -3624,7 +3624,7 @@ interface Remote {
      */
     download(specs: string[] | null, fetch_options: Ggit.FetchOptions): boolean
     download_finish(_res_: Gio.AsyncResult): void
-    push(branch: string | null, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    push(branch: string, callbacks: Ggit.RemoteCallbacks | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
 
     // Overloads of push
 
@@ -3667,7 +3667,7 @@ interface Remote {
      */
     connect(direction: Ggit.Direction, callbacks: Ggit.RemoteCallbacks, proxy_options: Ggit.ProxyOptions | null, custom_headers: string | null): void
     connect_after(sigName: "tip-updated", callback: Remote.TipUpdatedSignalCallback): number
-    emit(sigName: "tip-updated", refname: string | null, a: Ggit.OId, b: Ggit.OId, ...args: any[]): void
+    emit(sigName: "tip-updated", refname: string, a: Ggit.OId, b: Ggit.OId, ...args: any[]): void
 
     // Class property signals of Gitg-1.0.Gitg.Remote
 
@@ -3825,7 +3825,7 @@ class Remote extends Ggit.Remote {
      * @param url the remote repository's URL.
      * @returns a newly allocated #GgitRemote or %NULL.
      */
-    static new(repository: Ggit.Repository, name: string | null, url: string | null): Ggit.Remote
+    static new(repository: Ggit.Repository, name: string, url: string): Ggit.Remote
     _init(config?: Remote.ConstructorProperties): void
 }
 
@@ -3844,7 +3844,7 @@ module RepositoryListBox {
      * Signal callback interface for `show-error`
      */
     interface ShowErrorSignalCallback {
-        ($obj: RepositoryListBox, primary_message: string | null, secondary_message: string | null): void
+        ($obj: RepositoryListBox, primary_message: string, secondary_message: string): void
     }
 
 
@@ -3906,7 +3906,7 @@ interface RepositoryListBox {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -3920,7 +3920,7 @@ interface RepositoryListBox {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -3931,7 +3931,7 @@ interface RepositoryListBox {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Gitg-1.0.Gitg.RepositoryListBox
 
@@ -3940,7 +3940,7 @@ interface RepositoryListBox {
     emit(sigName: "repository-activated", repository: Repository, ...args: any[]): void
     connect(sigName: "show-error", callback: RepositoryListBox.ShowErrorSignalCallback): number
     connect_after(sigName: "show-error", callback: RepositoryListBox.ShowErrorSignalCallback): number
-    emit(sigName: "show-error", primary_message: string | null, secondary_message: string | null, ...args: any[]): void
+    emit(sigName: "show-error", primary_message: string, secondary_message: string, ...args: any[]): void
 
     // Class property signals of Gitg-1.0.Gitg.RepositoryListBox
 
@@ -4216,7 +4216,7 @@ interface RepositoryListBoxRow {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties]
@@ -4228,7 +4228,7 @@ interface RepositoryListBoxRow {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4242,7 +4242,7 @@ interface RepositoryListBoxRow {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own signals of Gitg-1.0.Gitg.RepositoryListBoxRow
 
@@ -4433,8 +4433,8 @@ class RepositoryListBoxRow extends Gtk.ListBoxRow {
     // Constructors of Gitg-1.0.Gitg.RepositoryListBoxRow
 
     constructor(config?: RepositoryListBoxRow.ConstructorProperties) 
-    constructor(repository: Repository | null, dirname: string | null) 
-    static new(repository: Repository | null, dirname: string | null): RepositoryListBoxRow
+    constructor(repository: Repository | null, dirname: string) 
+    static new(repository: Repository | null, dirname: string): RepositoryListBoxRow
 
     // Overloads of new
 
@@ -4489,7 +4489,7 @@ interface Repository {
      * @returns the found #GgitObject, or %NULL on error.
      */
     lookup(oid: Ggit.OId, gtype: GObject.GType): Ggit.Object | null
-    lookup_reference(name: string | null): Ref
+    lookup_reference(name: string): Ref
 
     // Overloads of lookup_reference
 
@@ -4499,8 +4499,8 @@ interface Repository {
      * @param name the long name for the reference (e.g. HEAD, ref/heads/master, refs/tags/v0.1.0, ...).
      * @returns the searched reference.
      */
-    lookup_reference(name: string | null): Ggit.Ref | null
-    lookup_reference_dwim(short_name: string | null): Ref
+    lookup_reference(name: string): Ggit.Ref | null
+    lookup_reference_dwim(short_name: string): Ref
 
     // Overloads of lookup_reference_dwim
 
@@ -4511,8 +4511,8 @@ interface Repository {
      * @param short_name the short name for the reference (e.g. master, v0.1.0, ...).
      * @returns the searched reference.
      */
-    lookup_reference_dwim(short_name: string | null): Ggit.Ref | null
-    create_branch(name: string | null, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch
+    lookup_reference_dwim(short_name: string): Ggit.Ref | null
+    create_branch(name: string, obj: Ggit.Object, flags: Ggit.CreateFlags): Branch
 
     // Overloads of create_branch
 
@@ -4523,8 +4523,8 @@ interface Repository {
      * @param flags a #GgitCreateFlags.
      * @returns the reference to which the branch                                        points, or %NULL in case of an error.
      */
-    create_branch(branch_name: string | null, target: Ggit.Object, flags: Ggit.CreateFlags): Ggit.Branch | null
-    create_reference(name: string | null, oid: Ggit.OId, message: string | null): Ref
+    create_branch(branch_name: string, target: Ggit.Object, flags: Ggit.CreateFlags): Ggit.Branch | null
+    create_reference(name: string, oid: Ggit.OId, message: string): Ref
 
     // Overloads of create_reference
 
@@ -4538,8 +4538,8 @@ interface Repository {
      * @param log_message The one line long message to be appended to the reflog.
      * @returns the newly created reference.
      */
-    create_reference(name: string | null, oid: Ggit.OId, log_message: string | null): Ggit.Ref | null
-    create_symbolic_reference(name: string | null, target: string | null, message: string | null): Ref
+    create_reference(name: string, oid: Ggit.OId, log_message: string): Ggit.Ref | null
+    create_symbolic_reference(name: string, target: string, message: string): Ref
 
     // Overloads of create_symbolic_reference
 
@@ -4553,7 +4553,7 @@ interface Repository {
      * @param log_message The one line long message to be appended to the reflog.
      * @returns the newly created reference.
      */
-    create_symbolic_reference(name: string | null, target: string | null, log_message: string | null): Ggit.Ref | null
+    create_symbolic_reference(name: string, target: string, log_message: string): Ggit.Ref | null
     get_head(): Ref
 
     // Overloads of get_head
@@ -4566,7 +4566,7 @@ interface Repository {
      * @returns a #GgitRef
      */
     get_head(): Ggit.Ref | null
-    get_signature_with_environment(env: Gee.Map, envname: string | null): Ggit.Signature
+    get_signature_with_environment(env: Gee.Map, envname: string): Ggit.Signature
     get_name(): string | null
     get_stage(): Stage
 
@@ -4651,7 +4651,7 @@ class Resource {
 
     constructor() 
     static new(): Resource
-    static load_css(id: string | null): Gtk.CssProvider | null
+    static load_css(id: string): Gtk.CssProvider | null
 }
 
 module SidebarStore {
@@ -4671,7 +4671,7 @@ interface SidebarStore {
 
     // Owm methods of Gitg-1.0.Gitg.SidebarStore
 
-    append_dummy(text: string | null): SidebarStore
+    append_dummy(text: string): SidebarStore
     append(item: SidebarItem): SidebarStore
 
     // Overloads of append
@@ -4685,7 +4685,7 @@ interface SidebarStore {
      * @param parent A valid #GtkTreeIter, or %NULL
      */
     append(parent: Gtk.TreeIter | null): /* iter */ Gtk.TreeIter
-    begin_header(text: string | null, id: number): SidebarStoreSidebarHeader
+    begin_header(text: string, id: number): SidebarStoreSidebarHeader
     end_header(): SidebarStore
     begin_section(): number
     end_section(): void
@@ -4765,8 +4765,8 @@ class SidebarStoreSidebarText extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.SidebarStoreSidebarText
 
     constructor(config?: SidebarStoreSidebarText.ConstructorProperties) 
-    constructor(text: string | null) 
-    static new(text: string | null): SidebarStoreSidebarText
+    constructor(text: string) 
+    static new(text: string): SidebarStoreSidebarText
     _init(config?: SidebarStoreSidebarText.ConstructorProperties): void
 }
 
@@ -4810,12 +4810,12 @@ class SidebarStoreSidebarHeader extends SidebarStoreSidebarText {
     // Constructors of Gitg-1.0.Gitg.SidebarStoreSidebarHeader
 
     constructor(config?: SidebarStoreSidebarHeader.ConstructorProperties) 
-    constructor(text: string | null, id: number) 
-    static new(text: string | null, id: number): SidebarStoreSidebarHeader
+    constructor(text: string, id: number) 
+    static new(text: string, id: number): SidebarStoreSidebarHeader
 
     // Overloads of new
 
-    static new(text: string | null): SidebarStoreSidebarText
+    static new(text: string): SidebarStoreSidebarText
     _init(config?: SidebarStoreSidebarHeader.ConstructorProperties): void
 }
 
@@ -4899,7 +4899,7 @@ interface Sidebar {
      * @param child the child widget
      * @param child_property the name of a child property installed on     the class of `container`
      */
-    child_notify(child: Gtk.Widget, child_property: string | null): void
+    child_notify(child: Gtk.Widget, child_property: string): void
 
     // Overloads of child_notify
 
@@ -4913,7 +4913,7 @@ interface Sidebar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
     /**
      * Emits a #GtkWidget::child-notify signal for the
      * [child property][child-properties] `child_property`
@@ -4924,7 +4924,7 @@ interface Sidebar {
      * Also see gtk_container_child_notify().
      * @param child_property the name of a child property installed on the                  class of `widget’`s parent
      */
-    child_notify(child_property: string | null): void
+    child_notify(child_property: string): void
 
     // Own virtual methods of Gitg-1.0.Gitg.Sidebar
 
@@ -5207,8 +5207,8 @@ class StageStatusFile extends GObject.Object {
     // Constructors of Gitg-1.0.Gitg.StageStatusFile
 
     constructor(config?: StageStatusFile.ConstructorProperties) 
-    constructor(path: string | null, flags: Ggit.StatusFlags) 
-    static new(path: string | null, flags: Ggit.StatusFlags): StageStatusFile
+    constructor(path: string, flags: Ggit.StatusFlags) 
+    static new(path: string, flags: Ggit.StatusFlags): StageStatusFile
     _init(config?: StageStatusFile.ConstructorProperties): void
 }
 
@@ -5367,33 +5367,33 @@ interface Stage {
     file_status(options: Ggit.StatusOptions | null): StageStatusEnumerator
     pre_commit_hook(author: Ggit.Signature, _callback_: Gio.AsyncReadyCallback<this> | null): void
     pre_commit_hook_finish(_res_: Gio.AsyncResult): void
-    commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string | null, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    commit_index(index: Ggit.Index, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void
     commit_index_finish(_res_: Gio.AsyncResult): Ggit.OId | null
-    commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string | null, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    commit_tree(treeoid: Ggit.OId, reference: Ggit.Ref, message: string, author: Ggit.Signature, committer: Ggit.Signature, parents: Ggit.OId[] | null, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void
     commit_tree_finish(_res_: Gio.AsyncResult): Ggit.OId | null
-    commit(message: string | null, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    commit(message: string, author: Ggit.Signature, committer: Ggit.Signature, options: StageCommitOptions, _callback_: Gio.AsyncReadyCallback<this> | null): void
     commit_finish(_res_: Gio.AsyncResult): Ggit.OId | null
     revert(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void
     revert_finish(_res_: Gio.AsyncResult): void
-    revert_path(path: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    revert_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void
     revert_path_finish(_res_: Gio.AsyncResult): void
     revert_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void
     revert_patch_finish(_res_: Gio.AsyncResult): void
     delete(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void
     delete_finish(_res_: Gio.AsyncResult): void
-    delete_path(path: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    delete_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void
     delete_path_finish(_res_: Gio.AsyncResult): void
     stage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void
     stage_finish(_res_: Gio.AsyncResult): void
-    stage_path(path: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    stage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void
     stage_path_finish(_res_: Gio.AsyncResult): void
-    stage_commit(path: string | null, commit: Ggit.Commit, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    stage_commit(path: string, commit: Ggit.Commit, _callback_: Gio.AsyncReadyCallback<this> | null): void
     stage_commit_finish(_res_: Gio.AsyncResult): void
     stage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void
     stage_patch_finish(_res_: Gio.AsyncResult): void
     unstage(file: Gio.File, _callback_: Gio.AsyncReadyCallback<this> | null): void
     unstage_finish(_res_: Gio.AsyncResult): void
-    unstage_path(path: string | null, _callback_: Gio.AsyncReadyCallback<this> | null): void
+    unstage_path(path: string, _callback_: Gio.AsyncReadyCallback<this> | null): void
     unstage_path_finish(_res_: Gio.AsyncResult): void
     unstage_patch(patch: PatchSet, _callback_: Gio.AsyncReadyCallback<this> | null): void
     unstage_patch_finish(_res_: Gio.AsyncResult): void
@@ -5623,7 +5623,7 @@ class Utils {
     constructor() 
     static new(): Utils
     static replace_home_dir_with_tilde(file: Gio.File): string | null
-    static expand_home_dir(path: string | null): string | null
+    static expand_home_dir(path: string): string | null
 }
 
 interface WhenMapped {
@@ -6535,7 +6535,7 @@ interface CredentialsProviderIface {
 
     // Own fields of Gitg-1.0.Gitg.CredentialsProviderIface
 
-    credentials: (self: CredentialsProvider, url: string | null, username_from_url: string | null, allowed_types: Ggit.Credtype) => Ggit.Cred | null
+    credentials: (self: CredentialsProvider, url: string, username_from_url: string | null, allowed_types: Ggit.Credtype) => Ggit.Cred | null
 }
 
 abstract class CredentialsProviderIface {

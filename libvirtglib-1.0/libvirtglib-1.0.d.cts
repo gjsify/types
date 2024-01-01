@@ -25,7 +25,7 @@ import type GObject from '@girs/gobject-2.0';
  * @param message error message
  * @returns a new #GError
  */
-export function error_new_literal(domain: GLib.Quark, code: number, message: string | null): GLib.Error
+export function error_new_literal(domain: GLib.Quark, code: number, message: string): GLib.Error
 /**
  * Registers a libvirt event loop implementation that is backed
  * by the default <code>GMain</code> context. If invoked more
@@ -86,7 +86,7 @@ export function init_check(argv: string[] | null): [ /* returnType */ boolean, /
  * @param code error code
  * @param message error message
  */
-export function set_error_literal(error: GLib.Error, domain: GLib.Quark, code: number, message: string | null): void
+export function set_error_literal(error: GLib.Error, domain: GLib.Quark, code: number, message: string): void
 /**
  * Name of the imported GIR library
  * @see https://gitlab.gnome.org/GNOME/gjs/-/blob/master/gi/ns.cpp#L188
